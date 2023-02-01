@@ -1,0 +1,15 @@
+*.graphql
+**/persisted_queries.json
+**/__generated__
+
+.docusaurus
+.next
+cjs/
+dts/
+esm/
+lib/
+mjs/
+out/
+package.json
+tsconfig.json
+tsconfig.*.json

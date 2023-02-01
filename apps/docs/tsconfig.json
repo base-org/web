@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.projectOptions.json",
+  "compilerOptions": {
+    "outDir": "../../dts/apps/docs"
+  },
+  "include": [
+    "**/*"
+  ],
+  "exclude": [
+    "dts"
+  ],
+  "references": []
+}
