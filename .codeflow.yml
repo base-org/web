@@ -1,0 +1,21 @@
+---
+secure:
+  required_reviews: 1
+  requires_mfa: true
+  requires_verified: true
+  upstream_repository: base-org/web
+
+build:
+  engines:
+    - BaldurECR:
+        name: web
+        path: ./apps/web/Dockerfile
+    - BaldurECR:
+        name: docs
+        path: ./apps/base-docs/Dockerfile
+    - BaldurECR:
+        name: bridge
+        path: ./apps/bridge/Dockerfile
+    - BaldurECR:
+        name: goerli-bridge
+        path: ./apps/bridge/Dockerfile

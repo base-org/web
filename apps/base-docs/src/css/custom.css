@@ -1,0 +1,87 @@
+@import url('./fonts.css');
+@import url('./root.css');
+@import url('./basecamp-sidebar-icons.css');
+@import url('./sidebar.css');
+
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+html[data-theme='dark'] .docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.feature {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-pagination-nav-border-radius);
+  /* padding: var(--ifm-global-spacing); */
+  /* margin: 10px; */
+}
+
+.feature-title {
+  color: var(--ifm-color-primary);
+}
+
+.feature-row {
+  display: flex;
+  justify-content: center;
+}
+
+.hero__title {
+  color: hsl(0, 0%, 97%);
+  font-family: CoinbaseDisplay;
+  font-size: 45px;
+  line-height: 52px;
+}
+
+.feature {
+  background-color: var(--ifm-background-surface-color);
+}
+
+/* overriding white text as the alert high a light background */
+[data-theme='dark'] .alert-message {
+  color: #000;
+}
+
+html[data-theme='dark'] .op-light {
+  display: none;
+}
+
+html[data-theme='dark'] .op-dark {
+  display: block;
+}
+
+html[data-theme='light'] .op-light {
+  display: block;
+}
+
+html[data-theme='light'] .op-dark {
+  display: none;
+}
+
+hr {
+  background: var(--ifm-toc-border-color);
+  opacity: 1;
+}
+
+.table-of-contents {
+  font-size: 1rem;
+}
+
+.navbar {
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+
+main {
+  min-height: calc(100vh - 60px);
+}
+
+main > .container {
+  height: 100%;
+}

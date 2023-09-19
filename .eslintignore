@@ -1,0 +1,19 @@
+*.d.ts
+*.json
+*.md
+**/persisted_queries.json
+dist/
+node_modules/
+OWNERS
+
+# Nx/Builds
+.docusaurus
+.next
+.nx
+**/cjs/
+**/dts/
+**/esm/
+**/lib/
+**/mjs/
+**/out/
+**/templates/

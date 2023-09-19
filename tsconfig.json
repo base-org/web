@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.projectOptions.json",
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "apps/base-docs"
+    },
+    {
+      "path": "apps/bridge"
+    },
+    {
+      "path": "apps/web"
+    },
+    {
+      "path": "libs/base-ui"
+    }
+  ]
+}

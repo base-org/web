@@ -1,0 +1,162 @@
+/* Sidebar https://docusaurus.io/docs/next/styling-layout#theme-class-names */
+
+/* theme-doc-sidebar:start */
+.theme-doc-sidebar-container {
+  text-decoration: initial;
+}
+
+.theme-doc-sidebar-container > div {
+  border-right: 1px solid var(--line);
+  width: var(--doc-sidebar-width);
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-doc-sidebar-container .menu {
+  padding: 0;
+}
+
+.theme-doc-sidebar-menu {
+  margin-right: calc(var(--ifm-global-spacing) * -1) !important;
+}
+
+/* theme-doc-sidebar:end */
+
+/* menu:start */
+.menu__link {
+  display: block;
+  border-radius: var(--interactable-border-radius);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.menu__link:active {
+  background-color: var(--interactable-pressed-background);
+}
+
+.menu__link--active {
+  background: none;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  background: none;
+}
+
+.menu__link--active:not(.menu__link--sublist):active {
+  background-color: var(--interactable-pressed-background);
+}
+
+.menu__link.menu__link--active {
+  color: var(--primary);
+}
+
+.menu__link--sublist.menu__link--active {
+  color: var(--primary) !important;
+}
+
+.menu__link {
+  color: var(--foreground-muted);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  padding-bottom: var(--spacing-0\.5);
+  padding-top: var(--spacing-0\.5);
+}
+
+.menu__list-item-collapsible--active {
+  background: none;
+}
+.menu__list-item-collapsible {
+  border-radius: var(--interactable-border-radius);
+  border-radius: 0 !important;
+}
+
+.menu__list .menu__list {
+  padding-left: 0;
+}
+/* menu:end */
+
+/* theme-doc-sidebar-item:start */
+.theme-doc-sidebar-item-link-level-1 > .menu__link {
+  text-align: start;
+  transition: color 0.15s ease-out, opacity 0.15s ease-out;
+  color: var(--foreground);
+  padding-bottom: var(--spacing-0\.5);
+  padding-top: var(--spacing-0\.5);
+  padding-left: var(--spacing-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  font-family: var(--caption-font-family);
+  font-size: var(--caption-font-size);
+  font-weight: var(--caption-font-weight);
+  line-height: var(--caption-line-height);
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link {
+  text-align: start;
+  transition: color 0.15s ease-out, opacity 0.15s ease-out;
+  color: var(--foreground);
+  padding-bottom: var(--spacing-0\.5);
+  padding-top: var(--spacing-0\.5);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  font-family: var(--caption-font-family);
+  font-size: var(--caption-font-size);
+  font-weight: var(--caption-font-weight);
+  line-height: var(--caption-line-height);
+}
+
+li[class*='theme-doc-sidebar-item-link-level-']:hover {
+  background: var(--ifm-menu-color-background-hover);
+}
+
+li[class*='theme-doc-sidebar-item-link-level-'] > .menu__link:hover {
+  background: none;
+}
+
+.theme-doc-sidebar-item-category-level-1 {
+  margin: 0 !important;
+  padding: var(--spacing-1) 0;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+.theme-doc-sidebar-item-link-level-1 {
+  margin: 0 !important;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+.theme-doc-sidebar-item-link-level-1 .menu__link {
+  padding: 10px var(--spacing-2);
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link {
+  padding-left: var(--spacing-2);
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible:hover {
+  background: none;
+}
+
+.theme-doc-sidebar-item-category-level-2,
+.theme-doc-sidebar-item-link-level-2 {
+  padding: 0 var(--spacing-0\.5);
+  margin: 0 var(--spacing-0);
+}
+
+li[class*='theme-doc-sidebar-item-link-level-']:not(
+    .theme-doc-sidebar-item-link-level-1,
+    .theme-doc-sidebar-item-link-level-2
+  ),
+li[class*='theme-doc-sidebar-item-category-level-']:not(
+    .theme-doc-sidebar-item-category-level-1,
+    .theme-doc-sidebar-item-category-level-2
+  ) {
+  padding: 0 0 0 var(--spacing-0);
+  margin: 0 0 0 var(--spacing-2);
+  border-left: 1px solid var(--toc-border-color);
+}
+/* theme-doc-sidebar-item:end */

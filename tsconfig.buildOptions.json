@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.base.json",
+  // Options for projects being built as npm packages
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "resolveJsonModule": true,
+    "sourceMap": false
+  }
+}

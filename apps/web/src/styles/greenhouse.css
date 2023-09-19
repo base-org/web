@@ -1,0 +1,19 @@
+/* Greenhouse style overrides - uploaded directly to GH */
+body #wrapper {
+  width: auto;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+div#main div#app_body {
+  padding-left: 0 !important;
+  padding-right: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  div#main div#app_body .logo-container {
+    height: 0;
+  }
+}

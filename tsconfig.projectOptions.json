@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  // Options for projects using project references
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "incremental": true,
+    "rootDirs": ["."]
+  }
+}
