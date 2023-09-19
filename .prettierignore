@@ -1,0 +1,21 @@
+*.graphql
+**/persisted_queries.json
+**/__generated__
+
+# Nx
+.docusaurus
+.next
+.nx
+cjs/
+dts/
+esm/
+lib/
+mjs/
+out/
+package.json
+tsconfig.json
+tsconfig.*.json
+
+# React Native
+**/android/app/build
+**/ios/Pods

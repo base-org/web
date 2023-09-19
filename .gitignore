@@ -1,0 +1,69 @@
+# Node stuff
+node_modules
+yarn-debug.log*
+yarn-error.log*
+
+# OS ignores
+.DS_Store
+
+# Xcode
+**/ios/build/
+**/ios/derived_data/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+*.xcworkspace
+Pods/
+
+# Android/IntelliJ
+**/android/build/
+**/android/app/build/
+.idea
+.gradle
+local.properties
+*.iml
+*.hprof
+
+# Nx/Builds
+.docusaurus
+.next
+.nx
+cjs/
+dts/
+esm/
+lib/
+mjs/
+out/
+*.tsbuildinfo
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# Env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# GraphQL
+schema.graphql
+persisted_queries.json
+**/*.graphql.ts
