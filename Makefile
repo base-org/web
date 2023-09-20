@@ -1,5 +1,4 @@
-all:
-	make web & make docs & make bridge
+all: web docs bridge
 
 web:
 	yarn workspace @app/web dev --port 3000
@@ -9,3 +8,11 @@ docs:
 
 bridge:
 	yarn workspace @app/bridge dev --port 3002
+
+lint: lint-web lint-bridge
+
+lint-web:
+	yarn workspace @app/web lint
+
+lint-bridge:
+	yarn workspace @app/bridge lint

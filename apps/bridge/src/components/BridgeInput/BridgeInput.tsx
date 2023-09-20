@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useRef } from 'react';
+import { Dispatch, SetStateAction, useCallback, useRef } from 'react';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { AssetList } from 'apps/bridge/src/components/AssetList/AssetList';
 import { Asset, CustomChain } from 'apps/bridge/src/types/Asset';
@@ -82,13 +82,15 @@ export function BridgeInput({
     setAmount(e.target.value);
   }
 
-  function handleChangeAsset(asset: Asset) {
-    return () => {
-      onClose();
-      setSelectedAsset(asset);
-      setAmount('0');
-    };
-  }
+  const handleChangeAsset = useCallback(
+    (asset: Asset) => {
+      return () => {
+        onClose();
+        setSelectedAsset(asset);
+        setAmount('0');
+      };
+    }
+    , [onClose, setAmount, setSelectedAsset]);
 
   function setMaxBalance() {
     setAmount((parseFloat(balance) * 0.99).toFixed(6).toString());
@@ -134,6 +136,7 @@ export function BridgeInput({
         </div>
       </div>
       <span className="mt-8 font-mono text-sm font-medium text-white">AMOUNT</span>
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
       <div
         className="flex max-w-[100vw] cursor-text flex-row items-center justify-between"
         onClick={handleFocus}

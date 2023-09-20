@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-parameter-properties */
 export class HTTPError extends Error {
   constructor(
     readonly status: number,
@@ -53,6 +55,7 @@ export async function request<T>(
   const response = await fetch(fullURL, init);
 
   if (response.status >= 400) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const { error } = await response.json();
     throw new HTTPError(
       response.status,
@@ -65,6 +68,7 @@ export async function request<T>(
 
   return {
     status: response.status,
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     body: response.ok ? await response.json() : null,
     headers: Object.fromEntries((response.headers as ResponseHeaders)?.entries() ?? []),
   };

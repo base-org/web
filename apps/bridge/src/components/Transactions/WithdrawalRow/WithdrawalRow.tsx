@@ -60,9 +60,9 @@ export const WithdrawalRow = memo(function WithdrawalRow({
     : undefined;
   const dateMonthDayOnly = transaction.blockTimestamp
     ? new Date(Number(transaction.blockTimestamp) * 1000).toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-      })
+      month: 'short',
+      day: 'numeric',
+    })
     : undefined;
   const time = transaction.blockTimestamp
     ? new Date(Number(transaction.blockTimestamp) * 1000).toLocaleTimeString('en-US', {
@@ -81,7 +81,7 @@ export const WithdrawalRow = memo(function WithdrawalRow({
   const amountFiat =
     conversionRateData && withdrawalAmount
       ? usdFormatter(conversionRateData * +withdrawalAmount)
-      : `$0.00`;
+      : '$0.00';
 
   const explorerURL =
     transaction.type === 'Deposit'

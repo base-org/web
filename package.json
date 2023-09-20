@@ -4,9 +4,9 @@
   "description": "Base web monorepo",
   "repository": "git@github.com::base-org/base-web.git",
   "license": "Apache-2.0",
-  "private": false,
   "scripts": {
-    "build": ""
+    "build": "",
+    "lint": "make lint"
   },
   "workspaces": [
     "apps/*",

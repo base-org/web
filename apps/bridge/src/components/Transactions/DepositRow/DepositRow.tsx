@@ -33,9 +33,9 @@ export const DepositRow = memo(function WithdrawalRow({ transaction }: DepositRo
     : undefined;
   const dateMonthDayOnly = transaction.blockTimestamp
     ? new Date(Number(transaction.blockTimestamp) * 1000).toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-      })
+      month: 'short',
+      day: 'numeric',
+    })
     : undefined;
   const time = transaction.blockTimestamp
     ? new Date(Number(transaction.blockTimestamp) * 1000).toLocaleTimeString('en-US', {
@@ -55,7 +55,7 @@ export const DepositRow = memo(function WithdrawalRow({ transaction }: DepositRo
   const amountFiat =
     conversionRateData && depositAmount
       ? usdFormatter(conversionRateData * +depositAmount)
-      : `$0.00`;
+      : '$0.00';
 
   const { isLoading: isDepositLoading, isSuccess: isDepositSuccess } = useWaitForTransaction({
     chainId: parseInt(publicRuntimeConfig.l1ChainID),
