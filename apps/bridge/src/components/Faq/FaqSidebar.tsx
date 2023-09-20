@@ -15,7 +15,7 @@ export function FaqSidebar() {
       />
       <QuestionAccordion
         question="What if I have a question, issue or problem?"
-        answer={
+        answer={(
           <>
             The{' '}
             <a href="https://base.org/discord" className="underline">
@@ -23,11 +23,11 @@ export function FaqSidebar() {
             </a>{' '}
             community is available around the clock for general questions, assistance and support!
           </>
-        }
+        )}
       />
       <QuestionAccordion
         question="How do you withdraw from Base?"
-        answer={
+        answer={(
           <div className="flex flex-col space-y-4">
             <p>
               Connect your wallet and confirm that it is set to Base network. Choose the digital
@@ -55,7 +55,7 @@ export function FaqSidebar() {
               .
             </p>
           </div>
-        }
+        )}
       />
     </div>
   );
