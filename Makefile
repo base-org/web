@@ -16,3 +16,14 @@ lint-web:
 
 lint-bridge:
 	yarn workspace @app/bridge lint
+
+build: build-web build-bridge build-docs
+
+build-web:
+	yarn workspace @app/web build
+
+build-bridge:
+	yarn workspace @app/bridge build
+
+build-docs:
+	yarn workspace @app/base-docs build
