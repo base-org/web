@@ -1,7 +1,6 @@
 import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 
-// eslint-disable-next-line @cbhq/react-prefer-named-module-import
 import React, { Fragment } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Bugsnag from '@bugsnag/js';
@@ -19,7 +18,6 @@ import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 import { WagmiConfig } from 'wagmi';
 
-const DEFAULT_LOCALE = 'en';
 const { publicRuntimeConfig } = getConfig();
 
 if (publicRuntimeConfig.bugsnagApiKey) {
