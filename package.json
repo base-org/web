@@ -5,7 +5,7 @@
   "repository": "git@github.com::base-org/base-web.git",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "",
+    "build": "make build",
     "lint": "make lint"
   },
   "workspaces": [
