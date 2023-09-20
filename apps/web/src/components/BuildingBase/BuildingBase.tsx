@@ -69,8 +69,8 @@ export function BuildingBase({ owners }: Props) {
         <p>
           With the interfaces in place, our existing financial system now needs to be recreated on
           open networks and made globally accessible. We’re seeing this happen in front of our eyes:
-          USDC has brought billions of dollars onchain, cbETH enables holders, anywhere to secure
-          the financial system while earning rewards, and hundreds of dapps are enabling countless
+          USDC has brought billions of dollars onchain, cbETH enables holders anywhere to secure the
+          financial system while earning rewards, and hundreds of dapps are enabling countless
           individuals and institutions to transact with lower fees, more security, and unparalleled
           access.
         </p>
