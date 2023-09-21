@@ -10,7 +10,6 @@ COPY . .
 
 # Install dependencies
 RUN yarn --immutable
-RUN yarn build
 
 RUN yarn workspace @app/web next build
 RUN yarn workspaces focus --all --production
