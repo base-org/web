@@ -9,7 +9,7 @@ yarn config set enableGlobalCache false
 # Immutable is the same as a frozen lockfile
 yarn --immutable
 
-# Need to make sure base branch is up-to-date. If not running on a PR, use `BUILDKITE_BRANCH`
+# Need to ensure base branch is up-to-date. If not running on a PR, use `BUILDKITE_BRANCH`
 BASE_BRANCH=$BUILDKITE_PULL_REQUEST_BASE_BRANCH
 if [[ -z "$BASE_BRANCH" ]]; then
     BASE_BRANCH=$BUILDKITE_BRANCH

@@ -24,24 +24,24 @@ For example, to start the `web` app locally, you would run `yarn workspace @app/
 
 ## Projects
 
-There are three projects which can be run individually, or you can start them all with `make`.
+There are three projects which can be run individually.
 
 ### Web
 
 ```
-make web
+yarn workspace @app/web dev
 ```
 
 ### Docs
 
 ```
-make docs
+yarn workspace @app/base-docs dev
 ```
 
 ### Bridge
 
 ```
-make bridge
+yarn workspace @app/bridge dev
 ```
 
 ## Contribution
@@ -49,7 +49,7 @@ make bridge
 We welcome contributions to Base project! To contribute, please follow these steps:
 
 1. Fork this repository.
-2. Make your changes in a new branch.
+2. Commit your changes in a new branch.
 3. Create a pull request.
 
 ### Visual Changes
