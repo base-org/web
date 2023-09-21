@@ -8,7 +8,6 @@ COPY . .
 
 # Install dependencies
 RUN yarn --immutable
-RUN yarn build
 
 ENV NODE_ENV=production
 RUN yarn workspace @app/base-docs build

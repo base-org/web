@@ -8,5 +8,5 @@ The Base bridge app is a Next.js app.
 cd apps/bridge
 cp .env.goerli.example .env.local
 cd ../..
-make bridge
+yarn workspace @app/bridge dev
 ```
