@@ -18,13 +18,31 @@
     "imageUrl": "/images/partners/orbiterfinance.png"
   },
   {
+    "name": "BasePaint",
+    "url": "https://basepaint.xyz/",
+    "description": "BasePaint is a collaborative pixel art app. Artists come together daily to paint on a shared pixel-art canvas. The next day, the canvas is turned into a 24-hour open edition NFT mint. Once the mint concludes, that day’s artists receive a share of ETH from the mint.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/basepaint.png"
+  },
+  {
+    "name": "LandTorn",
+    "url": "https://landtorn.com/lorak",
+    "description": "An experimental on-chain idle game built using the erc-6551 standard, testing the limits of Token Bound accounts or, in simpler terms, testing the feasibility of managing hundreds of NFTs inside of a Character NFT with a built-in ruleset, which deepens the gameplay, while providing a full on-chain experience.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/landtorn.jpg"
+  },
+  {
     "name": "Layer3",
     "url": "https://layer3.xyz/",
     "description": "Discover the world of crypto like never before with Layer3. Our interactive Quests make learning and exploring web3 fun, engaging, and rewarding.",
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/orbiterfinance.png"
+    "imageUrl": "/images/partners/layer3.png"
   },
   {
     "name": "Thales",
@@ -737,15 +755,6 @@
       "gaming"
     ],
     "imageUrl": "/images/partners/iskra.png"
-  },
-  {
-    "name": "Layer3",
-    "url": "https://layer3.xyz/",
-    "description": "Discover the world of crypto like never before with Layer3. Our interactive Quests make learning and exploring web3 fun, engaging, and rewarding.\n\nAnd with the ability to earn NFTs and XP as you complete Quests, you’ll be able to showcase your knowledge and achievements to the world.\n\nJoin hundreds of thousands of people who have already taken the plunge into the exciting world of crypto with Layer3.",
-    "tags": [
-      "social"
-    ],
-    "imageUrl": "/images/partners/layer3.png"
   },
   {
     "name": "Mean Finance",
