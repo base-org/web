@@ -10,6 +10,7 @@
     "update-contributors": "node ./scripts/updateContributors.js && npx prettier ./src/components/CoreContributors/CoreContributors.json -w"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
     "@next/font": "^13.1.5",
     "ethers": "5.7.2",
     "framer-motion": "^8.5.5",

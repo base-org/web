@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import getConfig from 'next/config';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { Icon } from '../../Icon/Icon';
 import { Logo } from '../../Logo/Logo';
@@ -123,6 +124,7 @@ const mainnetBanner = (
 
 export function Nav({ color }: NavProps) {
   const [showMobileMenu, toggleMobileMenu] = useState<boolean>(false);
+  const { pathname } = useRouter();
 
   const handleMenuButtonClick = useCallback(() => {
     toggleMobileMenu(true);
@@ -141,7 +143,7 @@ export function Nav({ color }: NavProps) {
       </div>
       <nav className="bg-transparent z-10 flex h-24 w-full max-w-[1440px] flex-row justify-between self-center p-8">
         <Link href="/">
-          <Logo color={color} />
+          <Logo color={color} path={pathname} />
         </Link>
         {/* Desktop */}
         <div className="hidden h-full flex-row items-center space-x-16 lg:flex">

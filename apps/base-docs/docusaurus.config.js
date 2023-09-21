@@ -11,14 +11,14 @@ const baseConfig = {
         autoCollapseCategories: true,
         hideable: true,
       },
-    }
+    },
   },
-};;
+};
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/oceanicNext');
 
-const APP_TITLE = `Base`;
+const APP_TITLE = 'Base';
 const PRODUCT_NAME = 'Base';
 
 const config = {
@@ -73,12 +73,12 @@ const config = {
           type: 'doc',
           docId: 'overview',
           position: 'left',
-          label: `Documentation`,
+          label: 'Documentation',
         },
         {
           to: '/base-camp/docs/welcome',
           position: 'left',
-          label: `Base Camp`,
+          label: 'Base Camp',
           items: [
             {
               label: 'Learn',
@@ -88,13 +88,17 @@ const config = {
               label: 'Track your progress',
               to: '/base-camp/progress',
             },
+            {
+              label: 'Bootcamp',
+              href: 'https://base.org/bootcamp',
+            },
           ],
         },
         {
           type: 'doc',
           docId: 'security',
           position: 'left',
-          label: `Security`,
+          label: 'Security',
         },
         {
           type: 'dropdown',
