@@ -52,6 +52,7 @@ module.exports = {
       },
       backgroundImage: {
         empowered_by_coinbase: "url('/images/empowered_by_coinbase.png')",
+        bootcamp_background_image: "url('/images/bootcamp-background.png')"
       },
       transitionTimingFunction: {
         partners: 'cubic-bezier(0.25, 1, 0.25, 1)',
