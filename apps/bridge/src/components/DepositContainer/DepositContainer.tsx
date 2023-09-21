@@ -23,6 +23,7 @@ import { utils } from 'ethers';
 import { parseUnits } from 'ethers/lib/utils.js';
 import getConfig from 'next/config';
 import { useAccount, useBalance, useContractWrite } from 'wagmi';
+import { useIsPermittedToBridgeTo } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridgeTo';
 
 const assetList = getAssetListForChainEnv();
 
@@ -86,7 +87,9 @@ export function DepositContainer() {
   const chainEnv = useChainEnv();
   const isMainnet = chainEnv === 'mainnet';
   const includeTosVersionByte = isMainnet;
-  const isPermittedToBridge = useIsPermittedToBridge();
+  const isUserPermittedToBridge = useIsPermittedToBridge();
+  const isPermittedToBridgeTo = useIsPermittedToBridgeTo(depositTo as `0x${string}`);
+  const isPermittedToBridge = isSmartContractWallet ? isUserPermittedToBridge && isPermittedToBridgeTo : isUserPermittedToBridge;
 
   // deposit eth
   const depositETHConfig = usePrepareETHDeposit({
@@ -205,10 +208,10 @@ export function DepositContainer() {
       <BaseButton
         onClick={initiateDeposit}
         disabled={
-          parseFloat(depositAmount) <= 0 ||
+          (parseFloat(depositAmount) <= 0 ||
           parseFloat(depositAmount) >= parseFloat(L1Balance?.formatted ?? '0') ||
           depositAmount === '' ||
-          (isSmartContractWallet && !utils.isAddress(depositTo ?? ''))
+          (isSmartContractWallet && !utils.isAddress(depositTo ?? ''))) || !isPermittedToBridge
         }
         toChainId={chainId}
         className="text-md flex w-full items-center justify-center rounded-md p-4 font-sans font-bold uppercase sm:w-auto"
@@ -220,7 +223,7 @@ export function DepositContainer() {
     button = (
       <BridgeButton
         onClick={initiateApproval}
-        disabled={isSmartContractWallet && !utils.isAddress(depositTo ?? '')}
+        disabled={(isSmartContractWallet && !utils.isAddress(depositTo ?? '')) || !isPermittedToBridge}
         className="text-md flex w-full items-center justify-center rounded-md p-4 font-sans font-bold uppercase sm:w-auto"
       >
         Approval

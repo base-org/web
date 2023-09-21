@@ -19,6 +19,7 @@ import { usePrepareETHWithdrawal } from 'apps/bridge/src/utils/hooks/usePrepareE
 import { utils } from 'ethers';
 import getConfig from 'next/config';
 import { useAccount, useBalance, useContractWrite } from 'wagmi';
+import { useIsPermittedToBridgeTo } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridgeTo';
 
 const assetList = getAssetListForChainEnv();
 
@@ -48,7 +49,9 @@ export function WithdrawContainer() {
   const chainEnv = useChainEnv();
   const isMainnet = chainEnv === 'mainnet';
   const includeTosVersionByte = isMainnet;
-  const isPermittedToBridge = useIsPermittedToBridge();
+  const isUserPermittedToBridge = useIsPermittedToBridge();
+  const isPermittedToBridgeTo = useIsPermittedToBridgeTo(withdrawTo as `0x${string}`);
+  const isPermittedToBridge = isSmartContractWallet ? isUserPermittedToBridge && isPermittedToBridgeTo : isUserPermittedToBridge;
 
   const erc20WithdrawalConfig = usePrepareERC20Withdrawal({
     asset: selectedAsset,
@@ -136,10 +139,10 @@ export function WithdrawContainer() {
       <BaseButton
         onClick={initiateWithdrawal}
         disabled={
-          parseFloat(withdrawAmount) <= 0 ||
+          (parseFloat(withdrawAmount) <= 0 ||
           parseFloat(withdrawAmount) >= parseFloat(L2Balance?.formatted ?? '0') ||
           withdrawAmount === '' ||
-          (isSmartContractWallet && !utils.isAddress(withdrawTo ?? ''))
+          (isSmartContractWallet && !utils.isAddress(withdrawTo ?? ''))) || !isPermittedToBridge
         }
         toChainId={chainId}
         className="text-md flex w-full items-center justify-center rounded-md p-4 font-sans font-bold uppercase sm:w-auto"
