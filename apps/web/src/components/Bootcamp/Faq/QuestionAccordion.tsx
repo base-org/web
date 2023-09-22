@@ -1,5 +1,4 @@
 import { ReactNode, useCallback, useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 
 type QuestionAccordionProps = {
