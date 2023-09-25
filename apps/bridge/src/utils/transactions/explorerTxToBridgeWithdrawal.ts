@@ -38,6 +38,7 @@ export function explorerTxToBridgeWithdrawal(tx: BlockExplorerTransaction): Brid
     };
   }
 
+  const functionName = l2StandardBridgeInterface.getFunction(tx.input.slice(0, 10)).name;
   const decodedWithdrawData = l2StandardBridgeInterface.decodeFunctionData(
     tx.input.slice(0, 10),
     tx.input,
@@ -52,7 +53,9 @@ export function explorerTxToBridgeWithdrawal(tx: BlockExplorerTransaction): Brid
     from: tx.from,
     to: tx.to,
     assetSymbol: token.L2symbol ?? '',
-    amount: (decodedWithdrawData[1] as BigNumber).toString(),
+    amount: (
+      (functionName === 'withdraw' ? decodedWithdrawData[1] : decodedWithdrawData[2]) as BigNumber
+    ).toString(),
     blockTimestamp: tx.timeStamp,
     hash: tx.hash as `0x${string}`,
     priceApiId: token.apiId,
