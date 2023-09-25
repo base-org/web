@@ -51,7 +51,9 @@ export function WithdrawContainer() {
   const includeTosVersionByte = isMainnet;
   const isUserPermittedToBridge = useIsPermittedToBridge();
   const isPermittedToBridgeTo = useIsPermittedToBridgeTo(withdrawTo as `0x${string}`);
-  const isPermittedToBridge = isSmartContractWallet ? isUserPermittedToBridge && isPermittedToBridgeTo : isUserPermittedToBridge;
+  const isPermittedToBridge = isSmartContractWallet
+    ? isUserPermittedToBridge && isPermittedToBridgeTo
+    : isUserPermittedToBridge;
 
   const erc20WithdrawalConfig = usePrepareERC20Withdrawal({
     asset: selectedAsset,
@@ -97,11 +99,7 @@ export function WithdrawContainer() {
         if (isPermittedToBridge) {
           let withdrawMethod;
           if (selectedAsset.L1contract) {
-            if (isSmartContractWallet) {
-              withdrawMethod = withdrawERC20To;
-            } else {
-              withdrawMethod = withdrawERC20;
-            }
+            withdrawMethod = isSmartContractWallet ? withdrawERC20To : withdrawERC20;
           } else {
             withdrawMethod = withdraw;
           }
@@ -130,20 +128,24 @@ export function WithdrawContainer() {
   ]);
 
   let button;
+  let withdrawDisabled;
+
   if (!isWalletConnected) {
     button = (
       <ConnectWalletButton className="text-md flex w-full items-center justify-center rounded-md p-4 font-sans font-bold uppercase sm:w-auto" />
     );
   } else {
+    withdrawDisabled =
+      parseFloat(withdrawAmount) <= 0 ||
+      parseFloat(withdrawAmount) >= parseFloat(L2Balance?.formatted ?? '0') ||
+      withdrawAmount === '' ||
+      (isSmartContractWallet && !utils.isAddress(withdrawTo ?? '')) ||
+      !isPermittedToBridge;
+
     button = (
       <BaseButton
         onClick={initiateWithdrawal}
-        disabled={
-          (parseFloat(withdrawAmount) <= 0 ||
-          parseFloat(withdrawAmount) >= parseFloat(L2Balance?.formatted ?? '0') ||
-          withdrawAmount === '' ||
-          (isSmartContractWallet && !utils.isAddress(withdrawTo ?? ''))) || !isPermittedToBridge
-        }
+        disabled={withdrawDisabled}
         toChainId={chainId}
         className="text-md flex w-full items-center justify-center rounded-md p-4 font-sans font-bold uppercase sm:w-auto"
       >
@@ -187,7 +189,7 @@ export function WithdrawContainer() {
             chainId={publicRuntimeConfig.l2ChainID}
             isDeposit={false}
           />
-          <div className="w-full py-12 px-6 sm:hidden">{button}</div>
+          <div className="w-full px-6 py-12 sm:hidden">{button}</div>
         </div>
       </div>
       <FaqSidebar />
