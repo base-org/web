@@ -76,6 +76,10 @@ export default function CafeUnitTest({ deployment, nftNum }) {
     abi: deployment.abi,
     functionName: 'owners',
     args: [useAccount()?.address],
+    watch: true,
+    onSettled(data) {
+      setHasPin(!!data);
+    },
   });
 
   // Test Contract Function
