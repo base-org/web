@@ -65,6 +65,8 @@ Standardizing non-fungible tokens via the ERC-721 token standard presents substa
 
 For users, the ERC-721 standard offers an intuitive, consistent interface for interacting with a wide array of unique tokens. Regardless of the token's specific use or design, users can reliably check their ownership of tokens, transfer tokens to other addresses, and approve transactions. This consistency enhances usability across the Ethereum platform, from digital art marketplaces to tokenized real estate and gaming applications.
 
+![The Benefits of ERC-721 Standardization](../../assets/images/erc-721/erc-721-standard.png)
+
 ---
 
 ## Applications
