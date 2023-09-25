@@ -46,20 +46,4 @@ yarn workspace @app/bridge dev
 
 ## Contribution
 
-We welcome contributions to Base project! To contribute, please follow these steps:
-
-1. Fork this repository.
-2. Commit your changes in a new branch.
-3. Create a pull request.
-
-### Visual Changes
-
-If your pull request includes any visual changes to the project, please include before and after screenshots in your pull request description to help us better understand the changes.
-
-### Test Coverage
-
-Please ensure that your pull request has good test coverage for the feature you implemented.
-
-### Review
-
-Thank you for your contribution!
+We welcome contributions to Base! To contribute, please see [CONTRIBUTING.md](CONTRIBUTING.md).
