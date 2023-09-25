@@ -39,21 +39,24 @@ export function explorerTxToBridgeDeposit(tx: BlockExplorerTransaction): BridgeT
     };
   }
 
-  const decodedWithdrawData = l1StandardBridgeInterface.decodeFunctionData(
+  const functionName = l1StandardBridgeInterface.getFunction(tx.input.slice(0, 10)).name;
+  const decodedDepositData = l1StandardBridgeInterface.decodeFunctionData(
     tx.input.slice(0, 10),
     tx.input,
   );
   const token = assetList.find(
     (asset) =>
       asset.L1chainId === parseInt(publicRuntimeConfig.l1ChainID) &&
-      asset.L1contract?.toLowerCase() === (decodedWithdrawData[0] as string).toLowerCase(),
+      asset.L1contract?.toLowerCase() === (decodedDepositData[0] as string).toLowerCase(),
   ) as Asset;
   return {
     type: 'Deposit',
     from: tx.from,
     to: tx.to,
     assetSymbol: token.L1symbol ?? '',
-    amount: (decodedWithdrawData[2] as BigNumber).toString(),
+    amount: (
+      (functionName === 'depositERC20' ? decodedDepositData[2] : decodedDepositData[3]) as BigNumber
+    ).toString(),
     blockTimestamp: tx.timeStamp,
     hash: tx.hash as `0x${string}`,
     status: 'Complete',

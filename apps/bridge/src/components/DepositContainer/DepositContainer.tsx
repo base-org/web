@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import { BridgeButton } from 'apps/bridge/src/components/BridgeButton/BridgeButton';
 import { BridgeInput } from 'apps/bridge/src/components/BridgeInput/BridgeInput';
+import { BridgeToInput } from 'apps/bridge/src/components/BridgeToInput/BridgeToInput';
 import { ConnectWalletButton } from 'apps/bridge/src/components/ConnectWalletButton/ConnectWalletButton';
 import { DepositModal } from 'apps/bridge/src/components/DepositModal/DepositModal';
 import { FaqSidebar } from 'apps/bridge/src/components/Faq/FaqSidebar';
@@ -11,14 +12,18 @@ import { getAssetListForChainEnv } from 'apps/bridge/src/utils/assets/getAssetLi
 import { useApproveContract } from 'apps/bridge/src/utils/hooks/useApproveContract';
 import { useChainEnv } from 'apps/bridge/src/utils/hooks/useChainEnv';
 import { useDisclosure } from 'apps/bridge/src/utils/hooks/useDisclosure';
+import { useGetCode } from 'apps/bridge/src/utils/hooks/useGetCode';
 import { useIsContractApproved } from 'apps/bridge/src/utils/hooks/useIsContractApproved';
 import { useIsPermittedToBridge } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridge';
 import { useIsWalletConnected } from 'apps/bridge/src/utils/hooks/useIsWalletConnected';
 import { usePrepareERC20Deposit } from 'apps/bridge/src/utils/hooks/usePrepareERC20Deposit';
+import { usePrepareERC20DepositTo } from 'apps/bridge/src/utils/hooks/usePrepareERC20DepositTo';
 import { usePrepareETHDeposit } from 'apps/bridge/src/utils/hooks/usePrepareETHDeposit';
+import { utils } from 'ethers';
 import { parseUnits } from 'ethers/lib/utils.js';
 import getConfig from 'next/config';
 import { useAccount, useBalance, useContractWrite } from 'wagmi';
+import { useIsPermittedToBridgeTo } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridgeTo';
 
 const assetList = getAssetListForChainEnv();
 
@@ -29,6 +34,7 @@ export function DepositContainer() {
   const [depositAmount, setDepositAmount] = useState('0');
   const [L1ApproveTxHash, setL1ApproveTxHash] = useState<`0x${string}` | undefined>(undefined);
   const [L1DepositTxHash, setL1DepositTxHash] = useState<`0x${string}` | undefined>(undefined);
+  const [depositTo, setDepositTo] = useState('');
   const [isApprovalTx, setIsApprovalTx] = useState(false);
   const isWalletConnected = useIsWalletConnected();
   const [selectedAsset, setSelectedAsset] = useState<Asset>(assetList[0]);
@@ -36,6 +42,8 @@ export function DepositContainer() {
     publicRuntimeConfig.assets.split(',').includes(asset.L1symbol.toLowerCase()),
   );
   const { address } = useAccount();
+  const codeAtAddress = useGetCode(address);
+  const isSmartContractWallet = !!codeAtAddress && codeAtAddress !== '0x';
 
   const { data: L1Balance } = useBalance({
     address,
@@ -79,11 +87,15 @@ export function DepositContainer() {
   const chainEnv = useChainEnv();
   const isMainnet = chainEnv === 'mainnet';
   const includeTosVersionByte = isMainnet;
-  const isPermittedToBridge = useIsPermittedToBridge();
+  const isUserPermittedToBridge = useIsPermittedToBridge();
+  const isPermittedToBridgeTo = useIsPermittedToBridgeTo(depositTo as `0x${string}`);
+  const isPermittedToBridge = isSmartContractWallet
+    ? isUserPermittedToBridge && isPermittedToBridgeTo
+    : isUserPermittedToBridge;
 
   // deposit eth
   const depositETHConfig = usePrepareETHDeposit({
-    userAddress: address,
+    userAddress: isSmartContractWallet ? (depositTo as `0x${string}`) : address,
     depositAmount,
     isPermittedToBridge,
     includeTosVersionByte,
@@ -99,8 +111,17 @@ export function DepositContainer() {
     isPermittedToBridge,
     includeTosVersionByte,
   });
+  const depositERC20ToConfig = usePrepareERC20DepositTo({
+    asset: selectedAsset,
+    to: depositTo as `0x${string}`,
+    depositAmount,
+    readApprovalResult,
+    isPermittedToBridge,
+    includeTosVersionByte,
+  });
 
   const { writeAsync: depositERC20Write } = useContractWrite(depositERC20Config);
+  const { writeAsync: depositERC20ToWrite } = useContractWrite(depositERC20ToConfig);
 
   const initiateApproval = useCallback(() => {
     void (async () => {
@@ -118,7 +139,9 @@ export function DepositContainer() {
 
         // next, call the transfer function
         setIsApprovalTx(false);
-        const depositResult = await depositERC20Write?.();
+        const depositResult = await (isSmartContractWallet
+          ? depositERC20ToWrite?.()
+          : depositERC20Write?.());
         if (depositResult?.hash) {
           const depositTxHash = depositResult.hash;
           setL1DepositTxHash(depositTxHash);
@@ -128,7 +151,14 @@ export function DepositContainer() {
         onCloseDepositModal();
       }
     })();
-  }, [approveWrite, depositERC20Write, onCloseDepositModal, onOpenDepositModal, setIsApprovalTx]);
+  }, [
+    approveWrite,
+    depositERC20ToWrite,
+    depositERC20Write,
+    isSmartContractWallet,
+    onCloseDepositModal,
+    onOpenDepositModal,
+  ]);
 
   const initiateDeposit = useCallback(() => {
     void (async () => {
@@ -136,9 +166,13 @@ export function DepositContainer() {
       try {
         // Only bridge on mainnet if user has accepted ToS. Always allow bridging on testnet.
         if (isPermittedToBridge) {
-          const depositResult = await (selectedAsset.L1contract
-            ? depositERC20Write?.()
-            : depositETHWrite?.());
+          let depositMethod;
+          if (selectedAsset.L1contract) {
+            depositMethod = isSmartContractWallet ? depositERC20ToWrite : depositERC20Write;
+          } else {
+            depositMethod = depositETHWrite;
+          }
+          const depositResult = await depositMethod?.();
           if (depositResult?.hash) {
             const depositTxHash = depositResult.hash;
             setL1DepositTxHash(depositTxHash);
@@ -155,25 +189,31 @@ export function DepositContainer() {
     onOpenDepositModal,
     isPermittedToBridge,
     selectedAsset.L1contract,
+    isSmartContractWallet,
+    depositERC20ToWrite,
     depositERC20Write,
     depositETHWrite,
     onCloseDepositModal,
   ]);
 
   let button;
+  let depositDisabled;
   if (!isWalletConnected) {
     button = (
       <ConnectWalletButton className="text-md flex w-full items-center justify-center rounded-md p-4 font-sans font-bold uppercase sm:w-auto" />
     );
   } else if (readApprovalResult || selectedAsset.L1symbol === 'ETH') {
+    depositDisabled =
+      parseFloat(depositAmount) <= 0 ||
+      parseFloat(depositAmount) >= parseFloat(L1Balance?.formatted ?? '0') ||
+      depositAmount === '' ||
+      (isSmartContractWallet && !utils.isAddress(depositTo ?? '')) ||
+      !isPermittedToBridge;
+
     button = (
       <BaseButton
         onClick={initiateDeposit}
-        disabled={
-          parseFloat(depositAmount) <= 0 ||
-          parseFloat(depositAmount) >= parseFloat(L1Balance?.formatted ?? '0') ||
-          depositAmount === ''
-        }
+        disabled={depositDisabled}
         toChainId={chainId}
         className="text-md flex w-full items-center justify-center rounded-md p-4 font-sans font-bold uppercase sm:w-auto"
       >
@@ -181,10 +221,13 @@ export function DepositContainer() {
       </BaseButton>
     );
   } else {
+    depositDisabled =
+      (isSmartContractWallet && !utils.isAddress(depositTo ?? '')) || !isPermittedToBridge;
+
     button = (
       <BridgeButton
         onClick={initiateApproval}
-        disabled={false}
+        disabled={depositDisabled}
         className="text-md flex w-full items-center justify-center rounded-md p-4 font-sans font-bold uppercase sm:w-auto"
       >
         Approval
@@ -216,6 +259,10 @@ export function DepositContainer() {
           {button}
         </BridgeInput>
 
+        {isSmartContractWallet && (
+          <BridgeToInput bridgeTo={depositTo} setBridgeTo={setDepositTo} action="deposit" />
+        )}
+
         <div className="border-t border-sidebar-border">
           <TransactionSummary
             header="TRANSACTION SUMMARY"
@@ -225,7 +272,7 @@ export function DepositContainer() {
             chainId={publicRuntimeConfig.l1ChainID}
             isDeposit
           />
-          <div className="w-full py-12 px-6 sm:hidden">{button}</div>
+          <div className="w-full px-6 py-12 sm:hidden">{button}</div>
         </div>
       </div>
       <FaqSidebar />

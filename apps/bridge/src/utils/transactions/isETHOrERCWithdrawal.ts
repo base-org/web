@@ -32,7 +32,7 @@ export function isETHOrERC20Withdrawal(tx: BlockExplorerTransaction) {
   // ERC-20 Withdrawal
   if (tx.to === ERC20_WITHDRAWAL_ADDRESS) {
     const functionName = l2StandardBridgeInterface.getFunction(tx.input.slice(0, 10)).name;
-    if (functionName === 'withdraw') {
+    if (functionName === 'withdraw' || functionName === 'withdrawTo') {
       return true;
     }
   }

@@ -19,7 +19,7 @@ export const OFACContext = createContext<OFACContextType>({
   isOFACAllowedLoading: false,
 });
 
-async function fetchIsAllowed(address?: `0x${string}`): Promise<{ result: boolean }> {
+export async function fetchIsAllowed(address?: `0x${string}`): Promise<{ result: boolean }> {
   if (!address) {
     return { result: false };
   }

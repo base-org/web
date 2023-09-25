@@ -32,7 +32,7 @@ export function isETHOrERC20Deposit(tx: BlockExplorerTransaction) {
   // ERC-20 desposit
   if (tx.to === ERC20_DEPOSIT_ADDRESS) {
     const functionName = l1StandardBridgeInterface.getFunction(tx.input.slice(0, 10)).name;
-    if (functionName === 'depositERC20') {
+    if (functionName === 'depositERC20' || functionName === 'depositERC20To') {
       return true;
     }
   }
