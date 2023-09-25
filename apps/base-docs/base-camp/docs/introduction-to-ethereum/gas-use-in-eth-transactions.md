@@ -30,6 +30,8 @@ The amount of gas required for an operation depends on its complexity. More comp
 
 Gas costs can also vary depending on the state of the network, or more specifically, how congested it is. When there are more transactions waiting to be processed than the network can handle, it will prioritize transactions based on the gas price that was set by the user, meaning that higher gas prices are more likely to get processed first. When the network is congested, gas prices increase to encourage more efficient use of the network's resources and decrease when network usage is lower. This dynamic pricing mechanism ensures that the Ethereum network remains accessible and functional for all users, while also incentivizing responsible and efficient use of the network's resources.
 
+![Gas Costs vs Network Congestion](../../assets/images/introduction-to-ethereum/gas-costs.png)
+
 ---
 
 ## Why is gas necessary?
