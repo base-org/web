@@ -27,15 +27,6 @@
     "imageUrl": "/images/partners/basepaint.png"
   },
   {
-    "name": "LandTorn",
-    "url": "https://landtorn.com/lorak",
-    "description": "An experimental on-chain idle game built using the erc-6551 standard, testing the limits of Token Bound accounts or, in simpler terms, testing the feasibility of managing hundreds of NFTs inside of a Character NFT with a built-in ruleset, which deepens the gameplay, while providing a full on-chain experience.",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/landtorn.jpg"
-  },
-  {
     "name": "Layer3",
     "url": "https://layer3.xyz/",
     "description": "Discover the world of crypto like never before with Layer3. Our interactive Quests make learning and exploring web3 fun, engaging, and rewarding.",
