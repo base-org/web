@@ -226,7 +226,7 @@
   },
   {
     "name": "Jumper Exchange",
-    "url": "https://www.jumper.exchange",
+    "url": "https://jumper.exchange",
     "description": "Crypto's Everything Exchange. Powered by @lifiprotocol.",
     "tags": [
       "bridge"
@@ -571,7 +571,7 @@
     "url": "https://axelar.network",
     "description": "Axelar delivers secure interchain communication. That means dApp users can interact with any asset, any application, on any chain, with one click. You can think of it as Stripe for Web3.\n\nDevelopers interact with a simple API atop a permissionless network that routes messages and ensures network security via proof-of-stake consensus.",
     "tags": [
-      "bridge"
+      "x-chain"
     ],
     "imageUrl": "/images/partners/axelar.png"
   },
@@ -869,7 +869,7 @@
     "url": "https://socket.tech/",
     "description": "Socket is an interoperability protocols which allows seamless asset & data transfer across chains, enabling developers to build truly cross-chain apps",
     "tags": [
-      "bridge"
+      "x-chain"
     ],
     "imageUrl": "/images/partners/socket.png"
   },
@@ -933,7 +933,7 @@
     "url": "https://wormhole.com",
     "description": "Wormhole is a generic cross-chain message-passing protocol that gives developers the power to build decentralized applications that span the rapidly evolving blockchain ecosystem.",
     "tags": [
-      "bridge"
+      "x-chain"
     ],
     "imageUrl": "/images/partners/wormhole.png"
   },
@@ -1149,7 +1149,7 @@
     "url": "https://layerzero.network/",
     "description": "LayerZero is the leading blockchain messaging protocol. LayerZero's advanced messaging infrastructure seamlessly connects over 30 blockchains and facilitates transparent and secure cross-chain messaging from one easy-to-use interface.",
     "tags": [
-      "bridge"
+      "x-cross"
     ],
     "imageUrl": "/images/partners/layerzero.png"
   },

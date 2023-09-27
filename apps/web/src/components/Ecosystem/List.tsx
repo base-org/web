@@ -20,9 +20,10 @@ const TagList = [
   'infra',
   'nft',
   'onramp',
+  'security',
   'social',
   'wallet',
-  'security',
+  'x-chain',
 ];
 
 function orderedDataAsc() {
