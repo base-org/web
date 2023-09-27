@@ -18,6 +18,15 @@
     "imageUrl": "/images/partners/orbiterfinance.png"
   },
   {
+    "name": "Alien Base",
+    "url": "https://app.alienbase.xyz/",
+    "description": "Alien Base is the fastest growing DEX on Base, with its own dedicated safe(r) meme-token trading section Area 51.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/alienbase.png"
+  },
+  {
     "name": "BasePaint",
     "url": "https://basepaint.xyz/",
     "description": "BasePaint is a collaborative pixel art app. Artists come together daily to paint on a shared pixel-art canvas. The next day, the canvas is turned into a 24-hour open edition NFT mint. Once the mint concludes, that day’s artists receive a share of ETH from the mint.",
