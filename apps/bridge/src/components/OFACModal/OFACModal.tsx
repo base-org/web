@@ -5,5 +5,15 @@ type OFACModalProps = {
 };
 
 export function OFACModal({ isOpen }: OFACModalProps) {
-  return <Modal isOpen={isOpen} title="THIS SITE IS RESTRICTED IN YOUR REGION" icon="alert" />;
+  return (
+    <Modal
+      isOpen={isOpen}
+      title="THIS SERVICE IS NOT AVAILABLE IN YOUR REGION"
+      content={(
+        <div>
+          <p className="text-white mt-4">Alternatively, you can use these <a href="https://base.org/ecosystem?tag=bridge" className="underline">approved third-party bridges</a>.</p>
+        </div>
+  )}
+    />
+  );
 }
