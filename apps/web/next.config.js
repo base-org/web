@@ -114,7 +114,6 @@ module.exports = extendBaseConfig({
     mainnetLaunchBlogPostURL:
       process.env.MAINNET_LAUNCH_BLOG_POST_URL ?? 'https://base.mirror.xyz/',
     mainnetLaunchFlag: process.env.MAINNET_LAUNCH_FLAG ?? 'false',
-    ecosystemLaunchFlag: process.env.NEXT_PUBLIC_ECOSYSTEM_LAUNCH_FLAG ?? 'false',
   },
   i18n: {
     locales: ['en'],

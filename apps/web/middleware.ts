@@ -41,12 +41,6 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (url.pathname === '/ecosystem' && process.env.NEXT_PUBLIC_ECOSYSTEM_LAUNCH_FLAG !== 'true') {
-    url.pathname = '/';
-
-    return NextResponse.redirect(url);
-  }
-
   if (
     process.env.APP_STAGE !== 'production' ||
     process.env.AUTH_ENABLED === 'false' ||

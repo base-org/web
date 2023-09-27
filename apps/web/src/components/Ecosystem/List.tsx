@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import ErrorImg from 'apps/web/public/images/error.png';
 import data from 'apps/web/src/data/ecosystem.json';
 import Image from 'next/image';
@@ -8,6 +8,7 @@ import { Button } from '../Button/Button';
 import { Card } from './Card';
 import { SearchBar } from './SearchBar';
 import { TagChip } from './TagChip';
+import { useRouter } from 'next/router';
 
 const TagList = [
   'all',
@@ -19,9 +20,10 @@ const TagList = [
   'infra',
   'nft',
   'onramp',
+  'security',
   'social',
   'wallet',
-  'security',
+  'x-chain',
 ];
 
 function orderedDataAsc() {
@@ -45,6 +47,18 @@ export function List() {
   const [selectedTag, setSelectedTag] = useState('all');
   const [searchText, setSearchText] = useState('');
   const [showNum, setShowNum] = useState(16);
+
+  // Read select tag query parameter from URL
+  const router = useRouter();
+  useEffect(() => {
+    if (router.query.tag) {
+      setSelectedTag(router.query.tag as string);
+    }
+  }, [router.query.tag]);
+
+  const selectTag = useCallback((tag: string) => {
+    void router.push({ query: { tag } });
+  }, [router]);
 
   const filteredApps = useMemo(
     () =>
@@ -72,7 +86,7 @@ export function List() {
             <TagChip
               tag={tag}
               isSelected={selectedTag === tag}
-              setSelectedTag={setSelectedTag}
+              setSelectedTag={selectTag}
               key={tag}
             />
           ))}

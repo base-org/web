@@ -7,7 +7,6 @@ import { Icon } from '../../Icon/Icon';
 import { Logo } from '../../Logo/Logo';
 
 const { publicRuntimeConfig } = getConfig();
-const showEcosystemPage = publicRuntimeConfig.ecosystemLaunchFlag === 'true';
 
 type NavProps = {
   color: 'white' | 'black';
@@ -61,11 +60,9 @@ function MobileMenu({ toggleMobileMenu }: MobileMenuProps) {
           >
             Docs
           </a>
-          {showEcosystemPage && (
-            <Link href="/ecosystem" onClick={handleClose}>
-              <span className="font-mono text-3xl text-white">Ecosystem</span>
-            </Link>
-          )}
+          <Link href="/ecosystem" onClick={handleClose}>
+            <span className="font-mono text-3xl text-white">Ecosystem</span>
+          </Link>
           <a
             href={publicRuntimeConfig.bridgeUrl}
             onClick={handleClose}
@@ -161,15 +158,13 @@ export function Nav({ color }: NavProps) {
             >
               Docs
             </a>
-            {showEcosystemPage && (
-              <Link href="/ecosystem">
-                <span
-                  className={`font-mono text-xl ${color === 'black' ? 'text-black' : 'text-white'}`}
-                >
-                  Ecosystem
-                </span>
-              </Link>
-            )}
+            <Link href="/ecosystem">
+              <span
+                className={`font-mono text-xl ${color === 'black' ? 'text-black' : 'text-white'}`}
+              >
+                Ecosystem
+              </span>
+            </Link>
             <a
               href={publicRuntimeConfig.bridgeUrl}
               className={`font-mono text-xl ${color === 'black' ? 'text-black' : 'text-white'}`}
