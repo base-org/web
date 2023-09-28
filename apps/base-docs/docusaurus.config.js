@@ -1,3 +1,7 @@
+const dotenv = require('dotenv');
+dotenv.config();
+dotenv.config({ path: '.env.local', override: true });
+
 const baseConfig = {
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -11,14 +15,14 @@ const baseConfig = {
         autoCollapseCategories: true,
         hideable: true,
       },
-    }
+    },
   },
-};;
+};
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/oceanicNext');
 
-const APP_TITLE = `Base`;
+const APP_TITLE = 'Base';
 const PRODUCT_NAME = 'Base';
 
 const config = {
@@ -26,6 +30,9 @@ const config = {
   title: APP_TITLE,
   tagline: '',
   url: 'https://docs.base.org',
+  customFields: {
+    amplitudeApiKey: process.env.AMPLITUDE_API_KEY,
+  },
 
   presets: [
     [
@@ -57,6 +64,13 @@ const config = {
     'docusaurus-node-polyfills',
     './src/plugins/docusaurus-plugin-kbar/index.js',
   ],
+  scripts: [
+    {
+      src: 'https://static-assets.coinbase.com/js/cca/v0.0.1.js',
+      async: true,
+    },
+  ],
+  clientModules: [require.resolve('./src/utils/initCCA.js')],
 
   themeConfig: {
     ...baseConfig.themeConfig,
@@ -73,12 +87,12 @@ const config = {
           type: 'doc',
           docId: 'overview',
           position: 'left',
-          label: `Documentation`,
+          label: 'Documentation',
         },
         {
           to: '/base-camp/docs/welcome',
           position: 'left',
-          label: `Base Camp`,
+          label: 'Base Camp',
           items: [
             {
               label: 'Learn',
@@ -94,7 +108,7 @@ const config = {
           type: 'doc',
           docId: 'security',
           position: 'left',
-          label: `Security`,
+          label: 'Security',
         },
         {
           type: 'dropdown',

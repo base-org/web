@@ -21,6 +21,7 @@
     "@mdx-js/react": "^1.6.22",
     "@rainbow-me/rainbowkit": "^1.0.4",
     "docusaurus-node-polyfills": "^1.0.0",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-basic-auth": "^1.2.1",
     "kbar": "^0.1.0-beta.41",
