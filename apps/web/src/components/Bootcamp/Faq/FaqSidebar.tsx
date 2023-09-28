@@ -11,6 +11,31 @@ export function FaqSidebar() {
         <div className="h-[1px] w-full bg-muted opacity-40" />
 
         <QuestionAccordion
+          question="When will I hear back about my application?"
+          answer="You will hear from us within 5-7 business days if you’re accepted into the program. Please note that we’re not able to respond to every individual submission given the volume."
+        />
+
+        <QuestionAccordion
+          question="What is your selection criteria?"
+          answer="Students will be selected based on coding skills, “crypto-proficiency” (experience using crypto), and experience level. We’re looking for mid to senior level Software Engineering individual contributors."
+        />
+
+        <QuestionAccordion
+          question="What resources will I get if I am accepted into the program?"
+          answer="Your onboarding package will include the student handbook, mentor-pairing info, invite to the private Base Bootcamp Discord channel, and a launch day kickoff meeting with your cohort. You’ll also get to work through the Base Camp content with supplemental resources and graded projects reviewed by Coinbase engineers."
+        />
+
+        <QuestionAccordion
+          question="Who is my mentor?"
+          answer="An experienced Smart Contract Developer, either from Coinbase or part of the larger Base community."
+        />
+
+        <QuestionAccordion
+          question="Can I fail the program?"
+          answer="Yes - in order to graduate, you must complete the program on time. However, we will do everything we can to make sure you have all that you need to be successful."
+        />
+
+        <QuestionAccordion
           question="Does it cost anything?"
           answer=" We ask that you deposit 1 ETH with us, which you will receive back upon successfully completing the program. If you quit early, you will not receive your deposit back."
         />
@@ -45,14 +70,8 @@ export function FaqSidebar() {
 
         <QuestionAccordion
           question="What will I be able to do upon graduation?"
-          answer="Deploy smart contracts!"
+          answer="You will learn to deploy smart contracts – the foundation of building any dapp."
         />
-
-        <QuestionAccordion
-          question="By what criteria are you using to accept applicants?"
-          answer="We are looking for committed candidates that are “crypto-proficient”, passionate about Blockchain technology and experienced as Software Engineers. Base Bootcamp is not an intro course and will assume you have several years of professional programming experience."
-        />
-
         <div className="h-[1px] w-full bg-muted opacity-40 mb-40" />
       </div>
     </div>

@@ -8,7 +8,7 @@ export function WhatsIncluded() {
   
         <div className="text-md font-sans text-white">
           <p className="font-bold">Base Camp Curriculum</p>
-          <p>The “Base Camp” curriculum is available to the public on bBase.org, but Base Bootcamp participants will have access to additional supplemental resources and graded projects, reviewed by Coinbase engineers.</p>
+          <p>Participants will work through the <a href="https://docs.base.org/base-camp/docs/welcome/">Base Camp</a> content, which is publicly available. However, as part of the Base Bootcamp program, they will also have access to supplemental resources and graded projects, reviewed by Coinbase engineers.</p>
           <br />
           <p className="font-bold">Mentors</p>
           <p>Each student is paired with a mentor whom you will meet with once a week.</p>
