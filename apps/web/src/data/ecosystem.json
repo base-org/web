@@ -9,6 +9,24 @@
     "imageUrl": "/images/partners/wallet-retail.png"
   },
   {
+    "name": "Superbridge",
+    "url": "https://superbridge.app",
+    "description": "Native token bridging interface for OP Stack chains.",
+    "tags": [
+      "bridge"
+    ],
+    "imageUrl": "/images/partners/superbridge.png"
+  },
+  {
+    "name": "Mellow Protocol",
+    "url": "https://mellow.finance/",
+    "description": "Permissionless system for on-chain active liquidity management on AMMs and building cross-protocol DeFi strategies.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/mellow.png"
+  },
+  {
     "name": "Orbiter Finance",
     "url": "https://www.orbiter.finance/",
     "description": "Orbiter Finance is an ultimate solution that optimises the performance of Ethereum by supporting cross-rollup transactions and synchronising mainnet-rollups interoperabilities.",
@@ -16,6 +34,60 @@
       "bridge"
     ],
     "imageUrl": "/images/partners/orbiterfinance.png"
+  },
+  {
+    "name": "OKX NFT",
+    "url": "https://www.okx.com/web3/marketplace/nft",
+    "description": "OKX NFT Marketplace - Zero-fees, one-stop shop for NFTs across chains and marketplaces.",
+    "tags": [
+      "NFT"
+    ],
+    "imageUrl": "/images/partners/okx.png"
+  },
+  {
+    "name": "OpenName",
+    "url": "https://open.name/",
+    "description": "Building Omnichain Name Service for 1,000,000,000 Users.",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/openname.png"
+  },
+  {
+    "name": "GeckoTerminal",
+    "url": "https://www.geckoterminal.com/",
+    "description": "GeckoTerminal is a DEX tracker and cryptocurrency price charting tool by CoinGecko. Track on-chain trading activities in real time across Ethereum, Polygon, Solana and 100+ networks.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/geckoterminal.png"
+  },
+  {
+    "name": "BaseNS",
+    "url": "https://basens.domains/",
+    "description": "BaseNS, the 1st DID on the Base Mainnet. Secure your distinctive Web3 domain on all blockchains today.",
+    "tags": [
+      "NFT"
+    ],
+    "imageUrl": "/images/partners/basenameservice.png"
+  },
+  {
+    "name": "NFTScan",
+    "url": "https://www.nftscan.com/",
+    "description": "The world's largest NFT data infrastructure, supporting the complete amount of NFT data for 17 blockchain networks. Providing NFT API for developers.",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/nftscan.png"
+  },
+  {
+    "name": "Alien Base",
+    "url": "https://app.alienbase.xyz/",
+    "description": "Alien Base is the fastest growing DEX on Base, with its own dedicated safe(r) meme-token trading section Area 51.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/alienbase.png"
   },
   {
     "name": "BasePaint",
