@@ -6,32 +6,27 @@ const featureItems = [
     title: 'Apply',
     description: (
       <div className="text-md font-sans text-white">
-        <p>We are looking for crypto proficient, senior-level Web2 Engineers who want to acquire the skills necessary to build dApps.</p>
-
-        <br />
-
-        <p>Once you submit your application, please give us 5 to 7 days to respond.
-        </p>
+        <p>Are you a crypto-proficient software engineer interested in learning to build smart contracts? Start out by applying to Base Bootcamp.</p>
       </div>
     ),
   },
   {
     number: '2',
     title: 'Onboard',
-    description:
-      'Upon acceptance, you will be invited to the Base Bootcamp Onboarding Course where you will receive all relevant onboarding materials (student handbook, mentor-pairing info, invite to private Base Bootcamp Discord channel, invite to launch day, etc).',
+    description: 'Upon acceptance, you’ll be invited to the Base Bootcamp Onboarding Course where you will receive all relevant onboarding materials (student handbook, mentor-pairing info, invite to the private Base Bootcamp Discord channel, and invite to the launch day).',
   },
   {
     number: '3',
     title: 'Kickoff',
-    description: 'On day 1 of your cohort we will gather via Google Meet for our initial kick-off. From here, we’ll pair you with your mentor (an experienced Smart Contract Developer) and you’ll start the program.',
+    description: 'Gather virtually for our initial kick-off. We’ll pair you with your mentor (an experienced Smart Contract Developer) and you’ll start the program.',
   },
   {
     number: '4',
     title: 'Build!',
     description: (
       <div className="text-md font-sans text-white">
-        <p>For 8 weeks, you’ll meet with your mentor and work asynchronously through our <a className="underline" target="_blank" href="https://docs.base.org/base-camp/docs/welcome">Base Camp curriculum</a>. During the final 2 weeks of the program you’ll build your final project - a real world dApp, which you’ll demo virtually on Demo Day.</p>
+        <p>Work through <a className="underline" target="_blank" href="https://docs.base.org/base-camp/docs/welcome">Base Camp</a>, meeting regularly with your mentor. You’ll build your final project during the final two weeks - a real-world dapp that you’ll demo virtually on Demo Day.
+        </p>
 
         <br />
 
