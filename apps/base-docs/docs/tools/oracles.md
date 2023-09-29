@@ -37,6 +37,18 @@ To use Chainlink datafeeds, you may need [LINK](https://docs.chain.link/resource
 
 ---
 
+## DIA
+
+[DIA](https://www.diadata.org/) provides 2000+ [price feeds](https://www.diadata.org/app/price/) for Base.
+See [this guide](https://docs.diadata.org/introduction/intro-to-dia-oracles/request-an-oracle) to learn how to use the DIA feeds.
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Goerli (Testnet)
+
+---
+
 ## Pyth
 
 [Pyth](http://pyth.network/) offers 250+ [price feeds](https://pyth.network/price-feeds) for Base.

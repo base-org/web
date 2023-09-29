@@ -7,6 +7,17 @@ slug: /tools/node-providers
 
 ---
 
+## Alchemy
+
+[Alchemy](https://www.alchemy.com/base) is a popular API provider and developer platform. Its robust, free tier offers access to enhanced features like SDKs, [JSON-RPC APIs](https://docs.alchemy.com/reference/base-api-quickstart), and hosted mainnet and testnet nodes for Base.
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Goerli (Testnet)
+
+---
+
 ## Ankr
 
 [Ankr](https://www.ankr.com/rpc/base/) provides private and public RPC endpoints for Base, powered by a globally distributed and decentralized network of nodes. They offer free and [paid plans](https://www.ankr.com/rpc/pricing/) with increased request limits.
@@ -87,6 +98,16 @@ slug: /tools/node-providers
 ## NodeReal
 
 [NodeReal](https://nodereal.io/) is a blockchain infrastructure and services provider that provides instant and easy-access to Base node APIs.
+
+#### Supported Networks
+
+- Base Mainnet
+
+---
+
+## NOWNodes
+
+[NOWNodes](https://nownodes.io/nodes/basechain-base) is a RPC node provider that provides access to full nodes and APIs for 65+ blockchain networks including Base.
 
 #### Supported Networks
 
