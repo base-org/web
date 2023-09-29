@@ -3,12 +3,13 @@
 /* eslint-disable */
 // @ts-nocheck
 const docusaurusConfig = require('@generated/docusaurus.config');
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
 const { customFields } = docusaurusConfig.default;
 
 // Initialize Client Analytics
 const initCCA = () => {
-  if (window.ClientAnalytics) {
+  if (ExecutionEnvironment.canUseDOM && window.ClientAnalytics) {
     const { init, identify, PlatformName } = window.ClientAnalytics;
 
     init({
