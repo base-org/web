@@ -70,7 +70,7 @@ const config = {
       async: true,
     },
   ],
-  clientModules: [require.resolve('./src/utils/initCCA.js')],
+  clientModules: [require.resolve('./src/utils/initCCA.ts')],
 
   themeConfig: {
     ...baseConfig.themeConfig,
