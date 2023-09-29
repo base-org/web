@@ -1,3 +1,7 @@
+// The CCA team said this lite version of the library is temporary and not officially supported.
+// They recommended disabling linting and type-checking for now, since this version is not typed.
+/* eslint-disable */
+// @ts-nocheck
 const docusaurusConfig = require('@generated/docusaurus.config');
 
 const { customFields } = docusaurusConfig.default;

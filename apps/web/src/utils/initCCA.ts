@@ -1,3 +1,7 @@
+// The CCA team said this lite version of the library is temporary and not officially supported.
+// They recommended disabling linting and type-checking for now, since this version is not typed.
+/* eslint-disable */
+// @ts-nocheck
 import getConfig from 'next/config';
 
 const { publicRuntimeConfig } = getConfig();
