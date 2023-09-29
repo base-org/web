@@ -107,7 +107,7 @@ slug: /tools/node-providers
 
 ## NOWNodes
 
-[NOWNodes](https://nodereal.io/) is a RPC node provider that provides access to full nodes and APIs for 65+ blockchain networks including Base.
+[NOWNodes](https://nownodes.io/nodes/basechain-base) is a RPC node provider that provides access to full nodes and APIs for 65+ blockchain networks including Base.
 
 #### Supported Networks
 
