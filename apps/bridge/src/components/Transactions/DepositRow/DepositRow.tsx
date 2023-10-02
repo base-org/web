@@ -26,21 +26,21 @@ export const DepositRow = memo(function WithdrawalRow({ transaction }: DepositRo
   const isMainnet = chainEnv === 'mainnet';
   const date = transaction.blockTimestamp
     ? new Date(Number(transaction.blockTimestamp) * 1000).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    })
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })
     : undefined;
   const dateMonthDayOnly = transaction.blockTimestamp
     ? new Date(Number(transaction.blockTimestamp) * 1000).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-    })
+        month: 'short',
+        day: 'numeric',
+      })
     : undefined;
   const time = transaction.blockTimestamp
     ? new Date(Number(transaction.blockTimestamp) * 1000).toLocaleTimeString('en-US', {
-      timeStyle: 'short',
-    })
+        timeStyle: 'short',
+      })
     : undefined;
   const depositAmount = utils.formatUnits(
     transaction.amount,
@@ -90,21 +90,10 @@ export const DepositRow = memo(function WithdrawalRow({ transaction }: DepositRo
     </button>
   );
 
-  const mintButton = (
-    <a
-      href="https://nft.coinbase.com/mint/bridgetobase"
-      target="_blank"
-      rel="noreferrer noopener"
-      className="bg-white px-4 py-2 font-sans text-sm text-black"
-    >
-      Mint NFT
-    </a>
-  );
-
   const PHASE_TO_STATUS = {
     DEPOSIT_TX_PENDING: pendingButton,
     DEPOSIT_TX_FAILURE: depositPhaseStatusText.DEPOSIT_TX_FAILURE,
-    FUNDS_DEPOSITED: isMainnet ? mintButton : mintButton,
+    FUNDS_DEPOSITED: depositPhaseStatusText.FUNDS_DEPOSITED,
   };
 
   let depositStatus: DepositPhase;
