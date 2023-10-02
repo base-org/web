@@ -40,7 +40,9 @@ export async function fetchIsAllowed(address?: `0x${string}`): Promise<{ result:
   return (await response.json()) as { result: boolean };
 }
 
-export const OFACProvider = memo<OFACProviderProps>(function OFACProvider({ children }) {
+export const OFACProvider = memo<OFACProviderProps>(function OFACProvider({
+  children,
+}: OFACProviderProps) {
   const { address } = useAccount();
 
   const { data: isOFACAllowed, isLoading: isOFACAllowedLoading } = useQuery(

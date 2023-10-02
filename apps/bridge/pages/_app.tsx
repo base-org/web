@@ -110,14 +110,15 @@ function Root({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <style jsx global>{`
-        :root {
-          --font-coinbase-sans: ${coinbaseSans.style.fontFamily};
-          --font-coinbase-mono: ${coinbaseMono.style.fontFamily};
-        }
-      `}
+      {/* eslint-disable-next-line react/no-unknown-property */}
+      <style jsx global>
+        {`
+          :root {
+            --font-coinbase-sans: ${coinbaseSans.style.fontFamily};
+            --font-coinbase-mono: ${coinbaseMono.style.fontFamily};
+          }
+        `}
       </style>
-
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>
           <WagmiConfig client={wagmiClient}>

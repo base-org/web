@@ -42,7 +42,9 @@ async function fetchTosRegion(): Promise<{ tosRegion: TOSRegion }> {
   return (await response.json()) as { tosRegion: TOSRegion };
 }
 
-export const TOSProvider = memo<TOSProviderProps>(function TOSProvider({ children }) {
+export const TOSProvider = memo<TOSProviderProps>(function TOSProvider({
+  children,
+}: TOSProviderProps) {
   const { address } = useAccount();
   const [isTosAccepted, setIsTosAccepted] = useState(false);
   const { data: tosRegion, isLoading: isTosRegionLoading } = useQuery(
