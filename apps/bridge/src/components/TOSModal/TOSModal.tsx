@@ -23,9 +23,9 @@ export function TOSModal({ isOpen, tosRegion }: TOSModalProps) {
             &quot;Accept&quot; button means you accept the{' '}
             <a
               target="_blank"
-              rel="noreferrer noopener"
               className="underline"
               href={`${publicRuntimeConfig.docsURL}/terms-of-service`}
+              rel="noreferrer"
             >
               Base Terms
             </a>{' '}
