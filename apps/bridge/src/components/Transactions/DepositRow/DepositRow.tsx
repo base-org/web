@@ -3,7 +3,6 @@ import { TransactionIcon } from 'apps/bridge/src/components/TransactionIcon/Tran
 import { depositPhaseStatusText, depositPhaseText } from 'apps/bridge/src/constants/phaseText';
 import { BridgeTransaction } from 'apps/bridge/src/types/BridgeTransaction';
 import { usdFormatter } from 'apps/bridge/src/utils/formatter/balance';
-import { useChainEnv } from 'apps/bridge/src/utils/hooks/useChainEnv';
 import { useConversionRate } from 'apps/bridge/src/utils/hooks/useConversionRate';
 import { truncateMiddle } from 'apps/bridge/src/utils/string/truncateMiddle';
 import type { DepositPhase } from 'apps/bridge/src/utils/transactions/phase';
