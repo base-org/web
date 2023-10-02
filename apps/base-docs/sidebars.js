@@ -71,7 +71,7 @@ module.exports = {
           label: 'Toolchains',
           collapsible: true,
           collapsed: true,
-          items: ['tools/foundry', 'tools/hardhat', 'tools/thirdweb-cli', 'tools/truffle'],
+          items: ['tools/foundry', 'tools/hardhat', 'tools/thirdweb-cli'],
         },
         {
           type: 'category',
