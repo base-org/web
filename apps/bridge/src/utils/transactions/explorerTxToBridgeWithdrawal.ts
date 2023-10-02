@@ -52,12 +52,12 @@ export function explorerTxToBridgeWithdrawal(tx: BlockExplorerTransaction): Brid
     type: 'Withdrawal',
     from: tx.from,
     to: tx.to,
-    assetSymbol: token.L2symbol ?? '',
+    assetSymbol: token?.L2symbol ?? 'Unlisted',
     amount: (
       (functionName === 'withdraw' ? decodedWithdrawData[1] : decodedWithdrawData[2]) as BigNumber
     ).toString(),
     blockTimestamp: tx.timeStamp,
     hash: tx.hash as `0x${string}`,
-    priceApiId: token.apiId,
+    priceApiId: token?.apiId,
   };
 }
