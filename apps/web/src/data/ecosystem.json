@@ -18,6 +18,24 @@
     "imageUrl": "/images/partners/superbridge.png"
   },
   {
+    "name": "Alchemy",
+    "url": "https://www.alchemy.com/",
+    "description": "Alchemy is the leading web3 developer platform. Alchemy’s Account Abstraction APIs and SDK make it easy to offer seamless transactions and simple, secure accounts. Build anything on Base with Alchemy!",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/alchemy.png"
+  },
+  {
+    "name": "Fonbnk",
+    "url": "https://fonbnk.com/",
+    "description": "We are the leading global marketplace enabling you to convert your airtime into digital money!",
+    "tags": [
+      "onramp"
+    ],
+    "imageUrl": "/images/partners/fonbnk.png"
+  },
+  {
     "name": "Mellow Protocol",
     "url": "https://mellow.finance/",
     "description": "Permissionless system for on-chain active liquidity management on AMMs and building cross-protocol DeFi strategies.",
