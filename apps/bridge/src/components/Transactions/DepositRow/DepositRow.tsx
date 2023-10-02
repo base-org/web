@@ -22,8 +22,6 @@ type DepositRowProps = {
 };
 
 export const DepositRow = memo(function WithdrawalRow({ transaction }: DepositRowProps) {
-  const chainEnv = useChainEnv();
-  const isMainnet = chainEnv === 'mainnet';
   const date = transaction.blockTimestamp
     ? new Date(Number(transaction.blockTimestamp) * 1000).toLocaleDateString('en-US', {
         year: 'numeric',
