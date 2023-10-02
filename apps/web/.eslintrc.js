@@ -1,5 +1,5 @@
 module.exports = {
-  extends: 'next',
+  extends: ['next', 'plugin:react/recommended', 'plugin:react/jsx-runtime'],
   settings: {
     next: {
       rootDir: __dirname,
