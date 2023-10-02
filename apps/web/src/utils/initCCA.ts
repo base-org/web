@@ -12,11 +12,11 @@ const initCCA = (router) => {
     const { init, identify, PlatformName, initNextJsTrackPageview } = window.ClientAnalytics;
 
     init({
-      isProd: process.env.NODE_ENV === 'production',
+      isProd: publicRuntimeConfig.nodeEnv === 'production',
       amplitudeApiKey: publicRuntimeConfig.amplitudeApiKey,
       platform: PlatformName.web,
       projectName: 'base_web',
-      showDebugLogging: process.env.NODE_ENV !== 'production',
+      showDebugLogging: publicRuntimeConfig.nodeEnv !== 'production',
       version: '1.0.0',
       apiEndpoint: 'https://cca-lite.coinbase.com',
     });

@@ -112,6 +112,7 @@ const securityHeaders = [
 
 module.exports = extendBaseConfig({
   publicRuntimeConfig: {
+    nodeEnv: process.env.NODE_ENV,
     docsUrl: process.env.DOCS_URL ?? 'https://docs.base.org',
     bridgeUrl: process.env.BRIDGE_URL ?? 'https://bridge.base.org',
     greenhouseApiUrl: process.env.GREENHOUSE_HTTPS ?? 'https://boards-api.greenhouse.io/v1',
