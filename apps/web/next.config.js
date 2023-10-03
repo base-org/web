@@ -54,6 +54,8 @@ function extendBaseConfig(customConfig = {}, plugins = []) {
 const isLocalDevelopment = process.env.NODE_ENV === 'development';
 const baseXYZDomains = 'https://base.mirror.xyz';
 const greenhouseDomains = 'https://boards.greenhouse.io';
+const ccaDomain = 'https://static-assets.coinbase.com/js/cca/v0.0.1.js';
+const analyticsDomains = 'https://analytics-service-dev.cbhq.net';
 
 const contentSecurityPolicy = {
   'default-src': [
@@ -62,6 +64,8 @@ const contentSecurityPolicy = {
     isLocalDevelopment ? "'unsafe-eval'" : '',
     baseXYZDomains,
     greenhouseDomains,
+    ccaDomain,
+    analyticsDomains,
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
@@ -108,6 +112,7 @@ const securityHeaders = [
 
 module.exports = extendBaseConfig({
   publicRuntimeConfig: {
+    nodeEnv: process.env.NODE_ENV,
     docsUrl: process.env.DOCS_URL ?? 'https://docs.base.org',
     bridgeUrl: process.env.BRIDGE_URL ?? 'https://bridge.base.org',
     greenhouseApiUrl: process.env.GREENHOUSE_HTTPS ?? 'https://boards-api.greenhouse.io/v1',
