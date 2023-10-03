@@ -86,7 +86,7 @@ export function DepositContainer() {
 
   const chainEnv = useChainEnv();
   const isMainnet = chainEnv === 'mainnet';
-  const includeTosVersionByte = isMainnet;
+  const includeTosVersionByte = isMainnet && depositTo === '';
   const isUserPermittedToBridge = useIsPermittedToBridge();
   const isPermittedToBridgeTo = useIsPermittedToBridgeTo(depositTo as `0x${string}`);
   const isPermittedToBridge = isSmartContractWallet
