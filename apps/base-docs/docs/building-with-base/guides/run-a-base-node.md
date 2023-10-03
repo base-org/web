@@ -27,6 +27,13 @@ If you're looking to harden your dapp and avoid rate-limiting for your users, pl
 
 :::
 
+### Hardware requirements
+
+We recommend you have this configuration to run a node:
+
+- at least 16 GB RAM
+- an SSD drive with at least 1 TB free
+
 ### Docker
 
 This guide assumes you are familiar with [Docker] and have it running on your machine.
