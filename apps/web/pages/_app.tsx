@@ -1,5 +1,9 @@
 import './global.css';
 
+import Script from 'next/script';
+import { useRouter } from 'next/router';
+import { useCallback } from 'react';
+import initCCA from '../src/utils/initCCA';
 import { MotionConfig } from 'framer-motion';
 import App, { AppContext, AppProps } from 'next/app';
 
@@ -13,8 +17,14 @@ export async function getInitialProps(context: AppContext) {
 }
 
 export default function StaticApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
   return (
     <MotionConfig reducedMotion="user">
+      <Script
+        src="https://static-assets.coinbase.com/js/cca/v0.0.1.js"
+        onLoad={useCallback(() => initCCA(router), [router])}
+      />
       <Layout>
         <Component {...pageProps} />
       </Layout>

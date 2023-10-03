@@ -16,10 +16,10 @@ module.exports = {
     },
   ],
   parserOptions: {
-    parser: "@typescript-eslint/parser",
-    project: "./tsconfig.json",
+    parser: '@typescript-eslint/parser',
+    project: './tsconfig.json',
   },
-  plugins: ['react-perf', 'relay', '@typescript-eslint'],
+  plugins: ['react-perf', 'relay', '@typescript-eslint', 'import'],
   extends: [
     'airbnb-typescript/base',
     'airbnb/rules/react',
@@ -136,6 +136,5 @@ module.exports = {
     // Hard to migrate
     // Errors for all try/catch blocks and any types from third-parties
     '@typescript-eslint/no-unsafe-member-access': 'off',
-
-  }
-}
+  },
+};
