@@ -34,6 +34,12 @@ We recommend you have this configuration to run a node:
 - at least 16 GB RAM
 - an SSD drive with at least 1 TB free
 
+:::info
+
+If utilizing Amazon Elastic Block Store (EBS), ensure timing buffered disk reads are fast enough in order to avoid latency issues alongside the rate of new blocks added to Base during the initial synchronization process.
+
+:::
+
 ### Docker
 
 This guide assumes you are familiar with [Docker] and have it running on your machine.
