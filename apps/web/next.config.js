@@ -55,6 +55,7 @@ const isLocalDevelopment = process.env.NODE_ENV === 'development';
 const baseXYZDomains = 'https://base.mirror.xyz';
 const greenhouseDomains = 'https://boards.greenhouse.io';
 const ccaDomain = 'https://static-assets.coinbase.com/js/cca/v0.0.1.js';
+const ccaLiteDomains = 'https://cca-lite.coinbase.com';
 const analyticsDomains = 'https://analytics-service-dev.cbhq.net';
 
 const contentSecurityPolicy = {
@@ -65,6 +66,7 @@ const contentSecurityPolicy = {
     baseXYZDomains,
     greenhouseDomains,
     ccaDomain,
+    ccaLiteDomains,
     analyticsDomains,
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
