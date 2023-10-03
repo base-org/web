@@ -6,6 +6,7 @@ const docusaurusConfig = require('@generated/docusaurus.config');
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
 const { customFields } = docusaurusConfig.default;
+const isDevelopment = customFields.nodeEnv === 'development';
 
 // Initialize Client Analytics
 const initCCA = () => {
@@ -13,27 +14,18 @@ const initCCA = () => {
     const { init, identify, PlatformName } = window.ClientAnalytics;
 
     init({
-      isProd: process.env.NODE_ENV === 'production',
-      amplitudeApiKey: customFields.amplitudeApiKey,
+      isProd: !isDevelopment,
+      amplitudeApiKey: isDevelopment
+        ? 'ca92bbcb548f7ec4b8ebe9194b8eda81'
+        : '2b38c7ac93c0dccc83ebf9acc5107413',
       platform: PlatformName.web,
       projectName: 'base_docs',
-      showDebugLogging: process.env.NODE_ENV !== 'production',
+      showDebugLogging: isDevelopment,
       version: '1.0.0',
       apiEndpoint: 'https://cca-lite.coinbase.com',
     });
 
-    const STORED_DEVICE_ID = 'base_docs_device_id';
-
-    function getDeviceId() {
-      let id = localStorage.getItem(STORED_DEVICE_ID);
-      if (!id) {
-        id = crypto.randomUUID();
-        localStorage.setItem(STORED_DEVICE_ID, id);
-      }
-      return id;
-    }
-
-    identify({ deviceId: getDeviceId() });
+    identify({ deviceId: 'base_docs_device_id' });
   }
 };
 

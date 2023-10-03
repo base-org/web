@@ -5,6 +5,7 @@ declare module 'next/config' {
       alchemyApiUrl: string;
     };
     publicRuntimeConfig: {
+      nodeEnv: string;
       docsUrl: string;
       bridgeUrl: string;
       greenhouseApiUrl: string;

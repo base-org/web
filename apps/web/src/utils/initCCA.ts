@@ -5,6 +5,7 @@
 import getConfig from 'next/config';
 
 const { publicRuntimeConfig } = getConfig();
+const isDevelopment = publicRuntimeConfig.nodeEnv === 'development';
 
 // CCA library loads in _app.tsx
 const initCCA = (router) => {
@@ -12,27 +13,18 @@ const initCCA = (router) => {
     const { init, identify, PlatformName, initNextJsTrackPageview } = window.ClientAnalytics;
 
     init({
-      isProd: publicRuntimeConfig.nodeEnv === 'production',
-      amplitudeApiKey: publicRuntimeConfig.amplitudeApiKey,
+      isProd: !isDevelopment,
+      amplitudeApiKey: isDevelopment
+        ? 'ca92bbcb548f7ec4b8ebe9194b8eda81'
+        : '2b38c7ac93c0dccc83ebf9acc5107413',
       platform: PlatformName.web,
       projectName: 'base_web',
-      showDebugLogging: publicRuntimeConfig.nodeEnv !== 'production',
+      showDebugLogging: isDevelopment,
       version: '1.0.0',
       apiEndpoint: 'https://cca-lite.coinbase.com',
     });
 
-    const STORED_DEVICE_ID = 'base_web_device_id';
-
-    function getDeviceId() {
-      let id = localStorage.getItem(STORED_DEVICE_ID);
-      if (!id) {
-        id = crypto.randomUUID();
-        localStorage.setItem(STORED_DEVICE_ID, id);
-      }
-      return id;
-    }
-
-    identify({ deviceId: getDeviceId() });
+    identify({ deviceId: 'base_web_device_id' });
 
     initNextJsTrackPageview({
       nextJsRouter: router,

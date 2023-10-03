@@ -31,7 +31,7 @@ const config = {
   tagline: '',
   url: 'https://docs.base.org',
   customFields: {
-    amplitudeApiKey: process.env.AMPLITUDE_API_KEY,
+    nodeEnv: process.env.NODE_ENV,
   },
 
   presets: [
