@@ -48,7 +48,7 @@ export function WithdrawContainer() {
 
   const chainEnv = useChainEnv();
   const isMainnet = chainEnv === 'mainnet';
-  const includeTosVersionByte = isMainnet;
+  const includeTosVersionByte = isMainnet && withdrawTo === '';
   const isUserPermittedToBridge = useIsPermittedToBridge();
   const isPermittedToBridgeTo = useIsPermittedToBridgeTo(withdrawTo as `0x${string}`);
   const isPermittedToBridge = isSmartContractWallet
