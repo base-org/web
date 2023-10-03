@@ -6,12 +6,14 @@ const { publicRuntimeConfig } = getConfig();
 
 type UseApproveContractProps = {
   contractAddress?: Address;
+  spender: Address;
   approveAmount: string;
   decimals: number;
 };
 
 export function useApproveContract({
   contractAddress,
+  spender,
   approveAmount,
   decimals,
 }: UseApproveContractProps) {
@@ -26,7 +28,7 @@ export function useApproveContract({
     functionName: 'approve',
     chainId: parseInt(publicRuntimeConfig.l1ChainID),
     // TODO: Add Allowance selection components
-    args: [publicRuntimeConfig.l1BridgeProxyAddress, approveAmountBN],
+    args: [spender, approveAmountBN],
     cacheTime: 0,
   });
   return depositConfig;

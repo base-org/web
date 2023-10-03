@@ -12,6 +12,11 @@ export type Asset = {
   L1contract?: Address;
   L2contract?: Address;
   decimals: number;
+  /*
+    OP --> Optimism bridge
+    CCTP --> Circle Cross-Chain Transfer Protocol (eg USDC)
+  */
+  protocol: 'OP' | 'CCTP';
 };
 
 export type CustomChain = Chain & {

@@ -8,7 +8,6 @@ import { FaqSidebar } from 'apps/bridge/src/components/Faq/FaqSidebar';
 import { BaseButton } from 'apps/bridge/src/components/SwitchNetworkButton/SwitchNetworkButton';
 import { TransactionSummary } from 'apps/bridge/src/components/TransactionSummary/TransactionSummary';
 import { Asset } from 'apps/bridge/src/types/Asset';
-import { getAssetListForChainEnv } from 'apps/bridge/src/utils/assets/getAssetListForChainEnv';
 import { useApproveContract } from 'apps/bridge/src/utils/hooks/useApproveContract';
 import { useChainEnv } from 'apps/bridge/src/utils/hooks/useChainEnv';
 import { useDisclosure } from 'apps/bridge/src/utils/hooks/useDisclosure';
@@ -26,10 +25,13 @@ import { useAccount, useBalance, useContractWrite } from 'wagmi';
 import { useIsPermittedToBridgeTo } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridgeTo';
 import { getL1NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL1NetworkForChainEnv';
 import { getL2NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL2NetworkForChainEnv';
-
-const assetList = getAssetListForChainEnv();
+import { getDepositAssets } from 'apps/bridge/src/utils/assets/getDepositAssets';
+import { usePrepareInitiateCCTPBridge } from 'apps/bridge/src/utils/hooks/usePrepareInitiateCCTPBridge';
 
 const { publicRuntimeConfig } = getConfig();
+
+const activeAssets = getDepositAssets();
+
 const chainId = parseInt(publicRuntimeConfig.l1ChainID);
 
 export function DepositContainer() {
@@ -39,10 +41,8 @@ export function DepositContainer() {
   const [depositTo, setDepositTo] = useState('');
   const [isApprovalTx, setIsApprovalTx] = useState(false);
   const isWalletConnected = useIsWalletConnected();
-  const [selectedAsset, setSelectedAsset] = useState<Asset>(assetList[0]);
-  const activeAssets = assetList.filter((asset) =>
-    publicRuntimeConfig.assets.split(',').includes(asset.L1symbol.toLowerCase()),
-  );
+  const [selectedAsset, setSelectedAsset] = useState<Asset>(activeAssets[0]);
+
   const { address } = useAccount();
   const codeAtAddress = useGetCode(chainId, address);
   const isSmartContractWallet = !!codeAtAddress && codeAtAddress !== '0x';
@@ -56,6 +56,10 @@ export function DepositContainer() {
   const { data: readERC20Approval, error: readERC20ApprovalError } = useIsContractApproved({
     contactAddress: selectedAsset.L1contract,
     address,
+    spender:
+      selectedAsset.protocol === 'CCTP'
+        ? publicRuntimeConfig.l1CCTPTokenMessengerAddress
+        : publicRuntimeConfig.l1BridgeProxyAddress,
   });
 
   const readApprovalResult = useMemo(() => {
@@ -80,10 +84,13 @@ export function DepositContainer() {
   // approve erc20
   const approveConfig = useApproveContract({
     contractAddress: selectedAsset.L1contract,
+    spender:
+      selectedAsset.protocol === 'CCTP'
+        ? publicRuntimeConfig.l1CCTPTokenMessengerAddress
+        : publicRuntimeConfig.l1BridgeProxyAddress,
     approveAmount: depositAmount,
     decimals: selectedAsset.decimals,
   });
-
   const { writeAsync: approveWrite } = useContractWrite(approveConfig);
 
   const chainEnv = useChainEnv();
@@ -102,7 +109,6 @@ export function DepositContainer() {
     isPermittedToBridge,
     includeTosVersionByte,
   });
-
   const { writeAsync: depositETHWrite } = useContractWrite(depositETHConfig);
 
   // deposit erc20
@@ -121,9 +127,19 @@ export function DepositContainer() {
     isPermittedToBridge,
     includeTosVersionByte,
   });
-
   const { writeAsync: depositERC20Write } = useContractWrite(depositERC20Config);
   const { writeAsync: depositERC20ToWrite } = useContractWrite(depositERC20ToConfig);
+
+  // deposit using CCTP (eg USDC)
+  const depositCCTPAssetConfig = usePrepareInitiateCCTPBridge({
+    mintRecipient: isSmartContractWallet ? (depositTo as `0x${string}`) : address,
+    asset: selectedAsset,
+    depositAmount,
+    destinationDomain: parseInt(publicRuntimeConfig.l2CCTPDomain),
+    isPermittedToBridge,
+    includeTosVersionByte,
+  });
+  const { writeAsync: depositCCTPAssetWrite } = useContractWrite(depositCCTPAssetConfig);
 
   const initiateApproval = useCallback(() => {
     void (async () => {
@@ -140,9 +156,14 @@ export function DepositContainer() {
 
         // next, call the transfer function
         setIsApprovalTx(false);
-        const depositResult = await (isSmartContractWallet
-          ? depositERC20ToWrite?.()
-          : depositERC20Write?.());
+
+        let depositMethod;
+        if (selectedAsset.protocol === 'CCTP') {
+          depositMethod = depositCCTPAssetWrite;
+        } else {
+          depositMethod = isSmartContractWallet ? depositERC20ToWrite : depositERC20Write;
+        }
+        const depositResult = await depositMethod?.();
         if (depositResult?.hash) {
           const depositTxHash = depositResult.hash;
           setL1DepositTxHash(depositTxHash);
@@ -154,11 +175,13 @@ export function DepositContainer() {
     })();
   }, [
     approveWrite,
+    depositCCTPAssetWrite,
     depositERC20ToWrite,
     depositERC20Write,
     isSmartContractWallet,
     onCloseDepositModal,
     onOpenDepositModal,
+    selectedAsset.protocol,
   ]);
 
   const initiateDeposit = useCallback(() => {
@@ -169,7 +192,11 @@ export function DepositContainer() {
         if (isPermittedToBridge) {
           let depositMethod;
           if (selectedAsset.L1contract) {
-            depositMethod = isSmartContractWallet ? depositERC20ToWrite : depositERC20Write;
+            if (selectedAsset.protocol === 'CCTP') {
+              depositMethod = depositCCTPAssetWrite;
+            } else {
+              depositMethod = isSmartContractWallet ? depositERC20ToWrite : depositERC20Write;
+            }
           } else {
             depositMethod = depositETHWrite;
           }
@@ -190,6 +217,8 @@ export function DepositContainer() {
     onOpenDepositModal,
     isPermittedToBridge,
     selectedAsset.L1contract,
+    selectedAsset.protocol,
+    depositCCTPAssetWrite,
     isSmartContractWallet,
     depositERC20ToWrite,
     depositERC20Write,
