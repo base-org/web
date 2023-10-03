@@ -10,10 +10,9 @@ const { publicRuntimeConfig } = getConfig();
 */
 export function getDepositAssets() {
   const assetList = getAssetListForChainEnv();
-  return assetList
-    .filter((asset) => publicRuntimeConfig.assets.split(',').includes(asset.L1symbol.toLowerCase()))
-    .filter(
-      (asset) =>
-        asset.L1symbol !== 'USDC' || (asset.L1symbol === 'USDC' && asset.protocol === 'CCTP'),
-    );
+  return assetList.filter(
+    (asset) =>
+      (asset.L1symbol !== 'USDC' || (asset.L1symbol === 'USDC' && asset.protocol === 'CCTP')) &&
+      publicRuntimeConfig.assets.split(',').includes(asset.L1symbol.toLowerCase()),
+  );
 }
