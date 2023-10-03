@@ -6,7 +6,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/wallet-retail.png"
+    "imageUrl": "/images/partners/wallet-retail.webp"
   },
   {
     "name": "Superbridge",
@@ -15,7 +15,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/superbridge.png"
+    "imageUrl": "/images/partners/superbridge.webp"
   },
   {
     "name": "Alchemy",
@@ -24,7 +24,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/alchemy.png"
+    "imageUrl": "/images/partners/alchemy.webp"
   },
   {
     "name": "Fonbnk",
@@ -33,7 +33,7 @@
     "tags": [
       "onramp"
     ],
-    "imageUrl": "/images/partners/fonbnk.png"
+    "imageUrl": "/images/partners/fonbnk.webp"
   },
   {
     "name": "Mellow Protocol",
@@ -42,7 +42,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/mellow.png"
+    "imageUrl": "/images/partners/mellow.webp"
   },
   {
     "name": "Orbiter Finance",
@@ -51,7 +51,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/orbiterfinance.png"
+    "imageUrl": "/images/partners/orbiterfinance.webp"
   },
   {
     "name": "OKX NFT",
@@ -60,7 +60,7 @@
     "tags": [
       "NFT"
     ],
-    "imageUrl": "/images/partners/okx.png"
+    "imageUrl": "/images/partners/okx.webp"
   },
   {
     "name": "OpenName",
@@ -69,7 +69,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/openname.png"
+    "imageUrl": "/images/partners/openname.webp"
   },
   {
     "name": "GeckoTerminal",
@@ -78,7 +78,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/geckoterminal.png"
+    "imageUrl": "/images/partners/geckoterminal.webp"
   },
   {
     "name": "BaseNS",
@@ -87,7 +87,7 @@
     "tags": [
       "NFT"
     ],
-    "imageUrl": "/images/partners/basenameservice.png"
+    "imageUrl": "/images/partners/basenameservice.webp"
   },
   {
     "name": "NFTScan",
@@ -96,7 +96,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/nftscan.png"
+    "imageUrl": "/images/partners/nftscan.webp"
   },
   {
     "name": "Alien Base",
@@ -105,7 +105,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/alienbase.png"
+    "imageUrl": "/images/partners/alienbase.webp"
   },
   {
     "name": "BasePaint",
@@ -114,7 +114,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/basepaint.png"
+    "imageUrl": "/images/partners/basepaint.webp"
   },
   {
     "name": "Layer3",
@@ -123,7 +123,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/layer3.png"
+    "imageUrl": "/images/partners/layer3.webp"
   },
   {
     "name": "Thales",
@@ -132,7 +132,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/thales.png"
+    "imageUrl": "/images/partners/thales.webp"
   },
   {
     "name": "Arkham",
@@ -141,7 +141,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/arkham.png"
+    "imageUrl": "/images/partners/arkham.webp"
   },
   {
     "name": "KyberSwap",
@@ -150,7 +150,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/kyber.png"
+    "imageUrl": "/images/partners/kyber.webp"
   },
   {
     "name": "Transit Swap",
@@ -159,7 +159,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/transitswap.png"
+    "imageUrl": "/images/partners/transitswap.webp"
   },
   {
     "name": "Aerodrome Finance",
@@ -168,7 +168,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/aerodrome.png"
+    "imageUrl": "/images/partners/aerodrome.webp"
   },
   {
     "name": "Unibot",
@@ -177,7 +177,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/unibot.png"
+    "imageUrl": "/images/partners/unibot.webp"
   },
   {
     "name": "API3 DAO",
@@ -186,7 +186,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/API3.png"
+    "imageUrl": "/images/partners/API3.webp"
   },
   {
     "name": "NodeReal",
@@ -195,7 +195,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/nodereal.png"
+    "imageUrl": "/images/partners/nodereal.webp"
   },
   {
     "name": "zkLink",
@@ -204,7 +204,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/zklink.png"
+    "imageUrl": "/images/partners/zklink.webp"
   },
   {
     "name": "Element Market",
@@ -213,7 +213,7 @@
     "tags": [
       "NFT"
     ],
-    "imageUrl": "/images/partners/elementmarket.png"
+    "imageUrl": "/images/partners/elementmarket.webp"
   },
   {
     "name": "Ambire Wallet",
@@ -222,7 +222,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/ambire.png"
+    "imageUrl": "/images/partners/ambire.webp"
   },
   {
     "name": "Ledger",
@@ -231,7 +231,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/ledger.png"
+    "imageUrl": "/images/partners/ledger.webp"
   },
   {
     "name": "TokenPocket",
@@ -240,7 +240,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/tokenpocket.png"
+    "imageUrl": "/images/partners/tokenpocket.webp"
   },
   {
     "name": "Angle Protocol",
@@ -249,7 +249,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/angle.png"
+    "imageUrl": "/images/partners/angle.webp"
   },
   {
     "name": "DexGuru Block Explorer",
@@ -258,7 +258,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/dexguru.png"
+    "imageUrl": "/images/partners/dexguru.webp"
   },
   {
     "name": "RSS3",
@@ -267,7 +267,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/rss3.jpg"
+    "imageUrl": "/images/partners/rss3.webp"
   },
   {
     "name": "Zerion",
@@ -276,7 +276,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/zerion.png"
+    "imageUrl": "/images/partners/zerion.webp"
   },
   {
     "name": "OpenZeppelin",
@@ -285,7 +285,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/oz.png"
+    "imageUrl": "/images/partners/oz.webp"
   },
   {
     "name": "PancakeSwap",
@@ -294,7 +294,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/pancake.png"
+    "imageUrl": "/images/partners/pancake.webp"
   },
   {
     "name": "RAI Finance",
@@ -303,7 +303,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/rai.png"
+    "imageUrl": "/images/partners/rai.webp"
   },
   {
     "name": "Jumper Exchange",
@@ -312,7 +312,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/jumper_exchange.png"
+    "imageUrl": "/images/partners/jumper_exchange.webp"
   },
   {
     "name": "Ramp Network",
@@ -321,7 +321,7 @@
     "tags": [
       "onramp"
     ],
-    "imageUrl": "/images/partners/ramp.png"
+    "imageUrl": "/images/partners/ramp.webp"
   },
   {
     "name": "Owlto Finance",
@@ -330,7 +330,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/owlto.png"
+    "imageUrl": "/images/partners/owlto.webp"
   },
   {
     "name": "ONTO Wallet",
@@ -339,7 +339,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/ontowallet.png"
+    "imageUrl": "/images/partners/ontowallet.webp"
   },
   {
     "name": "DRPC",
@@ -348,7 +348,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/drpc.png"
+    "imageUrl": "/images/partners/drpc.webp"
   },
   {
     "name": "Particle Network",
@@ -357,7 +357,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/particle.png"
+    "imageUrl": "/images/partners/particle.webp"
   },
   {
     "name": "Masa",
@@ -366,7 +366,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/masa.png"
+    "imageUrl": "/images/partners/masa.webp"
   },
   {
     "name": "Pocket Universe",
@@ -375,7 +375,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/pocket.png"
+    "imageUrl": "/images/partners/pocket.webp"
   },
   {
     "name": "Openfort",
@@ -384,7 +384,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/openfort.jpeg"
+    "imageUrl": "/images/partners/openfort.webp"
   },
   {
     "name": "JokeRace",
@@ -393,7 +393,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/jokerace.png"
+    "imageUrl": "/images/partners/jokerace.webp"
   },
   {
     "name": "STP",
@@ -402,7 +402,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/STP.png"
+    "imageUrl": "/images/partners/STP.webp"
   },
   {
     "name": "Coinbase Commerce",
@@ -411,7 +411,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/commerce.png"
+    "imageUrl": "/images/partners/commerce.webp"
   },
   {
     "name": "Coinbase Pay",
@@ -420,7 +420,7 @@
     "tags": [
       "onramp"
     ],
-    "imageUrl": "/images/partners/pay.png"
+    "imageUrl": "/images/partners/pay.webp"
   },
   {
     "name": "Coinbase Prime",
@@ -429,7 +429,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/prime.png"
+    "imageUrl": "/images/partners/prime.webp"
   },
   {
     "name": "Synthswap",
@@ -438,7 +438,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/synthswap.png"
+    "imageUrl": "/images/partners/synthswap.webp"
   },
   {
     "name": "FXDX",
@@ -447,7 +447,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/fxdx.png"
+    "imageUrl": "/images/partners/fxdx.webp"
   },
   {
     "name": "Tarot",
@@ -456,7 +456,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/tarot.png"
+    "imageUrl": "/images/partners/tarot.webp"
   },
   {
     "name": "DefiEdge",
@@ -465,7 +465,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/defiedge.png"
+    "imageUrl": "/images/partners/defiedge.webp"
   },
   {
     "name": "HaloFi",
@@ -474,7 +474,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/halofi.png"
+    "imageUrl": "/images/partners/halofi.webp"
   },
   {
     "name": "Slingshot Finance",
@@ -483,7 +483,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/slingshot.png"
+    "imageUrl": "/images/partners/slingshot.webp"
   },
   {
     "name": "Theaggregator",
@@ -492,7 +492,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/theaggregator.png"
+    "imageUrl": "/images/partners/theaggregator.webp"
   },
   {
     "name": "Dackieswap",
@@ -501,7 +501,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/dackie.png"
+    "imageUrl": "/images/partners/dackie.webp"
   },
   {
     "name": "Meridian Finance",
@@ -510,7 +510,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/meridian.png"
+    "imageUrl": "/images/partners/meridian.webp"
   },
   {
     "name": "Plasma Finance",
@@ -519,7 +519,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/plasma.png"
+    "imageUrl": "/images/partners/plasma.webp"
   },
   {
     "name": "Revoke.cash",
@@ -528,7 +528,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/revoke.png"
+    "imageUrl": "/images/partners/revoke.webp"
   },
   {
     "name": "Pulsar Finance",
@@ -537,7 +537,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/pulsar.png"
+    "imageUrl": "/images/partners/pulsar.webp"
   },
   {
     "name": "Synapse Protocol",
@@ -546,7 +546,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/synpase.png"
+    "imageUrl": "/images/partners/synpase.webp"
   },
   {
     "name": "Enkrypt",
@@ -555,7 +555,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/enkrypt.png"
+    "imageUrl": "/images/partners/enkrypt.webp"
   },
   {
     "name": "Obvious",
@@ -564,7 +564,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/obvious.png"
+    "imageUrl": "/images/partners/obvious.webp"
   },
   {
     "name": "Krystal Wallet",
@@ -573,7 +573,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/krystal.png"
+    "imageUrl": "/images/partners/krystal.webp"
   },
   {
     "name": "BaseSwap",
@@ -582,7 +582,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/baseswap.png"
+    "imageUrl": "/images/partners/baseswap.webp"
   },
   {
     "name": "Coinbase WaaS",
@@ -591,7 +591,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/waas.png"
+    "imageUrl": "/images/partners/waas.webp"
   },
   {
     "name": "Coinbase Wallet",
@@ -600,7 +600,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/wallet.png"
+    "imageUrl": "/images/partners/wallet.webp"
   },
   {
     "name": "1rpc",
@@ -609,7 +609,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/1rpc.png"
+    "imageUrl": "/images/partners/1rpc.webp"
   },
   {
     "name": "Aave",
@@ -618,7 +618,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/aave.png"
+    "imageUrl": "/images/partners/aave.webp"
   },
   {
     "name": "Across Protocol",
@@ -627,7 +627,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/across_protocol.png"
+    "imageUrl": "/images/partners/across_protocol.webp"
   },
   {
     "name": "Anotherblock",
@@ -636,7 +636,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/anotherblock.png"
+    "imageUrl": "/images/partners/anotherblock.webp"
   },
   {
     "name": "Aragon Project",
@@ -645,7 +645,7 @@
     "tags": [
       "dao"
     ],
-    "imageUrl": "/images/partners/aragon_project.png"
+    "imageUrl": "/images/partners/aragon_project.webp"
   },
   {
     "name": "Axelar",
@@ -654,7 +654,7 @@
     "tags": [
       "x-chain"
     ],
-    "imageUrl": "/images/partners/axelar.png"
+    "imageUrl": "/images/partners/axelar.webp"
   },
   {
     "name": "Beefy",
@@ -663,7 +663,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/beefy.png"
+    "imageUrl": "/images/partners/beefy.webp"
   },
   {
     "name": "Blockdaemon",
@@ -672,7 +672,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/blockdaemon.png"
+    "imageUrl": "/images/partners/blockdaemon.webp"
   },
   {
     "name": "Blocknative",
@@ -681,7 +681,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/blocknative.png"
+    "imageUrl": "/images/partners/blocknative.webp"
   },
   {
     "name": "Bonfire",
@@ -690,7 +690,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/bonfire.png"
+    "imageUrl": "/images/partners/bonfire.webp"
   },
   {
     "name": "Celer Network",
@@ -699,7 +699,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/celer_network.png"
+    "imageUrl": "/images/partners/celer_network.webp"
   },
   {
     "name": "Cielo",
@@ -708,7 +708,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/cielo.png"
+    "imageUrl": "/images/partners/cielo.webp"
   },
   {
     "name": "Compound",
@@ -717,7 +717,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/compound.png"
+    "imageUrl": "/images/partners/compound.webp"
   },
   {
     "name": "Covalent",
@@ -726,7 +726,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/covalent.png"
+    "imageUrl": "/images/partners/covalent.webp"
   },
   {
     "name": "Crossmint",
@@ -735,7 +735,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/crossmint.png"
+    "imageUrl": "/images/partners/crossmint.webp"
   },
   {
     "name": "CyberConnect",
@@ -744,7 +744,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/cyberconnect.png"
+    "imageUrl": "/images/partners/cyberconnect.webp"
   },
   {
     "name": "Debank",
@@ -753,7 +753,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/debank.png"
+    "imageUrl": "/images/partners/debank.webp"
   },
   {
     "name": "deBridge",
@@ -762,7 +762,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/debridge.png"
+    "imageUrl": "/images/partners/debridge.webp"
   },
   {
     "name": "Decent",
@@ -771,7 +771,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/decent.png"
+    "imageUrl": "/images/partners/decent.webp"
   },
   {
     "name": "Galxe",
@@ -780,7 +780,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/galxe.png"
+    "imageUrl": "/images/partners/galxe.webp"
   },
   {
     "name": "Gauntlet",
@@ -790,7 +790,7 @@
       "security",
       "infra"
     ],
-    "imageUrl": "/images/partners/gauntlet.png"
+    "imageUrl": "/images/partners/gauntlet.webp"
   },
   {
     "name": "Helika",
@@ -799,7 +799,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/helika.png"
+    "imageUrl": "/images/partners/helika.webp"
   },
   {
     "name": "Mirror",
@@ -808,7 +808,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/mirror.png"
+    "imageUrl": "/images/partners/mirror.webp"
   },
   {
     "name": "Highlight",
@@ -817,7 +817,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/highlight.png"
+    "imageUrl": "/images/partners/highlight.webp"
   },
   {
     "name": "Hop Protocol",
@@ -826,7 +826,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/hop_protocol.png"
+    "imageUrl": "/images/partners/hop_protocol.webp"
   },
   {
     "name": "Iskra",
@@ -835,7 +835,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/iskra.png"
+    "imageUrl": "/images/partners/iskra.webp"
   },
   {
     "name": "Mean Finance",
@@ -844,7 +844,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/mean_finance.png"
+    "imageUrl": "/images/partners/mean_finance.webp"
   },
   {
     "name": "Moonwell",
@@ -853,7 +853,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/moonwell.png"
+    "imageUrl": "/images/partners/moonwell.webp"
   },
   {
     "name": "Moso",
@@ -862,7 +862,7 @@
     "tags": [
       "onramp"
     ],
-    "imageUrl": "/images/partners/moso.png"
+    "imageUrl": "/images/partners/moso.webp"
   },
   {
     "name": "Nansen",
@@ -871,7 +871,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/nansen.png"
+    "imageUrl": "/images/partners/nansen.webp"
   },
   {
     "name": "Neptune Mutual",
@@ -880,7 +880,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/neptune_mutual.png"
+    "imageUrl": "/images/partners/neptune_mutual.webp"
   },
   {
     "name": "Odos",
@@ -889,7 +889,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/odos.png"
+    "imageUrl": "/images/partners/odos.webp"
   },
   {
     "name": "Omni Network",
@@ -898,7 +898,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/omni_network.png"
+    "imageUrl": "/images/partners/omni_network.webp"
   },
   {
     "name": "OpenCover",
@@ -907,7 +907,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/opencover.png"
+    "imageUrl": "/images/partners/opencover.webp"
   },
   {
     "name": "Panoptic",
@@ -916,7 +916,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/panoptic.png"
+    "imageUrl": "/images/partners/panoptic.webp"
   },
   {
     "name": "Pyth Network",
@@ -925,7 +925,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/pyth_network.png"
+    "imageUrl": "/images/partners/pyth_network.webp"
   },
   {
     "name": "Rainbow Wallet",
@@ -934,7 +934,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/rainbow_wallet.png"
+    "imageUrl": "/images/partners/rainbow_wallet.webp"
   },
   {
     "name": "Showtime",
@@ -943,7 +943,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/showtime.png"
+    "imageUrl": "/images/partners/showtime.webp"
   },
   {
     "name": "Socket",
@@ -952,7 +952,7 @@
     "tags": [
       "x-chain"
     ],
-    "imageUrl": "/images/partners/socket.png"
+    "imageUrl": "/images/partners/socket.webp"
   },
   {
     "name": "Syndicate",
@@ -961,7 +961,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/syndicate.png"
+    "imageUrl": "/images/partners/syndicate.webp"
   },
   {
     "name": "Tally",
@@ -970,7 +970,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/tally.png"
+    "imageUrl": "/images/partners/tally.webp"
   },
   {
     "name": "Tenderly",
@@ -980,7 +980,7 @@
       "security",
       "infra"
     ],
-    "imageUrl": "/images/partners/tenderly.png"
+    "imageUrl": "/images/partners/tenderly.webp"
   },
   {
     "name": "The Graph",
@@ -989,7 +989,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/the_graph.png"
+    "imageUrl": "/images/partners/the_graph.webp"
   },
   {
     "name": "ThirdWeb",
@@ -998,7 +998,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/thirdweb.png"
+    "imageUrl": "/images/partners/thirdweb.webp"
   },
   {
     "name": "Volmex",
@@ -1007,7 +1007,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/volmex.png"
+    "imageUrl": "/images/partners/volmex.webp"
   },
   {
     "name": "Wormhole",
@@ -1016,7 +1016,7 @@
     "tags": [
       "x-chain"
     ],
-    "imageUrl": "/images/partners/wormhole.png"
+    "imageUrl": "/images/partners/wormhole.webp"
   },
   {
     "name": "XMTP",
@@ -1025,7 +1025,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/xmtp.png"
+    "imageUrl": "/images/partners/xmtp.webp"
   },
   {
     "name": "Animoca Brands",
@@ -1034,7 +1034,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/animoca_brands.png"
+    "imageUrl": "/images/partners/animoca_brands.webp"
   },
   {
     "name": "Parallel",
@@ -1043,7 +1043,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/parallel.png"
+    "imageUrl": "/images/partners/parallel.webp"
   },
   {
     "name": "0x",
@@ -1052,7 +1052,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/0x.png"
+    "imageUrl": "/images/partners/0x.webp"
   },
   {
     "name": "Amberdata",
@@ -1061,7 +1061,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/amberdata.png"
+    "imageUrl": "/images/partners/amberdata.webp"
   },
   {
     "name": "Balancer",
@@ -1070,7 +1070,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/balancer.png"
+    "imageUrl": "/images/partners/balancer.webp"
   },
   {
     "name": "Beam",
@@ -1079,7 +1079,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/beam.png"
+    "imageUrl": "/images/partners/beam.webp"
   },
   {
     "name": "Biconomy",
@@ -1088,7 +1088,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/biconomy.png"
+    "imageUrl": "/images/partners/biconomy.webp"
   },
   {
     "name": "Blast by Bware Labs",
@@ -1097,7 +1097,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/blast.png"
+    "imageUrl": "/images/partners/blast.webp"
   },
   {
     "name": "Blockscout",
@@ -1106,7 +1106,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/blockscout.png"
+    "imageUrl": "/images/partners/blockscout.webp"
   },
   {
     "name": "Brave",
@@ -1115,7 +1115,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/brave.png"
+    "imageUrl": "/images/partners/brave.webp"
   },
   {
     "name": "Bridge",
@@ -1124,7 +1124,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/bridge.png"
+    "imageUrl": "/images/partners/bridge.webp"
   },
   {
     "name": "Bungee",
@@ -1133,7 +1133,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/bungee.png"
+    "imageUrl": "/images/partners/bungee.webp"
   },
   {
     "name": "ChainSafe Gaming",
@@ -1142,7 +1142,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/chainsafe_gaming.png"
+    "imageUrl": "/images/partners/chainsafe_gaming.webp"
   },
   {
     "name": "DefiLlama",
@@ -1151,7 +1151,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/defillama.png"
+    "imageUrl": "/images/partners/defillama.webp"
   },
   {
     "name": "DeForm",
@@ -1160,7 +1160,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/deform.png"
+    "imageUrl": "/images/partners/deform.webp"
   },
   {
     "name": "Exodus",
@@ -1169,7 +1169,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/exodus.png"
+    "imageUrl": "/images/partners/exodus.webp"
   },
   {
     "name": "Extra Finance",
@@ -1178,7 +1178,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/extra_finance.png"
+    "imageUrl": "/images/partners/extra_finance.webp"
   },
   {
     "name": "Fireblocks",
@@ -1187,7 +1187,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/fireblocks.png"
+    "imageUrl": "/images/partners/fireblocks.webp"
   },
   {
     "name": "Flipside",
@@ -1196,7 +1196,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/flipside.png"
+    "imageUrl": "/images/partners/flipside.webp"
   },
   {
     "name": "GangstaVerse",
@@ -1205,7 +1205,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/gangstaverse.png"
+    "imageUrl": "/images/partners/gangstaverse.webp"
   },
   {
     "name": "Go-Go-Glover",
@@ -1214,7 +1214,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/go-go-glover.png"
+    "imageUrl": "/images/partners/go-go-glover.webp"
   },
   {
     "name": "Guild",
@@ -1223,7 +1223,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/guild.png"
+    "imageUrl": "/images/partners/guild.webp"
   },
   {
     "name": "LayerZero",
@@ -1232,7 +1232,7 @@
     "tags": [
       "x-cross"
     ],
-    "imageUrl": "/images/partners/layerzero.png"
+    "imageUrl": "/images/partners/layerzero.webp"
   },
   {
     "name": "Onramp Money",
@@ -1241,7 +1241,7 @@
     "tags": [
       "onramp"
     ],
-    "imageUrl": "/images/partners/onramp_money.png"
+    "imageUrl": "/images/partners/onramp_money.webp"
   },
   {
     "name": "Pike",
@@ -1250,7 +1250,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/pike.png"
+    "imageUrl": "/images/partners/pike.webp"
   },
   {
     "name": "PoolTogether",
@@ -1259,7 +1259,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/pooltogether.png"
+    "imageUrl": "/images/partners/pooltogether.webp"
   },
   {
     "name": "Privy",
@@ -1268,7 +1268,7 @@
     "tags": [
       "onramp"
     ],
-    "imageUrl": "/images/partners/privy.png"
+    "imageUrl": "/images/partners/privy.webp"
   },
   {
     "name": "Quicknode",
@@ -1277,7 +1277,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/quicknode.png"
+    "imageUrl": "/images/partners/quicknode.webp"
   },
   {
     "name": "Rabby Wallet",
@@ -1286,7 +1286,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/rabby_wallet.png"
+    "imageUrl": "/images/partners/rabby_wallet.webp"
   },
   {
     "name": "Reservoir",
@@ -1295,7 +1295,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/reservoir.png"
+    "imageUrl": "/images/partners/reservoir.webp"
   },
   {
     "name": "rhino.fi",
@@ -1304,7 +1304,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/rhino_fi.png"
+    "imageUrl": "/images/partners/rhino_fi.webp"
   },
   {
     "name": "Satsuma",
@@ -1313,7 +1313,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/satsuma.png"
+    "imageUrl": "/images/partners/satsuma.webp"
   },
   {
     "name": "Sequence",
@@ -1322,7 +1322,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/sequence.png"
+    "imageUrl": "/images/partners/sequence.webp"
   },
   {
     "name": "Snaky Cat",
@@ -1331,7 +1331,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/snaky_cat.png"
+    "imageUrl": "/images/partners/snaky_cat.webp"
   },
   {
     "name": "Spearbit",
@@ -1341,7 +1341,7 @@
       "security",
       "infra"
     ],
-    "imageUrl": "/images/partners/spearbit.png"
+    "imageUrl": "/images/partners/spearbit.webp"
   },
   {
     "name": "Superfluid",
@@ -1350,7 +1350,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/superfluid.png"
+    "imageUrl": "/images/partners/superfluid.webp"
   },
   {
     "name": "Transak",
@@ -1359,7 +1359,7 @@
     "tags": [
       "onramp"
     ],
-    "imageUrl": "/images/partners/transak.png"
+    "imageUrl": "/images/partners/transak.webp"
   },
   {
     "name": "Truflation",
@@ -1368,7 +1368,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/truflation.png"
+    "imageUrl": "/images/partners/truflation.webp"
   },
   {
     "name": "WalletConnect",
@@ -1377,7 +1377,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/walletconnect.png"
+    "imageUrl": "/images/partners/walletconnect.webp"
   },
   {
     "name": "Words3",
@@ -1386,7 +1386,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/words3.png"
+    "imageUrl": "/images/partners/words3.webp"
   },
   {
     "name": "XDAO",
@@ -1395,7 +1395,7 @@
     "tags": [
       "dao"
     ],
-    "imageUrl": "/images/partners/xdao.png"
+    "imageUrl": "/images/partners/xdao.webp"
   },
   {
     "name": "Yield Guild Games",
@@ -1404,7 +1404,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/yield_guild_games.png"
+    "imageUrl": "/images/partners/yield_guild_games.webp"
   },
   {
     "name": "Zapper",
@@ -1413,7 +1413,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/zapper.png"
+    "imageUrl": "/images/partners/zapper.webp"
   },
   {
     "name": "Zellic",
@@ -1423,7 +1423,7 @@
       "security",
       "infra"
     ],
-    "imageUrl": "/images/partners/zellic.png"
+    "imageUrl": "/images/partners/zellic.webp"
   },
   {
     "name": "Ankr",
@@ -1432,7 +1432,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/ankr.png"
+    "imageUrl": "/images/partners/ankr.webp"
   },
   {
     "name": "Chainlink",
@@ -1441,7 +1441,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/chainlink.png"
+    "imageUrl": "/images/partners/chainlink.webp"
   },
   {
     "name": "DODO",
@@ -1450,7 +1450,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/dodo.png"
+    "imageUrl": "/images/partners/dodo.webp"
   },
   {
     "name": "ETHLas",
@@ -1459,7 +1459,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/ethlas.png"
+    "imageUrl": "/images/partners/ethlas.webp"
   },
   {
     "name": "Manifold",
@@ -1468,7 +1468,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/manifold.png"
+    "imageUrl": "/images/partners/manifold.webp"
   },
   {
     "name": "OpenSea",
@@ -1477,7 +1477,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/opensea.png"
+    "imageUrl": "/images/partners/opensea.webp"
   },
   {
     "name": "UNKJD",
@@ -1486,7 +1486,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/unkjd.png"
+    "imageUrl": "/images/partners/unkjd.webp"
   },
   {
     "name": "Uniswap",
@@ -1495,7 +1495,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/uniswap.png"
+    "imageUrl": "/images/partners/uniswap.webp"
   },
   {
     "name": "Unlock Protocol",
@@ -1504,7 +1504,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/unlock_protocol.png"
+    "imageUrl": "/images/partners/unlock_protocol.webp"
   },
   {
     "name": "AppliedPrimate",
@@ -1513,7 +1513,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/appliedprimate.png"
+    "imageUrl": "/images/partners/appliedprimate.webp"
   },
   {
     "name": "DIA",
@@ -1522,7 +1522,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/dia.png"
+    "imageUrl": "/images/partners/dia.webp"
   },
   {
     "name": "Faraway",
@@ -1531,7 +1531,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/faraway.png"
+    "imageUrl": "/images/partners/faraway.webp"
   },
   {
     "name": "Frame",
@@ -1540,7 +1540,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/frame.png"
+    "imageUrl": "/images/partners/frame.webp"
   },
   {
     "name": "Game7",
@@ -1549,7 +1549,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/game7.png"
+    "imageUrl": "/images/partners/game7.webp"
   },
   {
     "name": "Goldsky",
@@ -1558,7 +1558,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/goldsky.png"
+    "imageUrl": "/images/partners/goldsky.webp"
   },
   {
     "name": "Landtorn",
@@ -1567,7 +1567,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/landtorn.png"
+    "imageUrl": "/images/partners/landtorn.webp"
   },
   {
     "name": "Maverick Protocol",
@@ -1576,7 +1576,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/maverick_protocol.png"
+    "imageUrl": "/images/partners/maverick_protocol.webp"
   },
   {
     "name": "Nouns Builder",
@@ -1585,7 +1585,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/nouns_builder.png"
+    "imageUrl": "/images/partners/nouns_builder.webp"
   },
   {
     "name": "Onboard",
@@ -1594,7 +1594,7 @@
     "tags": [
       "onramp"
     ],
-    "imageUrl": "/images/partners/onboard.png"
+    "imageUrl": "/images/partners/onboard.webp"
   },
   {
     "name": "Photo Finish™ LIVE",
@@ -1603,7 +1603,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/photo_finish.png"
+    "imageUrl": "/images/partners/photo_finish.webp"
   },
   {
     "name": "Pixelmon",
@@ -1612,7 +1612,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/pixelmon.png"
+    "imageUrl": "/images/partners/pixelmon.webp"
   },
   {
     "name": "Safe Wallet",
@@ -1621,7 +1621,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/safe.png"
+    "imageUrl": "/images/partners/safe.webp"
   },
   {
     "name": "Stargate Finance",
@@ -1630,7 +1630,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/stargate.png"
+    "imageUrl": "/images/partners/stargate.webp"
   },
   {
     "name": "SushiSwap",
@@ -1639,7 +1639,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/sushiswap.png"
+    "imageUrl": "/images/partners/sushiswap.webp"
   },
   {
     "name": "TBTC",
@@ -1648,7 +1648,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/tbtc.png"
+    "imageUrl": "/images/partners/tbtc.webp"
   },
   {
     "name": "Trust Wallet",
@@ -1657,7 +1657,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/trust_wallet.png"
+    "imageUrl": "/images/partners/trust_wallet.webp"
   },
   {
     "name": "Prophouse",
@@ -1666,7 +1666,7 @@
     "tags": [
       "dao"
     ],
-    "imageUrl": "/images/partners/prop_house.png"
+    "imageUrl": "/images/partners/prop_house.webp"
   },
   {
     "name": "Mint.fun",
@@ -1675,7 +1675,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/mint_fun.png"
+    "imageUrl": "/images/partners/mint_fun.webp"
   },
   {
     "name": "Harvest Finance",
@@ -1684,7 +1684,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/harvest_finance.png"
+    "imageUrl": "/images/partners/harvest_finance.webp"
   },
   {
     "name": "Zora",
@@ -1693,7 +1693,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/zora.png"
+    "imageUrl": "/images/partners/zora.webp"
   },
   {
     "name": "FWB",
@@ -1702,7 +1702,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/fwb.png"
+    "imageUrl": "/images/partners/fwb.webp"
   },
   {
     "name": "Indelible Labs",
@@ -1711,7 +1711,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/indelible_labs.png"
+    "imageUrl": "/images/partners/indelible_labs.webp"
   },
   {
     "name": "OAK",
@@ -1720,7 +1720,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/oak.png"
+    "imageUrl": "/images/partners/oak.webp"
   },
   {
     "name": "Blackbird",
@@ -1729,7 +1729,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/blackbird.png"
+    "imageUrl": "/images/partners/blackbird.webp"
   },
   {
     "name": "Etherscan",
@@ -1738,7 +1738,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/etherscan.png"
+    "imageUrl": "/images/partners/etherscan.webp"
   },
   {
     "name": "Sablier",
@@ -1747,7 +1747,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/sablier.png"
+    "imageUrl": "/images/partners/sablier.webp"
   },
   {
     "name": "RedStone",
@@ -1756,7 +1756,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/redstone.png"
+    "imageUrl": "/images/partners/redstone.webp"
   },
   {
     "name": "Umbrella",
@@ -1765,7 +1765,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/umbrella.png"
+    "imageUrl": "/images/partners/umbrella.webp"
   },
   {
     "name": "0xSplits",
@@ -1774,7 +1774,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/0xSplits.png"
+    "imageUrl": "/images/partners/0xSplits.webp"
   },
   {
     "name": "Mnemonic",
@@ -1783,7 +1783,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/mnemonic.png"
+    "imageUrl": "/images/partners/mnemonic.webp"
   },
   {
     "name": "QiDao Protocol",
@@ -1792,7 +1792,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/qidao.png"
+    "imageUrl": "/images/partners/qidao.webp"
   },
   {
     "name": "The Crypto App",
@@ -1801,7 +1801,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/thecryptoapp.png"
+    "imageUrl": "/images/partners/thecryptoapp.webp"
   },
   {
     "name": "DLN",
@@ -1810,6 +1810,6 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/dln.png"
+    "imageUrl": "/images/partners/dln.webp"
   }
 ]
