@@ -27,6 +27,19 @@ If you're looking to harden your dapp and avoid rate-limiting for your users, pl
 
 :::
 
+### Hardware requirements
+
+We recommend you have this configuration to run a node:
+
+- at least 16 GB RAM
+- an SSD drive with at least 1 TB free
+
+:::info
+
+If utilizing Amazon Elastic Block Store (EBS), ensure timing buffered disk reads are fast enough in order to avoid latency issues alongside the rate of new blocks added to Base during the initial synchronization process.
+
+:::
+
 ### Docker
 
 This guide assumes you are familiar with [Docker] and have it running on your machine.
@@ -55,6 +68,22 @@ curl -d '{"id":0,"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["late
 Syncing your node may take **days** and will consume a vast amount of your requests quota. Be sure to monitor usage and up your plan if needed.
 
 :::
+
+### Snapshots
+
+If you're a prospective or current Base Node operator and would like to restore from a snapshot to save time on the initial sync, it's possible to always get the latest available snapshot of the Base chain on mainnet and/or testnet by using the following CLI commands. The snapshots are updated every hour.
+
+**Mainnet**
+
+```
+wget https://base-mainnet-archive-snapshots.s3.us-east-1.amazonaws.com/$(curl https://base-mainnet-archive-snapshots.s3.us-east-1.amazonaws.com/latest)
+```
+
+**Testnet**
+
+```
+wget https://base-goerli-archive-snapshots.s3.us-east-1.amazonaws.com/$(curl https://base-goerli-archive-snapshots.s3.us-east-1.amazonaws.com/latest)
+```
 
 ### Syncing
 
