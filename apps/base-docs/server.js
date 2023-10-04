@@ -60,7 +60,6 @@ const contentSecurityPolicy = {
     "'unsafe-inline'",
     'https://static-assets.coinbase.com/js/cca/v0.0.1.js', // CCA Lite
     'https://cca-lite.coinbase.com', // CCA Lite
-    'https://analytics-service-dev.cbhq.net', // CCA Lite
   ],
   'style-src': ["'self'", "'unsafe-inline'"],
   'img-src': ["'self'", 'data:'],
