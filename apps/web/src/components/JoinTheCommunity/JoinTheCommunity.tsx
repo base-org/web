@@ -37,7 +37,7 @@ export function JoinTheCommunity() {
         {partners.map((partner) => (
           <div className="relative h-[108px] w-[108px] overflow-hidden rounded-[3px]" key={partner}>
             <Image
-              src={`/images/partners/${partner}.png`}
+              src={`/images/partners/${partner}.webp`}
               alt={`${partner} logo`}
               fill
               style={{ objectFit: 'cover' }}
@@ -52,7 +52,7 @@ export function JoinTheCommunity() {
         {partners.map((partner) => (
           <div className="relative h-[60px] w-[60px] overflow-hidden rounded-[3px]" key={partner}>
             <Image
-              src={`/images/partners/${partner}.png`}
+              src={`/images/partners/${partner}.webp`}
               alt={`${partner} logo`}
               fill
               style={{ objectFit: 'cover' }}
