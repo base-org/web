@@ -28,7 +28,7 @@ const partners = [
 
 export function JoinTheCommunity() {
   return (
-    <div className="flex w-full max-w-[780px] flex-col justify-center gap-8 bg-black py-12 px-6 md:gap-6 lg:justify-start lg:px-7 xl:max-w-[1440px]">
+    <div className="flex w-full max-w-[780px] flex-col justify-center gap-8 bg-black px-6 py-12 md:gap-6 lg:justify-start lg:px-7 xl:max-w-[1440px]">
       <p className="font-display text-3xl text-white md:text-6xl xl:max-w-[50%]">
         Join the community building on Base
       </p>
@@ -37,7 +37,7 @@ export function JoinTheCommunity() {
         {partners.map((partner) => (
           <div className="relative h-[108px] w-[108px] overflow-hidden rounded-[3px]" key={partner}>
             <Image
-              src={`/images/partners/${partner}.png`}
+              src={`/images/partners/${partner}.webp`}
               alt={`${partner} logo`}
               fill
               style={{ objectFit: 'cover' }}
@@ -52,7 +52,7 @@ export function JoinTheCommunity() {
         {partners.map((partner) => (
           <div className="relative h-[60px] w-[60px] overflow-hidden rounded-[3px]" key={partner}>
             <Image
-              src={`/images/partners/${partner}.png`}
+              src={`/images/partners/${partner}.webp`}
               alt={`${partner} logo`}
               fill
               style={{ objectFit: 'cover' }}
