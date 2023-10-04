@@ -13,7 +13,7 @@ export default function Home() {
       <Head>
         <title>Base</title>
         <meta
-          content="Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain."
+          content="Base Bootcamp is a cohort-based training program hosted by Coinbase engineers, designed to turn senior-level developers into Smart Contract developers."
           name="description"
         />
         <meta property="og:site_name" content="Base" />

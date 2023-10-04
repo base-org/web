@@ -9,7 +9,7 @@ export function Dates() {
       </div>
       <div className="grid grid-cols-2">
         <div className="text-md font-sans text-white">
-          <p className="pb-2"><span className="font-bold">Cohort 3:</span> Nov 15, 2023</p>
+          <p className="pb-2"><span className="font-bold">Cohort 3:</span> Nov 13, 2023</p>
           <p><span className="font-bold">Application deadline:</span> Oct 27, 2023</p>
 
           <div className="mt-10 w-[200px]">
