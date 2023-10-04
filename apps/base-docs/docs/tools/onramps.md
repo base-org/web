@@ -1,9 +1,9 @@
 ---
-title: On-ramps
+title: Onramps
 slug: /tools/onramps
 ---
 
-# On-ramps
+# Onramps
 
 ---
 
