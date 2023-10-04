@@ -101,6 +101,10 @@ const config = {
               label: 'Track your progress',
               to: '/base-camp/progress',
             },
+            {
+              label: 'Bootcamp',
+              href: 'https://base.org/bootcamp',
+            },
           ],
         },
         {
