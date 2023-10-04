@@ -36,18 +36,6 @@ local.properties
 *.iml
 *.hprof
 
-# Nx/Builds
-.docusaurus
-.next
-.nx
-cjs/
-dts/
-esm/
-lib/
-mjs/
-out/
-*.tsbuildinfo
-
 # Yarn
 .yarn/*
 !.yarn/patches
@@ -56,6 +44,8 @@ out/
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+# prevent people from committing this by accident
+package-lock.json
 
 # Env files
 .env.local
