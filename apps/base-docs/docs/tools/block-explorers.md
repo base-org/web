@@ -43,7 +43,7 @@ A testnet explorer for [Base Goerli](https://base-goerli.dex.guru/) is also avai
 
 ## L2scan Explorer
 
-[L2scan Explorer](https://base.l2scan.co/) is a web-based tool that allows users to explore and analyze the contents of the layer 2 blockchain networks like Base. It provides a user-friendly interface for viewing transaction history, checking account balances, and tracking the status of network activity.
+[L2scan Explorer](https://base.l2scan.co/) is a web-based tool that allows users to analyze Base and other layer 2 networks. It provides a user-friendly interface for viewing transaction history, checking account balances, and tracking the status of network activity.
 
 ---
 
