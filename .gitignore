@@ -36,6 +36,18 @@ local.properties
 *.iml
 *.hprof
 
+# Nx/Builds
+.docusaurus
+.next
+.nx
+cjs/
+dts/
+esm/
+lib/
+mjs/
+out/
+*.tsbuildinfo
+
 # Yarn
 .yarn/*
 !.yarn/patches
@@ -44,7 +56,7 @@ local.properties
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
-# prevent people from committing this by accident
+# prevent people from accidentally commiting a package-lock
 package-lock.json
 
 # Env files
