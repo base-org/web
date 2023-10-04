@@ -1,10 +1,24 @@
+import Image from 'next/image';
+import BaseBootcampLogo from '../../../public/images/base-bootcamp-white.png';
+
 type LogoProps = {
   color?: 'white' | 'black';
   width?: string;
   height?: string;
+  path?: string;
 };
 
-export function Logo({ color = 'white', width = 'auto', height = '32' }: LogoProps) {
+export function Logo({ color = 'white', width = 'auto', height = '32', path }: LogoProps) {
+  if (path === '/bootcamp') {
+    return (
+      <Image
+        width={300}
+        src={BaseBootcampLogo}
+        alt="Base Bootcamp"
+      />
+    );
+  }
+
   return (
     <svg
       width={width}
