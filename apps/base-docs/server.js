@@ -55,7 +55,13 @@ const contentSecurityPolicy = {
   'default-src': ["'self'"],
   'frame-ancestors': ["'self'"],
   'form-action': ["'self'"],
-  'script-src': ["'self'", "'unsafe-inline'"],
+  'script-src': [
+    "'self'",
+    "'unsafe-inline'",
+    'https://static-assets.coinbase.com/js/cca/v0.0.1.js', // CCA Lite
+    'https://cca-lite.coinbase.com', // CCA Lite
+    'https://analytics-service-dev.cbhq.net', // CCA Lite
+  ],
   'style-src': ["'self'", "'unsafe-inline'"],
   'img-src': ["'self'", 'data:'],
   'connect-src': [
@@ -64,6 +70,7 @@ const contentSecurityPolicy = {
     'wss://relay.walletconnect.com', // WalletConnect
     'wss://relay.walletconnect.org',
     'https://goerli.base.org', // Base Goerli RPC
+    'https://cca-lite.coinbase.com', // CCA Lite
   ],
   'frame-src': ["'self'", 'https://player.vimeo.com'],
 };
