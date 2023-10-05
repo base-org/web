@@ -126,6 +126,17 @@ slug: /tools/node-providers
 
 ---
 
+## Stackup
+
+[Stackup](https://www.stackup.sh/) is a leading ERC-4337 infrastructure platform. You can access hosted Base nodes with built-in [account abstraction tools](https://docs.stackup.sh/docs) like bundlers and paymasters.
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Goerli (Testnet)
+
+---
+
 ## Tenderly Web3 Gateway
 
 [Tenderly Web3 Gateway](https://tenderly.co/web3-gateway) provides a fast and reliable hosted node solution with a built-in suite of developer tooling and infrastructure building blocks covering your whole development lifecycle. Develop, test, deploy, and monitor your dapp on the Base network with both [free and paid plans](https://tenderly.co/pricing).
