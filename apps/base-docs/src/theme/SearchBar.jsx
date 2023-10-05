@@ -40,10 +40,6 @@ export default function SearchBar() {
         <SearchIcon />
         Search
       </div>
-      <div className={styles.keys}>
-        <kbd className={styles.command}>⌘</kbd>
-        <kbd>K</kbd>
-      </div>
     </div>
   );
 }
