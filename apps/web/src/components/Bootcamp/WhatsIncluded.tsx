@@ -3,7 +3,7 @@ export function WhatsIncluded() {
     <div className="flex w-full max-w-[1440px] flex-col space-y-20 bg-black px-8 pt-12">
       <div className="grid grid-cols-2">
         <div className="flex w-full flex-col font-display text-3xl text-white md:text-5xl lg:text-6xl">
-          <p>What`s included?</p>
+          <p>What's included?</p>
         </div>
   
         <div className="text-md font-sans text-white">
