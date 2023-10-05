@@ -66,10 +66,10 @@ html[data-theme='light'] .result__active {
   border: 1px solid rgba(138, 145, 158, 0.68);
   border-radius: 24px;
   height: 44px;
-  width: 200px;
   cursor: pointer;
   padding: 0 16px;
   justify-content: space-between;
+  flex-grow: 1;
 }
 
 .searchBar:hover {
