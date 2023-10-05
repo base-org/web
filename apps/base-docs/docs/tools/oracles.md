@@ -83,7 +83,7 @@ Visit the Supra VRF [documentation](https://supraoracles.com/docs/vrf) to learn 
 
 #### Supported Networks
 
-- Base Mainnet (Coming Soon)
+- Base Mainnet
 - Base Goerli (Testnet)
 
 ---
