@@ -29,7 +29,7 @@ function MobileMenu({ toggleMobileMenu }: MobileMenuProps) {
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 z-30 m-0 h-screen w-screen bg-gray p-8"
+      className="fixed left-0 top-0 z-30 m-0 h-screen w-screen bg-gray p-8"
       initial={mobileMenuInitial}
       animate={mobileMenuAnimation}
       exit={mobileMenuInitial}
@@ -104,21 +104,6 @@ function MobileMenu({ toggleMobileMenu }: MobileMenuProps) {
   );
 }
 
-const mainnetBanner = (
-  <span className="text-center font-sans text-white">
-    Base mainnet is open. Come join us for{' '}
-    <a
-      href="https://onchainsummer.xyz"
-      className="underline"
-      target="_blank"
-      rel="noreferrer noopener"
-    >
-      Onchain Summer
-    </a>
-    .
-  </span>
-);
-
 export function Nav({ color }: NavProps) {
   const [showMobileMenu, toggleMobileMenu] = useState<boolean>(false);
   const { pathname } = useRouter();
@@ -130,91 +115,82 @@ export function Nav({ color }: NavProps) {
   }, []);
 
   return (
-    <>
-      <div
-        className={`w-full ${
-          color === 'white' ? 'bg-blue-600' : 'bg-black'
-        } flex h-16 items-center justify-center px-4`}
-      >
-        {mainnetBanner}
-      </div>
-      <nav className="bg-transparent z-10 flex h-24 w-full max-w-[1440px] flex-row justify-between self-center p-8">
-        <Link href="/">
-          <Logo color={color} path={pathname} />
-        </Link>
-        {/* Desktop */}
-        <div className="hidden h-full flex-row items-center space-x-16 lg:flex">
-          <div className="h-full flex-row items-center space-x-16">
-            <Link href="/about">
-              <span
-                className={`font-mono text-xl ${color === 'black' ? 'text-black' : 'text-white'}`}
-              >
-                About
-              </span>
-            </Link>
-            <a
-              href={publicRuntimeConfig.docsUrl}
-              className={`font-mono text-xl ${color === 'black' ? 'text-black' : 'text-white'}`}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              Docs
-            </a>
-            <Link href="/ecosystem">
-              <span
-                className={`font-mono text-xl ${color === 'black' ? 'text-black' : 'text-white'}`}
-              >
-                Ecosystem
-              </span>
-            </Link>
-            <a
-              href={publicRuntimeConfig.bridgeUrl}
-              className={`font-mono text-xl ${color === 'black' ? 'text-black' : 'text-white'}`}
-              rel="noreferrer noopener"
-            >
-              Bridge
-            </a>
-            <a
-              href="https://base.mirror.xyz"
+    <nav className="bg-transparent z-10 flex h-24 w-full max-w-[1440px] flex-row justify-between self-center p-8">
+      <Link href="/">
+        <Logo color={color} path={pathname} />
+      </Link>
+      {/* Desktop */}
+      <div className="hidden h-full flex-row items-center space-x-16 lg:flex">
+        <div className="h-full flex-row items-center space-x-16">
+          <Link href="/about">
+            <span
               className={`font-mono text-xl ${color === 'black' ? 'text-black' : 'text-white'}`}
             >
-              Blog
-            </a>
-            <Link href="/jobs">
-              <span
-                className={`font-mono text-xl ${color === 'black' ? 'text-black' : 'text-white'}`}
-              >
-                Jobs
-              </span>
-            </Link>
-          </div>
-          <div className="flex h-full flex-row items-center space-x-8">
-            <Link href="/discord" title="Join us on Discord">
-              <Icon name="discord" width="24" height="20" color={color} />
-            </Link>
-            <a href="https://twitter.com/buildonbase" title="Join us on Twitter">
-              <Icon name="twitter" width="24" height="20" color={color} />
-            </a>
-            <a href="https://github.com/base-org" title="Join us on Github">
-              <Icon name="github" width="24" height="24" color={color} />
-            </a>
-          </div>
-        </div>
-        {/* Mobile */}
-        <div className="flex lg:hidden">
-          <button
-            className="appearance-none"
-            type="button"
-            onClick={handleMenuButtonClick}
-            aria-label="BASE mobile navigation"
+              About
+            </span>
+          </Link>
+          <a
+            href={publicRuntimeConfig.docsUrl}
+            className={`font-mono text-xl ${color === 'black' ? 'text-black' : 'text-white'}`}
+            target="_blank"
+            rel="noreferrer noopener"
           >
-            <Icon name="more-menu" color={color} />
-          </button>
+            Docs
+          </a>
+          <Link href="/ecosystem">
+            <span
+              className={`font-mono text-xl ${color === 'black' ? 'text-black' : 'text-white'}`}
+            >
+              Ecosystem
+            </span>
+          </Link>
+          <a
+            href={publicRuntimeConfig.bridgeUrl}
+            className={`font-mono text-xl ${color === 'black' ? 'text-black' : 'text-white'}`}
+            rel="noreferrer noopener"
+          >
+            Bridge
+          </a>
+          <a
+            href="https://base.mirror.xyz"
+            className={`font-mono text-xl ${color === 'black' ? 'text-black' : 'text-white'}`}
+          >
+            Blog
+          </a>
+          <Link href="/jobs">
+            <span
+              className={`font-mono text-xl ${color === 'black' ? 'text-black' : 'text-white'}`}
+            >
+              Jobs
+            </span>
+          </Link>
         </div>
-        <AnimatePresence>
-          {showMobileMenu ? <MobileMenu toggleMobileMenu={toggleMobileMenu} /> : null}
-        </AnimatePresence>
-      </nav>
-    </>
+        <div className="flex h-full flex-row items-center space-x-8">
+          <Link href="/discord" title="Join us on Discord">
+            <Icon name="discord" width="24" height="20" color={color} />
+          </Link>
+          <a href="https://twitter.com/buildonbase" title="Join us on Twitter">
+            <Icon name="twitter" width="24" height="20" color={color} />
+          </a>
+          <a href="https://github.com/base-org" title="Join us on Github">
+            <Icon name="github" width="24" height="24" color={color} />
+          </a>
+        </div>
+      </div>
+      {/* Mobile */}
+      <div className="flex lg:hidden">
+        <button
+          className="appearance-none"
+          type="button"
+          onClick={handleMenuButtonClick}
+          aria-label="BASE mobile navigation"
+        >
+          <Icon name="more-menu" color={color} />
+        </button>
+      </div>
+      <AnimatePresence>
+        {showMobileMenu ? <MobileMenu toggleMobileMenu={toggleMobileMenu} /> : null}
+      </AnimatePresence>
+    </nav>
   );
 }
