@@ -6,7 +6,9 @@ import TokenMessenger from 'apps/bridge/src/contract-abis/TokenMessenger';
 
 const { publicRuntimeConfig } = getConfig();
 
-const ETH_DEPOSIT_ADDRESS = publicRuntimeConfig.l1OptimismPortalProxyAddress.toLowerCase();
+const ETH_DEPOSIT_ADDRESS = (
+  publicRuntimeConfig?.l1OptimismPortalProxyAddress ?? '0xe93c8cD0D409341205A592f8c4Ac1A5fe5585cfA'
+).toLowerCase();
 
 const ERC20_DEPOSIT_ADDRESS = (
   publicRuntimeConfig?.l1BridgeProxyAddress ?? '0xfA6D8Ee5BE770F84FC001D098C4bD604Fe01284a'
