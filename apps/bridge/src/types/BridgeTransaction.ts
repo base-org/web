@@ -1,4 +1,5 @@
 import { TransactionStatus } from 'apps/bridge/src/types/API';
+import { BridgeProtocol } from 'apps/bridge/src/types/Asset';
 
 type TransactionType = 'Deposit' | 'Withdrawal';
 
@@ -12,4 +13,6 @@ export type BridgeTransaction = {
   hash: `0x${string}`;
   status?: TransactionStatus;
   priceApiId: string;
+  assetDecimals?: number;
+  protocol: BridgeProtocol;
 };

@@ -1,6 +1,8 @@
 import { Address } from 'wagmi';
 import { Chain } from 'wagmi/chains';
 
+export type BridgeProtocol = 'OP' | 'CCTP';
+
 export type Asset = {
   L1symbol: string;
   L2symbol: string;
@@ -16,7 +18,7 @@ export type Asset = {
     OP --> Optimism bridge
     CCTP --> Circle Cross-Chain Transfer Protocol (eg USDC)
   */
-  protocol: 'OP' | 'CCTP';
+  protocol: BridgeProtocol;
 };
 
 export type CustomChain = Chain & {

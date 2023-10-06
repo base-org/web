@@ -39,6 +39,7 @@ declare module 'next/config' {
       appStage: string;
       complianceApiURL: string;
       sepoliaBridgeURL: string;
+      cctpAttestationsAPIURL: string;
     };
   };
 

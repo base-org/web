@@ -1,6 +1,6 @@
 import TokenMessenger from 'apps/bridge/src/contract-abis/TokenMessenger';
 import { Asset } from 'apps/bridge/src/types/Asset';
-import { parseUnits, hexZeroPad, arrayify } from 'ethers/lib/utils.js';
+import { parseUnits, pad } from 'viem';
 import getConfig from 'next/config';
 import { Address, usePrepareContractWrite } from 'wagmi';
 
@@ -22,21 +22,20 @@ export function usePrepareInitiateCCTPBridge({
   destinationDomain,
   isPermittedToBridge,
 }: UsePrepareInitiateCCTPBridgeProps) {
+  const shouldPrepare = isPermittedToBridge && depositAmount !== '' && mintRecipient;
+
   const { config: depositConfig } = usePrepareContractWrite({
-    address:
-      isPermittedToBridge && depositAmount !== '' && mintRecipient
-        ? publicRuntimeConfig.l1CCTPTokenMessengerAddress
-        : undefined,
+    address: shouldPrepare ? publicRuntimeConfig.l1CCTPTokenMessengerAddress : undefined,
     abi: TokenMessenger,
     functionName: 'depositForBurn',
     chainId: parseInt(publicRuntimeConfig.l1ChainID),
-    args: mintRecipient
+    args: shouldPrepare
       ? [
           depositAmount !== ''
             ? parseUnits(depositAmount, asset.decimals)
             : parseUnits('0', asset.decimals),
           destinationDomain,
-          hexZeroPad(arrayify(mintRecipient), 32) as `0x${string}`,
+          pad(mintRecipient),
           asset.L1contract as Address,
         ]
       : undefined,

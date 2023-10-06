@@ -9,7 +9,6 @@ import { usdFormatter } from 'apps/bridge/src/utils/formatter/balance';
 import { useConversionRate } from 'apps/bridge/src/utils/hooks/useConversionRate';
 import { useWithdrawalStatus } from 'apps/bridge/src/utils/hooks/useWithdrawalStatus';
 import { truncateMiddle } from 'apps/bridge/src/utils/string/truncateMiddle';
-import type { WithdrawalPhase } from 'apps/bridge/src/utils/transactions/phase';
 import {
   blockExplorerUrlForL1Transaction,
   blockExplorerUrlForL2Transaction,
@@ -18,6 +17,7 @@ import { formatUnits } from 'viem';
 
 import { FinalizeWithdrawalButton } from './FinalizeWithdrawalButton';
 import { ProveWithdrawalButton } from './ProveWithdrawalButton';
+import { BridgePhaseIndicator } from 'apps/bridge/src/components/Transactions/BridgePhaseIndicator';
 
 type WithdrawalRowProps = {
   transaction: BridgeTransaction;
@@ -88,33 +88,6 @@ export const WithdrawalRow = memo(function WithdrawalRow({
       ? blockExplorerUrlForL1Transaction(transaction.hash)
       : blockExplorerUrlForL2Transaction(transaction.hash);
   const abridgedHash = truncateMiddle(transaction.hash, 6, 4);
-
-  const generatePhaseIndicator = (phase: WithdrawalPhase): JSX.Element[] => {
-    const PHASE_MAP = {
-      PROPOSING_ON_CHAIN: 1,
-      PROVE: 2,
-      PROVE_TX_PENDING: 2,
-      PROVE_TX_FAILURE: 2,
-      CHALLENGE_WINDOW: 2,
-      FINALIZE: 3,
-      FINALIZE_TX_PENDING: 3,
-      FINALIZE_TX_FAILURE: 3,
-      FUNDS_WITHDRAWN: 4,
-    };
-    const rv: JSX.Element[] = [];
-    for (let i = 0; i < PHASE_MAP[phase]; i += 1) {
-      rv.push(<div className="border-gray-400 w-8 border-t-4" key={`fill-${i}`} />);
-    }
-    for (let i = 0; i < 4 - PHASE_MAP[phase]; i += 1) {
-      rv.push(
-        <div
-          className="border-gray-400 w-8 border-t-4 text-cds-background-gray-60"
-          key={`back-${i}`}
-        />,
-      );
-    }
-    return rv;
-  };
 
   const pendingButton = (
     <button type="button" className="w-32 rounded bg-white py-2 font-sans text-sm text-black">
@@ -228,9 +201,7 @@ export const WithdrawalRow = memo(function WithdrawalRow({
       </td>
       <td className="hidden md:table-cell">
         <div className="flex flex-col">
-          <div className="flex h-6 grow flex-row items-center gap-1">
-            {generatePhaseIndicator(withdrawalStatus)}
-          </div>
+          <BridgePhaseIndicator phase={withdrawalStatus} />
           <div className="text-cds-background-gray-60">{withdrawalPhaseText[withdrawalStatus]}</div>
         </div>
       </td>

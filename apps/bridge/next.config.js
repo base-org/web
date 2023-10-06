@@ -75,6 +75,8 @@ const contentSecurityPolicy = {
     'https://sepolia.etherscan.io', // Sepolia Etherscan
     'https://api-sepolia.etherscan.io/api', // Sepolia Etherscan API
     'https://base-sepolia.blockscout.com', // Sepolia Blockscout
+    'https://base-goerli.blockscout.com/api', // Blockscout
+    'https://iris-api-sandbox.circle.com/attestations/', // Circle
   ],
   'img-src': ["'self'", 'data:', 'https://*.walletconnect.com/'], // WalletConnect,
 };
@@ -187,6 +189,7 @@ module.exports = extendBaseConfig({
     appStage: process.env.APP_STAGE,
     complianceApiURL: process.env.COMPLIANCE_API_URL,
     sepoliaBridgeURL: process.env.SEPOLIA_BRIDGE_URL,
+    cctpAttestationsAPIURL: process.env.CCTP_ATTESTATIONS_API_URL,
   },
   ...baseConfig,
   async headers() {

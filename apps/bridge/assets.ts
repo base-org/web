@@ -253,6 +253,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/eth.svg',
     L2icon: '/icons/currency/eth.svg',
     decimals: 18,
+    protocol: 'OP',
   },
 ];
 
