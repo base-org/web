@@ -27,7 +27,7 @@
     "imageUrl": "/images/partners/arrakis.png"
   },
   {
-    "name": "PitchTalk"
+    "name": "PitchTalk",
     "url": "https://pitchtalk.com/",
     "description": "PitchTalk is a platform for communication between projects, investors, and communities. We help you overcome hurdles and reach the pinnacles of success through open and effective communication. ",
     "tags": [
@@ -36,7 +36,7 @@
     "imageUrl": "/images/partners/appicon.png"
   },
   {
-    "name": "Sismo"
+    "name": "Sismo",
     "url": "https://www.sismo.io/",
     "description": "Sismo is a sovereign identity aggregator and crypto-native sso. ",
     "tags": [
@@ -45,7 +45,7 @@
     "imageUrl": "/images/partners/sismo.png"
   },
   {
-    "name": "Bitget Wallet"
+    "name": "Bitget Wallet",
     "url": "https://web3.bitget.com/",
     "description": "Ultimate Web3 Portal to the Crypto Universe with integrated Cross-Chain Swap, Nft Marketplace, Onramp, Dapp store, Defi, and Staking solution catering 12 million+ users across 168 countries.",
     "tags": [
@@ -54,7 +54,7 @@
     "imageUrl": "/images/partners/bitget.png"
   },
   {
-    "name": "imToken"
+    "name": "imToken",
     "url": "https://token.im/",
     "description": "imToken, a reliable non-custodial mobile wallet for tokens you own - cryptocurrencies, stable coins, NFTs, and more. We are inspired to make digital life equally accessible to everyone.",
     "tags": [
@@ -63,7 +63,7 @@
     "imageUrl": "/images/partners/imtoken.png"
   },
   {
-    "name": "Furrend"
+    "name": "Furrend",
     "url": "http://furrend.xyz/",
     "description": "Furrend is a web3 pet video-sharing social network that provides the tools, resources, and infrastructure for content creators to monetize their work and engage with their community through digital assets.",
     "tags": [
@@ -72,7 +72,7 @@
     "imageUrl": "/images/partners/furrend.png"
   },
   {
-    "name": "Land, Labor, and Capitol"
+    "name": "Land, Labor, and Capitol",
     "url": "https://llcgame.io/",
     "description": "Onchain tycoon game where players are in true control: to create new retail assets (as NFTs), to launch player owned companies (ERC-6551 concept, since each company can hold deeds, resources etc) and ultimately to launch new game instances, creating a huge economy with multiple game instances.",
     "tags": [
