@@ -8,6 +8,7 @@ type CCTPBridgeStatusProps = {
   message?: `0x${string}`;
   attestation?: `0x${string}`;
   bridgeDirection: 'deposit' | 'withdraw';
+  setStatus: (status: CCTPBridgePhase) => void;
 };
 
 export const CCTPBridgeStatus = memo(function CCTPBridgeStatus({
@@ -15,6 +16,7 @@ export const CCTPBridgeStatus = memo(function CCTPBridgeStatus({
   message,
   attestation,
   bridgeDirection,
+  setStatus,
 }: CCTPBridgeStatusProps) {
   const isPending =
     phase === 'INITIATE_CCTP_BRIDGE_PENDING' || phase === 'FINALIZE_CCTP_BRIDGE_PENDING';
@@ -33,6 +35,7 @@ export const CCTPBridgeStatus = memo(function CCTPBridgeStatus({
         message={message}
         attestation={attestation}
         bridgeDirection={bridgeDirection}
+        setStatus={setStatus}
       />
     );
 
@@ -40,5 +43,5 @@ export const CCTPBridgeStatus = memo(function CCTPBridgeStatus({
   if (isFailed) return 'Failed';
 
   // Otherwise the bridge is complete
-  return 'Complete';
+  return 'Funds moved';
 });

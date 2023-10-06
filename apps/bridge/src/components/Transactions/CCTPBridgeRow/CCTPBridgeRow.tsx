@@ -22,8 +22,9 @@ export const CCTPBridgeRow = memo(function CCTPBridgeRow({
   bridgeDirection,
 }: CCTPBridgeRowProps) {
   const { date, shortDate, time } = formatTimestamp(transaction.blockTimestamp);
-  const { status, message, attestation } = useCCTPBridgeStatus({
+  const { status, setStatus, message, attestation } = useCCTPBridgeStatus({
     initiateTxHash: transaction.hash,
+    bridgeDirection,
   });
 
   const explorerURL = blockExplorerUrlForL1Transaction(transaction.hash);
@@ -101,6 +102,7 @@ export const CCTPBridgeRow = memo(function CCTPBridgeRow({
         message={message}
         attestation={attestation}
         bridgeDirection={bridgeDirection}
+        setStatus={setStatus}
       />
     </tr>
   );

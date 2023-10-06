@@ -48,10 +48,8 @@ type BridgePhaseIndicatorProps = {
   protocol?: BridgeProtocol;
 };
 
-/* 
-  Component to generate the phase indicator for any multi-step bridge transaction.
-	This currently includes OP bridge withdrawals and CCTP bridge transactions in either direction.
-*/
+// Component to generate the phase indicator for any multi-step bridge transaction.
+// This currently includes OP bridge withdrawals and CCTP bridge transactions in either direction.
 export const BridgePhaseIndicator = memo(function BridgePhaseIndicator({
   phase,
   protocol,

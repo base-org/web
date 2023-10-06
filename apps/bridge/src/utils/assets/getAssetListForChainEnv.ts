@@ -3,9 +3,7 @@ import getConfig from 'next/config';
 
 const { publicRuntimeConfig } = getConfig();
 
-/*
-  Get all assets for the current chain environment.
-*/
+// Get all assets for the current chain environment.
 export function getAssetListForChainEnv() {
   return assetList.filter(
     (asset) =>
