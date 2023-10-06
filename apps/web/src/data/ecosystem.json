@@ -9,6 +9,78 @@
     "imageUrl": "/images/partners/wallet-retail.webp"
   },
   {
+    "name": "WOOFi",
+    "url": "https://fi.woo.org/",
+    "description": "One DEX to rule all chains. Trade and earn like royalty with best pricing, cross-chain swaps, and single-sided yields.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/woofi.png"
+  },
+  {
+    "name": "Arrakis Finance",
+    "url": "https://www.arrakis.finance/",
+    "description": "Arrakis builds trustless market making strategies to make protocol tokens liquid.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/arrakis.png"
+  },
+  {
+    "name": "PitchTalk",
+    "url": "https://pitchtalk.com/",
+    "description": "PitchTalk is a platform for communication between projects, investors, and communities. We help you overcome hurdles and reach the pinnacles of success through open and effective communication. ",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/appicon.png"
+  },
+  {
+    "name": "Sismo",
+    "url": "https://www.sismo.io/",
+    "description": "Sismo is a sovereign identity aggregator and crypto-native sso. ",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/sismo.png"
+  },
+  {
+    "name": "Bitget Wallet",
+    "url": "https://web3.bitget.com/",
+    "description": "Ultimate Web3 Portal to the Crypto Universe with integrated Cross-Chain Swap, Nft Marketplace, Onramp, Dapp store, Defi, and Staking solution catering 12 million+ users across 168 countries.",
+    "tags": [
+      "wallet"
+    ],
+    "imageUrl": "/images/partners/bitget.png"
+  },
+  {
+    "name": "imToken",
+    "url": "https://token.im/",
+    "description": "imToken, a reliable non-custodial mobile wallet for tokens you own - cryptocurrencies, stable coins, NFTs, and more. We are inspired to make digital life equally accessible to everyone.",
+    "tags": [
+      "wallet"
+    ],
+    "imageUrl": "/images/partners/imtoken.png"
+  },
+  {
+    "name": "Furrend",
+    "url": "http://furrend.xyz/",
+    "description": "Furrend is a web3 pet video-sharing social network that provides the tools, resources, and infrastructure for content creators to monetize their work and engage with their community through digital assets.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/furrend.png"
+  },
+  {
+    "name": "Land, Labor, and Capitol",
+    "url": "https://llcgame.io/",
+    "description": "Onchain tycoon game where players are in true control: to create new retail assets (as NFTs), to launch player owned companies (ERC-6551 concept, since each company can hold deeds, resources etc) and ultimately to launch new game instances, creating a huge economy with multiple game instances.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/landlabor.jpeg"
+  },
+  {
     "name": "Superbridge",
     "url": "https://superbridge.app",
     "description": "Native token bridging interface for OP Stack chains.",
@@ -504,15 +576,6 @@
     "imageUrl": "/images/partners/dackie.webp"
   },
   {
-    "name": "Meridian Finance",
-    "url": "https://www.meridianfinance.net",
-    "description": "Meridian is a decentralized, non-custodial, governance-free borrowing protocol that enables users to obtain interest-free loans against ETH. Loans are paid in USDM, a USD pegged stablecoin.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/meridian.webp"
-  },
-  {
     "name": "Plasma Finance",
     "url": "https://plasma.finance/",
     "description": "Multichain DeFi Aggregator, HyperDEX aggregator, Bridge Aggregator, Farming, Portfolio Management and Mobile App.",
@@ -520,24 +583,6 @@
       "defi"
     ],
     "imageUrl": "/images/partners/plasma.webp"
-  },
-  {
-    "name": "Revoke.cash",
-    "url": "https://revoke.cash",
-    "description": "Revoke.cash is a consumer security application that offers a token approval management dashboard and scam-prevention browser extension.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/revoke.webp"
-  },
-  {
-    "name": "Pulsar Finance",
-    "url": "https://app.pulsar.finance",
-    "description": "Pulsar Finance is a cross-chain portfolio dashboard that allows you to track all your holdings including tokens, DeFi positions and NFTs across 78+ blockchains and 8 CEXes.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/pulsar.webp"
   },
   {
     "name": "Synapse Protocol",
@@ -838,15 +883,6 @@
     "imageUrl": "/images/partners/iskra.webp"
   },
   {
-    "name": "Mean Finance",
-    "url": "https://mean.finance",
-    "description": "Mean Finance is the go-to platform for decentralized investment tools that will empower you in the journey to responsible and diversified investing in the emerging crypto asset thesis.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/mean_finance.webp"
-  },
-  {
     "name": "Moonwell",
     "url": "https://moonwell.fi",
     "description": "Moonwell is an open and permissionless lending and borrowing DeFi protocol.",
@@ -874,15 +910,6 @@
     "imageUrl": "/images/partners/nansen.webp"
   },
   {
-    "name": "Neptune Mutual",
-    "url": "https://neptunemutual.com/",
-    "description": "Neptune Mutual is a DeFi insurance protocol. Our parametric cover marketplace enables you to purchase cover policies to protect your digital assets from security and custody risks.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/neptune_mutual.webp"
-  },
-  {
     "name": "Odos",
     "url": "http://app.odos.xyz",
     "description": "Odos traverses a large universe of possible token swap combinations and non-linear paths delivering greater savings to its users. Swap one or multiple tokens in a single atomic transaction.",
@@ -908,15 +935,6 @@
       "infra"
     ],
     "imageUrl": "/images/partners/opencover.webp"
-  },
-  {
-    "name": "Panoptic",
-    "url": "http://panoptic.xyz/",
-    "description": "Panoptic re-imagines options to work onchain: options have no expiry and require no oracles, intermediaries, counterparties, or order books. The result is a permissionless, governance-minimized protocol with no liquidity fragmentation.\n\nPanoptic enables the trading of options on top of any asset pool in the Uniswap v3 ecosystem. We do for decentralized options markets what xy=k automated market maker protocols did for spot trading.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/panoptic.webp"
   },
   {
     "name": "Pyth Network",
@@ -1525,15 +1543,6 @@
     "imageUrl": "/images/partners/dia.webp"
   },
   {
-    "name": "Faraway",
-    "url": "https://faraway.com",
-    "description": "Faraway is an open economy dev studio and game publisher specializing in blockchain-enabled games including Mini Royale: Nations, Serum City, and more.",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/faraway.webp"
-  },
-  {
     "name": "Frame",
     "url": "https://frame.sh",
     "description": "System-wide web3 wallet for macOS, Windows, and Linux. Seamlessly access your web3 accounts from any browser, command-line, or native dapp.",
@@ -1595,15 +1604,6 @@
       "onramp"
     ],
     "imageUrl": "/images/partners/onboard.webp"
-  },
-  {
-    "name": "Photo Finish™ LIVE",
-    "url": "https://photofinish.live",
-    "description": "Fulfill your lifelong fantasy of winning the Kentucky Derby! Experience the thrill of owning a race horse without any of the hassle.",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/photo_finish.webp"
   },
   {
     "name": "Pixelmon",
