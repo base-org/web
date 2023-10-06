@@ -53,13 +53,15 @@ export function DepositContainer() {
     chainId: parseInt(publicRuntimeConfig.l1ChainID),
   });
 
+  const erc20Spender =
+    selectedAsset.protocol === 'CCTP'
+      ? publicRuntimeConfig.l1CCTPTokenMessengerAddress
+      : publicRuntimeConfig.l1BridgeProxyAddress;
+
   const { data: readERC20Approval, error: readERC20ApprovalError } = useIsContractApproved({
     contactAddress: selectedAsset.L1contract,
     address,
-    spender:
-      selectedAsset.protocol === 'CCTP'
-        ? publicRuntimeConfig.l1CCTPTokenMessengerAddress
-        : publicRuntimeConfig.l1BridgeProxyAddress,
+    spender: erc20Spender,
   });
 
   const readApprovalResult = useMemo(() => {
@@ -84,10 +86,7 @@ export function DepositContainer() {
   // approve erc20
   const approveConfig = useApproveContract({
     contractAddress: selectedAsset.L1contract,
-    spender:
-      selectedAsset.protocol === 'CCTP'
-        ? publicRuntimeConfig.l1CCTPTokenMessengerAddress
-        : publicRuntimeConfig.l1BridgeProxyAddress,
+    spender: erc20Spender,
     approveAmount: depositAmount,
     decimals: selectedAsset.decimals,
   });
