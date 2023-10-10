@@ -20,16 +20,29 @@ slug: /network-information
 
 ---
 
-#### Base Testnet
+#### Base Testnet (Goerli)
 
 | Name            | Value                                                                                                 |
-| :-------------- | :---------------------------------------------------------------------------------------------------- |
+| :-------------- |:------------------------------------------------------------------------------------------------------|
 | Network Name    | Base Goerli                                                                                           |
-| Description     | The public testnet for Base.                                                                          |
+| Description     | A public testnet for Base.                                                                            |
 | RPC Endpoint    | [https://goerli.base.org](https://goerli.base.org)<br/>_Rate limited and not for production systems._ |
 | Chain ID        | 84531                                                                                                 |
 | Currency Symbol | ETH                                                                                                   |
 | Block Explorer  | [https://goerli.basescan.org](https://goerli.basescan.org)                                            |
+
+---
+
+#### Base Testnet (Sepolia)
+
+| Name            | Value                                                                                                   |
+| :-------------- |:--------------------------------------------------------------------------------------------------------|
+| Network Name    | Base Sepolia                                                                                            |
+| Description     | A public testnet for Base.                                                                              |
+| RPC Endpoint    | [https://sepolia.base.org](https://sepolia.base.org)<br/>_Rate limited and not for production systems._ |
+| Chain ID        | 84532                                                                                                   |
+| Currency Symbol | ETH                                                                                                     |
+| Block Explorer  | [https://sepolia-explorer.base.org](https://sepolia-explorer.base.org)                                            |
 
 ---
 
