@@ -3,7 +3,7 @@ title: Tokens
 slug: /tokens/list
 ---
 
-# The Base Goerli & Mainnet Token List
+# The Base Token List
 
 This page is intended for token issuers who already have an ERC-20 contract deployed on Ethereum and would like to submit their token for bridging between Ethereum and Base and Base Mainnet to Base Bridge and other bridges. Base uses the [Optimism Superchain token list](https://github.com/ethereum-optimism/ethereum-optimism.github.io) as a reference for tokens that have been deployed on Base.
 
