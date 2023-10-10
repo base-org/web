@@ -15,7 +15,7 @@ const ERC20_DEPOSIT_ADDRESS = (
 ).toLowerCase();
 
 const CCTP_DEPOSIT_ADDRESS = (
-  publicRuntimeConfig?.l1CCTPTokenMessengerAddress ?? '0x877b8e8c9e2383077809787ED6F279ce01CB4cc8'
+  publicRuntimeConfig?.l1CCTPTokenMessengerAddress ?? '0xd0c3da58f55358142b8d3e06c1c30c5c6114efe8'
 ).toLowerCase();
 
 export function isETHOrERC20Deposit(tx: BlockExplorerTransaction) {

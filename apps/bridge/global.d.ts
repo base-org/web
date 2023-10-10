@@ -40,6 +40,7 @@ declare module 'next/config' {
       complianceApiURL: string;
       sepoliaBridgeURL: string;
       cctpAttestationsAPIURL: string;
+      cctpEnabled: string;
     };
   };
 

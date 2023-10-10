@@ -37,7 +37,7 @@ export const CCTPBridgeRow = memo(function CCTPBridgeRow({
     <tr className="mb-4 grid grid-cols-2 grid-rows-2 md:table-row">
       <td className="hidden md:table-cell">
         <div className="flex flex-row items-start gap-2">
-          <TransactionIcon bridgeDirection="deposit" phase={status} protocol="CCTP" />
+          <TransactionIcon bridgeDirection={bridgeDirection} phase={status} protocol="CCTP" />
           <div className="flex flex-col">
             <p>{date ?? ''}</p>
             <p>{time ?? ''}</p>
@@ -47,7 +47,7 @@ export const CCTPBridgeRow = memo(function CCTPBridgeRow({
       {/* mobile design - left column */}
       <td className="md:hidden">
         <div className="flex flex-row items-start gap-2">
-          <TransactionIcon bridgeDirection="deposit" phase={status} protocol="CCTP" />
+          <TransactionIcon bridgeDirection={bridgeDirection} phase={status} protocol="CCTP" />
           <div className="flex flex-col">
             <a
               target="_blank"

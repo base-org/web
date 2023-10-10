@@ -25,12 +25,12 @@ import { useAccount, useBalance, useContractWrite } from 'wagmi';
 import { useIsPermittedToBridgeTo } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridgeTo';
 import { getL1NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL1NetworkForChainEnv';
 import { getL2NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL2NetworkForChainEnv';
-import { getDepositAssets } from 'apps/bridge/src/utils/assets/getDepositAssets';
+import { getDepositAssetsForChainEnv } from 'apps/bridge/src/utils/assets/getDepositAssetsForChainEnv';
 import { usePrepareInitiateCCTPBridge } from 'apps/bridge/src/utils/hooks/usePrepareInitiateCCTPBridge';
 
 const { publicRuntimeConfig } = getConfig();
 
-const activeAssets = getDepositAssets();
+const activeAssets = getDepositAssetsForChainEnv();
 
 const chainId = parseInt(publicRuntimeConfig.l1ChainID);
 
@@ -62,6 +62,7 @@ export function DepositContainer() {
     contactAddress: selectedAsset.L1contract,
     address,
     spender: erc20Spender,
+    bridgeDirection: 'deposit',
   });
 
   const readApprovalResult = useMemo(() => {
@@ -89,6 +90,7 @@ export function DepositContainer() {
     spender: erc20Spender,
     approveAmount: depositAmount,
     decimals: selectedAsset.decimals,
+    bridgeDirection: 'deposit',
   });
   const { writeAsync: approveWrite } = useContractWrite(approveConfig);
 
@@ -133,10 +135,11 @@ export function DepositContainer() {
   const depositCCTPAssetConfig = usePrepareInitiateCCTPBridge({
     mintRecipient: isSmartContractWallet ? (depositTo as `0x${string}`) : address,
     asset: selectedAsset,
-    depositAmount,
+    amount: depositAmount,
     destinationDomain: parseInt(publicRuntimeConfig.l2CCTPDomain),
     isPermittedToBridge,
     includeTosVersionByte,
+    bridgeDirection: 'deposit',
   });
   const { writeAsync: depositCCTPAssetWrite } = useContractWrite(depositCCTPAssetConfig);
 

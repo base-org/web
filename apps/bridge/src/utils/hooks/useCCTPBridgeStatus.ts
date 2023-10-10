@@ -48,7 +48,7 @@ export function useCCTPBridgeStatus({
 
   const { data: initiateTxReceipt } = useWaitForTransaction({
     hash: initiateTxHash,
-    chainId: parseInt(publicRuntimeConfig.l1ChainID),
+    chainId: bridgeDirection === 'deposit' ? l1ChainID : l2ChainID,
   });
 
   const { data: bridgeAttestation } = useQuery(
@@ -94,7 +94,6 @@ export function useCCTPBridgeStatus({
         // It it has been received, the bridge is complete.
         // We can check if the message has been received by simulating a call to receiveMessage.
         // If it fails, assume it's because the message has already been received.
-
         try {
           const { result } = await publicClient.simulateContract({
             address: publicRuntimeConfig.l2CCTPMessageTransmitterAddress,

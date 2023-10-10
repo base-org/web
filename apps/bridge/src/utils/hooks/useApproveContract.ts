@@ -9,6 +9,7 @@ type UseApproveContractProps = {
   spender: Address;
   approveAmount: string;
   decimals: number;
+  bridgeDirection: 'deposit' | 'withdraw';
 };
 
 export function useApproveContract({
@@ -16,6 +17,7 @@ export function useApproveContract({
   spender,
   approveAmount,
   decimals,
+  bridgeDirection,
 }: UseApproveContractProps) {
   const approveAmountBN =
     approveAmount === '' || Number.isNaN(Number(approveAmount))
@@ -23,11 +25,12 @@ export function useApproveContract({
       : parseUnits(approveAmount, decimals);
   const { config: depositConfig } = usePrepareContractWrite({
     address: contractAddress,
-    // TODO: Replace with dynamic abi importer
     abi: erc20ABI,
     functionName: 'approve',
-    chainId: parseInt(publicRuntimeConfig.l1ChainID),
-    // TODO: Add Allowance selection components
+    chainId:
+      bridgeDirection === 'deposit'
+        ? parseInt(publicRuntimeConfig.l1ChainID)
+        : parseInt(publicRuntimeConfig.l2ChainID),
     args: [spender, approveAmountBN],
     cacheTime: 0,
   });

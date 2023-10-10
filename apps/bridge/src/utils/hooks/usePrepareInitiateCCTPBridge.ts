@@ -6,39 +6,49 @@ import { Address, usePrepareContractWrite } from 'wagmi';
 
 const { publicRuntimeConfig } = getConfig();
 
+const BRIDGE_DIRECTION_TO_TOKEN_MESSENGER: Record<'deposit' | 'withdraw', `0x${string}`> = {
+  deposit: publicRuntimeConfig.l1CCTPTokenMessengerAddress,
+  withdraw: publicRuntimeConfig.l2CCTPTokenMessengerAddress,
+};
+
+const BRIDGE_DIRECTION_TO_CHAIN_ID: Record<'deposit' | 'withdraw', number> = {
+  deposit: parseInt(publicRuntimeConfig.l1ChainID),
+  withdraw: parseInt(publicRuntimeConfig.l2ChainID),
+};
+
 type UsePrepareInitiateCCTPBridgeProps = {
   mintRecipient?: Address;
   asset: Asset;
-  depositAmount: string;
+  amount: string;
   destinationDomain: number;
   isPermittedToBridge: boolean;
   includeTosVersionByte: boolean;
+  bridgeDirection: 'deposit' | 'withdraw';
 };
 
 export function usePrepareInitiateCCTPBridge({
   mintRecipient,
   asset,
-  depositAmount,
+  amount,
   destinationDomain,
   isPermittedToBridge,
+  bridgeDirection,
 }: UsePrepareInitiateCCTPBridgeProps) {
-  const shouldPrepare = isPermittedToBridge && depositAmount !== '' && mintRecipient;
+  const shouldPrepare = isPermittedToBridge && amount !== '' && mintRecipient;
 
-  const { config: depositConfig } = usePrepareContractWrite({
-    address: shouldPrepare ? publicRuntimeConfig.l1CCTPTokenMessengerAddress : undefined,
+  const { config } = usePrepareContractWrite({
+    address: shouldPrepare ? BRIDGE_DIRECTION_TO_TOKEN_MESSENGER[bridgeDirection] : undefined,
     abi: TokenMessenger,
     functionName: 'depositForBurn',
-    chainId: parseInt(publicRuntimeConfig.l1ChainID),
+    chainId: BRIDGE_DIRECTION_TO_CHAIN_ID[bridgeDirection],
     args: shouldPrepare
       ? [
-          depositAmount !== ''
-            ? parseUnits(depositAmount, asset.decimals)
-            : parseUnits('0', asset.decimals),
+          amount !== '' ? parseUnits(amount, asset.decimals) : parseUnits('0', asset.decimals),
           destinationDomain,
           pad(mintRecipient),
-          asset.L1contract as Address,
+          (bridgeDirection === 'deposit' ? asset.L1contract : asset.L2contract) as Address,
         ]
       : undefined,
   });
-  return depositConfig;
+  return config;
 }

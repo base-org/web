@@ -190,6 +190,7 @@ module.exports = extendBaseConfig({
     complianceApiURL: process.env.COMPLIANCE_API_URL,
     sepoliaBridgeURL: process.env.SEPOLIA_BRIDGE_URL,
     cctpAttestationsAPIURL: process.env.CCTP_ATTESTATIONS_API_URL,
+    cctpEnabled: process.env.CCTP_ENABLED,
   },
   ...baseConfig,
   async headers() {
