@@ -21,7 +21,6 @@ export function usePrepareProveWithdrawal(
   isERC20Withdrawal = false,
   latestL2BlockNumber?: BigNumber,
 ) {
-  console.log({ latestL2BlockNumber });
   const [withdrawalForTx, setWithdrawalForTx] = useState<WithdrawalMessage | null>(null);
   const [proofForTx, setProofForTx] = useState<BedrockCrossChainMessageProof | null>(null);
 
