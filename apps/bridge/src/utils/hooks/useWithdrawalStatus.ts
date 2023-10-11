@@ -15,14 +15,14 @@ const { publicRuntimeConfig } = getConfig();
 
 type UseWithdrawalStateProps = {
   initializeTxHash: `0x${string}`;
-  latestL2BlockNumber?: BigNumber;
+  blockNumberOfLatestL2OutputProposal?: BigNumber;
   isERC20Withdrawal: boolean;
   proveTxHash?: `0x${string}`;
   finalizeTxHash?: `0x${string}`;
 };
 export function useWithdrawalStatus({
   initializeTxHash,
-  latestL2BlockNumber,
+  blockNumberOfLatestL2OutputProposal,
   isERC20Withdrawal,
   proveTxHash,
   finalizeTxHash,
@@ -52,10 +52,10 @@ export function useWithdrawalStatus({
 
   const isWithdrawalReadyToProve = useMemo(
     () =>
-      latestL2BlockNumber && withdrawalReceipt?.blockNumber
-        ? latestL2BlockNumber.toNumber() >= withdrawalReceipt?.blockNumber
+      blockNumberOfLatestL2OutputProposal && withdrawalReceipt?.blockNumber
+        ? blockNumberOfLatestL2OutputProposal.toNumber() >= withdrawalReceipt?.blockNumber
         : false,
-    [latestL2BlockNumber, withdrawalReceipt],
+    [blockNumberOfLatestL2OutputProposal, withdrawalReceipt],
   );
 
   useEffect(() => {

@@ -21,7 +21,7 @@ import { ProveWithdrawalButton } from './ProveWithdrawalButton';
 
 type WithdrawalRowProps = {
   transaction: BridgeTransaction;
-  latestL2BlockNumber?: BigNumber;
+  blockNumberOfLatestL2OutputProposal?: BigNumber;
   onOpenProveWithdrawalModal: () => void;
   onCloseProveWithdrawalModal: () => void;
   onOpenFinalizeWithdrawalModal: () => void;
@@ -32,7 +32,7 @@ type WithdrawalRowProps = {
 
 export const WithdrawalRow = memo(function WithdrawalRow({
   transaction,
-  latestL2BlockNumber,
+  blockNumberOfLatestL2OutputProposal,
   onOpenProveWithdrawalModal,
   onCloseProveWithdrawalModal,
   onOpenFinalizeWithdrawalModal,
@@ -45,7 +45,7 @@ export const WithdrawalRow = memo(function WithdrawalRow({
   const [finalizeTxHash, setFinalizeTxHash] = useState<`0x${string}` | undefined>(undefined);
   const { status: withdrawalStatus, challengeWindowEndTime } = useWithdrawalStatus({
     initializeTxHash: transaction.hash,
-    latestL2BlockNumber,
+    blockNumberOfLatestL2OutputProposal,
     isERC20Withdrawal,
     proveTxHash,
     finalizeTxHash,
@@ -53,21 +53,21 @@ export const WithdrawalRow = memo(function WithdrawalRow({
 
   const date = transaction.blockTimestamp
     ? new Date(Number(transaction.blockTimestamp) * 1000).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    })
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })
     : undefined;
   const dateMonthDayOnly = transaction.blockTimestamp
     ? new Date(Number(transaction.blockTimestamp) * 1000).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-    })
+        month: 'short',
+        day: 'numeric',
+      })
     : undefined;
   const time = transaction.blockTimestamp
     ? new Date(Number(transaction.blockTimestamp) * 1000).toLocaleTimeString('en-US', {
-      timeStyle: 'short',
-    })
+        timeStyle: 'short',
+      })
     : undefined;
   const withdrawalAmount = utils.formatUnits(
     transaction.amount,
@@ -147,6 +147,7 @@ export const WithdrawalRow = memo(function WithdrawalRow({
         onCloseProveWithdrawalModal={onCloseProveWithdrawalModal}
         setProveTxHash={setProveTxHash}
         setModalProveTxHash={setModalProveTxHash}
+        blockNumberOfLatestL2OutputProposal={blockNumberOfLatestL2OutputProposal}
       />
     ),
     PROVE_TX_PENDING: pendingButton,
