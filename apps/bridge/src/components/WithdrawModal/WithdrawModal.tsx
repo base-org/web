@@ -44,7 +44,7 @@ export function WithdrawModal({ isOpen, onClose, L2TxHash }: WithdrawModalProps)
               target="_blank"
               rel="noreferrer noopener"
             >
-              View on Basescan
+              View Transaction
             </a>
           </div>
         )

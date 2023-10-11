@@ -19,3 +19,6 @@ build:
     - BaldurECR:
         name: goerli-bridge
         path: ./apps/bridge/Dockerfile
+    - BaldurECR:
+        name: sepolia-bridge
+        path: ./apps/bridge/Dockerfile

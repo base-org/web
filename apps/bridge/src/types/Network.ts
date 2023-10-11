@@ -1,1 +1,1 @@
-export type Network = 'homestead' | 'goerli' | 'base' | 'base-goerli';
+export type Network = 'homestead' | 'goerli' | 'sepolia' | 'base' | 'base-goerli' | 'base-sepolia';

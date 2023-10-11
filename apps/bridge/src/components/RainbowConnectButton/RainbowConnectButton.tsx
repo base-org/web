@@ -34,10 +34,10 @@ export function WalletModal({ isOpen, displayAddress, address, Close }: WalletMo
       <Close>
         <div className="fixed inset-0 bg-black bg-opacity-75 transition-opacity" />
       </Close>
-      <div className="fixed top-[40px] right-[32px] z-10 box-border w-[300px] overflow-y-auto bg-black sm:bg-transparent">
+      <div className="fixed right-[32px] top-[40px] z-10 box-border w-[300px] overflow-y-auto bg-black sm:bg-transparent">
         <div className="flex h-full justify-center text-center sm:min-h-full sm:items-center sm:p-0">
-          <div className="modal box-border flex w-full w-full w-[300px] transform flex-col items-start justify-center overflow-hidden rounded-lg p-0 text-left shadow-xl transition-all sm:relative sm:my-8">
-            <div className="absolute top-3 right-3 flex w-full flex-row items-center justify-end sm:relative sm:top-0 sm:right-0 sm:p-4 sm:px-6" />
+          <div className="modal box-border flex w-[300px] w-full w-full transform flex-col items-start justify-center overflow-hidden rounded-lg p-0 text-left shadow-xl transition-all sm:relative sm:my-8">
+            <div className="absolute right-3 top-3 flex w-full flex-row items-center justify-end sm:relative sm:right-0 sm:top-0 sm:p-4 sm:px-6" />
             <div className="mb-4 mt-4 flex w-full flex-row justify-center">
               <Image src="/icons/default-avatar.svg" alt="avatar" width={64} height={64} />
             </div>
@@ -53,7 +53,7 @@ export function WalletModal({ isOpen, displayAddress, address, Close }: WalletMo
                 />
               </CopyToClipboard>
             </h5>
-            <div className="w-full items-center justify-center p-4 pt-6 pb-8 text-center">
+            <div className="w-full items-center justify-center p-4 pb-8 pt-6 text-center">
               <div className="inline-block">
                 <DisconnectWalletButton />
               </div>
@@ -65,8 +65,8 @@ export function WalletModal({ isOpen, displayAddress, address, Close }: WalletMo
   );
 }
 
-const ALL_SUPPORTED_CHAIN_IDS = [1, 5, 8453, 84531];
-const TESTNET_SUPPORTED_CHAIN_IDS = [5, 84531];
+const ALL_SUPPORTED_CHAIN_IDS = [1, 5, 11155111, 8453, 84531, 84532];
+const TESTNET_SUPPORTED_CHAIN_IDS = [5, 11155111, 84531, 84532];
 const supportedChains = (
   publicRuntimeConfig.mainnetGALaunchFlag === 'true'
     ? ALL_SUPPORTED_CHAIN_IDS
@@ -83,23 +83,51 @@ function NetworkSwitcherOptions({ selectedChainId }: NetworkSwitcherOptionsProps
   const chainEnv = useChainEnv();
   const isMainnet = chainEnv === 'mainnet';
 
+  // Ugly but temporary while we support 2 testnets
+  const isGoerli = publicRuntimeConfig.l1ChainID === '5';
+
   return (
     <>
       {supportedChains.map((chain) => {
         function handleSwitchNetwork() {
+          // We are on the mainnet bridge. If trying to switch to a testnet, redirect to the corresponding bridge.
+          // Otherwise, switch networks.
           if (isMainnet) {
             if (chain.id === 5 || chain.id === 84531) {
               void push(`${publicRuntimeConfig.goerliBridgeURL}${pathname}`);
+              return;
+            } else if (chain.id === 11155111 || chain.id === 84532) {
+              void push(`${publicRuntimeConfig.sepoliaBridgeURL}${pathname}`);
               return;
             }
             switchNetwork?.(chain.id);
             return;
           }
+
+          // We are on one of the testnet bridges. If trying to switch to mainnet, redirect to the mainnet bridge.
+          // This is independent of which testnet bridge we are on.
           if (chain.id === 1 || chain.id === 8453) {
             void push(`${publicRuntimeConfig.mainnetBridgeURL}${pathname}`);
-          } else {
+            return;
+          }
+
+          // We are on the Goerli bridge. If trying to switch to Sepolia, redirect to the Sepolia bridge.
+          // Otherwise, switch networks. Note that switching to mainnet is already handled above.
+          if (isGoerli) {
+            if (chain.id === 11155111 || chain.id === 84532) {
+              void push(`${publicRuntimeConfig.sepoliaBridgeURL}${pathname}`);
+              return;
+            }
             switchNetwork?.(chain.id);
           }
+
+          // We are on the Sepolia bridge. If trying to switch to Goerli, redirect to the Goerli bridge.
+          // Otherwise, switch networks. Note that switching to mainnet is already handled above.
+          if (chain.id === 5 || chain.id === 84531) {
+            void push(`${publicRuntimeConfig.goerliBridgeURL}${pathname}`);
+            return;
+          }
+          switchNetwork?.(chain.id);
         }
 
         return (
@@ -166,7 +194,11 @@ export function RainbowConnectButton() {
 
   const isOnWrongNetworkForChainEnv =
     (isMainnet && currentChain?.id !== 1 && currentChain?.id !== 8453) ||
-    (!isMainnet && currentChain?.id !== 5 && currentChain?.id !== 84531);
+    (!isMainnet &&
+      currentChain?.id !== 5 &&
+      currentChain?.id !== 11155111 &&
+      currentChain?.id !== 84531 &&
+      currentChain?.id !== 84532);
 
   return (
     <ConnectButton.Custom>

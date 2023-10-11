@@ -24,6 +24,8 @@ import { parseUnits } from 'ethers/lib/utils.js';
 import getConfig from 'next/config';
 import { useAccount, useBalance, useContractWrite } from 'wagmi';
 import { useIsPermittedToBridgeTo } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridgeTo';
+import { getL1NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL1NetworkForChainEnv';
+import { getL2NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL2NetworkForChainEnv';
 
 const assetList = getAssetListForChainEnv();
 
@@ -246,8 +248,8 @@ export function DepositContainer() {
           isApprovalTx={isApprovalTx}
         />
         <BridgeInput
-          inputNetwork={isMainnet ? 'homestead' : 'goerli'}
-          outputNetwork={isMainnet ? 'base' : 'base-goerli'}
+          inputNetwork={getL1NetworkForChainEnv()}
+          outputNetwork={getL2NetworkForChainEnv()}
           balance={parseFloat(L1Balance?.formatted ?? '0').toFixed(6) ?? ''}
           amount={depositAmount}
           setAmount={setDepositAmount}
@@ -268,7 +270,7 @@ export function DepositContainer() {
             header="TRANSACTION SUMMARY"
             selectedAsset={selectedAsset}
             balance={parseFloat(depositAmount ?? '0').toFixed(6) ?? ''}
-            outputNetwork={isMainnet ? 'base' : 'base-goerli'}
+            outputNetwork={getL2NetworkForChainEnv()}
             chainId={publicRuntimeConfig.l1ChainID}
             isDeposit
           />

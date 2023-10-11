@@ -4,7 +4,6 @@ import {
   hashWithdrawal,
   toRpcHexString,
 } from '@eth-optimism/core-utils';
-import { makeStateTrieProof } from '@eth-optimism/sdk';
 import OptimismPortal from 'apps/bridge/src/contract-abis/OptimismPortal';
 import { WithdrawalMessage } from 'apps/bridge/src/types/WithdrawalMessage';
 import { useL2OutputProposal } from 'apps/bridge/src/utils/hooks/useL2OutputProposal';
@@ -15,6 +14,30 @@ import getConfig from 'next/config';
 import { usePrepareContractWrite, useProvider, useWaitForTransaction } from 'wagmi';
 
 const { publicRuntimeConfig } = getConfig();
+
+const makeStateTrieProof = async (
+  provider: providers.JsonRpcProvider,
+  address: string,
+  slot: string,
+): Promise<{
+  accountProof: string[];
+  storageProof: string[];
+  storageValue: BigNumber;
+  storageRoot: string;
+}> => {
+  const proof = (await provider.send('eth_getProof', [address, [slot], 'latest'])) as {
+    accountProof: string[];
+    storageProof: { proof: string[]; value: BigNumber }[];
+    storageHash: string;
+  };
+
+  return {
+    accountProof: proof.accountProof,
+    storageProof: proof.storageProof[0].proof,
+    storageValue: BigNumber.from(proof.storageProof[0].value),
+    storageRoot: proof.storageHash,
+  };
+};
 
 export function usePrepareProveWithdrawal(withdrawalTx: `0x${string}`, isERC20Withdrawal = false) {
   const [withdrawalForTx, setWithdrawalForTx] = useState<WithdrawalMessage | null>(null);
@@ -37,24 +60,24 @@ export function usePrepareProveWithdrawal(withdrawalTx: `0x${string}`, isERC20Wi
     args:
       withdrawalForTx && proofForTx
         ? [
-          {
-            nonce: withdrawalForTx.nonce,
-            sender: withdrawalForTx.sender,
-            target: withdrawalForTx.target,
-            value: withdrawalForTx.value,
-            gasLimit: withdrawalForTx.gasLimit,
-            data: withdrawalForTx.data,
-          },
-          BigNumber.from(proofForTx.l2OutputIndex),
-          {
-            version: proofForTx.outputRootProof.version as `0x${string}`,
-            stateRoot: proofForTx.outputRootProof.stateRoot as `0x${string}`,
-            messagePasserStorageRoot: proofForTx.outputRootProof
-              .messagePasserStorageRoot as `0x${string}`,
-            latestBlockhash: proofForTx.outputRootProof.latestBlockhash as `0x${string}`,
-          },
-          proofForTx.withdrawalProof as `0x${string}`[],
-        ]
+            {
+              nonce: withdrawalForTx.nonce,
+              sender: withdrawalForTx.sender,
+              target: withdrawalForTx.target,
+              value: withdrawalForTx.value,
+              gasLimit: withdrawalForTx.gasLimit,
+              data: withdrawalForTx.data,
+            },
+            BigNumber.from(proofForTx.l2OutputIndex),
+            {
+              version: proofForTx.outputRootProof.version as `0x${string}`,
+              stateRoot: proofForTx.outputRootProof.stateRoot as `0x${string}`,
+              messagePasserStorageRoot: proofForTx.outputRootProof
+                .messagePasserStorageRoot as `0x${string}`,
+              latestBlockhash: proofForTx.outputRootProof.latestBlockhash as `0x${string}`,
+            },
+            proofForTx.withdrawalProof as `0x${string}`[],
+          ]
         : undefined,
   });
 
@@ -88,7 +111,6 @@ export function usePrepareProveWithdrawal(withdrawalTx: `0x${string}`, isERC20Wi
 
         const stateTrieProof = await makeStateTrieProof(
           l2Provider as providers.JsonRpcProvider,
-          messageBedrockOutput.l2BlockNumber,
           publicRuntimeConfig.l2L1MessagePasserAddress,
           messageSlot,
         );

@@ -54,6 +54,8 @@ const contentSecurityPolicy = {
     'https://mainnet.base.org', // Base rpc
     'https://rpc.ankr.com/eth_goerli', // Goerli rpc
     'https://goerli.base.org', // Base Goerli rpc
+    'https://ethereum-sepolia.publicnode.com', // Sepolia rpc
+    'https://sepolia.base.org', // Base Sepolia rpc
     'https://bridge-api.base.org', // Bridge API
     'https://api.coingecko.com/api/v3/simple/price', // Price API
     'wss://www.walletlink.org/rpc', // Coinbase Wallet SDK
@@ -69,7 +71,10 @@ const contentSecurityPolicy = {
     'https://api-goerli.basescan.org/api', // Basescan
     'https://api.basescan.org/api', // Basescan
     'https://base.blockscout.com/api', // Blockscout
-    'https://base-goerli.blockscout.com/api', // Blockscout
+    'https://base-goerli.blockscout.com/api', // Blockscout,
+    'https://sepolia.etherscan.io', // Sepolia Etherscan
+    'https://api-sepolia.etherscan.io/api', // Sepolia Etherscan API
+    'https://base-sepolia.blockscout.com', // Sepolia Blockscout
   ],
   'img-src': ["'self'", 'data:', 'https://*.walletconnect.com/'], // WalletConnect,
 };
@@ -175,6 +180,7 @@ module.exports = extendBaseConfig({
     bugsnagSessionsUrl: process.env.BUGSNAG_SESSIONS_URL,
     appStage: process.env.APP_STAGE,
     complianceApiURL: process.env.COMPLIANCE_API_URL,
+    sepoliaBridgeURL: process.env.SEPOLIA_BRIDGE_URL,
   },
   ...baseConfig,
   async headers() {

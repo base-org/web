@@ -150,4 +150,83 @@ export default [
     },
     testnet: true,
   },
+  {
+    id: 11155111,
+    network: 'sepolia',
+    name: 'Sepolia',
+    summary: {
+      location: 'Sepolia',
+      svg: '/icons/eth.svg',
+    },
+    svg: '/icons/eth.svg',
+    description: 'Ethereum',
+    nativeCurrency: {
+      name: 'Sepolia Ether',
+      symbol: 'SEP',
+      decimals: 18,
+    },
+    rpcUrls: {
+      alchemy: {
+        http: ['https://eth-sepolia.g.alchemy.com/v2'],
+        webSocket: ['wss://eth-sepolia.g.alchemy.com/v2'],
+      },
+      infura: {
+        http: ['https://sepolia.infura.io/v3'],
+        webSocket: ['wss://sepolia.infura.io/ws/v3'],
+      },
+      default: {
+        http: ['https://ethereum-sepolia.publicnode.com'],
+      },
+      public: {
+        http: ['https://rpc.sepolia.org'],
+      },
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Etherscan',
+        url: 'https://sepolia.etherscan.io',
+      },
+      default: {
+        name: 'Etherscan',
+        url: 'https://sepolia.etherscan.io',
+      },
+    },
+    contracts: {
+      multicall3: {
+        address: '0xca11bde05977b3631167028862be2a173976ca11',
+        blockCreated: 6507670,
+      },
+    },
+    testnet: true,
+  },
+  {
+    id: 84532,
+    name: 'Base Sepolia',
+    network: 'base-sepolia',
+    summary: {
+      location: 'Base Sepolia',
+      svg: '/icons/eth-summary.svg',
+    },
+    svg: '/icons/base.svg',
+    description: 'Testnet',
+    iconUrl:
+      'https://images.ctfassets.net/q5ulk4bp65r7/3TBS4oVkD1ghowTqVQJlqj/2dfd4ea3b623a7c0d8deb2ff445dee9e/Consumer_Wordmark.svg',
+    nativeCurrency: {
+      decimals: 18,
+      name: 'Base Sepolia Ether',
+      symbol: 'ETH',
+    },
+    rpcUrls: {
+      default: {
+        http: ['https://sepolia.base.org'],
+      },
+    },
+    blockExplorers: {
+      default: {
+        name: 'Blockscout',
+        url: 'https://base-sepolia.blockscout.com',
+      },
+    },
+    testnet: true,
+  },
 ] as unknown as Chain[];
