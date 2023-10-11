@@ -21,7 +21,7 @@ import { ProveWithdrawalButton } from './ProveWithdrawalButton';
 
 type WithdrawalRowProps = {
   transaction: BridgeTransaction;
-  latestL2BlockNumber?: BigNumber;
+  blockNumberOfLatestL2OutputProposal?: BigNumber;
   onOpenProveWithdrawalModal: () => void;
   onCloseProveWithdrawalModal: () => void;
   onOpenFinalizeWithdrawalModal: () => void;
@@ -32,7 +32,7 @@ type WithdrawalRowProps = {
 
 export const WithdrawalRow = memo(function WithdrawalRow({
   transaction,
-  latestL2BlockNumber,
+  blockNumberOfLatestL2OutputProposal,
   onOpenProveWithdrawalModal,
   onCloseProveWithdrawalModal,
   onOpenFinalizeWithdrawalModal,
@@ -45,7 +45,7 @@ export const WithdrawalRow = memo(function WithdrawalRow({
   const [finalizeTxHash, setFinalizeTxHash] = useState<`0x${string}` | undefined>(undefined);
   const { status: withdrawalStatus, challengeWindowEndTime } = useWithdrawalStatus({
     initializeTxHash: transaction.hash,
-    latestL2BlockNumber,
+    blockNumberOfLatestL2OutputProposal,
     isERC20Withdrawal,
     proveTxHash,
     finalizeTxHash,
@@ -147,7 +147,7 @@ export const WithdrawalRow = memo(function WithdrawalRow({
         onCloseProveWithdrawalModal={onCloseProveWithdrawalModal}
         setProveTxHash={setProveTxHash}
         setModalProveTxHash={setModalProveTxHash}
-        latestL2BlockNumber={latestL2BlockNumber}
+        blockNumberOfLatestL2OutputProposal={blockNumberOfLatestL2OutputProposal}
       />
     ),
     PROVE_TX_PENDING: pendingButton,

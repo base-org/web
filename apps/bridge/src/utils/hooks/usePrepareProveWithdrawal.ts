@@ -19,7 +19,7 @@ const { publicRuntimeConfig } = getConfig();
 export function usePrepareProveWithdrawal(
   withdrawalTx: `0x${string}`,
   isERC20Withdrawal = false,
-  latestL2BlockNumber?: BigNumber,
+  blockNumberOfLatestL2OutputProposal?: BigNumber,
 ) {
   const [withdrawalForTx, setWithdrawalForTx] = useState<WithdrawalMessage | null>(null);
   const [proofForTx, setProofForTx] = useState<BedrockCrossChainMessageProof | null>(null);
@@ -28,7 +28,9 @@ export function usePrepareProveWithdrawal(
     hash: withdrawalTx,
     chainId: parseInt(publicRuntimeConfig.l2ChainID),
   });
-  const withdrawalL2OutputIndex = useWithdrawalL2OutputIndex(latestL2BlockNumber?.toNumber());
+  const withdrawalL2OutputIndex = useWithdrawalL2OutputIndex(
+    blockNumberOfLatestL2OutputProposal?.toNumber(),
+  );
   const l2OutputProposal = useL2OutputProposal(withdrawalL2OutputIndex);
   const l2Provider = useProvider({ chainId: parseInt(publicRuntimeConfig.l2ChainID) });
 
@@ -64,7 +66,12 @@ export function usePrepareProveWithdrawal(
 
   useEffect(() => {
     void (async () => {
-      if (withdrawalReceipt && withdrawalL2OutputIndex && l2OutputProposal && latestL2BlockNumber) {
+      if (
+        withdrawalReceipt &&
+        withdrawalL2OutputIndex &&
+        l2OutputProposal &&
+        blockNumberOfLatestL2OutputProposal
+      ) {
         const withdrawalMessage = getWithdrawalMessage(withdrawalReceipt, isERC20Withdrawal);
 
         const messageBedrockOutput = {
@@ -92,7 +99,7 @@ export function usePrepareProveWithdrawal(
 
         const stateTrieProof = await makeStateTrieProof(
           l2Provider as providers.JsonRpcProvider,
-          latestL2BlockNumber.toNumber(),
+          blockNumberOfLatestL2OutputProposal.toNumber(),
           publicRuntimeConfig.l2L1MessagePasserAddress,
           messageSlot,
         );
@@ -123,7 +130,7 @@ export function usePrepareProveWithdrawal(
     l2OutputProposal,
     l2Provider,
     isERC20Withdrawal,
-    latestL2BlockNumber,
+    blockNumberOfLatestL2OutputProposal,
   ]);
 
   return config;

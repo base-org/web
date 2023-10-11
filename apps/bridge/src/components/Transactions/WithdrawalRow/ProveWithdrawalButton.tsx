@@ -15,7 +15,7 @@ type ProveWithdrawalButtonProps = {
   onCloseProveWithdrawalModal: () => void;
   setProveTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
   setModalProveTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
-  latestL2BlockNumber?: BigNumber;
+  blockNumberOfLatestL2OutputProposal?: BigNumber;
 };
 
 export const ProveWithdrawalButton = memo(function ProveWithdrawalButton({
@@ -25,14 +25,14 @@ export const ProveWithdrawalButton = memo(function ProveWithdrawalButton({
   onCloseProveWithdrawalModal,
   setProveTxHash,
   setModalProveTxHash,
-  latestL2BlockNumber,
+  blockNumberOfLatestL2OutputProposal,
 }: ProveWithdrawalButtonProps) {
   const isPermittedToBridge = useIsPermittedToBridge();
 
   const proveWithdrawalConfig = usePrepareProveWithdrawal(
     txHash,
     isERC20Withdrawal,
-    latestL2BlockNumber,
+    blockNumberOfLatestL2OutputProposal,
   );
   const { writeAsync: submitProof } = useContractWrite(proveWithdrawalConfig);
 

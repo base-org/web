@@ -4,13 +4,13 @@ import { useContractRead } from 'wagmi';
 
 const { publicRuntimeConfig } = getConfig();
 
-export function useLatestL2BlockNumber() {
-  const { data: latestL2BlockNumber } = useContractRead({
+export function useBlockNumberOfLatestL2OutputProposal() {
+  const { data: blockNumberOfLatestL2OutputProposal } = useContractRead({
     address: publicRuntimeConfig.l2OutputOracleProxyAddress,
     abi: L2OutputOracle,
     functionName: 'latestBlockNumber',
     chainId: parseInt(publicRuntimeConfig.l1ChainID),
   });
 
-  return latestL2BlockNumber;
+  return blockNumberOfLatestL2OutputProposal;
 }
