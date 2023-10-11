@@ -10,7 +10,7 @@ In this article, you'll learn how to fork smart contracts in Ethereum mainnet us
 
 ## Objectives
 
-By the end of this lesson you should be able to:
+By the end of this lesson, you should be able to:
 
 - Use Hardhat Network to create a local fork of mainnet and deploy a contract to it
 - Utilize Hardhat forking features to configure the fork for several use cases
@@ -19,11 +19,11 @@ By the end of this lesson you should be able to:
 
 ## Overview
 
-Hardhat forking is a powerful features that allows developers to create a local replica or fork of the Ethereum network or any other EVM compatible Blockchain. By using this feature, we can develop smart contracts that rely on smart contracts that are already deployed to a particular network.
+Hardhat forking is a powerful feature that allows developers to create a local replica or fork of the Ethereum network or any other EVM-compatible Blockchain. By using this feature, you can develop smart contracts that rely on smart contracts that are already deployed to a particular network.
 
-We will create a BalanceReader.sol contract that reads the USDC balance of a particular holder.
+You will create a BalanceReader.sol contract that reads the USDC balance of a particular holder.
 
-In order to achieve that, we have to:
+In order to achieve that, you need to:
 
 - Create the BalanceReader.sol contract
 - Configure Hardhat to support forking
@@ -38,15 +38,15 @@ Hardhat forking also has other capabilities like:
 - hardhat_setCode
 - hardhat_setStorageAt
 
-Those won't be covered in this guide, however we recommend exploring them a bit more in the following link:
+Those won't be covered in this guide, however it's recommend to explor them a bit more in the following link:
 
-https://hardhat.org/hardhat-network/guides/mainnet-forking.html
+- https://hardhat.org/hardhat-network/guides/mainnet-forking.html
 
-## Create the Balance Reader contract
+## Creating the Balance Reader contract
 
-The BalanceReader contract will be as follows:
+The BalanceReader contract is created as follows:
 
-```Solidity
+```typescript
 pragma solidity 0.8.9;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -63,17 +63,21 @@ contract BalanceReader {
 }
 ```
 
-Notice how we simply pass the address of an account and the address of a token, then we get and return the balance.
+You simply pass the address of an account and the address of a token, then you get and return the balance.
 
 You will need to install @openzeppelin by running:
 
-`npm install @openzeppelin/contracts`
+```bash
+npm install @openzeppelin/contracts
+```
 
-Then we check that everything is working correctly by running:
+Then, check that everything is working correctly by running:
 
-`npx hardhat compile`
+```bash
+npx hardhat compile
+```
 
-We should get:
+You should get:
 
 ```
 Generating typings for: 2 artifacts in dir: typechain-types for target: ethers-v6
@@ -81,13 +85,11 @@ Successfully generated 18 typings!
 Compiled 2 Solidity files successfully
 ```
 
-## Configure Hardhat to support forking
+## Configuring Hardhat to support forking
 
-By default Hardhat uses a network called `hardhat`, we need to change its default configuration by going to the `hardhat.config.ts`.
+By default, Hardhat uses a network called `hardhat`. You must change its default configuration by going to the `hardhat.config.ts` file and include the following in the network:
 
-And include the following in the networks:
-
-```
+```json
 hardhat: {
     forking: {
         url: `https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_MAINNET_KEY ?? ""}`,
@@ -96,74 +98,74 @@ hardhat: {
 },
 ```
 
-Be aware that you need to have an `ALCHEMY_MAINNET_KEY` in your .env file. You can get one directly in [Alchemy](https://www.alchemy.com/).
+Be aware that you need to have an `ALCHEMY_MAINNET_KEY` in your .env file. You can get one directly from [Alchemy](https://www.alchemy.com/).
 
-Also notice that we enabled forking by specifying `enabled: true`, however this value can be changed via environment variables.
+Also notice that forking is enabled by specifying `enabled: true`, however this value can be changed via environment variables.
 
-## Create a test for the BalanceReader.sol contract
+## Creating a test for the BalanceReader.sol contract
 
-We create a test file in the test folder called: `BalanceReader.ts`. with the following content:
+Create a test file in the test folder called `BalanceReader.ts` and include the following:
 
-```Javascript
-import { Signer } from "ethers";
-import { ethers } from "hardhat";
+```typescript
+import { Signer } from 'ethers';
+import { ethers } from 'hardhat';
 
-import { BalanceReader, BalanceReader__factory } from '../typechain-types'
+import { BalanceReader, BalanceReader__factory } from '../typechain-types';
 
-describe("BalanceReader tests", () => {
-    let instance: BalanceReader
-    let accounts: Signer[]
+describe('BalanceReader tests', () => {
+  let instance: BalanceReader;
+  let accounts: Signer[];
 
-    // Configure the addresses we can to check balances for
-    const USDC_MAINNET_ADDRESS = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48" // https://etherscan.io/token/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48
-    const ARBITRUM_ONE_GATEWAY = "0xcEe284F754E854890e311e3280b767F80797180d"
-    const USDC_DECIMALS = 6
+  // Configure the addresses we can to check balances for
+  const USDC_MAINNET_ADDRESS = '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'; // https://etherscan.io/token/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48
+  const ARBITRUM_ONE_GATEWAY = '0xcEe284F754E854890e311e3280b767F80797180d';
+  const USDC_DECIMALS = 6;
 
-    it("gets arbitrum gateway balance", async () => {
-        // We get signers as in a normal test
-        accounts = await ethers.getSigners();
-        const factory = new BalanceReader__factory(accounts[0])
+  it('gets arbitrum gateway balance', async () => {
+    // We get signers as in a normal test
+    accounts = await ethers.getSigners();
+    const factory = new BalanceReader__factory(accounts[0]);
 
-        // We deploy the contract to our local test environment
-        instance = await factory.deploy()
+    // We deploy the contract to our local test environment
+    instance = await factory.deploy();
 
-        // Our contract will be able to check the balances of the mainnet deployed contracts and address
-        const balance = await instance.getERC20BalanceOf(ARBITRUM_ONE_GATEWAY, USDC_MAINNET_ADDRESS);
-        const balanceAsString = ethers.formatUnits(balance, USDC_DECIMALS)
+    // Our contract will be able to check the balances of the mainnet deployed contracts and address
+    const balance = await instance.getERC20BalanceOf(ARBITRUM_ONE_GATEWAY, USDC_MAINNET_ADDRESS);
+    const balanceAsString = ethers.formatUnits(balance, USDC_DECIMALS);
 
-        console.log("The USDC Balance of Arbitrum Gateway is $", Number(balanceAsString).toLocaleString())
-    });
+    console.log(
+      'The USDC Balance of Arbitrum Gateway is $',
+      Number(balanceAsString).toLocaleString(),
+    );
+  });
 });
 ```
 
-For this example we are simply using the [USDC address](https://etherscan.io/token/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48) and since USDC is an ERC-20 token. We can explore the token holders of that particular token directly in Etherscan.
-
-As in the following image:
+In this example, the [USDC address](https://etherscan.io/token/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48) is used and since USDC is an ERC-20 token, you can explore the token holders of that particular token directly in Etherscan:
 
 ![Hardhat forking](../../assets/images/hardhat-forking/hardhat-forking.png)
 
-Or going directly to https://etherscan.io/token/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48#balances
+Or, visit https://etherscan.io/token/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48#balances, where you can see, at the time or writing, Arbitrum ONE Gateway is the top token holder.
 
-As you see, at the time or writing, Arbitrum ONE Gateway is the top token holder.
+Then, run the following command:
 
-Then run the following command:
+```bash
+npx hardhat test ./test/BalanceReader.ts
+```
 
-`npx hardhat test ./test/BalanceReader.ts`
-
-And we should get:
+You should get:
 
 ```
 BalanceReader tests
 The USDC Balance of Arbitrum Gateway is $ 1,116,923,836.506
     ✔ gets arbitrum gateway balance (4345ms)
 
-
   1 passing (4s)
 ```
 
 ## Conclusion
 
-In this lesson, you've learned how to use hardhat forking capabilities to test smart contracts. We learned how our contracts can interact with already deployed contracts in an easy way.
+In this lesson, you've learned how to use hardhat forking capabilities to test smart contracts. You learned how contracts can interact with already-deployed contracts in an easy way.
 
 ---
 

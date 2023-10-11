@@ -10,7 +10,7 @@ In this article, you'll learn how to verify smart contracts in Etherscan with ha
 
 ## Objectives
 
-By the end of this lesson you should be able to:
+By the end of this lesson, you should be able to:
 
 - Verify a deployed smart contract on Etherscan
 - Connect a wallet to a contract in Etherscan
@@ -20,51 +20,43 @@ By the end of this lesson you should be able to:
 
 ## Overview
 
-Verifying smart contracts plays an important role in providing security and certainty to the users of our decentralized applications. By offering full visibility of the source code of our smart contract, we provide confidence and transparency of the intention of the code that is being executed.
+Verifying smart contracts plays an important role in providing security and certainty to the users of your decentralized applications. By offering full visibility of the source code of your smart contract, you provide confidence and transparency of the intention of the code that is being executed.
 
-The way smart contracts are verified is by simply uploading the source code and contract address to services like Etherscan.
+The way smart contracts are verified is by simply uploading the source code and contract address to services such as Etherscan.
 
-Once the contract is verified, the Etherscan explorer will show a status like the following image:
+Once the contract is verified, the Etherscan explorer shows a status like the following image:
 
 ![Verified contract](../../assets/images/hardhat-verify/hardhat-verify.png)
 
-Luckily Hardhat and Hardhat-deploy already contain a built-in capability to do this task easily on our behalf.
+Luckily, Hardhat and Hardhat-deploy already contain a built-in capability to do this task easily on your behalf.
 
 This process involves the following steps:
 
-- Getting an Etherscan key
-
-- Configure Hardhat
-
-- Verify
+1. Getting an Etherscan key
+2. Configuring Hardhat
+3. Verifying
 
 ## Getting an Etherscan key
 
-In order to obtain an Etherscan API key, you simply have to go to [Etherscan](https://etherscan.io/) and create an account.
+In order to obtain an Etherscan API key, visit [Etherscan](https://etherscan.io/) and create an account.
 
-Then go to [https://etherscan.io/myapikey](https://etherscan.io/myapikey) and creeate an API key by clicking the "Add" button.
+Then, go to [https://etherscan.io/myapikey](https://etherscan.io/myapikey) and creeate an API key by clicking the **Add** button:
 
 ![Add key](../../assets/images/hardhat-verify/harhat-verify-create-key.png)
 
-Bear in mind that different networks have other Blockchain explorers:
-
-For instance:
+Bear in mind that different networks have other Blockchain explorers. For example:
 
 - [Base](https://goerli.basescan.org/)
-
 - [Goerli](https://goerli.etherscan.io/)
-
 - [Polygon](https://polygonscan.com/)
 
-So you have to go to that particular explorer (except for Goerli Etherscan, you can use the Etherscan mainnet one) and get the API Key following a similar process as mentioned before.
+You'll need to go to that particular explorer and get the API Key following a similar process as mentioned previously (except for Goerli Etherscan, where you can use the Etherscan mainnet one instead).
 
-## Configure Hardhat
+## Configuring Hardhat
 
-We can configure our Etherscan API Key for each different network.
+You can configure the Etherscan API Key for each different network. For example, include the following to the `hardhat.config.ts` file for base goerli:
 
-For instance for base goerli, we include the following to our `hardhat.config.ts` file:
-
-```Javascript
+```typescript
 base_goerli: {
       url: "https://goerli.base.org",
       accounts: {
@@ -79,7 +71,7 @@ base_goerli: {
 }
 ```
 
-Be aware that at this point an API Key for base goerli is not required, so we can simply define a placeholder like `"ETHERSCAN_API_KEY"`.
+Be aware that at this point an API Key for base goerli is not required, so you can simply define a placeholder like `"ETHERSCAN_API_KEY"`.
 
 However, for other networks, you might have to include in your `.env` file the following:
 
@@ -87,13 +79,15 @@ However, for other networks, you might have to include in your `.env` file the f
 ETHERSCAN_API_KEY=<YOUR_ETHERSCAN_API_KEY>
 ```
 
-## Verify
+## Verifying
 
-We will verify in base, to do so, we simply run the following command:
+You verify in base, and to do so, simply run the following command:
 
-`npx hardhat --network base_goerli etherscan-verify`
+```bash
+npx hardhat --network base_goerli etherscan-verify
+```
 
-You should get a message like:
+You should receive the following reponse:
 
 ```
 verifying Lock ...
@@ -101,13 +95,13 @@ waiting for result...
  => contract Lock is now verified
 ```
 
-Now you can go to Basescan, search for your contract address and you will see something like:
+You can now go to Basescan and search for your contract address, where you'll see the following:
 
 ![Base scan success](../../assets/images/hardhat-verify/hardhat-verify-success.png)
 
 ## Conclusion
 
-In this lesson, you've learned how to verify smart contracts using Hardhat and Hardhat-deploy. We learned how to configure Hardhat to support multiple networks and verify by using a simple command.
+In this lesson, you've learned how to verify smart contracts using Hardhat and Hardhat-deploy. You learned how to configure Hardhat to support multiple networks and verify by using a simple command.
 
 ---
 
