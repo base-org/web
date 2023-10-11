@@ -20,6 +20,8 @@ import { utils } from 'ethers';
 import getConfig from 'next/config';
 import { useAccount, useBalance, useContractWrite } from 'wagmi';
 import { useIsPermittedToBridgeTo } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridgeTo';
+import { getL2NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL2NetworkForChainEnv';
+import { getL1NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL1NetworkForChainEnv';
 
 const assetList = getAssetListForChainEnv();
 
@@ -163,9 +165,9 @@ export function WithdrawContainer() {
           L2TxHash={L2TxHash}
         />
         <BridgeInput
-          inputNetwork={isMainnet ? 'base' : 'base-goerli'}
+          inputNetwork={getL2NetworkForChainEnv()}
           isWithdraw
-          outputNetwork={isMainnet ? 'homestead' : 'goerli'}
+          outputNetwork={getL1NetworkForChainEnv()}
           balance={L2Balance?.formatted ?? ''}
           amount={withdrawAmount}
           setAmount={setWithdrawAmount}
@@ -185,7 +187,7 @@ export function WithdrawContainer() {
             selectedAsset={selectedAsset}
             header="TRANSACTION SUMMARY"
             balance={parseFloat(withdrawAmount ?? '0').toFixed(6) ?? ''}
-            outputNetwork={isMainnet ? 'homestead' : 'goerli'}
+            outputNetwork={getL1NetworkForChainEnv()}
             chainId={publicRuntimeConfig.l2ChainID}
             isDeposit={false}
           />

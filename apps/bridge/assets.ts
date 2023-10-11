@@ -213,6 +213,16 @@ const assets: Asset[] = [
     L2icon: '/icons/currency/comp.svg',
     decimals: 18,
   },
+  {
+    L1symbol: 'ETH',
+    L2symbol: 'ETH',
+    L1chainId: 11155111,
+    L2chainId: 84532,
+    apiId: 'ethereum',
+    L1icon: '/icons/currency/eth.svg',
+    L2icon: '/icons/currency/eth.svg',
+    decimals: 18,
+  },
 ];
 
 export default assets;

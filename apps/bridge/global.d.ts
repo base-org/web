@@ -32,6 +32,7 @@ declare module 'next/config' {
       bugsnagSessionsUrl: string;
       appStage: string;
       complianceApiURL: string;
+      sepoliaBridgeURL: string;
     };
   };
 

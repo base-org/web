@@ -84,14 +84,14 @@ const Empty = memo(function Empty() {
   const isMainnet = chainEnv === 'mainnet';
 
   return (
-    <div className="mt-2 mb-2 flex h-full min-h-[440px] w-full flex-row items-center justify-center">
+    <div className="mb-2 mt-2 flex h-full min-h-[440px] w-full flex-row items-center justify-center">
       <div className="flex flex-col items-center justify-center text-center">
         <Image src="/icons/empty-transaction.png" width="240" height="240" alt="" />
         <h3 className="color-white pt-16 font-display text-2xl">Bridge your assets with Base</h3>
         <span className="max-w-[420px] pt-2 text-base text-[#8A919E]">
           {isMainnet
             ? 'You can bridge whitelisted ERC-20 tokens from Ethereum mainnet to Base mainnet.'
-            : 'You can bridge whitelisted ERC-20 token from Goerli (Ethereum testnet) to Base Goerli testnet.'}
+            : 'You can bridge whitelisted ERC-20 token from Goerli / Sepolia (Ethereum testnet) to Base Goerli / Sepolia testnet.'}
         </span>
         <a
           href="./"
