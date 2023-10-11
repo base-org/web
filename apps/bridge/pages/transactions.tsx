@@ -13,7 +13,7 @@ import { mergeAndSortTransactionsLists } from 'apps/bridge/src/utils/array/merge
 import { useAddress } from 'apps/bridge/src/utils/hooks/useAddress';
 import { useChainEnv } from 'apps/bridge/src/utils/hooks/useChainEnv';
 import { useDisclosure } from 'apps/bridge/src/utils/hooks/useDisclosure';
-import { useLatestL2BlockNumber } from 'apps/bridge/src/utils/hooks/useLatestL2BlockNumber';
+import { useBlockNumberOfLatestL2OutputProposal } from 'apps/bridge/src/utils/hooks/useBlockNumberOfLatestL2OutputProposal';
 import Head from 'next/head';
 import Image from 'next/image';
 
@@ -24,7 +24,7 @@ type TransactionTableProps = {
 };
 
 const TransactionsTable = memo(function TransactionsTable({ transactions }: TransactionTableProps) {
-  const latestL2BlockNumber = useLatestL2BlockNumber();
+  const blockNumberOfLatestL2OutputProposal = useBlockNumberOfLatestL2OutputProposal();
 
   const [modalProveTxHash, setModalProveTxHash] = useState<`0x${string}` | undefined>(undefined);
   const [modalFinalizeTxHash, setModalFinalizeTxHash] = useState<`0x${string}` | undefined>(
@@ -64,7 +64,7 @@ const TransactionsTable = memo(function TransactionsTable({ transactions }: Tran
             <WithdrawalRow
               key={transaction.hash}
               transaction={transaction}
-              latestL2BlockNumber={latestL2BlockNumber}
+              blockNumberOfLatestL2OutputProposal={blockNumberOfLatestL2OutputProposal}
               onOpenProveWithdrawalModal={onOpenProveWithdrawalModal}
               onCloseProveWithdrawalModal={onCloseProveWithdrawalModal}
               onOpenFinalizeWithdrawalModal={onOpenFinalizeWithdrawalModal}
