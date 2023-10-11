@@ -3,6 +3,7 @@ import { useIsPermittedToBridge } from 'apps/bridge/src/utils/hooks/useIsPermitt
 import { usePrepareProveWithdrawal } from 'apps/bridge/src/utils/hooks/usePrepareProveWithdrawal';
 import getConfig from 'next/config';
 import { useContractWrite, useNetwork, useSwitchNetwork } from 'wagmi';
+import { BigNumber } from 'ethers';
 
 const { publicRuntimeConfig } = getConfig();
 const l1ChainID = parseInt(publicRuntimeConfig.l1ChainID);
@@ -14,6 +15,7 @@ type ProveWithdrawalButtonProps = {
   onCloseProveWithdrawalModal: () => void;
   setProveTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
   setModalProveTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
+  latestL2BlockNumber?: BigNumber;
 };
 
 export const ProveWithdrawalButton = memo(function ProveWithdrawalButton({
@@ -23,10 +25,15 @@ export const ProveWithdrawalButton = memo(function ProveWithdrawalButton({
   onCloseProveWithdrawalModal,
   setProveTxHash,
   setModalProveTxHash,
+  latestL2BlockNumber,
 }: ProveWithdrawalButtonProps) {
   const isPermittedToBridge = useIsPermittedToBridge();
 
-  const proveWithdrawalConfig = usePrepareProveWithdrawal(txHash, isERC20Withdrawal);
+  const proveWithdrawalConfig = usePrepareProveWithdrawal(
+    txHash,
+    isERC20Withdrawal,
+    latestL2BlockNumber,
+  );
   const { writeAsync: submitProof } = useContractWrite(proveWithdrawalConfig);
 
   const { chain } = useNetwork();

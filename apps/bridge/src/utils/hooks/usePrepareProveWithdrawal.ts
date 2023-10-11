@@ -4,6 +4,7 @@ import {
   hashWithdrawal,
   toRpcHexString,
 } from '@eth-optimism/core-utils';
+import { makeStateTrieProof } from '@eth-optimism/sdk';
 import OptimismPortal from 'apps/bridge/src/contract-abis/OptimismPortal';
 import { WithdrawalMessage } from 'apps/bridge/src/types/WithdrawalMessage';
 import { useL2OutputProposal } from 'apps/bridge/src/utils/hooks/useL2OutputProposal';
@@ -15,31 +16,12 @@ import { usePrepareContractWrite, useProvider, useWaitForTransaction } from 'wag
 
 const { publicRuntimeConfig } = getConfig();
 
-const makeStateTrieProof = async (
-  provider: providers.JsonRpcProvider,
-  address: string,
-  slot: string,
-): Promise<{
-  accountProof: string[];
-  storageProof: string[];
-  storageValue: BigNumber;
-  storageRoot: string;
-}> => {
-  const proof = (await provider.send('eth_getProof', [address, [slot], 'latest'])) as {
-    accountProof: string[];
-    storageProof: { proof: string[]; value: BigNumber }[];
-    storageHash: string;
-  };
-
-  return {
-    accountProof: proof.accountProof,
-    storageProof: proof.storageProof[0].proof,
-    storageValue: BigNumber.from(proof.storageProof[0].value),
-    storageRoot: proof.storageHash,
-  };
-};
-
-export function usePrepareProveWithdrawal(withdrawalTx: `0x${string}`, isERC20Withdrawal = false) {
+export function usePrepareProveWithdrawal(
+  withdrawalTx: `0x${string}`,
+  isERC20Withdrawal = false,
+  latestL2BlockNumber?: BigNumber,
+) {
+  console.log({ latestL2BlockNumber });
   const [withdrawalForTx, setWithdrawalForTx] = useState<WithdrawalMessage | null>(null);
   const [proofForTx, setProofForTx] = useState<BedrockCrossChainMessageProof | null>(null);
 
@@ -47,7 +29,7 @@ export function usePrepareProveWithdrawal(withdrawalTx: `0x${string}`, isERC20Wi
     hash: withdrawalTx,
     chainId: parseInt(publicRuntimeConfig.l2ChainID),
   });
-  const withdrawalL2OutputIndex = useWithdrawalL2OutputIndex(withdrawalReceipt?.blockNumber);
+  const withdrawalL2OutputIndex = useWithdrawalL2OutputIndex(latestL2BlockNumber?.toNumber());
   const l2OutputProposal = useL2OutputProposal(withdrawalL2OutputIndex);
   const l2Provider = useProvider({ chainId: parseInt(publicRuntimeConfig.l2ChainID) });
 
@@ -83,7 +65,7 @@ export function usePrepareProveWithdrawal(withdrawalTx: `0x${string}`, isERC20Wi
 
   useEffect(() => {
     void (async () => {
-      if (withdrawalReceipt && withdrawalL2OutputIndex && l2OutputProposal) {
+      if (withdrawalReceipt && withdrawalL2OutputIndex && l2OutputProposal && latestL2BlockNumber) {
         const withdrawalMessage = getWithdrawalMessage(withdrawalReceipt, isERC20Withdrawal);
 
         const messageBedrockOutput = {
@@ -111,6 +93,7 @@ export function usePrepareProveWithdrawal(withdrawalTx: `0x${string}`, isERC20Wi
 
         const stateTrieProof = await makeStateTrieProof(
           l2Provider as providers.JsonRpcProvider,
+          latestL2BlockNumber.toNumber(),
           publicRuntimeConfig.l2L1MessagePasserAddress,
           messageSlot,
         );
@@ -135,7 +118,14 @@ export function usePrepareProveWithdrawal(withdrawalTx: `0x${string}`, isERC20Wi
         setProofForTx(bedrockProof);
       }
     })();
-  }, [withdrawalReceipt, withdrawalL2OutputIndex, l2OutputProposal, l2Provider, isERC20Withdrawal]);
+  }, [
+    withdrawalReceipt,
+    withdrawalL2OutputIndex,
+    l2OutputProposal,
+    l2Provider,
+    isERC20Withdrawal,
+    latestL2BlockNumber,
+  ]);
 
   return config;
 }

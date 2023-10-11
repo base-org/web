@@ -53,21 +53,21 @@ export const WithdrawalRow = memo(function WithdrawalRow({
 
   const date = transaction.blockTimestamp
     ? new Date(Number(transaction.blockTimestamp) * 1000).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    })
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })
     : undefined;
   const dateMonthDayOnly = transaction.blockTimestamp
     ? new Date(Number(transaction.blockTimestamp) * 1000).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-    })
+        month: 'short',
+        day: 'numeric',
+      })
     : undefined;
   const time = transaction.blockTimestamp
     ? new Date(Number(transaction.blockTimestamp) * 1000).toLocaleTimeString('en-US', {
-      timeStyle: 'short',
-    })
+        timeStyle: 'short',
+      })
     : undefined;
   const withdrawalAmount = utils.formatUnits(
     transaction.amount,
@@ -147,6 +147,7 @@ export const WithdrawalRow = memo(function WithdrawalRow({
         onCloseProveWithdrawalModal={onCloseProveWithdrawalModal}
         setProveTxHash={setProveTxHash}
         setModalProveTxHash={setModalProveTxHash}
+        latestL2BlockNumber={latestL2BlockNumber}
       />
     ),
     PROVE_TX_PENDING: pendingButton,
