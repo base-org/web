@@ -107,7 +107,7 @@ slug: /tools/node-providers
 
 ## NOWNodes
 
-[NOWNodes](https://nownodes.io/nodes/basechain-base) is a RPC node provider that provides access to full nodes and APIs for 65+ blockchain networks including Base.
+[NOWNodes](https://nownodes.io/nodes/basechain-base) is a Web3 development tool that provides shared and dedicated no rate-limit access to Base RPC full nodes.
 
 #### Supported Networks
 
