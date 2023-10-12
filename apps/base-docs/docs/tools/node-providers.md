@@ -7,6 +7,16 @@ slug: /tools/node-providers
 
 ---
 
+## 1RPC
+
+[1RPC](https://1rpc.io/) is the first and only on-chain attested privacy preserving RPC that eradicate metadata exposure and leakage when interacting with blockchains. 1RPC offers free and [paid plans](https://www.1rpc.io/#pricing) with additional features and increased request limits. 
+
+#### Supported Networks
+
+- Base Mainnet
+
+---
+
 ## Alchemy
 
 [Alchemy](https://www.alchemy.com/base) is a popular API provider and developer platform. Its robust, free tier offers access to enhanced features like SDKs, [JSON-RPC APIs](https://docs.alchemy.com/reference/base-api-quickstart), and hosted mainnet and testnet nodes for Base.
