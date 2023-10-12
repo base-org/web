@@ -21,7 +21,6 @@
     "@rainbow-me/rainbowkit": "^0.12.16",
     "@types/react-copy-to-clipboard": "^5.0.4",
     "clsx": "^1.2.1",
-    "ethers": "^5.7.2",
     "framer-motion": "^9.0.4",
     "moment": "^2.29.4",
     "next": "*",
@@ -31,7 +30,8 @@
     "react-intl": "^6.2.1",
     "react-query": "^3.39.3",
     "typescript": "next",
-    "wagmi": "^0.12.16",
+    "viem": "latest",
+    "wagmi": "^1.4.3",
     "webpack-bugsnag-plugins": "^1.8.0"
   },
   "devDependencies": {

@@ -14,7 +14,7 @@ import {
   blockExplorerUrlForL1Transaction,
   blockExplorerUrlForL2Transaction,
 } from 'apps/bridge/src/utils/url/blockExplorer';
-import { BigNumber, utils } from 'ethers';
+import { formatUnits } from 'viem';
 
 import { FinalizeWithdrawalButton } from './FinalizeWithdrawalButton';
 import { ProveWithdrawalButton } from './ProveWithdrawalButton';
@@ -69,7 +69,7 @@ export const WithdrawalRow = memo(function WithdrawalRow({
         timeStyle: 'short',
       })
     : undefined;
-  const withdrawalAmount = utils.formatUnits(
+  const withdrawalAmount = formatUnits(
     transaction.amount,
     // TODO: get decimals from asset list
     transaction.assetSymbol === 'USDbC' ? 6 : 18,

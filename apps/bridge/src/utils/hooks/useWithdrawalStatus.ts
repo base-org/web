@@ -7,7 +7,6 @@ import { useL2OutputProposal } from 'apps/bridge/src/utils/hooks/useL2OutputProp
 import { useProvenWithdrawl } from 'apps/bridge/src/utils/hooks/useProvenWithdrawl';
 import { getWithdrawalMessage } from 'apps/bridge/src/utils/transactions/getWithdrawalMessage';
 import type { WithdrawalPhase } from 'apps/bridge/src/utils/transactions/phase';
-import { BigNumber } from 'ethers';
 import getConfig from 'next/config';
 import { useWaitForTransaction } from 'wagmi';
 
@@ -15,7 +14,7 @@ const { publicRuntimeConfig } = getConfig();
 
 type UseWithdrawalStateProps = {
   initializeTxHash: `0x${string}`;
-  blockNumberOfLatestL2OutputProposal?: BigNumber;
+  blockNumberOfLatestL2OutputProposal?: bigint;
   isERC20Withdrawal: boolean;
   proveTxHash?: `0x${string}`;
   finalizeTxHash?: `0x${string}`;

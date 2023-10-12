@@ -19,8 +19,8 @@ import { useIsWalletConnected } from 'apps/bridge/src/utils/hooks/useIsWalletCon
 import { usePrepareERC20Deposit } from 'apps/bridge/src/utils/hooks/usePrepareERC20Deposit';
 import { usePrepareERC20DepositTo } from 'apps/bridge/src/utils/hooks/usePrepareERC20DepositTo';
 import { usePrepareETHDeposit } from 'apps/bridge/src/utils/hooks/usePrepareETHDeposit';
-import { utils } from 'ethers';
-import { parseUnits } from 'ethers/lib/utils.js';
+import { isAddress, parseUnits } from 'viem';
+import { waitForTransaction } from 'wagmi/actions';
 import getConfig from 'next/config';
 import { useAccount, useBalance, useContractWrite } from 'wagmi';
 import { useIsPermittedToBridgeTo } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridgeTo';
@@ -63,7 +63,7 @@ export function DepositContainer() {
       depositAmount === '' || Number.isNaN(Number(depositAmount))
         ? parseUnits('0', selectedAsset.decimals)
         : parseUnits(depositAmount, selectedAsset.decimals);
-    return !readERC20ApprovalError && readERC20Approval?.gte(depositAmountBN);
+    return !!(!readERC20ApprovalError && readERC20Approval && readERC20Approval >= depositAmountBN);
   }, [depositAmount, selectedAsset.decimals, readERC20ApprovalError, readERC20Approval]);
 
   const {
@@ -134,10 +134,9 @@ export function DepositContainer() {
         if (approveResult?.hash) {
           const approveTxHash: `0x${string}` = approveResult.hash;
           setL1ApproveTxHash(approveTxHash);
+          // wait for confirmations
+          await waitForTransaction({ hash: approveResult?.hash });
         }
-
-        // wait for confirmations
-        await approveResult?.wait();
 
         // next, call the transfer function
         setIsApprovalTx(false);
@@ -209,7 +208,7 @@ export function DepositContainer() {
       parseFloat(depositAmount) <= 0 ||
       parseFloat(depositAmount) >= parseFloat(L1Balance?.formatted ?? '0') ||
       depositAmount === '' ||
-      (isSmartContractWallet && !utils.isAddress(depositTo ?? '')) ||
+      (isSmartContractWallet && !isAddress(depositTo ?? '')) ||
       !isPermittedToBridge;
 
     button = (
@@ -224,7 +223,7 @@ export function DepositContainer() {
     );
   } else {
     depositDisabled =
-      (isSmartContractWallet && !utils.isAddress(depositTo ?? '')) || !isPermittedToBridge;
+      (isSmartContractWallet && !isAddress(depositTo ?? '')) || !isPermittedToBridge;
 
     button = (
       <BridgeButton
