@@ -120,6 +120,7 @@ export const OPWithdrawalRow = memo(function OPWithdrawalRow({
         onCloseProveWithdrawalModal={onCloseProveWithdrawalModal}
         setProveTxHash={setProveTxHash}
         setModalProveTxHash={setModalProveTxHash}
+        blockNumberOfLatestL2OutputProposal={blockNumberOfLatestL2OutputProposal}
       />
     ),
     PROVE_TX_PENDING: pendingButton,
