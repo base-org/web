@@ -21,7 +21,7 @@ import { ProveWithdrawalButton } from './ProveWithdrawalButton';
 
 type WithdrawalRowProps = {
   transaction: BridgeTransaction;
-  blockNumberOfLatestL2OutputProposal?: BigNumber;
+  blockNumberOfLatestL2OutputProposal?: bigint;
   onOpenProveWithdrawalModal: () => void;
   onCloseProveWithdrawalModal: () => void;
   onOpenFinalizeWithdrawalModal: () => void;
@@ -70,7 +70,7 @@ export const WithdrawalRow = memo(function WithdrawalRow({
       })
     : undefined;
   const withdrawalAmount = formatUnits(
-    transaction.amount,
+    BigInt(transaction.amount),
     // TODO: get decimals from asset list
     transaction.assetSymbol === 'USDbC' ? 6 : 18,
   );
@@ -152,7 +152,7 @@ export const WithdrawalRow = memo(function WithdrawalRow({
     ),
     PROVE_TX_PENDING: pendingButton,
     PROVE_TX_FAILURE: withdrawalPhaseStatusText.PROVE_TX_FAILURE,
-    CHALLENGE_WINDOW: withdrawalPhaseStatusText.CHALLENGE_WINDOW(challengeWindowEndTime),
+    CHALLENGE_WINDOW: withdrawalPhaseStatusText.CHALLENGE_WINDOW(Number(challengeWindowEndTime)),
     FINALIZE: (
       <FinalizeWithdrawalButton
         txHash={transaction.hash}

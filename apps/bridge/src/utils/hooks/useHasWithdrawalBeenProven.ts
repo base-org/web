@@ -12,7 +12,7 @@ export function useHasWithdrawalBeenProven(withdrawalHash: string | null) {
     args: withdrawalHash ? [withdrawalHash as `0x${string}`] : undefined,
     chainId: parseInt(publicRuntimeConfig.l1ChainID),
   });
-  const withdrawalHasBeenProven = provenWithdrawal?.timestamp.toNumber() !== 0;
+  const withdrawalHasBeenProven = provenWithdrawal?.[1] !== BigInt(0);
 
   return withdrawalHasBeenProven;
 }

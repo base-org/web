@@ -44,7 +44,7 @@ export function DepositContainer() {
     publicRuntimeConfig.assets.split(',').includes(asset.L1symbol.toLowerCase()),
   );
   const { address } = useAccount();
-  const codeAtAddress = useGetCode(address);
+  const codeAtAddress = useGetCode(chainId, address);
   const isSmartContractWallet = !!codeAtAddress && codeAtAddress !== '0x';
 
   const { data: L1Balance } = useBalance({

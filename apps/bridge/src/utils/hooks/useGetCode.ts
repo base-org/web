@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
-import { providers } from 'ethers';
-import { useProvider } from 'wagmi';
+import { usePublicClient } from 'wagmi';
 
-export function useGetCode(address?: `0x${string}`) {
-  const provider = useProvider<providers.JsonRpcProvider>();
+export function useGetCode(chainId: number, address?: `0x${string}`) {
+  const publicClient = usePublicClient({ chainId });
   const [code, setCode] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     if (address) {
       void (async () => {
-        const codeAtAddress = await provider.getCode(address);
+        const codeAtAddress = await publicClient.getBytecode({ address });
         setCode(codeAtAddress);
       })();
     }
-  }, [address, provider]);
+  }, [address, publicClient]);
 
   return code;
 }

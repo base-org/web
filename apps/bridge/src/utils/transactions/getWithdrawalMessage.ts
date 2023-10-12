@@ -1,5 +1,5 @@
-import { getOEContract } from '@eth-optimism/sdk';
-import { Log, TransactionReceipt } from '@ethersproject/providers';
+import { l2ToL1MessagePasserABI } from '@eth-optimism/contracts-ts';
+import { TransactionReceipt, Log, decodeEventLog } from 'viem';
 import { WithdrawalMessage } from 'apps/bridge/src/types/WithdrawalMessage';
 import getConfig from 'next/config';
 
@@ -9,36 +9,34 @@ const L2_L1_MESSAGE_PASSER_ADDRESS = (
   publicRuntimeConfig?.l2L1MessagePasserAddress ?? '0x4200000000000000000000000000000000000016'
 ).toLowerCase();
 
-const L2_CHAIN_ID = Number.isNaN(parseInt(publicRuntimeConfig?.l2ChainID))
-  ? 84531
-  : parseInt(publicRuntimeConfig?.l2ChainID);
-
-const l2L1MessagePasserInterface = getOEContract('L2ToL1MessagePasser', L2_CHAIN_ID, {
-  address: L2_L1_MESSAGE_PASSER_ADDRESS,
-}).interface;
-
 export function getWithdrawalMessage(
   withdrawalReceipt: TransactionReceipt,
   isERC20Withdrawal = false,
 ) {
-  let parsedWithdrawalLog;
+  let parsedWithdrawalLog: { args: WithdrawalMessage };
   if (isERC20Withdrawal) {
     const messageLog = withdrawalReceipt.logs.find((log) => {
       if (log.address === L2_L1_MESSAGE_PASSER_ADDRESS) {
-        const parsed = l2L1MessagePasserInterface.parseLog(log);
-        return parsed.name === 'MessagePassed';
+        const parsed = decodeEventLog({
+          abi: l2ToL1MessagePasserABI,
+          data: log.data,
+          topics: log.topics,
+        });
+        return parsed.eventName === 'MessagePassed';
       }
       return false;
-    });
-    parsedWithdrawalLog = l2L1MessagePasserInterface.parseLog(messageLog as Log) as unknown as {
-      args: WithdrawalMessage;
-    };
+    }) as Log;
+    parsedWithdrawalLog = decodeEventLog({
+      abi: l2ToL1MessagePasserABI,
+      data: messageLog.data,
+      topics: messageLog.topics,
+    }) as { args: WithdrawalMessage };
   } else {
-    parsedWithdrawalLog = l2L1MessagePasserInterface.parseLog(
-      withdrawalReceipt.logs[0],
-    ) as unknown as {
-      args: WithdrawalMessage;
-    };
+    parsedWithdrawalLog = decodeEventLog({
+      abi: l2ToL1MessagePasserABI,
+      data: withdrawalReceipt.logs[0].data,
+      topics: withdrawalReceipt.logs[0].topics,
+    }) as { args: WithdrawalMessage };
   }
 
   const withdrawalMessage = {

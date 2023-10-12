@@ -1,10 +1,8 @@
-import { BigNumber } from 'ethers';
-
 export type WithdrawalMessage = {
-  nonce: BigNumber;
+  nonce: bigint;
   sender: `0x${string}`;
   target: `0x${string}`;
-  value: BigNumber;
-  gasLimit: BigNumber;
+  value: bigint;
+  gasLimit: bigint;
   data: `0x${string}`;
 };

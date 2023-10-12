@@ -1,8 +1,8 @@
-import L2StandardBridge from '@eth-optimism/contracts-bedrock/artifacts/contracts/L2/L2StandardBridge.sol/L2StandardBridge.json';
 import { Asset } from 'apps/bridge/src/types/Asset';
-import { parseUnits } from 'ethers/lib/utils.js';
+import { parseUnits } from 'viem';
 import getConfig from 'next/config';
 import { Address, usePrepareContractWrite } from 'wagmi';
+import { l2StandardBridgeABI } from '@eth-optimism/contracts-ts';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -21,7 +21,7 @@ export function usePrepareERC20Withdrawal({
 }: UsePrepareERC20Withdrawal) {
   const { config } = usePrepareContractWrite({
     address: isPermittedToBridge ? publicRuntimeConfig.L2StandardBridge : undefined,
-    abi: L2StandardBridge.abi,
+    abi: l2StandardBridgeABI,
     functionName: 'withdraw',
     chainId: parseInt(publicRuntimeConfig.l2ChainID),
     args: [

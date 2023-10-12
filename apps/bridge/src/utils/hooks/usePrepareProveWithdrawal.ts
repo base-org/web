@@ -1,25 +1,51 @@
 import { useEffect, useState } from 'react';
-import {
-  BedrockCrossChainMessageProof,
-  hashWithdrawal,
-  toRpcHexString,
-} from '@eth-optimism/core-utils';
-import { makeStateTrieProof } from '@eth-optimism/sdk';
 import OptimismPortal from 'apps/bridge/src/contract-abis/OptimismPortal';
 import { WithdrawalMessage } from 'apps/bridge/src/types/WithdrawalMessage';
 import { useL2OutputProposal } from 'apps/bridge/src/utils/hooks/useL2OutputProposal';
 import { useWithdrawalL2OutputIndex } from 'apps/bridge/src/utils/hooks/useWithdrawalL2OutputIndex';
 import { getWithdrawalMessage } from 'apps/bridge/src/utils/transactions/getWithdrawalMessage';
-import { BigNumber, constants, providers, utils } from 'ethers';
 import getConfig from 'next/config';
-import { usePrepareContractWrite, useProvider, useWaitForTransaction } from 'wagmi';
+import { usePrepareContractWrite, usePublicClient, useWaitForTransaction } from 'wagmi';
+import { keccak256, encodeAbiParameters, parseAbiParameters, PublicClient, pad } from 'viem';
 
 const { publicRuntimeConfig } = getConfig();
+
+async function makeStateTrieProof(
+  client: PublicClient,
+  blockNumber: bigint,
+  address: `0x${string}`,
+  slot: `0x${string}`,
+): Promise<{
+  accountProof: string[];
+  storageProof: `0x${string}`[];
+  storageValue: bigint;
+  storageRoot: `0x${string}`;
+}> {
+  const proof = await client.getProof({ address, storageKeys: [slot], blockNumber });
+
+  return {
+    accountProof: proof.accountProof,
+    storageProof: proof.storageProof[0].proof,
+    storageValue: proof.storageProof[0].value,
+    storageRoot: proof.storageHash,
+  };
+}
+
+type BedrockCrossChainMessageProof = {
+  l2OutputIndex: bigint;
+  outputRootProof: {
+    version: `0x${string}`;
+    stateRoot: `0x${string}`;
+    messagePasserStorageRoot: `0x${string}`;
+    latestBlockhash: `0x${string}`;
+  };
+  withdrawalProof: `0x${string}`[];
+};
 
 export function usePrepareProveWithdrawal(
   withdrawalTx: `0x${string}`,
   isERC20Withdrawal = false,
-  blockNumberOfLatestL2OutputProposal?: BigNumber,
+  blockNumberOfLatestL2OutputProposal?: bigint,
 ) {
   const [withdrawalForTx, setWithdrawalForTx] = useState<WithdrawalMessage | null>(null);
   const [proofForTx, setProofForTx] = useState<BedrockCrossChainMessageProof | null>(null);
@@ -28,11 +54,9 @@ export function usePrepareProveWithdrawal(
     hash: withdrawalTx,
     chainId: parseInt(publicRuntimeConfig.l2ChainID),
   });
-  const withdrawalL2OutputIndex = useWithdrawalL2OutputIndex(
-    blockNumberOfLatestL2OutputProposal?.toNumber(),
-  );
+  const withdrawalL2OutputIndex = useWithdrawalL2OutputIndex(blockNumberOfLatestL2OutputProposal);
   const l2OutputProposal = useL2OutputProposal(withdrawalL2OutputIndex);
-  const l2Provider = useProvider({ chainId: parseInt(publicRuntimeConfig.l2ChainID) });
+  const l2PublicClient = usePublicClient({ chainId: parseInt(publicRuntimeConfig.l2ChainID) });
 
   const { config } = usePrepareContractWrite({
     address:
@@ -51,15 +75,14 @@ export function usePrepareProveWithdrawal(
               gasLimit: withdrawalForTx.gasLimit,
               data: withdrawalForTx.data,
             },
-            BigNumber.from(proofForTx.l2OutputIndex),
+            BigInt(proofForTx.l2OutputIndex),
             {
-              version: proofForTx.outputRootProof.version as `0x${string}`,
-              stateRoot: proofForTx.outputRootProof.stateRoot as `0x${string}`,
-              messagePasserStorageRoot: proofForTx.outputRootProof
-                .messagePasserStorageRoot as `0x${string}`,
-              latestBlockhash: proofForTx.outputRootProof.latestBlockhash as `0x${string}`,
+              version: proofForTx.outputRootProof.version,
+              stateRoot: proofForTx.outputRootProof.stateRoot,
+              messagePasserStorageRoot: proofForTx.outputRootProof.messagePasserStorageRoot,
+              latestBlockhash: proofForTx.outputRootProof.latestBlockhash,
             },
-            proofForTx.withdrawalProof as `0x${string}`[],
+            proofForTx.withdrawalProof,
           ]
         : undefined,
   });
@@ -76,42 +99,46 @@ export function usePrepareProveWithdrawal(
 
         const messageBedrockOutput = {
           outputRoot: l2OutputProposal.outputRoot,
-          l1Timestamp: l2OutputProposal.timestamp.toNumber(),
-          l2BlockNumber: l2OutputProposal.l2BlockNumber.toNumber(),
-          l2OutputIndex: withdrawalL2OutputIndex.toNumber(),
+          l1Timestamp: l2OutputProposal.timestamp,
+          l2BlockNumber: l2OutputProposal.l2BlockNumber,
+          l2OutputIndex: withdrawalL2OutputIndex,
         };
 
-        const hashedWithdrawal = hashWithdrawal(
-          withdrawalMessage.nonce,
-          withdrawalMessage.sender,
-          withdrawalMessage.target,
-          withdrawalMessage.value,
-          withdrawalMessage.gasLimit,
-          withdrawalMessage.data,
-        );
-
-        const messageSlot = utils.keccak256(
-          utils.defaultAbiCoder.encode(
-            ['bytes32', 'uint256'],
-            [hashedWithdrawal, constants.HashZero],
+        const hashedWithdrawal = keccak256(
+          encodeAbiParameters(
+            parseAbiParameters('uint256, address, address, uint256, uint256, bytes'),
+            [
+              withdrawalMessage.nonce,
+              withdrawalMessage.sender,
+              withdrawalMessage.target,
+              withdrawalMessage.value,
+              withdrawalMessage.gasLimit,
+              withdrawalMessage.data,
+            ],
           ),
         );
 
+        const messageSlot = keccak256(
+          encodeAbiParameters(parseAbiParameters('bytes32, uint256'), [
+            hashedWithdrawal,
+            BigInt(pad('0x0')),
+          ]),
+        );
+
         const stateTrieProof = await makeStateTrieProof(
-          l2Provider as providers.JsonRpcProvider,
-          blockNumberOfLatestL2OutputProposal.toNumber(),
+          l2PublicClient,
+          blockNumberOfLatestL2OutputProposal,
           publicRuntimeConfig.l2L1MessagePasserAddress,
           messageSlot,
         );
 
-        const block = (await (l2Provider as providers.JsonRpcProvider).send(
-          'eth_getBlockByNumber',
-          [toRpcHexString(messageBedrockOutput.l2BlockNumber), false],
-        )) as { stateRoot: string; hash: string };
+        const block = await l2PublicClient.getBlock({
+          blockNumber: messageBedrockOutput.l2BlockNumber,
+        });
 
         const bedrockProof: BedrockCrossChainMessageProof = {
           outputRootProof: {
-            version: constants.HashZero,
+            version: pad('0x0'),
             stateRoot: block.stateRoot,
             messagePasserStorageRoot: stateTrieProof.storageRoot,
             latestBlockhash: block.hash,
@@ -128,9 +155,9 @@ export function usePrepareProveWithdrawal(
     withdrawalReceipt,
     withdrawalL2OutputIndex,
     l2OutputProposal,
-    l2Provider,
     isERC20Withdrawal,
     blockNumberOfLatestL2OutputProposal,
+    l2PublicClient,
   ]);
 
   return config;
