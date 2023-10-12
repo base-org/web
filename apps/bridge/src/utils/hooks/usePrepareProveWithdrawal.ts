@@ -7,6 +7,7 @@ import { getWithdrawalMessage } from 'apps/bridge/src/utils/transactions/getWith
 import getConfig from 'next/config';
 import { usePrepareContractWrite, usePublicClient, useWaitForTransaction } from 'wagmi';
 import { keccak256, encodeAbiParameters, parseAbiParameters, PublicClient, pad } from 'viem';
+import { hashWithdrawal } from 'apps/bridge/src/utils/hashing/hashWithdrawal';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -104,19 +105,14 @@ export function usePrepareProveWithdrawal(
           l2OutputIndex: withdrawalL2OutputIndex,
         };
 
-        const hashedWithdrawal = keccak256(
-          encodeAbiParameters(
-            parseAbiParameters('uint256, address, address, uint256, uint256, bytes'),
-            [
-              withdrawalMessage.nonce,
-              withdrawalMessage.sender,
-              withdrawalMessage.target,
-              withdrawalMessage.value,
-              withdrawalMessage.gasLimit,
-              withdrawalMessage.data,
-            ],
-          ),
-        );
+        const hashedWithdrawal = hashWithdrawal({
+          nonce: withdrawalMessage.nonce,
+          sender: withdrawalMessage.sender,
+          target: withdrawalMessage.target,
+          value: withdrawalMessage.value,
+          gasLimit: withdrawalMessage.gasLimit,
+          data: withdrawalMessage.data,
+        });
 
         const messageSlot = keccak256(
           encodeAbiParameters(parseAbiParameters('bytes32, uint256'), [

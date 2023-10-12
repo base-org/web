@@ -8,7 +8,7 @@ import { getWithdrawalMessage } from 'apps/bridge/src/utils/transactions/getWith
 import type { WithdrawalPhase } from 'apps/bridge/src/utils/transactions/phase';
 import getConfig from 'next/config';
 import { useWaitForTransaction } from 'wagmi';
-import { encodeAbiParameters, keccak256, parseAbiParameters } from 'viem';
+import { hashWithdrawal } from 'apps/bridge/src/utils/hashing/hashWithdrawal';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -60,19 +60,14 @@ export function useWithdrawalStatus({
   useEffect(() => {
     if (withdrawalReceipt) {
       const withdrawalMessage = getWithdrawalMessage(withdrawalReceipt, isERC20Withdrawal);
-      const hashedWithdrawal = keccak256(
-        encodeAbiParameters(
-          parseAbiParameters('uint256, address, address, uint256, uint256, bytes'),
-          [
-            withdrawalMessage.nonce,
-            withdrawalMessage.sender,
-            withdrawalMessage.target,
-            withdrawalMessage.value,
-            withdrawalMessage.gasLimit,
-            withdrawalMessage.data,
-          ],
-        ),
-      );
+      const hashedWithdrawal = hashWithdrawal({
+        nonce: withdrawalMessage.nonce,
+        sender: withdrawalMessage.sender,
+        target: withdrawalMessage.target,
+        value: withdrawalMessage.value,
+        gasLimit: withdrawalMessage.gasLimit,
+        data: withdrawalMessage.data,
+      });
       setWithdrawalHash(hashedWithdrawal);
     }
   }, [isERC20Withdrawal, withdrawalReceipt]);
