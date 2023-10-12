@@ -31,6 +31,7 @@ module.exports = {
               items: [
                 'building-with-base/guides/deploy-smart-contracts',
                 'building-with-base/guides/deploy-with-remix',
+                'building-with-base/guides/deploy-with-tenderly',
                 'building-with-base/guides/deploy-with-thirdweb',
               ],
             },
