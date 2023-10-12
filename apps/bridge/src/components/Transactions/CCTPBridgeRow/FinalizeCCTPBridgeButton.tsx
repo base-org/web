@@ -78,7 +78,9 @@ export const FinalizeCCTPBridgeButton = memo(function FinalizeCCTPBridgeButton({
       onClick={isOnCorrectNetwork ? handleFinalizeCCTPBridge : handleSwitchToCorrectNetwork}
       className="w-32 bg-white py-2 font-sans text-sm text-black"
     >
-      {isOnCorrectNetwork ? 'Complete' : `Switch to ${bridgeDirection === 'deposit' ? 'L2' : 'L1'}`}
+      {isOnCorrectNetwork
+        ? 'Ready to complete'
+        : `Switch to ${bridgeDirection === 'deposit' ? 'L2' : 'L1'}`}
     </button>
   );
 });

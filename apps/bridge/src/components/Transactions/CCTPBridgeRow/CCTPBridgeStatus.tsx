@@ -43,5 +43,5 @@ export const CCTPBridgeStatus = memo(function CCTPBridgeStatus({
   if (isFailed) return 'Failed';
 
   // Otherwise the bridge is complete
-  return 'Funds moved';
+  return 'Complete';
 });
