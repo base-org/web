@@ -18,15 +18,6 @@
     "imageUrl": "/images/partners/omniscia.png"
   },
   {
-    "name": "Omniscia",
-    "url": "https://omniscia.io/",
-    "description": "Omniscia is a smart contract auditing firm. Our team of experienced smart contract auditors & developers have been building and auditing complex decentralized networks and applications since. 2017.",
-    "tags": [
-      "security"
-    ],
-    "imageUrl": "/images/partners/omniscia.png"
-  },
-  {
     "name": "Hexens Cybersecurity",
     "url": "https://hexens.io/",
     "description": "Leading cybersecurity provider and novel cryptography experts, including zk, liquid staking and more.",
