@@ -38,7 +38,7 @@ Hardhat forking also has other capabilities like:
 - hardhat_setCode
 - hardhat_setStorageAt
 
-Those won't be covered in this guide, however it's recommend to explor them a bit more in the following link:
+Those won't be covered in this guide, however it's recommended to explore them a bit more in the following link:
 
 - https://hardhat.org/hardhat-network/guides/mainnet-forking.html
 

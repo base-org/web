@@ -153,7 +153,7 @@ The deployment file is then executed and you can then reuse that functionality a
 const lockDeployment = await deployments.get('Lock');
 ```
 
-Resue `Lock__factory` but use the connect function and pass the address of the newly-created contract plus a signer. Then, run `npx hardhat test` and you should get the same result:
+Reuse `Lock__factory` but use the connect function and pass the address of the newly-created contract plus a signer. Then, run `npx hardhat test` and you should get the same result:
 
 ```
   Lock
