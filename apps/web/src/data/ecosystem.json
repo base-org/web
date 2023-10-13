@@ -9,22 +9,139 @@
     "imageUrl": "/images/partners/wallet-retail.webp"
   },
   {
-    "name": "WOOFi",
-    "url": "https://fi.woo.org/",
-    "description": "One DEX to rule all chains. Trade and earn like royalty with best pricing, cross-chain swaps, and single-sided yields.",
+    "name": "Omniscia",
+    "url": "https://omniscia.io/",
+    "description": "Omniscia is a smart contract auditing firm. Our team of experienced smart contract auditors & developers have been building and auditing complex decentralized networks and applications since. 2017.",
     "tags": [
-      "defi"
+      "security"
     ],
-    "imageUrl": "/images/partners/woofi.png"
+    "imageUrl": "/images/partners/omniscia.png"
   },
   {
-    "name": "Arrakis Finance",
-    "url": "https://www.arrakis.finance/",
-    "description": "Arrakis builds trustless market making strategies to make protocol tokens liquid.",
+    "name": "Hexens Cybersecurity",
+    "url": "https://hexens.io/",
+    "description": "Leading cybersecurity provider and novel cryptography experts, including zk, liquid staking and more.",
+    "tags": [
+      "security"
+    ],
+    "imageUrl": "/images/partners/hexens.ong.png"
+  },
+  {
+    "name": "Avantis",
+    "url": "https://www.avantisfi.com/",
+    "description": "Avantis is building an ecosystem of synthetic margin based products, starting with perpetual futures for crypto, forex and commodities on Base.",
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/arrakis.png"
+    "imageUrl": "/images/partners/avantis2.png"
+  },
+  {
+    "name": "Toaster Finance",
+    "url": "https://www.toaster.finance/",
+    "description": "All-in-one DeFi platform focusing on a UX solution to enable users easy usage to multiple DeFi protocols by abstracting complicated hurdles and unifying the UI to a friendly, user-oriented interface.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/toaster.png"
+  },
+  {
+    "name": "IntentX",
+    "url": "https://intentx.io/",
+    "description": "Decentralized derivatives exchange using intent based architecture to provide the best trading experience possible.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/intentx.png"
+  },
+  {
+    "name": "Raft",
+    "url": "https://raft.fi/",
+    "description": "Raft enables the generation of R, a leading USD stablecoin, by opening a CDP (collateralized debt position), or by depositing stablecoins into the Raft protocol reserve.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/raft.png"
+  },
+  {
+    "name": "Llama",
+    "url": "https://llama.xyz/",
+    "description": "Llama is a fullstack platform for onchain governance and access control. It enables protocols to securely take action using onchain policies and custom execution strategies.",
+    "tags": [
+      "dao"
+    ],
+    "imageUrl": "/images/partners/llama.png"
+  },
+  {
+    "name": "Overtime",
+    "url": "https://overtimemarkets.xyz/#/?lang=en",
+    "description": "Overtime, the premier onchain sportsbook, offers seamless trading via our sports AMM in a fully decentralized manner. Rooted in Thales, we merge DeFi and real-world sports.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/overtime.png"
+  },
+  {
+    "name": "Chainstack",
+    "url": "https://chainstack.com/",
+    "description": "The limitless Web3 development stack to build applications for every scale, in DeFi, NFT, gaming, analytics, and everything in between.",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/chainstack.png"
+  },
+  {
+    "name": "Halliday",
+    "url": "https://www.halliday.xyz/",
+    "description": "Halliday enables game developers to build their next breakout hit on the blockchain. Our programmable ERC-4337 Smart Accounts are fully non-custodial, built to scale, and most importantly, designed specifically for games! With seamless onboarding, easy monetization and next-gen growth tooling, developers can fully immerse players in the world they have created, all while leveraging the full potential of the blockchain and offering their game’s own UI.",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/Halliday.png"
+  },
+  {
+    "name": "Base Treasure Hunt",
+    "url": "https://basetreasurehunt.com/",
+    "description": "Base Treasure Hunt is a new and thrilling experience for digital collectors that allow NFT projects to give back directly to their communities by rewarding lucky minters with prizes for rare traits.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/basetreasurehunt.png"
+  },
+  {
+    "name": "NFTA",
+    "url": "https://www.nfta.pl/",
+    "description": "daily eth price prediction game",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/nfta.png"
+  },
+  {
+    "name": "Base Battles",
+    "url": "https://basebattles.xyz/",
+    "description": "BaseBattles is a game about war, designed around Game Theory concepts.  Players purchase votes to add firepower to their team, frantically building armies until a fixed final block.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/basebattles.png"
+  },
+  {
+    "name": "QuestN",
+    "url": "https://questn.com/",
+    "description": "QuestN is a one-stop tool offering comprehensive solutions for Marketing, Growth, and Analysis in Web3. QuestN's range of services enables Projects to effectively engage in the entire cycle of user attraction, acquisition, and analysis.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/questn.png"
+  },
+  {
+    "name": "Unlonley",
+    "url": "https://www.unlonely.app/",
+    "description": "Your cozy space on the internet. Start your own channel and launch your own arcade token.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/unlonely.png"
   },
   {
     "name": "PitchTalk",
@@ -1017,15 +1134,6 @@
       "infra"
     ],
     "imageUrl": "/images/partners/thirdweb.webp"
-  },
-  {
-    "name": "Volmex",
-    "url": "https://volmex.finance/",
-    "description": "Volmex’s BVIV and EVIV Indices measure the 30-day expected volatility of Bitcoin and Ethereum respectively. Volmex builds a suite of products around the Volmex Implied Volatility Indices, specifically perpetual futures.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/volmex.webp"
   },
   {
     "name": "Wormhole",
