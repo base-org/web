@@ -20,7 +20,7 @@ export type BlockExplorerTransaction = {
   gasPrice: string;
   gasUsed: string;
   hash: string;
-  input: string;
+  input: `0x${string}`;
   isError: string;
   nonce: string;
   timeStamp: string;

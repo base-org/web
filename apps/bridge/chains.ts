@@ -20,6 +20,9 @@ export default [
       default: {
         http: ['https://cloudflare-eth.com'],
       },
+      public: {
+        http: ['https://cloudflare-eth.com'],
+      },
     },
     blockExplorers: {
       etherscan: {
@@ -62,6 +65,9 @@ export default [
       default: {
         http: ['https://mainnet.base.org'],
       },
+      public: {
+        http: ['https://mainnet.base.org'],
+      },
     },
     blockExplorers: {
       default: {
@@ -90,6 +96,9 @@ export default [
     },
     rpcUrls: {
       default: {
+        http: ['https://goerli.base.org'],
+      },
+      public: {
         http: ['https://goerli.base.org'],
       },
     },
@@ -125,9 +134,8 @@ export default [
         http: ['https://goerli.infura.io/v3'],
         webSocket: ['wss://goerli.infura.io/ws/v3'],
       },
-      default: {
-        http: ['https://rpc.ankr.com/eth_goerli'],
-      },
+      default: { http: ['https://rpc.ankr.com/eth_goerli'] },
+      public: { http: ['https://rpc.ankr.com/eth_goerli'] },
     },
     blockExplorers: {
       etherscan: {
@@ -178,7 +186,7 @@ export default [
         http: ['https://ethereum-sepolia.publicnode.com'],
       },
       public: {
-        http: ['https://rpc.sepolia.org'],
+        http: ['https://ethereum-sepolia.publicnode.com'],
       },
     },
     blockExplorers: {
@@ -218,6 +226,9 @@ export default [
     },
     rpcUrls: {
       default: {
+        http: ['https://sepolia.base.org'],
+      },
+      public: {
         http: ['https://sepolia.base.org'],
       },
     },

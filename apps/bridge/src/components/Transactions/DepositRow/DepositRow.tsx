@@ -10,7 +10,7 @@ import {
   blockExplorerUrlForL1Transaction,
   blockExplorerUrlForL2Transaction,
 } from 'apps/bridge/src/utils/url/blockExplorer';
-import { utils } from 'ethers';
+import { formatUnits } from 'viem';
 import getConfig from 'next/config';
 import { useWaitForTransaction } from 'wagmi';
 
@@ -39,8 +39,8 @@ export const DepositRow = memo(function WithdrawalRow({ transaction }: DepositRo
         timeStyle: 'short',
       })
     : undefined;
-  const depositAmount = utils.formatUnits(
-    transaction.amount,
+  const depositAmount = formatUnits(
+    BigInt(transaction.amount),
     // TODO: get decimals from asset list
     transaction.assetSymbol === 'USDC' ? 6 : 18,
   );

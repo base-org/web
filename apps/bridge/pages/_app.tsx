@@ -103,7 +103,7 @@ function Root({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter();
   const { ...props } = pageProps as { props: unknown };
 
-  const { chains: providerChains, wagmiClient } = connectWallet([
+  const { chains: providerChains, wagmiConfig } = connectWallet([
     parseInt(publicRuntimeConfig.l1ChainID),
     parseInt(publicRuntimeConfig.l2ChainID),
   ]);
@@ -121,7 +121,7 @@ function Root({ Component, pageProps }: AppProps) {
       </style>
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>
-          <WagmiConfig client={wagmiClient}>
+          <WagmiConfig config={wagmiConfig}>
             <RainbowKitProvider chains={providerChains} modalSize="compact">
               <TOSProvider>
                 <OFACProvider>

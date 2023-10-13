@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react';
-import { hashWithdrawal } from '@eth-optimism/core-utils';
 import { useHasWithdrawalBeenFinalized } from 'apps/bridge/src/utils/hooks/useHasWithdrawalBeenFinalized';
 import { useHasWithdrawalBeenProven } from 'apps/bridge/src/utils/hooks/useHasWithdrawalBeenProven';
 import { useIsFinalizationPeriodElapsed } from 'apps/bridge/src/utils/hooks/useIsFinalizationPeriodElapsed';
@@ -7,15 +6,15 @@ import { useL2OutputProposal } from 'apps/bridge/src/utils/hooks/useL2OutputProp
 import { useProvenWithdrawl } from 'apps/bridge/src/utils/hooks/useProvenWithdrawl';
 import { getWithdrawalMessage } from 'apps/bridge/src/utils/transactions/getWithdrawalMessage';
 import type { WithdrawalPhase } from 'apps/bridge/src/utils/transactions/phase';
-import { BigNumber } from 'ethers';
 import getConfig from 'next/config';
 import { useWaitForTransaction } from 'wagmi';
+import { hashWithdrawal } from 'apps/bridge/src/utils/hashing/hashWithdrawal';
 
 const { publicRuntimeConfig } = getConfig();
 
 type UseWithdrawalStateProps = {
   initializeTxHash: `0x${string}`;
-  blockNumberOfLatestL2OutputProposal?: BigNumber;
+  blockNumberOfLatestL2OutputProposal?: bigint;
   isERC20Withdrawal: boolean;
   proveTxHash?: `0x${string}`;
   finalizeTxHash?: `0x${string}`;
@@ -26,7 +25,7 @@ export function useWithdrawalStatus({
   isERC20Withdrawal,
   proveTxHash,
   finalizeTxHash,
-}: UseWithdrawalStateProps): { status: WithdrawalPhase; challengeWindowEndTime?: number } {
+}: UseWithdrawalStateProps): { status: WithdrawalPhase; challengeWindowEndTime?: bigint } {
   const [withdrawalHash, setWithdrawalHash] = useState<string | null>(null);
 
   const { data: withdrawalReceipt } = useWaitForTransaction({
@@ -37,10 +36,10 @@ export function useWithdrawalStatus({
   const withdrawalHasBeenFinalized = useHasWithdrawalBeenFinalized(withdrawalHash);
   const provenWithdrawal = useProvenWithdrawl(withdrawalHash);
   const { hasElapsed: finalizationPeriodHasElapsedForProvenWithdrawal, challengeWindowEndTime } =
-    useIsFinalizationPeriodElapsed(provenWithdrawal?.timestamp?.toNumber());
-  const l2OutputProposal = useL2OutputProposal(provenWithdrawal?.l2OutputIndex);
+    useIsFinalizationPeriodElapsed(provenWithdrawal?.[1]);
+  const l2OutputProposal = useL2OutputProposal(provenWithdrawal?.[2]);
   const finalizationPeriodHasElapsedForL2OutputProposal = useIsFinalizationPeriodElapsed(
-    l2OutputProposal?.timestamp?.toNumber(),
+    l2OutputProposal?.timestamp,
   );
   const { isLoading: isProofSubmissionLoading, isError: isProofSubmissionError } =
     useWaitForTransaction({
@@ -53,7 +52,7 @@ export function useWithdrawalStatus({
   const isWithdrawalReadyToProve = useMemo(
     () =>
       blockNumberOfLatestL2OutputProposal && withdrawalReceipt?.blockNumber
-        ? blockNumberOfLatestL2OutputProposal.toNumber() >= withdrawalReceipt?.blockNumber
+        ? blockNumberOfLatestL2OutputProposal >= withdrawalReceipt?.blockNumber
         : false,
     [blockNumberOfLatestL2OutputProposal, withdrawalReceipt],
   );
@@ -61,14 +60,7 @@ export function useWithdrawalStatus({
   useEffect(() => {
     if (withdrawalReceipt) {
       const withdrawalMessage = getWithdrawalMessage(withdrawalReceipt, isERC20Withdrawal);
-      const hashedWithdrawal = hashWithdrawal(
-        withdrawalMessage.nonce,
-        withdrawalMessage.sender,
-        withdrawalMessage.target,
-        withdrawalMessage.value,
-        withdrawalMessage.gasLimit,
-        withdrawalMessage.data,
-      );
+      const hashedWithdrawal = hashWithdrawal(withdrawalMessage);
       setWithdrawalHash(hashedWithdrawal);
     }
   }, [isERC20Withdrawal, withdrawalReceipt]);

@@ -16,7 +16,7 @@ import { useIsWalletConnected } from 'apps/bridge/src/utils/hooks/useIsWalletCon
 import { usePrepareERC20Withdrawal } from 'apps/bridge/src/utils/hooks/usePrepareERC20Withdrawal';
 import { usePrepareERC20WithdrawalTo } from 'apps/bridge/src/utils/hooks/usePrepareERC20WithdrawalTo';
 import { usePrepareETHWithdrawal } from 'apps/bridge/src/utils/hooks/usePrepareETHWithdrawal';
-import { utils } from 'ethers';
+import { isAddress } from 'viem';
 import getConfig from 'next/config';
 import { useAccount, useBalance, useContractWrite } from 'wagmi';
 import { useIsPermittedToBridgeTo } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridgeTo';
@@ -39,7 +39,7 @@ export function WithdrawContainer() {
   const [selectedAsset, setSelectedAsset] = useState<Asset>(assetList[0]);
 
   const { address } = useAccount();
-  const codeAtAddress = useGetCode(address);
+  const codeAtAddress = useGetCode(chainId, address);
   const isSmartContractWallet = !!codeAtAddress && codeAtAddress !== '0x';
 
   const { data: L2Balance } = useBalance({
@@ -141,7 +141,7 @@ export function WithdrawContainer() {
       parseFloat(withdrawAmount) <= 0 ||
       parseFloat(withdrawAmount) >= parseFloat(L2Balance?.formatted ?? '0') ||
       withdrawAmount === '' ||
-      (isSmartContractWallet && !utils.isAddress(withdrawTo ?? '')) ||
+      (isSmartContractWallet && !isAddress(withdrawTo ?? '')) ||
       !isPermittedToBridge;
 
     button = (

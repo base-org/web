@@ -1,5 +1,5 @@
 import L2ToL1MessagePasser from 'apps/bridge/src/contract-abis/L2ToL1MessagePasser';
-import { parseEther, parseUnits } from 'ethers/lib/utils.js';
+import { parseUnits, parseEther } from 'viem';
 import getConfig from 'next/config';
 import { Address, usePrepareContractWrite } from 'wagmi';
 
@@ -28,7 +28,7 @@ export function usePrepareETHWithdrawal({
       parseUnits('1', 5),
       includeTosVersionByte ? publicRuntimeConfig.tosVersion : '0x',
     ],
-    overrides: { value: parseEther(withdrawAmount === '' ? '0' : withdrawAmount) },
+    value: parseEther(withdrawAmount === '' ? '0' : withdrawAmount),
   });
 
   return withdrawConfig;

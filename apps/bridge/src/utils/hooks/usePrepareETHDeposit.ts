@@ -1,6 +1,5 @@
 import OptimismPortal from 'apps/bridge/src/contract-abis/OptimismPortal';
-import { BigNumber } from 'ethers';
-import { parseEther, parseUnits } from 'ethers/lib/utils.js';
+import { parseEther, parseUnits } from 'viem';
 import getConfig from 'next/config';
 import { Address, usePrepareContractWrite } from 'wagmi';
 
@@ -31,10 +30,8 @@ export function usePrepareETHDeposit({
       false,
       includeTosVersionByte ? publicRuntimeConfig.tosVersion : '0x',
     ],
-    overrides: {
-      value: parseEther(depositAmount === '' ? '0' : depositAmount),
-      gasLimit: BigNumber.from(200000),
-    },
+    value: parseEther(depositAmount === '' ? '0' : depositAmount),
+    gas: BigInt(200000),
   });
 
   return depositConfig;
