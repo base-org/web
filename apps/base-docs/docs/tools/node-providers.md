@@ -105,6 +105,17 @@ slug: /tools/node-providers
 
 ---
 
+## Nodies DLB
+
+[Nodies DLB](https://nodies.app) provides highly performant RPC Services for Base, as well as all other OP-stacked chains. They offer free public endpoints, Pay-As-You-Go, and enterprise pricing plans. 
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Testnet (Available on request)
+
+---
+
 ## NOWNodes
 
 [NOWNodes](https://nownodes.io/nodes/basechain-base) is a Web3 development tool that provides shared and dedicated no rate-limit access to Base RPC full nodes.
