@@ -1,0 +1,22 @@
+{
+  "index_name": "prod",
+  "start_urls": [
+    "https://docs.base.org"
+  ],
+  "sitemap_urls": [
+    "https://docs.base.org/sitemap.xml"
+  ],
+  "selectors": {
+    "default": {
+      "lvl0": "article h1",
+      "lvl1": "article h2",
+      "lvl2": "article h3",
+      "lvl3": "article h4",
+      "lvl4": "article h5",
+      "lvl5": "article td:first-child",
+      "lvl6": "article td:not(td:first-child)",
+      "text": "article p, article li"
+    }
+  },
+  "strip_chars": " .,;:#"
+}
