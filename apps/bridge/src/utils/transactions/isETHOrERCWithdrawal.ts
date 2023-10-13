@@ -1,6 +1,7 @@
-import { getOEContract } from '@eth-optimism/sdk';
+import { l2StandardBridgeABI } from '@eth-optimism/contracts-ts';
 import { BlockExplorerTransaction } from 'apps/bridge/src/types/API';
 import getConfig from 'next/config';
+import { decodeFunctionData } from 'viem';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -11,12 +12,6 @@ const ETH_WITHDRAWAL_ADDRESS = (
 const ERC20_WITHDRAWAL_ADDRESS = (
   publicRuntimeConfig?.L2StandardBridge ?? '0x4200000000000000000000000000000000000010'
 ).toLowerCase();
-
-const L2_CHAIN_ID = parseInt(publicRuntimeConfig?.l2ChainID ?? '84531');
-
-const l2StandardBridgeInterface = getOEContract('L2StandardBridge', L2_CHAIN_ID, {
-  address: ERC20_WITHDRAWAL_ADDRESS,
-}).interface;
 
 export function isETHOrERC20Withdrawal(tx: BlockExplorerTransaction) {
   // Immediately filter out if tx is not to an address we don't care about
@@ -31,7 +26,7 @@ export function isETHOrERC20Withdrawal(tx: BlockExplorerTransaction) {
 
   // ERC-20 Withdrawal
   if (tx.to === ERC20_WITHDRAWAL_ADDRESS) {
-    const functionName = l2StandardBridgeInterface.getFunction(tx.input.slice(0, 10)).name;
+    const { functionName } = decodeFunctionData({ abi: l2StandardBridgeABI, data: tx.input });
     if (functionName === 'withdraw' || functionName === 'withdrawTo') {
       return true;
     }

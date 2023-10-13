@@ -3,7 +3,6 @@ import { useIsPermittedToBridge } from 'apps/bridge/src/utils/hooks/useIsPermitt
 import { usePrepareProveWithdrawal } from 'apps/bridge/src/utils/hooks/usePrepareProveWithdrawal';
 import getConfig from 'next/config';
 import { useContractWrite, useNetwork, useSwitchNetwork } from 'wagmi';
-import { BigNumber } from 'ethers';
 
 const { publicRuntimeConfig } = getConfig();
 const l1ChainID = parseInt(publicRuntimeConfig.l1ChainID);
@@ -15,7 +14,7 @@ type ProveWithdrawalButtonProps = {
   onCloseProveWithdrawalModal: () => void;
   setProveTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
   setModalProveTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
-  blockNumberOfLatestL2OutputProposal?: BigNumber;
+  blockNumberOfLatestL2OutputProposal?: bigint;
 };
 
 export const ProveWithdrawalButton = memo(function ProveWithdrawalButton({

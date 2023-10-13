@@ -1,7 +1,6 @@
 import L1StandartBridge from 'apps/bridge/src/contract-abis/L1StandardBridge';
 import { Asset } from 'apps/bridge/src/types/Asset';
-import { BigNumber } from 'ethers';
-import { parseUnits } from 'ethers/lib/utils.js';
+import { parseUnits } from 'viem';
 import getConfig from 'next/config';
 import { Address, usePrepareContractWrite } from 'wagmi';
 
@@ -40,7 +39,7 @@ export function usePrepareERC20Deposit({
     ],
     cacheTime: 0,
     staleTime: 1,
-    overrides: { gasLimit: BigNumber.from(300000) },
+    gas: BigInt(300000),
   });
   return depositConfig;
 }

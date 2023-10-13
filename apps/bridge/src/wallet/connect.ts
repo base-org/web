@@ -10,14 +10,14 @@ import {
 } from '@rainbow-me/rainbowkit/wallets';
 import chainList from 'apps/bridge/chains';
 import getConfig from 'next/config';
-import { configureChains, createClient } from 'wagmi';
+import { configureChains, createConfig } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
 
 const { publicRuntimeConfig } = getConfig();
 
 export function connectWallet(activeChainIds: number[]) {
   const customChains = chainList.filter((chain) => activeChainIds?.includes(chain.id));
-  const { chains, provider } = configureChains([...customChains], [publicProvider()]);
+  const { chains, publicClient } = configureChains([...customChains], [publicProvider()]);
   let autoConnect = false;
   if (typeof window !== 'undefined') {
     autoConnect = localStorage.getItem('autoconnect') === '1';
@@ -39,11 +39,11 @@ export function connectWallet(activeChainIds: number[]) {
       ],
     },
   ]);
-  const wagmiClient = createClient({
+  const wagmiConfig = createConfig({
     autoConnect,
     connectors,
-    provider,
+    publicClient,
   });
 
-  return { chains, wagmiClient };
+  return { chains, wagmiConfig };
 }

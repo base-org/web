@@ -1,6 +1,6 @@
-import { utils } from 'ethers';
 import getConfig from 'next/config';
 import { Address, erc20ABI, usePrepareContractWrite } from 'wagmi';
+import { parseUnits } from 'viem';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -17,8 +17,8 @@ export function useApproveContract({
 }: UseApproveContractProps) {
   const approveAmountBN =
     approveAmount === '' || Number.isNaN(Number(approveAmount))
-      ? utils.parseUnits('0', decimals)
-      : utils.parseUnits(approveAmount, decimals);
+      ? parseUnits('0', decimals)
+      : parseUnits(approveAmount, decimals);
   const { config: depositConfig } = usePrepareContractWrite({
     address: contractAddress,
     // TODO: Replace with dynamic abi importer

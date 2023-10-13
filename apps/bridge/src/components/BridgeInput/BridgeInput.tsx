@@ -9,7 +9,7 @@ import { useDisclosure } from 'apps/bridge/src/utils/hooks/useDisclosure';
 import { useFindChainByNetwork } from 'apps/bridge/src/utils/hooks/useFindNetwork';
 import useMediaQuery from 'apps/bridge/src/utils/hooks/useMediaQuery';
 import { networkToLayer } from 'apps/bridge/src/utils/networks/networkToLayer';
-import { parseUnits } from 'ethers/lib/utils.js';
+import { parseUnits } from 'viem';
 import Image from 'next/image';
 
 type BridgeInputProps = {
@@ -89,8 +89,9 @@ export function BridgeInput({
         setSelectedAsset(asset);
         setAmount('0');
       };
-    }
-    , [onClose, setAmount, setSelectedAsset]);
+    },
+    [onClose, setAmount, setSelectedAsset],
+  );
 
   function setMaxBalance() {
     setAmount((parseFloat(balance) * 0.99).toFixed(6).toString());
@@ -99,7 +100,7 @@ export function BridgeInput({
   const error =
     amount !== '' &&
     balance !== '' &&
-    parseUnits(amount, 18).gt(parseUnits(balance, 18)) &&
+    parseUnits(amount, 18) > parseUnits(balance, 18) &&
     'Insufficient balance';
 
   function handleFocus() {
@@ -152,13 +153,13 @@ export function BridgeInput({
           style={
             isDesktop
               ? {
-                minWidth: 40,
-                width: amount.length * 37,
-                maxWidth: 16 * 31,
-              }
+                  minWidth: 40,
+                  width: amount.length * 37,
+                  maxWidth: 16 * 31,
+                }
               : {
-                maxWidth: 'calc(100vw - 120px)',
-              }
+                  maxWidth: 'calc(100vw - 120px)',
+                }
           }
           placeholder="0"
           min="0"
