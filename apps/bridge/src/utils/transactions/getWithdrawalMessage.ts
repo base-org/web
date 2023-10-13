@@ -12,7 +12,7 @@ const L2_L1_MESSAGE_PASSER_ADDRESS = (
 export function getWithdrawalMessage(
   withdrawalReceipt: TransactionReceipt,
   isERC20Withdrawal = false,
-) {
+): WithdrawalMessage {
   let parsedWithdrawalLog: { args: WithdrawalMessage };
   if (isERC20Withdrawal) {
     const messageLog = withdrawalReceipt.logs.find((log) => {

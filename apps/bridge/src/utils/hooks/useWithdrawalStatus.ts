@@ -60,14 +60,7 @@ export function useWithdrawalStatus({
   useEffect(() => {
     if (withdrawalReceipt) {
       const withdrawalMessage = getWithdrawalMessage(withdrawalReceipt, isERC20Withdrawal);
-      const hashedWithdrawal = hashWithdrawal({
-        nonce: withdrawalMessage.nonce,
-        sender: withdrawalMessage.sender,
-        target: withdrawalMessage.target,
-        value: withdrawalMessage.value,
-        gasLimit: withdrawalMessage.gasLimit,
-        data: withdrawalMessage.data,
-      });
+      const hashedWithdrawal = hashWithdrawal(withdrawalMessage);
       setWithdrawalHash(hashedWithdrawal);
     }
   }, [isERC20Withdrawal, withdrawalReceipt]);

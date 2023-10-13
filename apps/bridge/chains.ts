@@ -186,7 +186,7 @@ export default [
         http: ['https://ethereum-sepolia.publicnode.com'],
       },
       public: {
-        http: ['https://rpc.sepolia.org'],
+        http: ['https://ethereum-sepolia.publicnode.com'],
       },
     },
     blockExplorers: {

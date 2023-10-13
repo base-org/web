@@ -105,14 +105,7 @@ export function usePrepareProveWithdrawal(
           l2OutputIndex: withdrawalL2OutputIndex,
         };
 
-        const hashedWithdrawal = hashWithdrawal({
-          nonce: withdrawalMessage.nonce,
-          sender: withdrawalMessage.sender,
-          target: withdrawalMessage.target,
-          value: withdrawalMessage.value,
-          gasLimit: withdrawalMessage.gasLimit,
-          data: withdrawalMessage.data,
-        });
+        const hashedWithdrawal = hashWithdrawal(withdrawalMessage);
 
         const messageSlot = keccak256(
           encodeAbiParameters(parseAbiParameters('bytes32, uint256'), [
