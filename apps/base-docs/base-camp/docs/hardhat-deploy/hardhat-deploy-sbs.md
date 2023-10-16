@@ -10,7 +10,7 @@ In this article, you'll learn how to deploy smart contracts to multiple Blockcha
 
 ## Objectives
 
-By the end of this lesson you should be able to:
+By the end of this lesson, you should be able to:
 
 - Deploy a smart contract to the Base Goerli Testnet with hardhat-deploy
 - Deploy a smart contract to the Goerli Testnet with hardhat-deploy
@@ -21,29 +21,27 @@ By the end of this lesson you should be able to:
 
 ## Overview
 
-Hardhat capabilities enable developers to deploy smart contracts easily to any Blockchain by simply creating `tasks` or `scripts`. However, due to the Hardhat architecture that enables its extension by creating plugins, we can rely in existing solutions developed by the community.
+Hardhat capabilities enable developers to deploy smart contracts easily to any Blockchain by simply creating `tasks` or `scripts`. However, due to the Hardhat architecture that enables its extension by creating plugins, you can rely on existing solutions developed by the community.
 
-[Hardhat deploy](https://github.com/wighawag/hardhat-deploy) is a community developed plugin that enable the deployment of our smart contracts in a simple way.
+[Hardhat deploy](https://github.com/wighawag/hardhat-deploy) is a community-developed plugin that enables the deployment of your smart contracts in a simple way.
 
-## Setup Hardhat Deploy
+## Setting up Hardhat deploy
 
-To install we simply run `npm install -D hardhat-deploy`.
+To install:
 
-Then we import hardhat-deploy in hardhat.config.ts.
+1. Run `npm install -D hardhat-deploy`. Then, import hardhat-deploy in `hardhat.config.ts`:
 
-```Javascript
-import "hardhat-deploy"
+```typescript
+import 'hardhat-deploy';
 ```
 
-We create a folder called deploy and inside a new file called
+2. Create a folder called deploy and inside it create a new file called `001_deploy_lock.ts`.
 
-`001_deploy_lock.ts`
+3. Include the following:
 
-Then we include the following content:
-
-```Javascript
-import {HardhatRuntimeEnvironment} from 'hardhat/types';
-import {DeployFunction} from 'hardhat-deploy/types';
+```typescript
+import { HardhatRuntimeEnvironment } from 'hardhat/types';
+import { DeployFunction } from 'hardhat-deploy/types';
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   // code here
@@ -51,9 +49,9 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 export default func;
 ```
 
-We need to modify our tsconfig.json file to look like:
+4. Modify the `tsconfig.json` file to look like:
 
-```Javascript
+```json
 {
   "compilerOptions": {
     "target": "es2020",
@@ -68,99 +66,94 @@ We need to modify our tsconfig.json file to look like:
 }
 ```
 
-Before implementing the deploy functionality, we can configure a deployer account in our `hardhat.config.ts`. Hardhat deploy includes a way to name accounts in our config file.
+5. Before implementing the deploy functionality, configure a deployer account in the `hardhat.config.ts` file. Hardhat deploy includes a way to name accounts in the config file.
 
-We can simply do:
+6. Run the following, which adds an alias to the account 0 of your environment:
 
-```Javascript
+```typescript
 const config: HardhatUserConfig = {
-  solidity: "0.8.18",
+  solidity: '0.8.18',
   namedAccounts: {
-    deployer: 0
-  }
+    deployer: 0,
+  },
 };
 ```
 
-This simply is adding an alias to the account 0 of our environment.
+7. Implement the deploy function by including the following in the `001_deploy_lock.ts` file:
 
-We now implement the deploy function by including the following in the `001_deploy_lock.ts` file.
-
-```Javascript
-import {HardhatRuntimeEnvironment} from 'hardhat/types';
-import {DeployFunction} from 'hardhat-deploy/types';
-import { ethers} from 'hardhat'
+```typescript
+import { HardhatRuntimeEnvironment } from 'hardhat/types';
+import { DeployFunction } from 'hardhat-deploy/types';
+import { ethers } from 'hardhat';
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
-  const {deploy} = hre.deployments;
+  const { deploy } = hre.deployments;
   // We can now use deployer
-  const {deployer} = await hre.getNamedAccounts();
+  const { deployer } = await hre.getNamedAccounts();
 
   // The value we want to lock
-  const VALUE_LOCKED = hre.ethers.parseEther("0.01");
+  const VALUE_LOCKED = hre.ethers.parseEther('0.01');
 
   // The unlock time after deployment
   const UNLOCK_TIME = 10000;
 
   // We user ethers to get the current time stamp
   const blockNumber = await ethers.provider.getBlockNumber();
-  const lastBlockTimeStamp = (await ethers.provider.getBlock(blockNumber))?.timestamp as number
+  const lastBlockTimeStamp = (await ethers.provider.getBlock(blockNumber))?.timestamp as number;
 
   // We say we want to deploy our Lock contract using the deployer
   // account and passing the value and arguments.
-  await deploy("Lock", {
+  await deploy('Lock', {
     from: deployer,
     args: [lastBlockTimeStamp + UNLOCK_TIME],
-    value: VALUE_LOCKED.toString()
-  })
+    value: VALUE_LOCKED.toString(),
+  });
 };
 
 export default func;
 
 // This tag will help us in the next section to trigger this deployment file programmatically
-func.tags = ["DeployAll"]
+func.tags = ['DeployAll'];
 ```
 
-## Testing our deployment
+## Testing your deployment
 
-The easiest way to test our deployment is by modifying our test.
+The easiest way to test your deployment is by modifying the test.
 
-We go to Lock.ts and we include in our imports the following:
+Go to `Lock.ts` and include in the imports the following:
 
-`import { ethers, deployments } from "hardhat";`
-
-`deployments` will allow us to execute our deployment files from our test.
-
-We change our `before` function to look like:
-
-```Javascript
-
-before(async() => {
-    lastBlockTimeStamp = await time.latest()
-
-    const signers = await ethers.getSigners()
-    ownerSigner = signers[0]
-    otherUserSigner= signers[1]
-
-    await deployments.fixture(['DeployAll']);
-    const lockDeployment = await deployments.get('Lock');
-
-    lockInstance =  Lock__factory.connect(lockDeployment.address, ownerSigner)
-})
+```typescript
+import { ethers, deployments } from 'hardhat';
 ```
 
-Notice how we execute `deployments.fixture` and pass a tag that matches the tag we specified in our deployment file (001_deploy_lock.ts).
+`deployments` will allow you to execute the deployment files from your test.
 
-This will execute our deployment file, so we can reuse that functionality and simply consume the address of the newly deployed contract by using:
+Change the `before` function to look like the following:
 
-```Javascript
- const lockDeployment = await deployments.get('Lock');
+```typescript
+before(async () => {
+  lastBlockTimeStamp = await time.latest();
+
+  const signers = await ethers.getSigners();
+  ownerSigner = signers[0];
+  otherUserSigner = signers[1];
+
+  await deployments.fixture(['DeployAll']);
+  const lockDeployment = await deployments.get('Lock');
+
+  lockInstance = Lock__factory.connect(lockDeployment.address, ownerSigner);
+});
 ```
 
-Then we reuse `Lock__factory` but we use the connect function and pass the address of the newly created contract plus a signer.
+Notice how you execute `deployments.fixture` and pass a tag that matches the one you specified in the deployment file (`001_deploy_lock.ts`).
 
-Now we simply run `npx hardhat test`
+The deployment file is then executed and you can then reuse that functionality and simply consume the address of the newly-deployed contract by using:
 
-And we should get the same result:
+```typescript
+const lockDeployment = await deployments.get('Lock');
+```
+
+Reuse `Lock__factory` but use the connect function and pass the address of the newly-created contract plus a signer. Then, run `npx hardhat test` and you should get the same result:
 
 ```
   Lock
@@ -171,58 +164,55 @@ And we should get the same result:
     ✔ shouldn"t allow to withdraw a non owner
     ✔ should allow to withdraw a owner
 
-
   6 passing (2s)
 ```
 
-## Deploy to a test network
+## Deploying to a test network
 
-Deploying to a real test network involves configuring the network parameters in our hardhat config file:
-
-We need to include parameters like:
+Deploying to a real test network involves configuring the network parameters in the hardhat config file. You need to include parameters such as:
 
 - The JSON RPC url
-- The account we want to use
-- To have real test ether or the native Blockchain token for gas costs.
+- The account you want to use
+- Real test ether or the native Blockchain token for gas costs
 
-We will include the following in our `hardhat.config.ts`:
+Include the following in the `hardhat.config.ts` file:
 
-```Javascript
+```typescript
 const config: HardhatUserConfig = {
-  solidity: "0.8.18",
+  solidity: '0.8.18',
   namedAccounts: {
-    deployer: 0
+    deployer: 0,
   },
   networks: {
     base_goerli: {
-      url: "https://goerli.base.org",
+      url: 'https://goerli.base.org',
       accounts: {
-        mnemonic: process.env.MNEMONIC ?? ""
-      }
+        mnemonic: process.env.MNEMONIC ?? '',
+      },
     },
     goerli: {
-      url: `https://eth-goerli.g.alchemy.com/v2/${process.env.ALCHEMY_GOERLI_KEY ?? ""}`,
+      url: `https://eth-goerli.g.alchemy.com/v2/${process.env.ALCHEMY_GOERLI_KEY ?? ''}`,
       accounts: {
-        mnemonic: process.env.MNEMONIC ?? ""
-      }
+        mnemonic: process.env.MNEMONIC ?? '',
+      },
     },
     mumbai: {
-      url: `https://polygon-mumbai.g.alchemy.com/v2/${process.env.ALCHEMY_MUMBAI_KEY ?? ""}`,
+      url: `https://polygon-mumbai.g.alchemy.com/v2/${process.env.ALCHEMY_MUMBAI_KEY ?? ''}`,
       accounts: {
-        mnemonic: process.env.MNEMONIC ?? ""
-      }
-    }
-  }
+        mnemonic: process.env.MNEMONIC ?? '',
+      },
+    },
+  },
 };
 ```
 
-We have configued 3 networks:
+You've configued 3 networks:
 
 - base_goerli
 - goerli
 - mumbai
 
-You also need to create a .env file with the following variables:
+You also need to create a `.env` file with the following variables:
 
 ```
 MNENOMIC="<REPLACE WITH YOUR MNEMONIC>"
@@ -230,39 +220,51 @@ ALCHEMY_GOERLI_KEY=<REPLACE WITH YOUR API KEY>
 ALCHEMY_MUMBAI_KEY=<REPLACE WITH YOUR API KEY>
 ```
 
-In order to ensure the environment variables are loaded, we need to install another package called dotenv.
+In order to ensure the environment variables are loaded, you need to install another package called `dotenv`:
 
-We install dotenv by running `npm install -D dotenv`.
-
-And we include in our `hardhat.config.ts` the following:
-
-```Javascript
-import dotenv from 'dotenv'
-
-dotenv.config()
+```bash
+npm install -D dotenv
 ```
 
-Now let's deploy to base with the following command:
+Then, include the following in the `hardhat.config.ts` file:
 
-`npx hardhat deploy --network base_goerli`
+```typescript
+import dotenv from 'dotenv';
 
-After we run this command we should have a deployments folder with a newly created deployment for base_goerli.
+dotenv.config();
+```
+
+Deploy to base with the following command:
+
+```bash
+npx hardhat deploy --network base_goerli
+```
+
+After you run the command, a deployments folder appears with a newly-created deployment for `base_goerli`:
 
 ![New deployment](../../assets/images/hardhat-deploying/new-deploy.png)
 
-If we want to deploy to another network, we simply change the network name as the follows:
+If you want to deploy to another network, change the network name as follows:
 
-`npx hardhat deploy --network goerli`
+```bash
+npx hardhat deploy --network goerli
+```
 
-or to deploy to mumbai:
+or, to deploy to mumbai:
 
-`npx hardhat deploy --network mumbai`
+```bash
+npx hardhat deploy --network mumbai
+```
 
-Be aware you that you need to have the right environment variables for the JSON RPC urls. For instance for goerli `ALCHEMY_GOERLI_KEY` and for mumbai `ALCHEMY_MUMBAI_KEY`.
+:::info
+
+Be aware you that you must have the correct environment variables for the JSON RPC URLs. For example, for goerli use `ALCHEMY_GOERLI_KEY` and for mumbai use `ALCHEMY_MUMBAI_KEY`.
+
+:::
 
 ## Conclusion
 
-In this lesson, you've learned how to deploy smart contracts using Hardhat and Hardhat-deploy. We have configured hardhat to easily deploy to multiple networks and we created deployment files to abstract this task.
+In this lesson, you've learned how to deploy smart contracts using Hardhat and Hardhat-deploy. You have configured hardhat to easily deploy to multiple networks and you created deployment files to abstract this task.
 
 ---
 
