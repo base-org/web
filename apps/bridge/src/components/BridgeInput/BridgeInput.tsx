@@ -87,7 +87,7 @@ export function BridgeInput({
       return () => {
         onClose();
         setSelectedAsset(asset);
-        setAmount('0');
+        setAmount('');
       };
     },
     [onClose, setAmount, setSelectedAsset],
@@ -154,7 +154,7 @@ export function BridgeInput({
             isDesktop
               ? {
                   minWidth: 40,
-                  width: amount.length * 37,
+                  width: amount.length * 37 + 20,
                   maxWidth: 16 * 31,
                 }
               : {

@@ -273,7 +273,7 @@ __metadata:
     tailwindcss: ^3.2.4
     typescript: next
     viem: latest
-    wagmi: ^1.4.3
+    wagmi: ^1.4.4
     webpack-bugsnag-plugins: ^1.8.0
   languageName: unknown
   linkType: soft
@@ -6656,9 +6656,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wagmi/core@npm:1.4.3":
-  version: 1.4.3
-  resolution: "@wagmi/core@npm:1.4.3"
+"@wagmi/core@npm:1.4.4":
+  version: 1.4.4
+  resolution: "@wagmi/core@npm:1.4.4"
   dependencies:
     "@wagmi/connectors": 3.1.2
     abitype: 0.8.7
@@ -6670,7 +6670,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: a8a0622324076bc3087eb05eb1d74652511433bc68e1972e24f699018140508e56473760c5de0a56c92f621aed52ef7e683f3e0aca34aec5428464d28559c27f
+  checksum: ee4946a6ebdc9526024898e10d472b64eba673f7d9075f56aa564541a4a3c394c5e285a64f297f1a315471a8b7b7649e688ddd2cd82c9b38c77d036d2278b86f
   languageName: node
   linkType: hard
 
@@ -21207,14 +21207,14 @@ typescript@next:
   languageName: node
   linkType: hard
 
-"wagmi@npm:^1.4.3":
-  version: 1.4.3
-  resolution: "wagmi@npm:1.4.3"
+"wagmi@npm:^1.4.4":
+  version: 1.4.4
+  resolution: "wagmi@npm:1.4.4"
   dependencies:
     "@tanstack/query-sync-storage-persister": ^4.27.1
     "@tanstack/react-query": ^4.28.0
     "@tanstack/react-query-persist-client": ^4.28.0
-    "@wagmi/core": 1.4.3
+    "@wagmi/core": 1.4.4
     abitype: 0.8.7
     use-sync-external-store: ^1.2.0
   peerDependencies:
@@ -21224,7 +21224,7 @@ typescript@next:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: df0dfddb898a59246c14e7053caeeea313801340d589e5545bad631ec47fc66e2cc1dafaaa7880c9947931efad442f834ed3d3c6b2d0952b586f6da575c3293f
+  checksum: 4cf7ce978400d21e27d25871a4c8bc6b05fabd61d6d3d6e705c120a1c1dd4ba260d6ddfb2bb28b5e18591ba825c89839d0f3c874c55dfa255a9cde96d0785202
   languageName: node
   linkType: hard
 
