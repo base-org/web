@@ -75,6 +75,8 @@ const contentSecurityPolicy = {
     'https://sepolia.etherscan.io', // Sepolia Etherscan
     'https://api-sepolia.etherscan.io/api', // Sepolia Etherscan API
     'https://base-sepolia.blockscout.com', // Sepolia Blockscout
+    'https://base-goerli.blockscout.com/api', // Blockscout
+    'https://iris-api-sandbox.circle.com/attestations/', // Circle
   ],
   'img-src': ["'self'", 'data:', 'https://*.walletconnect.com/'], // WalletConnect,
 };
@@ -161,6 +163,12 @@ module.exports = extendBaseConfig({
     l2L1MessagePasserAddress: process.env.L2_L1_MESSAGE_PASSER_ADDRESS,
     L2StandardBridge: process.env.L2_STANDARD_BRIDGE,
     l2OutputOracleProxyAddress: process.env.L2_OUTPUT_ORACLE_PROXY_ADDRESS,
+    l1CCTPMessageTransmitterAddress: process.env.L1_CCTP_MESSAGE_TRANSMITTER_ADDRESS,
+    l1CCTPTokenMessengerAddress: process.env.L1_CCTP_TOKEN_MESSENGER_ADDRESS,
+    l2CCTPMessageTransmitterAddress: process.env.L2_CCTP_MESSAGE_TRANSMITTER_ADDRESS,
+    l2CCTPTokenMessengerAddress: process.env.L2_CCTP_TOKEN_MESSENGER_ADDRESS,
+    l1CCTPDomain: process.env.L1_CCTP_DOMAIN,
+    l2CCTPDomain: process.env.L2_CCTP_DOMAIN,
     marketingURL: process.env.MARKETING_URL,
     docsURL: process.env.DOCS_URL,
     twitterURL: process.env.TWITTER_URL,
@@ -181,6 +189,8 @@ module.exports = extendBaseConfig({
     appStage: process.env.APP_STAGE,
     complianceApiURL: process.env.COMPLIANCE_API_URL,
     sepoliaBridgeURL: process.env.SEPOLIA_BRIDGE_URL,
+    cctpAttestationsAPIURL: process.env.CCTP_ATTESTATIONS_API_URL,
+    cctpEnabled: process.env.CCTP_ENABLED,
   },
   ...baseConfig,
   async headers() {

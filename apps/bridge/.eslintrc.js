@@ -13,5 +13,6 @@ module.exports = {
   rules: {
     // Does not work with `:` aliases
     'import/extensions': 'off',
+    'react/prop-types': 'off',
   },
 };

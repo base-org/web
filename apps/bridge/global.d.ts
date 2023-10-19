@@ -14,6 +14,12 @@ declare module 'next/config' {
       l2L1MessagePasserAddress: `0x${string}`;
       L2StandardBridge: `0x${string}`;
       l2OutputOracleProxyAddress: `0x${string}`;
+      l1CCTPMessageTransmitterAddress: `0x${string}`;
+      l1CCTPTokenMessengerAddress: `0x${string}`;
+      l2CCTPMessageTransmitterAddress: `0x${string}`;
+      l2CCTPTokenMessengerAddress: `0x${string}`;
+      l1CCTPDomain: string;
+      l2CCTPDomain: string;
       marketingURL: string;
       docsURL: string;
       blogURL: string;
@@ -33,6 +39,8 @@ declare module 'next/config' {
       appStage: string;
       complianceApiURL: string;
       sepoliaBridgeURL: string;
+      cctpAttestationsAPIURL: string;
+      cctpEnabled: string;
     };
   };
 
