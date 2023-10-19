@@ -10,8 +10,11 @@ type WithdrawalRowProps = {
   onCloseProveWithdrawalModal: () => void;
   onOpenFinalizeWithdrawalModal: () => void;
   onCloseFinalizeWithdrawalModal: () => void;
+  onOpenFinalizeCCTPBridgeModal: () => void;
+  onCloseFinalizeCCTPBridgeModal: () => void;
   setModalProveTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
-  setModalFinalizeTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
+  setModalFinalizeOPTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
+  setModalFinalizeCCTPTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
 };
 
 export const WithdrawalRow = memo(function WithdrawalRow({
@@ -21,11 +24,22 @@ export const WithdrawalRow = memo(function WithdrawalRow({
   onCloseProveWithdrawalModal,
   onOpenFinalizeWithdrawalModal,
   onCloseFinalizeWithdrawalModal,
+  onOpenFinalizeCCTPBridgeModal,
+  onCloseFinalizeCCTPBridgeModal,
   setModalProveTxHash,
-  setModalFinalizeTxHash,
+  setModalFinalizeOPTxHash,
+  setModalFinalizeCCTPTxHash,
 }: WithdrawalRowProps) {
   if (transaction.protocol === 'CCTP') {
-    return <CCTPBridgeRow transaction={transaction} bridgeDirection="withdraw" />;
+    return (
+      <CCTPBridgeRow
+        transaction={transaction}
+        bridgeDirection="withdraw"
+        onOpenFinalizeCCTPBridgeModal={onOpenFinalizeCCTPBridgeModal}
+        onCloseFinalizeCCTPBridgeModal={onCloseFinalizeCCTPBridgeModal}
+        setModalFinalizeCCTPTxHash={setModalFinalizeCCTPTxHash}
+      />
+    );
   }
 
   return (
@@ -37,7 +51,7 @@ export const WithdrawalRow = memo(function WithdrawalRow({
       onOpenFinalizeWithdrawalModal={onOpenFinalizeWithdrawalModal}
       onCloseFinalizeWithdrawalModal={onCloseFinalizeWithdrawalModal}
       setModalProveTxHash={setModalProveTxHash}
-      setModalFinalizeTxHash={setModalFinalizeTxHash}
+      setModalFinalizeTxHash={setModalFinalizeOPTxHash}
     />
   );
 });

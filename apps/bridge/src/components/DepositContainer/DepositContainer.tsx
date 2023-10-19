@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { BridgeButton } from 'apps/bridge/src/components/BridgeButton/BridgeButton';
 import { BridgeInput } from 'apps/bridge/src/components/BridgeInput/BridgeInput';
 import { BridgeToInput } from 'apps/bridge/src/components/BridgeToInput/BridgeToInput';
@@ -19,9 +19,9 @@ import { usePrepareERC20Deposit } from 'apps/bridge/src/utils/hooks/usePrepareER
 import { usePrepareERC20DepositTo } from 'apps/bridge/src/utils/hooks/usePrepareERC20DepositTo';
 import { usePrepareETHDeposit } from 'apps/bridge/src/utils/hooks/usePrepareETHDeposit';
 import { isAddress, parseUnits } from 'viem';
-import { waitForTransaction } from 'wagmi/actions';
 import getConfig from 'next/config';
-import { useAccount, useBalance, useContractWrite } from 'wagmi';
+import { useAccount, useBalance, useContractWrite, usePublicClient, useSwitchNetwork } from 'wagmi';
+import { writeContract } from 'wagmi/actions';
 import { useIsPermittedToBridgeTo } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridgeTo';
 import { getL1NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL1NetworkForChainEnv';
 import { getL2NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL2NetworkForChainEnv';
@@ -35,13 +35,19 @@ const activeAssets = getDepositAssetsForChainEnv();
 const chainId = parseInt(publicRuntimeConfig.l1ChainID);
 
 export function DepositContainer() {
-  const [depositAmount, setDepositAmount] = useState('0');
+  const [depositAmount, setDepositAmount] = useState('');
   const [L1ApproveTxHash, setL1ApproveTxHash] = useState<`0x${string}` | undefined>(undefined);
   const [L1DepositTxHash, setL1DepositTxHash] = useState<`0x${string}` | undefined>(undefined);
   const [depositTo, setDepositTo] = useState('');
   const [isApprovalTx, setIsApprovalTx] = useState(false);
   const isWalletConnected = useIsWalletConnected();
   const [selectedAsset, setSelectedAsset] = useState<Asset>(activeAssets[0]);
+  const publicClient = usePublicClient({ chainId });
+  const { switchNetwork } = useSwitchNetwork();
+
+  useEffect(() => {
+    switchNetwork?.(chainId);
+  }, [switchNetwork]);
 
   const { address } = useAccount();
   const codeAtAddress = useGetCode(chainId, address);
@@ -82,6 +88,8 @@ export function DepositContainer() {
   const handleCloseDepositModal = useCallback(() => {
     onCloseDepositModal();
     setL1DepositTxHash(undefined);
+    setL1ApproveTxHash(undefined);
+    setIsApprovalTx(false);
   }, [onCloseDepositModal]);
 
   // approve erc20
@@ -152,24 +160,27 @@ export function DepositContainer() {
         if (approveResult?.hash) {
           const approveTxHash: `0x${string}` = approveResult.hash;
           setL1ApproveTxHash(approveTxHash);
+
           // wait for confirmations
-          await waitForTransaction({ hash: approveResult?.hash });
-        }
+          await publicClient.waitForTransactionReceipt({ hash: approveResult.hash });
 
-        // next, call the transfer function
-        setIsApprovalTx(false);
+          // next, call the transfer function
+          setIsApprovalTx(false);
 
-        let depositMethod;
-        if (selectedAsset.protocol === 'CCTP') {
-          depositMethod = depositCCTPAssetWrite;
-        } else {
-          depositMethod = isSmartContractWallet ? depositERC20ToWrite : depositERC20Write;
-        }
-        const depositResult = await depositMethod?.();
-        if (depositResult?.hash) {
-          const depositTxHash = depositResult.hash;
-          setL1DepositTxHash(depositTxHash);
-          setDepositAmount('0');
+          let depositMethod;
+          if (selectedAsset.protocol === 'CCTP') {
+            // because of how React works we need to use the writeContract wagmi/core action
+            // here (the hook still thinks the approval has not been set)
+            depositMethod = async () => await writeContract(depositCCTPAssetConfig);
+          } else {
+            depositMethod = isSmartContractWallet ? depositERC20ToWrite : depositERC20Write;
+          }
+          const depositResult = await depositMethod?.();
+          if (depositResult?.hash) {
+            const depositTxHash = depositResult.hash;
+            setL1DepositTxHash(depositTxHash);
+            setDepositAmount('');
+          }
         }
       } catch (error) {
         onCloseDepositModal();
@@ -177,12 +188,13 @@ export function DepositContainer() {
     })();
   }, [
     approveWrite,
-    depositCCTPAssetWrite,
+    depositCCTPAssetConfig,
     depositERC20ToWrite,
     depositERC20Write,
     isSmartContractWallet,
     onCloseDepositModal,
     onOpenDepositModal,
+    publicClient,
     selectedAsset.protocol,
   ]);
 
@@ -206,7 +218,7 @@ export function DepositContainer() {
           if (depositResult?.hash) {
             const depositTxHash = depositResult.hash;
             setL1DepositTxHash(depositTxHash);
-            setDepositAmount('0');
+            setDepositAmount('');
           }
         } else {
           onCloseDepositModal();
@@ -276,6 +288,7 @@ export function DepositContainer() {
           L1ApproveTxHash={L1ApproveTxHash}
           L1DepositTxHash={L1DepositTxHash}
           isApprovalTx={isApprovalTx}
+          protocol={selectedAsset.protocol}
         />
         <BridgeInput
           inputNetwork={getL1NetworkForChainEnv()}

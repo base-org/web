@@ -19,6 +19,7 @@ type UsePrepareFinalizeCCTPBridgeProps = {
   message?: `0x${string}`;
   attestation?: `0x${string}`;
   bridgeDirection: 'deposit' | 'withdraw';
+  includeTosVersionByte: boolean;
 };
 
 export function usePrepareFinalizeCCTPBridge({
@@ -26,6 +27,7 @@ export function usePrepareFinalizeCCTPBridge({
   message,
   attestation,
   bridgeDirection,
+  includeTosVersionByte,
 }: UsePrepareFinalizeCCTPBridgeProps) {
   const shouldPrepare = isPermittedToBridge && message && attestation;
 
@@ -35,6 +37,7 @@ export function usePrepareFinalizeCCTPBridge({
     functionName: 'receiveMessage',
     chainId: BRIDGE_DIRECTION_TO_CHAIN_ID[bridgeDirection],
     args: shouldPrepare ? [message, attestation] : undefined,
+    dataSuffix: includeTosVersionByte ? publicRuntimeConfig.tosVersion : undefined,
   });
 
   return config;

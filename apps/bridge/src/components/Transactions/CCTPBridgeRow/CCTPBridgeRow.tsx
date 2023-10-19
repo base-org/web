@@ -7,19 +7,28 @@ import { useCCTPBridgeStatus } from 'apps/bridge/src/utils/hooks/useCCTPBridgeSt
 import { useGetUSDAmount } from 'apps/bridge/src/utils/hooks/useGetUSDAmount';
 import { truncateMiddle } from 'apps/bridge/src/utils/string/truncateMiddle';
 import { formatTimestamp } from 'apps/bridge/src/utils/transactions/formatBlockTimestamp';
-import { blockExplorerUrlForL1Transaction } from 'apps/bridge/src/utils/url/blockExplorer';
+import {
+  blockExplorerUrlForL1Transaction,
+  blockExplorerUrlForL2Transaction,
+} from 'apps/bridge/src/utils/url/blockExplorer';
 import { formatUnits } from 'viem';
-import { memo } from 'react';
+import { Dispatch, SetStateAction, memo } from 'react';
 
 type CCTPBridgeRowProps = {
   transaction: BridgeTransaction;
   bridgeDirection: 'deposit' | 'withdraw';
+  onOpenFinalizeCCTPBridgeModal: () => void;
+  onCloseFinalizeCCTPBridgeModal: () => void;
+  setModalFinalizeCCTPTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
 };
 
 // Transactions table row component for Bridges made using Circle's CCTP.
 export const CCTPBridgeRow = memo(function CCTPBridgeRow({
   transaction,
   bridgeDirection,
+  onOpenFinalizeCCTPBridgeModal,
+  onCloseFinalizeCCTPBridgeModal,
+  setModalFinalizeCCTPTxHash,
 }: CCTPBridgeRowProps) {
   const { date, shortDate, time } = formatTimestamp(transaction.blockTimestamp);
   const { status, setStatus, message, attestation } = useCCTPBridgeStatus({
@@ -27,7 +36,10 @@ export const CCTPBridgeRow = memo(function CCTPBridgeRow({
     bridgeDirection,
   });
 
-  const explorerURL = blockExplorerUrlForL1Transaction(transaction.hash);
+  const explorerURL =
+    bridgeDirection === 'deposit'
+      ? blockExplorerUrlForL1Transaction(transaction.hash)
+      : blockExplorerUrlForL2Transaction(transaction.hash);
   const abridgedHash = truncateMiddle(transaction.hash, 6, 4);
 
   const bridgeAmount = formatUnits(BigInt(transaction.amount), transaction.assetDecimals ?? 18);
@@ -103,6 +115,9 @@ export const CCTPBridgeRow = memo(function CCTPBridgeRow({
         attestation={attestation}
         bridgeDirection={bridgeDirection}
         setStatus={setStatus}
+        onOpenFinalizeCCTPBridgeModal={onOpenFinalizeCCTPBridgeModal}
+        onCloseFinalizeCCTPBridgeModal={onCloseFinalizeCCTPBridgeModal}
+        setModalFinalizeCCTPTxHash={setModalFinalizeCCTPTxHash}
       />
     </tr>
   );

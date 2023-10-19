@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { Dispatch, SetStateAction, memo } from 'react';
 import { PendingButton } from 'apps/bridge/src/components/Transactions/PendingButton';
 import { CCTPBridgePhase } from 'apps/bridge/src/utils/transactions/phase';
 import { FinalizeCCTPBridgeButton } from 'apps/bridge/src/components/Transactions/CCTPBridgeRow/FinalizeCCTPBridgeButton';
@@ -9,6 +9,9 @@ type CCTPBridgeStatusProps = {
   attestation?: `0x${string}`;
   bridgeDirection: 'deposit' | 'withdraw';
   setStatus: (status: CCTPBridgePhase) => void;
+  onOpenFinalizeCCTPBridgeModal: () => void;
+  onCloseFinalizeCCTPBridgeModal: () => void;
+  setModalFinalizeCCTPTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
 };
 
 export const CCTPBridgeStatus = memo(function CCTPBridgeStatus({
@@ -17,6 +20,9 @@ export const CCTPBridgeStatus = memo(function CCTPBridgeStatus({
   attestation,
   bridgeDirection,
   setStatus,
+  onOpenFinalizeCCTPBridgeModal,
+  onCloseFinalizeCCTPBridgeModal,
+  setModalFinalizeCCTPTxHash,
 }: CCTPBridgeStatusProps) {
   const isPending =
     phase === 'INITIATE_CCTP_BRIDGE_PENDING' || phase === 'FINALIZE_CCTP_BRIDGE_PENDING';
@@ -36,6 +42,9 @@ export const CCTPBridgeStatus = memo(function CCTPBridgeStatus({
         attestation={attestation}
         bridgeDirection={bridgeDirection}
         setStatus={setStatus}
+        onOpenFinalizeCCTPBridgeModal={onOpenFinalizeCCTPBridgeModal}
+        onCloseFinalizeCCTPBridgeModal={onCloseFinalizeCCTPBridgeModal}
+        setModalFinalizeCCTPTxHash={setModalFinalizeCCTPTxHash}
       />
     );
 
@@ -43,5 +52,5 @@ export const CCTPBridgeStatus = memo(function CCTPBridgeStatus({
   if (isFailed) return 'Failed';
 
   // Otherwise the bridge is complete
-  return 'Complete';
+  return <span className="text-cds-background-gray-60">Complete</span>;
 });

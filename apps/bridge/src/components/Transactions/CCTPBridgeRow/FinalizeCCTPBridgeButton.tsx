@@ -1,9 +1,10 @@
-import { memo, useCallback } from 'react';
+import { Dispatch, SetStateAction, memo, useCallback } from 'react';
 import { usePrepareFinalizeCCTPBridge } from 'apps/bridge/src/utils/hooks/usePrepareFinalizeCCTPBridge';
 import { useIsPermittedToBridge } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridge';
 import { useContractWrite, useNetwork, usePublicClient, useSwitchNetwork } from 'wagmi';
 import getConfig from 'next/config';
 import { CCTPBridgePhase } from 'apps/bridge/src/utils/transactions/phase';
+import { useChainEnv } from 'apps/bridge/src/utils/hooks/useChainEnv';
 
 const { publicRuntimeConfig } = getConfig();
 const l1ChainID = parseInt(publicRuntimeConfig.l1ChainID);
@@ -14,6 +15,9 @@ type FinalizeCCTPBridgeButtonProps = {
   attestation?: `0x${string}`;
   bridgeDirection: 'deposit' | 'withdraw';
   setStatus: (status: CCTPBridgePhase) => void;
+  onOpenFinalizeCCTPBridgeModal: () => void;
+  onCloseFinalizeCCTPBridgeModal: () => void;
+  setModalFinalizeCCTPTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
 };
 
 export const FinalizeCCTPBridgeButton = memo(function FinalizeCCTPBridgeButton({
@@ -21,6 +25,9 @@ export const FinalizeCCTPBridgeButton = memo(function FinalizeCCTPBridgeButton({
   attestation,
   bridgeDirection,
   setStatus,
+  onOpenFinalizeCCTPBridgeModal,
+  onCloseFinalizeCCTPBridgeModal,
+  setModalFinalizeCCTPTxHash,
 }: FinalizeCCTPBridgeButtonProps) {
   const { chain } = useNetwork();
   const { switchNetwork } = useSwitchNetwork();
@@ -28,12 +35,16 @@ export const FinalizeCCTPBridgeButton = memo(function FinalizeCCTPBridgeButton({
   const publicClient = usePublicClient({
     chainId: bridgeDirection === 'deposit' ? l2ChainID : l1ChainID,
   });
+  const chainEnv = useChainEnv();
+  const isMainnet = chainEnv === 'mainnet';
+  const includeTosVersionByte = isMainnet;
 
   const finalizeCCTPBridgeConfig = usePrepareFinalizeCCTPBridge({
     isPermittedToBridge,
     message,
     attestation,
     bridgeDirection,
+    includeTosVersionByte,
   });
   const { writeAsync: finalizeCCTPBridge } = useContractWrite(finalizeCCTPBridgeConfig);
 
@@ -42,13 +53,16 @@ export const FinalizeCCTPBridgeButton = memo(function FinalizeCCTPBridgeButton({
   }, [bridgeDirection, switchNetwork]);
 
   const handleFinalizeCCTPBridge = useCallback(() => {
-    // TODO: reset finalize tx hash and open modal
+    setModalFinalizeCCTPTxHash(undefined);
+    onOpenFinalizeCCTPBridgeModal();
     void (async () => {
       try {
         if (isPermittedToBridge) {
           const finalizeResult = await finalizeCCTPBridge?.();
           setStatus('FINALIZE_CCTP_BRIDGE_PENDING');
           if (finalizeResult?.hash) {
+            const finalizeTxHash = finalizeResult.hash;
+            setModalFinalizeCCTPTxHash(finalizeTxHash);
             const finalizeTxReceipt = await publicClient.waitForTransactionReceipt({
               hash: finalizeResult.hash,
             });
@@ -59,14 +73,22 @@ export const FinalizeCCTPBridgeButton = memo(function FinalizeCCTPBridgeButton({
             );
           }
         } else {
-          // TODO: close modal
+          onCloseFinalizeCCTPBridgeModal();
         }
       } catch {
         setStatus('FINALIZE_CCTP_BRIDGE_FAILED');
-        // TODO: close modal
+        onCloseFinalizeCCTPBridgeModal();
       }
     })();
-  }, [finalizeCCTPBridge, isPermittedToBridge, publicClient, setStatus]);
+  }, [
+    finalizeCCTPBridge,
+    isPermittedToBridge,
+    onCloseFinalizeCCTPBridgeModal,
+    onOpenFinalizeCCTPBridgeModal,
+    publicClient,
+    setModalFinalizeCCTPTxHash,
+    setStatus,
+  ]);
 
   const isOnCorrectNetwork =
     (bridgeDirection === 'deposit' && chain?.id === l2ChainID) ||

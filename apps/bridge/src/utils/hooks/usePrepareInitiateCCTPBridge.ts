@@ -33,6 +33,7 @@ export function usePrepareInitiateCCTPBridge({
   destinationDomain,
   isPermittedToBridge,
   bridgeDirection,
+  includeTosVersionByte,
 }: UsePrepareInitiateCCTPBridgeProps) {
   const shouldPrepare = isPermittedToBridge && amount !== '' && mintRecipient;
 
@@ -49,6 +50,7 @@ export function usePrepareInitiateCCTPBridge({
           (bridgeDirection === 'deposit' ? asset.L1contract : asset.L2contract) as Address,
         ]
       : undefined,
+    dataSuffix: includeTosVersionByte ? publicRuntimeConfig.tosVersion : undefined,
   });
   return config;
 }

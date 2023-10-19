@@ -72,7 +72,7 @@ export function useCCTPBridgeStatus({
       const eventTopic = getEventSelector('MessageSent(bytes)');
       const log = initiateTxReceipt.logs.find((l) => l.topics[0] === eventTopic);
       const messageBytes = decodeAbiParameters(
-        [parseAbiParameter('bytes x')],
+        [parseAbiParameter('bytes message')],
         log?.data as `0x${string}`,
       )[0];
       const hash = keccak256(messageBytes);
@@ -82,7 +82,7 @@ export function useCCTPBridgeStatus({
   }, [initiateTxReceipt]);
 
   useEffect(() => {
-    if (bridgeAttestation && message) {
+    if (bridgeAttestation?.attestation && message) {
       void (async () => {
         if (bridgeAttestation.status === 'pending_confirmations') {
           setStatus('INITIATE_CCTP_BRIDGE_PENDING');
@@ -95,13 +95,15 @@ export function useCCTPBridgeStatus({
         // We can check if the message has been received by simulating a call to receiveMessage.
         // If it fails, assume it's because the message has already been received.
         try {
-          const { result } = await publicClient.simulateContract({
-            address: publicRuntimeConfig.l2CCTPMessageTransmitterAddress,
+          await publicClient.simulateContract({
+            address:
+              bridgeDirection === 'deposit'
+                ? publicRuntimeConfig.l2CCTPMessageTransmitterAddress
+                : publicRuntimeConfig.l1CCTPMessageTransmitterAddress,
             abi: MessageTransmitter,
             functionName: 'receiveMessage',
             args: [message, bridgeAttestation.attestation],
           });
-          console.log({ result });
           // Success, ie the message still needs to be received.
           setStatus('FINALIZE_CCTP_BRIDGE');
         } catch (e) {
@@ -110,7 +112,7 @@ export function useCCTPBridgeStatus({
         }
       })();
     }
-  }, [bridgeAttestation, message, publicClient]);
+  }, [bridgeAttestation, bridgeDirection, initiateTxReceipt, message, publicClient]);
 
   // We need to be able to set the status from the FinzliaeCCTPBridgeButton, so we expose a setter.
   const handleSetStatus = useCallback(

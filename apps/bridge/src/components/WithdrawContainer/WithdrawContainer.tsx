@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { BridgeInput } from 'apps/bridge/src/components/BridgeInput/BridgeInput';
 import { BridgeToInput } from 'apps/bridge/src/components/BridgeToInput/BridgeToInput';
 import { ConnectWalletButton } from 'apps/bridge/src/components/ConnectWalletButton/ConnectWalletButton';
@@ -17,7 +17,8 @@ import { usePrepareERC20WithdrawalTo } from 'apps/bridge/src/utils/hooks/usePrep
 import { usePrepareETHWithdrawal } from 'apps/bridge/src/utils/hooks/usePrepareETHWithdrawal';
 import { isAddress } from 'viem';
 import getConfig from 'next/config';
-import { useAccount, useBalance, useContractWrite } from 'wagmi';
+import { useAccount, useBalance, useContractWrite, usePublicClient, useSwitchNetwork } from 'wagmi';
+import { writeContract } from 'wagmi/actions';
 import { useIsPermittedToBridgeTo } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridgeTo';
 import { getL2NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL2NetworkForChainEnv';
 import { getL1NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL1NetworkForChainEnv';
@@ -26,6 +27,7 @@ import { usePrepareInitiateCCTPBridge } from 'apps/bridge/src/utils/hooks/usePre
 import { useIsContractApproved } from 'apps/bridge/src/utils/hooks/useIsContractApproved';
 import { useApproveContract } from 'apps/bridge/src/utils/hooks/useApproveContract';
 import { BridgeButton } from 'apps/bridge/src/components/BridgeButton/BridgeButton';
+import { parseUnits } from 'viem';
 
 const activeAssets = getWithdrawalAssetsForChainEnv();
 
@@ -35,11 +37,17 @@ const chainId = parseInt(publicRuntimeConfig.l2ChainID);
 export function WithdrawContainer() {
   const [withdrawAmount, setWithdrawAmount] = useState('');
   const [L2ApproveTxHash, setL2ApproveTxHash] = useState<`0x${string}` | undefined>(undefined);
-  const [L2TxHash, setL2TxHash] = useState('');
+  const [L2WithdrawTxHash, setL2WithdrawTxHash] = useState<`0x${string}` | undefined>(undefined);
   const [withdrawTo, setWithdrawTo] = useState('');
   const [isApprovalTx, setIsApprovalTx] = useState(false);
   const isWalletConnected = useIsWalletConnected();
   const [selectedAsset, setSelectedAsset] = useState<Asset>(activeAssets[0]);
+  const publicClient = usePublicClient({ chainId });
+  const { switchNetwork } = useSwitchNetwork();
+
+  useEffect(() => {
+    switchNetwork?.(chainId);
+  }, [switchNetwork]);
 
   const { address } = useAccount();
   const codeAtAddress = useGetCode(chainId, address);
@@ -57,9 +65,9 @@ export function WithdrawContainer() {
   const readApprovalResult = useMemo(() => {
     const withdrawAmountBN =
       withdrawAmount === '' || Number.isNaN(Number(withdrawAmount))
-        ? utils.parseUnits('0', selectedAsset.decimals)
-        : utils.parseUnits(withdrawAmount, selectedAsset.decimals);
-    return !readERC20ApprovalError && readERC20Approval?.gte(withdrawAmountBN);
+        ? parseUnits('0', selectedAsset.decimals)
+        : parseUnits(withdrawAmount, selectedAsset.decimals);
+    return !readERC20ApprovalError && readERC20Approval && readERC20Approval >= withdrawAmountBN;
   }, [withdrawAmount, selectedAsset.decimals, readERC20ApprovalError, readERC20Approval]);
 
   // approve erc20
@@ -80,7 +88,7 @@ export function WithdrawContainer() {
 
   const chainEnv = useChainEnv();
   const isMainnet = chainEnv === 'mainnet';
-  const includeTosVersionByte = isMainnet && withdrawTo === '';
+  const includeTosVersionByte = isMainnet;
   const isUserPermittedToBridge = useIsPermittedToBridge();
   const isPermittedToBridgeTo = useIsPermittedToBridgeTo(withdrawTo as `0x${string}`);
   const isPermittedToBridge = isSmartContractWallet
@@ -132,7 +140,9 @@ export function WithdrawContainer() {
 
   const handleCloseWithdrawModal = useCallback(() => {
     onCloseWithdrawModal();
-    setL2TxHash('');
+    setL2WithdrawTxHash(undefined);
+    setL2ApproveTxHash(undefined);
+    setIsApprovalTx(false);
   }, [onCloseWithdrawModal]);
 
   const initiateApproval = useCallback(() => {
@@ -144,25 +154,27 @@ export function WithdrawContainer() {
         if (approveResult?.hash) {
           const approveTxHash: `0x${string}` = approveResult.hash;
           setL2ApproveTxHash(approveTxHash);
-        }
 
-        // wait for confirmations
-        await approveResult?.wait();
+          // wait for confirmations
+          await publicClient.waitForTransactionReceipt({ hash: approveResult.hash });
 
-        // next, call the transfer function
-        setIsApprovalTx(false);
+          // next, call the transfer function
+          setIsApprovalTx(false);
 
-        let withdrawMethod;
-        if (selectedAsset.protocol === 'CCTP') {
-          withdrawMethod = withdrawCCTPAssetWrite;
-        } else {
-          withdrawMethod = isSmartContractWallet ? withdrawERC20To : withdrawERC20;
-        }
-        const withdrawResult = await withdrawMethod?.();
-        if (withdrawResult?.hash) {
-          const withdrawTxHash = withdrawResult.hash;
-          setL2TxHash(withdrawTxHash);
-          setWithdrawAmount('0');
+          let withdrawMethod;
+          if (selectedAsset.protocol === 'CCTP') {
+            // because of how React works we need to use the writeContract wagmi/core action
+            // here (the hook still thinks the approval has not been set)
+            withdrawMethod = async () => await writeContract(withdrawCCTPAssetConfig);
+          } else {
+            withdrawMethod = isSmartContractWallet ? withdrawERC20To : withdrawERC20;
+          }
+          const withdrawResult = await withdrawMethod?.();
+          if (withdrawResult?.hash) {
+            const withdrawTxHash = withdrawResult.hash;
+            setL2WithdrawTxHash(withdrawTxHash);
+            setWithdrawAmount('');
+          }
         }
       } catch (error) {
         onCloseWithdrawModal();
@@ -173,8 +185,9 @@ export function WithdrawContainer() {
     isSmartContractWallet,
     onCloseWithdrawModal,
     onOpenWithdrawModal,
+    publicClient,
     selectedAsset.protocol,
-    withdrawCCTPAssetWrite,
+    withdrawCCTPAssetConfig,
     withdrawERC20,
     withdrawERC20To,
   ]);
@@ -198,8 +211,8 @@ export function WithdrawContainer() {
           const withdrawalResult = await withdrawMethod?.();
           if (withdrawalResult?.hash) {
             const withdrawalTxHsh = withdrawalResult.hash;
-            setL2TxHash(withdrawalTxHsh);
-            setWithdrawAmount('0');
+            setL2WithdrawTxHash(withdrawalTxHsh);
+            setWithdrawAmount('');
           }
         } else {
           onCloseWithdrawModal();
@@ -230,7 +243,7 @@ export function WithdrawContainer() {
     );
   } else if (selectedAsset.protocol === 'CCTP' && !readApprovalResult) {
     withdrawDisabled =
-      (isSmartContractWallet && !utils.isAddress(withdrawTo ?? '')) || !isPermittedToBridge;
+      (isSmartContractWallet && !isAddress(withdrawTo ?? '')) || !isPermittedToBridge;
 
     button = (
       <BridgeButton
@@ -267,7 +280,10 @@ export function WithdrawContainer() {
         <WithdrawModal
           isOpen={isWithdrawModalOpen}
           onClose={handleCloseWithdrawModal}
-          L2TxHash={L2TxHash}
+          L2ApproveTxHash={L2ApproveTxHash}
+          L2WithdrawTxHash={L2WithdrawTxHash}
+          isApprovalTx={isApprovalTx}
+          protocol={selectedAsset.protocol}
         />
         <BridgeInput
           inputNetwork={getL2NetworkForChainEnv()}
