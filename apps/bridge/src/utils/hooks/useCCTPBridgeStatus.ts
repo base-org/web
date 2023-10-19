@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePublicClient, useWaitForTransaction } from 'wagmi';
 import getConfig from 'next/config';
 import { CCTPBridgePhase } from 'apps/bridge/src/utils/transactions/phase';
@@ -42,13 +42,21 @@ export function useCCTPBridgeStatus({
   const [status, setStatus] = useState<CCTPBridgePhase>('INITIATE_CCTP_BRIDGE_PENDING');
   const [message, setMessage] = useState<`0x${string}` | undefined>(undefined);
   const [messageHash, setMessageHash] = useState<`0x${string}` | undefined>(undefined);
+  const isDeposit = bridgeDirection === 'deposit';
+
+  // The public client we will use to simulate finalizing the bridge
+  // on the other chain. Ie if we are depositing this will be an L2 client,
+  // and if we are withdrawing this will be an L1 client.
   const publicClient = usePublicClient({
-    chainId: bridgeDirection === 'deposit' ? l2ChainID : l1ChainID,
+    chainId: isDeposit ? l2ChainID : l1ChainID,
   });
 
+  // Waiting for the bridge initiation on the chain that the user is bridging from.
+  // Ie if we are depositing this will be an L1 tx,
+  // and if we are withdrawing this will be an L2 tx.
   const { data: initiateTxReceipt } = useWaitForTransaction({
     hash: initiateTxHash,
-    chainId: bridgeDirection === 'deposit' ? l1ChainID : l2ChainID,
+    chainId: isDeposit ? l1ChainID : l2ChainID,
   });
 
   const { data: bridgeAttestation } = useQuery(
@@ -96,10 +104,9 @@ export function useCCTPBridgeStatus({
         // If it fails, assume it's because the message has already been received.
         try {
           await publicClient.simulateContract({
-            address:
-              bridgeDirection === 'deposit'
-                ? publicRuntimeConfig.l2CCTPMessageTransmitterAddress
-                : publicRuntimeConfig.l1CCTPMessageTransmitterAddress,
+            address: isDeposit
+              ? publicRuntimeConfig.l2CCTPMessageTransmitterAddress
+              : publicRuntimeConfig.l1CCTPMessageTransmitterAddress,
             abi: MessageTransmitter,
             functionName: 'receiveMessage',
             args: [message, bridgeAttestation.attestation],
@@ -112,20 +119,13 @@ export function useCCTPBridgeStatus({
         }
       })();
     }
-  }, [bridgeAttestation, bridgeDirection, initiateTxReceipt, message, publicClient]);
+  }, [bridgeAttestation, bridgeDirection, initiateTxReceipt, isDeposit, message, publicClient]);
 
   // We need to be able to set the status from the FinzliaeCCTPBridgeButton, so we expose a setter.
-  const handleSetStatus = useCallback(
-    (newStatus: CCTPBridgePhase) => {
-      setStatus(newStatus);
-    },
-    [setStatus],
-  );
-
   return {
     status,
     message,
     attestation: bridgeAttestation?.attestation,
-    setStatus: handleSetStatus,
+    setStatus: setStatus,
   };
 }
