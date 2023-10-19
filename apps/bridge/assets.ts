@@ -10,6 +10,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/eth.svg',
     L2icon: '/icons/currency/eth.svg',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: 'cbETH',
@@ -22,6 +23,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/cbeth.svg',
     L2icon: '/icons/currency/cbeth.svg',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: 'DAI',
@@ -34,6 +36,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/dai.svg',
     L2icon: '/icons/currency/dai.svg',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: 'USDC',
@@ -46,6 +49,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/usdc.svg',
     L2icon: '/icons/currency/usdbc.svg',
     decimals: 6,
+    protocol: 'OP',
   },
   {
     L1symbol: 'COMP',
@@ -58,6 +62,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/comp.svg',
     L2icon: '/icons/currency/comp.svg',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: 'BAL',
@@ -70,6 +75,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/balancer.svg',
     L2icon: '/icons/currency/balancer.svg',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: 'RPL',
@@ -82,6 +88,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/rocket-pool.png',
     L2icon: '/icons/currency/rocket-pool.png',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: 'rETH',
@@ -94,6 +101,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/rocket-pool-eth.svg',
     L2icon: '/icons/currency/rocket-pool-eth.svg',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: 'SOFI',
@@ -106,6 +114,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/sofi.png',
     L2icon: '/icons/currency/sofi.png',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: 'ZRX',
@@ -118,6 +127,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/0x.svg',
     L2icon: '/icons/currency/0x.svg',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: 'SUSHI',
@@ -130,6 +140,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/sushi.svg',
     L2icon: '/icons/currency/sushi.svg',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: 'CRV',
@@ -142,6 +153,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/curve.svg',
     L2icon: '/icons/currency/curve.svg',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: '1INCH',
@@ -154,6 +166,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/1inch.svg',
     L2icon: '/icons/currency/1inch.svg',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: 'WAMPL',
@@ -166,6 +179,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/wampl.svg',
     L2icon: '/icons/currency/wampl.svg',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: 'KNC',
@@ -178,6 +192,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/knc.svg',
     L2icon: '/icons/currency/knc.svg',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: 'ETH',
@@ -188,6 +203,20 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/eth.svg',
     L2icon: '/icons/currency/eth.svg',
     decimals: 18,
+    protocol: 'OP',
+  },
+  {
+    L1symbol: 'USDC',
+    L2symbol: 'USDbC',
+    L1chainId: 5,
+    L2chainId: 84531,
+    L1contract: '0x07865c6E87B9F70255377e024ace6630C1Eaa37F',
+    L2contract: '0x853154e2A5604E5C74a2546E2871Ad44932eB92C',
+    apiId: 'usd-coin',
+    L1icon: '/icons/currency/usdc.svg',
+    L2icon: '/icons/currency/usdbc.svg',
+    decimals: 6,
+    protocol: 'OP',
   },
   {
     L1symbol: 'cbETH',
@@ -200,6 +229,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/cbeth.svg',
     L2icon: '/icons/currency/cbeth.svg',
     decimals: 18,
+    protocol: 'OP',
   },
   {
     L1symbol: 'COMP',
@@ -212,6 +242,20 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/comp.svg',
     L2icon: '/icons/currency/comp.svg',
     decimals: 18,
+    protocol: 'OP',
+  },
+  {
+    L1symbol: 'USDC',
+    L2symbol: 'USDC',
+    L1chainId: 5,
+    L2chainId: 84531,
+    L1contract: '0x07865c6e87b9f70255377e024ace6630c1eaa37f',
+    L2contract: '0xf175520c52418dfe19c8098071a252da48cd1c19',
+    apiId: 'usd-coin',
+    L1icon: '/icons/currency/usdc.svg',
+    L2icon: '/icons/currency/usdc.svg',
+    decimals: 6,
+    protocol: 'CCTP',
   },
   {
     L1symbol: 'ETH',
@@ -222,6 +266,7 @@ const assets: Asset[] = [
     L1icon: '/icons/currency/eth.svg',
     L2icon: '/icons/currency/eth.svg',
     decimals: 18,
+    protocol: 'OP',
   },
 ];
 

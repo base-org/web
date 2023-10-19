@@ -1,3 +1,4 @@
+import { CCTPBridgePhase } from 'apps/bridge/src/utils/transactions/phase';
 import moment from 'moment';
 
 const withdrawalPhaseText = {
@@ -16,6 +17,15 @@ const depositPhaseText = {
   DEPOSIT_TX_PENDING: 'Funds deposited',
   DEPOSIT_TX_FAILURE: 'Funds deposited',
   FUNDS_DEPOSITED: 'Funds deposited',
+};
+
+const cctpBridgePhaseText: Record<CCTPBridgePhase, string> = {
+  INITIATE_CCTP_BRIDGE_PENDING: 'Processing',
+  INITIATE_CCTP_BRIDGE_FAILED: 'Failed',
+  FINALIZE_CCTP_BRIDGE: 'Ready to complete',
+  FINALIZE_CCTP_BRIDGE_PENDING: 'Processing',
+  FINALIZE_CCTP_BRIDGE_FAILED: 'Failed',
+  CCTP_BRIDGE_COMPLETE: 'Funds moved',
 };
 
 const withdrawalPhaseStatusText = {
@@ -38,4 +48,10 @@ const depositPhaseStatusText = {
   FUNDS_DEPOSITED: 'Complete',
 };
 
-export { depositPhaseStatusText, depositPhaseText, withdrawalPhaseStatusText, withdrawalPhaseText };
+export {
+  depositPhaseStatusText,
+  depositPhaseText,
+  withdrawalPhaseStatusText,
+  withdrawalPhaseText,
+  cctpBridgePhaseText,
+};

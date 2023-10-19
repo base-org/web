@@ -1,6 +1,9 @@
+import { CCTPBridgeProgressBar } from 'apps/bridge/src/components/CCTPBridgeProgressBar/CCTPBridgeProgressBar';
 import { Modal } from 'apps/bridge/src/components/Modal/Modal';
+import { BridgeProtocol } from 'apps/bridge/src/types/Asset';
 import getConfig from 'next/config';
 import Link from 'next/link';
+import { ReactNode } from 'react';
 import { useWaitForTransaction } from 'wagmi';
 
 const { publicRuntimeConfig } = getConfig();
@@ -11,6 +14,7 @@ type DepositModalProps = {
   L1ApproveTxHash: `0x${string}` | undefined;
   L1DepositTxHash: `0x${string}` | undefined;
   isApprovalTx: boolean;
+  protocol: BridgeProtocol;
 };
 
 type STATE =
@@ -18,7 +22,8 @@ type STATE =
   | 'APPROVAL_CONFIRMED'
   | 'APPROVAL_NOT_STARTED'
   | 'DEPOSIT_LOADING'
-  | 'DEPOSIT_CONFIRMED'
+  | 'OP_DEPOSIT_STARTED'
+  | 'CCTP_DEPOSIT_STARTED'
   | 'DEPOSIT_NOT_STARTED';
 
 function getState(
@@ -27,6 +32,7 @@ function getState(
   isApproveSuccess: boolean,
   isDepositLoading: boolean,
   isDepositSuccess: boolean,
+  protocol: BridgeProtocol,
 ): STATE {
   if (isApprovalTx && isApproveLoading) {
     return 'APPROVAL_LOADING';
@@ -41,19 +47,19 @@ function getState(
     return 'DEPOSIT_LOADING';
   }
   if (!isApprovalTx && isDepositSuccess) {
-    return 'DEPOSIT_CONFIRMED';
+    return protocol === 'CCTP' ? 'CCTP_DEPOSIT_STARTED' : 'OP_DEPOSIT_STARTED';
   }
 
   return 'DEPOSIT_NOT_STARTED';
 }
 
-const ModalContents = {
+const ModalContents: Record<STATE, ReactNode> = {
   APPROVAL_NOT_STARTED: 'Approval will initiate after confirmation.',
   APPROVAL_LOADING: 'Waiting for confirmations...',
   APPROVAL_CONFIRMED: 'Transaction confirmed.',
   DEPOSIT_NOT_STARTED: 'Deposit will initiate after confirmation.',
   DEPOSIT_LOADING: 'Waiting for confirmations...',
-  DEPOSIT_CONFIRMED: (
+  OP_DEPOSIT_STARTED: (
     <>
       Deposits typically take a few minutes to reach the Base network. When this is complete, you
       can view this transaction at{' '}
@@ -63,24 +69,27 @@ const ModalContents = {
       .
     </>
   ),
+  CCTP_DEPOSIT_STARTED: <CCTPBridgeProgressBar status="REQUEST_SENT" />,
 };
 
-const Titles = {
+const Titles: Record<STATE, string> = {
   APPROVAL_NOT_STARTED: 'APPROVE IN YOUR WALLET',
   APPROVAL_LOADING: 'APPROVING',
   APPROVAL_CONFIRMED: 'APPROVED',
   DEPOSIT_NOT_STARTED: 'CONFIRM DEPOSIT IN WALLET',
   DEPOSIT_LOADING: 'CONFIRMING',
-  DEPOSIT_CONFIRMED: 'DEPOSIT IN TRANSIT TO BASE',
+  OP_DEPOSIT_STARTED: 'DEPOSIT IN TRANSIT TO BASE',
+  CCTP_DEPOSIT_STARTED: 'DEPOSIT IN PROGRESS',
 };
 
-const Icons = {
+const Icons: Record<STATE, string> = {
   APPROVAL_NOT_STARTED: 'wallet',
   APPROVAL_LOADING: 'wallet',
   APPROVAL_CONFIRMED: 'confirm',
   DEPOSIT_NOT_STARTED: 'wallet',
   DEPOSIT_LOADING: 'wallet',
-  DEPOSIT_CONFIRMED: 'deposit',
+  OP_DEPOSIT_STARTED: 'deposit',
+  CCTP_DEPOSIT_STARTED: '',
 };
 
 export function DepositModal({
@@ -89,6 +98,7 @@ export function DepositModal({
   L1ApproveTxHash,
   L1DepositTxHash,
   isApprovalTx,
+  protocol,
 }: DepositModalProps) {
   const { isLoading: isApproveLoading, isSuccess: isApproveSuccess } = useWaitForTransaction({
     hash: L1ApproveTxHash,
@@ -104,6 +114,7 @@ export function DepositModal({
     isApproveSuccess,
     isDepositLoading,
     isDepositSuccess,
+    protocol,
   );
 
   const L1TxHash = isApprovalTx ? L1ApproveTxHash : L1DepositTxHash;

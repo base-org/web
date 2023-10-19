@@ -1,10 +1,5 @@
 import { ReactNode } from 'react';
-import getConfig from 'next/config';
 import Link from 'next/link';
-
-const { publicRuntimeConfig } = getConfig();
-
-const challengeWindow = publicRuntimeConfig.l1ChainID === '1' ? '7 days' : '12 seconds';
 
 type BadgeStatus = 'NOT_STARTED' | 'STARTED' | 'DONE';
 
@@ -38,64 +33,50 @@ function StepBadge({ num, label, status }: StepBadgeProps) {
   );
 }
 
-type BarStatus = 'REQUEST_SENT' | 'VERIFYING' | 'VERIFIED';
-type WithdrawProgressBarProps = {
+type BarStatus = 'REQUEST_SENT' | 'VERIFIED';
+type CCTPBridgeProgressBarProps = {
   status: BarStatus;
 };
 
 const BarStatusToBadgeStatuses: Record<BarStatus, BadgeStatus[]> = {
-  REQUEST_SENT: ['STARTED', 'NOT_STARTED', 'NOT_STARTED'],
-  VERIFYING: ['DONE', 'STARTED', 'NOT_STARTED'],
-  VERIFIED: ['DONE', 'DONE', 'STARTED'],
+  REQUEST_SENT: ['STARTED', 'NOT_STARTED'],
+  VERIFIED: ['DONE', 'STARTED'],
 };
 
 const DisclaimerContent: Record<BarStatus, ReactNode> = {
   REQUEST_SENT: (
     <>
-      In order to minimize security risk, withdrawals using the official Base Bridge take up to{' '}
-      {challengeWindow}. After your withdrawal request is proposed onchain (within an hour) you must
-      verify and complete the transaction in order to access your funds, on{' '}
+      USDC deposits and withdrawals use Circle&apos;s CCTP. After you initiate a deposit or
+      withdrawal, you must complete the bridge in order to access your funds, on{' '}
       <Link href="/transactions" className="underline">
         the transactions page
       </Link>
       .
     </>
   ),
-  VERIFYING: (
-    <>
-      In order to keep attackers from withdrawing your funds, there is a {challengeWindow} waiting
-      period until you can complete your withdrawal. Check back on{' '}
-      <Link href="/transactions" className="underline">
-        the transactions page
-      </Link>{' '}
-      to complete your withdrawal.
-    </>
-  ),
   VERIFIED:
-    'It takes up to 1 hour for the transaction to complete onchain. After this period, you can access your funds.',
+    'It takes a few minutes for the transaction to complete onchain. After this period, you can access your funds.',
 };
 
-export function WithdrawProgressBar({ status }: WithdrawProgressBarProps) {
+export function CCTPBridgeProgressBar({ status }: CCTPBridgeProgressBarProps) {
   const badgeStatuses = BarStatusToBadgeStatuses[status];
   return (
     <div className="flex flex-col gap-10">
       <div className="mt-8 flex flex-row justify-around gap-8">
         <div className="flex flex-col items-center">
           <StepBadge num="1" status={badgeStatuses[0]} label="Send request" />
-          <span>Takes up to 1 hr</span>
+          <span>Takes a few minutes</span>
         </div>
         <div className="flex flex-col items-center">
-          <StepBadge num="2" status={badgeStatuses[1]} label="Verify" />
-          <span>Takes {challengeWindow}</span>
-        </div>
-        <div className="flex flex-col items-center">
-          <StepBadge num="3" status={badgeStatuses[2]} label="Complete" />
-          <span>Takes up to 1 hr</span>
+          <StepBadge num="2" status={badgeStatuses[1]} label="Complete" />
+          <span>Takes a few minutes</span>
         </div>
       </div>
       <span className="font-base">{DisclaimerContent[status]}</span>
       <span className="text-white underline">
-        <Link href="https://docs.base.org/tools/bridge-faq">Learn more</Link>
+        <Link href="https://developers.circle.com/stablecoin/docs/cctp-getting-started">
+          Learn more
+        </Link>
       </span>
     </div>
   );

@@ -16,6 +16,7 @@ import { useDisclosure } from 'apps/bridge/src/utils/hooks/useDisclosure';
 import { useBlockNumberOfLatestL2OutputProposal } from 'apps/bridge/src/utils/hooks/useBlockNumberOfLatestL2OutputProposal';
 import Head from 'next/head';
 import Image from 'next/image';
+import { FinalizeCCTPBridgeModal } from 'apps/bridge/src/components/Transactions/CCTPBridgeRow/FinalizeCCTPBridgeModal';
 
 const COLUMNS = ['Time', 'Type', 'Amount', 'Phase', 'Status'];
 
@@ -27,7 +28,10 @@ const TransactionsTable = memo(function TransactionsTable({ transactions }: Tran
   const blockNumberOfLatestL2OutputProposal = useBlockNumberOfLatestL2OutputProposal();
 
   const [modalProveTxHash, setModalProveTxHash] = useState<`0x${string}` | undefined>(undefined);
-  const [modalFinalizeTxHash, setModalFinalizeTxHash] = useState<`0x${string}` | undefined>(
+  const [modalFinalizeOPTxHash, setModalFinalizeOPTxHash] = useState<`0x${string}` | undefined>(
+    undefined,
+  );
+  const [modalFinalizeCCTPTxHash, setModalFinalizeCCTPTxHash] = useState<`0x${string}` | undefined>(
     undefined,
   );
 
@@ -41,6 +45,11 @@ const TransactionsTable = memo(function TransactionsTable({ transactions }: Tran
     onOpen: onOpenFinalizeWithdrawalModal,
     onClose: onCloseFinalizeWithdrawalModal,
   } = useDisclosure();
+  const {
+    isOpen: isFinalizeCCTPBridgeModalOpen,
+    onOpen: onOpenFinalizeCCTPBridgeModal,
+    onClose: onCloseFinalizeCCTPBridgeModal,
+  } = useDisclosure();
 
   return (
     <div className="h-screen w-full overflow-auto">
@@ -52,13 +61,26 @@ const TransactionsTable = memo(function TransactionsTable({ transactions }: Tran
       <FinalizeWithdrawalModal
         isOpen={isFinalizeWithdrawalModalOpen}
         onClose={onCloseFinalizeWithdrawalModal}
-        finalizeTxHash={modalFinalizeTxHash}
+        finalizeTxHash={modalFinalizeOPTxHash}
+      />
+      <FinalizeCCTPBridgeModal
+        isOpen={isFinalizeCCTPBridgeModalOpen}
+        onClose={onCloseFinalizeCCTPBridgeModal}
+        finalizeTxHash={modalFinalizeCCTPTxHash}
       />
       <Table
         head={COLUMNS}
         rows={transactions.map((transaction) => {
           if (transaction.type === 'Deposit') {
-            return <DepositRow key={transaction.hash} transaction={transaction} />;
+            return (
+              <DepositRow
+                key={transaction.hash}
+                transaction={transaction}
+                onOpenFinalizeCCTPBridgeModal={onOpenFinalizeCCTPBridgeModal}
+                onCloseFinalizeCCTPBridgeModal={onCloseFinalizeCCTPBridgeModal}
+                setModalFinalizeCCTPTxHash={setModalFinalizeCCTPTxHash}
+              />
+            );
           }
           return (
             <WithdrawalRow
@@ -69,8 +91,11 @@ const TransactionsTable = memo(function TransactionsTable({ transactions }: Tran
               onCloseProveWithdrawalModal={onCloseProveWithdrawalModal}
               onOpenFinalizeWithdrawalModal={onOpenFinalizeWithdrawalModal}
               onCloseFinalizeWithdrawalModal={onCloseFinalizeWithdrawalModal}
+              onOpenFinalizeCCTPBridgeModal={onOpenFinalizeCCTPBridgeModal}
+              onCloseFinalizeCCTPBridgeModal={onCloseFinalizeCCTPBridgeModal}
               setModalProveTxHash={setModalProveTxHash}
-              setModalFinalizeTxHash={setModalFinalizeTxHash}
+              setModalFinalizeOPTxHash={setModalFinalizeOPTxHash}
+              setModalFinalizeCCTPTxHash={setModalFinalizeCCTPTxHash}
             />
           );
         })}

@@ -10,4 +10,13 @@ type WithdrawalPhase =
   | 'FUNDS_WITHDRAWN';
 
 type DepositPhase = 'DEPOSIT_TX_PENDING' | 'FUNDS_DEPOSITED' | 'DEPOSIT_TX_FAILURE';
-export type { DepositPhase, WithdrawalPhase };
+
+type CCTPBridgePhase =
+  | 'INITIATE_CCTP_BRIDGE_PENDING'
+  | 'INITIATE_CCTP_BRIDGE_FAILED'
+  | 'FINALIZE_CCTP_BRIDGE'
+  | 'FINALIZE_CCTP_BRIDGE_PENDING'
+  | 'FINALIZE_CCTP_BRIDGE_FAILED'
+  | 'CCTP_BRIDGE_COMPLETE';
+
+export type { DepositPhase, WithdrawalPhase, CCTPBridgePhase };
