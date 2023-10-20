@@ -37,7 +37,7 @@ Then, import `hardhat-contract-sizer` in `hardhat.config.ts`:
 import "hardhat-contract-sizer"
 ```
 
-When finsihed, you are ready to use the plugin.
+When finished, you are ready to use the plugin.
 
 ## Your first size profiling
 
@@ -227,7 +227,7 @@ contract Computer {
 
 In this example, the `executeProcess` function of `Computer` requires certain functionality of `Calculator` and a new contract called `Printer`:
 
-```typescript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
@@ -243,11 +243,11 @@ contract Printer {
 
 The easiest way for `Computer` to access both functionalities is to inherit; however, as all of these contracts continue adding functionality, the size of the code will also increase tand you will reach the contract size issue at some point since you are copying the entire functionality into your contract. You can better allow that functionality to be kept with their specific contracts and if the `Computer` requires to access that functionality, you could call the `Calculator` and `Printer` contracts.
 
-Calling external contracts is explored more deeply in the [Contract to contract interaction](../hardhat-contract-to-contract/hardhat-contract-to-contract.md) article.
+Calling external contracts is explored more deeply in the [Contract to contract interaction] article.
 
 But in this example, there is a process that must call both `Calculator` and `Printer`:
 
-```typescript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
@@ -294,7 +294,7 @@ If you run the contract sizer plugin, you get:
 
 Notice how your `Computer` contract is very small but still has the capability to access all the functionality of `Printer` and `Calculator`.
 
-Although this will reduce the size of each contract, the costs of this are discussed more deeply in the [Gas Optimization lesson](TODO).
+Although this will reduce the size of each contract, the costs of this are discussed more deeply in the [Gas Optimization] article.
 
 ### Using libraries
 
@@ -308,7 +308,7 @@ External libraries are commonly deployed independently and can be reused my mult
 
 In this example, your computer will use the `Calculator` library only. Then, you would have the following:
 
-```typescript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
@@ -342,7 +342,7 @@ library Calculator {
 
 Then, `Computer` is:
 
-```typescript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
@@ -460,7 +460,7 @@ Notice the bigger improvement, but see what happens if you increase the `runs` p
  ·------------------------|--------------------------------|--------------------------------·
 ```
 
-The size of the contract increased, however this means your code will be more efficient across the lifetime of the contract because the higher the `runs` value the more efficient during execution but more expensive during deployment. You can read more in the [Solidity documentation](https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html#optimizer-parameter-runs).
+The size of the contract increased, however this means your code will be more efficient across the lifetime of the contract because the higher the `runs` value the more efficient during execution but more expensive during deployment. You can read more in the [Solidity documentation].
 
 ## Conclusion
 
@@ -475,3 +475,6 @@ As you continue your journey in smart contract development, keep in mind that op
 [modifiers]: docs/advanced-functions/function-modifiers.md
 [Solidity official docs]: https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html
 [Delegate call]: https://solidity-by-example.org/delegatecall/
+[Contract to contract interaction]: ../hardhat-contract-to-contract/hardhat-contract-to-contract.md
+[Gas Optimization]: ../hardhat-profiling-gas/hardhat-profiling-gas.md
+[Solidity documentation]: https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html#optimizer-parameter-runs

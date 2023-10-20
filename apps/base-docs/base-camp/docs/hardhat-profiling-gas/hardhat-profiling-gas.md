@@ -52,7 +52,7 @@ When finished, you are ready to use the plugin.
 
 Create a contract called `Store` with the following settings:
 
-```typescript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
@@ -162,7 +162,7 @@ From the previous report, you can identity that the optimizer of the project has
 ·------------------------|-------------|-------------|-------------|---------------|-------------·
 ```
 
-This automatically give you some improvements for deployment gas costs but slighly more for transaction executions.
+This automatically gives you some improvements for deployment gas costs but slighly more for transaction executions.
 
 ### Using immutable variables
 
@@ -170,7 +170,7 @@ In our `Store` contract, you can identify certain variables that are only set du
 
 If you modify the `Store` contract to:
 
-```typescript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
@@ -231,7 +231,7 @@ Storing data and not storing data in a smart contract is a design decision that 
 
 In the `Store` smart contract, you have the following:
 
-```typescript
+```solidity
 struct Item {
         uint256 id;
         string description;
@@ -246,7 +246,7 @@ Looking closely, you can see that the `Id` of the `Item` struct and the `id` use
 
 The contract looks like:
 
-```typescript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
@@ -301,7 +301,7 @@ This presents another improvement in the gas consumption of the `Store` smart co
 
 For instance, you can modify the contract to look like:
 
-```typescript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
@@ -354,7 +354,7 @@ As you can see, the improvements in terms of gas consumption are significant. Ho
 
 Another common way to optimize gas costs is by removing `require`s and use custom errors. For instance, you can do the following:
 
-```typescript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 

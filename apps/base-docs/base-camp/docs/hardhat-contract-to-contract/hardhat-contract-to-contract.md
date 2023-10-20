@@ -46,7 +46,7 @@ This package provides access to the Uniswap interfaces of the Core protocol.
 
 Then, write a custom contract called `PoolCreator` with the following code:
 
-```typescript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
@@ -80,7 +80,7 @@ Notice the following:
 
 - You are importing a `IUniswapV3Factory` interface. The interface contains function declarations that include `getPool` and `createPool`:
 
-```typescript
+```solidity
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity >=0.5.0;
 
@@ -157,7 +157,7 @@ Notice the following:
 - The address `0x1F98431c8aD98523631AE4a59f267346ea31F984` is the address of the Uniswap pool factory deployed to the Ethereum mainnet. This can be verified by looking at the Uniswap documentation that includes the [Deployment addresses of the contracts].
 - You created two tokens, TokenA and TokenB, by using a `Token` contract.
 
-```typescript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
@@ -192,7 +192,7 @@ Using `call`, you can call any contract as long as you know minimal information 
 
 The newly modified smart contract code looks as follows:
 
-```typescript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
