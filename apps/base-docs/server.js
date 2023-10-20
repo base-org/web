@@ -70,6 +70,8 @@ const contentSecurityPolicy = {
     'wss://relay.walletconnect.org',
     'https://goerli.base.org', // Base Goerli RPC
     'https://cca-lite.coinbase.com', // CCA Lite
+    'https://*.algolia.net', // Algolia Search
+    'https://*.algolianet.com', // Algolia Search
   ],
   'frame-src': ["'self'", 'https://player.vimeo.com'],
 };
