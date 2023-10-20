@@ -61,7 +61,6 @@ const config = {
       },
     ],
     'docusaurus-node-polyfills',
-    './src/plugins/docusaurus-plugin-kbar/index.js',
   ],
   scripts: [
     {
@@ -142,6 +141,16 @@ const config = {
         },
       ],
     },
+    algolia: {
+      // Application ID
+      appId: 'EG1Y9QIPP9',
+
+      // Public API key: it is safe to commit it
+      apiKey: '59218c35b3c3e1aa3cdca101ca109839',
+      indexName: 'prod',
+      contextualSearch: false,
+    },
+
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
