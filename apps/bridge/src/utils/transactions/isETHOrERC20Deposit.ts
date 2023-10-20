@@ -45,7 +45,7 @@ export function isETHOrERC20Deposit(tx: BlockExplorerTransaction) {
   }
 
   // CCTP deposit
-  if (tx.to === CCTP_DEPOSIT_ADDRESS) {
+  if (tx.to === CCTP_DEPOSIT_ADDRESS && publicRuntimeConfig.cctpEnabled === 'true') {
     const { functionName } = decodeFunctionData({
       abi: TokenMessenger,
       data: tx.input,
