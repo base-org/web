@@ -42,7 +42,7 @@ export function isETHOrERC20Withdrawal(tx: BlockExplorerTransaction) {
   }
 
   // CCTP deposit
-  if (tx.to === CCTP_WITHDRAWAL_ADDRESS) {
+  if (tx.to === CCTP_WITHDRAWAL_ADDRESS && publicRuntimeConfig.cctpEnabled === 'true') {
     const { functionName } = decodeFunctionData({ abi: TokenMessenger, data: tx.input });
     if (functionName === 'depositForBurn') {
       return true;
