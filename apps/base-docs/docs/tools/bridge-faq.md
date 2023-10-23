@@ -37,7 +37,7 @@ Transferring from Base to Ethereum takes approximately 7 days. This is a securit
 
 ### Are there any fees involved in using Base Bridge?
 
-There are network fees involved which are used to pay for the gas costs on Ethereum and Base. There are no additional fees specifically for using Base Bridge. You can find more information on how network fees work on Base here.
+There are network fees involved which are used to pay for the gas costs on Ethereum and Base. There are no additional fees specifically for using Base Bridge.
 
 ### What is the benefit of transferring my digital assets from Ethereum to Base?
 
@@ -58,5 +58,25 @@ The bridge is designed to be user-friendly and accessible, even for those new to
 ### Can I interact with dapps on Base using my transferred digital assets?
 
 Yes, once your digital assets are on Base, you can interact with dapps deployed on it!
+
+### How to cancel a withdrawal?
+
+If a withdrawal has been initiated on https://bridge.base.org/withdraw it is not possible to cancel it. Once withdrawn on the L2, it's effectively burned and needs to be reclaimed on the L1.
+
+### Why does it take seven days to withdraw?
+
+This 7-day bridge duration is in place as a [challenge period](https://community.optimism.io/docs/developers/bridge/messaging/#fees-for-l2-%E2%87%92-l1-transactions) security measure within the OP Stack.
+
+You also have the option to utilize [third-party bridges](https://base.org/ecosystem?tag=bridge) for quicker withdrawals.
+
+### How do I verify my withdrawal transaction?
+
+1. Navigate to the [Transactions](https://bridge.base.org/transactions) page.
+
+2. Look for the button to "Switch to L1". This action will ask you to switch to the Ethereum Mainnet network, enabling you to proceed with the verification process.
+
+3. Look for the button to “Verify”. This action will ask you to complete verification in wallet by paying a gas fee on L1.
+
+7 days after you have verified your withdrawal, you can finalize your withdrawal using the “Complete” button which will appear on the Base Bridge.
 
 ---
