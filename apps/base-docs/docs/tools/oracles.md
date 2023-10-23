@@ -9,12 +9,18 @@ slug: /tools/oracles
 
 ## API3
 
-[API3](https://api3.org/) is building secure first-party oracles for Base and serves a public good quantum random number generator.
-[See this guide on how to use Quantum RNG in a Smart Contract](https://docs.api3.org/guides/qrng/qrng-remix/) and the oracle address for [API3 QRNG on Base](https://docs.api3.org/reference/qrng/chains.html).
+[API3](https://api3.org/) is building secure first-party oracles for Base.
+
+API3 is live with:
+
+- [dAPIs](<(https://docs.api3.org/guides/dapis/subscribing-managed-dapis/)>): First-party aggregated data feeds sourced directly from the data providers.
+- [Airnode](<(https://docs.api3.org/guides/airnode/calling-an-airnode/)>): The first-party serverless Oracle solution to bring any REST API on-chain.
+- [QRNG](<(https://docs.api3.org/guides/qrng/)>): Quantum Random Number Generator for verifiable quantum RNG on-chain.
 
 #### Supported Networks
 
 - Base Mainnet
+- Base Goerli (Testnet)
 
 ---
 
