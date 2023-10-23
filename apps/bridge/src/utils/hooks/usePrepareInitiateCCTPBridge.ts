@@ -3,6 +3,7 @@ import { Asset } from 'apps/bridge/src/types/Asset';
 import { parseUnits, pad } from 'viem';
 import getConfig from 'next/config';
 import { Address, usePrepareContractWrite } from 'wagmi';
+import { prepareWriteContract } from 'wagmi/actions';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -17,7 +18,7 @@ const BRIDGE_DIRECTION_TO_CHAIN_ID: Record<'deposit' | 'withdraw', number> = {
 };
 
 type UsePrepareInitiateCCTPBridgeProps = {
-  mintRecipient?: Address;
+  mintRecipient: Address;
   asset: Asset;
   amount: string;
   destinationDomain: number;
@@ -53,4 +54,27 @@ export function usePrepareInitiateCCTPBridge({
     dataSuffix: includeTosVersionByte ? publicRuntimeConfig.tosVersion : undefined,
   });
   return config;
+}
+
+export async function prepareInitiateCCTPBridge({
+  mintRecipient,
+  asset,
+  amount,
+  destinationDomain,
+  bridgeDirection,
+  includeTosVersionByte,
+}: UsePrepareInitiateCCTPBridgeProps) {
+  return prepareWriteContract({
+    address: BRIDGE_DIRECTION_TO_TOKEN_MESSENGER[bridgeDirection],
+    abi: TokenMessenger,
+    functionName: 'depositForBurn',
+    chainId: BRIDGE_DIRECTION_TO_CHAIN_ID[bridgeDirection],
+    args: [
+      amount !== '' ? parseUnits(amount, asset.decimals) : parseUnits('0', asset.decimals),
+      destinationDomain,
+      pad(mintRecipient),
+      (bridgeDirection === 'deposit' ? asset.L1contract : asset.L2contract) as Address,
+    ],
+    dataSuffix: includeTosVersionByte ? publicRuntimeConfig.tosVersion : undefined,
+  });
 }
