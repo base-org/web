@@ -82,3 +82,15 @@ Requests to QuickNode Faucet are limited to one drip every 12 hours.
 :::
 
 ---
+
+## LearnWeb3 Faucet
+
+[LearnWeb3 Faucet](https://learnweb3.io/faucets/base_goerli) is a multi-chain faucet by LearnWeb3. You can use the LearnWeb3 faucet to claim Base Goerli testnet ETH for free - one claim every 24 hours.
+
+:::info
+
+Requests to LearnWeb3 faucet are limited to one claim per 24 hours.
+
+:::
+
+---
