@@ -54,7 +54,7 @@ You'll need your own L1 RPC URL. This can be one that you run yourself, or via a
 
 Clone the [repo].
 
-Open `docker-compose.yml`. Find `OP_NODE_L1_ETH_RPC`, under `environment`, and replace the link with your L1 RPC URL.
+Open `docker-compose.yml`. Both for `geth` and `node`, uncomment the line under `env_file` for the desired network.
 
 Run `docker compose up`. Confirm you get a response from:
 
