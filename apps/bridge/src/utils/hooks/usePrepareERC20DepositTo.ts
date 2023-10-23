@@ -3,6 +3,7 @@ import { Asset } from 'apps/bridge/src/types/Asset';
 import getConfig from 'next/config';
 import { parseUnits } from 'viem';
 import { Address, usePrepareContractWrite } from 'wagmi';
+import { prepareWriteContract } from 'wagmi/actions';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -42,7 +43,30 @@ export function usePrepareERC20DepositTo({
     ],
     cacheTime: 0,
     staleTime: 1,
-    gas: BigInt(300000),
   });
   return depositConfig;
+}
+
+export async function prepareERC20DepositTo({
+  asset,
+  to,
+  depositAmount,
+  includeTosVersionByte,
+}: UsePrepareERC20DepositToProps) {
+  return prepareWriteContract({
+    address: publicRuntimeConfig.l1BridgeProxyAddress,
+    abi: L1StandartBridge,
+    functionName: 'depositERC20To',
+    chainId: parseInt(publicRuntimeConfig.l1ChainID),
+    args: [
+      asset.L1contract as Address,
+      asset.L2contract as Address,
+      to,
+      depositAmount !== ''
+        ? parseUnits(depositAmount, asset.decimals)
+        : parseUnits('0', asset.decimals),
+      100000,
+      includeTosVersionByte ? publicRuntimeConfig.tosVersion : '0x',
+    ],
+  });
 }

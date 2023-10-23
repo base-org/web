@@ -23,7 +23,10 @@ import { useIsPermittedToBridgeTo } from 'apps/bridge/src/utils/hooks/useIsPermi
 import { getL2NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL2NetworkForChainEnv';
 import { getL1NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL1NetworkForChainEnv';
 import { getWithdrawalAssetsForChainEnv } from 'apps/bridge/src/utils/assets/getWithdrawalAssetsForChainEnv';
-import { usePrepareInitiateCCTPBridge } from 'apps/bridge/src/utils/hooks/usePrepareInitiateCCTPBridge';
+import {
+  prepareInitiateCCTPBridge,
+  usePrepareInitiateCCTPBridge,
+} from 'apps/bridge/src/utils/hooks/usePrepareInitiateCCTPBridge';
 import { useIsContractApproved } from 'apps/bridge/src/utils/hooks/useIsContractApproved';
 import { useApproveContract } from 'apps/bridge/src/utils/hooks/useApproveContract';
 import { BridgeButton } from 'apps/bridge/src/components/BridgeButton/BridgeButton';
@@ -67,7 +70,9 @@ export function WithdrawContainer() {
       withdrawAmount === '' || Number.isNaN(Number(withdrawAmount))
         ? parseUnits('0', selectedAsset.decimals)
         : parseUnits(withdrawAmount, selectedAsset.decimals);
-    return !readERC20ApprovalError && readERC20Approval && readERC20Approval >= withdrawAmountBN;
+    return Boolean(
+      !readERC20ApprovalError && readERC20Approval && readERC20Approval >= withdrawAmountBN,
+    );
   }, [withdrawAmount, selectedAsset.decimals, readERC20ApprovalError, readERC20Approval]);
 
   // approve erc20
@@ -122,7 +127,7 @@ export function WithdrawContainer() {
 
   // withdraw using CCTP (eg USDC)
   const withdrawCCTPAssetConfig = usePrepareInitiateCCTPBridge({
-    mintRecipient: isSmartContractWallet ? (withdrawTo as `0x${string}`) : address,
+    mintRecipient: (isSmartContractWallet ? withdrawTo : address) as `0x${string}`,
     asset: selectedAsset,
     amount: withdrawAmount,
     destinationDomain: parseInt(publicRuntimeConfig.l1CCTPDomain),
@@ -165,7 +170,16 @@ export function WithdrawContainer() {
           if (selectedAsset.protocol === 'CCTP') {
             // because of how React works we need to use the writeContract wagmi/core action
             // here (the hook still thinks the approval has not been set)
-            withdrawMethod = async () => await writeContract(withdrawCCTPAssetConfig);
+            const config = await prepareInitiateCCTPBridge({
+              mintRecipient: (isSmartContractWallet ? withdrawTo : address) as `0x${string}`,
+              asset: selectedAsset,
+              amount: withdrawAmount,
+              destinationDomain: parseInt(publicRuntimeConfig.l1CCTPDomain),
+              isPermittedToBridge,
+              includeTosVersionByte,
+              bridgeDirection: 'withdraw',
+            });
+            withdrawMethod = async () => await writeContract(config);
           } else {
             withdrawMethod = isSmartContractWallet ? withdrawERC20To : withdrawERC20;
           }
@@ -181,15 +195,19 @@ export function WithdrawContainer() {
       }
     })();
   }, [
+    address,
     approveWrite,
+    includeTosVersionByte,
+    isPermittedToBridge,
     isSmartContractWallet,
     onCloseWithdrawModal,
     onOpenWithdrawModal,
     publicClient,
-    selectedAsset.protocol,
-    withdrawCCTPAssetConfig,
+    selectedAsset,
+    withdrawAmount,
     withdrawERC20,
     withdrawERC20To,
+    withdrawTo,
   ]);
 
   const initiateWithdrawal = useCallback(() => {
