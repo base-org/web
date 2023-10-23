@@ -15,8 +15,14 @@ import { useGetCode } from 'apps/bridge/src/utils/hooks/useGetCode';
 import { useIsContractApproved } from 'apps/bridge/src/utils/hooks/useIsContractApproved';
 import { useIsPermittedToBridge } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridge';
 import { useIsWalletConnected } from 'apps/bridge/src/utils/hooks/useIsWalletConnected';
-import { usePrepareERC20Deposit } from 'apps/bridge/src/utils/hooks/usePrepareERC20Deposit';
-import { usePrepareERC20DepositTo } from 'apps/bridge/src/utils/hooks/usePrepareERC20DepositTo';
+import {
+  prepareERC20Deposit,
+  usePrepareERC20Deposit,
+} from 'apps/bridge/src/utils/hooks/usePrepareERC20Deposit';
+import {
+  prepareERC20DepositTo,
+  usePrepareERC20DepositTo,
+} from 'apps/bridge/src/utils/hooks/usePrepareERC20DepositTo';
 import { usePrepareETHDeposit } from 'apps/bridge/src/utils/hooks/usePrepareETHDeposit';
 import { isAddress, parseUnits } from 'viem';
 import getConfig from 'next/config';
@@ -26,7 +32,10 @@ import { useIsPermittedToBridgeTo } from 'apps/bridge/src/utils/hooks/useIsPermi
 import { getL1NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL1NetworkForChainEnv';
 import { getL2NetworkForChainEnv } from 'apps/bridge/src/utils/networks/getL2NetworkForChainEnv';
 import { getDepositAssetsForChainEnv } from 'apps/bridge/src/utils/assets/getDepositAssetsForChainEnv';
-import { usePrepareInitiateCCTPBridge } from 'apps/bridge/src/utils/hooks/usePrepareInitiateCCTPBridge';
+import {
+  prepareInitiateCCTPBridge,
+  usePrepareInitiateCCTPBridge,
+} from 'apps/bridge/src/utils/hooks/usePrepareInitiateCCTPBridge';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -141,7 +150,7 @@ export function DepositContainer() {
 
   // deposit using CCTP (eg USDC)
   const depositCCTPAssetConfig = usePrepareInitiateCCTPBridge({
-    mintRecipient: isSmartContractWallet ? (depositTo as `0x${string}`) : address,
+    mintRecipient: (isSmartContractWallet ? depositTo : address) as `0x${string}`,
     asset: selectedAsset,
     amount: depositAmount,
     destinationDomain: parseInt(publicRuntimeConfig.l2CCTPDomain),
@@ -156,46 +165,80 @@ export function DepositContainer() {
       setIsApprovalTx(true);
       onOpenDepositModal();
       try {
-        const approveResult = await approveWrite?.();
-        if (approveResult?.hash) {
-          const approveTxHash: `0x${string}` = approveResult.hash;
-          setL1ApproveTxHash(approveTxHash);
+        if (isPermittedToBridge) {
+          const approveResult = await approveWrite?.();
+          if (approveResult?.hash) {
+            const approveTxHash: `0x${string}` = approveResult.hash;
+            setL1ApproveTxHash(approveTxHash);
 
-          // wait for confirmations
-          await publicClient.waitForTransactionReceipt({ hash: approveResult.hash });
+            // wait for confirmations
+            await publicClient.waitForTransactionReceipt({ hash: approveResult.hash });
 
-          // next, call the transfer function
-          setIsApprovalTx(false);
+            // next, call the transfer function
+            setIsApprovalTx(false);
 
-          let depositMethod;
-          if (selectedAsset.protocol === 'CCTP') {
-            // because of how React works we need to use the writeContract wagmi/core action
-            // here (the hook still thinks the approval has not been set)
-            depositMethod = async () => await writeContract(depositCCTPAssetConfig);
+            let depositMethod;
+            if (selectedAsset.protocol === 'CCTP') {
+              // because of how React works we need to use the writeContract wagmi/core action
+              // here (the hook still thinks the approval has not been set)
+              const config = await prepareInitiateCCTPBridge({
+                mintRecipient: (isSmartContractWallet ? depositTo : address) as `0x${string}`,
+                asset: selectedAsset,
+                amount: depositAmount,
+                destinationDomain: parseInt(publicRuntimeConfig.l2CCTPDomain),
+                isPermittedToBridge,
+                includeTosVersionByte,
+                bridgeDirection: 'deposit',
+              });
+              depositMethod = async () => await writeContract(config);
+            } else {
+              if (isSmartContractWallet) {
+                const config = await prepareERC20DepositTo({
+                  asset: selectedAsset,
+                  to: depositTo as `0x${string}`,
+                  depositAmount,
+                  readApprovalResult,
+                  isPermittedToBridge,
+                  includeTosVersionByte,
+                });
+                depositMethod = async () => await writeContract(config);
+              } else {
+                const config = await prepareERC20Deposit({
+                  asset: selectedAsset,
+                  depositAmount,
+                  isPermittedToBridge,
+                  includeTosVersionByte,
+                });
+                depositMethod = async () => await writeContract(config);
+              }
+            }
+            const depositResult = await depositMethod?.();
+            if (depositResult?.hash) {
+              const depositTxHash = depositResult.hash;
+              setL1DepositTxHash(depositTxHash);
+              setDepositAmount('');
+            }
           } else {
-            depositMethod = isSmartContractWallet ? depositERC20ToWrite : depositERC20Write;
-          }
-          const depositResult = await depositMethod?.();
-          if (depositResult?.hash) {
-            const depositTxHash = depositResult.hash;
-            setL1DepositTxHash(depositTxHash);
-            setDepositAmount('');
+            handleCloseDepositModal();
           }
         }
       } catch (error) {
-        onCloseDepositModal();
+        handleCloseDepositModal();
       }
     })();
   }, [
+    address,
     approveWrite,
-    depositCCTPAssetConfig,
-    depositERC20ToWrite,
-    depositERC20Write,
+    depositAmount,
+    depositTo,
+    handleCloseDepositModal,
+    includeTosVersionByte,
+    isPermittedToBridge,
     isSmartContractWallet,
-    onCloseDepositModal,
     onOpenDepositModal,
     publicClient,
-    selectedAsset.protocol,
+    readApprovalResult,
+    selectedAsset,
   ]);
 
   const initiateDeposit = useCallback(() => {
@@ -221,10 +264,10 @@ export function DepositContainer() {
             setDepositAmount('');
           }
         } else {
-          onCloseDepositModal();
+          handleCloseDepositModal();
         }
       } catch (error) {
-        onCloseDepositModal();
+        handleCloseDepositModal();
       }
     })();
   }, [
@@ -237,7 +280,7 @@ export function DepositContainer() {
     depositERC20ToWrite,
     depositERC20Write,
     depositETHWrite,
-    onCloseDepositModal,
+    handleCloseDepositModal,
   ]);
 
   let button;
