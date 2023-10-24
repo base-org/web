@@ -13,9 +13,9 @@ slug: /tools/oracles
 
 API3 is live with:
 
-- [dAPIs](<(https://docs.api3.org/guides/dapis/subscribing-managed-dapis/)>): First-party aggregated data feeds sourced directly from the data providers.
-- [Airnode](<(https://docs.api3.org/guides/airnode/calling-an-airnode/)>): The first-party serverless Oracle solution to bring any REST API onchain.
-- [QRNG](<(https://docs.api3.org/guides/qrng/)>): Quantum Random Number Generator for verifiable quantum RNG onchain.
+- [dAPIs](https://docs.api3.org/guides/dapis/subscribing-managed-dapis/): First-party aggregated data feeds sourced directly from the data providers.
+- [Airnode](https://docs.api3.org/guides/airnode/calling-an-airnode/): The first-party serverless Oracle solution to bring any REST API onchain.
+- [QRNG](https://docs.api3.org/guides/qrng/): Quantum Random Number Generator for verifiable quantum RNG onchain.
 
 #### Supported Networks
 
