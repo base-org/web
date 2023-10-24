@@ -98,8 +98,10 @@ export function FaqSidebar() {
             <p>
               If you prefer not to wait, instead of making a withdrawal using Base Bridge, you also
               have the option to utilize a{' '}
-              <a href="https://base.org/ecosystem?tag=bridge" className="underline" />
-              third-party bridge for quicker withdrawals.
+              <a href="https://base.org/ecosystem?tag=bridge" className="underline">
+                third-party bridge
+              </a>{' '}
+              for quicker withdrawals.
             </p>
           </div>
         }
@@ -113,19 +115,19 @@ export function FaqSidebar() {
               <a href="https://bridge.base.org/transactions" className="underline">
                 Transactions
               </a>{' '}
-              page. Next to your transaction, use the button to "Switch to L1". This action will ask
-              you to switch to the Ethereum Mainnet network, enabling you to proceed with the
-              verification process.
+              page. Next to your transaction, use the button to &quot;Switch to L1&quot;. This
+              action will ask you to switch to the Ethereum Mainnet network, enabling you to proceed
+              with the verification process.
             </p>
             <p>
               Proceed to then use the same button which will update to a new status enabling you to
-              "Verify" your withdrawal. This action will prompt you to complete verification with
-              your wallet by signing a transaction.
+              &quot;Verify&quot; your withdrawal. This action will prompt you to complete
+              verification with your wallet by signing a transaction.
             </p>
             <p>
               Seven days after you have verified your withdrawal, you can complete your withdrawal
-              by returning to the Transactions page. Use the "Complete" button which will appear
-              next to your transaction.
+              by returning to the Transactions page. Use the &quot;Complete&quot; button which will
+              appear next to your transaction.
             </p>
           </div>
         }
