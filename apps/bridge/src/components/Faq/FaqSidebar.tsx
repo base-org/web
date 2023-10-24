@@ -75,8 +75,8 @@ export function FaqSidebar() {
         answer={
           <div className="flex flex-col space-y-4">
             <p>
-              No, if a withdrawal has already been initiated on the Withdraws page it is not
-              possible to cancel it. Once withdrawn the process needs to be completed.
+              No, if a withdrawal has already been initiated on the Withdraw page it is not possible
+              to cancel it. Once withdrawn the process needs to be completed.
             </p>
           </div>
         }

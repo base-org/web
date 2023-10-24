@@ -61,7 +61,7 @@ Yes, once your digital assets are on Base, you can interact with dapps deployed 
 
 ### Can I cancel a withdrawal?
 
-No, if a withdrawal has already been initiated on the [Withdraws](https://bridge.base.org/withdraw) page it is not possible to cancel it. Once withdrawn the process needs to be completed.
+No, if a withdrawal has already been initiated on the [Withdraw](https://bridge.base.org/withdraw) page it is not possible to cancel it. Once withdrawn the process needs to be completed.
 
 ### Why does it take seven days to withdraw?
 
