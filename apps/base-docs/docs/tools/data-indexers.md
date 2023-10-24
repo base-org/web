@@ -59,7 +59,7 @@ To get started, visit the [documentation](https://thegraph.com/docs/en/) or see 
 
 ## Flair
 
-[Flair](https://flair.dev) is a real-time and historical custom data indexing for any evm chain.
+[Flair](https://flair.dev) is a real-time and historical custom data indexing for any EVM chain.
 
 It offers reusable **indexing primitives** (such as fault-tolerant RPC ingestors, custom processors and aggregations, re-org aware database integrations) to make it easy to receive, transform, store and access your on-chain data.
 
