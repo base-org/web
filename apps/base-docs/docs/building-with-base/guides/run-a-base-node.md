@@ -52,11 +52,10 @@ You'll need your own L1 RPC URL. This can be one that you run yourself, or via a
 
 ## Running a Node
 
-Clone the [repo].
-
-Open `docker-compose.yml`. Find `OP_NODE_L1_ETH_RPC`, under `environment`, and replace the link with your L1 RPC URL.
-
-Run `docker compose up`. Confirm you get a response from:
+1. Clone the [repo].
+2. Ensure you have an Ethereum L1 full node RPC available (not Base), and set `OP_NODE_L1_ETH_RPC` (in the `.env.*` file if using `docker-compose`). If running your own L1 node, it needs to be synced before Base will be able to fully sync.
+3. Uncomment the line relevant to your network (`.env.goerli`, `.env.sepolia`, or `.env.mainnet`) under the 2 `env_file` keys in `docker-compose.yml`.
+4. Run `docker compose up`. Confirm you get a response from:
 
 ```bash
 curl -d '{"id":0,"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest",false]}' \
