@@ -56,3 +56,16 @@ To get started, visit the [documentation](https://thegraph.com/docs/en/) or see 
 - [Base Goerli](https://thegraph.com/docs/en/#supported-networks) (Testnet)
 
 ---
+
+## Flair
+
+[Flair](https://flair.dev) is a real-time and historical custom data indexing for any EVM chain.
+
+It offers reusable **indexing primitives** (such as fault-tolerant RPC ingestors, custom processors and aggregations, re-org aware database integrations) to make it easy to receive, transform, store and access your on-chain data.
+
+To get started, visit the [documentation](https://docs.flair.dev) or clone the [starter boilerplate](https://github.com/flair-sdk/starter-boilerplate) template and follow the instructions.
+
+#### Supported Networks
+
+- [Base Mainnet](https://docs.flair.dev/reference/manifest.yml)
+- [Base Goerli](https://docs.flair.dev/reference/manifest.yml) (Testnet)
