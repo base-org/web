@@ -34,7 +34,9 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <>
-      {isOFACRequiredPath && <OFACModal isOpen />}
+      {isMainnet && !isOFACAllowed && !isOFACAllowedLoading && isOFACRequiredPath && (
+        <OFACModal isOpen />
+      )}
       {tosRequiredPath &&
         isTosModalOpen &&
         isMainnet &&
