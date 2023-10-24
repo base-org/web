@@ -17,7 +17,7 @@ You can use popular Ethereum wallets like Coinbase Wallet, MetaMask, and Rainbow
 
 ### What if I have a question, issue or problem?
 
-The [Base Discord](https://base.org/discord) community is available around the clock for general questions, assistance and support!
+The [Base Discord](https://base.org/discord) community is available around the clock for general questions, assistance and support! Depending on your issue, you can create a support ticket in the `#general-support` or `#developer-support` channels.
 
 ### Can I move my assets back to Ethereum from Base?
 
@@ -37,7 +37,7 @@ Transferring from Base to Ethereum takes approximately 7 days. This is a securit
 
 ### Are there any fees involved in using Base Bridge?
 
-There are network fees involved which are used to pay for the gas costs on Ethereum and Base. There are no additional fees specifically for using Base Bridge. You can find more information on how network fees work on Base here.
+There are network fees involved which are used to pay for the gas costs on Ethereum and Base. There are no additional fees specifically for using Base Bridge.
 
 ### What is the benefit of transferring my digital assets from Ethereum to Base?
 
@@ -58,5 +58,23 @@ The bridge is designed to be user-friendly and accessible, even for those new to
 ### Can I interact with dapps on Base using my transferred digital assets?
 
 Yes, once your digital assets are on Base, you can interact with dapps deployed on it!
+
+### Can I cancel a withdrawal?
+
+No, if a withdrawal has already been initiated on the [Withdraw](https://bridge.base.org/withdraw) page it is not possible to cancel it. Once withdrawn the process needs to be completed.
+
+### Why does it take seven days to withdraw?
+
+This seven day bridge duration is in place as a [challenge period](https://community.optimism.io/docs/developers/bridge/messaging/#fees-for-l2-%E2%87%92-l1-transactions) security measure built into the OP Stack.
+
+If you prefer not to wait, instead of making a withdrawal using Base Bridge, you also have the option to utilize a [third-party bridge](https://base.org/ecosystem?tag=bridge) for quicker withdrawals.
+
+### How do I verify my withdrawal transaction?
+
+Navigate to the [Transactions](https://bridge.base.org/transactions) page. Next to your transaction, use the button to "Switch to L1". This action will ask you to switch to the Ethereum Mainnet network, enabling you to proceed with the verification process.
+
+Proceed to then use the same button which will update to a new status enabling you to "Verify" your withdrawal. This action will prompt you to complete verification with your wallet by signing a transaction.
+
+Seven days after you have verified your withdrawal, you can complete your withdrawal by returning to the Transactions page. Use the "Complete" button which will appear next to your transaction.
 
 ---
