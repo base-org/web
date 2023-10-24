@@ -1,5 +1,5 @@
 type IconProps = {
-  name: 'discord' | 'twitter' | 'github' | 'more-menu' | 'close';
+  name: 'discord' | 'twitter' | 'github' | 'more-menu' | 'close' | 'caret' | 'external-link';
   color?: 'white' | 'black';
   width?: string;
   height?: string;
@@ -90,6 +90,42 @@ export function Icon({ name, color = 'white', width = '24', height = '24' }: Ico
           fillRule="evenodd"
           clipRule="evenodd"
           d="M22.6274 0.272185L3.33786e-06 22.8996L2.82843 25.728L25.4558 3.10061L22.6274 0.272185Z"
+          fill={color}
+        />
+      </svg>
+    );
+  }
+  if (name === 'caret') {
+    return (
+      <svg
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill={color}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M19.4199 7.52002L11.9999 14.94L4.57994 7.52002L2.80994 9.29002L11.9999 18.48L21.1899 9.29002L19.4199 7.52002Z"
+          fill={color}
+        />
+      </svg>
+    );
+  }
+  if (name === 'external-link') {
+    return (
+      <svg
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill={color}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.4437 2.49805H19.8102L8.65655 14.0648L10.4562 15.8002L21.5021 4.34514V9.06774H24.0021V-0.00195312H14.4437V2.49805Z"
+          fill={color}
+        />
+        <path
+          d="M-0.00207138 5.86301V24.0024H19.1147V11.9666H16.6147V21.5024H2.49793V8.36301H12.3258V5.86301H-0.00207138Z"
           fill={color}
         />
       </svg>
