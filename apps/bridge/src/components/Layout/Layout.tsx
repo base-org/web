@@ -30,10 +30,13 @@ export function Layout({ children }: LayoutProps) {
 
   const tosRequiredPath =
     pathname === '/deposit' || pathname === '/withdraw' || pathname === '/transactions';
+  const isOFACRequiredPath = pathname !== '/transactions';
 
   return (
     <>
-      {isMainnet && !isOFACAllowed && !isOFACAllowedLoading && <OFACModal isOpen />}
+      {isMainnet && !isOFACAllowed && !isOFACAllowedLoading && isOFACRequiredPath && (
+        <OFACModal isOpen />
+      )}
       {tosRequiredPath &&
         isTosModalOpen &&
         isMainnet &&
