@@ -76,7 +76,8 @@ const contentSecurityPolicy = {
     'https://api-sepolia.etherscan.io/api', // Sepolia Etherscan API
     'https://base-sepolia.blockscout.com', // Sepolia Blockscout
     'https://base-goerli.blockscout.com/api', // Blockscout
-    'https://iris-api-sandbox.circle.com/attestations/', // Circle
+    'https://iris-api-sandbox.circle.com/attestations/', // Circle (testnet)
+    'https://iris-api.circle.com/attestations/', // Circle (mainnet)
   ],
   'img-src': ["'self'", 'data:', 'https://*.walletconnect.com/'], // WalletConnect,
 };
