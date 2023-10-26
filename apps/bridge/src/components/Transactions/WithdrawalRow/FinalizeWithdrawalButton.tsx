@@ -1,5 +1,4 @@
 import { Dispatch, memo, SetStateAction, useCallback } from 'react';
-import { useIsPermittedToBridge } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridge';
 import { usePrepareFinalizeWithdrawal } from 'apps/bridge/src/utils/hooks/usePrepareFinalizeWithdrawal';
 import getConfig from 'next/config';
 import { useContractWrite, useNetwork, useSwitchNetwork } from 'wagmi';
