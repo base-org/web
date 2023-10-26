@@ -55,13 +55,13 @@ The ERC-721 and ERC-20 token standards share a common goal of providing a set of
 
 ERC-20 tokens are fungible, meaning each token is identical to every other token; they are interchangeable like currency. On the other hand, ERC-721 tokens are non-fungible, meaning each token is unique and not interchangeable with any other token. This uniqueness is made possible through the ownerOf() and getApproved() functions, which provide information about the ownership of each unique token.
 
-The ERC-20 standard has primarily found use in creating cryptocurrencies for dapps, governance tokens, utility tokens, stablecoins, and more. The ERC-721 standard, conversely, has been adopted largely for creating unique digital assets like collectibles, digital art, and tokenized virtual real estate, among other applications.
+The ERC-20 standard has primarily found use in creating cryptocurrencies for apps, governance tokens, utility tokens, stablecoins, and more. The ERC-721 standard, conversely, has been adopted largely for creating unique digital assets like collectibles, digital art, and tokenized virtual real estate, among other applications.
 
 ---
 
 ## Benefits of ERC-721 Standardization
 
-Standardizing non-fungible tokens via the ERC-721 token standard presents substantial benefits to developers and users in the Ethereum ecosystem. Developers have access to a standardized set of functions, leading to less code ambiguity, fewer errors, and a streamlined development process. This uniformity also ensures smooth integration with existing dapps and platforms on Ethereum.
+Standardizing non-fungible tokens via the ERC-721 token standard presents substantial benefits to developers and users in the Ethereum ecosystem. Developers have access to a standardized set of functions, leading to less code ambiguity, fewer errors, and a streamlined development process. This uniformity also ensures smooth integration with existing apps and platforms on Ethereum.
 
 For users, the ERC-721 standard offers an intuitive, consistent interface for interacting with a wide array of unique tokens. Regardless of the token's specific use or design, users can reliably check their ownership of tokens, transfer tokens to other addresses, and approve transactions. This consistency enhances usability across the Ethereum platform, from digital art marketplaces to tokenized real estate and gaming applications.
 

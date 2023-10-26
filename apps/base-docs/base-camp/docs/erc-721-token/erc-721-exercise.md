@@ -40,7 +40,7 @@ Add a `public` function called `shareHaiku` that allows the owner of a Haiku NFT
 
 :::danger
 
-Remember, everything on the blockchain is public. This sharing functionality can be expanded for features similar to allowing a dapp user to display the selected shared haiku on their profile.
+Remember, everything on the blockchain is public. This sharing functionality can be expanded for features similar to allowing an app user to display the selected shared haiku on their profile.
 
 It does nothing to prevent anyone and everyone from seeing or copy/pasting the haiku!
 

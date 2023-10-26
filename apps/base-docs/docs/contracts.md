@@ -5,7 +5,7 @@ slug: /contracts
 
 # Contracts
 
-This page lists contract addresses for dApps that we have deployed.
+This page lists contract addresses for onchain apps that we have deployed.
 
 ---
 

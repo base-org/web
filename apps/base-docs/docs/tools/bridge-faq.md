@@ -41,7 +41,7 @@ There are network fees involved which are used to pay for the gas costs on Ether
 
 ### What is the benefit of transferring my digital assets from Ethereum to Base?
 
-By transferring digital assets from Ethereum to Base, you get to experience the scalability and efficiency of Base -- this means cheaper and faster transactions, reduced gas fees, and all of the dapps unique to the network!
+By transferring digital assets from Ethereum to Base, you get to experience the scalability and efficiency of Base -- this means cheaper and faster transactions, reduced gas fees, and all of the apps unique to the network!
 
 ### Can I use the same wallet on Base that I use on Ethereum?
 
@@ -55,9 +55,9 @@ While every effort is made to ensure the security and reliability of the bridge,
 
 The bridge is designed to be user-friendly and accessible, even for those new to the technology. However, it's always recommended to have a basic understanding of blockchain transactions and best practices. If you're unsure, it might be beneficial to seek advice or further learning.
 
-### Can I interact with dapps on Base using my transferred digital assets?
+### Can I interact with apps on Base using my transferred digital assets?
 
-Yes, once your digital assets are on Base, you can interact with dapps deployed on it!
+Yes, once your digital assets are on Base, you can interact with apps deployed on it!
 
 ### Can I cancel a withdrawal?
 

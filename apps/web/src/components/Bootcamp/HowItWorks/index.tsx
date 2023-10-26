@@ -41,7 +41,7 @@ const featureItems = [
             Base Camp
           </a>
           , meeting regularly with your mentor. You’ll build your final project during the final two
-          weeks - a real-world dapp that you’ll demo virtually on Demo Day.
+          weeks - a real-world, onchain app that you’ll demo virtually on Demo Day.
         </p>
 
         <br />

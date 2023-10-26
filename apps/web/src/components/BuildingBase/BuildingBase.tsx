@@ -64,15 +64,15 @@ export function BuildingBase({ owners }: Props) {
           Coinbase, Coinbase Wallet, Metamask, Rainbow, Trust Wallet, and others.
         </p>
         <p className="pt-8 text-xl font-bold">
-          Phase 4: Build the “dapps” of an open financial system (1B+ people)
+          Phase 4: Build the onchain apps of an open financial system (1B+ people)
         </p>
         <p>
           With the interfaces in place, our existing financial system now needs to be recreated on
           open networks and made globally accessible. We’re seeing this happen in front of our eyes:
           USDC has brought billions of dollars onchain, cbETH enables holders anywhere to secure the
-          financial system while earning rewards, and hundreds of dapps are enabling countless
-          individuals and institutions to transact with lower fees, more security, and unparalleled
-          access.
+          financial system while earning rewards, and hundreds of onchain apps are enabling
+          countless individuals and institutions to transact with lower fees, more security, and
+          unparalleled access.
         </p>
         <p className="pt-8">
           We&#39;ve had countless conversations about how we can accelerate Phase 4 of this plan

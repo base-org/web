@@ -4,7 +4,7 @@ description: Build your own NFT based on the ERC-721 standard.
 hide_table_of_contents: false
 ---
 
-Punks, Apes, and birds of all kinds. You've heard about them, seen them, and may even be lucky enough to own a famous NFT. Or maybe you've just bought into a random collection and aren't sure what to do with your NFT. NFTs aren't really pictures, or anything else specific. They're a method of proving ownership of a digital asset. Anyone can right-click on a picture of a monkey and set it as their profile picture, but only the owner can use it with dapps that utilize web3 ownership.
+Punks, Apes, and birds of all kinds. You've heard about them, seen them, and may even be lucky enough to own a famous NFT. Or maybe you've just bought into a random collection and aren't sure what to do with your NFT. NFTs aren't really pictures, or anything else specific. They're a method of proving ownership of a digital asset. Anyone can right-click on a picture of a monkey and set it as their profile picture, but only the owner can use it with apps that utilize web3 ownership.
 
 The ERC-721 token standard is the underling technical specification that not only makes digital ownership possible, it provides a standardized way for marketplaces, galleries, and other sites to know how to interact with these digital items.
 

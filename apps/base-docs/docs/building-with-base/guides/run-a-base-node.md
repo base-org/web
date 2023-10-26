@@ -23,7 +23,7 @@ Running a node is time consuming, resource expensive, and potentially costly. If
 
 If you're just getting started and need an RPC URL, you can use our free endpoint at `https://mainnet.base.org` (or if you're setting up a node on testnet, `https://goerli.base.org`). **Note:** Our RPCs are rate-limited, they are not suitable for production apps.
 
-If you're looking to harden your dapp and avoid rate-limiting for your users, please check out one of our [partners].
+If you're looking to harden your app and avoid rate-limiting for your users, please check out one of our [partners].
 
 :::
 
