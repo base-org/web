@@ -23,8 +23,7 @@ function DropdownLink({ href, label, externalLink }: DropdownLinkProps) {
       target="_blank"
       rel="noreferrer noopener"
     >
-      <span className="mr-4">{label}</span>
-      <Icon name="external-link" width="16" height="16" color="white" />
+      {label}
     </a>
   ) : (
     <Link href={href} className="w-full pt-4 font-mono text-3xl text-white hover:underline">
@@ -181,8 +180,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                   target="_blank"
                   rel="noreferrer noopener"
                 >
-                  <span className="mr-4">Bridge</span>
-                  <Icon name="external-link" width="16" height="16" color="white" />
+                  Bridge
                 </a>
                 <Dropdown
                   dropdownKey="developers"
