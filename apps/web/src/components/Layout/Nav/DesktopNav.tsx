@@ -27,13 +27,7 @@ function DropdownLink({ href, label, color, externalLink }: DropdownLinkProps) {
       target="_blank"
       rel="noreferrer noopener"
     >
-      <span className="mr-2">{label}</span>
-      <Icon
-        name="external-link"
-        width="14"
-        height="14"
-        color={color === 'black' ? 'white' : 'black'}
-      />
+      {label}
     </a>
   ) : (
     <Link
@@ -124,13 +118,7 @@ function DesktopNav({ color }: DesktopNavProps) {
           target="_blank"
           rel="noreferrer noopener"
         >
-          <span className="mr-2">Bridge</span>
-          <Icon
-            name="external-link"
-            width="14"
-            height="14"
-            color={color === 'black' ? 'black' : 'white'}
-          />
+          Bridge
         </a>
         <Dropdown label="Developers" color={color}>
           <DropdownLink
