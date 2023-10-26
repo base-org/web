@@ -24,8 +24,6 @@ export const FinalizeWithdrawalButton = memo(function FinalizeWithdrawalButton({
   setFinalizeTxHash,
   setModalFinalizeTxHash,
 }: FinalizeWithdrawalButtonProps) {
-  const isPermittedToBridge = useIsPermittedToBridge();
-
   const proveWithdrawalConfig = usePrepareFinalizeWithdrawal(txHash, isERC20Withdrawal);
   const { writeAsync: finalizeWithdrawal } = useContractWrite(proveWithdrawalConfig);
 
@@ -41,15 +39,11 @@ export const FinalizeWithdrawalButton = memo(function FinalizeWithdrawalButton({
     onOpenFinalizeWithdrawalModal();
     void (async () => {
       try {
-        if (isPermittedToBridge) {
-          const finalizeResult = await finalizeWithdrawal?.();
-          if (finalizeResult?.hash) {
-            const finalizeTxHash = finalizeResult.hash;
-            setFinalizeTxHash(finalizeTxHash);
-            setModalFinalizeTxHash(finalizeTxHash);
-          }
-        } else {
-          onCloseFinalizeWithdrawalModal();
+        const finalizeResult = await finalizeWithdrawal?.();
+        if (finalizeResult?.hash) {
+          const finalizeTxHash = finalizeResult.hash;
+          setFinalizeTxHash(finalizeTxHash);
+          setModalFinalizeTxHash(finalizeTxHash);
         }
       } catch {
         onCloseFinalizeWithdrawalModal();
@@ -57,7 +51,6 @@ export const FinalizeWithdrawalButton = memo(function FinalizeWithdrawalButton({
     })();
   }, [
     finalizeWithdrawal,
-    isPermittedToBridge,
     onCloseFinalizeWithdrawalModal,
     onOpenFinalizeWithdrawalModal,
     setFinalizeTxHash,
