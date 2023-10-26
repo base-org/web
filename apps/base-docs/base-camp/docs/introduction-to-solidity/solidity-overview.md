@@ -68,7 +68,7 @@ You also have to be careful to write code with predictable execution paths. Each
 
 ### Contract Size Limit
 
-[EIP-170] introduced a compiled byte-code size limit of **24 kB** to Ethereum Smart Contracts. Read that sentence again, as you're probably not used to thinking in this small of a number!
+[EIP-170] introduced a compiled byte-code size limit of **24 KiB** (24,576 B) to Ethereum Smart Contracts. Read that sentence again, as you're probably not used to thinking in this small of a number!
 
 While there isn't an exact ratio of lines of code to compiled byte-code size, you're limited to deploying contracts that are approximately 300-500 lines of Solidity.
 
