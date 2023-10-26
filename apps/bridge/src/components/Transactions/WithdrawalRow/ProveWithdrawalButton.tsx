@@ -1,5 +1,4 @@
 import { Dispatch, memo, SetStateAction, useCallback } from 'react';
-import { useIsPermittedToBridge } from 'apps/bridge/src/utils/hooks/useIsPermittedToBridge';
 import { usePrepareProveWithdrawal } from 'apps/bridge/src/utils/hooks/usePrepareProveWithdrawal';
 import getConfig from 'next/config';
 import { useContractWrite, useNetwork, useSwitchNetwork } from 'wagmi';
@@ -26,8 +25,6 @@ export const ProveWithdrawalButton = memo(function ProveWithdrawalButton({
   setModalProveTxHash,
   blockNumberOfLatestL2OutputProposal,
 }: ProveWithdrawalButtonProps) {
-  const isPermittedToBridge = useIsPermittedToBridge();
-
   const proveWithdrawalConfig = usePrepareProveWithdrawal(
     txHash,
     isERC20Withdrawal,
@@ -47,22 +44,17 @@ export const ProveWithdrawalButton = memo(function ProveWithdrawalButton({
     onOpenProveWithdrawalModal();
     void (async () => {
       try {
-        if (isPermittedToBridge) {
-          const proveResult = await submitProof?.();
-          if (proveResult?.hash) {
-            const proveTxHash = proveResult.hash;
-            setProveTxHash(proveTxHash);
-            setModalProveTxHash(proveTxHash);
-          }
-        } else {
-          onCloseProveWithdrawalModal();
+        const proveResult = await submitProof?.();
+        if (proveResult?.hash) {
+          const proveTxHash = proveResult.hash;
+          setProveTxHash(proveTxHash);
+          setModalProveTxHash(proveTxHash);
         }
       } catch {
         onCloseProveWithdrawalModal();
       }
     })();
   }, [
-    isPermittedToBridge,
     onCloseProveWithdrawalModal,
     onOpenProveWithdrawalModal,
     setModalProveTxHash,
