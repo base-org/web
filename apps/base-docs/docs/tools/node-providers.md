@@ -9,7 +9,7 @@ slug: /tools/node-providers
 
 ## 1RPC
 
-[1RPC](https://1rpc.io/) is the first and only on-chain attested privacy preserving RPC that eradicate metadata exposure and leakage when interacting with blockchains. 1RPC offers free and [paid plans](https://www.1rpc.io/#pricing) with additional features and increased request limits. 
+[1RPC](https://1rpc.io/) is the first and only on-chain attested privacy preserving RPC that eradicate metadata exposure and leakage when interacting with blockchains. 1RPC offers free and [paid plans](https://www.1rpc.io/#pricing) with additional features and increased request limits.
 
 #### Supported Networks
 
@@ -117,7 +117,7 @@ slug: /tools/node-providers
 
 ## Nodies DLB
 
-[Nodies DLB](https://nodies.app) provides highly performant RPC Services for Base, as well as all other OP-stacked chains. They offer free public endpoints, Pay-As-You-Go, and enterprise pricing plans. 
+[Nodies DLB](https://nodies.app) provides highly performant RPC Services for Base, as well as all other OP-stacked chains. They offer free public endpoints, Pay-As-You-Go, and enterprise pricing plans.
 
 #### Supported Networks
 
@@ -160,7 +160,7 @@ slug: /tools/node-providers
 
 ## Tenderly Web3 Gateway
 
-[Tenderly Web3 Gateway](https://tenderly.co/web3-gateway) provides a fast and reliable hosted node solution with a built-in suite of developer tooling and infrastructure building blocks covering your whole development lifecycle. Develop, test, deploy, and monitor your dapp on the Base network with both [free and paid plans](https://tenderly.co/pricing).
+[Tenderly Web3 Gateway](https://tenderly.co/web3-gateway) provides a fast and reliable hosted node solution with a built-in suite of developer tooling and infrastructure building blocks covering your whole development lifecycle. Develop, test, deploy, and monitor your onchain app on the Base network with both [free and paid plans](https://tenderly.co/pricing).
 
 #### Supported Networks
 

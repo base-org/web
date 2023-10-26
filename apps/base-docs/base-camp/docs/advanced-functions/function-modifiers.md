@@ -20,11 +20,11 @@ By the end of this lesson you should be able to:
 
 By default, `public` functions can be called by **anyone**, without restriction. Often this is desirable. You want any user to be able to see what NFTs are for sale on your platform, sign up for a service, or read various items stored in state.
 
-However, there will be many functions you **don't** want any user to be able to do, such as setting the fee for using the dApp, or withdrawing all of the funds in the contract! A common pattern to protect these functions is to use `modifier`s to make sure that only the owner can call these functions.
+However, there will be many functions you **don't** want any user to be able to do, such as setting the fee for using the app, or withdrawing all of the funds in the contract! A common pattern to protect these functions is to use `modifier`s to make sure that only the owner can call these functions.
 
 :::caution
 
-For a production dApp, you'll want to use a more robust implementation of `onlyOwner`, such as the [one provided by OpenZeppelin].
+For a production app, you'll want to use a more robust implementation of `onlyOwner`, such as the [one provided by OpenZeppelin].
 
 :::
 

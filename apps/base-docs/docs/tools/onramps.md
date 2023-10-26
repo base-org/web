@@ -9,7 +9,7 @@ slug: /tools/onramps
 
 ## Coinbase Pay
 
-[Coinbase Pay](https://www.coinbase.com/cloud/products/pay-sdk) is a fiat-to-crypto onramp that allows users to buy or transfer crypto directly from self-custody wallets and dapps. Coinbase Pay supports 60+ fiat currencies with regulatory compliance and licensing, as well as 100+ cryptocurrencies, including ETH on Base. [Join the waitlist](https://www.coinbase.com/cloud/products/pay-sdk) to use the Pay SDK.
+[Coinbase Pay](https://www.coinbase.com/cloud/products/pay-sdk) is a fiat-to-crypto onramp that allows users to buy or transfer crypto directly from self-custody wallets and apps. Coinbase Pay supports 60+ fiat currencies with regulatory compliance and licensing, as well as 100+ cryptocurrencies, including ETH on Base. [Join the waitlist](https://www.coinbase.com/cloud/products/pay-sdk) to use the Pay SDK.
 
 ---
 

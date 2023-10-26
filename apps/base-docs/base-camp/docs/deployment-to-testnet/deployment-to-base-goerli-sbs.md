@@ -32,7 +32,7 @@ Be safe and use separate wallets for separate purposes.
 
 :::
 
-First, add the [Coinbase] or [Metamask] wallet to your browser, and then [set up] a new wallet. As a developer, you need to be doubly careful about the security of your wallet! Many dApps grant special powers to the wallet address that is the owner of the contract, such as allowing the withdrawal of all the Ether that customers have paid to the contract or changing critical settings.
+First, add the [Coinbase] or [Metamask] wallet to your browser, and then [set up] a new wallet. As a developer, you need to be doubly careful about the security of your wallet! Many apps grant special powers to the wallet address that is the owner of the contract, such as allowing the withdrawal of all the Ether that customers have paid to the contract or changing critical settings.
 
 Once you've completed the wallet setup, enable developer settings and turn on testnets ([Coinbase Settings], [Metamask Settings]).
 
@@ -66,7 +66,7 @@ Open the _Deploy & Run Transactions_ tab. Under _Environment_, select _Injected 
 
 ![Environment](../../assets/images/deployment-to-testnet/select-provider.png)
 
-The first time you do this, your wallet will ask you to confirm that you want to connect this dApp (Remix) to your wallet.
+The first time you do this, your wallet will ask you to confirm that you want to connect this app (Remix) to your wallet.
 
 Once you are connected, you'll see the name of the network below the _Environment_ dropdown.
 

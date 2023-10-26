@@ -38,7 +38,7 @@ This model can be compared to a dictionary or a map where the key serves as the 
 
 - **Simplicity:** It is simple and straightforward, which allows for easier implementation and maintenance within a contract.
 
-- **Scalability:** It is highly scalable, making it well-suited for managing vast amounts of data typically associated with dapps and smart contracts. This scalability helps maintain performance levels even as data storage requirements grow.
+- **Scalability:** It is highly scalable, making it well-suited for managing vast amounts of data typically associated with apps and smart contracts. This scalability helps maintain performance levels even as data storage requirements grow.
 
 - **Fixed-size chunks:** Storing data in fixed-size 32-byte chunks optimizes storage space and ensures that data location calculations are more efficient. This feature is particularly beneficial in the context of Ethereum, where storage costs are a significant concern.
 
