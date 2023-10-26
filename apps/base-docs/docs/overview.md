@@ -13,7 +13,7 @@ Base is incubated within Coinbase and plans to progressively decentralize in the
 
 ### Ethereum L2
 
-Base is built as an Ethereum L2, with the security, stability, and scalability you need to power your dapps. Confidently deploy any EVM codebase and onramp your users and assets from Ethereum L1, Coinbase, and other interoperable chains.
+Base is built as an Ethereum L2, with the security, stability, and scalability you need to power your onchain apps. Confidently deploy any EVM codebase and onramp your users and assets from Ethereum L1, Coinbase, and other interoperable chains.
 
 ### Big features, small fees
 

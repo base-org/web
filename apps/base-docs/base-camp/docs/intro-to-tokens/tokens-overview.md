@@ -22,7 +22,7 @@ By the end of this lesson you should be able to:
 
 Ethereum Request for Comments (or, ERC) is a term used to describe technical proposals and standards for Ethereum. An ERC is authored by developers and members of the Ethereum community to suggest improvements, new features, or guidelines for creating and managing tokens and smart contracts. Once an ERC is submitted, it undergoes review and discussion by the community. If it gains consensus, it can then be implemented or adopted as a standard in the ecosystem.
 
-Token standards on Ethereum form the backbone of the digital asset ecosystem. They are a set of predefined rules and guidelines that govern the creation, management, and interaction of tokens on the network. These standards ensure that tokens are compatible with various dapps, wallets, and other tokens within the Ethereum ecosystem. Token standards allow developers to create tokens with consistent behavior, facilitating seamless interaction and interoperability within the network.
+Token standards on Ethereum form the backbone of the digital asset ecosystem. They are a set of predefined rules and guidelines that govern the creation, management, and interaction of tokens on the network. These standards ensure that tokens are compatible with various apps, wallets, and other tokens within the Ethereum ecosystem. Token standards allow developers to create tokens with consistent behavior, facilitating seamless interaction and interoperability within the network.
 
 ---
 

@@ -1,10 +1,10 @@
 ---
 title: Test Networks
-description: An overview of Ethereum test networks
+description: An overview of Base test networks
 hide_table_of_contents: false
 ---
 
-This article provides a concise overview of Ethereum test networks, highlighting their advantages, potential challenges, and comparing some of the most popular testnets.
+This article provides a concise overview of Base test networks, highlighting their advantages, potential challenges, and comparing some of the most popular testnets.
 
 ---
 
@@ -12,16 +12,16 @@ This article provides a concise overview of Ethereum test networks, highlighting
 
 By the end of this lesson you should be able to:
 
-- Describe the uses and properties of the Ethereum testnet
-- Compare and contrast Ropsten, Rinkeby, and Goerli
+- Describe the uses and properties of the Base testnet
+- Compare and contrast Ropsten, Rinkeby, Goerli, and Sepolia
 
 ---
 
 ## Why Testnets?
 
-As you dive into the development of smart contracts and dapps on Ethereum, you'll need a safe, controlled, and efficient environment for testing and experimentation. Test networks, or testnets, serve as essential tools for you to test your smart contracts before deploying them to the mainnet, minimizing the risk of failures or vulnerabilities in live applications.
+As you dive into the development of smart contracts and onchain apps on Base, mainnet, or other networks, you'll need a safe, controlled, and efficient environment for testing and experimentation. Test networks, or testnets, serve as essential tools for you to test your smart contracts before deploying them to the mainnet, minimizing the risk of failures or vulnerabilities in live applications.
 
-By simulating the Ethereum mainnet environment, testnets offer a realistic representation of real-world conditions, complete with network latency, gas fees, and other factors that impact the performance of smart contracts. This accurate representation enables you to identify potential issues, optimize your applications, and ensure the best possible user experience for your end-users. Moreover, testnets allow you to familiarize yourself with the Ethereum ecosystem and gain valuable hands-on experience, making them indispensable tools for both seasoned developers and newcomers to the world of blockchain development.
+By simulating the mainnet environment, testnets offer a realistic representation of real-world conditions, complete with network latency, gas fees, and other factors that impact the performance of smart contracts. This accurate representation enables you to identify potential issues, optimize your applications, and ensure the best possible user experience for your end-users. Moreover, testnets allow you to familiarize yourself with the Base ecosystem and gain valuable hands-on experience, making them indispensable tools for both seasoned developers and newcomers to the world of blockchain development.
 
 ![The Importance of Test Networks](../../assets/images/deployment-to-testnet/importance-of-testnets.png)
 
@@ -51,15 +51,15 @@ While Ethereum testnets provide a valuable testing environment for developers, t
 
 - **Testnet instability:** Testnets may occasionally face downtime or network issues, which can disrupt the testing process. While these events are relatively rare, it's essential to be prepared for such occurrences and have a backup plan, such as switching to another testnet or using a local development environment.
 
-- **Differences in network behavior:** Although testnets simulate the Ethereum mainnet environment, there might be subtle differences in network behavior, gas fees, or transaction processing times between the two. These differences could potentially impact the performance of your smart contracts on the mainnet. It's crucial to be aware of these discrepancies and make any necessary adjustments before deploying your smart contracts to the mainnet.
+- **Differences in network behavior:** Although testnets simulate the mainnet environment, there might be subtle differences in network behavior, gas fees, or transaction processing times between the two. These differences could potentially impact the performance of your smart contracts on the mainnet. It's crucial to be aware of these discrepancies and make any necessary adjustments before deploying your smart contracts to the mainnet.
 
-- **Limited resources:** Testnet ether is generally available for free through faucets, but these sources might have daily limits or other restrictions on the amount of testnet Ether that can be obtained. This limitation could affect your ability to perform extensive testing or carry out large-scale experiments on the testnet.
+- **Limited resources:** Testnet Ether is generally available for free through faucets, but these sources might have daily limits or other restrictions on the amount of testnet Ether that can be obtained. This limitation could affect your ability to perform extensive testing or carry out large-scale experiments on the testnet.
 
 ---
 
-## Popular Ethereum Testnets
+## Popular Testnets
 
-Several well-known Ethereum testnets have emerged over the years, each with its own set of features and benefits.
+Several well-known testnets have emerged over the years, each with its own set of features and benefits.
 
 ![Comparison of Test Networks](../../assets/images/deployment-to-testnet/testnet-comparison.png)
 
@@ -77,13 +77,13 @@ Several well-known Ethereum testnets have emerged over the years, each with its 
 
 - **Base Goerli:** As new Layer-2 networks emerged that settled on Ethereum's Layer-1, the need for testnets dedicated to these L2 networks also arose. For instance, the L2 network Base has its own testnet, known as Base Goerli. This testnet settles on the Ethereum Goerli L1 testnet, providing an environment for testing L2-specific features and smart contracts.
 
-- **Optimism Goerli:** Optimism, an Ethereum Layer-2 scaling solution utilizing Optimistic Rollups, has its own testnet called Optimism Goerli. This testnet is built on the Ethereum Goerli L1 testnet and offers a testing environment for developers to experiment with Optimism's Layer-2 features, smart contracts, and dapps.
+- **Optimism Goerli:** Optimism, an Ethereum Layer-2 scaling solution utilizing Optimistic Rollups, has its own testnet called Optimism Goerli. This testnet is built on the Ethereum Goerli L1 testnet and offers a testing environment for developers to experiment with Optimism's Layer-2 features, smart contracts, and apps.
 
 ---
 
 ## Conclusion
 
-Ethereum testnets are essential for the safe and efficient development of smart contracts and dapps, offering numerous advantages such as real-time feedback, cost-free testing, easy accessibility, stress testing, and protocol upgrade testing. Despite certain challenges associated with testnets, developers continue to rely on them for a robust testing environment. Among the various options, Goerli and Sepolia have emerged as preferred choices for Ethereum developers due to their enhanced security, stability, and strong community support. As the Ethereum ecosystem evolves, incorporating Layer-2 networks and other innovations, testnets will continue to play a crucial role in fostering blockchain development and contributing to the overall success and growth of the space.
+Ethereum and L2 testnets are essential for the safe and efficient development of smart contracts and apps, offering numerous advantages such as real-time feedback, cost-free testing, easy accessibility, stress testing, and protocol upgrade testing. Despite certain challenges associated with testnets, developers continue to rely on them for a robust testing environment. Among the various options, Goerli and Sepolia have emerged as preferred choices for Ethereum developers due to their enhanced security, stability, and strong community support. As the Ethereum ecosystem evolves, incorporating Layer-2 networks and other innovations, testnets will continue to play a crucial role in fostering blockchain development and contributing to the overall success and growth of the space.
 
 ---
 

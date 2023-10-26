@@ -37,7 +37,7 @@ module.exports = {
             },
             {
               type: 'category',
-              label: 'Building a DApp',
+              label: 'Building an App Onchain',
               collapsible: true,
               collapsed: true,
               items: ['building-with-base/guides/build-with-thirdweb'],

@@ -200,7 +200,7 @@ Now, test out `getEvenNumbers()` using `numEven` vs. using `_countEvenNumbers()`
 
 As is often the case with code, it depends. You might think that the experiment makes things obvious. Paying 213k gas up front to track `_numEven` results in a savings of over 400k gas when filtering for even numbers. Even better, you might realize that the upfront cost difference will be spread across all of your users over time, making them almost trivial. You also might think that it's possible that the filter function could be called dozens of times for each time 500 numbers are loaded.
 
-These are all valid considerations that you should evaluate as you are developing your code solution to a business problem. One last critical element to consider is that there is only a gas cost to read from the blockchain if it's another contract calling the function. It **doesn't** cost any gas to call `view` or `pure` functions from a front end or dApp.
+These are all valid considerations that you should evaluate as you are developing your code solution to a business problem. One last critical element to consider is that there is only a gas cost to read from the blockchain if it's another contract calling the function. It **doesn't** cost any gas to call `view` or `pure` functions from a front end or app.
 
 If `getEvenNumbers` will never be called by another contract, then using `numEven` might cost more for no benefit!
 

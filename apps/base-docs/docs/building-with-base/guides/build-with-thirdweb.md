@@ -3,11 +3,11 @@ title: Using thirdweb
 slug: /guides/build-with-thirdweb
 ---
 
-# Building a DApp using thirdweb
+# Building an App using thirdweb
 
-In this guide you will learn how to build a DApp on Base using the [thirdweb](https://portal.thirdweb.com/) platform.
+In this guide you will learn how to build an app on Base using the [thirdweb](https://portal.thirdweb.com/) platform.
 
-To achieve this, you will deploy a smart contract for a NFT collection and create an NFT gallery DApp for viewing the metadata details of each NFT within the collection.
+To achieve this, you will deploy a smart contract for a NFT collection and create an NFT gallery app for viewing the metadata details of each NFT within the collection.
 
 ---
 
@@ -16,7 +16,7 @@ To achieve this, you will deploy a smart contract for a NFT collection and creat
 By the end of this guide, you should be able to:
 
 - Create an NFT collection and mint new NFTs using thirdweb.
-- Develop an NFT gallery DApp using a prebuilt thirdweb templates.
+- Develop an NFT gallery app using a prebuilt thirdweb templates.
 
 ---
 
@@ -24,7 +24,7 @@ By the end of this guide, you should be able to:
 
 ### 1. Setting Up a Coinbase Wallet
 
-To begin developing a DApp on Base, you first need to set up a web3 wallet. We recommend using the Coinbase Wallet, which can be easily created by downloading the Coinbase Wallet browser extension.
+To begin developing an app on Base, you first need to set up a web3 wallet. We recommend using the Coinbase Wallet, which can be easily created by downloading the Coinbase Wallet browser extension.
 
 [Download Coinbase Wallet](https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad?hl=en)
 
@@ -41,7 +41,7 @@ Detailed steps on wallet funding with Base Goerli ETH can be found under [Networ
 
 ## Creating an NFT Collection
 
-Before developing a DApp, you need to create an NFT collection via thirdweb.
+Before developing an app, you need to create an NFT collection via thirdweb.
 
 Follow these steps to set up your NFT collection:
 
@@ -65,7 +65,7 @@ For production / mainnet deployments select `Base` (mainnet) as the network rath
 
 Post-deployment, you can manage your smart contract via the [thirdweb dashboard](https://thirdweb.com/dashboard/contracts).
 
-Currently, your NFT Collection lacks NFTs. To populate our upcoming NFT Gallery DApp, we will need to create several NFTs.
+Currently, your NFT Collection lacks NFTs. To populate our upcoming NFT Gallery app, we will need to create several NFTs.
 
 Follow the steps below to mint new NFTs:
 
@@ -83,11 +83,11 @@ Repeat these steps to mint as many NFTs as you'd like.
 
 ---
 
-## Building an NFT Gallery DApp
+## Building an NFT Gallery App
 
-With an NFT Collection in place, it's time to construct an NFT Gallery DApp. The [thirdweb CLI](https://portal.thirdweb.com/cli) provides various prebuilt and starter [templates](https://portal.thirdweb.com/templates) for popular DApp use-cases, which can significantly expedite your DApp development process.
+With an NFT Collection in place, it's time to construct an NFT Gallery App. The [thirdweb CLI](https://portal.thirdweb.com/cli) provides various prebuilt and starter [templates](https://portal.thirdweb.com/templates) for popular app use-cases, which can significantly expedite your app development process.
 
-In this guide, we'll use the [thirdweb CLI](https://portal.thirdweb.com/cli) to generate a new DApp project using the [NFT Gallery template](https://github.com/thirdweb-example/nft-gallery).
+In this guide, we'll use the [thirdweb CLI](https://portal.thirdweb.com/cli) to generate a new app project using the [NFT Gallery template](https://github.com/thirdweb-example/nft-gallery).
 
 Run the following command:
 
@@ -149,8 +149,8 @@ yarn dev
 
 ## Conclusion
 
-Congratulations on reaching the end of this guide! You've now learned how to create an NFT collection using Thirdweb, mint new NFTs, and build an NFT gallery DApp on the Base blockchain!
+Congratulations on reaching the end of this guide! You've now learned how to create an NFT collection using Thirdweb, mint new NFTs, and build an NFT gallery app on the Base blockchain!
 
-As a next step, check out other prebuilt [smart contracts](https://thirdweb.com/explore) and starter [templates](https://portal.thirdweb.com/templates) provided by the [thirdweb](https://portal.thirdweb.com) platform that can help you build your next DApp on Base.
+As a next step, check out other prebuilt [smart contracts](https://thirdweb.com/explore) and starter [templates](https://portal.thirdweb.com/templates) provided by the [thirdweb](https://portal.thirdweb.com) platform that can help you build your next onchain app on Base.
 
 ---
