@@ -251,6 +251,7 @@ __metadata:
     "@bugsnag/js": ^7.20.2
     "@bugsnag/plugin-react": ^7.19.0
     "@eth-optimism/contracts-ts": ^0.16.2
+    "@eth-optimism/indexer-api": ^0.0.4
     "@headlessui/react": latest
     "@heroicons/react": ^2.0.13
     "@next/font": ^13.1.6
@@ -2678,6 +2679,13 @@ __metadata:
     wagmi:
       optional: true
   checksum: dbf4afdb56d72f40ef9cc0a7aec03be34f07b43abed05cffc6cd62e69e90e3a27009269cf5cbb2221bd2fe64b7ba2a17d85c4713159e4ab75d17c4c42b8117d8
+  languageName: node
+  linkType: hard
+
+"@eth-optimism/indexer-api@npm:^0.0.4":
+  version: 0.0.4
+  resolution: "@eth-optimism/indexer-api@npm:0.0.4"
+  checksum: d9da1cce24ae17be8ba0de3bade19580188facea9f86f1205d51ded9db3d365227238967635bd7fb7f29b9609b9f110de7394c42f9d13ae579aa9521aa6e9415
   languageName: node
   linkType: hard
 
