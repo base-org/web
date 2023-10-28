@@ -22,14 +22,14 @@ function explorerTxToBridgeWithdrawals(
 }
 
 async function fetchOPWithdrawals(address: string) {
-  const response = await fetch(publicRuntimeConfig.complianceApiURL, {
+  const response = await fetch(publicRuntimeConfig.bridgeApiURL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       jsonrpc: '2.0',
-      method: 'verifier_withdrawals',
+      method: 'indexer_getAllWithdrawalsByAddress',
       params: [address, parseInt(publicRuntimeConfig.l2ChainID)],
       id: 0,
     }),

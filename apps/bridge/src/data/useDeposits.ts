@@ -19,14 +19,14 @@ function explorerTxToBridgeDeposits(transactions: BlockExplorerTransaction[]): B
 }
 
 async function fetchOPDeposits(address: string) {
-  const response = await fetch(publicRuntimeConfig.complianceApiURL, {
+  const response = await fetch(publicRuntimeConfig.bridgeApiURL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       jsonrpc: '2.0',
-      method: 'verifier_deposits',
+      method: 'indexer_getAllDepositsByAddress',
       params: [address, parseInt(publicRuntimeConfig.l1ChainID)],
       id: 0,
     }),
