@@ -60,7 +60,8 @@ export function explorerTxToBridgeWithdrawal(tx: BlockExplorerTransaction): Brid
   const token = assetList.find(
     (asset) =>
       asset.L2chainId === parseInt(publicRuntimeConfig.l2ChainID) &&
-      asset.L2contract?.toLowerCase() === ((args?.[0] as string) ?? '').toLowerCase(),
+      asset.L2contract?.toLowerCase() === ((args?.[0] as string) ?? '').toLowerCase() &&
+      asset.protocol === 'OP',
   ) as Asset;
   return {
     type: 'Withdrawal',
