@@ -59,7 +59,8 @@ export function explorerTxToBridgeWithdrawal(tx: BlockExplorerTransaction): Brid
   const { functionName, args } = decodeFunctionData({ abi: l2StandardBridgeABI, data: tx.input });
   const token = assetList.find(
     (asset) =>
-      asset.L2chainId === parseInt(publicRuntimeConfig.l2ChainID) && asset.L2contract === args?.[0],
+      asset.L2chainId === parseInt(publicRuntimeConfig.l2ChainID) &&
+      asset.L2contract?.toLowerCase() === ((args?.[0] as string) ?? '').toLowerCase(),
   ) as Asset;
   return {
     type: 'Withdrawal',
