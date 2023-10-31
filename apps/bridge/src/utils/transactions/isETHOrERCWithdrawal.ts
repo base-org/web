@@ -1,8 +1,11 @@
 import { l2StandardBridgeABI } from '@eth-optimism/contracts-ts';
 import TokenMessenger from 'apps/bridge/src/contract-abis/TokenMessenger';
 import { BlockExplorerTransaction } from 'apps/bridge/src/types/API';
+import { getAssetListForChainEnv } from 'apps/bridge/src/utils/assets/getAssetListForChainEnv';
 import getConfig from 'next/config';
 import { decodeFunctionData } from 'viem';
+
+const assetList = getAssetListForChainEnv();
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -35,9 +38,16 @@ export function isETHOrERC20Withdrawal(tx: BlockExplorerTransaction) {
 
   // ERC-20 Withdrawal
   if (tx.to === ERC20_WITHDRAWAL_ADDRESS) {
-    const { functionName } = decodeFunctionData({ abi: l2StandardBridgeABI, data: tx.input });
+    const { functionName, args } = decodeFunctionData({ abi: l2StandardBridgeABI, data: tx.input });
     if (functionName === 'withdraw' || functionName === 'withdrawTo') {
-      return true;
+      const token = assetList.find(
+        (asset) =>
+          asset.L2chainId === parseInt(publicRuntimeConfig.l2ChainID) &&
+          asset.L2contract?.toLowerCase() === ((args?.[0] as string) ?? '').toLowerCase() &&
+          asset.protocol === 'OP',
+      );
+      // Return true if this is a withdraw call to the L2StandardBridge and is a token the UI supports
+      return Boolean(token);
     }
   }
 

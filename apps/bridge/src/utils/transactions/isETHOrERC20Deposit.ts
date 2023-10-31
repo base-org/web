@@ -3,6 +3,9 @@ import { decodeFunctionData } from 'viem';
 import { BlockExplorerTransaction } from 'apps/bridge/src/types/API';
 import getConfig from 'next/config';
 import TokenMessenger from 'apps/bridge/src/contract-abis/TokenMessenger';
+import { getAssetListForChainEnv } from 'apps/bridge/src/utils/assets/getAssetListForChainEnv';
+
+const assetList = getAssetListForChainEnv();
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -35,12 +38,19 @@ export function isETHOrERC20Deposit(tx: BlockExplorerTransaction) {
 
   // ERC-20 desposit
   if (tx.to === ERC20_DEPOSIT_ADDRESS) {
-    const { functionName } = decodeFunctionData({
+    const { functionName, args } = decodeFunctionData({
       abi: l1StandardBridgeABI,
       data: tx.input,
     });
     if (functionName === 'depositERC20' || functionName === 'depositERC20To') {
-      return true;
+      const token = assetList.find(
+        (asset) =>
+          asset.L1chainId === parseInt(publicRuntimeConfig.l1ChainID) &&
+          asset.L1contract?.toLowerCase() === (args?.[0] as string).toLowerCase() &&
+          asset.protocol === 'OP',
+      );
+      // Return true if this is a depositERC20 call to the L1StandardBridge and is a token the UI supports
+      return Boolean(token);
     }
   }
 
