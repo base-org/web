@@ -9,6 +9,132 @@
     "imageUrl": "/images/partners/wallet-retail.webp"
   },
   {
+    "name": "NewThrone",
+    "url": "https://www.newthrone.gg/",
+    "description": "Join NewThrone today, a browser-based PVP Game project built on the Base Chain. NewThrone delivers an easy-to-use and profitable experience, as playing engages you in attacking enemies with the end goal of stealing WETH as a reward for battles won.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/newthrone.png"
+  },
+  {
+    "name": "Shibaments",
+    "url": "https://app.shibaments.com/",
+    "description": "Shibaments is a GameFi ecosystem that will allow users to play, trade and earn on the Base Network. We will be offering not only our own in-house developed P2E games, but also ShibaCore - an interface allowing the community to rapidly plug their own NFT collections, smart contracts and web3 games into the ecosystem. At launch, Shibaments and ShiBattle will be available - The Genesis NFT collection based on unique powerful elemental shibas,and their associated game that allows players to earn rewards such by battling each other's NFTs.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/shibaments.png"
+  },
+  {
+    "name": "Universe Island",
+    "url": "https://universeisland.games/",
+    "description": "Immersive, 1vs1 Sci-Fi themed mobile open world game. Universe Island offers a riveting environment. Discover gaming features that will take your gaming experience to another level and the remarkable story of four attractive characters exploring mysterious islands and cities in the deep universe. Unique skills and weapons will add pure adrenaline to a 1vs1 fighting match with your opponent to win extraordinary rewards.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/universeisland.png"
+  },
+  {
+    "name": "Coinarcade",
+    "url": "https://dapp.playcoinarcade.xyz/entryPage",
+    "description": "CoinArcade is a Decentralized Esports Layer for All Gamers. With our unified platform experience and weekly tournament designing, players can play/battle/stake 2 earn prizes anytime and anywhere.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/coinarcade.png"
+  },
+  {
+    "name": "Add3",
+    "url": "https://add3.io",
+    "description": "EVM smart contract creation and management for web3 projects - Use Add3 to deploy customizable & compliant web3 smart contract products, dapp & analytics in minutes. Code or no-code options available!",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/add3.png"
+  },
+  {
+    "name": "Timeswap",
+    "url": "https://timeswap.io/",
+    "description": "Timeswap is the first fully decentralized lending & borrowing protocol in DeFi. Timeswap enables the permissionless creation of lending & borrowing markets for any ERC-20 token pair using a 3-variable AMM - (x+y)z=k.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/timeswap.jpg"
+  },
+  {
+    "name": "Supra",
+    "url": "https://supraoracles.com/",
+    "description": "Supra is a middleware network that connects L1 and L2, Web2 and Web3, which we call an IntraLayer. Supra as an IntraLayer is a powerful framework that brings our solutions together - oracles, VRFs, and a native cross-chain protocol through singular shared-security infrastructure.",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/supra.png"
+  },
+  {
+    "name": "OpenOcean",
+    "url": "https://openocean.finance/",
+    "description": "OpenOcean is the leading DEX aggregator, integrating the most liquidity sources across a wide range of blockchains into one seamless trading interface, to bring users the best swap return for decentralized crypto trading.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/oocean.png"
+  },
+  {
+    "name": "Pheasant Network",
+    "url": "https://pheasant.network/",
+    "description": "Pheasant Network is an optimistic bridge specialized for Layer 2. Cheap gas fees and strong security improve scalability and interoperability of Ethereum.",
+    "tags": [
+      "bridge"
+    ],
+    "imageUrl": "/images/partners/pnetwork.png"
+  },
+  {
+    "name": "Based Nouns",
+    "url": "https://nouns.build/dao/base/0x10a5676EC8aE3D6b1F36a6F1A1526136BA7938BF/67",
+    "description": "Empowering web3 innovation through community-driven incubation on the Base network: Welcome to Based Nouns.",
+    "tags": [
+      "dao"
+    ],
+    "imageUrl": "/images/partners/basednouns.png"
+  },
+  {
+    "name": "Metopia",
+    "url": "https://metopia.xyz/",
+    "description": "Web3's Growth-Focused Contribution Platform, providing the SBT protocol and customized loyalty program for communities to capture on-chain contributions, and distribute rewards accordingly.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/metopia.png"
+  },
+  {
+    "name": "SimpleHash",
+    "url": "https://simplehash.com/",
+    "description": "The SimpleHash API provides access to all NFT data across 40+ chains, including media, floor prices, sales, listings and more. Get started today!",
+    "tags": [
+      "NFT"
+    ],
+    "imageUrl": "/images/partners/simplehash.png"
+  },
+  {
+    "name": "Cymbal",
+    "url": "https://cymbal.xyz/",
+    "description": "Cymbal's mission is to take the world's blockchain data — all the billions of events and activities stored on-chain — and make it understandable. We are building the “human readable” blockchain explorer!",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/cymbal.png"
+  },
+  {
+    "name": "Banxa",
+    "url": "https://www.banxa.com/",
+    "description": "Banxa is the leading compliant fiat-to-crypto payments infrastructure provider that allows users to seamlessly on and off-ramp to your app using a huge variety of global and local payment methods.",
+    "tags": [
+      "onramp"
+    ],
+    "imageUrl": "/images/partners/banxa.png"
+  },
+  {
     "name": "Omniscia",
     "url": "https://omniscia.io/",
     "description": "Omniscia is a smart contract auditing firm. Our team of experienced smart contract auditors & developers have been building and auditing complex decentralized networks and applications since. 2017.",
@@ -1408,11 +1534,11 @@
   {
     "name": "rhino.fi",
     "url": "https://app.rhino.fi/bridge",
-    "description": "Layer 2 bridge for low cost & rapid interoperability cross-chain. Bridge. Swap. Invest.",
+    "description": "Your lightning-fast secure bridge for seamless cross-chain transactions.",
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/rhino_fi.webp"
+    "imageUrl": "/images/partners/rhinofi.png"
   },
   {
     "name": "Satsuma",
@@ -1590,11 +1716,11 @@
   {
     "name": "UNKJD",
     "url": "http://unkjd.com/",
-    "description": "In Striker League, players take on the role of a general manager, building and training their team. The gameplay is fast-paced, strategic and arcade-style, suitable for players of all skill levels.",
+    "description": "In UNKJD players take on the role of a soccer team owner, collecting athletes and playing in the leagues. It's a fast-paced, strategic, turn-based board game.",
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/unkjd.webp"
+    "imageUrl": "/images/partners/unkjd2.png"
   },
   {
     "name": "Uniswap",
