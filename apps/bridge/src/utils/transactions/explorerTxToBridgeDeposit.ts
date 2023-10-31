@@ -68,7 +68,8 @@ export function explorerTxToBridgeDeposit(tx: BlockExplorerTransaction): BridgeT
   const token = assetList.find(
     (asset) =>
       asset.L1chainId === parseInt(publicRuntimeConfig.l1ChainID) &&
-      asset.L1contract?.toLowerCase() === (args?.[0] as string).toLowerCase(),
+      asset.L1contract?.toLowerCase() === (args?.[0] as string).toLowerCase() &&
+      asset.protocol === 'OP',
   ) as Asset;
   return {
     type: 'Deposit',
