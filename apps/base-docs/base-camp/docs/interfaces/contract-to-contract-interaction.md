@@ -1,5 +1,5 @@
 ---
-title: 'Contract to contract interaction'
+title: 'Contract to Contract Interaction'
 description: Interact with other smart contracts
 hide_table_of_contents: false
 ---
