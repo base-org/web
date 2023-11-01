@@ -27,7 +27,7 @@ In the world of blockchain and Ethereum, optimizing smart contract sizes is cruc
 
 ## Setting up the Hardhat Contract Sizer plugin
 
-Hardhat Contract Sizer is a community-developed plugin that enables the profiling of smart contract by printing the size of your smart contracts in the terminal. This is helpful during development since it allows you to inmediately identify potential issues with the size of your smart contracts. Keep in mind that the [maximum size of a smart contract in Ethereum] is 24KB.
+Hardhat Contract Sizer is a community-developed plugin that enables the profiling of smart contract by printing the size of your smart contracts in the terminal. This is helpful during development since it allows you to immediately identify potential issues with the size of your smart contracts. Keep in mind that the [maximum size of a smart contract in Ethereum] is 24KB.
 
 To install, run `npm install -D hardhat-contract-sizer`.
 
@@ -242,8 +242,6 @@ contract Printer {
 ```
 
 The easiest way for `Computer` to access both functionalities is to inherit; however, as all of these contracts continue adding functionality, the size of the code will also increase tand you will reach the contract size issue at some point since you are copying the entire functionality into your contract. You can better allow that functionality to be kept with their specific contracts and if the `Computer` requires to access that functionality, you could call the `Calculator` and `Printer` contracts.
-
-Calling external contracts is explored more deeply in the [Contract to contract interaction] article.
 
 But in this example, there is a process that must call both `Calculator` and `Printer`:
 
@@ -475,6 +473,5 @@ As you continue your journey in smart contract development, keep in mind that op
 [modifiers]: docs/advanced-functions/function-modifiers.md
 [Solidity official docs]: https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html
 [Delegate call]: https://solidity-by-example.org/delegatecall/
-[Contract to contract interaction]: ../hardhat-contract-to-contract/hardhat-contract-to-contract.md
 [Gas Optimization]: ../hardhat-profiling-gas/hardhat-profiling-gas.md
 [Solidity documentation]: https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html#optimizer-parameter-runs
