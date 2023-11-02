@@ -23,7 +23,7 @@ By the end of these guides, you should be able to:
 - Describe the impact that inheritance has on the byte code size limit
 - Describe the impact that external contracts have on the byte code size limit
 - Describe the impact of using libraries has on the byte code size limit
-- Describe the impact of using the solidity optimizer
+- Describe the impact of using the Solidity optimizer
 
 ### Profiling Gas
 

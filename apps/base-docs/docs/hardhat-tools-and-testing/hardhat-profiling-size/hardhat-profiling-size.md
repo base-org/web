@@ -17,7 +17,7 @@ By the end of this lesson you should be able to:
 - Describe the impact that inheritance has on the byte code size limit
 - Describe the impact that external contracts have on the byte code size limit
 - Describe the impact of using libraries has on the byte code size limit
-- Describe the impact of using the solidity optimizer
+- Describe the impact of using the Solidity optimizer
 
 ---
 
@@ -235,13 +235,13 @@ import "hardhat/console.sol";
 
 contract Printer {
      function print(string memory _content) external view {
-        require(bytes(_content).length > 0, "invalid lenght");
+        require(bytes(_content).length > 0, "invalid length");
         console.log(_content);
     }
 }
 ```
 
-The easiest way for `Computer` to access both functionalities is to inherit; however, as all of these contracts continue adding functionality, the size of the code will also increase tand you will reach the contract size issue at some point since you are copying the entire functionality into your contract. You can better allow that functionality to be kept with their specific contracts and if the `Computer` requires to access that functionality, you could call the `Calculator` and `Printer` contracts.
+The easiest way for `Computer` to access both functionalities is to inherit; however, as all of these contracts continue adding functionality, the size of the code will also increase. You will reach the contract size issue at some point, since you are copying the entire functionality into your contract. You can better allow that functionality to be kept with their specific contracts and if the `Computer` requires to access that functionality, you could call the `Calculator` and `Printer` contracts.
 
 But in this example, there is a process that must call both `Calculator` and `Printer`:
 
@@ -296,11 +296,11 @@ Although this will reduce the size of each contract, the costs of this are discu
 
 ### Using libraries
 
-Libraries are another common way to encapsulate and abstract common functionality that can be shared across multiple contracts. This can significanly impact the bytecode size of the smart contracts. Remember that in Solidity, libraries can be external and internal.
+Libraries are another common way to encapsulate and abstract common functionality that can be shared across multiple contracts. This can significantly impact the bytecode size of the smart contracts. Remember that in Solidity, libraries can be external and internal.
 
 The way internal libraries affect the contract size is very similar to the way inherited contracts affects a contract's size; this is because the internal functions of the library is included within the final bytecode.
 
-But when the libraries are external, the behaviour is different: the way Solidity calls external libraries is by using a special function called [delegate call].
+But when the libraries are external, the behavior is different: the way Solidity calls external libraries is by using a special function called [delegate call].
 
 External libraries are commonly deployed independently and can be reused my multiple contracts. Since libraries don't keep a state, they behave like pure functions in the Blockchain.
 
@@ -470,8 +470,8 @@ As you continue your journey in smart contract development, keep in mind that op
 
 [Hardhat Contract Sizer]: https://github.com/ItsNickBarry/hardhat-contract-sizer
 [maximum size of a smart contract in Ethereum]: https://ethereum.org/en/developers/tutorials/downsizing-contracts-to-fight-the-contract-size-limit/#why-is-there-a-limit
-[modifiers]: docs/advanced-functions/function-modifiers.md
+[modifiers]: docs/advanced-functions/function-modifiers
 [Solidity official docs]: https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html
 [Delegate call]: https://solidity-by-example.org/delegatecall/
-[Gas Optimization]: ../hardhat-profiling-gas/hardhat-profiling-gas.md
+[Gas Optimization]: ../hardhat-profiling-gas/hardhat-profiling-gas
 [Solidity documentation]: https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html#optimizer-parameter-runs
