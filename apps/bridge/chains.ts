@@ -18,10 +18,10 @@ export default [
     },
     rpcUrls: {
       default: {
-        http: ['https://cloudflare-eth.com'],
+        http: ['https://ethereum.publicnode.com'],
       },
       public: {
-        http: ['https://cloudflare-eth.com'],
+        http: ['https://ethereum.publicnode.com'],
       },
     },
     blockExplorers: {
