@@ -406,4 +406,4 @@ In this lesson, you've learned some techniques about how to debug smart contract
 ## See also
 
 [Console.log]: https://hardhat.org/hardhat-network/docs/reference#console.log
-[Error Triage]: ../error-triage/error-triage.md
+[Error Triage]: https://docs.base.org/base-camp/docs/error-triage
