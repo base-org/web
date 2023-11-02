@@ -27,7 +27,7 @@ In the world of blockchain and Ethereum, optimizing smart contract sizes is cruc
 
 ## Setting up the Hardhat Contract Sizer plugin
 
-Hardhat Contract Sizer is a community-developed plugin that enables the profiling of smart contract by printing the size of your smart contracts in the terminal. This is helpful during development since it allows you to immediately identify potential issues with the size of your smart contracts. Keep in mind that the [maximum size of a smart contract in Ethereum] is 24KB.
+Hardhat Contract Sizer is a community-developed plugin that enables the profiling of smart contract by printing the size of your smart contracts in the terminal. This is helpful during development since it allows you to immediately identify potential issues with the size of your smart contracts. Keep in mind that the [maximum size of a smart contract in Ethereum] is 24 KiB.
 
 To install, run `npm install -D hardhat-contract-sizer`.
 
@@ -58,7 +58,7 @@ You are then able to see:
  |  Lock                  ·                      1.009 ()  ·                      1.461 ()  │
 ```
 
-Although your contract is simple, you can see inmediately the power of the `hardhat-contract-sizer` plugin, since it show you the size of your contracts.
+Although your contract is simple, you can see immediately the power of the `hardhat-contract-sizer` plugin, since it show you the size of your contracts.
 
 ## Common strategies to optimize contract sizes
 
@@ -200,7 +200,7 @@ When you run the `npx hardhat size-contracts` command, you should be able to see
  ·------------------------|--------------------------------|--------------------------------·
 ```
 
-Althought the optimisation is small, you can see that there are some improvements.
+Although the optimization is small, you can see that there are some improvements.
 
 You can continue this process until you feel comfortable with the size of the contract.
 
@@ -208,7 +208,7 @@ You can continue this process until you feel comfortable with the size of the co
 
 It is common to split your smart contracts into multiple contracts, not only because of the size limitations but to create better abstractions, to improve readability, and to avoid repetition.
 
-From a contract size perspective, having multiple independent contracts will reduce the size of each contract. For example, the original size of a smart contract was 30 KB: by splitting into 2, you will end up with 2 smart contracts of ~15 KB that are within the limits of Solidity. Keep in mind that this will influence gas costs during the execution of the contract because it will require it to call an external contract.
+From a contract size perspective, having multiple independent contracts will reduce the size of each contract. For example, the original size of a smart contract was 30 KiB: by splitting into 2, you will end up with 2 smart contracts of ~15 KiB that are within the limits of Solidity. Keep in mind that this will influence gas costs during the execution of the contract because it will require it to call an external contract.
 
 In order to explain this example, create a contract called `Computer` that contains a function called `executeProcess`:
 
@@ -470,8 +470,8 @@ As you continue your journey in smart contract development, keep in mind that op
 
 [Hardhat Contract Sizer]: https://github.com/ItsNickBarry/hardhat-contract-sizer
 [maximum size of a smart contract in Ethereum]: https://ethereum.org/en/developers/tutorials/downsizing-contracts-to-fight-the-contract-size-limit/#why-is-there-a-limit
-[modifiers]: docs/advanced-functions/function-modifiers
+[modifiers]: https://docs.base.org/base-camp/docs/advanced-functions/function-modifiers
 [Solidity official docs]: https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html
 [Delegate call]: https://solidity-by-example.org/delegatecall/
-[Gas Optimization]: ../hardhat-profiling-gas/hardhat-profiling-gas
+[Gas Optimization]: ../hardhat-profiling-gas
 [Solidity documentation]: https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html#optimizer-parameter-runs
