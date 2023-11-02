@@ -4,7 +4,10 @@ import { BlockExplorerApiResponse, BlockExplorerTransaction } from 'apps/bridge/
 import { BridgeTransaction } from 'apps/bridge/src/types/BridgeTransaction';
 import { useChainEnv } from 'apps/bridge/src/utils/hooks/useChainEnv';
 import { explorerTxToBridgeWithdrawal } from 'apps/bridge/src/utils/transactions/explorerTxToBridgeWithdrawal';
-import { isETHOrERC20Withdrawal } from 'apps/bridge/src/utils/transactions/isETHOrERCWithdrawal';
+import {
+  isExplorerTxETHOrERC20Withdrawal,
+  isIndexerTxETHOrERC20Withdrawal,
+} from 'apps/bridge/src/utils/transactions/isETHOrERCWithdrawal';
 import getConfig from 'next/config';
 import { WithdrawalItem } from '@eth-optimism/indexer-api';
 import { indexerTxToBridgeWithdrawal } from 'apps/bridge/src/utils/transactions/indexerTxToBridgeWithdrawal';
@@ -37,7 +40,9 @@ async function fetchOPWithdrawals(address: string) {
 
   const { result: withdrawals } = (await response.json()) as { result: WithdrawalItem[] };
 
-  return indexerTxToBridgeWithdrawals(withdrawals);
+  return indexerTxToBridgeWithdrawals(
+    withdrawals.filter((withdrawal) => isIndexerTxETHOrERC20Withdrawal(withdrawal)),
+  );
 }
 
 async function fetchCCTPWithdrawals(address: string, isMainnet: boolean) {
@@ -54,7 +59,7 @@ async function fetchCCTPWithdrawals(address: string, isMainnet: boolean) {
   );
 
   return explorerTxToBridgeWithdrawals(
-    response.result.filter((tx) => tx.isError !== '1' && isETHOrERC20Withdrawal(tx)),
+    response.result.filter((tx) => tx.isError !== '1' && isExplorerTxETHOrERC20Withdrawal(tx)),
   );
 }
 

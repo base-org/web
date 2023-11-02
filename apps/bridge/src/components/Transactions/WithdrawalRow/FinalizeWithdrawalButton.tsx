@@ -8,7 +8,6 @@ const l1ChainID = parseInt(publicRuntimeConfig.l1ChainID);
 
 type FinalizeWithdrawalButtonProps = {
   txHash: `0x${string}`;
-  isERC20Withdrawal?: boolean;
   onOpenFinalizeWithdrawalModal: () => void;
   onCloseFinalizeWithdrawalModal: () => void;
   setFinalizeTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
@@ -17,13 +16,12 @@ type FinalizeWithdrawalButtonProps = {
 
 export const FinalizeWithdrawalButton = memo(function FinalizeWithdrawalButton({
   txHash,
-  isERC20Withdrawal,
   onOpenFinalizeWithdrawalModal,
   onCloseFinalizeWithdrawalModal,
   setFinalizeTxHash,
   setModalFinalizeTxHash,
 }: FinalizeWithdrawalButtonProps) {
-  const proveWithdrawalConfig = usePrepareFinalizeWithdrawal(txHash, isERC20Withdrawal);
+  const proveWithdrawalConfig = usePrepareFinalizeWithdrawal(txHash);
   const { writeAsync: finalizeWithdrawal } = useContractWrite(proveWithdrawalConfig);
 
   const { chain } = useNetwork();

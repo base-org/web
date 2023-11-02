@@ -4,11 +4,10 @@ import { getAssetListForChainEnv } from 'apps/bridge/src/utils/assets/getAssetLi
 import getConfig from 'next/config';
 import { WithdrawalItem } from '@eth-optimism/indexer-api';
 
-const assetList = getAssetListForChainEnv();
-
-const ETH_TOKEN_ADDRESS = '0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000';
-
 const { publicRuntimeConfig } = getConfig();
+
+const assetList = getAssetListForChainEnv();
+const ETH_TOKEN_ADDRESS = '0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000';
 
 export function indexerTxToBridgeWithdrawal(tx: WithdrawalItem): BridgeTransaction {
   if (tx.l1TokenAddress === ETH_TOKEN_ADDRESS) {
@@ -29,7 +28,8 @@ export function indexerTxToBridgeWithdrawal(tx: WithdrawalItem): BridgeTransacti
   const token = assetList.find(
     (asset) =>
       asset.L1chainId === parseInt(publicRuntimeConfig.l1ChainID) &&
-      asset.L1contract?.toLowerCase() === tx.l1TokenAddress.toLowerCase(),
+      asset.L1contract?.toLowerCase() === tx.l1TokenAddress.toLowerCase() &&
+      asset.L2contract?.toLowerCase() === tx.l2TokenAddress.toLowerCase(),
   ) as Asset;
   return {
     type: 'Withdrawal',

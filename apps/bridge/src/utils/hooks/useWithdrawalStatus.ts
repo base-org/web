@@ -15,14 +15,12 @@ const { publicRuntimeConfig } = getConfig();
 type UseWithdrawalStateProps = {
   initializeTxHash: `0x${string}`;
   blockNumberOfLatestL2OutputProposal?: bigint;
-  isERC20Withdrawal: boolean;
   proveTxHash?: `0x${string}`;
   finalizeTxHash?: `0x${string}`;
 };
 export function useWithdrawalStatus({
   initializeTxHash,
   blockNumberOfLatestL2OutputProposal,
-  isERC20Withdrawal,
   proveTxHash,
   finalizeTxHash,
 }: UseWithdrawalStateProps): { status: WithdrawalPhase; challengeWindowEndTime?: bigint } {
@@ -59,11 +57,11 @@ export function useWithdrawalStatus({
 
   useEffect(() => {
     if (withdrawalReceipt) {
-      const withdrawalMessage = getWithdrawalMessage(withdrawalReceipt, isERC20Withdrawal);
+      const withdrawalMessage = getWithdrawalMessage(withdrawalReceipt);
       const hashedWithdrawal = hashWithdrawal(withdrawalMessage);
       setWithdrawalHash(hashedWithdrawal);
     }
-  }, [isERC20Withdrawal, withdrawalReceipt]);
+  }, [withdrawalReceipt]);
 
   // suppress eslint consistent-return error
   let status: WithdrawalPhase = 'PROPOSING_ON_CHAIN';

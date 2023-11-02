@@ -3,7 +3,10 @@ import { getJSON } from 'apps/bridge/src/http/fetchJSON';
 import { BlockExplorerApiResponse, BlockExplorerTransaction } from 'apps/bridge/src/types/API';
 import { BridgeTransaction } from 'apps/bridge/src/types/BridgeTransaction';
 import { explorerTxToBridgeDeposit } from 'apps/bridge/src/utils/transactions/explorerTxToBridgeDeposit';
-import { isETHOrERC20Deposit } from 'apps/bridge/src/utils/transactions/isETHOrERC20Deposit';
+import {
+  isExplorerTxETHOrERC20Deposit,
+  isIndexerTxETHOrERC20Deposit,
+} from 'apps/bridge/src/utils/transactions/isETHOrERC20Deposit';
 import getConfig from 'next/config';
 import { DepositItem } from '@eth-optimism/indexer-api';
 import { indexerTxToBridgeDeposit } from 'apps/bridge/src/utils/transactions/indexerTxToBridgeDeposit';
@@ -34,7 +37,9 @@ async function fetchOPDeposits(address: string) {
 
   const { result: deposits } = (await response.json()) as { result: DepositItem[] };
 
-  return indexerTxToBridgeDeposits(deposits);
+  return indexerTxToBridgeDeposits(
+    deposits.filter((deposit) => isIndexerTxETHOrERC20Deposit(deposit)),
+  );
 }
 
 async function fetchCCTPDeposits(address: string) {
@@ -48,7 +53,7 @@ async function fetchCCTPDeposits(address: string) {
   );
 
   return explorerTxToBridgeDeposits(
-    response.result.filter((tx) => tx.isError !== '1' && isETHOrERC20Deposit(tx)),
+    response.result.filter((tx) => tx.isError !== '1' && isExplorerTxETHOrERC20Deposit(tx)),
   );
 }
 
