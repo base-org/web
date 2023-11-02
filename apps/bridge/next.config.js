@@ -50,7 +50,7 @@ const contentSecurityPolicy = {
   'form-action': ["'self'"],
   'connect-src': [
     "'self'",
-    'https://cloudflare-eth.com', // ETH rpc,
+    'https://ethereum.publicnode.com', // ETH rpc,
     'https://mainnet.base.org', // Base rpc
     'https://rpc.ankr.com/eth_goerli', // Goerli rpc
     'https://goerli.base.org', // Base Goerli rpc
