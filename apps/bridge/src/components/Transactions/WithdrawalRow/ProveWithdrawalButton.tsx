@@ -8,7 +8,6 @@ const l1ChainID = parseInt(publicRuntimeConfig.l1ChainID);
 
 type ProveWithdrawalButtonProps = {
   txHash: `0x${string}`;
-  isERC20Withdrawal?: boolean;
   onOpenProveWithdrawalModal: () => void;
   onCloseProveWithdrawalModal: () => void;
   setProveTxHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
@@ -18,7 +17,6 @@ type ProveWithdrawalButtonProps = {
 
 export const ProveWithdrawalButton = memo(function ProveWithdrawalButton({
   txHash,
-  isERC20Withdrawal,
   onOpenProveWithdrawalModal,
   onCloseProveWithdrawalModal,
   setProveTxHash,
@@ -27,7 +25,6 @@ export const ProveWithdrawalButton = memo(function ProveWithdrawalButton({
 }: ProveWithdrawalButtonProps) {
   const proveWithdrawalConfig = usePrepareProveWithdrawal(
     txHash,
-    isERC20Withdrawal,
     blockNumberOfLatestL2OutputProposal,
   );
   const { writeAsync: submitProof } = useContractWrite(proveWithdrawalConfig);

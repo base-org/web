@@ -37,7 +37,7 @@ declare module 'next/config' {
       bugsnagNotifyUrl: string;
       bugsnagSessionsUrl: string;
       appStage: string;
-      complianceApiURL: string;
+      bridgeApiURL: string;
       sepoliaBridgeURL: string;
       cctpAttestationsAPIURL: string;
       cctpEnabled: string;

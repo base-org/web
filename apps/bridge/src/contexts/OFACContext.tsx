@@ -24,7 +24,7 @@ export async function fetchIsAllowed(address?: `0x${string}`): Promise<{ result:
     return { result: false };
   }
 
-  const response = await fetch(publicRuntimeConfig.complianceApiURL, {
+  const response = await fetch(publicRuntimeConfig.bridgeApiURL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

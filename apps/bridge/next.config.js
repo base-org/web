@@ -188,7 +188,7 @@ module.exports = extendBaseConfig({
     bugsnagNotifyUrl: process.env.BUGSNAG_NOTIFY_URL,
     bugsnagSessionsUrl: process.env.BUGSNAG_SESSIONS_URL,
     appStage: process.env.APP_STAGE,
-    complianceApiURL: process.env.COMPLIANCE_API_URL,
+    bridgeApiURL: process.env.BRIDGE_API_URL,
     sepoliaBridgeURL: process.env.SEPOLIA_BRIDGE_URL,
     cctpAttestationsAPIURL: process.env.CCTP_ATTESTATIONS_API_URL,
     cctpEnabled: process.env.CCTP_ENABLED,
