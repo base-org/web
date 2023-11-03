@@ -17,7 +17,7 @@ By the end of this lesson you should be able to:
 - Describe the impact that inheritance has on the byte code size limit
 - Describe the impact that external contracts have on the byte code size limit
 - Describe the impact of using libraries has on the byte code size limit
-- Describe the impact of using the solidity optimizer
+- Describe the impact of using the Solidity optimizer
 
 ---
 
@@ -27,7 +27,7 @@ In the world of blockchain and Ethereum, optimizing smart contract sizes is cruc
 
 ## Setting up the Hardhat Contract Sizer plugin
 
-Hardhat Contract Sizer is a community-developed plugin that enables the profiling of smart contract by printing the size of your smart contracts in the terminal. This is helpful during development since it allows you to immediately identify potential issues with the size of your smart contracts. Keep in mind that the [maximum size of a smart contract in Ethereum] is 24KB.
+Hardhat Contract Sizer is a community-developed plugin that enables the profiling of smart contract by printing the size of your smart contracts in the terminal. This is helpful during development since it allows you to immediately identify potential issues with the size of your smart contracts. Keep in mind that the [maximum size of a smart contract in Ethereum] is 24 KiB.
 
 To install, run `npm install -D hardhat-contract-sizer`.
 
@@ -58,7 +58,7 @@ You are then able to see:
  |  Lock                  ·                      1.009 ()  ·                      1.461 ()  │
 ```
 
-Although your contract is simple, you can see inmediately the power of the `hardhat-contract-sizer` plugin, since it show you the size of your contracts.
+Although your contract is simple, you can see immediately the power of the `hardhat-contract-sizer` plugin, since it show you the size of your contracts.
 
 ## Common strategies to optimize contract sizes
 
@@ -119,11 +119,11 @@ Then, run the command `npx hardhat size-contracts` again and you should be able 
  ·------------------------|--------------------------------|--------------------------------·
 ```
 
-Notice how the size of `ScientificCalculator` is bigger than `Calculator`. This is because `ScientificCalculator` is inheriting the contract `Calculator`, which means all of its functionality and code is avaiable in `ScientificCalculator` and that will influence its size.
+Notice how the size of `ScientificCalculator` is bigger than `Calculator`. This is because `ScientificCalculator` is inheriting the contract `Calculator`, which means all of its functionality and code is available in `ScientificCalculator` and that will influence its size.
 
 ### Code abstraction and modifiers
 
-At this point as a smart contract developer, you can review your smart contract code and look for ways into you can optimise it.
+At this point as a smart contract developer, you can review your smart contract code and look for ways into you can optimize it.
 
 The first thing you notice in the source code is the extensive use of:
 
@@ -200,7 +200,7 @@ When you run the `npx hardhat size-contracts` command, you should be able to see
  ·------------------------|--------------------------------|--------------------------------·
 ```
 
-Althought the optimisation is small, you can see that there are some improvements.
+Although the optimization is small, you can see that there are some improvements.
 
 You can continue this process until you feel comfortable with the size of the contract.
 
@@ -208,7 +208,7 @@ You can continue this process until you feel comfortable with the size of the co
 
 It is common to split your smart contracts into multiple contracts, not only because of the size limitations but to create better abstractions, to improve readability, and to avoid repetition.
 
-From a contract size perspective, having multiple independent contracts will reduce the size of each contract. For example, the original size of a smart contract was 30 KB: by splitting into 2, you will end up with 2 smart contracts of ~15 KB that are within the limits of Solidity. Keep in mind that this will influence gas costs during the execution of the contract because it will require it to call an external contract.
+From a contract size perspective, having multiple independent contracts will reduce the size of each contract. For example, the original size of a smart contract was 30 KiB: by splitting into 2, you will end up with 2 smart contracts of ~15 KiB that are within the limits of Solidity. Keep in mind that this will influence gas costs during the execution of the contract because it will require it to call an external contract.
 
 In order to explain this example, create a contract called `Computer` that contains a function called `executeProcess`:
 
@@ -235,13 +235,13 @@ import "hardhat/console.sol";
 
 contract Printer {
      function print(string memory _content) external view {
-        require(bytes(_content).length > 0, "invalid lenght");
+        require(bytes(_content).length > 0, "invalid length");
         console.log(_content);
     }
 }
 ```
 
-The easiest way for `Computer` to access both functionalities is to inherit; however, as all of these contracts continue adding functionality, the size of the code will also increase tand you will reach the contract size issue at some point since you are copying the entire functionality into your contract. You can better allow that functionality to be kept with their specific contracts and if the `Computer` requires to access that functionality, you could call the `Calculator` and `Printer` contracts.
+The easiest way for `Computer` to access both functionalities is to inherit; however, as all of these contracts continue adding functionality, the size of the code will also increase. You will reach the contract size issue at some point, since you are copying the entire functionality into your contract. You can better allow that functionality to be kept with their specific contracts and if the `Computer` requires to access that functionality, you could call the `Calculator` and `Printer` contracts.
 
 But in this example, there is a process that must call both `Calculator` and `Printer`:
 
@@ -296,11 +296,11 @@ Although this will reduce the size of each contract, the costs of this are discu
 
 ### Using libraries
 
-Libraries are another common way to encapsulate and abstract common functionality that can be shared across multiple contracts. This can significanly impact the bytecode size of the smart contracts. Remember that in Solidity, libraries can be external and internal.
+Libraries are another common way to encapsulate and abstract common functionality that can be shared across multiple contracts. This can significantly impact the bytecode size of the smart contracts. Remember that in Solidity, libraries can be external and internal.
 
 The way internal libraries affect the contract size is very similar to the way inherited contracts affects a contract's size; this is because the internal functions of the library is included within the final bytecode.
 
-But when the libraries are external, the behaviour is different: the way Solidity calls external libraries is by using a special function called [delegate call].
+But when the libraries are external, the behavior is different: the way Solidity calls external libraries is by using a special function called [delegate call].
 
 External libraries are commonly deployed independently and can be reused my multiple contracts. Since libraries don't keep a state, they behave like pure functions in the Blockchain.
 
@@ -470,8 +470,8 @@ As you continue your journey in smart contract development, keep in mind that op
 
 [Hardhat Contract Sizer]: https://github.com/ItsNickBarry/hardhat-contract-sizer
 [maximum size of a smart contract in Ethereum]: https://ethereum.org/en/developers/tutorials/downsizing-contracts-to-fight-the-contract-size-limit/#why-is-there-a-limit
-[modifiers]: docs/advanced-functions/function-modifiers.md
+[modifiers]: https://docs.base.org/base-camp/docs/advanced-functions/function-modifiers
 [Solidity official docs]: https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html
 [Delegate call]: https://solidity-by-example.org/delegatecall/
-[Gas Optimization]: ../hardhat-profiling-gas/hardhat-profiling-gas.md
+[Gas Optimization]: ../hardhat-profiling-gas
 [Solidity documentation]: https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html#optimizer-parameter-runs
