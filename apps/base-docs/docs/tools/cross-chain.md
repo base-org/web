@@ -45,7 +45,7 @@ By integrating Wormhole, a Base application can access users and liquidity on > 
 
 See [this quickstart](https://docs.wormhole.com/wormhole/quick-start/tutorials/hello-wormhole) to get started with integrating Wormhole in your Base project.
 
-For more information on integrating Wormhole, visit their [documentation](https://docs.wormhole.com/wormhole/) and provided [GitHub examples](https://github.com/gmimnoah/happy-birthday-base-wormhole).
+For more information on integrating Wormhole, visit their [documentation](https://docs.wormhole.com/wormhole/) and provided [GitHub examples](https://github.com/wormhole-foundation/wormhole-examples).
 
 #### Supported Networks
 
