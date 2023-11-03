@@ -43,6 +43,90 @@ module.exports = {
               items: ['building-with-base/guides/build-with-thirdweb'],
             },
             'building-with-base/guides/run-a-base-node',
+            {
+              type: 'category',
+              label: 'Hardhat Tools and Testing',
+              collapsible: true,
+              items: [
+                {
+                  type: 'doc',
+                  id: 'hardhat-tools-and-testing/overview',
+                  className: 'sidebar-reading',
+                },
+                {
+                  type: 'category',
+                  label: 'Profiling Size',
+                  items: [
+                    {
+                      type: 'doc',
+                      id: 'hardhat-tools-and-testing/hardhat-profiling-size/contract-sizer-setup-vid',
+                      className: 'sidebar-video',
+                    },
+                    {
+                      type: 'doc',
+                      id: 'hardhat-tools-and-testing/hardhat-profiling-size/manual-contract-optimizations-vid',
+                      className: 'sidebar-video',
+                    },
+                    {
+                      type: 'doc',
+                      id: 'hardhat-tools-and-testing/hardhat-profiling-size/using-the-optimizer-vid',
+                      className: 'sidebar-video',
+                    },
+                    {
+                      type: 'doc',
+                      id: 'hardhat-tools-and-testing/hardhat-profiling-size/hardhat-profiling-size',
+                      className: 'sidebar-coding',
+                    },
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'Profiling Gas',
+                  collapsible: true,
+                  items: [
+                    {
+                      type: 'doc',
+                      id: 'hardhat-tools-and-testing/hardhat-profiling-gas/installing-the-gas-analyzer-vid',
+                      className: 'sidebar-video',
+                    },
+                    {
+                      type: 'doc',
+                      id: 'hardhat-tools-and-testing/hardhat-profiling-gas/improving-gas-usage-vid',
+                      className: 'sidebar-video',
+                    },
+                    {
+                      type: 'doc',
+                      id: 'hardhat-tools-and-testing/hardhat-profiling-gas/hardhat-profiling-gas',
+                      className: 'sidebar-coding',
+                    },
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'Debugging',
+                  collapsible: true,
+                  items: [
+                    {
+                      type: 'doc',
+                      id: 'hardhat-tools-and-testing/hardhat-debugging/debugging-with-hardhat-sbs',
+                      className: 'sidebar-code',
+                    },
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'Test Coverage',
+                  collapsible: true,
+                  items: [
+                    {
+                      type: 'doc',
+                      id: 'hardhat-tools-and-testing/hardhat-test-coverage/hardhat-test-coverage-sbs',
+                      className: 'sidebar-code',
+                    },
+                  ],
+                },
+              ],
+            },
           ],
         },
       ],

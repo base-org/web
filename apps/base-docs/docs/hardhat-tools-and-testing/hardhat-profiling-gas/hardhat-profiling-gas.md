@@ -162,7 +162,7 @@ From the previous report, you can identity that the optimizer of the project has
 ·------------------------|-------------|-------------|-------------|---------------|-------------·
 ```
 
-This automatically gives you some improvements for deployment gas costs but slighly more for transaction executions.
+This automatically gives you some improvements for deployment gas costs but slightly more for transaction executions.
 
 ### Using immutable variables
 
@@ -225,7 +225,7 @@ Then, run the gas reporter. You should see:
 
 Which already presents some improvements.
 
-### Avoid unnecesary data storage
+### Avoid unnecessary data storage
 
 Storing data and not storing data in a smart contract is a design decision that has pros and cons. Some of the pros are certainly that all the information is stored in the smart contract and you don't necessarily need to rely on events or any other service to access the storage of a contract. However, the cons of storing all the information on the contract is the fact that it will be more expensive to perform actions against the smart contract.
 
@@ -348,7 +348,7 @@ Notice how instead of storing the items, you emit an `ItemCreated` event, which 
 ·------------------------|-------------|-------------|-------------|---------------|-------------·
 ```
 
-As you can see, the improvements in terms of gas consumption are significant. However, the draw back is that now in order to access all of the items, you must go throught all of the `ItemCreated` events emitted by the contract.
+As you can see, the improvements in terms of gas consumption are significant. However, the draw back is that now in order to access all of the items, you must go through all of the `ItemCreated` events emitted by the contract.
 
 ### Using custom errors
 
@@ -409,7 +409,7 @@ Notice the improvement in deployment gas costs.
 
 ## Conclusion
 
-In this lesson, you've learned some common strategies to profile and optimise the gas usage of your smart contracts using the Hardhat development environment and the Hardhat Gas Reporter plugin. By implementing these strategies and leveraging the Hardhat Gas Reporter plugin, you can create more efficient and cost-effective smart contracts for the benefit of the users, since this means less gas costs.
+In this lesson, you've learned some common strategies to profile and optimize the gas usage of your smart contracts using the Hardhat development environment and the Hardhat Gas Reporter plugin. By implementing these strategies and leveraging the Hardhat Gas Reporter plugin, you can create more efficient and cost-effective smart contracts for the benefit of the users, since this means less gas costs.
 
 ---
 

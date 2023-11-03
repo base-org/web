@@ -701,6 +701,56 @@ const sidebars = {
             },
           ],
         },
+        {
+          type: 'category',
+          label: 'Contract to Contract Interactions',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/interfaces/intro-to-interfaces-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/interfaces/calling-another-contract-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/interfaces/testing-the-interface-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/interfaces/testing-the-interface-vid',
+              className: 'sidebar-coding',
+            },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Events',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/events/hardhat-events-sbs',
+              className: 'sidebar-coding',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Hardhat Tools and Testing',
+      collapsible: true,
+      items: [
+        {
+          type: 'link',
+          label: 'Hardhat Tools and Testing',
+          href: 'https://docs.base.org/hardhat-tools-and-testing/overview',
+          className: 'sidebar-coding',
+        },
       ],
     },
   ],
