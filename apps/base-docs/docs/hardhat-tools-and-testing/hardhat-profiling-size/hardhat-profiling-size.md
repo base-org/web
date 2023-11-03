@@ -119,11 +119,11 @@ Then, run the command `npx hardhat size-contracts` again and you should be able 
  ·------------------------|--------------------------------|--------------------------------·
 ```
 
-Notice how the size of `ScientificCalculator` is bigger than `Calculator`. This is because `ScientificCalculator` is inheriting the contract `Calculator`, which means all of its functionality and code is avaiable in `ScientificCalculator` and that will influence its size.
+Notice how the size of `ScientificCalculator` is bigger than `Calculator`. This is because `ScientificCalculator` is inheriting the contract `Calculator`, which means all of its functionality and code is available in `ScientificCalculator` and that will influence its size.
 
 ### Code abstraction and modifiers
 
-At this point as a smart contract developer, you can review your smart contract code and look for ways into you can optimise it.
+At this point as a smart contract developer, you can review your smart contract code and look for ways into you can optimize it.
 
 The first thing you notice in the source code is the extensive use of:
 

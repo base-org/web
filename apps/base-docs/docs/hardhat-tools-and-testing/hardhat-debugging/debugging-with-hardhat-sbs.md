@@ -110,7 +110,7 @@ The terminal shows the text "Creating" and the balance (which is 0.01 Ether) bec
 
 ### A note about `console.log`
 
-In the previous example, you used `console.log` to include some debugging logs. Be aware that the `console.log` version of Solidity is slightly limited compared to the ones that are provided in other programming languages, where you can log almost anything.
+In the previous example, you used `console.log` to include some debugging logs. Be aware that the `console.log` version of Solidity is limited compared to the ones that are provided in other programming languages, where you can log almost anything.
 
 `Console.log` can be called with up to four parameters of the following types:
 
@@ -134,7 +134,7 @@ These log functions are handy when the type you intend to log doesn't fall withi
 
 While debugging your smart contracts, it's crucial to be familiar with common errors that can arise during development. Recognizing these errors and knowing how to resolve them is an important skill.
 
-In the [Error Triage] lesson we covered a few errors although some of those errors are identified at compiling time. Other errors such as `reverts` or `index out of bounds errors` can be unexpected during the runtime of the smart contract.
+In our [Basecamp] series of tutorials, we cover a few compile-time errors in [Error Triage]. Other errors such as `reverts` or `index out of bounds errors` can be unexpected during the runtime of the smart contract.
 
 The following explores typical techniques to debug these types of errors.
 
@@ -270,7 +270,7 @@ function createLock(uint256 _unlockTime) external payable {
 
 ### Out-of-bounds errors
 
-Attemping to access arrays at an invalid position can also cause errors.
+Attempting to access arrays at an invalid position can also cause errors.
 
 If you wish to retrieve all the `Lock` contract instances being created in the previous example, you can make the `locks` array public. In order to illustrate this example though, you can create a custom function called `getAllLocks`:
 
@@ -365,7 +365,7 @@ Locks index 1
      Error: VM Exception while processing transaction: reverted with panic code 0x32 (Array accessed at an out-of-bounds or negative index)
 ```
 
-Since arrays are 0 index based, it means the maximum number of elements in the array is actually 1 at the position 0 since the condition in the `if` statement considers `<=`. It will then try to access the position 1, before it crashes.
+Since arrays are 0 index based, an array with 1 item will store that item at the 0 index. In the above example, the `if` statement compares `<=` against the length of the array, so it tries to access the element in position 1, and crashes.
 
 Here's the simple solution:
 
@@ -407,3 +407,4 @@ In this lesson, you've learned some techniques about how to debug smart contract
 
 [Console.log]: https://hardhat.org/hardhat-network/docs/reference#console.log
 [Error Triage]: https://docs.base.org/base-camp/docs/error-triage
+[Basecamp]: https://base.org/camp
