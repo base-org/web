@@ -8,6 +8,8 @@ import getConfig from 'next/config';
 import { usePrepareContractWrite, usePublicClient, useWaitForTransaction } from 'wagmi';
 import { keccak256, encodeAbiParameters, parseAbiParameters, PublicClient, pad } from 'viem';
 import { hashWithdrawal } from 'apps/bridge/src/utils/hashing/hashWithdrawal';
+import { useChainEnv } from 'apps/bridge/src/utils/hooks/useChainEnv';
+import { useTOSStatus } from 'apps/bridge/src/contexts/TOSContext';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -45,11 +47,15 @@ type BedrockCrossChainMessageProof = {
 
 export function usePrepareProveWithdrawal(
   withdrawalTx: `0x${string}`,
-  isERC20Withdrawal = false,
   blockNumberOfLatestL2OutputProposal?: bigint,
 ) {
   const [withdrawalForTx, setWithdrawalForTx] = useState<WithdrawalMessage | null>(null);
   const [proofForTx, setProofForTx] = useState<BedrockCrossChainMessageProof | null>(null);
+  const { isTosAccepted } = useTOSStatus();
+
+  const chainEnv = useChainEnv();
+  const isMainnet = chainEnv === 'mainnet';
+  const includeTosVersionByte = isMainnet;
 
   const { data: withdrawalReceipt } = useWaitForTransaction({
     hash: withdrawalTx,
@@ -59,9 +65,10 @@ export function usePrepareProveWithdrawal(
   const l2OutputProposal = useL2OutputProposal(withdrawalL2OutputIndex);
   const l2PublicClient = usePublicClient({ chainId: parseInt(publicRuntimeConfig.l2ChainID) });
 
+  const shouldPrepare = withdrawalForTx && proofForTx && (isTosAccepted || !isMainnet);
+
   const { config } = usePrepareContractWrite({
-    address:
-      withdrawalForTx && proofForTx ? publicRuntimeConfig.l1OptimismPortalProxyAddress : undefined,
+    address: shouldPrepare ? publicRuntimeConfig.l1OptimismPortalProxyAddress : undefined,
     abi: OptimismPortal,
     functionName: 'proveWithdrawalTransaction',
     chainId: parseInt(publicRuntimeConfig.l1ChainID),
@@ -86,6 +93,7 @@ export function usePrepareProveWithdrawal(
             proofForTx.withdrawalProof,
           ]
         : undefined,
+    dataSuffix: includeTosVersionByte ? publicRuntimeConfig.tosVersion : undefined,
   });
 
   useEffect(() => {
@@ -96,7 +104,7 @@ export function usePrepareProveWithdrawal(
         l2OutputProposal &&
         blockNumberOfLatestL2OutputProposal
       ) {
-        const withdrawalMessage = getWithdrawalMessage(withdrawalReceipt, isERC20Withdrawal);
+        const withdrawalMessage = getWithdrawalMessage(withdrawalReceipt);
 
         const messageBedrockOutput = {
           outputRoot: l2OutputProposal.outputRoot,
@@ -144,7 +152,6 @@ export function usePrepareProveWithdrawal(
     withdrawalReceipt,
     withdrawalL2OutputIndex,
     l2OutputProposal,
-    isERC20Withdrawal,
     blockNumberOfLatestL2OutputProposal,
     l2PublicClient,
   ]);

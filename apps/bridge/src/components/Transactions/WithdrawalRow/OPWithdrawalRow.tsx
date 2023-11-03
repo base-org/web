@@ -40,13 +40,11 @@ export const OPWithdrawalRow = memo(function OPWithdrawalRow({
   setModalProveTxHash,
   setModalFinalizeTxHash,
 }: OPWithdrawalRowProps) {
-  const isERC20Withdrawal = transaction.assetSymbol !== 'ETH';
   const [proveTxHash, setProveTxHash] = useState<`0x${string}` | undefined>(undefined);
   const [finalizeTxHash, setFinalizeTxHash] = useState<`0x${string}` | undefined>(undefined);
   const { status: withdrawalStatus, challengeWindowEndTime } = useWithdrawalStatus({
     initializeTxHash: transaction.hash,
     blockNumberOfLatestL2OutputProposal,
-    isERC20Withdrawal,
     proveTxHash,
     finalizeTxHash,
   });
@@ -115,7 +113,6 @@ export const OPWithdrawalRow = memo(function OPWithdrawalRow({
     PROVE: (
       <ProveWithdrawalButton
         txHash={transaction.hash}
-        isERC20Withdrawal={isERC20Withdrawal}
         onOpenProveWithdrawalModal={onOpenProveWithdrawalModal}
         onCloseProveWithdrawalModal={onCloseProveWithdrawalModal}
         setProveTxHash={setProveTxHash}
@@ -129,7 +126,6 @@ export const OPWithdrawalRow = memo(function OPWithdrawalRow({
     FINALIZE: (
       <FinalizeWithdrawalButton
         txHash={transaction.hash}
-        isERC20Withdrawal={isERC20Withdrawal}
         onOpenFinalizeWithdrawalModal={onOpenFinalizeWithdrawalModal}
         onCloseFinalizeWithdrawalModal={onCloseFinalizeWithdrawalModal}
         setFinalizeTxHash={setFinalizeTxHash}

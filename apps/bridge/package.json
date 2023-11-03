@@ -12,6 +12,7 @@
     "@bugsnag/js": "^7.20.2",
     "@bugsnag/plugin-react": "^7.19.0",
     "@eth-optimism/contracts-ts": "^0.16.2",
+    "@eth-optimism/indexer-api": "^0.0.4",
     "@headlessui/react": "latest",
     "@heroicons/react": "^2.0.13",
     "@next/font": "^13.1.6",
