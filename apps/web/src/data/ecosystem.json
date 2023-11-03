@@ -9,6 +9,69 @@
     "imageUrl": "/images/partners/wallet-retail.webp"
   },
   {
+    "name": "Sonne Finance",
+    "url": "https://sonne.finance/",
+    "description": "Sonne Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. It is a permissionless and open source protocol serving users on Base. Users can deposit their assets, use them as collateral and borrow against them.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/sonne.png"
+  },
+  {
+    "name": "Xena Finance",
+    "url": "https://xena.finance/",
+    "description": "Xena Finance is a Perpetual DEX Platform that aims to revolutionize digital asset trading by seamlessly integrating optimized strategies and bespoke risk management. With minimal collateral, users can harness on-demand liquidity, access an automated trading system, and benefit from on-chain transparency.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/xena.png"
+  },
+  {
+    "name": "OKX DEX",
+    "url": "https://www.okx.com/web3/dex-swap#inputChain=1&inputCurrency=ETH&outputChain=1&outputCurrency=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "description": "OKX DEX is a cross-chain DEX Aggregator that provides users with the best possible prices on the market through an intelligent routing algorithm.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/okx.png"
+  },
+  {
+    "name": "DIP Exchange",
+    "url": "https://www.dip.exchange/#/",
+    "description": "A transparent decentralized derivatives exchange enabling permissionless perpetual trading for any asset by anyone.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/dip.png"
+  },
+  {
+    "name": "OpenPool",
+    "url": "https://www.openpool.co/",
+    "description": "OpenPool's onchain API processes wallet txs at scale to calculate real-time and historical pricing, cost basis, P&Ls, and realization events so you don't have to.",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/openpool2.png"
+  },
+  {
+    "name": "Sweep n' Flip",
+    "url": "https://app.sweepnflip.io/sweep?chainId=8453",
+    "description": "NFT DEX built for Liquidity.",
+    "tags": [
+      "NFT"
+    ],
+    "imageUrl": "/images/sweep2.png"
+  },
+  {
+    "name": "Register.app",
+    "url": "https://register.app/#/?chainId=1",
+    "description": "Register enables anyone to mint, redeem, stake and govern asset-backed stablecoins, flatcoins and indexes (“RTokens”) on the Reserve Protocol",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/register.png"
+  },
+  {
     "name": "NewThrone",
     "url": "https://www.newthrone.gg/",
     "description": "Join NewThrone today, a browser-based PVP Game project built on the Base Chain. NewThrone delivers an easy-to-use and profitable experience, as playing engages you in attacking enemies with the end goal of stealing WETH as a reward for battles won.",
@@ -96,7 +159,7 @@
     "tags": [
       "dao"
     ],
-    "imageUrl": "/images/partners/basednouns.png"
+    "imageUrl": "/images/partners/nouns.png"
   },
   {
     "name": "Metopia",
@@ -1922,7 +1985,7 @@
   },
   {
     "name": "Indelible Labs",
-    "url": "",
+    "url": "https://indelible.xyz/",
     "description": "We are making onchain NFT collections easy and affordable to create.",
     "tags": [
       "nft"
