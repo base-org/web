@@ -38,10 +38,10 @@ async function fetchOPWithdrawals(address: string) {
     }),
   });
 
-  const { result: withdrawals } = (await response.json()) as { result: WithdrawalItem[] };
+  const { result: withdrawals } = (await response.json()) as { result: WithdrawalItem[] | null };
 
   return indexerTxToBridgeWithdrawals(
-    withdrawals.filter((withdrawal) => isIndexerTxETHOrERC20Withdrawal(withdrawal)),
+    (withdrawals ?? []).filter((withdrawal) => isIndexerTxETHOrERC20Withdrawal(withdrawal)),
   );
 }
 
