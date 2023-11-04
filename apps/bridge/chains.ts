@@ -250,4 +250,4 @@ export default [
     },
     testnet: true,
   },
-] satisfies (Chain & ChainMetadata)[];
+] as const satisfies Readonly<(Chain & ChainMetadata)[]>;
