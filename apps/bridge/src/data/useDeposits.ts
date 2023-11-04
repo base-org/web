@@ -10,6 +10,7 @@ import {
 import getConfig from 'next/config';
 import { DepositItem } from '@eth-optimism/indexer-api';
 import { indexerTxToBridgeDeposit } from 'apps/bridge/src/utils/transactions/indexerTxToBridgeDeposit';
+import { useChainEnv } from 'apps/bridge/src/utils/hooks/useChainEnv';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -35,20 +36,22 @@ async function fetchOPDeposits(address: string) {
     }),
   });
 
-  const { result: deposits } = (await response.json()) as { result: DepositItem[] };
+  const { result: deposits } = (await response.json()) as { result: DepositItem[] | null };
 
   return indexerTxToBridgeDeposits(
-    deposits.filter((deposit) => isIndexerTxETHOrERC20Deposit(deposit)),
+    (deposits ?? []).filter((deposit) => isIndexerTxETHOrERC20Deposit(deposit)),
   );
 }
 
-async function fetchCCTPDeposits(address: string) {
+async function fetchCCTPDeposits(address: string, isMainnet: boolean) {
   const response = await getJSON<BlockExplorerApiResponse<BlockExplorerTransaction[]>>(
     publicRuntimeConfig.l1ExplorerApiUrl,
     {
       address,
       action: 'txlist',
       module: 'account',
+      startBlock: isMainnet ? '17482477' : '0',
+      sort: 'desc',
     },
   );
 
@@ -61,6 +64,9 @@ export function useDeposits(address: string): {
   deposits: BridgeTransaction[];
   isFetched: boolean;
 } {
+  const chainEnv = useChainEnv();
+  const isMainnet = chainEnv === 'mainnet';
+
   const { data: opDeposits, isFetched: isOPDepositsFetched } = useQuery<BridgeTransaction[]>(
     ['opDeposits', address],
     async () => fetchOPDeposits(address),
@@ -75,7 +81,7 @@ export function useDeposits(address: string): {
 
   const { data: cctpDeposits, isFetched: isCCTPDepositsFetched } = useQuery<BridgeTransaction[]>(
     ['cctpDeposits', address],
-    async () => fetchCCTPDeposits(address),
+    async () => fetchCCTPDeposits(address, isMainnet),
     {
       enabled: !!address,
       suspense: false, // Does suspense work w/ SSR? We'll just not use it.
