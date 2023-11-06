@@ -51,6 +51,8 @@ const contentSecurityPolicy = {
   'connect-src': [
     "'self'",
     'https://ethereum.publicnode.com', // ETH rpc,
+    'https://cloudflare-eth.com', // ETH rpc,
+    'https://eth.llamarpc.com', // ETH rpc
     'https://mainnet.base.org', // Base rpc
     'https://rpc.ankr.com/eth_goerli', // Goerli rpc
     'https://goerli.base.org', // Base Goerli rpc
