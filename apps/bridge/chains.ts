@@ -1,5 +1,15 @@
 import { Chain } from 'wagmi/chains';
 
+type ChainMetadata = {
+  summary: {
+    location: string;
+    svg: string;
+  };
+  svg: string;
+  description: string;
+  iconUrl?: string;
+};
+
 export default [
   {
     id: 1,
@@ -240,4 +250,4 @@ export default [
     },
     testnet: true,
   },
-] as unknown as Chain[];
+] as const satisfies Readonly<(Chain & ChainMetadata)[]>;
