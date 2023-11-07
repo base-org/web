@@ -33,7 +33,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/okx.png"
+    "imageUrl": "/images/partners/okxdex.png"
   },
   {
     "name": "DIP Exchange",
@@ -42,7 +42,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/dip.png"
+    "imageUrl": "/images/partners/dip.png"
   },
   {
     "name": "OpenPool",
@@ -51,7 +51,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/openpool2.png"
+    "imageUrl": "/images/partners/openpool2.png"
   },
   {
     "name": "Sweep n' Flip",
@@ -60,7 +60,7 @@
     "tags": [
       "NFT"
     ],
-    "imageUrl": "/images/sweep2.png"
+    "imageUrl": "/images/partners/sweep2.png"
   },
   {
     "name": "Register.app",
@@ -69,7 +69,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/register.png"
+    "imageUrl": "/images/partners/register.png"
   },
   {
     "name": "NewThrone",
