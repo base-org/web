@@ -36,13 +36,20 @@ export function onRouteDidUpdate({ location, previousLocation }) {
   if (location.pathname !== previousLocation?.pathname && window.ClientAnalytics) {
     const { logEvent } = window.ClientAnalytics;
 
-    const referrerURL =
-      previousLocation?.pathname === null && document.referrer ? document.referrer : null;
+    let path: string = location.pathname;
+    let prevPath: string = previousLocation?.pathname;
+
+    // Remove trailing slashes
+    if (path !== '/' && path.endsWith('/')) {
+      path = path.slice(0, -1);
+    }
+    if (prevPath && prevPath !== '/' && prevPath.endsWith('/')) {
+      prevPath = prevPath.slice(0, -1);
+    }
 
     logEvent('pageview', {
-      page_path: location.pathname,
-      prev_page_path: previousLocation?.pathname,
-      referrer_url: referrerURL,
+      page_path: path,
+      prev_page_path: prevPath,
     });
   }
 }
