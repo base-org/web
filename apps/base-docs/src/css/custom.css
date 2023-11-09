@@ -86,43 +86,110 @@ main > .container {
   height: 100%;
 }
 
-/* Customize Algolia Search Styling */
-[data-theme='light'] .DocSearch {
-  --docsearch-muted-color: var(--ifm-color-secondary-darkest);
-  --docsearch-container-background: rgba(94, 100, 112, 0.7);
-  /* Modal */
-  --docsearch-modal-background: var(--ifm-color-secondary-lighter);
-  /* Search box */
-  --docsearch-searchbox-background: var(--ifm-color-secondary);
-  --docsearch-searchbox-focus-background: var(--ifm-color-white);
-  /* Hit */
-  --docsearch-hit-color: var(--ifm-font-color-base);
-  --docsearch-hit-active-color: var(--ifm-color-white);
-  --docsearch-hit-background: var(--ifm-color-white);
-  /* Footer */
-  --docsearch-footer-background: var(--ifm-color-white);
+/* Override Algolia Search Styling */
+.DocSearch-Container {
+  background-color: rgba(10, 11, 13, 0.5) !important;
 }
 
-[data-theme='dark'] .DocSearch {
-  --docsearch-text-color: var(--ifm-font-color-base);
-  --docsearch-muted-color: var(--ifm-color-secondary-darkest);
-  --docsearch-container-background: rgba(47, 55, 69, 0.7);
-  /* Modal */
-  --docsearch-modal-background: var(--ifm-background-color);
-  /* Search box */
-  --docsearch-searchbox-background: var(--ifm-background-color);
-  --docsearch-searchbox-focus-background: var(--ifm-color-black);
-  /* Hit */
-  --docsearch-hit-color: var(--ifm-font-color-base);
-  --docsearch-hit-active-color: var(--ifm-color-white);
-  --docsearch-hit-background: var(--ifm-color-emphasis-100);
-  /* Footer */
-  --docsearch-footer-background: var(--ifm-background-surface-color);
-  --docsearch-key-gradient: linear-gradient(
-    -26.5deg,
-    var(--ifm-color-emphasis-200) 0%,
-    var(--ifm-color-emphasis-100) 100%
-  );
+.DocSearch-Modal {
+  box-shadow: none !important;
+  border-radius: 8px !important;
+}
+
+.DocSearch-Form {
+  padding: 0 10px 0 6px !important;
+  border-radius: 8px !important;
+}
+
+.DocSearch-MagnifierLabel {
+  display: none !important;
+}
+
+.DocSearch-Input {
+  font-size: 1rem !important;
+}
+
+.DocSearch-Hit-source {
+  font-size: 1rem !important;
+  padding: 12px 12px 0 12px !important;
+}
+
+.DocSearch-Hit a {
+  border-radius: 8px !important;
+}
+
+.DocSearch-Logo,
+a[aria-label='Search by Algolia'] {
+  display: none;
+}
+
+.DocSearch-Footer {
+  box-shadow: none !important;
+  justify-content: flex-end !important;
+}
+
+@media (max-width: 768px) {
+  .DocSearch-Modal {
+    border-radius: 0 !important;
+  }
+}
+
+/* Light Algolia Search Styling */
+[data-theme='light'] .DocSearch-Modal,
+[data-theme='light'] .DocSearch-Form,
+[data-theme='light'] .DocSearch-Hit-source,
+[data-theme='light'] .DocSearch-Footer {
+  background-color: white !important;
+}
+
+[data-theme='light'] .DocSearch-Modal {
+  border: 1px solid rgba(91, 97, 110, 0.2);
+}
+
+[data-theme='light'] .DocSearch-Hit a {
+  background-color: rgb(239, 240, 243);
+  box-shadow: none !important;
+}
+
+[data-theme='light'] .DocSearch-Footer {
+  border-top: 1px solid rgba(91, 97, 110, 0.2);
+}
+
+[data-theme='light'] .DocSearch-Button-Placeholder,
+[data-theme='light'] .DocSearch-Commands-Key,
+[data-theme='light'] .DocSearch-Button-Key,
+[data-theme='light'] .DocSearch-Label {
+  color: black !important;
+}
+
+[data-theme='light'] .DocSearch-Button-Key,
+[data-theme='light'] .DocSearch-Commands-Key {
+  box-shadow: none;
+  background: none !important;
+  background-color: white !important;
+  box-shadow: inset 0 -1px 0 rgb(141, 148, 158);
+  border: 1px solid rgb(141, 148, 158);
+  border-radius: 0.2rem;
+}
+
+/* Dark Algolia Search Styling */
+[data-theme='dark'] .DocSearch-Modal,
+[data-theme='dark'] .DocSearch-Form,
+[data-theme='dark'] .DocSearch-Hit-source,
+[data-theme='dark'] .DocSearch-Footer {
+  background-color: rgb(30, 32, 37);
+}
+
+[data-theme='dark'] .DocSearch-Modal {
+  border: 1px solid rgba(138, 145, 158, 0.2);
+}
+
+[data-theme='dark'] .DocSearch-Hit a {
+  background-color: rgb(20, 21, 25);
+}
+
+[data-theme='dark'] .DocSearch-Footer {
+  border-top: 1px solid rgba(138, 145, 158, 0.2);
 }
 
 [data-theme='dark'] .DocSearch-Button-Placeholder,
@@ -132,11 +199,12 @@ main > .container {
   color: white !important;
 }
 
-.DocSearch-Logo,
-a[aria-label='Search by Algolia'] {
-  display: none;
-}
-
-.DocSearch-Footer {
-  justify-content: flex-end !important;
+[data-theme='dark'] .DocSearch-Button-Key,
+[data-theme='dark'] .DocSearch-Commands-Key {
+  box-shadow: none;
+  background: none !important;
+  background-color: black !important;
+  box-shadow: inset 0 -1px 0 rgb(141, 148, 158);
+  border: 1px solid rgb(141, 148, 158);
+  border-radius: 0.2rem;
 }
