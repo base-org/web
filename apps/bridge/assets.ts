@@ -1,5 +1,10 @@
 import { Asset } from 'apps/bridge/src/types/Asset';
 
+// NOTE TO CONTRIBUTORS: Please do not add assets directly to this file.
+// For new assets, submit to the Superchain Token List (STL) for review at:
+// https://github.com/ethereum-optimism/ethereum-optimism.github.io
+// The team reviews and pulls allowlisted assets from the STL into this file.
+
 const assets: Asset[] = [
   {
     L1symbol: 'ETH',
