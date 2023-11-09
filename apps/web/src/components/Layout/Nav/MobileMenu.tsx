@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
 import getConfig from 'next/config';
 import Link from 'next/link';
 
 import { Icon } from '../../Icon/Icon';
 import { Logo } from '../../Logo/Logo';
+import { usePathname } from 'next/navigation';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -110,6 +111,7 @@ const mobileMenuAnimation = { opacity: 1 };
 function MobileMenu({ color }: MobileMenuProps) {
   const [showMobileMenu, toggleMobileMenu] = useState<boolean>(false);
   const [activeKey, setActiveKey] = useState<string | null>(null);
+  const pathname = usePathname();
 
   const handleMenuOpen = useCallback(() => {
     toggleMobileMenu(true);
@@ -122,6 +124,12 @@ function MobileMenu({ color }: MobileMenuProps) {
     const body = document.getElementsByTagName('body')[0];
     body.classList.remove('no-scroll');
   }, []);
+
+  // make sure no-scroll gets removed when someone navigates away from the page
+  useEffect(() => {
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.remove('no-scroll');
+  }, [pathname]);
 
   return (
     <>
