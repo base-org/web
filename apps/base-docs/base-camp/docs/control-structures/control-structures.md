@@ -170,7 +170,7 @@ Debug the transaction to get more information.
 
 The `require` function is falling out of favor because it uses more gas than the pattern above. You should still become familiar with it because it is present in innumerable contracts, tutorials, and examples.
 
-`require` takes a logical condition and a string error as arguments. It is more gas efficient to separate logical statements if they are not interdependent. In other words, don't use `&&` or `||` in a `revert` if you can avoid it.
+`require` takes a logical condition and a string error as arguments. It is more gas efficient to separate logical statements if they are not interdependent. In other words, don't use `&&` or `||` in a `require` if you can avoid it.
 
 For example:
 
@@ -228,6 +228,6 @@ In this lesson, you've learned how to control code flow with standard conditiona
 <!-- Reference Style Links -->
 
 [switch]: https://docs.soliditylang.org/en/v0.8.17/yul.html?#switch
-[Yul]: https://docs.soliditylang.org/en/v0.8.17/yul.html
+[yul]: https://docs.soliditylang.org/en/v0.8.17/yul.html
 [control structures]: https://docs.soliditylang.org/en/v0.8.17/control-structures.html
 [errors]: https://docs.soliditylang.org/en/v0.8.17/control-structures.html#error-handling-assert-require-revert-and-exceptions
