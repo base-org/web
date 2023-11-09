@@ -8,12 +8,19 @@ const logDocFeedback = (isHelpful: boolean, reason?: string) => {
   if (window.ClientAnalytics) {
     const { logEvent, ActionType, ComponentType } = window.ClientAnalytics;
 
+    let path: string = window.location.pathname;
+
+    // Remove trailing slash
+    if (path !== '/' && path.endsWith('/')) {
+      path = path.slice(0, -1);
+    }
+
     logEvent('doc_feedback', {
       action: ActionType.click,
       componentType: ComponentType.button,
       doc_helpful: isHelpful,
       doc_feedback_reason: reason ?? null,
-      page_path: window.location.pathname,
+      page_path: path,
     });
   }
 };
