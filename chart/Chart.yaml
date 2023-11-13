@@ -1,0 +1,10 @@
+apiVersion: v2
+name: base-web
+description: "base offocial website" 
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+dependencies:
+  - name: infra-common
+    version: 0.1.14
+    repository: "oci://652969937640.dkr.ecr.us-east-1.amazonaws.com/charts/infra-common"

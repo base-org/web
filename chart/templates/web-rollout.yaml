@@ -1,0 +1,68 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: web
+      app.kubernetes.io/name: protocols-base-web
+  strategy:
+    {{- if $.Values.services.web.trafficCanary }}
+    canary: {{- include "infra.common.trafficCanary" $.Values.services.web.trafficCanary | indent 6 }}
+    {{- else }}
+    blueGreen:
+      activeService: web
+    {{- end }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: web
+        app.kubernetes.io/name: protocols-base-web
+    spec:
+      containers:
+        - env: {{- include "infra.common.all-env" (merge (deepCopy $.Values.shared_env)) | indent 12 }}
+          image: {{ $.Values.services.web.containers.web.image }}
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - sh
+                  - -c
+                  - sleep 120
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api/_health
+              port: 3000
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 3
+          name: web
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api/_health
+              port: 3000
+            periodSeconds: 10
+            successThreshold: 3
+            timeoutSeconds: 3
+          resources:
+            limits:
+              memory: {{ $.Values.services.web.containers.web.resources.limits.memory }}
+            requests:
+              cpu: {{ $.Values.services.web.containers.web.resources.requests.cpu }}
+              memory: {{ $.Values.services.web.containers.web.resources.requests.memory }}
+          startupProbe:
+            failureThreshold: 10
+            httpGet:
+              path: /api/_health
+              port: 3000
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 3
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 150

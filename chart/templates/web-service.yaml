@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    {{- range $service_port_name, $target_group := $.Values.services.web.target_group_bindings }}
+    target-group.aws.infra.coinbase.com/{{ $service_port_name }}: {{ $target_group }}
+    {{- end }}
+  name: web
+spec:
+  ports:
+    - name: web
+      port: 3000
+      targetPort: 3000
+  selector:
+    app.kubernetes.io/component: web
+    app.kubernetes.io/name: protocols-base-web

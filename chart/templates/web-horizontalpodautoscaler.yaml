@@ -1,0 +1,12 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: web
+spec:
+  maxReplicas: {{ $.Values.services.web.scaling.max }}
+  minReplicas: {{ $.Values.services.web.scaling.min }}
+  scaleTargetRef:
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
+    name: web
+  targetCPUUtilizationPercentage: {{ $.Values.services.web.scaling.targetcpu }}
