@@ -10,7 +10,7 @@ services:
             memory: 500M
         image: protocols/base-web
     target_group_bindings:
-      TBD: web-bridge-protocols-base-we-k8s
+      web: web-bridge-protocols-base-we-k8s
     scaling:
       min: 1
       max: 1
