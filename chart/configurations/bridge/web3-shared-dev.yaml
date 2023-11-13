@@ -8,7 +8,7 @@ services:
           requests:
             cpu: 50m
             memory: 500M
-        image: protocols/base-web
+        image: protocols/base-web/bridge
     target_group_bindings:
       web: web-bridge-protocols-base-we-k8s
     scaling:
