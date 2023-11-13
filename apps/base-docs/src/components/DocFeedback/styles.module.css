@@ -15,6 +15,20 @@
   gap: 0.5rem;
 }
 
+.editDocLink {
+  margin: 12px 0;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: currentColor;
+  fill: currentColor;
+}
+.editDocLink:hover {
+  color: currentColor;
+}
+
 /* Helpful/Not Helpful Buttons */
 .helpfulButton,
 .notHelpfulButton {
