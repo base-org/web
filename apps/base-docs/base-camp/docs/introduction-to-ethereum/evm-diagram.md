@@ -80,10 +80,30 @@ During contract execution, memory serves as a collection of bytes, organized in 
 
 ## EVM Architecture and Execution Context
 
-To fully grasp the EVM architecture and its components, it's important to see how they all come together in a cohesive manner. The following diagram provides an in-depth visualization of the EVM architecture, showcasing the interactions between key elements such as transactions, gas, opcodes, and the world state. With this diagram, you can see how each component plays a vital role in the seamless execution of smart contracts on the Ethereum network.
+To understand the inner workings of the EVM, the following diagram offers a streamlined visualization of its transaction execution process. It begins with the transaction initiation, and progresses to the gas computations for each operation. Integral to the process are the EVM's stack, memory, and storage, which are engaged to manage and persist data throughout the lifecycle of a transaction. Checks and validations at each step ensure the validity of operations, safeguarding the network's integrity. This systemized sequence of actions forms the bedrock of transaction and smart contract execution, ensuring Ethereum's consistent and secure operation.
 
-![Figure 13-1. EVM architecture and execution context.](../../assets/images/ethereum-virtual-machine/evm-architecture-execution.png)
-Image Source: [Mastering Ethereum](https://github.com/ethereumbook/ethereumbook) by Andreas M. Antonopoulos and Gavin Wood, licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+![EVM architecture and execution context](../../assets/images/ethereum-virtual-machine/evm-architecture-execution.png)
+:::info
+**Data Bytecode in the EVM**
+
+Every transaction or smart contract call within the EVM uses "bytecode", which
+is a sequence of instructions that guides the EVM's actions. Bytecode is
+primarily presented in a compact hexadecimal format.
+
+---
+
+Decoding the example sequence: `0x6080604052`
+
+```go
+60 // PUSH1: Pushes the next byte (0x80) onto the stack.
+80 // The byte to be pushed onto the stack by the previous PUSH1.
+60 // PUSH1: Pushes the next byte (0x40) onto the stack.
+40 // The byte to be pushed onto the stack by the previous PUSH1.
+52 // MSTORE: Stores the second stack item in memory at the address of the first.
+```
+
+This bytecode sequence is not a random set of characters. Each segment corresponds to specific operations or data in the EVM. Opcodes dictate actions, while subsequent data provides specifics.
+:::
 
 ---
 
