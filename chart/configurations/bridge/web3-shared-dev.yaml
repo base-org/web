@@ -16,7 +16,6 @@ services:
       max: 1
       targetcpu: 80
 shared_env:
-  "": ""
   APP_STAGE: development
   ASSETS: eth,dai,usdc,cbeth,comp,bal,rpl,reth,sofi,zrx,sushi,crv,1inch,wampl,knc
   BASIC_AUTH_CREDENTIALS: lukas:test
