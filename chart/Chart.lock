@@ -1,6 +1,0 @@
-dependencies:
-- name: infra-common
-  repository: oci://652969937640.dkr.ecr.us-east-1.amazonaws.com/charts/infra-common
-  version: 0.1.14
-digest: sha256:8825ab70946d6836cdaaae9cab5b2259365bcad1e394807f6605c46afb63a4e2
-generated: "2023-11-13T15:21:29.630667-06:00"
