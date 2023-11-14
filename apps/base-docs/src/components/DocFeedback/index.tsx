@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { useDoc } from '@docusaurus/theme-common/internal';
 import FeedbackModal from './FeedbackModal';
 import Icon from '../Icon';
 
@@ -78,6 +79,9 @@ export default function DocFeedback() {
     setVisible(false);
   }, []);
 
+  const { metadata } = useDoc();
+  const docFilePath = metadata.source.slice(6); // Remove @site/ from file path
+
   return (
     <div className={styles.docFeedbackContainer}>
       <p className={styles.feedbackPrompt}>Was this helpful?</p>
@@ -91,6 +95,14 @@ export default function DocFeedback() {
           {helpful === false && <Icon name="thumbs-down-filled" width="20" height="20" />}
         </button>
       </div>
+      <a
+        href={`https://github.com/base-org/web/blob/master/apps/base-docs/${docFilePath}?plain=1`}
+        target="_blank"
+        className={styles.editDocLink}
+      >
+        Edit this page on GitHub
+        <Icon name="external-link" width="11" height="11" />
+      </a>
       {helpful && (
         <FeedbackModal
           visible={visible}
