@@ -59,6 +59,18 @@ Requests to Coinbase Wallet testnet faucets are limited to once every 24 hours.
 
 ---
 
+## Superchain Faucet
+
+The [Superchain Faucet](https://app.optimism.io/faucet) provides testnet ETH for all OP Chains, including Base.
+
+:::info
+
+The Superchain faucet allows developers to authenticate via their onchain identity. Developers that choose to authenticate via their onchain identity can claim more testnet ETH versus traditional faucets. For more information see the [FAQ](https://app.optimism.io/faucet).
+
+:::
+
+---
+
 ## Bware Labs Faucet
 
 [Bware Labs Faucet](https://bwarelabs.com/faucets) is an easy to use faucet with no registration required. You can use Bware Labs Faucet to claim Base Goerli testnet ETH for free - one claim per 24 hours.
