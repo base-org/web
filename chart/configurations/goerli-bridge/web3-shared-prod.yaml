@@ -1,0 +1,62 @@
+services:
+  web:
+    containers:
+      web:
+        resources:
+          limits:
+            memory: 500M
+          requests:
+            cpu: 50m
+            memory: 500M
+        image: protocols/base-web/goerli-bridge
+    target_group_bindings:
+      web: web-goerli-bridge-protocols--k8s
+    scaling:
+      min: 1
+      max: 1
+      targetcpu: 80
+shared_env:
+  APP_STAGE: "production"
+  ASSETS: "eth,cbeth,comp,usdc"
+  AUTH_ENABLED: "false"
+  BASIC_AUTH_CREDENTIALS: "private:amqmDE7O8r6YAxPsJvQp4hWmSsEItJJ2YkmdTdGjkU"
+  BLOG_URL: "https://base.mirror.xyz"
+  BRIDGE_API_URL: "https://bridge-api.base.org"
+  BUGSNAG_API_KEY: "8f7b6e984693922aac5021ee82d0bb8f"
+  BUGSNAG_NOTIFY_URL: "https://exceptions.coinbase.com"
+  BUGSNAG_SESSIONS_URL: "https://sessions.coinbase.com"
+  BUGSNAG_SOURCEMAPS_URL: "https://sourcemaps.coinbase.com"
+  CCTP_ATTESTATIONS_API_URL: "https://iris-api-sandbox.circle.com"
+  CCTP_ENABLED: "true"
+  CHAINS: "goerli,base-goerli"
+  COMPLIANCE_API_URL: "https://bridge-api.base.org"
+  DOCS_URL: "https://docs.base.org"
+  GITHUB_URL: "https://github.com/base-org"
+  GOERLI_BRIDGE_URL: "https://goerli-bridge.base.org"
+  L1_BRIDGE_PROXY_ADDRESS: "0xfA6D8Ee5BE770F84FC001D098C4bD604Fe01284a"
+  L1_CCTP_DOMAIN: "0"
+  L1_CCTP_MESSAGE_TRANSMITTER_ADDRESS: "0x26413e8157cd32011e726065a5462e97dd4d03d9"
+  L1_CCTP_TOKEN_MESSENGER_ADDRESS: "0xd0c3da58f55358142b8d3e06c1c30c5c6114efe8"
+  L1_CHAIN_ID: "5"
+  L1_EXPLORER_API_URL: "https://api-goerli.etherscan.io/api"
+  L1_EXPLORER_URL: "https://goerli.etherscan.io"
+  L1_OPTIMISM_PORTAL_PROXY_ADDRESS: "0xe93c8cD0D409341205A592f8c4Ac1A5fe5585cfA"
+  L2_CCTP_DOMAIN: "6"
+  L2_CCTP_MESSAGE_TRANSMITTER_ADDRESS: "0x9ff9a4da6f2157A9c82CE756f8fD7E0d75be8895"
+  L2_CCTP_TOKEN_MESSENGER_ADDRESS: "0x877b8e8c9e2383077809787ED6F279ce01CB4cc8"
+  L2_CHAIN_ID: "84531" #basenet
+  L2_EXPLORER_API_URL: "https://base-goerli.blockscout.com/api"
+  L2_EXPLORER_URL: "https://goerli.basescan.org"
+  L2_L1_MESSAGE_PASSER_ADDRESS: "0x4200000000000000000000000000000000000016"
+  L2_OUTPUT_ORACLE_PROXY_ADDRESS: "0x2A35891ff30313CcFa6CE88dcf3858bb075A2298"
+  L2_STANDARD_BRIDGE: "0x4200000000000000000000000000000000000010"
+  MAINNET_BRIDGE_URL: "https://bridge.base.org"
+  MAINNET_GA_LAUNCH_FLAG: "true"
+  MAINNET_LAUNCH_BLOG_POST_URL: "https://base.mirror.xyz/hwNwqXHVoLlO8s4DZppog4DfGvM34tigaDjOWuEJQfY"
+  MAINNET_LAUNCH_FLAG: "true"
+  MARKETING_URL: "https://base.org"
+  REDIRECT_MAINNET_BRIDGE: "false"
+  SEPOLIA_BRIDGE_URL: "https://sepolia-bridge.base.org"
+  TOS_VERSION: "0x01"
+  TWITTER_URL: "https://twitter.com/buildonbase"
+  WALLET_CONNECT_PROJECT_ID: "b58c07f4577817d872fd1143945526d0"

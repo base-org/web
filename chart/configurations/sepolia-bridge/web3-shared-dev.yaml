@@ -1,0 +1,50 @@
+services:
+  web:
+    containers:
+      web:
+        resources:
+          limits:
+            memory: 500M
+          requests:
+            cpu: 50m
+            memory: 500M
+        image: protocols/base-web/sepolia-bridge
+    target_group_bindings:
+      web: web-sepolia-bridge-protocols-k8s
+    scaling:
+      min: 1
+      max: 1
+      targetcpu: 80
+shared_env:
+  APP_STAGE: "development"
+  ASSETS: "eth"
+  BASIC_AUTH_CREDENTIALS: "lukas:test"
+  BLOG_URL: "https://base.mirror.xyz"
+  BRIDGE_API_URL: "https://bridge-api.base.org"
+  BUGSNAG_API_KEY: "8f7b6e984693922aac5021ee82d0bb8f"
+  BUGSNAG_NOTIFY_URL: "https://exceptions.coinbase.com"
+  BUGSNAG_SESSIONS_URL: "https://sessions.coinbase.com"
+  BUGSNAG_SOURCEMAPS_URL: "https://sourcemaps.coinbase.com"
+  CHAINS: "sepolia,base-sepolia"
+  COMPLIANCE_API_URL: "https://bridge-api.base.org"
+  DOCS_URL: "https://base-docs.cbhq.net"
+  GITHUB_URL: "https://github.com/base-org"
+  GOERLI_BRIDGE_URL: "https://base-goerli-bridge.cbhq.net"
+  L1_BRIDGE_PROXY_ADDRESS: "0xfd0Bf71F60660E2f608ed56e1659C450eB113120"
+  L1_CHAIN_ID: "11155111" 
+  L1_EXPLORER_API_URL: "https://api-sepolia.etherscan.io/api"
+  L1_EXPLORER_URL: "https://sepolia.etherscan.io"
+  L1_OPTIMISM_PORTAL_PROXY_ADDRESS: "0x49f53e41452C74589E85cA1677426Ba426459e85"
+  L2_CHAIN_ID: "84532" 
+  L2_EXPLORER_API_URL: "https://base-sepolia.blockscout.com/api"
+  L2_EXPLORER_URL: "https://base-sepolia.blockscout.com"
+  L2_L1_MESSAGE_PASSER_ADDRESS: "0x4200000000000000000000000000000000000016"
+  L2_OUTPUT_ORACLE_PROXY_ADDRESS: "0x84457ca9D0163FbC4bbfe4Dfbb20ba46e48DF254"
+  L2_STANDARD_BRIDGE: "0x4200000000000000000000000000000000000010"
+  MAINNET_LAUNCH_BLOG_POST_URL: "https://base.mirror.xyz"
+  MAINNET_LAUNCH_FLAG: "true"
+  MARKETING_URL: "https://base.cbhq.net"
+  REDIRECT_MAINNET_BRIDGE: "false"
+  SEPOLIA_BRIDGE_URL: "https://sepolia-bridge.base.org"
+  TOS_VERSION: "0x01"
+  WALLET_CONNECT_PROJECT_ID: "b58c07f4577817d872fd1143945526d0"
