@@ -4,7 +4,7 @@ description: Learn what providers are and why you need one.
 hide_table_of_contents: false
 ---
 
-Onchain apps need frontends, sometimes called dApps, to enable your users to interact with your smart contracts. A _provider_ makes the connection from frontend to blockchain, and is used to read data and send transaction.
+Onchain apps need frontends, sometimes called dApps, to enable your users to interact with your smart contracts. A _provider_ makes the connection from frontend to blockchain, and is used to read data and send transactions.
 
 ---
 
@@ -29,7 +29,9 @@ By the end of this lesson you should be able to:
 
 ## Types of Providers
 
-The term _provider_ describes a company or service that provides an API enabling access to the blockchain as a service, without the developer needing to run and maintain their own blockchain node. Running a node is expensive, complicated, and challenging. In most cases, you'll want to start out with a provider. Once you start to get traction, you can evaluate the need to run your own node, or switch to a more advanced architecture solution, such as utilizing [Subgraph].
+In blockchain development, the term _provider_ describes a company or service that provides an API enabling access to the blockchain as a service. This is distinct from the provider in the the React Context API or Redux Provider, though you will also wrap your app with `WagmiConfig` in a similar manner.
+
+These services enable interacting with smart contracts without the developer needing to run and maintain their own blockchain node. Running a node is expensive, complicated, and challenging. In most cases, you'll want to start out with a provider. Once you start to get traction, you can evaluate the need to run your own node, or switch to a more advanced architecture solution, such as utilizing [Subgraph].
 
 Figuring out which type of provider to use can be a little confusing at first. As with everything blockchain, the landscape changes rapidly and search results often return out-of-date information.
 
@@ -45,7 +47,7 @@ You'll encounter providers divided into three general categories: Public Provide
 
 ### Public Providers
 
-Many tutorials and guides, as well getting started guides for libraries such as [Wagmi], will use a _Public Provider_ as the default to get you up and running. They'll also usually warn you that you need to add another provider if you don't want to run into rate limiting. Listen to these warnings! The rate-limits of public providers are severe and you'll start getting limited very quickly.
+Many tutorials and guides, as well getting started guides for libraries such as [Wagmi], will use a _Public Provider_ as the default to get you up and running. Public means that they're open, permissionless, and free, so the guides will also usually warn you that you need to add another provider if you don't want to run into rate limiting. Listen to these warnings! The rate-limits of public providers are severe and you'll start getting limited very quickly.
 
 In Wagmi, the `publicClient` is just a wrapper setting up a [JSON RPC] provider using the `chain` and `rpcUrls` listed in Viem's directory of chain information. For example, you can view the [data for Base Goerli here].
 
