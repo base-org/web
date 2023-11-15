@@ -22,7 +22,8 @@ spec:
         app.kubernetes.io/name: protocols-base-web
     spec:
       containers:
-        - image: {{ $.Values.services.web.containers.web.image }}
+        - env: {{- include "infra.common.all-env" (merge (deepCopy $.Values.shared_env)) | indent 12 }}
+          image: {{ $.Values.services.web.containers.web.image }}
           lifecycle:
             preStop:
               exec:
