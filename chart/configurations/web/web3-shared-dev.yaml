@@ -15,13 +15,3 @@ services:
       min: 1
       max: 1
       targetcpu: 80
-shared_env:
-  ALCHEMY_API_KEY: "rQwZbwNyLwGOSuwnU_7dJGbktEcSWMGv"
-  ALCHEMY_HTTPS: "https://eth-mainnet.g.alchemy.com/v2/rQwZbwNyLwGOSuwnU_7dJGbktEcSWMGv"
-  APP_STAGE: "development"
-  BASIC_AUTH_CREDENTIALS: "lukas:test"
-  BRIDGE_URL: "https://base-bridge.cbhq.net"
-  DOCS_URL: "https://base-docs.cbhq.net"
-  MAINNET_LAUNCH_BLOG_POST_URL: "https://base.mirror.xyz"
-  MAINNET_LAUNCH_FLAG: "true"
-  NEXT_PUBLIC_ECOSYSTEM_LAUNCH_FLAG: "true"
