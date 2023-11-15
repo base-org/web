@@ -62,7 +62,7 @@ By the end of this module, you should be able to:
 - **Structs**
   - Construct a struct (user-defined type) that contains several different data types
   - Declare members of the struct to maximize storage efficiency
-  - Describe constraints related to assignment of structs depending on the types the contain
+  - Describe constraints related to assignment of structs depending on the types they contain
 - **Inheritance**
   - Write a smart contract that inherits from another contract
 - **Imports**
