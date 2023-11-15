@@ -21,6 +21,7 @@ spec:
         app.kubernetes.io/component: web
         app.kubernetes.io/name: protocols-base-web
     spec:
+      initContainers: {{ include "infra.common.secret-init" $.Values.shared_env | indent 8 }}
       containers:
         - env: {{- include "infra.common.all-env" (merge (deepCopy $.Values.shared_env)) | indent 12 }}
           image: {{ $.Values.services.web.containers.web.image }}
