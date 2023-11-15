@@ -18,14 +18,14 @@ services:
 shared_env:
   APP_STAGE: "development"
   ASSETS: config_service_text://protocols/base-web-bridge|assets
-  BASIC_AUTH_CREDENTIALS: "lukas:test"
+  BASIC_AUTH_CREDENTIALS: config_service_text://protocols/base-web-bridge|basic_auth_credentials
   BLOG_URL: "https://base.mirror.xyz"
   BRIDGE_API_URL: "https://bridge-api.base.org"
   BUGSNAG_API_KEY: "8f7b6e984693922aac5021ee82d0bb8f"
   BUGSNAG_NOTIFY_URL: "https://exceptions.coinbase.com"
   BUGSNAG_SESSIONS_URL: "https://sessions.coinbase.com"
   CCTP_ATTESTATIONS_API_URL: "https://iris-api.circle.com"
-  CCTP_ENABLED: "true"
+  CCTP_ENABLED: config_service_text://protocols/base-web-bridge|cctp_enabled
   COMPLIANCE_API_URL: "https://bridge-api.base.org"
   DOCS_URL: "https://base-docs.cbhq.net"
   GITHUB_URL: "https://github.com/base-org"

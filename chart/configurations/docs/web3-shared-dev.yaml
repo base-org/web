@@ -15,3 +15,6 @@ services:
       min: 1
       max: 1
       targetcpu: 80
+shared_env:
+  APP_STAGE: "development"
+  BASIC_AUTH_CREDENTIALS: config_service_text://protocols/base-web-docs|basic_auth_credentials

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node server.js",
+    "start": "run.sh",
     "dev": "docusaurus start",
     "docusaurus": "docusaurus",
     "build": "docusaurus build --out-dir ../../out/base-docs",

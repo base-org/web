@@ -34,6 +34,8 @@ app.get('/guides/run-a-base-goerli-node/', (req, res) => {
   res.redirect('/guides/run-a-base-node/');
 });
 
+console.log('process.env.AUTH_ENABLED', process.env.AUTH_ENABLED);
+
 if (process.env.APP_STAGE === 'production' && process.env.AUTH_ENABLED !== 'false') {
   const auth = basicAuth({
     challenge: true,
