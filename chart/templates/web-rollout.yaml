@@ -64,5 +64,13 @@ spec:
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 3
+          volumeMounts:
+            - name: envmapper
+              mountPath: /envmapper
+      volumes:
+        - name: envmapper
+          emptyDir:
+            medium: "Memory"
+            size: 10Mi
       restartPolicy: Always
       terminationGracePeriodSeconds: 150

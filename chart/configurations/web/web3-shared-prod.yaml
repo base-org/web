@@ -12,8 +12,8 @@ services:
     target_group_bindings:
       web: web-web-protocols-base-web-k8s
     scaling:
-      min: 1
-      max: 1
+      min: 3
+      max: 10
       targetcpu: 80
 shared_env:
   ALCHEMY_API_KEY: "6ngp4Sh2Qq0sX2NicOPl-G8vtiqs9jP0"

@@ -23,19 +23,24 @@ changed_files=$(git --no-pager diff --name-only --relative "$merge_base" HEAD)
 echo "$changed_files"
 
 # Extract Dockerfile's from the codeflow config
-echo "--- Extracting builds from Codeflow config"
+# echo "--- Extracting builds from Codeflow config"
 
-names=()
-files=()
+# Load configurations from envmapper
+echo "--- Loading builds from envmapper"
+
+source /envmapper/mapping.env
+
+# names=()
+# files=()
 
 # When parsing with yq, the SteveJobs "None" needs to be filtered out
-for name in $(yq '.build.engines.[] | select(has("BaldurECR") or has("BaldurNode")) | to_entries | select(.[].value.autobuild != false) | .[].value.name' .codeflow.yml); do
-    names+=("$name")
-done
+# for name in $(yq '.build.engines.[] | select(has("BaldurECR") or has("BaldurNode")) | to_entries | select(.[].value.autobuild != false) | .[].value.name' .codeflow.yml); do
+#     names+=("$name")
+# done
 
-for file in $(yq '.build.engines.[] | select(has("BaldurECR") or has("BaldurNode")) | to_entries | select(.[].value.autobuild != false) | .[].value.path' .codeflow.yml); do
-    files+=("$file")
-done
+# for file in $(yq '.build.engines.[] | select(has("BaldurECR") or has("BaldurNode")) | to_entries | select(.[].value.autobuild != false) | .[].value.path' .codeflow.yml); do
+#     files+=("$file")
+# done
 
 echo "Builds: ${#files[@]}"
 
