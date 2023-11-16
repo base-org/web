@@ -17,4 +17,5 @@ services:
       targetcpu: 80
 shared_env:
   APP_STAGE: "development"
-  BASIC_AUTH_CREDENTIALS: config_service_text://protocols/base-web-docs|basic_auth_credentials
+secret_env:
+  BASIC_AUTH_CREDENTIALS: config_service_secret://protocols/base-web-docs|basic_auth_credentials

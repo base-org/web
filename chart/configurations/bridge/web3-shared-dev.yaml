@@ -17,15 +17,13 @@ services:
       targetcpu: 80
 shared_env:
   APP_STAGE: "development"
-  ASSETS: config_service_text://protocols/base-web-bridge|assets
-  BASIC_AUTH_CREDENTIALS: config_service_text://protocols/base-web-bridge|basic_auth_credentials
+  ASSETS: "eth,dai,usdc,cbeth,comp,bal,rpl,reth,sofi,zrx,sushi,crv,1inch,wampl,knc"
   BLOG_URL: "https://base.mirror.xyz"
   BRIDGE_API_URL: "https://bridge-api.base.org"
-  BUGSNAG_API_KEY: "8f7b6e984693922aac5021ee82d0bb8f"
   BUGSNAG_NOTIFY_URL: "https://exceptions.coinbase.com"
   BUGSNAG_SESSIONS_URL: "https://sessions.coinbase.com"
   CCTP_ATTESTATIONS_API_URL: "https://iris-api.circle.com"
-  CCTP_ENABLED: config_service_text://protocols/base-web-bridge|cctp_enabled
+  CCTP_ENABLED: "true"
   COMPLIANCE_API_URL: "https://bridge-api.base.org"
   DOCS_URL: "https://base-docs.cbhq.net"
   GITHUB_URL: "https://github.com/base-org"
@@ -55,3 +53,6 @@ shared_env:
   TOS_VERSION: "0x01"
   TWITTER_URL: "https://twitter.com/buildonbase"
   WALLET_CONNECT_PROJECT_ID: "b58c07f4577817d872fd1143945526d0"
+secret_env:
+  BUGSNAG_API_KEY: config_service_secret://protocols/base-web-bridge|bugsnag_api_key
+  BASIC_AUTH_CREDENTIALS: config_service_secret://protocols/base-web-bridge|basic_auth_credentials

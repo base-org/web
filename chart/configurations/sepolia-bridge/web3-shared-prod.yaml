@@ -19,10 +19,8 @@ shared_env:
   APP_STAGE: "production"
   ASSETS: "eth"
   AUTH_ENABLED: "false"
-  BASIC_AUTH_CREDENTIALS: "private:amqmDE7O8r6YAxPsJvQp4hWmSsEItJJ2YkmdTdGjkU"
   BLOG_URL: "https://base.mirror.xyz"
   BRIDGE_API_URL: "https://bridge-api.base.org"
-  BUGSNAG_API_KEY: "8f7b6e984693922aac5021ee82d0bb8f"
   BUGSNAG_NOTIFY_URL: "https://exceptions.coinbase.com"
   BUGSNAG_SESSIONS_URL: "https://sessions.coinbase.com"
   BUGSNAG_SOURCEMAPS_URL: "https://sourcemaps.coinbase.com"
@@ -51,3 +49,6 @@ shared_env:
   SEPOLIA_BRIDGE_URL: "https://sepolia-bridge.base.org"
   TOS_VERSION: "0x01"
   WALLET_CONNECT_PROJECT_ID: "b58c07f4577817d872fd1143945526d0"
+secret_env:
+  BASIC_AUTH_CREDENTIALS: config_service_secret://protocols/base-web-sepolia-bridge|basic_auth_credentials
+  BUGSNAG_API_KEY: config_service_secret://protocols/base-web-sepolia-bridge|bugsnag_api_key

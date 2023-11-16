@@ -15,3 +15,14 @@ services:
       min: 1
       max: 1
       targetcpu: 80
+shared_env:
+  APP_STAGE: "development"
+  BRIDGE_URL: "https://base-bridge.cbhq.net"
+  DOCS_URL: "https://base-docs.cbhq.net"
+  MAINNET_LAUNCH_BLOG_POST_URL: "https://base.mirror.xyz"
+  MAINNET_LAUNCH_FLAG: "true"
+  NEXT_PUBLIC_ECOSYSTEM_LAUNCH_FLAG: "true"
+secret_env:
+  ALCHEMY_API_KEY: config_service_secret://protocols/base-web-web|alchemy_api_key
+  ALCHEMY_HTTPS: config_service_secret://protocols/base-web-web|alchemy_https
+  BASIC_AUTH_CREDENTIALS: config_service_secret://protocols/base-web-web|basic_auth_credentials

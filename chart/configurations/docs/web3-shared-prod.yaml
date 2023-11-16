@@ -18,4 +18,5 @@ services:
 shared_env:
   APP_STAGE: "production"
   AUTH_ENABLED: "false"
-  BASIC_AUTH_CREDENTIALS: "testnet:MQBMPeIaLq1vuhB9UGsNRw private:amqmDE7O8r6YAxPsJvQp4hWmSsEItJJ2YkmdTdGjkU"
+secret_env:
+  BASIC_AUTH_CREDENTIALS: config_service_secret://protocols/base-web-docs|basic_auth_credentials
