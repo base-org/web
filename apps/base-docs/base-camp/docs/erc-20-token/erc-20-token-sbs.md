@@ -97,7 +97,7 @@ Try using the `transfer` function to move tokens around.
 
 What happens if you try to burn a token by sending it to the zero address? Give it a try!
 
-You'll get an error, because protecting from burning is built into the `_mint` function.
+You'll get an error, because protecting from burning is built into the `_transfer` function.
 
 ```text
 transact to MyERC20Token.transfer pending ...
