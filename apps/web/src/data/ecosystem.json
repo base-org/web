@@ -9,6 +9,168 @@
     "imageUrl": "/images/partners/wallet-retail.webp"
   },
   {
+    "name": "Symbiosis",
+    "url": "https://app.symbiosis.finance/",
+    "description": "Symbiosis is a cross-chain AMM DEX that pools together liquidity from different networks: L1s and L2s, EVM and non-EVM. With Symbiosis, you can easily swap any token and move your assets across different networks.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/symbiosis.png"
+  },
+  {
+    "name": "VMEX Finance",
+    "url": "https://vmex.finance/",
+    "description": "VMEX is a lending protocol that uses an isolated pool structure to support the expansion of collateral in DeFi. Your one-stop-shop for leveraging staked LP, vault tokens, and borrowing against RWA.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/vmex.png"
+  },
+  {
+    "name": "Equalizer",
+    "url": "https://base.equalizer.exchange",
+    "description": "Equalizer provides a liquidity hub for Base chain through it's capital efficient system.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/equalizer.png"
+  },
+  {
+    "name": "BMX",
+    "url": "https://bmx.morphex.trade/",
+    "description": "BMX by Morphex: A unique derivative trading platform that boosts capital efficiency. Liquidity providers access market-making liquidity via wBLT, which is transferable and can pair with any asset to LP for rewards.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/bmx.png"
+  },
+  {
+    "name": "F1337",
+    "url": "https://f1337.vercel.app/",
+    "description": "F1337 is the world first memetic onchain game exclusively for Farcaster users.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/F1337.png"
+  },
+  {
+    "name": "Singular",
+    "url": "https://singular.app",
+    "description": "The home of NFTs 2.0 by @RmrkApp. Create and trade your nestable, equippable, soulbound, and multi-asset NFTs.",
+    "tags": [
+      "nft"
+    ],
+    "imageUrl": "/images/partners/singular.png"
+  },
+  {
+    "name": "Coinvise",
+    "url": "https://coinvise.co",
+    "description": "Coinvise makes it simple for web3 projects, communities and brands to reward onchain contributions—distribute tokens/NFTs for completing actions such as actions on DeFi platforms, collecting NFTs on marketplaces, engaging on social platforms (eg: lens), bridging assets, holding tokens/NFTs and even reward custom smart contract actions.",
+    "tags": [
+      "nft"
+    ],
+    "imageUrl": "/images/partners/coinvise.png"
+  },
+  {
+    "name": "Mellow",
+    "url": "https://mellow.to",
+    "description": "Mellow is a new take on social media that connects creators and their communities.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/mellow2.png"
+  },
+  {
+    "name": "Dmail Network",
+    "url": "https://mail.dmail.ai/login",
+    "description": "Dmail Network is building an AI-powered decentralized communication infra, offering encrypted emails, consolidated notifications, and targeted marketing services across multiple chains and dApps.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/dmail.png"
+  },
+  {
+    "name": "Desig",
+    "url": "https://desig.io/",
+    "description": "Meet Desig: A Smart Multisig wallet simplifying treasury ops. Flourishing funds with intuitive tracking, smart allocation & insightful cashflow reports. Enjoy gasless vault control; intel-driven swap.",
+    "tags": [
+      "wallet"
+    ],
+    "imageUrl": "/images/partners/desig.png"
+  },
+  {
+    "name": "friend.tech",
+    "url": "https://www.friend.tech/",
+    "description": "Your network is your net worth.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/friendtech.png"
+  },
+  {
+    "name": "Cradles",
+    "url": "https://www.cradles.io/",
+    "description": "Cradles stands out as an AAA MMORPG blockchain game, boasting features such as PvP, PvE, ecological strategies, and the discovery of extinct species. Gamers can traverse cities, hunt for treasures, and solve puzzles in bustling taverns and casinos.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/cradles.png"
+  },
+  {
+    "name": "Lore",
+    "url": "https://www.cradles.io/",
+    "description": "Community driven fun. With Lore, communities can run engagement programs, create media and own assets — together.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/lore.png"
+  },
+  {
+    "name": "Gem Wallet",
+    "url": "https://gemwallet.com",
+    "description": "Gem Wallet is a community owned, privacy respecting crypto wallet for iOS and Android. It supports multiple cryptocurrencies, tokens and NFTs, and lets you buy, swap, stake, and explore Web3.",
+    "tags": [
+      "wallet"
+    ],
+    "imageUrl": "/images/partners/gemwallet.png"
+  },
+  {
+    "name": "DrawTech",
+    "url": "https://www.draw.tech/",
+    "description": "A fully onchain drawing game. Draw with others and earn rewards — until you get drawn over!",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/drawtech.png"
+  },
+  {
+    "name": "TokenTerminal",
+    "url": "https://app.xtokenterminal.io/mining/discover?utm_source=coinbase&utm_medium=web",
+    "description": "The vision for Terminal is to build a capital markets and liquidity management platform designed for DeFi and NFT projects.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/tokenterminal.png"
+  },
+  {
+    "name": "Coinage Media",
+    "url": "https://www.coinage.media/?utm_source=coinbase&utm_medium=web",
+    "description": "Coinage is a community-owned media organization answering crypto’s biggest questions, with host and finance reporter Zack Guzman. Our 5,000 Caucus membership passes give you the option to join the Coinage Co-op, the ability to collaborate on production, and the ability to own crypto’s most trusted narrative.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/coinnagemedia.png"
+  },
+  {
+    "name": "Cymbal",
+    "url": "https://cymbal.xyz/",
+    "description": "The human readable block ecplorer is here!",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/cymbal.png"
+  },
+  {
     "name": "Sonne Finance",
     "url": "https://sonne.finance/",
     "description": "Sonne Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. It is a permissionless and open source protocol serving users on Base. Users can deposit their assets, use them as collateral and borrow against them.",
