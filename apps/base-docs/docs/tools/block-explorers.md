@@ -5,6 +5,14 @@ slug: /tools/block-explorers
 
 # Block Explorers
 
+## Arkham
+
+The Arkham [Platform](https://platform.arkhamintelligence.com/) supports Base. 
+
+Arkham is a crypto intelligence platform that systematically analyzes blockchain transactions, showing users the people and companies behind blockchain activity, with a suite of advanced tools for analyzing their activity.
+
+---
+
 ## Blockscout
 
 A Blockscout explorer is available for [Base](https://base.blockscout.com/).
