@@ -31,6 +31,8 @@ import { useIsContractApproved } from 'apps/bridge/src/utils/hooks/useIsContract
 import { useApproveContract } from 'apps/bridge/src/utils/hooks/useApproveContract';
 import { BridgeButton } from 'apps/bridge/src/components/BridgeButton/BridgeButton';
 import { parseUnits } from 'viem';
+import { BridgeProviderDropdown } from 'apps/bridge/src/components/WithdrawContainer/BridgeProviderDropdown';
+import { ThirdPartyBridges } from 'apps/bridge/src/components/WithdrawContainer/ThirdPartyBridges';
 
 const activeAssets = getWithdrawalAssetsForChainEnv();
 
@@ -47,6 +49,7 @@ export function WithdrawContainer() {
   const [selectedAsset, setSelectedAsset] = useState<Asset>(activeAssets[0]);
   const publicClient = usePublicClient({ chainId });
   const { switchNetwork } = useSwitchNetwork();
+  const [bridgeProvider, setBridgeProvider] = useState<'native' | 'thirdParty'>('thirdParty');
 
   useEffect(() => {
     switchNetwork?.(chainId);
@@ -294,44 +297,57 @@ export function WithdrawContainer() {
 
   return (
     <div className="flex-col lg:flex lg:h-full lg:flex-row">
-      <div className="grow">
-        <WithdrawModal
-          isOpen={isWithdrawModalOpen}
-          onClose={handleCloseWithdrawModal}
-          L2ApproveTxHash={L2ApproveTxHash}
-          L2WithdrawTxHash={L2WithdrawTxHash}
-          isApprovalTx={isApprovalTx}
-          protocol={selectedAsset.protocol}
+      <div className="flex grow flex-col">
+        <BridgeProviderDropdown
+          bridgeProvider={bridgeProvider}
+          setBridgeProvider={setBridgeProvider}
         />
-        <BridgeInput
-          inputNetwork={getL2NetworkForChainEnv()}
-          isWithdraw
-          outputNetwork={getL1NetworkForChainEnv()}
-          balance={L2Balance?.formatted ?? ''}
-          amount={withdrawAmount}
-          setAmount={setWithdrawAmount}
-          assets={activeAssets}
-          selectedAsset={selectedAsset}
-          setSelectedAsset={setSelectedAsset}
-        >
-          {button}
-        </BridgeInput>
-
-        {isSmartContractWallet && (
-          <BridgeToInput bridgeTo={withdrawTo} setBridgeTo={setWithdrawTo} action="withdraw" />
+        {bridgeProvider === 'thirdParty' && (
+          <div className="flex grow items-start">
+            <ThirdPartyBridges />
+          </div>
         )}
+        {bridgeProvider === 'native' && (
+          <div className="grow">
+            <WithdrawModal
+              isOpen={isWithdrawModalOpen}
+              onClose={handleCloseWithdrawModal}
+              L2ApproveTxHash={L2ApproveTxHash}
+              L2WithdrawTxHash={L2WithdrawTxHash}
+              isApprovalTx={isApprovalTx}
+              protocol={selectedAsset.protocol}
+            />
+            <BridgeInput
+              inputNetwork={getL2NetworkForChainEnv()}
+              isWithdraw
+              outputNetwork={getL1NetworkForChainEnv()}
+              balance={L2Balance?.formatted ?? ''}
+              amount={withdrawAmount}
+              setAmount={setWithdrawAmount}
+              assets={activeAssets}
+              selectedAsset={selectedAsset}
+              setSelectedAsset={setSelectedAsset}
+            >
+              {button}
+            </BridgeInput>
 
-        <div className="border-t border-sidebar-border">
-          <TransactionSummary
-            selectedAsset={selectedAsset}
-            header="TRANSACTION SUMMARY"
-            balance={parseFloat(withdrawAmount ?? '0').toFixed(6) ?? ''}
-            outputNetwork={getL1NetworkForChainEnv()}
-            chainId={publicRuntimeConfig.l2ChainID}
-            isDeposit={false}
-          />
-          <div className="w-full px-6 py-12 sm:hidden">{button}</div>
-        </div>
+            {isSmartContractWallet && (
+              <BridgeToInput bridgeTo={withdrawTo} setBridgeTo={setWithdrawTo} action="withdraw" />
+            )}
+
+            <div className="border-t border-sidebar-border">
+              <TransactionSummary
+                selectedAsset={selectedAsset}
+                header="TRANSACTION SUMMARY"
+                balance={parseFloat(withdrawAmount ?? '0').toFixed(6) ?? ''}
+                outputNetwork={getL1NetworkForChainEnv()}
+                chainId={publicRuntimeConfig.l2ChainID}
+                isDeposit={false}
+              />
+              <div className="w-full px-6 py-12 sm:hidden">{button}</div>
+            </div>
+          </div>
+        )}
       </div>
       <FaqSidebar />
     </div>
