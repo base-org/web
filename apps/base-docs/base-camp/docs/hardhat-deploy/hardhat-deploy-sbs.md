@@ -215,7 +215,7 @@ You've configued 3 networks:
 You also need to create a `.env` file with the following variables:
 
 ```
-MNENOMIC="<REPLACE WITH YOUR MNEMONIC>"
+MNEMONIC="<REPLACE WITH YOUR MNEMONIC>"
 ALCHEMY_GOERLI_KEY=<REPLACE WITH YOUR API KEY>
 ALCHEMY_MUMBAI_KEY=<REPLACE WITH YOUR API KEY>
 ```
