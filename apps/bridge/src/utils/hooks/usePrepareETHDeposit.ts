@@ -31,7 +31,6 @@ export function usePrepareETHDeposit({
       includeTosVersionByte ? publicRuntimeConfig.tosVersion : '0x',
     ],
     value: parseEther(depositAmount === '' ? '0' : depositAmount),
-    gas: BigInt(200000),
   });
 
   return depositConfig;
