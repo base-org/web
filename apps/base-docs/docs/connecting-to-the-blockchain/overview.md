@@ -30,7 +30,7 @@ By the end of these guides, you should be able to:
 
 ### 1. Be familiar with modern, frontend web development
 
-In this guide, we'll be working with a React frontend build with [Next.js]. While you don't need to be an expert, we'll assume that you're comfortable with the basics.
+In this guide, we'll be working with a React frontend built with [Next.js]. While you don't need to be an expert, we'll assume that you're comfortable with the basics.
 
 ### 2. Possess a general understanding of the EVM and smart contract development
 
