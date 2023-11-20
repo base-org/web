@@ -1,5 +1,5 @@
 ---
-title: Overview of Providers
+title: Connecting with a Provider
 description: Configure several providers and use them to connect to the blockchain.
 hide_table_of_contents: false
 ---
@@ -8,19 +8,9 @@ hide_table_of_contents: false
 
 ---
 
-## Prerequisites
-
-Before this lesson, you should:
-
-- Be familiar with modern, frontend web development
-- Possess a general understanding of the EVM and smart contracts
-- Ideally, understand how to build a frontend with [Next.js]
-
----
-
 ## Objectives
 
-By the end of this lesson you should be able to:
+By the end of this guide you should be able to:
 
 - Set up a provider in wagmi and use it to connect a wallet
 - Protect API keys that will be exposed to the front end
@@ -130,7 +120,7 @@ Let's add [QuickNode] to the list. It isn't [included in the library] by default
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 ```
 
-Unlike the linked example indicates, you do **not** need to add an import `chain` from `'wagmi'` (Their example appears out of date at the time of writing).
+Unlike the linked example indicates, you do **not** need to add an import `chain` from `'wagmi'`, unless you're setting up a more complex provider configuration and want to dynamically build RPC urls for multiple chains.
 
 You do need an RPC URL, so open up [QuickNode]'s site and sign up for an account if you need to. The free tier will be adequate for now, you may need to scroll down to see it. Once you're in, click `Endpoints` on the left side, then click `+ Create Endpoint`.
 
@@ -169,37 +159,6 @@ Now, the app will use your Quicknode endpoint for the Base network, and fall bac
 
 To test this out, comment out `publicProvider()`, and switch networks a few times. Unfortunately, wagmi won't generate an error when you try to connect to a network unsupported by the provider, but you will notice that the wallet balance is only shown correctly for Base, and no longer updates when you switch to other networks.
 
-### Blockdaemon
-
-You'll also need an account with [Blockdaemon], if you want to use it as a JSON RPC provider. Log in, [or create an account], navigate to the `API Suite` tab on the left, and click `Create API Key`.
-
-![Create api key](../../assets/images/connecting-to-the-blockchain/blockdaemon-create-key.png)
-
-You can find the [urls for different networks] in their docs. To connect to Base, add the below to your list of providers:
-
-```typescript
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, optimism, base],
-  [
-    // other providers
-    jsonRpcProvider({
-      rpc: () => ({
-        http: 'https://svc.blockdaemon.com/base/mainnet/native/http-rpc?apiKey=<replace with your api key>',
-      }),
-    }),
-    publicProvider(),
-  ],
-);
-```
-
-:::caution
-
-This key is also exposed publicly! Be sure to configure an allowlist before deploying!
-
-:::
-
-TODO PENDING MORE INFORMATION!!!
-
 ### Alchemy
 
 [Alchemy] is [baked into wagmi], but you still need an account and a key. Create an account and/or sign in, navigate to the `Apps` section in the left sidebar, and click `Create new app`.
@@ -224,7 +183,7 @@ import { alchemyProvider } from 'wagmi/providers/alchemy';
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [mainnet, optimism, base],
   [
-    // jsonRPC Providers
+    // other providers
     alchemyProvider({ apiKey: 'yourAlchemyApiKey' }),
     publicProvider(),
   ],
@@ -241,7 +200,6 @@ In this guide, you've learned how to connect your app to the blockchain using se
 
 ---
 
-[Next.js]: https://nextjs.org
 [wagmi]: https://wagmi.sh
 [Rainbowkit]: https://www.rainbowkit.com
 [quick start]: https://www.rainbowkit.com/docs/installation
@@ -251,10 +209,7 @@ In this guide, you've learned how to connect your app to the blockchain using se
 [included in the library]: https://github.com/wagmi-dev/wagmi/tree/main/packages/core/src/providers
 [JSON RPC provider]: https://wagmi.sh/react/providers/jsonRpc
 [Alchemy]: https://www.alchemy.com/
-[Blockdaemon]: https://www.blockdaemon.com/
 [QuickNode]: https://www.quicknode.com/
 [allowlist]: https://docs.alchemy.com/docs/how-to-add-allowlists-to-your-apps-for-enhanced-security
 [baked into wagmi]: https://wagmi.sh/react/providers/alchemy
-[create an account]: https://app.blockdaemon.com/signin/register
-
-[urls for different networks]
+[smart contract development]: https://base.org/camp
