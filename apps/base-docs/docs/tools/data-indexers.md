@@ -7,6 +7,19 @@ slug: /tools/data-indexers
 
 ---
 
+## Arkham
+
+[Arkham](https://platform.arkhamintelligence.com/) is a crypto intelligence platform that systematically analyzes blockchain transactions, showing users the people and companies behind blockchain activity, with a suite of advanced tools for analyzing their activity.
+
+References:
+
+- [Platform guide](https://www.arkhamintelligence.com/guide)
+- [Whitepaper](https://www.arkhamintelligence.com/whitepaper)
+- [Codex](https://codex.arkhamintelligence.com/)
+- [Demos](https://www.youtube.com/@arkhamintel)
+
+---
+
 ## Covalent
 
 [Covalent](https://www.covalenthq.com/?utm_source=base&utm_medium=partner-docs) is a hosted blockchain data solution providing access to historical and current on-chain data for [100+ supported blockchains](https://www.covalenthq.com/docs/networks/?utm_source=base&utm_medium=partner-docs), including [Base](https://www.covalenthq.com/docs/networks/base/?utm_source=base&utm_medium=partner-docs).
