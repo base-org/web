@@ -127,6 +127,28 @@ module.exports = {
                 },
               ],
             },
+            {
+              type: 'category',
+              label: 'Connecting to the Blockchain',
+              collapsible: true,
+              items: [
+                {
+                  type: 'doc',
+                  id: 'connecting-to-the-blockchain/overview',
+                  className: 'sidebar-reading',
+                },
+                {
+                  type: 'doc',
+                  id: 'connecting-to-the-blockchain/blockchain-providers',
+                  className: 'sidebar-reading',
+                },
+                {
+                  type: 'doc',
+                  id: 'connecting-to-the-blockchain/connecting-with-a-provider',
+                  className: 'sidebar-coding',
+                },
+              ],
+            },
           ],
         },
       ],
