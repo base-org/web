@@ -171,9 +171,32 @@ To test this out, comment out `publicProvider()`, and switch networks a few time
 
 ### Blockdaemon
 
-[Blockdaemon] also needs to be set up as a JSON RPC provider. Log in, [or create an account], navigate to the `API Suite` tab on the left, and click `Create API Key`.
+You'll also need an account with [Blockdaemon], if you want to use it as a JSON RPC provider. Log in, [or create an account], navigate to the `API Suite` tab on the left, and click `Create API Key`.
 
 ![Create api key](../../assets/images/connecting-to-the-blockchain/blockdaemon-create-key.png)
+
+You can find the [urls for different networks] in their docs. To connect to Base, add the below to your list of providers:
+
+```typescript
+const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [mainnet, optimism, base],
+  [
+    // other providers
+    jsonRpcProvider({
+      rpc: () => ({
+        http: 'https://svc.blockdaemon.com/base/mainnet/native/http-rpc?apiKey=<replace with your api key>',
+      }),
+    }),
+    publicProvider(),
+  ],
+);
+```
+
+:::caution
+
+This key is also exposed publicly! Be sure to configure an allowlist before deploying!
+
+:::
 
 TODO PENDING MORE INFORMATION!!!
 
@@ -233,3 +256,5 @@ In this guide, you've learned how to connect your app to the blockchain using se
 [allowlist]: https://docs.alchemy.com/docs/how-to-add-allowlists-to-your-apps-for-enhanced-security
 [baked into wagmi]: https://wagmi.sh/react/providers/alchemy
 [create an account]: https://app.blockdaemon.com/signin/register
+
+[urls for different networks]
