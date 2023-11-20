@@ -18,7 +18,7 @@ function ThirdPartyBridge({ name, logo, url }: ThirdPartyBridgeProps) {
       href={url}
       target="_blank"
       rel="noreferrer"
-      className="flex h-24 w-36 flex-col items-center justify-center rounded border border-stone-400"
+      className="flex h-24 w-32 flex-col items-center justify-center rounded border border-stone-400 sm:w-36"
     >
       <Image width={36} height={36} src={logo} alt={name} className="rounded-full" />
       <span className="pt-4 text-center text-white">{name}</span>
@@ -30,7 +30,7 @@ export function ThirdPartyBridges() {
   return (
     <div className="flex w-full max-w-xl grow flex-col justify-center space-y-4 px-4 pt-8">
       <span className="font-mono uppercase text-white">Choose Third-Party Bridge</span>
-      <div className="grid grid-cols-2 place-content-center gap-6 sm:grid-cols-3">
+      <div className="grid grid-cols-3 place-content-center gap-6">
         {THIRD_PARTY_BRIDGES.map((bridge) => (
           <ThirdPartyBridge
             key={bridge.name}
