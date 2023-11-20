@@ -96,14 +96,6 @@ function debugResetShares() public {
 
 ### Submit your Contract and Earn an NFT Badge! (BETA)
 
-:::warning
-
-Base Goerli does not yet support the new `PUSH0` opcode introduced in _Shanghai_, which is the default target for the Solidity compiler if you use version `0.8.20` or later. You will get an error when you attempt to deploy.
-
-All exercises were built and tested with `0.8.17`. We recommend using this version until the upgrade.
-
-:::
-
 :::caution
 
 There is a typo in the unit test messages for this exercise that incorrectly states that it is testing for >= 5000 shares. It should state that it is testing for > 5000 shares.
