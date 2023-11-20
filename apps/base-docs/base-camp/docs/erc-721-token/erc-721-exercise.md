@@ -38,6 +38,8 @@ You **don't** have to count syllables, but it would be neat if you did! (No prom
 
 Add a `public` function called `shareHaiku` that allows the owner of a Haiku NFT to share that Haiku with the designated `address` they are sending it `_to`. Doing so should add it to that address's entry in `sharedHaikus`.
 
+If the sender isn't the owner of the Haiku, instead revert with an error of `NotYourHaiku`. Include the id of the Haiku in the error.
+
 :::danger
 
 Remember, everything on the blockchain is public. This sharing functionality can be expanded for features similar to allowing an app user to display the selected shared haiku on their profile.
