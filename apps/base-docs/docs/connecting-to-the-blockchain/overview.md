@@ -38,6 +38,6 @@ These guides assume that you're reasonably comfortable writing basic smart contr
 
 [Basecamp]: https://base.org/camp
 [Next.js]: https://nextjs.org/
-[Rainbowkit]: rainbowkit.com/
+[Rainbowkit]: https://rainbowkit.com/
 [Wagmi]: https://wagmi.sh/
 [Viem]: https://viem.sh/
