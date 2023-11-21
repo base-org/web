@@ -1,7 +1,7 @@
 ---
 title: Overview of Providers
-description: Learn what providers are and why you need one.
-keywords: [blockchain providers, dApp development, smart contracts, public providers, wallet providers, vendor providers, rate limits, Ethereum, blockchain connection services, provider pricing, Wagmi, Base, Base network, Base node providers, Base providers]
+description: "Learn what providers are and why you need one."
+keywords: ["blockchain providers", "dApp development", "smart contracts", "public providers", "wallet providers", "vendor providers", "rate limits", "Ethereum", "blockchain connection services", "provider pricing", "Wagmi", "Base", "Base network", "Base node providers", "Base providers"]
 hide_table_of_contents: false
 ---
 
@@ -64,7 +64,7 @@ Older tutorials for early libraries tended to suggest using this method for gett
 
 ### Vendor Providers
 
-A growing number of vendors provide access to blockchain nodes as a service. Visiting the landing pages for [Quiknode], [Blockdaemon], or [Alchemy] can be a little confusing. Each of these vendors provides a wide variety of services, SDKs, and information.
+A growing number of vendors provide access to blockchain nodes as a service. Visiting the landing pages for [Quicknode], [Blockdaemon], or [Alchemy] can be a little confusing. Each of these vendors provides a wide variety of services, SDKs, and information.
 
 Luckily, you can skip most of this if you're just trying to get your frontend connected to you smart contracts, because most of it is handled by Wagmi/Viem. You'll just need to sign up for an account and get an endpoint, or a key, and configure your app to connect to the provider(s) you choose.
 
@@ -100,7 +100,7 @@ In this article, you've learned how Providers supply blockchain connection as a 
 [EIP-1193]: https://eips.ethereum.org/EIPS/eip-1193
 [Alchemy]: https://www.alchemy.com/
 [Blockdaemon]: https://www.blockdaemon.com/
-[Quiknode]: https://www.quicknode.com/
+[Quicknode]: https://www.quicknode.com/
 [Alchemy Costs]: https://docs.alchemy.com/reference/compute-unit-costs
 [Blockdaemon Costs]: https://docs.blockdaemon.com/reference/ethereum-compute-units
-[Quiknode Costs]: https://www.quicknode.com/api-credits/base
+[Quicknode Costs]: https://www.quicknode.com/api-credits/base
