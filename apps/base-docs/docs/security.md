@@ -1,6 +1,8 @@
 ---
 title: Security
 slug: /security
+description: The Base bug bounty program and procedures for reporting vulnerabilities.
+keywords: [Base, Coinbase, bug bounty program, report vulnerability, bug report, cybersecurity, HackerOne, Base network, Bedrock, Optimism, vulnerability reporting, crypto security, open source]
 ---
 
 # Security

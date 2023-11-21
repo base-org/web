@@ -1,6 +1,7 @@
 ---
 title: 'Smart Contract Profiling: Gas'
 description: Optimize Smart Contract Gas Usage with Hardhat
+keywords: [Hardhat, gas optimization, gas usage, gas profiling, Hardhat Gas Reporter plugin, smart contract development, cost savings, contract optimization, gas-efficient contracts]
 hide_table_of_contents: false
 ---
 

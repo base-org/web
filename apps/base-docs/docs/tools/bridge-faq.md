@@ -1,6 +1,8 @@
 ---
 title: Bridge FAQ
 slug: /tools/bridge-faq
+description: An FAQ for Base Bridge, detailing its features, usage, compatibility with Ethereum wallets, transaction processes, fees, benefits, risks, and guidelines for new users.
+keywords: [Base Bridge, FAQ, frequently asked questions, bridging to base, how to bridge to base, Ethereum, blockchain technology, digital asset transfer, cryptocurrency, wallet compatibility, transaction security, network fees]
 ---
 
 # Base Bridge FAQ

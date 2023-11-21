@@ -1,6 +1,8 @@
 ---
 title: Block Explorers
 slug: /tools/block-explorers
+description: Documentation for block explorers for the Base network.
+keywords: [block explorers, base block explorer, base block explorers, Base blockchain, Base network, Base mainnet, Base testnet, smart contract analysis, transaction tracking, transaction details, Blockscout, Etherscan, Basescan]
 ---
 
 # Block Explorers

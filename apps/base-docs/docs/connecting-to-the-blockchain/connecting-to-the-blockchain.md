@@ -1,6 +1,7 @@
 ---
 title: Overview of Providers
 description: Learn what providers are and why you need one.
+keywords: [blockchain providers, dApp development, smart contracts, public providers, wallet providers, vendor providers, rate limits, Ethereum, blockchain connection services, provider pricing, Wagmi, Base, Base network, Base node providers, Base providers]
 hide_table_of_contents: false
 ---
 

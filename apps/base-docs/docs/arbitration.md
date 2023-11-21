@@ -1,6 +1,8 @@
 ---
 title: Arbitration
 slug: /arbitration
+description: Arbitration agreement terms for users of Coinbase's services.
+keywords: [Base, Coinbase, arbitration agreement, dispute resolution, jury trial waiver, class action waiver, American Arbitration Association, legal claims, cryptocurrency services, consumer arbitration rules, individual arbitration]
 ---
 
 # APPENDIX 1: BRIDGE INTERFACE, SEQUENCER, AND TESTNET TERMS ARBITRATION AGREEMENT

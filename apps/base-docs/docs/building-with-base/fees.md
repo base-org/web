@@ -1,6 +1,8 @@
 ---
 title: Fees
 slug: /fees
+description: Documentation about network fees on Base. This page covers details of the two-component cost system involving L2 execution fees and L1 security fees, and offers insights on fee variations and cost-saving strategies.
+keywords: [Base fees, transaction fees, network fees, Base network fees, L2 execution fee, L1 security fee, transaction costs, gas fees, fee calculation, cost-saving, transaction timing, fee variations, Base platform]
 ---
 
 # Fees

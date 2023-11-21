@@ -1,6 +1,8 @@
 ---
 title: Foundry
 slug: /tools/foundry
+description: Documentation for Foundry, a toolchain for smart contract development. Provides instructions on deploying and verifying contracts on Base's mainnet and testnet using Foundry.
+keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain, Base, Base mainnet, Base testnet, Base network, RPC URL, chain id, deploying contracts, verifying contracts, mainnet, testnet]
 ---
 
 # Foundry
