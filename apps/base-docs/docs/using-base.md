@@ -98,7 +98,7 @@ To add Base Goerli or Base Sepolia as a custom network to MetaMask:
 5. In the **Add a network manually** dialog that appears, enter the following information for the Base Goerli / Sepolia testnet:
 
    | Name            | Goerli                                                      | Sepolia                                                                 |
-   | :-------------- | :---------------------------------------------------------- | ----------------------------------------------------------------------- |
+   | :-------------- | :---------------------------------------------------------- | :---------------------------------------------------------------------- |
    | Network Name    | Base Goerli                                                 | Base Sepolia                                                            |
    | RPC Endpoint    | [https://goerli.base.org](https://goerli.base.org)          | [https://sepolia.base.org](https://sepolia.base.org)                    |
    | Chain ID        | 84531                                                       | 84532                                                                   |
