@@ -2,7 +2,24 @@
 title: Oracles
 slug: /tools/oracles
 description: Documentation for various blockchain oracles for Base. Including support for price feeds and verifiable random functions (VRF).
-keywords: [Oracles, Oracle, Base, Base Mainnet, Base Testnet, Base network, Chainlink, Pyth, VRF, verifiable random function, generate random numbers, RNG, true randomness, price feeds, data feeds]
+keywords:
+  [
+    Oracles,
+    Oracle,
+    Base,
+    Base Mainnet,
+    Base Testnet,
+    Base network,
+    Chainlink,
+    Pyth,
+    VRF,
+    verifiable random function,
+    generate random numbers,
+    RNG,
+    true randomness,
+    price feeds,
+    data feeds,
+  ]
 ---
 
 # Oracles

@@ -2,7 +2,24 @@
 title: Cross-chain
 slug: /tools/cross-chain
 description: Documentation for cross-chain communication and messaging on the Base network. This page covers integrating tools like LayerZero with Base for web3 transactions, cross-chain messaging, and secure blockchain communication.
-keywords: [cross-chain, cross chain, crosschain messaging cross-chain messaging, omnichain, omni-chain, superchain, LayerZero, Axelar, Wormhole, web3 transactions, blockchain communication, Base Mainnet, Base Testnet, interchain connectivity, blockchain interoperability]
+keywords:
+  [
+    cross-chain,
+    cross chain,
+    crosschain messaging cross-chain messaging,
+    omnichain,
+    omni-chain,
+    superchain,
+    LayerZero,
+    Axelar,
+    Wormhole,
+    web3 transactions,
+    blockchain communication,
+    Base Mainnet,
+    Base Testnet,
+    interchain connectivity,
+    blockchain interoperability,
+  ]
 ---
 
 # Cross-chain

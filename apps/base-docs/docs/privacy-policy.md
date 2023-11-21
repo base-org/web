@@ -2,7 +2,20 @@
 title: Privacy Policy
 slug: /privacy-policy
 description: The Privacy Policy for Base. Covers how we collect, use, and share personal information of users and developers through our services, including legal bases and data retention.
-keywords: [Base, Base Privacy Policy, personal information, data collection, user privacy, developer data, service providers, data sharing, legal compliance, data protection, international data transfers]
+keywords:
+  [
+    Base,
+    Base Privacy Policy,
+    personal information,
+    data collection,
+    user privacy,
+    developer data,
+    service providers,
+    data sharing,
+    legal compliance,
+    data protection,
+    international data transfers,
+  ]
 ---
 
 # Base Global Privacy Policy

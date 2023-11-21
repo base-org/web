@@ -2,14 +2,29 @@
 title: Block Explorers
 slug: /tools/block-explorers
 description: Documentation for block explorers for the Base network.
-keywords: [block explorers, base block explorer, base block explorers, Base blockchain, Base network, Base mainnet, Base testnet, smart contract analysis, transaction tracking, transaction details, Blockscout, Etherscan, Basescan]
+keywords:
+  [
+    block explorers,
+    base block explorer,
+    base block explorers,
+    Base blockchain,
+    Base network,
+    Base mainnet,
+    Base testnet,
+    smart contract analysis,
+    transaction tracking,
+    transaction details,
+    Blockscout,
+    Etherscan,
+    Basescan,
+  ]
 ---
 
 # Block Explorers
 
 ## Arkham
 
-The Arkham [Platform](https://platform.arkhamintelligence.com/) supports Base. 
+The Arkham [Platform](https://platform.arkhamintelligence.com/) supports Base.
 
 Arkham is a crypto intelligence platform that systematically analyzes blockchain transactions, showing users the people and companies behind blockchain activity, with a suite of advanced tools for analyzing their activity.
 

@@ -2,7 +2,19 @@
 title: Contracts
 slug: /contracts
 description: A list of contract addresses for various onchain apps, focusing on both the Base Mainnet and Base Testnet deployments.
-keywords: [onchain apps, contract addresses, Base Mainnet, Uniswap v3, Multicall3, Goerli Testnet, blockchain contracts, decentralization, cryptocurrency, smart contracts]
+keywords:
+  [
+    onchain apps,
+    contract addresses,
+    Base Mainnet,
+    Uniswap v3,
+    Multicall3,
+    Goerli Testnet,
+    blockchain contracts,
+    decentralization,
+    cryptocurrency,
+    smart contracts,
+  ]
 ---
 
 # Contracts

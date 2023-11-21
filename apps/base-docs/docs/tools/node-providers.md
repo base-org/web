@@ -2,7 +2,27 @@
 title: Node Providers
 slug: /tools/node-providers
 description: Documentation for Node Providers for the Base network. Including details on their services, supported networks, and pricing plans.
-keywords: [Node Providers, Base, Base network, Base node, hosted nodes, archival nodes, RPC, RPC node, RPC URL, RPC endpoints, blockchain services, blockchain infrastructure, developer tools, API, mainnet, testnet, pricing plans, Web3 infrastructure]
+keywords:
+  [
+    Node Providers,
+    Base,
+    Base network,
+    Base node,
+    hosted nodes,
+    archival nodes,
+    RPC,
+    RPC node,
+    RPC URL,
+    RPC endpoints,
+    blockchain services,
+    blockchain infrastructure,
+    developer tools,
+    API,
+    mainnet,
+    testnet,
+    pricing plans,
+    Web3 infrastructure,
+  ]
 ---
 
 # Node Providers

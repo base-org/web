@@ -1,7 +1,19 @@
 ---
 title: 'Smart Contract Profiling: Size'
 description: Optimize Smart Contract Sizes with Hardhat
-keywords: [Smart Contract Sizes, Hardhat Contract Sizer, Base network, Base blockchain, Blockchain, Contract Optimization, Inheritance, External Contracts, Solidity Optimizer, Smart Contract Development]
+keywords:
+  [
+    Smart Contract Sizes,
+    Hardhat Contract Sizer,
+    Base network,
+    Base blockchain,
+    Blockchain,
+    Contract Optimization,
+    Inheritance,
+    External Contracts,
+    Solidity Optimizer,
+    Smart Contract Development,
+  ]
 hide_table_of_contents: false
 ---
 

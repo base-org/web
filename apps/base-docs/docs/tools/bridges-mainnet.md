@@ -2,7 +2,22 @@
 title: Mainnet
 slug: /tools/bridges
 description: Documentation for bridging assets to the Base mainnet. This page covers how to bridge ETH and ERC-20s between Ethereum mainnet and Base mainnet, with essential cautions and contract information.
-keywords: [Base, Base network, bridging, bridge to base, bridge eth, bridge eth to base, Base Bridge, Wormhole Token Bridge, Ethereum Mainnet, Base Mainnet, ETH, ERC-20 tokens, asset bridging]
+keywords:
+  [
+    Base,
+    Base network,
+    bridging,
+    bridge to base,
+    bridge eth,
+    bridge eth to base,
+    Base Bridge,
+    Wormhole Token Bridge,
+    Ethereum Mainnet,
+    Base Mainnet,
+    ETH,
+    ERC-20 tokens,
+    asset bridging,
+  ]
 ---
 
 # Bridges

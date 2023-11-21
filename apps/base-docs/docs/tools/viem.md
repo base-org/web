@@ -2,7 +2,19 @@
 title: viem
 slug: /tools/viem
 description: Documentation for using Viem, a TypeScript interface for EVM-compatible blockchains. This page covers installation, setup, and various functionalities such as reading and writing blockchain data and interacting with smart contracts on Base.
-keywords: [Viem, Base, Base mainnet, Base testnet, Ethereum, smart contracts, blockchain, RPC URL, JavaScript, TypeScript]
+keywords:
+  [
+    Viem,
+    Base,
+    Base mainnet,
+    Base testnet,
+    Ethereum,
+    smart contracts,
+    blockchain,
+    RPC URL,
+    JavaScript,
+    TypeScript,
+  ]
 ---
 
 # viem

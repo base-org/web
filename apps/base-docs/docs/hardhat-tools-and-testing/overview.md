@@ -1,7 +1,19 @@
 ---
 title: Overview
 description: What's in this learning material.
-keywords: [Hardhat Tools, Smart Contract Development, Gas Optimization, Debugging, Test Coverage, Contract Size, Solidity, Base network, Base blockchain, blockchain development]
+keywords:
+  [
+    Hardhat Tools,
+    Smart Contract Development,
+    Gas Optimization,
+    Debugging,
+    Test Coverage,
+    Contract Size,
+    Solidity,
+    Base network,
+    Base blockchain,
+    blockchain development,
+  ]
 hide_table_of_contents: false
 ---
 

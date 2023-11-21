@@ -1,7 +1,22 @@
 ---
 title: Connecting with a Provider
 description: Configure several providers and use them to connect to the blockchain.
-keywords: [Rainbowkit, Wagmi, blockchain providers, QuickNode, Alchemy, API keys, blockchain connection, public provider, smart contract development, Base, Base network, Base node providers, Base providers]
+keywords:
+  [
+    Rainbowkit,
+    Wagmi,
+    blockchain providers,
+    QuickNode,
+    Alchemy,
+    API keys,
+    blockchain connection,
+    public provider,
+    smart contract development,
+    Base,
+    Base network,
+    Base node providers,
+    Base providers,
+  ]
 hide_table_of_contents: false
 ---
 

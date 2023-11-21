@@ -2,7 +2,22 @@
 title: Differences between Ethereum and Base
 slug: /differences
 description: Documentation covering the differences between Ethereum and Base. This page includes details on differences between opcodes, blocks, network specifications, and transaction costs.
-keywords: [Ethereum vs Base, Base differences, difference between Base and Ethereum, Bedrock, OP Stack, Base opcodes, Base blocks, opcodes on Base, blocks on Base, Base network specifications, network specifications, Base transaction costs, transaction costs]
+keywords:
+  [
+    Ethereum vs Base,
+    Base differences,
+    difference between Base and Ethereum,
+    Bedrock,
+    OP Stack,
+    Base opcodes,
+    Base blocks,
+    opcodes on Base,
+    blocks on Base,
+    Base network specifications,
+    network specifications,
+    Base transaction costs,
+    transaction costs,
+  ]
 ---
 
 # Differences between Ethereum and Base

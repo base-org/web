@@ -2,7 +2,16 @@
 title: Terms of Service
 slug: /terms-of-service
 description: The Terms of Service for using Coinbase's "Base," a layer-two optimistic rollup on Ethereum.
-keywords: [Base, Coinbase, terms and conditions, terms of service, warranty disclaimers, liability limitations, service terms]
+keywords:
+  [
+    Base,
+    Coinbase,
+    terms and conditions,
+    terms of service,
+    warranty disclaimers,
+    liability limitations,
+    service terms,
+  ]
 ---
 
 # Bridge Interface, Sequencer, and Testnet Terms

@@ -2,8 +2,22 @@
 title: Using Base
 sidebar_position: 1
 slug: /using-base
-description: How to integrate Base with popular wallets like Coinbase Wallet and MetaMask, covering both mainnet and testnet configurations.
-keywords: [Base, Base wallet, Coinbase Wallet, MetaMask, EVM-compatible wallets, network configuration, Base mainnet, Base testnet, Goerli, Sepolia, cryptocurrency wallet setup, Base wallet setup, add Base network]
+description: 'How to integrate Base with popular wallets like Coinbase Wallet and MetaMask, covering both mainnet and testnet configurations.'
+keywords:
+  [
+    'Base',
+    'Base wallet',
+    'Coinbase Wallet',
+    'MetaMask',
+    'EVM-compatible wallets',
+    'network configuration',
+    'Base mainnet',
+    'Base testnet',
+    'Goerli, Sepolia',
+    'cryptocurrency wallet setup',
+    'Base wallet setup',
+    'add Base network',
+  ]
 ---
 
 # Using Base with your wallet
@@ -84,7 +98,7 @@ To add Base Goerli or Base Sepolia as a custom network to MetaMask:
 5. In the **Add a network manually** dialog that appears, enter the following information for the Base Goerli / Sepolia testnet:
 
    | Name            | Goerli                                                      | Sepolia                                                                 |
-   | :-------------- |:------------------------------------------------------------|-------------------------------------------------------------------------|
+   | :-------------- | :---------------------------------------------------------- | ----------------------------------------------------------------------- |
    | Network Name    | Base Goerli                                                 | Base Sepolia                                                            |
    | RPC Endpoint    | [https://goerli.base.org](https://goerli.base.org)          | [https://sepolia.base.org](https://sepolia.base.org)                    |
    | Chain ID        | 84531                                                       | 84532                                                                   |
