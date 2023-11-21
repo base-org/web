@@ -87,11 +87,11 @@ Before you deploy, make sure you configure the rest of the items in the control 
 
 ### Public Provider
 
-By default, the setup script will configure your app to use the `publicProvider()`, and connect to a number of popular chains. To simply matters, remove all but `mainnnet`, `optimism`, and `base`.
+By default, the setup script will configure your app to use the `publicProvider()`, and connect to a number of popular chains. To simply matters, remove all but `mainnnet` and `base`.
 
 ```typescript
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, optimism, base],
+  [mainnet, base],
   [publicProvider()],
 );
 ```
@@ -142,7 +142,7 @@ Use these endpoints to add a `jsonRpcProvider` to your array of providers:
 
 ```typescript
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, optimism, base],
+  [mainnet, base],
   [
     jsonRpcProvider({
       rpc: () => ({
@@ -181,7 +181,7 @@ Import `alchemyProvider`, then add it to your list of providers:
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, optimism, base],
+  [mainnet, base],
   [
     // other providers
     alchemyProvider({ apiKey: 'yourAlchemyApiKey' }),
