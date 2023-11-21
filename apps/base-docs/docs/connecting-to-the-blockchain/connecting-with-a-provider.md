@@ -4,7 +4,7 @@ description: Configure several providers and use them to connect to the blockcha
 hide_table_of_contents: false
 ---
 
-[Rainbowkit] is a popular library that works with [wagmi] to make it easy to connect, disconnect, and change between multiple wallets. It's batteries-included out of the box, and allows for a great deal of customization of the list of wallets and connect/disconnect button.
+[RainbowKit] is a popular library that works with [wagmi] to make it easy to connect, disconnect, and change between multiple wallets. It's batteries-included out of the box, and allows for a great deal of customization of the list of wallets and connect/disconnect button.
 
 ---
 
@@ -19,7 +19,7 @@ By the end of this guide you should be able to:
 
 ## Connecting to the Blockchain
 
-We'll be using Rainbowkit's [quick start] to scaffold a new project for this guide.
+We'll be using RainbowKit's [quick start] to scaffold a new project for this guide.
 
 :::info
 
@@ -39,7 +39,7 @@ Give your project a name, and wait for the script to build it. It will take a mi
 
 ### Scaffolded App
 
-Open your new project in the editor of your choice, and open `pages/_app.tsx`. Here, you'll find a familiar Next.js app wrapped in [context providers] for Rainbowkit and wagmi.
+Open your new project in the editor of your choice, and open `pages/_app.tsx`. Here, you'll find a familiar Next.js app wrapped in [context providers] for RainbowKit and wagmi.
 
 ```typescript
 function MyApp({ Component, pageProps }: AppProps) {
@@ -104,7 +104,7 @@ yarn run dev
 
 Click the `Connect Wallet` button, select your wallet from the modal, approve the connection, and you should see your network, token balance, and address or ENS name at the top of the screen. Select your wallet from the modal.
 
-![Rainbowkit modal](../../assets/images/connecting-to-the-blockchain/rainbowkit-modal.png)
+![RainbowKit modal](../../assets/images/connecting-to-the-blockchain/rainbowkit-modal.png)
 
 You've connected with the Public Provider!
 
@@ -155,7 +155,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 );
 ```
 
-Now, the app will use your Quicknode endpoint for the Base network, and fall back to the public provider for others.
+Now, the app will use your QuickNode endpoint for the Base network, and fall back to the public provider for others.
 
 To test this out, comment out `publicProvider()`, and switch networks a few times. Unfortunately, wagmi won't generate an error when you try to connect to a network unsupported by the provider, but you will notice that the wallet balance is only shown correctly for Base, and no longer updates when you switch to other networks.
 
@@ -201,7 +201,7 @@ In this guide, you've learned how to connect your app to the blockchain using se
 ---
 
 [wagmi]: https://wagmi.sh
-[Rainbowkit]: https://www.rainbowkit.com
+[RainbowKit]: https://www.rainbowkit.com
 [quick start]: https://www.rainbowkit.com/docs/installation
 [context providers]: https://react.dev/learn/passing-data-deeply-with-context
 [WalletConnect]: https://cloud.walletconnect.com/

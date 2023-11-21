@@ -6,7 +6,7 @@ hide_table_of_contents: false
 
 # Overview of Connecting to the Blockchain
 
-These guides show you how to connect your frontend to the blockchain using JSON RPC blockchain providers, and the [Rainbowkit], [Wagmi], and [Viem] stack.
+These guides show you how to connect your frontend to the blockchain using JSON RPC blockchain providers, and the [RainbowKit], [wagmi], and [viem] stack.
 
 ---
 
@@ -38,6 +38,6 @@ These guides assume that you're reasonably comfortable writing basic smart contr
 
 [Basecamp]: https://base.org/camp
 [Next.js]: https://nextjs.org/
-[Rainbowkit]: https://rainbowkit.com/
-[Wagmi]: https://wagmi.sh/
-[Viem]: https://viem.sh/
+[RainbowKit]: https://rainbowkit.com/
+[wagmi]: https://wagmi.sh/
+[viem]: https://viem.sh/

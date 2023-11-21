@@ -221,7 +221,7 @@ export default function CafeUnitTest({ deployment, nftNum }) {
             <a href="https://www.coinbase.com/wallet">Coinbase Wallet here</a>.
           </div>
           <div>
-            You can also use <a href="https://metamask.io/">Metamask</a> and other popular wallets.
+            You can also use <a href="https://metamask.io/">MetaMask</a> and other popular wallets.
           </div>
         </div>
       );
