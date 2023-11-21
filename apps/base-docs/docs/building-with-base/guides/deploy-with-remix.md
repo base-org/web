@@ -105,9 +105,9 @@ Be safe and use separate wallets for separate purposes.
 
 :::
 
-First, add the [Coinbase] or [Metamask] wallet to your browser, and [set up] a new wallet. As a developer, you need to be doubly careful about the security of your wallet! Many apps grant special powers to the wallet address that is the owner of the contract, such as allowing the withdrawal of all the Ether that customers have paid to the contract, or changing critical settings.
+First, add the [Coinbase] or [MetaMask] wallet to your browser, and [set up] a new wallet. As a developer, you need to be doubly careful about the security of your wallet! Many apps grant special powers to the wallet address that is the owner of the contract, such as allowing the withdrawal of all the Ether that customers have paid to the contract, or changing critical settings.
 
-Once you've completed wallet setup, enable developer settings and turn on testnets ([Coinbase Settings], [Metamask Settings]).
+Once you've completed wallet setup, enable developer settings and turn on testnets ([Coinbase Settings], [MetaMask Settings]).
 
 ### Add the Base Goerli Network to your Wallet
 
@@ -128,7 +128,7 @@ The Coinbase Wallet has faucets built in. Find them by clicking Settings -> Deve
 
 You can also access the [faucets on the web].
 
-Once you have testnet Base Goerli Ether, you can view your balance under the _Testnets_ tab in the Coinbase wallet, or by selecting the testnet from the network dropdown in Metamask. Sadly, it's not actually worth the amount listed!
+Once you have testnet Base Goerli Ether, you can view your balance under the _Testnets_ tab in the Coinbase wallet, or by selecting the testnet from the network dropdown in MetaMask. Sadly, it's not actually worth the amount listed!
 
 ---
 
@@ -138,7 +138,7 @@ Once you have testnet Ether, you can deploy the `Storage` contract!
 
 ### Selecting the Environment
 
-Open the _Deploy & Run Transactions_ tab. Under _Environment_, select _Injected Provider_. It will list _Coinbase_, _Metamask_, or any other wallet you have activated here.
+Open the _Deploy & Run Transactions_ tab. Under _Environment_, select _Injected Provider_. It will list _Coinbase_, _MetaMask_, or any other wallet you have activated here.
 
 ![Environment](../../../assets/images/deployment-with-remix/select-provider.png)
 
@@ -217,7 +217,7 @@ You now have the power to put smart contracts on the blockchain! You've only dep
 [`goerli.basescan.org`]: https://goerli.basescan.org/
 [`basescan.org`]: https://basescan.org/
 [coinbase]: https://www.coinbase.com/wallet
-[metamask]: https://metamask.io/
+[MetaMask]: https://metamask.io/
 [set up]: https://www.youtube.com/watch?v=CZDgLG6jpgw
 [coinbase settings]: https://docs.cloud.coinbase.com/wallet-sdk/docs/developer-settings
 [etherscan]: https://etherscan.io/
