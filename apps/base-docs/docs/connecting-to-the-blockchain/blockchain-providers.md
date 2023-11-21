@@ -45,7 +45,7 @@ Most chains will list this information in their docs as well. For example, on th
 
 ### Wallet Providers
 
-Many wallets, including Coinbase Wallet and Metamask, inject an Ethereum provider into the browser, as defined in [EIP-1193]. The injected provider is accessible via `window.ethereum`.
+Many wallets, including Coinbase Wallet and MetaMask, inject an Ethereum provider into the browser, as defined in [EIP-1193]. The injected provider is accessible via `window.ethereum`.
 
 Under the hood, these are also just JSON RPC providers. Similar to public providers, they are rate-limited.
 
@@ -53,7 +53,7 @@ Older tutorials for early libraries tended to suggest using this method for gett
 
 ### Vendor Providers
 
-A growing number of vendors provide access to blockchain nodes as a service. Visiting the landing pages for [Quicknode] or [Alchemy] can be a little confusing. Each of these vendors provides a wide variety of services, SDKs, and information.
+A growing number of vendors provide access to blockchain nodes as a service. Visiting the landing pages for [QuickNode] or [Alchemy] can be a little confusing. Each of these vendors provides a wide variety of services, SDKs, and information.
 
 Luckily, you can skip most of this if you're just trying to get your frontend connected to your smart contracts. You'll just need to sign up for an account and get an endpoint, or a key, and configure your app to connect to the provider(s) you choose.
 
@@ -61,7 +61,7 @@ It is worth digging in to get a better understanding of how these providers char
 
 Note that the information below may change, and varies by network. Each provider also has different incentives, discounts, and fees for each level of product. They also have different allowances for calls per second, protocols, and number of endpoints. Please check the source to confirm!
 
-|                 | [Alchemy Costs]  | [Quicknode Costs] |
+|                 | [Alchemy Costs]  | [QuickNode Costs] |
 | :-------------- | :--------------- | :---------------- |
 | Free Tier / Mo. | 3M compute units | 50M credits       |
 | Mid Tier / Mo.  | 1.5B CUs @ $199  | 3B credits @ $299 |
@@ -87,9 +87,9 @@ In this article, you've learned how Providers supply blockchain connection as a 
 [Optimism]: https://community.optimism.io/docs/useful-tools/networks/
 [EIP-1193]: https://eips.ethereum.org/EIPS/eip-1193
 [Alchemy]: https://www.alchemy.com/
-[Quicknode]: https://www.quicknode.com/
+[QuickNode]: https://www.quicknode.com/
 [Alchemy Costs]: https://docs.alchemy.com/reference/compute-unit-costs
-[Quicknode Costs]: https://www.quicknode.com/api-credits/base
+[QuickNode Costs]: https://www.quicknode.com/api-credits/base
 [smart contract development]: https://base.org/camp
 [run your own node]: https://docs.base.org/guides/run-a-base-node
 [React Context API]: https://react.dev/learn/passing-data-deeply-with-context

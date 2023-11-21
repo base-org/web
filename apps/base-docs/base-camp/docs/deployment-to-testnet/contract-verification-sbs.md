@@ -68,10 +68,8 @@ With your contracts verified, you can interact with them using online tools and 
 
 [`goerli.basescan.org`]: https://goerli.basescan.org/
 [coinbase]: https://www.coinbase.com/wallet
-[metamask]: https://metamask.io/
 [faucet]: https://docs.base.org/tools/network-faucets
 [set up]: https://www.youtube.com/watch?v=CZDgLG6jpgw
 [coinbase settings]: https://docs.cloud.coinbase.com/wallet-sdk/docs/developer-settings
-[Metamask Settings]: https://support.metamask.io/hc/en-us/articles/13946422437147-How-to-view-testnets-in-MetaMask
 [etherscan]: https://etherscan.io/
 [faucets on the web]: https://coinbase.com/faucets
