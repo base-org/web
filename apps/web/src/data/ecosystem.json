@@ -9,11 +9,56 @@
     "imageUrl": "/images/partners/wallet-retail.webp"
   },
   {
+    "name": "Envio",
+    "url": "https://envio.dev",
+    "description": "Envio is a modern, multi-chain EVM blockchain indexing framework speed-optimized for querying real-time and historical data. ",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/envio.png"
+  },
+  {
+    "name": "Cobo Argus",
+    "url": "https://www.cobo.com/argus",
+    "description": "Cobo Argus is a secure and efficient on-chain digital asset management solution that supports role-based access controls, DeFi investment strategies and more. ",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/coboargus.png"
+  },
+  {
+    "name": "Surf Protocol",
+    "url": "https://www.surf.one/",
+    "description": "the first permissionless derivative exchange, enabling trading and listing of over 10,000+ assets.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/surf.png"
+  },
+  {
+    "name": "LlamaNodes",
+    "url": "https://llamanodes.com/",
+    "description": "Fast and private RPC infrastructure designed for Web3 native teams 🦙",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/llamanodes.png"
+  },
+  {
+    "name": "OKLink",
+    "url": "https://www.oklink.com/base",
+    "description": "OKLink Base explorer is a multi-chain aggregated blockchain explorer that allows users to search through transactions, blocks, wallet addresses, smart contracts and other on-chain data covering 20+ mainstream chains including BTC, ETH, BSC, Base,Solana, polygon,etc. OKLink Base explorer is an intuitive and powerful explorer to be part of the Base ecosystem.",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/oklink.png"
+  },
+  {
     "name": "Symbiosis",
     "url": "https://app.symbiosis.finance/",
     "description": "Symbiosis is a cross-chain AMM DEX that pools together liquidity from different networks: L1s and L2s, EVM and non-EVM. With Symbiosis, you can easily swap any token and move your assets across different networks.",
     "tags": [
-      "defi"
+      "bridge"
     ],
     "imageUrl": "/images/partners/symbiosis.png"
   },
