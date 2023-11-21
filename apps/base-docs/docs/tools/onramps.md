@@ -1,6 +1,8 @@
 ---
 title: Onramps
 slug: /tools/onramps
+description: Documentation for fiat-to-crypto onramps for the Base network.
+keywords: [fiat-to-crypto onramps, crypto onramp, onramps, Base, Base network, cryptocurrency, ETH on Base, payment gateway, payments, fiat to crypto, fiat, Coinbase Pay, MoonPay, Onramp]
 ---
 
 # Onramps

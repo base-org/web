@@ -1,6 +1,7 @@
 ---
 title: Overview
 description: What's in this learning material.
+keywords: [blockchain providers, JSON RPC, Rainbowkit, Wagmi, Viem, frontend, smart contract development, EVM, Next.js, Base, Base network, Base node providers, Base providers]
 hide_table_of_contents: false
 ---
 

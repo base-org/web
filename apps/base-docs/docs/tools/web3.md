@@ -1,6 +1,8 @@
 ---
 title: web3.js
 slug: /tools/web3
+description: Documentation for using web3.js, a JavaScript library for interacting with EVM-compatible blockchains. This page covers installation, setup, connecting to the Base network and interacting with smart contracts.
+keywords: [web3.js, Base, Base mainnet, Base testnet, Base network, JavaScript, EVM, client library, blockchain, smart contracts, Ethereum, RPC URL]
 ---
 
 # web3.js

@@ -1,6 +1,8 @@
 ---
 title: thirdweb SDK
 slug: /tools/thirdweb-sdk
+description: Documentation for using the thirdweb SDK for building web3 applications and interacting with smart contracts on Base. This page covers installation, initialization, and functionalities in various programming languages.
+keywords: [thirdweb SDK, thirdweb, Base, Base mainnet, Base testnet, Base network, web3 applications, smart contracts, React, TypeScript]
 ---
 
 # thirdweb SDK

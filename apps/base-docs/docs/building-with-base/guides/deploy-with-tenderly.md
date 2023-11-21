@@ -1,6 +1,8 @@
 ---
 title: Using Tenderly
 slug: /guides/deploy-with-tenderly
+description: A guide on deploying smart contracts using Tenderly DevNets. This page covers setup, debugging, transaction simulations, and continuous integration for smart contract development on Base Network.
+keywords: [Tenderly, smart contract, Tenderly DevNets, Base, Base Network, deployment, debugging, transaction simulations, continuous integration, DevNet environment, YAML templates, Hardhat integration, deploy a smart contract, debug a smart contract, smart contract on Base, build on Base]
 ---
 
 # Deploying a Smart Contract using Tenderly

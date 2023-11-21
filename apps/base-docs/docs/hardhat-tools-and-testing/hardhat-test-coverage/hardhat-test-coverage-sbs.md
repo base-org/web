@@ -1,6 +1,7 @@
 ---
 title: Smart Contract Test Coverage
 description: Profiling test coverage with Hardhat and Solidity Coverage
+keywords: [Solidity Coverage, Smart Contract Testing, Test Coverage, Base network, Base blockchain, blockchain development, Hardhat, Solidity, Code Testing, Test Suite Analysis]
 hide_table_of_contents: false
 ---
 
