@@ -1,6 +1,6 @@
 ---
 title: Intro to Account Abstraction
-description:
+description: Learn what Account Abstraction it, how it works and what problems it solves.
 hide_table_of_contents: false
 ---
 
