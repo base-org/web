@@ -1,6 +1,26 @@
 ---
 title: Network Information
 slug: /network-information
+description: Documentation about Base Mainnet and Base Testnet. This page covers network information for the Base network, including network names, descriptions, RPC endpoints, chain IDs, currency symbols, and block explorers.
+keywords:
+  [
+    Base network,
+    Base Mainnet,
+    Base Testnet,
+    Goerli,
+    Sepolia,
+    Base Goerli,
+    Base Sepolia,
+    RPC URL,
+    Base RPC URL,
+    Base RPC,
+    Chain ID,
+    chainid,
+    Base Chain ID,
+    Base chainId,
+    network information,
+    Base network information,
+  ]
 ---
 
 # Network Information
@@ -23,7 +43,7 @@ slug: /network-information
 #### Base Testnet (Goerli)
 
 | Name            | Value                                                                                                 |
-| :-------------- |:------------------------------------------------------------------------------------------------------|
+| :-------------- | :---------------------------------------------------------------------------------------------------- |
 | Network Name    | Base Goerli                                                                                           |
 | Description     | A public testnet for Base.                                                                            |
 | RPC Endpoint    | [https://goerli.base.org](https://goerli.base.org)<br/>_Rate limited and not for production systems._ |
@@ -36,13 +56,13 @@ slug: /network-information
 #### Base Testnet (Sepolia)
 
 | Name            | Value                                                                                                   |
-| :-------------- |:--------------------------------------------------------------------------------------------------------|
+| :-------------- | :------------------------------------------------------------------------------------------------------ |
 | Network Name    | Base Sepolia                                                                                            |
 | Description     | A public testnet for Base.                                                                              |
 | RPC Endpoint    | [https://sepolia.base.org](https://sepolia.base.org)<br/>_Rate limited and not for production systems._ |
 | Chain ID        | 84532                                                                                                   |
 | Currency Symbol | ETH                                                                                                     |
-| Block Explorer  | [https://sepolia-explorer.base.org](https://sepolia-explorer.base.org)                                            |
+| Block Explorer  | [https://sepolia-explorer.base.org](https://sepolia-explorer.base.org)                                  |
 
 ---
 

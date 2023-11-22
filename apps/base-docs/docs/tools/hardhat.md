@@ -1,6 +1,23 @@
 ---
 title: Hardhat
 slug: /tools/hardhat
+description: Documentation for configuring Hardhat for smart contract development on Base, including setup instructions for mainnet, testnet, and local development environments.
+keywords:
+  [
+    Hardhat,
+    Base,
+    Base network,
+    Base mainnet,
+    Base testnet,
+    hardhat config,
+    hardhat configuration,
+    Ethereum development,
+    smart contract,
+    deployment,
+    mainnet,
+    testnet,
+    local development,
+  ]
 ---
 
 # Hardhat
@@ -20,7 +37,7 @@ networks: {
    // for mainnet
    "base-mainnet": {
      url: 'https://mainnet.base.org',
-     accounts: [process.env.WALLET_KEY as string],
+     accounts: [process.env.PRIVATE_KEY as string],
      gasPrice: 1000000000,
    },
    // for testnet

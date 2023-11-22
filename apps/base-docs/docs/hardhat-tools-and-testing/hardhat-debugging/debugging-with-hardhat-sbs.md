@@ -1,6 +1,16 @@
 ---
 title: Debugging with Hardhat
 description: Debugging smart contracts with Hardhat.
+keywords:
+  [
+    Hardhat,
+    smart contract debugging,
+    debugging logs,
+    common errors,
+    console.log,
+    error resolution,
+    decentralized applications,
+  ]
 hide_table_of_contents: false
 ---
 

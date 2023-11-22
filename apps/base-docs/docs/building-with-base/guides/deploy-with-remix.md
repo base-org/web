@@ -1,6 +1,9 @@
 ---
 title: Using Remix
 slug: /guides/deploy-with-remix
+description: "A guide on deploying a smart contract on the Base test network using Remix IDE. Includes instructions for
+setting up the environment, compiling, and deploying the smart contract."
+keywords: ["Remix", "Remix IDE", "smart contract", "Base", "Base test network", "Base testnet", "Node.js", "Solidity", "smart contract deployment", "deploy a smart contract", "build on base", "write smart contract", "smart contract development", "online IDE"]
 ---
 
 # Deploying a Smart Contract using Remix
