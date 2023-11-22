@@ -1,6 +1,22 @@
 ---
 title: Running a Base Node
 slug: /guides/run-a-base-node
+description: A guide for setting up and running a Base Node.
+keywords:
+  [
+    Base Node setup,
+    running a node,
+    base node,
+    run a Base noed,
+    hardware requirements,
+    node synchronization,
+    node snapshots,
+    Base chain,
+    Base blockchain,
+    Base network,
+    node deployment,
+    Ethereum node,
+  ]
 ---
 
 This guide will walk you through setting up your own [Base Node].

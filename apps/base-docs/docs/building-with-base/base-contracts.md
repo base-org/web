@@ -1,6 +1,20 @@
 ---
 title: Base Contracts
 slug: /base-contracts
+description: A comprehensive list of L2 contract addresses for Base Mainnet and Base Testnet, including links to their respective blockchain explorers.
+keywords:
+  [
+    Base,
+    Base network,
+    contracts,
+    Base contracts,
+    L2 contract addresses,
+    Base contract addresses,
+    smart contracts,
+    Base smart contracts,
+    Base Mainnet,
+    Base Testnet,
+  ]
 ---
 
 # Contract Addresses
@@ -93,23 +107,23 @@ Certain contracts are mandatory according to the [OP Stack SDK](https://stack.op
 ### Ethereum Testnet (Sepolia)
 
 | Name                         | Address                                                                                                                       |
-| :--------------------------- |:------------------------------------------------------------------------------------------------------------------------------|
+| :--------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | AddressManager               | [0x709c2B8ef4A9feFc629A8a2C1AF424Dc5BD6ad1B](https://sepolia.etherscan.io/address/0x709c2B8ef4A9feFc629A8a2C1AF424Dc5BD6ad1B) |
-| L1CrossDomainMessenger       | [0xC34855F4De64F1840e5686e64278da901e261f20](https://sepolia.etherscan.io/address/0xC34855F4De64F1840e5686e64278da901e261f20)  |
-| L1ERC721Bridge               | [0x21eFD066e581FA55Ef105170Cc04d74386a09190](https://sepolia.etherscan.io/address/0x21eFD066e581FA55Ef105170Cc04d74386a09190)  |
-| L1StandardBridge             | [0xfd0Bf71F60660E2f608ed56e1659C450eB113120](https://sepolia.etherscan.io/address/0xfd0Bf71F60660E2f608ed56e1659C450eB113120)  |
-| L2OutputOracle               | [0x84457ca9D0163FbC4bbfe4Dfbb20ba46e48DF254](https://sepolia.etherscan.io/address/0x84457ca9D0163FbC4bbfe4Dfbb20ba46e48DF254)  |
-| OptimismMintableERC20Factory | [0xb1efB9650aD6d0CC1ed3Ac4a0B7f1D5732696D37](https://sepolia.etherscan.io/address/0xb1efB9650aD6d0CC1ed3Ac4a0B7f1D5732696D37)  |
-| OptimismPortal               | [0x49f53e41452C74589E85cA1677426Ba426459e85](https://sepolia.etherscan.io/address/0x49f53e41452C74589E85cA1677426Ba426459e85)  |
-| ProxyAdmin                   | [0x0389E59Aa0a41E4A413Ae70f0008e76CAA34b1F3](https://sepolia.etherscan.io/address/0x0389E59Aa0a41E4A413Ae70f0008e76CAA34b1F3)  |
-| SystemConfig                 | [0xf272670eb55e895584501d564AfEB048bEd26194](https://sepolia.etherscan.io/address/0xf272670eb55e895584501d564AfEB048bEd26194)  |
+| L1CrossDomainMessenger       | [0xC34855F4De64F1840e5686e64278da901e261f20](https://sepolia.etherscan.io/address/0xC34855F4De64F1840e5686e64278da901e261f20) |
+| L1ERC721Bridge               | [0x21eFD066e581FA55Ef105170Cc04d74386a09190](https://sepolia.etherscan.io/address/0x21eFD066e581FA55Ef105170Cc04d74386a09190) |
+| L1StandardBridge             | [0xfd0Bf71F60660E2f608ed56e1659C450eB113120](https://sepolia.etherscan.io/address/0xfd0Bf71F60660E2f608ed56e1659C450eB113120) |
+| L2OutputOracle               | [0x84457ca9D0163FbC4bbfe4Dfbb20ba46e48DF254](https://sepolia.etherscan.io/address/0x84457ca9D0163FbC4bbfe4Dfbb20ba46e48DF254) |
+| OptimismMintableERC20Factory | [0xb1efB9650aD6d0CC1ed3Ac4a0B7f1D5732696D37](https://sepolia.etherscan.io/address/0xb1efB9650aD6d0CC1ed3Ac4a0B7f1D5732696D37) |
+| OptimismPortal               | [0x49f53e41452C74589E85cA1677426Ba426459e85](https://sepolia.etherscan.io/address/0x49f53e41452C74589E85cA1677426Ba426459e85) |
+| ProxyAdmin                   | [0x0389E59Aa0a41E4A413Ae70f0008e76CAA34b1F3](https://sepolia.etherscan.io/address/0x0389E59Aa0a41E4A413Ae70f0008e76CAA34b1F3) |
+| SystemConfig                 | [0xf272670eb55e895584501d564AfEB048bEd26194](https://sepolia.etherscan.io/address/0xf272670eb55e895584501d564AfEB048bEd26194) |
 
 ## Base Admin Addresses
 
 ### Base Mainnet
 
 | Admin Role                       | Address                                                                                                               | Type of Key                               |
-| :------------------------------- | :-------------------------------------------------------------------------------------------------------------------- |:------------------------------------------|
+| :------------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- |
 | Batch Sender                     | [0x5050f69a9786f081509234f1a7f4684b5e5b76c9](https://etherscan.io/address/0x5050f69a9786f081509234f1a7f4684b5e5b76c9) | EOA managed by Coinbase Technologies      |
 | Batch Inbox                      | [0xff00000000000000000000000000000000008453](https://etherscan.io/address/0xff00000000000000000000000000000000008453) | EOA (with no known private key)           |
 | Output Proposer                  | [0x642229f238fb9de03374be34b0ed8d9de80752c5](https://etherscan.io/address/0x642229f238fb9de03374be34b0ed8d9de80752c5) | EOA managed by Coinbase Technologies      |
@@ -126,7 +140,7 @@ Certain contracts are mandatory according to the [OP Stack SDK](https://stack.op
 ### Base Testnet (Goerli)
 
 | Admin Role              | Address                                                                                                                      | Type of Key                               |
-| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------- |:------------------------------------------|
+| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- |
 | Batch Sender            | [0x73b4168cc87f35cc239200a20eb841cded23493b](https://goerli.etherscan.io/address/0x73b4168cc87f35cc239200a20eb841cded23493b) | EOA managed by Coinbase Technologies      |
 | Batch Inbox             | [0x8453100000000000000000000000000000000000](https://goerli.etherscan.io/address/0x8453100000000000000000000000000000000000) | EOA (with no known private key)           |
 | Output Proposer         | [0x4f28beb40635093b72def43d0ad801cdd8e0e6fe](https://goerli.etherscan.io/address/0x4f28beb40635093b72def43d0ad801cdd8e0e6fe) | EOA managed by Coinbase Technologies      |
@@ -142,13 +156,13 @@ Certain contracts are mandatory according to the [OP Stack SDK](https://stack.op
 
 ### Base Testnet (Sepolia)
 
-| Admin Role              | Address                                                                                                                            | Type of Key                          |
-| :---------------------- |:-----------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------|
-| Batch Sender            | [0x6CDEbe940BC0F26850285cacA097C11c33103E47](https://sepolia.etherscan.io/address/0x6CDEbe940BC0F26850285cacA097C11c33103E47)      | EOA managed by Coinbase Technologies |
-| Batch Inbox             | [0xff00000000000000000000000000000000084532](https://sepolia.etherscan.io/address/0xff00000000000000000000000000000000084532)      | EOA (with no known private key)      |
-| Output Proposer         | [0x20044a0d104E9e788A0C984A2B7eAe615afD046b](https://sepolia.etherscan.io/address/0x20044a0d104E9e788A0C984A2B7eAe615afD046b)      | EOA managed by Coinbase Technologies |
-| Proxy Admin Owner (L1)  | [0x608081689Fe46936fB2fBDF7552CbB1D80ad4822](https://sepolia.etherscan.io/address/0x608081689Fe46936fB2fBDF7552CbB1D80ad4822)      | EOA managed by Coinbase Technologies |
-| Proxy Admin Owner (L2)  | [0x608081689Fe46936fB2fBDF7552CbB1D80ad4822](https://sepolia-explorer.base.org/address/0x608081689Fe46936fB2fBDF7552CbB1D80ad4822) | EOA managed by Coinbase Technologies |
-| Challenger              | [0xDa3037Ff70Ac92CD867c683BD807e5A484857405](https://sepolia.etherscan.io/address/0xDa3037Ff70Ac92CD867c683BD807e5A484857405)      | EOA managed by Coinbase Technologies |
-| System config owner     | [0x608081689Fe46936fB2fBDF7552CbB1D80ad4822](https://sepolia.etherscan.io/address/0x608081689Fe46936fB2fBDF7552CbB1D80ad4822)      | EOA managed by Coinbase Technologies |
-| Guardian                | [0xA9FF930151130fd19DA1F03E5077AFB7C78F8503](https://sepolia.etherscan.io/address/0xA9FF930151130fd19DA1F03E5077AFB7C78F8503)      | EOA managed by Coinbase Technologies |
+| Admin Role             | Address                                                                                                                            | Type of Key                          |
+| :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------- |
+| Batch Sender           | [0x6CDEbe940BC0F26850285cacA097C11c33103E47](https://sepolia.etherscan.io/address/0x6CDEbe940BC0F26850285cacA097C11c33103E47)      | EOA managed by Coinbase Technologies |
+| Batch Inbox            | [0xff00000000000000000000000000000000084532](https://sepolia.etherscan.io/address/0xff00000000000000000000000000000000084532)      | EOA (with no known private key)      |
+| Output Proposer        | [0x20044a0d104E9e788A0C984A2B7eAe615afD046b](https://sepolia.etherscan.io/address/0x20044a0d104E9e788A0C984A2B7eAe615afD046b)      | EOA managed by Coinbase Technologies |
+| Proxy Admin Owner (L1) | [0x608081689Fe46936fB2fBDF7552CbB1D80ad4822](https://sepolia.etherscan.io/address/0x608081689Fe46936fB2fBDF7552CbB1D80ad4822)      | EOA managed by Coinbase Technologies |
+| Proxy Admin Owner (L2) | [0x608081689Fe46936fB2fBDF7552CbB1D80ad4822](https://sepolia-explorer.base.org/address/0x608081689Fe46936fB2fBDF7552CbB1D80ad4822) | EOA managed by Coinbase Technologies |
+| Challenger             | [0xDa3037Ff70Ac92CD867c683BD807e5A484857405](https://sepolia.etherscan.io/address/0xDa3037Ff70Ac92CD867c683BD807e5A484857405)      | EOA managed by Coinbase Technologies |
+| System config owner    | [0x608081689Fe46936fB2fBDF7552CbB1D80ad4822](https://sepolia.etherscan.io/address/0x608081689Fe46936fB2fBDF7552CbB1D80ad4822)      | EOA managed by Coinbase Technologies |
+| Guardian               | [0xA9FF930151130fd19DA1F03E5077AFB7C78F8503](https://sepolia.etherscan.io/address/0xA9FF930151130fd19DA1F03E5077AFB7C78F8503)      | EOA managed by Coinbase Technologies |

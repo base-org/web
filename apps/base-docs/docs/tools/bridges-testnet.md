@@ -1,6 +1,26 @@
 ---
 title: Testnet
 slug: /tools/bridges-testnet
+description: Documentation for bridging assets to the Base testnet. This page covers how to bridge ETH and ERC-20s between Ethereum testnet and Base testnet, with essential cautions and contract information.
+keywords:
+  [
+    Base,
+    Base network,
+    bridging,
+    bridge to base,
+    bridge eth,
+    bridge eth to base,
+    Base Bridge,
+    Wormhole Token Bridge,
+    Ethereum Goerli,
+    Base Goerli,
+    Ethereum Sepolia,
+    Base Sepolia,
+    ETH,
+    ERC-20 tokens,
+    Base Testnet,
+    asset bridging,
+  ]
 ---
 
 # Bridges

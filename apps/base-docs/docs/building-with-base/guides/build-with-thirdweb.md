@@ -1,6 +1,26 @@
 ---
 title: Using thirdweb
 slug: /guides/build-with-thirdweb
+description: A guide on building an NFT gallery app using thirdweb, including steps for creating an NFT collection, minting NFTs, and configuring the app for the Base testnet.
+keywords:
+  [
+    thirdweb,
+    onchain app,
+    dapp,
+    NFT,
+    NFT collection,
+    smart contract,
+    Base blockchain,
+    Base network,
+    Base testnet,
+    Base test network,
+    mint NFTs,
+    web3 wallet,
+    app development,
+    dapp development,
+    build a dapp on Base,
+    build on Base,
+  ]
 ---
 
 # Building an App using thirdweb

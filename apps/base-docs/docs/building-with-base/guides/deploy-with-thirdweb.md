@@ -1,6 +1,28 @@
 ---
 title: Using thirdweb
 slug: /guides/deploy-with-thirdweb
+description: A guide on deploying and interacting with smart contracts using the thirdweb CLI and SDK. Includes instructions for project creation, contract deployment on the Base test network.
+keywords:
+  [
+    thirdweb,
+    thirdweb CLI,
+    thirdweb SDK,
+    Base,
+    Base network,
+    smart contracts,
+    deployment,
+    Base testnet,
+    CLI,
+    Solidity,
+    ERC721,
+    web3 development,
+    SDKs,
+    React,
+    deploy a smart contract,
+    debug a smart contract,
+    smart contract on Base,
+    build on Base,
+  ]
 ---
 
 # Deploying a Smart Contract using thirdweb

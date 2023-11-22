@@ -1,6 +1,22 @@
 ---
 title: ethers.js
 slug: /tools/ethers
+description: Documentation for using ethers.js, a JavaScript library for EVM-compatible blockchain interactions. This page covers installation, setup, connecting to the Base network, reading and writing blockchain data, and interacting with smart contracts.
+keywords:
+  [
+    ethers.js,
+    JavaScript library,
+    Base network,
+    Base mainnet,
+    Base testnet,
+    smart contracts,
+    EVM-compatible,
+    blockchain,
+    JsonRpcProvider,
+    Signer,
+    ABI,
+    interacting with smart contract,
+  ]
 ---
 
 # ethers.js

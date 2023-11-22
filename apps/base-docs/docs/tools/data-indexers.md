@@ -1,6 +1,23 @@
 ---
 title: Data Indexers
 slug: /tools/data-indexers
+description: Documentation for data indexing platforms for Base network.
+keywords:
+  [
+    data indexers,
+    data indexer,
+    indexing data,
+    Base network,
+    Base,
+    Base mainnet,
+    Base testnet,
+    blockchain data,
+    Covalent,
+    SubQuery,
+    The Graph,
+    GraphQL,
+    EVM chains,
+  ]
 ---
 
 # Data Indexers

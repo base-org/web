@@ -1,6 +1,23 @@
 ---
 title: Blockchain Providers
 description: Learn what providers are and why you need one.
+keywords:
+  [
+    blockchain development,
+    dApps,
+    smart contracts,
+    providers,
+    public providers,
+    wallet providers,
+    vendor providers,
+    rate limits,
+    blockchain API,
+    Ethereum provider,
+    Base,
+    Base network,
+    Base node providers,
+    Base providers,
+  ]
 hide_table_of_contents: false
 ---
 

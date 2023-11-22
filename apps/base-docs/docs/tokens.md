@@ -1,6 +1,20 @@
 ---
 title: Tokens
 slug: /tokens/list
+description: How to submit ERC-20 tokens for bridging between Ethereum and Base as a token issuer.
+keywords:
+  [
+    Base Token List,
+    ERC-20 tokens,
+    Ethereum,
+    Base Mainnet,
+    Base Bridge,
+    token bridging,
+    token submission,
+    Optimism Superchain,
+    token deployment,
+    add token to Base,
+  ]
 ---
 
 # The Base Token List

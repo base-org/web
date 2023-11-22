@@ -1,6 +1,22 @@
 ---
 title: Network Faucets
 slug: /tools/network-faucets
+description: Documentation for Testnet Faucets for the Base network. Details how to obtain Base testnet ETH.
+keywords:
+  [
+    network faucets,
+    Base Goerli,
+    Base Sepolia,
+    testnet ETH,
+    Base testnet,
+    Coinbase Faucet,
+    Superchain Faucet,
+    Bware Labs Faucet,
+    QuickNode Faucet,
+    LearnWeb3 Faucet,
+    Ethereum Mainnet,
+    testnet resources,
+  ]
 ---
 
 # Network Faucets
