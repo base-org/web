@@ -18,8 +18,10 @@ These minor differences include:
 
 :::info
 
-Aside from the above, Base Mainnet and Testnet do not yet support the new [`PUSH0`](https://eips.ethereum.org/EIPS/eip-3855) opcode introduced in Shanghai, which is the default target for the Solidity compiler if you use version `0.8.20` or later.
+Aside from the above, Base Mainnet does not yet support the new [`PUSH0`](https://eips.ethereum.org/EIPS/eip-3855) opcode introduced in Shanghai, which is the default target for the Solidity compiler if you use version `0.8.20` or later.
 
 We recommend using `0.8.19` or lower until this is upgraded.
+
+The update has been deployed to Base Goerli and Base Sepolia.
 
 :::

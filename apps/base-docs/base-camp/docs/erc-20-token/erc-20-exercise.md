@@ -87,14 +87,6 @@ If this vote takes the total number of votes to or above the `quorum` for that v
 
 ### Submit your Contract and Earn an NFT Badge! (BETA)
 
-:::warning
-
-Base Goerli does not yet support the new `PUSH0` opcode introduced in _Shanghai_, which is the default target for the Solidity compiler if you use version `0.8.20` or later. You will get an error when you attempt to deploy.
-
-All exercises were built and tested with `0.8.17`. We recommend using this version until the upgrade.
-
-:::
-
 :::caution
 
 The contract specification contains actions that can only be performed once by a given address. As a result, the unit tests for a passing contract will only be successful the **first** time you test.

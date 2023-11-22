@@ -53,14 +53,6 @@ Add a function called `resetUserFavorites` that resets `userFavorites` for the s
 
 ### Submit your Contract and Earn an NFT Badge! (BETA)
 
-:::warning
-
-Base Goerli does not yet support the new `PUSH0` opcode introduced in _Shanghai_, which is the default target for the Solidity compiler if you use version `0.8.20` or later. You will get an error when you attempt to deploy.
-
-All exercises were built and tested with `0.8.17`. We recommend using this version until the upgrade.
-
-:::
-
 import data from "../../assets/deployments/MappingsUT.json";
 import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
