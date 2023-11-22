@@ -3,16 +3,20 @@ import { request } from 'apps/bridge/src/http/fetchJSON';
 
 type UseConversionRateParams = {
   asset: string;
+  refetch?: boolean;
 };
 
 type CoinGeckoResponseType = Record<
-string,
-{
-  usd: number;
-}
+  string,
+  {
+    usd: number;
+  }
 >;
 
-export function useConversionRate({ asset }: UseConversionRateParams): number | undefined {
+export function useConversionRate({
+  asset,
+  refetch = true,
+}: UseConversionRateParams): number | undefined {
   const { data } = useQuery(
     asset,
     async () => {
@@ -25,8 +29,11 @@ export function useConversionRate({ asset }: UseConversionRateParams): number | 
     },
     {
       suspense: false,
-      staleTime: 15000,
-      refetchInterval: 1000 * 30,
+      staleTime: refetch ? 15000 : Infinity,
+      refetchInterval: refetch ? 1000 * 30 : false,
+      refetchOnMount: refetch,
+      refetchOnReconnect: refetch,
+      refetchIntervalInBackground: refetch,
     },
   );
 
