@@ -39,11 +39,11 @@ export function TransactionSummaryModal({
   const fiatAmount = usdFormatter(parseFloat(amount) * (assetConversionRate ?? 0));
 
   const proveTooltipText =
-    "To withdraw, you'll need to submit 2 additional transactions on L1. Submitting these transactions requires enough ETH to pay for the L1 gas fees.";
+    'In order to complete a withdrawal, you must submit two additional L1 transactions, each of which requires enough ETH to pay for L1 gas fees charged by the Ethereum network.';
   const finalizeTooltipText =
     selectedAsset.protocol === 'CCTP'
-      ? "To withdraw, you'll need to submit an additional transaction on L1. Submitting this transaction requires enough ETH to pay for the L1 gas fee."
-      : "To withdraw, you'll need to submit 2 additional transactions on L1. Submitting these transactions requires enough ETH to pay for the L1 gas fees.";
+      ? 'In order to complete a withdrawal, you must submit an additional L1 transaction which requires enough ETH to pay for L1 gas fees charged by the Ethereum network.'
+      : 'In order to complete a withdrawal, you must submit two additional L1 transactions, each of which requires enough ETH to pay for L1 gas fees charged by the Ethereum network.';
 
   const content = (
     <div className="flex w-96 flex-col space-y-4">
@@ -78,7 +78,7 @@ export function TransactionSummaryModal({
             <Tooltip>{proveTooltipText}</Tooltip>
           </div>
           <div className="flex flex-col items-end">
-            <span className="text-white">{feesInETH.prove.toFixed(4)} ETH</span>
+            <span className="text-white">{feesInETH.prove} ETH</span>
             <span>{feesInUSD.prove}</span>
           </div>
         </div>
@@ -89,8 +89,17 @@ export function TransactionSummaryModal({
           <Tooltip>{finalizeTooltipText}</Tooltip>
         </div>
         <div className="flex flex-col items-end">
-          <span className="text-white">{feesInETH.finalize.toFixed(4)} ETH</span>
+          <span className="text-white">{feesInETH.finalize} ETH</span>
           <span>{feesInUSD.finalize}</span>
+        </div>
+      </div>
+      <div className="flex w-full flex-row items-center justify-between pt-8">
+        <div className="flex flex-col items-start">
+          <span className="text-white">Fee total (est.)</span>
+        </div>
+        <div className="flex flex-col items-end">
+          <span className="text-white">{feesInETH.total} ETH</span>
+          <span>{feesInUSD.total}</span>
         </div>
       </div>
     </div>
