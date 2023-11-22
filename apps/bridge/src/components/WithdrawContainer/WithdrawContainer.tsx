@@ -31,6 +31,7 @@ import { useIsContractApproved } from 'apps/bridge/src/utils/hooks/useIsContract
 import { useApproveContract } from 'apps/bridge/src/utils/hooks/useApproveContract';
 import { BridgeButton } from 'apps/bridge/src/components/BridgeButton/BridgeButton';
 import { parseUnits } from 'viem';
+import { TransactionSummaryModal } from 'apps/bridge/src/components/WithdrawContainer/TransactionSummaryModal';
 
 const activeAssets = getWithdrawalAssetsForChainEnv();
 
@@ -136,6 +137,12 @@ export function WithdrawContainer() {
     bridgeDirection: 'withdraw',
   });
   const { writeAsync: withdrawCCTPAssetWrite } = useContractWrite(withdrawCCTPAssetConfig);
+
+  const {
+    isOpen: isTransactionSummaryModalOpen,
+    onOpen: onOpenTransactionSummaryModal,
+    onClose: onCloseTransactionSummaryModal,
+  } = useDisclosure();
 
   const {
     isOpen: isWithdrawModalOpen,
@@ -252,8 +259,19 @@ export function WithdrawContainer() {
     onCloseWithdrawModal,
   ]);
 
+  const handleProceedToApproval = useCallback(() => {
+    onCloseTransactionSummaryModal();
+    initiateApproval();
+  }, [initiateApproval, onCloseTransactionSummaryModal]);
+
+  const handleProceedToWithdraw = useCallback(() => {
+    onCloseTransactionSummaryModal();
+    initiateWithdrawal();
+  }, [initiateWithdrawal, onCloseTransactionSummaryModal]);
+
   let button;
   let withdrawDisabled;
+  let transactionSummaryModal;
 
   if (!isWalletConnected) {
     button = (
@@ -265,12 +283,22 @@ export function WithdrawContainer() {
 
     button = (
       <BridgeButton
-        onClick={initiateApproval}
+        onClick={onOpenTransactionSummaryModal}
         disabled={withdrawDisabled}
         className="text-md flex w-full items-center justify-center rounded-md p-4 font-sans font-bold uppercase sm:w-auto"
       >
         Approval
       </BridgeButton>
+    );
+    transactionSummaryModal = (
+      <TransactionSummaryModal
+        isOpen={isTransactionSummaryModalOpen}
+        onClose={onCloseTransactionSummaryModal}
+        onProceed={handleProceedToApproval}
+        selectedAsset={selectedAsset}
+        protocol={selectedAsset.protocol}
+        amount={withdrawAmount}
+      />
     );
   } else {
     withdrawDisabled =
@@ -282,7 +310,7 @@ export function WithdrawContainer() {
 
     button = (
       <BaseButton
-        onClick={initiateWithdrawal}
+        onClick={onOpenTransactionSummaryModal}
         disabled={withdrawDisabled}
         toChainId={chainId}
         className="text-md flex w-full items-center justify-center rounded-md p-4 font-sans font-bold uppercase sm:w-auto"
@@ -290,19 +318,32 @@ export function WithdrawContainer() {
         Withdraw
       </BaseButton>
     );
+    transactionSummaryModal = (
+      <TransactionSummaryModal
+        isOpen={isTransactionSummaryModalOpen}
+        onClose={onCloseTransactionSummaryModal}
+        onProceed={handleProceedToWithdraw}
+        selectedAsset={selectedAsset}
+        protocol={selectedAsset.protocol}
+        amount={withdrawAmount}
+      />
+    );
   }
 
   return (
     <div className="flex-col lg:flex lg:h-full lg:flex-row">
       <div className="grow">
-        <WithdrawModal
-          isOpen={isWithdrawModalOpen}
-          onClose={handleCloseWithdrawModal}
-          L2ApproveTxHash={L2ApproveTxHash}
-          L2WithdrawTxHash={L2WithdrawTxHash}
-          isApprovalTx={isApprovalTx}
-          protocol={selectedAsset.protocol}
-        />
+        {isTransactionSummaryModalOpen && transactionSummaryModal}
+        {isWithdrawModalOpen && (
+          <WithdrawModal
+            isOpen={isWithdrawModalOpen}
+            onClose={handleCloseWithdrawModal}
+            L2ApproveTxHash={L2ApproveTxHash}
+            L2WithdrawTxHash={L2WithdrawTxHash}
+            isApprovalTx={isApprovalTx}
+            protocol={selectedAsset.protocol}
+          />
+        )}
         <BridgeInput
           inputNetwork={getL2NetworkForChainEnv()}
           isWithdraw
