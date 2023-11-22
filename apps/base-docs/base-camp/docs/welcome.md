@@ -1,6 +1,6 @@
 ---
 title: Welcome to Base Camp
-description: Welcome to Base Camp!
+description: Base Camp is a comprehensive, free guide to learning smart contract development.
 hide_table_of_contents: false
 ---
 
