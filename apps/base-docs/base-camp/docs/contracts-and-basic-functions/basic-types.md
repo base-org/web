@@ -29,7 +29,7 @@ uint explicitValue = 0;
 // (defaultValue == explicitValue) <-- true
 ```
 
-Types can be cast from one type to another, but not as freely as you may expect. For example, to convert a `uint256` into a `int8`, you need two cast twice:
+Types can be cast from one type to another, but not as freely as you may expect. For example, to convert a `uint256` into a `int8`, you need to cast twice:
 
 ```solidity
 uint256 first = 1;
