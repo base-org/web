@@ -722,7 +722,7 @@ const sidebars = {
             },
             {
               type: 'doc',
-              id: 'docs/interfaces/testing-the-interface-vid',
+              id: 'docs/interfaces/contract-to-contract-interaction',
               className: 'sidebar-coding',
             },
           ],
