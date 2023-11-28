@@ -166,6 +166,7 @@ module.exports = {
         'tools/data-indexers',
         'tools/cross-chain',
         'tools/onramps',
+        'tools/onboarding',
         {
           type: 'category',
           label: 'Bridges',
@@ -187,7 +188,6 @@ module.exports = {
           collapsed: true,
           items: ['tools/ethers', 'tools/thirdweb-sdk', 'tools/viem', 'tools/web3'],
         },
-        'tools/onboarding',
       ],
     },
     ['contracts'],

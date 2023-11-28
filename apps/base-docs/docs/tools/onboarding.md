@@ -26,12 +26,12 @@ keywords:
 
 ## Dynamic
 
-[Dynamic](https://www.dynamic.xyz/) is a login platform designed for seamless user onboarding. It offers smart and simple login flows for both crypto-native and non-native users. Dynamic features support for non-custodial embedded wallets and consolidating multiple wallets under a single user account.
+[Dynamic](https://www.dynamic.xyz/) is a login platform designed for seamless user onboarding. It offers smart and simple login flows for both crypto-native and non-native users. Dynamic features support for non-custodial embedded wallets and consolidating multiple wallets under a single user account. The Dynamic platform is compatible with most EVM chains, including Base.
 
 ---
 
 ## Privy
 
-[Privy](https://www.privy.dev/) is a library designed for progressive user onboarding and authentication. It enables users to connect to your app using traditional methods such as email addresses, phone numbers, or social profiles, as well as through web3 methods like crypto wallets. Additionally, Privy supports embedded wallets, eliminating the need for users to have a self-custodial wallet prior to exploring your app.
+[Privy](https://www.privy.dev/) is a library designed for progressive user onboarding and authentication. It enables users to connect to your app using traditional methods such as email addresses, phone numbers, or social profiles, as well as through web3 methods like crypto wallets. Additionally, Privy supports embedded wallets, eliminating the need for users to have a self-custodial wallet prior to exploring your app. Privy is compatible with most EVM chains, including Base.
 
 ---
