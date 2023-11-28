@@ -97,7 +97,7 @@ If you're adapting this guide to a different set of libraries or platforms, you 
 
 ### Connectors
 
-Next, configure the chains, wallet connectors, and providers for your app. We'll use the `publicProvider` for now, to get started. See our guide on [Connecting to the Blockchain] for more information on blockchain providers.
+Now, we'll configure the chains, wallet connectors, and providers for your app. We'll use the [`publicProvider`] for now, to get started. See our guide on [Connecting to the Blockchain] for more information on blockchain providers.
 
 ```typescript
 const { chains, publicClient } = configureChains([mainnet, base, baseGoerli], [publicProvider()]);
@@ -141,11 +141,11 @@ You can now wrap your app with the context providers for RainbowKit and wagmi. T
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <WagmiConfig config={wagmiConfig}>
-        <RainbowKitProvider chains={chains}>
-          <body className={inter.className}>{children}</body>
-        </RainbowKitProvider>
-      </WagmiConfig>
+      <body className={inter.className}>
+        <WagmiConfig config={wagmiConfig}>
+          <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
+        </WagmiConfig>
+      </body>
     </html>
   );
 }
@@ -184,9 +184,19 @@ export default function Home() {
 
 Run your app with `yarn dev`, and you should be able to use the RainbowKit connect button to connect with your wallet and switch between networks.
 
+You use the [Connect Button] props to modify its properties, or you can [customize the connect button] extensively. Some users dislike having the connect button display their token balance. Try disabling it with:
+
+```typescript
+<ConnectButton showBalance={false} />
+```
+
 ---
 
 ## Conclusion
+
+In this guide, you've learned how to assemble your onchain app from several pieces. You can use this knowledge to integrate a wallet connection with an existing site, or adjust the stack to meet your preferences. Finally, you've learned how to insert and customize the connect button.
+
+If you're looking to quickly bootstrap a simple app, you can always use a script, such as the RainbowKit [quit start]. If you're looking for a robust start for a consumer application, checkout our [Build Onchain Apps] template!
 
 ---
 
@@ -200,3 +210,7 @@ Run your app with `yarn dev`, and you should be able to use the RainbowKit conne
 [WalletConnect]: https://cloud.walletconnect.com/
 [Connecting to the Blockchain]: https://docs.base.org/connecting-to-the-blockchain/overview
 [Wallet Connect Cloud]: https://cloud.walletconnect.com/
+[`publicProvider`]: https://wagmi.sh/react/providers/public
+[Connect Button]: https://www.rainbowkit.com/docs/connect-button
+[customize the connect button]: https://www.rainbowkit.com/docs/custom-connect-button
+[Build Onchain Apps]: https://github.com/coinbase/build-onchain-apps
