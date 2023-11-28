@@ -196,7 +196,7 @@ You use the [Connect Button] props to modify its properties, or you can [customi
 
 In this guide, you've learned how to assemble your onchain app from several pieces. You can use this knowledge to integrate a wallet connection with an existing site, or adjust the stack to meet your preferences. Finally, you've learned how to insert and customize the connect button.
 
-If you're looking to quickly bootstrap a simple app, you can always use a script, such as the RainbowKit [quit start]. If you're looking for a robust start for a consumer application, checkout our [Build Onchain Apps] template!
+If you're looking to quickly bootstrap a simple app, you can always use a script, such as the RainbowKit [quit start]. If you're looking for a robust start for a consumer application, check out our [Build Onchain Apps] template!
 
 ---
 
