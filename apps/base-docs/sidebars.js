@@ -187,6 +187,7 @@ module.exports = {
           collapsed: true,
           items: ['tools/ethers', 'tools/thirdweb-sdk', 'tools/viem', 'tools/web3'],
         },
+        'tools/onboarding',
       ],
     },
     ['contracts'],
