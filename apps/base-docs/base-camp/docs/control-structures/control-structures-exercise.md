@@ -23,7 +23,7 @@ Create a function called `fizzBuzz` that accepts a `uint` called `_number` and r
 
 ### Do Not Disturb
 
-Create a function called `doNotDisturb` that accepts a `_uint` called `_time`, and returns a `string memory`. It should adhere to the following properties:
+Create a function called `doNotDisturb` that accepts a `uint` called `_time`, and returns a `string memory`. It should adhere to the following properties:
 
 - If `_time` is greater than or equal to 2400, trigger a `panic`
 - If `_time` is greater than 2200 or less than 800, `revert` with a custom error of `AfterHours`, and include the time provided
