@@ -33,11 +33,11 @@ Add a function called `addCar` that adds a car to the user's collection in the `
 - Accept arguments for make, model, color, and number of doors, and use those to create a new instance of `Car`
 - Add that `Car` to the `garage` under the user's address
 
-### Get All Cars Belonging to a User
+### Get All Cars for the Calling User
 
 Add a function called `getMyCars`. It should return an array with all of the cars owned by the calling user.
 
-### Get User Cars
+### Get All Cars for Any User
 
 Add a function called `getUserCars`. It should return an array with all of the cars for any given `address`.
 
