@@ -166,6 +166,7 @@ module.exports = {
         'tools/data-indexers',
         'tools/cross-chain',
         'tools/onramps',
+        'tools/onboarding',
         {
           type: 'category',
           label: 'Bridges',
