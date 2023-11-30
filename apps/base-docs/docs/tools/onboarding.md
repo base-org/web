@@ -32,6 +32,8 @@ keywords:
 
 ## Privy
 
-[Privy](https://www.privy.dev/) is a library designed for progressive user onboarding and authentication. It enables users to connect to your app using traditional methods such as email addresses, phone numbers, or social profiles, as well as through web3 methods like crypto wallets. Additionally, Privy supports embedded wallets, eliminating the need for users to have a self-custodial wallet prior to exploring your app. Privy is compatible with most EVM chains, including Base.
+[Privy](https://www.privy.io/) is a library designed for progressive user onboarding and authentication. It enables users to connect to your app using traditional methods such as email addresses, phone numbers, or social profiles, as well as through web3 methods like crypto wallets. Additionally, Privy supports embedded wallets, eliminating the need for users to have a self-custodial wallet prior to exploring your app. Privy is compatible with most EVM chains, including Base.
+
+You can [get started with Privy here](https://docs.privy.io/guide/quickstart) and check out these starter repos for [building a Progressive Web App (PWA) Base](https://github.com/privy-io/create-privy-pwa) and [using the Base Paymaster with Privy](https://github.com/privy-io/base-paymaster-example).
 
 ---
