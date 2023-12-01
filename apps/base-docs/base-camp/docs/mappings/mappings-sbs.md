@@ -74,7 +74,7 @@ Update the declaration of `favoriteNumbers` and deploy to test again.
 
 ### Utilizing msg.sender
 
-Another issue with this contract is that `public` means anyone and everyone with a wallet and funds to pay gas fees. As a result, anyone could go in after you and change your favorite number from lucky number **13** to anything, even **7**!
+Another issue with this contract is that a `public` function can be called by anyone and everyone with a wallet and funds to pay gas fees. As a result, anyone could go in after you and change your favorite number from lucky number **13** to anything, even **7**!
 
 That won't do at all!
 
