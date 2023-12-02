@@ -160,7 +160,7 @@ enum Flavors { Vanilla, Chocolate, Strawberry, Coffee }
 Flavors chosenFlavor = Flavors.Coffee;
 ```
 
-Enums can be explicitly cast two and from `uint`, but not implicitly. They are limited to 256 members.
+Enums can be explicitly cast to and from `uint`, but not implicitly. They are limited to 256 members.
 
 ---
 
