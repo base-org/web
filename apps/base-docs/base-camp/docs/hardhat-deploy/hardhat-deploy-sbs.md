@@ -66,7 +66,7 @@ export default func;
 }
 ```
 
-5. Before implementing the deploy functionality, configure a deployer account in the `hardhat.config.ts` file. Hardhat deploy includes a way to name accounts in the config file.
+5. Before implementing the deploy functionality, configure a deployer account in the `hardhat.config.ts` file. Hardhat deployment includes a way to name accounts in the config file.
 
 6. Run the following, which adds an alias to the account 0 of your environment:
 
@@ -97,7 +97,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   // The unlock time after deployment
   const UNLOCK_TIME = 10000;
 
-  // We user ethers to get the current time stamp
+  // We use ethers to get the current time stamp
   const blockNumber = await ethers.provider.getBlockNumber();
   const lastBlockTimeStamp = (await ethers.provider.getBlock(blockNumber))?.timestamp as number;
 
@@ -206,7 +206,7 @@ const config: HardhatUserConfig = {
 };
 ```
 
-You've configued 3 networks:
+You've configured 3 networks:
 
 - base_goerli
 - goerli
@@ -258,7 +258,7 @@ npx hardhat deploy --network mumbai
 
 :::info
 
-Be aware you that you must have the correct environment variables for the JSON RPC URLs. For example, for goerli use `ALCHEMY_GOERLI_KEY` and for mumbai use `ALCHEMY_MUMBAI_KEY`.
+Be aware that you must have the correct environment variables for the JSON RPC URLs. For example, for goerli use `ALCHEMY_GOERLI_KEY` and for mumbai use `ALCHEMY_MUMBAI_KEY`.
 
 :::
 
