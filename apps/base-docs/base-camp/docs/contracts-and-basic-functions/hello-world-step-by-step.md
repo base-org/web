@@ -35,7 +35,7 @@ To create a contract:
 5. Open the _Solidity Compiler_ plugin and enable _Auto compile_.
 6. Create a new folder called `contracts`, and within that folder, create a file called `hello-world.sol`.
 
-Solidity files usually start with a comment containing an [_SPDX-License-Identifier_]. It's not a requirement, but there are a couple of advantages to doing this. First, everything you deploy on the blockchain is public. This doesn't mean you are giving away everything your deploy for free, nor does it mean you have the right to use the code from any deployed contract. The license determines allowed usages and is generally protected by international copyright laws, the same as any other code.
+Solidity files usually start with a comment containing an [_SPDX-License-Identifier_]. It's not a requirement, but there are a couple of advantages to doing this. First, everything you deploy on the blockchain is public. This doesn't mean you are giving away everything you deploy for free, nor does it mean you have the right to use the code from any deployed contract. The license determines allowed usage and is generally protected by international copyright laws, the same as any other code.
 
 If you don't want to give a license, you can put `UNLICENSED`. Common open source licenses, such as `MIT` and `GPL-3.0` are popular as well. Add your license identifier:
 
