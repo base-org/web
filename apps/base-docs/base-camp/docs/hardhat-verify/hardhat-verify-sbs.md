@@ -87,7 +87,7 @@ You verify in base, and to do so, simply run the following command:
 npx hardhat --network base_goerli etherscan-verify
 ```
 
-You should receive the following reponse:
+You should receive the following response:
 
 ```
 verifying Lock ...
