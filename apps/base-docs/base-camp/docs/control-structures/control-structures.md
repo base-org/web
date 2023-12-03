@@ -50,7 +50,7 @@ function ConditionalExample(uint _number) external pure returns (string memory) 
 
 ### Iterative Control Structures
 
-The `while`, `for`, and `do`, keywords function the same as other languages. You can use `continue` to skip the rest of a loop and start the next iteration. `break` will terminate execution of the loop, and you can use `return` to exit the function and return a value at any point.
+The `while`, `for`, and `do`, keywords function the same as in other languages. You can use `continue` to skip the rest of a loop and start the next iteration. `break` will terminate execution of the loop, and you can use `return` to exit the function and return a value at any point.
 
 :::info
 
@@ -162,7 +162,7 @@ call to HelloWorld.oldRevertAddEvenNumbers errored: VM error: revert.
 
 revert
 	The transaction has been reverted to the initial state.
-Reason provided by the contract: "One of the numbers is odd".
+The reason provided by the contract: "One of the numbers is odd".
 Debug the transaction to get more information.
 ```
 
@@ -191,7 +191,7 @@ call to HelloWorld.requireAddEvenNumbers errored: VM error: revert.
 
 revert
 	The transaction has been reverted to the initial state.
-Reason provided by the contract: "First number is not even".
+The reason provided by the contract: "First number is not even".
 Debug the transaction to get more information.
 ```
 
