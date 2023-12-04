@@ -59,7 +59,7 @@ contract Foo {
 
 ### Private and Internal
 
-Functions visible as `private` and `internal` operate nearly identically. Beyond writing hygienic codes, these have a very important effect. Because they are not a part of the contract's ABI, you can use `mapping`s and `storage` variable references as parameters.
+Functions visible as `private` and `internal` operate nearly identically. Beyond writing hygienic code, these have a very important effect. Because they are not a part of the contract's ABI, you can use `mapping`s and `storage` variable references as parameters.
 
 The difference is that `private` functions can't be called from derived contracts. You'll learn more about that when we cover inheritance.
 
