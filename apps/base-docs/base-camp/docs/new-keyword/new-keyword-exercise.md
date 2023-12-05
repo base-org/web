@@ -36,7 +36,7 @@ It should include the following functions:
 
 ### Add Contact
 
-The `addContact` function should be usable only by the owner of the contract. It should take in the necessary arguments to add a given contact's information to `contacts`
+The `addContact` function should be usable only by the owner of the contract. It should take in the necessary arguments to add a given contact's information to `contacts`.
 
 ### Delete Contact
 
