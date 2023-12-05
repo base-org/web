@@ -58,7 +58,7 @@ For bonus points (that only you will know about), explain why we can't just use 
 
 The `getAllContacts` function returns an array with all of the user's current, non-deleted contacts.
 
-::: caution
+:::caution
 
 You shouldn't use `onlyOwner` for the two _get_ functions. Doing so won't prevent a third party from accessing the information, because all information on the blockchain is public. However, it may give the mistaken impression that information is hidden, which could lead to a security incident.
 
