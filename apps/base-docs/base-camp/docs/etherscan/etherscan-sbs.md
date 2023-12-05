@@ -4,7 +4,7 @@ description: Learn about Etherscan
 hide_table_of_contents: false
 ---
 
-In this article, you'll learn about Etherscan, a Blockchan explorer to inspect the Blockchain state and activity.
+In this article, you'll learn about Etherscan, a blockchain explorer to inspect the Blockchain state and activity.
 
 ---
 
