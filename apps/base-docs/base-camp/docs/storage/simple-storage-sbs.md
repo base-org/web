@@ -186,3 +186,4 @@ In this lesson, you've explored how to persistently store values on the blockcha
 ---
 
 [packed]: https://docs.soliditylang.org/en/v0.8.17/internals/layout_in_storage.html
+[layout]: https://docs.soliditylang.org/en/v0.8.17/internals/layout_in_storage.html
