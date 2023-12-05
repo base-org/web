@@ -50,7 +50,7 @@ Then, import two files from `typechain-types`, `Lock`, and `Lock__Factory`.
 
 Typechain always creates two files per contract. The first one `Lock` refers to the type and functions of a particular contract. `Lock__Factory` is used to deploy the Lock contract or to create instances of a particular contract.
 
-The `Lock.sol` contract allows the creator to lock Ether until a unlock time has passed.
+The `Lock.sol` contract allows the creator to lock Ether until an unlock time has passed.
 
 Notice the constructor has a payable keyword:
 
@@ -108,7 +108,7 @@ describe('Lock', function () {
   // This is the Signer of the owner.
   let ownerSigner: SignerWithAddress;
 
-  // A non owner signed useful to test non owner transactions.
+  // A non owner signed is useful to test non owner transactions.
   let otherUserSigner: SignerWithAddress;
 
   before(async () => {
@@ -217,7 +217,7 @@ Then, run `npx hardhat test` and you should get:
 
 ### Testing withdraw
 
-Testing withdraw is more complex because you need to assert certain conditions, such as:
+Testing withdrawal is more complex because you need to assert certain conditions, such as:
 
 - The owner cannot withdraw before the unlock time.
 - Only the owner can withdraw.
@@ -225,7 +225,7 @@ Testing withdraw is more complex because you need to assert certain conditions, 
 
 Hardhat allow you to test reverts with a set of custom matchers.
 
-For example, the following code checks that an attemp to call the function `withdraw` reverts with a particular message:
+For example, the following code checks that an attempt to call the function `withdraw` reverts with a particular message:
 
 ```typescript
 it('shouldn"t allow to withdraw before unlock time', async () => {
@@ -249,7 +249,7 @@ it('shouldn"t allow to withdraw a non owner', async () => {
   //  to create and instance but have the msg.sender as the new signer.
   const newInstanceUsingAnotherSigner = lockInstance.connect(otherUserSigner);
 
-  // We attemp to withdraw, but since the sender is not the owner, it will revert.
+  // We attempt to withdraw, but since the sender is not the owner, it will revert.
   await expect(newInstanceUsingAnotherSigner.withdraw()).to.be.revertedWith("You aren't the owner");
 });
 ```

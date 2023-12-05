@@ -44,7 +44,7 @@ contract Modifiers {
 
 ### Creating an `onlyOwner` Modifier
 
-[Modifiers] are very similar to functions and are declared with the `modifier` keyword. The modifier can run any Solidity code, including functions, and are allowed to modify state. Modifiers must have a special `_` character, which serves as a placeholder for where the code contained within the modified function will run.
+[Modifiers] are very similar to functions and are declared with the `modifier` keyword. The modifier can run any Solidity code, including functions, and is allowed to modify state. Modifiers must have a special `_` character, which serves as a placeholder for where the code contained within the modified function will run.
 
 Create a simple `onlyOwner` modifier, which returns an `error` of `NotOwner` with the sending address if the sender is not the owner.
 
@@ -122,7 +122,7 @@ function halver(uint _number) public pure onlyEven(_number) returns (uint) {
 
 ### Independent Scope
 
-While `modifiers` are used to modify functions and can share inputs, they have separate scope. The following example will **not** work:
+While `modifiers` are used to modify functions and can share inputs, they have separate scopes. The following example will **not** work:
 
 ```solidity
 // Bad code example, does not work
@@ -140,6 +140,6 @@ function modifierDoubler(uint _number) public pure doubler(_number) returns (uin
 
 ## Conclusion
 
-Function `modifier`s are an efficient and reusable way to add checks, trigger errors, and control function execution. In this lesson, you've seen examples of how they can be used to abort execution under certain conditions. You've also learned that they have separate scope and cannot be used to modify variables within the function they modify.
+Function `modifier`s are an efficient and reusable way to add checks, trigger errors, and control function execution. In this lesson, you've seen examples of how they can be used to abort execution under certain conditions. You've also learned that they have separate scopes and cannot be used to modify variables within the function they modify.
 
 [one provided by OpenZeppelin]: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol

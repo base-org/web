@@ -253,7 +253,7 @@ The ability to use events to recreate historical states provides an important au
 
 Although it is possible to rely on events to fully recreate the state of a particular contract, there are a few other options to consider.
 
-Existing services such as [The Graph] allow you to index and create GraphQL endpoints for your smart contracts and generate entities based on custom logic. However, you must pay for that service since you are adding an intermediate layer to your application. This has the following beneftis, such as:
+Existing services such as [The Graph] allow you to index and create GraphQL endpoints for your smart contracts and generate entities based on custom logic. However, you must pay for that service since you are adding an intermediate layer to your application. This has the following benefits, such as:
 
 - the ability to simply query one particular endpoint to get all the information you need
 - your users will pay less gas costs due to the minimization of storage usage in your contract
@@ -261,9 +261,9 @@ Existing services such as [The Graph] allow you to index and create GraphQL endp
 But storing all of the information within the smart contract and relying fully on it to access data can create more complexity, since not all of the data is directly query-able. Thus, you can consider a system such as [Liquity] to store all of the information in the smart contract. The benefits of this approach include:
 
 - your application requires only the smart contract address to access all of the required data
-- there are less dependencies involved, which makes this approach more crypto native in the sense that everything is in the blockchain (but, storing all the data in the blockchain will cause higher gas costs)
+- there are fewer dependencies involved, which makes this approach more crypto native in the sense that everything is in the blockchain (but, storing all the data in the blockchain will cause higher gas costs)
 
-As smart contract developer, you must evaluate which options work best for you.
+As a smart contract developer, you must evaluate which options work best for you.
 
 ## Conclusion
 

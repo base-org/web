@@ -105,7 +105,7 @@ function getArr() public view returns (uint[] memory) {
 }
 ```
 
-`view` functions functions can be called from outside the blockchain without using gas, if they are also `public` or `external`.
+`view` functions can be called from outside the blockchain without using gas, if they are also `public` or `external`.
 
 ### Unlabeled Functions
 
