@@ -81,7 +81,7 @@ Switch the _CONTRACT_ to be deployed to `Complimenter`, then paste the address y
 
 ![At address button](../../assets/images/new-keyword/at-address.png)
 
-Click _At Address_ and the instance of `Complimenter` should appear below `ComplimenterFactor`. Test to confirm it works, then try deploying more instances with the factory.
+Click _At Address_ and the instance of `Complimenter` should appear below `ComplimenterFactory`. Test to confirm it works, then try deploying more instances with the factory.
 
 ![Deployed](../../assets/images/new-keyword/deployed.png)
 
