@@ -57,6 +57,15 @@ Add a public function called `resetMyGarage`. It should delete the entry in `gar
 
 ### Submit your Contract and Earn an NFT Badge! (BETA)
 
+:::caution
+
+When implementing the Car struct, pay special attention to the data type of numberOfDoors. 
+Although it might be tempting to use `uint8` for the number of doors, be cautious as it might lead to a common error in the automated contract testing. 
+(Plus we don't really know how many doors cars will have in the future, better to future-proof!)
+
+:::
+
+
 import data from "../../assets/deployments/StructsUT.json";
 import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
