@@ -22,3 +22,7 @@ build:
     - BaldurECR:
         name: sepolia-bridge
         path: ./apps/bridge/Dockerfile
+
+operate:
+  slack_channels:
+    - "#base-codeflow-notifications"
