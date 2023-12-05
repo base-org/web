@@ -178,7 +178,7 @@ The simplest resolution here is to switch back to using `push()` to create an em
 
 The reason this works is a little obtuse. In the failing example, an unsized `uint` array is the expected type for the argument, but a sized `uint` array is provided. Solidity cannot perform implicit conversions like this most of the time and you'll get a compiler error if you provide the wrong type for an argument, even if it is convertible.
 
-One exception to this rule is that Solidity **can** perform an implicit conversation during _assignment_ if the variable on the right side "fits" into the variable on the left side.
+One exception to this rule is that Solidity **can** perform an implicit conversion during _assignment_ if the variable on the right side "fits" into the variable on the left side.
 
 `uint[5]` fits in `uint[]`, so Solidity will allow it to sit 🐈.
 
