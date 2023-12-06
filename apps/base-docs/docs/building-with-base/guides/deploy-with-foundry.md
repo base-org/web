@@ -12,10 +12,10 @@ keywords: ["Foundry", "smart contract", "ERC-721", "Base", "Base test network", 
 This article will provide an overview of the [Foundry](https://book.getfoundry.sh/) development toolchain, and show you how to deploy a contract to **Base Goerli** testnet.
 
 Foundry is a powerful suite of tools to develop, test, and debug your smart contracts. It is comprised of several individual tools:
-- `forge`: the main workhorse of Foundry — for developing, testing, building, and deploying contracts
+- `forge`: the main workhorse of Foundry — for developing, testing, compiling, and deploying smart contracts
 - `cast`: a command-line tool for performing Ethereum RPC calls (e.g. interacting with contracts, sending transactions, and getting onchain data)
-- `anvil`: a local testnet node, for testing contract behavior from a frontend or interacting over RPC
-- `chisel`: an advanced Solidity [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop), for trying out Solidity snippets on a local or forked network
+- `anvil`: a local testnet node, for testing contract behavior from a frontend or over RPC
+- `chisel`: a Solidity [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop), for trying out Solidity snippets on a local or forked network
 
 Foundry offers extremely fast feedback loops (due to the under-the-hood Rust implementation) and less context switching — because we'll be writing our contracts, tests, and deployment scripts **All** in Solidity!
 
@@ -45,7 +45,7 @@ By the end of this guide you should be able to do the following:
 
 This guide requires you have Foundry installed.
 
-- From the command line (terminal), run: `curl -L https://foundry.paradigm.xyz | bash`
+- From the command-line (terminal), run: `curl -L https://foundry.paradigm.xyz | bash`
 - Then run `foundryup`, to install the latest (nightly) build of Foundry
 
 For more information, see the Foundry Book [installation guide](https://book.getfoundry.sh/getting-started/installation).
@@ -88,13 +88,13 @@ forge init
 
 This will create a Foundry project, which has the following basic layout:
 
-```
+```bash
 .
 ├── foundry.toml
 ├── script
-│   └── Counter.s.sol
+ │   └── Counter.s.sol
 ├── src
-│   └── Counter.sol
+ │   └── Counter.sol
 └── test
     └── Counter.t.sol
 ```
@@ -203,9 +203,9 @@ Regardless of the network you're deploying to, if you're deploying a new or modi
 ---
 
 ## Verifying the Smart Contract
-In web3, it's considered best practice to verify our contracts so that users and other developers can inspect the source code, and be sure that it matches the deployed bytecode on the blockchain.
+In web3, it's considered best practice to verify your contracts so that users and other developers can inspect the source code, and be sure that it matches the deployed bytecode on the blockchain.
 
-Further, if you want to interact with your contract on the block explorer, you or someone else needs to verify it. The above contract has already been verified, so you should be able to view your version on a block explorer already, but we'll still walk through how to verify a contract on Base Goerli testnet.
+Further, if you want to allow others to interact with your contract using the block explorer, it first needs to be verified. The above contract has already been verified, so you should be able to view your version on a block explorer already, but we'll still walk through how to verify a contract on Base Goerli testnet.
 
 :::info
 
@@ -257,7 +257,7 @@ Contract [src/NFT.sol:NFT] "0x71bfCe1172A66c1c25A50b49156FAe45EB56E009" is alrea
 
 If you verified on Basescan, you can use the `Read Contract` and `Write Contract` sections under the `Contract` tab to interact with the deployed contract. To use `Write Contract`, you'll need to connect your wallet first, by clicking the `Connect to Web3` button (sometimes this can be a little finicky, and you'll need to click `Connect` twice before it shows your wallet is successfully connected). 
 
-For some practice using the `cast` command-line tool which Foundry provides, we'll perform a call without publishing a transaction (a read), then sign and publish a transaction (a write).
+To practice using the `cast` command-line tool which Foundry provides, we'll perform a call without publishing a transaction (a read), then sign and publish a transaction (a write).
 
 ### Performing a call
 A key component of the Foundry toolkit, `cast` enables us to interact with contracts, send transactions, and get onchain data using Ethereum RPC calls. First we will perform a call from your account, without publishing a transaction.
@@ -268,7 +268,7 @@ From the command-line, run:
 cast call <DEPLOYED_ADDRESS> --rpc-url $BASE_GOERLI_RPC "balanceOf(address)" <YOUR_ADDRESS_HERE>
 ```
 
-You should receive `0x0000000000000000000000000000000000000000000000000000000000000000` in response, which equals `0` in hexadecimal. And that makes sense — while you've deployed the NFT contract, no NFTs have been minted yet and therefore your account does not own any.
+You should receive `0x0000000000000000000000000000000000000000000000000000000000000000` in response, which equals `0` in hexadecimal. And that makes sense — while you've deployed the NFT contract, no NFTs have been minted yet and therefore your account's balance is zero.
 
 ### Signing and publishing a transaction
 Now let's sign and publish a transaction, calling the `mint(address)` function on the NFT contract we just deployed.
@@ -279,9 +279,13 @@ Run the following command:
 cast send <DEPLOYED_ADDRESS> --rpc-url=$BASE_GOERLI_RPC --private-key=$PRIVATE_KEY "mint(address)" <YOUR_ADDRESS_HERE>
 ```
 
-Note that in this `cast send` command, we had to include our private key, but this is not required for `cast call`, because that's for calling view-only contract functions.
+:::info
 
-If successful, Foundry will respond with information about the transaction, like the `blockNumber`, `gasUsed`, and `transactionHash`.
+Note that in this `cast send` command, we had to include our private key, but this is not required for `cast call`, because that's for calling view-only contract functions and therefore we don't need to sign anything.
+
+:::
+
+If successful, Foundry will respond with information about the transaction, including the `blockNumber`, `gasUsed`, and `transactionHash`.
 
 Finally, let's confirm that we did indeed mint ourselves one NFT. If we run the first `cast call` command again, we should see that our balance increased from 0 to 1:
 
@@ -289,7 +293,7 @@ Finally, let's confirm that we did indeed mint ourselves one NFT. If we run the 
 cast call <DEPLOYED_ADDRESS> --rpc-url $BASE_GOERLI_RPC "balanceOf(address)" <YOUR_ADDRESS_HERE>
 ```
 
-And the response: `0x0000000000000000000000000000000000000000000000000000000000000001` (`1` in hex) — congratulations, you deployed and minted an NFT with Foundry!
+And the response: `0x0000000000000000000000000000000000000000000000000000000000000001` (`1` in hex) — congratulations, you deployed a contract and minted an NFT with Foundry!
 
 ---
 
