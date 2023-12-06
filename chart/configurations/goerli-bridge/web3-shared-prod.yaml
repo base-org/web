@@ -4,10 +4,10 @@ services:
       web:
         resources:
           limits:
-            memory: 500M
+            memory: 3G
           requests:
             cpu: 50m
-            memory: 500M
+            memory: 1G
         image: protocols/base-web/goerli-bridge
     target_group_bindings:
       web: web-goerli-bridge-protocols--k8s
