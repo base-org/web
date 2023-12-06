@@ -9,15 +9,15 @@ keywords: ["Foundry", "smart contract", "ERC-721", "Base", "Base test network", 
 
 # Deploying a Smart Contract using Foundry
 
-In this article, we'll give you an overview of [Foundry](https://book.getfoundry.sh/), and show you how to deploy a contract to **Base Goerli** testnet.
+This article will provide an overview of the [Foundry](https://book.getfoundry.sh/) development toolchain, and show you how to deploy a contract to **Base Goerli** testnet.
 
-Foundry is another developer toolkit, similar to Hardhat, that provides a simple way to deploy, test, and debug smart contracts. It is comprised of several individual tools:
-- `forge`: XYZ
-- `cast`: XYZ
-- `anvil`: XYZ
-- `chisel`: XYZ
+Foundry is a powerful suite of tools to develop, test, and debug your smart contracts. It is comprised of several individual tools:
+- `forge`: the main workhorse of Foundry — for developing, testing, building, and deploying contracts
+- `cast`: a command-line tool for performing Ethereum RPC calls (e.g. interacting with contracts, sending transactions, and getting onchain data)
+- `anvil`: a local testnet node, for testing contract behavior from a frontend or interacting over RPC
+- `chisel`: an advanced Solidity [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop), for trying out Solidity snippets on a local or forked network
 
-Some benefits that Foundry provides are a faster test/[REPL] feedback loop and less context switching — as we'll be writing our contracts, And our tests and deployment scripts all in Solidity!
+Foundry offers extremely fast feedback loops (due to the under-the-hood Rust implementation) and less context switching — because we'll be writing our contracts, tests, and deployment scripts **All** in Solidity!
 
 :::info
 
@@ -33,21 +33,22 @@ By the end of this guide you should be able to do the following:
 
 - Setup Foundry for Base
 - Create an NFT smart contract for Base
-- Compile a smart contract for Base
-- Deploy a smart contract to Base (using `forge`)
+- Compile a smart contract for Base (using `forge`)
+- Deploy a smart contract to Base (also with `forge`)
 - Interact with a smart contract deployed on Base (using `cast`)
 
 ---
 
 ## Prerequisites
 
-### Node v18+
+### Foundry
 
-This guide requires you have Node version 18+ installed.
+This guide requires you have Foundry installed.
 
-- Download [Node v18+](https://nodejs.org/en/download/)
+- From the command line (terminal), run: `curl -L https://foundry.paradigm.xyz | bash`
+- Then run `foundryup`, to install the latest (nightly) build of Foundry
 
-If you are using `nvm` to manage your node versions, you can just run `nvm install 18`.
+For more information, see the Foundry Book [installation guide](https://book.getfoundry.sh/getting-started/installation).
 
 ### Coinbase Wallet
 
@@ -70,198 +71,119 @@ For more detailed steps on funding your wallet with Base Goerli ETH, see [Networ
 
 ## Creating a project
 
-Before you can begin deploying smart contracts to Base, you need to set up your development environment by creating a Node.js project.
+Before you can begin deploying smart contracts to Base, you need to set up your development environment by creating a Foundry project.
 
-To create a new Node.js project, run:
-
-```bash
-npm init --y
-```
-
-Next, you will need to install Hardhat and create a new Hardhat project
-
-To install Hardhat, run:
+To create a new Foundry project, first create a new directory:
 
 ```bash
-npm install --save-dev hardhat
+mkdir myproject
 ```
 
-To create a new Hardhat project, run:
+Then run:
 
 ```bash
-npx hardhat
+cd myproject
+forge init
 ```
 
-Select `Create a TypeScript project` then press _enter_ to confirm the project root.
-
-Select `y` for both adding a `.gitignore` and loading the sample project. It will take a moment for the project setup process to complete.
-
----
-
-## Configuring Hardhat with Base
-
-In order to deploy smart contracts to the Base network, you will need to configure your Hardhat project and add the Base network.
-
-To configure Hardhat to use Base, add Base as a network to your project's `hardhat.config.ts` file:
-
-```typescript
-import { HardhatUserConfig } from 'hardhat/config';
-import '@nomicfoundation/hardhat-toolbox';
-
-require('dotenv').config();
-
-const config: HardhatUserConfig = {
-  solidity: {
-    version: '0.8.17',
-  },
-  networks: {
-    // for mainnet
-    'base-mainnet': {
-      url: 'https://mainnet.base.org',
-      accounts: [process.env.WALLET_KEY as string],
-      gasPrice: 1000000000,
-    },
-    // for testnet
-    'base-goerli': {
-      url: 'https://goerli.base.org',
-      accounts: [process.env.WALLET_KEY as string],
-      gasPrice: 1000000000,
-    },
-    // for local dev environment
-    'base-local': {
-      url: 'http://localhost:8545',
-      accounts: [process.env.WALLET_KEY as string],
-      gasPrice: 1000000000,
-    },
-  },
-  defaultNetwork: 'hardhat',
-};
-
-export default config;
-```
-
-### Install Hardhat toolbox
-
-The above configuration uses the `@nomicfoundation/hardhat-toolbox` plugin to bundle all the commonly used packages and Hardhat plugins recommended to start developing with Hardhat.
-
-To install `@nomicfoundation/hardhat-toolbox`, run:
-
-```bash
-npm install --save-dev @nomicfoundation/hardhat-toolbox
-```
-
-### Loading environment variables
-
-The above configuration also uses [dotenv](https://www.npmjs.com/package/dotenv) to load the `WALLET_KEY` environment variable from a `.env` file to `process.env.WALLET_KEY`. You should use a similar method to avoid hardcoding your private keys within your source code.
-
-To install `dotenv`, run:
-
-```bash
-npm install --save-dev dotenv
-```
-
-Once you have `dotenv` installed, you can create a `.env` file with the following content:
+This will create a Foundry project, which has the following basic layout:
 
 ```
-WALLET_KEY=<YOUR_PRIVATE_KEY>
+.
+├── foundry.toml
+├── script
+│   └── Counter.s.sol
+├── src
+│   └── Counter.sol
+└── test
+    └── Counter.t.sol
 ```
-
-Substituting `<YOUR_PRIVATE_KEY>` with the private key for your wallet.
-
-:::caution
-
-`WALLET_KEY` is the private key of the wallet to use when deploying a contract. For instructions on how to get your private key from Coinbase Wallet, visit the [Coinbase Wallet documentation](https://docs.cloud.coinbase.com/wallet-sdk/docs/developer-settings#show-private-key). **It is critical that you do NOT commit this to a public repo**
-
-:::
-
-### Local Networks
-
-You can run the Base network locally, and deploy using it. If this is what you are looking to do, see the [repo containing the relevant Docker builds](https://github.com/base-org/node).
-
-It will take a **very** long time for your node to sync with the network. If you get errors that the `nonce has already been used` when trying to deploy, you aren't synced yet.
-
-For quick testing, such as if you want to add unit tests to the below NFT contract, you may wish to leave the `defaultNetwork` as `'hardhat'`.
 
 ---
 
 ## Compiling the smart contract
 
-Below is a simple NFT smart contract (ERC-721) written in the Solidity programming language:
+Below is a simple NFT smart contract ([ERC-721](https://eips.ethereum.org/EIPS/eip-721)) written in the Solidity programming language:
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
+pragma solidity ^0.8.23;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
+import "openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
 
 contract NFT is ERC721 {
-    using Counters for Counters.Counter;
-    Counters.Counter private currentTokenId;
+    uint256 public currentTokenId;
 
     constructor() ERC721("NFT Name", "NFT") {}
 
-    function mint(address recipient)
-        public
-        returns (uint256)
-    {
-        currentTokenId.increment();
-        uint256 tokenId = currentTokenId.current();
-        _safeMint(recipient, tokenId);
-        return tokenId;
+    function mint(address recipient) public payable returns (uint256) {
+        uint256 newItemId = ++currentTokenId;
+        _safeMint(recipient, newItemId);
+        return newItemId;
     }
 }
 ```
 
-The Solidity code above defines a smart contract named `NFT`. The code uses the `ERC721` interface provided by the [OpenZeppelin Contracts library](https://docs.openzeppelin.com/contracts/4.x/) to create an NFT smart contract. OpenZeppelin allows developers to leverage battle-tested smart contract implementations that adhere to official ERC standards.
+The Solidity code above defines a smart contract named `NFT`. The code uses the `ERC721` interface provided by the [OpenZeppelin Contracts library](https://docs.openzeppelin.com/contracts/5.x/) to create an NFT smart contract. OpenZeppelin allows developers to leverage battle-tested smart contract implementations that adhere to official ERC standards.
 
 To add the OpenZeppelin Contracts library to your project, run:
 
 ```bash
-npm install --save @openzeppelin/contracts
+forge install openzeppelin/openzeppelin-contracts
 ```
 
-In your project, delete the `contracts/Lock.sol` contract that was generated with the project and add the above code in a new file called `contracts/NFT.sol`. (You can also delete the `test/Lock.ts` test file, but you should add your own tests ASAP!).
+In your project, delete the `src/Counter.sol` contract that was generated with the project and add the above code in a new file called `contracts/NFT.sol`. (You can also delete the `test/Counter.t.sol` and `script/Counter.s.sol` files, but you should add your own tests ASAP!).
 
-To compile the contract using Hardhat, run:
+To compile our basic NFT contract using Foundry, run:
 
 ```bash
-npx hardhat compile
+forge build
+```
+
+---
+
+## Configuring Foundry with Base
+
+In order to deploy smart contracts to the Base network, you will need to configure your Foundry project and add the Base network.
+
+Create a `.env` file in the home directory of your project and add Base as a network:
+
+```
+PRIVATE_KEY=<YOUR_PRIVATE_KEY>
+ETHERSCAN_API_KEY=="PLACEHOLDER_STRING"
+BASE_MAINNET_RPC_URl="https://mainnet.base.org"
+BASE_GOERLI_RPC_URl="https://goerli.base.org"
+```
+
+Substitute `<YOUR_PRIVATE_KEY>` with the private key for your wallet. Note that even though we're using Basescan as our block explorer, Foundry expects the API key to be defined as `ETHERSCAN_API_KEY`.
+
+:::caution
+
+`PRIVATE_KEY` is the private key of the wallet to use when deploying a contract. For instructions on how to get your private key from Coinbase Wallet, visit the [Coinbase Wallet documentation](https://docs.cloud.coinbase.com/wallet-sdk/docs/developer-settings#show-private-key). **It is critical that you do NOT commit this to a public repo**.
+
+:::
+
+### Loading environment variables
+
+Now that you've created the above '`.env` file, run the following command to set environment variables from this file:
+
+```bash
+source .env
 ```
 
 ---
 
 ## Deploying the smart contract
+With your contract compiled and your environment configured for Base, you are ready to deploy to the Base Goerli test network!
 
-Once your contract has been successfully compiled, you can deploy the contract to the Base Goerli test network.
+Today we'll use the `forge create` command, which is a straightforward way to deploy a single contract at a time. In the future, you may want to look into [`forge script`](https://book.getfoundry.sh/tutorials/solidity-scripting), which enables scripting onchain transactions and deploying more complex smart contract projects.
 
-To deploy the contract to the Base Goerli test network, you'll need to modify the `scripts/deploy.ts` in your project:
+You'll need testnet ETH in your wallet. See the [prerequisites](#prerequisites) if you haven't done that yet. Otherwise, the deployment attempt will fail.
 
-```typescript
-import { ethers } from 'hardhat';
-
-async function main() {
-  const nft = await ethers.deployContract('NFT');
-
-  await nft.waitForDeployment();
-
-  console.log('NFT Contract Deployed at ' + nft.target);
-}
-
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
-```
-
-You'll also need testnet ETH in your wallet. See the [prerequisites](#prerequisites) if you haven't done that yet. Otherwise, the deployment attempt will fail.
-
-Finally, run:
+To deploy the contract to the Base Goerli test network, run:
 
 ```bash
-npx hardhat run scripts/deploy.ts --network base-goerli
+forge create ./src/NFT.sol:NFT --rpc-url $BASE_GOERLI_RPC --private-key $PRIVATE_KEY 
 ```
 
 The contract will be deployed on the Base Goerli test network. You can view the deployment status and contract by using a [block explorer](/tools/block-explorers) and searching for the address returned by your deploy script. If you've deployed an exact copy of the NFT contract above, it will already be verified and you'll be able to read and write to the contract using the web interface.
@@ -271,41 +193,19 @@ The contract will be deployed on the Base Goerli test network. You can view the 
 If you'd like to deploy to mainnet, you'll modify the command like so:
 
 ```bash
-npx hardhat run scripts/deploy.ts --network base-mainnet
+forge create ./src/NFT.sol:NFT --rpc-url $BASE_MAINNET_RPC --private-key $PRIVATE_KEY 
 ```
 
 :::
 
-Regardless of the network you're deploying to, if you're deploying a new or modified contract, you'll need to verify it first.
+Regardless of the network you're deploying to, if you're deploying a new or modified contract, you'll need to verify it.
 
 ---
 
 ## Verifying the Smart Contract
+In web3, it's considered best practice to verify our contracts so that users and other developers can inspect the source code, and be sure that it matches the deployed bytecode on the blockchain.
 
-If you want to interact with your contract on the block explorer, you, or someone, needs to verify it first. The above contract has already been verified, so you should be able to view your version on a block explorer already. For the remainder of this guide, we'll walk through how to verify your contract on Base Goerli testnet.
-
-In `hardhat.config.ts`, configure Base Goerli as a custom network. Add the following to your `HardhatUserConfig`:
-
-<Tabs>
-<TabItem value="basescan" label="Basescan">
-
-```typescript
-etherscan: {
-   apiKey: {
-    "base-goerli": "PLACEHOLDER_STRING"
-   },
-   customChains: [
-     {
-       network: "base-goerli",
-       chainId: 84531,
-       urls: {
-        apiURL: "https://api-goerli.basescan.org/api",
-        browserURL: "https://goerli.basescan.org"
-       }
-     }
-   ]
- },
-```
+Further, if you want to interact with your contract on the block explorer, you or someone else needs to verify it. The above contract has already been verified, so you should be able to view your version on a block explorer already, but we'll still walk through how to verify a contract on Base Goerli testnet.
 
 :::info
 
@@ -313,92 +213,101 @@ When verifying a contract with Basescan on testnet (Goerli), an API key is not r
 
 :::
 
-</TabItem>
-<TabItem value="blockscout" label="Blockscout">
-
-```typescript
-// Hardhat expects etherscan here, even if you're using Blockscout.
-etherscan: {
-   apiKey: {
-    "base-goerli": process.env.BLOCKSCOUT_KEY as string
-   },
-   customChains: [
-     {
-       network: "base-goerli",
-       chainId: 84531,
-       urls: {
-        apiURL: "https://base-goerli.blockscout.com/api",
-        browserURL: "https://base-goerli.blockscout.com"
-       }
-     }
-   ]
- },
-```
-
-:::info
-
-You can get your Blockscout API key from [here](https://base-goerli.blockscout.com/account/api_key) after you sign up for an account.
-
-:::
-
-</TabItem>
-</Tabs>
-
-Now, you can verify your contract. Grab the deployed address and run:
+Grab the deployed address and run:
 
 ```bash
-npx hardhat verify --network base-goerli <deployed address>
+forge verify-contract <DEPLOYED_ADDRESS> ./src/NFT.sol:NFT --chain 84531 --watch
 ```
 
 You should see an output similar to:
 
-<Tabs>
-<TabItem value="basescan" label="Basescan">
-
 ```
-Nothing to compile
-No need to generate any newer typings.
-Successfully submitted source code for contract
-contracts/NFT.sol:NFT at 0x6527E5052de5521fE370AE5ec0aFCC6cD5a221de
-for verification on the block explorer. Waiting for verification result...
+Start verifying contract `0x71bfCe1172A66c1c25A50b49156FAe45EB56E009` deployed on base-goerli
 
-Successfully verified contract NFT on Etherscan.
-https://goerli.basescan.org/address/0x6527E5052de5521fE370AE5ec0aFCC6cD5a221de#code
-```
-
-</TabItem>
-<TabItem value="blockscout" label="Blockscout">
-
-```
-Nothing to compile
-No need to generate any newer typings.
-Successfully submitted source code for contract
-contracts/NFT.sol:NFT at 0x6527E5052de5521fE370AE5ec0aFCC6cD5a221de
-for verification on the block explorer. Waiting for verification result...
-
-Successfully verified contract NFT on Etherscan.
-https://base-goerli.blockscout.com/address/0x6527E5052de5521fE370AE5ec0aFCC6cD5a221de#code
+Submitting verification for [src/NFT.sol:NFT] 0x71bfCe1172A66c1c25A50b49156FAe45EB56E009.
+Submitted contract for verification:
+        Response: `OK`
+        GUID: `3i9rmtmtyyzkqpfvy7pcxj1wtgqyuybvscnq8d7ywfuskss1s7`
+        URL:
+        https://goerli.basescan.org/address/0x71bfce1172a66c1c25a50b49156fae45eb56e009
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Contract verification status:
+Response: `OK`
+Details: `Pass - Verified`
+Contract successfully verified
 ```
 
-</TabItem>
-</Tabs>
+Search for your contract on [Basescan](https://goerli.basescan.org/) to confirm it is verified.
 
 :::info
 
 You can't re-verify a contract identical to one that has already been verified. If you attempt to do so, such as verifying the above contract, you'll get an error similar to:
 
 ```text
-Error in plugin @nomiclabs/hardhat-etherscan: The API responded with an unexpected message.
-Contract verification may have succeeded and should be checked manually.
-Message: Already Verified
+Start verifying contract `0x71bfCe1172A66c1c25A50b49156FAe45EB56E009` deployed on base-goerli
+
+Contract [src/NFT.sol:NFT] "0x71bfCe1172A66c1c25A50b49156FAe45EB56E009" is already verified. Skipping verification.
 ```
 
 :::
 
-Search for your contract on [Blockscout](https://base-goerli.blockscout.com/) or [Basescan](https://goerli.basescan.org/) to confirm it verified .
-
 ## Interacting with the Smart Contract
 
-If you verified on Basescan, you can use the `Read Contract` and `Write Contract` tabs to interact with the deployed contract. You'll need to connect your wallet first, by clicking the Connect button.
+If you verified on Basescan, you can use the `Read Contract` and `Write Contract` sections under the `Contract` tab to interact with the deployed contract. To use `Write Contract`, you'll need to connect your wallet first, by clicking the `Connect to Web3` button (sometimes this can be a little finicky, and you'll need to click `Connect` twice before it shows your wallet is successfully connected). 
+
+For some practice using the `cast` command-line tool which Foundry provides, we'll perform a call without publishing a transaction (a read), then sign and publish a transaction (a write).
+
+### Performing a call
+A key component of the Foundry toolkit, `cast` enables us to interact with contracts, send transactions, and get onchain data using Ethereum RPC calls. First we will perform a call from your account, without publishing a transaction.
+
+From the command-line, run:
+
+```bash
+cast call <DEPLOYED_ADDRESS> --rpc-url $BASE_GOERLI_RPC "balanceOf(address)" <YOUR_ADDRESS_HERE>
+```
+
+You should receive `0x0000000000000000000000000000000000000000000000000000000000000000` in response, which equals `0` in hexadecimal. And that makes sense — while you've deployed the NFT contract, no NFTs have been minted yet and therefore your account does not own any.
+
+### Signing and publishing a transaction
+Now let's sign and publish a transaction, calling the `mint(address)` function on the NFT contract we just deployed.
+
+Run the following command:
+
+```bash
+cast send <DEPLOYED_ADDRESS> --rpc-url=$BASE_GOERLI_RPC --private-key=$PRIVATE_KEY "mint(address)" <YOUR_ADDRESS_HERE>
+```
+
+Note that in this `cast send` command, we had to include our private key, but this is not required for `cast call`, because that's for calling view-only contract functions.
+
+If successful, Foundry will respond with information about the transaction, like the `blockNumber`, `gasUsed`, and `transactionHash`.
+
+Finally, let's confirm that we did indeed mint ourselves one NFT. If we run the first `cast call` command again, we should see that our balance increased from 0 to 1:
+
+```bash
+cast call <DEPLOYED_ADDRESS> --rpc-url $BASE_GOERLI_RPC "balanceOf(address)" <YOUR_ADDRESS_HERE>
+```
+
+And the response: `0x0000000000000000000000000000000000000000000000000000000000000001` (`1` in hex) — congratulations, you deployed and minted an NFT with Foundry!
 
 ---
+
+## Conclusion
+
+Phew, that was a lot! We learned how to setup a project, deploy to Base, and interact with our smart contract using Foundry. The process is the same for real networks, just more expensive — and of course, you'll want to invest time and effort testing your contracts, to reduce the likelihood of user-impacting bugs before deploying.
+
+For all things Foundry, check out the [Foundry book](https://book.getfoundry.sh/), or head to the official Telegram [dev chat](https://t.me/foundry_rs) or [support chat](https://t.me/foundry_support).
+
+---
+
+<!-- Add reference style links here.  These do not render on the page. -->
+
+[`goerli.basescan.org`]: https://goerli.basescan.org/
+[`basescan.org`]: https://basescan.org/
+[coinbase]: https://www.coinbase.com/wallet
+[MetaMask]: https://metamask.io/
+[coinbase settings]: https://docs.cloud.coinbase.com/wallet-sdk/docs/developer-settings
+[etherscan]: https://etherscan.io/
+[faucets on the web]: https://coinbase.com/faucets
+[Foundry]: https://book.getfoundry.sh/
