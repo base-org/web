@@ -144,28 +144,49 @@ forge build
 
 ## Configuring Foundry with Base
 
-In order to deploy smart contracts to the Base network, you will need to configure your Foundry project and add the Base network.
+Next we will configure your Foundry project to deploy smart contracts to the Base network. First we'll store your private key in an encrypted keystore, then we'll add Base as a network.
 
-Create a `.env` file in the home directory of your project and add Base as a network:
+### Storing your private key
 
+The following command will import your private key to Foundry's secure keystore. You will be prompted to enter your private key, as well as a password for signing transactions:
+
+```bash
+cast wallet import deployer --interactive
 ```
-PRIVATE_KEY=<YOUR_PRIVATE_KEY>
-ETHERSCAN_API_KEY=="PLACEHOLDER_STRING"
-BASE_MAINNET_RPC_URl="https://mainnet.base.org"
-BASE_GOERLI_RPC_URl="https://goerli.base.org"
-```
-
-Substitute `<YOUR_PRIVATE_KEY>` with the private key for your wallet. Note that even though we're using Basescan as our block explorer, Foundry expects the API key to be defined as `ETHERSCAN_API_KEY`.
 
 :::caution
 
-`PRIVATE_KEY` is the private key of the wallet to use when deploying a contract. For instructions on how to get your private key from Coinbase Wallet, visit the [Coinbase Wallet documentation](https://docs.cloud.coinbase.com/wallet-sdk/docs/developer-settings#show-private-key). **It is critical that you do NOT commit this to a public repo**.
+For instructions on how to get your private key from Coinbase Wallet, visit the [Coinbase Wallet documentation](https://docs.cloud.coinbase.com/wallet-sdk/docs/developer-settings#show-private-key). **It is critical that you do NOT commit this to a public repo**.
+
+:::
+
+Run this command to confirm that the 'deployer' account is setup in Foundry:
+
+```bash
+cast wallet list
+```
+
+### Adding Base as a network
+
+Now create a `.env` file in the home directory of your project to add the Base network and an API key for verifying your contract on Basescan:
+
+```
+BASE_MAINNET_RPC="https://mainnet.base.org"
+BASE_GOERLI_RPC="https://goerli.base.org"
+ETHERSCAN_API_KEY="PLACEHOLDER_STRING"
+```
+
+ Note that even though we're using Basescan as our block explorer, Foundry expects the API key to be defined as `ETHERSCAN_API_KEY`.
+
+:::info
+
+When verifying a contract with Basescan on testnet (Goerli), an API key is not required. You can leave the value as `PLACEHOLDER_STRING`. On mainnet, you can get your Basescan API key from [here](https://basescan.org/myapikey) after you sign up for an account.
 
 :::
 
 ### Loading environment variables
 
-Now that you've created the above '`.env` file, run the following command to set environment variables from this file:
+Now that you've created the above `.env` file, run the following command to load the environment variables in the current command line session:
 
 ```bash
 source .env
@@ -174,16 +195,16 @@ source .env
 ---
 
 ## Deploying the smart contract
-With your contract compiled and your environment configured for Base, you are ready to deploy to the Base Goerli test network!
+With your contract compiled and your environment configured, you are ready to deploy to the Base Goerli test network!
 
 Today we'll use the `forge create` command, which is a straightforward way to deploy a single contract at a time. In the future, you may want to look into [`forge script`](https://book.getfoundry.sh/tutorials/solidity-scripting), which enables scripting onchain transactions and deploying more complex smart contract projects.
 
 You'll need testnet ETH in your wallet. See the [prerequisites](#prerequisites) if you haven't done that yet. Otherwise, the deployment attempt will fail.
 
-To deploy the contract to the Base Goerli test network, run:
+To deploy the contract to the Base Goerli test network, run the following command. You will be prompted to enter the password that you set earlier, when you imported your private key:
 
 ```bash
-forge create ./src/NFT.sol:NFT --rpc-url $BASE_GOERLI_RPC --private-key $PRIVATE_KEY 
+forge create ./src/NFT.sol:NFT --rpc-url $BASE_GOERLI_RPC --account deployer
 ```
 
 The contract will be deployed on the Base Goerli test network. You can view the deployment status and contract by using a [block explorer](/tools/block-explorers) and searching for the address returned by your deploy script. If you've deployed an exact copy of the NFT contract above, it will already be verified and you'll be able to read and write to the contract using the web interface.
@@ -193,7 +214,7 @@ The contract will be deployed on the Base Goerli test network. You can view the 
 If you'd like to deploy to mainnet, you'll modify the command like so:
 
 ```bash
-forge create ./src/NFT.sol:NFT --rpc-url $BASE_MAINNET_RPC --private-key $PRIVATE_KEY 
+forge create ./src/NFT.sol:NFT --rpc-url $BASE_MAINNET_RPC --account deployer
 ```
 
 :::
@@ -276,7 +297,7 @@ Now let's sign and publish a transaction, calling the `mint(address)` function o
 Run the following command:
 
 ```bash
-cast send <DEPLOYED_ADDRESS> --rpc-url=$BASE_GOERLI_RPC --private-key=$PRIVATE_KEY "mint(address)" <YOUR_ADDRESS_HERE>
+cast send <DEPLOYED_ADDRESS> --rpc-url=$BASE_GOERLI_RPC "mint(address)" <YOUR_ADDRESS_HERE> --account deployer
 ```
 
 :::info
