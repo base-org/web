@@ -57,16 +57,16 @@ Add a public function called `resetMyGarage`. It should delete the entry in `gar
 
 ### Submit your Contract and Earn an NFT Badge! (BETA)
 
-:::caution
-
-When implementing the Car struct, pay special attention to the data type of numberOfDoors. 
-Although it might be tempting to use `uint8` for the number of doors, be cautious as it might lead to a common error in the automated contract testing. 
-(Plus we don't really know how many doors cars will have in the future, better to future-proof!)
-
-:::
-
-
 import data from "../../assets/deployments/StructsUT.json";
 import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
 <CafeUnitTest deployment={data} nftNum={7}/>
+  
+<br/>
+<details>
+  <summary>
+    ⚠️ Spoiler Alert: Open only if tests fail</summary>
+
+Ensure your variable sizes align with their intended use, and consider the nuances of packing in Solidity. Resources: [Solidity - Layout in Storage](https://docs.soliditylang.org/en/v0.8.17/internals/layout_in_storage.html#layout-of-state-variables-in-storage), [Variables in Struct](https://docs.base.org/base-camp/docs/structs/structs-sbs#setting-up-the-struct)
+
+</details>
