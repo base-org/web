@@ -36,8 +36,16 @@ By the end of this guide you should be able to:
 :::caution
 
 Running a node is time consuming, resource expensive, and potentially costly. If you don't already know why you want to run your own node, you probably don't need to.
+<br></br>
 
-If you're just getting started and need an RPC URL, you can use our free endpoint at `https://mainnet.base.org` (or if you're setting up a node on testnet, `https://goerli.base.org`). **Note:** Our RPCs are rate-limited, they are not suitable for production apps.
+If you're just getting started and need an RPC URL, you can use our free endpoints:
+<br></br>
+
+- **Mainnet**: `https://mainnet.base.org`
+- **Testnet (Sepolia)**: `https://sepolia.base.org`
+- **Testnet (Goerli)**: `https://goerli.base.org`.
+
+**Note:** Our RPCs are rate-limited, they are not suitable for production apps.
 
 If you're looking to harden your app and avoid rate-limiting for your users, please check out one of our [partners].
 
@@ -86,18 +94,24 @@ Syncing your node may take **days** and will consume a vast amount of your reque
 
 ### Snapshots
 
-If you're a prospective or current Base Node operator and would like to restore from a snapshot to save time on the initial sync, it's possible to always get the latest available snapshot of the Base chain on mainnet and/or testnet by using the following CLI commands. The snapshots are updated every hour.
+If you're a prospective or current Base Node operator and would like to restore from a snapshot to save time on the initial sync, it's possible to always get the latest available snapshot of the Base chain on mainnet and/or testnet by using the following CLI commands. The snapshots are updated every week.
 
 **Mainnet**
 
 ```
-wget https://base-mainnet-archive-snapshots.s3.us-east-1.amazonaws.com/$(curl https://base-mainnet-archive-snapshots.s3.us-east-1.amazonaws.com/latest)
+wget https://base-snapshots-mainnet-archive.s3.amazonaws.com/$(curl https://base-snapshots-mainnet-archive.s3.amazonaws.com/latest)
 ```
 
-**Testnet**
+**Testnet (Sepolia)**
 
 ```
-wget https://base-goerli-archive-snapshots.s3.us-east-1.amazonaws.com/$(curl https://base-goerli-archive-snapshots.s3.us-east-1.amazonaws.com/latest)
+wget https://base-snapshots-sepolia-archive.s3.amazonaws.com/$(curl https://base-snapshots-sepolia-archive.s3.amazonaws.com/latest)
+```
+
+**Testnet (Goerli)**
+
+```
+wget https://base-snapshots-goerli-archive.s3.amazonaws.com/$(curl https://base-snapshots-goerli-archive.s3.amazonaws.com/latest)
 ```
 
 ### Syncing
