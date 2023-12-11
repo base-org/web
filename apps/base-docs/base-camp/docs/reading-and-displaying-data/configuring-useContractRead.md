@@ -4,7 +4,7 @@ description: Configure the properties of the `useContractRead`` hook.
 hide_table_of_contents: false
 ---
 
-The [`useContractRead`] hook has a number of configurable properties that will allow you to adapt it to your needs. You can
+The [`useContractRead`] hook has a number of configurable properties that will allow you to adapt it to your needs. You can [`watch`], for updates, though not for free. Once those updates are retrieved you can use the hook to automatically run an update function to set state for React, or handle any other logic you want to trigger when the data on the blockchain changes.
 
 ---
 
