@@ -1,6 +1,6 @@
 ---
 title: Configuring `useContractRead`
-description: Configure the properties of the `useContractRead`` hook.
+description: Configure the properties of the `useContractRead` hook.
 hide_table_of_contents: false
 ---
 
