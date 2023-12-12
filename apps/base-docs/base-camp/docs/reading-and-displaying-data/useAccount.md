@@ -4,7 +4,7 @@ description: Learn how to access information about the connected user's wallet.
 hide_table_of_contents: false
 ---
 
-[wagmi] is a library that provides React hooks that trade a somewhat complex setup process for a great developer experience when building a frontend around the constraints and quirks of onchain building. One of the hooks, `useAccount`, provides access to your users wallet and connection information.
+[wagmi] is a library that provides React hooks that trade a somewhat complex setup process for a great developer experience when building a frontend around the constraints and quirks of onchain building. One of the hooks, `useAccount`, provides access to information about your users' wallet and connection information.
 
 You can use this for connection-status-based rendering, to enable or disable controls or views based on address, and many other useful tasks.
 
@@ -37,9 +37,9 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 
 ### The `useAccount` Hook
 
-The [`useAccount`] hook allows you to access account and connection data from within any of your components. Add a folder for `components` and a file called `ConnectionWindow.tsx` in that folder.
+The [`useAccount`] hook allows you to access account and connection data from within any of your components.
 
-Add the below component to the file, and replace the boilerplate text in `index.tsx` with an instance of it.
+Add a folder for `components` and a file called `ConnectionWindow.tsx` in that folder. Add the below component to the file, and replace the boilerplate text in `index.tsx` with an instance of it.
 
 ```typescript
 // ConnectionWindow.tsx
