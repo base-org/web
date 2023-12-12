@@ -1,5 +1,5 @@
 ---
-title: `useContractWrite`
+title: The `useContractWrite` hook
 description: Write to your smart contracts with the `useContractWrite` hook.
 hide_table_of_contents: false
 ---
@@ -94,16 +94,12 @@ Then, add the component to your app in `index.tsx`.
 ```typescript
 return (
   <div className={styles.container}>
-    // ...other code
-
     <main className={styles.main}>
       <ConnectButton />
       <ConnectionWindow />
       <TokenInfo />
       <IssueList />
     </main>
-
-    // ...other code
 );
 ```
 

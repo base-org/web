@@ -1,5 +1,5 @@
 ---
-title: `usePrepareContractWrite`
+title: The `usePrepareContractWrite` hook
 description: Improve your user experience with the `usePrepareContractWrite` hook.
 hide_table_of_contents: false
 ---
