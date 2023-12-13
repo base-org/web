@@ -27,6 +27,13 @@ export function Footer() {
               </p>
               <p className="text-white">commemorating the evolution of Base.</p>
             </div>
+            <div className="flex flex-col">
+              <p className="text-white">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdvX-a6LqOIR7Uk5cDPGUjUkpSCetvTor25M1JmW9eqgubS5Q/viewform?usp=sf_link" className="underline">
+                  Build on Base.
+                </a>
+              </p>
+            </div>
           </div>
           <p className="pt-20 underline">
             <a href="https://docs.base.org/terms-of-service">Terms of Service</a>
