@@ -5,6 +5,7 @@ description: Documentation for using web3.js, a JavaScript library for interacti
 keywords:
   [
     web3.js,
+    web3.js v4,
     Base,
     Base mainnet,
     Base testnet,
@@ -21,7 +22,7 @@ keywords:
 
 # web3.js
 
-[web3.js](https://web3js.readthedocs.io/) is a JavaScript library that allows developers to interact with EVM-compatible blockchain networks.
+[web3.js](https://web3js.org/) is a JavaScript library that allows developers to interact with EVM-compatible blockchain networks.
 
 You can use web3.js to interact with smart contracts deployed on the Base network.
 
@@ -42,7 +43,11 @@ Before you can start using web3.js, you need to import it into your project.
 Add the following line of code to the top of your file to import web3.js:
 
 ```javascript
+//web3.js v1
 const Web3 = require('web3');
+
+//web3.js v4
+const {Web3} = require('web3');
 ```
 
 ## Connecting to Base
@@ -50,7 +55,7 @@ const Web3 = require('web3');
 You can connect to Base by instantiating a new web3.js `Web3` object with a RPC URL of the Base network:
 
 ```javascript
-const Web3 = require('web3');
+const {Web3} = require('web3');
 
 const web3 = new Web3('https://mainnet.base.org');
 ```
