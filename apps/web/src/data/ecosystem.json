@@ -18,6 +18,78 @@
     "imageUrl": "/images/partners/envio.png"
   },
   {
+    "name": "builder.fi",
+    "url": "https://www.builder.fi/",
+    "description": "builder.fi is a SocialFi app where builders can capitalize on their reputation and earn crypto for answering questions.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/builderfi.png"
+  },
+  {
+    "name": "Collab.Land",
+    "url": "https://www.collab.land/",
+    "description": "Collab.Land is the original community management tool that curates social membership based on tokens. We verify and confirm that members possess the required token(s) to participate in communities.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/collabland.png"
+  },
+  {
+    "name": "OpenFriend",
+    "url": "https://openfriend.tech/",
+    "description": "OpenFriend.Tech is an auxiliary tool providing multi-dimensional data analytics for Friend.Tech users, allowing every user to build their own on-chain reputation based on Friend.Tech.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/openfriend.png"
+  },
+  {
+    "name": "Nextme",
+    "url": "https://nextme.one/",
+    "description": "Nextme is committed to building a social economic network that connects creators, brands and users.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/nextme.png"
+  },
+  {
+    "name": "Sound.xyz",
+    "url": "https://www.sound.xyz/",
+    "description": "Discover amazing new music and prove that you were there first.",
+    "tags": [
+      "NFT"
+    ],
+    "imageUrl": "/images/partners/sound.png"
+  },
+  {
+    "name": "GetBlock",
+    "url": "https://getblock.io/",
+    "description": "GetBlock offers fast and cost-efficient RPC nodes for over 50 blockchains, including Base, catering to hundreds of dApps from diverse segments.",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/getblock.png"
+  },
+  {
+    "name": "Moralis",
+    "url": "https://moralis.io/",
+    "description": "Moralis is a leading crypto data provider that helps companies build great user experiences, drive engagement, growth & revenue in their applications with plug-and-play Web3 APIs. ",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/moralis.png"
+  },
+  {
+    "name": "Quick Intel",
+    "url": "https://app.quickintel.io/",
+    "description": "Quick intel provides the security tools you need to avoid scams, have more peace of mind and become a confident crypto trader.",
+    "tags": [
+      "security"
+    ],
+    "imageUrl": "/images/partners/quickintel.png"
+  },
+  {
     "name": "Cobo Argus",
     "url": "https://www.cobo.com/argus",
     "description": "Cobo Argus is a secure and efficient on-chain digital asset management solution that supports role-based access controls, DeFi investment strategies and more. ",
@@ -163,7 +235,7 @@
   },
   {
     "name": "Lore",
-    "url": "https://www.cradles.io/",
+    "url": "https://lore.xyz/",
     "description": "Community driven fun. With Lore, communities can run engagement programs, create media and own assets — together.",
     "tags": [
       "gaming"
@@ -1704,7 +1776,7 @@
   },
   {
     "name": "GangstaVerse",
-    "url": "https://war.gangstaverse.co/",
+    "url": "https://war-base.gangstaverse.co/",
     "description": "GangstaVerse is a multi-chain RPG that combines digital art and web3 game ecosystem. GangWar is a semi-passive simulation-based game where gangsters and detectives fight to establish power in the city.",
     "tags": [
       "gaming"
