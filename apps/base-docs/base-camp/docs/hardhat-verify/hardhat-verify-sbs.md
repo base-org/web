@@ -40,7 +40,7 @@ This process involves the following steps:
 
 In order to obtain an Etherscan API key, visit [Etherscan](https://etherscan.io/) and create an account.
 
-Then, go to [https://etherscan.io/myapikey](https://etherscan.io/myapikey) and creeate an API key by clicking the **Add** button:
+Then, go to [https://etherscan.io/myapikey](https://etherscan.io/myapikey) and create an API key by clicking the **Add** button:
 
 ![Add key](../../assets/images/hardhat-verify/harhat-verify-create-key.png)
 
