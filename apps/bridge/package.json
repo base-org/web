@@ -29,7 +29,7 @@
     "react-query": "^3.39.3",
     "typescript": "next",
     "viem": "latest",
-    "wagmi": "^1.4.4",
+    "wagmi": "^1.4.12",
     "webpack-bugsnag-plugins": "^1.8.0"
   },
   "devDependencies": {
