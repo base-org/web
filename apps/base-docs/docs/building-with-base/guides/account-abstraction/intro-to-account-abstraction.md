@@ -1,6 +1,6 @@
 ---
 title: Intro to Account Abstraction
-description: Learn what Account Abstraction it, how it works and what problems it solves.
+description: Learn what Account Abstraction it, how it works, and what problems it solves.
 hide_table_of_contents: false
 ---
 
@@ -21,7 +21,7 @@ Before reading this guide, you should:
 
 ## Objectives
 
-By the end of this lesson you should be able to:
+By the end of this guide you should be able to:
 
 - Explain how Account Abstraction can improve user experience for onchain apps.
 - Describe the difference between contract accounts and EOAs, the limitations of contract accounts, and how EIP-4337 uses `UserOperation`s to mitigate these limitations.
