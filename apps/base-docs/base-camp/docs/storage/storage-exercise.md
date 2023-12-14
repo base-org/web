@@ -18,7 +18,7 @@ The contract should have the following state variables, optimized to minimize st
 
 - A private variable `shares` storing the employee's number of shares owned
   - Employees with more than 5,000 shares count as directors and are stored in another contract
-- Public variable `name` which store the employee's name
+- Public variable `name` which stores the employee's name
 - A private variable `salary` storing the employee's salary
   - Salaries range from 0 to 1,000,000 dollars
 - A public variable `idNumber` storing the employee's ID number
@@ -76,7 +76,7 @@ Add the following function to your contract exactly as written below.
 * I'm not your boss ¯\_(ツ)_/¯
 *
 * Fair warning though, if you do cheat, it will be on the blockchain having been
-* deployed by you wallet....FOREVER!
+* deployed by your wallet....FOREVER!
 */
 function checkForPacking(uint _slot) public view returns (uint r) {
     assembly {
