@@ -43,7 +43,7 @@ After consulting with the designers, we need to store the following for each add
 
 Let's pause for a moment and do some technical design around how to save our favorites.
 
-The product team have confirmed for us that we can safely expect that no users have a favorite number greater than 65,536, and of course, everyone is born on a day of the month between 1-31.
+The product team has confirmed for us that we can safely expect that no users have a favorite number greater than 65,536, and of course, everyone is born on a day of the month between 1-31.
 
 Variable [packing] also works inside structs, so we could potentially save on storage by using smaller `uint`s for those variables. However, people don't change their favorite number very often, and the day of the month that they were born on never changes.
 
@@ -64,9 +64,9 @@ struct Favorites {
 }
 ```
 
-### Instantiating a Struct with It's Name
+### Instantiating a Struct with Its Name
 
-There are two ways to instantiate a struct using it's name. The first is similar to instantiating a new object in JavaScript:
+There are two ways to instantiate a struct using its name. The first is similar to instantiating a new object in JavaScript:
 
 ```solidity
 Favorites memory myFavorites = Favorites({

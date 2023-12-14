@@ -154,7 +154,7 @@ Use the `connected` property in the same way to only render the wallet address i
 
 ### Implementing the `useIsMounted` Hook
 
-Whenever you refresh your browser window, you're probably seen an `Unhandled Runtime Error` that content did not match. The error provides a link explaining why this [hydration error] occurred, but doesn't give you much to explain why the error is occurring here.
+Whenever you refresh your browser window, you've probably seen an `Unhandled Runtime Error` that content did not match. The error provides a link explaining why this [hydration error] occurred, but doesn't give you much to explain why the error is occurring here.
 
 What's happening is an interaction between the server-side rendering of Next.js, and wagmi's use of local storage caching to prevent a flickering of UI elements that can occur when connection state changes. As a result, the server and the client have different states for the first render cycle.
 

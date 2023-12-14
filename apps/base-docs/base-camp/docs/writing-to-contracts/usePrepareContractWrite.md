@@ -24,7 +24,7 @@ In the previous step-by-step, you used [`useContractWrite`] to set up a hook you
 
 ### Using `usePrepareContractWrite`
 
-The `usePrepareContractWrite` is use with `useContractWrite`, which accepts it as an argument. It has most of the same properties as well. Modify your `TokenInfo` component to test it:
+The `usePrepareContractWrite` is used with `useContractWrite`, which accepts it as an argument. It has most of the same properties as well. Modify your `TokenInfo` component to test it:
 
 ```typescript
 // Bad code for example.  See below for fix.
