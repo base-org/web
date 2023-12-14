@@ -156,7 +156,7 @@ After performing the first gas profiling, you can start ideating strategies to i
 
 ### Using the optimizer
 
-From the previous report, you can identity that the optimizer of the project has a value of 10000 runs. This means the deployment costs will be more expensive. However, if you modify that value to 200, you get:
+From the previous report, you can identify that the optimizer of the project has a value of 10000 runs. This means the deployment costs will be more expensive. However, if you modify that value to 200, you get:
 
 ```
 ·------------------------|---------------------------|-------------|-----------------------------·
