@@ -759,6 +759,11 @@ const sidebars = {
       collapsible: true,
       items: [
         {
+          type: 'doc',
+          id: 'docs/frontend-setup/overview',
+          className: 'sidebar-reading',
+        },
+        {
           type: 'category',
           label: 'Frontend Setup',
           items: [
