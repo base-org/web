@@ -12,7 +12,7 @@ The [`usePrepareContractWrite`] hook "Eagerly fetches the parameters required fo
 
 By the end of this guide you should be able to:
 
-- Implement Wagmi's `usePrepareContractWRite` and `useContractWrite` to send transactions to a smart contract
+- Implement Wagmi's `usePrepareContractWrite` and `useContractWrite` to send transactions to a smart contract
 - Configure the options in `usePrepareContractWrite` and `useContractWrite`
 - Call a smart contract function on-demand using the write function from `useContractWrite`, with arguments and a value
 
