@@ -18,6 +18,60 @@
     "imageUrl": "/images/partners/envio.png"
   },
   {
+    "name": "ZKP2P",
+    "url": "https://zkp2p.xyz/",
+    "description": "ZKP2P is a trustless P2P fiat to crypto on/offramp powered by zero knowledge proofs. Convert USD in Venmo to USDC in 60 seconds!",
+    "tags": [
+      "onramp"
+    ],
+    "imageUrl": "/images/partners/zkp2p.png"
+  },
+  {
+    "name": "Rubic",
+    "url": "https://rubic.exchange/",
+    "description": "Rubic is a Cross-Chain Tech Aggregator for users + tools for dApps. Trade 15,500+ tokens across 70+ networks, through the aggregation of 220+ DEXs and bridges!",
+    "tags": [
+      "bridge"
+    ],
+    "imageUrl": "/images/partners/rubic.png"
+  },
+  {
+    "name": "Pockie",
+    "url": "https://www.pockie.io/",
+    "description": "Pockie is a Web 3 wallet focused on the user experience. Users can manage all tokens across the chains in one screen and customize profile with NFTs.",
+    "tags": [
+      "wallet"
+    ],
+    "imageUrl": "/images/partners/pockie.png"
+  },
+  {
+    "name": "trustalabs",
+    "url": "https://www.trustalabs.ai/",
+    "description": "Trusta Labs aims to build web3 security and data infrastructure to bring more trust and less friction to the web3 world.",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/trusta.png"
+  },
+  {
+    "name": "BlockWallet",
+    "url": "https://blockwallet.io/networks/base-wallet",
+    "description": "BlockWallet is a self-custodial Web3 wallet focused on speed, reliability, and security ensuring users genuinely own their digital assets without technical concerns.",
+    "tags": [
+      "wallet"
+    ],
+    "imageUrl": "/images/partners/blockwallet.png"
+  },
+  {
+    "name": "Redlion Printer",
+    "url": "https://app.prints.red",
+    "description": "Redlion Printer is an innovative solution for the cryptoart community, designed to seamlessly integrate the digital with physical forms of art, offering a novel solution for artists and art owners.",
+    "tags": [
+      "NFT"
+    ],
+    "imageUrl": "/images/partners/redlion.png"
+  },
+  {
     "name": "builder.fi",
     "url": "https://www.builder.fi/",
     "description": "builder.fi is a SocialFi app where builders can capitalize on their reputation and earn crypto for answering questions.",
