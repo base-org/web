@@ -40,11 +40,11 @@ By the end of this course, you should be able to:
   - Configure arguments to be passed with a call to a `pure` or `view` smart contract function
   - Call an instance of `useContractRead` on demand
   - Utilize `isLoading` and `isFetching` to improve user experience
-    **Writing to Contracts**
-  - Implement wagmi's `useContractWrite`` hook to send transactions to a smart contract
+- **Writing to Contracts**
+  - Implement wagmi's `useContractWrite` hook to send transactions to a smart contract
   - Configure the options in `useContractWrite`
   - Display the execution, success, or failure of a function with button state changes, and data display
-  - Implement Wagmi's `usePrepareContractWRite` and `useContractWrite` to send transactions to a smart contract
+  - Implement Wagmi's `usePrepareContractWrite` and `useContractWrite` to send transactions to a smart contract
   - Configure the options in `usePrepareContractWrite` and `useContractWrite`
   - Call a smart contract function on-demand using the write function from `useContractWrite`, with arguments and a value
 
