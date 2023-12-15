@@ -33,6 +33,7 @@ module.exports = {
                 'building-with-base/guides/deploy-with-remix',
                 'building-with-base/guides/deploy-with-tenderly',
                 'building-with-base/guides/deploy-with-thirdweb',
+                'building-with-base/guides/build-with-cookbook',
               ],
             },
             {
