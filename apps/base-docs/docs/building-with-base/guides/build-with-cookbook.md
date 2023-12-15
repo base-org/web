@@ -96,10 +96,11 @@ Manage your deployed smart contract under **My Dashboard** in Cookbook.
  
 On a smart contract or protocol page in Cookbook, select the **Open in Remix** option. Your smart contract will automatically be opened in a new Remix workspace.
 
-![Open in Remix](../../../assets/images/deployment-with-cookbook/Cookbook-Open-Remix.png)
+[![Open a Contract in Remix](../../../assets/images/deployment-with-cookbook/Cookbook-Open-Remix.png 'Open in Remix')](https://remix.ethereum.org/#activate=cookbookdev&version=soljson-v0.8.12.js&call=cookbookdev//openContract//simple-token&lang=en&optimize=false&runs=200&evmVersion=null)
 
-:::tip
-Click the "Open in Remix" button in these docs to actually open the smart contract code in the Remix IDE!
+
+:::tip 
+Click the "Open in Remix" button above to actually open the smart contract code in the Remix IDE!
 :::
 
 **Compile** your smart contract within remix. Most contracts opened with Cookbook will automatically compile within Remix. 
