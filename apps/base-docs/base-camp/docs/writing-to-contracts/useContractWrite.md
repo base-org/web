@@ -12,8 +12,8 @@ The [`useContractWrite`] hook allows you to call your `public` and `external` sm
 
 By the end of this guide you should be able to:
 
-- Implement wagmi's useContractWrite hook to send transactions to a smart contract
-- Configure the options in useContractWrite
+- Implement wagmi's `useContractWrite` hook to send transactions to a smart contract
+- Configure the options in `useContractWrite`
 - Display the execution, success, or failure of a function with button state changes, and data display
 
 ---
