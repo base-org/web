@@ -8,7 +8,7 @@ keywords: ["Cookbook", "Cookbook.dev", "smart contract", "Base", "Base test netw
 
 # Deploying a Smart Contract using Cookbook.dev
 
-[Cookbook](https://www.cookbook.dev/) is an open source smart contract registry. You can search, download, deploy, manage and integrate any Solidity smart contract into your app. Cookbook integrates with and works with a variety of development environments and tooling providers such as Ethereum's Remix, Hardhat, Foundry and more.  
+[Cookbook](https://www.cookbook.dev/utm=basedocs) is an open source smart contract registry. You can search, download, deploy, manage and integrate any Solidity smart contract into your app. Cookbook integrates with and works with a variety of development environments and tooling providers such as Ethereum's Remix, Hardhat, Foundry and more.  
 
 In this guide, you will learn to deploy a smart contract on Base using [cookbook.dev/chains/Base](https://www.cookbook.dev/chains/Base) and:
 - Cookbook's No-code Deploy
@@ -16,7 +16,7 @@ In this guide, you will learn to deploy a smart contract on Base using [cookbook
 - Cookbook's Hardhat Boilerplate
 - Cookbook's Foundry Boilerplate
 
-We will be using [Cookbook's Simple ERC-20 Token Smart Contract](https://www.cookbook.dev/contracts/simple-token) throughout this guide, but the principles here will apply to any smart contract found on or imported to [Cookbook](https://cookbook.dev). 
+We will be using [Cookbook's Simple ERC-20 Token Smart Contract](https://www.cookbook.dev/contracts/simple-token) throughout this guide, but the principles here will apply to any smart contract found on or imported to [Cookbook](https://cookbook.dev/utm=basedocs). 
 
 ## Objectives
 
