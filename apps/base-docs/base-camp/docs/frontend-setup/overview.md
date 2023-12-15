@@ -30,7 +30,7 @@ By the end of this course, you should be able to:
   - Set up a provider in wagmi and use it to connect a wallet
   - Protect API keys that will be exposed to the front end
 - **Reading and Displaying Data**
-  - Implement the `useAccount`` hook to show the user's address, connection state, network, and balance
+  - Implement the `useAccount` hook to show the user's address, connection state, network, and balance
   - Implement an `isMounted` hook to prevent hydration errors
   - Implement wagmi's `useContractRead` hook to fetch data from a smart contract
   - Convert data fetched from a smart contract to information displayed to the user
@@ -42,7 +42,7 @@ By the end of this course, you should be able to:
   - Utilize `isLoading` and `isFetching` to improve user experience
     **Writing to Contracts**
   - Implement wagmi's `useContractWrite`` hook to send transactions to a smart contract
-  - Configure the options in `useContractWrite``
+  - Configure the options in `useContractWrite`
   - Display the execution, success, or failure of a function with button state changes, and data display
   - Implement Wagmi's `usePrepareContractWRite` and `useContractWrite` to send transactions to a smart contract
   - Configure the options in `usePrepareContractWrite` and `useContractWrite`
