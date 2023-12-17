@@ -73,6 +73,20 @@ To get started, visit the [documentation](https://docs.envio.dev/docs/overview) 
 
 ---
 
+## Shovel
+
+[Shovel](https://indexsupply.com/shovel) is an [open source](https://github.com/indexsupply/code) tool for synchronizing Ethereum data to your Postgres database. Shovel can index block data, transaction data, and decoded event data. A single Shovel can index multiple chains simultaneously. Shovel is configured via a declarative JSON config file –no custom functions to save indexed data to your database.
+
+Find out more in the [Shovel Docs](https://indexsupply.com/shovel/docs/)
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Goerli (Testnet)
+- Base Sepolia (Testnet)
+
+---
+
 ## SubQuery
 
 [SubQuery](https://subquery.network/) is a data indexer that provides developers with fast, reliable, decentralized, and customized APIs for accessing rich indexed data from over 80+ ecosystems (including Base) within their projects.
