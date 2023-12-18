@@ -19,6 +19,7 @@
     "@docusaurus/core": "2.4.1",
     "@docusaurus/preset-classic": "2.4.1",
     "@mdx-js/react": "^1.6.22",
+    "@microsoft/fetch-event-source": "^2.0.1",
     "@rainbow-me/rainbowkit": "^1.0.4",
     "docusaurus-node-polyfills": "^1.0.0",
     "dotenv": "^16.3.1",
