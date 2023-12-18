@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Icon from '../Icon';
 
 import styles from './styles.module.css';
@@ -10,9 +10,9 @@ type FloatingChatButtonProps = {
 export default function FloatingChatButton({ onClick }: FloatingChatButtonProps) {
   const [visible, setVisible] = useState(true);
 
-  const handleMouseEnter = () => setVisible(true);
+  const handleMouseEnter = useCallback(() => setVisible(true), []);
 
-  const handleMouseLeave = () => setVisible(false);
+  const handleMouseLeave = useCallback(() => setVisible(false), []);
 
   useEffect(() => {
     let tooltipTimer: ReturnType<typeof setTimeout>;

@@ -1,9 +1,9 @@
-import { useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import FloatingChatButton from './FloatingChatButton';
 import ChatModal from './ChatModal';
 
 export default function DocFeedback() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const handleModalOpen = useCallback(() => {
     setVisible(true);
@@ -12,6 +12,7 @@ export default function DocFeedback() {
   const handleModalClose = useCallback(() => {
     setVisible(false);
   }, []);
+
   return (
     <>
       <FloatingChatButton onClick={handleModalOpen} />

@@ -1,8 +1,9 @@
 import React from 'react';
-import { ConversationMessage } from './ChatModal';
 import Icon from '../Icon';
 
 import styles from './styles.module.css';
+
+import { ConversationMessage } from './docChat';
 
 type ChatMessageProps = {
   type: ConversationMessage['type'];

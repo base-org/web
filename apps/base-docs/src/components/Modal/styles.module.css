@@ -24,8 +24,6 @@
   animation: modal-fade-in 0.2s ease-in-out;
   animation-timing-function: cubicBezier(0.6, 0, 1, 1);
   position: fixed;
-
-  /* add multiple width variants */
   width: 800px;
   top: 5rem;
   left: 50%;
@@ -65,7 +63,7 @@
   border-top: 1px solid rgba(138, 145, 158, 0.2);
 }
 
-@media (max-width: 997px) {
+@media (max-width: 832px) {
   .modal {
     top: 1rem;
     width: calc(100vw - 2rem);
