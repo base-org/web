@@ -10,6 +10,7 @@ keywords:
     Base Mainnet,
     Base Testnet,
     Base network,
+    Supra,
     Chainlink,
     Pyth,
     VRF,
@@ -100,11 +101,11 @@ See [this guide](https://docs.redstone.finance/) to learn how to use the RedSton
 
 ---
 
-## Supra VRF
+## Supra 
 
-[Supra](https://supraoracles.com) offers Verifiable Random Function (VRF) for Base.
+[Supra](https://supraoracles.com) provides VRF and decentralized oracle price feeds that can be used for on-chain and off-chain use-cases such as spot and perpetual DEXes, lending protocols, and payments protocols. Supra’s oracle chain and consensus algorithm makes it the fastest-to-finality oracle provider, with layer-1 security guarantees. The pull oracle has a sub-second response time. Aside from speed and security, Supra’s rotating node architecture gathers data from 40+ data sources and applies a robust calculation methodology to get the most accurate value. The node provenance on the data dashboard also provides a fully transparent historical audit trail. Supra’s Distributed Oracle Agreement (DORA) paper was accepted into ICDCS 2023, oldest distributed systems conference.
 
-Visit the Supra VRF [documentation](https://supraoracles.com/docs/vrf) to learn more about integrating [Supra VRF](https://supraoracles.com/docs/vrf) into your Base project.
+Visit the Supra [documentation](https://supraoracles.com/docs/) to learn more about integrating Supra's oracle and VRF into your Base project.
 
 #### Supported Networks
 
