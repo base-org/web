@@ -1,0 +1,236 @@
+/* Floating Chat Button Styles */
+.floatingChatButtonContainer {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.floatingChatButtonTooltip {
+  position: absolute;
+  top: -2.75rem;
+  right: 0;
+  background: white;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  color: black;
+  padding: 3px 10px;
+  white-space: nowrap;
+  animation: tooltip-fade-in 0.2s ease-in-out;
+}
+
+.tooltipPoint {
+  height: 0.6rem;
+  width: 0.6rem;
+  rotate: 45deg;
+  position: absolute;
+  bottom: -0.25rem;
+  right: 2rem;
+  background-color: white;
+  border-radius: 1px;
+}
+
+.floatingChatButton {
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  fill: white;
+}
+
+@keyframes tooltip-fade-in {
+  from {
+    opacity: 0%;
+    transform: translateY(0.5rem);
+  }
+
+  to {
+    opacity: 100%;
+    transform: translateY(0);
+  }
+}
+
+/* Chat Modal Styles */
+.chatModalBody {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.chatModalFooter {
+  height: 9.5rem;
+  padding: 1.5rem;
+  flex-grow: 0;
+}
+[data-theme='light'] .chatModalFooter {
+  border-top: 1px solid rgba(91, 97, 110, 0.2);
+}
+[data-theme='dark'] .chatModalFooter {
+  border-top: 1px solid rgba(138, 145, 158, 0.2);
+}
+
+.conversationContainer {
+  width: 100%;
+  max-height: 500px;
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.chatMessageContainer {
+  width: 100%;
+  fill: white;
+  white-space: pre-line;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.chatMessageIcon {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.chatMessageSourcesContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem 0 0 2.25rem;
+}
+
+.chatMessageSource {
+  color: white;
+  max-width: 225px;
+  padding: 0.25rem 0.5rem;
+  margin: 0.5rem 0.5rem 0 0;
+  font-size: 0.75rem;
+  border: 1px solid rgba(138, 145, 158, 0.67);
+  border-radius: 0.33rem;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+[data-theme='dark'] .chatMessageDivider {
+  width: 100%;
+  border-top: 1px solid rgba(138, 145, 158, 0.2);
+}
+
+.resetButton,
+.stopGeneratingButton {
+  font-family: CoinbaseSans;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.33rem;
+  background: rgba(191, 196, 202, 0.2);
+  fill: white;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  appearance: none;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+.resetButton:hover,
+.stopGeneratingButton:hover {
+  background: rgba(191, 196, 202, 0.25);
+}
+.resetButton:active,
+.stopGeneratingButton:active {
+  background: rgba(126, 128, 130, 0.25);
+}
+
+.resetButton {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.5rem;
+  z-index: 250;
+}
+
+.searchingDocsMessage {
+  margin-top: -1.5rem;
+  width: 100%;
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  fill: white;
+}
+
+.stopGeneratingButton {
+  align-self: center;
+}
+
+.promptForm {
+  border: 1px solid rgba(138, 145, 158, 0.67);
+  padding: 1rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.promptInput {
+  appearance: none;
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.promptInput::placeholder {
+  color: rgba(138, 145, 158, 0.67);
+}
+
+.promptInputIcon {
+  display: flex;
+  fill: rgba(191, 196, 202, 0.67);
+}
+
+.submitPromptButton {
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  appearance: none;
+  background: transparent;
+}
+.submitPromptButton:hover {
+  fill: rgba(191, 196, 202, 0.8);
+}
+.submitPromptButton:active {
+  fill: rgba(164, 168, 172, 0.8);
+}
+
+.disclaimerText {
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: 1rem;
+  margin-top: 0.5rem;
+}
+
+.loadingSpinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 997px) {
+  .floatingChatButtonContainer {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+@media (max-height: 700px) {
+  .conversationContainer {
+    max-height: 350px;
+  }
+}
