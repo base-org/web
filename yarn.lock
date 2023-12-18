@@ -229,6 +229,7 @@ __metadata:
     "@docusaurus/preset-classic": 2.3.1
     "@docusaurus/theme-common": 2.3.1
     "@mdx-js/react": ^1.6.22
+    "@microsoft/fetch-event-source": ^2.0.1
     "@rainbow-me/rainbowkit": ^1.0.4
     "@tsconfig/docusaurus": ^1.0.5
     docusaurus-node-polyfills: ^1.0.0
@@ -4107,6 +4108,13 @@ __metadata:
     semver: ^7.3.8
     superstruct: ^1.0.3
   checksum: 1ebc6677bb017e4d09d4af143621fe27194d8ed815234cfd76469c3c734dc1db2ea7b577c01a2096c21c04d8c9c4d721d3035b5353fe2ded3b4737f326755e43
+  languageName: node
+  linkType: hard
+
+"@microsoft/fetch-event-source@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@microsoft/fetch-event-source@npm:2.0.1"
+  checksum: a50e1c0f33220206967266d0a4bbba0703e2793b079d9f6e6bfd48f71b2115964a803e14cf6e902c6fab321edc084f26022334f5eaacc2cec87f174715d41852
   languageName: node
   linkType: hard
 
