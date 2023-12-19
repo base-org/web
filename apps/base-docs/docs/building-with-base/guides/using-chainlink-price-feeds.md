@@ -163,7 +163,7 @@ Chainlink provides a number of price feeds for Base. For a list of available pri
    }
 ```
 
-In your project, add the code provided above to a new file named `src/DataConsumerV3.sol`, and delete the `src/Counter.sol` contract that was generated with the project. (You can also delete the `test/Counter.t.sol` and `script/Counter.s.sol` files).
+In your project, add the code provided above to a new file named `src/DataConsumerV3.sol`, and delete the `src/Counter.sol` contract that was generated with the project. (you can also delete the `test/Counter.t.sol` and `script/Counter.s.sol` files).
 
 To compile the new smart contract, run:
 
