@@ -66,7 +66,7 @@ For this guide, you will be deploying a contract to the Base Goerli test network
 
 Accurate price data is essential in DeFi applications. However, blockchain networks lack the capability to directly fetch external real-world data, leading to the "[Oracle Problem](https://chain.link/education-hub/oracle-problem)".
 
-Chainlink Data Feeds offer a solution to this problem by serving as a secure middleware layer that bridges the gap between real-world asset prices and on-chain smart contracts.
+Chainlink Data Feeds offer a solution to this problem by serving as a secure middleware layer that bridges the gap between real-world asset prices and onchain smart contracts.
 
 ---
 
