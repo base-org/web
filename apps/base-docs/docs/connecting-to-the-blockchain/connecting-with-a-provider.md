@@ -3,8 +3,8 @@ title: Connecting with a Provider
 description: Configure several providers and use them to connect to the blockchain.
 keywords:
   [
-    Rainbowkit,
-    Wagmi,
+    RainbowKit,
+    wagmi React hooks,
     blockchain providers,
     QuickNode,
     Alchemy,
