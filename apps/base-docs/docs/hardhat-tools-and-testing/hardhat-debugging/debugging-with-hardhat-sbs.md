@@ -7,7 +7,6 @@ keywords:
     smart contract debugging,
     debugging logs,
     common errors,
-    console.log,
     error resolution,
     decentralized applications,
   ]

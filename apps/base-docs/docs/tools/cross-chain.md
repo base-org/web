@@ -6,7 +6,8 @@ keywords:
   [
     cross-chain,
     cross chain,
-    crosschain messaging cross-chain messaging,
+    crosschain messaging,
+    cross-chain messaging,
     omnichain,
     omni-chain,
     superchain,
