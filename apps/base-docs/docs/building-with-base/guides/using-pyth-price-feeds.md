@@ -59,7 +59,7 @@ In order to deploy a smart contract, you will first need a wallet. You can creat
 
 Deploying contracts to the blockchain requires a gas fee. Therefore, you will need to fund your wallet with ETH to cover those gas fees.
 
-For this guide, you will be deploying a contract to the Base Goerli test network. You can fund your wallet with Base Goerli ETH using one of the faucets listed on the Base [Network Faucets](http://example.com) page.
+For this guide, you will be deploying a contract to the Base Goerli test network. You can fund your wallet with Base Goerli ETH using one of the faucets listed on the Base [Network Faucets](https://docs.base.org/tools/network-faucets) page.
 
 ---
 
