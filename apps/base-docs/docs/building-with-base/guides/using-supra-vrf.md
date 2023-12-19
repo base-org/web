@@ -1,7 +1,7 @@
 ---
 title: Supra dVRF
 slug: /guides/using-supra-vrf
-description: A guide on using Supra dVRF to service random numbers using an onchain randomness generation mechanism directly within your smart contracts on the Base testnet.
+description: A guide on using Supra dVRF to serve random numbers using an onchain randomness generation mechanism directly within your smart contracts on the Base testnet.
 keywords: [
     Oracle
     Oracles,
@@ -30,7 +30,7 @@ keywords: [
 
 # Generating random numbers contracts using Supra dVRF
 
-This page will guide you through the process of creating a smart contract on Base that utilizes Supra dVRF to service random numbers using an onchain randomness generation mechanism directly within your smart contracts.
+This page will guide you through the process of creating a smart contract on Base that utilizes Supra dVRF to serve random numbers using an onchain randomness generation mechanism directly within your smart contracts.
 
 ---
 
@@ -84,7 +84,7 @@ Please refer to the [Supra documentation](https://supraoracles.com/docs/vrf/vrf-
 
 ## What is a Verifiable Random Function (VRF)?
 
-A Verifiable Random Function (VRF) provides a solution for generating random outcomes in a manner that is both decentralized and verifiably recorded on-chain. VRFs are crucial for applications where randomness integrity is paramount, such as in gaming or prize drawings.
+A Verifiable Random Function (VRF) provides a solution for generating random outcomes in a manner that is both decentralized and verifiably recorded onchain. VRFs are crucial for applications where randomness integrity is paramount, such as in gaming or prize drawings.
 
 Supra dVRF provides a decentralized VRF that ensures that the outcomes are not only effectively random but also responsive, scalable, and easily verifiable, thereby addressing the unique needs of onchain applications for trustworthy and transparent randomness.
 
@@ -145,7 +145,7 @@ contract RNGContract {
 }
 ```
 
-In your project, add the code provided above to a new file named `src/ExampleContract.sol`, and delete the `src/Counter.sol` contract that was generated with the project. (You can also delete the `test/Counter.t.sol` and `script/Counter.s.sol` files).
+In your project, add the code provided above to a new file named `src/ExampleContract.sol`, and delete the `src/Counter.sol` contract that was generated with the project. (you can also delete the `test/Counter.t.sol` and `script/Counter.s.sol` files).
 
 The following sections will guide you step-by-step on how to update your contract to generate random numbers using the Supra Router contract.
 
