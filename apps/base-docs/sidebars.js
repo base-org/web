@@ -165,6 +165,7 @@ module.exports = {
         'tools/oracles',
         'tools/data-indexers',
         'tools/cross-chain',
+        'tools/account-abstraction',
         'tools/onramps',
         'tools/onboarding',
         {
