@@ -36,9 +36,21 @@ keywords:
 
 ---
 
+## Pimlico
+
+[Pimlico](https://pimlico.io/) provides an infrastructure platform that makes building smart accounts simpler. If you are developing, an ERC-4337 smart account, they provide bundlers, verifying paymasters, ERC-20 paymasters, and much more.
+
+---
+
+## Safe
+
+[Safe](https://docs.safe.global/getting-started/readme) provides modular smart account infrastructure and account abstraction stack via their Safe{Core} [Account Abstraction SDK](https://docs.safe.global/safe-core-aa-sdk/safe-core-sdk), [API](https://docs.safe.global/safe-core-api/supported-networks), and [Protocol](https://docs.safe.global/safe-core-protocol/safe-core-protocol).
+
+---
+
 ## Stackup
 
-[Stackup](https://www.stackup.sh/) provides smart account tooling for building account abstraction within your apps. They offer Paymaster and Bundler APIs for sponsoring gas and sending account abstraction transactions.
+[Stackup](https://www.stackup.sh) provides smart account tooling for building account abstraction within your apps. They offer Paymaster and Bundler APIs for sponsoring gas and sending account abstraction transactions.
 
 ---
 
