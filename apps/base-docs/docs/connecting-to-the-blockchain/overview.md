@@ -5,9 +5,9 @@ keywords:
   [
     blockchain providers,
     JSON RPC,
-    Rainbowkit,
-    Wagmi,
-    Viem,
+    RainbowKit,
+    wagmi React hooks,
+    viem,
     frontend,
     smart contract development,
     EVM,

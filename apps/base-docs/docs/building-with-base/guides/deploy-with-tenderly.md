@@ -14,7 +14,6 @@ keywords:
     transaction simulations,
     continuous integration,
     DevNet environment,
-    YAML templates,
     Hardhat integration,
     deploy a smart contract,
     debug a smart contract,

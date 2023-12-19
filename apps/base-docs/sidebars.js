@@ -48,7 +48,7 @@ module.exports = {
               label: 'Accessing real-world data using Oracles',
               collapsible: true,
               collapsed: true,
-              items: ['building-with-base/guides/using-pyth-price-feeds'],
+              items: ['building-with-base/guides/using-chainlink-price-feeds', 'building-with-base/guides/using-pyth-price-feeds'],
             },
             {
               type: 'category',
@@ -172,6 +172,7 @@ module.exports = {
         'tools/oracles',
         'tools/data-indexers',
         'tools/cross-chain',
+        'tools/account-abstraction',
         'tools/onramps',
         'tools/onboarding',
         {

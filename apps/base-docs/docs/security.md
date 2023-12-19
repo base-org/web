@@ -5,7 +5,6 @@ description: The Base bug bounty program and procedures for reporting vulnerabil
 keywords:
   [
     Base,
-    Coinbase,
     bug bounty program,
     report vulnerability,
     bug report,
