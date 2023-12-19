@@ -45,6 +45,13 @@ module.exports = {
             'building-with-base/guides/run-a-base-node',
             {
               type: 'category',
+              label: 'Accessing real-world data using Oracles',
+              collapsible: true,
+              collapsed: true,
+              items: ['building-with-base/guides/using-chainlink-price-feeds'],
+            },
+            {
+              type: 'category',
               label: 'Hardhat Tools and Testing',
               collapsible: true,
               items: [
