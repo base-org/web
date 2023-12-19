@@ -8,15 +8,15 @@ keywords: ["Cookbook", "Cookbook.dev", "smart contract", "Base", "Base test netw
 
 # Deploying a Smart Contract using Cookbook.dev
 
-[Cookbook](https://www.cookbook.dev/) is an open source smart contract registry. You can search, download, deploy, manage and integrate any Solidity smart contract into your app. Cookbook integrates with and works with a variety of development environments and tooling providers such as Ethereum's Remix, Hardhat, Foundry and more.  
+[Cookbook](https://www.cookbook.dev/?utm=basedocs) is an open source smart contract registry. You can search, download, deploy, manage and integrate any Solidity smart contract into your app. Cookbook integrates with and works with a variety of development environments and tooling providers such as Ethereum's Remix, Hardhat, Foundry and more.  
 
-In this guide, you will learn to deploy a smart contract on Base using [cookbook.dev/chains/Base](https://www.cookbook.dev/chains/Base) and:
+In this guide, you will learn to deploy a smart contract on Base using [cookbook.dev/chains/Base](https://www.cookbook.dev/chains/Base?utm=basedocs) and:
 - Cookbook's No-code Deploy
 - Cookbook's Remix IDE Plugin-in
 - Cookbook's Hardhat Boilerplate
 - Cookbook's Foundry Boilerplate
 
-We will be using [Cookbook's Simple ERC-20 Token Smart Contract](https://www.cookbook.dev/contracts/simple-token) throughout this guide, but the principles here will apply to any smart contract found on or imported to [Cookbook](https://cookbook.dev). 
+We will be using [Cookbook's Simple ERC-20 Token Smart Contract](https://www.cookbook.dev/contracts/simple-token?utm=basedocs) throughout this guide, but the principles here will apply to any smart contract found on or imported to [Cookbook](https://www.cookbook.dev?utm=basedocs). 
 
 ## Objectives
 
@@ -48,7 +48,7 @@ For more detailed steps on funding your wallet with Base Goerli ETH, see [Networ
 
 # Search Cookbook's Smart Contract Registry
 
-Navigate to [cookbook.dev/chains/Base](https://www.cookbook.dev/chains/Base) and explore **Protocols** on Base, or search for specific smart contracts in the search bar. 
+Navigate to [cookbook.dev/chains/Base](https://www.cookbook.dev/chains/Base?utm=basedocs) and explore **Protocols** on Base, or search for specific smart contracts in the search bar. 
 
 ![Search Base Protocols](../../../assets/images/deployment-with-cookbook/Search-Base-Protocols.png)
 
@@ -70,7 +70,7 @@ Supports Base, Ethereum, Polygon, BSC, Fantom, Optimism, Arbitrum, Moonbeam, Moo
 
 ## Use No-Code Deploy to Deploy your smart contract to Base
 
-Choose **No-Code Deploy** on select (usually simpler) smart contracts on [Cookbook](https://www.cookbook.dev/contracts/simple-token).
+Choose **No-Code Deploy** on select (usually simpler) smart contracts on [Cookbook](https://www.cookbook.dev/contracts/simple-token?utm=basedocs).
 
 ![Cookbook No-code Deploy](../../../assets/images/deployment-with-cookbook/No-Code-Deploy-1.png)
 
@@ -143,7 +143,7 @@ Compile and deploy the smart contract as described in **Method 1** above.
 
 [Hardhat](https://hardhat.org/docs) is a developer tool that provides a simple way to deploy, test, and debug smart contracts.
 
-After finding the smart contract or protocol you want to work with in [Cookbook](https://cookbook.dev), select the **Download Source** option and select **Hardhat** to download the contract boilerplate. We'll use [Cookbook's Simple ERC-20 Token Smart Contract](https://www.cookbook.dev/contracts/simple-token).
+After finding the smart contract or protocol you want to work with in [Cookbook](https://www.cookbook.dev/?utm=basedocs), select the **Download Source** option and select **Hardhat** to download the contract boilerplate. We'll use [Cookbook's Simple ERC-20 Token Smart Contract](https://www.cookbook.dev/contracts/simple-token?utm=basedocs).
 
 To install the required packages and dependencies, run
 ```
@@ -267,7 +267,7 @@ Foundry manages your dependencies, compiles your project, runs tests, deploys, a
 
 ### Get Started
 
-After finding the smart contract or protocol you want to work with in [Cookbook](https://cookbook.dev), select the **Download Source** option and select **Foundry** to download the contract boilerplate.
+After finding the smart contract or protocol you want to work with in [Cookbook](https://www.cookbook.dev/?utm=basedocs), select the **Download Source** option and select **Foundry** to download the contract boilerplate.
 
 Unzip and open the file in your preferred IDE. 
 
