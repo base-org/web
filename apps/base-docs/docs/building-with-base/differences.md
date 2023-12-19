@@ -11,8 +11,6 @@ keywords:
     OP Stack,
     Base opcodes,
     Base blocks,
-    opcodes on Base,
-    blocks on Base,
     Base network specifications,
     network specifications,
     Base transaction costs,

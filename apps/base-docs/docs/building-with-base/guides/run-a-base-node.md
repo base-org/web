@@ -6,8 +6,8 @@ keywords:
   [
     Base Node setup,
     running a node,
-    base node,
-    run a Base noed,
+    Base node,
+    run a Base node,
     hardware requirements,
     node synchronization,
     node snapshots,
