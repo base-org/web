@@ -55,7 +55,7 @@ contract CounterTest is Test {
 Take note of the following:
 
 - Foundry test files are named following the pattern: `<ContractName>.t.sol`
-- Smart contract test files are named following the pattern: <ContractName>Test.
+- Smart contract test files are named following the pattern: `<ContractName>Test`
 - All tests inherit from `forge-std/Test.sol`.
 - All tests contain a public function called `setUp`, which is executed before each test. This is similar to the `beforeEach` hook in the Mocha/Typescript world.
 - Test cases start with the `test` keyword, for instance `testIncrement`.
