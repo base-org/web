@@ -113,7 +113,7 @@ solc_version = "0.8.19"
 
 Be sure that you modify the pragma of your contracts and simply run `forge build` to ensure everything works well.
 
-Secondly, we recommend to setup the JSON RPC endpoints for base and the API key for [Basescan] in the configuration file, so once you decide to deploy your smart contracts, your environment will be fully ready.
+We also recommend setting up JSON RPC endpoints for Base and the API key for [Basescan] in the configuration file so that your environment is ready to deploy your smart contracts.
 
 Your configuration file should look like the following:
 
