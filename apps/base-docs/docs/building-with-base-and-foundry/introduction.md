@@ -97,7 +97,7 @@ In order to work with `Base`, you need to configure a couple of settings in the 
 
 The first thing is the solidity version. 
 
-> As of December 2023, Base does not support yet the new PUSH0 opcode introduced in Shanghai, which is the default target for the Solidity compiler if you use version 0.8.20 or later. You can learn more about the [Differences between Ethereum and Base].
+> As of December 2023, Base does not support the new PUSH0 opcode introduced in Shanghai, which is the default target for the Solidity compiler if you use version 0.8.20 or later. See [Differences between Ethereum and Base] to learn more.
 
 We recommend using 0.8.19 or lower until this is upgraded. Keep in mind that the update has been deployed to Base Goerli and Base Sepolia.
 
