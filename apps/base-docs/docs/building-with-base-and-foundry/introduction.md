@@ -41,7 +41,7 @@ To install `Foundryup` you have to run in the terminal:
 $ curl -L https://foundry.paradigm.xyz | bash
 ```
 
-After `Foundryup` is installed, you can now install `Foundry` by running:
+After `Foundryup` is installed, you can install `Foundry` by running:
 
 ```bash
 $ foundryup
