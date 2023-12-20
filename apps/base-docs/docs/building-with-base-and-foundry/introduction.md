@@ -67,8 +67,8 @@ $ forge init hello_foundry_in_base
 This will create a foundry project with the following structure:
 
 ```bash
-├── lib          # all the libraries installed will live in this folder
-├── script       # scripts folder, i.e deploy scripts
+├── lib          # all the libraries installed
+├── script       # scripts folder, e.g., deploy scripts
 ├── src          # smart contracts folder
 ├── test         # tests folder
 └── foundry.toml # foundry configuration file
