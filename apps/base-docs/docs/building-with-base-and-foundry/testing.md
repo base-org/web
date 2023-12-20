@@ -206,7 +206,7 @@ Notice how we call the cheatcode `vm.prank` before the call to the `counter.incr
 
 ## Conclusion
 
-Congratulations! You've successfully completed your first step in your journey of testing smart contracts using Foundry. As you move forward, keep exploring its rich features and functionalities. The ability to write comprehensive tests and leverage cheatcodes enhances your capabilities in ensuring the reliability and security of your smart contracts.
+Congratulations! You've successfully completed your first step in your journey of testing smart contracts using Foundry. As you move forward, keep exploring its rich features and functionalities. The ability to write comprehensive tests and leverage cheatcodes ensures the reliability and security of your smart contracts.
 
 Happy coding and testing with Foundry!
 
