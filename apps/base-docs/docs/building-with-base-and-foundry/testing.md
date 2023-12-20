@@ -23,7 +23,7 @@ Testing is a crucial aspect of smart contract development, ensuring the reliabil
 
 ## My First Test with Foundry
 
-Considering the default test that the `forge init hello_foundry_in_base` command provides in the seed Foundry project.
+Consider the default test that the `forge init hello_foundry_in_base` command provides in the seed Foundry project.
 
 ```javascript
 // SPDX-License-Identifier: UNLICENSED
