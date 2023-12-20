@@ -143,7 +143,7 @@ In this guide, you've embarked on the journey of smart contract development with
 
 ## See also
 
-[Foundry Book]: (https://book.getfoundry.sh/)
+[Foundry Book]: https://book.getfoundry.sh/
 [chisel]: https://book.getfoundry.sh/chisel/
 [cast]: https://book.getfoundry.sh/cast/
 [anvil]: https://book.getfoundry.sh/anvil/
