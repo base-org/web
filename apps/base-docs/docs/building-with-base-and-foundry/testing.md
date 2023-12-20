@@ -69,7 +69,7 @@ In order to run the test in Foundry, we simply run:
 $ forge test
 ```
 
-And we should see in the terminal:
+You should see in the terminal:
 
 ```bash
 Running 2 tests for test/Counter.t.sol:CounterTest
