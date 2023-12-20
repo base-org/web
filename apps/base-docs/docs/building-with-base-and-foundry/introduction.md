@@ -58,7 +58,7 @@ $ anvil --version
 
 ## My First Foundry Project
 
-To create a foundry project we can simply run:
+To create a foundry project you can simply run:
 
 ```bash
 $ forge init hello_foundry_in_base
