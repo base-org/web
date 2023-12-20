@@ -753,6 +753,77 @@ const sidebars = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'Onchain App Development (Frontend)',
+      collapsible: true,
+      items: [
+        {
+          type: 'doc',
+          id: 'docs/frontend-setup/overview',
+          className: 'sidebar-reading',
+        },
+        {
+          type: 'category',
+          label: 'Frontend Setup',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/frontend-setup/wallet-connectors',
+              className: 'sidebar-coding',
+            },
+            {
+              type: 'doc',
+              id: 'docs/frontend-setup/building-an-onchain-app',
+              className: 'sidebar-coding',
+            },
+          ],
+        },
+        {
+          type: 'link',
+          label: 'Connecting to the Blockchain',
+          href: 'https://docs.base.org/connecting-to-the-blockchain/overview',
+          className: 'sidebar-coding',
+        },
+        {
+          type: 'category',
+          label: 'Reading and Displaying Data',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/reading-and-displaying-data/useAccount',
+              className: 'sidebar-coding',
+            },
+            {
+              type: 'doc',
+              id: 'docs/reading-and-displaying-data/useContractRead',
+              className: 'sidebar-coding',
+            },
+            {
+              type: 'doc',
+              id: 'docs/reading-and-displaying-data/configuring-useContractRead',
+              className: 'sidebar-coding',
+            },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Writing to Contracts',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/writing-to-contracts/useContractWrite',
+              className: 'sidebar-coding',
+            },
+            {
+              type: 'doc',
+              id: 'docs/writing-to-contracts/usePrepareContractWrite',
+              className: 'sidebar-coding',
+            },
+          ],
+        },
+      ],
+    },
   ],
 };
 

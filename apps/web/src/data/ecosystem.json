@@ -18,6 +18,222 @@
     "imageUrl": "/images/partners/envio.png"
   },
   {
+    "name": "ZKP2P",
+    "url": "https://zkp2p.xyz/",
+    "description": "ZKP2P is a trustless P2P fiat to crypto on/offramp powered by zero knowledge proofs. Convert USD in Venmo to USDC in 60 seconds!",
+    "tags": [
+      "onramp"
+    ],
+    "imageUrl": "/images/partners/zkp2p.png"
+  },
+  {
+    "name": "Rubic",
+    "url": "https://rubic.exchange/",
+    "description": "Rubic is a Cross-Chain Tech Aggregator for users + tools for dApps. Trade 15,500+ tokens across 70+ networks, through the aggregation of 220+ DEXs and bridges!",
+    "tags": [
+      "bridge"
+    ],
+    "imageUrl": "/images/partners/rubic.png"
+  },
+  {
+    "name": "Wombat Exchange",
+    "url": "https://www.wombat.exchange/",
+    "description": "Swap stablecoins at minimal slippage and stake at maximum yield. Just one stablecoin currency to earn it all.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/wombat.png"
+  },
+  {
+    "name": "NetherFi",
+    "url": "https://nether.fi/#/dashboard",
+    "description": "Nether.Fi is a Base-native Perpetuals and Spot DEX. Traders can enjoy deep liquidity and reliable price data backed by industry-leading oracles. 100% of fees generated on Nether.Fi are distributed to liquidity providers and stakers!",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/netherfi.png"
+  },
+  {
+    "name": "XDOGE",
+    "url": "https://xdoge.art/",
+    "description": "xdoge is a perpetual contract trading platform on Base to support up to 150x leverage, designed to be user-friendly, secure, and simple.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/xdoge.png"
+  },
+  {
+    "name": "SlashToken",
+    "url": "https://slashtoken.io/",
+    "description": "SlashToken is a powerful and budget-friendly tool for sending tokens and NFTs to multiple wallets at once.",
+    "tags": [
+      "other"
+    ],
+    "imageUrl": "/images/partners/slashtoken.jpg"
+  },
+  {
+    "name": "Everdex",
+    "url": "https://www.everdex.app/",
+    "description": "Everdex is a multi-chain native decentralized exchange (DEX) that makes trading various tokens across networks simple and efficient. Leveraging Chainrunner, we provide optimized route for swap.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/everdex.png"
+  },
+  {
+    "name": "Contango",
+    "url": "https://contango.xyz/",
+    "description": "Perps built through looping, the native way of trading on-chain",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/contango.png"
+  },
+  {
+    "name": "Avantis",
+    "url": "https://www.avantisfi.com/",
+    "description": "Onchain perpetuals exchange for crypto, forex and commodities with advanced risk management for LPs and up to 100x leverage for traders.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/avantis.png"
+  },
+  {
+    "name": "Seamless Protocol",
+    "url": "seamlessprotocol.com",
+    "description": "Seamless is the first native, decentralized lending protocol on Base. Seamless enables a new form of undercollateralized borrowing—integrated liquidity markets—which are isolated, smart contract-to-smart contract markets for amplifying strategies.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/seamless.png"
+  },
+  {
+    "name": "IceCream Swap",
+    "url": "https://icecreamswap.com/?chainId=8453",
+    "description": "Multi-chain DeFi Ecosystem. Swap, Bridge, Farm and Launch across multiple blockchains.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/icecream.png"
+  },
+  {
+    "name": "BiFi",
+    "url": "https://crosschain.bifi.finance/",
+    "description": "BiFi is a cross-chain lending platform. User can deposit asset and lend any asset from different networks by CCCP (Cross-chain Communication Protocol). Our approach provides improved UX and security.",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/bifi.png"
+  },
+  {
+    "name": "Bifrost Network Bridge",
+    "url": "https://www.bifrostnetwork.com/bridge",
+    "description": "Bifrost bridge allows users to bridge their assets across the chains with enhanced security. Unlike the other bridges that use backend solutions, our bridge is validated by Bifrost network nodes.",
+    "tags": [
+      "bridge"
+    ],
+    "imageUrl": "/images/partners/bifrostbridge.png"
+  },
+  {
+    "name": "trustalabs",
+    "url": "https://www.trustalabs.ai/",
+    "description": "Trusta Labs aims to build web3 security and data infrastructure to bring more trust and less friction to the web3 world.",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/trusta.png"
+  },
+  {
+    "name": "BlockWallet",
+    "url": "https://blockwallet.io/networks/base-wallet",
+    "description": "BlockWallet is a self-custodial Web3 wallet focused on speed, reliability, and security ensuring users genuinely own their digital assets without technical concerns.",
+    "tags": [
+      "wallet"
+    ],
+    "imageUrl": "/images/partners/blockwallet.png"
+  },
+  {
+    "name": "Redlion Printer",
+    "url": "https://app.prints.red",
+    "description": "Redlion Printer is an innovative solution for the cryptoart community, designed to seamlessly integrate the digital with physical forms of art, offering a novel solution for artists and art owners.",
+    "tags": [
+      "NFT"
+    ],
+    "imageUrl": "/images/partners/redlion.png"
+  },
+  {
+    "name": "builder.fi",
+    "url": "https://www.builder.fi/",
+    "description": "builder.fi is a SocialFi app where builders can capitalize on their reputation and earn crypto for answering questions.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/builderfi.png"
+  },
+  {
+    "name": "Collab.Land",
+    "url": "https://www.collab.land/",
+    "description": "Collab.Land is the original community management tool that curates social membership based on tokens. We verify and confirm that members possess the required token(s) to participate in communities.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/collabland.png"
+  },
+  {
+    "name": "OpenFriend",
+    "url": "https://openfriend.tech/",
+    "description": "OpenFriend.Tech is an auxiliary tool providing multi-dimensional data analytics for Friend.Tech users, allowing every user to build their own on-chain reputation based on Friend.Tech.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/openfriend.png"
+  },
+  {
+    "name": "Nextme",
+    "url": "https://nextme.one/",
+    "description": "Nextme is committed to building a social economic network that connects creators, brands and users.",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/nextme.png"
+  },
+  {
+    "name": "Sound.xyz",
+    "url": "https://www.sound.xyz/",
+    "description": "Discover amazing new music and prove that you were there first.",
+    "tags": [
+      "NFT"
+    ],
+    "imageUrl": "/images/partners/sound.png"
+  },
+  {
+    "name": "GetBlock",
+    "url": "https://getblock.io/",
+    "description": "GetBlock offers fast and cost-efficient RPC nodes for over 50 blockchains, including Base, catering to hundreds of dApps from diverse segments.",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/getblock.png"
+  },
+  {
+    "name": "Moralis",
+    "url": "https://moralis.io/",
+    "description": "Moralis is a leading crypto data provider that helps companies build great user experiences, drive engagement, growth & revenue in their applications with plug-and-play Web3 APIs. ",
+    "tags": [
+      "infra"
+    ],
+    "imageUrl": "/images/partners/moralis.png"
+  },
+  {
+    "name": "Quick Intel",
+    "url": "https://app.quickintel.io/",
+    "description": "Quick intel provides the security tools you need to avoid scams, have more peace of mind and become a confident crypto trader.",
+    "tags": [
+      "security"
+    ],
+    "imageUrl": "/images/partners/quickintel.png"
+  },
+  {
     "name": "Cobo Argus",
     "url": "https://www.cobo.com/argus",
     "description": "Cobo Argus is a secure and efficient on-chain digital asset management solution that supports role-based access controls, DeFi investment strategies and more. ",
@@ -163,7 +379,7 @@
   },
   {
     "name": "Lore",
-    "url": "https://www.cradles.io/",
+    "url": "https://lore.xyz/",
     "description": "Community driven fun. With Lore, communities can run engagement programs, create media and own assets — together.",
     "tags": [
       "gaming"
@@ -1704,7 +1920,7 @@
   },
   {
     "name": "GangstaVerse",
-    "url": "https://war.gangstaverse.co/",
+    "url": "https://war-base.gangstaverse.co/",
     "description": "GangstaVerse is a multi-chain RPG that combines digital art and web3 game ecosystem. GangWar is a semi-passive simulation-based game where gangsters and detectives fight to establish power in the city.",
     "tags": [
       "gaming"

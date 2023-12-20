@@ -5,8 +5,8 @@ description: Documentation for block explorers for the Base network.
 keywords:
   [
     block explorers,
-    base block explorer,
-    base block explorers,
+    Base block explorer,
+    Base block explorers,
     Base blockchain,
     Base network,
     Base mainnet,

@@ -3,8 +3,8 @@ title: Connecting with a Provider
 description: Configure several providers and use them to connect to the blockchain.
 keywords:
   [
-    Rainbowkit,
-    Wagmi,
+    RainbowKit,
+    wagmi React hooks,
     blockchain providers,
     QuickNode,
     Alchemy,
@@ -103,7 +103,7 @@ Before you deploy, make sure you configure the rest of the items in the control 
 
 ### Public Provider
 
-By default, the setup script will configure your app to use the `publicProvider()`, and connect to a number of popular chains. To simply matters, remove all but `mainnnet` and `base`.
+By default, the setup script will configure your app to use the `publicProvider()`, and connect to a number of popular chains. To simply matters, remove all but `mainnet` and `base`.
 
 ```typescript
 const { chains, publicClient, webSocketPublicClient } = configureChains(

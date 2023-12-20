@@ -45,7 +45,7 @@ contract ErrorTriageExercise {
     }
 
     /**
-     * Pop the last element from the supplied array, and return the modified array and the popped
+     * Pop the last element from the supplied array, and return the popped
      * value (unlike the built-in function)
      */
     uint[] arr;

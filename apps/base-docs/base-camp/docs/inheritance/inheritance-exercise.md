@@ -60,7 +60,7 @@ Implement a contract called `EngineeringManager` that inherits from `Salaried` a
 
 ## Deployments
 
-You'll have to do an more complicated set of deployments for this exercise.
+You'll have to do a more complicated set of deployments for this exercise.
 
 Deploy your `Salesperson` and `EngineeringManager` contracts. Use the following values:
 

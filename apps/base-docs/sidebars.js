@@ -30,6 +30,7 @@ module.exports = {
               collapsed: true,
               items: [
                 'building-with-base/guides/deploy-smart-contracts',
+                'building-with-base/guides/deploy-with-foundry',
                 'building-with-base/guides/deploy-with-remix',
                 'building-with-base/guides/deploy-with-tenderly',
                 'building-with-base/guides/deploy-with-thirdweb',
@@ -43,6 +44,13 @@ module.exports = {
               items: ['building-with-base/guides/build-with-thirdweb'],
             },
             'building-with-base/guides/run-a-base-node',
+            {
+              type: 'category',
+              label: 'Accessing real-world data using Oracles',
+              collapsible: true,
+              collapsed: true,
+              items: ['building-with-base/guides/using-chainlink-price-feeds', 'building-with-base/guides/using-pyth-price-feeds', 'building-with-base/guides/using-supra-vrf'],
+            },
             {
               type: 'category',
               label: 'Hardhat Tools and Testing',
@@ -165,6 +173,7 @@ module.exports = {
         'tools/oracles',
         'tools/data-indexers',
         'tools/cross-chain',
+        'tools/account-abstraction',
         'tools/onramps',
         'tools/onboarding',
         {

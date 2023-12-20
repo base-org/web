@@ -193,7 +193,7 @@ CompilerError: Stack too deep. Try compiling with --via-ir (cli) or the equivale
    |                 ^^^^^^
 ```
 
-Resolve this error buy breaking up large functions and separating operations into different levels of scope.
+Resolve this error by breaking up large functions and separating operations into different levels of scope.
 
 ```solidity
 function stackDepthLimitFixed() public pure returns (uint) {
