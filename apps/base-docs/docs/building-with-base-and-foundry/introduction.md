@@ -5,7 +5,7 @@ keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain]
 hide_table_of_contents: false
 ---
 
-In this article, you'll learn how to setup Foundry, the toolchain for smart contract development to develop with Base.
+In this article, you'll learn how to set up Foundry, the toolchain for smart contract development with Base.
 
 ---
 
