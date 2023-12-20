@@ -76,7 +76,7 @@ This will create a foundry project with the following structure:
 
 You will also notice a `.gitsubmodules` file, this is because `Foundry` handles dependencies using [Git submodules].
 
-By default the Foundry structure will have the smart contracts in the `src` folder. This value can be changed using the `foundry.toml` configuration file.
+By default the Foundry structure stores smart contracts in the `src` folder. You can change this in the `foundry.toml` configuration file.
 
 For instance:
 
