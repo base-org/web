@@ -22,10 +22,10 @@ By the end of this lesson, you should be able to:
 
 Foundry is a smart contract development toolchain that is composed of multiple small command line tools:
 
-- *[forge]*: Used to compile, tests, and deploy your smart contracts.
-- *[cast]*: Useful to interact with the Blockchain over RPC. You can make smart contract calls, send transactions, or retrieve any type of chain data.
-- *[chisel]*: Chisel is a solidity REPL. You can write solidity code directly.
-- *[anvil]*: A local Blockchain node for testing and development purposes.
+- *[forge]*: Compile, test, and deploy your smart contracts.
+- *[cast]*: Interact with the Blockchain over RPC. You can make smart contract calls, send transactions, or retrieve any type of chain data.
+- *[chisel]*: A solidity REPL. You can write solidity code directly.
+- *[anvil]*: A local Blockchain node for testing and development.
 
 Using Foundry you can manage your dependencies, compile your project, run tests, deploy smart contracts and interact with the chain from the command-line and via Solidity scripts.
 
