@@ -72,6 +72,8 @@ const contentSecurityPolicy = {
     'https://cca-lite.coinbase.com', // CCA Lite
     'https://*.algolia.net', // Algolia Search
     'https://*.algolianet.com', // Algolia Search
+    'https://api.mendable.ai/v0/newConversation', // Mendable API
+    'https://api.mendable.ai/v0/mendableChat', // Mendable API
   ],
   'frame-src': ["'self'", 'https://player.vimeo.com'],
 };
