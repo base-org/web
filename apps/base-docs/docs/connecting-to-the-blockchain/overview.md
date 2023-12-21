@@ -20,7 +20,7 @@ keywords:
 hide_table_of_contents: false
 ---
 
-# Overview of Privy and the Base Paymaster
+# Overview of Connecting to the Blockchain
 
 These guides show you how to connect your frontend to the blockchain using JSON RPC blockchain providers, and the [RainbowKit], [wagmi], and [viem] stack.
 

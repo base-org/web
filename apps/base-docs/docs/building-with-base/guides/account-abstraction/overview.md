@@ -18,7 +18,7 @@ keywords:
 hide_table_of_contents: false
 ---
 
-# Overview of Connecting to the Blockchain
+# Overview of Privy and the Base Paymaster
 
 These guides show you how to use [Privy], [Alchemy's Account Kit], and the [Base Paymaster] to enable your users to use onchain apps without creating a wallet on their own, or even needing to pay for gas fees!
 
