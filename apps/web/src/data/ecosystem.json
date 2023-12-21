@@ -702,15 +702,6 @@
     "imageUrl": "/images/partners/Halliday.png"
   },
   {
-    "name": "Base Treasure Hunt",
-    "url": "https://basetreasurehunt.com/",
-    "description": "Base Treasure Hunt is a new and thrilling experience for digital collectors that allow NFT projects to give back directly to their communities by rewarding lucky minters with prizes for rare traits.",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/basetreasurehunt.png"
-  },
-  {
     "name": "NFTA",
     "url": "https://www.nfta.pl/",
     "description": "daily eth price prediction game",
@@ -1664,15 +1655,6 @@
       "wallet"
     ],
     "imageUrl": "/images/partners/rainbow_wallet.webp"
-  },
-  {
-    "name": "Showtime",
-    "url": "https://showtime.xyz",
-    "description": "Showtime lets creators share exclusive updates to their fans. Fans access never-seen-before content and earn a digital collectible they can showcase on Showtime and elsewhere.",
-    "tags": [
-      "nft"
-    ],
-    "imageUrl": "/images/partners/showtime.webp"
   },
   {
     "name": "Socket",
