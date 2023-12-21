@@ -1,6 +1,7 @@
 ---
 title: Intro to Account Abstraction
 description: Learn what Account Abstraction it, how it works, and what problems it solves.
+keywords: [Privy, Account Abstraction, Base Paymaster, Account Kit, ERC-4337]
 hide_table_of_contents: false
 ---
 
@@ -10,22 +11,13 @@ Account Abstraction has the potential to be a massive game-changer for onchain u
 
 ---
 
-## Prerequisites
-
-Before reading this guide, you should:
-
-- Be familiar with modern web development
-- Possess a general understanding of the EVM and smart contracts
-
----
-
 ## Objectives
 
 By the end of this guide you should be able to:
 
-- Explain how Account Abstraction can improve user experience for onchain apps.
-- Describe the difference between contract accounts and EOAs, the limitations of contract accounts, and how EIP-4337 uses `UserOperation`s to mitigate these limitations.
-- Outline how Account Abstraction works, and how users interact with smart contract wallets.
+- Explain how Account Abstraction can improve user experience for onchain apps
+- Describe the difference between contract accounts and EOAs, the limitations of contract accounts, and how EIP-4337 uses `UserOperation`s to mitigate these limitations
+- Outline how Account Abstraction works, and how users interact with smart contract wallets
 
 ---
 
