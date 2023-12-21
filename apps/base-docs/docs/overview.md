@@ -35,7 +35,7 @@ Get the EVM environment at a fraction of the cost. Get early access to Ethereum 
 
 ### Open source
 
-Base is built on the MIT-licensed [OP Stack](https://stack.optimism.io/), in collaboration with Optimism. We're joining as the second Core Development team working on the OP Stack to ensure it’s a public good available to everyone.
+Base is built on the MIT-licensed [OP Stack](https://stack.optimism.io/), in collaboration with Optimism. We're joining as the second Core Dev team working on the OP Stack to ensure it’s a public good available to everyone.
 
 ### Scaled by Coinbase
 

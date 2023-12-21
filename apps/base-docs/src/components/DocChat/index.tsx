@@ -13,8 +13,6 @@ export default function DocFeedback() {
     setVisible(false);
   }, []);
 
-  console.log('DocChat Rendered');
-
   return (
     <>
       <FloatingChatButton onClick={handleModalOpen} />
