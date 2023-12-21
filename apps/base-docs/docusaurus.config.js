@@ -71,6 +71,7 @@ const config = {
   clientModules: [require.resolve('./src/utils/initCCA.ts')],
 
   themeConfig: {
+    image: 'img/base-open-graph.png',
     ...baseConfig.themeConfig,
     navbar: {
       logo: {
