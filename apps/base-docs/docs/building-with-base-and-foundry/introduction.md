@@ -5,7 +5,7 @@ keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain]
 hide_table_of_contents: false
 ---
 
-In this article, you'll learn how to set up Foundry, the toolchain for smart contract development with Base.
+In this article, you'll learn how to set up [Foundry], a toolchain for smart contract development. You'll also learn how to configure it to work with base.
 
 ---
 
@@ -14,18 +14,18 @@ In this article, you'll learn how to set up Foundry, the toolchain for smart con
 By the end of this lesson, you should be able to:
 
 - Install Foundry
-- Create my first Foundry project
-- Compile your first smart contract using Foundry
+- Create a Foundry project
+- Compile a smart contract using Foundry
 - Configure Foundry to work with Base
 
 ## Overview
 
 Foundry is a smart contract development toolchain that is composed of multiple small command line tools:
 
-- *[forge]*: Compile, test, and deploy your smart contracts.
-- *[cast]*: Interact with the Blockchain over RPC. You can make smart contract calls, send transactions, or retrieve any type of chain data.
-- *[chisel]*: A solidity REPL. You can write solidity code directly.
-- *[anvil]*: A local Blockchain node for testing and development.
+- _[forge]_: Compile, test, and deploy your smart contracts
+- _[cast]_: Interact with the Blockchain over RPC. You can make smart contract calls, send transactions, or retrieve any type of chain data
+- _[chisel]_: A solidity REPL. You can write solidity code directly
+- _[anvil]_: A local Blockchain node for testing and development
 
 Using Foundry you can manage your dependencies, compile your project, run tests, deploy smart contracts and interact with the chain from the command-line and via Solidity scripts.
 
@@ -51,7 +51,7 @@ You can verify the installation by trying the following commands:
 
 ```bash
 $ forge --version
-$ cast --version 
+$ cast --version
 $ chisel --version
 $ anvil --version
 ```
@@ -93,13 +93,17 @@ forge build:
 
 ## Setting up Foundry with Base
 
-In order to work with `Base`, you need to configure a couple of settings in the configuration `foundry.toml` file.
+In order to work with Base, you need to configure a couple of settings in the configuration `foundry.toml` file.
 
-The first thing is the solidity version. 
+The first thing is the solidity version.
 
-> As of December 2023, Base does not support the new PUSH0 opcode introduced in Shanghai, which is the default target for the Solidity compiler if you use version 0.8.20 or later. See [Differences between Ethereum and Base] to learn more.
+:::caution
+
+As of December 2023, Base does not support the new PUSH0 opcode introduced in Shanghai, which is the default target for the Solidity compiler if you use version 0.8.20 or later. See [Differences between Ethereum and Base] to learn more.
 
 We recommend using 0.8.19 or lower until Base is upgraded with `PUSH0`. Keep in mind that the update has been deployed to Base Goerli and Base Sepolia.
+
+:::
 
 You need to configure your config file as follows:
 
@@ -137,12 +141,11 @@ We included 2 JSON RPC endpoints for `Base` and `Base goerli` and similar for th
 
 ## Conclusion
 
-In this guide, you've embarked on the journey of smart contract development with Base and Foundry. We covered the essential steps, from installing Foundry using the convenient Foundryup toolchain installer to creating your first project and configuring Foundry to seamlessly integrate with Base.
+In this guide, you've embarked on the journey of smart contract development with Base and Foundry. You've learned the essential steps, from installing Foundry using the convenient `Foundryup`` toolchain installer to creating your first project and configuring Foundry to seamlessly integrate with Base.
 
 ---
 
-## See also
-
+[Foundry]: https://github.com/foundry-rs/foundry
 [Foundry Book]: https://book.getfoundry.sh/
 [chisel]: https://book.getfoundry.sh/chisel/
 [cast]: https://book.getfoundry.sh/cast/
