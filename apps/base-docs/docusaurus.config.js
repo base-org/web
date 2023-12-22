@@ -120,7 +120,7 @@ const config = {
           items: [
             {
               label: 'Twitter',
-              href: 'https://www.twitter.com/BuildOnBase',
+              href: 'https://www.twitter.com/base',
             },
             {
               label: 'Discord',
