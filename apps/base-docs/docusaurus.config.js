@@ -119,8 +119,8 @@ const config = {
           position: 'left',
           items: [
             {
-              label: 'Twitter',
-              href: 'https://www.twitter.com/BuildOnBase',
+              label: 'X',
+              href: 'https://www.twitter.com/base',
             },
             {
               label: 'Discord',
