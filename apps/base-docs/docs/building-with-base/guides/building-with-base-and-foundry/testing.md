@@ -13,19 +13,19 @@ In this article, you'll learn how to test your smart contracts using [Foundry], 
 
 By the end of this guide, you should be able to:
 
-- Understand the importance of testing in smart contract development.
-- Write and execute tests for smart contracts using the Forge Standard Library with Foundry.
-- Use some of the `cheatcodes` that Foundry provides.
+- Understand the increased importance of testing in smart contract development
+- Write and execute tests written in Solidity using the Forge Standard Library with Foundry
+- Use the `cheatcodes` that Foundry provides to test your smart contracts
 
 ## Overview
 
-Testing is a crucial aspect of smart contract development, ensuring the reliability and security of your code. Foundry provides a robust testing framework that allows developers to create comprehensive test suites for their projects using Solidity.
+Testing is a crucial aspect of smart contract development, ensuring the reliability and security of your code. Because it is impossible to patch a smart contract after deployment, you must thoroughly and completely test your code. Foundry provides a robust testing framework that allows developers to create comprehensive test suites for their projects using Solidity.
 
 ## My First Test with Foundry
 
 Consider the default test that the `forge init hello_foundry_in_base` command provides in the seed Foundry project.
 
-```javascript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
@@ -63,7 +63,7 @@ Take note of the following:
 
 For more information about writing tests in Foundry, you can follow the official guide for [Writing tests]
 
-In order to run the test in Foundry, we simply run:
+In order to run the test in Foundry, run:
 
 ```bash
 $ forge test
@@ -80,22 +80,20 @@ Test result: ok. 2 passed; 0 failed; finished in 13.57ms
 
 ## Using Cheatcodes
 
-Foundry includes a set of [Cheatcodes], which are special instructions that are accessible using the `vm` instance in your tests. Cheatcodes allows you to perform various tasks, including:
+Foundry includes a set of [cheatcodes], which are special instructions that are accessible using the `vm` instance in your tests. Cheatcodes allow you to perform various tasks, including:
 
 - Manipulate the state of the blockchain
 - Test reverts
 - Test events
 - Change block number
-- Change identity 
-- And more !
+- Change identity
+- And more!
 
-Let's use our first Cheatcode to modify the `msg.sender` of our tests. 
+To start, use a cheatcode to modify the `msg.sender` of your tests, and add some console logs via importing the `forge-std/console.sol` contract.
 
-To do so, let's modify the smart contract to include some `console.log` that are also available in Foundry by importing the `forge-std/console.sol` contract.
+The `Counter` contract should look as follows:
 
-Our `Counter` contract should look as follows:
-
-```javascript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
@@ -116,7 +114,7 @@ contract Counter {
 }
 ```
 
-If we run the tests using `forge test` we should see the following:
+If you run the tests using `forge test`, you will see the following:
 
 ```bash
 Running 2 tests for test/Counter.t.sol:CounterTest
@@ -125,11 +123,11 @@ Running 2 tests for test/Counter.t.sol:CounterTest
 Test result: ok. 2 passed; 0 failed; finished in 19.64ms
 ```
 
-It seems the logs are not being shown. The reason is because we `forge test` command includes a flag that enable us to include more details of the logs emmited during the execution of the tests.
+It seems the logs are not being shown. The reason is because the `forge test` command includes a flag that enable you to include more details of the logs emitted during the execution of the tests.
 
-We can control that by including `-vv` up until `-vvvvv`. For more details about the level of verbosity you can refer to the [Logs and Traces] section of the Foundry documentation.
+You can control that by including different levels of the verbose flag -- `-vv` up to `-vvvvv`. For more details about the level of verbosity you can refer to the [Logs and Traces] section of the Foundry documentation.
 
-If we then run the `foundry test -vv` we should see:
+Run the `foundry test -vv`. You should see:
 
 ```bash
 Running 2 tests for test/Counter.t.sol:CounterTest
@@ -145,13 +143,13 @@ Logs:
 Test result: ok. 2 passed; 0 failed; finished in 17.89ms
 ```
 
-Now, let's modify the test file and we will use the `prank` cheatcode, which allow us to modify the `msg.sender` of the next transaction. We will also use the `addr` cheatcode, which allow us to generate an address using any private key, which can simply be an hex number.
+Now, modify the test file using `prank` cheatcode, which allow you to modify the `msg.sender` of the next transaction. You will also use the `addr` cheatcode, which allow you to generate an address using any private key, which can simply be a hex number.
 
-We will include some `console.log` statements to understand better the execution flow.
+Include some `console.log` statements to understand better the execution flow.
 
 The code should look like:
 
-```javascript
+```solidity
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
@@ -183,7 +181,7 @@ contract CounterTest is Test {
 }
 ```
 
-Then if we run the `forge test -vv` command, we should see:
+Then if you run the `forge test -vv` command, you should see:
 
 ```bash
 Running 2 tests for test/Counter.t.sol:CounterTest
@@ -202,7 +200,7 @@ Logs:
 Test result: ok. 2 passed; 0 failed; finished in 48.75ms
 ```
 
-Notice how we call the cheatcode `vm.prank` before the call to the `counter.increment()` and `counter.setNumber(x)` functions. This will allow us to specify a particular address to become the `msg.sender` in the contract. Since the `vm.prank` accepts an address, we simply generate an address using the cheatcode `vm.addr`, where we pass a simple hexadecimal number, which is a valid private key.
+Notice how you call the cheatcode `vm.prank` before the call to the `counter.increment()` and `counter.setNumber(x)` functions. This allows you to specify a particular address to become the `msg.sender` in the contract. Since the `vm.prank` accepts an address, you simply generate an address using the cheatcode `vm.addr`, where you pass a simple hexadecimal number, which is a valid private key.
 
 ## Conclusion
 
@@ -216,5 +214,5 @@ Happy coding and testing with Foundry!
 
 [Foundry]: https://book.getfoundry.sh/
 [Writing tests]: https://book.getfoundry.sh/forge/writing-tests
-[Cheatcodes]: https://book.getfoundry.sh/forge/cheatcodes
+[cheatcodes]: https://book.getfoundry.sh/forge/cheatcodes
 [Logs and Traces]: https://book.getfoundry.sh/forge/tests?highlight=vvv#logs-and-traces
