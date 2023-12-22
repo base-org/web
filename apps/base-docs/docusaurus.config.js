@@ -119,7 +119,7 @@ const config = {
           position: 'left',
           items: [
             {
-              label: 'X',
+              label: 'Twitter',
               href: 'https://www.twitter.com/base',
             },
             {

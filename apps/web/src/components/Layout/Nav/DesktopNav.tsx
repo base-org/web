@@ -157,7 +157,7 @@ function DesktopNav({ color }: DesktopNavProps) {
         <Link href="/discord" title="Join us on Discord">
           <Icon name="discord" width="24" height="20" color={color} />
         </Link>
-        <a href="https://twitter.com/base" title="Join us on X">
+        <a href="https://twitter.com/base" title="Join us on Twitter">
           <Icon name="twitter" width="24" height="20" color={color} />
         </a>
         <a href="https://github.com/base-org" title="Join us on Github">

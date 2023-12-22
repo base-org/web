@@ -86,7 +86,7 @@ export function Footer() {
               href="https://twitter.com/base"
               target="_blank"
               rel="noreferrer noopener"
-              title="Join us on X"
+              title="Join us on Twitter"
             >
               <Icon name="twitter" width="24" height="20" />
             </a>
