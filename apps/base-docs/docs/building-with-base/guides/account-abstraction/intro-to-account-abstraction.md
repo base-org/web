@@ -31,7 +31,7 @@ For example,the preliminary steps a user needs to go through before they can use
 1. Store the wallet mnemonic safely, without losing it or compromising it
 1. Sign a slightly frightening message to connect to an onchain app
 1. Try to do anything with the app and get a popup asking them to approve a transaction
-1. Attempt to do so, learn transactions cost gas, and they don't have any
+1. Attempt to do so, learn transactions cost gas, and that they don't have any
 1. Learn that gas is a fee that users must pay in ETH to use onchain apps
 1. Attempt to buy ETH, possibly buying the wrong flavor of ETH in the wrong location
 1. Try the transaction again
@@ -68,7 +68,7 @@ You're working with something so new that the vocabulary hasn't settled yet. You
 
 :::
 
-At first glance, you may be asking yourself if using smart contract accounts solve our problem. What's the difference between a smart contract account (or contract account) and an "Externally Owner Account"?
+At first glance, you may be asking yourself if using smart contract accounts solve our problem. What's the difference between a smart contract account (or contract account) and an _Externally Owned Account_?
 
 According to [ethereum.org], the differences are:
 
@@ -108,39 +108,39 @@ With typical Ethereum transactions an EOA initiates and signs a transaction. Tha
 
 Note that the following steps are primarily happening **before** any of that.
 
-#### 1. **Smart Contract Wallet Creation**
+### 1. **Smart Contract Wallet Creation**
 
 First, a new smart contract wallet must be created for a user. This wallet is owned by its creator who is designated as the _signer_. This signer must validate any of its future operations.
 
 This wallet may come with a variety of features, but it must be able to at least validate `UserOperations`s with a function called, `validateUserOp`. `validateUserOp` will check each `UserOperation`'s signature, increment the nonce, and handle the operation's fees.
 
-#### 2. **User Operation Creation**
+### 2. **User Operation Creation**
 
 From the smart contract account, `UserOperations`s are created. These are not yet transactions, but rather represent intents from the user. These intents can represent any onchain user operation.
 
 `UserOperation` includes the details of the transaction such as sender, nonce, gas limit, max fee per gas, paymaster data (if applicable), and a signature.
 
-#### 3. **Signature Generation**:
+### 3. **Signature Generation**:
 
 The `UserOperation` is then signed using the private key associated with the initiating account. This signature serves to authenticate the transaction and validate that it was indeed initiated by the owner of the smart contract account.
 
-#### 4. **Alt Mempool**:
+### 4. **Alt Mempool**:
 
 ERC-4337 introduces an _Alt Mempool_ where operations are stored until they're picked up by a _Bundler_. The Alt Mempool is not very different from the transaction pool typically used in Ethereum, but this mempool exists earlier on in the transaction and holds user operations, where Ethereum's mempool holds signed transactions.
 
-#### 5. **Bundler and Operation Submission**:
+### 5. **Bundler and Operation Submission**:
 
 Nodes on the Ethereum network have the option to serve as a _Bundler_, a role that involves collecting multiple signed `UserOperation`s and consolidating them into a single transaction, called a bundle transaction. These bundle transactions are then directed towards a universal smart contract, called the _EntryPoint_.
 
 The submission of the signed `UserOperation` to the EntryPoint contract can be done directly or through a _paymaster_, which is a contract that agrees to cover the cost of operations for certain users.
 
-#### 6. **Operation Validation**:
+### 6. **Operation Validation**:
 
 The Bundler triggers a function named `handleOps` on the EntryPoint smart contract, which receives the bundle transaction. The EntryPoint then calls `validateUserOp` for each account within this bundle transaction.
 
 Each smart contract wallet is then required to implement an additional function and execute the actual operation sent by the EntryPoint contract.
 
-#### 7. **Operation Execution**:
+### 7. **Operation Execution**:
 
 Once the operation has been validated and the fees have been handled, the operation is executed on the Ethereum network.
 
