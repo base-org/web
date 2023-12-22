@@ -157,6 +157,34 @@ module.exports = {
                 },
               ],
             },
+            {
+              type: 'category',
+              label: 'Privy and the Base Paymaster',
+              collapsible: true,
+              collapsed: true,
+              items: [
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/account-abstraction/overview',
+                  className: 'sidebar-reading',
+                },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/account-abstraction/intro-to-account-abstraction',
+                  className: 'sidebar-reading',
+                },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/account-abstraction/intro-to-privy',
+                  className: 'sidebar-coding',
+                },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/account-abstraction/implementing-the-paymaster',
+                  className: 'sidebar-coding',
+                },
+              ],
+            },
           ],
         },
       ],
