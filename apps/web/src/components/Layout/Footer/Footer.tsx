@@ -29,7 +29,10 @@ export function Footer() {
             </div>
             <div className="flex flex-col">
               <p className="text-white">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdvX-a6LqOIR7Uk5cDPGUjUkpSCetvTor25M1JmW9eqgubS5Q/viewform?usp=sf_link" className="underline">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdvX-a6LqOIR7Uk5cDPGUjUkpSCetvTor25M1JmW9eqgubS5Q/viewform?usp=sf_link"
+                  className="underline"
+                >
                   Build on Base
                 </a>
               </p>
@@ -80,7 +83,7 @@ export function Footer() {
               <Icon name="discord" width="24" height="20" />
             </Link>
             <a
-              href="https://twitter.com/buildonbase"
+              href="https://twitter.com/base"
               target="_blank"
               rel="noreferrer noopener"
               title="Join us on Twitter"

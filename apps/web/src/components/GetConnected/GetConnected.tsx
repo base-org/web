@@ -21,7 +21,7 @@ export function GetConnected() {
           </a>
         </div>
         <div className="rounded-full border border-white p-5">
-          <a href="https://twitter.com/buildonbase" title="Join us on Twitter">
+          <a href="https://twitter.com/base" title="Join us on Twitter">
             <Icon name="twitter" width="48" height="48" />
           </a>
         </div>
