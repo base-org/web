@@ -5,7 +5,7 @@ keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain]
 hide_table_of_contents: false
 ---
 
-In this article, you'll learn how to set up [Foundry], a toolchain for smart contract development. You'll also learn how to configure it to work with base.
+In this article, you'll learn how to set up [Foundry], a toolchain for smart contract development. You'll also learn how to configure it to work with Base.
 
 ---
 
@@ -24,7 +24,7 @@ Foundry is a smart contract development toolchain that is composed of multiple s
 
 - _[forge]_: Compile, test, and deploy your smart contracts
 - _[cast]_: Interact with the Blockchain over RPC. You can make smart contract calls, send transactions, or retrieve any type of chain data
-- _[chisel]_: A solidity REPL. You can write solidity code directly
+- _[chisel]_: A Solidity REPL. You can write Solidity code directly
 - _[anvil]_: A local Blockchain node for testing and development
 
 Using Foundry you can manage your dependencies, compile your project, run tests, deploy smart contracts and interact with the chain from the command-line and via Solidity scripts.
@@ -95,7 +95,7 @@ forge build:
 
 In order to work with Base, you need to configure a couple of settings in the configuration `foundry.toml` file.
 
-The first thing is the solidity version.
+The first thing is the Solidity version.
 
 :::caution
 
@@ -141,7 +141,7 @@ We included 2 JSON RPC endpoints for `Base` and `Base goerli` and similar for th
 
 ## Conclusion
 
-In this guide, you've embarked on the journey of smart contract development with Base and Foundry. You've learned the essential steps, from installing Foundry using the convenient `Foundryup`` toolchain installer to creating your first project and configuring Foundry to seamlessly integrate with Base.
+In this guide, you've embarked on the journey of smart contract development with Base and Foundry. You've learned the essential steps, from installing Foundry using the convenient `Foundryup` toolchain installer to creating your first project and configuring Foundry to seamlessly integrate with Base.
 
 ---
 
