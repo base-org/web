@@ -16,15 +16,6 @@ function EcosystemHero() {
           <p className="font-display text-xl text-white md:text-2xl lg:text-3xl">
             An overview of apps and integrations in the Base ecosystem.
           </p>
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLScKCOjB4wFmb7u-1VpgMZOGLYq4GUBGt3AwQKqUAlTgjnucGQ/viewform"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <Button variant="primary" className="w-full md:w-64">
-              Apply
-            </Button>
-          </a>
         </div>
         <div className="flex w-full md:w-1/2 md:justify-end">
           <Image className="-mr-16" src={EcosystemHeroLogos} alt="ecosystem dapp logos" />
