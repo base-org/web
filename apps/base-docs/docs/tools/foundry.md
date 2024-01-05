@@ -2,7 +2,24 @@
 title: Foundry
 slug: /tools/foundry
 description: Documentation for Foundry, a toolchain for smart contract development. Provides instructions on deploying and verifying contracts on Base's mainnet and testnet using Foundry.
-keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain, Base, Base mainnet, Base testnet, Base network, RPC URL, chain id, deploying contracts, verifying contracts, mainnet, testnet]
+keywords:
+  [
+    Foundry,
+    Forge,
+    Foundry Book,
+    smart contract development,
+    toolchain,
+    Base,
+    Base mainnet,
+    Base testnet,
+    Base network,
+    RPC URL,
+    chain id,
+    deploying contracts,
+    verifying contracts,
+    mainnet,
+    testnet,
+  ]
 ---
 
 # Foundry
@@ -40,11 +57,11 @@ forge verify-contract ... --chain-id 8453
 ### Deploying a smart contract
 
 ```bash
-forge create ... --rpc-url=https://goerli.base.org/
+forge create ... --rpc-url=https://sepolia.base.org/
 ```
 
 ### Verifying a smart contract
 
 ```bash
-forge verify-contract ... --chain-id 84531
+forge verify-contract ... --chain-id 84532
 ```

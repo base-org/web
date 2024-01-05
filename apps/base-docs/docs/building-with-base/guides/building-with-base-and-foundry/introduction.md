@@ -101,7 +101,7 @@ The first thing is the Solidity version.
 
 As of December 2023, Base does not support the new PUSH0 opcode introduced in Shanghai, which is the default target for the Solidity compiler if you use version 0.8.20 or later. See [Differences between Ethereum and Base] to learn more.
 
-We recommend using 0.8.19 or lower until Base is upgraded with `PUSH0`. Keep in mind that the update has been deployed to Base Goerli and Base Sepolia.
+We recommend using 0.8.19 or lower until Base is upgraded with `PUSH0`. Keep in mind that the update has been deployed to Base Sepolia.
 
 :::
 
@@ -130,14 +130,14 @@ solc_version = "0.8.19"
 
 [rpc_endpoints]
 base = "https://mainnet.base.org"
-baseGoerli = "https://goerli.base.org"
+baseSepolia = "https://sepolia.base.org"
 
 [etherscan]
-baseGoerli = { key = "${BASESCAN_API_KEY}", url = "https://api-goerli.basescan.org/api" }
+baseSepolia = { key = "${BASESCAN_API_KEY}", url = "https://api-sepolia.basescan.org/api" }
 base = { key = "${BASESCAN_API_KEY}", url = "https://api.basescan.org/api" }
 ```
 
-We included 2 JSON RPC endpoints for `Base` and `Base goerli` and similar for the Etherscan section, we included the configuration for `Basescan` for goerli and mainnet. Both rely on the same API Key, `BASESCAN_API_KEY`.
+We included 2 JSON RPC endpoints for `Base` and `Base Sepolia` and similar for the Etherscan section, we included the configuration for `Basescan` for Sepolia and Mainnet. Both rely on the same API Key, `BASESCAN_API_KEY`.
 
 ## Conclusion
 
