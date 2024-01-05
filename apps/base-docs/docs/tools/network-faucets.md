@@ -35,6 +35,18 @@ The Superchain faucet allows developers to authenticate via their onchain identi
 
 ---
 
+## Alchemy Faucet
+
+The [Alchemy Faucet](https://basefaucet.com/) is a fast and reliable network faucet that allows users with a free Alchemy account to request testnet ETH on Base Sepolia.
+
+:::info
+
+Requests to Alchemy's Base Sepolia Faucet are limited to one claim per 24 hours.
+
+:::
+
+---
+
 ## Bware Labs Faucet
 
 [Bware Labs Faucet](https://bwarelabs.com/faucets) is an easy to use faucet with no registration required. You can use Bware Labs Faucet to claim Base Goerli testnet ETH for free - one claim per 24 hours.
