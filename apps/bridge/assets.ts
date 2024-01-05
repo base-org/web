@@ -324,7 +324,7 @@ const assets: Asset[] = [
   L2icon: '/icons/currency/snx.svg',
   decimals: 18,
   protocol: 'OP',
-},
+  },
 ];
 
 export default assets;
