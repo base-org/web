@@ -58,7 +58,7 @@ const provider = new ethers.providers.JsonRpcProvider(url);
 
 :::info
 
-To alternatively connect to Base Goerli (testnet), change the above URL from `https://mainnet.base.org` to `https://goerli.base.org`.
+To alternatively connect to Base Sepolia (testnet), change the above URL from `https://mainnet.base.org` to `https://sepolia.base.org`.
 
 :::
 
