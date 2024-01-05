@@ -312,6 +312,19 @@ const assets: Asset[] = [
     decimals: 18,
     protocol: 'OP',
   },
+  {
+    L1symbol: 'BTRST',
+    L2symbol: 'BTRST',
+    L1chainId: 1,
+    L2chainId: 8453,
+    L1contract: '0x799ebfABE77a6E34311eeEe9825190B9ECe32824',
+    L2contract: '0xA7d68d155d17cB30e311367c2Ef1E82aB6022b67',
+    apiId: 'braintrust',
+    L1icon: '/icons/currency/btrst.svg',
+    L2icon: '/icons/currency/btrst.svg',
+    decimals: 18,
+    protocol: 'OP',
+  },
 ];
 
 export default assets;
