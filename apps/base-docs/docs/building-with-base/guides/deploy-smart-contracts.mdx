@@ -50,12 +50,7 @@ In order to deploy a smart contract, you will first need a web3 wallet. You can 
 
 Deploying contracts to the blockchain requires a gas fee. Therefore, you will need to fund your wallet with ETH to cover those gas fees.
 
-For this guide, you will be deploying a contract to the Base Goerli test network. You can fund your wallet with Base Goerli ETH using the following options:
-
-- [Coinbase Faucet | Base Goerli](https://www.coinbase.com/faucets/base-ethereum-goerli-faucet)
-- [Coinbase Wallet Faucets](https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad)
-
-For more detailed steps on funding your wallet with Base Goerli ETH, see [Network Faucets](/tools/network-faucets).
+For this guide, you will be deploying a contract to the Base Sepolia test network. You can fund your wallet with Base Sepolia ETH using one of the faucets listed on the Base [Network Faucets](https://docs.base.org/tools/network-faucets) page.
 
 ---
 
@@ -113,8 +108,8 @@ const config: HardhatUserConfig = {
       gasPrice: 1000000000,
     },
     // for testnet
-    'base-goerli': {
-      url: 'https://goerli.base.org',
+    'base-sepolia': {
+      url: 'https://sepolia.base.org',
       accounts: [process.env.WALLET_KEY as string],
       gasPrice: 1000000000,
     },
@@ -218,9 +213,9 @@ npx hardhat compile
 
 ## Deploying the smart contract
 
-Once your contract has been successfully compiled, you can deploy the contract to the Base Goerli test network.
+Once your contract has been successfully compiled, you can deploy the contract to the Base Sepolia test network.
 
-To deploy the contract to the Base Goerli test network, you'll need to modify the `scripts/deploy.ts` in your project:
+To deploy the contract to the Base Sepolia test network, you'll need to modify the `scripts/deploy.ts` in your project:
 
 ```typescript
 import { ethers } from 'hardhat';
@@ -246,10 +241,10 @@ You'll also need testnet ETH in your wallet. See the [prerequisites](#prerequisi
 Finally, run:
 
 ```bash
-npx hardhat run scripts/deploy.ts --network base-goerli
+npx hardhat run scripts/deploy.ts --network base-sepolia
 ```
 
-The contract will be deployed on the Base Goerli test network. You can view the deployment status and contract by using a [block explorer](/tools/block-explorers) and searching for the address returned by your deploy script. If you've deployed an exact copy of the NFT contract above, it will already be verified and you'll be able to read and write to the contract using the web interface.
+The contract will be deployed on the Base Sepolia test network. You can view the deployment status and contract by using a [block explorer](/tools/block-explorers) and searching for the address returned by your deploy script. If you've deployed an exact copy of the NFT contract above, it will already be verified and you'll be able to read and write to the contract using the web interface.
 
 :::info
 
@@ -267,9 +262,9 @@ Regardless of the network you're deploying to, if you're deploying a new or modi
 
 ## Verifying the Smart Contract
 
-If you want to interact with your contract on the block explorer, you, or someone, needs to verify it first. The above contract has already been verified, so you should be able to view your version on a block explorer already. For the remainder of this guide, we'll walk through how to verify your contract on Base Goerli testnet.
+If you want to interact with your contract on the block explorer, you, or someone, needs to verify it first. The above contract has already been verified, so you should be able to view your version on a block explorer already. For the remainder of this guide, we'll walk through how to verify your contract on Base Sepolia testnet.
 
-In `hardhat.config.ts`, configure Base Goerli as a custom network. Add the following to your `HardhatUserConfig`:
+In `hardhat.config.ts`, configure Base Sepolia as a custom network. Add the following to your `HardhatUserConfig`:
 
 <Tabs>
 <TabItem value="basescan" label="Basescan">
@@ -277,15 +272,15 @@ In `hardhat.config.ts`, configure Base Goerli as a custom network. Add the follo
 ```typescript
 etherscan: {
    apiKey: {
-    "base-goerli": "PLACEHOLDER_STRING"
+    "base-sepolia": "PLACEHOLDER_STRING"
    },
    customChains: [
      {
-       network: "base-goerli",
-       chainId: 84531,
+       network: "base-sepolia",
+       chainId: 84532,
        urls: {
-        apiURL: "https://api-goerli.basescan.org/api",
-        browserURL: "https://goerli.basescan.org"
+        apiURL: "https://api-sepolia.basescan.org/api",
+        browserURL: "https://sepolia.basescan.org"
        }
      }
    ]
@@ -294,7 +289,7 @@ etherscan: {
 
 :::info
 
-When verifying a contract with Basescan on testnet (Goerli), an API key is not required. You can leave the value as `PLACEHOLDER_STRING`. On mainnet, you can get your Basescan API key from [here](https://basescan.org/myapikey) after you sign up for an account.
+When verifying a contract with Basescan on testnet (Sepolia), an API key is not required. You can leave the value as `PLACEHOLDER_STRING`. On mainnet, you can get your Basescan API key from [here](https://basescan.org/myapikey) after you sign up for an account.
 
 :::
 
@@ -305,15 +300,15 @@ When verifying a contract with Basescan on testnet (Goerli), an API key is not r
 // Hardhat expects etherscan here, even if you're using Blockscout.
 etherscan: {
    apiKey: {
-    "base-goerli": process.env.BLOCKSCOUT_KEY as string
+    "base-sepolia": process.env.BLOCKSCOUT_KEY as string
    },
    customChains: [
      {
-       network: "base-goerli",
-       chainId: 84531,
+       network: "base-sepolia",
+       chainId: 84532,
        urls: {
-        apiURL: "https://base-goerli.blockscout.com/api",
-        browserURL: "https://base-goerli.blockscout.com"
+        apiURL: "https://base-sepolia.blockscout.com/api",
+        browserURL: "https://base-sepolia.blockscout.com"
        }
      }
    ]
@@ -322,7 +317,7 @@ etherscan: {
 
 :::info
 
-You can get your Blockscout API key from [here](https://base-goerli.blockscout.com/account/api_key) after you sign up for an account.
+You can get your Blockscout API key from [here](https://base-sepolia.blockscout.com/account/api_key) after you sign up for an account.
 
 :::
 
@@ -332,7 +327,7 @@ You can get your Blockscout API key from [here](https://base-goerli.blockscout.c
 Now, you can verify your contract. Grab the deployed address and run:
 
 ```bash
-npx hardhat verify --network base-goerli <deployed address>
+npx hardhat verify --network base-sepolia <deployed address>
 ```
 
 You should see an output similar to:
@@ -348,7 +343,6 @@ contracts/NFT.sol:NFT at 0x6527E5052de5521fE370AE5ec0aFCC6cD5a221de
 for verification on the block explorer. Waiting for verification result...
 
 Successfully verified contract NFT on Etherscan.
-https://goerli.basescan.org/address/0x6527E5052de5521fE370AE5ec0aFCC6cD5a221de#code
 ```
 
 </TabItem>
@@ -362,7 +356,6 @@ contracts/NFT.sol:NFT at 0x6527E5052de5521fE370AE5ec0aFCC6cD5a221de
 for verification on the block explorer. Waiting for verification result...
 
 Successfully verified contract NFT on Etherscan.
-https://base-goerli.blockscout.com/address/0x6527E5052de5521fE370AE5ec0aFCC6cD5a221de#code
 ```
 
 </TabItem>
@@ -380,7 +373,7 @@ Message: Already Verified
 
 :::
 
-Search for your contract on [Blockscout](https://base-goerli.blockscout.com/) or [Basescan](https://goerli.basescan.org/) to confirm it is verified.
+Search for your contract on [Blockscout](https://base-sepolia.blockscout.com/) or [Basescan](https://sepolia.basescan.org/) to confirm it is verified.
 
 ## Interacting with the Smart Contract
 
