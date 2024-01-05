@@ -13,6 +13,7 @@ keywords:
     superchain,
     LayerZero,
     Axelar,
+    Crossmint,
     Wormhole,
     web3 transactions,
     blockchain communication,
@@ -20,6 +21,8 @@ keywords:
     Base Testnet,
     interchain connectivity,
     blockchain interoperability,
+    cross-chain transactions, 
+    cross-chain payments,
   ]
 ---
 
@@ -44,6 +47,16 @@ To view current transactions and live stats about the Axelar network please visi
 
 ---
 
+## Crossmint
+[Crossmint](https://crossmint.com/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) allows you to create and deploy NFT Collections and enable cross-chain payments. This enables your users and customers to purchase an NFT from a collection deployed on Base using Ethereum or Solana tokens. 
+
+Check out [Crossmint Docs](https://docs.crossmint.com/docs/cross-chain-payments/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) to learn more about how you can integrate Crossmint with your product to power cross-chain payments. 
+
+#### Supported Networks
+- [Base Mainnet](https://www.crossmint.com/products/nft-checkout/?utm_source=backlinks&utm_medium=docs&utm_campaign=base)
+- [Base Goerli](https://www.crossmint.com/products/nft-checkout/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) (Testnet)
+
+---
 ## LayerZero
 
 [LayerZero](https://layerzero.network/) is an omnichain interoperability protocol that enables cross-chain messaging. Applications built on Base can use the LayerZero protocol to connect to 35+ supported blockchains seamlessly.
