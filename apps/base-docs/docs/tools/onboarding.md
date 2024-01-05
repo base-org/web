@@ -13,6 +13,7 @@ keywords:
     onboard,
     onboarding,
     Privy,
+    Crossmint,
     Dynamic,
     Particle Network,
     user wallet,
