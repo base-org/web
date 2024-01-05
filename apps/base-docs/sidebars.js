@@ -49,7 +49,29 @@ module.exports = {
               label: 'Accessing real-world data using Oracles',
               collapsible: true,
               collapsed: true,
-              items: ['building-with-base/guides/using-chainlink-price-feeds', 'building-with-base/guides/using-pyth-price-feeds', 'building-with-base/guides/using-supra-vrf'],
+              items: [
+                'building-with-base/guides/using-chainlink-price-feeds',
+                'building-with-base/guides/using-pyth-price-feeds',
+                'building-with-base/guides/using-supra-vrf',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Building with Foundry',
+              collapsible: true,
+              collapsed: true,
+              items: [
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/building-with-base-and-foundry/introduction',
+                  className: 'sidebar-coding',
+                },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/building-with-base-and-foundry/testing',
+                  className: 'sidebar-coding',
+                },
+              ],
             },
             {
               type: 'category',
@@ -153,6 +175,34 @@ module.exports = {
                 {
                   type: 'doc',
                   id: 'connecting-to-the-blockchain/connecting-with-a-provider',
+                  className: 'sidebar-coding',
+                },
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Privy and the Base Paymaster',
+              collapsible: true,
+              collapsed: true,
+              items: [
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/account-abstraction/overview',
+                  className: 'sidebar-reading',
+                },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/account-abstraction/intro-to-account-abstraction',
+                  className: 'sidebar-reading',
+                },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/account-abstraction/intro-to-privy',
+                  className: 'sidebar-coding',
+                },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/account-abstraction/implementing-the-paymaster',
                   className: 'sidebar-coding',
                 },
               ],

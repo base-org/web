@@ -71,6 +71,7 @@ const config = {
   clientModules: [require.resolve('./src/utils/initCCA.ts')],
 
   themeConfig: {
+    image: 'img/base-open-graph.png',
     ...baseConfig.themeConfig,
     navbar: {
       logo: {
@@ -119,7 +120,7 @@ const config = {
           items: [
             {
               label: 'Twitter',
-              href: 'https://www.twitter.com/BuildOnBase',
+              href: 'https://www.twitter.com/base',
             },
             {
               label: 'Discord',

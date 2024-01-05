@@ -7,6 +7,7 @@ import { Logo } from '../../Logo/Logo';
 const { publicRuntimeConfig } = getConfig();
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="z-10 mt-auto flex w-full justify-center bg-gray lg:pb-64">
       <div className="flex w-full max-w-[1440px] flex-col justify-between p-8 lg:flex-row">
@@ -21,17 +22,21 @@ export function Footer() {
             <div className="flex flex-col">
               <p className="text-white">
                 <a href="https://base.mirror.xyz/subscribe" className="underline">
-                  Subscribe to our Mirror blog.
-                </a>{' '}
-                Mint the posts as unique NFTs
+                  Subscribe to our Mirror blog
+                </a>
+                : Mint the posts as unique NFTs
               </p>
               <p className="text-white">commemorating the evolution of Base.</p>
             </div>
             <div className="flex flex-col">
               <p className="text-white">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdvX-a6LqOIR7Uk5cDPGUjUkpSCetvTor25M1JmW9eqgubS5Q/viewform?usp=sf_link" className="underline">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdvX-a6LqOIR7Uk5cDPGUjUkpSCetvTor25M1JmW9eqgubS5Q/viewform?usp=sf_link"
+                  className="underline"
+                >
                   Build on Base
                 </a>
+                : Get in touch with our teams about your project.
               </p>
             </div>
           </div>
@@ -40,7 +45,7 @@ export function Footer() {
             <br />
             <a href="https://docs.base.org/privacy-policy">Privacy Policy</a>
           </p>
-          <p>© 2023 Coinbase</p>
+          <p>© {currentYear} Coinbase</p>
         </div>
         <div className="flex h-full flex-col gap-5 pt-24 lg:flex-row lg:gap-10 lg:pt-0">
           <div className="flex h-full flex-col gap-4 lg:flex-row lg:gap-10">
@@ -80,7 +85,7 @@ export function Footer() {
               <Icon name="discord" width="24" height="20" />
             </Link>
             <a
-              href="https://twitter.com/buildonbase"
+              href="https://twitter.com/base"
               target="_blank"
               rel="noreferrer noopener"
               title="Join us on Twitter"
