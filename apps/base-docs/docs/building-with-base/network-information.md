@@ -7,9 +7,7 @@ keywords:
     Base network,
     Base Mainnet,
     Base Testnet,
-    Goerli,
     Sepolia,
-    Base Goerli,
     Base Sepolia,
     RPC URL,
     Base RPC URL,
@@ -37,19 +35,6 @@ keywords:
 | Chain ID        | 8453                                                                                                    |
 | Currency Symbol | ETH                                                                                                     |
 | Block Explorer  | [https://basescan.org](https://basescan.org)                                                            |
-
----
-
-#### Base Testnet (Goerli)
-
-| Name            | Value                                                                                                 |
-| :-------------- | :---------------------------------------------------------------------------------------------------- |
-| Network Name    | Base Goerli                                                                                           |
-| Description     | A public testnet for Base.                                                                            |
-| RPC Endpoint    | [https://goerli.base.org](https://goerli.base.org)<br/>_Rate limited and not for production systems._ |
-| Chain ID        | 84531                                                                                                 |
-| Currency Symbol | ETH                                                                                                   |
-| Block Explorer  | [https://goerli.basescan.org](https://goerli.basescan.org)                                            |
 
 ---
 

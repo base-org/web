@@ -37,6 +37,6 @@ Aside from the above, Base Mainnet does not yet support the new [`PUSH0`](https:
 
 We recommend using `0.8.19` or lower until this is upgraded.
 
-The update has been deployed to Base Goerli and Base Sepolia.
+The update has been deployed to Base Sepolia.
 
 :::
