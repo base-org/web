@@ -237,6 +237,7 @@ __metadata:
     express: ^4.18.2
     express-basic-auth: ^1.2.1
     lodash: ^4.17.21
+    marked: ^11.1.1
     react: ^18.2.0
     react-dom: ^18.2.0
     typescript: ^5.1.3
@@ -15774,6 +15775,15 @@ __metadata:
   version: 1.0.4
   resolution: "markdown-escapes@npm:1.0.4"
   checksum: 6833a93d72d3f70a500658872312c6fa8015c20cc835a85ae6901fa232683fbc6ed7118ebe920fea7c80039a560f339c026597d96eee0e9de602a36921804997
+  languageName: node
+  linkType: hard
+
+"marked@npm:^11.1.1":
+  version: 11.1.1
+  resolution: "marked@npm:11.1.1"
+  bin:
+    marked: bin/marked.js
+  checksum: e30e16bf1d2c6627fff4369ffef73a1fbec629c5d18be76fc1f9c36f3df96499845bb7785f73313d06082b4562307e4f314f35eaa24ac737c176234b4bf24982
   languageName: node
   linkType: hard
 
