@@ -27,7 +27,7 @@ export default function ChatMessage({ type, content, sources }: ChatMessageProps
             <span className={styles.chatMessageIcon}>
               <Icon name="avatar" width="24" height="24" />
             </span>
-            <span className={styles.chatMessageContent}>{content}</span>
+            <span>{content}</span>
           </>
         )}
 
