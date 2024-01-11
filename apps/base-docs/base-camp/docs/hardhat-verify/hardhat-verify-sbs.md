@@ -46,34 +46,31 @@ Then, go to [https://etherscan.io/myapikey](https://etherscan.io/myapikey) and c
 
 Bear in mind that different networks have other Blockchain explorers. For example:
 
-- [Base](https://goerli.basescan.org/)
-- [Goerli](https://goerli.etherscan.io/)
-- [Polygon](https://polygonscan.com/)
+- [Base](https://basescan.org/)
+- [Sepolia](https://sepolia.etherscan.io/)
 
-You'll need to go to that particular explorer and get the API Key following a similar process as mentioned previously (except for Goerli Etherscan, where you can use the Etherscan mainnet one instead).
+You'll need to go to that particular explorer and get the API Key following a similar process as mentioned previously (except for Sepolia Etherscan, where you can use the Etherscan mainnet one instead).
 
 ## Configuring Hardhat
 
-You can configure the Etherscan API Key for each different network. For example, include the following to the `hardhat.config.ts` file for base goerli:
+You can configure the Etherscan API Key for each different network. For example, include the following to the `hardhat.config.ts` file for Base Sepolia:
 
 ```typescript
-base_goerli: {
-      url: "https://goerli.base.org",
-      accounts: {
-        mnemonic: process.env.MNEMONIC ?? ""
-      },
-      verify: {
-        etherscan: {
-          apiUrl: "https://api-goerli.basescan.org",
-          apiKey: process.env.ETHERSCAN_API_KEY ?? "ETHERSCAN_API_KEY"
-        }
-      }
+base_sepolia: {
+  url: "https://sepolia.base.org",
+  accounts: {
+    mnemonic: process.env.MNEMONIC ?? ""
+  },
+  verify: {
+    etherscan: {
+      apiUrl: "https://api-sepolia.basescan.org",
+      apiKey: process.env.ETHERSCAN_API_KEY
+    }
+  }
 }
 ```
 
-Be aware that at this point an API Key for base goerli is not required, so you can simply define a placeholder like `"ETHERSCAN_API_KEY"`.
-
-However, for other networks, you might have to include in your `.env` file the following:
+Include in your `.env` file the following:
 
 ```
 ETHERSCAN_API_KEY=<YOUR_ETHERSCAN_API_KEY>
@@ -84,7 +81,7 @@ ETHERSCAN_API_KEY=<YOUR_ETHERSCAN_API_KEY>
 You verify in base, and to do so, simply run the following command:
 
 ```bash
-npx hardhat --network base_goerli etherscan-verify
+npx hardhat --network base_sepolia etherscan-verify
 ```
 
 You should receive the following response:

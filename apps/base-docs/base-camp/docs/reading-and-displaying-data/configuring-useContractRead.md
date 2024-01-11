@@ -127,7 +127,7 @@ Adjust your [`pollingInterval`] by setting it in `configureChains` in `_app.tsx`
 
 ```typescript
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [baseGoerli],
+  [baseSepolia],
   [
     // other providers...
     publicProvider(),

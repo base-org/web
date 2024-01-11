@@ -132,7 +132,7 @@ const sidebars = {
             },
             {
               type: 'doc',
-              id: 'docs/deployment-to-testnet/deployment-to-base-goerli-sbs',
+              id: 'docs/deployment-to-testnet/deployment-to-base-sepolia-sbs',
               className: 'sidebar-stepbystep',
             },
             {
