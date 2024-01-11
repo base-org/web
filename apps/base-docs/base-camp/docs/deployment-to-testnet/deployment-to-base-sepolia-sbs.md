@@ -1,5 +1,5 @@
 ---
-title: Deployment to Base Goerli
+title: Deployment to Base Sepolia
 description: Deploy your smart contract to a test network.
 hide_table_of_contents: false
 ---
@@ -12,7 +12,7 @@ Remix contains a simulation of a blockchain that you can use to rapidly deploy a
 
 By the end of this lesson you should be able to:
 
-- Deploy a contract to the Base Goerli testnet and interact with it in Etherscan
+- Deploy a contract to the Base Sepolia testnet and interact with it in Etherscan
 
 ---
 
@@ -36,13 +36,13 @@ First, add the [Coinbase] or [Metamask] wallet to your browser, and then [set up
 
 Once you've completed the wallet setup, enable developer settings and turn on testnets ([Coinbase Settings], [Metamask Settings]).
 
-### Add Base Goerli to your Wallet
+### Add Base Sepolia to your Wallet
 
-Use the [faucet] to add Base Goerli ETH to your wallet.
+Use the [faucet] to add Base Sepolia ETH to your wallet. You can also ask Base personnel on Discord or other social media for some!
 
 ### Get Testnet Ether
 
-Testnet tokens have no real value, but the supply is not unlimited. You can use a faucet to get a small amount of Goerli Ether to pay gas fees for testing. Most faucets allow you to ask for a small amount each day, and some won't send you more if your balance is too high.
+Testnet tokens have no real value, but the supply is not unlimited. You can use a faucet to get a small amount of Sepolia Ether to pay gas fees for testing. Most faucets allow you to ask for a small amount each day, and some won't send you more if your balance is too high.
 
 You can find many faucets by searching, and it's good to keep a few bookmarked because they have a tendency to go down from time to time. Faucet providers are constantly combating bad actors and sometimes need to disable their faucets while doing so.
 
@@ -50,7 +50,7 @@ The Coinbase Wallet has faucets built in. You can find them by clicking Settings
 
 You can also access the [faucets on the web].
 
-Once you have testnet Base Goerli Ether, you can view your balance under the _Testnets_ tab in the Coinbase wallet or by selecting the testnet from the network dropdown in Metamask. Sadly, it's not actually worth the amount listed!
+Once you have testnet Base Sepolia Ether, you can view your balance under the _Testnets_ tab in the Coinbase wallet or by selecting the testnet from the network dropdown in Metamask. Sadly, it's not actually worth the amount listed!
 
 ![Coinbase Balance](../../assets/images/deployment-to-testnet/balance.png)
 
@@ -72,7 +72,7 @@ Once you are connected, you'll see the name of the network below the _Environmen
 
 ![Connected](../../assets/images/deployment-to-testnet/remix-base-goerli-connected.png)
 
-For Base Goerli, you should see `Custom (84531) network`. If you don't see the correct network, change the active network in your wallet.
+For Base Sepolia, you should see `Custom (84532) network`. The old network, Goerli, was `84531`. If you don't see the correct network, change the active network in your wallet.
 
 ### Deploy the Contract
 
@@ -86,7 +86,7 @@ Always carefully review all transactions, confirming the transaction cost, asset
 
 :::
 
-After you click the _Confirm_ button, return to Remix and wait for the transaction to deploy. Copy its address and navigate to [`goerli.basescan.org`].
+After you click the _Confirm_ button, return to Remix and wait for the transaction to deploy. Copy its address and navigate to [`sepolia.basescan.org`].
 
 ## Conclusion
 
@@ -96,7 +96,7 @@ You now have the power to put smart contracts on the blockchain! You've only dep
 
 <!-- Add reference style links here.  These do not render on the page. -->
 
-[`goerli.basescan.org`]: https://goerli.basescan.org/
+[`sepolia.basescan.org`]: https://sepolia.basescan.org/
 [coinbase]: https://www.coinbase.com/wallet
 [metamask]: https://metamask.io/
 [faucet]: https://docs.base.org/tools/network-faucets

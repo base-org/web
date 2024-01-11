@@ -96,17 +96,20 @@ function debugResetShares() public {
 
 ### Submit your Contract and Earn an NFT Badge! (BETA)
 
-:::caution
+:::info
 
-There is a typo in the unit test messages for this exercise that incorrectly states that it is testing for >= 5000 shares. It should state that it is testing for > 5000 shares.
+#### Hey, where'd my NFT go!?
 
-Because the message is hard-coded on the blockchain, the only way to fix it would be to disable this contract and deploy a new contract that has a mechanism to re-grant all of the NFTs.
+[Testnets](../deployment-to-testnet/test-networks) are not permanent! Base Goerli [will soon be sunset](https://base.mirror.xyz/kkz1-KFdUwl0n23PdyBRtnFewvO48_m-fZNzPMJehM4), in favor of Base Sepolia.
 
-Instead of doing that, we'll leave a note here as a reminder that you need to be extra careful when writing and testing your code!
+We recommend changing the network to **Base Sepolia**, and submitting your contracts there. While it is still supported, you can change the network to Base Goerli to see your existing NFT.
+
+However, as these are separate networks with separate data, your NFTs **will not** transfer over.
+
+**Don't worry!** We've captured the addresses of all NFT owners on Base Goerli and will include them when we release the mechanism to transfer these NFTs to mainnet later this year! You can also redeploy on Sepolia and resubmit if you'd like!
 
 :::
 
-import storageUTData from "../../assets/deployments/StorageUT.json";
 import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
-<CafeUnitTest deployment={storageUTData} nftNum={3}/>
+<CafeUnitTest nftNum={3}/>
