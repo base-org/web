@@ -53,7 +53,6 @@ Add a function called `resetUserFavorites` that resets `userFavorites` for the s
 
 ### Submit your Contract and Earn an NFT Badge! (BETA)
 
-import data from "../../assets/deployments/MappingsUT.json";
 import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
-<CafeUnitTest deployment={data} nftNum={5} />
+<CafeUnitTest nftNum={5} />

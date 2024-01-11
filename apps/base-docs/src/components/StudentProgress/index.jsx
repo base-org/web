@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useAccount } from 'wagmi';
+import { useAccount, useNetwork } from 'wagmi';
 
 import NFTExerciseData from '../../utils/nft-exercise-data';
 
@@ -10,6 +10,8 @@ export default function StudentProgress() {
   const [earnedNFTCount, setNFTCount] = useState(0);
   const [totalNFTCount] = useState(Object.keys(NFTExerciseData).length);
   const { isConnecting, isConnected, address } = useAccount();
+
+  const { chain } = useNetwork();
 
   // mapping addresses to 'true' or 'false' to keep track of `earnedNFTCount
   const earnedNFTMap = Object.keys(NFTExerciseData).reduce((acc, prop) => {
@@ -63,7 +65,7 @@ export default function StudentProgress() {
         <div style={{ padding: '5px' }}>
           <p style={{ paddingBottom: '25px' }}>
             Address <span style={{ color: '#688CEC' }}>{address}</span> has earned {earnedNFTCount}{' '}
-            out of {totalNFTCount} Base Camp exercise NFTs.
+            out of {totalNFTCount} Base Camp exercise NFTs on {chain.name}.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>{renderNFTs()}</div>
         </div>

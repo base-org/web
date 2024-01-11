@@ -16,10 +16,9 @@ Stay tuned for updates!
 
 ### Submit your Contract and Earn an NFT Badge! (BETA)
 
-import basicMathUnitTestData from "../../assets/deployments/BasicMathUnitTest.json";
 import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
-<CafeUnitTest deployment={basicMathUnitTestData} nftNum={1}/>
+<CafeUnitTest nftNum={1}/>
 
 ---
 

@@ -1,9 +1,10 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { ethers } from 'ethers';
 import { useAccount, useContractRead, useContractWrite, useWaitForTransaction } from 'wagmi';
 
-import nfts from '../../utils/nft-exercise-data';
+import NFTExerciseData from '../../utils/nft-exercise-data';
 
 const pinStyle = {
   width: 300,
@@ -62,18 +63,18 @@ const directionsStyle = {
   padding: '10px 0 10px 0',
 };
 
-export default function CafeUnitTest({ deployment, nftNum }) {
+export default function CafeUnitTest({ nftNum }) {
   const { isConnecting, isDisconnected } = useAccount();
 
   const [messages, setMessages] = useState(['Submit your contract address.']);
   const [contractFormEntry, setContractFormEntry] = useState('');
   const [submittedContract, setSubmittedContract] = useState('');
   const [hasPin, setHasPin] = useState(false);
-  const nft = nfts[nftNum];
+  const nftData = NFTExerciseData[nftNum];
 
   const { data: hasNFT } = useContractRead({
-    address: deployment.address,
-    abi: deployment.abi,
+    address: nftData.deployment.address,
+    abi: nftData.deployment.abi,
     functionName: 'owners',
     args: [useAccount()?.address],
     watch: true,
@@ -91,8 +92,8 @@ export default function CafeUnitTest({ deployment, nftNum }) {
     error: isTestError,
     reset: resetTestContract,
   } = useContractWrite({
-    address: deployment.address,
-    abi: deployment.abi,
+    address: nftData.deployment.address,
+    abi: nftData.deployment.abi,
     functionName: 'testContract',
   });
 
@@ -202,8 +203,8 @@ export default function CafeUnitTest({ deployment, nftNum }) {
     if (hasPin) {
       return (
         <div>
-          <div style={pinTitleStyle}>{nft.title} NFT Badge Earned!</div>
-          <img src={nft.img} style={pinStyle} alt={`${nft.title} NFT Badge`} />
+          <div style={pinTitleStyle}>{nftData.title} NFT Badge Earned!</div>
+          <img src={nftData.img} style={pinStyle} alt={`${nftData.title} NFT Badge`} />
         </div>
       );
     }

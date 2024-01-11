@@ -57,10 +57,9 @@ Add a public function called `resetMyGarage`. It should delete the entry in `gar
 
 ### Submit your Contract and Earn an NFT Badge! (BETA)
 
-import data from "../../assets/deployments/StructsUT.json";
 import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
-<CafeUnitTest deployment={data} nftNum={7}/>
+<CafeUnitTest nftNum={7}/>
   
 <br/>
 <details>

@@ -36,7 +36,6 @@ Create a function called `doNotDisturb` that accepts a `uint` called `_time`, an
 
 ### Submit your Contract and Earn an NFT Badge! (BETA)
 
-import controlStructuresUnitTestData from "../../assets/deployments/ControlStructuresUT.json";
 import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
-<CafeUnitTest deployment={controlStructuresUnitTestData} nftNum={2}/>
+<CafeUnitTest nftNum={2}/>

@@ -106,7 +106,6 @@ Instead of doing that, we'll leave a note here as a reminder that you need to be
 
 :::
 
-import storageUTData from "../../assets/deployments/StorageUT.json";
 import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
-<CafeUnitTest deployment={storageUTData} nftNum={3}/>
+<CafeUnitTest nftNum={3}/>

@@ -95,7 +95,6 @@ The contract specification contains actions that can only be performed once by a
 
 :::
 
-import data from "../../assets/deployments/ERC20UT.json";
 import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
-<CafeUnitTest deployment={data} nftNum={14}/>
+<CafeUnitTest nftNum={14}/>

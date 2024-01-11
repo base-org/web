@@ -76,7 +76,6 @@ contract ErrorTriageExercise {
 
 ## Submit your Contract and Earn an NFT Badge! (BETA)
 
-import data from "../../assets/deployments/ErrorTriageUT.json";
 import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
-<CafeUnitTest deployment={data} nftNum={10}/>
+<CafeUnitTest nftNum={10}/>

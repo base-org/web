@@ -57,7 +57,6 @@ Remember, the compiler will automatically create a getter for `public` `struct`s
 
 ## Submit your Contract and Earn an NFT Badge! (BETA)
 
-import data from "../../assets/deployments/ImportsUT.json";
 import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
-<CafeUnitTest deployment={data} nftNum={19}/>
+<CafeUnitTest nftNum={19}/>

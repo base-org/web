@@ -102,7 +102,6 @@ Submit your address for your copy of the `InheritanceSubmission` contract that c
 
 :::
 
-import data from "../../assets/deployments/InheritanceUnitTest.json";
 import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
-<CafeUnitTest deployment={data} nftNum={8}/>
+<CafeUnitTest nftNum={8}/>
