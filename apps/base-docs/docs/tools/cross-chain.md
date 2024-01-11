@@ -40,6 +40,10 @@ To learn more about Axelar visit our [docs](https://docs.axelar.dev/). For compl
 - [Base Mainnet](https://docs.axelar.dev/resources/mainnet)
 - [Base Testnet](https://docs.axelar.dev/resources/testnet)
 
+#### Axelarscan
+
+To view current transactions and live stats about the Axelar network please visit the [Axelarscan block explorer](https://axelarscan.io/)
+
 ---
 
 ## Chainlink CCIP
@@ -57,10 +61,6 @@ To get started with integrating Chainlink CCIP in your Base project, visit the C
 
 - [Base Mainnet](https://docs.axelar.dev/resources/mainnet)
 - [Base Testnet](https://docs.axelar.dev/resources/testnet)
-
-#### Axelarscan
-
-To view current transactions and live stats about the Axelar network please visit the [Axelarscan block explorer](https://axelarscan.io/)
 
 ---
 
