@@ -1,14 +1,16 @@
+/* eslint-disable */
 import {
   connectorsForWallets,
   getDefaultWallets,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
+import { useEffect, useState } from 'react';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { baseGoerli } from 'wagmi/chains';
+import { baseGoerli, baseSepolia } from 'wagmi/chains';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 
 export const { chains, publicClient } = configureChains(
-  [baseGoerli],
+  [baseGoerli, baseSepolia],
   [
     jsonRpcProvider({
       rpc: (chain) => ({ http: chain.rpcUrls.default.http[0] }),
@@ -31,6 +33,8 @@ const wagmiConfig = createConfig({
 });
 
 export default function Root({ children }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>

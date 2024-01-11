@@ -12,7 +12,7 @@ Once your contract is deployed, you can verify it using a number of popular serv
 
 By the end of this lesson you should be able to:
 
-- Verify a contract on the Base Goerli testnet and interact with it in Etherscan
+- Verify a contract on the Base Sepolia testnet and interact with it in Etherscan
 
 ---
 
@@ -66,7 +66,7 @@ With your contracts verified, you can interact with them using online tools and 
 
 <!-- Add reference style links here.  These do not render on the page. -->
 
-[`goerli.basescan.org`]: https://goerli.basescan.org/
+[`sepolia.basescan.org`]: https://sepolia.basescan.org/
 [coinbase]: https://www.coinbase.com/wallet
 [faucet]: https://docs.base.org/tools/network-faucets
 [set up]: https://www.youtube.com/watch?v=CZDgLG6jpgw
