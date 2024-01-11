@@ -156,7 +156,7 @@ function useNFTData() {
       deployments = baseSepoliaDeployments;
       break;
     default:
-      throw new Error('Invalid chain ID');
+      throw new Error(`Invalid chain ID: ${chain?.id}`);
       break;
   }
 
