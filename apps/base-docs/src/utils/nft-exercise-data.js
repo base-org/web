@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useNetwork } from 'wagmi';
 import arraysGoerli from '../../base-camp/assets/deployments/base-goerli/ArraysUT.json';
 import basicMathGoerli from '../../base-camp/assets/deployments/base-goerli/BasicMathUnitTest.json';
@@ -147,7 +148,7 @@ function useNFTData() {
 
   // Map the correct deployment based on the chain
   let deployments = {};
-  switch (chain.id) {
+  switch (chain?.id) {
     case baseGoerli.id:
       deployments = baseGoerliDeployments;
       break;
