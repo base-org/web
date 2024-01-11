@@ -78,7 +78,7 @@ Add `public` functions called `resetSenders` and `resetTimestamps` that reset th
 
 #### Hey, where'd my NFT go!?
 
-[Testnets](../deployment-to-testnet/test-networks) are not permanent! Base Goerli will soon be sunset, in favor of Base Sepolia.
+[Testnets](../deployment-to-testnet/test-networks) are not permanent! Base Goerli [will soon be sunset](https://base.mirror.xyz/kkz1-KFdUwl0n23PdyBRtnFewvO48_m-fZNzPMJehM4), in favor of Base Sepolia.
 
 We recommend changing the network to **Base Sepolia**, and submitting your contracts there. While it is still supported, you can change the network to Base Goerli to see your existing NFT.
 
