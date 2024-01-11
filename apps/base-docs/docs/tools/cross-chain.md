@@ -57,11 +57,6 @@ To get started with integrating Chainlink CCIP in your Base project, visit the C
 - [Base Mainnet](https://docs.chain.link/ccip/supported-networks/v1_0_0/mainnet#base-mainnet)
 - [Base Goerli](https://docs.chain.link/ccip/supported-networks/v1_2_0/testnet) (Testnet)
 
-#### Supported Networks
-
-- [Base Mainnet](https://docs.axelar.dev/resources/mainnet)
-- [Base Testnet](https://docs.axelar.dev/resources/testnet)
-
 ---
 
 ## LayerZero
