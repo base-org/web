@@ -1,0 +1,99 @@
+{
+  "address": "0x5680Da742C618505379142E0ac73E67D8DDEd6CF",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_a",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_b",
+          "type": "uint256"
+        }
+      ],
+      "name": "adder",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_a",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_b",
+          "type": "uint256"
+        }
+      ],
+      "name": "subtractor",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xe9dc7de39c409d45196c98e2b8f7a7a8a41a389d656ef2b2639eb1d0e40e3ce6",
+  "receipt": {
+    "to": null,
+    "from": "0x0919C594E549545374772246B0D433a4988A0eC9",
+    "contractAddress": "0x5680Da742C618505379142E0ac73E67D8DDEd6CF",
+    "transactionIndex": 1,
+    "gasUsed": "132753",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x6f3613804dbf5f7c5aac6a71135ab7c3ec9bc21173ed717e74e45b9d31ee484a",
+    "transactionHash": "0xe9dc7de39c409d45196c98e2b8f7a7a8a41a389d656ef2b2639eb1d0e40e3ce6",
+    "logs": [],
+    "blockNumber": 4564314,
+    "cumulativeGasUsed": "179654",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "840ae9efa03c3cca22907454cb805100",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_a\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_b\",\"type\":\"uint256\"}],\"name\":\"adder\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_a\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_b\",\"type\":\"uint256\"}],\"name\":\"subtractor\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Exemplars/SimpleMath.sol\":\"SimpleMath\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"contracts/Exemplars/SimpleMath.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\npragma solidity ^0.8.23;\\n\\ncontract SimpleMath {\\n    \\n    uint constant MAX_INT = 2**256-1;\\n\\n    function adder(uint _a, uint _b) public pure returns (uint, bool) {\\n        \\n        uint result;\\n\\n        unchecked {\\n            result = _a + _b;\\n        }\\n\\n        // Check for overflow\\n        if (result > _a && result > _b) {\\n            return (result, false);\\n        } else {\\n            return (0, true);\\n        }\\n    }\\n\\n    function subtractor(uint _a, uint _b) public pure returns (uint, bool){\\n        if (_a >= _b) {\\n            return (_a - _b, false);\\n        } else {\\n            return (0, true);\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x907b888927193e3a27b61e0dcfa492a53645fd05d4447da5c291a5fcb630fe27\",\"license\":\"UNLICENSED\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610172806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c806306b034e91461003b5780635270312a14610067575b600080fd5b61004e6100493660046100da565b61007a565b6040805192835290151560208301520160405180910390f35b61004e6100753660046100da565b6100af565b600080838301848111801561008e57508381115b1561009e579150600090506100a8565b6000600192509250505b9250929050565b6000808284106100ce576100c383856100fc565b6000915091506100a8565b506000905060016100a8565b600080604083850312156100ed57600080fd5b50508035926020909101359150565b81810381811115610136577f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b9291505056fea2646970667358221220d2198b676c769fa4b449c33d139d8a9429e0beab47b978881b359aebaa874a3e64736f6c63430008170033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c806306b034e91461003b5780635270312a14610067575b600080fd5b61004e6100493660046100da565b61007a565b6040805192835290151560208301520160405180910390f35b61004e6100753660046100da565b6100af565b600080838301848111801561008e57508381115b1561009e579150600090506100a8565b6000600192509250505b9250929050565b6000808284106100ce576100c383856100fc565b6000915091506100a8565b506000905060016100a8565b600080604083850312156100ed57600080fd5b50508035926020909101359150565b81810381811115610136577f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b9291505056fea2646970667358221220d2198b676c769fa4b449c33d139d8a9429e0beab47b978881b359aebaa874a3e64736f6c63430008170033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

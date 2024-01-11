@@ -1,0 +1,202 @@
+{
+  "address": "0xe673b21039b1e098d68782AB6801f1836E2e0E9b",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_annualSalary",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_idNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_managerId",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "addReport",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "annualSalary",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAnnualCost",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "idNumber",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "managerId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "reportIds",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "resetReports",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xcaab088453130837af1a511d89be7a7729adc834aff466f55a725e1cf78f16f5",
+  "receipt": {
+    "to": null,
+    "from": "0x0919C594E549545374772246B0D433a4988A0eC9",
+    "contractAddress": "0xe673b21039b1e098d68782AB6801f1836E2e0E9b",
+    "transactionIndex": 4,
+    "gasUsed": "221594",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x5019f0e77175559e6e1348e2dbd0ed48cf40410dbbf054ea6e16a5b7cbb87d12",
+    "transactionHash": "0xcaab088453130837af1a511d89be7a7729adc834aff466f55a725e1cf78f16f5",
+    "logs": [],
+    "blockNumber": 4572466,
+    "cumulativeGasUsed": "399574",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    200000,
+    54321,
+    11111
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "840ae9efa03c3cca22907454cb805100",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_annualSalary\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_idNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_managerId\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_id\",\"type\":\"uint256\"}],\"name\":\"addReport\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"annualSalary\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAnnualCost\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"idNumber\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"managerId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"reportIds\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"resetReports\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Exemplars/InheritanceExercise.sol\":\"EngineeringManager\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"contracts/Exemplars/InheritanceExercise.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.23;\\n\\nabstract contract Employee {\\n    uint public idNumber;\\n    uint public managerId;\\n\\n    constructor(uint _idNumber, uint _managerId) {\\n        idNumber = _idNumber;\\n        managerId = _managerId;\\n    }\\n\\n    function getAnnualCost() public view virtual returns (uint);\\n}\\n\\ncontract Salaried is Employee {\\n    uint public annualSalary;\\n\\n    constructor(\\n        uint _annualSalary,\\n        uint _idNumber,\\n        uint _managerId\\n    ) Employee(_idNumber, _managerId) {\\n        annualSalary = _annualSalary;\\n    }\\n\\n    function getAnnualCost() public view override returns (uint) {\\n        return annualSalary;\\n    }\\n}\\n\\ncontract Hourly is Employee {\\n    uint public hourlyRate;\\n\\n    constructor(\\n        uint _hourlyRate,\\n        uint _idNumber,\\n        uint _managerId\\n    ) Employee(_idNumber, _managerId) {\\n        hourlyRate = _hourlyRate;\\n    }\\n\\n    function getAnnualCost() public view override returns (uint) {\\n        return hourlyRate * 2080;\\n    }\\n}\\n\\ncontract Manager {\\n    uint[] public reportIds;\\n\\n    function addReport(uint _id) public {\\n        reportIds.push(_id);\\n    }\\n\\n    function resetReports() public {\\n        delete reportIds;\\n    }\\n}\\n\\ncontract SalesPerson is Hourly {\\n    constructor(\\n        uint _hourlyRate,\\n        uint _idNumber,\\n        uint _managerId\\n    ) Hourly(_hourlyRate, _idNumber, _managerId) {}\\n}\\n\\ncontract EngineeringManager is Salaried, Manager {\\n    constructor(\\n        uint _annualSalary,\\n        uint _idNumber,\\n        uint _managerId\\n    ) Salaried(_annualSalary, _idNumber, _managerId) {}\\n}\\n\\ncontract InheritanceSubmission {\\n    address public salesPerson;\\n    address public engineeringManager;\\n\\n    constructor(address _salesPerson, address _engineeringManager) {\\n        salesPerson = _salesPerson;\\n        engineeringManager = _engineeringManager;\\n    }\\n}\\n\",\"keccak256\":\"0x4ba6a6e95c961e4f85408581e369cc39753e9c59a558f7fc8f1197b684e39a3b\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405161024c38038061024c83398101604081905261002f91610040565b60009190915560015560025561006e565b60008060006060848603121561005557600080fd5b8351925060208401519150604084015190509250925092565b6101cf8061007d6000396000f3fe608060405234801561001057600080fd5b506004361061007d5760003560e01c806386e73dc31161005b57806386e73dc3146100ae57806387cc66de146100f3578063a596d3c814610106578063f5895a0a1461010e57600080fd5b80633f83ea3b1461008257806350dca6ab1461009d5780635cdee0c0146100a6575b600080fd5b61008b60005481565b60405190815260200160405180910390f35b61008b60025481565b60025461008b565b6100f16100bc366004610180565b600380546001810182556000919091527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0155565b005b61008b610101366004610180565b610117565b6100f1610138565b61008b60015481565b6003818154811061012757600080fd5b600091825260209091200154905081565b61014460036000610146565b565b50805460008255906000526020600020908101906101649190610167565b50565b5b8082111561017c5760008155600101610168565b5090565b60006020828403121561019257600080fd5b503591905056fea264697066735822122073a92b50c474b2cf7ccd4b2474a9274c3629c1061a451e3c92ccaa6b14774bff64736f6c63430008170033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061007d5760003560e01c806386e73dc31161005b57806386e73dc3146100ae57806387cc66de146100f3578063a596d3c814610106578063f5895a0a1461010e57600080fd5b80633f83ea3b1461008257806350dca6ab1461009d5780635cdee0c0146100a6575b600080fd5b61008b60005481565b60405190815260200160405180910390f35b61008b60025481565b60025461008b565b6100f16100bc366004610180565b600380546001810182556000919091527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0155565b005b61008b610101366004610180565b610117565b6100f1610138565b61008b60015481565b6003818154811061012757600080fd5b600091825260209091200154905081565b61014460036000610146565b565b50805460008255906000526020600020908101906101649190610167565b50565b5b8082111561017c5760008155600101610168565b5090565b60006020828403121561019257600080fd5b503591905056fea264697066735822122073a92b50c474b2cf7ccd4b2474a9274c3629c1061a451e3c92ccaa6b14774bff64736f6c63430008170033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 12457,
+        "contract": "contracts/Exemplars/InheritanceExercise.sol:EngineeringManager",
+        "label": "idNumber",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 12459,
+        "contract": "contracts/Exemplars/InheritanceExercise.sol:EngineeringManager",
+        "label": "managerId",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 12485,
+        "contract": "contracts/Exemplars/InheritanceExercise.sol:EngineeringManager",
+        "label": "annualSalary",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 12550,
+        "contract": "contracts/Exemplars/InheritanceExercise.sol:EngineeringManager",
+        "label": "reportIds",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_array(t_uint256)dyn_storage"
+      }
+    ],
+    "types": {
+      "t_array(t_uint256)dyn_storage": {
+        "base": "t_uint256",
+        "encoding": "dynamic_array",
+        "label": "uint256[]",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

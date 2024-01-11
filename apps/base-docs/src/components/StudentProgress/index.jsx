@@ -16,18 +16,18 @@ export default function StudentProgress() {
 
   const { chain } = useNetwork();
 
-  // mapping addresses to 'true' or 'false' to keep track of `earnedNFTCount
+  // mapping addresses to 'true' or 'false' to keep track of `earnedNFTCount`
   const earnedNFTMap = Object.keys(nftData).reduce((acc, prop) => {
     const nft = nftData[prop];
 
-    acc[nft.address] = false;
+    acc[nft.deployment.address] = false;
 
     return acc;
   }, {});
 
   // called by NFTCard
   const updateNFTCount = (hasNFT, nft) => {
-    earnedNFTMap[nft.address] = hasNFT;
+    earnedNFTMap[nft.deployment.address] = hasNFT;
 
     setNFTCount(
       Object.keys(earnedNFTMap).reduce((acc, prop) => {
@@ -48,7 +48,7 @@ export default function StudentProgress() {
 
       return (
         <NFTCard
-          key={nft.address}
+          key={nft.deployment.address}
           currentWalletAddress={address}
           nftData={nft}
           updateNFTCount={updateNFTCount}

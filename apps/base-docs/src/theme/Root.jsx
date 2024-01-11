@@ -4,11 +4,11 @@ import {
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { baseGoerli } from 'wagmi/chains';
+import { baseGoerli, baseSepolia } from 'wagmi/chains';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 
 export const { chains, publicClient } = configureChains(
-  [baseGoerli],
+  [baseGoerli, baseSepolia],
   [
     jsonRpcProvider({
       rpc: (chain) => ({ http: chain.rpcUrls.default.http[0] }),

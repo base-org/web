@@ -70,7 +70,8 @@ export default function CafeUnitTest({ nftNum }) {
   const [contractFormEntry, setContractFormEntry] = useState('');
   const [submittedContract, setSubmittedContract] = useState('');
   const [hasPin, setHasPin] = useState(false);
-  const { nftData } = useNFTData();
+  const nftData = useNFTData();
+
   const nft = nftData[nftNum];
 
   const { data: hasNFT } = useContractRead({
@@ -168,7 +169,7 @@ export default function CafeUnitTest({ nftNum }) {
     if (testReceiptData) {
       for (const log of testReceiptData.logs) {
         try {
-          const iface = new ethers.utils.Interface(deployment.abi);
+          const iface = new ethers.utils.Interface(nft.deployment.abi);
           const parsed = iface.parseLog(log);
           processEventLog(parsed);
         } catch (e) {
@@ -176,7 +177,7 @@ export default function CafeUnitTest({ nftNum }) {
         }
       }
     }
-  }, [testReceiptData, contractFormEntry, deployment.abi, resetTestContract]);
+  }, [testReceiptData, contractFormEntry, nft.deployment.abi, resetTestContract]);
 
   async function handleContractSubmit(event) {
     event.preventDefault();

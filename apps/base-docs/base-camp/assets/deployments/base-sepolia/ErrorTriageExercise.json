@@ -1,0 +1,173 @@
+{
+  "address": "0x734b302F1D92EcF880A2E4D1567c62a4DF2cc145",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_num",
+          "type": "uint256"
+        }
+      ],
+      "name": "addToArr",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_base",
+          "type": "uint256"
+        },
+        {
+          "internalType": "int256",
+          "name": "_modifier",
+          "type": "int256"
+        }
+      ],
+      "name": "applyModifier",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_a",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_b",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_c",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_d",
+          "type": "uint256"
+        }
+      ],
+      "name": "diffWithNeighbor",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getArr",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "popWithReturn",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "resetArr",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xb3b51e191908fb33d7d7c09f9eaf71b7287cd9a2eefd38f45507b968490d78f9",
+  "receipt": {
+    "to": null,
+    "from": "0x0919C594E549545374772246B0D433a4988A0eC9",
+    "contractAddress": "0x734b302F1D92EcF880A2E4D1567c62a4DF2cc145",
+    "transactionIndex": 1,
+    "gasUsed": "364629",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xa2e132bc5f609e9aae1d5083749efcc1aef90ccfd45619c476b0194791ccee71",
+    "transactionHash": "0xb3b51e191908fb33d7d7c09f9eaf71b7287cd9a2eefd38f45507b968490d78f9",
+    "logs": [],
+    "blockNumber": 4578098,
+    "cumulativeGasUsed": "411530",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "840ae9efa03c3cca22907454cb805100",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_num\",\"type\":\"uint256\"}],\"name\":\"addToArr\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_base\",\"type\":\"uint256\"},{\"internalType\":\"int256\",\"name\":\"_modifier\",\"type\":\"int256\"}],\"name\":\"applyModifier\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_a\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_b\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_c\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_d\",\"type\":\"uint256\"}],\"name\":\"diffWithNeighbor\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getArr\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"popWithReturn\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"resetArr\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"applyModifier(uint256,int256)\":{\"notice\":\"Changes the _base by the value of _modifier.  Base is always > 1000.  Modifiers can be between positive and negative 100;\"},\"diffWithNeighbor(uint256,uint256,uint256,uint256)\":{\"notice\":\"Finds the difference between each uint with it's neighbor (a to b, b to c, etc.) and returns a uint array with the absolute integer difference of each pairing.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Exemplars/ErrorTriageExercise.sol\":\"ErrorTriageExercise\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"contracts/Exemplars/ErrorTriageExercise.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.23;\\n\\ncontract ErrorTriageExercise {\\n    /**\\n     * Finds the difference between each uint with it's neighbor (a to b, b to c, etc.)\\n     * and returns a uint array with the absolute integer difference of each pairing.\\n     */\\n    function diffWithNeighbor(\\n        uint _a,\\n        uint _b,\\n        uint _c,\\n        uint _d\\n    ) public pure returns (uint[] memory) {\\n        int[] memory intResults = new int[](3);\\n        uint[] memory results = new uint[](3);\\n\\n        intResults[0] = int(_a) - int(_b);\\n        intResults[1] = int(_b) - int(_c);\\n        intResults[2] = int(_c) - int(_d);\\n\\n        for (uint i = 0; i < 3; i++) {\\n            intResults[i] = intResults[i] < 0\\n                ? intResults[i] * -1\\n                : intResults[i];\\n            results[i] = uint(intResults[i]);\\n        }\\n\\n        return results;\\n    }\\n\\n    /**\\n     * Changes the _base by the value of _modifier.  Base is always > 1000.  Modifiers can be\\n     * between positive and negative 100;\\n     */\\n    function applyModifier(\\n        uint _base,\\n        int _modifier\\n    ) public pure returns (uint) {\\n        return uint(int(_base) + _modifier);\\n    }\\n\\n    /**\\n     * Pop the last element from the supplied array, and return the modified array and the popped\\n     * value (unlike the built-in function)\\n     */\\n    uint[] arr;\\n\\n    function popWithReturn() public returns (uint) {\\n        uint index = arr.length - 1;\\n        uint value = arr[index];\\n        arr.pop();\\n        return value;\\n    }\\n\\n    function addToArr(uint _num) public {\\n        arr.push(_num);\\n    }\\n\\n    function getArr() public view returns (uint[] memory) {\\n        return arr;\\n    }\\n\\n    function resetArr() public {\\n        delete arr;\\n    }\\n}\\n\",\"keccak256\":\"0xf49571bdc81a84feac70f813ce8c1476e9b73c7e521906843a74ed3295d736f3\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506105a4806100206000396000f3fe608060405234801561001057600080fd5b50600436106100725760003560e01c8063e1819ff911610050578063e1819ff9146100bc578063f74e51ea146100fc578063fb8cbced1461010f57600080fd5b80631abe2ac214610077578063294323141461009257806364529db5146100b2575b600080fd5b61007f610117565b6040519081526020015b60405180910390f35b6100a56100a03660046103cd565b61017b565b60405161008991906103ff565b6100ba610319565b005b6100ba6100ca366004610443565b600080546001810182559080527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5630155565b61007f61010a36600461045c565b610326565b6100a561033b565b60008054819061012990600190610494565b9050600080828154811061013f5761013f6104a7565b90600052602060002001549050600080548061015d5761015d6104bd565b60019003818190600052602060002001600090559055809250505090565b60408051600380825260808201909252606091600091906020820184803683375050604080516003808252608082019092529293506000929150602082016060803683370190505090506101cf86886104d3565b826000815181106101e2576101e26104a7565b60209081029190910101526101f785876104d3565b8260018151811061020a5761020a6104a7565b602090810291909101015261021f84866104d3565b82600281518110610232576102326104a7565b60200260200101818152505060005b600381101561030e57600083828151811061025e5761025e6104a7565b60200260200101511261028a5782818151811061027d5761027d6104a7565b60200260200101516102b1565b82818151811061029c5761029c6104a7565b60200260200101516000196102b191906104fa565b8382815181106102c3576102c36104a7565b6020026020010181815250508281815181106102e1576102e16104a7565b60200260200101518282815181106102fb576102fb6104a7565b6020908102919091010152600101610241565b509695505050505050565b610324600080610393565b565b60006103328284610546565b90505b92915050565b6060600080548060200260200160405190810160405280929190818152602001828054801561038957602002820191906000526020600020905b815481526020019060010190808311610375575b5050505050905090565b50805460008255906000526020600020908101906103b191906103b4565b50565b5b808211156103c957600081556001016103b5565b5090565b600080600080608085870312156103e357600080fd5b5050823594602084013594506040840135936060013592509050565b6020808252825182820181905260009190848201906040850190845b818110156104375783518352928401929184019160010161041b565b50909695505050505050565b60006020828403121561045557600080fd5b5035919050565b6000806040838503121561046f57600080fd5b50508035926020909101359150565b634e487b7160e01b600052601160045260246000fd5b818103818111156103355761033561047e565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052603160045260246000fd5b81810360008312801583831316838312821617156104f3576104f361047e565b5092915050565b808202600082127f8000000000000000000000000000000000000000000000000000000000000000841416156105325761053261047e565b81810583148215176103355761033561047e565b80820182811260008312801582168215821617156105665761056661047e565b50509291505056fea2646970667358221220f988770f9c8a57ab565137c404d4c2f04305aeadfdd3f31ed3e1d1022c1d17ea64736f6c63430008170033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100725760003560e01c8063e1819ff911610050578063e1819ff9146100bc578063f74e51ea146100fc578063fb8cbced1461010f57600080fd5b80631abe2ac214610077578063294323141461009257806364529db5146100b2575b600080fd5b61007f610117565b6040519081526020015b60405180910390f35b6100a56100a03660046103cd565b61017b565b60405161008991906103ff565b6100ba610319565b005b6100ba6100ca366004610443565b600080546001810182559080527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5630155565b61007f61010a36600461045c565b610326565b6100a561033b565b60008054819061012990600190610494565b9050600080828154811061013f5761013f6104a7565b90600052602060002001549050600080548061015d5761015d6104bd565b60019003818190600052602060002001600090559055809250505090565b60408051600380825260808201909252606091600091906020820184803683375050604080516003808252608082019092529293506000929150602082016060803683370190505090506101cf86886104d3565b826000815181106101e2576101e26104a7565b60209081029190910101526101f785876104d3565b8260018151811061020a5761020a6104a7565b602090810291909101015261021f84866104d3565b82600281518110610232576102326104a7565b60200260200101818152505060005b600381101561030e57600083828151811061025e5761025e6104a7565b60200260200101511261028a5782818151811061027d5761027d6104a7565b60200260200101516102b1565b82818151811061029c5761029c6104a7565b60200260200101516000196102b191906104fa565b8382815181106102c3576102c36104a7565b6020026020010181815250508281815181106102e1576102e16104a7565b60200260200101518282815181106102fb576102fb6104a7565b6020908102919091010152600101610241565b509695505050505050565b610324600080610393565b565b60006103328284610546565b90505b92915050565b6060600080548060200260200160405190810160405280929190818152602001828054801561038957602002820191906000526020600020905b815481526020019060010190808311610375575b5050505050905090565b50805460008255906000526020600020908101906103b191906103b4565b50565b5b808211156103c957600081556001016103b5565b5090565b600080600080608085870312156103e357600080fd5b5050823594602084013594506040840135936060013592509050565b6020808252825182820181905260009190848201906040850190845b818110156104375783518352928401929184019160010161041b565b50909695505050505050565b60006020828403121561045557600080fd5b5035919050565b6000806040838503121561046f57600080fd5b50508035926020909101359150565b634e487b7160e01b600052601160045260246000fd5b818103818111156103355761033561047e565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052603160045260246000fd5b81810360008312801583831316838312821617156104f3576104f361047e565b5092915050565b808202600082127f8000000000000000000000000000000000000000000000000000000000000000841416156105325761053261047e565b81810583148215176103355761033561047e565b80820182811260008312801582168215821617156105665761056661047e565b50509291505056fea2646970667358221220f988770f9c8a57ab565137c404d4c2f04305aeadfdd3f31ed3e1d1022c1d17ea64736f6c63430008170033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "applyModifier(uint256,int256)": {
+        "notice": "Changes the _base by the value of _modifier.  Base is always > 1000.  Modifiers can be between positive and negative 100;"
+      },
+      "diffWithNeighbor(uint256,uint256,uint256,uint256)": {
+        "notice": "Finds the difference between each uint with it's neighbor (a to b, b to c, etc.) and returns a uint array with the absolute integer difference of each pairing."
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 11699,
+        "contract": "contracts/Exemplars/ErrorTriageExercise.sol:ErrorTriageExercise",
+        "label": "arr",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_array(t_uint256)dyn_storage"
+      }
+    ],
+    "types": {
+      "t_array(t_uint256)dyn_storage": {
+        "base": "t_uint256",
+        "encoding": "dynamic_array",
+        "label": "uint256[]",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
