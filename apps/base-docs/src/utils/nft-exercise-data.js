@@ -148,7 +148,7 @@ function useNFTData() {
 
   // Map the correct deployment based on the chain
   let deployments = {};
-  switch (chain?.id) {
+  switch (chain?.id || 84532) {
     case baseGoerli.id:
       deployments = baseGoerliDeployments;
       break;
