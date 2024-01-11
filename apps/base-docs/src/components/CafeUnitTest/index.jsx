@@ -2,7 +2,13 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { ethers } from 'ethers';
-import { useAccount, useContractRead, useContractWrite, useWaitForTransaction } from 'wagmi';
+import {
+  useAccount,
+  useContractRead,
+  useContractWrite,
+  useNetwork,
+  useWaitForTransaction,
+} from 'wagmi';
 
 import useNFTData from '../../utils/nft-exercise-data';
 
@@ -71,6 +77,7 @@ export default function CafeUnitTest({ nftNum }) {
   const [submittedContract, setSubmittedContract] = useState('');
   const [hasPin, setHasPin] = useState(false);
   const nftData = useNFTData();
+  const { chain } = useNetwork();
 
   const nft = nftData[nftNum];
 
@@ -205,7 +212,9 @@ export default function CafeUnitTest({ nftNum }) {
     if (hasPin) {
       return (
         <div>
-          <div style={pinTitleStyle}>{nft.title} NFT Badge Earned!</div>
+          <div style={pinTitleStyle}>
+            {nft.title} NFT Badge Earned on {chain.name}!
+          </div>
           <img src={nft.img} style={pinStyle} alt={`${nft.title} NFT Badge`} />
         </div>
       );

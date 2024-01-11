@@ -36,6 +36,20 @@ Create a function called `doNotDisturb` that accepts a `uint` called `_time`, an
 
 ### Submit your Contract and Earn an NFT Badge! (BETA)
 
+:::info
+
+#### Hey, where'd my NFT go!?
+
+[Testnets](../deployment-to-testnet/test-networks) are not permanent! Base Goerli will soon be sunset, in favor of Base Sepolia.
+
+We recommend changing the network to **Base Sepolia**, and submitting your contracts there. While it is still supported, you can change the network to Base Goerli to see your existing NFT.
+
+However, as these are separate networks with separate data, your NFTs **will not** transfer over.
+
+**Don't worry!** We've captured the addresses of all NFT owners on Base Goerli and will include them when we release the mechanism to transfer these NFTs to mainnet later this year! You can also redeploy on Sepolia and resubmit if you'd like!
+
+:::
+
 import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
 <CafeUnitTest nftNum={2}/>
