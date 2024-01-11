@@ -29,7 +29,7 @@ keywords:
 
 [thirdweb](https://thirdweb.com) is a development framework that allows you to build web3 functionality into your applications.
 
-In this guide, we'll give you an overview of using the [thirdweb CLI](https://portal.thirdweb.com/cli) to deploy a contract to the Base Goerli test network.
+In this guide, we'll give you an overview of using the [thirdweb CLI](https://portal.thirdweb.com/cli) to deploy a contract to the Base Sepolia test network.
 
 ---
 
@@ -130,11 +130,11 @@ From the dashboard, you will need to first enter the values for our contract's c
 - `_royaltyRecipient`: The wallet address that will receive the royalties from secondary sales
 - `_royaltyBps`: The basis points (bps) that will be given to the royalty recipient for each secondary sale, e.g. 500 = 5%
 
-Finally, select the Base Goerli test network as the [network](https://blog.thirdweb.com/guides/which-network-should-you-use/) you want to deploy to, and click **Deploy Now**.
+Finally, select the Base Sepolia test network as the [network](https://blog.thirdweb.com/guides/which-network-should-you-use/) you want to deploy to, and click **Deploy Now**.
 
 :::info
 
-For production / mainnet deployments select `Base` (mainnet) as the network rather than `Base Goerli`.
+For production / mainnet deployments select `Base` (mainnet) as the network rather than `Base Sepolia`.
 
 :::
 
@@ -168,18 +168,18 @@ Inside the [`index.tsx`](https://github.com/thirdweb-example/cra-typescript-star
 
 This wrapper allows us to use all of the [React SDK](https://portal.thirdweb.com/react)'s hooks and [UI Components](https://portal.thirdweb.com/react/react.web3button) throughout the application, as well as configure an `activeChain`; which declares which chain our smart contracts are deployed to.
 
-Since we deployed our smart contract to the Base network, we'll set the `activeChain` to `BaseGoerli`:
+Since we deployed our smart contract to the Base network, we'll set the `activeChain` to `BaseSepoliaTestnet`:
 
 ```javascript
 ...
-import { BaseGoerli } from "@thirdweb-dev/chains";
+import { BaseSepoliaTestnet } from "@thirdweb-dev/chains";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 
 const container = document.getElementById("root");
 const root = createRoot(container!);
 root.render(
  <React.StrictMode>
-   <ThirdwebProvider activeChain={BaseGoerli}>
+   <ThirdwebProvider activeChain={BaseSepoliaTestnet}>
      <App />
    </ThirdwebProvider>
  </React.StrictMode>
