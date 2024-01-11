@@ -4,7 +4,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { ethers } from 'ethers';
 import { useAccount, useContractRead, useContractWrite, useWaitForTransaction } from 'wagmi';
 
-import NFTExerciseData from '../../utils/nft-exercise-data';
+import useNFTData from '../../utils/nft-exercise-data';
 
 const pinStyle = {
   width: 300,
@@ -70,11 +70,12 @@ export default function CafeUnitTest({ nftNum }) {
   const [contractFormEntry, setContractFormEntry] = useState('');
   const [submittedContract, setSubmittedContract] = useState('');
   const [hasPin, setHasPin] = useState(false);
-  const nftData = NFTExerciseData[nftNum];
+  const { nftData } = useNFTData();
+  const nft = nftData[nftNum];
 
   const { data: hasNFT } = useContractRead({
-    address: nftData.deployment.address,
-    abi: nftData.deployment.abi,
+    address: nft.deployment.address,
+    abi: nft.deployment.abi,
     functionName: 'owners',
     args: [useAccount()?.address],
     watch: true,
@@ -92,8 +93,8 @@ export default function CafeUnitTest({ nftNum }) {
     error: isTestError,
     reset: resetTestContract,
   } = useContractWrite({
-    address: nftData.deployment.address,
-    abi: nftData.deployment.abi,
+    address: nft.deployment.address,
+    abi: nft.deployment.abi,
     functionName: 'testContract',
   });
 
@@ -203,8 +204,8 @@ export default function CafeUnitTest({ nftNum }) {
     if (hasPin) {
       return (
         <div>
-          <div style={pinTitleStyle}>{nftData.title} NFT Badge Earned!</div>
-          <img src={nftData.img} style={pinStyle} alt={`${nftData.title} NFT Badge`} />
+          <div style={pinTitleStyle}>{nft.title} NFT Badge Earned!</div>
+          <img src={nft.img} style={pinStyle} alt={`${nft.title} NFT Badge`} />
         </div>
       );
     }
