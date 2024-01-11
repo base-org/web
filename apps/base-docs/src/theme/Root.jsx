@@ -32,6 +32,8 @@ const wagmiConfig = createConfig({
 });
 
 export default function Root({ children }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
