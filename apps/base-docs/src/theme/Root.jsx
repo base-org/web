@@ -4,6 +4,7 @@ import {
   getDefaultWallets,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
+import { useEffect, useState } from 'react';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { baseGoerli, baseSepolia } from 'wagmi/chains';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
