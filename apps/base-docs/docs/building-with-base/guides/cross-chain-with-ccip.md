@@ -84,7 +84,7 @@ Chainlink CCIP (Cross-chain Interoperability Protocol) provides a solution for c
 | Token transfers              | Send tokens from one chain to another.                                                       | Smart contracts or EOAs |
 | Programmable token transfers | Send tokens and arbitrary (encoded) data from one chain to another, in a single transaction. | Smart contracts only    |
 
-:::info
+:::danger
 
 Externally owned accounts (EOAs) on EVM blockchains are unable to receive message data, because of this, only smart contracts are supported as receivers when sending arbitrary messages or programmable token transfers. Any attempt to send a programmable token transfer (data and tokens) to an EOA, will result in only the tokens being received.
 
@@ -96,7 +96,7 @@ For more information on Chainlink CCIP, visit the [Chainlink documentation](http
 
 ## Creating a project
 
-Before you begin, you need to set up your smart contract development environment by creating a Foundry project.
+Before you begin, you need to set up your smart contract development environment. You can setup a development environment using tools like [Hardhat](/tools/hardhat) or [Foundry](/tools/foundry). For this guide you will use Foundry.
 
 To create a new Foundry project, first create a new directory:
 
