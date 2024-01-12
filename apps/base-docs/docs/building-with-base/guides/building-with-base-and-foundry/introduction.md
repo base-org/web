@@ -97,14 +97,6 @@ In order to work with Base, you need to configure a couple of settings in the co
 
 The first thing is the Solidity version.
 
-:::caution
-
-As of December 2023, Base does not support the new PUSH0 opcode introduced in Shanghai, which is the default target for the Solidity compiler if you use version 0.8.20 or later. See [Differences between Ethereum and Base] to learn more.
-
-We recommend using 0.8.19 or lower until Base is upgraded with `PUSH0`. Keep in mind that the update has been deployed to Base Sepolia.
-
-:::
-
 You need to configure your config file as follows:
 
 ```bash
