@@ -76,7 +76,11 @@ If you are interested in building on Mainnet, you will need to [apply for Chainl
 
 ## What is Chainlink CCIP?
 
-Chainlink CCIP (Cross-chain Interoperability Protocol) provides a solution for cross-chain messaging, allowing developers to perform the following cross-chain capabilities:
+Chainlink CCIP (Cross-chain Interoperability Protocol) provides a solution for sending message data and transferring tokens across different chains.
+
+The primary way for users to interface with Chainlink CCIP is through smart contracts known as [Routers](https://docs.chain.link/ccip/architecture#router). A Router contract is responsible for initiating cross-chain interactions.
+
+Users can interact with [Routers](https://docs.chain.link/ccip/architecture#router) to perform the following cross-chain capabilities:
 
 | Capability                   | Description                                                                                  | Supported receivers     |
 | :--------------------------- | :------------------------------------------------------------------------------------------- | :---------------------- |
@@ -90,7 +94,49 @@ Externally owned accounts (EOAs) on EVM blockchains are unable to receive messag
 
 :::
 
-For more information on Chainlink CCIP, visit the [Chainlink documentation](https://docs.chain.link/ccip#what-is-chainlink-ccip).
+### High-level concepts
+
+Although [Routers](https://docs.chain.link/ccip/architecture#router) are the primary interface users will interact with when using CCIP, this section will cover what happens after instructions for a cross-chain interaction are sent to a Router.
+
+#### OnRamps
+
+Once a Router receives an instruction for a cross-chain interaction, it passes it on to another contract known as an [OnRamp](https://docs.chain.link/ccip/architecture#onramp). OnRamps are responsible for a variety of tasks, including: verifying message size and gas limits, preserving the sequencing of messages, managing any fee payments, and interacting with the [token pool](https://docs.chain.link/ccip/architecture#token-pools) to `lock` or `burn` tokens if a token transfer is being made.
+
+:::info
+
+For a full list of OnRamps responsibilities, visit the [Chainlink documentation](https://docs.chain.link/ccip/architecture#onramp).
+
+:::
+
+#### OffRamps
+
+The destination chain will have a contract known as an [OffRamp](https://docs.chain.link/ccip/architecture#offramp). OffRamps are responsible for a variety of tasks, including: ensuring the authenticity of a message, making sure each transaction is only executed once, and transmitting received messages to the Router contract on the destination chain.
+
+:::info
+
+For a full list of OffRamps responsibilities, visit the [Chainlink documentation](https://docs.chain.link/ccip/architecture#offramp).
+
+:::
+
+#### Token pools
+
+A [token pool](https://docs.chain.link/ccip/architecture#token-pools) is an abstraction layer over ERC-20 tokens that facilitates OnRamp and OffRamp token-related operations. They are configured to use either a `Lock and Unlock` or `Burn and Mint` mechanism, depending on the type of token.
+
+For example, because blockchain-native gas tokens (i.e. ETH, MATIC, AVAX) can only be minted on their native chains, a `Lock and Mint` mechanism must be used. This mechanism locks the token at the source chain, and mints a synthetic asset on the destination chain.
+
+In contrast, tokens that can be minted on multiple chains (i.e. USDC, USDT, FRAX, etc.), token pools can use a `Burn and Mint` mechanism, where the token is burnt on the source chain and minted on the destination chain.
+
+#### Risk Management Network
+
+Between instructions for a cross-chain interaction making its way from an OnRamp on the source chain to an OffRamp on the destination chain, it will pass through the [Risk Management Network](https://docs.chain.link/ccip/concepts#risk-management-network).
+
+The Risk Management Network is a secondary validation service built using a variety of offchain and onchain components, with the responsibilities of monitoring all chains against abnormal activities.
+
+:::info
+
+A deep-dive on the technical details of each component of the Risk Management Network is too much to cover in this guide, but if interested you can learn more by visiting the [Chainlink documentation](https://docs.chain.link/ccip/architecture#risk-management-network-contract).
+
+:::
 
 ---
 
