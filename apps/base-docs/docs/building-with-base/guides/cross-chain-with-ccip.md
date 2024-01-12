@@ -102,21 +102,9 @@ Although [Routers](https://docs.chain.link/ccip/architecture#router) are the pri
 
 Once a Router receives an instruction for a cross-chain interaction, it passes it on to another contract known as an [OnRamp](https://docs.chain.link/ccip/architecture#onramp). OnRamps are responsible for a variety of tasks, including: verifying message size and gas limits, preserving the sequencing of messages, managing any fee payments, and interacting with the [token pool](https://docs.chain.link/ccip/architecture#token-pools) to `lock` or `burn` tokens if a token transfer is being made.
 
-:::info
-
-For a full list of OnRamps responsibilities, visit the [Chainlink documentation](https://docs.chain.link/ccip/architecture#onramp).
-
-:::
-
 #### OffRamps
 
 The destination chain will have a contract known as an [OffRamp](https://docs.chain.link/ccip/architecture#offramp). OffRamps are responsible for a variety of tasks, including: ensuring the authenticity of a message, making sure each transaction is only executed once, and transmitting received messages to the Router contract on the destination chain.
-
-:::info
-
-For a full list of OffRamps responsibilities, visit the [Chainlink documentation](https://docs.chain.link/ccip/architecture#offramp).
-
-:::
 
 #### Token pools
 
@@ -134,7 +122,7 @@ The Risk Management Network is a secondary validation service built using a vari
 
 :::info
 
-A deep-dive on the technical details of each component of the Risk Management Network is too much to cover in this guide, but if interested you can learn more by visiting the [Chainlink documentation](https://docs.chain.link/ccip/architecture#risk-management-network-contract).
+A deep-dive on the technical details of each of these components is too much to cover in this guide, but if interested you can learn more by visiting the [Chainlink documentation](https://docs.chain.link/ccip/architecture).
 
 :::
 
