@@ -338,6 +338,19 @@ const assets: Asset[] = [
     decimals: 18,
     protocol: 'OP',
   },
+  {
+    L1symbol: 'PRO',
+    L2symbol: 'PRO',
+    L1chainId: 1,
+    L2chainId: 8453,
+    L1contract: '0x226bb599a12C826476e3A771454697EA52E9E220',
+    L2contract: '0x18dD5B087bCA9920562aFf7A0199b96B9230438b',
+    apiId: 'propy',
+    L1icon: '/icons/currency/propy.svg',
+    L2icon: '/icons/currency/propy.svg',
+    decimals: 8,
+    protocol: 'OP',
+  },
 ];
 
 export default assets;
