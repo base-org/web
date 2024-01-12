@@ -57,6 +57,13 @@ module.exports = {
             },
             {
               type: 'category',
+              label: 'Sending data and tokens across chains',
+              collapsible: true,
+              collapsed: true,
+              items: ['building-with-base/guides/cross-chain-with-ccip'],
+            },
+            {
+              type: 'category',
               label: 'Building with Foundry',
               collapsible: true,
               collapsed: true,
