@@ -58,7 +58,7 @@ In order to deploy a smart contract, you will first need a wallet. You can creat
 
 ### Wallet funds
 
-For this guide you will need to fund your wallet with both ETH and LINK on Base Goerli and Sepolia Goerli.
+For this guide you will need to fund your wallet with both ETH and LINK on Base Goerli and Optimism Goerli.
 
 The ETH is required for covering gas fees associated with deploying smart contracts to the blockchain, and the LINK token is required to pay for associated fees when using CCIP.
 
