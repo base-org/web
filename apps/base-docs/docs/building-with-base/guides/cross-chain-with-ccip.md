@@ -181,7 +181,7 @@ remappings = ['@chainlink/contracts-ccip/=lib/ccip/contracts']
 
 ---
 
-## Writing the Smart Contracts
+## Writing the smart contracts
 
 The most basic use case for Chainlink CCIP is to send data and/or tokens between smart contracts on different blockchains.
 
@@ -465,7 +465,7 @@ function getMessage()
 
 ---
 
-## Compiling the Smart Contracts
+## Compiling the smart contracts
 
 To compile your smart contracts, run:
 
@@ -583,7 +583,7 @@ Replace `<SENDER_CONTRACT_ADDRESS>` with the contract address of your deployed `
 
 ---
 
-## Interacting with the Smart Contract
+## Interacting with the smart contract
 
 Foundry provides the `cast` command-line tool that can be used to interact with deployed smart contracts and call their functions.
 
