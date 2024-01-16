@@ -61,7 +61,7 @@ Requests to Bware Labs Faucet are limited to one claim per 24 hours.
 
 ## QuickNode Faucet
 
-[QuickNode Faucet](https://faucet.quicknode.com/drip) is an easy to use Multi-Chain Faucet. You can use QuickNode Faucet to claim Base Goerli testnet ETH for free - one drip per network every 12 hours.
+[QuickNode Faucet](https://faucet.quicknode.com/drip) is an easy to use Multi-Chain Faucet. You can use QuickNode Faucet to claim Base Sepolia or Base Goerli testnet ETH for free - one drip per network every 12 hours.
 
 :::info
 
