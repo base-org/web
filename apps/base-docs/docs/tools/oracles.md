@@ -71,6 +71,7 @@ See [this guide](https://docs.diadata.org/introduction/intro-to-dia-oracles/requ
 #### Supported Networks
 
 - Base Mainnet
+- Base Sepolia (Testnet)
 - Base Goerli (Testnet)
 
 ---
@@ -84,6 +85,7 @@ See [this guide](https://docs.pyth.network/documentation/pythnet-price-feeds/evm
 #### Supported Networks
 
 - Base Mainnet
+- Base Sepolia (Testnet)
 - Base Goerli (Testnet)
 
 ---
@@ -101,7 +103,7 @@ See [this guide](https://docs.redstone.finance/) to learn how to use the RedSton
 
 ---
 
-## Supra 
+## Supra
 
 [Supra](https://supraoracles.com) provides VRF and decentralized oracle price feeds that can be used for onchain and offchain use-cases such as spot and perpetual DEXes, lending protocols, and payments protocols. Supra’s oracle chain and consensus algorithm makes it one of the fastest-to-finality oracle providers, with layer-1 security guarantees. The pull oracle has a sub-second response time. Aside from speed and security, Supra’s rotating node architecture gathers data from 40+ data sources and applies a robust calculation methodology to get the most accurate value. The node provenance on the data dashboard also provides a fully transparent historical audit trail. Supra’s Distributed Oracle Agreement (DORA) paper was accepted into ICDCS 2023, the oldest distributed systems conference.
 
@@ -110,6 +112,7 @@ Visit the Supra [documentation](https://supraoracles.com/docs/) to learn more ab
 #### Supported Networks
 
 - Base Mainnet
+- Base Sepolia (Testnet)
 - Base Goerli (Testnet)
 
 ---
