@@ -181,7 +181,7 @@ remappings = ['@chainlink/contracts-ccip/=lib/ccip/contracts']
 
 ---
 
-## Writing the Smart Contracts
+## Writing the smart contracts
 
 The most basic use case for Chainlink CCIP is to send data and/or tokens between smart contracts on different blockchains.
 
@@ -465,7 +465,7 @@ function getMessage()
 
 ---
 
-## Compiling the Smart Contracts
+## Compiling the smart contracts
 
 To compile your smart contracts, run:
 
@@ -583,7 +583,7 @@ Replace `<SENDER_CONTRACT_ADDRESS>` with the contract address of your deployed `
 
 ---
 
-## Interacting with the Smart Contract
+## Interacting with the smart contract
 
 Foundry provides the `cast` command-line tool that can be used to interact with deployed smart contracts and call their functions.
 
@@ -594,7 +594,7 @@ The `cast` command can be used to call the `sendMessage(uint64, address, string)
 To call the `sendMessage(uint64, address, string)` function of the `Sender` smart contract, run:
 
 ```bash
-cast send <SENDER_CONTRACT_ADDRESS> --rpc-url $BASE_GOERLI_RPC "sendMessage(uint64, address, string)" $OPTIMISM_GOERLI_CHAIN_SELECTOR <RECEIVER_CONTRACT_ADDRESS> "Based" --acount deployer
+cast send <SENDER_CONTRACT_ADDRESS> --rpc-url $BASE_GOERLI_RPC "sendMessage(uint64, address, string)" $OPTIMISM_GOERLI_CHAIN_SELECTOR <RECEIVER_CONTRACT_ADDRESS> "Based" --account deployer
 ```
 
 The command above calls the `sendMessage(uint64, address, string)` to send a message. The parameters passed in to the method include: The chain selector to the destination chain (Optimism Goerli), the `Receiver` contract address, and the text data to be included in the message (`Based`).
@@ -622,7 +622,7 @@ The `cast` command can also be used to call the `getMessage()` function on the `
 To call the `getMessage()` function of the `Receiver` smart contract, run:
 
 ```bash
-cast send <RECEIVER_CONTRACT_ADDRESS> --rpc-url $OPTIMISM_GOERLI_RPC "getMessage()" --acount deployer
+cast send <RECEIVER_CONTRACT_ADDRESS> --rpc-url $OPTIMISM_GOERLI_RPC "getMessage()" --account deployer
 ```
 
 :::info
