@@ -32,6 +32,22 @@
 
 @font-face {
   font-display: swap;
+  font-family: CoinbaseMono;
+  font-style: normal;
+  font-weight: 400;
+  src: url('/static/fonts/CoinbaseText-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: CoinbaseMono;
+  font-style: normal;
+  font-weight: 500;
+  src: url('/static/fonts/CoinbaseText-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
   font-family: CoinbaseText;
   font-style: normal;
   font-weight: 400;
