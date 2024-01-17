@@ -133,14 +133,35 @@ function Root({ Component, pageProps }: AppProps) {
                         <Component {...props} />
                       )}
                       {allowedPaths.has(pathname) && (
-                        <Sidebar>
-                          <>
-                            <Header />
-                            <div className="m-0 w-full p-0 sm:h-[calc(100vh-72px)]">
-                              <Component {...props} />
-                            </div>
-                          </>
-                        </Sidebar>
+                        <div className="flex w-full flex-col">
+                          <div className="w-full bg-black px-8 py-3 text-center font-sans text-sm text-white">
+                            <span className="font-bold">Important:</span> The Base Testnet migration
+                            from Goerli to Sepolia will be finalized on 2/9/2024. Please{' '}
+                            <a
+                              href="https://goerli-bridge.base.org/withdraw"
+                              className="text-cds-primary"
+                            >
+                              withdraw
+                            </a>{' '}
+                            any Base Testnet funds you want off of Base Goerli prior to this date.
+                            For more information, please read our{' '}
+                            <a
+                              href="https://base.mirror.xyz/-1DzslYOS7HRrbOrHdcz5sZmfIF_tpxJ-NRvcMmZ75c"
+                              className="text-cds-primary"
+                            >
+                              post
+                            </a>
+                            .
+                          </div>
+                          <Sidebar>
+                            <>
+                              <Header />
+                              <div className="m-0 w-full p-0 sm:h-[calc(100vh-72px)]">
+                                <Component {...props} />
+                              </div>
+                            </>
+                          </Sidebar>
+                        </div>
                       )}
                     </div>
                   </Layout>
