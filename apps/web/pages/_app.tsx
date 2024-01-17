@@ -2,15 +2,18 @@ import './global.css';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import App, { AppContext, AppProps } from 'next/app';
-import { useRouter } from 'next/router';
-import Script from 'next/script';
 import { MotionConfig } from 'framer-motion';
+import {
+  Provider as CookieManagerProvider,
+  Region,
+  TrackingCategory,
+  TrackingPreference,
+} from '@coinbase/cookie-manager';
 
-import { Provider, Region, TrackingCategory, TrackingPreference } from '@coinbase/cookie-manager';
 import { Layout } from '../src/components/Layout/Layout';
+import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
 
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
-import initCCA from '../src/utils/initCCA';
 
 /* Adding this to force NextJS to render the app on the server at runtime instead of statically
 which allows us to use ENV vars in the way we expect (Codeflow does not insert ENV vars at Dockerfile build time, so statically rendered pages don't have access) */
@@ -20,10 +23,7 @@ export async function getInitialProps(context: AppContext) {
 }
 
 export default function StaticApp({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-  const handleScriptLoad = useCallback(() => initCCA(router), [router]);
-
-  // Cookie Consent Manager Provider Configuration
+  // Cookie Manager Provider Configuration
   const [isMounted, setIsMounted] = useState(false);
   const trackingPreference = useRef<TrackingPreference | undefined>();
 
@@ -61,7 +61,7 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
   if (!isMounted) return null;
 
   return (
-    <Provider
+    <CookieManagerProvider
       projectName="base_web"
       locale="en"
       region={Region.DEFAULT}
@@ -71,15 +71,12 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
       config={cookieManagerConfig}
     >
       <MotionConfig reducedMotion="user">
-        <Script
-          src="https://static-assets.coinbase.com/js/cca/v0.0.1.js"
-          onLoad={handleScriptLoad}
-        />
+        <ClientAnalyticsScript />
         <Layout>
           <Component {...pageProps} />
         </Layout>
       </MotionConfig>
-    </Provider>
+    </CookieManagerProvider>
   );
 }
 

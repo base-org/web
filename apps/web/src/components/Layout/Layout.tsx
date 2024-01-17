@@ -62,7 +62,7 @@ type LayoutProps = { children: ReactElement };
 export function Layout({ children }: LayoutProps) {
   const { pathname } = useRouter();
   const color: 'black' | 'white' = useMemo(() => {
-    if (pathname === '/' || pathname === '/jobs/apply') {
+    if (pathname === '/' || pathname === '/jobs/apply' || pathname === '/cookie-policy') {
       return 'black';
     }
 
@@ -76,7 +76,7 @@ export function Layout({ children }: LayoutProps) {
       <Nav color={color} />
       {children}
       <Footer />
-      <CookieBanner companyName="Base" />
+      <CookieBanner companyName="Base" link="/cookie-policy" />
     </div>
   );
 }

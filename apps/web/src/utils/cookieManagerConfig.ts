@@ -23,40 +23,8 @@ export const cookieManagerConfig = {
       expiry: 365,
       trackers: [
         {
-          id: 'rfm',
+          id: 'base_device_id',
           type: TrackerType.COOKIE,
-          sessionCookie: true,
-        },
-      ],
-    },
-    {
-      id: TrackingCategory.FUNCTIONAL,
-      expiry: 365,
-      trackers: [
-        {
-          id: 'mode',
-          type: TrackerType.COOKIE,
-        },
-      ],
-    },
-    {
-      id: TrackingCategory.TARGETING,
-      expiry: 365,
-      trackers: [
-        {
-          id: 'gclid',
-          type: TrackerType.COOKIE,
-        },
-      ],
-    },
-    {
-      id: TrackingCategory.DELETE_IF_SEEN,
-      expiry: 0,
-      trackers: [
-        {
-          id: 'challenge-regex',
-          type: TrackerType.COOKIE,
-          regex: '^(cf_chl_prog$)|(cf_cc_...$)|(cf_chl_cc_...$)|(cf_chl_seq_...$)',
         },
       ],
     },
