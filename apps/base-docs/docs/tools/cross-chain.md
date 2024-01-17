@@ -55,7 +55,7 @@ To get started with integrating Chainlink CCIP in your Base project, visit the C
 #### Supported Networks
 
 - [Base Mainnet](https://docs.chain.link/ccip/supported-networks/v1_0_0/mainnet#base-mainnet)
-- [Base Goerli](https://docs.chain.link/ccip/supported-networks/v1_2_0/testnet) (Testnet)
+- [Base Sepolia](https://docs.chain.link/ccip/supported-networks/v1_2_0/testnet) (Testnet)
 
 ---
 
@@ -68,7 +68,7 @@ To get started with integrating LayerZero, visit the LayerZero [documentation](h
 #### Supported Networks
 
 - [Base Mainnet](https://layerzero.gitbook.io/docs/technical-reference/mainnet/supported-chain-ids)
-- [Base Goerli](https://layerzero.gitbook.io/docs/technical-reference/testnet/testnet-addresses#layerzero-endpoints-testnet) (Testnet)
+- [Base Sepolia](https://layerzero.gitbook.io/docs/technical-reference/testnet/testnet-addresses#layerzero-endpoints-testnet) (Testnet)
 
 ---
 
@@ -85,6 +85,6 @@ For more information on integrating Wormhole, visit their [documentation](https:
 #### Supported Networks
 
 - [Base Mainnet](https://docs.wormhole.com/wormhole/blockchain-environments/evm#base)
-- [Base Goerli](https://docs.wormhole.com/wormhole/blockchain-environments/evm#base) (Testnet)
+- [Base Sepolia](https://docs.wormhole.com/wormhole/blockchain-environments/evm#base) (Testnet)
 
 ---
