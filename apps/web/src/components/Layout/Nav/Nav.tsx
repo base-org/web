@@ -15,12 +15,12 @@ export function Nav({ color }: NavProps) {
   return (
     <div className=" flex w-full flex-col">
       <div className="w-full bg-black px-8 py-3 text-center font-sans text-sm text-white">
-        <span className="font-bold">Important:</span> Base’s testnet migration from Goerli to
+        <span className="font-bold">Important:</span> The Base Testnet migration from Goerli to
         Sepolia will be finalized on 2/9/2024. Please{' '}
         <a href="https://goerli-bridge.base.org/withdraw" className="text-blue-400">
           withdraw
         </a>{' '}
-        any testnet funds you want off of Base Goerli prior to this date. For more information,
+        any Base Testnet funds you want off of Base Goerli prior to this date. For more information,
         please read our{' '}
         <a
           href="https://base.mirror.xyz/-1DzslYOS7HRrbOrHdcz5sZmfIF_tpxJ-NRvcMmZ75c"
