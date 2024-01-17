@@ -22,9 +22,9 @@ export function Footer() {
             <div className="flex flex-col">
               <p className="text-white">
                 <a href="https://base.mirror.xyz/subscribe" className="underline">
-                  Subscribe to our Mirror blog.
-                </a>{' '}
-                Mint the posts as unique NFTs
+                  Subscribe to our Mirror blog
+                </a>
+                : Mint the posts as unique NFTs
               </p>
               <p className="text-white">commemorating the evolution of Base.</p>
             </div>
@@ -36,6 +36,7 @@ export function Footer() {
                 >
                   Build on Base
                 </a>
+                : Get in touch with our teams about your project.
               </p>
             </div>
           </div>

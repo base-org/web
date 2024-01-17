@@ -11,6 +11,8 @@ keywords:
     omnichain,
     omni-chain,
     superchain,
+    Chainlink CCIP,
+    CCIP,
     LayerZero,
     Axelar,
     Wormhole,
@@ -41,6 +43,19 @@ To learn more about Axelar visit our [docs](https://docs.axelar.dev/). For compl
 #### Axelarscan
 
 To view current transactions and live stats about the Axelar network please visit the [Axelarscan block explorer](https://axelarscan.io/)
+
+---
+
+## Chainlink CCIP
+
+[Chainlink CCIP](https://chain.link/cross-chain) is a secure interoperability protocol that allows for securely sending messages, transfering tokens, and initiating actions across different blockchains.
+
+To get started with integrating Chainlink CCIP in your Base project, visit the Chainlink CCIP [documentation](https://docs.chain.link/ccip)
+
+#### Supported Networks
+
+- [Base Mainnet](https://docs.chain.link/ccip/supported-networks/v1_0_0/mainnet#base-mainnet)
+- [Base Goerli](https://docs.chain.link/ccip/supported-networks/v1_2_0/testnet) (Testnet)
 
 ---
 
