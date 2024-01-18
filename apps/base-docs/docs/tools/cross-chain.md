@@ -54,7 +54,6 @@ Check out [Crossmint Docs](https://docs.crossmint.com/docs/cross-chain-payments/
 
 #### Supported Networks
 - [Base Mainnet](https://www.crossmint.com/products/nft-checkout/?utm_source=backlinks&utm_medium=docs&utm_campaign=base)
-- [Base Goerli](https://www.crossmint.com/products/nft-checkout/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) (Testnet)
 
 ---
 ## LayerZero
