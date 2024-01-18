@@ -16,6 +16,6 @@ keywords:
 hide_table_of_contents: false
 ---
 
-import Video from '../../../src/components/VideoPlayer/index.jsx'
+import Video from '../../../../../src/components/VideoPlayer/index.jsx'
 
 <Video videoId='863776975' title='Manual Optimizations' />
