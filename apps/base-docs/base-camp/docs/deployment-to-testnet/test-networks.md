@@ -69,21 +69,21 @@ Several well-known testnets have emerged over the years, each with its own set o
 
 - **Rinkeby:** Rinkeby offered better security than Ropsten and used a proof-of-authority consensus mechanism. However, it lacked decentralization and client diversity, which ultimately led to its decline in popularity. After the Merge, Rinkeby is no longer a recommended test network.
 
-- **Goerli:** Launched in early 2019, Goerli initially utilized a multi-client proof-of-authority consensus model to improve stability and security. Following the Merge, it transitioned to a proof-of-stake consensus mechanism, maintaining its cross-client compatibility and making it an ideal choice for developers. Goerli's strong community support and collaboration, as the first community-driven testnet for Ethereum, contribute to ongoing maintenance, improvements, and feature enhancements, ensuring a robust testing environment for developers.
+- **Goerli:** Launched in early 2019, Goerli initially utilized a multi-client proof-of-authority consensus model to improve stability and security. Following the Merge, it transitioned to a proof-of-stake consensus mechanism, maintaining its cross-client compatibility and making it an ideal choice for developers. As of January 2024, Goerli is being sunset in favor of Sepolia.
 
-- **Sepolia:** As one of the two maintained primary testnets alongside Goerli, Sepolia is designed for developers seeking a lighter weight chain for faster synchronization and interaction. While Goerli is optimal for stakers and developers working with large existing states, Sepolia provides a more streamlined experience for testing and development.
+- **Sepolia:** As one of the two original primary testnets alongside Goerli, Sepolia is designed for developers seeking a lighter weight chain for faster synchronization and interaction. As of January 2024, it is now the preferred testnet and developers should migrate to using it.
 
 ### L2 Testnets
 
-- **Base Goerli:** As new Layer-2 networks emerged that settled on Ethereum's Layer-1, the need for testnets dedicated to these L2 networks also arose. For instance, the L2 network Base has its own testnet, known as Base Goerli. This testnet settles on the Ethereum Goerli L1 testnet, providing an environment for testing L2-specific features and smart contracts.
+- **Base Sepolia:** As new Layer-2 networks emerged that settled on Ethereum's Layer-1, the need for testnets dedicated to these L2 networks also arose. For instance, the L2 network Base has its own testnet, known as Base Sepolia. This testnet settles on the Ethereum Sepolia L1 testnet, providing an environment for testing L2-specific features and smart contracts.
 
-- **Optimism Goerli:** Optimism, an Ethereum Layer-2 scaling solution utilizing Optimistic Rollups, has its own testnet called Optimism Goerli. This testnet is built on the Ethereum Goerli L1 testnet and offers a testing environment for developers to experiment with Optimism's Layer-2 features, smart contracts, and apps.
+- **Optimism Sepolia:** Optimism, an Ethereum Layer-2 scaling solution utilizing Optimistic Rollups, has its own testnet called Optimism Sepolia. This testnet is also built on the Ethereum Sepolia L1 testnet and offers a testing environment for developers to experiment with Optimism's Layer-2 features, smart contracts, and apps.
 
 ---
 
 ## Conclusion
 
-Ethereum and L2 testnets are essential for the safe and efficient development of smart contracts and apps, offering numerous advantages such as real-time feedback, cost-free testing, easy accessibility, stress testing, and protocol upgrade testing. Despite certain challenges associated with testnets, developers continue to rely on them for a robust testing environment. Among the various options, Goerli and Sepolia have emerged as preferred choices for Ethereum developers due to their enhanced security, stability, and strong community support. As the Ethereum ecosystem evolves, incorporating Layer-2 networks and other innovations, testnets will continue to play a crucial role in fostering blockchain development and contributing to the overall success and growth of the space.
+Ethereum and L2 testnets are essential for the safe and efficient development of smart contracts and apps, offering numerous advantages such as real-time feedback, cost-free testing, easy accessibility, stress testing, and protocol upgrade testing. Despite certain challenges associated with testnets, developers continue to rely on them for a robust testing environment. Among the various options, Sepolia has emerged as preferred choices for Ethereum developers due to enhanced security, stability, and strong community support. As the Ethereum ecosystem evolves, incorporating Layer-2 networks and other innovations, testnets will continue to play a crucial role in fostering blockchain development and contributing to the overall success and growth of the space.
 
 ---
 

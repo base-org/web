@@ -56,7 +56,7 @@ You'll encounter providers divided into three general categories: Public Provide
 
 Many tutorials and guides, including the getting started guide for [wagmi], use a _Public Provider_ as the default to get you up and running. Public means that they're open, permissionless, and free, so the guides will also usually warn you that you need to add another provider if you don't want to run into rate limiting. Listen to these warnings! The rate-limits of public providers are severe and you'll start getting limited very quickly.
 
-In wagmi, the `publicClient` is just a wrapper setting up a [JSON RPC] provider using the `chain` and `rpcUrls` listed in Viem's directory of chain information. For example, you can view the [data for Base Goerli here].
+In wagmi, the `publicClient` is just a wrapper setting up a [JSON RPC] provider using the `chain` and `rpcUrls` listed in Viem's directory of chain information. For example, you can view the [data for Base Sepolia here].
 
 Most chains will list this information in their docs as well. For example, on the network information pages for [Base] and [Optimism]. If you wanted, you could manually set up a `jsonRpcProvider` in wagmi using this information.
 
@@ -99,7 +99,7 @@ In this article, you've learned how Providers supply blockchain connection as a 
 
 [Subgraph]: https://thegraph.com/docs/en/developing/creating-a-subgraph/
 [wagmi]: https://wagmi.sh/react/getting-started#configure-chains
-[data for Base Goerli here]: https://github.com/wagmi-dev/viem/blob/main/src/chains/definitions/baseGoerli.ts
+[data for Base Sepolia here]: https://github.com/wagmi-dev/viem/blob/main/src/chains/definitions/baseSepolia.ts
 [Base]: https://docs.base.org/network-information
 [Optimism]: https://community.optimism.io/docs/useful-tools/networks/
 [EIP-1193]: https://eips.ethereum.org/EIPS/eip-1193

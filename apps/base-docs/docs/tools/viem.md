@@ -21,7 +21,7 @@ keywords:
 
 :::info
 
-Viem is currently only available on Base Goerli testnet.
+Viem is currently only available on Base Sepolia testnet.
 
 :::
 
@@ -57,7 +57,7 @@ const client = createPublicClient({
 
 To use Base, you must specify `base` as the chain when creating a Client.
 
-To use Base Goerli (testnet), replace `base` with `baseGoerli`.
+To use Base Sepolia (testnet), replace `base` with `baseSepolia`.
 
 :::
 
@@ -99,7 +99,7 @@ client.sendTransaction({ ... })
 
 In addition to making a JSON-RPC request (`eth_requestAccounts`) to get an Account, viem provides various helper methods for creating an `Account`, including: [`privateKeyToAccount`](https://viem.sh/docs/accounts/privateKey.html), [`mnemonicToAccount`](https://viem.sh/docs/accounts/mnemonic.html), and [`hdKeyToAccount`](https://viem.sh/docs/accounts/hd.html).
 
-To use Base Goerli (testnet), replace `base` with `baseGoerli`.
+To use Base Sepolia (testnet), replace `base` with `baseSepolia`.
 
 :::
 

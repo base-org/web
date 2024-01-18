@@ -113,8 +113,8 @@ import '@nomicfoundation/hardhat-toolbox';
 const config: HardhatUserConfig = {
   defaultNetwork: 'base',
   networks: {
-    base: {
-      url: 'https://goerli.base.org',
+    base_sepolia: {
+      url: 'https://sepolia.base.org',
       accounts: ['<private key 1>'],
     },
     sepolia: {

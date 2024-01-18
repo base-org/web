@@ -57,13 +57,13 @@ const contract = await sdk.getContract('0x00000000000000000000000000000000000000
 
 The code snippet above uses the [React SDK](https://portal.thirdweb.com/react). The thirdweb SDKs are also available in [React Native](https://portal.thirdweb.com/react-native), [TypeScript](https://portal.thirdweb.com/typescript), [Python](https://portal.thirdweb.com/python), [Go](https://portal.thirdweb.com/go), and [Unity](https://portal.thirdweb.com/unity).
 
-If alternatively you'd like to initialize the SDK with Base Goerli (testnet), use the following code instead:
+If alternatively you'd like to initialize the SDK with Base Sepolia (testnet), use the following code instead:
 
 ```javascript
-import { BaseGoerli } from '@thirdweb-dev/chains';
+import { BaseSepoliaTestnet } from '@thirdweb-dev/chains';
 import { ThirdwebSDK } from '@thirdweb-dev/sdk/evm';
 
-const sdk = new ThirdwebSDK(BaseGoerli);
+const sdk = new ThirdwebSDK(BaseSepoliaTestnet);
 const contract = await sdk.getContract('0x0000000000000000000000000000000000000000');
 ```
 

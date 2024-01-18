@@ -39,7 +39,7 @@ Blockscout provides tools to help you debug smart contracts and transactions:
 - View, verify, and interact with smart contract source code.
 - View detailed transaction information
 
-A testnet explorer for [Base Goerli](https://base-goerli.blockscout.com/) is also available.
+Testnet explorers for [Base Sepolia](https://base-sepolia.blockscout.com/) and [Base Goerli](https://base-goerli.blockscout.com/) are also available.
 
 ---
 
@@ -54,7 +54,7 @@ Etherscan provides tools to help you view transaction data and debug smart contr
 - View detailed transaction information
 - View L1-to-L2 and L2-to-L1 transactions.
 
-A testnet explorer for [Base Goerli](https://goerli.basescan.org/) is also available.
+Testnet explorers for [Base Sepolia](https://sepolia.basescan.org/) and [Base Goerli](https://goerli.basescan.org/) are also available.
 
 ---
 
@@ -80,6 +80,6 @@ A testnet explorer for [Base Goerli](https://base-goerli.dex.guru/) is also avai
 
 ## Tenderly Explorer
 
-With [Tenderly](https://tenderly.co/) developer explorer you can get unparalleled visibility into your smart contract code. You can easily view detailed transaction information, spot bugs in your code and optimize gas spend. Supporting both Base and Base Goerli, Tenderly Explorer helps you track your smart contracts while providing visibility on a granular level.
+With [Tenderly](https://tenderly.co/) developer explorer you can get unparalleled visibility into your smart contract code. You can easily view detailed transaction information, spot bugs in your code and optimize gas spend. Supporting Base, Base Sepolia, and Base Goerli, Tenderly Explorer helps you track your smart contracts while providing visibility on a granular level.
 
 ---

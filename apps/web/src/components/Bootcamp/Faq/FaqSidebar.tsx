@@ -12,12 +12,12 @@ export function FaqSidebar() {
 
         <QuestionAccordion
           question="When will I hear back about my application?"
-          answer="You will hear from us within 5-7 business days if you’re accepted into the program. Please note that we’re not able to respond to every individual submission given the volume."
+          answer="You will hear from us at least two weeks before the cohort start date, if you’re accepted into the program. Please note that we’re not able to respond to every individual submission given the volume."
         />
 
         <QuestionAccordion
           question="What is your selection criteria?"
-          answer="Students will be selected based on coding skills, “crypto-proficiency” (experience using crypto), and experience level. We’re looking for mid to senior level Software Engineering individual contributors."
+          answer="Students will be selected based on evidence coding skills, “crypto-proficiency” (experience using crypto), and experience level. We’re looking for mid to senior level Software Engineering individual contributors."
         />
 
         <QuestionAccordion
@@ -48,7 +48,8 @@ export function FaqSidebar() {
               <p>
                 Apart from a few live meetings, the majority of the time will be allocated to
                 completing our self-paced Smart Contract development curriculum and building various
-                projects.
+                projects. Help is readily available from your mentor, and the private channel in
+                Discord.
               </p>
             </div>
           }
@@ -56,12 +57,12 @@ export function FaqSidebar() {
 
         <QuestionAccordion
           question="Are there live classes?"
-          answer="There are no live classes per-se, but you will meet live with your mentor each week (scheduled around your availability) and are welcome to attend live weekly office hours."
+          answer="There are no live classes, but you will meet live with your mentor each week (scheduled around your availability) and are welcome to attend live weekly office hours."
         />
 
         <QuestionAccordion
           question="Can I quit if it’s too much for me?"
-          answer="Ideally, no! Before committing, do the work you need to do to make sure you can stick it out for the whole program. With only a handfull participants, the success of our program depends on having committed participants."
+          answer="Ideally, no! Before committing, do the work you need to do to make sure you can stick it out for the whole program. With only a handful participants, the success of our program depends on having committed participants."
         />
 
         <QuestionAccordion
@@ -71,7 +72,7 @@ export function FaqSidebar() {
 
         <QuestionAccordion
           question="What will I be able to do upon graduation?"
-          answer="You will learn to deploy smart contracts – the foundation of building any onchain app."
+          answer="You will learn to deploy smart contracts and connect a web frontend to them – the foundation of building any onchain app."
         />
         <div className="mb-40 h-[1px] w-full bg-muted opacity-40" />
       </div>

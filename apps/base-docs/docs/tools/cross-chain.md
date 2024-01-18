@@ -11,6 +11,8 @@ keywords:
     omnichain,
     omni-chain,
     superchain,
+    Chainlink CCIP,
+    CCIP,
     LayerZero,
     Axelar,
     Crossmint,
@@ -48,14 +50,30 @@ To view current transactions and live stats about the Axelar network please visi
 ---
 
 ## Crossmint
+
 [Crossmint](https://crossmint.com/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) allows you to create and deploy NFT Collections and enable cross-chain payments. This enables your users and customers to purchase an NFT from a collection deployed on Base using Ethereum or Solana tokens. 
 
 Check out [Crossmint Docs](https://docs.crossmint.com/docs/cross-chain-payments/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) to learn more about how you can integrate Crossmint with your product to power cross-chain payments. 
 
 #### Supported Networks
+
 - [Base Mainnet](https://www.crossmint.com/products/nft-checkout/?utm_source=backlinks&utm_medium=docs&utm_campaign=base)
 
 ---
+
+## Chainlink CCIP
+
+[Chainlink CCIP](https://chain.link/cross-chain) is a secure interoperability protocol that allows for securely sending messages, transfering tokens, and initiating actions across different blockchains.
+
+To get started with integrating Chainlink CCIP in your Base project, visit the Chainlink CCIP [documentation](https://docs.chain.link/ccip)
+
+#### Supported Networks
+
+- [Base Mainnet](https://docs.chain.link/ccip/supported-networks/v1_0_0/mainnet#base-mainnet)
+- [Base Goerli](https://docs.chain.link/ccip/supported-networks/v1_2_0/testnet) (Testnet)
+
+---
+
 ## LayerZero
 
 [LayerZero](https://layerzero.network/) is an omnichain interoperability protocol that enables cross-chain messaging. Applications built on Base can use the LayerZero protocol to connect to 35+ supported blockchains seamlessly.
