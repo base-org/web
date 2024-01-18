@@ -60,7 +60,10 @@ module.exports = {
               label: 'Sending data and tokens across chains',
               collapsible: true,
               collapsed: true,
-              items: ['building-with-base/guides/cross-chain-with-ccip'],
+              items: [
+                'building-with-base/guides/cross-chain-with-ccip',
+                'building-with-base/guides/cross-chain-with-layerzero',
+              ],
             },
             {
               type: 'category',
