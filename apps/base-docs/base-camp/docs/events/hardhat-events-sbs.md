@@ -6,6 +6,12 @@ hide_table_of_contents: false
 
 In this article, you'll learn how events work in Solidity by reviewing some practical examples and common use cases of events.
 
+:::caution
+
+This tutorial has been moved as part of a reorganization! It assumes you are using Hardhat. Everything in this lesson will work with minor adjustments if you are working in Foundry or Remix.
+
+:::
+
 ---
 
 ## Objectives
