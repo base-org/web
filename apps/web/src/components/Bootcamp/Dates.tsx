@@ -9,22 +9,23 @@ export function Dates() {
       </div>
       <div className="grid grid-cols-2">
         <div className="text-md font-sans text-white">
-          <p className="pb-2"><span className="font-bold">Cohort 3:</span> Nov 13, 2023</p>
-          <p><span className="font-bold">Application deadline:</span> Oct 27, 2023</p>
+          <p className="pb-2">
+            <span className="font-bold">Cohort 4:</span> Feb 19, 2023
+          </p>
+          <p>
+            <span className="font-bold">Application deadline:</span> Feb 5, 2023
+          </p>
 
           <div className="mt-10 w-[200px]">
-            <Link className="w-full" href="https://forms.gle/iqZqJ6WAqkWaouLn8" target="_blank" rel="noreferrer noopener">
-              <Button variant="secondary" className="w-full">Apply now</Button>
-            </Link>
-          </div>
-        </div>
-        <div className="text-md font-sans text-white">
-          <p className="pb-2"><span className="font-bold">Cohort 4:</span> Jan 9, 2024</p>
-          <p><span className="font-bold">Application deadline:</span> Dec 15, 2023</p>
-
-          <div className="mt-10 w-[200px]">
-            <Link className="w-full" href="https://forms.gle/iqZqJ6WAqkWaouLn8" target="_blank" rel="noreferrer noopener">
-              <Button variant="secondary" className="w-full">Apply now</Button>
+            <Link
+              className="w-full"
+              href="https://forms.gle/iqZqJ6WAqkWaouLn8"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <Button variant="secondary" className="w-full">
+                Apply now
+              </Button>
             </Link>
           </div>
         </div>
