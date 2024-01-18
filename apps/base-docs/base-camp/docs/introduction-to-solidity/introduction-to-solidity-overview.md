@@ -34,8 +34,8 @@ By the end of this module, you should be able to:
   - Write a pure function that accepts argument and returns a value
 - **Deploying Smart Contracts to a Testnet**
   - Describe the uses and properties of the Ethereum testnet
-  - Compare and contrast Ropsten, Rinkeby, and Goerli
-  - Deploy a contract to the Goerli testnet and interact with it in Etherscan
+  - Compare and contrast Ropsten, Rinkeby, Goerli, and Sepolia
+  - Deploy a contract to the Sepolia testnet and interact with it in Etherscan
 - **Control Structures**
   - Control code flow with if, else, while, and for
   - List the unique constraints for control flow in Solidity

@@ -1,28 +1,34 @@
+/* eslint-disable */
+import React from 'react';
 import { useState } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useAccount } from 'wagmi';
+import { useAccount, useNetwork } from 'wagmi';
 
-import NFTExerciseData from '../../utils/nft-exercise-data';
+import useNFTData from '../../utils/nft-exercise-data';
 
 import NFTCard from './NFTCard';
 
 export default function StudentProgress() {
+  const nftData = useNFTData();
+
   const [earnedNFTCount, setNFTCount] = useState(0);
-  const [totalNFTCount] = useState(Object.keys(NFTExerciseData).length);
+  const [totalNFTCount] = useState(Object.keys(nftData).length);
   const { isConnecting, isConnected, address } = useAccount();
 
-  // mapping addresses to 'true' or 'false' to keep track of `earnedNFTCount
-  const earnedNFTMap = Object.keys(NFTExerciseData).reduce((acc, prop) => {
-    const nft = NFTExerciseData[prop];
+  const { chain } = useNetwork();
 
-    acc[nft.address] = false;
+  // mapping addresses to 'true' or 'false' to keep track of `earnedNFTCount`
+  const earnedNFTMap = Object.keys(nftData).reduce((acc, prop) => {
+    const nft = nftData[prop];
+
+    acc[nft.deployment.address] = false;
 
     return acc;
   }, {});
 
   // called by NFTCard
-  const updateNFTCount = (hasNFT, nftData) => {
-    earnedNFTMap[nftData.address] = hasNFT;
+  const updateNFTCount = (hasNFT, nft) => {
+    earnedNFTMap[nft.deployment.address] = hasNFT;
 
     setNFTCount(
       Object.keys(earnedNFTMap).reduce((acc, prop) => {
@@ -38,12 +44,12 @@ export default function StudentProgress() {
   };
 
   const renderNFTs = () => {
-    const NFTs = Object.keys(NFTExerciseData).map((nftNum) => {
-      const nft = NFTExerciseData[nftNum];
+    const NFTs = Object.keys(nftData).map((nftNum) => {
+      const nft = nftData[nftNum];
 
       return (
         <NFTCard
-          key={nft.address}
+          key={nft.deployment.address}
           currentWalletAddress={address}
           nftData={nft}
           updateNFTCount={updateNFTCount}
@@ -63,7 +69,7 @@ export default function StudentProgress() {
         <div style={{ padding: '5px' }}>
           <p style={{ paddingBottom: '25px' }}>
             Address <span style={{ color: '#688CEC' }}>{address}</span> has earned {earnedNFTCount}{' '}
-            out of {totalNFTCount} Base Camp exercise NFTs.
+            out of {totalNFTCount} Base Camp exercise NFTs on {chain.name}.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>{renderNFTs()}</div>
         </div>

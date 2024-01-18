@@ -87,7 +87,7 @@ Start with the imports:
 import '@rainbow-me/rainbowkit/styles.css';
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { mainnet, base, baseGoerli } from 'wagmi/chains';
+import { mainnet, base, baseSepolia } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 ```
 
@@ -100,7 +100,7 @@ If you're adapting this guide to a different set of libraries or platforms, you 
 Now, we'll configure the chains, wallet connectors, and providers for your app. We'll use the [`publicProvider`] for now, to get started. See our guide on [Connecting to the Blockchain] for more information on blockchain providers.
 
 ```typescript
-const { chains, publicClient } = configureChains([mainnet, base, baseGoerli], [publicProvider()]);
+const { chains, publicClient } = configureChains([mainnet, base, baseSepolia], [publicProvider()]);
 ```
 
 The default connectors provided by RainbowKit automatically enable the most popular wallets, so we'll add that next:

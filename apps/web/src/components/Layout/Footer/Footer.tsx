@@ -15,6 +15,8 @@ export function Footer() {
 
   const handleCloseModal = useCallback(() => setIsOpen(false), []);
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="z-10 mt-auto flex w-full justify-center bg-gray lg:pb-64">
       <div className="flex w-full max-w-[1440px] flex-col justify-between p-8 lg:flex-row">
@@ -29,9 +31,9 @@ export function Footer() {
             <div className="flex flex-col">
               <p className="text-white">
                 <a href="https://base.mirror.xyz/subscribe" className="underline">
-                  Subscribe to our Mirror blog.
-                </a>{' '}
-                Mint the posts as unique NFTs
+                  Subscribe to our Mirror blog
+                </a>
+                : Mint the posts as unique NFTs
               </p>
               <p className="text-white">commemorating the evolution of Base.</p>
             </div>
@@ -43,6 +45,7 @@ export function Footer() {
                 >
                   Build on Base
                 </a>
+                : Get in touch with our teams about your project.
               </p>
             </div>
           </div>
@@ -57,7 +60,7 @@ export function Footer() {
               Cookie Manager
             </button>
           </p>
-          <p>© 2023 Coinbase</p>
+          <p>© {currentYear} Coinbase</p>
         </div>
         <div className="flex h-full flex-col gap-5 pt-24 lg:flex-row lg:gap-10 lg:pt-0">
           <div className="flex h-full flex-col gap-4 lg:flex-row lg:gap-10">

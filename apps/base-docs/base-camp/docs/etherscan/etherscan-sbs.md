@@ -44,10 +44,9 @@ Where you see information such as:
 
 There are many variations of Etherscan for different networks. For example:
 
-- [Goerli Etherscan](https://goerli.etherscan.io)
-- [Polygon Scan](https://polygonscan.com)
-- [Mumbai Polygon Scan](https://mumbai.polygonscan.com)
-- [Base Goerli](https://goerli.basescan.org)
+- [Base](https://basescan.org)
+- [Base Sepolia](https://sepolia.basescan.org)
+- [Sepolia Etherscan](https://sepolia.etherscan.io)
 
 ## Reading data from smart contracts using Etherscan
 
@@ -111,7 +110,6 @@ In this lesson, you've learned some of the main features of Etherscan, including
 
 ## See also
 
-[Goerli Etherscan]: https://goerli.etherscan.io
-[Polygon Scan]: https://polygonscan.com
-[Mumbai Polygon Scan]: https://mumbai.polygonscan.com
-[Base Goerli]: https://goerli.basescan.org
+[Base]: https://basescan.org
+[Base Sepolia]: https://sepolia.basescan.org
+[Sepolia Etherscan]: https://sepolia.etherscan.io

@@ -12,9 +12,8 @@ In this article, you'll learn how to deploy smart contracts to multiple Blockcha
 
 By the end of this lesson, you should be able to:
 
-- Deploy a smart contract to the Base Goerli Testnet with hardhat-deploy
-- Deploy a smart contract to the Goerli Testnet with hardhat-deploy
-- Deploy a smart contract to the Mumbai Testnet with hardhat-deploy
+- Deploy a smart contract to the Base Sepolia Testnet with hardhat-deploy
+- Deploy a smart contract to the Sepolia Testnet with hardhat-deploy
 - Use etherscan to view a deployed smart contract
 
 ---
@@ -72,7 +71,7 @@ export default func;
 
 ```typescript
 const config: HardhatUserConfig = {
-  solidity: '0.8.18',
+  solidity: '0.8.23',
   namedAccounts: {
     deployer: 0,
   },
@@ -184,20 +183,14 @@ const config: HardhatUserConfig = {
     deployer: 0,
   },
   networks: {
-    base_goerli: {
-      url: 'https://goerli.base.org',
+    base_sepolia: {
+      url: 'https://sepolia.base.org',
       accounts: {
         mnemonic: process.env.MNEMONIC ?? '',
       },
     },
-    goerli: {
-      url: `https://eth-goerli.g.alchemy.com/v2/${process.env.ALCHEMY_GOERLI_KEY ?? ''}`,
-      accounts: {
-        mnemonic: process.env.MNEMONIC ?? '',
-      },
-    },
-    mumbai: {
-      url: `https://polygon-mumbai.g.alchemy.com/v2/${process.env.ALCHEMY_MUMBAI_KEY ?? ''}`,
+    sepolia: {
+      url: `https://eth-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_SEPOLIA_KEY ?? ''}`,
       accounts: {
         mnemonic: process.env.MNEMONIC ?? '',
       },
@@ -206,18 +199,16 @@ const config: HardhatUserConfig = {
 };
 ```
 
-You've configured 3 networks:
+You've configured 2 networks:
 
-- base_goerli
-- goerli
-- mumbai
+- base_sepolia
+- sepolia
 
 You also need to create a `.env` file with the following variables:
 
 ```
 MNEMONIC="<REPLACE WITH YOUR MNEMONIC>"
-ALCHEMY_GOERLI_KEY=<REPLACE WITH YOUR API KEY>
-ALCHEMY_MUMBAI_KEY=<REPLACE WITH YOUR API KEY>
+ALCHEMY_SEPOLIA_KEY=<REPLACE WITH YOUR API KEY>
 ```
 
 In order to ensure the environment variables are loaded, you need to install another package called `dotenv`:
@@ -237,28 +228,22 @@ dotenv.config();
 Deploy to base with the following command:
 
 ```bash
-npx hardhat deploy --network base_goerli
+npx hardhat deploy --network base_sepolia
 ```
 
-After you run the command, a deployments folder appears with a newly-created deployment for `base_goerli`:
+After you run the command, a deployments folder appears with a newly-created deployment for `base_sepolia`:
 
 ![New deployment](../../assets/images/hardhat-deploying/new-deploy.png)
 
 If you want to deploy to another network, change the network name as follows:
 
 ```bash
-npx hardhat deploy --network goerli
-```
-
-or, to deploy to mumbai:
-
-```bash
-npx hardhat deploy --network mumbai
+npx hardhat deploy --network sepolia
 ```
 
 :::info
 
-Be aware that you must have the correct environment variables for the JSON RPC URLs. For example, for goerli use `ALCHEMY_GOERLI_KEY` and for mumbai use `ALCHEMY_MUMBAI_KEY`.
+Be aware that you must have the correct environment variables for the JSON RPC URLs. For example, for Sepolia use `ALCHEMY_SEPOLIA_KEY`.
 
 :::
 

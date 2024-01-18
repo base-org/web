@@ -312,6 +312,32 @@ const assets: Asset[] = [
     decimals: 18,
     protocol: 'OP',
   },
+  {
+    L1symbol: 'SNX',
+    L2symbol: 'SNX',
+    L1chainId: 1,
+    L2chainId: 8453,
+    L1contract: '0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F',
+    L2contract: '0x22e6966B799c4D5B13BE962E1D117b56327FDa66',
+    apiId: 'synthetix-network-token',
+    L1icon: '/icons/currency/snx.svg',
+    L2icon: '/icons/currency/snx.svg',
+    decimals: 18,
+    protocol: 'OP',
+  },
+  {
+    L1symbol: 'BTRST',
+    L2symbol: 'BTRST',
+    L1chainId: 1,
+    L2chainId: 8453,
+    L1contract: '0x799ebfABE77a6E34311eeEe9825190B9ECe32824',
+    L2contract: '0xA7d68d155d17cB30e311367c2Ef1E82aB6022b67',
+    apiId: 'braintrust',
+    L1icon: '/icons/currency/btrst.svg',
+    L2icon: '/icons/currency/btrst.svg',
+    decimals: 18,
+    protocol: 'OP',
+  },
 ];
 
 export default assets;

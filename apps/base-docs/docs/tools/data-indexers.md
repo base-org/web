@@ -51,24 +51,25 @@ To get started, [sign up](https://www.covalenthq.com/platform/?utm_source=base&u
 #### Supported Networks
 
 - [Base Mainnet](https://www.covalenthq.com/docs/networks/base/?utm_source=base&utm_medium=partner-docs)
+- [Base Sepolia](https://www.covalenthq.com/docs/networks/base/?utm_source=base&utm_medium=partner-docs) (Testnet)
 - [Base Goerli](https://www.covalenthq.com/docs/networks/base/?utm_source=base&utm_medium=partner-docs) (Testnet)
 
 ---
 
 ## Envio
 
-[Envio](https://envio.dev) is a full-featured data indexing solution that provides application developers with a seamless and efficient way to index and aggregate real-time and historical blockchain data for any EVM. The indexed data is easily accessible through custom GraphQL queries, providing developers with the flexibility and power to retrieve specific information. 
-  
+[Envio](https://envio.dev) is a full-featured data indexing solution that provides application developers with a seamless and efficient way to index and aggregate real-time and historical blockchain data for any EVM. The indexed data is easily accessible through custom GraphQL queries, providing developers with the flexibility and power to retrieve specific information.
+
 Envio [HyperSync](https://docs.envio.dev/docs/hypersync) is an indexed layer of the Base blockchain for the hyper-speed syncing of historical data (JSON-RPC bypass). What would usually take hours to sync ~100,000 events can now be done in the order of less than a minute.
 
 Designed to optimize the user experience, Envio offers automatic code generation, flexible language support, multi-chain data aggregation, and a reliable cost-effective hosted service.
 
 To get started, visit the [documentation](https://docs.envio.dev/docs/overview) or follow the [quickstart](https://docs.envio.dev/docs/quickstart) guide.
 
-
 #### Supported Networks
 
 - Base Mainnet
+- Base Sepolia (Testnet)
 - Base Goerli (Testnet)
 
 ---
@@ -82,8 +83,8 @@ Find out more in the [Shovel Docs](https://indexsupply.com/shovel/docs/)
 #### Supported Networks
 
 - Base Mainnet
-- Base Goerli (Testnet)
 - Base Sepolia (Testnet)
+- Base Goerli (Testnet)
 
 ---
 
@@ -130,4 +131,5 @@ To get started, visit the [documentation](https://docs.flair.dev) or clone the [
 #### Supported Networks
 
 - [Base Mainnet](https://docs.flair.dev/reference/manifest.yml)
+- [Base Sepolia](https://docs.flair.dev/reference/manifest.yml) (Testnet)
 - [Base Goerli](https://docs.flair.dev/reference/manifest.yml) (Testnet)

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   connectorsForWallets,
@@ -5,14 +6,14 @@ import {
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { baseGoerli } from 'wagmi/chains';
+import { baseGoerli, baseSepolia } from 'wagmi/chains';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 import { Provider as CookieManagerProvider, Region } from '@coinbase/cookie-manager';
 import { cookieManagerConfig } from '../utils/cookieManagerConfig';
 import { CookieBanner } from '@coinbase/cookie-banner';
 
 export const { chains, publicClient } = configureChains(
-  [baseGoerli],
+  [baseGoerli, baseSepolia],
   [
     jsonRpcProvider({
       rpc: (chain) => ({ http: chain.rpcUrls.default.http[0] }),
@@ -77,8 +78,9 @@ const cookieBannerTheme = {
 };
 
 export default function Root({ children }) {
+  const [mounted, setMounted] = useState(false);
+
   // Cookie Consent Manager Provider Configuration
-  const [isMounted, setIsMounted] = useState(false);
   const trackingPreference = useRef();
 
   const setTrackingPreference = useCallback((newPreference) => {
@@ -108,11 +110,9 @@ export default function Root({ children }) {
 
   const handleLogError = useCallback((err) => console.error(err), []);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
-  if (!isMounted) return null;
+  if (!mounted) return null;
 
   return (
     <WagmiConfig config={wagmiConfig}>
