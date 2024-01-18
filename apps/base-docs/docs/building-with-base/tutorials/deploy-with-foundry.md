@@ -1,6 +1,6 @@
 ---
 title: Using Foundry
-slug: /guides/deploy-with-foundry
+slug: /tutorials/deploy-with-foundry
 description: "A guide on deploying a smart contract on the Base test network using Foundry. Includes instructions for
 setting up the environment, compiling, and deploying the smart contract."
 keywords: ["Foundry", "smart contract", "ERC-721", "Base", "Base test network", "Base testnet", "Rust", "Solidity", "smart contract deployment",

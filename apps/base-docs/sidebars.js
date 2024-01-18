@@ -19,7 +19,7 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'Guides',
+          label: 'Tutorials',
           collapsible: true,
           collapsed: true,
           items: [
@@ -29,11 +29,11 @@ module.exports = {
               collapsible: true,
               collapsed: true,
               items: [
-                'building-with-base/guides/deploy-smart-contracts',
-                'building-with-base/guides/deploy-with-foundry',
-                'building-with-base/guides/deploy-with-remix',
-                'building-with-base/guides/deploy-with-tenderly',
-                'building-with-base/guides/deploy-with-thirdweb',
+                'building-with-base/tutorials/deploy-smart-contracts',
+                'building-with-base/tutorials/deploy-with-foundry',
+                'building-with-base/tutorials/deploy-with-remix',
+                'building-with-base/tutorials/deploy-with-tenderly',
+                'building-with-base/tutorials/deploy-with-thirdweb',
               ],
             },
             {
@@ -41,18 +41,18 @@ module.exports = {
               label: 'Building an App Onchain',
               collapsible: true,
               collapsed: true,
-              items: ['building-with-base/guides/build-with-thirdweb'],
+              items: ['building-with-base/tutorials/build-with-thirdweb'],
             },
-            'building-with-base/guides/run-a-base-node',
+            'building-with-base/tutorials/run-a-base-node',
             {
               type: 'category',
               label: 'Accessing real-world data using Oracles',
               collapsible: true,
               collapsed: true,
               items: [
-                'building-with-base/guides/using-chainlink-price-feeds',
-                'building-with-base/guides/using-pyth-price-feeds',
-                'building-with-base/guides/using-supra-vrf',
+                'building-with-base/tutorials/using-chainlink-price-feeds',
+                'building-with-base/tutorials/using-pyth-price-feeds',
+                'building-with-base/tutorials/using-supra-vrf',
               ],
             },
             {
@@ -60,7 +60,7 @@ module.exports = {
               label: 'Sending data and tokens across chains',
               collapsible: true,
               collapsed: true,
-              items: ['building-with-base/guides/cross-chain-with-ccip'],
+              items: ['building-with-base/tutorials/cross-chain-with-ccip'],
             },
             {
               type: 'category',
@@ -70,12 +70,12 @@ module.exports = {
               items: [
                 {
                   type: 'doc',
-                  id: 'building-with-base/guides/building-with-base-and-foundry/introduction',
+                  id: 'building-with-base/tutorials/building-with-base-and-foundry/introduction',
                   className: 'sidebar-coding',
                 },
                 {
                   type: 'doc',
-                  id: 'building-with-base/guides/building-with-base-and-foundry/testing',
+                  id: 'building-with-base/tutorials/building-with-base-and-foundry/testing',
                   className: 'sidebar-coding',
                 },
               ],
@@ -87,7 +87,7 @@ module.exports = {
               items: [
                 {
                   type: 'doc',
-                  id: 'hardhat-tools-and-testing/overview',
+                  id: 'building-with-base/tutorials/hardhat-tools-and-testing/overview',
                   className: 'sidebar-reading',
                 },
                 {
@@ -96,22 +96,22 @@ module.exports = {
                   items: [
                     {
                       type: 'doc',
-                      id: 'hardhat-tools-and-testing/hardhat-profiling-size/contract-sizer-setup-vid',
+                      id: 'building-with-base/tutorials/hardhat-tools-and-testing/hardhat-profiling-size/contract-sizer-setup-vid',
                       className: 'sidebar-video',
                     },
                     {
                       type: 'doc',
-                      id: 'hardhat-tools-and-testing/hardhat-profiling-size/manual-contract-optimizations-vid',
+                      id: 'building-with-base/tutorials/hardhat-tools-and-testing/hardhat-profiling-size/manual-contract-optimizations-vid',
                       className: 'sidebar-video',
                     },
                     {
                       type: 'doc',
-                      id: 'hardhat-tools-and-testing/hardhat-profiling-size/using-the-optimizer-vid',
+                      id: 'building-with-base/tutorials/hardhat-tools-and-testing/hardhat-profiling-size/using-the-optimizer-vid',
                       className: 'sidebar-video',
                     },
                     {
                       type: 'doc',
-                      id: 'hardhat-tools-and-testing/hardhat-profiling-size/hardhat-profiling-size',
+                      id: 'building-with-base/tutorials/hardhat-tools-and-testing/hardhat-profiling-size/hardhat-profiling-size',
                       className: 'sidebar-coding',
                     },
                   ],
@@ -123,17 +123,17 @@ module.exports = {
                   items: [
                     {
                       type: 'doc',
-                      id: 'hardhat-tools-and-testing/hardhat-profiling-gas/installing-the-gas-analyzer-vid',
+                      id: 'building-with-base/tutorials/hardhat-tools-and-testing/hardhat-profiling-gas/installing-the-gas-analyzer-vid',
                       className: 'sidebar-video',
                     },
                     {
                       type: 'doc',
-                      id: 'hardhat-tools-and-testing/hardhat-profiling-gas/improving-gas-usage-vid',
+                      id: 'building-with-base/tutorials/hardhat-tools-and-testing/hardhat-profiling-gas/improving-gas-usage-vid',
                       className: 'sidebar-video',
                     },
                     {
                       type: 'doc',
-                      id: 'hardhat-tools-and-testing/hardhat-profiling-gas/hardhat-profiling-gas',
+                      id: 'building-with-base/tutorials/hardhat-tools-and-testing/hardhat-profiling-gas/hardhat-profiling-gas',
                       className: 'sidebar-coding',
                     },
                   ],
@@ -145,7 +145,7 @@ module.exports = {
                   items: [
                     {
                       type: 'doc',
-                      id: 'hardhat-tools-and-testing/hardhat-debugging/debugging-with-hardhat-sbs',
+                      id: 'building-with-base/tutorials/hardhat-tools-and-testing/hardhat-debugging/debugging-with-hardhat-sbs',
                       className: 'sidebar-code',
                     },
                   ],
@@ -157,7 +157,7 @@ module.exports = {
                   items: [
                     {
                       type: 'doc',
-                      id: 'hardhat-tools-and-testing/hardhat-test-coverage/hardhat-test-coverage-sbs',
+                      id: 'building-with-base/tutorials/hardhat-tools-and-testing/hardhat-test-coverage/hardhat-test-coverage-sbs',
                       className: 'sidebar-code',
                     },
                   ],
@@ -171,17 +171,17 @@ module.exports = {
               items: [
                 {
                   type: 'doc',
-                  id: 'connecting-to-the-blockchain/overview',
+                  id: 'building-with-base/tutorials/connecting-to-the-blockchain/overview',
                   className: 'sidebar-reading',
                 },
                 {
                   type: 'doc',
-                  id: 'connecting-to-the-blockchain/blockchain-providers',
+                  id: 'building-with-base/tutorials/connecting-to-the-blockchain/blockchain-providers',
                   className: 'sidebar-reading',
                 },
                 {
                   type: 'doc',
-                  id: 'connecting-to-the-blockchain/connecting-with-a-provider',
+                  id: 'building-with-base/tutorials/connecting-to-the-blockchain/connecting-with-a-provider',
                   className: 'sidebar-coding',
                 },
               ],
@@ -194,22 +194,22 @@ module.exports = {
               items: [
                 {
                   type: 'doc',
-                  id: 'building-with-base/guides/account-abstraction/overview',
+                  id: 'building-with-base/tutorials/account-abstraction/overview',
                   className: 'sidebar-reading',
                 },
                 {
                   type: 'doc',
-                  id: 'building-with-base/guides/account-abstraction/intro-to-account-abstraction',
+                  id: 'building-with-base/tutorials/account-abstraction/intro-to-account-abstraction',
                   className: 'sidebar-reading',
                 },
                 {
                   type: 'doc',
-                  id: 'building-with-base/guides/account-abstraction/intro-to-privy',
+                  id: 'building-with-base/tutorials/account-abstraction/intro-to-privy',
                   className: 'sidebar-coding',
                 },
                 {
                   type: 'doc',
-                  id: 'building-with-base/guides/account-abstraction/implementing-the-paymaster',
+                  id: 'building-with-base/tutorials/account-abstraction/implementing-the-paymaster',
                   className: 'sidebar-coding',
                 },
               ],

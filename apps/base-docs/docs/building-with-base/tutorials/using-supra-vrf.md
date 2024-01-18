@@ -1,6 +1,6 @@
 ---
 title: Supra dVRF
-slug: /guides/using-supra-vrf
+slug: /tutorials/using-supra-vrf
 description: A guide on using Supra dVRF to serve random numbers using an onchain randomness generation mechanism directly within your smart contracts on the Base testnet.
 keywords: [
     Oracle

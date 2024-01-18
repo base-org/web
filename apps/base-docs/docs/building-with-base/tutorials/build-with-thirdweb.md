@@ -1,6 +1,6 @@
 ---
 title: Using thirdweb
-slug: /guides/build-with-thirdweb
+slug: /tutorials/build-with-thirdweb
 description: A guide on building an NFT gallery app using thirdweb, including steps for creating an NFT collection, minting NFTs, and configuring the app for the Base testnet.
 keywords:
   [

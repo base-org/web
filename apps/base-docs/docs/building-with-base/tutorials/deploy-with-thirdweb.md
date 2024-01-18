@@ -1,6 +1,6 @@
 ---
 title: Using thirdweb
-slug: /guides/deploy-with-thirdweb
+slug: /tutorials/deploy-with-thirdweb
 description: A guide on deploying and interacting with smart contracts using the thirdweb CLI and SDK. Includes instructions for project creation, contract deployment on the Base test network.
 keywords:
   [

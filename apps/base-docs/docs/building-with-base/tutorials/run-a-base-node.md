@@ -1,6 +1,6 @@
 ---
 title: Running a Base Node
-slug: /guides/run-a-base-node
+slug: /tutorials/run-a-base-node
 description: A guide for setting up and running a Base Node.
 keywords:
   [

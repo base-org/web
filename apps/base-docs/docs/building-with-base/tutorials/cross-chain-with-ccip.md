@@ -1,6 +1,6 @@
 ---
 title: Chainlink CCIP
-slug: /guides/cross-chain-with-ccip
+slug: /tutorials/cross-chain-with-ccip
 description: A guide on using Chainlink CCIP to perform cross-chain messaging and token transfers from Base Goerli testnet to Optimism Goerli testnet.
 keywords:
   [
