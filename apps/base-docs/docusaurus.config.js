@@ -39,7 +39,6 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          routeBasePath: '/',
         },
         theme: {
           customCss: [
@@ -89,8 +88,6 @@ const config = {
         alt: PRODUCT_NAME,
         src: 'img/logo.svg',
         srcDark: 'img/logo_dark.svg',
-        href: 'https://base.org', // Default to `siteConfig.baseUrl`.
-        target: '_self', // By default, this value is calculated based on the `href` attribute (the external link will open in a new tab, all others in the current one).
       },
       items: [
         {
