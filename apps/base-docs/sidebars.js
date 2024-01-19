@@ -234,6 +234,7 @@ module.exports = {
         'tools/data-indexers',
         'tools/cross-chain',
         'tools/account-abstraction',
+        'tools/nft-checkout',
         'tools/onramps',
         'tools/onboarding',
         {
