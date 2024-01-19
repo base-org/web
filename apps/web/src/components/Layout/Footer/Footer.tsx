@@ -45,7 +45,6 @@ export function Footer() {
             <br />
             <a href="https://docs.base.org/privacy-policy">Privacy Policy</a>
           </p>
-          <p>© {currentYear} Coinbase</p>
         </div>
         <div className="flex h-full flex-col gap-5 pt-24 lg:flex-row lg:gap-10 lg:pt-0">
           <div className="flex h-full flex-col gap-4 lg:flex-row lg:gap-10">
