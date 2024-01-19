@@ -16,6 +16,7 @@ keywords:
     Crossmint,
     Dynamic,
     Particle Network,
+    WalletKit,
     user wallet,
     accounts,
     user account,
@@ -49,5 +50,15 @@ You can [get started with Privy here](https://docs.privy.io/guide/quickstart) an
 ## Particle Network
 
 [Particle Network](https://particle.network/) is the intent-centric, modular access layer of Web3. With Particle's Smart Wallet-as-a-Service, developers can curate an seamless user experience through modular and customizable EOA/AA embedded wallet components. Using MPC-TSS for key management, Particle can streamline user onboarding via familiar web2 accounts - such as Google accounts, email addresses, and phone numbers. Particle Network's Smart Wallet-as-a-Service is compatible with most EVM chains, including Base.
+
+---
+
+## WalletKit
+
+[WalletKit](https://walletkit.com) is an all-in-one platform for adding smart, gasless wallets to your app. WalletKit offers pre-built components for onboarding users with email and social logins, which can be integrated in under 15 minutes using their React SDK or the wagmi connector. Alternatively, build completely bespoke experiences for your users using WalletKit's Wallets API.
+
+WalletKit is compatible with most EVM chains, including Base. It has integrated support for ERC 4337 and comes with a paymaster and bundler included, requiring no extra setup.
+
+You can check out the [WalletKit documentation here](https://docs.walletkit.com). Start building for free on the Base testnet today.
 
 ---
