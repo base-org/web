@@ -137,7 +137,7 @@
   {
     "name": "ARPA Network",
     "url": "https://www.arpanetwork.io/en-US/randcast",
-    "description": "ARPA Network built the on-chain verifiable randomness oracle, or random number generator (RNG), known as Randcast. Randcast has ready-made SDKs for 8 different functionalities, including shuffling cards, drawing lottery, picking winners, and picking a property or rarity. Developers can now request on-chain randomness effortlessly via our subscription portal.",
+    "description": "A secure computation network that builds Randcast, an onchain verifiable RNG for temper-proof randomness in AW, gaming, and NFTs. Features a dev-friendly Smart Contract SDK for an easy dapp integration.",
     "tags": [
       "infra"
     ],
