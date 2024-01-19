@@ -59,6 +59,23 @@ const config = {
         sidebarPath: require.resolve('./base-camp/sidebars.js'),
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'tutorials-docs',
+        path: 'tutorials',
+        routeBasePath: 'tutorials',
+        sidebarPath: require.resolve('./tutorials/sidebars.js'),
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-pages',
+      {
+        id: 'tutorials-page',
+        path: 'tutorials',
+        routeBasePath: 'tutorials',
+      },
+    ],
     'docusaurus-node-polyfills',
     [
       '@docusaurus/plugin-client-redirects',
@@ -95,6 +112,11 @@ const config = {
           docId: 'overview',
           position: 'left',
           label: 'Documentation',
+        },
+        {
+          to: '/tutorials',
+          position: 'left',
+          label: 'Tutorials',
         },
         {
           to: '/base-camp/docs/welcome',

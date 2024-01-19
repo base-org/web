@@ -42,7 +42,7 @@ Begin by opening a browser window and navigating to [remix.ethereum.org]. Click 
 
 The editor pane loads with the Remix home screen, which contains news, helpful links, and warnings about common scams. You can close the home tab if you'd like, then open `1_Storage.sol`, located inside the `contracts` folder of the `default_workspace`.
 
-![Remix Editor](../../../assets/images/deployment-with-remix/editor-pane.png)
+![Remix Editor](../../assets/images/deployment-with-remix/editor-pane.png)
 
 You'll edit your code in the editor pane. It also has most of the features you're expecting, such as syntax and error highlighting. Note that in Remix, errors are not underlines. Instead, you'll see an❗to the left of the line number where the error is present.
 
@@ -52,7 +52,7 @@ At the top, you'll see a big green arrow similar to the _Run_ button in other ed
 
 Below the editor pane, you'll find the terminal.
 
-![Remix Terminal](../../../assets/images/deployment-with-remix/remix-terminal.png)
+![Remix Terminal](../../assets/images/deployment-with-remix/remix-terminal.png)
 
 You'll primarily use this panel to observe transaction logs from your smart contracts. It's also one way to access Remix's powerful debugging tools.
 
@@ -138,13 +138,13 @@ Once you have testnet Ether, you can deploy the `Storage` contract!
 
 Open the _Deploy & Run Transactions_ tab. Under _Environment_, select _Injected Provider_. It will list _Coinbase_, _MetaMask_, or any other wallet you have activated here.
 
-![Environment](../../../assets/images/deployment-with-remix/select-provider.png)
+![Environment](../../assets/images/deployment-with-remix/select-provider.png)
 
 The first time you do this, your wallet will ask you to confirm that you want to connect this app (Remix) to your wallet.
 
 Once you are connected, you'll see the name of the network below the _Environment_ dropdown.
 
-![Connected](../../../assets/images/deployment-with-remix/remix-base-goerli-connected.png)
+![Connected](../../assets/images/deployment-with-remix/remix-base-goerli-connected.png)
 
 For Base Sepolia, you should see `Custom (84532) network` (**note:** if you're deploying to mainnet rather than testnet, you should see `Custom (8453) network` instead).
 
@@ -154,7 +154,7 @@ If you don't see the correct network, change the active network in your wallet.
 
 Click the orange _Deploy_ button. Because it costs gas to deploy a contract, you'll be asked to review and confirm a transaction.
 
-![Confirm](../../../assets/images/deployment-with-remix/base-confirm-transaction.png)
+![Confirm](../../assets/images/deployment-with-remix/base-confirm-transaction.png)
 
 :::danger
 
@@ -178,7 +178,7 @@ On this page, you can review the balance, information about, and all the transac
 
 Click the _Contract_ tab in the main panel. If you've deployed a unique contract, at the top is a message asking you to _Verify and Publish_ your contract source code.
 
-![Verify](../../../assets/images/deployment-with-remix/verify-and-publish.png)
+![Verify](../../assets/images/deployment-with-remix/verify-and-publish.png)
 
 Verifying your contract maps the names of your functions and variables to the compiled byte code, which makes it possible to interact with the contract using a human-readable interface.
 
@@ -192,7 +192,7 @@ For _Please select Open Source License Type_ pick the license that matches what 
 
 On the next page, copy and paste your source code in the window. Verify that you are not a robot, and click _Verify and Publish_. You should see a success message.
 
-![Success](../../../assets/images/deployment-with-remix/compiler-debug-log.png)
+![Success](../../assets/images/deployment-with-remix/compiler-debug-log.png)
 
 Click the linked address to your contract to return to the contract page. You'll now see your code!
 

@@ -72,7 +72,7 @@ Follow these steps to set up your NFT collection:
    2. Network (Choose **Base Sepolia Testnet**)
 7. Click **Deploy Now**.
 
-![Thirdweb Deploy Contract](../../../assets/images/build-with-thirdweb/deploy-contract.png)
+![Thirdweb Deploy Contract](../../assets/images/build-with-thirdweb/deploy-contract.png)
 
 :::info
 
@@ -96,7 +96,7 @@ Follow the steps below to mint new NFTs:
 
 Repeat these steps to mint as many NFTs as you'd like.
 
-![Thirdweb Mint NFT](../../../assets/images/build-with-thirdweb/mint-nft.png)
+![Thirdweb Mint NFT](../../assets/images/build-with-thirdweb/mint-nft.png)
 
 ---
 

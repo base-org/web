@@ -72,7 +72,7 @@ Follow these steps to set up your DevNet template for Base Network:
    2. Give your Base DevNet a unique **Name**.
    3. Click **Create**.
 
-   ![Template Creation Dialogue](../../../assets/images/deployment-with-tenderly/create-template.png)
+   ![Template Creation Dialogue](../../assets/images/deployment-with-tenderly/create-template.png)
 
 :::info
 If needed, check out the Tenderly documentation for more information on [setting up a Devnet template](https://docs.tenderly.co/devnets/intro-to-devnets#basic-devnet-usage).
@@ -88,7 +88,7 @@ If needed, check out the Tenderly documentation for more alternative [methods to
 
 You can also [use the YAML editor in DevNets to create reusable templates](https://docs.tenderly.co/devnets/yaml-template) that allow you to configure your environment. As a "blueprint" for your DevNets, the reusable YAML templates enable you to quickly spawn your DevNets with preset configurations. You can use them to override on-chain data for wallets and contracts of interest with custom values, including `balances`, `erc20`, `storage`, `wallets`, and `contracts`.
 
-![Template Configuration Button](../../../assets/images/deployment-with-tenderly/configuration.png)
+![Template Configuration Button](../../assets/images/deployment-with-tenderly/configuration.png)
 
 #### YAML Template Configuration
 
@@ -238,7 +238,7 @@ You can [verify your smart contract on Tenderly](https://docs.tenderly.co/monito
 
    If successful, you should get an output similar to:
 
-   ![output](../../../assets/images/deployment-with-tenderly/output.png)
+   ![output](../../assets/images/deployment-with-tenderly/output.png)
 
    You can see the result of the deployment in [this example on a publicly shared DevNet](https://dashboard.tenderly.co/shared/devnet/transaction/7811f867-2af4-4136-8c75-f77fbb4e17ed).
 
@@ -256,11 +256,11 @@ To use it, follow these steps:
 - Click on the **setGreeting** transaction.
 - Click Debugger.
 
-![Devnet Transaction Capture](../../../assets/images/deployment-with-tenderly/setgreeting.png)
+![Devnet Transaction Capture](../../assets/images/deployment-with-tenderly/setgreeting.png)
 
 - Click the **Debugger** button.
 
-![Debugger Screen](../../../assets/images/deployment-with-tenderly/debugger-button.png)
+![Debugger Screen](../../assets/images/deployment-with-tenderly/debugger-button.png)
 
 Notice the current line (line 14 in this example) is highlighted. Use Debugger to examine the **setGreeting** function.
 
@@ -273,7 +273,7 @@ To try it out, follow these steps:
 
 You should see the output `{"result": "hello"}`!
 
-![Result from evaluating an expression in Tenderly](../../../assets/images/deployment-with-tenderly/result-of-expression.png)
+![Result from evaluating an expression in Tenderly](../../assets/images/deployment-with-tenderly/result-of-expression.png)
 
 ---
 
@@ -286,19 +286,19 @@ You can **simulate transactions** with updated contract source code and modified
 Follow these steps to try it out:
 
 - Click the **New Simulation** button.
-  ![DevNet Simulation Button](../../../assets/images/deployment-with-tenderly/simulator-button.png)
+  ![DevNet Simulation Button](../../assets/images/deployment-with-tenderly/simulator-button.png)
 - Then, from the Simulation screen, find the **Select address** drop-down menu and click **Greeter**.
 - Click **Edit Source**.
 - Modify the console.log to say `You changed the` to the console.log within **SetGreeting** in the `Greeter.sol` smart contract and click the **Apply** button.
-  ![Editing Source Code of your smart contract](../../../assets/images/deployment-with-tenderly/modifying-source.png)
+  ![Editing Source Code of your smart contract](../../assets/images/deployment-with-tenderly/modifying-source.png)
 - From the **Select Option** drop-down menu, select "**Set Greeting**."
 - Change the greeting to something like, `Hello from Base!`
-  ![Simulation using a new parameter as an input](../../../assets/images/deployment-with-tenderly/simulation.png)
+  ![Simulation using a new parameter as an input](../../assets/images/deployment-with-tenderly/simulation.png)
 - Click **Simulate Transaction**.
 
 Notice the smart contract edit you made is now reflected in the console.log. In addition, you simulated transaction execution under this new condition of a modified smart contract.
 
-![Smart Contract Edit in Simulated Transaction](../../../assets/images/deployment-with-tenderly/result-of-simulation.png)
+![Smart Contract Edit in Simulated Transaction](../../assets/images/deployment-with-tenderly/result-of-simulation.png)
 
 ---
 
@@ -314,7 +314,7 @@ In addition, we can **change the state of the contract** before simulating a tra
 
    Note: The **VALUE** is hex for `Hello from Tenderly.` You can get a generated hex value [using a string-to-hex converter](https://string-functions.com/string-hex.aspx).
 
-   ![State Override Portion of the Transaction Simulation Screen](../../../assets/images/deployment-with-tenderly/overrides.png)
+   ![State Override Portion of the Transaction Simulation Screen](../../assets/images/deployment-with-tenderly/overrides.png)
 
 6. Click **Add**.
 7. Click **Simulate**.
@@ -383,7 +383,7 @@ Follow along using the [DevNet example project](https://github.com/Tenderly/devn
 
    You can find the DevNet template slug (needed for `TENDERLY_DEVNET_TEMPLATE`) in the DevNets UI. Here is an example:
 
-   ![Showing how to find TENDERLY_DEVNET_TEMPLATE](../../../assets/images/deployment-with-tenderly/devnet-project-slug.png)
+   ![Showing how to find TENDERLY_DEVNET_TEMPLATE](../../assets/images/deployment-with-tenderly/devnet-project-slug.png)
 
    Showing how to find TENDERLY_DEVNET_TEMPLATE
 
@@ -399,7 +399,7 @@ Follow along using the [DevNet example project](https://github.com/Tenderly/devn
 
 Note that you should now have a workflow run in progress. After the build finishes, you can see all the transactions in a DevNet run.
 
-![Github Actions Linked with Tenderly](../../../assets/images/deployment-with-tenderly/github-actions.png)
+![Github Actions Linked with Tenderly](../../assets/images/deployment-with-tenderly/github-actions.png)
 
 ---
 
