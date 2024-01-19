@@ -9,6 +9,114 @@
     "imageUrl": "/images/partners/wallet-retail.webp"
   },
   {
+    "name": "BotFi.app",
+    "tags": [
+      "defi"
+    ],
+    "description": "BotFi is an innovative AI-assisted crypto bot available on Telegram and Messenger designed to streamline your daily DeFi tasks, including swapping, bridging, and sniping across various blockchains.",
+    "url": "https://botfi.app",
+    "imageUrl": "/images/partners/botfi.png"
+  },
+  {
+    "name": "Hitdex",
+    "tags": [
+      "defi"
+    ],
+    "description": "A decentralized ecosystem for cross-chain trading and buying & selling crypto. Trade ETH and your favorite tokens across eight chains including Base, Ethereum, Solana, Polygon PoS, Optimism, and more.",
+    "url": "https://www.hitdex.com/#/base",
+    "imageUrl": "/images/partners/hitdex.png"
+  },
+  {
+    "name": "Brian",
+    "tags": [
+      "bridge"
+    ],
+    "description": "Brian offers a non custodial solution to perform transactions, research web3 info and deploy smart contracts via prompting.",
+    "url": "https://www.brianknows.org/",
+    "imageUrl": "/images/partners/brian.png"
+  },
+  {
+    "name": "Cede.Store",
+    "tags": [
+      "bridge"
+    ],
+    "description": "Cede is a non-custodial browser extension that enables users to quickly access their assets from the largest centralized exchanges on any dApp through an execution and UI comparable to Metamask in just a few clicks.",
+    "url": "https://cede.store/",
+    "imageUrl": "/images/partners/cede.png"
+  },
+  {
+    "name": "L2Pass",
+    "tags": [
+      "bridge"
+    ],
+    "description": "L2Pass is an Omni-Chain Protocol Designed for Seamless Multi-Chain Token Movement, Swaps, and Art Performances.",
+    "url": "https://l2pass.com/",
+    "imageUrl": "/images/partners/l2pass.png"
+  },
+  {
+    "name": "MES Protocol",
+    "tags": [
+      "bridge"
+    ],
+    "description": "MES is a stablecoin-focused bridge and swap. Traders enjoy instant and secure cross chain transactions at low cost.",
+    "url": "https://www.mesprotocol.com/",
+    "imageUrl": "/images/partners/mes.png"
+  },
+  {
+    "name": "SafeSwap",
+    "tags": [
+      "bridge"
+    ],
+    "description": "SafeSwap is a decentralized atomic swap bridge for native tokens. The Atomic Swap protocol enables builders to transport their native tokens to other EVM-based blockchains, without having to rely on wrapped tokens.",
+    "url": "http://safeswap.io/",
+    "imageUrl": "/images/partners/safeswap.png"
+  },
+  {
+    "name": "OmniKingdoms",
+    "tags": [
+      "gaming"
+    ],
+    "description": "OmniKingdoms is an on-chain MMORPG that focuses on state transitions. Players can join the community and earn rewards for questing, battling, crafting and much more. We aim to integrate the newest gaming mechanics and other projects.",
+    "url": "https://www.omnikingdoms.io/",
+    "imageUrl": "/images/partners/omnikingdom.png"
+  },
+  {
+    "name": "Cyberscope ",
+    "tags": [
+      "security"
+    ],
+    "description": "An award-winning blockchain security firm specializing in smart contract audits. We work with some of the biggest networks out there such as Polygon, Chainlink, Klaytn, Oasis, and many more.",
+    "url": "cyberscope.io",
+    "imageUrl": "/images/partners/cyberscope.png"
+  },
+  {
+    "name": "Intract",
+    "tags": [
+      "social"
+    ],
+    "description": "Intract is a web3 growth platform to help you educate new users and build community engagement.\n\n\n",
+    "url": "www.intract.io",
+    "imageUrl": "/images/partners/intract.png"
+  },
+  {
+    "name": "Layerr",
+    "tags": [
+      "nft"
+    ],
+    "description": "Layerr is crafting an innovative platform where users can effortlessly tokenize a variety of consumer-based digital assets. Our platform simplifies the complexities of blockchain, allowing users to tokenize at scale.",
+    "url": "https://layerr.xyz/",
+    "imageUrl": "/images/partners/layerr.png"
+  },
+  {
+    "name": "Irys",
+    "tags": [
+      "infra"
+    ],
+    "description": "Irys is the only provenance layer. It enables users to limitlessly upload and sequence data while precisely attributing its origin.",
+    "url": "https://irys.xyz/",
+    "imageUrl": "/images/partners/irys.png"
+  },
+  {
     "name": "Envio",
     "url": "https://envio.dev",
     "description": "Envio is a modern, multi-chain EVM blockchain indexing framework speed-optimized for querying real-time and historical data. ",
