@@ -61,6 +61,17 @@ const config = {
       },
     ],
     'docusaurus-node-polyfills',
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(existingPath) {
+          if (existingPath.includes('/tutorials')) {
+            return [existingPath.replace('/tutorials', '/guides')];
+          }
+          return undefined;
+        },
+      },
+    ],
   ],
   scripts: [
     {
