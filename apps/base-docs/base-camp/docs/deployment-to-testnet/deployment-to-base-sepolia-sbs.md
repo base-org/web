@@ -46,6 +46,8 @@ Testnet tokens have no real value, but the supply is not unlimited. You can use 
 
 You can find many faucets by searching, and it's good to keep a few bookmarked because they have a tendency to go down from time to time. Faucet providers are constantly combating bad actors and sometimes need to disable their faucets while doing so.
 
+The Coinbase Wallet has faucets built in. You can find them by clicking Settings -> Developer settings -> Testnet faucets.
+
 You can also access the [faucets on the web].
 
 Once you have testnet Base Sepolia Ether, you can view your balance under the _Testnets_ tab in the Coinbase wallet or by selecting the testnet from the network dropdown in Metamask. Sadly, it's not actually worth the amount listed!
