@@ -53,7 +53,7 @@ To view current transactions and live stats about the Axelar network please visi
 
 [Crossmint](https://crossmint.com/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) allows you to create and deploy NFT Collections and enable cross-chain payments. This enables your users and customers to purchase an NFT from a collection deployed on Base using Ethereum or Solana tokens. 
 
-Check out [Crossmint Docs](https://docs.crossmint.com/docs/cross-chain-payments/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) to learn more about how you can integrate Crossmint with your product to power cross-chain payments. 
+Check out [Crossmint Docs](https://docs.crossmint.com/nft-checkout/introduction/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) to learn more about NFT Checkout with Crossmint. To power cross-chain payments, click [here](https://docs.crossmint.com/nft-checkout/pay-button/select-payment-options/?utm_medium=docs&utm_source=backlinks&utm_campaign=base) to get started. 
 
 #### Supported Networks
 
