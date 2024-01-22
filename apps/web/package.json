@@ -10,6 +10,8 @@
     "update-contributors": "node ./scripts/updateContributors.js && npx prettier ./src/components/CoreContributors/CoreContributors.json -w"
   },
   "dependencies": {
+    "@coinbase/cookie-banner": "^1.0.3",
+    "@coinbase/cookie-manager": "^1.1.1",
     "@heroicons/react": "^2.0.18",
     "@next/font": "^13.1.5",
     "ethers": "5.7.2",
@@ -18,7 +20,8 @@
     "react": "^18.2.0",
     "react-blockies": "^1.4.1",
     "react-dom": "^18.2.0",
-    "react-intl": "^6.2.1"
+    "react-intl": "^6.2.1",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@types/node": "18.11.18",
