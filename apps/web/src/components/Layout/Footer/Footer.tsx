@@ -1,7 +1,5 @@
-import { useState, useCallback } from 'react';
 import getConfig from 'next/config';
 import Link from 'next/link';
-import { CookiePreferencesModal } from '@coinbase/cookie-banner';
 
 import { Icon } from '../../Icon/Icon';
 import { Logo } from '../../Logo/Logo';
@@ -9,14 +7,7 @@ import { Logo } from '../../Logo/Logo';
 const { publicRuntimeConfig } = getConfig();
 
 export function Footer() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleOpenModal = useCallback(() => setIsOpen(true), []);
-
-  const handleCloseModal = useCallback(() => setIsOpen(false), []);
-
   const currentYear = new Date().getFullYear();
-
   return (
     <footer className="z-10 mt-auto flex w-full justify-center bg-gray lg:pb-64">
       <div className="flex w-full max-w-[1440px] flex-col justify-between p-8 lg:flex-row">
@@ -53,12 +44,6 @@ export function Footer() {
             <a href="https://docs.base.org/terms-of-service">Terms of Service</a>
             <br />
             <a href="https://docs.base.org/privacy-policy">Privacy Policy</a>
-            <br />
-            <Link href="/cookie-policy">Cookie Policy</Link>
-            <br />
-            <button type="button" className="appearance-none underline" onClick={handleOpenModal}>
-              Cookie Manager
-            </button>
           </p>
           <p>© {currentYear} Coinbase</p>
         </div>
@@ -118,7 +103,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-      {isOpen && <CookiePreferencesModal isOpen={isOpen} onClose={handleCloseModal} />}
     </footer>
   );
 }
