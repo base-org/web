@@ -196,7 +196,7 @@ const sidebars = {
         {
           type: 'link',
           label: 'Introduction to Foundry',
-          href: 'http://localhost:3000/building-with-base/guides/building-with-base-and-foundry/introduction',
+          href: 'https://docs.base.org/building-with-base/guides/building-with-base-and-foundry/introduction',
           className: 'sidebar-coding',
         },
       ],
