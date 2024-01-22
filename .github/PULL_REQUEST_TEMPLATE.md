@@ -8,3 +8,5 @@
 
 - [ ] I've confirmed this token doesn't use a bridge override
 - [ ] I've confirmed this token is an OptimismMintableERC20
+
+Please include evidence of both confirmations above for your reviewers.
