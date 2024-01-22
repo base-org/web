@@ -47,6 +47,9 @@ export function BridgeInput({
   });
   const conversionRate =
     conversionRateData && amount ? usdFormatter(conversionRateData * +amount) : '$0.00';
+  const networkLayer = networkToLayer(inputNetwork);
+  const selectedAssetSymbol =
+    networkLayer === 'L1' ? selectedAsset.L1symbol : selectedAsset.L2symbol;
 
   function handleChangeAmount(e: { target: { value: SetStateAction<string> } }) {
     const value = parseFloat(e.target.value.toString());
@@ -94,7 +97,11 @@ export function BridgeInput({
   );
 
   function setMaxBalance() {
-    setAmount((parseFloat(balance) * 0.99).toFixed(6).toString());
+    if (selectedAssetSymbol === 'ETH') {
+      setAmount((parseFloat(balance) * 0.99).toFixed(6).toString());
+    } else {
+      setAmount(balance);
+    }
   }
 
   const error =
@@ -107,10 +114,6 @@ export function BridgeInput({
     if (amount === '0') setAmount('');
     input.current?.focus();
   }
-
-  const networkLayer = networkToLayer(inputNetwork);
-  const selectedAssetSymbol =
-    networkLayer === 'L1' ? selectedAsset.L1symbol : selectedAsset.L2symbol;
 
   return (
     <div className="flex w-full max-w-xl flex-col p-6">
