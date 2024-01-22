@@ -17,6 +17,14 @@ keywords:
     node deployment,
     Ethereum node,
   ]
+about:
+    duration: 30 minutes
+    updated: January 22nd 2024
+    author:
+        name: Taylor Caldwell
+        title: Developer Relations Engineer
+        url: https://github.com/taycaldwell
+        image_url: https://github.com/taycaldwell.png
 ---
 
 This guide will walk you through setting up your own [Base Node].

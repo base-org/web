@@ -20,6 +20,13 @@ keywords:
     smart contract on Base,
     build on Base,
   ]
+about:
+    duration: 30 minutes
+    updated: January 22nd 2024
+    author:
+        name: Base Developer Relations Team
+        url: https://github.com/base-org
+        image_url: https://github.com/base-org.png
 ---
 
 # Deploying a Smart Contract using Tenderly

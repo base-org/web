@@ -15,6 +15,11 @@ keywords:
     Smart Contract Development,
   ]
 hide_table_of_contents: false
+author:
+    name: Brian Doyle
+    title: Developer Relations Engineer
+    url: https://github.com/briandoyle81CB
+    image_url: https://github.com/briandoyle81CB.png
 ---
 
 In this article, you'll learn how to profile and optimize smart contract sizes with Hardhat and the [Hardhat Contract Sizer] plugin.

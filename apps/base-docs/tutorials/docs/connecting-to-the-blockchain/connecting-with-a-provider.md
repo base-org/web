@@ -18,6 +18,11 @@ keywords:
     Base providers,
   ]
 hide_table_of_contents: false
+author:
+    name: Brian Doyle
+    title: Developer Relations Engineer
+    url: https://github.com/briandoyle81CB
+    image_url: https://github.com/briandoyle81CB.png
 ---
 
 [RainbowKit] is a popular library that works with [wagmi] to make it easy to connect, disconnect, and change between multiple wallets. It's batteries-included out of the box, and allows for a great deal of customization of the list of wallets and connect/disconnect button.

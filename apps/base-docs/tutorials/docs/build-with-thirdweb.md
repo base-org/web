@@ -21,6 +21,11 @@ keywords:
     build a dapp on Base,
     build on Base,
   ]
+author:
+    name: Taylor Caldwell
+    title: Developer Relations Engineer
+    url: https://github.com/taycaldwell
+    image_url: https://github.com/taycaldwell.png
 ---
 
 # Building an App using thirdweb

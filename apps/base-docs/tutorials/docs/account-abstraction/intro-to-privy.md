@@ -3,6 +3,11 @@ title: Intro to Privy
 description: Learn how to use Privy for authentication in onchain apps.
 keywords: [Privy, Account Abstraction, Base Paymaster, Account Kit, ERC-4337]
 hide_table_of_contents: false
+author:
+    name: Brian Doyle
+    title: Developer Relations Engineer
+    url: https://github.com/briandoyle81CB
+    image_url: https://github.com/briandoyle81CB.png
 ---
 
 [Privy] makes authentication and user-management in onchain apps easier by bridging onchain and offchain user data. In preparation to dive into our Base Paymaster example app, this lesson will cover the basics of Privy.

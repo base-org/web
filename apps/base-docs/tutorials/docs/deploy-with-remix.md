@@ -4,6 +4,11 @@ slug: /tutorials/deploy-with-remix
 description: "A guide on deploying a smart contract on the Base test network using Remix IDE. Includes instructions for
 setting up the environment, compiling, and deploying the smart contract."
 keywords: ["Remix", "Remix IDE", "smart contract", "Base", "Base test network", "Base testnet", "Node.js", "Solidity", "smart contract deployment", "deploy a smart contract", "build on Base", "write smart contract", "smart contract development", "online IDE"]
+author:
+    name: Brian Doyle
+    title: Developer Relations Engineer
+    url: https://github.com/briandoyle81CB
+    image_url: https://github.com/briandoyle81CB.png
 ---
 
 # Deploying a Smart Contract using Remix

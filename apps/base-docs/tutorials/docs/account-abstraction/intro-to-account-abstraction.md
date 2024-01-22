@@ -3,6 +3,11 @@ title: Intro to Account Abstraction
 description: Learn what Account Abstraction it, how it works, and what problems it solves.
 keywords: [Privy, Account Abstraction, Base Paymaster, Account Kit, ERC-4337]
 hide_table_of_contents: false
+author:
+    name: Brian Doyle
+    title: Developer Relations Engineer
+    url: https://github.com/briandoyle81CB
+    image_url: https://github.com/briandoyle81CB.png
 ---
 
 [ERC-4337], also known as _Account Abstraction_, is a standard that allows smart contracts to initiate transactions, thus enabling any logic that users want to implement to be encoded into the smart contract wallet itself for execution on Ethereum.

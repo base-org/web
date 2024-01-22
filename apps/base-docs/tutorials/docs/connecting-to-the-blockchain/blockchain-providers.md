@@ -19,6 +19,11 @@ keywords:
     Base providers,
   ]
 hide_table_of_contents: false
+author:
+    name: Brian Doyle
+    title: Developer Relations Engineer
+    url: https://github.com/briandoyle81CB
+    image_url: https://github.com/briandoyle81CB.png
 ---
 
 Onchain apps need frontends, sometimes called dApps, to enable your users to interact with your smart contracts. A _provider_ makes the connection from frontend to blockchain, and is used to read data and send transactions.

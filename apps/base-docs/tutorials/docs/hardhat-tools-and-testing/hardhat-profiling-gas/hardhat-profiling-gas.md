@@ -14,6 +14,11 @@ keywords:
     gas-efficient contracts,
   ]
 hide_table_of_contents: false
+author:
+    name: Brian Doyle
+    title: Developer Relations Engineer
+    url: https://github.com/briandoyle81CB
+    image_url: https://github.com/briandoyle81CB.png
 ---
 
 In this article, you'll learn how to profile and optimize your smart contract's gas usage with Hardhat and the [Hardhat Gas Reporter] plugin.

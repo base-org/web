@@ -15,6 +15,11 @@ keywords:
     Test Suite Analysis,
   ]
 hide_table_of_contents: false
+author:
+    name: Brian Doyle
+    title: Developer Relations Engineer
+    url: https://github.com/briandoyle81CB
+    image_url: https://github.com/briandoyle81CB.png
 ---
 
 In this article, you'll learn how to profile the test coverage of your smart contracts with [Hardhat] and the [Solidity Coverage] community plugin.

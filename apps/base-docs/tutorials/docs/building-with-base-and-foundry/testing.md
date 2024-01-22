@@ -3,6 +3,11 @@ title: Testing with Foundry
 description: Documentation for Foundry, a toolchain for smart contract development. Learn how to test your smart contracts using Foundry.
 keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain, testing, test]
 hide_table_of_contents: false
+author:
+    name: Brian Doyle
+    title: Developer Relations Engineer
+    url: https://github.com/briandoyle81CB
+    image_url: https://github.com/briandoyle81CB.png
 ---
 
 In this article, you'll learn how to test your smart contracts using [Foundry], the toolchain for smart contract development.

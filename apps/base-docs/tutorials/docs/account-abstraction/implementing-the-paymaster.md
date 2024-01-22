@@ -3,6 +3,11 @@ title: Implementing the Paymaster
 description: Learn how to use Privy for authentication in onchain apps.
 keywords: [Privy, Account Abstraction, Base Paymaster, Account Kit, ERC-4337]
 hide_table_of_contents: false
+author:
+    name: Brian Doyle
+    title: Developer Relations Engineer
+    url: https://github.com/briandoyle81CB
+    image_url: https://github.com/briandoyle81CB.png
 ---
 
 A _paymaster_ is a type of smart contract account, introduced in [ERC-4337], that is able to pay for gas on behalf of another account. In this step-by-step, you'll modify an example created by [Privy], move it to another onchain app, and use it to call a smart contract function. Along the way, you'll encounter and resolve some of the confusing pitfalls associated with working with smart contract accounts.
