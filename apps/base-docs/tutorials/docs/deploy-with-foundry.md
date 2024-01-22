@@ -5,11 +5,14 @@ description: "A guide on deploying a smart contract on the Base test network usi
 setting up the environment, compiling, and deploying the smart contract."
 keywords: ["Foundry", "smart contract", "ERC-721", "Base", "Base test network", "Base testnet", "Rust", "Solidity", "smart contract deployment",
 "deploy a smart contract", "build on base", "write smart contract", "smart contract development"]
-author:
-    name: Taylor Caldwell
-    title: Developer Relations Engineer
-    url: https://github.com/taycaldwell
-    image_url: https://github.com/taycaldwell.png
+about:
+    duration: 30 minutes
+    updated: January 22nd 2024
+    author:
+        name: Taylor Caldwell
+        title: Developer Relations Engineer
+        url: https://github.com/taycaldwell
+        image_url: https://github.com/taycaldwell.png
 ---
 
 # Deploying a Smart Contract using Foundry

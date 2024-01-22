@@ -14,11 +14,14 @@ keywords:
     cross-chain messaging,
     transfer tokens across chains,
   ]
-author:
-    name: Taylor Caldwell
-    title: Developer Relations Engineer
-    url: https://github.com/taycaldwell
-    image_url: https://github.com/taycaldwell.png
+about:
+    duration: 30 minutes
+    updated: January 22nd 2024
+    author:
+        name: Taylor Caldwell
+        title: Developer Relations Engineer
+        url: https://github.com/taycaldwell
+        image_url: https://github.com/taycaldwell.png
 ---
 
 # Sending messages and tokens from Base to other chains using Chainlink CCIP

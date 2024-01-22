@@ -3,7 +3,10 @@ title: Implementing the Paymaster
 description: Learn how to use Privy for authentication in onchain apps.
 keywords: [Privy, Account Abstraction, Base Paymaster, Account Kit, ERC-4337]
 hide_table_of_contents: false
-author:
+about:
+  duration: 30 minutes
+  updated: January 22nd 2024
+  author:
     name: Brian Doyle
     title: Developer Relations Engineer
     url: https://github.com/briandoyle81CB

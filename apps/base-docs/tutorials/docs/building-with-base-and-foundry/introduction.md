@@ -3,7 +3,10 @@ title: Introduction to Foundry
 description: Documentation for Foundry, a toolchain for smart contract development. Provides instructions on setting up your development environment to work with Foundry.
 keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain]
 hide_table_of_contents: false
-author:
+about:
+  duration: 30 minutes
+  updated: January 22nd 2024
+  author:
     name: Brian Doyle
     title: Developer Relations Engineer
     url: https://github.com/briandoyle81CB

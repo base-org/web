@@ -3,7 +3,10 @@ title: Intro to Account Abstraction
 description: Learn what Account Abstraction it, how it works, and what problems it solves.
 keywords: [Privy, Account Abstraction, Base Paymaster, Account Kit, ERC-4337]
 hide_table_of_contents: false
-author:
+about:
+  duration: 30 minutes
+  updated: January 22nd 2024
+  author:
     name: Brian Doyle
     title: Developer Relations Engineer
     url: https://github.com/briandoyle81CB

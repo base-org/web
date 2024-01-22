@@ -21,7 +21,10 @@ keywords:
     build a dapp on Base,
     build on Base,
   ]
-author:
+about:
+  duration: 30 minutes
+  updated: January 22nd 2024
+  author:
     name: Taylor Caldwell
     title: Developer Relations Engineer
     url: https://github.com/taycaldwell
