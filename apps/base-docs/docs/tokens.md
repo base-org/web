@@ -33,7 +33,7 @@ The steps below explain how to get your token on the Base Token List.
 
 ### Step 1: Deploy your token on Base
 
-Select your preferred bridging framework and use it to deploy an ERC-20 for your token on Base. We recommend you use the framework provided by Base's [standard bridge](https://github.com/ethereum-optimism/optimism/blob/develop/specs/bridges.md#standard-bridges) contracts, and furthermore deploy your token using the [OptimismMintableERC20Factory](https://docs.base.org/base-contracts/#l2-contract-addresses). Deploying your token on Base in this manner provides us with guarantees that will smooth the approval process. If you choose a different bridging framework, its interface must be compatible with that of the standard bridge, otherwise it may be difficult for us to support.
+Select your preferred bridging framework and use it to deploy an ERC-20 for your token on Base. We recommend you use the framework provided by Base's [standard bridge](https://github.com/ethereum-optimism/specs/blob/main/specs/bridges.md) contracts, and furthermore deploy your token using the [OptimismMintableERC20Factory](https://docs.base.org/base-contracts/#l2-contract-addresses). Deploying your token on Base in this manner provides us with guarantees that will smooth the approval process. If you choose a different bridging framework, its interface must be compatible with that of the standard bridge, otherwise it may be difficult for us to support.
 
 ### Step 2: Submit details for your token
 
