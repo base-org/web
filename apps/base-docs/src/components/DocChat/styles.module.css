@@ -107,6 +107,10 @@
   padding-right: 2.25rem;
 }
 
+.chatMessageContainer pre {
+  white-space: pre-wrap;
+}
+
 .chatMessageIcon {
   display: flex;
   flex-shrink: 0;
@@ -304,6 +308,20 @@
 
   .conversationContainer {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .chatMessageContainer {
+    padding-right: 0;
+  }
+
+  .chatMessageContainer pre {
+    padding: 1rem;
+  }
+
+  .chatMessageSource {
+    max-width: 200px;
   }
 }
 
