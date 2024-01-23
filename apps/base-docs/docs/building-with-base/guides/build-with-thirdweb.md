@@ -50,12 +50,9 @@ To begin developing an app on Base, you first need to set up a web3 wallet. We r
 
 ### 2. Wallet Funding
 
-Blockchain transactions, including deploying smart contracts, necessitate a gas fee. You must, therefore, fund your wallet with Ether (ETH) to cover these costs. This guide focuses on deploying a contract to the Base Goerli test network, and you can fund your wallet with Base Goerli ETH via the following options:
+Blockchain transactions, including deploying smart contracts, necessitate a gas fee. Therefore, you will need to fund your wallet with ETH to cover those gas fees.
 
-- [Coinbase Faucet (Base Goerli)](https://www.coinbase.com/faucets/base-ethereum-goerli-faucet)
-- [Coinbase Wallet Faucets](https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad)
-
-Detailed steps on wallet funding with Base Goerli ETH can be found under [Network Faucets](https://docs.base.org/tools/network-faucets).
+For this guide, you will be deploying a contract to the Base Sepolia test network. You can fund your wallet with Base Sepolia ETH using one of the faucets listed on the Base [Network Faucets](https://docs.base.org/tools/network-faucets) page.
 
 ---
 
@@ -72,14 +69,14 @@ Follow these steps to set up your NFT collection:
 5. Click the **Deploy now** button.
 6. Provide the required details for your NFT collection:
    1. Contract metadata (i.e. image, name, symbol, description)
-   2. Network (Choose **Base Goerli Testnet**)
+   2. Network (Choose **Base Sepolia Testnet**)
 7. Click **Deploy Now**.
 
 ![Thirdweb Deploy Contract](../../../assets/images/build-with-thirdweb/deploy-contract.png)
 
 :::info
 
-For production / mainnet deployments select `Base` (mainnet) as the network rather than `Base Goerli`.
+For production / mainnet deployments select `Base` (mainnet) as the network rather than `Base Sepolia`.
 
 :::
 
@@ -115,15 +112,15 @@ Run the following command:
 npx thirdweb create --template nft-gallery
 ```
 
-By default, the template is configured for an NFT collection on the Ethereum Mainnet. We will modify the code to adapt our NFT collection on the Base Goerli Testnet.
+By default, the template is configured for an NFT collection on the Ethereum Mainnet. We will modify the code to adapt our NFT collection on the Base Sepolia Testnet.
 
 Follow these steps to update the template:
 
 1. Open the project using your preferred code editor.
 2. Open the `src/consts/parameters.ts` file.
    1. Update the `contractAddress` variable to your NFT collection's contract address (found on the thirdweb dashboard).
-   2. Update the `chain` variable to `base-goerli`.
-   3. Update the `blockExplorer` variable to `https://goerli.basescan.org`.
+   2. Update the `chain` variable to `base-sepolia`.
+   3. Update the `blockExplorer` variable to `https://sepolia.basescan.org`.
 3. Open the `src/main.tsx` file.
 4. Replace the file contents with the following code:
 
@@ -133,23 +130,23 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
-import { BaseGoerli } from "@thirdweb-dev/chains";
+import { BaseSepoliaTestnet } from "@thirdweb-dev/chains";
 
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ThirdwebProvider activeChain={BaseGoerli}>
+    <ThirdwebProvider activeChain={BaseSepoliaTestnet}>
       <App />
     </ThirdwebProvider>
   </React.StrictMode>,
 );
 ```
 
-The above code imports and uses `BaseGoerli` to be the `activeChain`.
+The above code imports and uses `BaseSepoliaTestnet` to be the `activeChain`.
 
 :::info
 
-For production / mainnet deployments, update the information above so that the `chain` variable is `base` (step ii), the `blockExplorer` is `https://basescan.org` (step iii), and update both instances of `BaseGoerli` to `Base` in the example javascript code.
+For production / mainnet deployments, update the information above so that the `chain` variable is `base` (step ii), the `blockExplorer` is `https://basescan.org` (step iii), and update both instances of `BaseSepoliaTestnet` to `Base` in the example javascript code.
 
 :::
 
@@ -157,7 +154,7 @@ For production / mainnet deployments, update the information above so that the `
 
 ## Running the Application
 
-With the updated Base Goerli Testnet chain and your NFT collection's address, you can view your NFT collection from the application.
+With the updated Base Sepolia Testnet chain and your NFT collection's address, you can view your NFT collection from the application.
 
 To start the application, run the following command from the root directory:
 

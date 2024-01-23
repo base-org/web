@@ -6,6 +6,12 @@ hide_table_of_contents: false
 
 In this article, you'll learn how to interact with other smart contracts using interfaces and the `.call()` function, which allows you to interact with other smart contracts without using an interface.
 
+:::caution
+
+This tutorial has been moved as part of a reorganization! It assumes you are using Hardhat. Everything in this lesson will work with minor adjustments if you are working in Foundry or Remix.
+
+:::
+
 ---
 
 ## Objectives

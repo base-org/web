@@ -41,6 +41,168 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'Development Tools',
+      collapsible: true,
+      items: [
+        {
+          type: 'doc',
+          id: 'docs/development-tools/overview',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Development with Hardhat',
+      collapsible: true,
+      items: [
+        {
+          type: 'category',
+          label: 'Hardhat Setup and Overview',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/hardhat-setup-overview/hardhat-overview-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/hardhat-setup-overview/creating-a-project-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/hardhat-setup-overview/hardhat-setup-overview-sbs',
+              className: 'sidebar-coding',
+            },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Testing with Typescript',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/hardhat-testing/testing-overview-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/hardhat-testing/writing-tests-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/hardhat-testing/contract-abi-and-testing-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/hardhat-testing/hardhat-testing-sbs',
+              className: 'sidebar-coding',
+            },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Etherscan',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/etherscan/etherscan-sbs',
+              className: 'sidebar-coding',
+            },
+            {
+              type: 'doc',
+              id: 'docs/etherscan/etherscan-vid',
+              className: 'sidebar-video',
+            },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Deploying Smart Contracts',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/hardhat-deploy/installing-hardhat-deploy-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/hardhat-deploy/setup-deploy-script-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/hardhat-deploy/testing-our-deployment-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/hardhat-deploy/test-network-configuration-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/hardhat-deploy/deployment-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/hardhat-deploy/hardhat-deploy-sbs',
+              className: 'sidebar-coding',
+            },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Verifying Smart Contracts',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/hardhat-verify/hardhat-verify-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/hardhat-verify/hardhat-verify-sbs',
+              className: 'sidebar-coding',
+            },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Mainnet Forking',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/hardhat-forking/mainnet-forking-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/hardhat-forking/hardhat-forking',
+              className: 'sidebar-coding',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Development With Foundry',
+      collapsible: true,
+      items: [
+        {
+          type: 'link',
+          label: 'Introduction to Foundry',
+          href: 'https://docs.base.org/building-with-base/guides/building-with-base-and-foundry/introduction',
+          className: 'sidebar-coding',
+        },
+      ],
+    },
+    {
+      type: 'category',
       label: 'Smart Contract Development',
       collapsible: true,
       items: [
@@ -132,7 +294,7 @@ const sidebars = {
             },
             {
               type: 'doc',
-              id: 'docs/deployment-to-testnet/deployment-to-base-goerli-sbs',
+              id: 'docs/deployment-to-testnet/deployment-to-base-sepolia-sbs',
               className: 'sidebar-stepbystep',
             },
             {
@@ -432,6 +594,43 @@ const sidebars = {
             },
           ],
         },
+        {
+          type: 'category',
+          label: 'Contract to Contract Interactions',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/interfaces/intro-to-interfaces-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/interfaces/calling-another-contract-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/interfaces/testing-the-interface-vid',
+              className: 'sidebar-video',
+            },
+            {
+              type: 'doc',
+              id: 'docs/interfaces/contract-to-contract-interaction',
+              className: 'sidebar-coding',
+            },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Events',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/events/hardhat-events-sbs',
+              className: 'sidebar-coding',
+            },
+          ],
+        },
       ],
     },
     {
@@ -560,181 +759,6 @@ const sidebars = {
               type: 'doc',
               id: 'docs/erc-721-token/erc-721-exercise',
               className: 'sidebar-exercise',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Development with Hardhat',
-      collapsible: true,
-      items: [
-        {
-          type: 'category',
-          label: 'Hardhat Setup and Overview',
-          items: [
-            {
-              type: 'doc',
-              id: 'docs/hardhat-setup-overview/hardhat-overview-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-setup-overview/creating-a-project-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-setup-overview/hardhat-setup-overview-sbs',
-              className: 'sidebar-coding',
-            },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Testing with Typescript',
-          items: [
-            {
-              type: 'doc',
-              id: 'docs/hardhat-testing/testing-overview-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-testing/writing-tests-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-testing/contract-abi-and-testing-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-testing/hardhat-testing-sbs',
-              className: 'sidebar-coding',
-            },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Etherscan',
-          items: [
-            {
-              type: 'doc',
-              id: 'docs/etherscan/etherscan-sbs',
-              className: 'sidebar-coding',
-            },
-            {
-              type: 'doc',
-              id: 'docs/etherscan/etherscan-vid',
-              className: 'sidebar-video',
-            },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Deploying Smart Contracts',
-          items: [
-            {
-              type: 'doc',
-              id: 'docs/hardhat-deploy/installing-hardhat-deploy-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-deploy/setup-deploy-script-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-deploy/testing-our-deployment-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-deploy/test-network-configuration-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-deploy/deployment-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-deploy/hardhat-deploy-sbs',
-              className: 'sidebar-coding',
-            },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Verifying Smart Contracts',
-          items: [
-            {
-              type: 'doc',
-              id: 'docs/hardhat-verify/hardhat-verify-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-verify/hardhat-verify-sbs',
-              className: 'sidebar-coding',
-            },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Mainnet Forking',
-          items: [
-            {
-              type: 'doc',
-              id: 'docs/hardhat-forking/mainnet-forking-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-forking/hardhat-forking',
-              className: 'sidebar-coding',
-            },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Contract to Contract Interactions',
-          items: [
-            {
-              type: 'doc',
-              id: 'docs/interfaces/intro-to-interfaces-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/interfaces/calling-another-contract-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/interfaces/testing-the-interface-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/interfaces/contract-to-contract-interaction',
-              className: 'sidebar-coding',
-            },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Events',
-          items: [
-            {
-              type: 'doc',
-              id: 'docs/events/hardhat-events-sbs',
-              className: 'sidebar-coding',
             },
           ],
         },

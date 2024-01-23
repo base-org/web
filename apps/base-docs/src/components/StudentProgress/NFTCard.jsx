@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useState } from 'react';
 import { useContractRead } from 'wagmi';
 
@@ -5,7 +6,7 @@ export default function NFTCard({ nftData, updateNFTCount, currentWalletAddress 
   const [hasNFT, setHasNFT] = useState(false);
 
   const { data } = useContractRead({
-    address: nftData.address,
+    address: nftData.deployment.address,
     abi: nftData.deployment.abi,
     functionName: 'owners',
     args: [currentWalletAddress],

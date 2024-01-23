@@ -57,6 +57,16 @@ module.exports = {
             },
             {
               type: 'category',
+              label: 'Sending data and tokens across chains',
+              collapsible: true,
+              collapsed: true,
+              items: [
+                'building-with-base/guides/cross-chain-with-ccip',
+                'building-with-base/guides/cross-chain-with-layerzero',
+              ],
+            },
+            {
+              type: 'category',
               label: 'Building with Foundry',
               collapsible: true,
               collapsed: true,
@@ -224,6 +234,7 @@ module.exports = {
         'tools/data-indexers',
         'tools/cross-chain',
         'tools/account-abstraction',
+        'tools/nft-checkout',
         'tools/onramps',
         'tools/onboarding',
         {

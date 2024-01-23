@@ -1,9 +1,17 @@
+/* eslint-disable */
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { ethers } from 'ethers';
-import { useAccount, useContractRead, useContractWrite, useWaitForTransaction } from 'wagmi';
+import {
+  useAccount,
+  useContractRead,
+  useContractWrite,
+  useNetwork,
+  useWaitForTransaction,
+} from 'wagmi';
 
-import nfts from '../../utils/nft-exercise-data';
+import useNFTData from '../../utils/nft-exercise-data';
+import { decodeEventLog } from 'viem';
 
 const pinStyle = {
   width: 300,
@@ -62,37 +70,41 @@ const directionsStyle = {
   padding: '10px 0 10px 0',
 };
 
-export default function CafeUnitTest({ deployment, nftNum }) {
+export default function CafeUnitTest({ nftNum }) {
   const { isConnecting, isDisconnected } = useAccount();
 
   const [messages, setMessages] = useState(['Submit your contract address.']);
   const [contractFormEntry, setContractFormEntry] = useState('');
   const [submittedContract, setSubmittedContract] = useState('');
   const [hasPin, setHasPin] = useState(false);
-  const nft = nfts[nftNum];
+  const [fetchNFTStatus, setFetchNFTStatus] = useState(true);
+
+  const nftData = useNFTData();
+  const { chain } = useNetwork();
+
+  const nft = nftData[nftNum];
 
   const { data: hasNFT } = useContractRead({
-    address: deployment.address,
-    abi: deployment.abi,
+    address: nft.deployment.address,
+    abi: nft.deployment.abi,
     functionName: 'owners',
     args: [useAccount()?.address],
-    watch: true,
+    watch: fetchNFTStatus,
     onSettled(data) {
       setHasPin(!!data);
+      setFetchNFTStatus(false);
     },
   });
 
   // Test Contract Function
-
   const {
     data: testData,
     write: testContract,
     isLoading: isTestLoading,
     error: isTestError,
-    reset: resetTestContract,
   } = useContractWrite({
-    address: deployment.address,
-    abi: deployment.abi,
+    address: nft.deployment.address,
+    abi: nft.deployment.abi,
     functionName: 'testContract',
   });
 
@@ -123,7 +135,7 @@ export default function CafeUnitTest({ deployment, nftNum }) {
   useEffect(() => {
     async function processEventLog(parsedLog) {
       const processed = [];
-      if (parsedLog.eventFragment.name === 'TestSuiteResult') {
+      if (parsedLog.eventName === 'TestSuiteResult') {
         const { testResults } = parsedLog.args;
         // Results don't know which tests failed, so find them
         for (const testResult of testResults) {
@@ -132,14 +144,14 @@ export default function CafeUnitTest({ deployment, nftNum }) {
           const { elements: arList, num } = assertResults;
           // Slice out unused in array - arList is a dynamic memory array implementation
           // so it may have unused elements allocated
-          const elements = arList.slice(0, num);
-          let passed = true;
+          const elements = arList.slice(0, Number(num));
+          let passedAllAsserts = true;
           for (const element of elements) {
-            if (!element[0]) {
-              passed = false;
+            if (!element.passed) {
+              passedAllAsserts = false;
             }
           }
-          if (!passed) {
+          if (!passedAllAsserts) {
             processed[processed.length - 1] = `❌${processed[processed.length - 1].slice(1)}`;
             for (const element of elements) {
               if (element.passed === false) {
@@ -160,21 +172,25 @@ export default function CafeUnitTest({ deployment, nftNum }) {
       }
 
       setMessages([...processed]);
-      resetTestContract();
     }
 
     if (testReceiptData) {
       for (const log of testReceiptData.logs) {
         try {
-          const iface = new ethers.utils.Interface(deployment.abi);
-          const parsed = iface.parseLog(log);
+          const parsed = decodeEventLog({
+            abi: nft.deployment.abi,
+            data: log.data,
+            topics: log.topics,
+          });
+          console.log('topics', parsed);
           processEventLog(parsed);
         } catch (e) {
           // Skip other log types (can't tell type without parsing)
+          console.log('SKIPPED LOG', e);
         }
       }
     }
-  }, [testReceiptData, contractFormEntry, deployment.abi, resetTestContract]);
+  }, [testReceiptData, contractFormEntry, nft.deployment.abi]);
 
   async function handleContractSubmit(event) {
     event.preventDefault();
@@ -188,7 +204,6 @@ export default function CafeUnitTest({ deployment, nftNum }) {
   function renderTests() {
     if (submittedContract) {
       const listItems = messages.map((message, index) => (
-        // eslint-disable-next-line react/no-array-index-key
         <div className="alert-message" style={messageStyle} key={index}>
           {message}
         </div>
@@ -202,7 +217,9 @@ export default function CafeUnitTest({ deployment, nftNum }) {
     if (hasPin) {
       return (
         <div>
-          <div style={pinTitleStyle}>{nft.title} NFT Badge Earned!</div>
+          <div style={pinTitleStyle}>
+            {nft.title} NFT Badge Earned on {chain.name}!
+          </div>
           <img src={nft.img} style={pinStyle} alt={`${nft.title} NFT Badge`} />
         </div>
       );

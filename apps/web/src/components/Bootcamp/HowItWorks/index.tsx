@@ -17,7 +17,7 @@ const featureItems = [
     number: '2',
     title: 'Onboard',
     description:
-      'Upon acceptance, you’ll be invited to the Base Bootcamp Onboarding Course where you will receive all relevant onboarding materials (student handbook, mentor-pairing info, invite to the private Base Bootcamp Discord channel, and invite to the launch day).',
+      'Upon acceptance, you’ll receive an email with all relevant onboarding materials (student handbook, mentor-pairing info, invite to the private Base Bootcamp Discord channel, and invite to the launch day).',
   },
   {
     number: '3',

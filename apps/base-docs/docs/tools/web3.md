@@ -61,7 +61,7 @@ const web3 = new Web3('https://mainnet.base.org');
 
 :::info
 
-To alternatively connect to Base Goerli (testnet), change the above URL from `https://mainnet.base.org` to `https://goerli.base.org`.
+To alternatively connect to Base Sepolia (testnet), change the above URL from `https://mainnet.base.org` to `https://sepolia.base.org`.
 
 :::
 

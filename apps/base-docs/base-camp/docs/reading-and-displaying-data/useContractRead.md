@@ -52,7 +52,7 @@ function getAllIssues() public view returns(ReturnableIssue[] memory) {
 
 ### Create Demo Issues
 
-To start, you'll need to put some data into your contract so that you can read it from your frontend. Open [Goerli BaseScan], find your contract, connect with your wallet, and call the `claim` function.
+To start, you'll need to put some data into your contract so that you can read it from your frontend. Open [Sepolia BaseScan], find your contract, connect with your wallet, and call the `claim` function.
 
 Add the following two issues:
 
@@ -81,7 +81,7 @@ Call the `getIssue` function under the `Read Contract` tab to make sure all thre
 
 To be able to read from your deployed smart contract, you'll need two pieces of information: the address and [ABI]. These are used as parameters in the `useContractRead` hook.
 
-If you're using [Hardhat], both of these can be conveniently found in a json file in the `deployments/<network>` folder, named after your contract. For example, our contract is called `FEWeightedVoting`, so the file is `deployments/base-goerli/FEWeightedVoting.json`.
+If you're using [Hardhat], both of these can be conveniently found in a json file in the `deployments/<network>` folder, named after your contract. For example, our contract is called `FEWeightedVoting`, so the file is `deployments/base-sepolia/FEWeightedVoting.json`.
 
 If you're using something else, it should produce a similar artifact, or separate artifacts with the [ABI] and address. If this is the case, make the adjustments you need when you import this data.
 
@@ -443,7 +443,7 @@ contract FEWeightedVoting is ERC20 {
 [`useAccount`]: https://wagmi.sh/react/hooks/useAccount
 [hydration error]: https://nextjs.org/docs/messages/react-hydration-error
 [ERC 20 Tokens Exercise]: https://docs.base.org/base-camp/docs/erc-20-token/erc-20-exercise
-[Goerli BaseScan]: https://goerli.basescan.org/
+[Sepolia BaseScan]: https://sepolia.basescan.org/
 [`useAccount` hook]: ./useAccount
 [Hardhat]: https://hardhat.org/
 [ABI]: https://docs.soliditylang.org/en/latest/abi-spec.html

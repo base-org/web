@@ -16,6 +16,7 @@ keywords:
     Alchemy,
     Biconomy,
     Stackup,
+    WalletKit,
     Zerodev,
   ]
 ---
@@ -51,6 +52,16 @@ keywords:
 ## Stackup
 
 [Stackup](https://www.stackup.sh) provides smart account tooling for building account abstraction within your apps. They offer Paymaster and Bundler APIs for sponsoring gas and sending account abstraction transactions.
+
+---
+
+## WalletKit
+
+[WalletKit](https://walletkit.com) is an all-in-one platform for adding smart, gasless wallets to your app. It has integrated support for ERC 4337 and comes with a paymaster and bundler included, requiring no extra setup. 
+
+WalletKit also offers pre-built components for onboarding users with email and social logins, which can be integrated in under 15 minutes using their React SDK or the wagmi connector. Alternatively, build completely bespoke experiences for your users using WalletKit's Wallets API.
+
+WalletKit is compatible with most EVM chains, including Base. You can check out the [WalletKit documentation here](https://docs.walletkit.com). Start building for free on the Base testnet today.
 
 ---
 

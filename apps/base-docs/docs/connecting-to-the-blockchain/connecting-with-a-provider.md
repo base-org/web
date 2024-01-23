@@ -144,7 +144,7 @@ On the next screen, you'll be asked to select a chain. Each endpoint only works 
 
 ![Select Chain](../../assets/images/connecting-to-the-blockchain/quicknode-select-chain.png)
 
-For now, pick `Base Mainnet`, but you'll probably want to delete this endpoint and create a new one for Goerli or Sepolia when you start building. The free tier only allows you to have one at a time.
+For now, pick `Base Mainnet`, but you'll probably want to delete this endpoint and create a new one for Sepolia when you start building. The free tier only allows you to have one at a time.
 
 If you haven't already picked a tier, you'll be asked to do so, then you'll be taken to the endpoints page, which will display your endpoints for HTTP and WSS.
 
