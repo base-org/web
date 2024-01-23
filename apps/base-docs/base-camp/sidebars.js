@@ -631,6 +631,17 @@ const sidebars = {
             },
           ],
         },
+        {
+          type: 'category',
+          label: 'Address and Payable',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/address-and-payable/address-and-payable',
+              className: 'sidebar-coding',
+            },
+          ],
+        },
       ],
     },
     {
