@@ -2,18 +2,33 @@ import React from 'react';
 import marked from '../../utils/marked';
 
 import Icon from '../Icon';
+import ResponseFeedback from './ResponseFeedback';
 
 import styles from './styles.module.css';
 
 import { ConversationMessage } from './docChat';
 
 type ChatMessageProps = {
+  index: number;
   type: ConversationMessage['type'];
   content: ConversationMessage['content'];
-  sources: ConversationMessage['sources'];
+  sources?: ConversationMessage['sources'];
+  messageId?: number;
+  conversation: ConversationMessage[];
+  setConversation: (
+    conversation: (prevState: ConversationMessage[]) => ConversationMessage[],
+  ) => void;
 };
 
-export default function ChatMessage({ type, content, sources }: ChatMessageProps) {
+export default function ChatMessage({
+  index,
+  type,
+  content,
+  sources,
+  messageId,
+  conversation,
+  setConversation,
+}: ChatMessageProps) {
   const parseMarkdownResponse = (markdown: string) => {
     var markup = marked.parse(markdown);
     return { __html: markup };
@@ -46,6 +61,13 @@ export default function ChatMessage({ type, content, sources }: ChatMessageProps
 
       {sources && sources.length > 0 && (
         <>
+          <ResponseFeedback
+            responseIndex={index}
+            messageId={messageId}
+            conversation={conversation}
+            setConversation={setConversation}
+          />
+
           <div className={styles.chatMessageSourcesLabel}>Verified Sources:</div>
           <div className={styles.chatMessageSourcesContainer}>
             {sources.map((source, i) => (

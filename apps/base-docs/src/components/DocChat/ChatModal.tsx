@@ -27,6 +27,7 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
   const [isGenerating, setIsGenerating] = useState(false);
 
   const conversationContainerRef = useRef<HTMLDivElement>(null);
+  const currentMessage: ConversationMessage = conversation[conversation.length - 1];
 
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => setPrompt(e.target.value),
@@ -102,9 +103,12 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
   }, [visible]);
 
   useEffect(() => {
-    // Scroll to bottom of conversation container
     conversationContainerRef.current?.scrollBy(0, conversationContainerRef.current.scrollHeight);
-  }, [conversation]);
+    // Scroll to bottom of conversation container when:
+    // - Message is added to conversation
+    // - Response content is generated
+    // - Response sources are added
+  }, [conversation.length, currentMessage?.content, currentMessage?.sources]);
 
   return (
     <Modal visible={visible} onRequestClose={onRequestClose}>
@@ -117,13 +121,17 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
         <div ref={conversationContainerRef} className={styles.conversationContainer}>
           <ChatMessage type="response" content="Hi, how can I help you?" />
 
-          {conversation.map((message) => (
+          {conversation.map((message, i) => (
             <React.Fragment key={crypto.randomUUID()}>
               <div className={styles.chatMessageDivider} />
               <ChatMessage
+                index={i}
                 type={message.type}
                 content={message.content}
                 sources={message.sources}
+                messageId={message.messageId}
+                conversation={conversation}
+                setConversation={setConversation}
               />
             </React.Fragment>
           ))}

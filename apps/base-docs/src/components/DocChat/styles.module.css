@@ -131,10 +131,70 @@
   margin: 0 !important;
 }
 
+.responseRatingPrompt {
+  padding: 1.5rem 0 0 2.25rem;
+}
+
+.responseRatingButtonContainer {
+  display: flex;
+  padding: 0.25rem 0 0 2.25rem;
+}
+
+.helpfulButton,
+.notHelpfulButton {
+  appearance: none;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 0.5rem 0.6rem;
+}
+
+.helpfulButton:hover,
+.notHelpfulButton:hover {
+  cursor: pointer;
+  transform: rotate(-8deg);
+  transition-property: all;
+  transition-duration: 200ms;
+}
+
+[data-theme='light'] .helpfulButton svg,
+[data-theme='light'] .notHelpfulButton svg {
+  fill: black;
+}
+
+[data-theme='dark'] .helpfulButton svg,
+[data-theme='dark'] .notHelpfulButton svg {
+  fill: white;
+}
+
+[data-theme='light'] .helpfulButton:hover,
+[data-theme='light'] .notHelpfulButton:hover {
+  background-color: rgb(238, 240, 243);
+}
+
+[data-theme='dark'] .helpfulButton:hover,
+[data-theme='dark'] .notHelpfulButton:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.notHelpfulButton > svg {
+  margin-bottom: -5px;
+  transform: scale(-1, 1);
+}
+
+/* Override styles for disabled buttons */
+.disabledButton {
+  opacity: 0.5 !important;
+  cursor: default !important;
+}
+.disabledButton:hover {
+  transform: none !important;
+  background-color: transparent !important;
+}
+
 .chatMessageSourcesLabel {
   width: 100%;
   font-weight: 500;
-  padding: 1.5rem 0 0 2.25rem;
+  padding: 1rem 0 0 2.25rem;
 }
 
 .chatMessageSourcesContainer {
@@ -220,11 +280,9 @@
 }
 
 .promptForm {
-  padding: 1rem;
   width: 100%;
   border-radius: 0.5rem;
   display: flex;
-  align-items: center;
 }
 [data-theme='light'] .promptForm {
   border: 1px solid rgba(91, 97, 110, 0.5);
@@ -234,11 +292,13 @@
 }
 
 .promptInput {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  outline: none;
   appearance: none;
   background-color: transparent;
-  outline: none;
-  width: 100%;
-  font-size: 1rem;
+  border-radius: 0.5rem;
 }
 
 [data-theme='light'] .promptInput::placeholder {
@@ -249,6 +309,7 @@
 }
 
 .promptInputIcon {
+  padding: 1rem;
   display: flex;
 }
 [data-theme='light'] .promptInputIcon {
@@ -263,6 +324,8 @@
   transition: all 0.15s ease-in-out;
   appearance: none;
   background: transparent;
+  display: flex;
+  align-items: center;
 }
 [data-theme='light'] .submitPromptButton:hover {
   fill: rgba(91, 97, 110, 0.67);

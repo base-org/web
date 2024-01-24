@@ -27,6 +27,19 @@ export async function getConversationId() {
 }
 
 // POST Prompt and Stream Response
+export type ChatHistoryMessage = {
+  prompt: string;
+  response: string;
+};
+
+export type ConversationMessage = {
+  type: 'prompt' | 'response';
+  content: string;
+  sources?: string[];
+  helpful?: boolean | null;
+  messageId?: number;
+};
+
 type ResponseSource = {
   content: string;
   data_id: string;
@@ -36,17 +49,6 @@ type ResponseSource = {
   manual_add: boolean;
   relevance_score: number;
   text: number;
-};
-
-export type ConversationMessage = {
-  type: 'prompt' | 'response';
-  content: string;
-  sources?: string[];
-};
-
-export type ChatHistoryMessage = {
-  prompt: string;
-  response: string;
 };
 
 export let controller: AbortController;
@@ -66,6 +68,8 @@ export async function streamPromptResponse(
   try {
     let fullResponse = '';
     let responseSources: ResponseSource[];
+    let messageId: number;
+
     controller = new AbortController();
 
     const url = 'https://api.mendable.ai/v0/mendableChat';
@@ -97,6 +101,7 @@ export async function streamPromptResponse(
           responseSources = parsedData.metadata as ResponseSource[];
           return;
         } else if (chunk === '<|message_id|>') {
+          messageId = parsedData.metadata as number;
           return;
         }
 
@@ -124,7 +129,7 @@ export async function streamPromptResponse(
         return;
       },
       onclose() {
-        // Add sources to current response data
+        // Add Mendable message ID and sources to current response data
         const sourceURLs: string[] = responseSources.map((source) => source.link);
 
         setConversation((prevState: ConversationMessage[]) => {
@@ -132,6 +137,8 @@ export async function streamPromptResponse(
           const updatedResponse = {
             ...currentResponse,
             sources: sourceURLs,
+            helpful: null,
+            messageId,
           };
 
           const newState = [...prevState.slice(0, -1), updatedResponse];
@@ -150,6 +157,7 @@ export async function streamPromptResponse(
           return newState;
         });
 
+        // Hide Stop Generating button
         setIsGenerating(false);
         return;
       },
