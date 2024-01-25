@@ -35,7 +35,7 @@ export default function FloatingChatButton({ onClick }: FloatingChatButtonProps)
         onMouseLeave={handleMouseLeave}
         className={styles.floatingChatButton}
       >
-        <Icon name="base-logo" width={60} height={60} />
+        <Icon name="base-logo" width="60" height="60" />
       </button>
     </div>
   );

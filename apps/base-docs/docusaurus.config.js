@@ -31,7 +31,6 @@ const config = {
   url: 'https://docs.base.org',
   customFields: {
     nodeEnv: process.env.NODE_ENV,
-    mendableServerApiKey: process.env.MENDABLE_SERVER_API_KEY,
   },
 
   presets: [

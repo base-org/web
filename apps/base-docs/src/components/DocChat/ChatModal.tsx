@@ -114,7 +114,7 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
     <Modal visible={visible} onRequestClose={onRequestClose}>
       <div className={styles.chatModalBody}>
         <button type="button" className={styles.resetButton} onClick={handleReset}>
-          <Icon name="undo" height={12} width={12} />
+          <Icon name="undo" height="12" width="12" />
           Reset
         </button>
 
@@ -139,7 +139,7 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
           {isLoading && (
             <div className={styles.searchingDocsMessage}>
               <span className={styles.loadingSpinner}>
-                <Icon name="loading-spinner" width={20} height={20} />
+                <Icon name="loading-spinner" width="20" height="20" />
               </span>
               Searching...
             </div>
@@ -151,7 +151,7 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
               className={styles.stopGeneratingButton}
               onClick={handleStopGenerating}
             >
-              <Icon name="stop" height={10} width={10} />
+              <Icon name="stop" height="10" width="10" />
               Stop Generating
             </button>
           )}
@@ -172,7 +172,7 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
           <div className={styles.promptInputIcon}>
             {isLoading || isGenerating ? (
               <span className={styles.loadingSpinner}>
-                <Icon name="loading-spinner" height={24} width={24} />
+                <Icon name="loading-spinner" height="24" width="24" />
               </span>
             ) : (
               <button type="button" onClick={handleSubmit} className={styles.submitPromptButton}>

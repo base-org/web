@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import { ConversationMessage } from './docChat';
-import { customFields } from '../../utils/docusaurusCustomFields';
 
 import Icon from '../Icon';
 
@@ -10,7 +9,7 @@ const logResponseFeedback = (messageId: number | undefined, isHelpful: boolean) 
   const url = 'https://api.mendable.ai/v1/rateMessage';
 
   const data = {
-    api_key: customFields.mendableServerApiKey,
+    api_key: 'MENDALE_API_KEY', // UPDATE WITH KEY
     message_id: messageId,
     rating_value: isHelpful ? 1 : -1,
   };

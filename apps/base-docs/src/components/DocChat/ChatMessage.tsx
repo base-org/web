@@ -2,7 +2,7 @@ import React from 'react';
 import marked from '../../utils/marked';
 
 import Icon from '../Icon';
-import ResponseFeedback from './ResponseFeedback';
+// import ResponseFeedback from './ResponseFeedback';
 
 import styles from './styles.module.css';
 
@@ -21,13 +21,13 @@ type ChatMessageProps = {
 };
 
 export default function ChatMessage({
-  index,
+  // index,
+  // messageId,
+  // conversation,
+  // setConversation,
   type,
   content,
   sources,
-  messageId,
-  conversation,
-  setConversation,
 }: ChatMessageProps) {
   const parseMarkdownResponse = (markdown: string) => {
     var markup = marked.parse(markdown);
@@ -61,12 +61,12 @@ export default function ChatMessage({
 
       {sources && sources.length > 0 && (
         <>
-          <ResponseFeedback
+          {/* <ResponseFeedback
             responseIndex={index}
             messageId={messageId}
             conversation={conversation}
             setConversation={setConversation}
-          />
+          /> */}
 
           <div className={styles.chatMessageSourcesLabel}>Verified Sources:</div>
           <div className={styles.chatMessageSourcesContainer}>
