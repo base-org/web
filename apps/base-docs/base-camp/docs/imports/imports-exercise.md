@@ -57,6 +57,18 @@ Remember, the compiler will automatically create a getter for `public` `struct`s
 
 ## Submit your Contract and Earn an NFT Badge! (BETA)
 
+:::caution 
+
+#### Contract Verification Best Practices
+
+To simplify the verification of your contract on a blockchain explorer like BaseScan.org, consider these two common strategies:
+
+1. **Flattening**: This method involves combining your main contract and all of its imported dependencies into a single file. This makes it easier for explorers to verify the code since they only have to process one file. 
+
+2. **Modular Deployment**: Alternatively, you can deploy each imported contract separately and then reference them in your main contract via their deployed addresses. This approach maintains the modularity and readability of your code. Each contract is deployed and verified independently, which can facilitate easier updates and reusability.
+
+:::
+
 :::info
 
 #### Hey, where'd my NFT go!?
