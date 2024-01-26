@@ -50,6 +50,14 @@ This page lists contract addresses for onchain apps that we have deployed.
 | `quoterV2`                           | [0x3d4e44Eb1374240CE5F1B871ab261CD16335B76a](https://basescan.org/address/0x3d4e44Eb1374240CE5F1B871ab261CD16335B76a) |
 | `swapRouter`                         | [0x2626664c2603336E57B271c5C0b26F421741e481](https://basescan.org/address/0x2626664c2603336E57B271c5C0b26F421741e481) |
 
+## Base Testnet (Sepolia)
+
+### Multicall3
+
+| Contract   | Address                                                                                                                       |
+| :--------- | :---------------------------------------------------------------------------------------------------------------------------- |
+| Multicall3 | [0xcA11bde05977b3631167028862bE2a173976CA11](https://sepolia.basescan.org/address/0xcA11bde05977b3631167028862bE2a173976CA11) |
+
 ## Base Testnet (Goerli)
 
 ### Uniswap v3
