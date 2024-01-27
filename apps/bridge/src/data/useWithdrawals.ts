@@ -5,12 +5,13 @@ import { BridgeTransaction } from 'apps/bridge/src/types/BridgeTransaction';
 import { useChainEnv } from 'apps/bridge/src/utils/hooks/useChainEnv';
 import { explorerTxToBridgeWithdrawal } from 'apps/bridge/src/utils/transactions/explorerTxToBridgeWithdrawal';
 import {
-  isExplorerTxETHOrERC20Withdrawal,
   isIndexerTxETHOrERC20Withdrawal,
+  isETHOrERC20OrCCTPWithdrawal,
 } from 'apps/bridge/src/utils/transactions/isETHOrERCWithdrawal';
 import getConfig from 'next/config';
 import { WithdrawalItem } from '@eth-optimism/indexer-api';
 import { indexerTxToBridgeWithdrawal } from 'apps/bridge/src/utils/transactions/indexerTxToBridgeWithdrawal';
+import { dedupeTransactions } from 'apps/bridge/src/utils/array/dedupeTransactions';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -45,7 +46,7 @@ async function fetchOPWithdrawals(address: string) {
   );
 }
 
-async function fetchCCTPWithdrawals(address: string, isMainnet: boolean) {
+async function fetchExplorerWithdrawals(address: string, isMainnet: boolean) {
   const response = await getJSON<BlockExplorerApiResponse<BlockExplorerTransaction[]>>(
     // TODO: filter to transactions to the withdraw contract
     publicRuntimeConfig.l2ExplorerApiURL,
@@ -59,7 +60,7 @@ async function fetchCCTPWithdrawals(address: string, isMainnet: boolean) {
   );
 
   return explorerTxToBridgeWithdrawals(
-    response.result.filter((tx) => tx.isError !== '1' && isExplorerTxETHOrERC20Withdrawal(tx)),
+    response.result.filter((tx) => tx.isError !== '1' && isETHOrERC20OrCCTPWithdrawal(tx)),
   );
 }
 
@@ -82,9 +83,9 @@ export function useWithdrawals(address: string): {
     },
   );
 
-  const { data: cctpWithdrawals, isFetched: isCCTPWithdrawalsFetched } = useQuery<
+  const { data: explorerWithdrawals, isFetched: isExplorerWithdrawalsFetched } = useQuery<
     BridgeTransaction[]
-  >(['cctpWithdrawals', address], async () => fetchCCTPWithdrawals(address, isMainnet), {
+  >(['explorerWithdrawals', address], async () => fetchExplorerWithdrawals(address, isMainnet), {
     enabled: !!address,
     suspense: false, // Does suspense work w/ SSR? We'll just not use it.
     staleTime: 5000, // Stale after 5 seconds
@@ -92,8 +93,13 @@ export function useWithdrawals(address: string): {
     refetchInterval: 1000 * 30, // Automatically refetch every 30 seconds
   });
 
+  const withdrawals = dedupeTransactions([
+    ...(opWithdrawals ?? []),
+    ...(explorerWithdrawals ?? []),
+  ]);
+
   return {
-    withdrawals: [...(opWithdrawals ?? []), ...(cctpWithdrawals ?? [])],
-    isFetched: isOPWithdrawalsFetched && isCCTPWithdrawalsFetched,
+    withdrawals,
+    isFetched: isOPWithdrawalsFetched && isExplorerWithdrawalsFetched,
   };
 }
