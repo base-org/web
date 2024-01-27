@@ -11,6 +11,7 @@ import getConfig from 'next/config';
 import { DepositItem } from '@eth-optimism/indexer-api';
 import { indexerTxToBridgeDeposit } from 'apps/bridge/src/utils/transactions/indexerTxToBridgeDeposit';
 import { useChainEnv } from 'apps/bridge/src/utils/hooks/useChainEnv';
+import { dedupeTransactions } from 'apps/bridge/src/utils/array/dedupeTransactions';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -43,7 +44,7 @@ async function fetchOPDeposits(address: string) {
   );
 }
 
-async function fetchCCTPDeposits(address: string, isMainnet: boolean) {
+async function fetchExplorerDeposits(address: string, isMainnet: boolean) {
   const response = await getJSON<BlockExplorerApiResponse<BlockExplorerTransaction[]>>(
     publicRuntimeConfig.l1ExplorerApiUrl,
     {
@@ -79,19 +80,20 @@ export function useDeposits(address: string): {
     },
   );
 
-  const { data: cctpDeposits, isFetched: isCCTPDepositsFetched } = useQuery<BridgeTransaction[]>(
-    ['cctpDeposits', address],
-    async () => fetchCCTPDeposits(address, isMainnet),
-    {
-      enabled: !!address,
-      suspense: false, // Does suspense work w/ SSR? We'll just not use it.
-      staleTime: 5000, // Stale after 5 seconds
-      notifyOnChangeProps: ['data', 'isFetched'],
-      refetchInterval: 1000 * 30, // Automatically refetch every 30 seconds
-    },
-  );
+  const { data: explorerDeposits, isFetched: isExplorerDepositsFetched } = useQuery<
+    BridgeTransaction[]
+  >(['explorerDeposits', address], async () => fetchExplorerDeposits(address, isMainnet), {
+    enabled: !!address,
+    suspense: false, // Does suspense work w/ SSR? We'll just not use it.
+    staleTime: 5000, // Stale after 5 seconds
+    notifyOnChangeProps: ['data', 'isFetched'],
+    refetchInterval: 1000 * 30, // Automatically refetch every 30 seconds
+  });
+
+  const deposits = dedupeTransactions([...(opDeposits ?? []), ...(explorerDeposits ?? [])]);
+
   return {
-    deposits: [...(opDeposits ?? []), ...(cctpDeposits ?? [])],
-    isFetched: isOPDepositsFetched && isCCTPDepositsFetched,
+    deposits,
+    isFetched: isOPDepositsFetched && isExplorerDepositsFetched,
   };
 }
