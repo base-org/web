@@ -39,7 +39,7 @@ In order to deploy a smart contract, you will first need a web3 wallet. You can 
 ## Wallet funds
 Deploying contracts to the blockchain requires a gas fee. Therefore, you will need to fund your wallet with ETH to cover those gas fees.
 
-For this guide, you will be deploying a contract to the Base Sepolia test network. You can fund your wallet with Base Sepolia ETH using one of the faucets listed on the [Base Network Faucets page](https://docs.base.org/tools/network-faucets/)
+For this guide, you will be deploying a contract to the Base Sepolia test network. You can fund your wallet with Base Sepolia ETH using one of the faucets listed on the [Base Network Faucets page](https://docs.base.org/tools/network-faucets/).
 
 
 # Search Cookbook's Smart Contract Registry
