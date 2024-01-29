@@ -67,6 +67,13 @@ module.exports = {
             },
             {
               type: 'category',
+              label: 'Account abstraction',
+              collapsible: true,
+              collapsed: true,
+              items: ['building-with-base/guides/account-abstraction-with-biconomy'],
+            },
+            {
+              type: 'category',
               label: 'Building with Foundry',
               collapsible: true,
               collapsed: true,
