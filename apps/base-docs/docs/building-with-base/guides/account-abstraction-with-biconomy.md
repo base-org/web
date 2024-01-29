@@ -312,9 +312,11 @@ export default function Home() {
 To get started adding social login into the app using Particle Network, import and initialize the Biconomy Particle Auth module in the `page.tsx` file as shown below:
 
 ```javascript
+// highlight-next-line
 import { ParticleAuthModule, ParticleProvider } from '@biconomy/particle-auth';
 
 export default function Home() {
+  // highlight-start
   const particle = new ParticleAuthModule.ParticleNetwork({
     projectId: 'YOUR_PARTICLE_PROJECT_ID',
     clientKey: 'YOUR_PARTICLE_CLIENT_ID',
@@ -323,6 +325,7 @@ export default function Home() {
       displayWalletEntry: true,
     },
   });
+  // highlight-end
 
   return (
     <main>
@@ -344,6 +347,7 @@ Next, add a Login button and `login` function that triggers the Particle Network
 
 ```javascript
 import { ParticleAuthModule, ParticleProvider } from '@biconomy/particle-auth';
+// highlight-next-line
 import { ethers } from 'ethers';
 
 export default function Home() {
@@ -356,6 +360,7 @@ export default function Home() {
     },
   });
 
+  // highlight-start
   const login = async () => {
     try {
       const userInfo = await particle.auth.login();
@@ -365,10 +370,12 @@ export default function Home() {
       console.error(error);
     }
   };
+  // highlight-end
 
   return (
     <main>
       <div>
+        // highlight-next-line
         <button onClick={login}>Login</button>
       </div>
     </main>
@@ -389,12 +396,15 @@ To initialize the paymaster and bundler, add the following lines of code:
 ```javascript
 import { ParticleAuthModule, ParticleProvider } from '@biconomy/particle-auth';
 
+// highlight-next-line
 import { ethers } from 'ethers';
 
+// highlight-start
 import { IBundler, Bundler } from '@biconomy/bundler';
 import { IPaymaster, BiconomyPaymaster } from '@biconomy/paymaster';
 import { ChainId } from '@biconomy/core-types';
 import { DEFAULT_ENTRYPOINT_ADDRESS } from '@biconomy/account';
+// highlight-end
 
 export default function Home() {
   const particle = new ParticleAuthModule.ParticleNetwork({
@@ -406,15 +416,19 @@ export default function Home() {
     },
   });
 
+  // highlight-start
   const paymaster: IPaymaster = new BiconomyPaymaster({
     paymasterUrl: 'YOUR_PAYMASTER_URL',
   });
+  // highlight-end
 
+  // highlight-start
   const bundler: IBundler = new Bundler({
     chainId: ChainId.BASE_GOERLI_TESTNET,
     entryPointAddress: DEFAULT_ENTRYPOINT_ADDRESS,
     bundlerUrl: 'YOUR_BUNDLER_URL',
   });
+  // highlight-end
 
   const login = async () => {
     try {
@@ -452,16 +466,16 @@ To create a smart account for the user on Base Goerli testnet that uses the Bico
 
 ```javascript
 ...
-
+// highlight-start
 import {
   BiconomySmartAccountV2,
   DEFAULT_ENTRYPOINT_ADDRESS,
 } from "@biconomy/account";
-
  import {
   ECDSAOwnershipValidationModule,
   DEFAULT_ECDSA_OWNERSHIP_MODULE,
 } from "@biconomy/modules";
+// highlight-end
 
 export default function Home() {
 
@@ -476,11 +490,11 @@ export default function Home() {
         "any",
       );
 
+      // highlight-start
       const validationModule = await ECDSAOwnershipValidationModule.create({
         signer: web3Provider.getSigner(),
         moduleAddress: DEFAULT_ECDSA_OWNERSHIP_MODULE,
       });
-
 
       let biconomySmartAccount = await BiconomySmartAccountV2.create({
         chainId: ChainId.BASE_GOERLI_TESTNET,
@@ -492,6 +506,7 @@ export default function Home() {
       });
 
       const accountAddress = await biconomySmartAccount.getAccountAddress();
+      // highlight-end
     } catch (error) {
       console.error(error);
     }
@@ -516,16 +531,17 @@ To store the the `provider` and `smartAccount`, add the following code:
 
 ```javascript
 ...
-
+// highlight-next-line
 import { useState } from "react";
 
 export default function Home() {
 
+  // highlight-start
   const [loading, setLoading] = useState(false);
   const [provider, setProvider] = useState(null);
   const [smartAccount, setSmartAccount] = useState(null);
   const [address, setAddress] = useState("");
-
+  // highlight-end
 ...
 
   const login = async () => {
@@ -554,10 +570,12 @@ export default function Home() {
       });
 
       const accountAddress = await biconomySmartAccount.getAccountAddress();
+      // highlight-start
       setProvider(web3Provider);
       setSmartAccount(biconomySmartAccount);
       setAddress(accountAddress);
       setLoading(false);
+
     } catch (error) {
       console.error(error);
     }
@@ -566,9 +584,11 @@ export default function Home() {
    return (
     <main>
       <div>
+      // highlight-start
       {!loading && !address && <button onClick={login}>Login</button>}
       {loading && <p>Loading...</p>}
       {address && <h2>Smart Account Address: {address}</h2>}
+      // highlight-end
       </div>
     </main>
   );
@@ -766,6 +786,7 @@ export default function Home() {
       {!loading && !address && <button onClick={login}>Login</button>}
       {loading && <p>Loading...</p>}
       {address && <h2>Smart Account Address: {address}</h2>}
+      // highlight-next-line
       <Counter smartAccount={smartAccount} provider={provider}/>
       </div>
     </main>
