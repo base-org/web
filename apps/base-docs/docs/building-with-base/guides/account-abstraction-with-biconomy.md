@@ -28,10 +28,10 @@ This page will guide you through the process of implementing Account Abstraction
 
 By the end of this guide you should be able to do the following:
 
-- Set up a smart contract project for Base using Foundry
+- Set up a smart contract project for Base using [Foundry](https://book.getfoundry.sh/)
 - Set up a Next.js front-end project using `create next-app`
 - Setup user login and authentication using [Particle Network](https://particle.network/)
-- Setup a Biconomy paymaster and bundler
+- Setup a [Biconomy](https://biconomy.io/) paymaster and bundler
 - Create a gasless transaction
 
 ---
