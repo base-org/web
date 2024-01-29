@@ -3,12 +3,31 @@
 /* eslint-disable */
 // @ts-nocheck
 import getConfig from 'next/config';
+import { NextRouter } from 'next/router';
+import { TrackingPreference } from '@coinbase/cookie-manager';
+import { uuid } from 'uuidv4';
 
 const { publicRuntimeConfig } = getConfig();
 const isDevelopment = publicRuntimeConfig.nodeEnv === 'development';
 
-// CCA library loads in _app.tsx
-const initCCA = (router) => {
+// CCA library loads in ClientAnalyticsScript component
+const initCCA = (
+  router: NextRouter,
+  trackingPreference: TrackingPreference | undefined,
+  deviceIdCookie: string | undefined,
+  setDeviceIdCookie,
+) => {
+  let deviceId: string | undefined = deviceIdCookie;
+  const trackingAllowed: boolean = trackingPreference?.consent.includes('performance');
+  const cookieDomain = isDevelopment ? document.location.hostname : 'base.org';
+
+  if (!trackingAllowed) {
+    deviceId = 'base_web_device_id';
+  } else if (!deviceId) {
+    deviceId = uuid();
+    setDeviceIdCookie(deviceId, { domain: cookieDomain });
+  }
+
   if (window.ClientAnalytics) {
     const { init, identify, PlatformName, initNextJsTrackPageview } = window.ClientAnalytics;
 
@@ -24,7 +43,7 @@ const initCCA = (router) => {
       apiEndpoint: 'https://cca-lite.coinbase.com',
     });
 
-    identify({ deviceId: 'base_web_device_id' });
+    identify({ deviceId: deviceId });
 
     initNextJsTrackPageview({
       nextJsRouter: router,

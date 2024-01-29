@@ -1,11 +1,10 @@
 type IconProps = {
   name: 'thumbs-up' | 'thumbs-up-filled' | 'thumbs-down' | 'thumbs-down-filled' | 'caret-down';
-  color?: 'white' | 'black';
   width?: string;
   height?: string;
 };
 
-export default function Icon({ name, color = 'white', width = '24', height = '24' }: IconProps) {
+export default function Icon({ name, width = '24', height = '24' }: IconProps) {
   if (name === 'thumbs-up') {
     return (
       <svg
