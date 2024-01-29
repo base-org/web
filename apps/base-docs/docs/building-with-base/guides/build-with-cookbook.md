@@ -39,12 +39,8 @@ In order to deploy a smart contract, you will first need a web3 wallet. You can 
 ## Wallet funds
 Deploying contracts to the blockchain requires a gas fee. Therefore, you will need to fund your wallet with ETH to cover those gas fees.
 
-For this guide, you will be deploying a contract to the Base Goerli test network. You can fund your wallet with Base Goerli ETH using the following options:
+For this guide, you will be deploying a contract to the Base Sepolia test network. You can fund your wallet with Base Sepolia ETH using one of the faucets listed on the [Base Network Faucets page](https://docs.base.org/tools/network-faucets/)
 
-* [Coinbase Faucet | Base Goerli](https://www.coinbase.com/faucets/base-ethereum-goerli-faucet)
-* [Coinbase Wallet Faucets](https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad)
-
-For more detailed steps on funding your wallet with Base Goerli ETH, see [Network Faucets](https://docs.base.org/tools/network-faucets/).
 
 # Search Cookbook's Smart Contract Registry
 
@@ -63,10 +59,6 @@ Highlight selections of the code and press **Analyze Snippet** to get more infor
 Import verified smart contract code into Cookbook to fork, learn about, or build with by inputting any smart contract address into the Cookbook search bar.
 
 ![Cookbook Import Contract](../../../assets/images/deployment-with-cookbook/Import-Contract.png)
-
-:::tip
-Supports Base, Ethereum, Polygon, BSC, Fantom, Optimism, Arbitrum, Moonbeam, Moonriver, Gnosis and Celo
-:::
 
 ## Use No-Code Deploy to Deploy your smart contract to Base
 
@@ -155,20 +147,20 @@ npx hardhat compile
 ``` 
 Add arguments to the `constructorArgs` array in the `deploy.js` file in the `scripts` folder and save.  If you do not need any arguments please leave the array empty.
 
-### Deploy To Base Goerli (Testnet)
+### Deploy To Base Sepolia (Testnet)
 In your `.env.example` file, add your Alchemy API key and uncomment and add your wallet private key. Afterward change the name of the file to .env and create a gitignore to ignore your .env file.
 ```
-ALCHEMY_API_KEY_BASE_GOERLI = "<YOUR ALCHEMY API KEY HERE>"
+ALCHEMY_API_KEY_BASE_SEPOLIA = "<YOUR ALCHEMY API KEY HERE>"
 PRIVATE_KEY = "<YOUR WALLET PRIVATE KEY HERE>" 
 ``` 
 In the `hardhat.config.js` file, after line 4 add 
 ```
-const ALCHEMY_API_KEY_BASE_GOERLI = process.env.ALCHEMY_API_KEY_BASE_GOERLI;
+const ALCHEMY_API_KEY_BASE_SEPOLIA = process.env.ALCHEMY_API_KEY_BASE_SEPOLIA;
 ```
 and after line 39 add
 ```
- baseGoerli: {
-       url: `https://base-goerli.g.alchemy.com/v2/${ALCHEMY_API_KEY_BASE_GOERLI}`,
+ baseSepolia: {
+       url: `https://base-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY_BASE_SEPOLIA}`,
           accounts: [PRIVATE_KEY],
  },
 ```
@@ -180,9 +172,9 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 To deploy your smart contract to the Base testnet, run 
 ```
-npx hardhat run --network baseGoerli scripts/deploy.js
+npx hardhat run --network baseSepolia scripts/deploy.js
 ```
-Hardhat will return the deployed smart contract address in your terminal. View and verify your smart contract on the [Base Goerli Network Explorer](https://goerli.basescan.org).
+Hardhat will return the deployed smart contract address in your terminal. View and verify your smart contract on the [Base Sepolia Network Explorer](https://sepolia.basescan.org).
 
 ### Deploy To Base (Mainnet)
 
@@ -212,20 +204,20 @@ Hardhat will return the deployed smart contract address in your terminal. View a
 
 Alternatively, verify your smart contract with Hardhat with the following steps. 
 
-In `hardhat.config.js`, configure Base Goerli as a custom network. Add the following to your HardhatUserConfig:
+In `hardhat.config.js`, configure Base Sepolia as a custom network. Add the following to your HardhatUserConfig:
 
 ```
 etherscan: {
    apiKey: {
-    "baseGoerli": "PLACEHOLDER_STRING"
+    "baseSepolia": "PLACEHOLDER_STRING"
    },
    customChains: [
      {
-       network: "baseGoerli",
+       network: "baseSepolia",
        chainId: 84531,
        urls: {
-        apiURL: "https://api-goerli.basescan.org/api",
-        browserURL: "https://goerli.basescan.org"
+        apiURL: "https://sepolia.basescan.org/api",
+        browserURL: "https://sepolia.basescan.org/"
        }
      }
    ]
@@ -233,19 +225,19 @@ etherscan: {
 ```
 
 :::info
-When verifying a contract with Basescan on testnet (Goerli), an API key is not required. You can leave the value as PLACEHOLDER_STRING. On mainnet, you can get your Basescan API key from here after you sign up for an account.
+When verifying a contract with Basescan on testnet (Sepolia), an API key is not required. You can leave the value as PLACEHOLDER_STRING. On mainnet, you can get your Basescan API key from here after you sign up for an account.
 :::
 
 Now, you can verify your contract. Grab the deployed address and the constructor agruments you used in `deploy.js` and Run
 
 ```
-npx hardhat verify --network baseGoerli <YOUR CONTRACT ADDRESS> "TEST" "TEST" 1000  --contract contracts/simple-token.sol:FixedToken
+npx hardhat verify --network baseSepolia <YOUR CONTRACT ADDRESS> "TEST" "TEST" 1000  --contract contracts/simple-token.sol:FixedToken
 ```
 
 :::tip
 To verify other smart contracts using the Cookbook Hardhat boilerplate, use the following format inputting your deployed contract addressk the constructor arguements you used in `deploy.js` and replacing CONTRACT_FILENAME with your own contract file name and CONTRACT_NAME with the contract name specified in your contract .sol file 
 ```
-npx hardhat verify --network baseGoerli <YOUR CONTRACT ADDRESS> <YOUR CONSTRUCTOR ARGUMENTS>  --contract contracts/<CONTRACT_FILENAME>:<CONTRACT NAME>
+npx hardhat verify --network baseSepolia <YOUR CONTRACT ADDRESS> <YOUR CONSTRUCTOR ARGUMENTS>  --contract contracts/<CONTRACT_FILENAME>:<CONTRACT NAME>
 ```
 :::
 
@@ -291,7 +283,7 @@ In the scripts folder, uncomment all the code in the `contract.s.sol` file. Repl
 FixedToken _contract = new FixedToken("ARG1", "ARG2", 2000);
 ```
 
-Before deploying your contracts, populate the `.env` file with your [Base Goerli RPC URL](https://www.alchemy.com/base), followed by your [Coinbase wallet private key](https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad?hl=en)  and your [Etherscan API key token values](https://etherscan.io/apis). Then, run the following command to define your environment variables globally
+Before deploying your contracts, populate the `.env` file with your [Base Sepolia RPC URL](https://www.alchemy.com/base), followed by your [Coinbase wallet private key](https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad?hl=en)  and your [Etherscan API key token values](https://etherscan.io/apis). Then, run the following command to define your environment variables globally
 
 ```sh
 source .env
@@ -304,7 +296,7 @@ add "0x" before your private key string in the `.env` file
 Deploy your contracts with the following command
 
 ```sh
-forge script script/contract.s.sol:ContractScript --rpc-url $GOERLI_RPC_URL --broadcast --verify -vvvv
+forge script script/contract.s.sol:ContractScript --rpc-url $SEPOLIA_RPC_URL --broadcast --verify -vvvv
 ```
 
 Your contract will be verified on basescan.org automatically upon deployment. You can manage and interact with your newly deployed smart contract in the [Base block explorer](https://basescan.org).
@@ -315,7 +307,7 @@ To deploy any smart contract to Base using the Cookbook Foundry
 Deploy your contracts with the following command
 
 ```sh
-forge script script/CONTRACT_FILENAME:CONTRACT_NAME --rpc-url $GOERLI_RPC_URL --broadcast --verify -vvvv
+forge script script/CONTRACT_FILENAME:CONTRACT_NAME --rpc-url $SEPOLIA_RPC_URL --broadcast --verify -vvvv
 ```
 
 :::tip 
