@@ -13,6 +13,8 @@ keywords:
     userops,
     Smart contract wallet,
     Smart account,
+    Particle Network,
+    Particle Auth,
   ]
 ---
 
