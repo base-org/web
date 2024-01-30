@@ -12,7 +12,6 @@ const partners = [
   'daz3d',
   'dune',
   'etherscan',
-  'euler',
   'flipside',
   'hop',
   'mnemonic',
