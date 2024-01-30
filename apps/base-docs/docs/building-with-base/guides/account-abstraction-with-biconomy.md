@@ -29,7 +29,7 @@ This page will guide you through the process of implementing Account Abstraction
 By the end of this guide you should be able to do the following:
 
 - Set up a smart contract project for Base using [Foundry](https://book.getfoundry.sh/)
-- Set up a Next.js front-end project using `create next-app`
+- Set up a Next.js frontend project using `create next-app`
 - Setup user login and authentication using [Particle Network](https://particle.network/)
 - Setup a [Biconomy](https://biconomy.io/) paymaster and bundler
 - Create a gasless transaction
@@ -179,7 +179,7 @@ To deploy the smart contract, you can use the `forge create` command. The comman
 
 :::info
 
-Your wallet must be funded with ETH on the Base Goerli to cover the gas fees associated with the smart contract deployment. Otherwise, the deployment will fail.
+Your wallet must be funded with ETH on the Base Goerli testnet to cover the gas fees associated with the smart contract deployment. Otherwise, the deployment will fail.
 
 To get testnet ETH, see the [prerequisites](#prerequisites).
 
@@ -257,11 +257,11 @@ At the time of writing this guide, the Bundler service is still under developmen
 
 ---
 
-## Setting up the front-end
+## Setting up the frontend
 
 ### Creating a Next.js project
 
-After you set up your paymaster and bundler from the Biconomy Dashboard, the next step is to create a Next.js project for your app's front-end.
+After you set up your paymaster and bundler from the Biconomy Dashboard, the next step is to create a Next.js project for your app's frontend.
 
 From the root of the `myproject` directory of your project, create a new Next.js project by running the following command:
 
@@ -280,7 +280,7 @@ To install Biconomy as a dependency to your project, run the following command:
 yarn add @biconomy/account @biconomy/bundler @biconomy/common @biconomy/core-types @biconomy/paymaster ethers@5.7.2
 ```
 
-Creating Biconomy smart accounts requires a signer from an EIP-1193 provider. Biconomy works with a variety of different social login and embedded wallet onboarding solutions that provide access to a signer that can be used for creating smart accounts. In this guide, you will use Particle Network for user authentication and getting a smart account signer.
+Creating Biconomy smart accounts requires a signer from an [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193) provider. Biconomy works with a variety of different social login and embedded wallet onboarding solutions that provide access to a signer that can be used for creating smart accounts. In this guide, you will use [Particle Network](https://particle.network/) for user authentication and getting a smart account signer.
 
 To install Particle Network as a dependency to your project, run the following command:
 
@@ -295,9 +295,9 @@ The main page (`page.tsx`) of the Next.js project created when running the `yarn
 Replace the content of the `page.tsx` file with the following simplified code:
 
 ```javascript
-"use client"
+'use client';
 
-import styles from "./page.module.css";
+import styles from './page.module.css';
 
 export default function Home() {
   return (
@@ -317,24 +317,28 @@ export default function Home() {
 To get started adding social login into the app using Particle Network, import and initialize the Biconomy Particle Auth module in the `page.tsx` file as shown below:
 
 ```javascript
-"use client"
+'use client';
 
-import styles from "./page.module.css";
+import styles from './page.module.css';
 // highlight-next-line
 import { ParticleAuthModule, ParticleProvider } from '@biconomy/particle-auth';
 
-export default function Home() {
-  // highlight-start
-  const particle = new ParticleAuthModule.ParticleNetwork({
-    projectId: 'YOUR_PARTICLE_PROJECT_ID',
-    clientKey: 'YOUR_PARTICLE_CLIENT_ID',
-    appId: 'YOUR_PARTICLE_APP_ID',
-    wallet: {
-      displayWalletEntry: true,
-    },
-  });
-  // highlight-end
+// highlight-start
+const PARTICLE_PROJECT_ID = 'YOUR_PARTICLE_PROJECT_ID';
+const PARTICLE_CLIENT_ID = 'YOUR_PARTICLE_CLIENT_ID';
+const PARTICLE_APP_ID = 'YOUR_PARTICLE_APP_ID';
 
+const particle = new ParticleAuthModule.ParticleNetwork({
+  projectId: PARTICLE_PROJECT_ID,
+  clientKey: PARTICLE_CLIENT_ID,
+  appId: PARTICLE_APP_ID,
+  wallet: {
+    displayWalletEntry: true,
+  },
+});
+// highlight-end
+
+export default function Home() {
   return (
     <main className={styles.main}>
       <div></div>
@@ -345,7 +349,7 @@ export default function Home() {
 
 :::info
 
-You will need to sign up for a Particle Network account and replace `YOUR_PARTICLE_PROJECT_ID`, `YOUR_PARTICLE_CLIENT_ID`, and `YOUR_PARTICLE_APP_ID` with your own project ID, client ID, and app ID respectively. You can find this information on the [Particle Network Dashboard](https://dashboard.particle.network/#/applications).
+You will need to sign up for a Particle Network account and replace the values of `PARTICLE_PROJECT_ID`, `PARTICLE_CLIENT_ID`, and `PARTICLE_APP_ID` with your own project ID, client ID, and app ID respectively. You can find this information on the [Particle Network Dashboard](https://dashboard.particle.network/#/applications).
 
 :::
 
@@ -354,23 +358,27 @@ You will need to sign up for a Particle Network account and replace `YOUR_PARTIC
 Next, add a Login button and `login` function that triggers the Particle Network login flow and gets a `Web3Provider`:
 
 ```javascript
-"use client"
+'use client';
 
-import styles from "./page.module.css";
+import styles from './page.module.css';
 import { ParticleAuthModule, ParticleProvider } from '@biconomy/particle-auth';
 // highlight-next-line
 import { ethers } from 'ethers';
 
-export default function Home() {
-  const particle = new ParticleAuthModule.ParticleNetwork({
-    projectId: 'YOUR_PARTICLE_PROJECT_ID',
-    clientKey: 'YOUR_PARTICLE_CLIENT_ID',
-    appId: 'YOUR_PARTICLE_APP_ID',
-    wallet: {
-      displayWalletEntry: true,
-    },
-  });
+const PARTICLE_PROJECT_ID = 'YOUR_PARTICLE_PROJECT_ID';
+const PARTICLE_CLIENT_ID = 'YOUR_PARTICLE_CLIENT_ID';
+const PARTICLE_APP_ID = 'YOUR_PARTICLE_APP_ID';
 
+const particle = new ParticleAuthModule.ParticleNetwork({
+  projectId: PARTICLE_PROJECT_ID,
+  clientKey: PARTICLE_CLIENT_ID,
+  appId: PARTICLE_APP_ID,
+  wallet: {
+    displayWalletEntry: true,
+  },
+});
+
+export default function Home() {
   // highlight-start
   const login = async () => {
     try {
@@ -405,9 +413,9 @@ Before you can implement the rest of the login flow and create a smart account f
 To initialize the paymaster and bundler, add the following lines of code:
 
 ```javascript
-"use client"
+'use client';
 
-import styles from "./page.module.css";
+import styles from './page.module.css';
 import { ParticleAuthModule, ParticleProvider } from '@biconomy/particle-auth';
 import { ethers } from 'ethers';
 
@@ -418,28 +426,37 @@ import { ChainId } from '@biconomy/core-types';
 import { DEFAULT_ENTRYPOINT_ADDRESS } from '@biconomy/account';
 // highlight-end
 
+const PARTICLE_PROJECT_ID = 'YOUR_PARTICLE_PROJECT_ID';
+const PARTICLE_CLIENT_ID = 'YOUR_PARTICLE_CLIENT_ID';
+const PARTICLE_APP_ID = 'YOUR_PARTICLE_APP_ID';
+
+// highlight-start
+const PAYMASTER_URL = 'YOUR_PAYMASTER_URL';
+const BUNDLER_URL = 'YOUR_BUNDLER_URL';
+// highlight-end
+
+const particle = new ParticleAuthModule.ParticleNetwork({
+  projectId: PARTICLE_PROJECT_ID,
+  clientKey: PARTICLE_CLIENT_ID,
+  appId: PARTICLE_APP_ID,
+  wallet: {
+    displayWalletEntry: true,
+  },
+});
+
+// highlight-start
+const paymaster: IPaymaster = new BiconomyPaymaster({
+  paymasterUrl: PAYMASTER_URL,
+});
+
+const bundler: IBundler = new Bundler({
+  chainId: ChainId.BASE_GOERLI_TESTNET,
+  entryPointAddress: DEFAULT_ENTRYPOINT_ADDRESS,
+  bundlerUrl: BUNDLER_URL,
+});
+// highlight-end
+
 export default function Home() {
-  const particle = new ParticleAuthModule.ParticleNetwork({
-    projectId: 'YOUR_PARTICLE_PROJECT_ID',
-    clientKey: 'YOUR_PARTICLE_CLIENT_ID',
-    appId: 'YOUR_PARTICLE_APP_ID',
-    wallet: {
-      displayWalletEntry: true,
-    },
-  });
-
-  // highlight-start
-  const paymaster: IPaymaster = new BiconomyPaymaster({
-    paymasterUrl: 'YOUR_PAYMASTER_URL',
-  });
-
-  const bundler: IBundler = new Bundler({
-    chainId: ChainId.BASE_GOERLI_TESTNET,
-    entryPointAddress: DEFAULT_ENTRYPOINT_ADDRESS,
-    bundlerUrl: 'YOUR_BUNDLER_URL',
-  });
-  // highlight-end
-
   const login = async () => {
     try {
       const userInfo = await particle.auth.login();
@@ -462,7 +479,7 @@ export default function Home() {
 
 :::info
 
-Replace `YOUR_BUNDLER_URL`, `YOUR_BUNDLER_URL` with the URLs for your paymaster and bundler respectively. You can find this information on the [Biconomy Dashboard](https://dashboard.biconomy.io/)
+Replace the values of `PAYMASTER_URL`, `BUNDLER_URL` with the URLs for your paymaster and bundler respectively. You can find this information on the [Biconomy Dashboard](https://dashboard.biconomy.io/)
 
 :::
 
@@ -481,13 +498,15 @@ import {
   BiconomySmartAccountV2,
 // highlight-end
   DEFAULT_ENTRYPOINT_ADDRESS,
-} from "@biconomy/account";
+} from '@biconomy/account';
 // highlight-start
  import {
   ECDSAOwnershipValidationModule,
   DEFAULT_ECDSA_OWNERSHIP_MODULE,
-} from "@biconomy/modules";
+} from '@biconomy/modules';
 // highlight-end
+
+...
 
 export default function Home() {
 
@@ -499,7 +518,7 @@ export default function Home() {
       const particleProvider = new ParticleProvider(particle.auth);
       const web3Provider = new ethers.providers.Web3Provider(
         particleProvider,
-        "any",
+        'any',
       );
 
       // highlight-start
@@ -544,7 +563,9 @@ To store the the `provider` and `smartAccount`, add the following code:
 ```javascript
 ...
 // highlight-next-line
-import { useState } from "react";
+import { useState } from 'react';
+
+...
 
 export default function Home() {
 
@@ -552,7 +573,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [provider, setProvider] = useState(null);
   const [smartAccount, setSmartAccount] = useState(null);
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState('');
   // highlight-end
 ...
 
@@ -563,7 +584,7 @@ export default function Home() {
       const particleProvider = new ParticleProvider(particle.auth);
       const web3Provider = new ethers.providers.Web3Provider(
         particleProvider,
-        "any",
+        'any',
       );
 
       const validationModule = await ECDSAOwnershipValidationModule.create({
@@ -624,21 +645,21 @@ Now that the app is able to create smart accounts for each logged in user, lets 
 To allow users to interact with the deployed `Counter` smart contract, create a new directory named `src/components` and create a new file named `Counter.tsx` with the following content:
 
 ```javascript
-"use client"
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { PaymasterMode } from '@biconomy/paymaster';
 import abi from '../utils/abi.json';
 
-const contractAddress = 'YOUR_CONTRACT_ADDRESS';
+const CONTRACT_ADDRESS = 'YOUR_CONTRACT_ADDRESS';
 
 export default function Counter({ smartAccount, provider }) {
   const [number, setNumber] = useState(0);
   const [contract, setContract] = useState(null);
 
   useEffect(() => {
-    const counterContract = new ethers.Contract(contractAddress, abi, provider);
+    const counterContract = new ethers.Contract(CONTRACT_ADDRESS, abi, provider);
     setContract(counterContract);
   }, []);
 
@@ -652,7 +673,7 @@ export default function Counter({ smartAccount, provider }) {
     const data = incrementTx.encodeFunctionData('increment');
 
     const transaction = {
-      to: contractAddress,
+      to: CONTRACT_ADDRESS,
       data: data,
     };
 
@@ -679,6 +700,12 @@ export default function Counter({ smartAccount, provider }) {
   );
 }
 ```
+
+:::info
+
+Replace the value of `CONTRACT_ADDRESS` with the address for your deployed `Counter.sol` contract.
+
+:::
 
 #### Code explanation
 
@@ -726,7 +753,7 @@ const increment = async () => {
 
 ### Adding the contract ABI
 
-Initializing a contract instance requires the contracts ABI to be provided. The code for the Counter component in the previous section imports a file called `abi.json`:
+Initializing a contract instance requires the contract's [Application Binary Interface](https://docs.soliditylang.org/en/latest/abi-spec.html) (ABI) to be provided. The code for the Counter component in the previous section imports a file called `abi.json`:
 
 ```javascript
 import abi from '../utils/abi.json';
@@ -738,39 +765,39 @@ To add the ABI, create a new directory named `src/utils` and create a new file n
 
 ```json
 [
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "newNumber",
-          "type": "uint256"
-        }
-      ],
-      "name": "setNumber",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "increment",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "number",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    }
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "newNumber",
+        "type": "uint256"
+      }
+    ],
+    "name": "setNumber",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "increment",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "number",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
 ]
 ```
 
@@ -787,7 +814,7 @@ Now that the `Counter` component has been created, add it to the Home component,
 ```javascript
 ...
 // highlight-next-line
-import Counter from "@/component/Counter";
+import Counter from '@/component/Counter';
 
 export default function Home() {
 
