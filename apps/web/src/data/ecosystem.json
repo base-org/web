@@ -137,11 +137,11 @@
   {
     "name": "ARPA Network",
     "url": "https://www.arpanetwork.io/en-US/randcast",
-    "description": "A secure computation network that builds Randcast, an onchain verifiable RNG for temper-proof randomness in AW, gaming, and NFTs. Features a dev-friendly Smart Contract SDK for an easy dapp integration.",
+    "description": "A secure computation network that builds Randcast, an onchain verifiable RNG for tamper-proof randomness in AW, gaming, and NFTs.",
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/arpa.png"
+    "imageUrl": "/images/partners/arpa2.png"
   },
   {
     "name": "BaseSwap",
@@ -567,15 +567,6 @@
     "imageUrl": "/images/partners/coinnagemedia.png"
   },
   {
-    "name": "Cymbal",
-    "url": "https://cymbal.xyz/",
-    "description": "The human readable block ecplorer is here!",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/cymbal.png"
-  },
-  {
     "name": "Sonne Finance",
     "url": "https://sonne.finance/",
     "description": "Sonne Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. It is a permissionless and open source protocol serving users on Base. Users can deposit their assets, use them as collateral and borrow against them.",
@@ -749,7 +740,7 @@
   {
     "name": "Cymbal",
     "url": "https://cymbal.xyz/",
-    "description": "Cymbal's mission is to take the world's blockchain data — all the billions of events and activities stored on-chain — and make it understandable. We are building the “human readable” blockchain explorer!",
+    "description": "Cymbal's mission is to take the world's blockchain data — all the billions of events and activities stored onchain — and make it understandable. We are building the “human readable” blockchain explorer!",
     "tags": [
       "infra"
     ],
