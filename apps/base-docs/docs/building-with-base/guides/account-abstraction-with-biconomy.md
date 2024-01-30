@@ -295,6 +295,8 @@ The main page (`page.tsx`) of the Next.js project created when running the `yarn
 Replace the content of the `page.tsx` file with the following simplified code:
 
 ```javascript
+"use client"
+
 export default function Home() {
   return (
     <main>
@@ -313,6 +315,8 @@ export default function Home() {
 To get started adding social login into the app using Particle Network, import and initialize the Biconomy Particle Auth module in the `page.tsx` file as shown below:
 
 ```javascript
+"use client"
+
 // highlight-next-line
 import { ParticleAuthModule, ParticleProvider } from '@biconomy/particle-auth';
 
@@ -347,6 +351,8 @@ You will need to sign up for a Particle Network account and replace `YOUR_PARTIC
 Next, add a Login button and `login` function that triggers the Particle Network login flow and gets a `Web3Provider`:
 
 ```javascript
+"use client"
+
 import { ParticleAuthModule, ParticleProvider } from '@biconomy/particle-auth';
 // highlight-next-line
 import { ethers } from 'ethers';
@@ -395,6 +401,8 @@ Before you can implement the rest of the login flow and create a smart account f
 To initialize the paymaster and bundler, add the following lines of code:
 
 ```javascript
+"use client"
+
 import { ParticleAuthModule, ParticleProvider } from '@biconomy/particle-auth';
 
 import { ethers } from 'ethers';
@@ -612,6 +620,8 @@ Now that the app is able to create smart accounts for each logged in user, lets 
 To allow users to interact with the deployed `Counter` smart contract, create a new directory named `src/components` and create a new file named `Counter.tsx` with the following content:
 
 ```javascript
+"use client"
+
 import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { PaymasterMode } from '@biconomy/paymaster';
