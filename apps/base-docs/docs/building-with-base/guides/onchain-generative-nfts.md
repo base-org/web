@@ -21,9 +21,9 @@ hide_table_of_contents: false
 
 Many NFTs are dependent on offchain metadata and images. Some use immutable storage locations, such as [IPFS]. Others use traditional web locations, and many of these allow the owner of the contract to modify the URL returned by a contract when a site or user attempts to retrieve the location of the token art and metadata. This power isn't inherently bad, because we probably want someone to be able to fix the contract if the storage location goes down. However, it does introduce a requirement to trust the contract owner.
 
-Although challenging, it is possible to write a smart contract that contains all the necessary logic and data to generate json metadata and svg images, entirely onchain. It **will** be expensive to deploy, but will be as cheap as simpler contracts to mint!
+Although challenging, it is possible to write a smart contract that contains all the necessary logic and data to generate json metadata and SVG images, entirely onchain. It **will** be expensive to deploy, but will be as cheap as simpler contracts to mint!
 
-In this tutorial, we'll show you how to do this to create your own fully-onchain art project, similar to our sample project [TODO LINK TO EXAMPLE HERE!].
+In this tutorial, we'll show you how to do this to create your own fully-onchain art project, similar to our [sample project].
 
 ---
 
@@ -32,7 +32,7 @@ In this tutorial, we'll show you how to do this to create your own fully-onchain
 By the end of this lesson you should be able to:
 
 - Programmatically generate and return json metadata for ERC-721 tokens
-- Deterministically construct unique svg art in a smart contract
+- Deterministically construct unique SVG art in a smart contract
 - Generate deterministic, pseudorandom numbers
 
 ---
@@ -45,7 +45,7 @@ This guide assumes that you are able to write, test, and deploy your own ERC-721
 
 ### Vector Art
 
-You'll need some familiarity with the svg art format and a basic level of ability to edit and manipulate vector art. If you don't have this, find an artist friend and collaborate!
+You'll need some familiarity with the SVG art format and a basic level of ability to edit and manipulate vector art. If you don't have this, find an artist friend and collaborate!
 
 ---
 
@@ -63,7 +63,7 @@ The mockup needs to have all of the elements you plan to have in the NFT, and yo
 
 If you are an artist, or are working with one, you can use the vector drawing tool of your choice to assemble your mockup. If not, you can use a number of stock art or AI tool options to assist you. If you do, make sure you understand any relevant laws or terms of service!
 
-You can also work from ours: [TODO LINK]
+You can also work from ours: [Sample Art]
 
 Either way, you should end up with something similar to this:
 
@@ -71,9 +71,11 @@ Either way, you should end up with something similar to this:
 
 ## The Art of Making it Fit
 
-You'll notice that the svg is probably way to big to be placed in a smart contract. Our example is 103 KB, so we'll have to be clever to make this work.
+You'll notice that the SVG is probably way too big to be placed in a smart contract. The example is 103 KB, so you'll have to be clever to make this work.
 
-We'll accomplish this task by splitting each element out of the mockup and deploying them into separate smart contracts. To do so, individually export each element, and make sure that the exported pieces are no bigger than about 15 KB. If you're working with the sample, you'll end up with individual svgs for:
+You'll accomplish this task by splitting each element out of the mockup and deploying them into separate smart contracts. To do so, individually export each element, and make sure that the exported pieces are no bigger than about 15 KB. That way, you'll have enough space to fit each piece within the 24KiB limit for compiled bytecode.
+
+If you're working with the sample, you'll end up with individual SVGs for:
 
 - Sun 1: 9 KB
 - Sun 2: 9 KB
@@ -83,7 +85,7 @@ We'll accomplish this task by splitting each element out of the mockup and deplo
 - Cloud: 6 KB
 - Sky: 802 bytes
 
-If you don't have the tools to do this, you can find these files here: [TODO LINK]
+If you don't have the tools to do this, you can find these files here: [Sample Art]
 
 ## Contract Architecture
 
@@ -91,11 +93,11 @@ You'll need to build and deploy a number of contracts for this project. They'll 
 
 ![Architecture](../../../assets/images/onchain-generative-nfts/architecture.png)
 
-Deploying this many contracts will have a cost associated with it, but once they're deployed, this contract will cost the same as any other NFT contract. Remember, `pure` and `view` functions called outside the blockchain don't cost any gas. This means that we can use multiple contracts to assemble a relatively large graphic without additional costs!
+Deploying this many contracts will have a cost associated with it, but once they're deployed, this contract will cost the same as any other NFT contract. Remember, `pure` and `view` functions called outside the blockchain don't cost any gas. This means that you can use multiple contracts to assemble a relatively large graphic without additional costs!
 
 ## Building the Contracts
 
-Create a new project using the toolkit of your choice, and add a contract called `LandSeaSkyNFT`. Import OpenZeppelin's ERC-721, inherit from it, and set it up with the constructor, an mint function, and a counter to keep track of the token ID:
+Create a new project using the toolkit of your choice, and add a contract called `LandSeaSkyNFT`. Import OpenZeppelin's ERC-721, inherit from it, and set it up with the constructor, a mint function, and a counter to keep track of the token ID:
 
 ```solidity
 // SPDX-License-Identifier: UNLICENSED
@@ -156,8 +158,8 @@ Next, set up your `tokenURI` function override. You'll need to write some other 
 
 ```solidity
 function tokenURI(uint _tokenId) public view override returns (string memory) {
-  if(tokenId > counter) {
-    revert InvalidTokenId(tokenId); // Don't forget to add the error above!
+  if(_tokenId > counter) {
+    revert InvalidTokenId(_tokenId); // Don't forget to add the error above!
   }
 
   string memory json = Base64.encode(
@@ -165,8 +167,8 @@ function tokenURI(uint _tokenId) public view override returns (string memory) {
       string(
         abi.encodePacked(
           '{"name": "Land, Sea, and Sky #: ',
-          Strings.toString(tokenId),
-          '", "description": "Land, Sea, and Sky is a collection of generative art pieces stored entirely onchain.", "image": "data:image/svg+xml;base64,',
+          Strings.toString(_tokenId),
+          '", "description": "Land, Sea, and Sky is a collection of generative art pieces stored entirely onchain.", "image": "data:image/SVG+xml;base64,',
           "TODO: Build the SVG with the token ID as the seed",
           '"}'
         )
@@ -198,15 +200,17 @@ To see if it worked, you'll need to use a manual method to decode the base64 dat
 eyJuYW1lIjogIkxhbmQsIFNlYSwgYW5kIFNreSAjMSIsICJkZXNjcmlwdGlvbiI6ICJMYW5kLCBTZWEsIGFuZCBTa3kgaXMgYSBjb2xsZWN0aW9uIG9mIGdlbmVyYXRpdmUgYXJ0IHBpZWNlcyBzdG9yZWQgZW50aXJlbHkgb25jaGFpbi4iLCAiaW1hZ2UiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxUT0RPOiBCdWlsZCB0aGUgU1ZHIHdpdGggdGhlIHRva2VuIElEIGFzIHRoZSBzZWVkIn0=
 ```
 
-You can use one of the many tools online to do this. Do so, and you'll get:
+You can use the terminal: `echo -n '<string to decode>' | base64 --decode`
+
+Do so, and you'll get:
 
 ```text
-{"name": "Land, Sea, and Sky #: 1", "description": "Land, Sea, and Sky is a collection of generative art pieces stored entirely onchain.", "image": "data:image/svg+xml;base64,TODO: Build the SVG with the token ID as the seed"}
+{"name": "Land, Sea, and Sky #: 1", "description": "Land, Sea, and Sky is a collection of generative art pieces stored entirely onchain.", "image": "data:image/SVG+xml;base64,TODO: Build the SVG with the token ID as the seed"}
 ```
 
 ## Building the SVG
 
-Next, you need to build logic to compile a real, working svg from the pieces you've saved. You'll also need to add some variation based on the ID of the NFT.
+Next, you need to build logic to compile a real, working SVG from the pieces you've saved. You'll also need to add some variation based on the ID of the NFT.
 
 ### SVG Renderer Contract
 
@@ -224,21 +228,21 @@ contract SVGRenderer {
 }
 ```
 
-Open the exemplar svg in a code editor, and using it as an example, build out a function that uses `abi.encodePacked` to build everything from the svg **except** the actual art. That's much to big for one contract, so add stubs instead.
+Open the exemplar SVG in a code editor, and using it as an example, build out a function that uses `abi.encodePacked` to build everything from the SVG **except** the actual art. That's much to big for one contract, so add stubs instead.
 
-Depending on the tool you used to make the svg, there may be unneeded extras you can remove from these lines. You also **don't** need the items in `<defs>` or `<styles>`. You'll take advantage of the flexibility of the format to include those in the pieces returned by the supporting contract.
+Depending on the tool you used to make the SVG, there may be unneeded extras you can remove from these lines. You also **don't** need the items in `<defs>` or `<styles>`. You'll take advantage of the flexibility of the format to include those in the pieces returned by the supporting contract.
 
 ```solidity
 function render(uint _tokenId) public view returns (string memory) {
   return string(
     abi.encodePacked(
-      "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'>",
+      "<SVG xmlns='http://www.w3.org/2000/SVG' viewBox='0 0 1024 1024'>",
       // TODO: Add the clouds,
       // TODO: Add the sun,
       // TODO: Add the land,
       // TODO: Add the sea,
       // TODO: Add the background,
-      "</svg>"
+      "</SVG>"
     )
   );
 }
@@ -246,7 +250,7 @@ function render(uint _tokenId) public view returns (string memory) {
 
 ### Rendering the Sea
 
-The sea element of this NFT will be the same for all NFTs, so it makes sense to write that contract first. Create it called, `SeaRenderer`, with a function called `render`. The `<g>` element is the root of the different pieces of the svg, so add that and a stub for the rest.
+The sea element of this NFT will be the same for all NFTs, so it makes sense to write that contract first. Create it called, `SeaRenderer`, with a function called `render`. The `<g>` element is the root of the different pieces of the SVG, so add that and a stub for the rest.
 
 ```solidity
 // SPDX-License-Identifier: UNLICENSED
@@ -262,9 +266,9 @@ contract SeaRenderer {
 }
 ```
 
-The next part is going to be a little tricky, and a little messy. You'll need to combine parts of the individually exported svg that has the sea art and all of its properties with the position data for this part of the art from the exemplar svg. You'll then need to flatten it to a single line, and add it as a string constant.
+The next part is tricky, and a little messy. You'll need to combine parts of the individually exported SVG that has the sea art and all of its properties with the position data for this part of the art from the exemplar SVG. You'll then need to flatten it to a single line, and add it as a string constant.
 
-Start by opening the Ocean svg. Change the viewBox to `viewBox="0 0 1024 1024"`. Move the `<defs>` and `<scripts>` tag inside of the `<g>` tag. Open the svg in the browser to make sure it hasn't broken.
+Start by opening the Ocean SVG. Change the viewBox to `viewBox="0 0 1024 1024"`. Move the `<defs>` and `<scripts>` tag inside of the `<g>` tag. Open the SVG in the browser to make sure it hasn't broken.
 
 Next, delete the `id` and `data-name` from the top level `<g>` and experiment with the `transform="translate(20,2.5)"` property to move the art back down to the bottom of the viewport.
 
@@ -280,7 +284,7 @@ Finally, use the tool of your choice to minify **only** the outermost `<g>` tag 
 string constant SVG = '<g transform="translate(0,700)"<way more code></g>';
 ```
 
-You may need to do a find/replace and ensure you're using only one type of quote in the svg.
+You may need to do a find/replace and ensure you're using only one type of quote in the SVG.
 
 Replace your `TODO` with the constant.
 
@@ -300,11 +304,11 @@ contract SeaRenderer {
 }
 ```
 
-Test this function independently and make sure that if you paste the content inside a set of `<svg>` tags, it renders as expected!
+Test this function independently and make sure that if you paste the content inside a set of `<SVG>` tags, it renders as expected!
 
 ### Calling SeaRenderer
 
-Return to `SvgRenderer.sol`. Add an `interface` for the `SeaRenderer`. All of your renderer contracts will have a function called `render` that either takes a `uint _tokenId`, or no arguments, and returns a string. Because of this, you can use a single interface for all the render contracts:
+Return to `SVGRenderer.sol`. Add an `interface` for the `SeaRenderer`. All of your renderer contracts will have a function called `render` that either takes a `uint _tokenId`, or no arguments, and returns a string. Because of this, you can use a single interface for all the render contracts:
 
 ```solidity
 interface ISVGPartRenderer {
@@ -327,13 +331,13 @@ Replace `// TODO: Add the sea,` with a call to your external function.
 function render(uint _tokenId) public view returns (string memory) {
   return string(
     abi.encodePacked(
-      "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'>",
+      "<SVG xmlns='http://www.w3.org/2000/SVG' viewBox='0 0 1024 1024'>",
       // TODO: Add the clouds,
       // TODO: Add the sun,
       // TODO: Add the land,
       seaRenderer.render(),
       // TODO: Add the background,
-      "</svg>"
+      "</SVG>"
     )
   );
 }
@@ -352,10 +356,10 @@ interface ISVGRenderer {
 Add an instance of it and update the `constructor` to set it:
 
 ```
-ISVGRenderer svgRenderer;
+ISVGRenderer SVGRenderer;
 
-constructor(address _svgRenderer) ERC721("Land, Sea, and Sky", "LSS") {
-  svgRenderer = ISVGRenderer(_svgRenderer);
+constructor(address _SVGRenderer) ERC721("Land, Sea, and Sky", "LSS") {
+  SVGRenderer = ISVGRenderer(_SVGRenderer);
 }
 ```
 
@@ -374,8 +378,8 @@ string memory json = Base64.encode(
       abi.encodePacked(
         '{"name": "Land, Sea, and Sky #: ',
         Strings.toString(tokenId),
-        '", "description": "Land, Sea, and Sky is a collection of generative art pieces stored entirely onchain.", "image": "data:image/svg+xml;base64,',
-        Base64.encode(bytes(svgRenderer.render(tokenId))),
+        '", "description": "Land, Sea, and Sky is a collection of generative art pieces stored entirely onchain.", "image": "data:image/SVG+xml;base64,',
+        Base64.encode(bytes(SVGRenderer.render(tokenId))),
         '"}'
       )
     )
@@ -421,7 +425,7 @@ export default func;
 
 Deploy the contracts to Base Sepolia and verify them, or at least verify `LandSeaSkyNFT` (the above script will do this).
 
-Open the contract in `basescan`, connect with your wallet, and mint some NFTs.
+Open the contract in [Basescan], connect with your wallet, and mint some NFTs.
 
 **Wait a few minutes**, then open the [testnet version of Opensea] and look up your contract. It may take several minutes to show up, but when it does, if everything is working you'll see NFTs with the ocean part of the art! Neat!
 
@@ -429,18 +433,18 @@ Open the contract in `basescan`, connect with your wallet, and mint some NFTs.
 
 ## Adding the Sky Renderer
 
-Great work! Much of the hardest part is done. All you need to do now is add a renderer for each of the other elements, with the twist that you'll be doing customization inside the svgs themselves. You'll have to do a little surgery!
+Great work! Much of the hardest part is done. All you need to do now is add a renderer for each of the other elements, with the twist that you'll be doing customization inside the SVGs themselves. You'll have to do a little surgery!
 
 ### Preparing the SVG
 
-Open the sky svg in both an editor, and the browser. As with for the sea, the first step is to change the viewport to 1024x1024, move the `<defs>` and `<style>` elements inside the top-level `<g>`, and transform/translate that group to the correct location (0,0 will work!).
+Open the sky SVG in both an editor, and the browser. As with for the sea, the first step is to change the viewport to 1024x1024, move the `<defs>` and `<style>` elements inside the top-level `<g>`, and transform/translate that group to the correct location (0,0 will work!).
 
 Change `cls-1` to `cls-sky-1` in both the definition and where it's used. Add `sky` to the `linear-gradient` as well.
 
 Delete the data and layer information for this group as well. You'll end up with:
 
 ```html
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+<svg xmlns="http://www.w3.org/2000/SVG" viewBox="0 0 1024 1024">
   <g transform="translate(0,0)">
     <defs>
       <style>
@@ -640,13 +644,13 @@ contract SVGRenderer {
   function render(uint _tokenId) public view returns (string memory) {
     return string(
       abi.encodePacked(
-        "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'>",
+        "<SVG xmlns='http://www.w3.org/2000/SVG' viewBox='0 0 1024 1024'>",
         // TODO: Add the clouds,
         // TODO: Add the sun,
         // TODO: Add the land,
         skyRenderer.render(_tokenId),
         seaRenderer.render(),
-        "</svg>"
+        "</SVG>"
       )
     );
   }
@@ -670,11 +674,11 @@ Test as before. Your NFTs now have the sky!
 
 ## Adding the LandRenderer
 
-Next up is the mountain part of the svg. For this, you'll change the horizontal translation left to right to show a different part of the mountains for each NFT.
+Next up is the mountain part of the SVG. For this, you'll change the horizontal translation left to right to show a different part of the mountains for each NFT.
 
 ### Preparing the SVG
 
-Open the mountain svg in both your browser and the editor. Once again, set the `viewBox` to 1024x1024 and move the `<defs>` and `<styles>` inside the top-level group (`<g>`).
+Open the mountain SVG in both your browser and the editor. Once again, set the `viewBox` to 1024x1024 and move the `<defs>` and `<styles>` inside the top-level group (`<g>`).
 
 Find transform/translate values that first put the mountains so that they are at the bottom, and the left-most portion is shown, then the right-most. `transform="translate(-150,350)"` and `transform="translate(-800,350)"` are about right.
 
@@ -705,7 +709,7 @@ contract LandRenderer {
 }
 ```
 
-Minify the top-level `<g>` element, and add a constant with everything after the opening `<g>` tag. Use similar techniques as before to generate an offset based on the token id, then build the svg. You'll end up with something like this:
+Minify the top-level `<g>` element, and add a constant with everything after the opening `<g>` tag. Use similar techniques as before to generate an offset based on the token id, then build the SVG. You'll end up with something like this:
 
 ```solidity
 // SPDX-License-Identifier: UNLICENSED
@@ -714,7 +718,7 @@ pragma solidity ^0.8.20;
 import "hardhat/console.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-string constant END = "<long svg string>";
+string constant END = "<long SVG string>";
 
 contract LandRenderer {
   function render(uint _tokenId) public pure returns (string memory) {
@@ -755,11 +759,11 @@ constructor(address _seaRenderer, address _skyRenderer, address _landRenderer) {
 function render(uint _tokenId) public view returns (string memory) {
   return string(
     abi.encodePacked(
-      "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'>",
+      "<SVG xmlns='http://www.w3.org/2000/SVG' viewBox='0 0 1024 1024'>",
       skyRenderer.render(_tokenId),
       landRenderer.render(_tokenId),
       seaRenderer.render(),
-      "</svg>"
+      "</SVG>"
     )
   );
 }
@@ -788,7 +792,7 @@ The sun renderer will use similar techniques as those you've already incorporate
 
 ### Preparing the SVGs
 
-For each of the three sun svgs:
+For each of the three sun SVGs:
 
 - Change the `viewBox` to 1024x1024
 - Move the `<defs>` and `<styles>` into the first group
@@ -807,7 +811,7 @@ pragma solidity ^0.8.20;
 import "hardhat/console.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-string constant SVG = '<long svg>'
+string constant SVG = '<long SVG>'
 
 contract SunRenderer1 {
   function render() public pure returns (string memory) {
@@ -841,12 +845,12 @@ Make sure to put it after `skyRenderer` in the main `render` function!
 function render(uint _tokenId) public view returns (string memory) {
   return string(
     abi.encodePacked(
-      "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'>",
+      "<SVG xmlns='http://www.w3.org/2000/SVG' viewBox='0 0 1024 1024'>",
       skyRenderer.render(_tokenId),
       pickSunRenderer(_tokenId).render(),
       landRenderer.render(_tokenId),
       seaRenderer.render(),
-      "</svg>"
+      "</SVG>"
     )
   );
 }
@@ -864,7 +868,7 @@ On your own, try adding the clouds. The clouds renderer should:
 
 ## Conclusion
 
-In this tutorial, you've learned how to take advantage of the fact that offchain calls to your smart contracts don't use gas to create a significantly complex system to render complicated and unique NFTs, with the metadata and art existing entirely onchain. You've also explored some techniques for creating deterministic, pseudorandom numbers, and how to use them to add variation to your art. You've dealt with some of the many caveats and quirks of programmatically combining svg files. Finally, you've practiced building multiple contracts that interact with one another.
+In this tutorial, you've learned how to take advantage of the fact that offchain calls to your smart contracts don't use gas to create a significantly complex system to render complicated and unique NFTs, with the metadata and art existing entirely onchain. You've also explored some techniques for creating deterministic, pseudorandom numbers, and how to use them to add variation to your art. You've dealt with some of the many caveats and quirks of programmatically combining SVG files. Finally, you've practiced building multiple contracts that interact with one another.
 
 ---
 
@@ -874,3 +878,6 @@ In this tutorial, you've learned how to take advantage of the fact that offchain
 [Base64]: https://en.wikipedia.org/wiki/Base64
 [Hardhat and Hardhat Deploy]: https://docs.base.org/base-camp/docs/hardhat-deploy/hardhat-deploy-sbs
 [testnet version of Opensea]: https://testnets.opensea.io/
+[sample project]: https://github.com/base-org/land-sea-and-sky
+[Sample Art]: https://github.com/base-org/land-sea-and-sky/tree/master/Final_SVGs
+[Basescan]: https://sepolia.basescan.org/
