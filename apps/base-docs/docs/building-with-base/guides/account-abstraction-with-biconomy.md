@@ -241,6 +241,7 @@ Set up and fund the paymaster's gas tank by completing the following steps:
 1. Select the paymaster to configure
 1. Navigate to **Policies > Contracts**, and click **Add your first contract**
 1. Add the **Name** and the **Smart contract address** for your contract
+1. Select the **increment** and **setNumber** write methods as methods to sponsor
 1. Click **Add Smart Contract**
 
 ### Setting up a bundler
@@ -396,7 +397,6 @@ To initialize the paymaster and bundler, add the following lines of code:
 ```javascript
 import { ParticleAuthModule, ParticleProvider } from '@biconomy/particle-auth';
 
-// highlight-next-line
 import { ethers } from 'ethers';
 
 // highlight-start
@@ -420,9 +420,7 @@ export default function Home() {
   const paymaster: IPaymaster = new BiconomyPaymaster({
     paymasterUrl: 'YOUR_PAYMASTER_URL',
   });
-  // highlight-end
 
-  // highlight-start
   const bundler: IBundler = new Bundler({
     chainId: ChainId.BASE_GOERLI_TESTNET,
     entryPointAddress: DEFAULT_ENTRYPOINT_ADDRESS,
@@ -466,11 +464,13 @@ To create a smart account for the user on Base Goerli testnet that uses the Bico
 
 ```javascript
 ...
-// highlight-start
 import {
+// highlight-start
   BiconomySmartAccountV2,
+// highlight-end
   DEFAULT_ENTRYPOINT_ADDRESS,
 } from "@biconomy/account";
+// highlight-start
  import {
   ECDSAOwnershipValidationModule,
   DEFAULT_ECDSA_OWNERSHIP_MODULE,
@@ -575,7 +575,7 @@ export default function Home() {
       setSmartAccount(biconomySmartAccount);
       setAddress(accountAddress);
       setLoading(false);
-
+      // highlight-end
     } catch (error) {
       console.error(error);
     }
@@ -722,42 +722,42 @@ This file does not exist yet, so you will need to add it.
 
 To add the ABI, create a new directory named `src/utils` and create a new file named `abi.json` with the following content:
 
-```javascript
+```json
 [
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: 'newNumber',
-        type: 'uint256',
-      },
-    ],
-    name: 'setNumber',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'increment',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'number',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-];
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "newNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "setNumber",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "increment",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "number",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+]
 ```
 
 :::info
@@ -772,9 +772,8 @@ Now that the `Counter` component has been created, add it to the Home component,
 
 ```javascript
 ...
-
-
-import Counter from "../components/Counter";
+// highlight-next-line
+import Counter from "@/component/Counter";
 
 export default function Home() {
 
