@@ -297,9 +297,11 @@ Replace the content of the `page.tsx` file with the following simplified code:
 ```javascript
 "use client"
 
+import styles from "./page.module.css";
+
 export default function Home() {
   return (
-    <main>
+    <main className={styles.main}>
       <div></div>
     </main>
   );
@@ -317,6 +319,7 @@ To get started adding social login into the app using Particle Network, import a
 ```javascript
 "use client"
 
+import styles from "./page.module.css";
 // highlight-next-line
 import { ParticleAuthModule, ParticleProvider } from '@biconomy/particle-auth';
 
@@ -333,7 +336,7 @@ export default function Home() {
   // highlight-end
 
   return (
-    <main>
+    <main className={styles.main}>
       <div></div>
     </main>
   );
@@ -353,6 +356,7 @@ Next, add a Login button and `login` function that triggers the Particle Network
 ```javascript
 "use client"
 
+import styles from "./page.module.css";
 import { ParticleAuthModule, ParticleProvider } from '@biconomy/particle-auth';
 // highlight-next-line
 import { ethers } from 'ethers';
@@ -380,7 +384,7 @@ export default function Home() {
   // highlight-end
 
   return (
-    <main>
+    <main className={styles.main}>
       <div>
         // highlight-next-line
         <button onClick={login}>Login</button>
@@ -403,8 +407,8 @@ To initialize the paymaster and bundler, add the following lines of code:
 ```javascript
 "use client"
 
+import styles from "./page.module.css";
 import { ParticleAuthModule, ParticleProvider } from '@biconomy/particle-auth';
-
 import { ethers } from 'ethers';
 
 // highlight-start
@@ -447,7 +451,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main className={styles.main}>
       <div>
         <button onClick={login}>Login</button>
       </div>
@@ -522,7 +526,7 @@ export default function Home() {
 
 
   return (
-    <main>
+    <main className={styles.main}>
       <div>
       <button onClick={login}>Login</button>
       </div>
@@ -590,7 +594,7 @@ export default function Home() {
    };
 
    return (
-    <main>
+    <main className={styles.main}>
       <div>
       // highlight-start
       {!loading && !address && <button onClick={login}>Login</button>}
