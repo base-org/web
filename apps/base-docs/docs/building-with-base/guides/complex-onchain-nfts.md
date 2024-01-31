@@ -1,5 +1,5 @@
 ---
-title: 'Onchain Generative Art NFTs'
+title: 'Complex Onchain NFTs'
 description: Learn how to make complex nfts that are procedurally generated and have onchain metadata and images.
 keywords:
   [
