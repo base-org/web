@@ -85,6 +85,19 @@ module.exports = {
             },
             {
               type: 'category',
+              label: 'Advanced NFT Development',
+              collapsible: true,
+              collapsed: true,
+              items: [
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/complex-onchain-nfts',
+                  className: 'sidebar-coding',
+                },
+              ],
+            },
+            {
+              type: 'category',
               label: 'Hardhat Tools and Testing',
               collapsible: true,
               items: [
