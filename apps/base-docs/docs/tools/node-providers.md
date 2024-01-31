@@ -57,7 +57,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -69,7 +68,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -81,7 +79,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -93,7 +90,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -105,7 +101,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -116,7 +111,6 @@ keywords:
 #### Supported Networks
 
 - Base Mainnet
-- Base Goerli (Testnet)
 
 ---
 
@@ -128,7 +122,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -140,7 +133,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -183,7 +175,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -195,7 +186,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -207,7 +197,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 

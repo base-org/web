@@ -5,7 +5,6 @@ description: Documentation for Testnet Faucets for the Base network. Details how
 keywords:
   [
     network faucets,
-    Base Goerli,
     Base Sepolia,
     testnet ETH,
     Base testnet,
@@ -49,7 +48,7 @@ Requests to Alchemy's Base Sepolia Faucet are limited to one claim per 24 hours.
 
 ## Bware Labs Faucet
 
-[Bware Labs Faucet](https://bwarelabs.com/faucets) is an easy to use faucet with no registration required. You can use Bware Labs Faucet to claim Base Goerli testnet ETH for free - one claim per 24 hours.
+[Bware Labs Faucet](https://bwarelabs.com/faucets) is an easy to use faucet with no registration required. You can use Bware Labs Faucet to claim Base Sepolia testnet ETH for free - one claim per 24 hours.
 
 :::info
 
@@ -61,7 +60,7 @@ Requests to Bware Labs Faucet are limited to one claim per 24 hours.
 
 ## QuickNode Faucet
 
-[QuickNode Faucet](https://faucet.quicknode.com/drip) is an easy to use Multi-Chain Faucet. You can use QuickNode Faucet to claim Base Sepolia or Base Goerli testnet ETH for free - one drip per network every 12 hours.
+[QuickNode Faucet](https://faucet.quicknode.com/drip) is an easy to use Multi-Chain Faucet. You can use QuickNode Faucet to claim Base Sepolia testnet ETH for free - one drip per network every 12 hours.
 
 :::info
 
