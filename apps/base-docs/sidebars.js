@@ -287,5 +287,6 @@ module.exports = {
     },
     ['terms-of-service'],
     ['privacy-policy'],
+    ['cookie-policy'],
   ],
 };

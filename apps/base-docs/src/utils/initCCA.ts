@@ -4,28 +4,46 @@
 // @ts-nocheck
 const docusaurusConfig = require('@generated/docusaurus.config');
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import { setCookie, getCookie, deserializeCookie } from './cookieManagement';
+import { TrackingPreference } from '@coinbase/cookie-manager';
 
 const { customFields } = docusaurusConfig.default;
 const isDevelopment = customFields.nodeEnv === 'development';
 
 // Initialize Client Analytics
 const initCCA = () => {
-  if (ExecutionEnvironment.canUseDOM && window.ClientAnalytics) {
-    const { init, identify, PlatformName } = window.ClientAnalytics;
+  if (ExecutionEnvironment.canUseDOM) {
+    let deviceId: string | undefined = deserializeCookie(getCookie('base_device_id'));
 
-    init({
-      isProd: !isDevelopment,
-      amplitudeApiKey: isDevelopment
-        ? 'ca92bbcb548f7ec4b8ebe9194b8eda81'
-        : '2b38c7ac93c0dccc83ebf9acc5107413',
-      platform: PlatformName.web,
-      projectName: 'base_docs',
-      showDebugLogging: isDevelopment,
-      version: '1.0.0',
-      apiEndpoint: 'https://cca-lite.coinbase.com',
-    });
+    const trackingPreference: TrackingPreference | undefined = deserializeCookie(
+      getCookie('cm_default_preferences'),
+    );
+    const trackingAllowed = trackingPreference?.consent.includes('performance');
 
-    identify({ deviceId: 'base_docs_device_id' });
+    if (!trackingAllowed) {
+      deviceId = 'base_docs_device_id';
+    } else if (!deviceId) {
+      deviceId = crypto?.randomUUID();
+      setCookie('base_device_id', deviceId, 365);
+    }
+
+    if (window.ClientAnalytics) {
+      const { init, identify, PlatformName } = window.ClientAnalytics;
+
+      init({
+        isProd: !isDevelopment,
+        amplitudeApiKey: isDevelopment
+          ? 'ca92bbcb548f7ec4b8ebe9194b8eda81'
+          : '2b38c7ac93c0dccc83ebf9acc5107413',
+        platform: PlatformName.web,
+        projectName: 'base_docs',
+        showDebugLogging: isDevelopment,
+        version: '1.0.0',
+        apiEndpoint: 'https://cca-lite.coinbase.com',
+      });
+
+      identify({ deviceId: deviceId });
+    }
   }
 };
 
