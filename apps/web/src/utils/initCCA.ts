@@ -19,13 +19,12 @@ const initCCA = (
 ) => {
   let deviceId: string | undefined = deviceIdCookie;
   const trackingAllowed: boolean = trackingPreference?.consent.includes('performance');
-  const cookieDomain = isDevelopment ? document.location.hostname : 'base.org';
 
   if (!trackingAllowed) {
     deviceId = 'base_web_device_id';
   } else if (!deviceId) {
     deviceId = uuid();
-    setDeviceIdCookie(deviceId, { domain: cookieDomain });
+    setDeviceIdCookie(deviceId);
   }
 
   if (window.ClientAnalytics) {
