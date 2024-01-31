@@ -98,6 +98,7 @@ To get started, visit the [developer documentation](https://academy.subquery.net
 #### Supported Networks
 
 - [Base Mainnet](https://academy.subquery.network/quickstart/quickstart_chains/base.html)
+- Base Sepolia (Testnet)
 
 ---
 

@@ -292,7 +292,7 @@ export function DepositContainer() {
   } else if (readApprovalResult || selectedAsset.L1symbol === 'ETH') {
     depositDisabled =
       parseFloat(depositAmount) <= 0 ||
-      parseFloat(depositAmount) >= parseFloat(L1Balance?.formatted ?? '0') ||
+      parseFloat(depositAmount) > parseFloat(L1Balance?.formatted ?? '0') ||
       depositAmount === '' ||
       (isSmartContractWallet && !isAddress(depositTo ?? '')) ||
       !isPermittedToBridge;

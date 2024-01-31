@@ -29,6 +29,16 @@ keywords:
 
 ---
 
+## Coinbase Cloud
+
+[Coinbase Cloud](https://coinbase.com/cloud) provides an RPC endpoint that runs on the same node infrastructure that powers Coinbase's retail exchange, meaning you get the rock solid reliability of our retail exchange as a developer. Coinbase Cloud gives you a free, rate limited RPC endpoint to begin building on Base.
+
+#### Supported Networks
+
+- Base Mainnet
+
+---
+
 ## 1RPC
 
 [1RPC](https://1rpc.io/) is the first and only on-chain attested privacy preserving RPC that eradicate metadata exposure and leakage when interacting with blockchains. 1RPC offers free and [paid plans](https://www.1rpc.io/#pricing) with additional features and increased request limits.

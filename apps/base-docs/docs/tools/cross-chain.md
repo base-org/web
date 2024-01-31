@@ -15,6 +15,7 @@ keywords:
     CCIP,
     LayerZero,
     Axelar,
+    Crossmint,
     Wormhole,
     web3 transactions,
     blockchain communication,
@@ -22,6 +23,8 @@ keywords:
     Base Testnet,
     interchain connectivity,
     blockchain interoperability,
+    cross-chain transactions, 
+    cross-chain payments,
   ]
 ---
 
@@ -43,6 +46,18 @@ To learn more about Axelar visit our [docs](https://docs.axelar.dev/). For compl
 #### Axelarscan
 
 To view current transactions and live stats about the Axelar network please visit the [Axelarscan block explorer](https://axelarscan.io/)
+
+---
+
+## Crossmint
+
+[Crossmint](https://crossmint.com/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) allows you to create and deploy NFT Collections and enable cross-chain payments. This enables your users and customers to purchase an NFT from a collection deployed on Base using Ethereum or Solana tokens. 
+
+Check out [Crossmint Docs](https://docs.crossmint.com/nft-checkout/introduction/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) to learn more about NFT Checkout with Crossmint. To power cross-chain payments, click [here](https://docs.crossmint.com/nft-checkout/pay-button/select-payment-options/?utm_medium=docs&utm_source=backlinks&utm_campaign=base) to get started. 
+
+#### Supported Networks
+
+- [Base Mainnet](https://www.crossmint.com/products/nft-checkout/?utm_source=backlinks&utm_medium=docs&utm_campaign=base)
 
 ---
 
