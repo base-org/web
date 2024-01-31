@@ -41,25 +41,25 @@ keywords:
 | EAS                           | [0x4200000000000000000000000000000000000021](https://basescan.org/address/0x4200000000000000000000000000000000000021) |
 | EASSchemaRegistry             | [0x4200000000000000000000000000000000000020](https://basescan.org/address/0x4200000000000000000000000000000000000020) |
 
-### Base Testnet (Goerli + Sepolia)
+### Base Testnet (Sepolia)
 
-| Name                          | Address                                                                                                                      |
-| :---------------------------- | :--------------------------------------------------------------------------------------------------------------------------- |
-| WETH9                         | [0x4200000000000000000000000000000000000006](https://goerli.basescan.org/address/0x4200000000000000000000000000000000000006) |
-| L2CrossDomainMessenger        | [0x4200000000000000000000000000000000000007](https://goerli.basescan.org/address/0x4200000000000000000000000000000000000007) |
-| L2StandardBridge              | [0x4200000000000000000000000000000000000010](https://goerli.basescan.org/address/0x4200000000000000000000000000000000000010) |
-| SequencerFeeVault             | [0x4200000000000000000000000000000000000011](https://goerli.basescan.org/address/0x4200000000000000000000000000000000000011) |
-| OptimismMintableERC20Factory  | [0x4200000000000000000000000000000000000012](https://goerli.basescan.org/address/0x4200000000000000000000000000000000000012) |
-| GasPriceOracle                | [0x420000000000000000000000000000000000000F](https://goerli.basescan.org/address/0x420000000000000000000000000000000000000F) |
-| L1Block                       | [0x4200000000000000000000000000000000000015](https://goerli.basescan.org/address/0x4200000000000000000000000000000000000015) |
-| L2ToL1MessagePasser           | [0x4200000000000000000000000000000000000016](https://goerli.basescan.org/address/0x4200000000000000000000000000000000000016) |
-| L2ERC721Bridge                | [0x4200000000000000000000000000000000000014](https://goerli.basescan.org/address/0x4200000000000000000000000000000000000014) |
-| OptimismMintableERC721Factory | [0x4200000000000000000000000000000000000017](https://goerli.basescan.org/address/0x4200000000000000000000000000000000000017) |
-| ProxyAdmin                    | [0x4200000000000000000000000000000000000018](https://goerli.basescan.org/address/0x4200000000000000000000000000000000000018) |
-| BaseFeeVault                  | [0x4200000000000000000000000000000000000019](https://goerli.basescan.org/address/0x4200000000000000000000000000000000000019) |
-| L1FeeVault                    | [0x420000000000000000000000000000000000001a](https://goerli.basescan.org/address/0x420000000000000000000000000000000000001a) |
-| EAS                           | [0x4200000000000000000000000000000000000021](https://goerli.basescan.org/address/0x4200000000000000000000000000000000000021) |
-| EASSchemaRegistry             | [0x4200000000000000000000000000000000000020](https://goerli.basescan.org/address/0x4200000000000000000000000000000000000020) |
+| Name                          | Address                                                                                                                       |
+| :---------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
+| WETH9                         | [0x4200000000000000000000000000000000000006](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000006) |
+| L2CrossDomainMessenger        | [0x4200000000000000000000000000000000000007](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000007) |
+| L2StandardBridge              | [0x4200000000000000000000000000000000000010](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000010) |
+| SequencerFeeVault             | [0x4200000000000000000000000000000000000011](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000011) |
+| OptimismMintableERC20Factory  | [0x4200000000000000000000000000000000000012](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000012) |
+| GasPriceOracle                | [0x420000000000000000000000000000000000000F](https://sepolia.basescan.org/address/0x420000000000000000000000000000000000000F) |
+| L1Block                       | [0x4200000000000000000000000000000000000015](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000015) |
+| L2ToL1MessagePasser           | [0x4200000000000000000000000000000000000016](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000016) |
+| L2ERC721Bridge                | [0x4200000000000000000000000000000000000014](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000014) |
+| OptimismMintableERC721Factory | [0x4200000000000000000000000000000000000017](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000017) |
+| ProxyAdmin                    | [0x4200000000000000000000000000000000000018](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000018) |
+| BaseFeeVault                  | [0x4200000000000000000000000000000000000019](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000019) |
+| L1FeeVault                    | [0x420000000000000000000000000000000000001a](https://sepolia.basescan.org/address/0x420000000000000000000000000000000000001a) |
+| EAS                           | [0x4200000000000000000000000000000000000021](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000021) |
+| EASSchemaRegistry             | [0x4200000000000000000000000000000000000020](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000020) |
 
 \*_L2 contract addresses are the same on both mainnet and testnet._
 
@@ -87,22 +87,6 @@ Certain contracts are mandatory according to the [OP Stack SDK](https://stack.op
 - `StateCommitmentChain`
 - `CanonicalTransactionChain`
 - `BondManager`
-
-### Ethereum Testnet (Goerli)
-
-| Name                         | Address                                                                                                                      |
-| :--------------------------- | :--------------------------------------------------------------------------------------------------------------------------- |
-| AddressManager               | [0x4Cf6b56b14c6CFcB72A75611080514F94624c54e](https://goerli.etherscan.io/address/0x4Cf6b56b14c6CFcB72A75611080514F94624c54e) |
-| L1CrossDomainMessenger       | [0x8e5693140eA606bcEB98761d9beB1BC87383706D](https://goerli.etherscan.io/address/0x8e5693140eA606bcEB98761d9beB1BC87383706D) |
-| L1ERC721Bridge               | [0x5E0c967457347D5175bF82E8CCCC6480FCD7e568](https://goerli.etherscan.io/address/0x5E0c967457347D5175bF82E8CCCC6480FCD7e568) |
-| L1StandardBridge             | [0xfA6D8Ee5BE770F84FC001D098C4bD604Fe01284a](https://goerli.etherscan.io/address/0xfA6D8Ee5BE770F84FC001D098C4bD604Fe01284a) |
-| L2OutputOracle               | [0x2A35891ff30313CcFa6CE88dcf3858bb075A2298](https://goerli.etherscan.io/address/0x2A35891ff30313CcFa6CE88dcf3858bb075A2298) |
-| OptimismMintableERC20Factory | [0xa88530E2DD811363cA3Ef479dBab3C0BF73d90b1](https://goerli.etherscan.io/address/0xa88530E2DD811363cA3Ef479dBab3C0BF73d90b1) |
-| OptimismPortal               | [0xe93c8cD0D409341205A592f8c4Ac1A5fe5585cfA](https://goerli.etherscan.io/address/0xe93c8cD0D409341205A592f8c4Ac1A5fe5585cfA) |
-| PortalSender                 | [0xe3f0b29CeD61738E6f89eeC151858EC1300960b9](https://goerli.etherscan.io/address/0xe3f0b29CeD61738E6f89eeC151858EC1300960b9) |
-| ProxyAdmin                   | [0xbc0Fc544736b7d610D9b05F31B182C8154BEf336](https://goerli.etherscan.io/address/0xbc0Fc544736b7d610D9b05F31B182C8154BEf336) |
-| SystemConfig                 | [0xb15eea247eCE011C68a614e4a77AD648ff495bc1](https://goerli.etherscan.io/address/0xb15eea247eCE011C68a614e4a77AD648ff495bc1) |
-| SystemDictator               | [0x3A2b271C49e673DEF1561c7fF159b99a7c5801b8](https://goerli.etherscan.io/address/0x3A2b271C49e673DEF1561c7fF159b99a7c5801b8) |
 
 ### Ethereum Testnet (Sepolia)
 
@@ -136,23 +120,6 @@ Certain contracts are mandatory according to the [OP Stack SDK](https://stack.op
 | Challenger                       | [0x6f8c5ba3f59ea3e76300e3becdc231d656017824](https://etherscan.io/address/0x6f8c5ba3f59ea3e76300e3becdc231d656017824) | 1-of-2 Smart contract                     |
 | System config owner              | [0x14536667Cd30e52C0b458BaACcB9faDA7046E056](https://etherscan.io/address/0x14536667Cd30e52C0b458BaACcB9faDA7046E056) | Gnosis Safe                               |
 | Guardian                         | [0x14536667Cd30e52C0b458BaACcB9faDA7046E056](https://etherscan.io/address/0x14536667Cd30e52C0b458BaACcB9faDA7046E056) | Gnosis Safe                               |
-
-### Base Testnet (Goerli)
-
-| Admin Role              | Address                                                                                                                      | Type of Key                               |
-| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- |
-| Batch Sender            | [0x73b4168cc87f35cc239200a20eb841cded23493b](https://goerli.etherscan.io/address/0x73b4168cc87f35cc239200a20eb841cded23493b) | EOA managed by Coinbase Technologies      |
-| Batch Inbox             | [0x8453100000000000000000000000000000000000](https://goerli.etherscan.io/address/0x8453100000000000000000000000000000000000) | EOA (with no known private key)           |
-| Output Proposer         | [0x4f28beb40635093b72def43d0ad801cdd8e0e6fe](https://goerli.etherscan.io/address/0x4f28beb40635093b72def43d0ad801cdd8e0e6fe) | EOA managed by Coinbase Technologies      |
-| Proxy Admin Owner (L1)  | [0x444b8C3E4eA49cE15A93D96AfA83D421F6049524](https://goerli.etherscan.io/address/0x444b8C3E4eA49cE15A93D96AfA83D421F6049524) | 2-of-2 Nested Gnosis Safe (signers below) |
-| L1 Nested Safe Signer 1 | [0x4C35Ca57616E0d5fD808574772f632D8dA4eadCa](https://goerli.etherscan.io/address/0x4C35Ca57616E0d5fD808574772f632D8dA4eadCa) | Gnosis Safe                               |
-| L1 Nested Safe Signer 2 | [0x4574D0A407c9eF275128Df822CF13BF8aEF28BD8](https://goerli.etherscan.io/address/0x4574D0A407c9eF275128Df822CF13BF8aEF28BD8) | Gnosis Safe                               |
-| Proxy Admin Owner (L2)  | [0x4c7C99555e8afac3571c7456448021239F5b73bA](https://goerli.basescan.org/address/0x4c7C99555e8afac3571c7456448021239F5b73bA) | 2-of-2 Nested Gnosis Safe (signers below) |
-| L2 Nested Safe Signer 1 | [0x2eD486761dcF287E7b79E526B0d3fC2349834a66](https://goerli.basescan.org/address/0x2eD486761dcF287E7b79E526B0d3fC2349834a66) | Gnosis Safe                               |
-| L2 Nested Safe Signer 1 | [0xfC99F72E433982088346ACa05FA65B0dff09F19B](https://goerli.basescan.org/address/0xfC99F72E433982088346ACa05FA65B0dff09F19B) | Gnosis Safe                               |
-| Challenger              | [0xf30b40411c4d76228092E7eCdc1593c996b13D22](https://goerli.etherscan.io/address/0xf30b40411c4d76228092E7eCdc1593c996b13D22) | 1-of-2 Smart contract                     |
-| System config owner     | [0x4C35Ca57616E0d5fD808574772f632D8dA4eadCa](https://goerli.etherscan.io/address/0x4C35Ca57616E0d5fD808574772f632D8dA4eadCa) | Gnosis Safe                               |
-| Guardian                | [0x4C35Ca57616E0d5fD808574772f632D8dA4eadCa](https://goerli.etherscan.io/address/0x4C35Ca57616E0d5fD808574772f632D8dA4eadCa) | Gnosis Safe                               |
 
 ### Base Testnet (Sepolia)
 
