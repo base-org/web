@@ -9,7 +9,6 @@ keywords:
     Base Mainnet,
     Uniswap v3,
     Multicall3,
-    Goerli Testnet,
     blockchain contracts,
     decentralization,
     cryptocurrency,
