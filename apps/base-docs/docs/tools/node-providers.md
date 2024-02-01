@@ -106,7 +106,7 @@ keywords:
 
 ## Chainstack
 
-[Chainstack](https://chainstack.com/build-better-with-base/) allows developers to run high-performing Base nodes and APIs in minutes. They offer elastic Base RPC nodes that provide personal, geographically diverse, and protected API endpoints, as well as archive nodes to query the entire history of the Base Mainnet and Goerli Testnet. Get started with their [free and paid pricing plans](https://chainstack.com/pricing/).
+[Chainstack](https://chainstack.com/build-better-with-base/) allows developers to run high-performing Base nodes and APIs in minutes. They offer elastic Base RPC nodes that provide personal, geographically diverse, and protected API endpoints, as well as archive nodes to query the entire history of the Base Mainnet. Get started with their [free and paid pricing plans](https://chainstack.com/pricing/).
 
 #### Supported Networks
 

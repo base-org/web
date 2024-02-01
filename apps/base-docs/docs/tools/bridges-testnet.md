@@ -12,8 +12,6 @@ keywords:
     bridge ETH to Base,
     Base Bridge,
     Wormhole Token Bridge,
-    Ethereum Goerli,
-    Base Goerli,
     Ethereum Sepolia,
     Base Sepolia,
     ETH,
@@ -59,19 +57,5 @@ This implementation only can bridge assets to Base. Do not attempt to alter the
 code to withdraw the assets.
 
 :::
-
----
-
-## Wormhole
-
-Wormhole's [Token Bridge](https://wormhole-foundation.github.io/example-token-bridge-ui/#/transfer) allows you to send assets from any Wormhole connected chain to Base and vice versa.
-
-To bridge to Base Sepolia:
-
-1. Visit Wormhole’s [Token Bridge](https://wormhole-foundation.github.io/example-token-bridge-ui/#/transfer) (testnet)
-2. Connect your wallet
-3. Choose the chain and asset you’d like to send to Base Sepolia then follow the instructions on the [Token Bridge](https://wormhole-foundation.github.io/example-token-bridge-ui/#/transfer)
-
-See more info [here](https://book.wormhole.com/reference/contracts.html).
 
 ---
