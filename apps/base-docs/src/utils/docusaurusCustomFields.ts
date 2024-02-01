@@ -1,7 +1,7 @@
 type DocusaurusConfig = {
   default: {
     customFields: {
-      mendableServerApiKey: string;
+      nodeEnv: string;
     };
   };
 };

@@ -6,15 +6,12 @@ import Icon from '../Icon';
 import styles from './styles.module.css';
 
 const logResponseFeedback = (messageId: number | undefined, isHelpful: boolean) => {
-  const url = 'https://api.mendable.ai/v1/rateMessage';
-
   const data = {
-    api_key: 'MENDALE_API_KEY', // UPDATE WITH KEY
     message_id: messageId,
     rating_value: isHelpful ? 1 : -1,
   };
 
-  fetch(url, {
+  fetch('/api/rateMessage', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
