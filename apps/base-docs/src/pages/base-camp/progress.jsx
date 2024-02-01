@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-unresolved
+import React from 'react';
 import Layout from '@theme/Layout';
 
 import StudentProgress from '../../components/StudentProgress/index';
