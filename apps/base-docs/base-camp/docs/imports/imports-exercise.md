@@ -57,13 +57,13 @@ Remember, the compiler will automatically create a getter for `public` `struct`s
 
 ## Submit your Contract and Earn an NFT Badge! (BETA)
 
-:::caution 
+:::caution
 
 #### Contract Verification Best Practices
 
 To simplify the verification of your contract on a blockchain explorer like BaseScan.org, consider these two common strategies:
 
-1. **Flattening**: This method involves combining your main contract and all of its imported dependencies into a single file. This makes it easier for explorers to verify the code since they only have to process one file. 
+1. **Flattening**: This method involves combining your main contract and all of its imported dependencies into a single file. This makes it easier for explorers to verify the code since they only have to process one file.
 
 2. **Modular Deployment**: Alternatively, you can deploy each imported contract separately and then reference them in your main contract via their deployed addresses. This approach maintains the modularity and readability of your code. Each contract is deployed and verified independently, which can facilitate easier updates and reusability.
 
@@ -75,9 +75,7 @@ To simplify the verification of your contract on a blockchain explorer like Base
 
 [Testnets](../deployment-to-testnet/test-networks) are not permanent! Base Goerli [will soon be sunset](https://base.mirror.xyz/kkz1-KFdUwl0n23PdyBRtnFewvO48_m-fZNzPMJehM4), in favor of Base Sepolia.
 
-We recommend changing the network to **Base Sepolia**, and submitting your contracts there. While it is still supported, you can change the network to Base Goerli to see your existing NFT.
-
-However, as these are separate networks with separate data, your NFTs **will not** transfer over.
+As these are separate networks with separate data, your NFTs **will not** transfer over.
 
 **Don't worry!** We've captured the addresses of all NFT owners on Base Goerli and will include them when we release the mechanism to transfer these NFTs to mainnet later this year! You can also redeploy on Sepolia and resubmit if you'd like!
 
