@@ -18,6 +18,69 @@
     "imageUrl": "/images/partners/botfi.png"
   },
   {
+    "name": "Blocto",
+    "tags": [
+      "wallet"
+    ],
+    "description": "Blocto is an account abstraction wallet supporting EVM chains. We boast a user base of 1.7 million so far with a seamless social log in and speedy 30-second onboarding experience, completely coinless.",
+    "url": "https://blocto.io/",
+    "imageUrl": "/images/partners/Blocto.png"
+  },
+  {
+    "name": "Cred Protocol",
+    "tags": [
+      "defi"
+    ],
+    "description": "Credit risk management infrastructure, quantifying on-chain lending risk at scale. Realtime Credit Scoring, Reporting and Monitoring across 200M EVM addresses.",
+    "url": "https://credprotocol.com",
+    "imageUrl": "/images/partners/Cred.png"
+  },
+  {
+    "name": "Ducky City",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Ducky City is a gamefi project built on Base, and is a MMORPG game run on browser compatible with all devices.",
+    "url": "https://duckycity.io/",
+    "imageUrl": "/images/partners/DuckyCity.png"
+  },
+  {
+    "name": "Nirvana Labs",
+    "tags": [
+      "infra"
+    ],
+    "description": "Built by crypto engineers and optimized for the bandwidth, storage, and compute workloads of blockchain transactions, Nirvana offers a bare metal cloud with vertically integrated managed RPC services.",
+    "url": "https://nirvanalabs.io/",
+    "imageUrl": "/images/partners/Nirvana.png"
+  },
+  {
+    "name": "Oku Trade",
+    "tags": [
+      "defi"
+    ],
+    "description": "Oku Trade is the best DEX interface. Powered by Uniswap v3, the trading platform offers limit orders, analytics, and position management without fees.",
+    "url": "https://oku.trade",
+    "imageUrl": "/images/partners/Oku.png"
+  },
+  {
+    "name": "SubQuery",
+    "tags": [
+      "infra"
+    ],
+    "description": "Fast, reliable, opens source, decentralised, and customised APIs supercharging dApps on over 150 networks, enabling a user-focused web3 world. SubQuery Network is innovating web3 infrastructure with tools that empower builders to decentralise the future.\n",
+    "url": "https://subquery.network/",
+    "imageUrl": "/images/partners/Subquery.png"
+  },
+  {
+    "name": "Subsquid",
+    "tags": [
+      "infra"
+    ],
+    "description": "Subsquid Network is Web3 necessiware—a decentralized data lake and query engine for blazing-fast cross-chain indexing and queries. Infinitely horizontally scalable, Subsquid makes the consumer dApps that real people want to use possible, from social media to games and DeFi. Secured by ZK proofs, Subsquid supports over 100 networks.",
+    "url": "https://subsquid.io",
+    "imageUrl": "/images/partners/Subsquid.png"
+  },
+  {
     "name": "Hitdex",
     "tags": [
       "defi"
@@ -38,10 +101,10 @@
   {
     "name": "Cede.Store",
     "tags": [
-      "bridge"
+      "onramp"
     ],
-    "description": "Cede is a non-custodial browser extension that enables users to quickly access their assets from the largest centralized exchanges on any dApp through an execution and UI comparable to Metamask in just a few clicks.",
-    "url": "https://cede.store/",
+    "description": "Access and transfer your assets from 10+ centralized exchanges, with a DeFi UX.",
+    "url": "https://send.cede.store/",
     "imageUrl": "/images/partners/cede.png"
   },
   {
