@@ -98,6 +98,19 @@ module.exports = {
             },
             {
               type: 'category',
+              label: 'Farcaster Frames',
+              collapsible: true,
+              collapsed: true,
+              items: [
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/nft-minting-frame',
+                  className: 'sidebar-coding',
+                },
+              ],
+            },
+            {
+              type: 'category',
               label: 'Hardhat Tools and Testing',
               collapsible: true,
               items: [
