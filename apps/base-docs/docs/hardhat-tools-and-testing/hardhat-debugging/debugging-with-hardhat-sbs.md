@@ -37,7 +37,7 @@ In this tutorial, you will explore the essential debugging features offered by H
 
 One of the key features of Hardhat is the ability to use `console.log` for writing debugging logs in your smart contracts. In order to use it, you must include `hardhat/console.sol` in the contract you wish to debug.
 
-In the following contract `Lock.sol` for example, you include `hardhat/console.sol` by importing it and adding a few `console.log`s in the constructor with the text "Creating" and the Ether balance of the contract. This can help you not only with tracking that the contract was created successfully but also, more importantly, with the ability to include additional logs such as the balance of the contract after is was created:
+In the following contract `Lock.sol` for example, you include `hardhat/console.sol` by importing it and adding a few `console.log`s in the constructor with the text "Creating" and the Ether balance of the contract. This can help you not only with tracking that the contract was created successfully but also, more importantly, with the ability to include additional logs such as the balance of the contract after it was created:
 
 ```solidity
 // SPDX-License-Identifier: UNLICENSED
@@ -100,7 +100,7 @@ describe("Lock Tests", function () {
 });
 ```
 
-Notice a single test is included in order to get proper logs. However, you're only interested in the creation process that happens in the `before` hook. Then, you can run:
+Notice that a single test is included in order to get proper logs. However, you're only interested in the creation process that happens in the `before` hook. Then, you can run:
 
 ```bash
 npx hardhat test
@@ -143,7 +143,7 @@ These log functions are handy when the type you intend to log doesn't fall withi
 
 While debugging your smart contracts, it's crucial to be familiar with common errors that can arise during development. Recognizing these errors and knowing how to resolve them is an important skill.
 
-In our [Basecamp] series of tutorials, we cover a few compile-time errors in [Error Triage]. Other errors such as `reverts` or `index out of bounds errors` can be unexpected during the runtime of the smart contract.
+In our [Basecamp] series of tutorials, we cover a few compile-time errors in [Error Triage]. Other errors, such as `reverts` or `index out of bounds errors` can be unexpected during the runtime of the smart contract.
 
 The following explores typical techniques to debug these types of errors.
 
@@ -281,7 +281,7 @@ function createLock(uint256 _unlockTime) external payable {
 
 Attempting to access arrays at an invalid position can also cause errors.
 
-If you wish to retrieve all the `Lock` contract instances being created in the previous example, you can make the `locks` array public. In order to illustrate this example though, you can create a custom function called `getAllLocks`:
+If you wish to retrieve all the `Lock` contract instances being created in the previous example, you can make the `locks` array public. In order to illustrate this example, though, you can create a custom function called `getAllLocks`:
 
 ```solidity
 contract LockCreator {

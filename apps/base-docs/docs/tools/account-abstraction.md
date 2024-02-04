@@ -27,7 +27,7 @@ keywords:
 
 ## Alchemy Account Kit
 
-[Account Kit](https://www.alchemy.com/account-kit) is a complete solution for account abstraction. Using Account Kit you can create a smart contract wallet for every user that leverages account abstraction to simplify every step of your apps onboaring experience. It also offers Gas Manager and Bundler APIs for sponsoring gas and batching transactions.
+[Account Kit](https://www.alchemy.com/account-kit) is a complete solution for account abstraction. Using Account Kit, you can create a smart contract wallet for every user that leverages account abstraction to simplify every step of your app's onboaring experience. It also offers Gas Manager and Bundler APIs for sponsoring gas and batching transactions.
 
 ---
 
@@ -67,6 +67,6 @@ WalletKit is compatible with most EVM chains, including Base. You can check out 
 
 ## ZeroDev
 
-[ZeroDev](https://zerodev.app) is an embedded wallet powered by account abstraction. It offers you the ability to create self-custody wallets for your users, sponsor gas, and simplify user slows by batching and automating transactions.
+[ZeroDev](https://zerodev.app) is an embedded wallet powered by account abstraction. It offers you the ability to create self-custody wallets for your users, sponsor gas, and simplify user flows by batching and automating transactions.
 
 ---
