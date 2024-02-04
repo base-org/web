@@ -126,7 +126,7 @@ To install LayerZero smart contracts and their dependencies, run the following c
 
 ```bash
 forge install GNSPS/solidity-bytes-utils --no-commit
-forge install OpenZeppelin/openzeppelin-contracts --no-commit
+forge install OpenZeppelin/openzeppelin-contracts@v4.9.4 --no-commit
 forge install LayerZero-Labs/LayerZero-v2 --no-commit
 ```
 
