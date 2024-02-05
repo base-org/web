@@ -41,7 +41,7 @@ npm install --save viem
 
 ## Setup
 
-Before you can start using viem, you need to setup a [Client](https://viem.sh/docs/clients/intro.html) with a desired [Transport](https://viem.sh/docs/clients/intro.html) and [Chain](https://viem.sh/docs/clients/chains.html).
+Before you can start using viem, you need to setup a [Client](https://viem.sh/docs/clients/intro.html) with a desired [Transport](https://viem.sh/docs/clients/intro.html) and [Chain](https://viem.sh/docs/chains/introduction).
 
 ```javascript
 import { createPublicClient, http } from 'viem';
