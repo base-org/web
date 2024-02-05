@@ -560,7 +560,7 @@ In this tutorial, you learned how to create [Farcaster] frames. You then updated
 
 ---
 
-[Base Camp]: https://base.org.camp
+[Base Camp]: https://docs.base.org/base-camp/docs/welcome
 [ERC-721 Tokens]: https://docs.base.org/base-camp/docs/erc-721-token/erc-721-standard-video
 [testnet version of Opensea]: https://testnets.opensea.io/
 [Farcaster]: https://www.farcaster.xyz/
