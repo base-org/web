@@ -26,7 +26,7 @@ hide_table_of_contents: false
 
 ## Objectives
 
-By the end of this guide you should be able to:
+By the end of this guide, you should be able to:
 
 - Set up a provider in wagmi and use it to connect a wallet
 - Protect API keys that will be exposed to the front end
@@ -73,7 +73,7 @@ Note that these providers are using React's context feature to pass the blockcha
 
 Before you can do anything else, you need to obtain a _WalletConnect_ `projectId`.
 
-Open up the [WalletConnect] homepage, and create an account and/or sign in using the method of your choice.
+Open up the [WalletConnect] homepage, and create an account, and/or sign in using the method of your choice.
 
 Click the `Create` button in the upper right of the `Projects` tab.
 

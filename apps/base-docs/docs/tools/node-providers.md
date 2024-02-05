@@ -41,7 +41,7 @@ keywords:
 
 ## 1RPC
 
-[1RPC](https://1rpc.io/) is the first and only on-chain attested privacy preserving RPC that eradicate metadata exposure and leakage when interacting with blockchains. 1RPC offers free and [paid plans](https://www.1rpc.io/#pricing) with additional features and increased request limits.
+[1RPC](https://1rpc.io/) is the first and only on-chain attested privacy preserving RPC that eradicates metadata exposure and leakage when interacting with blockchains. 1RPC offers free and [paid plans](https://www.1rpc.io/#pricing) with additional features and increased request limits.
 
 #### Supported Networks
 
@@ -73,7 +73,7 @@ keywords:
 
 ## Blast
 
-[Blast](https://blastapi.io/public-api/base) provides fast and reliable decentralized blockchain APIs by partnering with third-party Node Providers. Blast offers users the ability generate their own [dedicated RPC endpoint for Base](https://blastapi.io/login).
+[Blast](https://blastapi.io/public-api/base) provides fast and reliable decentralized blockchain APIs by partnering with third-party Node Providers. Blast offers users the ability to generate their own [dedicated RPC endpoint for Base](https://blastapi.io/login).
 
 #### Supported Networks
 
@@ -84,7 +84,7 @@ keywords:
 
 ## Blockdaemon
 
-[Blockdaemon](https://www.blockdaemon.com/protocols/base/) offers access to hosted Base nodes with a free plan at $0/month via Ubiquity Data API Suite. Extra costs may be incurred depending on usage.
+[Blockdaemon](https://www.blockdaemon.com/protocols/base/) offers access to hosted Base nodes with a free plan at $0/month via the Ubiquity Data API Suite. Extra costs may be incurred depending on usage.
 
 #### Supported Networks
 
@@ -116,7 +116,7 @@ keywords:
 
 ## DRPC
 
-[DRPC](https://drpc.org/) offers access to distributed network of independent third-party partners and public nodes for Base. They provide a free tier that allows for an unlimited amount of requests over public nodes, or a paid tier which provides access to all providers, as well as other additional features.
+[DRPC](https://drpc.org/) offers access to a distributed network of independent third-party partners and public nodes for Base. They provide a free tier that allows for an unlimited amount of requests over public nodes, or a paid tier which provides access to all providers, as well as other additional features.
 
 #### Supported Networks
 

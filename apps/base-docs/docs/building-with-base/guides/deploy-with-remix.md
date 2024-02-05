@@ -26,7 +26,7 @@ If you're already familiar with Remix, you probably want to jump down to [here].
 
 ## Objectives
 
-By the end of this lesson you should be able to:
+By the end of this lesson, you should be able to:
 
 - List the features, pros, and cons of using Remix as an IDE
 - Deploy and test the Storage.sol demo contract in Remix
@@ -44,7 +44,7 @@ The editor pane loads with the Remix home screen, which contains news, helpful l
 
 ![Remix Editor](../../../assets/images/deployment-with-remix/editor-pane.png)
 
-You'll edit your code in the editor pane. It also has most of the features you're expecting, such as syntax and error highlighting. Note that in Remix, errors are not underlines. Instead, you'll see an❗to the left of the line number where the error is present.
+You'll edit your code in the editor pane. It also has most of the features you're expecting, such as syntax and error highlighting. Note that in Remix, errors are not underlined. Instead, you'll see an❗to the left of the line number where the error is present.
 
 At the top, you'll see a big green arrow similar to the _Run_ button in other editors. In Solidity, this compiles your code, but it does not run it because you must first deploy your code to the simulated blockchain.
 
@@ -64,7 +64,7 @@ As with many other editors, the left panel in Remix has a number of vertical tab
 
 ## Plugins
 
-Most of the features in Remix are plugins and the ones you'll use the most are active by default. You can view and manage plugins by clicking the plug button in the lower-left corner, right above the settings gear. You can turn them off and on by clicking activate/deactivate, and some, such as the _Debug_ plugin will be automatically activated through other parts of the editor.
+Most of the features in Remix are plugins, and the ones you'll use the most are active by default. You can view and manage plugins by clicking the plug button in the lower-left corner, right above the settings gear. You can turn them off and on by clicking activate/deactivate, and some, such as the _Debug_ plugin will be automatically activated through other parts of the editor.
 
 ### Solidity Compiler
 
@@ -72,7 +72,7 @@ The first default plugin (after the search function) is the _Solidity Compiler_.
 
 The `Compile and Run script` button in this plugin is a little misleading. This is **not** how you will usually run your contract through testing. You can click the `I` button for more information on this feature.
 
-Finally, if you have errors in your contracts, the complete text for each error will appear at the bottom of the pane. Try it out by introducing some typos to `1_Storage.sol`.
+Finally, if you have errors in your contracts, the complete text for each error will appear at the bottom of the page. Try it out by introducing some typos to `1_Storage.sol`.
 
 ### Deploy & Run Transactions
 

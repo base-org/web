@@ -28,7 +28,7 @@ The [Superchain Faucet](https://app.optimism.io/faucet) provides testnet ETH for
 
 :::info
 
-The Superchain faucet allows developers to authenticate via their onchain identity. Developers that choose to authenticate via their onchain identity can claim more testnet ETH versus traditional faucets. For more information see the [FAQ](https://app.optimism.io/faucet).
+The Superchain faucet allows developers to authenticate via their onchain identity. Developers that choose to authenticate via their onchain identity can claim more testnet ETH versus traditional faucets. For more information, see the [FAQ](https://app.optimism.io/faucet).
 
 :::
 

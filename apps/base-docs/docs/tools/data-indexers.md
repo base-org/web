@@ -61,7 +61,7 @@ To get started, [sign up](https://www.covalenthq.com/platform/?utm_source=base&u
 
 Envio [HyperSync](https://docs.envio.dev/docs/hypersync) is an indexed layer of the Base blockchain for the hyper-speed syncing of historical data (JSON-RPC bypass). What would usually take hours to sync ~100,000 events can now be done in the order of less than a minute.
 
-Designed to optimize the user experience, Envio offers automatic code generation, flexible language support, multi-chain data aggregation, and a reliable cost-effective hosted service.
+Designed to optimize the user experience, Envio offers automatic code generation, flexible language support, multi-chain data aggregation, and a reliable, cost-effective hosted service.
 
 To get started, visit the [documentation](https://docs.envio.dev/docs/overview) or follow the [quickstart](https://docs.envio.dev/docs/quickstart) guide.
 
@@ -74,7 +74,7 @@ To get started, visit the [documentation](https://docs.envio.dev/docs/overview) 
 
 ## Shovel
 
-[Shovel](https://indexsupply.com/shovel) is an [open source](https://github.com/indexsupply/code) tool for synchronizing Ethereum data to your Postgres database. Shovel can index block data, transaction data, and decoded event data. A single Shovel can index multiple chains simultaneously. Shovel is configured via a declarative JSON config file –no custom functions to save indexed data to your database.
+[Shovel](https://indexsupply.com/shovel) is an [open source](https://github.com/indexsupply/code) tool for synchronizing Ethereum data to your Postgres database. Shovel can index block data, transaction data, and decoded event data. A single Shovel can index multiple chains simultaneously. Shovel is configured via a declarative JSON config file – no custom functions to save indexed data to your database.
 
 Find out more in the [Shovel Docs](https://indexsupply.com/shovel/docs/)
 
@@ -89,7 +89,7 @@ Find out more in the [Shovel Docs](https://indexsupply.com/shovel/docs/)
 
 [SubQuery](https://subquery.network/) is a data indexer that provides developers with fast, reliable, decentralized, and customized APIs for accessing rich indexed data from over 80+ ecosystems (including Base) within their projects.
 
-SubQuery provides the ability to aggregate this data across multiple blockchains all within a single project.
+SubQuery provides the ability to aggregate this data across multiple blockchains, all within a single project.
 
 Other advantages of SubQuery includes performance with multiple RPC endpoint configurations, multi-worker capabilities and a configurable caching architecture.
 

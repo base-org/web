@@ -11,10 +11,10 @@ keywords: ["Foundry", "smart contract", "ERC-721", "Base", "Base test network", 
 
 This article will provide an overview of the [Foundry](https://book.getfoundry.sh/) development toolchain, and show you how to deploy a contract to **Base Sepolia** testnet.
 
-Foundry is a powerful suite of tools to develop, test, and debug your smart contracts. It is comprised of several individual tools:
+Foundry is a powerful suite of tools to develop, test, and debug your smart contracts. It comprises several individual tools:
 
 - `forge`: the main workhorse of Foundry — for developing, testing, compiling, and deploying smart contracts
-- `cast`: a command-line tool for performing Ethereum RPC calls (e.g. interacting with contracts, sending transactions, and getting onchain data)
+- `cast`: a command-line tool for performing Ethereum RPC calls (e.g., interacting with contracts, sending transactions, and getting onchain data)
 - `anvil`: a local testnet node, for testing contract behavior from a frontend or over RPC
 - `chisel`: a Solidity [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop), for trying out Solidity snippets on a local or forked network
 
@@ -30,7 +30,7 @@ For production / mainnet deployments the steps below in this guide will be almos
 
 ## Objectives
 
-By the end of this guide you should be able to do the following:
+By the end of this guide, you should be able to do the following:
 
 - Setup Foundry for Base
 - Create an NFT smart contract for Base

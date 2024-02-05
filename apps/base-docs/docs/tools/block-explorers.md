@@ -78,6 +78,6 @@ A testnet explorer for [Base Sepolia](https://sepolia.basescan.org/) is also ava
 
 ## Tenderly Explorer
 
-With [Tenderly](https://tenderly.co/) developer explorer you can get unparalleled visibility into your smart contract code. You can easily view detailed transaction information, spot bugs in your code and optimize gas spend. Supporting Base mainnet and Base Sepolia testnet, Tenderly Explorer helps you track your smart contracts while providing visibility on a granular level.
+With the [Tenderly](https://tenderly.co/) developer explorer you can get unparalleled visibility into your smart contract code. You can easily view detailed transaction information, spot bugs in your code, and optimize gas spend. Supporting Base mainnet and Base Sepolia testnet, Tenderly Explorer helps you track your smart contracts while providing visibility on a granular level.
 
 ---
