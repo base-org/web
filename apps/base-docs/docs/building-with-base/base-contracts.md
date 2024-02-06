@@ -40,6 +40,7 @@ keywords:
 | L1FeeVault                    | [0x420000000000000000000000000000000000001a](https://basescan.org/address/0x420000000000000000000000000000000000001a) |
 | EAS                           | [0x4200000000000000000000000000000000000021](https://basescan.org/address/0x4200000000000000000000000000000000000021) |
 | EASSchemaRegistry             | [0x4200000000000000000000000000000000000020](https://basescan.org/address/0x4200000000000000000000000000000000000020) |
+| LegacyERC20ETH                | [0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000](https://basescan.org/address/0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000) |
 
 ### Base Testnet (Sepolia)
 
@@ -60,6 +61,7 @@ keywords:
 | L1FeeVault                    | [0x420000000000000000000000000000000000001a](https://sepolia.basescan.org/address/0x420000000000000000000000000000000000001a) |
 | EAS                           | [0x4200000000000000000000000000000000000021](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000021) |
 | EASSchemaRegistry             | [0x4200000000000000000000000000000000000020](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000020) |
+| LegacyERC20ETH                | [0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000](https://sepolia.basescan.org/address/0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000) |
 
 \*_L2 contract addresses are the same on both mainnet and testnet._
 
