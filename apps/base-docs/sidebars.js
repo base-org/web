@@ -114,6 +114,11 @@ module.exports = {
                   id: 'building-with-base/guides/nft-minting-frame',
                   className: 'sidebar-coding',
                 },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/deploy-frame-on-vercel',
+                  className: 'sidebar-coding',
+                },
               ],
             },
             {
