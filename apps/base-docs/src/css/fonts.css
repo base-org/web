@@ -35,7 +35,7 @@
   font-family: CoinbaseMono;
   font-style: normal;
   font-weight: 400;
-  src: url('/static/fonts/CoinbaseText-Regular.woff2') format('woff2');
+  src: url('/static/fonts/CoinbaseMono-Regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -43,7 +43,7 @@
   font-family: CoinbaseMono;
   font-style: normal;
   font-weight: 500;
-  src: url('/static/fonts/CoinbaseText-Medium.woff2') format('woff2');
+  src: url('/static/fonts/CoinbaseMono-Medium.woff2') format('woff2');
 }
 
 @font-face {
