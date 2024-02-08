@@ -19,7 +19,7 @@ type ChatModalProps = {
 };
 
 export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
-  const [conversationId, setConversationId] = useState('');
+  const [conversationId, setConversationId] = useState(0);
   const [conversation, setConversation] = useState<ConversationMessage[]>([]);
   const [chatHistory, setChatHistory] = useState<ChatHistoryMessage[]>([]);
   const [prompt, setPrompt] = useState('');
@@ -38,7 +38,7 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
     (e: React.SyntheticEvent) => {
       e.preventDefault();
 
-      if (!prompt || isLoading || isGenerating) return;
+      if (!conversationId || !prompt || isLoading || isGenerating) return;
 
       setIsLoading(true);
 
@@ -130,6 +130,7 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
                 content={message.content}
                 sources={message.sources}
                 messageId={message.messageId}
+                conversationId={conversationId}
                 conversation={conversation}
                 setConversation={setConversation}
               />

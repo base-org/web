@@ -3,6 +3,7 @@ import marked from '../../utils/marked';
 
 import Icon from '../Icon';
 import ResponseFeedback from './ResponseFeedback';
+import ResponseSource from './ResponseSource';
 
 import styles from './styles.module.css';
 
@@ -13,7 +14,8 @@ type ChatMessageProps = {
   type: ConversationMessage['type'];
   content: ConversationMessage['content'];
   sources?: ConversationMessage['sources'];
-  messageId?: number;
+  messageId: number;
+  conversationId: number;
   conversation: ConversationMessage[];
   setConversation: (
     conversation: (prevState: ConversationMessage[]) => ConversationMessage[],
@@ -23,6 +25,7 @@ type ChatMessageProps = {
 export default function ChatMessage({
   index,
   messageId,
+  conversationId,
   conversation,
   setConversation,
   type,
@@ -64,6 +67,7 @@ export default function ChatMessage({
           <ResponseFeedback
             responseIndex={index}
             messageId={messageId}
+            conversationId={conversationId}
             conversation={conversation}
             setConversation={setConversation}
           />
@@ -71,15 +75,13 @@ export default function ChatMessage({
           <div className={styles.chatMessageSourcesLabel}>Verified Sources:</div>
           <div className={styles.chatMessageSourcesContainer}>
             {sources.map((source, i) => (
-              <a
+              <ResponseSource
                 key={source}
-                href={source}
-                className={styles.chatMessageSource}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {`${i + 1}. ${source}`}
-              </a>
+                index={i}
+                conversationId={conversationId}
+                messageId={messageId}
+                source={source}
+              />
             ))}
           </div>
         </>

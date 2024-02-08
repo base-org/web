@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
-import { ConversationMessage } from './docChat';
+import { ConversationMessage, logGptEvent } from './docChat';
 
 import Icon from '../Icon';
 
 import styles from './styles.module.css';
 
-const logResponseFeedback = (messageId: number | undefined, isHelpful: boolean) => {
+const logResponseFeedback = (conversationId: number, messageId: number, isHelpful: boolean) => {
   const data = {
     message_id: messageId,
     rating_value: isHelpful ? 1 : -1,
@@ -18,11 +18,18 @@ const logResponseFeedback = (messageId: number | undefined, isHelpful: boolean) 
     },
     body: JSON.stringify(data),
   }).catch((error) => console.error(error));
+
+  logGptEvent('gpt_feedback', {
+    conversation_id: conversationId,
+    message_id: messageId,
+    response_helpful: isHelpful,
+  });
 };
 
 type ResponseFeedbackProps = {
   responseIndex: number;
-  messageId: number | undefined;
+  messageId: number;
+  conversationId: number;
   conversation: ConversationMessage[];
   setConversation: (
     conversation: (prevState: ConversationMessage[]) => ConversationMessage[],
@@ -32,6 +39,7 @@ type ResponseFeedbackProps = {
 export default function ResponseFeedback({
   responseIndex,
   messageId,
+  conversationId,
   conversation,
   setConversation,
 }: ResponseFeedbackProps) {
@@ -54,7 +62,7 @@ export default function ResponseFeedback({
         return newState;
       });
 
-      logResponseFeedback(messageId, isHelpful);
+      logResponseFeedback(conversationId, messageId, isHelpful);
     },
     [conversation],
   );

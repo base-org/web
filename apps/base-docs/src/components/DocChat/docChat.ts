@@ -1,11 +1,67 @@
 import { fetchEventSource } from '@microsoft/fetch-event-source';
 
+// Log Base GPT CCA event
+type GptEvent =
+  | 'gpt_conversation_created'
+  | 'gpt_prompt_submitted'
+  | 'gpt_source_clicked'
+  | 'gpt_feedback';
+
+type GptConversationCreatedAttributes = {
+  conversation_id: number;
+};
+
+type GptPromptSubmittedAttributes = {
+  conversation_id: number;
+  prompt: string;
+};
+
+type GptSourceClickedAttributes = {
+  conversation_id: number;
+  message_id: number;
+  source_url: string;
+};
+
+type GptFeedbackAttributes = {
+  conversation_id: number;
+  message_id: number;
+  response_helpful: boolean;
+};
+
+type GptEventAttributes =
+  | GptConversationCreatedAttributes
+  | GptPromptSubmittedAttributes
+  | GptSourceClickedAttributes
+  | GptFeedbackAttributes;
+
+export const logGptEvent = (type: GptEvent, attributes: GptEventAttributes) => {
+  if (window.ClientAnalytics) {
+    const { logEvent, ActionType, ComponentType } = window.ClientAnalytics;
+
+    let path: string = window.location.pathname;
+
+    // Remove trailing slash
+    if (path !== '/' && path.endsWith('/')) {
+      path = path.slice(0, -1);
+    }
+
+    const updatedAttributes = {
+      ...attributes,
+      page_path: path,
+      action: ActionType.click,
+      component_type: ComponentType.button,
+    };
+
+    logEvent(type, updatedAttributes);
+  }
+};
+
 // Get Conversation ID
-export async function getConversationId() {
-  let id: string | null = sessionStorage.getItem('BASE_AI_CONVERSATION_ID');
+export async function getConversationId(): Promise<number> {
+  let id: string = sessionStorage.getItem('BASE_AI_CONVERSATION_ID') ?? '';
 
   if (!id) {
-    const response = await fetch('https://api.mendable.ai/v0/newConversation', {
+    const response = await fetch('https://api.mendable.ai/v1/newConversation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -19,11 +75,17 @@ export async function getConversationId() {
       conversation_id: string;
     };
 
-    sessionStorage.setItem('BASE_AI_CONVERSATION_ID', data.conversation_id);
-    id = data.conversation_id;
+    if (data.conversation_id) {
+      id = data.conversation_id;
+      sessionStorage.setItem('BASE_AI_CONVERSATION_ID', id);
+
+      logGptEvent('gpt_conversation_created', {
+        conversation_id: parseInt(id),
+      });
+    }
   }
 
-  return id;
+  return parseInt(id);
 }
 
 // POST Prompt and Stream Response
@@ -37,7 +99,7 @@ export type ConversationMessage = {
   content: string;
   sources?: string[];
   helpful?: boolean | null;
-  messageId?: number;
+  messageId: number;
 };
 
 type ResponseSource = {
@@ -54,7 +116,7 @@ type ResponseSource = {
 export let controller: AbortController;
 
 export async function streamPromptResponse(
-  conversationId: string,
+  conversationId: number,
   prompt: string,
   setIsLoading: (isLoading: boolean) => void,
   isGenerating: boolean,
@@ -72,7 +134,12 @@ export async function streamPromptResponse(
 
     controller = new AbortController();
 
-    const url = 'https://api.mendable.ai/v0/mendableChat';
+    logGptEvent('gpt_prompt_submitted', {
+      conversation_id: conversationId,
+      prompt,
+    });
+
+    const url = 'https://api.mendable.ai/v1/mendableChat';
 
     const data = {
       api_key: '0ab8984e-327c-4a8b-bea3-769ca01fac35',
