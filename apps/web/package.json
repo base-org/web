@@ -16,7 +16,7 @@
     "@next/font": "^13.1.5",
     "ethers": "5.7.2",
     "framer-motion": "^8.5.5",
-    "next": "^13.1.5",
+    "next": "^13.5.1",
     "react": "^18.2.0",
     "react-blockies": "^1.4.1",
     "react-dom": "^18.2.0",
@@ -30,7 +30,7 @@
     "dotenv": "^16.0.3",
     "eslint-config-next": "^13.1.6",
     "node-fetch": "^3.3.0",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.32",
     "prettier-plugin-tailwindcss": "^0.2.5",
     "tailwindcss": "^3.2.4",
     "typescript": "4.9.4"
