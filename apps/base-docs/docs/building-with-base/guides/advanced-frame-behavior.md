@@ -1,11 +1,7 @@
 ---
 title: 'Advanced Frame Behavior'
 description: Make a Farcaster frame that only allows users to access part of the frame after they have completed different actions.
-keywords: [
-    farcaster,
-    frames
-    farcaster frames,
-  ],
+keywords: [farcaster, frames, farcaster frames]
 hide_table_of_contents: false
 ---
 
