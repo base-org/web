@@ -558,7 +558,7 @@ export default function Home() {
 
 Later in this guide, you will use the `provider` and user’s `smartAccount` to execute transactions on the deployed smart contract. Store the `provider` and `smartAccount` to React state so you can use it later.
 
-To store the the `provider` and `smartAccount`, add the following code:
+To store the `provider` and `smartAccount`, add the following code:
 
 ```javascript
 ...
