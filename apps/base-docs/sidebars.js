@@ -72,7 +72,7 @@ module.exports = {
               collapsed: true,
               items: [
                 'building-with-base/guides/account-abstraction-with-biconomy',
-                'building-with-base/guides/account-abstraction-with-particle',     
+                'building-with-base/guides/account-abstraction-with-particle-network',     
               ],
             },
             {
