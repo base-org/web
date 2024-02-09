@@ -286,6 +286,7 @@ __metadata:
   dependencies:
     "@coinbase/cookie-banner": ^1.0.3
     "@coinbase/cookie-manager": ^1.1.1
+    "@coinbase/onchainkit": ^0.6.0
     "@heroicons/react": ^2.0.18
     "@next/font": ^13.1.5
     "@types/node": 18.11.18
@@ -2128,6 +2129,17 @@ __metadata:
     "@coinbase/cookie-manager": 1.1.0
     js-cookie: ^3.0.5
   checksum: 20a67646cf1f37a1db0eb0b2e2e6989f6f34b1a4881d81dead1829b44fe7400f2acf2ebdf2da049ce9804fca4b6f07e6b71b9fe44ffe01c231c1c95f01ea466a
+  languageName: node
+  linkType: hard
+
+"@coinbase/onchainkit@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "@coinbase/onchainkit@npm:0.6.0"
+  peerDependencies:
+    react: ^18
+    react-dom: ^18
+    viem: ^2.7.0
+  checksum: 26d2d26b19c609a87176008a8062b4f9ba7144bf0e844deadda800b4fcd1ca3aeb4e6cb1b359b8a7ee2e1b5a830e903ccb896f2b82757e56c1c3124e93215dff
   languageName: node
   linkType: hard
 
