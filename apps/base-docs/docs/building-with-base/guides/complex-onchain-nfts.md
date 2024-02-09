@@ -228,7 +228,7 @@ contract SVGRenderer {
 }
 ```
 
-Open the exemplar SVG in a code editor, and using it as an example, build out a function that uses `abi.encodePacked` to build everything from the SVG **except** the actual art. That's much to big for one contract, so add stubs instead.
+Open the exemplar SVG in a code editor, and using it as an example, build out a function that uses `abi.encodePacked` to build everything from the SVG **except** the actual art. That's much too big for one contract, so add stubs instead.
 
 Depending on the tool you used to make the SVG, there may be unneeded extras you can remove from these lines. You also **don't** need the items in `<defs>` or `<styles>`. You'll take advantage of the flexibility of the format to include those in the pieces returned by the supporting contract.
 
@@ -596,7 +596,7 @@ function _buildOffsetValue(
 }
 ```
 
-This function uses hashing to create a psuedo-random number with the token id and stop as seeds, guaranteeing a consistent value, unique for each token and each stop within that token. It takes advantage of the way the offset property is interpreted - in this case, `".12+.20" == ".32"`.
+This function uses hashing to create a pseudo-random number with the token id and stop as seeds, guaranteeing a consistent value, unique for each token and each stop within that token. It takes advantage of the way the offset property is interpreted - in this case, `".12+.20" == ".32"`.
 
 Finally, update your `render` function to call `_buildStop`:
 

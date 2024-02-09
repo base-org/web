@@ -89,7 +89,7 @@ The route:
 
 Currently, you can't get the user to authorize a transaction from a frame, so you'll have to foot the bill to do a mint.
 
-Our strategy use the contract from the [Complex Onchain NFTs] guide, modified so that a designated address can mint for a provided address:
+Our strategy uses the contract from the [Complex Onchain NFTs] guide, modified so that a designated address can mint for a provided address:
 
 ```solidity
 function mintFor(address _recipient) public onlyOwner {
@@ -123,7 +123,7 @@ Create `.env.local` and add:
 
 Install dotenv with `yarn add dotenv`, then open `route.ts`.
 
-Add a new image in the `public` folder. Per the [Frames] docs, images must be a 1.91 to 1 aspect ration. We used a grey-scale copy of the NFT, but others show the full image, or another call to action.
+Add a new image in the `public` folder. Per the [Frames] docs, images must have a 1.91 to 1 aspect ratio. We used a grey-scale copy of the NFT, but others show the full image, or another call to action.
 
 For now, just use something you'll recognize as a placeholder.
 
