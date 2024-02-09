@@ -91,7 +91,6 @@ export async function getConversationId(): Promise<number> {
 // Set and Get Session Storage Conversation
 export function setSessionConversation(conversation: ConversationMessage[]) {
   const conversationString = JSON.stringify(conversation);
-  console.log('SETTING: ', conversationString);
   sessionStorage.setItem('BASE_AI_CONVERSATION', conversationString);
 }
 
