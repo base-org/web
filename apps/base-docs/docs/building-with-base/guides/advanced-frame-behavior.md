@@ -5,11 +5,11 @@ keywords: [
     farcaster,
     frames
     farcaster frames,
-  ]
+  ],
 hide_table_of_contents: false
 ---
 
-As [Frames] on [Farcaster] grow in popularity, developers are building more complex interactions to meet the community's expectation for new and exciting things to do. [OnchainKit], and our [a-frame-in-100-lines] demo give you a number of tools to build complex interactions withing a frame.
+As [Frames] on [Farcaster] grow in popularity, developers are building more complex interactions to meet the community's expectation for new and exciting things to do. [OnchainKit], and our [a-frame-in-100-lines] demo give you a number of tools to build complex interactions within a frame.
 
 :::caution
 
@@ -173,7 +173,7 @@ return new NextResponse(
 
 ### Link Button
 
-You can now add outbound links to buttons. To do this, with [OnchainKit], simply create a button with an `action` property of `link`, and a `target` of the desired url:
+You can now add outbound links to buttons. To do this with [OnchainKit], simply create a button with an `action` property of `link`, and a `target` of the desired url:
 
 ```typescript
 {
