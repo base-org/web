@@ -43,9 +43,9 @@ By the end of this guide, you should be able to:
 
 ### Wallet funds
 
-This guide requires you to have ETH on Base Goerli, which will be used to showcase the execution of a gasless burn transaction.
+This guide requires you to have ETH on Base Sepolia, which will be used to showcase the execution of a gasless burn transaction.
 
-- To fund your wallet with ETH on Base Goerli, visit one of the faucets listed on the [Base Faucets](https://docs.base.org/tools/network-faucets) page.
+- To fund your wallet with ETH on Base Sepolia, visit one of the faucets listed on the [Base Faucets](https://docs.base.org/tools/network-faucets) page.
 
 ### Familiarity with modern, frontend web development
 
@@ -218,7 +218,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { AuthType } from '@particle-network/auth-core';
-import { BaseGoerli } from '@particle-network/chains';
+import { BaseSepolia } from '@particle-network/chains';
 import { AuthCoreContextProvider } from '@particle-network/auth-core-modal';
 
 import App from './App';
@@ -248,8 +248,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           // Set to false to remove the embedded wallet modal
           visible: true,
           customStyle: {
-            // Locks the chain selector to Base Goerli
-            supportChains: [BaseGoerli],
+            // Locks the chain selector to Base Sepolia
+            supportChains: [BaseSepolia],
           }
         },
       }}
@@ -279,7 +279,7 @@ To begin building `App.jsx/tsx`, you'll need to define the relevant functions fr
 ```typescript
 import React, { useState, useEffect } from 'react';
 import { useEthereum, useConnect, useAuthCore } from '@particle-network/auth-core-modal';
-import { BaseGoerli } from '@particle-network/chains';
+import { BaseSepolia } from '@particle-network/chains';
 import { AAWrapProvider, SendTransactionMode, SmartAccount } from '@particle-network/aa';
 import { ethers } from 'ethers';
 
@@ -319,7 +319,7 @@ See the snippet below for an example of a constructed `SmartAccount` object:
 ```typescript
 import React, { useState, useEffect } from 'react';
 import { useEthereum, useConnect, useAuthCore } from '@particle-network/auth-core-modal';
-import { BaseGoerli } from '@particle-network/chains';
+import { BaseSepolia } from '@particle-network/chains';
 import { AAWrapProvider, SendTransactionMode, SmartAccount } from '@particle-network/aa';
 import { ethers } from 'ethers';
 
@@ -334,11 +334,11 @@ const App = () => {
     appId: process.env.REACT_APP_APP_ID,
     aaOptions: {
       accountContracts: {
-        SIMPLE: [{ chainIds: [BaseGoerli.id], version: '1.0.0' }]
-        // BICONOMY: [{ chainIds: [BaseGoerli.id], version: '1.0.0' }]
-        // BICONOMY: [{ chainIds: [BaseGoerli.id], version: '2.0.0' }]
-        // LIGHT: [{ chainIds: [BaseGoerli.id], version: '1.0.0' }]
-        // CYBERCONNECT: [{ chainIds: [BaseGoerli.id], version: '1.0.0' }]
+        SIMPLE: [{ chainIds: [BaseSepolia.id], version: '1.0.0' }]
+        // BICONOMY: [{ chainIds: [BaseSepolia.id], version: '1.0.0' }]
+        // BICONOMY: [{ chainIds: [BaseSepolia.id], version: '2.0.0' }]
+        // LIGHT: [{ chainIds: [BaseSepolia.id], version: '1.0.0' }]
+        // CYBERCONNECT: [{ chainIds: [BaseSepolia.id], version: '1.0.0' }]
       }
     }
   });
@@ -367,7 +367,7 @@ const customProvider = new ethers.providers.Web3Provider(new AAWrapProvider(smar
 2. `SendTransactionMode.UserPaidNative`, the default method used if `SendTransactionMode` is missing from `AAWrapProvider`. This forces the user to pay gas fees themselves.
 3. `SendTransactionMode.UserSelect`, which allows a user to select which gas fee payment mechanism they use (ERC-20 token, native token, or request sponsorship).
 
-In this example, we're using `SendTransactionMode.Gasless`. Because this example uses Base Goerli, all transactions will automatically be sponsored.
+In this example, we're using `SendTransactionMode.Gasless`. Because this example uses Base Sepolia, all transactions will automatically be sponsored.
 
 ## Initiating Social Login
 
@@ -383,7 +383,7 @@ Upon calling `connect`, a user will be brought through the social login process,
 
 `connect` takes the following parameters:
 - `socialType`, the specific social login mechanism you'd like users to go through. If left as an empty string, a generalized social login modal will be shown. Otherwise, use strings such as 'google', 'twitter', 'email', etc.
-- `chain`, an object (imported from `@particle-network/chains`) corresponding with the chain you'd like to use. In this example, it'll be `BaseGoerli`.
+- `chain`, an object (imported from `@particle-network/chains`) corresponding with the chain you'd like to use. In this example, it'll be `BaseSepolia`.
 
 Ideally, some logic should be set in place to ensure `connect` isn't called if a user has already logged in. This can be done by only calling `connect` on the condition that `userInfo` (from `useAuthCore`) is undefined, indicating that the user isn't logged in.
 
@@ -394,7 +394,7 @@ const handleLogin = async (authType) => {
     if (!userInfo) {
       await connect({
         socialType: authType,
-        chain: BaseGoerli,
+        chain: BaseSepolia,
       });
     }
   };
@@ -412,7 +412,7 @@ Because we're using Ethers in this guide, constructing and executing a gasless t
 Typically, UserOperations follow lower-level, alternative structures. Although, through the usage of `AAWrapProvider`, the conversion between a simple transaction object (with `to`, `value`, `data`, etc.) to a complete UserOperation is handled automatically, allowing you to send transactions as you would normally.
 
 Thus, we'll be constructing a simple transaction (`tx`) adhering to the following structure:
-- `to`, the recipient address. For this example, we can burn a small amount of ETH on Base Goerli, which means the recipient will be `0x000000000000000000000000000000000000dEaD`.
+- `to`, the recipient address. For this example, we can burn a small amount of ETH on Base Sepolia, which means the recipient will be `0x000000000000000000000000000000000000dEaD`.
 - `value`, the value being sent in wei. Because of the default denomination in wei, this will be set as `ethers.utils.parseEther("0.001")`.
 
 If you intend on interacting with a contract, `data` can also be filled out (or within Ethers, a `Contract` object can be built).
@@ -438,7 +438,7 @@ Now that you've defined a standard transaction object, you'll need to execute it
 
 We'll be using a `signer` object retrieved from `{your provider}.getSigner()` to call the `sendTransaction` method, which simply takes the `tx` object we constructed a moment ago.
 
-Upon calling `signer.sendTransaction(tx)`, the user will be prompted to confirm the transaction (sign a UserOperation hash) through an application-embedded popup. After doing so, the transaction will immediately be sent on Base Goerli.
+Upon calling `signer.sendTransaction(tx)`, the user will be prompted to confirm the transaction (sign a UserOperation hash) through an application-embedded popup. After doing so, the transaction will immediately be sent on Base Sepolia.
 
 To reflect the transaction hash after its confirmation on-chain, you can call the `wait` method on the variable you saved `signer.sendTransaction(tx)` to. The resulting object will contain a `transactionHash` value.
 
@@ -475,7 +475,7 @@ Below is an example of what your `App.jsx/tsx` file may look at this point. At t
 import React, { useState, useEffect } from 'react';
 
 import { useEthereum, useConnect, useAuthCore } from '@particle-network/auth-core-modal';
-import { BaseGoerli } from '@particle-network/chains';
+import { BaseSepolia } from '@particle-network/chains';
 import { AAWrapProvider, SmartAccount, SendTransactionMode } from '@particle-network/aa';
 
 import { ethers } from 'ethers';
@@ -494,7 +494,7 @@ const App = () => {
     appId: process.env.REACT_APP_APP_ID,
     aaOptions: {
       accountContracts: {
-        SIMPLE: [{ chainIds: [BaseGoerli.id], version: '1.0.0' }]
+        SIMPLE: [{ chainIds: [BaseSepolia.id], version: '1.0.0' }]
       }
     }
   });
@@ -507,7 +507,7 @@ const App = () => {
     if (!userInfo) {
       await connect({
         socialType: authType,
-        chain: BaseGoerli,
+        chain: BaseSepolia,
       });
     }
   };
