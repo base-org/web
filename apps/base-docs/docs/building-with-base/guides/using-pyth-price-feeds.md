@@ -114,7 +114,7 @@ forge install pyth-network/pyth-sdk-solidity@v2.2.0 --no-git --no-commit
 Once installed, update your `foundry.toml` file by appending the following line:
 
 ```bash
-remappings = ['@pythnetwork/pyth-sdk-solidity/=lib/pyth-sdk-solidity’]
+remappings = ['@pythnetwork/pyth-sdk-solidity/=lib/pyth-sdk-solidity']
 ```
 
 ---
