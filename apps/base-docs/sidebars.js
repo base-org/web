@@ -70,7 +70,10 @@ module.exports = {
               label: 'Account abstraction',
               collapsible: true,
               collapsed: true,
-              items: ['building-with-base/guides/account-abstraction-with-biconomy'],
+              items: [
+                'building-with-base/guides/account-abstraction-with-biconomy',
+                'building-with-base/guides/account-abstraction-with-particle',     
+              ],
             },
             {
               type: 'category',
