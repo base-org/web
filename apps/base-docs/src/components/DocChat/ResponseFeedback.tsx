@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { ConversationMessage, logGptEvent } from './docChat';
+import { ConversationMessage, logGptEvent, setSessionConversation } from './docChat';
 
 import Icon from '../Icon';
 
@@ -58,6 +58,8 @@ export default function ResponseFeedback({
           }
           return message;
         });
+
+        setSessionConversation(newState);
 
         return newState;
       });

@@ -67,7 +67,7 @@ export async function getConversationId(): Promise<number> {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        api_key: '7f73a4b9-96b3-4689-8688-b120ea0ee916',
+        api_key: '0ab8984e-327c-4a8b-bea3-769ca01fac35',
       }),
     });
 
@@ -86,6 +86,23 @@ export async function getConversationId(): Promise<number> {
   }
 
   return parseInt(id);
+}
+
+// Set and Get Session Storage Conversation
+export function setSessionConversation(conversation: ConversationMessage[]) {
+  const conversationString = JSON.stringify(conversation);
+  console.log('SETTING: ', conversationString);
+  sessionStorage.setItem('BASE_AI_CONVERSATION', conversationString);
+}
+
+export function getSessionConversation(): ConversationMessage[] {
+  const conversationString: string = sessionStorage.getItem('BASE_AI_CONVERSATION') ?? '[]';
+
+  const conversation: ConversationMessage[] = JSON.parse(
+    conversationString,
+  ) as ConversationMessage[];
+
+  return conversation;
 }
 
 // POST Prompt and Stream Response
@@ -142,7 +159,7 @@ export async function streamPromptResponse(
     const url = 'https://api.mendable.ai/v1/mendableChat';
 
     const data = {
-      api_key: '7f73a4b9-96b3-4689-8688-b120ea0ee916',
+      api_key: '0ab8984e-327c-4a8b-bea3-769ca01fac35',
       question: prompt,
       history: chatHistory,
       conversation_id: conversationId,
@@ -209,6 +226,8 @@ export async function streamPromptResponse(
           };
 
           const newState = [...prevState.slice(0, -1), updatedResponse];
+          setSessionConversation(newState);
+
           return newState;
         });
 

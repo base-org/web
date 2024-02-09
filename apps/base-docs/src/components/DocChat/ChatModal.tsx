@@ -9,6 +9,8 @@ import {
   ConversationMessage,
   ChatHistoryMessage,
   getConversationId,
+  setSessionConversation,
+  getSessionConversation,
   streamPromptResponse,
   controller,
 } from './docChat';
@@ -75,6 +77,7 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
     setPrompt('');
     setChatHistory([]);
     setConversation([]);
+    setSessionConversation([]);
     setIsLoading(false);
     setIsGenerating(false);
 
@@ -97,6 +100,7 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
       getConversationId()
         .then((id) => {
           setConversationId(id);
+          setConversation(getSessionConversation());
         })
         .catch((err) => console.error(err));
     }
