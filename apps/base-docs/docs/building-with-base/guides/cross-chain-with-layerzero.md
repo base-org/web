@@ -358,7 +358,7 @@ Overriding the `_lzReceive` function allows you to provide any custom logic you 
 
 ### Final code
 
-Once you complete all of the steps above, you're contract should look like this:
+Once you complete all of the steps above, your contract should look like this:
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -653,7 +653,7 @@ You can view the status of your cross-chain transaction on [LayerZero Scan](http
 
 ### Receiving the message
 
-Once the message has been sent and received on the destination chain,the \_Receive function will be called on the `ExampleContract` and the message payload will be stored in the contract's public `data` variable.
+Once the message has been sent and received on the destination chain, the \_Receive function will be called on the `ExampleContract` and the message payload will be stored in the contract's public `data` variable.
 
 You can use the `cast` command to read the latest message received by the `ExampleContract` stored in the `data` variable.
 
