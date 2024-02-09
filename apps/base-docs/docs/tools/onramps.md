@@ -39,7 +39,7 @@ keywords:
 
 ## Onramp
 
-[Onramp](https://onramp.money/) is a fiat-to-crypto payment gateway which helps users seamlessly convert fiat currency to desired cryptocurrency. Onramp currently supports 300+ cryptocurrencies and 20+ blockchain networks, including ETH on Base.
+[Onramp](https://onramp.money/) is a fiat-to-crypto payment gateway, which helps users seamlessly convert fiat currency to the desired cryptocurrency. Onramp currently supports 300+ cryptocurrencies and 20+ blockchain networks, including ETH on Base.
 
 ---
 

@@ -40,7 +40,6 @@ API3 is live with:
 #### Supported Networks
 
 - Base Mainnet
-- Base Goerli (Testnet)
 
 ---
 
@@ -59,7 +58,7 @@ To use Chainlink datafeeds, you may need [LINK](https://docs.chain.link/resource
 #### Supported Networks
 
 - Base Mainnet
-- Base Goerli (Testnet)
+- Base Sepolia (Testnet)
 
 ---
 
@@ -72,7 +71,6 @@ See [this guide](https://docs.diadata.org/introduction/intro-to-dia-oracles/requ
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -86,7 +84,6 @@ See [this guide](https://docs.pyth.network/documentation/pythnet-price-feeds/evm
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -99,7 +96,6 @@ See [this guide](https://docs.redstone.finance/) to learn how to use the RedSton
 #### Supported Networks
 
 - Base Mainnet
-- Base Goerli (Testnet)
 
 ---
 
@@ -113,6 +109,5 @@ Visit the Supra [documentation](https://supraoracles.com/docs/) to learn more ab
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---

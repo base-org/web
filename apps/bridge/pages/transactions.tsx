@@ -1,5 +1,6 @@
 import { memo, useMemo, useState } from 'react';
 import { AccountContainer } from 'apps/bridge/src/components/AccountContainer/AccountContainer';
+import { WarningBanner } from 'apps/bridge/src/components/WarningBanner/WarningBanner';
 import { FaqSidebar } from 'apps/bridge/src/components/Faq/FaqSidebar';
 import { Table } from 'apps/bridge/src/components/system/layout/Table/Table';
 import { DepositRow } from 'apps/bridge/src/components/Transactions/DepositRow/DepositRow';
@@ -162,6 +163,7 @@ export default memo(function Transactions() {
       <Head>
         <title>Base</title>
       </Head>
+      <WarningBanner content="Transactions may take a few minutes to appear" />
       <AccountContainer>
         <>
           <div className="grow">{content}</div>

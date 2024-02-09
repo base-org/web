@@ -29,9 +29,19 @@ keywords:
 
 ---
 
+## Coinbase Cloud
+
+[Coinbase Cloud](https://coinbase.com/cloud) provides an RPC endpoint that runs on the same node infrastructure that powers Coinbase's retail exchange, meaning you get the rock solid reliability of our retail exchange as a developer. Coinbase Cloud gives you a free, rate limited RPC endpoint to begin building on Base.
+
+#### Supported Networks
+
+- Base Mainnet
+
+---
+
 ## 1RPC
 
-[1RPC](https://1rpc.io/) is the first and only on-chain attested privacy preserving RPC that eradicate metadata exposure and leakage when interacting with blockchains. 1RPC offers free and [paid plans](https://www.1rpc.io/#pricing) with additional features and increased request limits.
+[1RPC](https://1rpc.io/) is the first and only on-chain attested privacy preserving RPC that eradicates metadata exposure and leakage when interacting with blockchains. 1RPC offers free and [paid plans](https://www.1rpc.io/#pricing) with additional features and increased request limits.
 
 #### Supported Networks
 
@@ -47,7 +57,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -59,31 +68,28 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
 ## Blast
 
-[Blast](https://blastapi.io/public-api/base) provides fast and reliable decentralized blockchain APIs by partnering with third-party Node Providers. Blast offers users the ability generate their own [dedicated RPC endpoint for Base](https://blastapi.io/login).
+[Blast](https://blastapi.io/public-api/base) provides fast and reliable decentralized blockchain APIs by partnering with third-party Node Providers. Blast offers users the ability to generate their own [dedicated RPC endpoint for Base](https://blastapi.io/login).
 
 #### Supported Networks
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
 ## Blockdaemon
 
-[Blockdaemon](https://www.blockdaemon.com/protocols/base/) offers access to hosted Base nodes with a free plan at $0/month via Ubiquity Data API Suite. Extra costs may be incurred depending on usage.
+[Blockdaemon](https://www.blockdaemon.com/protocols/base/) offers access to hosted Base nodes with a free plan at $0/month via the Ubiquity Data API Suite. Extra costs may be incurred depending on usage.
 
 #### Supported Networks
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -95,30 +101,27 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
 ## Chainstack
 
-[Chainstack](https://chainstack.com/build-better-with-base/) allows developers to run high-performing Base nodes and APIs in minutes. They offer elastic Base RPC nodes that provide personal, geographically diverse, and protected API endpoints, as well as archive nodes to query the entire history of the Base Mainnet and Goerli Testnet. Get started with their [free and paid pricing plans](https://chainstack.com/pricing/).
+[Chainstack](https://chainstack.com/build-better-with-base/) allows developers to run high-performing Base nodes and APIs in minutes. They offer elastic Base RPC nodes that provide personal, geographically diverse, and protected API endpoints, as well as archive nodes to query the entire history of the Base Mainnet. Get started with their [free and paid pricing plans](https://chainstack.com/pricing/).
 
 #### Supported Networks
 
 - Base Mainnet
-- Base Goerli (Testnet)
 
 ---
 
 ## DRPC
 
-[DRPC](https://drpc.org/) offers access to distributed network of independent third-party partners and public nodes for Base. They provide a free tier that allows for an unlimited amount of requests over public nodes, or a paid tier which provides access to all providers, as well as other additional features.
+[DRPC](https://drpc.org/) offers access to a distributed network of independent third-party partners and public nodes for Base. They provide a free tier that allows for an unlimited amount of requests over public nodes, or a paid tier which provides access to all providers, as well as other additional features.
 
 #### Supported Networks
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -130,7 +133,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -173,7 +175,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -185,7 +186,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 
@@ -197,7 +197,6 @@ keywords:
 
 - Base Mainnet
 - Base Sepolia (Testnet)
-- Base Goerli (Testnet)
 
 ---
 

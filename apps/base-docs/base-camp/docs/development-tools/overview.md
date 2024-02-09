@@ -10,7 +10,7 @@ As the popularity and possibilities of building onchain have increased, so has t
 
 However, the setup of professional tools for local development is far less burdensome than it used to be. [Foundry] and [Hardhat] are two popular choices, both with excellent communities.
 
-You may wish to select and install one of these now, but feel free to skip those sections and go to right [Smart Contract Development] if your happy learning with an online editor!
+You may wish to select and install one of these now, but feel free to skip those sections and go to right [Smart Contract Development] if you're happy learning with an online editor!
 
 [Remix]: https://remix.ethereum.org/
 [Foundry]: https://book.getfoundry.sh/

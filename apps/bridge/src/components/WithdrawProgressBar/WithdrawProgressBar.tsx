@@ -51,15 +51,20 @@ const BarStatusToBadgeStatuses: Record<BarStatus, BadgeStatus[]> = {
 
 const DisclaimerContent: Record<BarStatus, ReactNode> = {
   REQUEST_SENT: (
-    <>
-      In order to minimize security risk, withdrawals using the official Base Bridge take up to{' '}
-      {challengeWindow}. After your withdrawal request is proposed onchain (within an hour) you must
-      verify and complete the transaction in order to access your funds, on{' '}
-      <Link href="/transactions" className="underline">
-        the transactions page
+    <div className="flex flex-col">
+      <p>
+        In order to minimize security risk, withdrawals using the official Base Bridge take up to{' '}
+        {challengeWindow}. After your withdrawal request is proposed onchain (within an hour) you
+        must verify and complete the transaction in order to access your funds, on{' '}
+        <Link href="/transactions" className="underline">
+          the transactions page
+        </Link>
+        .
+      </p>
+      <Link href="/transactions" className="mt-4 rounded-md bg-white p-4 text-black">
+        Go to Transactions
       </Link>
-      .
-    </>
+    </div>
   ),
   VERIFYING: (
     <>
@@ -93,7 +98,7 @@ export function WithdrawProgressBar({ status }: WithdrawProgressBarProps) {
           <span>Takes up to 1 hr</span>
         </div>
       </div>
-      <span className="font-base">{DisclaimerContent[status]}</span>
+      <div className="font-base">{DisclaimerContent[status]}</div>
       <span className="text-white underline">
         <Link href="https://docs.base.org/tools/bridge-faq">Learn more</Link>
       </span>

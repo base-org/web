@@ -32,7 +32,7 @@ By the end of this lesson, you should be able to:
 
 ## Overview
 
-The Solidity Coverage plugin allow you to analyze and visualize the coverage of your smart contracts' test suite. This enables you to see what portions of your smart contract are being tested and what areas may have been overlooked. It's an indispensable plugin for developers seeking to fortify their testing practices and ensure robust smart contract functionality.
+The Solidity Coverage plugin allows you to analyze and visualize the coverage of your smart contracts' test suite. This enables you to see what portions of your smart contract are being tested and what areas may have been overlooked. It's an indispensable plugin for developers seeking to fortify their testing practices and ensure robust smart contract functionality.
 
 ## Setting up the Solidity Coverage plugin
 
