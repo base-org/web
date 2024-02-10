@@ -119,6 +119,11 @@ module.exports = {
                   id: 'building-with-base/guides/deploy-frame-on-vercel',
                   className: 'sidebar-coding',
                 },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/advanced-frame-behavior',
+                  className: 'sidebar-coding',
+                },
               ],
             },
             {
