@@ -68,14 +68,6 @@ const config = {
         sidebarPath: require.resolve('./tutorials/sidebars.js'),
       },
     ],
-    // [
-    //   '@docusaurus/plugin-content-pages',
-    //   {
-    //     id: 'tutorials-page',
-    //     path: 'tutorials',
-    //     routeBasePath: 'tutorials',
-    //   },
-    // ],
     'docusaurus-node-polyfills',
     [
       '@docusaurus/plugin-client-redirects',
@@ -170,6 +162,10 @@ const config = {
           `,
           position: 'right',
         },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
       ],
     },
     algolia: {
@@ -192,6 +188,11 @@ const config = {
       disableSwitch: false,
       respectPrefersColorScheme: false,
     },
+  },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'fr'],
+    localeConfigs: {},
   },
 };
 
