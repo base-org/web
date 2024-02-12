@@ -1,6 +1,6 @@
 ---
 title: Pyth Price Feeds
-slug: /tutorials/using-pyth-price-feeds
+slug: /using-pyth-price-feeds
 description: A guide on using Pyth Price Feeds to access real-time asset data, directly from your smart contracts on the Base testnet.
 keywords: [
     Oracle

@@ -1,5 +1,6 @@
 ---
 title: Smart Contract Test Coverage
+slug: /hardhat-tools-and-testing/hardhat-test-coverage/hardhat-test-coverage-sbs
 description: Profiling test coverage with Hardhat and Solidity Coverage
 keywords:
   [

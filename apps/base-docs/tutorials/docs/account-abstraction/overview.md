@@ -1,5 +1,6 @@
 ---
 title: Overview
+slug: /account-abstraction/overview
 description: What's in this learning material.
 keywords:
   [

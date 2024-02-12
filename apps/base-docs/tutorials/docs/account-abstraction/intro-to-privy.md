@@ -1,5 +1,6 @@
 ---
 title: Intro to Privy
+slug: /account-abstraction/intro-to-privy
 description: Learn how to use Privy for authentication in onchain apps.
 keywords: [Privy, Account Abstraction, Base Paymaster, Account Kit, ERC-4337]
 hide_table_of_contents: false

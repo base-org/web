@@ -1,5 +1,6 @@
 ---
 title: Blockchain Providers
+slug: /connecting-to-the-blockchain/blockchain-providers
 description: Learn what providers are and why you need one.
 keywords:
   [

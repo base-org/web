@@ -1,5 +1,6 @@
 ---
 title: 'Smart Contract Profiling: Size'
+slug: /hardhat-tools-and-testing/hardhat-profiling-size/hardhat-profiling-size
 description: Optimize Smart Contract Sizes with Hardhat
 keywords:
   [

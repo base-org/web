@@ -1,5 +1,6 @@
 ---
 title: Introduction to Foundry
+slug: /building-with-base-and-foundry/introduction
 description: Documentation for Foundry, a toolchain for smart contract development. Provides instructions on setting up your development environment to work with Foundry.
 keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain]
 hide_table_of_contents: false

@@ -1,5 +1,6 @@
 ---
 title: 'Smart Contract Profiling: Gas'
+slug: /hardhat-tools-and-testing/hardhat-profiling-gas/hardhat-profiling-gas
 description: Optimize Smart Contract Gas Usage with Hardhat
 keywords:
   [

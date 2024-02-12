@@ -1,5 +1,6 @@
 ---
 title: Overview
+slug: /connecting-to-the-blockchain/overview
 description: What's in this learning material.
 keywords:
   [

@@ -1,5 +1,6 @@
 ---
 title: Testing with Foundry
+slug: /building-with-base-and-foundry/testing
 description: Documentation for Foundry, a toolchain for smart contract development. Learn how to test your smart contracts using Foundry.
 keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain, testing, test]
 hide_table_of_contents: false

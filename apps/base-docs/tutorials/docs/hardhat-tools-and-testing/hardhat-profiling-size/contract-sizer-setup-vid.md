@@ -1,5 +1,6 @@
 ---
 title: Contract Sizer Setup
+slug: /hardhat-tools-and-testing/hardhat-profiling-size/contract-sizer-setup-vid
 description: Install the Contract Sizer Plugin
 keywords:
   [

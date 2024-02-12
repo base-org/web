@@ -1,5 +1,6 @@
 ---
 title: Debugging with Hardhat
+slug: /hardhat-tools-and-testing/hardhat-debugging/debugging-with-hardhat-sbs
 description: Debugging smart contracts with Hardhat.
 keywords:
   [

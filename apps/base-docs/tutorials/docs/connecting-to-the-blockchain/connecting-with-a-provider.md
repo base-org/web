@@ -1,5 +1,6 @@
 ---
 title: Connecting with a Provider
+slug: /connecting-to-the-blockchain/connecting-with-a-provider
 description: Configure several providers and use them to connect to the blockchain.
 keywords:
   [

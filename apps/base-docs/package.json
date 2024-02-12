@@ -16,8 +16,8 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "2.4.1",
-    "@docusaurus/preset-classic": "2.4.1",
+    "@docusaurus/core": "2.4.3",
+    "@docusaurus/preset-classic": "2.4.3",
     "@mdx-js/react": "^1.6.22",
     "@rainbow-me/rainbowkit": "^1.0.4",
     "docusaurus-node-polyfills": "^1.0.0",
@@ -32,14 +32,14 @@
     "wagmi": "^1.3.8"
   },
   "devDependencies": {
-    "@docusaurus/core": "2.4.1",
-    "@docusaurus/logger": "2.4.1",
-    "@docusaurus/module-type-aliases": "2.4.1",
-    "@docusaurus/plugin-client-redirects": "^2.4.1",
-    "@docusaurus/plugin-content-docs": "2.4.1",
-    "@docusaurus/plugin-content-pages": "2.4.1",
-    "@docusaurus/preset-classic": "2.4.1",
-    "@docusaurus/theme-common": "2.4.1",
+    "@docusaurus/core": "2.4.3",
+    "@docusaurus/logger": "2.4.3",
+    "@docusaurus/module-type-aliases": "2.4.3",
+    "@docusaurus/plugin-client-redirects": "^2.4.3",
+    "@docusaurus/plugin-content-docs": "2.4.3",
+    "@docusaurus/plugin-content-pages": "2.4.3",
+    "@docusaurus/preset-classic": "2.4.3",
+    "@docusaurus/theme-common": "2.4.3",
     "@tsconfig/docusaurus": "^1.0.5"
   },
   "browserslist": {

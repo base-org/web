@@ -1,6 +1,6 @@
 ---
 title: Chainlink Data Feeds
-slug: /tutorials/using-chainlink-price-feeds
+slug: /using-chainlink-price-feeds
 description: A guide on using Chainlink Data Feeds to access real-world data, such as asset prices, directly from your smart contracts on the Base testnet.
 keywords: [
     Oracle

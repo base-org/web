@@ -1,5 +1,6 @@
 ---
 title: Manual Optimizations
+slug: /hardhat-tools-and-testing/hardhat-profiling-size/manual-contract-optimizations-vid
 description: Adjust your code to make your contracts smaller.
 keywords:
   [

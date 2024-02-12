@@ -62,20 +62,20 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'tutorials-docs',
+        id: 'tutorials',
         path: 'tutorials',
         routeBasePath: 'tutorials',
         sidebarPath: require.resolve('./tutorials/sidebars.js'),
       },
     ],
-    [
-      '@docusaurus/plugin-content-pages',
-      {
-        id: 'tutorials-page',
-        path: 'tutorials',
-        routeBasePath: 'tutorials',
-      },
-    ],
+    // [
+    //   '@docusaurus/plugin-content-pages',
+    //   {
+    //     id: 'tutorials-page',
+    //     path: 'tutorials',
+    //     routeBasePath: 'tutorials',
+    //   },
+    // ],
     'docusaurus-node-polyfills',
     [
       '@docusaurus/plugin-client-redirects',
