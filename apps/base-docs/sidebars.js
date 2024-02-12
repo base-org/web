@@ -260,6 +260,11 @@ module.exports = {
                 },
               ],
             },
+            {
+              type: 'doc',
+              id: 'building-with-base/guides/style-guide',
+              className: 'sidebar-reading',
+            },
           ],
         },
       ],
