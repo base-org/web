@@ -10,10 +10,10 @@ export function Dates() {
       <div className="grid grid-cols-2">
         <div className="text-md font-sans text-white">
           <p className="pb-2">
-            <span className="font-bold">Cohort 4: ~</span> March 4, 2023
+            <span className="font-bold">Cohort 4: ~</span> March 4, 2024
           </p>
           <p>
-            <span className="font-bold">Application deadline:</span> Feb 23, 2023
+            <span className="font-bold">Application deadline:</span> Feb 23, 2024
           </p>
 
           <div className="mt-10 w-[200px]">
