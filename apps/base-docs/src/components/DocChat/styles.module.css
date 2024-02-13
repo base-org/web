@@ -102,13 +102,13 @@
 
 .chatMessageContainer {
   width: 100%;
+}
+
+.chatMessage {
+  width: 100%;
   display: flex;
   gap: 0.75rem;
   padding-right: 2.25rem;
-}
-
-.chatMessageContainer pre {
-  white-space: pre-wrap;
 }
 
 .chatMessageIcon {
@@ -120,6 +120,15 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  overflow-x: auto;
+}
+
+.chatMessageContent pre {
+  overflow-x: scroll;
+}
+
+.chatMessageContent code {
+  font-size: 0.9rem;
 }
 
 /* Remove margin from lists, first list items, and code blocks in parsed markdown */
@@ -375,11 +384,11 @@
 }
 
 @media (max-width: 500px) {
-  .chatMessageContainer {
+  .chatMessage {
     padding-right: 0;
   }
 
-  .chatMessageContainer pre {
+  .chatMessage pre {
     padding: 1rem;
   }
 

@@ -1,5 +1,5 @@
-import React from 'react';
-import marked from '../../utils/marked';
+import React, { useRef, useLayoutEffect } from 'react';
+import { parseMarkdown } from '../../utils/marked';
 
 import Icon from '../Icon';
 import ResponseFeedback from './ResponseFeedback';
@@ -32,32 +32,32 @@ export default function ChatMessage({
   content,
   sources,
 }: ChatMessageProps) {
-  const parseMarkdownResponse = (markdown: string) => {
-    var markup = marked.parse(markdown);
-    return { __html: markup };
-  };
+  const responseContentRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (responseContentRef.current) {
+      responseContentRef.current.innerHTML = parseMarkdown(content);
+    }
+  }, [content]);
 
   return (
-    <div>
-      <div className={styles.chatMessageContainer}>
+    <div className={styles.chatMessageContainer}>
+      <div className={styles.chatMessage}>
         {type === 'prompt' && content !== '' && (
           <>
-            <span className={styles.chatMessageIcon}>
+            <div className={styles.chatMessageIcon}>
               <Icon name="avatar" width="24" height="24" />
-            </span>
-            <span>{content}</span>
+            </div>
+            <div>{content}</div>
           </>
         )}
 
         {type === 'response' && content !== '' && (
           <>
-            <span className={styles.chatMessageIcon}>
+            <div className={styles.chatMessageIcon}>
               <Icon name="base-logo" width="24" height="24" />
-            </span>
-            <span
-              className={styles.chatMessageContent}
-              dangerouslySetInnerHTML={parseMarkdownResponse(content)}
-            />
+            </div>
+            <div ref={responseContentRef} className={styles.chatMessageContent} />
           </>
         )}
       </div>
