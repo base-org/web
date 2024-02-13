@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 
 type ResponseSourceProps = {
   conversationId: number;
-  messageId: number;
+  messageId?: number;
   source: string;
   index: number;
 };

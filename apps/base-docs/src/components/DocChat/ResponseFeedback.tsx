@@ -5,7 +5,11 @@ import Icon from '../Icon';
 
 import styles from './styles.module.css';
 
-const logResponseFeedback = (conversationId: number, messageId: number, isHelpful: boolean) => {
+const logResponseFeedback = (
+  conversationId: number,
+  messageId: number | undefined,
+  isHelpful: boolean,
+) => {
   const data = {
     message_id: messageId,
     rating_value: isHelpful ? 1 : -1,
@@ -28,7 +32,7 @@ const logResponseFeedback = (conversationId: number, messageId: number, isHelpfu
 
 type ResponseFeedbackProps = {
   responseIndex: number;
-  messageId: number;
+  messageId?: number;
   conversationId: number;
   conversation: ConversationMessage[];
   setConversation: (

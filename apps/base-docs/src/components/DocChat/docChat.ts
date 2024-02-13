@@ -115,7 +115,7 @@ export type ConversationMessage = {
   content: string;
   sources?: string[];
   helpful?: boolean | null;
-  messageId: number;
+  messageId?: number;
 };
 
 type ResponseSource = {
@@ -205,8 +205,7 @@ export async function streamPromptResponse(
             content: currentResponse.content.concat(chunk),
           };
 
-          const newState = [...prevState.slice(0, -1), updatedResponse];
-          return newState;
+          return [...prevState.slice(0, -1), updatedResponse];
         });
 
         return;
@@ -238,8 +237,7 @@ export async function streamPromptResponse(
             response: fullResponse,
           };
 
-          const newState = [...prevState.slice(0, -1), updatedResponse];
-          return newState;
+          return [...prevState.slice(0, -1), updatedResponse];
         });
 
         // Hide Stop Generating button

@@ -14,7 +14,7 @@ type ChatMessageProps = {
   type: ConversationMessage['type'];
   content: ConversationMessage['content'];
   sources?: ConversationMessage['sources'];
-  messageId: number;
+  messageId?: number;
   conversationId: number;
   conversation: ConversationMessage[];
   setConversation: (

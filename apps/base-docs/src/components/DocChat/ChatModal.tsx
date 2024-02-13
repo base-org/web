@@ -44,18 +44,13 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
 
       setIsLoading(true);
 
-      setChatHistory((prevState: ChatHistoryMessage[]) => {
-        const newState = [...prevState];
-        newState.push({ prompt, response: '' });
-        return newState;
-      });
+      setChatHistory((prevState: ChatHistoryMessage[]) => [...prevState, { prompt, response: '' }]);
 
-      setConversation((prevState: ConversationMessage[]) => {
-        const newState = [...prevState];
-        newState.push({ type: 'prompt', content: prompt });
-        newState.push({ type: 'response', content: '' });
-        return newState;
-      });
+      setConversation((prevState: ConversationMessage[]) => [
+        ...prevState,
+        { type: 'prompt', content: prompt },
+        { type: 'response', content: '' },
+      ]);
 
       streamPromptResponse(
         conversationId,
