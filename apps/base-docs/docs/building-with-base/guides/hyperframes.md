@@ -79,11 +79,11 @@ export const dynamic = 'force-dynamic';
 
 ### Identifying the Sending Frame
 
-!!!caution
+:::warning
 
 A clever user could potentially manipulate your Frame by hitting your endpoint with different query parameters. Don't use this method alone for anything sensitive!
 
-!!!
+:::
 
 To identify which frame sent the request to the endpoint, you can use [query string] parameters. In anticipation of using this technique, extract a query parameter called `frame` from the url of the request:
 
