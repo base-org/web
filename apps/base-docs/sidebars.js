@@ -124,6 +124,11 @@ module.exports = {
                   id: 'building-with-base/guides/advanced-frame-behavior',
                   className: 'sidebar-coding',
                 },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/hyperframes',
+                  className: 'sidebar-coding',
+                },
               ],
             },
             {
