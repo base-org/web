@@ -8,7 +8,7 @@ hide_table_of_contents: false
 
 :::caution
 
-Frames are brand new and tools are evolving quickly. Check the links above for changelogs!
+Frames are brand new and tools for building them are evolving quickly. Check the [Frames] docs and OnchainKit [changelog]!
 
 :::
 
@@ -41,13 +41,64 @@ You should be comfortable with the basics of creating Farcaster [Frames]. If you
 
 ## Getting Started
 
-Start by creating a new Frames project with Next.js. Use [a-frame-in-100-lines] if you want a jump start!
+This tutorial assumes you're using [a-frame-in-100-lines] as the base for your project. It's a very lightweight template, so with minor modifications, you can adapt this technique to any project.
 
-You'll also need to create or find a handful of images to use for each frame. AI tools are wonderful for this type of prototyping, or you can right-click and save the images from our demo, linked above.
+You'll also need to create or find a handful of images to use for each frame. AI tools are wonderful for this type of prototyping, or you can right-click and save the images from the [old-school adventure game].
+
+## Creating the First Frame
+
+Open `page.tsx`. Modify the `getFrameMetadata` for the first frame to match the frame in the example.
+
+![First Frame](../../../assets/images/frames/first-frame.png)
+
+```typescript
+const frameMetadata = getFrameMetadata({
+  buttons: [
+    {
+      label: 'Road',
+    },
+    {
+      label: 'Woods',
+    },
+    {
+      label: 'Cave',
+    },
+    {
+      action: 'link',
+      label: 'TODO',
+      target: 'https://www.google.com',
+    },
+  ],
+  image: {
+    src: `${NEXT_PUBLIC_URL}/frame-1-forest.webp`,
+    aspectRatio: '1:1',
+  },
+  postUrl: `${NEXT_PUBLIC_URL}/api/frame?frame=start`,
+});
+```
+
+**Note** the query parameter in the `postUrl`. You'll use this to identify which frame is sending the request to your endpoint.
+
+Configure the rest of the metadata as you see fit. Remember, this won't show up in your frame, but it will appear if someone links your site to another platform that uses the standard Open Graph metadata.
+
+```typescript
+export const metadata: Metadata = {
+  title: 'HyperFrames!',
+  description: 'Time is a flat circle.',
+  openGraph: {
+    title: 'HyperFrames!',
+    description: 'Time is a flat circle.',
+    images: [`${NEXT_PUBLIC_URL}/frame-1-forest.webp`],
+  },
+  other: {
+    ...frameMetadata,
+  },
+};
+```
 
 ## Setting up the Route
 
-The route you'll construct is similar to the example in `route.ts` of the 100-lines example. It will use OnChainKit to retrieve and validate the message from the frame. In doing so, it will collect:
+The route you'll construct is similar to the example in [`app/api/route.ts`] of the 100-lines example. It will use OnchainKit to retrieve and validate the message from the frame. In doing so, it will collect:
 
 - The user's address
 - The button clicked by the user to get here
@@ -67,7 +118,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
 
   return new NextResponse();
-  // TODO: Return a frame)
+  // TODO: Return a frame
 }
 
 export async function POST(req: NextRequest): Promise<Response> {
@@ -217,7 +268,7 @@ Then, simply import and call `getHyperFrame` as the `NextResponse`:
 return new NextResponse(getHyperFrame(frame as string, text || '', message?.button));
 ```
 
-Deploy, test, and debug!
+Deploy, test with the [Frame Validator], and debug!
 
 ## Adding Conditionals
 
@@ -311,17 +362,16 @@ In this tutorial, you learned how to implement a system of hyperframes - frames 
 
 ---
 
-[Base Camp]: https://docs.base.org/base-camp/docs/welcome
 [Farcaster]: https://www.farcaster.xyz/
 [a-frame-in-100-lines]: https://github.com/Zizzamia/a-frame-in-100-lines
 [OnchainKit]: https://github.com/coinbase/onchainkit
 [Vercel]: https://vercel.com
 [Frame Validator]: https://warpcast.com/~/developers/frames
-[Base channel]: https://warpcast.com/~/channel/base
 [deploying with Vercel]: ./deploy-frame-on-vercel
-[Frames]: https://warpcast.notion.site/Farcaster-Frames-4bd47fe97dc74a42a48d3a234636d8c5
+[Frames]: https://docs.farcaster.xyz/learn/what-is-farcaster/frames
 [viem]: https://viem.sh/
-[Basescan]: https://basescan.org/
 [NFT Minting Frame]: ./nft-minting-frame
 [old-school adventure game]: https://warpcast.com/briandoyle81/0x108f1cdb
 [query string]: https://en.wikipedia.org/wiki/Query_string
+[changelog]: https://github.com/coinbase/onchainkit/blob/main/CHANGELOG.md
+[`app/api/route.ts`]: https://github.com/Zizzamia/a-frame-in-100-lines/blob/main/app/api/frame/route.ts
