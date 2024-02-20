@@ -67,7 +67,7 @@ export async function getConversationId(): Promise<number> {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        api_key: '0ab8984e-327c-4a8b-bea3-769ca01fac35',
+        api_key: '7f73a4b9-96b3-4689-8688-b120ea0ee916',
       }),
     });
 
@@ -158,7 +158,7 @@ export async function streamPromptResponse(
     const url = 'https://api.mendable.ai/v1/mendableChat';
 
     const data = {
-      api_key: '0ab8984e-327c-4a8b-bea3-769ca01fac35',
+      api_key: '7f73a4b9-96b3-4689-8688-b120ea0ee916',
       question: prompt,
       history: chatHistory,
       conversation_id: conversationId,
