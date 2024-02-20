@@ -41,6 +41,12 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: var(--ifm-background-surface-color);
 }
 
+.navbar {
+  flex-direction: column !important;
+  justify-content: space-evenly !important;
+  height: 120px !important;
+}
+
 /* overriding white text as the alert high a light background */
 [data-theme='dark'] .alert-message {
   color: #000;

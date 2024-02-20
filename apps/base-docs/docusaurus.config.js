@@ -101,18 +101,24 @@ const config = {
       items: [
         {
           type: 'doc',
+          docId: 'home',
+          navPosition: 'bottomLeft',
+          label: 'Home',
+        },
+        {
+          type: 'doc',
           docId: 'overview',
-          position: 'left',
+          navPosition: 'bottomLeft',
           label: 'Documentation',
         },
         {
           to: '/tutorials',
-          position: 'left',
+          navPosition: 'bottomLeft',
           label: 'Tutorials',
         },
         {
           to: '/base-camp/docs/welcome',
-          position: 'left',
+          navPosition: 'bottomLeft',
           label: 'Base Camp',
           items: [
             {
@@ -129,42 +135,92 @@ const config = {
             },
           ],
         },
-        {
-          type: 'doc',
-          docId: 'security',
-          position: 'left',
-          label: 'Security',
-        },
+        // {
+        //   type: 'doc',
+        //   docId: 'security',
+        //   navPosition: 'bottomLeft',
+        //   label: 'Security',
+        // },
+        // {
+        //   type: 'dropdown',
+        //   label: 'Community',
+        //   navPosition: 'bottomLeft',
+        //   items: [
+        //     {
+        //       label: 'Twitter',
+        //       href: 'https://www.twitter.com/base',
+        //     },
+        //     {
+        //       label: 'Discord',
+        //       href: 'https://base.org/discord',
+        //     },
+        //     {
+        //       label: 'GitHub',
+        //       href: 'https://www.github.com/base-org',
+        //     },
+        //   ],
+        // },
         {
           type: 'dropdown',
-          label: 'Community',
-          position: 'left',
+          label: 'Ecosystem',
+          navPosition: 'topRight',
           items: [
             {
-              label: 'Twitter',
-              href: 'https://www.twitter.com/base',
+              label: 'Apps',
+              href: 'https://www.base.org/ecosystem',
             },
             {
-              label: 'Discord',
-              href: 'https://base.org/discord',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://www.github.com/base-org',
+              label: 'Grants',
+              href: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders',
             },
           ],
         },
         {
-          href: 'https://stack.optimism.io',
-          html: `
-            <img src="/img/op_stack_dark.svg" width="160" class="op-dark" />
-            <img src="/img/op_stack.svg" width="160" class="op-light" />
-          `,
-          position: 'right',
+          label: 'Bridge',
+          navPosition: 'topRight',
+          href: 'https://bridge.base.org/',
+        },
+        {
+          type: 'dropdown',
+          label: 'Developers',
+          navPosition: 'topRight',
+          items: [
+            {
+              label: 'Block Explorer',
+              href: 'https://basescan.org/',
+            },
+            {
+              label: 'Status',
+              href: 'https://status.base.org/',
+            },
+            {
+              label: 'Bug Bounty',
+              href: 'https://hackerone.com/coinbase',
+            },
+          ],
+        },
+        {
+          type: 'dropdown',
+          label: 'About',
+          navPosition: 'topRight',
+          items: [
+            {
+              label: 'Mission',
+              href: 'https://www.base.org/about',
+            },
+            {
+              label: 'Blog',
+              href: 'https://base.mirror.xyz/',
+            },
+            {
+              label: 'Jobs',
+              href: 'https://www.base.org/jobs',
+            },
+          ],
         },
         {
           type: 'localeDropdown',
-          position: 'right',
+          navPosition: 'bottomRight',
         },
       ],
     },
