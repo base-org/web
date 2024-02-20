@@ -80,7 +80,7 @@ export default function ResponseFeedback({
   return (
     <>
       <div className={styles.responseRatingPrompt}>
-        {feedbackSubmitted ? 'Thank you for your feedback!' : 'Was this reponse helpful?'}
+        {feedbackSubmitted ? 'Thank you for your feedback!' : 'Was this response helpful?'}
       </div>
 
       <div className={styles.responseRatingButtonContainer}>
