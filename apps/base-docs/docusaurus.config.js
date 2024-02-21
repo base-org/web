@@ -100,8 +100,7 @@ const config = {
       },
       items: [
         {
-          type: 'doc',
-          docId: 'home',
+          to: '/',
           navPosition: 'bottomLeft',
           label: 'Home',
         },
