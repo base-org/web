@@ -1,15 +1,7 @@
 ---
 title: 'Minting an NFT in a Frame'
-description: Make a Farcaster frame that allows users to min an NFT on your dime.
-keywords: [
-    Solidity,
-    ERC-721,
-    token,
-    NFT,
-    farcaster,
-    frames
-    farcaster frames,
-  ]
+description: Make a Farcaster frame that allows users to mint an NFT on your dime.
+keywords: [Solidity, ERC-721, token, NFT, farcaster, frames, farcaster frames]
 hide_table_of_contents: false
 ---
 
