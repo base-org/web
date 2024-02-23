@@ -111,6 +111,10 @@ module.exports = {
               items: [
                 {
                   type: 'doc',
+                  id: 'building-with-base/guides/linked-minting-frame',
+                },
+                {
+                  type: 'doc',
                   id: 'building-with-base/guides/nft-minting-frame',
                   className: 'sidebar-coding',
                 },
