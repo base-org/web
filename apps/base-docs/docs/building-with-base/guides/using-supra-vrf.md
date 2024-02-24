@@ -295,7 +295,7 @@ You must whitelist this smart contract under the wallet address you registered w
 
 Follow the [guidance steps](https://supraoracles.com/docs/vrf/v2-guide#step-1-create-the-supra-router-contract-interface-1) provided by Supra for whitelisting your contract and depositing funds.
 
-If you have not yet registered your wallet with Supra, see the [Prerequisites](#prerequisites)section.
+If you have not yet registered your wallet with Supra, see the [Prerequisites](#prerequisites) section.
 :::
 
 ---
