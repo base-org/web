@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-export default function CookiePolicy() {
+export default function ThirdPartyCookies() {
   return (
     <>
       <Head>
