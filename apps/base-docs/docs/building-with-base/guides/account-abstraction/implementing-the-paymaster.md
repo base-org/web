@@ -7,6 +7,12 @@ hide_table_of_contents: false
 
 A _paymaster_ is a type of smart contract account, introduced in [ERC-4337], that is able to pay for gas on behalf of another account. In this step-by-step, you'll modify an example created by [Privy], move it to another onchain app, and use it to call a smart contract function. Along the way, you'll encounter and resolve some of the confusing pitfalls associated with working with smart contract accounts.
 
+:::caution
+
+The tutorial below does not account for recent changes to the [Base Paymaster]. Please reference the linked repo and adjust. We'll update the tutorial soon!
+
+:::
+
 ---
 
 ## Objectives
