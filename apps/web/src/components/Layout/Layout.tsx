@@ -104,7 +104,12 @@ type LayoutProps = { children: ReactElement };
 export function Layout({ children }: LayoutProps) {
   const { pathname } = useRouter();
   const color: 'black' | 'white' = useMemo(() => {
-    if (pathname === '/' || pathname === '/jobs/apply' || pathname === '/cookie-policy') {
+    if (
+      pathname === '/' ||
+      pathname === '/jobs/apply' ||
+      pathname === '/cookie-policy' ||
+      pathname === '/third-party-cookies'
+    ) {
       return 'black';
     }
 
