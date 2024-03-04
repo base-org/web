@@ -4,7 +4,7 @@ description: Build custom function modifiers to efficiently modify functionality
 hide_table_of_contents: false
 ---
 
-Function modifiers allow you to efficiently change the behavior of functions. In some ways it's similar to inheritance, but there are restrictions, particularly in variable scope.
+Function modifiers allow you to efficiently change the behavior of functions. In some ways, it's similar to inheritance, but there are restrictions, particularly in variable scope.
 
 ---
 

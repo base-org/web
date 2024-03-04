@@ -91,7 +91,7 @@ Note: The called function should be payable if you send value and the value you 
 Debug the transaction to get more information.
 ```
 
-You won't be able to do it, though the `Note:` here is **misleading**. In the EVM, `payable` **only** refers to transfers of the primary token used to pay gas fees: ETH, Base ETH, Sepolia ETH, Matic, etc. It is **not** referring to the balance of our simple token.
+You won't be able to do it, though the `Note:` here is **misleading**. In the EVM, `payable` **only** refers to transfers of the primary token used to pay gas fees: ETH, Base ETH, Sepolia ETH, Matic, etc. It does **not** refer to the balance of our simple token.
 
 Instead, the transaction is reverting because of the built-in overflow/underflow protection. It's not a great programming practice to depend on this, so add an error for `InsufficientTokens` that returns the `newSenderBalance`.
 
@@ -137,7 +137,7 @@ The `totalSupply` remains unchanged, and the balance of the zero address are vis
 
 :::info
 
-The [zero address] currently has a balance of more than 11,000 ETH, worth over **20 million dollars**! It's total holding of burned assets are estimated to be worth more than **200 million dollars**!!!
+The [zero address] currently has a balance of more than 11,000 ETH, worth over **20 million dollars**! Its total holding of burned assets is estimated to be worth more than **200 million dollars**!!!
 
 :::
 
