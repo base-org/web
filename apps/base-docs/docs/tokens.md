@@ -23,7 +23,7 @@ This page is intended for token issuers who already have an ERC-20 contract depl
 
 **_Note - Tokens approved in the Github repository are not necessarily listed on the Base Bridge._**
 
-**_Disclaimer: Base does not endorse any of the tokens that are listed in the Github repository and has conducted only preliminary checks, which includes automated checks listed_** [**_here_**](https://github.com/ethereum-optimism/ethereum-optimism.github.io)**_._**
+**_Disclaimer: Base does not endorse any of the tokens that are listed in the Github repository and has conducted only preliminary checks, which include automated checks listed_** [**_here_**](https://github.com/ethereum-optimism/ethereum-optimism.github.io)**_._**
 
 ---
 
