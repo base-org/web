@@ -69,11 +69,12 @@ const contentSecurityPolicy = {
     'wss://relay.walletconnect.com', // WalletConnect
     'wss://relay.walletconnect.org',
     'https://goerli.base.org', // Base Goerli RPC
+    'https://sepolia.base.org', // Base Sepolia RPC
     'https://cca-lite.coinbase.com', // CCA Lite
     'https://*.algolia.net', // Algolia Search
     'https://*.algolianet.com', // Algolia Search
   ],
-  'frame-src': ["'self'", 'https://player.vimeo.com'],
+  'frame-src': ["'self'", 'https://player.vimeo.com', 'https://verify.walletconnect.org'],
 };
 
 const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [key, value]) => {
