@@ -859,6 +859,7 @@ const sidebars = {
         },
       ],
     },
+    ['docs/exercise-contracts'],
   ],
 };
 
