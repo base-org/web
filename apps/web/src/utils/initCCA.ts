@@ -2,13 +2,10 @@
 // They recommended disabling linting and type-checking for now, since this version is not typed.
 /* eslint-disable */
 // @ts-nocheck
-import getConfig from 'next/config';
 import { NextRouter } from 'next/router';
 import { TrackingPreference } from '@coinbase/cookie-manager';
 import { uuid } from 'uuidv4';
-
-const { publicRuntimeConfig } = getConfig();
-const isDevelopment = publicRuntimeConfig.nodeEnv === 'development';
+import { isDevelopment } from 'apps/web/src/constants';
 
 // CCA library loads in ClientAnalyticsScript component
 const initCCA = (
