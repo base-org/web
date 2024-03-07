@@ -3,6 +3,11 @@ const path = require('path');
 const basicAuth = require('express-basic-auth');
 const fs = require('fs');
 const notFound = require('./404.js');
+const bodyParser = require('body-parser');
+const fetch = require('node-fetch');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const unless = function (path, middleware) {
   return function (req, res, next) {
@@ -18,8 +23,30 @@ const app = express();
 
 app.use(express.static('static'));
 
+app.use(bodyParser.json());
+
 app.get('/api/_health', (_, res) => {
   res.sendStatus(200);
+});
+
+app.post('/api/rateMessage', (req, res) => {
+  const { message_id, rating_value } = req.body;
+
+  const data = {
+    api_key: process.env.MENDABLE_SERVER_API_KEY,
+    message_id,
+    rating_value,
+  };
+
+  fetch('https://api.mendable.ai/v1/rateMessage', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => res.json(response))
+    .catch((error) => res.status(400));
 });
 
 app.get('/base-camp', (req, res) => {
@@ -73,6 +100,9 @@ const contentSecurityPolicy = {
     'https://cca-lite.coinbase.com', // CCA Lite
     'https://*.algolia.net', // Algolia Search
     'https://*.algolianet.com', // Algolia Search
+    'https://api.mendable.ai/v1/newConversation', // Mendable API
+    'https://api.mendable.ai/v1/mendableChat', // Mendable API
+    'https://api.mendable.ai/v1/rateMessage', // Mendable API
   ],
   'frame-src': ["'self'", 'https://player.vimeo.com', 'https://verify.walletconnect.org'],
 };

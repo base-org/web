@@ -18,7 +18,7 @@ const logDocFeedback = (isHelpful: boolean, reason?: string) => {
 
     logEvent('doc_feedback', {
       action: ActionType.click,
-      componentType: ComponentType.button,
+      component_type: ComponentType.button,
       doc_helpful: isHelpful,
       doc_feedback_reason: reason ?? null,
       page_path: path,
@@ -99,6 +99,7 @@ export default function DocFeedback() {
         href={`https://github.com/base-org/web/blob/master/apps/base-docs/${docFilePath}?plain=1`}
         target="_blank"
         className={styles.editDocLink}
+        rel="noreferrer"
       >
         Edit this page on GitHub
         <Icon name="external-link" width="11" height="11" />
