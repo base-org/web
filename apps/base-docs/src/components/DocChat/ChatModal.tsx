@@ -17,16 +17,17 @@ import {
 
 type ChatModalProps = {
   visible: boolean;
-  onRequestClose: () => void;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
+export default function ChatModal({ visible, setVisible }: ChatModalProps) {
   const [conversationId, setConversationId] = useState(0);
   const [conversation, setConversation] = useState<ConversationMessage[]>([]);
   const [chatHistory, setChatHistory] = useState<ChatHistoryMessage[]>([]);
   const [prompt, setPrompt] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
 
   const conversationContainerRef = useRef<HTMLDivElement>(null);
   const currentMessage: ConversationMessage = conversation[conversation.length - 1];
@@ -43,6 +44,7 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
       if (!conversationId || !prompt || isLoading || isGenerating) return;
 
       setIsLoading(true);
+      setIsAutoScrolling(true);
 
       setChatHistory((prevState: ChatHistoryMessage[]) => [...prevState, { prompt, response: '' }]);
 
@@ -75,19 +77,30 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
     setSessionConversation([]);
     setIsLoading(false);
     setIsGenerating(false);
+    setIsAutoScrolling(true);
+    if (controller) controller.abort();
+  }, [controller]);
 
-    if (controller) {
-      controller.abort();
-    }
+  const handleModalClose = useCallback(() => {
+    setVisible(false);
+
+    // perform soft reset when modal is closed
+    setPrompt('');
+    setIsLoading(false);
+    setIsGenerating(false);
+    setIsAutoScrolling(true);
+    if (controller) controller.abort();
   }, [controller]);
 
   const handleStopGenerating = useCallback(() => {
     setIsGenerating(false);
-
-    if (controller) {
-      controller.abort();
-    }
+    if (controller) controller.abort();
   }, [controller]);
+
+  const handleConversationScroll = useCallback(() => {
+    // When user scrolls conversation, stop programmatically scrolling to bottom
+    if (isAutoScrolling) setIsAutoScrolling(false);
+  }, [isAutoScrolling]);
 
   useEffect(() => {
     // Only get conversation ID if modal is opened
@@ -102,7 +115,9 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
   }, [visible]);
 
   useEffect(() => {
-    conversationContainerRef.current?.scrollBy(0, conversationContainerRef.current.scrollHeight);
+    if (isAutoScrolling) {
+      conversationContainerRef.current?.scrollBy(0, conversationContainerRef.current.scrollHeight);
+    }
     // Scroll to bottom of conversation container when:
     // - Message is added to conversation
     // - Response content is generated
@@ -110,14 +125,18 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
   }, [conversation.length, currentMessage?.content, currentMessage?.sources]);
 
   return (
-    <Modal visible={visible} onRequestClose={onRequestClose}>
+    <Modal visible={visible} onRequestClose={handleModalClose}>
       <div className={styles.chatModalBody}>
         <button type="button" className={styles.resetButton} onClick={handleReset}>
           <Icon name="undo" height="12" width="12" />
           Reset
         </button>
 
-        <div ref={conversationContainerRef} className={styles.conversationContainer}>
+        <div
+          ref={conversationContainerRef}
+          className={styles.conversationContainer}
+          onWheel={handleConversationScroll}
+        >
           <ChatMessage type="response" content="Hi, how can I help you?" />
 
           {conversation.map((message, i) => (
@@ -183,8 +202,7 @@ export default function ChatModal({ visible, onRequestClose }: ChatModalProps) {
         </form>
 
         <div className={styles.disclaimerText}>
-          This tool uses AI to generate results. Please verify the output with the provided sources.
-          Do not enter any sensitive information.
+          This tool uses AI to generate results. Please do not enter any sensitive information.
         </div>
       </div>
     </Modal>

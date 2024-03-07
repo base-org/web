@@ -9,14 +9,10 @@ export default function DocFeedback() {
     setVisible(true);
   }, []);
 
-  const handleModalClose = useCallback(() => {
-    setVisible(false);
-  }, []);
-
   return (
     <>
       <FloatingChatButton onClick={handleModalOpen} />
-      <ChatModal visible={visible} onRequestClose={handleModalClose} />
+      <ChatModal visible={visible} setVisible={setVisible} />
     </>
   );
 }

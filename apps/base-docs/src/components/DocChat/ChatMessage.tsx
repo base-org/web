@@ -3,7 +3,7 @@ import { parseMarkdown } from '../../utils/marked';
 
 import Icon from '../Icon';
 import ResponseFeedback from './ResponseFeedback';
-import ResponseSource from './ResponseSource';
+// import ResponseSource from './ResponseSource';
 
 import styles from './styles.module.css';
 
@@ -72,7 +72,8 @@ export default function ChatMessage({
             setConversation={setConversation}
           />
 
-          <div className={styles.chatMessageSourcesLabel}>Verified Sources:</div>
+          {/* Source data provided by the Mendable API needs more tuning but will be supported in a future release */}
+          {/* <div className={styles.chatMessageSourcesLabel}>Verified Sources:</div>
           <div className={styles.chatMessageSourcesContainer}>
             {sources.map((source, i) => (
               <ResponseSource
@@ -83,7 +84,7 @@ export default function ChatMessage({
                 source={source}
               />
             ))}
-          </div>
+          </div> */}
         </>
       )}
     </div>
