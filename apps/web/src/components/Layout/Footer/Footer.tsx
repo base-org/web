@@ -1,12 +1,10 @@
 import { useState, useCallback } from 'react';
-import getConfig from 'next/config';
 import Link from 'next/link';
 import { CookiePreferencesModal } from '@coinbase/cookie-banner';
 
 import { Icon } from '../../Icon/Icon';
 import { Logo } from '../../Logo/Logo';
-
-const { publicRuntimeConfig } = getConfig();
+import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
 
 export function Footer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,7 +66,7 @@ export function Footer() {
               <span className="font-mono text-xl text-white">About</span>
             </Link>
             <a
-              href={publicRuntimeConfig.docsUrl}
+              href={docsUrl}
               className="font-mono text-xl text-white"
               target="_blank"
               rel="noreferrer noopener"
@@ -76,7 +74,7 @@ export function Footer() {
               Docs
             </a>
             <a
-              href={publicRuntimeConfig.bridgeUrl}
+              href={bridgeUrl}
               className="font-mono text-xl text-white"
               target="_blank"
               rel="noreferrer noopener"

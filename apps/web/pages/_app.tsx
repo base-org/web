@@ -1,7 +1,7 @@
 import './global.css';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import App, { AppContext, AppProps } from 'next/app';
+import { AppProps } from 'next/app';
 import { MotionConfig } from 'framer-motion';
 import {
   Provider as CookieManagerProvider,
@@ -14,13 +14,6 @@ import { Layout } from '../src/components/Layout/Layout';
 import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
 
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
-
-/* Adding this to force NextJS to render the app on the server at runtime instead of statically
-which allows us to use ENV vars in the way we expect (Codeflow does not insert ENV vars at Dockerfile build time, so statically rendered pages don't have access) */
-export async function getInitialProps(context: AppContext) {
-  const appProps = await App.getInitialProps(context);
-  return appProps;
-}
 
 export default function StaticApp({ Component, pageProps }: AppProps) {
   // Cookie Manager Provider Configuration
@@ -79,5 +72,3 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
     </CookieManagerProvider>
   );
 }
-
-StaticApp.getInitialProps = getInitialProps;

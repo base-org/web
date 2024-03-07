@@ -9,9 +9,26 @@ import { Features } from '../src/components/Features/Features';
 import { Hero } from '../src/components/Home/Hero';
 import { JoinTheCommunity } from '../src/components/JoinTheCommunity/JoinTheCommunity';
 import { Partnerships } from '../src/components/Partnerships/Partnerships';
-import { FrameMetadata } from '@coinbase/onchainkit';
+import { FrameButtonMetadata, FrameMetadata } from '@coinbase/onchainkit';
+import { useMemo } from 'react';
 
 export default function Home() {
+  const buttons: [FrameButtonMetadata, ...FrameButtonMetadata[]] = useMemo(
+    () => [
+      {
+        action: 'link',
+        label: 'Read the docs',
+        target: 'https://docs.base.org/',
+      },
+      {
+        action: 'link',
+        label: 'Bridge assets',
+        target: 'https://bridge.base.org/deposit',
+      },
+    ],
+    [],
+  );
+
   return (
     <>
       <Head>
@@ -42,18 +59,7 @@ export default function Home() {
         <meta property="og:image:height" content="630" />
       </Head>
       <FrameMetadata
-        buttons={[
-          {
-            action: 'link',
-            label: 'Read the docs',
-            target: 'https://docs.base.org/',
-          },
-          {
-            action: 'link',
-            label: 'Bridge assets',
-            target: 'https://bridge.base.org/deposit',
-          },
-        ]}
+        buttons={buttons}
         image="https://base.org/images/base-open-graph.png"
         wrapper={Head}
       />

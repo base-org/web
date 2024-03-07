@@ -1,13 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
-import getConfig from 'next/config';
 import Link from 'next/link';
 
 import { Icon } from '../../Icon/Icon';
 import { Logo } from '../../Logo/Logo';
 import { usePathname } from 'next/navigation';
-
-const { publicRuntimeConfig } = getConfig();
+import { bridgeUrl } from 'apps/web/src/constants';
 
 // Dropdown Link
 type DropdownLinkProps = {
@@ -183,7 +181,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                   />
                 </Dropdown>
                 <a
-                  href={publicRuntimeConfig.bridgeUrl}
+                  href={bridgeUrl}
                   className="inline-flex items-center font-mono text-3xl text-white hover:underline"
                   target="_blank"
                   rel="noreferrer noopener"

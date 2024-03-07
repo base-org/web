@@ -1,13 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
-import getConfig from 'next/config';
 import Link from 'next/link';
 
 import useClickAway from '../../../utils/hooks/useClickAway';
 
 import { Icon } from '../../Icon/Icon';
-
-const { publicRuntimeConfig } = getConfig();
+import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
 
 // Dropdown Link
 type DropdownLinkProps = {
@@ -111,7 +109,7 @@ function DesktopNav({ color }: DesktopNavProps) {
           />
         </Dropdown>
         <a
-          href={publicRuntimeConfig.bridgeUrl}
+          href={bridgeUrl}
           className={`inline-flex items-center font-mono text-xl ${
             color === 'black' ? 'text-black' : 'text-white'
           }`}
@@ -121,12 +119,7 @@ function DesktopNav({ color }: DesktopNavProps) {
           Bridge
         </a>
         <Dropdown label="Developers" color={color}>
-          <DropdownLink
-            href={publicRuntimeConfig.docsUrl}
-            label="Docs"
-            color={color}
-            externalLink
-          />
+          <DropdownLink href={docsUrl} label="Docs" color={color} externalLink />
           <DropdownLink
             href="https://basescan.org"
             label="Block Explorer"
