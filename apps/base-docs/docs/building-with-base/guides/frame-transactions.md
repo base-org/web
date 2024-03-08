@@ -56,7 +56,9 @@ As outlined in the [Public Draft V2], transactions in frames work through a mult
 1. The endpoint uses that data, such as the user's attached wallet address, to build a transaction and send it back to the the Farcaster client app
 1. The app then redirects the user to their wallet with the provided `calldata`, which opens the normal flow for the user to review and approve or deny a transaction
 1. If successful, the wallet returns the user to the app with the transaction id
-1. The app then automatically makes another POST request to the **same** `target`, this time with the transaction id. **Make sure you handle this second call appropriately!**
+1. The app then automatically makes another POST request with the transaction id. **Make sure you handle this second call appropriately!**
+   1. You **can** specify a `button:$id:post_url`
+   1. It will fall back to the `postUrl`. This guide uses the latter method
 
 ## Setting up the Smart Contract
 
