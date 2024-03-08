@@ -367,10 +367,10 @@ In this tutorial, you learned how to implement a system of hyperframes - frames 
 [OnchainKit]: https://github.com/coinbase/onchainkit
 [Vercel]: https://vercel.com
 [Frame Validator]: https://warpcast.com/~/developers/frames
-[deploying with Vercel]: ./deploy-frame-on-vercel
+[deploying with Vercel]: /building-with-base/guides/deploy-frame-on-vercel
 [Frames]: https://docs.farcaster.xyz/learn/what-is-farcaster/frames
 [viem]: https://viem.sh/
-[NFT Minting Frame]: ./nft-minting-frame
+[NFT Minting Frame]: /building-with-base/guides/nft-minting-frame
 [old-school adventure game]: https://warpcast.com/briandoyle81/0x108f1cdb
 [query string]: https://en.wikipedia.org/wiki/Query_string
 [changelog]: https://github.com/coinbase/onchainkit/blob/main/CHANGELOG.md

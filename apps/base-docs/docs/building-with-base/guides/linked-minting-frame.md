@@ -126,7 +126,7 @@ In this tutorial, you learned how to make a simple [Frame] on [Farcaster] that i
 [Vercel]: https://vercel.com
 [Frame Validator]: https://warpcast.com/~/developers/frames
 [Base channel]: https://warpcast.com/~/channel/base
-[deploying with Vercel]: ./deploy-frame-on-vercel
+[deploying with Vercel]: /building-with-base/guides/deploy-frame-on-vercel
 [Frames]: https://docs.farcaster.xyz/learn/what-is-farcaster/frames
-[advanced behavior]: ./advanced-frame-behavior
-[mint with your own contract]: ./nft-minting-frame
+[advanced behavior]: /building-with-base/guides/advanced-frame-behavior
+[mint with your own contract]: /building-with-base/guides/nft-minting-frame
