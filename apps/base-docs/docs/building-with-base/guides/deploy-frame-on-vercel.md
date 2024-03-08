@@ -148,7 +148,7 @@ In this tutorial, you learned how to set up [Vercel]
 [Vercel]: https://vercel.com
 [Frame Validator]: https://warpcast.com/~/developers/frames
 [Base channel]: https://warpcast.com/~/channel/base
-[Complex Onchain NFTs]: https://https://docs.base.org/building-with-base/guides/complex-onchain-nfts
+[Complex Onchain NFTs]: /building-with-base/guides/complex-onchain-nfts
 [Frames]: https://warpcast.notion.site/Farcaster-Frames-4bd47fe97dc74a42a48d3a234636d8c5
 [viem]: https://viem.sh/
 [Basescan]: https://basescan.org/

@@ -120,13 +120,15 @@ In this tutorial, you learned how to make a simple [Frame] on [Farcaster] that i
 
 ---
 
+[mint.fun]: https://mint.fun/
 [Farcaster]: https://www.farcaster.xyz/
 [a-frame-in-100-lines]: https://github.com/Zizzamia/a-frame-in-100-lines
 [OnchainKit]: https://github.com/coinbase/onchainkit
 [Vercel]: https://vercel.com
 [Frame Validator]: https://warpcast.com/~/developers/frames
 [Base channel]: https://warpcast.com/~/channel/base
-[deploying with Vercel]: ./deploy-frame-on-vercel
+[deploying with Vercel]: /building-with-base/guides/deploy-frame-on-vercel
+[Frame]: https://docs.farcaster.xyz/learn/what-is-farcaster/frames
 [Frames]: https://docs.farcaster.xyz/learn/what-is-farcaster/frames
-[advanced behavior]: ./advanced-frame-behavior
-[mint with your own contract]: ./nft-minting-frame
+[advanced behavior]: /building-with-base/guides/advanced-frame-behavior
+[mint with your own contract]: /building-with-base/guides/nft-minting-frame
