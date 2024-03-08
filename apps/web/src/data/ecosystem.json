@@ -9,6 +9,96 @@
     "imageUrl": "/images/partners/wallet-retail.webp"
   },
   {
+    "name": "Connext",
+    "tags": [
+      "bridge"
+    ],
+    "description": "Connext is an intent-based modular interoperability protocol for securely passing funds and data between chains with the best possible speed, pricing, and security.",
+    "url": "https://bridge.connext.network/",
+    "imageUrl": "/images/partners/connext.png"
+  },
+  {
+    "name": "GhostLogs.xyz",
+    "tags": [
+      "infra"
+    ],
+    "description": "GhostLogs allows anyone to edit live smart contract code for tailored data emission.",
+    "url": "https://ghostlogs.xyz",
+    "imageUrl": "/images/partners/ghostLogs.png"
+  },
+  {
+    "name": "Bulla Network",
+    "tags": [
+      "defi"
+    ],
+    "description": "Bulla is a global onchain credit protocol that streamlines web3 business with one-step invoicing, payments, payroll, loans and multi-functional account management and tax reporting across 14 chains.",
+    "url": "https://www.bulla.network/",
+    "imageUrl": "/images/partners/bulla.png"
+  },
+  {
+    "name": "DeFi Saver",
+    "tags": [
+      "defi"
+    ],
+    "description": "DeFi Saver is an all-in-one management app for decentralised finance, providing you fully non-custodial access to protocols such as Aave, Compound, Morpho, Maker & Liquity.",
+    "url": "https://defisaver.com/",
+    "imageUrl": "/images/partners/DefiSaver.png"
+  },
+  {
+    "name": "BitAvatar",
+    "tags": [
+      "social"
+    ],
+    "description": "A Soulbound Avatar Identity for Multi-Ecosystem Social & Communication. Customize, interact, and build verifiable reputation with unique and personalized digital identities.",
+    "url": "https://bitavatar.io/",
+    "imageUrl": "/images/partners/bitavatar.png"
+  },
+  {
+    "name": "Crypto Tax Calculator",
+    "tags": [
+      "social"
+    ],
+    "description": "Sort out your crypto tax nightmare with the most degen-friendly calculator in web3.",
+    "url": "https://cryptotaxcalculator.io",
+    "imageUrl": "/images/partners/cryptotax.png"
+  },
+  {
+    "name": "Show Up",
+    "tags": [
+      "social"
+    ],
+    "description": "Onchain RSVP and Event management protocol designed to reshape event participation.",
+    "url": "https://www.showup.events/",
+    "imageUrl": "/images/partners/showup.png"
+  },
+  {
+    "name": "Catalog Radio",
+    "tags": [
+      "social"
+    ],
+    "description": "Internet radio made for independent music. Enjoy and directly support artists in real time. ",
+    "url": "https://catalog.radio/",
+    "imageUrl": "/images/partners/catalog.png"
+  },
+  {
+    "name": "Lore",
+    "tags": [
+      "infra"
+    ],
+    "description": "Upgrade Your Web3 Experience with Lore as your primary explorer for Ethereum, Avalanche (C-Chain), Fantom Opera, Base. Stay ahead of the curve with LoreAI, notifications, and more.",
+    "url": "https://searchcrypto.com/",
+    "imageUrl": "/images/partners/lore.png"
+  },
+  {
+    "name": "RubyScore",
+    "tags": [
+      "infra"
+    ],
+    "description": "Ochain ranking protocol. Track your progress in your favorite projects and rise to the top.\n",
+    "url": "https://rubyscore.io/",
+    "imageUrl": "/images/partners/rubsyscore.png"
+  },
+  {
     "name": "BotFi.app",
     "tags": [
       "defi"
@@ -2465,7 +2555,7 @@
     "url": "https://nouns.build",
     "description": "Governed by BuilderDAO, Nouns Builder is a tool lets you create Nounish DAOs easily. Build and empower your community with onchain governance and treasury.",
     "tags": [
-      "nft"
+      "social"
     ],
     "imageUrl": "/images/partners/nouns_builder.webp"
   },
