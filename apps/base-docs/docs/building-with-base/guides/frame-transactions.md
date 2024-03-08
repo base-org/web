@@ -237,7 +237,7 @@ const txData: FrameTransactionResponse = {
     abi: [],
     data,
     to: CLICK_THE_BUTTON_CONTRACT_ADDR,
-    value: formatEther(parseEther('0.00001')), // 0.00001 ETH
+    value: parseGwei('10000').toString(), // 0.00001 ETH
   },
 };
 ```
