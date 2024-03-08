@@ -365,13 +365,13 @@ contract ClickTheButton is Ownable {
 [Vercel]: https://vercel.com
 [Frame Validator]: https://warpcast.com/~/developers/frames
 [Base channel]: https://warpcast.com/~/channel/base
-[deploying with Vercel]: ./deploy-frame-on-vercel
-[NFT Minting Frame]: ./nft-minting-frame
+[deploying with Vercel]: /building-with-base/guides/deploy-frame-on-vercel
+[NFT Minting Frame]: /building-with-base/guides/nft-minting-frame
 [Frames]: https://warpcast.notion.site/Farcaster-Frames-4bd47fe97dc74a42a48d3a234636d8c5
 [viem]: https://viem.sh/
 [Basescan]: https://basescan.org/
 [instance of the contract]: https://sepolia.basescan.org/address/0x863632e7607150d550a92502c0375802047eaa48#code
-[Linked Minting Frame]: ./linked-minting-frame
+[Linked Minting Frame]: /building-with-base/guides/linked-minting-frame
 [App Router]: https://nextjs.org/docs/app
 [Public Draft V2]: https://www.notion.so/warpcast/Frame-Transactions-Public-Draft-v2-9d9f9f4f527249519a41bd8d16165f73
 [on mainnet]: https://basescan.org/address/0x303e6ea2b939ce1be24ab16d66020696097910af#code
