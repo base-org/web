@@ -285,8 +285,8 @@ In this tutorial, you learned how to use the newest features of Frames - text in
 [Vercel]: https://vercel.com
 [Frame Validator]: https://warpcast.com/~/developers/frames
 [Base channel]: https://warpcast.com/~/channel/base
-[deploying with Vercel]: ./deploy-frame-on-vercel
-[NFT Minting Frame]: ./nft-minting-frame
+[deploying with Vercel]: /building-with-base/guides/deploy-frame-on-vercel
+[NFT Minting Frame]: /building-with-base/guides/nft-minting-frame
 [Frames]: https://warpcast.notion.site/Farcaster-Frames-4bd47fe97dc74a42a48d3a234636d8c5
 [viem]: https://viem.sh/
 [Basescan]: https://basescan.org/
