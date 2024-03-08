@@ -119,6 +119,7 @@ Your simple mint is ready to use on [Farcaster]! Be sure to check out our other 
 In this tutorial, you learned how to make a simple [Frame] on [Farcaster] that is tied to a [mint.fun] NFT mint!
 
 ---
+
 [mint.fun]: https://mint.fun/
 [Farcaster]: https://www.farcaster.xyz/
 [a-frame-in-100-lines]: https://github.com/Zizzamia/a-frame-in-100-lines
