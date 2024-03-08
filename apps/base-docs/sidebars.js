@@ -112,6 +112,7 @@ module.exports = {
                 {
                   type: 'doc',
                   id: 'building-with-base/guides/linked-minting-frame',
+                  className: 'sidebar-coding',
                 },
                 {
                   type: 'doc',
@@ -131,6 +132,11 @@ module.exports = {
                 {
                   type: 'doc',
                   id: 'building-with-base/guides/hyperframes',
+                  className: 'sidebar-coding',
+                },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/frame-transactions',
                   className: 'sidebar-coding',
                 },
               ],
