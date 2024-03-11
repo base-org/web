@@ -147,9 +147,9 @@ function DesktopNav({ color }: DesktopNavProps) {
         </Dropdown>
       </div>
       <div className="flex h-full flex-row items-center space-x-8">
-        <Link href="/discord" title="Join us on Discord">
+        <a href="https://discord.com/invite/buildonbase" title="Join us on Discord">
           <Icon name="discord" width="24" height="20" color={color} />
-        </Link>
+        </a>
         <a href="https://twitter.com/base" title="Join us on Twitter">
           <Icon name="twitter" width="24" height="20" color={color} />
         </a>

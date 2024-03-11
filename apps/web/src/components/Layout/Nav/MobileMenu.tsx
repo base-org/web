@@ -222,9 +222,9 @@ function MobileMenu({ color }: MobileMenuProps) {
                 </Dropdown>
               </div>
               <div className="flex flex-row gap-4 pb-8">
-                <Link href="/discord" title="Join us on Discord">
+                <a href="https://discord.com/invite/buildonbase" title="Join us on Discord">
                   <Icon name="discord" width="48" />
-                </Link>
+                </a>
                 <a href="https://twitter.com/base" title="Join us on Twitter">
                   <Icon name="twitter" width="48" />
                 </a>
