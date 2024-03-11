@@ -242,6 +242,12 @@ const txData: FrameTransactionResponse = {
 };
 ```
 
+:::info
+
+If you find Warpcast errors or spins forever after receiving your transaction data, it can be handy to simulate the transaction on your service first. It makes debugging much easier and will rule out any errors in forming the transaction arguments. To learn how, check out viem's documentation on [Simulating Contract Interactions](https://viem.sh/docs/contract/simulateContract#simulatecontract).
+
+:::
+
 ### Setting Up the After Transaction Endpoint
 
 You can use a different `postUrl` to separate concerns with generating the transaction, and returning a frame after. You've already named this endpoint `aftertx` in the first frame's `postUrl`. Add it now to the `api` folder, and open `aftertx/route.ts`.
@@ -293,6 +299,12 @@ export async function POST(req: NextRequest): Promise<Response> {
 
 export const dynamic = 'force-dynamic';
 ```
+
+:::info
+
+In certain applications you might want to monitor the status of the transaction at this point. It's possible it fails, takes a while, and/or you may want to do another operation *only after* it has been confirmed. To do so you can make use of `message.transaction.hash` and build a frame flow that checks the status of the transaction by fetching the [transaction receipt](https://viem.sh/docs/actions/public/getTransactionReceipt#gettransactionreceipt).
+
+:::
 
 ## Conclusion
 
