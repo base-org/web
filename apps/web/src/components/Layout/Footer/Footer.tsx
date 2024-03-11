@@ -89,14 +89,14 @@ export function Footer() {
             </Link>
           </div>
           <div className="flex flex-row gap-4 pt-1 lg:h-full lg:gap-8">
-            <Link
-              href="/discord"
+            <a
+              href="https://discord.com/invite/buildonbase"
               target="_blank"
               rel="noreferrer noopener"
               title="Join us on Discord"
             >
               <Icon name="discord" width="24" height="20" />
-            </Link>
+            </a>
             <a
               href="https://twitter.com/base"
               target="_blank"
