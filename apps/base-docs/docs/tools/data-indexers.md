@@ -26,17 +26,15 @@ keywords:
 
 ## Allium 
 
-[Allium](https://www.allium.so/) is an Enterprise Data Platform. We empower engineers and analysts across the industry as their foundational data platform. 
+[Allium](https://www.allium.so/) is an Enterprise Data Platform that serves accurate, fast, and simple blockchain data. Currently serving 15 blockchains and over 100+ schemas, Allium offers near real-time Base data for infrastructure needs and enriched Base data (NFT, DEX, Decoded, Wallet360) for research and analytics.
 
-Currently, Allium serves 15 blockchains and over 100+ schemas. We provide near real-time Base data to power infrastructure needs as well as enriched Base data (NFT, DEX, Decoded, Wallet360) for research and analytics.
-
-Get data delivered to your desired [destination](https://docs.allium.so/integrations/overview). We support delivery to multiple destinations, including Snowflake, Bigquery, Databricks, and AWS S3. 
+Allium supports data delivery to multiple [destinations](https://docs.allium.so/integrations/overview), including Snowflake, Bigquery, Databricks, and AWS S3. 
 
 Documentation: 
 - [Real-time](https://docs.allium.so/real-time-data/base)
 - [Batch-enriched](https://docs.allium.so/data-tables/base)
 
-To get started, [contact us](https://www.allium.so/contact) and let us know your data needs. 
+To get started, contact Allium [here](https://www.allium.so/contact).
 
 ## Arkham
 
