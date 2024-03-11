@@ -25,14 +25,6 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (url.pathname === '/discord') {
-    url.host = 'discord.gg';
-    url.pathname = '/buildonbase';
-    url.port = '443';
-
-    return NextResponse.redirect(url);
-  }
-
   if (url.pathname === '/blog') {
     url.host = 'base.mirror.xyz';
     url.pathname = '/';
