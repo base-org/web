@@ -18,6 +18,7 @@ keywords:
     Stackup,
     WalletKit,
     Zerodev,
+    Openfort,
   ]
 ---
 
@@ -68,5 +69,11 @@ WalletKit is compatible with most EVM chains, including Base. You can check out 
 ## ZeroDev
 
 [ZeroDev](https://zerodev.app) is an embedded wallet powered by account abstraction. It offers you the ability to create self-custody wallets for your users, sponsor gas, and simplify user flows by batching and automating transactions.
+
+---
+
+## Openfort
+
+[Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. The platform vertically integrates the AA stack, so game developers can focus on game development without worrying about private key management, the account model or the onchain interactions with paymasters and bundlers.
 
 ---
