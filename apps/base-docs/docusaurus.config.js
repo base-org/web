@@ -60,7 +60,6 @@ const config = {
         sidebarPath: require.resolve('./base-camp/sidebars.js'),
       },
     ],
-    'docusaurus-node-polyfills',
   ],
   scripts: [
     {
@@ -78,20 +77,18 @@ const config = {
         alt: PRODUCT_NAME,
         src: 'img/logo.svg',
         srcDark: 'img/logo_dark.svg',
-        href: 'https://base.org', // Default to `siteConfig.baseUrl`.
-        target: '_self', // By default, this value is calculated based on the `href` attribute (the external link will open in a new tab, all others in the current one).
       },
       items: [
         {
           type: 'doc',
           docId: 'overview',
-          position: 'left',
-          label: 'Documentation',
+          navPosition: 'bottomLeft',
+          label: 'Docs',
         },
         {
           to: '/base-camp/docs/welcome',
-          position: 'left',
-          label: 'Base Camp',
+          navPosition: 'bottomLeft',
+          label: 'Camp',
           items: [
             {
               label: 'Learn',
@@ -108,45 +105,74 @@ const config = {
           ],
         },
         {
-          type: 'doc',
-          docId: 'security',
-          position: 'left',
-          label: 'Security',
-        },
-        {
           type: 'dropdown',
-          label: 'Community',
-          position: 'left',
+          label: 'Ecosystem',
+          navPosition: 'topRight',
           items: [
             {
-              label: 'Twitter',
-              href: 'https://www.twitter.com/base',
+              label: 'Apps',
+              href: 'https://www.base.org/ecosystem',
             },
             {
-              label: 'Discord',
-              href: 'https://base.org/discord',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://www.github.com/base-org',
+              label: 'Grants',
+              href: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders',
             },
           ],
         },
         {
-          href: 'https://stack.optimism.io',
-          html: `
-            <img src="/img/op_stack_dark.svg" width="160" class="op-dark" />
-            <img src="/img/op_stack.svg" width="160" class="op-light" />
-          `,
-          position: 'right',
+          label: 'Bridge',
+          navPosition: 'topRight',
+          href: 'https://bridge.base.org/',
         },
+        {
+          type: 'dropdown',
+          label: 'Developers',
+          navPosition: 'topRight',
+          items: [
+            {
+              label: 'Block Explorer',
+              href: 'https://basescan.org/',
+            },
+            {
+              label: 'Status',
+              href: 'https://status.base.org/',
+            },
+            {
+              label: 'Bug Bounty',
+              href: 'https://hackerone.com/coinbase',
+            },
+          ],
+        },
+        {
+          type: 'dropdown',
+          label: 'About',
+          navPosition: 'topRight',
+          items: [
+            {
+              label: 'Mission',
+              href: 'https://www.base.org/about',
+            },
+            {
+              label: 'Blog',
+              href: 'https://base.mirror.xyz/',
+            },
+            {
+              label: 'Jobs',
+              href: 'https://www.base.org/jobs',
+            },
+          ],
+        },
+        // Langauge selection dropdown will be supported in the future
+        // {
+        //   type: 'localeDropdown',
+        //   navPosition: 'bottomRight',
+        // },
       ],
     },
     algolia: {
       // Application ID
       appId: 'EG1Y9QIPP9',
-
-      // Public API key: it is safe to commit it
+      // Public API key - safe to commit
       apiKey: '59218c35b3c3e1aa3cdca101ca109839',
       indexName: 'prod',
       contextualSearch: false,
@@ -163,6 +189,12 @@ const config = {
       respectPrefersColorScheme: false,
     },
   },
+  // Langauge selection dropdown will be supported in the future
+  // i18n: {
+  //   defaultLocale: 'en',
+  //   locales: ['en', 'fr'],
+  //   localeConfigs: {},
+  // },
 };
 
 module.exports = config;

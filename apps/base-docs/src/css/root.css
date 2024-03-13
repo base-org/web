@@ -172,7 +172,7 @@ html {
   --ifm-navbar-background-color: var(--background) !important;
   --ifm-navbar-padding-horizontal: var(--spacing-3) !important;
   --ifm-navbar-shadow: none !important;
-  --ifm-navbar-height: 60px !important;
+  --ifm-navbar-height: 150px !important;
 
   --ifm-pre-padding: var(--spacing-3) !important;
   --ifm-pre-border-radius: var(--border-radius-rounded) !important;
