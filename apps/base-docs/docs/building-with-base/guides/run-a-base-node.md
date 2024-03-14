@@ -54,7 +54,7 @@ If you're looking to harden your app and avoid rate-limiting for your users, ple
 
 We recommend you have this configuration to run a node:
 
-- 8-Core CPUs
+- 8-Core CPU
 - at least 16 GB RAM
 - an SSD drive with at least 2.5 TB free
 
