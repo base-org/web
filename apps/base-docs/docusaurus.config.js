@@ -126,7 +126,7 @@ const config = {
         },
         {
           type: 'dropdown',
-          label: 'Developers',
+          label: 'Builders',
           navPosition: 'topRight',
           items: [
             {
