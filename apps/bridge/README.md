@@ -1,6 +1,6 @@
 # Base Bridge App
 
-The Base bridge app is a Next.js app.
+The Base Bridge App is a Next.js app.
 
 ## Getting started
 
