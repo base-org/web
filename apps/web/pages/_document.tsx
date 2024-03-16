@@ -1,22 +1,15 @@
-import Document, {
-  DocumentContext,
-  DocumentInitialProps,
-  Head,
-  Html,
-  Main,
-  NextScript,
-} from 'next/document';
+import { Head, Html, Main, NextScript } from 'next/document';
 
-type CustomDocumentProps = {
+interface CustomDocumentProps {
   metadata: {
     title: string;
     description: string;
     image: string;
     url: string;
   };
-};
+}
 
-export default function CustomDocument({ metadata }: CustomDocumentProps) {
+export default function Document({ metadata }: CustomDocumentProps) {
   return (
     <Html>
       <Head>
@@ -51,7 +44,7 @@ export default function CustomDocument({ metadata }: CustomDocumentProps) {
   );
 }
 
-Document.getInitialProps = async (ctx: DocumentContext): Promise<DocumentInitialProps> => {
+Document.getInitialProps = async (ctx) => {
   const initialProps = await ctx.defaultGetInitialProps(ctx);
   const { pathname } = ctx;
 
@@ -106,6 +99,7 @@ Document.getInitialProps = async (ctx: DocumentContext): Promise<DocumentInitial
     default:
       break;
   }
+
   return {
     ...initialProps,
     metadata: {
@@ -114,5 +108,5 @@ Document.getInitialProps = async (ctx: DocumentContext): Promise<DocumentInitial
       image,
       url,
     },
-  } as DocumentInitialProps;
+  };
 };
