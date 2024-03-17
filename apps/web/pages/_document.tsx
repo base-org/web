@@ -1,13 +1,13 @@
 import { Head, Html, Main, NextScript, DocumentProps, DocumentContext } from 'next/document';
 
-interface CustomDocumentProps {
+type CustomDocumentProps = {
   metadata: {
     title: string;
     description: string;
     image: string;
     url: string;
   };
-}
+};
 
 export default function Document({ metadata }: CustomDocumentProps) {
   return (
