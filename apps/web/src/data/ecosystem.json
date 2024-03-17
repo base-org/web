@@ -9,13 +9,274 @@
     "imageUrl": "/images/partners/wallet-retail.webp"
   },
   {
+    "name": "Connext",
+    "tags": [
+      "bridge"
+    ],
+    "description": "Connext is an intent-based modular interoperability protocol for securely passing funds and data between chains with the best possible speed, pricing, and security.",
+    "url": "https://bridge.connext.network/",
+    "imageUrl": "/images/partners/connext.webp"
+  },
+  {
+    "name": "GhostLogs.xyz",
+    "tags": [
+      "infra"
+    ],
+    "description": "GhostLogs allows anyone to edit live smart contract code for tailored data emission.",
+    "url": "https://ghostlogs.xyz",
+    "imageUrl": "/images/partners/ghostLogs.webp"
+  },
+  {
+    "name": "Bulla Network",
+    "tags": [
+      "defi"
+    ],
+    "description": "Bulla is a global onchain credit protocol that streamlines web3 business with one-step invoicing, payments, payroll, loans and multi-functional account management and tax reporting across 14 chains.",
+    "url": "https://www.bulla.network/",
+    "imageUrl": "/images/partners/bulla.webp"
+  },
+  {
+    "name": "DeFi Saver",
+    "tags": [
+      "defi"
+    ],
+    "description": "DeFi Saver is an all-in-one management app for decentralised finance, providing you fully non-custodial access to protocols such as Aave, Compound, Morpho, Maker & Liquity.",
+    "url": "https://defisaver.com/",
+    "imageUrl": "/images/partners/defisaver.webp"
+  },
+  {
+    "name": "BitAvatar",
+    "tags": [
+      "social"
+    ],
+    "description": "A Soulbound Avatar Identity for Multi-Ecosystem Social & Communication. Customize, interact, and build verifiable reputation with unique and personalized digital identities.",
+    "url": "https://bitavatar.io/",
+    "imageUrl": "/images/partners/bitavatar.webp"
+  },
+  {
+    "name": "Crypto Tax Calculator",
+    "tags": [
+      "social"
+    ],
+    "description": "Sort out your crypto tax nightmare with the most degen-friendly calculator in web3.",
+    "url": "https://cryptotaxcalculator.io",
+    "imageUrl": "/images/partners/cryptotax.webp"
+  },
+  {
+    "name": "Show Up",
+    "tags": [
+      "social"
+    ],
+    "description": "Onchain RSVP and Event management protocol designed to reshape event participation.",
+    "url": "https://www.showup.events/",
+    "imageUrl": "/images/partners/showup.webp"
+  },
+  {
+    "name": "Catalog Radio",
+    "tags": [
+      "social"
+    ],
+    "description": "Internet radio made for independent music. Enjoy and directly support artists in real time. ",
+    "url": "https://catalog.radio/",
+    "imageUrl": "/images/partners/catalog.webp"
+  },
+  {
+    "name": "Lore",
+    "tags": [
+      "infra"
+    ],
+    "description": "Upgrade Your Web3 Experience with Lore as your primary explorer for Ethereum, Avalanche (C-Chain), Fantom Opera, Base. Stay ahead of the curve with LoreAI, notifications, and more.",
+    "url": "https://searchcrypto.com/",
+    "imageUrl": "/images/partners/lore.webp"
+  },
+  {
+    "name": "RubyScore",
+    "tags": [
+      "infra"
+    ],
+    "description": "Ochain ranking protocol. Track your progress in your favorite projects and rise to the top.\n",
+    "url": "https://rubyscore.io/",
+    "imageUrl": "/images/partners/rubsyscore.webp"
+  },
+  {
+    "name": "BotFi.app",
+    "tags": [
+      "defi"
+    ],
+    "description": "BotFi is an innovative AI-assisted crypto bot available on Telegram and Messenger designed to streamline your daily DeFi tasks, including swapping, bridging, and sniping across various blockchains.",
+    "url": "https://botfi.app",
+    "imageUrl": "/images/partners/botfi.webp"
+  },
+  {
+    "name": "Blocto",
+    "tags": [
+      "wallet"
+    ],
+    "description": "Blocto is an account abstraction wallet supporting EVM chains. We boast a user base of 1.7 million so far with a seamless social log in and speedy 30-second onboarding experience, completely coinless.",
+    "url": "https://blocto.io/",
+    "imageUrl": "/images/partners/Blocto.webp"
+  },
+  {
+    "name": "Cred Protocol",
+    "tags": [
+      "defi"
+    ],
+    "description": "Credit risk management infrastructure, quantifying on-chain lending risk at scale. Realtime Credit Scoring, Reporting and Monitoring across 200M EVM addresses.",
+    "url": "https://credprotocol.com",
+    "imageUrl": "/images/partners/Cred.webp"
+  },
+  {
+    "name": "Ducky City",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Ducky City is a gamefi project built on Base, and is a MMORPG game run on browser compatible with all devices.",
+    "url": "https://duckycity.io/",
+    "imageUrl": "/images/partners/DuckyCity.webp"
+  },
+  {
+    "name": "Nirvana Labs",
+    "tags": [
+      "infra"
+    ],
+    "description": "Built by crypto engineers and optimized for the bandwidth, storage, and compute workloads of blockchain transactions, Nirvana offers a bare metal cloud with vertically integrated managed RPC services.",
+    "url": "https://nirvanalabs.io/",
+    "imageUrl": "/images/partners/Nirvana.webp"
+  },
+  {
+    "name": "Oku Trade",
+    "tags": [
+      "defi"
+    ],
+    "description": "Oku Trade is the best DEX interface. Powered by Uniswap v3, the trading platform offers limit orders, analytics, and position management without fees.",
+    "url": "https://oku.trade",
+    "imageUrl": "/images/partners/Oku.webp"
+  },
+  {
+    "name": "SubQuery",
+    "tags": [
+      "infra"
+    ],
+    "description": "Fast, reliable, opens source, decentralised, and customised APIs supercharging dApps on over 150 networks, enabling a user-focused web3 world. SubQuery Network is innovating web3 infrastructure with tools that empower builders to decentralise the future.\n",
+    "url": "https://subquery.network/",
+    "imageUrl": "/images/partners/Subquery.webp"
+  },
+  {
+    "name": "Subsquid",
+    "tags": [
+      "infra"
+    ],
+    "description": "Subsquid Network is Web3 necessiware—a decentralized data lake and query engine for blazing-fast cross-chain indexing and queries. Infinitely horizontally scalable, Subsquid makes the consumer dApps that real people want to use possible, from social media to games and DeFi. Secured by ZK proofs, Subsquid supports over 100 networks.",
+    "url": "https://subsquid.io",
+    "imageUrl": "/images/partners/Subsquid.webp"
+  },
+  {
+    "name": "Hitdex",
+    "tags": [
+      "defi"
+    ],
+    "description": "A decentralized ecosystem for cross-chain trading and buying & selling crypto. Trade ETH and your favorite tokens across eight chains including Base, Ethereum, Solana, Polygon PoS, Optimism, and more.",
+    "url": "https://www.hitdex.com/#/base",
+    "imageUrl": "/images/partners/hitdex.webp"
+  },
+  {
+    "name": "Brian",
+    "tags": [
+      "bridge"
+    ],
+    "description": "Brian offers a non custodial solution to perform transactions, research web3 info and deploy smart contracts via prompting.",
+    "url": "https://www.brianknows.org/",
+    "imageUrl": "/images/partners/brian.webp"
+  },
+  {
+    "name": "Cede.Store",
+    "tags": [
+      "onramp"
+    ],
+    "description": "Access and transfer your assets from 10+ centralized exchanges, with a DeFi UX.",
+    "url": "https://send.cede.store/",
+    "imageUrl": "/images/partners/cede.webp"
+  },
+  {
+    "name": "L2Pass",
+    "tags": [
+      "bridge"
+    ],
+    "description": "L2Pass is an Omni-Chain Protocol Designed for Seamless Multi-Chain Token Movement, Swaps, and Art Performances.",
+    "url": "https://l2pass.com/",
+    "imageUrl": "/images/partners/l2pass.webp"
+  },
+  {
+    "name": "MES Protocol",
+    "tags": [
+      "bridge"
+    ],
+    "description": "MES is a stablecoin-focused bridge and swap. Traders enjoy instant and secure cross chain transactions at low cost.",
+    "url": "https://www.mesprotocol.com/",
+    "imageUrl": "/images/partners/mes.webp"
+  },
+  {
+    "name": "SafeSwap",
+    "tags": [
+      "bridge"
+    ],
+    "description": "SafeSwap is a decentralized atomic swap bridge for native tokens. The Atomic Swap protocol enables builders to transport their native tokens to other EVM-based blockchains, without having to rely on wrapped tokens.",
+    "url": "http://safeswap.io/",
+    "imageUrl": "/images/partners/safeswap.webp"
+  },
+  {
+    "name": "OmniKingdoms",
+    "tags": [
+      "gaming"
+    ],
+    "description": "OmniKingdoms is an on-chain MMORPG that focuses on state transitions. Players can join the community and earn rewards for questing, battling, crafting and much more. We aim to integrate the newest gaming mechanics and other projects.",
+    "url": "https://www.omnikingdoms.io/",
+    "imageUrl": "/images/partners/omnikingdom.webp"
+  },
+  {
+    "name": "Cyberscope ",
+    "tags": [
+      "security"
+    ],
+    "description": "An award-winning blockchain security firm specializing in smart contract audits. We work with some of the biggest networks out there such as Polygon, Chainlink, Klaytn, Oasis, and many more.",
+    "url": "cyberscope.io",
+    "imageUrl": "/images/partners/cyberscope.webp"
+  },
+  {
+    "name": "Intract",
+    "tags": [
+      "social"
+    ],
+    "description": "Intract is a web3 growth platform to help you educate new users and build community engagement.\n\n\n",
+    "url": "www.intract.io",
+    "imageUrl": "/images/partners/intract.webp"
+  },
+  {
+    "name": "Layerr",
+    "tags": [
+      "nft"
+    ],
+    "description": "Layerr is crafting an innovative platform where users can effortlessly tokenize a variety of consumer-based digital assets. Our platform simplifies the complexities of blockchain, allowing users to tokenize at scale.",
+    "url": "https://layerr.xyz/",
+    "imageUrl": "/images/partners/layerr.webp"
+  },
+  {
+    "name": "Irys",
+    "tags": [
+      "infra"
+    ],
+    "description": "Irys is the only provenance layer. It enables users to limitlessly upload and sequence data while precisely attributing its origin.",
+    "url": "https://irys.xyz/",
+    "imageUrl": "/images/partners/irys.webp"
+  },
+  {
     "name": "Envio",
     "url": "https://envio.dev",
     "description": "Envio is a modern, multi-chain EVM blockchain indexing framework speed-optimized for querying real-time and historical data. ",
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/envio.png"
+    "imageUrl": "/images/partners/envio.webp"
   },
   {
     "name": "Reserve Protocol",
@@ -24,16 +285,16 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/reserve.png"
+    "imageUrl": "/images/partners/reserve.webp"
   },
   {
     "name": "ARPA Network",
     "url": "https://www.arpanetwork.io/en-US/randcast",
-    "description": "ARPA Network built the on-chain verifiable randomness oracle, or random number generator (RNG), known as Randcast. Randcast has ready-made SDKs for 8 different functionalities, including shuffling cards, drawing lottery, picking winners, and picking a property or rarity. Developers can now request on-chain randomness effortlessly via our subscription portal.",
+    "description": "A secure computation network that builds Randcast, an onchain verifiable RNG for tamper-proof randomness in AW, gaming, and NFTs.",
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/arpa.png"
+    "imageUrl": "/images/partners/arpa2.webp"
   },
   {
     "name": "BaseSwap",
@@ -42,7 +303,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/baseswap.png"
+    "imageUrl": "/images/partners/baseswap.webp"
   },
   {
     "name": "Bitwave",
@@ -51,7 +312,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/bitwave.png"
+    "imageUrl": "/images/partners/bitwave.webp"
   },
   {
     "name": "ZKP2P",
@@ -60,7 +321,7 @@
     "tags": [
       "onramp"
     ],
-    "imageUrl": "/images/partners/zkp2p.png"
+    "imageUrl": "/images/partners/zkp2p.webp"
   },
   {
     "name": "Rubic",
@@ -69,7 +330,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/rubic.png"
+    "imageUrl": "/images/partners/rubic.webp"
   },
   {
     "name": "Wombat Exchange",
@@ -78,7 +339,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/wombat.png"
+    "imageUrl": "/images/partners/wombat.webp"
   },
   {
     "name": "NetherFi",
@@ -87,7 +348,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/netherfi.png"
+    "imageUrl": "/images/partners/netherfi.webp"
   },
   {
     "name": "XDOGE",
@@ -96,7 +357,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/xdoge.png"
+    "imageUrl": "/images/partners/xdoge.webp"
   },
   {
     "name": "SlashToken",
@@ -105,7 +366,7 @@
     "tags": [
       "other"
     ],
-    "imageUrl": "/images/partners/slashtoken.jpg"
+    "imageUrl": "/images/partners/slashtoken.webp"
   },
   {
     "name": "Everdex",
@@ -114,7 +375,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/everdex.png"
+    "imageUrl": "/images/partners/everdex.webp"
   },
   {
     "name": "Contango",
@@ -123,7 +384,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/contango.png"
+    "imageUrl": "/images/partners/contango.webp"
   },
   {
     "name": "Avantis",
@@ -132,7 +393,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/avantis.png"
+    "imageUrl": "/images/partners/avantis.webp"
   },
   {
     "name": "Seamless Protocol",
@@ -141,7 +402,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/seamless.png"
+    "imageUrl": "/images/partners/seamless.webp"
   },
   {
     "name": "IceCream Swap",
@@ -150,7 +411,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/icecream.png"
+    "imageUrl": "/images/partners/icecream.webp"
   },
   {
     "name": "BiFi",
@@ -159,7 +420,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/bifi.png"
+    "imageUrl": "/images/partners/bifi.webp"
   },
   {
     "name": "Bifrost Network Bridge",
@@ -168,7 +429,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/bifrostbridge.png"
+    "imageUrl": "/images/partners/bifrostbridge.webp"
   },
   {
     "name": "trustalabs",
@@ -177,7 +438,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/trusta.png"
+    "imageUrl": "/images/partners/trusta.webp"
   },
   {
     "name": "BlockWallet",
@@ -186,7 +447,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/blockwallet.png"
+    "imageUrl": "/images/partners/blockwallet.webp"
   },
   {
     "name": "Redlion Printer",
@@ -195,7 +456,7 @@
     "tags": [
       "NFT"
     ],
-    "imageUrl": "/images/partners/redlion.png"
+    "imageUrl": "/images/partners/redlion.webp"
   },
   {
     "name": "builder.fi",
@@ -204,7 +465,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/builderfi.png"
+    "imageUrl": "/images/partners/builderfi.webp"
   },
   {
     "name": "Collab.Land",
@@ -213,7 +474,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/collabland.png"
+    "imageUrl": "/images/partners/collabland.webp"
   },
   {
     "name": "OpenFriend",
@@ -222,7 +483,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/openfriend.png"
+    "imageUrl": "/images/partners/openfriend.webp"
   },
   {
     "name": "Nextme",
@@ -231,7 +492,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/nextme.png"
+    "imageUrl": "/images/partners/nextme.webp"
   },
   {
     "name": "Sound.xyz",
@@ -240,7 +501,7 @@
     "tags": [
       "NFT"
     ],
-    "imageUrl": "/images/partners/sound.png"
+    "imageUrl": "/images/partners/sound.webp"
   },
   {
     "name": "GetBlock",
@@ -249,7 +510,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/getblock.png"
+    "imageUrl": "/images/partners/getblock.webp"
   },
   {
     "name": "Moralis",
@@ -258,7 +519,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/moralis.png"
+    "imageUrl": "/images/partners/moralis.webp"
   },
   {
     "name": "Quick Intel",
@@ -267,7 +528,7 @@
     "tags": [
       "security"
     ],
-    "imageUrl": "/images/partners/quickintel.png"
+    "imageUrl": "/images/partners/quickintel.webp"
   },
   {
     "name": "Cobo Argus",
@@ -276,7 +537,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/coboargus.png"
+    "imageUrl": "/images/partners/coboargus.webp"
   },
   {
     "name": "Surf Protocol",
@@ -285,7 +546,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/surf.png"
+    "imageUrl": "/images/partners/surf.webp"
   },
   {
     "name": "LlamaNodes",
@@ -294,7 +555,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/llamanodes.png"
+    "imageUrl": "/images/partners/llamanodes.webp"
   },
   {
     "name": "OKLink",
@@ -303,7 +564,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/oklink.png"
+    "imageUrl": "/images/partners/oklink.webp"
   },
   {
     "name": "Symbiosis",
@@ -312,7 +573,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/symbiosis.png"
+    "imageUrl": "/images/partners/symbiosis.webp"
   },
   {
     "name": "VMEX Finance",
@@ -321,7 +582,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/vmex.png"
+    "imageUrl": "/images/partners/vmex.webp"
   },
   {
     "name": "Equalizer",
@@ -330,7 +591,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/equalizer.png"
+    "imageUrl": "/images/partners/equalizer.webp"
   },
   {
     "name": "BMX",
@@ -339,7 +600,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/bmx.png"
+    "imageUrl": "/images/partners/bmx.webp"
   },
   {
     "name": "F1337",
@@ -348,7 +609,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/F1337.png"
+    "imageUrl": "/images/partners/F1337.webp"
   },
   {
     "name": "Singular",
@@ -357,7 +618,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/singular.png"
+    "imageUrl": "/images/partners/singular.webp"
   },
   {
     "name": "Coinvise",
@@ -366,7 +627,7 @@
     "tags": [
       "nft"
     ],
-    "imageUrl": "/images/partners/coinvise.png"
+    "imageUrl": "/images/partners/coinvise.webp"
   },
   {
     "name": "Mellow",
@@ -375,7 +636,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/mellow2.png"
+    "imageUrl": "/images/partners/mellow2.webp"
   },
   {
     "name": "Dmail Network",
@@ -384,7 +645,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/dmail.png"
+    "imageUrl": "/images/partners/dmail.webp"
   },
   {
     "name": "Desig",
@@ -393,7 +654,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/desig.png"
+    "imageUrl": "/images/partners/desig.webp"
   },
   {
     "name": "friend.tech",
@@ -402,7 +663,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/friendtech.png"
+    "imageUrl": "/images/partners/friendtech.webp"
   },
   {
     "name": "Cradles",
@@ -411,7 +672,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/cradles.png"
+    "imageUrl": "/images/partners/cradles.webp"
   },
   {
     "name": "Lore",
@@ -420,7 +681,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/lore.png"
+    "imageUrl": "/images/partners/lore.webp"
   },
   {
     "name": "Gem Wallet",
@@ -429,7 +690,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/gemwallet.png"
+    "imageUrl": "/images/partners/gemwallet.webp"
   },
   {
     "name": "DrawTech",
@@ -438,7 +699,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/drawtechlogo.png"
+    "imageUrl": "/images/partners/drawtechlogo.webp"
   },
   {
     "name": "TokenTerminal",
@@ -447,7 +708,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/tokenterminal.png"
+    "imageUrl": "/images/partners/tokenterminal.webp"
   },
   {
     "name": "Coinage Media",
@@ -456,16 +717,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/coinnagemedia.png"
-  },
-  {
-    "name": "Cymbal",
-    "url": "https://cymbal.xyz/",
-    "description": "The human readable block ecplorer is here!",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/cymbal.png"
+    "imageUrl": "/images/partners/coinnagemedia.webp"
   },
   {
     "name": "Sonne Finance",
@@ -474,7 +726,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/sonne.png"
+    "imageUrl": "/images/partners/sonne.webp"
   },
   {
     "name": "Xena Finance",
@@ -483,7 +735,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/xena.png"
+    "imageUrl": "/images/partners/xena.webp"
   },
   {
     "name": "OKX DEX",
@@ -492,7 +744,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/okxdex.png"
+    "imageUrl": "/images/partners/okxdex.webp"
   },
   {
     "name": "DIP Exchange",
@@ -501,7 +753,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/dip.png"
+    "imageUrl": "/images/partners/dip.webp"
   },
   {
     "name": "OpenPool",
@@ -510,7 +762,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/openpool2.png"
+    "imageUrl": "/images/partners/openpool2.webp"
   },
   {
     "name": "Sweep n' Flip",
@@ -519,7 +771,7 @@
     "tags": [
       "NFT"
     ],
-    "imageUrl": "/images/partners/sweep2.png"
+    "imageUrl": "/images/partners/sweep2.webp"
   },
   {
     "name": "Register.app",
@@ -528,7 +780,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/register.png"
+    "imageUrl": "/images/partners/register.webp"
   },
   {
     "name": "NewThrone",
@@ -537,7 +789,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/newthrone.png"
+    "imageUrl": "/images/partners/newthrone.webp"
   },
   {
     "name": "Shibaments",
@@ -546,7 +798,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/shibaments.png"
+    "imageUrl": "/images/partners/shibaments.webp"
   },
   {
     "name": "Universe Island",
@@ -555,7 +807,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/universeisland.png"
+    "imageUrl": "/images/partners/universeisland.webp"
   },
   {
     "name": "Coinarcade",
@@ -564,7 +816,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/coinarcade.png"
+    "imageUrl": "/images/partners/coinarcade.webp"
   },
   {
     "name": "Add3",
@@ -573,7 +825,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/add3.png"
+    "imageUrl": "/images/partners/add3.webp"
   },
   {
     "name": "Timeswap",
@@ -582,7 +834,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/timeswap.jpg"
+    "imageUrl": "/images/partners/timeswap.webp"
   },
   {
     "name": "Supra",
@@ -591,7 +843,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/supra.png"
+    "imageUrl": "/images/partners/supra.webp"
   },
   {
     "name": "OpenOcean",
@@ -600,7 +852,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/oocean.png"
+    "imageUrl": "/images/partners/oocean.webp"
   },
   {
     "name": "Pheasant Network",
@@ -609,7 +861,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/pnetwork.png"
+    "imageUrl": "/images/partners/pnetwork.webp"
   },
   {
     "name": "Based Nouns",
@@ -618,7 +870,7 @@
     "tags": [
       "dao"
     ],
-    "imageUrl": "/images/partners/nouns.png"
+    "imageUrl": "/images/partners/nouns.webp"
   },
   {
     "name": "Metopia",
@@ -627,7 +879,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/metopia.png"
+    "imageUrl": "/images/partners/metopia.webp"
   },
   {
     "name": "SimpleHash",
@@ -636,16 +888,16 @@
     "tags": [
       "NFT"
     ],
-    "imageUrl": "/images/partners/simplehash.png"
+    "imageUrl": "/images/partners/simplehash.webp"
   },
   {
     "name": "Cymbal",
     "url": "https://cymbal.xyz/",
-    "description": "Cymbal's mission is to take the world's blockchain data — all the billions of events and activities stored on-chain — and make it understandable. We are building the “human readable” blockchain explorer!",
+    "description": "Cymbal's mission is to take the world's blockchain data — all the billions of events and activities stored onchain — and make it understandable. We are building the “human readable” blockchain explorer!",
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/cymbal.png"
+    "imageUrl": "/images/partners/cymbal.webp"
   },
   {
     "name": "Banxa",
@@ -654,7 +906,7 @@
     "tags": [
       "onramp"
     ],
-    "imageUrl": "/images/partners/banxa.png"
+    "imageUrl": "/images/partners/banxa.webp"
   },
   {
     "name": "Omniscia",
@@ -663,7 +915,7 @@
     "tags": [
       "security"
     ],
-    "imageUrl": "/images/partners/omniscia.png"
+    "imageUrl": "/images/partners/omniscia.webp"
   },
   {
     "name": "Hexens Cybersecurity",
@@ -672,7 +924,7 @@
     "tags": [
       "security"
     ],
-    "imageUrl": "/images/partners/hexens.ong.png"
+    "imageUrl": "/images/partners/hexens.ong.webp"
   },
   {
     "name": "Toaster Finance",
@@ -681,7 +933,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/toaster2.png"
+    "imageUrl": "/images/partners/toaster2.webp"
   },
   {
     "name": "IntentX",
@@ -690,7 +942,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/intentx.png"
+    "imageUrl": "/images/partners/intentx.webp"
   },
   {
     "name": "Raft",
@@ -699,7 +951,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/raft.png"
+    "imageUrl": "/images/partners/raft.webp"
   },
   {
     "name": "Llama",
@@ -708,7 +960,7 @@
     "tags": [
       "dao"
     ],
-    "imageUrl": "/images/partners/llama.png"
+    "imageUrl": "/images/partners/llama.webp"
   },
   {
     "name": "Overtime",
@@ -717,7 +969,7 @@
     "tags": [
       "defi"
     ],
-    "imageUrl": "/images/partners/overtime.png"
+    "imageUrl": "/images/partners/overtime.webp"
   },
   {
     "name": "Chainstack",
@@ -726,7 +978,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/chainstack.png"
+    "imageUrl": "/images/partners/chainstack.webp"
   },
   {
     "name": "Halliday",
@@ -735,7 +987,7 @@
     "tags": [
       "infra"
     ],
-    "imageUrl": "/images/partners/Halliday.png"
+    "imageUrl": "/images/partners/Halliday.webp"
   },
   {
     "name": "NFTA",
@@ -744,7 +996,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/nfta.png"
+    "imageUrl": "/images/partners/nfta.webp"
   },
   {
     "name": "Base Battles",
@@ -753,7 +1005,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/basebattles.png"
+    "imageUrl": "/images/partners/basebattles.webp"
   },
   {
     "name": "QuestN",
@@ -762,7 +1014,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/questn.png"
+    "imageUrl": "/images/partners/questn.webp"
   },
   {
     "name": "Unlonely",
@@ -771,7 +1023,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/unlonley.png"
+    "imageUrl": "/images/partners/unlonley.webp"
   },
   {
     "name": "PitchTalk",
@@ -780,7 +1032,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/appicon.png"
+    "imageUrl": "/images/partners/appicon.webp"
   },
   {
     "name": "Sismo",
@@ -789,7 +1041,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/sismo.png"
+    "imageUrl": "/images/partners/sismo.webp"
   },
   {
     "name": "Bitget Wallet",
@@ -798,7 +1050,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/bitget.png"
+    "imageUrl": "/images/partners/bitget.webp"
   },
   {
     "name": "imToken",
@@ -807,7 +1059,7 @@
     "tags": [
       "wallet"
     ],
-    "imageUrl": "/images/partners/imtoken.png"
+    "imageUrl": "/images/partners/imtoken.webp"
   },
   {
     "name": "Furrend",
@@ -816,7 +1068,7 @@
     "tags": [
       "social"
     ],
-    "imageUrl": "/images/partners/furrend.png"
+    "imageUrl": "/images/partners/furrend.webp"
   },
   {
     "name": "Land, Labor, and Capitol",
@@ -825,7 +1077,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/landlabor.jpeg"
+    "imageUrl": "/images/partners/landlabor.webp"
   },
   {
     "name": "Superbridge",
@@ -2033,7 +2285,7 @@
     "tags": [
       "bridge"
     ],
-    "imageUrl": "/images/partners/rhinofi.png"
+    "imageUrl": "/images/partners/rhinofi.webp"
   },
   {
     "name": "Satsuma",
@@ -2215,7 +2467,7 @@
     "tags": [
       "gaming"
     ],
-    "imageUrl": "/images/partners/unkjd2.png"
+    "imageUrl": "/images/partners/unkjd2.webp"
   },
   {
     "name": "Uniswap",
@@ -2303,7 +2555,7 @@
     "url": "https://nouns.build",
     "description": "Governed by BuilderDAO, Nouns Builder is a tool lets you create Nounish DAOs easily. Build and empower your community with onchain governance and treasury.",
     "tags": [
-      "nft"
+      "social"
     ],
     "imageUrl": "/images/partners/nouns_builder.webp"
   },

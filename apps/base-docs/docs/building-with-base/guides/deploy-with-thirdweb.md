@@ -35,7 +35,7 @@ In this guide, we'll give you an overview of using the [thirdweb CLI](https://po
 
 ## Objectives
 
-By the end of this lesson you should be able to:
+By the end of this lesson, you should be able to:
 
 - Create a project with a smart contract using thirdweb
 - Deploy smart contracts using thirdweb
@@ -138,7 +138,7 @@ For production / mainnet deployments select `Base` (mainnet) as the network rath
 
 :::
 
-Once your contract is deployed, you'll be redirected to a [dashboard](https://portal.thirdweb.com/dashboard) for managing your contract.
+Once your contract is deployed, you'll be redirected to a [dashboard](https://thirdweb.com/dashboard) for managing your contract.
 
 ---
 

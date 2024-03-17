@@ -59,7 +59,7 @@ In order to deploy a smart contract, you will first need a wallet. You can creat
 
 Deploying contracts to the blockchain requires a gas fee. Therefore, you will need to fund your wallet with ETH to cover those gas fees.
 
-For this guide, you will be deploying a contract to the Base Goerli test network. You can fund your wallet with Base Goerli ETH using one of the faucets listed on the Base [Network Faucets](https://docs.base.org/tools/network-faucets) page.
+For this guide, you will be deploying a contract to the Base Sepolia test network. You can fund your wallet with Base Sepolia ETH using one of the faucets listed on the Base [Network Faucets](https://docs.base.org/tools/network-faucets) page.
 
 ---
 
@@ -114,7 +114,7 @@ forge install pyth-network/pyth-sdk-solidity@v2.2.0 --no-git --no-commit
 Once installed, update your `foundry.toml` file by appending the following line:
 
 ```bash
-remappings = ['@pythnetwork/pyth-sdk-solidity/=lib/pyth-sdk-solidity’]
+remappings = ['@pythnetwork/pyth-sdk-solidity/=lib/pyth-sdk-solidity']
 ```
 
 ---
@@ -125,7 +125,7 @@ Once your project has been created and dependencies have been installed, you can
 
 The Solidity code below defines a smart contract named `ExampleContract`. The code uses the `IPyth` interface from the [Pyth Solidity SDK](https://github.com/pyth-network/pyth-crosschain/tree/main/target_chains/ethereum/sdk/solidity).
 
-An instance of`IPyth` is defined within the contract that provides functions for consuming Pyth price feeds. The constructor for the `IPyth` interface expects a contract address to be provided. This address provided in the code example below (`0xEbe57e8045F2F230872523bbff7374986E45C486`) corresponds to the Pyth contract address for the Base Goerli testnet.
+An instance of`IPyth` is defined within the contract that provides functions for consuming Pyth price feeds. The constructor for the `IPyth` interface expects a contract address to be provided. This address provided in the code example below (`0xA2aa501b19aff244D90cc15a4Cf739D2725B5729`) corresponds to the Pyth contract address for the Base Sepolia testnet.
 
 :::info
 Pyth also supports other EVM networks, such as Base Mainnet. For a list of all network contract addresses, visit the [Pyth documentation](https://docs.pyth.network/documentation/pythnet-price-feeds/evm).
@@ -148,11 +148,11 @@ contract ExampleContract {
   IPyth pyth;
 
   /**
-  * Network: Base Goerli (testnet)
-  * Address: 0xEbe57e8045F2F230872523bbff7374986E45C486
+  * Network: Base Sepolia (testnet)
+  * Address: 0xA2aa501b19aff244D90cc15a4Cf739D2725B5729
   */
   constructor() {
-    pyth = IPyth(0xEbe57e8045F2F230872523bbff7374986E45C486);
+    pyth = IPyth(0xA2aa501b19aff244D90cc15a4Cf739D2725B5729);
   }
 
   function getLatestPrice(
@@ -211,12 +211,12 @@ To confirm that the wallet was imported as the `deployer` account in your Foundr
 cast wallet list
 ```
 
-### Setting up environment variables for Base Goerli
+### Setting up environment variables for Base Sepolia
 
-To setup your environment for deploying to the Base network, create an `.env` file in the home directory of your project, and add the RPC URL for the Base Goerli testnet:
+To setup your environment for deploying to the Base network, create an `.env` file in the home directory of your project, and add the RPC URL for the Base Sepolia testnet:
 
 ```
-BASE_GOERLI_RPC="https://goerli.base.org"
+BASE_SEPOLIA_RPC="https://sepolia.base.org"
 ```
 
 Once the `.env` file has been created, run the following command to load the environment variables in the current command line session:
@@ -225,29 +225,29 @@ Once the `.env` file has been created, run the following command to load the env
 source .env
 ```
 
-### Deploying the smart contract to Base Goerli
+### Deploying the smart contract to Base Sepolia
 
-With your contract compiled and environment setup, you are ready to deploy the smart contract to the Base Goerli Testnet!
+With your contract compiled and environment setup, you are ready to deploy the smart contract to the Base Sepolia Testnet!
 
 For deploying a single smart contract using Foundry, you can use the `forge create` command. The command requires you to specify the smart contract you want to deploy, an RPC URL of the network you want to deploy to, and the account you want to deploy with.
 
-To deploy the `ExampleContract` smart contract to the Base Goerli test network, run the following command:
+To deploy the `ExampleContract` smart contract to the Base Sepolia test network, run the following command:
 
 ```bash
-forge create ./src/ExampleContract.sol:ExampleContract --rpc-url $BASE_GOERLI_RPC --account deployer
+forge create ./src/ExampleContract.sol:ExampleContract --rpc-url $BASE_SEPOLIA_RPC --account deployer
 ```
 
-When prompted, enter the password that you set earlier, when you imported your wallet’s private key.
+When prompted, enter the password that you set earlier, when you imported your wallet's private key.
 
 :::info
 
-Your wallet must be funded with ETH on the Base Goerli Testnet to cover the gas fees associated with the smart contract deployment. Otherwise, the deployment will fail.
+Your wallet must be funded with ETH on the Base Sepolia Testnet to cover the gas fees associated with the smart contract deployment. Otherwise, the deployment will fail.
 
-To get testnet ETH for Base Goerli, see the [prerequisites](#prerequisites).
+To get testnet ETH for Base Sepolia, see the [prerequisites](#prerequisites).
 
 :::
 
-After running the command above, the contract will be deployed on the Base Goerli test network. You can view the deployment status and contract by using a [block explorer](/tools/block-explorers).
+After running the command above, the contract will be deployed on the Base Sepolia test network. You can view the deployment status and contract by using a [block explorer](/tools/block-explorers).
 
 ---
 
@@ -264,7 +264,7 @@ Once you have the `priceUpdateData`, you can use Foundry’s `cast` command-line
 To call the `getLatestPrice(bytes[])` function of the smart contract, run the following command, replacing `<DEPLOYED_ADDRESS>` with the address of your deployed contract, and `<PRICE_UPDATE_DATA>` with the `priceUpdateData` returned by the Hermes endpoint:
 
 ```bash
-cast call <DEPLOYED_ADDRESS> --rpc-url $BASE_GOERLI_RPC "getLatestPrice(bytes[])" <PRICE_UPDATE_DATA>
+cast call <DEPLOYED_ADDRESS> --rpc-url $BASE_SEPOLIA_RPC "getLatestPrice(bytes[])" <PRICE_UPDATE_DATA>
 ```
 
 You should receive the latest `ETH / USD` price in hexadecimal form.

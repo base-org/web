@@ -17,6 +17,8 @@ html {
 }
 
 :root {
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, .1) !important;
+  
   --ifm-color-white: #ffffff;
   --ifm-color-gray-0: var(--ifm-color-white);
   --ifm-color-gray-100: hsl(0, 0%, 97%);
@@ -222,6 +224,8 @@ html {
 }
 
 html[data-theme='light'] {
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, .1) !important;
+
   --blue0: 245, 248, 255;
   --blue5: 211, 225, 255;
   --blue10: 176, 202, 255;
@@ -391,6 +395,7 @@ html[data-theme='dark'] {
   --ifm-background-surface-color: #1e2025;
   --ifm-footer-background-color: var(--ifm-background-surface-color);
   --feature-title-color: var(--ifm-color-white);
+  --docusaurus-highlighted-code-line-bg: rgba(150, 150, 150, .25) !important;
 
   --blue0: 0, 16, 51;
   --blue5: 1, 29, 91;

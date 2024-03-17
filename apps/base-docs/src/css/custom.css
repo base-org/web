@@ -5,6 +5,11 @@
 @import url('./navbar.css');
 @import url('./search.css');
 
+.no-scroll {
+  height: 100%;
+  overflow: hidden;
+}
+
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;

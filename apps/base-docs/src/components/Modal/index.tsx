@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import styles from './styles.module.css';
 
@@ -13,6 +13,19 @@ export default function Modal({ children, onRequestClose, visible }: ModalProps)
     (e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation(),
     [],
   );
+
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    if (visible) {
+      const el = document.getElementById('__docusaurus');
+      el?.classList.add('no-scroll');
+    }
+
+    return () => {
+      const el = document.getElementById('__docusaurus');
+      el?.classList.remove('no-scroll');
+    };
+  }, [visible]);
 
   return (
     <div

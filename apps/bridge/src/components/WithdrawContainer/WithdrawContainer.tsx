@@ -303,7 +303,7 @@ export function WithdrawContainer() {
   } else {
     withdrawDisabled =
       parseFloat(withdrawAmount) <= 0 ||
-      parseFloat(withdrawAmount) >= parseFloat(L2Balance?.formatted ?? '0') ||
+      parseFloat(withdrawAmount) > parseFloat(L2Balance?.formatted ?? '0') ||
       withdrawAmount === '' ||
       (isSmartContractWallet && !isAddress(withdrawTo ?? '')) ||
       !isPermittedToBridge;

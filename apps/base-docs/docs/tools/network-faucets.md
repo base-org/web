@@ -5,7 +5,6 @@ description: Documentation for Testnet Faucets for the Base network. Details how
 keywords:
   [
     network faucets,
-    Base Goerli,
     Base Sepolia,
     testnet ETH,
     Base testnet,
@@ -29,7 +28,7 @@ The [Superchain Faucet](https://app.optimism.io/faucet) provides testnet ETH for
 
 :::info
 
-The Superchain faucet allows developers to authenticate via their onchain identity. Developers that choose to authenticate via their onchain identity can claim more testnet ETH versus traditional faucets. For more information see the [FAQ](https://app.optimism.io/faucet).
+The Superchain faucet allows developers to authenticate via their onchain identity. Developers that choose to authenticate via their onchain identity can claim more testnet ETH versus traditional faucets. For more information, see the [FAQ](https://app.optimism.io/faucet).
 
 :::
 
@@ -49,7 +48,7 @@ Requests to Alchemy's Base Sepolia Faucet are limited to one claim per 24 hours.
 
 ## Bware Labs Faucet
 
-[Bware Labs Faucet](https://bwarelabs.com/faucets) is an easy to use faucet with no registration required. You can use Bware Labs Faucet to claim Base Goerli testnet ETH for free - one claim per 24 hours.
+[Bware Labs Faucet](https://bwarelabs.com/faucets) is an easy to use faucet with no registration required. You can use Bware Labs Faucet to claim Base Sepolia testnet ETH for free - one claim per 24 hours.
 
 :::info
 
@@ -61,7 +60,7 @@ Requests to Bware Labs Faucet are limited to one claim per 24 hours.
 
 ## QuickNode Faucet
 
-[QuickNode Faucet](https://faucet.quicknode.com/drip) is an easy to use Multi-Chain Faucet. You can use QuickNode Faucet to claim Base Sepolia or Base Goerli testnet ETH for free - one drip per network every 12 hours.
+[QuickNode Faucet](https://faucet.quicknode.com/drip) is an easy to use Multi-Chain Faucet. You can use QuickNode Faucet to claim Base Sepolia testnet ETH for free - one drip per network every 12 hours.
 
 :::info
 
@@ -78,6 +77,18 @@ Requests to QuickNode Faucet are limited to one drip every 12 hours.
 :::info
 
 Requests to LearnWeb3 faucet are limited to one claim per 24 hours.
+
+:::
+
+---
+
+## Ethereum Ecosystem Faucet
+
+The [Base Sepolia Faucet](https://www.ethereum-ecosystem.com/faucets/base-sepolia) is a free & easy to use testnet faucet for Base Sepolia with very generous drips that doesn't require users to log in. It's run by [Ethereum Ecosystem](https://www.ethereum-ecosystem.com).
+
+:::info
+
+Each wallet is restricted to receiving 0.5 ETH from this faucet every 24 hours.
 
 :::
 

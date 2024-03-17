@@ -12,23 +12,23 @@ const partners = [
   'daz3d',
   'dune',
   'etherscan',
-  'euler',
   'flipside',
   'hop',
   'mnemonic',
   'nansen',
-	'odos',
+  'odos',
   'parallel',
   'quicknode',
   'socket',
   'sushiswap',
   'thirdweb',
   'transak',
+  'heroes-of-mavia',
 ] as const;
 
 export function JoinTheCommunity() {
   return (
-    <div className="flex w-full max-w-[780px] flex-col justify-center gap-8 bg-black py-12 px-6 md:gap-6 lg:justify-start lg:px-7 xl:max-w-[1440px]">
+    <div className="flex w-full max-w-[780px] flex-col justify-center gap-8 bg-black px-6 py-12 md:gap-6 lg:justify-start lg:px-7 xl:max-w-[1440px]">
       <p className="font-display text-3xl text-white md:text-6xl xl:max-w-[50%]">
         Join the community building on Base
       </p>

@@ -1,13 +1,20 @@
-import getConfig from 'next/config';
+import { useState, useCallback } from 'react';
 import Link from 'next/link';
+import { CookiePreferencesModal } from '@coinbase/cookie-banner';
 
 import { Icon } from '../../Icon/Icon';
 import { Logo } from '../../Logo/Logo';
-
-const { publicRuntimeConfig } = getConfig();
+import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
 
 export function Footer() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpenModal = useCallback(() => setIsOpen(true), []);
+
+  const handleCloseModal = useCallback(() => setIsOpen(false), []);
+
   const currentYear = new Date().getFullYear();
+
   return (
     <footer className="z-10 mt-auto flex w-full justify-center bg-gray lg:pb-64">
       <div className="flex w-full max-w-[1440px] flex-col justify-between p-8 lg:flex-row">
@@ -44,6 +51,12 @@ export function Footer() {
             <a href="https://docs.base.org/terms-of-service">Terms of Service</a>
             <br />
             <a href="https://docs.base.org/privacy-policy">Privacy Policy</a>
+            <br />
+            <Link href="/cookie-policy">Cookie Policy</Link>
+            <br />
+            <button type="button" className="appearance-none underline" onClick={handleOpenModal}>
+              Cookie Manager
+            </button>
           </p>
         </div>
         <div className="flex h-full flex-col gap-5 pt-24 lg:flex-row lg:gap-10 lg:pt-0">
@@ -52,7 +65,7 @@ export function Footer() {
               <span className="font-mono text-xl text-white">About</span>
             </Link>
             <a
-              href={publicRuntimeConfig.docsUrl}
+              href={docsUrl}
               className="font-mono text-xl text-white"
               target="_blank"
               rel="noreferrer noopener"
@@ -60,7 +73,7 @@ export function Footer() {
               Docs
             </a>
             <a
-              href={publicRuntimeConfig.bridgeUrl}
+              href={bridgeUrl}
               className="font-mono text-xl text-white"
               target="_blank"
               rel="noreferrer noopener"
@@ -75,14 +88,14 @@ export function Footer() {
             </Link>
           </div>
           <div className="flex flex-row gap-4 pt-1 lg:h-full lg:gap-8">
-            <Link
-              href="/discord"
+            <a
+              href="https://discord.com/invite/buildonbase"
               target="_blank"
               rel="noreferrer noopener"
               title="Join us on Discord"
             >
               <Icon name="discord" width="24" height="20" />
-            </Link>
+            </a>
             <a
               href="https://twitter.com/base"
               target="_blank"
@@ -102,6 +115,7 @@ export function Footer() {
           </div>
         </div>
       </div>
+      {isOpen && <CookiePreferencesModal isOpen={isOpen} onClose={handleCloseModal} />}
     </footer>
   );
 }

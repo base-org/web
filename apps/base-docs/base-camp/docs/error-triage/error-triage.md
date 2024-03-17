@@ -317,7 +317,7 @@ The default settings for Remix make it difficult to trigger an out of gas error 
 
 If you write code that can have an ambiguous execution time, it becomes very difficult to accurately estimate gas limits.
 
-In this example, each loop as a 1 in 1000 chance of ending.
+In this example, each loop has a 1 in 1000 chance of ending.
 
 :::warning
 

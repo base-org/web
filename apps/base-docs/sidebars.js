@@ -60,7 +60,17 @@ module.exports = {
               label: 'Sending data and tokens across chains',
               collapsible: true,
               collapsed: true,
-              items: ['building-with-base/guides/cross-chain-with-ccip'],
+              items: [
+                'building-with-base/guides/cross-chain-with-ccip',
+                'building-with-base/guides/cross-chain-with-layerzero',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Account abstraction',
+              collapsible: true,
+              collapsed: true,
+              items: ['building-with-base/guides/account-abstraction-with-biconomy'],
             },
             {
               type: 'category',
@@ -76,6 +86,57 @@ module.exports = {
                 {
                   type: 'doc',
                   id: 'building-with-base/guides/building-with-base-and-foundry/testing',
+                  className: 'sidebar-coding',
+                },
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Advanced NFT Development',
+              collapsible: true,
+              collapsed: true,
+              items: [
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/complex-onchain-nfts',
+                  className: 'sidebar-coding',
+                },
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Farcaster Frames',
+              collapsible: true,
+              collapsed: true,
+              items: [
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/linked-minting-frame',
+                  className: 'sidebar-coding',
+                },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/nft-minting-frame',
+                  className: 'sidebar-coding',
+                },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/deploy-frame-on-vercel',
+                  className: 'sidebar-coding',
+                },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/advanced-frame-behavior',
+                  className: 'sidebar-coding',
+                },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/hyperframes',
+                  className: 'sidebar-coding',
+                },
+                {
+                  type: 'doc',
+                  id: 'building-with-base/guides/frame-transactions',
                   className: 'sidebar-coding',
                 },
               ],
@@ -231,6 +292,7 @@ module.exports = {
         'tools/data-indexers',
         'tools/cross-chain',
         'tools/account-abstraction',
+        'tools/nft-checkout',
         'tools/onramps',
         'tools/onboarding',
         {
@@ -271,5 +333,6 @@ module.exports = {
     ['security'],
     ['terms-of-service'],
     ['privacy-policy'],
+    ['cookie-policy'],
   ],
 };

@@ -1,13 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
-import getConfig from 'next/config';
 import Link from 'next/link';
 
 import { Icon } from '../../Icon/Icon';
 import { Logo } from '../../Logo/Logo';
 import { usePathname } from 'next/navigation';
-
-const { publicRuntimeConfig } = getConfig();
+import { bridgeUrl } from 'apps/web/src/constants';
 
 // Dropdown Link
 type DropdownLinkProps = {
@@ -183,7 +181,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                   />
                 </Dropdown>
                 <a
-                  href={publicRuntimeConfig.bridgeUrl}
+                  href={bridgeUrl}
                   className="inline-flex items-center font-mono text-3xl text-white hover:underline"
                   target="_blank"
                   rel="noreferrer noopener"
@@ -224,9 +222,9 @@ function MobileMenu({ color }: MobileMenuProps) {
                 </Dropdown>
               </div>
               <div className="flex flex-row gap-4 pb-8">
-                <Link href="/discord" title="Join us on Discord">
+                <a href="https://discord.com/invite/buildonbase" title="Join us on Discord">
                   <Icon name="discord" width="48" />
-                </Link>
+                </a>
                 <a href="https://twitter.com/base" title="Join us on Twitter">
                   <Icon name="twitter" width="48" />
                 </a>

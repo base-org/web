@@ -43,7 +43,6 @@ If you're just getting started and need an RPC URL, you can use our free endpoin
 
 - **Mainnet**: `https://mainnet.base.org`
 - **Testnet (Sepolia)**: `https://sepolia.base.org`
-- **Testnet (Goerli)**: `https://goerli.base.org`.
 
 **Note:** Our RPCs are rate-limited, they are not suitable for production apps.
 
@@ -55,8 +54,9 @@ If you're looking to harden your app and avoid rate-limiting for your users, ple
 
 We recommend you have this configuration to run a node:
 
+- 8-Core CPU
 - at least 16 GB RAM
-- an SSD drive with at least 2 TB free
+- an SSD drive with at least 2.5 TB free
 
 :::info
 
@@ -78,7 +78,7 @@ You'll need your own L1 RPC URL. This can be one that you run yourself, or via a
 
 1. Clone the [repo].
 2. Ensure you have an Ethereum L1 full node RPC available (not Base), and set `OP_NODE_L1_ETH_RPC` (in the `.env.*` file if using `docker-compose`). If running your own L1 node, it needs to be synced before Base will be able to fully sync.
-3. Uncomment the line relevant to your network (`.env.goerli`, `.env.sepolia`, or `.env.mainnet`) under the 2 `env_file` keys in `docker-compose.yml`.
+3. Uncomment the line relevant to your network (`.env.sepolia`, or `.env.mainnet`) under the 2 `env_file` keys in `docker-compose.yml`.
 4. Run `docker compose up`. Confirm you get a response from:
 
 ```bash
@@ -106,12 +106,6 @@ wget https://base-snapshots-mainnet-archive.s3.amazonaws.com/$(curl https://base
 
 ```
 wget https://base-snapshots-sepolia-archive.s3.amazonaws.com/$(curl https://base-snapshots-sepolia-archive.s3.amazonaws.com/latest)
-```
-
-**Testnet (Goerli)**
-
-```
-wget https://base-snapshots-goerli-archive.s3.amazonaws.com/$(curl https://base-snapshots-goerli-archive.s3.amazonaws.com/latest)
 ```
 
 ### Syncing

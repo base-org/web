@@ -52,11 +52,14 @@ enum AnalyticsEventImportance {
 type CCAEventData = {
   // Standard Attributes
   action: ActionType;
-  componentType: ComponentType;
+  component_type: ComponentType;
   // Custom Attributes
   doc_helpful?: boolean;
   doc_feedback_reason?: string | null;
   page_path?: string;
+  conversation_id?: number;
+  message_id?: number;
+  response_helpful?: boolean;
 };
 
 export type LogEvent = (

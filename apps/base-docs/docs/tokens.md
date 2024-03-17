@@ -23,7 +23,7 @@ This page is intended for token issuers who already have an ERC-20 contract depl
 
 **_Note - Tokens approved in the Github repository are not necessarily listed on the Base Bridge._**
 
-**_Disclaimer: Base does not endorse any of the tokens that are listed in the Github repository and has conducted only preliminary checks, which includes automated checks listed_** [**_here_**](https://github.com/ethereum-optimism/ethereum-optimism.github.io)**_._**
+**_Disclaimer: Base does not endorse any of the tokens that are listed in the Github repository and has conducted only preliminary checks, which include automated checks listed_** [**_here_**](https://github.com/ethereum-optimism/ethereum-optimism.github.io)**_._**
 
 ---
 
@@ -33,11 +33,11 @@ The steps below explain how to get your token on the Base Token List.
 
 ### Step 1: Deploy your token on Base
 
-Select your preferred bridging framework and use it to deploy an ERC-20 for your token on Base. We recommend you use the framework provided by Base's [standard bridge](https://github.com/ethereum-optimism/optimism/blob/develop/specs/bridges.md#standard-bridges) contracts, and furthermore deploy your token using the [OptimismMintableERC20Factory](https://docs.base.org/base-contracts/#l2-contract-addresses). Deploying your token on Base in this manner provides us with guarantees that will smooth the approval process. If you choose a different bridging framework, its interface must be compatible with that of the standard bridge, otherwise it may be difficult for us to support.
+Select your preferred bridging framework and use it to deploy an ERC-20 for your token on Base. We recommend you use the framework provided by Base's [standard bridge](https://github.com/ethereum-optimism/specs/blob/main/specs/protocol/bridges.md) contracts, and furthermore deploy your token using the [OptimismMintableERC20Factory](https://docs.base.org/base-contracts/#l2-contract-addresses). Deploying your token on Base in this manner provides us with guarantees that will smooth the approval process. If you choose a different bridging framework, its interface must be compatible with that of the standard bridge, otherwise it may be difficult for us to support.
 
 ### Step 2: Submit details for your token
 
-Follow the instructions in the [GitHub repository](https://github.com/ethereum-optimism/ethereum-optimism.github.io) and submit a PR containing the required details for your token. You must specify in your token's data.json file a section for ‘base-sepolia and/or ‘base’ . The change you need to submit is particularly simple if your token has already been added to the Optimism token list. For example, [this PR](https://github.com/ethereum-optimism/ethereum-optimism.github.io/commit/27ab9b2d3388f7feba3a152e0a0748c73d732a68) shows the change required for cbETH, which was already on Optimism's token list and relies on the Base standard bridge.
+Follow the instructions in the [GitHub repository](https://github.com/ethereum-optimism/ethereum-optimism.github.io) and submit a PR containing the required details for your token. You must specify in your token's data.json file a section for ‘base-sepolia' and/or ‘base’. The change you need to submit is particularly simple if your token has already been added to the Optimism token list. For example, [this PR](https://github.com/ethereum-optimism/ethereum-optimism.github.io/commit/27ab9b2d3388f7feba3a152e0a0748c73d732a68) shows the change required for cbETH, which was already on Optimism's token list and relies on the Base standard bridge.
 
 ### Step 3: Await final approval
 

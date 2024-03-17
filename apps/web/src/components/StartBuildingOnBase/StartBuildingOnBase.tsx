@@ -1,14 +1,12 @@
 import { Button } from 'apps/web/src/components/Button/Button';
-import getConfig from 'next/config';
+import { docsUrl } from 'apps/web/src/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-
-const { publicRuntimeConfig } = getConfig();
 
 function ReadTheDocsButton() {
   return (
     <div className="w-[200px]">
-      <Link href={publicRuntimeConfig.docsUrl} target="_blank" rel="noreferrer noopener">
+      <Link href={docsUrl} target="_blank" rel="noreferrer noopener">
         <Button variant="primary">Read the docs</Button>
       </Link>
     </div>
