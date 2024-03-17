@@ -13,8 +13,6 @@ export function Footer() {
 
   const handleCloseModal = useCallback(() => setIsOpen(false), []);
 
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="z-10 mt-auto flex w-full justify-center bg-gray lg:pb-64">
       <div className="flex w-full max-w-[1440px] flex-col justify-between p-8 lg:flex-row">
