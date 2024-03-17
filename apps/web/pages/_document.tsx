@@ -1,4 +1,4 @@
-import { Head, Html, Main, NextScript } from 'next/document';
+import { Head, Html, Main, NextScript, DocumentProps, DocumentContext } from 'next/document';
 
 interface CustomDocumentProps {
   metadata: {
@@ -44,7 +44,9 @@ export default function Document({ metadata }: CustomDocumentProps) {
   );
 }
 
-Document.getInitialProps = async (ctx) => {
+Document.getInitialProps = async (
+  ctx: DocumentContext,
+): Promise<CustomDocumentProps & DocumentProps> => {
   const initialProps = await ctx.defaultGetInitialProps(ctx);
   const { pathname } = ctx;
 
