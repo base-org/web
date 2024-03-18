@@ -1,0 +1,387 @@
+{
+    "account-abstraction-with-biconomy": {
+        "title": "Account Abstraction on Base using Biconomy",
+        "slug": "/account-abstraction-with-biconomy",
+        "description": "A guide on implementing Account Abstraction into a Base project using Biconomy paymasters, bundlers, and smart accounts.",
+        "keywords": [
+            "Account Abstraction",
+            "AA",
+            "Biconomy",
+            "Paymaster",
+            "Bundler",
+            "User operations",
+            "userops",
+            "Smart contract wallet",
+            "Smart account",
+            "Particle Network",
+            "Particle Auth"
+        ],
+        "displayed_sidebar": null
+    },
+    "advanced-frame-behavior": {
+        "title": "Advanced Frame Behavior",
+        "slug": "/advanced-frame-behavior",
+        "description": "Make a Farcaster frame that only allows users to access part of the frame after they have completed different actions.",
+        "keywords": [
+            "farcaster",
+            "frames",
+            "farcaster frames"
+        ],
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null
+    },
+    "build-with-thirdweb": {
+        "title": "Building an App using thirdweb",
+        "slug": "/build-with-thirdweb",
+        "description": "A guide on building an NFT gallery app using thirdweb, including steps for creating an NFT collection, minting NFTs, and configuring the app for the Base testnet.",
+        "keywords": [
+            "thirdweb",
+            "onchain app",
+            "dapp",
+            "NFT",
+            "NFT collection",
+            "smart contract",
+            "Base blockchain",
+            "Base network",
+            "Base testnet",
+            "Base test network",
+            "mint NFTs",
+            "web3 wallet",
+            "app development",
+            "dapp development",
+            "build a dapp on Base",
+            "build on Base"
+        ],
+        "displayed_sidebar": null
+    },
+    "complex-onchain-nfts": {
+        "title": "Complex Onchain NFTs",
+        "slug": "/complex-onchain-nfts",
+        "description": "Learn how to make complex nfts that are procedurally generated and have onchain metadata and images.",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "SVG",
+            "generative art",
+            "onchain metadata",
+            "nft metadata",
+            "onchain images",
+            "interfaces",
+            "pseudorandom numbers",
+            "deterministic randomness"
+        ],
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null
+    },
+    "cross-chain-with-ccip": {
+        "title": "Sending messages and tokens from Base to other chains using Chainlink CCIP",
+        "slug": "/cross-chain-with-ccip",
+        "description": "A guide on using Chainlink CCIP to perform cross-chain messaging and token transfers from Base Goerli testnet to Optimism Goerli testnet.",
+        "keywords": [
+            "Cross-chain",
+            "Omni-chain",
+            "Crosschain",
+            "OmniChain",
+            "Chainlink",
+            "Chainlink CCIP",
+            "CCIP",
+            "cross-chain messaging",
+            "transfer tokens across chains"
+        ],
+        "displayed_sidebar": null
+    },
+    "cross-chain-with-layerzero": {
+        "title": "Sending messages from Base to other chains using LayerZero V2",
+        "slug": "/cross-chain-with-layerzero",
+        "description": "A guide on using LayerZero V2 to perform cross-chain messaging from Base Goerli testnet to Optimism Goerli testnet.",
+        "keywords": [
+            "Cross-chain",
+            "Omni-chain",
+            "Crosschain",
+            "OmniChain",
+            "LayerZero",
+            "LayerZero V2",
+            "lz",
+            "cross-chain messaging",
+            "transfer tokens across chains"
+        ],
+        "displayed_sidebar": null
+    },
+    "deploy-frame-on-vercel": {
+        "title": "Deploy Frames on Vercel",
+        "slug": "/deploy-frame-on-vercel",
+        "description": "Learn how to deploy frames using Vercel.",
+        "keywords": [
+            "farcaster",
+            "frames farcaster frames",
+            "Vercel",
+            "OnchainKit",
+            "a frame in 100 lines",
+            "deploy"
+        ],
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null
+    },
+    "deploy-smart-contracts": {
+        "title": "Deploying a Smart Contract using Hardhat",
+        "slug": "/deploy-smart-contracts",
+        "description": "A guide on deploying a smart contract on the Base test network using Hardhat. Includes instructions for setting up the environment, compiling, and deploying the smart contract.",
+        "keywords": [
+            "Hardhat",
+            "smart contract",
+            "ERC-721",
+            "Base",
+            "Base test network",
+            "Base testnet",
+            "Node.js",
+            "Solidity",
+            "smart contract deployment",
+            "deploy a smart contract",
+            "build on base",
+            "write smart contract",
+            "smart contract development"
+        ],
+        "displayed_sidebar": null
+    },
+    "deploy-with-foundry": {
+        "title": "Deploying a Smart Contract using Foundry",
+        "slug": "/deploy-with-foundry",
+        "description": "A guide on deploying a smart contract on the Base test network using Foundry. Includes instructions for setting up the environment, compiling, and deploying the smart contract.",
+        "keywords": [
+            "Foundry",
+            "smart contract",
+            "ERC-721",
+            "Base",
+            "Base test network",
+            "Base testnet",
+            "Rust",
+            "Solidity",
+            "smart contract deployment",
+            "deploy a smart contract",
+            "build on base",
+            "write smart contract",
+            "smart contract development"
+        ],
+        "displayed_sidebar": null
+    },
+    "deploy-with-remix": {
+        "title": "Deploying a Smart Contract using Remix",
+        "slug": "/deploy-with-remix",
+        "description": "A guide on deploying a smart contract on the Base test network using Remix IDE. Includes instructions for setting up the environment, compiling, and deploying the smart contract.",
+        "keywords": [
+            "Remix",
+            "Remix IDE",
+            "smart contract",
+            "Base",
+            "Base test network",
+            "Base testnet",
+            "Node.js",
+            "Solidity",
+            "smart contract deployment",
+            "deploy a smart contract",
+            "build on Base",
+            "write smart contract",
+            "smart contract development",
+            "online IDE"
+        ],
+        "displayed_sidebar": null
+    },
+    "deploy-with-tenderly": {
+        "title": "Deploying a Smart Contract using Tenderly",
+        "slug": "/deploy-with-tenderly",
+        "description": "A guide on deploying smart contracts using Tenderly DevNets. This page covers setup, debugging, transaction simulations, and continuous integration for smart contract development on Base Network.",
+        "keywords": [
+            "Tenderly",
+            "smart contract",
+            "Tenderly DevNets",
+            "Base",
+            "Base Network",
+            "deployment",
+            "debugging",
+            "transaction simulations",
+            "continuous integration",
+            "DevNet environment",
+            "Hardhat integration",
+            "deploy a smart contract",
+            "debug a smart contract",
+            "smart contract on Base",
+            "build on Base"
+        ],
+        "displayed_sidebar": null
+    },
+    "deploy-with-thirdweb": {
+        "title": "Deploying a Smart Contract using thirdweb",
+        "slug": "/deploy-with-thirdweb",
+        "description": "A guide on deploying and interacting with smart contracts using the thirdweb CLI and SDK. Includes instructions for project creation, contract deployment on the Base test network.",
+        "keywords": [
+            "thirdweb",
+            "thirdweb CLI",
+            "thirdweb SDK",
+            "Base",
+            "Base network",
+            "smart contracts",
+            "deployment",
+            "Base testnet",
+            "CLI",
+            "Solidity",
+            "ERC-721",
+            "web3 development",
+            "SDKs",
+            "React",
+            "deploy a smart contract",
+            "debug a smart contract",
+            "smart contract on Base",
+            "build on Base"
+        ],
+        "displayed_sidebar": null
+    },
+    "frame-transactions": {
+        "title": "Frame Transactions",
+        "slug": "/frame-transactions",
+        "description": "Invoke a wallet transaction from a Farcaster Frame",
+        "keywords": [
+            "farcaster",
+            "frames",
+            "farcaster frames",
+            "wallet",
+            "transaction",
+            "Base"
+        ],
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null
+    },
+    "hyperframes": {
+        "title": "HyperFrames",
+        "slug": "/hyperframes",
+        "description": "Learn how to make cross-linked hyperframes in an organized manner.",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null
+    },
+    "linked-minting-frame": {
+        "title": "Linked Minting Frame",
+        "slug": "/linked-minting-frame",
+        "description": "Make a Farcaster frame with an outbound link to a minting website.",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "farcaster",
+            "frames",
+            "farcaster frames",
+            "mint"
+        ],
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null
+    },
+    "nft-minting-frame": {
+        "title": "Minting an NFT in a Frame",
+        "slug": "/nft-minting-frame",
+        "description": "Make a Farcaster frame that allows users to mint an NFT on your dime.",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "farcaster",
+            "frames",
+            "farcaster frames"
+        ],
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null
+    },
+    "run-a-base-node": {
+        "title": "Running a Base Node",
+        "slug": "/run-a-base-node",
+        "description": "A guide for setting up and running a Base Node.",
+        "keywords": [
+            "Base Node setup",
+            "running a node",
+            "Base node",
+            "run a Base node",
+            "hardware requirements",
+            "node synchronization",
+            "node snapshots",
+            "Base chain",
+            "Base blockchain",
+            "Base network",
+            "node deployment",
+            "Ethereum node"
+        ],
+        "displayed_sidebar": null
+    },
+    "using-chainlink-price-feeds": {
+        "title": "Accessing real-world data using Chainlink Data Feeds",
+        "slug": "/using-chainlink-price-feeds",
+        "description": "A guide on using Chainlink Data Feeds to access real-world data, such as asset prices, directly from your smart contracts on the Base testnet.",
+        "keywords": [
+            "Oracle Oracles",
+            "Chainlink",
+            "price feeds",
+            "data feeds",
+            "smart contract",
+            "Base blockchain",
+            "Base network",
+            "Base testnet",
+            "Base test network",
+            "app development",
+            "dapp development",
+            "build a dapp on Base",
+            "build on Base"
+        ],
+        "displayed_sidebar": null
+    },
+    "using-pyth-price-feeds": {
+        "title": "Accessing real-time asset data using Pyth Price Feeds",
+        "slug": "/using-pyth-price-feeds",
+        "description": "A guide on using Pyth Price Feeds to access real-time asset data, directly from your smart contracts on the Base testnet.",
+        "keywords": [
+            "Oracle Oracles",
+            "Pyth",
+            "Pyth Network",
+            "price feeds",
+            "data feeds",
+            "smart contract",
+            "Base blockchain",
+            "Base network",
+            "Base testnet",
+            "Base test network",
+            "app development",
+            "dapp development",
+            "build a dapp on Base",
+            "build on Base"
+        ],
+        "displayed_sidebar": null
+    },
+    "using-supra-vrf": {
+        "title": "Generating random numbers contracts using Supra dVRF",
+        "slug": "/using-supra-vrf",
+        "description": "A guide on using Supra dVRF to serve random numbers using an onchain randomness generation mechanism directly within your smart contracts on the Base testnet.",
+        "keywords": [
+            "Oracle Oracles",
+            "Supra",
+            "Supra VRF",
+            "Supra dVRF",
+            "VRF",
+            "verifiable random function",
+            "verifiable random functions",
+            "random numbers",
+            "rng",
+            "random number generator",
+            "random numbers in smart contracts",
+            "random numbers on Base",
+            "smart contract",
+            "Base blockchain",
+            "Base network",
+            "Base testnet",
+            "Base test network",
+            "app development",
+            "dapp development",
+            "build a dapp on Base",
+            "build on Base"
+        ],
+        "displayed_sidebar": null
+    }
+}

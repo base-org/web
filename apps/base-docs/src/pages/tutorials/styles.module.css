@@ -1,0 +1,68 @@
+a,
+a:hover {
+  text-decoration: none;
+  color: var(--base-docs-color-fg);
+}
+
+.tutorialsMainContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.tutorialsInnerContainer {
+  max-width: 841px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.tutorialsTitle {
+  font-family: CoinbaseDisplay !important;
+  font-size: 3.5rem;
+  line-height: 1.25;
+  font-weight: 400;
+}
+
+.tutorialList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tutorialListTitle {
+  font-family: CoinbaseDisplay !important;
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.tutorialListCell {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--base-docs-color-fg-negative);
+  padding: 24px;
+  gap: 24px;
+  border-color: var(--base-docs-color-line);
+  border-width: 1px;
+  cursor: pointer;
+}
+
+.tutorialListCell:hover {
+  background-color: var(--base-docs-color-bg-alt);
+}
+
+.tutorialListCellInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  font-family: CoinbaseSans !important;
+  font-size: 0.9rem;
+  line-height: 1.25;
+  font-weight: 400;
+}
+
+@media (min-width: 997px) {
+  .tutorialsMainContainer {
+    flex-grow: 1;
+  }
+}
