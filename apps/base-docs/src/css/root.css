@@ -242,6 +242,8 @@ html {
 }
 
 html[data-theme='light'] {
+  background: #ffffff;
+
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1) !important;
 
   --blue0: 245, 248, 255;
