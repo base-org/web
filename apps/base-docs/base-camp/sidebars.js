@@ -642,6 +642,17 @@ const sidebars = {
             },
           ],
         },
+        {
+          type: 'category',
+          label: 'Transfer Ether',
+          items: [
+            {
+              type: 'doc',
+              id: 'docs/transfer-eth/transfer-eth',
+              className: 'sidebar-coding',
+            },
+          ],
+        },
       ],
     },
     {
