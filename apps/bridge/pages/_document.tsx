@@ -9,6 +9,21 @@ export default function Document() {
         <link rel="icon" type="image/png" sizes="16x16" href="/document/favicon-16x16.png" />
         <link rel="manifest" href="/document/site.webmanifest" />
         <link rel="mask-icon" href="/document/safari-pinned-tab.svg" color="#0052ff" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Base | Bridge" />
+        <meta
+          property="og:description"
+          content="Base Bridge enables the transfer of certain digital assets and other data back and forth between Ethereum and Base."
+        />
+        <meta property="og:image" content="https://bridge.base.org/images/base-open-graph.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="base.org" />
+        <meta name="twitter:title" content="Base | Bridge" />
+        <meta
+          name="twitter:description"
+          content="Base Bridge enables the transfer of certain digital assets and other data back and forth between Ethereum and Base."
+        />
+        <meta name="twitter:image" content="https://bridge.base.org/images/base-open-graph.png" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff" />
         <meta
