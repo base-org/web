@@ -2,6 +2,7 @@
 title: 'Account Abstraction: Implementing the Base Paymaster'
 slug: /account-abstraction/implementing-the-paymaster
 description: Learn how to use Privy for authentication in onchain apps.
+author: Brian Doyle
 keywords: [Privy, Account Abstraction, Base Paymaster, Account Kit, ERC-4337]
 hide_table_of_contents: false
 displayed_sidebar: null

@@ -2,6 +2,7 @@
 title: Accessing real-time asset data using Pyth Price Feeds
 slug: /using-pyth-price-feeds
 description: A guide on using Pyth Price Feeds to access real-time asset data, directly from your smart contracts on the Base testnet.
+author: Taylor Caldwell
 keywords: [
     Oracle
     Oracles,

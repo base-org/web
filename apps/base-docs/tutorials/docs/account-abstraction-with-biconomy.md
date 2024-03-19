@@ -2,6 +2,7 @@
 title: Account Abstraction on Base using Biconomy
 slug: /account-abstraction-with-biconomy
 description: A guide on implementing Account Abstraction into a Base project using Biconomy paymasters, bundlers, and smart accounts.
+author: Taylor Caldwell
 keywords:
   [
     Account Abstraction,

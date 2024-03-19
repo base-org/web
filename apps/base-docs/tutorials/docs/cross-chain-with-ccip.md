@@ -2,6 +2,7 @@
 title: Sending messages and tokens from Base to other chains using Chainlink CCIP
 slug: /cross-chain-with-ccip
 description: A guide on using Chainlink CCIP to perform cross-chain messaging and token transfers from Base Goerli testnet to Optimism Goerli testnet.
+author: Taylor Caldwell
 keywords:
   [
     Cross-chain,

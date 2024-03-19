@@ -2,6 +2,7 @@
 title: 'Hardhat Profiling Gas: Introduction'
 slug: /hardhat-tools-and-testing/hardhat-profiling-gas/hardhat-profiling-gas
 description: Optimize Smart Contract Gas Usage with Hardhat
+author: Brian Doyle
 keywords:
   [
     Hardhat,

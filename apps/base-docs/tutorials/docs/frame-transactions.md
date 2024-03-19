@@ -2,6 +2,7 @@
 title: 'Frame Transactions'
 slug: /frame-transactions
 description: Invoke a wallet transaction from a Farcaster Frame
+author: Brian Doyle
 keywords: [farcaster, frames, farcaster frames, wallet, transaction, Base]
 hide_table_of_contents: false
 displayed_sidebar: null

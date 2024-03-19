@@ -2,6 +2,7 @@
 title: Accessing real-world data using Chainlink Data Feeds
 slug: /using-chainlink-price-feeds
 description: A guide on using Chainlink Data Feeds to access real-world data, such as asset prices, directly from your smart contracts on the Base testnet.
+author: Taylor Caldwell
 keywords: [
     Oracle
     Oracles,

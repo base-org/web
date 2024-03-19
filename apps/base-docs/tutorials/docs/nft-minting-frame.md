@@ -2,6 +2,7 @@
 title: 'Minting an NFT in a Frame'
 slug: /nft-minting-frame
 description: Make a Farcaster frame that allows users to mint an NFT on your dime.
+author: Brian Doyle
 keywords: [Solidity, ERC-721, token, NFT, farcaster, frames, farcaster frames]
 hide_table_of_contents: false
 displayed_sidebar: null

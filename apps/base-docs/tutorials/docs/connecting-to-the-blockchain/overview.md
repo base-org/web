@@ -2,6 +2,7 @@
 title: 'Connecting to the Blockchain: Overview'
 slug: /connecting-to-the-blockchain/overview
 description: What's in this learning material.
+author: Brian Doyle
 keywords:
   [
     blockchain providers,

@@ -18,8 +18,8 @@ function TutorialListCell({ tutorial }) {
           </Heading>
         </header>
         <div className={clsx(styles.tutorialListCellInfo)}>
-          <p>{tutorial.author ? `🖊️ ${tutorial.author}` : ''}</p>
-          <p>{tutorial.date ? tutorial.date : ''}</p>
+          <p>{tutorial.author ? `🖊️  ${tutorial.author}` : ''}</p>
+          <p>{tutorial.last_updated ? tutorial.last_updated : ''}</p>
           <p>{tutorial.duration ? tutorial.duration : ''}</p>
         </div>
         {tutorial.description && (

@@ -2,6 +2,7 @@
 title: 'Advanced Frame Behavior'
 slug: /advanced-frame-behavior
 description: Make a Farcaster frame that only allows users to access part of the frame after they have completed different actions.
+author: Brian Doyle
 keywords: [farcaster, frames, farcaster frames]
 hide_table_of_contents: false
 displayed_sidebar: null

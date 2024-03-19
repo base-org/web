@@ -2,6 +2,7 @@
 title: 'Account Abstraction: Overview of Privy and the Base Paymaster'
 slug: /account-abstraction/overview
 description: What's in this learning material.
+author: Brian Doyle
 keywords:
   [
     Privy,

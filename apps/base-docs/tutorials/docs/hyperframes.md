@@ -2,6 +2,7 @@
 title: 'HyperFrames'
 slug: /hyperframes
 description: Learn how to make cross-linked hyperframes in an organized manner.
+author: Brian Doyle
 hide_table_of_contents: false
 displayed_sidebar: null
 ---

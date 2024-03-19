@@ -2,6 +2,7 @@
 title: 'Connecting to the Blockchain: Connecting with a Provider'
 slug: /connecting-to-the-blockchain/connecting-with-a-provider
 description: Configure several providers and use them to connect to the blockchain.
+author: Brian Doyle
 keywords:
   [
     RainbowKit,

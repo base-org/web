@@ -2,6 +2,7 @@
 title: 'Hardhat Profiling Gas: Installing the Gas Analyzer'
 slug: /hardhat-tools-and-testing/hardhat-profiling-gas/installing-the-gas-analyzer-vid
 description: Install the Hardhat Gas Analyzer plugin.
+author: Brian Doyle
 keywords:
   [
     Hardhat Gas Analyzer,

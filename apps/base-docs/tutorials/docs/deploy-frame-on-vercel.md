@@ -2,6 +2,7 @@
 title: 'Deploy Frames on Vercel'
 slug: /deploy-frame-on-vercel
 description: Learn how to deploy frames using Vercel.
+author: Brian Doyle
 keywords: [
     farcaster,
     frames

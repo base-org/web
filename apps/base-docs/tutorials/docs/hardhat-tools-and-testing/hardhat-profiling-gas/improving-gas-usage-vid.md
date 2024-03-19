@@ -2,6 +2,7 @@
 title: 'Hardhat Profiling Gas: Improving Gas Usage'
 slug: /hardhat-tools-and-testing/hardhat-profiling-gas/improving-gas-usage-vid
 description: Reduce the amount of gas used by your smart contracts.
+author: Brian Doyle
 keywords:
   [
     smart contracts,

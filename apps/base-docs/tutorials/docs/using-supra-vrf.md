@@ -2,6 +2,7 @@
 title: Generating random numbers contracts using Supra dVRF
 slug: /using-supra-vrf
 description: A guide on using Supra dVRF to serve random numbers using an onchain randomness generation mechanism directly within your smart contracts on the Base testnet.
+author: Taylor Caldwell
 keywords: [
     Oracle
     Oracles,
