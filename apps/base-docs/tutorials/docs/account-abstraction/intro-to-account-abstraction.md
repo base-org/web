@@ -2,6 +2,7 @@
 title: 'Account Abstraction: Introduction'
 slug: /account-abstraction/intro-to-account-abstraction
 description: Learn what Account Abstraction it, how it works, and what problems it solves.
+author: Brian Doyle
 keywords: [Privy, Account Abstraction, Base Paymaster, Account Kit, ERC-4337]
 hide_table_of_contents: false
 displayed_sidebar: null

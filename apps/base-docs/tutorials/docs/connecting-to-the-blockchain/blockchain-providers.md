@@ -2,6 +2,7 @@
 title: 'Connecting to the Blockchain: Blockchain Providers'
 slug: /connecting-to-the-blockchain/blockchain-providers
 description: Learn what providers are and why you need one.
+author: Brian Doyle
 keywords:
   [
     blockchain development,

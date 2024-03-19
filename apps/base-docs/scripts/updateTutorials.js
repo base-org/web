@@ -5,7 +5,6 @@ const path = require('path');
 
 const tutorialsDir = path.join(__dirname, '..', 'tutorials', 'docs');
 
-<<<<<<< HEAD
 async function getDuration(filePath) {
   try {
     let content = await readFile(filePath, 'utf8');
@@ -58,8 +57,6 @@ async function getLastUpdated(filePath) {
   }
 }
 
-=======
->>>>>>> 2d5ba37 (Add tutorials; initial commit)
 (async () => {
   const tutorials = {};
   try {
@@ -84,11 +81,8 @@ async function getLastUpdated(filePath) {
         content = content.split('---\n')[1];
         const frontMatter = yaml.load(content);
         tutorials[frontMatter.slug.substring(1)] = frontMatter;
-<<<<<<< HEAD
         tutorials[frontMatter.slug.substring(1)].last_updated = await getLastUpdated(tutorialsPath);
         tutorials[frontMatter.slug.substring(1)].duration = await getDuration(tutorialsPath);
-=======
->>>>>>> 2d5ba37 (Add tutorials; initial commit)
       }
     }
   } catch (e) {

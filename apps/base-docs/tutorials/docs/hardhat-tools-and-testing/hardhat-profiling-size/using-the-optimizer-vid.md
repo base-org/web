@@ -2,6 +2,7 @@
 title: 'Hardhat Profiling Size: Using the Optimizer'
 slug: /hardhat-tools-and-testing/hardhat-profiling-size/using-the-optimizer-vid
 description: Make your contract more efficient at the cost of making it bigger.
+author: Brian Doyle
 keywords:
   [
     Solidity Optimizer,

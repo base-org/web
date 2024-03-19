@@ -1,14 +1,8 @@
 ---
-<<<<<<<< HEAD:apps/base-docs/tutorials/docs/intro-to-providers.md
 title: 'Introduction to Providers'
 slug: /intro-to-providers
 description: Learn what providers are and why you need one, and configure several providers and use them to connect to the blockchain.
 author: Brian Doyle
-========
-title: 'Connecting to the Blockchain: Connecting with a Provider'
-slug: /connecting-to-the-blockchain/connecting-with-a-provider
-description: Configure several providers and use them to connect to the blockchain.
->>>>>>>> 2d5ba37 (Add tutorials; initial commit):apps/base-docs/tutorials/docs/connecting-to-the-blockchain/connecting-with-a-provider.md
 keywords:
   [
     blockchain providers,
