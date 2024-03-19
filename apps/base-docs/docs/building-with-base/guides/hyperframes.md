@@ -7,12 +7,6 @@ keywords: [farcaster, frames, farcaster frames, hyperframes, hyper frames, state
 
 [Frames] on [Farcaster] are getting more complex. Developers are now building interactions that require a handful, or even dozens of frames in response to various user states, inputs, and actions. HyperFrames are a system to organize navigation for large numbers of frames, using [OnchainKit]. In this tutorial, we'll use making the navigation for an [old-school adventure game] fully in a frame. You can use this same technique for many other intents with your Frames, such as games, stores, customized mints, etc.
 
-:::info
-
-This guide was recently updated to improve the implementation and make use of frame state!
-
-:::
-
 :::caution
 
 Frames are brand new and tools for building them are evolving quickly. Check the [Frames] docs and OnchainKit [changelog]!
@@ -348,7 +342,7 @@ addHyperFrame('shack', {
       text: 'What is the password?',
     },
     state: { frame: 'shack' },
-    postUrl: `${NEXT_PUBLIC_URL}/api/frame?frame`,
+    postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
   }),
   1: 'road',
   2: (text: string) => {
@@ -378,7 +372,7 @@ addHyperFrame('shack-bad-password', {
       text: 'Try again. What is the password?',
     },
     state: { frame: 'shack-bad-password' },
-    postUrl: `${NEXT_PUBLIC_URL}/api/frame?frame`,
+    postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
   }),
   1: 'road',
   2: (text: string) => {
