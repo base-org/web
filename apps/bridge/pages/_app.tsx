@@ -133,14 +133,30 @@ function Root({ Component, pageProps }: AppProps) {
                         <Component {...props} />
                       )}
                       {allowedPaths.has(pathname) && (
-                        <Sidebar>
-                          <>
-                            <Header />
-                            <div className="m-0 w-full p-0 sm:h-[calc(100vh-72px)]">
-                              <Component {...props} />
-                            </div>
-                          </>
-                        </Sidebar>
+                        <div className="flex w-full flex-col">
+                          <div className="w-full bg-black px-8 py-3 text-center font-sans text-sm text-white">
+                            <span className="font-bold">Upcoming maintenance:</span> Base Bridge
+                            withdrawals will be temporarily paused starting at 11AM PST (6PM UTC) on
+                            Wednesday, March 20th, for approximately one hour. They will resume
+                            processing at the end of the maintenance period. To learn more please
+                            visit our{' '}
+                            <a
+                              href="https://base-l2.statuspage.io/incidents/zzz3tw0f92hp"
+                              className="text-cds-primary"
+                            >
+                              status page
+                            </a>
+                            .
+                          </div>
+                          <Sidebar>
+                            <>
+                              <Header />
+                              <div className="m-0 w-full p-0 sm:h-[calc(100vh-72px)]">
+                                <Component {...props} />
+                              </div>
+                            </>
+                          </Sidebar>
+                        </div>
                       )}
                     </div>
                   </Layout>
