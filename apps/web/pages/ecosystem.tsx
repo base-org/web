@@ -43,26 +43,6 @@ export default function Ecosystem() {
           content="Base is a secure, low-cost, developer-friendly Ethereum L2 built to bring the next billion users to web3."
           name="description"
         />
-        <meta property="og:site_name" content="Base" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Base | Ecosystem" />
-        <meta
-          property="og:description"
-          content="Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain."
-        />
-        <meta property="og:url" content="https://base.org/ecosystem" />
-        <meta property="og:image" content="https://base.org/images/base-open-graph.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Base | Ecosystem" />
-        <meta
-          name="twitter:description"
-          content="Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain."
-        />
-        <meta name="twitter:url" content="https://base.org/ecosystem" />
-        <meta name="twitter:image" content="https://base.org/images/base-open-graph.png" />
-        <meta name="twitter:site" content="Base | Ecosystem" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
       </Head>
       <main className="flex w-full flex-col items-center bg-black">
         <EcosystemHero />
