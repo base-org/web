@@ -16,26 +16,6 @@ export default function Home() {
           content="Base Bootcamp is a cohort-based training program hosted by Coinbase engineers, designed to turn senior-level developers into Smart Contract developers."
           name="description"
         />
-        <meta property="og:site_name" content="Base" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Base" />
-        <meta
-          property="og:description"
-          content="Base Bootcamp is a cohort-based training program hosted by Coinbase engineers, designed to turn senior-level developers into Smart Contract developers."
-        />
-        <meta property="og:url" content="https://base.org" />
-        <meta property="og:image" content="https://base.org/images/base-open-graph.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Base" />
-        <meta
-          name="twitter:description"
-          content="Base Bootcamp is a cohort-based training program hosted by Coinbase engineers, designed to turn senior-level developers into Smart Contract developers."
-        />
-        <meta name="twitter:url" content="https://base.org" />
-        <meta name="twitter:image" content="https://base.org/images/base-open-graph.png" />
-        <meta name="twitter:site" content="Base" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
       </Head>
       <Hero />
       <main className="flex w-full flex-col items-center bg-black">
