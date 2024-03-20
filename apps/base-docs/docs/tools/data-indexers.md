@@ -87,7 +87,7 @@ To get started, visit the [documentation](https://docs.envio.dev/docs/overview) 
 
 ## Moralis
 
-[Moralis](https://moralis.io/?utm_source=base-docs&utm_medium=partner-docs) offers the most comprehensive data APIs for crypto, offering both indexed and real-time data across 15+ chains. Moralis' APIs include portfolio and wallet balances, NFT data, token data, price data, candlestick data, net worth data, and a lot more. All of the data is enriched with things like metadata, parsed events and address labels.   
+[Moralis](https://moralis.io/?utm_source=base-docs&utm_medium=partner-docs) offers comprehensive data APIs for crypto, offering both indexed and real-time data across 15+ chains. Moralis' APIs include portfolio and wallet balances, NFT data, token data, price data, candlestick data, net worth data, and a lot more. All of the data is enriched with things like metadata, parsed events and address labels.   
 
 To get started with Moralis, you can [sign up for an account](https://moralis.io/?utm_source=base-docs&utm_medium=partner-docs), visit the Moralis [documentation](https://docs.moralis.io/?utm_source=base-docs&utm_medium=partner-docs), or check out their tutorials on [Youtube](https://www.youtube.com/c/MoralisWeb3).
 
