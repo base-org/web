@@ -52,6 +52,10 @@ Go ahead and write it on your own. It needs to:
 
 You should end up with something like:
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 function _countEvenNumbers() internal view returns(uint) {
     uint result = 0;
@@ -66,6 +70,10 @@ function _countEvenNumbers() internal view returns(uint) {
 }
 ```
 
+</details>
+
+<br/>
+
 The `_` in front of the function name is a practice used by some developers, in Solidity and in other languages, to indicate visually that this function is intended for internal use only.
 
 ### Returning Only Even Numbers
@@ -78,6 +86,10 @@ Finish the function on your own. It needs to:
 - Loop through the `numbers` array and if a given number is even, add it to the next unused index in the results array
 
 You should end up with something like:
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 
@@ -98,6 +110,10 @@ function getEvenNumbers() external view returns(uint[] memory) {
 
 ```
 
+</details>
+
+<br/>
+
 Did you catch the compiler warning about `view`? You aren't modifying state, so you should mark it as such.
 
 ### Testing the Function
@@ -116,6 +132,10 @@ Only one way to find out.
 
 Add a contract-level variable called `numEven`, and initialize it with **5**, the number of even numbers in the array. Modify `getEvenNumbers()` to use `numEven` instead of the `_countEvenNumbers()` function. It should now look like:
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 function getEvenNumbers() external view returns(uint[] memory) {
     uint resultsLength = numEven; // <- Changed here
@@ -133,6 +153,10 @@ function getEvenNumbers() external view returns(uint[] memory) {
 }
 ```
 
+</details>
+
+<br/>
+
 Redeploy and test again. Success, the function now only costs about 57,484 gas to run! Except there is a catch. Remember, it's going to cost about 5000 gas to update `numEven` **each time** the array adds an even number.
 
 ### A More Realistic Accounting
@@ -148,6 +172,10 @@ uint numEven;
 
 Add a new function called `debugLoadArray` that takes a `uint` called `_number` as an argument, and fills the array by looping through `_numbers` times, pushing each number into the array. **For now, _don't_ update `numEven`**.
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 function debugLoadArray(uint _number) external {
     for(uint i = 0; i < _number; i++) {
@@ -156,7 +184,15 @@ function debugLoadArray(uint _number) external {
 }
 ```
 
+</details>
+
+<br/>
+
 Test out the function by loading in **10** numbers. It costs about 249,610 gas to load the array. Now, add functionality to **also** increment `numEven` when the number added is even. We can't just calculate it, because although the numbers are sequential in the debug function, they might not be in real world use.
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 function debugLoadArray(uint _number) external {
@@ -168,6 +204,10 @@ function debugLoadArray(uint _number) external {
     }
 }
 ```
+
+</details>
+
+<br/>
 
 **Be sure to redeploy** and try again with **10** numbers. This time, the cost was about 275,335 gas. That's almost 26,000 more gas in an effort to save the 5,000 gas needed to run `_countEvenNumbers()`.
 

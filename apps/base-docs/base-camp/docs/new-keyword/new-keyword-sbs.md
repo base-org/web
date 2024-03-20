@@ -24,6 +24,10 @@ A contract factory is a contract that creates other contracts. To start, let's c
 
 Imagine you want to create a contract that can store its owner's name and compliment them upon request. You can create this contract fairly easily.
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 contract Complimenter {
     string public name;
@@ -37,6 +41,10 @@ contract Complimenter {
     }
 }
 ```
+
+</details>
+
+<br/>
 
 Deploy and test.
 
@@ -54,6 +62,10 @@ Creating a new contract is simple: `new Complimenter(_name)`
 
 You can also save the return from that instantiation into a variable. This reference can be used to call public functions in the deployed contract, and can be cast to an address. We can use it to get an easy reference to find the copies made by the factory. The end result should look similar to:
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 contract ComplimenterFactory {
     function CreateComplimenter(string memory _name) public returns (address) {
@@ -62,6 +74,10 @@ contract ComplimenterFactory {
     }
 }
 ```
+
+</details>
+
+<br/>
 
 ### Testing
 

@@ -32,6 +32,10 @@ For a production app, you'll want to use a more robust implementation of `onlyOw
 
 The address of the deployer of a contract is **not** included as an accessible property. To make it available, add it as a state variable and assign `msg.sender` in the `constructor`.
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 contract Modifiers {
     address owner;
@@ -42,11 +46,19 @@ contract Modifiers {
 }
 ```
 
+</details>
+
+<br />
+
 ### Creating an `onlyOwner` Modifier
 
 [Modifiers] are very similar to functions and are declared with the `modifier` keyword. The modifier can run any Solidity code, including functions, and is allowed to modify state. Modifiers must have a special `_` character, which serves as a placeholder for where the code contained within the modified function will run.
 
 Create a simple `onlyOwner` modifier, which returns an `error` of `NotOwner` with the sending address if the sender is not the owner.
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 error NotOwner(address _msgSender);
@@ -61,13 +73,25 @@ modifier onlyOwner {
 }
 ```
 
+</details>
+
+<br/>
+
 Test your `modifier` by adding a function that uses it:
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 function iOwnThis() public view onlyOwner returns (string memory) {
     return "You own this!";
 }
 ```
+
+</details>
+
+<br/>
 
 To test, deploy your contract and call the `iOwnThis` function. You should see the message "You own this!".
 

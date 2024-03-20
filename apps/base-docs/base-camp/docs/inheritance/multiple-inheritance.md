@@ -20,6 +20,10 @@ By the end of this lesson you should be able to:
 
 Continue working with your contracts in `Inheritance.sol`. Add a new contract called `ContractC` with another `whoAmI` function:
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 contract ContractC {
     function whoAmI() external pure returns (string memory) {
@@ -28,9 +32,17 @@ contract ContractC {
 }
 ```
 
+</details>
+
+<br/>
+
 ### Inheriting from Two Contracts
 
 You can inherit from additional contracts by simply adding a comma and that contract's name after the first. Add inheritance from `ContractC` (an error is expected):
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 // bad code example, do not use
@@ -40,6 +52,10 @@ contract ContractA is ContractB, ContractC {
     }
 }
 ```
+
+</details>
+
+<br/>
 
 The error is because both `ContractB` and `ContractC` contain a function called `whoAmI`. As a result, the compiler needs instruction on which to use.
 
@@ -120,13 +136,25 @@ Deploy and test. The call will now be back to reporting "contract B".
 
 Add an `enum` at the contract level in `ContractA` with members for `None`, `ContractBType`, and `ContractCType`, and an instance of it called `contractType`.
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 enum Type { None, ContractBType, ContractCType }
 
 Type contractType;
 ```
 
+</details>
+
+<br/>
+
 Add a `constructor` to `ContractA` that accepts a `Type` and sets `initialType`.
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 constructor (Type _initialType) {
@@ -134,7 +162,15 @@ constructor (Type _initialType) {
 }
 ```
 
+</details>
+
+<br/>
+
 Update `whoAmI` in `ContractA` to call the appropriate `virtual` function based on its `currentType`.
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 // Bad code example, do not use
@@ -149,7 +185,15 @@ function whoAmI() public override(ContractB, ContractC) pure returns (string mem
 }
 ```
 
+</details>
+
+<br/>
+
 You'll get errors because the function now reads from state, so it is no longer `pure`. Update it to `view`. You'll also have to update the `whoAmI` `virtual` functions to `view` to match.
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 function whoAmI() public override(ContractB, ContractC) view returns (string memory) {
@@ -163,13 +207,25 @@ function whoAmI() public override(ContractB, ContractC) view returns (string mem
 }
 ```
 
+</details>
+
+<br/>
+
 Finally, add a function that allows you to switch `currentType`:
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 function changeType(Type _newType) external {
     contractType = _newType;
 }
 ```
+
+</details>
+
+<br/>
 
 Deploy and test. You'll need to use **0**, **1**, and **2** as values to set `contractType`, because Remix won't know about your `enum`.
 

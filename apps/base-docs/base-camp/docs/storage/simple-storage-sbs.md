@@ -26,12 +26,20 @@ Create a contract called `SimpleStorage`.
 
 In Solidity, variables declared at the class level are automatically `storage` variables. Create a variable to store the age of a person and another to store the number of cars that they own. Give `age` an initial value of your choosing, but don't make an assignment for `cars`;
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 contract SimpleStorage {
     uint8 age = 41;
     uint8 cars;
 }
 ```
+
+</details>
+
+<br/>
 
 Because the age of a person, or the number of cars they own, is unlikely to be greater than 255, we can use a `uint8` for each of these. For types that are smaller than 32 bytes, multiple variables of the same type will be [packed] in the same storage slot. For this to work, the variables must be declared together.
 
@@ -55,11 +63,17 @@ You can use the constructor to perform various setup tasks. For example, the con
 
 Create a constructor function and use it to assign the value of your choosing to `cars`.
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 constructor() {
     cars = 1;
 }
 ```
+
+</details>
 
 ### Accessing State Variables
 
@@ -68,6 +82,10 @@ Deploy your contract in Remix. It should work fine, but you'll have one problem:
 You could solve this by writing functions that return the values in your state variables, but you don't need to. The Solidity compiler automatically creates getters for all `public` variables.
 
 Add the `public` keyword to both variables. Unlike most languages, `public` goes **after** the type declaration. Your contract should now be similar to:
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 contract SimpleStorage {
@@ -78,6 +96,10 @@ contract SimpleStorage {
     }
 }
 ```
+
+</details>
+
+<br/>
 
 Redeploy your contract and test to confirm.
 
@@ -99,11 +121,19 @@ Given this wide variety of conditions, **a** good approach would be to handle ca
 
 To meet this need, we can write a `public` function that takes a `uint8` for `_numberOfCars` and then simply assigns that value to the state variable `cars`. Because this function modifies state, it **does not** need `pure` or `view`. It isn't either of those.
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 function updateNumberOfCars(uint8 _numberOfCars) public {
     cars = _numberOfCars;
 }
 ```
+
+</details>
+
+<br/>
 
 Deploy and test to make sure it works as expected.
 
@@ -121,11 +151,21 @@ Review the **Warning** in the [layout] section of the docs for more details!
 
 It would also be good to be able update the `age` value. This problem has slightly different considerations. Sadly, `age` will never go down. It should also probably only go up by one year for each update. The `++` operator works in Solidity, so we can use that to create a function that simple increments age when called.
 
+<details>
+
+<summary>Reveal code</summary>
+
+
 ```solidity
 function increaseAge() public {
     age++;
 }
 ```
+
+</details>
+
+<br/>
+
 
 But what if a user calls this function by mistake? Good point!
 
@@ -136,6 +176,10 @@ On your own, add a function called `adminSetAge` that can set the `age` to a spe
 We've got one problem remaining with this contract. What if your user has a different `age` or number of `cars` than what you've hardcoded into the contract?
 
 As mentioned above, the `constructor` **can** take arguments and use them during deployment. Let's refactor the contract to set the two state variables in the constructor based on provided values.
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 contract SimpleStorage {
@@ -148,11 +192,20 @@ contract SimpleStorage {
 }
 ```
 
+</details>
+
+<br/>
+
 Redeploy your contract. Note that now you have added parameters to the `constructor`, you'll have to provide them during deployment.
 
 ![Deployment](../../assets/images/storage/deployment-with-params.png)
 
 Once completed, your contract should be similar to:
+
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 contract SimpleStorage {
@@ -176,6 +229,10 @@ contract SimpleStorage {
     }
 }
 ```
+
+</details>
+
+<br/>
 
 ---
 

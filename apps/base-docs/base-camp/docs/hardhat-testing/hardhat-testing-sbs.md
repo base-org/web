@@ -75,6 +75,10 @@ Next, test the following:
 - The owner address
 - The withdraw function
 
+<details>
+
+<summary>Reveal code</summary>
+
 Start with the value locked, however you must set up a `before` function, which will run before each test case.
 
 Then, include some new imports and variables:
@@ -134,12 +138,17 @@ describe('Lock', function () {
   });
 });
 ```
+</details>
 
 ### Testing `unlockTime`
 
 Next, you include test cases after the `before` function.
 
-The first test case should verify that the `unlockTime`` variable is correct:
+The first test case should verify that the `unlockTime` variable is correct.
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```typescript
 it('should get the unlockTime value', async () => {
@@ -164,11 +173,19 @@ You can simply run `npx hardhat test` and then get:
   1 passing (1s)
 ```
 
+</details>
+
 ### Testing Ether balance
+
+
 
 In order to get the balance of your `Lock` contract, you simply call `ethers.provider.getBalance`.
 
 Create a new test case:
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```typescript
 it('should have the right ether balance', async () => {
@@ -183,6 +200,9 @@ it('should have the right ether balance', async () => {
 });
 ```
 
+</details>
+<br/>
+
 Then, run `npx hardhat test` and you should get:
 
 ```
@@ -195,7 +215,11 @@ Then, run `npx hardhat test` and you should get:
 
 ### Testing `owner`
 
-Similar to the previous test cases, you can verify that the owner is correct:
+Similar to the previous test cases, you can verify that the owner is correct.
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```typescript
 it('should have the right owner', async () => {
@@ -203,6 +227,9 @@ it('should have the right owner', async () => {
   expect(await lockInstance.owner()).to.equal(ownerSigner.address);
 });
 ```
+
+</details>
+<br/>
 
 Then, run `npx hardhat test` and you should get:
 
@@ -214,6 +241,7 @@ Then, run `npx hardhat test` and you should get:
 
   3 passing (1s)
 ```
+
 
 ### Testing withdraw
 
@@ -254,7 +282,11 @@ it('shouldn"t allow to withdraw a non owner', async () => {
 });
 ```
 
-Finally, test that the owner can withdraw. You can manipulate the time similarly to the previous test case but you won't change the signer and will assert the new balances:
+Finally, test that the owner can withdraw. You can manipulate the time similarly to the previous test case but you won't change the signer and will assert the new balances.
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```typescript
 it('should allow to withdraw a owner', async () => {
@@ -276,6 +308,10 @@ it('should allow to withdraw a owner', async () => {
   expect(balanceAfter).to.equal(0);
 });
 ```
+
+</details>
+
+<br/>
 
 You can then run `npx hardhat test` and you should get:
 

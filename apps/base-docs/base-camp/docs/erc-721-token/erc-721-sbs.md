@@ -30,6 +30,10 @@ JPGs may be all the rage right now but in the future, the selfie you post on soc
 
 Start by opening the [OpenZeppelin] ERC-721 in Github. Copy the link and use it to import the ERC-721 contract. Create your own contract, called `MyERC721`, that inherits from `ERC721Token`. Add a constructor that initializes the `_name` and `_symbol`.
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 // SPDX-License-Identifier: MIT
 
@@ -43,6 +47,10 @@ contract MyERC721Token is ERC721 {
     }
 }
 ```
+
+</details>
+
+<br/>
 
 ### Minting NFTs
 
@@ -67,12 +75,20 @@ To implement ID generation, simply add a `uint` called `counter` to storage and 
 
 Now, you can add a function called `redeemNFT` that calls `safeMint` using the `msg.sender` and `counter`, and then increments the `counter`:
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 function redeemNFT() external {
     _safeMint(msg.sender, counter);
     counter++;
 }
 ```
+
+</details>
+
+<br/>
 
 :::danger
 
@@ -148,6 +164,10 @@ The metadata for [BAYC] is [stored on IPFS], but some projects even use centrali
 
 Start by saving the IPFS metadata bases as constants, at the contract level. Add an enum to enable selection between these two choices, and an instance of that enum.
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
     string constant BAYC = "https://ipfs.io/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/";
     string constant DOODLES = "https://ipfs.io/ipfs/QmPMc4tcBsMqLRuCQtPmPe84bpSjrC3Ky7t3JWuHXYB4aS/";
@@ -156,7 +176,15 @@ Start by saving the IPFS metadata bases as constants, at the contract level. Add
     NFTMetadata nftMetadata = NFTMetadata.BAYC;
 ```
 
+</details>
+
+<br/>
+
 Finally, add an override of `_baseURI` that returns the appropriate selection based on which collection is active, and a function to swap the URI.
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 function _baseURI() internal override view returns(string memory) {
@@ -174,6 +202,10 @@ function switchURI() public {
     nftMetadata = nftMetadata == NFTMetadata.BAYC ? NFTMetadata.DOODLES : NFTMetadata.BAYC;
 }
 ```
+
+</details>
+
+<br/>
 
 Deploy, mint some NFTs, and call `tokenURI` to find the information for token number 1. You should get:
 

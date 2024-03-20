@@ -21,6 +21,10 @@ By the end of this lesson you should be able to:
 
 The minimal elements needed for a token are pretty basic. Start by creating a contract called `MinimalToken`. Add a `mapping` to relate user addresses to the number of tokens they possess. Finally, add a variable to track `totalSupply`:
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 contract MinimalToken {
     mapping (address => uint) public balances;
@@ -28,7 +32,15 @@ contract MinimalToken {
 }
 ```
 
+</details>
+
+<br/>
+
 Add a `constructor` that initializes the `totalSupply` at 3000 and assigns ownership to the contract creator:
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 constructor() {
@@ -38,11 +50,19 @@ constructor() {
 }
 ```
 
+</details>
+
+<br/>
+
 Deploy and test to confirm that the total supply is 3000, and the balance of the first account is as well.
 
 ![Balance](../../assets/images/minimal-tokens/balance.png)
 
 Update the constructor and hardcode a distribution of the tokens to be evenly split between the first three test accounts:
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 constructor() {
@@ -53,6 +73,10 @@ constructor() {
     balances[0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db] = totalSupply / 3;
 }
 ```
+
+</details>
+
+<br/>
 
 Redeploy and test again. Now, each of the first three accounts should have 1000 tokens.
 
@@ -68,12 +92,20 @@ To remediate this, all we need to do is add a function that can update the balan
 
 Add a `function` called `transfer` that accepts an `address` of `_to` and a `uint` for the `_amount`. You don't need to add anything for `_from`, because that should only be `msg.sender`. The function should subtract the `_amount` from the `msg.sender` and add it to `_to`:
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 function transfer(address _to, uint _amount) public {
     balances[msg.sender] -= _amount;
     balances[_to] += _amount;
 }
 ```
+
+</details>
+
+<br/>
 
 Double-check that you've switched back to the first address and redeploy. Then, try sending 500 tokens to the second address.
 

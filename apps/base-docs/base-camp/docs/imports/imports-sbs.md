@@ -61,19 +61,32 @@ There's also an `_add` function, which is private.
 
 :::
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 function registerVisitor() public {
     visitors.add(msg.sender);
 }
 ```
 
+</details>
+
+<br/>
+
 Add another function to return the `numberOfVisitors`. Thanks to `using`, this can cleanly call the `length` function:
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 function numberOfVisitors() public view returns (uint) {
     return visitors.length();
 }
 ```
+</details>
 
 ---
 

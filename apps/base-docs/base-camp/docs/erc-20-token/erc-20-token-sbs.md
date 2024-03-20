@@ -81,6 +81,10 @@ Redeploy. Without you needing to do anything, you should find that the `totalSup
 
 You can also use this to mint to other users. Go ahead and add the second and third accounts:
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) {
     _mint(msg.sender, 1 * 10**18);
@@ -88,6 +92,11 @@ constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) {
     _mint(0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db, 1 * 10**18);
 }
 ```
+
+</details>
+
+<br/>
+
 
 **Switch back** to the first account and redeploy. Test to confirm that each account has the appropriate amount of tokens.
 

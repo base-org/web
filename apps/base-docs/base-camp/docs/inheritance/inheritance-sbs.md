@@ -45,6 +45,10 @@ contract ContractA {
 
 [Inheritance] between contracts is indicated by the `is` keyword in the contract declaration. Update `ContractA` so that it `is` `ContractB`, and delete the `whoAmI` function from `ContractA`.
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 contract ContractB {
     function whoAmI() external pure returns (string memory) {
@@ -57,6 +61,10 @@ contract ContractA is ContractB {
 }
 ```
 
+</details>
+
+<br/>
+
 Deploy and test again. Even though `ContractA` doesn't have any functions in it, the deployment still shows the button to call `whoAmI`. Call it. `ContractA` now reports that it is "contract B", due to the inheritance of the function from `Contract B`.
 
 ### Internal Functions and Inheritance
@@ -64,6 +72,10 @@ Deploy and test again. Even though `ContractA` doesn't have any functions in it,
 Contracts can call the `internal` functions from contracts they inherit from. Add an `internal` function to `ContractB` called `whoAmIInternal` that returns "contract B".
 
 Add an external function called `whoAmIExternal` that returns the results of a call to `whoAmIInternal`.
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 contract ContractB {
@@ -82,6 +94,10 @@ contract ContractA is ContractB {
     }
 }
 ```
+
+</details>
+
+<br/>
 
 Deploy and test. Note that in the deployment for `ContractB`, the `whoAmIInternal` function is **not** available, as it is `internal`. However, calling `whoAmIExternal` can call the `internal` function and return the expected result of "contract B".
 
