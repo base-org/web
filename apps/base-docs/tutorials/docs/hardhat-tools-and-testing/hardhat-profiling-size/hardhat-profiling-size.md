@@ -2,7 +2,6 @@
 title: 'Hardhat Profiling Size: Introduction'
 slug: /hardhat-tools-and-testing/hardhat-profiling-size/hardhat-profiling-size
 description: Optimize Smart Contract Sizes with Hardhat
-author: Brian Doyle
 keywords:
   [
     Smart Contract Sizes,

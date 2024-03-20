@@ -44,23 +44,24 @@ const sidebars = {
       label: 'Account abstraction',
       collapsible: true,
       collapsed: true,
-      items: ['docs/account-abstraction-with-biconomy'],
+      items: [
+        'docs/account-abstraction-with-biconomy',
+        'docs/account-abstraction-with-privy-and-base-paymaster',
+      ],
     },
     {
       type: 'category',
-      label: 'Building with Foundry',
+      label: 'Introduction to Foundry',
       collapsible: true,
       collapsed: true,
       items: [
         {
           type: 'doc',
-          id: 'docs/building-with-base-and-foundry/introduction',
-          className: 'sidebar-coding',
+          id: 'docs/intro-to-foundry-setup',
         },
         {
           type: 'doc',
-          id: 'docs/building-with-base-and-foundry/testing',
-          className: 'sidebar-coding',
+          id: 'docs/intro-to-foundry-testing',
         },
       ],
     },
@@ -206,46 +207,7 @@ const sidebars = {
       items: [
         {
           type: 'doc',
-          id: 'docs/connecting-to-the-blockchain/overview',
-          className: 'sidebar-reading',
-        },
-        {
-          type: 'doc',
-          id: 'docs/connecting-to-the-blockchain/blockchain-providers',
-          className: 'sidebar-reading',
-        },
-        {
-          type: 'doc',
-          id: 'docs/connecting-to-the-blockchain/connecting-with-a-provider',
-          className: 'sidebar-coding',
-        },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Privy and the Base Paymaster',
-      collapsible: true,
-      collapsed: true,
-      items: [
-        {
-          type: 'doc',
-          id: 'docs/account-abstraction/overview',
-          className: 'sidebar-reading',
-        },
-        {
-          type: 'doc',
-          id: 'docs/account-abstraction/intro-to-account-abstraction',
-          className: 'sidebar-reading',
-        },
-        {
-          type: 'doc',
-          id: 'docs/account-abstraction/intro-to-privy',
-          className: 'sidebar-coding',
-        },
-        {
-          type: 'doc',
-          id: 'docs/account-abstraction/implementing-the-paymaster',
-          className: 'sidebar-coding',
+          id: 'docs/intro-to-providers',
         },
       ],
     },

@@ -2,7 +2,6 @@
 title: 'Hardhat Profiling Size: Contract Sizer Setup'
 slug: /hardhat-tools-and-testing/hardhat-profiling-size/contract-sizer-setup-vid
 description: Install the Contract Sizer Plugin
-author: Brian Doyle
 keywords:
   [
     Contract Sizer Plugin,

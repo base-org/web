@@ -1,6 +1,6 @@
 ---
-title: 'Building with Base and Foundry: Introduction to Foundry'
-slug: /building-with-base-and-foundry/introduction
+title: 'Introduction to Foundry: Setting up Foundry with Base'
+slug: /intro-to-foundry-setup
 description: Documentation for Foundry, a toolchain for smart contract development. Provides instructions on setting up your development environment to work with Foundry.
 author: Brian Doyle
 keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain]

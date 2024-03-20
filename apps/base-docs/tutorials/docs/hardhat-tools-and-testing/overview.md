@@ -2,7 +2,6 @@
 title: 'Hardhat Tools and Testing: Overview'
 slug: /hardhat-tools-and-testing/overview
 description: What's in this learning material.
-author: Brian Doyle
 keywords:
   [
     Hardhat Tools,
