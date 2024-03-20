@@ -1,8 +1,9 @@
-/* Sidebar https://docusaurus.io/docs/next/styling-layout#theme-class-names */
+/* Sidebar classes https://docusaurus.io/docs/next/styling-layout#theme-class-names */
 
-/* theme-doc-sidebar:start */
+/* theme-doc-sidebar */
 .theme-doc-sidebar-container {
   text-decoration: initial;
+  position: relative;
 }
 
 .theme-doc-sidebar-container > div {
@@ -11,74 +12,85 @@
   display: flex;
   flex-direction: column;
 }
+.theme-doc-sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-0\.5);
+}
 
 .theme-doc-sidebar-container .menu {
-  padding: 0;
+  padding: 30px;
 }
 
-.theme-doc-sidebar-menu {
-  margin-right: calc(var(--ifm-global-spacing) * -1) !important;
-}
-
-/* theme-doc-sidebar:end */
-
-/* menu:start */
+/* menu */
 .menu__link {
-  display: block;
-  border-radius: var(--interactable-border-radius);
-  display: flex;
-  justify-content: space-between;
+  padding: 0 !important;
   width: 100%;
+  min-height: 24px;
+  height: auto !important;
+  color: var(--foreground-muted);
+  font-family: var(--body-font-family) !important;
+  font-size: var(--body-font-size) !important;
+  font-weight: var(--body-font-weight) !important;
+  line-height: var(--body-line-height) !important;
+  text-transform: none !important;
 }
-
-.menu__link:active {
-  background-color: var(--interactable-pressed-background);
-}
-
-.menu__link--active {
-  background: none;
+/*
+  TODO:
+    add themed variants of collapse button
+    add collapse button for closed sidebar
+    swap in as many variables as you can for css vals
+    review classes to use as many stable selectors as possible
+    review all theme based styles
+    -review all mobile styles
+      - mobile sidebar styles need to be fixed
+    remove ToC as safely as possible
+    remove prev/next page buttons as safely as possible
+    reduce caret/chevron size on expandable menu items
+    - final cleanup and review before commit
+    - figure out why cookie components are broken
+      - try deploying to dev to see if it's local issue
+*/
+.menu__link.menu__link--active {
+  color: var(--primary) !important;
 }
 
 .menu__link--active:not(.menu__link--sublist) {
   background: none;
-}
-
-.menu__link--active:not(.menu__link--sublist):active {
-  background-color: var(--interactable-pressed-background);
-}
-
-.menu__link.menu__link--active {
-  color: var(--primary);
-}
-
-.menu__link--sublist.menu__link--active {
   color: var(--primary) !important;
 }
 
-.menu__link {
-  color: var(--foreground-muted);
-  font-family: var(--body-font-family);
-  font-size: var(--body-font-size);
-  font-weight: var(--body-font-weight);
-  line-height: var(--body-line-height);
-  padding-bottom: var(--spacing-0\.5);
-  padding-top: var(--spacing-0\.5);
+.menu__link--sublist.menu__link--active {
+  color: initial !important;
 }
 
-.menu__list-item-collapsible--active {
-  background: none;
+.menu__list {
+  padding-left: 0 !important;
 }
+
 .menu__list-item-collapsible {
   border-radius: var(--interactable-border-radius);
-  border-radius: 0 !important;
+  border-radius: var(--border-radius-none) !important;
+}
+.menu__list-item-collapsible:hover {
+  background-color: var(--transparent) !important;
 }
 
-.menu__list .menu__list {
-  padding-left: 0;
+.menu__list-item-collapsible {
+  color: var(--foreground-muted) !important;
 }
-/* menu:end */
 
-/* theme-doc-sidebar-item:start */
+.menu__list-item-collapsible .menu__link:not(.menu__link--sublist) {
+  color: initial !important;
+}
+
+/* theme-doc-sidebar-item */
+.theme-doc-sidebar-item-link,
+.theme-doc-sidebar-item-category {
+  padding: 0 !important;
+  border: none !important;
+}
+
 .theme-doc-sidebar-item-link-level-1 > .menu__link {
   text-align: start;
   transition: color 0.15s ease-out, opacity 0.15s ease-out;
@@ -108,10 +120,6 @@
   font-size: var(--caption-font-size);
   font-weight: var(--caption-font-weight);
   line-height: var(--caption-line-height);
-}
-
-li[class*='theme-doc-sidebar-item-link-level-']:hover {
-  background: var(--ifm-menu-color-background-hover);
 }
 
 li[class*='theme-doc-sidebar-item-link-level-'] > .menu__link:hover {
@@ -144,7 +152,12 @@ li[class*='theme-doc-sidebar-item-link-level-'] > .menu__link:hover {
 .theme-doc-sidebar-item-category-level-2,
 .theme-doc-sidebar-item-link-level-2 {
   padding: 0 var(--spacing-0\.5);
-  margin: 0 var(--spacing-0);
+  margin: 0 0;
+}
+
+.theme-doc-sidebar-item-link-level-2 {
+  padding-left: 12px !important;
+  color: var(--ifm-color-gray-600) !important;
 }
 
 li[class*='theme-doc-sidebar-item-link-level-']:not(
@@ -155,8 +168,28 @@ li[class*='theme-doc-sidebar-item-category-level-']:not(
     .theme-doc-sidebar-item-category-level-1,
     .theme-doc-sidebar-item-category-level-2
   ) {
-  padding: 0 0 0 var(--spacing-0);
-  margin: 0 0 0 var(--spacing-2);
-  border-left: 1px solid var(--toc-border-color);
+  padding: 0;
+  margin: 0 0 0 12px;
 }
-/* theme-doc-sidebar-item:end */
+
+/* collapse sidebar icon */
+.theme-doc-sidebar-container button:last-of-type {
+  position: absolute;
+  top: var(--ifm-navbar-height);
+  right: 0;
+  width: 50px;
+  background-color: transparent;
+  border: none;
+  padding: 30px 30px 0 0 !important;
+}
+[data-theme='dark'] .theme-doc-sidebar-container button:last-of-type::after {
+  content: url('/assets/icons/collapse-white.svg');
+}
+[data-theme='light'] .theme-doc-sidebar-container button:last-of-type::after {
+  content: url('/assets/icons/collapse-black.svg');
+}
+
+/* hide default collapse sidebar icon */
+.theme-doc-sidebar-container button:last-of-type svg {
+  display: none !important;
+}
