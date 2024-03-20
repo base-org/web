@@ -270,21 +270,21 @@ Finally, run `yarn dev` and navigate to [http://localhost:3000] to see the start
 
 Before exploring the code, test the app. First, you should see this login page:
 
-![Privy Login Page](../../../assets/images/account-abstraction/privy-login-page.png)
+![Privy Login Page](../../assets/images/account-abstraction/privy-login-page.png)
 
 After clicking "Log in" you'll see the following modal:
 
-![Privy Login Modal](../../../assets/images/account-abstraction/privy-login-modal.png)
+![Privy Login Modal](../../assets/images/account-abstraction/privy-login-modal.png)
 
 By default, you can login with a wallet, or email.
 
 After logging in, you'll be redirected to the `/dashboard` page, where the demo app will allow you to connect a number of other accounts to your `user` object:
 
-![Privy Dashboard Page](../../../assets/images/account-abstraction/privy-dashboard-page.png)
+![Privy Dashboard Page](../../assets/images/account-abstraction/privy-dashboard-page.png)
 
 If you navigate to [console.privy.io](https://console.privy.io/), you'll see that Privy stores all your users and their data here.
 
-![Privy Console](../../../assets/images/account-abstraction/privy-console.png)
+![Privy Console](../../assets/images/account-abstraction/privy-console.png)
 
 ---
 
@@ -321,7 +321,7 @@ Add a `config` property to the `<PrivyProvider />` in `_app.jsx` with `'github'`
 
 Refresh to see that authentication is only possible now through Github or SMS:
 
-![Privy Login Methods](../../../assets/images/account-abstraction/privy-login-methods.png)
+![Privy Login Methods](../../assets/images/account-abstraction/privy-login-methods.png)
 
 You can find a full list of `loginMethods` in the docs for [`PrivyClientConfig`].
 
@@ -766,7 +766,7 @@ The function in this example can only be called once per address. It will then f
 
 In this article, we've explored the transformative potential of Account Abstraction for the Ethereum ecosystem, highlighting how it enables smart contract accounts to initiate transactions without altering the core protocol. This innovation, coupled with the utilization of Privy for streamlined user onboarding and secure data management, marks a significant advancement towards reducing onboarding friction for onchain applications. Through a practical implementation involving Privy and the [Base Paymaster], we demonstrated how users can perform onchain actions without incurring gas fees, showcasing the adaptability and user-centric benefits of these technologies. This guide not only sheds light on the technical workings of Account Abstraction but also illustrates its practical application in enhancing the blockchain user experience.
 
---
+---
 
 [ERC-4337]: https://eips.ethereum.org/EIPS/eip-4337
 [ethereum.org]: https://ethereum.org/en/developers/docs/accounts/#key-differences
