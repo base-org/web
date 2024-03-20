@@ -60,6 +60,7 @@ const config = {
         sidebarPath: require.resolve('./base-camp/sidebars.js'),
       },
     ],
+    'docusaurus-node-polyfills',
   ],
   scripts: [
     {
