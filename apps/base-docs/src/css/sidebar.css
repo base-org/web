@@ -35,22 +35,10 @@
   line-height: var(--body-line-height) !important;
   text-transform: none !important;
 }
-/*
-  TODO:
-    add themed variants of collapse button
-    add collapse button for closed sidebar
-    swap in as many variables as you can for css vals
-    review classes to use as many stable selectors as possible
-    review all theme based styles
-    -review all mobile styles
-      - mobile sidebar styles need to be fixed
-    remove ToC as safely as possible
-    remove prev/next page buttons as safely as possible
-    reduce caret/chevron size on expandable menu items
-    - final cleanup and review before commit
-    - figure out why cookie components are broken
-      - try deploying to dev to see if it's local issue
-*/
+.menu__link:hover {
+  color: rgb(var(--gray90)) !important;
+}
+
 .menu__link.menu__link--active {
   color: var(--primary) !important;
 }
