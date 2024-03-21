@@ -137,7 +137,7 @@ function Root({ Component, pageProps }: AppProps) {
                           <div className="w-full bg-black px-8 py-3 text-center font-sans text-sm text-white">
                             <span className="font-bold">Upcoming maintenance:</span> Base Bridge
                             withdrawals will be temporarily paused starting at 11AM PST (6PM UTC) on
-                            Wednesday, March 20th, for approximately one hour. They will resume
+                            Wednesday, March 27th, for approximately one hour. They will resume
                             processing at the end of the maintenance period. To learn more please
                             visit our{' '}
                             <a
