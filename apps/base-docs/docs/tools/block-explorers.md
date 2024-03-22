@@ -30,6 +30,16 @@ Arkham is a crypto intelligence platform that systematically analyzes blockchain
 
 ---
 
+## Scopescan
+
+Scopescan supports [Platform](https://scopescan.ai/home?network=base) Base on their platform.
+
+Base voyagers can check Base transaction records, addresses, tokens, and even smart moneys on their platforms. 
+Scopescan also supports visualizing capital flows and checking token holder graphs on Base.
+
+Scopescan is an on-chain data analytics platform that greatly enhances the on-chain analytical experience."
+---
+
 ## Blockscout
 
 A Blockscout explorer is available for [Base](https://base.blockscout.com/).
