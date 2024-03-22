@@ -56,3 +56,21 @@ This page lists contract addresses for onchain apps that we have deployed.
 | Contract   | Address                                                                                                                       |
 | :--------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | Multicall3 | [0xcA11bde05977b3631167028862bE2a173976CA11](https://sepolia.basescan.org/address/0xcA11bde05977b3631167028862bE2a173976CA11) |
+
+### Uniswap v3
+
+| Contract                             | Address                                                                                                                       |
+| :----------------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
+| `Permit2`                            | [0x000000000022d473030f116ddee9f6b43ac78ba3](https://sepolia.basescan.org/address/0x000000000022d473030f116ddee9f6b43ac78ba3) |
+| `universal router`                   | [0x050E797f3625EC8785265e1d9BDd4799b97528A1](https://sepolia.basescan.org/address/0x050E797f3625EC8785265e1d9BDd4799b97528A1) |
+| `v3CoreFactory`                      | [0x4752ba5DBc23f44D87826276BF6Fd6b1C372aD24](https://sepolia.basescan.org/address/0x4752ba5DBc23f44D87826276BF6Fd6b1C372aD24) |
+| `multicall`                          | [0xd867e273eAbD6c853fCd0Ca0bFB6a3aE6491d2C1](https://sepolia.basescan.org/address/0xd867e273eAbD6c853fCd0Ca0bFB6a3aE6491d2C1) |
+| `proxyAdmin`                         | [0xD7303474Baca835743B54D73799688990f24a79D](https://sepolia.basescan.org/address/0xD7303474Baca835743B54D73799688990f24a79D) |
+| `tickLens`                           | [0xedf6066a2b290C185783862C7F4776A2C8077AD1](https://sepolia.basescan.org/address/0xedf6066a2b290C185783862C7F4776A2C8077AD1) |
+| `nftDescriptor`                      | [0x4e0caFF1Df1cCd7CF782FDdeD77f020699B57f1a](https://sepolia.basescan.org/address/0x4e0caFF1Df1cCd7CF782FDdeD77f020699B57f1a) |
+| `nonfungibleTokenPositionDescriptor` | [0xd7c6e867591608D32Fe476d0DbDc95d0cf584c8F](https://sepolia.basescan.org/address/0xd7c6e867591608D32Fe476d0DbDc95d0cf584c8F) |
+| `nonfungibleTokenPositionManager`    | [0x27F971cb582BF9E50F397e4d29a5C7A34f11faA2](https://sepolia.basescan.org/address/0x27F971cb582BF9E50F397e4d29a5C7A34f11faA2) |
+| `v3Migrator`                         | [0xCbf8b7f80800bd4888Fbc7bf1713B80FE4E23E10](https://sepolia.basescan.org/address/0xCbf8b7f80800bd4888Fbc7bf1713B80FE4E23E10) |
+| `v3Staker`                           | [0x62725F55f50bdE240aCa3e740D47298CAc8d57D5](https://sepolia.basescan.org/address/0x62725F55f50bdE240aCa3e740D47298CAc8d57D5) |
+| `quoterV2`                           | [0xC5290058841028F1614F3A6F0F5816cAd0df5E27](https://sepolia.basescan.org/address/0xC5290058841028F1614F3A6F0F5816cAd0df5E27) |
+| `swapRouter`                         | [0x94cC0AaC535CCDB3C01d6787D6413C739ae12bc4](https://sepolia.basescan.org/0x94cC0AaC535CCDB3C01d6787D6413C739ae12bc4)         |
