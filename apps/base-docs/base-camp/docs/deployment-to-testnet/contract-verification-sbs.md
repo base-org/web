@@ -1,48 +1,49 @@
 ---
 title: Contract Verification
-description: Verify your contract and interact with it.
+description: Verify your contract and interact with it on sepolia.basescan.org.
 hide_table_of_contents: false
 ---
 
-Once your contract is deployed, you can verify it using a number of popular services. Doing so will let you users have confidence that your contract does what you claim, and will allow you to interact with it using a similar interface to what you used in Remix.
+After deploying your contract, you can verify it using popular explorers like [basescan](https://sepolia.basescan.org). Verifying your contract allows users to trust that it does what you claim and enables you to interact with it using a user-friendly interface similar to Remix.
 
 ---
 
 ## Objectives
 
-By the end of this lesson you should be able to:
+By the end of this lesson, you will be able to:
 
-- Verify a contract on the Base Sepolia testnet and interact with it in Etherscan
+- Verify a contract on the Base Sepolia testnet
+- Interact with your verified contract on [sepolia.basescan.org](https://sepolia.basescan.org)
 
 ---
 
-### Verify the Contract
+### Verifying Your Contract
 
-Make sure you still have the address of the contract you deployed in the last article copied to the clipboard.
+First, ensure you have the address of the contract you deployed in the previous article copied to your clipboard.
 
-You can interact with your deployed contract using Remix, the same as before, but it's also possible to interact with it through Etherscan. Paste your address in the search field to find it.
+While you can interact with your deployed contract using Remix, you can also do so through [sepolia.basescan.org](https://sepolia.basescan.org). To find your contract, paste its address into the search field and click search. 
 
-On this page, you can review the balance, information about, and all the transactions that have ever occurred with your contract.
+On the contract page, you can review the balance, information, and all transactions associated with your contract.
 
-Click the _Contract_ tab in the main panel. At the top is a message asking you to _Verify and Publish_ your contract source code.
+Click the _Contract_ tab in the main panel. At the top, you'll see a message prompting you to _Verify and Publish_ your contract source code.
 
 ![Verify](../../assets/images/deployment-to-testnet/verify-and-publish.png)
 
-Verifying your contract maps the names of your functions and variables to the compiled byte code, which makes it possible to interact with the contract using a human-readable interface.
+Verifying your contract maps function and variable names to the compiled byte code, enabling interaction with the contract using a human-readable interface.
 
-Click the link. Your contract address is already entered.
+Click the verification link. Your contract address should already be filled in.
 
-Under _Please select Compiler Type_ choose \_Solidity (Single file)
+Under _Please select Compiler Type_, choose _Solidity (Single file)_.
 
-For _Please Select Compiler Version_ select the version matching the `pragma` at the top of your source file. Our examples are currently using _v0.8.17+commit.8df45f5f_.
+For _Please Select Compiler Version_, select the version matching the `pragma` at the top of your source file. Our examples currently use _v0.8.17+commit.8df45f5f_.
 
-For _Please select Open Source License Type_ pick the license that matches what you selected for your contract as the `SPDX-License-Identifier`. Pick _None_ if you followed the Solidity-recommended practice of using `UNLICENSED`.
+For _Please select Open Source License Type_, choose the license that matches your contract's `SPDX-License-Identifier`. If you followed the Solidity-recommended practice of using `UNLICENSED`, select _None_.
 
-On the next page, copy and paste your source code in the window. Verify that you are not a robot, and click _Verify and Publish_. You should see a success message.
+On the next page, paste your source code into the provided window. Verify that you're not a robot, and click _Verify and Publish_. You should see a success message.
 
 ![Success](../../assets/images/deployment-to-testnet/compiler-debug-log.png)
 
-Click the linked address to your contract to return to the contract page. You'll now see your code!
+Click the linked address to return to your contract page, where you'll now see your code!
 
 :::tip
 
@@ -50,26 +51,24 @@ If you have imports, you'll need to right click on the name of the file and choo
 
 :::
 
-### Interact with the Contract
+### Interacting with Your Verified Contract
 
-You can now interact with your contract using Etherscan. Click the _Read Contract_ button. Both of your functions will be listed here and can be tested using the web interface.
+Now that your contract is verified, you can interact with it using the web interface. Click the _Read Contract_ button to see a list of your contract's functions that can be tested.
 
-You won't have anything under _Write Contract_ because this contract doesn't have any functions that save data to state.
+Note that there won't be anything under _Write Contract_ if your contract doesn't have functions that modify its state.
 
 ---
 
 ## Conclusion
 
-With your contracts verified, you can interact with them using online tools and your users can be secure that your code does what you claim.
+With your contracts verified, you can begin to interact with them using online tools--and your users can be confident that your code does what you claim.
 
 ---
 
-<!-- Add reference style links here.  These do not render on the page. -->
-
+<!-- Add reference style links here. These do not render on the page. -->
 [`sepolia.basescan.org`]: https://sepolia.basescan.org/
 [coinbase]: https://www.coinbase.com/wallet
 [faucet]: https://docs.base.org/tools/network-faucets
 [set up]: https://www.youtube.com/watch?v=CZDgLG6jpgw
-[coinbase settings]: https://docs.cloud.coinbase.com/wallet-sdk/docs/developer-settings
-[etherscan]: https://etherscan.io/
+[coinbase settings]: https://docs.cloud.coinbase.com/wallet-sdk/docs/developer-settings 
 [faucets on the web]: https://coinbase.com/faucets
