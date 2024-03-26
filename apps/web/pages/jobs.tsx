@@ -2,7 +2,7 @@ import { JobsList, JobType } from 'apps/web/src/components/Jobs/JobsList';
 import Head from 'next/head';
 import { greenhouseApiUrl } from 'apps/web/src/constants';
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch(`${greenhouseApiUrl}/boards/basejobs/jobs?content=true`);
   const { jobs } = (await res.json()) as { jobs: JobType[] };
   return {
