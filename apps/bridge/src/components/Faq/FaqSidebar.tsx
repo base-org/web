@@ -11,7 +11,7 @@ export function FaqSidebar() {
       />
       <QuestionAccordion
         question="What wallet can I use?"
-        answer="You can use popular Ethereum wallets like Coinbase Wallet, MetaMask, and Rainbow Wallet to name a few."
+        answer="You can use popular Ethereum wallets like Coinbase Wallet, MetaMask, and Rainbow Wallet to name a few. Base Bridge will process your transaction and settle to the same address you send from, so make sure you're sending from an address you control that you can also receive funds at on Base."
       />
       <QuestionAccordion
         question="What if I have a question, issue or problem?"

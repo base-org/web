@@ -29,7 +29,7 @@ Base Bridge enables the transfer of certain digital assets and other data back a
 
 ### What wallet can I use?
 
-You can use popular Ethereum wallets like Coinbase Wallet, MetaMask, and Rainbow Wallet to name a few.
+You can use popular Ethereum wallets like Coinbase Wallet, MetaMask, and Rainbow Wallet to name a few. Base Bridge will process your transaction and settle to the same address you send from, so make sure you're sending from an address you control that you can also receive funds at on Base.
 
 ### What if I have a question, issue or problem?
 
