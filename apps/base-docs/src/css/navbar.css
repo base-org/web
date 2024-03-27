@@ -1,20 +1,31 @@
 /* Navbar */
 .navbar {
-  padding: 24px 32px;
+  padding: var(--spacing-3) var(--spacing-4);
   height: var(--ifm-navbar-height) !important;
+  border-bottom: 1px solid var(--line);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   gap: 30px;
 }
-[data-theme='light'] .navbar {
-  background-color: rgb(255, 255, 255);
-  border-bottom: 1px solid rgba(91, 97, 110, 0.2);
+[data-theme='light'] .navbar,
+[data-theme='light'] .navbar-sidebar {
+  background-color: rgb(var(--gray0));
 }
-[data-theme='dark'] .navbar {
-  background-color: rgb(20, 21, 25);
-  border-bottom: 1px solid rgba(138, 145, 158, 0.2);
+[data-theme='dark'] .navbar,
+[data-theme='dark'] .navbar-sidebar {
+  background-color: rgb(var(--gray5));
+}
+
+.navbar-sidebar .menu {
+  padding: 0 30px 30px 30px !important;
+}
+
+.navbar-sidebar .menu button:first-of-type {
+  padding: 10px 0;
+  margin: 0;
+  background-color: transparent;
 }
 
 /* Navbar Items and Links */
@@ -31,24 +42,21 @@
 .navbar__item,
 .navbar__link {
   padding: 0;
-  font-family: CoinbaseMono !important;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  font-weight: 400;
+  font-family: CoinbaseMono;
+  font-size: var(--title3-font-size);
+  line-height: var(--title3-line-height);
+  font-weight: var(--title3-font-weight);
 }
 
 .navbar__link:hover {
-  color: inherit !important;
-  text-decoration: underline !important;
-}
-.dropdown .navbar__link:hover {
-  text-decoration: none !important;
+  color: inherit;
+  text-decoration: underline;
 }
 
 .navbar__link--active,
 .navbar__link.active {
-  color: inherit !important;
-  text-decoration: underline !important;
+  color: inherit;
+  text-decoration: underline;
 }
 
 .navbar__social__links {
@@ -58,59 +66,44 @@
 .navbar__social__links a {
   display: flex;
   align-items: center;
-}
-[data-theme='light'] .navbar__social__links svg {
-  fill: rgb(0, 0, 0) !important;
-}
-[data-theme='dark'] .navbar__social__links svg {
-  fill: rgb(255, 255, 255) !important;
+  fill: rgb(var(--gray100));
 }
 
 /* Dropdown Menu and Links */
 .dropdown__menu {
-  padding: 20px 0 !important;
-  border-radius: 3px !important;
-}
-[data-theme='light'] .dropdown__menu {
-  background-color: rgb(0, 0, 0) !important;
-}
-[data-theme='dark'] .dropdown__menu {
-  background-color: rgb(255, 255, 255) !important;
+  padding: 20px 0;
+  border-radius: 3px;
+  background-color: rgb(var(--gray100));
 }
 
 .dropdown__link {
-  padding: 20px 40px !important;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  font-weight: 400;
-  border-radius: 0px !important;
+  padding: 20px var(--spacing-5);
+  color: rgb(var(--gray0)) !important;
+  font-size: var(--title3-font-size);
+  line-height: var(--title3-line-height);
+  font-weight: var(--title3-font-weight);
+  border-radius: 0px;
 }
 .dropdown__link:hover {
-  text-decoration: underline !important;
-}
-[data-theme='light'] .dropdown__link {
-  color: rgb(255, 255, 255) !important;
-}
-[data-theme='dark'] .dropdown__link {
-  color: rgb(0, 0, 0) !important;
+  text-decoration: underline;
 }
 
 /* Dropdown Caret Icon */
 .dropdown .navbar__link::after {
-  height: 12px !important;
-  width: 12px !important;
-  border: none !important;
-  transform: translateY(0) !important;
+  height: 12px;
+  width: 12px;
+  border: none;
+  transform: translateY(0);
 }
 [data-theme='light'] .dropdown .navbar__link::after {
-  content: url('/assets/icons/caret-down-black.svg') !important;
+  content: url('/assets/icons/caret-down-black.svg');
 }
 [data-theme='dark'] .dropdown .navbar__link::after {
-  content: url('/assets/icons/caret-down-white.svg') !important;
+  content: url('/assets/icons/caret-down-white.svg');
 }
 
 /* Hide External Link Icons */
 .dropdown__link svg,
 .navbar__link svg {
-  display: none !important;
+  display: none;
 }

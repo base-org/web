@@ -77,7 +77,7 @@ html {
   --title2-font-family: var(--cds-font-display);
   --title3-font-size: 20px;
   --title3-line-height: 28px;
-  --title3-font-weight: 600;
+  --title3-font-weight: 400;
   --title3-font-family: var(--cds-font-sans);
   --title4-font-size: 20px;
   --title4-line-height: 28px;
@@ -209,7 +209,7 @@ html {
 
   --docusaurus-tag-list-border: var(--ifm-color-emphasis-300);
   --collapse-button-bg-color-dark: #2e333a;
-  --doc-sidebar-width: 300px;
+  --doc-sidebar-width: 270px;
   --doc-sidebar-hidden-width: 30px;
 
   --ifm-color-primary: #25c2a0;
@@ -242,8 +242,6 @@ html {
 }
 
 html[data-theme='light'] {
-  background: #ffffff;
-
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1) !important;
 
   --blue0: 245, 248, 255;
@@ -310,7 +308,7 @@ html[data-theme='light'] {
   --gray70: 70, 75, 85;
   --gray80: 50, 53, 61;
   --gray90: 30, 32, 37;
-  --gray100: 10, 11, 13;
+  --gray100: 0, 0, 0;
   --indigo0: 246, 247, 255;
   --indigo5: 230, 232, 255;
   --indigo10: 214, 218, 254;
@@ -469,7 +467,7 @@ html[data-theme='dark'] {
   --yellow80: 255, 223, 68;
   --yellow90: 255, 237, 150;
   --yellow100: 255, 252, 241;
-  --gray0: 10, 11, 13;
+  --gray0: 0, 0, 0;
   --gray5: 20, 21, 25;
   --gray10: 30, 32, 37;
   --gray15: 40, 43, 49;
@@ -551,7 +549,7 @@ html[data-theme='dark'] {
   --foreground-muted: rgb(var(--gray60));
   --background: rgb(var(--gray0));
   --background-alternate: rgb(var(--gray5));
-  --background-overlay: rgba(var(--gray80), 0.33);
+  --background-overlay: rgba(var(--gray0), 0.5);
   --line: rgba(var(--gray60), 0.2);
   --line-heavy: rgba(var(--gray60), 0.68);
   --primary: rgb(var(--blue60));

@@ -1,9 +1,10 @@
 @import url('./fonts.css');
 @import url('./root.css');
 @import url('./basecamp-sidebar-icons.css');
-@import url('./sidebar.css');
 @import url('./navbar.css');
 @import url('./search.css');
+@import url('./sidebar.css');
+@import url('./doc-page.css');
 
 .no-scroll {
   height: 100%;
@@ -82,4 +83,12 @@ main {
 
 main > .container {
   height: 100%;
+}
+
+svg[class*='iconExternalLink'] {
+  display: none !important;
+}
+
+.theme-back-to-top-button {
+  display: none !important;
 }
