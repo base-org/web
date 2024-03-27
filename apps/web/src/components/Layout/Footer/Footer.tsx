@@ -13,8 +13,6 @@ export function Footer() {
 
   const handleCloseModal = useCallback(() => setIsOpen(false), []);
 
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="z-10 mt-auto flex w-full justify-center bg-gray lg:pb-64">
       <div className="flex w-full max-w-[1440px] flex-col justify-between p-8 lg:flex-row">
@@ -58,7 +56,6 @@ export function Footer() {
               Cookie Manager
             </button>
           </p>
-          <p>© {currentYear} Coinbase</p>
         </div>
         <div className="flex h-full flex-col gap-5 pt-24 lg:flex-row lg:gap-10 lg:pt-0">
           <div className="flex h-full flex-col gap-4 lg:flex-row lg:gap-10">

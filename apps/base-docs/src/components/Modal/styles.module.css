@@ -3,7 +3,7 @@
 }
 
 .modalOverlay {
-  background-color: rgba(10, 11, 13, 0.5);
+  background-color: var(--background-overlay) !important;
   position: fixed;
   top: 0;
   left: 0;
