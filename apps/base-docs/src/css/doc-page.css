@@ -1,6 +1,6 @@
 main .container {
   /* offset 5 pixels to keep even with breadcrumb padding */
-  padding: 25px 105px !important;
+  padding: var(--spacing-5) var(--spacing-6) !important;
   max-width: 100% !important;
 }
 
