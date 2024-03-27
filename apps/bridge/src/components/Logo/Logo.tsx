@@ -4,7 +4,7 @@ type LogoProps = {
   height?: string;
 };
 
-export function Logo({ color = 'white', width = 'auto', height = '32' }: LogoProps) {
+export function Logo({ color = 'white', width = '100%', height = '32' }: LogoProps) {
   return (
     <svg
       width={width}
