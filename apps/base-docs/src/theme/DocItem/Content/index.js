@@ -40,7 +40,7 @@ export default function DocItemContent({ children }) {
       <BrowserOnly>
         {() => (
           <>
-            <DocFeedback />
+            {/* <DocFeedback /> - Disabled while team decides how to rework */}
             <DocChat />
           </>
         )}
