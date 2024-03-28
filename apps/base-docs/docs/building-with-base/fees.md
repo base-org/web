@@ -18,6 +18,7 @@ keywords:
     fee variations,
     Base platform,
   ]
+hide_table_of_contents: true
 ---
 
 # Fees

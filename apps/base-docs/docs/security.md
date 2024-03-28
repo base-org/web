@@ -17,6 +17,7 @@ keywords:
     crypto security,
     open source,
   ]
+hide_table_of_contents: true
 ---
 
 # Security

@@ -18,6 +18,7 @@ keywords:
     ERC-20 tokens,
     asset bridging,
   ]
+hide_table_of_contents: true
 ---
 
 # Bridges

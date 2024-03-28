@@ -11,7 +11,13 @@ a:hover {
 }
 
 .tutorialsInnerContainer {
-  max-width: 841px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tutorialsMarkdown {
+  max-width: 841px !important;
   padding-top: 24px;
   padding-bottom: 24px;
 }

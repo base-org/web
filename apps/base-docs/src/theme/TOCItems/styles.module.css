@@ -1,0 +1,7 @@
+.tocTitle {
+  font-family: CoinbaseMono !important;
+  font-size: var(--body-font-size) !important;
+  font-weight: 500 !important;
+  line-height: var(--body-line-height) !important;
+  padding-bottom: 2px;
+}

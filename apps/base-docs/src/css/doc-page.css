@@ -5,13 +5,25 @@ main .container {
 }
 
 main .container .row {
-  display: block;
   max-width: 100% !important;
   margin: 0 !important;
 }
 
 main .container .row .col {
   max-width: 75% !important;
+}
+
+.table-of-contents {
+  font-size: 1rem;
+  padding: 30px;
+}
+
+.table-of-contents > li > a {
+  color: var(--foreground);
+}
+
+.table-of-contents ul li a {
+  color: var(--foreground-muted);
 }
 
 @media (max-width: 1536px) {

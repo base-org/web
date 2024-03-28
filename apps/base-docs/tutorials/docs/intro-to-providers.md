@@ -177,11 +177,11 @@ Open up the [WalletConnect] homepage, and create an account, and/or sign in usin
 
 Click the `Create` button in the upper right of the `Projects` tab.
 
-![Create Button](../../../assets/images/connecting-to-the-blockchain/wallet-connect-create-button.png)
+![Create Button](../../assets/images/connecting-to-the-blockchain/wallet-connect-create-button.png)
 
 Enter a name for your project, select the `App` option, and click `Create`.
 
-![Project Information](../../../assets/images/connecting-to-the-blockchain/add-project-information.png)
+![Project Information](../../assets/images/connecting-to-the-blockchain/add-project-information.png)
 
 Copy the _Project ID_ from the project information page, and paste it in as the `projectId` in `getDefaultWallets`.
 
@@ -220,11 +220,11 @@ yarn run dev
 
 Click the `Connect Wallet` button, select your wallet from the modal, approve the connection, and you should see your network, token balance, and address or ENS name at the top of the screen. Select your wallet from the modal.
 
-![RainbowKit modal](../../../assets/images/connecting-to-the-blockchain/rainbowkit-modal.png)
+![RainbowKit modal](../../assets/images/connecting-to-the-blockchain/rainbowkit-modal.png)
 
 You've connected with the Public Provider!
 
-![Connected](../../../assets/images/connecting-to-the-blockchain/connected.png)
+![Connected](../../assets/images/connecting-to-the-blockchain/connected.png)
 
 ### QuickNode
 
@@ -242,7 +242,7 @@ You do need an RPC URL, so open up [QuickNode]'s site and sign up for an account
 
 On the next screen, you'll be asked to select a chain. Each endpoint only works for one. Select `Base`, click `Continue`.
 
-![Select Chain](../../../assets/images/connecting-to-the-blockchain/quicknode-select-chain.png)
+![Select Chain](../../assets/images/connecting-to-the-blockchain/quicknode-select-chain.png)
 
 For now, pick `Base Mainnet`, but you'll probably want to delete this endpoint and create a new one for Sepolia when you start building. The free tier only allows you to have one at a time.
 
@@ -279,7 +279,7 @@ To test this out, comment out `publicProvider()`, and switch networks a few time
 
 [Alchemy] is [baked into wagmi], but you still need an account and a key. Create an account and/or sign in, navigate to the `Apps` section in the left sidebar, and click `Create new app`.
 
-![Alchemy new app](../../../assets/images/connecting-to-the-blockchain/alchemy-new-app.png)
+![Alchemy new app](../../assets/images/connecting-to-the-blockchain/alchemy-new-app.png)
 
 Select Base Mainnet, and give your app a name.
 

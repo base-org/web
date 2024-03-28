@@ -39,7 +39,9 @@ export default function Tutorials() {
     <Layout title="Base Tutorials" description="Base tutorials">
       <main className={clsx(styles.tutorialsMainContainer)}>
         <div className={clsx(styles.tutorialsInnerContainer, 'container')}>
-          <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
+          <div
+            className={clsx(styles.tutorialsMarkdown, ThemeClassNames.docs.docMarkdown, 'markdown')}
+          >
             <header>
               <Heading as="h1" className={clsx(styles.tutorialsTitle)}>
                 {TITLE}
