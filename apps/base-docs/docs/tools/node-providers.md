@@ -111,6 +111,7 @@ keywords:
 #### Supported Networks
 
 - Base Mainnet
+- Base Sepolia (Testnet)
 
 ---
 
