@@ -80,9 +80,6 @@ export default function NavbarContent() {
   const mobileSidebar = useNavbarMobileSidebar();
   const items = useNavbarItems();
   const { topRightItems, bottomLeftItems, bottomRightItems } = splitNavbarItems(items);
-  console.log(`topRightItems: ${JSON.stringify(topRightItems)}`);
-  console.log(`bottomLeftItems: ${JSON.stringify(bottomLeftItems)}`);
-  console.log(`bottomRightItems: ${JSON.stringify(bottomRightItems)}`);
 
   const searchBarItem = items.find((item) => item.type === 'search');
   return (

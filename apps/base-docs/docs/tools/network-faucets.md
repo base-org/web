@@ -16,6 +16,7 @@ keywords:
     Ethereum Mainnet,
     testnet resources,
   ]
+hide_table_of_contents: true
 ---
 
 # Network Faucets

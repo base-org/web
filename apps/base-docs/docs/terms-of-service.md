@@ -2,6 +2,7 @@
 title: Terms of Service
 slug: /terms-of-service
 description: The Terms of Service for using Base, a layer-two optimistic rollup on Ethereum.
+hide_table_of_contents: true
 ---
 
 # Bridge Interface, Sequencer, and Testnet Terms

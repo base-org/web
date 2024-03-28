@@ -14,6 +14,7 @@ body {
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+  background: #000000;
 }
 
 :root {
@@ -201,6 +202,8 @@ html {
   --ifm-paragraph-margin-bottom: unset !important;
   --ifm-heading-margin-bottom: unset !important;
 
+  --ifm-toc-padding-vertical: 0.25rem !important;
+
   /* Search bar */
   --search-input-height: 61px;
   --search-width: 478px;
@@ -221,9 +224,28 @@ html {
   --ifm-code-font-size: 95%;
   --search-font-size: 16px;
   --search-font-weight: 16px;
+
+  /* Base Docs Palette */
+  --base-docs-color-fg: #000000;
+  --base-docs-color-fg-muted: #5b616e;
+  --base-docs-color-bg: #ffffff;
+  --base-docs-color-bg-alt: #eef0f3;
+  --base-docs-color-bg-overlay: #32353d54;
+  --base-docs-color-line: #5b616e33;
+  --base-docs-color-line-heavy: #5b616e;
+  --base-docs-color-elevation-1: #ffffff;
+  --base-docs-color-elevation-2: #ffffff;
+  --base-docs-color-fg-primary: #ffffff;
+  --base-docs-color-fg-negative: #ffffff;
+  --base-docs-color-fg-positive: #ffffff;
+  --base-docs-color-fg-warning: #ffffff;
+  --base-docs-color-secondary: #eef0f3;
+  --base-docs-color-fg-secondary: #0a0b0d;
 }
 
 html[data-theme='light'] {
+  background: #ffffff;
+
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1) !important;
 
   --blue0: 245, 248, 255;
@@ -560,4 +582,20 @@ html[data-theme='dark'] {
   --hr-color: rgba(138, 145, 158, 0.4);
   --toc-border-color: rgba(138, 145, 158, 0.6);
   --toc-highlight-color: rgb(55, 115, 245);
+
+  --base-docs-color-fg: #ffffff;
+  --base-docs-color-fg-muted: #8a919e;
+  --base-docs-color-bg: #000000;
+  --base-docs-color-bg-alt: #141519;
+  --base-docs-color-bg-overlay: #0a0b0d54;
+  --base-docs-color-line: #8a919e33;
+  --base-docs-color-line-heavy: #8a919ea8;
+  --base-docs-color-elevation-1: #141519;
+  --base-docs-color-elevation-2: #1e2025;
+  --base-docs-color-fg-primary: #000000;
+  --base-docs-color-fg-negative: #0a0b0d;
+  --base-docs-color-fg-positive: #000000;
+  --base-docs-color-fg-warning: #0a0b0d;
+  --base-docs-color-secondary: #32353d;
+  --base-docs-color-fg-secondary: #ffffff;
 }

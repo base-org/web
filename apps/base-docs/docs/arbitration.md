@@ -1,6 +1,7 @@
 ---
 title: Arbitration
 slug: /arbitration
+hide_table_of_contents: true
 ---
 
 # APPENDIX 1: BRIDGE INTERFACE, SEQUENCER, AND TESTNET TERMS ARBITRATION AGREEMENT
