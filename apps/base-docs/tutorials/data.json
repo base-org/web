@@ -18,7 +18,7 @@
       "Particle Auth"
     ],
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "29 mins"
   },
   "account-abstraction-with-privy-and-base-paymaster": {
@@ -41,7 +41,7 @@
     ],
     "hide_table_of_contents": false,
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "46 mins"
   },
   "advanced-frame-behavior": {
@@ -56,7 +56,7 @@
     ],
     "hide_table_of_contents": false,
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "12 mins"
   },
   "build-with-thirdweb": {
@@ -83,7 +83,7 @@
       "build on Base"
     ],
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "8 mins"
   },
   "complex-onchain-nfts": {
@@ -107,7 +107,7 @@
     ],
     "hide_table_of_contents": false,
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "39 mins"
   },
   "cross-chain-with-ccip": {
@@ -127,7 +127,7 @@
       "transfer tokens across chains"
     ],
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "32 mins"
   },
   "cross-chain-with-layerzero": {
@@ -135,7 +135,7 @@
     "slug": "/cross-chain-with-layerzero",
     "description": "A guide on using LayerZero V2 to perform cross-chain messaging from Base Goerli testnet to Optimism Goerli testnet.",
     "author": "Taylor Caldwell",
-    "keywords": [
+    "eywords": [
       "Cross-chain",
       "Omni-chain",
       "Crosschain",
@@ -147,7 +147,7 @@
       "transfer tokens across chains"
     ],
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "34 mins"
   },
   "deploy-frame-on-vercel": {
@@ -165,7 +165,7 @@
     ],
     "hide_table_of_contents": false,
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "9 mins"
   },
   "deploy-smart-contracts": {
@@ -189,7 +189,7 @@
       "smart contract development"
     ],
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "15 mins"
   },
   "deploy-with-foundry": {
@@ -213,7 +213,7 @@
       "smart contract development"
     ],
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "17 mins"
   },
   "deploy-with-remix": {
@@ -238,7 +238,7 @@
       "online IDE"
     ],
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "18 mins"
   },
   "deploy-with-tenderly": {
@@ -264,7 +264,7 @@
       "build on Base"
     ],
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "19 mins"
   },
   "deploy-with-thirdweb": {
@@ -293,7 +293,7 @@
       "build on Base"
     ],
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "10 mins"
   },
   "frame-transactions": {
@@ -311,7 +311,7 @@
     ],
     "hide_table_of_contents": false,
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "17 mins"
   },
   "hyperframes": {
@@ -321,7 +321,7 @@
     "author": "Brian Doyle",
     "hide_table_of_contents": false,
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "14 mins"
   },
   "intro-to-foundry-setup": {
@@ -338,7 +338,7 @@
     ],
     "hide_table_of_contents": false,
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "6 mins"
   },
   "intro-to-foundry-testing": {
@@ -357,7 +357,7 @@
     ],
     "hide_table_of_contents": false,
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "9 mins"
   },
   "intro-to-providers": {
@@ -402,7 +402,7 @@
     ],
     "hide_table_of_contents": false,
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "20 mins"
   },
   "linked-minting-frame": {
@@ -422,7 +422,7 @@
     ],
     "hide_table_of_contents": false,
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "7 mins"
   },
   "nft-minting-frame": {
@@ -441,7 +441,7 @@
     ],
     "hide_table_of_contents": false,
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "22 mins"
   },
   "run-a-base-node": {
@@ -464,7 +464,7 @@
       "Ethereum node"
     ],
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "5 mins"
   },
   "using-chainlink-price-feeds": {
@@ -488,7 +488,7 @@
       "build on Base"
     ],
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "11 mins"
   },
   "using-pyth-price-feeds": {
@@ -513,7 +513,7 @@
       "build on Base"
     ],
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "13 mins"
   },
   "using-supra-vrf": {
@@ -545,7 +545,7 @@
       "build on Base"
     ],
     "displayed_sidebar": null,
-    "last_updated": "Mar 19",
+    "last_updated": "Mar 27",
     "duration": "19 mins"
   }
 }
