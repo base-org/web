@@ -1,11 +1,6 @@
 ---
-<<<<<<<< HEAD:apps/base-docs/tutorials/docs/intro-to-foundry-setup.md
 title: 'Introduction to Foundry: Setting up Foundry with Base'
 slug: /intro-to-foundry-setup
-========
-title: 'Building with Base and Foundry: Introduction to Foundry'
-slug: /building-with-base-and-foundry/introduction
->>>>>>>> 2d5ba37 (Add tutorials; initial commit):apps/base-docs/tutorials/docs/building-with-base-and-foundry/introduction.md
 description: Documentation for Foundry, a toolchain for smart contract development. Provides instructions on setting up your development environment to work with Foundry.
 author: Brian Doyle
 keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain]

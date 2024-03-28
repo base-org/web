@@ -1,12 +1,7 @@
 ---
-<<<<<<<< HEAD:apps/base-docs/tutorials/docs/intro-to-foundry-testing.md
 title: 'Introduction to Foundry: Testing smart contracts'
 slug: /intro-to-foundry-testing
 author: Brian Doyle
-========
-title: 'Building with Base and Foundry: Testing'
-slug: /building-with-base-and-foundry/testing
->>>>>>>> 2d5ba37 (Add tutorials; initial commit):apps/base-docs/tutorials/docs/building-with-base-and-foundry/testing.md
 description: Documentation for Foundry, a toolchain for smart contract development. Learn how to test your smart contracts using Foundry.
 keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain, testing, test]
 hide_table_of_contents: false
