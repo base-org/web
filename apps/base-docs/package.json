@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "dev": "docusaurus start",
+    "dev": "npm run update-tutorials && docusaurus start",
     "docusaurus": "docusaurus",
-    "build": "docusaurus build --out-dir ../../out/base-docs",
+    "build": "npm run update-tutorials && docusaurus build --out-dir ../../out/base-docs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
+    "update-tutorials": "node ./scripts/updateTutorials.js",
     "typecheck": "tsc"
   },
   "dependencies": {

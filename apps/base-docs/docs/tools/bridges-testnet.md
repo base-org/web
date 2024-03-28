@@ -19,6 +19,7 @@ keywords:
     Base Testnet,
     asset bridging,
   ]
+hide_table_of_contents: true
 ---
 
 # Bridges

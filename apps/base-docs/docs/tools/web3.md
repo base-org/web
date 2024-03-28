@@ -17,6 +17,7 @@ keywords:
     Ethereum,
     RPC URL,
   ]
+hide_table_of_contents: true
 ---
 
 # web3.js

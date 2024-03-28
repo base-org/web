@@ -17,6 +17,7 @@ keywords:
     transaction security,
     network fees,
   ]
+hide_table_of_contents: true
 ---
 
 # Base Bridge FAQ
