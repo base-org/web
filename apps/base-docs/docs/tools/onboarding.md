@@ -21,6 +21,7 @@ keywords:
     accounts,
     user account,
   ]
+hide_table_of_contents: true
 ---
 
 # User Onboarding

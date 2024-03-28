@@ -15,6 +15,7 @@ keywords:
     Optimism,
     decentralized apps,
   ]
+hide_table_of_contents: true
 ---
 
 # About Base

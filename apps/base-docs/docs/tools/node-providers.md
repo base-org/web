@@ -23,6 +23,7 @@ keywords:
     pricing plans,
     Web3 infrastructure,
   ]
+hide_table_of_contents: true
 ---
 
 # Node Providers

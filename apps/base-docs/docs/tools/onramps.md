@@ -19,6 +19,7 @@ keywords:
     MoonPay,
     Onramp,
   ]
+hide_table_of_contents: true
 ---
 
 # Onramps

@@ -18,6 +18,7 @@ keywords:
     testnet,
     local development,
   ]
+hide_table_of_contents: true
 ---
 
 # Hardhat

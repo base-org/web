@@ -21,6 +21,7 @@ keywords:
     price feeds,
     data feeds,
   ]
+hide_table_of_contents: true
 ---
 
 # Oracles

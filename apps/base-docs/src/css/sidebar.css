@@ -148,6 +148,11 @@ li[class*='theme-doc-sidebar-item-link-level-'] > .menu__link:hover {
   color: var(--ifm-color-gray-600) !important;
 }
 
+.theme-doc-sidebar-item-category-level-2 {
+  padding-left: 12px !important;
+  color: var(--ifm-color-gray-600) !important;
+}
+
 li[class*='theme-doc-sidebar-item-link-level-']:not(
     .theme-doc-sidebar-item-link-level-1,
     .theme-doc-sidebar-item-link-level-2

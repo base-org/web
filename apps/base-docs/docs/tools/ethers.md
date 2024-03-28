@@ -17,6 +17,7 @@ keywords:
     ABI,
     interacting with smart contract,
   ]
+hide_table_of_contents: true
 ---
 
 # ethers.js

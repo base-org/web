@@ -14,6 +14,7 @@ keywords:
     cryptocurrency,
     smart contracts,
   ]
+hide_table_of_contents: true
 ---
 
 # Contracts

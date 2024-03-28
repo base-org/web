@@ -18,6 +18,7 @@ keywords:
     Etherscan,
     Basescan,
   ]
+hide_table_of_contents: true
 ---
 
 # Block Explorers

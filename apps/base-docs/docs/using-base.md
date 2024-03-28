@@ -18,6 +18,7 @@ keywords:
     'Base wallet setup',
     'add Base network',
   ]
+hide_table_of_contents: true
 ---
 
 # Using Base with your wallet

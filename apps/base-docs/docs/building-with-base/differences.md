@@ -16,6 +16,7 @@ keywords:
     Base transaction costs,
     transaction costs,
   ]
+hide_table_of_contents: true
 ---
 
 # Differences between Ethereum and Base

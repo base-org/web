@@ -17,6 +17,7 @@ keywords:
     debug smart contract,
     web3 applications,
   ]
+hide_table_of_contents: true
 ---
 
 # thirdweb CLI

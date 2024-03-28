@@ -15,6 +15,7 @@ keywords:
     token deployment,
     add token to Base,
   ]
+hide_table_of_contents: true
 ---
 
 # The Base Token List

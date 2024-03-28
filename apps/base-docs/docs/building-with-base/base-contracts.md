@@ -15,6 +15,7 @@ keywords:
     Base Mainnet,
     Base Testnet,
   ]
+hide_table_of_contents: true
 ---
 
 # Contract Addresses
