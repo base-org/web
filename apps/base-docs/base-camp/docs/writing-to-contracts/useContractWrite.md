@@ -6,6 +6,12 @@ hide_table_of_contents: false
 
 The [`useContractWrite`] hook allows you to call your `public` and `external` smart contract functions that write to state and create a permanent modification to the data on chain.
 
+:::caution
+
+The frontend tutorials are currently based on version 1.X of Wagmi. Version 2 has recently been released and is a near complete rewrite of the library. We are working on updates. In the meantime, please use Version 1, or review the [migration guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
+
+:::
+
 ---
 
 ## Objectives
