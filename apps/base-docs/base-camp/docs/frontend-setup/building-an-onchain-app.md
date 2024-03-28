@@ -8,6 +8,12 @@ While it's convenient and fast to start from a template, the template may not fi
 
 In this guide, we'll build the beginnings of an app similar to the one created by the [RainbowKit] quick start, but we'll do it piece by piece. You can follow along, and swap out any of our library choices with the ones you prefer.
 
+:::caution
+
+The frontend tutorials are currently based on version 1.X of Wagmi. Version 2 has recently been released and is a near complete rewrite of the library. We are working on updates. In the meantime, please use Version 1, or review the [migration guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
+
+:::
+
 ---
 
 ## Objectives

@@ -817,7 +817,7 @@ const sidebars = {
         {
           type: 'link',
           label: 'Connecting to the Blockchain',
-          href: 'https://docs.base.org/connecting-to-the-blockchain/overview',
+          href: 'https://docs.base.org/tutorials/intro-to-providers',
           className: 'sidebar-coding',
         },
         {
