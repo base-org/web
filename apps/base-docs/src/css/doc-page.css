@@ -22,6 +22,14 @@ main .container .row .col {
   color: var(--foreground);
 }
 
+.table-of-contents li {
+  margin: var(--ifm-toc-padding-vertical) var(--ifm-toc-padding-horizontal);
+}
+
+.table-of-contents ul li {
+  margin: var(--ifm-toc-padding-vertical) var(--ifm-toc-padding-horizontal);
+}
+
 .table-of-contents ul li a {
   color: var(--foreground-muted);
 }

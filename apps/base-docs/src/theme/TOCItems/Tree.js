@@ -2,10 +2,13 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import { useWindowSize } from '@docusaurus/theme-common';
+import { Link } from 'react-router-dom';
+import { useDoc } from '@docusaurus/theme-common/internal';
 
 // Recursive component rendering the toc tree
 function TOCItemTree({ toc, className, linkClassName, isChild }) {
   const windowSize = useWindowSize();
+  const { metadata } = useDoc();
 
   if (!toc.length) {
     return null;
@@ -35,6 +38,16 @@ function TOCItemTree({ toc, className, linkClassName, isChild }) {
           />
         </li>
       ))}
+      {!isChild &&
+        windowSize === 'desktop' &&
+        metadata.source &&
+        metadata.source.startsWith('@site/tutorials/docs') && (
+          <li>
+            <Link to={`/tutorials`}>
+              <p className={clsx(styles.backLink)}>All tutorials</p>
+            </Link>
+          </li>
+        )}
     </ul>
   );
 }
