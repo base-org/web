@@ -60,6 +60,12 @@ Only token holders are allowed to create issues, and issues cannot be created th
 
 This function must return the index of the newly-created issue.
 
+:::caution
+
+One of the unit tests will break if you place your check for `quorum` before the check that the user holds a token. The test compares encoded error names, which are **not** human-readable. If you are getting `-> AssertionError: �s is not equal to �9�` or similar, this is likely the issue.
+
+:::
+
 ### Get Issue
 
 Add an `external` function called `getIssue` that can return all of the data for the issue of the provided `_id`.
