@@ -6,6 +6,12 @@ hide_table_of_contents: false
 
 One of the most intimidating tasks when building an onchain app is making that initial connection between your users' wallets, and your app. Initial research often surfaces a bewildering number of wallets, each with their own SDKs, and own methods to manage the connection. Luckily, you don't actually need to manage all of this on your own. There are a number of libraries specialized in creating a smooth and beautiful user experience to facilitate this connection.
 
+:::caution
+
+The frontend tutorials are currently based on version 1.X of Wagmi. Version 2 has recently been released and is a near complete rewrite of the library. We are working on updates. In the meantime, please use Version 1, or review the [migration guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
+
+:::
+
 ---
 
 ## Objectives

@@ -8,6 +8,12 @@ hide_table_of_contents: false
 
 You can use this for connection-status-based rendering, to enable or disable controls or views based on address, and many other useful tasks.
 
+:::caution
+
+The frontend tutorials are currently based on version 1.X of Wagmi. Version 2 has recently been released and is a near complete rewrite of the library. We are working on updates. In the meantime, please use Version 1, or review the [migration guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
+
+:::
+
 ---
 
 ## Objectives
