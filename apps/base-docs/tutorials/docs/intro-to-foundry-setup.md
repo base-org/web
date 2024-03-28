@@ -2,7 +2,7 @@
 title: 'Introduction to Foundry: Setting up Foundry with Base'
 slug: /intro-to-foundry-setup
 description: Documentation for Foundry, a toolchain for smart contract development. Provides instructions on setting up your development environment to work with Foundry.
-author: Brian Doyle
+author: briandoyle81
 keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain]
 hide_table_of_contents: false
 displayed_sidebar: null

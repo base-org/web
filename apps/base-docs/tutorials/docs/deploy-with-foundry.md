@@ -3,7 +3,7 @@ title: Deploying a Smart Contract using Foundry
 slug: /deploy-with-foundry
 description: "A guide on deploying a smart contract on the Base test network using Foundry. Includes instructions for
 setting up the environment, compiling, and deploying the smart contract."
-author: Tom Vieira
+author: neodaoist
 keywords: ["Foundry", "smart contract", "ERC-721", "Base", "Base test network", "Base testnet", "Rust", "Solidity", "smart contract deployment",
 "deploy a smart contract", "build on base", "write smart contract", "smart contract development"]
 displayed_sidebar: null

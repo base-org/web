@@ -2,7 +2,7 @@
 title: 'Linked Minting Frame'
 slug: /linked-minting-frame
 description: Make a Farcaster frame with an outbound link to a minting website.
-author: Brian Doyle
+author: briandoyle81
 keywords: [Solidity, ERC-721, token, NFT, farcaster, frames, farcaster frames, mint]
 hide_table_of_contents: false
 displayed_sidebar: null

@@ -2,7 +2,7 @@
 title: 'HyperFrames'
 slug: /hyperframes
 description: Learn how to make cross-linked hyperframes in an organized manner.
-author: Brian Doyle
+author: briandoyle81
 hide_table_of_contents: false
 displayed_sidebar: null
 keywords: [farcaster, frames, farcaster frames, hyperframes, hyper frames, state, frame state, Base]

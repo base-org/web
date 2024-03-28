@@ -7,8 +7,14 @@ import MDXContent from '@theme/MDXContent';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import tutorialData from '../../../tutorials/data.json';
+import authors from '@app/base-docs/static/json/authors.json';
+
+const handleClick = (event) => {
+  event.stopPropagation();
+};
 
 function TutorialListCell({ tutorial }) {
+  const authorData = authors[tutorial.author];
   return (
     <Link to={`/tutorials${tutorial.slug}`}>
       <div className={clsx(styles.tutorialListCell, 'container')}>
@@ -18,7 +24,13 @@ function TutorialListCell({ tutorial }) {
           </Heading>
         </header>
         <div className={clsx(styles.tutorialListCellInfo)}>
-          <p>{tutorial.author ? `🖊️  ${tutorial.author}` : ''}</p>
+          {authorData && authorData.link && (
+            <a className={clsx(styles.tutorialAuthor)} href={authorData.link} onClick={handleClick}>
+              <p>{`🖊️  ${authorData.name}`}</p>
+            </a>
+          )}
+          {authorData && !authorData.link && <p>{`🖊️  ${authorData.name}`}</p>}
+          {!authorData && <p>{tutorial.author ? `🖊️  ${tutorial.author}` : ''}</p>}
           <p>{tutorial.last_updated ? tutorial.last_updated : ''}</p>
           <p>{tutorial.duration ? tutorial.duration : ''}</p>
         </div>

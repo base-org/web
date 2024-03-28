@@ -2,7 +2,7 @@
 title: 'Complex Onchain NFTs'
 slug: /complex-onchain-nfts
 description: Learn how to make complex nfts that are procedurally generated and have onchain metadata and images.
-author: Brian Doyle
+author: briandoyle81
 keywords:
   [
     Solidity,

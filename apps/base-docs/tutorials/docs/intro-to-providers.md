@@ -2,7 +2,7 @@
 title: 'Introduction to Providers'
 slug: /intro-to-providers
 description: Learn what providers are and why you need one, and configure several providers and use them to connect to the blockchain.
-author: Brian Doyle
+author: briandoyle81
 keywords:
   [
     blockchain providers,

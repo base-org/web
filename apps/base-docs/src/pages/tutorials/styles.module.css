@@ -67,6 +67,10 @@ a:hover {
   font-weight: 400;
 }
 
+.tutorialAuthor {
+  color: var(--primary) !important;
+}
+
 @media (min-width: 997px) {
   .tutorialsMainContainer {
     flex-grow: 1;

@@ -2,7 +2,7 @@
 title: Sending messages from Base to other chains using LayerZero V2
 slug: /cross-chain-with-layerzero
 description: A guide on using LayerZero V2 to perform cross-chain messaging from Base Goerli testnet to Optimism Goerli testnet.
-author: Taylor Caldwell
+author: taycaldwell
 eywords:
   [
     Cross-chain,

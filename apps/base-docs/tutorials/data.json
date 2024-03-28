@@ -3,7 +3,7 @@
         "title": "Account Abstraction on Base using Biconomy",
         "slug": "/account-abstraction-with-biconomy",
         "description": "A guide on implementing Account Abstraction into a Base project using Biconomy paymasters, bundlers, and smart accounts.",
-        "author": "Taylor Caldwell",
+        "author": "taycaldwell",
         "keywords": [
             "Account Abstraction",
             "AA",
@@ -25,7 +25,7 @@
         "title": "Account Abstraction: Intro to Privy and the Base Paymaster",
         "slug": "/account-abstraction-with-privy-and-base-paymaster",
         "description": "What's in this learning material.",
-        "author": "Brian Doyle",
+        "author": "briandoyle81",
         "keywords": [
             "Privy",
             "viem",
@@ -48,7 +48,7 @@
         "title": "Advanced Frame Behavior",
         "slug": "/advanced-frame-behavior",
         "description": "Make a Farcaster frame that only allows users to access part of the frame after they have completed different actions.",
-        "author": "Brian Doyle",
+        "author": "briandoyle81",
         "keywords": [
             "farcaster",
             "frames",
@@ -63,7 +63,7 @@
         "title": "Building an App using thirdweb",
         "slug": "/build-with-thirdweb",
         "description": "A guide on building an NFT gallery app using thirdweb, including steps for creating an NFT collection, minting NFTs, and configuring the app for the Base testnet.",
-        "author": "Taylor Caldwell",
+        "author": "taycaldwell",
         "keywords": [
             "thirdweb",
             "onchain app",
@@ -90,7 +90,7 @@
         "title": "Complex Onchain NFTs",
         "slug": "/complex-onchain-nfts",
         "description": "Learn how to make complex nfts that are procedurally generated and have onchain metadata and images.",
-        "author": "Brian Doyle",
+        "author": "briandoyle81",
         "keywords": [
             "Solidity",
             "ERC-721",
@@ -114,7 +114,7 @@
         "title": "Sending messages and tokens from Base to other chains using Chainlink CCIP",
         "slug": "/cross-chain-with-ccip",
         "description": "A guide on using Chainlink CCIP to perform cross-chain messaging and token transfers from Base Goerli testnet to Optimism Goerli testnet.",
-        "author": "Taylor Caldwell",
+        "author": "taycaldwell",
         "keywords": [
             "Cross-chain",
             "Omni-chain",
@@ -134,7 +134,7 @@
         "title": "Sending messages from Base to other chains using LayerZero V2",
         "slug": "/cross-chain-with-layerzero",
         "description": "A guide on using LayerZero V2 to perform cross-chain messaging from Base Goerli testnet to Optimism Goerli testnet.",
-        "author": "Taylor Caldwell",
+        "author": "taycaldwell",
         "eywords": [
             "Cross-chain",
             "Omni-chain",
@@ -154,7 +154,7 @@
         "title": "Deploy Frames on Vercel",
         "slug": "/deploy-frame-on-vercel",
         "description": "Learn how to deploy frames using Vercel.",
-        "author": "Brian Doyle",
+        "author": "briandoyle81",
         "keywords": [
             "farcaster",
             "frames farcaster frames",
@@ -172,7 +172,7 @@
         "title": "Deploying a Smart Contract using Hardhat",
         "slug": "/deploy-smart-contracts",
         "description": "A guide on deploying a smart contract on the Base test network using Hardhat. Includes instructions for setting up the environment, compiling, and deploying the smart contract.",
-        "author": "Taylor Caldwell",
+        "author": "taycaldwell",
         "keywords": [
             "Hardhat",
             "smart contract",
@@ -196,7 +196,7 @@
         "title": "Deploying a Smart Contract using Foundry",
         "slug": "/deploy-with-foundry",
         "description": "A guide on deploying a smart contract on the Base test network using Foundry. Includes instructions for setting up the environment, compiling, and deploying the smart contract.",
-        "author": "Tom Vieira",
+        "author": "neodaoist",
         "keywords": [
             "Foundry",
             "smart contract",
@@ -220,7 +220,7 @@
         "title": "Deploying a Smart Contract using Remix",
         "slug": "/deploy-with-remix",
         "description": "A guide on deploying a smart contract on the Base test network using Remix IDE. Includes instructions for setting up the environment, compiling, and deploying the smart contract.",
-        "author": "Brian Doyle",
+        "author": "briandoyle81",
         "keywords": [
             "Remix",
             "Remix IDE",
@@ -245,7 +245,7 @@
         "title": "Deploying a Smart Contract using Tenderly",
         "slug": "/deploy-with-tenderly",
         "description": "A guide on deploying smart contracts using Tenderly DevNets. This page covers setup, debugging, transaction simulations, and continuous integration for smart contract development on Base Network.",
-        "author": "Tenderly",
+        "author": "tenderly",
         "keywords": [
             "Tenderly",
             "smart contract",
@@ -271,7 +271,7 @@
         "title": "Deploying a Smart Contract using thirdweb",
         "slug": "/deploy-with-thirdweb",
         "description": "A guide on deploying and interacting with smart contracts using the thirdweb CLI and SDK. Includes instructions for project creation, contract deployment on the Base test network.",
-        "author": "Taylor Caldwell",
+        "author": "taycaldwell",
         "keywords": [
             "thirdweb",
             "thirdweb CLI",
@@ -300,7 +300,7 @@
         "title": "Frame Transactions",
         "slug": "/frame-transactions",
         "description": "Invoke a wallet transaction from a Farcaster Frame",
-        "author": "Brian Doyle",
+        "author": "briandoyle81",
         "keywords": [
             "farcaster",
             "frames",
@@ -318,7 +318,7 @@
         "title": "HyperFrames",
         "slug": "/hyperframes",
         "description": "Learn how to make cross-linked hyperframes in an organized manner.",
-        "author": "Brian Doyle",
+        "author": "briandoyle81",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "keywords": [
@@ -338,7 +338,7 @@
         "title": "Introduction to Foundry: Setting up Foundry with Base",
         "slug": "/intro-to-foundry-setup",
         "description": "Documentation for Foundry, a toolchain for smart contract development. Provides instructions on setting up your development environment to work with Foundry.",
-        "author": "Brian Doyle",
+        "author": "briandoyle81",
         "keywords": [
             "Foundry",
             "Forge",
@@ -354,7 +354,7 @@
     "intro-to-foundry-testing": {
         "title": "Introduction to Foundry: Testing smart contracts",
         "slug": "/intro-to-foundry-testing",
-        "author": "Brian Doyle",
+        "author": "briandoyle81",
         "description": "Documentation for Foundry, a toolchain for smart contract development. Learn how to test your smart contracts using Foundry.",
         "keywords": [
             "Foundry",
@@ -374,7 +374,7 @@
         "title": "Introduction to Providers",
         "slug": "/intro-to-providers",
         "description": "Learn what providers are and why you need one, and configure several providers and use them to connect to the blockchain.",
-        "author": "Brian Doyle",
+        "author": "briandoyle81",
         "keywords": [
             "blockchain providers",
             "JSON RPC",
@@ -419,7 +419,7 @@
         "title": "Linked Minting Frame",
         "slug": "/linked-minting-frame",
         "description": "Make a Farcaster frame with an outbound link to a minting website.",
-        "author": "Brian Doyle",
+        "author": "briandoyle81",
         "keywords": [
             "Solidity",
             "ERC-721",
@@ -439,7 +439,7 @@
         "title": "Minting an NFT in a Frame",
         "slug": "/nft-minting-frame",
         "description": "Make a Farcaster frame that allows users to mint an NFT on your dime.",
-        "author": "Brian Doyle",
+        "author": "briandoyle81",
         "keywords": [
             "Solidity",
             "ERC-721",
@@ -458,7 +458,7 @@
         "title": "Running a Base Node",
         "slug": "/run-a-base-node",
         "description": "A guide for setting up and running a Base Node.",
-        "author": "Taylor Caldwell",
+        "author": "taycaldwell",
         "keywords": [
             "Base Node setup",
             "running a node",
@@ -481,7 +481,7 @@
         "title": "Accessing real-world data using Chainlink Data Feeds",
         "slug": "/using-chainlink-price-feeds",
         "description": "A guide on using Chainlink Data Feeds to access real-world data, such as asset prices, directly from your smart contracts on the Base testnet.",
-        "author": "Taylor Caldwell",
+        "author": "taycaldwell",
         "keywords": [
             "Oracle Oracles",
             "Chainlink",
@@ -505,7 +505,7 @@
         "title": "Accessing real-time asset data using Pyth Price Feeds",
         "slug": "/using-pyth-price-feeds",
         "description": "A guide on using Pyth Price Feeds to access real-time asset data, directly from your smart contracts on the Base testnet.",
-        "author": "Taylor Caldwell",
+        "author": "taycaldwell",
         "keywords": [
             "Oracle Oracles",
             "Pyth",
@@ -530,7 +530,7 @@
         "title": "Generating random numbers contracts using Supra dVRF",
         "slug": "/using-supra-vrf",
         "description": "A guide on using Supra dVRF to serve random numbers using an onchain randomness generation mechanism directly within your smart contracts on the Base testnet.",
-        "author": "Taylor Caldwell",
+        "author": "taycaldwell",
         "keywords": [
             "Oracle Oracles",
             "Supra",

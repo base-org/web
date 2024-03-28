@@ -2,7 +2,7 @@
 title: Running a Base Node
 slug: /run-a-base-node
 description: A guide for setting up and running a Base Node.
-author: Taylor Caldwell
+author: taycaldwell
 keywords:
   [
     Base Node setup,
