@@ -202,6 +202,8 @@ html {
   --ifm-paragraph-margin-bottom: unset !important;
   --ifm-heading-margin-bottom: unset !important;
 
+  --ifm-toc-padding-vertical: 0.25rem !important;
+
   /* Search bar */
   --search-input-height: 61px;
   --search-width: 478px;
