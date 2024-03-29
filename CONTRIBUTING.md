@@ -2,7 +2,7 @@
 
 👍🎉 First off, thank you for considering contributing to Base Web! 🎉👍
 
-The following is a set of guidelines for contributing to Base Web. These are just guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request this will help us to know about changes and also upscales developers skills.
+The following is a set of guidelines for contributing to Base Web. These are just guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request this will help us to know about changes and also upscales developers skill.
 
 ## Table of Contents
 
