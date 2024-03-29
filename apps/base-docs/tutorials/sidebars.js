@@ -2,11 +2,11 @@ const sidebars = {
   docs: [
     {
       type: 'category',
-      label: 'Deploying a Smart Contract',
+      label: 'Deploying a smart contract',
       collapsible: true,
       collapsed: true,
       items: [
-        'docs/deploy-smart-contracts',
+        'docs/deploy-with-hardhat',
         'docs/deploy-with-foundry',
         'docs/deploy-with-remix',
         'docs/deploy-with-tenderly',
@@ -15,7 +15,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Building an App Onchain',
+      label: 'Building an onchain app',
       collapsible: true,
       collapsed: true,
       items: ['docs/build-with-thirdweb'],
@@ -27,9 +27,9 @@ const sidebars = {
       collapsible: true,
       collapsed: true,
       items: [
-        'docs/using-chainlink-price-feeds',
-        'docs/using-pyth-price-feeds',
-        'docs/using-supra-vrf',
+        'docs/oracles-chainlink-price-feeds',
+        'docs/oracles-pyth-price-feeds',
+        'docs/oracles-supra-vrf',
       ],
     },
     {
@@ -73,7 +73,7 @@ const sidebars = {
       items: [
         {
           type: 'doc',
-          id: 'docs/complex-onchain-nfts',
+          id: 'docs/onchain-nfts',
           className: 'sidebar-coding',
         },
       ],
@@ -86,32 +86,32 @@ const sidebars = {
       items: [
         {
           type: 'doc',
-          id: 'docs/linked-minting-frame',
+          id: 'docs/farcaster-frames-nocode-minting',
           className: 'sidebar-coding',
         },
         {
           type: 'doc',
-          id: 'docs/nft-minting-frame',
+          id: 'docs/farcaster-frames-nft-minting',
           className: 'sidebar-coding',
         },
         {
           type: 'doc',
-          id: 'docs/deploy-frame-on-vercel',
+          id: 'docs/farcaster-frames-deploy-to-vercel',
           className: 'sidebar-coding',
         },
         {
           type: 'doc',
-          id: 'docs/advanced-frame-behavior',
+          id: 'docs/farcaster-frames-gating-and-redirects',
           className: 'sidebar-coding',
         },
         {
           type: 'doc',
-          id: 'docs/hyperframes',
+          id: 'docs/farcaster-frames-hyperframes',
           className: 'sidebar-coding',
         },
         {
           type: 'doc',
-          id: 'docs/frame-transactions',
+          id: 'docs/farcaster-frames-transactions',
           className: 'sidebar-coding',
         },
       ],
@@ -122,32 +122,12 @@ const sidebars = {
       collapsible: true,
       items: [
         {
-          type: 'doc',
-          id: 'docs/hardhat-tools-and-testing/overview',
-          className: 'sidebar-reading',
-        },
-        {
           type: 'category',
           label: 'Profiling Size',
           items: [
             {
               type: 'doc',
-              id: 'docs/hardhat-tools-and-testing/hardhat-profiling-size/contract-sizer-setup-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-tools-and-testing/hardhat-profiling-size/manual-contract-optimizations-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-tools-and-testing/hardhat-profiling-size/using-the-optimizer-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-tools-and-testing/hardhat-profiling-size/hardhat-profiling-size',
+              id: 'docs/hardhat-profiling-size',
               className: 'sidebar-coding',
             },
           ],
@@ -159,17 +139,7 @@ const sidebars = {
           items: [
             {
               type: 'doc',
-              id: 'docs/hardhat-tools-and-testing/hardhat-profiling-gas/installing-the-gas-analyzer-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-tools-and-testing/hardhat-profiling-gas/improving-gas-usage-vid',
-              className: 'sidebar-video',
-            },
-            {
-              type: 'doc',
-              id: 'docs/hardhat-tools-and-testing/hardhat-profiling-gas/hardhat-profiling-gas',
+              id: 'docs/hardhat-profiling-gas',
               className: 'sidebar-coding',
             },
           ],
@@ -181,7 +151,7 @@ const sidebars = {
           items: [
             {
               type: 'doc',
-              id: 'docs/hardhat-tools-and-testing/hardhat-debugging/debugging-with-hardhat-sbs',
+              id: 'docs/hardhat-debugging',
               className: 'sidebar-code',
             },
           ],
@@ -193,7 +163,7 @@ const sidebars = {
           items: [
             {
               type: 'doc',
-              id: 'docs/hardhat-tools-and-testing/hardhat-test-coverage/hardhat-test-coverage-sbs',
+              id: 'docs/hardhat-test-coverage',
               className: 'sidebar-code',
             },
           ],
