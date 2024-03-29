@@ -138,6 +138,16 @@ hide_table_of_contents: true
 
 ---
 
+## Moralis
+
+[Moralis](https://moralis.io/?utm_source=base-docs&utm_medium=partner-docs) is a leading provider of data APIs and RPC for Base and all other major EVM networks. Moralis is SOC2 Type 2 certified.
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
+---
+
 ## NodeReal
 
 [NodeReal](https://nodereal.io/) is a blockchain infrastructure and services provider that provides instant and easy-access to Base node APIs.
