@@ -1,5 +1,5 @@
-a,
-a:hover {
+.tutorialsMainContainer a,
+.tutorialsMainContainer a:hover {
   text-decoration: none;
   color: var(--base-docs-color-fg);
 }
