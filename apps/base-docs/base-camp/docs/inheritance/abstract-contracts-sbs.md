@@ -20,11 +20,19 @@ By the end of this lesson you should be able to:
 
 Continue with your `Inheritance.sol` file. Add `ContractD` as an `abstract contract`. Add a `virtual` function called `whoAreYou` function, but do **not** add any implementation for that function.
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 abstract contract ContractD {
     function whoAreYou() public virtual view returns (string memory);
 }
 ```
+
+</details>
+
+<br/>
 
 ### Inheriting from an Abstract Function
 
@@ -50,11 +58,18 @@ The clue for the correct solution is further down: `Note:  Missing implementatio
 
 Only `abstract` contracts can declare functions that are not implemented. To fix this, provide an `override` implementation for `whoAreYou` in `ContractA`:
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 function whoAreYou() public override pure returns (string memory) {
     return "I'm a person!";
 }
 ```
+
+</details>
+
 
 ---
 
