@@ -170,6 +170,11 @@ Open `_app.tsx` and import `useEffect` and `useState` from `'react'`.
 
 Create a state variable called `mounted`, and set it in the first render cycle to be `true`. Finally, use the same conditional rendering technique to only render the `<Component {...pageProps} />` element if the app has mounted.
 
+<details>
+
+<summary>Reveal code</summary>
+
+
 ```typescript
 const [mounted, setMounted] = useState(false);
 useEffect(() => setMounted(true), []);
@@ -182,6 +187,10 @@ return (
   </WagmiConfig>
 );
 ```
+
+</details>
+
+<br/>
 
 With this fix in place, you should no longer get hydration errors!
 
