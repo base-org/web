@@ -19,7 +19,7 @@ export function middleware(req: NextRequest) {
 
   if (url.pathname === '/guides/run-a-base-goerli-node') {
     url.host = 'docs.base.org';
-    url.pathname = '/guides/run-a-base-node';
+    url.pathname = '/tutorials/run-a-base-node';
     url.port = '443';
 
     return NextResponse.redirect(url);

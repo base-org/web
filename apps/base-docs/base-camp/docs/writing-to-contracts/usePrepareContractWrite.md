@@ -6,6 +6,12 @@ hide_table_of_contents: false
 
 The [`usePrepareContractWrite`] hook "Eagerly fetches the parameters required for sending a contract write transaction such as the gas estimate." What this means is that by using this hook, you can dramatically reduce the time it takes for the wallet confirmation to pop up for a transaction, and detect and respond to potential errors before the user tries to send a transaction.
 
+:::caution
+
+The frontend tutorials are currently based on version 1.X of Wagmi. Version 2 has recently been released and is a near complete rewrite of the library. We are working on updates. In the meantime, please use Version 1, or review the [migration guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
+
+:::
+
 ---
 
 ## Objectives

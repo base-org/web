@@ -55,6 +55,10 @@ For Lucky Lottery Numbers, we need a collection. We could use a dynamic array, s
 
 Try to use this information to build the `struct` on your own. You should end up with something similar to:
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 struct Favorites {
     uint favoriteNumber;
@@ -63,6 +67,10 @@ struct Favorites {
     uint[5] lotteryNumbers;
 }
 ```
+
+</details>
+
+<br/>
 
 ### Instantiating a Struct with Its Name
 
@@ -104,6 +112,10 @@ Favorites[] public userFavorites;
 
 Next, add a `public` function to add submitted favorites to the list. It should take each of the members as an argument. Then, assign each argument to the new element via the reference returned by `push()`.
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 function addFavorite(
     uint _favoriteNumber,
@@ -120,7 +132,15 @@ function addFavorite(
 }
 ```
 
+</details>
+
+<br/>
+
 Alternatively, you can create an instance in memory, then `push` it to storage.
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 function addFavorite(
@@ -139,6 +159,10 @@ function addFavorite(
     userFavorites.push(myFavorites);
 }
 ```
+
+</details>
+
+<br/>
 
 The gas cost is similar for each of these methods.
 

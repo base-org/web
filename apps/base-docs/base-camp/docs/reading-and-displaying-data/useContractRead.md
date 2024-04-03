@@ -6,6 +6,12 @@ hide_table_of_contents: false
 
 The `useContractRead` hook is [wagmi]'s method of calling `pure` and `view` functions from your smart contracts. As with `useAccount`, `useContractRead` contains a number of helpful properties to enable you to manage displaying information to your users.
 
+:::caution
+
+The frontend tutorials are currently based on version 1.X of Wagmi. Version 2 has recently been released and is a near complete rewrite of the library. We are working on updates. In the meantime, please use Version 1, or review the [migration guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
+
+:::
+
 ---
 
 ## Objectives
