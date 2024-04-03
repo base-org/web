@@ -58,7 +58,175 @@ app.get('/basecamp', (req, res) => {
 });
 
 app.get('/guides/run-a-base-goerli-node/', (req, res) => {
-  res.redirect('/guides/run-a-base-node/');
+  res.redirect('/tutorials/run-a-base-node/');
+});
+
+app.get('/guides/deploy-smart-contracts', (req, res) => {
+  res.redirect('/tutorials/deploy-with-hardhat');
+});
+
+app.get('/guides/deploy-with-foundry', (req, res) => {
+  res.redirect('/tutorials/deploy-with-foundry');
+});
+
+app.get('/guides/deploy-with-remix', (req, res) => {
+  res.redirect('/tutorials/deploy-with-remix');
+});
+
+app.get('/guides/deploy-with-tenderly', (req, res) => {
+  res.redirect('/tutorials/deploy-with-tenderly');
+});
+
+app.get('/guides/deploy-with-thirdweb', (req, res) => {
+  res.redirect('/tutorials/deploy-with-thirdweb');
+});
+
+app.get('/guides/build-with-thirdweb', (req, res) => {
+  res.redirect('/tutorials/build-with-thirdweb');
+});
+
+app.get('/guides/run-a-base-node', (req, res) => {
+  res.redirect('/tutorials/run-a-base-node');
+});
+
+app.get('/guides/using-chainlink-price-feeds', (req, res) => {
+  res.redirect('/tutorials/oracles-chainlink-price-feeds');
+});
+
+app.get('/guides/using-pyth-price-feeds', (req, res) => {
+  res.redirect('/tutorials/oracles-pyth-price-feeds');
+});
+
+app.get('/guides/using-supra-vrf', (req, res) => {
+  res.redirect('/tutorials/oracles-supra-vrf');
+});
+
+app.get('/guides/cross-chain-with-ccip', (req, res) => {
+  res.redirect('/tutorials/cross-chain-with-ccip');
+});
+
+app.get('/guides/cross-chain-with-layerzero', (req, res) => {
+  res.redirect('/tutorials/cross-chain-with-layerzero');
+});
+
+app.get('/guides/account-abstraction-with-biconomy', (req, res) => {
+  res.redirect('/tutorials/account-abstraction-with-biconomy');
+});
+
+app.get('/guides/building-with-base-and-foundry/introduction', (req, res) => {
+  res.redirect('/tutorials/intro-to-foundry-setup');
+});
+
+app.get('/guides/building-with-base-and-foundry/testing', (req, res) => {
+  res.redirect('/tutorials/intro-to-foundry-testing');
+});
+
+app.get('/guides/complex-onchain-nfts', (req, res) => {
+  res.redirect('/tutorials/onchain-nfts');
+});
+
+app.get('/guides/linked-minting-frame', (req, res) => {
+  res.redirect('/tutorials/farcaster-frames-nocode-minting');
+});
+
+app.get('/guides/nft-minting-frame', (req, res) => {
+  res.redirect('/tutorials/farcaster-frames-nft-minting');
+});
+
+app.get('/guides/deploy-frame-on-vercel', (req, res) => {
+  res.redirect('/tutorials/farcaster-frames-deploy-to-vercel');
+});
+
+app.get('/guides/advanced-frame-behavior', (req, res) => {
+  res.redirect('/tutorials/farcaster-frames-gating-and-redirects');
+});
+
+app.get('/guides/hyperframes', (req, res) => {
+  res.redirect('/tutorials/farcaster-frames-hyperframes');
+});
+
+app.get('/guides/frame-transactions', (req, res) => {
+  res.redirect('/tutorials/farcaster-frames-transactions');
+});
+
+app.get('/hardhat-tools-and-testing/overview', (req, res) => {
+  res.redirect('');
+});
+
+app.get(
+  '/hardhat-tools-and-testing/hardhat-profiling-size/contract-sizer-setup-vid',
+  (req, res) => {
+    res.redirect('/tutorials/hardhat-profiling-size');
+  },
+);
+
+app.get(
+  '/hardhat-tools-and-testing/hardhat-profiling-size/manual-contract-optimizations-vid',
+  (req, res) => {
+    res.redirect('/tutorials/hardhat-profiling-size');
+  },
+);
+
+app.get('/hardhat-tools-and-testing/hardhat-profiling-size/using-the-optimizer-vid', (req, res) => {
+  res.redirect('/tutorials/hardhat-profiling-size');
+});
+
+app.get('/hardhat-tools-and-testing/hardhat-profiling-size/hardhat-profiling-size', (req, res) => {
+  res.redirect('/tutorials/hardhat-profiling-size');
+});
+
+app.get(
+  '/hardhat-tools-and-testing/hardhat-profiling-gas/installing-the-gas-analyzer-vid',
+  (req, res) => {
+    res.redirect('/tutorials/hardhat-profiling-gas');
+  },
+);
+
+app.get('/hardhat-tools-and-testing/hardhat-profiling-gas/improving-gas-usage-vid', (req, res) => {
+  res.redirect('/tutorials/hardhat-profiling-gas');
+});
+
+app.get('/hardhat-tools-and-testing/hardhat-profiling-gas/hardhat-profiling-gas', (req, res) => {
+  res.redirect('/tutorials/hardhat-profiling-gas');
+});
+
+app.get('/hardhat-tools-and-testing/hardhat-debugging/debugging-with-hardhat-sbs', (req, res) => {
+  res.redirect('/tutorials/hardhat-debugging');
+});
+
+app.get(
+  '/hardhat-tools-and-testing/hardhat-test-coverage/hardhat-test-coverage-sbs',
+  (req, res) => {
+    res.redirect('/tutorials/hardhat-test-coverage');
+  },
+);
+
+app.get('/connecting-to-the-blockchain/overview', (req, res) => {
+  res.redirect('/tutorials/intro-to-providers');
+});
+
+app.get('/connecting-to-the-blockchain/blockchain-providers', (req, res) => {
+  res.redirect('/tutorials/intro-to-providers');
+});
+
+app.get('/connecting-to-the-blockchain/connecting-with-a-provider', (req, res) => {
+  res.redirect('/tutorials/intro-to-providers');
+});
+
+app.get('/guides/account-abstraction/overview', (req, res) => {
+  res.redirect('/tutorials/account-abstraction-with-privy-and-base-paymaster');
+});
+
+app.get('/guides/account-abstraction/intro-to-account-abstraction', (req, res) => {
+  res.redirect('/tutorials/account-abstraction-with-privy-and-base-paymaster');
+});
+
+app.get('/guides/account-abstraction/intro-to-privy', (req, res) => {
+  res.redirect('/tutorials/account-abstraction-with-privy-and-base-paymaster');
+});
+
+app.get('/guides/account-abstraction/implementing-the-paymaster', (req, res) => {
+  res.redirect('/tutorials/account-abstraction-with-privy-and-base-paymaster');
 });
 
 if (process.env.APP_STAGE === 'production' && process.env.AUTH_ENABLED !== 'false') {
