@@ -6,7 +6,7 @@
 
 **Does this PR add a new token to the bridge?**
 
-Are you adding an entry to [`assets.ts`](apps/bridge/assets.ts)?
+Are you adding an entry to [`assets.ts`](../apps/bridge/assets.ts)?
 
 - [ ] No, this PR does not add a new token to the bridge
 - [ ] Yes, and I've confirmed this token doesn't use a bridge override
