@@ -1,5 +1,5 @@
-a,
-a:hover {
+.tutorialsMainContainer a,
+.tutorialsMainContainer a:hover {
   text-decoration: none;
   color: var(--base-docs-color-fg);
 }
@@ -43,6 +43,7 @@ a:hover {
 }
 
 .tutorialListCell {
+  border-radius: 3px !important;
   display: flex;
   flex-direction: column;
   background-color: var(--base-docs-color-fg-negative);
