@@ -71,7 +71,6 @@ module.exports = {
       label: 'Brand Kit',
       href: 'https://github.com/base-org/brand-kit',
     },
-    ['security'],
     ['terms-of-service'],
     ['privacy-policy'],
     ['cookie-policy'],
