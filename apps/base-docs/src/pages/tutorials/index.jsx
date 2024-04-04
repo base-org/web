@@ -83,7 +83,6 @@ export default function Tutorials() {
   const [selectedTag, setSelectedTag] = useState('all');
 
   const selectTag = (tag) => {
-    console.log(`select tag ${tag}`);
     setSelectedTag(tag);
   };
 
