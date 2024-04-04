@@ -18,6 +18,8 @@ keywords:
     pseudorandom numbers,
     deterministic randomness,
   ]
+tags: ['nft']
+difficulty: intermediate
 hide_table_of_contents: false
 displayed_sidebar: null
 ---

@@ -17,6 +17,8 @@ keywords:
     Particle Network,
     Particle Auth,
   ]
+tags: ['account abstraction']
+difficulty: intermediate
 displayed_sidebar: null
 ---
 

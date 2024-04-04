@@ -12,6 +12,8 @@ keywords:
     error resolution,
     decentralized applications,
   ]
+tags: ['smart contracts']
+difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null
 ---

@@ -4,6 +4,8 @@ slug: /intro-to-foundry-testing
 author: briandoyle81
 description: A tutorial that teaches how to test your smart contracts using Foundry.
 keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain, testing, test]
+tags: ['smart contracts']
+difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null
 ---

@@ -6,6 +6,8 @@ setting up the environment, compiling, and deploying the smart contract."
 author: neodaoist
 keywords: ["Foundry", "smart contract", "ERC-721", "Base", "Base test network", "Base testnet", "Rust", "Solidity", "smart contract deployment",
 "deploy a smart contract", "build on base", "write smart contract", "smart contract development"]
+tags: ["smart contracts"]
+difficulty: beginner
 displayed_sidebar: null
 ---
 

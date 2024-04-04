@@ -22,6 +22,8 @@ keywords:
     build a dapp on Base,
     build on Base,
   ]
+tags: ['smart contracts', 'nft']
+difficulty: beginner
 displayed_sidebar: null
 ---
 
