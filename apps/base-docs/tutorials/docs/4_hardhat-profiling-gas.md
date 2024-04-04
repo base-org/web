@@ -15,6 +15,8 @@ keywords:
     contract optimization,
     gas-efficient contracts,
   ]
+tags: ['smart contracts']
+difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null
 ---

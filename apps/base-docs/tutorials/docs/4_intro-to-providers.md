@@ -39,6 +39,8 @@ keywords:
     public provider,
     smart contract development,
   ]
+tags: ['nodes']
+difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null
 ---

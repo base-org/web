@@ -6,6 +6,8 @@ author: briandoyle81
 hide_table_of_contents: false
 displayed_sidebar: null
 keywords: [farcaster, frames, farcaster frames, hyperframes, hyper frames, state, frame state, Base]
+difficulty: intermediate
+tags: ['frames']
 ---
 
 [Frames] on [Farcaster] are getting more complex. Developers are now building interactions that require a handful, or even dozens of frames in response to various user states, inputs, and actions. HyperFrames are a system to organize navigation for large numbers of frames, using [OnchainKit]. In this tutorial, we'll use making the navigation for an [old-school adventure game] fully in a frame. You can use this same technique for many other intents with your Frames, such as games, stores, customized mints, etc.

@@ -19,6 +19,8 @@ keywords: [
     build a dapp on Base,
     build on Base,
   ]
+tags: ['oracles']
+difficulty: intermediate
 displayed_sidebar: null
 ---
 

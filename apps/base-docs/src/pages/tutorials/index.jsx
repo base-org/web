@@ -1,4 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
+import { useCallback, useState } from 'react';
 import Layout from '@theme/Layout';
 import { Link } from 'react-router-dom';
 import { ThemeClassNames } from '@docusaurus/theme-common';
@@ -8,6 +9,36 @@ import clsx from 'clsx';
 import styles from './styles.module.css';
 import tutorialData from '../../../tutorials/data.json';
 import authors from '@app/base-docs/static/json/authors.json';
+
+const TagList = [
+  'all',
+  'smart contracts',
+  'nodes',
+  'nft',
+  'account abstraction',
+  'cross-chain',
+  'oracles',
+  'vrf',
+  'frames',
+];
+
+function TagChip({ tag, isSelected, setSelectedTag }) {
+  const select = useCallback(() => {
+    setSelectedTag(tag);
+  }, [tag, setSelectedTag]);
+
+  return (
+    <button
+      className={clsx(styles.tagButton, isSelected ? styles.tagButtonActive : '')}
+      type="button"
+      onClick={select}
+    >
+      <div className={clsx(styles.tag)}>
+        <span>{tag}</span>
+      </div>
+    </button>
+  );
+}
 
 const handleClick = (event) => {
   event.stopPropagation();
@@ -19,9 +50,7 @@ function TutorialListCell({ tutorial }) {
     <Link to={`/tutorials${tutorial.slug}`}>
       <div className={clsx(styles.tutorialListCell, 'container')}>
         <header>
-          <Heading as="h2" className={clsx(styles.tutorialListTitle)}>
-            {tutorial.title}
-          </Heading>
+          <h2 className={clsx(styles.tutorialListTitle)}>{tutorial.title}</h2>
         </header>
         <div className={clsx(styles.tutorialListCellInfo)}>
           {authorData && authorData.link && (
@@ -39,6 +68,10 @@ function TutorialListCell({ tutorial }) {
             <p>{tutorial.description}</p>
           </div>
         )}
+        <div className={clsx(styles.tutorialListCellInfo)}>
+          {tutorial.tags &&
+            tutorial.tags.map((tag) => <p className={clsx(styles.tutorialListTag)}>{tag}</p>)}
+        </div>
       </div>
     </Link>
   );
@@ -47,6 +80,12 @@ function TutorialListCell({ tutorial }) {
 const TITLE = 'Base Builder Tutorials';
 
 export default function Tutorials() {
+  const [selectedTag, setSelectedTag] = useState('all');
+
+  const selectTag = (tag) => {
+    setSelectedTag(tag);
+  };
+
   return (
     <Layout title="Base Tutorials" description="Base tutorials">
       <main className={clsx(styles.tutorialsMainContainer)}>
@@ -59,11 +98,23 @@ export default function Tutorials() {
                 {TITLE}
               </Heading>
             </header>
+            <div className={clsx(styles.tagList)}>
+              {TagList.map((tag) => (
+                <TagChip
+                  tag={tag}
+                  isSelected={selectedTag === tag}
+                  setSelectedTag={selectTag}
+                  key={tag}
+                />
+              ))}
+            </div>
             <div className={clsx(styles.tutorialList)}>
               {tutorialData &&
-                Object.values(tutorialData).map((tutorial) => (
-                  <TutorialListCell tutorial={tutorial} />
-                ))}
+                Object.values(tutorialData)
+                  .filter((tutorial) =>
+                    selectedTag == 'all' ? tutorial : tutorial.tags.includes(selectedTag),
+                  )
+                  .map((tutorial) => <TutorialListCell tutorial={tutorial} />)}
             </div>
           </div>
         </div>
