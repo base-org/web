@@ -5,6 +5,7 @@ type IconProps = {
     | 'thumbs-down'
     | 'thumbs-down-filled'
     | 'caret-down'
+    | 'arrow-right'
     | 'external-link'
     | 'paper-airplane'
     | 'base-logo'
@@ -99,6 +100,22 @@ export default function Icon({ name, width = '24', height = '24' }: IconProps) {
       >
         <path
           d="M19.4199 7.52002L11.9999 14.94L4.57994 7.52002L2.80994 9.29002L11.9999 18.48L21.1899 9.29002L19.4199 7.52002Z"
+          fill="current"
+        />
+      </svg>
+    );
+  }
+  if (name === 'arrow-right') {
+    return (
+      <svg
+        width={width}
+        height={height}
+        viewBox="0 0 17 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9.35635 0.587128L7.88204 1.93858L12.5217 7.00001H0.294922V9.00001H12.3807L7.38071 14L8.79492 15.4142L16.1791 8.03008L9.35635 0.587128Z"
           fill="current"
         />
       </svg>

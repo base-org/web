@@ -106,7 +106,7 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          routeBasePath: '/',
+          routeBasePath: '/docs',
         },
         theme: {
           customCss: [
@@ -168,6 +168,12 @@ const config = {
         srcDark: 'img/logo_dark.svg',
       },
       items: [
+        {
+          to: '/',
+          exact: true,
+          navPosition: 'bottomLeft',
+          label: 'Home',
+        },
         {
           type: 'doc',
           docId: 'overview',
