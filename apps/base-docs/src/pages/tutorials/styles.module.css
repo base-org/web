@@ -83,6 +83,7 @@
 }
 
 .tutorialListCell {
+  border-radius: 3px !important;
   display: flex;
   flex-direction: column;
   background-color: var(--base-docs-color-fg-negative);
