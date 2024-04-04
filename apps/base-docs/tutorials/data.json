@@ -24,7 +24,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "17 mins"
     },
     "deploy-with-hardhat": {
@@ -52,7 +52,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "15 mins"
     },
     "deploy-with-remix": {
@@ -81,7 +81,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "18 mins"
     },
     "deploy-with-tenderly": {
@@ -111,7 +111,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "19 mins"
     },
     "deploy-with-thirdweb": {
@@ -144,7 +144,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "10 mins"
     },
     "run-a-base-node": {
@@ -171,8 +171,33 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "5 mins"
+    },
+    "tokens-on-coinbase-wallet": {
+        "title": "How to ensure ERC-20 tokens are immediately swappable in Coinbase Wallet",
+        "slug": "/tokens-on-coinbase-wallet",
+        "description": "A simple step by step guide to ensure ERC-20 tokens show immediately on Coinbase Wallet once deployed.",
+        "author": "cturakhia-cb",
+        "keywords": [
+            "ERC-20",
+            "token",
+            "memecoin",
+            "Base",
+            "Coinbase Wallet",
+            "build on base",
+            "tokens",
+            "token issuer",
+            "meme coin",
+            "swaps"
+        ],
+        "tags": [
+            "tokens"
+        ],
+        "difficulty": "beginner",
+        "displayed_sidebar": null,
+        "last_updated": "Apr 4",
+        "duration": "3 mins"
     },
     "build-with-thirdweb": {
         "title": "Building an onchain app using thirdweb",
@@ -203,7 +228,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "8 mins"
     },
     "account-abstraction-with-biconomy": {
@@ -229,7 +254,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "29 mins"
     },
     "account-abstraction-with-privy-and-base-paymaster": {
@@ -256,7 +281,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "46 mins"
     },
     "cross-chain-with-ccip": {
@@ -280,7 +305,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "32 mins"
     },
     "cross-chain-with-layerzero": {
@@ -304,7 +329,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "34 mins"
     },
     "complex-onchain-nfts": {
@@ -332,7 +357,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "39 mins"
     },
     "oracles-chainlink-price-feeds": {
@@ -360,7 +385,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "11 mins"
     },
     "oracles-pyth-price-feeds": {
@@ -389,7 +414,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "13 mins"
     },
     "oracles-supra-vrf": {
@@ -426,7 +451,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "19 mins"
     },
     "farcaster-frames-deploy-to-vercel": {
@@ -448,7 +473,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "9 mins"
     },
     "farcaster-frames-gating-and-redirects": {
@@ -467,7 +492,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "12 mins"
     },
     "farcaster-frames-hyperframes": {
@@ -491,7 +516,7 @@
         "tags": [
             "frames"
         ],
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "16 mins"
     },
     "farcaster-frames-nft-minting": {
@@ -515,7 +540,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "22 mins"
     },
     "farcaster-frames-nocode-minting": {
@@ -540,7 +565,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "7 mins"
     },
     "farcaster-frames-transactions": {
@@ -562,7 +587,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "17 mins"
     },
     "hardhat-debugging": {
@@ -584,7 +609,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "15 mins"
     },
     "hardhat-profiling-gas": {
@@ -609,7 +634,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "16 mins"
     },
     "hardhat-profiling-size": {
@@ -635,7 +660,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "22 mins"
     },
     "hardhat-test-coverage": {
@@ -661,7 +686,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "9 mins"
     },
     "intro-to-foundry-setup": {
@@ -682,7 +707,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "6 mins"
     },
     "intro-to-foundry-testing": {
@@ -705,7 +730,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "9 mins"
     },
     "intro-to-providers": {
@@ -754,7 +779,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 3",
+        "last_updated": "Apr 4",
         "duration": "20 mins"
     }
 }
