@@ -1,5 +1,5 @@
 ---
-title: Tokens
+title: Superchain
 slug: /tokens/list
 description: How to submit ERC-20 tokens for bridging between Ethereum and Base as a token issuer.
 keywords:
