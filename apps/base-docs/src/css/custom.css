@@ -6,6 +6,14 @@
 @import url('./sidebar.css');
 @import url('./doc-page.css');
 
+.layout-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
 .no-scroll {
   height: 100%;
   overflow: hidden;
