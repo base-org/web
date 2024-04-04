@@ -14,6 +14,7 @@ const TagList = [
   'all',
   'smart contracts',
   'nodes',
+  'tokens',
   'nft',
   'account abstraction',
   'cross-chain',
