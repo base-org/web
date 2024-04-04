@@ -54,7 +54,7 @@ const textCards = [
     title: 'Access data using an Oracle',
     description:
       'Learn how to access price data within a smart contract using Chainlink price feeds.',
-    href: '/tutorials/using-chainlink-price-feeds',
+    href: '/tutorials/oracles-chainlink-price-feeds',
   },
 ];
 
