@@ -18,6 +18,8 @@ keywords:
     node deployment,
     Ethereum node,
   ]
+tags: ['nodes']
+difficulty: beginner
 displayed_sidebar: null
 ---
 

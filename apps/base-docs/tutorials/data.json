@@ -19,6 +19,10 @@
             "write smart contract",
             "smart contract development"
         ],
+        "tags": [
+            "smart contracts"
+        ],
+        "difficulty": "beginner",
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
         "duration": "17 mins"
@@ -43,6 +47,10 @@
             "write smart contract",
             "smart contract development"
         ],
+        "tags": [
+            "smart contracts"
+        ],
+        "difficulty": "beginner",
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
         "duration": "15 mins"
@@ -68,6 +76,10 @@
             "smart contract development",
             "online IDE"
         ],
+        "tags": [
+            "smart contracts"
+        ],
+        "difficulty": "beginner",
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
         "duration": "18 mins"
@@ -94,6 +106,10 @@
             "smart contract on Base",
             "build on Base"
         ],
+        "tags": [
+            "smart contracts"
+        ],
+        "difficulty": "beginner",
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
         "duration": "19 mins"
@@ -123,6 +139,10 @@
             "smart contract on Base",
             "build on Base"
         ],
+        "tags": [
+            "smart contracts"
+        ],
+        "difficulty": "beginner",
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
         "duration": "10 mins"
@@ -146,6 +166,10 @@
             "node deployment",
             "Ethereum node"
         ],
+        "tags": [
+            "nodes"
+        ],
+        "difficulty": "beginner",
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
         "duration": "5 mins"
@@ -173,6 +197,11 @@
             "build a dapp on Base",
             "build on Base"
         ],
+        "tags": [
+            "smart contracts",
+            "nft"
+        ],
+        "difficulty": "beginner",
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
         "duration": "8 mins"
@@ -195,6 +224,10 @@
             "Particle Network",
             "Particle Auth"
         ],
+        "tags": [
+            "account abstraction"
+        ],
+        "difficulty": "intermediate",
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
         "duration": "29 mins"
@@ -217,6 +250,10 @@
             "Base paymaster",
             "embedded wallet"
         ],
+        "tags": [
+            "account abstraction"
+        ],
+        "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
@@ -238,6 +275,10 @@
             "cross-chain messaging",
             "transfer tokens across chains"
         ],
+        "tags": [
+            "cross-chain"
+        ],
+        "difficulty": "intermediate",
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
         "duration": "32 mins"
@@ -258,6 +299,10 @@
             "cross-chain messaging",
             "transfer tokens across chains"
         ],
+        "tags": [
+            "cross-chain"
+        ],
+        "difficulty": "intermediate",
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
         "duration": "34 mins"
@@ -281,6 +326,10 @@
             "pseudorandom numbers",
             "deterministic randomness"
         ],
+        "tags": [
+            "nft"
+        ],
+        "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
@@ -306,6 +355,10 @@
             "build a dapp on Base",
             "build on Base"
         ],
+        "tags": [
+            "oracles"
+        ],
+        "difficulty": "intermediate",
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
         "duration": "11 mins"
@@ -331,6 +384,10 @@
             "build a dapp on Base",
             "build on Base"
         ],
+        "tags": [
+            "oracles"
+        ],
+        "difficulty": "intermediate",
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
         "duration": "13 mins"
@@ -363,6 +420,11 @@
             "build a dapp on Base",
             "build on Base"
         ],
+        "tags": [
+            "oracles",
+            "vrf"
+        ],
+        "difficulty": "intermediate",
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
         "duration": "19 mins"
@@ -380,6 +442,10 @@
             "a frame in 100 lines",
             "deploy"
         ],
+        "tags": [
+            "frames"
+        ],
+        "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
@@ -395,6 +461,10 @@
             "frames",
             "farcaster frames"
         ],
+        "tags": [
+            "frames"
+        ],
+        "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
@@ -417,6 +487,10 @@
             "frame state",
             "Base"
         ],
+        "difficulty": "intermediate",
+        "tags": [
+            "frames"
+        ],
         "last_updated": "Apr 3",
         "duration": "16 mins"
     },
@@ -434,6 +508,11 @@
             "frames",
             "farcaster frames"
         ],
+        "tags": [
+            "frames",
+            "nft"
+        ],
+        "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
@@ -454,6 +533,11 @@
             "farcaster frames",
             "mint"
         ],
+        "tags": [
+            "frames",
+            "nft"
+        ],
+        "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
@@ -472,6 +556,10 @@
             "transaction",
             "Base"
         ],
+        "tags": [
+            "frames"
+        ],
+        "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
@@ -490,6 +578,10 @@
             "error resolution",
             "decentralized applications"
         ],
+        "tags": [
+            "smart contracts"
+        ],
+        "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
@@ -511,6 +603,10 @@
             "contract optimization",
             "gas-efficient contracts"
         ],
+        "tags": [
+            "smart contracts"
+        ],
+        "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
@@ -533,6 +629,10 @@
             "Solidity Optimizer",
             "Smart Contract Development"
         ],
+        "tags": [
+            "smart contracts"
+        ],
+        "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
@@ -555,6 +655,10 @@
             "Code Testing",
             "Test Suite Analysis"
         ],
+        "tags": [
+            "smart contracts"
+        ],
+        "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
@@ -572,6 +676,10 @@
             "smart contract development",
             "toolchain"
         ],
+        "tags": [
+            "smart contracts"
+        ],
+        "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
@@ -591,6 +699,10 @@
             "testing",
             "test"
         ],
+        "tags": [
+            "smart contracts"
+        ],
+        "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Apr 3",
@@ -636,6 +748,10 @@
             "public provider",
             "smart contract development"
         ],
+        "tags": [
+            "nodes"
+        ],
+        "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Apr 3",

@@ -1,3 +1,43 @@
+.tag {
+  padding: 0.75rem 1.75rem;
+  font-family: CoinbaseSans !important;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 450;
+}
+
+.tagButton {
+  border-radius: 100px;
+  background-color: transparent;
+  border: 1px solid var(--base-docs-color-line-heavy);
+  background-color: var(--base-docs-color-bg);
+  cursor: pointer;
+}
+
+.tagButtonActive {
+  background-color: var(--base-docs-color-secondary);
+}
+
+.tagList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 25px;
+}
+
+.tutorialListTag {
+  padding: 0.7rem 1.7rem;
+  font-family: CoinbaseSans !important;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 425;
+  border-radius: 100px;
+  background-color: transparent;
+  color: var(--base-docs-color-fg-muted);
+  border: 0.75px solid var(--base-docs-color-line-heavy);
+}
+
 .tutorialsMainContainer a,
 .tutorialsMainContainer a:hover {
   text-decoration: none;

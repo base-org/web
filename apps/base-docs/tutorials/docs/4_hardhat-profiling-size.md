@@ -16,6 +16,8 @@ keywords:
     Solidity Optimizer,
     Smart Contract Development,
   ]
+tags: ['smart contracts']
+difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null
 ---

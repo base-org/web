@@ -15,6 +15,8 @@ eywords:
     cross-chain messaging,
     transfer tokens across chains,
   ]
+tags: ['cross-chain']
+difficulty: intermediate
 displayed_sidebar: null
 ---
 

@@ -24,6 +24,8 @@ keywords:
     'smart contract on Base',
     'build on Base',
   ]
+tags: ['smart contracts']
+difficulty: beginner
 displayed_sidebar: null
 ---
 

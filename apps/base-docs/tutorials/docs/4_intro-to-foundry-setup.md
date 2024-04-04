@@ -4,6 +4,8 @@ slug: /intro-to-foundry-setup
 description: A tutorial that teaches how to set up your development environment to work with Foundry.
 author: briandoyle81
 keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain]
+tags: ['smart contracts']
+difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null
 ---

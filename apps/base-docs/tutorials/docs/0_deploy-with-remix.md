@@ -5,6 +5,8 @@ description: "A tutorial that teaches how to deploy a smart contract on the Base
 setting up the environment, compiling, and deploying the smart contract."
 author: briandoyle81
 keywords: ["Remix", "Remix IDE", "smart contract", "Base", "Base test network", "Base testnet", "Node.js", "Solidity", "smart contract deployment", "deploy a smart contract", "build on Base", "write smart contract", "smart contract development", "online IDE"]
+tags: ["smart contracts"]
+difficulty: beginner
 displayed_sidebar: null
 ---
 

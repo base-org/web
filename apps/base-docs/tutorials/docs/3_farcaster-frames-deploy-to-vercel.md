@@ -12,6 +12,8 @@ keywords: [
     a frame in 100 lines,
     deploy,
   ]
+tags: ['frames']
+difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null
 ---
