@@ -35,8 +35,7 @@
   border-radius: 100px;
   background-color: transparent;
   color: var(--base-docs-color-fg-muted);
-  opacity: 0.85;
-  border: 1px solid var(--base-docs-color-line-heavy);
+  border: 0.75px solid var(--base-docs-color-line-heavy);
 }
 
 .tutorialsMainContainer a,
