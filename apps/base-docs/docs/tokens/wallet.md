@@ -1,8 +1,7 @@
 ---
-title: How to ensure ERC-20 tokens are immediately swappable in Coinbase Wallet
-slug: /tokens-on-coinbase-wallet
+title: Wallets
+slug: /tokens/wallet
 description: 'A simple step by step guide to ensure ERC-20 tokens show immediately on Coinbase Wallet once deployed.'
-author: cturakhia-cb
 keywords:
   [
     'ERC-20',
@@ -16,9 +15,7 @@ keywords:
     'meme coin',
     'swaps',
   ]
-tags: ['tokens']
-difficulty: beginner
-displayed_sidebar: null
+hide_table_of_contents: true
 ---
 
 # How to ensure ERC-20 tokens are immediately swappable in Coinbase Wallet

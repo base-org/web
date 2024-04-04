@@ -174,31 +174,6 @@
         "last_updated": "Apr 4",
         "duration": "5 mins"
     },
-    "tokens-on-coinbase-wallet": {
-        "title": "How to ensure ERC-20 tokens are immediately swappable in Coinbase Wallet",
-        "slug": "/tokens-on-coinbase-wallet",
-        "description": "A simple step by step guide to ensure ERC-20 tokens show immediately on Coinbase Wallet once deployed.",
-        "author": "cturakhia-cb",
-        "keywords": [
-            "ERC-20",
-            "token",
-            "memecoin",
-            "Base",
-            "Coinbase Wallet",
-            "build on base",
-            "tokens",
-            "token issuer",
-            "meme coin",
-            "swaps"
-        ],
-        "tags": [
-            "tokens"
-        ],
-        "difficulty": "beginner",
-        "displayed_sidebar": null,
-        "last_updated": "Apr 4",
-        "duration": "3 mins"
-    },
     "build-with-thirdweb": {
         "title": "Building an onchain app using thirdweb",
         "slug": "/build-with-thirdweb",
