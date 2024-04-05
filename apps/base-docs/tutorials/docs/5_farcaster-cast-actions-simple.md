@@ -195,13 +195,9 @@ Watch the [Base Channel] to stay up-to-date on new developments!
 
 ---
 
-[Cast Actions]: https://warpcast.notion.site/
-
-Spec-Farcaster-Actions-84d5a85d479a43139ea883f6823d8caa
 [Octicon]: https://primer.style/foundations/icons/
 [Cast Actions Playground]: https://warpcast.com/~/developers/cast-actions?icon=home&name=Random+City+Name&postUrl=https%3A%2F%2F660b36e4ccda4cbc75dc8ec2.mockapi.io%2Fcity
-[Cast Action]: https://warpcast.notion.site/
-Spec-Farcaster-Actions-84d5a85d479a43139ea883f6823d8caa
+[Cast Action]: https://warpcast.notion.site/Spec-Farcaster-Actions-84d5a85d479a43139ea883f6823d8caa
 [Farcaster]: https://www.farcaster.xyz/
 [a-frame-in-100-lines]: https://github.com/Zizzamia/a-frame-in-100-lines
 [OnchainKit]: https://github.com/coinbase/onchainkit
@@ -211,3 +207,4 @@ Spec-Farcaster-Actions-84d5a85d479a43139ea883f6823d8caa
 [deploying with Vercel]: /tutorials/farcaster-frames-deploy-to-vercel
 [Frame]: https://docs.farcaster.xyz/learn/what-is-farcaster/frames
 [Frames]: https://docs.farcaster.xyz/learn/what-is-farcaster/frames
+[Cast Actions]: https://warpcast.notion.site/Spec-Farcaster-Actions-84d5a85d479a43139ea883f6823d8caa
