@@ -18,6 +18,60 @@
     "imageUrl": "/images/partners/connext.webp"
   },
   {
+    "name": "Vrbs DAO",
+    "tags": [
+      "dao"
+    ],
+    "description": "Vrbs is a global, community-run organization that uses money raised by the community to fund open-source technology, art and public-works projects. ",
+    "url": "https://vrbs.build",
+    "imageUrl": "/images/partners/vrbsdao.png"
+  },
+  {
+    "name": "TransFi",
+    "tags": [
+      "onramp"
+    ],
+    "description": "Buy or sell crypto with 100+ local payment methods in 40+ countries around the world.",
+    "url": "https://buy.transfi.com/",
+    "imageUrl": "/images/partners/transfi.png"
+  },
+  {
+    "name": "Heroes of Mavia",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Heroes of Mavia is a mobile multiplayer Web3 strategy game where players use their base and army to battle other players. ",
+    "url": "https://www.mavia.com",
+    "imageUrl": "/images/partners/mavia.png"
+  },
+  {
+    "name": "KOMPETE",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Create your build, lock in your playstyle, and drop into some of the best multiplayer game modes of all time across different genres. ",
+    "url": "https://kompete.game",
+    "imageUrl": "/images/partners/kompete.png"
+  },
+  {
+    "name": "Function Over Form",
+    "tags": [
+      "gaming"
+    ],
+    "description": "A collection of on-chain games, utilities, and apps, all packaged as collectible NFTs on Base.",
+    "url": "https://functionoverform.xyz",
+    "imageUrl": "/images/partners/formoverfunction.png"
+  },
+  {
+    "name": "EthXY",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Onchain MMORPG on Base. Create a pixel RPG character, strengthen your attributes, gather loot, battle boss monsters, duel other players.",
+    "url": "https://ethxy.com",
+    "imageUrl": "/images/partners/ethxy.png"
+  },
+  {
     "name": "GhostLogs.xyz",
     "tags": [
       "infra"
