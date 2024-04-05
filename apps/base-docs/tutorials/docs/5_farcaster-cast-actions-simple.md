@@ -4,7 +4,7 @@ slug: /farcaster-cast-actions-simple
 description: A tutorial that teaches how to make a simple Farcaster cast action.
 author: briandoyle81
 keywords: [farcaster, cast actions, farcaster cast actions, farcaster actions]
-tags: ['frames', 'nft']
+tags: ['frames', 'actions']
 difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null
