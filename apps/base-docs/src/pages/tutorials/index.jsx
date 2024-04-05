@@ -1,14 +1,13 @@
-// eslint-disable-next-line import/no-unresolved
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Layout from '@theme/Layout';
 import { Link } from 'react-router-dom';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 import Heading from '@theme/Heading';
-import MDXContent from '@theme/MDXContent';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import tutorialData from '../../../tutorials/data.json';
 import authors from '@app/base-docs/static/json/authors.json';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const TagList = [
   'all',
@@ -21,6 +20,10 @@ const TagList = [
   'vrf',
   'frames',
 ];
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 function TagChip({ tag, isSelected, setSelectedTag }) {
   const select = useCallback(() => {
@@ -81,10 +84,22 @@ const TITLE = 'Base Builder Tutorials';
 
 export default function Tutorials() {
   const [selectedTag, setSelectedTag] = useState('all');
+  const history = useHistory();
+  const query = useQuery();
 
-  const selectTag = (tag) => {
-    setSelectedTag(tag);
-  };
+  useEffect(() => {
+    const tag = query.get('tag');
+    if (tag) {
+      setSelectedTag(tag);
+    }
+  }, [query]);
+
+  const selectTag = useCallback(
+    (tag) => {
+      history.push(`?tag=${tag}`);
+    },
+    [history],
+  );
 
   return (
     <Layout title="Base Tutorials" description="Base tutorials">

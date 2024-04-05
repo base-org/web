@@ -231,7 +231,7 @@ const config = {
           items: [
             {
               label: 'Block Explorer',
-              href: 'https://base.blockscout.com/',
+              href: 'https://explorer.base.org/',
             },
             {
               label: 'Status',

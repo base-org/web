@@ -197,7 +197,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                 >
                   <DropdownLink href="https://docs.base.org" label="Docs" externalLink />
                   <DropdownLink
-                    href="https://basescan.org"
+                    href="https://explorer.base.org/"
                     label={`Block\nExplorer`}
                     externalLink
                   />

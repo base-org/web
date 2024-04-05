@@ -54,14 +54,14 @@ To add Base as a custom network to MetaMask:
 4. Click **Add a network manually**.
 5. In the **Add a network manually** dialog that appears, enter the following information for Base mainnet:
 
-   | Name            | Value                                                        |
-   | :-------------- | :----------------------------------------------------------- |
-   | Network Name    | Base Mainnet                                                 |
-   | Description     | The public mainnet for Base.                                 |
-   | RPC Endpoint    | [https://mainnet.base.org](https://mainnet.base.org)         |
-   | Chain ID        | 8453                                                         |
-   | Currency Symbol | ETH                                                          |
-   | Block Explorer  | [https://base.blockscout.com/](https://base.blockscout.com/) |
+   | Name            | Value                                                  |
+   | :-------------- | :----------------------------------------------------- |
+   | Network Name    | Base Mainnet                                           |
+   | Description     | The public mainnet for Base.                           |
+   | RPC Endpoint    | [https://mainnet.base.org](https://mainnet.base.org)   |
+   | Chain ID        | 8453                                                   |
+   | Currency Symbol | ETH                                                    |
+   | Block Explorer  | [https://explorer.base.org](https://explorer.base.org) |
 
 6. Tap the Save button to save Base as a network.
 
@@ -98,13 +98,13 @@ To add Base Sepolia as a custom network to MetaMask:
 4. Click **Add a network manually**.
 5. In the **Add a network manually** dialog that appears, enter the following information for the Base Sepolia testnet:
 
-   | Name            | Sepolia                                                                      |
-   | :-------------- | :--------------------------------------------------------------------------- |
-   | Network Name    | Base Sepolia                                                                 |
-   | RPC Endpoint    | [https://sepolia.base.org](https://sepolia.base.org)                         |
-   | Chain ID        | 84532                                                                        |
-   | Currency Symbol | ETH                                                                          |
-   | Block Explorer  | [https://base-sepolia.blockscout.com/](https://base-sepolia.blockscout.com/) |
+   | Name            | Sepolia                                                                |
+   | :-------------- | :--------------------------------------------------------------------- |
+   | Network Name    | Base Sepolia                                                           |
+   | RPC Endpoint    | [https://sepolia.base.org](https://sepolia.base.org)                   |
+   | Chain ID        | 84532                                                                  |
+   | Currency Symbol | ETH                                                                    |
+   | Block Explorer  | [https://sepolia-explorer.base.org](https://sepolia-explorer.base.org) |
 
 6. Tap the Save button to save Base Sepolia as a network.
 
