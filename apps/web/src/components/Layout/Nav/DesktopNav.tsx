@@ -121,7 +121,7 @@ function DesktopNav({ color }: DesktopNavProps) {
         <Dropdown label="Developers" color={color}>
           <DropdownLink href={docsUrl} label="Docs" color={color} externalLink />
           <DropdownLink
-            href="https://base.blockscout.com/"
+            href="https://explorer.base.org/"
             label="Block Explorer"
             color={color}
             externalLink
