@@ -57,6 +57,10 @@ app.get('/basecamp', (req, res) => {
   res.redirect('base-camp/docs/welcome');
 });
 
+app.get('/tokens/list', (req, res) => {
+  res.redirect('docs/tokens/list');
+});
+
 app.get('/tools/bridges', (req, res) => {
   res.redirect('docs/tools/bridges');
 });
