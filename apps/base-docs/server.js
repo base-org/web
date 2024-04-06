@@ -57,8 +57,84 @@ app.get('/basecamp', (req, res) => {
   res.redirect('base-camp/docs/welcome');
 });
 
-app.get('/tokens/list', (req, res) => {
-  res.redirect('docs/tokens/list');
+app.get('/using-base', (req, res) => {
+  res.redirect('docs/using-base');
+});
+
+app.get('/network-information', (req, res) => {
+  res.redirect('docs/network-information');
+});
+
+app.get('/base-contracts', (req, res) => {
+  res.redirect('docs/base-contracts');
+});
+
+app.get('/fees', (req, res) => {
+  res.redirect('docs/fees');
+});
+
+app.get('/differences', (req, res) => {
+  res.redirect('docs/differences');
+});
+
+app.get('/contracts', (req, res) => {
+  res.redirect('docs/contracts');
+});
+
+app.get('/security', (req, res) => {
+  res.redirect('docs/security');
+});
+
+app.get('/terms-of-service', (req, res) => {
+  res.redirect('docs/terms-of-service');
+});
+
+app.get('/privacy-policy', (req, res) => {
+  res.redirect('docs/privacy-policy');
+});
+
+app.get('/cookie-policy', (req, res) => {
+  res.redirect('docs/cookie-policy');
+});
+
+app.get('/tools/node-providers', (req, res) => {
+  res.redirect('docs/tools/node-providers');
+});
+
+app.get('/tools/block-explorers', (req, res) => {
+  res.redirect('docs/tools/block-explorers');
+});
+
+app.get('/tools/network-faucets', (req, res) => {
+  res.redirect('docs/tools/network-faucets');
+});
+
+app.get('/tools/oracles', (req, res) => {
+  res.redirect('docs/tools/oracles');
+});
+
+app.get('/tools/data-indexers', (req, res) => {
+  res.redirect('docs/tools/data-indexers');
+});
+
+app.get('/tools/cross-chain', (req, res) => {
+  res.redirect('docs/tools/cross-chain');
+});
+
+app.get('/tools/account-abstraction', (req, res) => {
+  res.redirect('docs/tools/account-abstraction');
+});
+
+app.get('/tools/nft-checkout', (req, res) => {
+  res.redirect('docs/tools/nft-checkout');
+});
+
+app.get('/tools/onramps', (req, res) => {
+  res.redirect('docs/tools/onramps');
+});
+
+app.get('/tools/onboarding', (req, res) => {
+  res.redirect('docs/tools/onboarding');
 });
 
 app.get('/tools/bridges', (req, res) => {
@@ -71,6 +147,42 @@ app.get('/tools/bridges-testnet', (req, res) => {
 
 app.get('/tools/bridge-faq', (req, res) => {
   res.redirect('docs/tools/bridge-faq');
+});
+
+app.get('/tools/foundry', (req, res) => {
+  res.redirect('docs/tools/foundry');
+});
+
+app.get('/tools/hardhat', (req, res) => {
+  res.redirect('docs/tools/hardhat');
+});
+
+app.get('/tools/thirdweb-cli', (req, res) => {
+  res.redirect('docs/tools/thirdweb-cli');
+});
+
+app.get('/tools/ethers', (req, res) => {
+  res.redirect('docs/tools/ethers');
+});
+
+app.get('/tools/thirdweb-sdk', (req, res) => {
+  res.redirect('docs/tools/thirdweb-sdk');
+});
+
+app.get('/tools/viem', (req, res) => {
+  res.redirect('docs/tools/viem');
+});
+
+app.get('/tools/web3', (req, res) => {
+  res.redirect('docs/tools/web3');
+});
+
+app.get('/tokens/list', (req, res) => {
+  res.redirect('docs/tokens/list');
+});
+
+app.get('/tokens/wallet', (req, res) => {
+  res.redirect('docs/tokens/wallet');
 });
 
 app.get('/guides/run-a-base-goerli-node/', (req, res) => {
