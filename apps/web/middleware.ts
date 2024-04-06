@@ -25,6 +25,22 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  if (url.pathname === '/tools/bridges') {
+    url.host = 'docs.base.org';
+    url.pathname = '/docs/tools/bridges';
+    url.port = '443';
+
+    return NextResponse.redirect(url);
+  }
+
+  if (url.pathname === '/tools/bridges-testnet') {
+    url.host = 'docs.base.org';
+    url.pathname = '/docs/tools/bridges-testnet';
+    url.port = '443';
+
+    return NextResponse.redirect(url);
+  }
+
   if (url.pathname === '/tools/bridge-faq') {
     url.host = 'docs.base.org';
     url.pathname = '/docs/tools/bridge-faq';
