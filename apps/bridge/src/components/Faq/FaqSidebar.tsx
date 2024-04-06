@@ -50,7 +50,7 @@ export function FaqSidebar() {
               with any assets that they support Base network deposits from, or a third-party bridge
               which allows you to transfer assets much faster. You can find more information about
               the Base Bridge{' '}
-              <a href="https://docs.base.org/tools/bridge-faq" className="underline">
+              <a href="https://docs.base.org/docs/tools/bridge-faq" className="underline">
                 {' '}
                 here
               </a>

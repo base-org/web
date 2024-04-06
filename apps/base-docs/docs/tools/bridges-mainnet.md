@@ -36,7 +36,7 @@ To bridge to or from Base:
 3. Connect your wallet
 4. Choose the amount of ETH (or the asset of your choice that's available) you'd like to deposit or withdraw
 
-For frequently asked questions about Base Bridge, be sure to check out the [Bridge FAQ](/tools/bridge-faq/).
+For frequently asked questions about Base Bridge, be sure to check out the [Bridge FAQ](/docs/tools/bridge-faq/).
 
 ---
 

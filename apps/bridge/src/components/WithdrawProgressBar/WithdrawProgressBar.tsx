@@ -100,7 +100,7 @@ export function WithdrawProgressBar({ status }: WithdrawProgressBarProps) {
       </div>
       <div className="font-base">{DisclaimerContent[status]}</div>
       <span className="text-white underline">
-        <Link href="https://docs.base.org/tools/bridge-faq">Learn more</Link>
+        <Link href="https://docs.base.org/docs/tools/bridge-faq">Learn more</Link>
       </span>
     </div>
   );

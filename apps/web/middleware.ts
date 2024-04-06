@@ -17,14 +17,6 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (url.pathname === '/guides/run-a-base-goerli-node') {
-    url.host = 'docs.base.org';
-    url.pathname = '/tutorials/run-a-base-node';
-    url.port = '443';
-
-    return NextResponse.redirect(url);
-  }
-
   if (url.pathname === '/discord') {
     url.host = 'discord.gg';
     url.pathname = '/buildonbase';
