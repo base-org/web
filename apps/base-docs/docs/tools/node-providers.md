@@ -169,6 +169,17 @@ hide_table_of_contents: true
 
 ---
 
+## OnFinality
+
+[OnFinality](https://onfinality.io) provides high performance archive access to Base Mainnet and Base Sepolia, with a generous free tier and high rate limits, as well as Trace and Debug APIs, available to [paid plans](https://onfinality.io/pricing).
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
+
+---
+
 ## QuickNode
 
 [QuickNode](https://www.quicknode.com/chains/base) offers access to hosted Base nodes as part of their free Discover Plan. You can configure add-ons, like "Trace Mode" and "Archive Mode" for an additional cost by upgrading to one of their paid plans.
@@ -188,6 +199,16 @@ hide_table_of_contents: true
 
 - Base Mainnet
 - Base Sepolia (Testnet)
+
+---
+
+## SubQuery
+
+[SubQuery](https://subquery.network/rpc) is a globally distributed, decentralized network of RPC nodes, offering generous free public endpoints and higher access through Flex Plans
+
+#### Supported Networks
+
+- Base Mainnet
 
 ---
 
