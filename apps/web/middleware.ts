@@ -25,6 +25,14 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  if (url.pathname === '/tokens/list') {
+    url.host = 'docs.base.org';
+    url.pathname = '/docs/tokens/list';
+    url.port = '443';
+
+    return NextResponse.redirect(url);
+  }
+
   if (url.pathname === '/tools/bridges') {
     url.host = 'docs.base.org';
     url.pathname = '/docs/tools/bridges';
