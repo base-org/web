@@ -57,6 +57,14 @@ app.get('/basecamp', (req, res) => {
   res.redirect('base-camp/docs/welcome');
 });
 
+app.get('/tools/bridges', (req, res) => {
+  res.redirect('docs/tools/bridges');
+});
+
+app.get('/tools/bridges-testnet', (req, res) => {
+  res.redirect('docs/tools/bridges-testnet');
+});
+
 app.get('/tools/bridge-faq', (req, res) => {
   res.redirect('docs/tools/bridge-faq');
 });
