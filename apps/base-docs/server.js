@@ -57,6 +57,10 @@ app.get('/basecamp', (req, res) => {
   res.redirect('base-camp/docs/welcome');
 });
 
+app.get('/tools/bridge-faq', (req, res) => {
+  res.redirect('docs/tools/bridge-faq');
+});
+
 app.get('/guides/run-a-base-goerli-node/', (req, res) => {
   res.redirect('/tutorials/run-a-base-node/');
 });
