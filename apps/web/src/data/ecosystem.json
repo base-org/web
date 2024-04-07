@@ -1206,15 +1206,6 @@
     "imageUrl": "/images/partners/geckoterminal.webp"
   },
   {
-    "name": "BaseNS",
-    "url": "https://basens.domains/",
-    "description": "BaseNS, the 1st DID on the Base Mainnet. Secure your distinctive Web3 domain on all blockchains today.",
-    "tags": [
-      "NFT"
-    ],
-    "imageUrl": "/images/partners/basenameservice.webp"
-  },
-  {
     "name": "NFTScan",
     "url": "https://www.nftscan.com/",
     "description": "The world's largest NFT data infrastructure, supporting the complete amount of NFT data for 17 blockchain networks. Providing NFT API for developers.",
