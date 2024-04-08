@@ -17,6 +17,61 @@
     "url": "https://bridge.connext.network/",
     "imageUrl": "/images/partners/connext.webp"
   },
+  [
+  {
+    "name": "Infusion",
+    "tags": [
+      "defi"
+    ],
+    "description": "Infusion is an AMM protocol that facilitates deep and stabilized liquidity. It's time-lock component that allows for liquidity to be utilized as an onchain primitive for DApps.",
+    "url": "https://infusion.finance",
+    "imageUrl": "/images/partners/infusion.png"
+  },
+  {
+    "name": "Defi Launch",
+    "tags": [
+      "defi"
+    ],
+    "description": "Decentralized hub for easy onboarding and bridging powered by LayerZero",
+    "url": "https://defilaunch.app/",
+    "imageUrl": "/images/partners/defilaunch.png"
+  },
+  {
+    "name": "Chad Finance",
+    "tags": [
+      "defi"
+    ],
+    "description": "Chad Finance allows for the minting of stable coins against yield bearing LP positions of concentrated liquidity based Dexes like Uniswap. ",
+    "url": "https://chadfinance.xyz/",
+    "imageUrl": "/images/partners/chadfinance.png"
+  },
+  {
+    "name": "The Open X Project",
+    "tags": [
+      "defi"
+    ],
+    "description": "Auto-compounding Vaults. 1% fee NFT Marketplace. Next-gen Aggregator. DeFi applications accessible and open to everyone.",
+    "url": "https://app.openxswap.exchange/",
+    "imageUrl": "/images/partners/openx.png"
+  },
+  {
+    "name": "Earn Finance",
+    "tags": [
+      "defi"
+    ],
+    "description": "Earn Finance is the first token within the #Hold2Earn sector of crypto that is exclusively on the Base Network. Holding $EarnFi gives you automatic & passive Ethereum rewards sent directly to your wallet!",
+    "url": "https://earnfinance.org/",
+    "imageUrl": "/images/partners/earnfinance.png"
+  },
+  {
+    "name": "MoonPay",
+    "tags": [
+      "onramp"
+    ],
+    "description": "MoonPay is the world’s leading Web3 infrastructure company, empowering brands and consumers to unlock next-gen transactions..",
+    "url": "https://www.moonpay.com/business/onramps",
+    "imageUrl": "/images/partners/moonpay.png"
+  },
   {
     "name": "Vrbs DAO",
     "tags": [
