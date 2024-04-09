@@ -66,7 +66,7 @@ You shouldn't use `onlyOwner` for the two _get_ functions. Doing so won't preven
 
 ## AddressBookFactory
 
-The `AddressBookFactory` contains one function, `deploy`. It creates an instance of `AddressBook` and assigns the caller as the owner of that instance.
+The `AddressBookFactory` contains one function, `deploy`. It creates an instance of `AddressBook` and assigns the caller as the owner of that instance. It then returns the `address` of the newly-created contract.
 
 ---
 
