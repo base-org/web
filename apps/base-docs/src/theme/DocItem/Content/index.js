@@ -41,7 +41,7 @@ export default function DocItemContent({ children }) {
         {() => (
           <>
             {/* <DocFeedback /> - Disabled while team decides how to rework */}
-            <DocChat />
+            {/* <DocChat /> */}
           </>
         )}
       </BrowserOnly>
