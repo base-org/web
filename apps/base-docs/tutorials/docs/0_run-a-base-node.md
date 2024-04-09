@@ -100,16 +100,31 @@ Syncing your node may take **days** and will consume a vast amount of your reque
 
 If you're a prospective or current Base Node operator and would like to restore from a snapshot to save time on the initial sync, it's possible to always get the latest available snapshot of the Base chain on mainnet and/or testnet by using the following CLI commands. The snapshots are updated every week.
 
+#### Full
 **Mainnet**
 
 ```
-wget https://base-snapshots-mainnet-archive.s3.amazonaws.com/$(curl https://base-snapshots-mainnet-archive.s3.amazonaws.com/latest)
+wget https://mainnet-full-snapshots.base.org/$(curl https://mainnet-full-snapshots.base.org/latest)
 ```
 
 **Testnet (Sepolia)**
 
 ```
-wget https://base-snapshots-sepolia-archive.s3.amazonaws.com/$(curl https://base-snapshots-sepolia-archive.s3.amazonaws.com/latest)
+wget https://sepolia-full-snapshots.base.org/$(curl https://sepolia-full-snapshots.base.org/latest)
+```
+
+#### Archive
+
+**Mainnet**
+
+```
+wget https://mainnet-archive-snapshots.base.org/$(curl https://mainnet-archive-snapshots.base.org/latest)
+```
+
+**Testnet (Sepolia)**
+
+```
+wget https://sepolia-archive-snapshots.base.org/$(curl https://sepolia-archive-snapshots.base.org/latest)
 ```
 
 ### Syncing
