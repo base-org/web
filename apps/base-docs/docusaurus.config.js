@@ -267,6 +267,10 @@ const config = {
         //   type: 'localeDropdown',
         //   navPosition: 'bottomRight',
         // },
+        {
+          type: 'custom-connectWallet',
+          navPosition: 'bottomRight',
+        },
       ],
     },
     algolia: {

@@ -1,39 +1,49 @@
 /* eslint-disable */
+import '@rainbow-me/rainbowkit/styles.css';
+
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   connectorsForWallets,
-  getDefaultWallets,
+  getDefaultConfig,
   RainbowKitProvider,
+  lightTheme,
+  darkTheme,
 } from '@rainbow-me/rainbowkit';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { baseSepolia } from 'wagmi/chains';
-import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
+import {
+  coinbaseWallet,
+  metaMaskWallet,
+  rainbowWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
+import { createConfig, WagmiProvider } from 'wagmi';
+import { base, baseSepolia } from 'wagmi/chains';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { Provider as CookieManagerProvider, Region } from '@coinbase/cookie-manager';
 import { cookieManagerConfig } from '../utils/cookieManagerConfig';
 import { CookieBanner } from '@coinbase/cookie-banner';
 
-export const { chains, publicClient } = configureChains(
-  [baseSepolia],
+const connectors = connectorsForWallets(
   [
-    jsonRpcProvider({
-      rpc: (chain) => ({ http: chain.rpcUrls.default.http[0] }),
-    }),
+    {
+      groupName: 'Recommended',
+      wallets: [coinbaseWallet],
+    },
+    {
+      groupName: 'Others',
+      wallets: [rainbowWallet, metaMaskWallet, walletConnectWallet],
+    },
   ],
+  { appName: 'Base Developer Documentation', projectId: '582a2fc8f61e81e0bd0d18b32229595f' },
 );
 
-const { wallets } = getDefaultWallets({
-  appName: 'Base Camp',
-  projectId: '582a2fc8f61e81e0bd0d18b32229595f',
-  chains,
-});
-
-const connectors = connectorsForWallets(wallets);
-
-const wagmiConfig = createConfig({
+const config = createConfig({
   autoConnect: true,
   connectors,
-  publicClient,
+  chains: [base, baseSepolia],
+  ssr: true,
 });
+
+const queryClient = new QueryClient();
 
 const cookieBannerTheme = {
   colors: {
@@ -115,21 +125,23 @@ export default function Root({ children }) {
   if (!mounted) return null;
 
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        <CookieManagerProvider
-          projectName="base_docs"
-          locale="en"
-          region={Region.DEFAULT}
-          log={console.log}
-          onError={handleLogError}
-          onPreferenceChange={setTrackingPreference}
-          config={cookieManagerConfig}
-        >
-          {children}
-          <CookieBanner companyName="Base" link="/cookie-policy" theme={cookieBannerTheme} />
-        </CookieManagerProvider>
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider modalSize="compact" theme={darkTheme()}>
+          <CookieManagerProvider
+            projectName="base_docs"
+            locale="en"
+            region={Region.DEFAULT}
+            log={console.log}
+            onError={handleLogError}
+            onPreferenceChange={setTrackingPreference}
+            config={cookieManagerConfig}
+          >
+            {children}
+            <CookieBanner companyName="Base" link="/cookie-policy" theme={cookieBannerTheme} />
+          </CookieManagerProvider>
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 }
