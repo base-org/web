@@ -2,7 +2,7 @@
 title: 'Hardhat: Optimizing the gas usage of smart contracts'
 slug: /hardhat-profiling-gas
 description: A tutorial that teaches how to optimize the gas usage of your smart contracts using Hardhat.
-author: Brian Doyle
+author: Edson Alcala and Brian Doyle
 keywords:
   [
     Hardhat,
