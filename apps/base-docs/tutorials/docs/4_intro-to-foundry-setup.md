@@ -2,7 +2,7 @@
 title: 'Foundry: Setting up Foundry with Base'
 slug: /intro-to-foundry-setup
 description: A tutorial that teaches how to set up your development environment to work with Foundry.
-author: briandoyle81
+author: Edson Alcala
 keywords: [Foundry, Forge, Foundry Book, smart contract development, toolchain]
 tags: ['smart contracts']
 difficulty: beginner

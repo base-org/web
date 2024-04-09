@@ -2,7 +2,7 @@
 title: 'Account Abstraction on Base using Privy and the Base Paymaster'
 slug: /account-abstraction-with-privy-and-base-paymaster
 description: A tutorial that teaches how to implement Account Abstraction into a Base project using Privy and the Base paymaster.
-author: briandoyle81
+author: Brian Doyle and Aaron Hayslip
 keywords:
   [
     Privy,
