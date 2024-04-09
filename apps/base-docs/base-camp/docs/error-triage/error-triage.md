@@ -43,12 +43,21 @@ TypeError: Type literal_string "One" is not implicitly convertible to expected t
 
 Fix by correcting the type or value, as appropriate for your needs:
 
+<details>
+
+<summary>Reveal code</summary>
+
+
 ```solidity
 function compilerTypeErrorFixed() public pure returns (string) {
     string myNumber = "One";
     return myNumber;
 }
 ```
+
+</details>
+
+<br/>
 
 ### Conversion Errors
 
@@ -74,6 +83,11 @@ TypeError: Return argument type int8 is not implicitly convertible to expected t
 
 Fix by explicitly casting as necessary:
 
+<details>
+
+<summary>Reveal code</summary>
+
+
 ```solidity
 function compilerConversionErrorFixed() public pure returns (uint) {
     int8 first = 1;
@@ -81,6 +95,10 @@ function compilerConversionErrorFixed() public pure returns (uint) {
     return uint(uint8(first));
 }
 ```
+
+</details>
+
+<br/>
 
 :::tip
 
@@ -124,6 +142,11 @@ TypeError: Type int8 is not implicitly convertible to expected type uint256.
 
 Resolve by explicitly converting to the final type:
 
+<details>
+
+<summary>Reveal code</summary>
+
+
 ```
 function compilerOperatorErrorFixed() public pure returns (uint) {
     int8 first = 1;
@@ -134,6 +157,10 @@ function compilerOperatorErrorFixed() public pure returns (uint) {
     return sum;
 }
 ```
+
+</details>
+
+<br/>
 
 ### Stack Depth Limit
 
@@ -195,6 +222,11 @@ CompilerError: Stack too deep. Try compiling with --via-ir (cli) or the equivale
 
 Resolve this error by breaking up large functions and separating operations into different levels of scope.
 
+<details>
+
+<summary>Reveal code</summary>
+
+
 ```solidity
 function stackDepthLimitFixed() public pure returns (uint) {
     uint subtotalA;
@@ -240,6 +272,10 @@ function stackDepthLimitFixed() public pure returns (uint) {
     return subtotalA + subtotalB;
 }
 ```
+
+</details>
+
+<br/>
 
 ---
 
@@ -317,7 +353,7 @@ The default settings for Remix make it difficult to trigger an out of gas error 
 
 If you write code that can have an ambiguous execution time, it becomes very difficult to accurately estimate gas limits.
 
-In this example, each loop as a 1 in 1000 chance of ending.
+In this example, each loop has a 1 in 1000 chance of ending.
 
 :::warning
 
@@ -385,6 +421,11 @@ In this case, the error type is `11`, for overflow/underflow outside of an `unch
 
 Fix by changing your code to handle the expected range of values.
 
+<details>
+
+<summary>Reveal code</summary>
+
+
 ```solidity
 function badSubstractionFixed() public pure returns (int) {
     int first = 1;
@@ -392,6 +433,10 @@ function badSubstractionFixed() public pure returns (int) {
     return first - second;
 }
 ```
+
+</details>
+
+<br/>
 
 ### Divide by Zero
 

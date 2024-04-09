@@ -21,6 +21,10 @@ By the end of this lesson you should be able to:
 
 The minimal elements needed for a token are pretty basic. Start by creating a contract called `MinimalToken`. Add a `mapping` to relate user addresses to the number of tokens they possess. Finally, add a variable to track `totalSupply`:
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 contract MinimalToken {
     mapping (address => uint) public balances;
@@ -28,7 +32,15 @@ contract MinimalToken {
 }
 ```
 
+</details>
+
+<br/>
+
 Add a `constructor` that initializes the `totalSupply` at 3000 and assigns ownership to the contract creator:
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 constructor() {
@@ -38,11 +50,19 @@ constructor() {
 }
 ```
 
+</details>
+
+<br/>
+
 Deploy and test to confirm that the total supply is 3000, and the balance of the first account is as well.
 
 ![Balance](../../assets/images/minimal-tokens/balance.png)
 
 Update the constructor and hardcode a distribution of the tokens to be evenly split between the first three test accounts:
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 constructor() {
@@ -53,6 +73,10 @@ constructor() {
     balances[0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db] = totalSupply / 3;
 }
 ```
+
+</details>
+
+<br/>
 
 Redeploy and test again. Now, each of the first three accounts should have 1000 tokens.
 
@@ -68,12 +92,20 @@ To remediate this, all we need to do is add a function that can update the balan
 
 Add a `function` called `transfer` that accepts an `address` of `_to` and a `uint` for the `_amount`. You don't need to add anything for `_from`, because that should only be `msg.sender`. The function should subtract the `_amount` from the `msg.sender` and add it to `_to`:
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 function transfer(address _to, uint _amount) public {
     balances[msg.sender] -= _amount;
     balances[_to] += _amount;
 }
 ```
+
+</details>
+
+<br/>
 
 Double-check that you've switched back to the first address and redeploy. Then, try sending 500 tokens to the second address.
 
@@ -91,7 +123,7 @@ Note: The called function should be payable if you send value and the value you 
 Debug the transaction to get more information.
 ```
 
-You won't be able to do it, though the `Note:` here is **misleading**. In the EVM, `payable` **only** refers to transfers of the primary token used to pay gas fees: ETH, Base ETH, Sepolia ETH, Matic, etc. It is **not** referring to the balance of our simple token.
+You won't be able to do it, though the `Note:` here is **misleading**. In the EVM, `payable` **only** refers to transfers of the primary token used to pay gas fees: ETH, Base ETH, Sepolia ETH, Matic, etc. It does **not** refer to the balance of our simple token.
 
 Instead, the transaction is reverting because of the built-in overflow/underflow protection. It's not a great programming practice to depend on this, so add an error for `InsufficientTokens` that returns the `newSenderBalance`.
 
@@ -137,7 +169,7 @@ The `totalSupply` remains unchanged, and the balance of the zero address are vis
 
 :::info
 
-The [zero address] currently has a balance of more than 11,000 ETH, worth over **20 million dollars**! It's total holding of burned assets are estimated to be worth more than **200 million dollars**!!!
+The [zero address] currently has a balance of more than 11,000 ETH, worth over **20 million dollars**! Its total holding of burned assets is estimated to be worth more than **200 million dollars**!!!
 
 :::
 

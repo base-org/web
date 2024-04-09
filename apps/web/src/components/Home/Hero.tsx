@@ -2,10 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { Button } from 'apps/web/src/components/Button/Button';
 import { gradientBgMap, textGradientMap, Verb, verbs } from 'apps/web/src/styles/hero';
 import { motion, useReducedMotion } from 'framer-motion';
-import getConfig from 'next/config';
 import Link from 'next/link';
-
-const { publicRuntimeConfig } = getConfig();
+import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
 
 const subtitleCopy =
   'Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain.';
@@ -113,19 +111,10 @@ export function Hero() {
             </p>
             <div className="flex flex-col space-y-6">
               <div className="flex flex-col items-center gap-2 pt-7 md:flex-row">
-                <Link
-                  className="w-full"
-                  href={publicRuntimeConfig.docsUrl}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
+                <Link className="w-full" href={docsUrl} target="_blank" rel="noreferrer noopener">
                   <Button className="w-full">Read the docs</Button>
                 </Link>
-                <Link
-                  className="w-full"
-                  href={publicRuntimeConfig.bridgeUrl}
-                  rel="noreferrer noopener"
-                >
+                <Link className="w-full" href={bridgeUrl} rel="noreferrer noopener">
                   <Button className="w-full" variant="secondary">
                     Bridge assets
                   </Button>

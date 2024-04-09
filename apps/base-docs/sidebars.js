@@ -301,8 +301,15 @@ module.exports = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'Tokens',
+      collapsible: false,
+      collapsed: false,
+      items: ['tokens/token-list', 'tokens/wallet'],
+    },
     ['contracts'],
-    ['tokens'],
+    ['security'],
     {
       type: 'link',
       label: 'Status',

@@ -8,6 +8,12 @@ hide_table_of_contents: false
 
 You can use this for connection-status-based rendering, to enable or disable controls or views based on address, and many other useful tasks.
 
+:::caution
+
+The frontend tutorials are currently based on version 1.X of Wagmi. Version 2 has recently been released and is a near complete rewrite of the library. We are working on updates. In the meantime, please use Version 1, or review the [migration guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
+
+:::
+
 ---
 
 ## Objectives
@@ -164,6 +170,11 @@ Open `_app.tsx` and import `useEffect` and `useState` from `'react'`.
 
 Create a state variable called `mounted`, and set it in the first render cycle to be `true`. Finally, use the same conditional rendering technique to only render the `<Component {...pageProps} />` element if the app has mounted.
 
+<details>
+
+<summary>Reveal code</summary>
+
+
 ```typescript
 const [mounted, setMounted] = useState(false);
 useEffect(() => setMounted(true), []);
@@ -176,6 +187,10 @@ return (
   </WagmiConfig>
 );
 ```
+
+</details>
+
+<br/>
 
 With this fix in place, you should no longer get hydration errors!
 

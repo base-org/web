@@ -43,10 +43,21 @@ export default function StudentProgress() {
     );
   };
 
+  // Function to render the NFT cards in the desired order (imports after 'inheritance' and before 'errors')
   const renderNFTs = () => {
-    const NFTs = Object.keys(nftData).map((nftNum) => {
+    // Get the sorted NFT keys, excluding key '19' imports
+    const sortedNFTKeys = Object.keys(nftData)
+      .filter((key) => key !== '19')
+      .sort((a, b) => a - b);
+  
+    // Find the index of key '8' and insert key '19' after it
+    const index = sortedNFTKeys.findIndex((key) => key === '8');
+    sortedNFTKeys.splice(index + 1, 0, '19');
+  
+    // Map over the sorted NFT keys and render the NFT cards
+    const NFTs = sortedNFTKeys.map((nftNum) => {
       const nft = nftData[nftNum];
-
+  
       return (
         <NFTCard
           key={nft.deployment.address}
@@ -56,7 +67,7 @@ export default function StudentProgress() {
         />
       );
     });
-
+  
     return NFTs;
   };
 

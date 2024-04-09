@@ -6,6 +6,12 @@ hide_table_of_contents: false
 
 The [`useContractRead`] hook has a number of configurable properties that will allow you to adapt it to your needs. You can [`watch`], for updates, though not for free. Once those updates are retrieved you can use the hook to automatically run an update function to set state for React, or handle any other logic you want to trigger when the data on the blockchain changes.
 
+:::caution
+
+The frontend tutorials are currently based on version 1.X of Wagmi. Version 2 has recently been released and is a near complete rewrite of the library. We are working on updates. In the meantime, please use Version 1, or review the [migration guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
+
+:::
+
 ---
 
 ## Objectives

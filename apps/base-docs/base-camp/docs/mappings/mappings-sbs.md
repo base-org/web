@@ -50,21 +50,37 @@ As a result, there are a few special characteristics and limitations to keep in 
 
 Create a contract called `Mappings`. In it, add a `mapping` from an `address` to a `uint` called `favoriteNumbers`.
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 contract Mappings {
     mapping (address => uint) favoriteNumbers;
 }
 ```
 
+</details>
+
+<br/>
+
 ### Writing to the Mapping
 
 Add a function called `saveFavoriteNumber` that takes an `address` and `uint`, then saves the `uint` in the mapping, with the `address` as the key.
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 function saveFavoriteNumber(address _address, uint _favorite) public {
     favoriteNumbers[_address] = _favorite;
 }
 ```
+
+</details>
+
+<br/>
 
 Deploy and test it out. Does it work? Probably...
 
@@ -80,11 +96,19 @@ That won't do at all!
 
 Luckily, you can make use of a [global variable] called `msg.sender` to access the `address` of the wallet that sent the transaction. Use this to make it so that only the owner of an `address` can set their favorite number.
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 function saveFavoriteNumber(uint _favorite) public {
     favoriteNumbers[msg.sender] = _favorite;
 }
 ```
+
+</details>
+
+<br/>
 
 Deploy and test again. Success!
 
@@ -100,6 +124,10 @@ At least not with any built in features, but you can solve this on your own. A c
 
 For this problem, you can use a helper array to store a list of all the keys present in `favoriteNumbers`. Simply add the array, and push new keys to it when saving a new favorite number.
 
+<details>
+
+<summary>Reveal code</summary>
+
 ```solidity
 contract Mappings {
     mapping (address => uint) public favoriteNumbers;
@@ -113,7 +141,16 @@ contract Mappings {
 }
 ```
 
+</details>
+
+<br/>
+
 To return all of the favorite numbers, you can then iterate through `addressesOfFavs`, look up that addresses' favorite number, add it to a return array, and then return the array when you're done.
+
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 function returnAllFavorites() public view returns (uint[] memory) {
@@ -127,9 +164,17 @@ function returnAllFavorites() public view returns (uint[] memory) {
 }
 ```
 
+</details>
+
+<br/>
+
 On the surface, this solution works, but there is a problem: What happens if a user **updates** their favorite number? Their address will end up in the list twice, resulting in a doubled entry in the return.
 
 A solution here would be to check first if the `address` already has a number as a value in `favoriteNumbers`, and only push it to the array if not.
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 function saveFavoriteNumber(uint _favorite) public {
@@ -140,7 +185,15 @@ function saveFavoriteNumber(uint _favorite) public {
 }
 ```
 
+</details>
+
+<br/>
+
 You should end up with a contract similar to this:
+
+<details>
+
+<summary>Reveal code</summary>
 
 ```solidity
 pragma solidity 0.8.17;
@@ -167,6 +220,8 @@ contract Mappings {
     }
 }
 ```
+
+</details>
 
 ---
 

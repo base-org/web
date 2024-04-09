@@ -1,13 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
-import getConfig from 'next/config';
 import Link from 'next/link';
 
 import useClickAway from '../../../utils/hooks/useClickAway';
 
 import { Icon } from '../../Icon/Icon';
-
-const { publicRuntimeConfig } = getConfig();
+import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
 
 // Dropdown Link
 type DropdownLinkProps = {
@@ -111,7 +109,7 @@ function DesktopNav({ color }: DesktopNavProps) {
           />
         </Dropdown>
         <a
-          href={publicRuntimeConfig.bridgeUrl}
+          href={bridgeUrl}
           className={`inline-flex items-center font-mono text-xl ${
             color === 'black' ? 'text-black' : 'text-white'
           }`}
@@ -121,14 +119,9 @@ function DesktopNav({ color }: DesktopNavProps) {
           Bridge
         </a>
         <Dropdown label="Developers" color={color}>
+          <DropdownLink href={docsUrl} label="Docs" color={color} externalLink />
           <DropdownLink
-            href={publicRuntimeConfig.docsUrl}
-            label="Docs"
-            color={color}
-            externalLink
-          />
-          <DropdownLink
-            href="https://basescan.org"
+            href="https://explorer.base.org/"
             label="Block Explorer"
             color={color}
             externalLink
@@ -154,9 +147,9 @@ function DesktopNav({ color }: DesktopNavProps) {
         </Dropdown>
       </div>
       <div className="flex h-full flex-row items-center space-x-8">
-        <Link href="/discord" title="Join us on Discord">
+        <a href="https://discord.com/invite/buildonbase" title="Join us on Discord">
           <Icon name="discord" width="24" height="20" color={color} />
-        </Link>
+        </a>
         <a href="https://twitter.com/base" title="Join us on Twitter">
           <Icon name="twitter" width="24" height="20" color={color} />
         </a>

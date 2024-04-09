@@ -11,8 +11,6 @@ COPY . .
 # Install dependencies
 RUN yarn --immutable
 
-RUN yarn workspace @app/web next build
-RUN yarn workspaces focus --all --production
-
 EXPOSE 3000
-CMD ["yarn", "workspace", "@app/web", "start", "-p", "3000"]
+# Build at runtime so that we get ENV variables, this allows us to use [Automatic Static Optimization](https://nextjs.org/docs/pages/building-your-application/rendering/automatic-static-optimization)
+CMD ["/bin/bash", "-c", "yarn workspace @app/web next build ; yarn workspace @app/web start -p 3000"]

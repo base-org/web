@@ -15,6 +15,7 @@ keywords:
     Optimism,
     decentralized apps,
   ]
+hide_table_of_contents: true
 ---
 
 # About Base
@@ -35,8 +36,8 @@ Get the EVM environment at a fraction of the cost. Get early access to Ethereum 
 
 ### Open source
 
-Base is built on the MIT-licensed [OP Stack](https://stack.optimism.io/), in collaboration with Optimism. We’re joining as the second Core Dev team working on the OP Stack to ensure it’s a public good available to everyone.
+Base is built on the MIT-licensed [OP Stack](https://stack.optimism.io/), in collaboration with Optimism. We're joining as the second Core Dev team working on the OP Stack to ensure it’s a public good available to everyone.
 
 ### Scaled by Coinbase
 
-Base is an easy way for decentralized apps to leverage Coinbase’s products and distribution. Seamless Coinbase integrations, easy fiat onramps, and access to millions of verified users in the Coinbase ecosystem.
+Base is an easy way for decentralized apps to leverage Coinbase's products and distribution. Seamless Coinbase integrations, easy fiat onramps, and access to millions of verified users in the Coinbase ecosystem.

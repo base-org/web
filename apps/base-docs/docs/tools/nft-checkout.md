@@ -17,9 +17,10 @@ keywords:
     fiat,
     Crossmint,
     NFT Checkout,
-    Credit Card payments for NFT, 
+    Credit Card payments for NFT,
     NFT mint with Credit Card,
   ]
+hide_table_of_contents: true
 ---
 
 # NFT Checkout

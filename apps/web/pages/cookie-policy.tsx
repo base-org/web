@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { CookiePreferencesModal } from '@coinbase/cookie-banner';
 import Head from 'next/head';
+import Link from 'next/link';
 
 export default function CookiePolicy() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +21,10 @@ export default function CookiePolicy() {
       </Head>
       <main className="flex w-full flex-col items-center bg-white">
         <section className="flex w-full max-w-[1440px] flex-col gap-4 px-8 pb-10 pt-10 lg:pb-28 lg:pt-20">
-          <h1 className="mb-8 text-4xl font-bold">Base Cookie Policy</h1>
+          <h1 className="text-4xl font-bold">Base Cookie Policy</h1>
+          <p className="mb-10">
+            <strong>Last updated:</strong> 26 February 2024
+          </p>
           <p>
             This Cookie Policy explains how Base (referred to here as{' '}
             <strong>&quot;we&quot;</strong>, <strong>&quot;us&quot;</strong> and{' '}
@@ -65,8 +69,11 @@ export default function CookiePolicy() {
             Cookies set by the website operator are called{' '}
             <strong>&quot;first party cookies&quot;</strong> and Cookies set by parties other than
             the website operator are called <strong>&quot;third party cookies&quot;</strong>. You
-            should check the third-party&apos;s website for more information on how they use
-            cookies.
+            should check the{' '}
+            <Link href="/third-party-cookies" className="text-blue-500">
+              third-party&apos;s website
+            </Link>{' '}
+            for more information on how they use cookies.
           </p>
           <h2 className="mt-8 text-2xl font-medium">2. What Do We Use Cookies For?</h2>
           <p>

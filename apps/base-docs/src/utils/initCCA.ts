@@ -2,12 +2,11 @@
 // They recommended disabling linting and type-checking for now, since this version is not typed.
 /* eslint-disable */
 // @ts-nocheck
-const docusaurusConfig = require('@generated/docusaurus.config');
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import { customFields } from './docusaurusCustomFields';
 import { setCookie, getCookie, deserializeCookie } from './cookieManagement';
 import { TrackingPreference } from '@coinbase/cookie-manager';
 
-const { customFields } = docusaurusConfig.default;
 const isDevelopment = customFields.nodeEnv === 'development';
 
 // Initialize Client Analytics

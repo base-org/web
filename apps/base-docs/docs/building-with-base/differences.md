@@ -16,11 +16,12 @@ keywords:
     Base transaction costs,
     transaction costs,
   ]
+hide_table_of_contents: true
 ---
 
 # Differences between Ethereum and Base
 
-Base is built on the [Bedrock](https://stack.optimism.io/docs/releases/bedrock/explainer/) release of the [OP Stack](https://stack.optimism.io/), which is designed from the ground up to be as close to Ethereum as possible. Because of this, there are very little differences when it comes to building on Base and Ethereum.
+Base is built on the [Bedrock](https://stack.optimism.io/docs/releases/bedrock/explainer/) release of the [OP Stack](https://stack.optimism.io/), which is designed from the ground up to be as close to Ethereum as possible. Because of this, there are very few differences when it comes to building on Base and Ethereum.
 
 However, there are still some minor discrepancies between the behavior of Base and Ethereum that you should be aware of when building apps on top of Base.
 

@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import { Icon } from '../Icon/Icon';
 
 export function GetConnected() {
@@ -11,9 +9,9 @@ export function GetConnected() {
 
       <div className="flex flex-row gap-4 lg:h-full lg:items-center lg:gap-8">
         <div className="rounded-full border border-white p-5">
-          <Link href="/discord" title="Join us on Discord">
+          <a href="https://discord.com/invite/buildonbase" title="Join us on Discord">
             <Icon name="discord" width="48" height="48" />
-          </Link>
+          </a>
         </div>
         <div className="rounded-full border border-white p-5">
           <a href="https://github.com/base-org" title="Join us on Github">

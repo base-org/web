@@ -13,16 +13,31 @@ keywords:
     Base testnet,
     blockchain data,
     Covalent,
+    Moralis,
     SubQuery,
     The Graph,
     GraphQL,
     EVM chains,
   ]
+hide_table_of_contents: true
 ---
 
 # Data Indexers
 
 ---
+
+## Allium
+
+[Allium](https://www.allium.so/) is an Enterprise Data Platform that serves accurate, fast, and simple blockchain data. Currently serving 15 blockchains and over 100+ schemas, Allium offers near real-time Base data for infrastructure needs and enriched Base data (NFT, DEX, Decoded, Wallet360) for research and analytics.
+
+Allium supports data delivery to multiple [destinations](https://docs.allium.so/integrations/overview), including Snowflake, Bigquery, Databricks, and AWS S3.
+
+Documentation:
+
+- [Real-time](https://docs.allium.so/real-time-data/base)
+- [Batch-enriched](https://docs.allium.so/data-tables/base)
+
+To get started, contact Allium [here](https://www.allium.so/contact).
 
 ## Arkham
 
@@ -64,6 +79,19 @@ Envio [HyperSync](https://docs.envio.dev/docs/hypersync) is an indexed layer of 
 Designed to optimize the user experience, Envio offers automatic code generation, flexible language support, multi-chain data aggregation, and a reliable, cost-effective hosted service.
 
 To get started, visit the [documentation](https://docs.envio.dev/docs/overview) or follow the [quickstart](https://docs.envio.dev/docs/quickstart) guide.
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
+
+---
+
+## Moralis
+
+[Moralis](https://moralis.io/?utm_source=base-docs&utm_medium=partner-docs) offers comprehensive data APIs for crypto, offering both indexed and real-time data across 15+ chains. Moralis' APIs include portfolio and wallet balances, NFT data, token data, price data, candlestick data, net worth data, and a lot more. All of the data is enriched with things like metadata, parsed events and address labels.
+
+To get started with Moralis, you can [sign up for an account](https://moralis.io/?utm_source=base-docs&utm_medium=partner-docs), visit the Moralis [documentation](https://docs.moralis.io/?utm_source=base-docs&utm_medium=partner-docs), or check out their tutorials on [Youtube](https://www.youtube.com/c/MoralisWeb3).
 
 #### Supported Networks
 

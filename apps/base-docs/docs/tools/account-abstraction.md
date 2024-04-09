@@ -18,7 +18,9 @@ keywords:
     Stackup,
     WalletKit,
     Zerodev,
+    Openfort,
   ]
+hide_table_of_contents: true
 ---
 
 # Account Abstraction
@@ -57,7 +59,7 @@ keywords:
 
 ## WalletKit
 
-[WalletKit](https://walletkit.com) is an all-in-one platform for adding smart, gasless wallets to your app. It has integrated support for ERC 4337 and comes with a paymaster and bundler included, requiring no extra setup. 
+[WalletKit](https://walletkit.com) is an all-in-one platform for adding smart, gasless wallets to your app. It has integrated support for ERC 4337 and comes with a paymaster and bundler included, requiring no extra setup.
 
 WalletKit also offers pre-built components for onboarding users with email and social logins, which can be integrated in under 15 minutes using their React SDK or the wagmi connector. Alternatively, build completely bespoke experiences for your users using WalletKit's Wallets API.
 
@@ -68,5 +70,11 @@ WalletKit is compatible with most EVM chains, including Base. You can check out 
 ## ZeroDev
 
 [ZeroDev](https://zerodev.app) is an embedded wallet powered by account abstraction. It offers you the ability to create self-custody wallets for your users, sponsor gas, and simplify user flows by batching and automating transactions.
+
+---
+
+## Openfort
+
+[Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. The platform vertically integrates the AA stack, so game developers can focus on game development without worrying about private key management, the account model or the onchain interactions with paymasters and bundlers.
 
 ---

@@ -196,7 +196,13 @@ const sidebars = {
         {
           type: 'link',
           label: 'Introduction to Foundry',
-          href: 'https://docs.base.org/building-with-base/guides/building-with-base-and-foundry/introduction',
+          href: 'https://docs.base.org/tutorials/intro-to-foundry-setup',
+          className: 'sidebar-coding',
+        },
+        {
+          type: 'link',
+          label: 'Testing smart contracts with Foundry',
+          href: 'https://docs.base.org/tutorials/intro-to-foundry-testing',
           className: 'sidebar-coding',
         },
       ],
@@ -781,9 +787,32 @@ const sidebars = {
       collapsible: true,
       items: [
         {
+          type: 'doc',
+          id: 'docs/hardhat-tools-and-testing/overview',
+          className: 'sidebar-reading',
+        },
+        {
           type: 'link',
-          label: 'Hardhat Tools and Testing',
-          href: 'https://docs.base.org/hardhat-tools-and-testing/overview',
+          label: 'Profiling Gas',
+          href: 'https://docs.base.org/tutorials/hardhat-profiling-gas',
+          className: 'sidebar-coding',
+        },
+        {
+          type: 'link',
+          label: 'Profiling Size',
+          href: 'https://docs.base.org/tutorials/hardhat-profiling-size',
+          className: 'sidebar-coding',
+        },
+        {
+          type: 'link',
+          label: 'Debugging',
+          href: 'https://docs.base.org/tutorials/hardhat-debugging',
+          className: 'sidebar-coding',
+        },
+        {
+          type: 'link',
+          label: 'Test Coverage',
+          href: 'https://docs.base.org/tutorials/hardhat-test-coverage',
           className: 'sidebar-coding',
         },
       ],
@@ -817,7 +846,7 @@ const sidebars = {
         {
           type: 'link',
           label: 'Connecting to the Blockchain',
-          href: 'https://docs.base.org/connecting-to-the-blockchain/overview',
+          href: 'https://docs.base.org/tutorials/intro-to-providers',
           className: 'sidebar-coding',
         },
         {
@@ -859,6 +888,7 @@ const sidebars = {
         },
       ],
     },
+    ['docs/exercise-contracts'],
   ],
 };
 

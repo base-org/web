@@ -7,6 +7,7 @@ import MDXContent from '@theme/MDXContent';
 
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import DocFeedback from '../../../components/DocFeedback/index.tsx';
+import DocChat from '../../../components/DocChat/index.tsx';
 
 /**
  Title can be declared inside md content or declared through
@@ -36,7 +37,14 @@ export default function DocItemContent({ children }) {
         </header>
       )}
       <MDXContent>{children}</MDXContent>
-      <BrowserOnly>{() => <DocFeedback />}</BrowserOnly>
+      <BrowserOnly>
+        {() => (
+          <>
+            {/* <DocFeedback /> - Disabled while team decides how to rework */}
+            <DocChat />
+          </>
+        )}
+      </BrowserOnly>
     </div>
   );
 }
