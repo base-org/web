@@ -20,8 +20,6 @@ difficulty: intermediate
 displayed_sidebar: null
 ---
 
-# Sending messages and tokens from Base to other chains using Chainlink CCIP
-
 This tutorial will guide you through the process of sending messages and tokens from a Base smart contract to another smart contract on a different chain using Chainlink's Cross-chain Interoperability Protocol (CCIP).
 
 ---

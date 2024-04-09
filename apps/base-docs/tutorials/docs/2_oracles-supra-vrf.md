@@ -32,8 +32,6 @@ difficulty: intermediate
 displayed_sidebar: null
 ---
 
-# Generating random numbers contracts using Supra dVRF
-
 This tutorial will guide you through the process of creating a smart contract on Base that utilizes Supra dVRF to serve random numbers using an onchain randomness generation mechanism directly within your smart contracts.
 
 ---
