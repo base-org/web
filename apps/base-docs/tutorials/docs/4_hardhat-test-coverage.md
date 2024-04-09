@@ -2,7 +2,7 @@
 title: 'Hardhat: Analyzing the test coverage of smart contracts'
 slug: /hardhat-test-coverage
 description: A tutorial that teaches how to profile the test coverage of your smart contracts using Hardhat and the Solidity Coverage plugin.
-author: Brian Doyle
+author: Edson Alcala
 keywords:
   [
     Solidity Coverage,

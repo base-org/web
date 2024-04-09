@@ -2,7 +2,7 @@
 title: 'Hardhat: Optimizing the size of smart contracts'
 slug: /hardhat-profiling-size
 description: A tutorial that teaches how to optimize the size of your smart contracts using Hardhat.
-author: Brian Doyle
+author: Edson Alcala and Brian Doyle
 keywords:
   [
     Smart Contract Sizes,
