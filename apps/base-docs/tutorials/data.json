@@ -24,8 +24,8 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "17 mins"
+        "last_updated": "Apr 9",
+        "duration": "17 min read"
     },
     "deploy-with-hardhat": {
         "title": "Deploying a smart contract using Hardhat",
@@ -52,8 +52,8 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "15 mins"
+        "last_updated": "Apr 9",
+        "duration": "15 min read"
     },
     "deploy-with-remix": {
         "title": "Deploying a smart contract using Remix",
@@ -81,8 +81,8 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "18 mins"
+        "last_updated": "Apr 9",
+        "duration": "18 min read"
     },
     "deploy-with-tenderly": {
         "title": "Deploying a smart contract using Tenderly",
@@ -111,8 +111,8 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "19 mins"
+        "last_updated": "Apr 9",
+        "duration": "19 min read"
     },
     "deploy-with-thirdweb": {
         "title": "Deploying a smart contract using thirdweb",
@@ -144,8 +144,8 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "10 mins"
+        "last_updated": "Apr 9",
+        "duration": "10 min read"
     },
     "run-a-base-node": {
         "title": "Running a Base Node",
@@ -171,8 +171,8 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "5 mins"
+        "last_updated": "Apr 9",
+        "duration": "5 min read"
     },
     "build-with-thirdweb": {
         "title": "Building an onchain app using thirdweb",
@@ -203,8 +203,8 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "8 mins"
+        "last_updated": "Apr 9",
+        "duration": "8 min read"
     },
     "account-abstraction-with-biconomy": {
         "title": "Account Abstraction on Base using Biconomy",
@@ -229,8 +229,8 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "29 mins"
+        "last_updated": "Apr 9",
+        "duration": "29 min read"
     },
     "account-abstraction-with-privy-and-base-paymaster": {
         "title": "Account Abstraction on Base using Privy and the Base Paymaster",
@@ -256,8 +256,8 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "46 mins"
+        "last_updated": "Apr 9",
+        "duration": "46 min read"
     },
     "cross-chain-with-ccip": {
         "title": "Sending messages and tokens from Base to other chains using Chainlink CCIP",
@@ -280,8 +280,8 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "32 mins"
+        "last_updated": "Apr 9",
+        "duration": "32 min read"
     },
     "cross-chain-with-layerzero": {
         "title": "Sending messages from Base to other chains using LayerZero V2",
@@ -304,8 +304,8 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "34 mins"
+        "last_updated": "Apr 9",
+        "duration": "34 min read"
     },
     "complex-onchain-nfts": {
         "title": "Building onchain NFTs",
@@ -332,8 +332,8 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "39 mins"
+        "last_updated": "Apr 9",
+        "duration": "39 min read"
     },
     "oracles-chainlink-price-feeds": {
         "title": "Accessing real-world data using Chainlink Data Feeds",
@@ -360,8 +360,8 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "11 mins"
+        "last_updated": "Apr 9",
+        "duration": "11 min read"
     },
     "oracles-pyth-price-feeds": {
         "title": "Accessing real-time asset data using Pyth Price Feeds",
@@ -389,8 +389,8 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "13 mins"
+        "last_updated": "Apr 9",
+        "duration": "13 min read"
     },
     "oracles-supra-vrf": {
         "title": "Generating random numbers contracts using Supra dVRF",
@@ -426,8 +426,8 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "19 mins"
+        "last_updated": "Apr 9",
+        "duration": "19 min read"
     },
     "farcaster-frames-deploy-to-vercel": {
         "title": "Farcaster Frames: Deploying to Vercel",
@@ -448,8 +448,8 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "9 mins"
+        "last_updated": "Apr 9",
+        "duration": "9 min read"
     },
     "farcaster-frames-gating-and-redirects": {
         "title": "Farcaster Frames: Gating content and creating redirects",
@@ -467,8 +467,8 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "12 mins"
+        "last_updated": "Apr 9",
+        "duration": "12 min read"
     },
     "farcaster-frames-hyperframes": {
         "title": "Farcaster Frames: Building HyperFrames",
@@ -491,8 +491,8 @@
         "tags": [
             "frames"
         ],
-        "last_updated": "Apr 5",
-        "duration": "16 mins"
+        "last_updated": "Apr 9",
+        "duration": "16 min read"
     },
     "farcaster-frames-nft-minting": {
         "title": "Farcaster Frames: Building an NFT airdrop Frame",
@@ -515,8 +515,8 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "22 mins"
+        "last_updated": "Apr 9",
+        "duration": "22 min read"
     },
     "farcaster-frames-nocode-minting": {
         "title": "Farcaster Frames: Building a no-code minting Frame",
@@ -540,8 +540,8 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "7 mins"
+        "last_updated": "Apr 9",
+        "duration": "7 min read"
     },
     "farcaster-frames-transactions": {
         "title": "Farcaster Frames: Making transactions",
@@ -562,8 +562,8 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "17 mins"
+        "last_updated": "Apr 9",
+        "duration": "17 min read"
     },
     "hardhat-debugging": {
         "title": "Hardhat: Debugging smart contracts",
@@ -584,8 +584,8 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "15 mins"
+        "last_updated": "Apr 9",
+        "duration": "15 min read"
     },
     "hardhat-profiling-gas": {
         "title": "Hardhat: Optimizing the gas usage of smart contracts",
@@ -609,8 +609,8 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "16 mins"
+        "last_updated": "Apr 9",
+        "duration": "16 min read"
     },
     "hardhat-profiling-size": {
         "title": "Hardhat: Optimizing the size of smart contracts",
@@ -635,8 +635,8 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "22 mins"
+        "last_updated": "Apr 9",
+        "duration": "22 min read"
     },
     "hardhat-test-coverage": {
         "title": "Hardhat: Analyzing the test coverage of smart contracts",
@@ -661,8 +661,8 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "9 mins"
+        "last_updated": "Apr 9",
+        "duration": "9 min read"
     },
     "intro-to-foundry-setup": {
         "title": "Foundry: Setting up Foundry with Base",
@@ -682,8 +682,8 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "6 mins"
+        "last_updated": "Apr 9",
+        "duration": "6 min read"
     },
     "intro-to-foundry-testing": {
         "title": "Foundry: Testing smart contracts",
@@ -705,8 +705,8 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "9 mins"
+        "last_updated": "Apr 9",
+        "duration": "9 min read"
     },
     "intro-to-providers": {
         "title": "Introduction to Providers",
@@ -754,7 +754,28 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "20 mins"
+        "last_updated": "Apr 9",
+        "duration": "20 min read"
+    },
+    "farcaster-cast-actions-simple": {
+        "title": "Farcaster Cast Actions: Create a Simple Cast Action",
+        "slug": "/farcaster-cast-actions-simple",
+        "description": "A tutorial that teaches how to make a simple Farcaster cast action.",
+        "author": "briandoyle81",
+        "keywords": [
+            "farcaster",
+            "cast actions",
+            "farcaster cast actions",
+            "farcaster actions"
+        ],
+        "tags": [
+            "frames",
+            "actions"
+        ],
+        "difficulty": "beginner",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Apr 9",
+        "duration": "9 min read"
     }
 }
