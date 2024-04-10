@@ -1,5 +1,5 @@
 ---
-title: Particle Network
+title: Account Abstraction on Base using Particle Network
 slug: /account-abstraction-with-particle-network
 description: A walkthrough on Particle Network's Modular Smart Wallet-as-a-Service, leveraging account abstraction and social logins across various providers.
 author: TABASCOatw
