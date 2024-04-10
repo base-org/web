@@ -205,7 +205,9 @@
   },
   {
     "address": "0xb85c1a4062c877145b5cbf623d3625158611b150",
-    "ensName": "lsr.eth"
+    "ensName": "lsr.eth",
+    "avatarUri": "ipfs://bafybeia6i5k7vlqbpb37z4ozilmvpmcucajk5r2npwea7yrc6te3qjjv2m",
+    "filename": "lsr.eth.png"
   },
   {
     "address": "0x19b5c7ad142472c7b7e7f0e6a6dbaae4e27a9fec",
