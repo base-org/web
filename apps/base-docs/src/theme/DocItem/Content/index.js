@@ -8,6 +8,10 @@ import MDXContent from '@theme/MDXContent';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import DocFeedback from '../../../components/DocFeedback/index.tsx';
 import DocChat from '../../../components/DocChat/index.tsx';
+import tutorialData from '../../../../tutorials/data.json';
+import authors from '@app/base-docs/static/json/authors.json';
+
+import styles from './styles.module.css';
 
 /**
  Title can be declared inside md content or declared through
@@ -28,13 +32,37 @@ function useSyntheticTitle() {
   return metadata.title;
 }
 export default function DocItemContent({ children }) {
+  const { frontMatter } = useDoc();
   const syntheticTitle = useSyntheticTitle();
+  const tutorial = tutorialData[frontMatter.slug.substring(1)];
+  const authorData = tutorial ? authors[tutorial.author] : null;
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
       {syntheticTitle && (
-        <header>
-          <Heading as="h1">{syntheticTitle}</Heading>
-        </header>
+        <div>
+          <header>
+            <Heading as="h1">{syntheticTitle}</Heading>
+          </header>
+          {tutorial && authorData && (
+            <div className={clsx(styles.tutorialInfo)}>
+              {authorData && authorData.link && (
+                <a
+                  className={clsx(styles.tutorialAuthor)}
+                  href={authorData.link}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                  }}
+                >
+                  <p>{`🖊️ ${authorData.name}`}</p>
+                </a>
+              )}
+              {authorData && !authorData.link && <p>{`🖊️  ${authorData.name}`}</p>}
+              {!authorData && <p>{tutorial.author ? `🖊️  ${tutorial.author}` : ''}</p>}
+              <p>{tutorial.last_updated ? tutorial.last_updated : ''}</p>
+              <p>{tutorial.duration ? tutorial.duration : ''}</p>
+            </div>
+          )}
+        </div>
       )}
       <MDXContent>{children}</MDXContent>
       <BrowserOnly>

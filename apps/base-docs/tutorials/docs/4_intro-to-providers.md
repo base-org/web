@@ -45,8 +45,6 @@ hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
-# Introduction to Providers
-
 This tutorial provides an introduction to providers and shows you how to connect your frontend to the blockchain using JSON RPC blockchain providers, and the [RainbowKit], [wagmi], and [viem] stack.
 
 ---

@@ -29,8 +29,6 @@ difficulty: beginner
 displayed_sidebar: null
 ---
 
-# Deploying a smart contract using thirdweb
-
 [thirdweb](https://thirdweb.com) is a development framework that allows you to build web3 functionality into your applications.
 
 In this tutorial, we'll give you an overview of using the [thirdweb CLI](https://portal.thirdweb.com/cli) to deploy a contract to the Base Sepolia test network.

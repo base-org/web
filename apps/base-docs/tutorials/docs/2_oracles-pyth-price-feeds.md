@@ -25,8 +25,6 @@ difficulty: intermediate
 displayed_sidebar: null
 ---
 
-# Accessing real-time asset data using Pyth Price Feeds
-
 This tutorial will guide you through the process of creating a smart contract on Base that utilizes Pyth Network oracles to consume a price feed.
 
 ---

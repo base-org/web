@@ -23,8 +23,6 @@ hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
-# Account Abstraction on Base using Privy and the Base Paymaster
-
 This tutorial shows you how to use [Privy], [Alchemy's Account Kit], and the [Base Paymaster] to enable your users to use onchain apps without creating a wallet on their own, or even needing to pay for gas fees!
 
 ---
