@@ -34,7 +34,8 @@ function useSyntheticTitle() {
 export default function DocItemContent({ children }) {
   const { frontMatter } = useDoc();
   const syntheticTitle = useSyntheticTitle();
-  const tutorial = tutorialData[frontMatter.slug.substring(1)];
+  const tutorial =
+    frontMatter && frontMatter.slug ? tutorialData[frontMatter.slug.substring(1)] : null;
   const authorData = tutorial ? authors[tutorial.author] : null;
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
