@@ -5,7 +5,6 @@
     "emitDeclarationOnly": false,
     "noEmit": true,
     "outDir": "../../out/apps/web",
-    "allowImportingTsExtensions": true
   },
   "include": [
     "next-env.d.ts",

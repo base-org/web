@@ -297,6 +297,7 @@ __metadata:
     "@coinbase/onchainkit": ^0.6.0
     "@heroicons/react": ^2.0.18
     "@next/font": ^13.1.5
+    "@sprig-technologies/sprig-browser": ^2.26.6
     "@types/node": 18.11.18
     autoprefixer: ^10.4.13
     csv-parser: ^3.0.0
@@ -5591,6 +5592,13 @@ __metadata:
     rpc-websockets: ^7.5.1
     superstruct: ^0.14.2
   checksum: 775378ea775bc2559202125eae8c7eb975301616690f12e391440200d229c6255b6fcc28718d837d072895fd6853f49fc7b738d8f6f834d61610af1766c6d8c7
+  languageName: node
+  linkType: hard
+
+"@sprig-technologies/sprig-browser@npm:^2.26.6":
+  version: 2.26.6
+  resolution: "@sprig-technologies/sprig-browser@npm:2.26.6"
+  checksum: 45e38b0b066c4a3cb2ce59cf13ca3ac769c6b16a142865fdf012a378c6fa85bedf59063e8ce7f091c90f6f364d68d0f2245010ae403f853e3c090c6c2ce75a6d
   languageName: node
   linkType: hard
 

@@ -56,6 +56,7 @@ const baseXYZDomains = 'https://base.mirror.xyz';
 const greenhouseDomains = 'https://boards.greenhouse.io';
 const ccaDomain = 'https://static-assets.coinbase.com/js/cca/v0.0.1.js';
 const ccaLiteDomains = 'https://cca-lite.coinbase.com';
+const sprigDomains = 'https://api.sprig.com https://cdn.sprig.com;';
 
 const contentSecurityPolicy = {
   'default-src': [
@@ -66,6 +67,7 @@ const contentSecurityPolicy = {
     greenhouseDomains,
     ccaDomain,
     ccaLiteDomains,
+    sprigDomains,
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
