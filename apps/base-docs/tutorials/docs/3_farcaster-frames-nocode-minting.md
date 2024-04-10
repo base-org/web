@@ -93,7 +93,7 @@ Give your project a snappy name and upload a picture. Unless you're an experienc
 
 It will cost a small amount of gas to create the project. Approve the transaction, then you'll be taken to your mint page.
 
-Copy the link, and update your button, and change the frame to use image that you uploaded for your NFT:
+Copy the link, and update your button, and change the frame to use the image that you uploaded for your NFT:
 
 ```typescript
 const frameMetadata = getFrameMetadata({
