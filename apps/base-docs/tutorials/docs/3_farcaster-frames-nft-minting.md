@@ -340,7 +340,7 @@ const url = new URL(req.url);
           }
       });
   } else {
-      // Find out of the address still owns the NFT, and if so, what the token ID is
+      // Find out if the address still owns the NFT, and if so, what the token ID is
 
   }
 }
