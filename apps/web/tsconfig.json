@@ -4,7 +4,8 @@
     "jsx": "preserve",
     "emitDeclarationOnly": false,
     "noEmit": true,
-    "outDir": "../../out/apps/web"
+    "outDir": "../../out/apps/web",
+    "allowImportingTsExtensions": true
   },
   "include": [
     "next-env.d.ts",
