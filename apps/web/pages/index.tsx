@@ -11,7 +11,6 @@ import { JoinTheCommunity } from '../src/components/JoinTheCommunity/JoinTheComm
 import { Partnerships } from '../src/components/Partnerships/Partnerships';
 import { FrameButtonMetadata, FrameMetadata } from '@coinbase/onchainkit';
 import { useMemo } from 'react';
-import { useSprig } from 'apps/web/src/utils/hooks/useSprig';
 
 export default function Home() {
   const buttons: [FrameButtonMetadata, ...FrameButtonMetadata[]] = useMemo(
@@ -29,8 +28,6 @@ export default function Home() {
     ],
     [],
   );
-
-  useSprig();
 
   return (
     <>

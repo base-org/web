@@ -10,6 +10,7 @@ export function useSprig() {
         const sprigInit = sprig.configure({
           environmentId: process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID,
         });
+        void sprigInit('track', 'pageload');
         setSprig(sprigInit);
       } catch (error) {
         console.error('Failed to load the Sprig module:', error);
