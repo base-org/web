@@ -47,6 +47,7 @@ const sidebars = {
       items: [
         'docs/account-abstraction-with-biconomy',
         'docs/account-abstraction-with-privy-and-base-paymaster',
+        'docs/account-abstraction-with-particle-network',
       ],
     },
     {
