@@ -14,6 +14,7 @@ import { Layout } from '../src/components/Layout/Layout';
 import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
 
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
+import { useSprig } from 'apps/web/src/utils/hooks/useSprig';
 
 export default function StaticApp({ Component, pageProps }: AppProps) {
   // Cookie Manager Provider Configuration
@@ -50,6 +51,8 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  useSprig();
 
   if (!isMounted) return null;
 
