@@ -52,6 +52,8 @@ Using the script is fast, but it does mean less choice. In this case, it builds 
 
 The Rainbowkit template has been updated to wagmi 2.X, but it does **not** use the Next.js app router. You'll need to install it manually if you wish to use the latest patterns.
 
+The next tutorial will show you how to do this!
+
 :::
 
 ---
