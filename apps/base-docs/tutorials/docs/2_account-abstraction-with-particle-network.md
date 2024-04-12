@@ -3,8 +3,7 @@ title: Account Abstraction on Base using Particle Network
 slug: /account-abstraction-with-particle-network
 description: A walkthrough on Particle Network's Modular Smart Wallet-as-a-Service, leveraging account abstraction and social logins across various providers.
 author: TABASCOatw
-keywords:
-  [
+keywords: [
     Account Abstraction,
     AA,
     Biconomy,
@@ -15,12 +14,12 @@ keywords:
     Smart account,
     Particle Network,
     Particle Auth,
-    Wallet-as-a-Service
+    Wallet-as-a-Service,
   ]
+tags: ['account abstraction']
+difficulty: intermediate
+displayed_sidebar: null
 ---
-
-
-# Modular Account Abstraction on Base with Particle Network
 
 Particle Network is a Smart Wallet-as-a-Service provider on Base, providing a modular Account Abstraction stack, allowing developers to use a variety of Paymasters, Bundlers, or smart accounts along with social logins.
 
@@ -39,7 +38,6 @@ By the end of this guide, you should be able to:
 
 ---
 
-
 ## Prerequisites
 
 ### Wallet funds
@@ -52,9 +50,7 @@ This guide requires you to have ETH on Base Sepolia, which will be used to showc
 
 In this example, you'll be building a React-based application using [create-react-app]. It's recommended that you have some level of familiarity with the basics of working with React.
 
-
 ---
-
 
 ## Understanding Particle Network
 
@@ -132,7 +128,7 @@ src/
 ├── App.js
 ├── App.test.js
 ├── index.css
-├── index.js 
+├── index.js
 ├── logo.svg
 └── reportWebVitals.js
 ```
@@ -148,6 +144,7 @@ We will use these two files, `App.tsx` and `index.tsx`, within this guide.
 Before jumping into the application itself, it's important to walk through a few vital configurations required for Particle Network's SDKs to function properly.
 
 Within this example, we'll be using three core libraries from Particle, these include:
+
 - `@particle-network/auth-core-modal`, to directly initiate a social login and drive the usage of an embedded wallet.
 - `@particle-network/aa`, for configuring, assigning, and deploying a smart account.
 - `@particle-network/chain`, to allow Base to be used within this example.
@@ -179,6 +176,7 @@ npm install ethers@5.7.2
 ### Setting up the Particle Network dashboard
 
 As you'll find in a moment, every library from Particle Network requires three key values for authentication. These are:
+
 1. Your `projectId`, assigned to a project created through the Particle dashboard.
 2. Your `clientKey`, similarly assigned to a project created through the dashboard, but serving a different purpose.
 3. Your `appId`, retrieved through the creation of an application (within a project) on the dashboard.
@@ -202,12 +200,14 @@ With these values retrieved, it's recommended that you assign them to environmen
 Now that you've installed `@particle-network/auth-core-modal` (among other dependencies) and retrieved your project ID, client key, and app ID, you're ready to configure and therefore initialize the Particle Auth Core SDK.
 
 As mentioned, we'll be working out of two files within this guide:
+
 1. `App.jsx/tsx`, containing our core application logic (such as initiating social login and executing the transaction).
 2. `index.jsx/tsx`, used in this example for configuring `AuthCoreContextProvider` from `@particle-network/auth-core-modal`, the core configuration object for Particle Auth Core.
 
 `AuthCoreContextProvider` is a React component used to define these three aforementioned values, customize the embedded wallet modal and enable account abstraction within it. This will wrap our primary application component (`App` from `App.jsx/tsx`), therefore allowing Particle Auth Core to be used through various hooks within `App`.
 
 To achieve this, `AuthCoreContextProvider` will take the following parameters:
+
 - `projectId`, `clientKey`, and `appId`. These are the required values previously retrieved from the [Particle dashboard].
 - `erc4337`, used to define the type of smart account you intend to use, ensuring it's displayed and reflected within the embedded wallet interface.
 - `wallet`, for customizing the embedded wallet interface through the restriction of supported chains, color options, etc.
@@ -240,10 +240,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         erc4337: {
           // The name of the smart account you'd like to use
           // SIMPLE, BICONOMY, LIGHT, or CYBERCONNECT
-          name: "SIMPLE",
+          name: 'SIMPLE',
           // The version of the smart account you're using
           // 1.0.0 for everything except Biconomy, which can be either 1.0.0 or 2.0.0
-          version: "1.0.0",
+          version: '1.0.0',
         },
         wallet: {
           // Set to false to remove the embedded wallet modal
@@ -251,14 +251,14 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           customStyle: {
             // Locks the chain selector to Base Sepolia
             supportChains: [BaseSepolia],
-          }
+          },
         },
       }}
     >
       <App />
     </AuthCoreContextProvider>
-  </React.StrictMode>
-)
+  </React.StrictMode>,
+);
 ```
 
 ## Setting Up Your Application
@@ -266,6 +266,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 ### Importing and configuring hooks
 
 The second core component of this application is `App.jsx/tsx`, which will contain logic achieving the following:
+
 1. Configuration and assignment of a smart account (SimpleAccount in this example).
 2. Construction of a custom Ethers provider, using a custom AA-enabled EIP-1193 provider object.
 3. Initiation of social login.
@@ -303,6 +304,7 @@ const App = () => {
 The EOA generated through the social login process will be used as the Signer for the smart account specified within this configuration, this will then be reflected through the embedded wallet modal (through its former selection within `AuthCoreContextProvider`).
 
 As mentioned, Particle Network supports a variety of smart accounts directly through its AA SDK, these include:
+
 - Light Account (by Alchemy).
 - Biconomy V1 and V2.
 - SimpleAccount (eth-infinitism).
@@ -311,9 +313,10 @@ As mentioned, Particle Network supports a variety of smart accounts directly thr
 We'll be using SimpleAccount in this case. Although, note that you can change which smart account you use at any time through one line of code. This line of code exists on the `SmartAccount` object (imported from `@particle-network/aa`). `SmartAccount` acts as the central point for initializing a smart account.
 
 To configure `SmartAccount`, you'll be using the following parameters:
+
 - `projectId`, `clientKey`, and `appId`. These were used within `AuthCoreContextProvider` and can be retrieved from the [Particle dashboard] through the same procedure.
 - `aaOptions`, which contains `accountContracts`. Within `accountContracts`, you'll need to define a property corresponding with the smart account you'd like to use, i.e. `BICONOMY`, `LIGHT`, `CYBERCONNECT`, or `SIMPLE`.
-    - This property contains `chainIds` and `version`.
+  - This property contains `chainIds` and `version`.
 
 See the snippet below for an example of a constructed `SmartAccount` object:
 
@@ -349,6 +352,7 @@ const App = () => {
 ### Constructing a custom Ethers object
 
 There are two primary mechanisms to interact with the smart account defined previously. These are:
+
 1. Directly through the constructed `SmartAccount` object, such as with `{your object}.sendTransaction`.
 2. Through a Web3 library, such as Ethers or Web3.js. These libraries can facilitate interaction through a standardized provider object, allowing for a consistent syntax and setup through any wallet or account structure.
 
@@ -360,10 +364,14 @@ You can achieve this in one line of code, e.g.:
 
 ```typescript
 // For Ethers V6, use ethers.BrowserProvider instead; the syntax below won't work.
-const customProvider = new ethers.providers.Web3Provider(new AAWrapProvider(smartAccount, SendTransactionMode.Gasless), "any");
+const customProvider = new ethers.providers.Web3Provider(
+  new AAWrapProvider(smartAccount, SendTransactionMode.Gasless),
+  'any',
+);
 ```
 
 `SendTransactionMode` has three options. They are:
+
 1. `SendTransactionMode.Gasless`, which will request gas sponsorship on every transaction sent through Ethers. By default, this will be through Particle's Omnichain Paymaster. If you don't have enough USDT deposited in the Paymaster to cover the gas fees, or if the transaction fails to meet your sponsorship conditions (set on the Particle dashboard), the user will pay the gas fees themselves.
 2. `SendTransactionMode.UserPaidNative`, the default method used if `SendTransactionMode` is missing from `AAWrapProvider`. This forces the user to pay gas fees themselves.
 3. `SendTransactionMode.UserSelect`, which allows a user to select which gas fee payment mechanism they use (ERC-20 token, native token, or request sponsorship).
@@ -383,6 +391,7 @@ To initiate the social login process programmatically, you'll need to use the `c
 Upon calling `connect`, a user will be brought through the social login process, after which an EOA will be generated (through MPC-TSS) and used as a signer for the smart account.
 
 `connect` takes the following parameters:
+
 - `socialType`, the specific social login mechanism you'd like users to go through. If left as an empty string, a generalized social login modal will be shown. Otherwise, use strings such as 'google', 'twitter', 'email', etc.
 - `chain`, an object (imported from `@particle-network/chains`) corresponding with the chain you'd like to use. In this example, it'll be `BaseSepolia`.
 
@@ -392,14 +401,13 @@ Below is an example of calling `connect` (within the conditional described above
 
 ```typescript
 const handleLogin = async (authType) => {
-    if (!userInfo) {
-      await connect({
-        socialType: authType,
-        chain: BaseSepolia,
-      });
-    }
-  };
-
+  if (!userInfo) {
+    await connect({
+      socialType: authType,
+      chain: BaseSepolia,
+    });
+  }
+};
 ```
 
 In most applications, `connect` (or `handleLogin` in this example), will be bound to a "Login" or "Connect" button, as will be done here.
@@ -408,11 +416,12 @@ In most applications, `connect` (or `handleLogin` in this example), will be boun
 
 ### Constructing a transaction
 
-Because we're using Ethers in this guide, constructing and executing a gasless transaction (intrinsically gasless through the previously defined `SendTransactionMode`) is identical to the flow you're likely already familiar with. However, it's important to note that transactions sent through ERC-4337 account abstraction do not follow standard transaction structures, these are called UserOperations. 
+Because we're using Ethers in this guide, constructing and executing a gasless transaction (intrinsically gasless through the previously defined `SendTransactionMode`) is identical to the flow you're likely already familiar with. However, it's important to note that transactions sent through ERC-4337 account abstraction do not follow standard transaction structures, these are called UserOperations.
 
 Typically, UserOperations follow lower-level, alternative structures. Although, through the usage of `AAWrapProvider`, the conversion between a simple transaction object (with `to`, `value`, `data`, etc.) to a complete UserOperation is handled automatically, allowing you to send transactions as you would normally.
 
 Thus, we'll be constructing a simple transaction (`tx`) adhering to the following structure:
+
 - `to`, the recipient address. For this example, we can burn a small amount of ETH on Base Sepolia, which means the recipient will be `0x000000000000000000000000000000000000dEaD`.
 - `value`, the value being sent in wei. Because of the default denomination in wei, this will be set as `ethers.utils.parseEther("0.001")`.
 
@@ -435,7 +444,7 @@ const executeUserOp = async () => {
 
 ### Executing a transaction
 
-Now that you've defined a standard transaction object, you'll need to execute it. Once again, due to the usage of Ethers, this is quite straightforward. 
+Now that you've defined a standard transaction object, you'll need to execute it. Once again, due to the usage of Ethers, this is quite straightforward.
 
 We'll be using a `signer` object retrieved from `{your provider}.getSigner()` to call the `sendTransaction` method, which simply takes the `tx` object we constructed a moment ago.
 
@@ -447,19 +456,18 @@ See the example below for a visualization of this process:
 
 ```typescript
 const executeUserOp = async () => {
-    const signer = customProvider.getSigner();
+  const signer = customProvider.getSigner();
 
-    const tx = {
-      to: "0x000000000000000000000000000000000000dEaD",
-      value: ethers.utils.parseEther("0.001"),
-    };
+  const tx = {
+    to: '0x000000000000000000000000000000000000dEaD',
+    value: ethers.utils.parseEther('0.001'),
+  };
 
-    const txResponse = await signer.sendTransaction(tx);
-    const txReceipt = await txResponse.wait();
+  const txResponse = await signer.sendTransaction(tx);
+  const txReceipt = await txResponse.wait();
 
-    return txReceipt.transactionHash;
+  return txReceipt.transactionHash;
 };
-
 ```
 
 ## Mapping to JSX
@@ -487,7 +495,7 @@ const App = () => {
   const { provider } = useEthereum();
   const { connect, disconnect } = useConnect();
   const { userInfo } = useAuthCore();
-    
+
   // Initializes and assigns a smart account to the EOA resulting from social login
   const smartAccount = new SmartAccount(provider, {
     projectId: process.env.REACT_APP_PROJECT_ID,
@@ -495,13 +503,16 @@ const App = () => {
     appId: process.env.REACT_APP_APP_ID,
     aaOptions: {
       accountContracts: {
-        SIMPLE: [{ chainIds: [BaseSepolia.id], version: '1.0.0' }]
-      }
-    }
+        SIMPLE: [{ chainIds: [BaseSepolia.id], version: '1.0.0' }],
+      },
+    },
   });
 
   // Enables interaction with the smart account through Ethers
-  const customProvider = new ethers.providers.Web3Provider(new AAWrapProvider(smartAccount, SendTransactionMode.Gasless), "any");
+  const customProvider = new ethers.providers.Web3Provider(
+    new AAWrapProvider(smartAccount, SendTransactionMode.Gasless),
+    'any',
+  );
 
   // Initiates social login according to authType
   const handleLogin = async (authType) => {
@@ -518,8 +529,8 @@ const App = () => {
     const signer = customProvider.getSigner();
 
     const tx = {
-      to: "0x000000000000000000000000000000000000dEaD",
-      value: ethers.utils.parseEther("0.001"),
+      to: '0x000000000000000000000000000000000000dEaD',
+      value: ethers.utils.parseEther('0.001'),
     };
 
     const txResponse = await signer.sendTransaction(tx);
@@ -528,7 +539,6 @@ const App = () => {
     return txReceipt.transactionHash;
   };
 
-    
   // The JSX
   return (
     <div className="App">
@@ -538,15 +548,23 @@ const App = () => {
       </div>
       {!userInfo ? (
         <div className="login-section">
-          <button className="sign-button" onClick={() => handleLogin('google')}>Sign in with Google</button>
-          <button className="sign-button" onClick={() => handleLogin('twitter')}>Sign in with Twitter</button>
+          <button className="sign-button" onClick={() => handleLogin('google')}>
+            Sign in with Google
+          </button>
+          <button className="sign-button" onClick={() => handleLogin('twitter')}>
+            Sign in with Twitter
+          </button>
         </div>
       ) : (
         <div className="profile-card">
           <h2>{userInfo.name}</h2>
           <div className="button-section">
-            <button className="sign-message-button" onClick={executeUserOp}>Execute User Operation</button>
-            <button className="disconnect-button" onClick={() => disconnect()}>Logout</button>
+            <button className="sign-message-button" onClick={executeUserOp}>
+              Execute User Operation
+            </button>
+            <button className="disconnect-button" onClick={() => disconnect()}>
+              Logout
+            </button>
           </div>
         </div>
       )}
