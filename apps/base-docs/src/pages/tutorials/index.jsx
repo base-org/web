@@ -126,6 +126,7 @@ export default function Tutorials() {
             <div className={clsx(styles.tutorialList)}>
               {tutorialData &&
                 Object.values(tutorialData)
+                  .filter((tutorial) => tutorial.tags)
                   .filter((tutorial) =>
                     selectedTag == 'all' ? tutorial : tutorial.tags.includes(selectedTag),
                   )
