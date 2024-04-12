@@ -860,12 +860,12 @@ const sidebars = {
             },
             {
               type: 'doc',
-              id: 'docs/reading-and-displaying-data/useContractRead',
+              id: 'docs/reading-and-displaying-data/useReadContract',
               className: 'sidebar-coding',
             },
             {
               type: 'doc',
-              id: 'docs/reading-and-displaying-data/configuring-useContractRead',
+              id: 'docs/reading-and-displaying-data/configuring-useReadContract',
               className: 'sidebar-coding',
             },
           ],
