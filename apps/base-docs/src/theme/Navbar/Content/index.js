@@ -10,6 +10,7 @@ import NavbarSearch from '@theme/Navbar/Search';
 import styles from './styles.module.css';
 
 import Icon from '../../../components/Icon';
+import { CustomConnectButton } from '../../NavbarItem/ComponentTypes';
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
@@ -62,7 +63,9 @@ function NavbarLayoutBottomContent({ left, right }) {
   return (
     <div className="navbar__inner">
       <div className="navbar__items">{left}</div>
-      <div className="navbar__items navbar__items--right">{right}</div>
+      <div className="navbar__items navbar__items--right" style={{ gap: '24px' }}>
+        {right}
+      </div>
     </div>
   );
 }
@@ -101,6 +104,7 @@ export default function NavbarContent() {
             )}
             <NavbarColorModeToggle className={styles.colorModeToggle} />
             <NavbarItems items={bottomRightItems} />
+            <CustomConnectButton className={styles.walletConnectButton} />
           </>
         }
       />

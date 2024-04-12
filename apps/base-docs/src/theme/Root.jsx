@@ -6,8 +6,10 @@ import {
   connectorsForWallets,
   getDefaultConfig,
   RainbowKitProvider,
+  cssStringFromTheme,
   lightTheme,
   darkTheme,
+  Theme,
 } from '@rainbow-me/rainbowkit';
 import {
   coinbaseWallet,
@@ -21,6 +23,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { Provider as CookieManagerProvider, Region } from '@coinbase/cookie-manager';
 import { cookieManagerConfig } from '../utils/cookieManagerConfig';
 import { CookieBanner } from '@coinbase/cookie-banner';
+import { WalletAvatar } from '../components/WalletAvatar';
 
 const connectors = connectorsForWallets(
   [
@@ -87,6 +90,41 @@ const cookieBannerTheme = {
   },
 };
 
+const customTheme = {
+  colors: {
+    accentColor: 'var(--base-docs-color-fg)',
+    accentColorForeground: 'var(--base-docs-color-bg)',
+    actionButtonBorder: 'var(--base-docs-color-line-heavy)',
+    actionButtonBorderMobile: 'var(--base-docs-color-line-heavy)',
+    actionButtonSecondaryBackground: 'var(--base-docs-color-bg)',
+    closeButton: 'var(--base-docs-color-fg)',
+    closeButtonBackground: 'var(--base-docs-color-bg)',
+    connectionIndicator: 'var(--positive)',
+    error: 'var(--negative)',
+    generalBorder: 'var(--base-docs-color-line-heavy)',
+    generalBorderDim: 'var(--base-docs-color-line)',
+    modalBackground: 'var(--base-docs-color-fg-negative)',
+    modalBorder: 'var(--base-docs-color-line-heavy)',
+    modalText: 'var(--base-docs-color-fg)',
+    modalTextDim: 'var(--base-docs-color-fg-muted)',
+    modalTextSecondary: 'var(--base-docs-color-fg-secondary)',
+    profileAction: 'var(--base-docs-color-bg)',
+    profileActionHover: 'var(--base-docs-color-bg-alt)',
+    profileForeground: 'var(--base-docs-color-fg-negative)',
+    selectedOptionBorder: 'var(--base-docs-color-line-heavy)',
+  },
+  fonts: {
+    body: 'CoinbaseMono',
+  },
+  radii: {
+    actionButton: '3px',
+    connectButton: '3px',
+    menuButton: '3px',
+    modal: '3px',
+    modalMobile: '3px',
+  },
+};
+
 export default function Root({ children }) {
   const [mounted, setMounted] = useState(false);
 
@@ -127,7 +165,28 @@ export default function Root({ children }) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider modalSize="compact" theme={darkTheme()}>
+        <RainbowKitProvider modalSize="compact" theme={customTheme} avatar={WalletAvatar}>
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+            :root {
+              ${cssStringFromTheme(darkTheme)}
+            }
+
+            html[data-theme='light'] {
+              ${cssStringFromTheme(lightTheme, {
+                extends: darkTheme,
+              })}
+            }
+
+            html[data-theme='dark'] {
+              ${cssStringFromTheme(darkTheme, {
+                extends: darkTheme,
+              })}
+            }
+          `,
+            }}
+          />
           <CookieManagerProvider
             projectName="base_docs"
             locale="en"
