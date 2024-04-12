@@ -1,16 +1,10 @@
 ---
-title: The `userContractRead` Hook
+title: The `useReadContract` Hook
 description: Learn how to call view and pure functions from a smart contract.
 hide_table_of_contents: false
 ---
 
-The `useContractRead` hook is [wagmi]'s method of calling `pure` and `view` functions from your smart contracts. As with `useAccount`, `useContractRead` contains a number of helpful properties to enable you to manage displaying information to your users.
-
-:::caution
-
-The frontend tutorials are currently based on version 1.X of Wagmi. Version 2 has recently been released and is a near complete rewrite of the library. We are working on updates. In the meantime, please use Version 1, or review the [migration guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
-
-:::
+The `useReadContract` hook is [wagmi]'s method of calling `pure` and `view` functions from your smart contracts. As with `useAccount`, `useReadContract` contains a number of helpful properties to enable you to manage displaying information to your users.
 
 ---
 
@@ -18,7 +12,7 @@ The frontend tutorials are currently based on version 1.X of Wagmi. Version 2 ha
 
 By the end of this guide you should be able to:
 
-- Implement wagmi's `useContractRead` hook to fetch data from a smart contract
+- Implement wagmi's `useReadContract` hook to fetch data from a smart contract
 - Convert data fetched from a smart contract to information displayed to the user
 - Identify the caveats of reading data from automatically-generated getters
 
@@ -26,7 +20,7 @@ By the end of this guide you should be able to:
 
 ## Contract Setup
 
-For this guide, we'll be continuing from the project you started for the [`useAccount` hook]. We'll work with an upgrade to the contract that you may have created if you completed the [ERC 20 Tokens Exercise]. See below for an example you can use if you don't already have your own!
+For this guide, you'll be continuing from the project you started for the [`useAccount` hook]. You'll work with an upgrade to the contract that you may have created if you completed the [ERC 20 Tokens Exercise]. See below for an example you can use if you don't already have your own!
 
 The contract creates a very simple DAO, in which users can create issues and vote for them, against them, or abstain. Anyone can `claim` 100 tokens. This is an insecure system for demonstration purposes, since it would be trivial to claim a large number of tokens with multiple wallets, then transfer them to a single address and use that to dominate voting.
 
@@ -79,13 +73,13 @@ _issueDesc: Two spaces, not four, not tabs!
 _quorom: 2
 ```
 
-Call the `getIssue` function under the `Read Contract` tab to make sure all three are there.
+Call the `getAllIssues` function under the `Read Contract` tab to make sure all three are there.
 
 ---
 
 ## Reading from your Smart Contract
 
-To be able to read from your deployed smart contract, you'll need two pieces of information: the address and [ABI]. These are used as parameters in the `useContractRead` hook.
+To be able to read from your deployed smart contract, you'll need two pieces of information: the address and [ABI]. These are used as parameters in the `useReadContract` hook.
 
 If you're using [Hardhat], both of these can be conveniently found in a json file in the `deployments/<network>` folder, named after your contract. For example, our contract is called `FEWeightedVoting`, so the file is `deployments/base-sepolia/FEWeightedVoting.json`.
 
@@ -93,12 +87,12 @@ If you're using something else, it should produce a similar artifact, or separat
 
 Either way, add a folder called `deployments` and place a copy of the artifact file(s) inside.
 
-### Using the `useContractRead` Hook
+### Using the `useReadContract` Hook
 
 Add a file for a new component called `IssueList.tsx`. You can start with:
 
 ```typescript
-import { useContractRead } from 'wagmi';
+import { useReadContract } from 'wagmi';
 
 export function IssueList() {
   return (
@@ -144,24 +138,33 @@ You'll also need to import your contract artifact:
 import contractData from '../deployments/FEWeightedVoting.json';
 ```
 
-Finally, the moment you've been waiting for: Time to read from your contract! Add an instance of the [`useContractRead`] hook. It works similarly to the [`useAccount`] hook. Configure it with:
+Finally, the moment you've been waiting for: Time to read from your contract! Add an instance of the [`useReadContract`] hook. It works similarly to the [`useAccount`] hook. Configure it with:
 
 ```typescript
-const { isError: issuesIsError, isLoading: issuesIsLoading } = useContractRead({
+const {
+  data: issuesData,
+  isError: issuesIsError,
+  isPending: issuesIsPending,
+} = useReadContract({
   address: contractData.address as `0x${string}`,
   abi: contractData.abi,
   functionName: 'getAllIssues',
-  onSettled(data, error) {
-    if (data) {
-      const issuesList = data as Issue[];
-      console.log(issuesList);
-      setIssues(issuesList);
-    }
-  },
 });
 ```
 
-We'll break down the above, but first, let's see it in action. Add in instance of your new component to `index.tsx`:
+You can use `useEffect` to do something when the call completes and the data. For now, just log it to the console:
+
+```typescript
+useEffect(() => {
+  if (issuesData) {
+    const issuesList = issuesData as Issue[];
+    console.log('issuesList', issuesList);
+    setIssues(issuesList);
+  }
+}, [issuesData]);
+```
+
+Add in instance of your new component to `index.tsx`:
 
 ```typescript
 <main className={styles.main}>
@@ -177,9 +180,9 @@ Run your app, and you should see your list of issues fetched from the blockchain
 
 Breaking down the hook, you've:
 
-- Renamed the properties decomposed from `useContractRead` to be specific for our function. Doing so is helpful if you're going to read from more than one function in a file
+- Renamed the properties decomposed from `useReadContract` to be specific for our function. Doing so is helpful if you're going to read from more than one function in a file
 - Configured the hook with the address and ABI for your contract
-- Made use of the `onSettled` function, which is called either if there is an error, or fetching is completed, to set the list of `Issue`s in state.
+- Made use of `useEffect` to wait for the data to be returned from the blockchain, log it to the console, and set the list of `Issue`s in state.
 
 ### Displaying the Data
 
@@ -234,26 +237,28 @@ Remember how the Solidity compiler creates automatic getters for all of your pub
   }
 ```
 
-To demonstrate, add a second `useContractRead` to fetch an individual issue using the getter:
+Redeploy with the above change, and add a second `useReadContract` to fetch an individual issue using the getter:
 
 ```typescript
 // Bad code for example, do not use
-const { isError: getOneIsError, isLoading: getOneIsLoading } = useContractRead({
+const {
+  data: getOneData,
+  isError: getOneIsError,
+  isPending: getOneIsPending,
+} = useReadContract({
   address: contractData.address as `0x${string}`,
   abi: contractData.abi,
   functionName: 'issues',
   args: [1],
-  onSettled(data, error) {
-    console.log('Settled');
-    if (data) {
-      console.log('Data', data);
-      const issueOne = data as Issue;
-      console.log('Issue One', issueOne);
-    } else {
-      console.log(error);
-    }
-  },
 });
+
+useEffect(() => {
+  if (getOneData) {
+    console.log('getOneData', getOneData);
+    const issueOne = getOneData as Issue;
+    console.log('Issue One', issueOne);
+  }
+}, [getOneData]);
 ```
 
 Everything appears to be working just fine, but how is `issueOne.desc` undefined? You can see it right there in the log!
@@ -262,13 +267,13 @@ Everything appears to be working just fine, but how is `issueOne.desc` undefined
 
 If you look closely, you'll see that `voters` is missing from the data in the logs. What's happening is that because the nested `mapping` cannot be returned outside the blockchain, it simply isn't. TypeScript then gets the `data` and does the best it can to cast it `as` an `Issue`. Since `voters` is missing, this will fail and it instead does the JavaScript trick of simply tacking on the extra properties onto the object.
 
-Take a look at the working example above where you retrieved the list. Notice that the keys in our `Issue` type are in that log, but are missing here. The assignment has failed, and all of the `Issue` properties are `null`.
+Take a look at the working example above where you retrieved the list. Notice that the keys in your `Issue` type are in that log, but are missing here. The assignment has failed, and all of the `Issue` properties are `null`.
 
 ---
 
 ## Conclusion
 
-In this guide, you've learned how to use the `useContractRead` hook to call `pure` and `view` functions from your smart contracts. You then converted this data into React state and displayed it to the user. Finally, you explored a tricky edge case in which the presence of a nested `mapping` can cause a confusing bug when using the automatically-generated getter.
+In this guide, you've learned how to use the `useReadContract` hook to call `pure` and `view` functions from your smart contracts. You then converted this data into React state and displayed it to the user. Finally, you explored a tricky edge case in which the presence of a nested `mapping` can cause a confusing bug when using the automatically-generated getter.
 
 ---
 
@@ -453,4 +458,4 @@ contract FEWeightedVoting is ERC20 {
 [`useAccount` hook]: ./useAccount
 [Hardhat]: https://hardhat.org/
 [ABI]: https://docs.soliditylang.org/en/latest/abi-spec.html
-[`useContractRead`]: https://wagmi.sh/react/hooks/useContractRead
+[`useReadContract`]: https://wagmi.sh/react/hooks/useReadContract
