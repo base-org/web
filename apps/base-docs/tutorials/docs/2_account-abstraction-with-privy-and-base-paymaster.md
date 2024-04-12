@@ -2,7 +2,7 @@
 title: 'Account Abstraction on Base using Privy and the Base Paymaster'
 slug: /account-abstraction-with-privy-and-base-paymaster
 description: A tutorial that teaches how to implement Account Abstraction into a Base project using Privy and the Base paymaster.
-author: briandoyle81
+author: Brian Doyle and Aaron Hayslip
 keywords:
   [
     Privy,
@@ -22,8 +22,6 @@ difficulty: intermediate
 hide_table_of_contents: false
 displayed_sidebar: null
 ---
-
-# Account Abstraction on Base using Privy and the Base Paymaster
 
 This tutorial shows you how to use [Privy], [Alchemy's Account Kit], and the [Base Paymaster] to enable your users to use onchain apps without creating a wallet on their own, or even needing to pay for gas fees!
 

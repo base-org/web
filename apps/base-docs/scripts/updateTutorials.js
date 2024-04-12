@@ -17,11 +17,11 @@ async function getDuration(filePath) {
 
     let timeString = '';
     if (hours > 0) {
-      timeString += `${hours} hrs `;
+      timeString += `${hours} hr `;
     }
-    timeString += `${minutes} mins`;
+    timeString += `${minutes} min`;
 
-    return `${timeString}`;
+    return `${timeString} read`;
   } catch (error) {
     console.error('Error reading file:', error);
     return null;

@@ -11,8 +11,6 @@ difficulty: beginner
 displayed_sidebar: null
 ---
 
-# Deploying a smart contract using Foundry
-
 This article will provide an overview of the [Foundry](https://book.getfoundry.sh/) development toolchain, and show you how to deploy a contract to **Base Sepolia** testnet.
 
 Foundry is a powerful suite of tools to develop, test, and debug your smart contracts. It comprises several individual tools:

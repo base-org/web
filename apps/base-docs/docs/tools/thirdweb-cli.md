@@ -46,7 +46,7 @@ When you create a project for smart contracts or web3 apps there are various con
 
 - Create a new contract project using [Hardhat](https://hardhat.org/) or [Forge](https://book.getfoundry.sh/)
 - Add a new contract to an existing project
-- Start from a audited contract base, and add optional [extensions](https://portal.thirdweb.com/contractkit/extensions)
+- Start from an audited contract base, and add optional [extensions](https://portal.thirdweb.com/contractkit/extensions)
 
 **For contracts, some options are:**
 

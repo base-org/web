@@ -2,7 +2,7 @@
 title: 'Hardhat: Debugging smart contracts'
 slug: /hardhat-debugging
 description: A tutorial that teaches how to debug your smart contracts using Hardhat.
-author: Brian Doyle
+author: Edson Alcala
 keywords:
   [
     Hardhat,

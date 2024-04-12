@@ -37,7 +37,7 @@ hide_table_of_contents: true
 
 [Axelar](https://axelar.network/) is an interchain platform that connects blockchains to enable universal web3 transactions. By integrating with Axelar, applications built on Base can now easily send messages and assets between the 49+ blockchains connected via Axelar.
 
-To learn more about Axelar visit our [docs](https://docs.axelar.dev/). For complete end-to-end examples demonstrating various Axelar usecases please visit the available [code examples](https://github.com/axelarnetwork/axelar-examples).
+To learn more about Axelar visit our [docs](https://docs.axelar.dev/). For complete end-to-end examples demonstrating various Axelar use cases please visit the available [code examples](https://github.com/axelarnetwork/axelar-examples).
 
 #### Supported Networks
 
@@ -64,7 +64,7 @@ Check out [Crossmint Docs](https://docs.crossmint.com/nft-checkout/introduction/
 
 ## Chainlink CCIP
 
-[Chainlink CCIP](https://chain.link/cross-chain) is a secure interoperability protocol that allows for securely sending messages, transfering tokens, and initiating actions across different blockchains.
+[Chainlink CCIP](https://chain.link/cross-chain) is a secure interoperability protocol that allows for securely sending messages, transferring tokens, and initiating actions across different blockchains.
 
 To get started with integrating Chainlink CCIP in your Base project, visit the Chainlink CCIP [documentation](https://docs.chain.link/ccip).
 

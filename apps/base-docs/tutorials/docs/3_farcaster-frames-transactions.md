@@ -58,7 +58,7 @@ As outlined in the [Public Draft V2], transactions in frames work through a mult
 
 1. Any frame can have a button with `'tx'` assigned as the `action`. If this is the case, the `target` must be a URL for an endpoint that can process the request, and return `calldata` for an onchain transaction
 1. When the user clicks the button, a POST request is sent to the endpoint with the usual set of data you get from the frame
-1. The endpoint uses that data, such as the user's attached wallet address, to build a transaction and send it back to the the Farcaster client app
+1. The endpoint uses that data, such as the user's attached wallet address, to build a transaction and send it back to the Farcaster client app
 1. The app then redirects the user to their wallet with the provided `calldata`, which opens the normal flow for the user to review and approve or deny a transaction
 1. If successful, the wallet returns the user to the app with the transaction id
 1. The app then automatically makes another POST request to the **same** `target`, this time with the transaction id. **Make sure you handle this second call appropriately!**
@@ -67,7 +67,7 @@ As outlined in the [Public Draft V2], transactions in frames work through a mult
 
 Before you can build a frame that calls a smart contract transaction, you need to have a smart contract! You can use your own, deploy your own copy of our _Click the Button_ smart contract, or use our deployment.
 
-The contract contains a simple game where players can "click the button" and pay a few cents worth of ether to get a point. That's it! No rewards, no complexity, just a tempting big red button, and a leader board that can be retrieved **unsorted**.
+The contract contains a simple game where players can "click the button" and pay a few cents worth of ether to get a point. That's it! No rewards, no complexity, just a tempting big red button, and a leaderboard that can be retrieved **unsorted**.
 
 - `function clickTheButton()`
   - `public` and `payable`
@@ -160,8 +160,8 @@ A few notes:
 - The naming conventions and organization of OnchainKit are evolving as frames evolve. Check the [OnchainKit] repo if the imports don't work
 - You'll make the api endpoint for the button clicker game next
 - Feel free to adjust the text. We're just having fun by making it give conflicting instructions
-- The button to show the leader board simply goes to your page. You could render an svg to png in the frame endpoint to show it in frames as well
-- You'll have to do the leader board on your own. Check out the frontend content in [Base Camp] if you need a hand learning how to interact with your contracts!
+- The button to show the leaderboard simply goes to your page. You could render an svg to png in the frame endpoint to show it in frames as well
+- You'll have to do the leaderboard on your own. Check out the frontend content in [Base Camp] if you need a hand learning how to interact with your contracts!
 
 ## Adding the Transaction Endpoints
 

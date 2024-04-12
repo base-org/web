@@ -27,8 +27,6 @@ difficulty: beginner
 displayed_sidebar: null
 ---
 
-# Building an onchain app using thirdweb
-
 In this tutorial you will learn how to build an app on Base using the [thirdweb](https://portal.thirdweb.com/) platform.
 
 To achieve this, you will deploy a smart contract for a NFT collection and create an NFT gallery app for viewing the metadata details of each NFT within the collection.

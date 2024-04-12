@@ -82,7 +82,7 @@
 .theme-doc-sidebar-item-link-level-1 > .menu__link {
   text-align: start;
   transition: color 0.15s ease-out, opacity 0.15s ease-out;
-  color: var(--foreground);
+  color: var(--foreground) !important;
   padding-bottom: var(--spacing-0\.5);
   padding-top: var(--spacing-0\.5);
   padding-left: var(--spacing-2);
@@ -98,7 +98,7 @@
 .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link {
   text-align: start;
   transition: color 0.15s ease-out, opacity 0.15s ease-out;
-  color: var(--foreground);
+  color: var(--foreground) !important;
   padding-bottom: var(--spacing-0\.5);
   padding-top: var(--spacing-0\.5);
   overflow: hidden;

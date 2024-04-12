@@ -26,8 +26,6 @@ difficulty: beginner
 displayed_sidebar: null
 ---
 
-# Deploying a smart contract using Tenderly
-
 This tutorial shows you how to set up a private environment for smart contract **development on Base Network** using **Tenderly DevNets**.
 
 Learn how to configure a DevNet, use built-in tools for **smart contract debugging,** run **transaction simulations** to validate your fixes, and introduce a DevNet into your **continuous integration**.

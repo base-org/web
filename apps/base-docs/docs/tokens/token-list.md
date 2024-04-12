@@ -1,5 +1,5 @@
 ---
-title: Superchain
+title: Creating tokens on Base
 slug: /tokens/list
 description: How to submit ERC-20 tokens for bridging between Ethereum and Base as a token issuer.
 keywords:

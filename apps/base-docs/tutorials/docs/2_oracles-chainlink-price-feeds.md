@@ -24,8 +24,6 @@ difficulty: intermediate
 displayed_sidebar: null
 ---
 
-# Accessing real-world data using Chainlink Data Feeds
-
 This tutorial will guide you through the process of creating a smart contract on Base that utilizes Chainlink Data Feeds to access real-world data, such as asset prices, directly from your smart contracts.
 
 ---
