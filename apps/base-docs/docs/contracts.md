@@ -50,6 +50,13 @@ This page lists contract addresses for onchain apps that we have deployed.
 | `quoterV2`                           | [0x3d4e44Eb1374240CE5F1B871ab261CD16335B76a](https://basescan.org/address/0x3d4e44Eb1374240CE5F1B871ab261CD16335B76a) |
 | `swapRouter`                         | [0x2626664c2603336E57B271c5C0b26F421741e481](https://basescan.org/address/0x2626664c2603336E57B271c5C0b26F421741e481) |
 
+### Uniswap v2
+
+| Contract  | Address                                                                                                               |
+| :-------- | :-------------------------------------------------------------------------------------------------------------------- |
+| `Factory` | [0x8909Dc15e40173Ff4699343b6eB8132c65e18eC6](https://basescan.org/address/0x8909Dc15e40173Ff4699343b6eB8132c65e18eC6) |
+| `Router`  | [0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24](https://basescan.org/address/0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24) |
+
 ## Base Testnet (Sepolia)
 
 ### Multicall3
@@ -75,3 +82,9 @@ This page lists contract addresses for onchain apps that we have deployed.
 | `v3Staker`                           | [0x62725F55f50bdE240aCa3e740D47298CAc8d57D5](https://sepolia.basescan.org/address/0x62725F55f50bdE240aCa3e740D47298CAc8d57D5) |
 | `quoterV2`                           | [0xC5290058841028F1614F3A6F0F5816cAd0df5E27](https://sepolia.basescan.org/address/0xC5290058841028F1614F3A6F0F5816cAd0df5E27) |
 | `swapRouter`                         | [0x94cC0AaC535CCDB3C01d6787D6413C739ae12bc4](https://sepolia.basescan.org/0x94cC0AaC535CCDB3C01d6787D6413C739ae12bc4)         |
+
+### Uniswap v2
+
+| Contract  | Address                                                                                                                       |
+| :-------- | :---------------------------------------------------------------------------------------------------------------------------- |
+| `Factory` | [0x7Ae58f10f7849cA6F5fB71b7f45CB416c9204b1e](https://sepolia.basescan.org/address/0x7Ae58f10f7849cA6F5fB71b7f45CB416c9204b1e) |
