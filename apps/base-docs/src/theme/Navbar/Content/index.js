@@ -71,10 +71,10 @@ function NavbarLayoutBottomContent({ left, right }) {
 }
 
 function splitNavbarItems(items) {
-  const topLeftItems = items.filter((item) => item.navPosition === 'topLeft');
-  const topRightItems = items.filter((item) => item.navPosition === 'topRight');
-  const bottomRightItems = items.filter((item) => item.navPosition === 'bottomRight');
-  const bottomLeftItems = items.filter((item) => item.navPosition === 'bottomLeft');
+  const topLeftItems = items.filter((item) => item.navposition === 'topLeft');
+  const topRightItems = items.filter((item) => item.navposition === 'topRight');
+  const bottomRightItems = items.filter((item) => item.navposition === 'bottomRight');
+  const bottomLeftItems = items.filter((item) => item.navposition === 'bottomLeft');
 
   return { topLeftItems, topRightItems, bottomLeftItems, bottomRightItems };
 }
