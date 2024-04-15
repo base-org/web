@@ -2,13 +2,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import {
-  useAccount,
-  useContractRead,
-  useContractWrite,
-  useNetwork,
-  useWaitForTransaction,
-} from 'wagmi';
+import { useAccount, useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
 
 import useNFTData from '../../utils/nft-exercise-data';
 import { decodeEventLog } from 'viem';
@@ -71,7 +65,7 @@ const directionsStyle = {
 };
 
 export default function CafeUnitTest({ nftNum }) {
-  const { isConnecting, isDisconnected } = useAccount();
+  const { isConnecting, isDisconnected, chain } = useAccount();
 
   const [messages, setMessages] = useState(['Submit your contract address.']);
   const [contractFormEntry, setContractFormEntry] = useState('');
@@ -80,11 +74,10 @@ export default function CafeUnitTest({ nftNum }) {
   const [fetchNFTStatus, setFetchNFTStatus] = useState(true);
 
   const nftData = useNFTData();
-  const { chain } = useNetwork();
 
   const nft = nftData[nftNum];
 
-  const { data: hasNFT } = useContractRead({
+  const { data: hasNFT } = useReadContract({
     address: nft.deployment.address,
     abi: nft.deployment.abi,
     functionName: 'owners',
@@ -102,13 +95,13 @@ export default function CafeUnitTest({ nftNum }) {
     write: testContract,
     isLoading: isTestLoading,
     error: isTestError,
-  } = useContractWrite({
+  } = useWriteContract({
     address: nft.deployment.address,
     abi: nft.deployment.abi,
     functionName: 'testContract',
   });
 
-  const { data: testReceiptData, isLoading: isTestReceiptLoading } = useWaitForTransaction({
+  const { data: testReceiptData, isLoading: isTestReceiptLoading } = useWaitForTransactionReceipt({
     hash: testData?.hash,
   });
 

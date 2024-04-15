@@ -18,7 +18,7 @@ import {
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { createConfig, WagmiProvider } from 'wagmi';
-import { base, baseSepolia } from 'wagmi/chains';
+import { baseSepolia } from 'wagmi/chains';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { Provider as CookieManagerProvider, Region } from '@coinbase/cookie-manager';
 import { cookieManagerConfig } from '../utils/cookieManagerConfig';
@@ -42,7 +42,7 @@ const connectors = connectorsForWallets(
 const config = createConfig({
   autoConnect: true,
   connectors,
-  chains: [base, baseSepolia],
+  chains: [baseSepolia],
   ssr: true,
 });
 
