@@ -4,7 +4,7 @@ export function GetConnected() {
   return (
     <div className="flex min-h-[300px] w-full max-w-[1440px] flex-row flex-wrap items-start justify-between bg-black px-8">
       <div className=" pb-16 font-display text-2xl uppercase text-white lg:text-3xl">
-        <p className="mb-[12px]">Get Connected</p>
+        <h3 className="mb-[12px]">Get Connected</h3>
       </div>
 
       <div className="flex flex-row gap-4 lg:h-full lg:items-center lg:gap-8">

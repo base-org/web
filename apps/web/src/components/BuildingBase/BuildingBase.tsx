@@ -23,15 +23,15 @@ export function BuildingBase({ owners }: Props) {
           has been clear and consistent: create an open financial system that increases economic
           freedom globally by moving deliberately through four phases.
         </p>
-        <p className="pt-8 text-xl font-bold">Phase 1: Develop the protocol (1M people)</p>
+        <h2 className="pt-8 text-xl font-bold">Phase 1: Develop the protocol (1M people)</h2>
         <p>
           New protocols (Bitcoin, Ethereum, etc) were invented and people began to tinker with them.
           Open source communities developed around each protocol and early adopters began
           experimenting with how they could be used.
         </p>
-        <p className="pt-8 text-xl font-bold">
+        <h2 className="pt-8 text-xl font-bold">
           Phase 2: Build a digital currency exchange (10M people)
-        </p>
+        </h2>
         <p>
           Coinbase started here. Investment or speculation is a bootstrapping mechanism for a
           payment network (in other words, it is the{' '}
@@ -54,18 +54,18 @@ export function BuildingBase({ owners }: Props) {
           </a>{' '}
           for people to get their local currency into and out of digital currency.
         </p>
-        <p className="pt-8 text-xl font-bold">
+        <h2 className="pt-8 text-xl font-bold">
           Phase 3: Build a mass market interface for digital currency apps (100M people)
-        </p>
+        </h2>
         <p>
           To move beyond just exchange and investment, consumers and businesses needed an easy
           interface to start using digital currency and its applications. Countless applications
           have been built to let anyone, anywhere access the nascent cryptoeconomy, including
           Coinbase, Coinbase Wallet, Metamask, Rainbow, Trust Wallet, and others.
         </p>
-        <p className="pt-8 text-xl font-bold">
+        <h2 className="pt-8 text-xl font-bold">
           Phase 4: Build the onchain apps of an open financial system (1B+ people)
-        </p>
+        </h2>
         <p>
           With the interfaces in place, our existing financial system now needs to be recreated on
           open networks and made globally accessible. We’re seeing this happen in front of our eyes:
@@ -92,7 +92,7 @@ export function BuildingBase({ owners }: Props) {
             EIP4844
           </a>{' '}
           with Optimism to enable L2 rollups to scale.{' '}
-          <span className="underline">
+          <span>
             But we don&#39;t believe that&#39;s enough, so here we are.
           </span>
         </p>
@@ -104,7 +104,7 @@ export function BuildingBase({ owners }: Props) {
           all hands on deck, working together to scale in a secure, safe, easy-to-use way.
         </p>
         <p className="pt-8">Join us.</p>
-        <p className="pt-8 font-bold">
+        <h2 className="pt-8 font-bold">
           <a
             href="https://etherscan.io/address/0xd1633593373974e94b2dd7ebd3c6452328ffe079"
             target="_blank"
@@ -113,9 +113,9 @@ export function BuildingBase({ owners }: Props) {
           >
             Base Contributors
           </a>
-        </p>
+        </h2>
         <CoreContributors owners={owners} />
       </div>
-    </section>
+    </section >
   );
 }
