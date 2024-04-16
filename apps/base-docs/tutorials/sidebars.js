@@ -182,6 +182,17 @@ const sidebars = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'Indexing Data with SubQuery',
+      collapsible: true,
+      items: [
+        {
+          type: 'doc',
+          id: 'docs/subquery',
+        },
+      ],
+    },
   ],
 };
 

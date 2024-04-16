@@ -802,5 +802,37 @@
         "displayed_sidebar": null,
         "last_updated": "Apr 12",
         "duration": "9 min read"
+    },
+    "subquery": {
+        "title": "Indexing Data with SubQuery",
+        "slug": "/subquery",
+        "description": "A tutorial explaining SubQuery and providing swift guidance on configuring a project",
+        "author": "subquery",
+        "keywords": [
+            "indexers",
+            "RPC",
+            "API",
+            "graphql",
+            "frontend",
+            "smart contract development",
+            "EVM",
+            "Base",
+            "Base network",
+            "Base node providers",
+            "Base providers",
+            "blockchain development",
+            "dApps",
+            "smart contracts",
+            "blockchain API"
+        ],
+        "tags": [
+            "smart contracts",
+            "api"
+        ],
+        "difficulty": "beginner",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Apr 16",
+        "duration": "15 min read"
     }
 }

@@ -115,18 +115,18 @@ Find out more in the [Shovel Docs](https://indexsupply.com/shovel/docs/)
 
 ## SubQuery
 
-[SubQuery](https://subquery.network/) is a data indexer that provides developers with fast, reliable, decentralized, and customized APIs for accessing rich indexed data from over 80+ ecosystems (including Base) within their projects.
+[SubQuery](https://subquery.network/) is a data indexer that provides developers with fast, reliable, decentralized, and customized APIs for accessing rich indexed data from various ecosystems (including Base) within their projects.
 
 SubQuery provides the ability to aggregate this data across multiple blockchains, all within a single project.
 
 Other advantages of SubQuery includes performance with multiple RPC endpoint configurations, multi-worker capabilities and a configurable caching architecture.
 
-To get started, visit the [developer documentation](https://academy.subquery.network/) or follow [this step-by-step guide](https://academy.subquery.network/quickstart/quickstart_chains/base.html) on how to index any smart contract on Base.
+To get started, visit the [developer documentation](https://academy.subquery.network/) or follow [this step-by-step guide](../../tutorials/subquery) on how to index any smart contract on Base.
 
 #### Supported Networks
 
 - [Base Mainnet](https://academy.subquery.network/quickstart/quickstart_chains/base.html)
-- Base Sepolia (Testnet)
+- [Base Sepolia (Testnet)](https://academy.subquery.network/indexer/quickstart/quickstart_chains/base-goerli.html)
 
 ---
 
