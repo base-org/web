@@ -88,3 +88,4 @@ This page lists contract addresses for onchain apps that we have deployed.
 | Contract  | Address                                                                                                                       |
 | :-------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | `Factory` | [0x7Ae58f10f7849cA6F5fB71b7f45CB416c9204b1e](https://sepolia.basescan.org/address/0x7Ae58f10f7849cA6F5fB71b7f45CB416c9204b1e) |
+| `Router`  | [0x1689E7B1F10000AE47eBfE339a4f69dECd19F602](https://sepolia.basescan.org/address/0x1689E7B1F10000AE47eBfE339a4f69dECd19F602) |
