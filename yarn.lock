@@ -297,6 +297,7 @@ __metadata:
     "@coinbase/onchainkit": ^0.6.0
     "@heroicons/react": ^2.0.18
     "@next/font": ^13.1.5
+    "@openzeppelin/merkle-tree": "https://github.com/OpenZeppelin/merkle-tree"
     "@sprig-technologies/sprig-browser": ^2.26.6
     "@types/node": 18.11.18
     autoprefixer: ^10.4.13
@@ -4738,6 +4739,18 @@ __metadata:
   dependencies:
     semver: ^7.3.5
   checksum: a50a6818de5fc557d0b0e6f50ec780a7a02ab8ad07e5ac8b16bf519e0ad60a144ac64f97d05c443c3367235d337182e1d012bbac0eb8dbae8dc7b40b193efd0e
+  languageName: node
+  linkType: hard
+
+"@openzeppelin/merkle-tree@https://github.com/OpenZeppelin/merkle-tree":
+  version: 1.0.6
+  resolution: "@openzeppelin/merkle-tree@https://github.com/OpenZeppelin/merkle-tree.git#commit=5d8941e4cdafabeb2d3691e08bc3ff2f8d99528f"
+  dependencies:
+    "@ethersproject/abi": ^5.7.0
+    "@ethersproject/bytes": ^5.7.0
+    "@ethersproject/constants": ^5.7.0
+    "@ethersproject/keccak256": ^5.7.0
+  checksum: 03635e8d81042da983e7c147edce47c8d3c9323fb70ddbd2f27f4f433f20bcc30222e00bb3078c954c30e9ef143159d81cf1d908c7f60b0cb6ac046891662b27
   languageName: node
   linkType: hard
 
