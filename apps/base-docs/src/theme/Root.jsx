@@ -17,13 +17,14 @@ import {
   rainbowWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
-import { createConfig, WagmiProvider } from 'wagmi';
+import { createConfig, WagmiProvider, http } from 'wagmi';
 import { baseSepolia } from 'wagmi/chains';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { Provider as CookieManagerProvider, Region } from '@coinbase/cookie-manager';
 import { cookieManagerConfig } from '../utils/cookieManagerConfig';
 import { CookieBanner } from '@coinbase/cookie-banner';
 import { WalletAvatar } from '../components/WalletAvatar';
+import { createClient } from 'viem';
 
 const connectors = connectorsForWallets(
   [
@@ -43,6 +44,9 @@ const config = createConfig({
   autoConnect: true,
   connectors,
   chains: [baseSepolia],
+  client({ chain }) {
+    return createClient({ chain, transport: http() });
+  },
   ssr: true,
 });
 

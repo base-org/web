@@ -2,7 +2,13 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useAccount, useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
+import {
+  useAccount,
+  useReadContract,
+  useWriteContract,
+  useWaitForTransactionReceipt,
+  useBlockNumber,
+} from 'wagmi';
 
 import useNFTData from '../../utils/nft-exercise-data';
 import { decodeEventLog } from 'viem';
@@ -66,6 +72,13 @@ const directionsStyle = {
 
 export default function CafeUnitTest({ nftNum }) {
   const { isConnecting, isDisconnected, chain } = useAccount();
+  const {
+    data: testData,
+    write: testContract,
+    isPending: isTestLoading,
+    error: isTestError,
+    writeContract,
+  } = useWriteContract();
 
   const [messages, setMessages] = useState(['Submit your contract address.']);
   const [contractFormEntry, setContractFormEntry] = useState('');
@@ -77,29 +90,22 @@ export default function CafeUnitTest({ nftNum }) {
 
   const nft = nftData[nftNum];
 
-  const { data: hasNFT } = useReadContract({
+  const { data: hasNFT, refetch } = useReadContract({
     address: nft.deployment.address,
     abi: nft.deployment.abi,
     functionName: 'owners',
     args: [useAccount()?.address],
-    watch: fetchNFTStatus,
-    onSettled(data) {
-      setHasPin(!!data);
-      setFetchNFTStatus(false);
-    },
   });
 
-  // Test Contract Function
-  const {
-    data: testData,
-    write: testContract,
-    isLoading: isTestLoading,
-    error: isTestError,
-  } = useWriteContract({
-    address: nft.deployment.address,
-    abi: nft.deployment.abi,
-    functionName: 'testContract',
-  });
+  const { data: blockNumber } = useBlockNumber({ watch: true });
+
+  useEffect(() => {
+    if (fetchNFTStatus) {
+      refetch();
+      setHasPin(!!hasNFT);
+      setFetchNFTStatus(false);
+    }
+  }, [blockNumber, fetchNFTStatus]);
 
   const { data: testReceiptData, isLoading: isTestReceiptLoading } = useWaitForTransactionReceipt({
     hash: testData?.hash,
@@ -191,7 +197,12 @@ export default function CafeUnitTest({ nftNum }) {
     setSubmittedContract(contractFormEntry);
     setMessages(['Running tests...']);
 
-    await testContract({ args: [contractFormEntry] });
+    await writeContract({
+      abi: nft.deployment.abi,
+      address: nft.deployment.address,
+      functionName: 'testContract',
+      args: [contractFormEntry],
+    });
   }
 
   function renderTests() {
