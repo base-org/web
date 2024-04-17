@@ -1,6 +1,6 @@
 ---
 title: 'Indexing Data with SubQuery'
-slug: /subquery
+slug: /data-indexers-subquery
 description: A tutorial explaining SubQuery and providing swift guidance on configuring a project
 author: subquery
 keywords:
@@ -19,9 +19,9 @@ keywords:
     blockchain development,
     dApps,
     smart contracts,
-    blockchain API
+    blockchain API,
   ]
-tags: ['smart contracts', 'api']
+tags: ['smart contracts', 'data indexing']
 difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null
@@ -52,7 +52,7 @@ The contents presented in this tutorial were discussed previously during the wor
 
 ## What are indexers?
 
-Indexers, in a broad context, play a fundamental role in organising and optimising data retrieval within various systems. These tools act as navigational aids, allowing efficient access to specific information by creating structured indexes. 
+Indexers, in a broad context, play a fundamental role in organising and optimising data retrieval within various systems. These tools act as navigational aids, allowing efficient access to specific information by creating structured indexes.
 
 In the context of blockchain and dApps, indexers go beyond traditional databases, facilitating streamlined access to on-chain data. This includes transaction histories, smart contract states, and event logs.
 
@@ -147,8 +147,8 @@ It will also generate a class for every contract event, offering convenient acce
 You can conveniently import all these types:
 
 ```ts
-import { Claim, DailyAggregation } from "../types";
-import { TokensClaimedLog } from "../types/abi-interfaces/Erc721baseAbi";
+import { Claim, DailyAggregation } from '../types';
+import { TokensClaimedLog } from '../types/abi-interfaces/Erc721baseAbi';
 ```
 
 ### Adding a Mapping Function
@@ -160,7 +160,7 @@ Navigate to the default mapping function in the `src/mappings` directory. You wi
 ```ts
 export async function handleNftClaim(log: TokensClaimedLog): Promise<void> {
   logger.info(`New claim log at block ${log.blockNumber}`);
-  assert(log.args, "No log.args");
+  assert(log.args, 'No log.args');
 
   let date = new Date(Number(log.block.timestamp) * 1000);
 
@@ -179,10 +179,7 @@ export async function handleNftClaim(log: TokensClaimedLog): Promise<void> {
   await claim.save();
 }
 
-export async function handleDailyAggregation(
-  date: Date,
-  quantity: bigint,
-): Promise<void> {
+export async function handleDailyAggregation(date: Date, quantity: bigint): Promise<void> {
   const id = date.toISOString().slice(0, 10);
   let aggregation = await DailyAggregation.get(id);
   logger.info(`New daily aggregation at ${id}`);
@@ -201,7 +198,6 @@ export async function handleDailyAggregation(
 ```
 
 The `handleNftClaim` function receives a `log` parameter of type `TokensClaimedLog` which includes log data in the payload. We extract this data and then save this to the store using the `.save()` function (_Note that SubQuery will automatically save this to the database_).
-
 
 ### Build
 
@@ -235,7 +231,7 @@ yarn start:docker
 It may take a few minutes to download the required images and start the various nodes and Postgres databases.
 :::
 
-### Query 
+### Query
 
 Next, let's query our project. Follow these three simple steps to query your SubQuery project:
 
@@ -361,4 +357,3 @@ SubQuery is open-source, meaning you have the freedom to run it in the following
 ### Need Help?
 
 The fastest way to get support is by [searching our documentation](https://academy.subquery.network), or by [joining our discord](https://discord.com/invite/subquery) and messaging us in the `#technical-support` channel.
-

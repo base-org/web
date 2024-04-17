@@ -189,7 +189,7 @@ const sidebars = {
       items: [
         {
           type: 'doc',
-          id: 'docs/subquery',
+          id: 'docs/data-indexers-subquery',
         },
       ],
     },

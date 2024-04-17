@@ -17,6 +17,7 @@ const TagList = [
   'account abstraction',
   'cross-chain',
   'oracles',
+  'data indexing',
   'vrf',
   'frames',
 ];
