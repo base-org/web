@@ -297,9 +297,9 @@ __metadata:
     "@coinbase/onchainkit": ^0.6.0
     "@heroicons/react": ^2.0.18
     "@next/font": ^13.1.5
-    "@openzeppelin/merkle-tree": "https://github.com/OpenZeppelin/merkle-tree"
     "@sprig-technologies/sprig-browser": ^2.26.6
     "@types/node": 18.11.18
+    "@vercel/kv": ^1.0.1
     autoprefixer: ^10.4.13
     csv-parser: ^3.0.0
     dotenv: ^16.0.3
@@ -4742,18 +4742,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@openzeppelin/merkle-tree@https://github.com/OpenZeppelin/merkle-tree":
-  version: 1.0.6
-  resolution: "@openzeppelin/merkle-tree@https://github.com/OpenZeppelin/merkle-tree.git#commit=5d8941e4cdafabeb2d3691e08bc3ff2f8d99528f"
-  dependencies:
-    "@ethersproject/abi": ^5.7.0
-    "@ethersproject/bytes": ^5.7.0
-    "@ethersproject/constants": ^5.7.0
-    "@ethersproject/keccak256": ^5.7.0
-  checksum: 03635e8d81042da983e7c147edce47c8d3c9323fb70ddbd2f27f4f433f20bcc30222e00bb3078c954c30e9ef143159d81cf1d908c7f60b0cb6ac046891662b27
-  languageName: node
-  linkType: hard
-
 "@parcel/watcher-android-arm64@npm:2.3.0":
   version: 2.3.0
   resolution: "@parcel/watcher-android-arm64@npm:2.3.0"
@@ -7069,6 +7057,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@upstash/redis@npm:1.25.1":
+  version: 1.25.1
+  resolution: "@upstash/redis@npm:1.25.1"
+  dependencies:
+    crypto-js: ^4.2.0
+  checksum: 694d9ff33b0a4bce95fa72effaface1b9c41cab7093d726fc1a9ef29eb5ac6eda3d4d0cc59c130bc6e62bf20eaa60a8ef423c257bac1484d3d76e73c56a3ea7e
+  languageName: node
+  linkType: hard
+
 "@vanilla-extract/css@npm:1.9.1":
   version: 1.9.1
   resolution: "@vanilla-extract/css@npm:1.9.1"
@@ -7110,6 +7107,15 @@ __metadata:
   peerDependencies:
     "@vanilla-extract/css": ^1.0.0
   checksum: 522b96afe856a72d76072ab41453edc35117772a6ac829c8a5ad09cddd69152e152b1cbda0b4344d50dbde59d0effa39301beb7acf319ef88f485966c89c80fd
+  languageName: node
+  linkType: hard
+
+"@vercel/kv@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@vercel/kv@npm:1.0.1"
+  dependencies:
+    "@upstash/redis": 1.25.1
+  checksum: 399ab8a846406cd61ea03909f04a5261ab0e06bac14e6a834f5292005305d9ee463179579fa74fe554db1cfecb706372bb4e9faa473433a146e2311095f6c29e
   languageName: node
   linkType: hard
 
@@ -10434,6 +10440,13 @@ __metadata:
     randombytes: ^2.0.0
     randomfill: ^1.0.3
   checksum: c1609af82605474262f3eaa07daa0b2140026bd264ab316d4bf1170272570dbe02f0c49e29407fe0d3634f96c507c27a19a6765fb856fed854a625f9d15618e2
+  languageName: node
+  linkType: hard
+
+"crypto-js@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "crypto-js@npm:4.2.0"
+  checksum: f051666dbc077c8324777f44fbd3aaea2986f198fe85092535130d17026c7c2ccf2d23ee5b29b36f7a4a07312db2fae23c9094b644cc35f7858b1b4fcaf27774
   languageName: node
   linkType: hard
 
