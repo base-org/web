@@ -7,7 +7,7 @@ export function Commitment() {
     <div className="flex w-full max-w-[1440px] flex-col px-8 py-12">
       <div className="flex flex-col justify-between pb-6 lg:flex-row lg:gap-20">
         <div className="flex flex-col pb-8 font-display text-3xl text-white lg:basis-1/2 lg:pb-16 lg:text-6xl">
-          <p>Base is our commitment to onchain</p>
+          <h2>Base is our commitment to onchain</h2>
         </div>
         <div className="flex flex-col lg:basis-1/2">
           <p className="pb-6 font-display text-sm text-white md:text-lg lg:text-xl">
@@ -17,7 +17,7 @@ export function Commitment() {
             need all hands on deck, working together to scale in a secure, decentralized,
             easy-to-use way.
           </p>
-          <Link href="/about">
+          <Link href="/about" aria-label="Read more about us">
             <Button variant="primary" className="lg:self-start">
               Read More
             </Button>
