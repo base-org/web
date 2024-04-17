@@ -13,9 +13,9 @@ function EcosystemHero() {
           <h1 className="font-display text-3xl text-white md:text-5xl lg:text-6xl">
             Base ecosystem
           </h1>
-          <p className="font-display text-xl text-white md:text-2xl lg:text-3xl">
+          <h2 className="font-display text-xl text-white md:text-2xl lg:text-3xl">
             An overview of apps and integrations in the Base ecosystem.
-          </p>
+          </h2>
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLScKCOjB4wFmb7u-1VpgMZOGLYq4GUBGt3AwQKqUAlTgjnucGQ/viewform"
             target="_blank"

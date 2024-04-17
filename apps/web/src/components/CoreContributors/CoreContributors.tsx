@@ -31,7 +31,6 @@ export const CoreContributors = memo(function CoreContributors({ owners }: Props
                 {filename ? (
                   <Image
                     alt={title}
-                    title={title}
                     src={`/images/avatars/${filename}`}
                     width={AVATAR_SIZE}
                     height={AVATAR_SIZE}
