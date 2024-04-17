@@ -1,5 +1,5 @@
 ---
-title: Creating tokens on Base
+title: Bridging an L1 token to Base
 slug: /tokens/list
 description: How to submit ERC-20 tokens for bridging between Ethereum and Base as a token issuer.
 keywords:
