@@ -93,7 +93,7 @@ export const CustomConnectButton = ({ className }) => {
                           />
                         </div>
                       )}
-                      {account.ensName ? account.ensName : account.displayName}
+                      {account.ensName ?? account.displayName}
                     </button>
                   </div>
                 </div>
