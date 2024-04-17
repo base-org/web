@@ -876,12 +876,12 @@ const sidebars = {
           items: [
             {
               type: 'doc',
-              id: 'docs/writing-to-contracts/useContractWrite',
+              id: 'docs/writing-to-contracts/useWriteContract',
               className: 'sidebar-coding',
             },
             {
               type: 'doc',
-              id: 'docs/writing-to-contracts/usePrepareContractWrite',
+              id: 'docs/writing-to-contracts/useSimulateContract',
               className: 'sidebar-coding',
             },
           ],
