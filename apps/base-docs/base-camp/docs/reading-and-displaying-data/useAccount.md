@@ -120,7 +120,7 @@ A common pattern is to use the conditional directly in the html return of a comp
 <div>
   <h2>Connection Information</h2>
   <div>
-    {!isConnected && <p>Please click Connect in your wallet...</p>}
+    {!isConnecting && <p>Please click Connect in your wallet...</p>}
     <p>{"Address: " + address}</p>
   </div>
 </div>

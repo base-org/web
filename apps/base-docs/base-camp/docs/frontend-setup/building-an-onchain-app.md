@@ -77,7 +77,7 @@ Add a new file in the `app` folder called `providers.tsx`.
 
 ### Imports
 
-As discussed above, add ``"use client":` to the top of the file.
+As discussed above, add `"use client":` to the top of the file.
 
 Continue with the imports:
 

@@ -142,7 +142,7 @@ Adjust your [`pollingInterval`] by setting it in `getDefaultConfig` in `_app.tsx
 ```typescript
 const config = getDefaultConfig({
   appName: 'RainbowKit App',
-  projectId: '51407fcf066d74968d9a1a4c6da0d994',
+  projectId: 'YOUR_PROJECT_ID',
   chains: [baseSepolia],
   ssr: true,
   pollingInterval: 30_000,
