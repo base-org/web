@@ -163,7 +163,7 @@ const config = {
     ...baseConfig.themeConfig,
     navbar: {
       logo: {
-        alt: PRODUCT_NAME,
+        alt: `${PRODUCT_NAME} Docs`,
         src: 'img/logo.svg',
         srcDark: 'img/logo_dark.svg',
       },

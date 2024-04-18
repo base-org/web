@@ -44,13 +44,28 @@ function NavbarLayoutTopContent({ left, right }) {
       <div className="navbar__items navbar__items--right">
         {right}
         <div className="navbar__social__links">
-          <a href="https://discord.com/invite/buildonbase" target="_blank" rel="noreferrer">
+          <a
+            href="https://discord.com/invite/buildonbase"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Base on Discord"
+          >
             <Icon name="discord" />
           </a>
-          <a href="https://www.twitter.com/base" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.twitter.com/base"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Base on Twitter"
+          >
             <Icon name="twitter" />
           </a>
-          <a href="https://www.github.com/base-org" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.github.com/base-org"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Base on Github"
+          >
             <Icon name="github" />
           </a>
         </div>
