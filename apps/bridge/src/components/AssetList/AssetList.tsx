@@ -43,7 +43,7 @@ export function AssetList({
         className="flex cursor-pointer flex-row items-center font-sans"
         onClick={onAssetListClick}
       >
-        <div className="align-center justify-center font-sans text-4xl text-stone-600 sm:text-6xl">
+        <div className="align-center justify-center font-sans text-4xl text-stone-400 sm:text-6xl">
           {selectedAssetSymbol}
         </div>
         {isOpen ? (

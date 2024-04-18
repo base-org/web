@@ -61,20 +61,20 @@ export function TransactionSummary({
           )}
           <div className="flex grow flex-col text-white">
             <span className="font-medium">Receive {selectedAssetSymbol}</span>
-            <p className="text-stone-500">On {outputChain.summary.location}</p>
+            <p className="text-stone-400">On {outputChain.summary.location}</p>
           </div>
         </div>
         <div className="text-right">
           <span className="text-white">
             {cryptoBalance} {selectedAssetSymbol}
           </span>
-          <p className="text-stone-500">{fiatBalance}</p>
+          <p className="text-stone-400">{fiatBalance}</p>
         </div>
       </div>
       <div className="flex w-full flex-row justify-between p-6 pb-0 text-white">
         <div className="flex grow flex-col text-white">
           <span className="font-medium">Transfer time</span>
-          <p className="text-stone-500">
+          <p className="text-stone-400">
             {isDeposit ? '' : `Withdrawals take about ${challengeWindow} to finalize on Base`}
           </p>
         </div>
@@ -84,7 +84,7 @@ export function TransactionSummary({
         <span className="font-medium">Network fee (est.) </span>
         <div className="text-right">
           <span>{gasPrice.toFixed(9)} ETH</span>
-          <p className="text-stone-500">
+          <p className="text-stone-400">
             {ethConversionRate ? usdFormatter(gasPrice * ethConversionRate, 6) : '$0'} USD
           </p>
         </div>
@@ -93,7 +93,7 @@ export function TransactionSummary({
         <span className="font-medium">Total with (est.) fee</span>
         <div className="text-right">
           <span>{transactionTotal.toFixed(9)} ETH</span>
-          <p className="text-stone-500">
+          <p className="text-stone-400">
             {ethConversionRate ? usdFormatter(transactionTotal * ethConversionRate, 6) : '$0'} USD
           </p>
         </div>

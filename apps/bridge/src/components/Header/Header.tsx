@@ -15,9 +15,9 @@ export function Header() {
           <Popover.Button className="block sm:hidden">
             <Image src="/icons/hamburger.svg" width="24" height="24" alt="Menu" />
           </Popover.Button>
-          <h2 className="grow	text-center font-mono text-2xl uppercase text-white sm:grow-0">
+          <h1 className="grow	text-center font-mono text-2xl uppercase text-white sm:grow-0">
             {pathname === '/transactions' ? 'Transactions' : 'Bridge'}
-          </h2>
+          </h1>
           <div className="hidden sm:block">
             <RainbowConnectButton />
           </div>
