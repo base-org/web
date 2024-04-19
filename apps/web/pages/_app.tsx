@@ -22,14 +22,12 @@ import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/Clien
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
 import { useSprig } from 'apps/web/src/utils/hooks/useSprig';
 
-const WalletConnectProjectID = '99a7649b4421d35d175fbca94c1bd880';
-
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call
 const config: Config = getDefaultConfig({
   appName: 'Base.org',
-  projectId: WalletConnectProjectID,
+  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? '',
   chains: [base],
-  ssr: true, // If your dApp uses server side rendering (SSR)
+  ssr: true,
 }) as Config;
 const queryClient = new QueryClient();
 
