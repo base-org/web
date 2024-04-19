@@ -1,5 +1,11 @@
 import './global.css';
 
+import '@rainbow-me/rainbowkit/styles.css';
+import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { Config, WagmiProvider } from 'wagmi';
+import { base } from 'wagmi/chains';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { AppProps } from 'next/app';
 import { MotionConfig } from 'framer-motion';
@@ -15,6 +21,17 @@ import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/Clien
 
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
 import { useSprig } from 'apps/web/src/utils/hooks/useSprig';
+
+const WalletConnectProjectID = '99a7649b4421d35d175fbca94c1bd880';
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+const config: Config = getDefaultConfig({
+  appName: 'Base.org',
+  projectId: WalletConnectProjectID,
+  chains: [base],
+  ssr: true, // If your dApp uses server side rendering (SSR)
+}) as Config;
+const queryClient = new QueryClient();
 
 export default function StaticApp({ Component, pageProps }: AppProps) {
   // Cookie Manager Provider Configuration
@@ -68,9 +85,15 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
     >
       <MotionConfig reducedMotion="user">
         <ClientAnalyticsScript />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}>
+            <RainbowKitProvider>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </RainbowKitProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
       </MotionConfig>
     </CookieManagerProvider>
   );
