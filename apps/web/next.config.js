@@ -57,6 +57,8 @@ const greenhouseDomains = 'https://boards.greenhouse.io';
 const ccaDomain = 'https://static-assets.coinbase.com/js/cca/v0.0.1.js';
 const ccaLiteDomains = 'https://cca-lite.coinbase.com';
 const sprigDomains = 'https://api.sprig.com https://cdn.sprig.com;';
+const walletconnectDomains =
+  'https://*.walletconnect.org wss://*.walletconnect.org wss://*.walletconnect.com https://*.walletconnect.com;';
 
 const contentSecurityPolicy = {
   'default-src': [
@@ -64,11 +66,10 @@ const contentSecurityPolicy = {
     "'unsafe-inline'", // NextJS requires 'unsafe-inline'
     isLocalDevelopment ? "'unsafe-eval'" : '',
     baseXYZDomains,
-    greenhouseDomains,
     ccaDomain,
     ccaLiteDomains,
-    sprigDomains,
   ],
+  'connect-src': [walletconnectDomains, sprigDomains, greenhouseDomains],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
 };
