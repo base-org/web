@@ -97,29 +97,24 @@ export default function CafeUnitTest({ nftNum }) {
     args: [useAccount()?.address],
   });
 
-  const { data: blockNumber } = useBlockNumber({ watch: true });
+  const { data: blockNumber } = useBlockNumber({ watch: fetchNFTStatus });
 
   useEffect(() => {
-    if (fetchNFTStatus) {
-      refetch();
-      setHasPin(!!hasNFT);
-      setFetchNFTStatus(false);
-    }
-  }, [blockNumber, fetchNFTStatus]);
+    refetch();
+  }, [blockNumber]);
+
+  useEffect(() => {
+    setHasPin(!!hasNFT);
+    setFetchNFTStatus(false);
+  }, [hasNFT]);
 
   const { data: testReceiptData, isLoading: isTestReceiptLoading } = useWaitForTransactionReceipt({
-    hash: testData?.hash,
+    hash: testData,
   });
 
   function handleContractChange(event) {
     setContractFormEntry(event.target.value);
   }
-
-  useEffect(() => {
-    if (hasNFT != null) {
-      setHasPin(hasNFT);
-    }
-  }, [hasNFT]);
 
   useEffect(() => {
     if (isTestError) {
