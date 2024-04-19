@@ -860,12 +860,12 @@ const sidebars = {
             },
             {
               type: 'doc',
-              id: 'docs/reading-and-displaying-data/useContractRead',
+              id: 'docs/reading-and-displaying-data/useReadContract',
               className: 'sidebar-coding',
             },
             {
               type: 'doc',
-              id: 'docs/reading-and-displaying-data/configuring-useContractRead',
+              id: 'docs/reading-and-displaying-data/configuring-useReadContract',
               className: 'sidebar-coding',
             },
           ],
@@ -876,12 +876,12 @@ const sidebars = {
           items: [
             {
               type: 'doc',
-              id: 'docs/writing-to-contracts/useContractWrite',
+              id: 'docs/writing-to-contracts/useWriteContract',
               className: 'sidebar-coding',
             },
             {
               type: 'doc',
-              id: 'docs/writing-to-contracts/usePrepareContractWrite',
+              id: 'docs/writing-to-contracts/useSimulateContract',
               className: 'sidebar-coding',
             },
           ],
