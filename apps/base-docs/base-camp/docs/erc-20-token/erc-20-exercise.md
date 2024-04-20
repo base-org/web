@@ -26,7 +26,7 @@ Create a contract called `WeightedVoting`. Add the following:
   - Storage for the number of `votesFor`, `votesAgainst`, `votesAbstain`, `totalVotes`, and `quorum`
   - Bools storing if the issue is `passed` and `closed`
 - An array of `Issue`s called `issues`
-- An `enum` for `Votes` containing:
+- An `enum` for `Vote` containing:
   - `AGAINST`
   - `FOR`
   - `ABSTAIN`

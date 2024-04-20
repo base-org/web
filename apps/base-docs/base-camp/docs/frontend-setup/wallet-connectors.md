@@ -6,12 +6,6 @@ hide_table_of_contents: false
 
 One of the most intimidating tasks when building an onchain app is making that initial connection between your users' wallets, and your app. Initial research often surfaces a bewildering number of wallets, each with their own SDKs, and own methods to manage the connection. Luckily, you don't actually need to manage all of this on your own. There are a number of libraries specialized in creating a smooth and beautiful user experience to facilitate this connection.
 
-:::caution
-
-The frontend tutorials are currently based on version 1.X of Wagmi. Version 2 has recently been released and is a near complete rewrite of the library. We are working on updates. In the meantime, please use Version 1, or review the [migration guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
-
-:::
-
 ---
 
 ## Objectives
@@ -53,6 +47,14 @@ yarn run dev
 ```
 
 Using the script is fast, but it does mean less choice. In this case, it builds the app on top of [Next.js], which is great if you want to use it, but not helpful if you prefer to work from a different framework, such as [Create React App], or [Remix]. The script also doesn't help you if you want to add an onchain integration to an existing site.
+
+:::info
+
+The Rainbowkit template has been updated to wagmi 2.X, but it does **not** use the Next.js app router. You'll need to install it manually if you wish to use the latest patterns.
+
+The next tutorial will show you how to do this!
+
+:::
 
 ---
 

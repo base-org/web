@@ -14,7 +14,7 @@ export function Nav({ color }: NavProps) {
 
   return (
     <nav className="bg-transparent z-10 flex h-24 w-full max-w-[1440px] flex-row justify-between self-center p-8">
-      <Link href="/">
+      <Link href="/" aria-label="Base Homepage">
         <Logo color={color} path={pathname} />
       </Link>
       <DesktopNav color={color} />
