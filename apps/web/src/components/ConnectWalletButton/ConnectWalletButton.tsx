@@ -37,9 +37,14 @@ export function ConnectWalletButton({ color }: ConnectWalletButtonProps) {
         }
 
         return (
-          <div className="relative top-3 inline-block" onClick={openAccountModal} role="button">
+          <button
+            className="relative top-3 inline-block cursor-pointer"
+            onClick={openAccountModal}
+            onKeyUp={openAccountModal}
+            type="button"
+          >
             <UserAvatar />
-          </div>
+          </button>
         );
       }}
     </ConnectButton.Custom>
