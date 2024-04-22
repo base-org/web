@@ -173,6 +173,7 @@ export default function Home() {
               <ImageCard
                 src={card.src}
                 title={card.title}
+                key={card.title}
                 description={card.description}
                 buttonText={card.buttonText}
                 buttonHref={card.buttonHref}
@@ -183,14 +184,19 @@ export default function Home() {
         <PageSection title="Tutorials" description="Expert how-tos">
           <div className={styles.tutorialsSection}>
             {textCards.map((card) => (
-              <TextCard title={card.title} description={card.description} href={card.href} />
+              <TextCard
+                title={card.title}
+                key={card.title}
+                description={card.description}
+                href={card.href}
+              />
             ))}
           </div>
         </PageSection>
         <PageSection title="Docs" description="Explore the documentation">
           <div className={styles.footerSection}>
             {footerCategories.map((category) => (
-              <FooterCategory title={category.title} links={category.links} />
+              <FooterCategory title={category.title} key={category.title} links={category.links} />
             ))}
           </div>
         </PageSection>
