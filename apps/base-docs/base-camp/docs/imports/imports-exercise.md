@@ -51,7 +51,7 @@ Remember, the compiler will automatically create a getter for `public` `struct`s
 
 ### Shruggie Haiku
 
-`shruggieHaiku` should use the library to add 🤷 to the end of `line3`. It must **not** modify the original haiku.
+`shruggieHaiku` should use the library to add 🤷 to the end of `line3`. It must **not** modify the original haiku. It should return the modified `Haiku`.
 
 ---
 
