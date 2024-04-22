@@ -6,6 +6,7 @@ import useClickAway from '../../../utils/hooks/useClickAway';
 
 import { Icon } from '../../Icon/Icon';
 import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
+import { ConnectWalletButton } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 
 const REVERSE_COLOR: Record<'white' | 'black', 'white' | 'black'> = {
   white: 'black',
@@ -128,7 +129,7 @@ function IconLink({
 
 function DesktopNav({ color }: DesktopNavProps) {
   return (
-    <div className="hidden h-full flex-row items-center space-x-16 lg:flex">
+    <div className="hidden flex-row items-center space-x-16 lg:flex">
       <div className="h-full flex-row items-center space-x-16">
         <Dropdown label="Ecosystem" color={color}>
           <DropdownLink href="/ecosystem" label="Apps" color={color} />
@@ -210,6 +211,8 @@ function DesktopNav({ color }: DesktopNavProps) {
             title="Join us on Github"
           />
         </Dropdown>
+
+        <ConnectWalletButton color={color} />
       </div>
     </div>
   );

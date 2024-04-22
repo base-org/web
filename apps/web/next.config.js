@@ -56,9 +56,9 @@ const baseXYZDomains = 'https://base.mirror.xyz';
 const greenhouseDomains = 'https://boards.greenhouse.io';
 const ccaDomain = 'https://static-assets.coinbase.com/js/cca/v0.0.1.js';
 const ccaLiteDomains = 'https://cca-lite.coinbase.com';
-const sprigDomains = 'https://api.sprig.com https://cdn.sprig.com;';
+const sprigDomains = 'https://api.sprig.com https://cdn.sprig.com';
 const walletconnectDomains =
-  'https://*.walletconnect.org wss://*.walletconnect.org wss://*.walletconnect.com https://*.walletconnect.com;';
+  'https://*.walletconnect.org wss://*.walletconnect.org wss://*.walletconnect.com https://*.walletconnect.com https://explorer-api.walletconnect.com';
 
 const contentSecurityPolicy = {
   'default-src': [
@@ -68,10 +68,17 @@ const contentSecurityPolicy = {
     baseXYZDomains,
     ccaDomain,
     ccaLiteDomains,
+    walletconnectDomains,
   ],
-  'connect-src': [walletconnectDomains, sprigDomains, greenhouseDomains],
+  'connect-src': [
+    walletconnectDomains,
+    sprigDomains,
+    greenhouseDomains,
+    'https://analytics-service-dev.cbhq.net',
+  ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
+  'img-src': ["'self'", 'data:', 'https://*.walletconnect.com/'], // WalletConnect,
 };
 
 const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [key, value]) => {

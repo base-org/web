@@ -13,7 +13,7 @@ export function Nav({ color }: NavProps) {
   const { pathname } = useRouter();
 
   return (
-    <nav className="bg-transparent z-10 flex h-24 w-full max-w-[1440px] flex-row justify-between self-center p-8">
+    <nav className="bg-transparent z-10 flex h-24 w-full max-w-[1440px] flex-row items-center justify-between self-center p-8">
       <Link href="/">
         <Logo color={color} path={pathname} />
       </Link>

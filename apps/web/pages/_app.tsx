@@ -2,7 +2,7 @@ import './global.css';
 
 import '@rainbow-me/rainbowkit/styles.css';
 import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { Config, WagmiProvider } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
 import { base } from 'wagmi/chains';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
@@ -22,13 +22,12 @@ import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/Clien
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
 import { useSprig } from 'apps/web/src/utils/hooks/useSprig';
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-const config: Config = getDefaultConfig({
+const config = getDefaultConfig({
   appName: 'Base.org',
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? '',
   chains: [base],
   ssr: true,
-}) as Config;
+});
 const queryClient = new QueryClient();
 
 export default function StaticApp({ Component, pageProps }: AppProps) {
@@ -85,7 +84,7 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
         <ClientAnalyticsScript />
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
-            <RainbowKitProvider>
+            <RainbowKitProvider modalSize="compact">
               <Layout>
                 <Component {...pageProps} />
               </Layout>

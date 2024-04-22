@@ -4,8 +4,9 @@
     "jsx": "preserve",
     "emitDeclarationOnly": false,
     "noEmit": true,
-    "moduleResolution": "node",
     "outDir": "../../out/apps/web",
+    "module": "esnext",
+    "moduleResolution": "node",
   },
   "include": [
     "next-env.d.ts",
