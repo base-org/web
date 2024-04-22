@@ -10,6 +10,7 @@ import NavbarSearch from '@theme/Navbar/Search';
 import styles from './styles.module.css';
 
 import Icon from '../../../components/Icon';
+import { CustomConnectButton } from '../../NavbarItem/ComponentTypes';
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
@@ -62,16 +63,18 @@ function NavbarLayoutBottomContent({ left, right }) {
   return (
     <div className="navbar__inner">
       <div className="navbar__items">{left}</div>
-      <div className="navbar__items navbar__items--right">{right}</div>
+      <div className="navbar__items navbar__items--right" style={{ gap: '24px' }}>
+        {right}
+      </div>
     </div>
   );
 }
 
 function splitNavbarItems(items) {
-  const topLeftItems = items.filter((item) => item.navPosition === 'topLeft');
-  const topRightItems = items.filter((item) => item.navPosition === 'topRight');
-  const bottomRightItems = items.filter((item) => item.navPosition === 'bottomRight');
-  const bottomLeftItems = items.filter((item) => item.navPosition === 'bottomLeft');
+  const topLeftItems = items.filter((item) => item.navposition === 'topLeft');
+  const topRightItems = items.filter((item) => item.navposition === 'topRight');
+  const bottomRightItems = items.filter((item) => item.navposition === 'bottomRight');
+  const bottomLeftItems = items.filter((item) => item.navposition === 'bottomLeft');
 
   return { topLeftItems, topRightItems, bottomLeftItems, bottomRightItems };
 }
@@ -101,6 +104,7 @@ export default function NavbarContent() {
             )}
             <NavbarColorModeToggle className={styles.colorModeToggle} />
             <NavbarItems items={bottomRightItems} />
+            <CustomConnectButton className={styles.walletConnectButton} />
           </>
         }
       />

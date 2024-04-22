@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import {
   useAccount,
-  useContractRead,
-  useContractWrite,
-  useNetwork,
-  useWaitForTransaction,
+  useReadContract,
+  useWriteContract,
+  useWaitForTransactionReceipt,
+  useBlockNumber,
 } from 'wagmi';
 
 import useNFTData from '../../utils/nft-exercise-data';
@@ -71,7 +71,14 @@ const directionsStyle = {
 };
 
 export default function CafeUnitTest({ nftNum }) {
-  const { isConnecting, isDisconnected } = useAccount();
+  const { isConnecting, isDisconnected, chain } = useAccount();
+  const {
+    data: testData,
+    write: testContract,
+    isPending: isTestLoading,
+    error: isTestError,
+    writeContract,
+  } = useWriteContract();
 
   const [messages, setMessages] = useState(['Submit your contract address.']);
   const [contractFormEntry, setContractFormEntry] = useState('');
@@ -80,47 +87,34 @@ export default function CafeUnitTest({ nftNum }) {
   const [fetchNFTStatus, setFetchNFTStatus] = useState(true);
 
   const nftData = useNFTData();
-  const { chain } = useNetwork();
 
   const nft = nftData[nftNum];
 
-  const { data: hasNFT } = useContractRead({
+  const { data: hasNFT, refetch } = useReadContract({
     address: nft.deployment.address,
     abi: nft.deployment.abi,
     functionName: 'owners',
     args: [useAccount()?.address],
-    watch: fetchNFTStatus,
-    onSettled(data) {
-      setHasPin(!!data);
-      setFetchNFTStatus(false);
-    },
   });
 
-  // Test Contract Function
-  const {
-    data: testData,
-    write: testContract,
-    isLoading: isTestLoading,
-    error: isTestError,
-  } = useContractWrite({
-    address: nft.deployment.address,
-    abi: nft.deployment.abi,
-    functionName: 'testContract',
-  });
+  const { data: blockNumber } = useBlockNumber({ watch: fetchNFTStatus });
 
-  const { data: testReceiptData, isLoading: isTestReceiptLoading } = useWaitForTransaction({
-    hash: testData?.hash,
+  useEffect(() => {
+    refetch();
+  }, [blockNumber]);
+
+  useEffect(() => {
+    setHasPin(!!hasNFT);
+    setFetchNFTStatus(false);
+  }, [hasNFT]);
+
+  const { data: testReceiptData, isLoading: isTestReceiptLoading } = useWaitForTransactionReceipt({
+    hash: testData,
   });
 
   function handleContractChange(event) {
     setContractFormEntry(event.target.value);
   }
-
-  useEffect(() => {
-    if (hasNFT != null) {
-      setHasPin(hasNFT);
-    }
-  }, [hasNFT]);
 
   useEffect(() => {
     if (isTestError) {
@@ -198,7 +192,12 @@ export default function CafeUnitTest({ nftNum }) {
     setSubmittedContract(contractFormEntry);
     setMessages(['Running tests...']);
 
-    await testContract({ args: [contractFormEntry] });
+    await writeContract({
+      abi: nft.deployment.abi,
+      address: nft.deployment.address,
+      functionName: 'testContract',
+      args: [contractFormEntry],
+    });
   }
 
   function renderTests() {

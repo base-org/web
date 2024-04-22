@@ -24,7 +24,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "17 min read"
     },
     "deploy-with-hardhat": {
@@ -52,7 +52,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "15 min read"
     },
     "deploy-with-remix": {
@@ -81,7 +81,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "18 min read"
     },
     "deploy-with-tenderly": {
@@ -111,7 +111,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "19 min read"
     },
     "deploy-with-thirdweb": {
@@ -144,7 +144,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "10 min read"
     },
     "run-a-base-node": {
@@ -171,7 +171,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "5 min read"
     },
     "build-with-thirdweb": {
@@ -203,7 +203,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "8 min read"
     },
     "account-abstraction-with-biconomy": {
@@ -229,7 +229,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "29 min read"
     },
     "account-abstraction-with-particle-network": {
@@ -254,7 +254,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "34 min read"
     },
     "account-abstraction-with-privy-and-base-paymaster": {
@@ -281,7 +281,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "46 min read"
     },
     "cross-chain-with-ccip": {
@@ -305,7 +305,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "32 min read"
     },
     "cross-chain-with-layerzero": {
@@ -329,7 +329,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "34 min read"
     },
     "complex-onchain-nfts": {
@@ -357,7 +357,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 11",
         "duration": "39 min read"
     },
     "oracles-chainlink-price-feeds": {
@@ -385,7 +385,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "11 min read"
     },
     "oracles-pyth-price-feeds": {
@@ -414,7 +414,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "13 min read"
     },
     "oracles-supra-vrf": {
@@ -451,7 +451,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "19 min read"
     },
     "farcaster-frames-deploy-to-vercel": {
@@ -473,7 +473,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 11",
         "duration": "9 min read"
     },
     "farcaster-frames-gating-and-redirects": {
@@ -492,7 +492,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 11",
         "duration": "12 min read"
     },
     "farcaster-frames-hyperframes": {
@@ -516,7 +516,7 @@
         "tags": [
             "frames"
         ],
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 11",
         "duration": "16 min read"
     },
     "farcaster-frames-nft-minting": {
@@ -540,7 +540,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "22 min read"
     },
     "farcaster-frames-nocode-minting": {
@@ -565,7 +565,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "7 min read"
     },
     "farcaster-frames-transactions": {
@@ -587,7 +587,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "17 min read"
     },
     "hardhat-debugging": {
@@ -609,7 +609,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "15 min read"
     },
     "hardhat-profiling-gas": {
@@ -634,7 +634,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "16 min read"
     },
     "hardhat-profiling-size": {
@@ -660,7 +660,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "22 min read"
     },
     "hardhat-test-coverage": {
@@ -686,7 +686,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "9 min read"
     },
     "intro-to-foundry-setup": {
@@ -707,7 +707,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "6 min read"
     },
     "intro-to-foundry-testing": {
@@ -730,7 +730,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "9 min read"
     },
     "intro-to-providers": {
@@ -779,7 +779,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 15",
         "duration": "20 min read"
     },
     "farcaster-cast-actions-simple": {
@@ -800,7 +800,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 17",
+        "last_updated": "Apr 11",
         "duration": "9 min read"
     }
 }
