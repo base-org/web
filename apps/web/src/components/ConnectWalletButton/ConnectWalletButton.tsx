@@ -1,6 +1,7 @@
 import { Button } from 'apps/web/src/components/Button/Button';
 
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 
 type ConnectWalletButtonProps = {
   color: 'white' | 'black';
@@ -36,39 +37,8 @@ export function ConnectWalletButton({ color }: ConnectWalletButtonProps) {
         }
 
         return (
-          <div style={{ display: 'flex', gap: 12 }}>
-            <button
-              onClick={openChainModal}
-              style={{ display: 'flex', alignItems: 'center' }}
-              type="button"
-            >
-              {chain.hasIcon && (
-                <div
-                  style={{
-                    background: chain.iconBackground,
-                    width: 12,
-                    height: 12,
-                    borderRadius: 999,
-                    overflow: 'hidden',
-                    marginRight: 4,
-                  }}
-                >
-                  {chain.iconUrl && (
-                    <img
-                      alt={chain.name ?? 'Chain icon'}
-                      src={chain.iconUrl}
-                      style={{ width: 12, height: 12 }}
-                    />
-                  )}
-                </div>
-              )}
-              {chain.name}
-            </button>
-
-            <button onClick={openAccountModal} type="button">
-              {account.displayName}
-              {account.displayBalance ? ` (${account.displayBalance})` : ''}
-            </button>
+          <div className="relative top-3 inline-block" onClick={openAccountModal} role="button">
+            <UserAvatar />
           </div>
         );
       }}

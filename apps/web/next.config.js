@@ -75,10 +75,18 @@ const contentSecurityPolicy = {
     sprigDomains,
     greenhouseDomains,
     'https://analytics-service-dev.cbhq.net',
+    'mainnet.base.org',
+    'https://cloudflare-eth.com',
+    'https://api.opensea.io', // enables getting ENS avatars
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
-  'img-src': ["'self'", 'data:', 'https://*.walletconnect.com/'], // WalletConnect,
+  'img-src': [
+    "'self'",
+    'data:',
+    'https://*.walletconnect.com/', // WalletConnect
+    'https://i.seadn.io/', // ens avatars
+  ],
 };
 
 const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [key, value]) => {
@@ -124,6 +132,14 @@ module.exports = extendBaseConfig({
   i18n: {
     locales: ['en'],
     defaultLocale: 'en',
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.seadn.io',
+      },
+    ],
   },
   async headers() {
     return [
