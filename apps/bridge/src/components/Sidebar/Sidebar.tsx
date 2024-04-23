@@ -30,7 +30,7 @@ export function Sidebar({ children }: SidebarProps) {
       <div className="flex h-screen w-60 flex-col border-r border-sidebar-border pl-6 pt-6 max-[700px]:hidden">
         <div className="grow">
           <div className="flex pb-14">
-            <Link href="/">
+            <Link href="/" aria-label="Base Bridge">
               <Logo color="white" />
             </Link>
           </div>
