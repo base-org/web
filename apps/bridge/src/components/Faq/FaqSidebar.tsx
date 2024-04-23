@@ -3,7 +3,7 @@ import { QuestionAccordion } from 'apps/bridge/src/components/Faq/QuestionAccord
 export function FaqSidebar() {
   return (
     <div className="flex h-full w-full flex-col p-4 font-sans lg:w-[420px] lg:border-l lg:border-sidebar-border">
-      <span className="mb-8 text-base font-medium text-stone-500">Frequently asked questions</span>
+      <span className="mb-8 text-base font-medium text-stone-400">Frequently asked questions</span>
 
       <QuestionAccordion
         question="What is Base Bridge?"

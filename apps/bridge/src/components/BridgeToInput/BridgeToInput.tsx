@@ -29,6 +29,7 @@ export function BridgeToInput({ bridgeTo, setBridgeTo, action }: BridgeToInputPr
         placeholder="Wallet address"
         value={bridgeTo}
         onChange={handleChangeBridgeTo}
+        aria-label="Wallet address"
       />
     </div>
   );
