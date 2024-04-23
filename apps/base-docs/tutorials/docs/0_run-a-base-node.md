@@ -125,7 +125,7 @@ wget https://mainnet-full-snapshots.base.org/$(curl https://mainnet-full-snapsho
 **Mainnet (Archive)**
 
 ```
-wget https://base-mainnet-archive-snapshots.s3.us-east-1.amazonaws.com/$(curl https://base-mainnet-archive-snapshots.s3.us-east-1.amazonaws.com/latest)
+wget https://sepolia-archive-snapshots.base.org/$(curl https://sepolia-archive-snapshots.base.org/latest)
 ```
 
 You'll then need to untar the downloaded snapshot and place the `geth` subfolder inside of it in the `geth-data` folder you created (unless you changed the location of your data directory).
