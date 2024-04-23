@@ -67,6 +67,8 @@ To simplify the verification of your contract on a blockchain explorer like Base
 
 2. **Modular Deployment**: Alternatively, you can deploy each imported contract separately and then reference them in your main contract via their deployed addresses. This approach maintains the modularity and readability of your code. Each contract is deployed and verified independently, which can facilitate easier updates and reusability.
 
+3. **Use Desktop Tools**: Forge and Hardhat both have tools to write scripts that both deploy and verify your contracts.
+
 :::
 
 :::info
