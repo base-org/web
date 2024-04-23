@@ -79,6 +79,8 @@ const contentSecurityPolicy = {
     'https://cloudflare-eth.com',
     'https://i.seadn.io/', // ens avatars
     'https://api.opensea.io', // enables getting ENS avatars
+    isLocalDevelopment ? 'ws://localhost:3000/' : '',
+    isLocalDevelopment ? 'http://localhost:3000/' : '',
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
@@ -130,6 +132,7 @@ const securityHeaders = [
 ];
 
 module.exports = extendBaseConfig({
+  transpilePackages: ['base-ui'],
   i18n: {
     locales: ['en'],
     defaultLocale: 'en',

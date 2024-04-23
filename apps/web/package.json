@@ -19,6 +19,7 @@
     "@sprig-technologies/sprig-browser": "^2.26.6",
     "@tanstack/react-query": "^5.29.2",
     "@vercel/kv": "^1.0.1",
+    "base-ui": "0.1.1",
     "ethers": "5.7.2",
     "framer-motion": "^8.5.5",
     "next": "^13.1.5",

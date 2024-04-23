@@ -310,6 +310,7 @@ __metadata:
     "@types/node": 18.11.18
     "@vercel/kv": ^1.0.1
     autoprefixer: ^10.4.13
+    base-ui: 0.1.1
     csv-parser: ^3.0.0
     dotenv: ^16.0.3
     eslint-config-next: ^13.1.6
@@ -9894,7 +9895,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"base-ui@workspace:libs/base-ui":
+"base-ui@0.1.1, base-ui@workspace:libs/base-ui":
   version: 0.0.0-use.local
   resolution: "base-ui@workspace:libs/base-ui"
   dependencies:
