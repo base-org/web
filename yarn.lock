@@ -308,6 +308,7 @@ __metadata:
     "@sprig-technologies/sprig-browser": ^2.26.6
     "@tanstack/react-query": ^5.29.2
     "@types/node": 18.11.18
+    "@types/react-copy-to-clipboard": ^5.0.7
     "@vercel/kv": ^1.0.1
     autoprefixer: ^10.4.13
     base-ui: 0.1.1
@@ -322,6 +323,7 @@ __metadata:
     prettier-plugin-tailwindcss: ^0.2.5
     react: ^18.2.0
     react-blockies: ^1.4.1
+    react-copy-to-clipboard: ^5.1.0
     react-dom: ^18.2.0
     react-intl: ^6.2.1
     tailwindcss: ^3.2.4
@@ -7222,6 +7224,15 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: 0c2ee01bec5f9d4c9e2298e620ea325376124b183c7b0fd57a3f73bfa8d29a7f044fa5a885e91211e537f5c2d2ca1475b05d43c6d299145ef3599103adb1a04e
+  languageName: node
+  linkType: hard
+
+"@types/react-copy-to-clipboard@npm:^5.0.7":
+  version: 5.0.7
+  resolution: "@types/react-copy-to-clipboard@npm:5.0.7"
+  dependencies:
+    "@types/react": "*"
+  checksum: adc2970c8756e648daa06e294c422df3dc076a784344ab2ecb78a17ebd7e8e3dfd7f31e68c24267de4815cdeec573a743d952a308b45b8380f6b7912a9a8b911
   languageName: node
   linkType: hard
 

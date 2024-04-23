@@ -25,6 +25,7 @@
     "next": "^13.1.5",
     "react": "^18.2.0",
     "react-blockies": "^1.4.1",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
     "react-intl": "^6.2.1",
     "uuidv4": "^6.2.13",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@types/node": "18.11.18",
+    "@types/react-copy-to-clipboard": "^5.0.7",
     "autoprefixer": "^10.4.13",
     "csv-parser": "^3.0.0",
     "dotenv": "^16.0.3",
