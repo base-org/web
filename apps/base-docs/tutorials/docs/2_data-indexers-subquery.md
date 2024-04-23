@@ -2,7 +2,7 @@
 title: 'Indexing Data with SubQuery'
 slug: /subquery
 description: A tutorial explaining SubQuery and providing swift guidance on configuring a project
-author: subquery
+author: data-indexers-subquery
 keywords:
   [
     indexers,
@@ -21,20 +21,22 @@ keywords:
     smart contracts,
     blockchain API
   ]
-tags: ['smart contracts', 'api']
+tags: ['smart contracts', 'data indexing']
 difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
+This tutorial will guide you through the process of configuring a SubQuery indexer for Base.
+
+---
+
 ## Objectives
 
-- Present the concept of indexers
-- Begin effectively with all types of SubQuery indexer configuration files
-- Successfully build your project
-- Efficiently retrieve data from indexed sources
+- Introduce the concept of indexers
+- Configure SubQuery indexers to efficiently retrieve data from a smart contract
 
-The goal is to index the all the claims from the [Bridge to Base NFT contract](https://basescan.org/token/0xEa2a41c02fA86A4901826615F9796e603C6a4491) on [Base Mainnet](https://docs.base.org/using-base/).
+The goal is to index the all the claims from the [Bridge to Base NFT contract][1] on [Base Mainnet](https://docs.base.org/using-base/).
 
 ---
 
@@ -54,11 +56,11 @@ The contents presented in this tutorial were discussed previously during the wor
 
 Indexers, in a broad context, play a fundamental role in organising and optimising data retrieval within various systems. These tools act as navigational aids, allowing efficient access to specific information by creating structured indexes. 
 
-In the context of blockchain and dApps, indexers go beyond traditional databases, facilitating streamlined access to on-chain data. This includes transaction histories, smart contract states, and event logs.
+In the context of blockchain and onchain apps, indexers go beyond traditional databases, facilitating streamlined access to onchain data. This includes transaction histories, smart contract states, and event logs.
 
 ## Setup
 
-In this chapter, we will delve into the intricacies of SubQuery indexer configuration. The chapter is subdivided into sections dedicated to each specific file type, all of which require configuration.
+In this chapter, you will delve into the intricacies of SubQuery indexer configuration. The chapter is subdivided into sections dedicated to each specific file type, all of which require configuration.
 
 ### Your Project Manifest File
 
@@ -68,7 +70,7 @@ The Project Manifest file is an entry point to your project. It defines most of 
 - _Transaction Handlers_: On each and every transaction that matches optional filter criteria, run a mapping function
 - _Log Handers_: On each and every log that matches optional filter criteria, run a mapping function
 
-As we are indexing all user claims from the Bridge to Base NFT contract, the first step is to import the contract abi definition which can be obtained from [here](https://basescan.org/token/0xEa2a41c02fA86A4901826615F9796e603C6a4491#code). Copy the entire contract ABI and save it as a file called `erc721base.abi.json` in the `/abis` directory.
+As you are indexing all user claims from the Bridge to Base NFT contract, the first step is to import the contract ABI definition which can be obtained from [here](https://basescan.org/token/0xEa2a41c02fA86A4901826615F9796e603C6a4491#code). Copy the entire contract ABI and save it as a file called `erc721base.abi.json` in the `/abis` directory.
 
 Update the `datasources` section as follows:
 
@@ -108,13 +110,13 @@ Update the `datasources` section as follows:
 }
 ```
 
-The above code indicates that you will be running a `handleNftClaim` mapping function whenever there is a `TokensClaimed` event being logged on any transaction from the [Bridge to Base NFT contract](https://basescan.org/token/0xEa2a41c02fA86A4901826615F9796e603C6a4491).
+The above code indicates that you will be running a `handleNftClaim` mapping function whenever there is a `TokensClaimed` event being logged on any transaction from the [Bridge to Base NFT contract][1]. 
 
 ### Update Your GraphQL Schema File
 
 The `schema.graphql` file determines the shape of your data from SubQuery due to the mechanism of the GraphQL query language. Hence, updating the GraphQL Schema file is the perfect place to start. It allows you to define your end goal right at the start.
 
-Remove all existing entities and update the `schema.graphql` file as follows. Here you can see we are indexing block information such as the id, blockHeight, claimer and claim receiver along with an aggregation of the total quantity of NFTs claimed per day.
+Remove all existing entities and update the `schema.graphql` file as follows. Here you can see you are indexing block information such as the id, blockHeight, claimer and claim receiver along with an aggregation of the total quantity of NFTs claimed per day.
 
 ```graphql
 type Claim @entity {
@@ -153,7 +155,7 @@ import { TokensClaimedLog } from "../types/abi-interfaces/Erc721baseAbi";
 
 ### Adding a Mapping Function
 
-Mapping functions define how blockchain data is transformed into the optimised GraphQL entities that we previously defined in the `schema.graphql` file.
+Mapping functions define how blockchain data is transformed into the optimised GraphQL entities that you previously defined in the `schema.graphql` file.
 
 Navigate to the default mapping function in the `src/mappings` directory. You will be able to see two exported functions `handleNftClaim` and `handleDailyAggregation`:
 
@@ -200,7 +202,7 @@ export async function handleDailyAggregation(
 }
 ```
 
-The `handleNftClaim` function receives a `log` parameter of type `TokensClaimedLog` which includes log data in the payload. We extract this data and then save this to the store using the `.save()` function (_Note that SubQuery will automatically save this to the database_).
+The `handleNftClaim` function receives a `log` parameter of type `TokensClaimedLog` which includes log data in the payload. You extract this data and then save this to the store using the `.save()` function (_Note that SubQuery will automatically save this to the database_).
 
 
 ### Build
@@ -241,9 +243,9 @@ Next, let's query our project. Follow these three simple steps to query your Sub
 
 1. Open your browser and head to `http://localhost:3000`.
 
-2. You will see a GraphQL playground in the browser and the schemas which are ready to query.
+1. You will see a GraphQL playground in the browser and the schemas which are ready to query.
 
-3. Find the _Docs_ tab on the right side of the playground which should open a documentation drawer. This documentation is automatically generated and it helps you find what entities and methods you can query.
+1. Find the _Docs_ tab on the right side of the playground which should open a documentation drawer. This documentation is automatically generated and it helps you find what entities and methods you can query.
 
 Try the following queries to understand how it works for your new SubQuery starter project. Don’t forget to learn more about the [GraphQL Query language](../../run_publish/query/graphql.md).
 
@@ -355,10 +357,17 @@ Several Base example projects have already been developed. You can access the li
 SubQuery is open-source, meaning you have the freedom to run it in the following three ways:
 
 - Locally on your own computer (or a cloud provider of your choosing), [view the instructions on how to run SubQuery Locally](https://academy.subquery.network/run_publish/run.html)
-- By publishing it to our enterprise-level [Managed Service](https://managedservice.subquery.network), where we'll host your SubQuery project in production ready services for mission critical data with zero-downtime blue/green deployments. We even have a generous free tier. [Find out how](https://academy.subquery.network/run_publish/publish.html)
+- By publishing it to our enterprise-level [Managed Service](https://managedservice.subquery.network), where you'll host your SubQuery project in production ready services for mission critical data with zero-downtime blue/green deployments. We even have a generous free tier. [Find out how](https://academy.subquery.network/run_publish/publish.html)
 - By publishing it to the decentralised [SubQuery Network](https://subquery.network/network), the most open, performant, reliable, and scalable data service for dApp developers. The SubQuery Network indexes and services data to the global community in an incentivised and verifiable way
 
 ### Need Help?
 
 The fastest way to get support is by [searching our documentation](https://academy.subquery.network), or by [joining our discord](https://discord.com/invite/subquery) and messaging us in the `#technical-support` channel.
 
+## Conclusion
+
+In conclusion, this tutorial has provided a comprehensive introduction to the concept of indexers and their crucial role in efficiently retrieving data from a smart contract using SubQuery. By understanding the fundamentals of indexers, developers can optimise their querying processes, enhance performance, and streamline data retrieval operations within their dApps.
+
+## References
+
+[1]: https://basescan.org/token/0xEa2a41c02fA86A4901826615F9796e603C6a4491
