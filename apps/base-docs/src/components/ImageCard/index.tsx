@@ -15,11 +15,11 @@ function ImageCard({ src, title, description, buttonText, buttonHref }: ImageCar
   return (
     <div className={styles.imageCard}>
       <div className={styles.imageCardImageContainer}>
-        <img src={src} alt={title} />
+        <img src={src} alt="" />
       </div>
       <div className={styles.imageCardContent}>
         <div>
-          <h3 className={styles.imageCardTitle}>{title}</h3>
+          <h4 className={styles.imageCardTitle}>{title}</h4>
           <p className={styles.imageCardDescription}>{description}</p>
         </div>
         <a href={buttonHref} className={styles.imageCardButton}>

@@ -15,12 +15,16 @@ type FooterCategoryProps = {
 function FooterCategory({ title, links }: FooterCategoryProps) {
   return (
     <div className={styles.footerCategory}>
-      <div className={styles.footerCategoryTitle}>{title}</div>
-      {links.map((link) => (
-        <a key={link.title} href={link.href} className={styles.footerCategoryLink}>
-          {link.title}
-        </a>
-      ))}
+      <h4 className={styles.footerCategoryTitle}>{title}</h4>
+      <ul className={styles.footerCategoryList}>
+        {links.map((link) => (
+          <li className={styles.footerCategoryListItem}>
+            <a key={link.title} href={link.href} className={styles.footerCategoryLink}>
+              {link.title}
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
