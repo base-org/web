@@ -25,6 +25,13 @@ Create a contract called `WeightedVoting`. Add the following:
   - A string `issueDesc`
   - Storage for the number of `votesFor`, `votesAgainst`, `votesAbstain`, `totalVotes`, and `quorum`
   - Bools storing if the issue is `passed` and `closed`
+
+:::caution
+
+The unit tests require this `struct` to be constructed with the variables in the order above.
+
+:::
+
 - An array of `Issue`s called `issues`
 - An `enum` for `Vote` containing:
   - `AGAINST`
