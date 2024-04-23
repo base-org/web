@@ -2,7 +2,7 @@
 title: Running a Base Node
 slug: /run-a-base-node
 description: A tutorial that teaches how to set up and run a Base Node.
-author: taycaldwell
+author: taycaldwell & wbnns
 keywords:
   [
     Base Node setup,
@@ -100,32 +100,46 @@ Syncing your node may take **days** and will consume a vast amount of your reque
 
 If you're a prospective or current Base Node operator and would like to restore from a snapshot to save time on the initial sync, it's possible to always get the latest available snapshot of the Base chain on mainnet and/or testnet by using the following CLI commands. The snapshots are updated every week.
 
-#### Full
-**Mainnet**
+#### Restoring from snapshot
 
-```
-wget https://mainnet-full-snapshots.base.org/$(curl https://mainnet-full-snapshots.base.org/latest)
-```
+In the home directory of your Base Node, create a folder named `geth-data`. If you already have this folder, remove it to clear the existing state and then recreate it. Next, run the following code and wait for the operation to complete.
 
-**Testnet (Sepolia)**
+**Testnet (Full)**
 
 ```
 wget https://sepolia-full-snapshots.base.org/$(curl https://sepolia-full-snapshots.base.org/latest)
 ```
 
-#### Archive
+**Testnet (Archive)**
 
-**Mainnet**
+```
+wget https://sepolia-archive-snapshots.base.org/$(curl https://sepolia-archive-snapshots.base.org/latest)
+```
+
+**Mainnet (Full)**
+
+```
+wget https://mainnet-full-snapshots.base.org/$(curl https://mainnet-full-snapshots.base.org/latest)
+```
+
+**Mainnet (Archive)**
 
 ```
 wget https://mainnet-archive-snapshots.base.org/$(curl https://mainnet-archive-snapshots.base.org/latest)
 ```
 
-**Testnet (Sepolia)**
+You'll then need to untar the downloaded snapshot and place the `geth` subfolder inside of it in the `geth-data` folder you created (unless you changed the location of your data directory).
+
+Return to the root of your Base node folder and start your node.
 
 ```
-wget https://sepolia-archive-snapshots.base.org/$(curl https://sepolia-archive-snapshots.base.org/latest)
+cd ..
+docker compose up --build
 ```
+
+Your node should begin syncing from the last block in the snapshot.
+
+Check the latest block to make sure you're syncing from the snapshot and that it restored correctly. If so, you can remove the snapshot archive that you downloaded.
 
 ### Syncing
 
