@@ -2,6 +2,7 @@ import { Button } from 'apps/web/src/components/Button/Button';
 
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
+import { UserAddress } from 'apps/web/src/components/ConnectWalletButton/UserAddress';
 
 type ConnectWalletButtonProps = {
   color: 'white' | 'black';
@@ -23,7 +24,7 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
 
         if (!connected) {
           return (
-            <Button variant={colorVariant[color]} onClick={openConnectModal}>
+            <Button variant={colorVariant[color]} onClick={openConnectModal} className="w-full">
               Connect
             </Button>
           );
@@ -38,14 +39,17 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
         }
 
         return (
-          <button
-            className={`cursor-pointer ${className}`}
-            onClick={openAccountModal}
-            onKeyUp={openAccountModal}
-            type="button"
-          >
-            <UserAvatar />
-          </button>
+          <div className="flex gap-6 border-b border-t border-solid border-translucent-200 pb-4 pt-4">
+            <button
+              className={`cursor-pointer ${className}`}
+              onClick={openAccountModal}
+              onKeyUp={openAccountModal}
+              type="button"
+            >
+              <UserAvatar />
+            </button>
+            <UserAddress />
+          </div>
         );
       }}
     </ConnectButton.Custom>

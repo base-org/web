@@ -8,12 +8,7 @@ import { Icon } from '../../Icon/Icon';
 import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
 import { ConnectWalletButton } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 
-const REVERSE_COLOR: Record<'white' | 'black', 'white' | 'black'> = {
-  white: 'black',
-  black: 'white',
-};
-
-const reverseTextColor = (color: 'white' | 'black') => `text-${REVERSE_COLOR[color]}`;
+import { REVERSE_COLOR, reverseTextColor } from 'apps/web/src/utils/colors';
 
 // Dropdown Link
 type DropdownLinkProps = {
@@ -212,7 +207,7 @@ function DesktopNav({ color }: DesktopNavProps) {
           />
         </Dropdown>
 
-        <ConnectWalletButton color={color} />
+        <ConnectWalletButton color={color} className="relative top-3 inline-block" />
       </div>
     </div>
   );

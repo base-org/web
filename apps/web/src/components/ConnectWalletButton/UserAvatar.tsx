@@ -2,7 +2,11 @@ import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
 import Image from 'next/image';
 import { mainnet } from 'wagmi/chains';
 
-export function UserAvatar() {
+type UserAvatarProps = {
+  size?: number;
+};
+
+export function UserAvatar({ size = 40 }: UserAvatarProps) {
   const { address } = useAccount();
   const { data: ensName } = useEnsName({
     address,
@@ -18,5 +22,5 @@ export function UserAvatar() {
 
   const avatar = ensAvatar ?? '/icons/default-avatar.svg';
 
-  return <Image src={avatar} className="rounded-full" width="40" height={40} alt="Avatar" />;
+  return <Image src={avatar} className="rounded-full" width={size} height={size} alt="Avatar" />;
 }
