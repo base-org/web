@@ -3,7 +3,7 @@ import { Button } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Link from 'next/link';
 
-const url = 'https://base.org/builder-nft';
+const url = 'https://base.org/builder-anniversary-nft';
 const shareText = encodeURIComponent(
   `I just minted the Base Quest Mainnet Anniversary NFT by @andreoshea on ${url}`,
 );
