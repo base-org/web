@@ -1,3 +1,4 @@
+import { MintedSocialShare } from 'apps/web/src/components/BuilderNft/MintedSocialShare';
 import { MintStatus } from './useMintState';
 import { DisconnectButton } from 'apps/web/src/components/BuilderNft/DisconnectButton';
 
@@ -38,7 +39,6 @@ export const SubHeadingForStatus: Record<MintStatus, string> = {
   disconnected: DEFAULT_SUBHEADING,
   minting: 'Please wait a moment...',
   minted: '',
-  // TODO: handle errors
   'mint-error': 'Please try again!',
 };
 const DEFAULT_CONTENT =
@@ -64,9 +64,7 @@ export const ContentForStatus: Record<MintStatus, JSX.Element | string> = {
   eligible: DEFAULT_CONTENT,
   disconnected: DEFAULT_CONTENT,
   minting: '',
-  // Todo: social share and basescan link
-  minted: 'Minted!',
-  // TODO: handle errors
+  minted: '',
   'mint-error': '',
 };
 
@@ -75,7 +73,7 @@ export const CTAForStatus: Record<MintStatus, JSX.Element | null> = {
   'loading-proof': null,
   eligible: null,
   disconnected: null,
-  minted: null,
+  minted: <MintedSocialShare />,
   minting: null,
   'mint-error': null,
 };
