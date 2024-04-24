@@ -3,23 +3,138 @@ import Image from 'next/image';
 
 import nftPreview from 'apps/web/public/images/builderNft/nftPreview.webp';
 import { Button } from 'apps/web/src/components/Button/Button';
+import { useAccount } from 'wagmi';
+import { useConnectModal } from '@rainbow-me/rainbowkit';
+import { useQuery } from '@tanstack/react-query';
+
+type MintStatus = 'disconnected' | 'loading-proof' | 'not-eligible' | 'eligible';
+
+class HttpError extends Error {
+  public status: number;
+
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+  }
+}
+
+function useMintState(): { status: MintStatus } {
+  const { status, address } = useAccount();
+
+  const proofQuery = useQuery({
+    queryKey: ['proof', address],
+    retry: (failureCount: number, error: HttpError) => failureCount < 3 && error.status !== 404,
+    queryFn: async () => {
+      const response = await fetch(`/api/checkNftProof`, {
+        method: 'POST',
+        body: JSON.stringify({ address }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new HttpError(response.status, 'Proof lookup failed');
+      }
+
+      return response.json();
+    },
+    enabled: status === 'connected',
+  });
+
+  console.log(proofQuery);
+
+  if (status !== 'connected') {
+    return {
+      status: 'disconnected',
+    };
+  }
+
+  if (proofQuery.isLoading) {
+    return {
+      status: 'loading-proof',
+    };
+  }
+
+  if (proofQuery.isError) {
+    return {
+      status: 'not-eligible',
+    };
+  }
+
+  return { status: 'eligible' };
+}
+
+function MintButton({ status }: { status: MintStatus }) {
+  const { openConnectModal } = useConnectModal();
+  console.log({ status });
+
+  if (status === 'disconnected') {
+    return (
+      <Button variant="primary" className="w-fit" onClick={openConnectModal}>
+        Connect Wallet
+      </Button>
+    );
+  }
+
+  if (status === 'loading-proof') {
+    return (
+      <Button variant="primary" className="w-fit">
+        Checking eligibility...
+      </Button>
+    );
+  }
+
+  if (status === 'not-eligible') {
+    return (
+      <Button variant="primary" className="w-fit" disabled>
+        Wallet not eligible
+      </Button>
+    );
+  }
+
+  return (
+    <Button variant="primary" className="w-fit">
+      Mint
+    </Button>
+  );
+}
+
+const DEFAULT_HEADING = 'It&apos;s here! Claim your Base Builder Mainnet NFT';
+
+const HeadingForStatus: Record<MintStatus, string> = {
+  'not-eligible': 'This wallet is ineligible for this NFT',
+  'loading-proof': 'Checking eligibility...',
+  eligible: DEFAULT_HEADING,
+  disconnected: DEFAULT_HEADING,
+};
+
+const DEFAULT_SUBHEADING = 'A special thank you from us for being an early builder on Base.';
+
+const SubHeadingForStatus: Record<MintStatus, string> = {
+  'not-eligible':
+    'Only builders who completed last year’s onchain quest are eligible to claim the mainnet NFT.',
+  'loading-proof': 'Please wait a moment...',
+  eligible: DEFAULT_SUBHEADING,
+  disconnected: DEFAULT_SUBHEADING,
+};
 
 function BuilderNftHero() {
+  const { status } = useMintState();
+
   return (
     <div className="mt-[-96px] flex w-full flex-col items-center bg-black pb-[96px]">
       <div className="flex w-full max-w-[1440px] flex-col justify-center px-8 py-8 pt-48 md:flex-row md:gap-32">
         <div className="flex w-full flex-col gap-8 md:w-1/2">
           <h1 className="font-display text-3xl text-white md:text-5xl lg:text-6xl">
-            It’s here! Claim your Base Builder Mainnet NFT
+            {HeadingForStatus[status]}
           </h1>
-          <p className="font-display text-lg text-white">
-            A special thank you from us for being an early builder on Base.
-          </p>
+          <p className="font-display text-lg text-white">{SubHeadingForStatus[status]}</p>
           <p className="text-md font-display text-white">
-            By completing last year's onchain quest, your skills and vision helped push the
-            boundaries of what's possible onchain. This NFT, designed by digital artist Andre Oshea,
-            commemorates the momentum we’ve built together and the creativity that builders bring to
-            Base. There’s so much more to come.
+            By completing last year&apos;s onchain quest, your skills and vision helped push the
+            boundaries of what&apos;s possible onchain. This NFT, designed by digital artist Andre
+            Oshea, commemorates the momentum we&apos;ve built together and the creativity that
+            builders bring to Base. There&apos;s so much more to come.
           </p>
         </div>
         <div className="flex w-full flex-col gap-8 md:w-1/2 md:justify-end">
@@ -33,9 +148,7 @@ function BuilderNftHero() {
               </span>
               <span className="text-white">Andre Oshea</span>
             </div>
-            <Button variant="primary" className="w-32">
-              Mint
-            </Button>
+            <MintButton status={status} />
           </div>
         </div>
       </div>

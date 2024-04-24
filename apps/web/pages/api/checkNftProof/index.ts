@@ -10,17 +10,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.status(405).json({ error: 'method not allowed' });
     return;
   }
-  const { address } = JSON.parse(req.body as string) as RequestBody;
+  const { address } = req.body as RequestBody;
 
-  const val = await kv.get<string>(`proof:${address}`);
-  if (!val) {
-    return res.status(404).json({ error: 'address is not eligible for the nft' });
-  }
-
-  const proof = JSON.parse(val) as string[];
+  const proof = await kv.get<string[]>(`proof:${address}`);
 
   if (proof) {
-    res.status(200).json({ result: proof });
-  } else {
+    return res.status(200).json({ result: proof });
   }
+
+  return res.status(404).json({ error: 'address is not eligible for the nft' });
 }
