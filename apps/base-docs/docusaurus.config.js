@@ -163,7 +163,7 @@ const config = {
     ...baseConfig.themeConfig,
     navbar: {
       logo: {
-        alt: PRODUCT_NAME,
+        alt: `${PRODUCT_NAME} Docs`,
         src: 'img/logo.svg',
         srcDark: 'img/logo_dark.svg',
       },
@@ -171,23 +171,23 @@ const config = {
         {
           to: '/',
           exact: true,
-          navPosition: 'bottomLeft',
+          navposition: 'bottomLeft',
           label: 'Home',
         },
         {
           type: 'doc',
           docId: 'overview',
-          navPosition: 'bottomLeft',
+          navposition: 'bottomLeft',
           label: 'Docs',
         },
         {
           to: '/tutorials',
-          navPosition: 'bottomLeft',
+          navposition: 'bottomLeft',
           label: 'Tutorials',
         },
         {
           to: '/base-camp/docs/welcome',
-          navPosition: 'bottomLeft',
+          navposition: 'bottomLeft',
           label: 'Camp',
           items: [
             {
@@ -207,7 +207,7 @@ const config = {
         {
           type: 'dropdown',
           label: 'Ecosystem',
-          navPosition: 'topRight',
+          navposition: 'topRight',
           items: [
             {
               label: 'Apps',
@@ -221,13 +221,13 @@ const config = {
         },
         {
           label: 'Bridge',
-          navPosition: 'topRight',
+          navposition: 'topRight',
           href: 'https://bridge.base.org/',
         },
         {
           type: 'dropdown',
           label: 'Builders',
-          navPosition: 'topRight',
+          navposition: 'topRight',
           items: [
             {
               label: 'Block Explorer',
@@ -246,7 +246,7 @@ const config = {
         {
           type: 'dropdown',
           label: 'About',
-          navPosition: 'topRight',
+          navposition: 'topRight',
           items: [
             {
               label: 'Mission',
@@ -265,7 +265,7 @@ const config = {
         // Langauge selection dropdown will be supported in the future
         // {
         //   type: 'localeDropdown',
-        //   navPosition: 'bottomRight',
+        //   navposition: 'bottomRight',
         // },
       ],
     },

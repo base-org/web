@@ -3,6 +3,10 @@ const { BugsnagSourceMapUploaderPlugin } = require('webpack-bugsnag-plugins');
 const isProdEnv = process.env.NODE_ENV === 'production';
 
 const baseConfig = {
+  i18n: {
+    locales: ['en-US'],
+    defaultLocale: 'en-US',
+  },
   // Enable advanced features
   compiler: {
     reactRemoveProperties: true,

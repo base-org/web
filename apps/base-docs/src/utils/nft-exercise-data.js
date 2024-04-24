@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { useNetwork } from 'wagmi';
+import { useAccount } from 'wagmi';
 import arraysGoerli from '../../base-camp/assets/deployments/base-goerli/ArraysUT.json';
 import basicMathGoerli from '../../base-camp/assets/deployments/base-goerli/BasicMathUnitTest.json';
 import controlStructuresGoerli from '../../base-camp/assets/deployments/base-goerli/ControlStructuresUT.json';
@@ -144,7 +144,7 @@ const baseSepoliaDeployments = {
 };
 
 function useNFTData() {
-  const { chain } = useNetwork();
+  const { chain } = useAccount();
 
   // Map the correct deployment based on the chain
   let deployments = {};
@@ -156,7 +156,9 @@ function useNFTData() {
       deployments = baseSepoliaDeployments;
       break;
     default:
-      throw new Error(`Unsupported network (Chain ID: ${chain?.id}). Please connect to Base Sepolia.`);
+      throw new Error(
+        `Unsupported network (Chain ID: ${chain?.id}). Please connect to Base Sepolia.`,
+      );
       break;
   }
 

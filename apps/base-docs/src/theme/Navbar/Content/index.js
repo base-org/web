@@ -10,6 +10,7 @@ import NavbarSearch from '@theme/Navbar/Search';
 import styles from './styles.module.css';
 
 import Icon from '../../../components/Icon';
+import { CustomConnectButton } from '../../NavbarItem/ComponentTypes';
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
@@ -44,13 +45,28 @@ function NavbarLayoutTopContent({ left, right }) {
       <div className="navbar__items navbar__items--right">
         {right}
         <div className="navbar__social__links">
-          <a href="https://discord.com/invite/buildonbase" target="_blank" rel="noreferrer">
+          <a
+            href="https://discord.com/invite/buildonbase"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Base on Discord"
+          >
             <Icon name="discord" />
           </a>
-          <a href="https://www.twitter.com/base" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.twitter.com/base"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Base on Twitter"
+          >
             <Icon name="twitter" />
           </a>
-          <a href="https://www.github.com/base-org" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.github.com/base-org"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Base on Github"
+          >
             <Icon name="github" />
           </a>
         </div>
@@ -62,16 +78,18 @@ function NavbarLayoutBottomContent({ left, right }) {
   return (
     <div className="navbar__inner">
       <div className="navbar__items">{left}</div>
-      <div className="navbar__items navbar__items--right">{right}</div>
+      <div className="navbar__items navbar__items--right" style={{ gap: '24px' }}>
+        {right}
+      </div>
     </div>
   );
 }
 
 function splitNavbarItems(items) {
-  const topLeftItems = items.filter((item) => item.navPosition === 'topLeft');
-  const topRightItems = items.filter((item) => item.navPosition === 'topRight');
-  const bottomRightItems = items.filter((item) => item.navPosition === 'bottomRight');
-  const bottomLeftItems = items.filter((item) => item.navPosition === 'bottomLeft');
+  const topLeftItems = items.filter((item) => item.navposition === 'topLeft');
+  const topRightItems = items.filter((item) => item.navposition === 'topRight');
+  const bottomRightItems = items.filter((item) => item.navposition === 'bottomRight');
+  const bottomLeftItems = items.filter((item) => item.navposition === 'bottomLeft');
 
   return { topLeftItems, topRightItems, bottomLeftItems, bottomRightItems };
 }
@@ -101,6 +119,7 @@ export default function NavbarContent() {
             )}
             <NavbarColorModeToggle className={styles.colorModeToggle} />
             <NavbarItems items={bottomRightItems} />
+            <CustomConnectButton className={styles.walletConnectButton} />
           </>
         }
       />

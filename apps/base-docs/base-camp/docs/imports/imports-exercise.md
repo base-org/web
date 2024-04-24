@@ -51,7 +51,7 @@ Remember, the compiler will automatically create a getter for `public` `struct`s
 
 ### Shruggie Haiku
 
-`shruggieHaiku` should use the library to add 🤷 to the end of `line3`. It must **not** modify the original haiku.
+`shruggieHaiku` should use the library to add 🤷 to the end of `line3`. It must **not** modify the original haiku. It should return the modified `Haiku`.
 
 ---
 
@@ -66,6 +66,8 @@ To simplify the verification of your contract on a blockchain explorer like Base
 1. **Flattening**: This method involves combining your main contract and all of its imported dependencies into a single file. This makes it easier for explorers to verify the code since they only have to process one file.
 
 2. **Modular Deployment**: Alternatively, you can deploy each imported contract separately and then reference them in your main contract via their deployed addresses. This approach maintains the modularity and readability of your code. Each contract is deployed and verified independently, which can facilitate easier updates and reusability.
+
+3. **Use Desktop Tools**: Forge and Hardhat both have tools to write scripts that both deploy and verify your contracts.
 
 :::
 

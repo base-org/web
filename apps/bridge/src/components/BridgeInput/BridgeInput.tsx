@@ -121,7 +121,7 @@ export function BridgeInput({
       <div className="mb-4 flex flex-row items-center">
         <div className="flex flex-row items-center justify-center text-white">
           <div>
-            <Image src={inputChain?.svg} width={32} height={32} alt={inputChain?.name} />
+            <Image src={inputChain?.svg} width={32} height={32} alt={`${inputChain?.name} logo`} />
           </div>
           <div className="ml-3 flex flex-col font-sans">
             <div className="text-md text-white">From</div>
@@ -131,7 +131,7 @@ export function BridgeInput({
         <ArrowRightIcon className="ml-3 mr-3 h-4 w-4 text-white" />
         <div className="flex flex-row items-center justify-center text-white">
           <div>
-            <Image src={outputChain?.svg} width={32} height={32} alt={outputChain?.name} />
+            <Image src={outputChain?.svg} width={32} height={32} alt={`${outputChain?.name} logo`}/>
           </div>
           <div className="ml-3 flex flex-col font-sans">
             <div className="text-md text-white">To</div>
@@ -168,6 +168,7 @@ export function BridgeInput({
           min="0"
           value={amount}
           onChange={handleChangeAmount}
+          aria-label={`Amount to ${isWithdraw ? "withdraw": "deposit"}`}
         />
         <div className="relative flex flex-row">
           <AssetList
@@ -183,14 +184,14 @@ export function BridgeInput({
         </div>
       </div>
       {error && (
-        <div className="flex flex-row space-x-0.5 text-sm text-stone-600">
+        <div className="flex flex-row space-x-0.5 text-sm text-stone-400">
           <span className="text-md font-sans text-red-600">{error}</span>
         </div>
       )}
       <div className="mt-6 flex flex-row items-center justify-between">
         <div className="flex flex-col space-x-0.5">
           <span className="text-md font-sans text-white">{conversionRate} USD</span>
-          <span className="text-md font-sans text-stone-600">
+          <span className="text-md font-sans text-stone-400">
             {formatCryptoBalance(balance)} {selectedAssetSymbol} available
           </span>
         </div>

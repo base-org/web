@@ -31,14 +31,14 @@ export function Card({ name, url, description, imageUrl, tags }: Props) {
       </div>
       <div className="flex flex-col gap-4">
         <div className="flex flex-col">
-          <span className="font-mono text-xl uppercase text-white">{name}</span>
+          <h3 className="font-mono text-xl uppercase text-white">{name}</h3>
           <span className="muted truncate font-mono text-muted">
             {getNiceDomainDisplayFromUrl(url)}
           </span>
         </div>
-        <div className="ecosystem-card-description font-sans text-base text-white">
+        <p className="ecosystem-card-description font-sans text-base text-white">
           {description}
-        </div>
+        </p>
       </div>
     </a>
   );

@@ -3,9 +3,8 @@ import { Button } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Link from 'next/link';
 
-const shareText = encodeURIComponent(
-  `I just minted my Base Mainnet Builder NFT on ${window.location.href}`,
-);
+const url = 'https://base.org/builder-nft';
+const shareText = encodeURIComponent(`I just minted my Base Mainnet Builder NFT on ${url}`);
 
 export function MintedSocialShare() {
   const { txHash } = useMintState();
@@ -16,7 +15,9 @@ export function MintedSocialShare() {
         <Button variant="secondary">View on Basescan</Button>
       </Link>
       <Link
-        href={`https://warpcast.com/~/compose?embeds[]=${window.location.href}&text=${shareText}`}
+        href={`https://warpcast.com/~/compose?embeds[]=${encodeURIComponent(
+          url,
+        )}&text=${shareText}`}
         target="_blank"
         rel="noreferrer"
       >

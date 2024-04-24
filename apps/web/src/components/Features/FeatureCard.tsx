@@ -90,7 +90,7 @@ export function FeatureCard({ featureItem: { icon, title, description } }: Featu
         {isValidElement(title) ? (
           title
         ) : (
-          <p className="font-mono text-lg uppercase text-white">{title}</p>
+          <h3 className="font-mono text-lg uppercase text-white">{title}</h3>
         )}
         {isValidElement(description) ? (
           description

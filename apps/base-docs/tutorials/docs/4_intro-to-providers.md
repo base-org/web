@@ -96,7 +96,7 @@ You'll encounter providers divided into three general categories: Public Provide
 
 Many tutorials and guides, including the getting started guide for [wagmi], use a _Public Provider_ as the default to get you up and running. Public means that they're open, permissionless, and free, so the guides will also usually warn you that you need to add another provider if you don't want to run into rate limiting. Listen to these warnings! The rate-limits of public providers are severe, and you'll start getting limited very quickly.
 
-In wagmi, the `publicClient` is just a wrapper setting up a [JSON RPC] provider using the `chain` and `rpcUrls` listed in Viem's directory of chain information. For example, you can view the [data for Base Sepolia here].
+In wagmi, a public client is automatically included in the default confit. This client is just a wrapper setting up a [JSON RPC] provider using the `chain` and `rpcUrls` listed in Viem's directory of chain information. You can view the [data for Base Sepolia here].
 
 Most chains will list this information in their docs as well. For example, on the network information pages for [Base] and [Optimism]. If you wanted, you could manually set up a `jsonRpcProvider` in wagmi using this information.
 
@@ -127,7 +127,7 @@ Note that the information below may change, and vary by network. Each provider a
 | eth_getlogs     | 75               | 20                |
 | eth_getbalance  | 19               | 20                |
 
-To give you an idea of usage amounts, a single wagmi `useContractRead` hook set to `watch` for changes on a single `view` will call `eth_blocknumber` and `eth_call` one time each, every 4 seconds.
+To give you an idea of usage amounts, a single wagmi `useContractRead` hook set to watch for changes on a single `view` via a TanStack query and `useBlockNumber` will call `eth_blocknumber` and `eth_call` one time each, every 4 seconds.
 
 ---
 
@@ -135,7 +135,7 @@ To give you an idea of usage amounts, a single wagmi `useContractRead` hook set 
 
 [RainbowKit] is a popular library that works with [wagmi] to make it easy to connect, disconnect, and change between multiple wallets. It's batteries-included out of the box, and allows for a great deal of customization of the list of wallets and connect/disconnect button.
 
-We'll be using RainbowKit's [quick start] to scaffold a new project for this tutorial.
+You'll be using RainbowKit's [quick start] to scaffold a new project for this tutorial. Note that at the time of writing, it does **not** use the Next.js app router. See [Building an Onchain App] if you wish to set this up instead.
 
 :::info
 
@@ -153,18 +153,26 @@ yarn create @rainbow-me/rainbowkit
 
 Give your project a name, and wait for the script to build it. It will take a minute or two.
 
+:::warning
+
+If you get an error because you are on the wrong version of node, change to the correct version then **delete everything** and run the script again.
+
+:::
+
 ### Scaffolded App
 
-Open your new project in the editor of your choice, and open `pages/_app.tsx`. Here, you'll find a familiar Next.js app wrapped in [context providers] for RainbowKit and wagmi.
+Open your new project in the editor of your choice, and open `pages/_app.tsx`. Here, you'll find a familiar Next.js app wrapped in [context providers] for the TanStack QueryProvider, RainbowKit, and wagmi.
 
 ```typescript
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <wagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        <Component {...pageProps} />
-      </RainbowKitProvider>
-    </wagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={client}>
+        <RainbowKitProvider>
+          <Component {...pageProps} />
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 }
 ```
@@ -203,13 +211,15 @@ Before you deploy, make sure you configure the rest of the items in the control 
 
 ### Public Provider
 
-By default, the setup script will configure your app to use the `publicProvider()`, and connect to a number of popular chains. To simply matters, remove all but `mainnet` and `base`.
+By default, the setup script will configure your app to use the built-in public provider, and connect to a number of popular chains. To simply matters, remove all but `mainnet` and `base`.
 
 ```typescript
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, base],
-  [publicProvider()],
-);
+const config = getDefaultConfig({
+  appName: 'RainbowKit App',
+  projectId: 'YOUR_APP_ID_HERE',
+  chains: [mainnet, base],
+  ssr: true,
+});
 ```
 
 Open the terminal and start the app with:
@@ -228,17 +238,17 @@ You've connected with the Public Provider!
 
 ### QuickNode
 
-Notice that the [`configureChains`] function takes in an array of providers. It will attempt to use each one in the order provided, falling back to the next in the list in order if something goes wrong. You can use this for redundancy, or to smoothly handle scenarios where your app needs to connect with a chain that isn't supported by your preferred provider.
+To select your provider(s), you'll use [`createConfig`] instead of `getDefaultConfig`. The [`transports`] property allows you to configure how you wish to connect with multiple networks. If you need more than one connector for a given network, you can use [`fallbacks`].
 
-Let's add [QuickNode] to the list. It isn't [included in the library] by default, so you'll need to add it using the generic [JSON RPC provider] import.
+First, set up using [QuickNode] as your provider. Replace your import of the default config from RainbowKit with `createConfig` and `http` from wagmi:
 
 ```typescript
-import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
+import { createConfig, http, WagmiProvider } from 'wagmi';
+// ...Chains import
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 ```
 
-Unlike the linked example indicates, you do **not** need to add an import `chain` from `'wagmi'`, unless you're setting up a more complex provider configuration and want to dynamically build RPC urls for multiple chains.
-
-You do need an RPC URL, so open up [QuickNode]'s site and sign up for an account if you need to. The free tier will be adequate for now, you may need to scroll down to see it. Once you're in, click `Endpoints` on the left side, then click `+ Create Endpoint`.
+You'll need an RPC URL, so open up [QuickNode]'s site and sign up for an account if you need to. The free tier will be adequate for now, you may need to scroll down to see it. Once you're in, click `Endpoints` on the left side, then click `+ Create Endpoint`.
 
 On the next screen, you'll be asked to select a chain. Each endpoint only works for one. Select `Base`, click `Continue`.
 
@@ -254,30 +264,26 @@ As with your WalletConnect Id, these endpoints will be visible on the frontend. 
 
 :::
 
-Use these endpoints to add a `jsonRpcProvider` to your array of providers:
+Use this endpoint to add an `http` `transport` to your config:
 
 ```typescript
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, base],
-  [
-    jsonRpcProvider({
-      rpc: () => ({
-        http: 'https://endpoint-name.quiknode.pro/<key>/',
-        webSocket: 'wss://endpoint-name.quiknode.pro/<key>/',
-      }),
-    }),
-    publicProvider(),
-  ],
-);
+const config = createConfig({
+  chains: [mainnet, base],
+  ssr: true,
+  transports: {
+    [base.id]: http('YOUR PROJECT URL'),
+    [mainnet.id]: http('TODO'),
+  },
+});
 ```
 
-Now, the app will use your QuickNode endpoint for the Base network, and fall back to the public provider for others.
+Now, the app will use your QuickNode endpoint for the Base network. Note that you don't need an app name or WalletConnect Id, because you are no longer using WalletConnect.
 
-To test this out, comment out `publicProvider()`, and switch networks a few times. Unfortunately, wagmi won't generate an error when you try to connect to a network unsupported by the provider, but you will notice that the wallet balance is only shown correctly for Base, and no longer updates when you switch to other networks.
+To test this out, switch networks a few times. You'll know it's working if you see your balance when Base is the selected network. You haven't added mainnet, so you'll get an error in the console and no balance when you switch to that.
 
 ### Alchemy
 
-[Alchemy] is [baked into wagmi], but you still need an account and a key. Create an account and/or sign in, navigate to the `Apps` section in the left sidebar, and click `Create new app`.
+[Alchemy] is [no longer baked into wagmi], but it still works the same as any other RPC provider. As with QuickNode, you'll need an account and a key. Create an account and/or sign in, navigate to the `Apps` section in the left sidebar, and click `Create new app`.
 
 ![Alchemy new app](../../assets/images/connecting-to-the-blockchain/alchemy-new-app.png)
 
@@ -289,24 +295,20 @@ Once again, remember to configure the [allowlist] when you publish your app, as 
 
 :::
 
-On the dashboard for your new app, click the `API key` button, and copy the key to the clipboard.
-
-Import `alchemyProvider`, then add it to your list of providers:
+On the dashboard for your new app, click the `API key` button, and copy the **HTTPS** link to the clipboard. Replace your todo with this link:
 
 ```typescript
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, base],
-  [
-    // other providers
-    alchemyProvider({ apiKey: 'yourAlchemyApiKey' }),
-    publicProvider(),
-  ],
-);
+const config = createConfig({
+  chains: [mainnet, base],
+  ssr: true,
+  transports: {
+    [base.id]: http('YOUR PROJECT URL'),
+    [mainnet.id]: http('ALCHEMY HTTP URL'),
+  },
+});
 ```
 
-As before, you can confirm the Alchemy Provider is working by commenting out the others and changing the network.
+As before, you can confirm the Alchemy Provider is working by running the app and changing the network. You should now no longer get an error and should be able to see your balance for Ethereum mainnet.
 
 ---
 
@@ -325,13 +327,10 @@ In this tutorial, you've learned how Providers supply blockchain connection as a
 [quick start]: https://www.rainbowkit.com/docs/installation
 [context providers]: https://react.dev/learn/passing-data-deeply-with-context
 [WalletConnect]: https://cloud.walletconnect.com/
-[`configureChains`]: https://wagmi.sh/react/providers/configuring-chains
-[included in the library]: https://github.com/wagmi-dev/wagmi/tree/main/packages/core/src/providers
 [JSON RPC provider]: https://wagmi.sh/react/providers/jsonRpc
 [Alchemy]: https://www.alchemy.com/
 [QuickNode]: https://www.quicknode.com/
 [allowlist]: https://docs.alchemy.com/docs/how-to-add-allowlists-to-your-apps-for-enhanced-security
-[baked into wagmi]: https://wagmi.sh/react/providers/alchemy
 [smart contract development]: https://base.org/camp
 [Subgraph]: https://thegraph.com/docs/en/developing/creating-a-subgraph/
 [data for Base Sepolia here]: https://github.com/wagmi-dev/viem/blob/main/src/chains/definitions/baseSepolia.ts
@@ -344,3 +343,8 @@ In this tutorial, you've learned how Providers supply blockchain connection as a
 [smart contract development]: https://base.org/camp
 [run your own node]: https://docs.base.org/guides/run-a-base-node
 [React Context API]: https://react.dev/learn/passing-data-deeply-with-context
+[Building an Onchain App]: https://docs.base.org/base-camp/docs/frontend-setup/building-an-onchain-app
+[`createConfig`]: https://wagmi.sh/react/api/createConfig
+[`transports`]: https://wagmi.sh/react/api/transports
+[`fallback`]: https://wagmi.sh/core/api/transports/fallback
+[no longer baked into wagmi]: https://wagmi.sh/react/guides/migrate-from-v1-to-v2#removed-wagmi-providers-entrypoints

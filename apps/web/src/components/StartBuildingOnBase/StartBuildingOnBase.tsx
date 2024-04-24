@@ -17,7 +17,7 @@ export function StartBuildingOnBase() {
   return (
     <section className="flex w-full max-w-[1440px] flex-row flex-wrap items-start justify-between bg-black px-8 py-8">
       <div className="pb-16 font-display text-3xl text-white md:text-5xl lg:text-6xl">
-        <p className="mb-[12px]">Start building on Base</p>
+        <h2 className="mb-[12px]">Start building on Base</h2>
         <ReadTheDocsButton />
       </div>
       <div className="relative h-[460px] w-full max-w-[678px]">

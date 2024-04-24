@@ -1,13 +1,19 @@
 import { Button } from 'apps/web/src/components/Button/Button';
 import Image from 'next/image';
 
-function LearnMoreButton() {
+
+type LearnMoreButtonProps = {
+  ariaLabel: string;
+};
+
+function LearnMoreButton({ ariaLabel }: LearnMoreButtonProps) {
   return (
     <div className="w-[200px]">
       <a
         target="_blank"
         rel="noreferrer noopener"
         href="https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I"
+        aria-label={ariaLabel}
       >
         <Button variant="secondary">Learn More</Button>
       </a>
@@ -33,7 +39,7 @@ export function Partnerships() {
             foundation for a “superchain” of L2s that share interoperability, sequencing, and
             governance.
           </p>
-          <LearnMoreButton />
+          <LearnMoreButton ariaLabel="Learn More About Optimism" />
         </div>
       </div>
       <div className="flex w-full flex-col space-y-12 pt-[3px] lg:basis-1/2">
@@ -50,7 +56,7 @@ export function Partnerships() {
             ahead. We believe that decentralization is critical to creating an open, global
             cryptoeconomy that is accessible to everyone.
           </p>
-          <LearnMoreButton />
+          <LearnMoreButton ariaLabel="Learn More About Coinbase" />
         </div>
       </div>
     </div>

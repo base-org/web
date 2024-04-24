@@ -54,10 +54,9 @@ export function Features() {
   return (
     <div className="flex w-full max-w-[1440px] flex-col space-y-24 bg-black px-8 pt-12">
       <div className="flex w-full flex-col font-display text-3xl text-white md:text-5xl lg:text-6xl">
-        <p>Making Ethereum</p>
-        <p className="font-display text-white">
+        <h2>Making Ethereum<br />
           accessible to <span className="italic">everyone</span>
-        </p>
+        </h2>
       </div>
       <div className="scrollbar flex w-full flex-row justify-between space-x-6 overflow-x-auto pb-12 2xl:overflow-x-hidden">
         {featureItems.map((item) => (

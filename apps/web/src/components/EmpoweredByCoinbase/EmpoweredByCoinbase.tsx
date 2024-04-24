@@ -1,9 +1,9 @@
 function Header() {
   return (
     <div className=" font-display text-3xl text-white md:text-5xl lg:text-6xl">
-      <p>Empowered by</p>
-      <p>Coinbase</p>
-    </div>
+      <h2>Empowered by<br />
+        Coinbase</h2>
+    </div >
   );
 }
 
@@ -22,15 +22,15 @@ function UsersAssetsGraphic() {
     <div className="flex flex-col gap-4 lg:basis-1/2">
       <div className="flex w-full max-w-[534px] flex-col justify-between bg-empowered_by_coinbase bg-cover bg-center bg-no-repeat lg:h-[434px] lg:w-[534px] lg:py-4">
         <div className="flex h-full flex-col py-3.5 px-7 lg:py-7 lg:px-12">
-          <p className="font-display text-5xl text-white lg:text-8xl">$130B</p>
+          <h3 className="font-display text-5xl text-white lg:text-8xl">$130B</h3>
         </div>
         <div className="flex h-full flex-col justify-center px-7 lg:space-y-4 lg:px-12">
-          <p className="font-mono text-xl uppercase text-white sm:text-2xl lg:text-[48px]">
+          <h4 className="font-mono text-xl uppercase text-white sm:text-2xl lg:text-[48px]">
             Assets on
-          </p>
-          <p className="font-mono text-xl uppercase text-white sm:text-2xl lg:text-[48px]">
+          </h4>
+          <h4 className="font-mono text-xl uppercase text-white sm:text-2xl lg:text-[48px]">
             Platform
-          </p>
+          </h4>
         </div>
       </div>
       <p className="font-display text-xs text-white">As of 3/31/2023</p>

@@ -11,8 +11,8 @@ type PageSectionProps = {
 function PageSection({ title, description, children }: PageSectionProps) {
   return (
     <section className="layout-container">
-      <div className={styles.pageSectionTitle}>{title}</div>
-      <div className={styles.pageSectionDescription}>{description}</div>
+      <h2 className={styles.pageSectionTitle}>{title}</h2>
+      <h3 className={styles.pageSectionDescription}>{description}</h3>
       <div>{children}</div>
     </section>
   );

@@ -2,7 +2,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useAccount, useNetwork } from 'wagmi';
+import { useAccount } from 'wagmi';
 
 import useNFTData from '../../utils/nft-exercise-data';
 
@@ -13,9 +13,7 @@ export default function StudentProgress() {
 
   const [earnedNFTCount, setNFTCount] = useState(0);
   const [totalNFTCount] = useState(Object.keys(nftData).length);
-  const { isConnecting, isConnected, address } = useAccount();
-
-  const { chain } = useNetwork();
+  const { isConnecting, isConnected, address, chain } = useAccount();
 
   // mapping addresses to 'true' or 'false' to keep track of `earnedNFTCount`
   const earnedNFTMap = Object.keys(nftData).reduce((acc, prop) => {
@@ -49,15 +47,15 @@ export default function StudentProgress() {
     const sortedNFTKeys = Object.keys(nftData)
       .filter((key) => key !== '19')
       .sort((a, b) => a - b);
-  
+
     // Find the index of key '8' and insert key '19' after it
     const index = sortedNFTKeys.findIndex((key) => key === '8');
     sortedNFTKeys.splice(index + 1, 0, '19');
-  
+
     // Map over the sorted NFT keys and render the NFT cards
     const NFTs = sortedNFTKeys.map((nftNum) => {
       const nft = nftData[nftNum];
-  
+
       return (
         <NFTCard
           key={nft.deployment.address}
@@ -67,7 +65,7 @@ export default function StudentProgress() {
         />
       );
     });
-  
+
     return NFTs;
   };
 
