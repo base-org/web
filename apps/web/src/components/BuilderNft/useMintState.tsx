@@ -3,6 +3,7 @@ import { createContext, useCallback, useContext, useEffect } from 'react';
 import { base } from 'viem/chains';
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import { contractABI, contractAddress } from 'apps/web/src/components/BuilderNft/constants';
+import logEvent from 'apps/web/src/utils/logEvent';
 
 class HttpError extends Error {
   public status: number;
@@ -57,15 +58,6 @@ export function useProofQuery(): UseQueryResult<{ result: string[] }> {
 export function useMintState(): MintState {
   const { status, address } = useAccount();
 
-  useEffect(() => {
-    if (window.ClientAnalytics && address) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      window.ClientAnalytics?.logEvent('connected_wallet', {
-        address,
-      });
-    }
-  }, [address]);
-
   const proofQuery = useProofQuery();
   const proof = proofQuery.data?.result;
 
@@ -82,6 +74,22 @@ export function useMintState(): MintState {
       });
     }
   }, [proof, writeContract]);
+
+  useEffect(() => {
+    if (address) {
+      logEvent('connected_wallet', { address });
+    }
+  }, [address]);
+  useEffect(() => {
+    if (isSuccess) {
+      logEvent('builder_nft_minted', { address });
+    }
+  }, [isSuccess, address]);
+  useEffect(() => {
+    if (proofQuery.isError) {
+      logEvent('builder_nft_ineligible', { address });
+    }
+  }, [proofQuery.isError, address]);
 
   if (isPending) {
     return {
