@@ -1,4 +1,4 @@
-import { useMintState } from 'apps/web/src/components/BuilderNft/useMintState';
+import { useMintStateContext } from 'apps/web/src/components/BuilderNft/useMintState';
 import { Button } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Link from 'next/link';
@@ -9,7 +9,7 @@ const shareText = encodeURIComponent(
 );
 
 export function MintedSocialShare() {
-  const { txHash } = useMintState();
+  const { txHash } = useMintStateContext();
 
   return (
     <div className="flex flex-row items-center gap-4">
