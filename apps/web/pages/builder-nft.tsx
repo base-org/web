@@ -22,7 +22,11 @@ export default function BuilderNFT() {
             answer={
               <>
                 Last year, we launched an{' '}
-                <a href="https://base.mirror.xyz/CsHm8poSS9HqWNMvPZEZDIn8LMjiNy5PwUd7z8F6G-Q">
+                <a
+                  href="https://base.mirror.xyz/CsHm8poSS9HqWNMvPZEZDIn8LMjiNy5PwUd7z8F6G-Q"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   onchain Builder Quest
                 </a>{' '}
                 shortly after we brought Base to testnet. Builders who completed the quest got a

@@ -15,7 +15,6 @@ const colorVariant: Record<'white' | 'black', 'secondary' | 'secondaryDark'> = {
 };
 
 export function ConnectWalletButton({ color, className }: ConnectWalletButtonProps) {
-  // return <Button variant={colorVariant[color]}>Connect Wallet</Button>;
   return (
     <ConnectButton.Custom>
       {({ account, chain, openAccountModal, openChainModal, openConnectModal, mounted }) => {

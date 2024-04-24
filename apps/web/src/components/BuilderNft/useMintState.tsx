@@ -68,7 +68,6 @@ export function useMintState(): MintState {
 
   const proofQuery = useProofQuery();
   const proof = proofQuery.data?.result;
-  console.log({ proof });
 
   const { writeContract, isPending, isSuccess, error, data: txHash } = useWriteContract();
 
@@ -84,11 +83,6 @@ export function useMintState(): MintState {
     }
   }, [proof, writeContract]);
 
-  return {
-    status: 'minted',
-    txHash: '0xc133ef897895c7376e247b45b8be0a22c1c3b09110e7fa06bcbb97752ea6ac67',
-  };
-
   if (isPending) {
     return {
       status: 'minting',
@@ -103,7 +97,6 @@ export function useMintState(): MintState {
   }
 
   if (error) {
-    console.log({ error });
     return {
       status: 'mint-error',
       error,
