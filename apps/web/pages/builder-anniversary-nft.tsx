@@ -67,6 +67,22 @@ export default function BuilderNFT() {
             question="I’m bummed to miss the chance. Will Base do more NFTs?"
             answer="Yes! While there is only one Base Builder Mainnet NFT (for those who have completed last year’s quest), the Base team as well as Based artists worldwide continue to create and distribute digital collectibles that showcase their creativity. Follow Base on X and Warpcast for updates around upcoming mints, and join the /base channel to catch mints from the community."
           />
+          <FaqItem
+            question="What is the value of the NFT? The benefit of me holding one?"
+            answer="This special commemorative NFT is only for the earliest Base builders. While it may not have any utility now, keep your eyes peeled, as this NFT will unlock special benefits in the future 👀"
+          />
+          <FaqItem
+            question="Where should I go for support/questions?"
+            answer={
+              <p>
+                For any support and questions, please join the{' '}
+                <a href="https://base.org/discord" target="_blank" rel="noreferrer">
+                  Base Discord
+                </a>
+                .
+              </p>
+            }
+          />
         </div>
       </main>
     </div>
