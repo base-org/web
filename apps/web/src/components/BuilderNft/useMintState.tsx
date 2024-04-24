@@ -90,6 +90,11 @@ export function useMintState(): MintState {
       logEvent('builder_nft_ineligible', { address });
     }
   }, [proofQuery.isError, address]);
+  useEffect(() => {
+    if (error) {
+      logEvent('builder_nft_mint_error', { address });
+    }
+  }, [error, address]);
 
   if (isPending) {
     return {
