@@ -69,6 +69,7 @@ const contentSecurityPolicy = {
     ccaDomain,
     ccaLiteDomains,
     walletconnectDomains,
+    'https://base.cbhq.net',
   ],
   'connect-src': [
     walletconnectDomains,
@@ -81,6 +82,7 @@ const contentSecurityPolicy = {
     'https://api.opensea.io', // enables getting ENS avatars
     isLocalDevelopment ? 'ws://localhost:3000/' : '',
     isLocalDevelopment ? 'http://localhost:3000/' : '',
+    'https://base.cbhq.net',
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
