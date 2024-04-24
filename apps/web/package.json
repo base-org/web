@@ -28,6 +28,7 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
     "react-intl": "^6.2.1",
+    "usehooks-ts": "^3.1.0",
     "uuidv4": "^6.2.13",
     "viem": "2.x",
     "wagmi": "^2.5.20"
