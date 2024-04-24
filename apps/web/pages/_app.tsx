@@ -24,7 +24,7 @@ import { useSprig } from 'apps/web/src/utils/hooks/useSprig';
 
 const config = getDefaultConfig({
   appName: 'Base.org',
-  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? '',
+  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? 'dummy-project-id',
   chains: [base, mainnet],
   ssr: true,
 });

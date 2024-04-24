@@ -4,7 +4,9 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Link from 'next/link';
 
 const url = 'https://base.org/builder-nft';
-const shareText = encodeURIComponent(`I just minted my Base Mainnet Builder NFT on ${url}`);
+const shareText = encodeURIComponent(
+  `I just minted the Base Quest Mainnet Anniversary NFT by @andreoshea on ${url}`,
+);
 
 export function MintedSocialShare() {
   const { txHash } = useMintState();
