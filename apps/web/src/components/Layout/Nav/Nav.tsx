@@ -25,19 +25,19 @@ function NftBanner() {
 
   return (
     <div className="z-10 flex w-full flex-row justify-center bg-black">
-      <div className="z-10 flex w-full max-w-[1440px] flex-row items-center justify-between self-center bg-black p-2 pl-8 pr-6">
+      <div className="z-10 flex w-full max-w-[1440px] flex-row items-center justify-between self-center bg-black p-2 pl-8 pr-6 text-white">
         <Link href="/builder-anniversary-nft" onClick={hideBanner}>
-          <span className="text-xs text-white md:text-sm">
+          <span className="text-xs  md:text-base">
             Claim your base builder mainnet NFT!
-            <span className="hidden text-white md:inline"> Available for a limited time</span>
+            <span className="hidden md:inline"> Available for a limited time</span>
           </span>
         </Link>
         <div className="flex flex-row items-center gap-4">
           <Link href="/builder-anniversary-nft" onClick={hideBanner}>
-            <span className="text-xs text-white md:text-sm">Go to mint page</span>
+            <span className="text-xs md:text-base">Go to mint page</span>
           </Link>
           <button
-            className="cursor-pointer p-2 text-sm text-white"
+            className="cursor-pointer p-2 text-sm"
             onClick={hideBanner}
             onKeyDown={hideBanner}
             type="button"
