@@ -17,6 +17,13 @@ export const contractABI = [
     stateMutability: 'nonpayable',
     type: 'function',
   },
+  {
+    inputs: [{ internalType: 'address', name: '', type: 'address' }],
+    name: 'hasClaimed',
+    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
 ];
 
 const DEFAULT_HEADING = 'It’s here! Claim your Base Builder Mainnet NFT';

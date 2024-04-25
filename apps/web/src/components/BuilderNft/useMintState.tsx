@@ -1,4 +1,4 @@
-import { useAccount, useWriteContract } from 'wagmi';
+import { useAccount, useReadContract, useWriteContract } from 'wagmi';
 import { createContext, useCallback, useContext, useEffect } from 'react';
 import { base } from 'viem/chains';
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
@@ -62,6 +62,11 @@ export function useMintState(): MintState {
   const proof = proofQuery.data?.result;
 
   const { writeContract, isPending, isSuccess, error, data: txHash } = useWriteContract();
+  const { data: hasClaimed } = useReadContract({
+    abi: contractABI,
+    address: contractAddress,
+    functionName: 'hasClaimed',
+  });
 
   const mint = useCallback(() => {
     if (contractAddress) {
