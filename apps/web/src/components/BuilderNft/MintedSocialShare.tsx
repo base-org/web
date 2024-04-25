@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const url = 'https://base.org/builder-anniversary-nft';
 const shareText = encodeURIComponent(
-  `I just minted the Base Quest Mainnet Anniversary NFT by @andreoshea on ${url}`,
+  `I just minted the Base Quest Mainnet Anniversary NFT by @andreoshea on @base at ${url}`,
 );
 
 export function MintedSocialShare() {

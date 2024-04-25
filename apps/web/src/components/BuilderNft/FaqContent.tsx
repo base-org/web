@@ -5,7 +5,7 @@ export function FaqContent() {
     <>
       <h1 className="text-3xl uppercase">Frequently Asked Questions</h1>
       <FaqItem
-        question="What is the Base Builder Mainnet NFT?"
+        question="What is the Base Quest Anniversary NFT?"
         answer={
           <>
             Last year, we launched an{' '}
@@ -43,16 +43,16 @@ export function FaqContent() {
         }
       />
       <FaqItem
-        question="Who is eligible to claim the Base Builder Mainnet NFT?"
-        answer="Builders who completed last year’s onchain quest and claimed the testnet NFT. (Please make sure you’re connecting the same wallet that holds the testnet NFT, otherwise you won’t be able to claim.)"
+        question="Who is eligible to claim the Base Quest Anniversary NFT?"
+        answer="Builders who completed last year’s onchain quest and claimed the Base Goerli testnet NFT. (Please make sure you’re connecting the same wallet that holds the testnet NFT, otherwise you won’t be able to claim.)"
       />
       <FaqItem
         question="Why can’t I claim my NFT?"
-        answer="Only builders who completed last year’s onchain quest and claimed the Base Builder NFT on testnet are eligible to claim the mainnet NFT. Please use the wallet that holds the testnet NFT, otherwise you won’t be able to claim."
+        answer="Only builders who completed last year’s onchain quest and claimed the NFT on the Base Goerli testnet are eligible to claim the mainnet NFT. Please use the wallet that holds the testnet NFT, otherwise you won’t be able to claim."
       />
       <FaqItem
         question="I’m bummed to miss the chance. Will Base do more NFTs?"
-        answer="Yes! While there is only one Base Builder Mainnet NFT (for those who have completed last year’s quest), the Base team as well as Based artists worldwide continue to create and distribute digital collectibles that showcase their creativity. Follow Base on X and Warpcast for updates around upcoming mints, and join the /base channel to catch mints from the community."
+        answer="Yes! While there is only one Base Quest Anniversary NFT (for those who have completed last year’s quest), the Base team as well as Based artists worldwide continue to create and distribute digital collectibles that showcase their creativity. Follow Base on X and Warpcast for updates around upcoming mints, and join the /base channel to catch mints from the community."
       />
       <FaqItem
         question="What is the value of the NFT? The benefit of me holding one?"
@@ -68,6 +68,25 @@ export function FaqContent() {
             </a>
             .
           </p>
+        }
+      />
+      <FaqItem
+        question="Disclaimer"
+        answer={
+          <>
+            <p>
+              You acknowledge that ownership of the NFT does not carry with it any rights, express
+              or implied, including (without limitation) copyright, trademarks or other intellectual
+              property or proprietary rights in and to the underlying artwork. The copyright to the
+              digital artwork remains with the copyright holder.
+            </p>
+            <p>
+              The NFT may in the future provide utility tied to unique goods, services or
+              experiences; however, we disclaim any investment, resale or speculation related to the
+              NFT. There can be no assurance as to their present or future value, transferability or
+              marketability.
+            </p>
+          </>
         }
       />
     </>

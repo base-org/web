@@ -27,7 +27,7 @@ export const contractABI = [
   },
 ];
 
-const DEFAULT_HEADING = 'It’s here! Claim your Base Builder Mainnet NFT';
+const DEFAULT_HEADING = 'It’s here! Claim your Base Quest Anniversary NFT';
 
 export const HeadingForStatus: Record<MintStatus, string> = {
   'not-eligible': 'This wallet can’t mint this NFT',
@@ -39,7 +39,8 @@ export const HeadingForStatus: Record<MintStatus, string> = {
   'mint-error': 'Something went wrong',
   'already-minted': 'Congratulations on claiming your NFT!',
 };
-const DEFAULT_SUBHEADING = 'A special thank you from us for being an early builder on Base.';
+const DEFAULT_SUBHEADING =
+  'A special thank you from us for being an early builder on Base, at the anniversary of the first Base Builder Quest.';
 
 export const SubHeadingForStatus: Record<MintStatus, string> = {
   'not-eligible': 'Only builders who completed last year’s onchain quest can claim this NFT.',
