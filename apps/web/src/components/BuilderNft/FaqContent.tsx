@@ -56,7 +56,7 @@ export function FaqContent() {
       />
       <FaqItem
         question="What is the value of the NFT? The benefit of me holding one?"
-        answer="This special commemorative NFT is only for the earliest Base builders. While it may not have any utility now, keep your eyes peeled, as this NFT will unlock special benefits in the future 👀"
+        answer="This special commemorative NFT is only for the earliest Base builders and holds no other value."
       />
       <FaqItem
         question="Where should I go for support/questions?"
@@ -65,8 +65,8 @@ export function FaqContent() {
             For any support and questions, please join the{' '}
             <a href="https://base.org/discord" target="_blank" rel="noreferrer">
               Base Discord
-            </a>
-            .
+            </a>{' '}
+            and visit the #general-support channel.
           </p>
         }
       />
