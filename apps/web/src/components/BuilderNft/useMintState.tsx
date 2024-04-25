@@ -4,6 +4,7 @@ import { base } from 'viem/chains';
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import { contractABI, contractAddress } from 'apps/web/src/components/BuilderNft/constants';
 import logEvent from 'apps/web/src/utils/logEvent';
+import { useLocalStorage } from 'usehooks-ts';
 
 class HttpError extends Error {
   public status: number;
@@ -58,6 +59,7 @@ export function useProofQuery(): UseQueryResult<{ result: string[] }> {
 }
 
 export function useMintState(): MintState {
+  const [_, setIsBannerVisible] = useLocalStorage('isNftBannerVisible', true);
   const { status, address } = useAccount();
 
   const proofQuery = useProofQuery();
@@ -86,6 +88,7 @@ export function useMintState(): MintState {
 
   useEffect(() => {
     if (address) {
+      setIsBannerVisible(false);
       logEvent('connected_wallet', { address });
     }
   }, [address]);

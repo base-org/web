@@ -35,7 +35,7 @@ export function BuilderNftHero() {
             <div className="border-4 border-white">
               <Image src={nftPreview} alt="Preview of the Base Builder NFT" />
             </div>
-            <div className="flex flex-col justify-between lg:flex-row">
+            <div className="flex flex-col justify-between gap-2 lg:flex-row">
               <div className="flex flex-col">
                 <span className="text-md font-mono text-base uppercase text-white">
                   The Expansion of Awareness
@@ -43,7 +43,7 @@ export function BuilderNftHero() {
                 <span className="text-white">Andre Oshea</span>
               </div>
               <div className="self-end">
-                <NftButton status={status} />
+                <NftButton />
               </div>
             </div>
           </div>

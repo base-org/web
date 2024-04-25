@@ -16,6 +16,7 @@ module.exports = {
       darkgray: '#0F1012',
       white: '#FFFFFF',
       muted: '#8A919E',
+      yellow: '#FFD200',
       translucent: {
         100: 'rgba(255,255,255,0.1)',
         200: 'rgba(255,255,255,0.2)',
@@ -52,7 +53,7 @@ module.exports = {
       },
       backgroundImage: {
         empowered_by_coinbase: "url('/images/empowered_by_coinbase.png')",
-        bootcamp_background_image: "url('/images/bootcamp-background.png')"
+        bootcamp_background_image: "url('/images/bootcamp-background.png')",
       },
       transitionTimingFunction: {
         partners: 'cubic-bezier(0.25, 1, 0.25, 1)',

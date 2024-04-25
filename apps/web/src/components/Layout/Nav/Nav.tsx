@@ -4,53 +4,11 @@ import { useRouter } from 'next/router';
 import { Logo } from '../../Logo/Logo';
 import DesktopNav from './DesktopNav';
 import MobileMenu from './MobileMenu';
-import { useLocalStorage } from 'usehooks-ts';
-import { useCallback } from 'react';
-import { Icon } from 'apps/web/src/components/Icon/Icon';
+import { NftBanner } from './NftBanner';
 
 type NavProps = {
   color: 'white' | 'black';
 };
-
-const href = '/builder-anniversary-nft?utm_source=website';
-
-function NftBanner() {
-  const [isBannerVisible, setIsBannerVisible] = useLocalStorage('isNftBannerVisible', true);
-
-  const hideBanner = useCallback(() => {
-    setIsBannerVisible(false);
-  }, [setIsBannerVisible]);
-
-  if (!isBannerVisible) {
-    return null;
-  }
-
-  return (
-    <div className="z-10 flex w-full flex-row justify-center bg-black">
-      <div className="z-10 flex w-full max-w-[1440px] flex-row items-center justify-between self-center bg-black p-2 pl-8 pr-6 text-white">
-        <Link href={href} onClick={hideBanner}>
-          <span className="text-xs  md:text-base">
-            Claim your base builder mainnet NFT!
-            <span className="hidden md:inline"> Available for a limited time</span>
-          </span>
-        </Link>
-        <div className="flex flex-row items-center gap-4">
-          <Link href={href} onClick={hideBanner}>
-            <span className="text-xs md:text-base">Go to mint page</span>
-          </Link>
-          <button
-            className="cursor-pointer p-2 text-sm"
-            onClick={hideBanner}
-            onKeyDown={hideBanner}
-            type="button"
-          >
-            <Icon name="close" color="white" width="16" height="16" />
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export function Nav({ color }: NavProps) {
   const { pathname } = useRouter();
