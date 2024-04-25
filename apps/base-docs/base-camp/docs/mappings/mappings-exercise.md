@@ -43,7 +43,7 @@ Create a function called `addRecord` that accepts an album name as a parameter. 
 
 ### Users' Lists
 
-Write a function called `getUserFavorites` that retrieves the list of favorites for any address.
+Write a function called `getUserFavorites` that retrieves the list of favorites for a provided `address memory`.
 
 ### Reset My Favorites
 
