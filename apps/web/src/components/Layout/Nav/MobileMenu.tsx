@@ -6,8 +6,6 @@ import { Icon } from '../../Icon/Icon';
 import { Logo } from '../../Logo/Logo';
 import { usePathname } from 'next/navigation';
 import { bridgeUrl } from 'apps/web/src/constants';
-import { ConnectWalletButton } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButtonMobile';
-import { REVERSE_COLOR } from 'apps/web/src/utils/colors';
 
 // Dropdown Link
 type DropdownLinkProps = {
@@ -166,7 +164,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                 <Icon color="white" name="close" />
               </button>
             </div>
-            <div className="flex h-full flex-col justify-between pt-20">
+            <div className="flex h-full flex-col pt-20">
               <div className="flex h-full flex-col gap-4">
                 <Dropdown
                   dropdownKey="ecosystem"
@@ -223,25 +221,12 @@ function MobileMenu({ color }: MobileMenuProps) {
                   <DropdownLink href="/jobs" label="Jobs" />
                 </Dropdown>
               </div>
-
-              <div className="mb-8">
-                <ConnectWalletButton color={REVERSE_COLOR[color]} className="" />
-              </div>
-
-              <div className="flex flex-row justify-between gap-4 justify-self-end pb-8">
-                <a
-                  href="https://warpcast.com/~/channel/base"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  title="Join us on Farcaster"
-                >
-                  <Icon name="farcaster" />
-                </a>
+              <div className="flex flex-row gap-4 pb-8">
                 <a href="https://discord.com/invite/buildonbase" title="Join us on Discord">
-                  <Icon name="discord" />
+                  <Icon name="discord" width="48" />
                 </a>
                 <a href="https://twitter.com/base" title="Join us on Twitter">
-                  <Icon name="twitter" />
+                  <Icon name="twitter" width="48" />
                 </a>
                 <a
                   href="https://github.com/base-org"
@@ -249,7 +234,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                   rel="noreferrer noopener"
                   title="Join us on Github"
                 >
-                  <Icon name="github" />
+                  <Icon name="github" width="48" />
                 </a>
               </div>
             </div>

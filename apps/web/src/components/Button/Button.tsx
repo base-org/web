@@ -1,19 +1,15 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 
-const variantStyles = {
-  primary:
-    'text-black bg-white hover:bg-translucent-900 active:bg-translucent-800 ease-in duration-200',
-  secondary:
-    'text-white bg-transparent border border-white hover:bg-translucent-100 active:bg-translucent-200 ease-in duration-200',
-  secondaryDark:
-    'text-black bg-transparent border border-black hover:bg-translucent-100 active:bg-translucent-200 ease-in duration-200',
-};
-
 type ButtonProps = {
   /** @default primary */
-  variant?: keyof typeof variantStyles;
+  variant?: 'primary' | 'secondary';
   children: ReactNode;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
+
+const primaryStyles =
+  'text-black bg-white hover:bg-translucent-900 active:bg-translucent-800 ease-in duration-200';
+const secondaryStyles =
+  'text-white bg-transparent border border-white hover:bg-translucent-100 active:bg-translucent-200 ease-in duration-200';
 
 export function Button({ variant = 'primary', children, className, ...props }: ButtonProps) {
   return (
@@ -21,7 +17,7 @@ export function Button({ variant = 'primary', children, className, ...props }: B
       {...props}
       type="button"
       className={`rounded font-display text-sm md:text-lg ${
-        variantStyles[variant]
+        variant === 'secondary' ? secondaryStyles : primaryStyles
       } px-10 py-3.5 text-center ${className ?? ''}`}
     >
       {children}
