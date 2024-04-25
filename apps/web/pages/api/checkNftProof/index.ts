@@ -12,10 +12,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
   const { address } = req.body as RequestBody;
 
-  const proof = await kv.get<string[]>(`proof:${address}`);
+  try {
+    const proof = await kv.get<string[]>(`proof:${address}`);
 
-  if (proof) {
-    return res.status(200).json({ result: proof });
+    if (proof) {
+      return res.status(200).json({ result: proof });
+    }
+  } catch (error) {
+    console.error(error);
   }
 
   return res.status(404).json({ error: 'address is not eligible for the nft' });
