@@ -30,7 +30,7 @@ export const contractABI = [
 const DEFAULT_HEADING = 'It’s here! Claim your Base Quest Anniversary NFT';
 
 export const HeadingForStatus: Record<MintStatus, string> = {
-  'not-eligible': 'This wallet can’t mint this NFT',
+  'not-eligible': 'Sorry, this wallet isn’t eligible!',
   'loading-proof': 'Checking eligibility...',
   eligible: DEFAULT_HEADING,
   disconnected: DEFAULT_HEADING,
