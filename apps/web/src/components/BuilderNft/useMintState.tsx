@@ -21,12 +21,14 @@ export type MintStatus =
   | 'eligible'
   | 'minting'
   | 'minted'
-  | 'mint-error';
+  | 'mint-error'
+  | 'already-minted';
 
 export type MintState = {
   status: MintStatus;
   mint?: () => void;
   error?: Error;
+  reset?: () => void;
   txHash?: `0x${string}`;
 };
 
@@ -61,11 +63,13 @@ export function useMintState(): MintState {
   const proofQuery = useProofQuery();
   const proof = proofQuery.data?.result;
 
-  const { writeContract, isPending, isSuccess, error, data: txHash } = useWriteContract();
+  const { writeContract, isPending, isSuccess, error, data: txHash, reset } = useWriteContract();
   const { data: hasClaimed } = useReadContract({
     abi: contractABI,
     address: contractAddress,
     functionName: 'hasClaimed',
+    chainId: base.id,
+    args: [address],
   });
 
   const mint = useCallback(() => {
@@ -101,6 +105,12 @@ export function useMintState(): MintState {
     }
   }, [error, address]);
 
+  if (hasClaimed) {
+    return {
+      status: 'already-minted',
+    };
+  }
+
   if (isPending) {
     return {
       status: 'minting',
@@ -117,6 +127,7 @@ export function useMintState(): MintState {
   if (error) {
     return {
       status: 'mint-error',
+      reset,
       error,
     };
   }
