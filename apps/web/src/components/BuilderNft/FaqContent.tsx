@@ -56,7 +56,7 @@ export function FaqContent() {
               onchain quest
             </a>{' '}
             and claimed the Base Goerli testnet NFT. (Please make sure you’re connecting the same
-            wallet that holds the testnet NFT, otherwise you won’t be able to claim.)"
+            wallet that holds the testnet NFT, otherwise you won’t be able to claim.)
           </p>
         }
       />
