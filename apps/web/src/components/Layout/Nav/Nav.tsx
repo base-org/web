@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { Logo } from '../../Logo/Logo';
 import DesktopNav from './DesktopNav';
 import MobileMenu from './MobileMenu';
+import { NftBanner } from './NftBanner';
 
 type NavProps = {
   color: 'white' | 'black';
@@ -13,12 +14,15 @@ export function Nav({ color }: NavProps) {
   const { pathname } = useRouter();
 
   return (
-    <nav className="bg-transparent z-10 flex h-24 w-full max-w-[1440px] flex-row justify-between self-center p-8">
-      <Link href="/" aria-label="Base Homepage">
-        <Logo color={color} path={pathname} />
-      </Link>
-      <DesktopNav color={color} />
-      <MobileMenu color={color} />
-    </nav>
+    <>
+      <NftBanner />
+      <nav className="bg-transparent z-10 flex h-24 w-full max-w-[1440px] flex-row items-center justify-between gap-16 self-center p-8">
+        <Link href="/" aria-label="Base Homepage">
+          <Logo color={color} path={pathname} />
+        </Link>
+        <DesktopNav color={color} />
+        <MobileMenu color={color} />
+      </nav>
+    </>
   );
 }
