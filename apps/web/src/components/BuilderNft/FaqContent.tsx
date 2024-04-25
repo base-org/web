@@ -7,7 +7,7 @@ export function FaqContent() {
       <FaqItem
         question="What is the Base Quest Anniversary NFT?"
         answer={
-          <>
+          <p>
             Last year, we launched an{' '}
             <a
               href="https://base.mirror.xyz/CsHm8poSS9HqWNMvPZEZDIn8LMjiNy5PwUd7z8F6G-Q"
@@ -21,7 +21,7 @@ export function FaqContent() {
             builders to keep a piece of onchain history with them as the earliest Base builders.
             Now, at the anniversary of the Quest, holders of the testnet NFT can claim their NFT on
             mainnet.
-          </>
+          </p>
         }
       />
       <FaqItem
