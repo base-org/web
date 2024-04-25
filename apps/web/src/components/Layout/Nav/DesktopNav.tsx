@@ -60,7 +60,7 @@ function Dropdown({ label, color, children, className }: DropdownProps) {
   const ref = useClickAway<HTMLDivElement>(handleHideDropdown);
 
   return (
-    <div ref={ref} className={`relative inline-block ${className}`}>
+    <div ref={ref} className={`relative inline-block ${className ?? ''}`}>
       <button
         type="button"
         aria-label={typeof label === 'string' ? label : undefined}
@@ -124,8 +124,8 @@ function IconLink({
 
 function DesktopNav({ color }: DesktopNavProps) {
   return (
-    <div className="hidden flex-row items-center space-x-16 lg:flex">
-      <div className="h-full flex-row items-center space-x-16">
+    <div className="hidden w-full flex-row items-center lg:flex">
+      <div className="flex h-full w-full flex-row items-center justify-between">
         <Dropdown label="Ecosystem" color={color}>
           <DropdownLink href="/ecosystem" label="Apps" color={color} />
           <DropdownLink
