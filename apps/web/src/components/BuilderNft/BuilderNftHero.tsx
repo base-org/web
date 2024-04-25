@@ -14,8 +14,6 @@ export function BuilderNftHero() {
   const mintState = useMintState();
   const { status } = mintState;
 
-  console.log({ status });
-
   return (
     <MintStateContext.Provider value={mintState}>
       <div className="mt-[-96px] flex w-full flex-col items-center bg-black pb-[96px]">
