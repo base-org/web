@@ -19,7 +19,8 @@ export function FaqContent() {
             shortly after we brought Base to testnet. Builders who completed the quest got a
             commemorative NFT on Base testnet designed by Andre Oshea. Our vision was to enable
             builders to keep a piece of onchain history with them as the earliest Base builders.
-            Now, holders of the testnet NFT can claim their NFT on mainnet.
+            Now, at the anniversary of the Quest, holders of the testnet NFT can claim their NFT on
+            mainnet.
           </>
         }
       />
@@ -44,11 +45,37 @@ export function FaqContent() {
       />
       <FaqItem
         question="Who is eligible to claim the Base Quest Anniversary NFT?"
-        answer="Builders who completed last year’s onchain quest and claimed the Base Goerli testnet NFT. (Please make sure you’re connecting the same wallet that holds the testnet NFT, otherwise you won’t be able to claim.)"
+        answer={
+          <p>
+            Builders who completed last year’s{' '}
+            <a
+              href="https://base.mirror.xyz/CsHm8poSS9HqWNMvPZEZDIn8LMjiNy5PwUd7z8F6G-Q"
+              target="_blank"
+              rel="noreferrer"
+            >
+              onchain quest
+            </a>{' '}
+            and claimed the Base Goerli testnet NFT. (Please make sure you’re connecting the same
+            wallet that holds the testnet NFT, otherwise you won’t be able to claim.)"
+          </p>
+        }
       />
       <FaqItem
         question="Why can’t I claim my NFT?"
-        answer="Only builders who completed last year’s onchain quest and claimed the NFT on the Base Goerli testnet are eligible to claim the mainnet NFT. Please use the wallet that holds the testnet NFT, otherwise you won’t be able to claim."
+        answer={
+          <p>
+            Only builders who completed last year’s{' '}
+            <a
+              href="https://base.mirror.xyz/CsHm8poSS9HqWNMvPZEZDIn8LMjiNy5PwUd7z8F6G-Q"
+              target="_blank"
+              rel="noreferrer"
+            >
+              onchain quest
+            </a>{' '}
+            and claimed the NFT on the Base Goerli testnet are eligible to claim the mainnet NFT.
+            Please use the wallet that holds the testnet NFT, otherwise you won’t be able to claim.
+          </p>
+        }
       />
       <FaqItem
         question="I’m bummed to miss the chance. Will Base do more NFTs?"
