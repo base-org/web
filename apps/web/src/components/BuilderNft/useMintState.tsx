@@ -59,13 +59,15 @@ export function useProofQuery(): UseQueryResult<{ result: string[] }> {
 }
 
 export function useMintState(): MintState {
-  const [_, setIsBannerVisible] = useLocalStorage('isNftBannerVisible', true);
+  const [, setIsBannerVisible] = useLocalStorage('isNftBannerVisible', true);
   const { status, address } = useAccount();
 
   const proofQuery = useProofQuery();
   const proof = proofQuery.data?.result;
 
   const { writeContract, isPending, isSuccess, error, data: txHash, reset } = useWriteContract();
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { data: hasClaimed } = useReadContract({
     abi: contractABI,
     address: contractAddress,
@@ -91,7 +93,7 @@ export function useMintState(): MintState {
       setIsBannerVisible(false);
       logEvent('connected_wallet', { address });
     }
-  }, [address]);
+  }, [address, setIsBannerVisible]);
   useEffect(() => {
     if (isSuccess) {
       logEvent('builder_nft_minted', { address });

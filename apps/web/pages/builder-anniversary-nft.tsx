@@ -1,7 +1,6 @@
 import Head from 'next/head';
 
 import { BuilderNftHero } from '../src/components/BuilderNft/BuilderNftHero';
-import { FaqContent } from 'apps/web/src/components/BuilderNft/FaqContent';
 
 export default function BuilderNFT() {
   return (

@@ -3,7 +3,6 @@ import { useLocalStorage } from 'usehooks-ts';
 import { useCallback } from 'react';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { usePathname } from 'next/navigation';
-import path from 'path';
 
 const href = '/builder-anniversary-nft?utm_source=website';
 export function NftBanner() {
