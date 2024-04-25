@@ -6,6 +6,9 @@ import useClickAway from '../../../utils/hooks/useClickAway';
 
 import { Icon } from '../../Icon/Icon';
 import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
+import { ConnectWalletButton } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
+
+import { REVERSE_COLOR, reverseTextColor } from 'apps/web/src/utils/colors';
 
 // Dropdown Link
 type DropdownLinkProps = {
@@ -19,9 +22,9 @@ function DropdownLink({ href, label, color, externalLink }: DropdownLinkProps) {
   return externalLink ? (
     <a
       href={href}
-      className={`flex items-center whitespace-nowrap px-10 py-[1.25rem] font-mono text-xl hover:underline ${
-        color === 'black' ? 'text-white' : 'text-black'
-      }`}
+      className={`flex items-center whitespace-nowrap px-10 py-[1.25rem] font-mono text-xl hover:underline ${reverseTextColor(
+        color,
+      )}`}
       target="_blank"
       rel="noreferrer noopener"
     >
@@ -30,9 +33,9 @@ function DropdownLink({ href, label, color, externalLink }: DropdownLinkProps) {
   ) : (
     <Link
       href={href}
-      className={`whitespace-nowrap px-10 py-[1.25rem] font-mono text-xl hover:underline ${
-        color === 'black' ? 'text-white' : 'text-black'
-      }`}
+      className={`whitespace-nowrap px-10 py-[1.25rem] font-mono text-xl hover:underline ${reverseTextColor(
+        color,
+      )}`}
     >
       {label}
     </Link>
@@ -41,25 +44,26 @@ function DropdownLink({ href, label, color, externalLink }: DropdownLinkProps) {
 
 // Dropdown
 type DropdownProps = {
-  label: string;
+  label: JSX.Element | string;
   color: 'white' | 'black';
   children: React.ReactElement[];
+  className?: string;
 };
 
 const dropdownInitial = { opacity: 0, y: 10 };
 const dropdownAnimation = { opacity: 1, y: 20 };
 const dropdownTransition = { ease: cubicBezier(0.6, 0.0, 1.0, 1.0), duration: 0.2 };
 
-function Dropdown({ label, color, children }: DropdownProps) {
+function Dropdown({ label, color, children, className }: DropdownProps) {
   const [showDropdown, toggleDropdown] = useState<boolean>(false);
   const handleHideDropdown = useCallback(() => toggleDropdown(false), []);
   const ref = useClickAway<HTMLDivElement>(handleHideDropdown);
 
   return (
-    <div ref={ref} className="relative inline-block">
+    <div ref={ref} className={`relative inline-block ${className ?? ''}`}>
       <button
         type="button"
-        aria-label={label}
+        aria-label={typeof label === 'string' ? label : undefined}
         onClick={useCallback(() => toggleDropdown(!showDropdown), [showDropdown])}
         className={`flex appearance-none items-center font-mono text-xl ${
           showDropdown ? 'underline' : ''
@@ -67,7 +71,7 @@ function Dropdown({ label, color, children }: DropdownProps) {
       >
         <span className="mr-2">{label}</span>
         <span className={`transition duration-200 ${showDropdown ? 'rotate-180' : ''}`}>
-          <Icon name="caret" width="16" height="16" color={color === 'black' ? 'black' : 'white'} />
+          <Icon name="caret" width="16" height="16" color={color} />
         </span>
       </button>
       <AnimatePresence>
@@ -95,10 +99,33 @@ type DesktopNavProps = {
   color: 'white' | 'black';
 };
 
+function IconLink({
+  href,
+  icon,
+  label,
+  color,
+  title,
+}: {
+  href: string;
+  icon: string;
+  label: string;
+  color: 'white' | 'black';
+  title: string;
+}) {
+  return (
+    <a href={href} title={title} className="p-4">
+      <div className="flex flex-row items-center gap-4">
+        <Icon name={icon} width="24" height="24" color={REVERSE_COLOR[color]} />
+        <span className={`${reverseTextColor(color)}`}>{label}</span>
+      </div>
+    </a>
+  );
+}
+
 function DesktopNav({ color }: DesktopNavProps) {
   return (
-    <div className="hidden h-full flex-row items-center space-x-16 lg:flex">
-      <div className="h-full flex-row items-center space-x-16">
+    <div className="hidden w-full flex-row items-center lg:flex">
+      <div className="flex h-full w-full flex-row items-center justify-between">
         <Dropdown label="Ecosystem" color={color}>
           <DropdownLink href="/ecosystem" label="Apps" color={color} />
           <DropdownLink
@@ -145,17 +172,38 @@ function DesktopNav({ color }: DesktopNavProps) {
           <DropdownLink href="https://base.mirror.xyz" label="Blog" color={color} externalLink />
           <DropdownLink href="/jobs" label="Jobs" color={color} />
         </Dropdown>
-      </div>
-      <div className="flex h-full flex-row items-center space-x-8">
-        <a href="https://discord.com/invite/buildonbase" title="Join us on Discord">
-          <Icon name="discord" width="24" height="20" color={color} />
-        </a>
-        <a href="https://twitter.com/base" title="Join us on Twitter">
-          <Icon name="twitter" width="24" height="20" color={color} />
-        </a>
-        <a href="https://github.com/base-org" title="Join us on Github">
-          <Icon name="github" width="24" height="24" color={color} />
-        </a>
+        <Dropdown label="Socials" className="align-text-bottom" color={color}>
+          <IconLink
+            href="https://warpcast.com/~/channel/base"
+            icon="farcaster"
+            label="Farcaster"
+            color={color}
+            title="Join us on Warpcast"
+          />
+          <IconLink
+            href="https://discord.com/invite/buildonbase"
+            icon="discord"
+            label="Discord"
+            color={color}
+            title="Join us on Discord"
+          />
+          <IconLink
+            href="https://twitter.com/base"
+            icon="twitter"
+            label="Twitter"
+            color={color}
+            title="Join us on Twitter"
+          />
+          <IconLink
+            href="https://github.com/base-org"
+            icon="github"
+            label="Github"
+            color={color}
+            title="Join us on Github"
+          />
+        </Dropdown>
+
+        <ConnectWalletButton color={color} className="relative inline-block" />
       </div>
     </div>
   );

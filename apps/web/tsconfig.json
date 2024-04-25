@@ -5,6 +5,11 @@
     "emitDeclarationOnly": false,
     "noEmit": true,
     "outDir": "../../out/apps/web",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "paths": {
+      "base-ui": ["../../libs/base-ui"]
+    },
   },
   "include": [
     "next-env.d.ts",
@@ -13,5 +18,9 @@
     "../../types/**/*"
   ],
   "exclude": [],
-  "references": []
+  "references": [
+    {
+      "path": "../../libs/base-ui"
+    }
+  ]
 }

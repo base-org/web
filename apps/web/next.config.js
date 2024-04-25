@@ -56,7 +56,9 @@ const baseXYZDomains = 'https://base.mirror.xyz';
 const greenhouseDomains = 'https://boards.greenhouse.io';
 const ccaDomain = 'https://static-assets.coinbase.com/js/cca/v0.0.1.js';
 const ccaLiteDomains = 'https://cca-lite.coinbase.com';
-const sprigDomains = 'https://api.sprig.com https://cdn.sprig.com;';
+const sprigDomains = 'https://api.sprig.com https://cdn.sprig.com';
+const walletconnectDomains =
+  'https://*.walletconnect.org wss://*.walletconnect.org wss://*.walletconnect.com https://*.walletconnect.com https://explorer-api.walletconnect.com';
 
 const contentSecurityPolicy = {
   'default-src': [
@@ -64,13 +66,31 @@ const contentSecurityPolicy = {
     "'unsafe-inline'", // NextJS requires 'unsafe-inline'
     isLocalDevelopment ? "'unsafe-eval'" : '',
     baseXYZDomains,
-    greenhouseDomains,
     ccaDomain,
     ccaLiteDomains,
+    walletconnectDomains,
+  ],
+  'connect-src': [
+    "'self'",
+    walletconnectDomains,
     sprigDomains,
+    greenhouseDomains,
+    'https://analytics-service-dev.cbhq.net',
+    'mainnet.base.org',
+    'https://cloudflare-eth.com',
+    'https://i.seadn.io/', // ens avatars
+    'https://api.opensea.io', // enables getting ENS avatars
+    isLocalDevelopment ? 'ws://localhost:3000/' : '',
+    isLocalDevelopment ? 'http://localhost:3000/' : '',
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
+  'img-src': [
+    "'self'",
+    'data:',
+    'https://*.walletconnect.com/', // WalletConnect
+    'https://i.seadn.io/', // ens avatars
+  ],
 };
 
 const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [key, value]) => {
@@ -113,9 +133,18 @@ const securityHeaders = [
 ];
 
 module.exports = extendBaseConfig({
+  transpilePackages: ['base-ui'],
   i18n: {
     locales: ['en'],
     defaultLocale: 'en',
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.seadn.io',
+      },
+    ],
   },
   async headers() {
     return [
