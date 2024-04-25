@@ -20,6 +20,10 @@ export function NftButton() {
     return null;
   }
 
+  if (status === 'minted') {
+    return null;
+  }
+
   if (status === 'disconnected') {
     return (
       <Button variant="primary" className="w-fit" onClick={openConnectModal}>
