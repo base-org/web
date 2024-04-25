@@ -75,6 +75,8 @@ const contentSecurityPolicy = {
     walletconnectDomains,
     sprigDomains,
     greenhouseDomains,
+    ccaLiteDomains,
+    ccaDomain,
     'https://analytics-service-dev.cbhq.net',
     'mainnet.base.org',
     'https://cloudflare-eth.com',
