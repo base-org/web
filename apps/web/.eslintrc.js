@@ -5,6 +5,12 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'eslint-config-prettier',
   ],
+  languageOptions: {
+    parserOptions: {
+      project: true,
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
   settings: {
     next: {
       rootDir: __dirname,
