@@ -16,6 +16,7 @@ keywords:
     Crossmint,
     Dynamic,
     Particle Network,
+    Sequence,
     WalletKit,
     user wallet,
     accounts,
@@ -51,6 +52,12 @@ You can [get started with Privy here](https://docs.privy.io/guide/quickstart), a
 ## Particle Network
 
 [Particle Network](https://particle.network/) is the intent-centric, modular access layer of Web3. With Particle's Smart Wallet-as-a-Service, developers can curate a seamless user experience through modular and customizable EOA/AA embedded wallet components. Using MPC-TSS for key management, Particle can streamline user onboarding via familiar web2 accounts - such as Google accounts, email addresses, and phone numbers. Particle Network's Smart Wallet-as-a-Service is compatible with most EVM chains, including Base.
+
+---
+
+## Sequence
+
+[Sequence](https://sequence.xyz/) is the leading all-in-one development platform for integrating web3 into games. Onboard, monetize, grow, and retain players with Sequence’s award-winning technology including: non-custodial Embedded Wallets, white labeled marketplaces and marketplace API, indexer, relayer, node gateway, Unity/Unreal/React Native/Mobile SDKs, transaction API, contract deployment, analytics, and more. [Learn more here](https://sequence.xyz/) and start creating on [Sequence Builder](https://sequence.build/) now.
 
 ---
 
