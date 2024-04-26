@@ -18,7 +18,7 @@ export function Nav({ color }: NavProps) {
       <NftBanner />
       <nav className="bg-transparent z-10 flex h-24 w-full max-w-[1440px] flex-row items-center justify-between gap-16 self-center p-8">
         <Link href="/" aria-label="Base Homepage">
-          <Logo color={color} path={pathname} />
+          <Logo color={color} path={pathname} width="106px" />
         </Link>
         <DesktopNav color={color} />
         <MobileMenu color={color} />
