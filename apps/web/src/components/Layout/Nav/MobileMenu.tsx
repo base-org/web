@@ -155,7 +155,7 @@ function MobileMenu({ color }: MobileMenuProps) {
           >
             <div className="flex justify-between">
               <Link href="/" onClick={handleMenuClose}>
-                <Logo color="white" />
+                <Logo color="white" width="106px" />
               </Link>
               <button
                 className="appearance-none"

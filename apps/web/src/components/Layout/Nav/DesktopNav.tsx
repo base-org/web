@@ -124,87 +124,85 @@ function IconLink({
 
 function DesktopNav({ color }: DesktopNavProps) {
   return (
-    <div className="hidden w-full flex-row items-center lg:flex">
-      <div className="flex h-full w-full flex-row items-center justify-between">
-        <Dropdown label="Ecosystem" color={color}>
-          <DropdownLink href="/ecosystem" label="Apps" color={color} />
-          <DropdownLink
-            href="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
-            label="Grants"
-            color={color}
-            externalLink
-          />
-        </Dropdown>
-        <a
-          href={bridgeUrl}
-          className={`inline-flex items-center font-mono text-xl ${
-            color === 'black' ? 'text-black' : 'text-white'
-          }`}
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          Bridge
-        </a>
-        <Dropdown label="Developers" color={color}>
-          <DropdownLink href={docsUrl} label="Docs" color={color} externalLink />
-          <DropdownLink
-            href="https://explorer.base.org/"
-            label="Block Explorer"
-            color={color}
-            externalLink
-          />
-          <DropdownLink href="https://status.base.org" label="Status" color={color} externalLink />
-          <DropdownLink
-            href="https://hackerone.com/coinbase"
-            label="Bug Bounty"
-            color={color}
-            externalLink
-          />
-          <DropdownLink
-            href="https://github.com/base-org"
-            label="GitHub"
-            color={color}
-            externalLink
-          />
-        </Dropdown>
-        <Dropdown label="About" color={color}>
-          <DropdownLink href="/about" label="Mission" color={color} />
-          <DropdownLink href="https://base.mirror.xyz" label="Blog" color={color} externalLink />
-          <DropdownLink href="/jobs" label="Jobs" color={color} />
-        </Dropdown>
-        <Dropdown label="Socials" className="align-text-bottom" color={color}>
-          <IconLink
-            href="https://warpcast.com/~/channel/base"
-            icon="farcaster"
-            label="Farcaster"
-            color={color}
-            title="Join us on Warpcast"
-          />
-          <IconLink
-            href="https://discord.com/invite/buildonbase"
-            icon="discord"
-            label="Discord"
-            color={color}
-            title="Join us on Discord"
-          />
-          <IconLink
-            href="https://twitter.com/base"
-            icon="twitter"
-            label="Twitter"
-            color={color}
-            title="Join us on Twitter"
-          />
-          <IconLink
-            href="https://github.com/base-org"
-            icon="github"
-            label="Github"
-            color={color}
-            title="Join us on Github"
-          />
-        </Dropdown>
+    <div className="hidden h-full w-fit flex-grow flex-row items-center items-center justify-between lg:flex">
+      <Dropdown label="Ecosystem" color={color}>
+        <DropdownLink href="/ecosystem" label="Apps" color={color} />
+        <DropdownLink
+          href="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
+          label="Grants"
+          color={color}
+          externalLink
+        />
+      </Dropdown>
+      <a
+        href={bridgeUrl}
+        className={`inline-flex items-center font-mono text-xl ${
+          color === 'black' ? 'text-black' : 'text-white'
+        }`}
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        Bridge
+      </a>
+      <Dropdown label="Developers" color={color}>
+        <DropdownLink href={docsUrl} label="Docs" color={color} externalLink />
+        <DropdownLink
+          href="https://explorer.base.org/"
+          label="Block Explorer"
+          color={color}
+          externalLink
+        />
+        <DropdownLink href="https://status.base.org" label="Status" color={color} externalLink />
+        <DropdownLink
+          href="https://hackerone.com/coinbase"
+          label="Bug Bounty"
+          color={color}
+          externalLink
+        />
+        <DropdownLink
+          href="https://github.com/base-org"
+          label="GitHub"
+          color={color}
+          externalLink
+        />
+      </Dropdown>
+      <Dropdown label="About" color={color}>
+        <DropdownLink href="/about" label="Mission" color={color} />
+        <DropdownLink href="https://base.mirror.xyz" label="Blog" color={color} externalLink />
+        <DropdownLink href="/jobs" label="Jobs" color={color} />
+      </Dropdown>
+      <Dropdown label="Socials" className="align-text-bottom" color={color}>
+        <IconLink
+          href="https://warpcast.com/~/channel/base"
+          icon="farcaster"
+          label="Farcaster"
+          color={color}
+          title="Join us on Warpcast"
+        />
+        <IconLink
+          href="https://discord.com/invite/buildonbase"
+          icon="discord"
+          label="Discord"
+          color={color}
+          title="Join us on Discord"
+        />
+        <IconLink
+          href="https://twitter.com/base"
+          icon="twitter"
+          label="Twitter"
+          color={color}
+          title="Join us on Twitter"
+        />
+        <IconLink
+          href="https://github.com/base-org"
+          icon="github"
+          label="Github"
+          color={color}
+          title="Join us on Github"
+        />
+      </Dropdown>
 
-        <ConnectWalletButton color={color} className="relative inline-block" />
-      </div>
+      <ConnectWalletButton color={color} className="relative inline-block" />
     </div>
   );
 }
