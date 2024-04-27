@@ -39,6 +39,12 @@ hide_table_of_contents: true
 
 ---
 
+## Coinbase Developer Platform: Account Abstraction Kit
+
+The Coinbase Developer Platform [Account Abstraction Kit](https://www.coinbase.com/developer-platform/solutions/account-abstraction-kit) is an account abstraction toolkit for building simple onchain user experiences. Account Abstraction Kit provides a paymaster and bundler that allows you to sponsor gas fees and bundle user transactions, improving the user experience of your application.
+
+---
+
 ## Pimlico
 
 [Pimlico](https://pimlico.io/) provides an infrastructure platform that makes building smart accounts simpler. If you are developing, an ERC-4337 smart account, they provide bundlers, verifying paymasters, ERC-20 paymasters, and much more.
