@@ -39,7 +39,7 @@ hide_table_of_contents: true
 
 ---
 
-## Coinbase Developer Platform: Account Abstraction Kit
+## Coinbase Account Abstraction Kit
 
 The Coinbase Developer Platform [Account Abstraction Kit](https://www.coinbase.com/developer-platform/solutions/account-abstraction-kit) is an account abstraction toolkit for building simple onchain user experiences. Account Abstraction Kit provides a paymaster and bundler that allows you to sponsor gas fees and bundle user transactions, improving the user experience of your application.
 
