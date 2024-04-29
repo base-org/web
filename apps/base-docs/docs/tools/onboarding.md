@@ -20,6 +20,7 @@ keywords:
     user wallet,
     accounts,
     user account,
+    openfort,
   ]
 hide_table_of_contents: true
 ---
@@ -37,6 +38,14 @@ hide_table_of_contents: true
 ## Dynamic
 
 [Dynamic](https://www.dynamic.xyz/) is a login platform designed for seamless user onboarding. It offers smart and simple login flows for both crypto-native and non-native users. Dynamic features support for non-custodial embedded wallets and consolidating multiple wallets under a single user account. The Dynamic platform is compatible with most EVM chains, including Base.
+
+---
+
+## Openfort
+
+[Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. Authenticated users can instantly access the embedded, non-custodial [smart account](https://www.openfort.xyz/docs/guides/accounts/smart) from within the game context and sign blockchain transactions.
+
+Use [Auth Quick Start Guide](https://www.openfort.xyz/docs/guides/auth/overview) to allow social login for onboarding users.
 
 ---
 
