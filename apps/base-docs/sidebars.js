@@ -33,6 +33,7 @@ module.exports = {
         'tools/cross-chain',
         'tools/account-abstraction',
         'tools/nft-checkout',
+        'tools/nft-minting',
         'tools/onramps',
         'tools/onboarding',
         {
