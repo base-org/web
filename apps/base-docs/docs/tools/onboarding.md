@@ -57,7 +57,7 @@ You can [get started with Privy here](https://docs.privy.io/guide/quickstart), a
 
 ## Sequence
 
-[Sequence](https://sequence.xyz/base) is the all-in-one development platform for integrating web3 into games. Onboard, monetize, grow, and retain players with Sequence’s award-winning technology including: non-custodial Embedded Wallets, white labeled marketplaces and marketplace API, indexer, relayer, node gateway, Unity/Unreal/React Native/Mobile SDKs, transaction API, contract deployment, analytics, and more. [Learn more here](https://sequence.xyz/base) and start creating on [Sequence Builder](https://sequence.build/) now.
+[Sequence](https://sequence.xyz/base) is an all-in-one development platform for integrating web3 into games. Onboard, monetize, grow, and retain players with Sequence’s award-winning technology including: non-custodial Embedded Wallets, white labeled marketplaces and marketplace API, indexer, relayer, node gateway, Unity/Unreal/React Native/Mobile SDKs, transaction API, contract deployment, analytics, and more. [Learn more here](https://sequence.xyz/base) and start creating on [Sequence Builder](https://sequence.build/) now.
 
 ---
 
