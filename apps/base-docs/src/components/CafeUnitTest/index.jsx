@@ -12,6 +12,7 @@ import {
 
 import useNFTData from '../../utils/nft-exercise-data';
 import { decodeEventLog } from 'viem';
+import { CafeSocialShare } from '../CafeSocialShare';
 
 const pinStyle = {
   width: 300,
@@ -220,6 +221,7 @@ export default function CafeUnitTest({ nftNum }) {
             {nft.title} NFT Badge Earned on {chain.name}!
           </div>
           <img src={nft.img} style={pinStyle} alt={`${nft.title} NFT Badge`} />
+          <CafeSocialShare name={nft.title} />
         </div>
       );
     }
