@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '../Button/Button';
-import { Icon } from '../SocialIcon/Icon';
+import Icon from '../Icon';
+import styles from './styles.module.css';
 
 const url = 'https://base.org/camp';
 
@@ -10,11 +11,12 @@ export function CafeSocialShare({ name }) {
   );
 
   return (
-    <div className="flex flex-row items-center gap-4">
+    <div className={styles.socialShare}>
       <a
         href={`https://warpcast.com/~/compose?embeds[]=${encodeURIComponent(
           url,
         )}&text=${shareText}`}
+        className={styles.socialShareLink}
         target="_blank"
         rel="noreferrer"
       >
@@ -24,6 +26,7 @@ export function CafeSocialShare({ name }) {
       </a>
       <a
         href={`https://twitter.com/intent/tweet?text=${shareText}`}
+        className={styles.socialShareLink}
         target="_blank"
         rel="noreferrer"
       >

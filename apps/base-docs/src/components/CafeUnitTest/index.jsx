@@ -220,7 +220,7 @@ export default function CafeUnitTest({ nftNum }) {
           <div style={pinTitleStyle}>
             {nft.title} NFT Badge Earned on {chain.name}!
           </div>
-          <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
             <p>Share your progress:</p>
             <CafeSocialShare name={nft.title} />
           </div>
