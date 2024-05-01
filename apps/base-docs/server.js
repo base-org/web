@@ -357,6 +357,25 @@ app.get('/guides/account-abstraction/implementing-the-paymaster', (req, res) => 
   res.redirect('/tutorials/account-abstraction-with-privy-and-base-paymaster');
 });
 
+app.get('/building-with-base/guides/account-abstraction/overview', (req, res) => {
+  res.redirect('/tutorials/account-abstraction-with-privy-and-base-paymaster');
+});
+
+app.get(
+  '/building-with-base/guides/account-abstraction/intro-to-account-abstraction',
+  (req, res) => {
+    res.redirect('/tutorials/account-abstraction-with-privy-and-base-paymaster');
+  },
+);
+
+app.get('/building-with-base/guides/account-abstraction/intro-to-privy', (req, res) => {
+  res.redirect('/tutorials/account-abstraction-with-privy-and-base-paymaster');
+});
+
+app.get('/building-with-base/guides/account-abstraction/implementing-the-paymaster', (req, res) => {
+  res.redirect('/tutorials/account-abstraction-with-privy-and-base-paymaster');
+});
+
 if (process.env.APP_STAGE === 'production' && process.env.AUTH_ENABLED !== 'false') {
   const auth = basicAuth({
     challenge: true,
