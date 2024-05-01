@@ -1,8 +1,8 @@
 ---
 title: 'Indexing Data with SubQuery'
-slug: /subquery
+slug: /data-indexers-subquery
 description: A tutorial explaining SubQuery and providing swift guidance on configuring a project
-author: data-indexers-subquery
+author: subquery
 keywords:
   [
     indexers,
