@@ -25,7 +25,7 @@ export const contractABI = [
     stateMutability: 'view',
     type: 'function',
   },
-];
+] as const;
 
 const DEFAULT_HEADING = 'It’s here! Claim your Base Quest Anniversary NFT';
 

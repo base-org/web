@@ -16,8 +16,7 @@ module.exports = {
     },
   ],
   parserOptions: {
-    parser: '@typescript-eslint/parser',
-    project: './tsconfig.json',
+    EXPERIMENTAL_useProjectService: true,
   },
   plugins: ['react-perf', 'relay', '@typescript-eslint', 'import'],
   extends: [
@@ -88,7 +87,7 @@ module.exports = {
     // Readability
     '@typescript-eslint/adjacent-overload-signatures': 'error',
     '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: false }],
-    '@typescript-eslint/no-parameter-properties': 'error',
+    '@typescript-eslint/parameter-properties': 'error',
     '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
 
     // Correctness
@@ -101,7 +100,7 @@ module.exports = {
     '@typescript-eslint/no-unnecessary-type-constraint': 'error',
     '@typescript-eslint/prefer-for-of': 'error',
     '@typescript-eslint/prefer-literal-enum-member': 'error',
-    '@typescript-eslint/restrict-plus-operands': ['error', { checkCompoundAssignments: true }],
+    '@typescript-eslint/restrict-plus-operands': ['error', { skipCompoundAssignments: false }],
     '@typescript-eslint/unified-signatures': 'error',
 
     // Assertions
