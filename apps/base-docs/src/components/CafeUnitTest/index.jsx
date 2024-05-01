@@ -220,8 +220,13 @@ export default function CafeUnitTest({ nftNum }) {
           <div style={pinTitleStyle}>
             {nft.title} NFT Badge Earned on {chain.name}!
           </div>
+          <div>
+            <div>Share your progress:</div>
+            <CafeSocialShare name={nft.title} />
+          </div>
+          <br />
           <img src={nft.img} style={pinStyle} alt={`${nft.title} NFT Badge`} />
-          <CafeSocialShare name={nft.title} />
+          <br />
         </div>
       );
     }
