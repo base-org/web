@@ -41,7 +41,7 @@ hide_table_of_contents: true
 
 ## Openfort
 
-[Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. The platform vertically integrates the AA stack, so game developers can focus on game development without worrying about private key management, the account model or the onchain interactions with paymasters and bundlers.
+[Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. The platform vertically integrates the AA stack, so game developers can focus on game development without worrying about private key management, the account model or the onchain interactions with paymasters and bundlers. The Openfort platform is compatible with most EVM chains, including Base.
 
 ---
 
