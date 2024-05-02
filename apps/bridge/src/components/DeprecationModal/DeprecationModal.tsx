@@ -3,7 +3,10 @@ import { Modal } from 'apps/bridge/src/components/Modal/Modal';
 import { useLocalStorage } from 'usehooks-ts';
 
 export function DeprecationModal() {
-  const [deprecationSeen, setDeprecationSeen] = useLocalStorage('deprecationSeen', false);
+  const [deprecationSeen, setDeprecationSeen] = useLocalStorage('deprecationSeen', false, {
+    // make SSR compatible
+    initializeWithValue: false,
+  });
 
   const onClose = useCallback(() => {
     setDeprecationSeen(true);
@@ -27,7 +30,7 @@ export function DeprecationModal() {
         </div>
       </div>
     );
-  }, []);
+  }, [onClose]);
 
   return (
     <Modal

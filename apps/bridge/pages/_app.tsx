@@ -132,6 +132,7 @@ function Root({ Component, pageProps }: AppProps) {
                       {(pathname === '/' || !allowedPaths.has(pathname)) && (
                         <Component {...props} />
                       )}
+
                       {allowedPaths.has(pathname) && (
                         <Sidebar>
                           <>
