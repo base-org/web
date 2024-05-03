@@ -2873,5 +2873,302 @@
       "defi"
     ],
     "imageUrl": "/images/partners/dln.webp"
+  },
+  {
+    "name": "OpenCover",
+    "tags": [
+      "defi"
+    ],
+    "description": "OpenCover makes it easy and affordable to protect your portfolio against onchain risks. Get cover against smart contract hacks, oracle failures and more from vetted onchain underwriters.",
+    "url": "https://opencover.com",
+    "imageUrl": "/images/partners/opencover.png"
+  },
+  {
+    "name": "DePerp DEX",
+    "tags": [
+      "defi"
+    ],
+    "description": "A trading platform that offers a fusion of exotic trading perps coupled with the comprehensive features of a CEX. Catering to a range of self-custody markets, including FX, Crypto, Metals, and Equity.",
+    "url": "https://app.deperp.com/",
+    "imageUrl": "/images/partners/deperp.png"
+  },
+  {
+    "name": "Astaria",
+    "tags": [
+      "defi"
+    ],
+    "description": "Astaria is an oracle-less, intent-based, fixed-rate lending protocol supporting unlimited loan durations for ERC-20 and ERC-72. Mission: instant liquidity for any on-chain asset.",
+    "url": "https://www.astaria.xyz",
+    "imageUrl": "/images/partners/astaria.jpg"
+  },
+  {
+    "name": "Orderly Network",
+    "tags": [
+      "defi"
+    ],
+    "description": "Orderly Network is revolutionizing trading with its permissionless liquidity layer. Built on omnichain infrastructure, Orderly incepts deep liquidity for any asset across blockchains.",
+    "url": "https://orderly.network/",
+    "imageUrl": "/images/partners/orderly.png"
+  },
+  {
+    "name": "Krav Trade ",
+    "tags": [
+      "defi"
+    ],
+    "description": "At Krav, we're all about creating a robust DeFi infrasturcture where you, whether as a trader or a liquidity provider (LP), can truly thrive. If you're a trader, you'll love how you can use altcoins such as PEPE as collateral to open long or short positions on Bitcoin (BTC). And if you're an LP, you'll appreciate the steady income from transaction fees every time a trade happens.",
+    "url": "https://krav.trade/",
+    "imageUrl": "/images/partners/krav.png"
+  },
+  {
+    "name": "goodcryptoX",
+    "tags": [
+      "defi"
+    ],
+    "description": "Non-custodial trading bot powered by smart contract wallets. Offers advanced DEX trading tools: from limit and trailing orders to DCA, Grid, Gems Sniper bots and much more",
+    "url": "https://goodcrypto.app/x",
+    "imageUrl": "/images/partners/goodcryptox.png"
+  },
+  {
+    "name": "SwapBased",
+    "tags": [
+      "defi"
+    ],
+    "description": "Native Base DEX offering Swaps, Single Staking, Bridging, Perpetuals and Concentrated Liquidity all in one place!",
+    "url": "https://swapbased.finance/",
+    "imageUrl": "/images/partners/swapbased.png"
+  },
+  {
+    "name": "Interport Finance",
+    "tags": [
+      "defi"
+    ],
+    "description": "Interport Finance stands out as a comprehensive cross-chain hub, designed to meet all your cross-chain needs in one place. This innovative platform is reshaping the world of DeFi by offering an intuitive and powerful solution that simplifies the complexities of blockchain interoperability.\n\nAs a point for various cross-chain functionalities, Interport Finance provides a seamless experience, making it an essential tool for navigating the dynamic and interconnected blockchain networks. Interport offers a user-centric, secure, and decentralized DeFi platform driven by innovation and community engagement\n\nOur core products are: cross-chain swaps - buy and sell any token on any supported chain, ensuring you have the fastest and cost-effective trade; bridge - effortlessly bridge stable and OFT tokens across multiple chains; gas transfer - efficient transfer of native tokens across an extensive network of 49 chains; earn - earning opportunities through our stablecoin pools and ITP farms.\n\nOur vision is to create a borderless DeFi ecosystem where every blockchain is interconnected. We aim to break down the barriers between chains, making the decentralized finance world more accessible, efficient, and user-friendly. Get ready to launch into DeFi's future with Interport! 🚀",
+    "url": "https://interport.fi/",
+    "imageUrl": "/images/partners/interport.png"
+  },
+  {
+    "name": "Bitbond Token Tool",
+    "tags": [
+      "defi"
+    ],
+    "description": "Bitbond Token Tool is a web3 app that enables users to effortlessly create, manage and multisend ERC20 / ERC1400 tokens and NFTs across leading EVM chains. Users can rely on Token Tool’s configurable smart contract templates that have been audited by CertiK instead of having to program their own smart contracts. Token Tool offers a convenient user interface as well as an API in its enterprise version.",
+    "url": "https://tokentool.bitbond.com/",
+    "imageUrl": "/images/partners/tokentool.png"
+  },
+  {
+    "name": "Crypto Hub",
+    "tags": [
+      "defi"
+    ],
+    "description": "Community-Driven Launchpad: Empowering Base Network startups with marketing services, retail fundraising, blockchain development, and tokenization.",
+    "url": "https://cryptohub.investments/",
+    "imageUrl": "/images/partners/cryptohub.png"
+  },
+  {
+    "name": "Threebalance",
+    "tags": [
+      "defi"
+    ],
+    "description": "Threebalance is a portfolio rebalancing tool built on top of 1inch API. \nThe DApp enables you to rebalance or reposition your portfolio in 3 steps via one simple interface.",
+    "url": "https://threebalance.co/",
+    "imageUrl": "/images/partners/threebalance.png"
+  },
+  {
+    "name": "Cat Town",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Cat Town is an idle economy game where you can collect cats, earn rewards and embark on adventures! Discover tradable items and unlock soulbound NFTs and achievements!",
+    "url": "https://www.cat.town",
+    "imageUrl": "/images/partners/cattown.png"
+  },
+  {
+    "name": "UMA",
+    "tags": [
+      "infra"
+    ],
+    "description": "UMA builds products that help builders scale. Deploy prediction markets and insurance protocols, with the Optimistic Oracle, Decentralize anything with oSnap. Capture OEV with Oval. \n",
+    "url": "https://uma.xyz",
+    "imageUrl": "/images/partners/uma.png"
+  },
+  {
+    "name": "Pintu Web3",
+    "tags": [
+      "wallet"
+    ],
+    "description": "Pintu is an Indonesian-licensed crypto exchange that features an MPC wallet for easier Web3 access. It supports multiple blockchain networks, including Base, Ethereum, Polygon, Arbitrum, and Optimism.",
+    "url": "https://pintu.co.id/en/web3",
+    "imageUrl": "/images/partners/pintu.png"
+  },
+  {
+    "name": "Nitro (by Router Protocol)",
+    "tags": [
+      "bridge"
+    ],
+    "description": "Router Nitro, developed by Router Protocol, stands out as a premier gas-efficient, rapid, and remarkably cost-effective intent-based bridge. It excels in supporting both EVM and non-EVM transactions. Renowned for its unparalleled affordability, speed, and security, it is one of the most economical, swift, and secure solutions available.",
+    "url": "https://nitro.routerprotocol.com/",
+    "imageUrl": "/images/partners/nitro.png"
+  },
+  {
+    "name": "Retro Bridge",
+    "tags": [
+      "bridge"
+    ],
+    "description": "RetroBridge is an advanced cross-chain bridging solution designed to streamline the process of transferring assets across different blockchain networks. ",
+    "url": "https://retrobridge.io/",
+    "imageUrl": "/images/partners/retro.png"
+  },
+  {
+    "name": "Chainge",
+    "tags": [
+      "bridge"
+    ],
+    "description": "One marketplace. All Crypto.",
+    "url": "https://dapp.chainge.finance",
+    "imageUrl": "/images/partners/chainge.png"
+  },
+  {
+    "name": "Common",
+    "tags": [
+      "dao"
+    ],
+    "description": "An all-in-one space with transparent rewards, roles, and discussion for any community.",
+    "url": "https://www.common.xyz",
+    "imageUrl": "/images/partners/commonxyz.png"
+  },
+  {
+    "name": "Cornucopias",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Welcome to Cornucopias: a new MMO where you have the freedom to live any life you desire. Up here in the clouds, the sky is no longer the limit. ",
+    "url": "https://cornucopias.io",
+    "imageUrl": "/images/partners/cornucopias.png"
+  },
+  {
+    "name": "Pixotchi",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Pixotchi, where you grow, strategize, and earn rewards as you cultivate your garden on Base with $SEED! ",
+    "url": "https://app.pixotchi.tech/",
+    "imageUrl": "/images/partners/pixotchi.png"
+  },
+  {
+    "name": "Chainbase Network",
+    "tags": [
+      "infra"
+    ],
+    "description": "Chainbase is the first omnichain data network powering the machine economy. It operates as a modular layer enabling interoperability and programmability between cross-chain data. It is designed to provide a trustless, permissionless, and permanent data access environment for Crypto and AI by building a global supercluster.",
+    "url": "https://chainbase.com/",
+    "imageUrl": "/images/partners/chainbase.png"
+  },
+  {
+    "name": "Noves",
+    "tags": [
+      "infra"
+    ],
+    "description": "Noves (no-vez) is the leading provider of translated blockchain data. Instead of raw and unreadable data, Noves delivers translated data with meaningful information about any onchain transaction.",
+    "url": "https://noves.fi ",
+    "imageUrl": "/images/partners/noves.png"
+  },
+  {
+    "name": "Cryptix Tokenization - Tokenlaunchpad",
+    "tags": [
+      "infra"
+    ],
+    "description": "Tokenlaunchpad by Cryptix Tokenization is a web app that enables anyone, with or without coding skills, to create a token. All that’s needed is a working browser and browser wallet such as Metamask.",
+    "url": "https://app.tokenlaunchpad.eu/",
+    "imageUrl": "/images/partners/cryptix.png"
+  },
+  {
+    "name": "Portal",
+    "tags": [
+      "infra"
+    ],
+    "description": "Portal is an embedded blockchain infrastructure company with non-custodial wallets, on/off ramps, and security firewall to power cross-border payments, embedded Web3 wallets, remittances, and more.",
+    "url": "https://www.portalhq.io/",
+    "imageUrl": "/images/partners/portal.jpg"
+  },
+  {
+    "name": "Mobula",
+    "tags": [
+      "infra"
+    ],
+    "description": "Mobula provides curated datasets for builders: market data with Octopus, wallets data, metadata with Metacore, alongside with REST, GraphSQL & SQL interfaces to query them.",
+    "url": "https://mobula.io",
+    "imageUrl": "/images/partners/mobula.jpg"
+  },
+  {
+    "name": "Mintpad",
+    "tags": [
+      "nft"
+    ],
+    "description": "Mintpad makes it easy to start an NFT collection. All you need is your artwork and a cryptocurrency wallet. Our platform takes care of the rest, handling everything else you need.",
+    "url": "https://mintpad.co/",
+    "imageUrl": "/images/partners/mintpad.png"
+  },
+  {
+    "name": "Collectify",
+    "tags": [
+      "nft"
+    ],
+    "description": "Launch NFT projects and build your own ecosystem with Collectify.\nOur no-code toolkit empowers small teams and individuals with tools from contract creation, to post-mint project management.",
+    "url": "https://collectify.app/",
+    "imageUrl": "/images/partners/collectify.png"
+  },
+  {
+    "name": "Innovaz",
+    "tags": [
+      "nft"
+    ],
+    "description": "NFT-Marketplace-as-a-Service with diverse templates. Your dream NFT Marketplace, ready in 15 minutes!",
+    "url": "https://innovaz.io/",
+    "imageUrl": "/images/partners/innovaz.png"
+  },
+  {
+    "name": "Codeslaw",
+    "tags": [
+      "security"
+    ],
+    "description": "Codeslaw is a code search engine for verified smart contracts on Base, Ethereum and beyond to help developers find and learn from verified and live smart contracts",
+    "url": "https://codeslaw.app",
+    "imageUrl": "/images/partners/codeslaw.png"
+  },
+  {
+    "name": "Everyworld ",
+    "tags": [
+      "social"
+    ],
+    "description": "Everyworld is a rewarded ads protocol that rewards people for consuming and engaging with promoted content. ",
+    "url": "https://www.everyworld.com/",
+    "imageUrl": "/images/partners/everyworld.png"
+  },
+  {
+    "name": "Circle.tech",
+    "tags": [
+      "social"
+    ],
+    "description": "Paywall and monetize your time by providing gated access and content to your most valuable fans.",
+    "url": "https://circle.tech",
+    "imageUrl": "/images/partners/circletech.jpeg"
+  },
+  {
+    "name": "ResearchHub",
+    "tags": [
+      "social"
+    ],
+    "description": "ResearchHub is a modern day preprint server that incentivizes scientists to fund, create, and publish open and transparent research.",
+    "url": "https://www.researchhub.com/",
+    "imageUrl": "/images/partners/researchhub.png"
+  },
+  {
+    "name": "tide protocol",
+    "tags": [
+      "social"
+    ],
+    "description": "Tide helps projects retain users via points and targeted airdrops",
+    "url": "https://landing.tideprotocol.xyz/",
+    "imageUrl": "/images/partners/tide.png"
   }
 ]
