@@ -16,8 +16,22 @@ export function DeprecationModal() {
     return (
       <div className="flex flex-col items-center space-y-8">
         <p>
-          Starting next week, users will be redirected to the Superchain Bridges. See FAQs for
-          details.
+          As Base continues to decentralize, later this month{' '}
+          <a href="https://bridge.base.org" className="underline">
+            bridge.base.org
+          </a>{' '}
+          will redirect to{' '}
+          <a
+            href="https://superbridge.com/base"
+            target="_blank"
+            rel="noreferrer"
+            className="underline"
+          >
+            Superbridge
+          </a>{' '}
+          and other bridges (collectively, “Superchain bridges”). Superchain bridges are available
+          to initiate and complete deposits and withdrawals to and from Base. Please see our FAQs
+          for additional info.
         </p>
         <div className="flex flex-col space-y-2">
           <button
