@@ -14,7 +14,7 @@ export function FaqSidebar() {
       />
       <QuestionAccordion
         question="How can I bridge to Base after the bridge has been deprecated?"
-        answer="Once deprecated, bridge.base.org will direct users to the two “Superchain Bridges” selected by Base and the Optimism teams: Superbridge and Brid.gg. Both of these sites remain available to initiate and complete deposits and withdrawals to and from Base"
+        answer="Once deprecated, bridge.base.org will direct users to the two “Superchain Bridges” selected by Base and the Optimism teams. Both of these sites remain available to initiate and complete deposits and withdrawals to and from Base"
       />
       <QuestionAccordion
         question="Can I initiate a withdrawal within 7 days of the Bridge being deprecated?"
