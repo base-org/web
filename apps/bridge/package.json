@@ -28,6 +28,7 @@
     "react-intl": "^6.2.1",
     "react-query": "^3.39.3",
     "typescript": "next",
+    "usehooks-ts": "^3.1.0",
     "viem": "latest",
     "wagmi": "^1.4.12",
     "webpack-bugsnag-plugins": "^1.8.0"

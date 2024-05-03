@@ -1,4 +1,4 @@
-import { Fragment, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
@@ -17,7 +17,7 @@ function emptyOnClose() {}
 
 export function Modal({ children, isOpen, title, content, icon, footer, onClose }: ModalProps) {
   return (
-    <Transition appear show={isOpen} as={Fragment}>
+    <Transition appear show={isOpen}>
       <Dialog open={isOpen} onClose={onClose ?? emptyOnClose}>
         <Dialog.Backdrop className="fixed inset-0 bg-stone-900 bg-opacity-75" />
 
@@ -51,7 +51,7 @@ export function Modal({ children, isOpen, title, content, icon, footer, onClose 
                 {children}
               </div>
               {Boolean(footer) && (
-                <footer className="-mt-8 border-t border-t-[#D9D9D9] border-opacity-20 py-4 px-6">
+                <footer className="-mt-8 border-t border-t-[#D9D9D9] border-opacity-20 px-6 py-4">
                   {footer}
                 </footer>
               )}

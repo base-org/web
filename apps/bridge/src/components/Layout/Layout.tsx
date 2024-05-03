@@ -1,6 +1,7 @@
 import { ReactElement, useEffect } from 'react';
 import { OFACModal } from 'apps/bridge/src/components/OFACModal/OFACModal';
 import { TOSModal } from 'apps/bridge/src/components/TOSModal/TOSModal';
+import { DeprecationModal } from 'apps/bridge/src/components/DeprecationModal/DeprecationModal';
 import { useOFACStatus } from 'apps/bridge/src/contexts/OFACContext';
 import { useTOSStatus } from 'apps/bridge/src/contexts/TOSContext';
 import { useChainEnv } from 'apps/bridge/src/utils/hooks/useChainEnv';
@@ -34,6 +35,7 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <>
+      <DeprecationModal />
       {isMainnet && !isOFACAllowed && !isOFACAllowedLoading && isOFACRequiredPath && (
         <OFACModal isOpen />
       )}

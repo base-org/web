@@ -17,6 +17,7 @@ import App, { AppContext, AppProps } from 'next/app';
 import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 import { WagmiConfig } from 'wagmi';
+import Image from 'next/image';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -132,6 +133,12 @@ function Root({ Component, pageProps }: AppProps) {
                       {(pathname === '/' || !allowedPaths.has(pathname)) && (
                         <Component {...props} />
                       )}
+                      <div className="flex w-full flex-col">
+                        <div className="flex w-full flex-row items-center gap-4 bg-notice-blue px-8 py-3 text-center font-sans text-sm font-bold text-white">
+                          <Image alt="tooltip" src="/icons/alert.svg" width={16} height={16} />
+                          <p>This bridge is being replaced on May 10. See FAQs for details.</p>
+                        </div>
+                      </div>
                       {allowedPaths.has(pathname) && (
                         <Sidebar>
                           <>

@@ -4,7 +4,37 @@ export function FaqSidebar() {
   return (
     <div className="flex h-full w-full flex-col p-4 font-sans lg:w-[420px] lg:border-l lg:border-sidebar-border">
       <span className="mb-8 text-base font-medium text-stone-400">Frequently asked questions</span>
-
+      <QuestionAccordion
+        question="Why is Base deprecating their bridge?"
+        answer="Base is committed to decentralization and the Superchain vision. Leveraging the community to bootstrap the Superchain bridges is a step in that direction; increasing censorship resistance and decentralization."
+      />
+      <QuestionAccordion
+        question="Can I still use the Base bridge?"
+        answer="Yes, you can use the Base bridge until the frontend is deprecated (no sooner than 5/10)"
+      />
+      <QuestionAccordion
+        question="How can I bridge to Base after the bridge has been deprecated?"
+        answer={
+          <>
+            Once deprecated, bridge.base.org will direct users to the two “Superchain Bridges”
+            selected by Base and the Optimism teams, one of which is{' '}
+            <a
+              href="https://superbridge.com/base"
+              target="_blank"
+              rel="noreferrer"
+              className="underline"
+            >
+              Superbridge
+            </a>
+            . Both of these sites remain available to initiate and complete deposits and withdrawals
+            to and from Base
+          </>
+        }
+      />
+      <QuestionAccordion
+        question="Can I initiate a withdrawal within 7 days of the Bridge being deprecated?"
+        answer="Yes. The Base bridge frontend will be fully functional until it is deprecated. If you initiate a withdrawal within 7 days of deprecation, you will receive your funds after the challenge period has closed."
+      />
       <QuestionAccordion
         question="What is Base Bridge?"
         answer="Base Bridge enables the transfer of certain digital assets and other data back and forth between Ethereum and Base."
