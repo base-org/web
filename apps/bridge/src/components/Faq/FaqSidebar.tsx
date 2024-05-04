@@ -5,18 +5,18 @@ export function FaqSidebar() {
     <div className="flex h-full w-full flex-col p-4 font-sans lg:w-[420px] lg:border-l lg:border-sidebar-border">
       <span className="mb-8 text-base font-medium text-stone-400">Frequently asked questions</span>
       <QuestionAccordion
-        question="Why is Base deprecating their bridge?"
+        question="Why is Base deprecating the bridge on bridge.base.org?"
         answer="Base is committed to decentralization and the Superchain vision. Leveraging the community to bootstrap the Superchain bridges is a step in that direction; increasing censorship resistance and decentralization."
       />
       <QuestionAccordion
-        question="Can I still use the Base bridge?"
-        answer="Yes, you can use the Base bridge until the frontend is deprecated (no sooner than 5/10)"
+        question="Can I still use the bridge on bridge.base.org?"
+        answer="You can use Base bridge until the frontend is deprecated on May 10th."
       />
       <QuestionAccordion
-        question="How can I bridge to Base after the bridge has been deprecated?"
+        question="How can I bridge to or withdraw from Base after the bridge has been deprecated?"
         answer={
           <>
-            Once deprecated, bridge.base.org will direct users to the two “Superchain Bridges”
+            Once deprecated, bridge.base.org will direct users to &quot;Superchain Bridges&quot;
             selected by Base and the Optimism teams, one of which is{' '}
             <a
               href="https://superbridge.com/base"
@@ -26,14 +26,32 @@ export function FaqSidebar() {
             >
               Superbridge
             </a>
-            . Both of these sites remain available to initiate and complete deposits and withdrawals
-            to and from Base
+            . Superchain Bridges remain available to initiate and complete deposits and withdrawals
+            to and from Base.
           </>
         }
       />
       <QuestionAccordion
         question="Can I initiate a withdrawal within 7 days of the Bridge being deprecated?"
-        answer="Yes. The Base bridge frontend will be fully functional until it is deprecated. If you initiate a withdrawal within 7 days of deprecation, you will receive your funds after the challenge period has closed."
+        answer={
+          <>
+            Yes, however, in the event you are unable to complete your withdraw within the 7 day
+            period, you will need to use a Superchain Bridge such as{' '}
+            <a
+              href="https://superbridge.com/base"
+              target="_blank"
+              rel="noreferrer"
+              className="underline"
+            >
+              Superbridge
+            </a>
+            &nbsp;to complete your withdrawal.
+          </>
+        }
+      />
+      <QuestionAccordion
+        question="Who operates Superchain Bridges like Superbridge.com?"
+        answer='Superbridge and Superchain Bridges are operated by third parties, not by Coinbase Technologies, Inc. ("Coinbase"). Coinbase does not control, operate, or assume any responsibility for the performance of these external platforms. Before using any Superchain Bridge, you may be required to agree to their terms and conditions. We strongly recommend you review these terms carefully, as well as any privacy policies, to understand your rights and obligations. The integration or inclusion of the Superchain Bridges does not imply an endorsement or recommendation of any bridge by Coinbase.'
       />
       <QuestionAccordion
         question="What is Base Bridge?"
