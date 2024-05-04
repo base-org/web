@@ -16,8 +16,8 @@ export function FaqSidebar() {
         question="How can I bridge to or withdraw from Base after the bridge has been deprecated?"
         answer={
           <>
-            Once deprecated, bridge.base.org will direct users to “Superchain Bridges” selected by
-            Base and the Optimism teams, one of which is{' '}
+            Once deprecated, bridge.base.org will direct users to &quot;Superchain Bridges&quot;
+            selected by Base and the Optimism teams, one of which is{' '}
             <a
               href="https://superbridge.com/base"
               target="_blank"

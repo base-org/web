@@ -147,9 +147,10 @@ function Root({ Component, pageProps }: AppProps) {
                             >
                               Superbridge
                             </a>{' '}
-                            and other bridges (collectively, "Superchain bridges"). Superchain
-                            bridges are available to initiate and complete deposits and withdrawals
-                            to and from Base. Please see our FAQs on this page for details.
+                            and other bridges (collectively, &quot;Superchain bridges&quot;).
+                            Superchain bridges are available to initiate and complete deposits and
+                            withdrawals to and from Base. Please see our FAQs on this page for
+                            details.
                           </p>
                         </div>
                       </div>
