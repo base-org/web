@@ -136,7 +136,22 @@ function Root({ Component, pageProps }: AppProps) {
                       <div className="flex w-full flex-col">
                         <div className="flex w-full flex-row items-center gap-4 bg-notice-blue px-8 py-3 text-center font-sans text-sm font-bold text-white">
                           <Image alt="tooltip" src="/icons/alert.svg" width={16} height={16} />
-                          <p>This bridge is being replaced on May 10. See FAQs for details.</p>
+                          <p>
+                            As Base continues to decentralize, beginning May 10th bridge.base.org
+                            will redirect to{' '}
+                            <a
+                              href="https://superbridge.com/base"
+                              target="_blank"
+                              rel="noreferrer"
+                              className="underline"
+                            >
+                              Superbridge
+                            </a>{' '}
+                            and other bridges (collectively, &quot;Superchain bridges&quot;).
+                            Superchain bridges are available to initiate and complete deposits and
+                            withdrawals to and from Base. Please see our FAQs on this page for
+                            details.
+                          </p>
                         </div>
                       </div>
                       {allowedPaths.has(pathname) && (
