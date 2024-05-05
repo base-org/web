@@ -22,7 +22,7 @@ export function DeprecationModal() {
           </a>{' '}
           will redirect to{' '}
           <a
-            href="https://superbridge.com/base"
+            href="https://superbridge.app/base"
             target="_blank"
             rel="noreferrer"
             className="underline"

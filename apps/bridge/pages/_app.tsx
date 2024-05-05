@@ -140,7 +140,7 @@ function Root({ Component, pageProps }: AppProps) {
                             As Base continues to decentralize, beginning May 10th bridge.base.org
                             will redirect to{' '}
                             <a
-                              href="https://superbridge.com/base"
+                              href="https://superbridge.app/base"
                               target="_blank"
                               rel="noreferrer"
                               className="underline"
