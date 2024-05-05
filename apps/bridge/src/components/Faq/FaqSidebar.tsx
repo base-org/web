@@ -19,7 +19,7 @@ export function FaqSidebar() {
             Once deprecated, bridge.base.org will direct users to &quot;Superchain Bridges&quot;
             selected by Base and the Optimism teams, one of which is{' '}
             <a
-              href="https://superbridge.com/base"
+              href="https://superbridge.app/base"
               target="_blank"
               rel="noreferrer"
               className="underline"
@@ -38,7 +38,7 @@ export function FaqSidebar() {
             Yes, however, in the event you are unable to complete your withdraw within the 7 day
             period, you will need to use a Superchain Bridge such as{' '}
             <a
-              href="https://superbridge.com/base"
+              href="https://superbridge.app/base"
               target="_blank"
               rel="noreferrer"
               className="underline"
