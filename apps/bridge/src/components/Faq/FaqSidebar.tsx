@@ -10,7 +10,7 @@ export function FaqSidebar() {
       />
       <QuestionAccordion
         question="Can I still use the bridge on bridge.base.org?"
-        answer="You can use Base bridge until the frontend is deprecated on May 10th."
+        answer="You can use Base bridge until the frontend is deprecated on May 17th."
       />
       <QuestionAccordion
         question="How can I bridge to or withdraw from Base after the bridge has been deprecated?"
