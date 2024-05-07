@@ -137,7 +137,7 @@ function Root({ Component, pageProps }: AppProps) {
                         <div className="flex w-full flex-row items-center gap-4 bg-notice-blue px-8 py-3 text-center font-sans text-sm font-bold text-white">
                           <Image alt="tooltip" src="/icons/alert.svg" width={16} height={16} />
                           <p>
-                            As Base continues to decentralize, beginning May 10th bridge.base.org
+                            As Base continues to decentralize, beginning May 17th bridge.base.org
                             will redirect to{' '}
                             <a
                               href="https://superbridge.app/base"
