@@ -23,6 +23,13 @@ const sidebars = {
     'docs/run-a-base-node',
     {
       type: 'category',
+      label: 'Sending messages across chains',
+      collapsible: true,
+      collapsed: true,
+      items: ['docs/cross-chain-with-axelar', 'docs/cross-chain-with-axelar'],
+    },
+    {
+      type: 'category',
       label: 'Accessing real-world data using Oracles',
       collapsible: true,
       collapsed: true,

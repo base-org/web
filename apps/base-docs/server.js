@@ -229,6 +229,10 @@ app.get('/guides/using-supra-vrf', (req, res) => {
   res.redirect('/tutorials/oracles-supra-vrf');
 });
 
+app.get('/guides/cross-chain-with-axelar', (req, res) => {
+  res.redirect('/tutorials/cross-chain-with-axelar');
+});
+
 app.get('/guides/cross-chain-with-ccip', (req, res) => {
   res.redirect('/tutorials/cross-chain-with-ccip');
 });
