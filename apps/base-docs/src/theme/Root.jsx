@@ -18,7 +18,7 @@ import {
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { createConfig, WagmiProvider, http } from 'wagmi';
-import { baseSepolia } from 'wagmi/chains';
+import { base, baseSepolia } from 'wagmi/chains';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { Provider as CookieManagerProvider, Region } from '@coinbase/cookie-manager';
 import { cookieManagerConfig } from '../utils/cookieManagerConfig';
@@ -43,7 +43,7 @@ const connectors = connectorsForWallets(
 const config = createConfig({
   autoConnect: true,
   connectors,
-  chains: [baseSepolia],
+  chains: [base, baseSepolia],
   client({ chain }) {
     return createClient({ chain, transport: http() });
   },
@@ -169,7 +169,12 @@ export default function Root({ children }) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider modalSize="compact" theme={customTheme} avatar={WalletAvatar}>
+        <RainbowKitProvider
+          modalSize="compact"
+          theme={customTheme}
+          avatar={WalletAvatar}
+          initialChain={baseSepolia}
+        >
           <style
             dangerouslySetInnerHTML={{
               __html: `
