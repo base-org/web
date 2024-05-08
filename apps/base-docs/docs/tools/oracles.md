@@ -14,6 +14,8 @@ keywords:
     Chainlink,
     Pyth,
     VRF,
+    Gelato VRF,
+    Gelato verifable random function,
     verifiable random function,
     generate random numbers,
     RNG,
@@ -74,6 +76,17 @@ See [this guide](https://docs.diadata.org/introduction/intro-to-dia-oracles/requ
 - Base Sepolia (Testnet)
 
 ---
+
+## Gelato
+
+Gelato VRF (Verifiable Random Function) provides a unique system offering trustable randomness on Base.
+
+See this guide to learn how to get started with [Gelato VRF](https://docs.gelato.network/web3-services/vrf/quick-start).
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
 
 ## Pyth
 
