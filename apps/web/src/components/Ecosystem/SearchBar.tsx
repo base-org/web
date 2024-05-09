@@ -1,26 +1,9 @@
 import { useCallback, useRef, useState } from 'react';
+import SearchIcon from 'apps/web/src/components/Icon/SearchIcon';
 
 type Props = {
   setSearchText: (val: string) => void;
 };
-
-function SearchIcon() {
-  return (
-    <svg
-      width="16"
-      height="17"
-      viewBox="0 0 16 17"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="m-2"
-    >
-      <path
-        d="M16 14.5597L11.89 10.4497C12.59 9.41971 13 8.16971 13 6.82971C13 3.23971 10.09 0.329712 6.5 0.329712C2.91 0.329712 0 3.23971 0 6.82971C0 10.4197 2.91 13.3297 6.5 13.3297C7.84 13.3297 9.09 12.9197 10.13 12.2197L14.23 16.3297L16 14.5597ZM6.5 10.8297C4.29 10.8297 2.5 9.03971 2.5 6.82971C2.5 4.61971 4.29 2.82971 6.5 2.82971C8.71 2.82971 10.5 4.61971 10.5 6.82971C10.5 9.03971 8.71 10.8297 6.5 10.8297Z"
-        fill="white"
-      />
-    </svg>
-  );
-}
 
 function XIcon() {
   return (
@@ -66,9 +49,7 @@ export function SearchBar({ setSearchText }: Props) {
   }, [setSearchText]);
 
   return (
-    <div
-      className="flex h-10 flex-row items-center gap-2 rounded-[56px] border border-muted p-2 md:w-full lg:w-80"
-    >
+    <div className="flex h-10 flex-row items-center gap-2 rounded-[56px] border border-muted p-2 md:w-full lg:w-80">
       <SearchIcon />
 
       <input
@@ -78,7 +59,7 @@ export function SearchBar({ setSearchText }: Props) {
         onChange={onChange}
         className="w-full bg-black font-sans text-base text-white placeholder:text-muted focus:outline-none"
         placeholder="Search"
-        aria-label='Search for apps and integrations in the Base ecosystem'
+        aria-label="Search for apps and integrations in the Base ecosystem"
       />
       {text && (
         <button type="button" onClick={clearInput}>
