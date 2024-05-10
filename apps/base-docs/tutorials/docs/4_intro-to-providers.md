@@ -110,22 +110,23 @@ Older tutorials for early libraries tended to suggest using this method for gett
 
 ### Vendor Providers
 
-A growing number of vendors provide access to blockchain nodes as a service. Visiting the landing pages for [QuickNode] or [Alchemy] can be a little confusing. Each of these vendors provides a wide variety of services, SDKs, and information.
+A growing number of vendors provide access to blockchain nodes as a service. Visiting the landing pages for [QuickNode], [Alchemy], or [Coinbase Developer Platform (CDP)] can be a little confusing. Each of these vendors provides a wide variety of services, SDKs, and information.
 
 Luckily, you can skip most of this if you're just trying to get your frontend connected to your smart contracts. You'll just need to sign up for an account, and get an endpoint, or a key, and configure your app to connect to the provider(s) you choose.
 
 It is worth digging in to get a better understanding of how these providers charge you for their services. The table below summarizes some of the more important API methods, and how you are charged for them by each of the above providers.
 
-Note that the information below may change, and vary by network. Each provider also has different incentives, discounts, and fees for each level of product. They also have different allowances for calls per second, protocols, and number of endpoints. Please check the source to confirm!
+Note that the information below may change, and varies by network. Each provider also has different incentives, discounts, and fees for each level of product. They also have different allowances for calls per second, protocols, and number of endpoints. Please check the source to confirm!
 
-|                 | [Alchemy Costs]  | [QuickNode Costs] |
-| :-------------- | :--------------- | :---------------- |
-| Free Tier / Mo. | 3M compute units | 50M credits       |
-| Mid Tier / Mo.  | 1.5B CUs @ $199  | 3B credits @ $299 |
-| eth_blocknumber | 10               | 20                |
-| eth_call        | 26               | 20                |
-| eth_getlogs     | 75               | 20                |
-| eth_getbalance  | 19               | 20                |
+|                 | [Alchemy Costs]  | [QuickNode Costs] | [CDP Costs]        |
+| :-------------- | :--------------- | :---------------- | :-------           |
+| Free Tier / Mo. | 3M compute units | 50M credits       | 500M billing units |
+| Mid Tier / Mo.  | 1.5B CUs @ $199  | 3B credits @ $299 | Coming soon        |
+| eth_blocknumber | 10               | 20                | 30                 |
+| eth_call        | 26               | 20                | 30                 |
+| eth_getlogs     | 75               | 20                | 100                |
+| eth_getbalance  | 19               | 20                | 30                 |
+
 
 To give you an idea of usage amounts, a single wagmi `useContractRead` hook set to watch for changes on a single `view` via a TanStack query and `useBlockNumber` will call `eth_blocknumber` and `eth_call` one time each, every 4 seconds.
 
@@ -340,6 +341,8 @@ In this tutorial, you've learned how Providers supply blockchain connection as a
 [QuickNode]: https://www.quicknode.com/
 [Alchemy Costs]: https://docs.alchemy.com/reference/compute-unit-costs
 [QuickNode Costs]: https://www.quicknode.com/api-credits/base
+[Coinbase Developer Platform (CDP)]: https://portal.cdp.coinbase.com/
+[CDP Costs]: https://portal.cdp.coinbase.com/products/base
 [smart contract development]: https://base.org/camp
 [run your own node]: https://docs.base.org/guides/run-a-base-node
 [React Context API]: https://react.dev/learn/passing-data-deeply-with-context
