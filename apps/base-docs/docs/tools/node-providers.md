@@ -30,13 +30,14 @@ hide_table_of_contents: true
 
 ---
 
-## Coinbase Cloud
+## Coinbase Developer Platform (CDP)
 
-[Coinbase Cloud](https://coinbase.com/cloud) provides an RPC endpoint that runs on the same node infrastructure that powers Coinbase's retail exchange, meaning you get the rock solid reliability of our retail exchange as a developer. Coinbase Cloud gives you a free, rate limited RPC endpoint to begin building on Base.
+[CDP](https://portal.cdp.coinbase.com/) provides an RPC endpoint that runs on the same node infrastructure that powers Coinbase's retail exchange, meaning you get the rock solid reliability of our retail exchange as a developer. CDP gives you a free, rate limited RPC endpoint to begin building on Base.
 
 #### Supported Networks
 
 - Base Mainnet
+- Base Sepolia (Testnet)
 
 ---
 
