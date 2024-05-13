@@ -29,6 +29,7 @@ module.exports = {
         900: 'rgba(255,255,255,0.9)',
       },
       black: '#000000',
+      ocsblue: 'rgba(0, 82, 255, 1)',
       blue: {
         400: '#688CEC',
         500: '#0455FF',

@@ -9,15 +9,17 @@ import ToolsBlock from 'apps/web/src/components/OnchainSummer/ToolsBlock';
 
 export default function OnChainSummer() {
   return (
-    <div className="flex flex-col">
-      <Hero />
-      <AboutBlock />
-      <RewardsBlock />
-      <EventsBlock />
-      <SponsorsBlock />
-      <CommunityEventsBlock />
-      <ToolsBlock />
-      <ResourcesBlock />
-    </div>
+    <main className="flex w-full flex-col items-center bg-white">
+      <div className="flex w-full max-w-[1440px] flex-col">
+        <Hero />
+        <AboutBlock />
+        <RewardsBlock />
+        <EventsBlock />
+        <SponsorsBlock />
+        <CommunityEventsBlock />
+        <ToolsBlock />
+        <ResourcesBlock />
+      </div>
+    </main>
   );
 }
