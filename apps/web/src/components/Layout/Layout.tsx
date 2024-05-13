@@ -101,15 +101,18 @@ const cookieBannerTheme = {
 
 type LayoutProps = { children: ReactElement };
 
+const BLACK_NAV_PATHS = [
+  '/',
+  '/jobs/apply',
+  '/cookie-policy',
+  '/third-party-cookies',
+  '/onchainsummer',
+];
+
 export function Layout({ children }: LayoutProps) {
   const { pathname } = useRouter();
   const color: 'black' | 'white' = useMemo(() => {
-    if (
-      pathname === '/' ||
-      pathname === '/jobs/apply' ||
-      pathname === '/cookie-policy' ||
-      pathname === '/third-party-cookies'
-    ) {
+    if (BLACK_NAV_PATHS.includes(pathname)) {
       return 'black';
     }
 
