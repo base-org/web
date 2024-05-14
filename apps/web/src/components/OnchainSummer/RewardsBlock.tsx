@@ -15,7 +15,7 @@ function RewardCard({
   linkText?: string;
 }) {
   return (
-    <div className="flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4">
+    <div className="flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-blue-600 hover:text-white">
       <div className="flex flex-row items-center gap-2">
         <EmptyBlackCircle />
         <span className="text-l font-mono font-light">{num}</span>
@@ -48,7 +48,7 @@ export default function RewardsBlock() {
         </span>
       </div>
       <div
-        className="flex flex-row gap-6 overflow-scroll pb-6"
+        className="flex flex-row gap-2 overflow-scroll pb-6"
         style={{
           scrollbarWidth: 'thin',
           scrollbarColor: '#000',
@@ -80,7 +80,7 @@ export default function RewardsBlock() {
           description="Projects built on Base are eligible for Optimism PGF."
         />
       </div>
-      <span className="px-8">SCROLL &gt;</span>
+      <span className="px-8 md:hidden">SCROLL &gt;</span>
     </div>
   );
 }
