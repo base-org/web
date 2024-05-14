@@ -57,6 +57,16 @@ const coinbaseMono = localFont({
   variable: '--font-coinbase-mono',
 });
 
+const britney = localFont({
+  src: [
+    {
+      path: '../../fonts/BritneyVariableVF.woff2',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-britney',
+});
+
 const cookieBannerTheme = {
   colors: {
     primary: '#1652F0',
@@ -121,7 +131,7 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div
-      className={`max-w-screen flex min-h-screen flex-col ${coinbaseDisplay.variable} ${coinbaseSans.variable} ${coinbaseMono.variable}`}
+      className={`max-w-screen flex min-h-screen flex-col ${coinbaseDisplay.variable} ${coinbaseSans.variable} ${coinbaseMono.variable} ${britney.variable}`}
     >
       <Nav color={color} />
       {children}
