@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 const textVariants = {
   animate: {
-    x: [0, -window.innerWidth], // animate from 0 to negative window width
+    x: [0, -1440], // animate from 0 to negative window width
     transition: {
       x: {
         repeat: Infinity,

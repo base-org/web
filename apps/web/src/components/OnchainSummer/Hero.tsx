@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import ocs_banner from 'apps/web/public/images/ocs/ocs_banner.svg';
+import ocs_banner_mobile from 'apps/web/public/images/ocs/ocs_banner_mobile.svg';
 import ScrollBanner from 'apps/web/src/components/OnchainSummer/ScrollBanner';
 import { OCSButton } from 'apps/web/src/components/OnchainSummer/OCSButton';
 
@@ -7,11 +8,12 @@ export default function Hero() {
   return (
     <div className="mb-[1px] flex w-full flex-col items-center justify-center rounded-t-[6px] bg-ocsblue">
       <ScrollBanner />
-      <div className="flex max-w-[1200px] flex-col">
-        <Image src={ocs_banner} alt="Onchain Summer Banner" />
-        <div className="mb-12 mt-12 flex w-full flex-row items-center justify-between">
+      <div className="flex w-full max-w-[1200px] flex-col px-8">
+        <Image src={ocs_banner} alt="Onchain Summer Banner" className="hidden md:block" />
+        <Image src={ocs_banner_mobile} alt="Onchain Summer Banner" className="md:hidden" />
+        <div className="mb-12 mt-12 flex w-full flex-col justify-between gap-6 md:flex-row md:items-center">
           <div className="text-4xl text-white">June → August</div>
-          <div className="flex flex-row gap-4">
+          <div className="flex flex-col gap-4 md:flex-row">
             <OCSButton>Join the hackathon</OCSButton>
             <OCSButton variant="secondary">share your ideas</OCSButton>
           </div>
