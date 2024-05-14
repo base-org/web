@@ -5,6 +5,8 @@ const variantStyles = {
     'text-ocsblue bg-white hover:bg-translucent-900 active:bg-translucent-800 ease-in duration-200 uppercase font-bold',
   secondary:
     'text-white bg-transparent border-2 border-white hover:bg-translucent-100 active:bg-translucent-200 ease-in duration-200 uppercase font-bold',
+  primaryDark:
+    'text-white bg-black hover:bg-translucent-900 active:bg-translucent-800 ease-in duration-200 uppercase font-bold',
   secondaryDark:
     'text-black bg-transparent border border-black hover:bg-translucent-100 active:bg-translucent-200 ease-in duration-200',
 };

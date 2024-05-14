@@ -16,13 +16,17 @@ function RewardCard({
 }) {
   return (
     <div className="flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-blue-600 hover:text-white">
-      <div className="flex flex-row items-center gap-2">
-        <EmptyBlackCircle />
-        <span className="text-l font-mono font-light">{num}</span>
+      <div className="flex flex-col">
+        <div className="flex flex-row items-center gap-2">
+          <EmptyBlackCircle />
+          <span className="text-l font-mono font-light">{num}</span>
+        </div>
+        <span className="mb-8 text-2xl font-light md:text-4xl">{title}</span>
       </div>
-      <span className="mb-8 text-2xl font-light md:text-4xl">{title}</span>
-      <div className="text-lg">{description}</div>
-      <div className="text my-4 uppercase">[→] {linkText}</div>
+      <div className="flex flex-col">
+        <div className="text-lg">{description}</div>
+        <div className="text my-4 uppercase">[→] {linkText}</div>
+      </div>
     </div>
   );
 }
