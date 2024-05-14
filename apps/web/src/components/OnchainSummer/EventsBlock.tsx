@@ -31,7 +31,7 @@ function EventCard({
 
 function HackathonSlab() {
   return (
-    <div className="rounded-lg rounded-[6px] bg-ocspink p-8">
+    <div className="rounded-[6px] bg-ocspink p-8">
       <div className="mb-6 flex flex-col gap-4 md:flex-row">
         <div className="flex flex-col gap-4">
           <div className="flex flex-row items-center gap-2 text-sm font-light">
