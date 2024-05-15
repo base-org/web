@@ -29,7 +29,7 @@ export default function About({ owners }: AboutProps) {
           name="description"
         />
       </Head>
-      <main className="flex w-full max-w-[1440px] flex-col items-center bg-black">
+      <main className="flex w-full flex-col items-center bg-black">
         <Hero />
         <BuildingBase owners={owners} />
         <Divider />
