@@ -9,7 +9,6 @@ import zora from 'apps/web/public/images/ocs/sponsors/zora.png';
 import shopify from 'apps/web/public/images/ocs/sponsors/shopify.png';
 import synthetix from 'apps/web/public/images/ocs/sponsors/synthetix.png';
 import Image from 'next/image';
-import { text } from 'stream/consumers';
 
 const sponsors = [
   {
@@ -88,9 +87,9 @@ export default function SponsorsBlock() {
           scrollbarColor: '#000',
         }}
       >
-        {sponsors.map((sponsor, i) => (
+        {sponsors.map((sponsor) => (
           <div
-            key={i}
+            key={sponsor.name}
             className="flex min-h-[150px] min-w-[150px] flex-col justify-between gap-2 rounded-[3px] p-4"
             style={{ background: sponsor.color }}
           >

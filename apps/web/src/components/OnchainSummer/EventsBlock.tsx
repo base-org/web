@@ -45,6 +45,7 @@ function HackathonSlab() {
           </div>
         </div>
         <div className="flex flex-col items-center md:w-1/2">
+          {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
           <Image src={giantB} alt="Giant B" />
         </div>
       </div>

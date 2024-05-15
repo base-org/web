@@ -9,7 +9,9 @@ export default function Hero() {
     <div className="mb-[1px] flex w-full flex-col items-center justify-center rounded-t-[6px] bg-ocsblue">
       <ScrollBanner />
       <div className="flex w-full max-w-[1200px] flex-col px-8">
+        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
         <Image src={ocs_banner} alt="Onchain Summer Banner" className="hidden md:block" />
+        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
         <Image src={ocs_banner_mobile} alt="Onchain Summer Banner" className="md:hidden" />
         <div className="mb-12 mt-12 flex w-full flex-col justify-between gap-6 md:flex-row md:items-center">
           <div className="text-4xl text-white">June → August</div>

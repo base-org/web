@@ -1,5 +1,5 @@
 // white css circle
-function Circle({ color }) {
+function Circle({ color }: { color: string }) {
   return <div className="mx-4 h-4 w-4 rounded-full" style={{ background: color }} />;
 }
 
@@ -44,7 +44,7 @@ function ContentB() {
   return (
     <>
       <Circle color="#FF8DCF" />
-      it's time to build
+      it&apos;s time to build
     </>
   );
 }
