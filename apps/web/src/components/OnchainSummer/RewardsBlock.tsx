@@ -74,6 +74,7 @@ export default function RewardsBlock() {
             num="01"
             title="Onchain Summer Buildathon"
             description="A month-long virtual buildathon through the month of June, with 200 ETH in rewards."
+            link="https://onchain-summer.devfolio.co/"
           />
           <RewardCard
             num="02"
