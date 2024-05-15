@@ -13,7 +13,12 @@ function ResourcesCard({
   linkText?: string;
 }) {
   return (
-    <div className="flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-ocsblue hover:text-white">
+    <a
+      href={link}
+      target="_blank"
+      rel="noreferrer noopener"
+      className="flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-ocsblue hover:text-white"
+    >
       <div className="flex flex-col">
         <span className="mb-8 text-2xl font-light md:text-4xl">{title}</span>
       </div>
@@ -21,7 +26,7 @@ function ResourcesCard({
         <div className="text-lg">{description}</div>
         <div className="text my-4 uppercase">[→] {linkText}</div>
       </div>
-    </div>
+    </a>
   );
 }
 
@@ -43,26 +48,31 @@ export default function ResourcesBlock() {
           title="Base Docs"
           description="Everything from network information to tutorials"
           linkText="Learn more"
+          link="https://docs.base.org/?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
         />
         <ResourcesCard
           title="Base Camp"
           description="Learn smart contract development"
           linkText="Learn more"
+          link="https://docs.base.org/base-camp/docs/welcome?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
         />
         <ResourcesCard
           title="Build Onchain Apps"
           description="Save time when building onchain experiences"
           linkText="Learn more"
+          link="https://buildonchainapps.xyz/?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
         />
         <ResourcesCard
           title="Onchain Kit"
           description="React components and TypeScript utilities to build top-tier onchain apps"
           linkText="Learn more"
+          link="https://onchainkit.xyz/?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
         />
         <ResourcesCard
           title="Smart Wallet"
           description="Integrate the SDK today and learn about Base credits"
           linkText="Learn more"
+          link="https://www.smartwallet.dev/why?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
         />
       </section>
     </div>

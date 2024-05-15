@@ -2,13 +2,15 @@ import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 const variantStyles = {
   primary:
-    'text-ocsblue bg-white hover:bg-translucent-900 active:bg-translucent-800 ease-in duration-200 uppercase font-bold',
+    'text-ocsblue bg-white hover:bg-ocspink hover:text-black active:bg-translucent-800 ease-in duration-200 uppercase font-bold',
   secondary:
-    'text-white bg-transparent border-2 border-white hover:bg-translucent-100 active:bg-translucent-200 ease-in duration-200 uppercase font-bold',
+    'text-white bg-transparent border-dotted border-2 border-white hover:bg-black hover:border-black active:bg-translucent-200 ease-in duration-200 uppercase font-bold',
   primaryDark:
-    'text-white bg-black hover:bg-translucent-900 active:bg-translucent-800 ease-in duration-200 uppercase font-bold',
+    'text-white bg-black hover:bg-white hover:text-black active:bg-translucent-800 ease-in duration-200 uppercase font-bold',
   secondaryDark:
     'text-black bg-transparent border border-black hover:bg-translucent-100 active:bg-translucent-200 ease-in duration-200',
+  primaryBlue:
+    'text-ocsblue bg-white hover:bg-ocsblue border-2 border-white hover:text-white active:bg-translucent-800 ease-in duration-200 uppercase font-bold',
 };
 
 type ButtonProps = {

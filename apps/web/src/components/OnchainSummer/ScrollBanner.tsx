@@ -1,6 +1,6 @@
 // white css circle
-function Circle() {
-  return <div className="mx-4 h-4 w-4 rounded-full border-2 border-white" />;
+function Circle({ color }) {
+  return <div className="mx-4 h-4 w-4 rounded-full" style={{ background: color }} />;
 }
 
 import { motion } from 'framer-motion';
@@ -34,7 +34,7 @@ function ScrollingText({ children }: { children: React.ReactNode }) {
 function ContentA() {
   return (
     <>
-      <Circle />
+      <Circle color="#FEE002" />
       onchain summer is back
     </>
   );
@@ -43,7 +43,7 @@ function ContentA() {
 function ContentB() {
   return (
     <>
-      <Circle />
+      <Circle color="#FF8DCF" />
       it's time to build
     </>
   );

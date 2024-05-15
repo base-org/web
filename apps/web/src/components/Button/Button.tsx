@@ -6,7 +6,7 @@ const variantStyles = {
   secondary:
     'text-white bg-transparent border border-white hover:bg-translucent-100 active:bg-translucent-200 ease-in duration-200',
   secondaryDark:
-    'text-black bg-transparent border border-black hover:bg-translucent-100 active:bg-translucent-200 ease-in duration-200',
+    'text-black bg-transparent border border-black hover:bg-ocsblue hover:text-white active:bg-translucent-200 ease-in duration-200',
 };
 
 type ButtonProps = {

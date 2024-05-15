@@ -14,7 +14,7 @@ function EventCard({
   description: string;
 }) {
   return (
-    <div className="flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-black p-4 hover:bg-white">
+    <div className="group flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-black p-4 hover:bg-white">
       <div className="flex flex-col">
         <div className="flex flex-row items-center gap-2">
           <EmptyBlackCircle />
@@ -63,7 +63,7 @@ function HackathonSlab() {
         <EventCard
           num="03"
           title="BONUS REWARD POOL"
-          description="Make your app even easier to use with Coinbase integrations, and unlock additional rewards"
+          description="Make your app even easier to use with Coinbase integrations, and unlock additional rewards. Plus, a chance to get featured on the Onchain Summer homepage."
         />
       </section>
     </div>

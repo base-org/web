@@ -15,7 +15,12 @@ function RewardCard({
   linkText?: string;
 }) {
   return (
-    <div className="flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-blue-600 hover:text-white">
+    <a
+      href={link}
+      target="_blank"
+      rel="noreferrer noopener"
+      className="group flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-blue-600 hover:text-white"
+    >
       <div className="flex flex-col">
         <div className="flex flex-row items-center gap-2">
           <EmptyBlackCircle />
@@ -27,7 +32,7 @@ function RewardCard({
         <div className="text-lg">{description}</div>
         <div className="text my-4 uppercase">[→] {linkText}</div>
       </div>
-    </div>
+    </a>
   );
 }
 
@@ -67,21 +72,27 @@ export default function RewardsBlock() {
           num="02"
           title="Gas Credits"
           description="Sponsor transactions and offer gasless experiences. Available through the Coinbase Developer Platform and other builders."
+          linkText="Claim today"
+          link="https://www.coinbase.com/developer-platform?utm_source=bases&utm_medium=web&utm_campaign=onchainsummer&utm_content=gascredits"
         />
         <RewardCard
           num="03"
           title="Builder Grants"
           description="Small retroactive grants (1-5 ETH) for early projects. Build and tag us in /base on Warpcast."
+          link="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
         />
         <RewardCard
           num="04"
           title="Rounds Grants"
           description="No project is too big or too small. Share what you’re building every Friday on /base-builds for a grant opportunity."
+          link="https://warpcast.com/~/channel/base-builds"
+          linkText="Check it out"
         />
         <RewardCard
           num="05"
           title="Optimism RPGF"
           description="Projects built on Base are eligible for Optimism PGF."
+          link="https://community.optimism.io/docs/governance/retropgf-3/"
         />
       </div>
       <span className="px-8 md:hidden">SCROLL &gt;</span>

@@ -13,7 +13,12 @@ function ToolCard({
   linkText?: string;
 }) {
   return (
-    <div className="flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-white hover:text-black">
+    <a
+      href={link}
+      target="_blank"
+      rel="noreferrer noopener"
+      className="flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-white hover:text-black"
+    >
       <div className="flex flex-col">
         <span className="mb-8 text-2xl font-light md:text-4xl">{title}</span>
       </div>
@@ -21,7 +26,7 @@ function ToolCard({
         <div className="text-lg">{description}</div>
         <div className="text my-4 uppercase">[→] {linkText}</div>
       </div>
-    </div>
+    </a>
   );
 }
 
@@ -47,16 +52,19 @@ export default function ToolsBlock() {
             title="Smart Wallet"
             description="Eliminate seed phrases. Allow instant wallet creation with a passkey."
             linkText="Learn more"
+            link="https://www.coinbase.com/wallet/smart-wallet?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
           />
           <ToolCard
             title="CB Verifications"
             description="Unlock onchain experiences and rewards for users."
             linkText="Learn more"
+            link="https://github.com/coinbase/verifications"
           />
           <ToolCard
             title="Paymaster"
             description="Simplify your user journey by sponsoring gas."
             linkText="Learn more"
+            link="https://www.coinbase.com/developer-platform/solutions/account-abstraction-kit?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
           />
         </section>
       </div>

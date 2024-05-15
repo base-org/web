@@ -17,7 +17,13 @@ export default function CommunityEventsBlock() {
             Want to share what you’ve learned, host a meetup, or simply get together to hack?
           </p>
           <div className="mb-6 w-fit">
-            <OCSButton variant="primary">Apply here</OCSButton>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSf5wnzD_czyYOyHFeOmFK_rjsJj7Utovo3jWwR40JizPqmDZg/viewform"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <OCSButton variant="primaryBlue">Apply here</OCSButton>
+            </a>
           </div>
         </div>
       </div>
