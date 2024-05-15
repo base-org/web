@@ -100,7 +100,7 @@ export default function RewardsBlock() {
             num="05"
             title="Optimism RPGF"
             description="Projects built on Base are eligible for Optimism PGF."
-            link="https://community.optimism.io/docs/governance/retropgf-3/"
+            link="https://app.optimism.io/retropgf"
           />
         </div>
         <span className="px-8">SCROLL &gt;</span>
