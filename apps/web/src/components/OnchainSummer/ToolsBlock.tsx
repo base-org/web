@@ -1,5 +1,6 @@
 import Brit from 'apps/web/src/components/OnchainSummer/Brit';
 import { WhiteCircle } from 'apps/web/src/components/OnchainSummer/Circles';
+import { FadeInSection } from 'apps/web/src/components/OnchainSummer/FadeIns';
 
 function ToolCard({
   title,
@@ -38,35 +39,39 @@ export default function ToolsBlock() {
           <div className="text-l flex flex-row items-center gap-2 font-mono uppercase">
             <WhiteCircle /> Tools
           </div>
-          <div className="my-6 flex flex-col justify-between gap-16 md:flex-row md:items-end">
-            <span className="text-5xl font-extrabold leading-9 md:w-1/3 md:text-7xl">
-              <Brit axis={139}>w</Brit>ANNA ST<Brit>a</Brit>RT BUIL<Brit axis={133}>d</Brit>ING?
-            </span>
-            <p className="text-2xl font-light md:text-3xl">
-              Make it easier than ever to get onchain. Get more users and unlock rewards.
-            </p>
-          </div>
+          <FadeInSection>
+            <div className="my-6 flex flex-col justify-between gap-16 md:flex-row md:items-end">
+              <span className="text-5xl font-extrabold leading-9 md:w-1/3 md:text-7xl">
+                <Brit axis={139}>w</Brit>ANNA ST<Brit>a</Brit>RT BUIL<Brit axis={133}>d</Brit>ING?
+              </span>
+              <p className="text-2xl font-light md:text-3xl">
+                Make it easier than ever to get onchain. Get more users and unlock rewards.
+              </p>
+            </div>
+          </FadeInSection>
         </div>
-        <section className="mt-6 flex flex-col gap-4 md:flex-row">
-          <ToolCard
-            title="Smart Wallet"
-            description="Eliminate seed phrases. Allow instant wallet creation with a passkey."
-            linkText="Learn more"
-            link="https://www.coinbase.com/wallet/smart-wallet?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
-          />
-          <ToolCard
-            title="CB Verifications"
-            description="Unlock onchain experiences and rewards for users."
-            linkText="Learn more"
-            link="https://github.com/coinbase/verifications"
-          />
-          <ToolCard
-            title="Paymaster"
-            description="Simplify your user journey by sponsoring gas."
-            linkText="Learn more"
-            link="https://www.coinbase.com/developer-platform/solutions/account-abstraction-kit?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
-          />
-        </section>
+        <FadeInSection delay={0.5}>
+          <section className="mt-6 flex flex-col gap-4 md:flex-row">
+            <ToolCard
+              title="Smart Wallet"
+              description="Eliminate seed phrases. Allow instant wallet creation with a passkey."
+              linkText="Learn more"
+              link="https://www.coinbase.com/wallet/smart-wallet?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
+            />
+            <ToolCard
+              title="CB Verifications"
+              description="Unlock onchain experiences and rewards for users."
+              linkText="Learn more"
+              link="https://github.com/coinbase/verifications"
+            />
+            <ToolCard
+              title="Paymaster"
+              description="Simplify your user journey by sponsoring gas."
+              linkText="Learn more"
+              link="https://www.coinbase.com/developer-platform/solutions/account-abstraction-kit?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
+            />
+          </section>
+        </FadeInSection>
       </div>
     </div>
   );
