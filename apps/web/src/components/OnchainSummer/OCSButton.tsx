@@ -24,7 +24,7 @@ export function OCSButton({ variant = 'primary', children, className, ...props }
     <button
       {...props}
       type="button"
-      className={`rounded font-display text-sm md:text-lg ${
+      className={`rounded font-mono text-sm md:text-lg ${
         variantStyles[variant]
       } px-10 py-3.5 text-center ${className ?? ''}`}
     >

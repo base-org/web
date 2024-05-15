@@ -15,13 +15,15 @@ function EventCard({
   description: string;
 }) {
   return (
-    <div className="group flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-black p-4 hover:bg-white">
-      <div className="flex flex-col">
-        <div className="flex flex-row items-center gap-2">
-          <EmptyBlackCircle />
-          <span className="text-l font-mono font-light">{num}</span>
+    <div className="group flex min-h-[360px] min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-black p-4 hover:bg-[#E9E8E8] md:w-[400px]">
+      <div className="flex flex-col gap-16">
+        <div className="flex flex-col">
+          <div className="flex flex-row items-center gap-2">
+            <EmptyBlackCircle />
+            <span className="text-l font-mono font-light">{num}</span>
+          </div>
+          <span className="mb-8 text-2xl font-light md:text-4xl">{title}</span>
         </div>
-        <span className="mb-8 text-2xl font-light md:text-4xl">{title}</span>
       </div>
       <div className="text-lg">{description}</div>
     </div>
@@ -30,15 +32,15 @@ function EventCard({
 
 function HackathonSlab() {
   return (
-    <div className="flex max-w-[1200px] flex-col md:px-8">
+    <div className="flex max-w-[1200px] flex-col pb-12 pt-8 md:px-8">
       <FadeInSection>
-        <div className="mb-6 flex flex-col gap-4 md:flex-row">
+        <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row">
           <div className="flex flex-col gap-4">
             <div className="flex flex-row items-center gap-2 text-sm font-light">
               <EmptyBlackCircle /> JUNE
             </div>
-            <h1 className="text-5xl font-light">Join the Global Virtual Buildathon</h1>
-            <p className="mt-4 text-lg">
+            <h1 className="text-7xl font-light">Buildathon_</h1>
+            <p className="mt-4 max-w-[400px] text-lg">
               Kick off Onchain Summer by participating in a global virtual hackathon hosted by Base
               and leading teams.
             </p>
@@ -52,7 +54,7 @@ function HackathonSlab() {
               </a>
             </div>
           </div>
-          <div className="flex flex-col items-center md:w-1/2">
+          <div className="flex flex-col items-end md:w-1/2">
             {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
             <Image src={giantB} alt="Giant B" />
           </div>
@@ -85,7 +87,7 @@ function HackathonSlab() {
 export default function EventsBlock() {
   return (
     <>
-      <div className="flex w-full max-w-[1200px] flex-col">
+      <div className="mb- mt-12 flex w-full max-w-[1200px] flex-col">
         <div className="text-l flex flex-row items-center gap-2 px-8 font-mono uppercase">
           <BlackCircle /> Events
         </div>

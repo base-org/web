@@ -16,7 +16,7 @@ export default function CommunityEventsBlock() {
               <Brit axis={117}>g</Brit>ET TOGE<Brit axis={70}>t</Brit>HER <Brit axis={117}>i</Brit>
               RL
             </span>
-            <p className="text-2xl font-light">
+            <p className="text-2xl font-light md:text-4xl">
               Want to share what you’ve learned, host a meetup, or simply get together to hack?
             </p>
             <div className="mb-6 w-fit">

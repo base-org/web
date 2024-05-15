@@ -18,14 +18,14 @@ function ToolCard({
       href={link}
       target="_blank"
       rel="noreferrer noopener"
-      className="flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-white hover:text-black"
+      className="flex min-h-[280px] min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-white hover:text-black md:w-[400px]"
     >
       <div className="flex flex-col">
-        <span className="mb-8 text-2xl font-light md:text-4xl">{title}</span>
+        <span className="mb-8 font-display text-2xl font-light uppercase md:text-4xl">{title}</span>
       </div>
       <div className="flex flex-col">
         <div className="text-lg">{description}</div>
-        <div className="text my-4 uppercase">[→] {linkText}</div>
+        <div className="text my-4 font-mono uppercase">[→] {linkText}</div>
       </div>
     </a>
   );
@@ -33,7 +33,7 @@ function ToolCard({
 
 export default function ToolsBlock() {
   return (
-    <div className="mt-4 flex w-full flex-col items-center rounded-[6px] bg-black">
+    <div className="mb-8 mt-4 flex w-full flex-col items-center rounded-[6px] bg-black pb-8">
       <div className="my-12 flex w-full max-w-[1200px] flex-col rounded-[6px] px-8 pt-8 text-white">
         <div className="flex flex-col">
           <div className="text-l flex flex-row items-center gap-2 font-mono uppercase">

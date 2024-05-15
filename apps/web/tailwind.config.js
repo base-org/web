@@ -31,6 +31,7 @@ module.exports = {
       black: '#000000',
       ocsblue: 'rgba(0, 82, 255, 1)',
       ocspink: '#FF8DCF',
+      ocsyellow: '#FEE002',
       blue: {
         400: '#688CEC',
         500: '#0455FF',

@@ -68,7 +68,7 @@ const sponsors = [
 
 export default function SponsorsBlock() {
   return (
-    <div className="my-12 flex w-full max-w-[1200px] flex-col">
+    <div className="my-20 flex w-full max-w-[1200px] flex-col">
       <div className="text-l flex flex-row items-center gap-2 px-8 font-mono uppercase">
         <BlackCircle /> Sponsors
       </div>
@@ -77,7 +77,7 @@ export default function SponsorsBlock() {
           <span className="text-5xl font-extrabold leading-9 md:text-7xl">
             8 <Brit axis={68}>s</Brit>PONSORED TR<Brit>a</Brit>CKS
           </span>
-          <p className="mt-4 text-2xl">
+          <p className="mt-4 text-2xl md:text-4xl">
             Whether it’s payments, creator tooling or decentralized social, build what you’re
             passionate about
           </p>
@@ -85,7 +85,7 @@ export default function SponsorsBlock() {
       </FadeInSection>
       <FadeInSection delay={0.5}>
         <div
-          className="flex w-full max-w-[1200px] flex-row gap-2 overflow-x-auto pb-6 md:px-8"
+          className="mb-8 flex w-full max-w-[1200px] flex-row gap-2 overflow-x-auto pb-6 md:px-8"
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#000',
@@ -107,7 +107,9 @@ export default function SponsorsBlock() {
             </div>
           ))}
         </div>
-        <span className="px-8 md:hidden">SCROLL &gt;</span>
+        <span className="px-8">SCROLL &gt;</span>
+        <div className="ml-8 h-[3px] w-[90px] bg-black px-8" />
+        <div className="mx-8 h-[1px] w-full bg-black px-8" />
       </FadeInSection>
     </div>
   );

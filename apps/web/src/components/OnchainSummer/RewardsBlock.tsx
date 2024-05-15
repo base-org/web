@@ -1,5 +1,8 @@
 import Brit from 'apps/web/src/components/OnchainSummer/Brit';
-import { BlackCircle, EmptyBlackCircle } from 'apps/web/src/components/OnchainSummer/Circles';
+import {
+  BlackCircle,
+  EmptyBlackCircleFillToWhite,
+} from 'apps/web/src/components/OnchainSummer/Circles';
 import { FadeInSection } from 'apps/web/src/components/OnchainSummer/FadeIns';
 
 function RewardCard({
@@ -20,18 +23,18 @@ function RewardCard({
       href={link}
       target="_blank"
       rel="noreferrer noopener"
-      className="group flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-blue-600 hover:text-white"
+      className="group flex min-w-[350px] flex-col justify-between gap-12 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-blue-600 hover:text-white md:w-[400px]"
     >
       <div className="flex flex-col">
         <div className="flex flex-row items-center gap-2">
-          <EmptyBlackCircle />
+          <EmptyBlackCircleFillToWhite />
           <span className="text-l font-mono font-light">{num}</span>
         </div>
-        <span className="mb-8 text-2xl font-light md:text-4xl">{title}</span>
+        <span className="mb-8 font-display text-2xl font-light uppercase md:text-4xl">{title}</span>
       </div>
       <div className="flex flex-col">
         <div className="text-lg">{description}</div>
-        <div className="text my-4 uppercase">[→] {linkText}</div>
+        <div className="text my-4 font-mono uppercase">[→] {linkText}</div>
       </div>
     </a>
   );
@@ -61,7 +64,7 @@ export default function RewardsBlock() {
       </FadeInSection>
       <FadeInSection delay={0.5}>
         <div
-          className="flex w-full max-w-[1200px] flex-row gap-2 overflow-x-auto px-8 pb-6"
+          className="mt-6 flex w-full max-w-[1200px] flex-row gap-2 overflow-x-auto px-8 pb-6"
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#000',
@@ -99,7 +102,9 @@ export default function RewardsBlock() {
             link="https://community.optimism.io/docs/governance/retropgf-3/"
           />
         </div>
-        <span className="px-8 md:hidden">SCROLL &gt;</span>
+        <span className="px-8">SCROLL &gt;</span>
+        <div className="ml-8 h-[3px] w-[90px] bg-black px-8" />
+        <div className="mx-8 h-[1px] w-full bg-black px-8" />
       </FadeInSection>
     </div>
   );

@@ -18,14 +18,14 @@ function ResourcesCard({
       href={link}
       target="_blank"
       rel="noreferrer noopener"
-      className="flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-ocsblue hover:text-white"
+      className="flex min-h-[240px] min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-ocsblue hover:text-white"
     >
       <div className="flex flex-col">
-        <span className="mb-8 text-2xl font-light md:text-4xl">{title}</span>
+        <span className="mb-8 font-display text-2xl font-light uppercase md:text-4xl">{title}</span>
       </div>
       <div className="flex flex-col">
         <div className="text-lg">{description}</div>
-        <div className="text my-4 uppercase">[→] {linkText}</div>
+        <div className="text my-4 font-mono uppercase">[→] {linkText}</div>
       </div>
     </a>
   );
@@ -47,7 +47,7 @@ export default function ResourcesBlock() {
       </FadeInSection>
 
       <FadeInSection delay={0.5}>
-        <section className="mt-6 flex flex-col gap-4 md:flex-row">
+        <section className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
           <ResourcesCard
             title="Base Docs"
             description="Everything from network information to tutorials"

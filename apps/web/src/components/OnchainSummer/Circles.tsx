@@ -15,6 +15,13 @@ export function EmptyBlackCircle() {
   );
 }
 
+// empty black css circle
+export function EmptyBlackCircleFillToWhite() {
+  return (
+    <div className="h-[.6rem] w-[.6rem] rounded-full border border-black group-hover:border-white group-hover:bg-white" />
+  );
+}
+
 // pink css circle
 export function PinkCircle() {
   return <div className="h-[.8rem] w-[.8rem] rounded-full border-2 border-ocspink bg-ocspink" />;

@@ -10,7 +10,7 @@ import ToolsBlock from 'apps/web/src/components/OnchainSummer/ToolsBlock';
 export default function OnChainSummer() {
   return (
     <main className="flex w-full flex-col items-center bg-white">
-      <div className="flex w-full max-w-[1440px] flex-col items-center px-1">
+      <div className="flex w-full flex-col items-center px-1 md:px-4">
         <Hero />
         <AboutBlock />
         <RewardsBlock />
