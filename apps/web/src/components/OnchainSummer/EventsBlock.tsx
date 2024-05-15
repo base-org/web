@@ -42,7 +42,8 @@ function HackathonSlab() {
             <h1 className="text-5xl font-light md:text-7xl">Buildathon_</h1>
             <p className="mt-4 max-w-[400px] text-lg">
               Kick off Onchain Summer by participating in a global virtual hackathon hosted by Base
-              and leading teams.
+              and track sponsors including Stripe, Shopify, Farcaster, Zora, Fleek, thirdweb, Nouns,
+              Aerodrome, and Synthetix.
             </p>
             <div className="mb-6 w-fit">
               <a
