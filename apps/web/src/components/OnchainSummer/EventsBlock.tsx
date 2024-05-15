@@ -41,7 +41,9 @@ function HackathonSlab() {
             and leading teams.
           </p>
           <div className="mb-6 w-fit">
-            <OCSButton variant="primaryDark">Learn More</OCSButton>
+            <a href="https://onchain-summer.devfolio.co/" target="_blank" rel="noreferrer noopener">
+              <OCSButton variant="primaryDark">Learn More</OCSButton>
+            </a>
           </div>
         </div>
         <div className="flex flex-col items-center md:w-1/2">

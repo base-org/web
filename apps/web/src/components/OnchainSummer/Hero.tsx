@@ -16,8 +16,20 @@ export default function Hero() {
         <div className="mb-12 mt-12 flex w-full flex-col justify-between gap-6 md:flex-row md:items-center">
           <div className="text-4xl text-white">June → August</div>
           <div className="flex flex-col gap-4 md:flex-row">
-            <OCSButton>Join the hackathon</OCSButton>
-            <OCSButton variant="secondary">share your ideas</OCSButton>
+            <a
+              href="https://onchain-summer.devfolio.co/?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <OCSButton>Join the hackathon</OCSButton>
+            </a>
+            <a
+              href="https://buildonbase.deform.cc/application/"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <OCSButton variant="secondary">share your ideas</OCSButton>
+            </a>
           </div>
         </div>
       </div>
