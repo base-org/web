@@ -104,7 +104,7 @@ export default function RewardsBlock() {
         </div>
         <span className="px-8">SCROLL &gt;</span>
         <div className="ml-8 h-[3px] w-[90px] bg-black px-8" />
-        <div className="mx-8 h-[1px] w-full bg-black px-8" />
+        <div className="mx-8 h-[1px] w-[300px] bg-black px-8" />
       </FadeInSection>
     </div>
   );

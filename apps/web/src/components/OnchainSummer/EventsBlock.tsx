@@ -39,7 +39,7 @@ function HackathonSlab() {
             <div className="flex flex-row items-center gap-2 text-sm font-light">
               <EmptyBlackCircle /> JUNE
             </div>
-            <h1 className="text-7xl font-light">Buildathon_</h1>
+            <h1 className="text-5xl font-light md:text-7xl">Buildathon_</h1>
             <p className="mt-4 max-w-[400px] text-lg">
               Kick off Onchain Summer by participating in a global virtual hackathon hosted by Base
               and leading teams.
