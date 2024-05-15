@@ -3,7 +3,7 @@ import { BlackCircle } from 'apps/web/src/components/OnchainSummer/Circles';
 
 export default function SponsorsBlock() {
   return (
-    <div className="my-12 flex flex-col">
+    <div className="my-12 flex w-full max-w-[1200px] flex-col">
       <div className="text-l flex flex-row items-center gap-2 px-8 font-mono uppercase">
         <BlackCircle /> Sponsors
       </div>

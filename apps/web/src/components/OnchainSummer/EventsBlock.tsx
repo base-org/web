@@ -12,8 +12,6 @@ function EventCard({
   num: string;
   title: string;
   description: string;
-  link?: string;
-  linkText?: string;
 }) {
   return (
     <div className="flex min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-black p-4 hover:bg-white">
@@ -31,7 +29,7 @@ function EventCard({
 
 function HackathonSlab() {
   return (
-    <div className="rounded-[6px] bg-ocspink p-8">
+    <div className="flex max-w-[1200px] flex-col px-8">
       <div className="mb-6 flex flex-col gap-4 md:flex-row">
         <div className="flex flex-col gap-4">
           <div className="flex flex-row items-center gap-2 text-sm font-light">
@@ -74,17 +72,20 @@ function HackathonSlab() {
 
 export default function EventsBlock() {
   return (
-    <div className="my-12 flex flex-col">
-      <div className="text-l flex flex-row items-center gap-2 px-8 font-mono uppercase">
-        <BlackCircle /> Events
+    <>
+      <div className="flex w-full max-w-[1200px] flex-col">
+        <div className="text-l flex flex-row items-center gap-2 px-8 font-mono uppercase">
+          <BlackCircle /> Events
+        </div>
+        <div className="my-6 flex flex-col md:flex-row md:items-end">
+          <span className="px-8 text-5xl font-extrabold leading-9 md:text-7xl">
+            J<Brit axis={147}>o</Brit>IN <Brit axis={183}>u</Brit>S ON<Brit axis={60}>c</Brit>HAIN
+          </span>
+        </div>
       </div>
-      <div className="my-6 flex flex-col md:flex-row md:items-end">
-        <span className="px-8 text-5xl font-extrabold leading-9 md:text-7xl">
-          J<Brit axis={147}>o</Brit>IN <Brit axis={183}>u</Brit>S ON<Brit axis={60}>c</Brit>HAIN
-        </span>
+      <div className="flex w-full flex-col items-center rounded-[6px] bg-ocspink p-8">
+        <HackathonSlab />
       </div>
-
-      <HackathonSlab />
-    </div>
+    </>
   );
 }

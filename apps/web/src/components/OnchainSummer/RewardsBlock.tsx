@@ -33,7 +33,7 @@ function RewardCard({
 
 export default function RewardsBlock() {
   return (
-    <div className="my-12 flex flex-col">
+    <div className="my-12 flex w-full max-w-[1200px] flex-col">
       <div className="text-l flex flex-row items-center gap-2 px-8 font-mono uppercase">
         <BlackCircle /> Rewards
       </div>
@@ -52,7 +52,7 @@ export default function RewardsBlock() {
         </span>
       </div>
       <div
-        className="flex flex-row gap-2 overflow-scroll pb-6"
+        className="flex w-full max-w-[1200px] flex-row gap-2 overflow-x-auto px-8 pb-6"
         style={{
           scrollbarWidth: 'thin',
           scrollbarColor: '#000',
