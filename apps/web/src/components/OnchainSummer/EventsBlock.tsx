@@ -67,7 +67,7 @@ function HackathonSlab() {
           <EventCard
             num="01"
             title="200 ETH IN REWARDS"
-            description="Split across categories and teams; every winning team is eligible for 2-10 ETH"
+            description="Split across tracks and teams; every winning team is eligible for 2-10 ETH"
           />
           <EventCard
             num="02"
