@@ -81,7 +81,7 @@ export default function RewardsBlock() {
             title="Gas Credits"
             description="Sponsor transactions and offer gasless experiences. Available through the Coinbase Developer Platform and other builders."
             linkText="Claim today"
-            link="https://docs.cloud.coinbase.com/base-node/docs/paymaster-bundler-qs"
+            link="https://docs.cdp.coinbase.com/node/docs/paymaster-bundler-qs/"
           />
           <RewardCard
             num="03"
