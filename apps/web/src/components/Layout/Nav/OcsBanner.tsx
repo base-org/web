@@ -8,7 +8,7 @@ const href = '/buildersummer?utm_source=dotorg&utm_campaign=onchainsummer';
 export function OcsBanner() {
   const [isBannerVisible, setIsBannerVisible] = useLocalStorage('isOcsBannerVisible', true);
   const pathname = usePathname();
-  const isOnPage = pathname === '/onchainsummer';
+  const isOnPage = pathname === href.split('?')[0];
 
   const hideBanner = useCallback(() => {
     setIsBannerVisible(false);
