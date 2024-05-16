@@ -58,7 +58,7 @@ export default function RewardsBlock() {
           </span>
 
           <span className="mt-6 px-8 text-2xl font-light md:text-4xl">
-            600 ETH (~$2M) in rewawrds.
+            600 ETH (~$2M) in rewards.
           </span>
         </div>
       </FadeInSection>
@@ -81,7 +81,7 @@ export default function RewardsBlock() {
             title="Gas Credits"
             description="Sponsor transactions and offer gasless experiences. Available through the Coinbase Developer Platform and other builders."
             linkText="Claim today"
-            link="https://www.coinbase.com/developer-platform?utm_source=bases&utm_medium=web&utm_campaign=onchainsummer&utm_content=gascredits"
+            link="https://docs.cloud.coinbase.com/base-node/docs/paymaster-bundler-qs"
           />
           <RewardCard
             num="03"

@@ -37,7 +37,7 @@ export default function ToolsBlock() {
       <div className="my-12 flex w-full max-w-[1200px] flex-col rounded-[6px] px-8 pt-8 text-white">
         <div className="flex flex-col">
           <div className="text-l flex flex-row items-center gap-2 font-mono uppercase">
-            <WhiteCircle /> Explore more
+            <WhiteCircle /> Build Next-Gen Products
           </div>
           <FadeInSection>
             <div className="my-6 flex flex-col justify-between gap-16 lg:flex-row lg:items-end">
@@ -45,7 +45,7 @@ export default function ToolsBlock() {
                 <Brit axis={139}>w</Brit>ANNA ST<Brit>a</Brit>RT BUIL<Brit axis={133}>d</Brit>ING?
               </span>
               <p className="text-2xl font-light md:text-3xl">
-                Docs, demos, and resources to help you get going.
+                Make getting onchain easier than ever for your users.
               </p>
             </div>
           </FadeInSection>

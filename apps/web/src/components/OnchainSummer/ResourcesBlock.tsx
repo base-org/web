@@ -35,14 +35,14 @@ export default function ResourcesBlock() {
   return (
     <div className="my-12 flex w-full max-w-[1200px] flex-col px-8">
       <div className="text-l flex flex-row items-center gap-2 font-mono uppercase">
-        <BlackCircle /> Resources
+        <BlackCircle /> Explore more
       </div>
       <FadeInSection>
         <div className="my-6 flex flex-col gap-6">
           <span className="text-5xl font-extrabold leading-9 md:text-7xl">
             <Brit axis={147}>g</Brit>ET STARTE<Brit axis={147}>d</Brit>
           </span>
-          <p className="mt-4 text-2xl">Everything you need to get started.</p>
+          <p className="mt-4 text-2xl">Docs, demos, and resources to help you get going.</p>
         </div>
       </FadeInSection>
 
