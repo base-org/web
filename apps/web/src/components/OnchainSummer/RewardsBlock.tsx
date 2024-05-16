@@ -58,7 +58,7 @@ export default function RewardsBlock() {
           </span>
 
           <span className="mt-6 px-8 text-2xl font-light md:text-4xl">
-            200+ ETH in bounty rewards, plus gas credits and grants.
+            600 ETH (~$2M) in rewawrds.
           </span>
         </div>
       </FadeInSection>
@@ -72,7 +72,7 @@ export default function RewardsBlock() {
         >
           <RewardCard
             num="01"
-            title="Onchain Summer Buildathon"
+            title="Buildathon"
             description="A month-long virtual buildathon through the month of June, with 200 ETH in rewards."
             link="https://onchain-summer.devfolio.co/"
           />
@@ -98,8 +98,8 @@ export default function RewardsBlock() {
           />
           <RewardCard
             num="05"
-            title="Optimism RPGF"
-            description="Projects built on Base are eligible for Optimism PGF."
+            title="Optimism Retro Public Goods Funding"
+            description="Projects built on Base are eligible for Retro Funding."
             link="https://app.optimism.io/retropgf"
           />
         </div>

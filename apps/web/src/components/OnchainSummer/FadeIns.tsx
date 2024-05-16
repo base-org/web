@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer';
 
 export function FadeInSection({
   children,
-  duration = 0.8,
+  duration = 0.4,
   delay = 0.0,
 }: {
   children: React.ReactNode;

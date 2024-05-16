@@ -75,11 +75,11 @@ export default function SponsorsBlock() {
       <FadeInSection>
         <div className="my-6 flex flex-col gap-6 px-8">
           <span className="text-5xl font-extrabold leading-9 md:text-7xl">
-            8 <Brit axis={68}>s</Brit>PONSORED TR<Brit>a</Brit>CKS
+            BUILDATION TR<Brit>a</Brit>CK <Brit axis={68}>s</Brit>PONSORS
           </span>
           <p className="mt-4 text-2xl md:text-4xl">
-            Whether it’s payments, creator tooling or decentralized social, build what you’re
-            passionate about
+            8 tracks across commerce, payments, gaming, creator, social, and more. Sponsored by
+            leading builders and innovators
           </p>
         </div>
       </FadeInSection>

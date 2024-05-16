@@ -27,7 +27,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <OCSButton>Join the hackathon</OCSButton>
+                <OCSButton>Join the Buildathon</OCSButton>
               </a>
               <a
                 href="https://buildonbase.deform.cc/application/"

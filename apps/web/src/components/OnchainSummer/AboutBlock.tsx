@@ -8,10 +8,8 @@ export default function AboutBlock() {
           <PinkCircle /> About
         </div>
         <p className="mb-16 px-8 text-3xl font-light leading-snug md:text-5xl">
-          Onchain Summer is a global movement that invites everyone to create and experience the
-          potential of onchain. Last year, for 23 days, we celebrated the launch of Base’s mainnet
-          with onchain music, gaming, advocacy, and art. This year we’re inviting everyone to build
-          all summer long.
+          We’re bringing back Onchain Summer to unleash onchain creativity, and invite everyone to
+          build all summer long. Build, create, and get rewarded.
         </p>
       </div>
     </div>

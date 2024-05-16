@@ -18,7 +18,7 @@ function ResourcesCard({
       href={link}
       target="_blank"
       rel="noreferrer noopener"
-      className="flex min-h-[240px] min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-ocsblue hover:text-white"
+      className="flex min-h-[240px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-ocsblue hover:text-white lg:min-w-[200px]"
     >
       <div className="flex flex-col">
         <span className="mb-8 font-display text-2xl font-light uppercase md:text-4xl">{title}</span>
@@ -47,7 +47,7 @@ export default function ResourcesBlock() {
       </FadeInSection>
 
       <FadeInSection delay={0.5}>
-        <section className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+        <section className="mb-6 mt-6 grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
           <ResourcesCard
             title="Base Docs"
             description="Everything from network information to tutorials"
@@ -61,7 +61,7 @@ export default function ResourcesBlock() {
             link="https://docs.base.org/base-camp/docs/welcome?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
           />
           <ResourcesCard
-            title="Build Onchain Apps"
+            title="Build Onchain Apps Template"
             description="Save time when building onchain experiences"
             linkText="Learn more"
             link="https://buildonchainapps.xyz/?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"

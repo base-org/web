@@ -18,7 +18,7 @@ function ToolCard({
       href={link}
       target="_blank"
       rel="noreferrer noopener"
-      className="flex min-h-[280px] min-w-[200px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-white hover:text-black md:w-[400px]"
+      className="flex min-h-[280px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-white hover:text-black md:w-[400px] lg:min-w-[200px]"
     >
       <div className="flex flex-col">
         <span className="mb-8 font-display text-2xl font-light uppercase md:text-4xl">{title}</span>
@@ -37,15 +37,15 @@ export default function ToolsBlock() {
       <div className="my-12 flex w-full max-w-[1200px] flex-col rounded-[6px] px-8 pt-8 text-white">
         <div className="flex flex-col">
           <div className="text-l flex flex-row items-center gap-2 font-mono uppercase">
-            <WhiteCircle /> Tools
+            <WhiteCircle /> Explore more
           </div>
           <FadeInSection>
-            <div className="my-6 flex flex-col justify-between gap-16 md:flex-row md:items-end">
+            <div className="my-6 flex flex-col justify-between gap-16 lg:flex-row lg:items-end">
               <span className="text-5xl font-extrabold leading-9 md:w-1/3 md:text-7xl">
                 <Brit axis={139}>w</Brit>ANNA ST<Brit>a</Brit>RT BUIL<Brit axis={133}>d</Brit>ING?
               </span>
               <p className="text-2xl font-light md:text-3xl">
-                Make it easier than ever to get onchain. Get more users and unlock rewards.
+                Docs, demos, and resources to help you get going.
               </p>
             </div>
           </FadeInSection>
@@ -68,7 +68,7 @@ export default function ToolsBlock() {
               title="Paymaster"
               description="Simplify your user journey by sponsoring gas."
               linkText="Learn more"
-              link="https://www.coinbase.com/developer-platform/solutions/account-abstraction-kit?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
+              link="https://docs.cloud.coinbase.com/base-node/docs/paymaster-bundler-qs "
             />
           </section>
         </FadeInSection>
