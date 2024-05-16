@@ -18,7 +18,7 @@ function ResourcesCard({
       href={link}
       target="_blank"
       rel="noreferrer noopener"
-      className="flex min-h-[240px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-ocsblue hover:text-white lg:min-w-[200px]"
+      className="flex min-h-[240px] flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 duration-200 hover:bg-ocsblue hover:text-white lg:min-w-[200px]"
     >
       <div className="flex flex-col">
         <span className="mb-8 font-display text-2xl font-light uppercase md:text-4xl">{title}</span>

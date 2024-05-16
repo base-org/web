@@ -23,7 +23,7 @@ function RewardCard({
       href={link}
       target="_blank"
       rel="noreferrer noopener"
-      className="group flex min-w-[350px] flex-col justify-between gap-12 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 hover:bg-blue-600 hover:text-white md:w-[400px]"
+      className="group flex min-w-[350px] flex-col justify-between gap-12 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 duration-200 hover:bg-blue-600 hover:text-white md:w-[400px]"
     >
       <div className="flex flex-col">
         <div className="flex flex-row items-center gap-2">

@@ -15,7 +15,7 @@ function EventCard({
   description: string;
 }) {
   return (
-    <div className="group flex flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-black p-4 hover:bg-[#E9E8E8] md:min-h-[360px] lg:w-[400px] lg:min-w-[200px]">
+    <div className="group flex flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-black p-4 duration-200 hover:bg-[#E9E8E8] md:min-h-[360px] lg:w-[400px] lg:min-w-[200px]">
       <div className="flex flex-col md:gap-16">
         <div className="flex flex-col">
           <div className="flex flex-row items-center gap-2">
