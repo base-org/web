@@ -37,6 +37,10 @@ This tutorial assumes that you are able to write, test, and deploy your own ERC-
 
 You'll need to be comfortable deploying your app to [Vercel], or using another solution on your own. Check out our tutorial on [deploying with Vercel] if you need a refresher!
 
+### Onchain Apps
+
+The tutorial assumes you're comfortable with the basics of deploying an app and connecting it to a smart contract. If you're still learning this part, check out our tutorials in [Base Camp] for [Building an Onchain App].
+
 ---
 
 ## Building the Contract
@@ -112,7 +116,7 @@ function tokenURI(uint _tokenId) public view override returns (string memory) {
 
 **Be very careful** setting up the single and double quotes above and be sure to test this function to make sure the result is valid json metadata. An error here will break the NFT and it won't show up correctly in wallets or marketplaces!
 
-## Onchain SVG Image
+### Onchain SVG Image
 
 For this NFT, the art will consist of a simple onchain SVG containing a square with a pseudo-randomly chosen color. Check out our tutorial on [Building Onchain NFTs] if you want to try something more complicated.
 
@@ -243,6 +247,54 @@ function tokenURI(uint _tokenId) public view override returns (string memory) {
   );
 
   return string(abi.encodePacked(_baseURI(), json));
+}
+```
+
+### List of NFTs Owned
+
+Most ERC-721 implementations don't contain an on-contract method to retrieve a list of **all** the NFTs owned by a single address. The reason for this is that it costs extra gas go manage this list, and the information can be retrieved by using read-only services that analyze blockchain data.
+
+However, gas prices are getting lower, and adding this data to your contract will reduce your dependency on third-party APIs.
+
+To track ownership in-contract, first import `EnumerableSet` from OpenZeppelin:
+
+```solidity
+import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
+```
+
+Then enable it for `uint` sets and add a mapping to relate `addresses` to token ids.
+
+```solidity
+// Inside the RandomColorNFT contract
+using EnumerableSet for EnumerableSet.UintSet;
+
+mapping (address => EnumerableSet.UintSet) tokensOwned;
+```
+
+Finally, utilize the `_update` function to handle changes of ownership, including minting:
+
+```solidity
+function _update(address to, uint256 tokenId, address auth) internal override(ERC721) returns(address) {
+  // Only remove the token if it is not being minted
+  if (tokenId != counter){
+    tokensOwned[auth].remove(tokenId);
+  }
+  tokensOwned[to].add(tokenId);
+
+  return super._update(to, tokenId, auth);
+}
+```
+
+Now that you have a list of NFTs owned by an address, you can add a function to retrieve all of them. While you're at it, add the json metadata for each token. Doing so lets you get the complete list of NFTs **and** their metadata for just one RPC call!
+
+```solidity
+function getNFftsOwned(address owner) public view returns (TokenAndMetatdata[] memory) {
+  TokenAndMetatdata[] memory tokens = new TokenAndMetatdata[](tokensOwned[owner].length());
+  for (uint i = 0; i < tokensOwned[owner].length(); i++) {
+    uint tokenId = tokensOwned[owner].at(i);
+    tokens[i] = TokenAndMetatdata(tokenId, tokenURI(tokenId));
+  }
+  return tokens;
 }
 ```
 
@@ -383,12 +435,237 @@ Together, we can create a gateway to bring the world onchain!
 
 Start by logging in to [Coinbase Commerce]. Create an account if you don't have one yet.
 
+Find your App Id by going to [Project Settings]. It's listed as `Project ID`.
+
+**You must initialize the Onramp feature.** Click on the tab for `Onramp`, then `Edit` your `Display wallet name`. It takes a few minutes to process.
+
+Once you have that, you can use the _One Click_ pay feature to set up a transaction that will allow the user to use their Coinbase retail account to easily fund their new wallet. These funds will be available for them to use on **any** app on Base that uses the Smart Wallet.
+
+![One Click Pay](../../assets/images/smart-wallet/one-click-pay.png)
+
+To add this, first add a helper function to build the link:
+
+```typescript
+const APP_ID = 1234; // Replace with your Project Id
+
+function buildOneClickURL() {
+  return `https://pay.coinbase.com/buy/one-click?appId=${APP_ID}&defaultAsset=ETH&defaultPaymentMethod=ACH_BANK_ACCOUNT&destinationWallets=[{"address":"${account.address}","blockchains":["base"]}]&fiatCurrency=usd&presetFiatAmount=25&quoteId=fund-wallet-button`;
+}
+```
+
+Then add a new button that opens the URL in a new window:
+
+```typescript
+<div>
+  {account.status === 'connected' && (
+    <button onClick={() => window.open(buildOneClickURL())}>Fund Wallet (Uses Real Money!)</button>
+  )}
+</div>
+```
+
+:::danger
+
+This link creates real transactions taking payment in real money for real ETH on Base. During testing, you may want to hide this feature, or make it clear that it is not using testnet funds.
+
+:::
+
+For your production app, it would also be a good idea to add a tooltip explaining:
+
+> Onchain apps use cryptocurrency to make it easy for users to send and receive payments to one another, or the app. They also use cryptocurrency to allow users to directly pay for their own computation and resource usage in a transparent manner. As such, you need funds to use this app. You can add them with the button above, and you'll be able to use these funds on **any app** within the **Base ecosystem** that uses the smart wallet.
+
+## Connecting to the Contract
+
+Use a blockchain explorer to mint a few NFTs on your contract if you haven't yet.
+
+Add a new folder in `app` for `components` then add a component called `nftList` in a file of the same name. Import the address and ABI for your deployed Random Color NFT contract. Also import `useAccount` and `useReadContract` from `wagmi`:
+
+```typescript
+import { useAccount, useReadContract } from 'wagmi';
+import contractData from '../contracts/RandomColorNFT.json';
+```
+
+Build the component and return a list of the tokens owned by the connected address, as well as the metadata for that token. First, add a type matching the `struct` you added to your contract:
+
+```solidity
+type NFTData = {
+  tokenId: bigint;
+  metadata: string;
+};
+```
+
+Then add a state variable to hold the list of NFTs, and fetch them with `useReadContract`:
+
+```solidity
+export function NFTList() {
+  const account = useAccount();
+  const [nfts, setNfts] = useState<NFTData[]>([]);
+
+  const { data: nftData, refetch: refetchNftData } = useReadContract({
+    abi: contractData.abi,
+    address: contractData.address as `0x${string}`,
+    functionName: "getNFftsOwned",
+    args: [account.address],
+  });
+
+  useEffect(() => {
+    if (nftData) {
+      const newNfts = nftData as NFTData[];
+      setNfts(newNfts);
+    }
+  }, [nftData]);
+
+  return (
+    <div>
+      <h2>NFTs</h2>
+      {/* TODO */}
+    </div>
+  );
+}
+```
+
+### Interpreting the Metadata and Image
+
+Add a type and helper function to convert the base64 encoded metadata to JSON:
+
+```typescript
+type JSONMetadata = {
+  name: string;
+  description: string;
+  image: string;
+};
+
+function getJsonMetadata(nft: NFTData) {
+  const base64String = nft.metadata.split(',')[1];
+  const jsonString = atob(base64String);
+  return JSON.parse(jsonString) as JSONMetadata;
+}
+```
+
+The image is already in a format usable by `<img>` tags!
+
+### Displaying a List of NFTs
+
+Now that you can extract your metadata and image from your data, use it to build a render function for your NFTs:
+
+```typescript
+function renderNft(nft: NFTData) {
+  const metadata = getJsonMetadata(nft);
+  return (
+    <div key={nft.tokenId.toString()}>
+      <h3>{metadata.name}</h3>
+      <p>{metadata.description}</p>
+      <img src={metadata.image} alt={metadata.name} />
+    </div>
+  );
+}
+```
+
+And use it to display them:
+
+```typescript
+return (
+  <div>
+    <h2>NFTs</h2>
+    <div>{`Address: ${account.address}`}</div>
+    <div>{nfts.map((nft) => renderNft(nft))}</div>
+  </div>
+);
+```
+
+Add further styling or use a library to improve the appearance.
+
+### Testing with Smart Wallet
+
+Test with both your normal wallet in the browser, and use incognito or private mode to test with the Smart Wallet.
+
+Don't forget to mint some NFTs for the Smart Wallet address!
+
+Everything should work as expected for both.
+
+### Adding a Mint Button
+
+Import and set up functions to write to your contract and wait for the receipt:
+
+```typescript
+const { data: writeData, writeContract } = useWriteContract();
+const { data: receipt } = useWaitForTransactionReceipt({
+  hash: writeData,
+});
+```
+
+Wait for the receipt, and use it to trigger a refetch of the NFT data. Doing so will update the user's list of NFTs after they buy a new one:
+
+```typescript
+useEffect(() => {
+  if (receipt) {
+    refetchNftData();
+  }
+}, [receipt]);
+```
+
+Finally, add a button allowing the user to purchase a new NFT:
+
+```typescript
+<button
+  onClick={() =>
+    writeContract({
+      abi: contractData.abi,
+      address: contractData.address as `0x${string}`,
+      functionName: 'mintTo',
+      args: [account.address],
+    })
+  }
+>
+  Mint NFT
+</button>
+```
+
+Test it with your normal wallet. Everything should work as expected. Now, test it with the Smart Wallet. You **don't** need to fund the wallet (on testnet).
+
+Not only does the transaction work in a way that's easy for new users, but for a currently, Base is automatically sponsoring transactions done through the Smart Wallet (**on testnet only)**.
+
+![Smart Wallet Tx](../../assets/images/smart-wallet/sponsored-by-base.png)
+
+But you can also get **thousands of dollars of gas sponsorship** with a few setup steps during the [Base Gasless Campaign]. Also check out the [Paymaster] docs to see how to sponsor gas beyond this.
+
+## Interacting with the Contract
+
+When using the Smart Wallet, you can effortlessly use the same code for both EOA wallet users and Smart Wallet users.
+
+Try adding a button that sends the NFT to another user. You can use one of the known testing addresses for now. Update `renderNFT`:
+
+```solidity
+  function renderNft(nft: NFTData) {
+    const metadata = getJsonMetadata(nft);
+    return (
+      <div key={nft.tokenId.toString()}>
+        <h3>{metadata.name}</h3>
+        <p>{metadata.description}</p>
+        <img src={metadata.image} alt={metadata.name} />
+        <button
+          onClick={() =>
+            writeContract({
+              abi: contractData.abi,
+              address: contractData.address as `0x${string}`,
+              functionName: "transferFrom",
+              args: [account.address, "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266", nft.tokenId],
+            })
+          }
+        >Test Transfer</button>
+      </div>
+    );
+  }
+```
+
+Test with both the EOA and Smart Wallet. Everything works as expected!
+
 ## Conclusion
 
 ---
 
 [Base Camp]: https://base.org.camp
 [ERC-721 Tokens]: https://docs.base.org/base-camp/docs/erc-721-token/erc-721-standard-video
+[Building an Onchain App]: https://docs.base.org/base-camp/docs/frontend-setup/overview
 [Vercel]: https://vercel.com
 [deploying with Vercel]: /tutorials/farcaster-frames-deploy-to-vercel
 [OpenZeppelin ERC-721]: https://docs.openzeppelin.com/contracts/2.x/api/token/erc721
@@ -409,3 +686,6 @@ Start by logging in to [Coinbase Commerce]. Create an account if you don't have 
 [BOAT]: https://www.smartwallet.dev/guides/create-app/using-boat
 [wagmi template]: https://www.smartwallet.dev/guides/create-app/using-wagmi
 [Coinbase Commerce]: https://commerce.coinbase.com/sign-in
+[Base Gasless Campaign]: https://www.smartwallet.dev/base-gasless-campaign
+[Paymaster]: https://www.smartwallet.dev/guides/paymasters
+[Project Settings]: https://portal.cdp.coinbase.com/project-settings
