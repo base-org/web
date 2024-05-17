@@ -7,6 +7,7 @@ import fleek from 'apps/web/public/images/ocs/sponsors/fleek.png';
 import thirdweb from 'apps/web/public/images/ocs/sponsors/thirdweb.png';
 import zora from 'apps/web/public/images/ocs/sponsors/zora.png';
 import shopify from 'apps/web/public/images/ocs/sponsors/shopify.png';
+import nouns from 'apps/web/public/images/ocs/sponsors/nouns.png';
 import synthetix from 'apps/web/public/images/ocs/sponsors/synthetix.png';
 import Image from 'next/image';
 import { FadeInSection } from 'apps/web/src/components/OnchainSummer/FadeIns';
@@ -54,10 +55,12 @@ const sponsors = [
     text: 'white',
     image: shopify,
   },
-  // {
-  //   name: 'Nouns',
-  //   color: '#6EC8FA',
-  // },
+  {
+    name: 'Nouns',
+    color: '#EFC950',
+    text: 'black',
+    image: nouns,
+  },
   {
     name: 'Synthetix',
     color: '#00BAFA',
