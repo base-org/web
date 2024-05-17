@@ -24,6 +24,7 @@ By the end of this tutorial you should be able to:
 - Integrate the Smart Wallet with wagmi
 - Provide an easy path for your users to buy crypto and put it in their wallet
 - Compare and contract the Smart Wallet with other forms of account abstraction
+- Take advantage of the [Base Gasless Campaign] to onboard your first users with free gas
 
 ---
 
@@ -660,6 +661,8 @@ Try adding a button that sends the NFT to another user. You can use one of the k
 Test with both the EOA and Smart Wallet. Everything works as expected!
 
 ## Conclusion
+
+In this tutorial, you've learned how to connect users to your onchain app with the Coinbase Smart Wallet. You've seen how the wallet works seamlessly for both EOA and Smart Wallet users. It provides the experience expected for both audiences, without you needing to do extra development to accommodate both paths. You've also learned of a method to make it easy for both new and experienced users to fund their wallets with ETH on Base that they can use on any app in the ecosystem. Finally, you've learned where you can find resources for applying for the [Base Gasless Campaign]. This program will give you a gas subsidy that you can pass on to your users.
 
 ---
 
