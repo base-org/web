@@ -56,9 +56,9 @@ const ogDataForPath: Record<string, CustomDocumentProps['ogData']> = {
     url: 'https://base.org/third-party-cookies',
   },
   '/buildersummer': {
-    title: 'Base | Builder Summer',
+    title: 'Onchain Summer | Buildathon',
     description:
-      'We’re bringing back Onchain Summer to unleash onchain creativity, and invite everyone to build all summer long. Build, create, and get rewarded.',
+      'Onchain Summer is back to unleash onchain creativity and invite everyone to build all summer long. Build, create, and get rewarded. June – August 2024.',
     image: 'https://base.org/images/ocs/buildersummer_og.png',
     url: 'https://base.org/buildersummer',
   },
