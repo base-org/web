@@ -14,6 +14,8 @@ keywords:
     Chainlink,
     Pyth,
     VRF,
+    Gelato VRF,
+    Gelato verifable random function,
     verifiable random function,
     generate random numbers,
     RNG,
@@ -67,6 +69,19 @@ To use Chainlink datafeeds, you may need [LINK](https://docs.chain.link/resource
 
 [DIA](https://www.diadata.org/) provides 2000+ [price feeds](https://www.diadata.org/app/price/) for Base.
 See [this guide](https://docs.diadata.org/introduction/intro-to-dia-oracles/request-an-oracle) to learn how to use the DIA feeds.
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
+
+---
+
+## Gelato
+
+Gelato VRF (Verifiable Random Function) provides a unique system offering trustable randomness on Base.
+
+See this guide to learn how to get started with [Gelato VRF](https://docs.gelato.network/web3-services/vrf/quick-start).
 
 #### Supported Networks
 
