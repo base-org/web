@@ -9,24 +9,34 @@ function EventCard({
   num,
   title,
   description,
+  link,
+  linkText = 'Learn more',
 }: {
   num: string;
   title: string;
   description: string;
+  link?: string;
+  linkText?: string;
 }) {
   return (
-    <div className="group flex flex-col justify-between gap-2 rounded-[5px] border-[1.5px] border-solid border-black p-4 duration-200 hover:bg-[#E9E8E8] md:min-h-[360px] lg:w-[400px] lg:min-w-[200px]">
-      <div className="flex flex-col md:gap-16">
-        <div className="flex flex-col">
-          <div className="flex flex-row items-center gap-2">
-            <EmptyBlackCircle />
-            <span className="text-l font-mono font-light">{num}</span>
-          </div>
-          <span className="mb-8 text-2xl font-light md:text-4xl">{title}</span>
+    <a
+      href={link}
+      target={link ? '_blank' : undefined}
+      rel="noreferrer noopener"
+      className="group flex min-w-[350px] flex-col justify-between gap-12 rounded-[5px] border-[1.5px] border-solid border-blue-600 p-4 duration-200 hover:bg-[#E9E8E8] hover:text-black md:w-[400px]"
+    >
+      <div className="flex flex-col">
+        <div className="flex flex-row items-center gap-2">
+          <EmptyBlackCircle />
+          <span className="text-l font-mono font-light">{num}</span>
         </div>
+        <span className="mb-8 text-2xl font-light uppercase md:text-4xl">{title}</span>
       </div>
-      <div className="text-lg">{description}</div>
-    </div>
+      <div className="flex flex-col">
+        <div className="text-lg">{description}</div>
+        {link && <div className="text my-4 font-mono uppercase">[→] {linkText}</div>}
+      </div>
+    </a>
   );
 }
 
@@ -67,12 +77,14 @@ function HackathonSlab() {
           <EventCard
             num="01"
             title="200 ETH IN REWARDS"
-            description="Split across tracks and teams; every winning team is eligible for 2-10 ETH"
+            description="Split across tracks and teams; every winning team is eligible for 2-10 ETH."
           />
           <EventCard
             num="02"
             title="COMMUNITY TRACK HOSTED BY BOUNTYCASTER"
-            description="Challenge the community with your ideas or pick up challenges that spark your interest"
+            description="Challenge the community with your ideas or pick up challenges that spark your interest."
+            link="https://www.bountycaster.xyz/onchainsummer"
+            linkText="Post a bounty"
           />
           <EventCard
             num="03"

@@ -12,9 +12,9 @@ export default function OnChainSummer() {
   return (
     <>
       <Head>
-        <title>Base | About</title>
+        <title>Onchain Summer | Buildathon</title>
         <meta
-          content="We’re bringing back Onchain Summer to unleash onchain creativity, and invite everyone to build all summer long. Build, create, and get rewarded."
+          content="Onchain Summer is back to unleash onchain creativity and invite everyone to build all summer long. Build, create, and get rewarded. June – August 2024."
           name="description"
         />
       </Head>
