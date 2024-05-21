@@ -16,6 +16,7 @@ import App, { AppContext, AppProps } from 'next/app';
 import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 import { WagmiConfig } from 'wagmi';
+import { Nav } from 'apps/bridge/src/components/Nav/Nav';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -133,7 +134,7 @@ function Root({ Component, pageProps }: AppProps) {
                       )}
                       {allowedPaths.has(pathname) && (
                         <>
-                          <Header />
+                          <Nav color="white" />
                           <div className="m-0 w-full p-0 sm:h-[calc(100vh-72px)]">
                             <Component {...props} />
                           </div>

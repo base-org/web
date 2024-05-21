@@ -282,7 +282,7 @@ __metadata:
     eslint-config-next: ^13.1.6
     framer-motion: ^9.0.4
     moment: ^2.29.4
-    next: "*"
+    next: ^13.1.5
     postcss: ^8.4.20
     prettier-plugin-tailwindcss: ^0.2.3
     react: ^18.2.0

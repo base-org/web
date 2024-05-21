@@ -156,6 +156,7 @@ function extendBaseConfig(customConfig = {}, plugins = []) {
 }
 
 module.exports = extendBaseConfig({
+  transpilePackages: ['base-ui'],
   publicRuntimeConfig: {
     chains: process.env.CHAINS,
     assets: process.env.ASSETS,
