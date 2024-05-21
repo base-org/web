@@ -88,7 +88,7 @@ export default function SponsorsBlock() {
       </FadeInSection>
       <FadeInSection delay={0.5}>
         <div
-          className="mb-8 flex w-full max-w-[1200px] flex-row gap-2 overflow-x-auto pb-6 md:px-8"
+          className="mb-8 flex grid w-full max-w-[1200px] grid-cols-2 gap-2 overflow-x-auto pb-6 md:grid-cols-3 md:px-8 lg:grid-cols-5"
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#000',
@@ -110,9 +110,6 @@ export default function SponsorsBlock() {
             </div>
           ))}
         </div>
-        <span className="px-8">SCROLL &gt;</span>
-        <div className="ml-8 h-[3px] w-[90px] bg-black px-8" />
-        <div className="mx-8 h-[1px] w-[300px] bg-black px-8" />
       </FadeInSection>
     </div>
   );
