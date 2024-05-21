@@ -4,7 +4,6 @@ import { Logo } from 'apps/bridge/src/components/Logo/Logo';
 import { sidebarLinks } from 'apps/bridge/src/components/Sidebar/Sidebar';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { truncateMiddle } from 'base-ui/utils/string';
 
 export function Header() {
   const { pathname } = useRouter();
@@ -16,9 +15,9 @@ export function Header() {
           <Popover.Button className="block sm:hidden">
             <Image src="/icons/hamburger.svg" width="24" height="24" alt="Menu" />
           </Popover.Button>
-          <div>
+          <a href="https://base.org">
             <Logo />
-          </div>
+          </a>
         </nav>
       </header>
       <Popover.Panel
