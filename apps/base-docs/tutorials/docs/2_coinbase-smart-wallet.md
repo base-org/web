@@ -23,7 +23,7 @@ By the end of this tutorial you should be able to:
 - Connect users to your onchain app using the Coinbase Smart Wallet
 - Integrate the Smart Wallet with wagmi
 - Provide an easy path for your users to buy crypto and put it in their wallet
-- Compare and contract the Smart Wallet with other forms of account abstraction
+- Compare and contrast the Smart Wallet with other forms of account abstraction
 - Take advantage of the [Base Gasless Campaign] to onboard your first users with free gas
 
 ---
@@ -68,9 +68,9 @@ contract RandomColorNFT is ERC721 {
 }
 ```
 
-:::caution
+:::info
 
-You need to be careful how you handle `msg.sender` when you are using a smart wallet with account abstraction. Unlike a normal transaction with a traditional wallet, `msg.sender` is **not** the address of the user's wallet address. It is instead their smart contract address.
+With the Smart Wallet, `msg.sender` is the users custodial address - where you want to send the NFT. This is not always the case with account abstraction. In some other implementations, `msg.sender` is the smart contract address, even if the user signs in with an EOA. Regardless, it's becoming a common practice to pass the address you want the NFT to go to explicitly.
 
 :::
 
@@ -434,7 +434,7 @@ In doing so, you make it much easier for people to onboard to your app, and you 
 
 Together, we can create a gateway to bring the world onchain!
 
-Start by logging in to [Coinbase Commerce]. Create an account if you don't have one yet.
+Start by logging in to the [Coinbase Developer Platform (CDP)]. Create an account if you don't have one yet.
 
 Find your App Id by going to [Project Settings]. It's listed as `Project ID`.
 
@@ -621,6 +621,12 @@ Finally, add a button allowing the user to purchase a new NFT:
 </button>
 ```
 
+:::caution
+
+Reminder: We've constructed our contract to require an explicit address for the recipient in the `mintTo` function.
+
+:::
+
 Test it with your normal wallet. Everything should work as expected. Now, test it with the Smart Wallet. You **don't** need to fund the wallet (on testnet).
 
 Not only does the transaction work in a way that's easy for new users, but for a currently, Base is automatically sponsoring transactions done through the Smart Wallet (**on testnet only)**.
@@ -688,7 +694,7 @@ In this tutorial, you've learned how to connect users to your onchain app with t
 [Sepolia Basescan]: https://sepolia.basescan.org/
 [BOAT]: https://www.smartwallet.dev/guides/create-app/using-boat
 [wagmi template]: https://www.smartwallet.dev/guides/create-app/using-wagmi
-[Coinbase Commerce]: https://commerce.coinbase.com/sign-in
+[Coinbase Developer Platform (CDP)]: https://portal.cdp.coinbase.com/
 [Base Gasless Campaign]: https://www.smartwallet.dev/base-gasless-campaign
 [Paymaster]: https://www.smartwallet.dev/guides/paymasters
 [Project Settings]: https://portal.cdp.coinbase.com/project-settings
