@@ -41,7 +41,7 @@ module.exports = {
           label: 'Bridges',
           collapsible: true,
           collapsed: true,
-          items: ['tools/bridges-mainnet', 'tools/bridges-testnet', 'tools/bridge-faq'],
+          items: ['tools/bridges-mainnet', 'tools/bridges-testnet'],
         },
         {
           type: 'category',
