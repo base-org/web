@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Popover } from '@headlessui/react';
-import { RainbowConnectButton } from 'apps/bridge/src/components/RainbowConnectButton/RainbowConnectButton';
+import { Logo } from 'apps/bridge/src/components/Logo/Logo';
 import { sidebarLinks } from 'apps/bridge/src/components/Sidebar/Sidebar';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -10,25 +10,22 @@ export function Header() {
 
   return (
     <Popover className="relative">
-      <header className="py-5 px-8">
-        <nav className="flex flex-row items-center sm:justify-between">
+      <header className="px-4 py-5">
+        <nav className="flex w-full flex-row items-start">
           <Popover.Button className="block sm:hidden">
             <Image src="/icons/hamburger.svg" width="24" height="24" alt="Menu" />
           </Popover.Button>
-          <h1 className="grow	text-center font-mono text-2xl uppercase text-white sm:grow-0">
-            {pathname === '/transactions' ? 'Transactions' : 'Bridge'}
-          </h1>
-          <div className="hidden sm:block">
-            <RainbowConnectButton />
-          </div>
+          <a href="https://base.org">
+            <Logo />
+          </a>
         </nav>
       </header>
       <Popover.Panel
         focus
-        className="fixed left-0 top-0 right-0 bottom-0 z-50 flex min-h-screen transform flex-col justify-between overscroll-auto bg-[#0A0B0D] transition md:hidden	"
+        className="fixed bottom-0 left-0 right-0 top-0 z-50 flex min-h-screen transform flex-col justify-between overscroll-auto bg-[#0A0B0D] transition md:hidden	"
       >
         <div>
-          <header className="py-5 px-8">
+          <header className="px-8 py-5">
             <nav className="flex flex-row items-center justify-between">
               <Popover.Button>
                 <Image
@@ -58,12 +55,6 @@ export function Header() {
                 </a>
               ))}
             </div>
-            <div className="flex-grow border-t border-[#8A919EA8]" />
-          </div>
-          <div className="pl-8">
-            <RainbowConnectButton />
-          </div>
-          <div className="p-8">
             <div className="flex-grow border-t border-[#8A919EA8]" />
           </div>
         </div>
