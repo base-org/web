@@ -39,7 +39,7 @@ const bridges = coinflip([
     url: wonderbridgeUrls[chainId],
     logo: wonderbridgeLogo,
     color: '#0F152A',
-    team: 'Wonderland',
+    team: 'Bridgg',
   },
 ]);
 
