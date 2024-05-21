@@ -9,6 +9,10 @@ export function FaqSidebar() {
         answer="No, the bridge on bridge.base.org has been deprecated."
       />
       <QuestionAccordion
+        question="I used bridge.base.org in the past, how do I find my deposit or withdrawal?"
+        answer="Navigate to one of the Superchain Bridges to look up your transaction."
+      />
+      <QuestionAccordion
         question="Why has Base deprecated the bridge on bridge.base.org?"
         answer="Base is committed to decentralization and the Superchain vision. Leveraging the community to bootstrap the Superchain bridges is a step in that direction; increasing censorship resistance and decentralization."
       />
@@ -25,8 +29,7 @@ export function FaqSidebar() {
               Base Discord
             </a>{' '}
             community is available around the clock for general questions, assistance and support!
-            Depending on your issue, you can create a support ticket in the #general-support or
-            #developer-support channels.
+            You can create a support ticket in the #general-support channel.
           </>
         }
       />
