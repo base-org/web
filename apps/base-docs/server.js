@@ -141,8 +141,8 @@ app.get('/tools/bridges', (req, res) => {
   res.redirect('/docs/tools/bridges');
 });
 
-app.get('/tools/bridges-testnet', (req, res) => {
-  res.redirect('/docs/tools/bridges-testnet');
+app.get('/docs/tools/bridges-testnet', (req, res) => {
+  res.redirect('/docs/tools/bridges');
 });
 
 app.get('docs/tools/bridge-faq', (req, res) => {

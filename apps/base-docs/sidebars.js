@@ -36,13 +36,7 @@ module.exports = {
         'tools/nft-minting',
         'tools/onramps',
         'tools/onboarding',
-        {
-          type: 'category',
-          label: 'Bridges',
-          collapsible: true,
-          collapsed: true,
-          items: ['tools/bridges-mainnet', 'tools/bridges-testnet'],
-        },
+        'tools/bridges-mainnet',
         {
           type: 'category',
           label: 'Toolchains',

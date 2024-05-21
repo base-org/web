@@ -1,7 +1,7 @@
 ---
-title: Mainnet
+title: Superchain Bridges
 slug: /tools/bridges
-description: Documentation for bridging assets to the Base mainnet. This page covers how to bridge ETH and ERC-20s between Ethereum mainnet and Base mainnet, with essential cautions and contract information.
+description: Documentation for bridging assets to the Base. This page covers how to bridge ETH and ERC-20s between Ethereum (L1) and Base along with essential information.
 keywords:
   [
     Base,
@@ -21,22 +21,37 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# Bridges
+# Superchain Bridges
 
 ---
 
-## Base Bridge
+## Superbridge
 
-The [Base Bridge](https://bridge.base.org/) allows you to bridge ETH and certain ERC-20s from Ethereum to Base and vice versa.
+[Superbridge](https://superbridge.app/base) enables you to bridge ETH and other supported assets from Ethereum mainnet (L1) directly to Base.
 
-To bridge to or from Base:
+#### Supported Networks
 
-1. Visit [Base Bridge](https://bridge.base.org/)
-2. Click **Connect wallet**
-3. Connect your wallet
-4. Choose the amount of ETH (or the asset of your choice that's available) you'd like to deposit or withdraw
+- Base Mainnet
+- Base Sepolia (Testnet)
 
-For frequently asked questions about Base Bridge, be sure to check out the [Bridge FAQ](/docs/tools/bridge-faq/).
+---
+
+## Brid.gg
+
+[Brid.gg](https://brid.gg) is another option that also helps you bridge ETH and supported assets between Ethereum mainnet (L1) and Base.
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
+
+---
+
+:::info
+
+Coinbase Technologies, Inc., provides links to the above independent service providers for your convenience but assumes no responsibility for their operations. Any interactions with these providers are solely between you and the provider.
+
+:::
 
 ---
 
@@ -61,3 +76,7 @@ code to withdraw the assets.
 :::
 
 ---
+
+```
+
+```
