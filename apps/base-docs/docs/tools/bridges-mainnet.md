@@ -1,7 +1,7 @@
 ---
 title: Superchain Bridges
 slug: /tools/bridges
-description: Documentation for bridging assets to the Base. This page covers how to bridge ETH and ERC-20s between Ethereum (L1) and Base along with essential information.
+description: Documentation for bridging assets to Base. This page covers how to bridge ETH and ERC-20s between Ethereum (L1) and Base along with essential information.
 keywords:
   [
     Base,
