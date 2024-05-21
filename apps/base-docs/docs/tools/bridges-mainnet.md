@@ -38,7 +38,7 @@ hide_table_of_contents: true
 
 ## Brid.gg
 
-[Brid.gg](https://brid.gg) is another option that also helps you bridge ETH and supported assets between Ethereum mainnet (L1) and Base.
+[Brid.gg](https://brid.gg/base) is another option that also helps you bridge ETH and supported assets between Ethereum mainnet (L1) and Base.
 
 #### Supported Networks
 
