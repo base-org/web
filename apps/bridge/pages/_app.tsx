@@ -133,36 +133,13 @@ function Root({ Component, pageProps }: AppProps) {
                       {(pathname === '/' || !allowedPaths.has(pathname)) && (
                         <Component {...props} />
                       )}
-                      <div className="flex w-full flex-col">
-                        <div className="flex w-full flex-row items-center gap-4 bg-notice-blue px-8 py-3 text-center font-sans text-sm font-bold text-white">
-                          <Image alt="tooltip" src="/icons/alert.svg" width={16} height={16} />
-                          <p>
-                            As Base continues to decentralize, beginning May 21st bridge.base.org
-                            will redirect to{' '}
-                            <a
-                              href="https://superbridge.app/base"
-                              target="_blank"
-                              rel="noreferrer"
-                              className="underline"
-                            >
-                              Superbridge
-                            </a>{' '}
-                            and other bridges (collectively, &quot;Superchain bridges&quot;).
-                            Superchain bridges are available to initiate and complete deposits and
-                            withdrawals to and from Base. Please see our FAQs on this page for
-                            details.
-                          </p>
-                        </div>
-                      </div>
                       {allowedPaths.has(pathname) && (
-                        <Sidebar>
-                          <>
-                            <Header />
-                            <div className="m-0 w-full p-0 sm:h-[calc(100vh-72px)]">
-                              <Component {...props} />
-                            </div>
-                          </>
-                        </Sidebar>
+                        <>
+                          <Header />
+                          <div className="m-0 w-full p-0 sm:h-[calc(100vh-72px)]">
+                            <Component {...props} />
+                          </div>
+                        </>
                       )}
                     </div>
                   </Layout>
