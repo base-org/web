@@ -27,23 +27,23 @@ hide_table_of_contents: true
 
 ## Superbridge
 
-[Superbridge](https://superbridge.app/base) enables you to bridge ETH and other supported assets from Ethereum mainnet (L1) directly to Base.
+Superbridge enables you to bridge ETH and other supported assets from Ethereum mainnet (L1) directly to Base.
 
 #### Supported Networks
 
-- Base Mainnet
-- Base Sepolia (Testnet)
+- [Base Mainnet](https://superbridge.app/base)
+- [Base Sepolia (Testnet)](https://superbridge.app/base-sepolia)
 
 ---
 
 ## Brid.gg
 
-[Brid.gg](https://brid.gg/base) is another option that also helps you bridge ETH and supported assets between Ethereum mainnet (L1) and Base.
+Brid.gg is another option that also helps you bridge ETH and supported assets between Ethereum mainnet (L1) and Base.
 
 #### Supported Networks
 
-- Base Mainnet
-- Base Sepolia (Testnet)
+- [Base Mainnet](https://brid.gg/base)
+- [Base Sepolia (Testnet)](https://testnet.brid.gg/base-sepolia)
 
 ---
 
