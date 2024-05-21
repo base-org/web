@@ -18,6 +18,7 @@ function Disclaimer() {
   );
 }
 
+// This helps us avoid hydration errors as we randomize the order of cards
 const BridgeCardsDynamic = dynamic(async () => import('./BridgeCards'), { ssr: false });
 
 function Content() {
