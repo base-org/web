@@ -7,7 +7,6 @@ import Bugsnag from '@bugsnag/js';
 import BugsnagPluginReact from '@bugsnag/plugin-react';
 import localFont from '@next/font/local';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { Header } from 'apps/bridge/src/components/Header/Header';
 import { Layout } from 'apps/bridge/src/components/Layout/Layout';
 import { OFACProvider } from 'apps/bridge/src/contexts/OFACContext';
 import { TOSProvider } from 'apps/bridge/src/contexts/TOSContext';
