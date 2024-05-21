@@ -277,6 +277,7 @@ __metadata:
     "@rainbow-me/rainbowkit": ^1
     "@types/react-copy-to-clipboard": ^5.0.4
     autoprefixer: ^10.4.13
+    base-ui: 0.1.1
     clsx: ^1.2.1
     eslint-config-next: ^13.1.6
     framer-motion: ^9.0.4

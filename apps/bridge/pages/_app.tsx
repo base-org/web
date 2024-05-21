@@ -9,7 +9,6 @@ import localFont from '@next/font/local';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { Header } from 'apps/bridge/src/components/Header/Header';
 import { Layout } from 'apps/bridge/src/components/Layout/Layout';
-import { Sidebar } from 'apps/bridge/src/components/Sidebar/Sidebar';
 import { OFACProvider } from 'apps/bridge/src/contexts/OFACContext';
 import { TOSProvider } from 'apps/bridge/src/contexts/TOSContext';
 import { connectWallet } from 'apps/bridge/src/wallet/connect';
@@ -17,7 +16,6 @@ import App, { AppContext, AppProps } from 'next/app';
 import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 import { WagmiConfig } from 'wagmi';
-import Image from 'next/image';
 
 const { publicRuntimeConfig } = getConfig();
 
