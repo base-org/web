@@ -431,7 +431,7 @@ app.use(
     setHeaders: function (res) {
       res.setHeader('cache-control', 'no-store');
       res.setHeader('content-security-policy', cspObjectToString);
-      res.setHeader('cross-origin-opener-policy', 'same-origin');
+      res.setHeader('cross-origin-opener-policy', 'same-origin-allow-popups');
       res.setHeader('referrer-policy', 'strict-origin-when-cross-origin');
       res.setHeader('strict-transport-security', 'max-age=63072000; includeSubDomains; preload');
       res.setHeader('x-content-type-options', 'nosniff');
