@@ -122,27 +122,21 @@ function Root({ Component, pageProps }: AppProps) {
         <QueryClientProvider client={queryClient}>
           <WagmiConfig config={wagmiConfig}>
             <RainbowKitProvider chains={providerChains} modalSize="compact">
-              <TOSProvider>
-                <OFACProvider>
-                  <Layout>
-                    <div
-                      className={`${coinbaseDisplay.variable} ${coinbaseSans.variable} ${coinbaseMono.variable}`}
-                    >
-                      {(pathname === '/' || !allowedPaths.has(pathname)) && (
+              <div
+                className={`${coinbaseDisplay.variable} ${coinbaseSans.variable} ${coinbaseMono.variable}`}
+              >
+                {(pathname === '/' || !allowedPaths.has(pathname)) && <Component {...props} />}
+                {allowedPaths.has(pathname) && (
+                  <div className="flex w-full flex-col items-center">
+                    <div className="flex w-full max-w-[1440px] flex-col">
+                      <Nav color="white" />
+                      <div className="m-0 w-full p-0 sm:h-[calc(100vh-72px)]">
                         <Component {...props} />
-                      )}
-                      {allowedPaths.has(pathname) && (
-                        <>
-                          <Nav color="white" />
-                          <div className="m-0 w-full p-0 sm:h-[calc(100vh-72px)]">
-                            <Component {...props} />
-                          </div>
-                        </>
-                      )}
+                      </div>
                     </div>
-                  </Layout>
-                </OFACProvider>
-              </TOSProvider>
+                  </div>
+                )}
+              </div>
             </RainbowKitProvider>
           </WagmiConfig>
         </QueryClientProvider>
