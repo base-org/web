@@ -9,8 +9,9 @@ import zora from 'apps/web/public/images/ocs/sponsors/zora.png';
 import shopify from 'apps/web/public/images/ocs/sponsors/shopify.png';
 import nouns from 'apps/web/public/images/ocs/sponsors/nouns.png';
 import synthetix from 'apps/web/public/images/ocs/sponsors/synthetix.png';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { FadeInSection } from 'apps/web/src/components/OnchainSummer/FadeIns';
+import { useMemo } from 'react';
 
 const sponsors = [
   {
@@ -72,6 +73,41 @@ const sponsors = [
   },
 ];
 
+function SponsorCard({
+  name,
+  image,
+  shrink,
+  text,
+  color,
+}: {
+  name: string;
+  image: StaticImageData;
+  shrink?: string;
+  text: string;
+  color: string;
+}) {
+  const style = useMemo(
+    () => ({
+      scale: shrink,
+      transformOrigin: 'top left',
+    }),
+    [shrink],
+  );
+
+  return (
+    <div
+      key={name}
+      className="flex min-h-[150px] min-w-[150px] flex-col items-start justify-between gap-2 rounded-[3px] p-4"
+      style={{ background: color }}
+    >
+      <Image src={image} alt={name} height={50} style={style} />
+      <span className="text-l font-mono font-light uppercase" style={{ color: text }}>
+        {name}
+      </span>
+    </div>
+  );
+}
+
 export default function SponsorsBlock() {
   return (
     <div className="my-20 flex w-full max-w-[1200px] flex-col">
@@ -98,27 +134,14 @@ export default function SponsorsBlock() {
           }}
         >
           {sponsors.map((sponsor) => (
-            <div
+            <SponsorCard
               key={sponsor.name}
-              className="flex min-h-[150px] min-w-[150px] flex-col items-start justify-between gap-2 rounded-[3px] p-4"
-              style={{ background: sponsor.color }}
-            >
-              <Image
-                src={sponsor.image}
-                alt={sponsor.name}
-                height={50}
-                style={{
-                  scale: sponsor.shrink,
-                  transformOrigin: 'top left',
-                }}
-              />
-              <span
-                className="text-l font-mono font-light uppercase"
-                style={{ color: sponsor.text }}
-              >
-                {sponsor.name}
-              </span>
-            </div>
+              name={sponsor.name}
+              image={sponsor.image}
+              color={sponsor.color}
+              text={sponsor.text}
+              shrink={sponsor.shrink}
+            />
           ))}
         </div>
       </FadeInSection>
