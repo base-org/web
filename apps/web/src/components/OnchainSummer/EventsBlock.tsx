@@ -65,7 +65,7 @@ function HackathonSlab() {
               </a>
             </div>
           </div>
-          <div className="flex flex-col items-end md:w-1/2">
+          <div className="flex flex-col items-end">
             {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
             <Image src={giantB} alt="Giant B" />
           </div>
@@ -73,7 +73,7 @@ function HackathonSlab() {
       </FadeInSection>
 
       <FadeInSection delay={0.5}>
-        <section className="flex flex-col gap-4 md:flex-row">
+        <section className="flex flex-col gap-4 lg:flex-row">
           <EventCard
             num="01"
             title="200 ETH IN REWARDS"
