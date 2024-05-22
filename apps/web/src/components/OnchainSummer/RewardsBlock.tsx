@@ -64,7 +64,7 @@ export default function RewardsBlock() {
       </FadeInSection>
       <FadeInSection delay={0.5}>
         <div
-          className="mt-6 flex w-full max-w-[1200px] flex-row gap-2 overflow-x-auto px-8 pb-6"
+          className="mt-6 flex w-full max-w-[1200px] flex-row gap-4 overflow-x-auto px-8 pb-6"
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#000',

@@ -42,6 +42,7 @@ const sponsors = [
     color: '#DC35A7',
     text: 'white',
     image: thirdweb,
+    shrink: '80%',
   },
   {
     name: 'Zora',
@@ -60,12 +61,14 @@ const sponsors = [
     color: '#EFC950',
     text: 'black',
     image: nouns,
+    shrink: '80%',
   },
   {
     name: 'Synthetix',
     color: '#00BAFA',
     text: 'white',
     image: synthetix,
+    shrink: '75%',
   },
 ];
 
@@ -78,9 +81,9 @@ export default function SponsorsBlock() {
       <FadeInSection>
         <div className="my-6 flex flex-col gap-6 px-8">
           <span className="text-5xl font-extrabold leading-9 md:text-7xl">
-            BUILDATHON TR<Brit>a</Brit>CK <Brit axis={68}>s</Brit>PONSORS
+            BUIL<Brit axis={100}>d</Brit>ATHON TR<Brit>a</Brit>CK <Brit axis={68}>s</Brit>PONSORS
           </span>
-          <p className="mt-4 text-2xl md:text-4xl">
+          <p className="mb-6 mt-4 text-2xl md:text-4xl">
             8 tracks across commerce, payments, gaming, creator, social, and more. Sponsored by
             leading builders and innovators.
           </p>
@@ -88,7 +91,7 @@ export default function SponsorsBlock() {
       </FadeInSection>
       <FadeInSection delay={0.5}>
         <div
-          className="mb-8 flex grid w-full max-w-[1200px] grid-cols-2 gap-2 overflow-x-auto pb-6 md:grid-cols-3 md:px-8 lg:grid-cols-5"
+          className="mb-8 flex grid w-full max-w-[1200px] grid-cols-2 gap-4 overflow-x-auto pb-6 md:grid-cols-3 md:px-8 lg:grid-cols-5"
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#000',
@@ -97,10 +100,18 @@ export default function SponsorsBlock() {
           {sponsors.map((sponsor) => (
             <div
               key={sponsor.name}
-              className="flex min-h-[150px] min-w-[150px] flex-col justify-between gap-2 rounded-[3px] p-4"
+              className="flex min-h-[150px] min-w-[150px] flex-col items-start justify-between gap-2 rounded-[3px] p-4"
               style={{ background: sponsor.color }}
             >
-              <Image src={sponsor.image} alt={sponsor.name} height={50} />
+              <Image
+                src={sponsor.image}
+                alt={sponsor.name}
+                height={50}
+                style={{
+                  scale: sponsor.shrink,
+                  transformOrigin: 'top left',
+                }}
+              />
               <span
                 className="text-l font-mono font-light uppercase"
                 style={{ color: sponsor.text }}

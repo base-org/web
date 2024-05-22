@@ -19,7 +19,7 @@ export default function CommunityEventsBlock() {
             <p className="text-2xl font-light md:text-4xl">
               Want to share what you’ve learned, host a meetup, or simply get together to hack?
             </p>
-            <div className="mb-6 w-fit">
+            <div className="mb-6 mt-6 w-fit">
               <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSf5wnzD_czyYOyHFeOmFK_rjsJj7Utovo3jWwR40JizPqmDZg/viewform"
                 target="_blank"
