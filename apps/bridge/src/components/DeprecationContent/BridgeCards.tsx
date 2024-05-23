@@ -45,14 +45,17 @@ const bridges = coinflip([
 
 function BridgeCard({ name, url, logo, color, team }: (typeof bridges)[0]) {
   return (
-    <a href={url} className={`flex flex-col items-center justify-center rounded-lg bg-${color}`}>
+    <a
+      href={url}
+      className={`flex flex-col items-center justify-center rounded-lg bg-${color} group`}
+    >
       <div
-        className="flex h-80 w-full flex-col items-center justify-center"
+        className="flex h-60 w-full flex-col items-center justify-center duration-500 group-hover:brightness-150 md:h-80 lg:h-60"
         style={{ backgroundColor: color }}
       >
         <Image src={logo} alt={name} className="mb-4" />
       </div>
-      <div className="flex w-full flex-row items-start justify-between bg-gray p-12">
+      <div className="flex w-full flex-row items-start justify-between bg-gray p-12 group-hover:bg-hovergray">
         <div className="flex flex-col">
           <h2 className="font-mono text-3xl uppercase">{name}</h2>
           <p className="mt-2 text-xl text-muted">By {team}</p>
@@ -66,7 +69,7 @@ function BridgeCard({ name, url, logo, color, team }: (typeof bridges)[0]) {
 
 export default function BridgeCards() {
   return (
-    <div className="mb-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
+    <div className="mb-16 grid grid-cols-1 gap-12 lg:grid-cols-2">
       {bridges.map((bridge) => (
         <BridgeCard key={bridge.name} {...bridge} />
       ))}

@@ -2,8 +2,10 @@ import { QuestionAccordion } from 'apps/bridge/src/components/Faq/QuestionAccord
 
 export function FaqSidebar() {
   return (
-    <div className="flex h-full w-full flex-col p-4 font-sans lg:w-[420px] lg:border-l lg:border-sidebar-border">
-      <span className="mb-8 text-base font-medium text-stone-400">Frequently asked questions</span>
+    <div className="flex w-full flex-col p-4 pl-6 font-sans lg:w-[420px] lg:border-l lg:border-sidebar-border">
+      <span className="mb-8 mt-6 font-mono text-base font-medium uppercase text-stone-400">
+        Frequently asked questions
+      </span>
       <QuestionAccordion
         question="Can I still use the bridge on bridge.base.org?"
         answer="No, the bridge on bridge.base.org has been deprecated."
