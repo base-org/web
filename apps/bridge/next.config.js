@@ -103,7 +103,7 @@ const securityHeaders = [
   },
   {
     key: 'cross-origin-opener-policy',
-    value: 'same-origin',
+    value: 'same-origin-allow-popups',
   },
   {
     key: 'referrer-policy',
