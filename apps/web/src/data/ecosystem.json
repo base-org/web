@@ -909,15 +909,6 @@
     "imageUrl": "/images/partners/shibaments.webp"
   },
   {
-    "name": "Universe Island",
-    "url": "https://universeisland.games/",
-    "description": "Immersive, 1vs1 Sci-Fi themed mobile open world game. Universe Island offers a riveting environment. Discover gaming features that will take your gaming experience to another level and the remarkable story of four attractive characters exploring mysterious islands and cities in the deep universe. Unique skills and weapons will add pure adrenaline to a 1vs1 fighting match with your opponent to win extraordinary rewards.",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/universeisland.webp"
-  },
-  {
     "name": "Coinarcade",
     "url": "https://dapp.playcoinarcade.xyz/entryPage",
     "description": "CoinArcade is a Decentralized Esports Layer for All Gamers. With our unified platform experience and weekly tournament designing, players can play/battle/stake 2 earn prizes anytime and anywhere.",
@@ -954,15 +945,6 @@
     "imageUrl": "/images/partners/supra.webp"
   },
   {
-    "name": "OpenOcean",
-    "url": "https://openocean.finance/",
-    "description": "OpenOcean is the leading DEX aggregator, integrating the most liquidity sources across a wide range of blockchains into one seamless trading interface, to bring users the best swap return for decentralized crypto trading.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/oocean.webp"
-  },
-  {
     "name": "Pheasant Network",
     "url": "https://pheasant.network/",
     "description": "Pheasant Network is an optimistic bridge specialized for Layer 2. Cheap gas fees and strong security improve scalability and interoperability of Ethereum.",
@@ -979,15 +961,6 @@
       "dao"
     ],
     "imageUrl": "/images/partners/nouns.webp"
-  },
-  {
-    "name": "Metopia",
-    "url": "https://metopia.xyz/",
-    "description": "Web3's Growth-Focused Contribution Platform, providing the SBT protocol and customized loyalty program for communities to capture on-chain contributions, and distribute rewards accordingly.",
-    "tags": [
-      "social"
-    ],
-    "imageUrl": "/images/partners/metopia.webp"
   },
   {
     "name": "SimpleHash",
@@ -1053,15 +1026,6 @@
     "imageUrl": "/images/partners/intentx.webp"
   },
   {
-    "name": "Raft",
-    "url": "https://raft.fi/",
-    "description": "Raft enables the generation of R, a leading USD stablecoin, by opening a CDP (collateralized debt position), or by depositing stablecoins into the Raft protocol reserve.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/raft.webp"
-  },
-  {
     "name": "Llama",
     "url": "https://llama.xyz/",
     "description": "Llama is a fullstack platform for onchain governance and access control. It enables protocols to securely take action using onchain policies and custom execution strategies.",
@@ -1098,24 +1062,6 @@
     "imageUrl": "/images/partners/Halliday.webp"
   },
   {
-    "name": "NFTA",
-    "url": "https://www.nfta.pl/",
-    "description": "daily eth price prediction game",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/nfta.webp"
-  },
-  {
-    "name": "Base Battles",
-    "url": "https://basebattles.xyz/",
-    "description": "BaseBattles is a game about war, designed around Game Theory concepts.  Players purchase votes to add firepower to their team, frantically building armies until a fixed final block.",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/basebattles.webp"
-  },
-  {
     "name": "QuestN",
     "url": "https://questn.com/",
     "description": "QuestN is a one-stop tool offering comprehensive solutions for Marketing, Growth, and Analysis in Web3. QuestN's range of services enables Projects to effectively engage in the entire cycle of user attraction, acquisition, and analysis.",
@@ -1141,15 +1087,6 @@
       "social"
     ],
     "imageUrl": "/images/partners/appicon.webp"
-  },
-  {
-    "name": "Sismo",
-    "url": "https://www.sismo.io/",
-    "description": "Sismo is a sovereign identity aggregator and crypto-native sso. ",
-    "tags": [
-      "social"
-    ],
-    "imageUrl": "/images/partners/sismo.webp"
   },
   {
     "name": "Bitget Wallet",
@@ -1672,15 +1609,6 @@
       "defi"
     ],
     "imageUrl": "/images/partners/dackie.webp"
-  },
-  {
-    "name": "Plasma Finance",
-    "url": "https://plasma.finance/",
-    "description": "Multichain DeFi Aggregator, HyperDEX aggregator, Bridge Aggregator, Farming, Portfolio Management and Mobile App.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/plasma.webp"
   },
   {
     "name": "Synapse Protocol",
