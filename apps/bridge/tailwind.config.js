@@ -24,6 +24,7 @@ module.exports = {
         muted: 'rgba(138, 145, 158, 1)',
         gray: '#1E2025',
         modal: '#464B55',
+        hovergray: '#32353D',
         'notice-blue': '#001033',
       },
       textColor: {
