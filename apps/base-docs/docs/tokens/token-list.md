@@ -40,4 +40,4 @@ Follow the instructions in the [GitHub repository](https://github.com/ethereum-o
 
 ### Step 3: Await final approval
 
-Reviews are regularly conducted by the Base team and you should receive a reply within 24-72 hours (depending on if the PR was opened on a week day, weekend or holiday).
+Reviews are regularly conducted by the Base team and you should receive a reply within 24-72 hours (depending on if the PR is opened on a week day, weekend or holiday).
