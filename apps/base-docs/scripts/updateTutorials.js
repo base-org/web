@@ -2,6 +2,7 @@ const yaml = require('js-yaml');
 const fs = require('fs');
 const { readFile } = require('fs/promises');
 const path = require('path');
+const crypto = require('crypto');
 
 const tutorialsDir = path.join(__dirname, '..', 'tutorials', 'docs');
 
@@ -28,16 +29,6 @@ async function getDuration(filePath) {
   }
 }
 
-async function getLastUpdated(filePath) {
-  try {
-    const stats = await fs.promises.stat(filePath);
-    return stats.mtime;
-  } catch (error) {
-    console.error('Error getting file stats:', error);
-    return null;
-  }
-}
-
 async function formatDate(date) {
   const months = [
     'Jan',
@@ -55,7 +46,18 @@ async function formatDate(date) {
   ];
   const month = months[date.getMonth()];
   const day = date.getDate();
-  return `${month} ${day}`;
+  const year = date.getFullYear();
+  return `${month} ${day}, ${year}`;
+}
+
+async function calculateChecksum(filePath) {
+  return new Promise((resolve, reject) => {
+    const hash = crypto.createHash('sha256');
+    const stream = fs.createReadStream(filePath);
+    stream.on('data', (data) => hash.update(data));
+    stream.on('end', () => resolve(hash.digest('hex')));
+    stream.on('error', reject);
+  });
 }
 
 (async () => {
@@ -79,12 +81,14 @@ async function formatDate(date) {
         content = content.split('---\n')[1];
         const frontMatter = yaml.load(content);
         const slug = frontMatter.slug.substring(1);
-        const lastUpdated = await getLastUpdated(tutorialsPath);
+        const checksum = await calculateChecksum(tutorialsPath);
+        const currentDate = new Date();
 
-        if (!existingData[slug] || existingData[slug].last_updated !== lastUpdated.toISOString()) {
+        if (!existingData[slug] || existingData[slug].checksum !== checksum) {
           tutorials[slug] = frontMatter;
-          tutorials[slug].last_updated = await formatDate(lastUpdated);
+          tutorials[slug].last_updated = await formatDate(currentDate);
           tutorials[slug].duration = await getDuration(tutorialsPath);
+          tutorials[slug].checksum = checksum;
         } else {
           tutorials[slug] = existingData[slug];
         }
