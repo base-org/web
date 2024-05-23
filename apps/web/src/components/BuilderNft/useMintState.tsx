@@ -33,7 +33,7 @@ export type MintState = {
   txHash?: `0x${string}`;
 };
 
-export function useProofQuery(): UseQueryResult<{ result: string[] }> {
+export function useProofQuery(): UseQueryResult<{ result: `0x${string}`[] }> {
   const { address, status } = useAccount();
 
   return useQuery({
@@ -67,17 +67,16 @@ export function useMintState(): MintState {
 
   const { writeContract, isPending, isSuccess, error, data: txHash, reset } = useWriteContract();
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { data: hasClaimed } = useReadContract({
     abi: contractABI,
     address: contractAddress,
     functionName: 'hasClaimed',
     chainId: base.id,
-    args: [address],
+    args: [address as `0x${string}`],
   });
 
   const mint = useCallback(() => {
-    if (contractAddress) {
+    if (contractAddress && proof) {
       writeContract({
         abi: contractABI,
         address: contractAddress,

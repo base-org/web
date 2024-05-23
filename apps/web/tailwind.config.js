@@ -29,6 +29,9 @@ module.exports = {
         900: 'rgba(255,255,255,0.9)',
       },
       black: '#000000',
+      ocsblue: 'rgba(0, 82, 255, 1)',
+      ocspink: '#FF8DCF',
+      ocsyellow: '#FEE002',
       blue: {
         400: '#688CEC',
         500: '#0455FF',
@@ -50,6 +53,7 @@ module.exports = {
         display: ['var(--font-coinbase-display)', ...defaultTheme.fontFamily.sans],
         sans: ['var(--font-coinbase-sans)', ...defaultTheme.fontFamily.sans],
         mono: ['var(--font-coinbase-mono)', ...defaultTheme.fontFamily.sans],
+        britney: ['var(--font-britney)', ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
         empowered_by_coinbase: "url('/images/empowered_by_coinbase.png')",

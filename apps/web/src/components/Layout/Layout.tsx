@@ -57,6 +57,16 @@ const coinbaseMono = localFont({
   variable: '--font-coinbase-mono',
 });
 
+const britney = localFont({
+  src: [
+    {
+      path: '../../fonts/BritneyVariableVF.woff2',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-britney',
+});
+
 const cookieBannerTheme = {
   colors: {
     primary: '#1652F0',
@@ -101,15 +111,18 @@ const cookieBannerTheme = {
 
 type LayoutProps = { children: ReactElement };
 
+const BLACK_NAV_PATHS = [
+  '/',
+  '/jobs/apply',
+  '/cookie-policy',
+  '/third-party-cookies',
+  '/buildersummer',
+];
+
 export function Layout({ children }: LayoutProps) {
   const { pathname } = useRouter();
   const color: 'black' | 'white' = useMemo(() => {
-    if (
-      pathname === '/' ||
-      pathname === '/jobs/apply' ||
-      pathname === '/cookie-policy' ||
-      pathname === '/third-party-cookies'
-    ) {
+    if (BLACK_NAV_PATHS.includes(pathname)) {
       return 'black';
     }
 
@@ -118,7 +131,7 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div
-      className={`max-w-screen flex min-h-screen flex-col ${coinbaseDisplay.variable} ${coinbaseSans.variable} ${coinbaseMono.variable}`}
+      className={`max-w-screen flex min-h-screen flex-col ${coinbaseDisplay.variable} ${coinbaseSans.variable} ${coinbaseMono.variable} ${britney.variable}`}
     >
       <Nav color={color} />
       {children}

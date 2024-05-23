@@ -599,12 +599,12 @@ To learn more about using Particle Network on Base, take a look at the following
 [create-react-app]: https://create-react-app.dev
 [Base Faucets]: https://docs.base.org/tools/network-faucets
 [Web3Auth]: https://web3auth.io
-[Privy]: https://docs.base.org/building-with-base/guides/account-abstraction/intro-to-privy
+[Privy]: https://docs.base.org/tutorials/account-abstraction-with-privy-and-base-paymaster/
 [Magic]: https://magic.link
 [ERC-4337]: https://eips.ethereum.org/EIPS/eip-4337
 [Biconomy]: https://docs.base.org/guides/account-abstraction-with-biconomy
 [external infrastructure and components]: https://blog.particle.network/announcing-our-smart-wallet-as-a-service-modular-stack-upgrading-waas-with-erc-4337
-[Introduction to Account Abstraction]: https://docs.base.org/building-with-base/guides/account-abstraction/intro-to-account-abstraction
+[Introduction to Account Abstraction]: https://docs.base.org/tutorials/account-abstraction-with-privy-and-base-paymaster/
 [Particle dashboard]: https://dashboard.particle.network
 [Biconomy Guide (which uses Particle Network)]: https://docs.base.org/guides/account-abstraction-with-biconomy
 [Account Abstraction on Base]: https://docs.base.org/tools/account-abstraction

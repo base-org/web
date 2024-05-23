@@ -36,7 +36,7 @@ Once all tokens have been claimed, this function should revert with an error `Al
 Implement a `public` function called `safeTransfer` that accepts an address `_to` and an `_amount`. It should transfer tokens from the sender to the `_to` address, **only if**:
 
 - That address is not the zero address
-- That address has a balance of greater than zero Base Goerli Eth
+- That address has a balance of greater than zero Base Sepolia Eth
 
 A failure of either of these checks should result in a revert with an `UnsafeTransfer` error, containing the address.
 

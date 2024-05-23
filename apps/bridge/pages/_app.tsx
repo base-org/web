@@ -7,16 +7,12 @@ import Bugsnag from '@bugsnag/js';
 import BugsnagPluginReact from '@bugsnag/plugin-react';
 import localFont from '@next/font/local';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { Header } from 'apps/bridge/src/components/Header/Header';
-import { Layout } from 'apps/bridge/src/components/Layout/Layout';
-import { Sidebar } from 'apps/bridge/src/components/Sidebar/Sidebar';
-import { OFACProvider } from 'apps/bridge/src/contexts/OFACContext';
-import { TOSProvider } from 'apps/bridge/src/contexts/TOSContext';
 import { connectWallet } from 'apps/bridge/src/wallet/connect';
 import App, { AppContext, AppProps } from 'next/app';
 import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 import { WagmiConfig } from 'wagmi';
+import { Nav } from 'apps/bridge/src/components/Nav/Nav';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -123,29 +119,21 @@ function Root({ Component, pageProps }: AppProps) {
         <QueryClientProvider client={queryClient}>
           <WagmiConfig config={wagmiConfig}>
             <RainbowKitProvider chains={providerChains} modalSize="compact">
-              <TOSProvider>
-                <OFACProvider>
-                  <Layout>
-                    <div
-                      className={`${coinbaseDisplay.variable} ${coinbaseSans.variable} ${coinbaseMono.variable}`}
-                    >
-                      {(pathname === '/' || !allowedPaths.has(pathname)) && (
+              <div
+                className={`${coinbaseDisplay.variable} ${coinbaseSans.variable} ${coinbaseMono.variable}`}
+              >
+                {(pathname === '/' || !allowedPaths.has(pathname)) && <Component {...props} />}
+                {allowedPaths.has(pathname) && (
+                  <div className="flex w-full flex-col items-center">
+                    <div className="flex w-full max-w-[1440px] flex-col">
+                      <Nav color="white" />
+                      <div className="m-0 w-full p-0 sm:h-[calc(100vh-72px)]">
                         <Component {...props} />
-                      )}
-                      {allowedPaths.has(pathname) && (
-                        <Sidebar>
-                          <>
-                            <Header />
-                            <div className="m-0 w-full p-0 sm:h-[calc(100vh-72px)]">
-                              <Component {...props} />
-                            </div>
-                          </>
-                        </Sidebar>
-                      )}
+                      </div>
                     </div>
-                  </Layout>
-                </OFACProvider>
-              </TOSProvider>
+                  </div>
+                )}
+              </div>
             </RainbowKitProvider>
           </WagmiConfig>
         </QueryClientProvider>

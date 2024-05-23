@@ -33,15 +33,10 @@ module.exports = {
         'tools/cross-chain',
         'tools/account-abstraction',
         'tools/nft-checkout',
+        'tools/nft-minting',
         'tools/onramps',
         'tools/onboarding',
-        {
-          type: 'category',
-          label: 'Bridges',
-          collapsible: true,
-          collapsed: true,
-          items: ['tools/bridges-mainnet', 'tools/bridges-testnet', 'tools/bridge-faq'],
-        },
+        'tools/bridges-mainnet',
         {
           type: 'category',
           label: 'Toolchains',

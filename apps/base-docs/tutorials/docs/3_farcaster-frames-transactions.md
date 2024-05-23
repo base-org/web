@@ -185,12 +185,6 @@ import { base } from 'viem/chains';
 import type { FrameTransactionResponse } from '@coinbase/onchainkit/frame';
 ```
 
-:::caution
-
-At the time of writing, Base Sepolia is not yet on the list of approved chains, but is in the process of being added.
-
-:::
-
 Finally, you'll need to import the ABI and address for your contract. If you're using a tool that exports the ABI as an object, you can add it as below after adding the folder and file for the ABI. Make sure you have `const abi =` before the array containing the ABI, and `export default abi;`.
 
 You also need to add the contract address to `config.ts`.

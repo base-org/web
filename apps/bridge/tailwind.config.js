@@ -21,8 +21,10 @@ module.exports = {
         'cds-background-red-60': 'rgba(240, 97, 109, 1)',
         'cds-background-wash': 'rgba(0, 16, 51, 1)',
         'warning-banner-red': 'rgba(47, 5, 5, 1)',
+        muted: 'rgba(138, 145, 158, 1)',
         gray: '#1E2025',
         modal: '#464B55',
+        'notice-blue': '#001033',
       },
       textColor: {
         'cds-primary': 'rgba(88, 138, 245, 1)',

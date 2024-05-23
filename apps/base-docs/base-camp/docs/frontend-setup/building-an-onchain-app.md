@@ -141,16 +141,15 @@ export function Providers(props: { children: ReactNode }) {
 
 Open `layout.tsx`. Import your `Providers`, being careful if you use auto-import as there are many other things with similar names in the list. Wrap the `children` in your `return` with the new `Providers`.
 
-:::typescript
+```typescript
 return (
-
   <html lang="en">
     <body className={inter.className}>
       <Providers>{children}</Providers>
     </body>
   </html>
 );
-:::
+```
 
 ## Adding the Connect Button
 
