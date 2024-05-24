@@ -55,6 +55,13 @@ const ogDataForPath: Record<string, CustomDocumentProps['ogData']> = {
     image: 'https://base.org/images/base-open-graph.png',
     url: 'https://base.org/third-party-cookies',
   },
+  '/buildersummer': {
+    title: 'Onchain Summer | Buildathon',
+    description:
+      'Onchain Summer is back to unleash onchain creativity and invite everyone to build all summer long. Build, create, and get rewarded. June – August 2024.',
+    image: 'https://base.org/images/ocs/buildersummer_og.png',
+    url: 'https://base.org/buildersummer',
+  },
 };
 
 export default function Document({ ogData }: CustomDocumentProps) {

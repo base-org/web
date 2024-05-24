@@ -7,17 +7,12 @@ import Bugsnag from '@bugsnag/js';
 import BugsnagPluginReact from '@bugsnag/plugin-react';
 import localFont from '@next/font/local';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { Header } from 'apps/bridge/src/components/Header/Header';
-import { Layout } from 'apps/bridge/src/components/Layout/Layout';
-import { Sidebar } from 'apps/bridge/src/components/Sidebar/Sidebar';
-import { OFACProvider } from 'apps/bridge/src/contexts/OFACContext';
-import { TOSProvider } from 'apps/bridge/src/contexts/TOSContext';
 import { connectWallet } from 'apps/bridge/src/wallet/connect';
 import App, { AppContext, AppProps } from 'next/app';
 import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 import { WagmiConfig } from 'wagmi';
-import Image from 'next/image';
+import { Nav } from 'apps/bridge/src/components/Nav/Nav';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -124,50 +119,21 @@ function Root({ Component, pageProps }: AppProps) {
         <QueryClientProvider client={queryClient}>
           <WagmiConfig config={wagmiConfig}>
             <RainbowKitProvider chains={providerChains} modalSize="compact">
-              <TOSProvider>
-                <OFACProvider>
-                  <Layout>
-                    <div
-                      className={`${coinbaseDisplay.variable} ${coinbaseSans.variable} ${coinbaseMono.variable}`}
-                    >
-                      {(pathname === '/' || !allowedPaths.has(pathname)) && (
+              <div
+                className={`${coinbaseDisplay.variable} ${coinbaseSans.variable} ${coinbaseMono.variable}`}
+              >
+                {(pathname === '/' || !allowedPaths.has(pathname)) && <Component {...props} />}
+                {allowedPaths.has(pathname) && (
+                  <div className="flex w-full flex-col items-center">
+                    <div className="flex w-full max-w-[1440px] flex-col">
+                      <Nav color="white" />
+                      <div className="m-0 w-full p-0 sm:h-[calc(100vh-72px)]">
                         <Component {...props} />
-                      )}
-                      <div className="flex w-full flex-col">
-                        <div className="flex w-full flex-row items-center gap-4 bg-notice-blue px-8 py-3 text-center font-sans text-sm font-bold text-white">
-                          <Image alt="tooltip" src="/icons/alert.svg" width={16} height={16} />
-                          <p>
-                            As Base continues to decentralize, beginning May 17th bridge.base.org
-                            will redirect to{' '}
-                            <a
-                              href="https://superbridge.app/base"
-                              target="_blank"
-                              rel="noreferrer"
-                              className="underline"
-                            >
-                              Superbridge
-                            </a>{' '}
-                            and other bridges (collectively, &quot;Superchain bridges&quot;).
-                            Superchain bridges are available to initiate and complete deposits and
-                            withdrawals to and from Base. Please see our FAQs on this page for
-                            details.
-                          </p>
-                        </div>
                       </div>
-                      {allowedPaths.has(pathname) && (
-                        <Sidebar>
-                          <>
-                            <Header />
-                            <div className="m-0 w-full p-0 sm:h-[calc(100vh-72px)]">
-                              <Component {...props} />
-                            </div>
-                          </>
-                        </Sidebar>
-                      )}
                     </div>
-                  </Layout>
-                </OFACProvider>
-              </TOSProvider>
+                  </div>
+                )}
+              </div>
             </RainbowKitProvider>
           </WagmiConfig>
         </QueryClientProvider>

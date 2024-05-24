@@ -277,11 +277,12 @@ __metadata:
     "@rainbow-me/rainbowkit": ^1
     "@types/react-copy-to-clipboard": ^5.0.4
     autoprefixer: ^10.4.13
+    base-ui: 0.1.1
     clsx: ^1.2.1
     eslint-config-next: ^13.1.6
     framer-motion: ^9.0.4
     moment: ^2.29.4
-    next: "*"
+    next: ^13.1.5
     postcss: ^8.4.20
     prettier-plugin-tailwindcss: ^0.2.3
     react: ^18.2.0
@@ -328,6 +329,7 @@ __metadata:
     react-blockies: ^1.4.1
     react-copy-to-clipboard: ^5.1.0
     react-dom: ^18.2.0
+    react-intersection-observer: ^9.10.2
     react-intl: ^6.2.1
     tailwindcss: ^3.2.4
     typescript: 5.0.4
@@ -20137,6 +20139,19 @@ __metadata:
     react-native:
       optional: true
   checksum: 2f68ccd24daf72ddd2d11a526fb3c2b66c11ea4fcd2e24ac7aed42bf57ec7bffa7455ad1dc93679968ff629e9b1896465cdf6d1a61c29b92138ef88098e8dcba
+  languageName: node
+  linkType: hard
+
+"react-intersection-observer@npm:^9.10.2":
+  version: 9.10.2
+  resolution: "react-intersection-observer@npm:9.10.2"
+  peerDependencies:
+    react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+  checksum: fea1104ae5515f01b6c13f8f8259bf04e44fc624e8ff5aecb1b24cca25cc04b62f7551586acd838a2c475d55fb07d9c042a412f90cd4c8e39ff4575d5a5a76ac
   languageName: node
   linkType: hard
 

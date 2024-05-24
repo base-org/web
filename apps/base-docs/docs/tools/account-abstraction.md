@@ -39,6 +39,18 @@ hide_table_of_contents: true
 
 ---
 
+## Coinbase Account Abstraction Kit
+
+The Coinbase Developer Platform [Account Abstraction Kit](https://www.coinbase.com/developer-platform/solutions/account-abstraction-kit) is an account abstraction toolkit for building simple onchain user experiences. Account Abstraction Kit provides a paymaster and bundler that allows you to sponsor gas fees and bundle user transactions, improving the user experience of your application.
+
+---
+
+## Openfort
+
+[Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. The platform vertically integrates the AA stack, so game developers can focus on game development without worrying about private key management, the account model or the onchain interactions with paymasters and bundlers. The Openfort platform is compatible with most EVM chains, including Base.
+
+---
+
 ## Pimlico
 
 [Pimlico](https://pimlico.io/) provides an infrastructure platform that makes building smart accounts simpler. If you are developing, an ERC-4337 smart account, they provide bundlers, verifying paymasters, ERC-20 paymasters, and much more.
@@ -70,11 +82,5 @@ WalletKit is compatible with most EVM chains, including Base. You can check out 
 ## ZeroDev
 
 [ZeroDev](https://zerodev.app) is an embedded wallet powered by account abstraction. It offers you the ability to create self-custody wallets for your users, sponsor gas, and simplify user flows by batching and automating transactions.
-
----
-
-## Openfort
-
-[Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. The platform vertically integrates the AA stack, so game developers can focus on game development without worrying about private key management, the account model or the onchain interactions with paymasters and bundlers.
 
 ---

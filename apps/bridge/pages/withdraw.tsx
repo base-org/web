@@ -1,7 +1,6 @@
 import { memo } from 'react';
-import { DepositWithdrawContainer } from 'apps/bridge/src/components/DepositWithdrawContainer/DepositWithdrawContainer';
-import { WithdrawContainer } from 'apps/bridge/src/components/WithdrawContainer/WithdrawContainer';
 import Head from 'next/head';
+import { DeprecationContent } from 'apps/bridge/src/components/DeprecationContent/DeprecationContent';
 
 export default memo(function WithdrawPage() {
   return (
@@ -9,9 +8,7 @@ export default memo(function WithdrawPage() {
       <Head>
         <title>Base</title>
       </Head>
-      <DepositWithdrawContainer>
-        <WithdrawContainer />
-      </DepositWithdrawContainer>
+      <DeprecationContent />
     </>
   );
 });

@@ -15,10 +15,6 @@ export const sidebarLinks = [
     links: ['/deposit', '/withdraw'],
   },
   {
-    text: 'Transactions',
-    links: ['/transactions'],
-  },
-  {
     text: 'Docs',
     links: ['https://docs.base.org'],
   },
