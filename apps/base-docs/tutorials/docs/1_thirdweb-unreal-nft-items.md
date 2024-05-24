@@ -5,7 +5,7 @@ description: Learn how to use NFTs as in-game items using Thirdweb and Unreal.
 author: briandoyle81
 keywords: [Solidity, ERC-721, token, NFT, thirdweb, unreal]
 tags: ['nft']
-difficulty: intermediate
+difficulty: hard
 hide_table_of_contents: false
 displayed_sidebar: null
 ---
@@ -344,6 +344,218 @@ On the right side, change the `Element 2` material to `MI_NFT_Color`. The car is
 
 Return to `engine-express` and open `engineController.ts`. Add a function to `getNFTColors` that uses the `read` endpoint to call the `getNFTsOwned` function.
 
+```typescript
+export const getNFTColors = async (req: Request, res: Response) => {
+  const { authToken } = req.body;
+  if (!authToken || !userTokens[authToken]) {
+    return res.status(400).json({ message: 'Invalid auth token' });
+  }
+  const user = userTokens[authToken];
+  try {
+    const url = `${ENGINE_URL}/contract/${CHAIN}/${RANDOM_COLOR_NFT_CONTRACT}/read?functionName=getNftsOwned&args=${user.ethAddress}`;
+    const headers = {
+      'x-backend-wallet-address': BACKEND_WALLET,
+      Authorization: `Bearer ${process.env.THIRDWEB_API_SECRET_KEY}`,
+    };
+
+    const response = await axiosInstance.get(url, { headers: headers });
+
+    // TODO:  Extract the color from the image
+
+    res.json(response.data);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ message: 'Error getting NFT data' });
+  }
+};
+```
+
+You'll also need to add this function to `engineRoutes.ts`:
+
+```typescript
+router.post('/get-nft-colors', getNFTColors);
+```
+
+Because Unreal doesn't support SVGs, you'll need to extract the color from your NFT metadata, and pass that to use in the material you created. Start by adding a type for the response, and for the JSON metadata:
+
+```typescript
+type NFTData = {
+  tokenId: bigint;
+  metadata: string;
+};
+
+type JSONMetadata = {
+  name: string;
+  description: string;
+  image: string;
+};
+```
+
+You'll also need helper functions to decode the base64 encoded metadata and SVG, then get the color from the SVG.
+
+```typescript
+function getJsonMetadata(nft: NFTData) {
+  const base64String = nft.metadata.split(',')[1];
+  const jsonString = atob(base64String);
+  return JSON.parse(jsonString) as JSONMetadata;
+}
+
+function getColorFromBase64StringSVG(base64String: string) {
+  const base64Data = base64String.split(',')[1];
+  const svgString = atob(base64Data);
+  const color = svgString.match(/fill=['"](#[0-9a-fA-F]{6})['"]/);
+  return color ? color[1] : '#000000';
+}
+```
+
+Use these to extract an array of colors and return it:
+
+```typescript
+const response = await axiosInstance.get(url, { headers: headers });
+
+const nfts = response.data.result.map((item: any) => {
+  return {
+    tokenId: item[0],
+    metadata: item[1],
+  };
+});
+
+const metadata = nfts.map((nft: NFTData) => getJsonMetadata(nft));
+const colors = metadata.map((m: JSONMetadata) => getColorFromBase64StringSVG(m.image));
+
+res.json(colors);
+```
+
+:::info
+
+To test with Postman or similar, comment out the check for a valid `authToken` and hardcode in an address that you know has NFTs.
+
+:::
+
+### Getting the Colors into the Game
+
+Return to the game in your code editor, and open `ThirdwebManager.cpp` and `ThirdwebManager.h`. As before, add a function to call and endpoint on your server. This time to retrieve the array of colors. You'll need to do a little more for this one to set an in-game variable for the colors.
+
+First, you'll need to add a new multicast delegate type to handle the response in `ThirdwebManager.h`:
+
+```c++
+// ThirdwebManager.h
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnColorsResponse, bool, bWasSuccessful, const TArray<FString> &, ResponseArray);
+```
+
+And expose it to the editor:
+
+```c++
+// ThirdwebManager.h
+// This delegate is triggered in C++, and Blueprints can bind to it.
+UPROPERTY(BlueprintAssignable, Category = "Thirdweb", meta = (DisplayName = "OnNFTColorsResponse"))
+FOnNFTColorsResponse OnNFTColorsResponse;
+```
+
+Then, add the function to `ThirdwebManager.cpp`. It's similar, but instead hits the endpoint for the NFT color array and uses the response you just created:
+
+```c++
+// ThirdwebManager.cpp
+void AThirdwebManager::GetNFTColors()
+{
+    TSharedRef<IHttpRequest, ESPMode::ThreadSafe> HttpRequest = FHttpModule::Get().CreateRequest();
+    HttpRequest->SetURL(this->ServerUrl + "/engine/get-nft-colors"); // The endpoint to get the NFT colors
+    HttpRequest->SetVerb("POST");
+    HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+
+    TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
+    JsonObject->SetStringField("authToken", AuthToken);
+
+    FString OutputString;
+    TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
+    FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+
+    UE_LOG(LogTemp, Warning, TEXT("OutputString: %s"), *OutputString);
+
+    HttpRequest->SetContentAsString(OutputString);
+
+    HttpRequest->OnProcessRequestComplete().BindLambda([this](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+    {
+        if (bWasSuccessful && Response.IsValid())
+        {
+            int32 StatusCode = Response->GetResponseCode();
+            if (StatusCode == 200)
+            {
+                TSharedPtr<FJsonObject> JsonObject;
+                TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Response->GetContentAsString());
+                if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+                {
+                    const TArray<TSharedPtr<FJsonValue>>* ResultArray;
+                    if (JsonObject->TryGetArrayField("result", ResultArray))
+                    {
+                        TArray<FString> ResponseArray;
+                        for (const TSharedPtr<FJsonValue>& Value : *ResultArray)
+                        {
+                            FString StringValue;
+                            if (Value->TryGetString(StringValue))
+                            {
+                                ResponseArray.Add(StringValue);
+                            }
+                        }
+                        this->OnNFTColorsResponse.Broadcast(true, ResponseArray);
+                        return;
+                    }
+                    this->OnNFTColorsResponse.Broadcast(false, TArray<FString>());
+                }
+
+                UE_LOG(LogTemp, Warning, TEXT("Get NFT Color response: %s"), *Response->GetContentAsString());
+            }
+            else
+            {
+                FString ErrorMsg = FString::Printf(TEXT("HTTP Error: %d, Response: %s"), StatusCode, *(Response->GetContentAsString()));
+                TArray<FString> ErrorArray;
+                ErrorArray.Add(ErrorMsg);
+                this->OnNFTColorsResponse.Broadcast(false, ErrorArray);
+                UE_LOG(LogTemp, Warning, TEXT("ErrorMsg: %s"), *ErrorMsg);
+            }
+        }
+        else
+        {
+            TArray<FString> ErrorArray;
+            ErrorArray.Add(TEXT("Failed to connect to the server."));
+            this->OnNFTColorsResponse.Broadcast(false, ErrorArray);
+            UE_LOG(LogTemp, Warning, TEXT("Failed to connect to the server."));
+        }
+    });
+
+    HttpRequest->ProcessRequest();
+}
+```
+
+Finally, expose this function to the editor.
+
+```c++
+// ThirdwebManager.h
+// Function to perform the get NFT Colors operation
+UFUNCTION(BlueprintCallable, Category = "Thirdweb")
+void GetNFTColors();
+```
+
+Compile and reload the project in the editor.
+
+In the content browser, find and open `Content>_Thirdweb>Blueprints>Canvas_HUD`.
+
+Under the text field for `Tokens`, drag a new `Text` widget in. Set the name at the top to `Label_Colors` and check `Is Variable`. Change the `Content` to `Colors`. If you put it on the right side, move the `Anchor` to the upper right corner.
+
+In the upper right, click the `Graph` tab. Add a `Sequence` node to split the flow after `Get Actor Of Class`. Following the same pattern as the flow that gets the balance response, add one that gets the NFT colors.
+
+Create the `Bind Event to OnNFTColorsResponse` node first, then create the `Custom Event` node from dragging from `Event`.
+
+For now, simply grab the last color in the array and set it in the HUD. To get it, drag off the `Response Array` in `OnNFTColorResponseReceived` and add a `Last Index` node. Drag again from the `Response Array` and add a `Get (Ref)` node. Connect the output of `Last Index` to the `Input` of `Get`. From there, drag from the output of `Get` and add a `To Text (String)` node.
+
+Drag out of the exec (white) connector of `OnNFTColorResponseReceived` and add a `Branch` and connect `Was Successful` to the `Condition`. For the `True` state, drag and add a `SetText (Text)`. Right click and add a reference to `Label Colors` and drag it to the `Target` of `SetText`. Connect the `Return Value` of `To Text (String)` to `In Text`.
+
+Finally, drag off `Bind Event to OnNFTColorsResponse` and add a `Set Timer by Function Name` node. Connect the `Return Value` of `Get Actor Of Class` to `Object`. Set the `Function Name` to `GetNFTColors` and the `Time` to `2.0`.
+
+You should end up with something like this:
+
+Compile the blueprint then run the game.
+
 ## Random Color NFT Contract
 
 ```solidity
@@ -382,7 +594,7 @@ contract RandomColorNFT is ERC721 {
     string metadata;
   }
 
-  function getNFftsOwned(address owner) public view returns (TokenAndMetatdata[] memory) {
+  function getNftsOwned(address owner) public view returns (TokenAndMetatdata[] memory) {
     TokenAndMetatdata[] memory tokens = new TokenAndMetatdata[](tokensOwned[owner].length());
     for (uint i = 0; i < tokensOwned[owner].length(); i++) {
       uint tokenId = tokensOwned[owner].at(i);
