@@ -2731,15 +2731,6 @@
     "imageUrl": "/images/partners/etherscan.webp"
   },
   {
-    "name": "Sablier",
-    "url": "https://sablier.com",
-    "description": "Sablier is a token streaming protocol that enables by-the-second payments in web3. DAOs and businesses use it for vesting, payroll, airdrops, and more.\n\nThe Sablier protocol features a streaming model Lockup, in which the sender locks up a specified amount of ERC-20 tokens in a contract. The contract progressively allocates the funds to the designated recipient, who can access them as they become available over time. The streaming rate is influenced by various factors, including the start and end times, as well as the total amount of assets locked up.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/sablier.webp"
-  },
-  {
     "name": "RedStone",
     "url": "https://redstone.finance/",
     "description": "RedStone offers flexible Data Feeds with <10s update time perfect for Lending, Perpetuals, Options, Derivatives and other sophisticated DeFi Apps. Securing hundreds of millions of USD on mainnets.",
@@ -3098,5 +3089,95 @@
     "description": "Tide helps projects retain users via points and targeted airdrops",
     "url": "https://landing.tideprotocol.xyz/",
     "imageUrl": "/images/partners/tide.png"
+  },
+  {
+    "name": "LogX",
+    "tags": [
+      "defi"
+    ],
+    "description": "LogX Pro is an Advanced Orderbook DEX for pro traders with instant trades, deep liquidity, tight spreads, and seamless, gas-free experience - all with unmatched security and transparency",
+    "url": "https://pro.logx.trade/?redirect=true",
+    "imageUrl": "/images/partners/logx.svg"
+  },
+  {
+    "name": "OpenBlock Wallet",
+    "tags": [
+      "wallet"
+    ],
+    "description": "OpenBlock is an MPC wallet supporting BASE network with both Web portal and a Mobile App. OpenBlock incorporates a built-in DEX that also support BASE bridge and BASE swap. ",
+    "url": "https://openblock.com/#/",
+    "imageUrl": "/images/partners/openblock.png"
+  },
+  {
+    "name": "Wert",
+    "tags": [
+      "onramp"
+    ],
+    "description": "Fiat Onramp and NFT checkout. Users paying with a card can execute any smart contract function and receive tokens/nfts directly to their wallet in the same transaction. ",
+    "url": "wert.io",
+    "imageUrl": "/images/partners/wert.png"
+  },
+  {
+    "name": "Token Cache",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Introducing Token Cache° The ultimate crypto treasure hunt for degens. Whoever can locate the hidden wallet via GPS coordianates first wins and may claim the crypto within. \nStart searching and be the first to uncover a hidden Token Cache° near you. Our inaugural drop is currently LIVE, a wallet containing 1 ETH is waiting to be found in Arizona.\n\nLedger Location: 33.46203° N, \n\nGo to bonfire.xyz/tokencache to UNLOCK the remaining GPS coordinates and begin your search! \n\nHappy Hunting ⛏",
+    "url": "https://bonfire.xyz/tokencache",
+    "imageUrl": "/images/partners/tokencache.png"
+  },
+  {
+    "name": "Sablier",
+    "tags": [
+      "defi"
+    ],
+    "description": "Infrastructure for money streaming and token distribution. DAOs and businesses use Sablier for vesting, payroll, airdrops, and more.",
+    "url": "https://sablier.com",
+    "imageUrl": "/images/partners/sablier.png"
+  },
+  {
+    "name": "Lossless",
+    "tags": [
+      "security"
+    ],
+    "description": "World's first unrivaled exploit identification and mitigation tools, designed to foolproof web3 from hacks. ",
+    "url": "https://lossless.io/",
+    "imageUrl": "/images/partners/lossless.png"
+  },
+  {
+    "name": "W3.email",
+    "tags": [
+      "social"
+    ],
+    "description": "W3 email represents the future of email services. It allows you to read and respond to blockchain-based emails sent to you in a decentralized manner across multiple networks.",
+    "url": "https://w3.email",
+    "imageUrl": "/images/partners/w3mail.png"
+  },
+  {
+    "name": "JOJO Exchange",
+    "tags": [
+      "defi"
+    ],
+    "description": "JOJO is a decentralized perpetual contract trading platform built on Base.\n\nJOJO balances liquidity and composability with an off-chain matching and on-chain settlement order book model, providing a smooth, fast, and low-cost trading experience.",
+    "url": "https://app.jojo.exchange/trade/base/",
+    "imageUrl": "/images/partners/jojo.png"
+  },
+  {
+    "name": "JELLI",
+    "tags": [
+      "infra"
+    ],
+    "description": "JELLI is the first ever animated ERC20i token on Base! It uses ERC20i to depict dynamic, evolvable and interchangeable jellyfish on-chain. We're here to help grow and expand the ERC20i ecosystem!",
+    "url": "https://jelli.blue",
+    "imageUrl": "/images/partners/jelli.png"
+  },
+  {
+    "name": "Civic",
+    "tags": [
+      "infra"
+    ],
+    "description": "Civic is a tokenized identity solution for the verifiable web, empowering people to privately manage their identities across chains with an on-chain representation of their reusable identity. ",
+    "url": "https://www.civic.com/",
+    "imageUrl": "/images/partners/civic.png"
   }
 ]
