@@ -2803,15 +2803,6 @@
     "imageUrl": "/images/partners/etherscan.webp"
   },
   {
-    "name": "Sablier",
-    "url": "https://sablier.com",
-    "description": "Sablier is a token streaming protocol that enables by-the-second payments in web3. DAOs and businesses use it for vesting, payroll, airdrops, and more.\n\nThe Sablier protocol features a streaming model Lockup, in which the sender locks up a specified amount of ERC-20 tokens in a contract. The contract progressively allocates the funds to the designated recipient, who can access them as they become available over time. The streaming rate is influenced by various factors, including the start and end times, as well as the total amount of assets locked up.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/sablier.webp"
-  },
-  {
     "name": "RedStone",
     "url": "https://redstone.finance/",
     "description": "RedStone offers flexible Data Feeds with <10s update time perfect for Lending, Perpetuals, Options, Derivatives and other sophisticated DeFi Apps. Securing hundreds of millions of USD on mainnets.",
