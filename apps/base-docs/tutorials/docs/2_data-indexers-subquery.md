@@ -48,9 +48,7 @@ The final code of this project can be found [here](https://github.com/subquery/e
 
 ---
 
-The contents presented in this tutorial were discussed previously during the workshop. You can follow along to receive detailed audio commentary on the setup's intricacies:
-
-<iframe width="1317" height="741" src="https://www.youtube.com/embed/8N5h3SI8E-A" title="Base x SubQuery Indexing Workshop" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+The contents presented in this tutorial were discussed previously during a [workshop](https://www.youtube.com/embed/8N5h3SI8E-A). You can follow along to receive detailed audio commentary on the setup's intricacies:
 
 ## What are indexers?
 
@@ -144,7 +142,7 @@ yarn codegen
 
 This action will generate a new directory (or update the existing one) named `src/types`. Inside this directory, you will find automatically generated entity classes corresponding to each type defined in your `schema.graphql`. These classes facilitate type-safe operations for loading, reading, and writing entity fields.
 
-It will also generate a class for every contract event, offering convenient access to event parameters, as well as information about the block and transaction from which the event originated. You can find detailed information on how this is achieved in the [EVM Codegen from ABIs](../../build/introduction.md#evm-codegen-from-abis) section. All of these types are stored in the `src/types/abi-interfaces` and `src/types/contracts` directories.
+It will also generate a class for every contract event, offering convenient access to event parameters, as well as information about the block and transaction from which the event originated. You can find detailed information on how this is achieved in the [EVM Codegen from ABIs](https://academy.subquery.network/indexer/build/introduction.html#evm-codegen-from-abis) section. All of these types are stored in the `src/types/abi-interfaces` and `src/types/contracts` directories.
 
 You can conveniently import all these types:
 
@@ -225,7 +223,7 @@ Now, you are ready to run your first SubQuery project. Let’s check out the pro
 
 The `docker-compose.yml` file defines all the configurations that control how a SubQuery node runs. For a new project, which you have just initialised, you won't need to change anything.
 
-However, visit the [Running SubQuery Locally](../../run_publish/run.md) to get more information on the file and the settings.
+However, visit the [Running SubQuery Locally](https://academy.subquery.network/indexer/run_publish/run.html) to get more information on the file and the settings.
 
 Run the following command under the project directory:
 
@@ -247,7 +245,7 @@ Next, let's query our project. Follow these three simple steps to query your Sub
 
 1. Find the _Docs_ tab on the right side of the playground which should open a documentation drawer. This documentation is automatically generated and it helps you find what entities and methods you can query.
 
-Try the following queries to understand how it works for your new SubQuery starter project. Don’t forget to learn more about the [GraphQL Query language](../../run_publish/query/graphql.md).
+Try the following queries to understand how it works for your new SubQuery starter project. Don’t forget to learn more about the [GraphQL Query language](https://academy.subquery.network/indexer/run_publish/query/graphql.html).
 
 ```graphql
 # Write your query or mutation here
