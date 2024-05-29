@@ -9,6 +9,8 @@ keywords:
     testnet ETH,
     Base testnet,
     Coinbase Faucet,
+    cdp faucet,
+    Coinbase Developer Platform Faucet,
     Superchain Faucet,
     Bware Labs Faucet,
     QuickNode Faucet,
@@ -20,6 +22,18 @@ hide_table_of_contents: true
 ---
 
 # Network Faucets
+
+---
+
+## Coinbase Developer Platform
+
+The [Coinbase Developer Platform Faucet](https://portal.cdp.coinbase.com/products/faucet) provides free testnet ETH on Base Sepolia - one claim per 24 hours.
+
+:::info
+
+Requests to Coinbase Developer Platform's Faucet are limited to one claim per 24 hours.
+
+:::
 
 ---
 
