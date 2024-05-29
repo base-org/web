@@ -164,6 +164,11 @@ module.exports = extendBaseConfig({
         destination: '/jobs',
         permanent: true,
       },
+      {
+        source: '/buildersummer',
+        destination: '/onchainsummer',
+        permanent: true,
+      },
     ];
   },
 });
