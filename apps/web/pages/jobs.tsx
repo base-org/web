@@ -1,22 +1,10 @@
-import { JobsList, JobType } from 'apps/web/src/components/Jobs/JobsList';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { greenhouseApiUrl } from 'apps/web/src/constants';
 
-export async function getStaticProps() {
-  const res = await fetch(`${greenhouseApiUrl}/boards/basejobs/jobs?content=true`);
-  const { jobs } = (await res.json()) as { jobs: JobType[] };
-  return {
-    props: {
-      jobs,
-    },
-  };
-}
+// load JobsList dynamically to avoid SSR
+const JobsList = dynamic(async () => import('apps/web/src/components/Jobs/JobsList'));
 
-type JobsProps = {
-  jobs: JobType[];
-};
-
-export default function Jobs({ jobs }: JobsProps) {
+export default function Jobs() {
   return (
     <>
       <Head>
@@ -32,7 +20,7 @@ export default function Jobs({ jobs }: JobsProps) {
             Join our team
           </h1>
           <div className="flex flex-col font-display text-sm text-white lg:text-xl">
-            <JobsList jobs={jobs} />
+            <JobsList />
           </div>
         </section>
       </main>
