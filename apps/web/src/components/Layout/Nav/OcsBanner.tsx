@@ -4,7 +4,7 @@ import { useCallback } from 'react';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { usePathname } from 'next/navigation';
 
-const href = '/buildersummer?utm_source=dotorg&utm_campaign=onchainsummer';
+const href = '/onchainsummer?utm_source=dotorg&utm_campaign=onchainsummer';
 export function OcsBanner() {
   const [isBannerVisible, setIsBannerVisible] = useLocalStorage('isOcsBannerVisible', true);
   const pathname = usePathname();

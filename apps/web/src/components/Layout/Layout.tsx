@@ -116,7 +116,7 @@ const BLACK_NAV_PATHS = [
   '/jobs/apply',
   '/cookie-policy',
   '/third-party-cookies',
-  '/buildersummer',
+  '/onchainsummer',
 ];
 
 export function Layout({ children }: LayoutProps) {
