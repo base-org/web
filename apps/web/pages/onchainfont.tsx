@@ -18,8 +18,8 @@ export async function getServerSideProps({ res }: { res: NextApiResponse }) {
   };
 }
 
-const OnchainFont = () => {
+function OnchainFont() {
   return null;
-};
+}
 
 export default OnchainFont;
