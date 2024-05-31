@@ -9,12 +9,24 @@ export async function getServerSideProps({ res }: { res: NextApiResponse }) {
   res.setHeader('Content-Disposition', 'attachment; filename=BritneyOnchain.zip');
   res.setHeader('Content-Type', 'application/octet-stream');
 
-  const fileStream = fs.createReadStream(filePath);
-  fileStream.pipe(res);
+  return new Promise((resolve, reject) => {
+    // Create a readable stream
+    const fileStream = fs.createReadStream(filePath);
 
-  return {
-    props: {},
-  };
+    // Pipe the file stream to the response
+    fileStream.pipe(res);
+
+    // Handle stream events
+    fileStream.on('end', () => {
+      res.end();
+      resolve({ props: {} });
+    });
+
+    fileStream.on('error', (err) => {
+      console.error(err);
+      reject(err);
+    });
+  });
 }
 
 function OnchainFont() {
