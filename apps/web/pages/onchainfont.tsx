@@ -1,17 +1,16 @@
 import { NextApiResponse } from 'next';
 
-export async function getServerSideProps({ res }: { res: NextApiResponse }) {
-  const fileUrl = 'https://base.org/downloads/BritneyOnchain.zip';
-  const fileName = 'BritneyOnchain.zip';
+import fs from 'fs';
+import path from 'path';
 
-  res.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
+export async function getServerSideProps({ res }: { res: NextApiResponse }) {
+  const filePath = path.resolve('./public/downloads', 'BritneyOnchain.zip');
+
+  res.setHeader('Content-Disposition', 'attachment; filename=BritneyOnchain.zip');
   res.setHeader('Content-Type', 'application/octet-stream');
 
-  const response = await fetch(fileUrl);
-  const buffer = await response.arrayBuffer();
-
-  res.write(Buffer.from(buffer));
-  res.end();
+  const fileStream = fs.createReadStream(filePath);
+  fileStream.pipe(res);
 
   return {
     props: {},
