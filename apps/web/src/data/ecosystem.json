@@ -3179,5 +3179,104 @@
     "description": "Civic is a tokenized identity solution for the verifiable web, empowering people to privately manage their identities across chains with an on-chain representation of their reusable identity. ",
     "url": "https://www.civic.com/",
     "imageUrl": "/images/partners/civic.png"
+  },
+  {
+    "name": "Arcadia Finance",
+    "tags": [
+      "defi"
+    ],
+    "description": "Arcadia built an intent-centric application where users can deposit their assets into sophisticated strategies that beat staking APRs and will dynamically suggest rebalancing actions into the highest-yielding opportunities available according to each individual’s preferences and constraints. Arcadia takes advantage of the composability of DeFi to combine different protocols in interesting ways to maximize yields while providing best-in-class execution that streamline the way users interface with underlying protocols.",
+    "url": "https://arcadia.finance/",
+    "imageUrl": "/images/partners/arcadiafinance.png"
+  },
+  {
+    "name": "Basenji",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Meet Basenji, the oldest dog breed in history, with Base in its name. ",
+    "url": "https://app.basenjibase.com",
+    "imageUrl": "/images/partners/basenji.png"
+  },
+  {
+    "name": "rep3",
+    "tags": [
+      "social"
+    ],
+    "description": "rep3 is a gamified community engagement platform. No-code platform for you to build engaging campaigns via quests, loyalty programs, points and airdrops",
+    "url": "https://rep3.gg",
+    "imageUrl": "/images/partners/rep3.png"
+  },
+  {
+    "name": "Nexandria",
+    "tags": [
+      "infra"
+    ],
+    "description": "Nexandria helps solve the blockchain data access trilemma of speed, cost & completeness, enabling uniquely powerful API endpoints for DeFi, SocialFi, AI agents or Analytics.",
+    "url": "https://www.nexandria.com/",
+    "imageUrl": "/images/partners/nexandria.png"
+  },
+  {
+    "name": "Truffi",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Truffi is an ERC20i on-chain art project which was designed and animated by Shameless Art Studio. The goal is to create fun on-chain art and to take ERC-20 inscriptions to the next level by introducing a flexible tier system and incorporating gamified elements like Seasonal Collections with rewards.",
+    "url": "https://www.truffi.xyz/",
+    "imageUrl": "/images/partners/truffi.png"
+  },
+  {
+    "name": "Mint Sniper",
+    "tags": [
+      "nft"
+    ],
+    "description": "Realtime NFT mint monitor. Discover new projects, schedule mints ahead of time, and see what's minting live!",
+    "url": "https://www.mintsniper.com/",
+    "imageUrl": "/images/partners/mintsniper.png"
+  },
+  {
+    "name": "Aylab",
+    "tags": [
+      "infra"
+    ],
+    "description": "Aylab is a cutting-edge Web3 traffic acquisition platform revolutionizing how web3 projects acquire traffic at scale.\n",
+    "url": "https://aylab.io/",
+    "imageUrl": "/images/partners/aylab.png"
+  },
+  {
+    "name": "NFTPriceFloor",
+    "tags": [
+      "nft"
+    ],
+    "description": "A gateway to the NFT ecosystem. Track and buy digital collectibles and other non-fungible tokens with the best data and marketplace aggregator in the market.",
+    "url": "https://nftpricefloor.com/?blockchains=base",
+    "imageUrl": "/images/partners/nftpricefloor.png"
+  },
+  {
+    "name": "RockX",
+    "tags": [
+      "infra"
+    ],
+    "description": "RockX is a global blockchain node network and gateway for users to seamlessly access Web3, offering institutional-grade solutions and a full suite of developer tools for users to stake and build on all major blockchains.",
+    "url": "https://access.rockx.com/product/base-blockchain-api-for-web3-builders",
+    "imageUrl": "/images/partners/rockx.png"
+  },
+  {
+    "name": "AlfaFrens",
+    "tags": [
+      "social"
+    ],
+    "description": "AlfaFrens is a SocialFi app on Farcaster for gated alfa chat subscriptions powered by Superfluid. Subscribe to creators with $DEGEN, earn $ALFA and stake it on creators for a share of their revenue.",
+    "url": "https://alfafrens.com",
+    "imageUrl": "/images/partners/alfafrens.png"
+  },
+  {
+    "name": "Dockhive",
+    "tags": [
+      "infra"
+    ],
+    "description": "DockHive integrates Docker with blockchain for a decentralized cloud infrastructure, offering enhanced security, fault tolerance, dynamic scaling, and leveraging the DHT token for ecosystem transactions.",
+    "url": "https://dockhive.io",
+    "imageUrl": "/images/partners/dockhive.png"
   }
 ]
