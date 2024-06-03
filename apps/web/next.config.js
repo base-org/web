@@ -169,6 +169,11 @@ module.exports = extendBaseConfig({
         destination: '/onchainsummer',
         permanent: true,
       },
+      {
+        source: '/onchainfont',
+        destination: process.env.NEXT_PUBLIC_OCS_CREATIVE_DOWNLOAD_URL,
+        permanent: true,
+      },
     ];
   },
 });
