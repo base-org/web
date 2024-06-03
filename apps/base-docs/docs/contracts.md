@@ -83,6 +83,12 @@ This page lists contract addresses for onchain apps that we have deployed.
 | `quoterV2`                           | [0xC5290058841028F1614F3A6F0F5816cAd0df5E27](https://sepolia.basescan.org/address/0xC5290058841028F1614F3A6F0F5816cAd0df5E27) |
 | `swapRouter`                         | [0x94cC0AaC535CCDB3C01d6787D6413C739ae12bc4](https://sepolia.basescan.org/0x94cC0AaC535CCDB3C01d6787D6413C739ae12bc4)         |
 
+:::info
+
+Two community projects, [BaseX](https://basex-test.vercel.app/swap?currencyA=ETH&currencyB=0x036CbD53842c5426634e7929541eC2318f3dCF7e&focus=source) and [DapDap](https://testnet.base.dapdap.net/uniswap/swap), provide testnet interfacts for Uniswap contracts if you prefer to interact in the browser instead of with the contracts directly.
+
+:::
+
 ### Uniswap v2
 
 | Contract  | Address                                                                                                                       |
