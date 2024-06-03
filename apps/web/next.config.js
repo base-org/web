@@ -171,8 +171,9 @@ module.exports = extendBaseConfig({
       },
       {
         source: '/onchainfont',
-        destination: process.env.NEXT_PUBLIC_OCS_CREATIVE_DOWNLOAD_URL,
-        permanent: true,
+        // just so the build doesn't fail in CI
+        destination: process.env.NEXT_PUBLIC_OCS_CREATIVE_DOWNLOAD_URL ?? '/',
+        permanent: false,
       },
     ];
   },
