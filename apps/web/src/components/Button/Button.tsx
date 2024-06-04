@@ -6,6 +6,10 @@ const variantStyles = {
     'text-white bg-transparent border border-white hover:bg-translucent-100 active:bg-translucent-200',
   secondaryDark:
     'text-black bg-transparent border border-black hover:bg-ocsblue hover:text-white active:bg-translucent-200',
+  secondaryBounce:
+    'text-white bg-transparent border border-white hover:bg-translucent-100 active:bg-translucent-200 animate-bounce',
+  secondaryDarkBounce:
+    'text-black bg-transparent border border-black hover:bg-ocsblue hover:text-white active:bg-translucent-200 animate-bounce',
 };
 
 type ButtonProps = {
