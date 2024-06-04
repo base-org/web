@@ -24,9 +24,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Dec 19, 2023",
+        "last_updated": "Jun 4, 2024",
         "duration": "17 min read",
-        "checksum": "218c0beb7c3b4fe5b007be4f07b05bd59ce87f5d8470a90c0608e20c97eeec80"
+        "checksum": "b6ba5851a908389eb12dae91ff7d742f3e188eba2322b8550661b05f6731296c"
     },
     "deploy-with-hardhat": {
         "title": "Deploying a smart contract using Hardhat",
@@ -394,8 +394,8 @@
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Jun 4, 2024",
-        "duration": "13 min read",
-        "checksum": "2c73d9d7fca17d73f8d33cf6c03f6c8f45cd4ae9ec085cc6626bbb64251cbe38"
+        "duration": "14 min read",
+        "checksum": "1b8d5aeb570ddd50f4c11a9e4e50eb225ffcbf397a14404f1e640674f2c3e34d"
     },
     "complex-onchain-nfts": {
         "title": "Building onchain NFTs",
