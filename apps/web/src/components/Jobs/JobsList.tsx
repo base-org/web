@@ -1,6 +1,13 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Divider } from 'apps/web/src/components/Divider/Divider';
 import { Job } from 'apps/web/src/components/Jobs/Job';
+import { greenhouseApiUrl } from 'apps/web/src/constants';
+
+async function getJobs() {
+  const res = await fetch(`${greenhouseApiUrl}/boards/basejobs/jobs?content=true`);
+  const { jobs } = (await res.json()) as { jobs: JobType[] };
+  return jobs;
+}
 
 type Department = {
   id: string;
@@ -19,11 +26,14 @@ export type JobType = {
   departments: Department[];
 };
 
-type JobsListProps = {
-  jobs?: JobType[];
-};
+export default function JobsList() {
+  const [jobs, setJobs] = useState<JobType[]>([]);
+  useEffect(() => {
+    getJobs()
+      .then((js) => setJobs(js))
+      .catch(console.error);
+  }, []);
 
-export function JobsList({ jobs = [] }: JobsListProps) {
   const departments = useMemo(() => {
     const departmentsById = jobs.reduce<DepartmentByIdReduceType>((acc, job) => {
       const name = !job.departments.length ? 'Other' : job.departments[0].name;
@@ -40,7 +50,7 @@ export function JobsList({ jobs = [] }: JobsListProps) {
   }, [jobs]);
 
   return !jobs.length ? (
-    <p className="text-md my-8 p-1">No jobs available.</p>
+    <p className="text-md my-8 p-1">Loading jobs...</p>
   ) : (
     <div className="mt-10 flex w-full flex-col">
       <div className="flex flex-col">
