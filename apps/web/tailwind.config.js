@@ -62,6 +62,20 @@ module.exports = {
       transitionTimingFunction: {
         partners: 'cubic-bezier(0.25, 1, 0.25, 1)',
       },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-2deg)' },
+          '50%': { transform: 'rotate(2deg)' },
+        },
+        bounce: {
+          '0%, 100%': { transform: 'translateY(-2.5%)' },
+          '50%': { transform: 'translateY(2.5%)' },
+        },
+      },
+      animation: {
+        wiggle: 'wiggle 3s linear infinite',
+        bounce: 'bounce 1s ease-in-out infinite',
+      },
     },
   },
   plugins: [],
