@@ -64,7 +64,7 @@ hide_table_of_contents: true
 
 ## All That Node
 
-[All That Node](https://www.allthatnode.com/zksync.dsrv) is the most comprehensive multi-chain development suite, designed to support multiple networks from a single platform. They offer free and [paid plans](https://www.allthatnode.com/pricing.dsrv) with additional features and increased request limits.
+[All That Node](https://www.allthatnode.com/base.dsrv) is the most comprehensive multi-chain development suite, designed to support multiple networks from a single platform. They offer free and [paid plans](https://www.allthatnode.com/pricing.dsrv) with additional features and increased request limits.
 
 #### Supported Networks
 
