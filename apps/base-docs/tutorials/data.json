@@ -375,6 +375,8 @@
         "description": "A tutorial that teaches how to make dynamic NFTs that evolve based on onchain or offchain actions.",
         "author": "lukecd",
         "keywords": [
+            "Irys",
+            "Permanent data",
             "Solidity",
             "ERC-721",
             "token",
@@ -391,9 +393,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "May 30, 2024",
-        "duration": "12 min read",
-        "checksum": "c9f11ed0b6ac4b5708aa8b589888a7cf68d4c704bb74d796eecfc12a21674396"
+        "last_updated": "Jun 4, 2024",
+        "duration": "13 min read",
+        "checksum": "2c73d9d7fca17d73f8d33cf6c03f6c8f45cd4ae9ec085cc6626bbb64251cbe38"
     },
     "complex-onchain-nfts": {
         "title": "Building onchain NFTs",

@@ -5,7 +5,9 @@ description: A tutorial that teaches how to make dynamic NFTs that evolve based 
 author: lukecd
 keywords:
   [
-    Solidity,
+    Irys,
+		Permanent data,
+		Solidity,
     ERC-721,
     token,
     NFT,
@@ -23,7 +25,7 @@ displayed_sidebar: null
 
 # Build a Dynamic NFT on Base with Irys
 
-In this tutorial, you will create a dynamic NFT using Irys' [mutable references](https://docs.irys.xyz/developer-docs/mutable-references).
+In this tutorial, you will create a dynamic NFT using Irys' [mutable references].
 
 ![Overview](../../assets/images/dynamic-nfts/all-characters.png)
 
@@ -37,14 +39,14 @@ Dynamic NFTs are NFTs whose metadata evolves over time. They are commonly used i
 By the end of this tutorial, you should be able to:
 
 - Permanently upload data onchain using Irys
-- Create NFT metadata and mint as an NFT
-- "Mutate" the NFT metadata using Irys' mutable references
+- Create NFT metadata and use it to mint an NFT
+- "Mutate" (change) the NFT metadata using Irys' mutable references
 
 ## Prerequisites
 
-1. **Setup a Coinbase Wallet:** You'll need a web3 wallet; you'll use it to deploy the NFT contract and to sign and pay for uploads to Irys. We recommend using the [Coinbase Wallet](https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad?hl=en).
+1. **Setup a Coinbase Wallet:** You'll need a web3 wallet; you'll use it to deploy the NFT contract and to sign and pay for uploads to Irys. We recommend using the [Coinbase Wallet].
 
-2. **Wallet Funding:** You'll need to fund your wallet with some Base Sepolia tokens. You can do this for free using the [Base Faucet](https://docs.base.org/tools/network-faucets).
+2. **Wallet Funding:** You'll need to fund your wallet with some Base Sepolia tokens. You can do this for free using the [Base Faucet].
 
 ## About Irys
 
@@ -64,7 +66,7 @@ Irys has a pay-once-store-forever model and accepts payment for storage using mu
 
 ## Mutable references
 
-Data on Irys is permanent and immutable, but you use [Irys' mutable references](https://docs.irys.xyz/developer-docs/mutable-references) to simulate mutability and create dynamic NFTs that evolve based on onchain or offchain actions.
+Data on Irys is permanent and immutable, but you use Irys' [mutable references] to simulate mutability and create dynamic NFTs that evolve based on onchain or offchain actions.
 
 ![Overview](../../assets/images/dynamic-nfts/mutable-references.png)
 
@@ -110,11 +112,11 @@ contract SuperMon is ERC721URIStorage {
 
 ```
 
-[Deploy the smart contract using Remix](https://docs.base.org/tutorials/deploy-with-remix/).
+Deploy the smart contract using [Remix].
 
 ## Irys CLI
 
-You'll use the [Irys CLI](https://docs.irys.xyz/developer-docs/cli) to upload images and metadata.
+You'll use the [Irys CLI] to upload images and metadata.
 
 ### Installing the CLI
 
@@ -122,6 +124,7 @@ Install the Irys CLI globally using the `-g` flag. Depending on your setup, you 
 
 ```console
 npm i -g @irys/sdk
+# Or
 sudo npm i -g @irys/sdk
 ```
 
@@ -137,9 +140,9 @@ irys -w <base-private-key> -t base-eth
 
 ![All NFTs](../../assets/images/dynamic-nfts/all-characters.png)
 
-[Download a zip containing PNGs](https://gateway.irys.xyz/MoOvEzePMwFgc_v6Gw3U8ovV6ostgrkWb9tS4baAJhc) for each level, and save them on your local drive.
+[Download a zip containing PNGs] for each level, and save them on your local drive.
 
-Next, fund the Irys Devnet node with 0.1 [Base Sepolia ETH](https://docs.base.org/tools/network-faucets) to pay for your uploads.`
+Next, fund the Irys Devnet node with 0.1 [Base Sepolia ETH] to pay for your uploads.
 
 > In all of these CLI examples, make sure to replace the value of the `-w` parameter with your own private key.
 
@@ -155,7 +158,7 @@ irys fund 100000000000000000 \
 
 Next, use the Irys CLI to upload each of the images to the Irys Devnet.
 
-> Uploads to Irys' devnet are kept for ~60 days and are paid for using free tokens available from faucets (Base Sepolia). Uploads to Irys' mainnet are permanent and can be paid for using ETH on Base.
+> Uploads to Irys' devnet are kept for ~60 days and are paid for using free tokens available from faucets [Base Sepolia]. Uploads to Irys' mainnet are permanent and can be paid for using ETH on Base.
 
 ```console
 irys upload image-level-1.png \
@@ -253,7 +256,7 @@ To mint your NFT in Remix:
 
 ![Image Level 3](../../assets/images/dynamic-nfts/open-sea-mockup.jpg)
 
-You can now view the NFT on the [Opensea Testnet](https://testnets.opensea.io/account).
+You can now view the NFT on the [Opensea Testnet].
 
 ## Mutating the metadata
 
@@ -281,3 +284,31 @@ Uploads of less than 100 KiB are free on Irys, which is more than enough for mos
 ## Caching
 
 Wallets and NFT websites typically cache metadata to optimize performance, this can affect the visibility of updates to dynamic NFTs. While OpenSea offers a feature for users to manually request metadata refreshes, not all platforms provide this level of control. When building dynamic NFT projects, make sure to thoroughly test and understand the implications of caching on your platform.
+
+## Irys SDK
+
+This tutorial used the Irys CLI to permanently upload data. Irys also has a JS-SDK that can be used on the [server] and in the [browser].
+
+## Conclusion
+
+In this tutorial, you learned how to permanently upload data to Irys using their CLI and how to create a dynamic NFT. Data on Irys is onchain, permanent and immutable. When your NFT images and metadata are on Irys, you can guarantee to your users that the NFT will be retrievable forever.
+
+Dynamic NFTs are commonly used with gaming projects, similar to the one we built in this tutorial. However, there are countless other applications too. For example:
+
+- Points programs: Create an NFT representing a user's participation in a points program. As the user earns more points, the NFT changes and evolves.
+- Sports NFTs: Create an NFT from a sports team that changes whenever the team wins an important game.
+- Holiday NFTs: Create an NFT change changes seasonally to represent different holidays.
+- Activity tracking: Create a health and wellness NFT that changes based on an activity tracker.
+
+---
+
+[Base Faucet]: https://docs.base.org/tools/network-faucet
+[Base Sepolia ETH]: https://docs.base.org/tools/network-faucet
+[browser]: https://docs.irys.xyz/developer-docs/irys-sdk/irys-in-the-browser
+[Coinbase Wallet]: https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad?hl=e
+[Download a zip containing PNGs]: https://gateway.irys.xyz/MoOvEzePMwFgc_v6Gw3U8ovV6ostgrkWb9tS4baAJhc
+[Irys CLI]: https://docs.irys.xyz/developer-docs/cli
+[mutable references]: https://docs.irys.xyz/developer-docs/mutable-references
+[Opensea Testnet]: https://testnets.opensea.io/accoun
+[Remix]: https://docs.base.org/tutorials/deploy-with-remix
+[server]: https://docs.irys.xyz/developer-docs/irys-sdk
