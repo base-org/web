@@ -75,7 +75,7 @@ hide_table_of_contents: true
 
 ## Ansybl
 
-[Ansybl](https://www.ansybl.io/) provides highly efficient RPC endpoints for Base. They offer both free and paid plans, delivering everything you need in order to get building quickly/
+[Ansybl](https://www.ansybl.io/) provides highly efficient RPC endpoints for Base. They offer both free and paid plans, delivering everything you need in order to get building quickly.
 
 #### Supported Networks
 
