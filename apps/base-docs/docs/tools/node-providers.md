@@ -73,6 +73,16 @@ hide_table_of_contents: true
 
 ---
 
+## Ansybl
+
+[Ansybl](https://www.ansybl.io/) provides highly efficient RPC endpoints for Base. They offer both free and paid plans, delivering everything you need in order to get building quickly/
+
+#### Supported Networks
+
+- Base Mainnet
+
+---
+
 ## Blast
 
 [Blast](https://blastapi.io/public-api/base) provides fast and reliable decentralized blockchain APIs by partnering with third-party Node Providers. Blast offers users the ability to generate their own [dedicated RPC endpoint for Base](https://blastapi.io/login).
