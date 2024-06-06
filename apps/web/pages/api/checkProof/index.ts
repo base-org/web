@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { createClient, kv, VercelKV } from '@vercel/kv';
+import { createClient, VercelKV } from '@vercel/kv';
 
 enum ProofProjectType {
   NFTBuilder = 'NFTBuilder',
