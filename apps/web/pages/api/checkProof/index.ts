@@ -11,33 +11,22 @@ type RequestBody = {
   projectType?: ProofProjectType;
 };
 
-function buildKVClient(): Map<ProofProjectType, VercelKV> {
-  const clients = new Map<ProofProjectType, VercelKV>();
-  clients.set(
-    ProofProjectType.NFTBuilder,
-    createClient({
-      url: process.env.KV_REST_API_URL ?? '',
-      token: process.env.KV_REST_API_TOKEN ?? '',
-    }),
-  );
-  clients.set(
-    ProofProjectType.Usernames,
-    createClient({
-      url: process.env.KV_USERNAMES_REST_API_URL ?? '',
-      token: process.env.KV_USERNAMES_REST_API_TOKEN ?? '',
-    }),
-  );
-  return clients;
-}
-
-const kvClientMap: Map<ProofProjectType, VercelKV> = buildKVClient();
+const kvConfigs = {
+  NFTBuilder: {
+    url: process.env.KV_REST_API_URL ?? '',
+    token: process.env.KV_REST_API_TOKEN ?? '',
+  },
+  Usernames: {
+    url: process.env.KV_USERNAMES_REST_API_URL ?? '',
+    token: process.env.KV_USERNAMES_REST_API_TOKEN ?? '',
+  },
+};
 
 function getKVClient(projectType?: ProofProjectType): VercelKV {
-  const kvClient = kvClientMap.get(projectType!);
-  if (!kvClient) {
+  if (!projectType || !kvConfigs[projectType]) {
     throw new Error(`Unsupported project type: ${projectType}`);
   }
-  return kvClient!;
+  return createClient(kvConfigs[projectType]);
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
