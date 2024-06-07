@@ -28,7 +28,7 @@ hide_table_of_contents: true
 
 ## Coinbase Onramp
 
-[Coinbase Onramp](https://www.coinbase.com/developer-platform/products/onramp) is a fiat-to-crypto onramp that allows users to buy or transfer crypto directly from self-custody wallets and apps. Coinbase Onramp supports 60+ fiat currencies with regulatory compliance and licensing, as well as 100+ cryptocurrencies, including ETH on Base. [Get started here](https://www.coinbase.com/developer-platform/products/onramp) to use the Coinbase Developer Platform.
+[Coinbase Onramp](https://www.coinbase.com/developer-platform/products/onramp) is a fiat-to-crypto onramp that allows users to buy or transfer crypto directly from self-custody wallets and apps. Coinbase Onramp supports 60+ fiat currencies with regulatory compliance and licensing, as well as 100+ cryptocurrencies, including ETH on Base. [Get started here](https://docs.cdp.coinbase.com/onramp/docs/getting-started/) to use the Coinbase Developer Platform.
 
 ---
 
