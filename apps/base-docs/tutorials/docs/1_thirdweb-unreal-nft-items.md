@@ -566,6 +566,12 @@ If you have an error in your `GetNFTColors` function that prevents `.Broadcast` 
 
 Now that you have the colors, you can use them to change the color of your car! For now, you can just set the car to the last color, but on your own you'll want to add a UI widget to allow the player to pick their color.
 
+:::info
+
+If you really wanted to get fancy, you could modify the contract to emit an `event` containing the color of the newly-minted NFT, extract that from the receipt, and optimistically make it available to the player a few seconds earlier.
+
+:::
+
 Unreal doesn't use hex colors, so you'll need to convert your hex string to a linear color and save it in the `Material Parameter Collection` you created earlier.
 
 Converting the hex code with a blueprint is very complicated. Luckily, Unreal has a helpful community that has created many utilities, including a [conversion function].
