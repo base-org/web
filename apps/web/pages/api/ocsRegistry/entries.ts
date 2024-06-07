@@ -4,6 +4,8 @@ import { Kysely, PostgresDialect } from 'kysely';
 import { createKysely } from '@vercel/postgres-kysely';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import { sql } from '@vercel/postgres';
+
 interface Database {
   content: ContentTable;
 }
@@ -34,10 +36,33 @@ interface ContentTable {
 
 export const db = createKysely<Database>();
 
+function transformChallengeCard(card: OcsChallengeCard) {
+  return {
+    title: card.title,
+    shortDescription: card.short_description,
+    fullDescription: card.full_description,
+    imageUrl: card.image_url,
+    targetUrl: card.target_url,
+    ctaText: card.cta_text,
+    functionSignature: card.function_signature,
+    contractAddress: card.contract_address,
+    tokenId: card.token_id,
+    tokenAmount: card.token_amount,
+    creatorName: card.creator_name,
+    creatorImageUrl: card.creator_image_url,
+  };
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const content = await db.selectFrom('content').selectAll().execute();
+  // const content = await sql`SELECT * FROM content;`;
 
   console.log(content);
 
-  res.status(200).json({ message: 'Hello' });
+  const response = content.map((row) => ({
+    ...row,
+    ...transformChallengeCard(row.content.OcsChallengeCard),
+  }));
+
+  res.status(200).json(response);
 }
