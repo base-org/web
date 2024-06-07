@@ -1,10 +1,6 @@
 import { ColumnType, JSONColumnType } from 'kysely';
-import { Pool } from 'pg';
-import { Kysely, PostgresDialect } from 'kysely';
 import { createKysely } from '@vercel/postgres-kysely';
 import { NextApiRequest, NextApiResponse } from 'next';
-
-import { sql } from '@vercel/postgres';
 
 interface Database {
   content: ContentTable;
@@ -55,9 +51,6 @@ function transformChallengeCard(card: OcsChallengeCard) {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const content = await db.selectFrom('content').selectAll().execute();
-  // const content = await sql`SELECT * FROM content;`;
-
-  console.log(content);
 
   const response = content.map((row) => ({
     ...row,
