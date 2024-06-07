@@ -1521,9 +1521,9 @@
     "imageUrl": "/images/partners/commerce.webp"
   },
   {
-    "name": "Coinbase Pay",
-    "url": "https://www.coinbase.com/cloud/products/pay-sdk",
-    "description": "Let your users buy or transfer digital assets with the most trusted name in crypto. Join the waitlist for access to the SDK.",
+    "name": "Coinbase Onramp",
+    "url": "https://www.coinbase.com/developer-platform/products/onramp",
+    "description": "Let your users buy or transfer digital assets with the most trusted name in crypto.",
     "tags": [
       "onramp"
     ],
