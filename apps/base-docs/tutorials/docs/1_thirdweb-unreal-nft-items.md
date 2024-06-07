@@ -12,7 +12,9 @@ displayed_sidebar: null
 
 [thirdweb] provides a number of contracts and tools for building onchain. Their [Gaming SDK] enables seamless onboarding, cross-platform support, and provides many other features. It's compatible with [Unreal Engine] and can be used to enable onchain elements in your games.
 
-In this tutorial, you'll learn how to add NFT item usage on top of the demo game you build in their [Unreal Engine Quickstart].
+In this tutorial, you'll learn how to add NFT item usage on top of the demo game you build in their [Unreal Engine Quickstart]. Specifically, you'll use an NFT collection of random colors to change the color of the player's race car.
+
+![Color changing car nft](../../assets/images/build-with-thirdweb/car-color-nft.gif)
 
 ---
 
