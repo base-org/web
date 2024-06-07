@@ -3,7 +3,7 @@ title: 'Thirdweb and Unreal - NFT Items'
 slug: /thirdweb-unreal-nft-items
 description: Learn how to use NFTs as in-game items using Thirdweb and Unreal.
 author: briandoyle81
-keywords: [Solidity, ERC-721, token, NFT, thirdweb, unreal]
+keywords: [Solidity, ERC-721, token, NFT, thirdweb, Unreal, c++, blueprints, onchain games]
 tags: ['nft']
 difficulty: hard
 hide_table_of_contents: false
@@ -20,9 +20,9 @@ In this tutorial, you'll learn how to add NFT item usage on top of the demo game
 
 By the end of this tutorial you should be able to:
 
-- List a user's NFTs inside an Unreal Engine Game
+- Pull a user's NFTs into an Unreal Engine Game
 - Apply elements from the NFT to game entities
-- Remove the NFT element from the asset if the user no longer owns the NFT
+- Award NFTs to players for game accomplishments or actions
 
 ---
 
@@ -328,9 +328,11 @@ Make sure the orb is low enough to drive through, then run the game. Collect the
 
 ### Tinting the Car
 
-In the content browser, open `All>Content>Vehicles>SportsCar.Materials`. Right-click in an empty spot and select `Create Basic Asset>Material`. Name your new material `M_NFT_Color`. Open it by double-clicking.
+In the content browser, open `All>Content>Vehicles>SportsCar.Materials`. Right-click in an empty spot and select `Material>Material Parameter Collection`. Name yours `NFT_MPS`. Open the collection, click the `+` to add an item to `Vector Parameters` and create the color of your choosing. Bright red is a good option to make your change very visible.
 
-Right-click on the graph and add a `Vector Parameter` node. Name it `NFTColor`. Click `Default Value` and change the default color to a bright red, for now, so you can see it. You can just enter `FF0000FF` in `Hex Linear`.
+Right-click in an empty spot again and select `Create Basic Asset>Material`. Name your new material `M_NFT_Color`. Open it by double-clicking.
+
+Right-click on the graph and add a `Collection Parameter` node. In the `Details` panel on the left, select your `NFT_MPS` collection and pick the first vector for `Parameter Name`
 
 Connect the output to the `Base Color` of `M_NFT_Color`, then save and close the editor.
 
@@ -452,78 +454,72 @@ UPROPERTY(BlueprintAssignable, Category = "Thirdweb", meta = (DisplayName = "OnN
 FOnNFTColorsResponse OnNFTColorsResponse;
 ```
 
-Then, add the function to `ThirdwebManager.cpp`. It's similar, but instead hits the endpoint for the NFT color array and uses the response you just created:
+Then, add the function to `ThirdwebManager.cpp`. It's similar, but instead hits the endpoint for the NFT color array and uses the response you just created. It also expects the response to be an array of strings instead of searching for a property called `result`:
 
 ```c++
 // ThirdwebManager.cpp
 void AThirdwebManager::GetNFTColors()
 {
-    TSharedRef<IHttpRequest, ESPMode::ThreadSafe> HttpRequest = FHttpModule::Get().CreateRequest();
-    HttpRequest->SetURL(this->ServerUrl + "/engine/get-nft-colors"); // The endpoint to get the NFT colors
-    HttpRequest->SetVerb("POST");
-    HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> HttpRequest = FHttpModule::Get().CreateRequest();
+	HttpRequest->SetURL(this->ServerUrl + "/engine/get-nft-colors"); // The endpoint to get the NFT colors
+	HttpRequest->SetVerb("POST");
+	HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
-    TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
-    JsonObject->SetStringField("authToken", AuthToken);
+	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
+	JsonObject->SetStringField("authToken", AuthToken);
 
-    FString OutputString;
-    TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
-    FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+	FString OutputString;
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
+	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
 
-    UE_LOG(LogTemp, Warning, TEXT("OutputString: %s"), *OutputString);
+	UE_LOG(LogTemp, Warning, TEXT("OutputString: %s"), *OutputString);
 
-    HttpRequest->SetContentAsString(OutputString);
+	HttpRequest->SetContentAsString(OutputString);
 
-    HttpRequest->OnProcessRequestComplete().BindLambda([this](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
-    {
-        if (bWasSuccessful && Response.IsValid())
-        {
-            int32 StatusCode = Response->GetResponseCode();
-            if (StatusCode == 200)
-            {
-                TSharedPtr<FJsonObject> JsonObject;
-                TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Response->GetContentAsString());
-                if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
-                {
-                    const TArray<TSharedPtr<FJsonValue>>* ResultArray;
-                    if (JsonObject->TryGetArrayField("result", ResultArray))
-                    {
-                        TArray<FString> ResponseArray;
-                        for (const TSharedPtr<FJsonValue>& Value : *ResultArray)
-                        {
-                            FString StringValue;
-                            if (Value->TryGetString(StringValue))
-                            {
-                                ResponseArray.Add(StringValue);
-                            }
-                        }
-                        this->OnNFTColorsResponse.Broadcast(true, ResponseArray);
-                        return;
-                    }
-                    this->OnNFTColorsResponse.Broadcast(false, TArray<FString>());
-                }
+	HttpRequest->OnProcessRequestComplete().BindLambda([this](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+		{
+		if (bWasSuccessful && Response.IsValid())
+		{
+			int32 StatusCode = Response->GetResponseCode();
+			if (StatusCode == 200)
+			{
+				TArray<TSharedPtr<FJsonValue>> JsonArray;
+				TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Response->GetContentAsString());
+				if (FJsonSerializer::Deserialize(Reader, JsonArray) && JsonArray.Num() > 0)
+				{
+					TArray<FString> ResponseArray;
+					for (const TSharedPtr<FJsonValue>& Value : JsonArray)
+					{
+						FString StringValue;
+						if (Value->TryGetString(StringValue))
+						{
+							ResponseArray.Add(StringValue);
+						}
+					}
+					this->OnNFTColorsResponse.Broadcast(true, ResponseArray);
+					UE_LOG(LogTemp, Warning, TEXT("Get NFT Color response: %s"), *Response->GetContentAsString());
+					return;
+				}
+				this->OnNFTColorsResponse.Broadcast(false, TArray<FString>());
+			}
+			else
+			{
+				FString ErrorMsg = FString::Printf(TEXT("HTTP Error: %d, Response: %s"), StatusCode, *(Response->GetContentAsString()));
+				TArray<FString> ErrorArray;
+				ErrorArray.Add(ErrorMsg);
+				this->OnNFTColorsResponse.Broadcast(false, ErrorArray);
+				UE_LOG(LogTemp, Warning, TEXT("ErrorMsg: %s"), *ErrorMsg);
+			}
+		}
+		else
+		{
+			TArray<FString> ErrorArray;
+			ErrorArray.Add(TEXT("Failed to connect to the server."));
+			this->OnNFTColorsResponse.Broadcast(false, ErrorArray);
+			UE_LOG(LogTemp, Warning, TEXT("Failed to connect to the server."));
+		} });
 
-                UE_LOG(LogTemp, Warning, TEXT("Get NFT Color response: %s"), *Response->GetContentAsString());
-            }
-            else
-            {
-                FString ErrorMsg = FString::Printf(TEXT("HTTP Error: %d, Response: %s"), StatusCode, *(Response->GetContentAsString()));
-                TArray<FString> ErrorArray;
-                ErrorArray.Add(ErrorMsg);
-                this->OnNFTColorsResponse.Broadcast(false, ErrorArray);
-                UE_LOG(LogTemp, Warning, TEXT("ErrorMsg: %s"), *ErrorMsg);
-            }
-        }
-        else
-        {
-            TArray<FString> ErrorArray;
-            ErrorArray.Add(TEXT("Failed to connect to the server."));
-            this->OnNFTColorsResponse.Broadcast(false, ErrorArray);
-            UE_LOG(LogTemp, Warning, TEXT("Failed to connect to the server."));
-        }
-    });
-
-    HttpRequest->ProcessRequest();
+	HttpRequest->ProcessRequest();
 }
 ```
 
@@ -554,7 +550,51 @@ Finally, drag off `Bind Event to OnNFTColorsResponse` and add a `Set Timer by Fu
 
 You should end up with something like this:
 
-Compile the blueprint then run the game.
+![Get NFT Colors](../../assets/images/build-with-thirdweb/get-nft-colors.png)
+
+Compile the blueprint then run the game. You should see that last color in the array in the HUD, and you should see the full list printed in the console every two seconds.
+
+:::caution
+
+If you have an error in your `GetNFTColors` function that prevents `.Broadcast` from being called, nothing in the NFT Colors branch of this blueprint will run, including printing to the console.
+
+:::
+
+### Changing the Color of the Car
+
+Now that you have the colors, you can use them to change the color of your car! For now, you can just set the car to the last color, but on your own you'll want to add a UI widget to allow the player to pick their color.
+
+Unreal doesn't use hex colors, so you'll need to convert your hex string to a linear color and save it in the `Material Parameter Collection` you created earlier.
+
+Converting the hex code with a blueprint is very complicated. Luckily, Unreal has a helpful community that has created many utilities, including a [conversion function].
+
+:::danger
+
+Copying and pasting code for a game engine isn't quite as dangerous as copying and pasting unknown smart contract code, but you're working at the intersection of these worlds. Be sure to review and make sure you understand anything you find online.
+
+:::
+
+In the content browser, add a `Blueprints>Blueprint Function Library` called `ColorUtils`. In it, add a function called `HexStringToColor`.
+
+Copy the code from the community site and paste it into the function. Connect the `Hex String to Color` node to the `SET` node attached to `Make Array`, then from `SET` to the `Return Node`.
+
+Compile, and you'll get an error. Find and click on the error in the `Hex Code` node, then select `Create local variable`. Recompile and the error will resolve.
+
+You also need to input the string you want converted. Select the `Hex String to Color` node and click the `+` button by `Inputs`. Name it `hexString` and give it a `string` type. `Hex String` will now appear as a value in the `Hex String to Color` node. Connect it to the `Source String` input in the `Replace` node.
+
+Compile one last time, then save and close `ColorUtils`.
+
+Return to `Canvas_HUD`. Right-click and add a `Hex String to Color` node. Add it after the `SetText` node that adds the color to the hud. The function expects alpha values in the hex code, and connect a second output of the string array `GET` to an `Append` function and append `ff` in the `B` input. Connect the `Return Value` to the `Hex String` input in `Hex String to Color`.
+
+Finally, add a `Set Vector Parameter Value`. Select `NFT_MPS` for the collection and `Vector` for the `Parameter Name`. Connect the `Liner Color` output of `Hex String to Color` to the `Parameter Value` input.
+
+![Hex to linear color](../../assets/images/build-with-thirdweb/hex-to-linear-color.png)
+
+Compile, save, and close `Canvas_HUD`. Run the game. Your car will start red, but after the response from the server, it will turn the color of your last NFT! Drive and collect the NFT collectible, and it will change colors!
+
+## Conclusion
+
+In this tutorial, you've learned how to set up Thirdweb's engine and use it to connect an Unreal Engine game to Base. You've also learned how to use their platform to deploy and manager your contracts. Finally, you've learned how to build game elements to allow players to collect new NFTs and use them to personalize their game items.
 
 ## Random Color NFT Contract
 
@@ -699,8 +739,6 @@ contract RandomColorNFT is ERC721 {
 }
 ```
 
-## Conclusion
-
 ---
 
 [Base Camp]: https://base.org.camp
@@ -724,3 +762,4 @@ contract RandomColorNFT is ERC721 {
 [Unreal Demo]: https://github.com/thirdweb-example/unreal_demo
 [thirdweb engine dashboard]: https://thirdweb.com/dashboard/engine
 [wallet best practices]: https://portal.thirdweb.com/engine/features/backend-wallets#best-practices
+[conversion function]: https://blueprintue.com/blueprint/vm4ujcqe/
