@@ -53,7 +53,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const content = await db.selectFrom('content').selectAll().execute();
 
   const response = content.map((row) => ({
-    ...row,
+    id: row.id,
+    category: row.category,
     ...transformChallengeCard(row.content.OcsChallengeCard),
   }));
 
