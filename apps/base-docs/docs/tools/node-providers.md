@@ -193,7 +193,7 @@ hide_table_of_contents: true
 ---
 
 ## RockX
-[RockX](https://access.rockx.com) offers a global blockchain node network and developer tools for Web3 innovation. Start with our free [Base RPC](https://access.rockx.com/product/base-blockchain-api-for-web3-builders) to access institutional-grade solutions.
+[RockX](https://access.rockx.com) offers a global blockchain node network and developer tools for onchain innovation. Start with our free [Base RPC](https://access.rockx.com/product/base-blockchain-api-for-web3-builders) to access institutional-grade solutions.
 
 #### Supported Networks
 
