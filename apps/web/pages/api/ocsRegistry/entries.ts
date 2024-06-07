@@ -2,11 +2,11 @@ import { ColumnType, JSONColumnType } from 'kysely';
 import { createKysely } from '@vercel/postgres-kysely';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-interface Database {
+type Database = {
   content: ContentTable;
-}
+};
 
-interface OcsChallengeCard {
+type OcsChallengeCard = {
   title: string;
   short_description: string;
   full_description: string;
@@ -19,16 +19,16 @@ interface OcsChallengeCard {
   token_amount: string;
   creator_name: string;
   creator_image_url: string;
-}
+};
 
-interface ContentTable {
+type ContentTable = {
   id: string;
   category: number;
   created_at: ColumnType<Date, string | undefined, never>;
   content: JSONColumnType<{
     OcsChallengeCard: OcsChallengeCard;
   }>;
-}
+};
 
 export const db = createKysely<Database>();
 
