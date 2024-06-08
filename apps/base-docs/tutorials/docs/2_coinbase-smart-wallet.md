@@ -685,7 +685,7 @@ In this tutorial, you've learned how to connect users to your onchain app with t
 [viem]: https://viem.sh/
 [signMessage]: https://viem.sh/docs/actions/wallet/signMessage.html
 [OpenZeppelin]: https://www.openzeppelin.com/
-[Coinbase Smart Wallet]: www.smartwallet.dev
+[Coinbase Smart Wallet]: https://www.smartwallet.dev
 [passkeys]: https://fidoalliance.org/passkeys/
 [Building Onchain NFTs]: https://docs.base.org/tutorials/complex-onchain-nfts
 [rect]: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect
