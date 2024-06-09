@@ -76,6 +76,11 @@ A testnet explorer for [Base Goerli](https://base-goerli.dex.guru/) is also avai
 
 [Routescan](https://superscan.network/) superchain explorer allows you to search for transactions, addresses, tokens, prices and other activities taking place across all Superchain blockchains, including Base.
 
+
+## Scopescan
+
+[Scopescan](https://scan.0xscope.com/home?network=base) supports Base on their platform. Base voyagers can check Base transaction records, addresses, tokens, and other traits on their platform. Scopescan also supports visualizing capital flows and checking token holder graphs on Base.
+
 ---
 
 ## Tenderly Explorer
