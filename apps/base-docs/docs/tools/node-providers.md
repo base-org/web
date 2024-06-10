@@ -192,6 +192,15 @@ hide_table_of_contents: true
 
 ---
 
+## RockX
+[RockX](https://access.rockx.com) offers a global blockchain node network and developer tools for onchain innovation. Start with our free [Base RPC](https://access.rockx.com/product/base-blockchain-api-for-web3-builders) to access institutional-grade solutions.
+
+#### Supported Networks
+
+- Base Mainnet
+
+---
+
 ## Stackup
 
 [Stackup](https://www.stackup.sh/) is a leading ERC-4337 infrastructure platform. You can access hosted Base nodes with built-in [account abstraction tools](https://docs.stackup.sh/docs) like bundlers and paymasters.
