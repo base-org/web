@@ -1,913 +1,913 @@
 {
-    "deploy-with-foundry": {
-        "title": "Deploying a smart contract using Foundry",
-        "slug": "/deploy-with-foundry",
-        "description": "A tutorial that teaches how to deploy a smart contract on the Base test network using Foundry. Includes instructions for setting up the environment, compiling, and deploying the smart contract.",
-        "author": "neodaoist",
-        "keywords": [
-            "Foundry",
-            "smart contract",
-            "ERC-721",
-            "Base",
-            "Base test network",
-            "Base testnet",
-            "Rust",
-            "Solidity",
-            "smart contract deployment",
-            "deploy a smart contract",
-            "build on base",
-            "write smart contract",
-            "smart contract development"
-        ],
-        "tags": [
-            "smart contracts"
-        ],
-        "difficulty": "beginner",
-        "displayed_sidebar": null,
-        "last_updated": "Jun 4, 2024",
-        "duration": "17 min read",
-        "checksum": "b6ba5851a908389eb12dae91ff7d742f3e188eba2322b8550661b05f6731296c"
-    },
-    "deploy-with-hardhat": {
-        "title": "Deploying a smart contract using Hardhat",
-        "slug": "/deploy-with-hardhat",
-        "description": "A tutorial that teaches how to deploy a smart contract on the Base test network using Hardhat. Includes instructions for setting up the environment, compiling, and deploying the smart contract.",
-        "author": "taycaldwell",
-        "keywords": [
-            "Hardhat",
-            "smart contract",
-            "ERC-721",
-            "Base",
-            "Base test network",
-            "Base testnet",
-            "Node.js",
-            "Solidity",
-            "smart contract deployment",
-            "deploy a smart contract",
-            "build on base",
-            "write smart contract",
-            "smart contract development"
-        ],
-        "tags": [
-            "smart contracts"
-        ],
-        "difficulty": "beginner",
-        "displayed_sidebar": null,
-        "last_updated": "Feb 9, 2024",
-        "duration": "15 min read",
-        "checksum": "e2a66b9b034f2fd97a898c5137aba8e29446c4e73433ee5b2dce3b4af0935bce"
-    },
-    "deploy-with-remix": {
-        "title": "Deploying a smart contract using Remix",
-        "slug": "/deploy-with-remix",
-        "description": "A tutorial that teaches how to deploy a smart contract on the Base test network using Remix IDE. Includes instructions for setting up the environment, compiling, and deploying the smart contract.",
-        "author": "briandoyle81",
-        "keywords": [
-            "Remix",
-            "Remix IDE",
-            "smart contract",
-            "Base",
-            "Base test network",
-            "Base testnet",
-            "Node.js",
-            "Solidity",
-            "smart contract deployment",
-            "deploy a smart contract",
-            "build on Base",
-            "write smart contract",
-            "smart contract development",
-            "online IDE"
-        ],
-        "tags": [
-            "smart contracts"
-        ],
-        "difficulty": "beginner",
-        "displayed_sidebar": null,
-        "last_updated": "Jan 18, 2024",
-        "duration": "18 min read",
-        "checksum": "039bc3fe2c561bc45a6069fbf704b2b29203fb0ce49e1d0dee97a8f0fada11df"
-    },
-    "deploy-with-tenderly": {
-        "title": "Deploying a smart contract using Tenderly",
-        "slug": "/deploy-with-tenderly",
-        "description": "A tutorial that teaches how to deploy smart contracts using Tenderly DevNets. This page covers setup, debugging, transaction simulations, and continuous integration for smart contract development on Base Network.",
-        "author": "tenderly",
-        "keywords": [
-            "Tenderly",
-            "smart contract",
-            "Tenderly DevNets",
-            "Base",
-            "Base Network",
-            "deployment",
-            "debugging",
-            "transaction simulations",
-            "continuous integration",
-            "DevNet environment",
-            "Hardhat integration",
-            "deploy a smart contract",
-            "debug a smart contract",
-            "smart contract on Base",
-            "build on Base"
-        ],
-        "tags": [
-            "smart contracts"
-        ],
-        "difficulty": "beginner",
-        "displayed_sidebar": null,
-        "last_updated": "Oct 12, 2023",
-        "duration": "19 min read",
-        "checksum": "6b93f84f6431fcf064adbb8b51ee2fb162a97516d4fbac2f982af1eddba87b6b"
-    },
-    "deploy-with-thirdweb": {
-        "title": "Deploying a smart contract using thirdweb",
-        "slug": "/deploy-with-thirdweb",
-        "description": "A tutorial that teaches how to deploy and interact with smart contracts using the thirdweb CLI and SDK. Includes instructions for project creation, contract deployment on the Base test network.",
-        "author": "taycaldwell",
-        "keywords": [
-            "thirdweb",
-            "thirdweb CLI",
-            "thirdweb SDK",
-            "Base",
-            "Base network",
-            "smart contracts",
-            "deployment",
-            "Base testnet",
-            "CLI",
-            "Solidity",
-            "ERC-721",
-            "web3 development",
-            "SDKs",
-            "React",
-            "deploy a smart contract",
-            "debug a smart contract",
-            "smart contract on Base",
-            "build on Base"
-        ],
-        "tags": [
-            "smart contracts"
-        ],
-        "difficulty": "beginner",
-        "displayed_sidebar": null,
-        "last_updated": "Jan 11, 2024",
-        "duration": "10 min read",
-        "checksum": "f4b7fa789b2c65e00e467c4851857ab2e629f6d8dbed7f8c2d625abf668a124b"
-    },
-    "run-a-base-node": {
-        "title": "Running a Base Node",
-        "slug": "/run-a-base-node",
-        "description": "A tutorial that teaches how to set up and run a Base Node.",
-        "author": "taycaldwell & wbnns",
-        "keywords": [
-            "Base Node setup",
-            "running a node",
-            "Base node",
-            "run a Base node",
-            "hardware requirements",
-            "node synchronization",
-            "node snapshots",
-            "Base chain",
-            "Base blockchain",
-            "Base network",
-            "node deployment",
-            "Ethereum node"
-        ],
-        "tags": [
-            "nodes"
-        ],
-        "difficulty": "beginner",
-        "displayed_sidebar": null,
-        "last_updated": "May 29, 2024",
-        "duration": "6 min read",
-        "checksum": "63ddc0b92eb95dfdf7de975a9c3ab269a24311ff13b675346a8e80a4e8b51674"
-    },
-    "build-with-thirdweb": {
-        "title": "Building an onchain app using thirdweb",
-        "slug": "/build-with-thirdweb",
-        "description": "A tutorial that teaches how to build an NFT gallery app using thirdweb, including steps for creating an NFT collection, minting NFTs, and configuring the app for the Base testnet.",
-        "author": "taycaldwell",
-        "keywords": [
-            "thirdweb",
-            "onchain app",
-            "dapp",
-            "NFT",
-            "NFT collection",
-            "smart contract",
-            "Base blockchain",
-            "Base network",
-            "Base testnet",
-            "Base test network",
-            "mint NFTs",
-            "web3 wallet",
-            "app development",
-            "dapp development",
-            "build a dapp on Base",
-            "build on Base"
-        ],
-        "tags": [
-            "smart contracts",
-            "nft"
-        ],
-        "difficulty": "beginner",
-        "displayed_sidebar": null,
-        "last_updated": "Jan 11, 2024",
-        "duration": "8 min read",
-        "checksum": "527200e33d612b0c76e5eaacddfc23633b57eaa4577f389d4429b8f862c45462"
-    },
-    "account-abstraction-with-biconomy": {
-        "title": "Account Abstraction on Base using Biconomy",
-        "slug": "/account-abstraction-with-biconomy",
-        "description": "A tutorial that teaches how to implement Account Abstraction into a Base project using Biconomy paymasters, bundlers, and smart accounts.",
-        "author": "taycaldwell",
-        "keywords": [
-            "Account Abstraction",
-            "AA",
-            "Biconomy",
-            "Paymaster",
-            "Bundler",
-            "User operations",
-            "userops",
-            "Smart contract wallet",
-            "Smart account",
-            "Particle Network",
-            "Particle Auth"
-        ],
-        "tags": [
-            "account abstraction"
-        ],
-        "difficulty": "intermediate",
-        "displayed_sidebar": null,
-        "last_updated": "Feb 5, 2024",
-        "duration": "29 min read",
-        "checksum": "8c8189d19e874c08dd05549d06c1eb2e45ce924aa2b0e1239f0adf04c8ee4879"
-    },
-    "account-abstraction-with-particle-network": {
-        "title": "Account Abstraction on Base using Particle Network",
-        "slug": "/account-abstraction-with-particle-network",
-        "description": "A walkthrough on Particle Network's Modular Smart Wallet-as-a-Service, leveraging account abstraction and social logins across various providers.",
-        "author": "TABASCOatw",
-        "keywords": [
-            "Account Abstraction",
-            "AA",
-            "Biconomy",
-            "Paymaster",
-            "Bundler",
-            "Alchemy",
-            "ERC-4337 Smart account",
-            "Particle Network",
-            "Particle Auth",
-            "Wallet-as-a-Service"
-        ],
-        "tags": [
-            "account abstraction"
-        ],
-        "difficulty": "intermediate",
-        "displayed_sidebar": null,
-        "last_updated": "Apr 11, 2024",
-        "duration": "34 min read",
-        "checksum": "f15915f4b8a607c68e5ae57dc1b3e3519f581a089a7f25669e3530112a1d42ae"
-    },
-    "account-abstraction-with-privy-and-base-paymaster": {
-        "title": "Account Abstraction on Base using Privy and the Base Paymaster",
-        "slug": "/account-abstraction-with-privy-and-base-paymaster",
-        "description": "A tutorial that teaches how to implement Account Abstraction into a Base project using Privy and the Base paymaster.",
-        "author": "Brian Doyle and Aaron Hayslip",
-        "keywords": [
-            "Privy",
-            "viem",
-            "frontend",
-            "smart contract development",
-            "EVM",
-            "Next.js",
-            "Base",
-            "Base network",
-            "account abstraction",
-            "Base paymaster",
-            "embedded wallet"
-        ],
-        "tags": [
-            "account abstraction"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Dec 23, 2023",
-        "duration": "46 min read",
-        "checksum": "f7985912c4b36e3e0dcd33ad58d83a59403242e0f8eb6160660132b70c597cc2"
-    },
-    "coinbase-smart-wallet": {
-        "title": "Coinbase Smart Wallet",
-        "slug": "/coinbase-smart-wallet",
-        "description": "Learn to create an app that uses the Coinbase Smart Wallet and effectively manages assets and permissions for both native and new users of onchain apps",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "wagmi",
-            "viem",
-            "smart wallet"
-        ],
-        "tags": [
-            "nft",
-            "smart wallet"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "May 23, 2024",
-        "duration": "32 min read",
-        "checksum": "0557fc58872d5449a486e434e7da826f23033b2231c8052608a8b63781f65114"
-    },
-    "cross-chain-with-ccip": {
-        "title": "Sending messages and tokens from Base to other chains using Chainlink CCIP",
-        "slug": "/cross-chain-with-ccip",
-        "description": "A tutorial that teaches how to use Chainlink CCIP to perform cross-chain messaging and token transfers from Base Goerli testnet to Optimism Goerli testnet.",
-        "author": "taycaldwell",
-        "keywords": [
-            "Cross-chain",
-            "Omni-chain",
-            "Crosschain",
-            "OmniChain",
-            "Chainlink",
-            "Chainlink CCIP",
-            "CCIP",
-            "cross-chain messaging",
-            "transfer tokens across chains"
-        ],
-        "tags": [
-            "cross-chain"
-        ],
-        "difficulty": "intermediate",
-        "displayed_sidebar": null,
-        "last_updated": "Jan 12, 2024",
-        "duration": "32 min read",
-        "checksum": "b613b074cbb8f4c8eb55a13651f6371a8a3211afe65b8e2190e5b9df18c1d98f"
-    },
-    "cross-chain-with-layerzero": {
-        "title": "Sending messages from Base to other chains using LayerZero V2",
-        "slug": "/cross-chain-with-layerzero",
-        "description": "A tutorial that teaches how to use LayerZero V2 to perform cross-chain messaging from Base Goerli testnet to Optimism Goerli testnet.",
-        "author": "taycaldwell",
-        "eywords": [
-            "Cross-chain",
-            "Omni-chain",
-            "Crosschain",
-            "OmniChain",
-            "LayerZero",
-            "LayerZero V2",
-            "lz",
-            "cross-chain messaging",
-            "transfer tokens across chains"
-        ],
-        "tags": [
-            "cross-chain"
-        ],
-        "difficulty": "intermediate",
-        "displayed_sidebar": null,
-        "last_updated": "Feb 4, 2024",
-        "duration": "34 min read",
-        "checksum": "a0ce01aa1c3097efa7582a74bc73f9ccad03222b25af451be1fde4fcd45c7dd7"
-    },
-    "dynaimc-nfts": {
-        "title": "Building dynamic NFTs",
-        "slug": "/dynaimc-nfts",
-        "description": "A tutorial that teaches how to make dynamic NFTs that evolve based on onchain or offchain actions.",
-        "author": "lukecd",
-        "keywords": [
-            "Irys",
-            "Permanent data",
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "Dynamic NFT",
-            "gaming NFT",
-            "onchain metadata",
-            "nft metadata",
-            "onchain nft"
-        ],
-        "tags": [
-            "nft"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jun 4, 2024",
-        "duration": "14 min read",
-        "checksum": "1b8d5aeb570ddd50f4c11a9e4e50eb225ffcbf397a14404f1e640674f2c3e34d"
-    },
-    "complex-onchain-nfts": {
-        "title": "Building onchain NFTs",
-        "slug": "/complex-onchain-nfts",
-        "description": "A tutorial that teaches how to make complex nfts that are procedurally generated and have onchain metadata and images.",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "SVG",
-            "generative art",
-            "onchain metadata",
-            "nft metadata",
-            "onchain images",
-            "interfaces",
-            "pseudorandom numbers",
-            "deterministic randomness"
-        ],
-        "tags": [
-            "nft"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jan 31, 2024",
-        "duration": "39 min read",
-        "checksum": "aa4782a6b0ef93073915e99e6ae6a244063422f14c8021f4dc0eb2d5a0c71b6a"
-    },
-    "oracles-chainlink-price-feeds": {
-        "title": "Accessing real-world data using Chainlink Data Feeds",
-        "slug": "/oracles-chainlink-price-feeds",
-        "description": "A tutorial that teaches how to use Chainlink Data Feeds to access real-world data, such as asset prices, directly from your smart contracts on the Base testnet.",
-        "author": "taycaldwell",
-        "keywords": [
-            "Oracle Oracles",
-            "Chainlink",
-            "price feeds",
-            "data feeds",
-            "smart contract",
-            "Base blockchain",
-            "Base network",
-            "Base testnet",
-            "Base test network",
-            "app development",
-            "dapp development",
-            "build a dapp on Base",
-            "build on Base"
-        ],
-        "tags": [
-            "oracles"
-        ],
-        "difficulty": "intermediate",
-        "displayed_sidebar": null,
-        "last_updated": "Dec 19, 2023",
-        "duration": "11 min read",
-        "checksum": "df42e4091a128a0bd3e7dc9fcc585f9a711a56027152d57553a54e8040a4001f"
-    },
-    "oracles-pyth-price-feeds": {
-        "title": "Accessing real-time asset data using Pyth Price Feeds",
-        "slug": "/oracles-pyth-price-feeds",
-        "description": "A tutorial that teaches how to use Pyth Price Feeds to access real-time asset data, directly from your smart contracts on the Base testnet.",
-        "author": "taycaldwell",
-        "keywords": [
-            "Oracle Oracles",
-            "Pyth",
-            "Pyth Network",
-            "price feeds",
-            "data feeds",
-            "smart contract",
-            "Base blockchain",
-            "Base network",
-            "Base testnet",
-            "Base test network",
-            "app development",
-            "dapp development",
-            "build a dapp on Base",
-            "build on Base"
-        ],
-        "tags": [
-            "oracles"
-        ],
-        "difficulty": "intermediate",
-        "displayed_sidebar": null,
-        "last_updated": "Dec 19, 2023",
-        "duration": "13 min read",
-        "checksum": "983e7175434206be7c996758b09db9c33aac454ecb9b4b3da8f301f8140b7c52"
-    },
-    "oracles-supra-vrf": {
-        "title": "Generating random numbers contracts using Supra dVRF",
-        "slug": "/oracles-supra-vrf",
-        "description": "A tutorial that teaches how to use Supra dVRF to serve random numbers using an onchain randomness generation mechanism directly within your smart contracts on the Base testnet.",
-        "author": "taycaldwell",
-        "keywords": [
-            "Oracle Oracles",
-            "Supra",
-            "Supra VRF",
-            "Supra dVRF",
-            "VRF",
-            "verifiable random function",
-            "verifiable random functions",
-            "random numbers",
-            "rng",
-            "random number generator",
-            "random numbers in smart contracts",
-            "random numbers on Base",
-            "smart contract",
-            "Base blockchain",
-            "Base network",
-            "Base testnet",
-            "Base test network",
-            "app development",
-            "dapp development",
-            "build a dapp on Base",
-            "build on Base"
-        ],
-        "tags": [
-            "oracles",
-            "vrf"
-        ],
-        "difficulty": "intermediate",
-        "displayed_sidebar": null,
-        "last_updated": "Dec 19, 2023",
-        "duration": "19 min read",
-        "checksum": "260e40333e386593cf6f211c06218042d4b93ecac34f56a0decbd398f1e3ddb1"
-    },
-    "signature-mint-nft": {
-        "title": "Signature Mint NFT",
-        "slug": "/signature-mint-nft",
-        "description": "A tutorial that teaches how to create a signature mint, in which minters pay their own gas, but must first be given a valid signed authorization.",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "signature mint",
-            "viem",
-            "soulbound"
-        ],
-        "tags": [
-            "nft"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "May 9, 2024",
-        "duration": "19 min read",
-        "checksum": "9429b07496c1e0b22041d913a16d46bb1850b0cebd72a45aaf55bc585c35bb91"
-    },
-    "farcaster-frames-deploy-to-vercel": {
-        "title": "Farcaster Frames: Deploying to Vercel",
-        "slug": "/farcaster-frames-deploy-to-vercel",
-        "description": "A tutorial that teaches how to deploy a Farcaster Frame using Vercel.",
-        "author": "briandoyle81",
-        "keywords": [
-            "farcaster",
-            "frames farcaster frames",
-            "Vercel",
-            "OnchainKit",
-            "a frame in 100 lines",
-            "deploy"
-        ],
-        "tags": [
-            "frames"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Feb 6, 2024",
-        "duration": "9 min read",
-        "checksum": "3174ebe066db1100e389cf2b0ec1451c2711145fb645dc540f4c08c5a2e48540"
-    },
-    "farcaster-frames-gating-and-redirects": {
-        "title": "Farcaster Frames: Gating content and creating redirects",
-        "slug": "/farcaster-frames-gating-and-redirects",
-        "description": "A tutorial that teaches how to create Frames with more advanced behaviors such as gating content based on a user's follows, likes, or recasts, and creating redirect buttons.",
-        "author": "briandoyle81",
-        "keywords": [
-            "farcaster",
-            "frames",
-            "farcaster frames"
-        ],
-        "tags": [
-            "frames"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Feb 23, 2024",
-        "duration": "12 min read",
-        "checksum": "6767682f0995d5f873b46aa615f6fb952a70d8b0487823fa32a41734df6048ba"
-    },
-    "farcaster-frames-hyperframes": {
-        "title": "Farcaster Frames: Building HyperFrames",
-        "slug": "/farcaster-frames-hyperframes",
-        "description": "A tutorial that teaches how to make cross-linked hyperframes in an organized manner.",
-        "author": "briandoyle81",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "keywords": [
-            "farcaster",
-            "frames",
-            "farcaster frames",
-            "hyperframes",
-            "hyper frames",
-            "state",
-            "frame state",
-            "Base"
-        ],
-        "difficulty": "intermediate",
-        "tags": [
-            "frames"
-        ],
-        "last_updated": "Feb 20, 2024",
-        "duration": "16 min read",
-        "checksum": "9497478eb1ba7a6bfb3b2e668b34b3a57107e24fdaae76673d832163eb0561b0"
-    },
-    "farcaster-frames-nft-minting": {
-        "title": "Farcaster Frames: Building an NFT airdrop Frame",
-        "slug": "/farcaster-frames-nft-minting",
-        "description": "A tutorial that teaches how to make a Farcaster Frame that allows you to mint and airdrop NFTs to users.",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "farcaster",
-            "frames",
-            "farcaster frames"
-        ],
-        "tags": [
-            "frames",
-            "nft"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "May 23",
-        "duration": "22 min read",
-        "checksum": "8f1ced0b8fe2f7b5ae69b21c16dfdc433fb5fc09c88dffc1d32e9267cb4c0aef"
-    },
-    "farcaster-frames-nocode-minting": {
-        "title": "Farcaster Frames: Building a no-code minting Frame",
-        "slug": "/farcaster-frames-nocode-minting",
-        "description": "A tutorial that teaches how to make a Farcaster Frame with an outbound link to an NFT minting website.",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "farcaster",
-            "frames",
-            "farcaster frames",
-            "mint"
-        ],
-        "tags": [
-            "frames",
-            "nft"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Feb 23, 2024",
-        "duration": "7 min read",
-        "checksum": "fed0c4e553f10ac5ab0d90354fad93ac44e3e34306ac310eb07bcb7ad390600d"
-    },
-    "farcaster-frames-transactions": {
-        "title": "Farcaster Frames: Making transactions",
-        "slug": "/farcaster-frames-transactions",
-        "description": "A tutorial that teaches how to invoke a wallet transaction from a Farcaster Frame.",
-        "author": "briandoyle81",
-        "keywords": [
-            "farcaster",
-            "frames",
-            "farcaster frames",
-            "wallet",
-            "transaction",
-            "Base"
-        ],
-        "tags": [
-            "frames"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Mar 8, 2024",
-        "duration": "17 min read",
-        "checksum": "50bc1e1efc66e0a22536cc73c7d0e04daebd552db8538d0ffde59a2a6b75bab3"
-    },
-    "hardhat-debugging": {
-        "title": "Hardhat: Debugging smart contracts",
-        "slug": "/hardhat-debugging",
-        "description": "A tutorial that teaches how to debug your smart contracts using Hardhat.",
-        "author": "Edson Alcala",
-        "keywords": [
-            "Hardhat",
-            "smart contract debugging",
-            "debugging logs",
-            "common errors",
-            "error resolution",
-            "decentralized applications"
-        ],
-        "tags": [
-            "smart contracts"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jan 18, 2024",
-        "duration": "15 min read",
-        "checksum": "c4f0c5cc94e04b85501323d6992a014308db14900c069ac5a7639d5b17703db6"
-    },
-    "hardhat-profiling-gas": {
-        "title": "Hardhat: Optimizing the gas usage of smart contracts",
-        "slug": "/hardhat-profiling-gas",
-        "description": "A tutorial that teaches how to optimize the gas usage of your smart contracts using Hardhat.",
-        "author": "Edson Alcala and Brian Doyle",
-        "keywords": [
-            "Hardhat",
-            "gas optimization",
-            "gas usage",
-            "gas profiling",
-            "Hardhat Gas Reporter plugin",
-            "smart contract development",
-            "cost savings",
-            "contract optimization",
-            "gas-efficient contracts"
-        ],
-        "tags": [
-            "smart contracts"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jan 18, 2024",
-        "duration": "16 min read",
-        "checksum": "20233dab9a1cda1a19de6ef9597d2dba37c853477b1474660fc22d302a815eb8"
-    },
-    "hardhat-profiling-size": {
-        "title": "Hardhat: Optimizing the size of smart contracts",
-        "slug": "/hardhat-profiling-size",
-        "description": "A tutorial that teaches how to optimize the size of your smart contracts using Hardhat.",
-        "author": "Edson Alcala and Brian Doyle",
-        "keywords": [
-            "Smart Contract Sizes",
-            "Hardhat Contract Sizer",
-            "Base network",
-            "Base blockchain",
-            "Blockchain",
-            "Contract Optimization",
-            "Inheritance",
-            "External Contracts",
-            "Solidity Optimizer",
-            "Smart Contract Development"
-        ],
-        "tags": [
-            "smart contracts"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jan 18, 2024",
-        "duration": "22 min read",
-        "checksum": "213edb66a4dc7845730cf4b72015d01c30cee0528cea6832714baf5bb451d9a8"
-    },
-    "hardhat-test-coverage": {
-        "title": "Hardhat: Analyzing the test coverage of smart contracts",
-        "slug": "/hardhat-test-coverage",
-        "description": "A tutorial that teaches how to profile the test coverage of your smart contracts using Hardhat and the Solidity Coverage plugin.",
-        "author": "Edson Alcala",
-        "keywords": [
-            "Solidity Coverage",
-            "Smart Contract Testing",
-            "Test Coverage",
-            "Base network",
-            "Base blockchain",
-            "blockchain development",
-            "Hardhat",
-            "Solidity",
-            "Code Testing",
-            "Test Suite Analysis"
-        ],
-        "tags": [
-            "smart contracts"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jan 18, 2024",
-        "duration": "9 min read",
-        "checksum": "54b377b97554eea4e09520fbf6fdacff9978d840248ec69d82ab79c0bebb0846"
-    },
-    "intro-to-foundry-setup": {
-        "title": "Foundry: Setting up Foundry with Base",
-        "slug": "/intro-to-foundry-setup",
-        "description": "A tutorial that teaches how to set up your development environment to work with Foundry.",
-        "author": "Edson Alcala",
-        "keywords": [
-            "Foundry",
-            "Forge",
-            "Foundry Book",
-            "smart contract development",
-            "toolchain"
-        ],
-        "tags": [
-            "smart contracts"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jan 18, 2024",
-        "duration": "6 min read",
-        "checksum": "0b50de1197db8c50cbf02405a904f99ec7e32159f86ae884993aa6cc36b10fcb"
-    },
-    "intro-to-foundry-testing": {
-        "title": "Foundry: Testing smart contracts",
-        "slug": "/intro-to-foundry-testing",
-        "author": "Edson Alcala",
-        "description": "A tutorial that teaches how to test your smart contracts using Foundry.",
-        "keywords": [
-            "Foundry",
-            "Forge",
-            "Foundry Book",
-            "smart contract development",
-            "toolchain",
-            "testing",
-            "test"
-        ],
-        "tags": [
-            "smart contracts"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jan 18, 2024",
-        "duration": "9 min read",
-        "checksum": "2ced64394c425e5749001cb21cca5a3b0043fe6ab013be45e98299e16f337d23"
-    },
-    "intro-to-providers": {
-        "title": "Introduction to Providers",
-        "slug": "/intro-to-providers",
-        "description": "A tutorial that teaches what providers are, why you need one, and how to configure several providers and use them to connect to the blockchain.",
-        "author": "briandoyle81",
-        "keywords": [
-            "blockchain providers",
-            "JSON RPC",
-            "RainbowKit",
-            "wagmi React hooks",
-            "viem",
-            "frontend",
-            "smart contract development",
-            "EVM",
-            "Next.js",
-            "Base",
-            "Base network",
-            "Base node providers",
-            "Base providers",
-            "blockchain development",
-            "dApps",
-            "smart contracts",
-            "providers",
-            "public providers",
-            "wallet providers",
-            "vendor providers",
-            "rate limits",
-            "blockchain API",
-            "Ethereum provider",
-            "Base",
-            "Base network",
-            "Base node providers",
-            "Base providers",
-            "QuickNode",
-            "Alchemy",
-            "API keys",
-            "blockchain connection",
-            "public provider",
-            "smart contract development"
-        ],
-        "tags": [
-            "nodes"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jan 18, 2024",
-        "duration": "21 min read",
-        "checksum": "0ce947aec9f1cab196e9489b78509392a625b0d12011294e3fb9673a8bdd8e22"
-    },
-    "farcaster-cast-actions-simple": {
-        "title": "Farcaster Cast Actions: Create a Simple Cast Action",
-        "slug": "/farcaster-cast-actions-simple",
-        "description": "A tutorial that teaches how to make a simple Farcaster cast action.",
-        "author": "briandoyle81",
-        "keywords": [
-            "farcaster",
-            "cast actions",
-            "farcaster cast actions",
-            "farcaster actions"
-        ],
-        "tags": [
-            "frames",
-            "actions"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Apr 5, 2024",
-        "duration": "9 min read",
-        "checksum": "96225f883c79832d18459b3e47fd3a0bfd43c7ad6d1a1b1704bf902d33910025"
-    }
+  "deploy-with-foundry": {
+    "title": "Deploying a smart contract using Foundry",
+    "slug": "/deploy-with-foundry",
+    "description": "A tutorial that teaches how to deploy a smart contract on the Base test network using Foundry. Includes instructions for setting up the environment, compiling, and deploying the smart contract.",
+    "author": "neodaoist",
+    "keywords": [
+      "Foundry",
+      "smart contract",
+      "ERC-721",
+      "Base",
+      "Base test network",
+      "Base testnet",
+      "Rust",
+      "Solidity",
+      "smart contract deployment",
+      "deploy a smart contract",
+      "build on base",
+      "write smart contract",
+      "smart contract development"
+    ],
+    "tags": [
+      "smart contracts"
+    ],
+    "difficulty": "beginner",
+    "displayed_sidebar": null,
+    "last_updated": "Jun 4, 2024",
+    "duration": "17 min read",
+    "checksum": "b6ba5851a908389eb12dae91ff7d742f3e188eba2322b8550661b05f6731296c"
+  },
+  "deploy-with-hardhat": {
+    "title": "Deploying a smart contract using Hardhat",
+    "slug": "/deploy-with-hardhat",
+    "description": "A tutorial that teaches how to deploy a smart contract on the Base test network using Hardhat. Includes instructions for setting up the environment, compiling, and deploying the smart contract.",
+    "author": "taycaldwell",
+    "keywords": [
+      "Hardhat",
+      "smart contract",
+      "ERC-721",
+      "Base",
+      "Base test network",
+      "Base testnet",
+      "Node.js",
+      "Solidity",
+      "smart contract deployment",
+      "deploy a smart contract",
+      "build on base",
+      "write smart contract",
+      "smart contract development"
+    ],
+    "tags": [
+      "smart contracts"
+    ],
+    "difficulty": "beginner",
+    "displayed_sidebar": null,
+    "last_updated": "Feb 9, 2024",
+    "duration": "15 min read",
+    "checksum": "e2a66b9b034f2fd97a898c5137aba8e29446c4e73433ee5b2dce3b4af0935bce"
+  },
+  "deploy-with-remix": {
+    "title": "Deploying a smart contract using Remix",
+    "slug": "/deploy-with-remix",
+    "description": "A tutorial that teaches how to deploy a smart contract on the Base test network using Remix IDE. Includes instructions for setting up the environment, compiling, and deploying the smart contract.",
+    "author": "briandoyle81",
+    "keywords": [
+      "Remix",
+      "Remix IDE",
+      "smart contract",
+      "Base",
+      "Base test network",
+      "Base testnet",
+      "Node.js",
+      "Solidity",
+      "smart contract deployment",
+      "deploy a smart contract",
+      "build on Base",
+      "write smart contract",
+      "smart contract development",
+      "online IDE"
+    ],
+    "tags": [
+      "smart contracts"
+    ],
+    "difficulty": "beginner",
+    "displayed_sidebar": null,
+    "last_updated": "Jan 18, 2024",
+    "duration": "18 min read",
+    "checksum": "039bc3fe2c561bc45a6069fbf704b2b29203fb0ce49e1d0dee97a8f0fada11df"
+  },
+  "deploy-with-tenderly": {
+    "title": "Deploying a smart contract using Tenderly",
+    "slug": "/deploy-with-tenderly",
+    "description": "A tutorial that teaches how to deploy smart contracts using Tenderly DevNets. This page covers setup, debugging, transaction simulations, and continuous integration for smart contract development on Base Network.",
+    "author": "tenderly",
+    "keywords": [
+      "Tenderly",
+      "smart contract",
+      "Tenderly DevNets",
+      "Base",
+      "Base Network",
+      "deployment",
+      "debugging",
+      "transaction simulations",
+      "continuous integration",
+      "DevNet environment",
+      "Hardhat integration",
+      "deploy a smart contract",
+      "debug a smart contract",
+      "smart contract on Base",
+      "build on Base"
+    ],
+    "tags": [
+      "smart contracts"
+    ],
+    "difficulty": "beginner",
+    "displayed_sidebar": null,
+    "last_updated": "Oct 12, 2023",
+    "duration": "19 min read",
+    "checksum": "6b93f84f6431fcf064adbb8b51ee2fb162a97516d4fbac2f982af1eddba87b6b"
+  },
+  "deploy-with-thirdweb": {
+    "title": "Deploying a smart contract using thirdweb",
+    "slug": "/deploy-with-thirdweb",
+    "description": "A tutorial that teaches how to deploy and interact with smart contracts using the thirdweb CLI and SDK. Includes instructions for project creation, contract deployment on the Base test network.",
+    "author": "taycaldwell",
+    "keywords": [
+      "thirdweb",
+      "thirdweb CLI",
+      "thirdweb SDK",
+      "Base",
+      "Base network",
+      "smart contracts",
+      "deployment",
+      "Base testnet",
+      "CLI",
+      "Solidity",
+      "ERC-721",
+      "web3 development",
+      "SDKs",
+      "React",
+      "deploy a smart contract",
+      "debug a smart contract",
+      "smart contract on Base",
+      "build on Base"
+    ],
+    "tags": [
+      "smart contracts"
+    ],
+    "difficulty": "beginner",
+    "displayed_sidebar": null,
+    "last_updated": "Jan 11, 2024",
+    "duration": "10 min read",
+    "checksum": "f4b7fa789b2c65e00e467c4851857ab2e629f6d8dbed7f8c2d625abf668a124b"
+  },
+  "run-a-base-node": {
+    "title": "Running a Base Node",
+    "slug": "/run-a-base-node",
+    "description": "A tutorial that teaches how to set up and run a Base Node.",
+    "author": "taycaldwell & wbnns",
+    "keywords": [
+      "Base Node setup",
+      "running a node",
+      "Base node",
+      "run a Base node",
+      "hardware requirements",
+      "node synchronization",
+      "node snapshots",
+      "Base chain",
+      "Base blockchain",
+      "Base network",
+      "node deployment",
+      "Ethereum node"
+    ],
+    "tags": [
+      "nodes"
+    ],
+    "difficulty": "beginner",
+    "displayed_sidebar": null,
+    "last_updated": "May 29, 2024",
+    "duration": "6 min read",
+    "checksum": "63ddc0b92eb95dfdf7de975a9c3ab269a24311ff13b675346a8e80a4e8b51674"
+  },
+  "build-with-thirdweb": {
+    "title": "Building an onchain app using thirdweb",
+    "slug": "/build-with-thirdweb",
+    "description": "A tutorial that teaches how to build an NFT gallery app using thirdweb, including steps for creating an NFT collection, minting NFTs, and configuring the app for the Base testnet.",
+    "author": "taycaldwell",
+    "keywords": [
+      "thirdweb",
+      "onchain app",
+      "dapp",
+      "NFT",
+      "NFT collection",
+      "smart contract",
+      "Base blockchain",
+      "Base network",
+      "Base testnet",
+      "Base test network",
+      "mint NFTs",
+      "web3 wallet",
+      "app development",
+      "dapp development",
+      "build a dapp on Base",
+      "build on Base"
+    ],
+    "tags": [
+      "smart contracts",
+      "nft"
+    ],
+    "difficulty": "beginner",
+    "displayed_sidebar": null,
+    "last_updated": "Jan 11, 2024",
+    "duration": "8 min read",
+    "checksum": "527200e33d612b0c76e5eaacddfc23633b57eaa4577f389d4429b8f862c45462"
+  },
+  "account-abstraction-with-biconomy": {
+    "title": "Account Abstraction on Base using Biconomy",
+    "slug": "/account-abstraction-with-biconomy",
+    "description": "A tutorial that teaches how to implement Account Abstraction into a Base project using Biconomy paymasters, bundlers, and smart accounts.",
+    "author": "taycaldwell",
+    "keywords": [
+      "Account Abstraction",
+      "AA",
+      "Biconomy",
+      "Paymaster",
+      "Bundler",
+      "User operations",
+      "userops",
+      "Smart contract wallet",
+      "Smart account",
+      "Particle Network",
+      "Particle Auth"
+    ],
+    "tags": [
+      "account abstraction"
+    ],
+    "difficulty": "intermediate",
+    "displayed_sidebar": null,
+    "last_updated": "Feb 5, 2024",
+    "duration": "29 min read",
+    "checksum": "8c8189d19e874c08dd05549d06c1eb2e45ce924aa2b0e1239f0adf04c8ee4879"
+  },
+  "account-abstraction-with-particle-network": {
+    "title": "Account Abstraction on Base using Particle Network",
+    "slug": "/account-abstraction-with-particle-network",
+    "description": "A walkthrough on Particle Network's Modular Smart Wallet-as-a-Service, leveraging account abstraction and social logins across various providers.",
+    "author": "TABASCOatw",
+    "keywords": [
+      "Account Abstraction",
+      "AA",
+      "Biconomy",
+      "Paymaster",
+      "Bundler",
+      "Alchemy",
+      "ERC-4337 Smart account",
+      "Particle Network",
+      "Particle Auth",
+      "Wallet-as-a-Service"
+    ],
+    "tags": [
+      "account abstraction"
+    ],
+    "difficulty": "intermediate",
+    "displayed_sidebar": null,
+    "last_updated": "Apr 11, 2024",
+    "duration": "34 min read",
+    "checksum": "f15915f4b8a607c68e5ae57dc1b3e3519f581a089a7f25669e3530112a1d42ae"
+  },
+  "account-abstraction-with-privy-and-base-paymaster": {
+    "title": "Account Abstraction on Base using Privy and the Base Paymaster",
+    "slug": "/account-abstraction-with-privy-and-base-paymaster",
+    "description": "A tutorial that teaches how to implement Account Abstraction into a Base project using Privy and the Base paymaster.",
+    "author": "Brian Doyle and Aaron Hayslip",
+    "keywords": [
+      "Privy",
+      "viem",
+      "frontend",
+      "smart contract development",
+      "EVM",
+      "Next.js",
+      "Base",
+      "Base network",
+      "account abstraction",
+      "Base paymaster",
+      "embedded wallet"
+    ],
+    "tags": [
+      "account abstraction"
+    ],
+    "difficulty": "intermediate",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Dec 23, 2023",
+    "duration": "46 min read",
+    "checksum": "f7985912c4b36e3e0dcd33ad58d83a59403242e0f8eb6160660132b70c597cc2"
+  },
+  "coinbase-smart-wallet": {
+    "title": "Coinbase Smart Wallet",
+    "slug": "/coinbase-smart-wallet",
+    "description": "Learn to create an app that uses the Coinbase Smart Wallet and effectively manages assets and permissions for both native and new users of onchain apps",
+    "author": "briandoyle81",
+    "keywords": [
+      "Solidity",
+      "ERC-721",
+      "token",
+      "NFT",
+      "wagmi",
+      "viem",
+      "smart wallet"
+    ],
+    "tags": [
+      "nft",
+      "smart wallet"
+    ],
+    "difficulty": "intermediate",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "May 23, 2024",
+    "duration": "32 min read",
+    "checksum": "0557fc58872d5449a486e434e7da826f23033b2231c8052608a8b63781f65114"
+  },
+  "cross-chain-with-ccip": {
+    "title": "Sending messages and tokens from Base to other chains using Chainlink CCIP",
+    "slug": "/cross-chain-with-ccip",
+    "description": "A tutorial that teaches how to use Chainlink CCIP to perform cross-chain messaging and token transfers from Base Goerli testnet to Optimism Goerli testnet.",
+    "author": "taycaldwell",
+    "keywords": [
+      "Cross-chain",
+      "Omni-chain",
+      "Crosschain",
+      "OmniChain",
+      "Chainlink",
+      "Chainlink CCIP",
+      "CCIP",
+      "cross-chain messaging",
+      "transfer tokens across chains"
+    ],
+    "tags": [
+      "cross-chain"
+    ],
+    "difficulty": "intermediate",
+    "displayed_sidebar": null,
+    "last_updated": "Jan 12, 2024",
+    "duration": "32 min read",
+    "checksum": "b613b074cbb8f4c8eb55a13651f6371a8a3211afe65b8e2190e5b9df18c1d98f"
+  },
+  "cross-chain-with-layerzero": {
+    "title": "Sending messages from Base to other chains using LayerZero V2",
+    "slug": "/cross-chain-with-layerzero",
+    "description": "A tutorial that teaches how to use LayerZero V2 to perform cross-chain messaging from Base Goerli testnet to Optimism Goerli testnet.",
+    "author": "taycaldwell",
+    "eywords": [
+      "Cross-chain",
+      "Omni-chain",
+      "Crosschain",
+      "OmniChain",
+      "LayerZero",
+      "LayerZero V2",
+      "lz",
+      "cross-chain messaging",
+      "transfer tokens across chains"
+    ],
+    "tags": [
+      "cross-chain"
+    ],
+    "difficulty": "intermediate",
+    "displayed_sidebar": null,
+    "last_updated": "Feb 4, 2024",
+    "duration": "34 min read",
+    "checksum": "a0ce01aa1c3097efa7582a74bc73f9ccad03222b25af451be1fde4fcd45c7dd7"
+  },
+  "dynaimc-nfts": {
+    "title": "Building dynamic NFTs",
+    "slug": "/dynamic-nfts",
+    "description": "A tutorial that teaches how to make dynamic NFTs that evolve based on onchain or offchain actions.",
+    "author": "lukecd",
+    "keywords": [
+      "Irys",
+      "Permanent data",
+      "Solidity",
+      "ERC-721",
+      "token",
+      "NFT",
+      "Dynamic NFT",
+      "gaming NFT",
+      "onchain metadata",
+      "nft metadata",
+      "onchain nft"
+    ],
+    "tags": [
+      "nft"
+    ],
+    "difficulty": "intermediate",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Jun 7, 2024",
+    "duration": "14 min read",
+    "checksum": "560c0a4dee4f2f69d1abd05c6866942f04d6e3a791d5fd2101fce8b1553c6639"
+  },
+  "complex-onchain-nfts": {
+    "title": "Building onchain NFTs",
+    "slug": "/complex-onchain-nfts",
+    "description": "A tutorial that teaches how to make complex nfts that are procedurally generated and have onchain metadata and images.",
+    "author": "briandoyle81",
+    "keywords": [
+      "Solidity",
+      "ERC-721",
+      "token",
+      "NFT",
+      "SVG",
+      "generative art",
+      "onchain metadata",
+      "nft metadata",
+      "onchain images",
+      "interfaces",
+      "pseudorandom numbers",
+      "deterministic randomness"
+    ],
+    "tags": [
+      "nft"
+    ],
+    "difficulty": "intermediate",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Jan 31, 2024",
+    "duration": "39 min read",
+    "checksum": "aa4782a6b0ef93073915e99e6ae6a244063422f14c8021f4dc0eb2d5a0c71b6a"
+  },
+  "oracles-chainlink-price-feeds": {
+    "title": "Accessing real-world data using Chainlink Data Feeds",
+    "slug": "/oracles-chainlink-price-feeds",
+    "description": "A tutorial that teaches how to use Chainlink Data Feeds to access real-world data, such as asset prices, directly from your smart contracts on the Base testnet.",
+    "author": "taycaldwell",
+    "keywords": [
+      "Oracle Oracles",
+      "Chainlink",
+      "price feeds",
+      "data feeds",
+      "smart contract",
+      "Base blockchain",
+      "Base network",
+      "Base testnet",
+      "Base test network",
+      "app development",
+      "dapp development",
+      "build a dapp on Base",
+      "build on Base"
+    ],
+    "tags": [
+      "oracles"
+    ],
+    "difficulty": "intermediate",
+    "displayed_sidebar": null,
+    "last_updated": "Dec 19, 2023",
+    "duration": "11 min read",
+    "checksum": "df42e4091a128a0bd3e7dc9fcc585f9a711a56027152d57553a54e8040a4001f"
+  },
+  "oracles-pyth-price-feeds": {
+    "title": "Accessing real-time asset data using Pyth Price Feeds",
+    "slug": "/oracles-pyth-price-feeds",
+    "description": "A tutorial that teaches how to use Pyth Price Feeds to access real-time asset data, directly from your smart contracts on the Base testnet.",
+    "author": "taycaldwell",
+    "keywords": [
+      "Oracle Oracles",
+      "Pyth",
+      "Pyth Network",
+      "price feeds",
+      "data feeds",
+      "smart contract",
+      "Base blockchain",
+      "Base network",
+      "Base testnet",
+      "Base test network",
+      "app development",
+      "dapp development",
+      "build a dapp on Base",
+      "build on Base"
+    ],
+    "tags": [
+      "oracles"
+    ],
+    "difficulty": "intermediate",
+    "displayed_sidebar": null,
+    "last_updated": "Dec 19, 2023",
+    "duration": "13 min read",
+    "checksum": "983e7175434206be7c996758b09db9c33aac454ecb9b4b3da8f301f8140b7c52"
+  },
+  "oracles-supra-vrf": {
+    "title": "Generating random numbers contracts using Supra dVRF",
+    "slug": "/oracles-supra-vrf",
+    "description": "A tutorial that teaches how to use Supra dVRF to serve random numbers using an onchain randomness generation mechanism directly within your smart contracts on the Base testnet.",
+    "author": "taycaldwell",
+    "keywords": [
+      "Oracle Oracles",
+      "Supra",
+      "Supra VRF",
+      "Supra dVRF",
+      "VRF",
+      "verifiable random function",
+      "verifiable random functions",
+      "random numbers",
+      "rng",
+      "random number generator",
+      "random numbers in smart contracts",
+      "random numbers on Base",
+      "smart contract",
+      "Base blockchain",
+      "Base network",
+      "Base testnet",
+      "Base test network",
+      "app development",
+      "dapp development",
+      "build a dapp on Base",
+      "build on Base"
+    ],
+    "tags": [
+      "oracles",
+      "vrf"
+    ],
+    "difficulty": "intermediate",
+    "displayed_sidebar": null,
+    "last_updated": "Dec 19, 2023",
+    "duration": "19 min read",
+    "checksum": "260e40333e386593cf6f211c06218042d4b93ecac34f56a0decbd398f1e3ddb1"
+  },
+  "signature-mint-nft": {
+    "title": "Signature Mint NFT",
+    "slug": "/signature-mint-nft",
+    "description": "A tutorial that teaches how to create a signature mint, in which minters pay their own gas, but must first be given a valid signed authorization.",
+    "author": "briandoyle81",
+    "keywords": [
+      "Solidity",
+      "ERC-721",
+      "token",
+      "NFT",
+      "signature mint",
+      "viem",
+      "soulbound"
+    ],
+    "tags": [
+      "nft"
+    ],
+    "difficulty": "intermediate",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "May 9, 2024",
+    "duration": "19 min read",
+    "checksum": "9429b07496c1e0b22041d913a16d46bb1850b0cebd72a45aaf55bc585c35bb91"
+  },
+  "farcaster-frames-deploy-to-vercel": {
+    "title": "Farcaster Frames: Deploying to Vercel",
+    "slug": "/farcaster-frames-deploy-to-vercel",
+    "description": "A tutorial that teaches how to deploy a Farcaster Frame using Vercel.",
+    "author": "briandoyle81",
+    "keywords": [
+      "farcaster",
+      "frames farcaster frames",
+      "Vercel",
+      "OnchainKit",
+      "a frame in 100 lines",
+      "deploy"
+    ],
+    "tags": [
+      "frames"
+    ],
+    "difficulty": "beginner",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Feb 6, 2024",
+    "duration": "9 min read",
+    "checksum": "3174ebe066db1100e389cf2b0ec1451c2711145fb645dc540f4c08c5a2e48540"
+  },
+  "farcaster-frames-gating-and-redirects": {
+    "title": "Farcaster Frames: Gating content and creating redirects",
+    "slug": "/farcaster-frames-gating-and-redirects",
+    "description": "A tutorial that teaches how to create Frames with more advanced behaviors such as gating content based on a user's follows, likes, or recasts, and creating redirect buttons.",
+    "author": "briandoyle81",
+    "keywords": [
+      "farcaster",
+      "frames",
+      "farcaster frames"
+    ],
+    "tags": [
+      "frames"
+    ],
+    "difficulty": "intermediate",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Feb 23, 2024",
+    "duration": "12 min read",
+    "checksum": "6767682f0995d5f873b46aa615f6fb952a70d8b0487823fa32a41734df6048ba"
+  },
+  "farcaster-frames-hyperframes": {
+    "title": "Farcaster Frames: Building HyperFrames",
+    "slug": "/farcaster-frames-hyperframes",
+    "description": "A tutorial that teaches how to make cross-linked hyperframes in an organized manner.",
+    "author": "briandoyle81",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "keywords": [
+      "farcaster",
+      "frames",
+      "farcaster frames",
+      "hyperframes",
+      "hyper frames",
+      "state",
+      "frame state",
+      "Base"
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "frames"
+    ],
+    "last_updated": "Feb 20, 2024",
+    "duration": "16 min read",
+    "checksum": "9497478eb1ba7a6bfb3b2e668b34b3a57107e24fdaae76673d832163eb0561b0"
+  },
+  "farcaster-frames-nft-minting": {
+    "title": "Farcaster Frames: Building an NFT airdrop Frame",
+    "slug": "/farcaster-frames-nft-minting",
+    "description": "A tutorial that teaches how to make a Farcaster Frame that allows you to mint and airdrop NFTs to users.",
+    "author": "briandoyle81",
+    "keywords": [
+      "Solidity",
+      "ERC-721",
+      "token",
+      "NFT",
+      "farcaster",
+      "frames",
+      "farcaster frames"
+    ],
+    "tags": [
+      "frames",
+      "nft"
+    ],
+    "difficulty": "beginner",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "May 23",
+    "duration": "22 min read",
+    "checksum": "8f1ced0b8fe2f7b5ae69b21c16dfdc433fb5fc09c88dffc1d32e9267cb4c0aef"
+  },
+  "farcaster-frames-nocode-minting": {
+    "title": "Farcaster Frames: Building a no-code minting Frame",
+    "slug": "/farcaster-frames-nocode-minting",
+    "description": "A tutorial that teaches how to make a Farcaster Frame with an outbound link to an NFT minting website.",
+    "author": "briandoyle81",
+    "keywords": [
+      "Solidity",
+      "ERC-721",
+      "token",
+      "NFT",
+      "farcaster",
+      "frames",
+      "farcaster frames",
+      "mint"
+    ],
+    "tags": [
+      "frames",
+      "nft"
+    ],
+    "difficulty": "beginner",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Feb 23, 2024",
+    "duration": "7 min read",
+    "checksum": "fed0c4e553f10ac5ab0d90354fad93ac44e3e34306ac310eb07bcb7ad390600d"
+  },
+  "farcaster-frames-transactions": {
+    "title": "Farcaster Frames: Making transactions",
+    "slug": "/farcaster-frames-transactions",
+    "description": "A tutorial that teaches how to invoke a wallet transaction from a Farcaster Frame.",
+    "author": "briandoyle81",
+    "keywords": [
+      "farcaster",
+      "frames",
+      "farcaster frames",
+      "wallet",
+      "transaction",
+      "Base"
+    ],
+    "tags": [
+      "frames"
+    ],
+    "difficulty": "intermediate",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Mar 8, 2024",
+    "duration": "17 min read",
+    "checksum": "50bc1e1efc66e0a22536cc73c7d0e04daebd552db8538d0ffde59a2a6b75bab3"
+  },
+  "hardhat-debugging": {
+    "title": "Hardhat: Debugging smart contracts",
+    "slug": "/hardhat-debugging",
+    "description": "A tutorial that teaches how to debug your smart contracts using Hardhat.",
+    "author": "Edson Alcala",
+    "keywords": [
+      "Hardhat",
+      "smart contract debugging",
+      "debugging logs",
+      "common errors",
+      "error resolution",
+      "decentralized applications"
+    ],
+    "tags": [
+      "smart contracts"
+    ],
+    "difficulty": "beginner",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Jan 18, 2024",
+    "duration": "15 min read",
+    "checksum": "c4f0c5cc94e04b85501323d6992a014308db14900c069ac5a7639d5b17703db6"
+  },
+  "hardhat-profiling-gas": {
+    "title": "Hardhat: Optimizing the gas usage of smart contracts",
+    "slug": "/hardhat-profiling-gas",
+    "description": "A tutorial that teaches how to optimize the gas usage of your smart contracts using Hardhat.",
+    "author": "Edson Alcala and Brian Doyle",
+    "keywords": [
+      "Hardhat",
+      "gas optimization",
+      "gas usage",
+      "gas profiling",
+      "Hardhat Gas Reporter plugin",
+      "smart contract development",
+      "cost savings",
+      "contract optimization",
+      "gas-efficient contracts"
+    ],
+    "tags": [
+      "smart contracts"
+    ],
+    "difficulty": "beginner",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Jan 18, 2024",
+    "duration": "16 min read",
+    "checksum": "20233dab9a1cda1a19de6ef9597d2dba37c853477b1474660fc22d302a815eb8"
+  },
+  "hardhat-profiling-size": {
+    "title": "Hardhat: Optimizing the size of smart contracts",
+    "slug": "/hardhat-profiling-size",
+    "description": "A tutorial that teaches how to optimize the size of your smart contracts using Hardhat.",
+    "author": "Edson Alcala and Brian Doyle",
+    "keywords": [
+      "Smart Contract Sizes",
+      "Hardhat Contract Sizer",
+      "Base network",
+      "Base blockchain",
+      "Blockchain",
+      "Contract Optimization",
+      "Inheritance",
+      "External Contracts",
+      "Solidity Optimizer",
+      "Smart Contract Development"
+    ],
+    "tags": [
+      "smart contracts"
+    ],
+    "difficulty": "beginner",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Jan 18, 2024",
+    "duration": "22 min read",
+    "checksum": "213edb66a4dc7845730cf4b72015d01c30cee0528cea6832714baf5bb451d9a8"
+  },
+  "hardhat-test-coverage": {
+    "title": "Hardhat: Analyzing the test coverage of smart contracts",
+    "slug": "/hardhat-test-coverage",
+    "description": "A tutorial that teaches how to profile the test coverage of your smart contracts using Hardhat and the Solidity Coverage plugin.",
+    "author": "Edson Alcala",
+    "keywords": [
+      "Solidity Coverage",
+      "Smart Contract Testing",
+      "Test Coverage",
+      "Base network",
+      "Base blockchain",
+      "blockchain development",
+      "Hardhat",
+      "Solidity",
+      "Code Testing",
+      "Test Suite Analysis"
+    ],
+    "tags": [
+      "smart contracts"
+    ],
+    "difficulty": "beginner",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Jan 18, 2024",
+    "duration": "9 min read",
+    "checksum": "54b377b97554eea4e09520fbf6fdacff9978d840248ec69d82ab79c0bebb0846"
+  },
+  "intro-to-foundry-setup": {
+    "title": "Foundry: Setting up Foundry with Base",
+    "slug": "/intro-to-foundry-setup",
+    "description": "A tutorial that teaches how to set up your development environment to work with Foundry.",
+    "author": "Edson Alcala",
+    "keywords": [
+      "Foundry",
+      "Forge",
+      "Foundry Book",
+      "smart contract development",
+      "toolchain"
+    ],
+    "tags": [
+      "smart contracts"
+    ],
+    "difficulty": "beginner",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Jan 18, 2024",
+    "duration": "6 min read",
+    "checksum": "0b50de1197db8c50cbf02405a904f99ec7e32159f86ae884993aa6cc36b10fcb"
+  },
+  "intro-to-foundry-testing": {
+    "title": "Foundry: Testing smart contracts",
+    "slug": "/intro-to-foundry-testing",
+    "author": "Edson Alcala",
+    "description": "A tutorial that teaches how to test your smart contracts using Foundry.",
+    "keywords": [
+      "Foundry",
+      "Forge",
+      "Foundry Book",
+      "smart contract development",
+      "toolchain",
+      "testing",
+      "test"
+    ],
+    "tags": [
+      "smart contracts"
+    ],
+    "difficulty": "beginner",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Jan 18, 2024",
+    "duration": "9 min read",
+    "checksum": "2ced64394c425e5749001cb21cca5a3b0043fe6ab013be45e98299e16f337d23"
+  },
+  "intro-to-providers": {
+    "title": "Introduction to Providers",
+    "slug": "/intro-to-providers",
+    "description": "A tutorial that teaches what providers are, why you need one, and how to configure several providers and use them to connect to the blockchain.",
+    "author": "briandoyle81",
+    "keywords": [
+      "blockchain providers",
+      "JSON RPC",
+      "RainbowKit",
+      "wagmi React hooks",
+      "viem",
+      "frontend",
+      "smart contract development",
+      "EVM",
+      "Next.js",
+      "Base",
+      "Base network",
+      "Base node providers",
+      "Base providers",
+      "blockchain development",
+      "dApps",
+      "smart contracts",
+      "providers",
+      "public providers",
+      "wallet providers",
+      "vendor providers",
+      "rate limits",
+      "blockchain API",
+      "Ethereum provider",
+      "Base",
+      "Base network",
+      "Base node providers",
+      "Base providers",
+      "QuickNode",
+      "Alchemy",
+      "API keys",
+      "blockchain connection",
+      "public provider",
+      "smart contract development"
+    ],
+    "tags": [
+      "nodes"
+    ],
+    "difficulty": "beginner",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Jan 18, 2024",
+    "duration": "21 min read",
+    "checksum": "0ce947aec9f1cab196e9489b78509392a625b0d12011294e3fb9673a8bdd8e22"
+  },
+  "farcaster-cast-actions-simple": {
+    "title": "Farcaster Cast Actions: Create a Simple Cast Action",
+    "slug": "/farcaster-cast-actions-simple",
+    "description": "A tutorial that teaches how to make a simple Farcaster cast action.",
+    "author": "briandoyle81",
+    "keywords": [
+      "farcaster",
+      "cast actions",
+      "farcaster cast actions",
+      "farcaster actions"
+    ],
+    "tags": [
+      "frames",
+      "actions"
+    ],
+    "difficulty": "beginner",
+    "hide_table_of_contents": false,
+    "displayed_sidebar": null,
+    "last_updated": "Apr 5, 2024",
+    "duration": "9 min read",
+    "checksum": "96225f883c79832d18459b3e47fd3a0bfd43c7ad6d1a1b1704bf902d33910025"
+  }
 }
