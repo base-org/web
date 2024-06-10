@@ -23,11 +23,9 @@ type OcsChallengeCard = {
 
 type ContentTable = {
   id: string;
-  category: number;
+  category: string;
   created_at: ColumnType<Date, string | undefined, never>;
-  content: JSONColumnType<{
-    OcsChallengeCard: OcsChallengeCard;
-  }>;
+  content: JSONColumnType<OcsChallengeCard>;
 };
 
 export const db = createKysely<Database>();
@@ -55,7 +53,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const response = content.map((row) => ({
     id: row.id,
     category: row.category,
-    ...transformChallengeCard(row.content.OcsChallengeCard),
+    ...transformChallengeCard(row.content),
   }));
 
   res.status(200).json(response);
