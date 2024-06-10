@@ -15,7 +15,7 @@ keywords:
     payments,
     fiat to crypto,
     fiat,
-    Coinbase Pay,
+    Coinbase Onramp,
     MoonPay,
     Onramp,
   ]
@@ -26,9 +26,9 @@ hide_table_of_contents: true
 
 ---
 
-## Coinbase Pay
+## Coinbase Onramp
 
-[Coinbase Pay](https://www.coinbase.com/cloud/products/pay-sdk) is a fiat-to-crypto onramp that allows users to buy or transfer crypto directly from self-custody wallets and apps. Coinbase Pay supports 60+ fiat currencies with regulatory compliance and licensing, as well as 100+ cryptocurrencies, including ETH on Base. [Join the waitlist](https://www.coinbase.com/cloud/products/pay-sdk) to use the Pay SDK.
+[Coinbase Onramp](https://www.coinbase.com/developer-platform/products/onramp) is a fiat-to-crypto onramp that allows users to buy or transfer crypto directly from self-custody wallets and apps. Coinbase Onramp supports 60+ fiat currencies with regulatory compliance and licensing, as well as 100+ cryptocurrencies, including ETH on Base. [Get started here](https://docs.cdp.coinbase.com/onramp/docs/getting-started/) to use the Coinbase Developer Platform.
 
 ---
 

@@ -309,7 +309,7 @@ __metadata:
     "@heroicons/react": ^2.0.18
     "@next/font": ^13.1.5
     "@rainbow-me/rainbowkit": ^2.0.5
-    "@sprig-technologies/sprig-browser": ^2.26.6
+    "@sprig-technologies/sprig-browser": ^2.29.0
     "@tanstack/react-query": ^5.29.2
     "@types/node": 18.11.18
     "@types/react-copy-to-clipboard": ^5.0.7
@@ -6096,10 +6096,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sprig-technologies/sprig-browser@npm:^2.26.6":
-  version: 2.26.6
-  resolution: "@sprig-technologies/sprig-browser@npm:2.26.6"
-  checksum: 45e38b0b066c4a3cb2ce59cf13ca3ac769c6b16a142865fdf012a378c6fa85bedf59063e8ce7f091c90f6f364d68d0f2245010ae403f853e3c090c6c2ce75a6d
+"@sprig-technologies/sprig-browser@npm:^2.29.0":
+  version: 2.30.0
+  resolution: "@sprig-technologies/sprig-browser@npm:2.30.0"
+  checksum: eed87193d7d6011496d80c9b3c7ad62c9f734a8bb71773b251263f38ffaa12630a5c0784fc06c0d8468614d4bee14a1b9b776a704c3051a733b57660fea12377
   languageName: node
   linkType: hard
 

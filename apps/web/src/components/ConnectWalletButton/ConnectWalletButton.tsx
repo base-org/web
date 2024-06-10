@@ -8,9 +8,9 @@ type ConnectWalletButtonProps = {
   className: string;
 };
 
-const colorVariant: Record<'white' | 'black', 'secondary' | 'secondaryDark'> = {
-  white: 'secondary',
-  black: 'secondaryDark',
+const colorVariant: Record<'white' | 'black', 'secondaryBounce' | 'secondaryDarkBounce'> = {
+  white: 'secondaryBounce',
+  black: 'secondaryDarkBounce',
 };
 
 export function ConnectWalletButton({ color, className }: ConnectWalletButtonProps) {
