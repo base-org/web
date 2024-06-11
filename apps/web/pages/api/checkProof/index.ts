@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { address, projectType } = req.body as RequestBody;
 
   try {
-    let key = `proof:${projectType?.valueOf()}:${address}`;
+    let key = `${projectType?.valueOf()}:proof:${address}`;
     if (ProofProjectType.Usernames === projectType) {
       key = `proof:${address}`;
     }
