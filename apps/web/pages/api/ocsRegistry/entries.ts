@@ -2,26 +2,27 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { db, transformChallengeCard } from 'apps/web/src/utils/ocsRegistry';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { page = '1', limit = '10' } = req.query;
+  const { page = '1', limit = '10', category } = req.query;
 
   const pageNum = parseInt(page as string, 10);
   const limitNum = parseInt(limit as string, 10);
   const offset = (pageNum - 1) * limitNum;
 
+  // Base query for filtering by category if provided
+  let baseQuery = db.selectFrom('content');
+
+  if (category) {
+    baseQuery = baseQuery.where('category', '=', category as string);
+  }
+
   // Fetch total records count
-  const totalRecords = await db
-    .selectFrom('content')
-    .select(db.fn.count('id').as('count'))
-    .execute();
+  const totalRecordsQuery = baseQuery.select(db.fn.count('id').as('count'));
+  const totalRecords = await totalRecordsQuery.execute();
   const totalRecordsCount = parseInt(totalRecords[0].count as string, 10);
 
   // Fetch paginated content
-  const content = await db
-    .selectFrom('content')
-    .selectAll()
-    .limit(limitNum)
-    .offset(offset)
-    .execute();
+  const contentQuery = baseQuery.selectAll().limit(limitNum).offset(offset);
+  const content = await contentQuery.execute();
 
   const response = {
     data: content.map((row) => ({
