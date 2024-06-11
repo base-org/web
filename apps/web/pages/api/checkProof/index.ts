@@ -32,5 +32,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     console.error(error);
   }
 
-  return res.status(404).json({ error: 'address is not eligible for the nft' });
+  return res.status(404).json({ error: 'address is not eligible for this project' });
 }
