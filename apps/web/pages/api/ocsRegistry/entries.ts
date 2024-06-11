@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   let baseQuery = db.selectFrom('content');
 
   if (category) {
-    baseQuery = baseQuery.where('category', '=', category as string);
+    baseQuery = baseQuery.where('category', 'ilike', `%${category}%`);
   }
 
   // Fetch total records count
