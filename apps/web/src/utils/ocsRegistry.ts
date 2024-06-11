@@ -29,20 +29,3 @@ type ContentTable = {
 };
 
 export const db = createKysely<Database>();
-
-export function transformChallengeCard(card: OcsChallengeCard) {
-  return {
-    title: card.title,
-    shortDescription: card.short_description,
-    fullDescription: card.full_description,
-    imageUrl: card.image_url,
-    targetUrl: card.target_url,
-    ctaText: card.cta_text,
-    functionSignature: card.function_signature,
-    contractAddress: card.contract_address,
-    tokenId: card.token_id,
-    tokenAmount: card.token_amount,
-    creatorName: card.creator_name,
-    creatorImageUrl: card.creator_image_url,
-  };
-}

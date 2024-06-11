@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { db, transformChallengeCard } from 'apps/web/src/utils/ocsRegistry';
+import { db } from 'apps/web/src/utils/ocsRegistry';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const content = await db
@@ -12,11 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const row = content[0];
 
   const response = {
-    data: {
-      id: row.id,
-      category: row.category,
-      content: transformChallengeCard(row.content),
-    },
+    data: row,
   };
 
   res.status(200).json(response);

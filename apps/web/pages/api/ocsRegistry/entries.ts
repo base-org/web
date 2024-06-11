@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { db, transformChallengeCard } from 'apps/web/src/utils/ocsRegistry';
+import { db } from 'apps/web/src/utils/ocsRegistry';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { page = '1', limit = '10', category } = req.query;
@@ -28,7 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     data: content.map((row) => ({
       id: row.id,
       category: row.category,
-      content: transformChallengeCard(row.content),
+      content: row.content,
     })),
     pagination: {
       total_records: totalRecordsCount,
