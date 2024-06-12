@@ -1,11 +1,11 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 const sharedStyles =
-  'active:bg-button group relative h-12 w-40 overflow-hidden rounded-[3px] text-black shadow-light-button-3d transition-all text-xl';
+  'active:bg-button group relative h-12 w-40 overflow-hidden rounded-[3px] text-black transition-all text-xl';
 
 const variantStyles = {
-  white: `${sharedStyles} bg-button-white hover:bg-button-whiteHover active:bg-button-whiteActive text-black`,
-  black: `${sharedStyles} bg-button-black hover:bg-button-blackHover active:bg-button-blackActive text-white`,
+  white: `${sharedStyles} bg-button-white hover:bg-button-whiteHover active:bg-button-whiteActive text-black shadow-light-button-3d`,
+  black: `${sharedStyles} bg-button-black hover:bg-button-blackHover active:bg-button-blackActive text-white shadow-dark-button-3d`,
 };
 
 type ShinyButtonProps = {
