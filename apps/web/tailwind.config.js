@@ -62,6 +62,9 @@ module.exports = {
       transitionTimingFunction: {
         partners: 'cubic-bezier(0.25, 1, 0.25, 1)',
       },
+      boxShadow: {
+        'button-inner': 'inset 0 35px 60px -15px rgba(0, 0, 0, 0.3)',
+      },
       keyframes: {
         wiggle: {
           '0%, 100%': { transform: 'rotate(-2deg)' },
@@ -71,10 +74,15 @@ module.exports = {
           '0%, 100%': { transform: 'translateY(-2.5%)' },
           '50%': { transform: 'translateY(2.5%)' },
         },
+        slide: {
+          '0%': { transform: 'translateX(-10rem) rotate(6deg)' },
+          '100%': { transform: 'translateX(0) rotate(6deg)' },
+        },
       },
       animation: {
         wiggle: 'wiggle 3s linear infinite',
         bounce: 'bounce 1s ease-in-out infinite',
+        slide: 'slide 1s linear infinite',
       },
     },
   },

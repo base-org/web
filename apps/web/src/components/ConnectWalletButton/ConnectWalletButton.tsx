@@ -1,7 +1,6 @@
-import { Button } from 'apps/web/src/components/Button/Button';
-
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
+import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
 
 type ConnectWalletButtonProps = {
   color: 'white' | 'black';
@@ -22,9 +21,9 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
 
         if (!connected) {
           return (
-            <Button variant={colorVariant[color]} onClick={openConnectModal}>
+            <ShinyButton variant="primary" onClick={openConnectModal}>
               Connect
-            </Button>
+            </ShinyButton>
           );
         }
 
