@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import localFont from '@next/font/local';
+import localFont from 'next/font/local';
 import { useRouter } from 'next/router';
 import { CookieBanner } from '@coinbase/cookie-banner';
 
