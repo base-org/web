@@ -7,9 +7,9 @@ type ConnectWalletButtonProps = {
   className: string;
 };
 
-const colorVariant: Record<'white' | 'black', 'secondaryBounce' | 'secondaryDarkBounce'> = {
-  white: 'secondaryBounce',
-  black: 'secondaryDarkBounce',
+const colorVariant: Record<'white' | 'black', 'white' | 'black'> = {
+  white: 'white',
+  black: 'black',
 };
 
 export function ConnectWalletButton({ color, className }: ConnectWalletButtonProps) {
@@ -21,7 +21,7 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
 
         if (!connected) {
           return (
-            <ShinyButton variant="primary" onClick={openConnectModal}>
+            <ShinyButton variant={colorVariant[color]} onClick={openConnectModal}>
               Connect
             </ShinyButton>
           );
