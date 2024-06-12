@@ -1,8 +1,9 @@
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
-import logEvent from 'apps/web/src/utils/logEvent';
-import { useCallback } from 'react';
+import logEvent, { identify } from 'apps/web/src/utils/logEvent';
+import { useCallback, useEffect } from 'react';
+import { useAccount } from 'wagmi';
 
 type ConnectWalletButtonProps = {
   color: 'white' | 'black';
@@ -16,6 +17,14 @@ const colorVariant: Record<'white' | 'black', 'white' | 'black'> = {
 
 export function ConnectWalletButton({ color, className }: ConnectWalletButtonProps) {
   const { openConnectModal } = useConnectModal();
+  const { address } = useAccount();
+
+  useEffect(() => {
+    if (address) {
+      logEvent('connected_wallet', { address });
+      identify({ userId: address });
+    }
+  }, [address]);
 
   const clickConnect = useCallback(() => {
     openConnectModal?.();
