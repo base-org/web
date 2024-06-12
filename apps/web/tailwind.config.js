@@ -63,7 +63,8 @@ module.exports = {
         partners: 'cubic-bezier(0.25, 1, 0.25, 1)',
       },
       boxShadow: {
-        'button-inner': 'inset 0 35px 60px -15px rgba(0, 0, 0, 0.3)',
+        'light-button-3d':
+          '0px 8px 24px 0px rgba(255, 255, 255, 0.5) inset, 0px -8px 24px 0px rgba(0, 0, 0, 0.25) inset, 0px -2px 4px 0px rgba(255, 255, 255, 0.25) inset, 0px 2px 10px 0px rgba(88, 89, 91, 1) inset, 0px 4px 10px 0px rgba(0, 82, 255, 0.32), 0px 4px 24px 0px rgba(155, 216, 217, 0.5) inset, 0px 8px 10px 0px rgba(255, 255, 255, 0.25) inset;',
       },
       keyframes: {
         wiggle: {

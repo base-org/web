@@ -26,7 +26,7 @@ export function ShinyButton({
     <button
       {...props}
       type="button"
-      className="group relative h-12 w-40 overflow-hidden rounded-[3px] text-black shadow-2xl shadow-button-inner transition-all"
+      className="group relative h-12 w-40 overflow-hidden rounded-[3px] text-black shadow-light-button-3d transition-all"
     >
       <div className="absolute right-0 top-0 h-12 w-6 animate-slide bg-white opacity-10 duration-700" />
       {children}
