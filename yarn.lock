@@ -307,7 +307,6 @@ __metadata:
     "@coinbase/cookie-manager": ^1.1.1
     "@coinbase/onchainkit": ^0.6.0
     "@heroicons/react": ^2.0.18
-    "@next/font": ^13.1.5
     "@rainbow-me/rainbowkit": ^2.0.5
     "@sprig-technologies/sprig-browser": ^2.29.0
     "@tanstack/react-query": ^5.29.2
@@ -4967,7 +4966,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/font@npm:^13.1.5, @next/font@npm:^13.1.6":
+"@next/font@npm:^13.1.6":
   version: 13.5.6
   resolution: "@next/font@npm:13.5.6"
   checksum: 12aa997147094bb122e2e22b29a2f6c1872de37fca0b444f20aa5c48e20bd8176c7d8661c1c597a43d528c7dc75d3acc44bc08c47aa716a5ab450fca68e4c814
