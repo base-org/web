@@ -22,7 +22,7 @@ export function ShinyButton({
 }: ShinyButtonProps) {
   return (
     <button {...props} type="button" className={variantStyles[variant]}>
-      <div className="absolute right-0 top-0 h-12 w-6 animate-slide bg-white opacity-10 duration-700" />
+      <div className="absolute right-0 top-0 h-12 w-6 animate-slide bg-white opacity-10 blur-lg duration-700" />
       {children}
     </button>
   );

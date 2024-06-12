@@ -33,8 +33,8 @@ module.exports = {
         whiteHover: 'rgba(219, 221, 224, 1)',
         whiteActive: 'rgba(191, 196, 207, 1)',
         black: 'rgba(10, 11, 13, 1)',
-        blackHover: 'rgba(85, 90, 102, 1)',
-        blackActive: 'rgba(113, 120, 134, 1)',
+        blackHover: 'rgba(39, 40, 42, 1)',
+        blackActive: 'rgba(80, 85, 96, 1)',
       },
       black: '#000000',
       ocsblue: 'rgba(0, 82, 255, 1)',
@@ -85,6 +85,7 @@ module.exports = {
         },
         slide: {
           '0%': { transform: 'translateX(-10rem) rotate(6deg)' },
+          '50%': { transform: 'translateX(0) rotate(6deg)' },
           '100%': { transform: 'translateX(0) rotate(6deg)' },
         },
       },
