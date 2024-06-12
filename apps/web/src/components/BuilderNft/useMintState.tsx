@@ -90,7 +90,6 @@ export function useMintState(): MintState {
   useEffect(() => {
     if (address) {
       setIsBannerVisible(false);
-      logEvent('connected_wallet', { address });
     }
   }, [address, setIsBannerVisible]);
   useEffect(() => {
