@@ -33,15 +33,15 @@ export default function Usernames() {
         {progress === ClaimProgression.CLAIM && <p>
           unlock your username for free! <button type='button' className="underline" onClick={toggleModal}>learn more</button>
         </p>}
-        <Modal isOpen={learnMoreModalOpen} onClose={toggleModal} title="Qualify for a free username">
-          <p className="text-illoblack mb-6">You will receive your username for free if you connect to a wallet that has <strong>one of the following</strong></p>
+        <Modal isOpen={learnMoreModalOpen} onClose={toggleModal} title="Qualify for a free name">
+          <p className="text-illoblack mb-6">You will receive your name for free if you connect to a wallet that has <strong>one of the following</strong></p>
           <ul className='flex flex-col gap-3 self-start mb-5'>
             <li className='flex flex-row items-center justify-start'><Image src="/images/usernames/coinbase-verification.svg" alt="criteria icon" width={30} height={30} className="mr-3"/>A Coinbase verification <InformationCircleIcon width={12} height={12} className='fill-[#89909E] ml-1'/></li>
             <li className='flex flex-row items-center justify-start'><Image src="/images/usernames/coinbase-one-verification.svg" alt="criteria icon" width={30} height={30} className="mr-3"/>A Coinbase One verification <InformationCircleIcon width={12} height={12} className='fill-[#89909E] ml-1'/></li>
             <li className='flex flex-row items-center justify-start'><Image src="/images/usernames/sw-verification.svg" alt="criteria icon" width={30} height={30} className="mr-3"/>Deployed a smart wallet <InformationCircleIcon width={12} height={12} className='fill-[#89909E] ml-1'/></li>
             <li className='flex flex-row items-center justify-start'><Image src="/images/usernames/cbid-verification.svg" alt="criteria icon" width={30} height={30} className="mr-3"/>A CB.ID username <InformationCircleIcon width={12} height={12} className='fill-[#89909E] ml-1'/></li>
           </ul>
-          <strong>
+          <strong className='self-start'>
             Don’t have any of these?&nbsp;
             <Link className="underline" href="https://www.coinbase.com/wallet/smart-wallet">Deploy a smart wallet</Link>
           </strong>

@@ -14,7 +14,7 @@ export default function Modal({ children, isOpen, title, onClose, ...rest }: Pro
       <Dialog open={isOpen} onClose={onClose}>
         <Dialog.Backdrop className="fixed inset-0" />
         <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <Dialog.Panel className="flex h-full w-[450px] flex-col border border-[#8A919E33] bg-white sm:h-auto sm:max-w-xl rounded-3xl" {...rest}>
+          <Dialog.Panel className="flex h-full w-[459px] flex-col border border-[#8A919E33] bg-white sm:h-auto sm:max-w-xl rounded-3xl" {...rest}>
             <div className="flex p-4">
               {!!onClose && (
                 <button type="button" className="ml-auto text-xl text-[#0A0B0D]" onClick={onClose}>
