@@ -21,7 +21,7 @@
     "base-ui": "0.1.1",
     "ethers": "5.7.2",
     "framer-motion": "^8.5.5",
-    "next": "^13.1.5",
+    "next": "^13.2.0",
     "react": "^18.2.0",
     "react-blockies": "^1.4.1",
     "react-copy-to-clipboard": "^5.1.0",
