@@ -28,6 +28,14 @@ module.exports = {
         800: 'rgba(255,255,255,0.8)',
         900: 'rgba(255,255,255,0.9)',
       },
+      button: {
+        white: 'rgba(255, 255, 255, 1)',
+        whiteHover: 'rgba(219, 221, 224, 1)',
+        whiteActive: 'rgba(191, 196, 207, 1)',
+        black: 'rgba(10, 11, 13, 1)',
+        blackHover: 'rgba(39, 40, 42, 1)',
+        blackActive: 'rgba(80, 85, 96, 1)',
+      },
       black: '#000000',
       ocsblue: 'rgba(0, 82, 255, 1)',
       ocspink: '#FF8DCF',
@@ -63,6 +71,12 @@ module.exports = {
       transitionTimingFunction: {
         partners: 'cubic-bezier(0.25, 1, 0.25, 1)',
       },
+      boxShadow: {
+        'light-button-3d':
+          '0px -8px 24px 0px rgba(0, 0, 0, 0.25) inset, 0px -2px 4px 0px rgba(255, 255, 255, 0) inset, 0px 2px 10px 0px rgba(35, 36, 38, 1) inset, 0px 4px 10px 0px rgba(0, 82, 255, 0.32), 0px 4px 24px 0px rgba(45, 72, 72, 0.5) inset, 0px 8px 10px 0px rgba(255, 255, 255, 0.25) inset;',
+        'dark-button-3d':
+          '0px 8px 24px 0px rgba(255, 255, 255, 0.5) inset, 0px -8px 24px 0px rgba(0, 0, 0, 0.25) inset, 0px -2px 4px 0px rgba(255, 255, 255, 0.25) inset, 0px 2px 10px 0px rgba(88, 89, 91, 1) inset, 0px 4px 10px 0px rgba(0, 82, 255, 0.32), 0px 4px 24px 0px rgba(155, 216, 217, 0.5) inset, 0px 8px 10px 0px rgba(255, 255, 255, 0.25) inset;',
+      },
       keyframes: {
         wiggle: {
           '0%, 100%': { transform: 'rotate(-2deg)' },
@@ -72,10 +86,16 @@ module.exports = {
           '0%, 100%': { transform: 'translateY(-2.5%)' },
           '50%': { transform: 'translateY(2.5%)' },
         },
+        slide: {
+          '0%': { transform: 'translateX(-10rem) rotate(6deg)' },
+          '50%': { transform: 'translateX(0) rotate(6deg)' },
+          '100%': { transform: 'translateX(0) rotate(6deg)' },
+        },
       },
       animation: {
         wiggle: 'wiggle 3s linear infinite',
         bounce: 'bounce 1s ease-in-out infinite',
+        slide: 'slide 1s linear infinite',
       },
     },
   },

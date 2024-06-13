@@ -30,7 +30,7 @@ export default function Hero() {
                 <OCSButton>Join the Buildathon</OCSButton>
               </a>
               <a
-                href="https://buildonbase.deform.cc/application/"
+                href="https://buildonbase.deform.cc/registry/"
                 target="_blank"
                 rel="noreferrer noopener"
               >

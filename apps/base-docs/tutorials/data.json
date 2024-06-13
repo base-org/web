@@ -176,9 +176,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "May 29, 2024",
+        "last_updated": "Jun 10, 2024",
         "duration": "6 min read",
-        "checksum": "63ddc0b92eb95dfdf7de975a9c3ab269a24311ff13b675346a8e80a4e8b51674"
+        "checksum": "9349abde020a7f705710c3e214ccddafaceef0e8bb92692ca2e58ac64e5aa7a4"
     },
     "build-with-thirdweb": {
         "title": "Building an onchain app using thirdweb",
@@ -315,9 +315,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "May 23, 2024",
+        "last_updated": "Jun 10, 2024",
         "duration": "32 min read",
-        "checksum": "0557fc58872d5449a486e434e7da826f23033b2231c8052608a8b63781f65114"
+        "checksum": "44f84716dcfa1f181186af7369098b3f02485680e4c26c707915129361b92672"
     },
     "cross-chain-with-ccip": {
         "title": "Sending messages and tokens from Base to other chains using Chainlink CCIP",
@@ -371,7 +371,7 @@
     },
     "dynaimc-nfts": {
         "title": "Building dynamic NFTs",
-        "slug": "/dynaimc-nfts",
+        "slug": "/dynamic-nfts",
         "description": "A tutorial that teaches how to make dynamic NFTs that evolve based on onchain or offchain actions.",
         "author": "lukecd",
         "keywords": [
@@ -393,9 +393,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jun 4, 2024",
+        "last_updated": "Jun 7, 2024",
         "duration": "14 min read",
-        "checksum": "1b8d5aeb570ddd50f4c11a9e4e50eb225ffcbf397a14404f1e640674f2c3e34d"
+        "checksum": "560c0a4dee4f2f69d1abd05c6866942f04d6e3a791d5fd2101fce8b1553c6639"
     },
     "complex-onchain-nfts": {
         "title": "Building onchain NFTs",
