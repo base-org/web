@@ -124,9 +124,10 @@ function IconLink({
 
 function DesktopNav({ color }: DesktopNavProps) {
   return (
-    <div className="hidden h-full w-fit flex-grow flex-row items-center items-center justify-between lg:flex">
+    <div className="hidden h-full w-fit flex-grow flex-row items-center justify-between lg:flex">
       <Dropdown label="Ecosystem" color={color}>
         <DropdownLink href="/ecosystem" label="Apps" color={color} />
+        <DropdownLink href="/usernames" label="Usernames" color={color} />
         <DropdownLink
           href="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
           label="Grants"
