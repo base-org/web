@@ -65,7 +65,7 @@
     "next-transpile-modules": "Next compatibility"
   },
   "engines": {
-    "node": "18.14"
+    "node": ">18.20.3"
   },
   "packageManager": "yarn@3.5.0",
   "dependencies": {
