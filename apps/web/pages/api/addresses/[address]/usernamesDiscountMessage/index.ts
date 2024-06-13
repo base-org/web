@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
   const { address } = req.query;
   if (!address) {
-    return res.status(404).json({ error: 'address is required' });
+    return res.status(400).json({ error: 'address is required' });
   }
 
   const data = await getDiscountDataForAddress(address as string);
