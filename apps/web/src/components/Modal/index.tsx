@@ -12,8 +12,10 @@ export default function Modal({ children, isOpen, title, onClose, ...rest }: Pro
   return (
     <Transition appear show={isOpen}>
       <Dialog open={isOpen} onClose={onClose}>
-        <Dialog.Backdrop className="fixed inset-0" />
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+      {/* The backdrop, rendered as a fixed sibling to the panel container */}
+        <div className="fixed inset-0 bg-gray/40" aria-hidden="true" />
+        {/* Container to center the panel */}
+        <div className="flex min-h-full items-center justify-center p-4 fixed inset-0 w-screen z-50 backdrop-blur-sm">
           <Dialog.Panel className="flex h-full w-[459px] flex-col border border-[#8A919E33] bg-white sm:h-auto sm:max-w-xl rounded-3xl" {...rest}>
             <div className="flex p-4">
               {!!onClose && (
@@ -31,8 +33,8 @@ export default function Modal({ children, isOpen, title, onClose, ...rest }: Pro
               )}
               {children}
             </div>
-          </Dialog.Panel>
-        </div>
+            </Dialog.Panel>
+          </div>
       </Dialog>
     </Transition>
   )
