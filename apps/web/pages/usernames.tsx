@@ -1,6 +1,7 @@
 import { InformationCircleIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import Input from 'apps/web/src/components/Input';
 import Modal from 'apps/web/src/components/Modal';
+import Tooltip from 'apps/web/src/components/Tooltip';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -69,13 +70,9 @@ export default function Usernames() {
             </button>
           </p>
         )}
-        <Modal
-          isOpen={learnMoreModalOpen}
-          onClose={toggleModal}
-          title="Qualify for a free username"
-        >
+        <Modal isOpen={learnMoreModalOpen} onClose={toggleModal} title="Qualify for a free name">
           <p className="mb-6 text-illoblack">
-            You will receive your username for free if you connect to a wallet that has{' '}
+            You will receive your name for free if you connect to a wallet that has{' '}
             <strong>one of the following</strong>
           </p>
           <ul className="mb-5 flex flex-col gap-3 self-start">
@@ -88,7 +85,13 @@ export default function Usernames() {
                 className="mr-3"
               />
               A Coinbase verification{' '}
-              <InformationCircleIcon width={12} height={12} className="ml-1 fill-[#89909E]" />
+              <Tooltip content="Verifies you have a valid trading account on Coinbase">
+                <InformationCircleIcon
+                  width={12}
+                  height={12}
+                  className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
+                />
+              </Tooltip>
             </li>
             <li className="flex flex-row items-center justify-start">
               <Image
@@ -99,7 +102,13 @@ export default function Usernames() {
                 className="mr-3"
               />
               A Coinbase One verification{' '}
-              <InformationCircleIcon width={12} height={12} className="ml-1 fill-[#89909E]" />
+              <Tooltip content="Verifies you have an active Coinbase One subscription">
+                <InformationCircleIcon
+                  width={12}
+                  height={12}
+                  className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
+                />
+              </Tooltip>
             </li>
             <li className="flex flex-row items-center justify-start">
               <Image
@@ -110,7 +119,13 @@ export default function Usernames() {
                 className="mr-3"
               />
               Deployed a smart wallet{' '}
-              <InformationCircleIcon width={12} height={12} className="ml-1 fill-[#89909E]" />
+              <Tooltip content="Smart wallet deployed from Coinbase Wallet">
+                <InformationCircleIcon
+                  width={12}
+                  height={12}
+                  className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
+                />
+              </Tooltip>
             </li>
             <li className="flex flex-row items-center justify-start">
               <Image
@@ -121,10 +136,16 @@ export default function Usernames() {
                 className="mr-3"
               />
               A CB.ID username{' '}
-              <InformationCircleIcon width={12} height={12} className="ml-1 fill-[#89909E]" />
+              <Tooltip content="cb.id claimed prior to cutoff date">
+                <InformationCircleIcon
+                  width={12}
+                  height={12}
+                  className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
+                />
+              </Tooltip>
             </li>
           </ul>
-          <strong>
+          <strong className="self-start">
             Don’t have any of these?&nbsp;
             <Link className="underline" href="https://www.coinbase.com/wallet/smart-wallet">
               Deploy a smart wallet
