@@ -40,17 +40,18 @@ module.exports = {
       ocsblue: 'rgba(0, 82, 255, 1)',
       ocspink: '#FF8DCF',
       ocsyellow: '#FEE002',
+      illoblack: '#0A0B0D',
       blue: {
         400: '#688CEC',
         500: '#0455FF',
         600: '#0052FF',
       },
     },
-    borderRadius: {
-      DEFAULT: '3px',
-      full: '9999px',
-    },
     extend: {
+      borderRadius: {
+        DEFAULT: '3px',
+        full: '9999px',
+      },
       screens: {
         '3xl': '2048px',
       },
