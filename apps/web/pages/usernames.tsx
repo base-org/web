@@ -56,7 +56,7 @@ export default function Usernames() {
                 className="mr-3"
               />
               A Coinbase verification{' '}
-              <Tooltip content="placeholder">
+              <Tooltip content="Verifies you have a valid trading account on Coinbase">
                 <InformationCircleIcon width={12} height={12} className="ml-1 fill-[#89909E] hover:fill-darkgray transition-colors" />
               </Tooltip>
             </li>
@@ -69,7 +69,7 @@ export default function Usernames() {
                 className="mr-3"
               />
               A Coinbase One verification{' '}
-              <Tooltip content="placeholder">
+              <Tooltip content="Verifies you have an active Coinbase One subscription">
                 <InformationCircleIcon width={12} height={12} className="ml-1 fill-[#89909E] hover:fill-darkgray transition-colors" />
               </Tooltip>
             </li>
@@ -82,7 +82,7 @@ export default function Usernames() {
                 className="mr-3"
               />
               Deployed a smart wallet{' '}
-              <Tooltip content="placeholder">
+              <Tooltip content="Smart wallet deployed from Coinbase Wallet">
                 <InformationCircleIcon width={12} height={12} className="ml-1 fill-[#89909E] hover:fill-darkgray transition-colors" />
               </Tooltip>
             </li>
@@ -95,7 +95,7 @@ export default function Usernames() {
                 className="mr-3"
               />
               A CB.ID username{' '}
-              <Tooltip content="placeholder">
+              <Tooltip content="cb.id claimed prior to cutoff date">
                 <InformationCircleIcon width={12} height={12} className="ml-1 fill-[#89909E] hover:fill-darkgray transition-colors" />
               </Tooltip>
             </li>
