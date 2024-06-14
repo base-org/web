@@ -1,18 +1,25 @@
 import {
   baseRegistrarContractABI,
   baseRegistrarSmartContractAddress,
+  cdpBaseRpcEndpoint,
 } from 'apps/web/src/components/Usernames/constants';
-import { ethers } from 'ethers';
-import { base } from 'viem/chains';
+import { createPublicClient, http } from 'viem';
+import { base, baseSepolia } from 'viem/chains';
+
+const isProdEnv = process.env.NODE_ENV === 'production';
+
+const publicClient = createPublicClient({
+  chain: isProdEnv ? base : baseSepolia,
+  transport: http(cdpBaseRpcEndpoint),
+});
 
 export async function hasRegisteredWithDiscount(addresses: string[]): Promise<boolean> {
-  // TODO: define which provider we are using
-  const provider = new ethers.providers.BaseProvider(base.id);
-  const contract = new ethers.Contract(
-    baseRegistrarSmartContractAddress!,
-    baseRegistrarContractABI,
-    provider,
-  );
+  const res = (await publicClient.readContract({
+    address: baseRegistrarSmartContractAddress,
+    abi: baseRegistrarContractABI,
+    functionName: 'hasRegisteredWithDiscount',
+    args: [addresses],
+  })) as boolean;
 
-  return contract.hasRegisteredWithDiscount(addresses);
+  return res;
 }
