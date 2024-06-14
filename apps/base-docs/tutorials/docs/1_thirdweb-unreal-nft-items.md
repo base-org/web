@@ -70,6 +70,8 @@ Start Postgres:
 docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
 ```
 
+Make sure Docker desktop is running.
+
 Create a [thirdweb API key]. Allow `localhost:3000` and `localhost:8000` when creating your api key. When you deploy, you'll need to update the allowed domains.
 
 The command to launch the engine itself is complicated and has many parameters. You'll want to create a file and run it from that. Create `thirdweb-engine.sh` in a convenient location and add:
