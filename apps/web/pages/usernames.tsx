@@ -1,10 +1,12 @@
-import { InformationCircleIcon } from '@heroicons/react/20/solid';
+import { InformationCircleIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import Input from 'apps/web/src/components/Input';
 import Modal from 'apps/web/src/components/Modal';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useState } from 'react';
+import { useDebounceValue } from 'usehooks-ts';
 
 enum ClaimProgression {
   SEARCH,
@@ -18,6 +20,16 @@ export default function Usernames() {
   const selectName = useCallback(() => {
     setProgress(ClaimProgression.CLAIM);
   }, []);
+
+  const [searchString, setSearchString] = useState('');
+  const handleSearchChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target;
+      setSearchString(value);
+    },
+    [setSearchString],
+  );
+  const [debouncedSearchString] = useDebounceValue(searchString, 200);
   return (
     <>
       <Head>
@@ -28,9 +40,26 @@ export default function Usernames() {
         />
       </Head>
       <main className="flex w-full flex-col items-center bg-white">
-        <input type="text" placeholder="search for a username" />
+        <div>
+          <div className="flex flex-row items-center justify-between">
+            <h1 className="text-xl">🔵 BASENAMES</h1>
+            <p>insert rotating text</p>
+          </div>
+          <div className="relative">
+            <Input
+              type="text"
+              value={searchString}
+              onChange={handleSearchChange}
+              placeholder="SEARCH FOR A NAME"
+              className="w-screen max-w-[587px] rounded-xl border-2 border-illoblack p-3 pr-10"
+            />
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+              <MagnifyingGlassIcon width={24} height={24} />
+            </div>
+          </div>
+        </div>
         <button type="button" onClick={selectName}>
-          option: name1
+          option: {debouncedSearchString}
         </button>
 
         {progress === ClaimProgression.CLAIM && (
@@ -57,7 +86,11 @@ export default function Usernames() {
               />
               A Coinbase verification{' '}
               <Tooltip content="Verifies you have a valid trading account on Coinbase">
-                <InformationCircleIcon width={12} height={12} className="ml-1 fill-[#89909E] hover:fill-darkgray transition-colors" />
+                <InformationCircleIcon
+                  width={12}
+                  height={12}
+                  className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
+                />
               </Tooltip>
             </li>
             <li className="flex flex-row items-center justify-start">
@@ -70,7 +103,11 @@ export default function Usernames() {
               />
               A Coinbase One verification{' '}
               <Tooltip content="Verifies you have an active Coinbase One subscription">
-                <InformationCircleIcon width={12} height={12} className="ml-1 fill-[#89909E] hover:fill-darkgray transition-colors" />
+                <InformationCircleIcon
+                  width={12}
+                  height={12}
+                  className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
+                />
               </Tooltip>
             </li>
             <li className="flex flex-row items-center justify-start">
@@ -83,7 +120,11 @@ export default function Usernames() {
               />
               Deployed a smart wallet{' '}
               <Tooltip content="Smart wallet deployed from Coinbase Wallet">
-                <InformationCircleIcon width={12} height={12} className="ml-1 fill-[#89909E] hover:fill-darkgray transition-colors" />
+                <InformationCircleIcon
+                  width={12}
+                  height={12}
+                  className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
+                />
               </Tooltip>
             </li>
             <li className="flex flex-row items-center justify-start">
@@ -96,7 +137,11 @@ export default function Usernames() {
               />
               A CB.ID username{' '}
               <Tooltip content="cb.id claimed prior to cutoff date">
-                <InformationCircleIcon width={12} height={12} className="ml-1 fill-[#89909E] hover:fill-darkgray transition-colors" />
+                <InformationCircleIcon
+                  width={12}
+                  height={12}
+                  className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
+                />
               </Tooltip>
             </li>
           </ul>
