@@ -1,3 +1,4 @@
+import { Transition } from '@headlessui/react';
 import { InformationCircleIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import Input from 'apps/web/src/components/Input';
 import Modal from 'apps/web/src/components/Modal';
@@ -5,13 +6,27 @@ import Tooltip from 'apps/web/src/components/Tooltip';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCallback, useState } from 'react';
-import { useDebounceValue } from 'usehooks-ts';
+import { Fragment, useCallback, useState } from 'react';
+import { useDebounceValue, useInterval } from 'usehooks-ts';
 
 enum ClaimProgression {
   SEARCH,
   CLAIM,
 }
+
+const SEARCH_LABEL_COPY_STRINGS = [
+  'Set up a community profile.',
+  'Connect with Based people.',
+  'Get exclusive onchain perks.',
+];
+
+const useRotatingText = (strings: string[]) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  useInterval(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % strings.length);
+  }, 3000);
+  return strings[currentIndex];
+};
 
 export default function Usernames() {
   const [progress, setProgress] = useState<ClaimProgression>(ClaimProgression.SEARCH);
@@ -30,6 +45,7 @@ export default function Usernames() {
     [setSearchString],
   );
   const [debouncedSearchString] = useDebounceValue(searchString, 200);
+  const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
   return (
     <>
       <Head>
@@ -39,11 +55,38 @@ export default function Usernames() {
           name="description"
         />
       </Head>
-      <main className="flex w-full flex-col items-center bg-white">
+      {/* this height calc is accounting for the height of the layout's navbar (96px) */}
+      <main className="flex min-h-[calc(100vh-96px)] w-full flex-col items-center justify-center bg-white">
         <div>
-          <div className="flex flex-row items-center justify-between">
-            <h1 className="text-xl">🔵 BASENAMES</h1>
-            <p>insert rotating text</p>
+          <div className="relative mb-4 flex items-center justify-between">
+            <div className="flex items-center">
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 15 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="mr-1"
+              >
+                <circle cx="7.5" cy="7.5" r="7.5" fill="#0052FF" />
+              </svg>
+              <h1 className="text-xl">BASENAMES</h1>
+            </div>
+            {SEARCH_LABEL_COPY_STRINGS.map((string) => (
+              <Transition
+                as={Fragment}
+                key={string}
+                show={rotatingText === string}
+                enter="transform transition duration-500"
+                enterFrom="opacity-0 -translate-y-4"
+                enterTo="opacity-100 translate-y-0"
+                leave="transform transition duration-500"
+                leaveFrom="opacity-100 translate-y-0"
+                leaveTo="opacity-0 translate-y-4"
+              >
+                <p className="absolute right-0">{string}</p>
+              </Transition>
+            ))}
           </div>
           <div className="relative">
             <Input
@@ -51,7 +94,7 @@ export default function Usernames() {
               value={searchString}
               onChange={handleSearchChange}
               placeholder="SEARCH FOR A NAME"
-              className="w-screen max-w-[587px] rounded-xl border-2 border-illoblack p-3 pr-10"
+              className="w-screen max-w-[587px] rounded-xl border-2 border-line py-5 pl-6 pr-10"
             />
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
               <MagnifyingGlassIcon width={24} height={24} />

@@ -12,6 +12,7 @@ module.exports = {
   ],
   theme: {
     colors: {
+      line: '#5B616E33',
       gray: '#1E2025',
       darkgray: '#0F1012',
       white: '#FFFFFF',
