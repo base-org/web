@@ -77,9 +77,40 @@ This tutorial won't cover all of the frontend development, auth, databases, or o
 
 - Create an NFT collection, gasslessly with `Premint`
 - Add tokens to that collection
-- Allow people to mint the tokens
+- Allow other people to mint the tokens
 
 ### Creating the Premint from the App
+
+Start by installing Zora's [Protocol SDK].
+
+```bash
+yarn add @zoralabs/protocol-sdk viem@2.x
+```
+
+Continue by adding a new page to the app. In the `app` folder, create a folder called `createPremint` with a file called `page.tsx`. Add a stub for a page:
+
+```typescript
+import { generateMetadata } from '@/utils/generateMetadata';
+
+export const metadata = generateMetadata({
+  title: 'Create your NFT collection',
+  description: 'Create your NFT collection quickly, easily, and for free!',
+  images: 'themes.png',
+  pathname: '',
+});
+
+export default function Page() {
+  return <div>TODO</div>;
+}
+```
+
+In `src/components` add a folder called `Zora` and a file called `CreatePremint.tsx`.
+
+In it, import dependencies and instantiate a `creatorClient`.
+
+```typescript
+
+```
 
 ## Conclusion
 
