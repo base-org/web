@@ -17,7 +17,7 @@ type LinkedAddresses = {
   linkedAddresses: string[];
 };
 
-const expiry = Math.floor(Date.now() / 1000) + 300; //  5 minutes
+const expiry = 300; //  5 minutes in seconds
 const previousClaimsKVPrefix = 'username:claims:';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
