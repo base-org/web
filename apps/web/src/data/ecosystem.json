@@ -302,7 +302,7 @@
       "onramp"
     ],
     "description": "Access and transfer your assets from 10+ centralized exchanges, with a DeFi UX.",
-    "url": "https://send.cede.store/",
+    "url": "https://send.cede.store/?tokenSymbol=ETH&network=Base&source=base_foundation",
     "imageUrl": "/images/partners/cede.webp"
   },
   {
