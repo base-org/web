@@ -12,6 +12,11 @@ type PreviousClaim = {
   signedMessage: string;
 };
 
+type LinkedAddresses = {
+  idemKey: string;
+  linkedAddresses: string[];
+};
+
 const expiry = Math.floor(Date.now() / 1000) + 300; //  5 minutes
 const previousClaimsKVPrefix = 'username:claims:';
 
@@ -25,10 +30,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: 'address is required' });
   }
 
-  const data = await getDiscountDataForAddress(address as string);
-  const kvKey = `${previousClaimsKVPrefix}${data.idemKey}`;
-  //check kv for entry
+  let linkedAddressResponse: LinkedAddresses;
   try {
+    //hit CDP to get linked addresses
+    linkedAddressResponse = await getLinkedAddresses(address as string);
+
+    // check onchain if any linked address has registered previously
+    const hasPreviouslyRegistered = await hasRegisteredWithDiscount(
+      linkedAddressResponse.linkedAddresses,
+    );
+    // if any linked address registered previously return an error
+    if (hasPreviouslyRegistered) {
+      return res.status(409).json({ result: 'user has already claimed a username' });
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'error checking linked addresses' });
+  }
+
+  const kvKey = `${previousClaimsKVPrefix}${linkedAddressResponse.idemKey}`;
+
+  try {
+    //check kv fo previous claim entry
     const previousClaim = await kv.get<PreviousClaim>(kvKey);
     if (previousClaim) {
       if (previousClaim.address != address) {
@@ -37,18 +60,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // return previously signed message
       return res.status(200).json({ result: previousClaim.signedMessage });
     }
-  } catch (error) {
-    console.error(error);
-  }
 
-  // check onchain if any linked address has registered previously
-  try {
-    const hasPreviouslyRegistered = await hasRegisteredWithDiscount(data.linkedAddresses);
-
-    // if any linked address registered previously return an error
-    if (hasPreviouslyRegistered) {
-      return res.status(409).json({ result: 'user has already claimed a username' });
-    }
     // generate and sign the message
     const signedMessage = await signMessage(address as string);
     const claim: PreviousClaim = {
@@ -87,12 +99,13 @@ async function signMessage(claimerAddress: string) {
   );
 }
 
-async function getDiscountDataForAddress(address: string) {
-  return {
+async function getLinkedAddresses(address: string): Promise<LinkedAddresses> {
+  const res = {
     idemKey: '7f4ccc22d014d4f6d1ef3dec1ac9b5049c2fa0f804f8966121b616dc78035524',
     linkedAddresses: [
       '0x6254d525DD60d4B842917e447c25446F39224baf',
       '0x57691827fd1a79793a51667F747b9905a2242e19',
     ],
   };
+  return res;
 }
