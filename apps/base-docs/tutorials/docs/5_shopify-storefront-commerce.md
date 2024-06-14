@@ -11,14 +11,18 @@ hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
-Deploy a Shopify Storefront with Coinbase Commerce Plugin
-[Shopify](https://www.shopify.com/) provides a robust platform for creating online stores. This tutorial will guide you through setting up a Shopify storefront that integrates with Coinbase Commerce, allowing you to accept cryptocurrency payments.
+Deploy a Shopify Storefront with [Coinbase Commerce Plugin](https://docs.cdp.coinbase.com/commerce-onchain/docs/integrate-shopify/)
+[Shopify](https://www.shopify.com/) provides a robust platform for creating online stores.
+
+[Shopify Storefronts](https://www.shopify.com/custom-storefront-tools) allow you to create unique experiences for your online store.
+
+This tutorial will guide you through setting up a Shopify storefront that integrates with Coinbase Commerce, allowing you to accept cryptocurrency payments.
+
+Learn more about [Hydrogen and Oxygen](https://shopify.dev/docs/storefronts/headless/hydrogen/fundamentals).
 
 ## Objectives
 
-By the end of this tutorial, you will have a custom storefront with integrated crypto payments, using your existing Shopify products.
-
-You will learn how to:
+By the end of this tutorial should be able to:
 
 - Create a Shopify storefront
 - Link your Coinbase Commerce account to Shopify
@@ -27,72 +31,84 @@ You will learn how to:
 
 ## Prerequisites
 
-- Shopify Basic or better
-- Github account
-- Business Coinbase Commerce account | [Sign up](https://beta.commerce.coinbase.com/sign-up)
+### Coinbase Commerce
+
+You will need a Coinbase Commerce Managed account to proceed. You can sign up for a business account [here](https://beta.commerce.coinbase.com/sign-up).
+
+### Shopify
+
+You will need a Shopify [Basic plan](https://www.shopify.com/pricing) for this demo, creating a custom storefront, and using Hydrogen/Oxygen
+
+#### Hydrogen
+
+Hydrogen is Shopify's React-based framework for developing custom storefronts, offering components, utilities, and design patterns to simplify working with Shopify APIs. These projects are Remix apps preconfigured with Shopify-specific features.
+
+#### Oxygen
+
+Oxygen is Shopify’s global serverless hosting platform for deploying Hydrogen storefronts at the edge, managing deployment environments, environment variables, caching, and integrating with Shopify’s CDN.
 
 ## Getting Started
+
+To comply with Shopify's requirements, the Coinbase Commerce account linked to Shopify must be a Coinbase Managed account.
+
+To create one, [sign up](https://beta.commerce.coinbase.com/sign_up) for a business account and select "Coinbase Commerce" as the account type. See this Coinbase Commerce Merchant [help article](https://help.coinbase.com/en/commerce/getting-started/merchant-guidelines-commerce-application) for additional information on how to sign your business up.
 
 ### Link Coinbase Commerce to your Shopify store
 
 ![shopify-install-commerce.gif](../../assets/images/shopify-storefront-commerce/shopify-install-commerce.gif)
 
-1. Navigate to your admin page: (`https://admin.shopify.com/store/<YOUR-STORE-NAME>`)
-2. Click on Settings (`https://admin.shopify.com/store/<YOUR-STORE-NAME>settings/general`)
-3. Click on the “Payments” tab
-4. Click “Add a payment method”
-5. Click “Search by provider”
-6. Type in “Coinbase” in the search field
-7. Select “Coinbase Commerce”
-8. Click "Install"
-9. Log into your Coinbase account
-10. Click "Activate" to enable the Coinbase Commerce plugin
+Once, you've created a Coinbase Commerce Managed account you can now add the plugin to your Shopify store.
+
+To add Coinbase Commerce as a payment method on your Shopify store, start by navigating to your admin page at `https://admin.shopify.com/store/<YOUR-STORE-NAME>`. Once there, click on Settings , located in the bottom left panel of the screen (or at `https://admin.shopify.com/store/<YOUR-STORE-NAME>settings/general`). Then select the “Payments” tab. Proceed by clicking “Add a payment method” and choose “Search by provider.” In the search field, type in “Coinbase” and select “Coinbase Commerce” from the results.
+Click "Install" and you should be redirected to Coinbase Commerce with aprompt log into your Coinbase account. Finally, click "Activate" to enable the Coinbase Commerce plugin.
 
 ### Create a Storefront
 
-This creates a new Hydrogen storefront with products that already exist in your Shopify account.
+In this tutorial, we'll guide you through the steps to create a new Hydrogen storefront for your Shopify store. This will allow you to showcase the products you already have in your Shopify account. Make sure you've already created your products by following the [Shopify products guide](https://help.shopify.com/en/manual/online-sales-channels/shop/products-and-collections).
 
-#### Clone the Shopify Demo Store
+To get started, we'll first clone a Shopify demo store using the Hydrogen framework. This will give us a quick setup to work with.
 
 ```bash
 npm create @shopify/hydrogen@latest -- --quickstart
 ```
+
+Once the demo store is cloned, navigate into the project directory and start the development server:
 
 ```bash
 cd hydrogen-quickstart
 npx shopify hydrogen dev
 ```
 
-#### Link your store and create a new Storefront
+Next, you'll need to link your Hydrogen project to your Shopify store. This step connects the demo storefront with your Shopify account, allowing you to display your products.
 
 ```bash
 npx shopify hydrogen link
 ```
 
-#### Update Project Environment Variables
+To ensure your storefront is properly configured, update the project environment variables. This pulls the necessary settings from your Shopify account into the Hydrogen project.
 
 ```bash
 npx shopify hydrogen env pull
 ```
 
-#### Verify Your Site is Running
+Now, let's verify that everything is set up correctly and your site is running. Start the development server again:
 
 ```bash
 npx shopify hydrogen dev
 ```
 
-#### Deploy to Oxygen
-
-Run the following script to deploy your site to Oxygen
+Finally, deploy your Hydrogen storefront to Oxygen, Shopify's hosting platform for Hydrogen apps. Run the following script:
 
 ```bash
 npx shopify hydrogen deploy
 ```
 
-Select **Preview** as the deployment type
+Select **Preview** as the deployment type. After deployment, your terminal should display a URL where you can view your live site, such as:
 
 Your terminal should display a url like:
 `https://hydrogen-quickstart-20c3648d482c7a17d77d.o2.myshopify.dev/`
+
+And that's it! You've successfully created and deployed your Hydrogen storefront.
 
 ## Conclusion
 
