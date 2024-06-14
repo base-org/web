@@ -33,7 +33,9 @@ By the end of this tutorial should be able to:
 
 ### Coinbase Commerce
 
-You will need a Coinbase Commerce Managed account to proceed. You can sign up for a business account [here](https://beta.commerce.coinbase.com/sign-up).
+Coinbase Commerce is a platform that enables merchants to accept cryptocurrency payments in a decentralized manner. It provides tools for integrating crypto payments into online stores, offering a secure and straightforward way to receive hundreds of tokens across Base, Polygon, and Ethereum.
+
+To proceed, you will need a Coinbase Commerce Managed account. You can sign up for a business account [here](https://beta.commerce.coinbase.com/sign-up).
 
 ### Shopify
 
