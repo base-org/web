@@ -16,15 +16,15 @@ function Tooltip({ content, children }: PropsWithChildren<TooltipProps>) {
       <Transition
         show={isHovered}
         enter="transition ease-out duration-200"
-        enterFrom="opacity-0 -translate-y-6"
-        enterTo="opacity-100 -translate-y-14"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
         leave="transition ease-in duration-150"
-        leaveFrom="opacity-100 -translate-y-14"
-        leaveTo="opacity-0 -translate-y-6"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
       >
-        <div className="absolute left-1/2 -translate-x-1/2 transform">
+        <div className="absolute left-1/2 -translate-x-1/2 -top-12 transform w-max">
           <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-darkgray ring-opacity-5">
-            <div className="relative bg-darkgray px-4 py-2 text-white">{content}</div>
+            <div className="bg-darkgray px-4 py-2 text-white">{content}</div>
           </div>
         </div>
       </Transition>
