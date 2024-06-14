@@ -3,11 +3,14 @@ import { InformationCircleIcon, MagnifyingGlassIcon } from '@heroicons/react/20/
 import Input from 'apps/web/src/components/Input';
 import Modal from 'apps/web/src/components/Modal';
 import Tooltip from 'apps/web/src/components/Tooltip';
+import { useFocusWithin } from 'apps/web/src/utils/hooks/useFocusWithin';
+import classNames from 'classnames';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Fragment, useCallback, useState } from 'react';
+import { Fragment, useCallback, useMemo, useState } from 'react';
 import { useDebounceValue, useInterval } from 'usehooks-ts';
+
 
 enum ClaimProgression {
   SEARCH,
@@ -46,6 +49,23 @@ export default function Usernames() {
   );
   const [debouncedSearchString] = useDebounceValue(searchString, 200);
   const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
+  const { ref, focused: searchFocused } = useFocusWithin();
+
+  const classes = useMemo(() => {
+    const main = 'flex min-h-[calc(100vh-96px)] w-full flex-col items-center justify-center transition-colors'
+    const input = "w-screen max-w-[587px] border-2 border-line py-5 pl-6 pr-10 outline-0"
+    if (searchFocused) {
+      return {
+        input: classNames(input, 'rounded-t-xl border-ocsblue '),
+        main: classNames(main, 'bg-ocsblue', 'text-white'),
+        }
+      }
+      return {
+      input: classNames(input, 'rounded-xl'),
+      main: classNames(main, 'bg-white')
+    }
+  }, [searchFocused])
+
   return (
     <>
       <Head>
@@ -56,7 +76,7 @@ export default function Usernames() {
         />
       </Head>
       {/* this height calc is accounting for the height of the layout's navbar (96px) */}
-      <main className="flex min-h-[calc(100vh-96px)] w-full flex-col items-center justify-center bg-white">
+      <main className={classes.main}>
         <div>
           <div className="relative mb-4 flex items-center justify-between">
             <div className="flex items-center">
@@ -68,7 +88,7 @@ export default function Usernames() {
                 xmlns="http://www.w3.org/2000/svg"
                 className="mr-1"
               >
-                <circle cx="7.5" cy="7.5" r="7.5" fill="#0052FF" />
+                <circle cx="7.5" cy="7.5" r="7.5" className={searchFocused ? 'fill-white' : 'fill-ocsblue'} />
               </svg>
               <h1 className="text-xl">BASENAMES</h1>
             </div>
@@ -88,22 +108,22 @@ export default function Usernames() {
               </Transition>
             ))}
           </div>
-          <div className="relative">
+          <div ref={ref} className='relative text-black'>
             <Input
               type="text"
               value={searchString}
               onChange={handleSearchChange}
               placeholder="SEARCH FOR A NAME"
-              className="w-screen max-w-[587px] rounded-xl border-2 border-line py-5 pl-6 pr-10"
+              className={classes.input}
             />
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
               <MagnifyingGlassIcon width={24} height={24} />
             </div>
           </div>
+          <div>
+            autocomplete options
+          </div>
         </div>
-        <button type="button" onClick={selectName}>
-          option: {debouncedSearchString}
-        </button>
 
         {progress === ClaimProgression.CLAIM && (
           <p>
