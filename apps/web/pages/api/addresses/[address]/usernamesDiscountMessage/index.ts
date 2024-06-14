@@ -51,12 +51,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const kvKey = `${previousClaimsKVPrefix}${linkedAddressResponse.idemKey}`;
 
   try {
-    //check kv fo previous claim entry
+    //check kv for previous claim entry
     const previousClaim = await kv.get<PreviousClaim>(kvKey);
     if (previousClaim) {
       if (previousClaim.address != address) {
         return res.status(409).json({ error: 'user has already claimed a username' });
       }
+      console.log('returning previous claim');
       // return previously signed message
       return res.status(200).json({ result: previousClaim.signedMessage });
     }
