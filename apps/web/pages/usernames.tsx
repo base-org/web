@@ -10,7 +10,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, useCallback, useMemo, useState } from 'react';
 import { useDebounceValue, useInterval } from 'usehooks-ts';
-
+import { ChevronRightIcon } from '@heroicons/react/24/outline';
 
 enum ClaimProgression {
   SEARCH,
@@ -51,20 +51,25 @@ export default function Usernames() {
   const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
   const { ref, focused: searchFocused } = useFocusWithin();
 
+  const renderOptions = searchFocused && debouncedSearchString;
+
   const classes = useMemo(() => {
-    const main = 'flex min-h-[calc(100vh-96px)] w-full flex-col items-center justify-center transition-colors'
-    const input = "w-screen max-w-[587px] border-2 border-line py-5 pl-6 pr-10 outline-0"
+    const main =
+      'flex min-h-[calc(100vh-96px)] w-full flex-col items-center justify-center transition-colors';
+    const input =
+      'relative w-screen max-w-[587px] border-2 border-line/20 focus:border-ocsblue py-5 pl-6 pr-10 outline-0 z-20';
     if (searchFocused) {
+      const roundedInput = debouncedSearchString ? 'rounded-t-xl' : 'rounded-xl';
       return {
-        input: classNames(input, 'rounded-t-xl border-ocsblue '),
+        input: classNames(input, roundedInput, 'border-ocsblue'),
         main: classNames(main, 'bg-ocsblue', 'text-white'),
-        }
-      }
-      return {
-      input: classNames(input, 'rounded-xl'),
-      main: classNames(main, 'bg-white')
+      };
     }
-  }, [searchFocused])
+    return {
+      input: classNames(input, 'rounded-xl'),
+      main: classNames(main, 'bg-white'),
+    };
+  }, [debouncedSearchString, searchFocused]);
 
   return (
     <>
@@ -88,7 +93,12 @@ export default function Usernames() {
                 xmlns="http://www.w3.org/2000/svg"
                 className="mr-1"
               >
-                <circle cx="7.5" cy="7.5" r="7.5" className={searchFocused ? 'fill-white' : 'fill-ocsblue'} />
+                <circle
+                  cx="7.5"
+                  cy="7.5"
+                  r="7.5"
+                  className={searchFocused ? 'fill-white' : 'fill-ocsblue'}
+                />
               </svg>
               <h1 className="text-xl">BASENAMES</h1>
             </div>
@@ -108,7 +118,7 @@ export default function Usernames() {
               </Transition>
             ))}
           </div>
-          <div ref={ref} className='relative text-black'>
+          <div ref={ref} className="relative text-black">
             <Input
               type="text"
               value={searchString}
@@ -117,11 +127,34 @@ export default function Usernames() {
               className={classes.input}
             />
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <MagnifyingGlassIcon width={24} height={24} />
+              <MagnifyingGlassIcon width={24} height={24} className="z-20" />
             </div>
-          </div>
-          <div>
-            autocomplete options
+            {renderOptions && (
+              <div className="absolute left-0 right-0 top-0 z-10">
+                <div className="mt-2 flex flex-col items-start rounded-xl border-2 border-ocsblue bg-white pb-3 pt-16">
+                  <button
+                    className="flex w-full flex-row items-center justify-between px-6 py-2 disabled:text-line"
+                    disabled
+                    type="button"
+                  >
+                    {debouncedSearchString}.base.eth is unavailable
+                  </button>
+                  <p className="w-full px-6 py-2 text-sm text-line">SUGGESTED</p>
+                  <button
+                    className="flex w-full flex-row items-center justify-between px-6 py-2"
+                    type="button"
+                  >
+                    {debouncedSearchString}-1.base.eth <ChevronRightIcon width={24} height={24} />
+                  </button>
+                  <button
+                    className="flex w-full flex-row items-center justify-between px-6 py-2"
+                    type="button"
+                  >
+                    {debouncedSearchString}-2.base.eth <ChevronRightIcon width={24} height={24} />
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
