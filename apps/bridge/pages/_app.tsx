@@ -5,7 +5,7 @@ import React, { Fragment } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Bugsnag from '@bugsnag/js';
 import BugsnagPluginReact from '@bugsnag/plugin-react';
-import localFont from '@next/font/local';
+import localFont from 'next/font/local';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { connectWallet } from 'apps/bridge/src/wallet/connect';
 import App, { AppContext, AppProps } from 'next/app';
