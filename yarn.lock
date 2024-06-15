@@ -273,7 +273,6 @@ __metadata:
     "@eth-optimism/indexer-api": ^0.0.4
     "@headlessui/react": latest
     "@heroicons/react": ^2.0.13
-    "@next/font": ^13.1.6
     "@rainbow-me/rainbowkit": ^1
     "@types/react-copy-to-clipboard": ^5.0.4
     autoprefixer: ^10.4.13
@@ -282,7 +281,7 @@ __metadata:
     eslint-config-next: ^13.1.6
     framer-motion: ^9.0.4
     moment: ^2.29.4
-    next: ^13.1.5
+    next: ^13.2.0
     postcss: ^8.4.20
     prettier-plugin-tailwindcss: ^0.2.3
     react: ^18.2.0
@@ -320,7 +319,7 @@ __metadata:
     eslint-config-next: ^13.1.6
     ethers: 5.7.2
     framer-motion: ^8.5.5
-    next: ^13.1.5
+    next: ^13.2.0
     node-fetch: ^3.3.0
     postcss: ^8.4.21
     prettier-plugin-tailwindcss: ^0.2.5
@@ -4963,13 +4962,6 @@ __metadata:
   dependencies:
     glob: 7.1.7
   checksum: 58b5ef15d8298c112c72bbbc34a7a5f63637b5a02af7937d86f26223d370c6bd7c8de0eab737851a17dff52c620068a72179eb72b565add071841b720110490f
-  languageName: node
-  linkType: hard
-
-"@next/font@npm:^13.1.6":
-  version: 13.5.6
-  resolution: "@next/font@npm:13.5.6"
-  checksum: 12aa997147094bb122e2e22b29a2f6c1872de37fca0b444f20aa5c48e20bd8176c7d8661c1c597a43d528c7dc75d3acc44bc08c47aa716a5ab450fca68e4c814
   languageName: node
   linkType: hard
 
@@ -17846,7 +17838,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:*, next@npm:^13.1.5":
+"next@npm:*, next@npm:^13.2.0":
   version: 13.5.6
   resolution: "next@npm:13.5.6"
   dependencies:
