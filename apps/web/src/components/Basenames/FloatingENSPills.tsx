@@ -3,16 +3,6 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import { HTMLAttributes, forwardRef, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
-const NAMES = [
-  'ianlakes',
-  'rcmpbell',
-  'pataguccigirl',
-  'viktor',
-  'jfrankfurt',
-  'shelleylai',
-  'zencephalon',
-];
-
 const useMousePosition = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -38,6 +28,15 @@ const useMousePosition = () => {
   return position;
 };
 
+const NAMES = [
+  'ianlakes',
+  'rcmpbell',
+  'pataguccigirl',
+  'viktor',
+  'jfrankfurt',
+  'shelleylai',
+  'zencephalon',
+];
 const PILL_COUNT = NAMES.length;
 const initialBlurStates = Array.from({ length: PILL_COUNT }).map((_, index) => index % 2 === 0);
 const intervals = [2000, 4000, 6000];
@@ -67,6 +66,7 @@ const useBlurCycle = () => {
   return blurredIndices;
 };
 
+type PillProps = { name: string; src: string; x: number; y: number; isBlurred: boolean; transform: string }
 const Pill = forwardRef(
   (
     {
@@ -76,7 +76,7 @@ const Pill = forwardRef(
       y,
       isBlurred,
       transform,
-    }: { name: string; src: string; x: number; y: number; isBlurred: boolean; transform: string },
+    }: PillProps,
     ref: React.Ref<HTMLDivElement>,
   ) => {
     const { focused, hovered } = useContext(RegistrationContext);
@@ -106,17 +106,17 @@ const Pill = forwardRef(
 );
 Pill.displayName = 'Pill';
 
-const X_SCALER = 0.4;
-const Y_SCALER = 0.32;
+const X_VECTOR_SCALER = 0.4;
+const Y_VECTOR_SCALER = 0.32;
 export function FloatingENSPills(props: HTMLAttributes<HTMLInputElement>) {
-  const [radiusX, setRadiusX] = useState(window.innerWidth * X_SCALER);
-  const [radiusY, setRadiusY] = useState(window.innerHeight * Y_SCALER);
+  const [radiusX, setRadiusX] = useState(window.innerWidth * X_VECTOR_SCALER);
+  const [radiusY, setRadiusY] = useState(window.innerHeight * Y_VECTOR_SCALER);
   const pillRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const handleResize = () => {
-      setRadiusX(window.innerWidth * X_SCALER);
-      setRadiusY(window.innerHeight * Y_SCALER);
+      setRadiusX(window.innerWidth * X_VECTOR_SCALER);
+      setRadiusY(window.innerHeight * Y_VECTOR_SCALER);
     };
     window.addEventListener('resize', handleResize);
     return () => {
