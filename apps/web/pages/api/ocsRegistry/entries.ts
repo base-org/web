@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { db } from 'apps/web/src/utils/ocsRegistry';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { page = '1', limit = '10', category } = req.query;
+  const { page = '1', limit = '10', category, curation } = req.query;
 
   const pageNum = parseInt(page as string, 10);
   const limitNum = parseInt(limit as string, 10);
@@ -13,6 +13,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   if (category) {
     baseQuery = baseQuery.where('category', 'ilike', `%${category}%`);
+  }
+
+  if (curation) {
+    baseQuery = baseQuery.where('curation', 'ilike', `%${curation}%`);
   }
 
   // Fetch total records count
