@@ -307,7 +307,6 @@ __metadata:
     "@coinbase/onchainkit": ^0.6.0
     "@heroicons/react": ^2.0.18
     "@rainbow-me/rainbowkit": ^2.0.5
-    "@sprig-technologies/sprig-browser": ^2.29.0
     "@tanstack/react-query": ^5.29.2
     "@types/node": 18.11.18
     "@types/react-copy-to-clipboard": ^5.0.7
@@ -6084,13 +6083,6 @@ __metadata:
     rpc-websockets: ^7.5.1
     superstruct: ^0.14.2
   checksum: 775378ea775bc2559202125eae8c7eb975301616690f12e391440200d229c6255b6fcc28718d837d072895fd6853f49fc7b738d8f6f834d61610af1766c6d8c7
-  languageName: node
-  linkType: hard
-
-"@sprig-technologies/sprig-browser@npm:^2.29.0":
-  version: 2.30.0
-  resolution: "@sprig-technologies/sprig-browser@npm:2.30.0"
-  checksum: eed87193d7d6011496d80c9b3c7ad62c9f734a8bb71773b251263f38ffaa12630a5c0784fc06c0d8468614d4bee14a1b9b776a704c3051a733b57660fea12377
   languageName: node
   linkType: hard
 
