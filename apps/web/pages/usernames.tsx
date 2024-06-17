@@ -6,6 +6,7 @@ import { RegistrationContext } from 'apps/web/src/components/Basenames/Registrat
 import Input from 'apps/web/src/components/Input';
 import Modal from 'apps/web/src/components/Modal';
 import Tooltip from 'apps/web/src/components/Tooltip';
+import { useIsNameAvailable } from 'apps/web/src/utils/hooks/useIsNameAvailable';
 import { useFocusWithin } from 'apps/web/src/utils/hooks/useFocusWithin';
 import classNames from 'classnames';
 import Head from 'next/head';
@@ -37,15 +38,22 @@ export default function Usernames() {
   const [progress, setProgress] = useState<ClaimProgression>(ClaimProgression.SEARCH);
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
   const toggleModal = useCallback(() => setLearnMoreModalOpen((open) => !open), []);
-  const selectName = useCallback(() => {
+  const [inputFocused, setInputFocused] = useState(false);
+  const [selectedName, setSelectedName] = useState('')
+  const [searchString, setSearchString] = useState('');
+
+  const selectName = useCallback((name: string) => () => {
     setProgress(ClaimProgression.CLAIM);
+    setInputFocused(false)
+    setSelectedName(name)
+    setSearchString('')
   }, []);
 
-  const [searchString, setSearchString] = useState('');
   const handleSearchChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = event.target;
       setSearchString(value);
+      setInputFocused(true)
     },
     [setSearchString],
   );
@@ -53,33 +61,35 @@ export default function Usernames() {
   const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
   const { ref, focused: searchFocused } = useFocusWithin();
 
-  const renderOptions = searchFocused && debouncedSearchString;
-
   const classes = useMemo(() => {
-    const main =
+    let main =
       'relative flex min-h-[calc(100vh-96px)] w-full flex-col items-center justify-center transition-colors';
-    const input =
-      'relative w-screen max-w-[587px] border-2 border-line/20 focus:border-ocsblue py-5 pl-6 pr-10 outline-0 z-20';
-    if (searchFocused) {
-      return {
-        input: classNames(input, debouncedSearchString ? 'rounded-t-xl' : 'rounded-xl'),
-        main: classNames(main, 'bg-ocsblue', 'text-white'),
-      };
+    let input =
+      'relative w-screen max-w-[587px] border-2 border-line/20  py-5 pl-6 pr-10 outline-0 z-20';
+    if (inputFocused) {
+      main = classNames(main, 'bg-ocsblue', 'text-white')
+      input = classNames(input, ' border-b-0 focus:border-ocsblue')
     }
-    return {
-      input: classNames(input, 'rounded-xl'),
-      main: classNames(main, 'bg-white'),
-    };
-  }, [debouncedSearchString, searchFocused]);
+    if (debouncedSearchString.length > 3) {
+      input = classNames(input, 'rounded-t-xl border-b-0')
+    } else {
+      input = classNames(input, 'rounded-xl')
+    }
+    return { input, main };
+  }, [debouncedSearchString, inputFocused]);
 
-  const [isHovered, setIsHovered] = useState(false);
-  const handleMouseEnter = useCallback(() => setIsHovered(true), []);
-  const handleMouseLeave = useCallback(() => setIsHovered(false), []);
+  const [inputIsHovered, setInputIsHovered] = useState(false);
+  const handleMouseEnter = useCallback(() => setInputIsHovered(true), []);
+  const handleMouseLeave = useCallback(() => setInputIsHovered(false), []);
 
   const registrationValue = useMemo(
-    () => ({ focused: searchFocused, hovered: isHovered }),
-    [isHovered, searchFocused],
+    () => ({ focused: inputFocused || searchFocused, hovered: inputIsHovered }),
+    [inputFocused, searchFocused, inputIsHovered],
   );
+
+  const { isLoading: loadingBaseName, data: available, error: errorFetchingNameAvailability } = useIsNameAvailable(debouncedSearchString)
+  const suggestions = Boolean(debouncedSearchString && !available && !loadingBaseName) ? [debouncedSearchString + 'asdf', debouncedSearchString + '1234'] : []
+
 
   return (
     <>
@@ -109,7 +119,7 @@ export default function Usernames() {
                     cx="7.5"
                     cy="7.5"
                     r="7.5"
-                    className={searchFocused ? 'fill-white' : 'fill-ocsblue'}
+                    className={inputFocused ? 'fill-white' : 'fill-ocsblue'}
                   />
                 </svg>
                 <h1 className="text-xl">BASENAMES</h1>
@@ -137,38 +147,34 @@ export default function Usernames() {
                 onChange={handleSearchChange}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
+                onFocus={() => setInputFocused(true)}
+                onBlur={() => setInputFocused(false)}
                 placeholder="SEARCH FOR A NAME"
                 className={classes.input}
               />
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                 <MagnifyingGlassIcon width={24} height={24} className="z-20" />
               </div>
-              {renderOptions && (
+              {debouncedSearchString.length > 3 && (
                 <div className="absolute left-0 right-0 top-0 z-10">
-                  <div className="mt-2 flex flex-col items-start rounded-xl border-2 border-ocsblue bg-white pb-3 pt-16">
-                    <button
-                      className="flex w-full flex-row items-center justify-between px-6 py-2 disabled:text-line"
-                      disabled
+                  <div className={classNames("mt-2 flex flex-col items-start rounded-xl border-2 bg-white pb-3 pt-16", inputIsHovered && 'border-ocsblue', inputFocused ? 'border-ocsblue' : 'border-line/20', 'border-t-0')}>
+                    {/*loadingBaseName && <p>loading...</p> */}
+                    {!loadingBaseName && <div className='w-11/12 mx-auto mb-3 h-[1px] bg-line/20' />}
+                    {!available && (<div className="flex w-full flex-row items-center justify-between px-6 py-2 disabled:text-line">
+                      ${debouncedSearchString}.base.eth is unavailable
+                    </div>)}
+                    <p className="w-full px-6 py-2 text-sm text-line">{available ? 'AVAILABLE' : errorFetchingNameAvailability ? 'ERROR FETCHING NAME AVAILABILITY' : 'SUGGESTED'}</p>
+                    {Boolean(available) && <button className="flex w-full flex-row items-center justify-between px-6 py-2 transition-colors active:bg-[#EAEAEB] hover:bg-[#F9F9F9]" type="button" onClick={selectName(debouncedSearchString)}>
+                      {debouncedSearchString}.base.eth <ChevronRightIcon width={24} height={24} />
+                    </button>}
+                    {suggestions?.map((suggestion) => (<button
+                      className="flex w-full flex-row items-center justify-between px-6 py-2 transition-colors active:bg-[#EAEAEB] hover:bg-[#F9F9F9]"
                       type="button"
-                      onClick={selectName}
+                      key={suggestion}
+                      onClick={selectName(suggestion)}
                     >
-                      {debouncedSearchString}.base.eth is unavailable
-                    </button>
-                    <p className="w-full px-6 py-2 text-sm text-line">SUGGESTED</p>
-                    <button
-                      className="flex w-full flex-row items-center justify-between px-6 py-2"
-                      type="button"
-                      onClick={selectName}
-                    >
-                      {debouncedSearchString}-1.base.eth <ChevronRightIcon width={24} height={24} />
-                    </button>
-                    <button
-                      className="flex w-full flex-row items-center justify-between px-6 py-2"
-                      type="button"
-                      onClick={selectName}
-                    >
-                      {debouncedSearchString}-2.base.eth <ChevronRightIcon width={24} height={24} />
-                    </button>
+                      {suggestion}.base.eth <ChevronRightIcon width={24} height={24} />
+                    </button>))}
                   </div>
                 </div>
               )}

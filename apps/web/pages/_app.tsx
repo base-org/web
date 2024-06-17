@@ -3,7 +3,7 @@ import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
-import { base, mainnet } from 'wagmi/chains';
+import { base, mainnet, baseSepolia, sepolia } from 'wagmi/chains';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
@@ -25,7 +25,7 @@ import { useSprig } from 'apps/web/src/utils/hooks/useSprig';
 const config = getDefaultConfig({
   appName: 'Base.org',
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? 'dummy-id',
-  chains: [base, mainnet],
+  chains: [base, baseSepolia, mainnet, sepolia],
   ssr: true,
 });
 const queryClient = new QueryClient();

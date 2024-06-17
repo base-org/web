@@ -79,6 +79,7 @@ const contentSecurityPolicy = {
     ccaDomain,
     'https://analytics-service-dev.cbhq.net',
     'mainnet.base.org',
+    'sepolia.base.org',
     'https://cloudflare-eth.com',
     'https://i.seadn.io/', // ens avatars
     'https://api.opensea.io', // enables getting ENS avatars
