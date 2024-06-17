@@ -98,6 +98,12 @@ It will take awhile to spin up, and you can ignore the warning about the `Chain 
 
 Once the engine is running, navigate to `https://localhost:3005/json`. Click through the warning that the connection is not secure. Doing so allows your browser to connect to your engine instance.
 
+:::caution
+
+We do not have an official browser recommendation, but during our testing, Chrome worked and Brave did not with the engine setup and configuration.
+
+:::
+
 Navigate to the [thirdweb engine dashboard], and click the `Import` button. Enter a name and the local address for your engine instance:
 
 ![Add engine instance](../../assets/images/build-with-thirdweb/import-image-instance.png)
