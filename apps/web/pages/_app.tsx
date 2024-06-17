@@ -20,7 +20,7 @@ import { Layout } from '../src/components/Layout/Layout';
 import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
 
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
-import { useSprig } from 'apps/web/src/utils/hooks/useSprig';
+import useSprig from '../../../libs/base-ui/hooks/useSprig';
 
 const config = getDefaultConfig({
   appName: 'Base.org',

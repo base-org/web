@@ -56,7 +56,8 @@ const baseXYZDomains = 'https://base.mirror.xyz';
 const greenhouseDomains = 'https://boards.greenhouse.io https://boards-api.greenhouse.io';
 const ccaDomain = 'https://static-assets.coinbase.com/js/cca/v0.0.1.js';
 const ccaLiteDomains = 'https://cca-lite.coinbase.com';
-const sprigDomains = 'https://api.sprig.com https://cdn.sprig.com';
+const sprigConfig = require('../../libs/base-ui/utils/sprigConfig');
+const sprigDomains = sprigConfig.supportedSprigDomains;
 const walletconnectDomains =
   'https://*.walletconnect.org wss://*.walletconnect.org wss://*.walletconnect.com https://*.walletconnect.com https://explorer-api.walletconnect.com';
 

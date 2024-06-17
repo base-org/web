@@ -13,6 +13,7 @@
     "next": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-intl": "^6.2.1"
+    "react-intl": "^6.2.1",
+    "@sprig-technologies/sprig-browser": "^2.29.0"
   }
 }
