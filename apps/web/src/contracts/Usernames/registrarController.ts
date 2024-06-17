@@ -1,15 +1,14 @@
+import { cdpBaseRpcEndpoint } from 'apps/web/src/cdp/constants';
+import { isDevelopment } from 'apps/web/src/constants';
 import {
   baseRegistrarContractABI,
   baseRegistrarSmartContractAddress,
-  cdpBaseRpcEndpoint,
-} from 'apps/web/src/components/Usernames/constants';
+} from 'apps/web/src/contracts/Usernames/constants';
 import { createPublicClient, http } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
 
-const isProdEnv = process.env.NODE_ENV === 'production';
-
 const publicClient = createPublicClient({
-  chain: isProdEnv ? base : baseSepolia,
+  chain: isDevelopment ? baseSepolia : base,
   transport: http(cdpBaseRpcEndpoint),
 });
 

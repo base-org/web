@@ -1,8 +1,5 @@
-export const cdpBaseRpcEndpoint = process.env.CDP_BASE_RPC_ENDPOINT;
 export const baseRegistrarSmartContractAddress =
   (process.env.NEXT_PUBLIC_BASE_REGISTRAR_SMART_CONTRACT_ADDRESS as `0x${string}`) || '0x';
-export const trustedSignerAddress = (process.env.TRUSTED_SIGNER_ADDRESS as `0x${string}`) || '0x';
-export const trustedSignerPKey = process.env.TRUSTED_SIGNER_PRIVATE_KEY || '0x';
 
 export const baseRegistrarContractABI = [
   {

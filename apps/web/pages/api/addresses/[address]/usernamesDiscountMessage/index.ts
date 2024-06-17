@@ -1,20 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { kv } from '@vercel/kv';
-import { hasRegisteredWithDiscount } from 'apps/web/src/components/Usernames/registrarController';
+import { hasRegisteredWithDiscount } from 'apps/web/src/contracts/Usernames/registrarController';
 import { ethers } from 'ethers';
-import {
-  trustedSignerAddress,
-  trustedSignerPKey,
-} from 'apps/web/src/components/Usernames/constants';
+import { trustedSignerAddress, trustedSignerPKey } from 'apps/web/src/constants';
+import { getLinkedAddresses, LinkedAddresses } from 'apps/web/src/cdp/api';
 
 type PreviousClaim = {
   address: string;
   signedMessage: string;
-};
-
-type LinkedAddresses = {
-  idemKey: string;
-  linkedAddresses: string[];
 };
 
 const expiry = 300; //  5 minutes in seconds
@@ -83,7 +76,7 @@ async function signMessage(claimerAddress: string) {
   const wallet = new ethers.Wallet(trustedSignerPKey);
 
   // encode the message
-  const message = ethers.utils.defaultAbiCoder.encode(
+  const message = ethers.utils.solidityPack(
     ['bytes2', 'address', 'address', 'uint256'],
     ['0x1900', trustedSignerAddress, claimerAddress, expiry],
   );
@@ -98,15 +91,4 @@ async function signMessage(claimerAddress: string) {
     ['address', 'uint256', 'bytes'],
     [claimerAddress, expiry, signature],
   );
-}
-
-async function getLinkedAddresses(address: string): Promise<LinkedAddresses> {
-  const res = {
-    idemKey: '7f4ccc22d014d4f6d1ef3dec1ac9b5049c2fa0f804f8966121b616dc78035524',
-    linkedAddresses: [
-      '0x6254d525DD60d4B842917e447c25446F39224baf',
-      '0x57691827fd1a79793a51667F747b9905a2242e19',
-    ],
-  };
-  return res;
 }
