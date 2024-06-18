@@ -16,10 +16,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       namespace as ProofTableNamespace,
     );
 
-    if (content) {
-      console.log(content);
-    }
-
     return res.status(200).json({ result: content });
   } catch (error) {
     console.error(error);
