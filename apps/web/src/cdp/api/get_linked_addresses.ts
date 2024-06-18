@@ -1,4 +1,5 @@
 import { cdpGet } from 'apps/web/src/cdp/utils';
+import { ethers } from 'ethers';
 
 export type LinkedAddresses = {
   idemKey: string;
@@ -10,6 +11,9 @@ type ErrorResponse = {
 };
 
 export async function getLinkedAddresses(address: string): Promise<LinkedAddresses> {
+  if (ethers.utils.isAddress(address)) {
+    throw new Error('valid address is required');
+  }
   try {
     const response = await cdpGet(`verifications/v1/recipients/${address}/linked-addresses`, true);
 
