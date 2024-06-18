@@ -157,7 +157,7 @@ const activeChain = BaseSepoliaTestnet;
 
 ### Server
 
-Open `server/src/engineController.ts`. Update the `const`s at the beginning to load from environment variables:
+Open `server/src/controllers/engineController.ts`. Update the `const`s at the beginning to load from environment variables:
 
 ```typescript
 const ENGINE_URL = process.env.THIRDWEB_ENGINE_URL;
