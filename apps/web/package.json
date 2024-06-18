@@ -22,7 +22,6 @@
     "base-ui": "0.1.1",
     "ethers": "5.7.2",
     "framer-motion": "^8.5.5",
-    "jose": "^5.4.0",
     "jsonwebtoken": "^9.0.2",
     "kysely": "^0.27.3",
     "next": "^13.2.0",

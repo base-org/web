@@ -322,7 +322,6 @@ __metadata:
     eslint-config-next: ^13.1.6
     ethers: 5.7.2
     framer-motion: ^8.5.5
-    jose: ^5.4.0
     jsonwebtoken: ^9.0.2
     kysely: ^0.27.3
     next: ^13.2.0
@@ -16748,13 +16747,6 @@ __metadata:
     "@sideway/formula": ^3.0.1
     "@sideway/pinpoint": ^2.0.0
   checksum: 3a4e9ecba345cdafe585e7ed8270a44b39718e11dff3749aa27e0001a63d578b75100c062be28e6f48f960b594864034e7a13833f33fbd7ad56d5ce6b617f9bf
-  languageName: node
-  linkType: hard
-
-"jose@npm:^5.4.0":
-  version: 5.4.0
-  resolution: "jose@npm:5.4.0"
-  checksum: 9ec96d6c9711419f5ad983017cb59bf51ec975abb8b839d04e33d8fd701cf19b0f3c2ce34426eeeaa7dc2126c8745eb8117c6b3b04f202602804dd39b0a349ae
   languageName: node
   linkType: hard
 
