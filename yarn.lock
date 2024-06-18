@@ -245,6 +245,7 @@ __metadata:
     "@tanstack/react-query": ^5.29.0
     "@tsconfig/docusaurus": ^1.0.5
     "@types/dompurify": ^3.0.5
+    base-ui: 0.1.1
     body-parser: ^1.20.2
     docusaurus-node-polyfills: ^1.0.0
     dompurify: ^3.0.8
@@ -307,7 +308,6 @@ __metadata:
     "@coinbase/onchainkit": ^0.6.0
     "@heroicons/react": ^2.0.18
     "@rainbow-me/rainbowkit": ^2.0.5
-    "@sprig-technologies/sprig-browser": ^2.29.0
     "@tanstack/react-query": ^5.29.2
     "@types/node": 18.11.18
     "@types/react-copy-to-clipboard": ^5.0.7
@@ -6099,9 +6099,9 @@ __metadata:
   linkType: hard
 
 "@sprig-technologies/sprig-browser@npm:^2.29.0":
-  version: 2.30.0
-  resolution: "@sprig-technologies/sprig-browser@npm:2.30.0"
-  checksum: eed87193d7d6011496d80c9b3c7ad62c9f734a8bb71773b251263f38ffaa12630a5c0784fc06c0d8468614d4bee14a1b9b776a704c3051a733b57660fea12377
+  version: 2.30.1
+  resolution: "@sprig-technologies/sprig-browser@npm:2.30.1"
+  checksum: a93c532ca79f83ae64d72f4ae80cc33060cc4b6a9ee12c58e270b04b97b4d58b64172c162a37d45380c8533ecff7518a8e61805f5a54eff6c1e24ab7beefa861
   languageName: node
   linkType: hard
 
@@ -9783,6 +9783,7 @@ __metadata:
   dependencies:
     "@radix-ui/react-icons": ^1.3.0
     "@radix-ui/react-select": ^1.2.1
+    "@sprig-technologies/sprig-browser": ^2.29.0
     classnames: ^2.3.2
     clsx: ^1.2.1
     next: "*"
