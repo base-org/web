@@ -162,7 +162,7 @@ Open `server/src/engineController.ts`. Update the `const`s at the beginning to l
 ```typescript
 const ENGINE_URL = process.env.THIRDWEB_ENGINE_URL;
 const BACKEND_WALLET = process.env.THIRDWEB_ENGINE_BACKEND_WALLET;
-const ERC20_CONTRACT = process.env.ERC_20_CONTRACT;
+const ERC20_CONTRACT = process.env.ERC20_CONTRACT;
 const CHAIN = process.env.CHAIN;
 ```
 
