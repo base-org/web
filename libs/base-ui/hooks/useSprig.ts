@@ -9,11 +9,9 @@ export default function useSprig(environmentId: SprigEnvironmentId) {
     const loadSprig = async () => {
       try {
         const { sprig } = await import('@sprig-technologies/sprig-browser');
-        console.log('envId: ', process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID);
         const sprigInit = sprig.configure({
           environmentId: environmentId,
         });
-        console.log('sprigInit: ', sprigInit);
         void sprigInit('track', 'pageload');
         setSprig(sprigInit);
       } catch (error) {

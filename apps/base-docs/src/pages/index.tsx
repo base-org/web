@@ -5,6 +5,9 @@ import ImageCard from '../components/ImageCard';
 import TextCard from '../components/TextCard';
 import FooterCategory from '../components/FooterCategory';
 
+import useSprig from '../../../../libs/base-ui/hooks/useSprig';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
 import styles from './styles.module.css';
 
 const imageCards = [
@@ -157,6 +160,14 @@ const footerCategories = [
 ];
 
 export default function Home() {
+
+  const {
+    siteConfig: { customFields },
+  } = useDocusaurusContext();
+
+  const sprigEnvironmentId: string | undefined = customFields?.sprigEnvironmentId;
+  useSprig(sprigEnvironmentId);
+
   return (
     <Layout title="Base Docs" description="Documentation for building with Base">
       <header className={styles.heroContainer}>
