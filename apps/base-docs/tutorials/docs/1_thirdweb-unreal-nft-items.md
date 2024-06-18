@@ -120,7 +120,7 @@ Remember, the wallet key gives full access to all assets within any wallet. Use 
 
 :::caution
 
-The key to your wallet is stored in ephemeral memory in the engine itself. You'll need to readd it whenever you restart the engine.
+The key to your wallet is stored in ephemeral memory in the engine itself. You'll need to re-add it whenever you restart the engine.
 
 :::
 
