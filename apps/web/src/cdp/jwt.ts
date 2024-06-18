@@ -4,13 +4,13 @@ import { cdpBaseUri, cdpKeyName, cdpKeySecret } from 'apps/web/src/cdp/constants
 
 const algorithm = 'ES256';
 
-interface APIKeyClaims {
+type APIKeyClaims = {
   iss: string;
   sub: string;
   nbf: number;
   exp: number;
   uri: string;
-}
+};
 
 export async function generateCdpJwt(requestMethod: string, requestPath: string) {
   const uri = `${requestMethod} ${cdpBaseUri}/${requestPath}`;

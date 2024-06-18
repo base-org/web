@@ -13,14 +13,35 @@ type PreviousClaim = {
 const expiry = 300; //  5 minutes in seconds
 const previousClaimsKVPrefix = 'username:claims:';
 
+async function signMessage(claimerAddress: string) {
+  const wallet = new ethers.Wallet(trustedSignerPKey);
+
+  // encode the message
+  const message = ethers.utils.solidityPack(
+    ['bytes2', 'address', 'address', 'uint256'],
+    ['0x1900', trustedSignerAddress, claimerAddress, expiry],
+  );
+  // hash the message
+  const msgHash = ethers.utils.keccak256(message);
+
+  // sign the hashed message
+  const signature = await wallet.signMessage(ethers.utils.arrayify(msgHash));
+
+  // return the encoded signed message
+  return ethers.utils.defaultAbiCoder.encode(
+    ['address', 'uint256', 'bytes'],
+    [claimerAddress, expiry, signature],
+  );
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     res.status(405).json({ error: 'method not allowed' });
     return;
   }
   const { address } = req.query;
-  if (!address) {
-    return res.status(400).json({ error: 'address is required' });
+  if (!address || ethers.utils.isAddress(address as string)) {
+    return res.status(400).json({ error: 'valid address is required' });
   }
 
   let linkedAddressResponse: LinkedAddresses;
@@ -70,25 +91,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     console.error(error);
     return res.status(500).json({ error: 'error generating discount message' });
   }
-}
-
-async function signMessage(claimerAddress: string) {
-  const wallet = new ethers.Wallet(trustedSignerPKey);
-
-  // encode the message
-  const message = ethers.utils.solidityPack(
-    ['bytes2', 'address', 'address', 'uint256'],
-    ['0x1900', trustedSignerAddress, claimerAddress, expiry],
-  );
-  // hash the message
-  const msgHash = ethers.utils.keccak256(message);
-
-  // sign the hashed message
-  const signature = await wallet.signMessage(ethers.utils.arrayify(msgHash));
-
-  // return the encoded signed message
-  return ethers.utils.defaultAbiCoder.encode(
-    ['address', 'uint256', 'bytes'],
-    [claimerAddress, expiry, signature],
-  );
 }
