@@ -54,14 +54,14 @@ To add Base as a custom network to MetaMask:
 4. Click **Add a network manually**.
 5. In the **Add a network manually** dialog that appears, enter the following information for Base mainnet:
 
-   | Name            | Value                                                  |
-   | :-------------- | :----------------------------------------------------- |
-   | Network Name    | Base Mainnet                                           |
-   | Description     | The public mainnet for Base.                           |
-   | RPC Endpoint    | [https://mainnet.base.org](https://mainnet.base.org)   |
-   | Chain ID        | 8453                                                   |
-   | Currency Symbol | ETH                                                    |
-   | Block Explorer  | [https://explorer.base.org](https://explorer.base.org) |
+   | Name            | Value                                                        |
+   | :-------------- | :----------------------------------------------------------- |
+   | Network Name    | Base Mainnet                                                 |
+   | Description     | The public mainnet for Base.                                 |
+   | RPC Endpoint    | [https://mainnet.base.org](https://mainnet.base.org)         |
+   | Chain ID        | 8453                                                         |
+   | Currency Symbol | ETH                                                          |
+   | Block Explorer  | [https://base.blockscout.com/](https://base.blockscout.com/) |
 
 6. Tap the Save button to save Base as a network.
 
