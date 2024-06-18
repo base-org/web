@@ -29,6 +29,7 @@ const config = getDefaultConfig({
   ssr: true,
 });
 const queryClient = new QueryClient();
+const sprigEnvironmentId = process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID;
 
 export default function StaticApp({ Component, pageProps }: AppProps) {
   // Cookie Manager Provider Configuration
@@ -66,7 +67,7 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
     setIsMounted(true);
   }, []);
 
-  useSprig();
+  useSprig(sprigEnvironmentId);
 
   if (!isMounted) return null;
 

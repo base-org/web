@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
 
-export default function useSprig() {
+type SprigEnvironmentId = string | undefined;
+
+export default function useSprig(environmentId: SprigEnvironmentId) {
   const [Sprig, setSprig] = useState<unknown>(null);
 
   useEffect(() => {
     const loadSprig = async () => {
       try {
         const { sprig } = await import('@sprig-technologies/sprig-browser');
+        console.log('envId: ', process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID);
         const sprigInit = sprig.configure({
-          environmentId: process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID,
+          environmentId: environmentId,
         });
+        console.log('sprigInit: ', sprigInit);
         void sprigInit('track', 'pageload');
         setSprig(sprigInit);
       } catch (error) {
