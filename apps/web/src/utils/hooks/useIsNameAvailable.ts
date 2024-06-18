@@ -4,6 +4,7 @@ import { useReadContract } from 'wagmi';
 import { baseSepolia } from 'wagmi/chains';
 
 export function useIsNameAvailable(name: string) {
+  // TODO: This break if user types a dot
   const normalizedName = normalize(name);
 
   return useReadContract({
