@@ -140,7 +140,7 @@ In the client `.env`:
 
 In the server `.env`:
 
-- Don't change the `THIRDWEB_ENGINE_URL`
+- Don't change the `THIRDWEB_ENGINE_URL`. (It **is** supposed to be `https`)
 - Set the `THIRDWEB_ENGINE_BACKEND_WALLET` to the same as you used in the engine setup
 - Set the `THIRDWEB_AUTH_DOMAIN` as `localhost`
 - Set the `THIRDWEB_API_SECRET_KEY` to the **Secret Key** matching your [thirdweb API key]
