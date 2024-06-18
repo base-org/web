@@ -418,8 +418,6 @@ const contentSecurityPolicy = {
     'https://api.mendable.ai/v1/newConversation', // Mendable API
     'https://api.mendable.ai/v1/mendableChat', // Mendable API
     'https://api.mendable.ai/v1/rateMessage', // Mendable API
-    'https://api.sprig.com', // Sprig API
-    'https://cdn.sprig.com', // Sprig API
   ],
   'frame-src': ["'self'", 'https://player.vimeo.com', 'https://verify.walletconnect.org'],
 };

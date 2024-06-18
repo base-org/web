@@ -1,10 +1,7 @@
 {
   "extends": "../../tsconfig.projectOptions.json",
   "compilerOptions": {
-    "outDir": "../../out/apps/base-docs",
-    "paths": {
-      "base-ui": ["../../libs/base-ui"]
-    },
+    "outDir": "../../out/apps/base-docs"
   },
   "include": [
     "**/*",
@@ -13,9 +10,5 @@
   "exclude": [
     "dts"
   ],
-  "references": [
-    {
-      "path": "../../libs/base-ui"
-    }
-  ]
+  "references": []
 }

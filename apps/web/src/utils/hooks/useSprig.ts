@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 
-type SprigEnvironmentId = string | undefined;
-
-export default function useSprig(environmentId: SprigEnvironmentId) {
+export function useSprig() {
   const [Sprig, setSprig] = useState<unknown>(null);
 
   useEffect(() => {
@@ -10,7 +8,7 @@ export default function useSprig(environmentId: SprigEnvironmentId) {
       try {
         const { sprig } = await import('@sprig-technologies/sprig-browser');
         const sprigInit = sprig.configure({
-          environmentId: environmentId,
+          environmentId: process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID,
         });
         void sprigInit('track', 'pageload');
         setSprig(sprigInit);

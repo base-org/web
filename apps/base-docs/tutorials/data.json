@@ -369,7 +369,7 @@
         "duration": "34 min read",
         "checksum": "a0ce01aa1c3097efa7582a74bc73f9ccad03222b25af451be1fde4fcd45c7dd7"
     },
-    "dynamic-nfts": {
+    "dynaimc-nfts": {
         "title": "Building dynamic NFTs",
         "slug": "/dynamic-nfts",
         "description": "A tutorial that teaches how to make dynamic NFTs that evolve based on onchain or offchain actions.",
@@ -393,9 +393,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jun 17, 2024",
+        "last_updated": "Jun 7, 2024",
         "duration": "14 min read",
-        "checksum": "0b1498d415cda6e83031231cd05d42edacd2faa82d68471b2ed09670481a3259"
+        "checksum": "560c0a4dee4f2f69d1abd05c6866942f04d6e3a791d5fd2101fce8b1553c6639"
     },
     "complex-onchain-nfts": {
         "title": "Building onchain NFTs",
