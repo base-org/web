@@ -11,7 +11,7 @@ type ErrorResponse = {
 };
 
 export async function getLinkedAddresses(address: string): Promise<LinkedAddresses> {
-  if (ethers.utils.isAddress(address)) {
+  if (!ethers.utils.isAddress(address)) {
     throw new Error('valid address is required');
   }
   try {
