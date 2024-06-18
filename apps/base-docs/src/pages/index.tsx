@@ -5,7 +5,7 @@ import ImageCard from '../components/ImageCard';
 import TextCard from '../components/TextCard';
 import FooterCategory from '../components/FooterCategory';
 
-import useSprig from '../../../../libs/base-ui/hooks/useSprig';
+import useSprig from 'base-ui/hooks/useSprig';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 import styles from './styles.module.css';
