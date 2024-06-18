@@ -176,6 +176,12 @@ Click `Deploy Now`, and approve the transactions to deploy the contract and add 
 
 Next, click the `Claim Conditions` tab on the left side nav. Then click the `+ Add Phase` button and select `Public`. Review the options, but don't change any of them for this demo. Click `Save Phases`.
 
+:::caution
+
+If later in the tutorial, you get an error when you attempt to claim a token, but not an error every four seconds failing to read the balance, it's because you missed this step.
+
+:::
+
 Copy the address from the dashboard:
 
 ![Token Airdrop Dashboard](../../assets/images/build-with-thirdweb/token-airdrop-dashboard.png)
