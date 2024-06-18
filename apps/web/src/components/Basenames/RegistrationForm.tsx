@@ -1,11 +1,15 @@
 import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
 import { useCallback, useState } from 'react';
+import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
+import { useRegisterNameCallback } from 'apps/web/src/utils/hooks/useRegisterNameCallback';
 
-type RegistrationPricingProps = {
+type RegistrationFormProps = {
   name: string
 }
 
-export function RegistrationPricing({name}: RegistrationPricingProps) {
+export function RegistrationForm({ name }: RegistrationFormProps) {
+  const { openConnectModal } = useConnectModal();
+  
   const [years, setYears] = useState(1)
   const increment = useCallback(() => {
     setYears(n => n + 1)
@@ -13,6 +17,10 @@ export function RegistrationPricing({name}: RegistrationPricingProps) {
   const decrement = useCallback(() => {
     setYears(n => n > 1 ? n - 1 : n)
   }, [])
+
+  const registerName = useRegisterNameCallback(name)
+
+  const buttonClasses = 'text-xl rounded-full py-3 px-8 text-illoblack bg-gray/10 border-line/20'
   return (
     <div className='flex justify-between max-w-[784px] w-screen mx-4 bg-[#F7F7F7] border border-line/20 rounded-xl p-6 text-gray/60'>
       <div>
@@ -38,9 +46,40 @@ export function RegistrationPricing({name}: RegistrationPricingProps) {
           <span className="text-xl text-gray/60">${3.82}</span>
         </div>
       </div>
-      <button type="button" className='text-xl rounded-full py-3 px-8 text-illoblack bg-gray/10 border-line/20'>
-        connect
-      </button>
+
+      <ConnectButton.Custom>
+      {({ account, chain, openChainModal, mounted }) => {
+        const ready = mounted;
+        const connected = ready && account && chain;
+
+        if (!connected) {
+          return (
+            <button type="button" className={buttonClasses} onClick={openConnectModal}>
+              Connect wallet
+            </button>
+          );
+        }
+
+        if (chain.unsupported) {
+          return (
+            <button onClick={openChainModal} type="button">
+              Wrong network
+            </button>
+          );
+        }
+
+        return (
+      
+          <button
+            onClick={registerName}
+            className={buttonClasses}
+            type="button"
+          >
+            Register name
+          </button>
+        );
+      }}
+    </ConnectButton.Custom>
     </div>
   )
 }

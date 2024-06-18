@@ -14,7 +14,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, useCallback, useMemo, useState } from 'react';
 import { useDebounceValue, useInterval } from 'usehooks-ts';
-import { RegistrationPricing } from 'apps/web/src/components/Basenames/RegistrationPricing';
+import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
 
 enum ClaimProgression {
   SEARCH,
@@ -184,7 +184,7 @@ export default function Usernames() {
 
           {progress === ClaimProgression.CLAIM && (
             <>
-              <RegistrationPricing name={selectedName} /> 
+              <RegistrationForm name={selectedName} /> 
             <p>
               unlock your username for free!{' '}
               <button type="button" className="underline" onClick={toggleModal}>
