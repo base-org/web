@@ -32,10 +32,10 @@ const NAMES = [
   'ianlakes',
   'rcmpbell',
   'pataguccigirl',
-  'viktor',
+  'kenzee',
   'jfrankfurt',
-  'shelleylai',
-  'zencephalon',
+  'frogmonkee',
+  'dcj',
 ];
 const PILL_COUNT = NAMES.length;
 const initialBlurStates = Array.from({ length: PILL_COUNT }).map((_, index) => index % 2 === 0);

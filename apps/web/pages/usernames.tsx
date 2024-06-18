@@ -14,6 +14,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, useCallback, useMemo, useState } from 'react';
 import { useDebounceValue, useInterval } from 'usehooks-ts';
+import { RegistrationPricing } from 'apps/web/src/components/Basenames/RegistrationPricing';
 
 enum ClaimProgression {
   SEARCH,
@@ -62,6 +63,7 @@ export default function Usernames() {
   const { ref, focused: searchFocused } = useFocusWithin();
 
   const classes = useMemo(() => {
+    // the 96px here accounts for the header height
     let main =
       'relative flex min-h-[calc(100vh-96px)] w-full flex-col items-center justify-center transition-colors';
     let input =
@@ -100,7 +102,6 @@ export default function Usernames() {
           name="description"
         />
       </Head>
-      {/* this height calc is accounting for the height of the layout's navbar (96px) */}
       <RegistrationContext.Provider value={registrationValue}>
         <main className={classes.main}>
           <FloatingENSPills />
@@ -182,12 +183,15 @@ export default function Usernames() {
           </div>
 
           {progress === ClaimProgression.CLAIM && (
+            <>
+              <RegistrationPricing name={selectedName} /> 
             <p>
               unlock your username for free!{' '}
               <button type="button" className="underline" onClick={toggleModal}>
                 learn more
               </button>
             </p>
+            </>
           )}
           <Modal isOpen={learnMoreModalOpen} onClose={toggleModal} title="Qualify for a free name">
             <p className="mb-6 text-illoblack">
