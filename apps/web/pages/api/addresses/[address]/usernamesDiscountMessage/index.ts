@@ -2,16 +2,25 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { kv } from '@vercel/kv';
 import { hasRegisteredWithDiscount } from 'apps/web/src/contracts/Usernames/registrarController';
 import { ethers } from 'ethers';
-import { trustedSignerAddress, trustedSignerPKey } from 'apps/web/src/constants';
+import {
+  isDevelopment,
+  trustedSignerAddress,
+  trustedSignerPKey,
+  verifiedAccountSchemaId,
+  verifiedCb1AccountSchemaId,
+} from 'apps/web/src/constants';
 import { getLinkedAddresses, LinkedAddresses } from 'apps/web/src/cdp/api';
+import { getAttestations } from '@coinbase/onchainkit/identity';
+import { base, baseSepolia } from 'viem/chains';
 
 type PreviousClaim = {
   address: string;
   signedMessage: string;
 };
 
-const expiry = 300; //  5 minutes in seconds
+const expiry = (process.env.USERNAMES_SIGNATURE_EXPIRATION_SECONDS as unknown as number) ?? 300;
 const previousClaimsKVPrefix = 'username:claims:';
+const chain = isDevelopment ? baseSepolia : base;
 
 async function signMessage(claimerAddress: string) {
   const wallet = new ethers.Wallet(trustedSignerPKey);
@@ -33,15 +42,42 @@ async function signMessage(claimerAddress: string) {
     [claimerAddress, expiry, signature],
   );
 }
-
+/**
+ *
+ * Error responses:
+ * 400: if address is invalid or missing verifications
+ * 405: for unauthorized methods
+ * 409: if user has already claimed a username
+ * 500: for internal server errors
+ *
+ * @param req
+ * {
+ *   address: address to check if user is allowed to claim a new username with discount
+ * }
+ * @param res
+ * {
+ *  signedMessage: this is to be passed into the contract to claim a username
+ *  attestations: will show the attestations that the user has  for verified account and verified cb1 account
+ * }
+ * @returns
+ */
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     res.status(405).json({ error: 'method not allowed' });
     return;
   }
   const { address } = req.query;
-  if (!address || ethers.utils.isAddress(address as string)) {
+
+  if (!address || !ethers.utils.isAddress(address as string)) {
     return res.status(400).json({ error: 'valid address is required' });
+  }
+
+  const attestations = await getAttestations(address as `0x${string}`, chain, {
+    schemas: [verifiedAccountSchemaId, verifiedCb1AccountSchemaId],
+  });
+
+  if (!attestations?.length) {
+    return res.status(400).json({ error: 'address is not verified' });
   }
 
   let linkedAddressResponse: LinkedAddresses;
@@ -69,11 +105,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const previousClaim = await kv.get<PreviousClaim>(kvKey);
     if (previousClaim) {
       if (previousClaim.address != address) {
-        return res.status(409).json({ error: 'user has already claimed a username' });
+        return res.status(409).json({ error: ' ' });
       }
-      console.log('returning previous claim');
       // return previously signed message
-      return res.status(200).json({ result: previousClaim.signedMessage });
+      return res.status(200).json({
+        result: {
+          signedMessage: previousClaim.signedMessage,
+          attestations,
+        },
+      });
     }
 
     // generate and sign the message
