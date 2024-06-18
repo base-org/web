@@ -5,7 +5,6 @@ type Database = {
 };
 
 export enum ProofTableNamespace {
-  NFTBuilder = 'nft_builder',
   Usernames = 'usernames',
 }
 
@@ -24,7 +23,7 @@ export async function getProofsByNamespaceAndAddress(
   address: string,
   namespace: ProofTableNamespace,
 ) {
-  return await db
+  return db
     .selectFrom(proofTableName)
     .where('address', '=', address)
     .where('namespace', '=', namespace.valueOf())
