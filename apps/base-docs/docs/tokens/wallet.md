@@ -44,23 +44,20 @@ Once your ERC-20 contract is deployed, your asset is swappable instantly on Coin
 
 ### Step 2: Prepare your metadata and asset images
 
-Prepare a high-resolution images of your token's logo. Ensure it is clear, identifiable, and representative of your token.
+Prepare a high-resolution image of your token's logo. Ensure it is clear, identifiable, and representative of your token.
 
 ### Step 3: List your cryptocurrency on a listing aggregator
-##### **Note:** At this time, being listed and verified on CoinMarket Cap is the best way to ensure your token’s name, image, price chart all show up on Coinbase Wallet.
+##### **Note:** At this time, being listed and verified on CoinMarketCap is the best way to ensure your token’s name, image, price chart all show up on Coinbase Wallet.
 
 You can pay to be listed AND **verified** on CoinMarketCap following these [instructions](https://support.coinmarketcap.com/hc/en-us/articles/360043659351-Listings-Criteria).
 
-You can list for free on CoinGecko following these [instructions](https://support.coingecko.com/hc/en-us/articles/7291312302617-How-to-list-new-cryptocurrencies-on-CoinGecko)
+You can list for free on CoinGecko following these [instructions](https://support.coingecko.com/hc/en-us/articles/7291312302617-How-to-list-new-cryptocurrencies-on-CoinGecko).
 
-Once Coingecko lists your token OR CoinMarketCap lists it as **_verified_**, your asset's image logo and other metadata will flow into Coinbase Wallet and can be seen by users. **It can take 24-48hours for metadata changes to update.**
+Once CoinGecko lists your token OR CoinMarketCap lists it as **_verified_**, your asset's image logo and other metadata will flow into Coinbase Wallet and can be seen by users. **It can take 24-48 hours for metadata changes to update.**
 
 ## Why does my token display in the “Newer tokens” section?
 
-Tokens that are newly launched and have not had significant trading volume appear in this section. Once your token reaches a market cap of at least $10M on CoinGecko or Coin Market Cap, the **newer token** label inside Coinbase Wallet is removed.
-
-:::info Disclaimer: New assets with low liquidity may result in failed swaps or may result in a user receiving less of the destination token due to slippage. An important responsibility of the token creator is to communicate to the community these risks.
-:::
+Tokens that are newly launched and have not had significant trading volume appear in this section. Once your token reaches a market cap of at least $10M on CoinGecko or CoinMarketCap, the **newer token** label inside Coinbase Wallet is removed.
 
 ## Why is there no price chart for my token?
 
@@ -70,7 +67,7 @@ If the above guidance doesn’t resolve your issue, please submit more informati
 
 # Sharing your token
 ### Custom trading links
-By sharing a unique link to your token’s asset page, your community can easily and safely get your token.
+By sharing a unique link to your token’s asset page, your community can more easily interact with your token.
 
 How to get your custom link:
 
