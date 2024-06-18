@@ -1,7 +1,7 @@
 import { RegistrationContext } from 'apps/web/src/components/Basenames/RegistrationContext';
 import classNames from 'classnames';
 import Image from 'next/image';
-import { HTMLAttributes, forwardRef, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { forwardRef, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 const useMousePosition = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -108,7 +108,7 @@ Pill.displayName = 'Pill';
 
 const X_VECTOR_SCALER = 0.4;
 const Y_VECTOR_SCALER = 0.32;
-export function FloatingENSPills(props: HTMLAttributes<HTMLInputElement>) {
+export function FloatingENSPills() {
   const [radiusX, setRadiusX] = useState(window.innerWidth * X_VECTOR_SCALER);
   const [radiusY, setRadiusY] = useState(window.innerHeight * Y_VECTOR_SCALER);
   const pillRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -158,7 +158,7 @@ export function FloatingENSPills(props: HTMLAttributes<HTMLInputElement>) {
     pillRefs.current[index] = el;
   }, []);
   return (
-    <div {...props} className="absolute inset-0">
+    <div className="absolute inset-0 pointer-events-none">
       {pills.map(({ name, x, y, transform }, i) => (
         <Pill
           key={`${x}-${y}`}
