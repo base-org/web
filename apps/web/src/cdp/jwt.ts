@@ -14,12 +14,7 @@ type APIKeyClaims = {
 
 export async function generateCdpJwt(requestMethod: string, requestPath: string) {
   const uri = `${requestMethod} ${cdpBaseUri}/${requestPath}`;
-  console.log('uri', uri);
-
-  console.log('secret', cdpKeySecret);
-
   const nonce = crypto.randomBytes(16).toString('hex');
-
   const claims: APIKeyClaims = {
     iss: 'cdp',
     sub: cdpKeyName,
