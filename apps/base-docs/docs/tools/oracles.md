@@ -32,17 +32,24 @@ hide_table_of_contents: true
 
 ## API3
 
-[API3](https://api3.org/) is building secure first-party oracles for Base.
+The API3 Market provides access to 200+ price feeds on [Base Mainnet](https://market.api3.org/base) and [Testnet](https://market.api3.org/base-sepolia-testnet). The price feeds operate as a native push oracle and can be activated instantly via the Market UI.
 
-API3 is live with:
+The price feeds are delivered by an aggregate of [first-party oracles](https://docs.api3.org/explore/airnode/why-first-party-oracles.html) using signed data and support [OEV recapture](https://docs.api3.org/explore/introduction/oracle-extractable-value.html).
 
-- [dAPIs](https://docs.api3.org/guides/dapis/subscribing-managed-dapis/): First-party aggregated data feeds sourced directly from the data providers.
-- [Airnode](https://docs.api3.org/guides/airnode/calling-an-airnode/): The first-party serverless Oracle solution to bring any REST API onchain.
-- [QRNG](https://docs.api3.org/guides/qrng/): Quantum Random Number Generator for verifiable quantum RNG onchain.
+Unlike traditional data feeds, reading [API3 price feeds](https://docs.api3.org/guides/dapis/) enables dApps to auction off the right to update the price feeds to searcher bots which facilitates more efficient liquidation processes for users and LPs of DeFi money markets. The OEV recaptured is returned to the dApp.
+
+Apart from data feeds, API3 also provides [Quantum Random Number Generation](https://docs.api3.org/explore/qrng/) on Base Mainnet and Testnet. QRNG is a free-to-use service that provides quantum randomness on-chain. It is powered by [Airnode](https://docs.api3.org/reference/airnode/latest/understand/), the first-party oracle that is directly operated by the [QRNG API providers](https://docs.api3.org/reference/qrng/providers.html). Read more about QRNG [here](https://docs.api3.org/reference/qrng).
+
+Check out these guides on how to:
+
+- [Use dAPIs on the Market](https://docs.api3.org/guides/dapis/subscribing-to-dapis/)
+- [Read a dAPI](https://docs.api3.org/guides/dapis/read-a-dapi/)
+- [Get started with QRNG](https://docs.api3.org/guides/qrng/)
 
 #### Supported Networks
 
 - Base Mainnet
+- Base Sepolia (Testnet)
 
 ---
 
