@@ -65,12 +65,12 @@ export default function Usernames() {
     },
   );
 
-  const hasSelectedName = selectedName.length > 0;
   const pillWrapperClasses = classNames(
     'transition-all duration-500 mx-auto absolute top-0 -translate-x-1/2	left-1/2 z-20 ',
     {
-      'max-w-[5rem] opacity-0 pointer-events-none overflow-hidden': !hasSelectedName,
-      'max-w-full opacity-1': hasSelectedName,
+      'max-w-[5rem] opacity-0 pointer-events-none overflow-hidden':
+        progress === ClaimProgression.SEARCH,
+      'max-w-full opacity-1': progress === ClaimProgression.CLAIM,
     },
   );
 
@@ -78,16 +78,16 @@ export default function Usernames() {
     'absolute top-0 z-10 transition-all w-full mx-auto transform -translate-y-12 left-1/2 -translate-x-1/2 z-30',
     'max-w-[20rem]',
     {
-      'opacity-1 ': hasSelectedName,
-      'pointer-events-none opacity-0 ': !hasSelectedName,
+      'opacity-1 ': progress === ClaimProgression.CLAIM,
+      'pointer-events-none opacity-0 ': progress === ClaimProgression.SEARCH,
     },
   );
 
   const largeUsernameInputWrapperClasses = classNames(
     'relative z-10 transition-all w-full mx-auto',
     {
-      'opacity-1 max-w-full': !hasSelectedName,
-      'pointer-events-none opacity-0 max-w-[5rem]': hasSelectedName,
+      'opacity-1 max-w-full': progress === ClaimProgression.SEARCH,
+      'pointer-events-none opacity-0 max-w-[5rem]': progress === ClaimProgression.CLAIM,
     },
   );
 
@@ -95,22 +95,22 @@ export default function Usernames() {
     'relative mb-4 flex items-center justify-between',
     'z-10 transition-all ',
     {
-      'opacity-1': !hasSelectedName,
-      'pointer-events-none opacity-0': hasSelectedName,
+      'opacity-1': progress === ClaimProgression.SEARCH,
+      'pointer-events-none opacity-0': progress === ClaimProgression.CLAIM,
     },
   );
 
   const floatingPillsContainerclasses = classNames('transition-all ', {
-    'opacity-1': !hasSelectedName,
-    'pointer-events-none opacity-0': hasSelectedName,
+    'opacity-1': progress === ClaimProgression.SEARCH,
+    'pointer-events-none opacity-0': progress === ClaimProgression.CLAIM,
   });
 
   const pendingAnimationClasses = classNames(
     'pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center',
     'transition-all ',
     {
-      'opacity-1': true,
-      'pointer-events-none opacity-0': !true,
+      'opacity-1': progress === ClaimProgression.CLAIM,
+      'pointer-events-none opacity-0': progress === ClaimProgression.SEARCH,
     },
   );
 
