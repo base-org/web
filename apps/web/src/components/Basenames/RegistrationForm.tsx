@@ -3,30 +3,26 @@ import { useCallback, useState } from 'react';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { useRegisterNameCallback } from 'apps/web/src/utils/hooks/useRegisterNameCallback';
 
-
 type RegistrationFormProps = {
-  name: string
-}
+  name: string;
+};
 
 export function RegistrationForm({ name }: RegistrationFormProps) {
   const { openConnectModal } = useConnectModal();
-  
-  const [years, setYears] = useState(1)
-
+  const [years, setYears] = useState(1);
   const increment = useCallback(() => {
     setYears((n) => n + 1);
   }, []);
   const decrement = useCallback(() => {
+    setYears((n) => (n > 1 ? n - 1 : n));
+  }, []);
 
-    setYears(n => n > 1 ? n - 1 : n)
-  }, [])
+  const registerName = useRegisterNameCallback(name, years);
 
-  const registerName = useRegisterNameCallback(name, years)
-
-  const buttonClasses = 'text-xl rounded-full py-3 px-8 text-illoblack bg-gray/10 border-line/20'
+  const buttonClasses = 'text-xl rounded-full py-3 px-8 text-illoblack bg-gray/10 border-line/20';
 
   return (
-    <div className="mx-4 flex w-screen max-w-[784px] justify-between rounded-xl border border-line/20 bg-[#F7F7F7] p-6 text-gray/60">
+    <div className="z-10 mx-4 flex w-screen max-w-[784px] justify-between rounded-xl border border-line/20 bg-[#F7F7F7] p-6 text-gray/60">
       <div>
         <p className="mb-2 text-sm uppercase">Claim for</p>
         <div className="flex items-center justify-between">
@@ -57,41 +53,34 @@ export function RegistrationForm({ name }: RegistrationFormProps) {
         </div>
       </div>
 
-
       <ConnectButton.Custom>
-      {({ account, chain, openChainModal, mounted }) => {
-        const ready = mounted;
-        const connected = ready && account && chain;
+        {({ account, chain, openChainModal, mounted }) => {
+          const ready = mounted;
+          const connected = ready && account && chain;
 
-        if (!connected) {
+          if (!connected) {
+            return (
+              <button type="button" className={buttonClasses} onClick={openConnectModal}>
+                Connect wallet
+              </button>
+            );
+          }
+
+          if (chain.unsupported) {
+            return (
+              <button onClick={openChainModal} type="button">
+                Wrong network
+              </button>
+            );
+          }
+
           return (
-            <button type="button" className={buttonClasses} onClick={openConnectModal}>
-              Connect wallet
+            <button onClick={registerName} className={buttonClasses} type="button">
+              Register name
             </button>
           );
-        }
-
-        if (chain.unsupported) {
-          return (
-            <button onClick={openChainModal} type="button">
-              Wrong network
-            </button>
-          );
-        }
-
-        return (
-      
-          <button
-            onClick={registerName}
-            className={buttonClasses}
-            type="button"
-          >
-            Register name
-          </button>
-        );
-      }}
-    </ConnectButton.Custom>
-
+        }}
+      </ConnectButton.Custom>
     </div>
   );
 }
