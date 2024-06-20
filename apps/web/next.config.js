@@ -180,6 +180,11 @@ module.exports = extendBaseConfig({
         destination: 'https://buildonbase.deform.cc/registry/',
         permanent: true,
       },
+      {
+        source: '/registry-edit',
+        destination: 'https://buildonbase.deform.cc/registry-edit/',
+        permanent: true,
+      },
     ];
   },
 });
