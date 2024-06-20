@@ -338,13 +338,17 @@ Find the `Perform Claim` function call and replace it with `Perform NFT Claim`. 
 
 You'll want to be able to tell this collectible apart, so click on the mesh for `Collectible` on the left side in the `Component` tree, then on the `Details` panel on the right, find the `Materials` section and change it to `MI_Solid_Blue`.
 
+Click the icons at the top to `Compile` and save your asset.
+
+From the content drawer, drag your asset into the viewport.
+
 You should now see a blue orb floating where you placed it.
 
 Make sure the orb is low enough to drive through, then run the game. Collect the orb, then verify on a block explorer that you received the NFT.
 
 ### Tinting the Car
 
-In the content browser, open `All>Content>Vehicles>SportsCar.Materials`. Right-click in an empty spot and select `Material>Material Parameter Collection`. Name yours `NFT_MPS`. Open the collection, click the `+` to add an item to `Vector Parameters` and create the color of your choosing. Bright red is a good option to make your change very visible.
+In the content browser, open `All>Content>Vehicles>SportsCar>Materials`. Right-click in an empty spot and select `Material>Material Parameter Collection`. Name yours `NFT_MPS`. Open the collection, click the `+` to add an item to `Vector Parameters` and create the color of your choosing. Bright red is a good option to make your change very visible.
 
 Right-click in an empty spot again and select `Create Basic Asset>Material`. Name your new material `M_NFT_Color`. Open it by double-clicking.
 
@@ -380,6 +384,7 @@ export const getNFTColors = async (req: Request, res: Response) => {
 
     // TODO:  Extract the color from the image
 
+    // TODO: Replace response
     res.json(response.data);
   } catch (error) {
     console.error(error);
@@ -393,6 +398,8 @@ You'll also need to add this function to `engineRoutes.ts`:
 ```typescript
 router.post('/get-nft-colors', getNFTColors);
 ```
+
+Return to `engineController.ts`.
 
 Because Unreal doesn't support SVGs, you'll need to extract the color from your NFT metadata, and pass that to use in the material you created. Start by adding a type for the response, and for the JSON metadata:
 
@@ -429,8 +436,6 @@ function getColorFromBase64StringSVG(base64String: string) {
 Use these to extract an array of colors and return it:
 
 ```typescript
-const response = await axiosInstance.get(url, { headers: headers });
-
 const nfts = response.data.result.map((item: any) => {
   return {
     tokenId: item[0],
@@ -442,6 +447,7 @@ const metadata = nfts.map((nft: NFTData) => getJsonMetadata(nft));
 const colors = metadata.map((m: JSONMetadata) => getColorFromBase64StringSVG(m.image));
 
 res.json(colors);
+// Delete res.json(response.data);
 ```
 
 :::info
@@ -458,7 +464,7 @@ First, you'll need to add a new multicast delegate type to handle the response i
 
 ```c++
 // ThirdwebManager.h
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnColorsResponse, bool, bWasSuccessful, const TArray<FString> &, ResponseArray);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnNFTColorsResponse, bool, bWasSuccessful, const TArray<FString> &, ResponseArray);
 ```
 
 And expose it to the editor:
@@ -467,7 +473,7 @@ And expose it to the editor:
 // ThirdwebManager.h
 // This delegate is triggered in C++, and Blueprints can bind to it.
 UPROPERTY(BlueprintAssignable, Category = "Thirdweb", meta = (DisplayName = "OnNFTColorsResponse"))
-FOnNFTColorsResponse OnNFTColorsResponse;
+FOnNFTColorsResponse OnNFTColorsResponse;;
 ```
 
 Then, add the function to `ThirdwebManager.cpp`. It's similar, but instead hits the endpoint for the NFT color array and uses the response you just created. It also expects the response to be an array of strings instead of searching for a property called `result`:
@@ -600,13 +606,13 @@ In the content browser, add a `Blueprints>Blueprint Function Library` called `Co
 
 Copy the code from the community site and paste it into the function. Connect the `Hex String to Color` node to the `SET` node attached to `Make Array`, then from `SET` to the `Return Node`.
 
-Compile, and you'll get an error. Find and click on the error in the `Hex Code` node, then select `Create local variable`. Recompile and the error will resolve.
+Compile, and you'll get an error. Find and right-click on the error in the `Hex Code` node, then select `Create local variable`. Recompile and the error will resolve.
 
-You also need to input the string you want converted. Select the `Hex String to Color` node and click the `+` button by `Inputs`. Name it `hexString` and give it a `string` type. `Hex String` will now appear as a value in the `Hex String to Color` node. Connect it to the `Source String` input in the `Replace` node.
+You also need to input the string you want converted. Select the `Hex String to Color` node and click the `+` button by `Inputs` located in the panel on the right. Name it `hexString` and give it a `string` type. `Hex String` will now appear as a value in the `Hex String to Color` node. Connect it to the `Source String` input in the `Replace` node.
 
 Compile one last time, then save and close `ColorUtils`.
 
-Return to `Canvas_HUD`. Right-click and add a `Hex String to Color` node. Add it after the `SetText` node that adds the color to the hud. The function expects alpha values in the hex code, and connect a second output of the string array `GET` to an `Append` function and append `ff` in the `B` input. Connect the `Return Value` to the `Hex String` input in `Hex String to Color`.
+Return to `Canvas_HUD` and open the `Graph`. Right-click and add a `Hex String to Color` node. Add it after the `SetText` node that adds the color to the hud. The function expects alpha values in the hex code, and connect a second output of the string array `GET` to an `Append` function and append `ff` in the `B` input. Connect the `Return Value` to the `Hex String` input in `Hex String to Color`.
 
 Finally, add a `Set Vector Parameter Value`. Select `NFT_MPS` for the collection and `Vector` for the `Parameter Name`. Connect the `Liner Color` output of `Hex String to Color` to the `Parameter Value` input.
 
