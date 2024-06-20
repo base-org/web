@@ -612,7 +612,7 @@ You also need to input the string you want converted. Select the `Hex String to 
 
 Compile one last time, then save and close `ColorUtils`.
 
-Return to `Canvas_HUD` and open the `Graph`. Right-click and add a `Hex String to Color` node. Add it after the `SetText` node that adds the color to the hud. The function expects alpha values in the hex code, and connect a second output of the string array `GET` to an `Append` function and append `ff` in the `B` input. Connect the `Return Value` to the `Hex String` input in `Hex String to Color`.
+Return to `Canvas_HUD` and open the `Graph`. Drag out of the `SetText` node that adds the color to the HUD and add a `Hex String to Color` node. The function expects alpha values in the hex code. To add this connect a second output of the string array `GET` to an `Append` function and append `ff` in the `B` input. Connect the `Return Value` to the `Hex String` input in `Hex String to Color`.
 
 Finally, add a `Set Vector Parameter Value`. Select `NFT_MPS` for the collection and `Vector` for the `Parameter Name`. Connect the `Liner Color` output of `Hex String to Color` to the `Parameter Value` input.
 
