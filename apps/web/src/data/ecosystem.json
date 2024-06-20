@@ -3359,5 +3359,32 @@
     "description": "Providing web2 and web3 e-commerce functionality with diverse applications like tokenpay, inventory management, on-chain loyalty, gating and drops for physical and digital goods.",
     "url": "https://droplinked.com",
     "imageUrl": "/images/partners/droplinked.png"
+  },
+  {
+    "name": "omni",
+    "tags": [
+      "defi"
+    ],
+    "description": "Create a token on Base (paired with liquidity from user wallet) in less than 30 seconds. ",
+    "url": "https://www.omniswap.ai",
+    "imageUrl": "/images/partners/omni.png"
+  },
+  {
+    "name": "Bitoro Network",
+    "tags": [
+      "defi"
+    ],
+    "description": "Bitoro is a leveraged trading protocol and aggregator for the perpetual futures market. Our goal is to unify the fragmented market under one platform with optimal prices, fees, liquidity, incentives, and unparalleled ease of use.",
+    "url": "https://bitoro.network/",
+    "imageUrl": "/images/partners/bitoro.png"
+  },
+  {
+    "name": "CoinTracker",
+    "tags": [
+      "infra"
+    ],
+    "description": "Crypto taxes that simply work — with complete coverage for onchain activity. Generate accurate reports and file in minutes with the only solution that integrates directly with TurboTax and H&R Block.",
+    "url": "https://www.cointracker.io/?utm_source=base",
+    "imageUrl": "/images/partners/cointracker.png"
   }
 ]

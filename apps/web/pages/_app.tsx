@@ -20,7 +20,7 @@ import { Layout } from '../src/components/Layout/Layout';
 import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
 
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
-import { useSprig } from 'apps/web/src/utils/hooks/useSprig';
+import useSprig from 'base-ui/hooks/useSprig';
 
 const config = getDefaultConfig({
   appName: 'Base.org',
@@ -29,6 +29,7 @@ const config = getDefaultConfig({
   ssr: true,
 });
 const queryClient = new QueryClient();
+const sprigEnvironmentId = process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID;
 
 export default function StaticApp({ Component, pageProps }: AppProps) {
   // Cookie Manager Provider Configuration
@@ -66,7 +67,7 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
     setIsMounted(true);
   }, []);
 
-  useSprig();
+  useSprig(sprigEnvironmentId);
 
   if (!isMounted) return null;
 

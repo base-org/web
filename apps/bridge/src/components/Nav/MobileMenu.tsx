@@ -188,7 +188,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                 >
                   <DropdownLink href="https://docs.base.org" label="Docs" externalLink />
                   <DropdownLink
-                    href="https://explorer.base.org/"
+                    href="https://base.blockscout.com/"
                     label={`Block\nExplorer`}
                     externalLink
                   />
