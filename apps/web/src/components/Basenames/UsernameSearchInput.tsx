@@ -3,7 +3,7 @@ import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import Input from 'apps/web/src/components/Input';
 import { USERNAME_MIN_CHARACTER_LENGTH, formatBaseEthDomain } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
-import { FocusEventHandler, useCallback, useId, useState } from 'react';
+import { FocusEventHandler, useCallback, useEffect, useId, useMemo, useState } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 import { useIsNameAvailable } from 'apps/web/src/utils/hooks/useIsNameAvailable';
 
@@ -28,31 +28,36 @@ export function UsernameSearchInput({
   onBlur,
 }: UsernameSearchInputProps) {
   const [search, setSearch] = useState<string>('');
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [debouncedSearch] = useDebounceValue(search, 200);
-
-  const { isLoading, data, isError, isFetched, isFetching } = useIsNameAvailable(debouncedSearch);
-  const hasMinimumSearchLength = debouncedSearch.length >= USERNAME_MIN_CHARACTER_LENGTH;
-
-  // AFAIK this can be true, false or undefined (loading)
-  const isAvailable =
-    hasMinimumSearchLength && !isLoading && !isError && !isFetching && isFetched && data === true;
+  const { isLoading, data, isError, isFetching } = useIsNameAvailable(debouncedSearch);
 
   const handleSearchChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setSearch(value);
   }, []);
 
+  useEffect(() => {
+    const hasMinimumSearchLength = debouncedSearch.length >= USERNAME_MIN_CHARACTER_LENGTH;
+    setDropdownOpen(hasMinimumSearchLength);
+  }, [debouncedSearch]);
+
   const usernamesearchInputClasses = classNames(
     'relative z-10 transition-all duration-500 w-full mx-auto group text-black',
   );
 
   // This will change/animate the border when hovering the whole component
-  const groupBorderClasses =
-    'border-2 border-line/20 group-hover:border-blue-600 transition-colors';
+  const groupBorderClasses = classNames('transition-colors', {
+    'border-2 border-line/20 group-hover:border-blue-600 ':
+      variant === UsernameSearchInputVariant.Large,
+    'border border-transparent group-hover:border-line/20 ':
+      variant === UsernameSearchInputVariant.Small,
+
+    'shadow-lg': variant === UsernameSearchInputVariant.Large,
+  });
 
   const inputClasses = classNames(
     'w-full outline-0 placeholder:uppercase peer ',
-    groupBorderClasses,
     // Padding & Font sizes
     {
       'py-7 pl-6 pr-6 text-3xl': variant === UsernameSearchInputVariant.Large,
@@ -65,22 +70,21 @@ export function UsernameSearchInput({
     },
     // border colors
     {
-      'border-line/20 focus:border-blue-600 group-hover:border-blue-600':
-        variant === UsernameSearchInputVariant.Large,
-      'border-transparent group-hover:border-line/20 focus:border-line/20 hover:border-line/20':
-        variant === UsernameSearchInputVariant.Small,
+      'border-line/20 focus:border-blue-600 ': variant === UsernameSearchInputVariant.Large,
+      'focus:border-line/20 hover:border-line/20': variant === UsernameSearchInputVariant.Small,
     },
     // Borders Radius
     {
       'rounded-3xl': variant === UsernameSearchInputVariant.Large,
       'rounded-xl': variant === UsernameSearchInputVariant.Small,
-      'rounded-b-none border-b-none border-b-0': hasMinimumSearchLength,
+      'rounded-b-none border-b-none border-b-0': dropdownOpen,
     },
+    groupBorderClasses,
   );
 
   const dropdownClasses = classNames(
-    'flex flex-col items-start border-2 bg-white ',
-    'absolute left-0 right-0 top-full z-10 border-t-0 overflow-hidden ',
+    'flex flex-col items-start bg-white ',
+    'absolute left-0 right-0 top-full z-10 border-t-0 ',
     groupBorderClasses,
     // radius, Padding & Font sizes
     {
@@ -89,13 +93,20 @@ export function UsernameSearchInput({
     },
     // border colors
     {
-      'peer-focus:border-blue-600': variant === UsernameSearchInputVariant.Large,
-      'peer-focus:border-line/20': variant === UsernameSearchInputVariant.Small,
+      'border-2 peer-focus:border-blue-600': variant === UsernameSearchInputVariant.Large,
+      'border peer-focus:border-line/20': variant === UsernameSearchInputVariant.Small,
     },
     // Visible or not
     {
-      'opacity-0': !hasMinimumSearchLength,
-      'opacity-1': hasMinimumSearchLength,
+      'opacity-0': !dropdownOpen,
+      'opacity-1': dropdownOpen,
+    },
+
+    // // Animation
+    'transition-all overflow-scroll ',
+    {
+      'max-h-[10rem]': dropdownOpen,
+      'max-h-0 p-0 overflow-hidden border-none': !dropdownOpen,
     },
   );
 
@@ -125,14 +136,25 @@ export function UsernameSearchInput({
     'px-3': variant === UsernameSearchInputVariant.Small,
   });
 
+  const mutedMessage = classNames('text-muted ', {
+    'px-6 py-4 text': variant === UsernameSearchInputVariant.Large,
+    'px-3 py-2 text-sm': variant === UsernameSearchInputVariant.Small,
+  });
+
   const iconSize = variant === UsernameSearchInputVariant.Large ? 24 : 18;
 
-  const isUnavailable = hasMinimumSearchLength && !isLoading && !isAvailable;
   const inputId = useId();
 
-  function handleSelectName() {
-    selectName(debouncedSearch);
+  function handleSelectName(name: string) {
+    setDropdownOpen(false);
+    selectName(name);
   }
+
+  // TODO: Smarter suggestions
+  const suggestions: string[] = useMemo(() => {
+    return [`${debouncedSearch}1`, `${debouncedSearch}2`, `${debouncedSearch}3`];
+  }, [debouncedSearch]);
+
   return (
     <fieldset className={usernamesearchInputClasses}>
       <Input
@@ -149,19 +171,38 @@ export function UsernameSearchInput({
         <div className={lineClasses}>
           <div className="w-full border-t border-line/20 " />
         </div>
-        {isUnavailable && (
-          <div className="flex w-full flex-row items-center justify-between disabled:text-line">
-            {formatBaseEthDomain(debouncedSearch)} is unavailable
-          </div>
-        )}
-        <p className={dropdownLabelClasses}>
-          {isAvailable ? 'Available' : isError ? 'Error fetching name availability' : 'Suggested'}
-        </p>
-        {isAvailable && (
-          <button className={buttonClasses} type="button" onClick={handleSelectName}>
-            {formatBaseEthDomain(debouncedSearch)}
-            <ChevronRightIcon width={iconSize} height={iconSize} />
-          </button>
+        {data === true ? (
+          <>
+            <p className={dropdownLabelClasses}>Available</p>
+            <button
+              className={buttonClasses}
+              type="button"
+              onClick={() => handleSelectName(debouncedSearch)}
+            >
+              {formatBaseEthDomain(debouncedSearch)}
+              <ChevronRightIcon width={iconSize} height={iconSize} />
+            </button>
+          </>
+        ) : isLoading || isFetching ? (
+          <p className={mutedMessage}>Loading...</p>
+        ) : isError ? (
+          <p className={mutedMessage}>There was an error fetching the data</p>
+        ) : (
+          <>
+            <p className={mutedMessage}>{formatBaseEthDomain(debouncedSearch)} is not available</p>
+            <p className={dropdownLabelClasses}>Suggestion</p>
+            {suggestions.map((suggestion) => (
+              <button
+                key={suggestion}
+                className={buttonClasses}
+                type="button"
+                onClick={() => handleSelectName(suggestion)}
+              >
+                {formatBaseEthDomain(suggestion)}
+                <ChevronRightIcon width={iconSize} height={iconSize} />
+              </button>
+            ))}
+          </>
         )}
       </div>
       <MagnifyingGlassIcon width={iconSize} height={iconSize} className={searchIconClasses} />

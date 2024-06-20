@@ -1,11 +1,12 @@
 import abi from 'apps/web/src/abis/RegistrarControllerABI.json';
+import { formatNameForEns } from 'apps/web/src/utils/usernames';
 import { normalize } from 'viem/ens';
 import { useReadContract } from 'wagmi';
 import { baseSepolia } from 'wagmi/chains';
 
 export function useIsNameAvailable(name: string) {
-  // TODO: This break if user types a dot
-  const normalizedName = normalize(name);
+  const formattedName = formatNameForEns(name);
+  const normalizedName = normalize(formattedName);
 
   return useReadContract({
     abi,

@@ -16,6 +16,9 @@ import {
 } from 'apps/web/src/components/Basenames/UsernameSearchInput';
 import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
 
+// TODO: This will be replaced by a Lottie file
+import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
+
 export enum ClaimProgression {
   SEARCH,
   CLAIM,
@@ -55,7 +58,7 @@ export default function Usernames() {
 
   // the 96px here accounts for the header height
   const mainClasses = classNames(
-    'relative flex min-h-[calc(100vh-96px)] w-full flex-col items-center pt-60 transition-colors',
+    'relative flex  w-full flex-col items-center pb-32 pt-32 transition-colors px-6',
     'transition-all duration-500',
     {
       'bg-ocsblue text-white': inputFocused,
@@ -72,7 +75,7 @@ export default function Usernames() {
   );
 
   const smallUsernameInputWrapperClasses = classNames(
-    'absolute top-0 z-10 transition-all w-full mx-auto transform -translate-y-16 left-1/2 -translate-x-1/2 z-30',
+    'absolute top-0 z-10 transition-all w-full mx-auto transform -translate-y-12 left-1/2 -translate-x-1/2 z-30',
     'max-w-[20rem]',
     {
       'opacity-1 ': hasSelectedName,
@@ -97,6 +100,20 @@ export default function Usernames() {
     },
   );
 
+  const floatingPillsContainerclasses = classNames('transition-all ', {
+    'opacity-1': !hasSelectedName,
+    'pointer-events-none opacity-0': hasSelectedName,
+  });
+
+  const pendingAnimationClasses = classNames(
+    'pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center',
+    'transition-all ',
+    {
+      'opacity-1': true,
+      'pointer-events-none opacity-0': !true,
+    },
+  );
+
   return (
     <>
       <Head>
@@ -106,11 +123,17 @@ export default function Usernames() {
           name="description"
         />
       </Head>
-
-      <main className={mainClasses}>
+      <div className={floatingPillsContainerclasses}>
         <FloatingENSPills />
-
-        <div className="relative w-screen max-w-[587px]">
+      </div>
+      <div
+        className={pendingAnimationClasses}
+        style={{ backgroundImage: `url(${tempPendingAnimation.src})` }}
+      >
+        {/* <Image src={tempPendingAnimation} alt="Pending" /> */}
+      </div>
+      <main className={mainClasses}>
+        <div className="relative w-full max-w-[36rem]">
           <div className={basenameBrandingClasses}>
             <div className="flex items-center">
               <svg
@@ -130,6 +153,7 @@ export default function Usernames() {
               </svg>
               <h1 className="text-xl">BASENAMES</h1>
             </div>
+
             {SEARCH_LABEL_COPY_STRINGS.map((string) => (
               <Transition
                 as={Fragment}
