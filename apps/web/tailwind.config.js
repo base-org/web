@@ -18,6 +18,7 @@ module.exports = {
       white: '#FFFFFF',
       muted: '#8A919E',
       yellow: '#FFD200',
+      transparent: 'transparent',
       translucent: {
         100: 'rgba(255,255,255,0.1)',
         200: 'rgba(255,255,255,0.2)',

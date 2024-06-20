@@ -10,7 +10,11 @@ import Link from 'next/link';
 import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
 import { Fragment, useCallback, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
-import { LargeSearchInput } from 'apps/web/src/components/Basenames/LargeSearchInput';
+import {
+  UsernameSearchInput,
+  UsernameSearchInputVariant,
+} from 'apps/web/src/components/Basenames/UsernameSearchInput';
+import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
 
 export enum ClaimProgression {
   SEARCH,
@@ -38,14 +42,14 @@ export default function Usernames() {
   const [inputFocused, setInputFocused] = useState(false);
   const [selectedName, setSelectedName] = useState('');
 
-  const selectName = useCallback(
-    (name: string) => () => {
-      setProgress(ClaimProgression.CLAIM);
-      setInputFocused(false);
-      setSelectedName(name);
-    },
-    [],
-  );
+  const onFocusLargeUsernameSearchInput = useCallback(() => setInputFocused(true), []);
+  const onBlurLargeUsernameSearchInput = useCallback(() => setInputFocused(false), []);
+
+  const selectName = useCallback((name: string) => {
+    setProgress(ClaimProgression.CLAIM);
+    setInputFocused(false);
+    setSelectedName(name);
+  }, []);
 
   const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
 
@@ -58,6 +62,41 @@ export default function Usernames() {
     },
   );
 
+  const hasSelectedName = selectedName.length > 0;
+  const pillWrapperClasses = classNames(
+    'transition-all duration-500 mx-auto absolute top-0 -translate-x-1/2	left-1/2 z-20 ',
+    {
+      'max-w-[5rem] opacity-0 pointer-events-none overflow-hidden': !hasSelectedName,
+      'max-w-full opacity-1': hasSelectedName,
+    },
+  );
+
+  const smallUsernameInputWrapperClasses = classNames(
+    'absolute top-0 z-10 transition-all w-full mx-auto transform -translate-y-24 left-1/2 -translate-x-1/2',
+    'max-w-[20rem]',
+    {
+      'opacity-1 ': hasSelectedName,
+      'pointer-events-none opacity-0 ': !hasSelectedName,
+    },
+  );
+
+  const largeUsernameInputWrapperClasses = classNames(
+    'relative z-10 transition-all w-full mx-auto',
+    {
+      'opacity-1 max-w-full': !hasSelectedName,
+      'pointer-events-none opacity-0 max-w-[5rem]': hasSelectedName,
+    },
+  );
+
+  const basenameBrandingClasses = classNames(
+    'relative mb-4 flex items-center justify-between',
+    'z-10 transition-all ',
+    {
+      'opacity-1': !hasSelectedName,
+      'pointer-events-none opacity-0': hasSelectedName,
+    },
+  );
+
   return (
     <>
       <Head>
@@ -67,11 +106,12 @@ export default function Usernames() {
           name="description"
         />
       </Head>
-      {/* <RegistrationContext.Provider value={registrationValue}> */}
+
       <main className={mainClasses}>
         <FloatingENSPills />
-        <div>
-          <div className="relative mb-4 flex items-center justify-between">
+
+        <div className="relative w-screen max-w-[587px]">
+          <div className={basenameBrandingClasses}>
             <div className="flex items-center">
               <svg
                 width="15"
@@ -106,20 +146,33 @@ export default function Usernames() {
               </Transition>
             ))}
           </div>
-          <div className="relative mb-12 text-black">
-            <LargeSearchInput
-              selectedName={selectedName}
+
+          <div className={smallUsernameInputWrapperClasses}>
+            <UsernameSearchInput
+              variant={UsernameSearchInputVariant.Small}
+              placeholder="Find another name"
               selectName={selectName}
-              inputFocused={inputFocused}
-              setInputFocused={setInputFocused}
             />
+          </div>
+          <div className="relative mb-20">
+            <div className={pillWrapperClasses}>
+              <UsernamePill username={selectedName} />
+            </div>
+            <div className={largeUsernameInputWrapperClasses}>
+              <UsernameSearchInput
+                variant={UsernameSearchInputVariant.Large}
+                placeholder="Search for a name"
+                selectName={selectName}
+                onFocus={onFocusLargeUsernameSearchInput}
+                onBlur={onBlurLargeUsernameSearchInput}
+              />
+            </div>
           </div>
         </div>
 
-
-          {progress === ClaimProgression.CLAIM && (
-            <>
-              <RegistrationForm name={selectedName} /> 
+        {progress === ClaimProgression.CLAIM && (
+          <>
+            <RegistrationForm name={selectedName} />
             <p>
               unlock your username for free!{' '}
               <button type="button" className="underline" onClick={toggleModal}>
@@ -212,7 +265,6 @@ export default function Usernames() {
           </strong>
         </Modal>
       </main>
-      {/* </RegistrationContext.Provider> */}
     </>
   );
 }
