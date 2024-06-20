@@ -5,7 +5,7 @@ import Icon from '../Icon';
 
 import styles from './styles.module.css';
 
-const href = 'https://base.org/onchainsummer?utm_source=dotorg&utm_campaign=onchainsummer';
+const href = 'https://www.base.org/onchainsummer?utm_source=DocsSite&utm_campaign=onchainsummer';
 
 export function OcsBanner() {
   const [isBannerVisible, setIsBannerVisible] = useLocalStorage('isOcsBannerVisible', true);
