@@ -37,17 +37,19 @@ export function OcsBanner() {
             <span className={styles.bannerText}>Join the Onchain Summer Buildathon!</span>
         </a>
         {/* <div className="flex flex-row items-center gap-4"> */}
-        <div className={styles.bannerIcon}>
+        <div className={styles.bannerIconContainer}>
             <a
                 href={href}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Onchain Summer Buildathon Banner"
             >
-                <span className="hidden text-xs md:inline md:text-base" />
+                {/* <span className="hidden text-xs md:inline md:text-base" /> */}
+                <span className={styles.bannerSpacer} />
             </a>
           <button
-            className="cursor-pointer p-2 text-sm"
+            // className="cursor-pointer p-2 text-sm"
+            className={styles.bannerIconButton}
             onClick={hideBanner}
             onKeyDown={hideBanner}
             type="button"
