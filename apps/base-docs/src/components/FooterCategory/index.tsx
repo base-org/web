@@ -18,8 +18,8 @@ function FooterCategory({ title, links }: FooterCategoryProps) {
       <h4 className={styles.footerCategoryTitle}>{title}</h4>
       <ul className={styles.footerCategoryList}>
         {links.map((link) => (
-          <li className={styles.footerCategoryListItem}>
-            <a key={link.title} href={link.href} className={styles.footerCategoryLink}>
+          <li key={link.title} className={styles.footerCategoryListItem}>
+            <a href={link.href} className={styles.footerCategoryLink}>
               {link.title}
             </a>
           </li>
