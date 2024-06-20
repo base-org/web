@@ -4,10 +4,10 @@ import Image from 'next/image';
 import { forwardRef, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 const useMousePosition = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
 
   useEffect(() => {
-    let animationFrameId: number
+    let animationFrameId: number;
 
     const handleMouseMove = (event: MouseEvent) => {
       const updatePosition = () => {
@@ -29,13 +29,13 @@ const useMousePosition = () => {
 };
 
 const NAMES = [
-  'ianlakes',
-  'rcmpbell',
-  'pataguccigirl',
-  'kenzee',
-  'jfrankfurt',
-  'frogmonkee',
-  'dcj',
+  { name: 'ianlakes', avatar: '/images/avatars/ianlakes.eth.png' },
+  { name: 'wilsoncusack', avatar: '/images/avatars/wilsoncusack.eth.png' },
+  { name: 'aflock', avatar: '/images/avatars/aflock.eth.png' },
+  { name: 'johnpalmer', avatar: '/images/avatars/johnpalmer.eth.svg' },
+  { name: 'jfrankfurt', avatar: '/images/avatars/jfrankfurt.eth.jpeg' },
+  { name: 'frogmonkee', avatar: '/images/avatars/frogmonkee.eth.jpeg' },
+  { name: 'dcj', avatar: '/images/avatars/dcj.eth.avif' },
 ];
 const PILL_COUNT = NAMES.length;
 const initialBlurStates = Array.from({ length: PILL_COUNT }).map((_, index) => index % 2 === 0);
@@ -66,38 +66,37 @@ const useBlurCycle = () => {
   return blurredIndices;
 };
 
-type PillProps = { name: string; src: string; x: number; y: number; isBlurred: boolean; transform: string }
+type PillProps = {
+  name: string;
+  avatar: string;
+  x: number;
+  y: number;
+  isBlurred: boolean;
+  transform: string;
+};
 const Pill = forwardRef(
-  (
-    {
-      name,
-      src,
-      x,
-      y,
-      isBlurred,
-      transform,
-    }: PillProps,
-    ref: React.Ref<HTMLDivElement>,
-  ) => {
+  ({ avatar, name, x, y, isBlurred, transform }: PillProps, ref: React.Ref<HTMLDivElement>) => {
     const { focused, hovered } = useContext(RegistrationContext);
-    const baseStyles = `absolute flex h-12 items-center justify-center rounded-full px-2 py-3 border border-[#BFC4CF] opacity-60 transition duration-1000 ${isBlurred ? 'blur-sm' : ''}`;
+    const baseStyles = `absolute flex gap-3 items-center justify-center rounded-full px-4 py-3 border border-[#BFC4CF] opacity-60 transition duration-1000 ${
+      isBlurred ? 'blur-sm' : ''
+    }`;
     const focusedStyles = classNames(baseStyles, 'text-white bg-[#F5F8FF33]');
-    const hoveredStyles = classNames(
-      baseStyles,
-      'text-blue-600 bg-[#F5F8FF] border-[#92B6FF]',
-    );
+    const hoveredStyles = classNames(baseStyles, 'text-blue-600 bg-[#F5F8FF] border-[#92B6FF]');
+
     return (
       <div
         ref={ref}
         className={focused ? focusedStyles : hovered ? hoveredStyles : baseStyles}
-        style={{ top: `${y - 24}px`, left: `${x - 86}px`, transform }}
+        style={{ top: `${y - 60}px`, left: `${x - 60}px`, transform }}
       >
         <Image
-          src={src}
-          className="rounded-full pr-3"
+          src={avatar}
+          className="rounded-full"
           alt={`${name}-avatar`}
-          width={36}
-          height={36}
+          quality={1}
+          priority
+          width={34}
+          height={34}
         />
         <p>{name}.base.eth</p>
       </div>
@@ -131,15 +130,15 @@ export function FloatingENSPills() {
 
   const pills = Array.from({ length: PILL_COUNT }).map((_, index) => {
     const pill = pillRefs.current[index];
-    const pillWidth = pill ? pill.offsetWidth : 100; 
-    const pillHeight = pill ? pill.offsetHeight : 100; 
+    const pillWidth = pill ? pill.offsetWidth : 170;
+    const pillHeight = pill ? pill.offsetHeight : 170;
 
     const angle = index * angleStep;
     const x = centerX + radiusX * Math.cos(angle) - pillWidth / 2;
     const y = centerY + radiusY * Math.sin(angle) - pillHeight / 2;
 
-    const dx = x + pillWidth - mousePosition.x;
-    const dy = y + pillHeight - mousePosition.y;
+    const dx = x + pillWidth / 2 - mousePosition.x;
+    const dy = y + pillHeight / 2 - mousePosition.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
 
     // Normalize the direction vector
@@ -149,21 +148,22 @@ export function FloatingENSPills() {
 
     const rotationAngle = Math.min(distance / 20, 20);
     const transform = `rotate3d(${-ny}, ${-nx}, 0, ${rotationAngle}deg)`;
-    return { name: NAMES[index], x, y, transform };
+    const { name, avatar } = NAMES[index];
+    return { name, avatar, x, y, transform };
   });
 
   const blurredIndices = useBlurCycle();
   const setRef = useCallback((index: number, el: HTMLDivElement | null) => {
-    if (!el) return
+    if (!el) return;
     pillRefs.current[index] = el;
   }, []);
   return (
-    <div className="absolute inset-0 pointer-events-none">
-      {pills.map(({ name, x, y, transform }, i) => (
+    <div className="pointer-events-none absolute inset-0">
+      {pills.map(({ avatar, name, x, y, transform }, i) => (
         <Pill
           key={`${x}-${y}`}
+          avatar={avatar}
           name={name}
-          src=""
           isBlurred={blurredIndices[i]}
           x={x}
           y={y}

@@ -83,6 +83,8 @@ const contentSecurityPolicy = {
     'https://cloudflare-eth.com',
     'https://i.seadn.io/', // ens avatars
     'https://api.opensea.io', // enables getting ENS avatars
+    'https://ipfs.io', // ipfs ens avatar resolution
+    'wss://www.walletlink.org',
     isLocalDevelopment ? 'ws://localhost:3000/' : '',
     isLocalDevelopment ? 'http://localhost:3000/' : '',
   ],
@@ -93,6 +95,7 @@ const contentSecurityPolicy = {
     'data:',
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars
+    'https://ipfs.io', // ipfs ens avatar resolution
   ],
 };
 
@@ -146,6 +149,14 @@ module.exports = extendBaseConfig({
       {
         protocol: 'https',
         hostname: 'i.seadn.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ipfs.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cf-ipfs.com',
       },
     ],
   },
