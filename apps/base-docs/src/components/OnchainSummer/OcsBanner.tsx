@@ -6,6 +6,7 @@ import { useLocation } from '@docusaurus/router';
 
 import styles from './styles.module.css';
 
+const domain = 'https://base.org';
 const href = '/onchainsummer?utm_source=dotorg&utm_campaign=onchainsummer';
 
 export function OcsBanner() {
@@ -28,7 +29,7 @@ export function OcsBanner() {
       {/* <div className="z-10 flex w-full max-w-[1440px] flex-row items-center justify-between self-center bg-yellow p-2 pl-8 pr-6"> */}
       <div className={styles.bannerInner}>
         <a
-            href={href}
+            href={`${domain}${href}`}
             target="_blank"
             rel="noreferrer"
             aria-label="Onchain Summer Buildathon Banner"

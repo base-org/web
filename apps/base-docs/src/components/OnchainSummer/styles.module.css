@@ -21,6 +21,10 @@
     z-index: 10;
 }
 
+.bannerInner a:hover {
+    text-decoration: none;
+}
+
 .bannerIconContainer {
     display: flex;
     flex-direction: row;
