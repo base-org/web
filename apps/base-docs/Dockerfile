@@ -2,8 +2,6 @@ FROM 652969937640.dkr.ecr.us-east-1.amazonaws.com/containers/node:v16
 
 RUN apt-get update && apt-get install -y zip
 
-ENV NODE_ENV=production
-
 WORKDIR /repo
 
 COPY . .
@@ -11,6 +9,9 @@ COPY . .
 # Install dependencies
 RUN yarn --immutable
 
+ENV NODE_ENV=production
+RUN yarn workspace @app/base-docs build
+RUN yarn workspaces focus --all --production
+
 EXPOSE 3000
-# Build at runtime so that we get ENV variables, this allows us to use [Automatic Static Optimization](https://nextjs.org/docs/pages/building-your-application/rendering/automatic-static-optimization)
-CMD ["/bin/bash", "-c", "yarn workspace @app/base-docs build ; yarn workspace @app/base-docs start -p 3000"]
+CMD ["yarn", "workspace", "@app/base-docs", "start"]
