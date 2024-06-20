@@ -72,7 +72,7 @@ export default function Usernames() {
   );
 
   const smallUsernameInputWrapperClasses = classNames(
-    'absolute top-0 z-10 transition-all w-full mx-auto transform -translate-y-24 left-1/2 -translate-x-1/2',
+    'absolute top-0 z-10 transition-all w-full mx-auto transform -translate-y-16 left-1/2 -translate-x-1/2 z-30',
     'max-w-[20rem]',
     {
       'opacity-1 ': hasSelectedName,

@@ -51,14 +51,26 @@ export function UsernameSearchInput({
     'border-2 border-line/20 group-hover:border-blue-600 transition-colors';
 
   const inputClasses = classNames(
-    'w-full outline-0 placeholder:uppercase peer focus:border-blue-600',
+    'w-full outline-0 placeholder:uppercase peer ',
     groupBorderClasses,
     // Padding & Font sizes
     {
       'py-7 pl-6 pr-6 text-3xl': variant === UsernameSearchInputVariant.Large,
       'py-2 pl-3 pr-6': variant === UsernameSearchInputVariant.Small,
     },
-    // Borders
+    // Background
+    {
+      'bg-white': variant === UsernameSearchInputVariant.Large,
+      'bg-transparent focus:bg-white': variant === UsernameSearchInputVariant.Small,
+    },
+    // border colors
+    {
+      'border-line/20 focus:border-blue-600 group-hover:border-blue-600':
+        variant === UsernameSearchInputVariant.Large,
+      'border-transparent group-hover:border-line/20 focus:border-line/20 hover:border-line/20':
+        variant === UsernameSearchInputVariant.Small,
+    },
+    // Borders Radius
     {
       'rounded-3xl': variant === UsernameSearchInputVariant.Large,
       'rounded-xl': variant === UsernameSearchInputVariant.Small,
@@ -67,13 +79,18 @@ export function UsernameSearchInput({
   );
 
   const dropdownClasses = classNames(
-    'flex flex-col items-start  border-2 bg-white peer-focus:border-blue-600',
+    'flex flex-col items-start border-2 bg-white ',
     'absolute left-0 right-0 top-full z-10 border-t-0 overflow-hidden ',
     groupBorderClasses,
     // radius, Padding & Font sizes
     {
       'pb-4 rounded-b-3xl': variant === UsernameSearchInputVariant.Large,
       'pb-2 rounded-b-xl': variant === UsernameSearchInputVariant.Small,
+    },
+    // border colors
+    {
+      'peer-focus:border-blue-600': variant === UsernameSearchInputVariant.Large,
+      'peer-focus:border-line/20': variant === UsernameSearchInputVariant.Small,
     },
     // Visible or not
     {
