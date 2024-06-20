@@ -123,16 +123,17 @@ export default function Usernames() {
           name="description"
         />
       </Head>
-      <div className={floatingPillsContainerclasses}>
-        <FloatingENSPills />
-      </div>
-      <div
-        className={pendingAnimationClasses}
-        style={{ backgroundImage: `url(${tempPendingAnimation.src})` }}
-      >
-        {/* <Image src={tempPendingAnimation} alt="Pending" /> */}
-      </div>
+
       <main className={mainClasses}>
+        <div className={floatingPillsContainerclasses}>
+          <FloatingENSPills />
+        </div>
+        <div
+          className={pendingAnimationClasses}
+          style={{ backgroundImage: `url(${tempPendingAnimation.src})` }}
+        >
+          {/* <Image src={tempPendingAnimation} alt="Pending" /> */}
+        </div>
         <div className="relative w-full max-w-[36rem]">
           <div className={basenameBrandingClasses}>
             <div className="flex items-center">

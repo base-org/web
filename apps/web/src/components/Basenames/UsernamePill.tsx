@@ -10,7 +10,6 @@ type UsernamePillProps = {
 };
 
 export function UsernamePill({ username }: UsernamePillProps) {
-  // TODO: This font-size/design *will* overflow on mobile devices
   const pillNameClasses = classNames(
     'bg-blue-500 w-auto max-w-fit	py-4 px-6 rounded-[5rem] text-5xl text-white',
     'flex gap-4 items-center',
@@ -19,7 +18,7 @@ export function UsernamePill({ username }: UsernamePillProps) {
 
   return (
     <div className={pillNameClasses}>
-      <figure className="inline-block h-[4rem] max-h-[4rem] w-[4rem] max-w-[4rem] overflow-hidden rounded-full">
+      <figure className="inline-block h-[4rem] max-h-[4rem] min-h-[4rem] w-[4rem] min-w-[4rem] max-w-[4rem] overflow-hidden rounded-full">
         <Image
           src={tempUsernameAccount}
           priority
@@ -28,7 +27,7 @@ export function UsernamePill({ username }: UsernamePillProps) {
           className="object-fill"
         />
       </figure>
-      {formatBaseEthDomain(username)}
+      <span className="truncate">{formatBaseEthDomain(username)}</span>
     </div>
   );
 }

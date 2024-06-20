@@ -1,7 +1,11 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import Input from 'apps/web/src/components/Input';
-import { USERNAME_MIN_CHARACTER_LENGTH, formatBaseEthDomain } from 'apps/web/src/utils/usernames';
+import {
+  USERNAME_MAX_CHARACTER_LENGTH,
+  USERNAME_MIN_CHARACTER_LENGTH,
+  formatBaseEthDomain,
+} from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { FocusEventHandler, useCallback, useEffect, useId, useMemo, useState } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
@@ -38,11 +42,13 @@ export function UsernameSearchInput({
   }, []);
 
   useEffect(() => {
-    const hasMinimumSearchLength = debouncedSearch.length >= USERNAME_MIN_CHARACTER_LENGTH;
-    setDropdownOpen(hasMinimumSearchLength);
+    const validSearch =
+      debouncedSearch.length >= USERNAME_MIN_CHARACTER_LENGTH &&
+      debouncedSearch.length <= USERNAME_MAX_CHARACTER_LENGTH;
+    setDropdownOpen(validSearch);
   }, [debouncedSearch]);
 
-  const usernamesearchInputClasses = classNames(
+  const usernameSearchInputClasses = classNames(
     'relative z-10 transition-all duration-500 w-full mx-auto group text-black',
   );
 
@@ -60,7 +66,7 @@ export function UsernameSearchInput({
     'w-full outline-0 placeholder:uppercase peer ',
     // Padding & Font sizes
     {
-      'py-7 pl-6 pr-6 text-3xl': variant === UsernameSearchInputVariant.Large,
+      'py-7 pl-6 pr-16 text-3xl': variant === UsernameSearchInputVariant.Large,
       'py-2 pl-3 pr-6': variant === UsernameSearchInputVariant.Small,
     },
     // Background
@@ -116,7 +122,7 @@ export function UsernameSearchInput({
   });
 
   const buttonClasses = classNames(
-    'flex w-full flex-row items-center justify-between transition-colors hover:bg-[#F9F9F9] active:bg-[#EAEAEB]',
+    'flex w-full flex-row items-center justify-between transition-colors hover:bg-[#F9F9F9] active:bg-[#EAEAEB] truncate',
     {
       'px-6 py-4 text': variant === UsernameSearchInputVariant.Large,
       'px-3 py-2 text-sm': variant === UsernameSearchInputVariant.Small,
@@ -156,7 +162,7 @@ export function UsernameSearchInput({
   }, [debouncedSearch]);
 
   return (
-    <fieldset className={usernamesearchInputClasses}>
+    <fieldset className={usernameSearchInputClasses}>
       <Input
         type="text"
         value={search}
@@ -179,7 +185,7 @@ export function UsernameSearchInput({
               type="button"
               onClick={() => handleSelectName(debouncedSearch)}
             >
-              {formatBaseEthDomain(debouncedSearch)}
+              <span className="truncate">{formatBaseEthDomain(debouncedSearch)}</span>
               <ChevronRightIcon width={iconSize} height={iconSize} />
             </button>
           </>
@@ -198,7 +204,7 @@ export function UsernameSearchInput({
                 type="button"
                 onClick={() => handleSelectName(suggestion)}
               >
-                {formatBaseEthDomain(suggestion)}
+                <span className="truncate">{formatBaseEthDomain(suggestion)}</span>
                 <ChevronRightIcon width={iconSize} height={iconSize} />
               </button>
             ))}
