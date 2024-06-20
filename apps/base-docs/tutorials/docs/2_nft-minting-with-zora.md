@@ -14,7 +14,7 @@ displayed_sidebar: null
 
 You can interact with Zora's contracts through your own frontend, which makes it easier to create secure, efficient, and feature-rich minting experiences for your users.
 
-For this tutorial, you'll use Zora's [gassless 1155 premint] with the [Build Onchain Apps Template (⛵️)] to allow not-yet-onchain artists to use your app to create and share NFT collections **without** needing a funded wallet. And because the template includes the Coinbase [Smart Wallet], you can help these users create their first wallet and automatically receive their rewards and payments without them needing to figure anything out.
+For this tutorial, you'll use Zora's [gassless 1155 premint] with [An Onchain App in 100 Components] to allow not-yet-onchain artists to use your app to create and share NFT collections **without** needing a funded wallet. And because the template includes the Coinbase [Smart Wallet], you can help these users create their first wallet and automatically receive their rewards and payments without them needing to figure anything out.
 
 In doing so, you'll help grow the ecosystem of Base users for everyone!
 
@@ -24,7 +24,7 @@ In doing so, you'll help grow the ecosystem of Base users for everyone!
 
 By the end of this tutorial you should be able to:
 
-- Programmatically use Zora's [gassless 1155 premint] create ERC-1155 minting experiences on a frontend
+- Programmatically use Zora's [gasless 1155 premint] create ERC-1155 minting experiences on a frontend
 - Use the connected wallet address to receive minting rewards and payments
 
 ---
@@ -43,31 +43,26 @@ You'll need to be comfortable deploying your app to [Vercel], or using another s
 
 The tutorial assumes you're comfortable with the basics of deploying an app and connecting it to a smart contract. If you're still learning this part, check out our tutorials in [Base Camp] for [Building an Onchain App].
 
-### Build Onchain Apps Template (⛵️)
-
-The [Build Onchain Apps Template (⛵️)] is an advanced onchain app template that saves you weeks of work moving towards a production-ready frontend. The tutorial assumes you are working with BOAT, but these techniques should work in almost any other template built on [Next.js].
-
 ---
 
 ## Getting Started
 
-Begin by creating a new project with the [Build Onchain Apps Template (⛵️)]. In the folder where you wish to **create** your project folder, run:
+Begin by making a copy of [An Onchain App in 100 Components] by clicking the `Use this Template` button then cloning it locally.
+
+The team recommends using [Bun], so install it if you need to, then install the packages and run the app:
 
 ```bash
-npx @coinbase/build-onchain-apps@latest create
+# Install bun in case you don't have it
+bun curl -fsSL <https://bun.sh/install> | bash
+
+# Install packages
+bun i
+
+# Run Next app
+bun run dev
 ```
 
-Enter a name for your project, then use the space bar to remove all three experiences. You won't need them for this tutorial.
-
-Open the [Coinbase Developer Platform] and sign in or create an account if you need one. Select `Node` from the list of prouducts.
-
-![CDP Pick Node](../../assets/images/build-with-zora/cdp-pick-node.png)
-
-Copy your `RPC Endpoint` and paste it into the terminal prompt for `Base RPC URL`.
-
-Next, navigate to [Basescan] and log in or create an account. In the left panel, click `API Keys`. Copy your `API Key Token` and paste it into the console.
-
-Wait for the script to run then open the generated folder in your editor. CD into the `web` folder then run `yarn install && yarn dev`.
+You only need to create
 
 Navigate to `localhost:3000` and confirm the app is working.
 
@@ -75,42 +70,91 @@ Navigate to `localhost:3000` and confirm the app is working.
 
 This tutorial won't cover all of the frontend development, auth, databases, or other details of making a production app, but it will walk you through the major pieces of enabling your users to use your app to:
 
-- Create an NFT collection, gasslessly with `Premint`
+- Create a Coinbase Smart Wallet, if they need one
+- Create an NFT collection, gaslessly with `Premint`
 - Add tokens to that collection
 - Allow other people to mint the tokens
 
-### Creating the Premint from the App
-
-Start by installing Zora's [Protocol SDK].
-
-```bash
-yarn add @zoralabs/protocol-sdk viem@2.x
-```
-
-Continue by adding a new page to the app. In the `app` folder, create a folder called `createPremint` with a file called `page.tsx`. Add a stub for a page:
+Begin by opening `src/app/page.tsx` and doing some cleanup. Delete everything expect the wallet integration, and add some copy that is friendly to non-crypto-native users:
 
 ```typescript
-import { generateMetadata } from '@/utils/generateMetadata';
-
-export const metadata = generateMetadata({
-  title: 'Create your NFT collection',
-  description: 'Create your NFT collection quickly, easily, and for free!',
-  images: 'themes.png',
-  pathname: '',
-});
+'use client';
+import WalletComponents from '@/components/WalletComponents';
 
 export default function Page() {
+  return (
+    <div className="flex w-96 flex-col md:w-[600px]">
+      <section className="mb-6 flex w-full flex-col border-b border-sky-800 pb-6">
+        <aside className="mb-6 flex">
+          <h2 className="text-xl">Wallet</h2>
+        </aside>
+        <p className="text-body text-white">
+          Welcome! Please sign in with your wallet. If you are new at this, you can create a new
+          wallet by clicking the "Connect wallet" button and following the instructions!
+        </p>
+        <WalletComponents />
+      </section>
+    </div>
+  );
+}
+```
+
+You can also delete the files for the components you removed. You still need `OnchainProviders.tsx` and `WalletComponents.tsx`.
+
+### Creating the Premint from the App
+
+:::info
+
+Gas on Base is currently inexpensive enough that we're doing this tutorial on the live network! Zora supports Base Sepolia as well, so feel free to use that instead.
+
+:::
+
+Open `src/app/wagmi.ts` and convert the references of `baseSepolia` to `base`.
+
+Install the [Zora Protocol SDK].
+
+```bash
+bun add @zoralabs/protocol-sdk viem@2.x
+```
+
+In `src/app/components` add a folder called `Zora` and file called `CreatePremint.tsx`. Open `CreatePremint.tsx`.
+
+Import dependencies, instantiate a client, and stub out a component.
+
+```typescript
+import { createCreatorClient } from '@zoralabs/protocol-sdk';
+import { useAccount, useChainId, usePublicClient, useSignTypedData } from 'wagmi';
+
+export default function CreatePremint() {
+  const chainId = useChainId();
+  const publicClient = usePublicClient()!;
+  const { address: creatorAddress } = useAccount();
+
+  const creatorClient = createCreatorClient({ chainId, publicClient });
+
   return <div>TODO</div>;
 }
 ```
 
-In `src/components` add a folder called `Zora` and a file called `CreatePremint.tsx`.
-
-In it, import dependencies and instantiate a `creatorClient`.
+Add a function to `createPremint` with the arguments accepted by the API.
 
 ```typescript
-
+async function createPremint(
+  contractName: string,
+  contractURI: string,
+  tokenURI: string,
+  createReferral: string,
+  maxSupply: bigint,
+  maxTokensPerAddress: bigint,
+  mintStart: bigint,
+  mintDuration: bigint,
+  pricePerToken: bigint,
+) {
+  // TODO
+}
 ```
+
+The example in the [premint docs] goes into detail about the parameters, but they should be largely self-evident.
 
 ## Conclusion
 
@@ -121,16 +165,18 @@ In it, import dependencies and instantiate a `creatorClient`.
 [Vercel]: https://vercel.com
 [deploying with Vercel]: /tutorials/farcaster-frames-deploy-to-vercel
 [OpenZeppelin ERC-721]: https://docs.openzeppelin.com/contracts/2.x/api/token/erc721
-[BOAT]: https://www.smartwallet.dev/guides/create-app/using-boat
 [wagmi template]: https://www.smartwallet.dev/guides/create-app/using-wagmi
 [superchain ecosystem]: https://www.superchain.eco/chains
 [Zora]: https://zora.co/
-[Build Onchain Apps Template (⛵️)]: https://github.com/coinbase/build-onchain-apps/
+[An Onchain App in 100 Components]: https://github.com/Zizzamia/an-onchain-app-in-100-components
 [Next.js]: https://nextjs.org/
 [Coinbase Developer Platform]: https://www.coinbase.com/developer-platform
 [Basescan]: https://basescan.org/
 [Zora Docs]: https://docs.zora.co/docs/intro
+[Zora Protocol SDK]: https://ourzora.github.io/zora-protocol/protocol-sdk/introduction
 [Zora 1155 Contracts]: https://docs.zora.co/docs/smart-contracts/creator-tools/Deploy1155Contract
 [viem]: https://viem.sh/
-[gassless 1155 premint]: https://ourzora.github.io/zora-protocol/protocol-sdk/creator/premint
+[gasless 1155 premint]: https://ourzora.github.io/zora-protocol/protocol-sdk/creator/premint
 [Smart Wallet]: https://www.coinbase.com/wallet/smart-wallet
+[premint docs]: https://ourzora.github.io/zora-protocol/protocol-sdk/creator/premint
+[wagmi]: https://wagmi.sh
