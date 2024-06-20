@@ -4,20 +4,10 @@ module.exports = {
     ['using-base'],
     {
       type: 'category',
-      label: 'Building on Base',
+      label: 'Notices',
       collapsible: false,
       collapsed: false,
-      items: [
-        'building-with-base/network-information',
-        'building-with-base/base-contracts',
-        'building-with-base/fees',
-        'building-with-base/differences',
-        {
-          type: 'link',
-          label: 'Decentralizing Base with Optimism',
-          href: 'https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I',
-        },
-      ],
+      items: ['notices/preparing-for-fault-proofs-on-base-sepolia'],
     },
     {
       type: 'category',
