@@ -208,6 +208,7 @@ const config = {
             {
               label: 'Bootcamp',
               to: 'https://base.org/bootcamp',
+              target: '_blank',
               type: 'custom-dropdownLink',
               eventLabel: 'BootCampButton_Clicked',
             },
@@ -220,13 +221,15 @@ const config = {
           items: [
             {
               label: 'Apps',
-              href: 'https://www.base.org/ecosystem',
+              to: 'https://www.base.org/ecosystem',
+              target: '_blank',
               type: 'custom-dropdownLink',
               eventLabel: 'AppsButton_Clicked',
             },
             {
               label: 'Grants',
-              href: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders',
+              to: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders',
+              target: '_blank',
               type: 'custom-dropdownLink',
               eventLabel: 'GrantsButton_Clicked',
             },
@@ -236,6 +239,7 @@ const config = {
           label: 'Bridge',
           navposition: 'topRight',
           to: 'https://bridge.base.org/',
+          target: '_blank',
           type: 'custom-navbarLink',
           eventLabel: 'BridgeButton_Clicked',
         },
@@ -247,18 +251,21 @@ const config = {
             {
               label: 'Block Explorer',
               to: 'https://base.blockscout.com/',
+              target: '_blank',
               type: 'custom-dropdownLink',
               eventLabel: 'BlockExplorerButton_Clicked',
             },
             {
               label: 'Status',
               to: 'https://status.base.org/',
+              target: '_blank',
               type: 'custom-dropdownLink',
               eventLabel: 'StatusButton_Clicked',
             },
             {
               label: 'Bug Bounty',
               to: 'https://hackerone.com/coinbase',
+              target: '_blank',
               type: 'custom-dropdownLink',
               eventLabel: 'BugBountyButton_Clicked',
             },
@@ -272,18 +279,21 @@ const config = {
             {
               label: 'Mission',
               to: 'https://www.base.org/about',
+              target: '_blank',
               type: 'custom-dropdownLink',
               eventLabel: 'MissionButton_Clicked',
             },
             {
               label: 'Blog',
               to: 'https://base.mirror.xyz/',
+              target: '_blank',
               type: 'custom-dropdownLink',
               eventLabel: 'BlogButton_Clicked',
             },
             {
               label: 'Jobs',
               to: 'https://www.base.org/jobs',
+              target: '_blank',
               type: 'custom-dropdownLink',
               eventLabel: 'JobsButton_Clicked',
             },
