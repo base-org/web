@@ -240,7 +240,7 @@ export default function Usernames() {
                   height={30}
                   className="mr-3"
                 />
-                A Coinbase verification{' '}
+                A Coinbase account verification{' '}
                 <Tooltip content="Verifies you have a valid trading account on Coinbase">
                   <InformationCircleIcon
                     width={12}
@@ -257,25 +257,8 @@ export default function Usernames() {
                   height={30}
                   className="mr-3"
                 />
-                A Coinbase One verification{' '}
+                A Coinbase One subscription verification{' '}
                 <Tooltip content="Verifies you have an active Coinbase One subscription">
-                  <InformationCircleIcon
-                    width={12}
-                    height={12}
-                    className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
-                  />
-                </Tooltip>
-              </li>
-              <li className="flex flex-row items-center justify-start">
-                <Image
-                  src="/images/usernames/sw-verification.svg"
-                  alt="criteria icon"
-                  width={30}
-                  height={30}
-                  className="mr-3"
-                />
-                Deployed a smart wallet{' '}
-                <Tooltip content="Smart wallet deployed from Coinbase Wallet">
                   <InformationCircleIcon
                     width={12}
                     height={12}
@@ -301,12 +284,6 @@ export default function Usernames() {
                 </Tooltip>
               </li>
             </ul>
-            <strong className="self-start">
-              Don&apos;t have any of these?&nbsp;
-              <Link className="underline" href="https://www.coinbase.com/wallet/smart-wallet">
-                Deploy a smart wallet
-              </Link>
-            </strong>
           </Modal>
         </main>
       </RegistrationContext.Provider>
