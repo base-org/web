@@ -49,18 +49,17 @@ export function UsernameSearchInput({
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [debouncedSearch] = useDebounceValue(search, 200);
   const { isLoading, data, isError, isFetching } = useIsNameAvailable(debouncedSearch);
-
+  const validSearch =
+    debouncedSearch.length >= USERNAME_MIN_CHARACTER_LENGTH &&
+    debouncedSearch.length <= USERNAME_MAX_CHARACTER_LENGTH;
   const handleSearchChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setSearch(value);
   }, []);
 
   useEffect(() => {
-    const validSearch =
-      debouncedSearch.length >= USERNAME_MIN_CHARACTER_LENGTH &&
-      debouncedSearch.length <= USERNAME_MAX_CHARACTER_LENGTH;
     setDropdownOpen(validSearch);
-  }, [debouncedSearch]);
+  }, [debouncedSearch, validSearch]);
 
   const usernameSearchInputClasses = classNames(
     'relative z-10 transition-all duration-500 w-full mx-auto group text-black',
@@ -171,8 +170,15 @@ export function UsernameSearchInput({
   }
 
   useEffect(() => {
-    if (!focused) setDropdownOpen(false);
-  }, [focused]);
+    if (!focused) {
+      setDropdownOpen(false);
+      return;
+    }
+
+    if (focused && validSearch) {
+      setDropdownOpen(true);
+    }
+  }, [focused, validSearch]);
 
   // TODO: Smarter suggestions
   // Right now david.base.eth is taken, it'll suggest david1.base.eth but
