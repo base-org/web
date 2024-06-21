@@ -13,7 +13,7 @@ export const sanitizeEnsDomainName = (name: string) => {
 };
 
 export const normalizeEnsDomainName = (name: string) => {
-  normalize(sanitizeEnsDomainName(name));
+  return normalize(sanitizeEnsDomainName(name));
 };
 
 export const formatBaseEthDomain = (name: string) => {
