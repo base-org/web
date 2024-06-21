@@ -17,6 +17,16 @@ type PreviousClaim = {
   address: string;
   signedMessage: string;
 };
+type VerifiedAccount = {
+  name: string;
+  type: string;
+  signature: string;
+  value: {
+    name: string;
+    type: string;
+    value: boolean;
+  };
+};
 
 const expiry = (process.env.USERNAMES_SIGNATURE_EXPIRATION_SECONDS as unknown as number) ?? 300;
 const previousClaimsKVPrefix = 'username:claims:';
@@ -80,7 +90,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: 'address is not verified' });
   }
   const attestationsRes = attestations.map(
-    (attestation) => JSON.parse(attestation.decodedDataJson)[0],
+    (attestation) => JSON.parse(attestation.decodedDataJson)[0] as VerifiedAccount,
   );
 
   let linkedAddressResponse: LinkedAddresses;
