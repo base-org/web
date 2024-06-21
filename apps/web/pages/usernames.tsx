@@ -75,16 +75,16 @@ export default function Usernames() {
   );
 
   const smallUsernameInputWrapperClasses = classNames(
-    'absolute top-0 z-10 transition-all w-full mx-auto transform -translate-y-12 left-1/2 -translate-x-1/2 z-30',
+    'absolute top-0 z-10 transition-all duration-500 w-full mx-auto transform  left-1/2 -translate-x-1/2 z-30',
     'max-w-[20rem]',
     {
-      'opacity-1 ': progress === ClaimProgression.CLAIM,
-      'pointer-events-none opacity-0 ': progress === ClaimProgression.SEARCH,
+      'opacity-1 -translate-y-12': progress === ClaimProgression.CLAIM,
+      'pointer-events-none opacity-0 translate-y-0': progress === ClaimProgression.SEARCH,
     },
   );
 
   const largeUsernameInputWrapperClasses = classNames(
-    'relative z-10 transition-all w-full mx-auto max-w-[36rem]',
+    'relative z-10 transition-all w-full mx-auto max-w-[36rem] duration-500',
     {
       'opacity-1': progress === ClaimProgression.SEARCH,
       'pointer-events-none opacity-0 max-w-[5rem]': progress === ClaimProgression.CLAIM,
@@ -93,24 +93,32 @@ export default function Usernames() {
 
   const basenameBrandingClasses = classNames(
     'relative mb-4 flex items-center justify-between max-w-[36rem] mx-auto',
-    'z-10 transition-all ',
+    'z-10 transition-all duration-500',
     {
       'opacity-1': progress === ClaimProgression.SEARCH,
       'pointer-events-none opacity-0': progress === ClaimProgression.CLAIM,
     },
   );
 
-  const floatingPillsContainerclasses = classNames('transition-all ', {
+  const floatingPillsContainerclasses = classNames('transition-all duration-500', {
     'opacity-1': progress === ClaimProgression.SEARCH,
     'pointer-events-none opacity-0': progress === ClaimProgression.CLAIM,
   });
 
   const pendingAnimationClasses = classNames(
     'pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center',
-    'transition-all ',
+    'transition-all duration-500',
     {
       'opacity-1': progress === ClaimProgression.CLAIM,
       'pointer-events-none opacity-0': progress === ClaimProgression.SEARCH,
+    },
+  );
+
+  const registrationWrapperClasses = classNames(
+    ' w-full max-w-[50rem] transition-all duration-500 mx-auto',
+    {
+      'opacity-1': progress === ClaimProgression.CLAIM,
+      'opacity-0': progress === ClaimProgression.SEARCH,
     },
   );
 
@@ -193,19 +201,17 @@ export default function Usernames() {
               />
             </div>
           </div>
-        </div>
 
-        {progress === ClaimProgression.CLAIM && (
-          <>
+          <div className={registrationWrapperClasses}>
             <RegistrationForm name={selectedName} />
-            <p>
+            <p className="mt-6 text-center">
               unlock your username for free!{' '}
               <button type="button" className="underline" onClick={toggleModal}>
                 learn more
               </button>
             </p>
-          </>
-        )}
+          </div>
+        </div>
 
         <Modal isOpen={learnMoreModalOpen} onClose={toggleModal} title="Qualify for a free name">
           <p className="mb-6 text-illoblack">

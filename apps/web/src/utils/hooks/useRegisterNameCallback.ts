@@ -1,4 +1,5 @@
 import abi from 'apps/web/src/abis/RegistrarControllerABI.json';
+import { formatNameForEns } from 'apps/web/src/utils/usernames';
 import { getContract } from 'viem';
 import { normalize } from 'viem/ens';
 import { useAccount, useWalletClient, useWriteContract } from 'wagmi';
@@ -11,7 +12,8 @@ function secondsInYears(years: number): number {
 
 export function useRegisterNameCallback(name: string, years: number) {
   const { address } = useAccount();
-  const normalizedName = normalize(name);
+  const formattedName = formatNameForEns(name);
+  const normalizedName = normalize(formattedName);
   const { data: client } = useWalletClient();
   const registerRequest = {
     name: normalizedName, // The name being registered.
