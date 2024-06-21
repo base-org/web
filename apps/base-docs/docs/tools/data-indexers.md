@@ -114,6 +114,21 @@ To get started with Moralis, you can [sign up for an account](https://moralis.io
 
 ---
 
+## Nexandria
+
+[Nexandria](https://www.nexandria.com/?utm_source=base-docs&utm_medium=partner-docs) API offers access to complete historical on-chain data at blazing speeds, arbitrary granularity (as low as block-level) and at viable unit economics (think web2 level costs). Our technology lets you generate subgraphs on the fly, unlocking unique endpoints like a statement of all the balance transfers for all the tokens, or a list of all the neighbors of an address with all the historical interaction details or a portfolio balance graph covering all the tokens across arbitrary time/block ranges.
+
+References:
+
+- [API Documentation](https://docs.nexandria.com/)
+- [Sign-up](https://www.nexandria.com/api)
+
+#### Supported Networks
+
+- Base Mainnet
+
+---
+
 ## Shovel
 
 [Shovel](https://indexsupply.com/shovel) is an [open source](https://github.com/indexsupply/code) tool for synchronizing Ethereum data to your Postgres database. Shovel can index block data, transaction data, and decoded event data. A single Shovel can index multiple chains simultaneously. Shovel is configured via a declarative JSON config file – no custom functions to save indexed data to your database.
