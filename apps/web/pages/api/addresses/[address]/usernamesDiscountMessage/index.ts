@@ -79,6 +79,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!attestations?.length) {
     return res.status(400).json({ error: 'address is not verified' });
   }
+  const attestationsRes = attestations.map(
+    (attestation) => JSON.parse(attestation.decodedDataJson)[0],
+  );
 
   let linkedAddressResponse: LinkedAddresses;
   try {
@@ -111,7 +114,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(200).json({
         result: {
           signedMessage: previousClaim.signedMessage,
-          attestations,
+          attestations: attestationsRes,
         },
       });
     }
@@ -126,7 +129,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // save the signed message on kv with expiry time
     await kv.set(kvKey, claim, { ex: expiry });
 
-    return res.status(200).json({ result: signedMessage });
+    return res.status(200).json({
+      result: {
+        signedMessage: claim.signedMessage,
+        attestations: attestationsRes,
+      },
+    });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'error generating discount message' });

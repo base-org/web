@@ -6,7 +6,7 @@ export async function cdpGet(endpoint: string, authed: boolean): Promise<Respons
   const url = `https://${cdpBaseUri}/${endpoint}`;
   const headers = new Headers();
   if (authed) {
-    const jwt = await generateCdpJwt('GET', url);
+    const jwt = await generateCdpJwt('GET', endpoint);
     headers.set('Authorization', `Bearer ${jwt}`);
   }
   return fetch(url, {
