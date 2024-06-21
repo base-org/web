@@ -58,7 +58,7 @@ export default function Usernames() {
 
   // the 96px here accounts for the header height
   const mainClasses = classNames(
-    'relative flex  w-full flex-col items-center pb-32 pt-32 transition-colors px-6',
+    'relative flex min-h-[calc(100vh-96px)] w-full flex-col items-center pb-32 pt-32 transition-colors px-6',
     'transition-all duration-500',
     {
       'bg-ocsblue text-white': inputFocused,
@@ -66,7 +66,7 @@ export default function Usernames() {
   );
 
   const pillWrapperClasses = classNames(
-    'transition-all duration-500 mx-auto absolute top-0 -translate-x-1/2	left-1/2 z-20 ',
+    'transition-all duration-500 mx-auto absolute top-0 -translate-x-1/2 left-1/2 z-20 ',
     {
       'max-w-[5rem] opacity-0 pointer-events-none overflow-hidden':
         progress === ClaimProgression.SEARCH,
@@ -134,7 +134,7 @@ export default function Usernames() {
         >
           {/* <Image src={tempPendingAnimation} alt="Pending" /> */}
         </div>
-        <div className="relative w-full">
+        <div className="relative mt-24 w-full">
           <div className={basenameBrandingClasses}>
             <div className="flex items-center">
               <svg
