@@ -207,7 +207,7 @@ const config = {
             },
             {
               label: 'Bootcamp',
-              href: 'https://base.org/bootcamp',
+              to: 'https://base.org/bootcamp',
               type: 'custom-dropdownLink',
               eventLabel: 'BootCampButton_Clicked',
             },
