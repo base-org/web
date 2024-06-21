@@ -113,7 +113,7 @@ export const CustomNavbarLink = (props) => {
       href={props.to}
       className='navbar__item navbar__link'
       onClick={() => {
-        logEvent(props.eventLabel, {})
+        logEvent(props.eventLabel, props.eventDetail ?? {})
       }}
     >
       {props.label}
@@ -129,7 +129,7 @@ export const CustomDropdownLink = (props) => {
         className='dropdown__link'
         style={{ cursor: 'pointer'}}
         onClick={() => {
-          logEvent(props.eventLabel, {})
+          logEvent(props.eventLabel, props.eventDetail ?? {})
         }}
       >
         {props.label}
