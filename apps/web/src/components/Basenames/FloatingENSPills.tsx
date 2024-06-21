@@ -77,16 +77,24 @@ type PillProps = {
 const Pill = forwardRef(
   ({ avatar, name, x, y, isBlurred, transform }: PillProps, ref: React.Ref<HTMLDivElement>) => {
     const { focused, hovered } = useContext(RegistrationContext);
-    const baseStyles = `absolute flex gap-3 items-center justify-center rounded-full px-4 py-3 border border-[#BFC4CF] opacity-60 transition duration-1000 ${
-      isBlurred ? 'blur-sm' : ''
-    }`;
-    const focusedStyles = classNames(baseStyles, 'text-white bg-[#F5F8FF33]');
-    const hoveredStyles = classNames(baseStyles, 'text-blue-600 bg-[#F5F8FF] border-[#92B6FF]');
+
+    const pillClasses = classNames(
+      'absolute flex gap-3 items-center justify-center rounded-full px-4 py-3 border opacity-60',
+      'transition-all duration-500',
+      // Default
+      'border-[#BFC4CF] background-[#EEF0F3] text-black',
+
+      {
+        'blur-sm': isBlurred,
+        'bg-blue-600/10 border-blue-600/20 text-blue-600': !focused && hovered,
+        'bg-white/20 border-white/80 text-white': focused,
+      },
+    );
 
     return (
       <div
         ref={ref}
-        className={focused ? focusedStyles : hovered ? hoveredStyles : baseStyles}
+        className={pillClasses}
         style={{ top: `${y - 60}px`, left: `${x - 60}px`, transform }}
       >
         <Image

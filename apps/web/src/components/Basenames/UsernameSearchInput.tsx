@@ -7,7 +7,15 @@ import {
   formatBaseEthDomain,
 } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
-import { FocusEventHandler, useCallback, useEffect, useId, useMemo, useState } from 'react';
+import {
+  FocusEventHandler,
+  MouseEventHandler,
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useState,
+} from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 import { useIsNameAvailable } from 'apps/web/src/utils/hooks/useIsNameAvailable';
 
@@ -22,6 +30,8 @@ type UsernameSearchInputProps = {
   placeholder: string;
   onFocus?: FocusEventHandler<HTMLInputElement>;
   onBlur?: FocusEventHandler<HTMLInputElement>;
+  onMouseEnter?: MouseEventHandler<HTMLFieldSetElement>;
+  onMouseLeave?: MouseEventHandler<HTMLFieldSetElement>;
 };
 
 export function UsernameSearchInput({
@@ -30,6 +40,8 @@ export function UsernameSearchInput({
   placeholder,
   onFocus,
   onBlur,
+  onMouseEnter,
+  onMouseLeave,
 }: UsernameSearchInputProps) {
   const [search, setSearch] = useState<string>('');
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
@@ -162,7 +174,11 @@ export function UsernameSearchInput({
   }, [debouncedSearch]);
 
   return (
-    <fieldset className={usernameSearchInputClasses}>
+    <fieldset
+      className={usernameSearchInputClasses}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <Input
         type="text"
         value={search}
