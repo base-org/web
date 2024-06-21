@@ -196,14 +196,20 @@ const config = {
             {
               label: 'Learn',
               to: '/base-camp/docs/welcome',
+              type: 'custom-dropdownLink',
+              eventLabel: 'LearnButton_Clicked',
             },
             {
               label: 'Track your progress',
               to: '/base-camp/progress',
+              type: 'custom-dropdownLink',
+              eventLabel: 'TrackYourProgressButton_Clicked',
             },
             {
               label: 'Bootcamp',
               href: 'https://base.org/bootcamp',
+              type: 'custom-dropdownLink',
+              eventLabel: 'BootCampButton_Clicked',
             },
           ],
         },
@@ -215,10 +221,14 @@ const config = {
             {
               label: 'Apps',
               href: 'https://www.base.org/ecosystem',
+              type: 'custom-dropdownLink',
+              eventLabel: 'AppsButton_Clicked',
             },
             {
               label: 'Grants',
               href: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders',
+              type: 'custom-dropdownLink',
+              eventLabel: 'GrantsButton_Clicked',
             },
           ],
         },
