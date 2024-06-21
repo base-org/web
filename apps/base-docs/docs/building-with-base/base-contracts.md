@@ -131,8 +131,8 @@ Certain contracts are mandatory according to the [OP Stack SDK](https://stack.op
 | Batch Sender           | [0x6CDEbe940BC0F26850285cacA097C11c33103E47](https://sepolia.etherscan.io/address/0x6CDEbe940BC0F26850285cacA097C11c33103E47)      | EOA managed by Coinbase Technologies |
 | Batch Inbox            | [0xff00000000000000000000000000000000084532](https://sepolia.etherscan.io/address/0xff00000000000000000000000000000000084532)      | EOA (with no known private key)      |
 | Output Proposer        | [0x20044a0d104E9e788A0C984A2B7eAe615afD046b](https://sepolia.etherscan.io/address/0x20044a0d104E9e788A0C984A2B7eAe615afD046b)      | EOA managed by Coinbase Technologies |
-| Proxy Admin Owner (L1) | [0x608081689Fe46936fB2fBDF7552CbB1D80ad4822](https://sepolia.etherscan.io/address/0x608081689Fe46936fB2fBDF7552CbB1D80ad4822)      | EOA managed by Coinbase Technologies |
-| Proxy Admin Owner (L2) | [0x608081689Fe46936fB2fBDF7552CbB1D80ad4822](https://sepolia-explorer.base.org/address/0x608081689Fe46936fB2fBDF7552CbB1D80ad4822) | EOA managed by Coinbase Technologies |
+| Proxy Admin Owner (L1) | [0x0fe884546476dDd290eC46318785046ef68a0BA9](https://sepolia.etherscan.io/address/0x0fe884546476dDd290eC46318785046ef68a0BA9)      | Gnosis Safe                          |
+| Proxy Admin Owner (L2) | [0x20f984546476ddd290ec46318785046ef68a1cba](https://sepolia-explorer.base.org/address/0x20f984546476ddd290ec46318785046ef68a1cba) | Gnosis Safe                          |
 | Challenger             | [0xDa3037Ff70Ac92CD867c683BD807e5A484857405](https://sepolia.etherscan.io/address/0xDa3037Ff70Ac92CD867c683BD807e5A484857405)      | EOA managed by Coinbase Technologies |
-| System config owner    | [0x608081689Fe46936fB2fBDF7552CbB1D80ad4822](https://sepolia.etherscan.io/address/0x608081689Fe46936fB2fBDF7552CbB1D80ad4822)      | EOA managed by Coinbase Technologies |
+| System config owner    | [0x0fe884546476dDd290eC46318785046ef68a0BA9](https://sepolia.etherscan.io/address/0x0fe884546476dDd290eC46318785046ef68a0BA9)      | Gnosis Safe                          |
 | Guardian               | [0xA9FF930151130fd19DA1F03E5077AFB7C78F8503](https://sepolia.etherscan.io/address/0xA9FF930151130fd19DA1F03E5077AFB7C78F8503)      | EOA managed by Coinbase Technologies |

@@ -53,7 +53,7 @@ function extendBaseConfig(customConfig = {}, plugins = []) {
 // csp headers
 const isLocalDevelopment = process.env.NODE_ENV === 'development';
 const baseXYZDomains = 'https://base.mirror.xyz';
-const greenhouseDomains = 'https://boards.greenhouse.io';
+const greenhouseDomains = 'https://boards.greenhouse.io https://boards-api.greenhouse.io';
 const ccaDomain = 'https://static-assets.coinbase.com/js/cca/v0.0.1.js';
 const ccaLiteDomains = 'https://cca-lite.coinbase.com';
 const sprigDomains = 'https://api.sprig.com https://cdn.sprig.com';
@@ -110,7 +110,7 @@ const securityHeaders = [
   },
   {
     key: 'cross-origin-opener-policy',
-    value: 'same-origin',
+    value: 'same-origin-allow-popups',
   },
   {
     key: 'referrer-policy',
@@ -162,6 +162,27 @@ module.exports = extendBaseConfig({
       {
         source: '/careers',
         destination: '/jobs',
+        permanent: true,
+      },
+      {
+        source: '/buildersummer',
+        destination: '/onchainsummer',
+        permanent: true,
+      },
+      {
+        source: '/onchainfont',
+        // just so the build doesn't fail in CI
+        destination: process.env.NEXT_PUBLIC_OCS_CREATIVE_DOWNLOAD_URL ?? '/',
+        permanent: false,
+      },
+      {
+        source: '/registry',
+        destination: 'https://buildonbase.deform.cc/registry/',
+        permanent: true,
+      },
+      {
+        source: '/registry-edit',
+        destination: 'https://buildonbase.deform.cc/registry-edit/',
         permanent: true,
       },
     ];

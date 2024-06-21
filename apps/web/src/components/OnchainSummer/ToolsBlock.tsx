@@ -1,6 +1,7 @@
 import Brit from 'apps/web/src/components/OnchainSummer/Brit';
 import { WhiteCircle } from 'apps/web/src/components/OnchainSummer/Circles';
 import { FadeInSection } from 'apps/web/src/components/OnchainSummer/FadeIns';
+import SubHeading from 'apps/web/src/components/OnchainSummer/SubHeading';
 
 function ToolCard({
   title,
@@ -41,17 +42,15 @@ export default function ToolsBlock() {
           </div>
           <FadeInSection>
             <div className="my-6 flex flex-col justify-between gap-16 lg:flex-row lg:items-end">
-              <span className="text-5xl font-extrabold leading-9 md:w-1/3 md:text-7xl">
+              <span className="text-5xl font-extrabold leading-9 md:text-7xl">
                 <Brit axis={139}>w</Brit>ANNA ST<Brit>a</Brit>RT BUIL<Brit axis={133}>d</Brit>ING?
               </span>
-              <p className="text-2xl font-light md:text-3xl">
-                Make getting onchain easier than ever for your users.
-              </p>
+              <SubHeading>Make getting onchain easier than ever for your users.</SubHeading>
             </div>
           </FadeInSection>
         </div>
         <FadeInSection delay={0.5}>
-          <section className="mt-6 flex flex-col gap-4 md:flex-row">
+          <section className="mt-6 flex flex-col gap-4 lg:flex-row">
             <ToolCard
               title="Smart Wallet"
               description="Eliminate seed phrases. Allow instant wallet creation with a passkey."

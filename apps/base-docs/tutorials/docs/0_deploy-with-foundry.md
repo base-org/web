@@ -206,7 +206,7 @@ To deploy the contract to the Base Sepolia test network, run the following comma
 forge create ./src/NFT.sol:NFT --rpc-url $BASE_SEPOLIA_RPC --account deployer
 ```
 
-The contract will be deployed on the Base Sepolia test network. You can view the deployment status and contract by using a [block explorer](/tools/block-explorers) and searching for the address returned by your deploy script. If you've deployed an exact copy of the NFT contract above, it will already be verified and you'll be able to read and write to the contract using the web interface.
+The contract will be deployed on the Base Sepolia test network. You can view the deployment status and contract by using a [block explorer](/docs/tools/block-explorers) and searching for the address returned by your deploy script. If you've deployed an exact copy of the NFT contract above, it will already be verified and you'll be able to read and write to the contract using the web interface.
 
 :::info
 

@@ -1,30 +1,47 @@
-import { Button } from 'apps/web/src/components/Button/Button';
-
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
+import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
+import logEvent, { identify } from 'apps/web/src/utils/logEvent';
+import { useCallback, useEffect } from 'react';
+import { useAccount } from 'wagmi';
 
 type ConnectWalletButtonProps = {
   color: 'white' | 'black';
   className: string;
 };
 
-const colorVariant: Record<'white' | 'black', 'secondary' | 'secondaryDark'> = {
-  white: 'secondary',
-  black: 'secondaryDark',
+const colorVariant: Record<'white' | 'black', 'white' | 'black'> = {
+  white: 'white',
+  black: 'black',
 };
 
 export function ConnectWalletButton({ color, className }: ConnectWalletButtonProps) {
+  const { openConnectModal } = useConnectModal();
+  const { address } = useAccount();
+
+  useEffect(() => {
+    if (address) {
+      logEvent('connected_wallet', { address });
+      identify({ userId: address });
+    }
+  }, [address]);
+
+  const clickConnect = useCallback(() => {
+    openConnectModal?.();
+    logEvent('ConnectWalletButton_Clicked', {});
+  }, [openConnectModal]);
+
   return (
     <ConnectButton.Custom>
-      {({ account, chain, openAccountModal, openChainModal, openConnectModal, mounted }) => {
+      {({ account, chain, openAccountModal, openChainModal, mounted }) => {
         const ready = mounted;
         const connected = ready && account && chain;
 
         if (!connected) {
           return (
-            <Button variant={colorVariant[color]} onClick={openConnectModal}>
+            <ShinyButton variant={colorVariant[color]} onClick={clickConnect}>
               Connect
-            </Button>
+            </ShinyButton>
           );
         }
 

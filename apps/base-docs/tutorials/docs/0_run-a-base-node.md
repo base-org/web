@@ -60,7 +60,7 @@ We recommend you have this configuration to run a node:
 
 - 8-Core CPU
 - at least 16 GB RAM
-- an SSD drive with at least 2.5 TB free
+- an SSD drive with at least 750GB (full node) or 4.5TB (archive node) free
 
 :::info
 

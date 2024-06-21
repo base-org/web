@@ -1,6 +1,7 @@
 import Brit from 'apps/web/src/components/OnchainSummer/Brit';
 import { BlackCircle } from 'apps/web/src/components/OnchainSummer/Circles';
 import { FadeInSection } from 'apps/web/src/components/OnchainSummer/FadeIns';
+import SubHeading from 'apps/web/src/components/OnchainSummer/SubHeading';
 
 function ResourcesCard({
   title,
@@ -38,16 +39,16 @@ export default function ResourcesBlock() {
         <BlackCircle /> Explore more
       </div>
       <FadeInSection>
-        <div className="my-6 flex flex-col gap-6">
-          <span className="text-5xl font-extrabold leading-9 md:text-7xl">
+        <div className="my-6 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <span className="text-5xl font-extrabold leading-9 md:w-1/2 md:text-8xl">
             <Brit axis={147}>g</Brit>ET STARTE<Brit axis={147}>d</Brit>
           </span>
-          <p className="mt-4 text-2xl">Docs, demos, and resources to help you get going.</p>
+          <SubHeading>Docs, demos, and resources to help you get going.</SubHeading>
         </div>
       </FadeInSection>
 
       <FadeInSection delay={0.5}>
-        <section className="mb-6 mt-6 grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        <section className="mb-6 mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <ResourcesCard
             title="Base Docs"
             description="Everything from network information to tutorials"

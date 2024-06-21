@@ -16,7 +16,8 @@ type IconProps = {
     | 'discord'
     | 'twitter'
     | 'github'
-    | 'farcaster';
+    | 'farcaster'
+    | 'close';
   width?: string;
   height?: string;
 };
@@ -309,6 +310,30 @@ export default function Icon({ name, width = '24', height = '24' }: IconProps) {
         />
       </svg>
     );
+  }
+  if (name === 'close') {
+    return (
+      <svg
+        width={width}
+        height={height}
+        viewBox="0 0 26 26"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M2.82845 0.272185L25.4559 22.8996L22.6274 25.728L2.28882e-05 3.10061L2.82845 0.272185Z"
+          fill="black"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M22.6274 0.272185L3.33786e-06 22.8996L2.82843 25.728L25.4558 3.10061L22.6274 0.272185Z"
+          fill="black"
+        />
+      </svg>
+    )
   }
   return null;
 }

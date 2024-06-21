@@ -87,6 +87,20 @@ To get started, visit the [documentation](https://docs.envio.dev/docs/overview) 
 
 ---
 
+## GhostGraph
+
+[GhostGraph](https://GhostGraph.xyz/) makes it easy to build blazingly fast indexers (subgraphs) for smart contracts.
+
+GhostGraph is the first indexing solution that lets you write your index transformations in **Solidity**. Base dApps can query data with GraphQL using our hosted endpoints.
+
+To get started, you can [sign up for an account](https://app.ghostlogs.xyz/ghostgraph/sign-up) and follow [this quickstart](https://docs.ghostlogs.xyz/category/-getting-started-1) guide on how to create, deploy, and query a GhostGraph.
+
+#### Supported Networks
+
+- Base Mainnet
+
+---
+
 ## Moralis
 
 [Moralis](https://moralis.io/?utm_source=base-docs&utm_medium=partner-docs) offers comprehensive data APIs for crypto, offering both indexed and real-time data across 15+ chains. Moralis' APIs include portfolio and wallet balances, NFT data, token data, price data, candlestick data, net worth data, and a lot more. All of the data is enriched with things like metadata, parsed events and address labels.

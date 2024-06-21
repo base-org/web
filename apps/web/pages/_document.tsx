@@ -55,12 +55,12 @@ const ogDataForPath: Record<string, CustomDocumentProps['ogData']> = {
     image: 'https://base.org/images/base-open-graph.png',
     url: 'https://base.org/third-party-cookies',
   },
-  '/buildersummer': {
-    title: 'Base | Builder Summer',
+  '/onchainsummer': {
+    title: 'Onchain Summer | Buildathon',
     description:
-      'We’re bringing back Onchain Summer to unleash onchain creativity, and invite everyone to build all summer long. Build, create, and get rewarded.',
+      'Onchain Summer is back to unleash onchain creativity and invite everyone to build all summer long. Build, create, and get rewarded. June – August 2024.',
     image: 'https://base.org/images/ocs/buildersummer_og.png',
-    url: 'https://base.org/buildersummer',
+    url: 'https://base.org/onchainsummer',
   },
 };
 
@@ -90,6 +90,10 @@ export default function Document({ ogData }: CustomDocumentProps) {
         <meta name="twitter:title" content={ogData.title} />
         <meta name="twitter:description" content={ogData.description} />
         <meta name="twitter:image" content={ogData.image} />
+        {/* Ignoring this because we do set the title based on the ogData */}
+        {/* eslint-disable-next-line @next/next/no-title-in-document-head */}
+        <title>{ogData.title}</title>
+        <meta content={ogData.description} name="description" />
       </Head>
       <body className="flex min-h-screen flex-col">
         <Main />

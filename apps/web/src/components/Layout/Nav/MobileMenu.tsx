@@ -6,7 +6,7 @@ import { Icon } from '../../Icon/Icon';
 import { Logo } from '../../Logo/Logo';
 import { usePathname } from 'next/navigation';
 import { bridgeUrl } from 'apps/web/src/constants';
-import { ConnectWalletButton } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButtonMobile';
+import { ConnectWalletButton } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 import { REVERSE_COLOR } from 'apps/web/src/utils/colors';
 
 // Dropdown Link
@@ -199,7 +199,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                 >
                   <DropdownLink href="https://docs.base.org" label="Docs" externalLink />
                   <DropdownLink
-                    href="https://explorer.base.org/"
+                    href="https://base.blockscout.com/"
                     label={`Block\nExplorer`}
                     externalLink
                   />

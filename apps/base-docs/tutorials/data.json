@@ -24,8 +24,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "17 min read"
+        "last_updated": "Jun 4, 2024",
+        "duration": "17 min read",
+        "checksum": "b6ba5851a908389eb12dae91ff7d742f3e188eba2322b8550661b05f6731296c"
     },
     "deploy-with-hardhat": {
         "title": "Deploying a smart contract using Hardhat",
@@ -52,8 +53,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "15 min read"
+        "last_updated": "Feb 9, 2024",
+        "duration": "15 min read",
+        "checksum": "e2a66b9b034f2fd97a898c5137aba8e29446c4e73433ee5b2dce3b4af0935bce"
     },
     "deploy-with-remix": {
         "title": "Deploying a smart contract using Remix",
@@ -81,8 +83,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "18 min read"
+        "last_updated": "Jan 18, 2024",
+        "duration": "18 min read",
+        "checksum": "039bc3fe2c561bc45a6069fbf704b2b29203fb0ce49e1d0dee97a8f0fada11df"
     },
     "deploy-with-tenderly": {
         "title": "Deploying a smart contract using Tenderly",
@@ -111,8 +114,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "19 min read"
+        "last_updated": "Oct 12, 2023",
+        "duration": "19 min read",
+        "checksum": "6b93f84f6431fcf064adbb8b51ee2fb162a97516d4fbac2f982af1eddba87b6b"
     },
     "deploy-with-thirdweb": {
         "title": "Deploying a smart contract using thirdweb",
@@ -144,8 +148,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "10 min read"
+        "last_updated": "Jan 11, 2024",
+        "duration": "10 min read",
+        "checksum": "f4b7fa789b2c65e00e467c4851857ab2e629f6d8dbed7f8c2d625abf668a124b"
     },
     "run-a-base-node": {
         "title": "Running a Base Node",
@@ -171,8 +176,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 24",
-        "duration": "6 min read"
+        "last_updated": "Jun 10, 2024",
+        "duration": "6 min read",
+        "checksum": "9349abde020a7f705710c3e214ccddafaceef0e8bb92692ca2e58ac64e5aa7a4"
     },
     "build-with-thirdweb": {
         "title": "Building an onchain app using thirdweb",
@@ -203,8 +209,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "8 min read"
+        "last_updated": "Jan 11, 2024",
+        "duration": "8 min read",
+        "checksum": "527200e33d612b0c76e5eaacddfc23633b57eaa4577f389d4429b8f862c45462"
     },
     "account-abstraction-with-biconomy": {
         "title": "Account Abstraction on Base using Biconomy",
@@ -229,8 +236,9 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "29 min read"
+        "last_updated": "Feb 5, 2024",
+        "duration": "29 min read",
+        "checksum": "8c8189d19e874c08dd05549d06c1eb2e45ce924aa2b0e1239f0adf04c8ee4879"
     },
     "account-abstraction-with-particle-network": {
         "title": "Account Abstraction on Base using Particle Network",
@@ -254,8 +262,9 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 22",
-        "duration": "34 min read"
+        "last_updated": "Apr 11, 2024",
+        "duration": "34 min read",
+        "checksum": "f15915f4b8a607c68e5ae57dc1b3e3519f581a089a7f25669e3530112a1d42ae"
     },
     "account-abstraction-with-privy-and-base-paymaster": {
         "title": "Account Abstraction on Base using Privy and the Base Paymaster",
@@ -281,8 +290,34 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "46 min read"
+        "last_updated": "Dec 23, 2023",
+        "duration": "46 min read",
+        "checksum": "f7985912c4b36e3e0dcd33ad58d83a59403242e0f8eb6160660132b70c597cc2"
+    },
+    "coinbase-smart-wallet": {
+        "title": "Coinbase Smart Wallet",
+        "slug": "/coinbase-smart-wallet",
+        "description": "Learn to create an app that uses the Coinbase Smart Wallet and effectively manages assets and permissions for both native and new users of onchain apps",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "wagmi",
+            "viem",
+            "smart wallet"
+        ],
+        "tags": [
+            "nft",
+            "smart wallet"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Jun 10, 2024",
+        "duration": "32 min read",
+        "checksum": "44f84716dcfa1f181186af7369098b3f02485680e4c26c707915129361b92672"
     },
     "cross-chain-with-ccip": {
         "title": "Sending messages and tokens from Base to other chains using Chainlink CCIP",
@@ -305,8 +340,9 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "32 min read"
+        "last_updated": "Jan 12, 2024",
+        "duration": "32 min read",
+        "checksum": "b613b074cbb8f4c8eb55a13651f6371a8a3211afe65b8e2190e5b9df18c1d98f"
     },
     "cross-chain-with-layerzero": {
         "title": "Sending messages from Base to other chains using LayerZero V2",
@@ -329,8 +365,37 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "34 min read"
+        "last_updated": "Feb 4, 2024",
+        "duration": "34 min read",
+        "checksum": "a0ce01aa1c3097efa7582a74bc73f9ccad03222b25af451be1fde4fcd45c7dd7"
+    },
+    "dynamic-nfts": {
+        "title": "Building dynamic NFTs",
+        "slug": "/dynamic-nfts",
+        "description": "A tutorial that teaches how to make dynamic NFTs that evolve based on onchain or offchain actions.",
+        "author": "lukecd",
+        "keywords": [
+            "Irys",
+            "Permanent data",
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "Dynamic NFT",
+            "gaming NFT",
+            "onchain metadata",
+            "nft metadata",
+            "onchain nft"
+        ],
+        "tags": [
+            "nft"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Jun 17, 2024",
+        "duration": "14 min read",
+        "checksum": "0b1498d415cda6e83031231cd05d42edacd2faa82d68471b2ed09670481a3259"
     },
     "complex-onchain-nfts": {
         "title": "Building onchain NFTs",
@@ -357,8 +422,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "39 min read"
+        "last_updated": "Jan 31, 2024",
+        "duration": "39 min read",
+        "checksum": "aa4782a6b0ef93073915e99e6ae6a244063422f14c8021f4dc0eb2d5a0c71b6a"
     },
     "oracles-chainlink-price-feeds": {
         "title": "Accessing real-world data using Chainlink Data Feeds",
@@ -385,8 +451,9 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "11 min read"
+        "last_updated": "Dec 19, 2023",
+        "duration": "11 min read",
+        "checksum": "df42e4091a128a0bd3e7dc9fcc585f9a711a56027152d57553a54e8040a4001f"
     },
     "oracles-pyth-price-feeds": {
         "title": "Accessing real-time asset data using Pyth Price Feeds",
@@ -414,8 +481,9 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "13 min read"
+        "last_updated": "Dec 19, 2023",
+        "duration": "13 min read",
+        "checksum": "983e7175434206be7c996758b09db9c33aac454ecb9b4b3da8f301f8140b7c52"
     },
     "oracles-supra-vrf": {
         "title": "Generating random numbers contracts using Supra dVRF",
@@ -451,8 +519,33 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "19 min read"
+        "last_updated": "Dec 19, 2023",
+        "duration": "19 min read",
+        "checksum": "260e40333e386593cf6f211c06218042d4b93ecac34f56a0decbd398f1e3ddb1"
+    },
+    "signature-mint-nft": {
+        "title": "Signature Mint NFT",
+        "slug": "/signature-mint-nft",
+        "description": "A tutorial that teaches how to create a signature mint, in which minters pay their own gas, but must first be given a valid signed authorization.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "signature mint",
+            "viem",
+            "soulbound"
+        ],
+        "tags": [
+            "nft"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "May 9, 2024",
+        "duration": "19 min read",
+        "checksum": "9429b07496c1e0b22041d913a16d46bb1850b0cebd72a45aaf55bc585c35bb91"
     },
     "farcaster-frames-deploy-to-vercel": {
         "title": "Farcaster Frames: Deploying to Vercel",
@@ -473,8 +566,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "9 min read"
+        "last_updated": "Feb 6, 2024",
+        "duration": "9 min read",
+        "checksum": "3174ebe066db1100e389cf2b0ec1451c2711145fb645dc540f4c08c5a2e48540"
     },
     "farcaster-frames-gating-and-redirects": {
         "title": "Farcaster Frames: Gating content and creating redirects",
@@ -492,8 +586,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5",
-        "duration": "12 min read"
+        "last_updated": "Feb 23, 2024",
+        "duration": "12 min read",
+        "checksum": "6767682f0995d5f873b46aa615f6fb952a70d8b0487823fa32a41734df6048ba"
     },
     "farcaster-frames-hyperframes": {
         "title": "Farcaster Frames: Building HyperFrames",
@@ -516,8 +611,9 @@
         "tags": [
             "frames"
         ],
-        "last_updated": "Apr 5",
-        "duration": "16 min read"
+        "last_updated": "Feb 20, 2024",
+        "duration": "16 min read",
+        "checksum": "9497478eb1ba7a6bfb3b2e668b34b3a57107e24fdaae76673d832163eb0561b0"
     },
     "farcaster-frames-nft-minting": {
         "title": "Farcaster Frames: Building an NFT airdrop Frame",
@@ -540,8 +636,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "22 min read"
+        "last_updated": "May 23",
+        "duration": "22 min read",
+        "checksum": "8f1ced0b8fe2f7b5ae69b21c16dfdc433fb5fc09c88dffc1d32e9267cb4c0aef"
     },
     "farcaster-frames-nocode-minting": {
         "title": "Farcaster Frames: Building a no-code minting Frame",
@@ -565,8 +662,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "7 min read"
+        "last_updated": "Feb 23, 2024",
+        "duration": "7 min read",
+        "checksum": "fed0c4e553f10ac5ab0d90354fad93ac44e3e34306ac310eb07bcb7ad390600d"
     },
     "farcaster-frames-transactions": {
         "title": "Farcaster Frames: Making transactions",
@@ -587,8 +685,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "May 1",
-        "duration": "17 min read"
+        "last_updated": "Mar 8, 2024",
+        "duration": "17 min read",
+        "checksum": "50bc1e1efc66e0a22536cc73c7d0e04daebd552db8538d0ffde59a2a6b75bab3"
     },
     "hardhat-debugging": {
         "title": "Hardhat: Debugging smart contracts",
@@ -609,8 +708,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "15 min read"
+        "last_updated": "Jan 18, 2024",
+        "duration": "15 min read",
+        "checksum": "c4f0c5cc94e04b85501323d6992a014308db14900c069ac5a7639d5b17703db6"
     },
     "hardhat-profiling-gas": {
         "title": "Hardhat: Optimizing the gas usage of smart contracts",
@@ -634,8 +734,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "16 min read"
+        "last_updated": "Jan 18, 2024",
+        "duration": "16 min read",
+        "checksum": "20233dab9a1cda1a19de6ef9597d2dba37c853477b1474660fc22d302a815eb8"
     },
     "hardhat-profiling-size": {
         "title": "Hardhat: Optimizing the size of smart contracts",
@@ -660,8 +761,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "22 min read"
+        "last_updated": "Jan 18, 2024",
+        "duration": "22 min read",
+        "checksum": "213edb66a4dc7845730cf4b72015d01c30cee0528cea6832714baf5bb451d9a8"
     },
     "hardhat-test-coverage": {
         "title": "Hardhat: Analyzing the test coverage of smart contracts",
@@ -686,8 +788,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "9 min read"
+        "last_updated": "Jan 18, 2024",
+        "duration": "9 min read",
+        "checksum": "54b377b97554eea4e09520fbf6fdacff9978d840248ec69d82ab79c0bebb0846"
     },
     "intro-to-foundry-setup": {
         "title": "Foundry: Setting up Foundry with Base",
@@ -707,8 +810,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "6 min read"
+        "last_updated": "Jan 18, 2024",
+        "duration": "6 min read",
+        "checksum": "0b50de1197db8c50cbf02405a904f99ec7e32159f86ae884993aa6cc36b10fcb"
     },
     "intro-to-foundry-testing": {
         "title": "Foundry: Testing smart contracts",
@@ -730,8 +834,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 11",
-        "duration": "9 min read"
+        "last_updated": "Jan 18, 2024",
+        "duration": "9 min read",
+        "checksum": "2ced64394c425e5749001cb21cca5a3b0043fe6ab013be45e98299e16f337d23"
     },
     "intro-to-providers": {
         "title": "Introduction to Providers",
@@ -779,8 +884,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 22",
-        "duration": "21 min read"
+        "last_updated": "Jan 18, 2024",
+        "duration": "21 min read",
+        "checksum": "0ce947aec9f1cab196e9489b78509392a625b0d12011294e3fb9673a8bdd8e22"
     },
     "farcaster-cast-actions-simple": {
         "title": "Farcaster Cast Actions: Create a Simple Cast Action",
@@ -800,7 +906,8 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 9",
-        "duration": "9 min read"
+        "last_updated": "Apr 5, 2024",
+        "duration": "9 min read",
+        "checksum": "96225f883c79832d18459b3e47fd3a0bfd43c7ad6d1a1b1704bf902d33910025"
     }
 }

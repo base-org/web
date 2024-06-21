@@ -64,7 +64,7 @@ export default function RewardsBlock() {
       </FadeInSection>
       <FadeInSection delay={0.5}>
         <div
-          className="mt-6 flex w-full max-w-[1200px] flex-row gap-2 overflow-x-auto px-8 pb-6"
+          className="mt-6 flex w-full max-w-[1200px] flex-row gap-4 overflow-x-auto px-8 pb-6"
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#000',
@@ -81,7 +81,7 @@ export default function RewardsBlock() {
             title="Gas Credits"
             description="Sponsor transactions and offer gasless experiences. Available through the Coinbase Developer Platform and other builders."
             linkText="Claim today"
-            link="https://docs.cdp.coinbase.com/node/docs/paymaster-bundler-qs/"
+            link="https://www.smartwallet.dev/base-gasless-campaign"
           />
           <RewardCard
             num="03"
