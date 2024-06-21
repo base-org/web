@@ -112,6 +112,7 @@ export const CustomNavbarLink = (props) => {
     <a
       href={props.to}
       className='navbar__item navbar__link'
+      style={{ cursor: 'pointer'}}
       onClick={() => {
         logEvent(props.eventLabel, props.eventDetail ?? {})
       }}
