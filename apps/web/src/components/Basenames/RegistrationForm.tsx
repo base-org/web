@@ -1,7 +1,9 @@
 import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
-import { useCallback, useState } from 'react';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { useRegisterNameCallback } from 'apps/web/src/utils/hooks/useRegisterNameCallback';
+import { useCallback, useState } from 'react';
+import { base, baseSepolia } from 'viem/chains';
+import { useSwitchChain } from 'wagmi';
 
 type RegistrationFormProps = {
   name: string;
@@ -9,12 +11,17 @@ type RegistrationFormProps = {
 
 export function RegistrationForm({ name }: RegistrationFormProps) {
   const { openConnectModal } = useConnectModal();
+  const { switchChain } = useSwitchChain();
   const [years, setYears] = useState(1);
   const increment = useCallback(() => {
     setYears((n) => n + 1);
   }, []);
   const decrement = useCallback(() => {
     setYears((n) => (n > 1 ? n - 1 : n));
+  }, []);
+
+  const switchChainToBase = useCallback(() => {
+    switchChain({ chainId: base.id });
   }, []);
 
   const registerName = useRegisterNameCallback(name, years);
@@ -29,11 +36,12 @@ export function RegistrationForm({ name }: RegistrationFormProps) {
           <button
             type="button"
             onClick={decrement}
+            disabled={years === 1}
             className="flex h-7 w-7 items-center justify-center rounded-full bg-gray/10"
           >
             <MinusIcon width="12" height="12" className="fill-gray/80" />
           </button>
-          <span className="mx-2 text-3xl text-black">
+          <span className=" flex w-32 items-center justify-center text-3xl text-black">
             {years} year{years > 1 && 's'}
           </span>
           <button
@@ -66,10 +74,10 @@ export function RegistrationForm({ name }: RegistrationFormProps) {
             );
           }
 
-          if (chain.unsupported) {
+          if (!([base.id, baseSepolia.id] as number[]).includes(chain.id)) {
             return (
-              <button onClick={openChainModal} type="button">
-                Wrong network
+              <button onClick={switchChainToBase} type="button" className={buttonClasses}>
+                Switch network
               </button>
             );
           }
