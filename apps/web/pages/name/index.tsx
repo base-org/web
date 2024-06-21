@@ -82,7 +82,7 @@ export default function Usernames() {
 
   const smallUsernameInputWrapperClasses = classNames(
     'absolute top-0 z-10 transition-all duration-500 w-full mx-auto transform  left-1/2 -translate-x-1/2 z-30',
-    'max-w-[20rem]',
+    'max-w-[15rem]',
     {
       'opacity-1 -translate-y-12': progress === ClaimProgression.CLAIM,
       'pointer-events-none opacity-0 translate-y-0': progress === ClaimProgression.SEARCH,

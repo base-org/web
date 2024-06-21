@@ -3,6 +3,7 @@ import { sha256 } from 'viem';
 export const BASE_ETH_DOMAIN = 'base.eth';
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 200;
+export const USERNAME_SEPOLIA_CONTRACT_ADDRESS = '0xc8b5d24753588fc7ed134df8870f9d5544a3836e';
 
 export const formatNameForEns = (name: string) => {
   // ens doesn't like spaces and . / :

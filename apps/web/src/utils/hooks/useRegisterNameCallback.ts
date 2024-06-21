@@ -1,5 +1,5 @@
 import abi from 'apps/web/src/abis/RegistrarControllerABI.json';
-import { formatNameForEns } from 'apps/web/src/utils/usernames';
+import { USERNAME_SEPOLIA_CONTRACT_ADDRESS, formatNameForEns } from 'apps/web/src/utils/usernames';
 import { getContract } from 'viem';
 import { normalize } from 'viem/ens';
 import { useAccount, useWalletClient, useWriteContract } from 'wagmi';
@@ -26,7 +26,7 @@ export function useRegisterNameCallback(name: string, years: number) {
   if (client) {
     const controllerContract = getContract({
       abi,
-      address: '0xc8b5d24753588fc7ed134df8870f9d5544a3836e',
+      address: USERNAME_SEPOLIA_CONTRACT_ADDRESS,
       client: client,
     });
     controllerContract.write
@@ -46,7 +46,7 @@ export function useRegisterNameCallback(name: string, years: number) {
       console.log('jf registerRequest', registerRequest);
       const result = await writeContractAsync({
         abi,
-        address: '0xc8b5d24753588fc7ed134df8870f9d5544a3836e',
+        address: USERNAME_SEPOLIA_CONTRACT_ADDRESS,
         functionName: 'discountedRegister',
         args: [registerRequest, 0x0, 0x0],
         chainId: baseSepolia.id,

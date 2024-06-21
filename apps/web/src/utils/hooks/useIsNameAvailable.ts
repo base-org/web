@@ -1,5 +1,5 @@
 import abi from 'apps/web/src/abis/RegistrarControllerABI.json';
-import { formatNameForEns } from 'apps/web/src/utils/usernames';
+import { USERNAME_SEPOLIA_CONTRACT_ADDRESS, formatNameForEns } from 'apps/web/src/utils/usernames';
 import { normalize } from 'viem/ens';
 import { useReadContract } from 'wagmi';
 import { baseSepolia } from 'wagmi/chains';
@@ -10,7 +10,7 @@ export function useIsNameAvailable(name: string) {
 
   return useReadContract({
     abi,
-    address: '0xc8b5d24753588fc7ed134df8870f9d5544a3836e',
+    address: USERNAME_SEPOLIA_CONTRACT_ADDRESS,
     functionName: 'available',
     args: [normalizedName],
     chainId: baseSepolia.id,
