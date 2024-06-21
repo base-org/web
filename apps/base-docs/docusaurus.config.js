@@ -185,6 +185,8 @@ const config = {
           to: '/tutorials',
           navposition: 'bottomLeft',
           label: 'Tutorials',
+          type: 'custom-navbarLink',
+          eventLabel: 'TutorialsButton_Clicked',
         },
         {
           to: '/base-camp/docs/welcome',
