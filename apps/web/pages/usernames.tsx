@@ -86,7 +86,7 @@ export default function Usernames() {
   const largeUsernameInputWrapperClasses = classNames(
     'relative z-10 transition-all w-full mx-auto max-w-[36rem]',
     {
-      'opacity-1 max-w-full': progress === ClaimProgression.SEARCH,
+      'opacity-1': progress === ClaimProgression.SEARCH,
       'pointer-events-none opacity-0 max-w-[5rem]': progress === ClaimProgression.CLAIM,
     },
   );

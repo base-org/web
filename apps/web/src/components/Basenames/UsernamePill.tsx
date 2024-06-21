@@ -21,7 +21,6 @@ export function UsernamePill({ username }: UsernamePillProps) {
     'shadow-[0px_8px_16px_0px_rgba(0,82,255,0.32),inset_0px_8px_16px_0px_rgba(255,255,255,0.25)]',
   );
 
-  const profilePictureIndex = getUsernamePictureIndex(username, 7);
   const profilePictures = [
     profilePictures1,
     profilePictures2,
@@ -31,6 +30,7 @@ export function UsernamePill({ username }: UsernamePillProps) {
     profilePictures6,
     profilePictures7,
   ];
+  const profilePictureIndex = getUsernamePictureIndex(username, profilePictures.length);
 
   const selectedProfilePicture = profilePictures[profilePictureIndex] as unknown as StaticImport;
 

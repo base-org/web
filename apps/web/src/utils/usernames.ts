@@ -18,6 +18,6 @@ export const getUsernamePictureIndex = (name: string, totalOptions: number) => {
   const hash = sha256(nameAsUint8Array);
   const hashValue = parseInt(hash, 16);
   const remainder = hashValue % totalOptions;
-  const selectedOption = remainder + 1;
+  const selectedOption = remainder;
   return selectedOption;
 };
