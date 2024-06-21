@@ -111,6 +111,7 @@ export const CustomNavbarLink = (props) => {
   return (
     <a
       href={props.to}
+      target={props.target ?? '_self'}
       className='navbar__item navbar__link'
       style={{ cursor: 'pointer'}}
       onClick={() => {
@@ -127,6 +128,7 @@ export const CustomDropdownLink = (props) => {
     <li>
       <a
         href={props.to}
+        target={props.target ?? '_self'}
         className='dropdown__link'
         style={{ cursor: 'pointer'}}
         onClick={() => {
