@@ -1,24 +1,24 @@
 import { Transition } from '@headlessui/react';
 import { InformationCircleIcon } from '@heroicons/react/20/solid';
 import { FloatingENSPills } from 'apps/web/src/components/Basenames/FloatingENSPills';
+import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
+import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
+import {
+  UsernameSearchInput,
+  UsernameSearchInputVariant,
+} from 'apps/web/src/components/Basenames/UsernameSearchInput';
 import Modal from 'apps/web/src/components/Modal';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import classNames from 'classnames';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
 import { Fragment, useCallback, useMemo, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
-import {
-  UsernameSearchInput,
-  UsernameSearchInputVariant,
-} from 'apps/web/src/components/Basenames/UsernameSearchInput';
-import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
 
 // TODO: This will be replaced by a Lottie file
-import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
 import { RegistrationContext } from 'apps/web/src/components/Basenames/RegistrationContext';
+import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
 
 export enum ClaimProgression {
   SEARCH,
