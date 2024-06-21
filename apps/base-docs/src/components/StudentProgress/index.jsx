@@ -1,10 +1,11 @@
 /* eslint-disable */
 import React from 'react';
 import { useState } from 'react';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount } from 'wagmi';
 
 import useNFTData from '../../utils/nft-exercise-data';
+import { CustomConnectButton } from '@theme/NavbarItem/ComponentTypes';
+import styles from './styles.module.css';
 
 import NFTCard from './NFTCard';
 
@@ -116,7 +117,7 @@ export default function StudentProgress() {
             height: '100%',
           }}
         >
-          <ConnectButton />
+          <CustomConnectButton className={styles.walletConnectButton} />
         </div>
       </div>
 

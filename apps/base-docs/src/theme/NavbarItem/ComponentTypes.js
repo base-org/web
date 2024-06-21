@@ -1,3 +1,6 @@
+import React, { useCallback, useEffect } from 'react';
+import { useAccount } from 'wagmi';
+
 import DefaultNavbarItem from '@theme/NavbarItem/DefaultNavbarItem';
 import DropdownNavbarItem from '@theme/NavbarItem/DropdownNavbarItem';
 import LocaleDropdownNavbarItem from '@theme/NavbarItem/LocaleDropdownNavbarItem';
@@ -11,7 +14,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 import styles from './styles.module.css';
 import { WalletAvatar } from '../../components/WalletAvatar';
-import logEvent from "base-ui/utils/logEvent";
+import logEvent, { identify } from "base-ui/utils/logEvent";
 
 export const CustomConnectButton = ({ className }) => {
   return (
@@ -19,6 +22,19 @@ export const CustomConnectButton = ({ className }) => {
       {({ account, chain, openAccountModal, openChainModal, openConnectModal, mounted }) => {
         const ready = mounted;
         const connected = ready && account && chain;
+        const { address } = useAccount();
+
+        useEffect(() => {
+          if (address) {
+            logEvent('ConnectWalletButton_WalletConnected', { address });
+            identify({ userId: address });
+          }
+        }, [address]);
+
+        const clickConnect = useCallback(() => {
+          openConnectModal?.();
+          logEvent('ConnectWalletButton_Selected', {});
+        }, [openConnectModal]);
 
         return (
           <div
@@ -35,7 +51,7 @@ export const CustomConnectButton = ({ className }) => {
             {(() => {
               if (!connected) {
                 return (
-                  <button className={styles.connectButton} onClick={openConnectModal} type="button">
+                  <button className={styles.connectButton} onClick={clickConnect} type="button">
                     Connect
                   </button>
                 );
