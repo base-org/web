@@ -11,6 +11,7 @@ import styles from './styles.module.css';
 
 import Icon from '../../../components/Icon';
 import { CustomConnectButton } from '../../NavbarItem/ComponentTypes';
+import logEvent from "base-ui/utils/logEvent";
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
@@ -50,6 +51,9 @@ function NavbarLayoutTopContent({ left, right }) {
             target="_blank"
             rel="noreferrer"
             aria-label="Base on Discord"
+            onClick={() => {
+              logEvent('DiscordButton_Clicked', {})
+            }}
           >
             <Icon name="discord" />
           </a>
@@ -58,6 +62,9 @@ function NavbarLayoutTopContent({ left, right }) {
             target="_blank"
             rel="noreferrer"
             aria-label="Base on Twitter"
+            onClick={() => {
+              logEvent('TwitterButton_Clicked', {})
+            }}
           >
             <Icon name="twitter" />
           </a>
@@ -66,6 +73,9 @@ function NavbarLayoutTopContent({ left, right }) {
             target="_blank"
             rel="noreferrer"
             aria-label="Base on Github"
+            onClick={() => {
+              logEvent('GitHubButton_Clicked', {})
+            }}
           >
             <Icon name="github" />
           </a>
