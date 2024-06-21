@@ -1,7 +1,9 @@
 import abi from 'apps/web/src/abis/RegistrarControllerABI.json';
-import { USERNAME_SEPOLIA_CONTRACT_ADDRESS, formatNameForEns } from 'apps/web/src/utils/usernames';
+import {
+  USERNAME_SEPOLIA_CONTRACT_ADDRESS,
+  normalizeEnsDomainName,
+} from 'apps/web/src/utils/usernames';
 import { getContract } from 'viem';
-import { normalize } from 'viem/ens';
 import { useAccount, useWalletClient, useWriteContract } from 'wagmi';
 import { baseSepolia } from 'wagmi/chains';
 
@@ -12,8 +14,8 @@ function secondsInYears(years: number): number {
 
 export function useRegisterNameCallback(name: string, years: number) {
   const { address } = useAccount();
-  const formattedName = formatNameForEns(name);
-  const normalizedName = normalize(formattedName);
+
+  const normalizedName = normalizeEnsDomainName(name);
   const { data: client } = useWalletClient();
   const registerRequest = {
     name: normalizedName, // The name being registered.

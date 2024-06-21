@@ -46,7 +46,9 @@ export function UsernamePill({ username }: UsernamePillProps) {
           className="object-fill"
         />
       </figure>
-      <span className="truncate">{formatBaseEthDomain(username)}</span>
+      <span className="overflow-y-hidden text-ellipsis whitespace-nowrap">
+        {formatBaseEthDomain(username)}
+      </span>
     </div>
   );
 }

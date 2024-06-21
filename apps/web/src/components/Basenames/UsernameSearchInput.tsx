@@ -18,6 +18,7 @@ import {
 } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 import { useIsNameAvailable } from 'apps/web/src/utils/hooks/useIsNameAvailable';
+import { useFocusWithin } from 'apps/web/src/utils/hooks/useFocusWithin';
 
 export enum UsernameSearchInputVariant {
   Small,
@@ -43,6 +44,7 @@ export function UsernameSearchInput({
   onMouseEnter,
   onMouseLeave,
 }: UsernameSearchInputProps) {
+  const { ref, focused } = useFocusWithin();
   const [search, setSearch] = useState<string>('');
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [debouncedSearch] = useDebounceValue(search, 200);
@@ -134,7 +136,7 @@ export function UsernameSearchInput({
   });
 
   const buttonClasses = classNames(
-    'flex w-full flex-row items-center justify-between transition-colors hover:bg-[#F9F9F9] active:bg-[#EAEAEB] truncate',
+    'flex w-full flex-row items-center justify-between transition-colors hover:bg-[#F9F9F9] active:bg-[#EAEAEB] text-ellipsis',
     {
       'px-6 py-4 text': variant === UsernameSearchInputVariant.Large,
       'px-3 py-2 text-sm': variant === UsernameSearchInputVariant.Small,
@@ -168,7 +170,13 @@ export function UsernameSearchInput({
     selectName(name);
   }
 
+  useEffect(() => {
+    if (!focused) setDropdownOpen(false);
+  }, [focused]);
+
   // TODO: Smarter suggestions
+  // Right now david.base.eth is taken, it'll suggest david1.base.eth but
+  // ultimately that might also be taken.
   const suggestions: string[] = useMemo(() => {
     return [`${debouncedSearch}1`, `${debouncedSearch}2`, `${debouncedSearch}3`];
   }, [debouncedSearch]);
@@ -178,6 +186,7 @@ export function UsernameSearchInput({
       className={usernameSearchInputClasses}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      ref={ref}
     >
       <Input
         type="text"
