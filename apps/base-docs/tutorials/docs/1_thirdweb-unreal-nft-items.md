@@ -4,7 +4,7 @@ slug: /thirdweb-unreal-nft-items
 description: Learn how to use NFTs as in-game items using Thirdweb and Unreal.
 author: briandoyle81
 keywords: [Solidity, ERC-721, token, NFT, thirdweb, Unreal, c++, blueprints, onchain games]
-tags: ['nft']
+tags: ['nft', 'smart contracts']
 difficulty: hard
 hide_table_of_contents: false
 displayed_sidebar: null
