@@ -235,7 +235,9 @@ const config = {
         {
           label: 'Bridge',
           navposition: 'topRight',
-          href: 'https://bridge.base.org/',
+          to: 'https://bridge.base.org/',
+          type: 'custom-navbarLink',
+          eventLabel: 'BridgeButton_Clicked',
         },
         {
           type: 'dropdown',
@@ -244,15 +246,21 @@ const config = {
           items: [
             {
               label: 'Block Explorer',
-              href: 'https://base.blockscout.com/',
+              to: 'https://base.blockscout.com/',
+              type: 'custom-dropdownLink',
+              eventLabel: 'BlockExplorerButton_Clicked',
             },
             {
               label: 'Status',
-              href: 'https://status.base.org/',
+              to: 'https://status.base.org/',
+              type: 'custom-dropdownLink',
+              eventLabel: 'StatusButton_Clicked',
             },
             {
               label: 'Bug Bounty',
-              href: 'https://hackerone.com/coinbase',
+              to: 'https://hackerone.com/coinbase',
+              type: 'custom-dropdownLink',
+              eventLabel: 'BugBountyButton_Clicked',
             },
           ],
         },
@@ -263,15 +271,21 @@ const config = {
           items: [
             {
               label: 'Mission',
-              href: 'https://www.base.org/about',
+              to: 'https://www.base.org/about',
+              type: 'custom-dropdownLink',
+              eventLabel: 'MissionButton_Clicked',
             },
             {
               label: 'Blog',
-              href: 'https://base.mirror.xyz/',
+              to: 'https://base.mirror.xyz/',
+              type: 'custom-dropdownLink',
+              eventLabel: 'BlogButton_Clicked',
             },
             {
               label: 'Jobs',
-              href: 'https://www.base.org/jobs',
+              to: 'https://www.base.org/jobs',
+              type: 'custom-dropdownLink',
+              eventLabel: 'JobsButton_Clicked',
             },
           ],
         },
