@@ -121,6 +121,23 @@ export const CustomNavbarLink = (props) => {
   )
 }
 
+export const CustomDropdownLink = (props) => {
+  return (
+    <li>
+      <a
+        href={props.to}
+        className='dropdown__link'
+        style={{ cursor: 'pointer'}}
+        onClick={() => {
+          logEvent(props.eventLabel, {})
+        }}
+      >
+        {props.label}
+      </a>
+    </li>
+  )
+}
+
 const ComponentTypes = {
   default: DefaultNavbarItem,
   localeDropdown: LocaleDropdownNavbarItem,
@@ -133,5 +150,6 @@ const ComponentTypes = {
   docsVersionDropdown: DocsVersionDropdownNavbarItem,
   'custom-connectWallet': CustomConnectButton,
   'custom-navbarLink': CustomNavbarLink,
+  'custom-dropdownLink': CustomDropdownLink,
 };
 export default ComponentTypes;
