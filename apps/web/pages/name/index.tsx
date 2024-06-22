@@ -1,24 +1,24 @@
 import { Transition } from '@headlessui/react';
 import { InformationCircleIcon } from '@heroicons/react/20/solid';
 import { FloatingENSPills } from 'apps/web/src/components/Basenames/FloatingENSPills';
+import { RegistrationContext } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
 import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
 import {
   UsernameSearchInput,
   UsernameSearchInputVariant,
 } from 'apps/web/src/components/Basenames/UsernameSearchInput';
+import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
 import Modal from 'apps/web/src/components/Modal';
 import Tooltip from 'apps/web/src/components/Tooltip';
+import { ProofTableNamespace } from 'apps/web/src/utils/proofs';
 import classNames from 'classnames';
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
-import { Fragment, useCallback, useMemo, useState } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
-
-// TODO: This will be replaced by a Lottie file
-import { RegistrationContext } from 'apps/web/src/components/Basenames/RegistrationContext';
-import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
+import { useAccount } from 'wagmi';
+// TODO: replace appropriate backgrounds w/Lottie files
 
 export enum ClaimProgression {
   SEARCH,
@@ -39,7 +39,25 @@ const useRotatingText = (strings: string[]) => {
   return strings[currentIndex];
 };
 
+enum Discount {
+  NONE,
+  CB1,
+  COINBASE,
+  CBID,
+}
+
 export default function Usernames() {
+  const { address } = useAccount();
+  const [discount, setDiscount] = useState(Discount.NONE);
+
+  useEffect(() => {
+    if (address) {
+      fetch(`/api/proofs/cbid?address=${address}&namespace=${ProofTableNamespace.Usernames}`)
+        .then(console.log)
+        .catch(console.warn);
+    }
+  }, [address]);
+
   const [progress, setProgress] = useState<ClaimProgression>(ClaimProgression.SEARCH);
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
   const toggleModal = useCallback(() => setLearnMoreModalOpen((open) => !open), []);
