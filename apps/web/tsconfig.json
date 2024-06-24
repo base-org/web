@@ -7,7 +7,7 @@
     "noEmit": true,
     "outDir": "../../out/apps/web",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "paths": {
       "base-ui": ["../../libs/base-ui"]
     },
