@@ -14,11 +14,14 @@ import {
   useEffect,
   useId,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 import { useIsNameAvailable } from 'apps/web/src/utils/hooks/useIsNameAvailable';
 import { useFocusWithin } from 'apps/web/src/utils/hooks/useFocusWithin';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
+import { useCall } from 'wagmi';
 
 export enum UsernameSearchInputVariant {
   Small,
@@ -46,15 +49,24 @@ export function UsernameSearchInput({
 }: UsernameSearchInputProps) {
   const { ref, focused } = useFocusWithin();
   const [search, setSearch] = useState<string>('');
+  const inputRef = useRef<HTMLInputElement>(null);
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [debouncedSearch] = useDebounceValue(search, 200);
   const { isLoading, data, isError, isFetching } = useIsNameAvailable(debouncedSearch);
   const validSearch =
     debouncedSearch.length >= USERNAME_MIN_CHARACTER_LENGTH &&
     debouncedSearch.length <= USERNAME_MAX_CHARACTER_LENGTH;
+
   const handleSearchChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setSearch(value);
+  }, []);
+
+  const setSearchFromSuggestion = useCallback((suggestion: string) => {
+    setSearch(suggestion);
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   }, []);
 
   useEffect(() => {
@@ -102,7 +114,7 @@ export function UsernameSearchInput({
   );
 
   const dropdownClasses = classNames(
-    'flex flex-col items-start bg-white ',
+    'flex flex-col items-start bg-white text-black',
     'absolute left-0 right-0 top-full z-10 border-t-0 ',
     groupBorderClasses,
     // radius, Padding & Font sizes
@@ -160,6 +172,12 @@ export function UsernameSearchInput({
     'px-3 py-2 text-sm': variant === UsernameSearchInputVariant.Small,
   });
 
+  const spinnerWrapperClasses = classNames('flex  w-full items-center justify-center', {
+    // Equivalent to the dropdown when one name is available
+    'h-[6.75rem]': variant === UsernameSearchInputVariant.Large,
+    'h-[4.25rem]': variant === UsernameSearchInputVariant.Small,
+  });
+
   const iconSize = variant === UsernameSearchInputVariant.Large ? 24 : 18;
 
   const inputId = useId();
@@ -203,6 +221,7 @@ export function UsernameSearchInput({
         onFocus={onFocus}
         onBlur={onBlur}
         id={inputId}
+        ref={inputRef}
       />
       <div className={dropdownClasses}>
         <div className={lineClasses}>
@@ -221,7 +240,9 @@ export function UsernameSearchInput({
             </button>
           </>
         ) : isLoading || isFetching ? (
-          <p className={mutedMessage}>Loading...</p>
+          <div className={spinnerWrapperClasses}>
+            <Icon name="spinner" color="currentColor" />
+          </div>
         ) : isError ? (
           <p className={mutedMessage}>There was an error fetching the data</p>
         ) : (
@@ -233,7 +254,7 @@ export function UsernameSearchInput({
                 key={suggestion}
                 className={buttonClasses}
                 type="button"
-                onClick={() => handleSelectName(suggestion)}
+                onClick={() => setSearchFromSuggestion(suggestion)}
               >
                 <span className="truncate">{formatBaseEthDomain(suggestion)}</span>
                 <ChevronRightIcon width={iconSize} height={iconSize} />
