@@ -62,8 +62,6 @@ bun i
 bun run dev
 ```
 
-You only need to create
-
 Navigate to `localhost:3000` and confirm the app is working.
 
 ## Building the App
