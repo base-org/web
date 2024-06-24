@@ -98,7 +98,7 @@ const config = {
   ],
   customFields: {
     nodeEnv: process.env.NODE_ENV,
-    sprigEnvironmentId: process.env.SPRIG_ENVIRONMENT_ID,
+    sprigEnvironmentId: 'Q2ppiEaeSEJI',
   },
 
   presets: [
