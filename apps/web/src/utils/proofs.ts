@@ -17,13 +17,12 @@ type ProofsTable = {
 //username_proofs
 
 const proofTableName = 'proofs';
-const db = createKysely<Database>();
 
 export async function getProofsByNamespaceAndAddress(
   address: string,
   namespace: ProofTableNamespace,
 ) {
-  return db
+  return createKysely<Database>()
     .selectFrom(proofTableName)
     .where('address', '=', address)
     .where('namespace', '=', namespace.valueOf())
