@@ -81,7 +81,7 @@ export default function Usernames() {
 
   // the 96px here accounts for the header height
   const mainClasses = classNames(
-    'relative flex min-h-[calc(100vh-96px)] w-full flex-col items-center pb-32 pt-32 px-6',
+    'relative z-10 flex min-h-[calc(100vh-96px)] w-full flex-col items-center pb-32 pt-32 px-6',
     'transition-all duration-500',
     {
       'bg-ocsblue text-white': inputFocused,
