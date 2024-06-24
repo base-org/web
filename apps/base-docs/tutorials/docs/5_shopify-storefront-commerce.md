@@ -131,7 +131,7 @@ npx shopify hydrogen deploy
 
 Select **Preview** as the deployment type. After deployment, your terminal should display a URL where you can view your live site, such as:
 
-Your terminal should display a url like:
+Your terminal will display a url like:
 `https://hydrogen-quickstart-20c3648d482c7a17d77d.o2.myshopify.dev/`
 
 And that's it! You've successfully created and deployed your Hydrogen storefront.
@@ -140,7 +140,7 @@ And that's it! You've successfully created and deployed your Hydrogen storefront
 
 Visit your new storefront and add an item to your cart. Proceed to view your cart and then proceed to checkout. On the payment screen, you should see Coinbase Commerce automatically appear as an additional payment method alongside your existing payment options.
 
-:::info[Not seeing Coinbase Commerce?]
+:::info[Not seeing a crypto payment option?]
 
 Remember to link "activate" your Coinbase Commerce Plugin.
 
