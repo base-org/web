@@ -1,12 +1,12 @@
 type IconProps = {
   name: keyof typeof ICONS;
-  color?: 'white' | 'black';
+  color?: 'white' | 'black' | 'currentColor';
   width?: string;
   height?: string;
 };
 
 type SvgProps = {
-  color?: 'white' | 'black';
+  color?: 'white' | 'black' | 'currentColor';
   width?: string;
   height?: string;
 };
@@ -143,6 +143,19 @@ const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
         d="M17.4677 18.8463C17.0755 18.8463 16.7576 19.1627 16.7576 19.5531V20.4014H16.6156C16.2235 20.4014 15.9056 20.7179 15.9056 21.1083V21.9565H23.8582V21.1083C23.8582 20.7179 23.5403 20.4014 23.1482 20.4014H23.0062V19.5531C23.0062 19.1627 22.6883 18.8463 22.2961 18.8463V6.26393H23.0772L24.0002 3.1537H18.3198V18.8463H17.4677Z"
         fill={color}
       />
+    </svg>
+  ),
+
+  copy: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 17 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M5 0V3H7V2H14V10H13V12H16V0H5Z" fill={color} />
+      <path d="M10 6V14H3V6H10ZM12 4H1V16H12V4Z" fill={color} />
     </svg>
   ),
 };

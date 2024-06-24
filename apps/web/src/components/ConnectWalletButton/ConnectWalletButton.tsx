@@ -1,7 +1,9 @@
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
+import { UserAddress } from 'apps/web/src/components/ConnectWalletButton/UserAddress';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
 import logEvent, { identify } from 'apps/web/src/utils/logEvent';
+import classNames from 'classnames';
 import { useCallback, useEffect } from 'react';
 import { useAccount } from 'wagmi';
 
@@ -31,6 +33,11 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
     logEvent('ConnectWalletButton_Clicked', {});
   }, [openConnectModal]);
 
+  const userAddressClasses = classNames('text-lg', {
+    'text-white': color === 'white',
+    'text-black': color === 'black',
+  });
+
   return (
     <ConnectButton.Custom>
       {({ account, chain, openAccountModal, openChainModal, mounted }) => {
@@ -55,12 +62,15 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
 
         return (
           <button
-            className={`cursor-pointer ${className}`}
+            className={`flex cursor-pointer items-center gap-2 ${className}`}
             onClick={openAccountModal}
             onKeyUp={openAccountModal}
             type="button"
           >
             <UserAvatar />
+            <span className={userAddressClasses}>
+              <UserAddress />
+            </span>
           </button>
         );
       }}

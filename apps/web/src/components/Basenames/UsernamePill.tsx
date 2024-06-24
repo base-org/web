@@ -1,12 +1,14 @@
 import { formatBaseEthDomain, getUsernamePictureIndex } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
-import profilePictures1 from './profilesPictures/1.svg';
-import profilePictures2 from './profilesPictures/2.svg';
-import profilePictures3 from './profilesPictures/3.svg';
-import profilePictures4 from './profilesPictures/4.svg';
-import profilePictures5 from './profilesPictures/5.svg';
-import profilePictures6 from './profilesPictures/6.svg';
-import profilePictures7 from './profilesPictures/7.svg';
+
+import profilePictures1 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/1.svg';
+import profilePictures2 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/2.svg';
+import profilePictures3 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/3.svg';
+import profilePictures4 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/4.svg';
+import profilePictures5 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/5.svg';
+import profilePictures6 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/6.svg';
+import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/7.svg';
+
 import Image from 'next/image';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
@@ -18,7 +20,7 @@ export function UsernamePill({ username }: UsernamePillProps) {
   const pillNameClasses = classNames(
     'bg-blue-500 w-auto max-w-fit	py-4 px-6 rounded-[5rem] text-5xl text-white ',
     'flex gap-4 items-center',
-    'leading-[1.2em]',
+    'leading-[2em]',
     'shadow-[0px_8px_16px_0px_rgba(0,82,255,0.32),inset_0px_8px_16px_0px_rgba(255,255,255,0.25)]',
   );
 
@@ -31,6 +33,7 @@ export function UsernamePill({ username }: UsernamePillProps) {
     profilePictures6,
     profilePictures7,
   ];
+
   const profilePictureIndex = getUsernamePictureIndex(username, profilePictures.length);
 
   const selectedProfilePicture = profilePictures[profilePictureIndex] as unknown as StaticImport;

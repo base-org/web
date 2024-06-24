@@ -14,6 +14,7 @@ const colorVariant: Record<'white' | 'black', 'secondary' | 'secondaryDark'> = {
   black: 'secondaryDark',
 };
 
+// I don't think this is used at all
 export function ConnectWalletButton({ color, className }: ConnectWalletButtonProps) {
   return (
     <ConnectButton.Custom>
@@ -38,7 +39,7 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
         }
 
         return (
-          <div className="flex items-center gap-6 border-b border-t border-solid border-translucent-200 pb-4 pt-4">
+          <div className="flex items-center gap-6 border-b border-t border-solid border-translucent-200 pb-4 pt-4 text-white">
             <button
               className={`cursor-pointer ${className}`}
               onClick={openAccountModal}
