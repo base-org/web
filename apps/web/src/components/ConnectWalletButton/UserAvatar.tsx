@@ -10,10 +10,16 @@ import profilePictures5 from './profilesPictures/5.svg';
 import profilePictures6 from './profilesPictures/6.svg';
 import profilePictures7 from './profilesPictures/7.svg';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import classNames from 'classnames';
 
-type UserAvatarProps = {};
+export enum AvatarSizes {
+  Medium,
+  None,
+}
 
-export function UserAvatar({}: UserAvatarProps) {
+type UserAvatarProps = { size?: AvatarSizes };
+
+export function UserAvatar({ size = AvatarSizes.None }: UserAvatarProps) {
   const { address } = useAccount();
   const { data: ensName } = useEnsName({
     address,
@@ -45,8 +51,13 @@ export function UserAvatar({}: UserAvatarProps) {
   ] as unknown as StaticImport;
   const avatar = ensAvatar ?? defaultSelectedProfilePicture;
 
+  const figureClasses = classNames({
+    'h-[2rem] max-h-[2rem] min-h-[2rem] w-[2rem] min-w-[2rem] max-w-[2rem]':
+      size === AvatarSizes.Medium,
+  });
+
   return (
-    <figure className="h-[2rem] max-h-[2rem] min-h-[2rem] w-[2rem] min-w-[2rem] max-w-[2rem]">
+    <figure className={figureClasses}>
       <Image src={avatar} className="rounded-full" alt="Avatar" />
     </figure>
   );

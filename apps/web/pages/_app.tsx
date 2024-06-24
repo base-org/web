@@ -1,7 +1,7 @@
 import './global.css';
 
 import '@rainbow-me/rainbowkit/styles.css';
-import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { AvatarComponent, getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
 import { base, mainnet, baseSepolia, sepolia } from 'wagmi/chains';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
@@ -21,6 +21,7 @@ import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/Clien
 
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
 import useSprig from 'base-ui/hooks/useSprig';
+import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 
 const config = getDefaultConfig({
   appName: 'Base.org',
@@ -85,7 +86,7 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
         <ClientAnalyticsScript />
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
-            <RainbowKitProvider modalSize="compact">
+            <RainbowKitProvider modalSize="compact" avatar={UserAvatar}>
               <Layout>
                 <Component {...pageProps} />
               </Layout>

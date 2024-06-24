@@ -1,7 +1,7 @@
 import { Button } from 'apps/web/src/components/Button/Button';
 
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
+import { AvatarSizes, UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { UserAddress } from 'apps/web/src/components/ConnectWalletButton/UserAddress';
 
 type ConnectWalletButtonProps = {
@@ -46,7 +46,7 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
               onKeyUp={openAccountModal}
               type="button"
             >
-              <UserAvatar />
+              <UserAvatar size={AvatarSizes.Medium} />
             </button>
             <UserAddress />
           </div>
