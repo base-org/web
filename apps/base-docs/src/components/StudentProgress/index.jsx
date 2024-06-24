@@ -106,19 +106,6 @@ export default function StudentProgress() {
         >
           <h1 style={{ paddingBottom: '40px' }}>Base Camp Progress</h1>
         </div>
-        <div
-          style={{
-            display: 'flex',
-            width: 'auto',
-            flexBasis: '50%',
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-            gap: '0.5rem',
-            height: '100%',
-          }}
-        >
-          <CustomConnectButton className={styles.walletConnectButton} />
-        </div>
       </div>
 
       {renderNFTProgressContainer()}
