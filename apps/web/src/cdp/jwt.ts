@@ -1,4 +1,4 @@
-import { sign } from 'jsonwebtoken';
+import { SignJWT } from 'jose';
 import crypto from 'crypto';
 import { cdpBaseUri, cdpKeyName, cdpKeySecret } from 'apps/web/src/cdp/constants';
 
@@ -23,13 +23,13 @@ export async function generateCdpJwt(requestMethod: string, requestPath: string)
     uri: uri,
   };
 
-  const token = sign(claims, cdpKeySecret, {
-    algorithm,
-    header: {
-      kid: cdpKeyName,
-      alg: algorithm,
-      nonce,
-    },
-  });
-  return token;
+  const key = crypto.createPrivateKey(cdpKeySecret);
+
+  const jwt = await new SignJWT(claims)
+    .setProtectedHeader({ alg: algorithm, kid: cdpKeyName, nonce })
+    .setIssuedAt()
+    .setExpirationTime('60s')
+    .sign(key);
+
+  return jwt;
 }
