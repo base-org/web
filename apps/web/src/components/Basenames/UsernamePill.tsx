@@ -18,6 +18,7 @@ export function UsernamePill({ username }: UsernamePillProps) {
   const pillNameClasses = classNames(
     'bg-blue-500 w-auto max-w-fit	py-4 px-6 rounded-[5rem] text-5xl text-white ',
     'flex gap-4 items-center',
+    'leading-[1.2em]',
     'shadow-[0px_8px_16px_0px_rgba(0,82,255,0.32),inset_0px_8px_16px_0px_rgba(255,255,255,0.25)]',
   );
 
