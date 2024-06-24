@@ -46,15 +46,38 @@ enum Discount {
   CBID,
 }
 
-export default function Usernames() {
-  const { address } = useAccount();
-  const [discount, setDiscount] = useState(Discount.NONE);
+/*
+test addresses w/ different verifications
+  0xB18e4C959bccc8EF86D78DC297fb5efA99550d85 - cb.id 
+  0xB18e4C959bccc8EF86D78DC297fb5efA99550d85, 0xB6944B3074F40959E1166fe010a3F86B02cF2b7c- verified account
+  0x9C02E8E28D8b706F67dcf0FC7F46A9ee1f9649FA - cb1
+*/
 
+export default function Usernames() {
+  // const { address } = useAccount();
+  const address = '0xB6944B3074F40959E1166fe010a3F86B02cF2b7c';
+  const [discount, setDiscount] = useState(Discount.NONE);
+  const [loadingDiscounts, setLoadingDiscounts] = useState(false);
   useEffect(() => {
+    async function checkAttestations() {
+      try {
+        setLoadingDiscounts(true);
+        const promises = [
+          fetch(
+            `/api/proofs/cbid?address=${address}&namespace=${ProofTableNamespace.Usernames}`,
+          ).then((res) => res.json()),
+          fetch(`/api/proofs/coinbase?address=${address}`).then((res) => res.json()),
+        ];
+        const data = await Promise.all(promises);
+        console.log('jf data', data);
+      } catch (e) {
+        console.error('jf', e);
+      } finally {
+        setLoadingDiscounts(false);
+      }
+    }
     if (address) {
-      fetch(`/api/proofs/cbid?address=${address}&namespace=${ProofTableNamespace.Usernames}`)
-        .then(console.log)
-        .catch(console.warn);
+      checkAttestations();
     }
   }, [address]);
 
@@ -234,7 +257,7 @@ export default function Usernames() {
             </div>
 
             <div className={registrationWrapperClasses}>
-              <RegistrationForm name={selectedName} />
+              <RegistrationForm name={selectedName} loadingDiscounts={true || loadingDiscounts} />
               <p className="mt-6 text-center">
                 unlock your username for free!{' '}
                 <button type="button" className="underline" onClick={toggleModal}>

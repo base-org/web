@@ -1,5 +1,5 @@
 import { cdpGet } from 'apps/web/src/cdp/utils';
-import { ethers } from 'ethers';
+import { isAddress } from 'viem';
 
 export type LinkedAddresses = {
   idemKey: string;
@@ -11,7 +11,7 @@ type ErrorResponse = {
 };
 
 export async function getLinkedAddresses(address: string): Promise<LinkedAddresses> {
-  if (!ethers.utils.isAddress(address)) {
+  if (!isAddress(address)) {
     throw new Error('valid address is required');
   }
   try {

@@ -1,8 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getProofsByNamespaceAndAddress, ProofTableNamespace } from 'apps/web/src/utils/proofs';
+import { isAddress } from 'viem';
 
 /*
-if result array is empty, user has no cbid
+this endpoint returns whether or not the account has a cb.id
+if result array is empty, user has no cb.id
 example return: 
 {
     "result": [
@@ -14,22 +16,17 @@ example return:
     ]
 }
 */
-// next endpoint (not this one) includes trusted signer for coinbase attestation and coinbase1 attestation
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
   const { address, namespace } = req.query;
-  if (!address) {
-    return res.status(400).json({ error: 'address is required' });
+  if (!address || Array.isArray(address) || !isAddress(address)) {
+    return res.status(400).json({ error: 'A single valid address is required' });
   }
 
   try {
-    const content = await getProofsByNamespaceAndAddress(
-      '0xB18e4C959bccc8EF86D78DC297fb5efA99550d85' as string,
-      namespace as ProofTableNamespace,
-    );
+    const content = await getProofsByNamespaceAndAddress(address, namespace as ProofTableNamespace);
 
     return res.status(200).json({ result: content });
   } catch (error) {

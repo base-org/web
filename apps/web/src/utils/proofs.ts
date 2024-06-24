@@ -19,7 +19,7 @@ type ProofsTable = {
 const proofTableName = 'proofs';
 
 export async function getProofsByNamespaceAndAddress(
-  address: string,
+  address: `0x${string}`,
   namespace: ProofTableNamespace,
 ) {
   return createKysely<Database>()

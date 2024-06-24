@@ -9,8 +9,16 @@ import {
   verifiedCb1AccountSchemaId,
 } from 'apps/web/src/constants';
 import { hasRegisteredWithDiscount } from 'apps/web/src/contracts/Usernames/registrarController';
-import { ethers } from 'ethers';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import {
+  encodeAbiParameters,
+  encodePacked,
+  isAddress,
+  isHex,
+  keccak256,
+  parseAbiParameters,
+} from 'viem';
+import { privateKeyToAccount } from 'viem/accounts';
 import { base, baseSepolia } from 'viem/chains';
 
 type PreviousClaim = {
@@ -32,25 +40,27 @@ const expiry = (process.env.USERNAMES_SIGNATURE_EXPIRATION_SECONDS as unknown as
 const previousClaimsKVPrefix = 'username:claims:';
 const chain = isDevelopment ? baseSepolia : base;
 
-async function signMessage(claimerAddress: string) {
-  const wallet = new ethers.Wallet(trustedSignerPKey);
+async function signMessage(claimerAddress: `0x${string}`) {
+  const account = privateKeyToAccount(trustedSignerPKey);
 
   // encode the message
-  const message = ethers.utils.solidityPack(
+  const message = encodePacked(
     ['bytes2', 'address', 'address', 'uint256'],
-    ['0x1900', trustedSignerAddress, claimerAddress, expiry],
+    ['0x1900', trustedSignerAddress, claimerAddress, BigInt(expiry)],
   );
+
   // hash the message
-  const msgHash = ethers.utils.keccak256(message);
+  const msgHash = keccak256(message);
 
   // sign the hashed message
-  const signature = await wallet.signMessage(ethers.utils.arrayify(msgHash));
+  const signature = await account.signMessage({ message: msgHash });
 
   // return the encoded signed message
-  return ethers.utils.defaultAbiCoder.encode(
-    ['address', 'uint256', 'bytes'],
-    [claimerAddress, expiry, signature],
-  );
+  return encodeAbiParameters(parseAbiParameters('address, uint256, bytes'), [
+    claimerAddress,
+    BigInt(expiry),
+    signature,
+  ]);
 }
 /**
  * This endpoint reports whether or not the provided access has access to the cb1 or verified account attestations
@@ -79,16 +89,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
   const { address } = req.query;
 
-  if (!address || !ethers.utils.isAddress(address as string)) {
+  if (!address || Array.isArray(address) || !isAddress(address)) {
     return res.status(400).json({ error: 'valid address is required' });
   }
 
-  const attestations = await getAttestations(address as `0x${string}`, chain, {
+  if (!trustedSignerPKey) {
+    return res.status(500).json({ error: 'currently unable to sign' });
+  }
+
+  if (!isHex(verifiedAccountSchemaId)) {
+    return res.status(500).json({ error: 'invalid verifiedCb1AccountSchemaId' });
+  }
+
+  if (!isHex(verifiedCb1AccountSchemaId)) {
+    return res.status(500).json({ error: 'invalid verifiedCb1AccountSchemaId' });
+  }
+
+  const attestations = await getAttestations(address, chain as any, {
     schemas: [verifiedAccountSchemaId, verifiedCb1AccountSchemaId],
   });
 
   if (!attestations?.length) {
-    return res.status(400).json({ error: 'address is not verified' });
+    return res.status(200).json({ result: { attestations } });
   }
   const attestationsRes = attestations.map(
     (attestation) => JSON.parse(attestation.decodedDataJson)[0] as VerifiedAccount,
@@ -131,7 +153,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // generate and sign the message
-    const signedMessage = await signMessage(address as string);
+    const signedMessage = await signMessage(address);
     const claim: PreviousClaim = {
       address: address as string,
       signedMessage: signedMessage,
