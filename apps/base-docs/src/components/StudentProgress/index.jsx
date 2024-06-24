@@ -4,9 +4,6 @@ import { useState } from 'react';
 import { useAccount } from 'wagmi';
 
 import useNFTData from '../../utils/nft-exercise-data';
-import { CustomConnectButton } from '@theme/NavbarItem/ComponentTypes';
-import styles from './styles.module.css';
-
 import NFTCard from './NFTCard';
 
 export default function StudentProgress() {
