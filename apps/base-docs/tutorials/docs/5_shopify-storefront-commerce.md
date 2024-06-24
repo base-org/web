@@ -140,6 +140,12 @@ And that's it! You've successfully created and deployed your Hydrogen storefront
 
 Visit your new storefront and add an item to your cart. Proceed to view your cart and then proceed to checkout. On the payment screen, you should see Coinbase Commerce automatically appear as an additional payment method alongside your existing payment options.
 
+:::info[Not seeing Coinbase Commerce?]
+
+Remember to link "activate" your Coinbase Commerce Plugin.
+
+:::
+
 ## Conclusion
 
 You now have a custom store front with the products from your Shopify account.
