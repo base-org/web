@@ -14,7 +14,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 import styles from './styles.module.css';
 import { WalletAvatar } from '../../components/WalletAvatar';
-import logEvent, { identify } from "base-ui/utils/logEvent";
+import logEvent, { logEventAndSend, identify } from "base-ui/utils/logEvent";
 
 export const CustomConnectButton = ({ className }) => {
   return (
@@ -131,7 +131,7 @@ export const CustomNavbarLink = (props) => {
       className='navbar__item navbar__link'
       style={{ cursor: 'pointer'}}
       onClick={() => {
-        logEvent(props.eventLabel, props.eventDetail ?? {})
+        logEventAndSend(props.eventLabel, props.eventDetail ?? {})
       }}
     >
       {props.label}
@@ -148,7 +148,7 @@ export const CustomDropdownLink = (props) => {
         className='dropdown__link'
         style={{ cursor: 'pointer'}}
         onClick={() => {
-          logEvent(props.eventLabel, props.eventDetail ?? {})
+          logEventAndSend(props.eventLabel, props.eventDetail ?? {})
         }}
       >
         {props.label}
