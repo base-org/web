@@ -53,7 +53,7 @@ Oxygen is Shopify’s global serverless hosting platform for deploying Hydrogen 
 
 To comply with Shopify's requirements, the Coinbase Commerce account linked to Shopify must be a Coinbase Managed account.
 
-To create one, [sign up](https://beta.commerce.coinbase.com/sign_up) for a business account and select "Coinbase Commerce" as the account type. See this Coinbase Commerce Merchant [help article](https://help.coinbase.com/en/commerce/getting-started/merchant-guidelines-commerce-application) for additional information on how to sign your business up.
+To create one, [sign up](https://beta.commerce.coinbase.com/sign_up) for a business account and select `Coinbase Commerce` as the account type. See this Coinbase Commerce Merchant [help article](https://help.coinbase.com/en/commerce/getting-started/merchant-guidelines-commerce-application) for additional information on how to sign your business up.
 
 ### Link Coinbase Commerce to your Shopify store
 
@@ -62,9 +62,9 @@ To create one, [sign up](https://beta.commerce.coinbase.com/sign_up) for a busin
 Once, you've created a Coinbase Commerce Managed account you can now add the plugin to your Shopify store.
 
 To add Coinbase Commerce as a payment method on your Shopify store, start by navigating to your admin page at `https://admin.shopify.com/store/<YOUR-STORE-NAME>`.
-Once there, click on Settings , located in the bottom left panel of the screen (or at `https://admin.shopify.com/store/<YOUR-STORE-NAME>settings/general`). Then select the “Payments” tab.
-Proceed by clicking “Add a payment method” and choose “Search by provider.” In the search field, type in “Coinbase” and select “Coinbase Commerce” from the results.
-Click "Install" and you should be redirected to Coinbase Commerce with aprompt log into your Coinbase account. Finally, click "Activate" to enable the Coinbase Commerce plugin.
+Once there, click on Settings , located in the bottom left panel of the screen (or at `https://admin.shopify.com/store/<YOUR-STORE-NAME>settings/general`). Then select the `Payments` tab.
+Proceed by clicking `Add a payment method` and choose `Search by provider`. In the search field, type in `Coinbase` and select `Coinbase Commerce` from the results.
+Click `Install` and you should be redirected to Coinbase Commerce with aprompt log into your Coinbase account. Finally, click `Activate` to enable the Coinbase Commerce plugin.
 
 ### Create a Storefront
 
