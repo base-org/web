@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useThemeConfig, ErrorCauseBoundary } from '@docusaurus/theme-common';
 import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 import NavbarItem from '@theme/NavbarItem';
@@ -40,6 +40,10 @@ ${JSON.stringify(item, null, 2)}`,
   );
 }
 function NavbarLayoutTopContent({ left, right }) {
+  const socialClick = useCallback((eventName) => {
+    logEvent(eventName, {});
+  }, [])
+
   return (
     <div className="navbar__inner">
       <div className="navbar__items">{left}</div>
@@ -52,7 +56,7 @@ function NavbarLayoutTopContent({ left, right }) {
             rel="noreferrer"
             aria-label="Base on Discord"
             onClick={() => {
-              logEvent('DiscordButton_Clicked', {})
+              socialClick('DiscordButton_Clicked')
             }}
           >
             <Icon name="discord" />
@@ -63,7 +67,7 @@ function NavbarLayoutTopContent({ left, right }) {
             rel="noreferrer"
             aria-label="Base on Twitter"
             onClick={() => {
-              logEvent('TwitterButton_Clicked', {})
+              socialClick('TwitterButton_Clicked')
             }}
           >
             <Icon name="twitter" />
@@ -74,7 +78,7 @@ function NavbarLayoutTopContent({ left, right }) {
             rel="noreferrer"
             aria-label="Base on Github"
             onClick={() => {
-              logEvent('GitHubButton_Clicked', {})
+              socialClick('GitHubButton_Clicked')
             }}
           >
             <Icon name="github" />
