@@ -53,6 +53,7 @@ async function signMessage(claimerAddress: string) {
   );
 }
 /**
+ * This endpoint reports whether or not the provided access has access to the cb1 or verified account attestations
  *
  * Error responses:
  * 400: if address is invalid or missing verifications
