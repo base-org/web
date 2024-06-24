@@ -1,7 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { getAttestations } from '@coinbase/onchainkit/identity';
 import { kv } from '@vercel/kv';
-import { hasRegisteredWithDiscount } from 'apps/web/src/contracts/Usernames/registrarController';
-import { ethers } from 'ethers';
+import { LinkedAddresses, getLinkedAddresses } from 'apps/web/src/cdp/api';
 import {
   isDevelopment,
   trustedSignerAddress,
@@ -9,8 +8,9 @@ import {
   verifiedAccountSchemaId,
   verifiedCb1AccountSchemaId,
 } from 'apps/web/src/constants';
-import { getLinkedAddresses, LinkedAddresses } from 'apps/web/src/cdp/api';
-import { getAttestations } from '@coinbase/onchainkit/identity';
+import { hasRegisteredWithDiscount } from 'apps/web/src/contracts/Usernames/registrarController';
+import { ethers } from 'ethers';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { base, baseSepolia } from 'viem/chains';
 
 type PreviousClaim = {
