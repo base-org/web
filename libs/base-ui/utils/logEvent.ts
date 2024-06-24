@@ -8,21 +8,22 @@ declare const window: Window &
     };
   };
 
-const cca = window.ClientAnalytics;
-
 export default function logEvent(name: string, event: unknown) {
+  const cca = window.ClientAnalytics;
   if (cca) {
     cca?.logEvent(name, event, cca.AnalyticsEventImportance.low);
   }
 }
 
 export function logEventAndSend(name: string, event: unknown) {
+  const cca = window.ClientAnalytics;
   if (cca) {
     cca?.logEvent(name, event, cca.AnalyticsEventImportance.high);
   }
 }
 
 export function identify(event: unknown) {
+  const cca = window.ClientAnalytics;
   if (cca) {
     cca?.logEvent('identify', event, cca.AnalyticsEventImportance.low);
   }
