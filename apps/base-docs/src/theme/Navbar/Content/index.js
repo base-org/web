@@ -40,9 +40,18 @@ ${JSON.stringify(item, null, 2)}`,
   );
 }
 function NavbarLayoutTopContent({ left, right }) {
-  const socialClick = useCallback((eventName) => {
-    logEvent(eventName, {});
+  const discordClick = useCallback((eventName) => {
+    logEvent('DiscordButton_Clicked', {});
   }, [])
+
+  const twitterClick = useCallback((eventName) => {
+    logEvent('TwitterButton_Clicked', {});
+  }, [])
+
+  const githubClick = useCallback((eventName) => {
+    logEvent('GithubButton_Clicked', {});
+  }, [])
+
 
   return (
     <div className="navbar__inner">
@@ -55,9 +64,7 @@ function NavbarLayoutTopContent({ left, right }) {
             target="_blank"
             rel="noreferrer"
             aria-label="Base on Discord"
-            onClick={() => {
-              socialClick('DiscordButton_Clicked')
-            }}
+            onClick={discordClick}
           >
             <Icon name="discord" />
           </a>
@@ -66,9 +73,7 @@ function NavbarLayoutTopContent({ left, right }) {
             target="_blank"
             rel="noreferrer"
             aria-label="Base on Twitter"
-            onClick={() => {
-              socialClick('TwitterButton_Clicked')
-            }}
+            onClick={twitterClick}
           >
             <Icon name="twitter" />
           </a>
@@ -77,9 +82,7 @@ function NavbarLayoutTopContent({ left, right }) {
             target="_blank"
             rel="noreferrer"
             aria-label="Base on Github"
-            onClick={() => {
-              socialClick('GitHubButton_Clicked')
-            }}
+            onClick={githubClick}
           >
             <Icon name="github" />
           </a>
