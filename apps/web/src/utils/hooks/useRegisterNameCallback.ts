@@ -4,10 +4,13 @@ import {
   USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
 } from 'apps/web/src/addresses/usernames';
 import { normalizeEnsDomainName } from 'apps/web/src/utils/usernames';
-import { useMemo } from 'react';
-import { Abi, getContract } from 'viem';
+import { useEffect, useMemo, useState } from 'react';
+import { Abi, Address, BlockTag, Hex, decodeAbiParameters, getContract } from 'viem';
 import { useAccount, useWalletClient, useWriteContract } from 'wagmi';
-import { useCapabilities, useWriteContracts } from 'wagmi/experimental'
+import { useCapabilities, useWriteContracts } from 'wagmi/experimental';
+import {client as publicClient} from "../paymasterConfig";
+import { CB_SW_PROXY_BYTECODE, CB_SW_V1_IMPLEMENTATION_ADDRESS, ERC_1967_PROXY_IMPLEMENTATION_SLOT } from 'apps/web/src/constants';
+
 
 function secondsInYears(years: number): number {
   const secondsPerYear = 365.25 * 24 * 60 * 60; // .25 accounting for leap years
@@ -15,6 +18,7 @@ function secondsInYears(years: number): number {
 }
 
 export function useRegisterNameCallback(name: string, years: number): () => void {
+  const [wallet, setWallet] = useState<number>(2); // 0 for EOA, 1 for Predeployed, 2 for SCW
   const { address, chainId } = useAccount();
   const account = useAccount();
   const { data: client } = useWalletClient();
@@ -45,6 +49,42 @@ export function useRegisterNameCallback(name: string, years: number): () => void
     );
     return () => {};
   }
+  
+  useEffect(() => {
+    const isWalletSCW = async () => {
+      try {
+        const code = await publicClient.getBytecode({address: address as Address});
+        if (!code) {
+          setWallet(1); // Wallet about to be deployed
+          return;
+        }
+        if (code !== CB_SW_PROXY_BYTECODE) {
+          setWallet(0); // EOA
+          return;
+        }
+        const implementation = await publicClient.request({
+          method: "eth_getStorageAt",
+          params: [address as Address, ERC_1967_PROXY_IMPLEMENTATION_SLOT, "latest"],
+        });
+        const implementationAddress = decodeAbiParameters(
+          [{ type: "address" }],
+          implementation
+        )[0];
+        if (implementationAddress !== CB_SW_V1_IMPLEMENTATION_ADDRESS) {
+          setWallet(0);
+        } 
+      } catch (e) {
+        console.error("Error", e);
+        setWallet(0); // Set to 0 in case of error
+      }
+    };
+    if (address) {
+      isWalletSCW().catch(console.error);
+    }
+  }, [address]);
+  
+
+
 
   const normalizedName = normalizeEnsDomainName(name);
   const registerRequest = {
@@ -66,7 +106,6 @@ export function useRegisterNameCallback(name: string, years: number): () => void
       .then(console.log)
       .catch(console.error);
   }
-  const flag = true; // Change flag to isAccountACoinbaseWallet
 
   // discountKey <- getValidDiscounts(): DiscountDetails[]
   // for each discount in DiscountDetails, check if user is valid (?)
@@ -74,7 +113,7 @@ export function useRegisterNameCallback(name: string, years: number): () => void
 
   // isValidDiscountedRegistration()
   return async () => {
-    if (flag) {
+    if (wallet == 0) {
       try {
         console.log('jf useRegisterNameCallback registerRequest', registerRequest);
         const result = await writeContractAsync({
@@ -100,6 +139,7 @@ export function useRegisterNameCallback(name: string, years: number): () => void
             }
           ], capabilities: capabilities
         });
+        console.log('useRegisterNameCallbackSCW result', resultSCW);
       } catch (e) {
         console.error("SCW call error", e);
       }

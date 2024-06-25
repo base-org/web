@@ -7,7 +7,7 @@ import {
   decodeFunctionData,
 } from "viem";
 import { baseSepolia } from "viem/chains";
-import {client} from "../../pages/api/paymaster_config";
+import {client} from "../../src/utils/paymasterConfig";
 
 
 import {
@@ -19,6 +19,7 @@ import {
   magicSpendAddress
 } from "../constants"
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
+import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
 
 export async function willSponsor({
     chainId,
@@ -84,7 +85,7 @@ export async function willSponsor({
  
     if (
       calls[callToCheckIndex].target.toLowerCase() !==
-      "myNFTAddress.toLowerCase()" // REPLACE THIS WITH REGISTRAR CONTROLLER ADDRESS
+      USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId].toLowerCase() 
     )
       return false;
  

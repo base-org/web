@@ -12,7 +12,7 @@ export const client = createPublicClient({
     transport: http(),
   });
 
-const paymasterService = "https://api.developer.coinbase.com/rpc/v1/base/1IhTcPOmhK5aEq-4WqRZMJoOh0oPenD2"; // Change this to the official paymaster url
+const paymasterService = "https://api.developer.coinbase.com/rpc/v1/base/1IhTcPOmhK5aEq-4WqRZMJoOh0oPenD2"; // Change this to the official paymaster
 
 export const paymasterClient = createClient({
     chain: baseSepolia,
