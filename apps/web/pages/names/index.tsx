@@ -1,23 +1,27 @@
 import { Transition } from '@headlessui/react';
-import { InformationCircleIcon } from '@heroicons/react/20/solid';
+import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
+import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
 import { FloatingENSPills } from 'apps/web/src/components/Basenames/FloatingENSPills';
+import { LearnMoreModal } from 'apps/web/src/components/Basenames/LearnMoreModal';
 import { RegistrationContext } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
+import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
 import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
 import {
   UsernameSearchInput,
   UsernameSearchInputVariant,
 } from 'apps/web/src/components/Basenames/UsernameSearchInput';
 import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
-import Modal from 'apps/web/src/components/Modal';
-import Tooltip from 'apps/web/src/components/Tooltip';
-import { ProofTableNamespace } from 'apps/web/src/utils/proofs';
+import {
+  useCheckCBIDAttestations,
+  useCheckCoinbaseAttestations,
+} from 'apps/web/src/utils/hooks/useAttestations';
 import classNames from 'classnames';
 import Head from 'next/head';
-import Image from 'next/image';
-import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
+import { Fragment, useCallback, useMemo, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
-
+import { base, baseSepolia } from 'viem/chains';
+import { useAccount, useReadContract } from 'wagmi';
 // TODO: replace appropriate backgrounds w/Lottie files
 
 export enum ClaimProgression {
@@ -39,11 +43,12 @@ const useRotatingText = (strings: string[]) => {
   return strings[currentIndex];
 };
 
-enum Discount {
-  NONE,
-  CB1,
-  COINBASE,
-  CBID,
+export enum Discount {
+  NONE = 0,
+  ALREADY_REDEEMED = 1 << 0, // 1
+  CB1 = 1 << 1, // 2
+  COINBASE_VERIFIED_ACCOUNT = 1 << 2, // 4
+  CBID = 1 << 3, // 8
 }
 
 /*
@@ -54,36 +59,45 @@ test addresses w/ different verifications
 */
 
 export default function Usernames() {
-  // const { address } = useAccount();
-  const address = '0xB6944B3074F40959E1166fe010a3F86B02cF2b7c';
-  const [discount, setDiscount] = useState(Discount.NONE);
-  const [loadingDiscounts, setLoadingDiscounts] = useState(false);
-  useEffect(() => {
-    async function checkAttestations() {
-      try {
-        setLoadingDiscounts(true);
-        const promises = [
-          fetch(
-            `/api/proofs/cbid?address=${address}&namespace=${ProofTableNamespace.Usernames}`,
-          ).then(async (res) => res.json()),
-          fetch(`/api/proofs/coinbase?address=${address}`).then(async (res) => res.json()),
-        ];
-        const data = await Promise.all(promises);
-        console.log('jf data', data);
-      } catch (e) {
-        console.error('jf', e);
-      } finally {
-        setLoadingDiscounts(false);
-      }
-    }
-    if (address) {
-      checkAttestations();
-    }
-  }, [address]);
+  const { chainId } = useAccount();
+  const [discount, setDiscount] = useState<number>(Discount.NONE);
+  const addDiscount = useCallback((d: Discount) => setDiscount((prev) => prev | d), []);
+  const hasDiscount = useCallback((d: Discount) => (discount & d) !== 0, [discount]);
+
+  const { data: CBIDData, loading: loadingCBIDAttestations } = useCheckCBIDAttestations();
+  console.log('useCheckCBIDAttestations data: ', CBIDData);
+  const { data: coinbaseData, loading: loadingCoinbaseAttestations } =
+    useCheckCoinbaseAttestations();
+  console.log('useCheckCoinbaseAttestations data: ', coinbaseData);
+  const loadingDiscounts = loadingCoinbaseAttestations || loadingCBIDAttestations;
+
+  const network = chainId === baseSepolia.id ? chainId : base.id;
+  const linkedAddresses = coinbaseData?.linkedAddresses;
+  // const coinbaseSignedMessage = coinbaseData?.result.signedMessage;
+  // const coinbaseAttestations = coinbaseData?.result.attestations;
+  const hasRegisteredArgs = useMemo(
+    () => ({
+      address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
+      abi: RegistrarControllerABI,
+      functionName: 'hasRegisteredWithDiscount',
+      args: linkedAddresses ? [linkedAddresses] : [],
+      chainId: network,
+    }),
+    [network, linkedAddresses],
+  );
+  const { data: hasAlreadyUsedADiscount } = useReadContract(hasRegisteredArgs);
+  if (hasAlreadyUsedADiscount && !hasDiscount(Discount.ALREADY_REDEEMED)) {
+    addDiscount(Discount.ALREADY_REDEEMED);
+  }
 
   const [progress, setProgress] = useState<ClaimProgression>(ClaimProgression.SEARCH);
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
-  const toggleModal = useCallback(() => setLearnMoreModalOpen((open) => !open), []);
+  const toggleLearnMoreModal = useCallback(() => setLearnMoreModalOpen((open) => !open), []);
+  const [shareUsernameModalOpen, setShareUsernameModalOpen] = useState(false);
+  const toggleShareUsernameModal = useCallback(
+    () => setShareUsernameModalOpen((open) => !open),
+    [],
+  );
 
   const [inputFocused, setInputFocused] = useState(false);
   const [inputHovered, setInputHovered] = useState(false);
@@ -127,7 +141,7 @@ export default function Usernames() {
   return (
     <>
       <Head>
-        <title>Base | Usernames</title>
+        <title>Base | names</title>
         <meta
           content="Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain."
           name="description"
@@ -161,7 +175,7 @@ export default function Usernames() {
               style={{ backgroundImage: `url(${tempPendingAnimation.src})` }}
             />
           </Transition>
-          <div className="relative mx-auto mb-12 mt-24 w-full w-full max-w-[36rem]">
+          <div className="relative mx-auto mb-12 mt-24 w-full max-w-[36rem]">
             <Transition
               appear
               show={progress === ClaimProgression.SEARCH}
@@ -215,7 +229,7 @@ export default function Usernames() {
               appear
               show={progress === ClaimProgression.CLAIM}
               className={classNames(
-                'absolute left-1/2 top-0 z-10 z-30 mx-auto w-full max-w-[15rem] -translate-x-1/2 -translate-y-12 transform transition-all',
+                'absolute left-1/2 top-0 z-30 mx-auto w-full max-w-[15rem] -translate-x-1/2 -translate-y-12 transform transition-all',
                 transitionDuration,
               )}
               enterFrom={classNames('opacity-0 translate-y-0')}
@@ -234,7 +248,7 @@ export default function Usernames() {
                 appear
                 show={progress === ClaimProgression.CLAIM}
                 className={classNames(
-                  'absolute left-1/2 top-0 z-20 z-20 mx-auto -translate-x-1/2 transition-all',
+                  'absolute left-1/2 top-0 z-20 mx-auto -translate-x-1/2 transition-all',
                   transitionDuration,
                 )}
                 enter="overflow-hidden"
@@ -250,7 +264,7 @@ export default function Usernames() {
                 appear
                 show={progress === ClaimProgression.SEARCH}
                 className={classNames(
-                  'absolute left-1/2 top-0 z-10 z-20 z-20 mx-auto mx-auto w-full max-w-[36rem] -translate-x-1/2 transition-all',
+                  'absolute left-1/2 top-0 z-20 mx-auto w-full max-w-[36rem] -translate-x-1/2 transition-all',
                   transitionDuration,
                 )}
                 enterFrom="opacity-0"
@@ -281,70 +295,23 @@ export default function Usernames() {
             >
               <RegistrationForm
                 name={selectedName}
-                loadingDiscounts={true || loadingDiscounts}
-                toggleModal={toggleModal}
+                loadingDiscounts={loadingDiscounts}
+                discount={discount}
+                hasDiscount={hasDiscount}
+                toggleModal={toggleLearnMoreModal}
               />
             </Transition>
           </div>
-          <Modal isOpen={learnMoreModalOpen} onClose={toggleModal} title="Qualify for a free name">
-            <p className="mb-6 text-illoblack">
-              You will receive your name for free if you connect to a wallet that has{' '}
-              <strong>one of the following</strong>
-            </p>
-            <ul className="mb-5 flex flex-col gap-3 self-start">
-              <li className="flex flex-row items-center justify-start">
-                <Image
-                  src="/images/usernames/coinbase-verification.svg"
-                  alt="criteria icon"
-                  width={30}
-                  height={30}
-                  className="mr-3"
-                />
-                A Coinbase account verification{' '}
-                <Tooltip content="Verifies you have a valid trading account on Coinbase">
-                  <InformationCircleIcon
-                    width={12}
-                    height={12}
-                    className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
-                  />
-                </Tooltip>
-              </li>
-              <li className="flex flex-row items-center justify-start">
-                <Image
-                  src="/images/usernames/coinbase-one-verification.svg"
-                  alt="criteria icon"
-                  width={30}
-                  height={30}
-                  className="mr-3"
-                />
-                A Coinbase One subscription verification{' '}
-                <Tooltip content="Verifies you have an active Coinbase One subscription">
-                  <InformationCircleIcon
-                    width={12}
-                    height={12}
-                    className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
-                  />
-                </Tooltip>
-              </li>
-              <li className="flex flex-row items-center justify-start">
-                <Image
-                  src="/images/usernames/cbid-verification.svg"
-                  alt="criteria icon"
-                  width={30}
-                  height={30}
-                  className="mr-3"
-                />
-                A CB.ID username{' '}
-                <Tooltip content="cb.id claimed prior to cutoff date">
-                  <InformationCircleIcon
-                    width={12}
-                    height={12}
-                    className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
-                  />
-                </Tooltip>
-              </li>
-            </ul>
-          </Modal>
+
+          <LearnMoreModal
+            learnMoreModalOpen={learnMoreModalOpen}
+            toggleModal={toggleLearnMoreModal}
+          />
+          <ShareUsernameModal
+            isOpen={shareUsernameModalOpen}
+            username="ultrabased"
+            toggleModal={toggleShareUsernameModal}
+          />
         </main>
       </RegistrationContext.Provider>
     </>
