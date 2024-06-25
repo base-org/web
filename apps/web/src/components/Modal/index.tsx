@@ -20,7 +20,7 @@ export default function Modal({
   titleAlign = 'center',
   ...rest
 }: PropsWithChildren<ModalProps>) {
-  const mainClasses = classNames('font-mono text-3xl text-illoblack w-full', {
+  const mainClasses = classNames('font-mono text-3xl text-illoblack w-full font-bold', {
     'text-center': titleAlign === 'center',
     'text-left': titleAlign === 'left',
     'text-right': titleAlign === 'right',
@@ -50,7 +50,7 @@ export default function Modal({
               )}
             </div>
 
-            <div className="mx-8 mb-16 flex max-w-prose flex-1 flex-col place-content-center place-items-center gap-2">
+            <div className="mx-8 mb-8 flex max-w-prose flex-1 flex-col place-content-center place-items-center gap-2">
               {Boolean(title) && (
                 <Dialog.Title as="h2" className={mainClasses}>
                   {title}

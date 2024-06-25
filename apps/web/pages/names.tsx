@@ -21,6 +21,7 @@ import { useInterval } from 'usehooks-ts';
 import { base, baseSepolia } from 'viem/chains';
 import { useAccount, useReadContract } from 'wagmi';
 import { LearnMoreModal } from '../src/components/Basenames/LearnMoreModal';
+import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
 // TODO: replace appropriate backgrounds w/Lottie files
 
 export enum ClaimProgression {
@@ -297,6 +298,7 @@ export default function Usernames() {
             </Transition>
           </div>
           {<LearnMoreModal learnMoreModalOpen={learnMoreModalOpen} toggleModal={toggleModal} />}
+          <ShareUsernameModal isOpen={true} username="ultrabased" toggleModal={toggleModal} />
         </main>
       </RegistrationContext.Provider>
     </>

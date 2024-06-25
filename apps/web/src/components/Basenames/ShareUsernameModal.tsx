@@ -15,6 +15,7 @@ import {
   socialPlatformsEnabled,
   socialPlatformsNameForDisplay,
 } from 'apps/web/src/utils/socialPlatforms';
+import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 
 export default function ShareUsernameModal({
   isOpen,
@@ -93,6 +94,8 @@ export default function ShareUsernameModal({
     window.open(shareLink, '_blank', options);
   };
 
+  const selectedProfilePicture = getUserNamePicture(username);
+
   return (
     <Modal
       isOpen={isOpen}
@@ -103,10 +106,16 @@ export default function ShareUsernameModal({
     >
       <div className="mt-4 flex w-full flex-col gap-4 rounded-3xl border border-line/20 p-6">
         <div className="flex flex-row items-center gap-4">
-          <Image src={penguin} alt="pengu" className="rounded-full" />
+          <Image
+            src={selectedProfilePicture}
+            alt={`@${username}`}
+            className="rounded-full"
+            width={60}
+            height={60}
+          />
           <div>
-            <p className="text-xl font-medium text-black">Shelley Lai</p>
-            <p className="text-muted">@chiaroscur0</p>
+            <p className="text-xl font-medium text-black">{username}</p>
+            <p className="text-muted">@{username}</p>
           </div>
         </div>
         <p>
