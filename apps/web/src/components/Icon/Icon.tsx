@@ -1,8 +1,8 @@
 type IconProps = {
   name: keyof typeof ICONS;
   color?: 'white' | 'black' | 'currentColor';
-  width?: string;
-  height?: string;
+  width?: string | number;
+  height?: string | number;
 };
 
 type SvgProps = {
@@ -173,6 +173,20 @@ const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
       />
       <path
         d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z"
+        fill={color}
+      />
+    </svg>
+  ),
+  backArrow: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.82271 15.414L8.29702 14.0626L3.65737 9.00113L15.8841 9.00113V7.00113L3.79835 7.00113L8.79835 2.00113L7.38414 0.586914L0 7.97105L6.82271 15.414Z"
         fill={color}
       />
     </svg>

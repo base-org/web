@@ -24,7 +24,7 @@ export const normalizeEnsDomainName = (name: string) => {
 };
 
 export const formatBaseEthDomain = (name: string) => {
-  return `${sanitizeEnsDomainName(name)}.${BASE_ETH_DOMAIN}`;
+  return `${sanitizeEnsDomainName(name)}.${BASE_ETH_DOMAIN}`.toLocaleLowerCase();
 };
 
 export const getUsernamePictureIndex = (name: string, totalOptions: number) => {

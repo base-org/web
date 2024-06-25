@@ -49,7 +49,6 @@ export default async function handler(request: NextRequest) {
               padding: '1rem',
               paddingRight: '1.5rem',
               fontSize: '5rem',
-
               maxWidth: '100%',
               boxShadow:
                 '0px 8px 16px 0px rgba(0,82,255,0.32),inset 0px 8px 16px 0px rgba(255,255,255,0.25) ',
