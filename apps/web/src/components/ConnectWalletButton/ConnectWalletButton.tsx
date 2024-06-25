@@ -1,9 +1,15 @@
-import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
-import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
-import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
-import logEvent, { identify } from 'apps/web/src/utils/logEvent';
 import { useCallback, useEffect } from 'react';
 import { useAccount } from 'wagmi';
+import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
+
+import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
+import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
+import logEvent, {
+  ActionType,
+  AnalyticsEventImportance,
+  ComponentType,
+  identify,
+} from 'base-ui/utils/logEvent';
 
 type ConnectWalletButtonProps = {
   color: 'white' | 'black';
@@ -21,14 +27,30 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
 
   useEffect(() => {
     if (address) {
-      logEvent('navbar_walletconnected', { address });
+      logEvent(
+        'wallet_connected',
+         {
+          action: ActionType.change,
+          context: 'navbar',
+          address
+         },
+         AnalyticsEventImportance.low
+        );
       identify({ userId: address });
     }
   }, [address]);
 
   const clickConnect = useCallback(() => {
     openConnectModal?.();
-    logEvent('navbar_connectwallet', {});
+    logEvent(
+      'connect_wallet',
+      {
+        action: ActionType.click,
+        component_type: ComponentType.button,
+        context: 'navbar'
+      },
+      AnalyticsEventImportance.low
+    );
   }, [openConnectModal]);
 
   return (
