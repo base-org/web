@@ -2,34 +2,28 @@ declare const window: Window &
   typeof globalThis & {
     ClientAnalytics: {
       logEvent: LogEvent;
-      ActionType: typeof ActionType;
-      ComponentType: typeof ComponentType;
-      AnalyticsEventImportance: typeof AnalyticsEventImportance
     };
   };
-
-export default function logEvent(name: string, event: CCAEventData) {
-  const cca = window.ClientAnalytics;
-  if (cca) {
-    cca?.logEvent(name, event, cca.AnalyticsEventImportance.low);
-  }
-}
-
-export function logEventAndSend(name: string, event: CCAEventData) {
-  const cca = window.ClientAnalytics;
-  if (cca) {
-    cca?.logEvent(name, event, cca.AnalyticsEventImportance.high);
+ 
+export default function logEvent(
+  name: string,
+  event: CCAEventData,
+  importance: AnalyticsEventImportance | undefined
+) {
+  const CCA = window.ClientAnalytics;
+  if (CCA) {
+    CCA?.logEvent(name, event, importance);
   }
 }
 
 export function identify(event: CCAEventData) {
-  const cca = window.ClientAnalytics;
-  if (cca) {
-    cca?.logEvent('identify', event, cca.AnalyticsEventImportance.low);
+  const CCA = window.ClientAnalytics;
+  if (CCA) {
+    CCA?.logEvent('identify', event, AnalyticsEventImportance.low);
   }
 }
 
-export type LogEvent = (
+type LogEvent = (
   eventName: string,
   eventData: CCAEventData,
   importance?: AnalyticsEventImportance,
@@ -82,8 +76,8 @@ enum AnalyticsEventImportance {
 
 type CCAEventData = {
   // Standard Attributes
-  action: ActionType;
-  component_type: ComponentType;
+  action?: ActionType;
+  component_type?: ComponentType;
   // Custom Attributes
   doc_helpful?: boolean;
   doc_feedback_reason?: string | null;
@@ -92,4 +86,8 @@ type CCAEventData = {
   message_id?: number;
   response_helpful?: boolean;
   address?: string;
+  context?: string;
 };
+
+export { ComponentType, ActionType, AnalyticsEventImportance };
+export type { LogEvent, CCAEventData };

@@ -14,7 +14,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 import styles from './styles.module.css';
 import { WalletAvatar } from '../../components/WalletAvatar';
-import logEvent, { logEventAndSend, identify } from "base-ui/utils/logEvent";
+import logEvent, { ActionType, AnalyticsEventImportance, ComponentType,  identify } from "base-ui/utils/logEvent";
 
 export const CustomConnectButton = ({ className }) => {
   return (
@@ -26,21 +26,29 @@ export const CustomConnectButton = ({ className }) => {
 
         useEffect(() => {
           if (address) {
-            logEvent('navbar_walletconnected', {
-              action: window.ClientAnalytics.ActionType.click,
-              component: window.ClientAnalytics.ComponentType.button,
-              address,
-            });
+            logEvent(
+              'navbar_walletconnected',
+              {
+                action: ActionType.click,
+                component: ComponentType.button,
+                address,
+              },
+              AnalyticsEventImportance.low,
+            );
             identify({ userId: address });
           }
         }, [address]);
 
         const clickConnect = useCallback(() => {
           openConnectModal?.();
-          logEvent('navbar_connectwallet', {
-            action: window.ClientAnalytics.ActionType.click,
-            component: window.ClientAnalytics.ComponentType.button,
-          });
+          logEvent(
+            'navbar_connectwallet',
+            {
+              action: ActionType.click,
+              component: ComponentType.button,
+            },
+            AnalyticsEventImportance.low,
+          );
         }, [openConnectModal]);
 
         return (
@@ -138,10 +146,14 @@ export const CustomNavbarLink = (props) => {
       className='navbar__item navbar__link'
       style={{ cursor: 'pointer'}}
       onClick={() => {
-        logEventAndSend(props.eventLabel, {
-          action: window.ClientAnalytics.ActionType.click,
-          component: window.ClientAnalytics.ComponentType.link,
-        })
+        logEvent(
+          props.eventLabel,
+          {
+            action: ActionType.click,
+            component: ComponentType.link,
+          },
+          AnalyticsEventImportance.high
+        )
       }}
     >
       {props.label}
@@ -158,10 +170,14 @@ export const CustomDropdownLink = (props) => {
         className='dropdown__link'
         style={{ cursor: 'pointer'}}
         onClick={() => {
-          logEventAndSend(props.eventLabel, {
-            action: window.ClientAnalytics.ActionType.click,
-            component: window.ClientAnalytics.ComponentType.link,
-          })
+          logEvent(
+            props.eventLabel,
+            {
+              action: ActionType.click,
+              component: ComponentType.link,
+            },
+            AnalyticsEventImportance.high
+          )
         }}
       >
         {props.label}
