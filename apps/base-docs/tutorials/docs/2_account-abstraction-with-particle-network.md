@@ -214,7 +214,7 @@ To achieve this, `AuthCoreContextProvider` will take the following parameters:
 
 With this in mind, an example of what your `index.jsx/tsx` file may look like given the usage of `AuthCoreContextProvider` has been included below.
 
-```typescript
+```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
@@ -278,7 +278,7 @@ These hooks include `useEthereum` for the retrieval of the standard EOA-based pr
 
 To begin building `App.jsx/tsx`, you'll need to define the relevant functions from these hooks through a process similar to the example below:
 
-```typescript
+```tsx
 import React, { useState, useEffect } from 'react';
 import { useEthereum, useConnect, useAuthCore } from '@particle-network/auth-core-modal';
 import { BaseSepolia } from '@particle-network/chains';
@@ -320,7 +320,7 @@ To configure `SmartAccount`, you'll be using the following parameters:
 
 See the snippet below for an example of a constructed `SmartAccount` object:
 
-```typescript
+```tsx
 import React, { useState, useEffect } from 'react';
 import { useEthereum, useConnect, useAuthCore } from '@particle-network/auth-core-modal';
 import { BaseSepolia } from '@particle-network/chains';
@@ -362,7 +362,7 @@ Essentially, we'll construct an instance of `AAWrapProvider`, passing in the pre
 
 You can achieve this in one line of code, e.g.:
 
-```typescript
+```tsx
 // For Ethers V6, use ethers.BrowserProvider instead; the syntax below won't work.
 const customProvider = new ethers.providers.Web3Provider(
   new AAWrapProvider(smartAccount, SendTransactionMode.Gasless),
@@ -399,7 +399,7 @@ Ideally, some logic should be set in place to ensure `connect` isn't called if a
 
 Below is an example of calling `connect` (within the conditional described above).
 
-```typescript
+```tsx
 const handleLogin = async (authType) => {
   if (!userInfo) {
     await connect({
@@ -429,7 +429,7 @@ If you intend on interacting with a contract, `data` can also be filled out (or 
 
 Therefore, your `tx` object should look like this:
 
-```typescript
+```tsx
 const executeUserOp = async () => {
     ...
 
@@ -454,7 +454,7 @@ To reflect the transaction hash after its confirmation on-chain, you can call th
 
 See the example below for a visualization of this process:
 
-```typescript
+```tsx
 const executeUserOp = async () => {
   const signer = customProvider.getSigner();
 
@@ -480,7 +480,7 @@ Essentially, this displays either "Sign in with Google" or "Sign in with Twitter
 
 Below is an example of what your `App.jsx/tsx` file may look at this point. At the bottom of this snippet you'll find the JSX:
 
-```typescript
+```tsx
 import React, { useState, useEffect } from 'react';
 
 import { useEthereum, useConnect, useAuthCore } from '@particle-network/auth-core-modal';

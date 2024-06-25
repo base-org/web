@@ -40,7 +40,7 @@ You've built an app that can read from your Simple DAO smart contract, but so fa
 
 Add a new component called `TokenInfo` to the project, and a state variable for `tokenBalance`.
 
-```typescript
+```tsx
 import { useState } from 'react';
 
 export function TokenInfo() {
@@ -54,7 +54,7 @@ You'll need to know how many tokens the user has to be able to make decisions on
 
 You'll need the user's address to use in `args`, which you can conveniently get from the [`useAccount`] hook using the pattern below.
 
-```typescript:
+```tsx:
 const { data: balanceData, queryKey: balanceQueryKey } =
   useReadContract({
     address: contractData.address as `0x${string}`,
@@ -82,7 +82,7 @@ Remember, this is an expensive method to watch for data to change on the blockch
 
 Set the `return` for your component to display this balance to the user:
 
-```typescript
+```tsx
 return (
   <div>
     <p>{'Token Balance: ' + tokenBalance}</p>
@@ -92,7 +92,7 @@ return (
 
 Then, add the component to your app in `index.tsx`.
 
-```typescript
+```tsx
 return (
   <div className={styles.container}>
     <main className={styles.main}>
@@ -110,7 +110,7 @@ Run the app and make sure you see the expected balance displayed on the page.
 
 The [`useWriteContract`] hook is configured similarly to the [`useReadContract`] hook, with one important difference. You'll need to decompose the `write` property from the function call. This is a function that you can use to call your smart contract function whenever you'd like!
 
-```typescript
+```tsx
 const { writeContract: claim, isPending: claimIsPending } = useWriteContract();
 ```
 
@@ -118,7 +118,7 @@ Add an event handler function and a button. As with the `useReadContract` hook, 
 
 You can use this to nudge them to look to their wallet to complete the transaction. Additionally, add a `useEffect` to watch for an error state.
 
-```typescript
+```tsx
 const handleClaimClick = () => {
   claim({
     abi: contractData.abi,

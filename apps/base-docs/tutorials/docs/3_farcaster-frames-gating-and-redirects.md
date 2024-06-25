@@ -94,7 +94,7 @@ The text input field is created by adding the `input` property to `getFrameMetad
 
 In this example, it's in `app/page.tsx` on line 24:
 
-```typescript
+```tsx
 import { getFrameMetadata } from '@coinbase/onchainkit';
 import type { Metadata } from 'next';
 import { NEXT_PUBLIC_URL } from './config';
@@ -127,7 +127,7 @@ const frameMetadata = getFrameMetadata({
 
 When the user enters the text, it gets included in the frame message. You can see how it is retrieved in `api/frame/route.ts`. the `getFrameMessageBody` extracts the frame message from the request, and validates it. The returned `message` contains a number of useful properties that can be seen where it is defined in [OnchainKit], in `src/core/types.ts`:
 
-```typescript
+```tsx
 export interface FrameValidationData {
   button: number; // Number of the button clicked
   following: boolean; // Indicates if the viewer clicking the frame follows the cast author
@@ -146,7 +146,7 @@ export interface FrameValidationData {
 
 The demo makes use of the `input` property to add the story text to the button in the next frame:
 
-```typescript
+```tsx
 //api/frames/route.ts
 
 // Extract the input:
@@ -176,7 +176,7 @@ return new NextResponse(
 
 You can now add outbound links to buttons. To do this with [OnchainKit], simply create a button with an `action` property of `link`, and a `target` of the desired url:
 
-```typescript
+```tsx
 {
   action: 'link',
   label: 'Link to Google',
@@ -188,7 +188,7 @@ You can now add outbound links to buttons. To do this with [OnchainKit], simply 
 
 The third button contains a `Redirect to pictures ↗`. The way it works is a little tricky. Start with the `buttons` defined in the original frame in `page.tsx`. The third button is a `post_redirect`:
 
-```typescript
+```tsx
 {
   label: 'Redirect to pictures',
   action: 'post_redirect',
@@ -197,7 +197,7 @@ The third button contains a `Redirect to pictures ↗`. The way it works is a li
 
 Clicking this button hits the `postUrl`, with the requirement that you return a `redirect` response with a status of 302, and a link. You can see that in `route.ts`:
 
-```typescript
+```tsx
 if (message?.button === 3) {
   return NextResponse.redirect(
     'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
@@ -222,7 +222,7 @@ The community is evolving quickly and many people are fatigued with "Like, follo
 
 To require the user to "like" the cast before seeing images of puppies, simply modify the conditional for the redirect to include that check:
 
-```typescript
+```tsx
 if (message?.button === 3 && message?.liked) {
   return NextResponse.redirect(
     'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
@@ -233,7 +233,7 @@ if (message?.button === 3 && message?.liked) {
 
 If they haven't, return a version of the original frame with a new message in the third button. In doing so, you've created a loop with a behavior condition for the user to exit:
 
-```typescript
+```tsx
 if (message?.button === 3 && message.liked) {
   return NextResponse.redirect(
     'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',

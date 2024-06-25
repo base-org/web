@@ -39,7 +39,7 @@ In the following, you reuse this smart contract but rewrite the test using Typec
 
 To remove the body of the `Lock.ts` file:
 
-```typescript
+```tsx
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
 
@@ -54,7 +54,7 @@ The `Lock.sol` contract allows the creator to lock Ether until an unlock time ha
 
 Notice the constructor has a payable keyword:
 
-```typescript
+```tsx
 constructor(uint _unlockTime) payable {
         require(
             block.timestamp < _unlockTime,
@@ -83,7 +83,7 @@ Start with the value locked, however you must set up a `before` function, which 
 
 Then, include some new imports and variables:
 
-```typescript
+```tsx
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
 
@@ -138,6 +138,7 @@ describe('Lock', function () {
   });
 });
 ```
+
 </details>
 
 ### Testing `unlockTime`
@@ -150,7 +151,7 @@ The first test case should verify that the `unlockTime` variable is correct.
 
 <summary>Reveal code</summary>
 
-```typescript
+```tsx
 it('should get the unlockTime value', async () => {
   // we get the value from the contract
   const unlockTime = await lockInstance.unlockTime();
@@ -177,8 +178,6 @@ You can simply run `npx hardhat test` and then get:
 
 ### Testing Ether balance
 
-
-
 In order to get the balance of your `Lock` contract, you simply call `ethers.provider.getBalance`.
 
 Create a new test case:
@@ -187,7 +186,7 @@ Create a new test case:
 
 <summary>Reveal code</summary>
 
-```typescript
+```tsx
 it('should have the right ether balance', async () => {
   // Get the Lock contract address
   const lockInstanceAddress = await lockInstance.getAddress();
@@ -221,7 +220,7 @@ Similar to the previous test cases, you can verify that the owner is correct.
 
 <summary>Reveal code</summary>
 
-```typescript
+```tsx
 it('should have the right owner', async () => {
   // Notice ownerSigned has an address property
   expect(await lockInstance.owner()).to.equal(ownerSigner.address);
@@ -242,7 +241,6 @@ Then, run `npx hardhat test` and you should get:
   3 passing (1s)
 ```
 
-
 ### Testing withdraw
 
 Testing withdrawal is more complex because you need to assert certain conditions, such as:
@@ -255,7 +253,7 @@ Hardhat allow you to test reverts with a set of custom matchers.
 
 For example, the following code checks that an attempt to call the function `withdraw` reverts with a particular message:
 
-```typescript
+```tsx
 it('shouldn"t allow to withdraw before unlock time', async () => {
   await expect(lockInstance.withdraw()).to.be.revertedWith("You can't withdraw yet");
 });
@@ -265,7 +263,7 @@ In addition, Hardhat also allows you to manipulate the time of the environment w
 
 You can modify `the block.timestamp` by using the time helper:
 
-```typescript
+```tsx
 it('shouldn"t allow to withdraw a non owner', async () => {
   const newLastBlockTimeStamp = await time.latest();
 
@@ -288,7 +286,7 @@ Finally, test that the owner can withdraw. You can manipulate the time similarly
 
 <summary>Reveal code</summary>
 
-```typescript
+```tsx
 it('should allow to withdraw a owner', async () => {
   const balanceBefore = await ethers.provider.getBalance(await lockInstance.getAddress());
 

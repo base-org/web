@@ -104,7 +104,7 @@ Add a new page to the Next.js [App Router] by adding a new folder in `app` calle
 
 Using the sample page as a guide, set up a new frame, and stub for a new page:
 
-```typescript
+```tsx
 import { getFrameMetadata } from '@coinbase/onchainkit';
 import type { Metadata } from 'next';
 import { NEXT_PUBLIC_URL } from '../config';
@@ -177,7 +177,7 @@ Add a new folder called `buttonclicker` inside the `api` folder of your `app` ro
 
 You'll need to import the standard Frames functions you've been using, as well as some utilities from [viem]. You'll also need a new `type` from [OnchainKit].
 
-```typescript
+```tsx
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
 import { encodeFunctionData, formatEther, parseEther } from 'viem';
@@ -191,14 +191,14 @@ You also need to add the contract address to `config.ts`.
 
 If you're using Hardhat json artifacts, add those to your project and import from there.
 
-```typescript
+```tsx
 import ClickTheButtonABI from '../../_contracts/ClickTheButtonAbi';
 import { CLICK_THE_BUTTON_CONTRACT_ADDR } from '../../config';
 ```
 
 The `getResponse` function works similar to other frames. Stub it out first:
 
-```typescript
+```tsx
 async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   const body: FrameRequest = await req.json();
   const { isValid } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
@@ -219,7 +219,7 @@ export const dynamic = 'force-dynamic';
 
 To begin, you'll need to build the `data` for the transaction. You'll use `encodeFunctionData` from viem to do this, the same as any other onchain app using viem:
 
-```typescript
+```tsx
 const data = encodeFunctionData({
   abi: ClickTheButtonABI,
   functionName: 'clickTheButton',
@@ -228,7 +228,7 @@ const data = encodeFunctionData({
 
 Next, use `FrameTransactionResponse` from [OnchainKit] to build the response the app expects:
 
-```typescript
+```tsx
 const txData: FrameTransactionResponse = {
   chainId: `eip155:${base.id}`,
   method: 'eth_sendTransaction',
@@ -253,7 +253,7 @@ You can use a different `postUrl` to separate concerns with generating the trans
 
 In this case, simply return the original frame with slightly updated buttons and text:
 
-```typescript
+```tsx
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL } from '../../config';
