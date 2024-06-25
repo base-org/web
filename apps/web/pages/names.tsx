@@ -65,8 +65,8 @@ export default function Usernames() {
         const promises = [
           fetch(
             `/api/proofs/cbid?address=${address}&namespace=${ProofTableNamespace.Usernames}`,
-          ).then((res) => res.json()),
-          fetch(`/api/proofs/coinbase?address=${address}`).then((res) => res.json()),
+          ).then(async (res) => res.json()),
+          fetch(`/api/proofs/coinbase?address=${address}`).then(async (res) => res.json()),
         ];
         const data = await Promise.all(promises);
         console.log('jf data', data);
@@ -102,63 +102,21 @@ export default function Usernames() {
 
   const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
 
+  const transitionDuration = 'duration-500';
+
   // the 96px here accounts for the header height
   const mainClasses = classNames(
     'relative z-10 flex min-h-[calc(100vh-96px)] w-full flex-col items-center pb-32 pt-32 px-6',
-    'transition-all duration-500',
+    'transition-all',
+    transitionDuration,
     {
       'bg-ocsblue text-white': inputFocused,
       'bg-white text-black': !inputFocused,
     },
   );
 
-  const pillWrapperClasses = classNames(
-    'transition-all duration-500 mx-auto absolute top-0 -translate-x-1/2 left-1/2 z-20 ',
-    {
-      'max-w-[5rem] opacity-0 pointer-events-none overflow-hidden':
-        progress === ClaimProgression.SEARCH,
-      'max-w-full opacity-1': progress === ClaimProgression.CLAIM,
-    },
-  );
-
-  const smallUsernameInputWrapperClasses = classNames(
-    'absolute top-0 z-10 transition-all duration-500 w-full mx-auto transform  left-1/2 -translate-x-1/2 z-30',
-    'max-w-[15rem]',
-    {
-      'opacity-1 -translate-y-12': progress === ClaimProgression.CLAIM,
-      'pointer-events-none opacity-0 translate-y-0': progress === ClaimProgression.SEARCH,
-    },
-  );
-
-  const largeUsernameInputWrapperClasses = classNames(
-    'relative z-10 transition-all w-full mx-auto max-w-[36rem] duration-500',
-    {
-      'opacity-1': progress === ClaimProgression.SEARCH,
-      'pointer-events-none opacity-0 max-w-[5rem]': progress === ClaimProgression.CLAIM,
-    },
-  );
-
-  const basenameBrandingClasses = classNames(
-    'relative mb-4 flex items-center justify-between max-w-[36rem] mx-auto',
-    'z-10',
-    {
-      'opacity-1': progress === ClaimProgression.SEARCH,
-      'pointer-events-none opacity-0': progress === ClaimProgression.CLAIM,
-    },
-  );
-
-  const floatingPillsContainerclasses = classNames('transition-opacity duration-500', {
-    'opacity-1': progress === ClaimProgression.SEARCH,
-    'pointer-events-none opacity-0': progress === ClaimProgression.CLAIM,
-  });
-
-  const pendingAnimationClasses = classNames(
-    'pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center',
-    'transition-all duration-500',
-    {
-      'opacity-1': progress === ClaimProgression.CLAIM,
-      'pointer-events-none opacity-0': progress === ClaimProgression.SEARCH,
-    },
+  const claimBackgroundClasses = classNames(
+    'pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center -z-10',
   );
 
   const registrationValue = useMemo(
@@ -177,17 +135,45 @@ export default function Usernames() {
       </Head>
       <RegistrationContext.Provider value={registrationValue}>
         <main className={mainClasses}>
-          <div className={floatingPillsContainerclasses}>
-            <FloatingENSPills />
-          </div>
-          <div
-            className={pendingAnimationClasses}
-            style={{ backgroundImage: `url(${tempPendingAnimation.src})` }}
+          <Transition
+            appear
+            show={progress === ClaimProgression.SEARCH}
+            className={classNames('transition-opacity', transitionDuration)}
+            enterFrom={classNames('opacity-0')}
+            enterTo={classNames('opacity-100')}
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
           >
-            {/* <Image src={tempPendingAnimation} alt="Pending" /> */}
-          </div>
-          <div className="relative mt-24 w-full">
-            <div className={basenameBrandingClasses}>
+            <FloatingENSPills />
+          </Transition>
+          <Transition
+            appear
+            show={progress === ClaimProgression.CLAIM}
+            className={classNames('transition-opacity', transitionDuration)}
+            enterFrom={classNames('opacity-0')}
+            enterTo={classNames('opacity-100')}
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            {/* TODO: Lottie animation file */}
+            <div
+              className={claimBackgroundClasses}
+              style={{ backgroundImage: `url(${tempPendingAnimation.src})` }}
+            />
+          </Transition>
+          <div className="relative mx-auto mb-12 mt-24 w-full w-full max-w-[36rem]">
+            <Transition
+              appear
+              show={progress === ClaimProgression.SEARCH}
+              className={classNames(
+                'absolute flex w-full items-center justify-between transition-opacity',
+                transitionDuration,
+              )}
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
               <div className="flex items-center">
                 <svg
                   width="15"
@@ -212,30 +198,66 @@ export default function Usernames() {
                   as={Fragment}
                   key={string}
                   show={rotatingText === string}
-                  enter="transform transition duration-500"
+                  enter={classNames('transform transition', transitionDuration)}
                   enterFrom="opacity-0 -translate-y-4"
                   enterTo="opacity-100 translate-y-0"
-                  leave="transform transition duration-500"
+                  leave={classNames('transform transition', transitionDuration)}
                   leaveFrom="opacity-100 translate-y-0"
                   leaveTo="opacity-0 translate-y-4"
                 >
                   <p className="absolute right-0">{string}</p>
                 </Transition>
               ))}
-            </div>
-
-            <div className={smallUsernameInputWrapperClasses}>
+            </Transition>
+          </div>
+          <div className="relative w-full">
+            <Transition
+              appear
+              show={progress === ClaimProgression.CLAIM}
+              className={classNames(
+                'absolute left-1/2 top-0 z-10 z-30 mx-auto w-full max-w-[15rem] -translate-x-1/2 -translate-y-12 transform transition-all',
+                transitionDuration,
+              )}
+              enterFrom={classNames('opacity-0 translate-y-0')}
+              enterTo={classNames('opacity-100')}
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
               <UsernameSearchInput
                 variant={UsernameSearchInputVariant.Small}
                 placeholder="Find another name"
                 selectName={selectName}
               />
-            </div>
-            <div className="relative mb-20">
-              <div className={pillWrapperClasses}>
+            </Transition>
+            <div className="relative mb-40">
+              <Transition
+                appear
+                show={progress === ClaimProgression.CLAIM}
+                className={classNames(
+                  'absolute left-1/2 top-0 z-20 z-20 mx-auto -translate-x-1/2 transition-all',
+                  transitionDuration,
+                )}
+                enter="overflow-hidden"
+                enterFrom={classNames('opacity-0 max-w-[5rem]')}
+                enterTo={classNames('opacity-100 max-w-full')}
+                leave="transition-all "
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
                 <UsernamePill username={selectedName} />
-              </div>
-              <div className={largeUsernameInputWrapperClasses}>
+              </Transition>
+              <Transition
+                appear
+                show={progress === ClaimProgression.SEARCH}
+                className={classNames(
+                  'absolute left-1/2 top-0 z-10 z-20 z-20 mx-auto mx-auto w-full max-w-[36rem] -translate-x-1/2 transition-all',
+                  transitionDuration,
+                )}
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0 max-w-[5rem]"
+              >
                 <UsernameSearchInput
                   variant={UsernameSearchInputVariant.Large}
                   placeholder="Search for a name"
@@ -245,15 +267,15 @@ export default function Usernames() {
                   onMouseEnter={onMouseEnterLargeUsernameSearchInput}
                   onMouseLeave={onMouseLeaveLargeUsernameSearchInput}
                 />
-              </div>
+              </Transition>
             </div>
             <Transition
               appear
               show={progress === ClaimProgression.CLAIM}
-              enter="transition-opacity duration-150"
+              enter={classNames('transition-opacity', transitionDuration)}
               enterFrom="opacity-0"
               enterTo="opacity-100"
-              leave="transition-opacity duration-150"
+              leave={classNames('transition-opacity', transitionDuration)}
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
