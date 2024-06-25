@@ -40,17 +40,17 @@ ${JSON.stringify(item, null, 2)}`,
   );
 }
 function NavbarLayoutTopContent({ left, right }) {
-  const discordClick = useCallback((eventName) => {
+  const discordClick = useCallback(() => {
     logEvent('DiscordButton_Clicked', {});
-  }, [])
+  }, [logEvent])
 
-  const twitterClick = useCallback((eventName) => {
+  const twitterClick = useCallback(() => {
     logEvent('TwitterButton_Clicked', {});
-  }, [])
+  }, [logEvent])
 
-  const githubClick = useCallback((eventName) => {
+  const githubClick = useCallback(() => {
     logEvent('GithubButton_Clicked', {});
-  }, [])
+  }, [logEvent])
 
 
   return (
