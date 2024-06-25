@@ -161,14 +161,6 @@ export default function Usernames() {
     },
   );
 
-  const registrationWrapperClasses = classNames(
-    ' w-full max-w-[50rem] transition-all duration-500 mx-auto',
-    {
-      'opacity-1': progress === ClaimProgression.CLAIM,
-      'opacity-0': progress === ClaimProgression.SEARCH,
-    },
-  );
-
   const registrationValue = useMemo(
     () => ({ focused: inputFocused, hovered: inputHovered }),
     [inputFocused, inputHovered],
@@ -212,7 +204,7 @@ export default function Usernames() {
                     className={inputFocused ? 'fill-white' : 'fill-ocsblue'}
                   />
                 </svg>
-                <h1 className="text-xl">BASENAMES</h1>
+                <h1 className="text-xl">Basenames</h1>
               </div>
 
               {SEARCH_LABEL_COPY_STRINGS.map((string) => (
@@ -255,18 +247,23 @@ export default function Usernames() {
                 />
               </div>
             </div>
-
-            <div className={registrationWrapperClasses}>
-              <RegistrationForm name={selectedName} loadingDiscounts={true || loadingDiscounts} />
-              <p className="mt-6 text-center">
-                unlock your username for free!{' '}
-                <button type="button" className="underline" onClick={toggleModal}>
-                  learn more
-                </button>
-              </p>
-            </div>
+            <Transition
+              appear
+              show={progress === ClaimProgression.CLAIM}
+              enter="transition-opacity duration-150"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="transition-opacity duration-150"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <RegistrationForm
+                name={selectedName}
+                loadingDiscounts={true || loadingDiscounts}
+                toggleModal={toggleModal}
+              />
+            </Transition>
           </div>
-
           <Modal isOpen={learnMoreModalOpen} onClose={toggleModal} title="Qualify for a free name">
             <p className="mb-6 text-illoblack">
               You will receive your name for free if you connect to a wallet that has{' '}
