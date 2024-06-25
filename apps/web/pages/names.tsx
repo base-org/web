@@ -169,7 +169,7 @@ export default function Usernames() {
   return (
     <>
       <Head>
-        <title>Base | Usernames</title>
+        <title>Base | names</title>
         <meta
           content="Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain."
           name="description"
