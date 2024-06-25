@@ -12,6 +12,7 @@ keywords:
     Base network,
     Supra,
     Chainlink,
+    Chronicle,
     Pyth,
     VRF,
     Gelato VRF,
@@ -57,6 +58,19 @@ See [this guide](https://docs.chain.link/docs/get-the-latest-price/) to learn ho
 To use Chainlink datafeeds, you may need [LINK](https://docs.chain.link/resources/link-token-contracts?parent=dataFeeds) token.
 
 :::
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
+
+---
+
+## Chronicle
+
+[Chronicle](https://chroniclelabs.org/) provides a number of [Oracles](https://chroniclelabs.org/dashboard) for Base.
+
+See [this guide](https://docs.chroniclelabs.org/Developers/tutorials/Remix) to learn how to use the Chronicle Oracles.
 
 #### Supported Networks
 
