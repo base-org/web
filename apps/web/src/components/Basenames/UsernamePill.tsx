@@ -1,16 +1,7 @@
-import { formatBaseEthDomain, getUsernamePictureIndex } from 'apps/web/src/utils/usernames';
+import { formatBaseEthDomain, getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 
-import profilePictures1 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/1.svg';
-import profilePictures2 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/2.svg';
-import profilePictures3 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/3.svg';
-import profilePictures4 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/4.svg';
-import profilePictures5 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/5.svg';
-import profilePictures6 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/6.svg';
-import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/7.svg';
-
 import Image from 'next/image';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 type UsernamePillProps = {
   username: string;
@@ -24,20 +15,7 @@ export function UsernamePill({ username }: UsernamePillProps) {
     'shadow-[0px_8px_16px_0px_rgba(0,82,255,0.32),inset_0px_8px_16px_0px_rgba(255,255,255,0.25)]',
   );
 
-  const profilePictures = [
-    profilePictures1,
-    profilePictures2,
-    profilePictures3,
-    profilePictures4,
-    profilePictures5,
-    profilePictures6,
-    profilePictures7,
-  ];
-
-  const profilePictureIndex = getUsernamePictureIndex(username, profilePictures.length);
-
-  const selectedProfilePicture = profilePictures[profilePictureIndex] as unknown as StaticImport;
-
+  const selectedProfilePicture = getUserNamePicture(username);
   return (
     <div className={pillNameClasses}>
       <figure className="inline-block h-[4rem] max-h-[4rem] min-h-[4rem] w-[4rem] min-w-[4rem] max-w-[4rem] overflow-hidden rounded-full">

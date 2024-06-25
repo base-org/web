@@ -1,15 +1,7 @@
 import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
 import Image from 'next/image';
 import { mainnet } from 'wagmi/chains';
-import { getUsernamePictureIndex } from 'apps/web/src/utils/usernames';
-import profilePictures1 from './profilesPictures/1.svg';
-import profilePictures2 from './profilesPictures/2.svg';
-import profilePictures3 from './profilesPictures/3.svg';
-import profilePictures4 from './profilesPictures/4.svg';
-import profilePictures5 from './profilesPictures/5.svg';
-import profilePictures6 from './profilesPictures/6.svg';
-import profilePictures7 from './profilesPictures/7.svg';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { useCallback, useState } from 'react';
 
@@ -39,22 +31,9 @@ export function UserAvatar({ size = AvatarSizes.None }: UserAvatarProps) {
     setAvatarImageIsLoading(false);
   }, []);
 
-  const profilePictures = [
-    profilePictures1,
-    profilePictures2,
-    profilePictures3,
-    profilePictures4,
-    profilePictures5,
-    profilePictures6,
-    profilePictures7,
-  ];
-
   // TODO: Resolve address to [name].base.eth when the reverse resolver is setup
   const deterministicName = address ?? 'default-avatar';
-  const profilePictureIndex = getUsernamePictureIndex(deterministicName, profilePictures.length);
-  const defaultSelectedProfilePicture = profilePictures[
-    profilePictureIndex
-  ] as unknown as StaticImport;
+  const defaultSelectedProfilePicture = getUserNamePicture(deterministicName);
   const avatar = ensAvatar ?? defaultSelectedProfilePicture;
 
   const isLoading = ensNameIsLoading || ensAvatarIsLoading || avatarImageIsLoading;
