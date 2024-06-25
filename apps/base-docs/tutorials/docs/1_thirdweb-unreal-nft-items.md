@@ -148,7 +148,7 @@ In the server `.env`:
 
 Open `client/components/ThirdwebProvider.tsx`. Update the `activeChain` to Base Sepolia.
 
-```typescript
+```tsx
 import { BaseSepoliaTestnet } from '@thirdweb-dev/chains';
 
 // This is the chainId your dApp will work on.
@@ -159,7 +159,7 @@ const activeChain = BaseSepoliaTestnet;
 
 Open `server/src/controllers/engineController.ts`. Update the `const`s at the beginning to load from environment variables:
 
-```typescript
+```tsx
 const ENGINE_URL = process.env.THIRDWEB_ENGINE_URL;
 const BACKEND_WALLET = process.env.THIRDWEB_ENGINE_BACKEND_WALLET;
 const ERC20_CONTRACT = process.env.ERC20_CONTRACT;
@@ -270,13 +270,13 @@ RANDOM_COLOR_NFT_CONTRACT=<your contract address>
 
 Open `server/src/controllers/engineController.ts` and add it there as well:
 
-```typescript
+```tsx
 const RANDOM_COLOR_NFT_CONTRACT = process.env.RANDOM_COLOR_NFT_CONTRACT;
 ```
 
 Now, using `claimERC20` as a template, add a function to `claimRandomColorNFT`. It's identical, except the `url`, `body`, and error message are:
 
-```typescript
+```tsx
 // Other code...
 const url = `${ENGINE_URL}/contract/${CHAIN}/${RANDOM_COLOR_NFT_CONTRACT}/write`;
 // Other code
@@ -296,7 +296,7 @@ A better practice for production would be to make a more generalized function th
 
 Next, you need to add a route for this function. Open `server/src/routes/engineRoutes.ts`. Import `claimRandomColorNFT` and add a route for it:
 
-```typescript
+```tsx
 router.post('/claim-random-color-nft', claimRandomColorNFT);
 ```
 
@@ -366,7 +366,7 @@ On the right side, change the `Element 2` material to `MI_NFT_Color`. The car is
 
 Return to `engine-express` and open `engineController.ts`. Add a function to `getNFTColors` that uses the `read` endpoint to call the `getNFTsOwned` function.
 
-```typescript
+```tsx
 export const getNFTColors = async (req: Request, res: Response) => {
   const { authToken } = req.body;
   if (!authToken || !userTokens[authToken]) {
@@ -395,7 +395,7 @@ export const getNFTColors = async (req: Request, res: Response) => {
 
 You'll also need to add this function to `engineRoutes.ts`:
 
-```typescript
+```tsx
 router.post('/get-nft-colors', getNFTColors);
 ```
 
@@ -403,7 +403,7 @@ Return to `engineController.ts`.
 
 Because Unreal doesn't support SVGs, you'll need to extract the color from your NFT metadata, and pass that to use in the material you created. Start by adding a type for the response, and for the JSON metadata:
 
-```typescript
+```tsx
 type NFTData = {
   tokenId: bigint;
   metadata: string;
@@ -418,7 +418,7 @@ type JSONMetadata = {
 
 You'll also need helper functions to decode the base64 encoded metadata and SVG, then get the color from the SVG.
 
-```typescript
+```tsx
 function getJsonMetadata(nft: NFTData) {
   const base64String = nft.metadata.split(',')[1];
   const jsonString = atob(base64String);
@@ -435,7 +435,7 @@ function getColorFromBase64StringSVG(base64String: string) {
 
 Use these to extract an array of colors and return it:
 
-```typescript
+```tsx
 const nfts = response.data.result.map((item: any) => {
   return {
     tokenId: item[0],

@@ -85,7 +85,7 @@ Since the project uses Typescript, you have the benefit of using static typing.
 
 The following is the default configuration:
 
-```typescript
+```tsx
 import { HardhatUserConfig } from 'hardhat/config';
 import '@nomicfoundation/hardhat-toolbox';
 
@@ -106,7 +106,7 @@ You can configure aspects such as:
 
 For example:
 
-```typescript
+```tsx
 import { HardhatUserConfig } from 'hardhat/config';
 import '@nomicfoundation/hardhat-toolbox';
 

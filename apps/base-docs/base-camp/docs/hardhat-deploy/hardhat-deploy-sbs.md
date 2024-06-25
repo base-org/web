@@ -30,7 +30,7 @@ To install:
 
 1. Run `npm install -D hardhat-deploy`. Then, import hardhat-deploy in `hardhat.config.ts`:
 
-```typescript
+```tsx
 import 'hardhat-deploy';
 ```
 
@@ -38,7 +38,7 @@ import 'hardhat-deploy';
 
 3. Include the following:
 
-```typescript
+```tsx
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { DeployFunction } from 'hardhat-deploy/types';
 
@@ -69,7 +69,7 @@ export default func;
 
 6. Run the following, which adds an alias to the account 0 of your environment:
 
-```typescript
+```tsx
 const config: HardhatUserConfig = {
   solidity: '0.8.23',
   namedAccounts: {
@@ -80,7 +80,7 @@ const config: HardhatUserConfig = {
 
 7. Implement the deploy function by including the following in the `001_deploy_lock.ts` file:
 
-```typescript
+```tsx
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { DeployFunction } from 'hardhat-deploy/types';
 import { ethers } from 'hardhat';
@@ -121,7 +121,7 @@ The easiest way to test your deployment is by modifying the test.
 
 Go to `Lock.ts` and include in the imports the following:
 
-```typescript
+```tsx
 import { ethers, deployments } from 'hardhat';
 ```
 
@@ -129,7 +129,7 @@ import { ethers, deployments } from 'hardhat';
 
 Change the `before` function to look like the following:
 
-```typescript
+```tsx
 before(async () => {
   lastBlockTimeStamp = await time.latest();
 
@@ -148,7 +148,7 @@ Notice how you execute `deployments.fixture` and pass a tag that matches the one
 
 The deployment file is then executed and you can then reuse that functionality and simply consume the address of the newly-deployed contract by using:
 
-```typescript
+```tsx
 const lockDeployment = await deployments.get('Lock');
 ```
 
@@ -176,7 +176,7 @@ Deploying to a real test network involves configuring the network parameters in 
 
 Include the following in the `hardhat.config.ts` file:
 
-```typescript
+```tsx
 const config: HardhatUserConfig = {
   solidity: '0.8.18',
   namedAccounts: {
@@ -219,7 +219,7 @@ npm install -D dotenv
 
 Then, include the following in the `hardhat.config.ts` file:
 
-```typescript
+```tsx
 import dotenv from 'dotenv';
 
 dotenv.config();

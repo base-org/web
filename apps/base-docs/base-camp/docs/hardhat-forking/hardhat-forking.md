@@ -46,7 +46,7 @@ Those won't be covered in this guide, however it's recommended to explore them a
 
 The BalanceReader contract is created as follows:
 
-```typescript
+```tsx
 pragma solidity 0.8.9;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -106,7 +106,7 @@ Also notice that forking is enabled by specifying `enabled: true`, however this 
 
 Create a test file in the test folder called `BalanceReader.ts` and include the following:
 
-```typescript
+```tsx
 import { Signer } from 'ethers';
 import { ethers } from 'hardhat';
 
