@@ -1,8 +1,6 @@
 import { getAttestations } from '@coinbase/onchainkit/identity';
 import { kv } from '@vercel/kv';
-import abi from 'apps/web/src/abis/RegistrarControllerABI.json';
-import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
-import { LinkedAddresses, getLinkedAddresses } from 'apps/web/src/cdp/api';
+import { getLinkedAddresses } from 'apps/web/src/cdp/api';
 import { cdpBaseRpcEndpoint } from 'apps/web/src/cdp/constants';
 import {
   isDevelopment,
@@ -72,6 +70,14 @@ async function signMessage(claimerAddress: Address) {
     signature,
   ]);
 }
+
+export type CoinbaseProofResponse = {
+  result: {
+    signedMessage?: string;
+    attestations: string[];
+    linkedAddresses?: Address[];
+  };
+};
 /**
  * This endpoint reports whether or not the provided access has access to the cb1 or verified account attestations
  *
@@ -126,37 +132,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     (attestation) => JSON.parse(attestation.decodedDataJson)[0] as VerifiedAccount,
   );
 
-  let linkedAddressResponse: LinkedAddresses;
   try {
-    // hit CDP to get linked addresses
-    linkedAddressResponse = await getLinkedAddresses(address as string);
-    const addresses = linkedAddressResponse.linkedAddresses;
-    if (!addresses.every((address) => isAddress(address))) {
-      return res.status(500).json({
-        error: 'not all linked addresses are valid addresses',
-        addresses: linkedAddressResponse.linkedAddresses,
-      });
-    }
-    // check onchain if any linked address has registered previously
-    const hasPreviouslyRegistered = await publicClient.readContract({
-      address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[baseSepolia.id],
-      abi,
-      functionName: 'hasRegisteredWithDiscount',
-      args: [addresses],
-    });
-
-    // if any linked address registered previously return an error
-    if (hasPreviouslyRegistered) {
-      return res.status(409).json({ error: 'user has already redeemed a discount' });
-    }
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: 'error checking linked addresses' });
-  }
-
-  const kvKey = `${previousClaimsKVPrefix}${linkedAddressResponse.idemKey}`;
-
-  try {
+    let { linkedAddresses, idemKey } = await getLinkedAddresses(address as string);
+    const kvKey = `${previousClaimsKVPrefix}${idemKey}`;
     //check kv for previous claim entry
     const previousClaim = await kv.get<PreviousClaim>(kvKey);
     if (previousClaim) {
@@ -166,6 +144,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // return previously signed message
       return res.status(200).json({
         result: {
+          linkedAddresses,
           signedMessage: previousClaim.signedMessage,
           attestations: attestationsRes,
         },
@@ -184,6 +163,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     return res.status(200).json({
       result: {
+        linkedAddresses,
         signedMessage: claim.signedMessage,
         attestations: attestationsRes,
       },

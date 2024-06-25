@@ -1,4 +1,7 @@
 import { Transition } from '@headlessui/react';
+import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
+import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
+import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
 import { FloatingENSPills } from 'apps/web/src/components/Basenames/FloatingENSPills';
 import { RegistrationContext } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
@@ -13,7 +16,9 @@ import classNames from 'classnames';
 import Head from 'next/head';
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
-import { useAccount } from 'wagmi';
+import { Address, isAddress } from 'viem';
+import { base } from 'viem/chains';
+import { useAccount, useReadContract } from 'wagmi';
 import { LearnMoreModal } from '../src/components/Basenames/LearnMoreModal';
 // TODO: replace appropriate backgrounds w/Lottie files
 
@@ -37,10 +42,11 @@ const useRotatingText = (strings: string[]) => {
 };
 
 enum Discount {
-  NONE,
-  CB1,
-  COINBASE,
-  CBID,
+  NONE = 0,
+  ALREADY_REDEEMED = 1 << 0, // 1
+  CB1 = 1 << 1, // 2
+  COINBASE_VERIFIED_ACCOUNT = 1 << 2, // 4
+  CBID = 1 << 3, // 8
 }
 
 /*
@@ -51,22 +57,37 @@ test addresses w/ different verifications
 */
 
 export default function Usernames() {
-  const { address } = useAccount();
-  // const address = '0xB6944B3074F40959E1166fe010a3F86B02cF2b7c';
-  const [discount, setDiscount] = useState(Discount.NONE);
+  // const { address, chainId } = useAccount();
+  const { chainId } = useAccount();
+  const address = '0xB6944B3074F40959E1166fe010a3F86B02cF2b7c';
+  const [discount, setDiscount] = useState<number>(Discount.NONE);
+  const addDiscount = useCallback((d: Discount) => setDiscount((prev) => prev | d), []);
+  const hasDiscount = useCallback((d: Discount) => (discount & d) !== 0, [discount]);
+
   const [loadingDiscounts, setLoadingDiscounts] = useState(false);
+  const [linkedAddresses, setLinkedAddresses] = useState<Address[]>([]);
   useEffect(() => {
-    async function checkAttestations() {
+    async function checkCBIDAttestations() {
       try {
-        setLoadingDiscounts(true);
-        const promises = [
-          fetch(
-            `/api/proofs/cbid?address=${address}&namespace=${ProofTableNamespace.Usernames}`,
-          ).then(async (res) => res.json()),
-          fetch(`/api/proofs/coinbase?address=${address}`).then(async (res) => res.json()),
-        ];
-        const data = await Promise.all(promises);
-        console.log('jf data', data);
+        const response = await fetch(
+          `/api/proofs/cbid?address=${address}&namespace=${ProofTableNamespace.Usernames}`,
+        );
+        const data = await response.json();
+        console.log('jf cbid', data);
+      } catch (e) {
+        console.error('jf', e);
+      } finally {
+        setLoadingDiscounts(false);
+      }
+    }
+    async function checkCoinbaseAttestations() {
+      try {
+        const response = await fetch(`/api/proofs/coinbase?address=${address}`);
+        const { result } = (await response.json()) as unknown as CoinbaseProofResponse;
+        console.log('jf coinbase', result);
+        if (result.linkedAddresses) {
+          setLinkedAddresses(result.linkedAddresses);
+        }
       } catch (e) {
         console.error('jf', e);
       } finally {
@@ -74,9 +95,31 @@ export default function Usernames() {
       }
     }
     if (address) {
-      checkAttestations();
+      setLoadingDiscounts(true);
+      Promise.all([checkCBIDAttestations(), checkCoinbaseAttestations()]).finally(() => {
+        setLoadingDiscounts(false);
+      });
     }
   }, [address]);
+
+  useEffect(() => {
+    const address = USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId ?? base.id];
+    if (
+      chainId &&
+      address &&
+      linkedAddresses.length > 0 &&
+      linkedAddresses.every((a) => isAddress(a))
+    ) {
+      const data = useReadContract({
+        address,
+        abi: RegistrarControllerABI,
+        functionName: 'hasRegisteredWithDiscount',
+        args: [linkedAddresses],
+        chainId,
+      });
+      console.log('jf useReadContract data', data);
+    }
+  }, [chainId]);
 
   const [progress, setProgress] = useState<ClaimProgression>(ClaimProgression.SEARCH);
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
@@ -158,7 +201,7 @@ export default function Usernames() {
               style={{ backgroundImage: `url(${tempPendingAnimation.src})` }}
             />
           </Transition>
-          <div className="relative mx-auto mb-12 mt-24 w-full w-full max-w-[36rem]">
+          <div className="relative mx-auto mb-12 mt-24 w-full max-w-[36rem]">
             <Transition
               appear
               show={progress === ClaimProgression.SEARCH}
@@ -212,7 +255,7 @@ export default function Usernames() {
               appear
               show={progress === ClaimProgression.CLAIM}
               className={classNames(
-                'absolute left-1/2 top-0 z-10 z-30 mx-auto w-full max-w-[15rem] -translate-x-1/2 -translate-y-12 transform transition-all',
+                'absolute left-1/2 top-0 z-30 mx-auto w-full max-w-[15rem] -translate-x-1/2 -translate-y-12 transform transition-all',
                 transitionDuration,
               )}
               enterFrom={classNames('opacity-0 translate-y-0')}
@@ -231,7 +274,7 @@ export default function Usernames() {
                 appear
                 show={progress === ClaimProgression.CLAIM}
                 className={classNames(
-                  'absolute left-1/2 top-0 z-20 z-20 mx-auto -translate-x-1/2 transition-all',
+                  'absolute left-1/2 top-0 z-20 mx-auto -translate-x-1/2 transition-all',
                   transitionDuration,
                 )}
                 enter="overflow-hidden"
@@ -247,7 +290,7 @@ export default function Usernames() {
                 appear
                 show={progress === ClaimProgression.SEARCH}
                 className={classNames(
-                  'absolute left-1/2 top-0 z-10 z-20 z-20 mx-auto mx-auto w-full max-w-[36rem] -translate-x-1/2 transition-all',
+                  'absolute left-1/2 top-0 z-20 mx-auto w-full max-w-[36rem] -translate-x-1/2 transition-all',
                   transitionDuration,
                 )}
                 enterFrom="opacity-0"
