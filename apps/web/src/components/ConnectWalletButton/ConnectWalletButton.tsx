@@ -21,14 +21,14 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
 
   useEffect(() => {
     if (address) {
-      logEvent('connected_wallet', { address });
+      logEvent('navbar_walletconnected', { address });
       identify({ userId: address });
     }
   }, [address]);
 
   const clickConnect = useCallback(() => {
     openConnectModal?.();
-    logEvent('ConnectWalletButton_Clicked', {});
+    logEvent('navbar_connectwallet', {});
   }, [openConnectModal]);
 
   return (
