@@ -135,7 +135,7 @@ export function UsernameSearchInput({
     // // Animation
     'transition-all overflow-scroll ',
     {
-      'max-h-[10rem]': dropdownOpen,
+      'max-h-[20rem]': dropdownOpen,
       'max-h-0 p-0 overflow-hidden border-none': !dropdownOpen,
     },
   );
