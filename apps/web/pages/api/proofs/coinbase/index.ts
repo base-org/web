@@ -1,6 +1,7 @@
 import { getAttestations } from '@coinbase/onchainkit/identity';
 import { kv } from '@vercel/kv';
 import abi from 'apps/web/src/abis/RegistrarControllerABI.json';
+import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
 import { LinkedAddresses, getLinkedAddresses } from 'apps/web/src/cdp/api';
 import { cdpBaseRpcEndpoint } from 'apps/web/src/cdp/constants';
 import {
@@ -10,9 +11,9 @@ import {
   verifiedAccountSchemaId,
   verifiedCb1AccountSchemaId,
 } from 'apps/web/src/constants';
-import { USERNAME_SEPOLIA_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/utils/usernames';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import {
+  Address,
   createPublicClient,
   encodeAbiParameters,
   encodePacked,
@@ -49,7 +50,7 @@ const expiry = (process.env.USERNAMES_SIGNATURE_EXPIRATION_SECONDS as unknown as
 const previousClaimsKVPrefix = 'username:claims:';
 const chain = isDevelopment ? baseSepolia : base;
 
-async function signMessage(claimerAddress: `0x${string}`) {
+async function signMessage(claimerAddress: Address) {
   const account = privateKeyToAccount(trustedSignerPKey);
 
   // encode the message
@@ -138,7 +139,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     // check onchain if any linked address has registered previously
     const hasPreviouslyRegistered = await publicClient.readContract({
-      address: USERNAME_SEPOLIA_REGISTRAR_CONTROLLER_ADDRESS,
+      address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[baseSepolia.id],
       abi,
       functionName: 'hasRegisteredWithDiscount',
       args: [addresses],

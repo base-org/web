@@ -1,19 +1,17 @@
 import abi from 'apps/web/src/abis/RegistrarControllerABI.json';
-import {
-  USERNAME_SEPOLIA_REGISTRAR_CONTROLLER_ADDRESS,
-  normalizeEnsDomainName,
-} from 'apps/web/src/utils/usernames';
-import { useReadContract } from 'wagmi';
-import { baseSepolia } from 'wagmi/chains';
+import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
+import { normalizeEnsDomainName } from 'apps/web/src/utils/usernames';
+import { useChainId, useReadContract } from 'wagmi';
 
 export function useIsNameAvailable(name: string) {
   const normalizedName = normalizeEnsDomainName(name);
+  const chainId = useChainId();
 
   return useReadContract({
     abi,
-    address: USERNAME_SEPOLIA_REGISTRAR_CONTROLLER_ADDRESS,
+    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId],
     functionName: 'available',
     args: [normalizedName],
-    chainId: baseSepolia.id,
+    chainId,
   });
 }

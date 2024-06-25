@@ -4,9 +4,6 @@ import { normalize } from 'viem/ens';
 export const BASE_ETH_DOMAIN = 'base.eth';
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 200;
-export const USERNAME_SEPOLIA_REGISTRAR_CONTROLLER_ADDRESS =
-  '0xc8b5d24753588fc7ed134df8870f9d5544a3836e';
-export const USERNAME_SEPOLIA_L2_RESOLVER_ADDRESS = '0x51A16746Af2247DCA3665c078cCCf5678d19E366';
 
 // Any names non-compliant with ENSIP-15 will fail when using ENS normalize()
 // For now, we'll only accept alphanumerics characters, including accents

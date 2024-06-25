@@ -1,4 +1,5 @@
 import { createKysely } from '@vercel/postgres-kysely';
+import { Address } from 'viem';
 
 type Database = {
   proofs: ProofsTable;
@@ -19,7 +20,7 @@ type ProofsTable = {
 const proofTableName = 'proofs';
 
 export async function getProofsByNamespaceAndAddress(
-  address: `0x${string}`,
+  address: Address,
   namespace: ProofTableNamespace,
 ) {
   return createKysely<Database>()
