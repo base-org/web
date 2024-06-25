@@ -16,10 +16,14 @@ import classNames from 'classnames';
 import Head from 'next/head';
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
-import { Address, isAddress } from 'viem';
-import { base } from 'viem/chains';
+import { Address } from 'viem';
+import { base, baseSepolia } from 'viem/chains';
 import { useAccount, useReadContract } from 'wagmi';
 import { LearnMoreModal } from '../src/components/Basenames/LearnMoreModal';
+import {
+  useCheckCBIDAttestations,
+  useCheckCoinbaseAttestations,
+} from 'apps/web/src/utils/hooks/useAttestations';
 // TODO: replace appropriate backgrounds w/Lottie files
 
 export enum ClaimProgression {
@@ -57,69 +61,35 @@ test addresses w/ different verifications
 */
 
 export default function Usernames() {
-  // const { address, chainId } = useAccount();
   const { chainId } = useAccount();
-  const address = '0xB6944B3074F40959E1166fe010a3F86B02cF2b7c';
   const [discount, setDiscount] = useState<number>(Discount.NONE);
   const addDiscount = useCallback((d: Discount) => setDiscount((prev) => prev | d), []);
   const hasDiscount = useCallback((d: Discount) => (discount & d) !== 0, [discount]);
 
-  const [loadingDiscounts, setLoadingDiscounts] = useState(false);
-  const [linkedAddresses, setLinkedAddresses] = useState<Address[]>([]);
-  useEffect(() => {
-    async function checkCBIDAttestations() {
-      try {
-        const response = await fetch(
-          `/api/proofs/cbid?address=${address}&namespace=${ProofTableNamespace.Usernames}`,
-        );
-        const data = await response.json();
-        console.log('jf cbid', data);
-      } catch (e) {
-        console.error('jf', e);
-      } finally {
-        setLoadingDiscounts(false);
-      }
-    }
-    async function checkCoinbaseAttestations() {
-      try {
-        const response = await fetch(`/api/proofs/coinbase?address=${address}`);
-        const { result } = (await response.json()) as unknown as CoinbaseProofResponse;
-        console.log('jf coinbase', result);
-        if (result.linkedAddresses) {
-          setLinkedAddresses(result.linkedAddresses);
-        }
-      } catch (e) {
-        console.error('jf', e);
-      } finally {
-        setLoadingDiscounts(false);
-      }
-    }
-    if (address) {
-      setLoadingDiscounts(true);
-      Promise.all([checkCBIDAttestations(), checkCoinbaseAttestations()]).finally(() => {
-        setLoadingDiscounts(false);
-      });
-    }
-  }, [address]);
+  const { data: CBIDData, loading: loadingCBIDAttestations } = useCheckCBIDAttestations();
+  console.log('useCheckCBIDAttestations data: ', CBIDData);
+  const { data: coinbaseData, loading: loadingCoinbaseAttestations } =
+    useCheckCoinbaseAttestations();
+  const loadingDiscounts = loadingCoinbaseAttestations || loadingCBIDAttestations;
 
-  useEffect(() => {
-    const address = USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId ?? base.id];
-    if (
-      chainId &&
-      address &&
-      linkedAddresses.length > 0 &&
-      linkedAddresses.every((a) => isAddress(a))
-    ) {
-      const data = useReadContract({
-        address,
-        abi: RegistrarControllerABI,
-        functionName: 'hasRegisteredWithDiscount',
-        args: [linkedAddresses],
-        chainId,
-      });
-      console.log('jf useReadContract data', data);
-    }
-  }, [chainId]);
+  const network = chainId === baseSepolia.id ? chainId : base.id;
+  const linkedAddresses = coinbaseData?.result.linkedAddresses;
+  // const coinbaseSignedMessage = coinbaseData?.result.signedMessage;
+  // const coinbaseAttestations = coinbaseData?.result.attestations;
+  const hasRegisteredArgs = useMemo(
+    () => ({
+      address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
+      abi: RegistrarControllerABI,
+      functionName: 'hasRegisteredWithDiscount',
+      args: [linkedAddresses],
+      chainId: network,
+    }),
+    [network, linkedAddresses],
+  );
+  const { data: hasAlreadyUsedADiscount } = useReadContract(hasRegisteredArgs);
+  if (hasAlreadyUsedADiscount && !hasDiscount(Discount.ALREADY_REDEEMED)) {
+    addDiscount(Discount.ALREADY_REDEEMED);
+  }
 
   const [progress, setProgress] = useState<ClaimProgression>(ClaimProgression.SEARCH);
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
@@ -321,7 +291,7 @@ export default function Usernames() {
             >
               <RegistrationForm
                 name={selectedName}
-                loadingDiscounts={true || loadingDiscounts}
+                loadingDiscounts={loadingDiscounts}
                 toggleModal={toggleModal}
               />
             </Transition>

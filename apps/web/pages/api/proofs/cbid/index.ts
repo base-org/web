@@ -1,6 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getProofsByNamespaceAndAddress, ProofTableNamespace } from 'apps/web/src/utils/proofs';
-import { isAddress } from 'viem';
+import { Address, isAddress } from 'viem';
+
+export type CBIDProofResponse = {
+  result: {
+    address: Address;
+    namespace: 'usernames';
+    proofs: string[];
+  }[];
+};
 
 /*
 this endpoint returns whether or not the account has a cb.id
