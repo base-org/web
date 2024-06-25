@@ -4,6 +4,13 @@ module.exports = {
     ['using-base'],
     {
       type: 'category',
+      label: 'Notices',
+      collapsible: false,
+      collapsed: false,
+      items: ['notices/preparing-for-fault-proofs-on-base-sepolia'],
+    },
+    {
+      type: 'category',
       label: 'Building on Base',
       collapsible: false,
       collapsed: false,

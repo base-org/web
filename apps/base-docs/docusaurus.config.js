@@ -98,6 +98,7 @@ const config = {
   ],
   customFields: {
     nodeEnv: process.env.NODE_ENV,
+    sprigEnvironmentId: 'Q2ppiEaeSEJI',
   },
 
   presets: [
@@ -231,7 +232,7 @@ const config = {
           items: [
             {
               label: 'Block Explorer',
-              href: 'https://explorer.base.org/',
+              href: 'https://base.blockscout.com/',
             },
             {
               label: 'Status',
