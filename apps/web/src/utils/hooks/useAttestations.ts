@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
 
 export function useCheckCBIDAttestations() {
-  const { address } = useAccount();
+  // const { address } = useAccount();
+  const address = '0xB18e4C959bccc8EF86D78DC297fb5efA99550d85';
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<CBIDProofResponse | null>(null);
 
@@ -34,7 +35,8 @@ export function useCheckCBIDAttestations() {
 }
 
 export function useCheckCoinbaseAttestations() {
-  const { address } = useAccount();
+  // const { address } = useAccount();
+  const address = '0xB18e4C959bccc8EF86D78DC297fb5efA99550d85';
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<CoinbaseProofResponse | null>(null);
 

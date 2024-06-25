@@ -1,7 +1,6 @@
 import { getAttestations } from '@coinbase/onchainkit/identity';
 import { kv } from '@vercel/kv';
 import { getLinkedAddresses } from 'apps/web/src/cdp/api';
-import { cdpBaseRpcEndpoint } from 'apps/web/src/cdp/constants';
 import {
   isDevelopment,
   trustedSignerAddress,
@@ -12,10 +11,8 @@ import {
 import type { NextApiRequest, NextApiResponse } from 'next';
 import {
   Address,
-  createPublicClient,
   encodeAbiParameters,
   encodePacked,
-  http,
   isAddress,
   isHex,
   keccak256,
@@ -23,11 +20,6 @@ import {
 } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { base, baseSepolia } from 'viem/chains';
-
-const publicClient = createPublicClient({
-  chain: isDevelopment ? baseSepolia : base,
-  transport: http(cdpBaseRpcEndpoint),
-});
 
 type PreviousClaim = {
   address: string;
@@ -72,11 +64,9 @@ async function signMessage(claimerAddress: Address) {
 }
 
 export type CoinbaseProofResponse = {
-  result: {
-    signedMessage?: string;
-    attestations: string[];
-    linkedAddresses?: Address[];
-  };
+  signedMessage?: string;
+  attestations: string[];
+  linkedAddresses?: Address[];
 };
 /**
  * This endpoint reports whether or not the provided access has access to the cb1 or verified account attestations
@@ -127,7 +117,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   });
 
   if (!attestations?.length) {
-    return res.status(200).json({ result: { attestations } });
+    return res.status(200).json({ attestations });
   }
   const attestationsRes = attestations.map(
     (attestation) => JSON.parse(attestation.decodedDataJson)[0] as VerifiedAccount,
@@ -144,11 +134,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
       // return previously signed message
       return res.status(200).json({
-        result: {
-          linkedAddresses,
-          signedMessage: previousClaim.signedMessage,
-          attestations: attestationsRes,
-        },
+        linkedAddresses,
+        signedMessage: previousClaim.signedMessage,
+        attestations: attestationsRes,
       });
     }
 
@@ -163,11 +151,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     await kv.set(kvKey, claim, { ex: expiry });
 
     return res.status(200).json({
-      result: {
-        linkedAddresses,
-        signedMessage: claim.signedMessage,
-        attestations: attestationsRes,
-      },
+      linkedAddresses,
+      signedMessage: claim.signedMessage,
+      attestations: attestationsRes,
     });
   } catch (error) {
     console.error(error);

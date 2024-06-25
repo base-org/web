@@ -3,11 +3,9 @@ import { getProofsByNamespaceAndAddress, ProofTableNamespace } from 'apps/web/sr
 import { Address, isAddress } from 'viem';
 
 export type CBIDProofResponse = {
-  result: {
-    address: Address;
-    namespace: 'usernames';
-    proofs: string[];
-  }[];
+  address: Address;
+  namespace: 'usernames';
+  proofs: string[];
 };
 
 /*
@@ -15,13 +13,9 @@ this endpoint returns whether or not the account has a cb.id
 if result array is empty, user has no cb.id
 example return: 
 {
-    "result": [
-        {
-            "address": "0xB18e4C959bccc8EF86D78DC297fb5efA99550d85",
-            "namespace": "usernames",
-            "proofs": "[0x56ce3bbc909b90035ae373d32c56a9d81d26bb505dd935cdee6afc384bcaed8d, 0x99e940ed9482bf59ba5ceab7df0948798978a1acaee0ecb41f64fe7f40eedd17]"
-        }
-    ]
+  "address": "0xB18e4C959bccc8EF86D78DC297fb5efA99550d85",
+  "namespace": "usernames",
+  "proofs": "[0x56ce3bbc909b90035ae373d32c56a9d81d26bb505dd935cdee6afc384bcaed8d, 0x99e940ed9482bf59ba5ceab7df0948798978a1acaee0ecb41f64fe7f40eedd17]"
 }
 */
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -34,9 +28,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const content = await getProofsByNamespaceAndAddress(address, namespace as ProofTableNamespace);
-
-    return res.status(200).json({ result: content });
+    const [content] = await getProofsByNamespaceAndAddress(
+      address,
+      namespace as ProofTableNamespace,
+    );
+    content.proofs = JSON.parse(content.proofs);
+    return res.status(200).json(content);
   } catch (error) {
     console.error(error);
   }

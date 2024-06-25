@@ -73,7 +73,7 @@ export default function Usernames() {
   const loadingDiscounts = loadingCoinbaseAttestations || loadingCBIDAttestations;
 
   const network = chainId === baseSepolia.id ? chainId : base.id;
-  const linkedAddresses = coinbaseData?.result?.linkedAddresses;
+  const linkedAddresses = coinbaseData?.linkedAddresses;
   // const coinbaseSignedMessage = coinbaseData?.result.signedMessage;
   // const coinbaseAttestations = coinbaseData?.result.attestations;
   const hasRegisteredArgs = useMemo(
