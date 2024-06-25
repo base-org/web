@@ -1,30 +1,95 @@
 declare const window: Window &
   typeof globalThis & {
     ClientAnalytics: {
-      logEvent: (name: string, event: unknown, importance: string) => void;
-      sendScheduledEvents: (importance: string | null) => void;
-      flushQueue: () => void;
-      AnalyticsEventImportance: {low: 'low', high: 'high'};
+      logEvent: LogEvent;
+      ActionType: typeof ActionType;
+      ComponentType: typeof ComponentType;
+      AnalyticsEventImportance: typeof AnalyticsEventImportance
     };
   };
 
-export default function logEvent(name: string, event: unknown) {
+export default function logEvent(name: string, event: CCAEventData) {
   const cca = window.ClientAnalytics;
   if (cca) {
     cca?.logEvent(name, event, cca.AnalyticsEventImportance.low);
   }
 }
 
-export function logEventAndSend(name: string, event: unknown) {
+export function logEventAndSend(name: string, event: CCAEventData) {
   const cca = window.ClientAnalytics;
   if (cca) {
     cca?.logEvent(name, event, cca.AnalyticsEventImportance.high);
   }
 }
 
-export function identify(event: unknown) {
+export function identify(event: CCAEventData) {
   const cca = window.ClientAnalytics;
   if (cca) {
     cca?.logEvent('identify', event, cca.AnalyticsEventImportance.low);
   }
 }
+
+export type LogEvent = (
+  eventName: string,
+  eventData: CCAEventData,
+  importance?: AnalyticsEventImportance,
+) => void;
+
+enum ComponentType {
+  unknown = 'unknown',
+  banner = 'banner',
+  button = 'button',
+  card = 'card',
+  chart = 'chart',
+  content_script = 'content_script',
+  dropdown = 'dropdown',
+  link = 'link',
+  page = 'page',
+  modal = 'modal',
+  table = 'table',
+  search_bar = 'search_bar',
+  service_worker = 'service_worker',
+  text = 'text',
+  text_input = 'text_input',
+  tray = 'tray',
+  checkbox = 'checkbox',
+  icon = 'icon',
+}
+
+enum ActionType {
+  unknown = 'unknown',
+  blur = 'blur',
+  click = 'click',
+  change = 'change',
+  dismiss = 'dismiss',
+  focus = 'focus',
+  hover = 'hover',
+  select = 'select',
+  measurement = 'measurement',
+  move = 'move',
+  process = 'process',
+  render = 'render',
+  scroll = 'scroll',
+  view = 'view',
+  search = 'search',
+  keyPress = 'keyPress',
+}
+
+enum AnalyticsEventImportance {
+  low = 'low',
+  high = 'high',
+}
+
+type CCAEventData = {
+  // Standard Attributes
+  action: ActionType;
+  component_type: ComponentType;
+  // Custom Attributes
+  doc_helpful?: boolean;
+  doc_feedback_reason?: string | null;
+  page_path?: string;
+  conversation_id?: number;
+  message_id?: number;
+  response_helpful?: boolean;
+  address?: string;
+};
