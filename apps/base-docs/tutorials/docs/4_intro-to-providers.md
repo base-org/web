@@ -119,14 +119,13 @@ It is worth digging in to get a better understanding of how these providers char
 Note that the information below may change, and varies by network. Each provider also has different incentives, discounts, and fees for each level of product. They also have different allowances for calls per second, protocols, and number of endpoints. Please check the source to confirm!
 
 |                 | [Alchemy Costs]  | [QuickNode Costs] | [CDP Costs]        |
-| :-------------- | :--------------- | :---------------- | :-------           |
+| :-------------- | :--------------- | :---------------- | :----------------- |
 | Free Tier / Mo. | 3M compute units | 50M credits       | 500M billing units |
 | Mid Tier / Mo.  | 1.5B CUs @ $199  | 3B credits @ $299 | Coming soon        |
 | eth_blocknumber | 10               | 20                | 30                 |
 | eth_call        | 26               | 20                | 30                 |
 | eth_getlogs     | 75               | 20                | 100                |
 | eth_getbalance  | 19               | 20                | 30                 |
-
 
 To give you an idea of usage amounts, a single wagmi `useContractRead` hook set to watch for changes on a single `view` via a TanStack query and `useBlockNumber` will call `eth_blocknumber` and `eth_call` one time each, every 4 seconds.
 
@@ -164,7 +163,7 @@ If you get an error because you are on the wrong version of node, change to the 
 
 Open your new project in the editor of your choice, and open `pages/_app.tsx`. Here, you'll find a familiar Next.js app wrapped in [context providers] for the TanStack QueryProvider, RainbowKit, and wagmi.
 
-```typescript
+```tsx
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider config={config}>
@@ -194,7 +193,7 @@ Enter a name for your project, select the `App` option, and click `Create`.
 
 Copy the _Project ID_ from the project information page, and paste it in as the `projectId` in `getDefaultWallets`.
 
-```typescript
+```tsx
 const { connectors } = getDefaultWallets({
   appName: 'RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
@@ -214,7 +213,7 @@ Before you deploy, make sure you configure the rest of the items in the control 
 
 By default, the setup script will configure your app to use the built-in public provider, and connect to a number of popular chains. To simply matters, remove all but `mainnet` and `base`.
 
-```typescript
+```tsx
 const config = getDefaultConfig({
   appName: 'RainbowKit App',
   projectId: 'YOUR_APP_ID_HERE',
@@ -243,7 +242,7 @@ To select your provider(s), you'll use [`createConfig`] instead of `getDefaultCo
 
 First, set up using [QuickNode] as your provider. Replace your import of the default config from RainbowKit with `createConfig` and `http` from wagmi:
 
-```typescript
+```tsx
 import { createConfig, http, WagmiProvider } from 'wagmi';
 // ...Chains import
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -267,7 +266,7 @@ As with your WalletConnect Id, these endpoints will be visible on the frontend. 
 
 Use this endpoint to add an `http` `transport` to your config:
 
-```typescript
+```tsx
 const config = createConfig({
   chains: [mainnet, base],
   ssr: true,
@@ -298,7 +297,7 @@ Once again, remember to configure the [allowlist] when you publish your app, as 
 
 On the dashboard for your new app, click the `API key` button, and copy the **HTTPS** link to the clipboard. Replace your todo with this link:
 
-```typescript
+```tsx
 const config = createConfig({
   chains: [mainnet, base],
   ssr: true,

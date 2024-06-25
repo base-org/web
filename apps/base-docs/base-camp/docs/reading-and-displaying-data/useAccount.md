@@ -27,7 +27,7 @@ Either way, change the list of chains to only include `baseSepolia` as the netwo
 
 You can set up your providers as described in [Introduction to Providers], or use the default from RainbowKit:
 
-```typescript
+```tsx
 const config = getDefaultConfig({
   appName: 'RainbowKit App',
   projectId: 'YOUR APP ID',
@@ -44,7 +44,7 @@ The [`useAccount`] hook allows you to access account and connection data from wi
 
 Add a folder for `components` and a file called `ConnectionWindow.tsx` in that folder. Add the below component to the file, and replace the boilerplate text in `index.tsx` with an instance of it.
 
-```typescript
+```tsx
 // ConnectionWindow.tsx
 export function ConnectionWindow() {
   return (
@@ -55,7 +55,7 @@ export function ConnectionWindow() {
 }
 ```
 
-```typescript
+```tsx
 // index.tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
@@ -81,7 +81,7 @@ For the purposes of this exercise, open `styles/Home.module.css` and **delete or
 
 Return to `ConnectionWindow.tsx` and add the `useAccount` hook to the top, where you'd add any state variables. The general pattern for wagmi hooks is you decompose the properties you want to use from a function call of the name of the hook. For some, you'll add a config object to that call, but it's not needed for this one.
 
-```typescript
+```tsx
 import { useAccount } from 'wagmi';
 
 export function ConnectionWindow() {
@@ -99,11 +99,11 @@ You can see all the deconstructable return options in the [UseAccountReturnType]
 
 Update your `<div>` to show the address of the connected wallet:
 
-```Typescript
+```tsx
 <div>
   <h2>Connection Status</h2>
   <div>
-    <p>{"Address: " + address}</p>
+    <p>{'Address: ' + address}</p>
   </div>
 </div>
 ```

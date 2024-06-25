@@ -81,7 +81,7 @@ As discussed above, add `"use client":` to the top of the file.
 
 Continue with the imports:
 
-```typescript
+```tsx
 import '@rainbow-me/rainbowkit/styles.css';
 import { useState, type ReactNode } from 'react';
 import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -108,7 +108,7 @@ Remember, everything on the frontend is public! Be sure to configure the allowli
 
 :::
 
-```typescript
+```tsx
 const config = getDefaultConfig({
   appName: 'Cool Onchain App',
   projectId: 'YOUR_PROJECT_ID',
@@ -123,7 +123,7 @@ const config = getDefaultConfig({
 
 Add an exported function for the providers. This sets up the `QueryClient` and returns `props.children` wrapped in all of your providers.
 
-```typescript
+```tsx
 export function Providers(props: { children: ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
 
@@ -141,7 +141,7 @@ export function Providers(props: { children: ReactNode }) {
 
 Open `layout.tsx`. Import your `Providers`, being careful if you use auto-import as there are many other things with similar names in the list. Wrap the `children` in your `return` with the new `Providers`.
 
-```typescript
+```tsx
 return (
   <html lang="en">
     <body className={inter.className}>
@@ -157,13 +157,13 @@ You're now ready to add your connect button. You can do this anywhere in your ap
 
 Open up `page.tsx`, and import the `ConnectButton`:
 
-```typescript
+```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 ```
 
 Then, simply add the `ConnectButton` component at the top of the first `<div>`:
 
-```typescript
+```tsx
 // This function has been simplified to save space.
 export default function Home() {
   return (
@@ -183,7 +183,7 @@ Run your app with `yarn dev`, and you should be able to use the RainbowKit conne
 
 You use the [Connect Button] props to modify its properties, or you can [customize the connect button] extensively. Some users dislike having the connect button display their token balance. Try disabling it with:
 
-```typescript
+```tsx
 <ConnectButton showBalance={false} />
 ```
 

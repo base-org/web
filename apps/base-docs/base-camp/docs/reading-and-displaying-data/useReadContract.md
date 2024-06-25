@@ -91,7 +91,7 @@ Either way, add a folder called `deployments` and place a copy of the artifact f
 
 Add a file for a new component called `IssueList.tsx`. You can start with:
 
-```typescript
+```tsx
 import { useReadContract } from 'wagmi';
 
 export function IssueList() {
@@ -106,7 +106,7 @@ export function IssueList() {
 
 You'll need to do some prepwork to enable Typescript to more easily interpret the data returned from your contract. Add an `interface` called `Issue` that matches with the `ReturnableIssue` type:
 
-```typescript
+```tsx
 interface Issue {
   voters: string[];
   issueDesc: string;
@@ -128,19 +128,19 @@ Be very careful here! `bigint` is the name of the type, `BigInt` is the name of 
 
 Now, import `useState` and add a state variable to hold your list of `Issue`s.
 
-```typescript
+```tsx
 const [issues, setIssues] = useState<Issue[]>([]);
 ```
 
 You'll also need to import your contract artifact:
 
-```typescript
+```tsx
 import contractData from '../deployments/FEWeightedVoting.json';
 ```
 
 Finally, the moment you've been waiting for: Time to read from your contract! Add an instance of the [`useReadContract`] hook. It works similarly to the [`useAccount`] hook. Configure it with:
 
-```typescript
+```tsx
 const {
   data: issuesData,
   isError: issuesIsError,
@@ -154,7 +154,7 @@ const {
 
 You can use `useEffect` to do something when the call completes and the data. For now, just log it to the console:
 
-```typescript
+```tsx
 useEffect(() => {
   if (issuesData) {
     const issuesList = issuesData as Issue[];
@@ -166,7 +166,7 @@ useEffect(() => {
 
 Add in instance of your new component to `index.tsx`:
 
-```typescript
+```tsx
 <main className={styles.main}>
   <ConnectButton />
   <ConnectionWindow />
@@ -188,7 +188,7 @@ Breaking down the hook, you've:
 
 Now that you've got the data in state, you can display it via your component. One strategy to display a list of items is to compile a `ReactNode` array in a render function.
 
-```typescript
+```tsx
 function renderIssues() {
   return issues.map((issue) => (
     <div key={issue.issueDesc}>
@@ -207,7 +207,7 @@ function renderIssues() {
 
 Then, call the render function in the return for your component:
 
-```typescript
+```tsx
 return (
   <div>
     <h2>All Issues</h2>
@@ -239,7 +239,7 @@ Remember how the Solidity compiler creates automatic getters for all of your pub
 
 Redeploy with the above change, and add a second `useReadContract` to fetch an individual issue using the getter:
 
-```typescript
+```tsx
 // Bad code for example, do not use
 const {
   data: getOneData,
