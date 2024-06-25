@@ -1,11 +1,9 @@
 /* eslint-disable */
 import React from 'react';
 import { useState } from 'react';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount } from 'wagmi';
 
 import useNFTData from '../../utils/nft-exercise-data';
-
 import NFTCard from './NFTCard';
 
 export default function StudentProgress() {
@@ -104,19 +102,6 @@ export default function StudentProgress() {
           }}
         >
           <h1 style={{ paddingBottom: '40px' }}>Base Camp Progress</h1>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            width: 'auto',
-            flexBasis: '50%',
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-            gap: '0.5rem',
-            height: '100%',
-          }}
-        >
-          <ConnectButton />
         </div>
       </div>
 

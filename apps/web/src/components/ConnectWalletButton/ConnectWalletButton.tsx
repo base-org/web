@@ -3,7 +3,12 @@ import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/But
 import { UserAddress } from 'apps/web/src/components/ConnectWalletButton/UserAddress';
 import { AvatarSizes, UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
-import logEvent, { identify } from 'apps/web/src/utils/logEvent';
+import logEvent, {
+  ActionType,
+  AnalyticsEventImportance,
+  ComponentType,
+  identify,
+} from 'base-ui/utils/logEvent';
 import classNames from 'classnames';
 import { useCallback, useEffect } from 'react';
 import { useAccount } from 'wagmi';
@@ -34,14 +39,30 @@ export function ConnectWalletButton({
 
   useEffect(() => {
     if (address) {
-      logEvent('connected_wallet', { address });
+      logEvent(
+        'wallet_connected',
+        {
+          action: ActionType.change,
+          context: 'navbar',
+          address,
+        },
+        AnalyticsEventImportance.low,
+      );
       identify({ userId: address });
     }
   }, [address]);
 
   const clickConnect = useCallback(() => {
     openConnectModal?.();
-    logEvent('ConnectWalletButton_Clicked', {});
+    logEvent(
+      'connect_wallet',
+      {
+        action: ActionType.click,
+        componentType: ComponentType.button,
+        context: 'navbar',
+      },
+      AnalyticsEventImportance.low,
+    );
   }, [openConnectModal]);
 
   const userAddressClasses = classNames('text-lg', {
