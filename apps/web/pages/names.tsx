@@ -45,7 +45,7 @@ const useRotatingText = (strings: string[]) => {
   return strings[currentIndex];
 };
 
-enum Discount {
+export enum Discount {
   NONE = 0,
   ALREADY_REDEEMED = 1 << 0, // 1
   CB1 = 1 << 1, // 2
@@ -73,7 +73,7 @@ export default function Usernames() {
   const loadingDiscounts = loadingCoinbaseAttestations || loadingCBIDAttestations;
 
   const network = chainId === baseSepolia.id ? chainId : base.id;
-  const linkedAddresses = coinbaseData?.result.linkedAddresses;
+  const linkedAddresses = coinbaseData?.result?.linkedAddresses;
   // const coinbaseSignedMessage = coinbaseData?.result.signedMessage;
   // const coinbaseAttestations = coinbaseData?.result.attestations;
   const hasRegisteredArgs = useMemo(
@@ -81,7 +81,7 @@ export default function Usernames() {
       address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
       abi: RegistrarControllerABI,
       functionName: 'hasRegisteredWithDiscount',
-      args: [linkedAddresses],
+      args: linkedAddresses ? [linkedAddresses] : [],
       chainId: network,
     }),
     [network, linkedAddresses],
@@ -292,6 +292,7 @@ export default function Usernames() {
               <RegistrationForm
                 name={selectedName}
                 loadingDiscounts={loadingDiscounts}
+                discount={discount}
                 toggleModal={toggleModal}
               />
             </Transition>
