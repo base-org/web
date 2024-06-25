@@ -1,7 +1,7 @@
 import abi from 'apps/web/src/abis/RegistrarControllerABI.json';
 import {
-  USERNAME_SEPOLIA_CONTRACT_ADDRESS,
-  USERNAME_SEPOLIA_RESOLVER_ADDRESS,
+  USERNAME_SEPOLIA_REGISTRAR_CONTROLLER_ADDRESS,
+  USERNAME_SEPOLIA_L2_RESOLVER_ADDRESS,
   normalizeEnsDomainName,
 } from 'apps/web/src/utils/usernames';
 import { getContract } from 'viem';
@@ -22,14 +22,14 @@ export function useRegisterNameCallback(name: string, years: number) {
     name: normalizedName, // The name being registered.
     owner: address, // The address of the owner for the name.
     duration: secondsInYears(years), // The duration of the registration in seconds.
-    resolver: USERNAME_SEPOLIA_RESOLVER_ADDRESS, // The address of the resolver to set for this name.
+    resolver: USERNAME_SEPOLIA_L2_RESOLVER_ADDRESS, // The address of the resolver to set for this name.
     data: new Uint8Array(32).fill(0x0), //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
     reverseRecord: true, // Bool to decide whether to set this name as the "primary" name for the `owner`.
   };
   if (client) {
     const controllerContract = getContract({
       abi,
-      address: USERNAME_SEPOLIA_CONTRACT_ADDRESS,
+      address: USERNAME_SEPOLIA_REGISTRAR_CONTROLLER_ADDRESS,
       client: client,
     });
     controllerContract.write
@@ -49,7 +49,7 @@ export function useRegisterNameCallback(name: string, years: number) {
       console.log('jf registerRequest', registerRequest);
       const result = await writeContractAsync({
         abi,
-        address: USERNAME_SEPOLIA_CONTRACT_ADDRESS,
+        address: USERNAME_SEPOLIA_REGISTRAR_CONTROLLER_ADDRESS,
         functionName: 'discountedRegister',
         args: [registerRequest, 0x0, 0x0],
         chainId: baseSepolia.id,

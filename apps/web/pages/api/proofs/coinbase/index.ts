@@ -1,6 +1,8 @@
 import { getAttestations } from '@coinbase/onchainkit/identity';
 import { kv } from '@vercel/kv';
+import abi from 'apps/web/src/abis/RegistrarControllerABI.json';
 import { LinkedAddresses, getLinkedAddresses } from 'apps/web/src/cdp/api';
+import { cdpBaseRpcEndpoint } from 'apps/web/src/cdp/constants';
 import {
   isDevelopment,
   trustedSignerAddress,
@@ -8,11 +10,13 @@ import {
   verifiedAccountSchemaId,
   verifiedCb1AccountSchemaId,
 } from 'apps/web/src/constants';
-import { hasRegisteredWithDiscount } from 'apps/web/src/contracts/Usernames/registrarController';
+import { USERNAME_SEPOLIA_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/utils/usernames';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import {
+  createPublicClient,
   encodeAbiParameters,
   encodePacked,
+  http,
   isAddress,
   isHex,
   keccak256,
@@ -20,6 +24,11 @@ import {
 } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { base, baseSepolia } from 'viem/chains';
+
+const publicClient = createPublicClient({
+  chain: isDevelopment ? baseSepolia : base,
+  transport: http(cdpBaseRpcEndpoint),
+});
 
 type PreviousClaim = {
   address: string;
@@ -118,13 +127,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   let linkedAddressResponse: LinkedAddresses;
   try {
-    //hit CDP to get linked addresses
+    // hit CDP to get linked addresses
     linkedAddressResponse = await getLinkedAddresses(address as string);
-
+    const addresses = linkedAddressResponse.linkedAddresses;
+    if (!addresses.every((address) => isAddress(address))) {
+      return res.status(500).json({
+        error: 'not all linked addresses are valid addresses',
+        addresses: linkedAddressResponse.linkedAddresses,
+      });
+    }
     // check onchain if any linked address has registered previously
-    const hasPreviouslyRegistered = await hasRegisteredWithDiscount(
-      linkedAddressResponse.linkedAddresses,
-    );
+    const hasPreviouslyRegistered = await publicClient.readContract({
+      address: USERNAME_SEPOLIA_REGISTRAR_CONTROLLER_ADDRESS,
+      abi,
+      functionName: 'hasRegisteredWithDiscount',
+      args: [addresses],
+    });
+
     // if any linked address registered previously return an error
     if (hasPreviouslyRegistered) {
       return res.status(409).json({ result: 'user has already claimed a username' });
