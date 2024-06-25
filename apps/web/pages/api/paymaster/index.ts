@@ -1,5 +1,5 @@
 import { paymasterClient } from "../paymaster_config";
-import { willSponsor } from "../../../src/utils/paymaster_sponsor";
+import { willSponsor } from "../../../src/utils/paymasterSponsor";
 
 export async function POST(r: Request) {
     const req = await r.json();
