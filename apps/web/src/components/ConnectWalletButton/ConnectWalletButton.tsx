@@ -46,7 +46,7 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
       'connect_wallet',
       {
         action: ActionType.click,
-        component_type: ComponentType.button,
+        componentType: ComponentType.button,
         context: 'navbar'
       },
       AnalyticsEventImportance.low

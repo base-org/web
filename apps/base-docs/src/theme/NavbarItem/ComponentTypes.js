@@ -45,7 +45,7 @@ export const CustomConnectButton = ({ className }) => {
             'connect_wallet',
             {
               action: ActionType.click,
-              component_type: ComponentType.button,
+              componentType: ComponentType.button,
               context: 'navbar',
             },
             AnalyticsEventImportance.low,
@@ -151,7 +151,7 @@ export const CustomNavbarLink = (props) => {
           props.eventLabel,
           {
             action: ActionType.click,
-            component_type: ComponentType.link,
+            componentType: ComponentType.link,
             context: props.eventContext,
           },
           AnalyticsEventImportance.high
@@ -176,7 +176,7 @@ export const CustomDropdownLink = (props) => {
             props.eventLabel,
             {
               action: ActionType.click,
-              component_type: ComponentType.link,
+              componentType: ComponentType.link,
               context: props.eventContext,
             },
             AnalyticsEventImportance.high

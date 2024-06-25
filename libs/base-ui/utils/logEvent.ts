@@ -77,7 +77,7 @@ enum AnalyticsEventImportance {
 type CCAEventData = {
   // Standard Attributes
   action?: ActionType;
-  component_type?: ComponentType;
+  componentType?: ComponentType;
   // Custom Attributes
   doc_helpful?: boolean;
   doc_feedback_reason?: string | null;
