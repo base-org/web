@@ -10,3 +10,9 @@ export default function logEvent(name: string, event: unknown) {
     window.ClientAnalytics?.logEvent(name, event);
   }
 }
+
+export function identify(event: unknown) {
+  if (window.ClientAnalytics) {
+    window.ClientAnalytics?.logEvent('identify', event);
+  }
+}

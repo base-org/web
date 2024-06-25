@@ -26,6 +26,9 @@ import { CookieBanner } from '@coinbase/cookie-banner';
 import { WalletAvatar } from '../components/WalletAvatar';
 import { createClient } from 'viem';
 
+import useSprig from 'base-ui/hooks/useSprig';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
 const connectors = connectorsForWallets(
   [
     {
@@ -160,9 +163,17 @@ export default function Root({ children }) {
     }
   }, []);
 
+  const {
+    siteConfig: { customFields },
+  } = useDocusaurusContext();
+
+  const sprigEnvironmentId = customFields?.sprigEnvironmentId;
+
   const handleLogError = useCallback((err) => console.error(err), []);
 
   useEffect(() => setMounted(true), []);
+
+  useSprig(sprigEnvironmentId);
 
   if (!mounted) return null;
 

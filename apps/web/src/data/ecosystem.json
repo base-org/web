@@ -1521,9 +1521,9 @@
     "imageUrl": "/images/partners/commerce.webp"
   },
   {
-    "name": "Coinbase Pay",
-    "url": "https://www.coinbase.com/cloud/products/pay-sdk",
-    "description": "Let your users buy or transfer digital assets with the most trusted name in crypto. Join the waitlist for access to the SDK.",
+    "name": "Coinbase Onramp",
+    "url": "https://www.coinbase.com/developer-platform/products/onramp",
+    "description": "Let your users buy or transfer digital assets with the most trusted name in crypto.",
     "tags": [
       "onramp"
     ],
@@ -3278,5 +3278,113 @@
     "description": "DockHive integrates Docker with blockchain for a decentralized cloud infrastructure, offering enhanced security, fault tolerance, dynamic scaling, and leveraging the DHT token for ecosystem transactions.",
     "url": "https://dockhive.io",
     "imageUrl": "/images/partners/dockhive.png"
+  },
+  {
+    "name": "HERE Wallet",
+    "tags": [
+      "wallet"
+    ],
+    "description": "HERE wallet is a MPC mobile and Telegram wallet built on HOT Protocol. HOT Protocol is a decentralized validator network for MPC wallets.",
+    "url": "https://hotdao.ai/",
+    "imageUrl": "/images/partners/here-wallet.jpeg"
+  },
+  {
+    "name": "Robots.Farm",
+    "tags": [
+      "defi"
+    ],
+    "description": "Robots.Farm is a Gamified Trading Platform that seamlessly merges decentralized finance with a captivating gaming experience. Developed independently, free from VC funding or paid influencers, $RBF platform serves as a decentralized exchange and aggregator, enabling effortless transactions across 9 networks with scalable capabilities. Engage in gameplay, swap tokens, farm rewards, and enhance your profile with XP points while collecting unique items to unlock special features!",
+    "url": "https://robots.farm/",
+    "imageUrl": "/images/partners/robots-farm.png"
+  },
+  {
+    "name": "Galaxy Exchange",
+    "tags": [
+      "defi"
+    ],
+    "description": "Galaxy provides instant access to cross-chain liquidity from over 100 blockchains, bridges, and liquidity aggregators. Perform non-custodial token swaps and bridging for a wide range of crypto assets, any token to any token, irrespective of the underlying blockchain.",
+    "url": "https://galaxy.exchange/",
+    "imageUrl": "/images/partners/galaxy-exchange.png"
+  },
+  {
+    "name": "Tegro",
+    "tags": [
+      "defi"
+    ],
+    "description": "Tegro is a Gen2 order book DEX for high-frequency trading. Enjoy CEX-level efficiency on-chain with efficient order books, unmatched gas efficiency, lightning-fast order matching and more!",
+    "url": "https://tegro.com/",
+    "imageUrl": "/images/partners/tegro.jpg"
+  },
+  {
+    "name": "Vooi",
+    "tags": [
+      "defi"
+    ],
+    "description": "Vooi is an emerging intent-based Perp DEX Aggregator that provides an efficient liquidity mechanism, and the highest trade quality for professional and retail traders. \n",
+    "url": "https://app.vooi.io/",
+    "imageUrl": "/images/partners/vooi.png"
+  },
+  {
+    "name": "Dyson Money",
+    "tags": [
+      "defi"
+    ],
+    "description": "Dyson is a yield maximizer & CL ALM that amplifies your yield returns. Offering auto-compounding vaults for diverse LPs across multiple chains, it aims to be the go-to dApp for maximising yields.",
+    "url": "https://www.dyson.money/",
+    "imageUrl": "/images/partners/dyson-money.png"
+  },
+  {
+    "name": "QuillAudits",
+    "tags": [
+      "security"
+    ],
+    "description": "Web3 security leader equipped with robust security solutions and infra, trusted by teams from ZetaChain, Taiko, Polygon and many more since 2018. ",
+    "url": "https://quillaudits.com",
+    "imageUrl": "/images/partners/quill-audits.png"
+  },
+  {
+    "name": "Center",
+    "tags": [
+      "infra"
+    ],
+    "description": "Real-time blockchain data, delivered instantly",
+    "url": "https://center.app/",
+    "imageUrl": "/images/partners/center-logo.png"
+  },
+  {
+    "name": "droplinked",
+    "tags": [
+      "social"
+    ],
+    "description": "Providing web2 and web3 e-commerce functionality with diverse applications like tokenpay, inventory management, on-chain loyalty, gating and drops for physical and digital goods.",
+    "url": "https://droplinked.com",
+    "imageUrl": "/images/partners/droplinked.png"
+  },
+  {
+    "name": "omni",
+    "tags": [
+      "defi"
+    ],
+    "description": "Create a token on Base (paired with liquidity from user wallet) in less than 30 seconds. ",
+    "url": "https://www.omniswap.ai",
+    "imageUrl": "/images/partners/omni.png"
+  },
+  {
+    "name": "Bitoro Network",
+    "tags": [
+      "defi"
+    ],
+    "description": "Bitoro is a leveraged trading protocol and aggregator for the perpetual futures market. Our goal is to unify the fragmented market under one platform with optimal prices, fees, liquidity, incentives, and unparalleled ease of use.",
+    "url": "https://bitoro.network/",
+    "imageUrl": "/images/partners/bitoro.png"
+  },
+  {
+    "name": "CoinTracker",
+    "tags": [
+      "infra"
+    ],
+    "description": "Crypto taxes that simply work — with complete coverage for onchain activity. Generate accurate reports and file in minutes with the only solution that integrates directly with TurboTax and H&R Block.",
+    "url": "https://www.cointracker.io/?utm_source=base",
+    "imageUrl": "/images/partners/cointracker.png"
   }
 ]

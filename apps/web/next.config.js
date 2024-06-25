@@ -175,6 +175,16 @@ module.exports = extendBaseConfig({
         destination: process.env.NEXT_PUBLIC_OCS_CREATIVE_DOWNLOAD_URL ?? '/',
         permanent: false,
       },
+      {
+        source: '/registry',
+        destination: 'https://buildonbase.deform.cc/registry/',
+        permanent: true,
+      },
+      {
+        source: '/registry-edit',
+        destination: 'https://buildonbase.deform.cc/registry-edit/',
+        permanent: true,
+      },
     ];
   },
 });

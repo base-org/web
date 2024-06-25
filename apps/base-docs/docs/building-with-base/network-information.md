@@ -35,7 +35,7 @@ hide_table_of_contents: true
 | RPC Endpoint    | [https://mainnet.base.org](https://mainnet.base.org)<br/>_Rate limited and not for production systems._ |
 | Chain ID        | 8453                                                                                                    |
 | Currency Symbol | ETH                                                                                                     |
-| Block Explorer  | [https://basescan.org](https://basescan.org)                                                            |
+| Block Explorer  | [https://base.blockscout.com/](https://base.blockscout.com/)                                            |
 
 ---
 

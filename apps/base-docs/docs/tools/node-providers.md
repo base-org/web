@@ -62,6 +62,17 @@ hide_table_of_contents: true
 
 ---
 
+## All That Node
+
+[All That Node](https://www.allthatnode.com/base.dsrv) is a comprehensive multi-chain development suite, designed to support multiple networks from a single platform. They offer free and [paid plans](https://www.allthatnode.com/pricing.dsrv) with additional features and increased request limits.
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
+
+---
+
 ## Ankr
 
 [Ankr](https://www.ankr.com/rpc/base/) provides private and public RPC endpoints for Base, powered by a globally distributed and decentralized network of nodes. They offer free and [paid plans](https://www.ankr.com/rpc/pricing/) with increased request limits.
@@ -189,6 +200,15 @@ hide_table_of_contents: true
 
 - Base Mainnet
 - Base Sepolia (Testnet)
+
+---
+
+## RockX
+[RockX](https://access.rockx.com) offers a global blockchain node network and developer tools for onchain innovation. Start with our free [Base RPC](https://access.rockx.com/product/base-blockchain-api-for-web3-builders) to access institutional-grade solutions.
+
+#### Supported Networks
+
+- Base Mainnet
 
 ---
 
