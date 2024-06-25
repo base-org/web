@@ -1,5 +1,5 @@
 ---
-title: 'Minting NFTs with Zora'
+title: 'How to Mint on Zora with an App'
 slug: /minting-nfts-with-zora
 description: Learn to use Zora contracts inside your app to create secure, efficient, and feature-rich minting experiences for your users.
 author: briandoyle81
