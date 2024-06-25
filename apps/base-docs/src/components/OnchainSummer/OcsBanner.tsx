@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import { useCallback } from 'react';
 import Icon from '../Icon';
-import logEvent from "base-ui/utils/logEvent";
+import logEvent, {ActionType, AnalyticsEventImportance, ComponentType} from "base-ui/utils/logEvent";
 
 import styles from './styles.module.css';
 
@@ -12,8 +12,15 @@ export function OcsBanner() {
   const [isBannerVisible, setIsBannerVisible] = useLocalStorage('isOcsBannerVisible', true);
 
   const linkClick = useCallback(() => {
-    logEvent('navbar_ocsbanner', {});
-  }, []);
+    logEvent(
+      'ocsbanner',
+      {
+        action: ActionType.click,
+        componentType: ComponentType.banner,
+        context: 'navbar'
+      },
+      AnalyticsEventImportance.low
+    )}, [logEvent, ActionType, ComponentType, AnalyticsEventImportance]);
 
   const hideBanner = useCallback(() => {
     setIsBannerVisible(false);
