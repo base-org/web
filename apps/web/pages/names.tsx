@@ -1,5 +1,4 @@
 import { Transition } from '@headlessui/react';
-import { InformationCircleIcon } from '@heroicons/react/20/solid';
 import { FloatingENSPills } from 'apps/web/src/components/Basenames/FloatingENSPills';
 import { RegistrationContext } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
@@ -9,15 +8,13 @@ import {
   UsernameSearchInputVariant,
 } from 'apps/web/src/components/Basenames/UsernameSearchInput';
 import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
-import Modal from 'apps/web/src/components/Modal';
-import Tooltip from 'apps/web/src/components/Tooltip';
 import { ProofTableNamespace } from 'apps/web/src/utils/proofs';
 import classNames from 'classnames';
 import Head from 'next/head';
-import Image from 'next/image';
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
 import { useAccount } from 'wagmi';
+import { LearnMoreModal } from '../src/components/Basenames/LearnMoreModal';
 // TODO: replace appropriate backgrounds w/Lottie files
 
 export enum ClaimProgression {
@@ -286,65 +283,7 @@ export default function Usernames() {
               />
             </Transition>
           </div>
-          <Modal isOpen={learnMoreModalOpen} onClose={toggleModal} title="Qualify for a free name">
-            <p className="mb-6 text-illoblack">
-              You will receive your name for free if you connect to a wallet that has{' '}
-              <strong>one of the following</strong>
-            </p>
-            <ul className="mb-5 flex flex-col gap-3 self-start">
-              <li className="flex flex-row items-center justify-start">
-                <Image
-                  src="/images/usernames/coinbase-verification.svg"
-                  alt="criteria icon"
-                  width={30}
-                  height={30}
-                  className="mr-3"
-                />
-                A Coinbase account verification{' '}
-                <Tooltip content="Verifies you have a valid trading account on Coinbase">
-                  <InformationCircleIcon
-                    width={12}
-                    height={12}
-                    className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
-                  />
-                </Tooltip>
-              </li>
-              <li className="flex flex-row items-center justify-start">
-                <Image
-                  src="/images/usernames/coinbase-one-verification.svg"
-                  alt="criteria icon"
-                  width={30}
-                  height={30}
-                  className="mr-3"
-                />
-                A Coinbase One subscription verification{' '}
-                <Tooltip content="Verifies you have an active Coinbase One subscription">
-                  <InformationCircleIcon
-                    width={12}
-                    height={12}
-                    className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
-                  />
-                </Tooltip>
-              </li>
-              <li className="flex flex-row items-center justify-start">
-                <Image
-                  src="/images/usernames/cbid-verification.svg"
-                  alt="criteria icon"
-                  width={30}
-                  height={30}
-                  className="mr-3"
-                />
-                A CB.ID username{' '}
-                <Tooltip content="cb.id claimed prior to cutoff date">
-                  <InformationCircleIcon
-                    width={12}
-                    height={12}
-                    className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
-                  />
-                </Tooltip>
-              </li>
-            </ul>
-          </Modal>
+          {<LearnMoreModal learnMoreModalOpen={learnMoreModalOpen} toggleModal={toggleModal} />}
         </main>
       </RegistrationContext.Provider>
     </>
