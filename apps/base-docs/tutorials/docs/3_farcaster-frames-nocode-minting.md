@@ -59,7 +59,7 @@ Open `app/config.ts` and update `NEXT_PUBLIC_URL` to your new deployment.
 
 As always, you'll set up the first frame in `app/page.tsx`. Open that up, and change the example to have a single button. You can keep the example that links to Google:
 
-```typescript
+```tsx
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
@@ -95,7 +95,7 @@ It will cost a small amount of gas to create the project. Approve the transactio
 
 Copy the link, and update your button, and change the frame to use the image that you uploaded for your NFT:
 
-```typescript
+```tsx
 const frameMetadata = getFrameMetadata({
   buttons: [
     {

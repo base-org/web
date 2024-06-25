@@ -26,7 +26,7 @@ In the previous step-by-step, you used [`useWriteContract`] to set up a hook you
 
 The `useSimulateContract` can be used in partnership with `useWriteContract`. To do so, you set up the transaction parameters in `useSimulateContract`, then use the `data?.request` returned by it as an argument in the call to write to the contract. Modify your `TokenInfo` component to test it:
 
-```typescript
+```tsx
 // Bad code for example.  See below for fix.
 const {
   data: claimData,
@@ -57,7 +57,7 @@ const handleClaimClick = () => {
 
 You'll also need to update your handler to use the TypeScript pre-check feature, because the claim function will be briefly `undefined`.
 
-```typescript
+```tsx
 const handleClaimClick = () => {
   claim(claimData!.request);
 };
@@ -75,7 +75,7 @@ You'll need to make some modifications for it to work. The `claimIsError` variab
 
 You can solve this a number of ways, including simply not rendering the button if the user has already claimed. You could also modify the code, and combine it with `isError`, to share this information to the user.
 
-```typescript
+```tsx
 const {
   data: claimData,
   isFetching: claimIsFetching,

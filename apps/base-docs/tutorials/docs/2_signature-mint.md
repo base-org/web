@@ -249,7 +249,7 @@ If you're using a different library, you'll need to do research to figure out ho
 
 Add a new test file and fill out a skeleton to deploy your contract and run a test:
 
-```typescript
+```tsx
 import { loadFixture } from '@nomicfoundation/hardhat-toolbox-viem/network-helpers';
 import { expect } from 'chai';
 import hre from 'hardhat';
@@ -299,7 +299,7 @@ describe('Test', function () {
 
 You can use the example in the documentation for [signMessage] in the [viem] wallet client to get started, but it will **not** work as expected.
 
-```typescript
+```tsx
 // BAD CODE EXAMPLE DO NOT USE!
 const signature = await owner.signMessage({
   message: signer1Address,
@@ -312,20 +312,20 @@ The reason for this is that while `signMessage` does follow the previously menti
 
 To fix this, first import some helper functions from [viem]:
 
-```typescript
+```tsx
 import { keccak256, encodePacked, toBytes } from 'viem';
 ```
 
 Then `encodePacked` and `keccak256` hash your variables and turn them into `bytes`, just like you did in the contract in `validateSignature`:
 
-```typescript
+```tsx
 const message = keccak256(encodePacked(['address'], [signer1Address]));
 const messageBytes = toBytes(message);
 ```
 
 Finally, call the wallet `signMessage` function with the newly assembled `messageBytes`. You'll need to mark the data representation as `raw`:
 
-```typescript
+```tsx
 const signature = await owner.signMessage({
   message: { raw: messageBytes },
 });
@@ -337,7 +337,7 @@ Test again, and it will pass!
 
 It's up to you to determine the conditions that you're willing to sign a message. Once those conditions are met, you can use a similar process to load a wallet from your private key and sign the message on any TypeScript backend:
 
-```typescript
+```tsx
 const authorizedAccount = privateKeyToAccount(COINBASE_WALLET_KEY as `0x${string}`);
 
 const authorizedClient = createWalletClient({

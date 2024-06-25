@@ -55,7 +55,7 @@ You'll need to go to that particular explorer and get the API Key following a si
 
 You can configure the Etherscan API Key for each different network. For example, include the following to the `hardhat.config.ts` file for Base Sepolia:
 
-```typescript
+```tsx
 base_sepolia: {
   url: "https://sepolia.base.org",
   accounts: {

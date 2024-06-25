@@ -129,7 +129,7 @@ interface IUniswapV3Factory {
 
 Then, create a test file called `PoolCreator.test.ts` with the following content:
 
-```typescript
+```tsx
 import { ethers } from 'hardhat';
 import { HardhatEthersSigner } from '@nomicfoundation/hardhat-ethers/signers';
 

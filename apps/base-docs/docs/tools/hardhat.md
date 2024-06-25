@@ -33,7 +33,7 @@ You can use Hardhat to edit, compile, debug, and deploy your smart contracts to 
 
 To configure [Hardhat](https://hardhat.org/) to deploy smart contracts to Base, update your project’s `hardhat.config.ts` file by adding Base as a network:
 
-```typescript
+```tsx
 networks: {
    // for mainnet
    "base-mainnet": {

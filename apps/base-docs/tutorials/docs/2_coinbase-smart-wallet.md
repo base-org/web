@@ -347,7 +347,7 @@ By using the Smart Wallet, you've made it easy for both new and experienced user
 
 Open `page.tsx` and find the `<div>` with the Connect section:
 
-```typescript
+```tsx
 <div>
   <h2>Connect</h2>
   {connectors.map((connector) => (
@@ -362,7 +362,7 @@ Open `page.tsx` and find the `<div>` with the Connect section:
 
 Add a `<header>` element to the top (or as appropriate for the UI/UX library you are using). Move the Connect `<div>` inside, and replace the `connectors.map` function with one that finds the Smart Wallet and uses it to connect. First, create the function:
 
-```typescript
+```tsx
 const createWallet = useCallback(() => {
   const coinbaseWalletConnector = connectors.find(
     (connector) => connector.id === 'coinbaseWalletSDK',
@@ -375,7 +375,7 @@ const createWallet = useCallback(() => {
 
 Then update the `<header>` to use it. You can also move the `Disconnect` button into the header. Only show the appropriate button, depending on the connection state.
 
-```typescript
+```tsx
 <header>
   <div>
     <h2>Connect</h2>
@@ -399,7 +399,7 @@ Then update the `<header>` to use it. You can also move the `Disconnect` button 
 
 Experienced users will know that they need funds for gas and payments to interact with your app, but new users may not. Both benefit from seeing their balance shown on the app. Import `useBalance` and initialize it below `useAccount`:
 
-```typescript
+```tsx
 const account = useAccount();
 const balance = useBalance({ address: account.address });
 ```
@@ -408,7 +408,7 @@ Then add it to the display when the user is logged in. You'll need to extract it
 
 Create a helper function to show the balance with four decimals:
 
-```typescript
+```tsx
 function weiToEtherString(wei: bigint) {
   const ether = formatEther(wei);
   return parseFloat(ether).toFixed(4).toString();
@@ -417,7 +417,7 @@ function weiToEtherString(wei: bigint) {
 
 Then use it to display the user's balance:
 
-```typescript
+```tsx
 <div>
   {account.status === 'connected' &&
     'Balance: (' + account.chain?.name + ') ' + weiToEtherString(balance?.data?.value || BigInt(0))}
@@ -446,7 +446,7 @@ Once you have that, you can use the _One Click_ pay feature to set up a transact
 
 To add this, first add a helper function to build the link:
 
-```typescript
+```tsx
 const APP_ID = 1234; // Replace with your Project Id
 
 function buildOneClickURL() {
@@ -456,7 +456,7 @@ function buildOneClickURL() {
 
 Then add a new button that opens the URL in a new window:
 
-```typescript
+```tsx
 <div>
   {account.status === 'connected' && (
     <button onClick={() => window.open(buildOneClickURL())}>Fund Wallet (Uses Real Money!)</button>
@@ -480,7 +480,7 @@ Use a blockchain explorer to mint a few NFTs on your contract if you haven't yet
 
 Add a new folder in `app` for `components` then add a component called `nftList` in a file of the same name. Import the address and ABI for your deployed Random Color NFT contract. Also import `useAccount` and `useReadContract` from `wagmi`:
 
-```typescript
+```tsx
 import { useAccount, useReadContract } from 'wagmi';
 import contractData from '../contracts/RandomColorNFT.json';
 ```
@@ -528,7 +528,7 @@ export function NFTList() {
 
 Add a type and helper function to convert the base64 encoded metadata to JSON:
 
-```typescript
+```tsx
 type JSONMetadata = {
   name: string;
   description: string;
@@ -548,7 +548,7 @@ The image is already in a format usable by `<img>` tags!
 
 Now that you can extract your metadata and image from your data, use it to build a render function for your NFTs:
 
-```typescript
+```tsx
 function renderNft(nft: NFTData) {
   const metadata = getJsonMetadata(nft);
   return (
@@ -563,7 +563,7 @@ function renderNft(nft: NFTData) {
 
 And use it to display them:
 
-```typescript
+```tsx
 return (
   <div>
     <h2>NFTs</h2>
@@ -587,7 +587,7 @@ Everything should work as expected for both.
 
 Import and set up functions to write to your contract and wait for the receipt:
 
-```typescript
+```tsx
 const { data: writeData, writeContract } = useWriteContract();
 const { data: receipt } = useWaitForTransactionReceipt({
   hash: writeData,
@@ -596,7 +596,7 @@ const { data: receipt } = useWaitForTransactionReceipt({
 
 Wait for the receipt, and use it to trigger a refetch of the NFT data. Doing so will update the user's list of NFTs after they buy a new one:
 
-```typescript
+```tsx
 useEffect(() => {
   if (receipt) {
     refetchNftData();
@@ -606,7 +606,7 @@ useEffect(() => {
 
 Finally, add a button allowing the user to purchase a new NFT:
 
-```typescript
+```tsx
 <button
   onClick={() =>
     writeContract({
