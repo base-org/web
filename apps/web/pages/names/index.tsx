@@ -12,6 +12,7 @@ import {
   UsernameSearchInputVariant,
 } from 'apps/web/src/components/Basenames/UsernameSearchInput';
 import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
+import { useActiveDiscountValidators } from 'apps/web/src/utils/hooks/useActiveDiscountValidators';
 import {
   useCheckCBIDAttestations,
   useCheckCoinbaseAttestations,
@@ -86,9 +87,13 @@ export default function Usernames() {
     [network, linkedAddresses],
   );
   const { data: hasAlreadyUsedADiscount } = useReadContract(hasRegisteredArgs);
+  console.log('hasAlreadyUsedADiscount', hasAlreadyUsedADiscount);
   if (hasAlreadyUsedADiscount && !hasDiscount(Discount.ALREADY_REDEEMED)) {
     addDiscount(Discount.ALREADY_REDEEMED);
   }
+
+  const { data: activeDiscountValidators } = useActiveDiscountValidators();
+  console.log('activeDiscountValidators', activeDiscountValidators);
 
   const [progress, setProgress] = useState<ClaimProgression>(ClaimProgression.SEARCH);
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
