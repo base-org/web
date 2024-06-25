@@ -147,7 +147,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // if any linked address registered previously return an error
     if (hasPreviouslyRegistered) {
-      return res.status(409).json({ result: 'user has already claimed a username' });
+      return res.status(409).json({ error: 'user has already redeemed a discount' });
     }
   } catch (error) {
     console.error(error);

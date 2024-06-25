@@ -15,6 +15,7 @@ function secondsInYears(years: number): number {
 export function useRegisterNameCallback(name: string, years: number): () => void {
   const { address, chainId } = useAccount();
   const { data: client } = useWalletClient();
+  const { writeContractAsync } = useWriteContract();
 
   if (chainId === undefined) {
     console.error(
@@ -43,7 +44,6 @@ export function useRegisterNameCallback(name: string, years: number): () => void
       .then(console.log)
       .catch(console.error);
   }
-  const { writeContractAsync } = useWriteContract();
 
   // discountKey <- getValidDiscounts(): DiscountDetails[]
   // for each discount in DiscountDetails, check if user is valid (?)

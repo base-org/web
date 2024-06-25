@@ -54,8 +54,8 @@ test addresses w/ different verifications
 */
 
 export default function Usernames() {
-  // const { address } = useAccount();
-  const address = '0xB6944B3074F40959E1166fe010a3F86B02cF2b7c';
+  const { address } = useAccount();
+  // const address = '0xB6944B3074F40959E1166fe010a3F86B02cF2b7c';
   const [discount, setDiscount] = useState(Discount.NONE);
   const [loadingDiscounts, setLoadingDiscounts] = useState(false);
   useEffect(() => {
