@@ -27,10 +27,10 @@ export const CustomConnectButton = ({ className }) => {
         useEffect(() => {
           if (address) {
             logEvent(
-              'navbar_walletconnected',
+              'wallet_connected',
               {
-                action: ActionType.click,
-                component: ComponentType.button,
+                action: ActionType.change,
+                context: 'navbar',
                 address,
               },
               AnalyticsEventImportance.low,
@@ -42,10 +42,11 @@ export const CustomConnectButton = ({ className }) => {
         const clickConnect = useCallback(() => {
           openConnectModal?.();
           logEvent(
-            'navbar_connectwallet',
+            'connect_wallet',
             {
               action: ActionType.click,
-              component: ComponentType.button,
+              component_type: ComponentType.button,
+              context: 'navbar',
             },
             AnalyticsEventImportance.low,
           );
@@ -150,7 +151,8 @@ export const CustomNavbarLink = (props) => {
           props.eventLabel,
           {
             action: ActionType.click,
-            component: ComponentType.link,
+            component_type: ComponentType.link,
+            context: props.eventContext,
           },
           AnalyticsEventImportance.high
         )
@@ -174,7 +176,8 @@ export const CustomDropdownLink = (props) => {
             props.eventLabel,
             {
               action: ActionType.click,
-              component: ComponentType.link,
+              component_type: ComponentType.link,
+              context: props.eventContext,
             },
             AnalyticsEventImportance.high
           )

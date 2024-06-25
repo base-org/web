@@ -11,7 +11,7 @@ import styles from './styles.module.css';
 
 import Icon from '../../../components/Icon';
 import { CustomConnectButton } from '../../NavbarItem/ComponentTypes';
-import logEvent from "base-ui/utils/logEvent";
+import logEvent, { ActionType, AnalyticsEventImportance, ComponentType } from "base-ui/utils/logEvent";
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
@@ -41,15 +41,38 @@ ${JSON.stringify(item, null, 2)}`,
 }
 function NavbarLayoutTopContent({ left, right }) {
   const discordClick = useCallback(() => {
-    logEvent('navbar_social_discord', {});
+    logEvent(
+      'social_discord',
+      {
+        action: ActionType.click,
+        component: ComponentType.icon,
+        context: 'navbar',
+      },
+      AnalyticsEventImportance.low
+    );
   }, [logEvent])
 
   const twitterClick = useCallback(() => {
-    logEvent('navbar_social_twitter', {});
-  }, [logEvent])
+    logEvent(
+      'social_twitter',
+      {
+        action: ActionType.click,
+        component: ComponentType.icon,
+        context: 'navbar',
+      },
+      AnalyticsEventImportance.low
+    );  }, [logEvent])
 
   const githubClick = useCallback(() => {
-    logEvent('navbar_social_github', {});
+    logEvent(
+      'social_github',
+      {
+        action: ActionType.click,
+        component: ComponentType.icon,
+        context: 'navbar',
+      },
+      AnalyticsEventImportance.low
+    );
   }, [logEvent])
 
 
