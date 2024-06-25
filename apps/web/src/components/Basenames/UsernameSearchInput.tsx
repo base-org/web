@@ -204,8 +204,6 @@ export function UsernameSearchInput({
     return [`${debouncedSearch}1`, `${debouncedSearch}2`, `${debouncedSearch}3`];
   }, [debouncedSearch]);
 
-  console.log({ data });
-
   return (
     <fieldset
       className={usernameSearchInputClasses}
