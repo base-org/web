@@ -1,5 +1,4 @@
 import { Transition } from '@headlessui/react';
-import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
 import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
 import { FloatingENSPills } from 'apps/web/src/components/Basenames/FloatingENSPills';
@@ -11,19 +10,17 @@ import {
   UsernameSearchInputVariant,
 } from 'apps/web/src/components/Basenames/UsernameSearchInput';
 import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
-import { ProofTableNamespace } from 'apps/web/src/utils/proofs';
-import classNames from 'classnames';
-import Head from 'next/head';
-import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
-import { useInterval } from 'usehooks-ts';
-import { Address } from 'viem';
-import { base, baseSepolia } from 'viem/chains';
-import { useAccount, useReadContract } from 'wagmi';
-import { LearnMoreModal } from '../src/components/Basenames/LearnMoreModal';
 import {
   useCheckCBIDAttestations,
   useCheckCoinbaseAttestations,
 } from 'apps/web/src/utils/hooks/useAttestations';
+import classNames from 'classnames';
+import Head from 'next/head';
+import { Fragment, useCallback, useMemo, useState } from 'react';
+import { useInterval } from 'usehooks-ts';
+import { base, baseSepolia } from 'viem/chains';
+import { useAccount, useReadContract } from 'wagmi';
+import { LearnMoreModal } from '../src/components/Basenames/LearnMoreModal';
 // TODO: replace appropriate backgrounds w/Lottie files
 
 export enum ClaimProgression {
@@ -70,6 +67,7 @@ export default function Usernames() {
   console.log('useCheckCBIDAttestations data: ', CBIDData);
   const { data: coinbaseData, loading: loadingCoinbaseAttestations } =
     useCheckCoinbaseAttestations();
+  console.log('useCheckCoinbaseAttestations data: ', coinbaseData);
   const loadingDiscounts = loadingCoinbaseAttestations || loadingCBIDAttestations;
 
   const network = chainId === baseSepolia.id ? chainId : base.id;
@@ -293,6 +291,7 @@ export default function Usernames() {
                 name={selectedName}
                 loadingDiscounts={loadingDiscounts}
                 discount={discount}
+                hasDiscount={hasDiscount}
                 toggleModal={toggleModal}
               />
             </Transition>

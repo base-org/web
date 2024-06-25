@@ -1,5 +1,6 @@
 import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
+import { Discount } from 'apps/web/pages/names';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { useRegisterNameCallback } from 'apps/web/src/utils/hooks/useRegisterNameCallback';
 import { useCallback, useState } from 'react';
@@ -10,9 +11,17 @@ type RegistrationFormProps = {
   name: string;
   loadingDiscounts: boolean;
   toggleModal: () => void;
+  discount: number;
+  hasDiscount: (d: number) => boolean;
 };
 
-export function RegistrationForm({ name, loadingDiscounts, toggleModal }: RegistrationFormProps) {
+export function RegistrationForm({
+  discount,
+  hasDiscount,
+  name,
+  loadingDiscounts,
+  toggleModal,
+}: RegistrationFormProps) {
   const { openConnectModal } = useConnectModal();
   const { switchChain } = useSwitchChain();
   const [years, setYears] = useState(1);
@@ -30,7 +39,7 @@ export function RegistrationForm({ name, loadingDiscounts, toggleModal }: Regist
   const registerName = useRegisterNameCallback(name, years);
 
   const buttonClasses = 'text-xl rounded-full py-3 px-8 text-illoblack bg-gray/10 border-line/20';
-  const nameIsFree = false;
+  const nameIsFree = !hasDiscount(Discount.NONE) && !hasDiscount(Discount.ALREADY_REDEEMED);
   return (
     <div className="mx-auto w-full max-w-[50rem] transition-all duration-500">
       <div className="z-10 mx-4 flex flex-col justify-between gap-4 rounded-xl border border-line/20 bg-[#F7F7F7] p-6 text-gray/60 md:flex-row md:items-center">
@@ -104,7 +113,7 @@ export function RegistrationForm({ name, loadingDiscounts, toggleModal }: Regist
       </div>
       <div className="mt-6 flex w-full justify-center">
         <p className="mr-2 text-center">
-          {nameIsFree ? "You've qualified for a free name! " : 'unlock your username for free! '}
+          {nameIsFree ? "You've qualified for a free name! " : 'Unlock your username for free! '}
         </p>
         <button type="button" className="underline" onClick={toggleModal}>
           learn more
