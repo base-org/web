@@ -134,7 +134,7 @@ Select **Preview** as the deployment type. After deployment, your terminal shoul
 Your terminal will display a url like:
 `https://hydrogen-quickstart-20c3648d482c7a17d77d.o2.myshopify.dev/`
 
-And that's it! You've successfully created and deployed your Hydrogen storefront.
+You've successfully created and deployed your Hydrogen storefront.
 
 ## Accepting payments
 
@@ -142,10 +142,12 @@ Visit your new storefront and add an item to your cart. Proceed to view your car
 
 :::info[Not seeing a crypto payment option?]
 
-Remember to link "activate" your Coinbase Commerce Plugin.
+Remember to link "activate" your Coinbase Commerce plugin.
 
 :::
 
 ## Conclusion
 
 You now have a custom store front with the products from your Shopify account.
+
+In this tutorial, you learned how to to integrate Coinbase as a payment provider for your Shopify store. You've also learned how to use Hydrogen and Oxygen to create and deploy a version of your store separate from Shopify.
