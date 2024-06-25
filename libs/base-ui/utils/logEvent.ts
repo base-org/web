@@ -4,7 +4,7 @@ declare const window: Window &
       logEvent: LogEvent;
     };
   };
- 
+
 export default function logEvent(
   name: string,
   event: CCAEventData,
@@ -87,6 +87,7 @@ type CCAEventData = {
   response_helpful?: boolean;
   address?: string;
   context?: string;
+  userId?: string;
 };
 
 export { ComponentType, ActionType, AnalyticsEventImportance };
