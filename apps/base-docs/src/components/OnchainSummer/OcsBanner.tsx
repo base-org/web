@@ -12,7 +12,7 @@ export function OcsBanner() {
   const [isBannerVisible, setIsBannerVisible] = useLocalStorage('isOcsBannerVisible', true);
 
   const linkClick = useCallback(() => {
-    logEvent('OCSBanner_Clicked', {});
+    logEvent('navbar_ocsbanner', {});
   }, []);
 
   const hideBanner = useCallback(() => {

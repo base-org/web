@@ -41,15 +41,15 @@ ${JSON.stringify(item, null, 2)}`,
 }
 function NavbarLayoutTopContent({ left, right }) {
   const discordClick = useCallback(() => {
-    logEvent('DiscordButton_Clicked', {});
+    logEvent('navbar_social_discord', {});
   }, [logEvent])
 
   const twitterClick = useCallback(() => {
-    logEvent('TwitterButton_Clicked', {});
+    logEvent('navbar_social_twitter', {});
   }, [logEvent])
 
   const githubClick = useCallback(() => {
-    logEvent('GithubButton_Clicked', {});
+    logEvent('navbar_social_github', {});
   }, [logEvent])
 
 

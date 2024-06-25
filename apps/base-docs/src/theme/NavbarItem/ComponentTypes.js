@@ -26,14 +26,14 @@ export const CustomConnectButton = ({ className }) => {
 
         useEffect(() => {
           if (address) {
-            logEvent('ConnectWalletButton_WalletConnected', { address });
+            logEvent('navbar_walletconnected', { address });
             identify({ userId: address });
           }
         }, [address]);
 
         const clickConnect = useCallback(() => {
           openConnectModal?.();
-          logEvent('ConnectWalletButton_Selected', {});
+          logEvent('navbar_connectwallet', {});
         }, [openConnectModal]);
 
         return (
