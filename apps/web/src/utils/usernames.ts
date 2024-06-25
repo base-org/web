@@ -7,7 +7,7 @@ import profilePictures4 from 'apps/web/src/components/ConnectWalletButton/profil
 import profilePictures5 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/5.svg';
 import profilePictures6 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/6.svg';
 import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/7.svg';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 
 export const BASE_ETH_DOMAIN = 'base.eth';
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
@@ -49,7 +49,7 @@ export const getUserNamePicture = (username: string) => {
 
   const profilePictureIndex = getUsernamePictureIndex(username, profilePictures.length);
 
-  const selectedProfilePicture = profilePictures[profilePictureIndex] as unknown as StaticImport;
+  const selectedProfilePicture = profilePictures[profilePictureIndex] as unknown as StaticImageData;
 
   return selectedProfilePicture;
 };

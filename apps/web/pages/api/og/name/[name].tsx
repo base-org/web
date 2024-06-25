@@ -18,8 +18,9 @@ export default async function handler(request: NextRequest) {
 
   const profilePicture = getUserNamePicture(username);
 
-  // TODO FIX this
-  const domainName = 'http://localhost:3000';
+  // TODO: Check this works in live/production
+  const domainName = `${url.protocol}//${url.host}`;
+
   return new ImageResponse(
     (
       <div
