@@ -32,6 +32,7 @@
     "kysely": "^0.27.3",
     "next": "^13.2.0",
     "node-fetch": "^3.3.0",
+    "permissionless": "^0.1.31",
     "react": "^18.2.0",
     "react-blockies": "^1.4.1",
     "react-copy-to-clipboard": "^5.1.0",

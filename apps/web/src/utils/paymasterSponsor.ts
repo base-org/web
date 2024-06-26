@@ -31,7 +31,7 @@ export async function willSponsor({
 
     try {
         
-        const code = await client.getBytecode({ address: userOp.sender });
+        const code = await client.getCode({ address: userOp.sender });
      
         if (!code) {
           // no code at address, check that the initCode is deploying a Coinbase Smart Wallet

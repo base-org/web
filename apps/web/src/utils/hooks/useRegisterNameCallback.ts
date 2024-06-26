@@ -53,7 +53,7 @@ export function useRegisterNameCallback(name: string, years: number): () => void
   useEffect(() => {
     const isWalletSCW = async () => {
       try {
-        const code = await publicClient.getBytecode({address: address as Address});
+        const code = await publicClient.getCode({address: address as Address});
         if (!code) {
           setWallet(1); // Wallet about to be deployed
           return;
