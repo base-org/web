@@ -1,6 +1,7 @@
 import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { Discount } from 'apps/web/pages/names';
+import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { useRegisterNameCallback } from 'apps/web/src/utils/hooks/useRegisterNameCallback';
 import { useCallback, useState } from 'react';
@@ -38,21 +39,20 @@ export function RegistrationForm({
 
   const registerName = useRegisterNameCallback(name, years);
 
-  const buttonClasses = 'text-xl rounded-full py-3 px-8 text-illoblack bg-gray/10 border-line/20';
   const nameIsFree = !hasDiscount(Discount.NONE) && !hasDiscount(Discount.ALREADY_REDEEMED);
   return (
-    <div className="mx-auto w-full max-w-[50rem] transition-all duration-500">
-      <div className="z-10 mx-4 flex flex-col justify-between gap-4 rounded-xl border border-line/20 bg-[#F7F7F7] p-6 text-gray/60 md:flex-row md:items-center">
+    <div className="bg- mx-auto w-full max-w-[50rem] transition-all duration-500">
+      <div className="z-10 mx-4 flex flex-col justify-between gap-4 rounded-2xl bg-[#F7F7F7] p-8 text-gray/60 shadow-xl md:flex-row md:items-center">
         <div>
-          <p className="mb-2 text-sm uppercase">Claim for</p>
+          <p className="mb-2 text-sm font-bold uppercase text-line">Claim for</p>
           <div className="flex items-center justify-between">
             <button
               type="button"
               onClick={decrement}
               disabled={years === 1}
-              className="flex h-7 w-7 items-center justify-center rounded-full bg-gray/10"
+              className="flex h-7 w-7 items-center justify-center rounded-full bg-[#DEE1E7]"
             >
-              <MinusIcon width="12" height="12" className="fill-gray/80" />
+              <MinusIcon width="14" height="14" className="fill-[#32353D]" />
             </button>
             <span className="flex w-32 items-center justify-center text-3xl text-black">
               {years} year{years > 1 && 's'}
@@ -60,14 +60,14 @@ export function RegistrationForm({
             <button
               type="button"
               onClick={increment}
-              className="flex h-7 w-7 items-center justify-center rounded-full bg-gray/10"
+              className="flex h-7 w-7 items-center justify-center rounded-full bg-[#DEE1E7]"
             >
-              <PlusIcon width="12" height="12" className="fill-gray/80" />
+              <PlusIcon width="14" height="14" className="fill-[#32353D]" />
             </button>
           </div>
         </div>
         <div>
-          <p className="mb-2 text-sm uppercase">Amount</p>
+          <p className="mb-2 text-sm font-bold uppercase text-line">Amount</p>
           <div className="flex items-baseline justify-center md:justify-between">
             <p className="mx-2 whitespace-nowrap text-3xl text-black">
               {loadingDiscounts ? '...' : '0.01'} ETH
@@ -89,38 +89,56 @@ export function RegistrationForm({
 
             if (!connected) {
               return (
-                <button type="button" className={buttonClasses} onClick={openConnectModal}>
+                <Button
+                  type="button"
+                  variant={ButtonVariants.Black}
+                  size={ButtonSizes.Small}
+                  onClick={openConnectModal}
+                  rounded
+                >
                   Connect wallet
-                </button>
+                </Button>
               );
             }
 
             if (!([base.id, baseSepolia.id] as number[]).includes(chain.id)) {
               return (
-                <button onClick={switchChainToBase} type="button" className={buttonClasses}>
+                <Button
+                  onClick={switchChainToBase}
+                  type="button"
+                  variant={ButtonVariants.Black}
+                  size={ButtonSizes.Small}
+                  rounded
+                >
                   Switch network
-                </button>
+                </Button>
               );
             }
 
             return (
-              <button onClick={registerName} className={buttonClasses} type="button">
+              <Button
+                onClick={registerName}
+                type="button"
+                variant={ButtonVariants.Black}
+                size={ButtonSizes.Small}
+                rounded
+              >
                 Register name
-              </button>
+              </Button>
             );
           }}
         </ConnectButton.Custom>
       </div>
       <div className="mt-6 flex w-full justify-center">
-        <p className="mr-2 text-center text-lg uppercase text-line">
+        <p className="text mr-2 text-center font-bold uppercase text-[#5B616E]">
           {nameIsFree ? "You've qualified for a free name! " : 'Unlock your username for free! '}
         </p>
         <button
           type="button"
-          className="text-lg uppercase text-line underline"
+          className="font-bold uppercase text-line underline"
           onClick={toggleModal}
         >
-          learn more
+          Learn more
         </button>
       </div>
     </div>

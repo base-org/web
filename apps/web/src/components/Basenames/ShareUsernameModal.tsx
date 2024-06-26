@@ -1,8 +1,6 @@
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Modal from 'apps/web/src/components/Modal';
 import Image from 'next/image';
-import penguin from './penguin.png';
-import Link from 'next/link';
 import { useCallback, useState } from 'react';
 import classNames from 'classnames';
 import {
@@ -15,7 +13,6 @@ import {
   socialPlatformsEnabled,
   socialPlatformsNameForDisplay,
 } from 'apps/web/src/utils/socialPlatforms';
-import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
 
 export default function ShareUsernameModal({
@@ -27,10 +24,6 @@ export default function ShareUsernameModal({
   toggleModal: () => void;
   username: string;
 }) {
-  const [selectedSocialPlatform, setSelectedSocialPlatform] = useState<SocialPlatform | undefined>(
-    undefined,
-  );
-
   const [imageIsLoading, setImageIsLoading] = useState<boolean>(true);
 
   const coverImageWrapperClasses = classNames(
@@ -93,9 +86,10 @@ export default function ShareUsernameModal({
       <ul className="mt-4  flex w-full flex-col gap-4">
         {socialPlatformsEnabled.map((socialPlatform) => (
           <li key={socialPlatform} className="">
-            <button
+            <Button
               onClick={() => openPopup(socialPlatform)}
-              className="flex w-full items-center gap-6 rounded-2xl border border-line/20 bg-white px-6 py-4 text-xl hover:bg-blue-500/10"
+              variant={ButtonVariants.Black}
+              rounded
             >
               <Image
                 src={socialPlatformLogoForDisplay[socialPlatform]}
@@ -103,7 +97,7 @@ export default function ShareUsernameModal({
               />
               {socialPlatformCtaForDisplay[socialPlatform]} on{' '}
               {socialPlatformsNameForDisplay[socialPlatform]}
-            </button>
+            </Button>
           </li>
         ))}
       </ul>

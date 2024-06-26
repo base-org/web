@@ -86,7 +86,7 @@ export function ConnectWalletButton({
               variant={ButtonVariants.Black}
               size={ButtonSizes.Small}
               onClick={clickConnect}
-              className="rounded-full "
+              rounded
             >
               Connect
             </Button>

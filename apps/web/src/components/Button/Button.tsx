@@ -38,6 +38,7 @@ const sizeStyles = {
 type ButtonProps = {
   variant?: ButtonVariants;
   size?: ButtonSizes;
+  rounded?: boolean;
   children: ReactNode;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -46,12 +47,14 @@ export function Button({
   size = ButtonSizes.Medium,
   children,
   className,
+  rounded = false,
   ...props
 }: ButtonProps) {
   const buttonClasses = classNames(
     'font-display text-center',
     variantStyles[variant],
     sizeStyles[size],
+    { 'rounded-full': rounded },
     className,
   );
 
