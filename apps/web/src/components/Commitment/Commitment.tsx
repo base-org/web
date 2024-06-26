@@ -1,4 +1,4 @@
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { GradientCircle } from 'apps/web/src/components/GradientCircle/GradientCircle';
 import Link from 'next/link';
 
@@ -18,7 +18,7 @@ export function Commitment() {
             easy-to-use way.
           </p>
           <Link href="/about" aria-label="Read more about us">
-            <Button variant="primary" className="lg:self-start">
+            <Button variant={ButtonVariants.Primary} className="lg:self-start">
               Read More
             </Button>
           </Link>

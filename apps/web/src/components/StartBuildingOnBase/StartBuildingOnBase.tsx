@@ -1,4 +1,4 @@
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { docsUrl } from 'apps/web/src/constants';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,7 +7,7 @@ function ReadTheDocsButton() {
   return (
     <div className="w-[200px]">
       <Link href={docsUrl} target="_blank" rel="noreferrer noopener">
-        <Button variant="primary">Read the docs</Button>
+        <Button variant={ButtonVariants.Primary}>Read the docs</Button>
       </Link>
     </div>
   );

@@ -1,4 +1,5 @@
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
+import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { UserAddress } from 'apps/web/src/components/ConnectWalletButton/UserAddress';
 import { AvatarSizes, UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
@@ -7,9 +8,15 @@ import classNames from 'classnames';
 import { useCallback, useEffect } from 'react';
 import { useAccount } from 'wagmi';
 
+export enum ConnectWalletButtonVariants {
+  Default,
+  Shiny,
+}
+
 type ConnectWalletButtonProps = {
   color: 'white' | 'black';
-  className: string;
+  className?: string;
+  connectWalletButtonVariant?: ConnectWalletButtonVariants;
 };
 
 const colorVariant: Record<'white' | 'black', 'white' | 'black'> = {
@@ -17,7 +24,11 @@ const colorVariant: Record<'white' | 'black', 'white' | 'black'> = {
   black: 'black',
 };
 
-export function ConnectWalletButton({ color, className }: ConnectWalletButtonProps) {
+export function ConnectWalletButton({
+  color,
+  className,
+  connectWalletButtonVariant = ConnectWalletButtonVariants.Shiny,
+}: ConnectWalletButtonProps) {
   const { openConnectModal } = useConnectModal();
   const { address } = useAccount();
 
@@ -45,10 +56,19 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
         const connected = ready && account && chain;
 
         if (!connected) {
-          return (
+          return connectWalletButtonVariant === ConnectWalletButtonVariants.Shiny ? (
             <ShinyButton variant={colorVariant[color]} onClick={clickConnect}>
               Connect
             </ShinyButton>
+          ) : (
+            <Button
+              variant={ButtonVariants.Black}
+              size={ButtonSizes.Small}
+              onClick={clickConnect}
+              className="rounded-full "
+            >
+              Connect
+            </Button>
           );
         }
 

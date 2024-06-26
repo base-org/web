@@ -2,10 +2,8 @@ import { Transition } from '@headlessui/react';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
 import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
 import { FloatingENSPills } from 'apps/web/src/components/Basenames/FloatingENSPills';
-import { LearnMoreModal } from 'apps/web/src/components/Basenames/LearnMoreModal';
 import { RegistrationContext } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
-import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
 import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
 import {
   UsernameSearchInput,
@@ -19,10 +17,13 @@ import {
 } from 'apps/web/src/utils/hooks/useAttestations';
 import classNames from 'classnames';
 import Head from 'next/head';
-import { Fragment, useCallback, useMemo, useState } from 'react';
+import { Fragment, ReactElement, useCallback, useMemo, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
 import { base, baseSepolia } from 'viem/chains';
 import { useAccount, useReadContract } from 'wagmi';
+import { LearnMoreModal } from 'apps/web/src/components/Basenames/LearnMoreModal';
+import { Layout, NavigationType } from 'apps/web/src/components/Layout/Layout';
+import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
 // TODO: replace appropriate backgrounds w/Lottie files
 
 export enum ClaimProgression {
@@ -59,7 +60,7 @@ test addresses w/ different verifications
   0x9C02E8E28D8b706F67dcf0FC7F46A9ee1f9649FA - cb1
 */
 
-export default function Usernames() {
+export function Usernames() {
   const { chainId } = useAccount();
   const [discount, setDiscount] = useState<number>(Discount.NONE);
   const addDiscount = useCallback((d: Discount) => setDiscount((prev) => prev | d), []);
@@ -121,11 +122,11 @@ export default function Usernames() {
 
   const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
 
-  const transitionDuration = 'duration-500';
+  const transitionDuration = 'duration-700';
 
   // the 96px here accounts for the header height
   const mainClasses = classNames(
-    'relative z-10 flex min-h-[calc(100vh-96px)] w-full flex-col items-center pb-32 pt-32 px-6',
+    'relative z-10 flex min-h-screen w-full flex-col items-center pb-32 pt-32 px-6',
     'transition-all',
     transitionDuration,
     {
@@ -193,7 +194,7 @@ export default function Usernames() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="flex items-center">
+              <div className="flex items-center gap-1">
                 <svg
                   width="15"
                   height="15"
@@ -209,7 +210,7 @@ export default function Usernames() {
                     className={inputFocused ? 'fill-white' : 'fill-ocsblue'}
                   />
                 </svg>
-                <h1 className="text-xl">Basenames</h1>
+                <h1 className="text-xl font-bold">Basenames</h1>
               </div>
 
               {SEARCH_LABEL_COPY_STRINGS.map((string) => (
@@ -224,7 +225,7 @@ export default function Usernames() {
                   leaveFrom="opacity-100 translate-y-0"
                   leaveTo="opacity-0 translate-y-4"
                 >
-                  <p className="absolute right-0">{string}</p>
+                  <p className="absolute right-0 text-xl ">{string}</p>
                 </Transition>
               ))}
             </Transition>
@@ -234,11 +235,11 @@ export default function Usernames() {
               appear
               show={progress === ClaimProgression.CLAIM}
               className={classNames(
-                'absolute left-1/2 top-0 z-30 mx-auto w-full max-w-[15rem] -translate-x-1/2 -translate-y-12 transform transition-all',
+                'absolute left-1/2 z-30 mx-auto w-full max-w-[14rem] -translate-x-1/2 -translate-y-20 transition-all',
                 transitionDuration,
               )}
-              enterFrom={classNames('opacity-0 translate-y-0')}
-              enterTo={classNames('opacity-100')}
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
@@ -253,7 +254,7 @@ export default function Usernames() {
                 appear
                 show={progress === ClaimProgression.CLAIM}
                 className={classNames(
-                  'absolute left-1/2 top-0 z-20 mx-auto -translate-x-1/2 transition-all',
+                  'absolute left-1/2 top-0 z-30 mx-auto -translate-x-1/2 transition-all',
                   transitionDuration,
                 )}
                 enter="overflow-hidden"
@@ -307,7 +308,6 @@ export default function Usernames() {
               />
             </Transition>
           </div>
-
           <LearnMoreModal
             learnMoreModalOpen={learnMoreModalOpen}
             toggleModal={toggleLearnMoreModal}
@@ -322,3 +322,9 @@ export default function Usernames() {
     </>
   );
 }
+
+Usernames.getLayout = function getLayout(page: ReactElement) {
+  return <Layout navigationType={NavigationType.Username}>{page}</Layout>;
+};
+
+export default Usernames;

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { gradientBgMap, textGradientMap, Verb, verbs } from 'apps/web/src/styles/hero';
 import { motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
@@ -115,7 +115,7 @@ export function Hero() {
                   <Button className="w-full">Read the docs</Button>
                 </Link>
                 <Link className="w-full" href={bridgeUrl} rel="noreferrer noopener">
-                  <Button className="w-full" variant="secondary">
+                  <Button className="w-full" variant={ButtonVariants.Secondary}>
                     Bridge assets
                   </Button>
                 </Link>

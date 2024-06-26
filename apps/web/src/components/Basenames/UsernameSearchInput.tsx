@@ -90,7 +90,7 @@ export function UsernameSearchInput({
     'w-full outline-0 placeholder:uppercase peer ',
     // Padding & Font sizes
     {
-      'py-7 pl-6 pr-16 text-3xl': variant === UsernameSearchInputVariant.Large,
+      'py-7 pl-6 pr-16 text-2xl': variant === UsernameSearchInputVariant.Large,
       'py-2 pl-3 pr-6': variant === UsernameSearchInputVariant.Small,
     },
     // Background
@@ -177,7 +177,7 @@ export function UsernameSearchInput({
     'h-[4.25rem]': variant === UsernameSearchInputVariant.Small,
   });
 
-  const iconSize = variant === UsernameSearchInputVariant.Large ? 24 : 18;
+  const iconSize = variant === UsernameSearchInputVariant.Large ? 24 : 16;
 
   const inputId = useId();
 
@@ -262,7 +262,9 @@ export function UsernameSearchInput({
           </>
         )}
       </div>
-      <MagnifyingGlassIcon width={iconSize} height={iconSize} className={searchIconClasses} />
+      <span className={searchIconClasses}>
+        <Icon name="search" color="currentColor" height={iconSize} width={iconSize} />
+      </span>
     </fieldset>
   );
 }
