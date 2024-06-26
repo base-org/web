@@ -3,7 +3,7 @@ import { isSupportedChain } from 'apps/web/src/utils/chains';
 import { DiscountType } from 'apps/web/src/utils/proofs';
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { isAddress, isHex } from 'viem';
+import { isAddress } from 'viem';
 
 /**
  * This endpoint reports whether or not the provided access has access to the cb1 or verified account attestations
@@ -48,7 +48,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const result = await sybilResistantUsernameSigning(
       address,
-      DiscountType.CB,
+      DiscountType.CB1,
       parseInt(chain as string),
     );
     return res.status(200).json(result);
