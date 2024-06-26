@@ -92,11 +92,7 @@ const Pill = forwardRef(
     );
 
     return (
-      <div
-        ref={ref}
-        className={pillClasses}
-        style={{ top: `${y - 60}px`, left: `${x - 60}px`, transform }}
-      >
+      <div ref={ref} className={pillClasses} style={{ top: `${y}px`, left: `${x}px`, transform }}>
         <Image
           src={avatar}
           className="rounded-full"

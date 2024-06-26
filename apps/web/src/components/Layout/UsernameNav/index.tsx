@@ -13,10 +13,12 @@ export default function UsernameNav() {
         <Link href="/">
           <Image src={usernameBaseLogo} alt="Base" />
         </Link>
-        <ConnectWalletButton
-          color="black"
-          connectWalletButtonVariant={ConnectWalletButtonVariants.Default}
-        />
+        <span className="rounded bg-white p-2">
+          <ConnectWalletButton
+            color="black"
+            connectWalletButtonVariant={ConnectWalletButtonVariants.Default}
+          />
+        </span>
       </nav>
     </>
   );
