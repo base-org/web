@@ -6,6 +6,7 @@ import TextCard from '../components/TextCard';
 import FooterCategory from '../components/FooterCategory';
 
 import styles from './styles.module.css';
+import { ActionType, AnalyticsEventImportance, ComponentType } from 'base-ui/utils/logEvent';
 
 const imageCards = [
   {
@@ -14,6 +15,15 @@ const imageCards = [
     description: 'Elevate your coding skills on Base with guided development tutorials.',
     buttonText: 'Get started',
     buttonHref: '/tutorials',
+    analyticsData: {
+      name: 'tutorials',
+      event: {
+        action: ActionType.click,
+        componentType: ComponentType.button,
+        context: 'builder_essentials',
+      },
+      importance: AnalyticsEventImportance.high,
+    },
   },
   {
     src: '/img/home-intro-2.png',
@@ -22,6 +32,15 @@ const imageCards = [
       'Become an onchain developer with our comprehensive smart contract development curriculum.',
     buttonText: 'Explore',
     buttonHref: '/base-camp/docs/welcome',
+    analyticsData: {
+      name: 'camp_bootcamp',
+      event: {
+        action: ActionType.click,
+        componentType: ComponentType.button,
+        context: 'builder_essentials',
+      },
+      importance: AnalyticsEventImportance.high,
+    },
   },
   {
     src: '/img/home-intro-3.png',
@@ -30,6 +49,15 @@ const imageCards = [
       'Innovate and build on Base to qualify for grants that support impactful projects.',
     buttonText: 'Learn more',
     buttonHref: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders',
+    analyticsData: {
+      name: 'ecosystem_grants',
+      event: {
+        action: ActionType.click,
+        componentType: ComponentType.button,
+        context: 'builder_essentials',
+      },
+      importance: AnalyticsEventImportance.high,
+    },
   },
 ];
 
@@ -177,6 +205,7 @@ export default function Home() {
                 description={card.description}
                 buttonText={card.buttonText}
                 buttonHref={card.buttonHref}
+                analyticsData={card.analyticsData}
               />
             ))}
           </div>

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
+import logEvent, { AnalyticsEventImportance, CCAEventData } from 'base-ui/utils/logEvent';
 import styles from './styles.module.css';
 
 type ImageCardProps = {
@@ -9,9 +10,25 @@ type ImageCardProps = {
   description: string;
   buttonText: string;
   buttonHref: string;
+  analyticsData: {
+    name: string;
+    event: CCAEventData;
+    importance: AnalyticsEventImportance;
+  };
 };
 
-function ImageCard({ src, title, description, buttonText, buttonHref }: ImageCardProps) {
+function ImageCard({
+  src,
+  title,
+  description,
+  buttonText,
+  buttonHref,
+  analyticsData,
+}: ImageCardProps) {
+  const linkClick = useCallback(() => {
+    logEvent(analyticsData.name, analyticsData.event, analyticsData.importance);
+  }, [logEvent]);
+
   return (
     <div className={styles.imageCard}>
       <div className={styles.imageCardImageContainer}>
@@ -22,7 +39,7 @@ function ImageCard({ src, title, description, buttonText, buttonHref }: ImageCar
           <h4 className={styles.imageCardTitle}>{title}</h4>
           <p className={styles.imageCardDescription}>{description}</p>
         </div>
-        <a href={buttonHref} className={styles.imageCardButton}>
+        <a href={buttonHref} className={styles.imageCardButton} onClick={linkClick}>
           {buttonText}
         </a>
       </div>
