@@ -235,7 +235,7 @@ export function Usernames() {
               appear
               show={progress === ClaimProgression.CLAIM}
               className={classNames(
-                'absolute left-1/2 z-30 mx-auto w-full max-w-[14rem] -translate-x-1/2 -translate-y-20 transition-all',
+                'absolute left-1/2 z-40 mx-auto w-full max-w-[14rem] -translate-x-1/2 -translate-y-20 transition-all',
                 transitionDuration,
               )}
               enterFrom="opacity-0"

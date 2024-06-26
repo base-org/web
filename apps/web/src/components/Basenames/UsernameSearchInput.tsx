@@ -140,7 +140,7 @@ export function UsernameSearchInput({
     },
   );
 
-  const dropdownLabelClasses = classNames(' w-full uppercase text-line', {
+  const dropdownLabelClasses = classNames('w-full uppercase text-[#5B616E] font-bold', {
     'px-6 text-sm mb-4 mt-4': variant === UsernameSearchInputVariant.Large,
     'px-3 text-xs mb-2 mt-2': variant === UsernameSearchInputVariant.Small,
   });
@@ -256,7 +256,7 @@ export function UsernameSearchInput({
                 onClick={() => setSearchFromSuggestion(suggestion)}
               >
                 <span className="truncate">{formatBaseEthDomain(suggestion)}</span>
-                <ChevronRightIcon width={iconSize} height={iconSize} />
+                <Icon name="chevronRight" width={iconSize} height={iconSize} />
               </button>
             ))}
           </>
