@@ -218,12 +218,12 @@ export function Usernames() {
                   as={Fragment}
                   key={string}
                   show={rotatingText === string}
-                  enter={classNames('transform transition', transitionDuration)}
-                  enterFrom="opacity-0 -translate-y-4"
-                  enterTo="opacity-100 translate-y-0"
+                  enter={classNames('transform transition delay-500', transitionDuration)}
+                  enterFrom="opacity-0"
+                  enterTo="opacity-100"
                   leave={classNames('transform transition', transitionDuration)}
-                  leaveFrom="opacity-100 translate-y-0"
-                  leaveTo="opacity-0 translate-y-4"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
                 >
                   <p className="absolute right-0 text-xl ">{string}</p>
                 </Transition>
