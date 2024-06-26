@@ -32,7 +32,7 @@ import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
 const EXPIRY = (process.env.USERNAMES_SIGNATURE_EXPIRATION_SECONDS as unknown as number) ?? 10;
 const previousClaimsKVPrefix = 'username:claims:';
 
-type DiscountTypeMap = Record<number, DiscountTypes>;
+type DiscountTypeMap = Record<84532 | 8453, DiscountTypes>;
 
 const discountTypeMap: DiscountTypeMap = {
   [baseSepolia.id]: {
@@ -87,7 +87,7 @@ async function signMessageWithTrustedSigner(
 export async function sybilResistantUsernameSigning(
   address: `0x${string}`,
   discountType: DiscountType,
-  chain: number,
+  chain: 84532 | 8453,
 ): Promise<CoinbaseProofResponse> {
   const schema = discountTypeMap[chain][discountType]?.schemaId;
   let attestationsChain = chain === base.id ? base : baseSepolia;

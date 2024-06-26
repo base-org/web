@@ -2,28 +2,24 @@ import { Transition } from '@headlessui/react';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
 import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
 import { FloatingENSPills } from 'apps/web/src/components/Basenames/FloatingENSPills';
+import { LearnMoreModal } from 'apps/web/src/components/Basenames/LearnMoreModal';
 import { RegistrationContext } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
+import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
 import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
 import {
   UsernameSearchInput,
   UsernameSearchInputVariant,
 } from 'apps/web/src/components/Basenames/UsernameSearchInput';
 import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
-import { useActiveDiscountValidators } from 'apps/web/src/utils/hooks/useActiveDiscountValidators';
-import {
-  useCheckCBIDAttestations,
-  useCheckCoinbaseAttestations,
-} from 'apps/web/src/utils/hooks/useAttestations';
+import { Layout, NavigationType } from 'apps/web/src/components/Layout/Layout';
+import { useAggregatedDiscountValidators } from 'apps/web/src/utils/hooks/useAggregatedDiscountValidators';
 import classNames from 'classnames';
 import Head from 'next/head';
 import { Fragment, ReactElement, useCallback, useMemo, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
 import { base, baseSepolia } from 'viem/chains';
 import { useAccount, useReadContract } from 'wagmi';
-import { LearnMoreModal } from 'apps/web/src/components/Basenames/LearnMoreModal';
-import { Layout, NavigationType } from 'apps/web/src/components/Layout/Layout';
-import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
 // TODO: replace appropriate backgrounds w/Lottie files
 
 export enum ClaimProgression {
@@ -64,21 +60,12 @@ test addresses w/ different verifications
 
 export function Usernames() {
   const { chainId } = useAccount();
+  const network = chainId === baseSepolia.id ? chainId : base.id;
   const [discount, setDiscount] = useState<number>(Discount.NONE);
   const addDiscount = useCallback((d: Discount) => setDiscount((prev) => prev | d), []);
   const hasDiscount = useCallback((d: Discount) => (discount & d) !== 0, [discount]);
+  const { loading: loadingDiscounts, linkedAddresses } = useAggregatedDiscountValidators();
 
-  const { data: CBIDData, loading: loadingCBIDAttestations } = useCheckCBIDAttestations();
-  console.log('useCheckCBIDAttestations data: ', CBIDData);
-  const { data: coinbaseData, loading: loadingCoinbaseAttestations } =
-    useCheckCoinbaseAttestations();
-  console.log('useCheckCoinbaseAttestations data: ', coinbaseData);
-  const loadingDiscounts = loadingCoinbaseAttestations || loadingCBIDAttestations;
-
-  const network = chainId === baseSepolia.id ? chainId : base.id;
-  const linkedAddresses = coinbaseData?.linkedAddresses;
-  // const coinbaseSignedMessage = coinbaseData?.result.signedMessage;
-  // const coinbaseAttestations = coinbaseData?.result.attestations;
   const hasRegisteredArgs = useMemo(
     () => ({
       address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
@@ -94,9 +81,6 @@ export function Usernames() {
   if (hasAlreadyUsedADiscount && !hasDiscount(Discount.ALREADY_REDEEMED)) {
     addDiscount(Discount.ALREADY_REDEEMED);
   }
-
-  const { data: activeDiscountValidators } = useActiveDiscountValidators();
-  console.log('activeDiscountValidators', activeDiscountValidators);
 
   const [progress, setProgress] = useState<ClaimProgression>(ClaimProgression.SEARCH);
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);

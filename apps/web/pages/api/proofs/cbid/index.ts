@@ -5,7 +5,7 @@ import { USERNAME_CB_ID_DISCOUNT_VALIDATOR } from 'apps/web/src/addresses/userna
 import { isSupportedChain } from 'apps/web/src/utils/chains';
 
 export type CBIDProofResponse = {
-  discountValidatorAddress: string;
+  discountValidatorAddress: Address;
   address: Address;
   namespace: string;
   proofs: `0x${string}`[];

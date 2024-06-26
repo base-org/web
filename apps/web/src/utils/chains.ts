@@ -1,11 +1,8 @@
-import { base, baseSepolia, Chain } from 'viem/chains';
+import { base, baseSepolia } from 'viem/chains';
 
-export function isSupportedChain(chainId: number) {
-  if (chainId === base.id) {
-    return true;
-  }
-  if (chainId === baseSepolia.id) {
-    return true;
-  }
-  return false;
+export function isSupportedChain(
+  chainId: number,
+): chainId is typeof base.id | typeof baseSepolia.id {
+  // @ts-expect-error we know chainId might not be one of these IDs
+  return [base.id, baseSepolia.id].includes(chainId);
 }

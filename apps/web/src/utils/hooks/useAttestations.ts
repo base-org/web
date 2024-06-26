@@ -37,6 +37,7 @@ export function useCheckCBIDAttestations() {
   return { data, loading };
 }
 
+// returns info about Coinbase verified account attestations
 export function useCheckCoinbaseAttestations() {
   const { chainId } = useAccount();
   const address = '0xB18e4C959bccc8EF86D78DC297fb5efA99550d85';
@@ -54,7 +55,7 @@ export function useCheckCoinbaseAttestations() {
         const result = (await response.json()) as CoinbaseProofResponse;
         setData(result);
       } catch (e) {
-        console.error('Error checking coinbase attestations (CB1, Account verification):', e);
+        console.error('Error checking Coinbase account attestations:', e);
       } finally {
         setLoading(false);
       }
@@ -62,6 +63,38 @@ export function useCheckCoinbaseAttestations() {
 
     if (address) {
       checkCoinbaseAttestations().catch(console.error);
+    }
+  }, [address, chainId]);
+
+  return { data, loading };
+}
+
+// returns info about CB1 attestations
+export function useCheckCB1Attestations() {
+  const { chainId } = useAccount();
+  const address = '0xB18e4C959bccc8EF86D78DC297fb5efA99550d85';
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<CoinbaseProofResponse | null>(null);
+
+  useEffect(() => {
+    async function checkCB1Attestations() {
+      try {
+        setLoading(true);
+        const params = new URLSearchParams();
+        params.append('address', address);
+        params.append('chain', (chainId === baseSepolia.id ? chainId : base.id).toString());
+        const response = await fetch(`/api/proofs/cb1?${params}`);
+        const result = (await response.json()) as CoinbaseProofResponse;
+        setData(result);
+      } catch (e) {
+        console.error('Error checking CB1 attestation:', e);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (address) {
+      checkCB1Attestations().catch(console.error);
     }
   }, [address, chainId]);
 
