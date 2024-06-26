@@ -82,9 +82,6 @@ export function useRegisterNameCallback(name: string, years: number): () => void
       isWalletSCW().catch(console.error);
     }
   }, [address]);
-  
-
-
 
   const normalizedName = normalizeEnsDomainName(name);
   const registerRequest = {
