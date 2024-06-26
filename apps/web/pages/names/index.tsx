@@ -45,6 +45,7 @@ const useRotatingText = (strings: string[]) => {
   return strings[currentIndex];
 };
 
+/* eslint-disable @typescript-eslint/prefer-literal-enum-member */
 export enum Discount {
   NONE = 0,
   ALREADY_REDEEMED = 1 << 0, // 1
@@ -52,6 +53,7 @@ export enum Discount {
   COINBASE_VERIFIED_ACCOUNT = 1 << 2, // 4
   CBID = 1 << 3, // 8
 }
+/* eslint-enable @typescript-eslint/prefer-literal-enum-member */
 
 /*
 test addresses w/ different verifications
@@ -124,7 +126,6 @@ export function Usernames() {
 
   const transitionDuration = 'duration-700';
 
-  // the 96px here accounts for the header height
   const mainClasses = classNames(
     'relative z-10 flex min-h-screen w-full flex-col items-center pb-32 pt-32 px-6',
     'transition-all',

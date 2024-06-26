@@ -1,7 +1,7 @@
+import { CBIDProofResponse } from 'apps/web/pages/api/proofs/cbid';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
 import { ProofTableNamespace } from 'apps/web/src/utils/proofs';
 import { useEffect, useState } from 'react';
-import { useAccount } from 'wagmi';
 
 export function useCheckCBIDAttestations() {
   // const { address } = useAccount();
@@ -26,7 +26,7 @@ export function useCheckCBIDAttestations() {
     }
 
     if (address) {
-      checkCBIDAttestations();
+      checkCBIDAttestations().catch(console.error);
     }
   }, [address]);
 
@@ -54,7 +54,7 @@ export function useCheckCoinbaseAttestations() {
     }
 
     if (address) {
-      checkCoinbaseAttestations();
+      checkCoinbaseAttestations().catch(console.error);
     }
   }, [address]);
 
