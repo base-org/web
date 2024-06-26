@@ -3,7 +3,6 @@ import { mainnet } from 'wagmi/chains';
 import { truncateMiddle } from 'base-ui/utils/string';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-
 export function UserAddress() {
   const { address } = useAccount();
   const { data: ensName } = useEnsName({

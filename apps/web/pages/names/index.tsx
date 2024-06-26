@@ -93,7 +93,7 @@ export function Usernames() {
   const transitionDuration = 'duration-700';
 
   const mainClasses = classNames(
-    'relative z-10 flex min-h-screen w-full flex-col items-center pb-32 pt-32 px-6',
+    'relative z-10 flex min-h-screen w-full overflow-hidden flex-col items-center pt-[calc(50vh-15rem)] px-6',
     'transition-all',
     transitionDuration,
     {
@@ -177,7 +177,7 @@ export function Usernames() {
                     className={inputFocused ? 'fill-white' : 'fill-ocsblue'}
                   />
                 </svg>
-                <h1 className="text-xl font-bold">Basenames</h1>
+                <h1 className="text-md font-bold md:text-xl">Basenames</h1>
               </div>
 
               {SEARCH_LABEL_COPY_STRINGS.map((string) => (
@@ -192,7 +192,7 @@ export function Usernames() {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <p className="absolute right-0 text-xl ">{string}</p>
+                  <p className="text-md absolute right-0 md:text-xl ">{string}</p>
                 </Transition>
               ))}
             </Transition>
