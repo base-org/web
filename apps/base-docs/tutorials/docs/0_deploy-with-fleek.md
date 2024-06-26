@@ -132,7 +132,9 @@ Select `First Project` from the list
 ✅ Success! You have switched to project "First Project".
 ```
 
-Find the site you just added and select it. **Pick `Y`**, you **do** want to overwrite the old site.
+For `We've found existing sites. Would you like to link to one of them?`, pick: `Y`
+
+Find the site you just added and select it.
 
 You'll get a few more prompts:
 
