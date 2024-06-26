@@ -115,10 +115,10 @@ export async function sybilResistantUsernameSigning(
       const previousClaim = previousClaims[discountType];
       //check if there's an entry for this type, if there's no entry, throw an error. This means that there's already a signature for other discount, potential sybil
       if (!previousClaim) {
-        throw new Error(' ');
+        throw new Error('You have already claimed a username with a different discount.');
       }
       if (previousClaim.address != address) {
-        throw new Error(' ');
+        throw new Error('You have already claimed a username with a different address.');
       }
 
       // return previously signed message
