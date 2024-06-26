@@ -19,6 +19,7 @@ const TagList = [
   'oracles',
   'vrf',
   'frames',
+  'frontend',
 ];
 
 function useQuery() {
@@ -56,7 +57,7 @@ function TutorialListCell({ tutorial }) {
           <h2 className={clsx(styles.tutorialListTitle)}>{tutorial.title}</h2>
         </header>
         <div className={clsx(styles.tutorialListCellInfo)}>
-          {authorData && authorData.link && (
+          {authorData?.link && (
             <a className={clsx(styles.tutorialAuthor)} href={authorData.link} onClick={handleClick}>
               <p>{`🖊️  ${authorData.name}`}</p>
             </a>
@@ -72,8 +73,9 @@ function TutorialListCell({ tutorial }) {
           </div>
         )}
         <div className={clsx(styles.tutorialListCellInfo)}>
-          {tutorial.tags &&
-            tutorial.tags.map((tag) => <p className={clsx(styles.tutorialListTag)}>{tag}</p>)}
+          {tutorial.tags?.map((tag) => (
+            <p className={clsx(styles.tutorialListTag)}>{tag}</p>
+          ))}
         </div>
       </div>
     </Link>
