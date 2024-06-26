@@ -70,7 +70,7 @@ export function LearnMoreModal({
       <p className="mb-6 w-full text-illoblack">
         Your registration will be gasless with <a className="underline">a smart wallet</a>.
       </p>
-      <div className="text-md mb-4 w-full rounded-[13px] border border-[#CED2DB] bg-backgroundAlternate p-4 font-medium text-illoblack">
+      <div className="text-md w-full rounded-[13px] border border-[#CED2DB] bg-backgroundAlternate p-4 font-medium text-illoblack">
         Don’t have any of these? <a className="underline">Get a verification</a>
       </div>
     </Modal>

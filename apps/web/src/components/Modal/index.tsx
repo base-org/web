@@ -30,9 +30,9 @@ export default function Modal({
     <Transition appear show={isOpen}>
       <Dialog open={isOpen} onClose={onClose}>
         {/* The backdrop, rendered as a fixed sibling to the panel container */}
-        <div className="fixed inset-0 bg-gray/40" aria-hidden="true" />
+        <div className="fixed inset-0 bg-illoblack/40" aria-hidden="true" />
         {/* Container to center the panel */}
-        <div className="fixed inset-0 z-50 flex min-h-full w-screen items-center justify-center p-4 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex min-h-full w-screen items-center justify-center bg-illoblack/40 p-4 backdrop-blur-sm">
           <Dialog.Panel
             className="flex h-full w-[459px] flex-col rounded-3xl border border-[#8A919E33] bg-white sm:h-auto sm:max-w-xl"
             {...rest}
