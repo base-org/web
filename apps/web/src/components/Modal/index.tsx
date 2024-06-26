@@ -1,11 +1,14 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { XMarkIcon } from '@heroicons/react/24/outline';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
+import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
 
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  onBack?: () => void;
   title?: JSX.Element | string;
+  titleAlign?: 'left' | 'center' | 'right';
 };
 
 export default function Modal({
@@ -13,30 +16,47 @@ export default function Modal({
   isOpen,
   title,
   onClose,
+  onBack,
+  titleAlign = 'center',
   ...rest
 }: PropsWithChildren<ModalProps>) {
+  const mainClasses = classNames('font-mono text-3xl text-illoblack w-full font-bold', {
+    'text-center': titleAlign === 'center',
+    'text-left': titleAlign === 'left',
+    'text-right': titleAlign === 'right',
+  });
+
   return (
     <Transition appear show={isOpen}>
-      <Dialog open={isOpen} onClose={onClose}>
+      <Dialog open={isOpen} onClose={onClose} className="relative z-50">
         {/* The backdrop, rendered as a fixed sibling to the panel container */}
-        <div className="fixed inset-0 bg-gray/40" aria-hidden="true" />
-        {/* Container to center the panel */}
-        <div className="fixed inset-0 z-50 flex min-h-full w-screen items-center justify-center p-4 backdrop-blur-sm">
+
+        <div
+          className="fixed inset-0 transform-gpu bg-illoblack/40 backdrop-blur"
+          aria-hidden="true"
+        />
+
+        <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
           <Dialog.Panel
-            className="flex h-full w-[459px] flex-col rounded-3xl border border-[#8A919E33] bg-white sm:h-auto sm:max-w-xl"
+            className="flex h-full w-[28rem] flex-col gap-4 rounded-3xl border border-muted/20 bg-white p-10 shadow-lg sm:h-auto sm:max-w-xl"
             {...rest}
           >
-            <div className="flex p-4">
+            <div className="flex">
+              {onBack && (
+                <button type="button" className="mr-auto text-xl text-[#0A0B0D]" onClick={onBack}>
+                  <Icon name="backArrow" width={14} height={14} color="currentColor" />
+                </button>
+              )}
               {!!onClose && (
                 <button type="button" className="ml-auto text-xl text-[#0A0B0D]" onClick={onClose}>
-                  <XMarkIcon width={24} height={24} />
+                  <Icon name="close" width={14} height={14} color="currentColor" />
                 </button>
               )}
             </div>
 
-            <div className="mx-8 mb-16 flex max-w-prose flex-1 flex-col place-content-center place-items-center gap-2">
+            <div className="flex max-w-prose flex-1 flex-col place-content-center place-items-center gap-2">
               {Boolean(title) && (
-                <Dialog.Title as="h2" className="text-center font-mono text-3xl text-illoblack">
+                <Dialog.Title as="h2" className={mainClasses}>
                   {title}
                 </Dialog.Title>
               )}

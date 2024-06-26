@@ -396,7 +396,7 @@ string memory json = Base64.encode(
 
 Now is a good time to deploy to testnet and see if this first pass is working as expected. If you're using [Hardhat and Hardhat Deploy], you can use this script:
 
-```typescript
+```tsx
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { DeployFunction } from 'hardhat-deploy/types';
 
@@ -664,7 +664,7 @@ contract SVGRenderer {
 
 Update your deploy script, then deploy and test as before.
 
-```typescript
+```tsx
 const SkyRenderer = await deploy('SkyRenderer', {
   from: deployer,
 });
@@ -776,7 +776,7 @@ function render(uint _tokenId) public view returns (string memory) {
 
 And the deploy script:
 
-```typescript
+```tsx
 const LandRenderer = await deploy('LandRenderer', {
   from: deployer,
 });

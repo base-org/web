@@ -1,4 +1,4 @@
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { useSwitchChain, useChainId } from 'wagmi';
 import { useCallback } from 'react';
 import { base } from 'viem/chains';
@@ -16,14 +16,14 @@ export function MintButton() {
 
   if (!isBase) {
     return (
-      <Button variant="primary" className="w-fit" onClick={switchToBase}>
+      <Button variant={ButtonVariants.Primary} className="w-fit" onClick={switchToBase}>
         Switch to Base
       </Button>
     );
   }
 
   return (
-    <Button variant="primary" className="w-fit" onClick={mint}>
+    <Button variant={ButtonVariants.Primary} className="w-fit" onClick={mint}>
       Mint
     </Button>
   );

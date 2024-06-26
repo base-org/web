@@ -1,12 +1,12 @@
 import './global.css';
 
 import '@rainbow-me/rainbowkit/styles.css';
-import { AvatarComponent, getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
 import { base, mainnet, baseSepolia, sepolia } from 'wagmi/chains';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, ReactNode, ReactElement } from 'react';
 import { AppProps } from 'next/app';
 import { MotionConfig } from 'framer-motion';
 import {
@@ -16,12 +16,14 @@ import {
   TrackingPreference,
 } from '@coinbase/cookie-manager';
 
-import { Layout } from '../src/components/Layout/Layout';
+import { Layout, NavigationType } from '../src/components/Layout/Layout';
 import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
 
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
 import useSprig from 'base-ui/hooks/useSprig';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
+import { NextPage } from 'next';
+import localFont from 'next/dist/compiled/@next/font/dist/local';
 
 const config = getDefaultConfig({
   appName: 'Base.org',
@@ -32,7 +34,15 @@ const config = getDefaultConfig({
 const queryClient = new QueryClient();
 const sprigEnvironmentId = process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID;
 
-export default function StaticApp({ Component, pageProps }: AppProps) {
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+export default function StaticApp({ Component, pageProps }: AppPropsWithLayout) {
   // Cookie Manager Provider Configuration
   const [isMounted, setIsMounted] = useState(false);
   const trackingPreference = useRef<TrackingPreference | undefined>();
@@ -70,6 +80,10 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
 
   useSprig(sprigEnvironmentId);
 
+  const getLayout =
+    Component.getLayout ??
+    ((page) => <Layout navigationType={NavigationType.Default}>{page}</Layout>);
+
   if (!isMounted) return null;
 
   return (
@@ -87,9 +101,7 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
             <RainbowKitProvider modalSize="compact" avatar={UserAvatar}>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
+              {getLayout(<Component {...pageProps} />)}
             </RainbowKitProvider>
           </QueryClientProvider>
         </WagmiProvider>

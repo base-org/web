@@ -292,7 +292,7 @@ If you navigate to [console.privy.io](https://console.privy.io/), you'll see tha
 
 Diving into the code, first look at the `PrivyProvider` inside of `_app.jsx`:
 
-```typescript
+```tsx
 <PrivyProvider
   appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || ''}
   onSuccess={() => router.push('/dashboard')}
@@ -307,7 +307,7 @@ Additionally, it's here that you can pass an optional `config` property to enabl
 
 Add a `config` property to the `<PrivyProvider />` in `_app.jsx` with `'github'` and `'sms'` as the login options:
 
-```typescript
+```tsx
 <PrivyProvider
   appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || ''}
   onSuccess={() => router.push('/dashboard')}
@@ -339,7 +339,7 @@ A full list of the fields and methods returned from `usePrivy` are [documented h
 
 To access wallet data for currently authenticated user, use the `useWallets` hook:
 
-```typescript
+```tsx
 import { ConnectedWallet, useWallets } from '@privy-io/react-auth';
 
 const { wallets } = useWallets();
@@ -387,7 +387,7 @@ When configuring your app to create embedded wallets on login, you have 2 option
 
 Inside of `_app.tsx`, update your `PrivyProvider`:
 
-```typescript
+```tsx
 <PrivyProvider
   appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || ''}
   onSuccess={() => router.push('/dashboard')}
@@ -401,7 +401,7 @@ Inside of `_app.tsx`, update your `PrivyProvider`:
 
 Log out of your application, then log in again and see that your user has an additional `linkedAccount` which is the Privy Embedded Wallet:
 
-```typescript
+```tsx
 {
   "address": "0xD5063967BA703D485e3Ca40Ecd61882dfa5F49b2",
   "type": "wallet",
@@ -504,7 +504,7 @@ If you're used to working with wagmi, you'll find the process of sending and awa
 
 When a user clicks, the app first creates a viem `RpcTransactionRequest` for the `mint` function on the smart contract. The `smartContractAddress` is supplied by the `SmartAccountProvider`, and the `ABI` and contract `NFT_ADDRESS` are loaded from `lib/constants.ts`:
 
-```typescript
+```tsx
 {
   from: smartAccountAddress,
   to: NFT_ADDRESS,
@@ -542,7 +542,7 @@ Open `SmartAccountContext.tsx` in your project. You'll see an error for `getDefa
 
 The app is currently configured to find and use the user's embedded Privy wallet as the signer. To change this, modify the instantiation of the `SmartAccountProvider`. Instead of `find`ing the user's Privy wallet:
 
-```typescript
+```tsx
 // Old code to change
 
 // Get a list of all of the wallets (EOAs) the user has connected to your site
@@ -553,7 +553,7 @@ const embeddedWallet = wallets.find((wallet) => wallet.walletClientType === 'pri
 
 Simply grab the first wallet in the list (you'll want to do something more elegant for a production app):
 
-```typescript
+```tsx
 // Updated Code
 
 // Get a list of all of the wallets (EOAs) the user has connected to your site
@@ -566,7 +566,7 @@ const wallet = wallets[0];
 
 Then, update the call at the bottom of `useEffect` to `createSmartWallet` if there is an `embeddedWallet` to instead create it if there is a `wallet`, using that `wallet`. You'll also need to update the dependency in the dependency array.
 
-```typescript
+```tsx
 useEffect(() => {
   // Other code
 
@@ -591,7 +591,7 @@ Its instance type 'SmartAccountProvider<Transport>' is not a valid JSX element.
 
 :::
 
-```typescript
+```tsx
 <PrivyProvider
   appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || ''}
   onSuccess={() => router.push('/dashboard')}
@@ -610,7 +610,7 @@ Its instance type 'SmartAccountProvider<Transport>' is not a valid JSX element.
 
 Grab the snippet from the original demo that displays the user's addresses, and add it to `dashboard.tsx` in the new project:
 
-```typescript
+```tsx
 <p className="mt-6 font-bold uppercase text-sm text-gray-600">
   Your Smart Wallet Address
 </p>
@@ -635,7 +635,7 @@ Paste it above the `<p>` for the `User Object` window.
 
 You'll need to import `BASE_GOERLI_SCAN_URL` from `constants.ts`. The `useSmartAccount` hook returns `smartAccountProvider` and `eoa`. Import it and add it under the `usePrivy` hook. You don't need them just yet, but go ahead and decompose `smartAccountProvider` and `sendSponsoredUserOperation` as well:
 
-```typescript
+```tsx
 const router = useRouter();
 const {
   ready,
@@ -673,7 +673,7 @@ You've adjusted the foundation of the app to allow you to use the Base Goerli Pa
 
 Start by using the `mint` function in the original example. In the `DashboardPage` component, add a state variable holding an empty element:
 
-```typescript
+```tsx
 const [transactionLink, setTransactionLink] = useState(<></>);
 ```
 
@@ -681,7 +681,7 @@ Then, add a variant of the original `onMint` function that sets this variable an
 
 **Note:** make sure you change your wallet address in `args` to make sure the NFT is sent to your EOA wallet address!
 
-```typescript
+```tsx
 const onMint = async () => {
   // The mint button is disabled if either of these are undefined
   if (!smartAccountProvider || !smartAccountAddress) return;
@@ -716,7 +716,7 @@ const onMint = async () => {
 
 Finally, above where you added the addresses, add a button to call the function, and display the link to the transaction:
 
-```typescript
+```tsx
 <button
   onClick={onMint}
   className="rounded-md bg-violet-600 px-4 py-2 text-sm text-white hover:bg-violet-700 disabled:bg-violet-400"
@@ -743,7 +743,7 @@ The [Base Paymaster] on Goerli is very permissive. To call another function, all
 
 For example, to call the `claim` function in the Weighted Voting contract we've used in other tutorials, you'd simply need to import the Hardhat-style [artifact] for the contract and use it to call the function:
 
-```typescript
+```tsx
 const userOpHash = await sendSponsoredUserOperation({
   from: smartAccountAddress,
   to: weightedVoting.address as `0x${string}`,

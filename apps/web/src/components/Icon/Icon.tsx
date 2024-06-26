@@ -1,8 +1,8 @@
 type IconProps = {
   name: keyof typeof ICONS;
   color?: 'white' | 'black' | 'currentColor';
-  width?: string;
-  height?: string;
+  width?: string | number;
+  height?: string | number;
 };
 
 type SvgProps = {
@@ -173,6 +173,49 @@ const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
       />
       <path
         d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z"
+        fill={color}
+      />
+    </svg>
+  ),
+  backArrow: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.82271 15.414L8.29702 14.0626L3.65737 9.00113L15.8841 9.00113V7.00113L3.79835 7.00113L8.79835 2.00113L7.38414 0.586914L0 7.97105L6.82271 15.414Z"
+        fill={color}
+      />
+    </svg>
+  ),
+  search: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M24 21.4785L18.0768 15.5553C19.0856 14.0709 19.6765 12.2694 19.6765 10.3382C19.6765 5.1644 15.4826 0.970581 10.3088 0.970581C5.13499 0.970581 0.941162 5.1644 0.941162 10.3382C0.941162 15.5121 5.13499 19.7059 10.3088 19.7059C12.24 19.7059 14.0415 19.115 15.5403 18.1062L21.4491 24.0294L24 21.4785ZM10.3088 16.1029C7.12381 16.1029 4.5441 13.5232 4.5441 10.3382C4.5441 7.15323 7.12381 4.57352 10.3088 4.57352C13.4938 4.57352 16.0735 7.15323 16.0735 10.3382C16.0735 13.5232 13.4938 16.1029 10.3088 16.1029Z"
+        fill={color}
+      />
+    </svg>
+  ),
+
+  chevronRight: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.60986 3.05001L9.55986 8.00001L4.60986 12.95L6.02986 14.36L12.3899 8.00001L6.02986 1.64001L4.60986 3.05001Z"
         fill={color}
       />
     </svg>

@@ -213,6 +213,32 @@
         "duration": "8 min read",
         "checksum": "527200e33d612b0c76e5eaacddfc23633b57eaa4577f389d4429b8f862c45462"
     },
+    "thirdweb-unreal-nft-items": {
+        "title": "Thirdweb and Unreal - NFT Items",
+        "slug": "/thirdweb-unreal-nft-items",
+        "description": "Learn how to use NFTs as in-game items using Thirdweb and Unreal.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "thirdweb",
+            "Unreal",
+            "c++",
+            "blueprints",
+            "onchain games"
+        ],
+        "tags": [
+            "nft"
+        ],
+        "difficulty": "hard",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Jun 21, 2024",
+        "duration": "40 min read",
+        "checksum": "cfd81fd73a2952f32fd63557915cc864aee013dca9beb255b47cde01b205b32e"
+    },
     "account-abstraction-with-biconomy": {
         "title": "Account Abstraction on Base using Biconomy",
         "slug": "/account-abstraction-with-biconomy",
@@ -393,7 +419,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jun 17, 2024",
+        "last_updated": "Jun 25, 2024",
         "duration": "14 min read",
         "checksum": "0b1498d415cda6e83031231cd05d42edacd2faa82d68471b2ed09670481a3259"
     },
@@ -909,5 +935,35 @@
         "last_updated": "Apr 5, 2024",
         "duration": "9 min read",
         "checksum": "96225f883c79832d18459b3e47fd3a0bfd43c7ad6d1a1b1704bf902d33910025"
+    },
+    "shopify-storefront-commerce": {
+        "title": "Deploy a Shopify Storefront with Coinbase Commerce",
+        "slug": "/shopify-storefront-commerce",
+        "description": "Learn how to launch a Shopify storefront that uses Coinbase Commerce as a crypto payment gateway.",
+        "author": "hughescoin",
+        "keywords": [
+            "Shopify",
+            "Coinbase Commerce",
+            "crypto payments",
+            "ecommerce",
+            "Hydrogen",
+            "Oxygen",
+            "USDC",
+            "ocs",
+            "onchain"
+        ],
+        "tags": [
+            "ecommerce",
+            "crypto",
+            "shopify",
+            "onchain summer",
+            "ocs"
+        ],
+        "difficulty": "easy",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Jun 13, 2024",
+        "duration": "3 min read",
+        "checksum": "810af1759f437cb4c77334a34513378fd1554e0bb8c13b408129df54050cb836"
     }
 }

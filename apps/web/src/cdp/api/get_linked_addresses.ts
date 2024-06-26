@@ -1,9 +1,9 @@
 import { cdpGet } from 'apps/web/src/cdp/utils';
-import { isAddress } from 'viem';
+import { Address, isAddress } from 'viem';
 
 export type LinkedAddresses = {
   idemKey: string;
-  linkedAddresses: string[];
+  linkedAddresses: Address[];
 };
 
 type ErrorResponse = {

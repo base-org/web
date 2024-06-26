@@ -1,4 +1,4 @@
-import { Button } from '../Button/Button';
+import { Button, ButtonVariants } from '../Button/Button';
 import Link from 'next/link';
 
 export function Dates() {
@@ -23,7 +23,7 @@ export function Dates() {
               target="_blank"
               rel="noreferrer noopener"
             >
-              <Button variant="secondary" className="w-full">
+              <Button variant={ButtonVariants.Primary} className="w-full">
                 Apply now
               </Button>
             </Link>

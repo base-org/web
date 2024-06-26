@@ -1,4 +1,3 @@
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Input from 'apps/web/src/components/Input';
@@ -90,7 +89,7 @@ export function UsernameSearchInput({
     'w-full outline-0 placeholder:uppercase peer ',
     // Padding & Font sizes
     {
-      'py-7 pl-6 pr-16 text-3xl': variant === UsernameSearchInputVariant.Large,
+      'py-7 pl-6 pr-16 text-2xl': variant === UsernameSearchInputVariant.Large,
       'py-2 pl-3 pr-6': variant === UsernameSearchInputVariant.Small,
     },
     // Background
@@ -140,7 +139,7 @@ export function UsernameSearchInput({
     },
   );
 
-  const dropdownLabelClasses = classNames(' w-full uppercase text-line', {
+  const dropdownLabelClasses = classNames('w-full uppercase text-[#5B616E] font-bold', {
     'px-6 text-sm mb-4 mt-4': variant === UsernameSearchInputVariant.Large,
     'px-3 text-xs mb-2 mt-2': variant === UsernameSearchInputVariant.Small,
   });
@@ -177,7 +176,7 @@ export function UsernameSearchInput({
     'h-[4.25rem]': variant === UsernameSearchInputVariant.Small,
   });
 
-  const iconSize = variant === UsernameSearchInputVariant.Large ? 24 : 18;
+  const iconSize = variant === UsernameSearchInputVariant.Large ? 24 : 16;
 
   const inputId = useId();
 
@@ -197,7 +196,7 @@ export function UsernameSearchInput({
     }
   }, [focused, validSearch]);
 
-  // TODO: Smarter suggestions
+  // TODO: Smarter suggestions (openai api?)
   // Right now david.base.eth is taken, it'll suggest david1.base.eth but
   // ultimately that might also be taken.
   const suggestions: string[] = useMemo(() => {
@@ -256,13 +255,15 @@ export function UsernameSearchInput({
                 onClick={() => setSearchFromSuggestion(suggestion)}
               >
                 <span className="truncate">{formatBaseEthDomain(suggestion)}</span>
-                <ChevronRightIcon width={iconSize} height={iconSize} />
+                <Icon name="chevronRight" width={iconSize} height={iconSize} />
               </button>
             ))}
           </>
         )}
       </div>
-      <MagnifyingGlassIcon width={iconSize} height={iconSize} className={searchIconClasses} />
+      <span className={searchIconClasses}>
+        <Icon name="search" color="currentColor" height={iconSize} width={iconSize} />
+      </span>
     </fieldset>
   );
 }

@@ -14,11 +14,15 @@ module.exports = {
     colors: {
       line: '#5B616E',
       gray: '#1E2025',
+      // gray: {
+      //   15: 'rgba(206, 210, 219, 1)',
+      // },
       darkgray: '#0F1012',
       white: '#FFFFFF',
       muted: '#8A919E',
       yellow: '#FFD200',
       transparent: 'transparent',
+      backgroundAlternate: 'rgba(238, 240, 243, 1)',
       translucent: {
         100: 'rgba(255,255,255,0.1)',
         200: 'rgba(255,255,255,0.2)',

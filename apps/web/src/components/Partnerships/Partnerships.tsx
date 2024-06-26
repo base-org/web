@@ -1,6 +1,5 @@
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Image from 'next/image';
-
 
 type LearnMoreButtonProps = {
   ariaLabel: string;
@@ -15,7 +14,7 @@ function LearnMoreButton({ ariaLabel }: LearnMoreButtonProps) {
         href="https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I"
         aria-label={ariaLabel}
       >
-        <Button variant="secondary">Learn More</Button>
+        <Button variant={ButtonVariants.Secondary}>Learn More</Button>
       </a>
     </div>
   );

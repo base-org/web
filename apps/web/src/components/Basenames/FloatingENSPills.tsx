@@ -82,7 +82,7 @@ const Pill = forwardRef(
       'absolute flex gap-3 items-center justify-center rounded-full px-4 py-3 border opacity-60',
       'transition-all duration-500',
       // Default
-      'border-[#BFC4CF] background-[#EEF0F3] text-black',
+      'border-[#d9dce2] background-[#f5f6f8] text-[#666]',
 
       {
         'blur-sm': isBlurred,
@@ -92,11 +92,7 @@ const Pill = forwardRef(
     );
 
     return (
-      <div
-        ref={ref}
-        className={pillClasses}
-        style={{ top: `${y - 60}px`, left: `${x - 60}px`, transform }}
-      >
+      <div ref={ref} className={pillClasses} style={{ top: `${y}px`, left: `${x}px`, transform }}>
         <Image
           src={avatar}
           className="rounded-full"

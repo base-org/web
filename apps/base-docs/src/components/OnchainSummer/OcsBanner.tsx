@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import { useCallback } from 'react';
 import Icon from '../Icon';
+import logEvent, {ActionType, AnalyticsEventImportance, ComponentType} from "base-ui/utils/logEvent";
 
 import styles from './styles.module.css';
 
@@ -9,6 +10,17 @@ const href = 'https://www.base.org/onchainsummer?utm_source=DocsSite&utm_campaig
 
 export function OcsBanner() {
   const [isBannerVisible, setIsBannerVisible] = useLocalStorage('isOcsBannerVisible', true);
+
+  const linkClick = useCallback(() => {
+    logEvent(
+      'ocsbanner',
+      {
+        action: ActionType.click,
+        componentType: ComponentType.banner,
+        context: 'navbar'
+      },
+      AnalyticsEventImportance.low
+    )}, [logEvent, ActionType, ComponentType, AnalyticsEventImportance]);
 
   const hideBanner = useCallback(() => {
     setIsBannerVisible(false);
@@ -26,6 +38,7 @@ export function OcsBanner() {
             target="_blank"
             rel="noreferrer"
             aria-label="Onchain Summer Buildathon Banner"
+            onClick={linkClick}
         >
             <span className={styles.bannerText}>Join the Onchain Summer Buildathon!</span>
         </a>
@@ -35,6 +48,7 @@ export function OcsBanner() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Onchain Summer Buildathon Banner"
+                onClick={linkClick}
             >
                 <span className={styles.bannerSpacer} />
             </a>
