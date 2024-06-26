@@ -3,6 +3,16 @@ import Modal from 'apps/web/src/components/Modal';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import Image from 'next/image';
 
+function InfoIcon() {
+  return (
+    <InformationCircleIcon
+      width={12}
+      height={12}
+      className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
+    />
+  );
+}
+
 export function LearnMoreModal({
   learnMoreModalOpen,
   toggleModal,
@@ -11,10 +21,10 @@ export function LearnMoreModal({
   toggleModal: () => void;
 }) {
   return (
-    <Modal isOpen={learnMoreModalOpen} onClose={toggleModal} title="Qualify for a free name">
+    <Modal isOpen={learnMoreModalOpen} onClose={toggleModal} title="">
+      <span className="mb-4 w-full text-2xl font-bold">Register for free</span>
       <p className="mb-6 text-illoblack">
-        You will receive your name for free if you connect to a wallet that has{' '}
-        <strong>one of the following</strong>
+        You’ll receive a name for free (5+ characters only) if your wallet has any of the following:
       </p>
       <ul className="mb-5 flex flex-col gap-3 self-start">
         <li className="flex flex-row items-center justify-start">
@@ -25,13 +35,9 @@ export function LearnMoreModal({
             height={30}
             className="mr-3"
           />
-          A Coinbase account verification{' '}
+          Coinbase verification{' '}
           <Tooltip content="Verifies you have a valid trading account on Coinbase">
-            <InformationCircleIcon
-              width={12}
-              height={12}
-              className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
-            />
+            <InfoIcon />
           </Tooltip>
         </li>
         <li className="flex flex-row items-center justify-start">
@@ -42,13 +48,9 @@ export function LearnMoreModal({
             height={30}
             className="mr-3"
           />
-          A Coinbase One subscription verification{' '}
+          Coinbase One verification{' '}
           <Tooltip content="Verifies you have an active Coinbase One subscription">
-            <InformationCircleIcon
-              width={12}
-              height={12}
-              className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
-            />
+            <InfoIcon />
           </Tooltip>
         </li>
         <li className="flex flex-row items-center justify-start">
@@ -59,16 +61,18 @@ export function LearnMoreModal({
             height={30}
             className="mr-3"
           />
-          A CB.ID username{' '}
+          A cb.id username{' '}
           <Tooltip content="cb.id claimed prior to cutoff date">
-            <InformationCircleIcon
-              width={12}
-              height={12}
-              className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
-            />
+            <InfoIcon />
           </Tooltip>
         </li>
       </ul>
+      <p className="mb-6 w-full text-illoblack">
+        Your registration will be gasless with <a className="underline">a smart wallet</a>.
+      </p>
+      <div className="text-md mb-4 w-full rounded-[13px] border border-[#CED2DB] bg-backgroundAlternate p-4 font-medium text-illoblack">
+        Don’t have any of these? <a className="underline">Get a verification</a>
+      </div>
     </Modal>
   );
 }

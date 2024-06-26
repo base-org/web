@@ -112,10 +112,14 @@ export function RegistrationForm({
         </ConnectButton.Custom>
       </div>
       <div className="mt-6 flex w-full justify-center">
-        <p className="mr-2 text-center">
+        <p className="mr-2 text-center text-lg uppercase text-line">
           {nameIsFree ? "You've qualified for a free name! " : 'Unlock your username for free! '}
         </p>
-        <button type="button" className="underline" onClick={toggleModal}>
+        <button
+          type="button"
+          className="text-lg uppercase text-line underline"
+          onClick={toggleModal}
+        >
           learn more
         </button>
       </div>
