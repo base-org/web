@@ -44,5 +44,9 @@ export function useAggregatedDiscountValidators() {
 
   console.log('jf Mapped Discounts to Attestation Data:', mapDiscountsToAttestationData);
 
-  return { data: mapDiscountsToAttestationData, loading: loadingDiscounts };
+  return {
+    data: mapDiscountsToAttestationData,
+    loading: loadingDiscounts,
+    hasUsedADiscount: false,
+  };
 }
