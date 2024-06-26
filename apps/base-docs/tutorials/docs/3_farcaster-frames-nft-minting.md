@@ -140,7 +140,7 @@ If your NFTs are unique, you'll want to get the picture of the actual NFT once t
 
 Add a route to get the image. Right now, this can just return the existing image:
 
-```typescript
+```tsx
 import { NextResponse } from 'next/server';
 
 export async function GET() {
@@ -159,7 +159,7 @@ export async function GET() {
 
 Update both `route.ts` and `page.tsx` to use this route for the image:
 
-```typescript
+```tsx
 // page.tsx
 const imageUrl = 'https://land-sea-and-sky.vercel.app/api/images/nft';
 
@@ -187,7 +187,7 @@ export const metadata: Metadata = {
 };
 ```
 
-```typescript
+```tsx
 // route.ts
 return new NextResponse(
   getFrameHtmlResponse({
@@ -210,7 +210,7 @@ Import your deployment artifact, if you're using Hardhat. If you're using Foundr
 
 Add your wallet key, and a provider url to your ``.env.local`, then import them as well.
 
-```typescript
+```tsx
 import LandSeaSkyNFT from '../constants/LandSeaSkyNFT.json';
 
 require('dotenv').config();
@@ -223,7 +223,7 @@ Install [viem] with `yarn add viem`.
 
 Import:
 
-```typescript
+```tsx
 import { privateKeyToAccount } from 'viem/accounts';
 import { baseSepolia } from 'viem/chains';
 import { createWalletClient, http } from 'viem';
@@ -231,7 +231,7 @@ import { createWalletClient, http } from 'viem';
 
 Create a ` walletClient`` from the account, created from the private key, and a  `publicClient`` to read from the blockchain.
 
-```typescript
+```tsx
 const nftOwnerAccount = privateKeyToAccount(WALLET_PRIVATE_KEY as `0x${string}`);
 const nftOwnerClient = createWalletClient({
   account: nftOwnerAccount,
@@ -247,7 +247,7 @@ const publicClient = createPublicClient({
 
 Use the address of the Farcaster user, conveniently provided by the template and OnchainKit, to check whether or not the user has minted the NFT:
 
-```typescript
+```tsx
 let minted = false;
 
 try {
@@ -268,7 +268,7 @@ The double !! will force the response into a boolean.
 
 If the address has already minted an NFT, update the button to share a message thanking them, otherwise, try to mint and airdrop an NFT:
 
-```typescript
+```tsx
 if (minted) {
   return new NextResponse(
     getFrameHtmlResponse({
@@ -322,7 +322,7 @@ Open `route.ts` for the image endpoint.
 
 Update it to grab query parameters from your endpoint, and show the grayscale image if either is missing:
 
-```typescript
+```tsx
 const url = new URL(req.url);
   const queryParams = url.searchParams;
 
@@ -353,7 +353,7 @@ There isn't an sdk to install.
 
 Add a folder inside `app` called `types` and a file called `index.ts` inside that. Add the types for etherscan api responses:
 
-```typescript
+```tsx
 // @dev values taken from sample response
 export type EtherscanEventResponse = {
   blockNumber: string;
@@ -386,13 +386,13 @@ export type EtherscanResponse = {
 
 Import these into the image route:
 
-```typescript
+```tsx
 import { EtherscanResponse } from '../../../types';
 ```
 
 Use the etherscan API to get a list of ERC721 Transfer Events for the address for the contract, filter that list to remove any NFT ids that were given away.
 
-```typescript
+```tsx
 if (!minted || !address) {
   // Send the grayscale image
 } else {
@@ -422,7 +422,7 @@ Add another image, to handle users that have minted your NFT, but don't anymore.
 
 ![Sad Whale](../../assets/images/frames/gave-me-away.png)
 
-```typescript
+```tsx
 if (tokenIdsTo.length === 0) {
   const img = await fetch('https://land-sea-and-sky.vercel.app/gave-me-away.png').then((res) =>
     res.blob(),
@@ -445,7 +445,7 @@ Otherwise, create a viem public client and call tokenURI with the id of the firs
 
 You did this already in api/frame. Use the same pattern, but instead call `tokenURI` with the token id:
 
-```typescript
+```tsx
 // Get the actual NFT image from the contract
 const publicClient = createPublicClient({
   chain: baseSepolia,
@@ -469,7 +469,7 @@ console.log({ tokenMetadata });
 
 The tokenURI for the sample contract returns the actual json metadata, json encoded, with the actual svg inside, also base64 encoded. You'll need to decode it, then return it.
 
-```typescript
+```tsx
 // Decode the base64 encoded JSON
 const tokenMetadataJson = JSON.parse(atob(tokenMetadata.split(',')[1]));
 
@@ -493,7 +493,7 @@ This works!
 
 But Farcaster frames expect an image with a 1:91 to 1 ratio. We need to adjust the svg, and clip the extra content, since the svg has pieces that are intended to be out of frame:
 
-```typescript
+```tsx
 function frameSvgStringToBlob(originalSvgString: string): Blob {
   // Define the dimensions based on the 1.91:1 aspect ratio
   const originalSize = 1024;
@@ -525,7 +525,7 @@ function frameSvgStringToBlob(originalSvgString: string): Blob {
 
 Call your new function, then return it:
 
-```typescript
+```tsx
 const img = new Blob([frameSvgStringToBlob(svg)], { type: 'image/svg+xml' });
 // Return the blob
 return new NextResponse(img, {

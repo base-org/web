@@ -30,7 +30,7 @@ Once the excitement of your accomplishment of finally reading from your own cont
 
 The easiest is to use `useBlockNumber` with the `watch` feature to automatically keep track of the block number, then use the `queryClient` to update when that changes. **Make sure** you decompose the `queryKey` from the return of `useReadContract`.
 
-```typescript
+```tsx
 import { useEffect, useState } from 'react';
 import { useReadContract, useBlockNumber } from 'wagmi';
 import { useQueryClient } from '@tanstack/react-query';
@@ -82,7 +82,7 @@ Luckily, you have options to control these calls a little better.
 
 Once quick improvement is to simply stop watching the blockchain if the website doesn't have focus. To see this in action, add a state variable to count how many times the function has settled, and one for if the page is focused. You'll also need to set up event listeners to set the state of the latter when the page is focused or blurred.
 
-```typescript
+```tsx
 const [timesCalled, setTimesCalled] = useState(0);
 const [pageIsFocused, setPageIsFocused] = useState(true);
 
@@ -102,13 +102,13 @@ useEffect(() => {
 
 Then, update the `watch` for `useBlockNumber` so that it only does so if `pageIsFocused`.
 
-```typescript
+```tsx
 const { data: blockNumber } = useBlockNumber({ watch: pageIsFocused });
 ```
 
 Add a line to the `useEffect` for `blockNumber` increment your counter as well.
 
-```typescript
+```tsx
 useEffect(() => {
   setTimesCalled((prev) => prev + 1);
   queryClient.invalidateQueries({ queryKey: issuesQueryKey });
@@ -117,7 +117,7 @@ useEffect(() => {
 
 Finally, surface your counter in the component.
 
-```typescript
+```tsx
 return (
   <div>
     <h2>Number of times called</h2>
@@ -139,7 +139,7 @@ A more robust DAO is going to have a voting period of at least a day or two, so 
 
 Adjust your [`pollingInterval`] by setting it in `getDefaultConfig` in `_app.tsx`:
 
-```typescript
+```tsx
 const config = getDefaultConfig({
   appName: 'RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
@@ -157,7 +157,7 @@ You can also set `pollingInterval` if you're using `createConfig` instead of the
 
 You can use a similar system to call your update function on demand. First, add a button, a handler for that button, and a state variable for it to set:
 
-```typescript
+```tsx
 const [triggerRead, setTriggerRead] = useState(false);
 
 const handleTriggerRead = () => {
@@ -165,7 +165,7 @@ const handleTriggerRead = () => {
 };
 ```
 
-```typescript
+```tsx
 return (
   <div>
     <button onClick={handleTriggerRead}>Read Now</button>
@@ -180,7 +180,7 @@ return (
 
 Finally, set `watch` to equal `triggerRead`, instead of `pageIsFocused`, and reset `triggerRead` in the `useEffect`.
 
-```typescript
+```tsx
 const { data: blockNumber } = useBlockNumber({ watch: triggerRead });
 
 // Other code...
@@ -201,7 +201,7 @@ You can use the "is" return values to set UI elements depending on the status of
 
 Try to modify your button to provide feedback to the user that the function has been called.
 
-```typescript
+```tsx
 // Bad code example, do not use
 <button disabled={issuesIsLoading} onClick={handleTriggerRead}>
   {issuesIsLoading ? 'Loading' : 'Read Now'}
@@ -212,7 +212,7 @@ The above code won't break anything, but nothing will appear to happen. This hap
 
 Instead, try decomposing `isFetching` in your `useReadContract`. This property is true while data is being fetched, even if data has already been loaded once.
 
-```typescript
+```tsx
 // Imperfect code example, do not use
 <button disabled={issuesIsFetching} onClick={handleTriggerRead}>
   {issuesIsFetching ? 'Loading' : 'Read Now'}
@@ -227,7 +227,7 @@ You'll probably see the button flicker very quickly since the call doesn't take 
 
 Arguments are passed into a `useReadContract` hook by adding an array of arguments, in order, to the `args` property. Common practice is to use React state variables set by UI elements to enable the arguments to be set and modified. For example, you might create a drop-down to set `issueNumber`, then fetch that issue with:
 
-```typescript
+```tsx
 // Incomplete code stub
 const [issueNumber, setIssueNumber] = useState(0);
 

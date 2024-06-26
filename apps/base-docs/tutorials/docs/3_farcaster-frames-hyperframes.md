@@ -58,7 +58,7 @@ Open `page.tsx`. Modify the `getFrameMetadata` for the first frame to match the 
 
 ![First Frame](../../assets/images/frames/first-frame.png)
 
-```typescript
+```tsx
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
@@ -92,7 +92,7 @@ Per the [Frames] specification, `state` is not an allowed property on the first 
 
 Configure the rest of the metadata as you see fit. Remember, this won't show up in your frame, but it will appear if someone links your site to another platform that uses the standard Open Graph metadata.
 
-```typescript
+```tsx
 export const metadata: Metadata = {
   title: 'HyperFrames!',
   description: 'Time is a flat circle.',
@@ -118,7 +118,7 @@ The route you'll construct is similar to the example in [`app/api/route.ts`] of 
 
 Stub out the route, but remove the conditionals and the existing response:
 
-```typescript
+```tsx
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -152,7 +152,7 @@ To identify which frame sent the request to the endpoint, you can extract the `s
 
 After the first frame, if the `state` property is present, it will appear in the message as `state`, but it will need to be decoded.
 
-```typescript
+```tsx
 let state = { frame: 'start' };
 
 try {
@@ -167,14 +167,14 @@ try {
 
 Add a file called `hyperframes.ts` to the `app` folder. Import:
 
-```typescript
+```tsx
 import { getFrameHtmlResponse } from '@coinbase/onchainkit';
 import { NEXT_PUBLIC_URL } from './config';
 ```
 
 Next, add an interface for the `HyperFrame`:
 
-```typescript
+```tsx
 export type HyperFrame = {
   frame: string;
   1: string | ((text: string) => string) | (() => string);
@@ -196,7 +196,7 @@ If you need to, update the type here to handle more complex cases.
 
 Next, add a `Record` to store your collection of hyperframes, and a function to add frames to the `Record`:
 
-```typescript
+```tsx
 const frames: Record<string, HyperFrame> = {};
 
 export function addHyperFrame(label: string, frame: HyperFrame) {
@@ -206,7 +206,7 @@ export function addHyperFrame(label: string, frame: HyperFrame) {
 
 Finally, add a function to retrieve and return a hyperframe by its `label` and handle the case of an error.
 
-```typescript
+```tsx
 export function getHyperFrame(frame: string, text: string, button: number) {
   const currentFrame = frames[frame];
   const nextFrameIdOrFunction = currentFrame[button as keyof HyperFrame];
@@ -230,7 +230,7 @@ export function getHyperFrame(frame: string, text: string, button: number) {
 
 You can put the hyperframes wherever you want and import them into your route. For the sake of simplicity, this demo will simply include them at the top of the route file. Import
 
-```typescript
+```tsx
 import { addHyperFrame, getHyperFrame } from '../../hyperframes';
 ```
 
@@ -238,7 +238,7 @@ To store the hyperframes, add them to the `Record` type with `addHyperFrame`. To
 
 Add the name of each frame as that frame's `state` as well.
 
-```typescript
+```tsx
 addHyperFrame('start', {
   frame: getFrameHtmlResponse({
     buttons: [
@@ -302,7 +302,7 @@ The second, also has three buttons, mapped to frames as well. Only `start` is im
 
 Return to `route.ts`. To avoid TypeScript errors, you'll need to implement at least a minimum of error handling for the event that the `frame` query parameter or `button` are not present:
 
-```typescript
+```tsx
 if (!frame) {
   return new NextResponse('Frame not found', { status: 404 });
 }
@@ -315,7 +315,7 @@ if (!message?.button) {
 
 Then, simply import and call `getHyperFrame` as the `NextResponse`:
 
-```typescript
+```tsx
 return new NextResponse(getHyperFrame(frame as string, text || '', message?.button));
 ```
 
@@ -325,7 +325,7 @@ Deploy, test with the [Frame Validator], and debug!
 
 It's not very interesting for everyone to be able to explore without restriction, so add a lock with a password! To do so, add hyperframe that contains a function to see if the `text` contains the correct password.
 
-```typescript
+```tsx
 addHyperFrame('shack', {
   frame: getFrameHtmlResponse({
     buttons: [
@@ -358,7 +358,7 @@ addHyperFrame('shack', {
 
 For the event that the user enters the wrong password, simply add a nearly identical frame asking them to try again. If they enter the correct password, take them to a new room via a different hyperframe:
 
-```typescript
+```tsx
 addHyperFrame('shack-bad-password', {
   frame: getFrameHtmlResponse({
     buttons: [
