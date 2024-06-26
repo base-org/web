@@ -58,6 +58,7 @@ export async function sybilResistantUsernameSigning(
   const schema = discountTypeMap[chain][discountType]?.schemaId;
   const discountValidatorAddress = discountTypeMap[chain][discountType]?.discountValidatorAddress;
 
+  console.log(chain, schema);
   const attestations = await getAttestations(address, { id: chain } as any, {
     schemas: [schema!],
   });
@@ -109,7 +110,7 @@ export async function sybilResistantUsernameSigning(
     };
   } catch (error) {
     console.error(error);
-    throw new Error(' ');
+    throw error;
   }
 }
 
