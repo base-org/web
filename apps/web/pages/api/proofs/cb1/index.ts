@@ -20,7 +20,6 @@ import { isAddress } from 'viem';
  * }
  * @param res
  * {
- *  linkedAddresses: addresses associated with the one provided (will always include the provided address)
  *  signedMessage: this is to be passed into the contract to claim a username
  *  attestations: will show the attestations that the user has  for verified account and verified cb1 account
  * }

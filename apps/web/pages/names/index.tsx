@@ -1,6 +1,4 @@
 import { Transition } from '@headlessui/react';
-import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
-import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
 import { FloatingENSPills } from 'apps/web/src/components/Basenames/FloatingENSPills';
 import { LearnMoreModal } from 'apps/web/src/components/Basenames/LearnMoreModal';
 import { RegistrationContext } from 'apps/web/src/components/Basenames/RegistrationContext';
@@ -18,8 +16,6 @@ import classNames from 'classnames';
 import Head from 'next/head';
 import { Fragment, ReactElement, useCallback, useMemo, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
-import { base, baseSepolia } from 'viem/chains';
-import { useAccount, useReadContract } from 'wagmi';
 // TODO: replace appropriate backgrounds w/Lottie files
 
 export enum ClaimProgression {
@@ -59,26 +55,12 @@ test addresses w/ different verifications
 */
 
 export function Usernames() {
-  const { chainId } = useAccount();
-  const network = chainId === baseSepolia.id ? chainId : base.id;
   const [discount, setDiscount] = useState<number>(Discount.NONE);
   const addDiscount = useCallback((d: Discount) => setDiscount((prev) => prev | d), []);
   const hasDiscount = useCallback((d: Discount) => (discount & d) !== 0, [discount]);
-  const { loading: loadingDiscounts, linkedAddresses } = useAggregatedDiscountValidators();
+  const { loading: loadingDiscounts, hasUsedADiscount } = useAggregatedDiscountValidators();
 
-  const hasRegisteredArgs = useMemo(
-    () => ({
-      address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
-      abi: RegistrarControllerABI,
-      functionName: 'hasRegisteredWithDiscount',
-      args: linkedAddresses ? [linkedAddresses] : [],
-      chainId: network,
-    }),
-    [network, linkedAddresses],
-  );
-  const { data: hasAlreadyUsedADiscount } = useReadContract(hasRegisteredArgs);
-  console.log('hasAlreadyUsedADiscount', hasAlreadyUsedADiscount);
-  if (hasAlreadyUsedADiscount && !hasDiscount(Discount.ALREADY_REDEEMED)) {
+  if (hasUsedADiscount && !hasDiscount(Discount.ALREADY_REDEEMED)) {
     addDiscount(Discount.ALREADY_REDEEMED);
   }
 

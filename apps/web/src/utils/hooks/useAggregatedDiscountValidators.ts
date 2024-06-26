@@ -44,6 +44,5 @@ export function useAggregatedDiscountValidators() {
 
   console.log('jf Mapped Discounts to Attestation Data:', mapDiscountsToAttestationData);
 
-  const linkedAddresses = coinbaseData?.linkedAddresses;
-  return { data: mapDiscountsToAttestationData, loading: loadingDiscounts, linkedAddresses };
+  return { data: mapDiscountsToAttestationData, loading: loadingDiscounts };
 }
