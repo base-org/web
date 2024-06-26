@@ -66,23 +66,59 @@ const textCards = [
     title: 'Deploying a smart contract',
     description: 'Learn how to deploy a smart contract to Base.',
     href: '/tutorials/deploy-with-foundry',
+    analyticsData: {
+      name: 'deploy_a_smart_contract',
+      event: {
+        action: ActionType.click,
+        componentType: ComponentType.link,
+        context: 'expert_how_to',
+      },
+      importance: AnalyticsEventImportance.high,
+    },
   },
   {
     title: 'Running a Base node',
     description: 'Learn how to set up and run your own local Base node.',
     href: '/tutorials/run-a-base-node',
+    analyticsData: {
+      name: 'run_a_node',
+      event: {
+        action: ActionType.click,
+        componentType: ComponentType.link,
+        context: 'expert_how_to',
+      },
+      importance: AnalyticsEventImportance.high,
+    },
   },
   {
     title: 'Build an onchain app',
     description:
       'Learn how to create an NFT collection and build an NFT gallery application for viewing metadata.',
     href: '/tutorials/build-with-thirdweb',
+    analyticsData: {
+      name: 'build_onchain_apps',
+      event: {
+        action: ActionType.click,
+        componentType: ComponentType.link,
+        context: 'expert_how_to',
+      },
+      importance: AnalyticsEventImportance.high,
+    },
   },
   {
     title: 'Access data using an Oracle',
     description:
       'Learn how to access price data within a smart contract using Chainlink price feeds.',
     href: '/tutorials/oracles-chainlink-price-feeds',
+    analyticsData: {
+      name: 'access_data_using_oracles',
+      event: {
+        action: ActionType.click,
+        componentType: ComponentType.link,
+        context: 'expert_how_to',
+      },
+      importance: AnalyticsEventImportance.high,
+    },
   },
 ];
 
@@ -218,6 +254,7 @@ export default function Home() {
                 key={card.title}
                 description={card.description}
                 href={card.href}
+                analyticsData={card.analyticsData}
               />
             ))}
           </div>
