@@ -204,19 +204,6 @@ const footerCategories = [
           importance: AnalyticsEventImportance.high,
         },
       },
-      {
-        title: 'Bridge FAQ',
-        href: '/docs/tools/bridge-faq',
-        analyticsData: {
-          name: 'intro_bridge_faq',
-          event: {
-            action: ActionType.click,
-            componentType: ComponentType.link,
-            context: 'explore_documentation',
-          },
-          importance: AnalyticsEventImportance.high,
-        },
-      },
     ],
   },
   {
