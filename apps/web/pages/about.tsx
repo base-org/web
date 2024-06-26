@@ -23,7 +23,7 @@ export default function About({ owners }: AboutProps) {
   return (
     <div>
       <Head>
-        <title>Base | Ab oasdfut</title>
+        <title>Base | About</title>
         <meta
           content="Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain."
           name="description"
