@@ -129,30 +129,93 @@ const footerCategories = [
       {
         title: 'About Base',
         href: '/docs/',
+        analyticsData: {
+          name: 'intro_about_base',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Using Base',
         href: '/docs/using-base',
+        analyticsData: {
+          name: 'intro_using_base',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Network Information',
         href: '/docs/network-information',
+        analyticsData: {
+          name: 'intro_network_info',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Base Contracts',
         href: '/docs/base-contracts',
+        analyticsData: {
+          name: 'intro_base_contracts',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Fees',
         href: '/docs/fees',
+        analyticsData: {
+          name: 'intro_base_fees',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Differences between Ethereum and Base',
         href: '/docs/differences',
+        analyticsData: {
+          name: 'intro_differences_ethereum_base',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Bridge FAQ',
         href: '/docs/tools/bridge-faq',
+        analyticsData: {
+          name: 'intro_bridge_faq',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
     ],
   },
@@ -162,30 +225,93 @@ const footerCategories = [
       {
         title: 'Node Providers',
         href: '/docs/tools/node-providers',
+        analyticsData: {
+          name: 'tools_node_providers',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Block Explorers',
         href: '/docs/tools/block-explorers',
+        analyticsData: {
+          name: 'tools_block_explorers',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Network Faucets',
         href: '/docs/tools/network-faucets',
+        analyticsData: {
+          name: 'tools_network_faucets',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Oracles',
         href: '/docs/tools/oracles',
+        analyticsData: {
+          name: 'tools_oracles',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Data Indexers',
         href: '/docs/tools/data-indexers',
+        analyticsData: {
+          name: 'tools_data_indexers',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Cross-chain',
         href: '/docs/tools/cross-chain',
+        analyticsData: {
+          name: 'tools_cross_chain',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Account Abstraction',
         href: '/docs/tools/account-abstraction',
+        analyticsData: {
+          name: 'tools_account_abstraction',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
     ],
   },
@@ -195,26 +321,80 @@ const footerCategories = [
       {
         title: 'Bridge',
         href: 'https://bridge.base.org',
+        analyticsData: {
+          name: 'resources_bridge',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Token List',
         href: '/docs/tokens/list',
+        analyticsData: {
+          name: 'resources_token_list',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Contracts',
         href: '/docs/contracts',
+        analyticsData: {
+          name: 'resources_contracts',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Bug Bounty',
         href: 'https://hackerone.com/coinbase',
+        analyticsData: {
+          name: 'resources_bug_bounty',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Status',
         href: 'https://status.base.org',
+        analyticsData: {
+          name: 'resources_status',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
       {
         title: 'Brand Kit',
         href: 'https://github.com/base-org/brand-kit',
+        analyticsData: {
+          name: 'resources_brand_kit',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
       },
     ],
   },
