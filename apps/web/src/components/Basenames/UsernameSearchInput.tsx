@@ -197,7 +197,7 @@ export function UsernameSearchInput({
     }
   }, [focused, validSearch]);
 
-  // TODO: Smarter suggestions
+  // TODO: Smarter suggestions (openai api?)
   // Right now david.base.eth is taken, it'll suggest david1.base.eth but
   // ultimately that might also be taken.
   const suggestions: string[] = useMemo(() => {

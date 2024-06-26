@@ -10,7 +10,7 @@ export enum ProofTableNamespace {
 }
 
 type ProofsTable = {
-  address: string;
+  address: Address;
   namespace: string;
   proofs: string;
 };

@@ -21,6 +21,7 @@ import classNames from 'classnames';
 import Head from 'next/head';
 import { Fragment, useCallback, useMemo, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
+import { createClient, webSocket } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
 import { useAccount, useReadContract } from 'wagmi';
 // TODO: replace appropriate backgrounds w/Lottie files
@@ -58,6 +59,7 @@ test addresses w/ different verifications
   0xB18e4C959bccc8EF86D78DC297fb5efA99550d85, 0xB6944B3074F40959E1166fe010a3F86B02cF2b7c- verified account
   0x9C02E8E28D8b706F67dcf0FC7F46A9ee1f9649FA - cb1
 */
+
 
 export default function Usernames() {
   const { chainId } = useAccount();

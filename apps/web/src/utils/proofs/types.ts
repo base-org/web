@@ -1,4 +1,3 @@
-import type { Attestation } from '@coinbase/onchainkit/identity';
 import type { Address } from 'viem';
 
 export type PreviousClaim = {
@@ -15,13 +14,6 @@ export type VerifiedAccount = {
     type: string;
     value: boolean;
   };
-};
-
-export type CoinbaseProofResponse = {
-  signedMessage?: string;
-  attestations: VerifiedAccount[];
-  linkedAddresses?: Address[];
-  discountValidatorAddress?: string;
 };
 
 export enum DiscountType {

@@ -1,9 +1,16 @@
 import { trustedSignerPKey } from 'apps/web/src/constants';
 import { isSupportedChain } from 'apps/web/src/utils/chains';
-import { DiscountType } from 'apps/web/src/utils/proofs';
+import { DiscountType, VerifiedAccount } from 'apps/web/src/utils/proofs';
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { isAddress, isHex } from 'viem';
+import { Address, isAddress } from 'viem';
+
+export type CoinbaseProofResponse = {
+  signedMessage?: string;
+  attestations: VerifiedAccount[];
+  linkedAddresses?: Address[];
+  discountValidatorAddress?: string;
+};
 
 /**
  * This endpoint reports whether or not the provided access has access to the cb1 or verified account attestations

@@ -1,4 +1,3 @@
-import { CBIDProofResponse } from 'apps/web/pages/api/proofs/cbid';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
 import { ProofTableNamespace } from 'apps/web/src/utils/proofs';
 import { useEffect, useState } from 'react';
