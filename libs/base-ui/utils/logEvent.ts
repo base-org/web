@@ -1,33 +1,8 @@
-declare const window: Window &
-  typeof globalThis & {
-    ClientAnalytics: {
-      logEvent: LogEvent;
-    };
+declare const window: Window & typeof globalThis & {
+  ClientAnalytics: {
+    logEvent: LogEvent;
   };
-
-export default function logEvent(
-  name: string,
-  event: CCAEventData,
-  importance: AnalyticsEventImportance | undefined
-) {
-  const CCA = window.ClientAnalytics;
-  if (CCA) {
-    CCA?.logEvent(name, event, importance);
-  }
-}
-
-export function identify(event: CCAEventData) {
-  const CCA = window.ClientAnalytics;
-  if (CCA) {
-    CCA?.logEvent('identify', event, AnalyticsEventImportance.low);
-  }
-}
-
-type LogEvent = (
-  eventName: string,
-  eventData: CCAEventData,
-  importance?: AnalyticsEventImportance,
-) => void;
+};
 
 enum ComponentType {
   unknown = 'unknown',
@@ -89,6 +64,30 @@ type CCAEventData = {
   context?: string;
   userId?: string;
 };
+
+type LogEvent = (
+  eventName: string,
+  eventData: CCAEventData,
+  importance?: AnalyticsEventImportance,
+) => void;
+
+export default function logEvent(
+  name: string,
+  event: CCAEventData,
+  importance: AnalyticsEventImportance | undefined,
+) {
+  const CCA = window.ClientAnalytics;
+  if (CCA) {
+    CCA?.logEvent(name, event, importance);
+  }
+}
+
+export function identify(event: CCAEventData) {
+  const CCA = window.ClientAnalytics;
+  if (CCA) {
+    CCA?.logEvent('identify', event, AnalyticsEventImportance.low);
+  }
+}
 
 export { ComponentType, ActionType, AnalyticsEventImportance };
 export type { LogEvent, CCAEventData };
