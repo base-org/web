@@ -26,8 +26,11 @@ import { privateKeyToAccount } from 'viem/accounts';
 import {
   USERNAME_CB1_DISCOUNT_VALIDATOR,
   USERNAME_CB_DISCOUNT_VALIDATOR,
+  USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
 } from 'apps/web/src/addresses/usernames';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
+import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
+import { getPublicClient } from 'apps/web/src/cdp/utils';
 
 const EXPIRY = (process.env.USERNAMES_SIGNATURE_EXPIRATION_SECONDS as unknown as number) ?? 10;
 const previousClaimsKVPrefix = 'username:claims:';
@@ -108,6 +111,13 @@ export async function sybilResistantUsernameSigning(
   }
   try {
     let { linkedAddresses, idemKey } = await getLinkedAddresses(address as string);
+
+    const hasPreviouslyRegistered = await hasRegisteredWithDiscount(linkedAddresses, chain);
+    // if any linked address registered previously return an error
+    if (hasPreviouslyRegistered) {
+      throw new Error('You have already claimed a username with a different address (onchain).');
+    }
+
     const kvKey = `${previousClaimsKVPrefix}${idemKey}`;
     //check kv for previous claim entries
     let previousClaims = await kv.get<PreviousClaims>(kvKey);
@@ -123,7 +133,6 @@ export async function sybilResistantUsernameSigning(
 
       // return previously signed message
       return {
-        linkedAddresses,
         signedMessage: previousClaim.signedMessage,
         attestations: attestationsRes,
         discountValidatorAddress,
@@ -140,7 +149,6 @@ export async function sybilResistantUsernameSigning(
     await kv.set(kvKey, { [discountType]: claim }, { ex: EXPIRY });
 
     return {
-      linkedAddresses,
       signedMessage: claim.signedMessage,
       attestations: attestationsRes,
       discountValidatorAddress,
@@ -149,4 +157,20 @@ export async function sybilResistantUsernameSigning(
     console.error(error);
     throw error;
   }
+}
+
+export async function hasRegisteredWithDiscount(
+  addresses: string[],
+  chainId: number,
+): Promise<boolean> {
+  const publicClient = getPublicClient(chainId);
+
+  const res = (await publicClient.readContract({
+    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId],
+    abi: RegistrarControllerABI,
+    functionName: 'hasRegisteredWithDiscount',
+    args: [addresses],
+  })) as boolean;
+
+  return res;
 }
