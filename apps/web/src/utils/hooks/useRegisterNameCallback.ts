@@ -12,7 +12,7 @@ function secondsInYears(years: number): number {
   return Math.round(years * secondsPerYear);
 }
 
-export function useRegisterNameCallback(name: string, years: number): () => void {
+export function useRegisterNameCallback(name: string, years: number): () => Promise<void> {
   const { address, chainId } = useAccount();
   const { data: client } = useWalletClient();
   const { writeContractAsync } = useWriteContract();
@@ -21,7 +21,7 @@ export function useRegisterNameCallback(name: string, years: number): () => void
     console.error(
       'useRegisterNameCallback: Unable to create name registration callback; chainId must be defined.',
     );
-    return () => {};
+    return async () => Promise.resolve();
   }
 
   const normalizedName = normalizeEnsDomainName(name);
