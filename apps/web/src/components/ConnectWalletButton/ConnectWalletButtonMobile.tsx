@@ -1,28 +1,30 @@
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { AvatarSizes, UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { UserAddress } from 'apps/web/src/components/ConnectWalletButton/UserAddress';
+import { useAccount } from 'wagmi';
 
 type ConnectWalletButtonProps = {
   color: 'white' | 'black';
   className: string;
 };
 
-const colorVariant: Record<'white' | 'black', 'secondary' | 'secondaryDark'> = {
-  white: 'secondary',
-  black: 'secondaryDark',
+const colorVariant: Record<'white' | 'black', ButtonVariants> = {
+  white: ButtonVariants.Secondary,
+  black: ButtonVariants.SecondaryDark,
 };
 
 // I don't think this is used at all
 export function ConnectWalletButton({ color, className }: ConnectWalletButtonProps) {
+  const { address } = useAccount();
   return (
     <ConnectButton.Custom>
       {({ account, chain, openAccountModal, openChainModal, openConnectModal, mounted }) => {
         const ready = mounted;
         const connected = ready && account && chain;
 
-        if (!connected) {
+        if (!connected || !address) {
           return (
             <Button variant={colorVariant[color]} onClick={openConnectModal} className="w-full">
               Connect
@@ -48,7 +50,7 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
             >
               <UserAvatar size={AvatarSizes.Medium} />
             </button>
-            <UserAddress />
+            <UserAddress address={address} />
           </div>
         );
       }}
