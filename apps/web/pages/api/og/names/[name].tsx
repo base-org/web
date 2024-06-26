@@ -2,13 +2,13 @@ import { ImageResponse } from '@vercel/og';
 import { formatBaseEthDomain, getUserNamePicture } from 'apps/web/src/utils/usernames';
 import { NextRequest } from 'next/server';
 import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
+import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
 export const config = {
   runtime: 'edge',
 };
 
 export default async function handler(request: NextRequest) {
   const url = new URL(request.url);
-
   const username = url.searchParams.get('name') || 'yourname';
   const formattedName = formatBaseEthDomain(username);
 
@@ -74,8 +74,8 @@ export default async function handler(request: NextRequest) {
       </div>
     ),
     {
-      width: 1200,
-      height: 630,
+      width: openGraphImageWidth,
+      height: openGraphImageHeight,
       fonts: [
         {
           name: 'Typewriter',

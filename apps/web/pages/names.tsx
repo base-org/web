@@ -298,7 +298,6 @@ export default function Usernames() {
             </Transition>
           </div>
           {<LearnMoreModal learnMoreModalOpen={learnMoreModalOpen} toggleModal={toggleModal} />}
-          <ShareUsernameModal isOpen={true} username="ultrabased" toggleModal={toggleModal} />
         </main>
       </RegistrationContext.Provider>
     </>
