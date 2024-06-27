@@ -5,13 +5,13 @@ description: Documentation for the Onchain Registry API.
 hide_table_of_contents: true
 ---
 
-# Onchain Registry API
+# [Beta] Onchain Registry API
 
 ---
 
 :::info
 
-The base url for our API endpoints is [https://base.org/api/registry/](https://base.org/api/registry/). The use of Onchain Registry API is governed by the license terms outlined in our [Terms & Conditions](#terms--conditions).
+The base url for our API endpoints is [https://base.org/api/registry/](https://base.org/api/registry/). Please note, this API is still in beta and should not be used in production environments. The use of Onchain Registry API is governed by the license terms outlined in our [Terms & Conditions](#terms--conditions).
 
 :::
 
