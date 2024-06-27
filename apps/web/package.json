@@ -23,6 +23,7 @@
     "framer-motion": "^8.5.5",
     "kysely": "^0.27.3",
     "next": "^13.2.0",
+    "pg": "^8.12.0",
     "react": "^18.2.0",
     "react-blockies": "^1.4.1",
     "react-copy-to-clipboard": "^5.1.0",
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@types/node": "18.11.18",
+    "@types/pg": "^8.11.6",
     "@types/react-copy-to-clipboard": "^5.0.7",
     "autoprefixer": "^10.4.13",
     "csv-parser": "^3.0.0",
