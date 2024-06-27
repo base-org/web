@@ -58,7 +58,7 @@ Cast actions work similarly to the way [Frames] call your api endpoint. As a res
 
 Add a new folder in `api` called `action` with a file called `route.ts` to create a new route in your app. Import dependencies from OnchainKit and Next.js:
 
-```typescript
+```tsx
 import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
 ```
@@ -67,7 +67,7 @@ You won't be returning a frame, so you don't need `getFrameHtmlResponse`.
 
 Stub out your `POST` handler and response function:
 
-```typescript
+```tsx
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   // TODO
 }
@@ -87,7 +87,7 @@ export const dynamic = 'force-dynamic';
 
 Parse and validate the request exactly the same as you would a frame in the top of `getResponse`:
 
-```typescript
+```tsx
 const body: FrameRequest = await req.json();
 const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
 
@@ -98,7 +98,7 @@ if (!isValid) {
 
 Instead of returning a frame, you'll return a json `NextResponse` with a string `message` and a 200 status:
 
-```typescript
+```tsx
 return NextResponse.json({ message: 'Hello from the frame route' }, { status: 200 });
 ```
 
@@ -120,7 +120,7 @@ For now, you can add a simple addition to let the user know what time it is.
 
 Modify your `return`:
 
-```typescript
+```tsx
 // Get the current date and time
 const now = new Date();
 const date = now.toLocaleDateString();
@@ -148,7 +148,7 @@ The [Cast Actions Playground] has a nice tool to build this link for you!
 
 To enable your users to install your action from a web page, simply include the link. Update the root of your site to do so:
 
-```typescript
+```tsx
 export default function Page() {
   return (
     <>
@@ -168,7 +168,7 @@ export default function Page() {
 
 Finally, update the frame on your root page to also have the install link:
 
-```typescript
+```tsx
 const frameMetadata = getFrameMetadata({
   buttons: [
     {

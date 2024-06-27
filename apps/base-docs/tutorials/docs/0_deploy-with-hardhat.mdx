@@ -92,7 +92,7 @@ In order to deploy smart contracts to the Base network, you will need to configu
 
 To configure Hardhat to use Base, add Base as a network to your project's `hardhat.config.ts` file:
 
-```typescript
+```tsx
 import { HardhatUserConfig } from 'hardhat/config';
 import '@nomicfoundation/hardhat-toolbox';
 
@@ -219,7 +219,7 @@ Once your contract has been successfully compiled, you can deploy the contract t
 
 To deploy the contract to the Base Sepolia test network, you'll need to modify the `scripts/deploy.ts` in your project:
 
-```typescript
+```tsx
 import { ethers } from 'hardhat';
 
 async function main() {
@@ -271,7 +271,7 @@ In `hardhat.config.ts`, configure Base Sepolia as a custom network. Add the foll
 <Tabs>
 <TabItem value="basescan" label="Basescan">
 
-```typescript
+```tsx
 etherscan: {
    apiKey: {
     "base-sepolia": "PLACEHOLDER_STRING"
@@ -298,7 +298,7 @@ When verifying a contract with Basescan on testnet (Sepolia), an API key is not 
 </TabItem>
 <TabItem value="blockscout" label="Blockscout">
 
-```typescript
+```tsx
 // Hardhat expects etherscan here, even if you're using Blockscout.
 etherscan: {
    apiKey: {

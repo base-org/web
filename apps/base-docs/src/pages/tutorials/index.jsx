@@ -43,14 +43,27 @@ function TagChip({ tag, isSelected, setSelectedTag }) {
   );
 }
 
+const handleContainerClick = (event, tutorial, history) => {
+  if (event.target.closest('a')) return;
+  history.push(`/tutorials${tutorial.slug}`)
+}
+
 const handleClick = (event) => {
   event.stopPropagation();
 };
 
 function TutorialListCell({ tutorial }) {
+  const history = useHistory()
   const authorData = authors[tutorial.author];
   return (
-    <Link to={`/tutorials${tutorial.slug}`}>
+    // <Link to={`/tutorials${tutorial.slug}`}>
+    <div
+      onClick={(event) => {
+        handleContainerClick(event, tutorial, history)
+      }}
+      role="button"
+      tabIndex={0}
+    >
       <div className={clsx(styles.tutorialListCell, 'container')}>
         <header>
           <h2 className={clsx(styles.tutorialListTitle)}>{tutorial.title}</h2>
@@ -73,10 +86,11 @@ function TutorialListCell({ tutorial }) {
         )}
         <div className={clsx(styles.tutorialListCellInfo)}>
           {tutorial.tags &&
-            tutorial.tags.map((tag) => <p className={clsx(styles.tutorialListTag)}>{tag}</p>)}
+            tutorial.tags.map((tag) => <p key={tag} className={clsx(styles.tutorialListTag)}>{tag}</p>)}
         </div>
       </div>
-    </Link>
+    </div>
+    // </Link>
   );
 }
 
@@ -130,7 +144,7 @@ export default function Tutorials() {
                   .filter((tutorial) =>
                     selectedTag == 'all' ? tutorial : tutorial.tags.includes(selectedTag),
                   )
-                  .map((tutorial) => <TutorialListCell tutorial={tutorial} />)}
+                  .map((tutorial) => <TutorialListCell key={tutorial.slug} tutorial={tutorial} />)}
             </div>
           </div>
         </div>

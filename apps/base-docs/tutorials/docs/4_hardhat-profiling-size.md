@@ -236,7 +236,7 @@ From a contract size perspective, having multiple independent contracts will red
 
 In order to explain this example, create a contract called `Computer` that contains a function called `executeProcess`:
 
-```typescript
+```tsx
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
