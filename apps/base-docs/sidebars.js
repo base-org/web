@@ -23,6 +23,17 @@ module.exports = {
           type: 'link',
           label: 'Decentralizing Base with Optimism',
           href: 'https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I',
+          customProps: {
+            analyticsData: {
+              name: 'decentralizing_base_optimism',
+              event: {
+                action: 'click',
+                componentType: 'link',
+                context: 'sidebar',
+              },
+              importance: 'low',
+            },
+          }
         },
       ],
     },
