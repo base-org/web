@@ -69,7 +69,7 @@ We share certain information about you  with service providers, partners and ot
 
 **Professional advisors, industry partners, authorities and regulators.** We share your information described in **Section 1. What Information We Collect** with our advisors, regulators, tax authorities, law enforcement, government agencies, and industry partners when needed to:
 
-- respond pursuant to applicable law or regulations, court orders, legal process or government requests;
+- respond pursuant to applicable law or regulations, court orders, legal processes or government requests;
 - detect, investigate, prevent, or address fraud and other illegal activity or security and technical issues; and
 - protect the rights, property, and safety of our Users, Developers, Affiliates, or others, including to prevent death or imminent bodily harm.
 
