@@ -6,7 +6,7 @@ import Link from '@docusaurus/Link';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import IconExternalLink from '@theme/Icon/ExternalLink';
 import styles from './styles.module.css';
-import logEvent from 'base-ui/utils/logEvent';
+import logEvent, { ActionType, AnalyticsEventImportance, ComponentType } from 'base-ui/utils/logEvent';
 export default function DocSidebarItemLink({
   item,
   onItemClick,
@@ -19,13 +19,16 @@ export default function DocSidebarItemLink({
   const isActive = isActiveSidebarItem(item, activePath);
   const isInternalLink = isInternalUrl(href);
   const linkClick = useCallback(() => {
-    if (item?.customProps?.analyticsData) {
-      logEvent(
-        item.customProps.analyticsData.name,
-        item.customProps.analyticsData.event,
-        item.customProps.analyticsData.importance,
-      );
-    }
+    const eventData = {
+      action: ActionType.click,
+      componentType: ComponentType.link,
+      context: 'sidebar',
+    };
+    let eventName = item.docId
+      ? item.docId.replace(/[\/\\\- ]/g, '_')
+      : item.label.replace(/[\/\\\- ]/g, '_');
+    let eventImportance = item.docId ? AnalyticsEventImportance.high : AnalyticsEventImportance.low;
+    logEvent(eventName, eventData, eventImportance);
   }, [logEvent]);
   return (
     <li
