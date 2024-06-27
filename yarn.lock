@@ -308,7 +308,7 @@ __metadata:
     "@coinbase/cookie-manager": ^1.1.1
     "@coinbase/onchainkit": ^0.6.0
     "@heroicons/react": ^2.0.18
-    "@rainbow-me/rainbowkit": ^2.0.5
+    "@rainbow-me/rainbowkit": ^2.1.2
     "@tanstack/react-query": ^5.29.2
     "@types/node": 18.11.18
     "@types/react-copy-to-clipboard": ^5.0.7
@@ -6071,6 +6071,27 @@ __metadata:
     viem: 2.x
     wagmi: 2.x
   checksum: 496a222ad2f4e228ac2b43353145050fd9f081cd4633edc101a819c128239889e127b0584bb881775ada550a4a56caa4ad3f0a99778748fcedfde997a810b20d
+  languageName: node
+  linkType: hard
+
+"@rainbow-me/rainbowkit@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "@rainbow-me/rainbowkit@npm:2.1.2"
+  dependencies:
+    "@vanilla-extract/css": 1.14.0
+    "@vanilla-extract/dynamic": 2.1.0
+    "@vanilla-extract/sprinkles": 1.6.1
+    clsx: 2.1.0
+    qrcode: 1.5.3
+    react-remove-scroll: 2.5.7
+    ua-parser-js: ^1.0.37
+  peerDependencies:
+    "@tanstack/react-query": ">=5.0.0"
+    react: ">=18"
+    react-dom: ">=18"
+    viem: 2.x
+    wagmi: ^2.9.0
+  checksum: 8d127509b376715c3e22030a4df74ef061d3da86bfa481bae3ea035192fa324fb82179da284f4bdf98feb1b2672157ca9440ed0c51d9280d9da694b9e6ba6250
   languageName: node
   linkType: hard
 

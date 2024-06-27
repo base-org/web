@@ -77,6 +77,7 @@ const contentSecurityPolicy = {
     greenhouseDomains,
     ccaLiteDomains,
     ccaDomain,
+    'wss://www.walletlink.org/rpc', // coinbase wallet connection
     'https://analytics-service-dev.cbhq.net',
     'mainnet.base.org',
     'https://cloudflare-eth.com',
