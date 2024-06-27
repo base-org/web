@@ -1,4 +1,4 @@
-import UsernameBioField from 'apps/web/src/components/Basenames/UsernameBioField';
+import UsernameDescriptionField from 'apps/web/src/components/Basenames/UsernameDescriptionField';
 import UsernameSocialHandleField from 'apps/web/src/components/Basenames/UsernameSocialHandleField';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Fieldset from 'apps/web/src/components/Fieldset';
@@ -9,7 +9,7 @@ import classNames from 'classnames';
 import { useCallback, useState } from 'react';
 
 export enum FormSteps {
-  Bio = 'bio',
+  Description = 'description',
   Socials = 'socials',
 }
 
@@ -22,12 +22,12 @@ export const socialPlatformsEnabled = [
 ];
 
 export function UsernameProfileForm() {
-  const [currentFormStep, setCurrentFormStep] = useState<FormSteps>(FormSteps.Bio);
+  const [currentFormStep, setCurrentFormStep] = useState<FormSteps>(FormSteps.Description);
   const formClasses = classNames(
     ' min-w-[26rem] flex flex-col justify-between gap-4 rounded-2xl bg-white p-8 text-gray/60 shadow-xl  md:items-center',
   );
 
-  const bioLabelChildren = (
+  const descriptionLabelChildren = (
     <div className="flex w-full cursor-pointer flex-col">
       <p className="flex flex-row justify-between text-black">
         <div className="flex flex-row items-center gap-1 text-blue-500">
@@ -54,7 +54,7 @@ export function UsernameProfileForm() {
   const onClickSkip = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
-      if (currentFormStep === FormSteps.Bio) setCurrentFormStep(FormSteps.Socials);
+      if (currentFormStep === FormSteps.Description) setCurrentFormStep(FormSteps.Socials);
       if (currentFormStep === FormSteps.Socials) {
         // TODO: Redirects to userprofile
       }
@@ -65,7 +65,7 @@ export function UsernameProfileForm() {
   const onClickSave = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
-      if (currentFormStep === FormSteps.Bio) {
+      if (currentFormStep === FormSteps.Description) {
         // TODO: Contract call
         // On success, setCurrentFormStep(FormSteps.Socials);
       }
@@ -75,7 +75,9 @@ export function UsernameProfileForm() {
 
   return (
     <form className={formClasses}>
-      {currentFormStep === FormSteps.Bio && <UsernameBioField labelChildren={bioLabelChildren} />}
+      {currentFormStep === FormSteps.Description && (
+        <UsernameDescriptionField labelChildren={descriptionLabelChildren} />
+      )}
       {currentFormStep === FormSteps.Socials && (
         <Fieldset>
           <Label>{socialsLabelChildren}</Label>
