@@ -1,8 +1,9 @@
-declare const window: Window & typeof globalThis & {
-  ClientAnalytics: {
-    logEvent: LogEvent;
+declare const window: Window &
+  typeof globalThis & {
+    ClientAnalytics: {
+      logEvent: LogEvent;
+    };
   };
-};
 
 enum ComponentType {
   unknown = 'unknown',
@@ -65,6 +66,12 @@ type CCAEventData = {
   userId?: string;
 };
 
+type AnalyticsEventData = {
+  name: string;
+  event: CCAEventData;
+  importance: AnalyticsEventImportance;
+};
+
 type LogEvent = (
   eventName: string,
   eventData: CCAEventData,
@@ -89,5 +96,5 @@ export function identify(event: CCAEventData) {
   }
 }
 
-export { ComponentType, ActionType, AnalyticsEventImportance };
-export type { LogEvent, CCAEventData };
+export { ActionType, AnalyticsEventImportance, ComponentType };
+export type { AnalyticsEventData, LogEvent, CCAEventData };
