@@ -8,7 +8,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Abi, Address, BlockTag, Hex, decodeAbiParameters, getContract } from 'viem';
 import { useAccount, useWalletClient, useWriteContract } from 'wagmi';
 import { useCapabilities, useWriteContracts } from 'wagmi/experimental';
-import {client as publicClient} from "../paymasterConfig";
+import {initializeClient} from "../paymasterConfig";
 import { CB_SW_PROXY_BYTECODE, CB_SW_V1_IMPLEMENTATION_ADDRESS, ERC_1967_PROXY_IMPLEMENTATION_SLOT } from 'apps/web/src/constants';
 
 
@@ -18,7 +18,7 @@ function secondsInYears(years: number): number {
 }
 
 export function useRegisterNameCallback(name: string, years: number): () => void {
-  const [wallet, setWallet] = useState<number>(2); // 0 for EOA, 1 for Predeployed, 2 for SCW
+  const [wallet, setWallet] = useState<number>(0); // 0 for EOA, 1 for Predeployed, 2 for SCW
   const { address, chainId } = useAccount();
   const account = useAccount();
   const { data: client } = useWalletClient();
@@ -52,10 +52,12 @@ export function useRegisterNameCallback(name: string, years: number): () => void
   
   useEffect(() => {
     const isWalletSCW = async () => {
+      const publicClient = initializeClient();
+      
       try {
         const code = await publicClient.getCode({address: address as Address});
         if (!code) {
-          setWallet(1); // Wallet about to be deployed
+          setWallet(0); // Wallet about to be deployed
           return;
         }
         if (code !== CB_SW_PROXY_BYTECODE) {
@@ -66,6 +68,7 @@ export function useRegisterNameCallback(name: string, years: number): () => void
           method: "eth_getStorageAt",
           params: [address as Address, ERC_1967_PROXY_IMPLEMENTATION_SLOT, "latest"],
         });
+        
         const implementationAddress = decodeAbiParameters(
           [{ type: "address" }],
           implementation
@@ -81,6 +84,7 @@ export function useRegisterNameCallback(name: string, years: number): () => void
     if (address) {
       isWalletSCW().catch(console.error);
     }
+    
   }, [address]);
 
   const normalizedName = normalizeEnsDomainName(name);
@@ -89,20 +93,22 @@ export function useRegisterNameCallback(name: string, years: number): () => void
     owner: address, // The address of the owner for the name.
     duration: secondsInYears(years), // The duration of the registration in seconds.
     resolver: USERNAME_L2_RESOLVER_ADDRESSES[chainId], // The address of the resolver to set for this name.
+    // data: [],
     data: new Uint8Array(32).fill(0x0), //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
     reverseRecord: true, // Bool to decide whether to set this name as the "primary" name for the `owner`.
   };
-  if (client) {
-    const controllerContract = getContract({
-      abi,
-      address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId],
-      client: client,
-    });
-    controllerContract.write
-      .discountedRegister([registerRequest, 0x0, 0x0])
-      .then(console.log)
-      .catch(console.error);
-  }
+  // if (client) {
+  //   console.log("Test");
+  //   const controllerContract = getContract({
+  //     abi,
+  //     address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId],
+  //     client: client,
+  //   });
+  //   controllerContract.write
+  //     .discountedRegister([registerRequest, 0x0, 0x0])
+  //     .then(console.log)
+  //     .catch(console.error);
+  // }
 
   // discountKey <- getValidDiscounts(): DiscountDetails[]
   // for each discount in DiscountDetails, check if user is valid (?)
@@ -117,7 +123,7 @@ export function useRegisterNameCallback(name: string, years: number): () => void
           abi,
           address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId],
           functionName: 'discountedRegister',
-          args: [registerRequest, 0x0, 0x0],
+          args: [registerRequest, '0x0000000000000000000000000000000000000000000000000000000000000000', '0x'],
           chainId,
         });
         console.log('jf useRegisterNameCallback result', result);

@@ -1,8 +1,15 @@
 import './global.css';
 
 import '@rainbow-me/rainbowkit/styles.css';
-import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { WagmiProvider } from 'wagmi';
+import { connectorsForWallets, getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import {
+  coinbaseWallet,
+  metaMaskWallet,
+  rainbowWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
+
+import { createConfig, http, WagmiProvider } from 'wagmi';
 import { base, mainnet, baseSepolia, sepolia } from 'wagmi/chains';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
@@ -25,12 +32,37 @@ import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvat
 import { NextPage } from 'next';
 import localFont from 'next/dist/compiled/@next/font/dist/local';
 
+
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Recommended',
+      wallets: [rainbowWallet, coinbaseWallet, walletConnectWallet, metaMaskWallet],
+    },
+  ],
+  {
+    appName: 'Base.org',
+    projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? 'dummy-id',
+  }
+);
+
 const config = getDefaultConfig({
   appName: 'Base.org',
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? 'dummy-id',
   chains: [base, baseSepolia, mainnet, sepolia],
   ssr: true,
 });
+const customConfig = createConfig({
+  connectors,
+  chains: [base, baseSepolia, mainnet, sepolia],
+  transports: {
+    [base.id]: http(),
+    [baseSepolia.id]: http(),
+    [mainnet.id]: http(),
+    [sepolia.id]: http(),
+  },
+  ssr: true,
+})
 const queryClient = new QueryClient();
 const sprigEnvironmentId = process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID;
 
@@ -98,7 +130,7 @@ export default function StaticApp({ Component, pageProps }: AppPropsWithLayout) 
     >
       <MotionConfig reducedMotion="user">
         <ClientAnalyticsScript />
-        <WagmiProvider config={config}>
+        <WagmiProvider config={customConfig}>
           <QueryClientProvider client={queryClient}>
             <RainbowKitProvider modalSize="compact" avatar={UserAvatar}>
               {getLayout(<Component {...pageProps} />)}

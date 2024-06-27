@@ -69,10 +69,10 @@ export function Usernames() {
   const hasDiscount = useCallback((d: Discount) => (discount & d) !== 0, [discount]);
 
   const { data: CBIDData, loading: loadingCBIDAttestations } = useCheckCBIDAttestations();
-  console.log('useCheckCBIDAttestations data: ', CBIDData);
+  // console.log('useCheckCBIDAttestations data: ', CBIDData);
   const { data: coinbaseData, loading: loadingCoinbaseAttestations } =
     useCheckCoinbaseAttestations();
-  console.log('useCheckCoinbaseAttestations data: ', coinbaseData);
+  // console.log('useCheckCoinbaseAttestations data: ', coinbaseData);
   const loadingDiscounts = loadingCoinbaseAttestations || loadingCBIDAttestations;
 
   const network = chainId === baseSepolia.id ? chainId : base.id;
@@ -90,13 +90,13 @@ export function Usernames() {
     [network, linkedAddresses],
   );
   const { data: hasAlreadyUsedADiscount } = useReadContract(hasRegisteredArgs);
-  console.log('hasAlreadyUsedADiscount', hasAlreadyUsedADiscount);
+  // console.log('hasAlreadyUsedADiscount', hasAlreadyUsedADiscount);
   if (hasAlreadyUsedADiscount && !hasDiscount(Discount.ALREADY_REDEEMED)) {
     addDiscount(Discount.ALREADY_REDEEMED);
   }
 
   const { data: activeDiscountValidators } = useActiveDiscountValidators();
-  console.log('activeDiscountValidators', activeDiscountValidators);
+  // console.log('activeDiscountValidators', activeDiscountValidators);
 
   const [progress, setProgress] = useState<ClaimProgression>(ClaimProgression.SEARCH);
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);

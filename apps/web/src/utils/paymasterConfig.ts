@@ -5,11 +5,17 @@ import { paymasterActionsEip7677 } from "permissionless/experimental";
 
 
 
-
-export const client = createPublicClient({
+export function initializeClient() {
+  
+  const client = createPublicClient({
     chain: baseSepolia,
     transport: http(),
   });
+  
+  return client;
+}
+
+
 
 const paymasterService = "https://api.developer.coinbase.com/rpc/v1/base/1IhTcPOmhK5aEq-4WqRZMJoOh0oPenD2"; // Change this to the official paymaster
 
