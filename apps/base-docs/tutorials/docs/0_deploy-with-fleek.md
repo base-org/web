@@ -47,7 +47,7 @@ Install _bun_ if you need to, and install dependencies.
 
 ```bash
 # Install bun in case you don't have it
-curl -fsSL <https://bun.sh/install> | bash
+curl -fsSL https://bun.sh/install | bash
 
 # Install packages
 bun i
@@ -60,7 +60,7 @@ Navigate to `localhost:3000` and make sure that it's working, then shut down the
 
 ## Installing and Configuring Fleek
 
-[Fleek] requires static pages, so you'll need to ensure that your build process produces them. Open `next.config.js` and update the `nextConfig`.
+[Fleek] requires static pages, so you'll need to ensure that your build process produces them. In your editor, open `next.config.js` and update the `nextConfig`.
 
 ```javascript
 /** @type {import('next').NextConfig} */
@@ -136,6 +136,12 @@ For `We've found existing sites. Would you like to link to one of them?`, pick: 
 
 Find the site you just added and select it.
 
+:::caution
+
+You're using TypeScript, but **do not** select `TypeScript (fleek.config.ts)` in the final prompt. Select `JSON (fleek.config.json)`.
+
+:::
+
 You'll get a few more prompts:
 
 - ? Please specify the directory containing the site files to be uploaded
@@ -146,9 +152,7 @@ You'll get a few more prompts:
   - Enter `npm install && npm run build`
   - Select `JSON (fleek.config.json)`
 
-:::caution
-
-You're using TypeScript, but **do not** select `TypeScript (fleek.config.ts)`
+### Deployment
 
 You can deploy the site from the CLI as the docs describe, but you **do not need to**. There is a better way!
 
@@ -157,7 +161,7 @@ You can deploy the site from the CLI as the docs describe, but you **do not need
 fleek sites deploy
 ```
 
-Instead, simply push to the `main` branch of your repo. Test this by making a change to `src/app/page.tsx`, committing, and pushing to your repo.
+Instead, trigger an automatic deploy by making a change to the text at `src/app/page.tsx`, committing your changes, and pushing to your repo.
 
 ## Dashboard Overview and Confirming Deployment
 
