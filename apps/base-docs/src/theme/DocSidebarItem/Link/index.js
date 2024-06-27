@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import clsx from 'clsx';
 import {ThemeClassNames} from '@docusaurus/theme-common';
 import {isActiveSidebarItem} from '@docusaurus/theme-common/internal';
@@ -6,6 +6,7 @@ import Link from '@docusaurus/Link';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import IconExternalLink from '@theme/Icon/ExternalLink';
 import styles from './styles.module.css';
+import logEvent from 'base-ui/utils/logEvent';
 export default function DocSidebarItemLink({
   item,
   onItemClick,
@@ -17,6 +18,15 @@ export default function DocSidebarItemLink({
   const {href, label, className, autoAddBaseUrl} = item;
   const isActive = isActiveSidebarItem(item, activePath);
   const isInternalLink = isInternalUrl(href);
+  const linkClick = useCallback(() => {
+    if (item?.customProps?.analyticsData) {
+      logEvent(
+        item.customProps.analyticsData.name,
+        item.customProps.analyticsData.event,
+        item.customProps.analyticsData.importance,
+      );
+    }
+  }, [logEvent]);
   return (
     <li
       className={clsx(
@@ -37,9 +47,7 @@ export default function DocSidebarItemLink({
         autoAddBaseUrl={autoAddBaseUrl}
         aria-current={isActive ? 'page' : undefined}
         to={href}
-        {...(isInternalLink && {
-          onClick: onItemClick ? () => onItemClick(item) : undefined,
-        })}
+        onClick={linkClick}
         {...props}>
         {label}
         {!isInternalLink && <IconExternalLink />}
