@@ -150,7 +150,7 @@ You'll get a few more prompts:
 
 You're using TypeScript, but **do not** select `TypeScript (fleek.config.ts)`
 
-You **do not** the site with:
+You can deploy the site from the CLI as the docs describe, but you **do not need to**. There is a better way!
 
 ```bash
 # Don't use, better method below!
