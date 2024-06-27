@@ -13,6 +13,8 @@ export const BASE_ETH_DOMAIN = 'base.eth';
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 20;
 
+export const USERNAME_BIO_MAX_LENGTH = 200;
+
 // Any names non-compliant with ENSIP-15 will fail when using ENS normalize()
 // For now, we'll only accept alphanumerics characters, including accents
 export const sanitizeEnsDomainName = (name: string) => {

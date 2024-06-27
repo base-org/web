@@ -8,6 +8,7 @@ export enum ButtonVariants {
   SecondaryBounce = 'secondaryBounce',
   SecondaryDarkBounce = 'secondaryDarkBounce',
   Black = 'black',
+  Gray = 'gray',
 }
 
 export enum ButtonSizes {
@@ -28,6 +29,7 @@ const variantStyles = {
     'text-black bg-transparent border border-black hover:bg-ocsblue hover:text-white active:bg-translucent-200 animate-bounce',
   [ButtonVariants.Black]:
     'text-white bg-button-black hover:bg-button-blackHover active:bg-button-blackActive',
+  [ButtonVariants.Gray]: 'text-black bg-[#EEF0F3] hover:bg-[#EEF0F3]/60 active:bg-[#EEF0F3]/80',
 };
 
 const sizeStyles = {
@@ -40,6 +42,7 @@ type ButtonProps = {
   size?: ButtonSizes;
   rounded?: boolean;
   children: ReactNode;
+  fullWidth?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export function Button({
@@ -48,6 +51,7 @@ export function Button({
   children,
   className,
   rounded = false,
+  fullWidth = false,
   ...props
 }: ButtonProps) {
   const buttonClasses = classNames(
@@ -55,6 +59,7 @@ export function Button({
     variantStyles[variant],
     sizeStyles[size],
     { 'rounded-full': rounded },
+    { 'w-full': fullWidth },
     className,
   );
 

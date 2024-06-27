@@ -4,23 +4,26 @@ import { LearnMoreModal } from 'apps/web/src/components/Basenames/LearnMoreModal
 import { RegistrationContext } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
 import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
-import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
+import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
+import { UsernameProfileForm } from 'apps/web/src/components/Basenames/UsernameProfileForm';
 import {
   UsernameSearchInput,
   UsernameSearchInputVariant,
 } from 'apps/web/src/components/Basenames/UsernameSearchInput';
 import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { Layout, NavigationType } from 'apps/web/src/components/Layout/Layout';
 import { useAggregatedDiscountValidators } from 'apps/web/src/utils/hooks/useAggregatedDiscountValidators';
 import classNames from 'classnames';
 import Head from 'next/head';
-import { Fragment, ReactElement, useCallback, useMemo, useState } from 'react';
+import { Fragment, ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
 // TODO: replace appropriate backgrounds w/Lottie files
 
 export enum ClaimProgression {
   SEARCH,
   CLAIM,
+  PROFILE,
 }
 
 const SEARCH_LABEL_COPY_STRINGS = [
@@ -90,15 +93,21 @@ export function Usernames() {
 
   const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
 
+  const isSearch = progress === ClaimProgression.SEARCH;
+  const isClaim = progress === ClaimProgression.CLAIM;
+  const isProfile = progress === ClaimProgression.PROFILE;
+
   const transitionDuration = 'duration-700';
 
   const mainClasses = classNames(
-    'relative z-10 flex min-h-screen w-full overflow-hidden flex-col items-center pt-[calc(50vh-15rem)] px-6',
+    'relative z-10 flex min-h-screen w-full overflow-hidden flex-col items-center  px-6',
     'transition-all',
     transitionDuration,
     {
       'bg-ocsblue text-white': inputFocused,
       'bg-white text-black': !inputFocused,
+      'pt-[calc(50vh-15rem)]': isSearch || isClaim,
+      'pt-0': isProfile,
     },
   );
 
@@ -110,6 +119,15 @@ export function Usernames() {
     () => ({ focused: inputFocused, hovered: inputHovered }),
     [inputFocused, inputHovered],
   );
+
+  const [currentUsernamePillVariant, setCurrentUsernamePillVariant] =
+    useState<UsernamePillVariants>(UsernamePillVariants.Inline);
+
+  useEffect(() => {
+    if (progress === ClaimProgression.PROFILE) {
+      setCurrentUsernamePillVariant(UsernamePillVariants.Card);
+    }
+  }, [progress]);
 
   return (
     <>
@@ -124,7 +142,7 @@ export function Usernames() {
         <main className={mainClasses}>
           <Transition
             appear
-            show={progress === ClaimProgression.SEARCH}
+            show={isSearch}
             className={classNames('transition-opacity', transitionDuration)}
             enterFrom={classNames('opacity-0')}
             enterTo={classNames('opacity-100')}
@@ -135,7 +153,7 @@ export function Usernames() {
           </Transition>
           <Transition
             appear
-            show={progress === ClaimProgression.CLAIM}
+            show={isClaim}
             className={classNames('transition-opacity', transitionDuration)}
             enterFrom={classNames('opacity-0')}
             enterTo={classNames('opacity-100')}
@@ -151,7 +169,7 @@ export function Usernames() {
           <div className="relative mx-auto mb-12 mt-24 w-full max-w-[36rem]">
             <Transition
               appear
-              show={progress === ClaimProgression.SEARCH}
+              show={isSearch}
               className={classNames(
                 'absolute flex w-full items-center justify-between transition-opacity',
                 transitionDuration,
@@ -162,21 +180,7 @@ export function Usernames() {
               leaveTo="opacity-0"
             >
               <div className="flex items-center gap-1">
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 15 15"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="mr-1"
-                >
-                  <circle
-                    cx="7.5"
-                    cy="7.5"
-                    r="7.5"
-                    className={inputFocused ? 'fill-white' : 'fill-ocsblue'}
-                  />
-                </svg>
+                <Icon name="blueCircle" color="currentColor" width={15} height={15} />
                 <h1 className="text-md font-bold md:text-xl">Basenames</h1>
               </div>
 
@@ -200,7 +204,7 @@ export function Usernames() {
           <div className="relative w-full">
             <Transition
               appear
-              show={progress === ClaimProgression.CLAIM}
+              show={isClaim}
               className={classNames(
                 'absolute left-1/2 z-40 mx-auto w-full max-w-[14rem] -translate-x-1/2 -translate-y-20 transition-all',
                 transitionDuration,
@@ -219,7 +223,7 @@ export function Usernames() {
             <div className="relative mb-40">
               <Transition
                 appear
-                show={progress === ClaimProgression.CLAIM}
+                show={isClaim || isProfile}
                 className={classNames(
                   'absolute left-1/2 top-0 z-30 mx-auto -translate-x-1/2 transition-all',
                   transitionDuration,
@@ -231,11 +235,30 @@ export function Usernames() {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <UsernamePill username={selectedName} />
+                <UsernamePill username={selectedName} variant={currentUsernamePillVariant} />
+              </Transition>
+
+              <Transition
+                appear
+                show={isProfile}
+                className={classNames(
+                  'absolute left-1/2 top-0 z-30 mx-auto -translate-x-1/2 transition-all',
+                  transitionDuration,
+                )}
+                enter="overflow-hidden"
+                enterFrom={classNames('opacity-0 max-w-[5rem]')}
+                enterTo={classNames('opacity-100 max-w-full')}
+                leave="transition-all "
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <div className="mt-[16rem] w-full">
+                  <UsernameProfileForm />
+                </div>
               </Transition>
               <Transition
                 appear
-                show={progress === ClaimProgression.SEARCH}
+                show={isSearch}
                 className={classNames(
                   'absolute left-1/2 top-0 z-20 mx-auto w-full max-w-[36rem] -translate-x-1/2 transition-all',
                   transitionDuration,
@@ -258,7 +281,7 @@ export function Usernames() {
             </div>
             <Transition
               appear
-              show={progress === ClaimProgression.CLAIM}
+              show={isClaim}
               enter={classNames('transition-opacity', transitionDuration)}
               enterFrom="opacity-0"
               enterTo="opacity-100"
