@@ -2,17 +2,17 @@ import React, { useCallback } from 'react';
 import Icon from '../Icon';
 
 import styles from './styles.module.css';
-import logEvent, { AnalyticsEventImportance, CCAEventData } from 'base-ui/utils/logEvent';
+import logEvent, {
+  AnalyticsEventData,
+  AnalyticsEventImportance,
+  CCAEventData,
+} from 'base-ui/utils/logEvent';
 
 type TextCardProps = {
   title: string;
   description: string;
   href: string;
-  analyticsData: {
-    name: string;
-    event: CCAEventData;
-    importance: AnalyticsEventImportance;
-  };
+  analyticsData: AnalyticsEventData;
 };
 
 function TextCard({ title, description, href, analyticsData }: TextCardProps) {

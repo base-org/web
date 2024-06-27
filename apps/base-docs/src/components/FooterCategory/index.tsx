@@ -1,16 +1,16 @@
 import React, { useCallback } from 'react';
 
-import logEvent, { AnalyticsEventImportance, CCAEventData } from 'base-ui/utils/logEvent';
+import logEvent, {
+  AnalyticsEventData,
+  AnalyticsEventImportance,
+  CCAEventData,
+} from 'base-ui/utils/logEvent';
 import styles from './styles.module.css';
 
 type FooterLinkType = {
   title: string;
   href: string;
-  analyticsData: {
-    name: string;
-    event: CCAEventData;
-    importance: AnalyticsEventImportance;
-  };
+  analyticsData: AnalyticsEventData;
 };
 
 type FooterCategoryProps = {
