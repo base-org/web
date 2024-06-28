@@ -1,9 +1,19 @@
 import { getAttestations } from '@coinbase/onchainkit/identity';
 import { kv } from '@vercel/kv';
+import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
+import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
+import {
+  USERNAME_CB1_DISCOUNT_VALIDATOR,
+  USERNAME_CB_DISCOUNT_VALIDATOR,
+  USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
+} from 'apps/web/src/addresses/usernames';
 import { getLinkedAddresses } from 'apps/web/src/cdp/api';
+import { getPublicClient } from 'apps/web/src/cdp/utils';
 import {
   ATTESTATION_VERIFIED_ACCOUNT_SCHEMA_ID,
   ATTESTATION_VERIFIED_CB1_ACCOUNT_SCHEMA_ID,
+  trustedSignerAddress,
+  trustedSignerPKey,
 } from 'apps/web/src/constants';
 import {
   DiscountType,
@@ -12,8 +22,6 @@ import {
   PreviousClaims,
   VerifiedAccount,
 } from 'apps/web/src/utils/proofs/types';
-import { base, baseSepolia } from 'viem/chains';
-import { trustedSignerAddress, trustedSignerPKey } from 'apps/web/src/constants';
 import {
   Address,
   encodeAbiParameters,
@@ -23,14 +31,7 @@ import {
   parseAbiParameters,
 } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
-import {
-  USERNAME_CB1_DISCOUNT_VALIDATOR,
-  USERNAME_CB_DISCOUNT_VALIDATOR,
-  USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
-} from 'apps/web/src/addresses/usernames';
-import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
-import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
-import { getPublicClient } from 'apps/web/src/cdp/utils';
+import { base, baseSepolia } from 'viem/chains';
 
 const EXPIRY = (process.env.USERNAMES_SIGNATURE_EXPIRATION_SECONDS as unknown as number) ?? 10;
 const previousClaimsKVPrefix = 'username:claims:';
@@ -59,6 +60,20 @@ const discountTypeMap: DiscountTypeMap = {
     },
   },
 };
+
+export async function hasRegisteredWithDiscount(
+  addresses: string[],
+  chainId: number,
+): Promise<boolean> {
+  const publicClient = getPublicClient(chainId);
+
+  return publicClient.readContract({
+    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId],
+    abi: RegistrarControllerABI,
+    functionName: 'hasRegisteredWithDiscount',
+    args: [addresses],
+  }) as Promise<boolean>;
+}
 
 async function signMessageWithTrustedSigner(
   claimerAddress: Address,
@@ -95,20 +110,20 @@ export async function sybilResistantUsernameSigning(
   const schema = discountTypeMap[chain][discountType]?.schemaId;
   let attestationsChain = chain === base.id ? base : baseSepolia;
 
+  const discountValidatorAddress = discountTypeMap[chain][discountType]?.discountValidatorAddress;
+  if (!discountValidatorAddress || !isAddress(discountValidatorAddress)) {
+    throw new Error('Must provide a valid discountValidatorAddress');
+  }
+
   // @ts-expect-error onchainkit expects a different type for Chain (??)
   const attestations = await getAttestations(address, attestationsChain, { schemas: [schema] });
-
   if (!attestations?.length) {
-    return { attestations: [] };
+    return { attestations: [], discountValidatorAddress };
   }
   const attestationsRes = attestations.map(
     (attestation) => JSON.parse(attestation.decodedDataJson)[0] as VerifiedAccount,
   );
 
-  const discountValidatorAddress = discountTypeMap[chain][discountType]?.discountValidatorAddress;
-  if (!discountValidatorAddress || !isAddress(discountValidatorAddress)) {
-    throw new Error('Must provide a valid discountValidatorAddress');
-  }
   try {
     let { linkedAddresses, idemKey } = await getLinkedAddresses(address as string);
 
@@ -136,6 +151,7 @@ export async function sybilResistantUsernameSigning(
         signedMessage: previousClaim.signedMessage,
         attestations: attestationsRes,
         discountValidatorAddress,
+        expires: EXPIRY.toString(),
       };
     }
 
@@ -152,25 +168,10 @@ export async function sybilResistantUsernameSigning(
       signedMessage: claim.signedMessage,
       attestations: attestationsRes,
       discountValidatorAddress,
+      expires: EXPIRY.toString(),
     };
   } catch (error) {
     console.error(error);
     throw error;
   }
-}
-
-export async function hasRegisteredWithDiscount(
-  addresses: string[],
-  chainId: number,
-): Promise<boolean> {
-  const publicClient = getPublicClient(chainId);
-
-  const res = (await publicClient.readContract({
-    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId],
-    abi: RegistrarControllerABI,
-    functionName: 'hasRegisteredWithDiscount',
-    args: [addresses],
-  })) as boolean;
-
-  return res;
 }

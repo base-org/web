@@ -5,10 +5,12 @@ import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_r
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Address, isAddress } from 'viem';
 
+// Coinbase verified account *and* CB1 structure
 export type CoinbaseProofResponse = {
   signedMessage?: string;
   attestations: VerifiedAccount[];
-  discountValidatorAddress?: Address;
+  discountValidatorAddress: Address;
+  expires?: string;
 };
 
 /**
@@ -57,8 +59,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const result = await sybilResistantUsernameSigning(address, DiscountType.CB, parsedChain);
     return res.status(200).json(result);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(error);
-    return res.status(409).json({ error: error.message });
+    return res.status(409).json({ error });
   }
 }

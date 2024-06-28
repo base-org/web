@@ -1,59 +1,112 @@
 import { CBIDProofResponse } from 'apps/web/pages/api/proofs/cbid';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
+import { Discount } from 'apps/web/pages/names';
+import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator.json';
+import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator.json';
 import { ProofTableNamespace } from 'apps/web/src/utils/proofs';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { Address, ReadContractErrorType, encodeAbiParameters } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
-import { useAccount } from 'wagmi';
+import { useAccount, useReadContract } from 'wagmi';
 
-export function useCheckCBIDAttestations() {
-  const { chainId } = useAccount();
-  const address = '0xB18e4C959bccc8EF86D78DC297fb5efA99550d85';
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<CBIDProofResponse | null>(null);
+export type AttestationData = {
+  discountValidatorAddress: Address;
+  discount: Discount;
+  contractArgs: string[];
+};
+type AttestationHookReturns = {
+  data: AttestationData | null;
+  loading: boolean;
+  error: ReadContractErrorType | null;
+};
+export function useCheckCBIDAttestations(): AttestationHookReturns {
+  const { address, chainId } = useAccount();
+  // const address = '0x9C02E8E28D8b706F67dcf0FC7F46A9ee1f9649FA';
+  const [cBIDProofResponse, setCBIDProofResponse] = useState<CBIDProofResponse | null>(null);
 
   useEffect(() => {
-    async function checkCBIDAttestations() {
+    async function checkCBIDAttestations(a: string) {
       try {
-        setLoading(true);
         const params = new URLSearchParams();
-        params.append('address', address);
+        params.append('address', a);
         params.append('namespace', ProofTableNamespace.Usernames);
         params.append('chain', (chainId === baseSepolia.id ? chainId : base.id).toString());
         const response = await fetch(`/api/proofs/cbid?${params}`);
-        const result = (await response.json()) as CBIDProofResponse;
-        setData(result);
+        if (response.ok) {
+          const result = (await response.json()) as CBIDProofResponse;
+          setCBIDProofResponse(result);
+        }
       } catch (e) {
         console.error('Error checking CB.ID attestation:', e);
-      } finally {
-        setLoading(false);
       }
     }
 
     if (address) {
-      checkCBIDAttestations().catch(console.error);
+      checkCBIDAttestations(address).catch(console.error);
     }
   }, [address, chainId]);
 
-  return { data, loading };
+  const encodedProof = useMemo(
+    () =>
+      cBIDProofResponse?.proofs
+        ? encodeAbiParameters([{ type: 'bytes32[]' }], [cBIDProofResponse?.proofs])
+        : '0x0',
+    [cBIDProofResponse?.proofs],
+  );
+  const readContractArgs = useMemo(() => {
+    if (!cBIDProofResponse?.proofs || !address) {
+      return {};
+    }
+    return {
+      address: cBIDProofResponse?.discountValidatorAddress,
+      abi: CBIDValidatorABI,
+      functionName: 'isValidDiscountRegistration',
+      args: [address, encodedProof],
+    };
+  }, [
+    address,
+    cBIDProofResponse?.discountValidatorAddress,
+    cBIDProofResponse?.proofs,
+    encodedProof,
+  ]);
+
+  const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
+
+  if (isValid && cBIDProofResponse && address) {
+    return {
+      data: {
+        discountValidatorAddress: cBIDProofResponse.discountValidatorAddress,
+        discount: Discount.CBID,
+        contractArgs: [address, encodedProof],
+      },
+      loading: false,
+      error: null,
+    };
+  }
+  return { data: null, loading: isLoading, error };
 }
 
 // returns info about Coinbase verified account attestations
 export function useCheckCoinbaseAttestations() {
-  const { chainId } = useAccount();
-  const address = '0xB18e4C959bccc8EF86D78DC297fb5efA99550d85';
+  const { address, chainId } = useAccount();
+  // const address = '0x9C02E8E28D8b706F67dcf0FC7F46A9ee1f9649FA';
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<CoinbaseProofResponse | null>(null);
+  const [coinbaseProofResponse, setCoinbaseProofResponse] = useState<CoinbaseProofResponse | null>(
+    null,
+  );
 
   useEffect(() => {
-    async function checkCoinbaseAttestations() {
+    async function checkCoinbaseAttestations(a: string) {
       try {
         setLoading(true);
         const params = new URLSearchParams();
-        params.append('address', address);
+        params.append('address', a);
         params.append('chain', (chainId === baseSepolia.id ? chainId : base.id).toString());
         const response = await fetch(`/api/proofs/coinbase?${params}`);
         const result = (await response.json()) as CoinbaseProofResponse;
-        setData(result);
+        if (response.ok) {
+          setCoinbaseProofResponse(result);
+        }
       } catch (e) {
         console.error('Error checking Coinbase account attestations:', e);
       } finally {
@@ -62,30 +115,58 @@ export function useCheckCoinbaseAttestations() {
     }
 
     if (address) {
-      checkCoinbaseAttestations().catch(console.error);
+      checkCoinbaseAttestations(address).catch(console.error);
     }
   }, [address, chainId]);
 
-  return { data, loading };
+  const signature = coinbaseProofResponse?.signedMessage as undefined | `0x${string}`;
+
+  const readContractArgs = useMemo(() => {
+    if (!address || !signature) {
+      return {};
+    }
+    return {
+      address: coinbaseProofResponse?.discountValidatorAddress,
+      abi: AttestationValidatorABI,
+      functionName: 'isValidDiscountRegistration',
+      args: [address, signature],
+    };
+  }, [address, coinbaseProofResponse?.discountValidatorAddress, signature]);
+
+  const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
+
+  if (isValid && coinbaseProofResponse && address && signature) {
+    return {
+      data: {
+        discountValidatorAddress: coinbaseProofResponse.discountValidatorAddress,
+        discount: Discount.COINBASE_VERIFIED_ACCOUNT,
+        contractArgs: [address, signature],
+      },
+      loading: false,
+      error: null,
+    };
+  }
+  return { data: null, loading: loading || isLoading, error };
 }
 
-// returns info about CB1 attestations
 export function useCheckCB1Attestations() {
-  const { chainId } = useAccount();
-  const address = '0xB18e4C959bccc8EF86D78DC297fb5efA99550d85';
+  const { address, chainId } = useAccount();
+  // const address = '0x9C02E8E28D8b706F67dcf0FC7F46A9ee1f9649FA';
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<CoinbaseProofResponse | null>(null);
+  const [cb1ProofResponse, setCB1ProofResponse] = useState<CoinbaseProofResponse | null>(null);
 
   useEffect(() => {
-    async function checkCB1Attestations() {
+    async function checkCB1Attestations(a: string) {
       try {
         setLoading(true);
         const params = new URLSearchParams();
-        params.append('address', address);
+        params.append('address', a);
         params.append('chain', (chainId === baseSepolia.id ? chainId : base.id).toString());
         const response = await fetch(`/api/proofs/cb1?${params}`);
-        const result = (await response.json()) as CoinbaseProofResponse;
-        setData(result);
+        if (response.ok) {
+          const result = (await response.json()) as CoinbaseProofResponse;
+          setCB1ProofResponse(result);
+        }
       } catch (e) {
         console.error('Error checking CB1 attestation:', e);
       } finally {
@@ -94,9 +175,36 @@ export function useCheckCB1Attestations() {
     }
 
     if (address) {
-      checkCB1Attestations().catch(console.error);
+      checkCB1Attestations(address).catch(console.error);
     }
   }, [address, chainId]);
 
-  return { data, loading };
+  const signature = cb1ProofResponse?.signedMessage as undefined | `0x${string}`;
+
+  const readContractArgs = useMemo(() => {
+    if (!address || !signature) {
+      return {};
+    }
+    return {
+      address: cb1ProofResponse?.discountValidatorAddress,
+      abi: AttestationValidatorABI,
+      functionName: 'isValidDiscountRegistration',
+      args: [address, signature],
+    };
+  }, [address, cb1ProofResponse?.discountValidatorAddress, signature]);
+
+  const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
+
+  if (isValid && cb1ProofResponse && address && signature) {
+    return {
+      data: {
+        discountValidatorAddress: cb1ProofResponse.discountValidatorAddress,
+        discount: Discount.CB1,
+        contractArgs: [address, signature],
+      },
+      loading: false,
+      error: null,
+    };
+  }
+  return { data: null, loading: loading || isLoading, error };
 }

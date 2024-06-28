@@ -1,7 +1,6 @@
-import { CBIDProofResponse } from 'apps/web/pages/api/proofs/cbid';
-import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
 import { Discount } from 'apps/web/pages/names';
 import {
+  AttestationData,
   useCheckCB1Attestations,
   useCheckCBIDAttestations,
   useCheckCoinbaseAttestations,
@@ -9,15 +8,13 @@ import {
 import { useActiveDiscountValidators } from 'apps/web/src/utils/hooks/useReadActiveDiscountValidators';
 import { useMemo } from 'react';
 
-type AttestationData = CoinbaseProofResponse | CBIDProofResponse;
-
 type MappedDiscountData = {
   [key in Discount]?: AttestationData;
 };
 
 export function useAggregatedDiscountValidators() {
   const activeDiscountValidators = useActiveDiscountValidators();
-  console.log('jf activeDiscountValidators', activeDiscountValidators);
+  console.log('activeDiscountValidators', activeDiscountValidators);
   const { data: CBIDData, loading: loadingCBIDAttestations } = useCheckCBIDAttestations();
   const { data: CB1Data, loading: loadingCB1Attestations } = useCheckCB1Attestations();
   const { data: coinbaseData, loading: loadingCoinbaseAttestations } =
@@ -41,8 +38,6 @@ export function useAggregatedDiscountValidators() {
 
     return discountMapping;
   }, [CBIDData, CB1Data, coinbaseData]);
-
-  console.log('jf Mapped Discounts to Attestation Data:', mapDiscountsToAttestationData);
 
   return {
     data: mapDiscountsToAttestationData,
