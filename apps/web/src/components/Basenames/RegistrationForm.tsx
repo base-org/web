@@ -2,7 +2,10 @@ import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import { useNameRegistrationPrice } from 'apps/web/src/utils/hooks/useNameRegistrationPrice';
+import {
+  useDiscountedNameRegistrationPrice,
+  useNameRegistrationPrice,
+} from 'apps/web/src/utils/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/utils/hooks/useRegisterNameCallback';
 import { useCallback, useState } from 'react';
 import { formatEther } from 'viem';
@@ -52,8 +55,14 @@ export function RegistrationForm({
     switchChain({ chainId: base.id });
   }, [switchChain]);
 
-  const { data: price } = useNameRegistrationPrice(name, years, discountKey);
-  const registerName = useRegisterNameCallback(name, years);
+  const { data: price } = useNameRegistrationPrice(name, years);
+  const { data: discountedPrice } = useDiscountedNameRegistrationPrice(name, years, discountKey);
+  const registerName = useRegisterNameCallback(
+    name,
+    discountKey ? discountedPrice : price,
+    years,
+    discountKey,
+  );
 
   const nameIsFree = false;
   return (
@@ -85,9 +94,7 @@ export function RegistrationForm({
         <div>
           <p className="mb-2 text-sm font-bold uppercase text-line">Amount</p>
           <div className="flex items-baseline justify-center md:justify-between">
-            <p className="mx-2 whitespace-nowrap text-3xl text-black">
-              {formatPrice(price as bigint | undefined)} ETH
-            </p>
+            <p className="mx-2 whitespace-nowrap text-3xl text-black">{formatPrice(price)} ETH</p>
             {loadingDiscounts ? (
               <div className="flex h-4 items-center justify-center">
                 <Icon name="spinner" color="currentColor" />
