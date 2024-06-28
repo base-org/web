@@ -33,6 +33,8 @@ import { NextPage } from 'next';
 import localFont from 'next/dist/compiled/@next/font/dist/local';
 
 
+coinbaseWallet.preference = "all";
+
 const connectors = connectorsForWallets(
   [
     {
@@ -49,17 +51,14 @@ const connectors = connectorsForWallets(
 const config = getDefaultConfig({
   appName: 'Base.org',
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? 'dummy-id',
-  chains: [base, baseSepolia, mainnet, sepolia],
+  chains: [baseSepolia],
   ssr: true,
 });
 const customConfig = createConfig({
   connectors,
-  chains: [base, baseSepolia, mainnet, sepolia],
+  chains: [baseSepolia],
   transports: {
-    [base.id]: http(),
     [baseSepolia.id]: http(),
-    [mainnet.id]: http(),
-    [sepolia.id]: http(),
   },
   ssr: true,
 })

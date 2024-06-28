@@ -16,7 +16,6 @@ export function initializeClient() {
 }
 
 
-
 const paymasterService = "https://api.developer.coinbase.com/rpc/v1/base/1IhTcPOmhK5aEq-4WqRZMJoOh0oPenD2"; // Change this to the official paymaster
 
 export const paymasterClient = createClient({

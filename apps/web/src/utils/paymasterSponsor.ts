@@ -7,7 +7,7 @@ import {
   decodeFunctionData,
 } from "viem";
 import { baseSepolia } from "viem/chains";
-import {client} from "../../src/utils/paymasterConfig";
+import {initializeClient} from "../../src/utils/paymasterConfig";
 
 
 import {
@@ -30,8 +30,8 @@ export async function willSponsor({
     if (entrypoint.toLowerCase() !== ENTRYPOINT_ADDRESS_V06.toLowerCase()) return false;
 
     try {
-        
-        const code = await client.getCode({ address: userOp.sender });
+        const publicClient = initializeClient();
+        const code = await publicClient.getCode({ address: userOp.sender });
      
         if (!code) {
           // no code at address, check that the initCode is deploying a Coinbase Smart Wallet
@@ -44,7 +44,7 @@ export async function willSponsor({
           if (code != CB_SW_PROXY_BYTECODE) return false;
      
           // check that userOp.sender proxies to expected implementation
-          const implementation = await client.request<{
+          const implementation = await publicClient.request<{
             Parameters: [Address, Hex, BlockTag];
             ReturnType: Hex;
           }>({

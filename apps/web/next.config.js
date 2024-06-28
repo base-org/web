@@ -85,6 +85,7 @@ const contentSecurityPolicy = {
     'https://api.opensea.io', // enables getting ENS avatars
     'https://ipfs.io', // ipfs ens avatar resolution
     'wss://www.walletlink.org',
+    'https://enhanced-provider.rainbow.me', // Rainbow provider
     isLocalDevelopment ? 'ws://localhost:3000/' : '',
     isLocalDevelopment ? 'http://localhost:3000/' : '',
   ],
