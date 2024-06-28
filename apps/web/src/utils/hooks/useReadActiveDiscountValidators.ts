@@ -1,15 +1,15 @@
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
 import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
 import { useMemo } from 'react';
-import { Abi, Address } from 'viem';
+import { Address } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
 import { useAccount, useReadContract } from 'wagmi';
 
 export type DiscountValidator = {
-  active: boolean;
-  discountValidator: Address;
-  key: string;
-  discount: number;
+  active: boolean; // whether the discount is active or not.
+  discountValidator: Address; // address of the associated validator
+  key: `0x${string}`; // unique key that identifies this discount
+  discount: bigint; // discount value denominated in wei
 };
 
 export function useActiveDiscountValidators() {
@@ -19,12 +19,14 @@ export function useActiveDiscountValidators() {
   const activeDiscountsArgs = useMemo(
     () => ({
       address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
-      abi: RegistrarControllerABI as Abi,
-      functionName: 'getActiveDiscounts' as const,
+      abi: RegistrarControllerABI,
+      functionName: 'getActiveDiscounts',
       chainId: network,
     }),
     [network],
   );
 
-  return useReadContract(activeDiscountsArgs);
+  const { data, isLoading } = useReadContract(activeDiscountsArgs);
+
+  return { data: data as DiscountValidator[] | null, isLoading };
 }

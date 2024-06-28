@@ -12,7 +12,7 @@ function secondsInYears(years: number): number {
   return Math.round(years * secondsPerYear);
 }
 
-export function useRegisterNameCallback(name: string, years: number): () => Promise<void> {
+export function useRegisterNameCallback(name: string, years: number): () => void {
   const { address, chainId } = useAccount();
   const { data: client } = useWalletClient();
   const { writeContractAsync } = useWriteContract();
@@ -21,7 +21,7 @@ export function useRegisterNameCallback(name: string, years: number): () => Prom
     console.error(
       'useRegisterNameCallback: Unable to create name registration callback; chainId must be defined.',
     );
-    return async () => Promise.resolve();
+    return () => {};
   }
 
   const normalizedName = normalizeEnsDomainName(name);
@@ -50,19 +50,14 @@ export function useRegisterNameCallback(name: string, years: number): () => Prom
   // handler for discount type
 
   // isValidDiscountedRegistration()
-  return async () => {
-    try {
-      console.log('jf useRegisterNameCallback registerRequest', registerRequest);
-      const result = await writeContractAsync({
-        abi,
-        address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId],
-        functionName: 'discountedRegister',
-        args: [registerRequest, 0x0, 0x0],
-        chainId,
-      });
-      console.log('jf useRegisterNameCallback result', result);
-    } catch (e) {
-      console.error('useRegisterNameCallback:', e);
-    }
+  return () => {
+    console.log('jf useRegisterNameCallback registerRequest', registerRequest);
+    writeContractAsync({
+      abi,
+      address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId],
+      functionName: 'discountedRegister',
+      args: [registerRequest, 0x0, 0x0],
+      chainId,
+    }).catch(console.error);
   };
 }

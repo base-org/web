@@ -21,7 +21,6 @@ type AttestationHookReturns = {
 };
 export function useCheckCBIDAttestations(): AttestationHookReturns {
   const { address, chainId } = useAccount();
-  // const address = '0x9C02E8E28D8b706F67dcf0FC7F46A9ee1f9649FA';
   const [cBIDProofResponse, setCBIDProofResponse] = useState<CBIDProofResponse | null>(null);
 
   useEffect(() => {
@@ -89,7 +88,6 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
 // returns info about Coinbase verified account attestations
 export function useCheckCoinbaseAttestations() {
   const { address, chainId } = useAccount();
-  // const address = '0x9C02E8E28D8b706F67dcf0FC7F46A9ee1f9649FA';
   const [loading, setLoading] = useState(false);
   const [coinbaseProofResponse, setCoinbaseProofResponse] = useState<CoinbaseProofResponse | null>(
     null,
@@ -151,7 +149,6 @@ export function useCheckCoinbaseAttestations() {
 
 export function useCheckCB1Attestations() {
   const { address, chainId } = useAccount();
-  // const address = '0x9C02E8E28D8b706F67dcf0FC7F46A9ee1f9649FA';
   const [loading, setLoading] = useState(false);
   const [cb1ProofResponse, setCB1ProofResponse] = useState<CoinbaseProofResponse | null>(null);
 

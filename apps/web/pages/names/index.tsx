@@ -13,7 +13,10 @@ import {
 import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { Layout, NavigationType } from 'apps/web/src/components/Layout/Layout';
-import { useAggregatedDiscountValidators } from 'apps/web/src/utils/hooks/useAggregatedDiscountValidators';
+import {
+  findFirstValidDiscountKey,
+  useAggregatedDiscountValidators,
+} from 'apps/web/src/utils/hooks/useAggregatedDiscountValidators';
 import classNames from 'classnames';
 import Head from 'next/head';
 import { Fragment, ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
@@ -24,6 +27,12 @@ export enum ClaimProgression {
   SEARCH,
   CLAIM,
   PROFILE,
+}
+
+export enum Discount {
+  CBID,
+  CB1,
+  COINBASE_VERIFIED_ACCOUNT,
 }
 
 const SEARCH_LABEL_COPY_STRINGS = [
@@ -40,16 +49,6 @@ const useRotatingText = (strings: string[]) => {
   return strings[currentIndex];
 };
 
-/* eslint-disable @typescript-eslint/prefer-literal-enum-member */
-export enum Discount {
-  NONE = 0,
-  ALREADY_REDEEMED = 1 << 0, // 1
-  CB1 = 1 << 1, // 2
-  COINBASE_VERIFIED_ACCOUNT = 1 << 2, // 4
-  CBID = 1 << 3, // 8
-}
-/* eslint-enable @typescript-eslint/prefer-literal-enum-member */
-
 /*
 test addresses w/ different verifications
   0xB18e4C959bccc8EF86D78DC297fb5efA99550d85 - cb.id 
@@ -58,14 +57,7 @@ test addresses w/ different verifications
 */
 
 export function Usernames() {
-  const [discount, setDiscount] = useState<number>(Discount.NONE);
-  const addDiscount = useCallback((d: Discount) => setDiscount((prev) => prev | d), []);
-  const hasDiscount = useCallback((d: Discount) => (discount & d) !== 0, [discount]);
-  const { loading: loadingDiscounts, hasUsedADiscount } = useAggregatedDiscountValidators();
-
-  if (hasUsedADiscount && !hasDiscount(Discount.ALREADY_REDEEMED)) {
-    addDiscount(Discount.ALREADY_REDEEMED);
-  }
+  const { data: discounts, loading: loadingDiscounts } = useAggregatedDiscountValidators();
 
   const [progress, setProgress] = useState<ClaimProgression>(ClaimProgression.SEARCH);
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
@@ -292,8 +284,7 @@ export function Usernames() {
               <RegistrationForm
                 name={selectedName}
                 loadingDiscounts={loadingDiscounts}
-                discount={discount}
-                hasDiscount={hasDiscount}
+                discountKey={findFirstValidDiscountKey(discounts)}
                 toggleModal={toggleLearnMoreModal}
               />
             </Transition>
