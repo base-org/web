@@ -84,6 +84,8 @@ const contentSecurityPolicy = {
     'https://base-goerli.blockscout.com/api', // Blockscout
     'https://iris-api-sandbox.circle.com/attestations/', // Circle (testnet)
     'https://iris-api.circle.com/attestations/', // Circle (mainnet)
+    'https://enhanced-provider.rainbow.me', // Rainbow provider
+    
   ],
   'img-src': ["'self'", 'data:', 'https://*.walletconnect.com/'], // WalletConnect,
 };
