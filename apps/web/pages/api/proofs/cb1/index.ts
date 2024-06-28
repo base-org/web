@@ -6,25 +6,32 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { isAddress } from 'viem';
 
 /**
- * This endpoint reports whether or not the provided access has access to the cb1 or verified account attestations
+ * This endpoint checks if the provided address has access to the cb1 attestation.
  *
- * Error responses:
- * 400: if address is invalid or missing verifications
- * 405: for unauthorized methods
- * 409: if user has already claimed a username
- * 500: for internal server errors
+ * Possible Error Responses:
+ * - 400: Invalid address or missing verifications.
+ * - 405: Unauthorized method.
+ * - 409: User has already claimed a username.
+ * - 500: Internal server error.
  *
- * @param req
+ * @returns {Object} - An object with the signed message, attestations, and discount validator address.
+ * Example response:
  * {
- *   address: address to check if user is allowed to claim a new username with discount
+ *   "signedMessage": "0x0000000000000000000000009c02e8e28d8b706f67dcf0fc7f46a9ee1f9649fa000000000000000000000000000000000000000000000000000000000000012c000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000416f4b871a02406ddddbf6f6df1c58416830c5ce45becad5b4f30cf32f74ee39a5559659f9e29479bc76bb1ebf40fffc7119d09ed7c8dcaf6075956f83935263851b00000000000000000000000000000000000000000000000000000000000000",
+ *   "attestations": [
+ *     {
+ *       "name": "verifiedCoinbaseOne",
+ *       "type": "bool",
+ *       "signature": "bool verifiedCoinbaseOne",
+ *       "value": {
+ *         "name": "verifiedCoinbaseOne",
+ *         "type": "bool",
+ *         "value": true
+ *       }
+ *     }
+ *   ],
+ *   "discountValidatorAddress": "0x502df754f25f492cad45ed85a4de0ee7540717e7"
  * }
- * @param res
- * {
- *  linkedAddresses: addresses associated with the one provided (will always include the provided address)
- *  signedMessage: this is to be passed into the contract to claim a username
- *  attestations: will show the attestations that the user has  for verified account and verified cb1 account
- * }
- * @returns
  */
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
@@ -40,20 +47,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!trustedSignerPKey) {
     return res.status(500).json({ error: 'currently unable to sign' });
   }
-
-  if (!chain || !isSupportedChain(parseInt(chain as string))) {
-    return res.status(400).json({ error: 'invalid chain' });
+  if (!chain || Array.isArray(chain)) {
+    return res.status(400).json({ error: 'chain must be a single value' });
+  }
+  let parsedChain = parseInt(chain);
+  if (!isSupportedChain(parsedChain)) {
+    return res.status(400).json({ error: 'chain must be Base or Base Sepolia' });
   }
 
   try {
-    const result = await sybilResistantUsernameSigning(
-      address,
-      DiscountType.CB1,
-      parseInt(chain as string),
-    );
+    const result = await sybilResistantUsernameSigning(address, DiscountType.CB1, parsedChain);
     return res.status(200).json(result);
   } catch (error) {
     console.error(error);
-    return res.status(409).json({ error: ' ' });
+    return res.status(409).json({ error });
   }
 }

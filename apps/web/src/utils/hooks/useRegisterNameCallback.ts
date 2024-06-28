@@ -22,15 +22,17 @@ function secondsInYears(years: number): number {
 
 export function useRegisterNameCallback(
   name: string,
-  years: number): () => void {
+  years: number,
+  discountKey?: string,
+  validationData?: string): () => void {
   const [wallet, setWallet] = useState<number>(2); // 0 for EOA, 1 for Predeployed, 2 for SCW
   const { address, chainId } = useAccount();
   
   const account = useAccount();
   const { data: client } = useWalletClient();
-  const { writeContractAsync } = useWriteContract();
+  const { writeContract } = useWriteContract();
   const network = chainId === baseSepolia.id ? chainId : base.id;
-  const { writeContractsAsync } = useWriteContracts(); // For Smart Contract Wallet calls
+  const { writeContracts } = useWriteContracts(); // For Smart Contract Wallet calls
   
   useEffect(() => {
     const isWalletSCW = async () => {
@@ -109,26 +111,33 @@ export function useRegisterNameCallback(
     }),
     [address, network, normalizedName, years],
   );
+  const writeContractArgs = useMemo(() => {
+    return {
+      abi,
+      address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
+      chainId: network,
+      ...(Boolean(discountKey && validationData)
+        ? {
+            functionName: 'discountedRegister',
+            args: [registerRequest, discountKey, validationData],
+          }
+        : { functionName: 'register', args: [registerRequest] }),
+    };
+  }, [discountKey, network, registerRequest, validationData]);
+
  
-  return async () => {
+  return () => {
 
     if (wallet == 0) {
       try {
-        console.log('jf useRegisterNameCallback registerRequest', registerRequest);
-        const result = await writeContractAsync({
-          abi,
-          address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId],
-          functionName: 'discountedRegister',
-          args: [registerRequest, '0x0000000000000000000000000000000000000000000000000000000000000000', '0x'],
-          chainId,
-        });
+        const result = writeContract(writeContractArgs);
         console.log('jf useRegisterNameCallback result', result);
       } catch (e) {
         console.error('useRegisterNameCallback:', e);
       }
     } else {
       try {
-        const resultSCW = await writeContractsAsync({
+        const resultSCW = writeContracts({
           contracts: [
             {
               address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId],
@@ -143,5 +152,7 @@ export function useRegisterNameCallback(
         console.error("SCW call error", e);
       }
     }
-  };
+  }
+  ;
+
 }

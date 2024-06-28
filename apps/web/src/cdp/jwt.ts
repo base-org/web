@@ -22,8 +22,7 @@ export async function generateCdpJwt(requestMethod: string, requestPath: string)
     exp: Math.floor(Date.now() / 1000) + 60,
     uri: uri,
   };
-
-  const key = crypto.createPrivateKey(cdpKeySecret);
+  const key = crypto.createPrivateKey(cdpKeySecret.replace(/\\n/g, '\n'));
 
   const jwt = await new SignJWT(claims)
     .setProtectedHeader({ alg: algorithm, kid: cdpKeyName, nonce })

@@ -1,9 +1,19 @@
 import { getAttestations } from '@coinbase/onchainkit/identity';
 import { kv } from '@vercel/kv';
+import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
+import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
+import {
+  USERNAME_CB1_DISCOUNT_VALIDATOR,
+  USERNAME_CB_DISCOUNT_VALIDATOR,
+  USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
+} from 'apps/web/src/addresses/usernames';
 import { getLinkedAddresses } from 'apps/web/src/cdp/api';
+import { getPublicClient } from 'apps/web/src/cdp/utils';
 import {
   ATTESTATION_VERIFIED_ACCOUNT_SCHEMA_ID,
   ATTESTATION_VERIFIED_CB1_ACCOUNT_SCHEMA_ID,
+  trustedSignerAddress,
+  trustedSignerPKey,
 } from 'apps/web/src/constants';
 import {
   DiscountType,
@@ -12,8 +22,6 @@ import {
   PreviousClaims,
   VerifiedAccount,
 } from 'apps/web/src/utils/proofs/types';
-import { base, baseSepolia } from 'viem/chains';
-import { trustedSignerAddress, trustedSignerPKey } from 'apps/web/src/constants';
 import {
   Address,
   encodeAbiParameters,
@@ -23,16 +31,12 @@ import {
   parseAbiParameters,
 } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
-import {
-  USERNAME_CB1_DISCOUNT_VALIDATOR,
-  USERNAME_CB_DISCOUNT_VALIDATOR,
-} from 'apps/web/src/addresses/usernames';
-import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
+import { base, baseSepolia } from 'viem/chains';
 
 const EXPIRY = (process.env.USERNAMES_SIGNATURE_EXPIRATION_SECONDS as unknown as number) ?? 10;
 const previousClaimsKVPrefix = 'username:claims:';
 
-type DiscountTypeMap = Record<number, DiscountTypes>;
+type DiscountTypeMap = Record<84532 | 8453, DiscountTypes>;
 
 const discountTypeMap: DiscountTypeMap = {
   [baseSepolia.id]: {
@@ -56,6 +60,20 @@ const discountTypeMap: DiscountTypeMap = {
     },
   },
 };
+
+export async function hasRegisteredWithDiscount(
+  addresses: string[],
+  chainId: number,
+): Promise<boolean> {
+  const publicClient = getPublicClient(chainId);
+
+  return publicClient.readContract({
+    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId],
+    abi: RegistrarControllerABI,
+    functionName: 'hasRegisteredWithDiscount',
+    args: [addresses],
+  }) as Promise<boolean>;
+}
 
 async function signMessageWithTrustedSigner(
   claimerAddress: Address,
@@ -87,27 +105,34 @@ async function signMessageWithTrustedSigner(
 export async function sybilResistantUsernameSigning(
   address: `0x${string}`,
   discountType: DiscountType,
-  chain: number,
+  chain: 84532 | 8453,
 ): Promise<CoinbaseProofResponse> {
   const schema = discountTypeMap[chain][discountType]?.schemaId;
   let attestationsChain = chain === base.id ? base : baseSepolia;
-
-  // @ts-expect-error onchainkit expects a different type for Chain (??)
-  const attestations = await getAttestations(address, attestationsChain, { schemas: [schema] });
-
-  if (!attestations?.length) {
-    return { attestations: [] };
-  }
-  const attestationsRes = attestations.map(
-    (attestation) => JSON.parse(attestation.decodedDataJson)[0] as VerifiedAccount,
-  );
 
   const discountValidatorAddress = discountTypeMap[chain][discountType]?.discountValidatorAddress;
   if (!discountValidatorAddress || !isAddress(discountValidatorAddress)) {
     throw new Error('Must provide a valid discountValidatorAddress');
   }
+
+  // @ts-expect-error onchainkit expects a different type for Chain (??)
+  const attestations = await getAttestations(address, attestationsChain, { schemas: [schema] });
+  if (!attestations?.length) {
+    return { attestations: [], discountValidatorAddress };
+  }
+  const attestationsRes = attestations.map(
+    (attestation) => JSON.parse(attestation.decodedDataJson)[0] as VerifiedAccount,
+  );
+
   try {
     let { linkedAddresses, idemKey } = await getLinkedAddresses(address as string);
+
+    const hasPreviouslyRegistered = await hasRegisteredWithDiscount(linkedAddresses, chain);
+    // if any linked address registered previously return an error
+    if (hasPreviouslyRegistered) {
+      throw new Error('You have already claimed a username with a different address (onchain).');
+    }
+
     const kvKey = `${previousClaimsKVPrefix}${idemKey}`;
     //check kv for previous claim entries
     let previousClaims = await kv.get<PreviousClaims>(kvKey);
@@ -115,18 +140,18 @@ export async function sybilResistantUsernameSigning(
       const previousClaim = previousClaims[discountType];
       //check if there's an entry for this type, if there's no entry, throw an error. This means that there's already a signature for other discount, potential sybil
       if (!previousClaim) {
-        throw new Error(' ');
+        throw new Error('You have already claimed a username with a different discount.');
       }
       if (previousClaim.address != address) {
-        throw new Error(' ');
+        throw new Error('You have already claimed a username with a different address.');
       }
 
       // return previously signed message
       return {
-        linkedAddresses,
         signedMessage: previousClaim.signedMessage,
         attestations: attestationsRes,
         discountValidatorAddress,
+        expires: EXPIRY.toString(),
       };
     }
 
@@ -140,10 +165,10 @@ export async function sybilResistantUsernameSigning(
     await kv.set(kvKey, { [discountType]: claim }, { ex: EXPIRY });
 
     return {
-      linkedAddresses,
       signedMessage: claim.signedMessage,
       attestations: attestationsRes,
       discountValidatorAddress,
+      expires: EXPIRY.toString(),
     };
   } catch (error) {
     console.error(error);

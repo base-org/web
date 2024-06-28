@@ -8,10 +8,35 @@ import profilePictures5 from 'apps/web/src/components/ConnectWalletButton/profil
 import profilePictures6 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/6.svg';
 import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/7.svg';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
+import { SocialPlatform } from 'apps/web/src/utils/socialPlatforms';
 
 export const BASE_ETH_DOMAIN = 'base.eth';
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
-export const USERNAME_MAX_CHARACTER_LENGTH = 200;
+export const USERNAME_MAX_CHARACTER_LENGTH = 20;
+
+export const USERNAME_DESCRIPTION_MAX_LENGTH = 200;
+
+// DANGER: Changing this post-mainnet launch means the stored data won't be accessible via the updated key
+export enum UsernameTextRecordKeys {
+  Description = 'description',
+  Twitter = 'com.twitter',
+  Farcaster = 'xyz.farcaster',
+  Lens = 'xyz.lens',
+  Telegram = 'org.telegram',
+  Discord = 'com.discord',
+  // TODO: Implement common ENS records: display, avatar, keywords, email, mail, notice, location, phone, url,
+}
+
+// // Helper, maps traditional social platforms name to textrecord keys
+export const socialPlatformToTextRecordKeys = {
+  [SocialPlatform.Twitter]: UsernameTextRecordKeys.Twitter,
+  [SocialPlatform.Farcaster]: UsernameTextRecordKeys.Farcaster,
+  [SocialPlatform.Lens]: UsernameTextRecordKeys.Lens,
+  [SocialPlatform.Telegram]: UsernameTextRecordKeys.Telegram,
+  [SocialPlatform.Discord]: UsernameTextRecordKeys.Discord,
+};
+
+export type UsernameTextRecords = Record<UsernameTextRecordKeys, string>;
 
 // Any names non-compliant with ENSIP-15 will fail when using ENS normalize()
 // For now, we'll only accept alphanumerics characters, including accents

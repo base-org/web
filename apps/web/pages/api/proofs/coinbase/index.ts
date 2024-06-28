@@ -5,15 +5,16 @@ import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_r
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Address, isAddress } from 'viem';
 
+// Coinbase verified account *and* CB1 structure
 export type CoinbaseProofResponse = {
   signedMessage?: string;
   attestations: VerifiedAccount[];
-  linkedAddresses?: Address[];
-  discountValidatorAddress?: string;
+  discountValidatorAddress: Address;
+  expires?: string;
 };
 
 /**
- * This endpoint reports whether or not the provided access has access to the cb1 or verified account attestations
+ * This endpoint reports whether or not the provided access has access to the verified account attestation
  *
  * Error responses:
  * 400: if address is invalid or missing verifications
@@ -27,7 +28,6 @@ export type CoinbaseProofResponse = {
  * }
  * @param res
  * {
- *  linkedAddresses: addresses associated with the one provided (will always include the provided address)
  *  signedMessage: this is to be passed into the contract to claim a username
  *  attestations: will show the attestations that the user has  for verified account and verified cb1 account
  * }
@@ -48,19 +48,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(500).json({ error: 'currently unable to sign' });
   }
 
-  if (!chain || !isSupportedChain(parseInt(chain as string))) {
-    return res.status(400).json({ error: 'invalid chain' });
+  if (!chain || Array.isArray(chain)) {
+    return res.status(400).json({ error: 'chain must be a single value' });
+  }
+  let parsedChain = parseInt(chain);
+  if (!isSupportedChain(parsedChain)) {
+    return res.status(400).json({ error: 'chain must be Base or Base Sepolia' });
   }
 
   try {
-    const result = await sybilResistantUsernameSigning(
-      address,
-      DiscountType.CB,
-      parseInt(chain as string),
-    );
+    const result = await sybilResistantUsernameSigning(address, DiscountType.CB, parsedChain);
     return res.status(200).json(result);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error(error);
-    return res.status(409).json({ error: ' ' });
+    return res.status(409).json({ error });
   }
 }

@@ -1,10 +1,11 @@
 import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
-import { Discount } from 'apps/web/pages/names';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import { useNameRegistrationPrice } from 'apps/web/src/utils/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/utils/hooks/useRegisterNameCallback';
 import { useCallback, useState } from 'react';
+import { formatEther } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
 import { useSwitchChain } from 'wagmi';
 
@@ -12,13 +13,27 @@ type RegistrationFormProps = {
   name: string;
   loadingDiscounts: boolean;
   toggleModal: () => void;
-  discount: number;
-  hasDiscount: (d: number) => boolean;
+  discountKey: `0x${string}` | undefined;
 };
 
+const threshold = 0.01;
+
+function formatPrice(price?: bigint) {
+  if (!price) {
+    return '...';
+  }
+  const formattedPrice = formatEther(price);
+  const value = parseFloat(formattedPrice);
+
+  if (value < threshold) {
+    return parseFloat(value.toFixed(6));
+  } else {
+    return parseFloat(value.toFixed(2));
+  }
+}
+
 export function RegistrationForm({
-  discount,
-  hasDiscount,
+  discountKey,
   name,
   loadingDiscounts,
   toggleModal,
@@ -35,11 +50,12 @@ export function RegistrationForm({
 
   const switchChainToBase = useCallback(() => {
     switchChain({ chainId: base.id });
-  }, []);
+  }, [switchChain]);
 
+  const { data: price } = useNameRegistrationPrice(name, years, discountKey);
   const registerName = useRegisterNameCallback(name, years);
 
-  const nameIsFree = !hasDiscount(Discount.NONE) && !hasDiscount(Discount.ALREADY_REDEEMED);
+  const nameIsFree = false;
   return (
     <div className="bg- mx-auto w-full max-w-[50rem] transition-all duration-500">
       <div className="z-10 mx-4 flex flex-col justify-between gap-4 rounded-2xl bg-[#F7F7F7] p-8 text-gray/60 shadow-xl md:flex-row md:items-center">
@@ -70,20 +86,20 @@ export function RegistrationForm({
           <p className="mb-2 text-sm font-bold uppercase text-line">Amount</p>
           <div className="flex items-baseline justify-center md:justify-between">
             <p className="mx-2 whitespace-nowrap text-3xl text-black">
-              {loadingDiscounts ? '...' : '0.01'} ETH
+              {formatPrice(price as bigint | undefined)} ETH
             </p>
             {loadingDiscounts ? (
               <div className="flex h-4 items-center justify-center">
                 <Icon name="spinner" color="currentColor" />
               </div>
             ) : (
-              <span className="whitespace-nowrap text-xl text-gray/60">${3.82}</span>
+              <span className="whitespace-nowrap text-xl text-gray/60">$--.--</span>
             )}
           </div>
         </div>
 
         <ConnectButton.Custom>
-          {({ account, chain, openChainModal, mounted }) => {
+          {({ account, chain, mounted }) => {
             const ready = mounted;
             const connected = ready && account && chain;
 

@@ -162,7 +162,7 @@ export function FloatingENSPills() {
     pillRefs.current[index] = el;
   }, []);
   return (
-    <div className="pointer-events-none absolute inset-0">
+    <div className="oveflow-hidden pointer-events-none -z-10 w-screen overflow-hidden">
       {pills.map(({ avatar, name, x, y, transform }, i) => (
         <Pill
           key={`${x}-${y}`}

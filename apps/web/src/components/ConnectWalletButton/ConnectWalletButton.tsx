@@ -76,7 +76,7 @@ export function ConnectWalletButton({
         const ready = mounted;
         const connected = ready && account && chain;
 
-        if (!connected) {
+        if (!connected || !address) {
           return connectWalletButtonVariant === ConnectWalletButtonVariants.Shiny ? (
             <ShinyButton variant={colorVariant[color]} onClick={clickConnect}>
               Connect
@@ -110,7 +110,7 @@ export function ConnectWalletButton({
           >
             <UserAvatar size={AvatarSizes.Medium} />
             <span className={userAddressClasses}>
-              <UserAddress />
+              <UserAddress address={address} />
             </span>
           </button>
         );

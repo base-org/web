@@ -1,18 +1,18 @@
+import classNames from 'classnames';
 import { forwardRef, InputHTMLAttributes } from 'react';
 
-type InputProps = {
-  className?: string;
-} & InputHTMLAttributes<HTMLInputElement>
+export type InputProps = InputHTMLAttributes<HTMLInputElement>;
 
-const Input = forwardRef<HTMLInputElement, InputProps>(({ className = '', ...props }, ref) => {
-  return (
-    <input
-      ref={ref}
-      className={`transition-colors hover:border-blue-600 ${className}`}
-      {...props}
-    />
-  );
-});
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ className = '', disabled, ...props }, ref) => {
+    const inputClassNames = classNames(
+      'transition-colors hover:border-blue-600',
+      { 'opacity-50 pointer-events-none bg-line/10': disabled },
+      className,
+    );
+    return <input ref={ref} className={inputClassNames} {...props} />;
+  },
+);
 
 Input.displayName = 'Input';
 

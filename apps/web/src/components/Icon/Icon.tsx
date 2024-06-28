@@ -220,6 +220,18 @@ const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
       />
     </svg>
   ),
+  blueCircle: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 15 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="mr-1"
+    >
+      <circle cx="7.5" cy="7.5" r="7.5" fill={color} />
+    </svg>
+  ),
 };
 
 export function Icon({ name, color = 'white', width = '24', height = '24' }: IconProps) {

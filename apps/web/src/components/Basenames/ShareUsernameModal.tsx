@@ -10,11 +10,11 @@ import {
   socialPlatformHandle,
   socialPlatformLogoForDisplay,
   socialPlatformShareLinkFunction,
-  socialPlatformsEnabled,
   socialPlatformsNameForDisplay,
 } from 'apps/web/src/utils/socialPlatforms';
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
 
+export const socialPlatformsEnabled = [SocialPlatform.Twitter, SocialPlatform.Farcaster];
 export default function ShareUsernameModal({
   isOpen,
   toggleModal,
@@ -51,13 +51,14 @@ export default function ShareUsernameModal({
       url: `https://base.org/names/${username}`,
     };
     const shareLinkFunction = socialPlatformShareLinkFunction[socialPlatform];
+    if (shareLinkFunction) {
+      const shareLink = shareLinkFunction(socialMediaShareParams);
+      const left = window.innerWidth / 2 - popupWidth / 2;
+      const top = window.innerHeight / 2 - popupHeight / 2;
+      const options = `width=${popupWidth},height=${popupHeight},left=${left},top=${top}`;
 
-    const shareLink = shareLinkFunction(socialMediaShareParams);
-    const left = window.innerWidth / 2 - popupWidth / 2;
-    const top = window.innerHeight / 2 - popupHeight / 2;
-    const options = `width=${popupWidth},height=${popupHeight},left=${left},top=${top}`;
-
-    window.open(shareLink, '_blank', options);
+      window.open(shareLink, '_blank', options);
+    }
   };
 
   return (
