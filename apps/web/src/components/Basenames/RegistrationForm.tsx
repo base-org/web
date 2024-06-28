@@ -5,6 +5,7 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { useNameRegistrationPrice } from 'apps/web/src/utils/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/utils/hooks/useRegisterNameCallback';
 import { useCallback, useState } from 'react';
+import { formatEther } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
 import { useSwitchChain } from 'wagmi';
 
@@ -14,6 +15,22 @@ type RegistrationFormProps = {
   toggleModal: () => void;
   discountKey: `0x${string}` | undefined;
 };
+
+const threshold = 0.01;
+
+function formatPrice(price?: bigint) {
+  if (!price) {
+    return '...';
+  }
+  const formattedPrice = formatEther(price);
+  const value = parseFloat(formattedPrice);
+
+  if (value < threshold) {
+    return parseFloat(value.toFixed(6));
+  } else {
+    return parseFloat(value.toFixed(2));
+  }
+}
 
 export function RegistrationForm({
   discountKey,
@@ -70,14 +87,14 @@ export function RegistrationForm({
           <p className="mb-2 text-sm font-bold uppercase text-line">Amount</p>
           <div className="flex items-baseline justify-center md:justify-between">
             <p className="mx-2 whitespace-nowrap text-3xl text-black">
-              {loadingDiscounts ? '...' : '0.01'} ETH
+              {formatPrice(price as bigint | undefined)} ETH
             </p>
             {loadingDiscounts ? (
               <div className="flex h-4 items-center justify-center">
                 <Icon name="spinner" color="currentColor" />
               </div>
             ) : (
-              <span className="whitespace-nowrap text-xl text-gray/60">${3.82}</span>
+              <span className="whitespace-nowrap text-xl text-gray/60">$--.--</span>
             )}
           </div>
         </div>
