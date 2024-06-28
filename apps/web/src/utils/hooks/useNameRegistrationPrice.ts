@@ -36,7 +36,5 @@ export function useNameRegistrationPrice(
           },
     [address, discountKey, normalizedName, years],
   );
-  const { data, isLoading, status, error } = useReadContract(readContractArgs);
-  console.log('jf useNameRegistrationPrice', data, status, error);
-  return { data, isLoading };
+  return useReadContract(readContractArgs);
 }

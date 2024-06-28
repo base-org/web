@@ -53,7 +53,6 @@ export function RegistrationForm({
   }, [switchChain]);
 
   const { data: price } = useNameRegistrationPrice(name, years, discountKey);
-  console.log('jf price', price);
   const registerName = useRegisterNameCallback(name, years);
 
   const nameIsFree = false;
