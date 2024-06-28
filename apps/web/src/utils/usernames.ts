@@ -16,19 +16,27 @@ export const USERNAME_MAX_CHARACTER_LENGTH = 20;
 
 export const USERNAME_DESCRIPTION_MAX_LENGTH = 200;
 
-// TODO: Implement common ENS records: display, avatar,, keywords, email, mail, notice, location, phone, url,
-export enum UsernameTextRecords {
+// DANGER: Changing this post-mainnet launch means the stored data won't be accessible via the updated key
+export enum UsernameTextRecordKeys {
   Description = 'description',
+  Twitter = 'com.twitter',
+  Farcaster = 'xyz.farcaster',
+  Lens = 'xyz.lens',
+  Telegram = 'org.telegram',
+  Discord = 'com.discord',
+  // TODO: Implement common ENS records: display, avatar, keywords, email, mail, notice, location, phone, url,
 }
 
-// DANGER: Changing this post-mainnet launch means the stored data won't be accessible via the updated key
-export const usernameTextRecordsKeys = {
-  [SocialPlatform.Twitter]: 'com.twitter',
-  [SocialPlatform.Farcaster]: 'xyz.farcaster',
-  [SocialPlatform.Lens]: 'xyz.lens',
-  [SocialPlatform.Telegram]: 'org.telegram',
-  [SocialPlatform.Discord]: 'com.discord',
+// // Helper, maps traditional social platforms name to textrecord keys
+export const socialPlatformToTextRecordKeys = {
+  [SocialPlatform.Twitter]: UsernameTextRecordKeys.Twitter,
+  [SocialPlatform.Farcaster]: UsernameTextRecordKeys.Farcaster,
+  [SocialPlatform.Lens]: UsernameTextRecordKeys.Lens,
+  [SocialPlatform.Telegram]: UsernameTextRecordKeys.Telegram,
+  [SocialPlatform.Discord]: UsernameTextRecordKeys.Discord,
 };
+
+export type UsernameTextRecords = Record<UsernameTextRecordKeys, string>;
 
 // Any names non-compliant with ENSIP-15 will fail when using ENS normalize()
 // For now, we'll only accept alphanumerics characters, including accents
