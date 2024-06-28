@@ -390,7 +390,9 @@ You also need a `useEffect` to refetch the data from the blockchain when `scanne
 
 ```tsx
 useEffect(() => {
-  queryClient.invalidateQueries({ queryKey: balanceQueryKey });
+  if (scannedAddress) {
+    queryClient.invalidateQueries({ queryKey: balanceQueryKey });
+  }
 }, [scannedAddress]);
 ```
 
