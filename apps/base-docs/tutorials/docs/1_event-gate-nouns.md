@@ -65,7 +65,7 @@ Give your DAO a name and symbol. Optionally, upload a cover avatar image and/or 
 
 ### Auction
 
-For testing, you'll want the `Auction Reserve Price` as low as possible, .0001 ETH, and the `Auction Duration` to be enough time to buy a few NFTs for testing with different wallet addresses, but not so long you get board. About 2 minutes is a good middle ground.
+For testing, you'll want the `Auction Reserve Price` as low as possible, .0001 ETH, and the `Auction Duration` to be enough time to buy a few NFTs for testing with different wallet addresses, but not so long you get bored. About 2 minutes is a good middle ground.
 
 **Be sure** to change `Days` from 1 to 0!
 
@@ -148,31 +148,27 @@ Add it with:
 bun add html5-qrcode
 ```
 
-In `page.tsx`, add the state variables needed by the scanner, as outlined in the [Html5-QRCode Docs], and the variables you'll need to show whether or not to let the person into the event:
+In `page.tsx`, import, and add the state variables needed by the scanner, as outlined in the [Html5-QRCode Docs], and the variables you'll need to show whether or not to let the person into the event:
 
 ```tsx
-const [scannedAddress, setScannedAddress] = useState('');
-const [lastScanned, setLastScanned] = useState('');
+import { Html5Qrcode } from 'html5-qrcode';
+```
+
+```tsx
+const [scannedAddress, setScannedAddress] = useState<string | null>(null);
 const [authorized, setAuthorized] = useState(false);
 const [scanning, setScanning] = useState(false);
 ```
 
-`scannedAddress` will be populated by the QR Code scanner. You'll use it with `useEffect` to check for NFT ownership. Start by adding a stub that if an address is present, to set that address as the `lastScanned`, and clear the current scan.
+`scannedAddress` will be populated by the QR Code scanner. You'll use it with `useEffect` to check for NFT ownership.
 
-```tsx
-useEffect(() => {
-  if (scannedAddress) {
-    setLastScanned(scannedAddress);
-    setScannedAddress('');
-  }
-}, [scannedAddress]);
-```
-
-You can pull the operations of the scanner from the [Html5-QRCode Docs], and modify it to only look for addresses, and to handle the different formats used by popular wallets:
+Review the operations of the scanner from the [Html5-QRCode Docs], and modify it to only look for addresses, and to handle the different formats used by popular wallets:
 
 ```tsx
 async function startScanning() {
   setScanning(true);
+  setScannedAddress(null);
+  setAuthorized(false);
   let cameraId = '';
 
   try {
@@ -260,7 +256,7 @@ return (
         </div>
         <div id="bottom" className="h-1/8">
           <br />
-          <p>Last scanned: {lastScanned}</p>
+          <p>Last scanned: {scannedAddress}</p>
           <p>Authorized: {authorized ? 'Yes' : 'No'}</p>
         </div>
       </main>
@@ -271,7 +267,7 @@ return (
 
 Run the app, and press the button to enable your camera. You may have to grant permissions.
 
-On your phone, display the QR code you use to receive payments and show it to the camera. Your wallet address will be displayed below the video. If you have another, try it as well.
+On your phone, open your wallet app, display the QR code you use to receive payments and show it to the camera. Your wallet address will be displayed below the video. If you have another wallet app, try it as well.
 
 `Authorized` won't change because you aren't checking for NFT ownership yet.
 
@@ -390,17 +386,17 @@ useEffect(() => {
 }, [balanceData]);
 ```
 
-You also need a `useEffect` to refetch the data from the blockchain when `scannedAddress` changes:
+You also need a `useEffect` to refetch the data from the blockchain when `scannedAddress` changes, accomplished by invalidating the query for the `queryKey` you extracted from `useReadContract` :
 
 ```tsx
 useEffect(() => {
   queryClient.invalidateQueries({ queryKey: balanceQueryKey });
-}, [lastScanned, balanceQueryKey, queryClient]);
+}, [scannedAddress]);
 ```
 
-With these pieces in place, when the scanner scans a QR code, it will check if what it has read is a valid address and return it. That triggers an update to the `lastScanned` address, which in turn checks the blockchain to see if that address owns any of the NFTS, and if it does, sets `authorized` to `true`, and displays the information.
+With these pieces in place, when the scanner scans a QR code, it will check if what it has read is a valid address and return it. That triggers an update to the `scannedAddress`, which in turn causes a read of the blockchain to see if that address owns any of the NFTS. If the address does own at least one NFT, it sets `authorized` to `true`, and displays that the user may enter.
 
-From here, you can add much better styling, or even pull the NFT art of the owner's NFT for a personalized welcome!
+From here, you can add much better styling, or even pull the NFT art of the owner's NFT for a personalized welcome! Another great feature would be displaying a status level based on the number of NFTs owned by the entrant.
 
 ## Conclusion
 
