@@ -69,14 +69,16 @@ export function useRegisterNameCallback(
     if (address) {
       isWalletSCW().catch(console.error);
     }
-    console.log("wallet", wallet);
-    
   }, [address]);
   
   
   const {data: availableCapacities} = useCapabilities({
       account: address
     });
+
+  // const { data: availableCapacities } = wallet === 2
+  // ? useCapabilities({ account: address })
+  // : { data: undefined };
   
   const capabilities = useMemo(() => {
     if (!account.isConnected || !chainId || !availableCapacities) {
@@ -106,7 +108,7 @@ export function useRegisterNameCallback(
       owner: address, // The address of the owner for the name.
       duration: secondsInYears(years), // The duration of the registration in seconds.
       resolver: USERNAME_L2_RESOLVER_ADDRESSES[network], // The address of the resolver to set for this name.
-      data: '0x0', //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
+      data: ['0x0'], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
       reverseRecord: true, // Bool to decide whether to set this name as the "primary" name for the `owner`.
     }),
     [address, network, normalizedName, years],
