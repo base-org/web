@@ -98,6 +98,7 @@ To get started, you can [sign up for an account](https://app.ghostlogs.xyz/ghost
 #### Supported Networks
 
 - Base Mainnet
+- Base Sepolia (Testnet)
 
 ---
 
