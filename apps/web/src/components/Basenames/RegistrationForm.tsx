@@ -65,7 +65,7 @@ export function RegistrationForm({
   const { data: discountedPrice } = useDiscountedNameRegistrationPrice(name, years, discountKey);
   const finalPrice = discountKey ? discountedPrice : price;
   const registerName = useRegisterNameCallback(name, finalPrice, years, discountKey);
-  const usdPrice = ethUsdPrice && finalPrice ? formatUsdPrice(finalPrice, ethUsdPrice) : undefined;
+  const usdPrice = ethUsdPrice && finalPrice ? formatUsdPrice(finalPrice, ethUsdPrice) : '--.--';
 
   const nameIsFree = false;
   return (
