@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
 import Link from 'next/link';
 
-import useClickAway from '../../../utils/hooks/useClickAway';
+import useClickAway from '../../../hooks/useClickAway';
 
 import { Icon } from '../../Icon/Icon';
 import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
