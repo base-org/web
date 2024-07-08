@@ -27,6 +27,7 @@ export function useRegisterNameCallback(
   const { address, chainId } = useAccount();
   const network = chainId === baseSepolia.id ? chainId : base.id;
   const normalizedName = normalizeEnsDomainName(name);
+
   const registerRequest = useMemo(
     () => ({
       name: normalizedName, // The name being registered.

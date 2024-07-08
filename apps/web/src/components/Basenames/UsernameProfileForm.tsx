@@ -4,13 +4,18 @@ import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Fieldset from 'apps/web/src/components/Fieldset';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
-import { useWriteMultipleBaseEnsTextRecords } from 'apps/web/src/hooks/useWriteMultipleBaseEnsTextRecords';
+import { useReadBaseTextRecords } from 'apps/web/src/hooks/useReadBaseTextRecords';
+import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
 import { SocialPlatform } from 'apps/web/src/utils/socialPlatforms';
-import { UsernameTextRecords, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
+import {
+  UsernameTextRecords,
+  UsernameTextRecordKeys,
+  socialPlatformToTextRecordKeys,
+} from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { baseSepolia } from 'viem/chains';
-import { useAccount } from 'wagmi';
+import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
 
 export enum FormSteps {
   Description = 'description',
@@ -31,14 +36,42 @@ export function UsernameProfileForm() {
   const { address } = useAccount();
   const fakeAddress = address ?? '0x63e216601B3588a5B54d9f961cFFc4af916a63c7';
 
-  const [textRecords, setTextRecords] = useState<UsernameTextRecords>({
-    [UsernameTextRecordKeys.Description]: '',
-    [UsernameTextRecordKeys.Twitter]: '',
-    [UsernameTextRecordKeys.Farcaster]: '',
-    [UsernameTextRecordKeys.Lens]: '',
-    [UsernameTextRecordKeys.Telegram]: '',
-    [UsernameTextRecordKeys.Discord]: '',
-  });
+  // Get textRecords (for display)
+  const { existingTextRecords, existingTextRecordsIsLoading, refetchExistingTextRecords } =
+    useReadBaseTextRecords({
+      address: fakeAddress,
+      chainId: baseSepolia.id,
+    });
+
+  // Write text records
+  const { writeTextRecords, writeTextRecordsIsPending, writeTextRecordsTransactionHash } =
+    useWriteBaseEnsTextRecords({
+      address: fakeAddress,
+      chainId: baseSepolia.id,
+    });
+
+  // Wait for text record transaction to be processed
+  const { isFetching: transactionIsFetching, isSuccess: transactionIsSuccess } =
+    useWaitForTransactionReceipt({
+      hash: writeTextRecordsTransactionHash,
+      query: {
+        enabled: !!writeTextRecordsTransactionHash,
+      },
+    });
+
+  const [textRecords, setTextRecords] = useState<UsernameTextRecords>(existingTextRecords);
+
+  useEffect(() => {
+    if (transactionIsSuccess) {
+      refetchExistingTextRecords()
+        .then(() => {})
+        .catch(() => {});
+    }
+  }, [refetchExistingTextRecords, transactionIsSuccess]);
+
+  useEffect(() => {
+    setTextRecords(existingTextRecords);
+  }, [existingTextRecords]);
 
   const updateTextRecords = useCallback((key: UsernameTextRecordKeys, value: string) => {
     setTextRecords((previousTextRecords) => {
@@ -48,12 +81,6 @@ export function UsernameProfileForm() {
       };
     });
   }, []);
-
-  const { writeTextRecords } = useWriteMultipleBaseEnsTextRecords({
-    address: fakeAddress,
-    chainId: baseSepolia.id,
-    textRecords,
-  });
 
   const onClickSkip = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -76,18 +103,14 @@ export function UsernameProfileForm() {
 
       if (currentFormStep === FormSteps.Socials) {
         // Contract call
-        writeTextRecords()
-          .then((result) => {
-            console.log({ result });
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        writeTextRecords(textRecords)
+          .then(() => {})
+          .catch(() => {});
       }
 
       event.preventDefault();
     },
-    [currentFormStep, writeTextRecords],
+    [currentFormStep, textRecords, writeTextRecords],
   );
 
   const onChangeTextRecord = useCallback(
@@ -98,7 +121,7 @@ export function UsernameProfileForm() {
   );
 
   const formClasses = classNames(
-    ' min-w-[26rem] flex flex-col justify-between gap-4 rounded-2xl bg-white p-8 text-gray/60 shadow-xl  md:items-center',
+    'flex flex-col justify-between gap-4 text-gray/60 md:items-center',
   );
 
   const descriptionLabelChildren = (
@@ -131,6 +154,10 @@ export function UsernameProfileForm() {
         <UsernameDescriptionField
           labelChildren={descriptionLabelChildren}
           onChange={onChangeTextRecord}
+          value={textRecords[UsernameTextRecordKeys.Description]}
+          disabled={
+            existingTextRecordsIsLoading || writeTextRecordsIsPending || transactionIsFetching
+          }
         />
       )}
       {currentFormStep === FormSteps.Socials && (
@@ -141,6 +168,10 @@ export function UsernameProfileForm() {
               key={socialPlatform}
               socialPlatform={socialPlatform}
               onChange={onChangeTextRecord}
+              value={textRecords[socialPlatformToTextRecordKeys[socialPlatform]]}
+              disabled={
+                existingTextRecordsIsLoading || writeTextRecordsIsPending || transactionIsFetching
+              }
             />
           ))}
         </Fieldset>

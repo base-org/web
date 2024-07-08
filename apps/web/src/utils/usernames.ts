@@ -1,4 +1,4 @@
-import { sha256 } from 'viem';
+import { Address, encodePacked, keccak256, sha256 } from 'viem';
 import { normalize } from 'viem/ens';
 import profilePictures1 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/1.svg';
 import profilePictures2 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/2.svg';
@@ -9,6 +9,7 @@ import profilePictures6 from 'apps/web/src/components/ConnectWalletButton/profil
 import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/7.svg';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import { SocialPlatform } from 'apps/web/src/utils/socialPlatforms';
+import { ADDRESS_REVERSE_NODE } from 'apps/web/src/addresses/usernames';
 
 export const BASE_ETH_DOMAIN = 'base.eth';
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
@@ -26,6 +27,15 @@ export enum UsernameTextRecordKeys {
   Discord = 'com.discord',
   // TODO: Implement common ENS records: display, avatar, keywords, email, mail, notice, location, phone, url,
 }
+
+export const textRecordsKeysEnabled = [
+  UsernameTextRecordKeys.Description,
+  UsernameTextRecordKeys.Twitter,
+  UsernameTextRecordKeys.Farcaster,
+  UsernameTextRecordKeys.Lens,
+  UsernameTextRecordKeys.Telegram,
+  UsernameTextRecordKeys.Discord,
+];
 
 // // Helper, maps traditional social platforms name to textrecord keys
 export const socialPlatformToTextRecordKeys = {
@@ -77,4 +87,15 @@ export const getUserNamePicture = (username: string) => {
   const selectedProfilePicture = profilePictures[profilePictureIndex] as unknown as StaticImageData;
 
   return selectedProfilePicture;
+};
+
+// will convert an address to a reverse node (bytes32)
+// used for reverse resolution and other various resolver contract interaction
+export const convertReverseNodeToBytes = (address: Address) => {
+  const addressFormatted = address.toLocaleLowerCase() as Address;
+  const addressNode = keccak256(addressFormatted.substring(2) as Address);
+  const addressReverseNode = keccak256(
+    encodePacked(['bytes32', 'bytes32'], [ADDRESS_REVERSE_NODE, addressNode]),
+  );
+  return addressReverseNode;
 };

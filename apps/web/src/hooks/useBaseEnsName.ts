@@ -1,29 +1,22 @@
-import {
-  ADDRESS_REVERSE_NODE,
-  USERNAME_L2_RESOLVER_ADDRESSES,
-} from 'apps/web/src/addresses/usernames';
+import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { useMemo } from 'react';
-import { Address, encodePacked, keccak256 } from 'viem';
+import { Address } from 'viem';
 import { useReadContract } from 'wagmi';
-import abi from 'apps/web/src/abis/L2Resolver.json';
+import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
+import { convertReverseNodeToBytes } from 'apps/web/src/utils/usernames';
 
 export type UseBaseEnsNameProps = {
   address: Address;
   chainId: number; // TODO: Might not be needed for launch (mainnet only)
 };
 
+// In-house version of wagmi's "useEnsName"
 export function useBaseEnsName({ address, chainId }: UseBaseEnsNameProps) {
-  const addressFormatted = address.toLocaleLowerCase() as Address;
-
-  const addressNode = keccak256(addressFormatted.substring(2) as Address);
-
-  const addressReverseNode = keccak256(
-    encodePacked(['bytes32', 'bytes32'], [ADDRESS_REVERSE_NODE, addressNode]),
-  );
+  const addressReverseNode = convertReverseNodeToBytes(address);
 
   const readContractArgs = useMemo(
     () => ({
-      abi,
+      abi: L2ResolverAbi,
       address: USERNAME_L2_RESOLVER_ADDRESSES[chainId],
       functionName: 'name',
       args: [addressReverseNode],
