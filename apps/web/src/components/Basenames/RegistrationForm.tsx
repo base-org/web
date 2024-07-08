@@ -7,10 +7,12 @@ import {
   useNameRegistrationPrice,
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
+import { useDiscountedNameRegistrationPrice } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useCallback, useState } from 'react';
 import { formatEther } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
 import { useSwitchChain } from 'wagmi';
+import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
 
 type RegistrationFormProps = {
   name: string;
@@ -35,6 +37,10 @@ function formatPrice(price?: bigint) {
   }
 }
 
+function formatUsdPrice(price: bigint, ethUsdPrice: number) {
+  return (parseFloat(formatEther(price)) * Number(ethUsdPrice)).toFixed(2);
+}
+
 export function RegistrationForm({
   discountKey,
   name,
@@ -55,14 +61,12 @@ export function RegistrationForm({
     switchChain({ chainId: base.id });
   }, [switchChain]);
 
+  const ethUsdPrice = useEthPriceFromUniswap();
   const { data: price } = useNameRegistrationPrice(name, years);
   const { data: discountedPrice } = useDiscountedNameRegistrationPrice(name, years, discountKey);
-  const registerName = useRegisterNameCallback(
-    name,
-    discountKey ? discountedPrice : price,
-    years,
-    discountKey,
-  );
+  const finalPrice = discountKey ? discountedPrice : price;
+  const registerName = useRegisterNameCallback(name, finalPrice, years, discountKey);
+  const usdPrice = ethUsdPrice && finalPrice ? formatUsdPrice(finalPrice, ethUsdPrice) : undefined;
 
   const nameIsFree = false;
   return (
@@ -94,13 +98,15 @@ export function RegistrationForm({
         <div>
           <p className="mb-2 text-sm font-bold uppercase text-line">Amount</p>
           <div className="flex items-baseline justify-center md:justify-between">
-            <p className="mx-2 whitespace-nowrap text-3xl text-black">{formatPrice(price)} ETH</p>
+            <p className="mx-2 whitespace-nowrap text-3xl text-black">
+              {formatPrice(finalPrice)} ETH
+            </p>
             {loadingDiscounts ? (
               <div className="flex h-4 items-center justify-center">
                 <Icon name="spinner" color="currentColor" />
               </div>
             ) : (
-              <span className="whitespace-nowrap text-xl text-gray/60">$--.--</span>
+              <span className="whitespace-nowrap text-xl text-gray/60">${usdPrice}</span>
             )}
           </div>
         </div>
