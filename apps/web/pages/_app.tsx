@@ -6,6 +6,7 @@ import {
   TrackingCategory,
   TrackingPreference,
 } from '@coinbase/cookie-manager';
+import { OnchainKitProvider } from '@coinbase/onchainkit';
 import { connectorsForWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
@@ -22,9 +23,11 @@ import { AppProps } from 'next/app';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createConfig, http, WagmiProvider } from 'wagmi';
 import { base, baseSepolia, mainnet, sepolia } from 'wagmi/chains';
+import { base as viemBase } from 'viem/chains';
 import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
 import { Layout } from '../src/components/Layout/Layout';
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
+import { OnchainkitConnectWalletButton } from 'apps/web/src/components/ConnectWalletButton/OnchainkitConnectWalletButton';
 
 coinbaseWallet.preference = 'all';
 
@@ -114,11 +117,14 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
         <ClientAnalyticsScript />
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
-            <RainbowKitProvider modalSize="compact">
+            <OnchainKitProvider apiKey="pkcJNjtvJIgaQjrY6pREhwihcTyPOslA" chain={viemBase}>
+              <OnchainkitConnectWalletButton />
+            {/* <RainbowKitProvider modalSize="compact"> */}
               <Layout>
                 <Component {...pageProps} />
               </Layout>
-            </RainbowKitProvider>
+            {/* </RainbowKitProvider> */}
+            </OnchainKitProvider>
           </QueryClientProvider>
         </WagmiProvider>
       </MotionConfig>

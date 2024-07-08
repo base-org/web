@@ -203,7 +203,7 @@ function DesktopNav({ color }: DesktopNavProps) {
         />
       </Dropdown>
 
-      <ConnectWalletButton color={color} className="relative inline-block" />
+      {/* <ConnectWalletButton color={color} className="relative inline-block" /> */}
     </div>
   );
 }

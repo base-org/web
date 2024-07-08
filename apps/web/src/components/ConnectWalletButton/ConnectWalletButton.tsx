@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react';
-import { useAccount } from 'wagmi';
+import { useAccount, useConfig } from 'wagmi';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
