@@ -2,7 +2,7 @@ import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames
 import Fieldset from 'apps/web/src/components/Fieldset';
 import Input from 'apps/web/src/components/Input';
 import Label from 'apps/web/src/components/Label';
-import { useBaseEnsName } from 'apps/web/src/utils/hooks/useBaseEnsName';
+import { useBaseEnsName } from 'apps/web/src/hooks/useBaseEnsName';
 import {
   SocialPlatform,
   socialPlatformHandleFunction,

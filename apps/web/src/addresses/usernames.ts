@@ -35,3 +35,7 @@ export const USERNAME_1155_DISCOUNT_VALIDATOR: AddressMap = {
   [baseSepolia.id]: '0xE41Cd25f429E10744938d5048646E721ac630aF3',
   [base.id]: '0x',
 };
+
+export const UNISWAP_USDC_WETH_POOL: AddressMap = {
+  [base.id]: '0x88A43bbDF9D098eEC7bCEda4e2494615dfD9bB9C',
+};

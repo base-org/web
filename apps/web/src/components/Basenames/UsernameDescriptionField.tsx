@@ -3,7 +3,7 @@ import Fieldset from 'apps/web/src/components/Fieldset';
 import Hint from 'apps/web/src/components/Hint';
 import Label from 'apps/web/src/components/Label';
 import TextArea from 'apps/web/src/components/TextArea';
-import { useBaseEnsName } from 'apps/web/src/utils/hooks/useBaseEnsName';
+import { useBaseEnsName } from 'apps/web/src/hooks/useBaseEnsName';
 import {
   USERNAME_DESCRIPTION_MAX_LENGTH,
   UsernameTextRecordKeys,

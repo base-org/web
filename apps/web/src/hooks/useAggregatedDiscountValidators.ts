@@ -4,8 +4,8 @@ import {
   useCheckCB1Attestations,
   useCheckCBIDAttestations,
   useCheckCoinbaseAttestations,
-} from 'apps/web/src/utils/hooks/useAttestations';
-import { useActiveDiscountValidators } from 'apps/web/src/utils/hooks/useReadActiveDiscountValidators';
+} from 'apps/web/src/hooks/useAttestations';
+import { useActiveDiscountValidators } from 'apps/web/src/hooks/useReadActiveDiscountValidators';
 import { useMemo } from 'react';
 
 type MappedDiscountData = {

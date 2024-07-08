@@ -1,4 +1,4 @@
-import abi from 'apps/web/src/abis/RegistrarControllerABI.json';
+import abi from 'apps/web/src/abis/RegistrarControllerABI';
 import {
   USERNAME_L2_RESOLVER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
@@ -8,23 +8,28 @@ import { useEffect, useMemo, useState } from 'react';
 import { Abi, Address, BlockTag, Hex, decodeAbiParameters, getContract } from 'viem';
 import { useAccount, useWalletClient, useWriteContract } from 'wagmi';
 import { useCapabilities, useWriteContracts } from 'wagmi/experimental';
-import {initializeClient} from "../paymasterConfig";
+import {initializeClient} from "../utils/paymasterConfig";
 import { CB_SW_PROXY_BYTECODE, CB_SW_V1_IMPLEMENTATION_ADDRESS, ERC_1967_PROXY_IMPLEMENTATION_SLOT } from 'apps/web/src/constants';
 import { ResolvedRegister, type Config } from "wagmi";
 import { base, baseSepolia } from 'viem/chains';
 
 
 
-function secondsInYears(years: number): number {
+function secondsInYears(years: number): bigint {
   const secondsPerYear = 365.25 * 24 * 60 * 60; // .25 accounting for leap years
-  return Math.round(years * secondsPerYear);
+  return BigInt(Math.round(years * secondsPerYear));
 }
 
 export function useRegisterNameCallback(
   name: string,
+  value: bigint | undefined,
   years: number,
-  discountKey?: string,
-  validationData?: string): () => void {
+  discountKey?: `0x${string}`,
+  validationData?: `0x${string}`,) {
+  if (discountKey) {
+    console.log('discountKey', discountKey);
+    console.log('validationData', validationData);
+  }
   const [wallet, setWallet] = useState<number>(2); // 0 for EOA, 1 for Predeployed, 2 for SCW
   const { address, chainId } = useAccount();
   
@@ -75,10 +80,6 @@ export function useRegisterNameCallback(
   const {data: availableCapacities} = useCapabilities({
       account: address
     });
-
-  // const { data: availableCapacities } = wallet === 2
-  // ? useCapabilities({ account: address })
-  // : { data: undefined };
   
   const capabilities = useMemo(() => {
     if (!account.isConnected || !chainId || !availableCapacities) {
@@ -105,34 +106,28 @@ export function useRegisterNameCallback(
   const registerRequest = useMemo(
     () => ({
       name: normalizedName, // The name being registered.
-      owner: address, // The address of the owner for the name.
+      owner: address ?? '0x48c89d77ae34ae475e4523b25ab01e363dce5a78', // The address of the owner for the name.
       duration: secondsInYears(years), // The duration of the registration in seconds.
       resolver: USERNAME_L2_RESOLVER_ADDRESSES[network], // The address of the resolver to set for this name.
-      data: ['0x0'], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
+      data: [], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
       reverseRecord: true, // Bool to decide whether to set this name as the "primary" name for the `owner`.
     }),
     [address, network, normalizedName, years],
   );
-  const writeContractArgs = useMemo(() => {
-    return {
-      abi,
-      address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
-      chainId: network,
-      ...(Boolean(discountKey && validationData)
-        ? {
-            functionName: 'discountedRegister',
-            args: [registerRequest, discountKey, validationData],
-          }
-        : { functionName: 'register', args: [registerRequest] }),
-    };
-  }, [discountKey, network, registerRequest, validationData]);
 
  
   return () => {
 
     if (wallet == 0) {
       try {
-        const result = writeContract(writeContractArgs);
+        const result = writeContract({
+          abi,
+          address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
+          chainId: network,
+          functionName: 'register',
+          args: [registerRequest],
+          value,
+        });
         console.log('jf useRegisterNameCallback result', result);
       } catch (e) {
         console.error('useRegisterNameCallback:', e);
@@ -155,6 +150,4 @@ export function useRegisterNameCallback(
       }
     }
   }
-  ;
-
 }

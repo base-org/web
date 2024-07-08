@@ -16,7 +16,7 @@ import { Layout, NavigationType } from 'apps/web/src/components/Layout/Layout';
 import {
   findFirstValidDiscountKey,
   useAggregatedDiscountValidators,
-} from 'apps/web/src/utils/hooks/useAggregatedDiscountValidators';
+} from 'apps/web/src/hooks/useAggregatedDiscountValidators';
 import classNames from 'classnames';
 import Head from 'next/head';
 import { Fragment, ReactElement, useCallback, useEffect, useMemo, useState } from 'react';

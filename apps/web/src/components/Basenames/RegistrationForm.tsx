@@ -2,12 +2,16 @@ import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import { useNameRegistrationPrice } from 'apps/web/src/utils/hooks/useNameRegistrationPrice';
-import { useRegisterNameCallback } from 'apps/web/src/utils/hooks/useRegisterNameCallback';
+import {
+  useDiscountedNameRegistrationPrice,
+  useNameRegistrationPrice,
+} from 'apps/web/src/hooks/useNameRegistrationPrice';
+import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
 import { useCallback, useState } from 'react';
 import { formatEther } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
 import { useSwitchChain } from 'wagmi';
+import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
 
 type RegistrationFormProps = {
   name: string;
@@ -32,6 +36,10 @@ function formatPrice(price?: bigint) {
   }
 }
 
+function formatUsdPrice(price: bigint, ethUsdPrice: number) {
+  return (parseFloat(formatEther(price)) * Number(ethUsdPrice)).toFixed(2);
+}
+
 export function RegistrationForm({
   discountKey,
   name,
@@ -52,8 +60,12 @@ export function RegistrationForm({
     switchChain({ chainId: base.id });
   }, [switchChain]);
 
-  const { data: price } = useNameRegistrationPrice(name, years, discountKey);
-  const registerName = useRegisterNameCallback(name, years);
+  const ethUsdPrice = useEthPriceFromUniswap();
+  const { data: price } = useNameRegistrationPrice(name, years);
+  const { data: discountedPrice } = useDiscountedNameRegistrationPrice(name, years, discountKey);
+  const finalPrice = discountKey ? discountedPrice : price;
+  const registerName = useRegisterNameCallback(name, finalPrice, years, discountKey);
+  const usdPrice = ethUsdPrice && finalPrice ? formatUsdPrice(finalPrice, ethUsdPrice) : '--.--';
 
   const nameIsFree = false;
   return (
@@ -86,14 +98,14 @@ export function RegistrationForm({
           <p className="mb-2 text-sm font-bold uppercase text-line">Amount</p>
           <div className="flex items-baseline justify-center md:justify-between">
             <p className="mx-2 whitespace-nowrap text-3xl text-black">
-              {formatPrice(price as bigint | undefined)} ETH
+              {formatPrice(finalPrice)} ETH
             </p>
             {loadingDiscounts ? (
               <div className="flex h-4 items-center justify-center">
                 <Icon name="spinner" color="currentColor" />
               </div>
             ) : (
-              <span className="whitespace-nowrap text-xl text-gray/60">$--.--</span>
+              <span className="whitespace-nowrap text-xl text-gray/60">${usdPrice}</span>
             )}
           </div>
         </div>

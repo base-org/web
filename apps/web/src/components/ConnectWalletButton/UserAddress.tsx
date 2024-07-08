@@ -3,7 +3,7 @@ import { baseSepolia, mainnet } from 'wagmi/chains';
 import { truncateMiddle } from 'base-ui/utils/string';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import { useBaseEnsName } from 'apps/web/src/utils/hooks/useBaseEnsName';
+import { useBaseEnsName } from 'apps/web/src/hooks/useBaseEnsName';
 import { Address } from 'viem';
 
 export type UserAddressProps = {

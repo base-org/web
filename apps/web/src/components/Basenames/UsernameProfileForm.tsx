@@ -4,7 +4,7 @@ import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Fieldset from 'apps/web/src/components/Fieldset';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
-import { useWriteMultipleBaseEnsTextRecords } from 'apps/web/src/utils/hooks/useWriteMultipleBaseEnsTextRecords';
+import { useWriteMultipleBaseEnsTextRecords } from 'apps/web/src/hooks/useWriteMultipleBaseEnsTextRecords';
 import { SocialPlatform } from 'apps/web/src/utils/socialPlatforms';
 import { UsernameTextRecords, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';

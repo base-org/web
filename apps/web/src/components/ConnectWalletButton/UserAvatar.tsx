@@ -51,7 +51,14 @@ export function UserAvatar({ size = AvatarSizes.None }: UserAvatarProps) {
 
   return (
     <figure className={figureClasses}>
-      <Image src={avatar} className={avatarClasses} alt="Avatar" onLoad={onLoadAvatar} />
+      <Image
+        src={avatar}
+        className={avatarClasses}
+        alt="Avatar"
+        onLoad={onLoadAvatar}
+        width={48}
+        height={48}
+      />
     </figure>
   );
 }

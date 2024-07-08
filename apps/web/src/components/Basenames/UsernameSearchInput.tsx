@@ -1,8 +1,8 @@
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Input from 'apps/web/src/components/Input';
-import { useFocusWithin } from 'apps/web/src/utils/hooks/useFocusWithin';
-import { useIsNameAvailable } from 'apps/web/src/utils/hooks/useIsNameAvailable';
+import { useFocusWithin } from 'apps/web/src/hooks/useFocusWithin';
+import { useIsNameAvailable } from 'apps/web/src/hooks/useIsNameAvailable';
 import {
   USERNAME_MAX_CHARACTER_LENGTH,
   USERNAME_MIN_CHARACTER_LENGTH,

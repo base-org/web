@@ -1,10 +1,10 @@
 // github.com/mantinedev/mantine/blob/master/packages/@mantine/hooks/src/use-focus-within/use-focus-within.ts
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-export interface UseFocusWithinOptions {
+export type UseFocusWithinOptions = {
   onFocus?: (event: FocusEvent) => void;
   onBlur?: (event: FocusEvent) => void;
-}
+};
 
 function containsRelatedTarget(event: FocusEvent) {
   if (event.currentTarget instanceof HTMLElement && event.relatedTarget instanceof HTMLElement) {
@@ -14,11 +14,12 @@ function containsRelatedTarget(event: FocusEvent) {
   return false;
 }
 
-export function useFocusWithin<T extends HTMLElement = any>({
+export function useFocusWithin<T extends HTMLElement = unknown>({
   onBlur,
   onFocus,
 }: UseFocusWithinOptions = {}): { ref: React.MutableRefObject<T>; focused: boolean } {
   const ref = useRef<T>();
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   const [focused, _setFocused] = useState(false);
   const focusedRef = useRef(false);
   const setFocused = (value: boolean) => {
@@ -26,19 +27,25 @@ export function useFocusWithin<T extends HTMLElement = any>({
     focusedRef.current = value;
   };
 
-  const handleFocusIn = (event: FocusEvent) => {
-    if (!focusedRef.current) {
-      setFocused(true);
-      onFocus?.(event);
-    }
-  };
+  const handleFocusIn = useCallback(
+    (event: FocusEvent) => {
+      if (!focusedRef.current) {
+        setFocused(true);
+        onFocus?.(event);
+      }
+    },
+    [onFocus],
+  );
 
-  const handleFocusOut = (event: FocusEvent) => {
-    if (focusedRef.current && !containsRelatedTarget(event)) {
-      setFocused(false);
-      onBlur?.(event);
-    }
-  };
+  const handleFocusOut = useCallback(
+    (event: FocusEvent) => {
+      if (focusedRef.current && !containsRelatedTarget(event)) {
+        setFocused(false);
+        onBlur?.(event);
+      }
+    },
+    [onBlur],
+  );
 
   useEffect(() => {
     if (ref.current) {
