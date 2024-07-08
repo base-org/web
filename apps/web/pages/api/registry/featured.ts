@@ -15,5 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     data: row,
   };
 
+  // Set caching headers
+  res.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate');
   res.status(200).json(response);
 }
