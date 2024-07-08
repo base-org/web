@@ -1,25 +1,24 @@
-import abi from 'apps/web/src/abis/UniswapV2Pair.json';
+import abi from 'apps/web/src/abis/UniswapV2Pair';
 import { UNISWAP_USDC_WETH_POOL } from 'apps/web/src/addresses/usernames';
 import { base } from 'viem/chains';
 import { useReadContract } from 'wagmi';
 
 export function useEthPriceFromUniswap() {
-  const network = base.id;
+  const chainId = base.id;
 
-  const read = useReadContract({
+  const { data } = useReadContract({
     abi,
-    address: UNISWAP_USDC_WETH_POOL[network],
+    address: UNISWAP_USDC_WETH_POOL[chainId],
     functionName: 'getReserves',
     args: [],
-    chainId: network,
+    chainId,
   });
 
-  if (!read.data) {
+  if (!data) {
     return undefined;
   }
 
-  const data = read.data as [bigint, bigint, number];
+  // data =  [_reserve0, _reserve1, _blockTimestampLast]
   // usd per ether to the nearest dollar
-  const price = Number((data[1] * BigInt(1e12)) / data[0]);
-  return price;
+  return Number((data[1] * BigInt(1e12)) / data[0]);
 }

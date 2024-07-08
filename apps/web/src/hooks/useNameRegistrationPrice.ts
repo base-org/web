@@ -3,7 +3,7 @@ import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/us
 import { normalizeEnsDomainName } from 'apps/web/src/utils/usernames';
 import { useMemo } from 'react';
 import { base, baseSepolia } from 'viem/chains';
-import { useAccount, useReadContract } from 'wagmi';
+import { useChainId, useReadContract } from 'wagmi';
 
 function secondsInYears(years: number) {
   const secondsPerYear = 365.25 * 24 * 60 * 60; // .25 accounting for leap years
@@ -15,7 +15,7 @@ export function useDiscountedNameRegistrationPrice(
   years: number,
   discountKey: `0x${string}` | undefined,
 ) {
-  const { chainId } = useAccount();
+  const chainId = useChainId();
   const network = chainId === baseSepolia.id ? chainId : base.id;
   const normalizedName = normalizeEnsDomainName(name);
   const address = USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network];
@@ -33,7 +33,7 @@ export function useDiscountedNameRegistrationPrice(
   return useReadContract(readContractCall);
 }
 export function useNameRegistrationPrice(name: string, years: number) {
-  const { chainId } = useAccount();
+  const chainId = useChainId();
   const network = chainId === baseSepolia.id ? chainId : base.id;
   const normalizedName = normalizeEnsDomainName(name);
   const address = USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network];

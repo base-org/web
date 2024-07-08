@@ -3,7 +3,7 @@ import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/us
 import { useMemo } from 'react';
 import { Address } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
-import { useAccount, useReadContract } from 'wagmi';
+import { useChainId, useReadContract } from 'wagmi';
 
 export type DiscountValidator = {
   active: boolean; // whether the discount is active or not.
@@ -13,7 +13,7 @@ export type DiscountValidator = {
 };
 
 export function useActiveDiscountValidators() {
-  const { chainId } = useAccount();
+  const chainId = useChainId();
   const network = chainId === baseSepolia.id ? chainId : base.id;
 
   const activeDiscountsArgs = useMemo(
