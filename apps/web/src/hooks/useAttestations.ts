@@ -1,8 +1,8 @@
 import { CBIDProofResponse } from 'apps/web/pages/api/proofs/cbid';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
 import { Discount } from 'apps/web/pages/names';
-import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator.json';
-import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator.json';
+import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
+import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
 import { ProofTableNamespace } from 'apps/web/src/utils/proofs';
 import { useEffect, useMemo, useState } from 'react';
 import { Address, ReadContractErrorType, encodeAbiParameters } from 'viem';

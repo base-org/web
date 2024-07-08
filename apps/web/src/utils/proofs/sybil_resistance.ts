@@ -1,7 +1,7 @@
 import { getAttestations } from '@coinbase/onchainkit/identity';
 import { kv } from '@vercel/kv';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
-import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
+import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import {
   USERNAME_CB1_DISCOUNT_VALIDATOR,
   USERNAME_CB_DISCOUNT_VALIDATOR,
@@ -72,7 +72,7 @@ export async function hasRegisteredWithDiscount(
     abi: RegistrarControllerABI,
     functionName: 'hasRegisteredWithDiscount',
     args: [addresses],
-  }) as Promise<boolean>;
+  });
 }
 
 async function signMessageWithTrustedSigner(

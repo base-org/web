@@ -1,4 +1,4 @@
-import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
+import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
 import { useMemo } from 'react';
 import { Address } from 'viem';
@@ -20,7 +20,7 @@ export function useActiveDiscountValidators() {
     () => ({
       address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
       abi: RegistrarControllerABI,
-      functionName: 'getActiveDiscounts',
+      functionName: 'getActiveDiscounts' as const,
       chainId: network,
     }),
     [network],

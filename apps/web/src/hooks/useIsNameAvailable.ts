@@ -1,4 +1,4 @@
-import abi from 'apps/web/src/abis/RegistrarControllerABI.json';
+import abi from 'apps/web/src/abis/RegistrarControllerABI';
 import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
 import { normalizeEnsDomainName } from 'apps/web/src/utils/usernames';
 import { useMemo } from 'react';
@@ -13,8 +13,8 @@ export function useIsNameAvailable(name: string) {
     () => ({
       abi,
       address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
-      functionName: 'available',
-      args: [normalizedName],
+      functionName: 'available' as const,
+      args: [normalizedName] as const,
       chainId: network,
     }),
     [network, normalizedName],
