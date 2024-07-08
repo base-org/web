@@ -2,13 +2,16 @@ import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import { useNameRegistrationPrice } from 'apps/web/src/hooks/useNameRegistrationPrice';
+import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
+import {
+  useDiscountedNameRegistrationPrice,
+  useNameRegistrationPrice,
+} from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
 import { useCallback, useState } from 'react';
 import { formatEther } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
 import { useSwitchChain } from 'wagmi';
-import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
 
 type RegistrationFormProps = {
   name: string;
