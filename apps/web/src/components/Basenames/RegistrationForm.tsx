@@ -2,7 +2,10 @@ import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import { useNameRegistrationPrice } from 'apps/web/src/hooks/useNameRegistrationPrice';
+import {
+  useDiscountedNameRegistrationPrice,
+  useNameRegistrationPrice,
+} from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
 import { useCallback, useState } from 'react';
 import { formatEther } from 'viem';
