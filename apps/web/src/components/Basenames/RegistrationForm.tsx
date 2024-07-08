@@ -7,7 +7,6 @@ import {
   useNameRegistrationPrice,
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
-import { useDiscountedNameRegistrationPrice } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useCallback, useState } from 'react';
 import { formatEther } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
