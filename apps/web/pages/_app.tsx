@@ -28,7 +28,7 @@ import localFont from 'next/dist/compiled/@next/font/dist/local';
 const config = getDefaultConfig({
   appName: 'Base.org',
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? 'dummy-id',
-  chains: [base, baseSepolia, mainnet, sepolia],
+  chains: [baseSepolia, mainnet],
   ssr: true,
 });
 const queryClient = new QueryClient();
