@@ -20,13 +20,10 @@ export function useRegisterNameCallback(
   discountKey?: `0x${string}`,
   validationData?: `0x${string}`,
 ) {
-  if (discountKey) {
-    console.log('discountKey', discountKey);
-    console.log('validationData', validationData);
-  }
   const { address, chainId } = useAccount();
   const network = chainId === baseSepolia.id ? chainId : base.id;
   const normalizedName = normalizeEnsDomainName(name);
+  const isDiscounted = Boolean(discountKey && validationData);
 
   const registerRequest = useMemo(
     () => ({
@@ -47,8 +44,9 @@ export function useRegisterNameCallback(
       abi,
       address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
       chainId: network,
-      functionName: 'register',
-      args: [registerRequest],
+      functionName: isDiscounted ? 'discountedRegister' : 'register',
+      // @ts-expect-error isDiscounted is sufficient guard for discountKey and validationData presence
+      args: isDiscounted ? [registerRequest, discountKey, validationData] : [registerRequest],
       value,
     });
   };

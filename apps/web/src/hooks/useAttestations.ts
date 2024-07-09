@@ -1,8 +1,8 @@
 import { CBIDProofResponse } from 'apps/web/pages/api/proofs/cbid';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
 import { Discount } from 'apps/web/pages/names';
-import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
 import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
+import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
 import { ProofTableNamespace } from 'apps/web/src/utils/proofs';
 import { useEffect, useMemo, useState } from 'react';
 import { Address, ReadContractErrorType, encodeAbiParameters } from 'viem';
@@ -12,7 +12,7 @@ import { useAccount, useReadContract } from 'wagmi';
 export type AttestationData = {
   discountValidatorAddress: Address;
   discount: Discount;
-  contractArgs: string[];
+  validationData: `0x${string}`;
 };
 type AttestationHookReturns = {
   data: AttestationData | null;
@@ -76,7 +76,7 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
       data: {
         discountValidatorAddress: cBIDProofResponse.discountValidatorAddress,
         discount: Discount.CBID,
-        contractArgs: [address, encodedProof],
+        validationData: encodedProof,
       },
       loading: false,
       error: null,
@@ -138,7 +138,7 @@ export function useCheckCoinbaseAttestations() {
       data: {
         discountValidatorAddress: coinbaseProofResponse.discountValidatorAddress,
         discount: Discount.COINBASE_VERIFIED_ACCOUNT,
-        contractArgs: [address, signature],
+        validationData: signature,
       },
       loading: false,
       error: null,
@@ -197,7 +197,7 @@ export function useCheckCB1Attestations() {
       data: {
         discountValidatorAddress: cb1ProofResponse.discountValidatorAddress,
         discount: Discount.CB1,
-        contractArgs: [address, signature],
+        validationData: signature,
       },
       loading: false,
       error: null,

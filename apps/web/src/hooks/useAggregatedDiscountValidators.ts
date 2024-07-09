@@ -8,14 +8,16 @@ import {
 import { useActiveDiscountValidators } from 'apps/web/src/hooks/useReadActiveDiscountValidators';
 import { useMemo } from 'react';
 
+export type DiscountData = AttestationData & { discountKey: `0x${string}` };
+
 type MappedDiscountData = {
-  [key in Discount]?: AttestationData & { discountKey: `0x${string}` };
+  [key in Discount]?: DiscountData;
 };
 
-export function findFirstValidDiscountKey(
+export function findFirstValidDiscount(
   aggregatedData: MappedDiscountData,
-): `0x${string}` | undefined {
-  return Object.values(aggregatedData).find((data) => data?.discountKey)?.discountKey ?? undefined;
+): DiscountData | undefined {
+  return Object.values(aggregatedData).find((data) => data?.discountKey) ?? undefined;
 }
 export function useAggregatedDiscountValidators() {
   const { data: activeDiscountValidators, isLoading: loadingActiveDiscounts } =

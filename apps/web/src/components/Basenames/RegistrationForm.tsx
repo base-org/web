@@ -2,6 +2,7 @@ import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import { DiscountData } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
 import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
 import {
   useDiscountedNameRegistrationPrice,
@@ -17,7 +18,7 @@ type RegistrationFormProps = {
   name: string;
   loadingDiscounts: boolean;
   toggleModal: () => void;
-  discountKey: `0x${string}` | undefined;
+  discount?: DiscountData;
 };
 
 const threshold = 0.01;
@@ -41,7 +42,7 @@ function formatUsdPrice(price: bigint, ethUsdPrice: number) {
 }
 
 export function RegistrationForm({
-  discountKey,
+  discount,
   name,
   loadingDiscounts,
   toggleModal,
@@ -62,9 +63,20 @@ export function RegistrationForm({
 
   const ethUsdPrice = useEthPriceFromUniswap();
   const { data: price } = useNameRegistrationPrice(name, years);
-  const { data: discountedPrice } = useDiscountedNameRegistrationPrice(name, years, discountKey);
-  const finalPrice = discountKey ? discountedPrice : price;
-  const registerName = useRegisterNameCallback(name, finalPrice, years, discountKey);
+  const { data: discountedPrice } = useDiscountedNameRegistrationPrice(
+    name,
+    years,
+    discount?.discountKey,
+  );
+
+  const finalPrice = discount?.discountKey ? discountedPrice : price;
+  const registerName = useRegisterNameCallback(
+    name,
+    finalPrice,
+    years,
+    discount?.discountKey,
+    discount?.validationData,
+  );
   const usdPrice = ethUsdPrice && finalPrice ? formatUsdPrice(finalPrice, ethUsdPrice) : '--.--';
 
   const nameIsFree = false;

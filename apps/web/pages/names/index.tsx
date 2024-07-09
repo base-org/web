@@ -14,7 +14,7 @@ import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingA
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { Layout, NavigationType } from 'apps/web/src/components/Layout/Layout';
 import {
-  findFirstValidDiscountKey,
+  findFirstValidDiscount,
   useAggregatedDiscountValidators,
 } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
 import classNames from 'classnames';
@@ -30,9 +30,9 @@ export enum ClaimProgression {
 }
 
 export enum Discount {
-  CBID,
-  CB1,
-  COINBASE_VERIFIED_ACCOUNT,
+  CBID = 'CBID',
+  CB1 = 'CB1',
+  COINBASE_VERIFIED_ACCOUNT = 'COINBASE_VERIFIED_ACCOUNT',
 }
 
 const SEARCH_LABEL_COPY_STRINGS = [
@@ -58,7 +58,7 @@ test addresses w/ different verifications
 
 export function Usernames() {
   const { data: discounts, loading: loadingDiscounts } = useAggregatedDiscountValidators();
-
+  const discount = findFirstValidDiscount(discounts);
   const [progress, setProgress] = useState<ClaimProgression>(ClaimProgression.SEARCH);
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
   const toggleLearnMoreModal = useCallback(() => setLearnMoreModalOpen((open) => !open), []);
@@ -284,7 +284,7 @@ export function Usernames() {
               <RegistrationForm
                 name={selectedName}
                 loadingDiscounts={loadingDiscounts}
-                discountKey={findFirstValidDiscountKey(discounts)}
+                discount={discount}
                 toggleModal={toggleLearnMoreModal}
               />
             </Transition>
