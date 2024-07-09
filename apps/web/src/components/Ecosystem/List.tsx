@@ -97,7 +97,7 @@ export function List() {
       </div>
       <div className="flex flex-col gap-10 lg:grid lg:grid-cols-4">
         {truncatedApps.map((app) => (
-          <Card {...app} key={app.name} />
+          <Card {...app} key={app.url} />
         ))}
       </div>
       {showEmptyState && (
