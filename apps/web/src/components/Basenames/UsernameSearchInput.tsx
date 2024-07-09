@@ -52,7 +52,7 @@ export function UsernameSearchInput({
 
   const handleSearchChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    setSearch(value);
+    setSearch(value.replace(/\s/g, ''));
   }, []);
 
   const setSearchFromSuggestion = useCallback((suggestion: string) => {
