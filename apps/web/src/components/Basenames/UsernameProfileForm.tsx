@@ -4,7 +4,7 @@ import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Fieldset from 'apps/web/src/components/Fieldset';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
-import { useReadBaseTextRecords } from 'apps/web/src/hooks/useReadBaseTextRecords';
+import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
 import { SocialPlatform } from 'apps/web/src/utils/socialPlatforms';
 import {
@@ -38,7 +38,7 @@ export function UsernameProfileForm() {
 
   // Get textRecords (for display)
   const { existingTextRecords, existingTextRecordsIsLoading, refetchExistingTextRecords } =
-    useReadBaseTextRecords({
+    useReadBaseEnsTextRecords({
       address: fakeAddress,
       chainId: baseSepolia.id,
     });

@@ -11,13 +11,16 @@ import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { getPublicClient } from 'apps/web/src/cdp/utils';
 import { useQuery } from '@tanstack/react-query';
 
-export type UseReadBaseTextRecordsProps = {
+export type UseReadBaseEnsTextRecordsProps = {
   address: Address;
   chainId: number; // TODO: Might not be needed for launch (mainnet only)
 };
 
 // TODO: If we need multicall for other scenarios, make this hook more generic
-export function useReadBaseTextRecords({ address, chainId }: UseReadBaseTextRecordsProps) {
+export default function useReadBaseEnsTextRecords({
+  address,
+  chainId,
+}: UseReadBaseEnsTextRecordsProps) {
   const client = getPublicClient(chainId);
   const addressReverseNode = convertReverseNodeToBytes(address);
 
@@ -61,7 +64,7 @@ export function useReadBaseTextRecords({ address, chainId }: UseReadBaseTextReco
     isLoading: existingTextRecordsIsLoading,
     refetch: refetchExistingTextRecords,
   } = useQuery({
-    queryKey: ['useReadBaseTextRecords', address, chainId, textRecordsKeysEnabled],
+    queryKey: ['useReadBaseEnsTextRecords', address, chainId, textRecordsKeysEnabled],
     queryFn: getExistingTextRecords,
   });
 

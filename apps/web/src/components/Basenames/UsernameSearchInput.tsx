@@ -3,11 +3,7 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Input from 'apps/web/src/components/Input';
 import { useFocusWithin } from 'apps/web/src/hooks/useFocusWithin';
 import { useIsNameAvailable } from 'apps/web/src/hooks/useIsNameAvailable';
-import {
-  USERNAME_MAX_CHARACTER_LENGTH,
-  USERNAME_MIN_CHARACTER_LENGTH,
-  formatBaseEthDomain,
-} from 'apps/web/src/utils/usernames';
+import { formatBaseEthDomain, validateEnsDomainName } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import {
   FocusEventHandler,
@@ -51,9 +47,7 @@ export function UsernameSearchInput({
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [debouncedSearch] = useDebounceValue(search, 200);
   const { isLoading, data, isError, isFetching } = useIsNameAvailable(debouncedSearch);
-  const validSearch =
-    debouncedSearch.length >= USERNAME_MIN_CHARACTER_LENGTH &&
-    debouncedSearch.length <= USERNAME_MAX_CHARACTER_LENGTH;
+  const { valid } = validateEnsDomainName(debouncedSearch);
 
   const handleSearchChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -68,8 +62,8 @@ export function UsernameSearchInput({
   }, []);
 
   useEffect(() => {
-    setDropdownOpen(validSearch);
-  }, [debouncedSearch, validSearch]);
+    setDropdownOpen(valid);
+  }, [debouncedSearch, valid]);
 
   const usernameSearchInputClasses = classNames(
     'relative z-10 transition-all duration-500 w-full mx-auto group text-black',
@@ -191,10 +185,10 @@ export function UsernameSearchInput({
       return;
     }
 
-    if (focused && validSearch) {
+    if (focused && valid) {
       setDropdownOpen(true);
     }
-  }, [focused, validSearch]);
+  }, [focused, valid]);
 
   // TODO: Smarter suggestions (openai api?)
   // Right now david.base.eth is taken, it'll suggest david1.base.eth but

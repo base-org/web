@@ -8,7 +8,7 @@ import {
   convertReverseNodeToBytes,
 } from 'apps/web/src/utils/usernames';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
-import { useReadBaseTextRecords } from 'apps/web/src/hooks/useReadBaseTextRecords';
+import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 
 export type UseWriteBaseEnsTextRecordsProps = {
   address: Address;
@@ -23,7 +23,7 @@ export default function useWriteBaseEnsTextRecords({
   const addressReverseNode = convertReverseNodeToBytes(address);
 
   // To compare to updated ones, avoid overriding them / unecessary calls
-  const { existingTextRecords } = useReadBaseTextRecords({
+  const { existingTextRecords } = useReadBaseEnsTextRecords({
     address,
     chainId,
   });

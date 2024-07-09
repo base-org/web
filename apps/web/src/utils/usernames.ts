@@ -54,12 +54,60 @@ export const sanitizeEnsDomainName = (name: string) => {
   return name.replace(/[^a-zA-Z0-9À-ÿ-]/g, '');
 };
 
+// Any names non-compliant with ENSIP-15 will fail when using ENS normalize()
+export type EnsDomainNameValidationResult = {
+  valid: boolean;
+  message?: string;
+};
+
+export const validateEnsDomainName = (name: string): EnsDomainNameValidationResult => {
+  const formattedName = name.trim();
+
+  if (formattedName.length > USERNAME_MAX_CHARACTER_LENGTH) {
+    return {
+      valid: false,
+      message: 'Name is too long',
+    };
+  }
+
+  if (name.length < USERNAME_MIN_CHARACTER_LENGTH) {
+    return {
+      valid: false,
+      message: 'Name is too short',
+    };
+  }
+
+  try {
+    const normalizedName = normalize(name);
+    const valid = typeof normalizedName === 'string';
+    return {
+      valid,
+    };
+  } catch (error) {
+    if (error instanceof Error) {
+      return {
+        valid: false,
+        message: error.message,
+      };
+    }
+
+    return {
+      valid: false,
+      message: 'Name is invalid',
+    };
+  }
+};
+
 export const normalizeEnsDomainName = (name: string) => {
-  return normalize(sanitizeEnsDomainName(name));
+  try {
+    return normalize(name);
+  } catch (error) {
+    return normalize(sanitizeEnsDomainName(name));
+  }
 };
 
 export const formatBaseEthDomain = (name: string) => {
-  return `${sanitizeEnsDomainName(name)}.${BASE_ETH_DOMAIN}`.toLocaleLowerCase();
+  return `${name}.${BASE_ETH_DOMAIN}`.toLocaleLowerCase();
 };
 
 export const getUsernamePictureIndex = (name: string, totalOptions: number) => {
