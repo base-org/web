@@ -12,10 +12,7 @@ module.exports = {
   ],
   theme: {
     colors: {
-      'gray': '#1E2025', // gray-10
-      'darkgray': '#0F1012',
       'white': '#FFFFFF',
-      'muted': '#8A919E', // gray-60
       'yellow': '#FFD200', // yellow-70
       'blue-0': '#001033',
       'blue-5': '#011D5B',
@@ -31,6 +28,7 @@ module.exports = {
       'blue-90': '#B9CFFF',
       'blue-100': '#F5F8FF',
       'gray-0': '#0A0B0D',
+      'gray-dark': '#0F1012',
       'gray-5': '#141519',
       'gray-10': '#1E2025',
       'gray-15': '#282B31',
