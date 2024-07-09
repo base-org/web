@@ -83,6 +83,10 @@ export function Usernames() {
     setSelectedName(name);
   }, []);
 
+  const registrationFormOnSuccess = () => {
+    setProgress(ClaimProgression.PROFILE);
+  };
+
   const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
 
   const isSearch = progress === ClaimProgression.SEARCH;
@@ -235,18 +239,16 @@ export function Usernames() {
                 show={isProfile}
                 className={classNames(
                   'absolute left-1/2 top-0 z-30 mx-auto -translate-x-1/2 transition-all',
+                  'mt-[16rem] w-full max-w-[26rem] rounded-3xl p-8 shadow-xl',
                   transitionDuration,
                 )}
-                enter="overflow-hidden"
-                enterFrom={classNames('opacity-0 max-w-[5rem]')}
-                enterTo={classNames('opacity-100 max-w-full')}
+                enterFrom={classNames('opacity-0')}
+                enterTo={classNames('opacity-100')}
                 leave="transition-all "
                 leaveFrom="opacity-100"
-                leaveTo="opacity-0"
+                leaveTo="opacity-0 "
               >
-                <div className="mt-[16rem] w-full">
-                  <UsernameProfileForm />
-                </div>
+                <UsernameProfileForm />
               </Transition>
               <Transition
                 appear
@@ -286,6 +288,7 @@ export function Usernames() {
                 loadingDiscounts={loadingDiscounts}
                 discount={discount}
                 toggleModal={toggleLearnMoreModal}
+                onSuccess={registrationFormOnSuccess}
               />
             </Transition>
           </div>

@@ -4,7 +4,7 @@ import {
   USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
 } from 'apps/web/src/addresses/usernames';
 import { normalizeEnsDomainName } from 'apps/web/src/utils/usernames';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { base, baseSepolia } from 'viem/chains';
 import { useAccount, useWriteContract } from 'wagmi';
 
@@ -37,17 +37,36 @@ export function useRegisterNameCallback(
     [address, network, normalizedName, years],
   );
 
-  const { writeContract } = useWriteContract();
+  const {
+    data: registerNameTransactionHash,
+    writeContractAsync,
+    isPending: registerNameTransactionIsPending,
+  } = useWriteContract();
 
-  return () => {
-    writeContract({
-      abi,
-      address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
-      chainId: network,
-      functionName: isDiscounted ? 'discountedRegister' : 'register',
-      // @ts-expect-error isDiscounted is sufficient guard for discountKey and validationData presence
-      args: isDiscounted ? [registerRequest, discountKey, validationData] : [registerRequest],
-      value,
-    });
-  };
+  // TODO: I think we could pass arguments to this function instead of the hook
+  const registerName = useCallback(async () => {
+    try {
+      await writeContractAsync({
+        abi,
+        address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
+        chainId: network,
+        functionName: isDiscounted ? 'discountedRegister' : 'register',
+        // @ts-expect-error isDiscounted is sufficient guard for discountKey and validationData presence
+        args: isDiscounted ? [registerRequest, discountKey, validationData] : [registerRequest],
+        value,
+      });
+    } catch (error) {
+      // Log error
+    }
+  }, [
+    discountKey,
+    isDiscounted,
+    network,
+    registerRequest,
+    validationData,
+    value,
+    writeContractAsync,
+  ]);
+
+  return { registerName, registerNameTransactionHash, registerNameTransactionIsPending };
 }

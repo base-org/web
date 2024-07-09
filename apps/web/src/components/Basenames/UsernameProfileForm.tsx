@@ -20,6 +20,7 @@ import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
 export enum FormSteps {
   Description = 'description',
   Socials = 'socials',
+  Keywords = 'Keywords',
 }
 
 export const socialPlatformsEnabled = [

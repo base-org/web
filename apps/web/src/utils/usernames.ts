@@ -20,13 +20,37 @@ export const USERNAME_DESCRIPTION_MAX_LENGTH = 200;
 // DANGER: Changing this post-mainnet launch means the stored data won't be accessible via the updated key
 export enum UsernameTextRecordKeys {
   Description = 'description',
+  Keywords = 'keywords',
+
+  // TODO: Implement common ENS records: display, avatar, email, mail, notice, location, phone, url,
+
+  // Socials
   Twitter = 'com.twitter',
   Farcaster = 'xyz.farcaster',
   Lens = 'xyz.lens',
   Telegram = 'org.telegram',
   Discord = 'com.discord',
-  // TODO: Implement common ENS records: display, avatar, keywords, email, mail, notice, location, phone, url,
 }
+
+export const textRecordsKeyWords = [
+  'Solidity',
+  'Rust',
+  'Go',
+  'Javascript',
+  'Typescript',
+  'Security',
+  'Product management',
+  'Business development',
+  'UI/UX',
+  'Visual design',
+  'Prototyping',
+  'Research',
+  'Illustration',
+  'Music',
+  'Graphic design',
+  'Animation',
+  'Game development',
+];
 
 export const textRecordsKeysEnabled = [
   UsernameTextRecordKeys.Description,

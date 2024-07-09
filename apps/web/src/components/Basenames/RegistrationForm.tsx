@@ -9,15 +9,16 @@ import {
   useNameRegistrationPrice,
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { formatEther } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
-import { useSwitchChain } from 'wagmi';
+import { useSwitchChain, useWaitForTransactionReceipt } from 'wagmi';
 
 type RegistrationFormProps = {
   name: string;
   loadingDiscounts: boolean;
   toggleModal: () => void;
+  onSuccess: () => void;
   discount?: DiscountData;
 };
 
@@ -46,6 +47,7 @@ export function RegistrationForm({
   name,
   loadingDiscounts,
   toggleModal,
+  onSuccess,
 }: RegistrationFormProps) {
   const { openConnectModal } = useConnectModal();
   const { switchChain } = useSwitchChain();
@@ -70,13 +72,36 @@ export function RegistrationForm({
   );
 
   const finalPrice = discount?.discountKey ? discountedPrice : price;
-  const registerName = useRegisterNameCallback(
-    name,
-    finalPrice,
-    years,
-    discount?.discountKey,
-    discount?.validationData,
-  );
+  const { registerName, registerNameTransactionHash, registerNameTransactionIsPending } =
+    useRegisterNameCallback(
+      name,
+      finalPrice,
+      years,
+      discount?.discountKey,
+      discount?.validationData,
+    );
+
+  // Wait for text record transaction to be processed
+  const { isFetching: transactionIsFetching, isSuccess: transactionIsSuccess } =
+    useWaitForTransactionReceipt({
+      hash: registerNameTransactionHash,
+      query: {
+        enabled: !!registerNameTransactionHash,
+      },
+    });
+
+  useEffect(() => {
+    if (onSuccess && transactionIsSuccess) {
+      onSuccess();
+    }
+  }, [onSuccess, transactionIsSuccess]);
+
+  const registerNameCallback = useCallback(() => {
+    registerName()
+      .then(() => {})
+      .catch(() => {});
+  }, [registerName]);
+
   const usdPrice = ethUsdPrice && finalPrice ? formatUsdPrice(finalPrice, ethUsdPrice) : '--.--';
 
   const nameIsFree = false;
@@ -157,10 +182,12 @@ export function RegistrationForm({
 
             return (
               <Button
-                onClick={registerName}
+                onClick={registerNameCallback}
                 type="button"
                 variant={ButtonVariants.Black}
                 size={ButtonSizes.Small}
+                disabled={registerNameTransactionIsPending || transactionIsFetching}
+                isLoading={registerNameTransactionIsPending || transactionIsFetching}
                 rounded
               >
                 Register name
