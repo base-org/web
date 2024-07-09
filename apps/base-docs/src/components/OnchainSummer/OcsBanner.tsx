@@ -44,7 +44,7 @@ export function OcsBanner() {
           aria-label="Onchain Summer Buildathon Banner"
           onClick={linkClick}
         >
-          <span className={styles.bannerText}>Join the Onchain Summer Buildathon!</span>
+          <span className={styles.bannerText}>Build Onchain this Summer!</span>
         </a>
         <div className={styles.bannerIconContainer}>
           <a
