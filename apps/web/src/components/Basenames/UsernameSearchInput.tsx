@@ -47,7 +47,8 @@ export function UsernameSearchInput({
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [debouncedSearch] = useDebounceValue(search, 200);
   const { isLoading, data, isError, isFetching } = useIsNameAvailable(debouncedSearch);
-  const { valid } = validateEnsDomainName(debouncedSearch);
+  const { valid, message } = validateEnsDomainName(debouncedSearch);
+  const invalidWithMessage = !valid && !!message;
 
   const handleSearchChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -62,8 +63,8 @@ export function UsernameSearchInput({
   }, []);
 
   useEffect(() => {
-    setDropdownOpen(valid);
-  }, [debouncedSearch, valid]);
+    setDropdownOpen(valid || invalidWithMessage);
+  }, [debouncedSearch, invalidWithMessage, valid]);
 
   const usernameSearchInputClasses = classNames(
     'relative z-10 transition-all duration-500 w-full mx-auto group text-black',
@@ -219,7 +220,9 @@ export function UsernameSearchInput({
         <div className={lineClasses}>
           <div className="w-full border-t border-line/20 " />
         </div>
-        {data === true ? (
+        {invalidWithMessage ? (
+          <p className={mutedMessage}>Invalid name: {message}</p>
+        ) : data === true ? (
           <>
             <p className={dropdownLabelClasses}>Available</p>
             <button
