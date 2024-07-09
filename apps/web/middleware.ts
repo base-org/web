@@ -39,8 +39,8 @@ const redirects: Record<string, string> = {
   '/terms-of-service': '/docs/terms-of-service',
   '/privacy-policy': '/docs/privacy-policy',
   '/cookie-policy': '/docs/cookie-policy',
-  '/discord': 'discord.gg/buildonbase',
-  '/blog': 'base.mirror.xyz/',
+  '/discord': 'https://discord.gg/buildonbase',
+  '/blog': 'https://base.mirror.xyz/',
 };
 
 export function middleware(req: NextRequest) {
