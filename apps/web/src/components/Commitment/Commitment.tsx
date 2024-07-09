@@ -24,7 +24,7 @@ export function Commitment() {
           </Link>
         </div>
       </div>
-      <div className="mt-10 flex max-w-[1440px] flex-row justify-between gap-4 self-center bg-gray p-4 lg:p-8">
+      <div className="mt-10 flex max-w-[1440px] flex-row justify-between gap-4 self-center bg-gray-10 p-4 lg:p-8">
         <GradientCircle className="h-[90px] w-[90px] md:h-[100px] md:w-[100px] xl:h-[163px] xl:w-[163px]" />
         <GradientCircle className="hidden h-[90px] w-[90px] md:h-[100px] md:w-[100px] lg:inline-block xl:h-[163px] xl:w-[163px]" />
         <GradientCircle className="hidden h-[90px] w-[90px] md:h-[100px] md:w-[100px] lg:inline-block xl:h-[163px] xl:w-[163px]" />
