@@ -12,13 +12,13 @@ import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallb
 import { useCallback, useEffect, useState } from 'react';
 import { formatEther } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
-import { useSwitchChain, useWaitForTransactionReceipt } from 'wagmi';
+import { useSwitchChain } from 'wagmi';
 
 type RegistrationFormProps = {
   name: string;
   loadingDiscounts: boolean;
   toggleModal: () => void;
-  onSuccess: () => void;
+  onApprove: (transactionHash: `0x${string}`) => void;
   discount?: DiscountData;
 };
 
@@ -47,7 +47,7 @@ export function RegistrationForm({
   name,
   loadingDiscounts,
   toggleModal,
-  onSuccess,
+  onApprove,
 }: RegistrationFormProps) {
   const { openConnectModal } = useConnectModal();
   const { switchChain } = useSwitchChain();
@@ -81,20 +81,11 @@ export function RegistrationForm({
       discount?.validationData,
     );
 
-  // Wait for text record transaction to be processed
-  const { isFetching: transactionIsFetching, isSuccess: transactionIsSuccess } =
-    useWaitForTransactionReceipt({
-      hash: registerNameTransactionHash,
-      query: {
-        enabled: !!registerNameTransactionHash,
-      },
-    });
-
   useEffect(() => {
-    if (onSuccess && transactionIsSuccess) {
-      onSuccess();
+    if (onApprove && registerNameTransactionHash) {
+      onApprove(registerNameTransactionHash);
     }
-  }, [onSuccess, transactionIsSuccess]);
+  }, [onApprove, registerNameTransactionHash]);
 
   const registerNameCallback = useCallback(() => {
     registerName()
@@ -186,8 +177,8 @@ export function RegistrationForm({
                 type="button"
                 variant={ButtonVariants.Black}
                 size={ButtonSizes.Small}
-                disabled={registerNameTransactionIsPending || transactionIsFetching}
-                isLoading={registerNameTransactionIsPending || transactionIsFetching}
+                disabled={registerNameTransactionIsPending}
+                isLoading={registerNameTransactionIsPending}
                 rounded
               >
                 Register name

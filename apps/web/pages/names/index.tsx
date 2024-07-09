@@ -21,11 +21,14 @@ import classNames from 'classnames';
 import Head from 'next/head';
 import { Fragment, ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
+import { useWaitForTransactionReceipt } from 'wagmi';
 // TODO: replace appropriate backgrounds w/Lottie files
 
 export enum ClaimProgression {
   SEARCH,
   CLAIM,
+  PENDING,
+  SUCCESS,
   PROFILE,
 }
 
@@ -60,6 +63,11 @@ export function Usernames() {
   const { data: discounts, loading: loadingDiscounts } = useAggregatedDiscountValidators();
   const discount = findFirstValidDiscount(discounts);
   const [progress, setProgress] = useState<ClaimProgression>(ClaimProgression.SEARCH);
+
+  // TODO: Not a big fan of this, I think ideally we'd have useRegisterNameCallback here
+  const [registerNameTransactionHash, setRegisterNameTransactionHash] = useState<
+    `0x${string}` | undefined
+  >();
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
   const toggleLearnMoreModal = useCallback(() => setLearnMoreModalOpen((open) => !open), []);
   const [shareUsernameModalOpen, setShareUsernameModalOpen] = useState(false);
@@ -83,26 +91,49 @@ export function Usernames() {
     setSelectedName(name);
   }, []);
 
-  const registrationFormOnSuccess = () => {
-    setProgress(ClaimProgression.PROFILE);
+  const registrationFormOnApproved = (transactionHash: `0x${string}`) => {
+    setRegisterNameTransactionHash(transactionHash);
   };
+
+  // Wait for text record transaction to be processed
+
+  const { isFetching: transactionIsFetching, isSuccess: transactionIsSuccess } =
+    useWaitForTransactionReceipt({
+      hash: registerNameTransactionHash,
+      query: {
+        enabled: !!registerNameTransactionHash,
+      },
+    });
+
+  useEffect(() => {
+    if (transactionIsFetching) {
+      setProgress(ClaimProgression.PENDING);
+    }
+    if (transactionIsSuccess) {
+      setProgress(ClaimProgression.SUCCESS);
+    }
+  }, [transactionIsFetching, transactionIsSuccess]);
 
   const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
 
   const isSearch = progress === ClaimProgression.SEARCH;
   const isClaim = progress === ClaimProgression.CLAIM;
+  const isPending = progress === ClaimProgression.PENDING;
+  const isSuccess = progress === ClaimProgression.SUCCESS;
   const isProfile = progress === ClaimProgression.PROFILE;
 
   const transitionDuration = 'duration-700';
+
+  const blueBackground = inputFocused || isSuccess;
 
   const mainClasses = classNames(
     'relative z-10 flex min-h-screen w-full overflow-hidden flex-col items-center  px-6',
     'transition-all',
     transitionDuration,
     {
-      'bg-ocsblue text-white': inputFocused,
-      'bg-white text-black': !inputFocused,
-      'pt-[calc(50vh-15rem)]': isSearch || isClaim,
+      'bg-ocsblue text-white': blueBackground,
+      'bg-white text-black': !blueBackground,
+      'pt-[calc(50vh-15rem)]': isSearch || isClaim || isPending || isSuccess,
       'pt-0': isProfile,
     },
   );
@@ -116,14 +147,9 @@ export function Usernames() {
     [inputFocused, inputHovered],
   );
 
-  const [currentUsernamePillVariant, setCurrentUsernamePillVariant] =
-    useState<UsernamePillVariants>(UsernamePillVariants.Inline);
-
-  useEffect(() => {
-    if (progress === ClaimProgression.PROFILE) {
-      setCurrentUsernamePillVariant(UsernamePillVariants.Card);
-    }
-  }, [progress]);
+  const currentUsernamePillVariant = isProfile
+    ? UsernamePillVariants.Card
+    : UsernamePillVariants.Inline;
 
   return (
     <>
@@ -136,6 +162,61 @@ export function Usernames() {
       </Head>
       <RegistrationContext.Provider value={registrationValue}>
         <main className={mainClasses}>
+          {/* TODO: REMOVE ME WHEN DONE TESTING */}
+          <div className="absolute right-20 top-40 z-50 w-[10rem] rounded-lg border border-line/20 bg-white p-4 text-black shadow-lg">
+            <ul className="flex flex-col gap-2">
+              <li>
+                <button
+                  type="button"
+                  // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+                  onClick={() => setProgress(ClaimProgression.SEARCH)}
+                  className="rounded border border-line/10 p-2"
+                >
+                  Search
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+                  onClick={() => setProgress(ClaimProgression.CLAIM)}
+                  className="rounded border border-line/10 p-2"
+                >
+                  Claim
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+                  onClick={() => setProgress(ClaimProgression.PENDING)}
+                  className="rounded border border-line/10 p-2"
+                >
+                  Pending
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+                  onClick={() => setProgress(ClaimProgression.SUCCESS)}
+                  className="rounded border border-line/10 p-2"
+                >
+                  Success
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+                  onClick={() => setProgress(ClaimProgression.PROFILE)}
+                  className="rounded border border-line/10 p-2"
+                >
+                  Profile
+                </button>
+              </li>
+            </ul>
+          </div>
           <Transition
             appear
             show={isSearch}
@@ -149,7 +230,7 @@ export function Usernames() {
           </Transition>
           <Transition
             appear
-            show={isClaim}
+            show={isClaim || isPending}
             className={classNames('transition-opacity', transitionDuration)}
             enterFrom={classNames('opacity-0')}
             enterTo={classNames('opacity-100')}
@@ -219,10 +300,11 @@ export function Usernames() {
             <div className="relative mb-40">
               <Transition
                 appear
-                show={isClaim || isProfile}
+                show={isClaim || isProfile || isPending || isSuccess}
                 className={classNames(
                   'absolute left-1/2 top-0 z-30 mx-auto -translate-x-1/2 transition-all',
                   transitionDuration,
+                  { 'animate-pulse': isPending },
                 )}
                 enter="overflow-hidden"
                 enterFrom={classNames('opacity-0 max-w-[5rem]')}
@@ -232,6 +314,9 @@ export function Usernames() {
                 leaveTo="opacity-0"
               >
                 <UsernamePill username={selectedName} variant={currentUsernamePillVariant} />
+                {isPending && (
+                  <p className="mt-6 text-center font-bold uppercase text-line">Registering...</p>
+                )}
               </Transition>
 
               <Transition
@@ -288,8 +373,21 @@ export function Usernames() {
                 loadingDiscounts={loadingDiscounts}
                 discount={discount}
                 toggleModal={toggleLearnMoreModal}
-                onSuccess={registrationFormOnSuccess}
+                onApprove={registrationFormOnApproved}
               />
+            </Transition>
+
+            <Transition
+              appear
+              show={isSuccess}
+              enter={classNames('transition-opacity', transitionDuration)}
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave={classNames('transition-opacity', transitionDuration)}
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <p>hell ye brother</p>
             </Transition>
           </div>
           <LearnMoreModal
