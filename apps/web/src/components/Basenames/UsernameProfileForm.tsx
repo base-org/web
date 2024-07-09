@@ -85,27 +85,46 @@ export function UsernameProfileForm() {
   const onClickSkip = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
-      if (currentFormStep === FormSteps.Description) setCurrentFormStep(FormSteps.Socials);
+      if (currentFormStep === FormSteps.Description) {
+        // Reset description to the existing description (onchain)
+        updateTextRecords(
+          UsernameTextRecordKeys.Description,
+          existingTextRecords[UsernameTextRecordKeys.Description],
+        );
+
+        // Skip to next step
+        setCurrentFormStep(FormSteps.Socials);
+      }
       if (currentFormStep === FormSteps.Socials) {
+        // Reset social handles to the existing description (onchain)
+        socialPlatformsEnabled.map((socialPlatform) => {
+          const usernameTextRecordKeys = socialPlatformToTextRecordKeys[socialPlatform];
+          updateTextRecords(usernameTextRecordKeys, existingTextRecords[usernameTextRecordKeys]);
+        });
+
         // TODO: Redirects to userprofile
       }
     },
-    [currentFormStep],
+    [currentFormStep, existingTextRecords, updateTextRecords],
   );
 
   const onClickSave = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
       if (currentFormStep === FormSteps.Description) {
-        // We are saving this in the state, so saving description = skip
+        // We are saving this in the state, so saving description = go to social
         setCurrentFormStep(FormSteps.Socials);
       }
 
       if (currentFormStep === FormSteps.Socials) {
         // Contract call
         writeTextRecords(textRecords)
-          .then(() => {})
-          .catch(() => {});
+          .then(() => {
+            // TODO: Redirects to userprofile
+          })
+          .catch(() => {
+            // TODO: Show an error
+          });
       }
 
       event.preventDefault();
