@@ -67,7 +67,7 @@ export function SearchBar({ setSearchText }: Props) {
 
   return (
     <div
-      className="flex h-10 flex-row items-center gap-2 rounded-[56px] border border-muted p-2 md:w-full lg:w-80"
+      className="flex h-10 flex-row items-center gap-2 rounded-[56px] border border-gray-60 p-2 md:w-full lg:w-80"
     >
       <SearchIcon />
 
@@ -76,7 +76,7 @@ export function SearchBar({ setSearchText }: Props) {
         id="appsSearchBar"
         value={text}
         onChange={onChange}
-        className="w-full bg-black font-sans text-base text-white placeholder:text-muted focus:outline-none"
+        className="w-full bg-black font-sans text-base text-white placeholder:text-gray-60 focus:outline-none"
         placeholder="Search"
         aria-label='Search for apps and integrations in the Base ecosystem'
       />
