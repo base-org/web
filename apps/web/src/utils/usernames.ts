@@ -61,16 +61,18 @@ export type EnsDomainNameValidationResult = {
 };
 
 export const validateEnsDomainName = (name: string): EnsDomainNameValidationResult => {
-  const formattedName = name.trim();
+  // Proper way to count emojis' length:
+  // https://stackoverflow.com/questions/54369513/how-to-count-the-correct-length-of-a-string-with-emojis-in-javascript
+  const nameLength = [...name].length;
 
-  if (formattedName.length > USERNAME_MAX_CHARACTER_LENGTH) {
+  if (nameLength > USERNAME_MAX_CHARACTER_LENGTH) {
     return {
       valid: false,
       message: 'Name is too long',
     };
   }
 
-  if (name.length < USERNAME_MIN_CHARACTER_LENGTH) {
+  if (nameLength < USERNAME_MIN_CHARACTER_LENGTH) {
     return {
       valid: false,
       message: 'Name is too short',

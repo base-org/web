@@ -167,6 +167,9 @@ export function UsernameProfileForm() {
     </div>
   );
 
+  const isLoading =
+    existingTextRecordsIsLoading || writeTextRecordsIsPending || transactionIsFetching;
+
   return (
     <form className={formClasses}>
       {currentFormStep === FormSteps.Description && (
@@ -174,9 +177,7 @@ export function UsernameProfileForm() {
           labelChildren={descriptionLabelChildren}
           onChange={onChangeTextRecord}
           value={textRecords[UsernameTextRecordKeys.Description]}
-          disabled={
-            existingTextRecordsIsLoading || writeTextRecordsIsPending || transactionIsFetching
-          }
+          disabled={isLoading}
         />
       )}
       {currentFormStep === FormSteps.Socials && (
@@ -188,18 +189,29 @@ export function UsernameProfileForm() {
               socialPlatform={socialPlatform}
               onChange={onChangeTextRecord}
               value={textRecords[socialPlatformToTextRecordKeys[socialPlatform]]}
-              disabled={
-                existingTextRecordsIsLoading || writeTextRecordsIsPending || transactionIsFetching
-              }
+              disabled={isLoading}
             />
           ))}
         </Fieldset>
       )}
       <div className="flex w-full flex-row gap-4">
-        <Button variant={ButtonVariants.Gray} rounded fullWidth onClick={onClickSkip}>
+        <Button
+          variant={ButtonVariants.Gray}
+          rounded
+          fullWidth
+          disabled={isLoading}
+          onClick={onClickSkip}
+        >
           Skip
         </Button>
-        <Button variant={ButtonVariants.Black} rounded fullWidth onClick={onClickSave}>
+        <Button
+          variant={ButtonVariants.Black}
+          rounded
+          fullWidth
+          disabled={isLoading}
+          isLoading={isLoading}
+          onClick={onClickSave}
+        >
           Next
         </Button>
       </div>
