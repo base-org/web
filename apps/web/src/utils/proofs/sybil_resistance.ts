@@ -62,7 +62,7 @@ const discountTypeMap: DiscountTypeMap = {
 };
 
 export async function hasRegisteredWithDiscount(
-  addresses: string[],
+  addresses: Address[],
   chainId: number,
 ): Promise<boolean> {
   const publicClient = getPublicClient(chainId);
