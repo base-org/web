@@ -19,7 +19,7 @@ export function Card({ name, url, description, imageUrl, tags }: Props) {
       href={url}
       rel="noreferrer noopener"
       target="_blank"
-      className="flex w-full flex-col justify-start gap-8 bg-gray p-8 visited:opacity-50 hover:bg-darkgray"
+      className="flex w-full flex-col justify-start gap-8 bg-gray-10 p-8 visited:opacity-50 hover:bg-darkgray"
     >
       <div className="flex flex-row justify-between">
         <div className="relative h-[80px] w-[80px] overflow-hidden rounded-[3px]">

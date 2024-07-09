@@ -14,7 +14,7 @@ export function BestOfEthereum() {
         </p>
       </div>
       <div className="flex w-full max-w-[534px] flex-col space-y-2 lg:basis-1/2">
-        <div className="flex h-[460px] w-full max-w-[534px] flex-col justify-between bg-gray p-8">
+        <div className="flex h-[460px] w-full max-w-[534px] flex-col justify-between bg-gray-10 p-8">
           <h3 className="font-display text-8xl text-white lg:text-9xl">10x</h3>
           <div className="flex flex-col font-sans text-4xl uppercase text-white lg:text-5xl">
             <h3>Cheaper<br />Than<br />Ethereum</h3>
