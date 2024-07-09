@@ -1945,15 +1945,6 @@
     "imageUrl": "/images/partners/omni_network.webp"
   },
   {
-    "name": "OpenCover",
-    "url": "https://opencover.com",
-    "description": "OpenCover makes it easy and affordable to cover your portfolio against onchain risks such as smart contract exploits and oracle failures.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/opencover.webp"
-  },
-  {
     "name": "Pyth Network",
     "url": "https://pyth.network/",
     "description": "Pyth delivers real-time market data feeds to 20+ blockchains by sourcing from exchanges, market makers, and trading firms. 150+ DeFi apps trust and rely on Pyth to stay competitive.\n\nOnly Pyth provides the speed, market coverage, and robustness needed to onboard millions of users.",
