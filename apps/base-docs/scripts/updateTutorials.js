@@ -1,14 +1,15 @@
 const yaml = require('js-yaml');
 const fs = require('fs');
-const { readFile } = require('fs/promises');
+const { readFile, readdir, stat } = fs.promises;
 const path = require('path');
 const crypto = require('crypto');
 
 const tutorialsDir = path.join(__dirname, '..', 'tutorials', 'docs');
+const outputFilePath = path.join(__dirname, '..', 'tutorials', 'data.json');
 
 async function getDuration(filePath) {
   try {
-    let content = await readFile(filePath, 'utf8');
+    const content = await readFile(filePath, 'utf8');
     const words = content.trim().split(/\s+/).length;
     const averageReadingSpeed = 225;
     const readingTimeMinutes = (words / averageReadingSpeed) * 2;
@@ -31,18 +32,8 @@ async function getDuration(filePath) {
 
 async function formatDate(date) {
   const months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
   ];
   const month = months[date.getMonth()];
   const day = date.getDate();
@@ -62,7 +53,6 @@ async function calculateChecksum(filePath) {
 
 (async () => {
   const tutorials = {};
-  const outputFilePath = path.join(__dirname, '..', 'tutorials', 'data.json');
   let existingData = {};
 
   try {
@@ -72,23 +62,24 @@ async function calculateChecksum(filePath) {
   }
 
   try {
-    const files = await fs.promises.readdir(tutorialsDir);
+    const files = await readdir(tutorialsDir);
     for (const file of files) {
       const tutorialsPath = path.join(tutorialsDir, file);
-      const tutorialsStat = await fs.promises.stat(tutorialsPath);
+      const tutorialsStat = await stat(tutorialsPath);
       if (tutorialsStat.isFile()) {
         let content = await readFile(tutorialsPath, 'utf8');
-        content = content.split('---\n')[1];
-        const frontMatter = yaml.load(content);
-        const slug = frontMatter.slug.substring(1);
+        const frontMatter = yaml.load(content.split('---\n')[1]);
+        const slug = path.parse(file).name;
         const checksum = await calculateChecksum(tutorialsPath);
         const currentDate = new Date();
 
         if (!existingData[slug] || existingData[slug].checksum !== checksum) {
-          tutorials[slug] = frontMatter;
-          tutorials[slug].last_updated = await formatDate(currentDate);
-          tutorials[slug].duration = await getDuration(tutorialsPath);
-          tutorials[slug].checksum = checksum;
+          tutorials[slug] = {
+            ...frontMatter,
+            last_updated: await formatDate(currentDate),
+            duration: await getDuration(tutorialsPath),
+            checksum: checksum,
+          };
         } else {
           tutorials[slug] = existingData[slug];
         }
