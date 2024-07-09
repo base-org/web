@@ -232,6 +232,31 @@ const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
       <circle cx="7.5" cy="7.5" r="7.5" fill={color} />
     </svg>
   ),
+  plus: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 12 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M6.9 0H5.1V5.09998H0V6.89998H5.1V12H6.9V6.89998H12V5.09998H6.9V0Z" fill={color} />
+    </svg>
+  ),
+  cross: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 12 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M2.04795 1L1 2.04795L4.95205 6L1 9.95205L2.04795 11L6 7.04795L9.95205 11L11 9.95205L7.04795 6L11 2.04795L9.95205 1L6 4.95205L2.04795 1Z"
+        fill={color}
+      />
+    </svg>
+  ),
 };
 
 export function Icon({ name, color = 'white', width = '24', height = '24' }: IconProps) {

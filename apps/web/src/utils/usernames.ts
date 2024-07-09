@@ -54,6 +54,7 @@ export const textRecordsKeyWords = [
 
 export const textRecordsKeysEnabled = [
   UsernameTextRecordKeys.Description,
+  UsernameTextRecordKeys.Keywords,
   UsernameTextRecordKeys.Twitter,
   UsernameTextRecordKeys.Farcaster,
   UsernameTextRecordKeys.Lens,

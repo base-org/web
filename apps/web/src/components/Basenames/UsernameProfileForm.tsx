@@ -1,4 +1,5 @@
 import UsernameDescriptionField from 'apps/web/src/components/Basenames/UsernameDescriptionField';
+import UsernameKeywordsField from 'apps/web/src/components/Basenames/UsernameKeywordsField';
 import UsernameSocialHandleField from 'apps/web/src/components/Basenames/UsernameSocialHandleField';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Fieldset from 'apps/web/src/components/Fieldset';
@@ -83,41 +84,18 @@ export function UsernameProfileForm() {
     });
   }, []);
 
-  const onClickSkip = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      event.preventDefault();
-      if (currentFormStep === FormSteps.Description) {
-        // Reset description to the existing description (onchain)
-        updateTextRecords(
-          UsernameTextRecordKeys.Description,
-          existingTextRecords[UsernameTextRecordKeys.Description],
-        );
-
-        // Skip to next step
-        setCurrentFormStep(FormSteps.Socials);
-      }
-      if (currentFormStep === FormSteps.Socials) {
-        // Reset social handles to the existing description (onchain)
-        socialPlatformsEnabled.map((socialPlatform) => {
-          const usernameTextRecordKeys = socialPlatformToTextRecordKeys[socialPlatform];
-          updateTextRecords(usernameTextRecordKeys, existingTextRecords[usernameTextRecordKeys]);
-        });
-
-        // TODO: Redirects to userprofile
-      }
-    },
-    [currentFormStep, existingTextRecords, updateTextRecords],
-  );
-
   const onClickSave = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
       if (currentFormStep === FormSteps.Description) {
-        // We are saving this in the state, so saving description = go to social
         setCurrentFormStep(FormSteps.Socials);
       }
 
       if (currentFormStep === FormSteps.Socials) {
+        setCurrentFormStep(FormSteps.Keywords);
+      }
+
+      if (currentFormStep === FormSteps.Keywords) {
         // Contract call
         writeTextRecords(textRecords)
           .then(() => {
@@ -151,7 +129,7 @@ export function UsernameProfileForm() {
           <Icon name="blueCircle" color="currentColor" height="0.8rem" width="0.8rem" />
           <strong className="text-black">Add Bio</strong>
         </div>
-        <span>Step 1 of 2</span>
+        <span>Step 1 of 3</span>
       </p>
     </div>
   );
@@ -163,7 +141,19 @@ export function UsernameProfileForm() {
           <Icon name="blueCircle" color="currentColor" height="0.8rem" width="0.8rem" />
           <strong className="text-black">Add Socials</strong>
         </div>
-        <span>Step 2 of 2</span>
+        <span>Step 2 of 3</span>
+      </p>
+    </div>
+  );
+
+  const keywordsLabelChildren = (
+    <div className="mb-2 flex w-full cursor-pointer flex-col">
+      <p className="flex flex-row justify-between text-black">
+        <div className="flex flex-row items-center gap-1 text-blue-500">
+          <Icon name="blueCircle" color="currentColor" height="0.8rem" width="0.8rem" />
+          <strong className="text-black">Add areas of expertise</strong>
+        </div>
+        <span>Step 3 of 3</span>
       </p>
     </div>
   );
@@ -195,27 +185,26 @@ export function UsernameProfileForm() {
           ))}
         </Fieldset>
       )}
-      <div className="flex w-full flex-row gap-4">
-        <Button
-          variant={ButtonVariants.Gray}
-          rounded
-          fullWidth
-          disabled={isLoading}
-          onClick={onClickSkip}
-        >
-          Skip
-        </Button>
-        <Button
-          variant={ButtonVariants.Black}
-          rounded
-          fullWidth
-          disabled={isLoading}
-          isLoading={isLoading}
-          onClick={onClickSave}
-        >
-          Next
-        </Button>
-      </div>
+      {currentFormStep === FormSteps.Keywords && (
+        <div className="mb-2">
+          <UsernameKeywordsField
+            labelChildren={keywordsLabelChildren}
+            onChange={onChangeTextRecord}
+            value={textRecords[UsernameTextRecordKeys.Keywords]}
+            disabled={isLoading}
+          />
+        </div>
+      )}
+      <Button
+        variant={ButtonVariants.Black}
+        rounded
+        fullWidth
+        disabled={isLoading}
+        isLoading={isLoading}
+        onClick={onClickSave}
+      >
+        {currentFormStep === FormSteps.Keywords ? "I'm done" : 'Next'}
+      </Button>
     </form>
   );
 }

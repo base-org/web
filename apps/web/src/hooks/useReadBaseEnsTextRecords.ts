@@ -32,6 +32,7 @@ export default function useReadBaseEnsTextRecords({
     [UsernameTextRecordKeys.Lens]: '',
     [UsernameTextRecordKeys.Telegram]: '',
     [UsernameTextRecordKeys.Discord]: '',
+    [UsernameTextRecordKeys.Keywords]: '',
   });
 
   const updateExistingTextRecords = useCallback((key: UsernameTextRecordKeys, value: string) => {
