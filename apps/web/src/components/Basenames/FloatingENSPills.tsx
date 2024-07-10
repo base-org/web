@@ -168,8 +168,6 @@ export function FloatingENSPills() {
 
   const { searchInputFocused } = useRegistration();
 
-  console.log('SHOULD EB BLUE', { searchInputFocused });
-
   return (
     <div
       className={classNames(
