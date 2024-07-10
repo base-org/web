@@ -2,36 +2,47 @@ const fs = require('fs');
 const csv = require('csv-parser');
 const path = require('path');
 
-const jsonArray = [];
+const csvFilePath = path.join(__dirname, 'partners.csv');
+const outputFile = path.join(__dirname, '../src/data/ecosystem.json');
 
-const csvFilePath = path.join(__dirname, 'partners.csv'); // Replace with your actual CSV file name
-
+// Function to convert a string to snake_case
 function toSnakeCase(str) {
-  return str
-    .toLowerCase()
-    .replace(/ /g, '_')
-    .replace(/[^\w-]+/g, '');
+  return str.toLowerCase().replace(/ /g, '_').replace(/[^\w-]+/g, '');
 }
 
-fs.createReadStream(csvFilePath)
-  .pipe(csv())
-  .on('data', (row) => {
-    const dapp = {};
-    dapp.name = row.Name;
-    dapp.url = row['Link to Project'];
-    dapp.description = row.Description;
-    dapp.tags = [row.Category.toLowerCase().replace('infrastructure', 'infra')];
-    dapp.imageUrl = `/images/partners/${toSnakeCase(dapp.name)}.png`;
-    jsonArray.push(dapp);
-  })
-  .on('end', () => {
-    fs.writeFile(
-      path.join(__dirname, '../src/data/ecosystem.json'),
-      JSON.stringify(jsonArray, null, 2),
-      'utf8',
-      (err) => {
-        if (err) throw err;
-        console.log('Ecosystem.json written');
-      },
-    );
-  });
+// Function to process each row of the CSV
+function processRow(row) {
+  return {
+    name: row.Name,
+    url: row['Link to Project'],
+    description: row.Description,
+    tags: [row.Category.toLowerCase().replace('infrastructure', 'infra')],
+    imageUrl: `/images/partners/${toSnakeCase(row.Name)}.png`,
+  };
+}
+
+// Main function to read CSV, process data, and write JSON file
+function generateEcosystemJson() {
+  const jsonArray = [];
+
+  fs.createReadStream(csvFilePath)
+    .pipe(csv())
+    .on('data', (row) => {
+      const dapp = processRow(row);
+      jsonArray.push(dapp);
+    })
+    .on('end', () => {
+      fs.writeFile(outputFile, JSON.stringify(jsonArray, null, 2), 'utf8', (err) => {
+        if (err) {
+          console.error('Error writing ecosystem.json:', err);
+        } else {
+          console.log('Ecosystem.json written successfully');
+        }
+      });
+    })
+    .on('error', (err) => {
+      console.error('Error reading CSV file:', err);
+    });
+}
+
+generateEcosystemJson();
