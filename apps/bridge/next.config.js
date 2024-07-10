@@ -1,91 +1,74 @@
 const { BugsnagSourceMapUploaderPlugin } = require('webpack-bugsnag-plugins');
 
 const isProdEnv = process.env.NODE_ENV === 'production';
+const isLocalDevelopment = process.env.NODE_ENV === 'development';
 
 const baseConfig = {
   i18n: {
     locales: ['en-US'],
     defaultLocale: 'en-US',
   },
-  // Enable advanced features
   compiler: {
     reactRemoveProperties: true,
     removeConsole: isProdEnv,
     styledComponents: true,
   },
-
-  // Always enable compression
   compress: true,
-
-  // We have our own linting infrastructure, so avoid Next's
   eslint: {
     ignoreDuringBuilds: true,
   },
-
-  // This conflicts with how we use project refs and aliases
   typescript: {
     ignoreBuildErrors: true,
   },
-
-  // Do not broadcast that we're using Next
   poweredByHeader: false,
-
-  // Generate source maps for production builds
   productionBrowserSourceMaps: true,
-
-  // Enable strict mode in development
   reactStrictMode: !isProdEnv,
-
-  // Minifiy for production builds
   swcMinify: true,
 };
-
-// csp stuff
-const isLocalDevelopment = process.env.NODE_ENV === 'development';
 
 const contentSecurityPolicy = {
   'default-src': [
     "'self'",
-    "'unsafe-inline'", // NextJS requires 'unsafe-inline'
+    "'unsafe-inline'",
     'https://*.walletconnect.com',
-    isLocalDevelopment ? "'unsafe-eval'" : '',
+    ...(isLocalDevelopment ? ["'unsafe-eval'"] : []),
   ],
   'frame-ancestors': ["'self'"],
   'form-action': ["'self'"],
   'connect-src': [
     "'self'",
-    'https://ethereum.publicnode.com', // ETH rpc,
-    'https://cloudflare-eth.com', // ETH rpc,
-    'https://eth.llamarpc.com', // ETH rpc
-    'https://mainnet.base.org', // Base rpc
-    'https://rpc.ankr.com/eth_goerli', // Goerli rpc
-    'https://goerli.base.org', // Base Goerli rpc
-    'https://ethereum-sepolia.publicnode.com', // Sepolia rpc
-    'https://sepolia.base.org', // Base Sepolia rpc
-    'https://bridge-api.base.org', // Bridge API
-    'https://api.coingecko.com/api/v3/simple/price', // Price API
-    'wss://www.walletlink.org/rpc', // Coinbase Wallet SDK
-    'https://eth-goerli.blockscout.com/api', // ETH Goerli block explorer
-    'https://base-goerli.blockscout.com/api', // Base Goerli block explorer
-    'https://*.walletconnect.org/', // WalletConnect
-    'wss://*.walletconnect.org/', // WalletConnect
-    'wss://*.walletconnect.com', // WalletConnect
-    'https://*.walletconnect.com/', // WalletConnect
+    'https://ethereum.publicnode.com',
+    'https://cloudflare-eth.com',
+    'https://eth.llamarpc.com',
+    'https://mainnet.base.org',
+    'https://rpc.ankr.com/eth_goerli',
+    'https://goerli.base.org',
+    'https://ethereum-sepolia.publicnode.com',
+    'https://sepolia.base.org',
+    'https://bridge-api.base.org',
+    'https://api.coingecko.com/api/v3/simple/price',
+    'wss://www.walletlink.org/rpc',
+    'https://eth-goerli.blockscout.com/api',
+    'https://base-goerli.blockscout.com/api',
+    'https://*.walletconnect.org/',
+    'wss://*.walletconnect.org/',
+    'wss://*.walletconnect.com',
+    'https://*.walletconnect.com/',
     'https://*.coinbase.com/',
-    'https://api-goerli.etherscan.io/api', // Etherscan
-    'https://api.etherscan.io/api', // Etherscan
-    'https://api-goerli.basescan.org/api', // Basescan
-    'https://api.basescan.org/api', // Basescan
-    'https://base.blockscout.com/api', // Blockscout
-    'https://base-goerli.blockscout.com/api', // Blockscout,
-    'https://sepolia.etherscan.io', // Sepolia Etherscan
-    'https://api-sepolia.etherscan.io/api', // Sepolia Etherscan API
-    'https://base-sepolia.blockscout.com', // Sepolia Blockscout
-    'https://base-goerli.blockscout.com/api', // Blockscout
-    'https://iris-api-sandbox.circle.com/attestations/', // Circle (testnet)
-    'https://iris-api.circle.com/attestations/', // Circle (mainnet)
+    'https://api-goerli.etherscan.io/api',
+    'https://api.etherscan.io/api',
+    'https://api-goerli.basescan.org/api',
+    'https://api.basescan.org/api',
+    'https://base.blockscout.com/api',
+    'https://base-goerli.blockscout.com/api',
+    'https://sepolia.etherscan.io',
+    'https://api-sepolia.etherscan.io/api',
+    'https://base-sepolia.blockscout.com',
+    'https://base-goerli.blockscout.com/api',
+    'https://iris-api-sandbox.circle.com/attestations/',
+    'https://iris-api.circle.com/attestations/',
   ],
-  'img-src': ["'self'", 'data:', 'https://*.walletconnect.com/'], // WalletConnect,
+  'img-src': ["'self'", 'data:', 'https://*.walletconnect.com/'],
 };
 
 const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [key, value]) => {
@@ -93,62 +76,38 @@ const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [ke
 }, '');
 
 const securityHeaders = [
-  {
-    key: 'cache-control',
-    value: 'no-store',
-  },
-  {
-    key: 'content-security-policy',
-    value: cspObjectToString,
-  },
-  {
-    key: 'cross-origin-opener-policy',
-    value: 'same-origin-allow-popups',
-  },
-  {
-    key: 'referrer-policy',
-    value: 'strict-origin-when-cross-origin',
-  },
-  {
-    key: 'strict-transport-security',
-    value: 'max-age=63072000; includeSubDomains; preload',
-  },
-  {
-    key: 'x-content-type-options',
-    value: 'nosniff',
-  },
-  {
-    key: 'x-frame-options',
-    value: 'SAMEORIGIN',
-  },
-  {
-    key: 'x-xss-protection',
-    value: '1; mode=block',
-  },
+  { key: 'cache-control', value: 'no-store' },
+  { key: 'content-security-policy', value: cspObjectToString },
+  { key: 'cross-origin-opener-policy', value: 'same-origin-allow-popups' },
+  { key: 'referrer-policy', value: 'strict-origin-when-cross-origin' },
+  { key: 'strict-transport-security', value: 'max-age=63072000; includeSubDomains; preload' },
+  { key: 'x-content-type-options', value: 'nosniff' },
+  { key: 'x-frame-options', value: 'SAMEORIGIN' },
+  { key: 'x-xss-protection', value: '1; mode=block' },
 ];
 
 function extendBaseConfig(customConfig = {}, plugins = []) {
   const defaultConfig = {
     ...baseConfig,
     ...customConfig,
-    webpack: (webpack, options) => {
+    webpack: (config, options) => {
       if (customConfig.webpack) {
-        return customConfig.webpack(webpack, options);
+        config = customConfig.webpack(config, options);
       }
 
       if (isProdEnv && process.env.BUGSNAG_API_KEY) {
-        webpack.plugins.push(
+        config.plugins.push(
           new BugsnagSourceMapUploaderPlugin({
             appVersion: process.env.BUILD_ID,
             apiKey: process.env.BUGSNAG_API_KEY,
             publicPath: '*/_next/',
             overwrite: true,
             endpoint: process.env.BUGSNAG_SOURCEMAPS_URL,
-          }),
+          })
         );
       }
 
-      return webpack;
+      return config;
     },
   };
 
@@ -182,8 +141,7 @@ module.exports = extendBaseConfig({
     twitterURL: process.env.TWITTER_URL,
     githubURL: process.env.GITHUB_URL,
     blogURL: process.env.BLOG_URL,
-    mainnetLaunchBlogPostURL:
-      process.env.MAINNET_LAUNCH_BLOG_POST_URL ?? 'https://base.mirror.xyz/',
+    mainnetLaunchBlogPostURL: process.env.MAINNET_LAUNCH_BLOG_POST_URL ?? 'https://base.mirror.xyz/',
     mainnetLaunchFlag: process.env.MAINNET_LAUNCH_FLAG ?? 'false',
     tosVersion: process.env.TOS_VERSION,
     goerliBridgeURL: process.env.GOERLI_BRIDGE_URL,
@@ -200,7 +158,6 @@ module.exports = extendBaseConfig({
     cctpAttestationsAPIURL: process.env.CCTP_ATTESTATIONS_API_URL,
     cctpEnabled: process.env.CCTP_ENABLED,
   },
-  ...baseConfig,
   async headers() {
     return [
       {
