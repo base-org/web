@@ -33,7 +33,7 @@ import {
 import { privateKeyToAccount } from 'viem/accounts';
 import { base, baseSepolia } from 'viem/chains';
 
-const EXPIRY = (process.env.USERNAMES_SIGNATURE_EXPIRATION_SECONDS as unknown as number) ?? 10;
+const EXPIRY = (process.env.USERNAMES_SIGNATURE_EXPIRATION_SECONDS as unknown as number) ?? 30;
 const previousClaimsKVPrefix = 'username:claims:';
 
 type DiscountTypeMap = Record<84532 | 8453, DiscountTypes>;
