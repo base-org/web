@@ -20,12 +20,6 @@ displayed_sidebar: null
 
 To share your [Frames] on [Farcaster], you must first deploy them to the web. Farcaster reads the metadata from your site to build the Frame as it initially appears to the user. In this tutorial, we'll show you how to deploy the frame in the example - [a-frame-in-100-lines]
 
-:::caution
-
-Frames are brand new and tools are evolving quickly. Check the links above for changelogs!
-
-:::
-
 ---
 
 ## Objectives
@@ -56,13 +50,39 @@ You must have a [Farcaster] account with a connected wallet. Check out the [Base
 
 ## Setup and Testing the Template
 
-Start by creating a fork of the [a-frame-in-100-lines].
+Start by creating a new repo using [a-frame-in-100-lines] as a template.
 
 Run `yarn install`, then `yarn dev`.
 
 In the browser, open `http://localhost:3000/`. All you'll see is a heading with _Zizzamia.xyz_. This is expected!
 
-Open `page.tsx`. Here, you'll find the initial setup of the metadata that Farcaster reads to create the frame, as well as the simple page you just viewed. Change the `<h1>` to be your name. Change the `label` of the first button in `buttons` to be something you'll recognize as well. This can be your name, your pet's, or anything you like!
+Open `app/page.tsx`. Here, you'll find the initial setup of the metadata that Farcaster reads to create the frame, as well as the simple page you just viewed. Change the `<h1>` to be your name.
+
+```tsx
+export default function Page() {
+  return (
+    <>
+      <h1>YOUR NAME HERE</h1>
+    </>
+  );
+}
+```
+
+Change the `label` of the first button in `buttons` to be something you'll recognize as well. This can be your name, your pet's, or anything you like!
+
+```tsx
+buttons: [
+  {
+    label: 'YOUR NAME HERE',
+  },
+  {
+    action: 'tx',
+    label: 'Send Base Sepolia',
+    target: `${NEXT_PUBLIC_URL}/api/tx`,
+    postUrl: `${NEXT_PUBLIC_URL}/api/tx-success`,
+  },
+],
+```
 
 ## Setting up Vercel
 
@@ -74,7 +94,7 @@ You should see something like this:
 
 Click the `Install` button to install the Vercel app in your Github organization. You'll need to select the appropriate choice for your organization between `All repositories` and `Only selected repositories`.
 
-All is more convenient, but riskier. For this tutorial, we're assuming that you've chosen to go with minimum necessary access. Click the `Select repositories` dropdown, and pick the repo for your Frame.
+All is more convenient, but gives a (well respected) third party more access than is required. For this tutorial, we're assuming that you've chosen to go with minimum necessary access. Click the `Select repositories` dropdown, and pick the repo for your Frame.
 
 Click `Install`.
 
@@ -94,7 +114,7 @@ Click the button, then configure your project. The [a-frame-in-100-lines] exampl
 
 :::caution
 
-You won't have been the first person to name a project `a-frame-in-100-lines`, so Vercel will adjust the name for you for the file path. Don't be confused when your changes don't show up at `a-frame-in-100-lines.vercel, app`, that one isn't yours!
+You won't have been the first person to name a project `a-frame-in-100-lines`, so Vercel will adjust the name for you for the file path, if you gave your template copy the same name. Don't be confused when your changes don't show up at `a-frame-in-100-lines.vercel, app`, that one isn't yours!
 
 :::
 
@@ -130,7 +150,7 @@ If you want, you can disable CI/CD and set up manual deploys. One convenient way
 
 ## Testing the Cast
 
-Open the [Frame Validator] and paste in your link. You may need to add junk data to your url with `?1234` to bypass caching of previous versions.
+Open the [Frame Validator] and paste in your link. Viewing a frame from the validator will re-cache it for **future** casts, but it **will not** change any existing casts of the frame.
 
 Click `Load`. You should see:
 
@@ -142,7 +162,7 @@ Except it should have the text that you edited!
 
 ## Conclusion
 
-In this tutorial, you learned how to set up [Vercel]
+In this tutorial, you learned how to deploy a frame with [Vercel] and take advantage of CI/CD.
 
 ---
 
