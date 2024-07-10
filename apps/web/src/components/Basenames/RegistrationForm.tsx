@@ -18,7 +18,6 @@ import { useSwitchChain } from 'wagmi';
 type RegistrationFormProps = {
   loadingDiscounts: boolean;
   toggleModal: () => void;
-  onApprove: (transactionHash: `0x${string}`) => void;
   discount?: DiscountData;
 };
 
@@ -46,12 +45,11 @@ export function RegistrationForm({
   discount,
   loadingDiscounts,
   toggleModal,
-  onApprove,
 }: RegistrationFormProps) {
   const { openConnectModal } = useConnectModal();
   const { switchChain } = useSwitchChain();
 
-  const { selectedName } = useRegistration();
+  const { selectedName, setRegisterNameTransactionHash } = useRegistration();
   const [years, setYears] = useState(1);
   const increment = useCallback(() => {
     setYears((n) => n + 1);
@@ -86,10 +84,8 @@ export function RegistrationForm({
   );
 
   useEffect(() => {
-    if (onApprove && registerNameTransactionHash) {
-      onApprove(registerNameTransactionHash);
-    }
-  }, [onApprove, registerNameTransactionHash]);
+    if (registerNameTransactionHash) setRegisterNameTransactionHash(registerNameTransactionHash);
+  }, [registerNameTransactionHash]);
 
   const registerNameCallback = useCallback(() => {
     registerName()

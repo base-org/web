@@ -21,9 +21,8 @@ import {
   useAggregatedDiscountValidators,
 } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
 import classNames from 'classnames';
-import { Fragment, useCallback, useEffect, useState } from 'react';
+import { Fragment, useCallback, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
-import { useWaitForTransactionReceipt } from 'wagmi';
 
 export enum Discount {
   CBID = 'CBID',
@@ -57,11 +56,6 @@ export function RegistrationFlow() {
   const discount = findFirstValidDiscount(discounts);
   const { registrationStep, setRegistrationStep, searchInputFocused } = useRegistration();
 
-  // TODO: Not a big fan of this, I think ideally we'd have useRegisterNameCallback here
-  const [registerNameTransactionHash, setRegisterNameTransactionHash] = useState<
-    `0x${string}` | undefined
-  >();
-
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
   const toggleLearnMoreModal = useCallback(() => setLearnMoreModalOpen((open) => !open), []);
   const [shareUsernameModalOpen, setShareUsernameModalOpen] = useState(false);
@@ -69,29 +63,6 @@ export function RegistrationFlow() {
     () => setShareUsernameModalOpen((open) => !open),
     [],
   );
-
-  const registrationFormOnApproved = useCallback((transactionHash: `0x${string}`) => {
-    setRegisterNameTransactionHash(transactionHash);
-  }, []);
-
-  // Wait for text record transaction to be processed
-
-  const { isFetching: transactionIsFetching, isSuccess: transactionIsSuccess } =
-    useWaitForTransactionReceipt({
-      hash: registerNameTransactionHash,
-      query: {
-        enabled: !!registerNameTransactionHash,
-      },
-    });
-
-  useEffect(() => {
-    if (transactionIsFetching) {
-      setRegistrationStep(RegistrationSteps.Pending);
-    }
-    if (transactionIsSuccess) {
-      setRegistrationStep(RegistrationSteps.Success);
-    }
-  }, [setRegistrationStep, transactionIsFetching, transactionIsSuccess]);
 
   const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
 
@@ -301,7 +272,6 @@ export function RegistrationFlow() {
             loadingDiscounts={loadingDiscounts}
             discount={discount}
             toggleModal={toggleLearnMoreModal}
-            onApprove={registrationFormOnApproved}
           />
         </Transition>
         <Transition

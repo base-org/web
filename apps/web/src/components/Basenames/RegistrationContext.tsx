@@ -8,6 +8,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { useWaitForTransactionReceipt } from 'wagmi';
 
 export enum RegistrationSteps {
   Search = 'search',
@@ -26,6 +27,8 @@ export type RegistrationContextProps = {
   setRegistrationStep: Dispatch<SetStateAction<RegistrationSteps>>;
   selectedName: string;
   setSelectedName: Dispatch<SetStateAction<string>>;
+  registerNameTransactionHash: string;
+  setRegisterNameTransactionHash: Dispatch<SetStateAction<string>>;
 };
 
 export const RegistrationContext = createContext<RegistrationContextProps>({
@@ -45,6 +48,10 @@ export const RegistrationContext = createContext<RegistrationContextProps>({
   setSelectedName: function () {
     return undefined;
   },
+  registerNameTransactionHash: 'string',
+  setRegisterNameTransactionHash: function () {
+    return undefined;
+  },
 });
 
 type RegistrationProviderProps = {
@@ -61,6 +68,29 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   const [registrationStep, setRegistrationStep] = useState<RegistrationSteps>(
     RegistrationSteps.Search,
   );
+
+  // TODO: Not a big fan of this, I think ideally we'd have useRegisterNameCallback here
+  const [registerNameTransactionHash, setRegisterNameTransactionHash] = useState<
+    `0x${string}` | undefined
+  >();
+
+  // Wait for text record transaction to be processed
+  const { isFetching: transactionIsFetching, isSuccess: transactionIsSuccess } =
+    useWaitForTransactionReceipt({
+      hash: registerNameTransactionHash,
+      query: {
+        enabled: !!registerNameTransactionHash,
+      },
+    });
+
+  useEffect(() => {
+    if (transactionIsFetching) {
+      setRegistrationStep(RegistrationSteps.Pending);
+    }
+    if (transactionIsSuccess) {
+      setRegistrationStep(RegistrationSteps.Success);
+    }
+  }, [setRegistrationStep, transactionIsFetching, transactionIsSuccess]);
 
   useEffect(() => {
     if (selectedName.length) {
@@ -81,8 +111,16 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       setSelectedName,
       registrationStep,
       setRegistrationStep,
+      registerNameTransactionHash,
+      setRegisterNameTransactionHash,
     };
-  }, [registrationStep, searchInputFocused, searchInputHovered, selectedName]);
+  }, [
+    registerNameTransactionHash,
+    registrationStep,
+    searchInputFocused,
+    searchInputHovered,
+    selectedName,
+  ]);
 
   return <RegistrationContext.Provider value={values}>{children}</RegistrationContext.Provider>;
 }
