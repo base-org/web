@@ -1,6 +1,7 @@
 import { InformationCircleIcon } from '@heroicons/react/20/solid';
 import Modal from 'apps/web/src/components/Modal';
 import Tooltip from 'apps/web/src/components/Tooltip';
+import { MappedDiscountData } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
 import Image from 'next/image';
 
 function InfoIcon() {
@@ -14,12 +15,15 @@ function InfoIcon() {
 }
 
 export function LearnMoreModal({
+  discounts,
   learnMoreModalOpen,
   toggleModal,
 }: {
+  discounts: MappedDiscountData;
   learnMoreModalOpen: boolean;
   toggleModal: () => void;
 }) {
+  console.log('jf LeanMoreModal discounts', discounts);
   return (
     <Modal isOpen={learnMoreModalOpen} onClose={toggleModal} title="">
       <span className="mb-4 w-full text-2xl font-bold">Register for free</span>
@@ -68,10 +72,17 @@ export function LearnMoreModal({
         </li>
       </ul>
       <p className="mb-6 w-full text-illoblack">
-        Your registration will be gasless with <a className="underline">a smart wallet</a>.
+        Your registration will be gasless with{' '}
+        <a href="http://wallet.coinbase.com/smart-wallet" className="underline">
+          a smart wallet
+        </a>
+        .
       </p>
-      <div className="text-md w-full rounded-[13px] border border-[#CED2DB] bg-backgroundAlternate p-4 font-medium text-illoblack">
-        Don’t have any of these? <a className="underline">Get a verification</a>
+      <div className="text-md w-full rounded-xl border border-[#CED2DB] bg-backgroundAlternate p-4 font-medium text-illoblack">
+        Don’t have any of these?{' '}
+        <a href="https://www.coinbase.com/onchain-verify" className="underline">
+          Get a verification
+        </a>
       </div>
     </Modal>
   );

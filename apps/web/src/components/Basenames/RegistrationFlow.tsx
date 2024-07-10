@@ -287,7 +287,11 @@ export function RegistrationFlow() {
           <SuccessMessage />
         </Transition>
       </div>
-      <LearnMoreModal learnMoreModalOpen={learnMoreModalOpen} toggleModal={toggleLearnMoreModal} />
+      <LearnMoreModal
+        discounts={discounts}
+        learnMoreModalOpen={learnMoreModalOpen}
+        toggleModal={toggleLearnMoreModal}
+      />
       <ShareUsernameModal
         isOpen={shareUsernameModalOpen}
         username="ultrabased"

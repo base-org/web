@@ -1,4 +1,4 @@
-import { Discount } from 'apps/web/pages/names';
+import { Discount } from 'apps/web/src/components/Basenames/RegistrationFlow';
 import {
   AttestationData,
   useCheckCB1Attestations,
@@ -10,7 +10,7 @@ import { useMemo } from 'react';
 
 export type DiscountData = AttestationData & { discountKey: `0x${string}` };
 
-type MappedDiscountData = {
+export type MappedDiscountData = {
   [key in Discount]?: DiscountData;
 };
 
