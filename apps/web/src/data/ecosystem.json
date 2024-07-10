@@ -194,7 +194,7 @@
       "infra"
     ],
     "description": "Upgrade Your Web3 Experience with Lore as your primary explorer for Ethereum, Avalanche (C-Chain), Fantom Opera, Base. Stay ahead of the curve with LoreAI, notifications, and more.",
-    "url": "https://searchcrypto.com/",
+    "url": "https://lorescan.com/",
     "imageUrl": "/images/partners/lore.png"
   },
   {
@@ -1943,15 +1943,6 @@
       "defi"
     ],
     "imageUrl": "/images/partners/omni_network.webp"
-  },
-  {
-    "name": "OpenCover",
-    "url": "https://opencover.com",
-    "description": "OpenCover makes it easy and affordable to cover your portfolio against onchain risks such as smart contract exploits and oracle failures.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/opencover.webp"
   },
   {
     "name": "Pyth Network",

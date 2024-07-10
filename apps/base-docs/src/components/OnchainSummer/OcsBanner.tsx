@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
-import { useCallback } from 'react';
 import Icon from '../Icon';
-import logEvent, {ActionType, AnalyticsEventImportance, ComponentType} from "base-ui/utils/logEvent";
+import logEvent, {
+  ActionType,
+  AnalyticsEventImportance,
+  ComponentType,
+} from 'base-ui/utils/logEvent';
 
 import styles from './styles.module.css';
 
@@ -17,10 +20,11 @@ export function OcsBanner() {
       {
         action: ActionType.click,
         componentType: ComponentType.banner,
-        context: 'navbar'
+        context: 'navbar',
       },
-      AnalyticsEventImportance.low
-    )}, [logEvent, ActionType, ComponentType, AnalyticsEventImportance]);
+      AnalyticsEventImportance.low,
+    );
+  }, [logEvent, ActionType, ComponentType, AnalyticsEventImportance]);
 
   const hideBanner = useCallback(() => {
     setIsBannerVisible(false);
@@ -34,24 +38,24 @@ export function OcsBanner() {
     <div className={styles.bannerContainer}>
       <div className={styles.bannerInner}>
         <a
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Onchain Summer Buildathon Banner"
+          onClick={linkClick}
+        >
+          <span className={styles.bannerText}>Build Onchain this Summer!</span>
+        </a>
+        <div className={styles.bannerIconContainer}>
+          <a
             href={href}
             target="_blank"
             rel="noreferrer"
             aria-label="Onchain Summer Buildathon Banner"
             onClick={linkClick}
-        >
-            <span className={styles.bannerText}>Join the Onchain Summer Buildathon!</span>
-        </a>
-        <div className={styles.bannerIconContainer}>
-            <a
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Onchain Summer Buildathon Banner"
-                onClick={linkClick}
-            >
-                <span className={styles.bannerSpacer} />
-            </a>
+          >
+            <span className={styles.bannerSpacer} />
+          </a>
           <button
             className={styles.bannerIconButton}
             onClick={hideBanner}
