@@ -33,7 +33,7 @@ export const socialPlatformsEnabled = [
   SocialPlatform.Discord,
 ];
 
-export function UsernameProfileForm() {
+export default function RegistrationProfileForm() {
   const [currentFormStep, setCurrentFormStep] = useState<FormSteps>(FormSteps.Description);
   const { selectedName } = useRegistration();
 

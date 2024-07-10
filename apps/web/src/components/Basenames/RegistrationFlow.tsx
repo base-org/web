@@ -7,9 +7,9 @@ import {
   useRegistration,
 } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
+import RegistrationProfileForm from 'apps/web/src/components/Basenames/RegistrationProfileForm';
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
-import { UsernameProfileForm } from 'apps/web/src/components/Basenames/UsernameProfileForm';
 import {
   UsernameSearchInput,
   UsernameSearchInputVariant,
@@ -253,7 +253,7 @@ export function RegistrationFlow() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0 "
             >
-              <UsernameProfileForm />
+              <RegistrationProfileForm />
             </Transition>
           </div>
           <Transition
