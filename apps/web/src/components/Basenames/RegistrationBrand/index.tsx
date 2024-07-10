@@ -40,7 +40,8 @@ export default function RegistrationBrand() {
           key={string}
           as={Fragment}
           show={rotatingText === string}
-          enter={classNames('transform  delay-500')}
+          className="transition-opacity"
+          enter={classNames('transform delay-500')}
           enterFrom="opacity-0"
           enterTo="opacity-100"
           leave={classNames('transform')}

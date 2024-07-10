@@ -202,7 +202,9 @@ export function RegistrationFlow() {
             >
               <UsernamePill variant={currentUsernamePillVariant} name={selectedName} />
               {isPending && (
-                <p className="text-line mt-6 text-center font-bold uppercase">Registering...</p>
+                <p className="text-line mt-6 text-center font-bold uppercase text-gray-60">
+                  Registering...
+                </p>
               )}
             </Transition>
             <Transition

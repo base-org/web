@@ -15,6 +15,7 @@ import {
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
 
 export const socialPlatformsEnabled = [SocialPlatform.Twitter, SocialPlatform.Farcaster];
+
 export default function ShareUsernameModal({
   isOpen,
   toggleModal,
