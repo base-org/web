@@ -24,7 +24,6 @@ export function LearnMoreModal({
   learnMoreModalOpen: boolean;
   toggleModal: () => void;
 }) {
-  console.log('jf LeanMoreModal discounts', discounts);
   const hasDiscount = discounts.size > 0;
   const rowClasses = 'flex flex-row items-center justify-start';
   const CBRowClasses = classNames(rowClasses, {
