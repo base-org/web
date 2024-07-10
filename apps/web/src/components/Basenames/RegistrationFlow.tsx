@@ -83,7 +83,7 @@ export function RegistrationFlow() {
   const isProfile = registrationStep === RegistrationSteps.Profile;
 
   const mainClasses = classNames(
-    'relative z-10 flex min-h-screen w-full overflow-hidden flex-col items-center px-6',
+    'relative z-10 flex min-h-screen w-full overflow-hidden flex-col items-center px-6 pb-40',
     'transition-all',
     registrationTransitionDuration,
     {

@@ -9,23 +9,21 @@ import {
 } from 'apps/web/src/utils/usernames';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
+import { baseSepolia } from 'viem/chains';
 
 export type UseWriteBaseEnsTextRecordsProps = {
   address: Address;
-  chainId: number; // TODO: Might not be needed for launch (mainnet only)
 };
 
 // TODO: If we need multicall for other scenarios, make this hook more generic
-export default function useWriteBaseEnsTextRecords({
-  address,
-  chainId,
-}: UseWriteBaseEnsTextRecordsProps) {
+export default function useWriteBaseEnsTextRecords({ address }: UseWriteBaseEnsTextRecordsProps) {
   const addressReverseNode = convertReverseNodeToBytes(address);
 
+  // TODO: Might not be needed for launch (mainnet only)
+  const chainId = baseSepolia.id;
   // To compare to updated ones, avoid overriding them / unecessary calls
   const { existingTextRecords } = useReadBaseEnsTextRecords({
     address,
-    chainId,
   });
 
   const {

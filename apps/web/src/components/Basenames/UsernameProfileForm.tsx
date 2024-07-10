@@ -1,3 +1,4 @@
+import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import UsernameDescriptionField from 'apps/web/src/components/Basenames/UsernameDescriptionField';
 import UsernameKeywordsField from 'apps/web/src/components/Basenames/UsernameKeywordsField';
 import UsernameSocialHandleField from 'apps/web/src/components/Basenames/UsernameSocialHandleField';
@@ -14,8 +15,8 @@ import {
   socialPlatformToTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
+import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
-import { baseSepolia } from 'viem/chains';
 import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
 
 export enum FormSteps {
@@ -34,22 +35,22 @@ export const socialPlatformsEnabled = [
 
 export function UsernameProfileForm() {
   const [currentFormStep, setCurrentFormStep] = useState<FormSteps>(FormSteps.Description);
+  const { selectedName } = useRegistration();
 
   const { address } = useAccount();
   const fakeAddress = address ?? '0x63e216601B3588a5B54d9f961cFFc4af916a63c7';
+  const router = useRouter();
 
   // Get textRecords (for display)
   const { existingTextRecords, existingTextRecordsIsLoading, refetchExistingTextRecords } =
     useReadBaseEnsTextRecords({
       address: fakeAddress,
-      chainId: baseSepolia.id,
     });
 
   // Write text records
   const { writeTextRecords, writeTextRecordsIsPending, writeTextRecordsTransactionHash } =
     useWriteBaseEnsTextRecords({
       address: fakeAddress,
-      chainId: baseSepolia.id,
     });
 
   // Wait for text record transaction to be processed
@@ -99,7 +100,7 @@ export function UsernameProfileForm() {
         // Contract call
         writeTextRecords(textRecords)
           .then(() => {
-            // TODO: Redirects to userprofile
+            router.push(`names/${selectedName}`);
           })
           .catch(() => {
             // TODO: Show an error
@@ -108,7 +109,7 @@ export function UsernameProfileForm() {
 
       event.preventDefault();
     },
-    [currentFormStep, textRecords, writeTextRecords],
+    [currentFormStep, router, selectedName, textRecords, writeTextRecords],
   );
 
   const onChangeTextRecord = useCallback(

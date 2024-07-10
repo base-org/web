@@ -3,14 +3,16 @@ import {
   useRegistration,
 } from 'apps/web/src/components/Basenames/RegistrationContext';
 import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useCallback, useState } from 'react';
 
 export default function RegistrationSuccessMessage() {
   const { setRegistrationStep, selectedName } = useRegistration();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const router = useRouter();
 
   const openModal = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -25,15 +27,29 @@ export default function RegistrationSuccessMessage() {
     setRegistrationStep(RegistrationSteps.Profile);
   }, [setRegistrationStep]);
 
+  const goToProfileOnClick = useCallback(() => {
+    router.push(`names/${selectedName}`);
+  }, [router, selectedName]);
+
   return (
     <>
-      <div className="mx-auto flex w-full max-w-[50rem] items-center justify-between rounded-3xl border border-[#266EFF] bg-blue-600 p-10 shadow-xl transition-all duration-500">
+      <div className="items-left mx-auto flex w-full max-w-[50rem] flex-col justify-between gap-6 rounded-3xl border border-[#266EFF] bg-blue-600 p-10 shadow-xl transition-all duration-500 md:flex-row md:items-center">
         <h1 className="text-3xl font-bold tracking-wider text-white">
           Congrats! This name is yours!
         </h1>
-        <Button rounded onClick={customizeProfileOnClick}>
-          Customize Profile
-        </Button>
+        <div className="flex flex-col gap-4 md:flex-row">
+          <Button
+            rounded
+            fullWidth
+            variant={ButtonVariants.SecondaryBounce}
+            onClick={goToProfileOnClick}
+          >
+            Go to Profile
+          </Button>
+          <Button rounded fullWidth onClick={customizeProfileOnClick}>
+            Customize Profile
+          </Button>
+        </div>
       </div>
       <ShareUsernameModal selectedName={selectedName} isOpen={isOpen} toggleModal={closeModal} />
       <p className="mt-6 text-center">
