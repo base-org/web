@@ -11,7 +11,6 @@ import Link from 'next/link';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 export type UsernameProfileSectionExploreLink = {
-  id: number;
   title: string;
   image: StaticImageData;
   href: string;
@@ -19,40 +18,34 @@ export type UsernameProfileSectionExploreLink = {
 
 const usernameProfileSectionExploreLinks: UsernameProfileSectionExploreLink[] = [
   {
-    id: 1,
-    title: 'Get an Onchain Summer Pass',
-    image: onChainSummerPassCard,
-    href: 'https://www.base.org/onchainsummer',
+    title: 'Get verified',
+    image: verificationCard,
+    href: 'https://www.coinbase.com/onchain-verify',
   },
   {
-    id: 2,
-    title: 'Sign up for the OCS Registry',
-    image: onChainSummerRegistryCard,
-    href: 'https://www.base.org/onchainsummer',
-  },
-  {
-    id: 3,
     title: 'Go to Base Guild',
     image: baseGuildCard,
-    href: 'https://www.base.org/onchainsummer',
+    href: 'https://guild.xyz/base',
   },
   {
-    id: 4,
-    title: 'Get a Rounds Grant',
-    image: grantsCard,
-    href: 'https://www.base.org/onchainsummer',
-  },
-  {
-    id: 5,
-    title: 'Get a verification',
-    image: verificationCard,
-    href: 'https://www.base.org/onchainsummer',
-  },
-  {
-    id: 6,
-    title: 'Go to Base Learn',
+    title: 'Learn on Base Camp',
     image: baseLearnCard,
-    href: 'https://www.base.org/onchainsummer',
+    href: 'https://docs.base.org/base-camp/progress/',
+  },
+  {
+    title: 'Add project to the Onchain Registry',
+    image: onChainSummerRegistryCard,
+    href: 'https://buildonbase.deform.cc/registry/',
+  },
+  {
+    title: 'Get an Onchain Summer Pass',
+    image: onChainSummerPassCard,
+    href: 'https://wallet.coinbase.com/ocs/progress',
+  },
+  {
+    title: 'Earn rewards for Based work on Rounds',
+    image: grantsCard,
+    href: 'https://rounds.wtf/base-builds/',
   },
 ];
 
@@ -62,7 +55,7 @@ export default function UsernameProfileSectionExplore() {
       <UsernameProfileSectionTitle title="Explore" />
       <ul className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2">
         {usernameProfileSectionExploreLinks.map((usernameProfileSectionExploreLink) => (
-          <li key={usernameProfileSectionExploreLink.id} className="inline-block w-full">
+          <li key={usernameProfileSectionExploreLink.title} className="inline-block w-full">
             <Link
               href={usernameProfileSectionExploreLink.href}
               target="_blank"
