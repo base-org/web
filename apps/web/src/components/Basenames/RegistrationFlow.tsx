@@ -1,6 +1,7 @@
 import { Transition } from '@headlessui/react';
 import { LearnMoreModal } from 'apps/web/src/components/Basenames/LearnMoreModal';
 import RegistrationBackground from 'apps/web/src/components/Basenames/RegistrationBackground';
+import RegistrationBrand from 'apps/web/src/components/Basenames/RegistrationBrand';
 import {
   RegistrationSteps,
   registrationTransitionDuration,
@@ -14,34 +15,19 @@ import {
   UsernameSearchInput,
   UsernameSearchInputVariant,
 } from 'apps/web/src/components/Basenames/UsernameSearchInput';
-import { Icon } from 'apps/web/src/components/Icon/Icon';
+
 import {
   findFirstValidDiscount,
   useAggregatedDiscountValidators,
 } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
 import classNames from 'classnames';
-import { Fragment, useCallback, useMemo, useState } from 'react';
-import { useInterval } from 'usehooks-ts';
+import { useCallback, useMemo, useState } from 'react';
 
 export enum Discount {
   CBID = 'CBID',
   CB1 = 'CB1',
   COINBASE_VERIFIED_ACCOUNT = 'COINBASE_VERIFIED_ACCOUNT',
 }
-
-const SEARCH_LABEL_COPY_STRINGS = [
-  'Set up a community profile.',
-  'Connect with Based people.',
-  'Get exclusive onchain perks.',
-];
-
-const useRotatingText = (strings: string[]) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  useInterval(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % strings.length);
-  }, 3000);
-  return strings[currentIndex];
-};
 
 function isValidDiscount(key: string): key is keyof typeof Discount {
   return Object.values(Discount).includes(key as Discount);
@@ -73,8 +59,6 @@ export function RegistrationFlow() {
 
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
   const toggleLearnMoreModal = useCallback(() => setLearnMoreModalOpen((open) => !open), []);
-
-  const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
 
   const isSearch = registrationStep === RegistrationSteps.Search;
   const isClaim = registrationStep === RegistrationSteps.Claim;
@@ -174,25 +158,7 @@ export function RegistrationFlow() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="flex items-center gap-1">
-            <Icon name="blueCircle" color="currentColor" width={15} height={15} />
-            <h1 className="text-md font-bold md:text-xl">Basenames</h1>
-          </div>
-          {SEARCH_LABEL_COPY_STRINGS.map((string) => (
-            <Transition
-              as={Fragment}
-              key={string}
-              show={rotatingText === string}
-              enter={classNames('transform  delay-500', registrationTransitionDuration)}
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave={classNames('transform', registrationTransitionDuration)}
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <p className="text-md absolute right-0 md:text-xl ">{string}</p>
-            </Transition>
-          ))}
+          <RegistrationBrand />
         </Transition>
       </div>
       <div className="relative w-full">

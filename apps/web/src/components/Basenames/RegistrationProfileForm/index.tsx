@@ -67,10 +67,12 @@ export default function RegistrationProfileForm() {
   useEffect(() => {
     if (transactionIsSuccess) {
       refetchExistingTextRecords()
-        .then(() => {})
+        .then(() => {
+          router.push(`names/${selectedName}`);
+        })
         .catch(() => {});
     }
-  }, [refetchExistingTextRecords, transactionIsSuccess]);
+  }, [refetchExistingTextRecords, router, selectedName, transactionIsSuccess]);
 
   useEffect(() => {
     setTextRecords(existingTextRecords);
@@ -97,11 +99,8 @@ export default function RegistrationProfileForm() {
       }
 
       if (currentFormStep === FormSteps.Keywords) {
-        // Contract call
         writeTextRecords(textRecords)
-          .then(() => {
-            router.push(`names/${selectedName}`);
-          })
+          .then(() => {})
           .catch(() => {
             // TODO: Show an error
           });
@@ -109,7 +108,7 @@ export default function RegistrationProfileForm() {
 
       event.preventDefault();
     },
-    [currentFormStep, router, selectedName, textRecords, writeTextRecords],
+    [currentFormStep, textRecords, writeTextRecords],
   );
 
   const onChangeTextRecord = useCallback(
