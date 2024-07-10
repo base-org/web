@@ -74,14 +74,6 @@ export default function UsernameKeywordsField({
           </li>
         ))}
       </ul>
-      {/* <TextArea
-        id={usernameKeywordsFieldId}
-        placeholder="Tell us about yourself"
-        maxLength={USERNAME_DESCRIPTION_MAX_LENGTH}
-        onChange={onChangeDescription}
-        disabled={disabled}
-        value={value}
-      /> */}
     </Fieldset>
   );
 }

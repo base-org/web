@@ -10,18 +10,17 @@ import {
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { getPublicClient } from 'apps/web/src/cdp/utils';
 import { useQuery } from '@tanstack/react-query';
+import { baseSepolia } from 'viem/chains';
 
 export type UseReadBaseEnsTextRecordsProps = {
-  address: Address;
-  chainId: number; // TODO: Might not be needed for launch (mainnet only)
+  address?: Address;
 };
 
 // TODO: If we need multicall for other scenarios, make this hook more generic
-export default function useReadBaseEnsTextRecords({
-  address,
-  chainId,
-}: UseReadBaseEnsTextRecordsProps) {
-  const client = getPublicClient(chainId);
+export default function useReadBaseEnsTextRecords({ address }: UseReadBaseEnsTextRecordsProps) {
+  // TODO: use mainnet
+  const chainId = baseSepolia.id;
+  const client = getPublicClient(baseSepolia.id);
   const addressReverseNode = convertReverseNodeToBytes(address);
 
   // TODO: this could be based on textRecordsKeysEnabled
@@ -67,6 +66,7 @@ export default function useReadBaseEnsTextRecords({
   } = useQuery({
     queryKey: ['useReadBaseEnsTextRecords', address, chainId, textRecordsKeysEnabled],
     queryFn: getExistingTextRecords,
+    enabled: !!address,
   });
 
   useEffect(() => {

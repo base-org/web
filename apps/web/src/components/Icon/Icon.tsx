@@ -257,6 +257,20 @@ const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
       />
     </svg>
   ),
+  arrowRight: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M9.06143 0.586914L7.58712 1.93836L12.2268 6.99979H0V8.99979H12.0858L7.08579 13.9998L8.5 15.414L15.8841 8.02987L9.06143 0.586914Z"
+        fill={color}
+      />
+    </svg>
+  ),
 };
 
 export function Icon({ name, color = 'white', width = '24', height = '24' }: IconProps) {

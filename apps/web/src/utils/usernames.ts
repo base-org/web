@@ -166,7 +166,8 @@ export const getUserNamePicture = (username: string) => {
 
 // will convert an address to a reverse node (bytes32)
 // used for reverse resolution and other various resolver contract interaction
-export const convertReverseNodeToBytes = (address: Address) => {
+export const convertReverseNodeToBytes = (address?: Address) => {
+  if (!address) return;
   const addressFormatted = address.toLocaleLowerCase() as Address;
   const addressNode = keccak256(addressFormatted.substring(2) as Address);
   const addressReverseNode = keccak256(

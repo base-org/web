@@ -58,6 +58,7 @@ test addresses w/ different verifications
 export function RegistrationFlow() {
   const { data: discounts, loading: loadingDiscounts } = useAggregatedDiscountValidators();
   const discount = findFirstValidDiscount(discounts);
+
   const allActiveDiscounts = useMemo(
     () =>
       new Set(
@@ -67,15 +68,12 @@ export function RegistrationFlow() {
       ),
     [discounts],
   );
-  const { registrationStep, setRegistrationStep, searchInputFocused } = useRegistration();
+
+  const { registrationStep, setRegistrationStep, searchInputFocused, selectedName } =
+    useRegistration();
 
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
   const toggleLearnMoreModal = useCallback(() => setLearnMoreModalOpen((open) => !open), []);
-  const [shareUsernameModalOpen, setShareUsernameModalOpen] = useState(false);
-  const toggleShareUsernameModal = useCallback(
-    () => setShareUsernameModalOpen((open) => !open),
-    [],
-  );
 
   const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
 
@@ -102,14 +100,14 @@ export function RegistrationFlow() {
   return (
     <main className={mainClasses}>
       {/* TODO: REMOVE ME WHEN DONE TESTING */}
-      <div className="absolute right-20 top-40 z-50 w-[10rem] rounded-lg border border-line/20 bg-white p-4 text-black shadow-lg">
+      <div className="border-line/20 absolute right-20 top-40 z-50 w-[10rem] rounded-lg border bg-white p-4 text-black shadow-lg">
         <ul className="flex flex-col gap-2">
           <li>
             <button
               type="button"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onClick={() => setRegistrationStep(RegistrationSteps.Search)}
-              className="rounded border border-line/10 p-2"
+              className="border-line/10 rounded border p-2"
             >
               Search
             </button>
@@ -119,7 +117,7 @@ export function RegistrationFlow() {
               type="button"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onClick={() => setRegistrationStep(RegistrationSteps.Claim)}
-              className="rounded border border-line/10 p-2"
+              className="border-line/10 rounded border p-2"
             >
               Claim
             </button>
@@ -129,7 +127,7 @@ export function RegistrationFlow() {
               type="button"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onClick={() => setRegistrationStep(RegistrationSteps.Pending)}
-              className="rounded border border-line/10 p-2"
+              className="border-line/10 rounded border p-2"
             >
               Pending
             </button>
@@ -139,7 +137,7 @@ export function RegistrationFlow() {
               type="button"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onClick={() => setRegistrationStep(RegistrationSteps.Success)}
-              className="rounded border border-line/10 p-2"
+              className="border-line/10 rounded border p-2"
             >
               Success
             </button>
@@ -149,7 +147,7 @@ export function RegistrationFlow() {
               type="button"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onClick={() => setRegistrationStep(RegistrationSteps.Profile)}
-              className="rounded border border-line/10 p-2"
+              className="border-line/10 rounded border p-2"
             >
               Profile
             </button>
@@ -234,9 +232,9 @@ export function RegistrationFlow() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <UsernamePill variant={currentUsernamePillVariant} />
+            <UsernamePill variant={currentUsernamePillVariant} name={selectedName} />
             {isPending && (
-              <p className="mt-6 text-center font-bold uppercase text-line">Registering...</p>
+              <p className="text-line mt-6 text-center font-bold uppercase">Registering...</p>
             )}
           </Transition>
           <Transition
@@ -306,11 +304,6 @@ export function RegistrationFlow() {
         discounts={allActiveDiscounts}
         learnMoreModalOpen={learnMoreModalOpen}
         toggleModal={toggleLearnMoreModal}
-      />
-      <ShareUsernameModal
-        isOpen={shareUsernameModalOpen}
-        username="ultrabased"
-        toggleModal={toggleShareUsernameModal}
       />
     </main>
   );

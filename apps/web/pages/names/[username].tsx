@@ -1,3 +1,6 @@
+import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
+import UsernameProfileProvider from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import { Layout, NavigationType } from 'apps/web/src/components/Layout/Layout';
 import {
   openGraphImageHeight,
   openGraphImageType,
@@ -6,14 +9,13 @@ import {
 import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
 import { NextPageContext } from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { useParams } from 'next/navigation';
+import { ReactElement } from 'react';
 
 export function Username({ domain }: { domain: string }) {
-  const router = useRouter();
-  const username = router.query.username || 'yourname';
-  const formattedUsername = formatBaseEthDomain(username.toString());
-  const ogImageUrl = `${domain}/api/og/names/${username}`;
-
+  const { username: profileUsername } = useParams<{ username: string }>();
+  const ogImageUrl = `${domain}/api/og/names/${profileUsername}`;
+  const formattedUsername = formatBaseEthDomain(profileUsername.toString());
   return (
     <>
       <Head>
@@ -25,14 +27,20 @@ export function Username({ domain }: { domain: string }) {
         <meta property="og:image:height" content={openGraphImageHeight.toString()} />
         <meta property="og:image:alt" content={`Base profile `} />
       </Head>
-      <p>{formattedUsername}</p>
+      <UsernameProfileProvider>
+        <UsernameProfile />
+      </UsernameProfileProvider>
     </>
   );
 }
 
 Username.getInitialProps = async ({ req }: NextPageContext) => {
-  const domain = req?.headers.host || '';
+  const domain = req?.headers.host ?? '';
   return { domain };
+};
+
+Username.getLayout = function getLayout(page: ReactElement) {
+  return <Layout navigationType={NavigationType.Username}>{page}</Layout>;
 };
 
 export default Username;

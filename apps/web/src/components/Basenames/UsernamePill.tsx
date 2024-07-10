@@ -1,4 +1,3 @@
-import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { formatBaseEthDomain, getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import Image from 'next/image';
@@ -10,21 +9,21 @@ export enum UsernamePillVariants {
 
 type UsernamePillProps = {
   variant: UsernamePillVariants;
+  name: string;
 };
 
-export function UsernamePill({ variant }: UsernamePillProps) {
+export function UsernamePill({ variant, name }: UsernamePillProps) {
   const transitionClasses = 'transition-all duration-200 ease-in-out';
 
-  const { selectedName } = useRegistration();
   const pillNameClasses = classNames(
-    'bg-blue-500 w-auto max-w-fit	text-white ',
+    'bg-blue-500 	text-white ',
     'relative leading-[2em]',
-    'shadow-[0px_8px_16px_0px_rgba(0,82,255,0.32),inset_0px_8px_16px_0px_rgba(255,255,255,0.25)]',
+    'shadow-[0px_8px_16px_0px_rgba(0,82,255,0.32),inset_0px_8px_16px_0px_rgba(255,255,255,0.25)] w-full',
     transitionClasses,
     {
       // Note: If you change this py-5, it won't match the dropdown's height
-      'rounded-[5rem] py-5 px-8 min-w-[24.5rem]': variant === UsernamePillVariants.Inline,
-      'rounded-[2rem] py-8 px-10 min-w-[26rem] pt-40': variant === UsernamePillVariants.Card,
+      'rounded-[5rem] py-5 px-8 ': variant === UsernamePillVariants.Inline,
+      'rounded-[2rem] py-8 px-10  pt-40': variant === UsernamePillVariants.Card,
     },
   );
 
@@ -49,7 +48,7 @@ export function UsernamePill({ variant }: UsernamePillProps) {
     },
   );
 
-  const selectedProfilePicture = getUserNamePicture(selectedName);
+  const selectedProfilePicture = getUserNamePicture(name);
 
   return (
     <div className={pillNameClasses}>
@@ -58,12 +57,12 @@ export function UsernamePill({ variant }: UsernamePillProps) {
           src={selectedProfilePicture}
           priority
           loading="eager"
-          alt={formatBaseEthDomain(selectedName)}
-          title={formatBaseEthDomain(selectedName)}
+          alt={formatBaseEthDomain(name)}
+          title={formatBaseEthDomain(name)}
           className="object-fill"
         />
       </figure>
-      <span className={userNameClasses}>{formatBaseEthDomain(selectedName)}</span>
+      <span className={userNameClasses}>{formatBaseEthDomain(name)}</span>
     </div>
   );
 }
