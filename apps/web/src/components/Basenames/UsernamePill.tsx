@@ -16,7 +16,7 @@ export function UsernamePill({ variant, name }: UsernamePillProps) {
   const transitionClasses = 'transition-all duration-200 ease-in-out';
 
   const pillNameClasses = classNames(
-    'bg-blue-500 text-white relative leading-[2em] w-full',
+    'bg-blue-500 text-white relative leading-[2em] w-full overflow-hidden text-ellipsis',
     'shadow-[0px_8px_16px_0px_rgba(0,82,255,0.32),inset_0px_8px_16px_0px_rgba(255,255,255,0.25)] w-full',
     transitionClasses,
     {
