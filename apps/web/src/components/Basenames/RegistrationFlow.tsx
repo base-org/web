@@ -11,11 +11,9 @@ import { RegistrationForm } from 'apps/web/src/components/Basenames/Registration
 import RegistrationProfileForm from 'apps/web/src/components/Basenames/RegistrationProfileForm';
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
-import {
-  UsernameSearchInput,
+import UsernameSearchInput, {
   UsernameSearchInputVariant,
 } from 'apps/web/src/components/Basenames/UsernameSearchInput';
-
 import {
   findFirstValidDiscount,
   useAggregatedDiscountValidators,

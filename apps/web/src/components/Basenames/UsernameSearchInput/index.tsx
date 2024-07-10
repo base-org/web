@@ -19,7 +19,7 @@ type UsernameSearchInputProps = {
   placeholder: string;
 };
 
-export function UsernameSearchInput({ variant, placeholder }: UsernameSearchInputProps) {
+export default function UsernameSearchInput({ variant, placeholder }: UsernameSearchInputProps) {
   const { ref, focused } = useFocusWithin();
   const [search, setSearch] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -41,6 +41,10 @@ export function UsernameSearchInput({ variant, placeholder }: UsernameSearchInpu
     if (inputRef.current) {
       inputRef.current.focus();
     }
+  }, []);
+
+  const resetSearch = useCallback(() => {
+    setSearch('');
   }, []);
 
   useEffect(() => {
@@ -129,13 +133,10 @@ export function UsernameSearchInput({ variant, placeholder }: UsernameSearchInpu
     },
   );
 
-  const searchIconClasses = classNames(
-    'pointer-events-none absolute top-1/2 z-20 flex -translate-y-1/2 items-center',
-    {
-      'right-8': variant === UsernameSearchInputVariant.Large,
-      'right-3': variant === UsernameSearchInputVariant.Small,
-    },
-  );
+  const inputIconClasses = classNames('absolute top-1/2 z-20 flex -translate-y-1/2 items-center', {
+    'right-8': variant === UsernameSearchInputVariant.Large,
+    'right-3': variant === UsernameSearchInputVariant.Small,
+  });
 
   const lineClasses = classNames('w-full', {
     'px-6': variant === UsernameSearchInputVariant.Large,
@@ -240,8 +241,16 @@ export function UsernameSearchInput({ variant, placeholder }: UsernameSearchInpu
           </>
         )}
       </div>
-      <span className={searchIconClasses}>
-        <Icon name="search" color="currentColor" height={iconSize} width={iconSize} />
+      <span className={inputIconClasses}>
+        {search.length > 0 ? (
+          <button onClick={resetSearch} type="button">
+            <Icon name="cross" color="currentColor" height={iconSize} width={iconSize} />
+          </button>
+        ) : (
+          <span className="pointer-events-none">
+            <Icon name="search" color="currentColor" height={iconSize} width={iconSize} />
+          </span>
+        )}
       </span>
     </fieldset>
   );
