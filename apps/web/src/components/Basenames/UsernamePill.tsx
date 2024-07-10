@@ -1,3 +1,4 @@
+import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { formatBaseEthDomain, getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import Image from 'next/image';
@@ -8,12 +9,13 @@ export enum UsernamePillVariants {
 }
 
 type UsernamePillProps = {
-  username: string;
   variant: UsernamePillVariants;
 };
 
-export function UsernamePill({ username, variant }: UsernamePillProps) {
+export function UsernamePill({ variant }: UsernamePillProps) {
   const transitionClasses = 'transition-all duration-200 ease-in-out';
+
+  const { selectedName } = useRegistration();
   const pillNameClasses = classNames(
     'bg-blue-500 w-auto max-w-fit	text-white ',
     'relative leading-[2em]',
@@ -47,7 +49,8 @@ export function UsernamePill({ username, variant }: UsernamePillProps) {
     },
   );
 
-  const selectedProfilePicture = getUserNamePicture(username);
+  const selectedProfilePicture = getUserNamePicture(selectedName);
+
   return (
     <div className={pillNameClasses}>
       <figure className={avatarClasses}>
@@ -55,12 +58,12 @@ export function UsernamePill({ username, variant }: UsernamePillProps) {
           src={selectedProfilePicture}
           priority
           loading="eager"
-          alt={formatBaseEthDomain(username)}
-          title={formatBaseEthDomain(username)}
+          alt={formatBaseEthDomain(selectedName)}
+          title={formatBaseEthDomain(selectedName)}
           className="object-fill"
         />
       </figure>
-      <span className={userNameClasses}>{formatBaseEthDomain(username)}</span>
+      <span className={userNameClasses}>{formatBaseEthDomain(selectedName)}</span>
     </div>
   );
 }

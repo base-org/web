@@ -1,5 +1,6 @@
 import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
+import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { DiscountData } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
@@ -15,7 +16,6 @@ import { base, baseSepolia } from 'viem/chains';
 import { useSwitchChain } from 'wagmi';
 
 type RegistrationFormProps = {
-  name: string;
   loadingDiscounts: boolean;
   toggleModal: () => void;
   onApprove: (transactionHash: `0x${string}`) => void;
@@ -44,13 +44,14 @@ function formatUsdPrice(price: bigint, ethUsdPrice: number) {
 
 export function RegistrationForm({
   discount,
-  name,
   loadingDiscounts,
   toggleModal,
   onApprove,
 }: RegistrationFormProps) {
   const { openConnectModal } = useConnectModal();
   const { switchChain } = useSwitchChain();
+
+  const { selectedName } = useRegistration();
   const [years, setYears] = useState(1);
   const increment = useCallback(() => {
     setYears((n) => n + 1);
@@ -64,9 +65,9 @@ export function RegistrationForm({
   }, [switchChain]);
 
   const ethUsdPrice = useEthPriceFromUniswap();
-  const { data: price } = useNameRegistrationPrice(name, years);
+  const { data: price } = useNameRegistrationPrice(selectedName, years);
   const { data: discountedPrice } = useDiscountedNameRegistrationPrice(
-    name,
+    selectedName,
     years,
     discount?.discountKey,
   );
@@ -77,7 +78,7 @@ export function RegistrationForm({
     data: registerNameTransactionHash,
     isPending: registerNameTransactionIsPending,
   } = useRegisterNameCallback(
-    name,
+    selectedName,
     finalPrice,
     years,
     discount?.discountKey,

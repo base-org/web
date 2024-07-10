@@ -15,16 +15,11 @@ export enum UsernameSearchInputVariant {
 }
 
 type UsernameSearchInputProps = {
-  selectName: (name: string) => void;
   variant: UsernameSearchInputVariant;
   placeholder: string;
 };
 
-export function UsernameSearchInput({
-  selectName,
-  variant,
-  placeholder,
-}: UsernameSearchInputProps) {
+export function UsernameSearchInput({ variant, placeholder }: UsernameSearchInputProps) {
   const { ref, focused } = useFocusWithin();
   const [search, setSearch] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -34,7 +29,7 @@ export function UsernameSearchInput({
   const { valid, message } = validateEnsDomainName(debouncedSearch);
   const invalidWithMessage = !valid && !!message;
 
-  const { setSearchInputFocused, setSearchInputHovered } = useRegistration();
+  const { setSearchInputFocused, setSearchInputHovered, setSelectedName } = useRegistration();
 
   const handleSearchChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -163,7 +158,7 @@ export function UsernameSearchInput({
 
   function handleSelectName(name: string) {
     setDropdownOpen(false);
-    selectName(name);
+    setSelectedName(name.trim());
   }
 
   useEffect(() => {

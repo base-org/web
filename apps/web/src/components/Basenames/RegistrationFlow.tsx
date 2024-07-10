@@ -61,22 +61,13 @@ export function RegistrationFlow() {
   const [registerNameTransactionHash, setRegisterNameTransactionHash] = useState<
     `0x${string}` | undefined
   >();
+
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
   const toggleLearnMoreModal = useCallback(() => setLearnMoreModalOpen((open) => !open), []);
   const [shareUsernameModalOpen, setShareUsernameModalOpen] = useState(false);
   const toggleShareUsernameModal = useCallback(
     () => setShareUsernameModalOpen((open) => !open),
     [],
-  );
-
-  const [selectedName, setSelectedName] = useState('');
-
-  const selectName = useCallback(
-    (name: string) => {
-      setRegistrationStep(RegistrationSteps.Claim);
-      setSelectedName(name);
-    },
-    [setRegistrationStep],
   );
 
   const registrationFormOnApproved = useCallback((transactionHash: `0x${string}`) => {
@@ -110,14 +101,11 @@ export function RegistrationFlow() {
   const isSuccess = registrationStep === RegistrationSteps.Success;
   const isProfile = registrationStep === RegistrationSteps.Profile;
 
-  // TODO REMOVE CLASSES HERE
   const mainClasses = classNames(
     'relative z-10 flex min-h-screen w-full overflow-hidden flex-col items-center px-6',
     'transition-all',
     registrationTransitionDuration,
     {
-      // 'bg-ocsblue text-white': blueBackground,
-      // 'bg-white text-black': !blueBackground,
       'pt-[calc(50vh-12rem)]': isSearch || isClaim || isPending || isSuccess,
       'pt-0': isProfile,
     },
@@ -186,6 +174,8 @@ export function RegistrationFlow() {
       </div>
 
       <RegistrationBackground />
+
+      {/* TODO: Move this to a component */}
       <div className="relative mx-auto mb-12 mt-24 w-full max-w-[36rem]">
         <Transition
           appear
@@ -207,7 +197,6 @@ export function RegistrationFlow() {
             <Icon name="blueCircle" color="currentColor" width={15} height={15} />
             <h1 className="text-md font-bold md:text-xl">Basenames</h1>
           </div>
-
           {SEARCH_LABEL_COPY_STRINGS.map((string) => (
             <Transition
               as={Fragment}
@@ -241,7 +230,6 @@ export function RegistrationFlow() {
           <UsernameSearchInput
             variant={UsernameSearchInputVariant.Small}
             placeholder="Find another name"
-            selectName={selectName}
           />
         </Transition>
         <div className="relative mb-40">
@@ -260,12 +248,11 @@ export function RegistrationFlow() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <UsernamePill username={selectedName} variant={currentUsernamePillVariant} />
+            <UsernamePill variant={currentUsernamePillVariant} />
             {isPending && (
               <p className="mt-6 text-center font-bold uppercase text-line">Registering...</p>
             )}
           </Transition>
-
           <Transition
             appear
             show={isProfile}
@@ -297,7 +284,6 @@ export function RegistrationFlow() {
             <UsernameSearchInput
               variant={UsernameSearchInputVariant.Large}
               placeholder="Search for a name"
-              selectName={selectName}
             />
           </Transition>
         </div>
@@ -312,14 +298,12 @@ export function RegistrationFlow() {
           leaveTo="opacity-0"
         >
           <RegistrationForm
-            name={selectedName}
             loadingDiscounts={loadingDiscounts}
             discount={discount}
             toggleModal={toggleLearnMoreModal}
             onApprove={registrationFormOnApproved}
           />
         </Transition>
-
         <Transition
           appear
           show={isSuccess}

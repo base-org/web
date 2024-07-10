@@ -4,6 +4,7 @@ import {
   SetStateAction,
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -23,12 +24,15 @@ export type RegistrationContextProps = {
   setSearchInputHovered: Dispatch<SetStateAction<boolean>>;
   registrationStep: RegistrationSteps;
   setRegistrationStep: Dispatch<SetStateAction<RegistrationSteps>>;
+  selectedName: string;
+  setSelectedName: Dispatch<SetStateAction<string>>;
 };
 
 export const RegistrationContext = createContext<RegistrationContextProps>({
   searchInputFocused: false,
   searchInputHovered: false,
   registrationStep: RegistrationSteps.Search,
+  selectedName: '',
   setSearchInputFocused: function () {
     return undefined;
   },
@@ -36,6 +40,9 @@ export const RegistrationContext = createContext<RegistrationContextProps>({
     return undefined;
   },
   setRegistrationStep: function () {
+    return undefined;
+  },
+  setSelectedName: function () {
     return undefined;
   },
 });
@@ -54,6 +61,12 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   const [registrationStep, setRegistrationStep] = useState<RegistrationSteps>(
     RegistrationSteps.Search,
   );
+
+  useEffect(() => {
+    if (selectedName.length) {
+      setRegistrationStep(RegistrationSteps.Claim);
+    }
+  }, [selectedName.length]);
 
   // TODO: RegisterName function callback
   // TODO: wait for transaction
