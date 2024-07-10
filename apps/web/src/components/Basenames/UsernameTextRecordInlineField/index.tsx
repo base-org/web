@@ -2,34 +2,28 @@ import Fieldset from 'apps/web/src/components/Fieldset';
 import Input from 'apps/web/src/components/Input';
 import Label from 'apps/web/src/components/Label';
 import {
-  SocialPlatform,
-  socialPlatformHandleFunction,
-  socialPlatformsNameForDisplay,
-} from 'apps/web/src/utils/socialPlatforms';
-import {
+  textRecordsKeysForDisplay,
+  textRecordsKeysPlaceholderForDisplay,
   UsernameTextRecordKeys,
-  socialPlatformToTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 
 import { ChangeEvent, useCallback, useId } from 'react';
 
-export type UsernameSocialHandleFieldProps = {
-  socialPlatform: SocialPlatform;
+export type UsernameTextRecordInlineFieldProps = {
+  textRecordKey: UsernameTextRecordKeys;
   onChange: (key: UsernameTextRecordKeys, value: string) => void;
   value: string;
   disabled?: boolean;
 };
 
-export default function UsernameSocialHandleField({
-  socialPlatform,
+export default function UsernameTextRecordInlineField({
+  textRecordKey,
   onChange,
   value,
   disabled = false,
-}: UsernameSocialHandleFieldProps) {
+}: UsernameTextRecordInlineFieldProps) {
   const usernameSocialHandleFieldId = useId();
-  const handleFunction = socialPlatformHandleFunction[socialPlatform];
-  const handle = handleFunction({ handle: 'username' });
-  const textRecordKey = socialPlatformToTextRecordKeys[socialPlatform];
+
   const onChangeSocialHandle = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const socialHandleValue = event.target.value;
@@ -42,11 +36,11 @@ export default function UsernameSocialHandleField({
   return (
     <Fieldset inline>
       <Label htmlFor={usernameSocialHandleFieldId} className="w-full max-w-[6rem]">
-        {socialPlatformsNameForDisplay[socialPlatform]}
+        {textRecordsKeysForDisplay[textRecordKey]}
       </Label>
       <Input
         id={usernameSocialHandleFieldId}
-        placeholder={handle}
+        placeholder={textRecordsKeysPlaceholderForDisplay[textRecordKey]}
         className="flex-1 rounded-md border border-gray-40/20 p-2 text-black"
         disabled={disabled}
         value={value}

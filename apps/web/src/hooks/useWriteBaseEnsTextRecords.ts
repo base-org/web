@@ -42,7 +42,7 @@ export default function useWriteBaseEnsTextRecords({ address }: UseWriteBaseEnsT
         return existingValue != updatedValueValue;
       });
 
-      if (keysToUpdate.length === 0) return;
+      if (keysToUpdate.length === 0) return false;
 
       const textRecordsBytes = keysToUpdate.map((key) => {
         const value = textRecords[key];
@@ -66,6 +66,8 @@ export default function useWriteBaseEnsTextRecords({ address }: UseWriteBaseEnsT
       } catch (error) {
         // Log error
       }
+
+      return true;
     },
     [addressReverseNode, chainId, existingTextRecords, writeContractAsync],
   );

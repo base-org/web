@@ -2,7 +2,7 @@ import Fieldset from 'apps/web/src/components/Fieldset';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
 
-import { UsernameTextRecordKeys, textRecordsKeyWords } from 'apps/web/src/utils/usernames';
+import { UsernameTextRecordKeys, textRecordsKeywords } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ReactNode, useCallback, useEffect, useId, useState } from 'react';
 
@@ -49,7 +49,7 @@ export default function UsernameKeywordsField({
       {labelChildren && <Label htmlFor={usernameKeywordsFieldId}>{labelChildren}</Label>}
 
       <ul className="flex flex-wrap gap-2">
-        {textRecordsKeyWords.map((keyword) => (
+        {textRecordsKeywords.map((keyword) => (
           <li key={keyword}>
             <button
               type="button"

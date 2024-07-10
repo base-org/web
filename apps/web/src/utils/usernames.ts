@@ -8,7 +8,6 @@ import profilePictures5 from 'apps/web/src/components/ConnectWalletButton/profil
 import profilePictures6 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/6.svg';
 import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/7.svg';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
-import { SocialPlatform } from 'apps/web/src/utils/socialPlatforms';
 import { ADDRESS_REVERSE_NODE } from 'apps/web/src/addresses/usernames';
 
 export const BASE_ETH_DOMAIN = 'base.eth';
@@ -21,10 +20,14 @@ export const USERNAME_DESCRIPTION_MAX_LENGTH = 200;
 export enum UsernameTextRecordKeys {
   Description = 'description',
   Keywords = 'keywords',
+  Url = 'url',
+  Email = 'email',
+  Phone = 'phone',
 
-  // TODO: Implement common ENS records: display, avatar, email, mail, notice, location, phone, url,
+  // TODO: Implement others common ENS records: display, avatar,  mail, notice, location
 
   // Socials
+  Github = 'com.github',
   Twitter = 'com.twitter',
   Farcaster = 'xyz.farcaster',
   Lens = 'xyz.lens',
@@ -32,7 +35,49 @@ export enum UsernameTextRecordKeys {
   Discord = 'com.discord',
 }
 
-export const textRecordsKeyWords = [
+export const textRecordsKeysEnabled = [
+  UsernameTextRecordKeys.Description,
+  UsernameTextRecordKeys.Keywords,
+  UsernameTextRecordKeys.Url,
+  UsernameTextRecordKeys.Github,
+  UsernameTextRecordKeys.Email,
+  UsernameTextRecordKeys.Phone,
+  UsernameTextRecordKeys.Twitter,
+  UsernameTextRecordKeys.Farcaster,
+  UsernameTextRecordKeys.Lens,
+  UsernameTextRecordKeys.Telegram,
+  UsernameTextRecordKeys.Discord,
+];
+
+export const textRecordsKeysForDisplay = {
+  [UsernameTextRecordKeys.Description]: 'Bio',
+  [UsernameTextRecordKeys.Keywords]: 'Skills',
+  [UsernameTextRecordKeys.Url]: 'Website',
+  [UsernameTextRecordKeys.Github]: 'Github',
+  [UsernameTextRecordKeys.Email]: 'Email',
+  [UsernameTextRecordKeys.Phone]: 'Phone',
+  [UsernameTextRecordKeys.Twitter]: 'Twitter / X',
+  [UsernameTextRecordKeys.Farcaster]: 'Farcaster',
+  [UsernameTextRecordKeys.Lens]: 'Lens',
+  [UsernameTextRecordKeys.Telegram]: 'Telegram',
+  [UsernameTextRecordKeys.Discord]: 'Discord',
+};
+
+export const textRecordsKeysPlaceholderForDisplay = {
+  [UsernameTextRecordKeys.Description]: 'Tell us about yourself',
+  [UsernameTextRecordKeys.Keywords]: 'Skills',
+  [UsernameTextRecordKeys.Url]: 'www.name.com',
+  [UsernameTextRecordKeys.Github]: '@name',
+  [UsernameTextRecordKeys.Email]: 'Personal email',
+  [UsernameTextRecordKeys.Phone]: '+1 415 ..',
+  [UsernameTextRecordKeys.Twitter]: '@name',
+  [UsernameTextRecordKeys.Farcaster]: '@name',
+  [UsernameTextRecordKeys.Lens]: 'name.lens',
+  [UsernameTextRecordKeys.Telegram]: '@name',
+  [UsernameTextRecordKeys.Discord]: '@name',
+};
+
+export const textRecordsKeywords = [
   'Solidity',
   'Rust',
   'Go',
@@ -51,25 +96,6 @@ export const textRecordsKeyWords = [
   'Animation',
   'Game development',
 ];
-
-export const textRecordsKeysEnabled = [
-  UsernameTextRecordKeys.Description,
-  UsernameTextRecordKeys.Keywords,
-  UsernameTextRecordKeys.Twitter,
-  UsernameTextRecordKeys.Farcaster,
-  UsernameTextRecordKeys.Lens,
-  UsernameTextRecordKeys.Telegram,
-  UsernameTextRecordKeys.Discord,
-];
-
-// // Helper, maps traditional social platforms name to textrecord keys
-export const socialPlatformToTextRecordKeys = {
-  [SocialPlatform.Twitter]: UsernameTextRecordKeys.Twitter,
-  [SocialPlatform.Farcaster]: UsernameTextRecordKeys.Farcaster,
-  [SocialPlatform.Lens]: UsernameTextRecordKeys.Lens,
-  [SocialPlatform.Telegram]: UsernameTextRecordKeys.Telegram,
-  [SocialPlatform.Discord]: UsernameTextRecordKeys.Discord,
-};
 
 export type UsernameTextRecords = Record<UsernameTextRecordKeys, string>;
 

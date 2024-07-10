@@ -23,7 +23,7 @@ export default function useReadBaseEnsTextRecords({ address }: UseReadBaseEnsTex
   const client = getPublicClient(baseSepolia.id);
   const addressReverseNode = convertReverseNodeToBytes(address);
 
-  // TODO: this could be based on textRecordsKeysEnabled
+  // TODO: this could be based on textRecordsKeysEnabled via reduce
   const [existingTextRecords, setExistingTextRecords] = useState<UsernameTextRecords>({
     [UsernameTextRecordKeys.Description]: '',
     [UsernameTextRecordKeys.Twitter]: '',
@@ -32,6 +32,10 @@ export default function useReadBaseEnsTextRecords({ address }: UseReadBaseEnsTex
     [UsernameTextRecordKeys.Telegram]: '',
     [UsernameTextRecordKeys.Discord]: '',
     [UsernameTextRecordKeys.Keywords]: '',
+    [UsernameTextRecordKeys.Url]: '',
+    [UsernameTextRecordKeys.Github]: '',
+    [UsernameTextRecordKeys.Email]: '',
+    [UsernameTextRecordKeys.Phone]: '',
   });
 
   const updateExistingTextRecords = useCallback((key: UsernameTextRecordKeys, value: string) => {

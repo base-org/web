@@ -3,6 +3,7 @@ import Hint from 'apps/web/src/components/Hint';
 import Label from 'apps/web/src/components/Label';
 import TextArea from 'apps/web/src/components/TextArea';
 import {
+  textRecordsKeysPlaceholderForDisplay,
   USERNAME_DESCRIPTION_MAX_LENGTH,
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
@@ -44,7 +45,7 @@ export default function UsernameDescriptionField({
       {labelChildren && <Label htmlFor={usernameDescriptionFieldId}>{labelChildren}</Label>}
       <TextArea
         id={usernameDescriptionFieldId}
-        placeholder="Tell us about yourself"
+        placeholder={textRecordsKeysPlaceholderForDisplay[UsernameTextRecordKeys.Description]}
         maxLength={USERNAME_DESCRIPTION_MAX_LENGTH}
         onChange={onChangeDescription}
         disabled={disabled}

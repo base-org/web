@@ -1,19 +1,14 @@
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import UsernameDescriptionField from 'apps/web/src/components/Basenames/UsernameDescriptionField';
 import UsernameKeywordsField from 'apps/web/src/components/Basenames/UsernameKeywordsField';
-import UsernameSocialHandleField from 'apps/web/src/components/Basenames/UsernameSocialHandleField';
+import UsernameTextRecordInlineField from 'apps/web/src/components/Basenames/UsernameTextRecordInlineField';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Fieldset from 'apps/web/src/components/Fieldset';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
-import { SocialPlatform } from 'apps/web/src/utils/socialPlatforms';
-import {
-  UsernameTextRecords,
-  UsernameTextRecordKeys,
-  socialPlatformToTextRecordKeys,
-} from 'apps/web/src/utils/usernames';
+import { UsernameTextRecords, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
@@ -25,12 +20,11 @@ export enum FormSteps {
   Keywords = 'Keywords',
 }
 
-export const socialPlatformsEnabled = [
-  SocialPlatform.Twitter,
-  SocialPlatform.Farcaster,
-  SocialPlatform.Lens,
-  SocialPlatform.Telegram,
-  SocialPlatform.Discord,
+export const inlineTextRecordsField = [
+  UsernameTextRecordKeys.Twitter,
+  UsernameTextRecordKeys.Farcaster,
+  UsernameTextRecordKeys.Github,
+  UsernameTextRecordKeys.Url,
 ];
 
 export default function RegistrationProfileForm() {
@@ -100,7 +94,14 @@ export default function RegistrationProfileForm() {
 
       if (currentFormStep === FormSteps.Keywords) {
         writeTextRecords(textRecords)
-          .then(() => {})
+          .then((result) => {
+            // We updated some text records
+            if (result) {
+            } else {
+              // no text records had to be updated, simply go to profile
+              router.push(`names/${selectedName}`);
+            }
+          })
           .catch(() => {
             // TODO: Show an error
           });
@@ -108,7 +109,7 @@ export default function RegistrationProfileForm() {
 
       event.preventDefault();
     },
-    [currentFormStep, textRecords, writeTextRecords],
+    [currentFormStep, router, selectedName, textRecords, writeTextRecords],
   );
 
   const onChangeTextRecord = useCallback(
@@ -174,12 +175,12 @@ export default function RegistrationProfileForm() {
       {currentFormStep === FormSteps.Socials && (
         <Fieldset>
           <Label>{socialsLabelChildren}</Label>
-          {socialPlatformsEnabled.map((socialPlatform) => (
-            <UsernameSocialHandleField
-              key={socialPlatform}
-              socialPlatform={socialPlatform}
+          {inlineTextRecordsField.map((textRecordKey) => (
+            <UsernameTextRecordInlineField
+              key={textRecordKey}
+              textRecordKey={textRecordKey}
               onChange={onChangeTextRecord}
-              value={textRecords[socialPlatformToTextRecordKeys[socialPlatform]]}
+              value={textRecords[textRecordKey]}
               disabled={isLoading}
             />
           ))}

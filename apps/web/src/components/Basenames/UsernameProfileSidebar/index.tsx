@@ -2,6 +2,7 @@ import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Base
 import UsernameProfileCard from 'apps/web/src/components/Basenames/UsernameProfileCard';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import UsernameProfileKeywords from 'apps/web/src/components/Basenames/UsernameProfileKeywords';
+
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { useAccount } from 'wagmi';
@@ -9,6 +10,10 @@ import { useAccount } from 'wagmi';
 export default function UsernameSidebar() {
   const { profileUsername, profileAddress } = useUsernameProfile();
   const { address } = useAccount();
+
+  // TODO: Fix when name registration is fixed, we can add manage button
+  // const isCurrentUser = address === profileAddress;
+  // const isCurrentUser = true;
 
   // TODO: remove once we get proper profile resolution working
   const { existingTextRecords } = useReadBaseEnsTextRecords({
@@ -21,8 +26,9 @@ export default function UsernameSidebar() {
   const textRecordKeywords = existingTextRecords[UsernameTextRecordKeys.Keywords];
 
   return (
-    <aside className="flex flex-col gap-8">
+    <aside className="flex flex-col gap-6">
       <UsernamePill variant={UsernamePillVariants.Card} name={profileUsername} />
+
       {!!textRecordDescription && <UsernameProfileCard description={textRecordDescription} />}
       {!!textRecordKeywords && <UsernameProfileKeywords keywords={textRecordKeywords} />}
     </aside>
