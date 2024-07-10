@@ -33,7 +33,7 @@ import {
 import { privateKeyToAccount } from 'viem/accounts';
 import { base, baseSepolia } from 'viem/chains';
 
-const EXPIRY = (process.env.USERNAMES_SIGNATURE_EXPIRATION_SECONDS as unknown as number) ?? 30;
+const EXPIRY = process.env.USERNAMES_SIGNATURE_EXPIRATION_SECONDS ?? '30';
 const previousClaimsKVPrefix = 'username:claims:';
 
 type DiscountTypeMap = Record<84532 | 8453, DiscountTypes>;
@@ -143,6 +143,8 @@ export async function sybilResistantUsernameSigning(
         throw new Error('You have already claimed a username with a different discount.');
       }
       if (previousClaim.address != address) {
+        console.log(previousClaim.address, address);
+        // await kv.del(kvKey);
         throw new Error('You have already claimed a username with a different address.');
       }
 
@@ -159,16 +161,16 @@ export async function sybilResistantUsernameSigning(
     const signedMessage = await signMessageWithTrustedSigner(
       address,
       discountValidatorAddress,
-      EXPIRY,
+      parseInt(EXPIRY),
     );
     const claim: PreviousClaim = { address, signedMessage };
-    await kv.set(kvKey, { [discountType]: claim }, { ex: EXPIRY });
+    await kv.set(kvKey, { [discountType]: claim }, { nx: true, ex: parseInt(EXPIRY) });
 
     return {
       signedMessage: claim.signedMessage,
       attestations: attestationsRes,
       discountValidatorAddress,
-      expires: EXPIRY.toString(),
+      expires: EXPIRY,
     };
   } catch (error) {
     console.error(error);

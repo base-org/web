@@ -59,8 +59,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const result = await sybilResistantUsernameSigning(address, DiscountType.CB, parsedChain);
     return res.status(200).json(result);
-  } catch (error: unknown) {
+  } catch (error) {
     console.error(error);
-    return res.status(409).json({ error });
+    if (error instanceof Error) {
+      return res.status(409).json({ error: error.message });
+    }
+
+    // If error is not an instance of Error, return a generic error message
+    return res.status(409).json({ error: 'An unexpected error occurred' });
   }
 }
