@@ -21,7 +21,7 @@ import {
   useAggregatedDiscountValidators,
 } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
 import classNames from 'classnames';
-import { Fragment, useCallback, useState } from 'react';
+import { Fragment, useCallback, useMemo, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
 
 export enum Discount {
@@ -44,6 +44,10 @@ const useRotatingText = (strings: string[]) => {
   return strings[currentIndex];
 };
 
+function isValidDiscount(key: string): key is keyof typeof Discount {
+  return Object.values(Discount).includes(key as Discount);
+}
+
 /*
 test addresses w/ different verifications
   0xB18e4C959bccc8EF86D78DC297fb5efA99550d85 - cb.id 
@@ -54,6 +58,15 @@ test addresses w/ different verifications
 export function RegistrationFlow() {
   const { data: discounts, loading: loadingDiscounts } = useAggregatedDiscountValidators();
   const discount = findFirstValidDiscount(discounts);
+  const allActiveDiscounts = useMemo(
+    () =>
+      new Set(
+        Object.keys(discounts)
+          .filter(isValidDiscount)
+          .map((key) => Discount[key]),
+      ),
+    [discounts],
+  );
   const { registrationStep, setRegistrationStep, searchInputFocused } = useRegistration();
 
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
@@ -290,7 +303,7 @@ export function RegistrationFlow() {
         </Transition>
       </div>
       <LearnMoreModal
-        discounts={discounts}
+        discounts={allActiveDiscounts}
         learnMoreModalOpen={learnMoreModalOpen}
         toggleModal={toggleLearnMoreModal}
       />
