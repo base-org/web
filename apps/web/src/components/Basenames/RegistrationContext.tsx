@@ -90,6 +90,8 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     if (transactionIsSuccess) {
       setRegistrationStep(RegistrationSteps.Success);
     }
+
+    // TODO: Failed transaction
   }, [setRegistrationStep, transactionIsFetching, transactionIsSuccess]);
 
   useEffect(() => {
@@ -99,7 +101,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   }, [selectedName.length]);
 
   // TODO: RegisterName function callback
-  // TODO: wait for transaction
 
   const values = useMemo(() => {
     return {

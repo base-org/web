@@ -59,11 +59,11 @@ export function Button({
   ...props
 }: ButtonProps) {
   const buttonClasses = classNames(
-    'font-display text-center',
+    'font-display text-cente flex gap-2 items-center',
     variantStyles[variant],
     sizeStyles[size],
     { 'rounded-full': rounded },
-    { 'w-full': fullWidth },
+    { 'w-full text-center justify-center': fullWidth },
     { 'pointer-events-none opacity-50 select-none': disabled || isLoading },
     className,
   );

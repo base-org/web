@@ -18,16 +18,16 @@ export const socialPlatformsEnabled = [SocialPlatform.Twitter, SocialPlatform.Fa
 export default function ShareUsernameModal({
   isOpen,
   toggleModal,
-  username,
+  selectedName,
 }: {
   isOpen: boolean;
   toggleModal: () => void;
-  username: string;
+  selectedName: string;
 }) {
   const [imageIsLoading, setImageIsLoading] = useState<boolean>(true);
 
   const coverImageWrapperClasses = classNames(
-    'min-h-[11.25rem] w-full  overflow-hidden rounded-2xl border border-line/20 bg-line/10',
+    'min-h-[10.25rem] w-full  overflow-hidden rounded-2xl border border-line/20 bg-line/10',
     {
       'animate-pulse': imageIsLoading,
     },
@@ -48,7 +48,7 @@ export default function ShareUsernameModal({
   const openPopup = (socialPlatform: SocialPlatform) => {
     const socialMediaShareParams: SocialMediaShareParams = {
       text: `I just got a name from ${socialPlatformHandle[socialPlatform]} during Onchain Summer! You can get yours too at base.org/names`,
-      url: `https://base.org/names/${username}`,
+      url: `https://base.org/names/${selectedName}`,
     };
     const shareLinkFunction = socialPlatformShareLinkFunction[socialPlatform];
     if (shareLinkFunction) {
@@ -75,8 +75,8 @@ export default function ShareUsernameModal({
         </p>
         <figure className={coverImageWrapperClasses}>
           <img
-            src={`/api/og/names/${username}`}
-            alt={`{${username}.base.eth`}
+            src={`/api/og/names/${selectedName}`}
+            alt={selectedName}
             onLoad={onLoadImage}
             className={coverImageClasses}
             width={openGraphImageWidth}
@@ -89,8 +89,9 @@ export default function ShareUsernameModal({
           <li key={socialPlatform} className="">
             <Button
               onClick={() => openPopup(socialPlatform)}
-              variant={ButtonVariants.Black}
+              variant={ButtonVariants.Gray}
               rounded
+              fullWidth
             >
               <Image
                 src={socialPlatformLogoForDisplay[socialPlatform]}

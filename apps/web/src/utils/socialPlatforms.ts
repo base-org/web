@@ -12,7 +12,7 @@ export enum SocialPlatform {
 }
 
 export const socialPlatformsNameForDisplay = {
-  [SocialPlatform.Twitter]: 'X / Twitter',
+  [SocialPlatform.Twitter]: 'X',
   [SocialPlatform.Farcaster]: 'Farcaster',
   [SocialPlatform.Lens]: 'Lens',
   [SocialPlatform.Telegram]: 'Telegram',
@@ -28,8 +28,8 @@ export const socialPlatformHandle = {
 };
 
 export const socialPlatformCtaForDisplay = {
-  [SocialPlatform.Twitter]: 'Post',
-  [SocialPlatform.Farcaster]: 'Cast',
+  [SocialPlatform.Twitter]: 'Share',
+  [SocialPlatform.Farcaster]: 'Share',
   [SocialPlatform.Lens]: '',
   [SocialPlatform.Telegram]: '',
   [SocialPlatform.Discord]: '',

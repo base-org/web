@@ -8,7 +8,7 @@ import {
 } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
 import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
-import { SuccessMessage } from 'apps/web/src/components/Basenames/SuccessMessage';
+import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
 import { UsernameProfileForm } from 'apps/web/src/components/Basenames/UsernameProfileForm';
 import {
@@ -206,11 +206,13 @@ export function RegistrationFlow() {
         <div className="relative mb-40">
           <Transition
             appear
-            show={isClaim || isProfile || isPending || isSuccess}
+            show={!isSearch}
             className={classNames(
               'absolute left-1/2 top-0 z-30 mx-auto -translate-x-1/2 transition-all',
               registrationTransitionDuration,
               { 'animate-pulse': isPending },
+              { 'scale-95': isPending },
+              { 'scale-105': isSuccess },
             )}
             enter="overflow-hidden"
             enterFrom={classNames('opacity-0 max-w-[5rem]')}
@@ -284,7 +286,7 @@ export function RegistrationFlow() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <SuccessMessage />
+          <RegistrationSuccessMessage />
         </Transition>
       </div>
       <LearnMoreModal
