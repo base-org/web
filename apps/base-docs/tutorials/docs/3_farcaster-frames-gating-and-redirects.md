@@ -10,13 +10,7 @@ hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
-As [Frames] on [Farcaster] grow in popularity, developers are building more complex interactions to meet the community's expectation for new and exciting things to do. [OnchainKit], and our [a-frame-in-100-lines] demo give you a number of tools to build complex interactions within a frame.
-
-:::caution
-
-Frames are brand new and tools are evolving quickly. Check the links above for changelogs!
-
-:::
+You can build complex and exciting [Frames] on [Farcaster] that meet the community's expectation for new and exciting things to do. [OnchainKit], and our [a-frame-in-100-lines] demo give you a number of tools to build complex interactions within a frame.
 
 ---
 
@@ -53,65 +47,37 @@ You should be comfortable with the basics of creating Farcaster [Frames]. If you
 
 ## Setting Up a Copy of A Frame in 100 Lines
 
-If you've been working in the early days of Frames, you may have an existing fork of [a-frame-in-100-lines] that you don't want to alter because it contains live frames.
+Create a new repo using [a-frame-in-100-lines] as a template.
 
-You can create a copy that is not a fork to take advantage of the newest developments without risking prior work. Note that this copy will not behave as a fork.
-
-First, create a bare clone of the template:
-
-```bash
-git clone --bare git@github.com:Zizzamia/a-frame-in-100-lines.git new-frames-project
-```
-
-Create a new, empty repo on GitHub, then mirror-push to that repo.
-
-```bash
-cd new-frames-project
-git push --mirror git@github.com:<YOUR_NAME_HERE>/new-frames-project.git
-```
-
-Delete the `new-frames-project` folder, then clone as normal from the repo on GitHub.
-
-Now you've got a fresh copy to work with!
-
-## Deploy and Test
-
-Add your new repo to Vercel and deploy. If you need a refresher, check out [deploying with Vercel]. Open the [Frame Validator] and test the current version of the template. Remember, this may have changed since the time of writing! We're moving fast!
-
-## A Quick Overview of Features
+Add your new repo to Vercel and deploy. If you need a refresher, check out [deploying with Vercel]. Open the [Frame Validator] and test the current version of the template.
 
 ![100 Lines](../../assets/images/frames/updated-100-lines.png)
 
-The demo now has examples of text entry and redirects.
+The demo has examples of most of the features available for your frames.
+
+### Buttons and Images
+
+The core functionality of a frame is an image and at least 1 button. Buttons can do a number of things, including requesting a new frame to replace the current one, opening a transaction for the user to consider approving, or opening a link to a website.
 
 ### Text Entry
 
-The frame now has a text entry field. Try it out! When you click the `Story Time!` button, the text will be preserved, and will appear in the button on the next frame.
+Optionally, frames can include a text entry field. Try it out! When you click the `Story Time!` button, the text will be preserved, and will appear in the button on the next frame.
 
 ![Story Time](../../assets/images/frames/story-time.png)
 
 The text input field is created by adding the `input` property to `getFrameMetadata`.
 
-In this example, it's in `app/page.tsx` on line 24:
-
 ```tsx
-import { getFrameMetadata } from '@coinbase/onchainkit';
-import type { Metadata } from 'next';
-import { NEXT_PUBLIC_URL } from './config';
-
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
-      label: 'Story time!',
+      label: 'Story time',
     },
     {
-      action: 'link',
-      label: 'Link to Google',
-      target: 'https://www.google.com',
-    },
-    {
-      label: 'Redirect to pictures',
-      action: 'post_redirect',
+      action: 'tx',
+      label: 'Send Base Sepolia',
+      target: `${NEXT_PUBLIC_URL}/api/tx`,
+      postUrl: `${NEXT_PUBLIC_URL}/api/tx-success`,
     },
   ],
   image: {
@@ -119,16 +85,17 @@ const frameMetadata = getFrameMetadata({
     aspectRatio: '1:1',
   },
   input: {
-    text: 'Tell me a boat story',
+    text: 'Tell me a story',
   },
   postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
 });
 ```
 
-When the user enters the text, it gets included in the frame message. You can see how it is retrieved in `api/frame/route.ts`. the `getFrameMessageBody` extracts the frame message from the request, and validates it. The returned `message` contains a number of useful properties that can be seen where it is defined in [OnchainKit], in `src/core/types.ts`:
+When the user enters the text, it gets included in the frame message. You can see how it is retrieved in `api/frame/route.ts`. The `getFrameMessageBody` function extracts the frame message from the request, and validates it. The returned `message` contains a number of useful properties that can be seen where it is defined in [OnchainKit], in `src/frame/types.ts`:
 
 ```tsx
 export interface FrameValidationData {
+  address: string | null; // The connected wallet address of the interacting user.
   button: number; // Number of the button clicked
   following: boolean; // Indicates if the viewer clicking the frame follows the cast author
   input: string; // Text input from the viewer typing in the frame
@@ -136,40 +103,31 @@ export interface FrameValidationData {
     fid: number; // Viewer Farcaster ID
     custody_address: string; // Viewer custody address
     verified_accounts: string[]; // Viewer account addresses
+    verified_addresses: {
+      eth_addresses: string[] | null;
+      sol_addresses: string[] | null;
+    };
   };
   liked: boolean; // Indicates if the viewer clicking the frame liked the cast
   raw: NeynarFrameValidationInternalModel;
   recasted: boolean; // Indicates if the viewer clicking the frame recasted the cast
+  state: {
+    serialized: string; // Serialized state (e.g. JSON) passed to the frame server
+  };
+  transaction: {
+    hash: string;
+  } | null;
   valid: boolean; // Indicates if the frame is valid
 }
 ```
 
-The demo makes use of the `input` property to add the story text to the button in the next frame:
+The demo doesn't make use of the `input` property, but it does extract the text:
 
 ```tsx
 //api/frames/route.ts
 
 // Extract the input:
-if (message?.input) {
-  text = message.input;
-}
-
-// Other code
-
-// Return a new frame, with the story `text`
-return new NextResponse(
-  getFrameHtmlResponse({
-    buttons: [
-      {
-        label: `🌲☀️ ${text} 🌲🌲`,
-      },
-    ],
-    image: {
-      src: `${NEXT_PUBLIC_URL}/park-1.png`,
-    },
-    postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
-  }),
-);
+const text = message.input || '';
 ```
 
 ### Link Button
@@ -186,12 +144,12 @@ You can now add outbound links to buttons. To do this with [OnchainKit], simply 
 
 ### Redirect Button
 
-The third button contains a `Redirect to pictures ↗`. The way it works is a little tricky. Start with the `buttons` defined in the original frame in `page.tsx`. The third button is a `post_redirect`:
+You can also do a redirect with a button. The example has one on the second frame - `Dog pictures ↗`. The way it works is a little tricky. Start with the `buttons` defined in the response frame in `app/frame/route.tsx`. The third button is a `post_redirect`:
 
 ```tsx
 {
-  label: 'Redirect to pictures',
   action: 'post_redirect',
+  label: 'Dog pictures',
 },
 ```
 
@@ -244,42 +202,46 @@ if (message?.button === 3 && message.liked) {
     getFrameHtmlResponse({
       buttons: [
         {
-          label: 'Story time!',
+          label: `State: ${state?.page || 0}`,
         },
         {
           action: 'link',
-          label: 'Link to Google',
-          target: 'https://www.google.com',
+          label: 'OnchainKit',
+          target: 'https://onchainkit.xyz',
         },
         {
-          label: 'Redirect to pictures',
           action: 'post_redirect',
+          label: 'Like to see doggos!',
         },
       ],
       image: {
-        src: `${NEXT_PUBLIC_URL}/park-3.png`,
-        aspectRatio: '1:1',
-      },
-      input: {
-        text: 'Tell me a boat story',
+        src: `${NEXT_PUBLIC_URL}/park-1.png`,
       },
       postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+      state: {
+        page: state?.page + 1,
+        time: new Date().toISOString(),
+      },
     }),
   );
 }
 ```
 
-Note that we're returning a `getFrameHtmlResponse` here, **not** a `getFrameMetadata`!
-
-To test this, you'll need to actually cast the Frame. It won't work in the developer tool!
+Note that we're returning a `getFrameHtmlResponse` here, **not** a `getFrameMetadata`. That's only used for the initial frame created from a page!
 
 ### Follow and Recast Gates
 
 On your own, try changing the "like" gate to require the user to follow you, recast, or all three!
 
+:::info
+
+**Hint:** Take a close look at the `FrameValidationData` properties. [OnchainKit] makes this easy!
+
+:::
+
 ## Conclusion
 
-In this tutorial, you learned how to use the newest features of Frames - text input, link buttons, and redirects. You also learned how to use new features in [OnchainKit] to require your users to perform certain actions to unlock features in your Frame. Finally, you learned how to create a loop in your Frame's behavior, which can be used to create very complicated Frames!
+In this tutorial, you learned how to use the main features of Frames - text input, link buttons, and redirects. You also learned how to use new features in [OnchainKit] to require your users to perform certain actions to unlock features in your Frame. Finally, you learned how to create a loop in your Frame's behavior, which can be used to create very complicated Frames!
 
 ---
 
