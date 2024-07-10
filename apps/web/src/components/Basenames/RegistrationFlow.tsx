@@ -7,7 +7,6 @@ import {
   useRegistration,
 } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
-import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
 import { UsernameProfileForm } from 'apps/web/src/components/Basenames/UsernameProfileForm';
@@ -215,44 +214,48 @@ export function RegistrationFlow() {
           />
         </Transition>
         <div className="relative mb-40">
-          <Transition
-            appear
-            show={!isSearch}
-            className={classNames(
-              'absolute left-1/2 top-0 z-30 mx-auto -translate-x-1/2 transition-all',
-              registrationTransitionDuration,
-              { 'animate-pulse': isPending },
-              { 'scale-95': isPending },
-              { 'scale-105': isSuccess },
-            )}
-            enter="overflow-hidden"
-            enterFrom={classNames('opacity-0 max-w-[5rem]')}
-            enterTo={classNames('opacity-100 max-w-full')}
-            leave="transition-all "
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <UsernamePill variant={currentUsernamePillVariant} name={selectedName} />
-            {isPending && (
-              <p className="text-line mt-6 text-center font-bold uppercase">Registering...</p>
-            )}
-          </Transition>
-          <Transition
-            appear
-            show={isProfile}
-            className={classNames(
-              'absolute left-1/2 top-0 z-30 mx-auto -translate-x-1/2 transition-all',
-              'mt-[16rem] w-full max-w-[26rem] rounded-3xl p-8 shadow-xl',
-              registrationTransitionDuration,
-            )}
-            enterFrom={classNames('opacity-0')}
-            enterTo={classNames('opacity-100')}
-            leave="transition-all "
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0 "
-          >
-            <UsernameProfileForm />
-          </Transition>
+          <div>
+            <Transition
+              appear
+              show={!isSearch}
+              className={classNames(
+                'absolute left-1/2 top-0 z-30 mx-auto -translate-x-1/2 transition-all ',
+                registrationTransitionDuration,
+                { 'animate-pulse': isPending },
+                { 'scale-95': isPending },
+                { 'scale-105 ': isSuccess },
+                { 'max-w-full': !isProfile },
+                { 'w-[26rem]': isProfile },
+              )}
+              enter="overflow-hidden"
+              enterFrom={classNames('opacity-0 max-w-[5rem]')}
+              enterTo={classNames('opacity-100 max-w-full')}
+              leave="transition-all "
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <UsernamePill variant={currentUsernamePillVariant} name={selectedName} />
+              {isPending && (
+                <p className="text-line mt-6 text-center font-bold uppercase">Registering...</p>
+              )}
+            </Transition>
+            <Transition
+              appear
+              show={isProfile}
+              className={classNames(
+                'absolute left-1/2 top-0 z-30 mx-auto -translate-x-1/2 transition-all',
+                'mt-[16rem] w-[26rem] rounded-3xl p-8 shadow-xl',
+                registrationTransitionDuration,
+              )}
+              enterFrom={classNames('opacity-0')}
+              enterTo={classNames('opacity-100')}
+              leave="transition-all "
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0 "
+            >
+              <UsernameProfileForm />
+            </Transition>
+          </div>
           <Transition
             appear
             show={isSearch}
