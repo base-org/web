@@ -47,7 +47,7 @@ export default function UsernameSocialHandleField({
       <Input
         id={usernameSocialHandleFieldId}
         placeholder={handle}
-        className="flex-1 rounded-md border border-line/20 p-2 text-black"
+        className="flex-1 rounded-md border border-gray-40/20 p-2 text-black"
         disabled={disabled}
         value={value}
         autoComplete="off"

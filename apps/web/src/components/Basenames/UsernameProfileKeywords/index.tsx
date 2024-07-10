@@ -15,7 +15,7 @@ export default function UsernameProfileKeywords({ keywords }: UsernameProfileKey
             <button
               type="button"
               className={classNames(
-                'lex items-center gap-2 rounded-xl bg-line/10 px-3 py-2 text-sm text-black',
+                'lex items-center gap-2 rounded-xl bg-gray-40/10 px-3 py-2 text-sm text-black',
               )}
             >
               {keyword}

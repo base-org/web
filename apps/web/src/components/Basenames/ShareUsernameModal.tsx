@@ -27,7 +27,7 @@ export default function ShareUsernameModal({
   const [imageIsLoading, setImageIsLoading] = useState<boolean>(true);
 
   const coverImageWrapperClasses = classNames(
-    'min-h-[10.25rem] w-full  overflow-hidden rounded-2xl border border-line/20 bg-line/10',
+    'min-h-[10.25rem] w-full  overflow-hidden rounded-2xl border border-gray-40/20 bg-gray-40/10',
     {
       'animate-pulse': imageIsLoading,
     },
@@ -68,7 +68,7 @@ export default function ShareUsernameModal({
       title="Share your name on socials"
       titleAlign="left"
     >
-      <div className="mt-4 flex w-full flex-col gap-4 rounded-3xl border border-line/20 p-6">
+      <div className="mt-4 flex w-full flex-col gap-4 rounded-3xl border border-gray-40/20 p-6">
         <p>
           I just got a name from <span className="text-blue-500">@base</span> during Onchain Summer!
           You can get yours too at <span className="text-blue-500">base.org/names</span>

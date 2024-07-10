@@ -18,6 +18,7 @@ module.exports = {
       ocspink: '#FF8DCF',
       ocsyellow: '#FEE002',
       illoblack: '#0A0B0D',
+      transparent: 'transparent',
       blue: {
         0: '#001033',
         5: '#011D5B',
@@ -176,7 +177,7 @@ module.exports = {
         level: {
           1: '#D9D9D9',
           2: '#D9D9D9',
-        }
+        },
       },
       palette: {
         background: '#0A0B0D',

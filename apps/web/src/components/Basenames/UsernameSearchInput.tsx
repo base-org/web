@@ -53,9 +53,9 @@ export function UsernameSearchInput({ variant, placeholder }: UsernameSearchInpu
 
   // This will change/animate the border when hovering the whole component
   const groupBorderClasses = classNames('transition-colors', {
-    'border-2 border-line/20 group-hover:border-blue-600 ':
+    'border-2 border-gray-40/20 group-hover:border-blue-600 ':
       variant === UsernameSearchInputVariant.Large,
-    'border border-transparent group-hover:border-line/20 ':
+    'border border-transparent group-hover:border-gray-40/20 ':
       variant === UsernameSearchInputVariant.Small,
 
     'shadow-lg': variant === UsernameSearchInputVariant.Large,
@@ -75,8 +75,9 @@ export function UsernameSearchInput({ variant, placeholder }: UsernameSearchInpu
     },
     // border colors
     {
-      'border-line/20 focus:border-blue-600 ': variant === UsernameSearchInputVariant.Large,
-      'focus:border-line/20 hover:border-line/20': variant === UsernameSearchInputVariant.Small,
+      'border-gray-40/20 focus:border-blue-600 ': variant === UsernameSearchInputVariant.Large,
+      'focus:border-gray-40/20 hover:border-gray-40/20':
+        variant === UsernameSearchInputVariant.Small,
     },
     // Borders Radius
     {
@@ -99,7 +100,7 @@ export function UsernameSearchInput({ variant, placeholder }: UsernameSearchInpu
     // border colors
     {
       'border-2 peer-focus:border-blue-600': variant === UsernameSearchInputVariant.Large,
-      'border peer-focus:border-line/20': variant === UsernameSearchInputVariant.Small,
+      'border peer-focus:border-gray-40/20': variant === UsernameSearchInputVariant.Small,
     },
     // Visible or not
     {
@@ -199,7 +200,7 @@ export function UsernameSearchInput({ variant, placeholder }: UsernameSearchInpu
       />
       <div className={dropdownClasses}>
         <div className={lineClasses}>
-          <div className="w-full border-t border-line/20 " />
+          <div className="w-full border-t border-gray-40/20 " />
         </div>
         {invalidWithMessage ? (
           <p className={mutedMessage}>Invalid name: {message}</p>

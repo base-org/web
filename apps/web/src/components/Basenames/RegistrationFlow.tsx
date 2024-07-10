@@ -99,14 +99,14 @@ export function RegistrationFlow() {
   return (
     <main className={mainClasses}>
       {/* TODO: REMOVE ME WHEN DONE TESTING */}
-      <div className="border-line/20 absolute right-20 top-40 z-50 w-[10rem] rounded-lg border bg-white p-4 text-black shadow-lg">
+      <div className="absolute right-20 top-40 z-50 w-[10rem] rounded-lg border border-gray-40/20 bg-white p-4 text-black shadow-lg">
         <ul className="flex flex-col gap-2">
           <li>
             <button
               type="button"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onClick={() => setRegistrationStep(RegistrationSteps.Search)}
-              className="border-line/10 rounded border p-2"
+              className="rounded border border-gray-40/20 p-2"
             >
               Search
             </button>
@@ -116,7 +116,7 @@ export function RegistrationFlow() {
               type="button"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onClick={() => setRegistrationStep(RegistrationSteps.Claim)}
-              className="border-line/10 rounded border p-2"
+              className="rounded border border-gray-40/20 p-2"
             >
               Claim
             </button>
@@ -126,7 +126,7 @@ export function RegistrationFlow() {
               type="button"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onClick={() => setRegistrationStep(RegistrationSteps.Pending)}
-              className="border-line/10 rounded border p-2"
+              className="rounded border border-gray-40/20 p-2"
             >
               Pending
             </button>
@@ -136,7 +136,7 @@ export function RegistrationFlow() {
               type="button"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onClick={() => setRegistrationStep(RegistrationSteps.Success)}
-              className="border-line/10 rounded border p-2"
+              className="rounded border border-gray-40/20 p-2"
             >
               Success
             </button>
@@ -146,7 +146,7 @@ export function RegistrationFlow() {
               type="button"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onClick={() => setRegistrationStep(RegistrationSteps.Profile)}
-              className="border-line/10 rounded border p-2"
+              className="rounded border border-gray-40/20 p-2"
             >
               Profile
             </button>

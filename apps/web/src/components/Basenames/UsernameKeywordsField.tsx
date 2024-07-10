@@ -54,9 +54,9 @@ export default function UsernameKeywordsField({
             <button
               type="button"
               className={classNames(
-                'flex items-center gap-2 rounded-xl border border-line/20 px-3 py-2 text-sm text-black hover:bg-line/5',
+                'flex items-center gap-2 rounded-xl border border-gray-40/20 px-3 py-2 text-sm text-black hover:bg-gray-40/5',
                 {
-                  'bg-line/10': keywords.includes(keyword),
+                  'bg-gray-40/10': keywords.includes(keyword),
                 },
               )}
               onClick={() => onClickKeyword(keyword)}
