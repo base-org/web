@@ -1,7 +1,10 @@
-import { RegistrationContext } from 'apps/web/src/components/Basenames/RegistrationContext';
+import {
+  registrationTransitionDuration,
+  useRegistration,
+} from 'apps/web/src/components/Basenames/RegistrationContext';
 import classNames from 'classnames';
 import Image from 'next/image';
-import { forwardRef, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 
 const useMousePosition = () => {
   const [position, setPosition] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
@@ -76,7 +79,7 @@ type PillProps = {
 };
 const Pill = forwardRef(
   ({ avatar, name, x, y, isBlurred, transform }: PillProps, ref: React.Ref<HTMLDivElement>) => {
-    const { focused, hovered } = useContext(RegistrationContext);
+    const { searchInputFocused, searchInputHovered } = useRegistration();
 
     const pillClasses = classNames(
       'absolute flex gap-3 items-center justify-center rounded-full px-4 py-3 border opacity-60',
@@ -86,8 +89,9 @@ const Pill = forwardRef(
 
       {
         'blur-sm': isBlurred,
-        'bg-blue-600/10 border-blue-600/20 text-blue-600': !focused && hovered,
-        'bg-white/20 border-white/80 text-white': focused,
+        'bg-blue-600/10 border-blue-600/20 text-blue-600':
+          !searchInputFocused && searchInputHovered,
+        'bg-white/20 border-white/80 text-white': searchInputFocused,
       },
     );
 
@@ -161,8 +165,22 @@ export function FloatingENSPills() {
     if (!el) return;
     pillRefs.current[index] = el;
   }, []);
+
+  const { searchInputFocused } = useRegistration();
+
+  console.log('SHOULD EB BLUE', { searchInputFocused });
+
   return (
-    <div className="oveflow-hidden pointer-events-none -z-10 w-screen overflow-hidden">
+    <div
+      className={classNames(
+        'pointer-events-none absolute inset-0 -z-10 overflow-hidden',
+        'transition-all',
+        registrationTransitionDuration,
+        {
+          'bg-blue-600': searchInputFocused,
+        },
+      )}
+    >
       {pills.map(({ avatar, name, x, y, transform }, i) => (
         <Pill
           key={`${x}-${y}`}

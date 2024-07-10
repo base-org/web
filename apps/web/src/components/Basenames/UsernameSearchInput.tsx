@@ -1,20 +1,12 @@
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
+import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Input from 'apps/web/src/components/Input';
 import { useFocusWithin } from 'apps/web/src/hooks/useFocusWithin';
 import { useIsNameAvailable } from 'apps/web/src/hooks/useIsNameAvailable';
 import { formatBaseEthDomain, validateEnsDomainName } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
-import {
-  FocusEventHandler,
-  MouseEventHandler,
-  useCallback,
-  useEffect,
-  useId,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 
 export enum UsernameSearchInputVariant {
@@ -26,20 +18,12 @@ type UsernameSearchInputProps = {
   selectName: (name: string) => void;
   variant: UsernameSearchInputVariant;
   placeholder: string;
-  onFocus?: FocusEventHandler<HTMLInputElement>;
-  onBlur?: FocusEventHandler<HTMLInputElement>;
-  onMouseEnter?: MouseEventHandler<HTMLFieldSetElement>;
-  onMouseLeave?: MouseEventHandler<HTMLFieldSetElement>;
 };
 
 export function UsernameSearchInput({
   selectName,
   variant,
   placeholder,
-  onFocus,
-  onBlur,
-  onMouseEnter,
-  onMouseLeave,
 }: UsernameSearchInputProps) {
   const { ref, focused } = useFocusWithin();
   const [search, setSearch] = useState<string>('');
@@ -49,6 +33,8 @@ export function UsernameSearchInput({
   const { isLoading, data, isError, isFetching } = useIsNameAvailable(debouncedSearch);
   const { valid, message } = validateEnsDomainName(debouncedSearch);
   const invalidWithMessage = !valid && !!message;
+
+  const { setSearchInputFocused, setSearchInputHovered } = useRegistration();
 
   const handleSearchChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -201,8 +187,8 @@ export function UsernameSearchInput({
   return (
     <fieldset
       className={usernameSearchInputClasses}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onMouseEnter={() => setSearchInputHovered(true)}
+      onMouseLeave={() => setSearchInputHovered(false)}
       ref={ref}
     >
       <Input
@@ -211,8 +197,8 @@ export function UsernameSearchInput({
         onChange={handleSearchChange}
         placeholder={placeholder}
         className={inputClasses}
-        onFocus={onFocus}
-        onBlur={onBlur}
+        onFocus={() => setSearchInputFocused(true)}
+        onBlur={() => setSearchInputFocused(false)}
         id={inputId}
         ref={inputRef}
       />
