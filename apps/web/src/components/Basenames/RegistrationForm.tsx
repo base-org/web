@@ -72,14 +72,17 @@ export function RegistrationForm({
   );
 
   const finalPrice = discount?.discountKey ? discountedPrice : price;
-  const { registerName, registerNameTransactionHash, registerNameTransactionIsPending } =
-    useRegisterNameCallback(
-      name,
-      finalPrice,
-      years,
-      discount?.discountKey,
-      discount?.validationData,
-    );
+  const {
+    callback: registerName,
+    data: registerNameTransactionHash,
+    isPending: registerNameTransactionIsPending,
+  } = useRegisterNameCallback(
+    name,
+    finalPrice,
+    years,
+    discount?.discountKey,
+    discount?.validationData,
+  );
 
   useEffect(() => {
     if (onApprove && registerNameTransactionHash) {
@@ -94,8 +97,8 @@ export function RegistrationForm({
   }, [registerName]);
 
   const usdPrice = ethUsdPrice && finalPrice ? formatUsdPrice(finalPrice, ethUsdPrice) : '--.--';
+  const nameIsFree = finalPrice === 0n;
 
-  const nameIsFree = false;
   return (
     <div className="bg- mx-auto w-full max-w-[50rem] transition-all duration-500">
       <div className="z-10 mx-4 flex flex-col justify-between gap-4 rounded-2xl bg-[#F7F7F7] p-8 text-gray/60 shadow-xl md:flex-row md:items-center">

@@ -91,9 +91,9 @@ export function Usernames() {
     setSelectedName(name);
   }, []);
 
-  const registrationFormOnApproved = (transactionHash: `0x${string}`) => {
+  const registrationFormOnApproved = useCallback((transactionHash: `0x${string}`) => {
     setRegisterNameTransactionHash(transactionHash);
-  };
+  }, []);
 
   // Wait for text record transaction to be processed
 
@@ -127,13 +127,13 @@ export function Usernames() {
   const blueBackground = inputFocused || isSuccess;
 
   const mainClasses = classNames(
-    'relative z-10 flex min-h-screen w-full overflow-hidden flex-col items-center  px-6',
+    'relative z-10 flex min-h-screen w-full overflow-hidden flex-col items-center px-6',
     'transition-all',
     transitionDuration,
     {
       'bg-ocsblue text-white': blueBackground,
       'bg-white text-black': !blueBackground,
-      'pt-[calc(50vh-15rem)]': isSearch || isClaim || isPending || isSuccess,
+      'pt-[calc(50vh-12rem)]': isSearch || isClaim || isPending || isSuccess,
       'pt-0': isProfile,
     },
   );

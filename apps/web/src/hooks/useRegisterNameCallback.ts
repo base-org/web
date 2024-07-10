@@ -37,11 +37,7 @@ export function useRegisterNameCallback(
     [address, network, normalizedName, years],
   );
 
-  const {
-    data: registerNameTransactionHash,
-    writeContractAsync,
-    isPending: registerNameTransactionIsPending,
-  } = useWriteContract();
+  const { data, writeContractAsync, isPending } = useWriteContract();
 
   // TODO: I think we could pass arguments to this function instead of the hook
   const registerName = useCallback(async () => {
@@ -68,5 +64,5 @@ export function useRegisterNameCallback(
     writeContractAsync,
   ]);
 
-  return { registerName, registerNameTransactionHash, registerNameTransactionIsPending };
+  return { callback: registerName, data, isPending };
 }
