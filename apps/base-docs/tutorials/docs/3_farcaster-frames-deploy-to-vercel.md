@@ -156,7 +156,7 @@ Click `Load`. You should see:
 
 ![Example](../../assets/images/frames/100-lines-frame.png)
 
-Except it should have the text that you edited!
+Except it will have the text that you edited!
 
 ---
 
