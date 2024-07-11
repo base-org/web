@@ -1,3 +1,7 @@
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 const isProdEnv = process.env.NODE_ENV === 'production';
 
 const baseConfig = {
@@ -135,57 +139,60 @@ const securityHeaders = [
   },
 ];
 
-module.exports = extendBaseConfig({
-  transpilePackages: ['base-ui'],
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
+module.exports = extendBaseConfig(
+  {
+    transpilePackages: ['base-ui'],
+    i18n: {
+      locales: ['en'],
+      defaultLocale: 'en',
+    },
+    images: {
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'i.seadn.io',
+        },
+      ],
+    },
+    async headers() {
+      return [
+        {
+          source: '/:path*',
+          basePath: false,
+          headers: securityHeaders,
+        },
+      ];
+    },
+    async redirects() {
+      return [
+        {
+          source: '/careers',
+          destination: '/jobs',
+          permanent: true,
+        },
+        {
+          source: '/buildersummer',
+          destination: '/onchainsummer',
+          permanent: true,
+        },
+        {
+          source: '/onchainfont',
+          // just so the build doesn't fail in CI
+          destination: process.env.NEXT_PUBLIC_OCS_CREATIVE_DOWNLOAD_URL ?? '/',
+          permanent: false,
+        },
+        {
+          source: '/registry',
+          destination: 'https://buildonbase.deform.cc/registry/',
+          permanent: true,
+        },
+        {
+          source: '/registry-edit',
+          destination: 'https://buildonbase.deform.cc/registry-edit/',
+          permanent: true,
+        },
+      ];
+    },
   },
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'i.seadn.io',
-      },
-    ],
-  },
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        basePath: false,
-        headers: securityHeaders,
-      },
-    ];
-  },
-  async redirects() {
-    return [
-      {
-        source: '/careers',
-        destination: '/jobs',
-        permanent: true,
-      },
-      {
-        source: '/buildersummer',
-        destination: '/onchainsummer',
-        permanent: true,
-      },
-      {
-        source: '/onchainfont',
-        // just so the build doesn't fail in CI
-        destination: process.env.NEXT_PUBLIC_OCS_CREATIVE_DOWNLOAD_URL ?? '/',
-        permanent: false,
-      },
-      {
-        source: '/registry',
-        destination: 'https://buildonbase.deform.cc/registry/',
-        permanent: true,
-      },
-      {
-        source: '/registry-edit',
-        destination: 'https://buildonbase.deform.cc/registry-edit/',
-        permanent: true,
-      },
-    ];
-  },
-});
+  [withBundleAnalyzer],
+);
