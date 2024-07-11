@@ -14,7 +14,7 @@ export type UsernameKeywordsFieldProps = {
 };
 
 export default function UsernameKeywordsField({
-  labelChildren,
+  labelChildren = 'Areas of expertise',
   onChange,
   value,
   disabled = false,

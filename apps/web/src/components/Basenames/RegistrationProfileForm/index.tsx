@@ -9,7 +9,11 @@ import Label from 'apps/web/src/components/Label';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
-import { UsernameTextRecords, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
+import {
+  UsernameTextRecords,
+  UsernameTextRecordKeys,
+  inlineTextRecordsField,
+} from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
@@ -21,17 +25,9 @@ export enum FormSteps {
   Keywords = 'Keywords',
 }
 
-export const inlineTextRecordsField = [
-  UsernameTextRecordKeys.Twitter,
-  UsernameTextRecordKeys.Farcaster,
-  UsernameTextRecordKeys.Github,
-  UsernameTextRecordKeys.Url,
-];
-
 export default function RegistrationProfileForm() {
   const [currentFormStep, setCurrentFormStep] = useState<FormSteps>(FormSteps.Description);
   const { selectedName } = useRegistration();
-
   const { address } = useAccount();
   const router = useRouter();
 
@@ -135,7 +131,7 @@ export default function RegistrationProfileForm() {
           <Icon name="blueCircle" color="currentColor" height="0.8rem" width="0.8rem" />
           <strong className="text-black">Add Bio</strong>
         </div>
-        <span>Step 1 of 3</span>
+        <span className="font-normal">Step 1 of 3</span>
       </p>
     </div>
   );
@@ -147,7 +143,7 @@ export default function RegistrationProfileForm() {
           <Icon name="blueCircle" color="currentColor" height="0.8rem" width="0.8rem" />
           <strong className="text-black">Add Socials</strong>
         </div>
-        <span>Step 2 of 3</span>
+        <span className="font-normal">Step 2 of 3</span>
       </p>
     </div>
   );
@@ -159,7 +155,7 @@ export default function RegistrationProfileForm() {
           <Icon name="blueCircle" color="currentColor" height="0.8rem" width="0.8rem" />
           <strong className="text-black">Add areas of expertise</strong>
         </div>
-        <span>Step 3 of 3</span>
+        <span className="font-normal">Step 3 of 3</span>
       </p>
     </div>
   );

@@ -35,7 +35,7 @@ export default function UsernameTextRecordInlineField({
 
   return (
     <Fieldset inline>
-      <Label htmlFor={usernameSocialHandleFieldId} className="w-full max-w-[6rem]">
+      <Label htmlFor={usernameSocialHandleFieldId} className="w-full max-w-[6rem] text-sm">
         {textRecordsKeysForDisplay[textRecordKey]}
       </Label>
       <Input

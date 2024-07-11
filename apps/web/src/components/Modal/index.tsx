@@ -3,12 +3,19 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
 
+export enum ModalSizes {
+  Medium = 'medium',
+  Large = 'large',
+}
+
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
   onBack?: () => void;
   title?: JSX.Element | string;
   titleAlign?: 'left' | 'center' | 'right';
+  modalAlign?: 'top' | 'center';
+  size?: ModalSizes;
 };
 
 export default function Modal({
@@ -18,6 +25,8 @@ export default function Modal({
   onClose,
   onBack,
   titleAlign = 'center',
+  modalAlign = 'center',
+  size = ModalSizes.Medium,
   ...rest
 }: PropsWithChildren<ModalProps>) {
   const mainClasses = classNames('font-mono text-3xl text-illoblack w-full font-bold', {
@@ -25,6 +34,23 @@ export default function Modal({
     'text-left': titleAlign === 'left',
     'text-right': titleAlign === 'right',
   });
+
+  const dialogWrapperClasses = classNames(
+    'fixed inset-0 flex w-screen justify-center overflow-y-scroll p-4',
+    {
+      'items-center': modalAlign === 'center',
+      'items-start': modalAlign === 'top',
+    },
+  );
+
+  const dialogClasses = classNames(
+    'border-gray-40/20 flex h-full w-full flex-col gap-4 rounded-3xl border bg-white p-10 shadow-lg sm:h-auto ',
+    {
+      'max-w-lg': size === ModalSizes.Medium,
+      'max-w-xl': size === ModalSizes.Large,
+      'mt-20': modalAlign === 'top',
+    },
+  );
 
   return (
     <Transition appear show={isOpen}>
@@ -36,11 +62,8 @@ export default function Modal({
           aria-hidden="true"
         />
 
-        <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <Dialog.Panel
-            className="flex h-full w-[28rem] flex-col gap-4 rounded-3xl border border-muted/20 bg-white p-10 shadow-lg sm:h-auto sm:max-w-xl"
-            {...rest}
-          >
+        <div className={dialogWrapperClasses}>
+          <Dialog.Panel className={dialogClasses} {...rest}>
             <div className="flex">
               {onBack && (
                 <button type="button" className="mr-auto text-xl text-[#0A0B0D]" onClick={onBack}>

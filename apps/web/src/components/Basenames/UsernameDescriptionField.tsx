@@ -17,7 +17,7 @@ export type UsernameDescriptionFieldProps = {
 };
 
 export default function UsernameDescriptionField({
-  labelChildren,
+  labelChildren = 'Description',
   onChange,
   value,
   disabled = false,

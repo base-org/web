@@ -39,6 +39,13 @@ export enum UsernameTextRecordKeys {
   Discord = 'com.discord',
 }
 
+export const inlineTextRecordsField = [
+  UsernameTextRecordKeys.Twitter,
+  UsernameTextRecordKeys.Farcaster,
+  UsernameTextRecordKeys.Github,
+  UsernameTextRecordKeys.Url,
+];
+
 export const textRecordsKeysEnabled = [
   UsernameTextRecordKeys.Description,
   UsernameTextRecordKeys.Keywords,
