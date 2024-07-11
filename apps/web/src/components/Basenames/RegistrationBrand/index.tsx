@@ -2,7 +2,7 @@ import { Transition } from '@headlessui/react';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import { useInterval } from 'usehooks-ts';
 
 const SEARCH_LABEL_COPY_STRINGS = [
@@ -23,7 +23,7 @@ export default function RegistrationBrand() {
   const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
   const { searchInputFocused } = useRegistration();
   return (
-    <>
+    <div className="flex flex-row">
       <div className="flex items-center items-center gap-1">
         <span
           className={classNames({
@@ -38,19 +38,17 @@ export default function RegistrationBrand() {
       {SEARCH_LABEL_COPY_STRINGS.map((string) => (
         <Transition
           key={string}
-          as={Fragment}
           show={rotatingText === string}
           className="transition-opacity"
-          enter={classNames('transform delay-500')}
+          enter="delay-500"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          leave={classNames('transform')}
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
           <p className="text-md absolute right-0 md:text-xl ">{string}</p>
         </Transition>
       ))}
-    </>
+    </div>
   );
 }

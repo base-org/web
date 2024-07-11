@@ -121,7 +121,7 @@ export default function RegistrationProfileForm() {
   );
 
   const formClasses = classNames(
-    'flex flex-col justify-between gap-4 text-gray-60 md:items-center',
+    'flex flex-col justify-between gap-4 text-gray-60 md:items-center rounded-3xl shadow-xl p-8',
   );
 
   const descriptionLabelChildren = (

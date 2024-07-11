@@ -16,13 +16,14 @@ export function UsernamePill({ variant, username }: UsernamePillProps) {
   const transitionClasses = 'transition-all duration-200 ease-in-out';
 
   const pillNameClasses = classNames(
-    'bg-blue-500 text-white relative leading-[2em] w-full overflow-hidden text-ellipsis max-w-3xl mx-auto',
-    'shadow-[0px_8px_16px_0px_rgba(0,82,255,0.32),inset_0px_8px_16px_0px_rgba(255,255,255,0.25)] w-full',
+    'bg-blue-500 text-white relative leading-[2em] overflow-hidden text-ellipsis max-w-full',
+    'shadow-[0px_8px_16px_0px_rgba(0,82,255,0.32),inset_0px_8px_16px_0px_rgba(255,255,255,0.25)]',
+
     transitionClasses,
     {
       // Note: If you change this py-5, it won't match the dropdown's height
-      'rounded-[5rem] py-5 px-8 ': variant === UsernamePillVariants.Inline,
-      'rounded-[2rem] py-8 px-10  pt-40': variant === UsernamePillVariants.Card,
+      'rounded-[5rem] py-5 px-8 w-fit': variant === UsernamePillVariants.Inline,
+      'rounded-[2rem] py-8 px-10 pt-40 w-full': variant === UsernamePillVariants.Card,
     },
   );
 

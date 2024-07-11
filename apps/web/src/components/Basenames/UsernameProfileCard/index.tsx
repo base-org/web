@@ -47,23 +47,26 @@ export default function UsernameProfileCard() {
       )}
 
       <ul className="flex flex-col gap-2">
-        {textRecordsSocialFieldsEnabled.map((textRecordKey) => (
-          <li key={textRecordDescription}>
-            <Link
-              href={formatSocialFieldUrl(textRecordKey, existingTextRecords[textRecordKey])}
-              target="_blank"
-              className="flex items-center gap-2 text-gray-40 hover:text-blue-500"
-            >
-              <Icon
-                name={textRecordsSocialFieldsEnabledIcons[textRecordKey]}
-                height="1rem"
-                width="1rem"
-                color="currentColor"
-              />
-              {formatSocialFieldForDisplay(textRecordKey, existingTextRecords[textRecordKey])}
-            </Link>
-          </li>
-        ))}
+        {textRecordsSocialFieldsEnabled.map(
+          (textRecordKey) =>
+            !!existingTextRecords[textRecordKey] && (
+              <li key={textRecordDescription}>
+                <Link
+                  href={formatSocialFieldUrl(textRecordKey, existingTextRecords[textRecordKey])}
+                  target="_blank"
+                  className="flex items-center gap-2 text-gray-40 hover:text-blue-500"
+                >
+                  <Icon
+                    name={textRecordsSocialFieldsEnabledIcons[textRecordKey]}
+                    height="1rem"
+                    width="1rem"
+                    color="currentColor"
+                  />
+                  {formatSocialFieldForDisplay(textRecordKey, existingTextRecords[textRecordKey])}
+                </Link>
+              </li>
+            ),
+        )}
       </ul>
     </div>
   );
