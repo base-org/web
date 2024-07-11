@@ -172,7 +172,7 @@ module.exports = {
         90: '#220C00',
         100: '#000000',
       },
-      
+
       elevation: {
         level: {
           1: '#FFFFFF',
