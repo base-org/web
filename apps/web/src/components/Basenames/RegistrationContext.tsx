@@ -1,3 +1,4 @@
+import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import {
   Dispatch,
   ReactNode,
@@ -8,7 +9,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { useWaitForTransactionReceipt } from 'wagmi';
+import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
 
 export enum RegistrationSteps {
   Search = 'search',
@@ -69,6 +70,11 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     RegistrationSteps.Search,
   );
 
+  const { address } = useAccount();
+  const { refetch: baseEnsNameRefetch } = useBaseEnsName({
+    address,
+  });
+
   // TODO: Not a big fan of this, I think ideally we'd have useRegisterNameCallback here
   const [registerNameTransactionHash, setRegisterNameTransactionHash] = useState<
     `0x${string}` | undefined
@@ -88,11 +94,18 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       setRegistrationStep(RegistrationSteps.Pending);
     }
     if (transactionIsSuccess) {
-      setRegistrationStep(RegistrationSteps.Success);
+      // Reload current ENS name
+      baseEnsNameRefetch()
+        .then(() => {
+          setRegistrationStep(RegistrationSteps.Success);
+        })
+        .catch(() => {
+          // TODO: Error
+        });
     }
 
     // TODO: Failed transaction
-  }, [setRegistrationStep, transactionIsFetching, transactionIsSuccess]);
+  }, [baseEnsNameRefetch, setRegistrationStep, transactionIsFetching, transactionIsSuccess]);
 
   useEffect(() => {
     if (selectedName.length) {

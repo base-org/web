@@ -17,7 +17,7 @@ export default function useBaseEnsName({ address }: UseBaseEnsNameProps) {
   const chain = baseSepolia;
 
   // TODO: Fix TS error
-  const { data, isLoading } = useReadContract({
+  const { data, isLoading, refetch } = useReadContract({
     abi: L2ResolverAbi,
     address: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
     functionName: 'name',
@@ -33,5 +33,6 @@ export default function useBaseEnsName({ address }: UseBaseEnsNameProps) {
   return {
     data: ensNameTyped,
     isLoading,
+    refetch,
   };
 }
