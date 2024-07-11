@@ -32,7 +32,7 @@ export function Card({ name, url, description, imageUrl, tags }: Props) {
       <div className="flex flex-col gap-4">
         <div className="flex flex-col">
           <h3 className="font-mono text-xl uppercase text-white">{name}</h3>
-          <span className="truncate font-mono text-gray-60">
+          <span className="truncate font-mono text-gray-muted">
             {getNiceDomainDisplayFromUrl(url)}
           </span>
         </div>
