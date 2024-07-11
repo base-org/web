@@ -31,14 +31,16 @@ function formatPrice(price?: bigint) {
   const value = parseFloat(formattedPrice);
 
   if (value < threshold) {
-    return parseFloat(value.toFixed(6));
+    return parseFloat(value.toFixed(3));
   } else {
     return parseFloat(value.toFixed(2));
   }
 }
 
 function formatUsdPrice(price: bigint, ethUsdPrice: number) {
-  return (parseFloat(formatEther(price)) * Number(ethUsdPrice)).toFixed(2);
+  const parsed = (parseFloat(formatEther(price)) * Number(ethUsdPrice)).toFixed(2);
+  if (parsed === '0.00') return '0';
+  return parsed;
 }
 
 export function RegistrationForm({
@@ -85,7 +87,7 @@ export function RegistrationForm({
 
   useEffect(() => {
     if (registerNameTransactionHash) setRegisterNameTransactionHash(registerNameTransactionHash);
-  }, [registerNameTransactionHash]);
+  }, [registerNameTransactionHash, setRegisterNameTransactionHash]);
 
   const registerNameCallback = useCallback(() => {
     registerName()
@@ -98,9 +100,9 @@ export function RegistrationForm({
 
   return (
     <div className="bg- mx-auto w-full max-w-[50rem] transition-all duration-500">
-      <div className="z-10 mx-4 flex flex-col justify-between gap-4 rounded-2xl bg-[#F7F7F7] p-8 text-gray/60 shadow-xl md:flex-row md:items-center">
+      <div className="z-10 mx-4 flex flex-col justify-between gap-4 rounded-2xl bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center">
         <div>
-          <p className="mb-2 text-sm font-bold uppercase text-line">Claim for</p>
+          <p className="text-line mb-2 text-sm font-bold uppercase">Claim for</p>
           <div className="flex items-center justify-between">
             <button
               type="button"
@@ -123,17 +125,28 @@ export function RegistrationForm({
           </div>
         </div>
         <div>
-          <p className="mb-2 text-sm font-bold uppercase text-line">Amount</p>
+          <p className="text-line mb-2 text-sm font-bold uppercase">Amount</p>
           <div className="flex items-baseline justify-center md:justify-between">
-            <p className="mx-2 whitespace-nowrap text-3xl text-black">
-              {formatPrice(finalPrice)} ETH
-            </p>
+            {discountedPrice ? (
+              <div className="mr-2 flex flex-row items-baseline justify-around gap-2">
+                <p className="whitespace-nowrap text-3xl text-black line-through">
+                  {formatPrice(price)}
+                </p>
+                <p className="whitespace-nowrap text-3xl text-green-50">
+                  {formatPrice(finalPrice)} ETH
+                </p>
+              </div>
+            ) : (
+              <p className="mr-2 whitespace-nowrap text-3xl text-black">
+                {formatPrice(finalPrice)} ETH
+              </p>
+            )}
             {loadingDiscounts ? (
               <div className="flex h-4 items-center justify-center">
                 <Icon name="spinner" color="currentColor" />
               </div>
             ) : (
-              <span className="whitespace-nowrap text-xl text-gray/60">${usdPrice}</span>
+              <span className="whitespace-nowrap text-xl text-gray-60">${usdPrice}</span>
             )}
           </div>
         </div>
@@ -193,7 +206,7 @@ export function RegistrationForm({
         </p>
         <button
           type="button"
-          className="font-bold uppercase text-line underline"
+          className="text-line font-bold uppercase underline"
           onClick={toggleModal}
         >
           Learn more
