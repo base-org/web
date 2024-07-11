@@ -5,6 +5,7 @@
   "scripts": {
     "start": "next start",
     "build": "next build",
+    "analyze": "ANALYZE=true next build",
     "dev": "next dev",
     "lint": "next lint",
     "update-contributors": "node ./scripts/updateContributors.js && npx prettier ./src/components/CoreContributors/CoreContributors.json -w"
