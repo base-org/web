@@ -10,7 +10,7 @@ function InfoIcon() {
     <InformationCircleIcon
       width={12}
       height={12}
-      className="ml-1 fill-[#89909E] transition-colors hover:fill-darkgray"
+      className="ml-1 fill-[#89909E] transition-colors hover:fill-gray-dark"
     />
   );
 }
@@ -114,7 +114,7 @@ export function LearnMoreModal({
             </a>
             .
           </p>
-          <div className="text-md w-full rounded-xl border border-[#CED2DB] bg-backgroundAlternate p-4 font-medium text-illoblack">
+          <div className="text-md bg-backgroundAlternate w-full rounded-xl border border-[#CED2DB] p-4 font-medium text-illoblack">
             Don’t have any of these?{' '}
             <a href="https://www.coinbase.com/onchain-verify" className="underline">
               Get a verification

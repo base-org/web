@@ -11,6 +11,7 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    // https://www.figma.com/design/AH4N0fma2EvI30IltjBGPy/%E2%9C%A8-CDS-Styles-(Variables)?node-id=46-168
     colors: {
       white: '#FFFFFF',
       black: '#000000',
@@ -54,7 +55,7 @@ module.exports = {
         100: '#FFFFFF',
       },
       green: {
-        0: '#00331E',
+        0: '#F5FFFB',
         5: '#003D24',
         10: '#01472A',
         15: '#025230',
@@ -62,7 +63,7 @@ module.exports = {
         30: '#067044',
         40: '#0B8552',
         50: '#159962',
-        60: '#27AD75',
+        60: '#098551',
         70: '#44C28D',
         80: '#6FD6AB',
         90: '#ABEBD0',

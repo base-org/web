@@ -21,23 +21,20 @@ type RegistrationFormProps = {
   discount?: DiscountData;
 };
 
-const threshold = 0.01;
-
-function formatPrice(price?: bigint) {
-  if (!price) {
+function formatEtherPrice(price?: bigint) {
+  if (price === undefined) {
     return '...';
   }
-  const formattedPrice = formatEther(price);
-  const value = parseFloat(formattedPrice);
-
-  if (value < threshold) {
-    return parseFloat(value.toFixed(3));
+  const value = parseFloat(formatEther(price));
+  if (value < 0.001) {
+    return parseFloat(value.toFixed(4));
   } else {
-    return parseFloat(value.toFixed(2));
+    return parseFloat(value.toFixed(3));
   }
 }
 
 function formatUsdPrice(price: bigint, ethUsdPrice: number) {
+  if (price === 0n) return '0';
   const parsed = (parseFloat(formatEther(price)) * Number(ethUsdPrice)).toFixed(2);
   if (parsed === '0.00') return '0';
   return parsed;
@@ -65,21 +62,22 @@ export function RegistrationForm({
   }, [switchChain]);
 
   const ethUsdPrice = useEthPriceFromUniswap();
-  const { data: price } = useNameRegistrationPrice(selectedName, years);
+  const { data: initialPrice } = useNameRegistrationPrice(selectedName, years);
   const { data: discountedPrice } = useDiscountedNameRegistrationPrice(
     selectedName,
     years,
     discount?.discountKey,
   );
 
-  const finalPrice = discount?.discountKey ? discountedPrice : price;
+  const price = discountedPrice ?? initialPrice;
+
   const {
     callback: registerName,
     data: registerNameTransactionHash,
     isPending: registerNameTransactionIsPending,
   } = useRegisterNameCallback(
     selectedName,
-    finalPrice,
+    price,
     years,
     discount?.discountKey,
     discount?.validationData,
@@ -95,8 +93,9 @@ export function RegistrationForm({
       .catch(() => {});
   }, [registerName]);
 
-  const usdPrice = ethUsdPrice && finalPrice ? formatUsdPrice(finalPrice, ethUsdPrice) : '--.--';
-  const nameIsFree = finalPrice === 0n;
+  const usdPrice =
+    price !== undefined && ethUsdPrice !== undefined ? formatUsdPrice(price, ethUsdPrice) : '--.--';
+  const nameIsFree = price === 0n;
 
   return (
     <div className="bg- mx-auto w-full max-w-[50rem] transition-all duration-500">
@@ -127,18 +126,18 @@ export function RegistrationForm({
         <div>
           <p className="text-line mb-2 text-sm font-bold uppercase">Amount</p>
           <div className="flex items-baseline justify-center md:justify-between">
-            {discountedPrice ? (
+            {discountedPrice !== undefined ? (
               <div className="mr-2 flex flex-row items-baseline justify-around gap-2">
                 <p className="whitespace-nowrap text-3xl text-black line-through">
-                  {formatPrice(price)}
+                  {formatEtherPrice(initialPrice)}
                 </p>
                 <p className="whitespace-nowrap text-3xl text-green-50">
-                  {formatPrice(finalPrice)} ETH
+                  {formatEtherPrice(discountedPrice)} ETH
                 </p>
               </div>
             ) : (
               <p className="mr-2 whitespace-nowrap text-3xl text-black">
-                {formatPrice(finalPrice)} ETH
+                {formatEtherPrice(price)} ETH
               </p>
             )}
             {loadingDiscounts ? (

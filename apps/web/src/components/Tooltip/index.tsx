@@ -22,9 +22,9 @@ function Tooltip({ content, children }: PropsWithChildren<TooltipProps>) {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="absolute left-1/2 -translate-x-1/2 -top-12 transform w-max">
-          <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-darkgray ring-opacity-5">
-            <div className="bg-darkgray px-4 py-2 text-white">{content}</div>
+        <div className="absolute -top-12 left-1/2 w-max -translate-x-1/2 transform">
+          <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-gray-dark ring-opacity-5">
+            <div className="bg-gray-dark px-4 py-2 text-white">{content}</div>
           </div>
         </div>
       </Transition>
