@@ -49,7 +49,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (hasPreviouslyRegistered) {
       res.status(400).json({ error: 'This address has already claimed a username.' });
     }
-    const [content] = await getProofsByNamespaceAndAddress(address, ProofTableNamespace.Usernames);
+    const [content] = await getProofsByNamespaceAndAddress(
+      address,
+      ProofTableNamespace.UsernamesEarlyAccess,
+    );
     const proofs = content?.proofs ? (JSON.parse(content.proofs) as `0x${string}`[]) : [];
     if (proofs.length === 0) {
       return res.status(404).json({ error: 'address is not eligible for a cbid discount' });

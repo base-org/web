@@ -3,7 +3,6 @@ import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
 import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
 import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
 import { Discount } from 'apps/web/src/components/Basenames/RegistrationFlow';
-import { ProofTableNamespace } from 'apps/web/src/utils/proofs';
 import { useEffect, useMemo, useState } from 'react';
 import { Address, ReadContractErrorType, encodeAbiParameters } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
@@ -28,7 +27,6 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
       try {
         const params = new URLSearchParams();
         params.append('address', a);
-        params.append('namespace', ProofTableNamespace.Usernames);
         params.append('chain', (chainId === baseSepolia.id ? chainId : base.id).toString());
         const response = await fetch(`/api/proofs/cbid?${params}`);
         if (response.ok) {
