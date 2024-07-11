@@ -1,10 +1,12 @@
+import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import abi from 'apps/web/src/abis/RegistrarControllerABI';
 import {
   USERNAME_L2_RESOLVER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
 } from 'apps/web/src/addresses/usernames';
-import { normalizeEnsDomainName } from 'apps/web/src/utils/usernames';
+import { formatBaseEthDomain, normalizeEnsDomainName } from 'apps/web/src/utils/usernames';
 import { useCallback, useMemo } from 'react';
+import { encodeFunctionData, namehash } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
 import { useAccount, useWriteContract } from 'wagmi';
 
@@ -25,16 +27,22 @@ export function useRegisterNameCallback(
   const normalizedName = normalizeEnsDomainName(name);
   const isDiscounted = Boolean(discountKey && validationData);
 
+  const addressData = encodeFunctionData({
+    abi: L2ResolverAbi,
+    functionName: 'setAddr',
+    args: [namehash(formatBaseEthDomain(name)), address ?? '0xasdf'],
+  });
+
   const registerRequest = useMemo(
     () => ({
       name: normalizedName, // The name being registered.
       owner: address ?? '0x48c89d77ae34ae475e4523b25ab01e363dce5a78', // The address of the owner for the name.
       duration: secondsInYears(years), // The duration of the registration in seconds.
       resolver: USERNAME_L2_RESOLVER_ADDRESSES[network], // The address of the resolver to set for this name.
-      data: [], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
+      data: [addressData], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
       reverseRecord: true, // Bool to decide whether to set this name as the "primary" name for the `owner`.
     }),
-    [address, network, normalizedName, years],
+    [address, addressData, network, normalizedName, years],
   );
 
   const { data, writeContractAsync, isPending } = useWriteContract();
@@ -52,6 +60,7 @@ export function useRegisterNameCallback(
         value,
       });
     } catch (error) {
+      console.log({ error });
       // Log error
     }
   }, [

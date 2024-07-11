@@ -10,11 +10,15 @@ import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profil
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import { ADDRESS_REVERSE_NODE } from 'apps/web/src/addresses/usernames';
 
+export const BASE_SEPOLIA_ETH_DOMAIN = 'basetest.eth';
 export const BASE_ETH_DOMAIN = 'base.eth';
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 20;
 
 export const USERNAME_DESCRIPTION_MAX_LENGTH = 200;
+
+export type BaseName = `${string}.base.eth`;
+export type BaseSepoliaName = `${string}.basetest.eth`;
 
 // DANGER: Changing this post-mainnet launch means the stored data won't be accessible via the updated key
 export enum UsernameTextRecordKeys {
@@ -159,8 +163,9 @@ export const normalizeEnsDomainName = (name: string) => {
   }
 };
 
-export const formatBaseEthDomain = (name: string) => {
-  return `${name}.${BASE_ETH_DOMAIN}`.toLocaleLowerCase();
+// TODO: Replace with mainnet for launch
+export const formatBaseEthDomain = (name: string): BaseSepoliaName => {
+  return `${name}.${BASE_SEPOLIA_ETH_DOMAIN}`.toLocaleLowerCase() as BaseSepoliaName;
 };
 
 export const getUsernamePictureIndex = (name: string, totalOptions: number) => {
@@ -190,8 +195,6 @@ export const getUserNamePicture = (username: string) => {
   return selectedProfilePicture;
 };
 
-// will convert an address to a reverse node (bytes32)
-// used for reverse resolution and other various resolver contract interaction
 export const convertReverseNodeToBytes = (address?: Address) => {
   if (!address) return;
   const addressFormatted = address.toLocaleLowerCase() as Address;
@@ -199,5 +202,6 @@ export const convertReverseNodeToBytes = (address?: Address) => {
   const addressReverseNode = keccak256(
     encodePacked(['bytes32', 'bytes32'], [ADDRESS_REVERSE_NODE, addressNode]),
   );
+
   return addressReverseNode;
 };

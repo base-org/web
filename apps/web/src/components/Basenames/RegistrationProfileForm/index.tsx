@@ -6,6 +6,7 @@ import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Fieldset from 'apps/web/src/components/Fieldset';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
+import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
 import { UsernameTextRecords, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
@@ -32,19 +33,23 @@ export default function RegistrationProfileForm() {
   const { selectedName } = useRegistration();
 
   const { address } = useAccount();
-  const fakeAddress = address ?? '0x63e216601B3588a5B54d9f961cFFc4af916a63c7';
   const router = useRouter();
 
-  // Get textRecords (for display)
+  const { data: baseEnsName } = useBaseEnsName({
+    address,
+  });
+
   const { existingTextRecords, existingTextRecordsIsLoading, refetchExistingTextRecords } =
     useReadBaseEnsTextRecords({
-      address: fakeAddress,
+      address: address,
+      username: baseEnsName,
     });
 
   // Write text records
   const { writeTextRecords, writeTextRecordsIsPending, writeTextRecordsTransactionHash } =
     useWriteBaseEnsTextRecords({
-      address: fakeAddress,
+      address: address,
+      username: baseEnsName,
     });
 
   // Wait for text record transaction to be processed

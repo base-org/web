@@ -18,6 +18,7 @@ import {
   findFirstValidDiscount,
   useAggregatedDiscountValidators,
 } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
+import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { useCallback, useMemo, useState } from 'react';
 
@@ -198,7 +199,10 @@ export function RegistrationFlow() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <UsernamePill variant={currentUsernamePillVariant} name={selectedName} />
+              <UsernamePill
+                variant={currentUsernamePillVariant}
+                username={formatBaseEthDomain(selectedName)}
+              />
               {isPending && (
                 <p className="text-line mt-6 text-center font-bold uppercase text-gray-60">
                   Registering...

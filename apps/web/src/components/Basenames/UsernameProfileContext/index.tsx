@@ -1,7 +1,8 @@
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import { BaseSepoliaName, formatBaseEthDomain } from 'apps/web/src/utils/usernames';
 import { useParams } from 'next/navigation';
 import { ReactNode, createContext, useContext, useMemo } from 'react';
-import { GetEnsAddressReturnType } from 'viem';
+import { Address } from 'viem';
 import { baseSepolia } from 'viem/chains';
 import { useEnsAddress } from 'wagmi';
 
@@ -9,12 +10,14 @@ export enum UsernameProfileSteps {}
 
 export type UsernameProfileContextProps = {
   profileUsername: string;
+  profileUsernameFormatted: BaseSepoliaName;
   profileAddressIsLoading: boolean;
-  profileAddress?: GetEnsAddressReturnType;
+  profileAddress?: Address;
 };
 
 export const UsernameProfileContext = createContext<UsernameProfileContextProps>({
   profileUsername: '',
+  profileUsernameFormatted: formatBaseEthDomain('default'),
   profileAddressIsLoading: true,
   profileAddress: undefined,
 });
@@ -25,9 +28,9 @@ type UsernameProfileProviderProps = {
 
 export default function UsernameProfileProvider({ children }: UsernameProfileProviderProps) {
   const { username: profileUsername } = useParams<{ username: string }>();
-
+  const profileUsernameFormatted = formatBaseEthDomain(profileUsername);
   const { data: profileAddress, isLoading: profileAddressIsLoading } = useEnsAddress({
-    name: 'katzman.basetest.eth', // TODO: for some reason leogalleto.basetest.eth doesn't work
+    name: formatBaseEthDomain(profileUsername),
     chainId: baseSepolia.id,
     universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[baseSepolia.id],
     query: {
@@ -36,8 +39,13 @@ export default function UsernameProfileProvider({ children }: UsernameProfilePro
   });
 
   const values = useMemo(() => {
-    return { profileAddress, profileAddressIsLoading, profileUsername };
-  }, [profileAddress, profileAddressIsLoading, profileUsername]);
+    return {
+      profileAddress: profileAddress?.toString() as Address,
+      profileAddressIsLoading,
+      profileUsername,
+      profileUsernameFormatted,
+    };
+  }, [profileAddress, profileAddressIsLoading, profileUsername, profileUsernameFormatted]);
 
   return (
     <UsernameProfileContext.Provider value={values}>{children}</UsernameProfileContext.Provider>

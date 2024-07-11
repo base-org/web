@@ -1,4 +1,4 @@
-import { formatBaseEthDomain, getUserNamePicture } from 'apps/web/src/utils/usernames';
+import { BaseSepoliaName, getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import Image from 'next/image';
 
@@ -9,10 +9,10 @@ export enum UsernamePillVariants {
 
 type UsernamePillProps = {
   variant: UsernamePillVariants;
-  name: string;
+  username: BaseSepoliaName;
 };
 
-export function UsernamePill({ variant, name }: UsernamePillProps) {
+export function UsernamePill({ variant, username }: UsernamePillProps) {
   const transitionClasses = 'transition-all duration-200 ease-in-out';
 
   const pillNameClasses = classNames(
@@ -47,7 +47,7 @@ export function UsernamePill({ variant, name }: UsernamePillProps) {
     },
   );
 
-  const selectedProfilePicture = getUserNamePicture(name);
+  const selectedProfilePicture = getUserNamePicture(username);
 
   return (
     <div className={pillNameClasses}>
@@ -56,12 +56,12 @@ export function UsernamePill({ variant, name }: UsernamePillProps) {
           src={selectedProfilePicture}
           priority
           loading="eager"
-          alt={formatBaseEthDomain(name)}
-          title={formatBaseEthDomain(name)}
+          alt={username}
+          title={username}
           className="object-fill"
         />
       </figure>
-      <span className={userNameClasses}>{formatBaseEthDomain(name)}</span>
+      <span className={userNameClasses}>{username}</span>
     </div>
   );
 }
