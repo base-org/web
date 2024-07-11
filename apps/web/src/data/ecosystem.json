@@ -27,6 +27,15 @@
     "imageUrl": "/images/partners/infusion.png"
   },
   {
+    "name": "Frenpet",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Own and grow with your onchain fren.",
+    "url": "https://frenpet.xyz/",
+    "imageUrl": "/images/partners/frenpet.png"
+  },
+  {
     "name": "Defi Launch",
     "tags": [
       "defi"
