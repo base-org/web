@@ -12,7 +12,7 @@ import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRe
 import {
   UsernameTextRecords,
   UsernameTextRecordKeys,
-  inlineTextRecordsField,
+  textRecordsSocialFieldsEnabled,
 } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
@@ -176,7 +176,7 @@ export default function RegistrationProfileForm() {
       {currentFormStep === FormSteps.Socials && (
         <Fieldset>
           <Label>{socialsLabelChildren}</Label>
-          {inlineTextRecordsField.map((textRecordKey) => (
+          {textRecordsSocialFieldsEnabled.map((textRecordKey) => (
             <UsernameTextRecordInlineField
               key={textRecordKey}
               textRecordKey={textRecordKey}

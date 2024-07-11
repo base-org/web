@@ -25,7 +25,6 @@ export default function UsernameSidebar() {
     username: profileUsernameFormatted,
   });
 
-  const textRecordDescription = existingTextRecords[UsernameTextRecordKeys.Description];
   const textRecordKeywords = existingTextRecords[UsernameTextRecordKeys.Keywords];
 
   return (
@@ -36,7 +35,7 @@ export default function UsernameSidebar() {
           Manage Profile
         </Button>
       )}
-      {!!textRecordDescription && <UsernameProfileCard description={textRecordDescription} />}
+      <UsernameProfileCard />
       {!!textRecordKeywords && <UsernameProfileKeywords keywords={textRecordKeywords} />}
 
       {currentWalletIsOwner && (

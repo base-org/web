@@ -39,12 +39,58 @@ export enum UsernameTextRecordKeys {
   Discord = 'com.discord',
 }
 
-export const inlineTextRecordsField = [
+// The social enabled for the current registration / profile pages
+export const textRecordsSocialFieldsEnabled = [
   UsernameTextRecordKeys.Twitter,
   UsernameTextRecordKeys.Farcaster,
   UsernameTextRecordKeys.Github,
   UsernameTextRecordKeys.Url,
 ];
+
+export const textRecordsSocialFieldsEnabledIcons: Record<UsernameTextRecordKeys, string> = {
+  [UsernameTextRecordKeys.Twitter]: 'twitter',
+  [UsernameTextRecordKeys.Farcaster]: 'farcaster',
+  [UsernameTextRecordKeys.Github]: 'github',
+  [UsernameTextRecordKeys.Url]: 'website',
+};
+
+// Users might add their handle as @myProfile, which breaks on some website
+// TODO: Ideally we'd sanitize these before writing them as TextRecord
+export const sanitizeHandle = (handle: string) => {
+  if (handle.startsWith('@')) {
+    handle = handle.substring(1);
+  }
+  return handle.replace(/^@/, '');
+};
+
+export const formatSocialFieldUrl = (key: UsernameTextRecordKeys, handleOrUrl: string) => {
+  switch (key) {
+    case UsernameTextRecordKeys.Twitter:
+      return `https://x.com/${sanitizeHandle(handleOrUrl)}`;
+    case UsernameTextRecordKeys.Farcaster:
+      return `https://warpcast.com/${sanitizeHandle(handleOrUrl)}`;
+    case UsernameTextRecordKeys.Github:
+      return `https://github.com/${sanitizeHandle(handleOrUrl)}`;
+    case UsernameTextRecordKeys.Url:
+      return handleOrUrl;
+    default:
+      return '';
+  }
+};
+
+export const formatSocialFieldForDisplay = (key: UsernameTextRecordKeys, handleOrUrl: string) => {
+  switch (key) {
+    case UsernameTextRecordKeys.Twitter:
+    case UsernameTextRecordKeys.Farcaster:
+    case UsernameTextRecordKeys.Github:
+      return sanitizeHandle(handleOrUrl);
+
+    case UsernameTextRecordKeys.Url:
+      return handleOrUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');
+    default:
+      return '';
+  }
+};
 
 export const textRecordsKeysEnabled = [
   UsernameTextRecordKeys.Description,
@@ -78,14 +124,14 @@ export const textRecordsKeysPlaceholderForDisplay = {
   [UsernameTextRecordKeys.Description]: 'Tell us about yourself',
   [UsernameTextRecordKeys.Keywords]: 'Skills',
   [UsernameTextRecordKeys.Url]: 'www.name.com',
-  [UsernameTextRecordKeys.Github]: '@name',
+  [UsernameTextRecordKeys.Github]: 'Username',
   [UsernameTextRecordKeys.Email]: 'Personal email',
   [UsernameTextRecordKeys.Phone]: '+1 415 ..',
-  [UsernameTextRecordKeys.Twitter]: '@name',
-  [UsernameTextRecordKeys.Farcaster]: '@name',
+  [UsernameTextRecordKeys.Twitter]: 'Username',
+  [UsernameTextRecordKeys.Farcaster]: 'Username',
   [UsernameTextRecordKeys.Lens]: 'name.lens',
-  [UsernameTextRecordKeys.Telegram]: '@name',
-  [UsernameTextRecordKeys.Discord]: '@name',
+  [UsernameTextRecordKeys.Telegram]: 'Username',
+  [UsernameTextRecordKeys.Discord]: 'Username',
 };
 
 export const textRecordsKeywords = [

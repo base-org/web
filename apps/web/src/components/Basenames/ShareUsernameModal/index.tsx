@@ -1,6 +1,5 @@
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Modal from 'apps/web/src/components/Modal';
-import Image from 'next/image';
 import { useCallback, useState } from 'react';
 import classNames from 'classnames';
 import {
@@ -8,11 +7,12 @@ import {
   SocialPlatform,
   socialPlatformCtaForDisplay,
   socialPlatformHandle,
-  socialPlatformLogoForDisplay,
+  socialPlatformIconName,
   socialPlatformShareLinkFunction,
   socialPlatformsNameForDisplay,
 } from 'apps/web/src/utils/socialPlatforms';
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 export const socialPlatformsEnabled = [SocialPlatform.Twitter, SocialPlatform.Farcaster];
 
@@ -94,9 +94,11 @@ export default function ShareUsernameModal({
               rounded
               fullWidth
             >
-              <Image
-                src={socialPlatformLogoForDisplay[socialPlatform]}
-                alt={socialPlatformsNameForDisplay[socialPlatform]}
+              <Icon
+                name={socialPlatformIconName[socialPlatform]}
+                color="currentColor"
+                height="1rem"
+                width="1rem"
               />
               {socialPlatformCtaForDisplay[socialPlatform]} on{' '}
               {socialPlatformsNameForDisplay[socialPlatform]}

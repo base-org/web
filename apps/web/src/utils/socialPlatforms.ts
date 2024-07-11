@@ -1,46 +1,32 @@
-import farcaster from 'apps/web/src/components/Basenames/socials/farcaster.svg';
-import twitter from 'apps/web/src/components/Basenames/socials/twitter.svg';
 import { QueryParams, urlWithQueryParams } from 'apps/web/src/utils/urls';
-import { StaticImageData } from 'next/image';
+
+/*
+ * Series of constant and utilities to share content on social platform
+ */
 
 export enum SocialPlatform {
   Twitter = 'twitter', // Never surrender
   Farcaster = 'farcaster',
-  Lens = 'lens',
-  Telegram = 'telegram',
-  Discord = 'discord',
 }
 
 export const socialPlatformsNameForDisplay = {
   [SocialPlatform.Twitter]: 'X',
   [SocialPlatform.Farcaster]: 'Farcaster',
-  [SocialPlatform.Lens]: 'Lens',
-  [SocialPlatform.Telegram]: 'Telegram',
-  [SocialPlatform.Discord]: 'Discord',
 };
 
 export const socialPlatformHandle = {
   [SocialPlatform.Twitter]: '@base',
   [SocialPlatform.Farcaster]: '@base',
-  [SocialPlatform.Lens]: '',
-  [SocialPlatform.Telegram]: '',
-  [SocialPlatform.Discord]: '',
 };
 
 export const socialPlatformCtaForDisplay = {
   [SocialPlatform.Twitter]: 'Share',
   [SocialPlatform.Farcaster]: 'Share',
-  [SocialPlatform.Lens]: '',
-  [SocialPlatform.Telegram]: '',
-  [SocialPlatform.Discord]: '',
 };
 
-export const socialPlatformLogoForDisplay = {
-  [SocialPlatform.Twitter]: twitter as StaticImageData,
-  [SocialPlatform.Farcaster]: farcaster as StaticImageData,
-  [SocialPlatform.Lens]: '',
-  [SocialPlatform.Telegram]: '',
-  [SocialPlatform.Discord]: '',
+export const socialPlatformIconName: Record<SocialPlatform, string> = {
+  [SocialPlatform.Twitter]: 'twitter',
+  [SocialPlatform.Farcaster]: 'farcaster',
 };
 
 export type SocialMediaShareParams = {
@@ -68,16 +54,6 @@ export const socialPlatformShareLinkFunction: SocialPlatformShareLinkFunction = 
 
     return urlWithQueryParams('https://warpcast.com/~/compose', shareParams);
   },
-  [SocialPlatform.Lens]: false, // not supported
-  [SocialPlatform.Telegram]: ({ text, url }: SocialMediaShareParams) => {
-    const shareParams: QueryParams = {
-      url: url,
-      text: text,
-    };
-
-    return urlWithQueryParams('https://t.me/share/url', shareParams);
-  },
-  [SocialPlatform.Discord]: false, // not supported
 };
 
 export type SocialMediaHandleParams = {
@@ -91,15 +67,6 @@ export const socialPlatformHandleFunction: SocialPlatformHandleFunction = {
     return `@${handle}`;
   },
   [SocialPlatform.Farcaster]: ({ handle }: SocialMediaHandleParams) => {
-    return `@${handle}`;
-  },
-  [SocialPlatform.Lens]: ({ handle }: SocialMediaHandleParams) => {
-    return `${handle}.lens`;
-  },
-  [SocialPlatform.Telegram]: ({ handle }: SocialMediaHandleParams) => {
-    return `@${handle}`;
-  },
-  [SocialPlatform.Discord]: ({ handle }: SocialMediaHandleParams) => {
     return `@${handle}`;
   },
 };

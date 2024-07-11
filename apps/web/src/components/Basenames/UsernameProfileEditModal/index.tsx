@@ -9,7 +9,7 @@ import Modal, { ModalSizes } from 'apps/web/src/components/Modal';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
 import {
-  inlineTextRecordsField,
+  textRecordsSocialFieldsEnabled,
   UsernameTextRecordKeys,
   UsernameTextRecords,
 } from 'apps/web/src/utils/usernames';
@@ -130,7 +130,7 @@ export default function UsernameProfileEditModal({
           />
           <Fieldset>
             <Label>Socials</Label>
-            {inlineTextRecordsField.map((textRecordKey) => (
+            {textRecordsSocialFieldsEnabled.map((textRecordKey) => (
               <UsernameTextRecordInlineField
                 key={textRecordKey}
                 textRecordKey={textRecordKey}
