@@ -59,7 +59,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const buttonClasses = classNames(
-    'font-display text-cente flex gap-2 items-center whitespace-nowrap',
+    'font-display text-cente flex gap-2 items-center whitespace-nowrap cursor-pointer',
     variantStyles[variant],
     sizeStyles[size],
     { 'rounded-full': rounded },

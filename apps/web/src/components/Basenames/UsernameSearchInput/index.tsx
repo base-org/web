@@ -120,7 +120,7 @@ export default function UsernameSearchInput({ variant, placeholder }: UsernameSe
     },
   );
 
-  const dropdownLabelClasses = classNames('w-full uppercase text-[#5B616E] font-bold', {
+  const dropdownLabelClasses = classNames('w-full uppercase text-gray-60 font-bold', {
     'px-6 text-sm mb-4 mt-4': variant === UsernameSearchInputVariant.Large,
     'px-3 text-xs mb-2 mt-2': variant === UsernameSearchInputVariant.Small,
   });
@@ -143,12 +143,12 @@ export default function UsernameSearchInput({ variant, placeholder }: UsernameSe
     'px-3': variant === UsernameSearchInputVariant.Small,
   });
 
-  const mutedMessage = classNames('text-muted ', {
+  const mutedMessage = classNames('text-gray-60', {
     'px-6 py-4 text': variant === UsernameSearchInputVariant.Large,
     'px-3 py-2 text-sm': variant === UsernameSearchInputVariant.Small,
   });
 
-  const spinnerWrapperClasses = classNames('flex  w-full items-center justify-center', {
+  const spinnerWrapperClasses = classNames('flex w-full items-center justify-center', {
     // Equivalent to the dropdown when one name is available
     'h-[6.75rem]': variant === UsernameSearchInputVariant.Large,
     'h-[4.25rem]': variant === UsernameSearchInputVariant.Small,

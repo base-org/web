@@ -5,14 +5,12 @@ import {
 import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import React, { useCallback, useState } from 'react';
 
 export default function RegistrationSuccessMessage() {
   const { setRegistrationStep, selectedName } = useRegistration();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const router = useRouter();
 
   const openModal = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -27,10 +25,6 @@ export default function RegistrationSuccessMessage() {
     setRegistrationStep(RegistrationSteps.Profile);
   }, [setRegistrationStep]);
 
-  const goToProfileOnClick = useCallback(() => {
-    router.push(`names/${selectedName}`);
-  }, [router, selectedName]);
-
   return (
     <>
       <div className="items-left mx-auto flex w-full max-w-[50rem] flex-col justify-between gap-6 rounded-3xl border border-[#266EFF] bg-blue-600 p-10 shadow-xl transition-all duration-500 md:flex-row md:items-center">
@@ -38,14 +32,11 @@ export default function RegistrationSuccessMessage() {
           Congrats! This name is yours!
         </h1>
         <div className="flex flex-col gap-4 md:flex-row">
-          <Button
-            rounded
-            fullWidth
-            variant={ButtonVariants.SecondaryBounce}
-            onClick={goToProfileOnClick}
-          >
-            Go to Profile
-          </Button>
+          <Link href={`names/${selectedName}`} className="cursor-pointer">
+            <Button rounded fullWidth variant={ButtonVariants.SecondaryBounce}>
+              Go to Profile
+            </Button>
+          </Link>
           <Button rounded fullWidth onClick={customizeProfileOnClick}>
             Customize Profile
           </Button>
