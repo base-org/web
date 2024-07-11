@@ -50,15 +50,15 @@ export function LearnMoreModal({
           : 'You’ll receive a name for free (5+ characters for 1 year) if your wallet has any of the following:'}
       </p>
       <ul className="mb-5 flex flex-col gap-3 self-start">
-        <li className={CBRowClasses}>
+        <li className="flex items-center">
           <Image
             src="/images/usernames/coinbase-verification.svg"
             alt="criteria icon"
             width={30}
             height={30}
-            className="mr-3"
+            className={classNames(CBRowClasses, 'mr-3')}
           />
-          Coinbase verification{' '}
+          <p className={classNames(CBRowClasses)}>Coinbase verification </p>
           <Tooltip content="Verifies you have a valid trading account on Coinbase">
             <InfoIcon />
           </Tooltip>
@@ -68,15 +68,15 @@ export function LearnMoreModal({
             </div>
           )}
         </li>
-        <li className={CB1RowClasses}>
+        <li className="flex items-center">
           <Image
             src="/images/usernames/coinbase-one-verification.svg"
             alt="criteria icon"
             width={30}
             height={30}
-            className="mr-3"
+            className={classNames(CB1RowClasses, 'mr-3')}
           />
-          Coinbase One verification{' '}
+          <p className={classNames(CB1RowClasses)}>Coinbase One verification </p>
           <Tooltip content="Verifies you have an active Coinbase One subscription">
             <InfoIcon />
           </Tooltip>
@@ -86,15 +86,15 @@ export function LearnMoreModal({
             </div>
           )}
         </li>
-        <li className={CBIDRowClasses}>
+        <li className="flex items-center">
           <Image
             src="/images/usernames/cbid-verification.svg"
             alt="criteria icon"
             width={30}
             height={30}
-            className="mr-3"
+            className={classNames(CBIDRowClasses, 'mr-3')}
           />
-          A cb.id username{' '}
+          <p className={classNames(CBIDRowClasses)}>A cb.id username </p>
           <Tooltip content="cb.id claimed prior to cutoff date">
             <InfoIcon />
           </Tooltip>
