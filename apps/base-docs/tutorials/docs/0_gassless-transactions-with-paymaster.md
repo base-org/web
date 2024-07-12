@@ -104,6 +104,12 @@ We can set a Paymaster policy that specifies either a specific dollar amount or 
 
 Set the max USD to $0.05 and the max UserOperation to 1 to create a policy with a maximum sponsorship limit of $0.05 and a maximum of 1 UserOperation per user.
 
+:::note Limit Cycles
+
+Limit Cycles enables applications to sponsor smart wallets on a weekly, daily, or monthly basis, either by amount or by number of UserOperations. These limits reset based on the cadence selected in the dropdown menu.
+
+:::
+
 Set the Global limit:
 
 This setting allows you to define the maximum amount of gas or USD that can be sponsored globally across all users. It helps control the total expenditure on gas sponsorship, ensuring that the allocated budget is not exceeded. For example, setting a global limit of $1 means that the Paymaster will sponsor transactions until the total gas cost reaches $1.
