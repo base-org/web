@@ -99,7 +99,7 @@ export function RegistrationForm({
 
   return (
     <div className="transition-all duration-500">
-      <div className="z-10 mx-4 flex flex-col justify-between gap-4 rounded-2xl bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row">
+      <div className="z-10 flex flex-col justify-between gap-4 rounded-2xl bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row">
         <div>
           <p className="text-line mb-2 text-sm font-bold uppercase">Claim for</p>
           <div className="flex items-center justify-between">

@@ -65,14 +65,17 @@ export function RegistrationFlow() {
   const isSuccess = registrationStep === RegistrationSteps.Success;
   const isProfile = registrationStep === RegistrationSteps.Profile;
 
+  const layoutPadding = 'px-4 md:px-8';
+  const absoluteLayoutPosition = 'top-[40vh] md:top-[50vh]';
+
   const mainClasses = classNames(
-    'relative z-10 flex min-h-screen w-full flex-col items-center',
-    'transition-all pb-20',
+    'w-full relative min-h-screen pb-40',
+    'transition-[padding]',
+    layoutPadding,
     registrationTransitionDuration,
     {
-      // TODO Bad Math
-      'pt-[calc(47vh)]': !isProfile,
-      'pt-[8rem]': isProfile,
+      'pt-[calc(40vh-24px)] md:pt-[calc(50vh-24px)]': isSearch || isClaim || isPending || isSuccess,
+      'pt-32 md:pt-40': isProfile,
     },
   );
 
@@ -137,14 +140,14 @@ export function RegistrationFlow() {
           </li>
         </ul>
       </div>
-
       {/* 1. Brand & Search */}
       <Transition
         appear
         show={isSearch}
         className={classNames(
-          'absolute top-1/2 z-20 mx-auto w-full max-w-2xl -translate-y-1/2 transform px-8 transition-opacity',
+          'absolute left-1/2 z-20 mx-auto w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 transform  transition-opacity',
           registrationTransitionDuration,
+          absoluteLayoutPosition,
           {
             'text-white': searchInputFocused,
             'text-blue-600': searchInputFocused,
@@ -155,17 +158,28 @@ export function RegistrationFlow() {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="mb-4">
+        <div className={classNames('relative bottom-full w-full pb-4', layoutPadding)}>
           <RegistrationBrand />
         </div>
-        <UsernameSearchInput
-          variant={UsernameSearchInputVariant.Large}
-          placeholder="Search for a name"
-        />
+        <Transition
+          appear
+          show={isSearch}
+          className={classNames(
+            'mx-auto transition-[max-width] ',
+            registrationTransitionDuration,
+            layoutPadding,
+          )}
+          leaveFrom="max-w-full"
+          leaveTo="max-w-0"
+        >
+          <UsernameSearchInput
+            variant={UsernameSearchInputVariant.Large}
+            placeholder="Search for a name"
+          />
+        </Transition>
       </Transition>
-
-      {/* 2 - Username Pill  */}
-      <div className="relative flex w-full max-w-full max-w-full flex-col items-center justify-center px-8">
+      {/* 2 - Username Pill */}
+      <div className="relative flex w-full max-w-full max-w-full flex-col items-center justify-center ">
         <Transition
           appear
           show={!isSearch}
@@ -202,10 +216,18 @@ export function RegistrationFlow() {
           </Transition>
 
           {/* 2.2 - The pill  */}
-          <UsernamePill
-            variant={currentUsernamePillVariant}
-            username={formatBaseEthDomain(selectedName)}
-          />
+          <Transition
+            appear
+            show={!isSearch}
+            className={classNames('mx-auto transition-[max-width]', registrationTransitionDuration)}
+            enterFrom="max-w-0"
+            enterTo="max-w-full"
+          >
+            <UsernamePill
+              variant={currentUsernamePillVariant}
+              username={formatBaseEthDomain(selectedName)}
+            />
+          </Transition>
 
           {/* 2.2 - Pending registration - positioned based on username pill, only visible when registration is pending*/}
           <Transition
@@ -255,20 +277,19 @@ export function RegistrationFlow() {
           show={isSuccess}
           className={classNames(
             'top-full z-40 pt-20 transition-opacity',
-            'absolute mx-auto w-full max-w-[50rem]',
+            'mx-auto w-full max-w-[50rem]',
             registrationTransitionDuration,
           )}
           enter={classNames('transition-opacity', registrationTransitionDuration)}
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          leave={classNames('transition-opacity', 'duration-200')}
+          leave={classNames('transition-opacity', 'duration-200 absolute')}
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
           <RegistrationSuccessMessage />
         </Transition>
       </div>
-
       {/* 5. Registration: Edit Profile flow */}
       <Transition
         appear
@@ -289,9 +310,12 @@ export function RegistrationFlow() {
       </Transition>
 
       {/* Misc: Animated background for each steps */}
-      <RegistrationBackground />
 
-      {/* Misc: Learn more about validation modal */}
+      <RegistrationBackground />
+      {/* 
+        Misc: Learn more about validation modal 
+        TODO: Move this to RegistrationForm
+      */}
 
       <LearnMoreModal
         discounts={allActiveDiscounts}
