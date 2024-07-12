@@ -193,7 +193,7 @@ We will create a constant for our RPC url obtained from cdp.portal.coinbase.com.
 
 :::
 
-We will also need the address of the entrypoint contract for Base. A full list of entrpoint contracts and their addresses can be found [here](https://docs.alchemy.com/reference/factory-addresses).
+We will also need the address of the entrypoint contract for Base. A full list of entrypoint contracts and their addresses can be found [here](https://docs.alchemy.com/reference/factory-addresses).
 
 Add the following to lines of code after your import statements:
 
@@ -222,7 +222,7 @@ const publicClient = createPublicClient({
 
 ### Create Two Smart Accounts
 
-Now, we are going to create two SimpleAccounts for this demonstration. Collectively, these two accounts will help us test the security policies we set at both the global level and the per-account user operation level.
+Now, we are going to create two `SimpleAccounts` for this demonstration. Collectively, these two accounts will help us test the security policies we set at both the global level and the per-account user operation level.
 
 To do so, we'll first need two private keys that will be used to create the Smart Accounts using Foundry. Open a terminal and run the following command **twice**:
 
@@ -230,7 +230,7 @@ To do so, we'll first need two private keys that will be used to create the Smar
 cast wallet new
 ```
 
-You should see something like this:
+You will see something like this:
 
 ```bash
 > cast wallet new
@@ -249,13 +249,13 @@ Use the newly generated private keys as the parameter to the `privateKeyToSimple
 
 ```javascript
 const simpleAccount = await privateKeyToSimpleSmartAccount(publicClient, {
-  privateKey: '0xD440D74620542bb7B0c70922136e6d25ef2030d7ecd7c9061a463479313889786',
+  privateKey: '<Your first key>',
   factoryAddress: baseFactoryAddress, //Base v0.6
   entryPoint: baseEntryPoint,
 });
 
 const simpleAccount2 = await privateKeyToSimpleSmartAccount(publicClient, {
-  privateKey: '0x5f8e5bC86205421d970922136e6asda5ef2030d7ecd7c9061a46347931385701b',
+  privateKey: '<Your second key>',
   factoryAddress: baseFactoryAddress, //Base v0.6
   entryPoint: baseEntryPoint,
 });
