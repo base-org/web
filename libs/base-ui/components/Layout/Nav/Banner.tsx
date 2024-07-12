@@ -6,13 +6,16 @@ import { usePathname } from 'next/navigation';
 
 import { Icon } from 'libs/base-ui/index';
 
+type BannerName = `${string}Banner`;
+
 type BannerProps = {
+  bannerName: BannerName;
   href: string;
   text: string;
 };
 
-export default function Banner({ href, text }: BannerProps) {
-  const [isBannerVisible, setIsBannerVisible] = useLocalStorage('isOcsBannerVisible', true);
+export default function Banner({ href, text, bannerName }: BannerProps) {
+  const [isBannerVisible, setIsBannerVisible] = useLocalStorage(`${bannerName}Visible`, true);
   const pathname = usePathname();
   const isOnPage = pathname === href.split('?')[0];
 
