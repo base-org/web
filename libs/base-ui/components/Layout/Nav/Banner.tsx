@@ -4,7 +4,11 @@ import { useLocalStorage } from 'usehooks-ts';
 import { usePathname } from 'next/navigation';
 
 import { Icon } from 'base-ui/index';
-import logEvent, { ActionType, AnalyticsEventImportance, ComponentType } from 'base-ui/utils/logEvent';
+import logEvent, {
+  ActionType,
+  AnalyticsEventImportance,
+  ComponentType,
+} from 'base-ui/utils/logEvent';
 
 type BannerName = `${string}Banner`;
 
@@ -42,10 +46,7 @@ export default function Banner({ href, text, bannerName }: BannerProps) {
   return (
     <div className="bg-yellow-20 z-10 flex w-full flex-row justify-center text-black">
       <div className="bg-yellow-20 z-10 flex w-full max-w-[1440px] flex-row items-center justify-between self-center p-2 pl-8 pr-6">
-        <Link
-            href={href}
-            onClick={linkClick}
-        >
+        <Link href={href} onClick={linkClick}>
           <span className="text-xs  md:text-base">{text}</span>
         </Link>
         <div className="flex flex-row items-center gap-4">
