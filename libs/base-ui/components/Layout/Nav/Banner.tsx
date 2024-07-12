@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Link from 'next/link';
 import { useLocalStorage } from 'usehooks-ts';
-import { useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 
-import { Icon } from 'libs/base-ui/index';
+import { Icon } from 'base-ui/index';
+import logEvent, { ActionType, AnalyticsEventImportance, ComponentType } from 'base-ui/utils/logEvent';
 
 type BannerName = `${string}Banner`;
 
@@ -19,6 +19,18 @@ export default function Banner({ href, text, bannerName }: BannerProps) {
   const pathname = usePathname();
   const isOnPage = pathname === href.split('?')[0];
 
+  const linkClick = useCallback(() => {
+    logEvent(
+      bannerName,
+      {
+        action: ActionType.click,
+        componentType: ComponentType.banner,
+        context: 'navbar',
+      },
+      AnalyticsEventImportance.high,
+    );
+  }, [logEvent, ActionType, ComponentType, AnalyticsEventImportance]);
+
   const hideBanner = useCallback(() => {
     setIsBannerVisible(false);
   }, [setIsBannerVisible]);
@@ -30,7 +42,10 @@ export default function Banner({ href, text, bannerName }: BannerProps) {
   return (
     <div className="bg-yellow-20 z-10 flex w-full flex-row justify-center text-black">
       <div className="bg-yellow-20 z-10 flex w-full max-w-[1440px] flex-row items-center justify-between self-center p-2 pl-8 pr-6">
-        <Link href={href}>
+        <Link
+            href={href}
+            onClick={linkClick}
+        >
           <span className="text-xs  md:text-base">{text}</span>
         </Link>
         <div className="flex flex-row items-center gap-4">
