@@ -37,7 +37,6 @@ export default function UsernameSidebar() {
       )}
       <UsernameProfileCard />
       {!!textRecordKeywords && <UsernameProfileKeywords keywords={textRecordKeywords} />}
-
       {currentWalletIsOwner && (
         <UsernameProfileEditModal isOpen={isOpen} toggleModal={closeModal} />
       )}

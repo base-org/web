@@ -31,7 +31,8 @@ export default function UsernameProfileCard() {
 
   // TODO: Empty state / CTA to edit if owner
   const hasTextRecordsToDisplay =
-    !!textRecordDescription && Object.values(textRecordsSocial).filter((v) => !!v).length > 0;
+    !!textRecordDescription || Object.values(textRecordsSocial).filter((v) => !!v).length > 0;
+
   if (!hasTextRecordsToDisplay) {
     return;
   }
@@ -50,7 +51,7 @@ export default function UsernameProfileCard() {
         {textRecordsSocialFieldsEnabled.map(
           (textRecordKey) =>
             !!existingTextRecords[textRecordKey] && (
-              <li key={textRecordDescription}>
+              <li key={textRecordKey}>
                 <Link
                   href={formatSocialFieldUrl(textRecordKey, existingTextRecords[textRecordKey])}
                   target="_blank"
