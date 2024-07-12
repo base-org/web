@@ -1,7 +1,7 @@
 ---
-title: 'Gasless Transactions on Base using Coinbase Paymaster'
+title: 'Gasless Transactions on Base using a Paymaster'
 slug: /gasless-transaction-on-base-using-a-paymaster
-description: Learn how to leverage Coinbase Paymaster for seamless, gasless transactions on the Coinbase Cloud Developer Platform.
+description: Learn how to leverage the Base Paymaster for seamless, gasless transactions on the Coinbase Cloud Developer Platform.
 author: hughescoin
 keywords:
   [
@@ -23,11 +23,11 @@ hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
-# Gasless Transactions on Base using Coinbase Paymaster
+# Gasless Transactions on Base using Base Paymaster
 
 Still trying to onboard users to your app? Want to break free from the worries of gas transactions and sponsor them for your users on Base? Look no further!
 
-Base transaction fees are less than a penny, but the concept of gas can be confusing for new users. Abstract this away and improve your UX by using the Coinbase Paymaster. The Base Paymaster allows you to batch multi-step transactions and create custom gasless experiences. Sponsor up to $10k monthly on mainnet (unlimited on testnet). To request an increase in limit, reach out in [Discord].
+Base transaction fees are less than a penny, but the concept of gas can be confusing for new users. Abstract this away and improve your UX by using the Base Paymaster. The Base Paymaster allows you to batch multi-step transactions and create custom gasless experiences. Sponsor up to $10k monthly on mainnet (unlimited on testnet). To request an increase in limit, reach out in [Discord].
 
 ## Objectives
 
@@ -52,7 +52,7 @@ Understanding Smart Accounts and the ERC 4337 standard is crucial as they are th
 
 Foundry is a development environment, testing framework, and smart contract toolkit for Ethereum. It's essential for deploying and testing smart contracts.
 
-## Set Up a Coinbase Paymaster & Bundler
+## Set Up a Base Paymaster & Bundler
 
 In this section, you will configure a Paymaster to sponsor payments on behalf of a specific smart contract for a specified amount. First, navigate to the Coinbase Developer Platform, create or select your project, and click on the Paymaster tool from the left navigation. Then, go to the Configuration tab and save the RPC URL to your clipboard, which will be needed for later steps in your index.js file.
 
@@ -93,14 +93,14 @@ Put `mintTo(address)` as the function to allowlist then click `Save` at the bott
 ![cdp-allowlist-contracts.png](../../assets/images/gasless-transaction-on-base/cdp-allowlist-contract.png)
 
 :::note Use your own contract
-We will be using this [simple NFT contract]deployed on Base mainnet for our example. Feel free to use a contract of your choice.
+You will be using this [simple NFT contract]deployed on Base mainnet for our example. Feel free to use a contract of your choice.
 :::
 
 ### Global & Per User Limits:
 
 Scroll down to the “Per User Limit” section
 
-We can set a Paymaster policy that specifies either a specific dollar amount or a number of UserOperations. We can enable a 'limit cycle' that allows this policy to refresh every week. This feature enables applications to sponsor smart wallets on a weekly, daily, or monthly basis, either by amount or by number of UserOperations.
+You can set a Paymaster policy that specifies either a specific dollar amount or a number of UserOperations. You can enable a 'limit cycle' that allows this policy to refresh every week. This feature enables applications to sponsor smart wallets on a weekly, daily, or monthly basis, either by amount or by number of UserOperations.
 
 Set the max USD to $0.05 and the max UserOperation to 1 to create a policy with a maximum sponsorship limit of $0.05 and a maximum of 1 UserOperation per user.
 
@@ -120,11 +120,11 @@ Set your global policy to be `$.07` by entering the amount in the text field and
 
 ## Test Your Paymaster policy
 
-We will now test the policy that was created.
+You will now test the policy that was created.
 
 :::info The Use of Foundry
 
-In this tutorial, we use foundry to create two key pairs that will allow us to create Smart Accounts that we will sponsor transactions on behalf of. You will **not** need to send any funds (ETH) to these wallets. You may use private keys of wallets you own as an alternative.
+In this tutorial, You use foundry to create two key pairs that will allow us to create Smart Accounts that you will sponsor transactions on behalf of. You will **not** need to send any funds (ETH) to these wallets. You may use private keys of wallets you own as an alternative.
 
 Foundry depends on Rust to work. If you do not have rust install:
 
@@ -175,11 +175,11 @@ import { privateKeyToSimpleSmartAccount } from 'permissionless/accounts';
 import { createPimlicoPaymasterClient } from 'permissionless/clients/pimlico';
 ```
 
-### Set Constants for Your RPC URL
+### Set Constants for Your Paymaster & Bundler endpoint
 
-:::note Find your RPC URL
+:::note Find your Paymaster & Bundler endpoint
 
-The RPC URL is the URL for your Coinbase Developer Platform (CDP) Paymaster.
+The Paymaster & Bundler endpoint is the URL for your Coinbase Developer Platform (CDP) Paymaster.
 
 This was saved in the previous section and follows this format: `https://api.developer.coinbase.com/rpc/v1/base/<SPECIAL-KEY>`
 
@@ -189,16 +189,16 @@ Navigate to the [Paymaster Tool] and select the `Configuration` tab at the top o
 
 :::danger Secure your endpoints
 
-We will create a constant for our RPC url obtained from cdp.portal.coinbase.com. The most secure way to do this is by using a proxy. For the purposes of this demo we will hardcode it into our `index.js` file. For product, we highly recommend using a [proxy service].
+You will create a constant for our Paymaster & Bundler endpoint obtained from cdp.portal.coinbase.com. The most secure way to do this is by using a proxy. For the purposes of this demo, hardcode it into our `index.js` file. For product, we highly recommend using a [proxy service].
 
 :::
 
-We will also need the address of the entrypoint contract for Base. A full list of entrypoint contracts and their addresses can be found [here](https://docs.alchemy.com/reference/factory-addresses).
+You will also need the address of the entrypoint contract for Base. A full list of entrypoint contracts and their addresses can be found [here](https://docs.alchemy.com/reference/factory-addresses).
 
 Add the following to lines of code after your import statements:
 
 ```javascript
-const rpcUrl = https://api.developer.coinbase.com/rpc/v1/base/<SPECIAL-KEY>
+const rpcUrl = https://api.developer.coinbase.com/rpc/v1/base/<SPECIAL-KEY> //Paymaster & Bundler endpoint
 ```
 
 ```javascript
@@ -209,7 +209,7 @@ const baseEntryPoint = '0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789';
 const baseFactoryAddress = '0x15Ba39375ee2Ab563E8873C8390be6f2E2F50232';
 ```
 
-We’ll start by creating a public client. Public clients enable our application to interact with the Ethereum blockchain. They use JSON-RPC API methods to perform actions such as retrieving block numbers, transactions, and reading from smart contracts. Learn more about this on viem.
+Now, create a public client. Public clients enable our application to interact with the Ethereum blockchain. They use JSON-RPC API methods to perform actions such as retrieving block numbers, transactions, and reading from smart contracts. Learn more about this on viem.
 
 Initialize a public client named `publicClient` and set the chain to `base` and the transport to our `rpcURL` variable:
 
@@ -222,9 +222,9 @@ const publicClient = createPublicClient({
 
 ### Create Two Smart Accounts
 
-Now, we are going to create two `SimpleAccounts` for this demonstration. Collectively, these two accounts will help us test the security policies we set at both the global level and the per-account user operation level.
+Now, you are going to create two `SimpleAccounts` for this demonstration. Collectively, these two accounts will help us test the security policies you set at both the global level and the per-account user operation level.
 
-To do so, we'll first need two private keys that will be used to create the Smart Accounts using Foundry. Open a terminal and run the following command **twice**:
+To do so, you'll first need two private keys that will be used to create the Smart Accounts using Foundry. Open a terminal and run the following command **twice**:
 
 ```bash
 cast wallet new
@@ -246,6 +246,14 @@ Private key: 0xbcd6fbc1dfa3c9...634793138897
 ```
 
 Use the newly generated private keys as the parameter to the `privateKeyToSimpleSmartAccount` function and set the factory address to
+
+:::danger Secure your private keys
+
+Be sure to store your private keys somewhere safe. Committing these to a public code repository will give anyone access to your smart accounts.
+
+Saving them to a `.env` file is safest.
+
+:::
 
 ```javascript
 const simpleAccount = await privateKeyToSimpleSmartAccount(publicClient, {
@@ -312,13 +320,13 @@ const smartAccountClient2 = createSmartAccountClient({
 });
 ```
 
-To sponsor transactions we will need the ABI and the address of the contracts we want to support.
+To sponsor transactions you will need the ABI and the address of the contracts you want to support.
 
 :::note Sponsor any contract
-Feel free to use your own contract to interact with the Paymaster. For learning purposes, we will interact with an ERC-721 contract deployed on the Base mainnet. We will call the mintTo function, which takes an address as its only parameter.
+Feel free to use your own contract to interact with the Paymaster. For learning purposes, you will interact with an ERC-721 contract deployed on the Base mainnet. You will call the mintTo function, which takes an address as its only parameter.
 :::
 
-We will be interacting with the NFT + ABI from a simple NFT contract deployed at: `0x83bd615eb93eE1336acA53e185b03B54fF4A17e8`
+You will be interacting with the NFT + ABI from a simple NFT contract deployed at: `0x83bd615eb93eE1336acA53e185b03B54fF4A17e8`
 
 Copy and paste the NFT's abi into `index.js`
 
@@ -524,7 +532,7 @@ const callData = encodeFunctionData({
 });
 ```
 
-We are going to create a function called `sendTransactionFromAccount1` in order to send the transaction request and store the response in a variable named `txHash`:
+Create a function called `sendTransactionFromAccount1` in order to send the transaction request and store the response in a variable named `txHash`:
 
 ```javascript
 async function sendTransactionFromAccount1() {
@@ -537,7 +545,7 @@ async function sendTransactionFromAccount1() {
     });
 
     console.log('✅ Transaction successfully sponsored for account 1!');
-    console.log(`🔍 View on Etherscan: https://basescan.org/tx/${txHash2}`);
+    console.log(`🔍 View on Etherscan: https://basescan.org/tx/${txHash}`);
   } catch (error) {
     console.log('Transaction failed from account 1: ', error);
   }
@@ -589,11 +597,11 @@ It should return a successful prompt:
 🔍 View on Etherscan: https://basescan.org/tx/0x1439431b0bf333f8106bc1815a532fdec18d62c3ee1c07a10d07711c6e5a2e56
 ```
 
-Looking back at our Paymaster configuration, we'll see that we've used about $0.03 of our $0.05 global limit, and for account 1, we've hit our UserOperation limit.
+Looking back at our Paymaster configuration, you'll see that you've used about $0.03 of our $0.05 global limit, and for account 1, you've hit our UserOperation limit.
 
 Now, let's send another transaction, this time using the second account.
 
-Before we do that, let's update the per-wallet UserOperation limit to 10. Since gas is cheap on Base, we may need to do a few transactions before we hit our global limit of $0.07.
+Before you do that, let's update the per-wallet UserOperation limit to 10. Since gas is cheap on Base, you may need to do a few transactions before you hit our global limit of $0.07.
 
 :::note Increase the global limit
 
@@ -651,7 +659,7 @@ Navigate back to the cloud portal and increase the global policy to your choosin
 
 ## Conclusion
 
-In this tutorial, you learned to set up and configure the Coinbase Paymaster on the Coinbase Developer Platform, allowing you to sponsor gasless transactions for your users. This enhances the user experience by abstracting away gas fees and making transactions more accessible and cost-effective.
+In this tutorial, you learned to set up and configure the Base Paymaster on the Coinbase Developer Platform, allowing you to sponsor gasless transactions for your users. This enhances the user experience by abstracting away gas fees and making transactions more accessible and cost-effective.
 
 ---
 
