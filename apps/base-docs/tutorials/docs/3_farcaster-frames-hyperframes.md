@@ -1,11 +1,11 @@
 ---
 title: 'Farcaster Frames: Building HyperFrames'
 slug: /farcaster-frames-hyperframes
-description: A tutorial that teaches how to make cross-linked hyperframes in an organized manner.
+description: A tutorial that teaches how to make cross-linked HyperFrames in an organized manner.
 author: briandoyle81
 hide_table_of_contents: false
 displayed_sidebar: null
-keywords: [farcaster, frames, farcaster frames, hyperframes, hyper frames, state, frame state, Base]
+keywords: [farcaster, frames, farcaster frames, HyperFrames, hyper frames, state, frame state, Base]
 difficulty: intermediate
 tags: ['frames']
 ---
@@ -24,7 +24,7 @@ Frames are brand new and tools for building them are evolving quickly. Check the
 
 By the end of this tutorial, you should be able to:
 
-- Build hyperframes - connected [Farcaster] Frames that manage significant numbers of cross-linked frames in an organized fashion
+- Build HyperFrames - connected [Farcaster] Frames that manage significant numbers of cross-linked frames in an organized fashion
 - Add management of conditional states to the navigation system
 - Use frame state to pass information from one frame to another
 
@@ -54,7 +54,7 @@ You'll also need to create or find a handful of images to use for each frame. AI
 
 ## Creating the First Frame
 
-Open `page.tsx`. Modify the `getFrameMetadata` for the first frame to match the frame in the example.
+Open `app/page.tsx`. Modify the `getFrameMetadata` for the first frame to match the frame in the example.
 
 ![First Frame](../../assets/images/frames/first-frame.png)
 
@@ -194,7 +194,7 @@ For the buttons, you can now use:
 
 If you need to, update the type here to handle more complex cases.
 
-Next, add a `Record` to store your collection of hyperframes, and a function to add frames to the `Record`:
+Next, add a `Record` to store your collection of HyperFrames, and a function to add frames to the `Record`:
 
 ```tsx
 const frames: Record<string, HyperFrame> = {};
@@ -204,7 +204,7 @@ export function addHyperFrame(label: string, frame: HyperFrame) {
 }
 ```
 
-Finally, add a function to retrieve and return a hyperframe by its `label` and handle the case of an error.
+Finally, add a function to retrieve and return a HyperFrame by its `label` and handle the case of an error.
 
 ```tsx
 export function getHyperFrame(frame: string, text: string, button: number) {
@@ -228,13 +228,13 @@ export function getHyperFrame(frame: string, text: string, button: number) {
 
 ## Adding HyperFrames
 
-You can put the hyperframes wherever you want and import them into your route. For the sake of simplicity, this demo will simply include them at the top of the route file. Import
+You can put the HyperFrames wherever you want and import them into your route. For the sake of simplicity, this demo will simply include them at the top of the route file. Import
 
 ```tsx
 import { addHyperFrame, getHyperFrame } from '../../hyperframes';
 ```
 
-To store the hyperframes, add them to the `Record` type with `addHyperFrame`. To create the frames themselves, use `getFrameHtmlResponse` to build the frame, and add the names of the frames you have created, or will create, to the appropriate button.
+To store the HyperFrames, add them to the `Record` type with `addHyperFrame`. To create the frames themselves, use `getFrameHtmlResponse` to build the frame, and add the names of the frames you have created, or will create, to the appropriate button.
 
 Add the name of each frame as that frame's `state` as well.
 
@@ -294,7 +294,7 @@ addHyperFrame('road', {
 });
 ```
 
-Above, you've created two hyperframes. The first, has three buttons, mapped to the frames named `road`, `woods-bear`, and `cave-1`. Only the first will work, because you haven't built the other hyperframes, or error handling.
+Above, you've created two HyperFrames. The first, has three buttons, mapped to the frames named `road`, `woods-bear`, and `cave-1`. Only the first will work, because you haven't built the other HyperFrames, or error handling.
 
 The second, also has three buttons, mapped to frames as well. Only `start` is implemented as of yet.
 
@@ -323,7 +323,7 @@ Deploy, test with the [Frame Validator], and debug!
 
 ## Adding Conditionals
 
-It's not very interesting for everyone to be able to explore without restriction, so add a lock with a password! To do so, add hyperframe that contains a function to see if the `text` contains the correct password.
+It's not very interesting for everyone to be able to explore without restriction, so add a lock with a password! To do so, add HyperFrame that contains a function to see if the `text` contains the correct password.
 
 ```tsx
 addHyperFrame('shack', {
@@ -356,7 +356,7 @@ addHyperFrame('shack', {
 });
 ```
 
-For the event that the user enters the wrong password, simply add a nearly identical frame asking them to try again. If they enter the correct password, take them to a new room via a different hyperframe:
+For the event that the user enters the wrong password, simply add a nearly identical frame asking them to try again. If they enter the correct password, take them to a new room via a different HyperFrame:
 
 ```tsx
 addHyperFrame('shack-bad-password', {
@@ -410,7 +410,7 @@ addHyperFrame('key', {
 
 ## Conclusion
 
-In this tutorial, you learned how to implement a system of hyperframes - frames that are easily cross-linkable. You also learned how to add variety and depth to this system by adding conditionals for the button linking one frame to another. Finally, you learned how to use the `state` property to pass information between frames.
+In this tutorial, you learned how to implement a system of HyperFrames - frames that are easily cross-linkable. You also learned how to add variety and depth to this system by adding conditionals for the button linking one frame to another. Finally, you learned how to use the `state` property to pass information between frames.
 
 ---
 

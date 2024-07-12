@@ -10,13 +10,7 @@ hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
-[Frames] on [Farcaster] now allow you to add buttons that link to external sites in a new window. In this tutorial, you'll learn how to build a frame with [OnchainKit] that links to an NFT mint on [mint.fun], a no-code platform for creating and sharing NFT collections. If you're new to frames and not ready to write a smart contract, this is an excellent starting point! If you've already made a few, this one does showcase the latest features, so check it out and make sure you haven't missed anything.
-
-:::caution
-
-Frames are brand new and tools for building them are evolving quickly. Check the [Frames] docs and OnchainKit [changelog]!
-
-:::
+[Frames] on [Farcaster] allow you to add buttons that link to external sites in a new window. In this tutorial, you'll learn how to build a frame with [OnchainKit] that links to an NFT mint on [mint.fun], a no-code platform for creating and sharing NFT collections. If you're new to frames and not ready to write a smart contract, this is an excellent starting point! If you've already made a few, this one does showcase the latest features, so check it out and make sure you haven't missed anything.
 
 ---
 
@@ -74,12 +68,6 @@ const frameMetadata = getFrameMetadata({
   },
 });
 ```
-
-:::caution
-
-Farcaster aggressively caches Frames. When testing, you can add junk data to the url to force it to update, and prevent the base url from loading an earlier version of the frame. For example: `https://my-frame.vercel.app?13`
-
-:::
 
 Commit and push to deploy the frame. Wait for Vercel to build, then test with the [Frame Validator]. You should see a frame with a single button, that opens a new window once the warning is passed:
 
