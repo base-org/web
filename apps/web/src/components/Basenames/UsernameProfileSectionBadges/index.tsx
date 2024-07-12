@@ -8,6 +8,8 @@ export default function UsernameProfileSectionBadges() {
 
   const badges = useCoinbaseVerification(profileAddress);
 
+  if (!badges.length) return null;
+
   return (
     <section className="">
       <UsernameProfileSectionTitle title="Verifications" />
