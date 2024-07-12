@@ -96,17 +96,19 @@ Put `mintTo(address)` as the function to allowlist then click `Save` at the bott
 We will be using this [simple NFT contract](https://basescan.org/token/0x83bd615eb93ee1336aca53e185b03b54ff4a17e8) deployed on Base mainnet for our example. Feel free to use a contract of your choice.
 :::
 
-### Global Limits:
-
-This setting allows you to define the maximum amount of gas or USD that can be sponsored globally across all users. It helps control the total expenditure on gas sponsorship, ensuring that the allocated budget is not exceeded. For example, setting a global limit of $1 means that the Paymaster will sponsor transactions until the total gas cost reaches $1.
-
-Set your global policy to be `$.07` by entering the amount in the text field and clicking the `Save` button.
+### Global & Per User Limits:
 
 Scroll down to the “Per User Limit” section
 
 We can set a Paymaster policy that specifies either a specific dollar amount or a number of UserOperations. We can enable a 'limit cycle' that allows this policy to refresh every week. This feature enables applications to sponsor smart wallets on a weekly, daily, or monthly basis, either by amount or by number of UserOperations.
 
 Set the max USD to $0.05 and the max UserOperation to 1 to create a policy with a maximum sponsorship limit of $0.05 and a maximum of 1 UserOperation per user.
+
+Set the Global limit:
+
+This setting allows you to define the maximum amount of gas or USD that can be sponsored globally across all users. It helps control the total expenditure on gas sponsorship, ensuring that the allocated budget is not exceeded. For example, setting a global limit of $1 means that the Paymaster will sponsor transactions until the total gas cost reaches $1.
+
+Set your global policy to be `$.07` by entering the amount in the text field and clicking the `Save` button.
 
 ![cdp-allowlist-contracts.png](../../assets/images/gasless-transaction-on-base/cdp-global-user-limits.png)
 
