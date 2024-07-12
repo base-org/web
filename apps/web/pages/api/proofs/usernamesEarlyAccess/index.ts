@@ -47,7 +47,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const hasPreviouslyRegistered = await hasRegisteredWithDiscount([address], parsedChain);
     // if any linked address registered previously return an error
     if (hasPreviouslyRegistered) {
-      res.status(400).json({ error: 'This address has already claimed a username.' });
+      return res.status(400).json({ error: 'This address has already claimed a username.' });
     }
     const [content] = await getProofsByNamespaceAndAddress(
       address,
