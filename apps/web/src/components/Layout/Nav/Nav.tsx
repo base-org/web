@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { Logo } from '../../Logo/Logo';
 import DesktopNav from './DesktopNav';
 import MobileMenu from './MobileMenu';
-import Banner from 'base-ui/components/Layout/Nav/Banner'
+import Banner from 'base-ui/components/Layout/Nav/Banner';
 
 type NavProps = {
   color: 'white' | 'black';
@@ -16,7 +16,7 @@ export function Nav({ color }: NavProps) {
   return (
     <>
       <Banner
-        bannerName='onchainKitBanner'
+        bannerName="onchainKitBanner"
         href="https://onchainkit.xyz/?utm_source=basedotorg&utm_medium=banner"
         text="Build on Base in minutes with OnchainKit!"
       />
