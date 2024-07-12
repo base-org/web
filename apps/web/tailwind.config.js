@@ -186,7 +186,7 @@ module.exports = {
         backgroundOverlay: '#0A0B0D',
         foreground: '#FFFFFF',
         foregroundMuted: '#8A919E',
-        line: '#8A919E',
+        line: 'rgba(91, 97, 110, 0.2)',
         lineHeavy: '#8A919E',
         negative: '#F0616D',
         negativeForeground: '#0A0B0D',
