@@ -2,7 +2,11 @@ import Fieldset from 'apps/web/src/components/Fieldset';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
 
-import { UsernameTextRecordKeys, textRecordsKeywords } from 'apps/web/src/utils/usernames';
+import {
+  UsernameTextRecordKeys,
+  textRecordsKeysForDisplay,
+  textRecordsKeywords,
+} from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ReactNode, useCallback, useEffect, useId, useState } from 'react';
 
@@ -14,7 +18,7 @@ export type UsernameKeywordsFieldProps = {
 };
 
 export default function UsernameKeywordsField({
-  labelChildren = 'Areas of expertise',
+  labelChildren = textRecordsKeysForDisplay[UsernameTextRecordKeys.Keywords],
   onChange,
   value,
   disabled = false,
