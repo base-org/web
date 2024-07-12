@@ -148,7 +148,7 @@ function MobileMenu({ color }: MobileMenuProps) {
       <AnimatePresence>
         {showMobileMenu && (
           <motion.nav
-            className="fixed left-0 top-0 z-30 m-0 h-screen w-screen bg-gray-10 p-8"
+            className="fixed left-0 top-0 z-30 m-0 h-screen w-screen bg-gray-90 p-8"
             initial={mobileMenuInitial}
             animate={mobileMenuAnimation}
             exit={mobileMenuInitial}

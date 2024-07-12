@@ -80,7 +80,7 @@ function Terminal() {
 
 export function FeatureCard({ featureItem: { icon, title, description } }: FeatureCardProps) {
   return (
-    <div className="flex w-[290px] flex-shrink-0 flex-col space-y-16 bg-gray-10 p-8 md:w-[330px]">
+    <div className="flex w-[290px] flex-shrink-0 flex-col space-y-16 bg-gray-90 p-8 md:w-[330px]">
       {
         { ethereum: <Ethereum />, base: <Base />, terminal: <Terminal />, coinbase: <Coinbase /> }[
           icon
