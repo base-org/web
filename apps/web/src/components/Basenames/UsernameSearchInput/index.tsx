@@ -2,11 +2,12 @@ import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Input from 'apps/web/src/components/Input';
+import { useAlternativeNameSuggestions } from 'apps/web/src/hooks/useAlternativeNameSuggestions';
 import { useFocusWithin } from 'apps/web/src/hooks/useFocusWithin';
 import { useIsNameAvailable } from 'apps/web/src/hooks/useIsNameAvailable';
 import { formatBaseEthDomain, validateEnsDomainName } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
-import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 
 export enum UsernameSearchInputVariant {
@@ -25,7 +26,17 @@ export default function UsernameSearchInput({ variant, placeholder }: UsernameSe
   const inputRef = useRef<HTMLInputElement>(null);
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [debouncedSearch] = useDebounceValue(search, 200);
-  const { isLoading, data, isError, isFetching } = useIsNameAvailable(debouncedSearch);
+  const {
+    isLoading: isLoadingNameAvailability,
+    data: isNameAvailable,
+    isError,
+    isFetching,
+  } = useIsNameAvailable(debouncedSearch);
+  const { data: suggestions, isLoading: isLoadingAlternatives } = useAlternativeNameSuggestions(
+    debouncedSearch,
+    !isNameAvailable,
+  );
+  const isLoading = isLoadingAlternatives || isLoadingNameAvailability;
   const { valid, message } = validateEnsDomainName(debouncedSearch);
   const invalidWithMessage = !valid && !!message;
 
@@ -174,13 +185,6 @@ export default function UsernameSearchInput({ variant, placeholder }: UsernameSe
     }
   }, [focused, valid]);
 
-  // TODO: Smarter suggestions (openai api?)
-  // Right now david.base.eth is taken, it'll suggest david1.base.eth but
-  // ultimately that might also be taken.
-  const suggestions: string[] = useMemo(() => {
-    return [`${debouncedSearch}1`, `${debouncedSearch}2`, `${debouncedSearch}3`];
-  }, [debouncedSearch]);
-
   return (
     <fieldset
       className={usernameSearchInputClasses}
@@ -205,7 +209,7 @@ export default function UsernameSearchInput({ variant, placeholder }: UsernameSe
         </div>
         {invalidWithMessage ? (
           <p className={mutedMessage}>Invalid name: {message}</p>
-        ) : data === true ? (
+        ) : isNameAvailable === true ? (
           <>
             <p className={dropdownLabelClasses}>Available</p>
             <button
@@ -227,7 +231,7 @@ export default function UsernameSearchInput({ variant, placeholder }: UsernameSe
           <>
             <p className={mutedMessage}>{formatBaseEthDomain(debouncedSearch)} is not available</p>
             <p className={dropdownLabelClasses}>Suggestion</p>
-            {suggestions.map((suggestion) => (
+            {suggestions?.map((suggestion) => (
               <button
                 key={suggestion}
                 className={buttonClasses}

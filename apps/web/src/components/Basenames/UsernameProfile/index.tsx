@@ -13,14 +13,7 @@ export default function UsernameProfile() {
       </main>
     );
 
-  if (!profileAddress) {
-    return (
-      <main className="flex min-h-screen items-center justify-center">
-        <h1>Name not found</h1>
-      </main>
-    );
-  }
-  if (!profileUsername) {
+  if (!profileUsername || !profileAddress) {
     return (
       <main className="flex min-h-screen items-center justify-center">
         <h1>Name not found</h1>

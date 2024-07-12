@@ -74,6 +74,7 @@ export function RegistrationForm({
   const {
     callback: registerName,
     data: registerNameTransactionHash,
+    error,
     isPending: registerNameTransactionIsPending,
   } = useRegisterNameCallback(
     selectedName,
@@ -96,6 +97,12 @@ export function RegistrationForm({
   const usdPrice =
     price !== undefined && ethUsdPrice !== undefined ? formatUsdPrice(price, ethUsdPrice) : '--.--';
   const nameIsFree = price === 0n;
+
+  if (error) {
+    // todo: handle this error in the UI
+    //   it is likely the user doesn't have sufficient funds to register and they've failed simulation
+    console.error('error in registration handler', error);
+  }
 
   return (
     <div className="transition-all duration-500">
