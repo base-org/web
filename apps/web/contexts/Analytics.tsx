@@ -7,13 +7,23 @@ import { ReactNode, createContext, useCallback, useContext, useMemo } from 'reac
 
 export type AnalyticsContextProps = {
   logEventWithContext: (eventName: string, action: ActionType, eventData?: CCAEventData) => void;
+  fullContext: string;
 };
 
 export const AnalyticsContext = createContext<AnalyticsContextProps>({
   logEventWithContext: function () {
     return undefined;
   },
+  fullContext: '',
 });
+
+export function useAnalytics() {
+  const context = useContext(AnalyticsContext);
+  if (context === undefined) {
+    throw new Error('useAnalytics must be used within a AnalyticsProvider');
+  }
+  return context;
+}
 
 type AnalyticsProviderProps = {
   children?: ReactNode;
@@ -21,9 +31,13 @@ type AnalyticsProviderProps = {
 };
 
 export default function AnalyticsProvider({ children, context }: AnalyticsProviderProps) {
+  const { fullContext: previousContext } = useAnalytics();
+
+  const fullContext = [previousContext, context].filter((c) => !!c).join('_');
+
   const logEventWithContext = useCallback(
     (eventName: string, action: ActionType, eventData?: CCAEventData) => {
-      const sanitizedEventName = `${context}_${eventName}`.toLocaleLowerCase();
+      const sanitizedEventName = `${fullContext}_${eventName}`.toLocaleLowerCase();
       logEvent(
         sanitizedEventName, // TODO: Do we want context here?
         {
@@ -35,20 +49,12 @@ export default function AnalyticsProvider({ children, context }: AnalyticsProvid
         AnalyticsEventImportance.high,
       );
     },
-    [context],
+    [context, fullContext],
   );
 
   const values = useMemo(() => {
-    return { logEventWithContext };
-  }, [logEventWithContext]);
+    return { logEventWithContext, context, fullContext };
+  }, [context, fullContext, logEventWithContext]);
 
   return <AnalyticsContext.Provider value={values}>{children}</AnalyticsContext.Provider>;
-}
-
-export function useAnalytics() {
-  const context = useContext(AnalyticsContext);
-  if (context === undefined) {
-    throw new Error('useAnalytics must be used within a AnalyticsProvider');
-  }
-  return context;
 }
