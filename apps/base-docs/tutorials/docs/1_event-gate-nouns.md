@@ -155,7 +155,7 @@ import { Html5Qrcode } from 'html5-qrcode';
 ```
 
 ```tsx
-const [scannedAddress, setScannedAddress] = useState<string | null>(null);
+const [scannedAddress, setScannedAddress] = useState<`0x${string}` | null>(null);
 const [authorized, setAuthorized] = useState(false);
 const [scanning, setScanning] = useState(false);
 ```
@@ -207,7 +207,7 @@ async function startScanning() {
           }
 
           // handle the result
-          setScannedAddress(scannedAddress);
+          setScannedAddress(scannedAddress as `0x${string}`);
           setScanning(false);
           html5QrCode.stop();
         },
@@ -277,36 +277,36 @@ To verify NFT ownership, you can use the ERC-721 `balanceOf` function and check 
 
 You may be used to generating the ABI as a part of your deployment process, but that's not the only way to get it. They also **don't** need to be complete, and aren't unique for contracts following a specification.
 
-This means that you can use a simplified one here. Add a folder in `app` called `constants`, and a file called `abi.json`. In it, put:
+This means that you can use a simplified one here. Add a folder in `app` called `constants`, and a file called `abi.ts`. In it, put:
 
-```json
-[
+```tsx
+export const abi = [
   {
-    "constant": true,
-    "inputs": [
+    constant: true,
+    inputs: [
       {
-        "name": "owner",
-        "type": "address"
-      }
+        name: 'owner',
+        type: 'address',
+      },
     ],
-    "name": "balanceOf",
-    "outputs": [
+    name: 'balanceOf',
+    outputs: [
       {
-        "name": "",
-        "type": "uint256"
-      }
+        name: '',
+        type: 'uint256',
+      },
     ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  }
-]
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+] as const;
 ```
 
 Back in `page.tsx`, import your ABI and add a constant for your contract address:
 
 ```tsx
-import abi from './constants/abi.json';
+import { abi } from './constants/abi';
 const contractAddress = '<YOUR CONTRACT ADDRESS HERE>';
 ```
 
@@ -368,10 +368,10 @@ const {
   isPending: balanceIsPending,
   queryKey: balanceQueryKey,
 } = useReadContract({
-  address: contractAddress as `0x${string}`,
+  address: contractAddress,
   abi,
   functionName: 'balanceOf',
-  args: [scannedAddress],
+  args: scannedAddress ? [scannedAddress] : undefined,
 });
 ```
 
@@ -379,7 +379,7 @@ And a `useEffect` to handle the `balanceData` being retrieved. You should also m
 
 ```tsx
 useEffect(() => {
-  if (balanceData) {
+  if (balanceData !== undefined) {
     const balance = balanceData as bigint;
     setAuthorized(balance > 0n);
   }
