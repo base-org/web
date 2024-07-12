@@ -4,16 +4,28 @@ import {
 } from 'apps/web/src/components/Basenames/RegistrationContext';
 import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import { usernameRegistrationAnalyticContext } from 'apps/web/src/utils/usernames';
+import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useCallback, useState } from 'react';
 
 export default function RegistrationSuccessMessage() {
   const { setRegistrationStep, selectedName } = useRegistration();
-
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const openModal = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_success_open_share_on_social_modal`,
+      {
+        action: ActionType.click,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
     setIsOpen(true);
   }, []);
 
@@ -22,8 +34,32 @@ export default function RegistrationSuccessMessage() {
   }, []);
 
   const customizeProfileOnClick = useCallback(() => {
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_success_customize_profile`,
+      {
+        action: ActionType.click,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+
     setRegistrationStep(RegistrationSteps.Profile);
   }, [setRegistrationStep]);
+
+  const goToProfileOnClick = useCallback(() => {
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_success_go_to_profile`,
+      {
+        action: ActionType.click,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+
+    router.push(`names/${selectedName}`);
+  }, [router, selectedName]);
 
   return (
     <>
@@ -32,11 +68,15 @@ export default function RegistrationSuccessMessage() {
           Congrats! This name is yours!
         </h1>
         <div className="flex flex-col gap-4 md:flex-row">
-          <Link href={`names/${selectedName}`} className="cursor-pointer">
-            <Button rounded fullWidth variant={ButtonVariants.SecondaryBounce}>
-              Go to Profile
-            </Button>
-          </Link>
+          <Button
+            rounded
+            fullWidth
+            variant={ButtonVariants.SecondaryBounce}
+            onClick={goToProfileOnClick}
+          >
+            Go to Profile
+          </Button>
+
           <Button rounded fullWidth onClick={customizeProfileOnClick}>
             Customize Profile
           </Button>

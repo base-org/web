@@ -64,6 +64,7 @@ type CCAEventData = {
   address?: string;
   context?: string;
   userId?: string;
+  error?: string;
 };
 
 type AnalyticsEventData = {

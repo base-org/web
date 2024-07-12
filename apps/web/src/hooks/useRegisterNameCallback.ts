@@ -4,9 +4,14 @@ import {
   USERNAME_L2_RESOLVER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
 } from 'apps/web/src/addresses/usernames';
-import { formatBaseEthDomain, normalizeEnsDomainName } from 'apps/web/src/utils/usernames';
+import {
+  formatBaseEthDomain,
+  normalizeEnsDomainName,
+  usernameRegistrationAnalyticContext,
+} from 'apps/web/src/utils/usernames';
+import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useMemo } from 'react';
-import { encodeFunctionData, namehash } from 'viem';
+import { encodeFunctionData, namehash, TransactionExecutionError } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
 import { useAccount, useWriteContract } from 'wagmi';
 
@@ -49,6 +54,17 @@ export function useRegisterNameCallback(
 
   // TODO: I think we could pass arguments to this function instead of the hook
   const registerName = useCallback(async () => {
+    // Log attempt to register name
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_register_name_transaction_initiated`,
+      {
+        action: ActionType.click,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+
     try {
       await writeContractAsync({
         abi,
@@ -60,8 +76,22 @@ export function useRegisterNameCallback(
         value,
       });
     } catch (error) {
-      console.log({ error });
-      // Log error
+      let errorReason = 'unknown';
+      if (error instanceof TransactionExecutionError) {
+        errorReason = error.details;
+      }
+
+      logEvent(
+        `${usernameRegistrationAnalyticContext}_register_name_transaction_canceled`,
+        {
+          action: ActionType.click,
+          context: usernameRegistrationAnalyticContext,
+          page_path: window.location.pathname,
+          error: errorReason,
+        },
+        AnalyticsEventImportance.high,
+      );
+      // TODO: Show error
     }
   }, [
     discountKey,

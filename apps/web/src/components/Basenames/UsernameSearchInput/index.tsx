@@ -4,8 +4,13 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Input from 'apps/web/src/components/Input';
 import { useFocusWithin } from 'apps/web/src/hooks/useFocusWithin';
 import { useIsNameAvailable } from 'apps/web/src/hooks/useIsNameAvailable';
-import { formatBaseEthDomain, validateEnsDomainName } from 'apps/web/src/utils/usernames';
+import {
+  formatBaseEthDomain,
+  usernameRegistrationAnalyticContext,
+  validateEnsDomainName,
+} from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
+import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 
@@ -34,17 +39,6 @@ export default function UsernameSearchInput({ variant, placeholder }: UsernameSe
   const handleSearchChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setSearch(value.replace(/\s/g, ''));
-  }, []);
-
-  const setSearchFromSuggestion = useCallback((suggestion: string) => {
-    setSearch(suggestion);
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, []);
-
-  const resetSearch = useCallback(() => {
-    setSearch('');
   }, []);
 
   useEffect(() => {
@@ -174,12 +168,113 @@ export default function UsernameSearchInput({ variant, placeholder }: UsernameSe
     }
   }, [focused, valid]);
 
-  // TODO: Smarter suggestions (openai api?)
   // Right now david.base.eth is taken, it'll suggest david1.base.eth but
   // ultimately that might also be taken.
   const suggestions: string[] = useMemo(() => {
     return [`${debouncedSearch}1`, `${debouncedSearch}2`, `${debouncedSearch}3`];
   }, [debouncedSearch]);
+
+  const setSearchFromSuggestion = useCallback((suggestion: string) => {
+    // Log: suggestion
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_search_input_use_suggestion`,
+      {
+        action: ActionType.keyPress,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+
+    setSearch(suggestion);
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
+  const resetSearch = useCallback(() => {
+    setSearch('');
+  }, []);
+
+  const inputOnFocus = useCallback(() => {
+    // Log focus
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_search_input_focused`,
+      {
+        action: ActionType.focus,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+
+    setSearchInputFocused(true);
+  }, [setSearchInputFocused]);
+
+  const inputOnBlur = useCallback(() => {
+    // Log blur
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_search_input_blur`,
+      {
+        action: ActionType.blur,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+
+    setSearchInputFocused(false);
+  }, [setSearchInputFocused]);
+
+  useEffect(() => {
+    // Log changes
+
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_search_input_key_press`,
+      {
+        action: ActionType.keyPress,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+
+    setSearchInputFocused(false);
+  }, [debouncedSearch, setSearchInputFocused]);
+
+  useEffect(() => {
+    if (!invalidWithMessage) return;
+
+    // Log invalid
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_search_input_invalid`,
+      {
+        action: ActionType.change,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+
+    setSearchInputFocused(false);
+  }, [invalidWithMessage, setSearchInputFocused]);
+
+  useEffect(() => {
+    if (!isError) return;
+
+    // Log error
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_search_input_error`,
+      {
+        action: ActionType.process,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+
+    setSearchInputFocused(false);
+  }, [isError, setSearchInputFocused]);
 
   return (
     <fieldset
@@ -194,8 +289,8 @@ export default function UsernameSearchInput({ variant, placeholder }: UsernameSe
         onChange={handleSearchChange}
         placeholder={placeholder}
         className={inputClasses}
-        onFocus={() => setSearchInputFocused(true)}
-        onBlur={() => setSearchInputFocused(false)}
+        onFocus={inputOnFocus}
+        onBlur={inputOnBlur}
         id={inputId}
         ref={inputRef}
       />

@@ -18,8 +18,12 @@ import {
   findFirstValidDiscount,
   useAggregatedDiscountValidators,
 } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
-import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
+import {
+  formatBaseEthDomain,
+  usernameRegistrationAnalyticContext,
+} from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
+import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useMemo, useState } from 'react';
 
 export enum Discount {
@@ -57,7 +61,18 @@ export function RegistrationFlow() {
     useRegistration();
 
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
-  const toggleLearnMoreModal = useCallback(() => setLearnMoreModalOpen((open) => !open), []);
+  const toggleLearnMoreModal = useCallback(() => {
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_open_learn_more_modal`,
+      {
+        action: ActionType.change,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+    setLearnMoreModalOpen((open) => !open);
+  }, []);
 
   const isSearch = registrationStep === RegistrationSteps.Search;
   const isClaim = registrationStep === RegistrationSteps.Claim;

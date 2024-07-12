@@ -13,16 +13,19 @@ import {
   UsernameTextRecords,
   UsernameTextRecordKeys,
   textRecordsSocialFieldsEnabled,
+  usernameRegistrationAnalyticContext,
 } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
+import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
+import { TransactionExecutionError } from 'viem';
 import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
 
 export enum FormSteps {
   Description = 'description',
   Socials = 'socials',
-  Keywords = 'Keywords',
+  Keywords = 'keywords',
 }
 
 export default function RegistrationProfileForm() {
@@ -49,25 +52,74 @@ export default function RegistrationProfileForm() {
     });
 
   // Wait for text record transaction to be processed
-  const { isFetching: transactionIsFetching, isSuccess: transactionIsSuccess } =
-    useWaitForTransactionReceipt({
-      hash: writeTextRecordsTransactionHash,
-      query: {
-        enabled: !!writeTextRecordsTransactionHash,
-      },
-    });
+  const {
+    data: transactionData,
+    isFetching: transactionIsFetching,
+    isSuccess: transactionIsSuccess,
+    isPending: transactionIsPending,
+  } = useWaitForTransactionReceipt({
+    hash: writeTextRecordsTransactionHash,
+    query: {
+      enabled: !!writeTextRecordsTransactionHash,
+    },
+  });
 
   const [textRecords, setTextRecords] = useState<UsernameTextRecords>(existingTextRecords);
 
   useEffect(() => {
-    if (transactionIsSuccess) {
-      refetchExistingTextRecords()
-        .then(() => {
-          router.push(`names/${selectedName}`);
-        })
-        .catch(() => {});
+    if (transactionIsPending) {
+      logEvent(
+        `${usernameRegistrationAnalyticContext}_update_profile_transaction_processing`,
+        {
+          action: ActionType.change,
+          context: usernameRegistrationAnalyticContext,
+          page_path: window.location.pathname,
+        },
+        AnalyticsEventImportance.high,
+      );
     }
-  }, [refetchExistingTextRecords, router, selectedName, transactionIsSuccess]);
+    if (transactionIsSuccess) {
+      // TODO: This can be a failed transaction
+      if (transactionData.status === 'success') {
+        logEvent(
+          `${usernameRegistrationAnalyticContext}_update_profile_transaction_success`,
+          {
+            action: ActionType.change,
+            context: usernameRegistrationAnalyticContext,
+            page_path: window.location.pathname,
+          },
+          AnalyticsEventImportance.high,
+        );
+
+        refetchExistingTextRecords()
+          .then(() => {
+            router.push(`names/${selectedName}`);
+          })
+          .catch(() => {});
+      }
+
+      if (transactionData.status === 'reverted') {
+        logEvent(
+          `${usernameRegistrationAnalyticContext}_update_profile_transaction_reverted`,
+          {
+            action: ActionType.change,
+            context: usernameRegistrationAnalyticContext,
+            page_path: window.location.pathname,
+          },
+          AnalyticsEventImportance.high,
+        );
+
+        // TODO: Show an error to the user
+      }
+    }
+  }, [
+    refetchExistingTextRecords,
+    router,
+    selectedName,
+    transactionIsSuccess,
+    transactionIsPending,
+    transactionData,
+  ]);
 
   useEffect(() => {
     setTextRecords(existingTextRecords);
@@ -94,16 +146,49 @@ export default function RegistrationProfileForm() {
       }
 
       if (currentFormStep === FormSteps.Keywords) {
+        logEvent(
+          `${usernameRegistrationAnalyticContext}_update_profile_transaction_initiated`,
+          {
+            action: ActionType.change,
+            context: usernameRegistrationAnalyticContext,
+            page_path: window.location.pathname,
+          },
+          AnalyticsEventImportance.high,
+        );
         writeTextRecords(textRecords)
           .then((result) => {
             // We updated some text records
             if (result) {
+              logEvent(
+                `${usernameRegistrationAnalyticContext}_update_profile_transaction_approved`,
+                {
+                  action: ActionType.change,
+                  context: usernameRegistrationAnalyticContext,
+                  page_path: window.location.pathname,
+                },
+                AnalyticsEventImportance.high,
+              );
             } else {
               // no text records had to be updated, simply go to profile
               router.push(`names/${selectedName}`);
             }
           })
-          .catch(() => {
+          .catch((error) => {
+            let errorReason = 'unknown';
+            if (error instanceof TransactionExecutionError) {
+              errorReason = error.details;
+            }
+
+            logEvent(
+              `${usernameRegistrationAnalyticContext}_update_profile_transaction_canceled`,
+              {
+                action: ActionType.click,
+                context: usernameRegistrationAnalyticContext,
+                page_path: window.location.pathname,
+                error: errorReason,
+              },
+              AnalyticsEventImportance.high,
+            );
             // TODO: Show an error
           });
       }
@@ -162,6 +247,18 @@ export default function RegistrationProfileForm() {
 
   const isLoading =
     existingTextRecordsIsLoading || writeTextRecordsIsPending || transactionIsFetching;
+
+  useEffect(() => {
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_update_profile_step_${currentFormStep}`,
+      {
+        action: ActionType.change,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+  }, [currentFormStep]);
 
   return (
     <form className={formClasses}>

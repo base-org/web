@@ -10,6 +10,8 @@ import {
   useNameRegistrationPrice,
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
+import { usernameRegistrationAnalyticContext } from 'apps/web/src/utils/usernames';
+import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useState } from 'react';
 import { formatEther } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
@@ -50,12 +52,36 @@ export function RegistrationForm({
 
   const { selectedName, setRegisterNameTransactionHash } = useRegistration();
   const [years, setYears] = useState(1);
+
   const increment = useCallback(() => {
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_form_increment_year`,
+      {
+        action: ActionType.click,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+
     setYears((n) => n + 1);
   }, []);
+
   const decrement = useCallback(() => {
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_form_decement_year`,
+      {
+        action: ActionType.click,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+
     setYears((n) => (n > 1 ? n - 1 : n));
   }, []);
+
+  // TODO: Log learn more
 
   const switchChainToBase = useCallback(() => {
     switchChain({ chainId: base.id });
@@ -84,7 +110,19 @@ export function RegistrationForm({
   );
 
   useEffect(() => {
-    if (registerNameTransactionHash) setRegisterNameTransactionHash(registerNameTransactionHash);
+    if (registerNameTransactionHash) {
+      logEvent(
+        `${usernameRegistrationAnalyticContext}_register_name_transaction_approved`,
+        {
+          action: ActionType.change,
+          context: usernameRegistrationAnalyticContext,
+          page_path: window.location.pathname,
+        },
+        AnalyticsEventImportance.high,
+      );
+
+      setRegisterNameTransactionHash(registerNameTransactionHash);
+    }
   }, [registerNameTransactionHash, setRegisterNameTransactionHash]);
 
   const registerNameCallback = useCallback(() => {

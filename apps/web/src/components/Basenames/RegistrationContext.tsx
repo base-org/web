@@ -1,4 +1,6 @@
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
+import { usernameRegistrationAnalyticContext } from 'apps/web/src/utils/usernames';
+import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
 import {
   Dispatch,
   ReactNode,
@@ -81,27 +83,68 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   >();
 
   // Wait for text record transaction to be processed
-  const { isFetching: transactionIsFetching, isSuccess: transactionIsSuccess } =
-    useWaitForTransactionReceipt({
-      hash: registerNameTransactionHash,
-      query: {
-        enabled: !!registerNameTransactionHash,
-      },
-    });
+  const {
+    data: transactionData,
+    isFetching: transactionIsFetching,
+    isSuccess: transactionIsSuccess,
+  } = useWaitForTransactionReceipt({
+    hash: registerNameTransactionHash,
+    query: {
+      enabled: !!registerNameTransactionHash,
+    },
+  });
 
   useEffect(() => {
     if (transactionIsFetching) {
+      logEvent(
+        `${usernameRegistrationAnalyticContext}_register_name_transaction_processing`,
+        {
+          action: ActionType.change,
+          context: usernameRegistrationAnalyticContext,
+          page_path: window.location.pathname,
+        },
+        AnalyticsEventImportance.high,
+      );
+
       setRegistrationStep(RegistrationSteps.Pending);
     }
+
     if (transactionIsSuccess) {
-      // Reload current ENS name
-      baseEnsNameRefetch()
-        .then(() => {
-          setRegistrationStep(RegistrationSteps.Success);
-        })
-        .catch(() => {
-          // TODO: Error
-        });
+      // TODO: This can be a failed transaction
+      if (transactionData.status === 'success') {
+        // TODO: What about failed transaction?
+        logEvent(
+          `${usernameRegistrationAnalyticContext}_register_name_transaction_success`,
+          {
+            action: ActionType.change,
+            context: usernameRegistrationAnalyticContext,
+            page_path: window.location.pathname,
+          },
+          AnalyticsEventImportance.high,
+        );
+        // Reload current ENS name
+        baseEnsNameRefetch()
+          .then(() => {
+            setRegistrationStep(RegistrationSteps.Success);
+          })
+          .catch(() => {
+            // TODO: Show an error to the user
+          });
+      }
+
+      if (transactionData.status === 'reverted') {
+        logEvent(
+          `${usernameRegistrationAnalyticContext}_register_name_transaction_reverted`,
+          {
+            action: ActionType.change,
+            context: usernameRegistrationAnalyticContext,
+            page_path: window.location.pathname,
+          },
+          AnalyticsEventImportance.high,
+        );
+
+        // TODO: Show an error to the user
+      }
     }
 
     // TODO: Failed transaction
@@ -112,6 +155,35 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       setRegistrationStep(RegistrationSteps.Claim);
     }
   }, [selectedName.length]);
+
+  // Log user moving through the flow
+  useEffect(() => {
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_step_${registrationStep}`,
+      {
+        action: ActionType.change,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+  }, [registrationStep]);
+
+  // Log user selecting a name
+  useEffect(() => {
+    if (!selectedName) return;
+    logEvent(
+      `${usernameRegistrationAnalyticContext}_user_selected_name`,
+      {
+        action: ActionType.change,
+        context: usernameRegistrationAnalyticContext,
+        page_path: window.location.pathname,
+      },
+      AnalyticsEventImportance.high,
+    );
+
+    setSearchInputFocused(false);
+  }, [selectedName]);
 
   // TODO: RegisterName function callback
 

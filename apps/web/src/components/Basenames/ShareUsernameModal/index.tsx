@@ -13,6 +13,8 @@ import {
 } from 'apps/web/src/utils/socialPlatforms';
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
+import { usernameRegistrationAnalyticContext } from 'apps/web/src/utils/usernames';
 
 export const socialPlatformsEnabled = [SocialPlatform.Twitter, SocialPlatform.Farcaster];
 
@@ -53,6 +55,16 @@ export default function ShareUsernameModal({
     };
     const shareLinkFunction = socialPlatformShareLinkFunction[socialPlatform];
     if (shareLinkFunction) {
+      logEvent(
+        `${usernameRegistrationAnalyticContext}_share_on_social_${socialPlatform}`,
+        {
+          action: ActionType.click,
+          context: usernameRegistrationAnalyticContext,
+          page_path: window.location.pathname,
+        },
+        AnalyticsEventImportance.high,
+      );
+
       const shareLink = shareLinkFunction(socialMediaShareParams);
       const left = window.innerWidth / 2 - popupWidth / 2;
       const top = window.innerHeight / 2 - popupHeight / 2;
