@@ -144,7 +144,7 @@ You can now add outbound links to buttons. To do this with [OnchainKit], simply 
 
 ### Redirect Button
 
-You can also do a redirect with a button. The example has one on the second frame - `Dog pictures ↗`. The way it works is a little tricky. Start with the `buttons` defined in the response frame in `app/frame/route.tsx`. The third button is a `post_redirect`:
+You can also do a redirect with a button. The example has one on the second frame - `Dog pictures ↗`:
 
 ```tsx
 {
@@ -152,6 +152,8 @@ You can also do a redirect with a button. The example has one on the second fram
   label: 'Dog pictures',
 },
 ```
+
+The way it works is a little tricky.
 
 Clicking this button hits the `postUrl`, with the requirement that you return a `redirect` response with a status of 302, and a link. You can see that in `route.ts`:
 
