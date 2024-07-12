@@ -27,7 +27,7 @@ displayed_sidebar: null
 
 Still trying to onboard users to your app? Want to break free from the worries of gas transactions and sponsor them for your users on Base? Look no further!
 
-Base transaction fees are less than a penny, but the concept of gas can be confusing for new users. Abstract this away and improve your UX by using the Coinbase Paymaster. The Base Paymaster allows you to batch multi-step transactions and create custom gasless experiences. Sponsor up to $10k monthly on mainnet (unlimited on testnet). To request an increase in limit, reach out in [Discord](https://discord.gg/AaAcm4UW).
+Base transaction fees are less than a penny, but the concept of gas can be confusing for new users. Abstract this away and improve your UX by using the Coinbase Paymaster. The Base Paymaster allows you to batch multi-step transactions and create custom gasless experiences. Sponsor up to $10k monthly on mainnet (unlimited on testnet). To request an increase in limit, reach out in [Discord].
 
 ## Objectives
 
@@ -38,7 +38,7 @@ Base transaction fees are less than a penny, but the concept of gas can be confu
 
 ## Prerequisites
 
-This tutorial assumes you have a Coinbase Cloud Developer Platform account. If not, sign up on the [CDP site](https://portal.cdp.coinbase.com/).
+This tutorial assumes you have a Coinbase Cloud Developer Platform account. If not, sign up on the [CDP site].
 
 ### Coinbase CDP account
 
@@ -56,13 +56,13 @@ Foundry is a development environment, testing framework, and smart contract tool
 
 In this section, you will configure a Paymaster to sponsor payments on behalf of a specific smart contract for a specified amount. First, navigate to the Coinbase Developer Platform, create or select your project, and click on the Paymaster tool from the left navigation. Then, go to the Configuration tab and save the RPC URL to your clipboard, which will be needed for later steps in your index.js file.
 
-Navigate to the [Coinbase Developer Platform](https://portal.cdp.coinbase.com/):
+Navigate to the [Coinbase Developer Platform]:
 
 Create or select your project of choice from the upper left corner of your screen.
 
 ![cdp-home.png](../../assets/images/gasless-transaction-on-base/cdp-select-project.png)
 
-Click on the `Paymaster` tool on the left navigation:\*\* [Paymaster Tool](https://portal.cdp.coinbase.com/products/bundler-and-paymaster)
+Click on the `Paymaster` tool on the left navigation:\*\* [Paymaster Tool]
 
 ![cdp-paymaster-tool.png](../../assets/images/gasless-transaction-on-base/cdp-paymaster.png)
 
@@ -93,7 +93,7 @@ Put `mintTo(address)` as the function to allowlist then click `Save` at the bott
 ![cdp-allowlist-contracts.png](../../assets/images/gasless-transaction-on-base/cdp-allowlist-contract.png)
 
 :::note Use your own contract
-We will be using this [simple NFT contract](https://basescan.org/token/0x83bd615eb93ee1336aca53e185b03b54ff4a17e8) deployed on Base mainnet for our example. Feel free to use a contract of your choice.
+We will be using this [simple NFT contract]deployed on Base mainnet for our example. Feel free to use a contract of your choice.
 :::
 
 ### Global & Per User Limits:
@@ -183,13 +183,13 @@ The RPC URL is the URL for your Coinbase Developer Platform (CDP) Paymaster.
 
 This was saved in the previous section and follows this format: `https://api.developer.coinbase.com/rpc/v1/base/<SPECIAL-KEY>`
 
-Navigate to the [Paymaster Tool](https://portal.cdp.coinbase.com/products/bundler-and-paymaster) and select the `Configuration` tab at the top of the screen to obtain your RPC URL.
+Navigate to the [Paymaster Tool] and select the `Configuration` tab at the top of the screen to obtain your RPC URL.
 
 :::
 
 :::danger Secure your endpoints
 
-We will create a constant for our RPC url obtained from cdp.portal.coinbase.com. The most secure way to do this is by using a proxy. For the purposes of this demo we will hardcode it into our `index.js` file. For product, we highly recommend using a [proxy service](https://www.smartwallet.dev/guides/paymasters).
+We will create a constant for our RPC url obtained from cdp.portal.coinbase.com. The most secure way to do this is by using a proxy. For the purposes of this demo we will hardcode it into our `index.js` file. For product, we highly recommend using a [proxy service].
 
 :::
 
@@ -264,8 +264,23 @@ const simpleAccount2 = await privateKeyToSimpleSmartAccount(publicClient, {
 Let’s break down what’s happening here:
 Private key : the private key to the wallet that your created either using Foundry or a wallet that you own. Either is fine.
 
-Factory address is the address to the smart account factory deployed on base. More details here.
-Entrypoint is the entrypoint contract for base. More details here.
+Factory address is the address to the smart account factory deployed on base. Account factories are smart contracts that facilitate the creation of new wallet contracts. You make view a more comprehensive [list of factory addresses] on Alchemy.
+
+Entrypoint is the entrypoint contract for Base.
+
+:::tip Find the correct entrypoint address
+
+Make an JSON RPC request to a node using the `` method to get the correct entrpoint contract. Here's an example for Base using a Coinbase Base Node:
+
+```
+curl --request POST \
+     --url https://api.developer.coinbase.com/rpc/v1/base/<Your-Key> \
+     --header 'Accept: application/json' \
+     --header 'Content-Type: application/json' \
+     --data '{"id": 1, "jsonrpc": "2.0", "method": "eth_supportedEntryPoints", "params": []}'
+```
+
+:::
 
 ### Initialize Paymaster and Create Accounts
 
@@ -588,7 +603,7 @@ You may get a warning to increase the global limit and that is okay for now...
 
 :::
 
-Navigate back to the [UI](https://portal.cdp.coinbase.com/products/bundler-and-paymaster) and update the policy to 10 and hit the `Save` button.
+Navigate back to the [UI] and update the policy to 10 and hit the `Save` button.
 
 [image of updated policy]
 
@@ -637,3 +652,15 @@ Navigate back to the cloud portal and increase the global policy to your choosin
 ## Conclusion
 
 In this tutorial, you learned to set up and configure the Coinbase Paymaster on the Coinbase Developer Platform, allowing you to sponsor gasless transactions for your users. This enhances the user experience by abstracting away gas fees and making transactions more accessible and cost-effective.
+
+---
+
+[list of factory addresses]: https://docs.alchemy.com/reference/factory-addresses
+[Discord]: https://discord.gg/AaAcm4UW
+[CDP site]: https://portal.cdp.coinbase.com/
+[Coinbase Developer Platform]: https://portal.cdp.coinbase.com/
+[UI]: https://portal.cdp.coinbase.com/products/bundler-and-paymaster
+[proxy service]: https://www.smartwallet.dev/guides/paymasters
+[Paymaster Tool]: https://portal.cdp.coinbase.com/products/bundler-and-paymaster
+[Foundry Book installation guide]: https://book.getfoundry.sh/getting-started/installation
+[simple NFT contract]: https://basescan.org/token/0x83bd615eb93ee1336aca53e185b03b54ff4a17e8
