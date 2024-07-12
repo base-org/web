@@ -1,6 +1,6 @@
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
-import { usernameRegistrationAnalyticContext } from 'apps/web/src/utils/usernames';
-import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
 import {
   Dispatch,
   ReactNode,
@@ -72,6 +72,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     RegistrationSteps.Search,
   );
 
+  const { logEventWithContext } = useAnalytics();
   const { address } = useAccount();
   const { refetch: baseEnsNameRefetch } = useBaseEnsName({
     address,
@@ -96,15 +97,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
 
   useEffect(() => {
     if (transactionIsFetching) {
-      logEvent(
-        `${usernameRegistrationAnalyticContext}_register_name_transaction_processing`,
-        {
-          action: ActionType.change,
-          context: usernameRegistrationAnalyticContext,
-          page_path: window.location.pathname,
-        },
-        AnalyticsEventImportance.high,
-      );
+      logEventWithContext(`register_name_transaction_processing`, ActionType.change);
 
       setRegistrationStep(RegistrationSteps.Pending);
     }
@@ -113,15 +106,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       // TODO: This can be a failed transaction
       if (transactionData.status === 'success') {
         // TODO: What about failed transaction?
-        logEvent(
-          `${usernameRegistrationAnalyticContext}_register_name_transaction_success`,
-          {
-            action: ActionType.change,
-            context: usernameRegistrationAnalyticContext,
-            page_path: window.location.pathname,
-          },
-          AnalyticsEventImportance.high,
-        );
+        logEventWithContext(`register_name_transaction_success`, ActionType.change);
         // Reload current ENS name
         baseEnsNameRefetch()
           .then(() => {
@@ -133,22 +118,21 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       }
 
       if (transactionData.status === 'reverted') {
-        logEvent(
-          `${usernameRegistrationAnalyticContext}_register_name_transaction_reverted`,
-          {
-            action: ActionType.change,
-            context: usernameRegistrationAnalyticContext,
-            page_path: window.location.pathname,
-          },
-          AnalyticsEventImportance.high,
-        );
+        logEventWithContext(`register_name_transaction_reverted`, ActionType.change);
 
         // TODO: Show an error to the user
       }
     }
 
     // TODO: Failed transaction
-  }, [baseEnsNameRefetch, setRegistrationStep, transactionIsFetching, transactionIsSuccess]);
+  }, [
+    baseEnsNameRefetch,
+    logEventWithContext,
+    setRegistrationStep,
+    transactionData,
+    transactionIsFetching,
+    transactionIsSuccess,
+  ]);
 
   useEffect(() => {
     if (selectedName.length) {
@@ -158,32 +142,16 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
 
   // Log user moving through the flow
   useEffect(() => {
-    logEvent(
-      `${usernameRegistrationAnalyticContext}_step_${registrationStep}`,
-      {
-        action: ActionType.change,
-        context: usernameRegistrationAnalyticContext,
-        page_path: window.location.pathname,
-      },
-      AnalyticsEventImportance.high,
-    );
-  }, [registrationStep]);
+    logEventWithContext(`step_${registrationStep}`, ActionType.change);
+  }, [logEventWithContext, registrationStep]);
 
   // Log user selecting a name
   useEffect(() => {
     if (!selectedName) return;
-    logEvent(
-      `${usernameRegistrationAnalyticContext}_user_selected_name`,
-      {
-        action: ActionType.change,
-        context: usernameRegistrationAnalyticContext,
-        page_path: window.location.pathname,
-      },
-      AnalyticsEventImportance.high,
-    );
+    logEventWithContext(`user_selected_name`, ActionType.change);
 
     setSearchInputFocused(false);
-  }, [selectedName]);
+  }, [logEventWithContext, selectedName]);
 
   // TODO: RegisterName function callback
 

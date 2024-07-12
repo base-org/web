@@ -1,15 +1,12 @@
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import abi from 'apps/web/src/abis/RegistrarControllerABI';
 import {
   USERNAME_L2_RESOLVER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
 } from 'apps/web/src/addresses/usernames';
-import {
-  formatBaseEthDomain,
-  normalizeEnsDomainName,
-  usernameRegistrationAnalyticContext,
-} from 'apps/web/src/utils/usernames';
-import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
+import { formatBaseEthDomain, normalizeEnsDomainName } from 'apps/web/src/utils/usernames';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useMemo } from 'react';
 import { encodeFunctionData, namehash, TransactionExecutionError } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
@@ -31,7 +28,7 @@ export function useRegisterNameCallback(
   const network = chainId === baseSepolia.id ? chainId : base.id;
   const normalizedName = normalizeEnsDomainName(name);
   const isDiscounted = Boolean(discountKey && validationData);
-
+  const { logEventWithContext } = useAnalytics();
   const addressData = encodeFunctionData({
     abi: L2ResolverAbi,
     functionName: 'setAddr',
@@ -55,15 +52,7 @@ export function useRegisterNameCallback(
   // TODO: I think we could pass arguments to this function instead of the hook
   const registerName = useCallback(async () => {
     // Log attempt to register name
-    logEvent(
-      `${usernameRegistrationAnalyticContext}_register_name_transaction_initiated`,
-      {
-        action: ActionType.click,
-        context: usernameRegistrationAnalyticContext,
-        page_path: window.location.pathname,
-      },
-      AnalyticsEventImportance.high,
-    );
+    logEventWithContext('register_name_transaction_initiated', ActionType.click);
 
     try {
       await writeContractAsync({
@@ -81,21 +70,15 @@ export function useRegisterNameCallback(
         errorReason = error.details;
       }
 
-      logEvent(
-        `${usernameRegistrationAnalyticContext}_register_name_transaction_canceled`,
-        {
-          action: ActionType.click,
-          context: usernameRegistrationAnalyticContext,
-          page_path: window.location.pathname,
-          error: errorReason,
-        },
-        AnalyticsEventImportance.high,
-      );
+      logEventWithContext('register_name_transaction_canceled', ActionType.change, {
+        error: errorReason,
+      });
       // TODO: Show error
     }
   }, [
     discountKey,
     isDiscounted,
+    logEventWithContext,
     network,
     registerRequest,
     validationData,

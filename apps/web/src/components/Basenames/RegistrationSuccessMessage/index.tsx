@@ -1,11 +1,11 @@
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 import {
   RegistrationSteps,
   useRegistration,
 } from 'apps/web/src/components/Basenames/RegistrationContext';
 import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
-import { usernameRegistrationAnalyticContext } from 'apps/web/src/utils/usernames';
-import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useCallback, useState } from 'react';
@@ -14,52 +14,30 @@ export default function RegistrationSuccessMessage() {
   const { setRegistrationStep, selectedName } = useRegistration();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { logEventWithContext } = useAnalytics();
 
-  const openModal = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    logEvent(
-      `${usernameRegistrationAnalyticContext}_success_open_share_on_social_modal`,
-      {
-        action: ActionType.click,
-        context: usernameRegistrationAnalyticContext,
-        page_path: window.location.pathname,
-      },
-      AnalyticsEventImportance.high,
-    );
-    setIsOpen(true);
-  }, []);
+  const openModal = useCallback(
+    (event: React.MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      logEventWithContext(`success_open_share_on_social_modal`, ActionType.click);
+      setIsOpen(true);
+    },
+    [logEventWithContext],
+  );
 
   const closeModal = useCallback(() => {
     setIsOpen(false);
   }, []);
 
   const customizeProfileOnClick = useCallback(() => {
-    logEvent(
-      `${usernameRegistrationAnalyticContext}_success_customize_profile`,
-      {
-        action: ActionType.click,
-        context: usernameRegistrationAnalyticContext,
-        page_path: window.location.pathname,
-      },
-      AnalyticsEventImportance.high,
-    );
-
+    logEventWithContext(`success_customize_profile`, ActionType.click);
     setRegistrationStep(RegistrationSteps.Profile);
-  }, [setRegistrationStep]);
+  }, [logEventWithContext, setRegistrationStep]);
 
   const goToProfileOnClick = useCallback(() => {
-    logEvent(
-      `${usernameRegistrationAnalyticContext}_success_go_to_profile`,
-      {
-        action: ActionType.click,
-        context: usernameRegistrationAnalyticContext,
-        page_path: window.location.pathname,
-      },
-      AnalyticsEventImportance.high,
-    );
-
+    logEventWithContext(`success_go_to_profile`, ActionType.click);
     router.push(`names/${selectedName}`);
-  }, [router, selectedName]);
+  }, [logEventWithContext, router, selectedName]);
 
   return (
     <>

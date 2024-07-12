@@ -1,4 +1,5 @@
 import { Transition } from '@headlessui/react';
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { LearnMoreModal } from 'apps/web/src/components/Basenames/LearnMoreModal';
 import RegistrationBackground from 'apps/web/src/components/Basenames/RegistrationBackground';
 import RegistrationBrand from 'apps/web/src/components/Basenames/RegistrationBrand';
@@ -18,12 +19,9 @@ import {
   findFirstValidDiscount,
   useAggregatedDiscountValidators,
 } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
-import {
-  formatBaseEthDomain,
-  usernameRegistrationAnalyticContext,
-} from 'apps/web/src/utils/usernames';
+import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
-import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useMemo, useState } from 'react';
 
 export enum Discount {
@@ -46,7 +44,7 @@ test addresses w/ different verifications
 export function RegistrationFlow() {
   const { data: discounts, loading: loadingDiscounts } = useAggregatedDiscountValidators();
   const discount = findFirstValidDiscount(discounts);
-
+  const { logEventWithContext } = useAnalytics();
   const allActiveDiscounts = useMemo(
     () =>
       new Set(
@@ -62,17 +60,9 @@ export function RegistrationFlow() {
 
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
   const toggleLearnMoreModal = useCallback(() => {
-    logEvent(
-      `${usernameRegistrationAnalyticContext}_open_learn_more_modal`,
-      {
-        action: ActionType.change,
-        context: usernameRegistrationAnalyticContext,
-        page_path: window.location.pathname,
-      },
-      AnalyticsEventImportance.high,
-    );
+    logEventWithContext(`open_learn_more_modal`, ActionType.change);
     setLearnMoreModalOpen((open) => !open);
-  }, []);
+  }, [logEventWithContext]);
 
   const isSearch = registrationStep === RegistrationSteps.Search;
   const isClaim = registrationStep === RegistrationSteps.Claim;

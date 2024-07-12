@@ -54,10 +54,6 @@ export const textRecordsSocialFieldsEnabledIcons: Record<UsernameTextRecordKeys,
   [UsernameTextRecordKeys.Url]: 'website',
 };
 
-// TODO: Ideally this should be an enum in CCAEventData
-export const usernameRegistrationAnalyticContext = 'username_registration';
-export const usernameProfileAnalyticContext = 'username_profile';
-
 // Users might add their handle as @myProfile, which breaks on some website
 // TODO: Ideally we'd sanitize these before writing them as TextRecord
 export const sanitizeHandle = (handle: string) => {

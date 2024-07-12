@@ -13,8 +13,8 @@ import {
 } from 'apps/web/src/utils/socialPlatforms';
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
-import { usernameRegistrationAnalyticContext } from 'apps/web/src/utils/usernames';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 
 export const socialPlatformsEnabled = [SocialPlatform.Twitter, SocialPlatform.Farcaster];
 
@@ -28,7 +28,7 @@ export default function ShareUsernameModal({
   selectedName: string;
 }) {
   const [imageIsLoading, setImageIsLoading] = useState<boolean>(true);
-
+  const { logEventWithContext } = useAnalytics();
   const coverImageWrapperClasses = classNames(
     'min-h-[10.25rem] w-full  overflow-hidden rounded-2xl border border-gray-40/20 bg-gray-40/10',
     {
@@ -55,15 +55,7 @@ export default function ShareUsernameModal({
     };
     const shareLinkFunction = socialPlatformShareLinkFunction[socialPlatform];
     if (shareLinkFunction) {
-      logEvent(
-        `${usernameRegistrationAnalyticContext}_share_on_social_${socialPlatform}`,
-        {
-          action: ActionType.click,
-          context: usernameRegistrationAnalyticContext,
-          page_path: window.location.pathname,
-        },
-        AnalyticsEventImportance.high,
-      );
+      logEventWithContext(`share_on_social_${socialPlatform}`, ActionType.click);
 
       const shareLink = shareLinkFunction(socialMediaShareParams);
       const left = window.innerWidth / 2 - popupWidth / 2;

@@ -1,3 +1,4 @@
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import UsernameDescriptionField from 'apps/web/src/components/Basenames/UsernameDescriptionField';
 import UsernameKeywordsField from 'apps/web/src/components/Basenames/UsernameKeywordsField';
@@ -13,10 +14,9 @@ import {
   UsernameTextRecords,
   UsernameTextRecordKeys,
   textRecordsSocialFieldsEnabled,
-  usernameRegistrationAnalyticContext,
 } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
-import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { TransactionExecutionError } from 'viem';
@@ -33,6 +33,7 @@ export default function RegistrationProfileForm() {
   const { selectedName } = useRegistration();
   const { address } = useAccount();
   const router = useRouter();
+  const { logEventWithContext } = useAnalytics();
 
   const { data: baseEnsName } = useBaseEnsName({
     address,
@@ -68,28 +69,12 @@ export default function RegistrationProfileForm() {
 
   useEffect(() => {
     if (transactionIsPending) {
-      logEvent(
-        `${usernameRegistrationAnalyticContext}_update_profile_transaction_processing`,
-        {
-          action: ActionType.change,
-          context: usernameRegistrationAnalyticContext,
-          page_path: window.location.pathname,
-        },
-        AnalyticsEventImportance.high,
-      );
+      logEventWithContext('update_profile_transaction_processing', ActionType.change);
     }
     if (transactionIsSuccess) {
       // TODO: This can be a failed transaction
       if (transactionData.status === 'success') {
-        logEvent(
-          `${usernameRegistrationAnalyticContext}_update_profile_transaction_success`,
-          {
-            action: ActionType.change,
-            context: usernameRegistrationAnalyticContext,
-            page_path: window.location.pathname,
-          },
-          AnalyticsEventImportance.high,
-        );
+        logEventWithContext('update_profile_transaction_success', ActionType.change);
 
         refetchExistingTextRecords()
           .then(() => {
@@ -99,15 +84,7 @@ export default function RegistrationProfileForm() {
       }
 
       if (transactionData.status === 'reverted') {
-        logEvent(
-          `${usernameRegistrationAnalyticContext}_update_profile_transaction_reverted`,
-          {
-            action: ActionType.change,
-            context: usernameRegistrationAnalyticContext,
-            page_path: window.location.pathname,
-          },
-          AnalyticsEventImportance.high,
-        );
+        logEventWithContext('update_profile_transaction_reverted', ActionType.change);
 
         // TODO: Show an error to the user
       }
@@ -146,28 +123,12 @@ export default function RegistrationProfileForm() {
       }
 
       if (currentFormStep === FormSteps.Keywords) {
-        logEvent(
-          `${usernameRegistrationAnalyticContext}_update_profile_transaction_initiated`,
-          {
-            action: ActionType.change,
-            context: usernameRegistrationAnalyticContext,
-            page_path: window.location.pathname,
-          },
-          AnalyticsEventImportance.high,
-        );
+        logEventWithContext('update_profile_transaction_initiated', ActionType.change);
         writeTextRecords(textRecords)
           .then((result) => {
             // We updated some text records
             if (result) {
-              logEvent(
-                `${usernameRegistrationAnalyticContext}_update_profile_transaction_approved`,
-                {
-                  action: ActionType.change,
-                  context: usernameRegistrationAnalyticContext,
-                  page_path: window.location.pathname,
-                },
-                AnalyticsEventImportance.high,
-              );
+              logEventWithContext('update_profile_transaction_approved', ActionType.change);
             } else {
               // no text records had to be updated, simply go to profile
               router.push(`names/${selectedName}`);
@@ -179,16 +140,9 @@ export default function RegistrationProfileForm() {
               errorReason = error.details;
             }
 
-            logEvent(
-              `${usernameRegistrationAnalyticContext}_update_profile_transaction_canceled`,
-              {
-                action: ActionType.click,
-                context: usernameRegistrationAnalyticContext,
-                page_path: window.location.pathname,
-                error: errorReason,
-              },
-              AnalyticsEventImportance.high,
-            );
+            logEventWithContext('update_profile_transaction_canceled', ActionType.click, {
+              error: errorReason,
+            });
             // TODO: Show an error
           });
       }
@@ -249,16 +203,8 @@ export default function RegistrationProfileForm() {
     existingTextRecordsIsLoading || writeTextRecordsIsPending || transactionIsFetching;
 
   useEffect(() => {
-    logEvent(
-      `${usernameRegistrationAnalyticContext}_update_profile_step_${currentFormStep}`,
-      {
-        action: ActionType.change,
-        context: usernameRegistrationAnalyticContext,
-        page_path: window.location.pathname,
-      },
-      AnalyticsEventImportance.high,
-    );
-  }, [currentFormStep]);
+    logEventWithContext(`update_profile_step_${currentFormStep}`, ActionType.change);
+  }, [currentFormStep, logEventWithContext]);
 
   return (
     <form className={formClasses}>

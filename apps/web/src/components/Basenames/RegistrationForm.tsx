@@ -1,5 +1,6 @@
 import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
@@ -10,8 +11,7 @@ import {
   useNameRegistrationPrice,
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
-import { usernameRegistrationAnalyticContext } from 'apps/web/src/utils/usernames';
-import logEvent, { ActionType, AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useState } from 'react';
 import { formatEther } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
@@ -49,37 +49,21 @@ export function RegistrationForm({
 }: RegistrationFormProps) {
   const { openConnectModal } = useConnectModal();
   const { switchChain } = useSwitchChain();
-
+  const { logEventWithContext } = useAnalytics();
   const { selectedName, setRegisterNameTransactionHash } = useRegistration();
   const [years, setYears] = useState(1);
 
   const increment = useCallback(() => {
-    logEvent(
-      `${usernameRegistrationAnalyticContext}_form_increment_year`,
-      {
-        action: ActionType.click,
-        context: usernameRegistrationAnalyticContext,
-        page_path: window.location.pathname,
-      },
-      AnalyticsEventImportance.high,
-    );
+    logEventWithContext('registration_form_increment_year', ActionType.click);
 
     setYears((n) => n + 1);
-  }, []);
+  }, [logEventWithContext]);
 
   const decrement = useCallback(() => {
-    logEvent(
-      `${usernameRegistrationAnalyticContext}_form_decement_year`,
-      {
-        action: ActionType.click,
-        context: usernameRegistrationAnalyticContext,
-        page_path: window.location.pathname,
-      },
-      AnalyticsEventImportance.high,
-    );
+    logEventWithContext('registration_form_decement_year', ActionType.click);
 
     setYears((n) => (n > 1 ? n - 1 : n));
-  }, []);
+  }, [logEventWithContext]);
 
   // TODO: Log learn more
 
@@ -111,15 +95,7 @@ export function RegistrationForm({
 
   useEffect(() => {
     if (registerNameTransactionHash) {
-      logEvent(
-        `${usernameRegistrationAnalyticContext}_register_name_transaction_approved`,
-        {
-          action: ActionType.change,
-          context: usernameRegistrationAnalyticContext,
-          page_path: window.location.pathname,
-        },
-        AnalyticsEventImportance.high,
-      );
+      logEventWithContext(`register_name_transaction_approved`, ActionType.change);
 
       setRegisterNameTransactionHash(registerNameTransactionHash);
     }

@@ -1,8 +1,12 @@
+import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import RegistrationProvider from 'apps/web/src/components/Basenames/RegistrationContext';
 import RegistrationFlow from 'apps/web/src/components/Basenames/RegistrationFlow';
 import { Layout, NavigationType } from 'apps/web/src/components/Layout/Layout';
 import Head from 'next/head';
 import { ReactElement } from 'react';
+
+// Do not change this unless you know what you're doing (it'll break analytics)
+const usernameRegistrationAnalyticContext = 'username_registration';
 
 export function Usernames() {
   return (
@@ -14,9 +18,11 @@ export function Usernames() {
           name="description"
         />
       </Head>
-      <RegistrationProvider>
-        <RegistrationFlow />
-      </RegistrationProvider>
+      <AnalyticsProvider context={usernameRegistrationAnalyticContext}>
+        <RegistrationProvider>
+          <RegistrationFlow />
+        </RegistrationProvider>
+      </AnalyticsProvider>
     </>
   );
 }
