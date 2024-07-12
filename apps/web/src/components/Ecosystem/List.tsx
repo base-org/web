@@ -107,7 +107,7 @@ export function List() {
             NO RESULTS FOR &ldquo;{searchText === '' ? selectedTag : searchText}
             &rdquo;
           </span>
-          <span className="font-sans text-gray-60">Try searching for another term</span>
+          <span className="font-sans text-gray-muted">Try searching for another term</span>
         </div>
       )}
 

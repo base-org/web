@@ -10,7 +10,7 @@ type FeatureCardProps = {
 
 export function HowItWorksCard({ featureItem: { number, title, description } }: FeatureCardProps) {
   return (
-    <div className="flex w-[290px] flex-shrink-0 flex-col space-y-10   bg-gray-10 p-8 md:w-[330px]">
+    <div className="flex w-[290px] flex-shrink-0 flex-col space-y-10   bg-gray-90 p-8 md:w-[330px]">
       <p className="font-mono text-2xl uppercase text-white">{number}</p>
       <div className="flex flex-col space-y-4">
         {isValidElement(title) ? (
@@ -21,7 +21,7 @@ export function HowItWorksCard({ featureItem: { number, title, description } }: 
         {isValidElement(description) ? (
           description
         ) : (
-          <p className="text-gray-60 font-sans text-white">{description}</p>
+          <p className="text-gray-muted font-sans text-white">{description}</p>
         )}
       </div>
     </div>
