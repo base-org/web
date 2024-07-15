@@ -178,7 +178,7 @@ export default function RegistrationSearchInput({
   const setSearchFromSuggestion = useCallback(
     (suggestion: string) => {
       // Log: suggestion
-      logEventWithContext('search_input_use_suggestion', ActionType.keyPress);
+      logEventWithContext('search_available_name_use_suggestion', ActionType.keyPress);
 
       setSearch(suggestion);
       if (inputRef.current) {
@@ -193,28 +193,22 @@ export default function RegistrationSearchInput({
   }, []);
 
   const inputOnFocus = useCallback(() => {
-    // Log focus
-    logEventWithContext('search_input_focused', ActionType.focus);
     setSearchInputFocused(true);
-  }, [logEventWithContext, setSearchInputFocused]);
+  }, [setSearchInputFocused]);
 
   const inputOnBlur = useCallback(() => {
-    // Log blur
-    logEventWithContext('search_input_blur', ActionType.blur);
     setSearchInputFocused(false);
-  }, [logEventWithContext, setSearchInputFocused]);
+  }, [setSearchInputFocused]);
 
   useEffect(() => {
-    // Log changes
-    logEventWithContext('search_input_key_press', ActionType.keyPress);
     setSearchInputFocused(false);
-  }, [debouncedSearch, logEventWithContext, setSearchInputFocused]);
+  }, [debouncedSearch, setSearchInputFocused]);
 
   useEffect(() => {
     if (!invalidWithMessage) return;
 
     // Log invalid
-    logEventWithContext('search_input_invalid', ActionType.error, { error: message });
+    logEventWithContext('search_available_name_invalid', ActionType.error, { error: message });
 
     setSearchInputFocused(false);
   }, [invalidWithMessage, logEventWithContext, message, setSearchInputFocused]);

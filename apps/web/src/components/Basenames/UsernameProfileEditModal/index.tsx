@@ -1,3 +1,4 @@
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 import UsernameDescriptionField from 'apps/web/src/components/Basenames/UsernameDescriptionField';
 import UsernameKeywordsField from 'apps/web/src/components/Basenames/UsernameKeywordsField';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
@@ -14,7 +15,9 @@ import {
   UsernameTextRecords,
 } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useState } from 'react';
+import { TransactionExecutionError } from 'viem';
 import { useWaitForTransactionReceipt } from 'wagmi';
 
 export default function UsernameProfileEditModal({
@@ -25,6 +28,7 @@ export default function UsernameProfileEditModal({
   toggleModal: () => void;
 }) {
   const { profileUsernameFormatted, profileAddress, currentWalletIsOwner } = useUsernameProfile();
+  const { logEventWithContext } = useAnalytics();
 
   const { existingTextRecords, existingTextRecordsIsLoading, refetchExistingTextRecords } =
     useReadBaseEnsTextRecords({
@@ -40,26 +44,47 @@ export default function UsernameProfileEditModal({
     });
 
   // Wait for text record transaction to be processed
-  const { isFetching: transactionIsFetching, isSuccess: transactionIsSuccess } =
-    useWaitForTransactionReceipt({
-      hash: writeTextRecordsTransactionHash,
-      query: {
-        enabled: !!writeTextRecordsTransactionHash,
-      },
-    });
+  const {
+    data: transactionData,
+    isFetching: transactionIsFetching,
+    isSuccess: transactionIsSuccess,
+  } = useWaitForTransactionReceipt({
+    hash: writeTextRecordsTransactionHash,
+    query: {
+      enabled: !!writeTextRecordsTransactionHash,
+    },
+  });
 
   const [textRecords, setTextRecords] = useState<UsernameTextRecords>(existingTextRecords);
 
   useEffect(() => {
-    if (transactionIsSuccess) {
-      refetchExistingTextRecords()
-        .then(() => {
-          // TODO: This only closes the modal, a success notification would be nice
-          toggleModal();
-        })
-        .catch(() => {});
+    if (transactionIsFetching) {
+      logEventWithContext('update_text_records_transaction_processing', ActionType.change);
     }
-  }, [refetchExistingTextRecords, toggleModal, transactionIsSuccess]);
+    if (transactionIsSuccess) {
+      if (transactionData.status === 'success') {
+        logEventWithContext('update_text_records_transaction_success', ActionType.change);
+        // TODO: Show a Success to the user
+        refetchExistingTextRecords()
+          .then(() => {
+            toggleModal();
+          })
+          .catch(() => {});
+      }
+
+      if (transactionData.status === 'reverted') {
+        logEventWithContext('update_text_records_transaction_reverted', ActionType.change);
+        // TODO: Show an error to the user
+      }
+    }
+  }, [
+    refetchExistingTextRecords,
+    transactionIsSuccess,
+    transactionData,
+    logEventWithContext,
+    transactionIsFetching,
+    toggleModal,
+  ]);
 
   useEffect(() => {
     setTextRecords(existingTextRecords);
@@ -80,20 +105,32 @@ export default function UsernameProfileEditModal({
 
       // TODO: We can't really get to this steps, but we should show
       if (!currentWalletIsOwner) return false;
+
+      logEventWithContext('update_text_records_transaction_initiated', ActionType.change);
+
       writeTextRecords(textRecords)
         .then((result) => {
           // We updated some text records
           if (result) {
+            logEventWithContext('update_text_records_transaction_approved', ActionType.change);
           } else {
-            // no text records had to be updated, close the modal
+            // no text records had to be updated, simply go to profile
             toggleModal();
           }
         })
-        .catch(() => {
-          // TODO: Show an error
+
+        .catch((error) => {
+          let errorReason = 'unknown';
+          if (error instanceof TransactionExecutionError) {
+            errorReason = error.details;
+          }
+
+          logEventWithContext('update_text_records_transaction_canceled', ActionType.click, {
+            error: errorReason,
+          });
         });
     },
-    [currentWalletIsOwner, textRecords, toggleModal, writeTextRecords],
+    [currentWalletIsOwner, logEventWithContext, textRecords, toggleModal, writeTextRecords],
   );
 
   const onChangeTextRecord = useCallback(

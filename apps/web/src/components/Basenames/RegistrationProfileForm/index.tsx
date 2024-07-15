@@ -57,7 +57,6 @@ export default function RegistrationProfileForm() {
     data: transactionData,
     isFetching: transactionIsFetching,
     isSuccess: transactionIsSuccess,
-    isPending: transactionIsPending,
   } = useWaitForTransactionReceipt({
     hash: writeTextRecordsTransactionHash,
     query: {
@@ -68,7 +67,7 @@ export default function RegistrationProfileForm() {
   const [textRecords, setTextRecords] = useState<UsernameTextRecords>(existingTextRecords);
 
   useEffect(() => {
-    if (transactionIsPending) {
+    if (transactionIsFetching) {
       logEventWithContext('update_text_records_transaction_processing', ActionType.change);
     }
     if (transactionIsSuccess) {
@@ -94,7 +93,7 @@ export default function RegistrationProfileForm() {
     router,
     selectedName,
     transactionIsSuccess,
-    transactionIsPending,
+    transactionIsFetching,
     transactionData,
     logEventWithContext,
   ]);
@@ -150,7 +149,7 @@ export default function RegistrationProfileForm() {
 
       event.preventDefault();
     },
-    [currentFormStep, router, selectedName, textRecords, writeTextRecords],
+    [currentFormStep, logEventWithContext, router, selectedName, textRecords, writeTextRecords],
   );
 
   const onChangeTextRecord = useCallback(
@@ -204,7 +203,7 @@ export default function RegistrationProfileForm() {
     existingTextRecordsIsLoading || writeTextRecordsIsPending || transactionIsFetching;
 
   useEffect(() => {
-    logEventWithContext(`update_text_records_step_${currentFormStep}`, ActionType.change);
+    logEventWithContext(`registration_profile_form_step_${currentFormStep}`, ActionType.change);
   }, [currentFormStep, logEventWithContext]);
 
   return (
