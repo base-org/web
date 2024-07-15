@@ -74,11 +74,9 @@ const initCCA = async (
         },
       },
     });
+
     await experiment.start({ device_id: deviceId });
   }
 };
 
 export default initCCA;
-
-// const variant = experiment.variant('bf_test_flag');
-// console.log({variant})
