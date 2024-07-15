@@ -26,12 +26,10 @@ export function useRegisterNameCallback(
   years: number,
   discountKey?: `0x${string}`,
   validationData?: `0x${string}`,) {
-    debugger
   if (discountKey) {
     console.log('discountKey', discountKey);
     console.log('validationData', validationData);
   }
-  const [wallet, setWallet] = useState<number>(2); // 0 for EOA, 1 for Predeployed, 2 for SCW
   const { address, chainId } = useAccount();
   
   const account = useAccount();
@@ -40,43 +38,6 @@ export function useRegisterNameCallback(
   const network = chainId === baseSepolia.id ? chainId : base.id;
   const { writeContracts } = useWriteContracts(); // For Smart Contract Wallet calls
   
-  useEffect(() => {
-    const isWalletSCW = async () => {
-      const publicClient = initializeClient();
-      try {
-        const code = await publicClient.getCode({address: address as Address});
-        console.log("code", code);
-        if (!code) {
-          setWallet(2); // EoA
-          return;
-        }
-        if (code !== CB_SW_PROXY_BYTECODE) {
-          setWallet(0); // EOA
-          return;
-        }
-        const implementation = await publicClient.request({
-          method: "eth_getStorageAt",
-          params: [address as Address, ERC_1967_PROXY_IMPLEMENTATION_SLOT, "latest"],
-        });
-        
-        const implementationAddress = decodeAbiParameters(
-          [{ type: "address" }],
-          implementation
-        )[0];
-        if (implementationAddress !== CB_SW_V1_IMPLEMENTATION_ADDRESS) {
-          setWallet(0);
-        } 
-      } catch (e) {
-        console.error("Error", e);
-        setWallet(0); // Set to 0 in case of error
-      }
-    };
-    if (address) {
-      isWalletSCW().catch(console.error);
-    }
-  }, [address]);
-  
-  console.log('wallet', wallet);
   
   const {data: availableCapacities} = useCapabilities({
       account: address
@@ -96,8 +57,7 @@ export function useRegisterNameCallback(
       }
     }
     return {};
-  }, [availableCapacities, chainId]);
-  
+  }, [availableCapacities, chainId]);  
 
   if (chainId === undefined) {
     console.error(
@@ -120,7 +80,7 @@ export function useRegisterNameCallback(
  
   return () => {
 
-    if (wallet == 0) {
+    if (!capabilities || Object.keys(capabilities).length === 0) {
       try {
         const result = writeContract({
           abi,
@@ -136,7 +96,6 @@ export function useRegisterNameCallback(
       }
     } else {
       try {
-        console.log('in this try');
         const resultSCW = writeContracts({
           contracts: [
             {
