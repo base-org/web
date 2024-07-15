@@ -1,5 +1,11 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import {
+  DiscountData,
+  findFirstValidDiscount,
+  useAggregatedDiscountValidators,
+} from 'apps/web/src/hooks/useAggregatedDiscountValidators';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
+import { Discount, isValidDiscount } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import {
   Dispatch,
@@ -11,6 +17,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { Address } from 'viem';
 import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
 
 export enum RegistrationSteps {
@@ -32,6 +39,9 @@ export type RegistrationContextProps = {
   setSelectedName: Dispatch<SetStateAction<string>>;
   registerNameTransactionHash: string;
   setRegisterNameTransactionHash: Dispatch<SetStateAction<string>>;
+  loadingDiscounts: boolean;
+  discount: DiscountData | undefined;
+  allActiveDiscounts: Set<Discount>;
 };
 
 export const RegistrationContext = createContext<RegistrationContextProps>({
@@ -51,10 +61,13 @@ export const RegistrationContext = createContext<RegistrationContextProps>({
   setSelectedName: function () {
     return undefined;
   },
-  registerNameTransactionHash: 'string',
+  registerNameTransactionHash: '0x',
   setRegisterNameTransactionHash: function () {
     return undefined;
   },
+  loadingDiscounts: true,
+  discount: undefined,
+  allActiveDiscounts: new Set(),
 });
 
 type RegistrationProviderProps = {
@@ -65,6 +78,7 @@ type RegistrationProviderProps = {
 export const registrationTransitionDuration = 'duration-700';
 
 export default function RegistrationProvider({ children }: RegistrationProviderProps) {
+  // UI state
   const [searchInputFocused, setSearchInputFocused] = useState<boolean>(false);
   const [searchInputHovered, setSearchInputHovered] = useState<boolean>(false);
   const [selectedName, setSelectedName] = useState<string>('');
@@ -72,15 +86,32 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     RegistrationSteps.Search,
   );
 
+  // Analytics
   const { logEventWithContext } = useAnalytics();
+
+  // Web3 data
   const { address } = useAccount();
   const { refetch: baseEnsNameRefetch } = useBaseEnsName({
     address,
   });
 
+  // Username discount states
+  const { data: discounts, loading: loadingDiscounts } = useAggregatedDiscountValidators();
+  const discount = findFirstValidDiscount(discounts);
+
+  const allActiveDiscounts = useMemo(
+    () =>
+      new Set(
+        Object.keys(discounts)
+          .filter(isValidDiscount)
+          .map((key) => Discount[key]),
+      ),
+    [discounts],
+  );
+
   // TODO: Not a big fan of this, I think ideally we'd have useRegisterNameCallback here
   const [registerNameTransactionHash, setRegisterNameTransactionHash] = useState<
-    `0x${string}` | undefined
+    Address | undefined
   >();
 
   // Wait for text record transaction to be processed
@@ -167,8 +198,14 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       setRegistrationStep,
       registerNameTransactionHash,
       setRegisterNameTransactionHash,
+      loadingDiscounts,
+      discount,
+      allActiveDiscounts,
     };
   }, [
+    allActiveDiscounts,
+    discount,
+    loadingDiscounts,
     registerNameTransactionHash,
     registrationStep,
     searchInputFocused,

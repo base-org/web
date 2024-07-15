@@ -258,3 +258,13 @@ export const convertReverseNodeToBytes = (address?: Address) => {
 
   return addressReverseNode;
 };
+
+export enum Discount {
+  CBID = 'CBID',
+  CB1 = 'CB1',
+  COINBASE_VERIFIED_ACCOUNT = 'COINBASE_VERIFIED_ACCOUNT',
+}
+
+export function isValidDiscount(key: string): key is keyof typeof Discount {
+  return Object.values(Discount).includes(key as Discount);
+}

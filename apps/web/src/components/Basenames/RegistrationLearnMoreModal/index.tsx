@@ -1,7 +1,8 @@
 import { InformationCircleIcon } from '@heroicons/react/20/solid';
-import { Discount } from 'apps/web/src/components/Basenames/RegistrationFlow';
+import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import Modal from 'apps/web/src/components/Modal';
 import Tooltip from 'apps/web/src/components/Tooltip';
+import { Discount } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import Image from 'next/image';
 
@@ -15,39 +16,39 @@ function InfoIcon() {
   );
 }
 
-export function LearnMoreModal({
-  discounts,
-  learnMoreModalOpen,
+export default function RegistrationLearnMoreModal({
+  isOpen,
   toggleModal,
 }: {
-  discounts: Set<`${Discount}`>;
-  learnMoreModalOpen: boolean;
+  isOpen: boolean;
   toggleModal: () => void;
 }) {
-  const hasDiscount = discounts.size > 0;
+  const { allActiveDiscounts } = useRegistration();
+
+  const hasDiscount = allActiveDiscounts.size > 0;
   const rowClasses = 'flex flex-row items-center justify-start';
   const CBRowClasses = classNames(rowClasses, {
-    'opacity-40': hasDiscount && !discounts.has('COINBASE_VERIFIED_ACCOUNT'),
+    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.COINBASE_VERIFIED_ACCOUNT),
   });
   const CB1RowClasses = classNames(rowClasses, {
-    'opacity-40': hasDiscount && !discounts.has('CB1'),
+    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.CB1),
   });
   const CBIDRowClasses = classNames(rowClasses, {
-    'opacity-40': hasDiscount && !discounts.has('CBID'),
+    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.CBID),
   });
 
   const qualifiedClasses = classNames(
     'flex flex-row items-center justify-center py-3 px-1 h-5 text-xs bg-green-0 rounded ml-3',
   );
   return (
-    <Modal isOpen={learnMoreModalOpen} onClose={toggleModal} title="">
+    <Modal isOpen={isOpen} onClose={toggleModal} title="">
       <span className="mb-4 w-full text-2xl font-bold">
-        {hasDiscount ? 'You’re getting a free name' : 'Register for free'}
+        {hasDiscount ? "You're getting a free name" : 'Register for free'}
       </span>
       <p className="mb-6 text-illoblack">
         {hasDiscount
-          ? 'You’re receiving your name for free (5+ characters for 1 year) because your wallet has one of the following:'
-          : 'You’ll receive a name for free (5+ characters for 1 year) if your wallet has any of the following:'}
+          ? "You're receiving your name for free (5+ characters for 1 year) because your wallet has one of the following:"
+          : "You'll receive a name for free (5+ characters for 1 year) if your wallet has any of the following:"}
       </p>
       <ul className="mb-5 flex flex-col gap-3 self-start">
         <li className="flex items-center">
@@ -62,7 +63,7 @@ export function LearnMoreModal({
           <Tooltip content="Verifies you have a valid trading account on Coinbase">
             <InfoIcon />
           </Tooltip>
-          {discounts.has('COINBASE_VERIFIED_ACCOUNT') && (
+          {allActiveDiscounts.has(Discount.COINBASE_VERIFIED_ACCOUNT) && (
             <div className={qualifiedClasses}>
               <p className="text-green-60">Qualified</p>
             </div>
@@ -80,7 +81,7 @@ export function LearnMoreModal({
           <Tooltip content="Verifies you have an active Coinbase One subscription">
             <InfoIcon />
           </Tooltip>
-          {discounts.has('CB1') && (
+          {allActiveDiscounts.has(Discount.CB1) && (
             <div className={qualifiedClasses}>
               <p className="text-green-60">Qualified</p>
             </div>
@@ -98,7 +99,7 @@ export function LearnMoreModal({
           <Tooltip content="cb.id claimed prior to cutoff date">
             <InfoIcon />
           </Tooltip>
-          {discounts.has('CBID') && (
+          {allActiveDiscounts.has(Discount.CBID) && (
             <div className={qualifiedClasses}>
               <p className="text-green-60">Qualified</p>
             </div>
@@ -115,7 +116,7 @@ export function LearnMoreModal({
             .
           </p>
           <div className="text-md bg-backgroundAlternate w-full rounded-xl border border-[#CED2DB] p-4 font-medium text-illoblack">
-            Don’t have any of these?{' '}
+            Don&apos;t have any of these?{' '}
             <a href="https://www.coinbase.com/onchain-verify" className="underline">
               Get a verification
             </a>

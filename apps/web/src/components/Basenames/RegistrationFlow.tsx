@@ -1,6 +1,6 @@
 import { Transition } from '@headlessui/react';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
-import { LearnMoreModal } from 'apps/web/src/components/Basenames/LearnMoreModal';
+
 import RegistrationBackground from 'apps/web/src/components/Basenames/RegistrationBackground';
 import RegistrationBrand from 'apps/web/src/components/Basenames/RegistrationBrand';
 import {
@@ -15,24 +15,10 @@ import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Base
 import RegistrationSearchInput, {
   RegistrationSearchInputVariant,
 } from 'apps/web/src/components/Basenames/RegistrationSearchInput';
-import {
-  findFirstValidDiscount,
-  useAggregatedDiscountValidators,
-} from 'apps/web/src/hooks/useAggregatedDiscountValidators';
 import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useCallback, useMemo, useState } from 'react';
-
-export enum Discount {
-  CBID = 'CBID',
-  CB1 = 'CB1',
-  COINBASE_VERIFIED_ACCOUNT = 'COINBASE_VERIFIED_ACCOUNT',
-}
-
-function isValidDiscount(key: string): key is keyof typeof Discount {
-  return Object.values(Discount).includes(key as Discount);
-}
+import { useEffect } from 'react';
 
 /*
 test addresses w/ different verifications
@@ -42,27 +28,9 @@ test addresses w/ different verifications
 */
 
 export function RegistrationFlow() {
-  const { data: discounts, loading: loadingDiscounts } = useAggregatedDiscountValidators();
-  const discount = findFirstValidDiscount(discounts);
   const { logEventWithContext } = useAnalytics();
-  const allActiveDiscounts = useMemo(
-    () =>
-      new Set(
-        Object.keys(discounts)
-          .filter(isValidDiscount)
-          .map((key) => Discount[key]),
-      ),
-    [discounts],
-  );
-
   const { registrationStep, setRegistrationStep, searchInputFocused, selectedName } =
     useRegistration();
-
-  const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
-  const toggleLearnMoreModal = useCallback(() => {
-    logEventWithContext('open_learn_more_modal', ActionType.change);
-    setLearnMoreModalOpen((open) => !open);
-  }, [logEventWithContext]);
 
   const isSearch = registrationStep === RegistrationSteps.Search;
   const isClaim = registrationStep === RegistrationSteps.Claim;
@@ -87,6 +55,10 @@ export function RegistrationFlow() {
   const currentUsernamePillVariant = isProfile
     ? UsernamePillVariants.Card
     : UsernamePillVariants.Inline;
+
+  useEffect(() => {
+    logEventWithContext('initial_render', ActionType.render);
+  }, [logEventWithContext]);
 
   return (
     <main className={mainClasses}>
@@ -269,11 +241,7 @@ export function RegistrationFlow() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <RegistrationForm
-            loadingDiscounts={loadingDiscounts}
-            discount={discount}
-            toggleModal={toggleLearnMoreModal}
-          />
+          <RegistrationForm />
         </Transition>
 
         {/* 4. Registration Success Message */}
@@ -315,18 +283,7 @@ export function RegistrationFlow() {
       </Transition>
 
       {/* Misc: Animated background for each steps */}
-
       <RegistrationBackground />
-      {/* 
-        Misc: Learn more about validation modal 
-        TODO: Move this to RegistrationForm
-      */}
-
-      <LearnMoreModal
-        discounts={allActiveDiscounts}
-        learnMoreModalOpen={learnMoreModalOpen}
-        toggleModal={toggleLearnMoreModal}
-      />
     </main>
   );
 }
