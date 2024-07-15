@@ -5,7 +5,7 @@ import { isDevelopment } from 'apps/web/src/constants';
 
 const defaultDeploymentKey = {
   development: 'client-Wvf63OdaukDZyCBtwgbOvHgGTuASBZFG',
-  production: '',
+  production: 'client-agFoQg5AOvZ2ZiOChny9RrGk21jG3VrH',
 };
 
 export default function useVariant(
