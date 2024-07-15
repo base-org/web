@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Experiment } from '@amplitude/experiment-js-client';
 
-type VariantContextProps = {
-  flagKey: string;
-  deploymentKey?: string;
-};
 
-export default function useVariant({
-  flagKey,
+export default function useVariant(
+  flagKey: string,
   deploymentKey = 'client-Wvf63OdaukDZyCBtwgbOvHgGTuASBZFG',
-}: VariantContextProps): string {
+): string {
   const [variant, setVariant] = useState('');
 
   useEffect(() => {
