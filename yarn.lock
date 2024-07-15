@@ -241,7 +241,7 @@ __metadata:
     "@docusaurus/theme-common": 2.4.3
     "@mdx-js/react": ^1.6.22
     "@microsoft/fetch-event-source": ^2.0.1
-    "@rainbow-me/rainbowkit": ^2.0.5
+    "@rainbow-me/rainbowkit": ^2.1.3
     "@tanstack/react-query": ^5.29.0
     "@tsconfig/docusaurus": ^1.0.5
     "@types/dompurify": ^3.0.5
@@ -308,7 +308,7 @@ __metadata:
     "@coinbase/cookie-manager": ^1.1.1
     "@coinbase/onchainkit": ^0.6.0
     "@heroicons/react": ^2.0.18
-    "@rainbow-me/rainbowkit": ^2.1.2
+    "@rainbow-me/rainbowkit": ^2.1.3
     "@tanstack/react-query": ^5.29.2
     "@types/node": 18.11.18
     "@types/pg": ^8.11.6
@@ -6066,29 +6066,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rainbow-me/rainbowkit@npm:^2.0.5":
-  version: 2.0.5
-  resolution: "@rainbow-me/rainbowkit@npm:2.0.5"
-  dependencies:
-    "@vanilla-extract/css": 1.14.0
-    "@vanilla-extract/dynamic": 2.1.0
-    "@vanilla-extract/sprinkles": 1.6.1
-    clsx: 2.1.0
-    qrcode: 1.5.3
-    react-remove-scroll: 2.5.7
-    ua-parser-js: ^1.0.37
-  peerDependencies:
-    react: ">=17"
-    react-dom: ">=17"
-    viem: 2.x
-    wagmi: 2.x
-  checksum: 496a222ad2f4e228ac2b43353145050fd9f081cd4633edc101a819c128239889e127b0584bb881775ada550a4a56caa4ad3f0a99778748fcedfde997a810b20d
-  languageName: node
-  linkType: hard
-
-"@rainbow-me/rainbowkit@npm:^2.1.2":
-  version: 2.1.2
-  resolution: "@rainbow-me/rainbowkit@npm:2.1.2"
+"@rainbow-me/rainbowkit@npm:^2.1.3":
+  version: 2.1.3
+  resolution: "@rainbow-me/rainbowkit@npm:2.1.3"
   dependencies:
     "@vanilla-extract/css": 1.14.0
     "@vanilla-extract/dynamic": 2.1.0
@@ -6103,7 +6083,7 @@ __metadata:
     react-dom: ">=18"
     viem: 2.x
     wagmi: ^2.9.0
-  checksum: 8d127509b376715c3e22030a4df74ef061d3da86bfa481bae3ea035192fa324fb82179da284f4bdf98feb1b2672157ca9440ed0c51d9280d9da694b9e6ba6250
+  checksum: 415b9361710c4f91d0ca84f8918e3957cda9f7501707e433498a1b7c0d95132b8ef58b7a1b16ee873b8e9380a42932d73b9529b491654439bb2a4e4f849d60f1
   languageName: node
   linkType: hard
 
