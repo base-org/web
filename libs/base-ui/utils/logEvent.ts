@@ -43,6 +43,7 @@ enum ActionType {
   view = 'view',
   search = 'search',
   keyPress = 'keyPress',
+  error = 'error',
 }
 
 enum AnalyticsEventImportance {

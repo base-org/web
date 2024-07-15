@@ -11,17 +11,20 @@ import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 
-export enum UsernameSearchInputVariant {
+export enum RegistrationSearchInputVariant {
   Small,
   Large,
 }
 
-type UsernameSearchInputProps = {
-  variant: UsernameSearchInputVariant;
+type RegistrationSearchInputProps = {
+  variant: RegistrationSearchInputVariant;
   placeholder: string;
 };
 
-export default function UsernameSearchInput({ variant, placeholder }: UsernameSearchInputProps) {
+export default function RegistrationSearchInput({
+  variant,
+  placeholder,
+}: RegistrationSearchInputProps) {
   const { ref, focused } = useFocusWithin();
   const { logEventWithContext } = useAnalytics();
   const [search, setSearch] = useState<string>('');
@@ -43,42 +46,42 @@ export default function UsernameSearchInput({ variant, placeholder }: UsernameSe
     setDropdownOpen(valid || invalidWithMessage);
   }, [debouncedSearch, invalidWithMessage, valid]);
 
-  const usernameSearchInputClasses = classNames(
+  const RegistrationSearchInputClasses = classNames(
     'relative z-10 transition-all duration-500 w-full mx-auto group text-black',
   );
 
   // This will change/animate the border when hovering the whole component
   const groupBorderClasses = classNames('transition-colors', {
     'border-2 border-gray-40/20 group-hover:border-blue-600 ':
-      variant === UsernameSearchInputVariant.Large,
+      variant === RegistrationSearchInputVariant.Large,
     'border border-transparent group-hover:border-gray-40/20 ':
-      variant === UsernameSearchInputVariant.Small,
+      variant === RegistrationSearchInputVariant.Small,
 
-    'shadow-lg': variant === UsernameSearchInputVariant.Large,
+    'shadow-lg': variant === RegistrationSearchInputVariant.Large,
   });
 
   const inputClasses = classNames(
     'w-full outline-0 placeholder:uppercase peer ',
     // Padding & Font sizes
     {
-      'py-7 pl-6 pr-16 text-2xl': variant === UsernameSearchInputVariant.Large,
-      'py-2 pl-3 pr-6': variant === UsernameSearchInputVariant.Small,
+      'py-7 pl-6 pr-16 text-2xl': variant === RegistrationSearchInputVariant.Large,
+      'py-2 pl-3 pr-6': variant === RegistrationSearchInputVariant.Small,
     },
     // Background
     {
-      'bg-white': variant === UsernameSearchInputVariant.Large,
-      'bg-transparent focus:bg-white': variant === UsernameSearchInputVariant.Small,
+      'bg-white': variant === RegistrationSearchInputVariant.Large,
+      'bg-transparent focus:bg-white': variant === RegistrationSearchInputVariant.Small,
     },
     // border colors
     {
-      'border-gray-40/20 focus:border-blue-600 ': variant === UsernameSearchInputVariant.Large,
+      'border-gray-40/20 focus:border-blue-600 ': variant === RegistrationSearchInputVariant.Large,
       'focus:border-gray-40/20 hover:border-gray-40/20':
-        variant === UsernameSearchInputVariant.Small,
+        variant === RegistrationSearchInputVariant.Small,
     },
     // Borders Radius
     {
-      'rounded-3xl': variant === UsernameSearchInputVariant.Large,
-      'rounded-xl': variant === UsernameSearchInputVariant.Small,
+      'rounded-3xl': variant === RegistrationSearchInputVariant.Large,
+      'rounded-xl': variant === RegistrationSearchInputVariant.Small,
       'rounded-b-none border-b-none border-b-0': dropdownOpen,
     },
     groupBorderClasses,
@@ -90,13 +93,13 @@ export default function UsernameSearchInput({ variant, placeholder }: UsernameSe
     groupBorderClasses,
     // radius, Padding & Font sizes
     {
-      'pb-4 rounded-b-3xl': variant === UsernameSearchInputVariant.Large,
-      'pb-2 rounded-b-xl': variant === UsernameSearchInputVariant.Small,
+      'pb-4 rounded-b-3xl': variant === RegistrationSearchInputVariant.Large,
+      'pb-2 rounded-b-xl': variant === RegistrationSearchInputVariant.Small,
     },
     // border colors
     {
-      'border-2 peer-focus:border-blue-600': variant === UsernameSearchInputVariant.Large,
-      'border peer-focus:border-gray-40/20': variant === UsernameSearchInputVariant.Small,
+      'border-2 peer-focus:border-blue-600': variant === RegistrationSearchInputVariant.Large,
+      'border peer-focus:border-gray-40/20': variant === RegistrationSearchInputVariant.Small,
     },
     // Visible or not
     {
@@ -113,40 +116,40 @@ export default function UsernameSearchInput({ variant, placeholder }: UsernameSe
   );
 
   const dropdownLabelClasses = classNames('w-full uppercase text-gray-60 font-bold', {
-    'px-6 text-sm mb-4 mt-4': variant === UsernameSearchInputVariant.Large,
-    'px-3 text-xs mb-2 mt-2': variant === UsernameSearchInputVariant.Small,
+    'px-6 text-sm mb-4 mt-4': variant === RegistrationSearchInputVariant.Large,
+    'px-3 text-xs mb-2 mt-2': variant === RegistrationSearchInputVariant.Small,
   });
 
   const buttonClasses = classNames(
     'flex w-full flex-row items-center justify-between transition-colors hover:bg-[#F9F9F9] active:bg-[#EAEAEB] text-ellipsis',
     {
-      'px-6 py-4 text': variant === UsernameSearchInputVariant.Large,
-      'px-3 py-2 text-sm': variant === UsernameSearchInputVariant.Small,
+      'px-6 py-4 text': variant === RegistrationSearchInputVariant.Large,
+      'px-3 py-2 text-sm': variant === RegistrationSearchInputVariant.Small,
     },
   );
 
   const inputIconClasses = classNames('absolute top-1/2 z-20 flex -translate-y-1/2 items-center', {
-    'right-8': variant === UsernameSearchInputVariant.Large,
-    'right-3': variant === UsernameSearchInputVariant.Small,
+    'right-8': variant === RegistrationSearchInputVariant.Large,
+    'right-3': variant === RegistrationSearchInputVariant.Small,
   });
 
   const lineClasses = classNames('w-full', {
-    'px-6': variant === UsernameSearchInputVariant.Large,
-    'px-3': variant === UsernameSearchInputVariant.Small,
+    'px-6': variant === RegistrationSearchInputVariant.Large,
+    'px-3': variant === RegistrationSearchInputVariant.Small,
   });
 
   const mutedMessage = classNames('text-gray-60', {
-    'px-6 py-4 text': variant === UsernameSearchInputVariant.Large,
-    'px-3 py-2 text-sm': variant === UsernameSearchInputVariant.Small,
+    'px-6 py-4 text': variant === RegistrationSearchInputVariant.Large,
+    'px-3 py-2 text-sm': variant === RegistrationSearchInputVariant.Small,
   });
 
   const spinnerWrapperClasses = classNames('flex w-full items-center justify-center', {
     // Equivalent to the dropdown when one name is available
-    'h-[6.75rem]': variant === UsernameSearchInputVariant.Large,
-    'h-[4.25rem]': variant === UsernameSearchInputVariant.Small,
+    'h-[6.75rem]': variant === RegistrationSearchInputVariant.Large,
+    'h-[4.25rem]': variant === RegistrationSearchInputVariant.Small,
   });
 
-  const iconSize = variant === UsernameSearchInputVariant.Large ? 24 : 16;
+  const iconSize = variant === RegistrationSearchInputVariant.Large ? 24 : 16;
 
   const inputId = useId();
 
@@ -211,23 +214,20 @@ export default function UsernameSearchInput({ variant, placeholder }: UsernameSe
     if (!invalidWithMessage) return;
 
     // Log invalid
-    logEventWithContext('search_input_invalid', ActionType.change);
+    logEventWithContext('search_input_invalid', ActionType.error, { error: message });
 
     setSearchInputFocused(false);
-  }, [invalidWithMessage, logEventWithContext, setSearchInputFocused]);
+  }, [invalidWithMessage, logEventWithContext, message, setSearchInputFocused]);
 
   useEffect(() => {
     if (!isError) return;
-
-    // Log error
-    logEventWithContext('search_input_error', ActionType.process);
 
     setSearchInputFocused(false);
   }, [isError, logEventWithContext, setSearchInputFocused]);
 
   return (
     <fieldset
-      className={usernameSearchInputClasses}
+      className={RegistrationSearchInputClasses}
       onMouseEnter={() => setSearchInputHovered(true)}
       onMouseLeave={() => setSearchInputHovered(false)}
       ref={ref}

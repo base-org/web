@@ -12,9 +12,9 @@ import { RegistrationForm } from 'apps/web/src/components/Basenames/Registration
 import RegistrationProfileForm from 'apps/web/src/components/Basenames/RegistrationProfileForm';
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
-import UsernameSearchInput, {
-  UsernameSearchInputVariant,
-} from 'apps/web/src/components/Basenames/UsernameSearchInput';
+import RegistrationSearchInput, {
+  RegistrationSearchInputVariant,
+} from 'apps/web/src/components/Basenames/RegistrationSearchInput';
 import {
   findFirstValidDiscount,
   useAggregatedDiscountValidators,
@@ -60,7 +60,7 @@ export function RegistrationFlow() {
 
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
   const toggleLearnMoreModal = useCallback(() => {
-    logEventWithContext(`open_learn_more_modal`, ActionType.change);
+    logEventWithContext('open_learn_more_modal', ActionType.change);
     setLearnMoreModalOpen((open) => !open);
   }, [logEventWithContext]);
 
@@ -177,8 +177,8 @@ export function RegistrationFlow() {
           leaveFrom="max-w-full"
           leaveTo="max-w-0"
         >
-          <UsernameSearchInput
-            variant={UsernameSearchInputVariant.Large}
+          <RegistrationSearchInput
+            variant={RegistrationSearchInputVariant.Large}
             placeholder="Search for a name"
           />
         </Transition>
@@ -214,8 +214,8 @@ export function RegistrationFlow() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <UsernameSearchInput
-              variant={UsernameSearchInputVariant.Small}
+            <RegistrationSearchInput
+              variant={RegistrationSearchInputVariant.Small}
               placeholder="Find another name"
             />
           </Transition>

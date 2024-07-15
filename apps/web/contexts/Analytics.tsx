@@ -34,22 +34,21 @@ export default function AnalyticsProvider({ children, context }: AnalyticsProvid
   const { fullContext: previousContext } = useAnalytics();
 
   const fullContext = [previousContext, context].filter((c) => !!c).join('_');
-
   const logEventWithContext = useCallback(
     (eventName: string, action: ActionType, eventData?: CCAEventData) => {
-      const sanitizedEventName = `${fullContext}_${eventName}`.toLocaleLowerCase();
+      const sanitizedEventName = eventName.toLocaleLowerCase();
       logEvent(
         sanitizedEventName, // TODO: Do we want context here?
         {
           action: action,
-          context: context,
+          context: fullContext,
           page_path: window.location.pathname,
           ...eventData,
         },
         AnalyticsEventImportance.high,
       );
     },
-    [context, fullContext],
+    [fullContext],
   );
 
   const values = useMemo(() => {

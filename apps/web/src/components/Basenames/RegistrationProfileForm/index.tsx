@@ -69,12 +69,12 @@ export default function RegistrationProfileForm() {
 
   useEffect(() => {
     if (transactionIsPending) {
-      logEventWithContext('update_profile_transaction_processing', ActionType.change);
+      logEventWithContext('update_text_records_transaction_processing', ActionType.change);
     }
     if (transactionIsSuccess) {
       // TODO: This can be a failed transaction
       if (transactionData.status === 'success') {
-        logEventWithContext('update_profile_transaction_success', ActionType.change);
+        logEventWithContext('update_text_records_transaction_success', ActionType.change);
 
         refetchExistingTextRecords()
           .then(() => {
@@ -84,7 +84,7 @@ export default function RegistrationProfileForm() {
       }
 
       if (transactionData.status === 'reverted') {
-        logEventWithContext('update_profile_transaction_reverted', ActionType.change);
+        logEventWithContext('update_text_records_transaction_reverted', ActionType.change);
 
         // TODO: Show an error to the user
       }
@@ -96,6 +96,7 @@ export default function RegistrationProfileForm() {
     transactionIsSuccess,
     transactionIsPending,
     transactionData,
+    logEventWithContext,
   ]);
 
   useEffect(() => {
@@ -123,12 +124,12 @@ export default function RegistrationProfileForm() {
       }
 
       if (currentFormStep === FormSteps.Keywords) {
-        logEventWithContext('update_profile_transaction_initiated', ActionType.change);
+        logEventWithContext('update_text_records_transaction_initiated', ActionType.change);
         writeTextRecords(textRecords)
           .then((result) => {
             // We updated some text records
             if (result) {
-              logEventWithContext('update_profile_transaction_approved', ActionType.change);
+              logEventWithContext('update_text_records_transaction_approved', ActionType.change);
             } else {
               // no text records had to be updated, simply go to profile
               router.push(`names/${selectedName}`);
@@ -140,7 +141,7 @@ export default function RegistrationProfileForm() {
               errorReason = error.details;
             }
 
-            logEventWithContext('update_profile_transaction_canceled', ActionType.click, {
+            logEventWithContext('update_text_records_transaction_canceled', ActionType.click, {
               error: errorReason,
             });
             // TODO: Show an error
@@ -203,7 +204,7 @@ export default function RegistrationProfileForm() {
     existingTextRecordsIsLoading || writeTextRecordsIsPending || transactionIsFetching;
 
   useEffect(() => {
-    logEventWithContext(`update_profile_step_${currentFormStep}`, ActionType.change);
+    logEventWithContext(`update_text_records_step_${currentFormStep}`, ActionType.change);
   }, [currentFormStep, logEventWithContext]);
 
   return (

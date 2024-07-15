@@ -95,11 +95,11 @@ export function RegistrationForm({
 
   useEffect(() => {
     if (registerNameTransactionHash) {
-      logEventWithContext(`register_name_transaction_approved`, ActionType.change);
+      logEventWithContext('register_name_transaction_approved', ActionType.change);
 
       setRegisterNameTransactionHash(registerNameTransactionHash);
     }
-  }, [registerNameTransactionHash, setRegisterNameTransactionHash]);
+  }, [logEventWithContext, registerNameTransactionHash, setRegisterNameTransactionHash]);
 
   const registerNameCallback = useCallback(() => {
     registerName()

@@ -19,7 +19,7 @@ export default function RegistrationSuccessMessage() {
   const openModal = useCallback(
     (event: React.MouseEvent<HTMLAnchorElement>) => {
       event.preventDefault();
-      logEventWithContext(`success_open_share_on_social_modal`, ActionType.click);
+      logEventWithContext('open_share_on_social_modal', ActionType.click);
       setIsOpen(true);
     },
     [logEventWithContext],
@@ -30,12 +30,12 @@ export default function RegistrationSuccessMessage() {
   }, []);
 
   const customizeProfileOnClick = useCallback(() => {
-    logEventWithContext(`success_customize_profile`, ActionType.click);
+    logEventWithContext('customize_profile', ActionType.click);
     setRegistrationStep(RegistrationSteps.Profile);
   }, [logEventWithContext, setRegistrationStep]);
 
   const goToProfileOnClick = useCallback(() => {
-    logEventWithContext(`success_go_to_profile`, ActionType.click);
+    logEventWithContext('go_to_profile', ActionType.click);
     router.push(`names/${selectedName}`);
   }, [logEventWithContext, router, selectedName]);
 

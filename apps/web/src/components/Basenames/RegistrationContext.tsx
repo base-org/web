@@ -97,7 +97,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
 
   useEffect(() => {
     if (transactionIsFetching) {
-      logEventWithContext(`register_name_transaction_processing`, ActionType.change);
+      logEventWithContext('register_name_transaction_processing', ActionType.change);
 
       setRegistrationStep(RegistrationSteps.Pending);
     }
@@ -106,7 +106,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       // TODO: This can be a failed transaction
       if (transactionData.status === 'success') {
         // TODO: What about failed transaction?
-        logEventWithContext(`register_name_transaction_success`, ActionType.change);
+        logEventWithContext('register_name_transaction_success', ActionType.change);
         // Reload current ENS name
         baseEnsNameRefetch()
           .then(() => {
@@ -118,7 +118,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       }
 
       if (transactionData.status === 'reverted') {
-        logEventWithContext(`register_name_transaction_reverted`, ActionType.change);
+        logEventWithContext('register_name_transaction_reverted', ActionType.change);
 
         // TODO: Show an error to the user
       }
@@ -148,7 +148,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   // Log user selecting a name
   useEffect(() => {
     if (!selectedName) return;
-    logEventWithContext(`user_selected_name`, ActionType.change);
+    logEventWithContext('selected_name', ActionType.change);
 
     setSearchInputFocused(false);
   }, [logEventWithContext, selectedName]);

@@ -1,3 +1,4 @@
+import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
 import UsernameProfileProvider from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import { Layout, NavigationType } from 'apps/web/src/components/Layout/Layout';
@@ -11,6 +12,9 @@ import { NextPageContext } from 'next';
 import Head from 'next/head';
 import { useParams } from 'next/navigation';
 import { ReactElement } from 'react';
+
+// Do not change this unless you know what you're doing (it'll break analytics)
+const usernameProfileAnalyticContext = 'username_profile';
 
 export function Username({ domain }: { domain: string }) {
   const { username: profileUsername } = useParams<{ username: string }>();
@@ -27,9 +31,11 @@ export function Username({ domain }: { domain: string }) {
         <meta property="og:image:height" content={openGraphImageHeight.toString()} />
         <meta property="og:image:alt" content={`Base profile `} />
       </Head>
-      <UsernameProfileProvider>
-        <UsernameProfile />
-      </UsernameProfileProvider>
+      <AnalyticsProvider context={usernameProfileAnalyticContext}>
+        <UsernameProfileProvider>
+          <UsernameProfile />
+        </UsernameProfileProvider>
+      </AnalyticsProvider>
     </>
   );
 }
