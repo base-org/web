@@ -89,6 +89,8 @@ const contentSecurityPolicy = {
     'https://api.opensea.io', // enables getting ENS avatars
     isLocalDevelopment ? 'ws://localhost:3000/' : '',
     isLocalDevelopment ? 'http://localhost:3000/' : '',
+    'https://flag.lab.amplitude.com/',
+    'https://api.lab.amplitude.com/sdk/v2/vardata',
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
