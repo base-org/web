@@ -135,18 +135,11 @@ export async function sybilResistantUsernameSigning(
 
     const kvKey = `${previousClaimsKVPrefix}${idemKey}`;
     //check kv for previous claim entries
-    let previousClaims = await kv.get<PreviousClaims>(kvKey);
-    if (previousClaims) {
-      const previousClaim = previousClaims[discountType];
-      //check if there's an entry for this type, if there's no entry, throw an error. This means that there's already a signature for other discount, potential sybil
-      if (!previousClaim) {
-        throw new Error(
-          'You tried claiming this with a different discount, wait a couple minutes to try again.',
-        );
-      }
+    let previousClaims = (await kv.get<PreviousClaims>(kvKey)) ?? {};
+    const previousClaim = previousClaims[discountType];
+    if (previousClaim) {
       if (previousClaim.address != address) {
         console.log(previousClaim.address, address);
-        // await kv.del(kvKey);
         throw new Error(
           'You tried claiming this with a different address, wait a couple minutes to try again.',
         );
@@ -168,7 +161,8 @@ export async function sybilResistantUsernameSigning(
       parseInt(EXPIRY),
     );
     const claim: PreviousClaim = { address, signedMessage };
-    await kv.set(kvKey, { [discountType]: claim }, { nx: true, ex: parseInt(EXPIRY) });
+    previousClaims[discountType] = claim;
+    await kv.set(kvKey, previousClaims, { nx: true, ex: parseInt(EXPIRY) });
 
     return {
       signedMessage: claim.signedMessage,
