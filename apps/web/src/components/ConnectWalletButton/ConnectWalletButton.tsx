@@ -23,7 +23,7 @@ const colorVariant: Record<'white' | 'black', 'white' | 'black'> = {
 
 export function ConnectWalletButton({ color, className }: ConnectWalletButtonProps) {
   const { openConnectModal } = useConnectModal();
-  const { address } = useAccount();
+  const { address, connector } = useAccount();
 
   useEffect(() => {
     if (address) {
@@ -32,7 +32,8 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
          {
           action: ActionType.change,
           context: 'navbar',
-          address
+          address,
+          walletType: connector?.id,
          },
          AnalyticsEventImportance.low
         );
