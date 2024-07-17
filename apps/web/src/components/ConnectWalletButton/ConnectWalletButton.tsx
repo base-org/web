@@ -4,6 +4,7 @@ import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
+import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
 import logEvent, {
   ActionType,
   AnalyticsEventImportance,
@@ -29,14 +30,14 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
     if (address) {
       logEvent(
         'wallet_connected',
-         {
+        {
           action: ActionType.change,
           context: 'navbar',
           address,
-          walletType: connector?.name.toLowerCase().replace(/[ \-\/\.]/g, '_'),
-         },
-         AnalyticsEventImportance.low
-        );
+          walletType: sanitizeEventString(connector?.name),
+        },
+        AnalyticsEventImportance.low,
+      );
       identify({ userId: address });
     }
   }, [address]);
@@ -48,9 +49,9 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
       {
         action: ActionType.click,
         componentType: ComponentType.button,
-        context: 'navbar'
+        context: 'navbar',
       },
-      AnalyticsEventImportance.low
+      AnalyticsEventImportance.low,
     );
   }, [openConnectModal]);
 
