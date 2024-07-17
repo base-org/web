@@ -22,7 +22,7 @@ export const CustomConnectButton = ({ className }) => {
       {({ account, chain, openAccountModal, openChainModal, openConnectModal, mounted }) => {
         const ready = mounted;
         const connected = ready && account && chain;
-        const { address } = useAccount();
+        const { address, connector } = useAccount();
 
         useEffect(() => {
           if (address) {
@@ -32,6 +32,7 @@ export const CustomConnectButton = ({ className }) => {
                 action: ActionType.change,
                 context: 'navbar',
                 address,
+                walletType: connector.name,
               },
               AnalyticsEventImportance.low,
             );
