@@ -53,9 +53,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Feb 9, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "15 min read",
-        "checksum": "e2a66b9b034f2fd97a898c5137aba8e29446c4e73433ee5b2dce3b4af0935bce"
+        "checksum": "b9b4a675c58d4cdfb99f3b97ddcf1b223a51dfc5c2414d184cd5d4fb9f988b55"
     },
     "deploy-with-remix": {
         "title": "Deploying a smart contract using Remix",
@@ -176,9 +176,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jun 10, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "6 min read",
-        "checksum": "9349abde020a7f705710c3e214ccddafaceef0e8bb92692ca2e58ac64e5aa7a4"
+        "checksum": "2effa6656ddc3da5f719b560d44007e317de85bc0e4bf133ef521be9db3b2665"
     },
     "build-with-thirdweb": {
         "title": "Building an onchain app using thirdweb",
@@ -213,6 +213,31 @@
         "duration": "8 min read",
         "checksum": "527200e33d612b0c76e5eaacddfc23633b57eaa4577f389d4429b8f862c45462"
     },
+    "event-poaps-with-nouns": {
+        "title": "Event POAPs with Nouns",
+        "slug": "/event-poaps-with-nouns",
+        "description": "Learn how to give attendees of an in-person event a Nouns-based POAP/PFT, even if they're not onchain yet.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "POAP",
+            "Nouns",
+            "PFP"
+        ],
+        "tags": [
+            "nft",
+            "smart contracts"
+        ],
+        "difficulty": "hard",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Jul 16, 2024",
+        "duration": "4 min read",
+        "checksum": "a96c8d7eca808c7f6a7b0b55ff4ece251bfe565d57aa8921896cf49b3c64b3bb"
+    },
     "thirdweb-unreal-nft-items": {
         "title": "Thirdweb and Unreal - NFT Items",
         "slug": "/thirdweb-unreal-nft-items",
@@ -230,14 +255,15 @@
             "onchain games"
         ],
         "tags": [
-            "nft"
+            "nft",
+            "smart contracts"
         ],
         "difficulty": "hard",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jun 21, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "40 min read",
-        "checksum": "cfd81fd73a2952f32fd63557915cc864aee013dca9beb255b47cde01b205b32e"
+        "checksum": "dac639cda3aa56bf5ec7041a5152d1b90abef96d80d44a85e1a142551ac635fe"
     },
     "account-abstraction-with-biconomy": {
         "title": "Account Abstraction on Base using Biconomy",
@@ -288,9 +314,9 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Apr 11, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "34 min read",
-        "checksum": "f15915f4b8a607c68e5ae57dc1b3e3519f581a089a7f25669e3530112a1d42ae"
+        "checksum": "d307c0834f745648d2c7004595a7c60544381a0d90d4f3a3d6337f6152c4c856"
     },
     "account-abstraction-with-privy-and-base-paymaster": {
         "title": "Account Abstraction on Base using Privy and the Base Paymaster",
@@ -316,9 +342,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Dec 23, 2023",
+        "last_updated": "Jul 16, 2024",
         "duration": "46 min read",
-        "checksum": "f7985912c4b36e3e0dcd33ad58d83a59403242e0f8eb6160660132b70c597cc2"
+        "checksum": "fcd90aad54c93b59ab947c2954597b9b861204b885ed599754f7e50cca303fd9"
     },
     "coinbase-smart-wallet": {
         "title": "Coinbase Smart Wallet",
@@ -341,9 +367,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jun 10, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "32 min read",
-        "checksum": "44f84716dcfa1f181186af7369098b3f02485680e4c26c707915129361b92672"
+        "checksum": "f8d2be1153df419e835c3afd8ea2714c2560f50a4e967eb303323693eb7777fe"
     },
     "cross-chain-with-ccip": {
         "title": "Sending messages and tokens from Base to other chains using Chainlink CCIP",
@@ -423,6 +449,31 @@
         "duration": "14 min read",
         "checksum": "0b1498d415cda6e83031231cd05d42edacd2faa82d68471b2ed09670481a3259"
     },
+    "minting-nfts-with-zora": {
+        "title": "How to Mint on Zora with an App",
+        "slug": "/minting-nfts-with-zora",
+        "description": "Learn to use Zora contracts inside your app to create secure, efficient, and feature-rich minting experiences for your users.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-1155",
+            "token",
+            "NFT",
+            "wagmi",
+            "viem",
+            "Zora"
+        ],
+        "tags": [
+            "nft",
+            "smart wallet"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Jul 16, 2024",
+        "duration": "18 min read",
+        "checksum": "fc55c7e07decb6053d9b906445c93002374e4e50120c804b7c04e36af4e1779b"
+    },
     "complex-onchain-nfts": {
         "title": "Building onchain NFTs",
         "slug": "/complex-onchain-nfts",
@@ -448,9 +499,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jan 31, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "39 min read",
-        "checksum": "aa4782a6b0ef93073915e99e6ae6a244063422f14c8021f4dc0eb2d5a0c71b6a"
+        "checksum": "108ca52fb9d1242e529c225e6f9e9cdde63f8f0725bddd876bc5ea572db1ea59"
     },
     "oracles-chainlink-price-feeds": {
         "title": "Accessing real-world data using Chainlink Data Feeds",
@@ -569,9 +620,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "May 9, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "19 min read",
-        "checksum": "9429b07496c1e0b22041d913a16d46bb1850b0cebd72a45aaf55bc585c35bb91"
+        "checksum": "bb0152d2ccf76eb7db67a995f5a35590df22bcacfbaf98ff930510e3d5b21704"
     },
     "farcaster-frames-deploy-to-vercel": {
         "title": "Farcaster Frames: Deploying to Vercel",
@@ -612,9 +663,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Feb 23, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "12 min read",
-        "checksum": "6767682f0995d5f873b46aa615f6fb952a70d8b0487823fa32a41734df6048ba"
+        "checksum": "81672fdd81867b1ac78f474fb670c073da4132fcccd961b809a88f84580b7fca"
     },
     "farcaster-frames-hyperframes": {
         "title": "Farcaster Frames: Building HyperFrames",
@@ -637,9 +688,9 @@
         "tags": [
             "frames"
         ],
-        "last_updated": "Feb 20, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "16 min read",
-        "checksum": "9497478eb1ba7a6bfb3b2e668b34b3a57107e24fdaae76673d832163eb0561b0"
+        "checksum": "dca5d7ffcf59c834221a9585628ba88e58842be3ed2c10705e1185e6c5d30715"
     },
     "farcaster-frames-nft-minting": {
         "title": "Farcaster Frames: Building an NFT airdrop Frame",
@@ -662,9 +713,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "May 23",
+        "last_updated": "Jul 16, 2024",
         "duration": "22 min read",
-        "checksum": "8f1ced0b8fe2f7b5ae69b21c16dfdc433fb5fc09c88dffc1d32e9267cb4c0aef"
+        "checksum": "4f2e23920817a1ef138ce594423b25d57080ecb1f954940cc91ef133f1050fa4"
     },
     "farcaster-frames-nocode-minting": {
         "title": "Farcaster Frames: Building a no-code minting Frame",
@@ -688,9 +739,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Feb 23, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "7 min read",
-        "checksum": "fed0c4e553f10ac5ab0d90354fad93ac44e3e34306ac310eb07bcb7ad390600d"
+        "checksum": "2201cf6ca7cf13fc8940de15b834076090671161a37e97a3146fd207b79b2033"
     },
     "farcaster-frames-transactions": {
         "title": "Farcaster Frames: Making transactions",
@@ -711,9 +762,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Mar 8, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "17 min read",
-        "checksum": "50bc1e1efc66e0a22536cc73c7d0e04daebd552db8538d0ffde59a2a6b75bab3"
+        "checksum": "f039e4e2b33d73e803fbc7785395ca283dc0abe35c46ead630e1dfaa0d7ab275"
     },
     "hardhat-debugging": {
         "title": "Hardhat: Debugging smart contracts",
@@ -760,9 +811,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jan 18, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "16 min read",
-        "checksum": "20233dab9a1cda1a19de6ef9597d2dba37c853477b1474660fc22d302a815eb8"
+        "checksum": "7462ea26fdaafac994b2ccbeaaa0fcc08f708debcda1193f8131f99c201005cc"
     },
     "hardhat-profiling-size": {
         "title": "Hardhat: Optimizing the size of smart contracts",
@@ -787,9 +838,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jan 18, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "22 min read",
-        "checksum": "213edb66a4dc7845730cf4b72015d01c30cee0528cea6832714baf5bb451d9a8"
+        "checksum": "38c40aa53b9359a9b8716e7f56f68ebcc910da9ae6d34b055bde866d51da007b"
     },
     "hardhat-test-coverage": {
         "title": "Hardhat: Analyzing the test coverage of smart contracts",
@@ -910,9 +961,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jan 18, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "21 min read",
-        "checksum": "0ce947aec9f1cab196e9489b78509392a625b0d12011294e3fb9673a8bdd8e22"
+        "checksum": "d09d83f406019b24b7cf9490cbe0200cba4bf09506d98d18d47fe43efa48aa3a"
     },
     "farcaster-cast-actions-simple": {
         "title": "Farcaster Cast Actions: Create a Simple Cast Action",
@@ -932,9 +983,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Apr 5, 2024",
+        "last_updated": "Jul 16, 2024",
         "duration": "9 min read",
-        "checksum": "96225f883c79832d18459b3e47fd3a0bfd43c7ad6d1a1b1704bf902d33910025"
+        "checksum": "f9ad99285bb78e91cde255b71c826554b6ff1f8cec69450afe814d033af945e6"
     },
     "shopify-storefront-commerce": {
         "title": "Deploy a Shopify Storefront with Coinbase Commerce",
@@ -962,8 +1013,8 @@
         "difficulty": "easy",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jun 13, 2024",
-        "duration": "3 min read",
-        "checksum": "810af1759f437cb4c77334a34513378fd1554e0bb8c13b408129df54050cb836"
+        "last_updated": "Jul 16, 2024",
+        "duration": "8 min read",
+        "checksum": "1d485f4ded5aa492578d9887e36fefefea452c262769f5f30f6e9750c24c2913"
     }
 }
