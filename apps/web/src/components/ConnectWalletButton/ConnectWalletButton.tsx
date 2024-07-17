@@ -25,8 +25,6 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
   const { openConnectModal } = useConnectModal();
   const { address, connector } = useAccount();
 
-  console.log({connector})
-
   useEffect(() => {
     if (address) {
       logEvent(
