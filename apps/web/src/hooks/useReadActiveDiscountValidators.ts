@@ -1,9 +1,11 @@
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
-import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
+import {
+  USERNAME_CHAIN_ID,
+  USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
+} from 'apps/web/src/addresses/usernames';
 import { useMemo } from 'react';
 import { Address } from 'viem';
-import { base, baseSepolia } from 'viem/chains';
-import { useChainId, useReadContract } from 'wagmi';
+import { useReadContract } from 'wagmi';
 
 export type DiscountValidator = {
   active: boolean; // whether the discount is active or not.
@@ -13,17 +15,14 @@ export type DiscountValidator = {
 };
 
 export function useActiveDiscountValidators() {
-  const chainId = useChainId();
-  const network = chainId === baseSepolia.id ? chainId : base.id;
-
   const activeDiscountsArgs = useMemo(
     () => ({
-      address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
+      address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
       abi: RegistrarControllerABI,
       functionName: 'getActiveDiscounts' as const,
-      chainId: network,
+      chainId: USERNAME_CHAIN_ID,
     }),
-    [network],
+    [],
   );
 
   const { data, isLoading } = useReadContract(activeDiscountsArgs);

@@ -1,26 +1,22 @@
-import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
-import { useCallback } from 'react';
-import { Address, encodeFunctionData, namehash } from 'viem';
-import { useWriteContract } from 'wagmi';
-import { UsernameTextRecords, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
-import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
-import { baseSepolia } from 'viem/chains';
+import { USERNAME_L2_RESOLVER_ADDRESS } from 'apps/web/src/addresses/usernames';
 import { BaseEnsNameData } from 'apps/web/src/hooks/useBaseEnsName';
+import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
+import { UsernameTextRecords, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
+import { useCallback } from 'react';
+import { namehash, encodeFunctionData, Address } from 'viem';
+import { useWriteContract } from 'wagmi';
 
 export type UseWriteBaseEnsTextRecordsProps = {
   address?: Address;
   username: BaseEnsNameData;
 };
 
-// TODO: If we need multicall for other scenarios, make this hook more generic
+// NOTE: If we need multicall for other scenarios, make this hook more generic
 export default function useWriteBaseEnsTextRecords({
   address,
   username,
 }: UseWriteBaseEnsTextRecordsProps) {
-  // TODO: Might not be needed for launch (mainnet only)
-  const chainId = baseSepolia.id;
-
   // To compare to updated ones, avoid overriding them / unecessary calls
   const { existingTextRecords } = useReadBaseEnsTextRecords({
     address,
@@ -28,7 +24,6 @@ export default function useWriteBaseEnsTextRecords({
   });
 
   // TODO: Check with current address for write permission
-
   const {
     data: writeTextRecordsTransactionHash,
     writeContractAsync,
@@ -37,7 +32,7 @@ export default function useWriteBaseEnsTextRecords({
 
   const writeTextRecords = useCallback(
     async (textRecords: UsernameTextRecords) => {
-      if (!username) return;
+      if (!username) return Promise.reject(new Error('Cannot write text records without a name'));
       const keys: UsernameTextRecordKeys[] = Object.keys(textRecords) as UsernameTextRecordKeys[];
       const keysToUpdate = keys.filter((key) => {
         const existingValue = existingTextRecords[key].trim();
@@ -60,20 +55,16 @@ export default function useWriteBaseEnsTextRecords({
         });
       });
 
-      try {
-        await writeContractAsync({
-          abi: L2ResolverAbi,
-          address: USERNAME_L2_RESOLVER_ADDRESSES[chainId],
-          args: [nameHash, textRecordsBytes],
-          functionName: 'multicallWithNodeCheck',
-        });
-      } catch (error) {
-        // Log error
-      }
+      await writeContractAsync({
+        abi: L2ResolverAbi,
+        address: USERNAME_L2_RESOLVER_ADDRESS,
+        args: [nameHash, textRecordsBytes],
+        functionName: 'multicallWithNodeCheck',
+      });
 
       return true;
     },
-    [chainId, existingTextRecords, username, writeContractAsync],
+    [existingTextRecords, username, writeContractAsync],
   );
 
   return {

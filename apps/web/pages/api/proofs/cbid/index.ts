@@ -44,7 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const hasPreviouslyRegistered = await hasRegisteredWithDiscount([address], parsedChain);
+    const hasPreviouslyRegistered = await hasRegisteredWithDiscount([address]);
     // if any linked address registered previously return an error
     if (hasPreviouslyRegistered) {
       return res.status(400).json({ error: 'This address has already claimed a username.' });
@@ -57,7 +57,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const responseData: CBIDProofResponse = {
       ...content,
       proofs,
-      discountValidatorAddress: USERNAME_CB_ID_DISCOUNT_VALIDATOR[parseInt(chain)],
+      discountValidatorAddress: USERNAME_CB_ID_DISCOUNT_VALIDATOR,
     };
     return res.status(200).json(responseData);
   } catch (error: unknown) {

@@ -8,10 +8,9 @@ import profilePictures5 from 'apps/web/src/components/ConnectWalletButton/profil
 import profilePictures6 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/6.svg';
 import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/7.svg';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
-import { ADDRESS_REVERSE_NODE } from 'apps/web/src/addresses/usernames';
+import { ADDRESS_REVERSE_NODE, USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
+import { base, baseSepolia } from 'viem/chains';
 
-export const BASE_SEPOLIA_ETH_DOMAIN = 'basetest.eth';
-export const BASE_ETH_DOMAIN = 'base.eth';
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 20;
 
@@ -216,9 +215,15 @@ export const normalizeEnsDomainName = (name: string) => {
   }
 };
 
-// TODO: Replace with mainnet for launch
+export const USERNAME_DOMAINS: Record<number, string> = {
+  [baseSepolia.id]: 'basetest.eth',
+  [base.id]: 'base.eth',
+};
+
+export const USERNAME_DOMAIN = USERNAME_DOMAINS[USERNAME_CHAIN_ID];
+
 export const formatBaseEthDomain = (name: string): BaseSepoliaName => {
-  return `${name}.${BASE_SEPOLIA_ETH_DOMAIN}`.toLocaleLowerCase() as BaseSepoliaName;
+  return `${name}.${USERNAME_DOMAIN}`.toLocaleLowerCase() as BaseSepoliaName;
 };
 
 export const getUsernamePictureIndex = (name: string, totalOptions: number) => {

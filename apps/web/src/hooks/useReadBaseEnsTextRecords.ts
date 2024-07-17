@@ -1,4 +1,4 @@
-import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import { USERNAME_CHAIN_ID, USERNAME_L2_RESOLVER_ADDRESS } from 'apps/web/src/addresses/usernames';
 import { useCallback, useEffect, useState } from 'react';
 import { Address, ContractFunctionParameters, namehash } from 'viem';
 import {
@@ -17,13 +17,10 @@ export type UseReadBaseEnsTextRecordsProps = {
   username: BaseEnsNameData;
 };
 
-// TODO: If we need multicall for other scenarios, make this hook more generic
 export default function useReadBaseEnsTextRecords({
   address,
   username,
 }: UseReadBaseEnsTextRecordsProps) {
-  // TODO: use mainnet
-  const chainId = baseSepolia.id;
   const client = getPublicClient(baseSepolia.id);
 
   // TODO: this could be based on textRecordsKeysEnabled via reduce
@@ -59,21 +56,21 @@ export default function useReadBaseEnsTextRecords({
         args: [nameHash, key],
         functionName: 'text',
         abi: L2ResolverAbi,
-        address: USERNAME_L2_RESOLVER_ADDRESSES[chainId],
+        address: USERNAME_L2_RESOLVER_ADDRESS,
       };
     });
 
     const result = await client.multicall({ contracts: readContracts });
 
     return result;
-  }, [chainId, client, username]);
+  }, [client, username]);
 
   const {
     data: textRecordsData,
     isLoading: existingTextRecordsIsLoading,
     refetch: refetchExistingTextRecords,
   } = useQuery({
-    queryKey: ['useReadBaseEnsTextRecords', address, chainId, textRecordsKeysEnabled],
+    queryKey: ['useReadBaseEnsTextRecords', address, textRecordsKeysEnabled, USERNAME_CHAIN_ID],
     queryFn: getExistingTextRecords,
     enabled: !!address && !!username,
   });

@@ -1,9 +1,8 @@
-import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import { USERNAME_CHAIN_ID, USERNAME_L2_RESOLVER_ADDRESS } from 'apps/web/src/addresses/usernames';
 import { BaseSepoliaName, formatBaseEthDomain } from 'apps/web/src/utils/usernames';
 import { useParams } from 'next/navigation';
 import { ReactNode, createContext, useContext, useMemo } from 'react';
 import { Address } from 'viem';
-import { baseSepolia } from 'viem/chains';
 import { useAccount, useEnsAddress } from 'wagmi';
 
 export enum UsernameProfileSteps {}
@@ -35,8 +34,8 @@ export default function UsernameProfileProvider({ children }: UsernameProfilePro
 
   const { data: profileAddress, isLoading: profileAddressIsLoading } = useEnsAddress({
     name: profileUsernameFormatted,
-    chainId: baseSepolia.id,
-    universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[baseSepolia.id],
+    chainId: USERNAME_CHAIN_ID,
+    universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESS,
     query: {
       enabled: !!profileUsername,
     },

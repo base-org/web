@@ -1,4 +1,4 @@
-import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import { USERNAME_L2_RESOLVER_ADDRESS } from 'apps/web/src/addresses/usernames';
 import { Address } from 'viem';
 import { useReadContract } from 'wagmi';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
@@ -19,8 +19,10 @@ export default function useBaseEnsName({ address }: UseBaseEnsNameProps) {
   // TODO: Fix TS error
   const { data, isLoading, refetch } = useReadContract({
     abi: L2ResolverAbi,
-    address: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
+    address: USERNAME_L2_RESOLVER_ADDRESS,
     functionName: 'name',
+
+    // @ts-expect-error query is disabled if addressReverseNode is undefined
     args: [addressReverseNode],
     chainId: chain.id,
     query: {

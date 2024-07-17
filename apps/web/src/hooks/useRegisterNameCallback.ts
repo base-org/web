@@ -2,14 +2,14 @@ import { useAnalytics } from 'apps/web/contexts/Analytics';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import abi from 'apps/web/src/abis/RegistrarControllerABI';
 import {
-  USERNAME_L2_RESOLVER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
+  USERNAME_CHAIN_ID,
+  USERNAME_L2_RESOLVER_ADDRESS,
 } from 'apps/web/src/addresses/usernames';
 import { formatBaseEthDomain, normalizeEnsDomainName } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useMemo } from 'react';
 import { encodeFunctionData, namehash, TransactionExecutionError } from 'viem';
-import { base, baseSepolia } from 'viem/chains';
 import { useAccount, useWriteContract } from 'wagmi';
 
 function secondsInYears(years: number): bigint {
@@ -24,8 +24,7 @@ export function useRegisterNameCallback(
   discountKey?: `0x${string}`,
   validationData?: `0x${string}`,
 ) {
-  const { address, chainId } = useAccount();
-  const network = chainId === baseSepolia.id ? chainId : base.id;
+  const { address } = useAccount();
   const normalizedName = normalizeEnsDomainName(name);
   const isDiscounted = Boolean(discountKey && validationData);
   const { logEventWithContext } = useAnalytics();
@@ -40,11 +39,11 @@ export function useRegisterNameCallback(
       name: normalizedName, // The name being registered.
       owner: address ?? '0x48c89d77ae34ae475e4523b25ab01e363dce5a78', // The address of the owner for the name.
       duration: secondsInYears(years), // The duration of the registration in seconds.
-      resolver: USERNAME_L2_RESOLVER_ADDRESSES[network], // The address of the resolver to set for this name.
+      resolver: USERNAME_L2_RESOLVER_ADDRESS, // The address of the resolver to set for this name.
       data: [addressData], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
       reverseRecord: true, // Bool to decide whether to set this name as the "primary" name for the `owner`.
     }),
-    [address, addressData, network, normalizedName, years],
+    [address, addressData, normalizedName, years],
   );
 
   const { data, writeContractAsync, isPending } = useWriteContract();
@@ -57,8 +56,8 @@ export function useRegisterNameCallback(
     try {
       await writeContractAsync({
         abi,
-        address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS[network],
-        chainId: network,
+        address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
+        chainId: USERNAME_CHAIN_ID,
         functionName: isDiscounted ? 'discountedRegister' : 'register',
         // @ts-expect-error isDiscounted is sufficient guard for discountKey and validationData presence
         args: isDiscounted ? [registerRequest, discountKey, validationData] : [registerRequest],
@@ -79,7 +78,6 @@ export function useRegisterNameCallback(
     discountKey,
     isDiscounted,
     logEventWithContext,
-    network,
     registerRequest,
     validationData,
     value,

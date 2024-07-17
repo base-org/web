@@ -56,7 +56,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const result = await sybilResistantUsernameSigning(address, DiscountType.CB1, parsedChain);
+    const result = await sybilResistantUsernameSigning(address, DiscountType.CB1);
     return res.status(200).json(result);
   } catch (error) {
     console.error(error);
