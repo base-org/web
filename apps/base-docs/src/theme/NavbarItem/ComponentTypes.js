@@ -32,7 +32,7 @@ export const CustomConnectButton = ({ className }) => {
                 action: ActionType.change,
                 context: 'navbar',
                 address,
-                walletType: connector.name,
+                walletType: connector?.name.toLowerCase().replace(/[ \-\/\.]/g, '_'),
               },
               AnalyticsEventImportance.low,
             );
