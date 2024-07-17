@@ -37,8 +37,9 @@ const NAMES = [
   { name: 'aflock', avatar: '/images/avatars/aflock.eth.png' },
   { name: 'johnpalmer', avatar: '/images/avatars/johnpalmer.eth.svg' },
   { name: 'jfrankfurt', avatar: '/images/avatars/jfrankfurt.eth.jpeg' },
-  { name: 'frogmonkee', avatar: '/images/avatars/frogmonkee.eth.jpeg' },
+  { name: 'lsr', avatar: '/images/avatars/lsr.eth.png' },
   { name: 'dcj', avatar: '/images/avatars/dcj.eth.avif' },
+  { name: 'zencephalon', avatar: '/images/avatars/zencephalon.eth.webp' },
 ];
 const PILL_COUNT = NAMES.length;
 const initialBlurStates = Array.from({ length: PILL_COUNT }).map((_, index) => index % 2 === 0);

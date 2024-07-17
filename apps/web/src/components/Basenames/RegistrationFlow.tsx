@@ -29,6 +29,7 @@ test addresses w/ different verifications
 
 export function RegistrationFlow() {
   const { logEventWithContext } = useAnalytics();
+
   const { registrationStep, setRegistrationStep, searchInputFocused, selectedName } =
     useRegistration();
 
