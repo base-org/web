@@ -10,7 +10,7 @@ import { formatBaseEthDomain, normalizeEnsDomainName } from 'apps/web/src/utils/
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useMemo } from 'react';
 import { encodeFunctionData, namehash, TransactionExecutionError } from 'viem';
-import { useAccount, useWriteContract } from 'wagmi';
+import { useAccount, useSwitchChain, useWriteContract } from 'wagmi';
 
 function secondsInYears(years: number): bigint {
   const secondsPerYear = 365.25 * 24 * 60 * 60; // .25 accounting for leap years
@@ -26,6 +26,7 @@ export function useRegisterNameCallback(
 ) {
   const { address } = useAccount();
   const normalizedName = normalizeEnsDomainName(name);
+  const { switchChainAsync } = useSwitchChain();
   const isDiscounted = Boolean(discountKey && validationData);
   const { logEventWithContext } = useAnalytics();
   const addressData = encodeFunctionData({
@@ -54,6 +55,8 @@ export function useRegisterNameCallback(
     logEventWithContext('register_name_transaction_initiated', ActionType.click);
 
     try {
+      await switchChainAsync({ chainId: USERNAME_CHAIN_ID });
+
       await writeContractAsync({
         abi,
         address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
@@ -79,6 +82,7 @@ export function useRegisterNameCallback(
     isDiscounted,
     logEventWithContext,
     registerRequest,
+    switchChainAsync,
     validationData,
     value,
     writeContractAsync,
