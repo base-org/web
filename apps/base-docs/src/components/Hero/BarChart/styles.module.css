@@ -1,0 +1,73 @@
+.chartContainer {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.chartLegendContainer {
+    display: flex;
+    flex: row;
+    justify-content: space-between;
+}
+
+.chartLegend {
+    color: white;
+    font-size: 11px;
+    font-family: CoinbaseText;
+}
+
+a.chartLegend:hover {
+    color: white;
+}
+
+.chartColumnContainer {
+    height: 205px;
+    width: 333px;
+    border-left: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.chartColumnValue {
+    padding-left: 15px;
+    color: #ffffff50;
+    font-size: 25px;
+    font-weight: 400;
+    font-family: CoinbaseDisplay;
+}
+
+.chartColumnEven {
+    padding-left: 15px;
+    background-color: white;
+    color: #0052FF;
+    font-size: 11px;
+    font-family: CoinbaseText;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.chartColumnOdd {
+    padding-left: 15px;
+    background-color: #ffffff50;
+    color: #0052FF;
+    font-size: 11px;
+    font-family: CoinbaseText;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.square {
+    height: 200px;
+    width: 333px;
+    background-color: yellow;
+    color: black;
+    border: 1px solid black;
+}
