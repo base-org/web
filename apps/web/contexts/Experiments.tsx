@@ -9,41 +9,70 @@ import {
 } from 'react';
 import { Experiment, ExperimentClient } from '@amplitude/experiment-js-client';
 
+import { isDevelopment, ampDeploymentKeys } from 'apps/web/src/constants';
+import logEvent, { AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
+
 type ExperimentsContextProps = {
   experimentClient: ExperimentClient | null;
+  isReady: boolean;
   getUserVariant: (flagKey: string) => string;
 };
 
 type ExperimentsProviderProps = {
   children: ReactNode;
-  deploymentKey: string;
 };
 
 const ExperimentsContext = createContext<ExperimentsContextProps>({
   experimentClient: null,
+  isReady: false,
   getUserVariant: () => '',
 });
 
-export default function ExperimentsProvider({ children, deploymentKey }: ExperimentsProviderProps) {
-  const [isLoading, setIsLoading] = useState(true);
-  const [experimentClient, setExperimentClient] = useState<ExperimentClient | null>(null);
+const deploymentKey = isDevelopment ? ampDeploymentKeys.development : ampDeploymentKeys.production;
+const experimentClient = Experiment.initialize(deploymentKey, {
+  exposureTrackingProvider: {
+    track: (exposure) => {
+      logEvent(
+        '$exposure',
+        {
+          ...exposure,
+        },
+        AnalyticsEventImportance.high,
+      );
+    },
+  },
+  userProvider: {
+    getUser: () => {
+      return {
+        user_id: window.ClientAnalytics.identity.userId,
+        device_id: window.ClientAnalytics.identity.deviceId,
+        os: window.ClientAnalytics.identity.device_os,
+        language: window.ClientAnalytics.identity.languageCode,
+        country: window.ClientAnalytics.identity.countryCode,
+      };
+    },
+  },
+});
+
+export default function ExperimentsProvider({ children }: ExperimentsProviderProps) {
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
-    try {
-      const experiment = Experiment.initialize(deploymentKey);
-      setExperimentClient(experiment);
-    } catch (exception) {
-      console.log(`Error initializing experiments client for ${deploymentKey}:`, exception);
-      setExperimentClient(null);
-    } finally {
-      setIsLoading(false);
+    async function startExperiments() {
+      try {
+        await experimentClient.start();
+      } catch (exception) {
+        console.log(`Error starting experiments for ${deploymentKey}:`, exception);
+      } finally {
+        setIsReady(true);
+      }
     }
-  }, [deploymentKey]);
+    void startExperiments();
+  }, []);
 
   const getUserVariant = useCallback(
     (flagKey: string): string => {
-      if (isLoading) {
+      if (!isReady) {
         return '';
       }
       if (!experimentClient) {
@@ -53,12 +82,12 @@ export default function ExperimentsProvider({ children, deploymentKey }: Experim
       const variant = experimentClient.variant(flagKey);
       return variant.value ?? '';
     },
-    [isLoading, experimentClient],
+    [isReady],
   );
 
   const values = useMemo(() => {
-    return { experimentClient, getUserVariant };
-  }, [experimentClient, getUserVariant]);
+    return { experimentClient, isReady, getUserVariant };
+  }, [isReady, getUserVariant]);
 
   return <ExperimentsContext.Provider value={values}>{children}</ExperimentsContext.Provider>;
 }
