@@ -23,7 +23,7 @@ export default function RegistrationBrand() {
   const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
   const { searchInputFocused } = useRegistration();
   return (
-    <div className="flex flex-row">
+    <div className="relative flex w-full flex-row">
       <div className="flex items-center items-center gap-1">
         <span
           className={classNames({
