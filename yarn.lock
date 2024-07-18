@@ -310,7 +310,7 @@ __metadata:
     "@headlessui/react": ^1.7.19
     "@heroicons/react": ^2.1.3
     "@next/font": ^13.1.5
-    "@rainbow-me/rainbowkit": ^2.0.5
+    "@rainbow-me/rainbowkit": 2.1.3
     "@tanstack/react-query": ^5.29.2
     "@types/jsonwebtoken": ^9.0.6
     "@types/node": 18.11.18
@@ -6301,6 +6301,27 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.13.10
   checksum: aeec13b234a946052512d05239067d2d63422f9ec70bf2fe7acfd6b9196693fc33fbaf43c2667c167f777d90a095c6604eb487e0bce79e230b6df0f6cacd6a55
+  languageName: node
+  linkType: hard
+
+"@rainbow-me/rainbowkit@npm:2.1.3":
+  version: 2.1.3
+  resolution: "@rainbow-me/rainbowkit@npm:2.1.3"
+  dependencies:
+    "@vanilla-extract/css": 1.14.0
+    "@vanilla-extract/dynamic": 2.1.0
+    "@vanilla-extract/sprinkles": 1.6.1
+    clsx: 2.1.0
+    qrcode: 1.5.3
+    react-remove-scroll: 2.5.7
+    ua-parser-js: ^1.0.37
+  peerDependencies:
+    "@tanstack/react-query": ">=5.0.0"
+    react: ">=18"
+    react-dom: ">=18"
+    viem: 2.x
+    wagmi: ^2.9.0
+  checksum: 415b9361710c4f91d0ca84f8918e3957cda9f7501707e433498a1b7c0d95132b8ef58b7a1b16ee873b8e9380a42932d73b9529b491654439bb2a4e4f849d60f1
   languageName: node
   linkType: hard
 

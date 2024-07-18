@@ -1,7 +1,7 @@
 import './global.css';
 
 import '@rainbow-me/rainbowkit/styles.css';
-import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
 import { base, mainnet, baseSepolia, sepolia } from 'wagmi/chains';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
@@ -16,6 +16,18 @@ import {
   TrackingPreference,
 } from '@coinbase/cookie-manager';
 
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import '@rainbow-me/rainbowkit/styles.css';
+import {
+  coinbaseWallet,
+  metaMaskWallet,
+  rainbowWallet,
+  uniswapWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
+
+import { createConfig, http } from 'wagmi';
+
 import { Layout, NavigationType } from '../src/components/Layout/Layout';
 import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
 
@@ -23,18 +35,41 @@ import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
 import useSprig from 'base-ui/hooks/useSprig';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { NextPage } from 'next';
-import localFont from 'next/dist/compiled/@next/font/dist/local';
 
-const config = getDefaultConfig({
-  appName: 'Base.org',
-  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? 'b5814e77db542936040ce71ecd601562',
-  chains: [baseSepolia, mainnet],
+coinbaseWallet.preference = 'smartWalletOnly';
+
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Recommended',
+      wallets: [coinbaseWallet, metaMaskWallet, uniswapWallet, rainbowWallet, walletConnectWallet],
+    },
+  ],
+  {
+    projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? 'dummy-id',
+    walletConnectParameters: {},
+    appName: 'Base.org',
+    appDescription: '',
+    appUrl: 'https://www.base.org/',
+    appIcon: '',
+  },
+);
+
+const config = createConfig({
+  connectors,
+  chains: [baseSepolia],
+  transports: {
+    [mainnet.id]: http(),
+    [base.id]: http(),
+    [sepolia.id]: http(),
+    [baseSepolia.id]: http(),
+  },
   ssr: true,
 });
 const queryClient = new QueryClient();
 const sprigEnvironmentId = process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID;
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
 
