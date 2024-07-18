@@ -14,7 +14,13 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 import styles from './styles.module.css';
 import { WalletAvatar } from '../../components/WalletAvatar';
-import logEvent, { ActionType, AnalyticsEventImportance, ComponentType,  identify } from "base-ui/utils/logEvent";
+import logEvent, {
+  ActionType,
+  AnalyticsEventImportance,
+  ComponentType,
+  identify,
+} from 'base-ui/utils/logEvent';
+import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
 
 export const CustomConnectButton = ({ className }) => {
   return (
@@ -22,7 +28,7 @@ export const CustomConnectButton = ({ className }) => {
       {({ account, chain, openAccountModal, openChainModal, openConnectModal, mounted }) => {
         const ready = mounted;
         const connected = ready && account && chain;
-        const { address } = useAccount();
+        const { address, connector } = useAccount();
 
         useEffect(() => {
           if (address) {
@@ -32,6 +38,7 @@ export const CustomConnectButton = ({ className }) => {
                 action: ActionType.change,
                 context: 'navbar',
                 address,
+                walletType: sanitizeEventString(connector?.name),
               },
               AnalyticsEventImportance.low,
             );
@@ -144,8 +151,8 @@ export const CustomNavbarLink = (props) => {
     <a
       href={props.to}
       target={props.target ?? '_self'}
-      className='navbar__item navbar__link'
-      style={{ cursor: 'pointer'}}
+      className="navbar__item navbar__link"
+      style={{ cursor: 'pointer' }}
       onClick={() => {
         logEvent(
           props.eventLabel,
@@ -154,14 +161,14 @@ export const CustomNavbarLink = (props) => {
             componentType: ComponentType.link,
             context: props.eventContext,
           },
-          AnalyticsEventImportance.high
-        )
+          AnalyticsEventImportance.high,
+        );
       }}
     >
       {props.label}
     </a>
-  )
-}
+  );
+};
 
 export const CustomDropdownLink = (props) => {
   return (
@@ -169,8 +176,8 @@ export const CustomDropdownLink = (props) => {
       <a
         href={props.to}
         target={props.target ?? '_self'}
-        className='dropdown__link'
-        style={{ cursor: 'pointer'}}
+        className="dropdown__link"
+        style={{ cursor: 'pointer' }}
         onClick={() => {
           logEvent(
             props.eventLabel,
@@ -179,15 +186,15 @@ export const CustomDropdownLink = (props) => {
               componentType: ComponentType.link,
               context: props.eventContext,
             },
-            AnalyticsEventImportance.high
-          )
+            AnalyticsEventImportance.high,
+          );
         }}
       >
         {props.label}
       </a>
     </li>
-  )
-}
+  );
+};
 
 const ComponentTypes = {
   default: DefaultNavbarItem,
