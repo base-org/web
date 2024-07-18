@@ -5,7 +5,7 @@
 import { NextRouter } from 'next/router';
 import { TrackingPreference } from '@coinbase/cookie-manager';
 import { uuid } from 'uuidv4';
-import { isDevelopment, ampDeploymentKeys } from 'apps/web/src/constants';
+import { isDevelopment, ampDeploymentKey } from 'apps/web/src/constants';
 
 import { Experiment } from '@amplitude/experiment-js-client';
 import logEvent, { AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
@@ -50,10 +50,7 @@ const initCCA = (
       nextJsRouter: router,
     });
 
-    const deploymentKey = isDevelopment
-      ? ampDeploymentKeys.development
-      : ampDeploymentKeys.production;
-    Experiment.initialize(deploymentKey, {
+    Experiment.initialize(ampDeploymentKey, {
       exposureTrackingProvider: {
         track: (exposure) => {
           logEvent(

@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { Experiment, ExperimentClient } from '@amplitude/experiment-js-client';
 
-import { isDevelopment, ampDeploymentKeys } from 'apps/web/src/constants';
+import { ampDeploymentKey } from 'apps/web/src/constants';
 import logEvent, { AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
 
 type ExperimentsContextProps = {
@@ -28,8 +28,7 @@ const ExperimentsContext = createContext<ExperimentsContextProps>({
   getUserVariant: () => '',
 });
 
-const deploymentKey = isDevelopment ? ampDeploymentKeys.development : ampDeploymentKeys.production;
-const experimentClient = Experiment.initialize(deploymentKey, {
+const experimentClient = Experiment.initialize(ampDeploymentKey, {
   exposureTrackingProvider: {
     track: (exposure) => {
       logEvent(
