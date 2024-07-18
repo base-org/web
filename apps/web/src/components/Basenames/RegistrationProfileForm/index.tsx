@@ -86,7 +86,7 @@ export default function RegistrationProfileForm() {
 
       refetchExistingTextRecords()
         .then(() => {
-          router.push(`names/${baseEnsName}`);
+          router.push(`names/${selectedName}`);
         })
         .catch(() => {
           // console.log({ error });
@@ -98,7 +98,14 @@ export default function RegistrationProfileForm() {
         error: `Transaction reverted: ${transactionData.transactionHash}`,
       });
     }
-  }, [logEventWithContext, refetchExistingTextRecords, router, baseEnsName, transactionData]);
+  }, [
+    logEventWithContext,
+    refetchExistingTextRecords,
+    router,
+    baseEnsName,
+    transactionData,
+    selectedName,
+  ]);
 
   useEffect(() => {
     if (transactionIsFetching) {

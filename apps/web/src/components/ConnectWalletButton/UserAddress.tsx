@@ -25,16 +25,12 @@ export function UserAddress({ address }: UserAddressProps) {
   const addressOrName =
     (baseEnsName as string) || (ensName as string) || truncateMiddle(address, 6, 4);
 
-  const addressOrNameForDisplay = isLoading ? (
-    <Icon name="spinner" color="currentColor" />
-  ) : (
-    addressOrName
-  );
+  if (isLoading) return <Icon name="spinner" color="currentColor" />;
 
   return (
     <CopyToClipboard text={address ?? ''}>
       <div className="flex cursor-pointer flex-row items-center gap-2">
-        <span className="truncate ">{addressOrNameForDisplay}</span>
+        <span className="truncate ">{addressOrName}</span>
         <Icon name="copy" color="currentColor" width="1rem" height="1rem" />
       </div>
     </CopyToClipboard>

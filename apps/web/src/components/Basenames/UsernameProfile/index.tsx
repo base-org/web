@@ -40,7 +40,7 @@ export default function UsernameProfile() {
   logEventWithContext('page_loaded', ActionType.render);
 
   return (
-    <main className="mx-auto mt-32 flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 p-8 pb-40 md:flex-row">
+    <main className="mx-auto mt-32 flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 px-4 px-4 pb-40  md:flex-row md:px-8">
       <div className="w-full md:max-w-[25rem]">
         <UsernameProfileSidebar />
       </div>

@@ -30,6 +30,7 @@ export type DropdownProps = {
 export default function Dropdown({ children }: DropdownProps) {
   const [open, setOpen] = useState<boolean>(false);
   const dropdownToggleRef = useRef<HTMLSpanElement>(null);
+
   const values = useMemo(() => {
     return {
       open,

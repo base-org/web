@@ -24,15 +24,16 @@ export default function UsernameTextRecordInlineField({
 }: UsernameTextRecordInlineFieldProps) {
   const usernameSocialHandleFieldId = useId();
 
-  const onChangeSocialHandle = useCallback(
+  const onTextRecordChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      const socialHandleValue = event.target.value;
+      const textRecordValue = event.target.value;
 
-      if (onChange) onChange(textRecordKey, socialHandleValue);
+      if (onChange) onChange(textRecordKey, textRecordValue);
     },
     [onChange, textRecordKey],
   );
 
+  const inputType = textRecordKey === UsernameTextRecordKeys.Url ? 'url' : 'text';
   return (
     <Fieldset inline>
       <Label htmlFor={usernameSocialHandleFieldId} className="w-full max-w-[6rem] text-sm">
@@ -45,8 +46,9 @@ export default function UsernameTextRecordInlineField({
         disabled={disabled}
         value={value}
         autoComplete="off"
-        type="text"
-        onChange={onChangeSocialHandle}
+        type={inputType}
+        pattern="https?://.*"
+        onChange={onTextRecordChange}
         data-1p-ignore
       />
     </Fieldset>

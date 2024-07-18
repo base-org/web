@@ -16,7 +16,7 @@ export type UsernameProfileSectionExploreLink = {
   href: string;
 };
 
-const usernameProfileSectionExploreLinks: UsernameProfileSectionExploreLink[] = [
+const USERNAME_PROFILE_SECTION_EXPLORE_LINKS: UsernameProfileSectionExploreLink[] = [
   {
     title: 'Get verified',
     image: verificationCard,
@@ -54,18 +54,19 @@ export default function UsernameProfileSectionExplore() {
     <section className="">
       <UsernameProfileSectionTitle title="Explore" />
       <ul className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2">
-        {usernameProfileSectionExploreLinks.map((usernameProfileSectionExploreLink) => (
+        {USERNAME_PROFILE_SECTION_EXPLORE_LINKS.map((usernameProfileSectionExploreLink) => (
           <li key={usernameProfileSectionExploreLink.title} className="inline-block w-full">
             <Link
               href={usernameProfileSectionExploreLink.href}
               target="_blank"
-              className="flex w-full flex-col gap-2 hover:text-blue-600"
+              className="group flex w-full flex-col gap-2 hover:text-blue-600"
             >
               <Image
                 src={usernameProfileSectionExploreLink.image}
                 alt={usernameProfileSectionExploreLink.title}
+                className="transition-all group-hover:rotate-[-1deg] group-hover:scale-105"
               />
-              <h4 className="mt-2 flex items-center gap-2">
+              <h4 className="mt-2 flex items-center gap-2 transition-all group-hover:gap-4">
                 {usernameProfileSectionExploreLink.title}
                 <Icon name="arrowRight" color="currentColor" height="1rem" width="1rem" />
               </h4>
