@@ -5,13 +5,13 @@
 import { NextRouter } from 'next/router';
 import { TrackingPreference } from '@coinbase/cookie-manager';
 import { uuid } from 'uuidv4';
-import { isDevelopment } from 'apps/web/src/constants';
+import { isDevelopment, ampDeploymentKeys } from 'apps/web/src/constants';
 
 import { Experiment } from '@amplitude/experiment-js-client';
 import logEvent, { AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
 
 // CCA library loads in ClientAnalyticsScript component
-const initCCA = async (
+const initCCA = (
   router: NextRouter,
   trackingPreference: TrackingPreference | undefined,
   deviceIdCookie: string | undefined,
@@ -50,7 +50,10 @@ const initCCA = async (
       nextJsRouter: router,
     });
 
-    const experiment = Experiment.initialize('client-Wvf63OdaukDZyCBtwgbOvHgGTuASBZFG', {
+    const deploymentKey = isDevelopment
+      ? ampDeploymentKeys.development
+      : ampDeploymentKeys.production;
+    Experiment.initialize(deploymentKey, {
       exposureTrackingProvider: {
         track: (exposure) => {
           logEvent(
@@ -74,8 +77,6 @@ const initCCA = async (
         },
       },
     });
-
-    await experiment.start({ device_id: deviceId });
   }
 };
 
