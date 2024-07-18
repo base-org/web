@@ -27,6 +27,8 @@ export default function useWriteBaseEnsTextRecords({
     data: writeTextRecordsTransactionHash,
     writeContractAsync,
     isPending: writeTextRecordsIsPending,
+    isError: writeTextRecordsIsError,
+    error: writeTextRecordsError,
   } = useWriteContract();
 
   const { switchChainAsync } = useSwitchChain();
@@ -73,6 +75,8 @@ export default function useWriteBaseEnsTextRecords({
   return {
     writeTextRecords,
     writeTextRecordsIsPending,
+    writeTextRecordsIsError,
+    writeTextRecordsError,
     writeTextRecordsTransactionHash,
   };
 }

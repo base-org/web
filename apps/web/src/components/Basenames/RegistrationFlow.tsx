@@ -19,6 +19,11 @@ import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useEffect } from 'react';
+import Dropdown from 'apps/web/src/components/Dropdown';
+import DropdownToggle from 'apps/web/src/components/DropdownToggle';
+import DropdownMenu from 'apps/web/src/components/DropdownMenu';
+import DropdownItem from 'apps/web/src/components/DropdownItem';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 
 /*
 test addresses w/ different verifications
@@ -49,6 +54,7 @@ export function RegistrationFlow() {
     registrationTransitionDuration,
     {
       'pt-[calc(40vh-24px)] md:pt-[calc(50vh-24px)]': isSearch || isClaim || isPending || isSuccess,
+      'delay-500': isSuccess || isProfile,
       'pt-32 md:pt-40': isProfile,
     },
   );
@@ -64,59 +70,29 @@ export function RegistrationFlow() {
   return (
     <main className={mainClasses}>
       {/* TODO: REMOVE ME WHEN DONE TESTING */}
-      <div className="absolute right-20 top-40 z-50 w-[10rem] rounded-lg border border-gray-40/20 bg-white p-4 text-black shadow-lg">
-        <ul className="flex flex-col gap-2">
-          <li>
-            <button
-              type="button"
-              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-              onClick={() => setRegistrationStep(RegistrationSteps.Search)}
-              className="rounded border border-gray-40/20 p-2"
-            >
+      <div className="absolute right-10 top-20 z-50 shadow-lg">
+        <Dropdown>
+          <DropdownToggle>
+            <Button variant={ButtonVariants.Gray}>[DEV TEST] Change state</Button>
+          </DropdownToggle>
+          <DropdownMenu>
+            <DropdownItem onClick={() => setRegistrationStep(RegistrationSteps.Search)}>
               Search
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-              onClick={() => setRegistrationStep(RegistrationSteps.Claim)}
-              className="rounded border border-gray-40/20 p-2"
-            >
+            </DropdownItem>
+            <DropdownItem onClick={() => setRegistrationStep(RegistrationSteps.Claim)}>
               Claim
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-              onClick={() => setRegistrationStep(RegistrationSteps.Pending)}
-              className="rounded border border-gray-40/20 p-2"
-            >
-              Pending
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-              onClick={() => setRegistrationStep(RegistrationSteps.Success)}
-              className="rounded border border-gray-40/20 p-2"
-            >
+            </DropdownItem>
+            <DropdownItem onClick={() => setRegistrationStep(RegistrationSteps.Pending)}>
+              Registering
+            </DropdownItem>
+            <DropdownItem onClick={() => setRegistrationStep(RegistrationSteps.Success)}>
               Success
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-              onClick={() => setRegistrationStep(RegistrationSteps.Profile)}
-              className="rounded border border-gray-40/20 p-2"
-            >
+            </DropdownItem>
+            <DropdownItem onClick={() => setRegistrationStep(RegistrationSteps.Profile)}>
               Profile
-            </button>
-          </li>
-        </ul>
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
       </div>
       {/* 1. Brand & Search */}
       <Transition
@@ -197,7 +173,13 @@ export function RegistrationFlow() {
           <Transition
             appear
             show={!isSearch}
-            className={classNames('mx-auto transition-[max-width]', registrationTransitionDuration)}
+            className={classNames(
+              'transition-[max-width, transform] mx-auto',
+              registrationTransitionDuration,
+              {
+                'scale-90 animate-pulse': isPending,
+              },
+            )}
             enterFrom="max-w-0"
             enterTo="max-w-full"
           >
@@ -212,7 +194,7 @@ export function RegistrationFlow() {
             appear
             show={isPending}
             className={classNames(
-              'absolute left-1/2 top-full mt-6 -translate-x-1/2 transform text-center transition-opacity ',
+              'absolute left-1/2 top-full mt-6 -translate-x-1/2 transform animate-pulse text-center transition-opacity ',
               registrationTransitionDuration,
             )}
             enterFrom="opacity-0"
@@ -273,7 +255,7 @@ export function RegistrationFlow() {
           'w-full max-w-[26rem]',
           registrationTransitionDuration,
         )}
-        enter="delay-700"
+        enter="delay-1000"
         enterFrom={classNames('opacity-0')}
         enterTo={classNames('opacity-100')}
         leave="transition-all "

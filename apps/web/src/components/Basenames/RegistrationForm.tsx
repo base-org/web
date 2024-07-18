@@ -16,6 +16,9 @@ import { useCallback, useEffect, useState } from 'react';
 import { formatEther } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
 import { useSwitchChain } from 'wagmi';
+import TransactionError from 'apps/web/src/components/TransactionError';
+import TransactionStatus from 'apps/web/src/components/TransactionStatus';
+import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
 
 function formatEtherPrice(price?: bigint) {
   if (price === undefined) {
@@ -40,8 +43,14 @@ export function RegistrationForm() {
   const { openConnectModal } = useConnectModal();
   const { switchChain } = useSwitchChain();
   const { logEventWithContext } = useAnalytics();
-  const { selectedName, setRegisterNameTransactionHash, discount, loadingDiscounts } =
-    useRegistration();
+  const {
+    transactionData,
+    transactionError,
+    selectedName,
+    setRegisterNameTransactionHash,
+    discount,
+    loadingDiscounts,
+  } = useRegistration();
   const [years, setYears] = useState(1);
 
   const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
@@ -81,6 +90,7 @@ export function RegistrationForm() {
     callback: registerName,
     data: registerNameTransactionHash,
     isPending: registerNameTransactionIsPending,
+    error: registerNameError,
   } = useRegisterNameCallback(
     selectedName,
     price,
@@ -211,6 +221,20 @@ export function RegistrationForm() {
             }}
           </ConnectButton.Custom>
         </div>
+
+        {transactionError !== null && (
+          <TransactionError className="mt-4 text-center" error={transactionError} />
+        )}
+        {registerNameError && (
+          <TransactionError className="mt-4 text-center" error={registerNameError} />
+        )}
+        {transactionData && (
+          <TransactionStatus
+            className="mt-4 text-center"
+            transaction={transactionData}
+            chainId={USERNAME_CHAIN_ID}
+          />
+        )}
         <div className="mt-6 flex w-full justify-center">
           <p className="text mr-2 text-center font-bold uppercase text-[#5B616E]">
             {nameIsFree ? "You've qualified for a free name! " : 'Unlock your username for free! '}

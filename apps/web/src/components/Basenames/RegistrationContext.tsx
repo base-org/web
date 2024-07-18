@@ -1,4 +1,5 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
 import {
   DiscountData,
   findFirstValidDiscount,
@@ -17,7 +18,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { Address } from 'viem';
+import { Address, TransactionReceipt } from 'viem';
 import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
 
 export enum RegistrationSteps {
@@ -42,6 +43,8 @@ export type RegistrationContextProps = {
   loadingDiscounts: boolean;
   discount: DiscountData | undefined;
   allActiveDiscounts: Set<Discount>;
+  transactionData: TransactionReceipt | undefined;
+  transactionError: unknown | null;
 };
 
 export const RegistrationContext = createContext<RegistrationContextProps>({
@@ -68,6 +71,8 @@ export const RegistrationContext = createContext<RegistrationContextProps>({
   loadingDiscounts: true,
   discount: undefined,
   allActiveDiscounts: new Set(),
+  transactionData: undefined,
+  transactionError: null,
 });
 
 type RegistrationProviderProps = {
@@ -119,8 +124,10 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     data: transactionData,
     isFetching: transactionIsFetching,
     isSuccess: transactionIsSuccess,
+    error: transactionError,
   } = useWaitForTransactionReceipt({
     hash: registerNameTransactionHash,
+    chainId: USERNAME_CHAIN_ID,
     query: {
       enabled: !!registerNameTransactionHash,
     },
@@ -149,9 +156,9 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       }
 
       if (transactionData.status === 'reverted') {
-        logEventWithContext('register_name_transaction_reverted', ActionType.change);
-
-        // TODO: Show an error to the user
+        logEventWithContext('register_name_transaction_reverted', ActionType.change, {
+          error: `Transaction reverted: ${transactionData.transactionHash}`,
+        });
       }
     }
 
@@ -201,6 +208,8 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       loadingDiscounts,
       discount,
       allActiveDiscounts,
+      transactionData,
+      transactionError,
     };
   }, [
     allActiveDiscounts,
@@ -211,6 +220,8 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     searchInputFocused,
     searchInputHovered,
     selectedName,
+    transactionData,
+    transactionError,
   ]);
 
   return <RegistrationContext.Provider value={values}>{children}</RegistrationContext.Provider>;

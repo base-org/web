@@ -9,7 +9,7 @@ import {
 import { formatBaseEthDomain, normalizeEnsDomainName } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useMemo } from 'react';
-import { encodeFunctionData, namehash, TransactionExecutionError } from 'viem';
+import { encodeFunctionData, namehash } from 'viem';
 import { useAccount, useSwitchChain, useWriteContract } from 'wagmi';
 
 function secondsInYears(years: number): bigint {
@@ -47,7 +47,7 @@ export function useRegisterNameCallback(
     [address, addressData, normalizedName, years],
   );
 
-  const { data, writeContractAsync, isPending } = useWriteContract();
+  const { data, writeContractAsync, isPending, error } = useWriteContract();
 
   // TODO: I think we could pass arguments to this function instead of the hook
   const registerName = useCallback(async () => {
@@ -66,19 +66,14 @@ export function useRegisterNameCallback(
         args: isDiscounted ? [registerRequest, discountKey, validationData] : [registerRequest],
         value,
       });
-    } catch (error) {
-      let errorReason = 'unknown';
-      if (error instanceof TransactionExecutionError) {
-        errorReason = error.details;
-      }
-
+    } catch (e) {
       logEventWithContext('register_name_transaction_canceled', ActionType.change, {
-        error: errorReason,
+        error: JSON.stringify(error),
       });
-      // TODO: Show error
     }
   }, [
     discountKey,
+    error,
     isDiscounted,
     logEventWithContext,
     registerRequest,
@@ -88,5 +83,5 @@ export function useRegisterNameCallback(
     writeContractAsync,
   ]);
 
-  return { callback: registerName, data, isPending };
+  return { callback: registerName, data, isPending, error };
 }

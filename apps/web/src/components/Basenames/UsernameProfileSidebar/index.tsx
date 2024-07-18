@@ -34,7 +34,11 @@ export default function UsernameSidebar() {
 
   return (
     <aside className="flex flex-col gap-6">
-      <UsernamePill variant={UsernamePillVariants.Card} username={profileUsernameFormatted} />
+      <UsernamePill
+        variant={UsernamePillVariants.Card}
+        username={profileUsernameFormatted}
+        address={profileAddress}
+      />
       {currentWalletIsOwner && (
         <Button variant={ButtonVariants.Gray} rounded fullWidth onClick={openModal}>
           Manage Profile

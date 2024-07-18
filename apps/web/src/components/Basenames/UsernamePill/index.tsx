@@ -1,3 +1,8 @@
+import Dropdown from 'apps/web/src/components/Dropdown';
+import DropdownItem from 'apps/web/src/components/DropdownItem';
+import DropdownMenu from 'apps/web/src/components/DropdownMenu';
+import DropdownToggle from 'apps/web/src/components/DropdownToggle';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { BaseSepoliaName, getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import Image from 'next/image';
@@ -10,10 +15,11 @@ export enum UsernamePillVariants {
 type UsernamePillProps = {
   variant: UsernamePillVariants;
   username: BaseSepoliaName;
+  address?: string;
 };
 
-export function UsernamePill({ variant, username }: UsernamePillProps) {
-  const transitionClasses = 'transition-all duration-200 ease-in-out';
+export function UsernamePill({ variant, username, address }: UsernamePillProps) {
+  const transitionClasses = 'transition-all duration-700 ease-in-out';
 
   const pillNameClasses = classNames(
     'bg-blue-500 text-white relative leading-[2em] overflow-hidden text-ellipsis max-w-full',
@@ -63,6 +69,21 @@ export function UsernamePill({ variant, username }: UsernamePillProps) {
         />
       </figure>
       <span className={userNameClasses}>{username}</span>
+      {address && (
+        <div className="absolute right-4 top-4">
+          <Dropdown>
+            <DropdownToggle>
+              <span className="inline-block p-2 opacity-50 hover:opacity-100">
+                <Icon name="copy" color="currentColor" width="1.5rem" height="1.5rem" />
+              </span>
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem copyValue={username}>{username}</DropdownItem>
+              <DropdownItem copyValue={address}>{address}</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </div>
+      )}
     </div>
   );
 }

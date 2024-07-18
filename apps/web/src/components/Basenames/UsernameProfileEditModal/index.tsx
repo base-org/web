@@ -1,4 +1,5 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
 import UsernameDescriptionField from 'apps/web/src/components/Basenames/UsernameDescriptionField';
 import UsernameKeywordsField from 'apps/web/src/components/Basenames/UsernameKeywordsField';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
@@ -7,6 +8,8 @@ import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Fieldset from 'apps/web/src/components/Fieldset';
 import Label from 'apps/web/src/components/Label';
 import Modal, { ModalSizes } from 'apps/web/src/components/Modal';
+import TransactionError from 'apps/web/src/components/TransactionError';
+import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
 import {
@@ -17,7 +20,7 @@ import {
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useState } from 'react';
-import { TransactionExecutionError } from 'viem';
+
 import { useWaitForTransactionReceipt } from 'wagmi';
 
 export default function UsernameProfileEditModal({
@@ -28,28 +31,39 @@ export default function UsernameProfileEditModal({
   toggleModal: () => void;
 }) {
   const { profileUsernameFormatted, profileAddress, currentWalletIsOwner } = useUsernameProfile();
+
   const { logEventWithContext } = useAnalytics();
 
-  const { existingTextRecords, existingTextRecordsIsLoading, refetchExistingTextRecords } =
-    useReadBaseEnsTextRecords({
-      address: profileAddress,
-      username: profileUsernameFormatted,
-    });
+  const {
+    existingTextRecords,
+    existingTextRecordsIsLoading,
+    refetchExistingTextRecords,
+    existingTextRecordsError,
+  } = useReadBaseEnsTextRecords({
+    address: profileAddress,
+    username: profileUsernameFormatted,
+  });
 
   // Write text records
-  const { writeTextRecords, writeTextRecordsIsPending, writeTextRecordsTransactionHash } =
-    useWriteBaseEnsTextRecords({
-      address: profileAddress,
-      username: profileUsernameFormatted,
-    });
+  const {
+    writeTextRecords,
+    writeTextRecordsIsPending,
+    writeTextRecordsTransactionHash,
+    writeTextRecordsError,
+  } = useWriteBaseEnsTextRecords({
+    address: profileAddress,
+    username: profileUsernameFormatted,
+  });
 
   // Wait for text record transaction to be processed
   const {
     data: transactionData,
     isFetching: transactionIsFetching,
     isSuccess: transactionIsSuccess,
+    error: transactionError,
   } = useWaitForTransactionReceipt({
     hash: writeTextRecordsTransactionHash,
+    chainId: USERNAME_CHAIN_ID,
     query: {
       enabled: !!writeTextRecordsTransactionHash,
     },
@@ -61,21 +75,21 @@ export default function UsernameProfileEditModal({
     if (transactionIsFetching) {
       logEventWithContext('update_text_records_transaction_processing', ActionType.change);
     }
-    if (transactionIsSuccess) {
-      if (transactionData.status === 'success') {
-        logEventWithContext('update_text_records_transaction_success', ActionType.change);
-        // TODO: Show a Success to the user
-        refetchExistingTextRecords()
-          .then(() => {
-            toggleModal();
-          })
-          .catch(() => {});
-      }
+    if (!transactionData) return;
 
-      if (transactionData.status === 'reverted') {
-        logEventWithContext('update_text_records_transaction_reverted', ActionType.change);
-        // TODO: Show an error to the user
-      }
+    if (transactionData.status === 'success') {
+      logEventWithContext('update_text_records_transaction_success', ActionType.change);
+      refetchExistingTextRecords()
+        .then(() => {
+          // toggleModal() ?
+        })
+        .catch(() => {});
+    }
+
+    if (transactionData.status === 'reverted') {
+      logEventWithContext('update_text_records_transaction_reverted', ActionType.change, {
+        error: `Transaction reverted: ${transactionData.transactionHash}`,
+      });
     }
   }, [
     refetchExistingTextRecords,
@@ -103,7 +117,7 @@ export default function UsernameProfileEditModal({
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
 
-      // TODO: We can't really get to this steps, but we should show
+      // TODO: We can't really get to this steps, but we should show an error
       if (!currentWalletIsOwner) return false;
 
       logEventWithContext('update_text_records_transaction_initiated', ActionType.change);
@@ -114,19 +128,14 @@ export default function UsernameProfileEditModal({
           if (result) {
             logEventWithContext('update_text_records_transaction_approved', ActionType.change);
           } else {
-            // no text records had to be updated, simply go to profile
+            // No text records had to be updated, simply go to profile
             toggleModal();
           }
         })
 
         .catch((error) => {
-          let errorReason = 'unknown';
-          if (error instanceof TransactionExecutionError) {
-            errorReason = error.details;
-          }
-
           logEventWithContext('update_text_records_transaction_canceled', ActionType.click, {
-            error: errorReason,
+            error: JSON.stringify(error),
           });
         });
     },
@@ -194,6 +203,12 @@ export default function UsernameProfileEditModal({
           >
             Save
           </Button>
+          {writeTextRecordsError && <TransactionError error={writeTextRecordsError} />}
+          {existingTextRecordsError && <TransactionError error={existingTextRecordsError} />}
+          {transactionError && <TransactionError error={existingTextRecordsError} />}
+          {transactionData && (
+            <TransactionStatus transaction={transactionData} chainId={transactionData.chainId} />
+          )}
         </form>
       )}
     </Modal>

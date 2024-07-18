@@ -69,6 +69,7 @@ export default function useReadBaseEnsTextRecords({
     data: textRecordsData,
     isLoading: existingTextRecordsIsLoading,
     refetch: refetchExistingTextRecords,
+    error: existingTextRecordsError,
   } = useQuery({
     queryKey: ['useReadBaseEnsTextRecords', address, textRecordsKeysEnabled, USERNAME_CHAIN_ID],
     queryFn: getExistingTextRecords,
@@ -91,5 +92,10 @@ export default function useReadBaseEnsTextRecords({
     }
   }, [textRecordsData, updateExistingTextRecords]);
 
-  return { existingTextRecordsIsLoading, existingTextRecords, refetchExistingTextRecords };
+  return {
+    existingTextRecordsIsLoading,
+    existingTextRecords,
+    refetchExistingTextRecords,
+    existingTextRecordsError,
+  };
 }

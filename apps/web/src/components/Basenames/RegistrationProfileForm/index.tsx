@@ -1,4 +1,5 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import UsernameDescriptionField from 'apps/web/src/components/Basenames/UsernameDescriptionField';
 import UsernameKeywordsField from 'apps/web/src/components/Basenames/UsernameKeywordsField';
@@ -7,6 +8,8 @@ import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Fieldset from 'apps/web/src/components/Fieldset';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
+import TransactionError from 'apps/web/src/components/TransactionError';
+import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
@@ -19,7 +22,6 @@ import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
-import { TransactionExecutionError } from 'viem';
 import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
 
 export enum FormSteps {
@@ -39,64 +41,70 @@ export default function RegistrationProfileForm() {
     address,
   });
 
-  const { existingTextRecords, existingTextRecordsIsLoading, refetchExistingTextRecords } =
-    useReadBaseEnsTextRecords({
-      address: address,
-      username: baseEnsName,
-    });
+  const {
+    existingTextRecords,
+    existingTextRecordsIsLoading,
+    refetchExistingTextRecords,
+    existingTextRecordsError,
+  } = useReadBaseEnsTextRecords({
+    address: address,
+    username: baseEnsName,
+  });
 
   // Write text records
-  const { writeTextRecords, writeTextRecordsIsPending, writeTextRecordsTransactionHash } =
-    useWriteBaseEnsTextRecords({
-      address: address,
-      username: baseEnsName,
-    });
+  const {
+    writeTextRecords,
+    writeTextRecordsIsPending,
+    writeTextRecordsTransactionHash,
+    writeTextRecordsError,
+  } = useWriteBaseEnsTextRecords({
+    address: address,
+    username: baseEnsName,
+  });
 
   // Wait for text record transaction to be processed
   const {
     data: transactionData,
     isFetching: transactionIsFetching,
-    isSuccess: transactionIsSuccess,
+    error: transactionError,
   } = useWaitForTransactionReceipt({
     hash: writeTextRecordsTransactionHash,
+    chainId: USERNAME_CHAIN_ID,
     query: {
       enabled: !!writeTextRecordsTransactionHash,
+      refetchOnWindowFocus: false,
     },
   });
 
   const [textRecords, setTextRecords] = useState<UsernameTextRecords>(existingTextRecords);
 
   useEffect(() => {
+    if (!transactionData) return;
+
+    if (transactionData.status === 'success') {
+      logEventWithContext('update_text_records_transaction_success', ActionType.change);
+
+      refetchExistingTextRecords()
+        .then(() => {
+          router.push(`names/${baseEnsName}`);
+        })
+        .catch(() => {
+          // console.log({ error });
+        });
+    }
+
+    if (transactionData.status === 'reverted') {
+      logEventWithContext('update_text_records_transaction_reverted', ActionType.change, {
+        error: `Transaction reverted: ${transactionData.transactionHash}`,
+      });
+    }
+  }, [logEventWithContext, refetchExistingTextRecords, router, baseEnsName, transactionData]);
+
+  useEffect(() => {
     if (transactionIsFetching) {
       logEventWithContext('update_text_records_transaction_processing', ActionType.change);
     }
-    if (transactionIsSuccess) {
-      // TODO: This can be a failed transaction
-      if (transactionData.status === 'success') {
-        logEventWithContext('update_text_records_transaction_success', ActionType.change);
-
-        refetchExistingTextRecords()
-          .then(() => {
-            router.push(`names/${selectedName}`);
-          })
-          .catch(() => {});
-      }
-
-      if (transactionData.status === 'reverted') {
-        logEventWithContext('update_text_records_transaction_reverted', ActionType.change);
-
-        // TODO: Show an error to the user
-      }
-    }
-  }, [
-    refetchExistingTextRecords,
-    router,
-    selectedName,
-    transactionIsSuccess,
-    transactionIsFetching,
-    transactionData,
-    logEventWithContext,
-  ]);
+  }, [logEventWithContext, transactionIsFetching]);
 
   useEffect(() => {
     setTextRecords(existingTextRecords);
@@ -124,6 +132,7 @@ export default function RegistrationProfileForm() {
 
       if (currentFormStep === FormSteps.Keywords) {
         logEventWithContext('update_text_records_transaction_initiated', ActionType.change);
+
         writeTextRecords(textRecords)
           .then((result) => {
             // We updated some text records
@@ -135,15 +144,9 @@ export default function RegistrationProfileForm() {
             }
           })
           .catch((error) => {
-            let errorReason = 'unknown';
-            if (error instanceof TransactionExecutionError) {
-              errorReason = error.details;
-            }
-
             logEventWithContext('update_text_records_transaction_canceled', ActionType.click, {
-              error: errorReason,
+              error: JSON.stringify(error),
             });
-            // TODO: Show an error
           });
       }
 
@@ -240,6 +243,9 @@ export default function RegistrationProfileForm() {
           />
         </div>
       )}
+      {transactionData && (
+        <TransactionStatus transaction={transactionData} chainId={transactionData.chainId} />
+      )}
       <Button
         variant={ButtonVariants.Black}
         rounded
@@ -250,6 +256,12 @@ export default function RegistrationProfileForm() {
       >
         {currentFormStep === FormSteps.Keywords ? "I'm done" : 'Next'}
       </Button>
+      {writeTextRecordsError && <TransactionError error={writeTextRecordsError} />}
+      {existingTextRecordsError && <TransactionError error={existingTextRecordsError} />}
+      {transactionError && <TransactionError error={transactionError} />}
+      {transactionData && (
+        <TransactionStatus transaction={transactionData} chainId={transactionData.chainId} />
+      )}
     </form>
   );
 }
