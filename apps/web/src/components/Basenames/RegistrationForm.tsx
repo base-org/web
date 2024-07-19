@@ -14,8 +14,6 @@ import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallb
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useState } from 'react';
 import { formatEther } from 'viem';
-import { base, baseSepolia } from 'viem/chains';
-import { useSwitchChain } from 'wagmi';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
@@ -41,7 +39,6 @@ function formatUsdPrice(price: bigint, ethUsdPrice: number) {
 
 export function RegistrationForm() {
   const { openConnectModal } = useConnectModal();
-  const { switchChain } = useSwitchChain();
   const { logEventWithContext } = useAnalytics();
   const {
     transactionData,
@@ -71,10 +68,6 @@ export function RegistrationForm() {
 
     setYears((n) => (n > 1 ? n - 1 : n));
   }, [logEventWithContext]);
-
-  const switchChainToBase = useCallback(() => {
-    switchChain({ chainId: base.id });
-  }, [switchChain]);
 
   const ethUsdPrice = useEthPriceFromUniswap();
   const { data: initialPrice } = useNameRegistrationPrice(selectedName, years);
@@ -187,20 +180,6 @@ export function RegistrationForm() {
                     rounded
                   >
                     Connect wallet
-                  </Button>
-                );
-              }
-
-              if (!([base.id, baseSepolia.id] as number[]).includes(chain.id)) {
-                return (
-                  <Button
-                    onClick={switchChainToBase}
-                    type="button"
-                    variant={ButtonVariants.Black}
-                    size={ButtonSizes.Small}
-                    rounded
-                  >
-                    Switch network
                   </Button>
                 );
               }

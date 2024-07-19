@@ -1,7 +1,9 @@
 import abi from 'apps/web/src/abis/RegistrarControllerABI';
-import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
+import {
+  USERNAME_CHAIN_ID,
+  USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
+} from 'apps/web/src/addresses/usernames';
 import { normalizeEnsDomainName } from 'apps/web/src/utils/usernames';
-import { useMemo } from 'react';
 import { useReadContract } from 'wagmi';
 
 function secondsInYears(years: number) {
@@ -16,32 +18,22 @@ export function useDiscountedNameRegistrationPrice(
 ) {
   const normalizedName = normalizeEnsDomainName(name);
 
-  const readContractCall = useMemo(
-    () =>
-      ({
-        address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
-        abi,
-        functionName: 'discountedRegisterPrice',
-        args: [normalizedName, secondsInYears(years), discountKey ?? '0x'],
-      } as const),
-    [discountKey, normalizedName, years],
-  );
-
-  return useReadContract(readContractCall);
+  return useReadContract({
+    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
+    abi,
+    functionName: 'discountedRegisterPrice',
+    args: [normalizedName, secondsInYears(years), discountKey ?? '0x'],
+    chainId: USERNAME_CHAIN_ID,
+  });
 }
 export function useNameRegistrationPrice(name: string, years: number) {
   const normalizedName = normalizeEnsDomainName(name);
 
-  const readContractCall = useMemo(
-    () =>
-      ({
-        address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
-        abi,
-        functionName: 'registerPrice',
-        args: [normalizedName, secondsInYears(years)],
-      } as const),
-    [normalizedName, years],
-  );
-
-  return useReadContract(readContractCall);
+  return useReadContract({
+    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
+    abi,
+    functionName: 'registerPrice',
+    args: [normalizedName, secondsInYears(years)],
+    chainId: USERNAME_CHAIN_ID,
+  });
 }

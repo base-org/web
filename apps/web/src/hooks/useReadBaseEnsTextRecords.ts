@@ -9,7 +9,6 @@ import {
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { getPublicClient } from 'apps/web/src/cdp/utils';
 import { useQuery } from '@tanstack/react-query';
-import { baseSepolia } from 'viem/chains';
 import { BaseEnsNameData } from 'apps/web/src/hooks/useBaseEnsName';
 
 export type UseReadBaseEnsTextRecordsProps = {
@@ -21,7 +20,7 @@ export default function useReadBaseEnsTextRecords({
   address,
   username,
 }: UseReadBaseEnsTextRecordsProps) {
-  const client = getPublicClient(baseSepolia.id);
+  const client = getPublicClient(USERNAME_CHAIN_ID);
 
   // TODO: this could be based on textRecordsKeysEnabled via reduce
   const [existingTextRecords, setExistingTextRecords] = useState<UsernameTextRecords>({
