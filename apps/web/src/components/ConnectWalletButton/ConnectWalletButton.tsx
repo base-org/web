@@ -34,7 +34,7 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
           action: ActionType.change,
           context: 'navbar',
           address,
-          walletType: sanitizeEventString(connector?.name),
+          wallet_type: sanitizeEventString(connector?.name),
         },
         AnalyticsEventImportance.low,
       );

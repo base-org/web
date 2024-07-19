@@ -38,7 +38,7 @@ export const CustomConnectButton = ({ className }) => {
                 action: ActionType.change,
                 context: 'navbar',
                 address,
-                walletType: sanitizeEventString(connector?.name),
+                wallet_type: sanitizeEventString(connector?.name),
               },
               AnalyticsEventImportance.low,
             );
