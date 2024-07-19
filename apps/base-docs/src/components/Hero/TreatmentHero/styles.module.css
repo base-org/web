@@ -1,0 +1,95 @@
+.heroContainer {
+  background-color: #0052ff;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+.heroTitle {
+  font-family: CoinbaseDisplay;
+  color: white;
+  font-size: 125px;
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+.chartContainer,
+.secondaryContentContainer {
+  margin: 0 20px 0 10px;
+  width: 100%;
+}
+
+.chartContainerMobile {
+  margin-right: 20px;
+  width: 100%;
+}
+
+.secondaryContentContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.secondaryContentContainerMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ctaText {
+  max-width: 425px;
+  font-size: 17px;
+  font-family: CoinbaseSans;
+  margin-bottom: 20px;
+}
+
+.ctaButton {
+  height: 44px;
+  width: 164px;
+  background-color: white;
+  color: #1d1818;
+  font-size: 16px;
+  font-family: CoinbaseMono;
+  font-weight: 500;
+  text-align: center;
+}
+
+.secondaryTitleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 1200px) {
+  .heroTitle {
+    font-size: 100px;
+  }
+  .heroContainer {
+    padding: 20px 30px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .heroTitle {
+    font-size: 80px;
+  }
+  .heroContainer {
+    padding: 15px 20px;
+    gap: 10px;
+  }
+}
+@media screen and (max-width: 610px) {
+  .heroTitle {
+    font-size: 60px;
+  }
+  .heroContainer {
+    padding: 10px 15px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .heroTitle {
+    font-size: 50px;
+  }
+}
