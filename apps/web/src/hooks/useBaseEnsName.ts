@@ -14,7 +14,6 @@ export type BaseEnsNameData = BaseSepoliaName | undefined;
 export default function useBaseEnsName({ address }: UseBaseEnsNameProps) {
   const addressReverseNode = convertReverseNodeToBytes(address);
 
-  // TODO: Fix TS error
   const { data, isLoading, refetch } = useReadContract({
     abi: L2ResolverAbi,
     address: USERNAME_L2_RESOLVER_ADDRESS,

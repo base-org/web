@@ -27,8 +27,6 @@ export enum UsernameTextRecordKeys {
   Email = 'email',
   Phone = 'phone',
 
-  // TODO: Implement others common ENS records: display, avatar,  mail, notice, location
-
   // Socials
   Github = 'com.github',
   Twitter = 'com.twitter',

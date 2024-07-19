@@ -141,18 +141,14 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     }
 
     if (transactionIsSuccess) {
-      // TODO: This can be a failed transaction
       if (transactionData.status === 'success') {
-        // TODO: What about failed transaction?
         logEventWithContext('register_name_transaction_success', ActionType.change);
         // Reload current ENS name
         baseEnsNameRefetch()
           .then(() => {
             setRegistrationStep(RegistrationSteps.Success);
           })
-          .catch(() => {
-            // TODO: Show an error to the user
-          });
+          .catch(() => {});
       }
 
       if (transactionData.status === 'reverted') {
@@ -161,8 +157,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
         });
       }
     }
-
-    // TODO: Failed transaction
   }, [
     baseEnsNameRefetch,
     logEventWithContext,
@@ -190,8 +184,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
 
     setSearchInputFocused(false);
   }, [logEventWithContext, selectedName]);
-
-  // TODO: RegisterName function callback
 
   const values = useMemo(() => {
     return {

@@ -73,7 +73,7 @@ export function UsernamePill({ variant, username, address }: UsernamePillProps) 
           <Dropdown>
             <DropdownToggle>
               <span className="inline-block p-2 opacity-50 hover:opacity-100">
-                <Icon name="copy" color="currentColor" width="1.5rem" height="1.5rem" />
+                <Icon name="caret" color="currentColor" width="1.5rem" height="1.5rem" />
               </span>
             </DropdownToggle>
             <DropdownMenu>

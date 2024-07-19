@@ -36,7 +36,7 @@ export function UserAvatar({ size = AvatarSizes.None }: UserAvatarProps) {
     setAvatarImageIsLoading(false);
   }, []);
 
-  const deterministicName = baseEnsName ?? address ?? 'default-avatar';
+  const deterministicName = baseEnsName ?? ensName ?? address ?? 'default-avatar';
   const defaultSelectedProfilePicture = getUserNamePicture(deterministicName);
   const avatar = ensAvatar ?? defaultSelectedProfilePicture;
 

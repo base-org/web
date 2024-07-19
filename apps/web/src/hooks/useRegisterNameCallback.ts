@@ -36,6 +36,7 @@ export function useRegisterNameCallback(
   // TODO: I think we could pass arguments to this function instead of the hook
   const registerName = useCallback(async () => {
     if (!address) return;
+
     const addressData = encodeFunctionData({
       abi: L2ResolverAbi,
       functionName: 'setAddr',
@@ -44,7 +45,7 @@ export function useRegisterNameCallback(
 
     const registerRequest = {
       name: normalizedName, // The name being registered.
-      owner: address ?? '0x48c89d77ae34ae475e4523b25ab01e363dce5a78', // The address of the owner for the name.
+      owner: address, // The address of the owner for the name.
       duration: secondsInYears(years), // The duration of the registration in seconds.
       resolver: USERNAME_L2_RESOLVER_ADDRESS, // The address of the resolver to set for this name.
       data: [addressData], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
