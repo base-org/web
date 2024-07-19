@@ -10,20 +10,15 @@ import {
 } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
 import RegistrationProfileForm from 'apps/web/src/components/Basenames/RegistrationProfileForm';
-import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
-import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
 import RegistrationSearchInput, {
   RegistrationSearchInputVariant,
 } from 'apps/web/src/components/Basenames/RegistrationSearchInput';
+import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
+import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
 import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useEffect } from 'react';
-import Dropdown from 'apps/web/src/components/Dropdown';
-import DropdownToggle from 'apps/web/src/components/DropdownToggle';
-import DropdownMenu from 'apps/web/src/components/DropdownMenu';
-import DropdownItem from 'apps/web/src/components/DropdownItem';
-import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 
 /*
 test addresses w/ different verifications
@@ -35,8 +30,7 @@ test addresses w/ different verifications
 export function RegistrationFlow() {
   const { logEventWithContext } = useAnalytics();
 
-  const { registrationStep, setRegistrationStep, searchInputFocused, selectedName } =
-    useRegistration();
+  const { registrationStep, searchInputFocused, selectedName } = useRegistration();
 
   const isSearch = registrationStep === RegistrationSteps.Search;
   const isClaim = registrationStep === RegistrationSteps.Claim;
@@ -69,31 +63,6 @@ export function RegistrationFlow() {
 
   return (
     <main className={mainClasses}>
-      {/* TODO: REMOVE ME WHEN DONE TESTING */}
-      <div className="absolute right-10 top-20 z-50 shadow-lg">
-        <Dropdown>
-          <DropdownToggle>
-            <Button variant={ButtonVariants.Gray}>[DEV TEST] Change state</Button>
-          </DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem onClick={() => setRegistrationStep(RegistrationSteps.Search)}>
-              Search
-            </DropdownItem>
-            <DropdownItem onClick={() => setRegistrationStep(RegistrationSteps.Claim)}>
-              Claim
-            </DropdownItem>
-            <DropdownItem onClick={() => setRegistrationStep(RegistrationSteps.Pending)}>
-              Registering
-            </DropdownItem>
-            <DropdownItem onClick={() => setRegistrationStep(RegistrationSteps.Success)}>
-              Success
-            </DropdownItem>
-            <DropdownItem onClick={() => setRegistrationStep(RegistrationSteps.Profile)}>
-              Profile
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-      </div>
       {/* 1. Brand & Search */}
       <Transition
         appear
