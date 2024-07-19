@@ -8519,7 +8519,24 @@ __metadata:
 "@wagmi/connectors@npm:5.0.14":
   version: 5.0.14
   resolution: "@wagmi/connectors@npm:5.0.14"
-
+  dependencies:
+    "@coinbase/wallet-sdk": 4.0.3
+    "@metamask/sdk": 0.20.5
+    "@safe-global/safe-apps-provider": 0.18.1
+    "@safe-global/safe-apps-sdk": 8.1.0
+    "@walletconnect/ethereum-provider": 2.13.0
+    "@walletconnect/modal": 2.6.2
+    cbw-sdk: "npm:@coinbase/wallet-sdk@3.9.3"
+  peerDependencies:
+    "@wagmi/core": 2.11.2
+    typescript: ">=5.0.4"
+    viem: 2.x
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 600592eaebd1d9b5378db27b567f4c6580a31bd7f7ba93d7ff4b6e46157542755a762668988a597fd5264569fa41e8af62a82d3d92218d973008aa44673216ab
+  languageName: node
+  linkType: hard
 
 "@wagmi/connectors@npm:5.0.24":
   version: 5.0.24
