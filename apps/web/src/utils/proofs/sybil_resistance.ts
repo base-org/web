@@ -96,8 +96,12 @@ export async function sybilResistantUsernameSigning(
     throw new Error('Must provide a valid discountValidatorAddress');
   }
 
-  // @ts-expect-error onchainkit expects a different type for Chain (??)
-  const attestations = await getAttestations(address, USERNAME_CHAIN_ID, { schemas: [schema] });
+  const attestations = await getAttestations(
+    address,
+    // @ts-expect-error onchainkit expects a different type for Chain (??)
+    { id: USERNAME_CHAIN_ID },
+    { schemas: [schema] },
+  );
   if (!attestations?.length) {
     return { attestations: [], discountValidatorAddress };
   }
