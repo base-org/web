@@ -5,8 +5,10 @@ import {
   ProofTableNamespace,
 } from 'apps/web/src/utils/proofs';
 import { Address, isAddress } from 'viem';
-import { USERNAME_CB_ID_DISCOUNT_VALIDATOR } from 'apps/web/src/addresses/usernames';
-import { isSupportedChain } from 'apps/web/src/utils/chains';
+import {
+  isSupportedChain,
+  USERNAME_CB_ID_DISCOUNT_VALIDATOR,
+} from 'apps/web/src/addresses/usernames';
 
 export type CBIDProofResponse = {
   discountValidatorAddress: Address;

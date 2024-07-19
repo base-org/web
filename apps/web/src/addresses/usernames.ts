@@ -9,6 +9,17 @@ export const USERNAME_CHAIN_ID_FROM_ENV = process.env.NEXT_PUBLIC_USER_NAME_CHAI
 
 // Default to Base Sepolia
 export const USERNAME_CHAIN_ID = USERNAME_CHAIN_ID_FROM_ENV ?? baseSepolia.id;
+export const SUPPORTED_CHAIN_IDS: number[] = [base.id, baseSepolia.id];
+
+export function isSupportedChain(chainId: number) {
+  return SUPPORTED_CHAIN_IDS.includes(chainId);
+}
+
+// Build: throw error in case of misconfiguration
+//        This avoids us having to check for valid chainId down the road (hooks/components)
+if (!isSupportedChain(USERNAME_CHAIN_ID)) {
+  throw new Error(`Unsupported chainId for basename: ${USERNAME_CHAIN_ID}`);
+}
 
 export const ADDRESS_REVERSE_NODE =
   '0x91d1777781884d03a6757a803996e38de2a42967fb37eeaca72729271025a9e2';

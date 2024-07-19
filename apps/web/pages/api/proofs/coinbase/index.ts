@@ -1,5 +1,5 @@
+import { isSupportedChain } from 'apps/web/src/addresses/usernames';
 import { trustedSignerPKey } from 'apps/web/src/constants';
-import { isSupportedChain } from 'apps/web/src/utils/chains';
 import { DiscountType, VerifiedAccount } from 'apps/web/src/utils/proofs';
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
