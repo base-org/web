@@ -6,20 +6,28 @@ export default function BarChart() {
 
   return (
     <div>
-      <div className={styles.chartContainer}>
+      <div className={styles.chartColumnsContainer}>
         {chartData.map((chartColumn, index) => {
           return (
             <ChartColumn
               key={chartColumn.name}
               columnData={chartColumn}
               columnHeight={(chartColumn.value / maxValue) * 100}
-              displayType={index % 2 === 0 ? 'even' : 'odd'}
+              displayType={
+                index === 0
+                  ? 'chartColumnBase'
+                  : index % 2 === 0
+                  ? 'chartColumnEven'
+                  : 'chartColumnOdd'
+              }
             />
           );
         })}
       </div>
       <div className={styles.chartLegendContainer}>
-        <div className={styles.chartLegend}>Average Cost Per Transaction, 90D Moving Average, 18 July 2024</div>
+        <div className={styles.chartLegend}>
+          Average Cost Per Transaction, 90D Moving Average, 18 July 2024
+        </div>
         <div className={styles.chartLegend}>
           <a className={styles.chartLegend} href="https://l2beat.com/scaling/costs" target="_blank">
             Source: L2Beat
@@ -34,10 +42,7 @@ function ChartColumn({ columnData, columnHeight, displayType }: ChartColumnProps
   return (
     <div className={styles.chartColumnContainer}>
       <div className={styles.chartColumnValue}>{columnData.value}</div>
-      <div
-        style={{ height: `${columnHeight}%` }}
-        className={displayType === 'even' ? styles.chartColumnEven : styles.chartColumnOdd}
-      >
+      <div style={{ height: `${columnHeight}%` }} className={styles[displayType]}>
         {columnData.name.toUpperCase()}
       </div>
     </div>

@@ -1,12 +1,13 @@
-.chartContainer {
+.chartColumnsContainer {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .chartLegendContainer {
+    width: 100%;
     display: flex;
     flex: row;
     justify-content: space-between;
@@ -24,7 +25,7 @@ a.chartLegend:hover {
 
 .chartColumnContainer {
     height: 205px;
-    width: 333px;
+    width: 100%;
     border-left: 1px solid white;
     display: flex;
     flex-direction: column;
@@ -40,9 +41,21 @@ a.chartLegend:hover {
     font-family: CoinbaseDisplay;
 }
 
-.chartColumnEven {
+.chartColumnBase {
     padding-left: 15px;
     background-color: white;
+    color: #0052FF;
+    font-size: 11px;
+    font-family: CoinbaseText;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.chartColumnEven {
+    padding-left: 15px;
+    background-color: #ffffff95;
     color: #0052FF;
     font-size: 11px;
     font-family: CoinbaseText;
@@ -64,10 +77,12 @@ a.chartLegend:hover {
     justify-content: flex-end;
 }
 
-.square {
-    height: 200px;
-    width: 333px;
-    background-color: yellow;
-    color: black;
-    border: 1px solid black;
+
+@media screen and (max-width: 610px) {
+    .chartColumnValue {
+        font-size: 15px;
+    }
+    .chartLegend {
+        font-size: 8px;
+    }
 }
