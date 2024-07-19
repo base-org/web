@@ -1,0 +1,39 @@
+.heroContainer {
+  padding: var(--spacing-8);
+  height: 100%;
+  background-image: url('/assets/images/homepage/hero-background.png');
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+
+.heroTextContainer {
+  padding: var(--spacing-5);
+  height: 500px;
+  width: 500px;
+  background-color: rgba(var(--gray0), 0.8);
+  display: flex;
+  align-items: flex-end;
+}
+
+.heroText {
+  color: rgb(var(--gray100));
+  font-size: var(--display1-font-size);
+  line-height: var(--display1-line-height);
+  font-weight: var(--display1-font-weight);
+  font-family: var(--display1-font-family);
+  text-transform: uppercase;
+}
+
+.ctaButton {
+  margin-top: 15px;
+  height: 44px;
+  width: 164px;
+  background-color: white;
+  color: #1d1818;
+  font-size: 16px;
+  font-family: CoinbaseMono;
+  font-weight: 500;
+  text-align: center;
+}
