@@ -18,7 +18,7 @@ import {
   ERC_1967_PROXY_IMPLEMENTATION_SLOT,
   magicSpendAddress
 } from "../constants"
-import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI.json';
+import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import { USERNAME_REGISTRAR_CONTROLLER_ADDRESS } from 'apps/web/src/addresses/usernames';
 
 export async function willSponsor({
