@@ -250,9 +250,6 @@ export default function RegistrationProfileForm() {
           />
         </div>
       )}
-      {transactionData && (
-        <TransactionStatus transaction={transactionData} chainId={transactionData.chainId} />
-      )}
       <Button
         variant={ButtonVariants.Black}
         rounded

@@ -46,12 +46,7 @@ export default function RegistrationSuccessMessage() {
           Congrats! This name is yours!
         </h1>
         <div className="flex flex-col gap-4 md:flex-row">
-          <Button
-            rounded
-            fullWidth
-            variant={ButtonVariants.SecondaryBounce}
-            onClick={goToProfileOnClick}
-          >
+          <Button rounded fullWidth variant={ButtonVariants.Secondary} onClick={goToProfileOnClick}>
             Go to Profile
           </Button>
 

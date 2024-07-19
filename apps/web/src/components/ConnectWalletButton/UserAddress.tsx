@@ -30,7 +30,7 @@ export function UserAddress({ address }: UserAddressProps) {
   return (
     <CopyToClipboard text={address ?? ''}>
       <div className="flex cursor-pointer flex-row items-center gap-2">
-        <span className="truncate ">{addressOrName}</span>
+        <span className="max-w-[9rem] truncate md:max-w-full">{addressOrName}</span>
         <Icon name="copy" color="currentColor" width="1rem" height="1rem" />
       </div>
     </CopyToClipboard>
