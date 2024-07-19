@@ -1,5 +1,5 @@
+import { isSupportedChain } from 'apps/web/src/addresses/usernames';
 import { trustedSignerPKey } from 'apps/web/src/constants';
-import { isSupportedChain } from 'apps/web/src/utils/chains';
 import { DiscountType, VerifiedAccount } from 'apps/web/src/utils/proofs';
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -57,10 +57,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const result = await sybilResistantUsernameSigning(address, DiscountType.CB, parsedChain);
+    const result = await sybilResistantUsernameSigning(address, DiscountType.CB);
     return res.status(200).json(result);
-  } catch (error: unknown) {
+  } catch (error) {
     console.error(error);
-    return res.status(409).json({ error });
+    if (error instanceof Error) {
+      return res.status(409).json({ error: error.message });
+    }
+
+    // If error is not an instance of Error, return a generic error message
+    return res.status(409).json({ error: 'An unexpected error occurred' });
   }
 }

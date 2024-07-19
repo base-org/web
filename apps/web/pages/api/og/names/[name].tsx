@@ -9,12 +9,12 @@ export const config = {
 
 export default async function handler(request: NextRequest) {
   const url = new URL(request.url);
-  const username = url.searchParams.get('name') || 'yourname';
+  const username = url.searchParams.get('name') ?? 'yourname';
   const formattedName = formatBaseEthDomain(username);
 
   const fontData = await fetch(
     new URL('../../../../src/fonts/CoinbaseDisplay-Regular.ttf', import.meta.url),
-  ).then((res) => res.arrayBuffer());
+  ).then(async (res) => res.arrayBuffer());
 
   const profilePicture = getUserNamePicture(username);
 
@@ -37,39 +37,37 @@ export default async function handler(request: NextRequest) {
           padding: '1.5rem',
         }}
       >
-        <div tw="bg-gray-50 flex">
-          <div
+        <div
+          style={{
+            display: 'flex',
+            gap: '1rem',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#0455FF',
+            borderRadius: '5rem',
+            padding: '1rem',
+            paddingRight: '1.5rem',
+            fontSize: '5rem',
+            maxWidth: '100%',
+            boxShadow:
+              '0px 8px 16px 0px rgba(0,82,255,0.32),inset 0px 8px 16px 0px rgba(255,255,255,0.25) ',
+          }}
+        >
+          <figure style={{ borderRadius: '100%', overflow: 'hidden' }}>
+            <img src={domainName + profilePicture.src} height={80} width={80} />
+          </figure>
+          <span
             style={{
-              display: 'flex',
-              gap: '1rem',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: '#0455FF',
-              borderRadius: '5rem',
-              padding: '1rem',
-              paddingRight: '1.5rem',
-              fontSize: '5rem',
-              maxWidth: '100%',
-              boxShadow:
-                '0px 8px 16px 0px rgba(0,82,255,0.32),inset 0px 8px 16px 0px rgba(255,255,255,0.25) ',
+              color: 'white',
+              paddingBottom: '0.75rem',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              width: 'auto',
             }}
           >
-            <figure style={{ borderRadius: '100%', overflow: 'hidden' }}>
-              <img src={domainName + profilePicture.src} height={80} width={80} />
-            </figure>
-            <span
-              style={{
-                color: 'white',
-                paddingBottom: '0.75rem',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                width: 'auto',
-              }}
-            >
-              {formattedName}
-            </span>
-          </div>
+            {formattedName}
+          </span>
         </div>
       </div>
     ),

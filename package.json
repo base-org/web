@@ -7,7 +7,7 @@
   "scripts": {
     "build": "yarn workspaces foreach run build",
     "lint": "yarn workspaces foreach run lint",
-    "postinstall": "husky install",
+    "postinstall": "sh -c 'if [ command -v ./node_modules/.bin/husky ]; then ./node_modules/.bin/husky install; fi;'",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
   },
@@ -85,7 +85,7 @@
     "tslib": "^2.3.0"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
-    "*.{js,jsx,ts,tsx,css,md}": "prettier --write"
+    "*.{ts,tsx}": "eslint --cache --fix",
+    "*.{ts,tsx,css,md}": "prettier --write"
   }
 }

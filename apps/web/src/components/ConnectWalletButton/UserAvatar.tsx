@@ -4,6 +4,7 @@ import { mainnet } from 'wagmi/chains';
 import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { useCallback, useState } from 'react';
+import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 
 export enum AvatarSizes {
   Medium,
@@ -27,16 +28,20 @@ export function UserAvatar({ size = AvatarSizes.None }: UserAvatarProps) {
     },
   });
 
+  const { data: baseEnsName, isLoading: baseEnsNameIsLoading } = useBaseEnsName({
+    address,
+  });
+
   const onLoadAvatar = useCallback(() => {
     setAvatarImageIsLoading(false);
   }, []);
 
-  // TODO: Resolve address to [name].base.eth when the reverse resolver is setup
-  const deterministicName = address ?? 'default-avatar';
+  const deterministicName = baseEnsName ?? address ?? 'default-avatar';
   const defaultSelectedProfilePicture = getUserNamePicture(deterministicName);
   const avatar = ensAvatar ?? defaultSelectedProfilePicture;
 
-  const isLoading = ensNameIsLoading || ensAvatarIsLoading || avatarImageIsLoading;
+  const isLoading =
+    ensNameIsLoading || ensAvatarIsLoading || avatarImageIsLoading || baseEnsNameIsLoading;
 
   const figureClasses = classNames('bg-blue-500', {
     'h-[2rem] max-h-[2rem] min-h-[2rem] w-[2rem] min-w-[2rem] max-w-[2rem] rounded-full overflow-hidden':

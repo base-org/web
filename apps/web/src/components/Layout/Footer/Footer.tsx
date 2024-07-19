@@ -14,7 +14,7 @@ export function Footer() {
   const handleCloseModal = useCallback(() => setIsOpen(false), []);
 
   return (
-    <footer className="z-10 mt-auto flex w-full justify-center bg-gray lg:pb-64">
+    <footer className="z-10 mt-auto flex w-full justify-center bg-gray-10 lg:pb-64">
       <div className="flex w-full max-w-[1440px] flex-col justify-between p-8 lg:flex-row">
         <div className="flex flex-col font-display text-sm text-white">
           <div className="bg-blue-300 flex w-32 flex-row items-start justify-start">

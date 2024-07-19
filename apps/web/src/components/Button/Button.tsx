@@ -1,3 +1,4 @@
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 
@@ -43,6 +44,7 @@ type ButtonProps = {
   rounded?: boolean;
   children: ReactNode;
   fullWidth?: boolean;
+  isLoading?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export function Button({
@@ -52,20 +54,29 @@ export function Button({
   className,
   rounded = false,
   fullWidth = false,
+  disabled = false,
+  isLoading = false,
   ...props
 }: ButtonProps) {
   const buttonClasses = classNames(
-    'font-display text-center',
+    'font-display text-cente flex gap-2 items-center whitespace-nowrap cursor-pointer',
     variantStyles[variant],
     sizeStyles[size],
     { 'rounded-full': rounded },
-    { 'w-full': fullWidth },
+    { 'w-full text-center justify-center': fullWidth },
+    { 'pointer-events-none opacity-50 select-none': disabled || isLoading },
     className,
   );
 
   return (
-    <button {...props} type="button" className={buttonClasses}>
-      {children}
+    <button {...props} type="button" className={buttonClasses} disabled={disabled}>
+      {isLoading ? (
+        <span className="flex justify-center">
+          <Icon name="spinner" color="currentColor" />
+        </span>
+      ) : (
+        children
+      )}
     </button>
   );
 }

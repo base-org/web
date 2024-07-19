@@ -14,6 +14,7 @@ keywords:
     blockchain data,
     Covalent,
     Moralis,
+    Subsquid,
     SubQuery,
     The Graph,
     GraphQL,
@@ -114,11 +115,41 @@ To get started with Moralis, you can [sign up for an account](https://moralis.io
 
 ---
 
+## Nexandria
+
+[Nexandria](https://www.nexandria.com/?utm_source=base-docs&utm_medium=partner-docs) API offers access to complete historical on-chain data at blazing speeds, arbitrary granularity (as low as block-level) and at viable unit economics (think web2 level costs). Our technology lets you generate subgraphs on the fly, unlocking unique endpoints like a statement of all the balance transfers for all the tokens, or a list of all the neighbors of an address with all the historical interaction details or a portfolio balance graph covering all the tokens across arbitrary time/block ranges.
+
+References:
+
+- [API Documentation](https://docs.nexandria.com/)
+- [Sign-up](https://www.nexandria.com/api)
+
+#### Supported Networks
+
+- Base Mainnet
+
+---
+
 ## Shovel
 
 [Shovel](https://indexsupply.com/shovel) is an [open source](https://github.com/indexsupply/code) tool for synchronizing Ethereum data to your Postgres database. Shovel can index block data, transaction data, and decoded event data. A single Shovel can index multiple chains simultaneously. Shovel is configured via a declarative JSON config file – no custom functions to save indexed data to your database.
 
 Find out more in the [Shovel Docs](https://indexsupply.com/shovel/docs/)
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
+
+---
+
+## Subsquid
+
+[Subsquid](https://subsquid.io/) is a decentralized hyper-scalable data platform optimized for providing efficient, permissionless access to large volumes of data.
+It currently serves historical on-chain data, including event logs, transaction receipts, traces, and per-transaction state diffs.
+Subsquid offers a powerful toolkit for creating custom data extraction and processing pipelines, achieving an indexing speed of up to 150k blocks per second.
+
+To get started, visit the [documentation](https://docs.subsquid.io/) or see this [quickstart with examples](https://docs.subsquid.io/sdk/examples/) on how to easily create subgraphs via Subsquid.
 
 #### Supported Networks
 

@@ -1,9 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getProofsByNamespaceAndAddress, ProofTableNamespace } from 'apps/web/src/utils/proofs';
+import {
+  getProofsByNamespaceAndAddress,
+  hasRegisteredWithDiscount,
+  ProofTableNamespace,
+} from 'apps/web/src/utils/proofs';
 import { Address, isAddress } from 'viem';
-import { USERNAME_CB_ID_DISCOUNT_VALIDATOR } from 'apps/web/src/addresses/usernames';
-import { isSupportedChain } from 'apps/web/src/utils/chains';
-
+import {
+  isSupportedChain,
+  USERNAME_CB_ID_DISCOUNT_VALIDATOR,
+} from 'apps/web/src/addresses/usernames';
 export type CBIDProofResponse = {
   discountValidatorAddress: Address;
   address: Address;
@@ -26,20 +31,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
-  const { address, namespace, chain } = req.query;
+  const { address, chain } = req.query;
   if (!address || Array.isArray(address) || !isAddress(address)) {
     return res.status(400).json({ error: 'A single valid address is required' });
   }
 
-  if (!chain || !isSupportedChain(parseInt(chain as string))) {
+  if (!chain || Array.isArray(chain)) {
     return res.status(400).json({ error: 'invalid chain' });
+  }
+  let parsedChain = parseInt(chain);
+  if (!isSupportedChain(parsedChain)) {
+    return res.status(400).json({ error: 'chain must be Base or Base Sepolia' });
   }
 
   try {
-    const [content] = await getProofsByNamespaceAndAddress(
-      address,
-      namespace as ProofTableNamespace,
-    );
+    const hasPreviouslyRegistered = await hasRegisteredWithDiscount([address]);
+    // if any linked address registered previously return an error
+    if (hasPreviouslyRegistered) {
+      return res.status(400).json({ error: 'This address has already claimed a username.' });
+    }
+    const [content] = await getProofsByNamespaceAndAddress(address, ProofTableNamespace.Usernames);
     const proofs = content?.proofs ? (JSON.parse(content.proofs) as `0x${string}`[]) : [];
     if (proofs.length === 0) {
       return res.status(404).json({ error: 'address is not eligible for a cbid discount' });
@@ -47,10 +58,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const responseData: CBIDProofResponse = {
       ...content,
       proofs,
-      discountValidatorAddress: USERNAME_CB_ID_DISCOUNT_VALIDATOR[parseInt(chain as string)],
+      discountValidatorAddress: USERNAME_CB_ID_DISCOUNT_VALIDATOR,
     };
     return res.status(200).json(responseData);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error(error);
   }
 

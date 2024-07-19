@@ -56,9 +56,12 @@ export function List() {
     }
   }, [router.query.tag]);
 
-  const selectTag = useCallback((tag: string) => {
-    void router.push({ query: { tag } });
-  }, [router]);
+  const selectTag = useCallback(
+    (tag: string) => {
+      void router.push({ query: { tag } });
+    },
+    [router],
+  );
 
   const filteredApps = useMemo(
     () =>
@@ -97,7 +100,7 @@ export function List() {
       </div>
       <div className="flex flex-col gap-10 lg:grid lg:grid-cols-4">
         {truncatedApps.map((app) => (
-          <Card {...app} key={app.name} />
+          <Card {...app} key={app.url} />
         ))}
       </div>
       {showEmptyState && (
@@ -107,7 +110,7 @@ export function List() {
             NO RESULTS FOR &ldquo;{searchText === '' ? selectedTag : searchText}
             &rdquo;
           </span>
-          <span className="font-sans text-muted">Try searching for another term</span>
+          <span className="font-sans text-gray-60">Try searching for another term</span>
         </div>
       )}
 

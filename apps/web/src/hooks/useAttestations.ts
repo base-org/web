@@ -1,18 +1,17 @@
 import { CBIDProofResponse } from 'apps/web/pages/api/proofs/cbid';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
-import { Discount } from 'apps/web/pages/names';
-import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator.json';
-import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator.json';
-import { ProofTableNamespace } from 'apps/web/src/utils/proofs';
+import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
+import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
+import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
+import { Discount } from 'apps/web/src/utils/usernames';
 import { useEffect, useMemo, useState } from 'react';
 import { Address, ReadContractErrorType, encodeAbiParameters } from 'viem';
-import { base, baseSepolia } from 'viem/chains';
 import { useAccount, useReadContract } from 'wagmi';
 
 export type AttestationData = {
   discountValidatorAddress: Address;
   discount: Discount;
-  contractArgs: string[];
+  validationData: `0x${string}`;
 };
 type AttestationHookReturns = {
   data: AttestationData | null;
@@ -20,7 +19,7 @@ type AttestationHookReturns = {
   error: ReadContractErrorType | null;
 };
 export function useCheckCBIDAttestations(): AttestationHookReturns {
-  const { address, chainId } = useAccount();
+  const { address } = useAccount();
   const [cBIDProofResponse, setCBIDProofResponse] = useState<CBIDProofResponse | null>(null);
 
   useEffect(() => {
@@ -28,8 +27,7 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
       try {
         const params = new URLSearchParams();
         params.append('address', a);
-        params.append('namespace', ProofTableNamespace.Usernames);
-        params.append('chain', (chainId === baseSepolia.id ? chainId : base.id).toString());
+        params.append('chain', USERNAME_CHAIN_ID.toString());
         const response = await fetch(`/api/proofs/cbid?${params}`);
         if (response.ok) {
           const result = (await response.json()) as CBIDProofResponse;
@@ -43,7 +41,7 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
     if (address) {
       checkCBIDAttestations(address).catch(console.error);
     }
-  }, [address, chainId]);
+  }, [address]);
 
   const encodedProof = useMemo(
     () =>
@@ -76,7 +74,7 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
       data: {
         discountValidatorAddress: cBIDProofResponse.discountValidatorAddress,
         discount: Discount.CBID,
-        contractArgs: [address, encodedProof],
+        validationData: encodedProof,
       },
       loading: false,
       error: null,
@@ -87,7 +85,7 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
 
 // returns info about Coinbase verified account attestations
 export function useCheckCoinbaseAttestations() {
-  const { address, chainId } = useAccount();
+  const { address } = useAccount();
   const [loading, setLoading] = useState(false);
   const [coinbaseProofResponse, setCoinbaseProofResponse] = useState<CoinbaseProofResponse | null>(
     null,
@@ -99,7 +97,7 @@ export function useCheckCoinbaseAttestations() {
         setLoading(true);
         const params = new URLSearchParams();
         params.append('address', a);
-        params.append('chain', (chainId === baseSepolia.id ? chainId : base.id).toString());
+        params.append('chain', USERNAME_CHAIN_ID.toString());
         const response = await fetch(`/api/proofs/coinbase?${params}`);
         const result = (await response.json()) as CoinbaseProofResponse;
         if (response.ok) {
@@ -115,7 +113,7 @@ export function useCheckCoinbaseAttestations() {
     if (address) {
       checkCoinbaseAttestations(address).catch(console.error);
     }
-  }, [address, chainId]);
+  }, [address]);
 
   const signature = coinbaseProofResponse?.signedMessage as undefined | `0x${string}`;
 
@@ -138,7 +136,7 @@ export function useCheckCoinbaseAttestations() {
       data: {
         discountValidatorAddress: coinbaseProofResponse.discountValidatorAddress,
         discount: Discount.COINBASE_VERIFIED_ACCOUNT,
-        contractArgs: [address, signature],
+        validationData: signature,
       },
       loading: false,
       error: null,
@@ -148,7 +146,7 @@ export function useCheckCoinbaseAttestations() {
 }
 
 export function useCheckCB1Attestations() {
-  const { address, chainId } = useAccount();
+  const { address } = useAccount();
   const [loading, setLoading] = useState(false);
   const [cb1ProofResponse, setCB1ProofResponse] = useState<CoinbaseProofResponse | null>(null);
 
@@ -158,7 +156,7 @@ export function useCheckCB1Attestations() {
         setLoading(true);
         const params = new URLSearchParams();
         params.append('address', a);
-        params.append('chain', (chainId === baseSepolia.id ? chainId : base.id).toString());
+        params.append('chain', USERNAME_CHAIN_ID.toString());
         const response = await fetch(`/api/proofs/cb1?${params}`);
         if (response.ok) {
           const result = (await response.json()) as CoinbaseProofResponse;
@@ -174,7 +172,7 @@ export function useCheckCB1Attestations() {
     if (address) {
       checkCB1Attestations(address).catch(console.error);
     }
-  }, [address, chainId]);
+  }, [address]);
 
   const signature = cb1ProofResponse?.signedMessage as undefined | `0x${string}`;
 
@@ -197,7 +195,7 @@ export function useCheckCB1Attestations() {
       data: {
         discountValidatorAddress: cb1ProofResponse.discountValidatorAddress,
         discount: Discount.CB1,
-        contractArgs: [address, signature],
+        validationData: signature,
       },
       loading: false,
       error: null,

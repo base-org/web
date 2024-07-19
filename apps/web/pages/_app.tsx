@@ -57,7 +57,7 @@ const connectors = connectorsForWallets(
 
 const config = createConfig({
   connectors,
-  chains: [baseSepolia],
+  chains: [mainnet, baseSepolia, sepolia, base],
   transports: {
     [mainnet.id]: http(),
     [base.id]: http(),

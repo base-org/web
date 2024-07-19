@@ -1,36 +1,38 @@
-import {
-  ADDRESS_REVERSE_NODE,
-  USERNAME_L2_RESOLVER_ADDRESSES,
-} from 'apps/web/src/addresses/usernames';
-import { useMemo } from 'react';
-import { Address, encodePacked, keccak256 } from 'viem';
+import { USERNAME_CHAIN_ID, USERNAME_L2_RESOLVER_ADDRESS } from 'apps/web/src/addresses/usernames';
+import { Address } from 'viem';
 import { useReadContract } from 'wagmi';
-import abi from 'apps/web/src/abis/L2Resolver.json';
+import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
+import { BaseSepoliaName, convertReverseNodeToBytes } from 'apps/web/src/utils/usernames';
 
 export type UseBaseEnsNameProps = {
-  address: Address;
-  chainId: number; // TODO: Might not be needed for launch (mainnet only)
+  address?: Address;
 };
 
-export function useBaseEnsName({ address, chainId }: UseBaseEnsNameProps) {
-  const addressFormatted = address.toLocaleLowerCase() as Address;
+// In-house version of wagmi's "useEnsName"
+export type BaseEnsNameData = BaseSepoliaName | undefined;
 
-  const addressNode = keccak256(addressFormatted.substring(2) as Address);
+export default function useBaseEnsName({ address }: UseBaseEnsNameProps) {
+  const addressReverseNode = convertReverseNodeToBytes(address);
 
-  const addressReverseNode = keccak256(
-    encodePacked(['bytes32', 'bytes32'], [ADDRESS_REVERSE_NODE, addressNode]),
-  );
+  // TODO: Fix TS error
+  const { data, isLoading, refetch } = useReadContract({
+    abi: L2ResolverAbi,
+    address: USERNAME_L2_RESOLVER_ADDRESS,
+    functionName: 'name',
 
-  const readContractArgs = useMemo(
-    () => ({
-      abi,
-      address: USERNAME_L2_RESOLVER_ADDRESSES[chainId],
-      functionName: 'name',
-      args: [addressReverseNode],
-      chainId: chainId,
-    }),
-    [addressReverseNode, chainId],
-  );
+    // @ts-expect-error query is disabled if addressReverseNode is undefined
+    args: [addressReverseNode],
+    chainId: USERNAME_CHAIN_ID,
+    query: {
+      enabled: !!addressReverseNode && !!address,
+    },
+  });
 
-  return useReadContract(readContractArgs);
+  const ensNameTyped = data as BaseEnsNameData;
+
+  return {
+    data: ensNameTyped,
+    isLoading,
+    refetch,
+  };
 }
