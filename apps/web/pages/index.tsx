@@ -11,6 +11,7 @@ import { JoinTheCommunity } from '../src/components/JoinTheCommunity/JoinTheComm
 import { Partnerships } from '../src/components/Partnerships/Partnerships';
 import { FrameButtonMetadata, FrameMetadata } from '@coinbase/onchainkit';
 import { useMemo } from 'react';
+import { useExperiments } from 'apps/web/contexts/Experiments';
 
 export default function Home() {
   const buttons: [FrameButtonMetadata, ...FrameButtonMetadata[]] = useMemo(
@@ -28,6 +29,10 @@ export default function Home() {
     ],
     [],
   );
+
+  const { getUserVariant } = useExperiments();
+  const variant = getUserVariant('bf_test_flag');
+  console.log({variant})
 
   return (
     <>

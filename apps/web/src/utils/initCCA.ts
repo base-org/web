@@ -7,9 +7,6 @@ import { TrackingPreference } from '@coinbase/cookie-manager';
 import { uuid } from 'uuidv4';
 import { isDevelopment, ampDeploymentKey } from 'apps/web/src/constants';
 
-import { Experiment } from '@amplitude/experiment-js-client';
-import logEvent, { AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
-
 // CCA library loads in ClientAnalyticsScript component
 const initCCA = (
   router: NextRouter,
@@ -48,31 +45,6 @@ const initCCA = (
 
     initNextJsTrackPageview({
       nextJsRouter: router,
-    });
-
-    Experiment.initialize(ampDeploymentKey, {
-      exposureTrackingProvider: {
-        track: (exposure) => {
-          logEvent(
-            '$exposure',
-            {
-              ...exposure,
-            },
-            AnalyticsEventImportance.high,
-          );
-        },
-      },
-      userProvider: {
-        getUser: () => {
-          return {
-            user_id: identity.userId,
-            device_id: identity.deviceId,
-            os: identity.device_os,
-            language: identity.languageCode,
-            country: identity.countryCode,
-          };
-        },
-      },
     });
   }
 };
