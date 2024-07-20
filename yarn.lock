@@ -304,7 +304,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@app/web@workspace:apps/web"
   dependencies:
-    "@cbhq/config-service-node": ^0.0.8
     "@coinbase/cookie-banner": ^1.0.3
     "@coinbase/cookie-manager": ^1.1.1
     "@coinbase/onchainkit": ^0.6.0
@@ -3591,6 +3590,7 @@ __metadata:
   resolution: "@base-org/base-web@workspace:."
   dependencies:
     "@babel/preset-react": ^7.14.5
+    "@cbhq/config-service-node": 0.0.8
     "@graphql-eslint/eslint-plugin": ^3.10.4
     "@linaria/babel-preset": ^4.4.3
     "@next/bundle-analyzer": ^14.2.5
@@ -3613,6 +3613,7 @@ __metadata:
     babel-plugin-tsconfig-paths: ^1.0.3
     classnames: ^2.3.2
     clsx: ^1.2.1
+    dotenv: ^16.0.3
     eslint: ^8.27.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-airbnb-typescript: ^17.0.0
@@ -3756,7 +3757,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cbhq/config-service-node@npm:^0.0.8":
+"@cbhq/config-service-node@npm:0.0.8":
   version: 0.0.8
   resolution: "@cbhq/config-service-node@npm:0.0.8::__archiveUrl=https%3A%2F%2Fartifactory.cbhq.net%3A8081%2Fartifactory%2Fapi%2Fnpm%2Fcb-npm-master%2F%40cbhq%2Fconfig-service-node%2F-%2F%40cbhq%2Fconfig-service-node-0.0.8.tgz"
   dependencies:
