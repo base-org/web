@@ -63,12 +63,12 @@ By the end of these guides, you should be able to:
 
 ### 1. Basic understanding of writing smart contracts
 
-These guides assume that you're reasonably comfortable writing basic smart contracts. If you're just getting started, jump over to our [Basecamp] guides and start learning!
+These guides assume that you're reasonably comfortable writing basic smart contracts. If you're just getting started, jump over to our [Base Learn] guides and start learning!
 
 ### 2. Familiarity with Hardhat
 
 We also assume that you've got Hardhat up and running, and can write unit tests for your smart contracts. If you're not there yet, but already know Solidity, you can [setup Hardhat here].
 
-[setup Hardhat here]: https://docs.base.org/base-camp/docs/hardhat-setup-overview/hardhat-setup-overview-sbs
+[setup Hardhat here]: https://docs.base.org/base-learn/docs/hardhat-setup-overview/hardhat-setup-overview-sbs
 [Hardhat plugins]: https://hardhat.org/hardhat-runner/plugins
-[Basecamp]: https://base.org/camp
+[Base Learn]: https://base.org/learn

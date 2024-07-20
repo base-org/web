@@ -68,7 +68,7 @@ In this tutorial, we'll be working with a React frontend built with [Next.js]. W
 
 ### 2. Possess a general understanding of the EVM and smart contract development
 
-This tutorial assumes that you're reasonably comfortable writing basic smart contracts. If you're just getting started, jump over to our [Basecamp] guides and start learning!
+This tutorial assumes that you're reasonably comfortable writing basic smart contracts. If you're just getting started, jump over to our [Base Learn] guides and start learning!
 
 ---
 
@@ -318,7 +318,7 @@ In this tutorial, you've learned how Providers supply blockchain connection as a
 
 ---
 
-[Basecamp]: https://base.org/camp
+[Base Learn]: https://base.org/learn
 [Next.js]: https://nextjs.org/
 [RainbowKit]: https://rainbowkit.com/
 [wagmi]: https://wagmi.sh/
@@ -331,7 +331,7 @@ In this tutorial, you've learned how Providers supply blockchain connection as a
 [Alchemy]: https://www.alchemy.com/
 [QuickNode]: https://www.quicknode.com/
 [allowlist]: https://docs.alchemy.com/docs/how-to-add-allowlists-to-your-apps-for-enhanced-security
-[smart contract development]: https://base.org/camp
+[smart contract development]: https://base.org/learn
 [Subgraph]: https://thegraph.com/docs/en/developing/creating-a-subgraph/
 [data for Base Sepolia here]: https://github.com/wagmi-dev/viem/blob/main/src/chains/definitions/baseSepolia.ts
 [Base]: https://docs.base.org/network-information
@@ -345,7 +345,7 @@ In this tutorial, you've learned how Providers supply blockchain connection as a
 [smart contract development]: https://base.org/camp
 [run your own node]: https://docs.base.org/guides/run-a-base-node
 [React Context API]: https://react.dev/learn/passing-data-deeply-with-context
-[Building an Onchain App]: https://docs.base.org/base-camp/docs/frontend-setup/building-an-onchain-app
+[Building an Onchain App]: https://docs.base.org/base-learn/docs/frontend-setup/building-an-onchain-app
 [`createConfig`]: https://wagmi.sh/react/api/createConfig
 [`transports`]: https://wagmi.sh/react/api/transports
 [`fallback`]: https://wagmi.sh/core/api/transports/fallback

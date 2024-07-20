@@ -7,12 +7,13 @@ export function WhatsIncluded() {
         </div>
 
         <div className="text-md font-sans text-white">
-          <p className="font-bold">Base Camp Curriculum</p>
+          <p className="font-bold">Base Learn Curriculum</p>
           <p>
             Participants will work through the{' '}
-            <a href="https://docs.base.org/base-camp/docs/welcome/">Base Camp</a> content, which is
-            publicly available. However, as part of the Base Bootcamp program, they will also have
-            access to supplemental resources and graded projects, reviewed by Coinbase engineers.
+            <a href="https://docs.base.org/base-learn/docs/welcome/">Base Learn</a> content, which
+            is publicly available. However, as part of the Base Bootcamp program, they will also
+            have access to supplemental resources and graded projects, reviewed by Coinbase
+            engineers.
           </p>
           <br />
           <p className="font-bold">Mentors</p>

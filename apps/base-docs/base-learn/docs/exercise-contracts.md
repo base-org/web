@@ -1,11 +1,11 @@
 ---
 title: 'Exercise Contracts'
-description: A list of verified unit test contracts for Base Camp exercises.
-keywords: [Solidity, Base Camp, NFT]
+description: A list of verified unit test contracts for Base Learn exercises.
+keywords: [Solidity, Base Learn, NFT]
 hide_table_of_contents: false
 ---
 
-Many of the sections in Base Camp contain an exercise to test your knowledge on the material you have just completed. We tell you **what** to do, but not **how** to do it. You have to apply your knowledge and demonstrate the new abilities you have earned.
+Many of the sections in Base Learn contain an exercise to test your knowledge on the material you have just completed. We tell you **what** to do, but not **how** to do it. You have to apply your knowledge and demonstrate the new abilities you have earned.
 
 Upon success, you'll be granted a non-transferable, or soulbound, NFT as a memento of your learning. You can track your progress on the [progress page].
 
@@ -27,20 +27,20 @@ Below is a list of the exercises, with links to view their code. The unit tests 
 | [ERC-20 Tokens]          | [0x4F333c49B820013e5E6Fe86634DC4Da88039CE50] |
 | [ERC-721 Tokens]         | [0x15534ED3d1dBA55148695B2Ba4164F147E47a10c] |
 
-[progress page]: https://docs.base.org/base-camp/progress
-[Deploying to a Testnet]: https://docs.base.org/base-camp/docs/deployment-to-testnet/deployment-to-testnet-exercise
-[Control Structures]: https://docs.base.org/base-camp/docs/control-structures/control-structures-exercise
-[Storage]: https://docs.base.org/base-camp/docs/storage/storage-exercise
-[Arrays]: https://docs.base.org/base-camp/docs/arrays/arrays-exercise
-[Mappings]: https://docs.base.org/base-camp/docs/mappings/mappings-exercise
-[Structs]: https://docs.base.org/base-camp/docs/structs/structs-exercise
-[Inheritance]: https://docs.base.org/base-camp/docs/inheritance/inheritance-exercise
-[Imports]: https://docs.base.org/base-camp/docs/imports/imports-exercise
-[Errors]: https://docs.base.org/base-camp/docs/error-triage/error-triage-exercise
-[The "new" Keyword]: https://docs.base.org/base-camp/docs/new-keyword/new-keyword-exercise
-[Minimal Tokens]: https://docs.base.org/base-camp/docs/minimal-tokens/minimal-tokens-exercise
-[ERC-20 Tokens]: https://docs.base.org/base-camp/docs/erc-20-token/erc-20-exercise
-[ERC-721 Tokens]: https://docs.base.org/base-camp/docs/erc-721-token/erc-721-exercise
+[progress page]: https://docs.base.org/base-learn/progress
+[Deploying to a Testnet]: https://docs.base.org/base-learn/docs/deployment-to-testnet/deployment-to-testnet-exercise
+[Control Structures]: https://docs.base.org/base-learn/docs/control-structures/control-structures-exercise
+[Storage]: https://docs.base.org/base-learn/docs/storage/storage-exercise
+[Arrays]: https://docs.base.org/base-learn/docs/arrays/arrays-exercise
+[Mappings]: https://docs.base.org/base-learn/docs/mappings/mappings-exercise
+[Structs]: https://docs.base.org/base-learn/docs/structs/structs-exercise
+[Inheritance]: https://docs.base.org/base-learn/docs/inheritance/inheritance-exercise
+[Imports]: https://docs.base.org/base-learn/docs/imports/imports-exercise
+[Errors]: https://docs.base.org/base-learn/docs/error-triage/error-triage-exercise
+[The "new" Keyword]: https://docs.base.org/base-learn/docs/new-keyword/new-keyword-exercise
+[Minimal Tokens]: https://docs.base.org/base-learn/docs/minimal-tokens/minimal-tokens-exercise
+[ERC-20 Tokens]: https://docs.base.org/base-learn/docs/erc-20-token/erc-20-exercise
+[ERC-721 Tokens]: https://docs.base.org/base-learn/docs/erc-721-token/erc-721-exercise
 [0x075eB9Dc52177Aa3492E1D26f0fDE3d729625d2F]: https://sepolia.basescan.org/address/0x075eb9dc52177aa3492e1d26f0fde3d729625d2f#code#F16#L1
 [0xF4D953A3976F392aA5509612DEfF395983f22a84]: https://sepolia.basescan.org/address/0xf4d953a3976f392aa5509612deff395983f22a84#code#F17#L1
 [0x567452C6638c0D2D9778C20a3D59749FDCaa7aB3]: https://sepolia.basescan.org/address/0x567452c6638c0d2d9778c20a3d59749fdcaa7ab3#code#F17#L1

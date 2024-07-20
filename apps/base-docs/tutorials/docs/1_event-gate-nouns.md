@@ -35,7 +35,7 @@ You'll need to be comfortable deploying your app to [Vercel], or using another s
 
 ### Onchain Apps
 
-The tutorial assumes you're comfortable with the basics of deploying an app and connecting it to a smart contract. If you're still learning this part, check out our tutorials in [Base Camp] for [Building an Onchain App].
+The tutorial assumes you're comfortable with the basics of deploying an app and connecting it to a smart contract. If you're still learning this part, check out our tutorials in [Base Learn] for [Building an Onchain App].
 
 ---
 
@@ -406,8 +406,8 @@ In this tutorial, you learned about [Nouns] and how the platform makes it easy t
 
 ---
 
-[Base Camp]: https://base.org.camp
-[ERC-721 Tokens]: https://docs.base.org/base-camp/docs/erc-721-token/erc-721-standard-video
+[Base Learn]: https://base.org/learn
+[ERC-721 Tokens]: https://docs.base.org/base-learn/docs/erc-721-token/erc-721-standard-video
 [OpenZeppelin ERC-721]: https://docs.openzeppelin.com/contracts/2.x/api/token/erc721
 [OpenZeppelin]: https://www.openzeppelin.com/
 [Nouns]: https://nouns.center/intro

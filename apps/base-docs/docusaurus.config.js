@@ -122,10 +122,10 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'base-camp',
-        path: 'base-camp',
-        routeBasePath: 'base-camp',
-        sidebarPath: require.resolve('./base-camp/sidebars.js'),
+        id: 'base-learn',
+        path: 'base-learn',
+        routeBasePath: 'base-learn',
+        sidebarPath: require.resolve('./base-learn/sidebars.js'),
       },
     ],
     [
@@ -195,20 +195,20 @@ const config = {
           eventContext: 'navbar',
         },
         {
-          to: '/base-camp/docs/welcome',
+          to: '/base-learn/docs/welcome',
           navposition: 'bottomLeft',
           label: 'Camp',
           items: [
             {
               label: 'Learn',
-              to: '/base-camp/docs/welcome',
+              to: '/base-learn/docs/welcome',
               type: 'custom-dropdownLink',
               eventLabel: 'camp_learn',
               eventContext: 'navbar',
             },
             {
               label: 'Track your progress',
-              to: '/base-camp/progress',
+              to: '/base-learn/progress',
               type: 'custom-dropdownLink',
               eventLabel: 'camp_trackprogress',
               eventContext: 'navbar',
