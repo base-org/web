@@ -234,7 +234,7 @@ const footerCategories = [
           },
           importance: AnalyticsEventImportance.high,
         },
-      },      
+      },
       {
         title: 'Block Explorers',
         href: '/docs/tools/block-explorers',
