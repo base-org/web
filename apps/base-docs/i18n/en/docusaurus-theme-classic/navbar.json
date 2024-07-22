@@ -1,0 +1,82 @@
+{
+  "logo.alt": {
+    "message": "Base Docs",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Home": {
+    "message": "Home",
+    "description": "Navbar item with label Home"
+  },
+  "item.label.Docs": {
+    "message": "Docs",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.Tutorials": {
+    "message": "Tutorials",
+    "description": "Navbar item with label Tutorials"
+  },
+  "item.label.Camp": {
+    "message": "Camp",
+    "description": "Navbar item with label Camp"
+  },
+  "item.label.Ecosystem": {
+    "message": "Ecosystem",
+    "description": "Navbar item with label Ecosystem"
+  },
+  "item.label.Bridge": {
+    "message": "Bridge",
+    "description": "Navbar item with label Bridge"
+  },
+  "item.label.Builders": {
+    "message": "Builders",
+    "description": "Navbar item with label Builders"
+  },
+  "item.label.About": {
+    "message": "About",
+    "description": "Navbar item with label About"
+  },
+  "item.label.Learn": {
+    "message": "Learn",
+    "description": "Navbar item with label Learn"
+  },
+  "item.label.Track your progress": {
+    "message": "Track your progress",
+    "description": "Navbar item with label Track your progress"
+  },
+  "item.label.Bootcamp": {
+    "message": "Bootcamp",
+    "description": "Navbar item with label Bootcamp"
+  },
+  "item.label.Apps": {
+    "message": "Apps",
+    "description": "Navbar item with label Apps"
+  },
+  "item.label.Grants": {
+    "message": "Grants",
+    "description": "Navbar item with label Grants"
+  },
+  "item.label.Block Explorer": {
+    "message": "Block Explorer",
+    "description": "Navbar item with label Block Explorer"
+  },
+  "item.label.Status": {
+    "message": "Status",
+    "description": "Navbar item with label Status"
+  },
+  "item.label.Bug Bounty": {
+    "message": "Bug Bounty",
+    "description": "Navbar item with label Bug Bounty"
+  },
+  "item.label.Mission": {
+    "message": "Mission",
+    "description": "Navbar item with label Mission"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.Jobs": {
+    "message": "Jobs",
+    "description": "Navbar item with label Jobs"
+  }
+}
