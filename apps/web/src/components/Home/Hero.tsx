@@ -121,12 +121,12 @@ export function Hero() {
                 </Link>
               </div>
               <p className=" block w-full font-mono uppercase text-white lg:hidden">
-                Powered by Op Stack
+                Built on the Superchain
               </p>
             </div>
           </div>
           <p className="absolute bottom-12 right-12 hidden font-mono uppercase text-white lg:block">
-            Powered by Op Stack
+            Built on the Superchain
           </p>
         </div>
       </motion.div>
