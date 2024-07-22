@@ -3692,5 +3692,14 @@
     "description": "Best Farcaster client a degen can get. Built on Base.",
     "url": "https://app.wildcard.lol",
     "imageUrl": "/images/partners/wildcard.jpeg"
+  },
+  {
+    "name": "Base Token Store",
+    "tags": [
+      "defi"
+    ],
+    "description": "The easiest way to buy tokens on Base.",
+    "url": "https://basetokenstore.com",
+    "imageUrl": "/images/partners/basetokenstore.png"
   }
 ]
