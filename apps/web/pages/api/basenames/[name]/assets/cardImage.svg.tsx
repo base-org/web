@@ -1,6 +1,22 @@
 import satori from 'satori';
 import { NextRequest } from 'next/server';
 import { getUserNamePicture } from 'apps/web/src/utils/usernames';
+import twemoji from 'twemoji';
+
+const emojiCache: Record<string, Promise<string>> = {};
+
+export async function loadEmoji(emojiString: string) {
+  const code = twemoji.convert.toCodePoint(emojiString);
+
+  if (code in emojiCache) {
+    return emojiCache[code];
+  }
+
+  // TODO: Is this okay? Vercel's OG image already does these calls
+  const url = `https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/${code.toLowerCase()}.svg`;
+
+  return (emojiCache[code] = fetch(url).then(async (r) => r.text()));
+}
 
 export const config = {
   runtime: 'edge',
@@ -71,12 +87,19 @@ export default async function handler(request: NextRequest) {
       height: 1000,
       fonts: [
         {
-          name: 'Helvetica Neue',
+          name: 'CoinbaseDisplay',
           data: fontData,
           weight: 500,
           style: 'normal',
         },
       ],
+      loadAdditionalAsset: async (code: string, segment: string) => {
+        if (code === 'emoji') {
+          return `data:image/svg+xml;base64,${btoa(await loadEmoji(segment))}`;
+        }
+
+        return code;
+      },
     },
   );
 
