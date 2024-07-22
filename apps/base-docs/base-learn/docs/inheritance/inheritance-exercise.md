@@ -12,7 +12,7 @@ Create contracts that adhere to the following specifications.
 
 ### Employee
 
-Create an `abstract` contract called `employee`. It should have:
+Create an `abstract` contract called `Employee`. It should have:
 
 - A public variable storing `idNumber`
 - A public variable storing `managerId`
@@ -62,7 +62,9 @@ Implement a contract called `EngineeringManager` that inherits from `Salaried` a
 
 You'll have to do a more complicated set of deployments for this exercise.
 
-Deploy your `Salesperson` and `EngineeringManager` contracts. Use the following values:
+Deploy your `Salesperson` and `EngineeringManager` contracts. You don't need to separately deploy the other contracts.
+
+Use the following values:
 
 ### Salesperson
 
