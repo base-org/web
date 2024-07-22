@@ -18,7 +18,8 @@ const usernameProfileAnalyticContext = 'username_profile';
 
 export function Username({ domain }: { domain: string }) {
   const { username: profileUsername } = useParams<{ username: string }>();
-  const ogImageUrl = `${domain}/api/og/names/${profileUsername}`;
+  const ogImageUrl = `${domain}/api/basenames/${profileUsername}/assets/coverImage.png`;
+
   const formattedUsername = formatBaseEthDomain(profileUsername.toString());
   return (
     <>

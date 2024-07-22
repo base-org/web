@@ -1,26 +1,26 @@
 import { ImageResponse } from '@vercel/og';
-import { formatBaseEthDomain, getUserNamePicture } from 'apps/web/src/utils/usernames';
+import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import { NextRequest } from 'next/server';
 import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
+
 export const config = {
   runtime: 'edge',
 };
 
+// TODO: Do we want to check if the name actually exists?
 export default async function handler(request: NextRequest) {
-  const url = new URL(request.url);
-  const username = url.searchParams.get('name') ?? 'yourname';
-  const formattedName = formatBaseEthDomain(username);
-
   const fontData = await fetch(
-    new URL('../../../../src/fonts/CoinbaseDisplay-Regular.ttf', import.meta.url),
+    new URL('../../../../../src/fonts/CoinbaseDisplay-Regular.ttf', import.meta.url),
   ).then(async (res) => res.arrayBuffer());
 
+  // TODO: Check this works in live/production
+  const url = new URL(request.url);
+  const username = url.searchParams.get('name') ?? 'yourname';
+  const domainName = `${url.protocol}//${url.host}`;
   const profilePicture = getUserNamePicture(username);
 
-  // TODO: Check this works in live/production
-  const domainName = `${url.protocol}//${url.host}`;
-
+  // Using vercel's OG image for a PNG response
   return new ImageResponse(
     (
       <div
@@ -66,7 +66,7 @@ export default async function handler(request: NextRequest) {
               width: 'auto',
             }}
           >
-            {formattedName}
+            {username}
           </span>
         </div>
       </div>

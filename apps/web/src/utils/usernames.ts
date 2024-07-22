@@ -16,8 +16,10 @@ export const USERNAME_MAX_CHARACTER_LENGTH = 20;
 
 export const USERNAME_DESCRIPTION_MAX_LENGTH = 200;
 
-export type BaseName = `${string}.base.eth`;
+export type BaseMainnetName = `${string}.base.eth`;
 export type BaseSepoliaName = `${string}.basetest.eth`;
+
+export type BaseName = BaseMainnetName | BaseSepoliaName;
 
 // DANGER: Changing this post-mainnet launch means the stored data won't be accessible via the updated key
 export enum UsernameTextRecordKeys {
@@ -26,8 +28,6 @@ export enum UsernameTextRecordKeys {
   Url = 'url',
   Email = 'email',
   Phone = 'phone',
-
-  // TODO: Implement others common ENS records: display, avatar,  mail, notice, location
 
   // Socials
   Github = 'com.github',
@@ -222,8 +222,8 @@ export const USERNAME_DOMAINS: Record<number, string> = {
 
 export const USERNAME_DOMAIN = USERNAME_DOMAINS[USERNAME_CHAIN_ID];
 
-export const formatBaseEthDomain = (name: string): BaseSepoliaName => {
-  return `${name}.${USERNAME_DOMAIN}`.toLocaleLowerCase() as BaseSepoliaName;
+export const formatBaseEthDomain = (name: string): BaseName => {
+  return `${name}.${USERNAME_DOMAIN}`.toLocaleLowerCase() as BaseName;
 };
 
 export const getUsernamePictureIndex = (name: string, totalOptions: number) => {

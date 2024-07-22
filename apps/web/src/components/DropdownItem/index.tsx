@@ -1,6 +1,7 @@
+import { DropdownContext } from 'apps/web/src/components/Dropdown';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
-import { ReactNode, useCallback, useEffect, useState } from 'react';
+import { ReactNode, useCallback, useContext, useEffect, useId, useRef } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 export type DropdownItemProps = {
@@ -10,6 +11,11 @@ export type DropdownItemProps = {
 };
 
 export default function DropdownItem({ children, copyValue, onClick }: DropdownItemProps) {
+  const { lastCopiedId, setLastCopiedId } = useContext(DropdownContext);
+  const id = useId();
+
+  const timer = useRef<NodeJS.Timeout>();
+
   const dropdownItemClasses = classNames(
     'px-4 py-2 hover:bg-gray-90/50 max-w-full text-ellipsis truncate w-full text-left',
     {
@@ -17,19 +23,25 @@ export default function DropdownItem({ children, copyValue, onClick }: DropdownI
     },
   );
 
-  const [copied, setCopied] = useState<boolean>(false);
+  const copied = lastCopiedId === id;
 
   const onCopy = useCallback(() => {
-    setCopied(true);
-  }, []);
+    setLastCopiedId(id);
+  }, [id, setLastCopiedId]);
 
   useEffect(() => {
     if (copied) {
-      setTimeout(() => {
-        setCopied(false);
+      timer.current = setTimeout(() => {
+        setLastCopiedId(undefined);
       }, 5000);
+    } else {
+      clearTimeout(timer.current);
     }
-  }, [copied]);
+
+    clearTimeout(timer.current);
+
+    return () => clearTimeout(timer.current);
+  }, [copied, setLastCopiedId]);
 
   return (
     <button type="button" className={dropdownItemClasses} onClick={onClick}>

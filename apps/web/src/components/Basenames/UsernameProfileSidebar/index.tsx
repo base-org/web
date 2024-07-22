@@ -11,7 +11,7 @@ import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useState } from 'react';
 
 export default function UsernameSidebar() {
-  const { profileUsernameFormatted, profileAddress, currentWalletIsOwner } = useUsernameProfile();
+  const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { logEventWithContext } = useAnalytics();
 
@@ -27,7 +27,7 @@ export default function UsernameSidebar() {
 
   const { existingTextRecords } = useReadBaseEnsTextRecords({
     address: profileAddress,
-    username: profileUsernameFormatted,
+    username: profileUsername,
   });
 
   const textRecordKeywords = existingTextRecords[UsernameTextRecordKeys.Keywords];
@@ -36,7 +36,7 @@ export default function UsernameSidebar() {
     <aside className="flex flex-col gap-6">
       <UsernamePill
         variant={UsernamePillVariants.Card}
-        username={profileUsernameFormatted}
+        username={profileUsername}
         address={profileAddress}
       />
       {currentWalletIsOwner && (

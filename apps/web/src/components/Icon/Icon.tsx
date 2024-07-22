@@ -288,8 +288,17 @@ const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
     </svg>
   ),
   checkmark: ({ color, width, height }: SvgProps) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 24 24">
-      <path fill={color} d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" />
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 16 13"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M16 1.73441L5.47931 12.8854L0 7.0778L1.50605 5.65687L5.47931 9.86816L14.4939 0.313477L16 1.73441Z"
+        fill={color}
+      />
     </svg>
   ),
 };

@@ -39,6 +39,7 @@
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.10.2",
     "react-intl": "^6.2.1",
+    "satori": "^0.10.14",
     "sharp": "^0.33.4",
     "usehooks-ts": "^3.1.0",
     "uuidv4": "^6.2.13",

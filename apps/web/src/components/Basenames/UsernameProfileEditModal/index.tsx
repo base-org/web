@@ -30,7 +30,7 @@ export default function UsernameProfileEditModal({
   isOpen: boolean;
   toggleModal: () => void;
 }) {
-  const { profileUsernameFormatted, profileAddress, currentWalletIsOwner } = useUsernameProfile();
+  const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
 
   const { logEventWithContext } = useAnalytics();
 
@@ -41,7 +41,7 @@ export default function UsernameProfileEditModal({
     existingTextRecordsError,
   } = useReadBaseEnsTextRecords({
     address: profileAddress,
-    username: profileUsernameFormatted,
+    username: profileUsername,
   });
 
   // Write text records
@@ -52,7 +52,7 @@ export default function UsernameProfileEditModal({
     writeTextRecordsError,
   } = useWriteBaseEnsTextRecords({
     address: profileAddress,
-    username: profileUsernameFormatted,
+    username: profileUsername,
   });
 
   // Wait for text record transaction to be processed

@@ -36,20 +36,31 @@ export function useRegisterNameCallback(
   // TODO: I think we could pass arguments to this function instead of the hook
   const registerName = useCallback(async () => {
     if (!address) return;
+
     const addressData = encodeFunctionData({
       abi: L2ResolverAbi,
       functionName: 'setAddr',
       args: [namehash(formatBaseEthDomain(name)), address],
     });
 
+    const nameData = encodeFunctionData({
+      abi: L2ResolverAbi,
+      functionName: 'setName',
+      args: [namehash(formatBaseEthDomain(name)), formatBaseEthDomain(name)],
+    });
+
+    console.log({ namehash: namehash(formatBaseEthDomain(name)) });
+
     const registerRequest = {
       name: normalizedName, // The name being registered.
-      owner: address ?? '0x48c89d77ae34ae475e4523b25ab01e363dce5a78', // The address of the owner for the name.
+      owner: address, // The address of the owner for the name.
       duration: secondsInYears(years), // The duration of the registration in seconds.
       resolver: USERNAME_L2_RESOLVER_ADDRESS, // The address of the resolver to set for this name.
-      data: [addressData], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
+      data: [addressData, nameData], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
       reverseRecord: true, // Bool to decide whether to set this name as the "primary" name for the `owner`.
     };
+
+    console.log({ registerRequest });
 
     // Log attempt to register name
     logEventWithContext('register_name_transaction_initiated', ActionType.click);
