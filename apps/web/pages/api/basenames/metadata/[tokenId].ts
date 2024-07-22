@@ -4,7 +4,7 @@ import { getPublicClient } from 'apps/web/src/cdp/utils';
 import { USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
 import { NextResponse } from 'next/server';
 import { encodePacked, keccak256, namehash, toHex } from 'viem';
-import { base, baseSepolia } from 'viem/chains';
+import { base } from 'viem/chains';
 
 export const config = {
   runtime: 'edge',
@@ -31,7 +31,7 @@ export default async function GET(request: Request) {
     encodePacked(['bytes32', 'bytes32'], [namehash(baseDomainName), labelHash]),
   );
 
-  const client = getPublicClient(baseSepolia.id);
+  const client = getPublicClient(Number(chainId));
 
   const basename = await client.readContract({
     abi: L2Resolver,
