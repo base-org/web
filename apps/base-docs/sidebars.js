@@ -32,7 +32,7 @@ module.exports = {
       collapsible: false,
       collapsed: false,
       items: [
-        'tools/registry-api'
+        'tools/registry-api',
         'tools/node-providers',
         'tools/block-explorers',
         'tools/network-faucets',
