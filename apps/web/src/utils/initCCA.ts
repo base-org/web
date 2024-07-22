@@ -5,7 +5,7 @@
 import { NextRouter } from 'next/router';
 import { TrackingPreference } from '@coinbase/cookie-manager';
 import { uuid } from 'uuidv4';
-import { isDevelopment, ampDeploymentKey } from 'apps/web/src/constants';
+import { isDevelopment } from 'apps/web/src/constants';
 
 // CCA library loads in ClientAnalyticsScript component
 const initCCA = (
@@ -28,8 +28,7 @@ const initCCA = (
   }
 
   if (window.ClientAnalytics) {
-    const { init, identify, identity, PlatformName, initNextJsTrackPageview } =
-      window.ClientAnalytics;
+    const { init, identify, PlatformName, initNextJsTrackPageview } = window.ClientAnalytics;
 
     init({
       isProd: !isDevelopment,
