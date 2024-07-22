@@ -200,7 +200,7 @@ const config = {
           label: 'Learn',
           items: [
             {
-              label: 'Smart Contract Dev',
+              label: 'Learn to Build Onchain',
               to: '/base-learn/docs/welcome',
               type: 'custom-dropdownLink',
               eventLabel: 'camp_learn',
