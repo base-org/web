@@ -1,4 +1,3 @@
-import { Discount } from 'apps/web/src/components/Basenames/RegistrationFlow';
 import {
   AttestationData,
   useCheckCB1Attestations,
@@ -6,6 +5,7 @@ import {
   useCheckCoinbaseAttestations,
 } from 'apps/web/src/hooks/useAttestations';
 import { useActiveDiscountValidators } from 'apps/web/src/hooks/useReadActiveDiscountValidators';
+import { Discount } from 'apps/web/src/utils/usernames';
 import { useMemo } from 'react';
 
 export type DiscountData = AttestationData & { discountKey: `0x${string}` };
@@ -17,7 +17,11 @@ export type MappedDiscountData = {
 export function findFirstValidDiscount(
   aggregatedData: MappedDiscountData,
 ): DiscountData | undefined {
-  return Object.values(aggregatedData).find((data) => data?.discountKey) ?? undefined;
+  return (
+    Object.values(aggregatedData)
+      .sort((a) => (a.discount === Discount.CB1 ? -1 : 1))
+      .find((data) => data?.discountKey) ?? undefined
+  );
 }
 export function useAggregatedDiscountValidators() {
   const { data: activeDiscountValidators, isLoading: loadingActiveDiscounts } =
