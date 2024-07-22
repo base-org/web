@@ -8,8 +8,6 @@ import {
 } from "viem";
 import { baseSepolia } from "viem/chains";
 import {initializeClient} from "../../src/utils/paymasterConfig";
-
-
 import {
   coinbaseSmartWalletABI,
   CB_SW_FACTORY_ADDRESS,
@@ -37,11 +35,14 @@ export async function willSponsor({
           // no code at address, check that the initCode is deploying a Coinbase Smart Wallet
           // factory address is first 20 bytes of initCode after '0x'
           const factoryAddress = userOp.initCode.slice(0, 42);
-          if (factoryAddress.toLowerCase() !== CB_SW_FACTORY_ADDRESS.toLowerCase())
+          if (factoryAddress.toLowerCase() !== CB_SW_FACTORY_ADDRESS.toLowerCase()) {
             return false;
+          }
         } else {
           // code at address, check that it is a proxy to the expected implementation
-          if (code != CB_SW_PROXY_BYTECODE) return false;
+          if (code != CB_SW_PROXY_BYTECODE) {
+            return false;
+          }
      
           // check that userOp.sender proxies to expected implementation
           const implementation = await publicClient.request<{
@@ -55,8 +56,9 @@ export async function willSponsor({
             [{ type: "address" }],
             implementation
           )[0];
-          if (implementationAddress != CB_SW_V1_IMPLEMENTATION_ADDRESS)
+          if (implementationAddress != CB_SW_V1_IMPLEMENTATION_ADDRESS) {
             return false;
+          }
         }
 
         const calldata = decodeFunctionData({
@@ -64,8 +66,12 @@ export async function willSponsor({
             data: userOp.callData,
           });
         // keys.coinbase.com always uses executeBatch
-    if (calldata.functionName !== "executeBatch") return false;
-    if (!calldata.args || calldata.args.length == 0) return false;
+    if (calldata.functionName !== "executeBatch") {
+      return false;
+    }
+    if (!calldata.args || calldata.args.length == 0) {
+      return false;
+    }
  
     const calls = calldata.args[0] as {
       target: Address;
@@ -73,28 +79,33 @@ export async function willSponsor({
       data: Hex;
     }[];
     // modify if want to allow batch calls to your contract
-    if (calls.length > 2) return false;
- 
+    if (calls.length > 2) {
+      return false;
+    }
     let callToCheckIndex = 0;
     if (calls.length > 1) {
       // if there is more than one call, check if the first is a magic spend call
-      if (calls[0].target.toLowerCase() !== magicSpendAddress.toLowerCase())
+      if (calls[0].target.toLowerCase() !== magicSpendAddress.toLowerCase()) {
         return false;
+      }
       callToCheckIndex = 1;
     }
  
     if (
       calls[callToCheckIndex].target.toLowerCase() !==
       USERNAME_REGISTRAR_CONTROLLER_ADDRESS[chainId].toLowerCase() 
-    )
+    ) {
       return false;
+    }
+      
  
     const innerCalldata = decodeFunctionData({
       abi: RegistrarControllerABI,
       data: calls[callToCheckIndex].data,
     });
-    if (innerCalldata.functionName !== "register") return false;
- 
+    if (innerCalldata.functionName !== "register") {
+      return false;
+    }
     return true;
   } catch (e) {
     console.error(`willSponsor check failed: ${e}`);

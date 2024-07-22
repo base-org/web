@@ -2,7 +2,6 @@ import { paymasterClient } from "../../../src/utils/paymasterConfig";
 import { willSponsor } from "../../../src/utils/paymasterSponsor";
 
 export async function POST(r: Request) {
-    console.log('request received');
     const req = await r.json();
     const method = req.method;
     const [userOp, entrypoint, chainId] = req.params;

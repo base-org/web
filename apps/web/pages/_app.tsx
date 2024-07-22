@@ -5,7 +5,6 @@ import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
 import { base, mainnet, baseSepolia, sepolia } from 'wagmi/chains';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-
 import { useState, useEffect, useCallback, useRef, ReactNode, ReactElement } from 'react';
 import { AppProps } from 'next/app';
 import { MotionConfig } from 'framer-motion';
@@ -27,16 +26,15 @@ import {
 } from '@rainbow-me/rainbowkit/wallets';
 
 import { createConfig, http } from 'wagmi';
-
 import { Layout, NavigationType } from '../src/components/Layout/Layout';
 import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
-
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
 import useSprig from 'base-ui/hooks/useSprig';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { NextPage } from 'next';
+import { UnknownNodeError } from 'viem';
 
-coinbaseWallet.preference = 'smartWalletOnly';
+coinbaseWallet.preference = 'all';
 
 const connectors = connectorsForWallets(
   [
@@ -57,7 +55,7 @@ const connectors = connectorsForWallets(
 
 const config = createConfig({
   connectors,
-  chains: [mainnet, baseSepolia, sepolia, base],
+  chains: [baseSepolia],
   transports: {
     [mainnet.id]: http(),
     [base.id]: http(),
@@ -69,7 +67,7 @@ const config = createConfig({
 const queryClient = new QueryClient();
 const sprigEnvironmentId = process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID;
 
-export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
+export type NextPageWithLayout<P = unknown, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
 

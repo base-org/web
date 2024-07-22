@@ -71,6 +71,6 @@ export const coinbaseSmartWalletABI = [
     outputs: [],
     stateMutability: "payable",
   },
-];
+] as const;
 export const ATTESTATION_VERIFIED_CB1_ACCOUNT_SCHEMA_ID =
   ATTESTATION_VERIFIED_CB1_ACCOUNT_SCHEMA_IDS[USERNAME_CHAIN_ID];

@@ -310,7 +310,7 @@ __metadata:
     "@headlessui/react": ^1.7.19
     "@heroicons/react": ^2.1.3
     "@next/font": ^13.1.5
-    "@rainbow-me/rainbowkit": 2.1.3
+    "@rainbow-me/rainbowkit": ^2.1.3
     "@tanstack/react-query": ^5.29.2
     "@types/jsonwebtoken": ^9.0.6
     "@types/node": 18.11.18
@@ -348,7 +348,7 @@ __metadata:
     usehooks-ts: ^3.1.0
     uuidv4: ^6.2.13
     viem: 2.x
-    wagmi: 2.11.3
+    wagmi: ^2.11.3
   languageName: unknown
   linkType: soft
 
@@ -6374,27 +6374,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rainbow-me/rainbowkit@npm:2.1.3":
-  version: 2.1.3
-  resolution: "@rainbow-me/rainbowkit@npm:2.1.3"
-  dependencies:
-    "@vanilla-extract/css": 1.14.0
-    "@vanilla-extract/dynamic": 2.1.0
-    "@vanilla-extract/sprinkles": 1.6.1
-    clsx: 2.1.0
-    qrcode: 1.5.3
-    react-remove-scroll: 2.5.7
-    ua-parser-js: ^1.0.37
-  peerDependencies:
-    "@tanstack/react-query": ">=5.0.0"
-    react: ">=18"
-    react-dom: ">=18"
-    viem: 2.x
-    wagmi: ^2.9.0
-  checksum: 415b9361710c4f91d0ca84f8918e3957cda9f7501707e433498a1b7c0d95132b8ef58b7a1b16ee873b8e9380a42932d73b9529b491654439bb2a4e4f849d60f1
-  languageName: node
-  linkType: hard
-
 "@rainbow-me/rainbowkit@npm:^1":
   version: 1.1.2
   resolution: "@rainbow-me/rainbowkit@npm:1.1.2"
@@ -6432,6 +6411,27 @@ __metadata:
     viem: 2.x
     wagmi: 2.x
   checksum: 496a222ad2f4e228ac2b43353145050fd9f081cd4633edc101a819c128239889e127b0584bb881775ada550a4a56caa4ad3f0a99778748fcedfde997a810b20d
+  languageName: node
+  linkType: hard
+
+"@rainbow-me/rainbowkit@npm:^2.1.3":
+  version: 2.1.3
+  resolution: "@rainbow-me/rainbowkit@npm:2.1.3"
+  dependencies:
+    "@vanilla-extract/css": 1.14.0
+    "@vanilla-extract/dynamic": 2.1.0
+    "@vanilla-extract/sprinkles": 1.6.1
+    clsx: 2.1.0
+    qrcode: 1.5.3
+    react-remove-scroll: 2.5.7
+    ua-parser-js: ^1.0.37
+  peerDependencies:
+    "@tanstack/react-query": ">=5.0.0"
+    react: ">=18"
+    react-dom: ">=18"
+    viem: 2.x
+    wagmi: ^2.9.0
+  checksum: 415b9361710c4f91d0ca84f8918e3957cda9f7501707e433498a1b7c0d95132b8ef58b7a1b16ee873b8e9380a42932d73b9529b491654439bb2a4e4f849d60f1
   languageName: node
   linkType: hard
 
@@ -25834,25 +25834,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wagmi@npm:2.11.3":
-  version: 2.11.3
-  resolution: "wagmi@npm:2.11.3"
-  dependencies:
-    "@wagmi/connectors": 5.0.26
-    "@wagmi/core": 2.12.2
-    use-sync-external-store: 1.2.0
-  peerDependencies:
-    "@tanstack/react-query": ">=5.0.0"
-    react: ">=18"
-    typescript: ">=5.0.4"
-    viem: 2.x
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 882efc47bee6684cd23927b67a82930297d2f60ce3cab8a9f2b530ab45ce02ccadc53d5e15568fa0cc1509cc37db89e660f980d486f5ef092976e75f43028034
-  languageName: node
-  linkType: hard
-
 "wagmi@npm:^1.4.12":
   version: 1.4.12
   resolution: "wagmi@npm:1.4.12"
@@ -25871,6 +25852,25 @@ __metadata:
     typescript:
       optional: true
   checksum: 7c1cb64c53e29899d508142e43a450b07f7f4f0ac2a19f5651f0f3dbfe2bb5b159d2b6251f6f613bd9bae007dc8390383ff79f5ab7bdf8d06788fe0bbdb3f8ab
+  languageName: node
+  linkType: hard
+
+"wagmi@npm:^2.11.3":
+  version: 2.11.3
+  resolution: "wagmi@npm:2.11.3"
+  dependencies:
+    "@wagmi/connectors": 5.0.26
+    "@wagmi/core": 2.12.2
+    use-sync-external-store: 1.2.0
+  peerDependencies:
+    "@tanstack/react-query": ">=5.0.0"
+    react: ">=18"
+    typescript: ">=5.0.4"
+    viem: 2.x
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 882efc47bee6684cd23927b67a82930297d2f60ce3cab8a9f2b530ab45ce02ccadc53d5e15568fa0cc1509cc37db89e660f980d486f5ef092976e75f43028034
   languageName: node
   linkType: hard
 
