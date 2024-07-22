@@ -8,7 +8,7 @@ export function FaqSidebar() {
           <p className="font-mono text-3xl uppercase">Frequently Asked Questions</p>
         </div>
 
-        <div className="h-[1px] w-full bg-gray-60 opacity-40" />
+        <div className="h-[1px] w-full bg-gray-muted opacity-40" />
 
         <QuestionAccordion
           question="When will I hear back about my application?"
@@ -74,7 +74,7 @@ export function FaqSidebar() {
           question="What will I be able to do upon graduation?"
           answer="You will learn to deploy smart contracts and connect a web frontend to them – the foundation of building any onchain app."
         />
-        <div className="mb-40 h-[1px] w-full bg-gray-60 opacity-40" />
+        <div className="mb-40 h-[1px] w-full bg-gray-muted opacity-40" />
       </div>
     </div>
   );

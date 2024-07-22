@@ -241,7 +241,7 @@ __metadata:
     "@docusaurus/theme-common": 2.4.3
     "@mdx-js/react": ^1.6.22
     "@microsoft/fetch-event-source": ^2.0.1
-    "@rainbow-me/rainbowkit": ^2.0.5
+    "@rainbow-me/rainbowkit": ^2.1.3
     "@tanstack/react-query": ^5.29.0
     "@tsconfig/docusaurus": ^1.0.5
     "@types/dompurify": ^3.0.5
@@ -342,8 +342,10 @@ __metadata:
     react-dom: ^18.2.0
     react-intersection-observer: ^9.10.2
     react-intl: ^6.2.1
+    satori: ^0.10.14
     sharp: ^0.33.4
     tailwindcss: ^3.2.4
+    twemoji: ^14.0.2
     typescript: 5.0.4
     usehooks-ts: ^3.1.0
     uuidv4: ^6.2.13
@@ -2016,6 +2018,7 @@ __metadata:
     "@babel/preset-react": ^7.14.5
     "@graphql-eslint/eslint-plugin": ^3.10.4
     "@linaria/babel-preset": ^4.4.3
+    "@next/bundle-analyzer": ^14.2.5
     "@radix-ui/react-icons": ^1.3.0
     "@radix-ui/react-select": ^1.2.1
     "@swc/core": ^1.2.173
@@ -5441,6 +5444,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/bundle-analyzer@npm:^14.2.5":
+  version: 14.2.5
+  resolution: "@next/bundle-analyzer@npm:14.2.5"
+  dependencies:
+    webpack-bundle-analyzer: 4.10.1
+  checksum: 3721b494bb5d517e88d585f5b47b8cc4835d51e1c3f8784c17ac2cbe620e2e05b3efcb00e8082dad5315285eda6c4cef5b6c2f72219324b5d038e449ed4c52a6
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:12.2.3":
   version: 12.2.3
   resolution: "@next/env@npm:12.2.3"
@@ -6391,26 +6403,6 @@ __metadata:
     viem: ~0.3.19 || ^1.0.0
     wagmi: ~1.0.1 || ~1.1.0 || ~1.2.0 || ~1.3.0 || ~1.4.0
   checksum: 54087b6991b8bd058a653f31f7067f88f9122895d6b11f3280b7b45135ca498b928e11b2b11fdee509d9d919931fe5df03006e29c7af06b4f3927cd1f2d1c431
-  languageName: node
-  linkType: hard
-
-"@rainbow-me/rainbowkit@npm:^2.0.5":
-  version: 2.0.5
-  resolution: "@rainbow-me/rainbowkit@npm:2.0.5"
-  dependencies:
-    "@vanilla-extract/css": 1.14.0
-    "@vanilla-extract/dynamic": 2.1.0
-    "@vanilla-extract/sprinkles": 1.6.1
-    clsx: 2.1.0
-    qrcode: 1.5.3
-    react-remove-scroll: 2.5.7
-    ua-parser-js: ^1.0.37
-  peerDependencies:
-    react: ">=17"
-    react-dom: ">=17"
-    viem: 2.x
-    wagmi: 2.x
-  checksum: 496a222ad2f4e228ac2b43353145050fd9f081cd4633edc101a819c128239889e127b0584bb881775ada550a4a56caa4ad3f0a99778748fcedfde997a810b20d
   languageName: node
   linkType: hard
 
@@ -10725,6 +10717,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-intl: ^6.2.1
+    usehooks-ts: ^3.1.0
   languageName: unknown
   linkType: soft
 
@@ -12666,6 +12659,13 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.21.0
   checksum: f7be01523282e9bb06c0cd2693d34f245247a29098527d4420628966a2d9aad154bd0e90a6b1cf66d37adcb769cd108cf8a7bd49d76db0fb119af5cdd13644f4
+  languageName: node
+  linkType: hard
+
+"debounce@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "debounce@npm:1.2.1"
+  checksum: 682a89506d9e54fb109526f4da255c5546102fbb8e3ae75eef3b04effaf5d4853756aee97475cd4650641869794e44f410eeb20ace2b18ea592287ab2038519e
   languageName: node
   linkType: hard
 
@@ -15133,6 +15133,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fs-extra@npm:^8.0.1":
+  version: 8.1.0
+  resolution: "fs-extra@npm:8.1.0"
+  dependencies:
+    graceful-fs: ^4.2.0
+    jsonfile: ^4.0.0
+    universalify: ^0.1.0
+  checksum: bf44f0e6cea59d5ce071bba4c43ca76d216f89e402dc6285c128abc0902e9b8525135aa808adad72c9d5d218e9f4bcc63962815529ff2f684ad532172a284880
+  languageName: node
+  linkType: hard
+
 "fs-extra@npm:^9.0.0":
   version: 9.1.0
   resolution: "fs-extra@npm:9.1.0"
@@ -15974,7 +15985,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html-escaper@npm:^2.0.0":
+"html-escaper@npm:^2.0.0, html-escaper@npm:^2.0.2":
   version: 2.0.2
   resolution: "html-escaper@npm:2.0.2"
   checksum: d2df2da3ad40ca9ee3a39c5cc6475ef67c8f83c234475f24d8e9ce0dc80a2c82df8e1d6fa78ddd1e9022a586ea1bd247a615e80a5cd9273d90111ddda7d9e974
@@ -17973,6 +17984,31 @@ __metadata:
   version: 3.2.0
   resolution: "jsonc-parser@npm:3.2.0"
   checksum: 946dd9a5f326b745aa326d48a7257e3f4a4b62c5e98ec8e49fa2bdd8d96cef7e6febf1399f5c7016114fd1f68a1c62c6138826d5d90bc650448e3cf0951c53c7
+  languageName: node
+  linkType: hard
+
+"jsonfile@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "jsonfile@npm:4.0.0"
+  dependencies:
+    graceful-fs: ^4.1.6
+  dependenciesMeta:
+    graceful-fs:
+      optional: true
+  checksum: 6447d6224f0d31623eef9b51185af03ac328a7553efcee30fa423d98a9e276ca08db87d71e17f2310b0263fd3ffa6c2a90a6308367f661dc21580f9469897c9e
+  languageName: node
+  linkType: hard
+
+"jsonfile@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "jsonfile@npm:5.0.0"
+  dependencies:
+    graceful-fs: ^4.1.6
+    universalify: ^0.1.2
+  dependenciesMeta:
+    graceful-fs:
+      optional: true
+  checksum: e0ecff572dba34153a66e3a3bc5c6cb01a2c1d2cf4a2c19b6728dcfcab39d94be9cca4a0fc86a17ff2c815f2aeb43768ac75545780dbea4009433fdc32aa14d1
   languageName: node
   linkType: hard
 
@@ -22969,6 +23005,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"satori@npm:^0.10.14":
+  version: 0.10.14
+  resolution: "satori@npm:0.10.14"
+  dependencies:
+    "@shuding/opentype.js": 1.4.0-beta.0
+    css-background-parser: ^0.1.0
+    css-box-shadow: 1.0.0-3
+    css-to-react-native: ^3.0.0
+    emoji-regex: ^10.2.1
+    escape-html: ^1.0.3
+    linebreak: ^1.1.0
+    parse-css-color: ^0.2.1
+    postcss-value-parser: ^4.2.0
+    yoga-wasm-web: ^0.3.3
+  checksum: 3cbfb995e6eba0f934bbac17e043a4ab9c66cd6c8e2202065dcf4a3810d107af6d1a6de27eaca34a3e3fd5d0a642fa7fc12361212e84963833b442de39f2f67a
+  languageName: node
+  linkType: hard
+
 "sax@npm:^1.2.4":
   version: 1.3.0
   resolution: "sax@npm:1.3.0"
@@ -24728,6 +24782,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"twemoji-parser@npm:14.0.0":
+  version: 14.0.0
+  resolution: "twemoji-parser@npm:14.0.0"
+  checksum: 8eede69cf71f94735de7b6fddf5dfbfe3cb2e01baefc3201360984ccc97cfc659f206c8f73bd1405a2282779af3b79a8c9bed3864c672e15e2dc6f8ce4810452
+  languageName: node
+  linkType: hard
+
+"twemoji@npm:^14.0.2":
+  version: 14.0.2
+  resolution: "twemoji@npm:14.0.2"
+  dependencies:
+    fs-extra: ^8.0.1
+    jsonfile: ^5.0.0
+    twemoji-parser: 14.0.0
+    universalify: ^0.1.2
+  checksum: 686a356a7af3cf15f7894568bfcdfafcea0cd45473b3f8c59d6ca95e549695f1222845d1a8c39ffa3bc4057e9d59e41ab83e4ce3cbcd68823ff50d57e3ff58da
+  languageName: node
+  linkType: hard
+
 "type-check@npm:^0.4.0, type-check@npm:~0.4.0":
   version: 0.4.0
   resolution: "type-check@npm:0.4.0"
@@ -25217,6 +25290,13 @@ __metadata:
     unist-util-is: ^4.0.0
     unist-util-visit-parents: ^3.0.0
   checksum: 1fe19d500e212128f96d8c3cfa3312846e586b797748a1fd195fe6479f06bc90a6f6904deb08eefc00dd58e83a1c8a32fb8677252d2273ad7a5e624525b69b8f
+  languageName: node
+  linkType: hard
+
+"universalify@npm:^0.1.0, universalify@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "universalify@npm:0.1.2"
+  checksum: 40cdc60f6e61070fe658ca36016a8f4ec216b29bf04a55dce14e3710cc84c7448538ef4dad3728d0bfe29975ccd7bfb5f414c45e7b78883567fb31b246f02dff
   languageName: node
   linkType: hard
 
@@ -26029,6 +26109,29 @@ __metadata:
   peerDependencies:
     webpack: ^3.0.0 || ^4.0.0 || ^5.0.0
   checksum: 8a3c8a3a3fa176a27c1e48999b276c5ab845d63935ea0d3804314dc75fce8765a8c272c55da8827c1c5df3ab50098f2633325b28b9b37e7ce1cba57c9d8effa8
+  languageName: node
+  linkType: hard
+
+"webpack-bundle-analyzer@npm:4.10.1":
+  version: 4.10.1
+  resolution: "webpack-bundle-analyzer@npm:4.10.1"
+  dependencies:
+    "@discoveryjs/json-ext": 0.5.7
+    acorn: ^8.0.4
+    acorn-walk: ^8.0.0
+    commander: ^7.2.0
+    debounce: ^1.2.1
+    escape-string-regexp: ^4.0.0
+    gzip-size: ^6.0.0
+    html-escaper: ^2.0.2
+    is-plain-object: ^5.0.0
+    opener: ^1.5.2
+    picocolors: ^1.0.0
+    sirv: ^2.0.3
+    ws: ^7.3.1
+  bin:
+    webpack-bundle-analyzer: lib/bin/analyzer.js
+  checksum: 77f48f10a493b1cc95674526472978a2de32412ddbf556bd3903738f14890611426f19477352993efe5a9fd6ca16711eb912d986f2221b17ba6eeca1b6f71fb6
   languageName: node
   linkType: hard
 

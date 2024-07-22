@@ -74,7 +74,7 @@ export function SearchBar({ setSearchText }: Props) {
         id="appsSearchBar"
         value={text}
         onChange={onChange}
-        className="w-full bg-black font-sans text-base text-white placeholder:text-gray-60 focus:outline-none"
+        className="w-full bg-black font-sans text-base text-white placeholder:text-gray-muted focus:outline-none"
         placeholder="Search"
         aria-label="Search for apps and integrations in the Base ecosystem"
       />

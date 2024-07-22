@@ -10,13 +10,7 @@ hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
-[Frames] have taken the [Farcaster] world by storm. They allow you to place a small onchain app inside of a cast! In this tutorial, we'll show you how to build your first frame using [OnchainKit], and our [a-frame-in-100-lines]
-
-:::caution
-
-Frames are brand new and tools are evolving quickly. Check the links above for changelogs!
-
-:::
+[Frames] have taken the [Farcaster] world by storm. They allow you to place a small onchain app inside of a cast! In this tutorial, we'll show you how to build your first frame using [OnchainKit], and our [a-frame-in-100-lines] template.
 
 ---
 
@@ -25,8 +19,8 @@ Frames are brand new and tools are evolving quickly. Check the links above for c
 By the end of this tutorial you should be able to:
 
 - Build a [Farcaster] Frame with a mint and airdrop function
-- Use the [Basescan] API to find the owner of an NFT
-- Pull the `tokenUri` from a contract and use it to show the real art
+- Use the [BaseScan] API to find the owner of an NFT
+- Pull the `tokenUri` from a contract and use it to show the real art for an NFT
 
 ---
 
@@ -52,7 +46,7 @@ You must have a [Farcaster] account with a connected wallet. Check out the [Base
 
 ## Setup and Testing the Template
 
-Start by creating a fork of the [a-frame-in-100-lines].
+Start by creating a new repo, using [a-frame-in-100-lines] as a template.
 
 Run `yarn install`, then `yarn dev`.
 
@@ -70,26 +64,26 @@ To cast a frame, you'd simply paste this URL into when you create a cast, and it
 
 But you probably want to use the [Frame Validator] first. Open that up, and paste in your link. Click `Load`. You should see:
 
-![Example](../../assets/images/frames/100-lines-frame.png)
+![Example](../../assets/images/frames/updated-100-lines.png)
 
-Click, and the image will change. The button will also show the address of the interacting user. That's you!
+Click, and the image will change. You'll also see a new set of buttons, demonstrating some of the features available for frame development.
 
 Open up `api/frame/route.ts`. This file handles the route in `post_url` that is called when you click the button.
 
 The route:
 
 - Uses `getFrameMessage` from `onchainkit` to validate and interpret the request
-- Pulls the user's wallet address from the `message`
+- Pulls the user's wallet address, and other useful information, from the `message`
 - Sends a `NextResponse` containing a new frame, which is then displayed to the user
 
 ## Building A Mint Frame
 
-Currently, you can't get the user to authorize a transaction from a frame, so you'll have to foot the bill to do a mint.
+You can put a [transaction in a frame] and require users to pay gas to mint your NFT. Another option is to airdrop NFTs to your users, with you paying the gas. This tutorial takes the second approach.
 
-Our strategy uses the contract from the [Onchain NFTs] tutorial, modified so that a designated address can mint for a provided address:
+The strategy uses the contract from the [Onchain NFTs] tutorial, modified so that a designated address can mint for a provided address:
 
 ```solidity
-function mintFor(address _recipient) public onlyOwner {
+function mintTo(address _recipient) public onlyOwner {
   if(counter >= maxSupply) {
     revert MaxSupplyReached();
   }
@@ -102,13 +96,17 @@ function mintFor(address _recipient) public onlyOwner {
 }
 ```
 
-You'll also want to keep track of addresses that have already minted, to prevent a few spammers from claiming all the NFTs!
+:::info
 
-**ADD .env.local to .gitignore. If you don’t do this you are going to expose your key and lose your wallet!**
+You should also use a `mintTo` function that accepts an `address _recipient` if you are doing a mint transaction button. Doing so helps Farcaster more easily scan your transaction for safety.
+
+:::
+
+You'll also want to keep track of addresses that have already minted, to prevent a few spammers from claiming all the NFTs!
 
 :::danger
 
-Make sure you added `.env.local` to ``.gitignore`!
+Make sure you added `.env.local` to ``.gitignore`! **If you don't do this you are going to expose your key and lose your wallet!**
 
 :::
 
@@ -118,21 +116,19 @@ Create `.env.local` and add:
 - NFT_CONTRACT_ADDRESS - As described above
 - WALLET_PRIVATE_KEY - the private key of the wallet that owns the above NFT contract and can mint it. **This key is the same as your 12-word phrase**
 
-Install dotenv with `yarn add dotenv`, then open `route.ts`.
+Install _dotenv_ with `yarn add dotenv`, then open `route.ts`.
 
-Add a new image in the `public` folder. Per the [Frames] docs, images must have a 1.91 to 1 aspect ratio. We used a grey-scale copy of the NFT, but others show the full image, or another call to action.
+Add a new image in the `public` folder. Per the [Frames] docs, images must have a 1.91 to 1, or a 1 to 1 aspect ratio. We used a grey-scale copy of the NFT, but some frame developers prefer to show the full image, or another call to action.
 
 For now, just use something you'll recognize as a placeholder.
 
-In **both** `page.tsx` and `route.ts`, change `NEXT_PUBLIC_URL` to the root of your deployment.
+In `app/config.ts`, change `NEXT_PUBLIC_URL` to the address where you've deployed your site.
 
 Change the image link in both files to the new image you added in `public`. Next automatically makes these available at `your-site.vercel.app/your-image.png`.
 
 Redeploy and test the Frame again.
 
-You'll probably see the old image. This is because Farcaster caches your Frame pretty aggressively. To get around this, you can put junk data in the url. We use a number that we iterate manually, to help keep track of new tests. For example
-
-`my-farcaster-frame.vercel.app?13` for the 13th test.
+You'll see the new image, but only in the validator, or for new casts. Any existing casts with the frame will permanently display the old image. These can **not** be updated.
 
 ### The Image Route
 
@@ -144,6 +140,7 @@ Add a route to get the image. Right now, this can just return the existing image
 import { NextResponse } from 'next/server';
 
 export async function GET() {
+  // Temporary, does NOT fetch the correct image for the actual NFT
   const img = await fetch('https://land-sea-and-sky.vercel.app/lss-bw.png').then((res) =>
     res.blob(),
   );
@@ -161,16 +158,28 @@ Update both `route.ts` and `page.tsx` to use this route for the image:
 
 ```tsx
 // page.tsx
-const imageUrl = 'https://land-sea-and-sky.vercel.app/api/images/nft';
+const imageUrl = `${NEXT_PUBLIC_URL}/api/images/nft`;
 
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
-      label: 'Click Me',
+      label: 'Story time',
+    },
+    {
+      action: 'tx',
+      label: 'Send Base Sepolia',
+      target: `${NEXT_PUBLIC_URL}/api/tx`,
+      postUrl: `${NEXT_PUBLIC_URL}/api/tx-success`,
     },
   ],
-  image: imageUrl,
-  post_url: `${NEXT_PUBLIC_URL}/api/frame`,
+  image: {
+    src: imageUrl,
+    aspectRatio: '1.91:1',
+  },
+  input: {
+    text: 'Tell me a story',
+  },
+  postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
 });
 
 export const metadata: Metadata = {
@@ -193,11 +202,26 @@ return new NextResponse(
   getFrameHtmlResponse({
     buttons: [
       {
-        label: `🌲 ${accountAddress} 🌲`,
+        label: `State: ${state?.page || 0}`,
+      },
+      {
+        action: 'link',
+        label: 'OnchainKit',
+        target: 'https://onchainkit.xyz',
+      },
+      {
+        action: 'post_redirect',
+        label: 'Dog pictures',
       },
     ],
-    image: imageUrl,
-    post_url: `${NEXT_PUBLIC_URL}/api/frame`,
+    image: {
+      src: imgUrl,
+    },
+    postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+    state: {
+      page: state?.page + 1,
+      time: new Date().toISOString(),
+    },
   }),
 );
 ```
@@ -229,7 +253,7 @@ import { baseSepolia } from 'viem/chains';
 import { createWalletClient, http } from 'viem';
 ```
 
-Create a ` walletClient`` from the account, created from the private key, and a  `publicClient`` to read from the blockchain.
+Create a ` walletClient` from the account, created from the private key, and a `publicClient` to read from the blockchain.
 
 ```tsx
 const nftOwnerAccount = privateKeyToAccount(WALLET_PRIVATE_KEY as `0x${string}`);
@@ -245,7 +269,7 @@ const publicClient = createPublicClient({
 });
 ```
 
-Use the address of the Farcaster user, conveniently provided by the template and OnchainKit, to check whether or not the user has minted the NFT:
+Use the address of the Farcaster user, conveniently provided by OnchainKit, to check whether or not the user has minted the NFT:
 
 ```tsx
 let minted = false;
@@ -255,7 +279,7 @@ try {
     address: LandSeaSkyNFT.address as `0x${string}`,
     abi: LandSeaSkyNFT.abi,
     functionName: 'minted',
-    args: [accountAddress],
+    args: [message.address],
   }));
 } catch (err) {
   console.error(err);
@@ -287,8 +311,8 @@ if (minted) {
       account: nftOwnerAccount,
       address: LandSeaSkyNFT.address as `0x${string}`,
       abi: LandSeaSkyNFT.abi,
-      functionName: 'mintFor',
-      args: [accountAddress],
+      functionName: 'mintTo',
+      args: [message.address],
     });
     await nftOwnerClient.writeContract(request);
   } catch (err) {
@@ -308,9 +332,7 @@ if (minted) {
 }
 ```
 
-**Update your environment variables in Vercel** then redeploy and test. You won't see a different image, but you'll be able to see the transactions on [Basescan].
-
-Don't forget to add a new number ( `?15` ) to your url when testing!
+**Update your environment variables in Vercel** then redeploy and test. You won't see a different image, but you'll be able to see the transactions on [BaseScan].
 
 ## Showing the Real NFT Image
 
@@ -347,7 +369,13 @@ const url = new URL(req.url);
 
 ```
 
-You'll use the Basescan api to find the token information. Add your api key to your .env if you didn't already. Note that Basescan and Etherscan use different keys
+You'll use the BaseScan api to find the token information. Add your api key to your `.env` if you didn't already.
+
+:::caution
+
+Note that BaseScan and Etherscan use different keys!
+
+:::
 
 There isn't an sdk to install.
 
@@ -355,7 +383,7 @@ Add a folder inside `app` called `types` and a file called `index.ts` inside tha
 
 ```tsx
 // @dev values taken from sample response
-export type EtherscanEventResponse = {
+export type BaseScanEventResponse = {
   blockNumber: string;
   timeStamp: string;
   hash: string;
@@ -377,20 +405,20 @@ export type EtherscanEventResponse = {
   confirmations: string;
 };
 
-export type EtherscanResponse = {
+export type BaseScanResponse = {
   status: '0' | '1';
   message: string;
-  result: EtherscanEventResponse[];
+  result: BaseScanEventResponse[];
 };
 ```
 
 Import these into the image route:
 
 ```tsx
-import { EtherscanResponse } from '../../../types';
+import { BaseScanResponse } from '../../../types';
 ```
 
-Use the etherscan API to get a list of ERC721 Transfer Events for the address for the contract, filter that list to remove any NFT ids that were given away.
+Use the BaseScan API to get a list of ERC721 Transfer Events for the address for the contract, filter that list to remove any NFT ids that were given away.
 
 ```tsx
 if (!minted || !address) {
@@ -399,7 +427,7 @@ if (!minted || !address) {
   // Find out of the address still owns the NFT, and if so, what the token ID is
   const API_URL = `https://api-sepolia.basescan.org/api?module=account&action=tokennfttx&contractaddress=${LandSeaSkyNFT.address}&address=${address}&sort=asc&apikey=${BASESCAN_API_KEY}`;
   const response = await fetch(API_URL);
-  const json: EtherscanResponse = (await response.json()) as EtherscanResponse;
+  const json: BaseScanResponse = (await response.json()) as BaseScanResponse;
 
   const result = json.result;
 
@@ -491,7 +519,11 @@ return new NextResponse(img, {
 
 This works!
 
-But Farcaster frames expect an image with a 1:91 to 1 ratio. We need to adjust the svg, and clip the extra content, since the svg has pieces that are intended to be out of frame:
+### Adjusting the Image Ratio
+
+Farcaster Frames now allow a 1:1 image ratio, but they used to only accept a 1:91 to 1 ratio. You can skip this if you don't want the classic look.
+
+If you do want to go old-school, you'll need to adjust the svg, and clip the extra content, since the svg has pieces that are intended to be out of frame:
 
 ```tsx
 function frameSvgStringToBlob(originalSvgString: string): Blob {
@@ -538,16 +570,12 @@ return new NextResponse(img, {
 ```
 
 :::caution
-SVG images aren't working in Frames on mobile clients. Stay tuned on the Base channel for a fix!
+SVG images aren't working in Frames on mobile clients. Stay tuned on the Base channel for a fix! Or add a library here to return the image as a `.png` instead of a `.svg`.
 :::
 
 **Remember to update your envars in Vercel**, redeploy, and test. You'll now see your NFT in the frame!
 
 ![Real NFT](../../assets/images/frames/real-nft.png)
-
-## Up Next
-
-In our next tutorial, soon to be released, we'll show you how to make gates to require users do an action before they mint, such as the recast gate in the original post for the Land, Sea, and Sky NFT.
 
 ---
 
@@ -569,5 +597,6 @@ In this tutorial, you learned how to create [Farcaster] frames. You then updated
 [Onchain NFTs]: /tutorials/onchain-nfts
 [Frames]: https://warpcast.notion.site/Farcaster-Frames-4bd47fe97dc74a42a48d3a234636d8c5
 [viem]: https://viem.sh/
-[Basescan]: https://basescan.org/
+[BaseScan]: https://basescan.org/
 [Land, Sea, and Sky]: https://github.com/base-org/land-sea-and-sky
+[transaction in a frame]: /tutorials/farcaster-frames-transactions

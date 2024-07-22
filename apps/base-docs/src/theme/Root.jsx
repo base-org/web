@@ -29,6 +29,8 @@ import { createClient } from 'viem';
 import useSprig from 'base-ui/hooks/useSprig';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
+coinbaseWallet.preference = 'all';
+
 const connectors = connectorsForWallets(
   [
     {

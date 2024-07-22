@@ -66,6 +66,7 @@ type CCAEventData = {
   context?: string;
   userId?: string;
   error?: string;
+  wallet_type?: string;
 };
 
 type AnalyticsEventData = {

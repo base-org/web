@@ -3,12 +3,13 @@ import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Input from 'apps/web/src/components/Input';
+import { useAlternativeNameSuggestions } from 'apps/web/src/hooks/useAlternativeNameSuggestions';
 import { useFocusWithin } from 'apps/web/src/hooks/useFocusWithin';
 import { useIsNameAvailable } from 'apps/web/src/hooks/useIsNameAvailable';
 import { formatBaseEthDomain, validateEnsDomainName } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 
 export enum RegistrationSearchInputVariant {
@@ -31,7 +32,19 @@ export default function RegistrationSearchInput({
   const inputRef = useRef<HTMLInputElement>(null);
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [debouncedSearch] = useDebounceValue(search, 200);
-  const { isLoading, data, isError, isFetching } = useIsNameAvailable(debouncedSearch);
+  const {
+    isLoading: isLoadingNameAvailability,
+    data: isNameAvailable,
+    isError: errorCheckingNameAvailability,
+    isFetching,
+  } = useIsNameAvailable(debouncedSearch);
+  const {
+    data: suggestions,
+    error: alternativeNameSuggestionError,
+    isLoading: isLoadingAlternatives,
+  } = useAlternativeNameSuggestions(debouncedSearch, !isNameAvailable);
+  const isLoading = isLoadingAlternatives || isLoadingNameAvailability;
+
   const { valid, message } = validateEnsDomainName(debouncedSearch);
   const invalidWithMessage = !valid && !!message;
 
@@ -123,7 +136,7 @@ export default function RegistrationSearchInput({
   const buttonClasses = classNames(
     'flex w-full flex-row items-center justify-between transition-colors hover:bg-[#F9F9F9] active:bg-[#EAEAEB] text-ellipsis',
     {
-      'px-6 py-4 text': variant === RegistrationSearchInputVariant.Large,
+      'px-6 py-3 text': variant === RegistrationSearchInputVariant.Large,
       'px-3 py-2 text-sm': variant === RegistrationSearchInputVariant.Small,
     },
   );
@@ -169,25 +182,6 @@ export default function RegistrationSearchInput({
     }
   }, [focused, valid]);
 
-  // Right now david.base.eth is taken, it'll suggest david1.base.eth but
-  // ultimately that might also be taken.
-  const suggestions: string[] = useMemo(() => {
-    return [`${debouncedSearch}1`, `${debouncedSearch}2`, `${debouncedSearch}3`];
-  }, [debouncedSearch]);
-
-  const setSearchFromSuggestion = useCallback(
-    (suggestion: string) => {
-      // Log: suggestion
-      logEventWithContext('search_available_name_use_suggestion', ActionType.keyPress);
-
-      setSearch(suggestion);
-      if (inputRef.current) {
-        inputRef.current.focus();
-      }
-    },
-    [logEventWithContext],
-  );
-
   const resetSearch = useCallback(() => {
     setSearch('');
   }, []);
@@ -214,10 +208,10 @@ export default function RegistrationSearchInput({
   }, [invalidWithMessage, logEventWithContext, message, setSearchInputFocused]);
 
   useEffect(() => {
-    if (!isError) return;
+    if (!errorCheckingNameAvailability) return;
 
     setSearchInputFocused(false);
-  }, [isError, logEventWithContext, setSearchInputFocused]);
+  }, [errorCheckingNameAvailability, logEventWithContext, setSearchInputFocused]);
 
   return (
     <fieldset
@@ -243,7 +237,7 @@ export default function RegistrationSearchInput({
         </div>
         {invalidWithMessage ? (
           <p className={mutedMessage}>Invalid name: {message}</p>
-        ) : data === true ? (
+        ) : isNameAvailable === true ? (
           <>
             <p className={dropdownLabelClasses}>Available</p>
             <button
@@ -259,23 +253,37 @@ export default function RegistrationSearchInput({
           <div className={spinnerWrapperClasses}>
             <Icon name="spinner" color="currentColor" />
           </div>
-        ) : isError ? (
-          <p className={mutedMessage}>There was an error fetching the data</p>
+        ) : errorCheckingNameAvailability ? (
+          <p className={mutedMessage}>
+            There was an error checking if your desired name is available
+          </p>
+        ) : alternativeNameSuggestionError ? (
+          <p className={mutedMessage}>
+            There was an error coming up with alternative name suggestions.
+          </p>
         ) : (
           <>
             <p className={mutedMessage}>{formatBaseEthDomain(debouncedSearch)} is not available</p>
-            <p className={dropdownLabelClasses}>Suggestion</p>
-            {suggestions.map((suggestion) => (
-              <button
-                key={suggestion}
-                className={buttonClasses}
-                type="button"
-                onClick={() => setSearchFromSuggestion(suggestion)}
-              >
-                <span className="truncate">{formatBaseEthDomain(suggestion)}</span>
-                <Icon name="chevronRight" width={iconSize} height={iconSize} />
-              </button>
-            ))}
+            {suggestions.length > 0 ? (
+              <>
+                <p className={dropdownLabelClasses}>Suggestions</p>
+                {suggestions.map((suggestion) => (
+                  <button
+                    key={suggestion}
+                    className={buttonClasses}
+                    type="button"
+                    onClick={() => handleSelectName(suggestion)}
+                  >
+                    <span className="truncate">{formatBaseEthDomain(suggestion)}</span>
+                    <Icon name="chevronRight" width={iconSize} height={iconSize} />
+                  </button>
+                ))}
+              </>
+            ) : (
+              <p className={mutedMessage}>
+                We are currently unable to offer alternative name suggestions
+              </p>
+            )}
           </>
         )}
       </div>

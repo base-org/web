@@ -27,6 +27,15 @@
     "imageUrl": "/images/partners/infusion.png"
   },
   {
+    "name": "Frenpet",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Own and grow with your onchain fren.",
+    "url": "https://frenpet.xyz/",
+    "imageUrl": "/images/partners/frenpet.png"
+  },
+  {
     "name": "Defi Launch",
     "tags": [
       "defi"
@@ -3055,13 +3064,13 @@
     "imageUrl": "/images/partners/everyworld.png"
   },
   {
-    "name": "Circle.tech",
+    "name": "Time.fun",
     "tags": [
       "social"
     ],
-    "description": "Paywall and monetize your time by providing gated access and content to your most valuable fans.",
-    "url": "https://circle.tech",
-    "imageUrl": "/images/partners/circletech.jpeg"
+    "description": "Tokenize your time and allow your fans to get 1-on-1 time with you through unique experiences.",
+    "url": "https://time.fun",
+    "imageUrl": "/images/partners/timefun.png"
   },
   {
     "name": "ResearchHub",
@@ -3377,5 +3386,311 @@
     "description": "Crypto taxes that simply work — with complete coverage for onchain activity. Generate accurate reports and file in minutes with the only solution that integrates directly with TurboTax and H&R Block.",
     "url": "https://www.cointracker.io/?utm_source=base",
     "imageUrl": "/images/partners/cointracker.png"
+  },
+  {
+    "name": "All That Node",
+    "tags": [
+      "infra"
+    ],
+    "description": "All That Node is the most comprehensive multi-chain development suite, designed to support multiple networks from a single platform.",
+    "url": "https://www.allthatnode.com/",
+    "imageUrl": "/images/partners/allthatnode.png"
+  },
+  {
+    "name": "Base Colors",
+    "tags": [
+      "nft"
+    ],
+    "description": "Base Colors is the NFT collection for every color on the internet. Own Colors. Name Colors. Base Colors.",
+    "url": "https://basecolors.com",
+    "imageUrl": "/images/partners/basecolors.png"
+  },
+  {
+    "name": "BlockPI Network",
+    "tags": [
+      "infra"
+    ],
+    "description": "BlockPI is a top infra provider in APAC. With 6+ years of experience, BlockPI currently offers one-stop high performance infra services including but not limited to RPC service, validator service, relayer service, account abstraction services across 50+ networks and helps in building the infras for more than 10 public blockchains (Berachain, Blast, Merlin Chain, Taiko, ZetaChain, etc) as their official infra partner. BlockPI also closely partners with over 300+ well-known projects and developers communities. With millions of public users and over 35,000 registered users, BlockPI stably processes 60B+ monthly requests.",
+    "url": "https://blockpi.io/",
+    "imageUrl": "/images/partners/blockpi.png"
+  },
+  {
+    "name": "Bright Moments",
+    "tags": [
+      "nft"
+    ],
+    "description": "Bright Moments is a digital art gallery that works with generative and AI artists to help them produce iconic real world experiences of their art.",
+    "url": "https://app.brightmoments.io",
+    "imageUrl": "/images/partners/brightmoments.png"
+  },
+  {
+    "name": "CompareNodes",
+    "tags": [
+      "infra"
+    ],
+    "description": "RPC endpoint performance inspector from 27 global locations in 30 seconds.",
+    "url": "https://www.comparenodes.com/performance-inspector/#base",
+    "imageUrl": "/images/partners/comparenodes.png"
+  },
+  {
+    "name": "Crate",
+    "tags": [
+      "social"
+    ],
+    "description": "The music trading platform. Launch a tokenized song in seconds.",
+    "url": "https://crate.place",
+    "imageUrl": "/images/partners/crate.png"
+  },
+  {
+    "name": "Crowdmuse",
+    "tags": [
+      "nft"
+    ],
+    "description": "Crowdmuse is a social commerce platform developing innovative no-code smart contracts for creators and brands selling consumer products onchain with creator IP rights. ",
+    "url": "https://crowdmuse.xyz/",
+    "imageUrl": "/images/partners/crowdmuse.png"
+  },
+  {
+    "name": "Daylight",
+    "tags": [
+      "social"
+    ],
+    "description": "Onchain for you - discover fun things to do in crypto, personalized to your onchain identity.",
+    "url": "https://www.daylight.xyz/",
+    "imageUrl": "/images/partners/daylight.png"
+  },
+  {
+    "name": "Dot",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Dot transforms user-generated pixel art into collectible cards playable in unique challenges and onchain games. Create your own cards or open card packs from your favorite artists today.",
+    "url": "https://dot.fan",
+    "imageUrl": "/images/partners/dot.png"
+  },
+  {
+    "name": "Drakula",
+    "tags": [
+      "social"
+    ],
+    "description": "Drakula is a social network for video creators on Base.",
+    "url": "https://drakula.app",
+    "imageUrl": "/images/partners/drakula.png"
+  },
+  {
+    "name": "Dynamic",
+    "tags": [
+      "infra"
+    ],
+    "description": "Dynamic offers a suite of tools for effortless log in, wallet creation and user management. Designed for users. Built for developers.",
+    "url": "www.dynamic.xyz",
+    "imageUrl": "/images/partners/dynamic.png"
+  },
+  {
+    "name": "Farworld",
+    "tags": [
+      "gaming"
+    ],
+    "description": "A mysterious world 🪐 filled with mysterious creatures 👾 The onchain monster collecting game of Farcaster, built on Base.",
+    "url": "https://farworld.gg",
+    "imageUrl": "/images/partners/farworld.png"
+  },
+  {
+    "name": "HAPI",
+    "tags": [
+      "security"
+    ],
+    "description": "HAPI ID enhances blockchain security with Trust Scores, human verification, and multi-account protection, ensuring fair and secure interactions for users, DApps, and businesses.",
+    "url": "https://hapi.one/",
+    "imageUrl": "/images/partners/hapi.png"
+  },
+  {
+    "name": "Interface",
+    "tags": [
+      "social"
+    ],
+    "description": "Interface is a mobile companion for your onchain journey ",
+    "url": "https://www.interface.social",
+    "imageUrl": "/images/partners/interface.png"
+  },
+  {
+    "name": "King of the Degens",
+    "tags": [
+      "social"
+    ],
+    "description": "King of the Degens is an Onchain RPG on Farcaster. Players are streamed $DEGEN in real time and storm the castle to become King!",
+    "url": "https://www.degen.game/kotd",
+    "imageUrl": "/images/partners/kingofdegens.png"
+  },
+  {
+    "name": "Lunchbreak",
+    "tags": [
+      "social"
+    ],
+    "description": "Lunchbreak is a socialFi app where creators start earning crypto in seconds. Signup with one click, get lifetime royalties from fans collecting your profile, and earn from paid DM and call requests. ",
+    "url": "https://lunchbreak.com",
+    "imageUrl": "/images/partners/lunchbreak.png"
+  },
+  {
+    "name": "Metopia",
+    "tags": [
+      "social"
+    ],
+    "description": "Metopia is a decentralized reputation network, empowering onchain actions and attestations.",
+    "url": "https://metopia.xyz",
+    "imageUrl": "/images/partners/metopia.png"
+  },
+  {
+    "name": "Moralis",
+    "tags": [
+      "infra"
+    ],
+    "description": "Moralis is a leading crypto data provider helping companies build great user experiences, drive engagement, growth, and revenue in their applications through Moralis’ suite of Web3 APIs and RPC nodes.",
+    "url": "https://moralis.io",
+    "imageUrl": "/images/partners/moralis.png"
+  },
+  {
+    "name": "Moshicam",
+    "tags": [
+      "social"
+    ],
+    "description": "The most fun and rewarding onchain photosharing app.",
+    "url": "https://moshi.cam",
+    "imageUrl": "/images/partners/moshicam.png"
+  },
+  {
+    "name": "NFT Gallery App",
+    "tags": [
+      "nft"
+    ],
+    "description": "Bring your NFTs onto your home screen on all of Apple's platforms.\nLet your Widgets seamlessly rotate through your NFT & POAP Collections and resurface moments from your web3 journey.",
+    "url": "https://apps.apple.com/de/app/nft-gallery-widget/id6462826516?l=en-GB",
+    "imageUrl": "/images/partners/nftgallery.png"
+  },
+  {
+    "name": "NiftyKit",
+    "tags": [
+      "nft"
+    ],
+    "description": "Turn assets into NFTs with ease. Mint, manage, and sell artwork, music, game assets, membership tokens, and more, all without developer assistance.",
+    "url": "https://niftykit.com?ref=coinbase",
+    "imageUrl": "/images/partners/niftykit.jpeg"
+  },
+  {
+    "name": "OpenCoin AI",
+    "tags": [
+      "infra"
+    ],
+    "description": "OpenCoin AI is a series of AI-powered applications fueled by real-time cross-chain data.",
+    "url": "https://opencoin.ai",
+    "imageUrl": "/images/partners/opencoin.png"
+  },
+  {
+    "name": "OpenVotes",
+    "tags": [
+      "social"
+    ],
+    "description": "A democratized, secured, and transparent voting platform on the blockchain.",
+    "url": "https://openvotes.io",
+    "imageUrl": "/images/partners/openvotes.png"
+  },
+  {
+    "name": "Pentacle Tarot",
+    "tags": [
+      "gaming"
+    ],
+    "description": "An Alchemically based collection of 2222 unique Pentacle Tarot Keys that unlock authentic, personalised daily Tarot readings. ",
+    "url": "https://pentacletarot.com",
+    "imageUrl": "/images/partners/pentacle.png"
+  },
+  {
+    "name": "pods.media",
+    "tags": [
+      "nft"
+    ],
+    "description": "The leading platform for onchain podcasts.",
+    "url": "https://pods.media/",
+    "imageUrl": "/images/partners/pods.png"
+  },
+  {
+    "name": "Poorvi Sachar",
+    "tags": [
+      "social"
+    ],
+    "description": "0xPPL is a web3 social platform enabling you to follow or interact with onchain activities of your peers & discover trends in a human-readable feed. Access your multi-chain portfolio across EVMs, Solana, Cosmos, and TON.",
+    "url": "https://0xppl.com",
+    "imageUrl": "/images/partners/poorvisachar.jpeg"
+  },
+  {
+    "name": "QUANTELICA",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Quantelica ecosystem is developing own Games, NFT Collections, SDKs, Launcher, NFT Marketplace, and much more...",
+    "url": "https://quantelica.com/",
+    "imageUrl": "/images/partners/quantelica.png"
+  },
+  {
+    "name": "SoMon",
+    "tags": [
+      "social"
+    ],
+    "description": "SoMon is a web3 topic-based forum with… Social Monsters! It is a fun space where users create vibrant and engaging Tribes centered around all their passions and fandoms. On SoMon, Tribes, content, and social connections are self-owned by users and communities, and monetization tools are at their disposal to fully leverage their social capital. Users earn SoMon Points and rewards in $OwO by actively participating in Tribes.\n\nAs the first dApp powered by OpenSocial, a protocol providing a scalable Web3 Social infrastructure toolkit to builders, SoMon represents a significant milestone! ",
+    "url": "https://www.social.monster/",
+    "imageUrl": "/images/partners/somon.png"
+  },
+  {
+    "name": "Speedtracer",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Trace fast to win",
+    "url": "https://speedtracer.xyz",
+    "imageUrl": "/images/partners/speedtracer.jpg"
+  },
+  {
+    "name": "Surreal",
+    "tags": [
+      "social"
+    ],
+    "description": "A mobile app for discovering, collecting, and enjoying onchain media like music, art, videos, and memes across marketplaces. Users can follow friends for updates and earn by creating and curating content.",
+    "url": "https://surr.app",
+    "imageUrl": "/images/partners/surreal.png"
+  },
+  {
+    "name": "TapBase",
+    "tags": [
+      "nft"
+    ],
+    "description": "We are very excited about our new innovation. TapBase is a great new innovation in NFT and Tap to Earn. Now, for the first time in the world, you can tap to earn TapBase and buy and sell NFTs with it. this is fabulous. TapBase has started working on the Base network and we are now in the first phase of TapBase development. Now is the time to get all the coins and NFTs.",
+    "url": "https://t.me/TapBaseBot",
+    "imageUrl": "/images/partners/tapbase.jpg"
+  },
+  {
+    "name": "Warpcast",
+    "tags": [
+      "social"
+    ],
+    "description": "Warpcast is a Farcaster client.",
+    "url": "https://warpcast.com",
+    "imageUrl": "/images/partners/warpcast.png"
+  },
+  {
+    "name": "Welcome Onchain",
+    "tags": [
+      "social"
+    ],
+    "description": "Discovery and research platform for onchain culture and technology",
+    "url": "https://welcomeonchain.xyz",
+    "imageUrl": "/images/partners/welcomeonchain.png"
+  },
+  {
+    "name": "Wildcard",
+    "tags": [
+      "social"
+    ],
+    "description": "Best Farcaster client a degen can get. Built on Base.",
+    "url": "https://app.wildcard.lol",
+    "imageUrl": "/images/partners/wildcard.jpeg"
   }
 ]

@@ -17,7 +17,7 @@
         "difficulty": "hard",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "9 min read",
         "checksum": "1155994e8aedab6a77e03bed61e33b04004828f11b05b6b7b3b58422292f48fc"
     },
@@ -46,7 +46,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "17 min read",
         "checksum": "b6ba5851a908389eb12dae91ff7d742f3e188eba2322b8550661b05f6731296c"
     },
@@ -75,7 +75,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "15 min read",
         "checksum": "b9b4a675c58d4cdfb99f3b97ddcf1b223a51dfc5c2414d184cd5d4fb9f988b55"
     },
@@ -105,7 +105,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "18 min read",
         "checksum": "039bc3fe2c561bc45a6069fbf704b2b29203fb0ce49e1d0dee97a8f0fada11df"
     },
@@ -136,7 +136,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "19 min read",
         "checksum": "6b93f84f6431fcf064adbb8b51ee2fb162a97516d4fbac2f982af1eddba87b6b"
     },
@@ -170,9 +170,42 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "10 min read",
         "checksum": "f4b7fa789b2c65e00e467c4851857ab2e629f6d8dbed7f8c2d625abf668a124b"
+    },
+    "0_gassless-transactions-with-paymaster": {
+        "title": "Gasless Transactions on Base using Coinbase Paymaster",
+        "slug": "/gasless-transaction-on-base-using-a-paymaster",
+        "description": "Learn how to leverage Coinbase Paymaster for seamless, gasless transactions on the Coinbase Cloud Developer Platform.",
+        "author": "hughescoin",
+        "keywords": [
+            "Gas",
+            "Gasless",
+            "Transactions",
+            "Paymaster",
+            "Sponsor",
+            "Sponsored Transactions",
+            "Onchain",
+            "Coinbase",
+            "Base",
+            "Crypto",
+            "Cloud Platform"
+        ],
+        "tags": [
+            "Gasless",
+            "Crypto",
+            "Gas",
+            "Sponsor",
+            "Coinbase",
+            "Base"
+        ],
+        "difficulty": "easy",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Jul 11, 2024",
+        "duration": "25 min read",
+        "checksum": "bb4faf87f8d0f36abf18b2f2440d2111af2c6f31552be1cede40f2dc2162c9e4"
     },
     "0_run-a-base-node": {
         "title": "Running a Base Node",
@@ -198,7 +231,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "6 min read",
         "checksum": "2effa6656ddc3da5f719b560d44007e317de85bc0e4bf133ef521be9db3b2665"
     },
@@ -231,7 +264,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "8 min read",
         "checksum": "527200e33d612b0c76e5eaacddfc23633b57eaa4577f389d4429b8f862c45462"
     },
@@ -256,7 +289,7 @@
         "difficulty": "hard",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "4 min read",
         "checksum": "a96c8d7eca808c7f6a7b0b55ff4ece251bfe565d57aa8921896cf49b3c64b3bb"
     },
@@ -283,7 +316,7 @@
         "difficulty": "hard",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "40 min read",
         "checksum": "dac639cda3aa56bf5ec7041a5152d1b90abef96d80d44a85e1a142551ac635fe"
     },
@@ -310,7 +343,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "29 min read",
         "checksum": "8c8189d19e874c08dd05549d06c1eb2e45ce924aa2b0e1239f0adf04c8ee4879"
     },
@@ -336,7 +369,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "34 min read",
         "checksum": "d307c0834f745648d2c7004595a7c60544381a0d90d4f3a3d6337f6152c4c856"
     },
@@ -364,7 +397,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "46 min read",
         "checksum": "fcd90aad54c93b59ab947c2954597b9b861204b885ed599754f7e50cca303fd9"
     },
@@ -389,7 +422,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "32 min read",
         "checksum": "f8d2be1153df419e835c3afd8ea2714c2560f50a4e967eb303323693eb7777fe"
     },
@@ -414,7 +447,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "32 min read",
         "checksum": "b613b074cbb8f4c8eb55a13651f6371a8a3211afe65b8e2190e5b9df18c1d98f"
     },
@@ -439,7 +472,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "34 min read",
         "checksum": "a0ce01aa1c3097efa7582a74bc73f9ccad03222b25af451be1fde4fcd45c7dd7"
     },
@@ -467,7 +500,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "14 min read",
         "checksum": "0b1498d415cda6e83031231cd05d42edacd2faa82d68471b2ed09670481a3259"
     },
@@ -492,7 +525,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "18 min read",
         "checksum": "fc55c7e07decb6053d9b906445c93002374e4e50120c804b7c04e36af4e1779b"
     },
@@ -521,7 +554,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "39 min read",
         "checksum": "108ca52fb9d1242e529c225e6f9e9cdde63f8f0725bddd876bc5ea572db1ea59"
     },
@@ -550,7 +583,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "11 min read",
         "checksum": "df42e4091a128a0bd3e7dc9fcc585f9a711a56027152d57553a54e8040a4001f"
     },
@@ -580,7 +613,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "13 min read",
         "checksum": "983e7175434206be7c996758b09db9c33aac454ecb9b4b3da8f301f8140b7c52"
     },
@@ -618,7 +651,7 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "19 min read",
         "checksum": "260e40333e386593cf6f211c06218042d4b93ecac34f56a0decbd398f1e3ddb1"
     },
@@ -642,7 +675,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "19 min read",
         "checksum": "bb0152d2ccf76eb7db67a995f5a35590df22bcacfbaf98ff930510e3d5b21704"
     },
@@ -665,7 +698,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "9 min read",
         "checksum": "3174ebe066db1100e389cf2b0ec1451c2711145fb645dc540f4c08c5a2e48540"
     },
@@ -685,7 +718,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "12 min read",
         "checksum": "81672fdd81867b1ac78f474fb670c073da4132fcccd961b809a88f84580b7fca"
     },
@@ -710,7 +743,7 @@
         "tags": [
             "frames"
         ],
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "16 min read",
         "checksum": "dca5d7ffcf59c834221a9585628ba88e58842be3ed2c10705e1185e6c5d30715"
     },
@@ -735,7 +768,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "22 min read",
         "checksum": "4f2e23920817a1ef138ce594423b25d57080ecb1f954940cc91ef133f1050fa4"
     },
@@ -761,7 +794,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "7 min read",
         "checksum": "2201cf6ca7cf13fc8940de15b834076090671161a37e97a3146fd207b79b2033"
     },
@@ -784,7 +817,7 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "17 min read",
         "checksum": "f039e4e2b33d73e803fbc7785395ca283dc0abe35c46ead630e1dfaa0d7ab275"
     },
@@ -807,7 +840,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "15 min read",
         "checksum": "c4f0c5cc94e04b85501323d6992a014308db14900c069ac5a7639d5b17703db6"
     },
@@ -833,7 +866,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "16 min read",
         "checksum": "7462ea26fdaafac994b2ccbeaaa0fcc08f708debcda1193f8131f99c201005cc"
     },
@@ -860,7 +893,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "22 min read",
         "checksum": "38c40aa53b9359a9b8716e7f56f68ebcc910da9ae6d34b055bde866d51da007b"
     },
@@ -887,7 +920,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "9 min read",
         "checksum": "54b377b97554eea4e09520fbf6fdacff9978d840248ec69d82ab79c0bebb0846"
     },
@@ -909,7 +942,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "6 min read",
         "checksum": "0b50de1197db8c50cbf02405a904f99ec7e32159f86ae884993aa6cc36b10fcb"
     },
@@ -933,7 +966,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "9 min read",
         "checksum": "2ced64394c425e5749001cb21cca5a3b0043fe6ab013be45e98299e16f337d23"
     },
@@ -983,7 +1016,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "21 min read",
         "checksum": "d09d83f406019b24b7cf9490cbe0200cba4bf09506d98d18d47fe43efa48aa3a"
     },
@@ -1005,7 +1038,7 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "9 min read",
         "checksum": "f9ad99285bb78e91cde255b71c826554b6ff1f8cec69450afe814d033af945e6"
     },
@@ -1035,7 +1068,7 @@
         "difficulty": "easy",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 11, 2024",
         "duration": "8 min read",
         "checksum": "1d485f4ded5aa492578d9887e36fefefea452c262769f5f30f6e9750c24c2913"
     }

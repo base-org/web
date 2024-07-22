@@ -82,6 +82,7 @@ export function RegistrationForm() {
   const {
     callback: registerName,
     data: registerNameTransactionHash,
+    error,
     isPending: registerNameTransactionIsPending,
     error: registerNameError,
   } = useRegisterNameCallback(
@@ -91,6 +92,12 @@ export function RegistrationForm() {
     discount?.discountKey,
     discount?.validationData,
   );
+
+  if (error) {
+    // todo: handle this error in the UI
+    //   it is likely the user doesn't have sufficient funds to register and they've failed simulation
+    console.error('error in registration handler', error);
+  }
 
   useEffect(() => {
     if (registerNameTransactionHash) {

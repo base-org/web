@@ -9,14 +9,20 @@ import logEvent, {
 
 import styles from './styles.module.css';
 
-const href = 'https://www.base.org/onchainsummer?utm_source=DocsSite&utm_campaign=onchainsummer';
+type BannerName = `${string}Banner`;
 
-export function OcsBanner() {
-  const [isBannerVisible, setIsBannerVisible] = useLocalStorage('isOcsBannerVisible', true);
+type BannerProps = {
+  href: string;
+  text: string;
+  bannerName: BannerName;
+};
+
+export default function Banner({ href, text, bannerName }: BannerProps) {
+  const [isBannerVisible, setIsBannerVisible] = useLocalStorage(`${bannerName}Visible'`, true);
 
   const linkClick = useCallback(() => {
     logEvent(
-      'ocsbanner',
+      bannerName,
       {
         action: ActionType.click,
         componentType: ComponentType.banner,
@@ -44,7 +50,7 @@ export function OcsBanner() {
           aria-label="Onchain Summer Buildathon Banner"
           onClick={linkClick}
         >
-          <span className={styles.bannerText}>Build Onchain this Summer!</span>
+          <span className={styles.bannerText}>{text}</span>
         </a>
         <div className={styles.bannerIconContainer}>
           <a

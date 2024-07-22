@@ -21,6 +21,20 @@ export async function cdpGet(endpoint: string, authed: boolean): Promise<Respons
   });
 }
 
+export async function cdpPost(endpoint: string, body: unknown, authed: boolean): Promise<Response> {
+  const url = `https://${cdpBaseUri}/${endpoint}`;
+  const headers = new Headers();
+  if (authed) {
+    const jwt = await generateCdpJwt('POST', endpoint);
+    headers.set('Authorization', `Bearer ${jwt}`);
+  }
+  return fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers,
+  });
+}
+
 export function getPublicClient(chainId: number) {
   switch (chainId) {
     case baseSepolia.id:

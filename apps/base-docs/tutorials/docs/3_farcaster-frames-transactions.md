@@ -10,13 +10,7 @@ hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
-[Frames] on [Farcaster] now support wallet transactions invoked directly from the buttons in a Frame! [OnchainKit] already supports this feature! In this tutorial, you'll learn how to set up a frame that will allow your users to complete a simple transaction.
-
-:::caution
-
-Frames are brand new and tools are evolving quickly. Check the links above for changelogs!
-
-:::
+[Frames] on [Farcaster] support wallet transactions invoked directly from the buttons in a Frame! [OnchainKit] supports this feature. In this tutorial, you'll learn how to set up a frame that will allow your users to complete a simple transaction.
 
 ---
 
@@ -87,16 +81,7 @@ We've deployed an [instance of the contract] on testnet, and [on mainnet]. You c
 
 ## Building the Frame
 
-Start a new project using [a-frame-in-100-lines] as a template or guide, or open an existing one. Make sure the version of [OnchainKit] is 0.10.0 or higher.
-
-If you're working off of an older copy of the template, you'll need to update your `tsconfig.json`:
-
-```json
-"module": "NodeNext",
-"moduleResolution": "NodeNext",
-```
-
-You may also need to manually install: `yarn add @tanstack/react-query`
+Start a new project using [a-frame-in-100-lines] as a template or guide, or open an existing one. Make sure the version of [OnchainKit] is current.
 
 ### The First Frame and Page
 
@@ -105,9 +90,9 @@ Add a new page to the Next.js [App Router] by adding a new folder in `app` calle
 Using the sample page as a guide, set up a new frame, and stub for a new page:
 
 ```tsx
-import { getFrameMetadata } from '@coinbase/onchainkit';
+import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
-import { NEXT_PUBLIC_URL } from '../config';
+import { NEXT_PUBLIC_URL } from './config';
 
 const frameMetadata = getFrameMetadata({
   buttons: [
@@ -157,7 +142,7 @@ export default function Page() {
 
 A few notes:
 
-- The naming conventions and organization of OnchainKit are evolving as frames evolve. Check the [OnchainKit] repo if the imports don't work
+- The naming conventions and organization of OnchainKit are evolving as frames evolve. Check the [OnchainKit] repo and docs if the imports don't work
 - You'll make the api endpoint for the button clicker game next
 - Feel free to adjust the text. We're just having fun by making it give conflicting instructions
 - The button to show the leaderboard simply goes to your page. You could render an svg to png in the frame endpoint to show it in frames as well
@@ -173,14 +158,14 @@ A few notes:
 
 ### Setting up the Transaction Endpoint
 
-Add a new folder called `buttonclicker` inside the `api` folder of your `app` router. This will automatically create a new route at `https://yourapp.vercel.app/buttonclicker`.
+Add a new folder called `buttonclicker` containing a file called `route.ts` inside the `api` folder of your `app` router. This will automatically create a new route at `https://yourapp.vercel.app/buttonclicker`.
 
 You'll need to import the standard Frames functions you've been using, as well as some utilities from [viem]. You'll also need a new `type` from [OnchainKit].
 
 ```tsx
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
-import { encodeFunctionData, formatEther, parseEther } from 'viem';
+import { encodeFunctionData, formatEther, parseGwei } from 'viem';
 import { base } from 'viem/chains';
 import type { FrameTransactionResponse } from '@coinbase/onchainkit/frame';
 ```
@@ -239,6 +224,12 @@ const txData: FrameTransactionResponse = {
     value: parseGwei('10000').toString(), // 0.00001 ETH
   },
 };
+```
+
+Finally, return the transaction as a `NextResponse`:
+
+```tsx
+return NextResponse.json(txData);
 ```
 
 :::info
