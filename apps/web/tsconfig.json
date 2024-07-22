@@ -17,7 +17,7 @@
     "**/*",
     "**/*.json",
     "../../types/**/*"
-  ],
+, "../../libs/base-ui/contexts"  ],
   "exclude": [],
   "references": [
     {
