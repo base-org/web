@@ -30,7 +30,7 @@
     "jose": "^5.4.1",
     "jsonwebtoken": "^9.0.2",
     "kysely": "^0.27.3",
-    "next": "^13.2.0",
+    "next": "^13.5.6",
     "node-fetch": "^3.3.0",
     "permissionless": "^0.1.41",
     "pg": "^8.12.0",
