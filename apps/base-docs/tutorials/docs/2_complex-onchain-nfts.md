@@ -1,5 +1,5 @@
 ---
-title: 'Building onchain NFTs'
+title: 'Complex Onchain NFTs'
 slug: /complex-onchain-nfts
 description: A tutorial that teaches how to make complex nfts that are procedurally generated and have onchain metadata and images.
 author: briandoyle81
