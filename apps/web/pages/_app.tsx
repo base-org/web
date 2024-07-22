@@ -113,17 +113,17 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
     >
       <MotionConfig reducedMotion="user">
         <ClientAnalyticsScript />
-        <ExperimentsProvider>
-          <WagmiProvider config={config}>
-            <QueryClientProvider client={queryClient}>
-              <RainbowKitProvider modalSize="compact">
+        <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}>
+            <RainbowKitProvider modalSize="compact">
+              <ExperimentsProvider>
                 <Layout>
                   <Component {...pageProps} />
                 </Layout>
-              </RainbowKitProvider>
-            </QueryClientProvider>
-          </WagmiProvider>
-        </ExperimentsProvider>
+              </ExperimentsProvider>
+            </RainbowKitProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
       </MotionConfig>
     </CookieManagerProvider>
   );
