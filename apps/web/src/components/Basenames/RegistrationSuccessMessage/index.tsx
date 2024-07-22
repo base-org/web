@@ -5,6 +5,7 @@ import {
 } from 'apps/web/src/components/Basenames/RegistrationContext';
 import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -36,7 +37,7 @@ export default function RegistrationSuccessMessage() {
 
   const goToProfileOnClick = useCallback(() => {
     logEventWithContext('go_to_profile', ActionType.click);
-    router.push(`names/${selectedName}`);
+    router.push(`names/${formatBaseEthDomain(selectedName)}`);
   }, [logEventWithContext, router, selectedName]);
 
   return (

@@ -3,7 +3,7 @@ import DropdownItem from 'apps/web/src/components/DropdownItem';
 import DropdownMenu from 'apps/web/src/components/DropdownMenu';
 import DropdownToggle from 'apps/web/src/components/DropdownToggle';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import { BaseSepoliaName, getUserNamePicture } from 'apps/web/src/utils/usernames';
+import { BaseName, getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import Image from 'next/image';
 
@@ -14,7 +14,7 @@ export enum UsernamePillVariants {
 
 type UsernamePillProps = {
   variant: UsernamePillVariants;
-  username: BaseSepoliaName;
+  username: BaseName;
   address?: string;
 };
 

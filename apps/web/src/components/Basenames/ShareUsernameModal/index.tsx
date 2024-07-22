@@ -15,6 +15,7 @@ import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/op
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
 
 export const socialPlatformsEnabled = [SocialPlatform.Twitter, SocialPlatform.Farcaster];
 
@@ -80,7 +81,7 @@ export default function ShareUsernameModal({
         </p>
         <figure className={coverImageWrapperClasses}>
           <img
-            src={`/api/og/names/${selectedName}`}
+            src={`/api/basenames/${formatBaseEthDomain(selectedName)}/assets/coverImage.png`}
             alt={selectedName}
             onLoad={onLoadImage}
             className={coverImageClasses}

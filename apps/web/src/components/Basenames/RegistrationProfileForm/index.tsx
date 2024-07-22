@@ -17,6 +17,7 @@ import {
   UsernameTextRecords,
   UsernameTextRecordKeys,
   textRecordsSocialFieldsEnabled,
+  formatBaseEthDomain,
 } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
@@ -86,7 +87,7 @@ export default function RegistrationProfileForm() {
 
       refetchExistingTextRecords()
         .then(() => {
-          router.push(`names/${selectedName}`);
+          router.push(`names/${formatBaseEthDomain(selectedName)}`);
         })
         .catch(() => {
           // console.log({ error });
@@ -147,7 +148,7 @@ export default function RegistrationProfileForm() {
               logEventWithContext('update_text_records_transaction_approved', ActionType.change);
             } else {
               // no text records had to be updated, simply go to profile
-              router.push(`names/${selectedName}`);
+              router.push(`names/${formatBaseEthDomain(selectedName)}`);
             }
           })
           .catch((error) => {

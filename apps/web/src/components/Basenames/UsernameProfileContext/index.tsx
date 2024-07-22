@@ -1,5 +1,5 @@
 import { USERNAME_CHAIN_ID, USERNAME_L2_RESOLVER_ADDRESS } from 'apps/web/src/addresses/usernames';
-import { BaseSepoliaName, formatBaseEthDomain } from 'apps/web/src/utils/usernames';
+import { BaseName } from 'apps/web/src/utils/usernames';
 import { useParams } from 'next/navigation';
 import { ReactNode, createContext, useContext, useMemo } from 'react';
 import { Address } from 'viem';
@@ -8,16 +8,14 @@ import { useAccount, useEnsAddress } from 'wagmi';
 export enum UsernameProfileSteps {}
 
 export type UsernameProfileContextProps = {
-  profileUsername: string;
-  profileUsernameFormatted: BaseSepoliaName;
+  profileUsername: BaseName;
   profileAddressIsLoading: boolean;
   profileAddress?: Address;
   currentWalletIsOwner?: boolean;
 };
 
 export const UsernameProfileContext = createContext<UsernameProfileContextProps>({
-  profileUsername: '',
-  profileUsernameFormatted: formatBaseEthDomain('default'),
+  profileUsername: 'default.basetest.eth',
   profileAddressIsLoading: true,
   profileAddress: undefined,
   currentWalletIsOwner: false,
@@ -28,12 +26,11 @@ type UsernameProfileProviderProps = {
 };
 
 export default function UsernameProfileProvider({ children }: UsernameProfileProviderProps) {
-  const { username: profileUsername } = useParams<{ username: string }>();
-  const profileUsernameFormatted = formatBaseEthDomain(profileUsername);
+  const { username: profileUsername } = useParams<{ username: BaseName }>();
   const { address } = useAccount();
 
   const { data: profileAddress, isLoading: profileAddressIsLoading } = useEnsAddress({
-    name: profileUsernameFormatted,
+    name: profileUsername,
     chainId: USERNAME_CHAIN_ID,
     universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESS,
     query: {
@@ -48,16 +45,9 @@ export default function UsernameProfileProvider({ children }: UsernameProfilePro
       profileAddress: profileAddress?.toString() as Address,
       profileAddressIsLoading,
       profileUsername,
-      profileUsernameFormatted,
       currentWalletIsOwner,
     };
-  }, [
-    currentWalletIsOwner,
-    profileAddress,
-    profileAddressIsLoading,
-    profileUsername,
-    profileUsernameFormatted,
-  ]);
+  }, [currentWalletIsOwner, profileAddress, profileAddressIsLoading, profileUsername]);
 
   return (
     <UsernameProfileContext.Provider value={values}>{children}</UsernameProfileContext.Provider>
