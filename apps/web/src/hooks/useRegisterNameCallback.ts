@@ -49,8 +49,6 @@ export function useRegisterNameCallback(
       args: [namehash(formatBaseEthDomain(name)), formatBaseEthDomain(name)],
     });
 
-    console.log({ namehash: namehash(formatBaseEthDomain(name)) });
-
     const registerRequest = {
       name: normalizedName, // The name being registered.
       owner: address, // The address of the owner for the name.
@@ -59,8 +57,6 @@ export function useRegisterNameCallback(
       data: [addressData, nameData], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
       reverseRecord: true, // Bool to decide whether to set this name as the "primary" name for the `owner`.
     };
-
-    console.log({ registerRequest });
 
     // Log attempt to register name
     logEventWithContext('register_name_transaction_initiated', ActionType.click);
