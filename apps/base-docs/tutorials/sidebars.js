@@ -74,7 +74,7 @@ const sidebars = {
       items: [
         {
           type: 'doc',
-          id: 'docs/onchain-nfts',
+          id: 'docs/complex-onchain-nfts',
           className: 'sidebar-coding',
         },
       ],
