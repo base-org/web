@@ -19,10 +19,10 @@ export function OcsBanner() {
   }
 
   return (
-    <div className="z-10 flex w-full flex-row justify-center bg-yellow-70 text-black">
-      <div className="z-10 flex w-full max-w-[1440px] flex-row items-center justify-between self-center bg-yellow-70 p-2 pl-8 pr-6">
+    <div className="z-10 flex w-full flex-row justify-center bg-yellow-20 text-black">
+      <div className="z-10 flex w-full max-w-[1440px] flex-row items-center justify-between self-center bg-yellow-20 p-2 pl-8 pr-6">
         <Link href={href}>
-          <span className="text-xs  md:text-base">Build Onchain this Summer!</span>
+          <span className="text-xs underline md:text-base">Build Onchain this Summer!</span>
         </Link>
         <div className="flex flex-row items-center gap-4">
           <Link href={href}>

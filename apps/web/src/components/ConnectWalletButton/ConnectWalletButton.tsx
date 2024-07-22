@@ -3,6 +3,7 @@ import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/But
 import { UserAddress } from 'apps/web/src/components/ConnectWalletButton/UserAddress';
 import { AvatarSizes, UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
+import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
 import logEvent, {
   ActionType,
   AnalyticsEventImportance,
@@ -35,7 +36,7 @@ export function ConnectWalletButton({
   connectWalletButtonVariant = ConnectWalletButtonVariants.Shiny,
 }: ConnectWalletButtonProps) {
   const { openConnectModal } = useConnectModal();
-  const { address } = useAccount();
+  const { address, connector } = useAccount();
 
   useEffect(() => {
     if (address) {
@@ -45,6 +46,7 @@ export function ConnectWalletButton({
           action: ActionType.change,
           context: 'navbar',
           address,
+          wallet_type: sanitizeEventString(connector?.name),
         },
         AnalyticsEventImportance.low,
       );
