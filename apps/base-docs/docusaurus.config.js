@@ -200,11 +200,7 @@ const config = {
           label: 'Learn',
           items: [
             {
-<<<<<<< HEAD
               label: 'Learn to Build Onchain',
-=======
-              label: 'Learn',
->>>>>>> c7a2ea0 (Rename Base Camp to Base Learn)
               to: '/base-learn/docs/welcome',
               type: 'custom-dropdownLink',
               eventLabel: 'camp_learn',
