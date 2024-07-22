@@ -20,7 +20,7 @@ Foundry is a powerful suite of tools to develop, test, and debug your smart cont
 - `anvil`: a local testnet node, for testing contract behavior from a frontend or over RPC
 - `chisel`: a Solidity [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop), for trying out Solidity snippets on a local or forked network
 
-Foundry offers extremely fast feedback loops (due to the under-the-hood Rust implementation) and less context switching — because we'll be writing our contracts, tests, and deployment scripts **All** in Solidity!
+Foundry offers extremely fast feedback loops (due to the under-the-hood Rust implementation) and less context switching — because you'll be writing your contracts, tests, and deployment scripts **All** in Solidity!
 
 :::info
 
@@ -142,7 +142,7 @@ forge build
 
 ## Configuring Foundry with Base
 
-Next we will configure your Foundry project to deploy smart contracts to the Base network. First we'll store your private key in an encrypted keystore, then we'll add Base as a network.
+Next, you will configure your Foundry project to deploy smart contracts to the Base network. First you'll store your private key in an encrypted keystore, then you'll add Base as a network.
 
 ### Storing your private key
 
@@ -166,21 +166,23 @@ cast wallet list
 
 ### Adding Base as a network
 
-Now create a `.env` file in the home directory of your project to add the Base network and an API key for verifying your contract on Basescan:
+When verifying a contract with BaseScan, you need an API key. You can get your BaseScan API key from [here](https://basescan.org/myapikey) after you sign up for an account.
+
+:::caution
+
+Although they're made by the same folks, Etherscan API keys will **not** work on BaseScan!
+
+:::
+
+Now create a `.env` file in the home directory of your project to add the Base network and an API key for verifying your contract on BaseScan:
 
 ```
 BASE_MAINNET_RPC="https://mainnet.base.org"
 BASE_SEPOLIA_RPC="https://sepolia.base.org"
-ETHERSCAN_API_KEY="PLACEHOLDER_STRING"
+ETHERSCAN_API_KEY="<YOUR API KEY>"
 ```
 
-Note that even though we're using Basescan as our block explorer, Foundry expects the API key to be defined as `ETHERSCAN_API_KEY`.
-
-:::info
-
-When verifying a contract with Basescan on testnet (Sepolia), an API key is not required. You can leave the value as `PLACEHOLDER_STRING`. On mainnet, you can get your Basescan API key from [here](https://basescan.org/myapikey) after you sign up for an account.
-
-:::
+Note that even though you're using BaseScan as your block explorer, Foundry expects the API key to be defined as `ETHERSCAN_API_KEY`.
 
 ### Loading environment variables
 
@@ -196,7 +198,7 @@ source .env
 
 With your contract compiled and your environment configured, you are ready to deploy to the Base Sepolia test network!
 
-Today we'll use the `forge create` command, which is a straightforward way to deploy a single contract at a time. In the future, you may want to look into [`forge script`](https://book.getfoundry.sh/tutorials/solidity-scripting), which enables scripting onchain transactions and deploying more complex smart contract projects.
+Today, you'll use the `forge create` command, which is a straightforward way to deploy a single contract at a time. In the future, you may want to look into [`forge script`](https://book.getfoundry.sh/tutorials/solidity-scripting), which enables scripting onchain transactions and deploying more complex smart contract projects.
 
 You'll need testnet ETH in your wallet. See the [prerequisites](#prerequisites) if you haven't done that yet. Otherwise, the deployment attempt will fail.
 
@@ -230,7 +232,7 @@ Further, if you want to allow others to interact with your contract using the bl
 
 :::info
 
-When verifying a contract with Basescan on testnet (Sepolia), an API key is not required. You can leave the value as `PLACEHOLDER_STRING`. On mainnet, you can get your Basescan API key from [here](https://basescan.org/myapikey) after you sign up for an account.
+Remember, you need an API key from BaseScan to verify your contracts. You can get your API key from [the BaseScan site](https://basescan.org/myapikey) after you sign up for an account.
 
 :::
 
@@ -260,7 +262,7 @@ Details: `Pass - Verified`
 Contract successfully verified
 ```
 
-Search for your contract on [Basescan](https://sepolia.basescan.org/) to confirm it is verified.
+Search for your contract on [BaseScan](https://sepolia.basescan.org/) to confirm it is verified.
 
 :::info
 
@@ -276,13 +278,13 @@ Contract [src/NFT.sol:NFT] "0x71bfCe1172A66c1c25A50b49156FAe45EB56E009" is alrea
 
 ## Interacting with the Smart Contract
 
-If you verified on Basescan, you can use the `Read Contract` and `Write Contract` sections under the `Contract` tab to interact with the deployed contract. To use `Write Contract`, you'll need to connect your wallet first, by clicking the `Connect to Web3` button (sometimes this can be a little finicky, and you'll need to click `Connect` twice before it shows your wallet is successfully connected).
+If you verified on BaseScan, you can use the `Read Contract` and `Write Contract` sections under the `Contract` tab to interact with the deployed contract. To use `Write Contract`, you'll need to connect your wallet first, by clicking the `Connect to Web3` button (sometimes this can be a little finicky, and you'll need to click `Connect` twice before it shows your wallet is successfully connected).
 
-To practice using the `cast` command-line tool which Foundry provides, we'll perform a call without publishing a transaction (a read), then sign and publish a transaction (a write).
+To practice using the `cast` command-line tool which Foundry provides, you'll perform a call without publishing a transaction (a read), then sign and publish a transaction (a write).
 
 ### Performing a call
 
-A key component of the Foundry toolkit, `cast` enables us to interact with contracts, send transactions, and get onchain data using Ethereum RPC calls. First we will perform a call from your account, without publishing a transaction.
+A key component of the Foundry toolkit, `cast` enables us to interact with contracts, send transactions, and get onchain data using Ethereum RPC calls. First you will perform a call from your account, without publishing a transaction.
 
 From the command-line, run:
 
@@ -294,7 +296,7 @@ You should receive `0x0000000000000000000000000000000000000000000000000000000000
 
 ### Signing and publishing a transaction
 
-Now let's sign and publish a transaction, calling the `mint(address)` function on the NFT contract we just deployed.
+Now, sign and publish a transaction, calling the `mint(address)` function on the NFT contract you just deployed.
 
 Run the following command:
 
@@ -304,25 +306,25 @@ cast send <DEPLOYED_ADDRESS> --rpc-url=$BASE_SEPOLIA_RPC "mint(address)" <YOUR_A
 
 :::info
 
-Note that in this `cast send` command, we had to include our private key, but this is not required for `cast call`, because that's for calling view-only contract functions and therefore we don't need to sign anything.
+Note that in this `cast send` command, you had to include your private key, but this is not required for `cast call`, because that's for calling view-only contract functions and therefore you don't need to sign anything.
 
 :::
 
 If successful, Foundry will respond with information about the transaction, including the `blockNumber`, `gasUsed`, and `transactionHash`.
 
-Finally, let's confirm that we did indeed mint ourselves one NFT. If we run the first `cast call` command again, we should see that our balance increased from 0 to 1:
+Finally, let's confirm that you did indeed mint yourself one NFT. If you run the first `cast call` command again, you should see that your balance increased from 0 to 1:
 
 ```bash
 cast call <DEPLOYED_ADDRESS> --rpc-url $BASE_SEPOLIA_RPC "balanceOf(address)" <YOUR_ADDRESS_HERE>
 ```
 
-And the response: `0x0000000000000000000000000000000000000000000000000000000000000001` (`1` in hex) — congratulations, you deployed a contract and minted an NFT with Foundry!
+And the response: `0x0000000000000000000000000000000000000000000000000000000000000001` (`1` in hex) — congratulations, you deployed a contract and minted an NFT with Foundry!
 
 ---
 
 ## Conclusion
 
-Phew, that was a lot! We learned how to setup a project, deploy to Base, and interact with our smart contract using Foundry. The process is the same for real networks, just more expensive — and of course, you'll want to invest time and effort testing your contracts, to reduce the likelihood of user-impacting bugs before deploying.
+Phew, that was a lot! You learned how to setup a project, deploy to Base, and interact with our smart contract using Foundry. The process is the same for real networks, just more expensive — and of course, you'll want to invest time and effort testing your contracts, to reduce the likelihood of user-impacting bugs before deploying.
 
 For all things Foundry, check out the [Foundry book](https://book.getfoundry.sh/), or head to the official Telegram [dev chat](https://t.me/foundry_rs) or [support chat](https://t.me/foundry_support).
 

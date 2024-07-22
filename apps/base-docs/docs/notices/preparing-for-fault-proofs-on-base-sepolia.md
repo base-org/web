@@ -52,8 +52,8 @@ Fault proofs are expected to go live for Base Sepolia (Testnet) in mid-July.
 
 - Withdrawals will involve proving and finalizing based on the fault proof system.
 - Withdrawals will no longer be instantaneous: they will take at least seven days to finalize, but can take longer depending on the outcome of the corresponding dispute game used.
-- The `DisputeGameFactory` will replace the `L2OutputOracle` as the new contract where output root claims will be proposed.
-
+- In addition, the 'DisputeGameFactory' will replace the 'L2OutputOracle' as the new contract for proposing output root statements. This change is part of the broader shift towards the fault proofing system, which is expected to enhance the security and reliability of the platform.
+   
 **If you are in the process of withdrawing your testnet funds from L2 to L1:**
 
 - **Withdrawals _before_ the upgrade in mid-July** will be processed instantaneously.
