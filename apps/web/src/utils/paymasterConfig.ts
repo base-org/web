@@ -2,7 +2,7 @@ import { base, baseSepolia } from "viem/chains";
 import { ENTRYPOINT_ADDRESS_V06 } from "permissionless";
 import { createClient, createPublicClient, http } from "viem";
 import { paymasterActionsEip7677 } from "permissionless/experimental";
-
+import chainId from "apps/web/pages/_app";
 
 export function initializeClient() {
   

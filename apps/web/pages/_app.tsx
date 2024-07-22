@@ -24,7 +24,6 @@ import {
   uniswapWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
-
 import { createConfig, http } from 'wagmi';
 import { Layout, NavigationType } from '../src/components/Layout/Layout';
 import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
@@ -55,7 +54,7 @@ const connectors = connectorsForWallets(
 
 const config = createConfig({
   connectors,
-  chains: [baseSepolia],
+  chains: [mainnet, base, sepolia, baseSepolia],
   transports: {
     [mainnet.id]: http(),
     [base.id]: http(),
