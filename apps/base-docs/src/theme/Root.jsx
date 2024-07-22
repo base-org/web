@@ -28,7 +28,7 @@ import { createClient } from 'viem';
 
 import useSprig from 'base-ui/hooks/useSprig';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import ExperimentsProvider from '../contexts/Experiments';
+import ExperimentsProvider from 'base-ui/contexts/Experiments';
 
 coinbaseWallet.preference = 'all';
 
