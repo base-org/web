@@ -197,10 +197,10 @@ const config = {
         {
           to: '/base-learn/docs/welcome',
           navposition: 'bottomLeft',
-          label: 'Camp',
+          label: 'Learn',
           items: [
             {
-              label: 'Learn',
+              label: 'Smart Contract Dev',
               to: '/base-learn/docs/welcome',
               type: 'custom-dropdownLink',
               eventLabel: 'camp_learn',
