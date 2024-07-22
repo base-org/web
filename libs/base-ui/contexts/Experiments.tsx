@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { Experiment, ExperimentClient } from '@amplitude/experiment-js-client';
 
-import { ampDeploymentKey } from 'apps/web/src/constants';
+import { ampDeploymentKey } from '../constants';
 import logEvent, { AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
 
 type ExperimentsContextProps = {
