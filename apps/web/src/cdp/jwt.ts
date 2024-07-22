@@ -10,6 +10,7 @@ type APIKeyClaims = {
   nbf: number;
   exp: number;
   uri: string;
+  aud: string[];
 };
 
 export async function generateCdpJwt(requestMethod: string, requestPath: string) {
@@ -21,6 +22,7 @@ export async function generateCdpJwt(requestMethod: string, requestPath: string)
     nbf: Math.floor(Date.now() / 1000),
     exp: Math.floor(Date.now() / 1000) + 60,
     uri: uri,
+    aud: ['cb-gpt-api'],
   };
   const key = crypto.createPrivateKey(cdpKeySecret.replace(/\\n/g, '\n'));
 

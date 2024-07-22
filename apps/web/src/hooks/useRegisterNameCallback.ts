@@ -62,7 +62,6 @@ export function useRegisterNameCallback(
         address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
         chainId: USERNAME_CHAIN_ID,
         functionName: isDiscounted ? 'discountedRegister' : 'register',
-        // @ts-expect-error isDiscounted is sufficient guard for discountKey and validationData presence
         args: isDiscounted ? [registerRequest, discountKey, validationData] : [registerRequest],
         value,
       });
