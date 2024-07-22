@@ -10,7 +10,7 @@ import {
 import { Experiment, ExperimentClient } from '@amplitude/experiment-js-client';
 
 import { ampDeploymentKey } from '../constants';
-import logEvent, { AnalyticsEventImportance } from 'libs/base-ui/utils/logEvent';
+import logEvent, { AnalyticsEventImportance } from '../utils/logEvent';
 
 type ExperimentsContextProps = {
   experimentClient: ExperimentClient | null;
