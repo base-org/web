@@ -25,6 +25,7 @@ type ContentTable = {
   category: string;
   created_at: ColumnType<Date, string | undefined, never>;
   is_featured: boolean;
+  updated_at: ColumnType<Date, string | undefined, never>;
   content: JSONColumnType<OcsChallengeCard>;
 };
 
