@@ -6,8 +6,12 @@ import ControlHero from './ControlHero';
 import TreatmentHero from './TreatmentHero';
 
 export default function Hero() {
-  const { getUserVariant } = useExperiments();
+  const { isReady, getUserVariant } = useExperiments();
   const userVariant = getUserVariant('hero-build-onchain-for-less');
+
+  if (!isReady) {
+    return '';
+  }
   if (userVariant === 'treatment') {
     return <TreatmentHero />;
   }
