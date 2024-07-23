@@ -33,7 +33,7 @@ You should be familiar with [Next.js], but do not need to be an expert. If you a
 
 ### Onchain Apps
 
-The tutorial assumes you're comfortable with the basics of deploying an app and connecting it to a smart contract. If you're still learning this part, check out our tutorials in [Base Camp] for [Building an Onchain App].
+The tutorial assumes you're comfortable with the basics of deploying an app and connecting it to a smart contract. If you're still learning this part, check out our tutorials in [Base Learn] for [Building an Onchain App].
 
 ---
 
@@ -177,7 +177,7 @@ In this tutorial, you learned how to use [Fleek] to deploy a [Next.js] site base
 
 ---
 
-[Base Camp]: https://base.org.camp
+[Base Learn]: https://base.org/learn
 [Smart Wallet]: https://www.smartwallet.dev/why
 [Fleek]: https://fleek.xyz
 [Fleek Network]: https://fleek.xyz/blog/announcements/introducing-fleek-network-and-fleek-xyz/

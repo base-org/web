@@ -56,10 +56,10 @@ export default function ResourcesBlock() {
             link="https://docs.base.org/?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
           />
           <ResourcesCard
-            title="Base Camp"
-            description="Learn smart contract development"
+            title="Base Learn"
+            description="Learn smart contract and onchain app development"
             linkText="Learn more"
-            link="https://docs.base.org/base-camp/docs/welcome?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
+            link="https://docs.base.org/base-learn/docs/welcome?utm_source=base&utm_medium=web&utm_campaign=onchainsummer"
           />
           <ResourcesCard
             title="Build Onchain Apps Template"

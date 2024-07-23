@@ -28,7 +28,7 @@ By the end of this tutorial you should be able to:
 
 ### ERC-721 Tokens
 
-This tutorial assumes that you are able to write, test, and deploy your own ERC-721 tokens using the Solidity programming language. If you need to learn that first, check out our content in [Base Camp] or the sections specific to [ERC-721 Tokens]!
+This tutorial assumes that you are able to write, test, and deploy your own ERC-721 tokens using the Solidity programming language. If you need to learn that first, check out our content in [Base Learn] or the sections specific to [ERC-721 Tokens]!
 
 ### Onchain App Development
 
@@ -585,8 +585,8 @@ In this tutorial, you learned how to create [Farcaster] frames. You then updated
 
 ---
 
-[Base Camp]: https://docs.base.org/base-camp/docs/welcome
-[ERC-721 Tokens]: https://docs.base.org/base-camp/docs/erc-721-token/erc-721-standard-video
+[Base Learn]: https://docs.base.org/base-learn/docs/welcome
+[ERC-721 Tokens]: https://docs.base.org/base-learn/docs/erc-721-token/erc-721-standard-video
 [testnet version of Opensea]: https://testnets.opensea.io/
 [Farcaster]: https://www.farcaster.xyz/
 [a-frame-in-100-lines]: https://github.com/Zizzamia/a-frame-in-100-lines

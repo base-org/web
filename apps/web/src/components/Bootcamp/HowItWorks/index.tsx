@@ -35,10 +35,10 @@ const featureItems = [
           <a
             className="underline"
             target="_blank"
-            href="https://docs.base.org/base-camp/docs/welcome"
+            href="https://docs.base.org/base-learn/docs/welcome"
             rel="noreferrer"
           >
-            Base Camp
+            Base Learn
           </a>
           , meeting regularly with your mentor. You’ll build your final project during the final two
           weeks - a real-world, onchain app that you’ll demo virtually on Demo Day.
