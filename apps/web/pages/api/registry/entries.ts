@@ -33,6 +33,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       id: row.id,
       category: row.category,
       content: row.content,
+      updated_at: row.updated_at,
+      created_at: row.created_at,
     })),
     pagination: {
       total_records: totalRecordsCount,

@@ -16,7 +16,7 @@
     "next-env.d.ts",
     "**/*",
     "**/*.json",
-    "../../types/**/*"
+    "../../types/**/*",
   ],
   "exclude": [],
   "references": [
