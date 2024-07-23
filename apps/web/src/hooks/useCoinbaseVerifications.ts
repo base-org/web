@@ -25,7 +25,11 @@ const attestationsOptions = {
 };
 
 export async function getCoinbaseVerifications(address: `0x${string}`) {
-  const attestations = await getAttestations(address, base, attestationsOptions);
+  const attestations = await getAttestations(
+    address,
+    base,
+    attestationsOptions as { schemas: `0x${string}`[] },
+  );
   return attestations.map(({ decodedDataJson, ...rest }) => {
     return {
       ...rest,
