@@ -13,14 +13,18 @@ export default function Hero() {
   const userVariant = getUserVariant(EXPERIMENT_KEY);
 
   if (!isReady) {
-    return (
-      <div className={styles.loadingState}>
-        <div className={styles.loadingStateImg}></div>
-      </div>
-    );
+    return <HeroLoadingState />;
   }
   if (userVariant === 'treatment') {
     return <TreatmentHero />;
   }
   return <ControlHero />;
+}
+
+function HeroLoadingState() {
+  return (
+    <div className={styles.loadingState}>
+      <div className={styles.loadingStateImg}></div>
+    </div>
+  );
 }
