@@ -1,0 +1,29 @@
+.loadingState {
+  height: 650px;
+  background-color: #0052ff;
+}
+
+.loadingStateImg {
+  height: 100%;
+  width: 100%;
+  background-image: url('/assets/images/homepage/hero-background.png');
+  opacity: 0.2;
+}
+
+@media screen and (max-width: 1200px) {
+  .loadingState {
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .loadingState {
+    height: 520px;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .loadingState {
+    height: 500px;
+  }
+}
