@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
-import { PropsWithChildren } from 'react';
+import { Fragment, PropsWithChildren } from 'react';
 
 export enum ModalSizes {
   Medium = 'medium',
@@ -36,7 +36,7 @@ export default function Modal({
   });
 
   const dialogWrapperClasses = classNames(
-    'fixed inset-0 flex w-screen justify-center overflow-y-scroll p-4',
+    'items-center fixed inset-0 flex w-screen justify-center md:p-4',
     {
       'items-center': modalAlign === 'center',
       'items-start': modalAlign === 'top',
@@ -44,48 +44,69 @@ export default function Modal({
   );
 
   const dialogClasses = classNames(
-    'border-gray-40/20 flex h-full w-full flex-col gap-4 rounded-3xl border bg-white p-10 shadow-lg sm:h-auto ',
+    'md:border-gray-40/20 flex h-screen max-h-screen overflow-y-scroll md:h-full w-full flex-col gap-4 md:rounded-3xl md:border bg-white p-6 md:p-10 shadow-lg sm:h-auto ',
     {
       'max-w-lg': size === ModalSizes.Medium,
       'max-w-xl': size === ModalSizes.Large,
-      'mt-20': modalAlign === 'top',
     },
   );
 
   return (
-    <Transition appear show={isOpen}>
-      <Dialog open={isOpen} onClose={onClose} className="relative z-50">
-        {/* The backdrop, rendered as a fixed sibling to the panel container */}
+    <Transition appear show={isOpen} as={Fragment}>
+      <Dialog as="div" className="relative z-50" onClose={onClose}>
+        <Transition.Child
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-illoblack/40" aria-hidden="true" />
+        </Transition.Child>
 
-        <div
-          className="fixed inset-0 transform-gpu bg-illoblack/40 backdrop-blur"
-          aria-hidden="true"
-        />
-
-        <div className={dialogWrapperClasses}>
-          <Dialog.Panel className={dialogClasses} {...rest}>
-            <div className="flex">
-              {onBack && (
-                <button type="button" className="mr-auto text-xl text-[#0A0B0D]" onClick={onBack}>
-                  <Icon name="backArrow" width={14} height={14} color="currentColor" />
-                </button>
-              )}
-              {!!onClose && (
-                <button type="button" className="ml-auto text-xl text-[#0A0B0D]" onClick={onClose}>
-                  <Icon name="close" width={14} height={14} color="currentColor" />
-                </button>
-              )}
-            </div>
-
-            <div className="flex max-w-prose flex-1 flex-col place-content-center place-items-center gap-2">
-              {Boolean(title) && (
-                <Dialog.Title as="h2" className={mainClasses}>
-                  {title}
-                </Dialog.Title>
-              )}
-              {children}
-            </div>
-          </Dialog.Panel>
+        <div className="fixed inset-0 ">
+          <div className={dialogWrapperClasses}>
+            <Transition.Child
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95 translate-y-1/4"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95 translate-y-1/4"
+            >
+              <Dialog.Panel className={dialogClasses} {...rest}>
+                <div className="flex">
+                  {onBack && (
+                    <button
+                      type="button"
+                      className="mr-auto text-xl text-[#0A0B0D]"
+                      onClick={onBack}
+                    >
+                      <Icon name="backArrow" width={14} height={14} color="currentColor" />
+                    </button>
+                  )}
+                  {!!onClose && (
+                    <button
+                      type="button"
+                      className="ml-auto text-xl text-[#0A0B0D]"
+                      onClick={onClose}
+                    >
+                      <Icon name="close" width={14} height={14} color="currentColor" />
+                    </button>
+                  )}
+                </div>
+                <div className="flex max-w-prose flex-1 flex-col place-content-center place-items-center gap-2">
+                  {Boolean(title) && (
+                    <Dialog.Title as="h2" className={mainClasses}>
+                      {title}
+                    </Dialog.Title>
+                  )}
+                  {children}
+                </div>
+              </Dialog.Panel>
+            </Transition.Child>
+          </div>
         </div>
       </Dialog>
     </Transition>
