@@ -91,6 +91,7 @@ const contentSecurityPolicy = {
     'https://ipfs.io', // ipfs ens avatar resolution
     'wss://www.walletlink.org',
     'https://base.easscan.org/graphql',
+    'https://api.guild.xyz/',
     isLocalDevelopment ? 'ws://localhost:3000/' : '',
     isLocalDevelopment ? 'http://localhost:3000/' : '',
   ],
@@ -152,20 +153,20 @@ module.exports = extendBaseConfig(
       defaultLocale: 'en',
     },
     images: {
-        remotePatterns: [
-          {
-            protocol: 'https',
-            hostname: 'i.seadn.io',
-          },
-          {
-            protocol: 'https',
-            hostname: 'ipfs.io',
-          },
-          {
-            protocol: 'https',
-            hostname: 'cf-ipfs.com',
-          },
-        ],
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'i.seadn.io',
+        },
+        {
+          protocol: 'https',
+          hostname: 'ipfs.io',
+        },
+        {
+          protocol: 'https',
+          hostname: 'cf-ipfs.com',
+        },
+      ],
     },
     async headers() {
       return [

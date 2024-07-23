@@ -1,22 +1,32 @@
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
-import { CoinbaseVerificationBadge } from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/Badges';
+import { Badge } from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/Badges';
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
+import { useBaseGuild } from 'apps/web/src/hooks/useBaseGuild';
 import { useCoinbaseVerification } from 'apps/web/src/hooks/useCoinbaseVerifications';
 
 export default function UsernameProfileSectionBadges() {
   const { profileAddress } = useUsernameProfile();
 
   const badges = useCoinbaseVerification(profileAddress);
+  const guildBadges = useBaseGuild(profileAddress);
 
   if (!badges.length) return null;
 
   return (
     <section className="">
       <UsernameProfileSectionTitle title="Verifications" />
-      <ul className="mt-6 flex flex-row gap-8">
+      <ul className="mb-12 mt-6 flex flex-row gap-8">
         {badges.map((badge) => (
           <li key={badge} className="inline-block">
-            <CoinbaseVerificationBadge badge={badge} />
+            <Badge badge={badge} />
+          </li>
+        ))}
+      </ul>
+      <UsernameProfileSectionTitle title="Builder activity" />
+      <ul className="mb-12 mt-6 flex flex-row gap-8">
+        {guildBadges.map((badge) => (
+          <li key={badge} className="inline-block">
+            <Badge badge={badge} />
           </li>
         ))}
       </ul>

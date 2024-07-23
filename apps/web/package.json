@@ -14,6 +14,7 @@
     "@coinbase/cookie-banner": "^1.0.3",
     "@coinbase/cookie-manager": "^1.1.1",
     "@coinbase/onchainkit": "^0.24.4",
+    "@guildxyz/sdk": "2.6.0",
     "@headlessui/react": "^1.7.19",
     "@heroicons/react": "^2.1.3",
     "@next/font": "^13.1.5",
