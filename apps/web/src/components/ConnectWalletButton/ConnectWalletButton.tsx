@@ -1,7 +1,7 @@
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { UserAddress } from 'apps/web/src/components/ConnectWalletButton/UserAddress';
-import { AvatarSizes, UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
+import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
 import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
 import logEvent, {
@@ -110,7 +110,7 @@ export function ConnectWalletButton({
             onKeyUp={openAccountModal}
             type="button"
           >
-            <UserAvatar size={AvatarSizes.Medium} />
+            <UserAvatar />
             <span className={userAddressClasses}>
               <UserAddress address={address} />
             </span>

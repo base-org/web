@@ -3,10 +3,9 @@ import DropdownItem from 'apps/web/src/components/DropdownItem';
 import DropdownMenu from 'apps/web/src/components/DropdownMenu';
 import DropdownToggle from 'apps/web/src/components/DropdownToggle';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 import { BaseName, getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
-import Image from 'next/image';
-
 export enum UsernamePillVariants {
   Inline = 'inline',
   Card = 'card',
@@ -57,16 +56,14 @@ export function UsernamePill({ variant, username, address }: UsernamePillProps) 
 
   return (
     <div className={pillNameClasses}>
-      <figure className={avatarClasses}>
-        <Image
-          src={selectedProfilePicture}
-          priority
-          loading="eager"
-          alt={username}
-          title={username}
-          className="object-fill"
-        />
-      </figure>
+      <ImageWithLoading
+        src={selectedProfilePicture}
+        alt={username}
+        title={username}
+        wrapperClassName={avatarClasses}
+        imageClassName="object-fill"
+        backgroundClassName="bg-blue-500"
+      />
       <span className={userNameClasses}>{username}</span>
       {address && (
         <div className="absolute right-4 top-4">

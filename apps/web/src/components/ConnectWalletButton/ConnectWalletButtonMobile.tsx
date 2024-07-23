@@ -1,7 +1,6 @@
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
-
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { AvatarSizes, UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
+import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { UserAddress } from 'apps/web/src/components/ConnectWalletButton/UserAddress';
 import { useAccount } from 'wagmi';
 
@@ -48,7 +47,7 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
               onKeyUp={openAccountModal}
               type="button"
             >
-              <UserAvatar size={AvatarSizes.Medium} />
+              <UserAvatar />
             </button>
             <UserAddress address={address} />
           </div>

@@ -4,8 +4,12 @@ import Modal from 'apps/web/src/components/Modal';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import { Discount } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
-import Image from 'next/image';
 import Link from 'next/link';
+import cbidVerification from './images/cbid-verification.svg';
+import coinbaseOneVerification from './images/coinbase-one-verification.svg';
+import coinbaseVerification from './images/coinbase-verification.svg';
+import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
+import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 
 function InfoIcon() {
   return (
@@ -52,13 +56,14 @@ export default function RegistrationLearnMoreModal({
           : "You'll receive a name for free (5+ characters for 1 year) if your wallet has any of the following:"}
       </p>
       <ul className="mb-5 flex flex-col gap-3 self-start">
-        <li className="flex items-center">
-          <Image
-            src="/images/usernames/coinbase-verification.svg"
+        <li className="flex items-center gap-3">
+          <ImageWithLoading
+            src={coinbaseVerification as StaticImageData}
             alt="criteria icon"
             width={30}
             height={30}
-            className={classNames(CBRowClasses, 'mr-3')}
+            wrapperClassName="rounded-lg"
+            imageClassName={CBRowClasses}
           />
           <p className={classNames(CBRowClasses)}>Coinbase verification </p>
           <Tooltip content="Verifies you have a valid trading account on Coinbase">
@@ -70,13 +75,14 @@ export default function RegistrationLearnMoreModal({
             </div>
           )}
         </li>
-        <li className="flex items-center">
-          <Image
-            src="/images/usernames/coinbase-one-verification.svg"
+        <li className="flex items-center gap-3">
+          <ImageWithLoading
+            src={coinbaseOneVerification as StaticImageData}
             alt="criteria icon"
             width={30}
             height={30}
-            className={classNames(CB1RowClasses, 'mr-3')}
+            wrapperClassName="rounded-lg"
+            imageClassName={CBRowClasses}
           />
           <p className={classNames(CB1RowClasses)}>Coinbase One verification </p>
           <Tooltip content="Verifies you have an active Coinbase One subscription">
@@ -88,13 +94,14 @@ export default function RegistrationLearnMoreModal({
             </div>
           )}
         </li>
-        <li className="flex items-center">
-          <Image
-            src="/images/usernames/cbid-verification.svg"
+        <li className="flex items-center gap-3">
+          <ImageWithLoading
+            src={cbidVerification as StaticImageData}
             alt="criteria icon"
             width={30}
             height={30}
-            className={classNames(CBIDRowClasses, 'mr-3')}
+            wrapperClassName="rounded-lg"
+            imageClassName={CBRowClasses}
           />
           <p className={classNames(CBIDRowClasses)}>A cb.id username </p>
           <Tooltip content="cb.id claimed prior to cutoff date">
