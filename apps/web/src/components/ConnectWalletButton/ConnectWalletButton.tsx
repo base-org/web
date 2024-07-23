@@ -113,7 +113,7 @@ export function ConnectWalletButton({
 
         return (
           <Wallet>
-            <ConnectWallet withWalletAggregator className="bg-transparent hover:bg-gray-40/20">
+            <ConnectWallet withWalletAggregator className="bg-transparent p-2 hover:bg-gray-40/20">
               <UserAvatar />
               <Name chain={baseSepolia} className={userAddressClasses} />
             </ConnectWallet>
