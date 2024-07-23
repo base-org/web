@@ -1,14 +1,4 @@
-.heroContainer {
-  background-color: #0052ff;
-  width: 100%;
-  margin: 0 auto;
-  padding: 30px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 30px;
-}
-
+.heroContainer,
 .heroContainerMobile {
   background-color: #0052ff;
   width: 100%;
@@ -17,6 +7,13 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+.heroContainer {
+  gap: 30px;
+}
+
+.heroContainerMobile {
   gap: 15px;
 }
 
