@@ -16,8 +16,8 @@
     "next-env.d.ts",
     "**/*",
     "**/*.json",
-    "../../types/**/*"
-, "../../libs/base-ui/contexts"  ],
+    "../../types/**/*",
+  ],
   "exclude": [],
   "references": [
     {
