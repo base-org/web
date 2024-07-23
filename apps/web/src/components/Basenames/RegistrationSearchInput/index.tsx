@@ -207,15 +207,7 @@ export default function RegistrationSearchInput({
 
     // Log invalid
     logEventWithContext('search_available_name_invalid', ActionType.error, { error: message });
-
-    setSearchInputFocused(false);
   }, [invalidWithMessage, logEventWithContext, message, setSearchInputFocused]);
-
-  useEffect(() => {
-    if (!errorCheckingNameAvailability) return;
-
-    setSearchInputFocused(false);
-  }, [errorCheckingNameAvailability, logEventWithContext, setSearchInputFocused]);
 
   return (
     <fieldset

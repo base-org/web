@@ -21,7 +21,7 @@ export default async function GET(request: Request) {
     image: 'TODO', // TODO
     banner_image: 'TODO.png', // TODO
     featured_image: 'TODO.png', // TODO
-    external_link: `${domainName}/names`,
+    external_link: `${domainName}/name`,
     collaborators: [],
   };
 

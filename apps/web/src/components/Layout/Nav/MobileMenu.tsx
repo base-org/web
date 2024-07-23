@@ -176,7 +176,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                   label="Ecosystem"
                 >
                   <DropdownLink href="/ecosystem" label="Apps" />
-                  <DropdownLink href="/names" label="Names" />
+                  <DropdownLink href="/name" label="Names" />
                   <DropdownLink
                     href="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
                     label="Grants"

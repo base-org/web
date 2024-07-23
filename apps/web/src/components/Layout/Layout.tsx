@@ -122,7 +122,7 @@ const BLACK_NAV_PATHS = [
   '/cookie-policy',
   '/third-party-cookies',
   '/onchainsummer',
-  '/names',
+  '/name',
 ];
 
 export function Layout({ children, navigationType }: LayoutProps) {

@@ -49,7 +49,7 @@ export default async function GET(request: Request) {
     image: `${domainName}/api/basenames/${basename}/assets/cardImage.svg`,
 
     // This is the URL that will appear below the asset's image on OpenSea and will allow users to leave OpenSea and view the item on your site.
-    external_url: `${domainName}/names/${basename}`,
+    external_url: `${domainName}/name/${basename}`,
 
     // A human-readable description of the item. Markdown is supported.
     description: `${basename}, a Basename`,

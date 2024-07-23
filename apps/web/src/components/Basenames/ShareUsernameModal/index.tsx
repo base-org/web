@@ -51,8 +51,8 @@ export default function ShareUsernameModal({
 
   const openPopup = (socialPlatform: SocialPlatform) => {
     const socialMediaShareParams: SocialMediaShareParams = {
-      text: `I just got a name from ${socialPlatformHandle[socialPlatform]} during Onchain Summer! You can get yours too at base.org/names`,
-      url: `https://base.org/names/${selectedName}`,
+      text: `I just got a name from ${socialPlatformHandle[socialPlatform]} during Onchain Summer! You can get yours too at base.org/name`,
+      url: `https://base.org/name/${selectedName}`,
     };
     const shareLinkFunction = socialPlatformShareLinkFunction[socialPlatform];
     if (shareLinkFunction) {
@@ -77,7 +77,7 @@ export default function ShareUsernameModal({
       <div className="mt-4 flex w-full flex-col gap-4 rounded-3xl border border-gray-40/20 p-6">
         <p>
           I just got a name from <span className="text-blue-500">@base</span> during Onchain Summer!
-          You can get yours too at <span className="text-blue-500">base.org/names</span>
+          You can get yours too at <span className="text-blue-500">base.org/name</span>
         </p>
         <figure className={coverImageWrapperClasses}>
           <img

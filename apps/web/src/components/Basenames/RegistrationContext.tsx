@@ -38,8 +38,8 @@ export type RegistrationContextProps = {
   setRegistrationStep: Dispatch<SetStateAction<RegistrationSteps>>;
   selectedName: string;
   setSelectedName: Dispatch<SetStateAction<string>>;
-  registerNameTransactionHash: string;
-  setRegisterNameTransactionHash: Dispatch<SetStateAction<string>>;
+  registerNameTransactionHash: `0x${string}` | undefined;
+  setRegisterNameTransactionHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
   loadingDiscounts: boolean;
   discount: DiscountData | undefined;
   allActiveDiscounts: Set<Discount>;
@@ -181,8 +181,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   useEffect(() => {
     if (!selectedName) return;
     logEventWithContext('selected_name', ActionType.change);
-
-    setSearchInputFocused(false);
   }, [logEventWithContext, selectedName]);
 
   const values = useMemo(() => {
