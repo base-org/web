@@ -1925,7 +1925,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@base-org/base-web@workspace:."
   dependencies:
-    "@amplitude/experiment-js-client": ^1.11.0
     "@babel/preset-react": ^7.14.5
     "@graphql-eslint/eslint-plugin": ^3.10.4
     "@linaria/babel-preset": ^4.4.3
@@ -9600,6 +9599,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "base-ui@workspace:libs/base-ui"
   dependencies:
+    "@amplitude/experiment-js-client": ^1.11.0
     "@radix-ui/react-icons": ^1.3.0
     "@radix-ui/react-select": ^1.2.1
     "@sprig-technologies/sprig-browser": ^2.29.0
