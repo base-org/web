@@ -1,11 +1,10 @@
-import { ReactElement, useMemo } from 'react';
+import { CookieBanner } from '@coinbase/cookie-banner';
+import UsernameNav from 'apps/web/src/components/Layout/UsernameNav';
 import localFont from 'next/font/local';
 import { useRouter } from 'next/router';
-import { CookieBanner } from '@coinbase/cookie-banner';
-
-import { Nav } from './Nav/Nav';
+import { ReactElement, useMemo } from 'react';
 import { Footer } from './Footer/Footer';
-import UsernameNav from 'apps/web/src/components/Layout/UsernameNav';
+import { Nav } from './Nav/Nav';
 
 const coinbaseDisplay = localFont({
   src: [

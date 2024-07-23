@@ -1,19 +1,19 @@
 import './global.css';
 
-import '@rainbow-me/rainbowkit/styles.css';
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { WagmiProvider } from 'wagmi';
-import { base, mainnet, baseSepolia, sepolia } from 'wagmi/chains';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { useState, useEffect, useCallback, useRef, ReactNode, ReactElement } from 'react';
-import { AppProps } from 'next/app';
-import { MotionConfig } from 'framer-motion';
 import {
   Provider as CookieManagerProvider,
   Region,
   TrackingCategory,
   TrackingPreference,
 } from '@coinbase/cookie-manager';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import '@rainbow-me/rainbowkit/styles.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { MotionConfig } from 'framer-motion';
+import { AppProps } from 'next/app';
+import { ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { WagmiProvider } from 'wagmi';
+import { base, baseSepolia, mainnet, sepolia } from 'wagmi/chains';
 
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
@@ -24,14 +24,13 @@ import {
   uniswapWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
-import { createConfig, http } from 'wagmi';
-import { Layout, NavigationType } from '../src/components/Layout/Layout';
-import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
-import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
-import useSprig from 'base-ui/hooks/useSprig';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
+import useSprig from 'base-ui/hooks/useSprig';
 import { NextPage } from 'next';
-import { UnknownNodeError } from 'viem';
+import { createConfig, http } from 'wagmi';
+import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
+import { Layout, NavigationType } from '../src/components/Layout/Layout';
+import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
 
 coinbaseWallet.preference = 'all';
 
