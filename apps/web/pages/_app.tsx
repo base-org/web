@@ -25,6 +25,7 @@ import { base, baseSepolia, mainnet, sepolia } from 'wagmi/chains';
 import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
 import { Layout } from '../src/components/Layout/Layout';
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
+import ExperimentsProvider from 'base-ui/contexts/Experiments';
 
 coinbaseWallet.preference = 'all';
 
@@ -115,9 +116,11 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
             <RainbowKitProvider modalSize="compact">
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
+              <ExperimentsProvider>
+                <Layout>
+                  <Component {...pageProps} />
+                </Layout>
+              </ExperimentsProvider>
             </RainbowKitProvider>
           </QueryClientProvider>
         </WagmiProvider>

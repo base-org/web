@@ -28,6 +28,7 @@ import { createClient } from 'viem';
 
 import useSprig from 'base-ui/hooks/useSprig';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import ExperimentsProvider from 'base-ui/contexts/Experiments';
 
 coinbaseWallet.preference = 'all';
 
@@ -204,18 +205,20 @@ export default function Root({ children }) {
           `,
             }}
           />
-          <CookieManagerProvider
-            projectName="base_docs"
-            locale="en"
-            region={Region.DEFAULT}
-            log={console.log}
-            onError={handleLogError}
-            onPreferenceChange={setTrackingPreference}
-            config={cookieManagerConfig}
-          >
-            {children}
-            <CookieBanner companyName="Base" link="/cookie-policy" theme={cookieBannerTheme} />
-          </CookieManagerProvider>
+          <ExperimentsProvider>
+            <CookieManagerProvider
+              projectName="base_docs"
+              locale="en"
+              region={Region.DEFAULT}
+              log={console.log}
+              onError={handleLogError}
+              onPreferenceChange={setTrackingPreference}
+              config={cookieManagerConfig}
+            >
+              {children}
+              <CookieBanner companyName="Base" link="/cookie-policy" theme={cookieBannerTheme} />
+            </CookieManagerProvider>
+          </ExperimentsProvider>
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>

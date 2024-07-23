@@ -16,6 +16,9 @@ const initCCA = (
 ) => {
   let deviceId: string | undefined = deviceIdCookie;
   const trackingAllowed: boolean = trackingPreference?.consent.includes('performance');
+  const amplitudeApiKey: string = isDevelopment
+    ? 'ca92bbcb548f7ec4b8ebe9194b8eda81'
+    : '2b38c7ac93c0dccc83ebf9acc5107413';
 
   if (!trackingAllowed) {
     deviceId = 'base_web_device_id';
@@ -29,9 +32,7 @@ const initCCA = (
 
     init({
       isProd: !isDevelopment,
-      amplitudeApiKey: isDevelopment
-        ? 'ca92bbcb548f7ec4b8ebe9194b8eda81'
-        : '2b38c7ac93c0dccc83ebf9acc5107413',
+      amplitudeApiKey,
       platform: PlatformName.web,
       projectName: 'base_web',
       showDebugLogging: isDevelopment,
