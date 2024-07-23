@@ -5,6 +5,7 @@ import Tooltip from 'apps/web/src/components/Tooltip';
 import { Discount } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function InfoIcon() {
   return (
@@ -110,16 +111,24 @@ export default function RegistrationLearnMoreModal({
         <>
           <p className="mb-6 w-full text-illoblack">
             Your registration will be gasless with{' '}
-            <a href="http://wallet.coinbase.com/smart-wallet" className="underline">
+            <Link
+              href="http://wallet.coinbase.com/smart-wallet"
+              className="underline"
+              target="_blank"
+            >
               a smart wallet
-            </a>
+            </Link>
             .
           </p>
           <div className="text-md bg-backgroundAlternate w-full rounded-xl border border-[#CED2DB] p-4 font-medium text-illoblack">
             Don&apos;t have any of these?{' '}
-            <a href="https://www.coinbase.com/onchain-verify" className="underline">
+            <Link
+              href="https://www.coinbase.com/onchain-verify"
+              className="underline"
+              target="_blank"
+            >
               Get a verification
-            </a>
+            </Link>
           </div>
         </>
       )}
