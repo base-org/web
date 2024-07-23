@@ -46,7 +46,7 @@ By the end of this tutorial you should be able to:
 
 ### ERC-721 Tokens
 
-This tutorial assumes that you are able to write, test, and deploy your own ERC-721 tokens using the Solidity programming language. If you need to learn that first, check out our content in [Base Camp] or the sections specific to [ERC-721 Tokens]!
+This tutorial assumes that you are able to write, test, and deploy your own ERC-721 tokens using the Solidity programming language. If you need to learn that first, check out our content in [Base Learn] or the sections specific to [ERC-721 Tokens]!
 
 ### Vector Art
 
@@ -877,11 +877,11 @@ In this tutorial, you've learned how to take advantage of the fact that offchain
 
 ---
 
-[Base Camp]: https://base.org.camp
-[ERC-721 Tokens]: https://docs.base.org/base-camp/docs/erc-721-token/erc-721-standard-video
+[Base Learn]: https://base.org/learn
+[ERC-721 Tokens]: https://docs.base.org/base-learn/docs/erc-721-token/erc-721-standard-video
 [IPFS]: https://ipfs.tech/
 [Base64]: https://en.wikipedia.org/wiki/Base64
-[Hardhat and Hardhat Deploy]: https://docs.base.org/base-camp/docs/hardhat-deploy/hardhat-deploy-sbs
+[Hardhat and Hardhat Deploy]: https://docs.base.org/base-learn/docs/hardhat-deploy/hardhat-deploy-sbs
 [testnet version of Opensea]: https://testnets.opensea.io/
 [sample project]: https://github.com/base-org/land-sea-and-sky
 [Sample Art]: https://github.com/base-org/land-sea-and-sky/tree/master/Final_SVGs

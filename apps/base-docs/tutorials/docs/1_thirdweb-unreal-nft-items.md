@@ -32,7 +32,7 @@ By the end of this tutorial you should be able to:
 
 ### ERC-721 Tokens
 
-This tutorial assumes that you are able to write, test, and deploy your own ERC-721 tokens using the Solidity programming language. If you need to learn that first, check out our content in [Base Camp] or the sections specific to [ERC-721 Tokens]!
+This tutorial assumes that you are able to write, test, and deploy your own ERC-721 tokens using the Solidity programming language. If you need to learn that first, check out our content in [Base Learn] or the sections specific to [ERC-721 Tokens]!
 
 ### Unreal Engine
 
@@ -40,7 +40,7 @@ This tutorial will cover everything you need to know to accomplish the learning 
 
 ### Onchain Apps
 
-The tutorial assumes you're comfortable with the basics of deploying an app and connecting it to a smart contract. If you're still learning this part, check out our tutorials in [Base Camp] for [Building an Onchain App].
+The tutorial assumes you're comfortable with the basics of deploying an app and connecting it to a smart contract. If you're still learning this part, check out our tutorials in [Base Learn] for [Building an Onchain App].
 
 ---
 
@@ -626,8 +626,8 @@ In this tutorial, you've learned how to set up Thirdweb's engine and use it to c
 
 ---
 
-[Base Camp]: https://base.org.camp
-[ERC-721 Tokens]: https://docs.base.org/base-camp/docs/erc-721-token/erc-721-standard-video
+[Base Learn]: https://base.org/learn
+[ERC-721 Tokens]: https://docs.base.org/base-learn/docs/erc-721-token/erc-721-standard-video
 [OpenZeppelin ERC-721]: https://docs.openzeppelin.com/contracts/2.x/api/token/erc721
 [OpenZeppelin]: https://www.openzeppelin.com/
 [Unreal Engine]: https://www.unrealengine.com/en-US

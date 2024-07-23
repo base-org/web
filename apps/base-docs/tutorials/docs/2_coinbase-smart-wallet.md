@@ -36,7 +36,7 @@ The app you build during this tutorial interacts with the Random Color NFT contr
 
 ### ERC-721 Tokens
 
-This tutorial assumes that you are able to write, test, and deploy your own ERC-721 tokens using the Solidity programming language. If you need to learn that first, check out our content in [Base Camp] or the sections specific to [ERC-721 Tokens]!
+This tutorial assumes that you are able to write, test, and deploy your own ERC-721 tokens using the Solidity programming language. If you need to learn that first, check out our content in [Base Learn] or the sections specific to [ERC-721 Tokens]!
 
 ### Vercel
 
@@ -44,7 +44,7 @@ You'll need to be comfortable deploying your app to [Vercel], or using another s
 
 ### Onchain Apps
 
-The tutorial assumes you're comfortable with the basics of deploying an app and connecting it to a smart contract. If you're still learning this part, check out our tutorials in [Base Camp] for [Building an Onchain App].
+The tutorial assumes you're comfortable with the basics of deploying an app and connecting it to a smart contract. If you're still learning this part, check out our tutorials in [Base Learn] for [Building an Onchain App].
 
 ---
 
@@ -413,9 +413,9 @@ In this tutorial, you've learned how to connect users to your onchain app with t
 
 ---
 
-[Base Camp]: https://base.org.camp
-[ERC-721 Tokens]: https://docs.base.org/base-camp/docs/erc-721-token/erc-721-standard-video
-[Building an Onchain App]: https://docs.base.org/base-camp/docs/frontend-setup/overview
+[Base Learn]: https://base.org/learn
+[ERC-721 Tokens]: https://docs.base.org/base-learn/docs/erc-721-token/erc-721-standard-video
+[Building an Onchain App]: https://docs.base.org/base-learn/docs/frontend-setup/overview
 [Vercel]: https://vercel.com
 [deploying with Vercel]: /tutorials/farcaster-frames-deploy-to-vercel
 [OpenZeppelin ERC-721]: https://docs.openzeppelin.com/contracts/2.x/api/token/erc721

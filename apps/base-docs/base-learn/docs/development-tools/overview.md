@@ -6,7 +6,7 @@ keywords:
 hide_table_of_contents: false
 ---
 
-As the popularity and possibilities of building onchain have increased, so has the number, quality, and ease of setup for a variety of smart contract development environments. Most of the smart contract development content in Base Camp is done in [Remix], an online IDE that allows you to dive right into learning without worrying about setup.
+As the popularity and possibilities of building onchain have increased, so has the number, quality, and ease of setup for a variety of smart contract development environments. Most of the smart contract development content in Base Learn is done in [Remix], an online IDE that allows you to dive right into learning without worrying about setup.
 
 However, the setup of professional tools for local development is far less burdensome than it used to be. [Foundry] and [Hardhat] are two popular choices, both with excellent communities.
 
