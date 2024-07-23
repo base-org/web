@@ -14,7 +14,9 @@ export default async function GET(request: Request) {
   // TODO: Check this works in live/production
   const url = new URL(request.url);
   const domainName = `${url.protocol}//${url.host}`;
-  const tokenId = url.searchParams.get('tokenId');
+  let tokenId = url.searchParams.get('tokenId');
+  if (tokenId?.endsWith('.json')) tokenId = tokenId.slice(0, -5);
+
   const chainId = url.searchParams.get('chainId') ?? base.id;
   const baseDomainName = USERNAME_DOMAINS[Number(chainId)];
 
