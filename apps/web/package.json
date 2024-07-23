@@ -11,6 +11,14 @@
     "update-contributors": "node ./scripts/updateContributors.js && npx prettier ./src/components/CoreContributors/CoreContributors.json -w"
   },
   "dependencies": {
+    "@aws-crypto/sha256-js": "5.2.0",
+    "@aws-sdk/client-kms": "3.514.0",
+    "@aws-sdk/client-s3": "3.514.0",
+    "@aws-sdk/client-sts": "^3.515.0",
+    "@aws-sdk/credential-provider-node": "3.515.0",
+    "@aws-sdk/protocol-http": "3.374.0",
+    "@aws-sdk/signature-v4": "3.374.0",
+    "axios": "1.6.7",
     "@coinbase/cookie-banner": "^1.0.3",
     "@coinbase/cookie-manager": "^1.1.1",
     "@coinbase/onchainkit": "^0.6.0",
