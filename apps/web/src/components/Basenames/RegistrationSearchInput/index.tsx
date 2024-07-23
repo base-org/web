@@ -26,7 +26,7 @@ export default function RegistrationSearchInput({
   variant,
   placeholder,
 }: RegistrationSearchInputProps) {
-  const { ref, focused } = useFocusWithin();
+  const { ref, focused } = useFocusWithin<HTMLFieldSetElement>();
   const { logEventWithContext } = useAnalytics();
   const [search, setSearch] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -166,11 +166,6 @@ export default function RegistrationSearchInput({
 
   const inputId = useId();
 
-  function handleSelectName(name: string) {
-    setDropdownOpen(false);
-    setSelectedName(name.trim());
-  }
-
   useEffect(() => {
     if (!focused) {
       setDropdownOpen(false);
@@ -182,21 +177,30 @@ export default function RegistrationSearchInput({
     }
   }, [focused, valid]);
 
+  const handleSelectName = useCallback(
+    (name: string) => {
+      setDropdownOpen(false);
+      setSelectedName(name.trim());
+    },
+    [setSelectedName],
+  );
+
   const resetSearch = useCallback(() => {
     setSearch('');
   }, []);
 
-  const inputOnFocus = useCallback(() => {
-    setSearchInputFocused(true);
-  }, [setSearchInputFocused]);
-
-  const inputOnBlur = useCallback(() => {
-    setSearchInputFocused(false);
-  }, [setSearchInputFocused]);
+  const onMouseEnterFieldset = useCallback(
+    () => setSearchInputHovered(true),
+    [setSearchInputHovered],
+  );
+  const onMouseLeaveFieldset = useCallback(
+    () => setSearchInputHovered(false),
+    [setSearchInputHovered],
+  );
 
   useEffect(() => {
-    setSearchInputFocused(false);
-  }, [debouncedSearch, setSearchInputFocused]);
+    setSearchInputFocused(focused);
+  }, [focused, setSearchInputFocused]);
 
   useEffect(() => {
     if (!invalidWithMessage) return;
@@ -216,8 +220,8 @@ export default function RegistrationSearchInput({
   return (
     <fieldset
       className={RegistrationSearchInputClasses}
-      onMouseEnter={() => setSearchInputHovered(true)}
-      onMouseLeave={() => setSearchInputHovered(false)}
+      onMouseEnter={onMouseEnterFieldset}
+      onMouseLeave={onMouseLeaveFieldset}
       ref={ref}
     >
       <Input
@@ -226,8 +230,6 @@ export default function RegistrationSearchInput({
         onChange={handleSearchChange}
         placeholder={placeholder}
         className={inputClasses}
-        onFocus={inputOnFocus}
-        onBlur={inputOnBlur}
         id={inputId}
         ref={inputRef}
       />
