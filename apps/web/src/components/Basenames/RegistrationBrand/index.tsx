@@ -26,7 +26,7 @@ export default function RegistrationBrand() {
     <div className="relative flex w-full flex-row">
       <div className="flex items-center items-center gap-1">
         <span
-          className={classNames({
+          className={classNames('pt-[1px]', {
             'text-blue-600': !searchInputFocused,
             'text-white': searchInputFocused,
           })}

@@ -14,7 +14,9 @@ export default async function GET(request: Request) {
   // TODO: Check this works in live/production
   const url = new URL(request.url);
   const domainName = `${url.protocol}//${url.host}`;
-  const tokenId = url.searchParams.get('tokenId');
+  let tokenId = url.searchParams.get('tokenId');
+  if (tokenId?.endsWith('.json')) tokenId = tokenId.slice(0, -5);
+
   const chainId = url.searchParams.get('chainId') ?? base.id;
   const baseDomainName = USERNAME_DOMAINS[Number(chainId)];
 
@@ -47,7 +49,7 @@ export default async function GET(request: Request) {
     image: `${domainName}/api/basenames/${basename}/assets/cardImage.svg`,
 
     // This is the URL that will appear below the asset's image on OpenSea and will allow users to leave OpenSea and view the item on your site.
-    external_url: `${domainName}/names/${basename}`,
+    external_url: `${domainName}/name/${basename}`,
 
     // A human-readable description of the item. Markdown is supported.
     description: `${basename}, a Basename`,

@@ -8,7 +8,7 @@ import {
   registrationTransitionDuration,
   useRegistration,
 } from 'apps/web/src/components/Basenames/RegistrationContext';
-import { RegistrationForm } from 'apps/web/src/components/Basenames/RegistrationForm';
+import RegistrationForm from 'apps/web/src/components/Basenames/RegistrationForm';
 import RegistrationProfileForm from 'apps/web/src/components/Basenames/RegistrationProfileForm';
 import RegistrationSearchInput, {
   RegistrationSearchInputVariant,

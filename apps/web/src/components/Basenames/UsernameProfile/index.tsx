@@ -4,10 +4,18 @@ import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernamePr
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
+import { useRouter } from 'next/navigation';
+import { formatBaseEthDomain, USERNAME_DOMAIN } from 'apps/web/src/utils/usernames';
 
 export default function UsernameProfile() {
   const { profileAddress, profileUsername, profileAddressIsLoading } = useUsernameProfile();
   const { logEventWithContext } = useAnalytics();
+  const router = useRouter();
+
+  if (!profileUsername.endsWith(USERNAME_DOMAIN)) {
+    router.push(formatBaseEthDomain(profileUsername));
+  }
+
   if (profileAddressIsLoading) {
     logEventWithContext('page_loading', ActionType.render);
 

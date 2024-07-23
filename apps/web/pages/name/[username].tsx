@@ -24,7 +24,7 @@ export function Username({ domain }: { domain: string }) {
   return (
     <>
       <Head>
-        <title>Base | Usernames | {formattedUsername}</title>
+        <title>Basenames | {formattedUsername}</title>
         <meta property="og:image" content={ogImageUrl} />
         <meta property="og:image:secure_url" content={ogImageUrl} />
         <meta property="og:image:type" content={openGraphImageType} />

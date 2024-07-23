@@ -1,21 +1,12 @@
 import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
-import Image from 'next/image';
+import { StaticImageData } from 'next/image';
 import { mainnet } from 'wagmi/chains';
 import { getUserNamePicture } from 'apps/web/src/utils/usernames';
-import classNames from 'classnames';
-import { useCallback, useState } from 'react';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
+import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 
-export enum AvatarSizes {
-  Medium,
-  None,
-}
-
-type UserAvatarProps = { size?: AvatarSizes };
-
-export function UserAvatar({ size = AvatarSizes.None }: UserAvatarProps) {
+export function UserAvatar() {
   const { address } = useAccount();
-  const [avatarImageIsLoading, setAvatarImageIsLoading] = useState<boolean>(true);
   const { data: ensName, isLoading: ensNameIsLoading } = useEnsName({
     address,
     chainId: mainnet.id,
@@ -32,38 +23,22 @@ export function UserAvatar({ size = AvatarSizes.None }: UserAvatarProps) {
     address,
   });
 
-  const onLoadAvatar = useCallback(() => {
-    setAvatarImageIsLoading(false);
-  }, []);
-
   const deterministicName = baseEnsName ?? ensName ?? address ?? 'default-avatar';
   const defaultSelectedProfilePicture = getUserNamePicture(deterministicName);
   const avatar = ensAvatar ?? defaultSelectedProfilePicture;
 
-  const isLoading =
-    ensNameIsLoading || ensAvatarIsLoading || avatarImageIsLoading || baseEnsNameIsLoading;
-
-  const figureClasses = classNames('bg-blue-500', {
-    'h-[2rem] max-h-[2rem] min-h-[2rem] w-[2rem] min-w-[2rem] max-w-[2rem] rounded-full overflow-hidden':
-      size === AvatarSizes.Medium,
-    'animate-pulse': isLoading,
-  });
-
-  const avatarClasses = classNames('transition-opacity duration-500 ', {
-    'opacity-0': isLoading,
-    'opacity-100': !isLoading,
-  });
+  const isLoading = ensNameIsLoading || ensAvatarIsLoading || baseEnsNameIsLoading;
 
   return (
-    <figure className={figureClasses}>
-      <Image
-        src={avatar}
-        className={avatarClasses}
-        alt="Avatar"
-        onLoad={onLoadAvatar}
-        width={48}
-        height={48}
-      />
-    </figure>
+    <ImageWithLoading
+      src={avatar as StaticImageData}
+      alt="Avatar"
+      wrapperClassName="rounded-full"
+      backgroundClassName="bg-blue-500"
+      imageClassName="group-hover:rotate-[-1deg] group-hover:scale-105"
+      width={32}
+      height={32}
+      forceIsLoading={isLoading}
+    />
   );
 }

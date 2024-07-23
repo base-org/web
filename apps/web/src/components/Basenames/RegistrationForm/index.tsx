@@ -37,7 +37,7 @@ function formatUsdPrice(price: bigint, ethUsdPrice: number) {
   return parsed;
 }
 
-export function RegistrationForm() {
+export default function RegistrationForm() {
   const { openConnectModal } = useConnectModal();
   const { logEventWithContext } = useAnalytics();
   const {
@@ -144,11 +144,11 @@ export function RegistrationForm() {
               </button>
             </div>
           </div>
-          <div>
+          <div className="min-w-[14rem] text-left">
             <p className="text-line mb-2 text-sm font-bold uppercase">Amount</p>
-            <div className="flex items-baseline justify-center md:justify-between">
+            <div className="flex items-baseline justify-start gap-4">
               {discountedPrice !== undefined ? (
-                <div className="mr-2 flex flex-row items-baseline justify-around gap-2">
+                <div className=" flex flex-row items-baseline justify-around gap-2">
                   <p className="whitespace-nowrap text-3xl text-black line-through">
                     {formatEtherPrice(initialPrice)}
                   </p>
@@ -157,7 +157,7 @@ export function RegistrationForm() {
                   </p>
                 </div>
               ) : (
-                <p className="mr-2 whitespace-nowrap text-3xl text-black">
+                <p className=" whitespace-nowrap text-3xl text-black">
                   {formatEtherPrice(price)} ETH
                 </p>
               )}

@@ -17,7 +17,7 @@ export default function DropdownItem({ children, copyValue, onClick }: DropdownI
   const timer = useRef<NodeJS.Timeout>();
 
   const dropdownItemClasses = classNames(
-    'px-4 py-2 hover:bg-gray-90/50 max-w-full text-ellipsis truncate w-full text-left',
+    'px-4 py-2 hover:bg-gray-10 max-w-full text-ellipsis truncate w-full text-left',
     {
       'cursor-pointer': onClick,
     },

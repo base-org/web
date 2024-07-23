@@ -182,7 +182,7 @@ export function FloatingENSPills() {
     >
       {pills.map(({ avatar, name, x, y, transform }, i) => (
         <Pill
-          key={`${x}-${y}`}
+          key={name}
           avatar={avatar}
           name={name}
           isBlurred={blurredIndices[i]}
