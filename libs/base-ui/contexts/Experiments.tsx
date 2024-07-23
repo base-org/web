@@ -1,9 +1,4 @@
-declare const window: Window &
-  typeof globalThis & {
-    ClientAnalytics: unknown;
-  };
-
-import {
+import React, {
   createContext,
   useContext,
   useEffect,
@@ -17,15 +12,7 @@ import { Experiment, ExperimentClient } from '@amplitude/experiment-js-client';
 import { ampDeploymentKey } from '../constants';
 import logEvent, { AnalyticsEventImportance } from '../utils/logEvent';
 
-type ExperimentsContextProps = {
-  experimentClient: ExperimentClient | null;
-  isReady: boolean;
-  getUserVariant: (flagKey: string) => string;
-};
-
-type ExperimentsProviderProps = {
-  children: ReactNode;
-};
+declare const window: WindowWithAnalytics;
 
 const ExperimentsContext = createContext<ExperimentsContextProps>({
   experimentClient: null,
@@ -36,13 +23,7 @@ const ExperimentsContext = createContext<ExperimentsContextProps>({
 const experimentClient = Experiment.initialize(ampDeploymentKey, {
   exposureTrackingProvider: {
     track: (exposure) => {
-      logEvent(
-        '$exposure',
-        {
-          ...exposure,
-        },
-        AnalyticsEventImportance.high,
-      );
+      logEvent('$exposure', exposure, AnalyticsEventImportance.high);
     },
   },
   userProvider: {
@@ -65,10 +46,9 @@ export default function ExperimentsProvider({ children }: ExperimentsProviderPro
     async function startExperiments() {
       try {
         await experimentClient.start();
+        setIsReady(true);
       } catch (exception) {
         console.log(`Error starting experiments for ${ampDeploymentKey}:`, exception);
-      } finally {
-        setIsReady(true);
       }
     }
     void startExperiments();
@@ -105,3 +85,26 @@ const useExperiments = () => {
 };
 
 export { useExperiments };
+
+type WindowWithAnalytics = Window &
+  typeof globalThis & {
+    ClientAnalytics: {
+      identity: {
+        userId: string;
+        deviceId: string;
+        device_os: string;
+        languageCode: string;
+        countryCode: string;
+      };
+    };
+  };
+
+type ExperimentsContextProps = {
+  experimentClient: ExperimentClient | null;
+  isReady: boolean;
+  getUserVariant: (flagKey: string) => string;
+};
+
+type ExperimentsProviderProps = {
+  children: ReactNode;
+};
