@@ -26,14 +26,13 @@
   text-transform: uppercase;
 }
 
-.ctaButton {
-  margin-top: 15px;
-  height: 44px;
-  width: 164px;
-  background-color: white;
-  color: #1d1818;
-  font-size: 16px;
-  font-family: CoinbaseMono;
-  font-weight: 500;
-  text-align: center;
+@media screen and (max-width: 610px) {
+  .heroTextContainer {
+    height: 300px;
+    width: 300px;
+  }
+  .heroText {
+    font-size: var(--display2-font-size);
+    line-height: var(--display2-line-height);
+  }
 }

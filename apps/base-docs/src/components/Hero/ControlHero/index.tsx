@@ -1,4 +1,6 @@
 import React from 'react';
+
+import HeroButton from '../HeroButton';
 import styles from './styles.module.css';
 
 export default function ControlHero() {
@@ -8,9 +10,7 @@ export default function ControlHero() {
         <div className={styles.heroTextContainer}>
           <h1 className={styles.heroText}>EVERYTHING YOU NEED TO BUILD ONCHAIN</h1>
         </div>
-        <button className={styles.ctaButton}>
-          <a href="/docs">LEARN MORE</a>
-        </button>
+        <HeroButton />
       </div>
     </header>
   );
