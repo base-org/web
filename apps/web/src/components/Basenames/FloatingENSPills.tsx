@@ -83,11 +83,12 @@ const Pill = forwardRef(
     const { searchInputFocused, searchInputHovered } = useRegistration();
 
     const pillClasses = classNames(
-      'absolute flex gap-3 items-center justify-center rounded-full px-4 py-3 border opacity-60',
+      'absolute flex  items-center justify-center rounded-full border opacity-60',
       'transition-all duration-500',
-      // Default
-      'border-[#d9dce2] background-[#f5f6f8] text-[#666]',
-
+      'border-[#d9dce2] text-[#666]',
+      'px-2 py-2 gap-2 text-sm',
+      'sm:px-3 sm:py-2 sm:gap-2 sm:text-sm',
+      'md:px-4 md:py-3 md:gap-3 md:text-base',
       {
         'blur-sm': isBlurred,
         'bg-blue-600/10 border-blue-600/20 text-blue-600':
@@ -100,18 +101,19 @@ const Pill = forwardRef(
       <div ref={ref} className={pillClasses} style={{ top: `${y}px`, left: `${x}px`, transform }}>
         <Image
           src={avatar}
-          className="rounded-full"
+          className="flex-shrink-0 rounded-full"
           alt={`${name}-avatar`}
           quality={1}
           priority
           width={34}
           height={34}
         />
-        <p>{name}.base.eth</p>
+        <p className="max-w-[calc(100%-20px)] truncate">{name}.base.eth</p>
       </div>
     );
   },
 );
+
 Pill.displayName = 'Pill';
 
 const X_VECTOR_SCALER = 0.4;
