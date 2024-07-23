@@ -77,6 +77,10 @@ a.chartLegend:hover {
     justify-content: flex-end;
 }
 
+.chartColumnName {
+    margin-bottom: 5px;
+}
+
 
 @media screen and (max-width: 610px) {
     .chartColumnValue {

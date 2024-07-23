@@ -43,7 +43,7 @@ function ChartColumn({ columnData, columnHeight, displayType }: ChartColumnProps
     <div className={styles.chartColumnContainer}>
       <div className={styles.chartColumnValue}>{columnData.value}</div>
       <div style={{ height: `${columnHeight}%` }} className={styles[displayType]}>
-        {columnData.name.toUpperCase()}
+        <div className={styles.chartColumnName}>{columnData.name.toUpperCase()}</div>
       </div>
     </div>
   );
