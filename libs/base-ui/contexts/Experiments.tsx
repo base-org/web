@@ -1,3 +1,8 @@
+declare const window: Window &
+  typeof globalThis & {
+    ClientAnalytics: unknown;
+  };
+
 import {
   createContext,
   useContext,
