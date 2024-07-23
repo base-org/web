@@ -1,6 +1,9 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
-import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
+import {
+  registrationTransitionDuration,
+  useRegistration,
+} from 'apps/web/src/components/Basenames/RegistrationContext';
 import UsernameDescriptionField from 'apps/web/src/components/Basenames/UsernameDescriptionField';
 import UsernameKeywordsField from 'apps/web/src/components/Basenames/UsernameKeywordsField';
 import UsernameTextRecordInlineField from 'apps/web/src/components/Basenames/UsernameTextRecordInlineField';
@@ -33,6 +36,7 @@ export enum FormSteps {
 
 export default function RegistrationProfileForm() {
   const [currentFormStep, setCurrentFormStep] = useState<FormSteps>(FormSteps.Description);
+  const [transitionStep, setTransitionStep] = useState<boolean>(false);
   const { selectedName } = useRegistration();
   const { address } = useAccount();
   const router = useRouter();
@@ -127,15 +131,29 @@ export default function RegistrationProfileForm() {
     });
   }, []);
 
+  const transitionFormOpacity = useCallback((callbackFunction: () => void) => {
+    // Hide the form
+    setTransitionStep(true);
+
+    setTimeout(() => {
+      // Display the next step
+      callbackFunction();
+      setTimeout(() => {
+        // Show the form
+        setTransitionStep(false);
+      }, 700);
+    }, 700);
+  }, []);
+
   const onClickSave = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
       if (currentFormStep === FormSteps.Description) {
-        setCurrentFormStep(FormSteps.Socials);
+        transitionFormOpacity(() => setCurrentFormStep(FormSteps.Socials));
       }
 
       if (currentFormStep === FormSteps.Socials) {
-        setCurrentFormStep(FormSteps.Keywords);
+        transitionFormOpacity(() => setCurrentFormStep(FormSteps.Keywords));
       }
 
       if (currentFormStep === FormSteps.Keywords) {
@@ -160,7 +178,15 @@ export default function RegistrationProfileForm() {
 
       event.preventDefault();
     },
-    [currentFormStep, logEventWithContext, router, selectedName, textRecords, writeTextRecords],
+    [
+      currentFormStep,
+      logEventWithContext,
+      router,
+      selectedName,
+      textRecords,
+      transitionFormOpacity,
+      writeTextRecords,
+    ],
   );
 
   const onChangeTextRecord = useCallback(
@@ -171,7 +197,9 @@ export default function RegistrationProfileForm() {
   );
 
   const formClasses = classNames(
-    'flex flex-col justify-between gap-4 text-gray-60 md:items-center rounded-3xl shadow-xl p-8',
+    'flex flex-col justify-between gap-4 text-gray-60 md:items-center rounded-3xl shadow-xl p-8 transition-all',
+    registrationTransitionDuration,
+    { 'opacity-0': transitionStep, 'opacity-100': !transitionStep },
   );
 
   const descriptionLabelChildren = (
@@ -218,7 +246,7 @@ export default function RegistrationProfileForm() {
   }, [currentFormStep, logEventWithContext]);
 
   return (
-    <form className={formClasses}>
+    <form className={formClasses} onTransitionEnd={() => setTransitionStep(false)}>
       {currentFormStep === FormSteps.Description && (
         <UsernameDescriptionField
           labelChildren={descriptionLabelChildren}
