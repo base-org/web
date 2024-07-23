@@ -41,7 +41,7 @@ You'll need to be comfortable deploying your app to [Vercel], or using another s
 
 ### Onchain Apps
 
-The tutorial assumes you're comfortable with the basics of deploying an app and connecting it to a smart contract. If you're still learning this part, check out our tutorials in [Base Camp] for [Building an Onchain App].
+The tutorial assumes you're comfortable with the basics of deploying an app and connecting it to a smart contract. If you're still learning this part, check out our tutorials in [Base Learn] for [Building an Onchain App].
 
 ---
 
@@ -417,8 +417,8 @@ In this tutorial, you've learned how to build an experience using the [Zora Prot
 
 ---
 
-[Base Camp]: https://base.org.camp
-[Building an Onchain App]: https://docs.base.org/base-camp/docs/frontend-setup/overview
+[Base Learn]: https://base.org/learn
+[Building an Onchain App]: https://docs.base.org/base-learn/docs/frontend-setup/overview
 [Vercel]: https://vercel.com
 [deploying with Vercel]: /tutorials/farcaster-frames-deploy-to-vercel
 [OpenZeppelin ERC-721]: https://docs.openzeppelin.com/contracts/2.x/api/token/erc721

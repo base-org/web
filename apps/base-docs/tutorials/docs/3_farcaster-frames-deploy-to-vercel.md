@@ -166,7 +166,7 @@ In this tutorial, you learned how to deploy a frame with [Vercel] and take advan
 
 ---
 
-[Base Camp]: https://docs.base.org/base-camp/docs/welcome
+[Base Learn]: https://docs.base.org/base-learn/docs/welcome
 [Farcaster]: https://www.farcaster.xyz/
 [a-frame-in-100-lines]: https://github.com/Zizzamia/a-frame-in-100-lines
 [Vercel]: https://vercel.com

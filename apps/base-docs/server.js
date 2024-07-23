@@ -50,11 +50,19 @@ app.post('/api/rateMessage', (req, res) => {
 });
 
 app.get('/base-camp', (req, res) => {
-  res.redirect('/base-camp/docs/welcome');
+  res.redirect('/base-learn/docs/welcome');
+});
+
+app.get('/base-learn', (req, res) => {
+  res.redirect('/base-learn/docs/welcome');
 });
 
 app.get('/basecamp', (req, res) => {
-  res.redirect('/base-camp/docs/welcome');
+  res.redirect('/base-learn/docs/welcome');
+});
+
+app.get('/baselearn', (req, res) => {
+  res.redirect('/base-learn/docs/welcome');
 });
 
 app.get('/using-base', (req, res) => {

@@ -27,11 +27,11 @@ const imageCards = [
   },
   {
     src: '/img/home-intro-2.png',
-    title: 'Base Camp',
+    title: 'Base Learn',
     description:
       'Become an onchain developer with our comprehensive smart contract development curriculum.',
     buttonText: 'Explore',
-    buttonHref: '/base-camp/docs/welcome',
+    buttonHref: '/base-learn/docs/welcome',
     analyticsData: {
       name: 'camp_bootcamp',
       event: {

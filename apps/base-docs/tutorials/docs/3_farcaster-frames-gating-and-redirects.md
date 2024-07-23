@@ -247,7 +247,7 @@ In this tutorial, you learned how to use the main features of Frames - text inpu
 
 ---
 
-[Base Camp]: https://docs.base.org/base-camp/docs/welcome
+[Base Learn]: https://docs.base.org/base-learn/docs/welcome
 [Farcaster]: https://www.farcaster.xyz/
 [a-frame-in-100-lines]: https://github.com/Zizzamia/a-frame-in-100-lines
 [OnchainKit]: https://github.com/coinbase/onchainkit
