@@ -1,9 +1,9 @@
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
-import { UserAddress } from 'apps/web/src/components/ConnectWalletButton/UserAddress';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
 import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
+import { baseSepolia } from 'wagmi/chains';
 import logEvent, {
   ActionType,
   AnalyticsEventImportance,
@@ -13,6 +13,14 @@ import logEvent, {
 import classNames from 'classnames';
 import { useCallback, useEffect } from 'react';
 import { useAccount } from 'wagmi';
+import {
+  ConnectWallet,
+  Wallet,
+  WalletDropdown,
+  WalletDropdownLink,
+  WalletDropdownDisconnect,
+} from '@coinbase/onchainkit/wallet';
+import { Name, Identity, EthBalance } from '@coinbase/onchainkit/identity';
 
 export enum ConnectWalletButtonVariants {
   Default,
@@ -52,7 +60,7 @@ export function ConnectWalletButton({
       );
       identify({ userId: address });
     }
-  }, [address]);
+  }, [address, connector?.name]);
 
   const clickConnect = useCallback(() => {
     openConnectModal?.();
@@ -74,7 +82,7 @@ export function ConnectWalletButton({
 
   return (
     <ConnectButton.Custom>
-      {({ account, chain, openAccountModal, openChainModal, mounted }) => {
+      {({ account, chain, openChainModal, mounted }) => {
         const ready = mounted;
         const connected = ready && account && chain;
 
@@ -104,17 +112,23 @@ export function ConnectWalletButton({
         }
 
         return (
-          <button
-            className={`flex cursor-pointer items-center gap-2 ${className}`}
-            onClick={openAccountModal}
-            onKeyUp={openAccountModal}
-            type="button"
-          >
-            <UserAvatar />
-            <span className={userAddressClasses}>
-              <UserAddress address={address} />
-            </span>
-          </button>
+          <Wallet>
+            <ConnectWallet withWalletAggregator className="bg-transparent hover:bg-gray-40/20">
+              <UserAvatar />
+              <Name chain={baseSepolia} className={userAddressClasses} />
+            </ConnectWallet>
+            <WalletDropdown>
+              <Identity className={classNames('px-4 pb-2 pt-3', className)} hasCopyAddressOnClick>
+                <UserAvatar />
+                <Name chain={baseSepolia} />
+                <EthBalance />
+              </Identity>
+              <WalletDropdownLink icon="wallet" href="https://wallet.coinbase.com">
+                Go to Wallet Dashboard
+              </WalletDropdownLink>
+              <WalletDropdownDisconnect />
+            </WalletDropdown>
+          </Wallet>
         );
       }}
     </ConnectButton.Custom>

@@ -53,7 +53,7 @@ module.exports = {
         90: '#1E2025',
         100: '#0A0B0D',
         dark: '#0F1012',
-        muted: '#8A919E'
+        muted: '#8A919E',
       },
       green: {
         0: '#F5FFFB',

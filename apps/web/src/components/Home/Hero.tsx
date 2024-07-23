@@ -112,10 +112,10 @@ export function Hero() {
             <div className="flex flex-col space-y-6">
               <div className="flex flex-col items-center gap-2 pt-7 md:flex-row">
                 <Link className="w-full" href={docsUrl} target="_blank" rel="noreferrer noopener">
-                  <Button className="w-full">Read the docs</Button>
+                  <Button fullWidth>Read the docs</Button>
                 </Link>
                 <Link className="w-full" href={bridgeUrl} rel="noreferrer noopener">
-                  <Button className="w-full" variant={ButtonVariants.Secondary}>
+                  <Button fullWidth variant={ButtonVariants.Secondary}>
                     Bridge assets
                   </Button>
                 </Link>
