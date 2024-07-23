@@ -215,6 +215,42 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@amplitude/analytics-connector@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "@amplitude/analytics-connector@npm:1.5.0"
+  checksum: 157115b642e8b254a88184fe3294150321fdd482388f262bdc08f9ab0c68b01b5f10d2e35a924edb8a8380f0944f8b1363133c2a3f42b59e33da319bfe21c8fa
+  languageName: node
+  linkType: hard
+
+"@amplitude/experiment-core@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "@amplitude/experiment-core@npm:0.8.0"
+  dependencies:
+    js-base64: ^3.7.5
+  checksum: 2e2c28f187b4f8072fe30589af95378c220917e949ae8a4c444dd8a6fdbe8bd9c8d0d105808b37e5e5fd59f16cbfa486c66f60847c211a0e424c6e7deb1693aa
+  languageName: node
+  linkType: hard
+
+"@amplitude/experiment-js-client@npm:^1.11.0":
+  version: 1.11.0
+  resolution: "@amplitude/experiment-js-client@npm:1.11.0"
+  dependencies:
+    "@amplitude/analytics-connector": ^1.5.0
+    "@amplitude/experiment-core": ^0.8.0
+    "@amplitude/ua-parser-js": ^0.7.31
+    base64-js: 1.5.1
+    unfetch: 4.1.0
+  checksum: bc7ee5a521248ac83903b079fa61c7a884a3e27bd3573e4cedbb9f455ebe7af1e6fdc16a3e62988bf807ab9d74319de729fde78c42d4b0825f7c1a52d7753ff1
+  languageName: node
+  linkType: hard
+
+"@amplitude/ua-parser-js@npm:^0.7.31":
+  version: 0.7.33
+  resolution: "@amplitude/ua-parser-js@npm:0.7.33"
+  checksum: b08ce4cd4e96fed9eebffadb4060d24751cea80caf4265e6b829b7cfdb6561431386015674b3ac330a8987b990e2ca70725d4298eb1438beccb85264848b0b34
+  languageName: node
+  linkType: hard
+
 "@ampproject/remapping@npm:^2.2.0":
   version: 2.2.1
   resolution: "@ampproject/remapping@npm:2.2.1"
@@ -9563,6 +9599,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "base-ui@workspace:libs/base-ui"
   dependencies:
+    "@amplitude/experiment-js-client": ^1.11.0
     "@radix-ui/react-icons": ^1.3.0
     "@radix-ui/react-select": ^1.2.1
     "@sprig-technologies/sprig-browser": ^2.29.0
@@ -9582,7 +9619,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"base64-js@npm:^1.3.1":
+"base64-js@npm:1.5.1, base64-js@npm:^1.3.1":
   version: 1.5.1
   resolution: "base64-js@npm:1.5.1"
   checksum: 669632eb3745404c2f822a18fc3a0122d2f9a7a13f7fb8b5823ee19d1d2ff9ee5b52c53367176ea4ad093c332fd5ab4bd0ebae5a8e27917a4105a4cfc86b1005
@@ -16232,6 +16269,13 @@ __metadata:
     "@sideway/formula": ^3.0.1
     "@sideway/pinpoint": ^2.0.0
   checksum: 3a4e9ecba345cdafe585e7ed8270a44b39718e11dff3749aa27e0001a63d578b75100c062be28e6f48f960b594864034e7a13833f33fbd7ad56d5ce6b617f9bf
+  languageName: node
+  linkType: hard
+
+"js-base64@npm:^3.7.5":
+  version: 3.7.7
+  resolution: "js-base64@npm:3.7.7"
+  checksum: d1b02971db9dc0fd35baecfaf6ba499731fb44fe3373e7e1d6681fbd3ba665f29e8d9d17910254ef8104e2cb8b44117fe4202d3dc54c7cafe9ba300fe5433358
   languageName: node
   linkType: hard
 
@@ -23079,6 +23123,13 @@ __metadata:
     node-fetch-native: ^1.4.1
     pathe: ^1.1.1
   checksum: 8118260ac7be8d13f99ebb5ca6a40203cf64cc592142753c1a1f75d40b07398c3208430d9a0299573cef3e4f2eba3bf6735901ff4217583df8344b2491314fb0
+  languageName: node
+  linkType: hard
+
+"unfetch@npm:4.1.0":
+  version: 4.1.0
+  resolution: "unfetch@npm:4.1.0"
+  checksum: 8a0fee1e0f6ad8b3a2966fa199d07716affc3682d8e1c2c0cc138e5e5d2a2e0627d8c3321a4529a79e8a58332955bf80ac6c018f1dcc6de652026a7c3257d726
   languageName: node
   linkType: hard
 
