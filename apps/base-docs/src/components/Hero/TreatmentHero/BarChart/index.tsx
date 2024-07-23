@@ -28,11 +28,9 @@ export default function BarChart() {
         <div className={styles.chartLegend}>
           Avg Cost Per Transaction, 90D Moving Avg, 18 July 2024
         </div>
-        <div className={styles.chartLegend}>
-          <a className={styles.chartLegend} href="https://l2beat.com/scaling/costs" target="_blank">
-            Source: L2Beat
-          </a>
-        </div>
+        <a className={styles.chartLegend} href="https://l2beat.com/scaling/costs" target="_blank">
+          Source: L2Beat
+        </a>
       </div>
     </div>
   );
@@ -41,7 +39,7 @@ export default function BarChart() {
 function ChartColumn({ columnData, columnHeight, displayType }: ChartColumnProps) {
   return (
     <div className={styles.chartColumnContainer}>
-      <div className={styles.chartColumnValue}>{columnData.value}</div>
+      <div className={styles.chartColumnValue}>${columnData.value}</div>
       <div style={{ height: `${columnHeight}%` }} className={styles[displayType]}>
         <div className={styles.chartColumnName}>{columnData.name.toUpperCase()}</div>
       </div>

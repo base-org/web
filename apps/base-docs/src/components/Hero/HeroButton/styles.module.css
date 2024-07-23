@@ -11,7 +11,7 @@
 }
 
 .ctaButton:hover {
-  text-decoration: underline;
+  background-color: #EFF2F9;
   cursor: pointer;
 }
 

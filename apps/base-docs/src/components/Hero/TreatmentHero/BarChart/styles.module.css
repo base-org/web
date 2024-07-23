@@ -9,14 +9,17 @@
 .chartLegendContainer {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  margin-top: 5px;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 .chartLegend {
   color: white;
   font-size: 11px;
+  line-height: 15px;
   font-family: CoinbaseText;
+  margin-right: 20px;
 }
 
 a.chartLegend:hover {
@@ -35,7 +38,7 @@ a.chartLegend:hover {
 
 .chartColumnValue {
   padding-left: 15px;
-  color: #ffffff50;
+  color: #80a8ff;
   font-size: 25px;
   font-weight: 400;
   font-family: CoinbaseDisplay;
@@ -74,11 +77,11 @@ a.chartLegend:hover {
   .chartColumnValue {
     font-size: 15px;
   }
-  .chartLegend {
-    font-size: 10px;
-  }
   .ctaText {
     width: 325px;
+  }
+  .chartColumnValue {
+    padding-left: 5px;
   }
   .chartColumnBase,
   .chartColumnEven,
@@ -87,5 +90,14 @@ a.chartLegend:hover {
   }
   .chartColumnName {
     margin: 5px auto;
+  }
+  .chartLegendContainer {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+  }
+  .chartLegend {
+    font-size: 10px;
+    line-height: 12px;
   }
 }
