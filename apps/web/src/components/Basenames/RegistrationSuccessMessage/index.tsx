@@ -37,7 +37,7 @@ export default function RegistrationSuccessMessage() {
 
   const goToProfileOnClick = useCallback(() => {
     logEventWithContext('go_to_profile', ActionType.click);
-    router.push(`names/${formatBaseEthDomain(selectedName)}`);
+    router.push(`name/${formatBaseEthDomain(selectedName)}`);
   }, [logEventWithContext, router, selectedName]);
 
   return (
