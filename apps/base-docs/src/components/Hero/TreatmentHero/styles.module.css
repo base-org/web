@@ -9,6 +9,17 @@
   gap: 30px;
 }
 
+.heroContainerMobile {
+  background-color: #0052ff;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
 .heroTitle {
   font-family: CoinbaseDisplay;
   color: white;

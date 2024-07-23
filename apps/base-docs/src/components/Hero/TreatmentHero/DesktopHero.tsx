@@ -1,6 +1,4 @@
-import React, { useCallback } from 'react';
-
-import logEvent from 'base-ui/utils/logEvent';
+import React from 'react';
 
 import HeroButton from '../HeroButton/index';
 import BarChart from './BarChart';
