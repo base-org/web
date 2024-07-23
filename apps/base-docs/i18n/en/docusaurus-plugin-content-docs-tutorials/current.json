@@ -1,0 +1,62 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docs.category.Deploying a smart contract": {
+    "message": "Deploying a smart contract",
+    "description": "The label for category Deploying a smart contract in sidebar docs"
+  },
+  "sidebar.docs.category.Building an onchain app": {
+    "message": "Building an onchain app",
+    "description": "The label for category Building an onchain app in sidebar docs"
+  },
+  "sidebar.docs.category.Accessing real-world data using Oracles": {
+    "message": "Accessing real-world data using Oracles",
+    "description": "The label for category Accessing real-world data using Oracles in sidebar docs"
+  },
+  "sidebar.docs.category.Sending data and tokens across chains": {
+    "message": "Sending data and tokens across chains",
+    "description": "The label for category Sending data and tokens across chains in sidebar docs"
+  },
+  "sidebar.docs.category.Account abstraction": {
+    "message": "Account abstraction",
+    "description": "The label for category Account abstraction in sidebar docs"
+  },
+  "sidebar.docs.category.Introduction to Foundry": {
+    "message": "Introduction to Foundry",
+    "description": "The label for category Introduction to Foundry in sidebar docs"
+  },
+  "sidebar.docs.category.Advanced NFT Development": {
+    "message": "Advanced NFT Development",
+    "description": "The label for category Advanced NFT Development in sidebar docs"
+  },
+  "sidebar.docs.category.Farcaster Frames": {
+    "message": "Farcaster Frames",
+    "description": "The label for category Farcaster Frames in sidebar docs"
+  },
+  "sidebar.docs.category.Hardhat Tools and Testing": {
+    "message": "Hardhat Tools and Testing",
+    "description": "The label for category Hardhat Tools and Testing in sidebar docs"
+  },
+  "sidebar.docs.category.Profiling Size": {
+    "message": "Profiling Size",
+    "description": "The label for category Profiling Size in sidebar docs"
+  },
+  "sidebar.docs.category.Profiling Gas": {
+    "message": "Profiling Gas",
+    "description": "The label for category Profiling Gas in sidebar docs"
+  },
+  "sidebar.docs.category.Debugging": {
+    "message": "Debugging",
+    "description": "The label for category Debugging in sidebar docs"
+  },
+  "sidebar.docs.category.Test Coverage": {
+    "message": "Test Coverage",
+    "description": "The label for category Test Coverage in sidebar docs"
+  },
+  "sidebar.docs.category.Connecting to the Blockchain": {
+    "message": "Connecting to the Blockchain",
+    "description": "The label for category Connecting to the Blockchain in sidebar docs"
+  }
+}

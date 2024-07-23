@@ -317,11 +317,10 @@ const config = {
             },
           ],
         },
-        // Langauge selection dropdown will be supported in the future
-        // {
-        //   type: 'localeDropdown',
-        //   navposition: 'bottomRight',
-        // },
+        {
+          type: 'localeDropdown',
+          navposition: 'bottomRight',
+        },
       ],
     },
     algolia: {
@@ -344,12 +343,21 @@ const config = {
       respectPrefersColorScheme: false,
     },
   },
-  // Langauge selection dropdown will be supported in the future
-  // i18n: {
-  //   defaultLocale: 'en',
-  //   locales: ['en', 'fr'],
-  //   localeConfigs: {},
-  // },
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+      },
+      // es: {
+      //   label: 'Español',
+      //   direction: 'ltr',
+      // },
+    },
+  },
 };
 
 module.exports = config;

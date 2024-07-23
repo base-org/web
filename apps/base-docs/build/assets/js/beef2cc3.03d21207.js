@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_app_base_docs=self.webpackChunk_app_base_docs||[]).push([[9362],{47558:s=>{s.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"base-camp"}')}}]);

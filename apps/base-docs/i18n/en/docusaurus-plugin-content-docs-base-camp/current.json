@@ -1,0 +1,186 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docs.category.Introduction to Ethereum": {
+    "message": "Introduction to Ethereum",
+    "description": "The label for category Introduction to Ethereum in sidebar docs"
+  },
+  "sidebar.docs.category.Development Tools": {
+    "message": "Development Tools",
+    "description": "The label for category Development Tools in sidebar docs"
+  },
+  "sidebar.docs.category.Development with Hardhat": {
+    "message": "Development with Hardhat",
+    "description": "The label for category Development with Hardhat in sidebar docs"
+  },
+  "sidebar.docs.category.Hardhat Setup and Overview": {
+    "message": "Hardhat Setup and Overview",
+    "description": "The label for category Hardhat Setup and Overview in sidebar docs"
+  },
+  "sidebar.docs.category.Testing with Typescript": {
+    "message": "Testing with Typescript",
+    "description": "The label for category Testing with Typescript in sidebar docs"
+  },
+  "sidebar.docs.category.Etherscan": {
+    "message": "Etherscan",
+    "description": "The label for category Etherscan in sidebar docs"
+  },
+  "sidebar.docs.category.Deploying Smart Contracts": {
+    "message": "Deploying Smart Contracts",
+    "description": "The label for category Deploying Smart Contracts in sidebar docs"
+  },
+  "sidebar.docs.category.Verifying Smart Contracts": {
+    "message": "Verifying Smart Contracts",
+    "description": "The label for category Verifying Smart Contracts in sidebar docs"
+  },
+  "sidebar.docs.category.Mainnet Forking": {
+    "message": "Mainnet Forking",
+    "description": "The label for category Mainnet Forking in sidebar docs"
+  },
+  "sidebar.docs.category.Development With Foundry": {
+    "message": "Development With Foundry",
+    "description": "The label for category Development With Foundry in sidebar docs"
+  },
+  "sidebar.docs.category.Smart Contract Development": {
+    "message": "Smart Contract Development",
+    "description": "The label for category Smart Contract Development in sidebar docs"
+  },
+  "sidebar.docs.category.Introduction to Solidity": {
+    "message": "Introduction to Solidity",
+    "description": "The label for category Introduction to Solidity in sidebar docs"
+  },
+  "sidebar.docs.category.Contracts and Basic Functions": {
+    "message": "Contracts and Basic Functions",
+    "description": "The label for category Contracts and Basic Functions in sidebar docs"
+  },
+  "sidebar.docs.category.Deploying to a Testnet": {
+    "message": "Deploying to a Testnet",
+    "description": "The label for category Deploying to a Testnet in sidebar docs"
+  },
+  "sidebar.docs.category.Control Structures": {
+    "message": "Control Structures",
+    "description": "The label for category Control Structures in sidebar docs"
+  },
+  "sidebar.docs.category.Storage in Solidity": {
+    "message": "Storage in Solidity",
+    "description": "The label for category Storage in Solidity in sidebar docs"
+  },
+  "sidebar.docs.category.Arrays in Solidity": {
+    "message": "Arrays in Solidity",
+    "description": "The label for category Arrays in Solidity in sidebar docs"
+  },
+  "sidebar.docs.category.The Mapping Type": {
+    "message": "The Mapping Type",
+    "description": "The label for category The Mapping Type in sidebar docs"
+  },
+  "sidebar.docs.category.Advanced Functions": {
+    "message": "Advanced Functions",
+    "description": "The label for category Advanced Functions in sidebar docs"
+  },
+  "sidebar.docs.category.Structs": {
+    "message": "Structs",
+    "description": "The label for category Structs in sidebar docs"
+  },
+  "sidebar.docs.category.Inheritance": {
+    "message": "Inheritance",
+    "description": "The label for category Inheritance in sidebar docs"
+  },
+  "sidebar.docs.category.Imports": {
+    "message": "Imports",
+    "description": "The label for category Imports in sidebar docs"
+  },
+  "sidebar.docs.category.Errors": {
+    "message": "Errors",
+    "description": "The label for category Errors in sidebar docs"
+  },
+  "sidebar.docs.category.The `new` Keyword": {
+    "message": "The `new` Keyword",
+    "description": "The label for category The `new` Keyword in sidebar docs"
+  },
+  "sidebar.docs.category.Contract to Contract Interactions": {
+    "message": "Contract to Contract Interactions",
+    "description": "The label for category Contract to Contract Interactions in sidebar docs"
+  },
+  "sidebar.docs.category.Events": {
+    "message": "Events",
+    "description": "The label for category Events in sidebar docs"
+  },
+  "sidebar.docs.category.Address and Payable": {
+    "message": "Address and Payable",
+    "description": "The label for category Address and Payable in sidebar docs"
+  },
+  "sidebar.docs.category.Token Development": {
+    "message": "Token Development",
+    "description": "The label for category Token Development in sidebar docs"
+  },
+  "sidebar.docs.category.Introduction to Tokens": {
+    "message": "Introduction to Tokens",
+    "description": "The label for category Introduction to Tokens in sidebar docs"
+  },
+  "sidebar.docs.category.Minimal Tokens": {
+    "message": "Minimal Tokens",
+    "description": "The label for category Minimal Tokens in sidebar docs"
+  },
+  "sidebar.docs.category.ERC-20 Tokens": {
+    "message": "ERC-20 Tokens",
+    "description": "The label for category ERC-20 Tokens in sidebar docs"
+  },
+  "sidebar.docs.category.ERC-721 Tokens": {
+    "message": "ERC-721 Tokens",
+    "description": "The label for category ERC-721 Tokens in sidebar docs"
+  },
+  "sidebar.docs.category.Hardhat Tools and Testing": {
+    "message": "Hardhat Tools and Testing",
+    "description": "The label for category Hardhat Tools and Testing in sidebar docs"
+  },
+  "sidebar.docs.category.Onchain App Development (Frontend)": {
+    "message": "Onchain App Development (Frontend)",
+    "description": "The label for category Onchain App Development (Frontend) in sidebar docs"
+  },
+  "sidebar.docs.category.Frontend Setup": {
+    "message": "Frontend Setup",
+    "description": "The label for category Frontend Setup in sidebar docs"
+  },
+  "sidebar.docs.category.Reading and Displaying Data": {
+    "message": "Reading and Displaying Data",
+    "description": "The label for category Reading and Displaying Data in sidebar docs"
+  },
+  "sidebar.docs.category.Writing to Contracts": {
+    "message": "Writing to Contracts",
+    "description": "The label for category Writing to Contracts in sidebar docs"
+  },
+  "sidebar.docs.link.Guide to Base": {
+    "message": "Guide to Base",
+    "description": "The label for link Guide to Base in sidebar docs, linking to https://www.coinbase.com/cloud/discover/protocol-guides/guide-to-base"
+  },
+  "sidebar.docs.link.Introduction to Foundry": {
+    "message": "Introduction to Foundry",
+    "description": "The label for link Introduction to Foundry in sidebar docs, linking to https://docs.base.org/tutorials/intro-to-foundry-setup"
+  },
+  "sidebar.docs.link.Testing smart contracts with Foundry": {
+    "message": "Testing smart contracts with Foundry",
+    "description": "The label for link Testing smart contracts with Foundry in sidebar docs, linking to https://docs.base.org/tutorials/intro-to-foundry-testing"
+  },
+  "sidebar.docs.link.Profiling Gas": {
+    "message": "Profiling Gas",
+    "description": "The label for link Profiling Gas in sidebar docs, linking to https://docs.base.org/tutorials/hardhat-profiling-gas"
+  },
+  "sidebar.docs.link.Profiling Size": {
+    "message": "Profiling Size",
+    "description": "The label for link Profiling Size in sidebar docs, linking to https://docs.base.org/tutorials/hardhat-profiling-size"
+  },
+  "sidebar.docs.link.Debugging": {
+    "message": "Debugging",
+    "description": "The label for link Debugging in sidebar docs, linking to https://docs.base.org/tutorials/hardhat-debugging"
+  },
+  "sidebar.docs.link.Test Coverage": {
+    "message": "Test Coverage",
+    "description": "The label for link Test Coverage in sidebar docs, linking to https://docs.base.org/tutorials/hardhat-test-coverage"
+  },
+  "sidebar.docs.link.Connecting to the Blockchain": {
+    "message": "Connecting to the Blockchain",
+    "description": "The label for link Connecting to the Blockchain in sidebar docs, linking to https://docs.base.org/tutorials/intro-to-providers"
+  }
+}
