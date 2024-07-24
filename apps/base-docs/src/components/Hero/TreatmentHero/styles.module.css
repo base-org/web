@@ -13,16 +13,17 @@
   gap: 30px;
 }
 
-.heroContainerMobile {
-  gap: 15px;
-}
-
-.heroTitle {
+.heroTitle,
+.heroTitleMobile {
   font-family: CoinbaseDisplay;
   color: white;
   font-size: 125px;
   line-height: 1.1;
   font-weight: 400;
+}
+
+.heroTitleMobile {
+  display: none;
 }
 
 .chartContainer,
@@ -31,20 +32,9 @@
   width: 100%;
 }
 
-.chartContainerMobile {
-  margin-right: 20px;
-  width: 100%;
-}
-
 .secondaryContentContainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-}
-
-.secondaryContentContainerMobile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .ctaText {
@@ -78,17 +68,30 @@
 }
 @media screen and (max-width: 610px) {
   .heroTitle {
+    display: none;
+  }
+  .heroTitleMobile {
+    display: block;
     font-size: 60px;
   }
   .heroContainer {
     padding: 10px 15px;
+    gap: 15px;
   }
   .ctaText {
     margin-bottom: 10px;
   }
+  .chartContainer {
+    margin: 0 20px 0 0;
+  }
+  .secondaryContentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 @media screen and (max-width: 400px) {
-  .heroTitle {
+  .heroTitleMobile {
     font-size: 50px;
   }
 }
