@@ -22,7 +22,7 @@ type JobProps = {
 };
 
 export function Job({ job }: JobProps) {
-  const { id, title, location } = job;
+  const { id, title } = job;
 
   const href = useMemo(
     () => ({
@@ -35,7 +35,6 @@ export function Job({ job }: JobProps) {
   return (
     <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row">
       <div className="flex flex-col">
-        <p className="text-sm">{location.name}</p>
         <Link href={href} rel="noreferrer" target="_self">
           <p className="mt-2 max-w-[750px] text-xl">{title}</p>
         </Link>
