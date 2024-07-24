@@ -1,5 +1,7 @@
+import { upload } from '@vercel/blob/client';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
+import UsernameAvatarField from 'apps/web/src/components/Basenames/UsernameAvatarField';
 import UsernameDescriptionField from 'apps/web/src/components/Basenames/UsernameDescriptionField';
 import UsernameKeywordsField from 'apps/web/src/components/Basenames/UsernameKeywordsField';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
@@ -31,7 +33,7 @@ export default function UsernameProfileEditModal({
   toggleModal: () => void;
 }) {
   const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
-
+  const [avatarFile, setAvatarFile] = useState<File | undefined>();
   const { logEventWithContext } = useAnalytics();
 
   const {
@@ -79,6 +81,9 @@ export default function UsernameProfileEditModal({
 
     if (transactionData.status === 'success') {
       logEventWithContext('update_text_records_transaction_success', ActionType.change);
+
+      // TODO: Call to remove the previous avatar for vercel's blob
+
       refetchExistingTextRecords()
         .then(() => {
           // toggleModal() ?
@@ -113,6 +118,24 @@ export default function UsernameProfileEditModal({
     });
   }, []);
 
+  const uploadAvatar = useCallback(
+    async (file: File | undefined) => {
+      if (!file) return Promise.resolve();
+      if (!currentWalletIsOwner) return false;
+
+      // TODO: Rename .name to username.[jpeg/webp/svg/png]
+      const newBlob = await upload(file.name, file, {
+        access: 'public',
+        handleUploadUrl: `/api/basenames/avatar/upload?username=${profileUsername}`,
+      });
+
+      updateTextRecords(UsernameTextRecordKeys.Avatar, newBlob.url);
+
+      return newBlob;
+    },
+    [currentWalletIsOwner, profileUsername, updateTextRecords],
+  );
+
   const onClickSave = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
@@ -120,26 +143,52 @@ export default function UsernameProfileEditModal({
       // TODO: We can't really get to this steps, but we should show an error
       if (!currentWalletIsOwner) return false;
 
-      logEventWithContext('update_text_records_transaction_initiated', ActionType.change);
+      let writeTextRecordsRequest = { ...textRecords };
 
-      writeTextRecords(textRecords)
+      // TODO: Clean this up
+      // Upload the avatar first
+      uploadAvatar(avatarFile)
         .then((result) => {
-          // We updated some text records
+          // set the uploaded result as the url
           if (result) {
-            logEventWithContext('update_text_records_transaction_approved', ActionType.change);
-          } else {
-            // No text records had to be updated, simply go to profile
-            toggleModal();
+            writeTextRecordsRequest[UsernameTextRecordKeys.Avatar] = result.url;
           }
-        })
 
-        .catch((error) => {
-          logEventWithContext('update_text_records_transaction_canceled', ActionType.click, {
-            error: JSON.stringify(error),
+          // Write the records
+          writeTextRecords(writeTextRecordsRequest)
+            .then((transactionResult) => {
+              // We updated some text records
+              if (transactionResult) {
+                logEventWithContext('update_text_records_transaction_approved', ActionType.change);
+              } else {
+                // No text records had to be updated, simply go to profile
+                toggleModal();
+              }
+            })
+
+            .catch((error) => {
+              logEventWithContext('update_text_records_transaction_canceled', ActionType.click, {
+                error: JSON.stringify(error),
+              });
+            });
+        })
+        .catch((e) => {
+          logEventWithContext('update_text_records_upload_avatar_failed', ActionType.click, {
+            error: JSON.stringify(e),
           });
         });
+
+      logEventWithContext('update_text_records_transaction_initiated', ActionType.change);
     },
-    [currentWalletIsOwner, logEventWithContext, textRecords, toggleModal, writeTextRecords],
+    [
+      avatarFile,
+      currentWalletIsOwner,
+      logEventWithContext,
+      uploadAvatar,
+      textRecords,
+      toggleModal,
+      writeTextRecords,
+    ],
   );
 
   const onChangeTextRecord = useCallback(
@@ -148,6 +197,10 @@ export default function UsernameProfileEditModal({
     },
     [updateTextRecords],
   );
+
+  const onChangeAvatar = useCallback((file: File | undefined) => {
+    setAvatarFile(file);
+  }, []);
 
   const formClasses = classNames(
     'flex flex-col justify-between gap-8 text-gray/60 md:items-center mt-6',
@@ -169,6 +222,12 @@ export default function UsernameProfileEditModal({
         <p>You don&apos;t have the permission to edit this profile</p>
       ) : (
         <form className={formClasses}>
+          <UsernameAvatarField
+            onChange={onChangeAvatar}
+            value={textRecords[UsernameTextRecordKeys.Avatar]}
+            disabled={isLoading}
+            username={profileUsername}
+          />
           <UsernameDescriptionField
             onChange={onChangeTextRecord}
             value={textRecords[UsernameTextRecordKeys.Description]}

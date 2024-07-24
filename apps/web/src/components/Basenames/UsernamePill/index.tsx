@@ -4,8 +4,11 @@ import DropdownMenu from 'apps/web/src/components/DropdownMenu';
 import DropdownToggle from 'apps/web/src/components/DropdownToggle';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
+import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { BaseName, getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
+import { Address } from 'viem';
+
 export enum UsernamePillVariants {
   Inline = 'inline',
   Card = 'card',
@@ -14,7 +17,7 @@ export enum UsernamePillVariants {
 type UsernamePillProps = {
   variant: UsernamePillVariants;
   username: BaseName;
-  address?: string;
+  address?: Address;
 };
 
 export function UsernamePill({ variant, username, address }: UsernamePillProps) {
@@ -32,7 +35,7 @@ export function UsernamePill({ variant, username, address }: UsernamePillProps) 
   );
 
   const avatarClasses = classNames(
-    'inline-block overflow-hidden rounded-full',
+    'flex items-center justify-center overflow-hidden rounded-full',
     'absolute',
     transitionClasses,
     {
@@ -52,7 +55,12 @@ export function UsernamePill({ variant, username, address }: UsernamePillProps) 
     },
   );
 
-  const selectedProfilePicture = getUserNamePicture(username);
+  const { existingTextRecords, existingTextRecordsIsLoading } = useReadBaseEnsTextRecords({
+    address: address,
+    username: username,
+  });
+
+  const selectedProfilePicture = existingTextRecords.avatar || getUserNamePicture(username);
 
   return (
     <div className={pillNameClasses}>
@@ -61,8 +69,11 @@ export function UsernamePill({ variant, username, address }: UsernamePillProps) 
         alt={username}
         title={username}
         wrapperClassName={avatarClasses}
-        imageClassName="object-fill"
+        imageClassName="object-cover w-full h-full"
         backgroundClassName="bg-blue-500"
+        width={4 * 16}
+        height={4 * 16}
+        forceIsLoading={existingTextRecordsIsLoading}
       />
       <span className={userNameClasses}>{username}</span>
       {address && (

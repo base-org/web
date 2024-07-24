@@ -76,6 +76,8 @@ const contentSecurityPolicy = {
   ],
   'connect-src': [
     "'self'",
+    'https://blob.vercel-storage.com', // Vercel File storage
+    'https://zku9gdedgba48lmr.public.blob.vercel-storage.com', // Vercel File storage
     walletconnectDomains,
     sprigDomains,
     greenhouseDomains,
@@ -99,6 +101,9 @@ const contentSecurityPolicy = {
   'form-action': ["'self'", baseXYZDomains],
   'img-src': [
     "'self'",
+    'blob:',
+    'https://blob.vercel-storage.com', // Vercel File storage
+    'https://zku9gdedgba48lmr.public.blob.vercel-storage.com', // Vercel File storage
     'data:',
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars
@@ -165,6 +170,16 @@ module.exports = extendBaseConfig(
         {
           protocol: 'https',
           hostname: 'cf-ipfs.com',
+        },
+        {
+          protocol: 'https',
+          hostname: 'blob.vercel-storage.com',
+          port: '',
+        },
+        {
+          protocol: 'https',
+          hostname: 'zku9gdedgba48lmr.public.blob.vercel-storage.com',
+          port: '',
         },
       ],
     },

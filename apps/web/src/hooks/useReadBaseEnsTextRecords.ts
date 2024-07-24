@@ -35,6 +35,7 @@ export default function useReadBaseEnsTextRecords({
     [UsernameTextRecordKeys.Github]: '',
     [UsernameTextRecordKeys.Email]: '',
     [UsernameTextRecordKeys.Phone]: '',
+    [UsernameTextRecordKeys.Avatar]: '',
   });
 
   const updateExistingTextRecords = useCallback((key: UsernameTextRecordKeys, value: string) => {
