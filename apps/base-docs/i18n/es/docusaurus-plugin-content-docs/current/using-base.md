@@ -21,40 +21,40 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# Using Base with your wallet
+es + es-translated # Using Base with your wallet
 
 ---
 
-## Coinbase Wallet
+es + es-translated ## Coinbase Wallet
 
-The [Coinbase Wallet](https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad?hl=en) browser extension provides support for Base by default.
+es + es-translated The [Coinbase Wallet](https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad?hl=en) browser extension provides support for Base by default.
 
-To use Base with Coinbase Wallet:
+es + es-translated To use Base with Coinbase Wallet:
 
-1. Open the Coinbase Wallet browser extension and log in to your account.
+es + es-translated 1. Open the Coinbase Wallet browser extension and log in to your account.
 2. Connect to an app using Coinbase Wallet.
 3. Open the network selection menu by clicking the network icon in the upper right-hand corner.
 4. Select **Base**.
 
-Your active network should now be switched to Base.
+es + es-translated Your active network should now be switched to Base.
 
 ---
 
-## Other wallets
+es + es-translated ## Other wallets
 
-Base can be added as a custom network to any EVM-compatible wallet (i.e. [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)).
+es + es-translated Base can be added as a custom network to any EVM-compatible wallet (i.e. [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)).
 
-### MetaMask
+es + es-translated ### MetaMask
 
-To add Base as a custom network to MetaMask:
+es + es-translated To add Base as a custom network to MetaMask:
 
-1. Open the MetaMask browser extension.
+es + es-translated 1. Open the MetaMask browser extension.
 2. Open the network selection dropdown menu by clicking the dropdown button at the top of the extension.
 3. Click the **Add network** button.
 4. Click **Add a network manually**.
 5. In the **Add a network manually** dialog that appears, enter the following information for Base mainnet:
 
-   | Name            | Value                                                        |
+es + es-translated | Name            | Value                                                        |
    | :-------------- | :----------------------------------------------------------- |
    | Network Name    | Base Mainnet                                                 |
    | Description     | The public mainnet for Base.                                 |
@@ -63,42 +63,42 @@ To add Base as a custom network to MetaMask:
    | Currency Symbol | ETH                                                          |
    | Block Explorer  | [https://base.blockscout.com/](https://base.blockscout.com/) |
 
-6. Tap the Save button to save Base as a network.
+es + es-translated 6. Tap the Save button to save Base as a network.
 
-You should now be able to connect to the Base by selecting it from the network selection dropdown menu.
+es + es-translated You should now be able to connect to the Base by selecting it from the network selection dropdown menu.
 
 ---
 
-## Testnet
+es + es-translated ## Testnet
 
-#### Coinbase Wallet browser extension provides support for Base Sepolia testnet by default.
+es + es-translated #### Coinbase Wallet browser extension provides support for Base Sepolia testnet by default.
 
-To use Base Sepolia with Coinbase Wallet:
+es + es-translated To use Base Sepolia with Coinbase Wallet:
 
-1. Open the Coinbase Wallet browser extension and log in to your account.
+es + es-translated 1. Open the Coinbase Wallet browser extension and log in to your account.
 2. Connect to an app using Coinbase Wallet.
 3. Open the network selection menu by clicking the network icon in the upper right-hand corner.
 4. Click the **More networks** button.
 5. Navigate to the **Testnets** tab.
 6. Select **Base Sepolia**.
 
-Your active network should now be switched to Base testnet.
+es + es-translated Your active network should now be switched to Base testnet.
 
-#### Other wallets
+es + es-translated #### Other wallets
 
-Base Sepolia can be added as a custom network to any EVM-compatible wallet (i.e. [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)).
+es + es-translated Base Sepolia can be added as a custom network to any EVM-compatible wallet (i.e. [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)).
 
-#### MetaMask
+es + es-translated #### MetaMask
 
-To add Base Sepolia as a custom network to MetaMask:
+es + es-translated To add Base Sepolia as a custom network to MetaMask:
 
-1. Open the MetaMask browser extension.
+es + es-translated 1. Open the MetaMask browser extension.
 2. Open the network selection dropdown menu by clicking the dropdown button at the top of the extension.
 3. Click the **Add network** button.
 4. Click **Add a network manually**.
 5. In the **Add a network manually** dialog that appears, enter the following information for the Base Sepolia testnet:
 
-   | Name            | Sepolia                                                                |
+es + es-translated | Name            | Sepolia                                                                |
    | :-------------- | :--------------------------------------------------------------------- |
    | Network Name    | Base Sepolia                                                           |
    | RPC Endpoint    | [https://sepolia.base.org](https://sepolia.base.org)                   |
@@ -106,8 +106,8 @@ To add Base Sepolia as a custom network to MetaMask:
    | Currency Symbol | ETH                                                                    |
    | Block Explorer  | [https://sepolia-explorer.base.org](https://sepolia-explorer.base.org) |
 
-6. Tap the Save button to save Base Sepolia as a network.
+es + es-translated 6. Tap the Save button to save Base Sepolia as a network.
 
-You should now be able to connect to the Base testnet by selecting it from the network selection dropdown menu.
+es + es-translated You should now be able to connect to the Base testnet by selecting it from the network selection dropdown menu.
 
 ---

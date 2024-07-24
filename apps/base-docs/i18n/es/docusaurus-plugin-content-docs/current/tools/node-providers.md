@@ -26,230 +26,230 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# Proveedores de Nodos
+es + es-translated # Node Providers
 
 ---
 
-## Plataforma de Desarrolladores de Coinbase (CDP)
+es + es-translated ## Coinbase Developer Platform (CDP)
 
-[CDP](https://portal.cdp.coinbase.com/) proporciona un endpoint RPC que funciona en la misma infraestructura de nodos que impulsa el intercambio minorista de Coinbase, lo que significa que obtienes la sólida fiabilidad de nuestro intercambio minorista como desarrollador. CDP te ofrece un endpoint RPC gratuito y con limitación de tasa para comenzar a construir en Base.
+es + es-translated [CDP](https://portal.cdp.coinbase.com/) provides an RPC endpoint that runs on the same node infrastructure that powers Coinbase's retail exchange, meaning you get the rock solid reliability of our retail exchange as a developer. CDP gives you a free, rate limited RPC endpoint to begin building on Base.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-## 1RPC
+es + es-translated ## 1RPC
 
-[1RPC](https://1rpc.io/) es el primer y único RPC que preserva la privacidad atestada en la cadena, eliminando la exposición y fuga de metadatos al interactuar con blockchains. 1RPC ofrece planes gratuitos y [planes de pago](https://www.1rpc.io/#pricing) con características adicionales y límites de solicitud aumentados.
+es + es-translated [1RPC](https://1rpc.io/) is the first and only on-chain attested privacy preserving RPC that eradicates metadata exposure and leakage when interacting with blockchains. 1RPC offers free and [paid plans](https://www.1rpc.io/#pricing) with additional features and increased request limits.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 
 ---
 
-## Alchemy
+es + es-translated ## Alchemy
 
-[Alchemy](https://www.alchemy.com/base) es un proveedor de API y plataforma de desarrollo popular. Su robusto nivel gratuito ofrece acceso a características mejoradas como SDKs, [APIs JSON-RPC](https://docs.alchemy.com/reference/base-api-quickstart), y nodos mainnet y testnet alojados para Base.
+es + es-translated [Alchemy](https://www.alchemy.com/base) is a popular API provider and developer platform. Its robust, free tier offers access to enhanced features like SDKs, [JSON-RPC APIs](https://docs.alchemy.com/reference/base-api-quickstart), and hosted mainnet and testnet nodes for Base.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-## All That Node
+es + es-translated ## All That Node
 
-[All That Node](https://www.allthatnode.com/base.dsrv) es una suite de desarrollo multichain integral, diseñada para soportar múltiples redes desde una sola plataforma. Ofrecen planes gratuitos y [planes de pago](https://www.allthatnode.com/pricing.dsrv) con características adicionales y límites de solicitud aumentados.
+es + es-translated [All That Node](https://www.allthatnode.com/base.dsrv) is a comprehensive multi-chain development suite, designed to support multiple networks from a single platform. They offer free and [paid plans](https://www.allthatnode.com/pricing.dsrv) with additional features and increased request limits.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-## Ankr
+es + es-translated ## Ankr
 
-[Ankr](https://www.ankr.com/rpc/base/) proporciona endpoints RPC privados y públicos para Base, impulsados por una red de nodos distribuida y descentralizada globalmente. Ofrecen planes gratuitos y [planes de pago](https://www.ankr.com/rpc/pricing/) con límites de solicitud aumentados.
+es + es-translated [Ankr](https://www.ankr.com/rpc/base/) provides private and public RPC endpoints for Base, powered by a globally distributed and decentralized network of nodes. They offer free and [paid plans](https://www.ankr.com/rpc/pricing/) with increased request limits.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-## Blast
+es + es-translated ## Blast
 
-[Blast](https://blastapi.io/public-api/base) proporciona APIs de blockchain descentralizadas rápidas y confiables al asociarse con proveedores de nodos de terceros. Blast ofrece a los usuarios la capacidad de generar su propio [endpoint RPC dedicado para Base](https://blastapi.io/login).
+es + es-translated [Blast](https://blastapi.io/public-api/base) provides fast and reliable decentralized blockchain APIs by partnering with third-party Node Providers. Blast offers users the ability to generate their own [dedicated RPC endpoint for Base](https://blastapi.io/login).
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-## Blockdaemon
+es + es-translated ## Blockdaemon
 
-[Blockdaemon](https://www.blockdaemon.com/protocols/base/) ofrece acceso a nodos alojados de Base con un plan gratuito de $0/mes a través de la Suite de Datos Ubiquity. Se pueden incurrir en costos adicionales dependiendo del uso.
+es + es-translated [Blockdaemon](https://www.blockdaemon.com/protocols/base/) offers access to hosted Base nodes with a free plan at $0/month via the Ubiquity Data API Suite. Extra costs may be incurred depending on usage.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-## BlockPI
+es + es-translated ## BlockPI
 
-[BlockPI](https://blockpi.io/) es una red de servicios RPC de alta calidad, robusta y eficiente que proporciona acceso a nodos de Base con [planes gratuitos y de pago](https://docs.blockpi.io/documentations/pricing).
+es + es-translated [BlockPI](https://blockpi.io/) is a high-quality, robust, and efficient RPC service network that provides access to Base nodes with [free and paid plans](https://docs.blockpi.io/documentations/pricing).
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-## Chainstack
+es + es-translated ## Chainstack
 
-[Chainstack](https://chainstack.com/build-better-with-base/) permite a los desarrolladores ejecutar nodos y APIs de Base de alto rendimiento en minutos. Ofrecen nodos RPC elásticos de Base que proporcionan endpoints API personales, geográficamente diversos y protegidos, así como nodos de archivo para consultar toda la historia de Base Mainnet. Comienza con sus [planes de precios gratuitos y de pago](https://chainstack.com/pricing/).
+es + es-translated [Chainstack](https://chainstack.com/build-better-with-base/) allows developers to run high-performing Base nodes and APIs in minutes. They offer elastic Base RPC nodes that provide personal, geographically diverse, and protected API endpoints, as well as archive nodes to query the entire history of the Base Mainnet. Get started with their [free and paid pricing plans](https://chainstack.com/pricing/).
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-## DRPC
+es + es-translated ## DRPC
 
-[DRPC](https://drpc.org/) ofrece acceso a una red distribuida de socios independientes de terceros y nodos públicos para Base. Proporcionan un nivel gratuito que permite una cantidad ilimitada de solicitudes a través de nodos públicos, o un nivel de pago que proporciona acceso a todos los proveedores, así como otras características adicionales.
+es + es-translated [DRPC](https://drpc.org/) offers access to a distributed network of independent third-party partners and public nodes for Base. They provide a free tier that allows for an unlimited amount of requests over public nodes, or a paid tier which provides access to all providers, as well as other additional features.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-## GetBlock
+es + es-translated ## GetBlock
 
-[GetBlock](https://getblock.io/nodes/base/) es una plataforma Blockchain-as-a-Service (BaaS) que proporciona acceso instantáneo a API de nodos completos para Base. Ofrecen planes gratuitos, de pago por uso y de precios ilimitados.
+es + es-translated [GetBlock](https://getblock.io/nodes/base/) is a Blockchain-as-a-Service (BaaS) platform that provides instant API access to full nodes for Base. They offer free, pay per use, and unlimited pricing plans.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-## NodeReal
+es + es-translated ## NodeReal
 
-[NodeReal](https://nodereal.io/) es un proveedor de infraestructura y servicios blockchain que proporciona acceso instantáneo y fácil a APIs de nodos de Base.
+es + es-translated [NodeReal](https://nodereal.io/) is a blockchain infrastructure and services provider that provides instant and easy-access to Base node APIs.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
-
----
-
-## Nodies DLB
-
-[Nodies DLB](https://nodies.app) proporciona servicios RPC de alto rendimiento para Base, así como para todas las demás cadenas apiladas en OP. Ofrecen endpoints públicos gratuitos, planes de pago por uso y planes de precios empresariales.
-
-#### Redes Soportadas
-
-- Base Mainnet
-- Base Testnet (Disponible a solicitud)
+es + es-translated - Base Mainnet
 
 ---
 
-## NOWNodes
+es + es-translated ## Nodies DLB
 
-[NOWNodes](https://nownodes.io/nodes/basechain-base) es una herramienta de desarrollo Web3 que proporciona acceso compartido y dedicado sin límite de tasa a nodos completos RPC de Base.
+es + es-translated [Nodies DLB](https://nodies.app) provides highly performant RPC Services for Base, as well as all other OP-stacked chains. They offer free public endpoints, Pay-As-You-Go, and enterprise pricing plans.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
+- Base Testnet (Available on request)
 
 ---
 
-## OnFinality
+es + es-translated ## NOWNodes
 
-[OnFinality](https://onfinality.io) proporciona acceso de alto rendimiento a archivos de Base Mainnet y Base Sepolia, con un generoso nivel gratuito y altos límites de tasa, así como APIs de Trace y Debug, disponibles para [planes de pago](https://onfinality.io/pricing).
+es + es-translated [NOWNodes](https://nownodes.io/nodes/basechain-base) is a Web3 development tool that provides shared and dedicated no rate-limit access to Base RPC full nodes.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
+
+---
+
+es + es-translated ## OnFinality
+
+es + es-translated [OnFinality](https://onfinality.io) provides high performance archive access to Base Mainnet and Base Sepolia, with a generous free tier and high rate limits, as well as Trace and Debug APIs, available to [paid plans](https://onfinality.io/pricing).
+
+es + es-translated #### Supported Networks
+
+es + es-translated - Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-## QuickNode
+es + es-translated ## QuickNode
 
-[QuickNode](https://www.quicknode.com/chains/base) ofrece acceso a nodos alojados de Base como parte de su plan gratuito Discover. Puedes configurar complementos, como "Trace Mode" y "Archive Mode" por un costo adicional al actualizar a uno de sus planes de pago.
+es + es-translated [QuickNode](https://www.quicknode.com/chains/base) offers access to hosted Base nodes as part of their free Discover Plan. You can configure add-ons, like "Trace Mode" and "Archive Mode" for an additional cost by upgrading to one of their paid plans.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-## RockX
-[RockX](https://access.rockx.com) ofrece una red global de nodos blockchain y herramientas para desarrolladores para la innovación en la cadena. Comienza con nuestro [Base RPC](https://access.rockx.com/product/base-blockchain-api-for-web3-builders) gratuito para acceder a soluciones de grado institucional.
+es + es-translated ## RockX
+[RockX](https://access.rockx.com) offers a global blockchain node network and developer tools for onchain innovation. Start with our free [Base RPC](https://access.rockx.com/product/base-blockchain-api-for-web3-builders) to access institutional-grade solutions.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 
 ---
 
-## Stackup
+es + es-translated ## Stackup
 
-[Stackup](https://www.stackup.sh/) es una plataforma líder de infraestructura ERC-4337. Puedes acceder a nodos alojados de Base con [herramientas de abstracción de cuentas](https://docs.stackup.sh/docs) integradas como bundlers y paymasters.
+es + es-translated [Stackup](https://www.stackup.sh/) is a leading ERC-4337 infrastructure platform. You can access hosted Base nodes with built-in [account abstraction tools](https://docs.stackup.sh/docs) like bundlers and paymasters.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-## SubQuery
+es + es-translated ## SubQuery
 
-[SubQuery](https://subquery.network/rpc) es una red distribuida globalmente y descentralizada de nodos RPC, que ofrece endpoints públicos gratuitos generosos y mayor acceso a través de Planes Flex.
+es + es-translated [SubQuery](https://subquery.network/rpc) is a globally distributed, decentralized network of RPC nodes, offering generous free public endpoints and higher access through Flex Plans
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 
 ---
 
-## Tenderly Web3 Gateway
+es + es-translated ## Tenderly Web3 Gateway
 
-[Tenderly Web3 Gateway](https://tenderly.co/web3-gateway) proporciona una solución de nodo alojado rápida y confiable con una suite integrada de herramientas para desarrolladores y bloques de construcción de infraestructura que cubren todo tu ciclo de desarrollo. Desarrolla, prueba, despliega y monitorea tu aplicación en la cadena en la red Base con [planes gratuitos y de pago](https://tenderly.co/pricing).
+es + es-translated [Tenderly Web3 Gateway](https://tenderly.co/web3-gateway) provides a fast and reliable hosted node solution with a built-in suite of developer tooling and infrastructure building blocks covering your whole development lifecycle. Develop, test, deploy, and monitor your onchain app on the Base network with both [free and paid plans](https://tenderly.co/pricing).
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-## Unifra
+es + es-translated ## Unifra
 
-[Unifra](https://base.unifra.io/) es una plataforma de desarrollo Web3 que proporciona herramientas, APIs e infraestructura de nodos, y proporciona acceso a nodos de Base que son confiables, escalables y fáciles de usar.
+es + es-translated [Unifra](https://base.unifra.io/) is a Web3 developer platform that provides tools, APIs, and node infrastructure, and provides access to Base nodes that are nodes are reliabile, scalable, and easy to use.
 
-#### Redes Soportadas
+es + es-translated #### Supported Networks
 
-- Base Mainnet
+es + es-translated - Base Mainnet
 
 ---

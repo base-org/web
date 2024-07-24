@@ -1,42 +1,42 @@
 {
   "version.label": {
-    "message": "Next",
-    "description": "The label for version current"
+    "message": "es + es-translated Next",
+    "description": "es + es-translated The label for version current"
   },
   "sidebar.developers.category.Notices": {
-    "message": "Notices",
-    "description": "The label for category Notices in sidebar developers"
+    "message": "es + es-translated Notices",
+    "description": "es + es-translated The label for category Notices in sidebar developers"
   },
   "sidebar.developers.category.Building on Base": {
-    "message": "Building on Base",
-    "description": "The label for category Building on Base in sidebar developers"
+    "message": "es + es-translated Building on Base",
+    "description": "es + es-translated The label for category Building on Base in sidebar developers"
   },
   "sidebar.developers.category.Tools": {
-    "message": "Tools",
-    "description": "The label for category Tools in sidebar developers"
+    "message": "es + es-translated Tools",
+    "description": "es + es-translated The label for category Tools in sidebar developers"
   },
   "sidebar.developers.category.Toolchains": {
-    "message": "Toolchains",
-    "description": "The label for category Toolchains in sidebar developers"
+    "message": "es + es-translated Toolchains",
+    "description": "es + es-translated The label for category Toolchains in sidebar developers"
   },
   "sidebar.developers.category.Clients": {
-    "message": "Clients",
-    "description": "The label for category Clients in sidebar developers"
+    "message": "es + es-translated Clients",
+    "description": "es + es-translated The label for category Clients in sidebar developers"
   },
   "sidebar.developers.category.Tokens": {
-    "message": "Tokens",
-    "description": "The label for category Tokens in sidebar developers"
+    "message": "es + es-translated Tokens",
+    "description": "es + es-translated The label for category Tokens in sidebar developers"
   },
   "sidebar.developers.link.Decentralizing Base with Optimism": {
-    "message": "Decentralizing Base with Optimism",
-    "description": "The label for link Decentralizing Base with Optimism in sidebar developers, linking to https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I"
+    "message": "es + es-translated Decentralizing Base with Optimism",
+    "description": "es + es-translated The label for link Decentralizing Base with Optimism in sidebar developers, linking to https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I"
   },
   "sidebar.developers.link.Status": {
-    "message": "Status",
-    "description": "The label for link Status in sidebar developers, linking to https://status.base.org"
+    "message": "es + es-translated Status",
+    "description": "es + es-translated The label for link Status in sidebar developers, linking to https://status.base.org"
   },
   "sidebar.developers.link.Brand Kit": {
-    "message": "Brand Kit",
-    "description": "The label for link Brand Kit in sidebar developers, linking to https://github.com/base-org/brand-kit"
+    "message": "es + es-translated Brand Kit",
+    "description": "es + es-translated The label for link Brand Kit in sidebar developers, linking to https://github.com/base-org/brand-kit"
   }
 }

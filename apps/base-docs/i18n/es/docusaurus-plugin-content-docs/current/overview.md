@@ -18,26 +18,26 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# About Base
+es + es-translated # About Base
 
-Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain.
+es + es-translated Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain.
 
-Base is incubated within Coinbase and plans to progressively decentralize in the years ahead. We believe that decentralization is critical to creating an open, global cryptoeconomy that is accessible to everyone.
+es + es-translated Base is incubated within Coinbase and plans to progressively decentralize in the years ahead. We believe that decentralization is critical to creating an open, global cryptoeconomy that is accessible to everyone.
 
 ---
 
-### Ethereum L2
+es + es-translated ### Ethereum L2
 
-Base is built as an Ethereum L2, with the security, stability, and scalability you need to power your onchain apps. Confidently deploy any EVM codebase and onramp your users and assets from Ethereum L1, Coinbase, and other interoperable chains.
+es + es-translated Base is built as an Ethereum L2, with the security, stability, and scalability you need to power your onchain apps. Confidently deploy any EVM codebase and onramp your users and assets from Ethereum L1, Coinbase, and other interoperable chains.
 
-### Big features, small fees
+es + es-translated ### Big features, small fees
 
-Get the EVM environment at a fraction of the cost. Get early access to Ethereum features like Account Abstraction (ERC4337), simple developer APIs for gasless transactions, and smart contract wallets.
+es + es-translated Get the EVM environment at a fraction of the cost. Get early access to Ethereum features like Account Abstraction (ERC4337), simple developer APIs for gasless transactions, and smart contract wallets.
 
-### Open source
+es + es-translated ### Open source
 
-Base is built on the MIT-licensed [OP Stack](https://stack.optimism.io/), in collaboration with Optimism. We're joining as the second Core Dev team working on the OP Stack to ensure it’s a public good available to everyone.
+es + es-translated Base is built on the MIT-licensed [OP Stack](https://stack.optimism.io/), in collaboration with Optimism. We're joining as the second Core Dev team working on the OP Stack to ensure it’s a public good available to everyone.
 
-### Scaled by Coinbase
+es + es-translated ### Scaled by Coinbase
 
-Base is an easy way for decentralized apps to leverage Coinbase's products and distribution. Seamless Coinbase integrations, easy fiat onramps, and access to millions of verified users in the Coinbase ecosystem.
+es + es-translated Base is an easy way for decentralized apps to leverage Coinbase's products and distribution. Seamless Coinbase integrations, easy fiat onramps, and access to millions of verified users in the Coinbase ecosystem.

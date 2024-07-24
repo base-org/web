@@ -18,21 +18,21 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# thirdweb SDK
+es + es-translated # thirdweb SDK
 
-thirdweb SDK is a library that enables developers to build web3 applications and interact with any EVM-compatible blockchain.
+es + es-translated thirdweb SDK is a library that enables developers to build web3 applications and interact with any EVM-compatible blockchain.
 
-You can use the thirdweb SDK to build apps and interact with smart contracts deployed on the Base network.
+es + es-translated You can use the thirdweb SDK to build apps and interact with smart contracts deployed on the Base network.
 
-The thirdweb SDK is available in various programming languages, including: [React](https://portal.thirdweb.com/react), [React Native](https://portal.thirdweb.com/react-native), [TypeScript](https://portal.thirdweb.com/typescript), [Python](https://portal.thirdweb.com/python), [Go](https://portal.thirdweb.com/go), and [Unity](https://portal.thirdweb.com/unity).
+es + es-translated The thirdweb SDK is available in various programming languages, including: [React](https://portal.thirdweb.com/react), [React Native](https://portal.thirdweb.com/react-native), [TypeScript](https://portal.thirdweb.com/typescript), [Python](https://portal.thirdweb.com/python), [Go](https://portal.thirdweb.com/go), and [Unity](https://portal.thirdweb.com/unity).
 
-Visit the [thirdweb documentation](https://portal.thirdweb.com/cli) for more instructions on using the thirdweb SDKs.
+es + es-translated Visit the [thirdweb documentation](https://portal.thirdweb.com/cli) for more instructions on using the thirdweb SDKs.
 
 ---
 
-## Install
+es + es-translated ## Install
 
-To install the thirdweb SDK, run:
+es + es-translated To install the thirdweb SDK, run:
 
 ```bash
 npm install @thirdweb-dev/sdk ethers@5
@@ -40,11 +40,11 @@ npm install @thirdweb-dev/sdk ethers@5
 
 ---
 
-## Initializing the SDK with Base
+es + es-translated ## Initializing the SDK with Base
 
-To get started using the SDK, you must first initialize an instance of `ThirdWebSDK`, and connect to the Base network by passing in the `Base` chain.
+es + es-translated To get started using the SDK, you must first initialize an instance of `ThirdWebSDK`, and connect to the Base network by passing in the `Base` chain.
 
-To initialize the SDK with the Base network and get a contract:
+es + es-translated To initialize the SDK with the Base network and get a contract:
 
 ```javascript
 import { Base } from '@thirdweb-dev/chains';
@@ -54,11 +54,11 @@ const sdk = new ThirdwebSDK(Base);
 const contract = await sdk.getContract('0x0000000000000000000000000000000000000000');
 ```
 
-:::info
+es + es-translated :::info
 
-The code snippet above uses the [React SDK](https://portal.thirdweb.com/react). The thirdweb SDKs are also available in [React Native](https://portal.thirdweb.com/react-native), [TypeScript](https://portal.thirdweb.com/typescript), [Python](https://portal.thirdweb.com/python), [Go](https://portal.thirdweb.com/go), and [Unity](https://portal.thirdweb.com/unity).
+es + es-translated The code snippet above uses the [React SDK](https://portal.thirdweb.com/react). The thirdweb SDKs are also available in [React Native](https://portal.thirdweb.com/react-native), [TypeScript](https://portal.thirdweb.com/typescript), [Python](https://portal.thirdweb.com/python), [Go](https://portal.thirdweb.com/go), and [Unity](https://portal.thirdweb.com/unity).
 
-If alternatively you'd like to initialize the SDK with Base Sepolia (testnet), use the following code instead:
+es + es-translated If alternatively you'd like to initialize the SDK with Base Sepolia (testnet), use the following code instead:
 
 ```javascript
 import { BaseSepoliaTestnet } from '@thirdweb-dev/chains';
@@ -68,27 +68,27 @@ const sdk = new ThirdwebSDK(BaseSepoliaTestnet);
 const contract = await sdk.getContract('0x0000000000000000000000000000000000000000');
 ```
 
-:::
+es + es-translated :::
 
 ---
 
-## Interacting with smart contracts
+es + es-translated ## Interacting with smart contracts
 
-Once you initialize the SDK and connect to a smart contract deployed to Base, you can start calling functions on it using the SDK.
+es + es-translated Once you initialize the SDK and connect to a smart contract deployed to Base, you can start calling functions on it using the SDK.
 
-:::info
+es + es-translated :::info
 
-Any interaction you make with a smart contract will be made from the connected wallet automatically.
+es + es-translated Any interaction you make with a smart contract will be made from the connected wallet automatically.
 
-:::
+es + es-translated :::
 
-### Using contract extension functions
+es + es-translated ### Using contract extension functions
 
-The thirdweb SDK provides convenience functions when your smart contract uses [extensions](https://portal.thirdweb.com/contractkit/extensions). This is the easiest way to read data and write transactions with your smart contracts.
+es + es-translated The thirdweb SDK provides convenience functions when your smart contract uses [extensions](https://portal.thirdweb.com/contractkit/extensions). This is the easiest way to read data and write transactions with your smart contracts.
 
-For example, if your contract implements the [ERC721](https://portal.thirdweb.com/contractkit/erc721) extension, you can utilize all of the functions of the [corresponding erc721 standard](https://portal.thirdweb.com/sdk/interacting-with-contracts/erc721) in the SDK.
+es + es-translated For example, if your contract implements the [ERC721](https://portal.thirdweb.com/contractkit/erc721) extension, you can utilize all of the functions of the [corresponding erc721 standard](https://portal.thirdweb.com/sdk/interacting-with-contracts/erc721) in the SDK.
 
-As an example, below is a code snippet that uses [`useOwnedNFTs`](https://portal.thirdweb.com/react/react.useownednfts) hook to get a list of NFTs owned by a single wallet address:
+es + es-translated As an example, below is a code snippet that uses [`useOwnedNFTs`](https://portal.thirdweb.com/react/react.useownednfts) hook to get a list of NFTs owned by a single wallet address:
 
 ```javascript
 import { useOwnedNFTs } from '@thirdweb-dev/react';
@@ -96,7 +96,7 @@ import { useOwnedNFTs } from '@thirdweb-dev/react';
 const { data, isLoading, error } = useOwnedNFTs(contract, '{{wallet_address}}');
 ```
 
-#### Usage
+es + es-translated #### Usage
 
 ```javascript
 import { useOwnedNFTs, useContract, useAddress } from '@thirdweb-dev/react';
@@ -111,24 +111,24 @@ function App() {
 }
 ```
 
-For more examples on using contract extension functions, visit the [thirdweb developer documentation](https://portal.thirdweb.com/sdk/interacting-with-contracts#using-contract-extensions).
+es + es-translated For more examples on using contract extension functions, visit the [thirdweb developer documentation](https://portal.thirdweb.com/sdk/interacting-with-contracts#using-contract-extensions).
 
-### Reading contract data
+es + es-translated ### Reading contract data
 
-If your contract doesn’t use any [extensions](https://portal.thirdweb.com/contractkit/extensions), or you want to directly call functions on your smart contract to read data, you can use the [`useContractRead`](https://portal.thirdweb.com/react/react.usecontractread) hook.
+es + es-translated If your contract doesn’t use any [extensions](https://portal.thirdweb.com/contractkit/extensions), or you want to directly call functions on your smart contract to read data, you can use the [`useContractRead`](https://portal.thirdweb.com/react/react.usecontractread) hook.
 
-Read data on your contract from a connected wallet:
+es + es-translated Read data on your contract from a connected wallet:
 
 ```javascript
 const { contract } = useContract('{{contract_address}}');
 const { data: myData, isLoading } = useContractRead(contract, 'myFunction');
 ```
 
-### Writing transactions
+es + es-translated ### Writing transactions
 
-If your contract doesn’t use any [extensions](https://portal.thirdweb.com/contractkit/extensions), or you want to directly call functions on your smart contract to write data, you can use the [`useContractWrite`](https://portal.thirdweb.com/react/react.usecontractwrite) hook.
+es + es-translated If your contract doesn’t use any [extensions](https://portal.thirdweb.com/contractkit/extensions), or you want to directly call functions on your smart contract to write data, you can use the [`useContractWrite`](https://portal.thirdweb.com/react/react.usecontractwrite) hook.
 
-Make transactions on your contract from a connected wallet:
+es + es-translated Make transactions on your contract from a connected wallet:
 
 ```javascript
 const { contract } = useContract('{{contract_address}}');

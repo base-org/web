@@ -5,38 +5,38 @@ description: Documentation for the Onchain Registry API.
 hide_table_of_contents: true
 ---
 
-# [Beta] Onchain Registry API
+es + es-translated # [Beta] Onchain Registry API
 
 ---
 
-:::info
+es + es-translated :::info
 
-The base url for our API endpoints is [https://base.org/api/registry/](https://base.org/api/registry/). Please note, this API is still in beta and should not be used in production environments. The use of Onchain Registry API is governed by the license terms outlined in our [Terms & Conditions](#terms--conditions).
+es + es-translated The base url for our API endpoints is [https://base.org/api/registry/](https://base.org/api/registry/). Please note, this API is still in beta and should not be used in production environments. The use of Onchain Registry API is governed by the license terms outlined in our [Terms & Conditions](#terms--conditions).
 
-:::
+es + es-translated :::
 
-## Instructions
+es + es-translated ## Instructions
 
-1. Users of this API can use the `/entries` and `/featured` endpoints to display Onchain Registry entries on their own surfaces
+es + es-translated 1. Users of this API can use the `/entries` and `/featured` endpoints to display Onchain Registry entries on their own surfaces
 2. If your team would like to use referral codes to point your users to entries, we recommend appending your referral code to the link provided in the `target_url` field
 3. If your team would like to filter entries based on where they are hosted or by creator, we recommend implementing logic based on the `target_url` and `creator_name` fields
 
-## Endpoints
+es + es-translated ## Endpoints
 
-### GET /entries
+es + es-translated ### GET /entries
 
-This endpoint will display all Onchain Registry entries subject to any query parameters set below
+es + es-translated This endpoint will display all Onchain Registry entries subject to any query parameters set below
 
-#### Query Parameters
+es + es-translated #### Query Parameters
 
-| Name     | Type   | Description                                                                                                    |
+es + es-translated | Name     | Type   | Description                                                                                                    |
 | :------- | :----- | :------------------------------------------------------------------------------------------------------------- |
 | page     | number | The page number (default 1)                                                                                    |
 | limit    | number | The number of entries per page (default 10)                                                                    |
 | category | array  | The category or categories of the entries of interest <br/> (Options: Games, Social, Creators, Finance, Media) |
 | curation | string | The entry’s level of curation <br/> (Options: Featured, Curated, Community)                                    |
 
-#### Response
+es + es-translated #### Response
 
 ```{
     "data": [
@@ -88,11 +88,11 @@ This endpoint will display all Onchain Registry entries subject to any query par
 }
 ```
 
-### GET /featured
+es + es-translated ### GET /featured
 
-This endpoint will display a single Onchain Registry entry that is being actively featured
+es + es-translated This endpoint will display a single Onchain Registry entry that is being actively featured
 
-#### Response
+es + es-translated #### Response
 
 ```{
     "data": {
@@ -117,9 +117,9 @@ This endpoint will display a single Onchain Registry entry that is being activel
 }
 ```
 
-## Entry Schema
+es + es-translated ## Entry Schema
 
-| Name               | Type   | Description                                                                                                                                                                                                    |
+es + es-translated | Name               | Type   | Description                                                                                                                                                                                                    |
 | :----------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | id                 | string | Unique entry ID                                                                                                                                                                                                |
 | category           | string | The category of the entry <br/>(Options: Games, Social, Creators, Finance, Media)                                                                                                                              |
@@ -137,6 +137,6 @@ This endpoint will display a single Onchain Registry entry that is being activel
 | creator_name       | string | The name of the entry’s creator                                                                                                                                                                                |
 | creator_image_url  | string | The logo of the entry’s creator                                                                                                                                                                                |
 
-## Terms & Conditions
+es + es-translated ## Terms & Conditions
 
-We grant third parties a non-exclusive, worldwide, royalty-free license to use the Onchain Registry API solely for the purpose of integrating it into their applications or services. This license does not extend to any data or content accessed through the Onchain API, which remains the sole responsibility of the third party. By using the Onchain Registry API, third parties agree to comply with our license terms and any applicable laws and regulations as set forth in Coinbase Developer Platform Terms of Service. We make no warranties regarding the Onchain Registry API, and users accept all risks associated with its use. The Onchain App Registry API is an Early Access Product per Section 18 of the [Coinbase Developer Platform Terms of Service](https://www.coinbase.com/legal/developer-platform/terms-of-service) and the Coinbase [Prohibited Use Policy](https://www.coinbase.com/legal/prohibited_use), and all terms and conditions therein govern your use of the Onchain Registry API.
+es + es-translated We grant third parties a non-exclusive, worldwide, royalty-free license to use the Onchain Registry API solely for the purpose of integrating it into their applications or services. This license does not extend to any data or content accessed through the Onchain API, which remains the sole responsibility of the third party. By using the Onchain Registry API, third parties agree to comply with our license terms and any applicable laws and regulations as set forth in Coinbase Developer Platform Terms of Service. We make no warranties regarding the Onchain Registry API, and users accept all risks associated with its use. The Onchain App Registry API is an Early Access Product per Section 18 of the [Coinbase Developer Platform Terms of Service](https://www.coinbase.com/legal/developer-platform/terms-of-service) and the Coinbase [Prohibited Use Policy](https://www.coinbase.com/legal/prohibited_use), and all terms and conditions therein govern your use of the Onchain Registry API.

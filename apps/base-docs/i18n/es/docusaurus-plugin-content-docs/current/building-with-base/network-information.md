@@ -22,13 +22,13 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# Network Information
+es + es-translated # Network Information
 
 ---
 
-#### Base Mainnet
+es + es-translated #### Base Mainnet
 
-| Name            | Value                                                                                                   |
+es + es-translated | Name            | Value                                                                                                   |
 | :-------------- | :------------------------------------------------------------------------------------------------------ |
 | Network Name    | Base Mainnet                                                                                            |
 | Description     | The public mainnet for Base.                                                                            |
@@ -39,9 +39,9 @@ hide_table_of_contents: true
 
 ---
 
-#### Base Testnet (Sepolia)
+es + es-translated #### Base Testnet (Sepolia)
 
-| Name            | Value                                                                                                   |
+es + es-translated | Name            | Value                                                                                                   |
 | :-------------- | :------------------------------------------------------------------------------------------------------ |
 | Network Name    | Base Sepolia                                                                                            |
 | Description     | A public testnet for Base.                                                                              |
@@ -52,15 +52,15 @@ hide_table_of_contents: true
 
 ---
 
-:::info
+es + es-translated :::info
 L1 & L2 protocol and network-related smart contract deployments can be found on the [Base Contracts](/docs/base-contracts) page.
 :::
 
-:::info
+es + es-translated :::info
 For production systems, we recommend using a node from one of our [node partners], or [running your own Base node].
 :::
 
 ---
 
-[running your own Base node]: /tutorials/run-a-base-node
+es + es-translated [running your own Base node]: /tutorials/run-a-base-node
 [node partners]: /docs/tools/node-providers

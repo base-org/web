@@ -18,13 +18,13 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# Contract Addresses
+es + es-translated # Contract Addresses
 
-## L2 Contract Addresses
+es + es-translated ## L2 Contract Addresses
 
-### Base Mainnet
+es + es-translated ### Base Mainnet
 
-| Name                          | Address                                                                                                               |
+es + es-translated | Name                          | Address                                                                                                               |
 | :---------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
 | WETH9                         | [0x4200000000000000000000000000000000000006](https://basescan.org/address/0x4200000000000000000000000000000000000006) |
 | L2CrossDomainMessenger        | [0x4200000000000000000000000000000000000007](https://basescan.org/address/0x4200000000000000000000000000000000000007) |
@@ -43,9 +43,9 @@ hide_table_of_contents: true
 | EASSchemaRegistry             | [0x4200000000000000000000000000000000000020](https://basescan.org/address/0x4200000000000000000000000000000000000020) |
 | LegacyERC20ETH                | [0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000](https://basescan.org/address/0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000) |
 
-### Base Testnet (Sepolia)
+es + es-translated ### Base Testnet (Sepolia)
 
-| Name                          | Address                                                                                                                       |
+es + es-translated | Name                          | Address                                                                                                                       |
 | :---------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | WETH9                         | [0x4200000000000000000000000000000000000006](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000006) |
 | L2CrossDomainMessenger        | [0x4200000000000000000000000000000000000007](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000007) |
@@ -64,13 +64,13 @@ hide_table_of_contents: true
 | EASSchemaRegistry             | [0x4200000000000000000000000000000000000020](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000020) |
 | LegacyERC20ETH                | [0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000](https://sepolia.basescan.org/address/0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000) |
 
-\*_L2 contract addresses are the same on both mainnet and testnet._
+es + es-translated \*_L2 contract addresses are the same on both mainnet and testnet._
 
-## L1 Contract Addresses
+es + es-translated ## L1 Contract Addresses
 
-### Ethereum Mainnet
+es + es-translated ### Ethereum Mainnet
 
-| Name                         | Address                                                                                                               |
+es + es-translated | Name                         | Address                                                                                                               |
 | :--------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
 | AddressManager               | [0x8EfB6B5c4767B09Dc9AA6Af4eAA89F749522BaE2](https://etherscan.io/address/0x8EfB6B5c4767B09Dc9AA6Af4eAA89F749522BaE2) |
 | L1CrossDomainMessenger       | [0x866E82a600A1414e583f7F13623F1aC5d58b0Afa](https://etherscan.io/address/0x866E82a600A1414e583f7F13623F1aC5d58b0Afa) |
@@ -83,17 +83,17 @@ hide_table_of_contents: true
 | SystemConfig                 | [0x73a79Fab69143498Ed3712e519A88a918e1f4072](https://etherscan.io/address/0x73a79Fab69143498Ed3712e519A88a918e1f4072) |
 | SystemDictator               | [0x1fE3fdd1F0193Dd657C0a9AAC37314D6B479E557](https://etherscan.io/address/0x1fE3fdd1F0193Dd657C0a9AAC37314D6B479E557) |
 
-**Unneeded contract addresses**
+es + es-translated **Unneeded contract addresses**
 
-Certain contracts are mandatory according to the [OP Stack SDK](https://stack.optimism.io/docs/build/sdk/#unneeded-contract-addresses), despite not being utilized. For such contracts, you can simply assign the zero address:
+es + es-translated Certain contracts are mandatory according to the [OP Stack SDK](https://stack.optimism.io/docs/build/sdk/#unneeded-contract-addresses), despite not being utilized. For such contracts, you can simply assign the zero address:
 
-- `StateCommitmentChain`
+es + es-translated - `StateCommitmentChain`
 - `CanonicalTransactionChain`
 - `BondManager`
 
-### Ethereum Testnet (Sepolia)
+es + es-translated ### Ethereum Testnet (Sepolia)
 
-| Name                         | Address                                                                                                                       |
+es + es-translated | Name                         | Address                                                                                                                       |
 | :--------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | AddressManager               | [0x709c2B8ef4A9feFc629A8a2C1AF424Dc5BD6ad1B](https://sepolia.etherscan.io/address/0x709c2B8ef4A9feFc629A8a2C1AF424Dc5BD6ad1B) |
 | L1CrossDomainMessenger       | [0xC34855F4De64F1840e5686e64278da901e261f20](https://sepolia.etherscan.io/address/0xC34855F4De64F1840e5686e64278da901e261f20) |
@@ -105,11 +105,11 @@ Certain contracts are mandatory according to the [OP Stack SDK](https://stack.op
 | ProxyAdmin                   | [0x0389E59Aa0a41E4A413Ae70f0008e76CAA34b1F3](https://sepolia.etherscan.io/address/0x0389E59Aa0a41E4A413Ae70f0008e76CAA34b1F3) |
 | SystemConfig                 | [0xf272670eb55e895584501d564AfEB048bEd26194](https://sepolia.etherscan.io/address/0xf272670eb55e895584501d564AfEB048bEd26194) |
 
-## Base Admin Addresses
+es + es-translated ## Base Admin Addresses
 
-### Base Mainnet
+es + es-translated ### Base Mainnet
 
-| Admin Role                       | Address                                                                                                               | Type of Key                               |
+es + es-translated | Admin Role                       | Address                                                                                                               | Type of Key                               |
 | :------------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- |
 | Batch Sender                     | [0x5050f69a9786f081509234f1a7f4684b5e5b76c9](https://etherscan.io/address/0x5050f69a9786f081509234f1a7f4684b5e5b76c9) | EOA managed by Coinbase Technologies      |
 | Batch Inbox                      | [0xff00000000000000000000000000000000008453](https://etherscan.io/address/0xff00000000000000000000000000000000008453) | EOA (with no known private key)           |
@@ -124,9 +124,9 @@ Certain contracts are mandatory according to the [OP Stack SDK](https://stack.op
 | System config owner              | [0x14536667Cd30e52C0b458BaACcB9faDA7046E056](https://etherscan.io/address/0x14536667Cd30e52C0b458BaACcB9faDA7046E056) | Gnosis Safe                               |
 | Guardian                         | [0x14536667Cd30e52C0b458BaACcB9faDA7046E056](https://etherscan.io/address/0x14536667Cd30e52C0b458BaACcB9faDA7046E056) | Gnosis Safe                               |
 
-### Base Testnet (Sepolia)
+es + es-translated ### Base Testnet (Sepolia)
 
-| Admin Role             | Address                                                                                                                            | Type of Key                          |
+es + es-translated | Admin Role             | Address                                                                                                                            | Type of Key                          |
 | :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------- |
 | Batch Sender           | [0x6CDEbe940BC0F26850285cacA097C11c33103E47](https://sepolia.etherscan.io/address/0x6CDEbe940BC0F26850285cacA097C11c33103E47)      | EOA managed by Coinbase Technologies |
 | Batch Inbox            | [0xff00000000000000000000000000000000084532](https://sepolia.etherscan.io/address/0xff00000000000000000000000000000000084532)      | EOA (with no known private key)      |

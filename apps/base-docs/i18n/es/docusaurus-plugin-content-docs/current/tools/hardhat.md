@@ -21,17 +21,17 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# Hardhat
+es + es-translated # Hardhat
 
-Hardhat is an Ethereum development environment for flexible, extensible, and fast smart contract development.
+es + es-translated Hardhat is an Ethereum development environment for flexible, extensible, and fast smart contract development.
 
-You can use Hardhat to edit, compile, debug, and deploy your smart contracts to Base.
+es + es-translated You can use Hardhat to edit, compile, debug, and deploy your smart contracts to Base.
 
 ---
 
-# Using Hardhat with Base
+es + es-translated # Using Hardhat with Base
 
-To configure [Hardhat](https://hardhat.org/) to deploy smart contracts to Base, update your project’s `hardhat.config.ts` file by adding Base as a network:
+es + es-translated To configure [Hardhat](https://hardhat.org/) to deploy smart contracts to Base, update your project’s `hardhat.config.ts` file by adding Base as a network:
 
 ```tsx
 networks: {
@@ -57,10 +57,10 @@ networks: {
  defaultNetwork: "base-local",
 ```
 
-:::info
+es + es-translated :::info
 
-For a complete guide on using Hardhat to deploy contracts on Base, see [Deploying a Smart Contract](/guides/deploy-smart-contracts).
+es + es-translated For a complete guide on using Hardhat to deploy contracts on Base, see [Deploying a Smart Contract](/guides/deploy-smart-contracts).
 
-:::
+es + es-translated :::
 
 ---
