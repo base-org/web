@@ -1,42 +1,42 @@
 {
   "version.label": {
-    "message": "es + es-translated Next",
-    "description": "es + es-translated The label for version current"
+    "message": "Siguiente",
+    "description": "La etiqueta para la versión actual"
   },
   "sidebar.developers.category.Notices": {
-    "message": "es + es-translated Notices",
-    "description": "es + es-translated The label for category Notices in sidebar developers"
+    "message": "Avisos",
+    "description": "La etiqueta para la categoría Avisos en la barra lateral de desarrolladores"
   },
   "sidebar.developers.category.Building on Base": {
-    "message": "es + es-translated Building on Base",
-    "description": "es + es-translated The label for category Building on Base in sidebar developers"
+    "message": "Construyendo sobre Base",
+    "description": "La etiqueta para la categoría Construyendo sobre Base en la barra lateral de desarrolladores"
   },
   "sidebar.developers.category.Tools": {
-    "message": "es + es-translated Tools",
-    "description": "es + es-translated The label for category Tools in sidebar developers"
+    "message": "Herramientas",
+    "description": "La etiqueta para la categoría Herramientas en la barra lateral de desarrolladores"
   },
   "sidebar.developers.category.Toolchains": {
-    "message": "es + es-translated Toolchains",
-    "description": "es + es-translated The label for category Toolchains in sidebar developers"
+    "message": "Toolchains",
+    "description": "La etiqueta para la categoría Toolchains en la barra lateral de desarrolladores"
   },
   "sidebar.developers.category.Clients": {
-    "message": "es + es-translated Clients",
-    "description": "es + es-translated The label for category Clients in sidebar developers"
+    "message": "Clientes",
+    "description": "La etiqueta para la categoría Clientes en la barra lateral de desarrolladores"
   },
   "sidebar.developers.category.Tokens": {
-    "message": "es + es-translated Tokens",
-    "description": "es + es-translated The label for category Tokens in sidebar developers"
+    "message": "Tokens",
+    "description": "La etiqueta para la categoría Tokens en la barra lateral de desarrolladores"
   },
   "sidebar.developers.link.Decentralizing Base with Optimism": {
-    "message": "es + es-translated Decentralizing Base with Optimism",
-    "description": "es + es-translated The label for link Decentralizing Base with Optimism in sidebar developers, linking to https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I"
+    "message": "Descentralizando Base con Optimism",
+    "description": "La etiqueta para el enlace Descentralizando Base con Optimism en la barra lateral de desarrolladores, enlazando a https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I"
   },
   "sidebar.developers.link.Status": {
-    "message": "es + es-translated Status",
-    "description": "es + es-translated The label for link Status in sidebar developers, linking to https://status.base.org"
+    "message": "Estado",
+    "description": "La etiqueta para el enlace Estado en la barra lateral de desarrolladores, enlazando a https://status.base.org"
   },
   "sidebar.developers.link.Brand Kit": {
-    "message": "es + es-translated Brand Kit",
-    "description": "es + es-translated The label for link Brand Kit in sidebar developers, linking to https://github.com/base-org/brand-kit"
+    "message": "Kit de Marca",
+    "description": "La etiqueta para el enlace Kit de Marca en la barra lateral de desarrolladores, enlazando a https://github.com/base-org/brand-kit"
   }
 }
