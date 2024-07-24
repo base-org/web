@@ -1,6 +1,5 @@
 import { Transition } from '@headlessui/react';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
-
 import RegistrationBackground from 'apps/web/src/components/Basenames/RegistrationBackground';
 import RegistrationBrand from 'apps/web/src/components/Basenames/RegistrationBrand';
 import {
@@ -15,9 +14,10 @@ import RegistrationSearchInput, {
 } from 'apps/web/src/components/Basenames/RegistrationSearchInput';
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
-import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
+import { formatBaseEthDomain, USERNAME_DOMAIN } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
+import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
 /*
@@ -27,10 +27,12 @@ test addresses w/ different verifications
   0x9C02E8E28D8b706F67dcf0FC7F46A9ee1f9649FA - cb1
 */
 
+export const claimQueryKey = 'claim';
+
 export function RegistrationFlow() {
   const { logEventWithContext } = useAnalytics();
-
-  const { registrationStep, searchInputFocused, selectedName } = useRegistration();
+  const searchParams = useSearchParams();
+  const { registrationStep, searchInputFocused, selectedName, setSelectedName } = useRegistration();
 
   const isSearch = registrationStep === RegistrationSteps.Search;
   const isClaim = registrationStep === RegistrationSteps.Claim;
@@ -60,6 +62,13 @@ export function RegistrationFlow() {
   useEffect(() => {
     logEventWithContext('initial_render', ActionType.render);
   }, [logEventWithContext]);
+
+  useEffect(() => {
+    const claimQuery = searchParams?.get(claimQueryKey);
+    if (claimQuery) {
+      setSelectedName(claimQuery.replace(`.${USERNAME_DOMAIN}`, ''));
+    }
+  }, [searchParams, setSelectedName]);
 
   return (
     <main className={mainClasses}>

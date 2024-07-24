@@ -6,11 +6,17 @@ import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useRouter } from 'next/navigation';
 import { formatBaseEthDomain, USERNAME_DOMAIN } from 'apps/web/src/utils/usernames';
+import UsernameProfileNotFound from 'apps/web/src/components/Basenames/UsernameProfileNotFound';
+import classNames from 'classnames';
 
 export default function UsernameProfile() {
   const { profileAddress, profileUsername, profileAddressIsLoading } = useUsernameProfile();
   const { logEventWithContext } = useAnalytics();
   const router = useRouter();
+
+  const usernameProfilePageClasses = classNames(
+    'mx-auto mt-32 flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 px-4 px-4 pb-40 md:flex-row md:px-8',
+  );
 
   if (!profileUsername.endsWith(USERNAME_DOMAIN)) {
     router.push(formatBaseEthDomain(profileUsername));
@@ -30,17 +36,8 @@ export default function UsernameProfile() {
     logEventWithContext('page_unavailable', ActionType.error, { error: 'No address resolved' });
 
     return (
-      <main className="flex min-h-screen items-center justify-center">
-        <h1>Name not found</h1>
-      </main>
-    );
-  }
-  if (!profileUsername) {
-    logEventWithContext('page_unavailable', ActionType.error, { error: 'No username provided' });
-
-    return (
-      <main className="flex min-h-screen items-center justify-center">
-        <h1>Name not found</h1>
+      <main className={classNames(usernameProfilePageClasses, 'items-center justify-center')}>
+        <UsernameProfileNotFound username={profileUsername} />
       </main>
     );
   }
@@ -48,7 +45,7 @@ export default function UsernameProfile() {
   logEventWithContext('page_loaded', ActionType.render);
 
   return (
-    <main className="mx-auto mt-32 flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 px-4 px-4 pb-40  md:flex-row md:px-8">
+    <main className={usernameProfilePageClasses}>
       <div className="w-full md:max-w-[25rem]">
         <UsernameProfileSidebar />
       </div>

@@ -83,10 +83,9 @@ export default function UsernameProfileEditModal({
       logEventWithContext('update_text_records_transaction_success', ActionType.change);
 
       // TODO: Call to remove the previous avatar for vercel's blob
-
       refetchExistingTextRecords()
         .then(() => {
-          // toggleModal() ?
+          toggleModal();
         })
         .catch(() => {});
     }
@@ -124,10 +123,15 @@ export default function UsernameProfileEditModal({
       if (!currentWalletIsOwner) return false;
 
       // TODO: Rename .name to username.[jpeg/webp/svg/png]
-      const newBlob = await upload(file.name, file, {
-        access: 'public',
-        handleUploadUrl: `/api/basenames/avatar/upload?username=${profileUsername}`,
-      });
+      const timestamp = Date.now();
+      const newBlob = await upload(
+        `basenames/avatar/${profileUsername}/${timestamp}/${file.name}`,
+        file,
+        {
+          access: 'public',
+          handleUploadUrl: `/api/basenames/avatar/upload?username=${profileUsername}`,
+        },
+      );
 
       updateTextRecords(UsernameTextRecordKeys.Avatar, newBlob.url);
 
@@ -265,7 +269,7 @@ export default function UsernameProfileEditModal({
           {writeTextRecordsError && <TransactionError error={writeTextRecordsError} />}
           {existingTextRecordsError && <TransactionError error={existingTextRecordsError} />}
           {transactionError && <TransactionError error={existingTextRecordsError} />}
-          {transactionData && (
+          {transactionData && transactionData.status === 'reverted' && (
             <TransactionStatus transaction={transactionData} chainId={transactionData.chainId} />
           )}
         </form>
