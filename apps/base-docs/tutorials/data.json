@@ -46,9 +46,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 24, 2024",
         "duration": "17 min read",
-        "checksum": "b6ba5851a908389eb12dae91ff7d742f3e188eba2322b8550661b05f6731296c"
+        "checksum": "01acc27579fdc15f4087491bb6a9bed9c4142d893c7eafd2aa2ae023fbefb8a3"
     },
     "0_deploy-with-hardhat": {
         "title": "Deploying a smart contract using Hardhat",
@@ -174,7 +174,7 @@
         "duration": "10 min read",
         "checksum": "f4b7fa789b2c65e00e467c4851857ab2e629f6d8dbed7f8c2d625abf668a124b"
     },
-    "0_gassless-transactions-with-paymaster": {
+    "0_gasless-transactions-with-paymaster": {
         "title": "Gasless Transactions on Base using a Paymaster",
         "slug": "/gasless-transaction-on-base-using-a-paymaster",
         "description": "Learn how to leverage the Base Paymaster for seamless, gasless transactions on the Coinbase Cloud Developer Platform.",
@@ -193,19 +193,14 @@
             "Cloud Platform"
         ],
         "tags": [
-            "Gasless",
-            "Crypto",
-            "Gas",
-            "Sponsor",
-            "Coinbase",
-            "Base"
+            "Account Abstraction"
         ],
         "difficulty": "easy",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 24, 2024",
         "duration": "27 min read",
-        "checksum": "c865eca8e6dac99a499e6e60f127a88e056a88a1258e8a27b1d06ff0aee187d8"
+        "checksum": "893bd8402de9c3fa91eafb6b53e572003e3fec783c9df5e8bb9f9bf61d1d36b2"
     },
     "0_run-a-base-node": {
         "title": "Running a Base Node",
@@ -231,9 +226,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "6 min read",
-        "checksum": "2effa6656ddc3da5f719b560d44007e317de85bc0e4bf133ef521be9db3b2665"
+        "last_updated": "Jul 24, 2024",
+        "duration": "7 min read",
+        "checksum": "3ee35c2c889d0ca625bd6786119bb0b884446ea9686c455f422597d17c67ed0c"
     },
     "1_build-with-thirdweb": {
         "title": "Building an onchain app using thirdweb",
@@ -342,9 +337,9 @@
         "difficulty": "hard",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 20, 2024",
-        "duration": "40 min read",
-        "checksum": "45a271b4ff0ab6a02e4dc0cfafa0fff3bad3bea298d1abc47e439c49f49f2bd1"
+        "last_updated": "Jul 24, 2024",
+        "duration": "37 min read",
+        "checksum": "ffbe4179c00d71cbb88b2474777b1edc64714c09c9fa35df84c17be0dd7348ba"
     },
     "2_account-abstraction-with-biconomy": {
         "title": "Account Abstraction on Base using Biconomy",
@@ -448,9 +443,38 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 20, 2024",
-        "duration": "32 min read",
-        "checksum": "52014a9d02d07cd4d5fece1a0f894b8da8e916d02cab17389e9451a49efa04ec"
+        "last_updated": "Jul 24, 2024",
+        "duration": "22 min read",
+        "checksum": "216ab0709692334c97fb37c7e043a27404b2050cbbd9d0811c96fc6ce576dfa4"
+    },
+    "2_complex-onchain-nfts": {
+        "title": "Complex Onchain NFTs",
+        "slug": "/complex-onchain-nfts",
+        "description": "A tutorial that teaches how to make complex nfts that are procedurally generated and have onchain metadata and images.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "SVG",
+            "generative art",
+            "onchain metadata",
+            "nft metadata",
+            "onchain images",
+            "interfaces",
+            "pseudorandom numbers",
+            "deterministic randomness"
+        ],
+        "tags": [
+            "nft"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Jul 24, 2024",
+        "duration": "39 min read",
+        "checksum": "25ef22543ebd7f19a66a912a33667c1378455aff457815800cd1e255f63e0d65"
     },
     "2_cross-chain-with-ccip": {
         "title": "Sending messages and tokens from Base to other chains using Chainlink CCIP",
@@ -554,35 +578,6 @@
         "last_updated": "Jul 20, 2024",
         "duration": "18 min read",
         "checksum": "38e9990206b5fcb29b4f3505cf8d584464c012ef7fe76f0f41edb734990b77e5"
-    },
-    "2_onchain-nfts": {
-        "title": "Building onchain NFTs",
-        "slug": "/complex-onchain-nfts",
-        "description": "A tutorial that teaches how to make complex nfts that are procedurally generated and have onchain metadata and images.",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "SVG",
-            "generative art",
-            "onchain metadata",
-            "nft metadata",
-            "onchain images",
-            "interfaces",
-            "pseudorandom numbers",
-            "deterministic randomness"
-        ],
-        "tags": [
-            "nft"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jul 20, 2024",
-        "duration": "39 min read",
-        "checksum": "1b2d9271bd088cb46f98f8fced36e114dc72066fe83b15d2cce1a7fa4ce0dca2"
     },
     "2_oracles-chainlink-price-feeds": {
         "title": "Accessing real-world data using Chainlink Data Feeds",
@@ -704,6 +699,35 @@
         "last_updated": "Jul 20, 2024",
         "duration": "19 min read",
         "checksum": "88e6db6ecb1ee9f852aa7e414005b3c780f3c12277c18cbe2a2d85bcbc16f263"
+    },
+    "2_simple-onchain-nfts": {
+        "title": "Simple Onchain NFTs",
+        "slug": "/simple-onchain-nfts",
+        "description": "A tutorial that teaches how to make simple nfts that are procedurally generated and have onchain metadata and images.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "SVG",
+            "generative art",
+            "onchain metadata",
+            "nft metadata",
+            "onchain images",
+            "interfaces",
+            "pseudorandom numbers",
+            "deterministic randomness"
+        ],
+        "tags": [
+            "nft"
+        ],
+        "difficulty": "easy",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Jul 24, 2024",
+        "duration": "26 min read",
+        "checksum": "d5ccb9ed0dc9b066d63d7b5e769193d60791262ece777ff0d0992ec5082f9ac9"
     },
     "3_farcaster-frames-deploy-to-vercel": {
         "title": "Farcaster Frames: Deploying to Vercel",
