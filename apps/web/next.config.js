@@ -92,7 +92,6 @@ const contentSecurityPolicy = {
     'wss://www.walletlink.org',
     'https://base.easscan.org/graphql',
     'https://api.guild.xyz/',
-    'https://api.talentprotocol.com/',
     isLocalDevelopment ? 'ws://localhost:3000/' : '',
     isLocalDevelopment ? 'http://localhost:3000/' : '',
   ],
