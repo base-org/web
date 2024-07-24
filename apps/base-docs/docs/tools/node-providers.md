@@ -253,3 +253,13 @@ hide_table_of_contents: true
 - Base Mainnet
 
 ---
+
+## Validation Cloud
+
+[Validation Cloud](https://app.validationcloud.io/) is the world’s fastest node provider according to Compare Nodes. With 50 million compute units available for use without a credit card and a scale tier that never has rate limits, Validation Cloud is built to support your most rigorous and low-latency workloads.
+
+#### Supported Networks
+
+- Base Mainnet
+
+---
