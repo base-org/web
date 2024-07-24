@@ -25,7 +25,7 @@ type Memberships = {
   errors?: [];
 };
 
-export function useBaseGuild(address?: `0x${string}`) {
+export function useBaseGuild(address?: `0x${string}`): Record<GuildBadges, boolean> {
   const query = useQuery<Memberships>({
     queryKey: ['guild'],
     queryFn: async () => {
@@ -38,16 +38,24 @@ export function useBaseGuild(address?: `0x${string}`) {
     enabled: !!address,
   });
 
-  const badges = [];
+  // const badges: GuildBadges[] = [];
+  const badges: Record<GuildBadges, boolean> = {
+    BASE_BUILDER: false,
+    BUILDATHON_PARTICIPANT: false,
+    BASE_INITIATE: false,
+    BASE_LEARN_NEWCOMER: false,
+    BUILDATHON_WINNER: false,
+    BASE_GRANTEE: false,
+  };
 
   if (query.data) {
     if (query.data.errors) {
-      return [];
+      return badges;
     }
-    // push badge for each role they've got
+
     for (const role of query.data.roles) {
       if (role.access && role.roleId in ROLE_ID_TO_BADGE) {
-        badges.push(ROLE_ID_TO_BADGE[role.roleId]);
+        badges[ROLE_ID_TO_BADGE[role.roleId]] = true;
       }
     }
   }

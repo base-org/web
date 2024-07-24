@@ -14,6 +14,8 @@ import baseLearnNewcomer from './baseLearnNewcomer.png';
 import buildathonParticipant from './buildathonParticipant.png';
 import buildathonWinner from './buildathonWinner.png';
 
+import talentScore from './talentScore.png';
+
 type BadgeNames = CoinbaseVerifications | GuildBadges;
 
 export const BADGE_IMGS: Record<BadgeNames, StaticImport> = {
@@ -48,6 +50,18 @@ export function Badge({ badge }: { badge: BadgeNames }) {
         <Image src={BADGE_IMGS[badge]} alt={name} height={100} width={100} />
       </div>
       <span className="text-sm font-medium">{name}</span>
+    </div>
+  );
+}
+
+export function TalentBadge({ score }: { score: number }) {
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex h-[160px] w-[160px] items-center justify-center rounded-[24px] border border-gray-10">
+        <Image src={talentScore} alt="Talent Passport score" height={100} width={100} />
+        <span className="absolute font-sans text-3xl font-bold text-white">{score}</span>
+      </div>
+      <span className="text-sm font-medium">Talent Passport score</span>
     </div>
   );
 }
