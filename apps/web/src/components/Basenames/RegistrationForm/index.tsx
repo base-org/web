@@ -214,7 +214,7 @@ export default function RegistrationForm() {
         {registerNameError && (
           <TransactionError className="mt-4 text-center" error={registerNameError} />
         )}
-        {transactionData && (
+        {transactionData && transactionData.status === 'reverted' && (
           <TransactionStatus
             className="mt-4 text-center"
             transaction={transactionData}

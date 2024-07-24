@@ -292,7 +292,7 @@ export default function RegistrationProfileForm() {
       {writeTextRecordsError && <TransactionError error={writeTextRecordsError} />}
       {existingTextRecordsError && <TransactionError error={existingTextRecordsError} />}
       {transactionError && <TransactionError error={transactionError} />}
-      {transactionData && (
+      {transactionData && transactionData.status === 'reverted' && (
         <TransactionStatus transaction={transactionData} chainId={transactionData.chainId} />
       )}
     </form>

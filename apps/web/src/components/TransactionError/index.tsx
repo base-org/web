@@ -1,4 +1,5 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useEffect } from 'react';
@@ -31,6 +32,14 @@ export default function TransactionError({ error, className }: TransactionErrorP
   }, [error, logEventWithContext]);
 
   return (
-    <p className={classNames('text-orange-50', className)}>Transaction canceled: {errorDetail}</p>
+    <p
+      className={classNames(
+        'flex items-center justify-center gap-2 font-bold text-red-50',
+        className,
+      )}
+    >
+      <Icon name="info" color="currentColor" width="1rem" height="1rem" />
+      Transaction failed: {errorDetail}
+    </p>
   );
 }

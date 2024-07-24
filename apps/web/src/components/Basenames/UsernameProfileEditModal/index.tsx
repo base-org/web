@@ -83,10 +83,9 @@ export default function UsernameProfileEditModal({
       logEventWithContext('update_text_records_transaction_success', ActionType.change);
 
       // TODO: Call to remove the previous avatar for vercel's blob
-
       refetchExistingTextRecords()
         .then(() => {
-          // toggleModal() ?
+          toggleModal();
         })
         .catch(() => {});
     }
@@ -270,7 +269,7 @@ export default function UsernameProfileEditModal({
           {writeTextRecordsError && <TransactionError error={writeTextRecordsError} />}
           {existingTextRecordsError && <TransactionError error={existingTextRecordsError} />}
           {transactionError && <TransactionError error={existingTextRecordsError} />}
-          {transactionData && (
+          {transactionData && transactionData.status === 'reverted' && (
             <TransactionStatus transaction={transactionData} chainId={transactionData.chainId} />
           )}
         </form>
