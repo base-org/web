@@ -136,24 +136,40 @@ export const textRecordsKeysPlaceholderForDisplay = {
   [UsernameTextRecordKeys.Discord]: 'Username',
 };
 
-export const textRecordsKeywords = [
+export const textRecordsEngineersKeywords = [
   'Solidity',
   'Rust',
-  'Go',
+  'Security',
   'Javascript',
   'Typescript',
-  'Security',
-  'Product management',
-  'Business development',
+  'Go',
+  'Game development',
+];
+export const textRecordsCreativesKeywords = [
   'UI/UX',
-  'Visual design',
   'Prototyping',
   'Research',
-  'Illustration',
   'Music',
+  'Illustration',
+  'Writing',
+  'Video',
   'Graphic design',
   'Animation',
-  'Game development',
+  'Visual design',
+];
+export const textRecordsCommunnicationKeywords = [
+  'Community',
+  'Product management',
+  'Strategy',
+  'Business development',
+  'Legal',
+  'Marketing',
+];
+
+export const textRecordsKeywords = [
+  ...textRecordsEngineersKeywords,
+  ...textRecordsCreativesKeywords,
+  ...textRecordsCommunnicationKeywords,
 ];
 
 export type UsernameTextRecords = Record<UsernameTextRecordKeys, string>;

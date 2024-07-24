@@ -4,6 +4,9 @@ import Label from 'apps/web/src/components/Label';
 
 import {
   UsernameTextRecordKeys,
+  textRecordsCommunnicationKeywords,
+  textRecordsCreativesKeywords,
+  textRecordsEngineersKeywords,
   textRecordsKeysForDisplay,
   textRecordsKeywords,
 } from 'apps/web/src/utils/usernames';
@@ -48,36 +51,47 @@ export default function UsernameKeywordsField({
 
   const usernameKeywordsFieldId = useId();
 
+  const renderKeyword = (keyword: string) => {
+    const keywordSelected = keywords.includes(keyword);
+    const keywordClasses = classNames(
+      'flex items-center gap-2 rounded-xl border  px-3 py-2 text-sm font-bold transition-all',
+      {
+        'bg-white hover:bg-gray-40/5 border-gray-40/20 text-black': !keywordSelected,
+        'border-[#7FD057] bg-[#7FD057]/20 text-[#195D29]':
+          keywordSelected && textRecordsEngineersKeywords.includes(keyword),
+        'border-[#F8BDF5] bg-[#F8BDF5]/20 text-[#741A66]':
+          keywordSelected && textRecordsCreativesKeywords.includes(keyword),
+        'border-[#45E1E5] bg-[#45E1E5]/20 text-[#004774]':
+          keywordSelected && textRecordsCommunnicationKeywords.includes(keyword),
+      },
+    );
+
+    return (
+      <li key={keyword}>
+        <button
+          type="button"
+          className={keywordClasses}
+          onClick={() => onClickKeyword(keyword)}
+          disabled={disabled}
+        >
+          {keyword}
+
+          <Icon
+            name={keywords.includes(keyword) ? 'cross' : 'plus'}
+            color="currentColor"
+            width="0.75rem"
+            height="0.75rem"
+          />
+        </button>
+      </li>
+    );
+  };
+
   return (
     <Fieldset>
       {labelChildren && <Label htmlFor={usernameKeywordsFieldId}>{labelChildren}</Label>}
 
-      <ul className="flex flex-wrap gap-2">
-        {textRecordsKeywords.map((keyword) => (
-          <li key={keyword}>
-            <button
-              type="button"
-              className={classNames(
-                'flex items-center gap-2 rounded-xl border border-gray-40/20 px-3 py-2 text-sm text-black hover:bg-gray-40/5',
-                {
-                  'bg-gray-40/10': keywords.includes(keyword),
-                },
-              )}
-              onClick={() => onClickKeyword(keyword)}
-              disabled={disabled}
-            >
-              {keyword}
-
-              <Icon
-                name={keywords.includes(keyword) ? 'cross' : 'plus'}
-                color="currentColor"
-                width="0.75rem"
-                height="0.75rem"
-              />
-            </button>
-          </li>
-        ))}
-      </ul>
+      <ul className="flex flex-wrap gap-2">{textRecordsKeywords.map(renderKeyword)}</ul>
     </Fieldset>
   );
 }
