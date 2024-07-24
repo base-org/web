@@ -24,8 +24,9 @@ if (!isSupportedChain(USERNAME_CHAIN_ID)) {
 // TODO: When @katzman add testnet reverse registrar, we'll need to support both
 //       This is the one for base.
 //       This can be calculated from the chainId / coinType automatically
+//        e.g: base mainnet => 0x08d9b0993eb8c4da57c37a4b84a6e384c2623114ff4e9370ed51c9b8935109ba
 export const BASE_REVERSE_NODE =
-  '0x08d9b0993eb8c4da57c37a4b84a6e384c2623114ff4e9370ed51c9b8935109ba';
+  '0x91d1777781884d03a6757a803996e38de2a42967fb37eeaca72729271025a9e2';
 
 const USERNAME_L2_RESOLVER_ADDRESSES: AddressMap = {
   [baseSepolia.id]: '0x8d2D30cdE6c46BC81824d0732cE8395c58da3939',
