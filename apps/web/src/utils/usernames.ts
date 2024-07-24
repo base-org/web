@@ -270,6 +270,7 @@ export const convertReverseNodeToBytes = (address?: Address) => {
 };
 
 export enum Discount {
+  EARLY_ACCESS = 'EARLY_ACCESS',
   CBID = 'CBID',
   CB1 = 'CB1',
   COINBASE_VERIFIED_ACCOUNT = 'COINBASE_VERIFIED_ACCOUNT',
