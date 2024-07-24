@@ -46,9 +46,10 @@ export default function ExperimentsProvider({ children }: ExperimentsProviderPro
     async function startExperiments() {
       try {
         await experimentClient.start();
-        setIsReady(true);
       } catch (exception) {
         console.log(`Error starting experiments for ${ampDeploymentKey}:`, exception);
+      } finally {
+        setIsReady(true);
       }
     }
     void startExperiments();
