@@ -7,16 +7,9 @@ import {
   TrackingCategory,
   TrackingPreference,
 } from '@coinbase/cookie-manager';
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import '@rainbow-me/rainbowkit/styles.css';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { MotionConfig } from 'framer-motion';
-import { AppProps } from 'next/app';
-import { ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
-import { WagmiProvider } from 'wagmi';
-import { base, baseSepolia, mainnet, sepolia } from 'wagmi/chains';
-
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { OnchainKitProvider } from '@coinbase/onchainkit';
+import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
+import { connectorsForWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   coinbaseWallet,
@@ -25,14 +18,18 @@ import {
   uniswapWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import useSprig from 'base-ui/hooks/useSprig';
+import { MotionConfig } from 'framer-motion';
 import { NextPage } from 'next';
-import { createConfig, http } from 'wagmi';
+import { AppProps } from 'next/app';
+import { ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { createConfig, http, WagmiProvider } from 'wagmi';
+import { base, baseSepolia, mainnet, sepolia } from 'wagmi/chains';
 import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
 import { Layout, NavigationType } from '../src/components/Layout/Layout';
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
-import { OnchainKitProvider } from '@coinbase/onchainkit';
 
 coinbaseWallet.preference = 'all';
 
@@ -137,9 +134,11 @@ export default function StaticApp({ Component, pageProps }: AppPropsWithLayout) 
               chain={baseSepolia}
               apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
             >
-              <RainbowKitProvider modalSize="compact" avatar={UserAvatar}>
-                {getLayout(<Component {...pageProps} />)}
-              </RainbowKitProvider>
+              <TooltipProvider>
+                <RainbowKitProvider modalSize="compact" avatar={UserAvatar}>
+                  {getLayout(<Component {...pageProps} />)}
+                </RainbowKitProvider>
+              </TooltipProvider>
             </OnchainKitProvider>
           </QueryClientProvider>
         </WagmiProvider>

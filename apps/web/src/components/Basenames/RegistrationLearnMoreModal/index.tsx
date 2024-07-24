@@ -16,7 +16,7 @@ function InfoIcon() {
     <InformationCircleIcon
       width={12}
       height={12}
-      className="ml-1 fill-[#89909E] transition-colors hover:fill-gray-dark"
+      className="fill-gray-40 transition-colors hover:fill-gray-dark"
     />
   );
 }
@@ -57,17 +57,19 @@ export default function RegistrationLearnMoreModal({
       </p>
       <ul className="mb-5 flex flex-col gap-3 self-start">
         <li className="flex items-center gap-3">
-          <ImageWithLoading
-            src={coinbaseVerification as StaticImageData}
-            alt="criteria icon"
-            width={30}
-            height={30}
-            wrapperClassName="rounded-lg"
-            imageClassName={CBRowClasses}
-          />
-          <p className={classNames(CBRowClasses)}>Coinbase verification </p>
           <Tooltip content="Verifies you have a valid trading account on Coinbase">
-            <InfoIcon />
+            <div className="flex flex-row items-center justify-start gap-1">
+              <ImageWithLoading
+                src={coinbaseVerification as StaticImageData}
+                alt="criteria icon"
+                width={30}
+                height={30}
+                wrapperClassName="rounded-lg"
+                imageClassName={CBRowClasses}
+              />
+              <p className={classNames(CBRowClasses)}>Coinbase verification </p>
+              <InfoIcon />
+            </div>
           </Tooltip>
           {allActiveDiscounts.has(Discount.COINBASE_VERIFIED_ACCOUNT) && (
             <div className={qualifiedClasses}>
@@ -76,17 +78,19 @@ export default function RegistrationLearnMoreModal({
           )}
         </li>
         <li className="flex items-center gap-3">
-          <ImageWithLoading
-            src={coinbaseOneVerification as StaticImageData}
-            alt="criteria icon"
-            width={30}
-            height={30}
-            wrapperClassName="rounded-lg"
-            imageClassName={CBRowClasses}
-          />
-          <p className={classNames(CB1RowClasses)}>Coinbase One verification </p>
           <Tooltip content="Verifies you have an active Coinbase One subscription">
-            <InfoIcon />
+            <div className="flex flex-row items-center justify-start gap-1">
+              <ImageWithLoading
+                src={coinbaseOneVerification as StaticImageData}
+                alt="criteria icon"
+                width={30}
+                height={30}
+                wrapperClassName="rounded-lg"
+                imageClassName={CBRowClasses}
+              />
+              <p className={classNames(CB1RowClasses)}>Coinbase One verification </p>
+              <InfoIcon />
+            </div>
           </Tooltip>
           {allActiveDiscounts.has(Discount.CB1) && (
             <div className={qualifiedClasses}>
@@ -95,17 +99,19 @@ export default function RegistrationLearnMoreModal({
           )}
         </li>
         <li className="flex items-center gap-3">
-          <ImageWithLoading
-            src={cbidVerification as StaticImageData}
-            alt="criteria icon"
-            width={30}
-            height={30}
-            wrapperClassName="rounded-lg"
-            imageClassName={CBRowClasses}
-          />
-          <p className={classNames(CBIDRowClasses)}>A cb.id username </p>
           <Tooltip content="cb.id must have been claimed prior to Basenames launch">
-            <InfoIcon />
+            <div className="flex flex-row items-center justify-start gap-1">
+              <ImageWithLoading
+                src={cbidVerification as StaticImageData}
+                alt="criteria icon"
+                width={30}
+                height={30}
+                wrapperClassName="rounded-lg"
+                imageClassName={CBRowClasses}
+              />
+              <p className={classNames(CBIDRowClasses)}>A cb.id username </p>
+              <InfoIcon />
+            </div>
           </Tooltip>
           {allActiveDiscounts.has(Discount.CBID) && (
             <div className={qualifiedClasses}>

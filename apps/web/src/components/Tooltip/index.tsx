@@ -1,35 +1,20 @@
-import { Transition } from '@headlessui/react';
-import { PropsWithChildren, ReactNode, useCallback, useState } from 'react';
+import { Arrow, Content, Portal, Root, Trigger } from '@radix-ui/react-tooltip';
+import { PropsWithChildren, ReactNode } from 'react';
 
 type TooltipProps = {
   content: ReactNode;
 };
 
-function Tooltip({ content, children }: PropsWithChildren<TooltipProps>) {
-  const [isHovered, setIsHovered] = useState(false);
-  const setHovered = useCallback(() => setIsHovered(true), []);
-  const setNotHovered = useCallback(() => setIsHovered(false), []);
-
+export default function Tooltip({ content, children }: PropsWithChildren<TooltipProps>) {
   return (
-    <div className="relative" onMouseEnter={setHovered} onMouseLeave={setNotHovered}>
-      {children}
-      <Transition
-        show={isHovered}
-        enter="transition ease-out duration-200"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition ease-in duration-150"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <div className="absolute -top-12 left-1/2 w-max -translate-x-1/2 transform">
-          <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-gray-dark ring-opacity-5">
-            <div className="bg-gray-dark px-4 py-2 text-white">{content}</div>
-          </div>
-        </div>
-      </Transition>
-    </div>
+    <Root>
+      <Trigger>{children}</Trigger>
+      <Portal>
+        <Content className="z-50 shadow-lg ring-1 ring-gray-dark ring-opacity-5">
+          <Arrow />
+          <div className="max-w-sm rounded-lg bg-gray-dark px-4 py-2 text-white">{content}</div>
+        </Content>
+      </Portal>
+    </Root>
   );
 }
-
-export default Tooltip;
