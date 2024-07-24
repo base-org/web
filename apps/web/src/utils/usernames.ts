@@ -36,6 +36,8 @@ export enum UsernameTextRecordKeys {
   Lens = 'xyz.lens',
   Telegram = 'org.telegram',
   Discord = 'com.discord',
+
+  Avatar = 'avatar',
 }
 
 // The social enabled for the current registration / profile pages
@@ -103,6 +105,7 @@ export const textRecordsKeysEnabled = [
   UsernameTextRecordKeys.Lens,
   UsernameTextRecordKeys.Telegram,
   UsernameTextRecordKeys.Discord,
+  UsernameTextRecordKeys.Avatar,
 ];
 
 export const textRecordsKeysForDisplay = {

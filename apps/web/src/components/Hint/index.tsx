@@ -1,14 +1,29 @@
+import classNames from 'classnames';
 import { HTMLAttributes, forwardRef } from 'react';
 
-export type HintProps = HTMLAttributes<HTMLSpanElement>;
+export enum HintVariants {
+  Muted = 'muted',
+  Error = 'error',
+}
 
-const Hint = forwardRef<HTMLSpanElement, HintProps>(({ children }, ref) => {
-  return (
-    <span ref={ref} className="text-sm text-gray-60">
-      {children}
-    </span>
-  );
-});
+export type HintProps = HTMLAttributes<HTMLSpanElement> & {
+  variant?: HintVariants;
+};
+
+const Hint = forwardRef<HTMLSpanElement, HintProps>(
+  ({ children, variant = HintVariants.Muted }, ref) => {
+    const hintClassName = classNames('text-sm', {
+      'text-gray-60': variant === HintVariants.Muted,
+      'text-red-60': variant === HintVariants.Error,
+    });
+
+    return (
+      <span ref={ref} className={hintClassName}>
+        {children}
+      </span>
+    );
+  },
+);
 
 Hint.displayName = 'Hint';
 

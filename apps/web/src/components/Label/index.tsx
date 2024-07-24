@@ -4,7 +4,7 @@ import { LabelHTMLAttributes, forwardRef } from 'react';
 export type LabelProps = LabelHTMLAttributes<HTMLLabelElement>;
 
 const Label = forwardRef<HTMLLabelElement, LabelProps>(({ children, htmlFor, className }, ref) => {
-  const labelClasses = classNames('font-bold', className);
+  const labelClasses = classNames('font-bold', className, { 'cursor-pointer': !!htmlFor });
   return (
     <label ref={ref} htmlFor={htmlFor} className={labelClasses}>
       {children}
