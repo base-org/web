@@ -146,7 +146,7 @@ A few notes:
 - You'll make the api endpoint for the button clicker game next
 - Feel free to adjust the text. We're just having fun by making it give conflicting instructions
 - The button to show the leaderboard simply goes to your page. You could render an svg to png in the frame endpoint to show it in frames as well
-- You'll have to do the leaderboard on your own. Check out the frontend content in [Base Camp] if you need a hand learning how to interact with your contracts!
+- You'll have to do the leaderboard on your own. Check out the frontend content in [Base Learn] if you need a hand learning how to interact with your contracts!
 
 ## Adding the Transaction Endpoints
 
@@ -360,7 +360,7 @@ contract ClickTheButton is Ownable {
 
 ---
 
-[Base Camp]: https://docs.base.org/base-camp/docs/welcome
+[Base Learn]: https://docs.base.org/base-learn/docs/welcome
 [Farcaster]: https://www.farcaster.xyz/
 [a-frame-in-100-lines]: https://github.com/Zizzamia/a-frame-in-100-lines
 [OnchainKit]: https://github.com/coinbase/onchainkit
