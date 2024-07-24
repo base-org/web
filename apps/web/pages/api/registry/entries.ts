@@ -47,8 +47,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   };
 
   try {
-    const requests = await kv.get<number>(`stat:requests.${pageKey}`);
-    await kv.set<number>(`stat:requests.${pageKey}`, requests ?? 0 + 1);
+    await kv.incr(`stat:requests.${pageKey}`);
   } catch (error) {
     console.error(error);
   }
