@@ -56,16 +56,16 @@ export default function ExperimentsProvider({ children }: ExperimentsProviderPro
   }, []);
 
   const getUserVariant = useCallback(
-    (flagKey: string): string => {
+    (flagKey: string): string | undefined => {
       if (!isReady) {
-        return '';
+        return undefined;
       }
       if (!experimentClient) {
         console.error('No experiment clients found');
-        return '';
+        return undefined;
       }
       const variant = experimentClient.variant(flagKey);
-      return variant.value ?? '';
+      return variant.value;
     },
     [isReady],
   );
@@ -85,7 +85,16 @@ const useExperiments = () => {
   return context;
 };
 
-export { useExperiments };
+const useExperiment = (flagKey: string): UseExperimentReturnValue => {
+  const { isReady, getUserVariant } = useExperiments();
+  const userVariant = useMemo(() => {
+    return getUserVariant(flagKey);
+  }, [getUserVariant, flagKey]);
+
+  return { isReady, userVariant };
+};
+
+export { useExperiments, useExperiment };
 
 type WindowWithAnalytics = Window &
   typeof globalThis & {
@@ -103,9 +112,14 @@ type WindowWithAnalytics = Window &
 type ExperimentsContextProps = {
   experimentClient: ExperimentClient | null;
   isReady: boolean;
-  getUserVariant: (flagKey: string) => string;
+  getUserVariant: (flagKey: string) => string | undefined;
 };
 
 type ExperimentsProviderProps = {
   children: ReactNode;
+};
+
+type UseExperimentReturnValue = {
+  isReady: boolean;
+  userVariant: string | undefined;
 };
