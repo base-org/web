@@ -30,7 +30,7 @@ export function UserAvatar() {
 
   const deterministicName = baseEnsName ?? ensName ?? address ?? 'default-avatar';
   const defaultSelectedProfilePicture = getUserNamePicture(deterministicName);
-  const avatar = existingTextRecords.avatar ?? ensAvatar ?? defaultSelectedProfilePicture;
+  const avatar = (existingTextRecords.avatar || ensAvatar) ?? defaultSelectedProfilePicture;
 
   const isLoading =
     ensNameIsLoading || ensAvatarIsLoading || baseEnsNameIsLoading || existingTextRecordsIsLoading;
