@@ -230,7 +230,7 @@ export default function RegistrationSearchInput({
           <div className="w-full border-t border-gray-40/20 " />
         </div>
         {invalidWithMessage ? (
-          <p className={mutedMessage}>Invalid name: {message}</p>
+          <p className={mutedMessage}>{message}</p>
         ) : isNameAvailable === true ? (
           <>
             <p className={dropdownLabelClasses}>Available</p>

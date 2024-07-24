@@ -5,11 +5,7 @@ import classNames from 'classnames';
 import { useState } from 'react';
 import { useInterval } from 'usehooks-ts';
 
-const SEARCH_LABEL_COPY_STRINGS = [
-  'Set up a community profile.',
-  'Connect with Based people.',
-  'Get exclusive onchain perks.',
-];
+const SEARCH_LABEL_COPY_STRINGS = ['Build your Based profile', 'Connect with Based builders'];
 
 const useRotatingText = (strings: string[]) => {
   const [currentIndex, setCurrentIndex] = useState(0);

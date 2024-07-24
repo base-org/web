@@ -127,7 +127,8 @@ function DesktopNav({ color }: DesktopNavProps) {
     <div className="hidden h-full w-fit flex-grow flex-row items-center justify-between lg:flex">
       <Dropdown label="Ecosystem" color={color}>
         <DropdownLink href="/ecosystem" label="Apps" color={color} />
-        <DropdownLink href="/name" label="Names" color={color} />
+        {/* todo ECO-101: add this back for GA */}
+        {/* <DropdownLink href="/name" label="Names" color={color} /> */}
         <DropdownLink
           href="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
           label="Grants"

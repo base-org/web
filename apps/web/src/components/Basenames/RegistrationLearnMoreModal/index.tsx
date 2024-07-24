@@ -104,7 +104,7 @@ export default function RegistrationLearnMoreModal({
             imageClassName={CBRowClasses}
           />
           <p className={classNames(CBIDRowClasses)}>A cb.id username </p>
-          <Tooltip content="cb.id claimed prior to cutoff date">
+          <Tooltip content="cb.id must have been claimed prior to Basenames launch">
             <InfoIcon />
           </Tooltip>
           {allActiveDiscounts.has(Discount.CBID) && (

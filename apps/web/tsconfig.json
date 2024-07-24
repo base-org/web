@@ -9,14 +9,23 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {
-      "base-ui": ["../../libs/base-ui"]
+      "base-ui": [
+        "../../libs/base-ui"
+      ]
     },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
     "**/*",
     "**/*.json",
-    "../../types/**/*"
+    "../../types/**/*",
+    ".next/types/**/*.ts"
   ],
   "exclude": [],
   "references": [

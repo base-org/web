@@ -1,3 +1,4 @@
+import '@coinbase/onchainkit/styles.css';
 import './global.css';
 
 import {
@@ -6,7 +7,16 @@ import {
   TrackingCategory,
   TrackingPreference,
 } from '@coinbase/cookie-manager';
-import { connectorsForWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import '@rainbow-me/rainbowkit/styles.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { MotionConfig } from 'framer-motion';
+import { AppProps } from 'next/app';
+import { ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { WagmiProvider } from 'wagmi';
+import { base, baseSepolia, mainnet, sepolia } from 'wagmi/chains';
+
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   coinbaseWallet,
@@ -15,18 +25,14 @@ import {
   uniswapWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import useSprig from 'base-ui/hooks/useSprig';
-import { MotionConfig } from 'framer-motion';
-import { AppProps } from 'next/app';
-import { ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
-import { createConfig, http, WagmiProvider } from 'wagmi';
-import { base, baseSepolia, mainnet, sepolia } from 'wagmi/chains';
+import { NextPage } from 'next';
+import { createConfig, http } from 'wagmi';
 import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
 import { Layout, NavigationType } from '../src/components/Layout/Layout';
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
-import { NextPage } from 'next';
-import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
+import { OnchainKitProvider } from '@coinbase/onchainkit';
 
 coinbaseWallet.preference = 'all';
 
@@ -58,7 +64,6 @@ const config = createConfig({
   },
   ssr: true,
 });
-
 const queryClient = new QueryClient();
 const sprigEnvironmentId = process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID;
 
@@ -128,9 +133,14 @@ export default function StaticApp({ Component, pageProps }: AppPropsWithLayout) 
         <ClientAnalyticsScript />
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
-            <RainbowKitProvider modalSize="compact" avatar={UserAvatar}>
-              {getLayout(<Component {...pageProps} />)}
-            </RainbowKitProvider>
+            <OnchainKitProvider
+              chain={baseSepolia}
+              apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
+            >
+              <RainbowKitProvider modalSize="compact" avatar={UserAvatar}>
+                {getLayout(<Component {...pageProps} />)}
+              </RainbowKitProvider>
+            </OnchainKitProvider>
           </QueryClientProvider>
         </WagmiProvider>
       </MotionConfig>
