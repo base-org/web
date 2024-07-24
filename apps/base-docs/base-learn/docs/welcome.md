@@ -4,7 +4,7 @@ description: Base Learn is a comprehensive, free guide to learning smart contrac
 hide_table_of_contents: false
 ---
 
-![Welcome](../assets/images/welcome/Base_Camp_Hero_2.png)
+![Welcome](../assets/images/welcome/Base_Learn_Hero.png)
 
 Welcome to Base Learn, your guide to learning smart contract development. Base Learn's curriculum has been expertly crafted to equip you with the skills and knowledge needed to build and deploy smart contracts on Base, or any EVM-compatible chain, including Ethereum, Optimism, and many more. Plus, you'll be eligible to earn NFTs as you complete each module, showcasing your mastery of the material.
 

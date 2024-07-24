@@ -12,7 +12,7 @@ export function middleware(req: NextRequest) {
     url.pathname === '/base-learn/docs' ||
     url.pathname === '/basecamp/docs' ||
     url.pathname === '/baselearn/docs' ||
-    url.pathname === '/learn' ||
+    url.pathname === '/camp' ||
     url.pathname === '/learn'
   ) {
     url.host = 'docs.base.org';
