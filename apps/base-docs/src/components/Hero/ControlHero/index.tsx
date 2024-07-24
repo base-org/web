@@ -8,7 +8,7 @@ export default function ControlHero() {
     <header className={styles.heroContainer}>
       <div className="layout-container">
         <div className={styles.heroTextContainer}>
-          <h1 className={styles.heroText}>Everything you need to build onchian</h1>
+          <h1 className={styles.heroText}>Everything you need to build onchain</h1>
         </div>
         <HeroButton />
       </div>

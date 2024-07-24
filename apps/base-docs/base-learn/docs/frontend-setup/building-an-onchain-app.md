@@ -6,7 +6,7 @@ hide_table_of_contents: false
 
 While it's convenient and fast to start from a template, the template may not fit your needs. Whether you prefer a different stack, or have already started building the traditional web components of your app, it's common to need to manually add onchain libraries to get your app working.
 
-In this guide, we'll build the beginnings of an app similar to the one created by the [RainbowKit] quick start, but we'll do it piece by piece. You can follow along, and swap out any of our library choices with the ones you prefer.
+In this guide, you'll build the beginnings of an app similar to the one created by the [RainbowKit] quick start, but you'll do it piece by piece. You can follow along, and swap out any of our library choices with the ones you prefer.
 
 ---
 
@@ -47,7 +47,7 @@ Run your app with `yarn dev` to make sure it generated correctly.
 
 ### Manually Installing RainbowKit, Wagmi, and Viem
 
-The [quick start] guide for RainbowKit also contains step-by-step instructions for manual install. We'll be following an adjusted version here. Most of the setup is actually for configuring [wagmi], which sits on top of [viem] and makes it much easier to write React that interacts with the blockchain.
+The [quick start] guide for RainbowKit also contains step-by-step instructions for manual install. You'll be following an adjusted version here. Most of the setup is actually for configuring [wagmi], which sits on top of [viem] and makes it much easier to write React that interacts with the blockchain.
 
 Start by installing the dependencies:
 
@@ -63,7 +63,7 @@ Onchain libraries and packages tend to require very current versions of Node. If
 
 ## Adding Imports, Connectors, Config
 
-In Next.js 14 with the app router, the root of your app is found in `app/layout.tsx`, if you followed the recommended setup options. As we want the blockchain provider context to be available for the entire app, we'll add it here.
+In Next.js 14 with the app router, the root of your app is found in `app/layout.tsx`, if you followed the recommended setup options. As you want the blockchain provider context to be available for the entire app, you'll add it here.
 
 You'll need to set up your providers in a second file, so that you can add `"use client":` to the top. Doing so forces this code to be run client side, which is necessary since your server won't have access to your users' wallet information.
 
@@ -98,7 +98,7 @@ If you're adapting this guide to a different set of libraries or platforms, you 
 
 ### Config
 
-Now, we'll configure the chains, wallet connectors, and providers for your app. We'll use `getDefaultConfig` for now, to get started. See our guide on [Connecting to the Blockchain] for more information on blockchain providers.
+Now, you need to configure the chains, wallet connectors, and providers for your app. You'll use `getDefaultConfig` for now, to get started. See our guide on [Connecting to the Blockchain] for more information on blockchain providers.
 
 You'll need a `projectId` from [Wallet Connect Cloud], which you can get for free on their site. Make sure to insert it in the appropriate place.
 
@@ -153,7 +153,7 @@ return (
 
 ## Adding the Connect Button
 
-You're now ready to add your connect button. You can do this anywhere in your app, thanks to the `RainbowKitProvider`. Common practice would be to place the button in your app's header. Since the Next.js template doesn't have one, we'll just add it to the top of the automatically generated page, rather than spending time implementing React components.
+You're now ready to add your connect button. You can do this anywhere in your app, thanks to the `RainbowKitProvider`. Common practice would be to place the button in your app's header. Since the Next.js template doesn't have one, you can just add it to the top of the automatically generated page, rather than spending time implementing React components.
 
 Open up `page.tsx`, and import the `ConnectButton`:
 
