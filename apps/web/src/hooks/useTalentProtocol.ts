@@ -1,10 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 
 async function fetchPassport(address: `0x${string}`) {
-  const response = await fetch(`https://api.talentprotocol.com/api/v2/passports/${address}`, {
-    method: 'GET',
-    headers: {},
-  });
+  console.log(process.env.NEXT_PUBLIC_TALENT_PROTOCOL_API_KEY);
+  const response = await fetch(`/api/basenames/talentprotocol/${address}`);
   const data = await response.json();
   return data;
 }
