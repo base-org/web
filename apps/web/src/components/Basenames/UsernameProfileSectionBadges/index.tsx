@@ -3,12 +3,14 @@ import { Badge } from 'apps/web/src/components/Basenames/UsernameProfileSectionB
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
 import { useBaseGuild } from 'apps/web/src/hooks/useBaseGuild';
 import { useCoinbaseVerification } from 'apps/web/src/hooks/useCoinbaseVerifications';
+import { useTalentProtocol } from 'apps/web/src/hooks/useTalentProtocol';
 
 export default function UsernameProfileSectionBadges() {
   const { profileAddress } = useUsernameProfile();
 
   const badges = useCoinbaseVerification(profileAddress);
   const guildBadges = useBaseGuild(profileAddress);
+  useTalentProtocol(profileAddress);
 
   if (!badges.length) return null;
 
