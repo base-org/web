@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { useAccount } from 'wagmi';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import '@rainbow-me/rainbowkit/styles.css';
 
 import DefaultNavbarItem from '@theme/NavbarItem/DefaultNavbarItem';
 import DropdownNavbarItem from '@theme/NavbarItem/DropdownNavbarItem';
@@ -10,17 +12,18 @@ import DocNavbarItem from '@theme/NavbarItem/DocNavbarItem';
 import DocSidebarNavbarItem from '@theme/NavbarItem/DocSidebarNavbarItem';
 import DocsVersionNavbarItem from '@theme/NavbarItem/DocsVersionNavbarItem';
 import DocsVersionDropdownNavbarItem from '@theme/NavbarItem/DocsVersionDropdownNavbarItem';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import '@rainbow-me/rainbowkit/styles.css';
-import styles from './styles.module.css';
-import { WalletAvatar } from '../../components/WalletAvatar';
+
+import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
 import logEvent, {
   ActionType,
   AnalyticsEventImportance,
   ComponentType,
   identify,
 } from 'base-ui/utils/logEvent';
-import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
+
+import styles from './styles.module.css';
+import { WalletAvatar } from '../../components/WalletAvatar';
+import Icon from '../../components/Icon';
 
 export const CustomConnectButton = ({ className }) => {
   return (
@@ -173,25 +176,28 @@ export const CustomNavbarLink = (props) => {
 export const CustomDropdownLink = (props) => {
   return (
     <li>
-      <a
-        href={props.to}
-        target={props.target ?? '_self'}
-        className="dropdown__link"
-        style={{ cursor: 'pointer' }}
-        onClick={() => {
-          logEvent(
-            props.eventLabel,
-            {
-              action: ActionType.click,
-              componentType: ComponentType.link,
-              context: props.eventContext,
-            },
-            AnalyticsEventImportance.high,
-          );
-        }}
-      >
-        {props.label}
-      </a>
+      <div className="dropdown__link__container">
+        {props.icon && <Icon name={props.icon} width="24" height="24" />}
+        <a
+          href={props.to}
+          target={props.target ?? '_self'}
+          className="dropdown__link"
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            logEvent(
+              props.eventLabel,
+              {
+                action: ActionType.click,
+                componentType: ComponentType.link,
+                context: props.eventContext,
+              },
+              AnalyticsEventImportance.high,
+            );
+          }}
+        >
+          {props.label}
+        </a>
+      </div>
     </li>
   );
 };

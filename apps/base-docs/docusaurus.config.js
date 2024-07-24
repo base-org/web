@@ -315,6 +315,40 @@ const config = {
               eventLabel: 'about_jobs',
               eventContext: 'navbar',
             },
+            {
+              type: 'dropdown',
+              label: 'Socials',
+              navposition: 'topRight',
+              items: [
+                {
+                  label: 'Discord',
+                  icon: 'discord',
+                  type: 'custom-dropdownLink',
+                  target: '_blank',
+                  to: "https://discord.com/invite/buildonbase",
+                  eventLabel: 'socials_discord',
+                  eventContext: 'navbar',
+                },
+                {
+                  label: 'Twitter',
+                  icon: 'twitter',
+                  type: 'custom-dropdownLink',
+                  target: '_blank',
+                  to: "https://www.twitter.com/base",
+                  eventLabel: 'socials_twitter',
+                  eventContext: 'navbar',
+                },
+                {
+                  label: 'Github',
+                  icon: 'github',
+                  type: 'custom-dropdownLink',
+                  target: '_blank',
+                  to: "https://www.github.com/base-org",
+                  eventLabel: 'socials_github',
+                  eventContext: 'navbar',
+                },
+              ]
+            },
           ],
         },
         // Langauge selection dropdown will be supported in the future
