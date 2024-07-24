@@ -26,7 +26,7 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# Proveedores de Nodo
+# Proveedores de Nodos
 
 ---
 
@@ -53,7 +53,7 @@ hide_table_of_contents: true
 
 ## Alchemy
 
-[Alchemy](https://www.alchemy.com/base) es un proveedor de API popular y plataforma de desarrolladores. Su robusto nivel gratuito ofrece acceso a características mejoradas como SDKs, [APIs JSON-RPC](https://docs.alchemy.com/reference/base-api-quickstart), y nodos mainnet y testnet alojados para Base.
+[Alchemy](https://www.alchemy.com/base) es un proveedor de API y plataforma de desarrollo popular. Su robusto nivel gratuito ofrece acceso a características mejoradas como SDKs, [APIs JSON-RPC](https://docs.alchemy.com/reference/base-api-quickstart), y nodos mainnet y testnet alojados para Base.
 
 #### Redes Soportadas
 
@@ -97,7 +97,7 @@ hide_table_of_contents: true
 
 ## Blockdaemon
 
-[Blockdaemon](https://www.blockdaemon.com/protocols/base/) ofrece acceso a nodos alojados de Base con un plan gratuito de $0/mes a través de la Suite de Datos Ubiquity. Pueden incurrir costos adicionales dependiendo del uso.
+[Blockdaemon](https://www.blockdaemon.com/protocols/base/) ofrece acceso a nodos alojados de Base con un plan gratuito de $0/mes a través de la Suite de Datos Ubiquity. Se pueden incurrir en costos adicionales dependiendo del uso.
 
 #### Redes Soportadas
 
@@ -119,7 +119,7 @@ hide_table_of_contents: true
 
 ## Chainstack
 
-[Chainstack](https://chainstack.com/build-better-with-base/) permite a los desarrolladores ejecutar nodos y APIs de Base de alto rendimiento en minutos. Ofrecen nodos RPC elásticos de Base que proporcionan endpoints API personales, geográficamente diversos y protegidos, así como nodos de archivo para consultar toda la historia de Base Mainnet. Comienza con sus [planes gratuitos y de pago](https://chainstack.com/pricing/).
+[Chainstack](https://chainstack.com/build-better-with-base/) permite a los desarrolladores ejecutar nodos y APIs de Base de alto rendimiento en minutos. Ofrecen nodos RPC elásticos de Base que proporcionan endpoints API personales, geográficamente diversos y protegidos, así como nodos de archivo para consultar toda la historia de Base Mainnet. Comienza con sus [planes de precios gratuitos y de pago](https://chainstack.com/pricing/).
 
 #### Redes Soportadas
 
@@ -141,7 +141,7 @@ hide_table_of_contents: true
 
 ## GetBlock
 
-[GetBlock](https://getblock.io/nodes/base/) es una plataforma Blockchain-as-a-Service (BaaS) que proporciona acceso instantáneo a nodos completos para Base a través de API. Ofrecen planes gratuitos, de pago por uso y de precios ilimitados.
+[GetBlock](https://getblock.io/nodes/base/) es una plataforma Blockchain-as-a-Service (BaaS) que proporciona acceso instantáneo a API de nodos completos para Base. Ofrecen planes gratuitos, de pago por uso y de precios ilimitados.
 
 #### Redes Soportadas
 
@@ -152,7 +152,7 @@ hide_table_of_contents: true
 
 ## NodeReal
 
-[NodeReal](https://nodereal.io/) es un proveedor de infraestructura y servicios de blockchain que proporciona acceso instantáneo y fácil a APIs de nodos de Base.
+[NodeReal](https://nodereal.io/) es un proveedor de infraestructura y servicios blockchain que proporciona acceso instantáneo y fácil a APIs de nodos de Base.
 
 #### Redes Soportadas
 
@@ -167,7 +167,7 @@ hide_table_of_contents: true
 #### Redes Soportadas
 
 - Base Mainnet
-- Base Testnet (Disponible a pedido)
+- Base Testnet (Disponible a solicitud)
 
 ---
 
@@ -183,7 +183,7 @@ hide_table_of_contents: true
 
 ## OnFinality
 
-[OnFinality](https://onfinality.io) proporciona acceso de archivo de alto rendimiento a Base Mainnet y Base Sepolia, con un generoso nivel gratuito y altos límites de tasa, así como APIs de Trace y Debug, disponibles para [planes de pago](https://onfinality.io/pricing).
+[OnFinality](https://onfinality.io) proporciona acceso de alto rendimiento a archivos de Base Mainnet y Base Sepolia, con un generoso nivel gratuito y altos límites de tasa, así como APIs de Trace y Debug, disponibles para [planes de pago](https://onfinality.io/pricing).
 
 #### Redes Soportadas
 
@@ -204,7 +204,7 @@ hide_table_of_contents: true
 ---
 
 ## RockX
-[RockX](https://access.rockx.com) ofrece una red global de nodos de blockchain y herramientas para desarrolladores para la innovación en la cadena. Comienza con nuestro [Base RPC](https://access.rockx.com/product/base-blockchain-api-for-web3-builders) gratuito para acceder a soluciones de grado institucional.
+[RockX](https://access.rockx.com) ofrece una red global de nodos blockchain y herramientas para desarrolladores para la innovación en la cadena. Comienza con nuestro [Base RPC](https://access.rockx.com/product/base-blockchain-api-for-web3-builders) gratuito para acceder a soluciones de grado institucional.
 
 #### Redes Soportadas
 
@@ -225,7 +225,7 @@ hide_table_of_contents: true
 
 ## SubQuery
 
-[SubQuery](https://subquery.network/rpc) es una red globalmente distribuida y descentralizada de nodos RPC, que ofrece generosos endpoints públicos gratuitos y mayor acceso a través de Planes Flex.
+[SubQuery](https://subquery.network/rpc) es una red distribuida globalmente y descentralizada de nodos RPC, que ofrece endpoints públicos gratuitos generosos y mayor acceso a través de Planes Flex.
 
 #### Redes Soportadas
 
@@ -235,7 +235,7 @@ hide_table_of_contents: true
 
 ## Tenderly Web3 Gateway
 
-[Tenderly Web3 Gateway](https://tenderly.co/web3-gateway) proporciona una solución de nodo alojado rápida y confiable con una suite integrada de herramientas para desarrolladores y bloques de construcción de infraestructura que cubren todo tu ciclo de vida de desarrollo. Desarrolla, prueba, despliega y monitorea tu aplicación en la cadena en la red Base con [planes gratuitos y de pago](https://tenderly.co/pricing).
+[Tenderly Web3 Gateway](https://tenderly.co/web3-gateway) proporciona una solución de nodo alojado rápida y confiable con una suite integrada de herramientas para desarrolladores y bloques de construcción de infraestructura que cubren todo tu ciclo de desarrollo. Desarrolla, prueba, despliega y monitorea tu aplicación en la cadena en la red Base con [planes gratuitos y de pago](https://tenderly.co/pricing).
 
 #### Redes Soportadas
 
