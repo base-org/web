@@ -21,93 +21,93 @@ keywords:
 hide_table_of_contents: true
 ---
 
-es + es-translated # Using Base with your wallet
+# Usando Base con tu billetera
 
 ---
 
-es + es-translated ## Coinbase Wallet
+## Coinbase Wallet
 
-es + es-translated The [Coinbase Wallet](https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad?hl=en) browser extension provides support for Base by default.
+La extensión del navegador [Coinbase Wallet](https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad?hl=en) proporciona soporte para Base por defecto.
 
-es + es-translated To use Base with Coinbase Wallet:
+Para usar Base con Coinbase Wallet:
 
-es + es-translated 1. Open the Coinbase Wallet browser extension and log in to your account.
-2. Connect to an app using Coinbase Wallet.
-3. Open the network selection menu by clicking the network icon in the upper right-hand corner.
-4. Select **Base**.
+1. Abre la extensión del navegador Coinbase Wallet e inicia sesión en tu cuenta.
+2. Conéctate a una aplicación usando Coinbase Wallet.
+3. Abre el menú de selección de red haciendo clic en el ícono de red en la esquina superior derecha.
+4. Selecciona **Base**.
 
-es + es-translated Your active network should now be switched to Base.
+Tu red activa ahora debería estar cambiada a Base.
 
 ---
 
-es + es-translated ## Other wallets
+## Otras billeteras
 
-es + es-translated Base can be added as a custom network to any EVM-compatible wallet (i.e. [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)).
+Base se puede agregar como una red personalizada a cualquier billetera compatible con EVM (es decir, [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)).
 
-es + es-translated ### MetaMask
+### MetaMask
 
-es + es-translated To add Base as a custom network to MetaMask:
+Para agregar Base como una red personalizada a MetaMask:
 
-es + es-translated 1. Open the MetaMask browser extension.
-2. Open the network selection dropdown menu by clicking the dropdown button at the top of the extension.
-3. Click the **Add network** button.
-4. Click **Add a network manually**.
-5. In the **Add a network manually** dialog that appears, enter the following information for Base mainnet:
+1. Abre la extensión del navegador MetaMask.
+2. Abre el menú desplegable de selección de red haciendo clic en el botón desplegable en la parte superior de la extensión.
+3. Haz clic en el botón **Agregar red**.
+4. Haz clic en **Agregar una red manualmente**.
+5. En el cuadro de diálogo **Agregar una red manualmente** que aparece, ingresa la siguiente información para la mainnet de Base:
 
-es + es-translated | Name            | Value                                                        |
+| Nombre            | Valor                                                        |
    | :-------------- | :----------------------------------------------------------- |
-   | Network Name    | Base Mainnet                                                 |
-   | Description     | The public mainnet for Base.                                 |
-   | RPC Endpoint    | [https://mainnet.base.org](https://mainnet.base.org)         |
-   | Chain ID        | 8453                                                         |
-   | Currency Symbol | ETH                                                          |
-   | Block Explorer  | [https://base.blockscout.com/](https://base.blockscout.com/) |
+   | Nombre de la Red | Base Mainnet                                                 |
+   | Descripción      | La mainnet pública para Base.                                |
+   | Punto de acceso RPC | [https://mainnet.base.org](https://mainnet.base.org)         |
+   | ID de Cadena     | 8453                                                         |
+   | Símbolo de Moneda | ETH                                                          |
+   | Explorador de Bloques | [https://base.blockscout.com/](https://base.blockscout.com/) |
 
-es + es-translated 6. Tap the Save button to save Base as a network.
+6. Toca el botón Guardar para guardar Base como una red.
 
-es + es-translated You should now be able to connect to the Base by selecting it from the network selection dropdown menu.
+Ahora deberías poder conectarte a Base seleccionándola desde el menú desplegable de selección de red.
 
 ---
 
-es + es-translated ## Testnet
+## Testnet
 
-es + es-translated #### Coinbase Wallet browser extension provides support for Base Sepolia testnet by default.
+#### La extensión del navegador Coinbase Wallet proporciona soporte para la testnet de Base Sepolia por defecto.
 
-es + es-translated To use Base Sepolia with Coinbase Wallet:
+Para usar Base Sepolia con Coinbase Wallet:
 
-es + es-translated 1. Open the Coinbase Wallet browser extension and log in to your account.
-2. Connect to an app using Coinbase Wallet.
-3. Open the network selection menu by clicking the network icon in the upper right-hand corner.
-4. Click the **More networks** button.
-5. Navigate to the **Testnets** tab.
-6. Select **Base Sepolia**.
+1. Abre la extensión del navegador Coinbase Wallet e inicia sesión en tu cuenta.
+2. Conéctate a una aplicación usando Coinbase Wallet.
+3. Abre el menú de selección de red haciendo clic en el ícono de red en la esquina superior derecha.
+4. Haz clic en el botón **Más redes**.
+5. Navega a la pestaña **Testnets**.
+6. Selecciona **Base Sepolia**.
 
-es + es-translated Your active network should now be switched to Base testnet.
+Tu red activa ahora debería estar cambiada a la testnet de Base.
 
-es + es-translated #### Other wallets
+#### Otras billeteras
 
-es + es-translated Base Sepolia can be added as a custom network to any EVM-compatible wallet (i.e. [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)).
+Base Sepolia se puede agregar como una red personalizada a cualquier billetera compatible con EVM (es decir, [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)).
 
-es + es-translated #### MetaMask
+#### MetaMask
 
-es + es-translated To add Base Sepolia as a custom network to MetaMask:
+Para agregar Base Sepolia como una red personalizada a MetaMask:
 
-es + es-translated 1. Open the MetaMask browser extension.
-2. Open the network selection dropdown menu by clicking the dropdown button at the top of the extension.
-3. Click the **Add network** button.
-4. Click **Add a network manually**.
-5. In the **Add a network manually** dialog that appears, enter the following information for the Base Sepolia testnet:
+1. Abre la extensión del navegador MetaMask.
+2. Abre el menú desplegable de selección de red haciendo clic en el botón desplegable en la parte superior de la extensión.
+3. Haz clic en el botón **Agregar red**.
+4. Haz clic en **Agregar una red manualmente**.
+5. En el cuadro de diálogo **Agregar una red manualmente** que aparece, ingresa la siguiente información para la testnet de Base Sepolia:
 
-es + es-translated | Name            | Sepolia                                                                |
+| Nombre            | Sepolia                                                                |
    | :-------------- | :--------------------------------------------------------------------- |
-   | Network Name    | Base Sepolia                                                           |
-   | RPC Endpoint    | [https://sepolia.base.org](https://sepolia.base.org)                   |
-   | Chain ID        | 84532                                                                  |
-   | Currency Symbol | ETH                                                                    |
-   | Block Explorer  | [https://sepolia-explorer.base.org](https://sepolia-explorer.base.org) |
+   | Nombre de la Red | Base Sepolia                                                           |
+   | Punto de acceso RPC | [https://sepolia.base.org](https://sepolia.base.org)                   |
+   | ID de Cadena     | 84532                                                                  |
+   | Símbolo de Moneda | ETH                                                                    |
+   | Explorador de Bloques | [https://sepolia-explorer.base.org](https://sepolia-explorer.base.org) |
 
-es + es-translated 6. Tap the Save button to save Base Sepolia as a network.
+6. Toca el botón Guardar para guardar Base Sepolia como una red.
 
-es + es-translated You should now be able to connect to the Base testnet by selecting it from the network selection dropdown menu.
+Ahora deberías poder conectarte a la testnet de Base seleccionándola desde el menú desplegable de selección de red.
 
 ---

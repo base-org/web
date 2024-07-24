@@ -8,16 +8,16 @@
     "description": "La etiqueta para la categoría Avisos en la barra lateral de desarrolladores"
   },
   "sidebar.developers.category.Building on Base": {
-    "message": "Construyendo sobre Base",
-    "description": "La etiqueta para la categoría Construyendo sobre Base en la barra lateral de desarrolladores"
+    "message": "Construyendo en Base",
+    "description": "La etiqueta para la categoría Construyendo en Base en la barra lateral de desarrolladores"
   },
   "sidebar.developers.category.Tools": {
     "message": "Herramientas",
     "description": "La etiqueta para la categoría Herramientas en la barra lateral de desarrolladores"
   },
   "sidebar.developers.category.Toolchains": {
-    "message": "Toolchains",
-    "description": "La etiqueta para la categoría Toolchains en la barra lateral de desarrolladores"
+    "message": "Cadenas de herramientas",
+    "description": "La etiqueta para la categoría Cadenas de herramientas en la barra lateral de desarrolladores"
   },
   "sidebar.developers.category.Clients": {
     "message": "Clientes",

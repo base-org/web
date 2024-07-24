@@ -29,79 +29,79 @@ keywords:
 hide_table_of_contents: true
 ---
 
-es + es-translated # Cross-chain
+# Cross-chain
 
 ---
 
-es + es-translated ## Axelar
+## Axelar
 
-es + es-translated [Axelar](https://axelar.network/) is an interchain platform that connects blockchains to enable universal web3 transactions. By integrating with Axelar, applications built on Base can now easily send messages and assets between the 49+ blockchains connected via Axelar.
+[Axelar](https://axelar.network/) es una plataforma intercadena que conecta blockchains para habilitar transacciones web3 universales. Al integrarse con Axelar, las aplicaciones construidas en Base ahora pueden enviar fácilmente mensajes y activos entre las más de 49 blockchains conectadas a través de Axelar.
 
-es + es-translated To learn more about Axelar visit our [docs](https://docs.axelar.dev/). For complete end-to-end examples demonstrating various Axelar use cases please visit the available [code examples](https://github.com/axelarnetwork/axelar-examples).
+Para obtener más información sobre Axelar, visita nuestra [documentación](https://docs.axelar.dev/). Para ejemplos completos de extremo a extremo que demuestran varios casos de uso de Axelar, por favor visita los [ejemplos de código](https://github.com/axelarnetwork/axelar-examples) disponibles.
 
-es + es-translated #### Supported Networks
+#### Redes Soportadas
 
-es + es-translated - [Base Mainnet](https://docs.axelar.dev/resources/mainnet)
+- [Base Mainnet](https://docs.axelar.dev/resources/mainnet)
 - [Base Testnet](https://docs.axelar.dev/resources/testnet)
 
-es + es-translated #### Axelarscan
+#### Axelarscan
 
-es + es-translated To view current transactions and live stats about the Axelar network, please visit the [Axelarscan block explorer](https://axelarscan.io/)
+Para ver las transacciones actuales y estadísticas en vivo sobre la red Axelar, por favor visita el [explorador de bloques Axelarscan](https://axelarscan.io/)
 
 ---
 
-es + es-translated ## Crossmint
+## Crossmint
 
-es + es-translated [Crossmint](https://crossmint.com/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) allows you to create and deploy NFT Collections and enable cross-chain payments. This enables your users and customers to purchase an NFT from a collection deployed on Base using Ethereum or Solana tokens.
+[Crossmint](https://crossmint.com/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) te permite crear y desplegar Colecciones NFT y habilitar pagos entre cadenas. Esto permite a tus usuarios y clientes comprar un NFT de una colección desplegada en Base usando tokens de Ethereum o Solana.
 
-es + es-translated Check out [Crossmint Docs](https://docs.crossmint.com/nft-checkout/introduction/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) to learn more about NFT Checkout with Crossmint. To power cross-chain payments, click [here](https://docs.crossmint.com/nft-checkout/pay-button/select-payment-options/?utm_medium=docs&utm_source=backlinks&utm_campaign=base) to get started.
+Consulta los [Documentos de Crossmint](https://docs.crossmint.com/nft-checkout/introduction/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) para obtener más información sobre NFT Checkout con Crossmint. Para habilitar pagos entre cadenas, haz clic [aquí](https://docs.crossmint.com/nft-checkout/pay-button/select-payment-options/?utm_medium=docs&utm_source=backlinks&utm_campaign=base) para comenzar.
 
-es + es-translated #### Supported Networks
+#### Redes Soportadas
 
-es + es-translated - [Base Mainnet](https://www.crossmint.com/products/nft-checkout/?utm_source=backlinks&utm_medium=docs&utm_campaign=base)
+- [Base Mainnet](https://www.crossmint.com/products/nft-checkout/?utm_source=backlinks&utm_medium=docs&utm_campaign=base)
 - [Base Sepolia](https://www.crossmint.com/products/nft-checkout/?utm_source=backlinks&utm_medium=docs&utm_campaign=base)
 
 ---
 
-es + es-translated ## Chainlink CCIP
+## Chainlink CCIP
 
-es + es-translated [Chainlink CCIP](https://chain.link/cross-chain) is a secure interoperability protocol that allows for securely sending messages, transferring tokens, and initiating actions across different blockchains.
+[Chainlink CCIP](https://chain.link/cross-chain) es un protocolo de interoperabilidad seguro que permite enviar mensajes de manera segura, transferir tokens e iniciar acciones a través de diferentes blockchains.
 
-es + es-translated To get started with integrating Chainlink CCIP in your Base project, visit the Chainlink CCIP [documentation](https://docs.chain.link/ccip).
+Para comenzar a integrar Chainlink CCIP en tu proyecto Base, visita la [documentación](https://docs.chain.link/ccip) de Chainlink CCIP.
 
-es + es-translated #### Supported Networks
+#### Redes Soportadas
 
-es + es-translated - [Base Mainnet](https://docs.chain.link/ccip/supported-networks/v1_0_0/mainnet#base-mainnet)
+- [Base Mainnet](https://docs.chain.link/ccip/supported-networks/v1_0_0/mainnet#base-mainnet)
 - [Base Sepolia](https://docs.chain.link/ccip/supported-networks/v1_2_0/testnet) (Testnet)
 
 ---
 
-es + es-translated ## LayerZero
+## LayerZero
 
-es + es-translated [LayerZero](https://layerzero.network/) is an omnichain interoperability protocol that enables cross-chain messaging. Applications built on Base can use the LayerZero protocol to connect to 35+ supported blockchains seamlessly.
+[LayerZero](https://layerzero.network/) es un protocolo de interoperabilidad omnichain que permite la mensajería entre cadenas. Las aplicaciones construidas en Base pueden usar el protocolo LayerZero para conectarse sin problemas a más de 35 blockchains soportadas.
 
-es + es-translated To get started with integrating LayerZero, visit the LayerZero [documentation](https://layerzero.gitbook.io/docs/evm-guides/master/how-to-send-a-message) and provided examples on [GitHub](https://github.com/LayerZero-Labs/solidity-examples).
+Para comenzar a integrar LayerZero, visita la [documentación](https://layerzero.gitbook.io/docs/evm-guides/master/how-to-send-a-message) de LayerZero y los ejemplos proporcionados en [GitHub](https://github.com/LayerZero-Labs/solidity-examples).
 
-es + es-translated #### Supported Networks
+#### Redes Soportadas
 
-es + es-translated - [Base Mainnet](https://layerzero.gitbook.io/docs/technical-reference/mainnet/supported-chain-ids)
+- [Base Mainnet](https://layerzero.gitbook.io/docs/technical-reference/mainnet/supported-chain-ids)
 - [Base Sepolia](https://layerzero.gitbook.io/docs/technical-reference/testnet/testnet-addresses#layerzero-endpoints-testnet) (Testnet)
 
 ---
 
-es + es-translated ## Wormhole
+## Wormhole
 
-es + es-translated [Wormhole](https://wormhole.com/) is a generic messaging protocol that provides secure communication between blockchains.
+[Wormhole](https://wormhole.com/) es un protocolo de mensajería genérico que proporciona comunicación segura entre blockchains.
 
-es + es-translated By integrating Wormhole, a Base application can access users and liquidity on > 30 chains and > 7 different platforms.
+Al integrar Wormhole, una aplicación Base puede acceder a usuarios y liquidez en más de 30 cadenas y más de 7 plataformas diferentes.
 
-es + es-translated See [this quickstart](https://docs.wormhole.com/wormhole/quick-start/tutorials/hello-wormhole) to get started with integrating Wormhole in your Base project.
+Consulta [este inicio rápido](https://docs.wormhole.com/wormhole/quick-start/tutorials/hello-wormhole) para comenzar a integrar Wormhole en tu proyecto Base.
 
-es + es-translated For more information on integrating Wormhole, visit their [documentation](https://docs.wormhole.com/wormhole/) and the provided [GitHub examples](https://github.com/wormhole-foundation/wormhole-examples).
+Para obtener más información sobre la integración de Wormhole, visita su [documentación](https://docs.wormhole.com/wormhole/) y los [ejemplos en GitHub](https://github.com/wormhole-foundation/wormhole-examples) proporcionados.
 
-es + es-translated #### Supported Networks
+#### Redes Soportadas
 
-es + es-translated - [Base Mainnet](https://docs.wormhole.com/wormhole/blockchain-environments/evm#base)
+- [Base Mainnet](https://docs.wormhole.com/wormhole/blockchain-environments/evm#base)
 - [Base Sepolia](https://docs.wormhole.com/wormhole/blockchain-environments/evm#base) (Testnet)
 
 ---

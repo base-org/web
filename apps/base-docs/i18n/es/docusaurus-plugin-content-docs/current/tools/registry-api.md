@@ -5,38 +5,38 @@ description: Documentation for the Onchain Registry API.
 hide_table_of_contents: true
 ---
 
-es + es-translated # [Beta] Onchain Registry API
+# [Beta] Onchain Registry API
 
 ---
 
-es + es-translated :::info
+:::info
 
-es + es-translated The base url for our API endpoints is [https://base.org/api/registry/](https://base.org/api/registry/). Please note, this API is still in beta and should not be used in production environments. The use of Onchain Registry API is governed by the license terms outlined in our [Terms & Conditions](#terms--conditions).
+La URL base para nuestros endpoints de API es [https://base.org/api/registry/](https://base.org/api/registry/). Por favor, tenga en cuenta que esta API aún está en beta y no debe usarse en entornos de producción. El uso de la API de Onchain Registry está regido por los términos de licencia descritos en nuestros [Términos y Condiciones](#terms--conditions).
 
-es + es-translated :::
+:::
 
-es + es-translated ## Instructions
+## Instrucciones
 
-es + es-translated 1. Users of this API can use the `/entries` and `/featured` endpoints to display Onchain Registry entries on their own surfaces
-2. If your team would like to use referral codes to point your users to entries, we recommend appending your referral code to the link provided in the `target_url` field
-3. If your team would like to filter entries based on where they are hosted or by creator, we recommend implementing logic based on the `target_url` and `creator_name` fields
+1. Los usuarios de esta API pueden usar los endpoints `/entries` y `/featured` para mostrar entradas del Onchain Registry en sus propias superficies
+2. Si su equipo desea usar códigos de referencia para dirigir a sus usuarios a las entradas, recomendamos agregar su código de referencia al enlace proporcionado en el campo `target_url`
+3. Si su equipo desea filtrar entradas según dónde están alojadas o por creador, recomendamos implementar lógica basada en los campos `target_url` y `creator_name`
 
-es + es-translated ## Endpoints
+## Endpoints
 
-es + es-translated ### GET /entries
+### GET /entries
 
-es + es-translated This endpoint will display all Onchain Registry entries subject to any query parameters set below
+Este endpoint mostrará todas las entradas del Onchain Registry sujetas a cualquier parámetro de consulta establecido a continuación
 
-es + es-translated #### Query Parameters
+#### Parámetros de Consulta
 
-es + es-translated | Name     | Type   | Description                                                                                                    |
+| Nombre   | Tipo   | Descripción                                                                                                    |
 | :------- | :----- | :------------------------------------------------------------------------------------------------------------- |
-| page     | number | The page number (default 1)                                                                                    |
-| limit    | number | The number of entries per page (default 10)                                                                    |
-| category | array  | The category or categories of the entries of interest <br/> (Options: Games, Social, Creators, Finance, Media) |
-| curation | string | The entry’s level of curation <br/> (Options: Featured, Curated, Community)                                    |
+| page     | number | El número de página (por defecto 1)                                                                            |
+| limit    | number | El número de entradas por página (por defecto 10)                                                              |
+| category | array  | La categoría o categorías de las entradas de interés <br/> (Opciones: Games, Social, Creators, Finance, Media) |
+| curation | string | El nivel de curación de la entrada <br/> (Opciones: Featured, Curated, Community)                                |
 
-es + es-translated #### Response
+#### Respuesta
 
 ```{
     "data": [
@@ -88,11 +88,11 @@ es + es-translated #### Response
 }
 ```
 
-es + es-translated ### GET /featured
+### GET /featured
 
-es + es-translated This endpoint will display a single Onchain Registry entry that is being actively featured
+Este endpoint mostrará una única entrada del Onchain Registry que está siendo destacada activamente
 
-es + es-translated #### Response
+#### Respuesta
 
 ```{
     "data": {
@@ -117,26 +117,26 @@ es + es-translated #### Response
 }
 ```
 
-es + es-translated ## Entry Schema
+## Esquema de Entrada
 
-es + es-translated | Name               | Type   | Description                                                                                                                                                                                                    |
+| Nombre             | Tipo   | Descripción                                                                                                                                                                                                    |
 | :----------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id                 | string | Unique entry ID                                                                                                                                                                                                |
-| category           | string | The category of the entry <br/>(Options: Games, Social, Creators, Finance, Media)                                                                                                                              |
-| title              | string | The title of the entry                                                                                                                                                                                         |
-| short_description  | string | Short version of the entry description (max 30 char)                                                                                                                                                           |
-| full_description   | string | Full version of the entry description (max 200 char)                                                                                                                                                           |
-| image_url          | string | URL of the entry’s featured image                                                                                                                                                                              |
-| target_url         | string | URL for the entry’s desired user action                                                                                                                                                                        |
-| cta_text           | string | This is the type of user action for the entry <br/> (Options: Play, Mint, Buy, Trade, Explore)                                                                                                                 |
-| function_signature | string | The function signature associated with the desired user action on the entry’s contract                                                                                                                         |
-| contract_address   | string | The contract address associated with the entry                                                                                                                                                                 |
-| token_id           | string | The token ID if this is an ERC-1155                                                                                                                                                                            |
-| token_amount       | string | The price of the entry’s desired user action                                                                                                                                                                   |
-| curation           | string | The entry’s level of curation <br/> <br/> Options: <ul><li>Featured - one entry per day with top placement</li><li>Curated - community entries being</li><li>Community - all other community entries</li></ul> |
-| creator_name       | string | The name of the entry’s creator                                                                                                                                                                                |
-| creator_image_url  | string | The logo of the entry’s creator                                                                                                                                                                                |
+| id                 | string | ID único de la entrada                                                                                                                                                                                         |
+| category           | string | La categoría de la entrada <br/>(Opciones: Games, Social, Creators, Finance, Media)                                                                                                                             |
+| title              | string | El título de la entrada                                                                                                                                                                                        |
+| short_description  | string | Versión corta de la descripción de la entrada (máx. 30 caracteres)                                                                                                                                              |
+| full_description   | string | Versión completa de la descripción de la entrada (máx. 200 caracteres)                                                                                                                                           |
+| image_url          | string | URL de la imagen destacada de la entrada                                                                                                                                                                        |
+| target_url         | string | URL para la acción deseada del usuario en la entrada                                                                                                                                                            |
+| cta_text           | string | Este es el tipo de acción del usuario para la entrada <br/> (Opciones: Play, Mint, Buy, Trade, Explore)                                                                                                          |
+| function_signature | string | La firma de la función asociada con la acción deseada del usuario en el contrato de la entrada                                                                                                                    |
+| contract_address   | string | La dirección del contrato asociada con la entrada                                                                                                                                                               |
+| token_id           | string | El ID del token si es un ERC-1155                                                                                                                                                                               |
+| token_amount       | string | El precio de la acción deseada del usuario en la entrada                                                                                                                                                        |
+| curation           | string | El nivel de curación de la entrada <br/> <br/> Opciones: <ul><li>Featured - una entrada por día con colocación superior</li><li>Curated - entradas de la comunidad seleccionadas</li><li>Community - todas las demás entradas de la comunidad</li></ul> |
+| creator_name       | string | El nombre del creador de la entrada                                                                                                                                                                              |
+| creator_image_url  | string | El logo del creador de la entrada                                                                                                                                                                                |
 
-es + es-translated ## Terms & Conditions
+## Términos y Condiciones
 
-es + es-translated We grant third parties a non-exclusive, worldwide, royalty-free license to use the Onchain Registry API solely for the purpose of integrating it into their applications or services. This license does not extend to any data or content accessed through the Onchain API, which remains the sole responsibility of the third party. By using the Onchain Registry API, third parties agree to comply with our license terms and any applicable laws and regulations as set forth in Coinbase Developer Platform Terms of Service. We make no warranties regarding the Onchain Registry API, and users accept all risks associated with its use. The Onchain App Registry API is an Early Access Product per Section 18 of the [Coinbase Developer Platform Terms of Service](https://www.coinbase.com/legal/developer-platform/terms-of-service) and the Coinbase [Prohibited Use Policy](https://www.coinbase.com/legal/prohibited_use), and all terms and conditions therein govern your use of the Onchain Registry API.
+Otorgamos a terceros una licencia no exclusiva, mundial y libre de regalías para usar la API de Onchain Registry únicamente con el propósito de integrarla en sus aplicaciones o servicios. Esta licencia no se extiende a ningún dato o contenido accedido a través de la API de Onchain, que sigue siendo responsabilidad exclusiva del tercero. Al usar la API de Onchain Registry, los terceros aceptan cumplir con nuestros términos de licencia y con cualquier ley y regulación aplicable según lo establecido en los Términos de Servicio de la Plataforma de Desarrolladores de Coinbase. No ofrecemos garantías con respecto a la API de Onchain Registry, y los usuarios aceptan todos los riesgos asociados con su uso. La API de Onchain App Registry es un Producto de Acceso Temprano según la Sección 18 de los [Términos de Servicio de la Plataforma de Desarrolladores de Coinbase](https://www.coinbase.com/legal/developer-platform/terms-of-service) y la [Política de Uso Prohibido de Coinbase](https://www.coinbase.com/legal/prohibited_use), y todos los términos y condiciones allí establecidos rigen su uso de la API de Onchain Registry.

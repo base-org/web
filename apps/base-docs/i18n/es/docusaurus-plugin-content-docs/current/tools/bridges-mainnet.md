@@ -21,59 +21,59 @@ keywords:
 hide_table_of_contents: true
 ---
 
-es + es-translated # Superchain Bridges
+# Puentes Superchain
 
 ---
 
-es + es-translated ## Superbridge
+## Superbridge
 
-es + es-translated Superbridge enables you to bridge ETH and other supported assets from Ethereum mainnet (L1) directly to Base.
+Superbridge te permite puentear ETH y otros activos compatibles desde la red principal de Ethereum (L1) directamente a Base.
 
-es + es-translated #### Supported Networks
+#### Redes compatibles
 
-es + es-translated - [Base Mainnet](https://superbridge.app/base)
+- [Base Mainnet](https://superbridge.app/base)
 - [Base Sepolia (Testnet)](https://superbridge.app/base-sepolia)
 
 ---
 
-es + es-translated ## Brid.gg
+## Brid.gg
 
-es + es-translated Brid.gg is another option that also helps you bridge ETH and supported assets between Ethereum mainnet (L1) and Base.
+Brid.gg es otra opción que también te ayuda a puentear ETH y activos compatibles entre la red principal de Ethereum (L1) y Base.
 
-es + es-translated #### Supported Networks
+#### Redes compatibles
 
-es + es-translated - [Base Mainnet](https://brid.gg/base)
+- [Base Mainnet](https://brid.gg/base)
 - [Base Sepolia (Testnet)](https://testnet.brid.gg/base-sepolia)
 
 ---
 
-es + es-translated :::info
+:::info
 
-es + es-translated Coinbase Technologies, Inc., provides links to the above independent service providers for your convenience but assumes no responsibility for their operations. Any interactions with these providers are solely between you and the provider.
+Coinbase Technologies, Inc., proporciona enlaces a los proveedores de servicios independientes mencionados anteriormente para tu conveniencia, pero no asume ninguna responsabilidad por sus operaciones. Cualquier interacción con estos proveedores es únicamente entre tú y el proveedor.
 
-es + es-translated :::
+:::
 
 ---
 
-es + es-translated ## Programmatic Bridging
+## Puenteo programático
 
-es + es-translated See the [sample code repository](https://github.com/base-org/guides/tree/main/bridge/native) to see how to bridge ETH and ERC-20s from Ethereum to Base.
+Consulta el [repositorio de código de ejemplo](https://github.com/base-org/guides/tree/main/bridge/native) para ver cómo puentear ETH y ERC-20s desde Ethereum a Base.
 
-es + es-translated :::caution
+:::caution
 
-es + es-translated **Double check the token address for ERC-20s** You can use any ERC-20 that is
-supported on the network. You can check what assets are on Base and the
-corresponding contract address via [this hub](https://github.com/ethereum-optimism/ethereum-optimism.github.io/tree/master/data).
-Ensure there is an address for `base`, [example](https://github.com/ethereum-optimism/ethereum-optimism.github.io/blob/master/data/WETH/data.json#L16-L18).
-Always test with small amounts to ensure the system is working as expected.
+**Verifica dos veces la dirección del token para ERC-20s** Puedes usar cualquier ERC-20 que esté
+soportado en la red. Puedes verificar qué activos están en Base y la
+dirección del contrato correspondiente a través de [este hub](https://github.com/ethereum-optimism/ethereum-optimism.github.io/tree/master/data).
+Asegúrate de que haya una dirección para `base`, [ejemplo](https://github.com/ethereum-optimism/ethereum-optimism.github.io/blob/master/data/WETH/data.json#L16-L18).
+Siempre prueba con pequeñas cantidades para asegurarte de que el sistema funcione como se espera.
 
-es + es-translated :::
+:::
 
-es + es-translated :::caution
-This implementation only can bridge assets to Base. Do not attempt to alter the
-code to withdraw the assets.
+:::caution
+Esta implementación solo puede puentear activos a Base. No intentes alterar el
+código para retirar los activos.
 
-es + es-translated :::
+:::
 
 ---
 

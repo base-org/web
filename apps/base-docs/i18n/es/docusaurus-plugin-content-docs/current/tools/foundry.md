@@ -23,45 +23,45 @@ keywords:
 hide_table_of_contents: true
 ---
 
-es + es-translated # Foundry
+# Foundry
 
-es + es-translated Foundry is a smart contract development toolchain.
+Foundry es una cadena de herramientas para el desarrollo de contratos inteligentes.
 
-es + es-translated With Foundry you can manage your dependencies, compile your project, run tests, deploy smart contracts, and interact with the chain from the command-line and via Solidity scripts.
+Con Foundry puedes gestionar tus dependencias, compilar tu proyecto, ejecutar pruebas, desplegar contratos inteligentes e interactuar con la cadena desde la línea de comandos y a través de scripts de Solidity.
 
-es + es-translated Check out the [Foundry Book](https://book.getfoundry.sh/) to get started with using Foundry with Base.
+Consulta el [Libro de Foundry](https://book.getfoundry.sh/) para comenzar a usar Foundry con Base.
 
 ---
 
-es + es-translated # Using Foundry with Base
+# Usando Foundry con Base
 
-es + es-translated Foundry supports Base out-of-the-box.
+Foundry soporta Base de forma nativa.
 
-es + es-translated Just provide the Base RPC URL and Chain ID when deploying and verifying your contracts.
+Solo proporciona la URL RPC de Base y el ID de la Cadena al desplegar y verificar tus contratos.
 
-es + es-translated ## Mainnet
+## Mainnet
 
-es + es-translated ### Deploying a smart contract
+### Desplegando un contrato inteligente
 
 ```bash
 forge create ... --rpc-url=https://mainnet.base.org/
 ```
 
-es + es-translated ### Verifying a smart contract
+### Verificando un contrato inteligente
 
 ```bash
 forge verify-contract ... --chain-id 8453
 ```
 
-es + es-translated ## Testnet
+## Testnet
 
-es + es-translated ### Deploying a smart contract
+### Desplegando un contrato inteligente
 
 ```bash
 forge create ... --rpc-url=https://sepolia.base.org/
 ```
 
-es + es-translated ### Verifying a smart contract
+### Verificando un contrato inteligente
 
 ```bash
 forge verify-contract ... --chain-id 84532

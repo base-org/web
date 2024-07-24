@@ -1,62 +1,62 @@
 {
   "version.label": {
-    "message": "es + es-translated Next",
-    "description": "es + es-translated The label for version current"
+    "message": "Siguiente",
+    "description": "La etiqueta para la versión actual"
   },
   "sidebar.docs.category.Deploying a smart contract": {
-    "message": "es + es-translated Deploying a smart contract",
-    "description": "es + es-translated The label for category Deploying a smart contract in sidebar docs"
+    "message": "Desplegando un contrato inteligente",
+    "description": "La etiqueta para la categoría Desplegando un contrato inteligente en la barra lateral de documentos"
   },
   "sidebar.docs.category.Building an onchain app": {
-    "message": "es + es-translated Building an onchain app",
-    "description": "es + es-translated The label for category Building an onchain app in sidebar docs"
+    "message": "Construyendo una aplicación en cadena",
+    "description": "La etiqueta para la categoría Construyendo una aplicación en cadena en la barra lateral de documentos"
   },
   "sidebar.docs.category.Accessing real-world data using Oracles": {
-    "message": "es + es-translated Accessing real-world data using Oracles",
-    "description": "es + es-translated The label for category Accessing real-world data using Oracles in sidebar docs"
+    "message": "Accediendo a datos del mundo real usando Oráculos",
+    "description": "La etiqueta para la categoría Accediendo a datos del mundo real usando Oráculos en la barra lateral de documentos"
   },
   "sidebar.docs.category.Sending data and tokens across chains": {
-    "message": "es + es-translated Sending data and tokens across chains",
-    "description": "es + es-translated The label for category Sending data and tokens across chains in sidebar docs"
+    "message": "Enviando datos y tokens a través de cadenas",
+    "description": "La etiqueta para la categoría Enviando datos y tokens a través de cadenas en la barra lateral de documentos"
   },
   "sidebar.docs.category.Account abstraction": {
-    "message": "es + es-translated Account abstraction",
-    "description": "es + es-translated The label for category Account abstraction in sidebar docs"
+    "message": "Abstracción de cuenta",
+    "description": "La etiqueta para la categoría Abstracción de cuenta en la barra lateral de documentos"
   },
   "sidebar.docs.category.Introduction to Foundry": {
-    "message": "es + es-translated Introduction to Foundry",
-    "description": "es + es-translated The label for category Introduction to Foundry in sidebar docs"
+    "message": "Introducción a Foundry",
+    "description": "La etiqueta para la categoría Introducción a Foundry en la barra lateral de documentos"
   },
   "sidebar.docs.category.Advanced NFT Development": {
-    "message": "es + es-translated Advanced NFT Development",
-    "description": "es + es-translated The label for category Advanced NFT Development in sidebar docs"
+    "message": "Desarrollo avanzado de NFT",
+    "description": "La etiqueta para la categoría Desarrollo avanzado de NFT en la barra lateral de documentos"
   },
   "sidebar.docs.category.Farcaster Frames": {
-    "message": "es + es-translated Farcaster Frames",
-    "description": "es + es-translated The label for category Farcaster Frames in sidebar docs"
+    "message": "Marcos de Farcaster",
+    "description": "La etiqueta para la categoría Marcos de Farcaster en la barra lateral de documentos"
   },
   "sidebar.docs.category.Hardhat Tools and Testing": {
-    "message": "es + es-translated Hardhat Tools and Testing",
-    "description": "es + es-translated The label for category Hardhat Tools and Testing in sidebar docs"
+    "message": "Herramientas y pruebas de Hardhat",
+    "description": "La etiqueta para la categoría Herramientas y pruebas de Hardhat en la barra lateral de documentos"
   },
   "sidebar.docs.category.Profiling Size": {
-    "message": "es + es-translated Profiling Size",
-    "description": "es + es-translated The label for category Profiling Size in sidebar docs"
+    "message": "Perfilado de tamaño",
+    "description": "La etiqueta para la categoría Perfilado de tamaño en la barra lateral de documentos"
   },
   "sidebar.docs.category.Profiling Gas": {
-    "message": "es + es-translated Profiling Gas",
-    "description": "es + es-translated The label for category Profiling Gas in sidebar docs"
+    "message": "Perfilado de gas",
+    "description": "La etiqueta para la categoría Perfilado de gas en la barra lateral de documentos"
   },
   "sidebar.docs.category.Debugging": {
-    "message": "es + es-translated Debugging",
-    "description": "es + es-translated The label for category Debugging in sidebar docs"
+    "message": "Depuración",
+    "description": "La etiqueta para la categoría Depuración en la barra lateral de documentos"
   },
   "sidebar.docs.category.Test Coverage": {
-    "message": "es + es-translated Test Coverage",
-    "description": "es + es-translated The label for category Test Coverage in sidebar docs"
+    "message": "Cobertura de pruebas",
+    "description": "La etiqueta para la categoría Cobertura de pruebas en la barra lateral de documentos"
   },
   "sidebar.docs.category.Connecting to the Blockchain": {
-    "message": "es + es-translated Connecting to the Blockchain",
-    "description": "es + es-translated The label for category Connecting to the Blockchain in sidebar docs"
+    "message": "Conectando a la Blockchain",
+    "description": "La etiqueta para la categoría Conectando a la Blockchain en la barra lateral de documentos"
   }
 }

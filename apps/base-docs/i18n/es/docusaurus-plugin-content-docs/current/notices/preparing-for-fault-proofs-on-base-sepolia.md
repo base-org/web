@@ -33,40 +33,40 @@ keywords:
 hide_table_of_contents: true
 ---
 
-es + es-translated # Preparing for fault proofs on Base Sepolia (Testnet)
+# Preparándose para las pruebas de fallos en Base Sepolia (Testnet)
 
-es + es-translated Fault proofs are a critical implementation in an L2’s path towards decentralization. They enable a more decentralized approach to validating L2 state and pave the way towards more community participation.
+Las pruebas de fallos son una implementación crucial en el camino de una L2 hacia la descentralización. Permiten un enfoque más descentralizado para validar el estado de la L2 y allanan el camino hacia una mayor participación de la comunidad.
 
-es + es-translated They improve decentralization with two important capabilities:
+Mejoran la descentralización con dos capacidades importantes:
 
-es + es-translated - **Permissionless output proposals:** In an L2 without fault proofs, only the centralized proposer can create and submit output roots about the state of the L2. Now with fault proofs, anyone can make claims about Base's current state instead of relying on a central party.
-- **Permissionless challenges to output proposals:** If someone makes a faulty or fraudulent claim, anyone can challenge it.
+- **Propuestas de salida sin permisos:** En una L2 sin pruebas de fallos, solo el proponente centralizado puede crear y enviar raíces de salida sobre el estado de la L2. Ahora, con las pruebas de fallos, cualquiera puede hacer afirmaciones sobre el estado actual de Base en lugar de depender de una parte central.
+- **Desafíos sin permisos a las propuestas de salida:** Si alguien hace una afirmación errónea o fraudulenta, cualquiera puede desafiarla.
 
-es + es-translated These changes allow anyone to withdraw funds from Base to L1 without having to rely on centralized actors.
+Estos cambios permiten que cualquiera retire fondos de Base a L1 sin tener que depender de actores centralizados.
 
-es + es-translated ## Preparing for fault proofs
+## Preparándose para las pruebas de fallos
 
-es + es-translated Fault proofs are expected to go live for Base Sepolia (Testnet) in mid-July.
+Se espera que las pruebas de fallos se activen para Base Sepolia (Testnet) a mediados de julio.
 
-es + es-translated **What’s changing for testnet withdrawals:**
+**Qué está cambiando para los retiros en testnet:**
 
-es + es-translated - Withdrawals will involve proving and finalizing based on the fault proof system.
-- Withdrawals will no longer be instantaneous: they will take at least seven days to finalize, but can take longer depending on the outcome of the corresponding dispute game used.
-- The `DisputeGameFactory` will replace the `L2OutputOracle` as the new contract where output root claims will be proposed.
+- Los retiros implicarán probar y finalizar basándose en el sistema de pruebas de fallos.
+- Los retiros ya no serán instantáneos: tomarán al menos siete días para finalizar, pero pueden tardar más dependiendo del resultado del juego de disputas correspondiente utilizado.
+- El `DisputeGameFactory` reemplazará al `L2OutputOracle` como el nuevo contrato donde se propondrán las afirmaciones de la raíz de salida.
 
-es + es-translated **If you are in the process of withdrawing your testnet funds from L2 to L1:**
+**Si estás en el proceso de retirar tus fondos de testnet de L2 a L1:**
 
-es + es-translated - **Withdrawals _before_ the upgrade in mid-July** will be processed instantaneously.
-- **Withdrawals _during_ or _after_ the fault proofs upgrade** for Base Sepolia will take at least seven days to complete.
+- **Retiros _antes_ de la actualización a mediados de julio** se procesarán instantáneamente.
+- **Retiros _durante_ o _después_ de la actualización de pruebas de fallos** para Base Sepolia tomarán al menos siete días para completarse.
 
-es + es-translated If your withdrawal of testnet funds from Base Sepolia to Ethereum Sepolia coincides with the upgrade proceeding in mid-July, you will be required to resubmit your withdrawal.
+Si tu retiro de fondos de testnet de Base Sepolia a Ethereum Sepolia coincide con la actualización que se realizará a mediados de julio, se te pedirá que vuelvas a enviar tu retiro.
 
-es + es-translated **If your team is operating a bridge on Base Sepolia:**
+**Si tu equipo está operando un puente en Base Sepolia:**
 
-es + es-translated - Please provide your users with a notice on your UI to inform them that fault proofs will be enabled for Base Sepolia in mid-July.
-- Please ensure it’s clear to your users that testnet withdrawals will now take at least seven days.
-- Assess and update your bridging logic, and make sure the new L1 contracts are being used.
+- Por favor, proporciona a tus usuarios un aviso en tu UI para informarles que las pruebas de fallos se habilitarán para Base Sepolia a mediados de julio.
+- Por favor, asegúrate de que esté claro para tus usuarios que los retiros de testnet ahora tomarán al menos siete días.
+- Evalúa y actualiza tu lógica de puente, y asegúrate de que se estén utilizando los nuevos contratos de L1.
 
-es + es-translated Fault proof contract upgrades will be completed atomically, meaning all affected L1 contracts will be upgraded in a single transaction. No action will be required from node operators.
+Las actualizaciones de los contratos de pruebas de fallos se completarán de manera atómica, lo que significa que todos los contratos de L1 afectados se actualizarán en una sola transacción. No se requerirá ninguna acción por parte de los operadores de nodos.
 
-es + es-translated Please note, bridge.base.org now redirects to [Superbridge](https://superbridge.app/base) and other bridges (collectively, "Superchain bridges"). Superchain bridges are available to initiate and complete deposits and withdrawals to and from Base. Please refer to our [docs](https://bridge.base.org/deposit) for more information on bridging.
+Ten en cuenta que bridge.base.org ahora redirige a [Superbridge](https://superbridge.app/base) y otros puentes (colectivamente, "puentes de Superchain"). Los puentes de Superchain están disponibles para iniciar y completar depósitos y retiros hacia y desde Base. Por favor, consulta nuestros [documentos](https://bridge.base.org/deposit) para obtener más información sobre el puente.

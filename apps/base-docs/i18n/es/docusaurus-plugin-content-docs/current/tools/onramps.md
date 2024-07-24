@@ -23,42 +23,42 @@ keywords:
 hide_table_of_contents: true
 ---
 
-es + es-translated # Onramps
+# Onramps
 
 ---
 
-es + es-translated ## Coinbase Onramp
+## Coinbase Onramp
 
-es + es-translated [Coinbase Onramp](https://www.coinbase.com/developer-platform/products/onramp) is a fiat-to-crypto onramp that allows users to buy or transfer crypto directly from self-custody wallets and apps. Coinbase Onramp supports 60+ fiat currencies with regulatory compliance and licensing, as well as 100+ cryptocurrencies, including ETH on Base. [Get started here](https://docs.cdp.coinbase.com/onramp/docs/getting-started/) to use the Coinbase Developer Platform.
-
----
-
-es + es-translated ## MoonPay
-
-es + es-translated [MoonPay](https://www.moonpay.com/business/onramps) is a crypto onramp that provides global coverage, seamless revenue sharing, and zero risk of fraud or chargebacks. MoonPay supports 30+ fiat currencies and 110+ cryptocurrencies, including ETH on Base.
+[Coinbase Onramp](https://www.coinbase.com/developer-platform/products/onramp) es una rampa de fiat a cripto que permite a los usuarios comprar o transferir criptomonedas directamente desde billeteras y aplicaciones de autocustodia. Coinbase Onramp admite más de 60 monedas fiduciarias con cumplimiento regulatorio y licencias, así como más de 100 criptomonedas, incluyendo ETH en Base. [Comienza aquí](https://docs.cdp.coinbase.com/onramp/docs/getting-started/) para usar la Plataforma de Desarrolladores de Coinbase.
 
 ---
 
-es + es-translated ## Onramp
+## MoonPay
 
-es + es-translated [Onramp](https://onramp.money/) is a fiat-to-crypto payment gateway, which helps users seamlessly convert fiat currency to the desired cryptocurrency. Onramp currently supports 300+ cryptocurrencies and 20+ blockchain networks, including ETH on Base.
-
----
-
-es + es-translated ## Ramp
-
-es + es-translated [Ramp](https://ramp.network/) is an onramp and offramp that empowers users to buy & sell crypto inside your app. Ramp supports 40+ fiat currencies and 90+ crypto assets, including ETH on Base.
+[MoonPay](https://www.moonpay.com/business/onramps) es una rampa de cripto que proporciona cobertura global, reparto de ingresos sin problemas y cero riesgo de fraude o contracargos. MoonPay admite más de 30 monedas fiduciarias y más de 110 criptomonedas, incluyendo ETH en Base.
 
 ---
 
-es + es-translated ## Transak
+## Onramp
 
-es + es-translated [Transak](https://transak.com/) is a developer integration toolkit to let users buy/sell crypto in any app, website or web plugin. It is available across 170 cryptocurrencies on 75+ blockchains, including ETH on Base.
+[Onramp](https://onramp.money/) es una pasarela de pago de fiat a cripto, que ayuda a los usuarios a convertir sin problemas la moneda fiduciaria en la criptomoneda deseada. Onramp actualmente admite más de 300 criptomonedas y más de 20 redes blockchain, incluyendo ETH en Base.
 
 ---
 
-es + es-translated ## Alchemy Pay
+## Ramp
 
-es + es-translated [Alchemy Pay](https://ramp.alchemypay.org/) (ACH) is a payment solutions provider that seamlessly connects fiat and crypto economies for global consumers, merchants, developers, and institutions.
+[Ramp](https://ramp.network/) es una rampa de entrada y salida que permite a los usuarios comprar y vender cripto dentro de tu aplicación. Ramp admite más de 40 monedas fiduciarias y más de 90 activos cripto, incluyendo ETH en Base.
+
+---
+
+## Transak
+
+[Transak](https://transak.com/) es un kit de herramientas de integración para desarrolladores que permite a los usuarios comprar/vender cripto en cualquier aplicación, sitio web o complemento web. Está disponible en más de 170 criptomonedas en más de 75 blockchains, incluyendo ETH en Base.
+
+---
+
+## Alchemy Pay
+
+[Alchemy Pay](https://ramp.alchemypay.org/) (ACH) es un proveedor de soluciones de pago que conecta sin problemas las economías fiat y cripto para consumidores, comerciantes, desarrolladores e instituciones a nivel mundial.
 
 ---

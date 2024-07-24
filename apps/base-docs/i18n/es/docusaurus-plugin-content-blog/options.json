@@ -1,14 +1,14 @@
 {
   "title": {
-    "message": "es + es-translated Blog",
-    "description": "es + es-translated The title for the blog used in SEO"
+    "message": "Blog",
+    "description": "El título del blog utilizado en SEO"
   },
   "description": {
-    "message": "es + es-translated Blog",
-    "description": "es + es-translated The description for the blog used in SEO"
+    "message": "Blog",
+    "description": "La descripción del blog utilizada en SEO"
   },
   "sidebar.title": {
-    "message": "es + es-translated Recent posts",
-    "description": "es + es-translated The label for the left sidebar"
+    "message": "Publicaciones recientes",
+    "description": "La etiqueta para la barra lateral izquierda"
   }
 }

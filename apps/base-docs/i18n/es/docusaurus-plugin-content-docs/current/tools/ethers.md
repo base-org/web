@@ -20,35 +20,35 @@ keywords:
 hide_table_of_contents: true
 ---
 
-es + es-translated # ethers.js
+# ethers.js
 
-es + es-translated [ethers.js](https://docs.ethers.org/v5/) is a JavaScript library that allows developers to interact with EVM-compatible blockchain networks.
+[ethers.js](https://docs.ethers.org/v5/) es una biblioteca de JavaScript que permite a los desarrolladores interactuar con redes blockchain compatibles con EVM.
 
-es + es-translated You can use ethers.js to interact with smart contracts deployed on the Base network.
+Puedes usar ethers.js para interactuar con contratos inteligentes desplegados en la red Base.
 
 ---
 
-es + es-translated ## Install
+## Instalar
 
-es + es-translated To install ethers.js run the following command:
+Para instalar ethers.js ejecuta el siguiente comando:
 
 ```bash
 npm install --save ethers
 ```
 
-es + es-translated ## Setup
+## Configuración
 
-es + es-translated Before you can start using ethers.js, you need to import it into your project.
+Antes de que puedas empezar a usar ethers.js, necesitas importarlo en tu proyecto.
 
-es + es-translated Add the following line of code to the top of your file to import ethers.js:
+Agrega la siguiente línea de código en la parte superior de tu archivo para importar ethers.js:
 
 ```javascript
 const ethers = require('ethers');
 ```
 
-es + es-translated ## Connecting to Base
+## Conectarse a Base
 
-es + es-translated You can connect to Base by instantiating a new ethers.js `JsonRpcProvider` object with a RPC URL of the Base network:
+Puedes conectarte a Base instanciando un nuevo objeto `JsonRpcProvider` de ethers.js con una URL RPC de la red Base:
 
 ```javascript
 const ethers = require('ethers');
@@ -57,17 +57,17 @@ const url = 'https://mainnet.base.org';
 const provider = new ethers.providers.JsonRpcProvider(url);
 ```
 
-es + es-translated :::info
+:::info
 
-es + es-translated To alternatively connect to Base Sepolia (testnet), change the above URL from `https://mainnet.base.org` to `https://sepolia.base.org`.
+Para conectarse alternativamente a Base Sepolia (testnet), cambia la URL anterior de `https://mainnet.base.org` a `https://sepolia.base.org`.
 
-es + es-translated :::
+:::
 
-es + es-translated ## Reading data from the blockchain
+## Leer datos de la blockchain
 
-es + es-translated Once you have created a provider, you can use it to read data from the Base network.
+Una vez que hayas creado un proveedor, puedes usarlo para leer datos de la red Base.
 
-es + es-translated For example, you can use the `getBlockNumber` method to get the latest block:
+Por ejemplo, puedes usar el método `getBlockNumber` para obtener el último bloque:
 
 ```javascript
 async function getLatestBlock() {
@@ -76,26 +76,26 @@ async function getLatestBlock() {
 }
 ```
 
-es + es-translated ## Writing data to the blockchain
+## Escribir datos en la blockchain
 
-es + es-translated In order to write data to the Base network, you need to create a `Signer`.
+Para escribir datos en la red Base, necesitas crear un `Signer`.
 
-es + es-translated You can create a `Signer` by instantiating a new ethers.js `Wallet` object, providing it with a private key and `Provider`.
+Puedes crear un `Signer` instanciando un nuevo objeto `Wallet` de ethers.js, proporcionándole una clave privada y un `Provider`.
 
 ```javascript
 const privateKey = 'PRIVATE_KEY';
 const signer = new ethers.Wallet(privateKey, provider);
 ```
 
-es + es-translated :::info
+:::info
 
-es + es-translated `PRIVATE_KEY` is the private key of the wallet to use when creating the signer.
+`PRIVATE_KEY` es la clave privada de la billetera a usar al crear el firmante.
 
-es + es-translated :::
+:::
 
-es + es-translated ## Interacting with smart contracts
+## Interactuar con contratos inteligentes
 
-es + es-translated You can use ethers.js to interact with a smart contract on Base by instantiating a `Contract` object using the ABI and address of a deployed contract:
+Puedes usar ethers.js para interactuar con un contrato inteligente en Base instanciando un objeto `Contract` usando el ABI y la dirección de un contrato desplegado:
 
 ```javascript
 const abi = [
@@ -108,20 +108,20 @@ const contractAddress = "CONTRACT_ADDRESS"
 const contract = new ethers.Contract(contractAddress, abi, provider);
 ```
 
-es + es-translated For write-only contracts, provide a `Signer` object instead of a `Provider` object:
+Para contratos de solo escritura, proporciona un objeto `Signer` en lugar de un objeto `Provider`:
 
 ```javascript
 // write only
 const contract = new ethers.Contract(contractAddress, abi, signer);
 ```
 
-es + es-translated :::info
+:::info
 
-es + es-translated `CONTRACT_ADDRESS` is the address of the deployed contract.
+`CONTRACT_ADDRESS` es la dirección del contrato desplegado.
 
-es + es-translated :::
+:::
 
-es + es-translated Once you have created a `Contract` object, you can use it to call desired methods on the smart contract:
+Una vez que hayas creado un objeto `Contract`, puedes usarlo para llamar a los métodos deseados en el contrato inteligente:
 
 ```javascript
 async function setValue(value) {

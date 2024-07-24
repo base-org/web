@@ -1,82 +1,82 @@
 {
   "logo.alt": {
-    "message": "es + es-translated Base Docs",
-    "description": "es + es-translated The alt text of navbar logo"
+    "message": "Documentos de Base",
+    "description": "El texto alternativo del logo de la barra de navegación"
   },
   "item.label.Home": {
-    "message": "es + es-translated Home",
-    "description": "es + es-translated Navbar item with label Home"
+    "message": "Inicio",
+    "description": "Elemento de la barra de navegación con etiqueta Inicio"
   },
   "item.label.Docs": {
-    "message": "es + es-translated Docs",
-    "description": "es + es-translated Navbar item with label Docs"
+    "message": "Documentos",
+    "description": "Elemento de la barra de navegación con etiqueta Documentos"
   },
   "item.label.Tutorials": {
-    "message": "es + es-translated Tutorials",
-    "description": "es + es-translated Navbar item with label Tutorials"
+    "message": "Tutoriales",
+    "description": "Elemento de la barra de navegación con etiqueta Tutoriales"
   },
   "item.label.Camp": {
-    "message": "es + es-translated Camp",
-    "description": "es + es-translated Navbar item with label Camp"
+    "message": "Campamento",
+    "description": "Elemento de la barra de navegación con etiqueta Campamento"
   },
   "item.label.Ecosystem": {
-    "message": "es + es-translated Ecosystem",
-    "description": "es + es-translated Navbar item with label Ecosystem"
+    "message": "Ecosistema",
+    "description": "Elemento de la barra de navegación con etiqueta Ecosistema"
   },
   "item.label.Bridge": {
-    "message": "es + es-translated Bridge",
-    "description": "es + es-translated Navbar item with label Bridge"
+    "message": "Puente",
+    "description": "Elemento de la barra de navegación con etiqueta Puente"
   },
   "item.label.Builders": {
-    "message": "es + es-translated Builders",
-    "description": "es + es-translated Navbar item with label Builders"
+    "message": "Constructores",
+    "description": "Elemento de la barra de navegación con etiqueta Constructores"
   },
   "item.label.About": {
-    "message": "es + es-translated About",
-    "description": "es + es-translated Navbar item with label About"
+    "message": "Acerca de",
+    "description": "Elemento de la barra de navegación con etiqueta Acerca de"
   },
   "item.label.Learn": {
-    "message": "es + es-translated Learn",
-    "description": "es + es-translated Navbar item with label Learn"
+    "message": "Aprender",
+    "description": "Elemento de la barra de navegación con etiqueta Aprender"
   },
   "item.label.Track your progress": {
-    "message": "es + es-translated Track your progress",
-    "description": "es + es-translated Navbar item with label Track your progress"
+    "message": "Rastrea tu progreso",
+    "description": "Elemento de la barra de navegación con etiqueta Rastrea tu progreso"
   },
   "item.label.Bootcamp": {
-    "message": "es + es-translated Bootcamp",
-    "description": "es + es-translated Navbar item with label Bootcamp"
+    "message": "Bootcamp",
+    "description": "Elemento de la barra de navegación con etiqueta Bootcamp"
   },
   "item.label.Apps": {
-    "message": "es + es-translated Apps",
-    "description": "es + es-translated Navbar item with label Apps"
+    "message": "Aplicaciones",
+    "description": "Elemento de la barra de navegación con etiqueta Aplicaciones"
   },
   "item.label.Grants": {
-    "message": "es + es-translated Grants",
-    "description": "es + es-translated Navbar item with label Grants"
+    "message": "Subvenciones",
+    "description": "Elemento de la barra de navegación con etiqueta Subvenciones"
   },
   "item.label.Block Explorer": {
-    "message": "es + es-translated Block Explorer",
-    "description": "es + es-translated Navbar item with label Block Explorer"
+    "message": "Explorador de Bloques",
+    "description": "Elemento de la barra de navegación con etiqueta Explorador de Bloques"
   },
   "item.label.Status": {
-    "message": "es + es-translated Status",
-    "description": "es + es-translated Navbar item with label Status"
+    "message": "Estado",
+    "description": "Elemento de la barra de navegación con etiqueta Estado"
   },
   "item.label.Bug Bounty": {
-    "message": "es + es-translated Bug Bounty",
-    "description": "es + es-translated Navbar item with label Bug Bounty"
+    "message": "Recompensa de Errores",
+    "description": "Elemento de la barra de navegación con etiqueta Recompensa de Errores"
   },
   "item.label.Mission": {
-    "message": "es + es-translated Mission",
-    "description": "es + es-translated Navbar item with label Mission"
+    "message": "Misión",
+    "description": "Elemento de la barra de navegación con etiqueta Misión"
   },
   "item.label.Blog": {
-    "message": "es + es-translated Blog",
-    "description": "es + es-translated Navbar item with label Blog"
+    "message": "Blog",
+    "description": "Elemento de la barra de navegación con etiqueta Blog"
   },
   "item.label.Jobs": {
-    "message": "es + es-translated Jobs",
-    "description": "es + es-translated Navbar item with label Jobs"
+    "message": "Trabajos",
+    "description": "Elemento de la barra de navegación con etiqueta Trabajos"
   }
 }

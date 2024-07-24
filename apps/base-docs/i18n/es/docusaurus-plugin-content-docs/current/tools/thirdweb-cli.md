@@ -20,69 +20,69 @@ keywords:
 hide_table_of_contents: true
 ---
 
-es + es-translated # thirdweb CLI
+# thirdweb CLI
 
-es + es-translated thirdweb provides an interactive command line interface, allowing you to create, build and deploy your smart contracts and apps.
+thirdweb proporciona una interfaz de línea de comandos interactiva, que te permite crear, construir y desplegar tus contratos inteligentes y aplicaciones.
 
-es + es-translated You can use the thirdweb CLI to create and deploy smart contracts to the Base network.
+Puedes usar el CLI de thirdweb para crear y desplegar contratos inteligentes en la red Base.
 
-es + es-translated Visit the [thirdweb documentation](https://portal.thirdweb.com/cli) for more instructions on using the thirdweb CLI.
+Visita la [documentación de thirdweb](https://portal.thirdweb.com/cli) para más instrucciones sobre cómo usar el CLI de thirdweb.
 
 ---
 
-es + es-translated ## Creating a project
+## Crear un proyecto
 
-es + es-translated Create a new project with thirdweb installed and configured:
+Crea un nuevo proyecto con thirdweb instalado y configurado:
 
 ```bash
 npx thirdweb create
 ```
 
-es + es-translated :::info
+:::info
 
-es + es-translated When you create a project for smart contracts or web3 apps there are various configurable options.
+Cuando creas un proyecto para contratos inteligentes o aplicaciones web3 hay varias opciones configurables.
 
-es + es-translated **For contracts, some options are:**
+**Para contratos, algunas opciones son:**
 
-es + es-translated - Create a new contract project using [Hardhat](https://hardhat.org/) or [Forge](https://book.getfoundry.sh/)
-- Add a new contract to an existing project
-- Start from an audited contract base, and add optional [extensions](https://portal.thirdweb.com/contractkit/extensions)
+- Crear un nuevo proyecto de contrato usando [Hardhat](https://hardhat.org/) o [Forge](https://book.getfoundry.sh/)
+- Agregar un nuevo contrato a un proyecto existente
+- Comenzar desde una base de contrato auditada y agregar [extensiones](https://portal.thirdweb.com/contractkit/extensions) opcionales
 
-es + es-translated **For contracts, some options are:**
+**Para contratos, algunas opciones son:**
 
-es + es-translated - Front end applications using Next, CRA or Vite
-- Backend applications using Node.js or Express.js
-- Choice of TypeScript or JavaScript variants
+- Aplicaciones de front-end usando Next, CRA o Vite
+- Aplicaciones de back-end usando Node.js o Express.js
+- Elección de variantes de TypeScript o JavaScript
 
-es + es-translated :::
+:::
 
 ---
 
-es + es-translated ## Deploying a smart contract
+## Desplegar un contrato inteligente
 
-es + es-translated [Deploy](https://portal.thirdweb.com/deploy) your smart contracts to the Base network:
+[Despliega](https://portal.thirdweb.com/deploy) tus contratos inteligentes en la red Base:
 
 ```bash
 npx thirdweb deploy
 ```
 
-es + es-translated :::info
+:::info
 
-es + es-translated To deploy to the Base network, after running `npx thirdweb deploy`, visit the provided dashboard URL and select Base from the Network dropdown.
+Para desplegar en la red Base, después de ejecutar `npx thirdweb deploy`, visita la URL del panel proporcionada y selecciona Base en el menú desplegable de la red.
 
-es + es-translated :::
+:::
 
-es + es-translated :::info
+:::info
 
-es + es-translated For a complete guide on using the thirdweb CLI to create and deploy contracts on Base, see [Deploy a smart contract on Base testnet](https://blog.thirdweb.com/guides/how-to-deploy-a-smart-contract-to-base-network-testnet-coinbase-l2/).
+Para una guía completa sobre cómo usar el CLI de thirdweb para crear y desplegar contratos en Base, consulta [Desplegar un contrato inteligente en Base testnet](https://blog.thirdweb.com/guides/how-to-deploy-a-smart-contract-to-base-network-testnet-coinbase-l2/).
 
-es + es-translated :::
+:::
 
 ---
 
-es + es-translated ## Publishing a smart contract
+## Publicar un contrato inteligente
 
-es + es-translated [Publish](https://portal.thirdweb.com/publish) and share a versioned release of your contract onto thirdweb’s registry:
+[Publica](https://portal.thirdweb.com/publish) y comparte una versión de tu contrato en el registro de thirdweb:
 
 ```bash
 npx thirdweb publish

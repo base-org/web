@@ -1,186 +1,186 @@
 {
   "version.label": {
-    "message": "es + es-translated Next",
-    "description": "es + es-translated The label for version current"
+    "message": "Siguiente",
+    "description": "La etiqueta para la versión actual"
   },
   "sidebar.docs.category.Introduction to Ethereum": {
-    "message": "es + es-translated Introduction to Ethereum",
-    "description": "es + es-translated The label for category Introduction to Ethereum in sidebar docs"
+    "message": "Introducción a Ethereum",
+    "description": "La etiqueta para la categoría Introducción a Ethereum en la barra lateral de documentos"
   },
   "sidebar.docs.category.Development Tools": {
-    "message": "es + es-translated Development Tools",
-    "description": "es + es-translated The label for category Development Tools in sidebar docs"
+    "message": "Herramientas de Desarrollo",
+    "description": "La etiqueta para la categoría Herramientas de Desarrollo en la barra lateral de documentos"
   },
   "sidebar.docs.category.Development with Hardhat": {
-    "message": "es + es-translated Development with Hardhat",
-    "description": "es + es-translated The label for category Development with Hardhat in sidebar docs"
+    "message": "Desarrollo con Hardhat",
+    "description": "La etiqueta para la categoría Desarrollo con Hardhat en la barra lateral de documentos"
   },
   "sidebar.docs.category.Hardhat Setup and Overview": {
-    "message": "es + es-translated Hardhat Setup and Overview",
-    "description": "es + es-translated The label for category Hardhat Setup and Overview in sidebar docs"
+    "message": "Configuración y Descripción General de Hardhat",
+    "description": "La etiqueta para la categoría Configuración y Descripción General de Hardhat en la barra lateral de documentos"
   },
   "sidebar.docs.category.Testing with Typescript": {
-    "message": "es + es-translated Testing with Typescript",
-    "description": "es + es-translated The label for category Testing with Typescript in sidebar docs"
+    "message": "Pruebas con Typescript",
+    "description": "La etiqueta para la categoría Pruebas con Typescript en la barra lateral de documentos"
   },
   "sidebar.docs.category.Etherscan": {
-    "message": "es + es-translated Etherscan",
-    "description": "es + es-translated The label for category Etherscan in sidebar docs"
+    "message": "Etherscan",
+    "description": "La etiqueta para la categoría Etherscan en la barra lateral de documentos"
   },
   "sidebar.docs.category.Deploying Smart Contracts": {
-    "message": "es + es-translated Deploying Smart Contracts",
-    "description": "es + es-translated The label for category Deploying Smart Contracts in sidebar docs"
+    "message": "Despliegue de Contratos Inteligentes",
+    "description": "La etiqueta para la categoría Despliegue de Contratos Inteligentes en la barra lateral de documentos"
   },
   "sidebar.docs.category.Verifying Smart Contracts": {
-    "message": "es + es-translated Verifying Smart Contracts",
-    "description": "es + es-translated The label for category Verifying Smart Contracts in sidebar docs"
+    "message": "Verificación de Contratos Inteligentes",
+    "description": "La etiqueta para la categoría Verificación de Contratos Inteligentes en la barra lateral de documentos"
   },
   "sidebar.docs.category.Mainnet Forking": {
-    "message": "es + es-translated Mainnet Forking",
-    "description": "es + es-translated The label for category Mainnet Forking in sidebar docs"
+    "message": "Forking de Mainnet",
+    "description": "La etiqueta para la categoría Forking de Mainnet en la barra lateral de documentos"
   },
   "sidebar.docs.category.Development With Foundry": {
-    "message": "es + es-translated Development With Foundry",
-    "description": "es + es-translated The label for category Development With Foundry in sidebar docs"
+    "message": "Desarrollo con Foundry",
+    "description": "La etiqueta para la categoría Desarrollo con Foundry en la barra lateral de documentos"
   },
   "sidebar.docs.category.Smart Contract Development": {
-    "message": "es + es-translated Smart Contract Development",
-    "description": "es + es-translated The label for category Smart Contract Development in sidebar docs"
+    "message": "Desarrollo de Contratos Inteligentes",
+    "description": "La etiqueta para la categoría Desarrollo de Contratos Inteligentes en la barra lateral de documentos"
   },
   "sidebar.docs.category.Introduction to Solidity": {
-    "message": "es + es-translated Introduction to Solidity",
-    "description": "es + es-translated The label for category Introduction to Solidity in sidebar docs"
+    "message": "Introducción a Solidity",
+    "description": "La etiqueta para la categoría Introducción a Solidity en la barra lateral de documentos"
   },
   "sidebar.docs.category.Contracts and Basic Functions": {
-    "message": "es + es-translated Contracts and Basic Functions",
-    "description": "es + es-translated The label for category Contracts and Basic Functions in sidebar docs"
+    "message": "Contratos y Funciones Básicas",
+    "description": "La etiqueta para la categoría Contratos y Funciones Básicas en la barra lateral de documentos"
   },
   "sidebar.docs.category.Deploying to a Testnet": {
-    "message": "es + es-translated Deploying to a Testnet",
-    "description": "es + es-translated The label for category Deploying to a Testnet in sidebar docs"
+    "message": "Despliegue en una Testnet",
+    "description": "La etiqueta para la categoría Despliegue en una Testnet en la barra lateral de documentos"
   },
   "sidebar.docs.category.Control Structures": {
-    "message": "es + es-translated Control Structures",
-    "description": "es + es-translated The label for category Control Structures in sidebar docs"
+    "message": "Estructuras de Control",
+    "description": "La etiqueta para la categoría Estructuras de Control en la barra lateral de documentos"
   },
   "sidebar.docs.category.Storage in Solidity": {
-    "message": "es + es-translated Storage in Solidity",
-    "description": "es + es-translated The label for category Storage in Solidity in sidebar docs"
+    "message": "Almacenamiento en Solidity",
+    "description": "La etiqueta para la categoría Almacenamiento en Solidity en la barra lateral de documentos"
   },
   "sidebar.docs.category.Arrays in Solidity": {
-    "message": "es + es-translated Arrays in Solidity",
-    "description": "es + es-translated The label for category Arrays in Solidity in sidebar docs"
+    "message": "Arrays en Solidity",
+    "description": "La etiqueta para la categoría Arrays en Solidity en la barra lateral de documentos"
   },
   "sidebar.docs.category.The Mapping Type": {
-    "message": "es + es-translated The Mapping Type",
-    "description": "es + es-translated The label for category The Mapping Type in sidebar docs"
+    "message": "El Tipo Mapping",
+    "description": "La etiqueta para la categoría El Tipo Mapping en la barra lateral de documentos"
   },
   "sidebar.docs.category.Advanced Functions": {
-    "message": "es + es-translated Advanced Functions",
-    "description": "es + es-translated The label for category Advanced Functions in sidebar docs"
+    "message": "Funciones Avanzadas",
+    "description": "La etiqueta para la categoría Funciones Avanzadas en la barra lateral de documentos"
   },
   "sidebar.docs.category.Structs": {
-    "message": "es + es-translated Structs",
-    "description": "es + es-translated The label for category Structs in sidebar docs"
+    "message": "Structs",
+    "description": "La etiqueta para la categoría Structs en la barra lateral de documentos"
   },
   "sidebar.docs.category.Inheritance": {
-    "message": "es + es-translated Inheritance",
-    "description": "es + es-translated The label for category Inheritance in sidebar docs"
+    "message": "Herencia",
+    "description": "La etiqueta para la categoría Herencia en la barra lateral de documentos"
   },
   "sidebar.docs.category.Imports": {
-    "message": "es + es-translated Imports",
-    "description": "es + es-translated The label for category Imports in sidebar docs"
+    "message": "Importaciones",
+    "description": "La etiqueta para la categoría Importaciones en la barra lateral de documentos"
   },
   "sidebar.docs.category.Errors": {
-    "message": "es + es-translated Errors",
-    "description": "es + es-translated The label for category Errors in sidebar docs"
+    "message": "Errores",
+    "description": "La etiqueta para la categoría Errores en la barra lateral de documentos"
   },
   "sidebar.docs.category.The `new` Keyword": {
-    "message": "es + es-translated The `new` Keyword",
-    "description": "es + es-translated The label for category The `new` Keyword in sidebar docs"
+    "message": "La palabra clave `new`",
+    "description": "La etiqueta para la categoría La palabra clave `new` en la barra lateral de documentos"
   },
   "sidebar.docs.category.Contract to Contract Interactions": {
-    "message": "es + es-translated Contract to Contract Interactions",
-    "description": "es + es-translated The label for category Contract to Contract Interactions in sidebar docs"
+    "message": "Interacciones de Contrato a Contrato",
+    "description": "La etiqueta para la categoría Interacciones de Contrato a Contrato en la barra lateral de documentos"
   },
   "sidebar.docs.category.Events": {
-    "message": "es + es-translated Events",
-    "description": "es + es-translated The label for category Events in sidebar docs"
+    "message": "Eventos",
+    "description": "La etiqueta para la categoría Eventos en la barra lateral de documentos"
   },
   "sidebar.docs.category.Address and Payable": {
-    "message": "es + es-translated Address and Payable",
-    "description": "es + es-translated The label for category Address and Payable in sidebar docs"
+    "message": "Dirección y Payable",
+    "description": "La etiqueta para la categoría Dirección y Payable en la barra lateral de documentos"
   },
   "sidebar.docs.category.Token Development": {
-    "message": "es + es-translated Token Development",
-    "description": "es + es-translated The label for category Token Development in sidebar docs"
+    "message": "Desarrollo de Tokens",
+    "description": "La etiqueta para la categoría Desarrollo de Tokens en la barra lateral de documentos"
   },
   "sidebar.docs.category.Introduction to Tokens": {
-    "message": "es + es-translated Introduction to Tokens",
-    "description": "es + es-translated The label for category Introduction to Tokens in sidebar docs"
+    "message": "Introducción a los Tokens",
+    "description": "La etiqueta para la categoría Introducción a los Tokens en la barra lateral de documentos"
   },
   "sidebar.docs.category.Minimal Tokens": {
-    "message": "es + es-translated Minimal Tokens",
-    "description": "es + es-translated The label for category Minimal Tokens in sidebar docs"
+    "message": "Tokens Mínimos",
+    "description": "La etiqueta para la categoría Tokens Mínimos en la barra lateral de documentos"
   },
   "sidebar.docs.category.ERC-20 Tokens": {
-    "message": "es + es-translated ERC-20 Tokens",
-    "description": "es + es-translated The label for category ERC-20 Tokens in sidebar docs"
+    "message": "Tokens ERC-20",
+    "description": "La etiqueta para la categoría Tokens ERC-20 en la barra lateral de documentos"
   },
   "sidebar.docs.category.ERC-721 Tokens": {
-    "message": "es + es-translated ERC-721 Tokens",
-    "description": "es + es-translated The label for category ERC-721 Tokens in sidebar docs"
+    "message": "Tokens ERC-721",
+    "description": "La etiqueta para la categoría Tokens ERC-721 en la barra lateral de documentos"
   },
   "sidebar.docs.category.Hardhat Tools and Testing": {
-    "message": "es + es-translated Hardhat Tools and Testing",
-    "description": "es + es-translated The label for category Hardhat Tools and Testing in sidebar docs"
+    "message": "Herramientas y Pruebas de Hardhat",
+    "description": "La etiqueta para la categoría Herramientas y Pruebas de Hardhat en la barra lateral de documentos"
   },
   "sidebar.docs.category.Onchain App Development (Frontend)": {
-    "message": "es + es-translated Onchain App Development (Frontend)",
-    "description": "es + es-translated The label for category Onchain App Development (Frontend) in sidebar docs"
+    "message": "Desarrollo de Aplicaciones Onchain (Frontend)",
+    "description": "La etiqueta para la categoría Desarrollo de Aplicaciones Onchain (Frontend) en la barra lateral de documentos"
   },
   "sidebar.docs.category.Frontend Setup": {
-    "message": "es + es-translated Frontend Setup",
-    "description": "es + es-translated The label for category Frontend Setup in sidebar docs"
+    "message": "Configuración del Frontend",
+    "description": "La etiqueta para la categoría Configuración del Frontend en la barra lateral de documentos"
   },
   "sidebar.docs.category.Reading and Displaying Data": {
-    "message": "es + es-translated Reading and Displaying Data",
-    "description": "es + es-translated The label for category Reading and Displaying Data in sidebar docs"
+    "message": "Lectura y Visualización de Datos",
+    "description": "La etiqueta para la categoría Lectura y Visualización de Datos en la barra lateral de documentos"
   },
   "sidebar.docs.category.Writing to Contracts": {
-    "message": "es + es-translated Writing to Contracts",
-    "description": "es + es-translated The label for category Writing to Contracts in sidebar docs"
+    "message": "Escritura en Contratos",
+    "description": "La etiqueta para la categoría Escritura en Contratos en la barra lateral de documentos"
   },
   "sidebar.docs.link.Guide to Base": {
-    "message": "es + es-translated Guide to Base",
-    "description": "es + es-translated The label for link Guide to Base in sidebar docs, linking to https://www.coinbase.com/cloud/discover/protocol-guides/guide-to-base"
+    "message": "Guía de Base",
+    "description": "La etiqueta para el enlace Guía de Base en la barra lateral de documentos, enlazando a https://www.coinbase.com/cloud/discover/protocol-guides/guide-to-base"
   },
   "sidebar.docs.link.Introduction to Foundry": {
-    "message": "es + es-translated Introduction to Foundry",
-    "description": "es + es-translated The label for link Introduction to Foundry in sidebar docs, linking to https://docs.base.org/tutorials/intro-to-foundry-setup"
+    "message": "Introducción a Foundry",
+    "description": "La etiqueta para el enlace Introducción a Foundry en la barra lateral de documentos, enlazando a https://docs.base.org/tutorials/intro-to-foundry-setup"
   },
   "sidebar.docs.link.Testing smart contracts with Foundry": {
-    "message": "es + es-translated Testing smart contracts with Foundry",
-    "description": "es + es-translated The label for link Testing smart contracts with Foundry in sidebar docs, linking to https://docs.base.org/tutorials/intro-to-foundry-testing"
+    "message": "Pruebas de contratos inteligentes con Foundry",
+    "description": "La etiqueta para el enlace Pruebas de contratos inteligentes con Foundry en la barra lateral de documentos, enlazando a https://docs.base.org/tutorials/intro-to-foundry-testing"
   },
   "sidebar.docs.link.Profiling Gas": {
-    "message": "es + es-translated Profiling Gas",
-    "description": "es + es-translated The label for link Profiling Gas in sidebar docs, linking to https://docs.base.org/tutorials/hardhat-profiling-gas"
+    "message": "Perfilado de Gas",
+    "description": "La etiqueta para el enlace Perfilado de Gas en la barra lateral de documentos, enlazando a https://docs.base.org/tutorials/hardhat-profiling-gas"
   },
   "sidebar.docs.link.Profiling Size": {
-    "message": "es + es-translated Profiling Size",
-    "description": "es + es-translated The label for link Profiling Size in sidebar docs, linking to https://docs.base.org/tutorials/hardhat-profiling-size"
+    "message": "Perfilado de Tamaño",
+    "description": "La etiqueta para el enlace Perfilado de Tamaño en la barra lateral de documentos, enlazando a https://docs.base.org/tutorials/hardhat-profiling-size"
   },
   "sidebar.docs.link.Debugging": {
-    "message": "es + es-translated Debugging",
-    "description": "es + es-translated The label for link Debugging in sidebar docs, linking to https://docs.base.org/tutorials/hardhat-debugging"
+    "message": "Depuración",
+    "description": "La etiqueta para el enlace Depuración en la barra lateral de documentos, enlazando a https://docs.base.org/tutorials/hardhat-debugging"
   },
   "sidebar.docs.link.Test Coverage": {
-    "message": "es + es-translated Test Coverage",
-    "description": "es + es-translated The label for link Test Coverage in sidebar docs, linking to https://docs.base.org/tutorials/hardhat-test-coverage"
+    "message": "Cobertura de Pruebas",
+    "description": "La etiqueta para el enlace Cobertura de Pruebas en la barra lateral de documentos, enlazando a https://docs.base.org/tutorials/hardhat-test-coverage"
   },
   "sidebar.docs.link.Connecting to the Blockchain": {
-    "message": "es + es-translated Connecting to the Blockchain",
-    "description": "es + es-translated The label for link Connecting to the Blockchain in sidebar docs, linking to https://docs.base.org/tutorials/intro-to-providers"
+    "message": "Conexión a la Blockchain",
+    "description": "La etiqueta para el enlace Conexión a la Blockchain en la barra lateral de documentos, enlazando a https://docs.base.org/tutorials/intro-to-providers"
   }
 }

@@ -24,182 +24,182 @@ keywords:
 hide_table_of_contents: true
 ---
 
-es + es-translated # Data Indexers
+# Indexadores de Datos
 
 ---
 
-es + es-translated ## Allium
+## Allium
 
-es + es-translated [Allium](https://www.allium.so/) is an Enterprise Data Platform that serves accurate, fast, and simple blockchain data. Currently serving 15 blockchains and over 100+ schemas, Allium offers near real-time Base data for infrastructure needs and enriched Base data (NFT, DEX, Decoded, Wallet360) for research and analytics.
+[Allium](https://www.allium.so/) es una Plataforma de Datos Empresariales que ofrece datos de blockchain precisos, rápidos y simples. Actualmente sirve a 15 blockchains y más de 100 esquemas, Allium ofrece datos base casi en tiempo real para necesidades de infraestructura y datos base enriquecidos (NFT, DEX, Decodificados, Wallet360) para investigación y análisis.
 
-es + es-translated Allium supports data delivery to multiple [destinations](https://docs.allium.so/integrations/overview), including Snowflake, Bigquery, Databricks, and AWS S3.
+Allium admite la entrega de datos a múltiples [destinos](https://docs.allium.so/integrations/overview), incluyendo Snowflake, Bigquery, Databricks y AWS S3.
 
-es + es-translated Documentation:
+Documentación:
 
-es + es-translated - [Real-time](https://docs.allium.so/real-time-data/base)
-- [Batch-enriched](https://docs.allium.so/data-tables/base)
+- [Tiempo real](https://docs.allium.so/real-time-data/base)
+- [Enriquecido por lotes](https://docs.allium.so/data-tables/base)
 
-es + es-translated To get started, contact Allium [here](https://www.allium.so/contact).
+Para comenzar, contacta a Allium [aquí](https://www.allium.so/contact).
 
-es + es-translated ## Arkham
+## Arkham
 
-es + es-translated [Arkham](https://platform.arkhamintelligence.com/) is a crypto intelligence platform that systematically analyzes blockchain transactions, showing users the people and companies behind blockchain activity, with a suite of advanced tools for analyzing their activity.
+[Arkham](https://platform.arkhamintelligence.com/) es una plataforma de inteligencia cripto que analiza sistemáticamente las transacciones de blockchain, mostrando a los usuarios las personas y empresas detrás de la actividad de blockchain, con un conjunto de herramientas avanzadas para analizar su actividad.
 
-es + es-translated References:
+Referencias:
 
-es + es-translated - [Platform guide](https://www.arkhamintelligence.com/guide)
-- [Whitepaper](https://www.arkhamintelligence.com/whitepaper)
+- [Guía de la plataforma](https://www.arkhamintelligence.com/guide)
+- [Libro blanco](https://www.arkhamintelligence.com/whitepaper)
 - [Codex](https://codex.arkhamintelligence.com/)
 - [Demos](https://www.youtube.com/@arkhamintel)
 
 ---
 
-es + es-translated ## Covalent
+## Covalent
 
-es + es-translated [Covalent](https://www.covalenthq.com/?utm_source=base&utm_medium=partner-docs) is a hosted blockchain data solution providing access to historical and current on-chain data for [100+ supported blockchains](https://www.covalenthq.com/docs/networks/?utm_source=base&utm_medium=partner-docs), including [Base](https://www.covalenthq.com/docs/networks/base/?utm_source=base&utm_medium=partner-docs).
+[Covalent](https://www.covalenthq.com/?utm_source=base&utm_medium=partner-docs) es una solución de datos de blockchain alojada que proporciona acceso a datos históricos y actuales en cadena para [100+ blockchains compatibles](https://www.covalenthq.com/docs/networks/?utm_source=base&utm_medium=partner-docs), incluyendo [Base](https://www.covalenthq.com/docs/networks/base/?utm_source=base&utm_medium=partner-docs).
 
-es + es-translated Covalent maintains a full archival copy of every supported blockchain, meaning every balance, transaction, log event, and NFT asset data is available from the genesis block. This data is available via:
+Covalent mantiene una copia archivada completa de cada blockchain compatible, lo que significa que cada saldo, transacción, evento de registro y datos de activos NFT están disponibles desde el bloque de génesis. Estos datos están disponibles a través de:
 
-es + es-translated 1. [Unified API](https://www.covalenthq.com/docs/unified-api/?utm_source=base&utm_medium=partner-docs) - Incorporate blockchain data into your app with a familiar REST API
-2. [Increment](https://www.covalenthq.com/docs/increment/?utm_source=base&utm_medium=partner-docs) - Create and embed custom charts with no-code analytics
+1. [API Unificada](https://www.covalenthq.com/docs/unified-api/?utm_source=base&utm_medium=partner-docs) - Incorpora datos de blockchain en tu aplicación con una API REST familiar
+2. [Increment](https://www.covalenthq.com/docs/increment/?utm_source=base&utm_medium=partner-docs) - Crea e incrusta gráficos personalizados con análisis sin código
 
-es + es-translated To get started, [sign up](https://www.covalenthq.com/platform/?utm_source=base&utm_medium=partner-docs) and visit the [developer documentation](https://www.covalenthq.com/docs/?utm_source=base&utm_medium=partner-docs).
+Para comenzar, [regístrate](https://www.covalenthq.com/platform/?utm_source=base&utm_medium=partner-docs) y visita la [documentación para desarrolladores](https://www.covalenthq.com/docs/?utm_source=base&utm_medium=partner-docs).
 
-es + es-translated #### Supported Networks
+#### Redes Compatibles
 
-es + es-translated - [Base Mainnet](https://www.covalenthq.com/docs/networks/base/?utm_source=base&utm_medium=partner-docs)
+- [Base Mainnet](https://www.covalenthq.com/docs/networks/base/?utm_source=base&utm_medium=partner-docs)
 - [Base Sepolia](https://www.covalenthq.com/docs/networks/base/?utm_source=base&utm_medium=partner-docs) (Testnet)
 
 ---
 
-es + es-translated ## Envio
+## Envio
 
-es + es-translated [Envio](https://envio.dev) is a full-featured data indexing solution that provides application developers with a seamless and efficient way to index and aggregate real-time and historical blockchain data for any EVM. The indexed data is easily accessible through custom GraphQL queries, providing developers with the flexibility and power to retrieve specific information.
+[Envio](https://envio.dev) es una solución de indexación de datos completa que proporciona a los desarrolladores de aplicaciones una forma fluida y eficiente de indexar y agregar datos de blockchain en tiempo real e históricos para cualquier EVM. Los datos indexados son fácilmente accesibles a través de consultas personalizadas de GraphQL, proporcionando a los desarrolladores la flexibilidad y el poder para recuperar información específica.
 
-es + es-translated Envio [HyperSync](https://docs.envio.dev/docs/hypersync) is an indexed layer of the Base blockchain for the hyper-speed syncing of historical data (JSON-RPC bypass). What would usually take hours to sync ~100,000 events can now be done in the order of less than a minute.
+Envio [HyperSync](https://docs.envio.dev/docs/hypersync) es una capa indexada de la blockchain Base para la sincronización a hiper-velocidad de datos históricos (bypass JSON-RPC). Lo que usualmente tomaría horas para sincronizar ~100,000 eventos ahora se puede hacer en el orden de menos de un minuto.
 
-es + es-translated Designed to optimize the user experience, Envio offers automatic code generation, flexible language support, multi-chain data aggregation, and a reliable, cost-effective hosted service.
+Diseñado para optimizar la experiencia del usuario, Envio ofrece generación automática de código, soporte flexible de idiomas, agregación de datos multi-cadena y un servicio alojado confiable y rentable.
 
-es + es-translated To get started, visit the [documentation](https://docs.envio.dev/docs/overview) or follow the [quickstart](https://docs.envio.dev/docs/quickstart) guide.
+Para comenzar, visita la [documentación](https://docs.envio.dev/docs/overview) o sigue la guía de [inicio rápido](https://docs.envio.dev/docs/quickstart).
 
-es + es-translated #### Supported Networks
+#### Redes Compatibles
 
-es + es-translated - Base Mainnet
+- Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-es + es-translated ## GhostGraph
+## GhostGraph
 
-es + es-translated [GhostGraph](https://GhostGraph.xyz/) makes it easy to build blazingly fast indexers (subgraphs) for smart contracts.
+[GhostGraph](https://GhostGraph.xyz/) facilita la creación de indexadores (subgráficos) extremadamente rápidos para contratos inteligentes.
 
-es + es-translated GhostGraph is the first indexing solution that lets you write your index transformations in **Solidity**. Base dApps can query data with GraphQL using our hosted endpoints.
+GhostGraph es la primera solución de indexación que te permite escribir tus transformaciones de índice en **Solidity**. Las dApps de Base pueden consultar datos con GraphQL usando nuestros endpoints alojados.
 
-es + es-translated To get started, you can [sign up for an account](https://app.ghostlogs.xyz/ghostgraph/sign-up) and follow [this quickstart](https://docs.ghostlogs.xyz/category/-getting-started-1) guide on how to create, deploy, and query a GhostGraph.
+Para comenzar, puedes [registrarte para una cuenta](https://app.ghostlogs.xyz/ghostgraph/sign-up) y seguir [esta guía de inicio rápido](https://docs.ghostlogs.xyz/category/-getting-started-1) sobre cómo crear, desplegar y consultar un GhostGraph.
 
-es + es-translated #### Supported Networks
+#### Redes Compatibles
 
-es + es-translated - Base Mainnet
+- Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-es + es-translated ## Moralis
+## Moralis
 
-es + es-translated [Moralis](https://moralis.io/?utm_source=base-docs&utm_medium=partner-docs) offers comprehensive data APIs for crypto, offering both indexed and real-time data across 15+ chains. Moralis' APIs include portfolio and wallet balances, NFT data, token data, price data, candlestick data, net worth data, and a lot more. All of the data is enriched with things like metadata, parsed events and address labels.
+[Moralis](https://moralis.io/?utm_source=base-docs&utm_medium=partner-docs) ofrece APIs de datos completos para cripto, ofreciendo tanto datos indexados como en tiempo real a través de más de 15 cadenas. Las APIs de Moralis incluyen balances de cartera y billetera, datos de NFT, datos de tokens, datos de precios, datos de velas, datos de patrimonio neto y mucho más. Todos los datos están enriquecidos con metadatos, eventos analizados y etiquetas de direcciones.
 
-es + es-translated To get started with Moralis, you can [sign up for an account](https://moralis.io/?utm_source=base-docs&utm_medium=partner-docs), visit the Moralis [documentation](https://docs.moralis.io/?utm_source=base-docs&utm_medium=partner-docs), or check out their tutorials on [Youtube](https://www.youtube.com/c/MoralisWeb3).
+Para comenzar con Moralis, puedes [registrarte para una cuenta](https://moralis.io/?utm_source=base-docs&utm_medium=partner-docs), visitar la [documentación](https://docs.moralis.io/?utm_source=base-docs&utm_medium=partner-docs) de Moralis, o ver sus tutoriales en [Youtube](https://www.youtube.com/c/MoralisWeb3).
 
-es + es-translated #### Supported Networks
+#### Redes Compatibles
 
-es + es-translated - Base Mainnet
+- Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-es + es-translated ## Nexandria
+## Nexandria
 
-es + es-translated [Nexandria](https://www.nexandria.com/?utm_source=base-docs&utm_medium=partner-docs) API offers access to complete historical on-chain data at blazing speeds, arbitrary granularity (as low as block-level) and at viable unit economics (think web2 level costs). Our technology lets you generate subgraphs on the fly, unlocking unique endpoints like a statement of all the balance transfers for all the tokens, or a list of all the neighbors of an address with all the historical interaction details or a portfolio balance graph covering all the tokens across arbitrary time/block ranges.
+La API de [Nexandria](https://www.nexandria.com/?utm_source=base-docs&utm_medium=partner-docs) ofrece acceso a datos completos en cadena históricos a velocidades vertiginosas, granularidad arbitraria (tan baja como a nivel de bloque) y a una economía de unidades viable (piensa en costos a nivel de web2). Nuestra tecnología te permite generar subgráficos sobre la marcha, desbloqueando endpoints únicos como una declaración de todas las transferencias de saldo para todos los tokens, una lista de todos los vecinos de una dirección con todos los detalles de interacción histórica, o un gráfico de balance de cartera que cubre todos los tokens a través de rangos de tiempo/bloques arbitrarios.
 
-es + es-translated References:
+Referencias:
 
-es + es-translated - [API Documentation](https://docs.nexandria.com/)
-- [Sign-up](https://www.nexandria.com/api)
+- [Documentación de la API](https://docs.nexandria.com/)
+- [Registro](https://www.nexandria.com/api)
 
-es + es-translated #### Supported Networks
+#### Redes Compatibles
 
-es + es-translated - Base Mainnet
+- Base Mainnet
 
 ---
 
-es + es-translated ## Shovel
+## Shovel
 
-es + es-translated [Shovel](https://indexsupply.com/shovel) is an [open source](https://github.com/indexsupply/code) tool for synchronizing Ethereum data to your Postgres database. Shovel can index block data, transaction data, and decoded event data. A single Shovel can index multiple chains simultaneously. Shovel is configured via a declarative JSON config file – no custom functions to save indexed data to your database.
+[Shovel](https://indexsupply.com/shovel) es una herramienta [de código abierto](https://github.com/indexsupply/code) para sincronizar datos de Ethereum con tu base de datos Postgres. Shovel puede indexar datos de bloques, datos de transacciones y datos de eventos decodificados. Un solo Shovel puede indexar múltiples cadenas simultáneamente. Shovel se configura a través de un archivo de configuración JSON declarativo, sin funciones personalizadas para guardar datos indexados en tu base de datos.
 
-es + es-translated Find out more in the [Shovel Docs](https://indexsupply.com/shovel/docs/)
+Descubre más en los [Shovel Docs](https://indexsupply.com/shovel/docs/)
 
-es + es-translated #### Supported Networks
+#### Redes Compatibles
 
-es + es-translated - Base Mainnet
+- Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-es + es-translated ## Subsquid
+## Subsquid
 
-es + es-translated [Subsquid](https://subsquid.io/) is a decentralized hyper-scalable data platform optimized for providing efficient, permissionless access to large volumes of data.
-It currently serves historical on-chain data, including event logs, transaction receipts, traces, and per-transaction state diffs.
-Subsquid offers a powerful toolkit for creating custom data extraction and processing pipelines, achieving an indexing speed of up to 150k blocks per second.
+[Subsquid](https://subsquid.io/) es una plataforma de datos descentralizada y altamente escalable optimizada para proporcionar acceso eficiente y sin permisos a grandes volúmenes de datos.
+Actualmente sirve datos históricos en cadena, incluyendo registros de eventos, recibos de transacciones, trazas y diferencias de estado por transacción.
+Subsquid ofrece un potente conjunto de herramientas para crear pipelines personalizados de extracción y procesamiento de datos, logrando una velocidad de indexación de hasta 150k bloques por segundo.
 
-es + es-translated To get started, visit the [documentation](https://docs.subsquid.io/) or see this [quickstart with examples](https://docs.subsquid.io/sdk/examples/) on how to easily create subgraphs via Subsquid.
+Para comenzar, visita la [documentación](https://docs.subsquid.io/) o consulta este [inicio rápido con ejemplos](https://docs.subsquid.io/sdk/examples/) sobre cómo crear subgráficos fácilmente a través de Subsquid.
 
-es + es-translated #### Supported Networks
+#### Redes Compatibles
 
-es + es-translated - Base Mainnet
+- Base Mainnet
 - Base Sepolia (Testnet)
 
 ---
 
-es + es-translated ## SubQuery
+## SubQuery
 
-es + es-translated [SubQuery](https://subquery.network/) is a data indexer that provides developers with fast, reliable, decentralized, and customized APIs for accessing rich indexed data from over 80+ ecosystems (including Base) within their projects.
+[SubQuery](https://subquery.network/) es un indexador de datos que proporciona a los desarrolladores APIs rápidas, confiables, descentralizadas y personalizadas para acceder a datos indexados ricos de más de 80 ecosistemas (incluyendo Base) dentro de sus proyectos.
 
-es + es-translated SubQuery provides the ability to aggregate this data across multiple blockchains, all within a single project.
+SubQuery proporciona la capacidad de agregar estos datos a través de múltiples blockchains, todo dentro de un solo proyecto.
 
-es + es-translated Other advantages of SubQuery includes performance with multiple RPC endpoint configurations, multi-worker capabilities and a configurable caching architecture.
+Otras ventajas de SubQuery incluyen rendimiento con múltiples configuraciones de endpoints RPC, capacidades multi-trabajador y una arquitectura de caché configurable.
 
-es + es-translated To get started, visit the [developer documentation](https://academy.subquery.network/) or follow [this step-by-step guide](https://academy.subquery.network/quickstart/quickstart_chains/base.html) on how to index any smart contract on Base.
+Para comenzar, visita la [documentación para desarrolladores](https://academy.subquery.network/) o sigue [esta guía paso a paso](https://academy.subquery.network/quickstart/quickstart_chains/base.html) sobre cómo indexar cualquier contrato inteligente en Base.
 
-es + es-translated #### Supported Networks
+#### Redes Compatibles
 
-es + es-translated - [Base Mainnet](https://academy.subquery.network/quickstart/quickstart_chains/base.html)
+- [Base Mainnet](https://academy.subquery.network/quickstart/quickstart_chains/base.html)
 - Base Sepolia (Testnet)
 
 ---
 
-es + es-translated ## The Graph
+## The Graph
 
-es + es-translated [The Graph](https://thegraph.com/) is an indexing protocol for organizing blockchain data and making it easily accessible with GraphQL.
+[The Graph](https://thegraph.com/) es un protocolo de indexación para organizar datos de blockchain y hacerlos fácilmente accesibles con GraphQL.
 
-es + es-translated Base applications can use GraphQL to query open APIs called subgraphs, to retrieve data that is indexed on the network. With The Graph, you can build serverless applications that run entirely on public infrastructure.
+Las aplicaciones de Base pueden usar GraphQL para consultar APIs abiertas llamadas subgráficos, para recuperar datos que están indexados en la red. Con The Graph, puedes construir aplicaciones sin servidor que se ejecutan completamente en infraestructura pública.
 
-es + es-translated To get started, visit the [documentation](https://thegraph.com/docs/en/) or see [this quickstart](https://thegraph.com/docs/en/cookbook/quick-start/) on how to create, deploy, and query a subgraph.
+Para comenzar, visita la [documentación](https://thegraph.com/docs/en/) o consulta [este inicio rápido](https://thegraph.com/docs/en/cookbook/quick-start/) sobre cómo crear, desplegar y consultar un subgráfico.
 
-es + es-translated #### Supported Networks
+#### Redes Compatibles
 
-es + es-translated - [Base Mainnet](https://thegraph.com/docs/en/#supported-networks)
+- [Base Mainnet](https://thegraph.com/docs/en/#supported-networks)
 
 ---
 
-es + es-translated ## Flair
+## Flair
 
-es + es-translated [Flair](https://flair.dev) is a real-time and historical custom data indexing for any EVM chain.
+[Flair](https://flair.dev) es una indexación de datos personalizada en tiempo real e histórica para cualquier cadena EVM.
 
-es + es-translated It offers reusable **indexing primitives** (such as fault-tolerant RPC ingestors, custom processors and aggregations, re-org aware database integrations) to make it easy to receive, transform, store and access your on-chain data.
+Ofrece **primitivas de indexación** reutilizables (como ingestors RPC tolerantes a fallos, procesadores y agregaciones personalizadas, integraciones de bases de datos conscientes de re-organizaciones) para facilitar la recepción, transformación, almacenamiento y acceso a tus datos en cadena.
 
-es + es-translated To get started, visit the [documentation](https://docs.flair.dev) or clone the [starter boilerplate](https://github.com/flair-sdk/starter-boilerplate) template and follow the instructions.
+Para comenzar, visita la [documentación](https://docs.flair.dev) o clona la plantilla [starter boilerplate](https://github.com/flair-sdk/starter-boilerplate) y sigue las instrucciones.
 
-es + es-translated #### Supported Networks
+#### Redes Compatibles
 
-es + es-translated - [Base Mainnet](https://docs.flair.dev/reference/manifest.yml)
+- [Base Mainnet](https://docs.flair.dev/reference/manifest.yml)
 - [Base Sepolia](https://docs.flair.dev/reference/manifest.yml) (Testnet)

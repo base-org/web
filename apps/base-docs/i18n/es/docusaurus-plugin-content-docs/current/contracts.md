@@ -17,23 +17,23 @@ keywords:
 hide_table_of_contents: true
 ---
 
-es + es-translated # Contracts
+# Contratos
 
-es + es-translated This page lists contract addresses for onchain apps that we have deployed.
+Esta página lista las direcciones de los contratos para las aplicaciones onchain que hemos desplegado.
 
 ---
 
-es + es-translated ## Base Mainnet
+## Base Mainnet
 
-es + es-translated ### Multicall3
+### Multicall3
 
-es + es-translated | Contract   | Address                                                                                                               |
+| Contrato   | Dirección                                                                                                               |
 | :--------- | :-------------------------------------------------------------------------------------------------------------------- |
 | Multicall3 | [0xcA11bde05977b3631167028862bE2a173976CA11](https://basescan.org/address/0xcA11bde05977b3631167028862bE2a173976CA11) |
 
-es + es-translated ### Uniswap v3
+### Uniswap v3
 
-es + es-translated | Contract                             | Address                                                                                                               |
+| Contrato                             | Dirección                                                                                                               |
 | :----------------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
 | `Permit2`                            | [0x000000000022D473030F116dDEE9F6B43aC78BA3](https://basescan.org/address/0x000000000022D473030F116dDEE9F6B43aC78BA3) |
 | `universal router`                   | [0x198EF79F1F515F02dFE9e3115eD9fC07183f02fC](https://basescan.org/address/0x198EF79F1F515F02dFE9e3115eD9fC07183f02fC) |
@@ -50,24 +50,24 @@ es + es-translated | Contract                             | Address             
 | `quoterV2`                           | [0x3d4e44Eb1374240CE5F1B871ab261CD16335B76a](https://basescan.org/address/0x3d4e44Eb1374240CE5F1B871ab261CD16335B76a) |
 | `swapRouter`                         | [0x2626664c2603336E57B271c5C0b26F421741e481](https://basescan.org/address/0x2626664c2603336E57B271c5C0b26F421741e481) |
 
-es + es-translated ### Uniswap v2
+### Uniswap v2
 
-es + es-translated | Contract  | Address                                                                                                               |
+| Contrato  | Dirección                                                                                                               |
 | :-------- | :-------------------------------------------------------------------------------------------------------------------- |
 | `Factory` | [0x8909Dc15e40173Ff4699343b6eB8132c65e18eC6](https://basescan.org/address/0x8909Dc15e40173Ff4699343b6eB8132c65e18eC6) |
 | `Router`  | [0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24](https://basescan.org/address/0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24) |
 
-es + es-translated ## Base Testnet (Sepolia)
+## Base Testnet (Sepolia)
 
-es + es-translated ### Multicall3
+### Multicall3
 
-es + es-translated | Contract   | Address                                                                                                                       |
+| Contrato   | Dirección                                                                                                                       |
 | :--------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | Multicall3 | [0xcA11bde05977b3631167028862bE2a173976CA11](https://sepolia.basescan.org/address/0xcA11bde05977b3631167028862bE2a173976CA11) |
 
-es + es-translated ### Uniswap v3
+### Uniswap v3
 
-es + es-translated | Contract                             | Address                                                                                                                       |
+| Contrato                             | Dirección                                                                                                                       |
 | :----------------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | `Permit2`                            | [0x000000000022d473030f116ddee9f6b43ac78ba3](https://sepolia.basescan.org/address/0x000000000022d473030f116ddee9f6b43ac78ba3) |
 | `universal router`                   | [0x050E797f3625EC8785265e1d9BDd4799b97528A1](https://sepolia.basescan.org/address/0x050E797f3625EC8785265e1d9BDd4799b97528A1) |
@@ -83,17 +83,17 @@ es + es-translated | Contract                             | Address             
 | `quoterV2`                           | [0xC5290058841028F1614F3A6F0F5816cAd0df5E27](https://sepolia.basescan.org/address/0xC5290058841028F1614F3A6F0F5816cAd0df5E27) |
 | `swapRouter`                         | [0x94cC0AaC535CCDB3C01d6787D6413C739ae12bc4](https://sepolia.basescan.org/0x94cC0AaC535CCDB3C01d6787D6413C739ae12bc4)         |
 
-es + es-translated #### Testnet interfaces
+#### Interfaces de Testnet
 
-es + es-translated :::info
+:::info
 
-es + es-translated Two community projects, [BaseX](https://basex-test.vercel.app/swap?currencyA=ETH&currencyB=0x036CbD53842c5426634e7929541eC2318f3dCF7e&focus=source) and [DapDap](https://testnet.base.dapdap.net/uniswap/swap), provide testnet interfaces for Uniswap contracts if you prefer to interact in the browser instead of with the contracts directly.
+Dos proyectos comunitarios, [BaseX](https://basex-test.vercel.app/swap?currencyA=ETH&currencyB=0x036CbD53842c5426634e7929541eC2318f3dCF7e&focus=source) y [DapDap](https://testnet.base.dapdap.net/uniswap/swap), proporcionan interfaces de testnet para los contratos de Uniswap si prefieres interactuar en el navegador en lugar de hacerlo directamente con los contratos.
 
-es + es-translated :::
+:::
 
-es + es-translated ### Uniswap v2
+### Uniswap v2
 
-es + es-translated | Contract  | Address                                                                                                                       |
+| Contrato  | Dirección                                                                                                                       |
 | :-------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | `Factory` | [0x7Ae58f10f7849cA6F5fB71b7f45CB416c9204b1e](https://sepolia.basescan.org/address/0x7Ae58f10f7849cA6F5fB71b7f45CB416c9204b1e) |
 | `Router`  | [0x1689E7B1F10000AE47eBfE339a4f69dECd19F602](https://sepolia.basescan.org/address/0x1689E7B1F10000AE47eBfE339a4f69dECd19F602) |

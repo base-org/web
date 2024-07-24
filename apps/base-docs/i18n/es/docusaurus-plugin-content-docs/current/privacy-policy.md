@@ -5,101 +5,101 @@ description: The Privacy Policy for Base. Covers how we collect, use, and share 
 hide_table_of_contents: true
 ---
 
-es + es-translated # Base Global Privacy Policy
+# Política de Privacidad Global de Base
 
-es + es-translated Last updated: July 12, 2023
+Última actualización: 12 de julio de 2023
 
 ---
 
-es + es-translated At Base (referred to here as “**we**”, “**us**” or “**our**”), we respect and protect the privacy of those users and developers (“**you**” and “**your**” or “**Users**” and “**Developers**”, as relevant) who explore and use Base (“**Base**”) through the Base protocol or any other applications, tools, and features we operate  (collectively, the “**Services**”).
+En Base (referido aquí como “**nosotros**”, “**nos**” o “**nuestro**”), respetamos y protegemos la privacidad de aquellos usuarios y desarrolladores (“**tú**” y “**tu**” o “**Usuarios**” y “**Desarrolladores**”, según corresponda) que exploran y usan Base (“**Base**”) a través del protocolo de Base o cualquier otra aplicación, herramienta y característica que operamos (colectivamente, los “**Servicios**”).
 
-es + es-translated This Privacy Policy describes how we collect, use, and disclose personal information when you use our Services, which include the services offered on our website [https://base.org](https://base.org/) ( “**Site**”). This Privacy Policy does not apply to any processing which Base carries out as a processor on behalf of those Users and Developers who explore and use Base. Please note that we do not control websites, applications, or services operated by third parties, and we are not responsible for their actions. We encourage you to review the privacy policies of the other websites, decentralised applications, and services you use to access or interact with our Services.
+Esta Política de Privacidad describe cómo recopilamos, usamos y divulgamos información personal cuando usas nuestros Servicios, que incluyen los servicios ofrecidos en nuestro sitio web [https://base.org](https://base.org/) ( “**Sitio**”). Esta Política de Privacidad no se aplica a ningún procesamiento que Base realice como procesador en nombre de aquellos Usuarios y Desarrolladores que exploran y usan Base. Ten en cuenta que no controlamos los sitios web, aplicaciones o servicios operados por terceros, y no somos responsables de sus acciones. Te animamos a revisar las políticas de privacidad de otros sitios web, aplicaciones descentralizadas y servicios que uses para acceder o interactuar con nuestros Servicios.
 
-es + es-translated # 1. WHAT INFORMATION WE COLLECT
+# 1. QUÉ INFORMACIÓN RECOPILAMOS
 
-es + es-translated We collect the following personal information when providing the Services:
+Recopilamos la siguiente información personal al proporcionar los Servicios:
 
-es + es-translated **Information you provide**
+**Información que proporcionas**
 
-es + es-translated - Your public wallet address (“**Wallet Address**”)
+- Tu dirección pública de billetera (“**Dirección de Billetera**”)
 
-es + es-translated - Publicly available blockchain data (“**Blockchain Data**”)
+- Datos de blockchain disponibles públicamente (“**Datos de Blockchain**”)
 
-es + es-translated - Where you agree to engage in our surveys or sign up to receive marketing communications about Base products and offerings, we will ask for the following “**Basic User Information**”
+- Cuando aceptas participar en nuestras encuestas o te registras para recibir comunicaciones de marketing sobre productos y ofertas de Base, te pediremos la siguiente “**Información Básica del Usuario**”
 
-es + es-translated - Name
-  - Email
-  - Social media handles
-  - Business name
+- Nombre
+  - Correo electrónico
+  - Manejos de redes sociales
+  - Nombre de la empresa
 
-es + es-translated **Information Collected Automatically**
+**Información recopilada automáticamente**
 
-es + es-translated - App, Browser and Device Information:
+- Información de la aplicación, navegador y dispositivo:
 
-es + es-translated - Information about the device, operating system, and browser you’re using~~ ~~
-- Other device characteristics or identifiers (e.g. plugins, the network you connect to)
-- IP address/derived location information
+- Información sobre el dispositivo, sistema operativo y navegador que estás usando
+- Otras características o identificadores del dispositivo (por ejemplo, plugins, la red a la que te conectas)
+- Dirección IP/información de ubicación derivada
 
-es + es-translated **Information we obtain from Affiliates and third parties**
+**Información que obtenemos de Afiliados y terceros**
 
-es + es-translated - Information from Coinbase Companies (“**Affiliates**”):  We may obtain information about you, such as Basic User Information from our Affiliates (for instance, if you use Base with your Coinbase-hosted wallet) as part of facilitating, supporting, or providing our Services.
-- Blockchain Data: We may analyze public blockchain data, including timestamps of transactions or events, transaction IDs, digital signatures, transaction amounts and wallet addresses
-- Information from Analytics Providers: We receive information about your website usage and interactions from third party analytics providers. This includes browser fingerprint, device information,and IP address.
-- Error Tracking Data: We utilize information from third party service providers to provide automated error monitoring, reporting, alerting and diagnostic capture for Service and Site errors to allow User or Developers to build more effectively on the Base platform.
+- Información de las Empresas de Coinbase (“**Afiliados**”): Podemos obtener información sobre ti, como Información Básica del Usuario de nuestros Afiliados (por ejemplo, si usas Base con tu billetera alojada en Coinbase) como parte de la facilitación, soporte o provisión de nuestros Servicios.
+- Datos de Blockchain: Podemos analizar datos públicos de blockchain, incluidos los sellos de tiempo de transacciones o eventos, ID de transacciones, firmas digitales, montos de transacciones y direcciones de billeteras
+- Información de Proveedores de Análisis: Recibimos información sobre el uso de tu sitio web e interacciones de proveedores de análisis de terceros. Esto incluye huella digital del navegador, información del dispositivo y dirección IP.
+- Datos de Seguimiento de Errores: Utilizamos información de proveedores de servicios de terceros para proporcionar monitoreo automático de errores, informes, alertas y captura de diagnósticos para errores del Servicio y del Sitio para permitir que los Usuarios o Desarrolladores construyan de manera más efectiva en la plataforma Base.
 
-es + es-translated # 2. HOW WE USE YOUR INFORMATION
+# 2. CÓMO USAMOS TU INFORMACIÓN
 
-es + es-translated We may use your personal information for the following purposes or as otherwise described at the time of collection. If you reside outside the United Kingdom or European Economic Area (“**EEA”)**, the legal bases on which we rely in your country may differ from those listed below.
+Podemos usar tu información personal para los siguientes propósitos o como se describa en el momento de la recopilación. Si resides fuera del Reino Unido o del Área Económica Europea (“**AEE**”), las bases legales en las que nos basamos en tu país pueden diferir de las enumeradas a continuación.
 
-es + es-translated |                                                                                                                                                                          |                                                            |                       |
+|                                                                                                                                                                          |                                                            |                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- | --------------------- |
-| **Purpose**                                                                                                                                                              | **Information Used**                                       | **Our Legal Basis**   |
-| To provide you with the Base Services We use certain information that is necessary to conclude and perform our Terms of Service or other relevant contract(s) with you.  | Wallet AddressBlockchain Data                              | Contractual Necessity |
-| To promote the safety, security and integrity of our Services                                                                                                            | Basic User InformationInformation from Analytics Providers | Contractual Necessity |
-| To allow Users or Developers to build more effectively on the Base platform                                                                                              | Error Tracking Data                                        | Legitimate Interests  |
-| To send you Base Forms for marketing and product development                                                                                                             | Basic User Information                                     | Legitimate Interests  |
+| **Propósito**                                                                                                                                                              | **Información Utilizada**                                       | **Nuestra Base Legal**   |
+| Para proporcionarte los Servicios de Base Usamos cierta información que es necesaria para concluir y ejecutar nuestros Términos de Servicio u otros contratos relevantes contigo.  | Dirección de BilleteraDatos de Blockchain                              | Necesidad Contractual |
+| Para promover la seguridad, integridad y seguridad de nuestros Servicios                                                                                                            | Información Básica del UsuarioInformación de Proveedores de Análisis | Necesidad Contractual |
+| Para permitir que los Usuarios o Desarrolladores construyan de manera más efectiva en la plataforma Base                                                                                              | Datos de Seguimiento de Errores                                        | Intereses Legítimos  |
+| Para enviarte Formularios de Base para marketing y desarrollo de productos                                                                                                             | Información Básica del Usuario                                     | Intereses Legítimos  |
 
-es + es-translated # 3. HOW AND WHY WE SHARE YOUR INFORMATION
+# 3. CÓMO Y POR QUÉ COMPARTIMOS TU INFORMACIÓN
 
-es + es-translated We share certain information about you  with service providers, partners and other third parties in order to help us provide our Services. Here’s how:
+Compartimos cierta información sobre ti con proveedores de servicios, socios y otros terceros para ayudarnos a proporcionar nuestros Servicios. Así es cómo:
 
-es + es-translated **Affiliates.** Basic User Information that we process and collect may be transferred between Affiliates, Services, and employees affiliated with us as a normal part of conducting business and offering our Services to you.
+**Afiliados.** La Información Básica del Usuario que procesamos y recopilamos puede ser transferida entre Afiliados, Servicios y empleados afiliados a nosotros como parte normal de la realización de negocios y la oferta de nuestros Servicios a ti.
 
-es + es-translated **Linked Third Party Websites or Services.** When you use third-party services (like when you connect your self-custodial wallet to decentralized applications on the Base network) or websites that are linked through our Services, the providers of those services or products may receive information about you (like your wallet address) from Base, you, or others. Please note that when you use third-party services or connect to third-party websites which are not governed by this Privacy Policy, their own terms and privacy policies will govern your use of those services and products.
+**Sitios web o servicios de terceros vinculados.** Cuando usas servicios de terceros (como cuando conectas tu billetera de autocustodia a aplicaciones descentralizadas en la red Base) o sitios web que están vinculados a través de nuestros Servicios, los proveedores de esos servicios o productos pueden recibir información sobre ti (como tu dirección de billetera) de Base, de ti o de otros. Ten en cuenta que cuando usas servicios de terceros o te conectas a sitios web de terceros que no están regidos por esta Política de Privacidad, sus propios términos y políticas de privacidad regirán tu uso de esos servicios y productos.
 
-es + es-translated **Professional advisors, industry partners, authorities and regulators.** We share your information described in **Section 1. What Information We Collect** with our advisors, regulators, tax authorities, law enforcement, government agencies, and industry partners when needed to:
+**Asesores profesionales, socios de la industria, autoridades y reguladores.** Compartimos tu información descrita en **Sección 1. Qué Información Recopilamos** con nuestros asesores, reguladores, autoridades fiscales, fuerzas del orden, agencias gubernamentales y socios de la industria cuando sea necesario para:
 
-es + es-translated - respond pursuant to applicable law or regulations, court orders, legal process or government requests;
-- detect, investigate, prevent, or address fraud and other illegal activity or security and technical issues; and
-- protect the rights, property, and safety of our Users, Developers, Affiliates, or others, including to prevent death or imminent bodily harm.
+- responder conforme a la ley o regulaciones aplicables, órdenes judiciales, procesos legales o solicitudes gubernamentales;
+- detectar, investigar, prevenir o abordar fraudes y otras actividades ilegales o problemas de seguridad y técnicos; y
+- proteger los derechos, la propiedad y la seguridad de nuestros Usuarios, Desarrolladores, Afiliados u otros, incluyendo para prevenir la muerte o daño corporal inminente.
 
-es + es-translated **Vendors and Third-Party Service Providers.** When we share information with third-party service providers to help us provide our Services, we require them to use your information on our behalf in accordance with our instructions and terms and only process as necessary for the purpose of the contract.
+**Proveedores y Proveedores de Servicios de Terceros.** Cuando compartimos información con proveedores de servicios de terceros para ayudarnos a proporcionar nuestros Servicios, les exigimos que usen tu información en nuestro nombre de acuerdo con nuestras instrucciones y términos y solo procesen según sea necesario para el propósito del contrato.
 
-es + es-translated # 4. HOW LONG WE RETAIN YOUR PERSONAL INFORMATION
+# 4. CUÁNTO TIEMPO CONSERVAMOS TU INFORMACIÓN PERSONAL
 
-es + es-translated We retain your information as needed to provide our Services, comply with legal obligations or protect our or others’ interests. While retention requirements vary by country, we maintain internal retention policies on the basis of how information needs to be used. This includes considerations such as when the information was collected or created, whether it is necessary in order to continue offering you our Services or to protect the safety, security and integrity of our Services, and whether we are required to hold the information to comply with our legal obligations.
+Conservamos tu información según sea necesario para proporcionar nuestros Servicios, cumplir con obligaciones legales o proteger nuestros intereses o los de otros. Si bien los requisitos de retención varían según el país, mantenemos políticas internas de retención sobre la base de cómo se necesita usar la información. Esto incluye consideraciones como cuándo se recopiló o creó la información, si es necesario para continuar ofreciéndote nuestros Servicios o para proteger la seguridad, integridad y seguridad de nuestros Servicios, y si estamos obligados a mantener la información para cumplir con nuestras obligaciones legales.
 
-es + es-translated # 5.  CHILDREN’S PERSONAL INFORMATION
+# 5. INFORMACIÓN PERSONAL DE MENORES
 
-es + es-translated The Services are not directed to persons under the age of 18, and we do not knowingly request or collect any information about persons under the age of 18. If you are under the age of 18, please do not provide any personal information through the Site or Services. If a User submitting personal information is suspected of being younger than 18 years of age, we will take steps to delete the individual’s information as soon as possible.
+Los Servicios no están dirigidos a personas menores de 18 años, y no solicitamos ni recopilamos conscientemente ninguna información sobre personas menores de 18 años. Si tienes menos de 18 años, no proporciones ninguna información personal a través del Sitio o Servicios. Si se sospecha que un Usuario que envía información personal es menor de 18 años, tomaremos medidas para eliminar la información de esa persona lo antes posible.
 
-es + es-translated # 6. INTERNATIONAL TRANSFERS
+# 6. TRANSFERENCIAS INTERNACIONALES
 
-es + es-translated To facilitate our global operations, we and our  third-party partners and service providers may transfer and store throughout the world, including in the United States.
+Para facilitar nuestras operaciones globales, nosotros y nuestros socios y proveedores de servicios de terceros podemos transferir y almacenar información en todo el mundo, incluyendo en los Estados Unidos.
 
-es + es-translated If you reside in the EEA, Switzerland, or the United Kingdom, we rely upon a variety of legal mechanisms to facilitate these transfers of your personal information (collectively, “**European Personal Data”**). \*\*\*\*
+Si resides en el AEE, Suiza o el Reino Unido, nos basamos en una variedad de mecanismos legales para facilitar estas transferencias de tu información personal (colectivamente, “**Datos Personales Europeos**”). ****
 
-es + es-translated - We rely primarily on the European Commission’s Standard Contractual Clauses to facilitate the international and onward transfer of European Personal Data to third countries, including from our EU operating entities to Coinbase, Inc. in the United States, who provides the primary infrastructure for the Services.
-- We also rely on [adequacy decisions](https://ec.europa.eu/info/law/law-topic/data-protection/international-dimension-data-protection/adequacy-decisions_en) from the European Commission where available and exemptions provided for under data protection law (e.g. Article 49 GDPR).
+- Nos basamos principalmente en las Cláusulas Contractuales Estándar de la Comisión Europea para facilitar la transferencia internacional y posterior de Datos Personales Europeos a terceros países, incluyendo desde nuestras entidades operativas de la UE a Coinbase, Inc. en los Estados Unidos, que proporciona la infraestructura principal para los Servicios.
+- También nos basamos en [decisiones de adecuación](https://ec.europa.eu/info/law/law-topic/data-protection/international-dimension-data-protection/adequacy-decisions_en) de la Comisión Europea cuando están disponibles y en exenciones previstas por la ley de protección de datos (por ejemplo, el Artículo 49 del GDPR).
 
-es + es-translated # 7. HOW TO CONTACT US WITH QUESTIONS
+# 7. CÓMO CONTACTARNOS CON PREGUNTAS
 
-es + es-translated If you have questions or concerns regarding this Privacy Policy, or if you have a complaint, please contact us at [privacy@base.org](mailto:privacy@base.org).
+Si tienes preguntas o inquietudes sobre esta Política de Privacidad, o si tienes una queja, por favor contáctanos en [privacy@base.org](mailto:privacy@base.org).
 
-es + es-translated # 8. CHANGES TO THIS PRIVACY POLICY
+# 8. CAMBIOS A ESTA POLÍTICA DE PRIVACIDAD
 
-es + es-translated We’re constantly trying to improve our Services, so we may need to change this Privacy Policy from time to time as well. We post any changes we make to our Privacy Policy on this page and, where appropriate, we will provide you with reasonable notice of any material changes before they take effect or as otherwise required by law. The date the Privacy Policy was last updated is identified at the top of this page.
+Estamos constantemente tratando de mejorar nuestros Servicios, por lo que es posible que necesitemos cambiar esta Política de Privacidad de vez en cuando también. Publicamos cualquier cambio que hagamos a nuestra Política de Privacidad en esta página y, cuando sea apropiado, te proporcionaremos un aviso razonable de cualquier cambio material antes de que entren en vigor o según lo requiera la ley. La fecha en que se actualizó por última vez la Política de Privacidad se identifica en la parte superior de esta página.
 
-es + es-translated # 9. OUR RELATIONSHIP WITH YOU
+# 9. NUESTRA RELACIÓN CONTIGO
 
-es + es-translated Coinbase Technologies, Inc., 251 Little Falls Drive, City of Wilmington, County of New Castle, Delaware 19808, acts as controller of your personal data.
+Coinbase Technologies, Inc., 251 Little Falls Drive, Ciudad de Wilmington, Condado de New Castle, Delaware 19808, actúa como controlador de tus datos personales.

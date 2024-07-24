@@ -31,10 +31,10 @@ hide_table_of_contents: true
 | Nombre            | Valor                                                                                                   |
 | :-------------- | :------------------------------------------------------------------------------------------------------ |
 | Nombre de la Red    | Base Mainnet                                                                                            |
-| Descripción     | La red principal pública para Base.                                                                            |
+| Descripción     | La mainnet pública de Base.                                                                            |
 | Punto de acceso RPC    | [https://mainnet.base.org](https://mainnet.base.org)<br/>_Limitado por tasa y no para sistemas de producción._ |
-| ID de Cadena        | 8453                                                                                                    |
-| Símbolo de Moneda | ETH                                                                                                     |
+| ID de la Cadena        | 8453                                                                                                    |
+| Símbolo de la Moneda | ETH                                                                                                     |
 | Explorador de Bloques  | [https://base.blockscout.com/](https://base.blockscout.com/)                                            |
 
 ---
@@ -44,23 +44,23 @@ hide_table_of_contents: true
 | Nombre            | Valor                                                                                                   |
 | :-------------- | :------------------------------------------------------------------------------------------------------ |
 | Nombre de la Red    | Base Sepolia                                                                                            |
-| Descripción     | Una red de prueba pública para Base.                                                                              |
+| Descripción     | Una testnet pública para Base.                                                                              |
 | Punto de acceso RPC    | [https://sepolia.base.org](https://sepolia.base.org)<br/>_Limitado por tasa y no para sistemas de producción._ |
-| ID de Cadena        | 84532                                                                                                   |
-| Símbolo de Moneda | ETH                                                                                                     |
+| ID de la Cadena        | 84532                                                                                                   |
+| Símbolo de la Moneda | ETH                                                                                                     |
 | Explorador de Bloques  | [https://sepolia-explorer.base.org](https://sepolia-explorer.base.org)                                  |
 
 ---
 
 :::info
-Las implementaciones de contratos inteligentes relacionados con el protocolo y la red L1 y L2 se pueden encontrar en la página de [Contratos Base](/docs/base-contracts).
+Los despliegues de contratos inteligentes relacionados con el protocolo y la red L1 y L2 se pueden encontrar en la página de [Contratos Base](/docs/base-contracts).
 :::
 
 :::info
-Para sistemas de producción, recomendamos usar un nodo de uno de nuestros [socios de nodos], o [ejecutar su propio nodo Base].
+Para sistemas de producción, recomendamos usar un nodo de uno de nuestros [socios de nodos], o [ejecutar tu propio nodo Base].
 :::
 
 ---
 
-[ejecutar su propio nodo Base]: /tutorials/run-a-base-node
+[ejecutar tu propio nodo Base]: /tutorials/run-a-base-node
 [socios de nodos]: /docs/tools/node-providers

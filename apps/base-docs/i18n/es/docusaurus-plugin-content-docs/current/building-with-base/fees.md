@@ -21,25 +21,14 @@ keywords:
 hide_table_of_contents: true
 ---
 
-es + es-translated # Fees
+Tarifas
 
-es + es-translated ## How do network fees on Base work?
+¿Cómo funcionan las tarifas de red en Base?
 
-es + es-translated Every Base transaction consists of two costs: an L2 (execution) fee and an L1
-(security) fee. The L2 fee is the cost to execute your transaction on the L2,
-and the L1 fee is the estimated cost to publish the transaction on the L1.
-Typically the L1 security fee is higher than the L2 execution fee.
+Cada transacción en Base consta de dos costos: una tarifa L2 (ejecución) y una tarifa L1 (seguridad). La tarifa L2 es el costo de ejecutar tu transacción en la L2, y la tarifa L1 es el costo estimado de publicar la transacción en la L1. Típicamente, la tarifa de seguridad L1 es más alta que la tarifa de ejecución L2.
 
-es + es-translated The L1 fee will vary depending on the amount of transactions on the L1. If the
-timing of your transaction is flexible, you can save costs by submitting
-transactions during periods of lower gas on the L1 (for example, over the
-weekend)
+La tarifa L1 variará dependiendo de la cantidad de transacciones en la L1. Si el momento de tu transacción es flexible, puedes ahorrar costos enviando transacciones durante períodos de menor gas en la L1 (por ejemplo, durante el fin de semana).
 
-es + es-translated Similarly, the L2 fee can increase and decrease depending on how many
-transactions are being submitted to the L2. This adjustment mechanism has the
-same implementation as the L1; you can read more about it
-[here](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/eip-1559).
+De manera similar, la tarifa L2 puede aumentar y disminuir dependiendo de cuántas transacciones se estén enviando a la L2. Este mecanismo de ajuste tiene la misma implementación que la L1; puedes leer más sobre ello [aquí](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/eip-1559).
 
-es + es-translated For additional details about fee calculation on Base, please refer to the
-[op-stack developer
-documentation](https://community.optimism.io/docs/developers/build/transaction-fees/).
+Para obtener detalles adicionales sobre el cálculo de tarifas en Base, consulta la [documentación para desarrolladores del op-stack](https://community.optimism.io/docs/developers/build/transaction-fees/).

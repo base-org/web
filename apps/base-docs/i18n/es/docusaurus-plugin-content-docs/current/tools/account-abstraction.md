@@ -23,64 +23,64 @@ keywords:
 hide_table_of_contents: true
 ---
 
-es + es-translated # Account Abstraction
+# Abstracción de Cuenta
 
 ---
 
-es + es-translated ## Alchemy Account Kit
+## Alchemy Account Kit
 
-es + es-translated [Account Kit](https://www.alchemy.com/account-kit) is a complete solution for account abstraction. Using Account Kit, you can create a smart contract wallet for every user that leverages account abstraction to simplify every step of your app's onboarding experience. It also offers Gas Manager and Bundler APIs for sponsoring gas and batching transactions.
-
----
-
-es + es-translated ## Biconomy
-
-es + es-translated [Biconomy](https://www.biconomy.io) is an Account Abstraction toolkit that enables you to provide the simplest UX for your dapp or wallet. It offers modular smart accounts, as well as paymasters and bundlers as a service for sponsoring gas and executing transactions at scale.
+[Account Kit](https://www.alchemy.com/account-kit) es una solución completa para la abstracción de cuentas. Usando Account Kit, puedes crear una billetera de contrato inteligente para cada usuario que aprovecha la abstracción de cuentas para simplificar cada paso de la experiencia de incorporación de tu aplicación. También ofrece Gas Manager y APIs de Bundler para patrocinar gas y agrupar transacciones.
 
 ---
 
-es + es-translated ## Coinbase Account Abstraction Kit
+## Biconomy
 
-es + es-translated The Coinbase Developer Platform [Account Abstraction Kit](https://www.coinbase.com/developer-platform/solutions/account-abstraction-kit) is an account abstraction toolkit for building simple onchain user experiences. Account Abstraction Kit provides a paymaster and bundler that allows you to sponsor gas fees and bundle user transactions, improving the user experience of your application.
-
----
-
-es + es-translated ## Openfort
-
-es + es-translated [Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. The platform vertically integrates the AA stack, so game developers can focus on game development without worrying about private key management, the account model or the onchain interactions with paymasters and bundlers. The Openfort platform is compatible with most EVM chains, including Base.
+[Biconomy](https://www.biconomy.io) es un kit de herramientas de Abstracción de Cuenta que te permite proporcionar la UX más simple para tu dapp o billetera. Ofrece cuentas inteligentes modulares, así como paymasters y bundlers como servicio para patrocinar gas y ejecutar transacciones a escala.
 
 ---
 
-es + es-translated ## Pimlico
+## Coinbase Account Abstraction Kit
 
-es + es-translated [Pimlico](https://pimlico.io/) provides an infrastructure platform that makes building smart accounts simpler. If you are developing, an ERC-4337 smart account, they provide bundlers, verifying paymasters, ERC-20 paymasters, and much more.
-
----
-
-es + es-translated ## Safe
-
-es + es-translated [Safe](https://docs.safe.global/getting-started/readme) provides modular smart account infrastructure and account abstraction stack via their Safe{Core} [Account Abstraction SDK](https://docs.safe.global/safe-core-aa-sdk/safe-core-sdk), [API](https://docs.safe.global/safe-core-api/supported-networks), and [Protocol](https://docs.safe.global/safe-core-protocol/safe-core-protocol).
+La Plataforma de Desarrolladores de Coinbase [Account Abstraction Kit](https://www.coinbase.com/developer-platform/solutions/account-abstraction-kit) es un kit de herramientas de abstracción de cuentas para construir experiencias de usuario onchain simples. Account Abstraction Kit proporciona un paymaster y un bundler que te permite patrocinar tarifas de gas y agrupar transacciones de usuarios, mejorando la experiencia del usuario de tu aplicación.
 
 ---
 
-es + es-translated ## Stackup
+## Openfort
 
-es + es-translated [Stackup](https://www.stackup.sh) provides smart account tooling for building account abstraction within your apps. They offer Paymaster and Bundler APIs for sponsoring gas and sending account abstraction transactions.
-
----
-
-es + es-translated ## WalletKit
-
-es + es-translated [WalletKit](https://walletkit.com) is an all-in-one platform for adding smart, gasless wallets to your app. It has integrated support for ERC 4337 and comes with a paymaster and bundler included, requiring no extra setup.
-
-es + es-translated WalletKit also offers pre-built components for onboarding users with email and social logins, which can be integrated in under 15 minutes using their React SDK or the wagmi connector. Alternatively, build completely bespoke experiences for your users using WalletKit's Wallets API.
-
-es + es-translated WalletKit is compatible with most EVM chains, including Base. You can check out the [WalletKit documentation here](https://docs.walletkit.com). Start building for free on the Base testnet today.
+[Openfort](https://openfort.xyz) es un proveedor de infraestructura diseñado para simplificar el desarrollo de juegos y experiencias gamificadas a través de su suite de puntos finales API. La plataforma integra verticalmente la pila de AA, para que los desarrolladores de juegos puedan centrarse en el desarrollo de juegos sin preocuparse por la gestión de claves privadas, el modelo de cuenta o las interacciones onchain con paymasters y bundlers. La plataforma Openfort es compatible con la mayoría de las cadenas EVM, incluyendo Base.
 
 ---
 
-es + es-translated ## ZeroDev
+## Pimlico
 
-es + es-translated [ZeroDev](https://zerodev.app) is an embedded wallet powered by account abstraction. It offers you the ability to create self-custody wallets for your users, sponsor gas, and simplify user flows by batching and automating transactions.
+[Pimlico](https://pimlico.io/) proporciona una plataforma de infraestructura que hace que la construcción de cuentas inteligentes sea más simple. Si estás desarrollando una cuenta inteligente ERC-4337, ellos proporcionan bundlers, paymasters verificadores, paymasters ERC-20 y mucho más.
+
+---
+
+## Safe
+
+[Safe](https://docs.safe.global/getting-started/readme) proporciona infraestructura de cuentas inteligentes modulares y una pila de abstracción de cuentas a través de su Safe{Core} [Account Abstraction SDK](https://docs.safe.global/safe-core-aa-sdk/safe-core-sdk), [API](https://docs.safe.global/safe-core-api/supported-networks) y [Protocolo](https://docs.safe.global/safe-core-protocol/safe-core-protocol).
+
+---
+
+## Stackup
+
+[Stackup](https://www.stackup.sh) proporciona herramientas de cuentas inteligentes para construir abstracción de cuentas dentro de tus aplicaciones. Ofrecen APIs de Paymaster y Bundler para patrocinar gas y enviar transacciones de abstracción de cuentas.
+
+---
+
+## WalletKit
+
+[WalletKit](https://walletkit.com) es una plataforma todo en uno para agregar billeteras inteligentes sin gas a tu aplicación. Tiene soporte integrado para ERC 4337 y viene con un paymaster y bundler incluidos, sin necesidad de configuración adicional.
+
+WalletKit también ofrece componentes preconstruidos para incorporar usuarios con correos electrónicos y logins sociales, que se pueden integrar en menos de 15 minutos usando su React SDK o el conector wagmi. Alternativamente, construye experiencias completamente personalizadas para tus usuarios usando la API de Wallets de WalletKit.
+
+WalletKit es compatible con la mayoría de las cadenas EVM, incluyendo Base. Puedes consultar la [documentación de WalletKit aquí](https://docs.walletkit.com). Comienza a construir gratis en la testnet de Base hoy.
+
+---
+
+## ZeroDev
+
+[ZeroDev](https://zerodev.app) es una billetera integrada impulsada por la abstracción de cuentas. Te ofrece la capacidad de crear billeteras de autocustodia para tus usuarios, patrocinar gas y simplificar los flujos de usuario agrupando y automatizando transacciones.
 
 ---

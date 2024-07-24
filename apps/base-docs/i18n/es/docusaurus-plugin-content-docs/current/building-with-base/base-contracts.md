@@ -18,13 +18,13 @@ keywords:
 hide_table_of_contents: true
 ---
 
-es + es-translated # Contract Addresses
+# Direcciones de Contratos
 
-es + es-translated ## L2 Contract Addresses
+## Direcciones de Contratos L2
 
-es + es-translated ### Base Mainnet
+### Base Mainnet
 
-es + es-translated | Name                          | Address                                                                                                               |
+| Nombre                        | Dirección                                                                                                               |
 | :---------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
 | WETH9                         | [0x4200000000000000000000000000000000000006](https://basescan.org/address/0x4200000000000000000000000000000000000006) |
 | L2CrossDomainMessenger        | [0x4200000000000000000000000000000000000007](https://basescan.org/address/0x4200000000000000000000000000000000000007) |
@@ -43,9 +43,9 @@ es + es-translated | Name                          | Address                    
 | EASSchemaRegistry             | [0x4200000000000000000000000000000000000020](https://basescan.org/address/0x4200000000000000000000000000000000000020) |
 | LegacyERC20ETH                | [0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000](https://basescan.org/address/0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000) |
 
-es + es-translated ### Base Testnet (Sepolia)
+### Base Testnet (Sepolia)
 
-es + es-translated | Name                          | Address                                                                                                                       |
+| Nombre                        | Dirección                                                                                                                       |
 | :---------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | WETH9                         | [0x4200000000000000000000000000000000000006](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000006) |
 | L2CrossDomainMessenger        | [0x4200000000000000000000000000000000000007](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000007) |
@@ -64,13 +64,13 @@ es + es-translated | Name                          | Address                    
 | EASSchemaRegistry             | [0x4200000000000000000000000000000000000020](https://sepolia.basescan.org/address/0x4200000000000000000000000000000000000020) |
 | LegacyERC20ETH                | [0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000](https://sepolia.basescan.org/address/0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000) |
 
-es + es-translated \*_L2 contract addresses are the same on both mainnet and testnet._
+\*_Las direcciones de los contratos L2 son las mismas tanto en mainnet como en testnet._
 
-es + es-translated ## L1 Contract Addresses
+## Direcciones de Contratos L1
 
-es + es-translated ### Ethereum Mainnet
+### Ethereum Mainnet
 
-es + es-translated | Name                         | Address                                                                                                               |
+| Nombre                       | Dirección                                                                                                               |
 | :--------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
 | AddressManager               | [0x8EfB6B5c4767B09Dc9AA6Af4eAA89F749522BaE2](https://etherscan.io/address/0x8EfB6B5c4767B09Dc9AA6Af4eAA89F749522BaE2) |
 | L1CrossDomainMessenger       | [0x866E82a600A1414e583f7F13623F1aC5d58b0Afa](https://etherscan.io/address/0x866E82a600A1414e583f7F13623F1aC5d58b0Afa) |
@@ -83,17 +83,17 @@ es + es-translated | Name                         | Address                     
 | SystemConfig                 | [0x73a79Fab69143498Ed3712e519A88a918e1f4072](https://etherscan.io/address/0x73a79Fab69143498Ed3712e519A88a918e1f4072) |
 | SystemDictator               | [0x1fE3fdd1F0193Dd657C0a9AAC37314D6B479E557](https://etherscan.io/address/0x1fE3fdd1F0193Dd657C0a9AAC37314D6B479E557) |
 
-es + es-translated **Unneeded contract addresses**
+**Direcciones de contratos innecesarios**
 
-es + es-translated Certain contracts are mandatory according to the [OP Stack SDK](https://stack.optimism.io/docs/build/sdk/#unneeded-contract-addresses), despite not being utilized. For such contracts, you can simply assign the zero address:
+Ciertos contratos son obligatorios según el [OP Stack SDK](https://stack.optimism.io/docs/build/sdk/#unneeded-contract-addresses), a pesar de no ser utilizados. Para tales contratos, simplemente puede asignar la dirección cero:
 
-es + es-translated - `StateCommitmentChain`
+- `StateCommitmentChain`
 - `CanonicalTransactionChain`
 - `BondManager`
 
-es + es-translated ### Ethereum Testnet (Sepolia)
+### Ethereum Testnet (Sepolia)
 
-es + es-translated | Name                         | Address                                                                                                                       |
+| Nombre                       | Dirección                                                                                                                       |
 | :--------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | AddressManager               | [0x709c2B8ef4A9feFc629A8a2C1AF424Dc5BD6ad1B](https://sepolia.etherscan.io/address/0x709c2B8ef4A9feFc629A8a2C1AF424Dc5BD6ad1B) |
 | L1CrossDomainMessenger       | [0xC34855F4De64F1840e5686e64278da901e261f20](https://sepolia.etherscan.io/address/0xC34855F4De64F1840e5686e64278da901e261f20) |
@@ -105,34 +105,34 @@ es + es-translated | Name                         | Address                     
 | ProxyAdmin                   | [0x0389E59Aa0a41E4A413Ae70f0008e76CAA34b1F3](https://sepolia.etherscan.io/address/0x0389E59Aa0a41E4A413Ae70f0008e76CAA34b1F3) |
 | SystemConfig                 | [0xf272670eb55e895584501d564AfEB048bEd26194](https://sepolia.etherscan.io/address/0xf272670eb55e895584501d564AfEB048bEd26194) |
 
-es + es-translated ## Base Admin Addresses
+## Direcciones de Administradores de Base
 
-es + es-translated ### Base Mainnet
+### Base Mainnet
 
-es + es-translated | Admin Role                       | Address                                                                                                               | Type of Key                               |
+| Rol de Administrador             | Dirección                                                                                                               | Tipo de Clave                              |
 | :------------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- |
-| Batch Sender                     | [0x5050f69a9786f081509234f1a7f4684b5e5b76c9](https://etherscan.io/address/0x5050f69a9786f081509234f1a7f4684b5e5b76c9) | EOA managed by Coinbase Technologies      |
-| Batch Inbox                      | [0xff00000000000000000000000000000000008453](https://etherscan.io/address/0xff00000000000000000000000000000000008453) | EOA (with no known private key)           |
-| Output Proposer                  | [0x642229f238fb9de03374be34b0ed8d9de80752c5](https://etherscan.io/address/0x642229f238fb9de03374be34b0ed8d9de80752c5) | EOA managed by Coinbase Technologies      |
-| Proxy Admin Owner (L1)           | [0x7bB41C3008B3f03FE483B28b8DB90e19Cf07595c](https://etherscan.io/address/0x7bB41C3008B3f03FE483B28b8DB90e19Cf07595c) | 2-of-2 Nested Gnosis Safe (signers below) |
-| L1 Nested Safe Signer (Coinbase) | [0x9855054731540A48b28990B63DcF4f33d8AE46A1](https://etherscan.io/address/0x9855054731540A48b28990B63DcF4f33d8AE46A1) | Gnosis Safe                               |
-| L1 Nested Safe Signer (Optimism) | [0x9BA6e03D8B90dE867373Db8cF1A58d2F7F006b3A](https://etherscan.io/address/0x9BA6e03D8B90dE867373Db8cF1A58d2F7F006b3A) | Gnosis Safe                               |
-| Proxy Admin Owner (L2)           | [0x2304cb33d95999dc29f4cef1e35065e670a70050](https://basescan.org/address/0x2304cb33d95999dc29f4cef1e35065e670a70050) | 2-of-2 Nested Gnosis Safe (signers below) |
-| L2 Nested Safe Signer (Coinbase) | [0xd94e416cf2c7167608b2515b7e4102b41efff94f](https://basescan.org/address/0xd94e416cf2c7167608b2515b7e4102b41efff94f) | Gnosis Safe                               |
-| L2 Nested Safe Signer (Optimism) | [0x28EDB11394eb271212ED66c08f2b7893C04C5D65](https://basescan.org/address/0x28EDB11394eb271212ED66c08f2b7893C04C5D65) | Gnosis Safe                               |
-| Challenger                       | [0x6f8c5ba3f59ea3e76300e3becdc231d656017824](https://etherscan.io/address/0x6f8c5ba3f59ea3e76300e3becdc231d656017824) | 1-of-2 Smart contract                     |
-| System config owner              | [0x14536667Cd30e52C0b458BaACcB9faDA7046E056](https://etherscan.io/address/0x14536667Cd30e52C0b458BaACcB9faDA7046E056) | Gnosis Safe                               |
-| Guardian                         | [0x14536667Cd30e52C0b458BaACcB9faDA7046E056](https://etherscan.io/address/0x14536667Cd30e52C0b458BaACcB9faDA7046E056) | Gnosis Safe                               |
+| Remitente de Lotes               | [0x5050f69a9786f081509234f1a7f4684b5e5b76c9](https://etherscan.io/address/0x5050f69a9786f081509234f1a7f4684b5e5b76c9) | EOA gestionado por Coinbase Technologies   |
+| Bandeja de Entrada de Lotes      | [0xff00000000000000000000000000000000008453](https://etherscan.io/address/0xff00000000000000000000000000000000008453) | EOA (sin clave privada conocida)           |
+| Proponente de Salida             | [0x642229f238fb9de03374be34b0ed8d9de80752c5](https://etherscan.io/address/0x642229f238fb9de03374be34b0ed8d9de80752c5) | EOA gestionado por Coinbase Technologies   |
+| Propietario del Proxy Admin (L1) | [0x7bB41C3008B3f03FE483B28b8DB90e19Cf07595c](https://etherscan.io/address/0x7bB41C3008B3f03FE483B28b8DB90e19Cf07595c) | Gnosis Safe anidado 2-de-2 (firmantes abajo) |
+| Firmante del Safe Anidado L1 (Coinbase) | [0x9855054731540A48b28990B63DcF4f33d8AE46A1](https://etherscan.io/address/0x9855054731540A48b28990B63DcF4f33d8AE46A1) | Gnosis Safe                               |
+| Firmante del Safe Anidado L1 (Optimism) | [0x9BA6e03D8B90dE867373Db8cF1A58d2F7F006b3A](https://etherscan.io/address/0x9BA6e03D8B90dE867373Db8cF1A58d2F7F006b3A) | Gnosis Safe                               |
+| Propietario del Proxy Admin (L2) | [0x2304cb33d95999dc29f4cef1e35065e670a70050](https://basescan.org/address/0x2304cb33d95999dc29f4cef1e35065e670a70050) | Gnosis Safe anidado 2-de-2 (firmantes abajo) |
+| Firmante del Safe Anidado L2 (Coinbase) | [0xd94e416cf2c7167608b2515b7e4102b41efff94f](https://basescan.org/address/0xd94e416cf2c7167608b2515b7e4102b41efff94f) | Gnosis Safe                               |
+| Firmante del Safe Anidado L2 (Optimism) | [0x28EDB11394eb271212ED66c08f2b7893C04C5D65](https://basescan.org/address/0x28EDB11394eb271212ED66c08f2b7893C04C5D65) | Gnosis Safe                               |
+| Retador                         | [0x6f8c5ba3f59ea3e76300e3becdc231d656017824](https://etherscan.io/address/0x6f8c5ba3f59ea3e76300e3becdc231d656017824) | Contrato inteligente 1-de-2               |
+| Propietario de la configuración del sistema | [0x14536667Cd30e52C0b458BaACcB9faDA7046E056](https://etherscan.io/address/0x14536667Cd30e52C0b458BaACcB9faDA7046E056) | Gnosis Safe                               |
+| Guardián                         | [0x14536667Cd30e52C0b458BaACcB9faDA7046E056](https://etherscan.io/address/0x14536667Cd30e52C0b458BaACcB9faDA7046E056) | Gnosis Safe                               |
 
-es + es-translated ### Base Testnet (Sepolia)
+### Base Testnet (Sepolia)
 
-es + es-translated | Admin Role             | Address                                                                                                                            | Type of Key                          |
-| :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------- |
-| Batch Sender           | [0x6CDEbe940BC0F26850285cacA097C11c33103E47](https://sepolia.etherscan.io/address/0x6CDEbe940BC0F26850285cacA097C11c33103E47)      | EOA managed by Coinbase Technologies |
-| Batch Inbox            | [0xff00000000000000000000000000000000084532](https://sepolia.etherscan.io/address/0xff00000000000000000000000000000000084532)      | EOA (with no known private key)      |
-| Output Proposer        | [0x20044a0d104E9e788A0C984A2B7eAe615afD046b](https://sepolia.etherscan.io/address/0x20044a0d104E9e788A0C984A2B7eAe615afD046b)      | EOA managed by Coinbase Technologies |
-| Proxy Admin Owner (L1) | [0x0fe884546476dDd290eC46318785046ef68a0BA9](https://sepolia.etherscan.io/address/0x0fe884546476dDd290eC46318785046ef68a0BA9)      | Gnosis Safe                          |
-| Proxy Admin Owner (L2) | [0x20f984546476ddd290ec46318785046ef68a1cba](https://sepolia-explorer.base.org/address/0x20f984546476ddd290ec46318785046ef68a1cba) | Gnosis Safe                          |
-| Challenger             | [0xDa3037Ff70Ac92CD867c683BD807e5A484857405](https://sepolia.etherscan.io/address/0xDa3037Ff70Ac92CD867c683BD807e5A484857405)      | EOA managed by Coinbase Technologies |
-| System config owner    | [0x0fe884546476dDd290eC46318785046ef68a0BA9](https://sepolia.etherscan.io/address/0x0fe884546476dDd290eC46318785046ef68a0BA9)      | Gnosis Safe                          |
-| Guardian               | [0xA9FF930151130fd19DA1F03E5077AFB7C78F8503](https://sepolia.etherscan.io/address/0xA9FF930151130fd19DA1F03E5077AFB7C78F8503)      | EOA managed by Coinbase Technologies |
+| Rol de Administrador       | Dirección                                                                                                                            | Tipo de Clave                          |
+| :------------------------- | :--------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------- |
+| Remitente de Lotes         | [0x6CDEbe940BC0F26850285cacA097C11c33103E47](https://sepolia.etherscan.io/address/0x6CDEbe940BC0F26850285cacA097C11c33103E47)      | EOA gestionado por Coinbase Technologies |
+| Bandeja de Entrada de Lotes | [0xff00000000000000000000000000000000084532](https://sepolia.etherscan.io/address/0xff00000000000000000000000000000000084532)      | EOA (sin clave privada conocida)      |
+| Proponente de Salida       | [0x20044a0d104E9e788A0C984A2B7eAe615afD046b](https://sepolia.etherscan.io/address/0x20044a0d104E9e788A0C984A2B7eAe615afD046b)      | EOA gestionado por Coinbase Technologies |
+| Propietario del Proxy Admin (L1) | [0x0fe884546476dDd290eC46318785046ef68a0BA9](https://sepolia.etherscan.io/address/0x0fe884546476dDd290eC46318785046ef68a0BA9)      | Gnosis Safe                          |
+| Propietario del Proxy Admin (L2) | [0x20f984546476ddd290ec46318785046ef68a1cba](https://sepolia-explorer.base.org/address/0x20f984546476ddd290ec46318785046ef68a1cba) | Gnosis Safe                          |
+| Retador                    | [0xDa3037Ff70Ac92CD867c683BD807e5A484857405](https://sepolia.etherscan.io/address/0xDa3037Ff70Ac92CD867c683BD807e5A484857405)      | EOA gestionado por Coinbase Technologies |
+| Propietario de la configuración del sistema | [0x0fe884546476dDd290eC46318785046ef68a0BA9](https://sepolia.etherscan.io/address/0x0fe884546476dDd290eC46318785046ef68a0BA9)      | Gnosis Safe                          |
+| Guardián                   | [0xA9FF930151130fd19DA1F03E5077AFB7C78F8503](https://sepolia.etherscan.io/address/0xA9FF930151130fd19DA1F03E5077AFB7C78F8503)      | EOA gestionado por Coinbase Technologies |
