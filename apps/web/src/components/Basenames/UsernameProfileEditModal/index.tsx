@@ -124,10 +124,15 @@ export default function UsernameProfileEditModal({
       if (!currentWalletIsOwner) return false;
 
       // TODO: Rename .name to username.[jpeg/webp/svg/png]
-      const newBlob = await upload(file.name, file, {
-        access: 'public',
-        handleUploadUrl: `/api/basenames/avatar/upload?username=${profileUsername}`,
-      });
+      const timestamp = Date.now();
+      const newBlob = await upload(
+        `basenames/avatar/${profileUsername}/${timestamp}/${file.name}`,
+        file,
+        {
+          access: 'public',
+          handleUploadUrl: `/api/basenames/avatar/upload?username=${profileUsername}`,
+        },
+      );
 
       updateTextRecords(UsernameTextRecordKeys.Avatar, newBlob.url);
 

@@ -20,14 +20,22 @@ export default async function handler(request: NextApiRequest, response: NextApi
     const jsonResponse = await handleUpload({
       body,
       request,
-      onBeforeGenerateToken: async () => {
+      onBeforeGenerateToken: async (pathname) => {
         // TODO: We can maybe compare username to an address for additional security
         //       Currently this endpoints allows anonymous upload
 
+        // This should prevent random upload(s), but does not authenticate the source
+        if (!pathname.includes(`basenames/avatar/${username}`)) {
+          throw new Error('Issue with upload');
+        }
+
         return {
+          pathname: pathname,
           allowedContentTypes: ALLOWED_IMAGE_TYPE,
+          maximumSizeInBytes: MAX_IMAGE_SIZE_IN_MB * (1024 * 1024),
           tokenPayload: JSON.stringify({
-            username: username,
+            username,
+            pathname,
           }),
         };
       },

@@ -8,7 +8,7 @@ import profilePictures5 from 'apps/web/src/components/ConnectWalletButton/profil
 import profilePictures6 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/6.svg';
 import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/7.svg';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
-import { ADDRESS_REVERSE_NODE, USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
+import { BASE_REVERSE_NODE, USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
 import { base, baseSepolia } from 'viem/chains';
 
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
@@ -260,8 +260,10 @@ export const convertReverseNodeToBytes = (address?: Address) => {
   if (!address) return;
   const addressFormatted = address.toLocaleLowerCase() as Address;
   const addressNode = keccak256(addressFormatted.substring(2) as Address);
+
+  // TODO: This can be calculated from the chainId / coinType automatically
   const addressReverseNode = keccak256(
-    encodePacked(['bytes32', 'bytes32'], [ADDRESS_REVERSE_NODE, addressNode]),
+    encodePacked(['bytes32', 'bytes32'], [BASE_REVERSE_NODE, addressNode]),
   );
 
   return addressReverseNode;
