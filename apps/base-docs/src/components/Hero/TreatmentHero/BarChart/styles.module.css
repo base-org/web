@@ -19,7 +19,7 @@
   font-size: 11px;
   line-height: 15px;
   font-family: CoinbaseText;
-  margin-right: 20px;
+  margin-right: 0.5rem;
 }
 
 a.chartLegend:hover {

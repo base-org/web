@@ -26,7 +26,7 @@ export default function BarChart() {
       </div>
       <div className={styles.chartLegendContainer}>
         <div className={styles.chartLegend}>
-          Avg Cost Per Transaction, 90D Moving Avg, 18 July 2024
+        Cost per transaction based on 90 day moving average.
         </div>
         <a className={styles.chartLegend} href="https://l2beat.com/scaling/costs" target="_blank">
           Source: L2Beat
