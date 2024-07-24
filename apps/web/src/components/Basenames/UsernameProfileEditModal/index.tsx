@@ -122,6 +122,8 @@ export default function UsernameProfileEditModal({
       if (!file) return Promise.resolve();
       if (!currentWalletIsOwner) return false;
 
+      logEventWithContext('avatar_upload_initiated', ActionType.change);
+
       // TODO: Rename .name to username.[jpeg/webp/svg/png]
       const timestamp = Date.now();
       const newBlob = await upload(
@@ -137,7 +139,7 @@ export default function UsernameProfileEditModal({
 
       return newBlob;
     },
-    [currentWalletIsOwner, profileUsername, updateTextRecords],
+    [currentWalletIsOwner, logEventWithContext, profileUsername, updateTextRecords],
   );
 
   const onClickSave = useCallback(
@@ -155,6 +157,7 @@ export default function UsernameProfileEditModal({
         .then((result) => {
           // set the uploaded result as the url
           if (result) {
+            logEventWithContext('avatar_upload_success', ActionType.change);
             writeTextRecordsRequest[UsernameTextRecordKeys.Avatar] = result.url;
           }
 
@@ -177,7 +180,7 @@ export default function UsernameProfileEditModal({
             });
         })
         .catch((e) => {
-          logEventWithContext('update_text_records_upload_avatar_failed', ActionType.click, {
+          logEventWithContext('avatar_upload_failed', ActionType.error, {
             error: JSON.stringify(e),
           });
         });
