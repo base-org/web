@@ -17,7 +17,7 @@ keywords:
     Crypto,
     Cloud Platform,
   ]
-tags: ['Gasless', 'Crypto', 'Gas', 'Sponsor', 'Coinbase', 'Base']
+tags: ['Account Abstraction']
 difficulty: easy
 hide_table_of_contents: false
 displayed_sidebar: null
