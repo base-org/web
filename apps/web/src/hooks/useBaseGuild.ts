@@ -22,6 +22,7 @@ type Memberships = {
     roleId: number;
     access: boolean;
   }[];
+  errors?: [];
 };
 
 export function useBaseGuild(address?: `0x${string}`) {
@@ -38,7 +39,11 @@ export function useBaseGuild(address?: `0x${string}`) {
   });
 
   const badges = [];
+
   if (query.data) {
+    if (query.data.errors) {
+      return [];
+    }
     // push badge for each role they've got
     for (const role of query.data.roles) {
       if (role.access && role.roleId in ROLE_ID_TO_BADGE) {
