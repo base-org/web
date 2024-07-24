@@ -26,9 +26,7 @@ export default function TransactionError({ error, className }: TransactionErrorP
   const { logEventWithContext } = useAnalytics();
 
   useEffect(() => {
-    logEventWithContext(`show_transaction_error`, ActionType.error, {
-      error: JSON.stringify(error),
-    });
+    logEventWithContext(`show_transaction_error`, ActionType.error);
   }, [error, logEventWithContext]);
 
   return (
