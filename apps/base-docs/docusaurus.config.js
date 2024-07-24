@@ -250,7 +250,6 @@ const config = {
           label: 'Bridge',
           navposition: 'topRight',
           to: 'https://bridge.base.org/',
-          target: '_blank',
           type: 'custom-navbarLink',
           eventLabel: 'bridge',
           eventContext: 'navbar',

@@ -139,7 +139,6 @@ function DesktopNav({ color }: DesktopNavProps) {
         className={`inline-flex items-center font-mono text-xl ${
           color === 'black' ? 'text-black' : 'text-white'
         }`}
-        target="_blank"
         rel="noreferrer noopener"
       >
         Bridge
