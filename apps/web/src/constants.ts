@@ -67,3 +67,7 @@ export const coinbaseSmartWalletABI = [
     stateMutability: 'payable',
   },
 ] as const;
+
+export const ampDeploymentKey = isDevelopment
+  ? 'client-Wvf63OdaukDZyCBtwgbOvHgGTuASBZFG'
+  : 'client-agFoQg5AOvZ2ZiOChny9RrGk21jG3VrH';

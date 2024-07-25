@@ -76,7 +76,7 @@ export default function StudentProgress() {
         <div style={{ padding: '5px' }}>
           <p style={{ paddingBottom: '25px' }}>
             Address <span style={{ color: '#688CEC' }}>{address}</span> has earned {earnedNFTCount}{' '}
-            out of {totalNFTCount} Base Camp exercise NFTs on {chain.name}.
+            out of {totalNFTCount} Base Learn exercise NFTs on {chain.name}.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>{renderNFTs()}</div>
         </div>
@@ -84,7 +84,7 @@ export default function StudentProgress() {
     }
     return (
       <p style={{ padding: '5px', textAlign: 'center' }}>
-        Connect your wallet to view your Base Camp progress.
+        Connect your wallet to view your Base Learn progress.
       </p>
     );
   };
@@ -101,7 +101,7 @@ export default function StudentProgress() {
             paddingRight: '0.5rem',
           }}
         >
-          <h1 style={{ paddingBottom: '40px' }}>Base Camp Progress</h1>
+          <h1 style={{ paddingBottom: '40px' }}>Base Learn Progress</h1>
         </div>
       </div>
 

@@ -96,6 +96,8 @@ const contentSecurityPolicy = {
     'https://api.guild.xyz/',
     isLocalDevelopment ? 'ws://localhost:3000/' : '',
     isLocalDevelopment ? 'http://localhost:3000/' : '',
+    'https://flag.lab.amplitude.com/sdk/v2/flags',
+    'https://api.lab.amplitude.com/sdk/v2/vardata',
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],

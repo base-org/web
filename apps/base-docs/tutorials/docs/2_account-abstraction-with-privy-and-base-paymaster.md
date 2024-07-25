@@ -59,7 +59,7 @@ In this tutorial, we'll be working with a React frontend built with [Next.js]. W
 
 ### 2. Possess a general understanding of the EVM and smart contract development
 
-This tutorial assumes that you're reasonably comfortable writing basic smart contracts. If you're just getting started, jump over to our [Basecamp] guides and start learning!
+This tutorial assumes that you're reasonably comfortable writing basic smart contracts. If you're just getting started, jump over to our [Base Learn] guides and start learning!
 
 ---
 
@@ -770,7 +770,7 @@ In this article, we've explored the transformative potential of Account Abstract
 
 [ERC-4337]: https://eips.ethereum.org/EIPS/eip-4337
 [ethereum.org]: https://ethereum.org/en/developers/docs/accounts/#key-differences
-[Basecamp]: https://base.org/camp
+[Base Learn]: https://base.org/learn
 [Next.js]: https://nextjs.org/
 [Base Paymaster]: https://github.com/base-org/paymaster
 [Privy]: https://www.privy.dev/

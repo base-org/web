@@ -5,13 +5,18 @@ export function middleware(req: NextRequest) {
 
   if (
     url.pathname === '/base-camp' ||
+    url.pathname === '/base-learn' ||
     url.pathname === '/basecamp' ||
+    url.pathname === '/baselearn' ||
     url.pathname === '/base-camp/docs' ||
+    url.pathname === '/base-learn/docs' ||
     url.pathname === '/basecamp/docs' ||
-    url.pathname === '/camp'
+    url.pathname === '/baselearn/docs' ||
+    url.pathname === '/camp' ||
+    url.pathname === '/learn'
   ) {
     url.host = 'docs.base.org';
-    url.pathname = '/base-camp/docs/welcome';
+    url.pathname = '/base-learn/docs/welcome';
     url.port = '443';
 
     return NextResponse.redirect(url);

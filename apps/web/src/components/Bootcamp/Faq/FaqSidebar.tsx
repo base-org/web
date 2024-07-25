@@ -22,7 +22,7 @@ export function FaqSidebar() {
 
         <QuestionAccordion
           question="What resources will I get if I am accepted into the program?"
-          answer="Your onboarding package will include the student handbook, mentor-pairing info, invite to the private Base Bootcamp Discord channel, and a launch day kickoff meeting with your cohort. You’ll also get to work through the Base Camp content with supplemental resources and graded projects reviewed by Coinbase engineers."
+          answer="Your onboarding package will include the student handbook, mentor-pairing info, invite to the private Base Bootcamp Discord channel, and a launch day kickoff meeting with your cohort. You’ll also get to work through the Base Learn content with supplemental resources and graded projects reviewed by Coinbase engineers."
         />
 
         <QuestionAccordion

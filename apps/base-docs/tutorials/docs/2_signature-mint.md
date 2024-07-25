@@ -32,7 +32,7 @@ By the end of this tutorial you should be able to:
 
 ### ERC-721 Tokens
 
-This tutorial assumes that you are able to write, test, and deploy your own ERC-721 tokens using the Solidity programming language. If you need to learn that first, check out our content in [Base Camp] or the sections specific to [ERC-721 Tokens]!
+This tutorial assumes that you are able to write, test, and deploy your own ERC-721 tokens using the Solidity programming language. If you need to learn that first, check out our content in [Base Learn] or the sections specific to [ERC-721 Tokens]!
 
 ### Vercel
 
@@ -377,8 +377,8 @@ In this tutorial, you've learned how to create a signature mint, which allows yo
 
 ---
 
-[Base Camp]: https://base.org.camp
-[ERC-721 Tokens]: https://docs.base.org/base-camp/docs/erc-721-token/erc-721-standard-video
+[Base Learn]: https://base.org/learn
+[ERC-721 Tokens]: https://docs.base.org/base-learn/docs/erc-721-token/erc-721-standard-video
 [Vercel]: https://vercel.com
 [deploying with Vercel]: /tutorials/farcaster-frames-deploy-to-vercel
 [OpenZeppelin ERC-721]: https://docs.openzeppelin.com/contracts/2.x/api/token/erc721

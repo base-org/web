@@ -96,12 +96,19 @@ Certain contracts are mandatory according to the [OP Stack SDK](https://stack.op
 | Name                         | Address                                                                                                                       |
 | :--------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | AddressManager               | [0x709c2B8ef4A9feFc629A8a2C1AF424Dc5BD6ad1B](https://sepolia.etherscan.io/address/0x709c2B8ef4A9feFc629A8a2C1AF424Dc5BD6ad1B) |
+| AnchorStateRegistryProxy     | [0x4C8BA32A5DAC2A720bb35CeDB51D6B067D104205](https://sepolia.etherscan.io/address/0x4C8BA32A5DAC2A720bb35CeDB51D6B067D104205) |
+| DelayedWETHProxy             | [0x7698b262B7a534912c8366dD8a531672deEC634e](https://sepolia.etherscan.io/address/0x7698b262B7a534912c8366dD8a531672deEC634e) |
+| DisputeGameFactoryProxy      | [0xd6E6dBf4F7EA0ac412fD8b65ED297e64BB7a06E1](https://sepolia.etherscan.io/address/0xd6E6dBf4F7EA0ac412fD8b65ED297e64BB7a06E1) |
+| FaultDisputeGame             | [0x8A9bA50a785c3868bEf1FD4924b640A5e0ed54CF](https://sepolia.etherscan.io/address/0x8A9bA50a785c3868bEf1FD4924b640A5e0ed54CF) |
 | L1CrossDomainMessenger       | [0xC34855F4De64F1840e5686e64278da901e261f20](https://sepolia.etherscan.io/address/0xC34855F4De64F1840e5686e64278da901e261f20) |
 | L1ERC721Bridge               | [0x21eFD066e581FA55Ef105170Cc04d74386a09190](https://sepolia.etherscan.io/address/0x21eFD066e581FA55Ef105170Cc04d74386a09190) |
 | L1StandardBridge             | [0xfd0Bf71F60660E2f608ed56e1659C450eB113120](https://sepolia.etherscan.io/address/0xfd0Bf71F60660E2f608ed56e1659C450eB113120) |
 | L2OutputOracle               | [0x84457ca9D0163FbC4bbfe4Dfbb20ba46e48DF254](https://sepolia.etherscan.io/address/0x84457ca9D0163FbC4bbfe4Dfbb20ba46e48DF254) |
+| MIPS                         | [0xFF760A87E41144b336E29b6D4582427dEBdB6dee](https://sepolia.etherscan.io/address/0xFF760A87E41144b336E29b6D4582427dEBdB6dee) |
 | OptimismMintableERC20Factory | [0xb1efB9650aD6d0CC1ed3Ac4a0B7f1D5732696D37](https://sepolia.etherscan.io/address/0xb1efB9650aD6d0CC1ed3Ac4a0B7f1D5732696D37) |
 | OptimismPortal               | [0x49f53e41452C74589E85cA1677426Ba426459e85](https://sepolia.etherscan.io/address/0x49f53e41452C74589E85cA1677426Ba426459e85) |
+| PermissionedDisputeGame      | [0x3f5c770f17A6982d2B3Ac77F6fDC93BFE0330E17](https://sepolia.etherscan.io/address/0x3f5c770f17A6982d2B3Ac77F6fDC93BFE0330E17) |
+| PreimageOracle               | [0x627F825CBd48c4102d36f287be71f4234426b9e4](https://sepolia.etherscan.io/address/0x627F825CBd48c4102d36f287be71f4234426b9e4) |
 | ProxyAdmin                   | [0x0389E59Aa0a41E4A413Ae70f0008e76CAA34b1F3](https://sepolia.etherscan.io/address/0x0389E59Aa0a41E4A413Ae70f0008e76CAA34b1F3) |
 | SystemConfig                 | [0xf272670eb55e895584501d564AfEB048bEd26194](https://sepolia.etherscan.io/address/0xf272670eb55e895584501d564AfEB048bEd26194) |
 

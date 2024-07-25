@@ -17,9 +17,9 @@
         "difficulty": "hard",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 20, 2024",
         "duration": "9 min read",
-        "checksum": "1155994e8aedab6a77e03bed61e33b04004828f11b05b6b7b3b58422292f48fc"
+        "checksum": "810ba498a0480702ecfc685fe21f49a9af965eae25db5b3f5ad11ec40516982f"
     },
     "0_deploy-with-foundry": {
         "title": "Deploying a smart contract using Foundry",
@@ -46,9 +46,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 24, 2024",
         "duration": "17 min read",
-        "checksum": "b6ba5851a908389eb12dae91ff7d742f3e188eba2322b8550661b05f6731296c"
+        "checksum": "01acc27579fdc15f4087491bb6a9bed9c4142d893c7eafd2aa2ae023fbefb8a3"
     },
     "0_deploy-with-hardhat": {
         "title": "Deploying a smart contract using Hardhat",
@@ -174,10 +174,10 @@
         "duration": "10 min read",
         "checksum": "f4b7fa789b2c65e00e467c4851857ab2e629f6d8dbed7f8c2d625abf668a124b"
     },
-    "0_gassless-transactions-with-paymaster": {
-        "title": "Gasless Transactions on Base using Coinbase Paymaster",
+    "0_gasless-transactions-with-paymaster": {
+        "title": "Gasless Transactions on Base using a Paymaster",
         "slug": "/gasless-transaction-on-base-using-a-paymaster",
-        "description": "Learn how to leverage Coinbase Paymaster for seamless, gasless transactions on the Coinbase Cloud Developer Platform.",
+        "description": "Learn how to leverage the Base Paymaster for seamless, gasless transactions on the Coinbase Cloud Developer Platform.",
         "author": "hughescoin",
         "keywords": [
             "Gas",
@@ -193,19 +193,14 @@
             "Cloud Platform"
         ],
         "tags": [
-            "Gasless",
-            "Crypto",
-            "Gas",
-            "Sponsor",
-            "Coinbase",
-            "Base"
+            "Account Abstraction"
         ],
         "difficulty": "easy",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "25 min read",
-        "checksum": "bb4faf87f8d0f36abf18b2f2440d2111af2c6f31552be1cede40f2dc2162c9e4"
+        "last_updated": "Jul 24, 2024",
+        "duration": "27 min read",
+        "checksum": "893bd8402de9c3fa91eafb6b53e572003e3fec783c9df5e8bb9f9bf61d1d36b2"
     },
     "0_run-a-base-node": {
         "title": "Running a Base Node",
@@ -231,9 +226,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "6 min read",
-        "checksum": "2effa6656ddc3da5f719b560d44007e317de85bc0e4bf133ef521be9db3b2665"
+        "last_updated": "Jul 24, 2024",
+        "duration": "7 min read",
+        "checksum": "3ee35c2c889d0ca625bd6786119bb0b884446ea9686c455f422597d17c67ed0c"
     },
     "1_build-with-thirdweb": {
         "title": "Building an onchain app using thirdweb",
@@ -268,6 +263,32 @@
         "duration": "8 min read",
         "checksum": "527200e33d612b0c76e5eaacddfc23633b57eaa4577f389d4429b8f862c45462"
     },
+    "1_event-gate-nouns": {
+        "title": "Gate IRL Events with Nouns",
+        "slug": "/event-gate-with-nouns",
+        "description": "Learn how to gate entry to an IRL event for members of a Nounish DAO.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "Gate",
+            "Nouns",
+            "PFP"
+        ],
+        "tags": [
+            "nft",
+            "smart contracts",
+            "frontend"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Jul 20, 2024",
+        "duration": "19 min read",
+        "checksum": "720b1b679ae3f9e0c2905f97cfbe7b07c436b93838c7686bfe63d64ba30aa1b7"
+    },
     "1_event-poap-nouns": {
         "title": "Event POAPs with Nouns",
         "slug": "/event-poaps-with-nouns",
@@ -289,9 +310,9 @@
         "difficulty": "hard",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 20, 2024",
         "duration": "4 min read",
-        "checksum": "a96c8d7eca808c7f6a7b0b55ff4ece251bfe565d57aa8921896cf49b3c64b3bb"
+        "checksum": "7718ea8fcbcdb3da50530879402b92bc244b3e59c771f50ffe7463740d34ee8e"
     },
     "1_thirdweb-unreal-nft-items": {
         "title": "Thirdweb and Unreal - NFT Items",
@@ -316,9 +337,9 @@
         "difficulty": "hard",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "40 min read",
-        "checksum": "dac639cda3aa56bf5ec7041a5152d1b90abef96d80d44a85e1a142551ac635fe"
+        "last_updated": "Jul 24, 2024",
+        "duration": "37 min read",
+        "checksum": "ffbe4179c00d71cbb88b2474777b1edc64714c09c9fa35df84c17be0dd7348ba"
     },
     "2_account-abstraction-with-biconomy": {
         "title": "Account Abstraction on Base using Biconomy",
@@ -397,9 +418,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 19, 2024",
         "duration": "46 min read",
-        "checksum": "fcd90aad54c93b59ab947c2954597b9b861204b885ed599754f7e50cca303fd9"
+        "checksum": "13ddb86a1b3e42ca0c3a8a4f1678f78d0f02d7b003133351081ecb252610789c"
     },
     "2_coinbase-smart-wallet": {
         "title": "Coinbase Smart Wallet",
@@ -422,9 +443,38 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "32 min read",
-        "checksum": "f8d2be1153df419e835c3afd8ea2714c2560f50a4e967eb303323693eb7777fe"
+        "last_updated": "Jul 24, 2024",
+        "duration": "22 min read",
+        "checksum": "216ab0709692334c97fb37c7e043a27404b2050cbbd9d0811c96fc6ce576dfa4"
+    },
+    "2_complex-onchain-nfts": {
+        "title": "Complex Onchain NFTs",
+        "slug": "/complex-onchain-nfts",
+        "description": "A tutorial that teaches how to make complex nfts that are procedurally generated and have onchain metadata and images.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "SVG",
+            "generative art",
+            "onchain metadata",
+            "nft metadata",
+            "onchain images",
+            "interfaces",
+            "pseudorandom numbers",
+            "deterministic randomness"
+        ],
+        "tags": [
+            "nft"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Jul 24, 2024",
+        "duration": "39 min read",
+        "checksum": "25ef22543ebd7f19a66a912a33667c1378455aff457815800cd1e255f63e0d65"
     },
     "2_cross-chain-with-ccip": {
         "title": "Sending messages and tokens from Base to other chains using Chainlink CCIP",
@@ -525,38 +575,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 20, 2024",
         "duration": "18 min read",
-        "checksum": "fc55c7e07decb6053d9b906445c93002374e4e50120c804b7c04e36af4e1779b"
-    },
-    "2_onchain-nfts": {
-        "title": "Building onchain NFTs",
-        "slug": "/complex-onchain-nfts",
-        "description": "A tutorial that teaches how to make complex nfts that are procedurally generated and have onchain metadata and images.",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "SVG",
-            "generative art",
-            "onchain metadata",
-            "nft metadata",
-            "onchain images",
-            "interfaces",
-            "pseudorandom numbers",
-            "deterministic randomness"
-        ],
-        "tags": [
-            "nft"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "39 min read",
-        "checksum": "108ca52fb9d1242e529c225e6f9e9cdde63f8f0725bddd876bc5ea572db1ea59"
+        "checksum": "38e9990206b5fcb29b4f3505cf8d584464c012ef7fe76f0f41edb734990b77e5"
     },
     "2_oracles-chainlink-price-feeds": {
         "title": "Accessing real-world data using Chainlink Data Feeds",
@@ -675,9 +696,38 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 20, 2024",
         "duration": "19 min read",
-        "checksum": "bb0152d2ccf76eb7db67a995f5a35590df22bcacfbaf98ff930510e3d5b21704"
+        "checksum": "88e6db6ecb1ee9f852aa7e414005b3c780f3c12277c18cbe2a2d85bcbc16f263"
+    },
+    "2_simple-onchain-nfts": {
+        "title": "Simple Onchain NFTs",
+        "slug": "/simple-onchain-nfts",
+        "description": "A tutorial that teaches how to make simple nfts that are procedurally generated and have onchain metadata and images.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "SVG",
+            "generative art",
+            "onchain metadata",
+            "nft metadata",
+            "onchain images",
+            "interfaces",
+            "pseudorandom numbers",
+            "deterministic randomness"
+        ],
+        "tags": [
+            "nft"
+        ],
+        "difficulty": "easy",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Jul 24, 2024",
+        "duration": "26 min read",
+        "checksum": "d5ccb9ed0dc9b066d63d7b5e769193d60791262ece777ff0d0992ec5082f9ac9"
     },
     "3_farcaster-frames-deploy-to-vercel": {
         "title": "Farcaster Frames: Deploying to Vercel",
@@ -698,9 +748,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 19, 2024",
         "duration": "9 min read",
-        "checksum": "3174ebe066db1100e389cf2b0ec1451c2711145fb645dc540f4c08c5a2e48540"
+        "checksum": "a926a0eb81cdf076b53902e170c6d31b195056bfc7dc3ccc4940f7152772f552"
     },
     "3_farcaster-frames-gating-and-redirects": {
         "title": "Farcaster Frames: Gating content and creating redirects",
@@ -718,14 +768,14 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "12 min read",
-        "checksum": "81672fdd81867b1ac78f474fb670c073da4132fcccd961b809a88f84580b7fca"
+        "last_updated": "Jul 19, 2024",
+        "duration": "11 min read",
+        "checksum": "ba9ed921b845af072909ccca1d00675fa27dad3650e2dee32ed7efc646fc38da"
     },
     "3_farcaster-frames-hyperframes": {
         "title": "Farcaster Frames: Building HyperFrames",
         "slug": "/farcaster-frames-hyperframes",
-        "description": "A tutorial that teaches how to make cross-linked hyperframes in an organized manner.",
+        "description": "A tutorial that teaches how to make cross-linked HyperFrames in an organized manner.",
         "author": "briandoyle81",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
@@ -733,7 +783,7 @@
             "farcaster",
             "frames",
             "farcaster frames",
-            "hyperframes",
+            "HyperFrames",
             "hyper frames",
             "state",
             "frame state",
@@ -743,9 +793,9 @@
         "tags": [
             "frames"
         ],
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 19, 2024",
         "duration": "16 min read",
-        "checksum": "dca5d7ffcf59c834221a9585628ba88e58842be3ed2c10705e1185e6c5d30715"
+        "checksum": "c342f5b4fa804db468119b74291c926b44a47d0d387a90cc61108f592957db39"
     },
     "3_farcaster-frames-nft-minting": {
         "title": "Farcaster Frames: Building an NFT airdrop Frame",
@@ -768,9 +818,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "22 min read",
-        "checksum": "4f2e23920817a1ef138ce594423b25d57080ecb1f954940cc91ef133f1050fa4"
+        "last_updated": "Jul 19, 2024",
+        "duration": "23 min read",
+        "checksum": "2632d9bfd434c9978f8c8caa45ece66bd210602d851328e219f3e6e0880876a5"
     },
     "3_farcaster-frames-nocode-minting": {
         "title": "Farcaster Frames: Building a no-code minting Frame",
@@ -794,9 +844,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "7 min read",
-        "checksum": "2201cf6ca7cf13fc8940de15b834076090671161a37e97a3146fd207b79b2033"
+        "last_updated": "Jul 19, 2024",
+        "duration": "6 min read",
+        "checksum": "cfe08c3fffa7ffaa0cd99af4e3c62aa767f6805cbd2bd8b393085f26c7eb24de"
     },
     "3_farcaster-frames-transactions": {
         "title": "Farcaster Frames: Making transactions",
@@ -817,9 +867,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 19, 2024",
         "duration": "17 min read",
-        "checksum": "f039e4e2b33d73e803fbc7785395ca283dc0abe35c46ead630e1dfaa0d7ab275"
+        "checksum": "704d36753b8900a0700d0649b209902d59e5841cfee1b082346e9aca6b94df3e"
     },
     "4_hardhat-debugging": {
         "title": "Hardhat: Debugging smart contracts",
@@ -840,9 +890,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 19, 2024",
         "duration": "15 min read",
-        "checksum": "c4f0c5cc94e04b85501323d6992a014308db14900c069ac5a7639d5b17703db6"
+        "checksum": "cfbe4c4a820359496a32e9dcd141ac4b05ff3d0e1e448be8b14c3ccf7094d0f5"
     },
     "4_hardhat-profiling-gas": {
         "title": "Hardhat: Optimizing the gas usage of smart contracts",
@@ -893,9 +943,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 19, 2024",
         "duration": "22 min read",
-        "checksum": "38c40aa53b9359a9b8716e7f56f68ebcc910da9ae6d34b055bde866d51da007b"
+        "checksum": "550ac230c92d8add5b04250d13b19eb97133dbeb2525406396f73cd808d1888d"
     },
     "4_hardhat-test-coverage": {
         "title": "Hardhat: Analyzing the test coverage of smart contracts",
@@ -920,9 +970,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 19, 2024",
         "duration": "9 min read",
-        "checksum": "54b377b97554eea4e09520fbf6fdacff9978d840248ec69d82ab79c0bebb0846"
+        "checksum": "91362e14b5f94b0bac604a0b17944fb8b41658f3e3b4c79510ea514f28f5d8d3"
     },
     "4_intro-to-foundry-setup": {
         "title": "Foundry: Setting up Foundry with Base",
@@ -1016,9 +1066,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 19, 2024",
         "duration": "21 min read",
-        "checksum": "d09d83f406019b24b7cf9490cbe0200cba4bf09506d98d18d47fe43efa48aa3a"
+        "checksum": "40d1858aeeaef166a56357d76ef641dae4c7cb25334e23aba75c4a3a91bea8d9"
     },
     "5_farcaster-cast-actions-simple": {
         "title": "Farcaster Cast Actions: Create a Simple Cast Action",

@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
+import Hero from '../components/Hero';
 import PageSection from '../components/PageSection';
 import ImageCard from '../components/ImageCard';
 import TextCard from '../components/TextCard';
@@ -27,11 +28,11 @@ const imageCards = [
   },
   {
     src: '/img/home-intro-2.png',
-    title: 'Base Camp',
+    title: 'Base Learn',
     description:
       'Become an onchain developer with our comprehensive smart contract development curriculum.',
     buttonText: 'Explore',
-    buttonHref: '/base-camp/docs/welcome',
+    buttonHref: '/base-learn/docs/welcome',
     analyticsData: {
       name: 'camp_bootcamp',
       event: {
@@ -390,13 +391,7 @@ const footerCategories = [
 export default function Home() {
   return (
     <Layout title="Base Docs" description="Documentation for building with Base">
-      <header className={styles.heroContainer}>
-        <div className="layout-container">
-          <div className={styles.heroTextContainer}>
-            <h1 className={styles.heroText}>EVERYTHING YOU NEED TO BUILD ONCHAIN</h1>
-          </div>
-        </div>
-      </header>
+      <Hero />
       <main className={styles.homepageMain}>
         <PageSection title="Intro" description="Base builder essentials">
           <div className={styles.introSection}>
