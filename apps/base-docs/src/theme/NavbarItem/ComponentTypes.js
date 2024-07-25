@@ -1,5 +1,8 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import '@rainbow-me/rainbowkit/styles.css';
+import { useColorMode } from '@docusaurus/theme-common';
 
 import DefaultNavbarItem from '@theme/NavbarItem/DefaultNavbarItem';
 import DropdownNavbarItem from '@theme/NavbarItem/DropdownNavbarItem';
@@ -10,17 +13,18 @@ import DocNavbarItem from '@theme/NavbarItem/DocNavbarItem';
 import DocSidebarNavbarItem from '@theme/NavbarItem/DocSidebarNavbarItem';
 import DocsVersionNavbarItem from '@theme/NavbarItem/DocsVersionNavbarItem';
 import DocsVersionDropdownNavbarItem from '@theme/NavbarItem/DocsVersionDropdownNavbarItem';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import '@rainbow-me/rainbowkit/styles.css';
-import styles from './styles.module.css';
-import { WalletAvatar } from '../../components/WalletAvatar';
+
+import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
 import logEvent, {
   ActionType,
   AnalyticsEventImportance,
   ComponentType,
   identify,
 } from 'base-ui/utils/logEvent';
-import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
+
+import styles from './styles.module.css';
+import { WalletAvatar } from '../../components/WalletAvatar';
+import Icon from '../../components/Icon';
 
 export const CustomConnectButton = ({ className }) => {
   return (
@@ -171,6 +175,15 @@ export const CustomNavbarLink = (props) => {
 };
 
 export const CustomDropdownLink = (props) => {
+  const [iconColor, setIconColor] = useState('');
+  const { colorMode } = useColorMode();
+
+  useEffect(() => {
+    setIconColor(
+      colorMode === 'dark' ? 'black' : 'white'
+    )
+  }, [colorMode]);
+
   return (
     <li>
       <a
@@ -190,7 +203,10 @@ export const CustomDropdownLink = (props) => {
           );
         }}
       >
-        {props.label}
+        <div className="dropdown__link--content">
+          {props.icon && <Icon name={props.icon} width="24" height="24" color={iconColor} />}
+          <span>{props.label}</span>
+        </div>
       </a>
     </li>
   );
