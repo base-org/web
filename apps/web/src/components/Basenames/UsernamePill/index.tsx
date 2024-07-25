@@ -5,7 +5,8 @@ import DropdownToggle from 'apps/web/src/components/DropdownToggle';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
-import { BaseName, getUserNamePicture } from 'apps/web/src/utils/usernames';
+import { getUserNamePicture } from 'apps/web/src/utils/usernames';
+import { type BaseName } from '@coinbase/onchainkit/identity';
 import classNames from 'classnames';
 import { Address } from 'viem';
 
