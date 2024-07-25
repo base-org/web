@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Link from 'next/link';
 
 type Department = {
@@ -41,7 +41,7 @@ export function Job({ job }: JobProps) {
         </Link>
       </div>
       <Link href={href} rel="noreferrer" target="_self" className="w-full self-center sm:w-auto">
-        <Button variant="primary" className="mt-4 w-full border sm:mt-0 sm:w-auto">
+        <Button variant={ButtonVariants.Primary} className="mt-4 w-full border sm:mt-0 sm:w-auto">
           <p className="text-sm">Apply now</p>
         </Button>
       </Link>

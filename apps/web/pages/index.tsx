@@ -9,7 +9,7 @@ import { Features } from '../src/components/Features/Features';
 import { Hero } from '../src/components/Home/Hero';
 import { JoinTheCommunity } from '../src/components/JoinTheCommunity/JoinTheCommunity';
 import { Partnerships } from '../src/components/Partnerships/Partnerships';
-import { FrameButtonMetadata, FrameMetadata } from '@coinbase/onchainkit';
+import { FrameButtonMetadata, FrameMetadata } from '@coinbase/onchainkit/frame';
 import { useMemo } from 'react';
 
 export default function Home() {

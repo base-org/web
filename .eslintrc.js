@@ -26,6 +26,7 @@ module.exports = {
     'plugin:relay/strict',
   ],
   rules: {
+    'import/extensions': ['error', 'never'],
     'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx', '.mdx'] }],
 

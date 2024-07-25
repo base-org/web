@@ -1,20 +1,37 @@
-import { useCallback, useEffect } from 'react';
-import { useAccount } from 'wagmi';
-import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
-
+import { useChainModal, useConnectModal } from '@rainbow-me/rainbowkit';
+import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
 import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
+import { baseSepolia } from 'wagmi/chains';
 import logEvent, {
   ActionType,
   AnalyticsEventImportance,
   ComponentType,
   identify,
 } from 'base-ui/utils/logEvent';
+import classNames from 'classnames';
+import { useCallback, useEffect } from 'react';
+import { useAccount, useChains } from 'wagmi';
+import {
+  ConnectWallet,
+  Wallet,
+  WalletDropdown,
+  WalletDropdownLink,
+  WalletDropdownDisconnect,
+} from '@coinbase/onchainkit/wallet';
+import { Name, Identity, EthBalance } from '@coinbase/onchainkit/identity';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
+
+export enum ConnectWalletButtonVariants {
+  Default,
+  Shiny,
+}
 
 type ConnectWalletButtonProps = {
   color: 'white' | 'black';
-  className: string;
+  className?: string;
+  connectWalletButtonVariant?: ConnectWalletButtonVariants;
 };
 
 const colorVariant: Record<'white' | 'black', 'white' | 'black'> = {
@@ -22,9 +39,19 @@ const colorVariant: Record<'white' | 'black', 'white' | 'black'> = {
   black: 'black',
 };
 
-export function ConnectWalletButton({ color, className }: ConnectWalletButtonProps) {
+export function ConnectWalletButton({
+  color,
+  className,
+  connectWalletButtonVariant = ConnectWalletButtonVariants.Shiny,
+}: ConnectWalletButtonProps) {
+  // Rainbow kit
   const { openConnectModal } = useConnectModal();
-  const { address, connector } = useAccount();
+  const { openChainModal } = useChainModal();
+
+  // Wagmi
+  const { address, connector, isConnected, isConnecting, isReconnecting, chain } = useAccount();
+  const chains = useChains();
+  const chainSupported = !!chain && chains.includes(chain);
 
   useEffect(() => {
     if (address) {
@@ -40,7 +67,7 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
       );
       identify({ userId: address });
     }
-  }, [address]);
+  }, [address, connector?.name]);
 
   const clickConnect = useCallback(() => {
     openConnectModal?.();
@@ -55,39 +82,58 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
     );
   }, [openConnectModal]);
 
+  const userAddressClasses = classNames('text-lg', {
+    'text-white': color === 'white',
+    'text-black': color === 'black',
+  });
+
+  if (isConnecting || isReconnecting) {
+    return <Icon name="spinner" color="currentColor" />;
+  }
+
+  if (!isConnected) {
+    const shinyButton = connectWalletButtonVariant === ConnectWalletButtonVariants.Shiny;
+    return shinyButton ? (
+      <ShinyButton variant={colorVariant[color]} onClick={clickConnect}>
+        Connect
+      </ShinyButton>
+    ) : (
+      <Button
+        variant={ButtonVariants.Black}
+        size={ButtonSizes.Small}
+        onClick={clickConnect}
+        rounded
+      >
+        Connect
+      </Button>
+    );
+  }
+
+  if (!chainSupported) {
+    return (
+      <button onClick={openChainModal} type="button">
+        Wrong network
+      </button>
+    );
+  }
+
   return (
-    <ConnectButton.Custom>
-      {({ account, chain, openAccountModal, openChainModal, mounted }) => {
-        const ready = mounted;
-        const connected = ready && account && chain;
-
-        if (!connected) {
-          return (
-            <ShinyButton variant={colorVariant[color]} onClick={clickConnect}>
-              Connect
-            </ShinyButton>
-          );
-        }
-
-        if (chain.unsupported) {
-          return (
-            <button onClick={openChainModal} type="button">
-              Wrong network
-            </button>
-          );
-        }
-
-        return (
-          <button
-            className={`cursor-pointer ${className}`}
-            onClick={openAccountModal}
-            onKeyUp={openAccountModal}
-            type="button"
-          >
-            <UserAvatar />
-          </button>
-        );
-      }}
-    </ConnectButton.Custom>
+    <Wallet>
+      <ConnectWallet withWalletAggregator className="bg-transparent p-2 hover:bg-gray-40/20">
+        <UserAvatar />
+        <Name chain={baseSepolia} className={userAddressClasses} />
+      </ConnectWallet>
+      <WalletDropdown>
+        <Identity className={classNames('px-4 pb-2 pt-3', className)} hasCopyAddressOnClick>
+          <UserAvatar />
+          <Name chain={baseSepolia} />
+          <EthBalance />
+        </Identity>
+        <WalletDropdownLink icon="wallet" href="https://wallet.coinbase.com">
+          Go to Wallet Dashboard
+        </WalletDropdownLink>
+        <WalletDropdownDisconnect />
+      </WalletDropdown>
+    </Wallet>
   );
 }
