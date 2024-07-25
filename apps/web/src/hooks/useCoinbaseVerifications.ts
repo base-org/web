@@ -39,31 +39,39 @@ export async function getCoinbaseVerifications(address: `0x${string}`) {
   });
 }
 
-export function useCoinbaseVerification(address?: `0x${string}`): CoinbaseVerifications[] {
+export function useCoinbaseVerification(address?: `0x${string}`): {
+  badges: Record<CoinbaseVerifications, boolean>;
+  empty: boolean;
+} {
   const attestations = useQuery({
     queryKey: ['coinbase-attestations', address],
     queryFn: async ({ queryKey }) => getCoinbaseVerifications(queryKey[1] as `0x${string}`),
     enabled: !!address,
   });
 
-  const badges: CoinbaseVerifications[] = useMemo(() => {
-    if (!attestations.data) return [];
+  const [badges, empty]: [Record<CoinbaseVerifications, boolean>, boolean] = useMemo(() => {
+    let allEmpty = true;
+    const verifications: Record<CoinbaseVerifications, boolean> = {
+      VERIFIED_IDENTITY: false,
+      VERIFIED_COUNTRY: false,
+      VERIFIED_COINBASE_ONE: false,
+    };
 
-    const verifications: Partial<Record<CoinbaseVerifications, boolean>> = {};
+    if (!attestations.data) return [verifications, true];
 
     for (const attestation of attestations.data) {
-      // for each attestation type check that it is valid, then push it to the verifications array
       if (attestation.revoked) {
         continue;
       }
 
       if (attestation.schemaId in SCHEMAS) {
         verifications[SCHEMAS[attestation.schemaId]] = true;
+        allEmpty = false;
       }
     }
 
-    return Object.keys(verifications) as CoinbaseVerifications[];
+    return [verifications, allEmpty];
   }, [attestations.data]);
 
-  return badges;
+  return { badges, empty };
 }
