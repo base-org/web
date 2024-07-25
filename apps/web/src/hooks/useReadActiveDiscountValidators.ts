@@ -1,8 +1,6 @@
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
-import {
-  USERNAME_CHAIN_ID,
-  USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
-} from 'apps/web/src/addresses/usernames';
+import { USERNAME_REGISTRAR_CONTROLLER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useMemo } from 'react';
 import { Address } from 'viem';
 import { useReadContract } from 'wagmi';
@@ -15,14 +13,15 @@ export type DiscountValidator = {
 };
 
 export function useActiveDiscountValidators() {
+  const { basenameChain } = useBasenameChain();
   const activeDiscountsArgs = useMemo(
     () => ({
-      address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
+      address: USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[basenameChain.id],
       abi: RegistrarControllerABI,
       functionName: 'getActiveDiscounts' as const,
-      chainId: USERNAME_CHAIN_ID,
+      chainId: basenameChain.id,
     }),
-    [],
+    [basenameChain.id],
   );
 
   const { data, isLoading } = useReadContract(activeDiscountsArgs);

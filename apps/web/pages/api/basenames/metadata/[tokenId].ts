@@ -1,6 +1,6 @@
 import L2Resolver from 'apps/web/src/abis/L2Resolver';
-import { USERNAME_L2_RESOLVER_ADDRESS } from 'apps/web/src/addresses/usernames';
-import { getPublicClient } from 'apps/web/src/cdp/utils';
+import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import { USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
 import { NextResponse } from 'next/server';
 import { encodePacked, keccak256, namehash, toHex } from 'viem';
@@ -33,11 +33,10 @@ export default async function GET(request: Request) {
     encodePacked(['bytes32', 'bytes32'], [namehash(baseDomainName), labelHash]),
   );
 
-  const client = getPublicClient(Number(chainId));
-
+  const client = getBasenamePublicClient(Number(chainId));
   const basename = await client.readContract({
     abi: L2Resolver,
-    address: USERNAME_L2_RESOLVER_ADDRESS,
+    address: USERNAME_L2_RESOLVER_ADDRESSES[Number(chainId)],
     args: [namehashNode],
     functionName: 'name',
   });

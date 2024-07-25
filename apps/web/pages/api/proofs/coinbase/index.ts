@@ -1,5 +1,5 @@
-import { isSupportedChain } from 'apps/web/src/addresses/usernames';
 import { trustedSignerPKey } from 'apps/web/src/constants';
+import { isBasenameSupportedChain } from 'apps/web/src/hooks/useBasenameChain';
 import { DiscountType, VerifiedAccount } from 'apps/web/src/utils/proofs';
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -52,12 +52,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: 'chain must be a single value' });
   }
   let parsedChain = parseInt(chain);
-  if (!isSupportedChain(parsedChain)) {
+  if (!isBasenameSupportedChain(parsedChain)) {
     return res.status(400).json({ error: 'chain must be Base or Base Sepolia' });
   }
 
   try {
-    const result = await sybilResistantUsernameSigning(address, DiscountType.CB);
+    const result = await sybilResistantUsernameSigning(address, DiscountType.CB, parsedChain);
     return res.status(200).json(result);
   } catch (error) {
     console.error(error);

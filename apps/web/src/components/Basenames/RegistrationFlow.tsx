@@ -14,7 +14,8 @@ import RegistrationSearchInput, {
 } from 'apps/web/src/components/Basenames/RegistrationSearchInput';
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
-import { formatBaseEthDomain, USERNAME_DOMAIN } from 'apps/web/src/utils/usernames';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import { formatBaseEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useSearchParams } from 'next/navigation';
@@ -34,7 +35,7 @@ export function RegistrationFlow() {
   const searchParams = useSearchParams();
   const { discount, registrationStep, searchInputFocused, selectedName, setSelectedName } =
     useRegistration();
-
+  const { basenameChain } = useBasenameChain();
   const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
   const isSearch = registrationStep === RegistrationSteps.Search;
   const isClaim = registrationStep === RegistrationSteps.Claim;
@@ -68,9 +69,9 @@ export function RegistrationFlow() {
   useEffect(() => {
     const claimQuery = searchParams?.get(claimQueryKey);
     if (claimQuery) {
-      setSelectedName(claimQuery.replace(`.${USERNAME_DOMAIN}`, ''));
+      setSelectedName(claimQuery.replace(`.${USERNAME_DOMAINS[basenameChain.id]}`, ''));
     }
-  }, [searchParams, setSelectedName]);
+  }, [basenameChain.id, searchParams, setSelectedName]);
 
   return (
     <main className={mainClasses}>
@@ -165,7 +166,7 @@ export function RegistrationFlow() {
           >
             <UsernamePill
               variant={currentUsernamePillVariant}
-              username={formatBaseEthDomain(selectedName)}
+              username={formatBaseEthDomain(selectedName, basenameChain.id)}
             />
           </Transition>
 

@@ -8,24 +8,52 @@ import {
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { useAccount } from 'wagmi';
 import classNames from 'classnames';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import { base, baseSepolia } from 'viem/chains';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 export default function UsernameNav() {
   const { isConnected } = useAccount();
 
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const { basenameChain } = useBasenameChain();
+
+  const showDevelopmentWarning = isDevelopment && basenameChain.id === base.id;
+  const showProductionWarning = !isDevelopment && basenameChain.id === baseSepolia.id;
+
   const walletStateClasses = classNames('p2 rounded', {
     'bg-white': isConnected,
   });
+
+  const navigationClasses = classNames(
+    'flex h-24 w-full max-w-[1440px] flex-row items-center justify-between gap-16 self-center bg-transparent px-4 md:px-8',
+  );
+
   return (
-    <nav className="absolute top-0 z-20 flex h-24 w-full max-w-[1440px] flex-row items-center justify-between gap-16 self-center bg-transparent px-4 md:px-8">
-      <Link href="/">
-        <Image src={usernameBaseLogo as StaticImport} alt="Base" />
-      </Link>
-      <span className={walletStateClasses}>
-        <ConnectWalletButton
-          color="black"
-          connectWalletButtonVariant={ConnectWalletButtonVariants.Default}
-        />
-      </span>
-    </nav>
+    <div className="absolute top-0 z-20 flex w-full flex-col">
+      {showDevelopmentWarning && (
+        <div className="flex items-center  justify-center gap-2 bg-orange-10 p-2 text-center text-orange-80">
+          <Icon name="info" color="currentColor" height="1rem" />
+          <p>You are on Base Mainnet, any registrations / transactions will use real ETH</p>
+        </div>
+      )}
+      {showProductionWarning && (
+        <div className="flex items-center  justify-center gap-2 bg-orange-10 p-2 text-center text-orange-80">
+          <Icon name="info" color="currentColor" height="1rem" />
+          <p>You are on Base Sepolia (testnet)</p>
+        </div>
+      )}
+      <nav className={navigationClasses}>
+        <Link href="/">
+          <Image src={usernameBaseLogo as StaticImport} alt="Base" />
+        </Link>
+        <span className={walletStateClasses}>
+          <ConnectWalletButton
+            color="black"
+            connectWalletButtonVariant={ConnectWalletButtonVariants.Default}
+          />
+        </span>
+      </nav>
+    </div>
   );
 }

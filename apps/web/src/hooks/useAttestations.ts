@@ -4,11 +4,11 @@ import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
 import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
 import EarlyAccessValidatorABI from 'apps/web/src/abis/EarlyAccessValidator';
 import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
-import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
 import { Discount } from 'apps/web/src/utils/usernames';
 import { useEffect, useMemo, useState } from 'react';
 import { Address, ReadContractErrorType, encodeAbiParameters } from 'viem';
 import { useAccount, useReadContract } from 'wagmi';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 
 export type AttestationData = {
   discountValidatorAddress: Address;
@@ -23,13 +23,13 @@ type AttestationHookReturns = {
 export function useCheckCBIDAttestations(): AttestationHookReturns {
   const { address } = useAccount();
   const [cBIDProofResponse, setCBIDProofResponse] = useState<CBIDProofResponse | null>(null);
-
+  const { basenameChain } = useBasenameChain();
   useEffect(() => {
     async function checkCBIDAttestations(a: string) {
       try {
         const params = new URLSearchParams();
         params.append('address', a);
-        params.append('chain', USERNAME_CHAIN_ID.toString());
+        params.append('chain', basenameChain.id.toString());
         const response = await fetch(`/api/proofs/cbid?${params}`);
         if (response.ok) {
           const result = (await response.json()) as CBIDProofResponse;
@@ -43,7 +43,7 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
     if (address) {
       checkCBIDAttestations(address).catch(console.error);
     }
-  }, [address]);
+  }, [address, basenameChain.id]);
 
   const encodedProof = useMemo(
     () =>
@@ -92,6 +92,7 @@ export function useCheckCoinbaseAttestations() {
   const [coinbaseProofResponse, setCoinbaseProofResponse] = useState<CoinbaseProofResponse | null>(
     null,
   );
+  const { basenameChain } = useBasenameChain();
 
   useEffect(() => {
     async function checkCoinbaseAttestations(a: string) {
@@ -99,7 +100,7 @@ export function useCheckCoinbaseAttestations() {
         setLoading(true);
         const params = new URLSearchParams();
         params.append('address', a);
-        params.append('chain', USERNAME_CHAIN_ID.toString());
+        params.append('chain', basenameChain.id.toString());
         const response = await fetch(`/api/proofs/coinbase?${params}`);
         const result = (await response.json()) as CoinbaseProofResponse;
         if (response.ok) {
@@ -115,7 +116,7 @@ export function useCheckCoinbaseAttestations() {
     if (address) {
       checkCoinbaseAttestations(address).catch(console.error);
     }
-  }, [address]);
+  }, [address, basenameChain.id]);
 
   const signature = coinbaseProofResponse?.signedMessage as undefined | `0x${string}`;
 
@@ -151,14 +152,14 @@ export function useCheckCB1Attestations() {
   const { address } = useAccount();
   const [loading, setLoading] = useState(false);
   const [cb1ProofResponse, setCB1ProofResponse] = useState<CoinbaseProofResponse | null>(null);
-
+  const { basenameChain } = useBasenameChain();
   useEffect(() => {
     async function checkCB1Attestations(a: string) {
       try {
         setLoading(true);
         const params = new URLSearchParams();
         params.append('address', a);
-        params.append('chain', USERNAME_CHAIN_ID.toString());
+        params.append('chain', basenameChain.id.toString());
         const response = await fetch(`/api/proofs/cb1?${params}`);
         if (response.ok) {
           const result = (await response.json()) as CoinbaseProofResponse;
@@ -174,7 +175,7 @@ export function useCheckCB1Attestations() {
     if (address) {
       checkCB1Attestations(address).catch(console.error);
     }
-  }, [address]);
+  }, [address, basenameChain.id]);
 
   const signature = cb1ProofResponse?.signedMessage as undefined | `0x${string}`;
 
@@ -209,13 +210,14 @@ export function useCheckCB1Attestations() {
 export function useCheckEAAttestations(): AttestationHookReturns {
   const { address } = useAccount();
   const [EAProofResponse, setEAProofResponse] = useState<EarlyAccessProofResponse | null>(null);
+  const { basenameChain } = useBasenameChain();
 
   useEffect(() => {
     async function checkEarlyAccess(a: string) {
       try {
         const params = new URLSearchParams();
         params.append('address', a);
-        params.append('chain', USERNAME_CHAIN_ID.toString());
+        params.append('chain', basenameChain.id.toString());
         const response = await fetch(`/api/proofs/earlyAccess?${params}`);
         if (response.ok) {
           const result = (await response.json()) as EarlyAccessProofResponse;
@@ -229,7 +231,7 @@ export function useCheckEAAttestations(): AttestationHookReturns {
     if (address) {
       checkEarlyAccess(address).catch(console.error);
     }
-  }, [address]);
+  }, [address, basenameChain.id]);
 
   const encodedProof = useMemo(
     () =>

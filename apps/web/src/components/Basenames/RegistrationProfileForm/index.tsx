@@ -1,5 +1,4 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
-import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
 import {
   registrationTransitionDuration,
   useRegistration,
@@ -14,6 +13,7 @@ import Label from 'apps/web/src/components/Label';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
 import {
@@ -41,7 +41,7 @@ export default function RegistrationProfileForm() {
   const { address } = useAccount();
   const router = useRouter();
   const { logEventWithContext } = useAnalytics();
-
+  const { basenameChain } = useBasenameChain();
   const { data: baseEnsName } = useBaseEnsName({
     address,
   });
@@ -74,7 +74,7 @@ export default function RegistrationProfileForm() {
     error: transactionError,
   } = useWaitForTransactionReceipt({
     hash: writeTextRecordsTransactionHash,
-    chainId: USERNAME_CHAIN_ID,
+    chainId: basenameChain.id,
     query: {
       enabled: !!writeTextRecordsTransactionHash,
       refetchOnWindowFocus: false,
@@ -91,7 +91,7 @@ export default function RegistrationProfileForm() {
 
       refetchExistingTextRecords()
         .then(() => {
-          router.push(`names/${formatBaseEthDomain(selectedName)}`);
+          router.push(`names/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
         })
         .catch(() => {
           // console.log({ error });
@@ -110,6 +110,7 @@ export default function RegistrationProfileForm() {
     baseEnsName,
     transactionData,
     selectedName,
+    basenameChain.id,
   ]);
 
   useEffect(() => {
@@ -166,7 +167,7 @@ export default function RegistrationProfileForm() {
               logEventWithContext('update_text_records_transaction_approved', ActionType.change);
             } else {
               // no text records had to be updated, simply go to profile
-              router.push(`names/${formatBaseEthDomain(selectedName)}`);
+              router.push(`names/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
             }
           })
           .catch(console.error);
@@ -175,6 +176,7 @@ export default function RegistrationProfileForm() {
       event.preventDefault();
     },
     [
+      basenameChain.id,
       currentFormStep,
       logEventWithContext,
       router,
@@ -242,7 +244,7 @@ export default function RegistrationProfileForm() {
   }, [currentFormStep, logEventWithContext]);
 
   return (
-    <form className={formClasses} onTransitionEnd={() => setTransitionStep(false)}>
+    <form className={formClasses}>
       {currentFormStep === FormSteps.Description && (
         <UsernameDescriptionField
           labelChildren={descriptionLabelChildren}

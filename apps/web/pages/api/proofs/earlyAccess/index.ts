@@ -1,4 +1,5 @@
-import { isSupportedChain, USERNAME_EA_DISCOUNT_VALIDATOR } from 'apps/web/src/addresses/usernames';
+import { USERNAME_EA_DISCOUNT_VALIDATORS } from 'apps/web/src/addresses/usernames';
+import { isBasenameSupportedChain } from 'apps/web/src/hooks/useBasenameChain';
 import {
   getProofsByNamespaceAndAddress,
   hasRegisteredWithDiscount,
@@ -6,7 +7,6 @@ import {
 } from 'apps/web/src/utils/proofs';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Address, isAddress } from 'viem';
-import { base } from 'viem/chains';
 
 export type EarlyAccessProofResponse = {
   discountValidatorAddress: Address;
@@ -39,18 +39,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: 'invalid chain' });
   }
 
-  let parsedChain = base.id as number;
-  try {
-    parsedChain = parseInt(chain);
-  } catch (e) {
-    return res.status(400).json({ error: 'invalid chain' });
+  let parsedChain = parseInt(chain);
+  if (!isBasenameSupportedChain(parsedChain)) {
+    return res.status(400).json({ error: 'chain must be Base or Base Sepolia' });
   }
-  if (!isSupportedChain(parsedChain)) {
+
+  if (!isBasenameSupportedChain(parsedChain)) {
     return res.status(400).json({ error: 'chain must be Base or Base Sepolia' });
   }
 
   try {
-    const hasPreviouslyRegistered = await hasRegisteredWithDiscount([address]);
+    const hasPreviouslyRegistered = await hasRegisteredWithDiscount([address], parsedChain);
 
     // if any linked address registered previously return an error
     if (hasPreviouslyRegistered) {
@@ -65,11 +64,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (proofs.length === 0) {
       return res.status(404).json({ error: 'address is not eligible for early access' });
     }
+
     const responseData: EarlyAccessProofResponse = {
       ...content,
       proofs,
-      discountValidatorAddress: USERNAME_EA_DISCOUNT_VALIDATOR,
+      discountValidatorAddress: USERNAME_EA_DISCOUNT_VALIDATORS[parsedChain],
     };
+
+    console.log({ responseData });
     return res.status(200).json(responseData);
   } catch (error: unknown) {
     console.error(error);

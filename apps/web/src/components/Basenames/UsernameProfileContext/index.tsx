@@ -1,4 +1,5 @@
-import { USERNAME_CHAIN_ID, USERNAME_L2_RESOLVER_ADDRESS } from 'apps/web/src/addresses/usernames';
+import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { BaseName } from 'apps/web/src/utils/usernames';
 import { useParams } from 'next/navigation';
 import { ReactNode, createContext, useContext, useMemo } from 'react';
@@ -26,13 +27,17 @@ type UsernameProfileProviderProps = {
 };
 
 export default function UsernameProfileProvider({ children }: UsernameProfileProviderProps) {
-  const { username: profileUsername } = useParams<{ username: BaseName }>();
+  const params = useParams<{ username: BaseName }>();
+  const profileUsername = params?.username;
+
   const { address } = useAccount();
+
+  const { basenameChain } = useBasenameChain();
 
   const { data: profileAddress, isLoading: profileAddressIsLoading } = useEnsAddress({
     name: profileUsername,
-    chainId: USERNAME_CHAIN_ID,
-    universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESS,
+    chainId: basenameChain.id,
+    universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
     query: {
       enabled: !!profileUsername,
     },

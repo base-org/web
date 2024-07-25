@@ -5,6 +5,7 @@ import {
 } from 'apps/web/src/components/Basenames/RegistrationContext';
 import ShareUsernameModal from 'apps/web/src/components/Basenames/ShareUsernameModal';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import Link from 'next/link';
@@ -16,7 +17,7 @@ export default function RegistrationSuccessMessage() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { logEventWithContext } = useAnalytics();
-
+  const { basenameChain } = useBasenameChain();
   const openModal = useCallback(
     (event: React.MouseEvent<HTMLAnchorElement>) => {
       event.preventDefault();
@@ -37,8 +38,8 @@ export default function RegistrationSuccessMessage() {
 
   const goToProfileOnClick = useCallback(() => {
     logEventWithContext('go_to_profile', ActionType.click);
-    router.push(`name/${formatBaseEthDomain(selectedName)}`);
-  }, [logEventWithContext, router, selectedName]);
+    router.push(`name/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
+  }, [basenameChain.id, logEventWithContext, router, selectedName]);
 
   return (
     <>

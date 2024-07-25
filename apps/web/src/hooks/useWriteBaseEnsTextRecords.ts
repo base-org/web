@@ -1,6 +1,7 @@
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
-import { USERNAME_CHAIN_ID, USERNAME_L2_RESOLVER_ADDRESS } from 'apps/web/src/addresses/usernames';
+import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { BaseEnsNameData } from 'apps/web/src/hooks/useBaseEnsName';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { UsernameTextRecords, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { useCallback } from 'react';
@@ -22,6 +23,8 @@ export default function useWriteBaseEnsTextRecords({
     address,
     username,
   });
+
+  const { basenameChain } = useBasenameChain();
 
   const {
     data: writeTextRecordsTransactionHash,
@@ -58,18 +61,18 @@ export default function useWriteBaseEnsTextRecords({
         });
       });
 
-      await switchChainAsync({ chainId: USERNAME_CHAIN_ID });
+      await switchChainAsync({ chainId: basenameChain.id });
 
       await writeContractAsync({
         abi: L2ResolverAbi,
-        address: USERNAME_L2_RESOLVER_ADDRESS,
+        address: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
         args: [nameHash, textRecordsBytes],
         functionName: 'multicallWithNodeCheck',
       });
 
       return true;
     },
-    [existingTextRecords, switchChainAsync, username, writeContractAsync],
+    [basenameChain.id, existingTextRecords, switchChainAsync, username, writeContractAsync],
   );
 
   return {

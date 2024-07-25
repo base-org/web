@@ -5,21 +5,22 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useRouter } from 'next/navigation';
-import { formatBaseEthDomain, USERNAME_DOMAIN } from 'apps/web/src/utils/usernames';
+import { formatBaseEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
 import UsernameProfileNotFound from 'apps/web/src/components/Basenames/UsernameProfileNotFound';
 import classNames from 'classnames';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 
 export default function UsernameProfile() {
   const { profileAddress, profileUsername, profileAddressIsLoading } = useUsernameProfile();
   const { logEventWithContext } = useAnalytics();
   const router = useRouter();
-
+  const { basenameChain } = useBasenameChain();
   const usernameProfilePageClasses = classNames(
     'mx-auto mt-32 flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 px-4 px-4 pb-40 md:flex-row md:px-8',
   );
 
-  if (!profileUsername.endsWith(USERNAME_DOMAIN)) {
-    router.push(formatBaseEthDomain(profileUsername));
+  if (!profileUsername.endsWith(USERNAME_DOMAINS[basenameChain.id])) {
+    router.push(formatBaseEthDomain(profileUsername, basenameChain.id));
   }
 
   if (profileAddressIsLoading) {

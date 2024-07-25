@@ -1,11 +1,11 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
-import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
 import {
   DiscountData,
   findFirstValidDiscount,
   useAggregatedDiscountValidators,
 } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { Discount, isValidDiscount } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import {
@@ -91,6 +91,8 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     RegistrationSteps.Search,
   );
 
+  const { basenameChain } = useBasenameChain();
+
   // Analytics
   const { logEventWithContext } = useAnalytics();
 
@@ -127,7 +129,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     error: transactionError,
   } = useWaitForTransactionReceipt({
     hash: registerNameTransactionHash,
-    chainId: USERNAME_CHAIN_ID,
+    chainId: basenameChain.id,
     query: {
       enabled: !!registerNameTransactionHash,
     },

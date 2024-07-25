@@ -1,4 +1,4 @@
-import { USERNAME_CHAIN_ID, USERNAME_L2_RESOLVER_ADDRESS } from 'apps/web/src/addresses/usernames';
+import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { useCallback, useEffect, useState } from 'react';
 import { Address, ContractFunctionParameters, namehash } from 'viem';
 import {
@@ -7,9 +7,9 @@ import {
   textRecordsKeysEnabled,
 } from 'apps/web/src/utils/usernames';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
-import { getPublicClient } from 'apps/web/src/cdp/utils';
 import { useQuery } from '@tanstack/react-query';
 import { BaseEnsNameData } from 'apps/web/src/hooks/useBaseEnsName';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 
 export type UseReadBaseEnsTextRecordsProps = {
   address?: Address;
@@ -20,7 +20,7 @@ export default function useReadBaseEnsTextRecords({
   address,
   username,
 }: UseReadBaseEnsTextRecordsProps) {
-  const client = getPublicClient(USERNAME_CHAIN_ID);
+  const { basenameChain, basenamePublicClient } = useBasenameChain();
 
   // TODO: this could be based on textRecordsKeysEnabled via reduce
   const [existingTextRecords, setExistingTextRecords] = useState<UsernameTextRecords>({
@@ -48,7 +48,7 @@ export default function useReadBaseEnsTextRecords({
   }, []);
 
   const getExistingTextRecords = useCallback(async () => {
-    if (!client) return;
+    if (!basenamePublicClient) return;
     if (!username) return;
     const nameHash = namehash(username);
     const readContracts: ContractFunctionParameters[] = textRecordsKeysEnabled.map((key) => {
@@ -56,14 +56,14 @@ export default function useReadBaseEnsTextRecords({
         args: [nameHash, key],
         functionName: 'text',
         abi: L2ResolverAbi,
-        address: USERNAME_L2_RESOLVER_ADDRESS,
+        address: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
       };
     });
 
-    const result = await client.multicall({ contracts: readContracts });
+    const result = await basenamePublicClient.multicall({ contracts: readContracts });
 
     return result;
-  }, [client, username]);
+  }, [basenameChain.id, basenamePublicClient, username]);
 
   const {
     data: textRecordsData,
@@ -71,7 +71,7 @@ export default function useReadBaseEnsTextRecords({
     refetch: refetchExistingTextRecords,
     error: existingTextRecordsError,
   } = useQuery({
-    queryKey: ['useReadBaseEnsTextRecords', address, textRecordsKeysEnabled, USERNAME_CHAIN_ID],
+    queryKey: ['useReadBaseEnsTextRecords', address, textRecordsKeysEnabled, basenameChain.id],
     queryFn: getExistingTextRecords,
     enabled: !!address && !!username,
   });
