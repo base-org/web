@@ -11,13 +11,11 @@ import ControlHero from './ControlHero';
 import TreatmentHero from './TreatmentHero';
 import styles from './styles.module.css';
 
-// const EXPERIMENT_KEY = 'build-onchain-for-less-hero-2024-07-23';
-const EXPERIMENT_KEY = 'bf-test-2024-07-25';
+const EXPERIMENT_KEY = 'build-onchain-for-less-hero-2024-07-23';
 
 export default function Hero() {
   const { isReady, getUserVariant } = useExperiments();
   const userVariant = getUserVariant(EXPERIMENT_KEY);
-  console.log({ EXPERIMENT_KEY, userVariant });
 
   if (!isReady) {
     return <HeroLoadingState />;
@@ -32,10 +30,10 @@ export default function Hero() {
     },
     AnalyticsEventImportance.high,
   );
-  if (userVariant === 'treatment') {
-    return <TreatmentHero />;
+  if (userVariant === 'control') {
+    return <ControlHero />;
   }
-  return <ControlHero />;
+  return <TreatmentHero />;
 }
 
 function HeroLoadingState() {
