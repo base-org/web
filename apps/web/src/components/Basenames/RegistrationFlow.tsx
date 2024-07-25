@@ -32,6 +32,7 @@ test addresses w/ different verifications
 */
 
 export const claimQueryKey = 'claim';
+const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
 
 export function RegistrationFlow() {
   const { isConnected } = useAccount();
@@ -40,7 +41,6 @@ export function RegistrationFlow() {
   const { discount, registrationStep, searchInputFocused, selectedName, setSelectedName } =
     useRegistration();
   const { basenameChain } = useBasenameChain();
-  const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
   const isSearch = registrationStep === RegistrationSteps.Search;
   const isClaim = registrationStep === RegistrationSteps.Claim;
   const isPending = registrationStep === RegistrationSteps.Pending;

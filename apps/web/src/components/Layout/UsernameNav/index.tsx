@@ -15,7 +15,6 @@ import { useCallback } from 'react';
 
 export default function UsernameNav() {
   const { isConnected } = useAccount();
-
   const isDevelopment = process.env.NODE_ENV === 'development';
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
@@ -27,6 +26,14 @@ export default function UsernameNav() {
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
       switchChain({ chainId: base.id });
+    },
+    [switchChain],
+  );
+
+  const switchToTestnet = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      switchChain({ chainId: baseSepolia.id });
     },
     [switchChain],
   );
@@ -44,7 +51,17 @@ export default function UsernameNav() {
       {showDevelopmentWarning && (
         <div className="flex items-center  justify-center gap-2 bg-orange-10 p-2 text-center text-orange-80">
           <Icon name="info" color="currentColor" height="1rem" />
-          <p>You are on Base Mainnet, any registrations / transactions will use real ETH</p>
+          <p>
+            You are on Base Mainnet.{' '}
+            <button
+              className="text-orange-90 underline underline-offset-2"
+              type="button"
+              onClick={switchToTestnet}
+            >
+              Switch to Testnet
+            </button>{' '}
+            to register on testnet.
+          </p>
         </div>
       )}
       {showProductionWarning && (

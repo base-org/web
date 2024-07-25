@@ -65,6 +65,8 @@ export default async function handler(request: NextRequest) {
         }}
       >
         <figure style={{ borderRadius: '100%', overflow: 'hidden', height: 120, width: 120 }}>
+          {/* We cannot use <Image> in these satori rendered images */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={domainName + profilePicture.src} height={120} width={120} alt={username} />
         </figure>
         <span

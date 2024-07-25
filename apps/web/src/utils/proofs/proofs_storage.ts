@@ -26,7 +26,7 @@ export async function getProofsByNamespaceAndAddress(
 ) {
   return createKysely<Database>()
     .selectFrom(proofTableName)
-    .where('address', '=', address)
+    .where('address', 'ilike', address)
     .where('namespace', '=', namespace.valueOf())
     .selectAll()
     .limit(1)

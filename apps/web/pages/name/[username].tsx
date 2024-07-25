@@ -1,3 +1,4 @@
+import { BaseName } from '@coinbase/onchainkit/identity';
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
 import UsernameProfileProvider from 'apps/web/src/components/Basenames/UsernameProfileContext';
@@ -7,7 +8,6 @@ import {
   openGraphImageType,
   openGraphImageWidth,
 } from 'apps/web/src/utils/opengraphs';
-import { BaseName } from 'apps/web/src/utils/usernames';
 import { NextPageContext } from 'next';
 import Head from 'next/head';
 import { useParams } from 'next/navigation';

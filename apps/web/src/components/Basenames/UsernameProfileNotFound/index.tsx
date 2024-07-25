@@ -1,9 +1,9 @@
-import { BaseName } from 'apps/web/src/utils/usernames';
 import notFoundIllustration from './notFoundIllustration.svg';
 import Image, { StaticImageData } from 'next/image';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Link from 'next/link';
 import { claimQueryKey } from 'apps/web/src/components/Basenames/RegistrationFlow';
+import { BaseName } from '@coinbase/onchainkit/identity';
 
 export default function UsernameProfileNotFound({ username }: { username: BaseName }) {
   return (
