@@ -5,7 +5,7 @@ import { Response } from 'node-fetch';
 export async function cdpGet(endpoint: string, authed: boolean): Promise<Response> {
   const headers = new Headers();
 
-  const uri = encodeURIComponent(`https://${cdpBaseUri}/${endpoint}`);
+  const uri = `https://${cdpBaseUri}/${endpoint}`;
   if (authed) {
     const jwt = await generateCdpJwt('GET', endpoint);
     headers.set('Authorization', `Bearer ${jwt}`);
@@ -17,7 +17,7 @@ export async function cdpGet(endpoint: string, authed: boolean): Promise<Respons
 }
 
 export async function cdpPost(endpoint: string, body: unknown, authed: boolean): Promise<Response> {
-  const uri = encodeURIComponent(`https://${cdpBaseUri}/${endpoint}`);
+  const uri = `https://${cdpBaseUri}/${endpoint}`;
   const headers = new Headers();
   if (authed) {
     const jwt = await generateCdpJwt('POST', endpoint);
