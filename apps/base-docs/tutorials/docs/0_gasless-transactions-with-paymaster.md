@@ -17,7 +17,7 @@ keywords:
     Crypto,
     Cloud Platform,
   ]
-tags: ['Account Abstraction']
+tags: ['account abstraction']
 difficulty: easy
 hide_table_of_contents: false
 displayed_sidebar: null
