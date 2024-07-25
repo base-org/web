@@ -3,7 +3,6 @@ import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/But
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
 import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
-import { baseSepolia } from 'wagmi/chains';
 import logEvent, {
   ActionType,
   AnalyticsEventImportance,
@@ -22,6 +21,7 @@ import {
 } from '@coinbase/onchainkit/wallet';
 import { Name, Identity, EthBalance } from '@coinbase/onchainkit/identity';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 
 export enum ConnectWalletButtonVariants {
   Default,
@@ -52,6 +52,7 @@ export function ConnectWalletButton({
   const { address, connector, isConnected, isConnecting, isReconnecting, chain } = useAccount();
   const chains = useChains();
   const chainSupported = !!chain && chains.includes(chain);
+  const { basenameChain } = useBasenameChain();
 
   useEffect(() => {
     if (address) {
@@ -121,12 +122,12 @@ export function ConnectWalletButton({
     <Wallet>
       <ConnectWallet withWalletAggregator className="bg-transparent p-2 hover:bg-gray-40/20">
         <UserAvatar />
-        <Name chain={baseSepolia} className={userAddressClasses} />
+        <Name chain={basenameChain} className={userAddressClasses} />
       </ConnectWallet>
       <WalletDropdown>
         <Identity className={classNames('px-4 pb-2 pt-3', className)} hasCopyAddressOnClick>
           <UserAvatar />
-          <Name chain={baseSepolia} />
+          <Name chain={basenameChain} />
           <EthBalance />
         </Identity>
         <WalletDropdownLink icon="wallet" href="https://wallet.coinbase.com">
