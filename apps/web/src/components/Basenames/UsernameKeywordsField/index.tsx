@@ -51,41 +51,45 @@ export default function UsernameKeywordsField({
 
   const usernameKeywordsFieldId = useId();
 
-  const renderKeyword = (keyword: string) => {
-    const keywordSelected = keywords.includes(keyword);
-    const keywordClasses = classNames(
-      'flex items-center gap-2 rounded-xl border  px-3 py-2 text-sm font-bold transition-all',
-      {
-        'bg-white hover:bg-gray-40/5 border-gray-40/20 text-black': !keywordSelected,
-        'border-[#7FD057] bg-[#7FD057]/20 text-[#195D29]':
-          keywordSelected && textRecordsEngineersKeywords.includes(keyword),
-        'border-[#F8BDF5] bg-[#F8BDF5]/20 text-[#741A66]':
-          keywordSelected && textRecordsCreativesKeywords.includes(keyword),
-        'border-[#45E1E5] bg-[#45E1E5]/20 text-[#004774]':
-          keywordSelected && textRecordsCommunnicationKeywords.includes(keyword),
-      },
-    );
+  const renderKeyword = useCallback(
+    (keyword: string) => {
+      const keywordSelected = keywords.includes(keyword);
+      const keywordClasses = classNames(
+        'flex items-center gap-2 rounded-xl border  px-3 py-2 text-sm font-bold transition-all',
+        {
+          'bg-white hover:bg-gray-40/5 border-gray-40/20 text-black': !keywordSelected,
+          'border-[#7FD057] bg-[#7FD057]/20 text-[#195D29]':
+            keywordSelected && textRecordsEngineersKeywords.includes(keyword),
+          'border-[#F8BDF5] bg-[#F8BDF5]/20 text-[#741A66]':
+            keywordSelected && textRecordsCreativesKeywords.includes(keyword),
+          'border-[#45E1E5] bg-[#45E1E5]/20 text-[#004774]':
+            keywordSelected && textRecordsCommunnicationKeywords.includes(keyword),
+        },
+      );
 
-    return (
-      <li key={keyword}>
-        <button
-          type="button"
-          className={keywordClasses}
-          onClick={() => onClickKeyword(keyword)}
-          disabled={disabled}
-        >
-          {keyword}
+      return (
+        <li key={keyword}>
+          <button
+            type="button"
+            className={keywordClasses}
+            // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+            onClick={() => onClickKeyword(keyword)}
+            disabled={disabled}
+          >
+            {keyword}
 
-          <Icon
-            name={keywords.includes(keyword) ? 'cross' : 'plus'}
-            color="currentColor"
-            width="0.75rem"
-            height="0.75rem"
-          />
-        </button>
-      </li>
-    );
-  };
+            <Icon
+              name={keywords.includes(keyword) ? 'cross' : 'plus'}
+              color="currentColor"
+              width="0.75rem"
+              height="0.75rem"
+            />
+          </button>
+        </li>
+      );
+    },
+    [disabled, keywords, onClickKeyword],
+  );
 
   return (
     <Fieldset>

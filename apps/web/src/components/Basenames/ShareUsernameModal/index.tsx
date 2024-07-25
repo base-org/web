@@ -17,8 +17,36 @@ import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import Image from 'next/image';
 
 export const socialPlatformsEnabled = [SocialPlatform.Twitter, SocialPlatform.Farcaster];
+
+function SocialPlatformButton({
+  socialPlatform,
+  openPopup,
+}: {
+  socialPlatform: SocialPlatform;
+  openPopup: (socialPlatform: SocialPlatform) => void;
+}) {
+  const onClick = useCallback(() => {
+    openPopup(socialPlatform);
+  }, [socialPlatform, openPopup]);
+
+  return (
+    <li>
+      <Button onClick={onClick} variant={ButtonVariants.Gray} rounded fullWidth>
+        <Icon
+          name={socialPlatformIconName[socialPlatform]}
+          color="currentColor"
+          height="1rem"
+          width="1rem"
+        />
+        {socialPlatformCtaForDisplay[socialPlatform]} on{' '}
+        {socialPlatformsNameForDisplay[socialPlatform]}
+      </Button>
+    </li>
+  );
+}
 
 export default function ShareUsernameModal({
   isOpen,
@@ -83,7 +111,7 @@ export default function ShareUsernameModal({
           You can get yours too at <span className="text-blue-500">base.org/name</span>
         </p>
         <figure className={coverImageWrapperClasses}>
-          <img
+          <Image
             src={`/api/basenames/${formatBaseEthDomain(
               selectedName,
               basenameChain.id,
@@ -98,23 +126,11 @@ export default function ShareUsernameModal({
       </div>
       <ul className="mt-4  flex w-full flex-col gap-4">
         {socialPlatformsEnabled.map((socialPlatform) => (
-          <li key={socialPlatform} className="">
-            <Button
-              onClick={() => openPopup(socialPlatform)}
-              variant={ButtonVariants.Gray}
-              rounded
-              fullWidth
-            >
-              <Icon
-                name={socialPlatformIconName[socialPlatform]}
-                color="currentColor"
-                height="1rem"
-                width="1rem"
-              />
-              {socialPlatformCtaForDisplay[socialPlatform]} on{' '}
-              {socialPlatformsNameForDisplay[socialPlatform]}
-            </Button>
-          </li>
+          <SocialPlatformButton
+            socialPlatform={socialPlatform}
+            openPopup={openPopup}
+            key={socialPlatform}
+          />
         ))}
       </ul>
     </Modal>

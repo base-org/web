@@ -54,6 +54,7 @@ export function useFocusWithin<T extends HTMLElement = unknown>({
 
       return () => {
         ref.current?.removeEventListener('focusin', handleFocusIn);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         ref.current?.removeEventListener('focusout', handleFocusOut);
       };
     }

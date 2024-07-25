@@ -119,6 +119,7 @@ export const textRecordsKeysForDisplay = {
   [UsernameTextRecordKeys.Lens]: 'Lens',
   [UsernameTextRecordKeys.Telegram]: 'Telegram',
   [UsernameTextRecordKeys.Discord]: 'Discord',
+  [UsernameTextRecordKeys.Avatar]: 'Avatar',
 };
 
 export const textRecordsKeysPlaceholderForDisplay = {
@@ -133,6 +134,7 @@ export const textRecordsKeysPlaceholderForDisplay = {
   [UsernameTextRecordKeys.Lens]: 'name.lens',
   [UsernameTextRecordKeys.Telegram]: 'Username',
   [UsernameTextRecordKeys.Discord]: 'Username',
+  [UsernameTextRecordKeys.Avatar]: 'Avatar',
 };
 
 export const textRecordsEngineersKeywords = [
