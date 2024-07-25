@@ -9,6 +9,7 @@ import { formatBaseEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/userna
 import UsernameProfileNotFound from 'apps/web/src/components/Basenames/UsernameProfileNotFound';
 import classNames from 'classnames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import { base, baseSepolia } from 'viem/chains';
 
 export default function UsernameProfile() {
   const { profileAddress, profileUsername, profileAddressIsLoading } = useUsernameProfile();
@@ -19,8 +20,11 @@ export default function UsernameProfile() {
     'mx-auto mt-32 flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 px-4 px-4 pb-40 md:flex-row md:px-8',
   );
 
-  if (!profileUsername.endsWith(USERNAME_DOMAINS[basenameChain.id])) {
-    router.push(formatBaseEthDomain(profileUsername, basenameChain.id));
+  if (
+    !profileUsername.endsWith(`.${USERNAME_DOMAINS[baseSepolia.id]}`) &&
+    !profileUsername.endsWith(`.${USERNAME_DOMAINS[base.id]}`)
+  ) {
+    router.push(formatBaseEthDomain(profileUsername, basenameChain.id) as string);
   }
 
   if (profileAddressIsLoading) {

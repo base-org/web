@@ -114,7 +114,7 @@ export default function StaticApp({ Component, pageProps }: AppPropsWithLayout) 
   const getLayout =
     Component.getLayout ??
     ((page) => <Layout navigationType={NavigationType.Default}>{page}</Layout>);
-
+  const isDevelopment = process.env.NODE_ENV === 'development';
   if (!isMounted) return null;
 
   return (
@@ -132,7 +132,7 @@ export default function StaticApp({ Component, pageProps }: AppPropsWithLayout) 
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
             <OnchainKitProvider
-              chain={baseSepolia}
+              chain={isDevelopment ? baseSepolia : base}
               apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
             >
               <TooltipProvider>

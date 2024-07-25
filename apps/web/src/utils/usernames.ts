@@ -15,11 +15,6 @@ export const USERNAME_MAX_CHARACTER_LENGTH = 20;
 
 export const USERNAME_DESCRIPTION_MAX_LENGTH = 200;
 
-export type BaseMainnetName = `${string}.base.eth`;
-export type BaseSepoliaName = `${string}.basetest.eth`;
-
-export type BaseName = BaseMainnetName | BaseSepoliaName;
-
 // DANGER: Changing this post-mainnet launch means the stored data won't be accessible via the updated key
 export enum UsernameTextRecordKeys {
   Description = 'description',
