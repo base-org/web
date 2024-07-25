@@ -10,6 +10,7 @@ const EXPERIMENT_KEY = 'bf-test-2024-07-25';
 
 export default function Hero() {
   const { isReady, userVariant } = useExperiment(EXPERIMENT_KEY);
+  console.log({userVariant});
 
   if (!isReady) {
     return <HeroLoadingState />;
