@@ -1,6 +1,11 @@
 import React from 'react';
 
 import { useExperiments } from 'base-ui/contexts/Experiments';
+import logEvent, {
+  ActionType,
+  AnalyticsEventImportance,
+  ComponentType,
+} from 'base-ui/utils/logEvent';
 
 import ControlHero from './ControlHero';
 import TreatmentHero from './TreatmentHero';
@@ -12,11 +17,21 @@ const EXPERIMENT_KEY = 'bf-test-2024-07-25';
 export default function Hero() {
   const { isReady, getUserVariant } = useExperiments();
   const userVariant = getUserVariant(EXPERIMENT_KEY);
-  console.log({userVariant})
+  console.log({ EXPERIMENT_KEY, userVariant });
 
   if (!isReady) {
     return <HeroLoadingState />;
   }
+
+  logEvent(
+    'hero_exposure',
+    {
+      action: ActionType.view,
+      componentType: ComponentType.page,
+      variant: userVariant,
+    },
+    AnalyticsEventImportance.high,
+  );
   if (userVariant === 'treatment') {
     return <TreatmentHero />;
   }
