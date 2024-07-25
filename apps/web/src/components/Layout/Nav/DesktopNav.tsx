@@ -128,7 +128,7 @@ function DesktopNav({ color }: DesktopNavProps) {
       <Dropdown label="Ecosystem" color={color}>
         <DropdownLink href="/ecosystem" label="Apps" color={color} />
         {/* todo ECO-101: add this back for GA */}
-        {/* <DropdownLink href="/name" label="Names" color={color} /> */}
+        {/* <DropdownLink href="/names" label="Names" color={color} /> */}
         <DropdownLink
           href="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
           label="Grants"
