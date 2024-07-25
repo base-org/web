@@ -5,12 +5,12 @@ type AddressMap = Record<number, Address>;
 
 export const USERNAME_L2_RESOLVER_ADDRESSES: AddressMap = {
   [baseSepolia.id]: '0x6533C94869D28fAA8dF77cc63f9e2b2D6Cf77eBA',
-  [base.id]: '0x',
+  [base.id]: '0xC6d566A56A1aFf6508b41f6c90ff131615583BCD',
 };
 
 export const USERNAME_REGISTRAR_CONTROLLER_ADDRESSES: AddressMap = {
   [baseSepolia.id]: '0x3a0e8c2a0a28f396a5e5b69edb2e630311f1517a',
-  [base.id]: '0x',
+  [base.id]: '0xd3e6775Ed9B7dC12B205C8E608Dc3767B9e5eFdA',
 };
 
 export const USERNAME_CB_ID_DISCOUNT_VALIDATORS: AddressMap = {
@@ -30,7 +30,7 @@ export const USERNAME_CB_DISCOUNT_VALIDATORS: AddressMap = {
 
 export const USERNAME_EA_DISCOUNT_VALIDATORS: AddressMap = {
   [baseSepolia.id]: '0x4944a8Ea7ec6fA356B159a2c363d83076B8f276D',
-  [base.id]: '0x',
+  [base.id]: '0x6E89d99643DB1223697C77A9F8B2Cb07E898e743',
 };
 
 export const USERNAME_1155_DISCOUNT_VALIDATORS: AddressMap = {

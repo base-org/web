@@ -25,7 +25,10 @@ type Memberships = {
   errors?: [];
 };
 
-export function useBaseGuild(address?: `0x${string}`): Record<GuildBadges, boolean> {
+export function useBaseGuild(address?: `0x${string}`): {
+  badges: Record<GuildBadges, boolean>;
+  empty: boolean;
+} {
   const query = useQuery<Memberships>({
     queryKey: ['guild'],
     queryFn: async () => {
@@ -48,17 +51,19 @@ export function useBaseGuild(address?: `0x${string}`): Record<GuildBadges, boole
     BASE_GRANTEE: false,
   };
 
+  let empty = true;
   if (query.data) {
     if (query.data.errors) {
-      return badges;
+      return { badges, empty: true };
     }
 
     for (const role of query.data.roles) {
       if (role.access && role.roleId in ROLE_ID_TO_BADGE) {
         badges[ROLE_ID_TO_BADGE[role.roleId]] = true;
+        empty = false;
       }
     }
   }
 
-  return badges;
+  return { badges, empty };
 }
