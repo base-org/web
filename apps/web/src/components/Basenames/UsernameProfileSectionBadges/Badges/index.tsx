@@ -4,28 +4,28 @@ import Image from 'next/image';
 import { GuildBadges } from 'apps/web/src/hooks/useBaseGuild';
 
 // image imports
-import verifiedIdentity from './verifiedIdentity.png';
-import verifiedCountry from './verifiedCountry.png';
-import verifiedCoinbaseOne from './verifiedCoinbaseOne.png';
-import baseBuilder from './baseBuilder.png';
-import baseGrantee from './baseGrantee.png';
-import baseInitiate from './baseInitiate.png';
-import baseLearnNewcomer from './baseLearnNewcomer.png';
-import buildathonParticipant from './buildathonParticipant.png';
-import buildathonWinner from './buildathonWinner.png';
+import verifiedIdentity from './images/verifiedIdentity.png';
+import verifiedCountry from './images/verifiedCountry.png';
+import verifiedCoinbaseOne from './images/verifiedCoinbaseOne.png';
+import baseBuilder from './images/baseBuilder.png';
+import baseGrantee from './images/baseGrantee.png';
+import baseInitiate from './images/baseInitiate.png';
+import baseLearnNewcomer from './images/baseLearnNewcomer.png';
+import buildathonParticipant from './images/buildathonParticipant.png';
+import buildathonWinner from './images/buildathonWinner.png';
 
 // gray image imports
-import verifiedIdentityGray from './verifiedIdentityGray.png';
-import verifiedCountryGray from './verifiedCountryGray.png';
-import verifiedCoinbaseOneGray from './verifiedCoinbaseOneGray.png';
-import baseBuilderGray from './baseBuilderGray.png';
-import baseGranteeGray from './baseGranteeGray.png';
-import baseInitiateGray from './baseInitiateGray.png';
-import baseLearnNewcomerGray from './baseLearnNewcomerGray.png';
-import buildathonParticipantGray from './buildathonParticipantGray.png';
-import buildathonWinnerGray from './buildathonWinnerGray.png';
+import verifiedIdentityGray from './images/verifiedIdentityGray.png';
+import verifiedCountryGray from './images/verifiedCountryGray.png';
+import verifiedCoinbaseOneGray from './images/verifiedCoinbaseOneGray.png';
+import baseBuilderGray from './images/baseBuilderGray.png';
+import baseGranteeGray from './images/baseGranteeGray.png';
+import baseInitiateGray from './images/baseInitiateGray.png';
+import baseLearnNewcomerGray from './images/baseLearnNewcomerGray.png';
+import buildathonParticipantGray from './images/buildathonParticipantGray.png';
+import buildathonWinnerGray from './images/buildathonWinnerGray.png';
 
-import talentScore from './talentScore.png';
+import talentScore from './images/talentScore.png';
 
 type BadgeNames = CoinbaseVerifications | GuildBadges;
 
