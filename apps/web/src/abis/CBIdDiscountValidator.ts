@@ -1,212 +1,108 @@
 export default [
   {
+    inputs: [
+      { internalType: 'address', name: 'owner_', type: 'address' },
+      { internalType: 'bytes32', name: 'root_', type: 'bytes32' },
+    ],
+    stateMutability: 'nonpayable',
     type: 'constructor',
-    inputs: [
-      {
-        name: 'owner_',
-        type: 'address',
-        internalType: 'address',
-      },
-      {
-        name: 'root_',
-        type: 'bytes32',
-        internalType: 'bytes32',
-      },
-    ],
-    stateMutability: 'nonpayable',
   },
+  { inputs: [], name: 'AlreadyInitialized', type: 'error' },
+  { inputs: [], name: 'NewOwnerIsZeroAddress', type: 'error' },
+  { inputs: [], name: 'NoHandoverRequest', type: 'error' },
+  { inputs: [], name: 'Unauthorized', type: 'error' },
   {
-    type: 'function',
-    name: 'cancelOwnershipHandover',
-    inputs: [],
-    outputs: [],
-    stateMutability: 'payable',
-  },
-  {
-    type: 'function',
-    name: 'completeOwnershipHandover',
-    inputs: [
-      {
-        name: 'pendingOwner',
-        type: 'address',
-        internalType: 'address',
-      },
-    ],
-    outputs: [],
-    stateMutability: 'payable',
-  },
-  {
-    type: 'function',
-    name: 'isValidDiscountRegistration',
-    inputs: [
-      {
-        name: 'claimer',
-        type: 'address',
-        internalType: 'address',
-      },
-      {
-        name: 'validationData',
-        type: 'bytes',
-        internalType: 'bytes',
-      },
-    ],
-    outputs: [
-      {
-        name: '',
-        type: 'bool',
-        internalType: 'bool',
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    name: 'owner',
-    inputs: [],
-    outputs: [
-      {
-        name: 'result',
-        type: 'address',
-        internalType: 'address',
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    name: 'ownershipHandoverExpiresAt',
-    inputs: [
-      {
-        name: 'pendingOwner',
-        type: 'address',
-        internalType: 'address',
-      },
-    ],
-    outputs: [
-      {
-        name: 'result',
-        type: 'uint256',
-        internalType: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    name: 'renounceOwnership',
-    inputs: [],
-    outputs: [],
-    stateMutability: 'payable',
-  },
-  {
-    type: 'function',
-    name: 'requestOwnershipHandover',
-    inputs: [],
-    outputs: [],
-    stateMutability: 'payable',
-  },
-  {
-    type: 'function',
-    name: 'root',
-    inputs: [],
-    outputs: [
-      {
-        name: '',
-        type: 'bytes32',
-        internalType: 'bytes32',
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    name: 'setRoot',
-    inputs: [
-      {
-        name: 'root_',
-        type: 'bytes32',
-        internalType: 'bytes32',
-      },
-    ],
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    name: 'transferOwnership',
-    inputs: [
-      {
-        name: 'newOwner',
-        type: 'address',
-        internalType: 'address',
-      },
-    ],
-    outputs: [],
-    stateMutability: 'payable',
-  },
-  {
-    type: 'event',
+    anonymous: false,
+    inputs: [{ indexed: true, internalType: 'address', name: 'pendingOwner', type: 'address' }],
     name: 'OwnershipHandoverCanceled',
-    inputs: [
-      {
-        name: 'pendingOwner',
-        type: 'address',
-        indexed: true,
-        internalType: 'address',
-      },
-    ],
-    anonymous: false,
+    type: 'event',
   },
   {
-    type: 'event',
+    anonymous: false,
+    inputs: [{ indexed: true, internalType: 'address', name: 'pendingOwner', type: 'address' }],
     name: 'OwnershipHandoverRequested',
-    inputs: [
-      {
-        name: 'pendingOwner',
-        type: 'address',
-        indexed: true,
-        internalType: 'address',
-      },
-    ],
-    anonymous: false,
-  },
-  {
     type: 'event',
-    name: 'OwnershipTransferred',
-    inputs: [
-      {
-        name: 'oldOwner',
-        type: 'address',
-        indexed: true,
-        internalType: 'address',
-      },
-      {
-        name: 'newOwner',
-        type: 'address',
-        indexed: true,
-        internalType: 'address',
-      },
-    ],
+  },
+  {
     anonymous: false,
+    inputs: [
+      { indexed: true, internalType: 'address', name: 'oldOwner', type: 'address' },
+      { indexed: true, internalType: 'address', name: 'newOwner', type: 'address' },
+    ],
+    name: 'OwnershipTransferred',
+    type: 'event',
   },
   {
-    type: 'error',
-    name: 'AlreadyInitialized',
     inputs: [],
+    name: 'cancelOwnershipHandover',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function',
   },
   {
-    type: 'error',
-    name: 'NewOwnerIsZeroAddress',
-    inputs: [],
+    inputs: [{ internalType: 'address', name: 'pendingOwner', type: 'address' }],
+    name: 'completeOwnershipHandover',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function',
   },
   {
-    type: 'error',
-    name: 'NoHandoverRequest',
-    inputs: [],
+    inputs: [
+      { internalType: 'address', name: 'claimer', type: 'address' },
+      { internalType: 'bytes', name: 'validationData', type: 'bytes' },
+    ],
+    name: 'isValidDiscountRegistration',
+    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    type: 'error',
-    name: 'Unauthorized',
     inputs: [],
+    name: 'owner',
+    outputs: [{ internalType: 'address', name: 'result', type: 'address' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: 'pendingOwner', type: 'address' }],
+    name: 'ownershipHandoverExpiresAt',
+    outputs: [{ internalType: 'uint256', name: 'result', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'renounceOwnership',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'requestOwnershipHandover',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'root',
+    outputs: [{ internalType: 'bytes32', name: '', type: 'bytes32' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'bytes32', name: 'root_', type: 'bytes32' }],
+    name: 'setRoot',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: 'newOwner', type: 'address' }],
+    name: 'transferOwnership',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function',
   },
 ] as const;
