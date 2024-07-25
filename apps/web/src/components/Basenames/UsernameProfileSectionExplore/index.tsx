@@ -110,10 +110,13 @@ function ExploreLink(
     usernameProfileSectionExploreLink: UsernameProfileSectionExploreLink,
   ) => void,
 ) {
-  const onClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    onCardClick(event, usernameProfileSectionExploreLink);
-  }, []);
+  const onClick = useCallback(
+    (event: React.MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      onCardClick(event, usernameProfileSectionExploreLink);
+    },
+    [onCardClick, usernameProfileSectionExploreLink],
+  );
   return (
     <li key={usernameProfileSectionExploreLink.title} className="inline-block w-full">
       <Link
