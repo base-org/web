@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
+import { useColorMode } from '@docusaurus/theme-common';
 
 import DefaultNavbarItem from '@theme/NavbarItem/DefaultNavbarItem';
 import DropdownNavbarItem from '@theme/NavbarItem/DropdownNavbarItem';
@@ -174,30 +175,39 @@ export const CustomNavbarLink = (props) => {
 };
 
 export const CustomDropdownLink = (props) => {
+  const [iconColor, setIconColor] = useState('');
+  const { colorMode } = useColorMode();
+
+  useEffect(() => {
+    setIconColor(
+      colorMode === 'dark' ? 'black' : 'white'
+    )
+  }, [colorMode]);
+
   return (
     <li>
-      <div className="dropdown__link__container">
-        {props.icon && <Icon name={props.icon} width="24" height="24" />}
-        <a
-          href={props.to}
-          target={props.target ?? '_self'}
-          className="dropdown__link"
-          style={{ cursor: 'pointer' }}
-          onClick={() => {
-            logEvent(
-              props.eventLabel,
-              {
-                action: ActionType.click,
-                componentType: ComponentType.link,
-                context: props.eventContext,
-              },
-              AnalyticsEventImportance.high,
-            );
-          }}
-        >
-          {props.label}
-        </a>
-      </div>
+      <a
+        href={props.to}
+        target={props.target ?? '_self'}
+        className="dropdown__link"
+        style={{ cursor: 'pointer' }}
+        onClick={() => {
+          logEvent(
+            props.eventLabel,
+            {
+              action: ActionType.click,
+              componentType: ComponentType.link,
+              context: props.eventContext,
+            },
+            AnalyticsEventImportance.high,
+          );
+        }}
+      >
+        <div className="dropdown__link--content">
+          {props.icon && <Icon name={props.icon} width="24" height="24" color={iconColor} />}
+          <span>{props.label}</span>
+        </div>
+      </a>
     </li>
   );
 };
