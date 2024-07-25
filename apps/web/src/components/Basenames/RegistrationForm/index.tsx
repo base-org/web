@@ -1,10 +1,13 @@
 import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
-import RegistrationLearnMoreModal from 'apps/web/src/components/Basenames/RegistrationLearnMoreModal';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
+import RegistrationLearnMoreModal from 'apps/web/src/components/Basenames/RegistrationLearnMoreModal';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import TransactionError from 'apps/web/src/components/TransactionError';
+import TransactionStatus from 'apps/web/src/components/TransactionStatus';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
 import {
   useDiscountedNameRegistrationPrice,
@@ -14,9 +17,7 @@ import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallb
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useState } from 'react';
 import { formatEther } from 'viem';
-import TransactionError from 'apps/web/src/components/TransactionError';
-import TransactionStatus from 'apps/web/src/components/TransactionStatus';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+
 function formatEtherPrice(price?: bigint) {
   if (price === undefined) {
     return '...';
@@ -117,8 +118,6 @@ export default function RegistrationForm() {
   const usdPrice =
     price !== undefined && ethUsdPrice !== undefined ? formatUsdPrice(price, ethUsdPrice) : '--.--';
   const nameIsFree = price === 0n;
-
-  const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
 
   return (
     <>
@@ -224,29 +223,20 @@ export default function RegistrationForm() {
             chainId={basenameChain.id}
           />
         )}
-        {!isEarlyAccess && (
-          <div className="mt-6 flex w-full justify-center">
-            <p className="text mr-2 text-center font-bold uppercase text-[#5B616E]">
-              {nameIsFree
-                ? "You've qualified for a free name! "
-                : 'Unlock your username for free! '}
-            </p>
-            <button
-              type="button"
-              className="text-line font-bold uppercase underline"
-              onClick={toggleLearnMoreModal}
-            >
-              Learn more
-            </button>
-          </div>
-        )}
+        <div className="mt-6 flex w-full justify-center">
+          <p className="text mr-2 text-center font-bold uppercase text-[#5B616E]">
+            {nameIsFree ? "You've qualified for a free name! " : 'Unlock your username for free! '}
+          </p>
+          <button
+            type="button"
+            className="text-line font-bold uppercase underline"
+            onClick={toggleLearnMoreModal}
+          >
+            Learn more
+          </button>
+        </div>
       </div>
-      {!isEarlyAccess && (
-        <RegistrationLearnMoreModal
-          isOpen={learnMoreModalOpen}
-          toggleModal={toggleLearnMoreModal}
-        />
-      )}
+      <RegistrationLearnMoreModal isOpen={learnMoreModalOpen} toggleModal={toggleLearnMoreModal} />
     </>
   );
 }

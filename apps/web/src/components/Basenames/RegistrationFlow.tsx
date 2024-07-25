@@ -20,6 +20,9 @@ import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
+import { ExclamationCircleIcon } from '@heroicons/react/16/solid';
+import { InformationCircleIcon } from '@heroicons/react/16/solid';
+import { useAccount } from 'wagmi';
 
 /*
 test addresses w/ different verifications
@@ -31,6 +34,7 @@ test addresses w/ different verifications
 export const claimQueryKey = 'claim';
 
 export function RegistrationFlow() {
+  const { isConnected } = useAccount();
   const { logEventWithContext } = useAnalytics();
   const searchParams = useSearchParams();
   const { discount, registrationStep, searchInputFocused, selectedName, setSelectedName } =
@@ -196,7 +200,7 @@ export function RegistrationFlow() {
           appear
           show={isClaim}
           className={classNames(
-            'relative z-40 mt-20 transition-opacity',
+            'relative z-40 transition-opacity',
             'mx-auto w-full max-w-[50rem]',
             registrationTransitionDuration,
           )}
@@ -206,10 +210,20 @@ export function RegistrationFlow() {
           leaveTo="opacity-0"
         >
           {!isEarlyAccess || (isEarlyAccess && discount) ? (
-            <RegistrationForm />
+            <div className="mt-20">
+              <RegistrationForm />
+            </div>
+          ) : isConnected ? (
+            <div className="z-10 mt-8 flex flex-row items-center justify-center ">
+              <ExclamationCircleIcon width={12} height={12} className="fill-state-n-hovered" />
+              <p className="ml-2 text-state-n-hovered">
+                The connected wallet is not eligible for early access
+              </p>
+            </div>
           ) : (
-            <div className="z-10 flex flex-row items-center justify-center rounded-2xl bg-[#F7F7F7] p-8 text-gray-60 shadow-xl">
-              The connected wallet is not eligible for early access
+            <div className="z-10 mt-8 flex flex-row items-center justify-center ">
+              <InformationCircleIcon width={12} height={12} className="fill-gray-40" />
+              <p className="ml-2 text-gray-40">Connect a wallet to register a name</p>
             </div>
           )}
         </Transition>
