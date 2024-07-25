@@ -170,9 +170,10 @@ export default function RegistrationProfileForm() {
             }
           })
           .catch((error) => {
-            logEventWithContext('update_text_records_transaction_canceled', ActionType.click, {
-              error: JSON.stringify(error),
-            });
+            console.log(error);
+            // logEventWithContext('update_text_records_transaction_canceled', ActionType.click, {
+            //   error: JSON.stringify(error),
+            // });
           });
       }
 

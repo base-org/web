@@ -1,215 +1,87 @@
 export default [
   {
     inputs: [
-      {
-        internalType: 'contract BaseRegistrar',
-        name: 'base_',
-        type: 'address',
-      },
-      {
-        internalType: 'contract IPriceOracle',
-        name: 'prices_',
-        type: 'address',
-      },
-      {
-        internalType: 'contract IReverseRegistrar',
-        name: 'reverseRegistrar_',
-        type: 'address',
-      },
-      {
-        internalType: 'address',
-        name: 'owner_',
-        type: 'address',
-      },
-      {
-        internalType: 'bytes32',
-        name: 'rootNode_',
-        type: 'bytes32',
-      },
-      {
-        internalType: 'string',
-        name: 'rootName_',
-        type: 'string',
-      },
+      { internalType: 'contract BaseRegistrar', name: 'base_', type: 'address' },
+      { internalType: 'contract IPriceOracle', name: 'prices_', type: 'address' },
+      { internalType: 'contract IReverseRegistrar', name: 'reverseRegistrar_', type: 'address' },
+      { internalType: 'address', name: 'owner_', type: 'address' },
+      { internalType: 'bytes32', name: 'rootNode_', type: 'bytes32' },
+      { internalType: 'string', name: 'rootName_', type: 'string' },
+      { internalType: 'address', name: 'paymentReceiver_', type: 'address' },
     ],
     stateMutability: 'nonpayable',
     type: 'constructor',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'target',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'target', type: 'address' }],
     name: 'AddressEmptyCode',
     type: 'error',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'account',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'account', type: 'address' }],
     name: 'AddressInsufficientBalance',
     type: 'error',
   },
+  { inputs: [], name: 'AlreadyInitialized', type: 'error' },
   {
-    inputs: [],
-    name: 'AlreadyInitialized',
-    type: 'error',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'sender',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'sender', type: 'address' }],
     name: 'AlreadyRegisteredWithDiscount',
     type: 'error',
   },
   {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: 'duration',
-        type: 'uint256',
-      },
-    ],
+    inputs: [{ internalType: 'uint256', name: 'duration', type: 'uint256' }],
     name: 'DurationTooShort',
     type: 'error',
   },
+  { inputs: [], name: 'FailedInnerCall', type: 'error' },
   {
-    inputs: [],
-    name: 'FailedInnerCall',
-    type: 'error',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'bytes32',
-        name: 'key',
-        type: 'bytes32',
-      },
-    ],
+    inputs: [{ internalType: 'bytes32', name: 'key', type: 'bytes32' }],
     name: 'InactiveDiscount',
     type: 'error',
   },
-  {
-    inputs: [],
-    name: 'InsufficientValue',
-    type: 'error',
-  },
+  { inputs: [], name: 'InsufficientValue', type: 'error' },
   {
     inputs: [
-      {
-        internalType: 'bytes32',
-        name: 'key',
-        type: 'bytes32',
-      },
-      {
-        internalType: 'bytes',
-        name: 'data',
-        type: 'bytes',
-      },
+      { internalType: 'bytes32', name: 'key', type: 'bytes32' },
+      { internalType: 'bytes', name: 'data', type: 'bytes' },
     ],
     name: 'InvalidDiscount',
     type: 'error',
   },
   {
-    inputs: [
-      {
-        internalType: 'bytes32',
-        name: 'key',
-        type: 'bytes32',
-      },
-    ],
+    inputs: [{ internalType: 'bytes32', name: 'key', type: 'bytes32' }],
     name: 'InvalidDiscountAmount',
     type: 'error',
   },
+  { inputs: [], name: 'InvalidPaymentReceiver', type: 'error' },
   {
     inputs: [
-      {
-        internalType: 'bytes32',
-        name: 'key',
-        type: 'bytes32',
-      },
-      {
-        internalType: 'address',
-        name: 'validator',
-        type: 'address',
-      },
+      { internalType: 'bytes32', name: 'key', type: 'bytes32' },
+      { internalType: 'address', name: 'validator', type: 'address' },
     ],
     name: 'InvalidValidator',
     type: 'error',
   },
   {
-    inputs: [
-      {
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-    ],
+    inputs: [{ internalType: 'string', name: 'name', type: 'string' }],
     name: 'NameNotAvailable',
     type: 'error',
   },
+  { inputs: [], name: 'NewOwnerIsZeroAddress', type: 'error' },
+  { inputs: [], name: 'NoHandoverRequest', type: 'error' },
+  { inputs: [], name: 'ResolverRequiredWhenDataSupplied', type: 'error' },
   {
-    inputs: [],
-    name: 'NewOwnerIsZeroAddress',
-    type: 'error',
-  },
-  {
-    inputs: [],
-    name: 'NoHandoverRequest',
-    type: 'error',
-  },
-  {
-    inputs: [],
-    name: 'ResolverRequiredWhenDataSupplied',
-    type: 'error',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'token',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'token', type: 'address' }],
     name: 'SafeERC20FailedOperation',
     type: 'error',
   },
-  {
-    inputs: [],
-    name: 'TransferFailed',
-    type: 'error',
-  },
-  {
-    inputs: [],
-    name: 'Unauthorized',
-    type: 'error',
-  },
+  { inputs: [], name: 'TransferFailed', type: 'error' },
+  { inputs: [], name: 'Unauthorized', type: 'error' },
   {
     anonymous: false,
     inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'registrant',
-        type: 'address',
-      },
-      {
-        indexed: true,
-        internalType: 'bytes32',
-        name: 'discountKey',
-        type: 'bytes32',
-      },
+      { indexed: true, internalType: 'address', name: 'registrant', type: 'address' },
+      { indexed: true, internalType: 'bytes32', name: 'discountKey', type: 'bytes32' },
     ],
     name: 'DiscountApplied',
     type: 'event',
@@ -217,37 +89,16 @@ export default [
   {
     anonymous: false,
     inputs: [
-      {
-        indexed: true,
-        internalType: 'bytes32',
-        name: 'discountKey',
-        type: 'bytes32',
-      },
+      { indexed: true, internalType: 'bytes32', name: 'discountKey', type: 'bytes32' },
       {
         components: [
-          {
-            internalType: 'bool',
-            name: 'active',
-            type: 'bool',
-          },
-          {
-            internalType: 'address',
-            name: 'discountValidator',
-            type: 'address',
-          },
-          {
-            internalType: 'bytes32',
-            name: 'key',
-            type: 'bytes32',
-          },
-          {
-            internalType: 'uint256',
-            name: 'discount',
-            type: 'uint256',
-          },
+          { internalType: 'bool', name: 'active', type: 'bool' },
+          { internalType: 'address', name: 'discountValidator', type: 'address' },
+          { internalType: 'bytes32', name: 'key', type: 'bytes32' },
+          { internalType: 'uint256', name: 'discount', type: 'uint256' },
         ],
         indexed: false,
-        internalType: 'struct RegistrarController.DiscountDetails',
+        internalType: 'struct EARegistrarController.DiscountDetails',
         name: 'details',
         type: 'tuple',
       },
@@ -258,18 +109,8 @@ export default [
   {
     anonymous: false,
     inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'payee',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'uint256',
-        name: 'price',
-        type: 'uint256',
-      },
+      { indexed: true, internalType: 'address', name: 'payee', type: 'address' },
+      { indexed: false, internalType: 'uint256', name: 'price', type: 'uint256' },
     ],
     name: 'ETHPaymentProcessed',
     type: 'event',
@@ -277,100 +118,31 @@ export default [
   {
     anonymous: false,
     inputs: [
-      {
-        indexed: false,
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-      {
-        indexed: true,
-        internalType: 'bytes32',
-        name: 'label',
-        type: 'bytes32',
-      },
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'owner',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'uint256',
-        name: 'expires',
-        type: 'uint256',
-      },
+      { indexed: false, internalType: 'string', name: 'name', type: 'string' },
+      { indexed: true, internalType: 'bytes32', name: 'label', type: 'bytes32' },
+      { indexed: true, internalType: 'address', name: 'owner', type: 'address' },
+      { indexed: false, internalType: 'uint256', name: 'expires', type: 'uint256' },
     ],
     name: 'NameRegistered',
     type: 'event',
   },
   {
     anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-      {
-        indexed: true,
-        internalType: 'bytes32',
-        name: 'label',
-        type: 'bytes32',
-      },
-      {
-        indexed: false,
-        internalType: 'uint256',
-        name: 'expires',
-        type: 'uint256',
-      },
-    ],
-    name: 'NameRenewed',
-    type: 'event',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'pendingOwner',
-        type: 'address',
-      },
-    ],
+    inputs: [{ indexed: true, internalType: 'address', name: 'pendingOwner', type: 'address' }],
     name: 'OwnershipHandoverCanceled',
     type: 'event',
   },
   {
     anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'pendingOwner',
-        type: 'address',
-      },
-    ],
+    inputs: [{ indexed: true, internalType: 'address', name: 'pendingOwner', type: 'address' }],
     name: 'OwnershipHandoverRequested',
     type: 'event',
   },
   {
     anonymous: false,
     inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'oldOwner',
-        type: 'address',
-      },
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'newOwner',
-        type: 'address',
-      },
+      { indexed: true, internalType: 'address', name: 'oldOwner', type: 'address' },
+      { indexed: true, internalType: 'address', name: 'newOwner', type: 'address' },
     ],
     name: 'OwnershipTransferred',
     type: 'event',
@@ -378,25 +150,21 @@ export default [
   {
     anonymous: false,
     inputs: [
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'newPrices',
-        type: 'address',
-      },
+      { indexed: false, internalType: 'address', name: 'newPaymentReceiver', type: 'address' },
     ],
+    name: 'PaymentReceiverUpdated',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [{ indexed: false, internalType: 'address', name: 'newPrices', type: 'address' }],
     name: 'PriceOracleUpdated',
     type: 'event',
   },
   {
     anonymous: false,
     inputs: [
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'newReverseRegistrar',
-        type: 'address',
-      },
+      { indexed: false, internalType: 'address', name: 'newReverseRegistrar', type: 'address' },
     ],
     name: 'ReverseRegistrarUpdated',
     type: 'event',
@@ -404,45 +172,21 @@ export default [
   {
     inputs: [],
     name: 'MIN_NAME_LENGTH',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'MIN_REGISTRATION_DURATION',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-    ],
+    inputs: [{ internalType: 'string', name: 'name', type: 'string' }],
     name: 'available',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: '',
-        type: 'bool',
-      },
-    ],
+    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
     stateMutability: 'view',
     type: 'function',
   },
@@ -454,13 +198,7 @@ export default [
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'pendingOwner',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'pendingOwner', type: 'address' }],
     name: 'completeOwnershipHandover',
     outputs: [],
     stateMutability: 'payable',
@@ -470,51 +208,19 @@ export default [
     inputs: [
       {
         components: [
-          {
-            internalType: 'string',
-            name: 'name',
-            type: 'string',
-          },
-          {
-            internalType: 'address',
-            name: 'owner',
-            type: 'address',
-          },
-          {
-            internalType: 'uint256',
-            name: 'duration',
-            type: 'uint256',
-          },
-          {
-            internalType: 'address',
-            name: 'resolver',
-            type: 'address',
-          },
-          {
-            internalType: 'bytes[]',
-            name: 'data',
-            type: 'bytes[]',
-          },
-          {
-            internalType: 'bool',
-            name: 'reverseRecord',
-            type: 'bool',
-          },
+          { internalType: 'string', name: 'name', type: 'string' },
+          { internalType: 'address', name: 'owner', type: 'address' },
+          { internalType: 'uint256', name: 'duration', type: 'uint256' },
+          { internalType: 'address', name: 'resolver', type: 'address' },
+          { internalType: 'bytes[]', name: 'data', type: 'bytes[]' },
+          { internalType: 'bool', name: 'reverseRecord', type: 'bool' },
         ],
-        internalType: 'struct RegistrarController.RegisterRequest',
+        internalType: 'struct EARegistrarController.RegisterRequest',
         name: 'request',
         type: 'tuple',
       },
-      {
-        internalType: 'bytes32',
-        name: 'discountKey',
-        type: 'bytes32',
-      },
-      {
-        internalType: 'bytes',
-        name: 'validationData',
-        type: 'bytes',
-      },
+      { internalType: 'bytes32', name: 'discountKey', type: 'bytes32' },
+      { internalType: 'bytes', name: 'validationData', type: 'bytes' },
     ],
     name: 'discountedRegister',
     outputs: [],
@@ -523,82 +229,30 @@ export default [
   },
   {
     inputs: [
-      {
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-      {
-        internalType: 'uint256',
-        name: 'duration',
-        type: 'uint256',
-      },
-      {
-        internalType: 'bytes32',
-        name: 'discountKey',
-        type: 'bytes32',
-      },
+      { internalType: 'string', name: 'name', type: 'string' },
+      { internalType: 'uint256', name: 'duration', type: 'uint256' },
+      { internalType: 'bytes32', name: 'discountKey', type: 'bytes32' },
     ],
     name: 'discountedRegisterPrice',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: 'price',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: 'price', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'registrant',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'registrant', type: 'address' }],
     name: 'discountedRegistrants',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'hasRegisteredWithDiscount',
-        type: 'bool',
-      },
-    ],
+    outputs: [{ internalType: 'bool', name: 'hasRegisteredWithDiscount', type: 'bool' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'bytes32',
-        name: 'key',
-        type: 'bytes32',
-      },
-    ],
+    inputs: [{ internalType: 'bytes32', name: 'key', type: 'bytes32' }],
     name: 'discounts',
     outputs: [
-      {
-        internalType: 'bool',
-        name: 'active',
-        type: 'bool',
-      },
-      {
-        internalType: 'address',
-        name: 'discountValidator',
-        type: 'address',
-      },
-      {
-        internalType: 'bytes32',
-        name: 'key',
-        type: 'bytes32',
-      },
-      {
-        internalType: 'uint256',
-        name: 'discount',
-        type: 'uint256',
-      },
+      { internalType: 'bool', name: 'active', type: 'bool' },
+      { internalType: 'address', name: 'discountValidator', type: 'address' },
+      { internalType: 'bytes32', name: 'key', type: 'bytes32' },
+      { internalType: 'uint256', name: 'discount', type: 'uint256' },
     ],
     stateMutability: 'view',
     type: 'function',
@@ -609,28 +263,12 @@ export default [
     outputs: [
       {
         components: [
-          {
-            internalType: 'bool',
-            name: 'active',
-            type: 'bool',
-          },
-          {
-            internalType: 'address',
-            name: 'discountValidator',
-            type: 'address',
-          },
-          {
-            internalType: 'bytes32',
-            name: 'key',
-            type: 'bytes32',
-          },
-          {
-            internalType: 'uint256',
-            name: 'discount',
-            type: 'uint256',
-          },
+          { internalType: 'bool', name: 'active', type: 'bool' },
+          { internalType: 'address', name: 'discountValidator', type: 'address' },
+          { internalType: 'bytes32', name: 'key', type: 'bytes32' },
+          { internalType: 'uint256', name: 'discount', type: 'uint256' },
         ],
-        internalType: 'struct RegistrarController.DiscountDetails[]',
+        internalType: 'struct EARegistrarController.DiscountDetails[]',
         name: '',
         type: 'tuple[]',
       },
@@ -639,86 +277,45 @@ export default [
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address[]',
-        name: 'addresses',
-        type: 'address[]',
-      },
-    ],
+    inputs: [{ internalType: 'address[]', name: 'addresses', type: 'address[]' }],
     name: 'hasRegisteredWithDiscount',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: '',
-        type: 'bool',
-      },
-    ],
+    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'owner',
-    outputs: [
-      {
-        internalType: 'address',
-        name: 'result',
-        type: 'address',
-      },
-    ],
+    outputs: [{ internalType: 'address', name: 'result', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'pendingOwner',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'pendingOwner', type: 'address' }],
     name: 'ownershipHandoverExpiresAt',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: 'result',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: 'result', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'paymentReceiver',
+    outputs: [{ internalType: 'address', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'prices',
-    outputs: [
-      {
-        internalType: 'contract IPriceOracle',
-        name: '',
-        type: 'address',
-      },
-    ],
+    outputs: [{ internalType: 'contract IPriceOracle', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [
-      {
-        internalType: 'address',
-        name: '_token',
-        type: 'address',
-      },
-      {
-        internalType: 'address',
-        name: '_to',
-        type: 'address',
-      },
-      {
-        internalType: 'uint256',
-        name: '_amount',
-        type: 'uint256',
-      },
+      { internalType: 'address', name: '_token', type: 'address' },
+      { internalType: 'address', name: '_to', type: 'address' },
+      { internalType: 'uint256', name: '_amount', type: 'uint256' },
     ],
     name: 'recoverFunds',
     outputs: [],
@@ -727,89 +324,12 @@ export default [
   },
   {
     inputs: [
-      {
-        components: [
-          {
-            internalType: 'string',
-            name: 'name',
-            type: 'string',
-          },
-          {
-            internalType: 'address',
-            name: 'owner',
-            type: 'address',
-          },
-          {
-            internalType: 'uint256',
-            name: 'duration',
-            type: 'uint256',
-          },
-          {
-            internalType: 'address',
-            name: 'resolver',
-            type: 'address',
-          },
-          {
-            internalType: 'bytes[]',
-            name: 'data',
-            type: 'bytes[]',
-          },
-          {
-            internalType: 'bool',
-            name: 'reverseRecord',
-            type: 'bool',
-          },
-        ],
-        internalType: 'struct RegistrarController.RegisterRequest',
-        name: 'request',
-        type: 'tuple',
-      },
-    ],
-    name: 'register',
-    outputs: [],
-    stateMutability: 'payable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-      {
-        internalType: 'uint256',
-        name: 'duration',
-        type: 'uint256',
-      },
+      { internalType: 'string', name: 'name', type: 'string' },
+      { internalType: 'uint256', name: 'duration', type: 'uint256' },
     ],
     name: 'registerPrice',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-      {
-        internalType: 'uint256',
-        name: 'duration',
-        type: 'uint256',
-      },
-    ],
-    name: 'renew',
-    outputs: [],
-    stateMutability: 'payable',
     type: 'function',
   },
   {
@@ -821,31 +341,15 @@ export default [
   },
   {
     inputs: [
-      {
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-      {
-        internalType: 'uint256',
-        name: 'duration',
-        type: 'uint256',
-      },
+      { internalType: 'string', name: 'name', type: 'string' },
+      { internalType: 'uint256', name: 'duration', type: 'uint256' },
     ],
     name: 'rentPrice',
     outputs: [
       {
         components: [
-          {
-            internalType: 'uint256',
-            name: 'base',
-            type: 'uint256',
-          },
-          {
-            internalType: 'uint256',
-            name: 'premium',
-            type: 'uint256',
-          },
+          { internalType: 'uint256', name: 'base', type: 'uint256' },
+          { internalType: 'uint256', name: 'premium', type: 'uint256' },
         ],
         internalType: 'struct IPriceOracle.Price',
         name: 'price',
@@ -865,39 +369,21 @@ export default [
   {
     inputs: [],
     name: 'reverseRegistrar',
-    outputs: [
-      {
-        internalType: 'contract IReverseRegistrar',
-        name: '',
-        type: 'address',
-      },
-    ],
+    outputs: [{ internalType: 'contract IReverseRegistrar', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'rootName',
-    outputs: [
-      {
-        internalType: 'string',
-        name: '',
-        type: 'string',
-      },
-    ],
+    outputs: [{ internalType: 'string', name: '', type: 'string' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'rootNode',
-    outputs: [
-      {
-        internalType: 'bytes32',
-        name: '',
-        type: 'bytes32',
-      },
-    ],
+    outputs: [{ internalType: 'bytes32', name: '', type: 'bytes32' }],
     stateMutability: 'view',
     type: 'function',
   },
@@ -905,28 +391,12 @@ export default [
     inputs: [
       {
         components: [
-          {
-            internalType: 'bool',
-            name: 'active',
-            type: 'bool',
-          },
-          {
-            internalType: 'address',
-            name: 'discountValidator',
-            type: 'address',
-          },
-          {
-            internalType: 'bytes32',
-            name: 'key',
-            type: 'bytes32',
-          },
-          {
-            internalType: 'uint256',
-            name: 'discount',
-            type: 'uint256',
-          },
+          { internalType: 'bool', name: 'active', type: 'bool' },
+          { internalType: 'address', name: 'discountValidator', type: 'address' },
+          { internalType: 'bytes32', name: 'key', type: 'bytes32' },
+          { internalType: 'uint256', name: 'discount', type: 'uint256' },
         ],
-        internalType: 'struct RegistrarController.DiscountDetails',
+        internalType: 'struct EARegistrarController.DiscountDetails',
         name: 'details',
         type: 'tuple',
       },
@@ -937,68 +407,39 @@ export default [
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'contract IPriceOracle',
-        name: 'prices_',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'paymentReceiver_', type: 'address' }],
+    name: 'setPaymentReceiver',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'contract IPriceOracle', name: 'prices_', type: 'address' }],
     name: 'setPriceOracle',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'contract IReverseRegistrar',
-        name: 'reverse_',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'contract IReverseRegistrar', name: 'reverse_', type: 'address' }],
     name: 'setReverseRegistrar',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'newOwner',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'newOwner', type: 'address' }],
     name: 'transferOwnership',
     outputs: [],
     stateMutability: 'payable',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-    ],
+    inputs: [{ internalType: 'string', name: 'name', type: 'string' }],
     name: 'valid',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: '',
-        type: 'bool',
-      },
-    ],
+    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
     stateMutability: 'pure',
     type: 'function',
   },
-  {
-    inputs: [],
-    name: 'withdrawETH',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
+  { inputs: [], name: 'withdrawETH', outputs: [], stateMutability: 'nonpayable', type: 'function' },
 ] as const;

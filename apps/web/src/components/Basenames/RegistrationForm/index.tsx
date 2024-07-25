@@ -96,7 +96,7 @@ export default function RegistrationForm() {
   if (error) {
     // todo: handle this error in the UI
     //   it is likely the user doesn't have sufficient funds to register and they've failed simulation
-    console.error('error in registration handler', error);
+    console.error(error);
   }
 
   useEffect(() => {

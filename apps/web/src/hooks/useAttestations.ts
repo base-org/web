@@ -203,3 +203,64 @@ export function useCheckCB1Attestations() {
   }
   return { data: null, loading: loading || isLoading, error };
 }
+
+export function useCheckEAAttestations(): AttestationHookReturns {
+  const { address } = useAccount();
+  const [EAProofResponse, setEAProofResponse] = useState<CBIDProofResponse | null>(null);
+
+  useEffect(() => {
+    async function checkCBIDAttestations(a: string) {
+      try {
+        const params = new URLSearchParams();
+        params.append('address', a);
+        params.append('chain', USERNAME_CHAIN_ID.toString());
+        const response = await fetch(`/api/proofs/usernamesEarlyAccess?${params}`);
+        if (response.ok) {
+          const result = (await response.json()) as CBIDProofResponse;
+
+          setEAProofResponse(result);
+        }
+      } catch (e) {
+        console.error('Error checking CB.ID attestation:', e);
+      }
+    }
+
+    if (address) {
+      checkCBIDAttestations(address).catch(console.error);
+    }
+  }, [address]);
+
+  const encodedProof = useMemo(
+    () =>
+      EAProofResponse?.proofs
+        ? encodeAbiParameters([{ type: 'bytes32[]' }], [EAProofResponse?.proofs])
+        : '0x0',
+    [EAProofResponse?.proofs],
+  );
+  const readContractArgs = useMemo(() => {
+    if (!EAProofResponse?.proofs || !address) {
+      return {};
+    }
+    return {
+      address: EAProofResponse?.discountValidatorAddress,
+      abi: CBIDValidatorABI,
+      functionName: 'isValidDiscountRegistration',
+      args: [address, encodedProof],
+    };
+  }, [address, EAProofResponse?.discountValidatorAddress, EAProofResponse?.proofs, encodedProof]);
+
+  const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
+
+  if (isValid && EAProofResponse && address) {
+    return {
+      data: {
+        discountValidatorAddress: EAProofResponse.discountValidatorAddress,
+        discount: Discount.CBID,
+        validationData: encodedProof,
+      },
+      loading: false,
+      error: null,
+    };
+  }
+  return { data: null, loading: isLoading, error };
+}

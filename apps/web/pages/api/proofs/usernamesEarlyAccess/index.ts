@@ -5,10 +5,7 @@ import {
   ProofTableNamespace,
 } from 'apps/web/src/utils/proofs';
 import { Address, isAddress } from 'viem';
-import {
-  isSupportedChain,
-  USERNAME_CB_ID_DISCOUNT_VALIDATOR,
-} from 'apps/web/src/addresses/usernames';
+import { isSupportedChain, USERNAME_EA_DISCOUNT_VALIDATOR } from 'apps/web/src/addresses/usernames';
 
 export type CBIDProofResponse = {
   discountValidatorAddress: Address;
@@ -47,6 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const hasPreviouslyRegistered = await hasRegisteredWithDiscount([address]);
+
     // if any linked address registered previously return an error
     if (hasPreviouslyRegistered) {
       return res.status(400).json({ error: 'This address has already claimed a username.' });
@@ -55,6 +53,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       address,
       ProofTableNamespace.UsernamesEarlyAccess,
     );
+
     const proofs = content?.proofs ? (JSON.parse(content.proofs) as `0x${string}`[]) : [];
     if (proofs.length === 0) {
       return res.status(404).json({ error: 'address is not eligible for a cbid discount' });
@@ -62,7 +61,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const responseData: CBIDProofResponse = {
       ...content,
       proofs,
-      discountValidatorAddress: USERNAME_CB_ID_DISCOUNT_VALIDATOR,
+      discountValidatorAddress: USERNAME_EA_DISCOUNT_VALIDATOR,
     };
     return res.status(200).json(responseData);
   } catch (error: unknown) {

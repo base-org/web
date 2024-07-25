@@ -21,22 +21,15 @@ if (!isSupportedChain(USERNAME_CHAIN_ID)) {
   throw new Error(`Unsupported chainId for basename: ${USERNAME_CHAIN_ID}`);
 }
 
-// TODO: When @katzman add testnet reverse registrar, we'll need to support both
-//       This is the one for base.
-//       This can be calculated from the chainId / coinType automatically
-//        e.g: base mainnet => 0x08d9b0993eb8c4da57c37a4b84a6e384c2623114ff4e9370ed51c9b8935109ba
-export const BASE_REVERSE_NODE =
-  '0x91d1777781884d03a6757a803996e38de2a42967fb37eeaca72729271025a9e2';
-
 const USERNAME_L2_RESOLVER_ADDRESSES: AddressMap = {
-  [baseSepolia.id]: '0x8d2D30cdE6c46BC81824d0732cE8395c58da3939',
+  [baseSepolia.id]: '0x6533C94869D28fAA8dF77cc63f9e2b2D6Cf77eBA',
   [base.id]: '0x',
 };
 
 export const USERNAME_L2_RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[USERNAME_CHAIN_ID];
 
 const USERNAME_REGISTRAR_CONTROLLER_ADDRESSES: AddressMap = {
-  [baseSepolia.id]: '0x16ee2051a0613e5c52127755ee3110cf4cd1ca10',
+  [baseSepolia.id]: '0x3a0e8c2a0a28f396a5e5b69edb2e630311f1517a',
   [base.id]: '0x',
 };
 
@@ -64,6 +57,13 @@ const USERNAME_CB_DISCOUNT_VALIDATORS: AddressMap = {
 };
 
 export const USERNAME_CB_DISCOUNT_VALIDATOR = USERNAME_CB_DISCOUNT_VALIDATORS[USERNAME_CHAIN_ID];
+
+const USERNAME_EA_DISCOUNT_VALIDATORS: AddressMap = {
+  [baseSepolia.id]: '0x4944a8Ea7ec6fA356B159a2c363d83076B8f276D',
+  [base.id]: '0x',
+};
+
+export const USERNAME_EA_DISCOUNT_VALIDATOR = USERNAME_EA_DISCOUNT_VALIDATORS[USERNAME_CHAIN_ID];
 
 const USERNAME_1155_DISCOUNT_VALIDATORS: AddressMap = {
   [baseSepolia.id]: '0xE41Cd25f429E10744938d5048646E721ac630aF3',

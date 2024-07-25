@@ -17,6 +17,7 @@ export type VerifiedAccount = {
 };
 
 export enum DiscountType {
+  EARLY_ACCESS = 'EARLY_ACCESS',
   CB = 'CB',
   CB1 = 'CB1',
   CB_ID = 'CB_ID',

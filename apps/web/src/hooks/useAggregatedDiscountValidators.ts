@@ -3,6 +3,7 @@ import {
   useCheckCB1Attestations,
   useCheckCBIDAttestations,
   useCheckCoinbaseAttestations,
+  useCheckEAAttestations,
 } from 'apps/web/src/hooks/useAttestations';
 import { useActiveDiscountValidators } from 'apps/web/src/hooks/useReadActiveDiscountValidators';
 import { Discount } from 'apps/web/src/utils/usernames';
@@ -28,6 +29,8 @@ export function useAggregatedDiscountValidators() {
     useActiveDiscountValidators();
   const { data: CBIDData, loading: loadingCBIDAttestations } = useCheckCBIDAttestations();
   const { data: CB1Data, loading: loadingCB1Attestations } = useCheckCB1Attestations();
+  const { data: EAData, loading: loadingEAAttestations } = useCheckEAAttestations();
+
   const { data: coinbaseData, loading: loadingCoinbaseAttestations } =
     useCheckCoinbaseAttestations();
 
@@ -35,7 +38,8 @@ export function useAggregatedDiscountValidators() {
     loadingCoinbaseAttestations ||
     loadingCBIDAttestations ||
     loadingCB1Attestations ||
-    loadingActiveDiscounts;
+    loadingActiveDiscounts ||
+    loadingEAAttestations;
 
   const discountsToAttestationData = useMemo<MappedDiscountData>(() => {
     const discountMapping: MappedDiscountData = {};
@@ -56,10 +60,14 @@ export function useAggregatedDiscountValidators() {
           discountKey: validator.key,
         };
       }
+
+      if (EAData && validator.discountValidator === EAData.discountValidatorAddress) {
+        discountMapping[Discount.EARLY_ACCESS] = { ...EAData, discountKey: validator.key };
+      }
     });
 
     return discountMapping;
-  }, [activeDiscountValidators, CBIDData, CB1Data, coinbaseData]);
+  }, [activeDiscountValidators, CBIDData, CB1Data, coinbaseData, EAData]);
 
   return {
     data: discountsToAttestationData,

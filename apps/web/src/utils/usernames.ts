@@ -1,4 +1,4 @@
-import { Address, encodePacked, keccak256, sha256 } from 'viem';
+import { Address, encodePacked, keccak256, namehash, sha256 } from 'viem';
 import { normalize } from 'viem/ens';
 import profilePictures1 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/1.svg';
 import profilePictures2 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/2.svg';
@@ -8,8 +8,8 @@ import profilePictures5 from 'apps/web/src/components/ConnectWalletButton/profil
 import profilePictures6 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/6.svg';
 import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/7.svg';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
-import { BASE_REVERSE_NODE, USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
-import { base, baseSepolia } from 'viem/chains';
+import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
+import { base, baseSepolia, mainnet } from 'viem/chains';
 
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 20;
@@ -272,14 +272,28 @@ export const getUserNamePicture = (username: string) => {
   return selectedProfilePicture;
 };
 
+export const convertChainIdToCoinType = (chainId: number): string => {
+  // L1 resolvers to addr
+  if (chainId === mainnet.id) {
+    return 'addr';
+  }
+
+  const cointype = (0x80000000 | chainId) >>> 0;
+  return cointype.toString(16);
+};
+
 export const convertReverseNodeToBytes = (address?: Address) => {
   if (!address) return;
   const addressFormatted = address.toLocaleLowerCase() as Address;
   const addressNode = keccak256(addressFormatted.substring(2) as Address);
 
+  const chainCoinType = convertChainIdToCoinType(USERNAME_CHAIN_ID);
+
+  const baseReverseNode = namehash(`${chainCoinType}.reverse`);
+
   // TODO: This can be calculated from the chainId / coinType automatically
   const addressReverseNode = keccak256(
-    encodePacked(['bytes32', 'bytes32'], [BASE_REVERSE_NODE, addressNode]),
+    encodePacked(['bytes32', 'bytes32'], [baseReverseNode, addressNode]),
   );
 
   return addressReverseNode;

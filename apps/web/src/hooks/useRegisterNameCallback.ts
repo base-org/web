@@ -23,13 +23,13 @@ export function useRegisterNameCallback(
   value: bigint | undefined,
   years: number,
   discountKey?: `0x${string}`,
-  validationData?: `0x${string}`
+  validationData?: `0x${string}`,
 ) {
   const { address, chainId, isConnected } = useAccount();
   const { writeContractsAsync } = useWriteContracts();
   const { data, writeContractAsync, isPending, error } = useWriteContract();
-  const {data: availableCapacities} = useCapabilities({ account: address });
-  
+  const { data: availableCapacities } = useCapabilities({ account: address });
+
   const capabilities = useMemo(() => {
     if (!isConnected || !chainId || !availableCapacities) {
       return {};
@@ -39,18 +39,17 @@ export function useRegisterNameCallback(
       return {
         paymasterService: {
           // url: `${document.location.origin}/api/paymaster`
-          url: 'https://api.developer.coinbase.com/rpc/v1/base-sepolia/1IhTcPOmhK5aEq-4WqRZMJoOh0oPenD2'
-        }
-      }
+          url: 'https://api.developer.coinbase.com/rpc/v1/base-sepolia/1IhTcPOmhK5aEq-4WqRZMJoOh0oPenD2',
+        },
+      };
     }
     return {};
-  }, [availableCapacities, chainId, isConnected]);  
+  }, [availableCapacities, chainId, isConnected]);
 
   const normalizedName = normalizeEnsDomainName(name);
   const { switchChainAsync } = useSwitchChain();
   const isDiscounted = Boolean(discountKey && validationData);
   const { logEventWithContext } = useAnalytics();
-
 
   // TODO: I think we could pass arguments to this function instead of the hook
   const registerName = useCallback(async () => {
@@ -79,41 +78,59 @@ export function useRegisterNameCallback(
 
     // Log attempt to register name
     logEventWithContext('register_name_transaction_initiated', ActionType.click);
-    
+
     try {
       await switchChainAsync({ chainId: USERNAME_CHAIN_ID });
-      
+
       if (!capabilities || Object.keys(capabilities).length === 0) {
         await writeContractAsync({
           abi,
           address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
           chainId: USERNAME_CHAIN_ID,
-          functionName: isDiscounted ? 'discountedRegister' : 'register',
+          functionName: 'discountedRegister',
           // @ts-expect-error isDiscounted is sufficient guard for discountKey and validationData presence
           args: isDiscounted ? [registerRequest, discountKey, validationData] : [registerRequest],
           value,
         });
       } else {
-         await writeContractsAsync({
+        await writeContractsAsync({
           contracts: [
             {
               address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
               abi: abi,
-              functionName: isDiscounted ? 'discountedRegister' : 'register',
-              args: isDiscounted ? [registerRequest, discountKey, validationData] : [registerRequest],
-              value
-            }
-          ], 
+              functionName: 'discountedRegister',
+              args: isDiscounted
+                ? [registerRequest, discountKey, validationData]
+                : [registerRequest],
+              value,
+            },
+          ],
           capabilities: capabilities,
-          chainId: USERNAME_CHAIN_ID
+          chainId: USERNAME_CHAIN_ID,
         });
       }
     } catch (e) {
+      console.log(e);
       logEventWithContext('register_name_transaction_canceled', ActionType.change, {
         error: JSON.stringify(error),
       });
     }
-  }, [address, capabilities, discountKey, error, isDiscounted, logEventWithContext, name, normalizedName, switchChainAsync, validationData, value, writeContractAsync, writeContractsAsync, years]);
+  }, [
+    address,
+    capabilities,
+    discountKey,
+    error,
+    isDiscounted,
+    logEventWithContext,
+    name,
+    normalizedName,
+    switchChainAsync,
+    validationData,
+    value,
+    writeContractAsync,
+    writeContractsAsync,
+    years,
+  ]);
 
   return { callback: registerName, data, isPending, error };
 }
