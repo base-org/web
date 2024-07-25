@@ -7,13 +7,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
   const { address } = req.query;
 
+  if (typeof address !== 'string') {
+    res.status(400).json({ error: 'address is required' });
+    return;
+  }
+
   try {
-    const response = await fetch(`https://api.talentprotocol.com/api/v2/passports/${address}`, {
-      method: 'GET',
-      headers: {
-        'X-API-KEY': process.env.TALENT_PROTOCOL_API_KEY,
+    const response = await fetch(
+      `https://api.talentprotocol.com/api/v2/passports/${encodeURIComponent(address || '')}`,
+      {
+        method: 'GET',
+        headers: {
+          'X-API-KEY': process.env.TALENT_PROTOCOL_API_KEY,
+        },
       },
-    });
+    );
     const data = await response.json();
 
     if (data) {
