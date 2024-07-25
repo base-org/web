@@ -217,10 +217,8 @@ export function useCheckEAAttestations(): AttestationHookReturns {
         params.append('address', a);
         params.append('chain', USERNAME_CHAIN_ID.toString());
         const response = await fetch(`/api/proofs/earlyAccess?${params}`);
-        console.log('jf response.ok', response.ok);
         if (response.ok) {
           const result = (await response.json()) as EarlyAccessProofResponse;
-          console.log('jf result', result);
           setEAProofResponse(result);
         }
       } catch (e) {
@@ -241,8 +239,6 @@ export function useCheckEAAttestations(): AttestationHookReturns {
     [EAProofResponse?.proofs],
   );
 
-  console.log('jf encodedProof', encodedProof);
-
   const readContractArgs = useMemo(() => {
     if (!EAProofResponse?.proofs || !address) {
       return {};
@@ -254,10 +250,8 @@ export function useCheckEAAttestations(): AttestationHookReturns {
       args: [address, encodedProof],
     };
   }, [address, EAProofResponse?.discountValidatorAddress, EAProofResponse?.proofs, encodedProof]);
-  console.log('jf readContractArgs', readContractArgs);
 
   const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
-  console.log('jf isValid', isValid);
 
   if (isValid && EAProofResponse && address) {
     return {

@@ -174,15 +174,13 @@ export default function UsernameProfileEditModal({
             })
 
             .catch((error) => {
-              logEventWithContext('update_text_records_transaction_canceled', ActionType.click, {
-                error: JSON.stringify(error),
-              });
+              console.error(error);
+              logEventWithContext('update_text_records_transaction_canceled', ActionType.click);
             });
         })
         .catch((e) => {
-          logEventWithContext('avatar_upload_failed', ActionType.error, {
-            error: JSON.stringify(e),
-          });
+          console.error(e);
+          logEventWithContext('avatar_upload_failed', ActionType.error);
         });
 
       logEventWithContext('update_text_records_transaction_initiated', ActionType.change);

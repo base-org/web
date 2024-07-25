@@ -110,16 +110,13 @@ export function useRegisterNameCallback(
         });
       }
     } catch (e) {
-      console.log(e);
-      logEventWithContext('register_name_transaction_canceled', ActionType.change, {
-        error: JSON.stringify(error),
-      });
+      console.error('failed to register name', e);
+      logEventWithContext('register_name_transaction_canceled', ActionType.change);
     }
   }, [
     address,
     capabilities,
     discountKey,
-    error,
     isDiscounted,
     logEventWithContext,
     name,

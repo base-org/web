@@ -42,7 +42,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   let parsedChain = base.id as number;
   try {
     parsedChain = parseInt(chain);
-    console.log('jf parsedChain', parsedChain);
   } catch (e) {
     return res.status(400).json({ error: 'invalid chain' });
   }
@@ -63,7 +62,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     );
 
     const proofs = content?.proofs ? (JSON.parse(content.proofs) as `0x${string}`[]) : [];
-    console.log('jf proofs', proofs);
     if (proofs.length === 0) {
       return res.status(404).json({ error: 'address is not eligible for early access' });
     }

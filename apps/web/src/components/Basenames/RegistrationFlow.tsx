@@ -32,8 +32,10 @@ export const claimQueryKey = 'claim';
 export function RegistrationFlow() {
   const { logEventWithContext } = useAnalytics();
   const searchParams = useSearchParams();
-  const { registrationStep, searchInputFocused, selectedName, setSelectedName } = useRegistration();
+  const { discount, registrationStep, searchInputFocused, selectedName, setSelectedName } =
+    useRegistration();
 
+  const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
   const isSearch = registrationStep === RegistrationSteps.Search;
   const isClaim = registrationStep === RegistrationSteps.Claim;
   const isPending = registrationStep === RegistrationSteps.Pending;
@@ -202,7 +204,13 @@ export function RegistrationFlow() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <RegistrationForm />
+          {!isEarlyAccess || (isEarlyAccess && discount) ? (
+            <RegistrationForm />
+          ) : (
+            <div className="z-10 flex flex-row items-center justify-center rounded-2xl bg-[#F7F7F7] p-8 text-gray-60 shadow-xl">
+              The connected wallet is not eligible for early access
+            </div>
+          )}
         </Transition>
 
         {/* 4. Registration Success Message */}

@@ -169,12 +169,7 @@ export default function RegistrationProfileForm() {
               router.push(`names/${formatBaseEthDomain(selectedName)}`);
             }
           })
-          .catch((error) => {
-            console.log(error);
-            // logEventWithContext('update_text_records_transaction_canceled', ActionType.click, {
-            //   error: JSON.stringify(error),
-            // });
-          });
+          .catch(console.error);
       }
 
       event.preventDefault();
