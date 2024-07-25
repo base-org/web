@@ -1,10 +1,10 @@
-import { ReactElement, useMemo } from 'react';
+import { CookieBanner } from '@coinbase/cookie-banner';
+import UsernameNav from 'apps/web/src/components/Layout/UsernameNav';
 import localFont from 'next/font/local';
 import { useRouter } from 'next/router';
-import { CookieBanner } from '@coinbase/cookie-banner';
-
-import { Nav } from './Nav/Nav';
+import { ReactElement, useMemo } from 'react';
 import { Footer } from './Footer/Footer';
+import { Nav } from './Nav/Nav';
 
 const coinbaseDisplay = localFont({
   src: [
@@ -108,8 +108,12 @@ const cookieBannerTheme = {
     overlay: 1000,
   },
 };
+export enum NavigationType {
+  Default,
+  Username,
+}
 
-type LayoutProps = { children: ReactElement };
+type LayoutProps = { children: ReactElement; navigationType?: NavigationType };
 
 const BLACK_NAV_PATHS = [
   '/',
@@ -117,9 +121,10 @@ const BLACK_NAV_PATHS = [
   '/cookie-policy',
   '/third-party-cookies',
   '/onchainsummer',
+  '/name',
 ];
 
-export function Layout({ children }: LayoutProps) {
+export function Layout({ children, navigationType }: LayoutProps) {
   const { pathname } = useRouter();
   const color: 'black' | 'white' = useMemo(() => {
     if (BLACK_NAV_PATHS.includes(pathname)) {
@@ -133,7 +138,8 @@ export function Layout({ children }: LayoutProps) {
     <div
       className={`max-w-screen flex min-h-screen flex-col ${coinbaseDisplay.variable} ${coinbaseSans.variable} ${coinbaseMono.variable} ${britney.variable}`}
     >
-      <Nav color={color} />
+      {navigationType === NavigationType.Default && <Nav color={color} />}
+      {navigationType === NavigationType.Username && <UsernameNav />}
       {children}
       <Footer />
       <CookieBanner companyName="Base" link="/cookie-policy" theme={cookieBannerTheme} />

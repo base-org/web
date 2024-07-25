@@ -21,7 +21,7 @@ export function HowItWorksCard({ featureItem: { number, title, description } }: 
         {isValidElement(description) ? (
           description
         ) : (
-          <p className="text-gray-muted font-sans text-white">{description}</p>
+          <p className="font-sans text-gray-60 text-white">{description}</p>
         )}
       </div>
     </div>

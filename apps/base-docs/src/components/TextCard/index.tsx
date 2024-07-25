@@ -2,11 +2,7 @@ import React, { useCallback } from 'react';
 import Icon from '../Icon';
 
 import styles from './styles.module.css';
-import logEvent, {
-  AnalyticsEventData,
-  AnalyticsEventImportance,
-  CCAEventData,
-} from 'base-ui/utils/logEvent';
+import logEvent, { AnalyticsEventData } from 'base-ui/utils/logEvent';
 
 type TextCardProps = {
   title: string;
