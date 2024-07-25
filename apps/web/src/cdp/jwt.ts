@@ -13,7 +13,7 @@ type APIKeyClaims = {
   aud: string[];
 };
 
-export async function generateCdpJwt(requestMethod: string, requestPath: string) {
+export async function generateCdpJwt(requestMethod: string, requestPath: string): Promise<string> {
   const uri = `${requestMethod} ${cdpBaseUri}/${requestPath}`;
   const nonce = crypto.randomBytes(16).toString('hex');
   const claims: APIKeyClaims = {
