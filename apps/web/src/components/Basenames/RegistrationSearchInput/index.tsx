@@ -305,7 +305,7 @@ export default function RegistrationSearchInput({
       </div>
       <span className={inputIconClasses}>
         {search.length > 0 ? (
-          <button onClick={resetSearch} type="button">
+          <button onClick={resetSearch} type="button" aria-label="Reset search">
             <Icon name="cross" color="currentColor" height={iconSize} width={iconSize} />
           </button>
         ) : (
