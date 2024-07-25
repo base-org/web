@@ -53,7 +53,7 @@ export function useBaseGuild(address?: `0x${string}`): {
 
   let empty = true;
   if (query.data) {
-    if (query.data.errors) {
+    if (query.data.errors ?? !query.data.roles) {
       return { badges, empty: true };
     }
 
