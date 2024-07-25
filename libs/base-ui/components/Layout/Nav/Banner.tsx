@@ -3,12 +3,12 @@ import Link from 'next/link';
 import { useLocalStorage } from 'usehooks-ts';
 import { usePathname } from 'next/navigation';
 
-import { Icon } from 'base-ui/index';
+import { Icon } from '../../../Icon';
 import logEvent, {
   ActionType,
   AnalyticsEventImportance,
   ComponentType,
-} from 'base-ui/utils/logEvent';
+} from '../../../utils/logEvent';
 
 type BannerName = `${string}Banner`;
 

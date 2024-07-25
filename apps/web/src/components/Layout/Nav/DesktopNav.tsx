@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
 import Link from 'next/link';
 
-import useClickAway from '../../../utils/hooks/useClickAway';
+import useClickAway from '../../../hooks/useClickAway';
 
 import { Icon } from '../../Icon/Icon';
 import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
@@ -124,9 +124,11 @@ function IconLink({
 
 function DesktopNav({ color }: DesktopNavProps) {
   return (
-    <div className="hidden h-full w-fit flex-grow flex-row items-center items-center justify-between lg:flex">
+    <div className="hidden h-full w-fit flex-grow flex-row items-center justify-between lg:flex">
       <Dropdown label="Ecosystem" color={color}>
         <DropdownLink href="/ecosystem" label="Apps" color={color} />
+        {/* todo ECO-101: add this back for GA */}
+        {/* <DropdownLink href="/name" label="Names" color={color} /> */}
         <DropdownLink
           href="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
           label="Grants"

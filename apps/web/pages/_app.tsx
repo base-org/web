@@ -1,3 +1,4 @@
+import '@coinbase/onchainkit/styles.css';
 import './global.css';
 
 import {
@@ -6,6 +7,8 @@ import {
   TrackingCategory,
   TrackingPreference,
 } from '@coinbase/cookie-manager';
+import { OnchainKitProvider } from '@coinbase/onchainkit';
+import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
 import { connectorsForWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
@@ -16,14 +19,16 @@ import {
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import useSprig from 'base-ui/hooks/useSprig';
 import { MotionConfig } from 'framer-motion';
+import { NextPage } from 'next';
 import { AppProps } from 'next/app';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { createConfig, http, WagmiProvider } from 'wagmi';
 import { base, baseSepolia, mainnet, sepolia } from 'wagmi/chains';
 import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
-import { Layout } from '../src/components/Layout/Layout';
+import { Layout, NavigationType } from '../src/components/Layout/Layout';
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
 import ExperimentsProvider from 'base-ui/contexts/Experiments';
 
@@ -57,11 +62,18 @@ const config = createConfig({
   },
   ssr: true,
 });
-
 const queryClient = new QueryClient();
 const sprigEnvironmentId = process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID;
 
-export default function StaticApp({ Component, pageProps }: AppProps) {
+export type NextPageWithLayout<P = unknown, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+export default function StaticApp({ Component, pageProps }: AppPropsWithLayout) {
   // Cookie Manager Provider Configuration
   const [isMounted, setIsMounted] = useState(false);
   const trackingPreference = useRef<TrackingPreference | undefined>();
@@ -99,6 +111,10 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
 
   useSprig(sprigEnvironmentId);
 
+  const getLayout =
+    Component.getLayout ??
+    ((page) => <Layout navigationType={NavigationType.Default}>{page}</Layout>);
+
   if (!isMounted) return null;
 
   return (
@@ -115,13 +131,18 @@ export default function StaticApp({ Component, pageProps }: AppProps) {
         <ClientAnalyticsScript />
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
-            <RainbowKitProvider modalSize="compact">
-              <ExperimentsProvider>
-                <Layout>
-                  <Component {...pageProps} />
-                </Layout>
-              </ExperimentsProvider>
-            </RainbowKitProvider>
+            <OnchainKitProvider
+              chain={baseSepolia}
+              apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
+            >
+              <TooltipProvider>
+                <ExperimentsProvider>
+                  <RainbowKitProvider modalSize="compact" avatar={UserAvatar}>
+                    {getLayout(<Component {...pageProps} />)}
+                  </RainbowKitProvider>
+                </ExperimentsProvider>
+              </TooltipProvider>
+            </OnchainKitProvider>
           </QueryClientProvider>
         </WagmiProvider>
       </MotionConfig>
