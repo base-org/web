@@ -91,7 +91,7 @@ export default function RegistrationProfileForm() {
 
       refetchExistingTextRecords()
         .then(() => {
-          router.push(`names/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
+          router.push(`name/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
         })
         .catch(() => {
           // console.log({ error });
