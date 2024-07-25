@@ -6,11 +6,10 @@ import ControlHero from './ControlHero';
 import TreatmentHero from './TreatmentHero';
 import styles from './styles.module.css';
 
-const EXPERIMENT_KEY = 'bf-test-2024-07-25';
+const EXPERIMENT_KEY = 'build-onchain-for-less-hero-2024-07-23';
 
 export default function Hero() {
   const { isReady, userVariant } = useExperiment(EXPERIMENT_KEY);
-  console.log({userVariant});
 
   if (!isReady) {
     return <HeroLoadingState />;
