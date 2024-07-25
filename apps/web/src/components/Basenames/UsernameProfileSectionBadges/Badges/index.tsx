@@ -34,32 +34,6 @@ import Link from 'next/link';
 
 export type BadgeNames = CoinbaseVerifications | GuildBadges | 'TALENT_SCORE';
 
-export const BADGE_IMGS: Record<BadgeNames, StaticImport> = {
-  VERIFIED_IDENTITY: verifiedIdentity as StaticImport,
-  VERIFIED_COUNTRY: verifiedCountry as StaticImport,
-  VERIFIED_COINBASE_ONE: verifiedCoinbaseOne as StaticImport,
-  BASE_BUILDER: baseBuilder as StaticImport,
-  BASE_GRANTEE: baseGrantee as StaticImport,
-  BASE_INITIATE: baseInitiate as StaticImport,
-  BASE_LEARN_NEWCOMER: baseLearnNewcomer as StaticImport,
-  BUILDATHON_PARTICIPANT: buildathonParticipant as StaticImport,
-  BUILDATHON_WINNER: buildathonWinner as StaticImport,
-  TALENT_SCORE: talentScore as StaticImport,
-};
-
-export const GRAY_BADGE_IMGS: Record<BadgeNames, StaticImport> = {
-  VERIFIED_IDENTITY: verifiedIdentityGray as StaticImport,
-  VERIFIED_COUNTRY: verifiedCountryGray as StaticImport,
-  VERIFIED_COINBASE_ONE: verifiedCoinbaseOneGray as StaticImport,
-  BASE_BUILDER: baseBuilderGray as StaticImport,
-  BASE_GRANTEE: baseGranteeGray as StaticImport,
-  BASE_INITIATE: baseInitiateGray as StaticImport,
-  BASE_LEARN_NEWCOMER: baseLearnNewcomerGray as StaticImport,
-  BUILDATHON_PARTICIPANT: buildathonParticipantGray as StaticImport,
-  BUILDATHON_WINNER: buildathonWinnerGray as StaticImport,
-  TALENT_SCORE: talentScoreGray as StaticImport,
-};
-
 export const BADGE_INFO: Record<
   BadgeNames,
   {
@@ -68,6 +42,8 @@ export const BADGE_INFO: Record<
     description: string;
     cta: string;
     ctaLink: string;
+    image: StaticImport;
+    grayImage: StaticImport;
   }
 > = {
   VERIFIED_IDENTITY: {
@@ -77,6 +53,8 @@ export const BADGE_INFO: Record<
       "You've got a Coinbase account and you verified your ID. Thanks for being our customer.",
     cta: 'Get verified',
     ctaLink: 'https://coinbase.com/onchain-verify',
+    image: verifiedIdentity,
+    grayImage: verifiedIdentityGray,
   },
   VERIFIED_COUNTRY: {
     name: 'Verified Country',
@@ -84,6 +62,8 @@ export const BADGE_INFO: Record<
     description: "You've verified what country you live in. It's a beautiful country, no doubt.",
     cta: 'Get verified',
     ctaLink: 'https://coinbase.com/onchain-verify',
+    image: verifiedCountry,
+    grayImage: verifiedCountryGray,
   },
   VERIFIED_COINBASE_ONE: {
     name: 'Coinbase One',
@@ -91,6 +71,8 @@ export const BADGE_INFO: Record<
     description: "You've got an active Coinbase One membership. Hope you enjoy the perks!",
     cta: 'Get Coinbase One',
     ctaLink: 'https://coinbase.com/onchain-verify',
+    image: verifiedCoinbaseOne,
+    grayImage: verifiedCoinbaseOneGray,
   },
   BASE_BUILDER: {
     name: 'Based Builder',
@@ -98,6 +80,8 @@ export const BADGE_INFO: Record<
     description: "You've deployed 5 or more smart contracts on Base. Impressive!",
     cta: 'Deploy a smart contract',
     ctaLink: 'https://guild.xyz/base/based-developers',
+    image: baseBuilder,
+    grayImage: baseBuilderGray,
   },
   BASE_GRANTEE: {
     name: 'Base Grant',
@@ -105,6 +89,8 @@ export const BADGE_INFO: Record<
     description: 'You were the recipient of a Base Grant. Congrats!',
     cta: 'Learn more',
     ctaLink: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders',
+    image: baseGrantee,
+    grayImage: baseGranteeGray,
   },
   BASE_INITIATE: {
     name: 'Based Initiate',
@@ -112,6 +98,8 @@ export const BADGE_INFO: Record<
     description: "You've deployed a smart contract on Base. Thanks for building with us!",
     cta: 'Deploy a smart contract',
     ctaLink: 'https://guild.xyz/base/based-developers',
+    image: baseInitiate,
+    grayImage: baseInitiateGray,
   },
   BASE_LEARN_NEWCOMER: {
     name: 'Base Learn Newcomer',
@@ -120,6 +108,8 @@ export const BADGE_INFO: Record<
       'You completed these Base Learn Modules: Basic Contracts, Storage, Control Structures, Arrays, Inheritance, Mappings, Structs, Error Triags, New Keyword, and Imports.',
     cta: 'Go to Base Learn',
     ctaLink: 'https://guild.xyz/base/base-learn',
+    image: baseLearnNewcomer,
+    grayImage: baseLearnNewcomerGray,
   },
   BUILDATHON_PARTICIPANT: {
     name: 'Buildathon Participant',
@@ -128,6 +118,8 @@ export const BADGE_INFO: Record<
       'You were a participant in our 2024 Onchain Summer Buildathon. Thanks for building with us!',
     cta: 'Learn more',
     ctaLink: 'https://www.base.org/onchainsummer',
+    image: buildathonParticipant,
+    grayImage: buildathonParticipantGray,
   },
   BUILDATHON_WINNER: {
     name: 'Buildathon Winner',
@@ -135,6 +127,8 @@ export const BADGE_INFO: Record<
     description: 'You submitted a winning project in the Onchain Summer 2024 Buildathon. Congrats!',
     cta: 'Learn more',
     ctaLink: 'https://www.base.org/onchainsummer',
+    image: buildathonWinner,
+    grayImage: buildathonWinnerGray,
   },
   TALENT_SCORE: {
     name: 'Talent Passport Score',
@@ -142,6 +136,8 @@ export const BADGE_INFO: Record<
     description: "Your builder score as a Talent passport holder. You're legit!",
     cta: 'Get your talent passport',
     ctaLink: 'https://passport.talentprotocol.com/',
+    image: talentScore,
+    grayImage: talentScoreGray,
   },
 };
 
@@ -171,7 +167,7 @@ export function Badge({
         tabIndex={0}
       >
         <Image
-          src={(claimed ? BADGE_IMGS : GRAY_BADGE_IMGS)[badge]}
+          src={BADGE_INFO[badge][claimed ? 'image' : 'grayImage']}
           alt={name}
           height={100}
           width={100}
@@ -214,7 +210,7 @@ export function BadgeModal() {
     <Modal isOpen={modalOpen} onClose={closeModal} title="">
       <div className="flex flex-col items-center gap-4">
         <Image
-          src={BADGE_IMGS[badge]}
+          src={BADGE_INFO[badge].image}
           alt={name}
           height={100}
           width={100}
