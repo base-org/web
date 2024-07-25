@@ -30,6 +30,7 @@ import { useBadgeContext } from 'apps/web/src/components/Basenames/UsernameProfi
 import Modal from 'apps/web/src/components/Modal';
 import { useCallback } from 'react';
 import { Button } from 'apps/web/src/components/Button/Button';
+import Link from 'next/link';
 
 export type BadgeNames = CoinbaseVerifications | GuildBadges | 'TALENT_SCORE';
 
@@ -66,6 +67,7 @@ export const BADGE_INFO: Record<
     title: string;
     description: string;
     cta: string;
+    ctaLink: string;
   }
 > = {
   VERIFIED_IDENTITY: {
@@ -74,36 +76,42 @@ export const BADGE_INFO: Record<
     description:
       "You've got a Coinbase account and you verified your ID. Thanks for being our customer.",
     cta: 'Get verified',
+    ctaLink: 'https://coinbase.com/onchain-verify',
   },
   VERIFIED_COUNTRY: {
     name: 'Verified Country',
     title: 'Verified Country',
     description: "You've verified what country you live in. It's a beautiful country, no doubt.",
     cta: 'Get verified',
+    ctaLink: 'https://coinbase.com/onchain-verify',
   },
   VERIFIED_COINBASE_ONE: {
     name: 'Coinbase One',
     title: 'Coinbase One',
     description: "You've got an active Coinbase One membership. Hope you enjoy the perks!",
     cta: 'Get Coinbase One',
+    ctaLink: 'https://coinbase.com/onchain-verify',
   },
   BASE_BUILDER: {
     name: 'Based Builder',
     title: 'Base Builder',
     description: "You've deployed 5 or more smart contracts on Base. Impressive!",
     cta: 'Deploy a smart contract',
+    ctaLink: 'https://guild.xyz/base/based-developers',
   },
   BASE_GRANTEE: {
-    name: 'Base Grantee',
+    name: 'Base Grant',
     title: 'Base Grant',
     description: 'You were the recipient of a Base Grant. Congrats!',
     cta: 'Learn more',
+    ctaLink: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders',
   },
   BASE_INITIATE: {
     name: 'Based Initiate',
     title: 'Base Initiate',
     description: "You've deployed a smart contract on Base. Thanks for building with us!",
     cta: 'Deploy a smart contract',
+    ctaLink: 'https://guild.xyz/base/based-developers',
   },
   BASE_LEARN_NEWCOMER: {
     name: 'Base Learn Newcomer',
@@ -111,6 +119,7 @@ export const BADGE_INFO: Record<
     description:
       'You completed these Base Learn Modules: Basic Contracts, Storage, Control Structures, Arrays, Inheritance, Mappings, Structs, Error Triags, New Keyword, and Imports.',
     cta: 'Go to Base Learn',
+    ctaLink: 'https://guild.xyz/base/base-learn',
   },
   BUILDATHON_PARTICIPANT: {
     name: 'Buildathon Participant',
@@ -118,18 +127,21 @@ export const BADGE_INFO: Record<
     description:
       'You were a participant in our 2024 Onchain Summer Buildathon. Thanks for building with us!',
     cta: 'Learn more',
+    ctaLink: 'https://www.base.org/onchainsummer',
   },
   BUILDATHON_WINNER: {
     name: 'Buildathon Winner',
     title: 'Buildathon Winner',
     description: 'You submitted a winning project in the Onchain Summer 2024 Buildathon. Congrats!',
     cta: 'Learn more',
+    ctaLink: 'https://www.base.org/onchainsummer',
   },
   TALENT_SCORE: {
     name: 'Talent Passport Score',
     title: 'Talent Passport Builder Score',
     description: "Your builder score as a Talent passport holder. You're legit!",
     cta: 'Get your talent passport',
+    ctaLink: 'https://passport.talentprotocol.com/',
   },
 };
 
@@ -215,9 +227,11 @@ export function BadgeModal() {
             status: {selectedClaim.claimed ? 'claimed' : 'unclaimed'}
           </span>
         </div>
-        <Button variant="black" rounded>
-          {BADGE_INFO[badge].cta}
-        </Button>
+        <Link href={BADGE_INFO[badge].ctaLink} target="_blank">
+          <Button variant="black" rounded>
+            {BADGE_INFO[badge].cta}
+          </Button>
+        </Link>
       </div>
     </Modal>
   );
