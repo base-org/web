@@ -6,20 +6,30 @@ import {
   ConnectWalletButtonVariants,
 } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-import { useAccount } from 'wagmi';
+import { useAccount, useSwitchChain } from 'wagmi';
 import classNames from 'classnames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { base, baseSepolia } from 'viem/chains';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import { useCallback } from 'react';
 
 export default function UsernameNav() {
   const { isConnected } = useAccount();
 
   const isDevelopment = process.env.NODE_ENV === 'development';
   const { basenameChain } = useBasenameChain();
+  const { switchChain } = useSwitchChain();
 
   const showDevelopmentWarning = isDevelopment && basenameChain.id === base.id;
   const showProductionWarning = !isDevelopment && basenameChain.id === baseSepolia.id;
+
+  const switchToMainnet = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      switchChain({ chainId: base.id });
+    },
+    [switchChain],
+  );
 
   const walletStateClasses = classNames('p2 rounded', {
     'bg-white': isConnected,
@@ -40,7 +50,17 @@ export default function UsernameNav() {
       {showProductionWarning && (
         <div className="flex items-center  justify-center gap-2 bg-orange-10 p-2 text-center text-orange-80">
           <Icon name="info" color="currentColor" height="1rem" />
-          <p>You are on Base Sepolia (testnet)</p>
+          <p>
+            You are on Base Sepolia.{' '}
+            <button
+              className="font-bold text-orange-90 underline underline-offset-2"
+              type="button"
+              onClick={switchToMainnet}
+            >
+              Switch to Mainnet
+            </button>{' '}
+            to register a name outside of testnet.
+          </p>
         </div>
       )}
       <nav className={navigationClasses}>
