@@ -1,6 +1,5 @@
 import { upload } from '@vercel/blob/client';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
-import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
 import UsernameAvatarField from 'apps/web/src/components/Basenames/UsernameAvatarField';
 import UsernameDescriptionField from 'apps/web/src/components/Basenames/UsernameDescriptionField';
 import UsernameKeywordsField from 'apps/web/src/components/Basenames/UsernameKeywordsField';
@@ -12,6 +11,7 @@ import Label from 'apps/web/src/components/Label';
 import Modal, { ModalSizes } from 'apps/web/src/components/Modal';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
 import {
@@ -35,6 +35,7 @@ export default function UsernameProfileEditModal({
   const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
   const [avatarFile, setAvatarFile] = useState<File | undefined>();
   const { logEventWithContext } = useAnalytics();
+  const { basenameChain } = useBasenameChain();
 
   const {
     existingTextRecords,
@@ -65,7 +66,7 @@ export default function UsernameProfileEditModal({
     error: transactionError,
   } = useWaitForTransactionReceipt({
     hash: writeTextRecordsTransactionHash,
-    chainId: USERNAME_CHAIN_ID,
+    chainId: basenameChain.id,
     query: {
       enabled: !!writeTextRecordsTransactionHash,
     },

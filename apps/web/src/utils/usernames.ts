@@ -8,7 +8,6 @@ import profilePictures5 from 'apps/web/src/components/ConnectWalletButton/profil
 import profilePictures6 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/6.svg';
 import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/7.svg';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
-import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
 import { base, baseSepolia, mainnet } from 'viem/chains';
 
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
@@ -239,10 +238,8 @@ export const USERNAME_DOMAINS: Record<number, string> = {
   [base.id]: 'base.eth',
 };
 
-export const USERNAME_DOMAIN = USERNAME_DOMAINS[USERNAME_CHAIN_ID];
-
-export const formatBaseEthDomain = (name: string): BaseName => {
-  return `${name}.${USERNAME_DOMAIN}`.toLocaleLowerCase() as BaseName;
+export const formatBaseEthDomain = (name: string, chainId: number): BaseName => {
+  return `${name}.${USERNAME_DOMAINS[chainId]}`.toLocaleLowerCase() as BaseName;
 };
 
 export const getUsernamePictureIndex = (name: string, totalOptions: number) => {
@@ -282,12 +279,17 @@ export const convertChainIdToCoinType = (chainId: number): string => {
   return cointype.toString(16);
 };
 
-export const convertReverseNodeToBytes = (address?: Address) => {
+export const convertReverseNodeToBytes = ({
+  address,
+  chainId,
+}: {
+  address?: Address;
+  chainId: number;
+}) => {
   if (!address) return;
   const addressFormatted = address.toLocaleLowerCase() as Address;
   const addressNode = keccak256(addressFormatted.substring(2) as Address);
-
-  const chainCoinType = convertChainIdToCoinType(USERNAME_CHAIN_ID);
+  const chainCoinType = convertChainIdToCoinType(chainId);
 
   const baseReverseNode = namehash(`${chainCoinType}.reverse`);
 

@@ -5,10 +5,9 @@ import {
   ProofTableNamespace,
 } from 'apps/web/src/utils/proofs';
 import { Address, isAddress } from 'viem';
-import {
-  isSupportedChain,
-  USERNAME_CB_ID_DISCOUNT_VALIDATOR,
-} from 'apps/web/src/addresses/usernames';
+import { USERNAME_CB_ID_DISCOUNT_VALIDATORS } from 'apps/web/src/addresses/usernames';
+import { isBasenameSupportedChain } from 'apps/web/src/hooks/useBasenameChain';
+
 export type CBIDProofResponse = {
   discountValidatorAddress: Address;
   address: Address;
@@ -40,12 +39,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: 'invalid chain' });
   }
   let parsedChain = parseInt(chain);
-  if (!isSupportedChain(parsedChain)) {
+  if (!isBasenameSupportedChain(parsedChain)) {
     return res.status(400).json({ error: 'chain must be Base or Base Sepolia' });
   }
 
   try {
-    const hasPreviouslyRegistered = await hasRegisteredWithDiscount([address]);
+    const hasPreviouslyRegistered = await hasRegisteredWithDiscount([address], parsedChain);
     // if any linked address registered previously return an error
     if (hasPreviouslyRegistered) {
       return res.status(400).json({ error: 'This address has already claimed a username.' });
@@ -58,7 +57,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const responseData: CBIDProofResponse = {
       ...content,
       proofs,
-      discountValidatorAddress: USERNAME_CB_ID_DISCOUNT_VALIDATOR,
+      discountValidatorAddress: USERNAME_CB_ID_DISCOUNT_VALIDATORS[parsedChain],
     };
     return res.status(200).json(responseData);
   } catch (error: unknown) {

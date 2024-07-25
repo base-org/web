@@ -2,10 +2,10 @@ import { useAnalytics } from 'apps/web/contexts/Analytics';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import abi from 'apps/web/src/abis/RegistrarControllerABI';
 import {
-  USERNAME_CHAIN_ID,
-  USERNAME_L2_RESOLVER_ADDRESS,
-  USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
+  USERNAME_L2_RESOLVER_ADDRESSES,
+  USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { formatBaseEthDomain, normalizeEnsDomainName } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useMemo } from 'react';
@@ -26,6 +26,7 @@ export function useRegisterNameCallback(
   validationData?: `0x${string}`,
 ) {
   const { address, chainId, isConnected } = useAccount();
+  const { basenameChain } = useBasenameChain();
   const { writeContractsAsync } = useWriteContracts();
   const { data, writeContractAsync, isPending, error } = useWriteContract();
   const { data: availableCapacities } = useCapabilities({ account: address });
@@ -58,20 +59,23 @@ export function useRegisterNameCallback(
     const addressData = encodeFunctionData({
       abi: L2ResolverAbi,
       functionName: 'setAddr',
-      args: [namehash(formatBaseEthDomain(name)), address],
+      args: [namehash(formatBaseEthDomain(name, basenameChain.id)), address],
     });
 
     const nameData = encodeFunctionData({
       abi: L2ResolverAbi,
       functionName: 'setName',
-      args: [namehash(formatBaseEthDomain(name)), formatBaseEthDomain(name)],
+      args: [
+        namehash(formatBaseEthDomain(name, basenameChain.id)),
+        formatBaseEthDomain(name, basenameChain.id),
+      ],
     });
 
     const registerRequest = {
       name: normalizedName, // The name being registered.
       owner: address, // The address of the owner for the name.
       duration: secondsInYears(years), // The duration of the registration in seconds.
-      resolver: USERNAME_L2_RESOLVER_ADDRESS, // The address of the resolver to set for this name.
+      resolver: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id], // The address of the resolver to set for this name.
       data: [addressData, nameData], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
       reverseRecord: true, // Bool to decide whether to set this name as the "primary" name for the `owner`.
     };
@@ -80,13 +84,13 @@ export function useRegisterNameCallback(
     logEventWithContext('register_name_transaction_initiated', ActionType.click);
 
     try {
-      await switchChainAsync({ chainId: USERNAME_CHAIN_ID });
+      await switchChainAsync({ chainId: basenameChain.id });
 
       if (!capabilities || Object.keys(capabilities).length === 0) {
         await writeContractAsync({
           abi,
-          address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
-          chainId: USERNAME_CHAIN_ID,
+          address: USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[basenameChain.id],
+          chainId: basenameChain.id,
           functionName: 'discountedRegister',
           // @ts-expect-error isDiscounted is sufficient guard for discountKey and validationData presence
           args: isDiscounted ? [registerRequest, discountKey, validationData] : [registerRequest],
@@ -96,7 +100,7 @@ export function useRegisterNameCallback(
         await writeContractsAsync({
           contracts: [
             {
-              address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
+              address: USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[basenameChain.id],
               abi: abi,
               functionName: 'discountedRegister',
               args: isDiscounted
@@ -106,7 +110,7 @@ export function useRegisterNameCallback(
             },
           ],
           capabilities: capabilities,
-          chainId: USERNAME_CHAIN_ID,
+          chainId: basenameChain.id,
         });
       }
     } catch (e) {
@@ -115,6 +119,7 @@ export function useRegisterNameCallback(
     }
   }, [
     address,
+    basenameChain.id,
     capabilities,
     discountKey,
     isDiscounted,

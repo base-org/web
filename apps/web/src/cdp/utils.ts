@@ -1,12 +1,6 @@
-import {
-  cdpBaseRpcEndpoint,
-  cdpBaseSepoliaRpcEndpoint,
-  cdpBaseUri,
-} from 'apps/web/src/cdp/constants';
+import { cdpBaseUri } from 'apps/web/src/cdp/constants';
 import { generateCdpJwt } from 'apps/web/src/cdp/jwt';
 import { Response } from 'node-fetch';
-import { createPublicClient, http } from 'viem';
-import { base, baseSepolia } from 'viem/chains';
 
 export async function cdpGet(endpoint: string, authed: boolean): Promise<Response> {
   const url = `https://${cdpBaseUri}/${endpoint}`;
@@ -33,21 +27,4 @@ export async function cdpPost(endpoint: string, body: unknown, authed: boolean):
     body: JSON.stringify(body),
     headers,
   });
-}
-
-export function getPublicClient(chainId: number) {
-  switch (chainId) {
-    case baseSepolia.id:
-      return createPublicClient({
-        chain: baseSepolia,
-        transport: http(cdpBaseSepoliaRpcEndpoint),
-      });
-    case base.id:
-      return createPublicClient({
-        chain: base,
-        transport: http(cdpBaseRpcEndpoint),
-      });
-    default:
-      throw new Error(`Unsupported chainId: ${chainId}`);
-  }
 }

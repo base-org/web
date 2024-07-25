@@ -3,20 +3,19 @@ import { kv } from '@vercel/kv';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import {
-  USERNAME_CB1_DISCOUNT_VALIDATOR,
-  USERNAME_CB_DISCOUNT_VALIDATOR,
-  USERNAME_CHAIN_ID,
-  USERNAME_EA_DISCOUNT_VALIDATOR,
-  USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
+  USERNAME_CB1_DISCOUNT_VALIDATORS,
+  USERNAME_CB_DISCOUNT_VALIDATORS,
+  USERNAME_EA_DISCOUNT_VALIDATORS,
+  USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
 import { getLinkedAddresses } from 'apps/web/src/cdp/api';
-import { getPublicClient } from 'apps/web/src/cdp/utils';
 import {
-  ATTESTATION_VERIFIED_ACCOUNT_SCHEMA_ID,
-  ATTESTATION_VERIFIED_CB1_ACCOUNT_SCHEMA_ID,
+  ATTESTATION_VERIFIED_ACCOUNT_SCHEMA_IDS,
+  ATTESTATION_VERIFIED_CB1_ACCOUNT_SCHEMA_IDS,
   trustedSignerAddress,
   trustedSignerPKey,
 } from 'apps/web/src/constants';
+import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import {
   DiscountType,
   DiscountTypes,
@@ -33,29 +32,49 @@ import {
   parseAbiParameters,
 } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
+import { base, baseSepolia } from 'viem/chains';
 
 const EXPIRY = process.env.USERNAMES_SIGNATURE_EXPIRATION_SECONDS ?? '30';
 const previousClaimsKVPrefix = 'username:claims:';
 
-const discountTypes: DiscountTypes = {
-  [DiscountType.CB]: {
-    schemaId: ATTESTATION_VERIFIED_ACCOUNT_SCHEMA_ID,
-    discountValidatorAddress: USERNAME_CB_DISCOUNT_VALIDATOR,
+type DiscountTypesByChainId = Record<number, DiscountTypes>;
+const discountTypes: DiscountTypesByChainId = {
+  [base.id]: {
+    [DiscountType.CB]: {
+      schemaId: ATTESTATION_VERIFIED_ACCOUNT_SCHEMA_IDS[base.id],
+      discountValidatorAddress: USERNAME_CB_DISCOUNT_VALIDATORS[base.id],
+    },
+    [DiscountType.CB1]: {
+      schemaId: ATTESTATION_VERIFIED_CB1_ACCOUNT_SCHEMA_IDS[base.id],
+      discountValidatorAddress: USERNAME_CB1_DISCOUNT_VALIDATORS[base.id],
+    },
+    [DiscountType.EARLY_ACCESS]: {
+      discountValidatorAddress: USERNAME_EA_DISCOUNT_VALIDATORS[base.id],
+    },
   },
-  [DiscountType.CB1]: {
-    schemaId: ATTESTATION_VERIFIED_CB1_ACCOUNT_SCHEMA_ID,
-    discountValidatorAddress: USERNAME_CB1_DISCOUNT_VALIDATOR,
-  },
-  [DiscountType.EARLY_ACCESS]: {
-    discountValidatorAddress: USERNAME_EA_DISCOUNT_VALIDATOR,
+  [baseSepolia.id]: {
+    [DiscountType.CB]: {
+      schemaId: ATTESTATION_VERIFIED_ACCOUNT_SCHEMA_IDS[baseSepolia.id],
+      discountValidatorAddress: USERNAME_CB_DISCOUNT_VALIDATORS[baseSepolia.id],
+    },
+    [DiscountType.CB1]: {
+      schemaId: ATTESTATION_VERIFIED_CB1_ACCOUNT_SCHEMA_IDS[baseSepolia.id],
+      discountValidatorAddress: USERNAME_CB1_DISCOUNT_VALIDATORS[baseSepolia.id],
+    },
+    [DiscountType.EARLY_ACCESS]: {
+      discountValidatorAddress: USERNAME_EA_DISCOUNT_VALIDATORS[baseSepolia.id],
+    },
   },
 };
 
-export async function hasRegisteredWithDiscount(addresses: Address[]): Promise<boolean> {
-  const publicClient = getPublicClient(USERNAME_CHAIN_ID);
+export async function hasRegisteredWithDiscount(
+  addresses: Address[],
+  chainId: number,
+): Promise<boolean> {
+  const publicClient = getBasenamePublicClient(chainId);
 
   return publicClient.readContract({
-    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
+    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[chainId],
     abi: RegistrarControllerABI,
     functionName: 'hasRegisteredWithDiscount',
     args: [addresses],
@@ -92,10 +111,11 @@ async function signMessageWithTrustedSigner(
 export async function sybilResistantUsernameSigning(
   address: `0x${string}`,
   discountType: DiscountType,
+  chainId: number,
 ): Promise<CoinbaseProofResponse> {
-  const schema = discountTypes[discountType]?.schemaId;
+  const schema = discountTypes[chainId][discountType]?.schemaId;
 
-  const discountValidatorAddress = discountTypes[discountType]?.discountValidatorAddress;
+  const discountValidatorAddress = discountTypes[chainId][discountType]?.discountValidatorAddress;
   if (!discountValidatorAddress || !isAddress(discountValidatorAddress)) {
     throw new Error('Must provide a valid discountValidatorAddress');
   }
@@ -103,7 +123,7 @@ export async function sybilResistantUsernameSigning(
   const attestations = await getAttestations(
     address,
     // @ts-expect-error onchainkit expects a different type for Chain (??)
-    { id: USERNAME_CHAIN_ID },
+    { id: chainId },
     { schemas: [schema] },
   );
   if (!attestations?.length) {
@@ -116,7 +136,7 @@ export async function sybilResistantUsernameSigning(
   try {
     let { linkedAddresses, idemKey } = await getLinkedAddresses(address as string);
 
-    const hasPreviouslyRegistered = await hasRegisteredWithDiscount(linkedAddresses);
+    const hasPreviouslyRegistered = await hasRegisteredWithDiscount(linkedAddresses, chainId);
     // if any linked address registered previously return an error
     if (hasPreviouslyRegistered) {
       throw new Error('You have already claimed a username with a different address (onchain).');

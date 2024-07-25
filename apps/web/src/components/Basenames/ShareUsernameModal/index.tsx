@@ -16,6 +16,7 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 
 export const socialPlatformsEnabled = [SocialPlatform.Twitter, SocialPlatform.Farcaster];
 
@@ -36,6 +37,8 @@ export default function ShareUsernameModal({
       'animate-pulse': imageIsLoading,
     },
   );
+
+  const { basenameChain } = useBasenameChain();
 
   const coverImageClasses = classNames('transition-opacity duration-500', {
     'opacity-0': imageIsLoading,
@@ -81,7 +84,10 @@ export default function ShareUsernameModal({
         </p>
         <figure className={coverImageWrapperClasses}>
           <img
-            src={`/api/basenames/${formatBaseEthDomain(selectedName)}/assets/coverImage.png`}
+            src={`/api/basenames/${formatBaseEthDomain(
+              selectedName,
+              basenameChain.id,
+            )}/assets/coverImage.png`}
             alt={selectedName}
             onLoad={onLoadImage}
             className={coverImageClasses}

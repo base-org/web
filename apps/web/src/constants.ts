@@ -1,4 +1,3 @@
-import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
 import { Address } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
 
@@ -17,13 +16,11 @@ export const trustedSignerAddress = (process.env.TRUSTED_SIGNER_ADDRESS as Addre
 export const trustedSignerPKey = process.env.TRUSTED_SIGNER_PRIVATE_KEY ?? '0x';
 
 type AddressMap = Record<number, Address>;
+
 export const ATTESTATION_VERIFIED_ACCOUNT_SCHEMA_IDS: AddressMap = {
   [baseSepolia.id]: '0x2f34a2ffe5f87b2f45fbc7c784896b768d77261e2f24f77341ae43751c765a69',
   [base.id]: '0xf8b05c79f090979bf4a80270aba232dff11a10d9ca55c4f88de95317970f0de9',
 };
-
-export const ATTESTATION_VERIFIED_ACCOUNT_SCHEMA_ID =
-  ATTESTATION_VERIFIED_ACCOUNT_SCHEMA_IDS[USERNAME_CHAIN_ID];
 
 export const ATTESTATION_VERIFIED_CB1_ACCOUNT_SCHEMA_IDS: AddressMap = {
   [baseSepolia.id]: '0xef8a28852c57170eafe8745aff8b47e22d36b8fb05476cc9ade66637974a1e8c',
@@ -70,5 +67,3 @@ export const coinbaseSmartWalletABI = [
     stateMutability: 'payable',
   },
 ] as const;
-export const ATTESTATION_VERIFIED_CB1_ACCOUNT_SCHEMA_ID =
-  ATTESTATION_VERIFIED_CB1_ACCOUNT_SCHEMA_IDS[USERNAME_CHAIN_ID];

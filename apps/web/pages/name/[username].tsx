@@ -7,7 +7,7 @@ import {
   openGraphImageType,
   openGraphImageWidth,
 } from 'apps/web/src/utils/opengraphs';
-import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
+import { BaseName } from 'apps/web/src/utils/usernames';
 import { NextPageContext } from 'next';
 import Head from 'next/head';
 import { useParams } from 'next/navigation';
@@ -17,14 +17,14 @@ import { ReactElement } from 'react';
 const usernameProfileAnalyticContext = 'username_profile';
 
 export function Username({ domain }: { domain: string }) {
-  const { username: profileUsername } = useParams<{ username: string }>();
+  const params = useParams<{ username: BaseName }>();
+  const profileUsername = params?.username;
   const ogImageUrl = `${domain}/api/basenames/${profileUsername}/assets/coverImage.png`;
 
-  const formattedUsername = formatBaseEthDomain(profileUsername.toString());
   return (
     <>
       <Head>
-        <title>Basenames | {formattedUsername}</title>
+        <title>Basenames | {profileUsername}</title>
         <meta property="og:image" content={ogImageUrl} />
         <meta property="og:image:secure_url" content={ogImageUrl} />
         <meta property="og:image:type" content={openGraphImageType} />

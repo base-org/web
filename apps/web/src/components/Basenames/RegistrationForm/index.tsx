@@ -16,8 +16,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { formatEther } from 'viem';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
-import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
-
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 function formatEtherPrice(price?: bigint) {
   if (price === undefined) {
     return '...';
@@ -40,6 +39,8 @@ function formatUsdPrice(price: bigint, ethUsdPrice: number) {
 export default function RegistrationForm() {
   const { openConnectModal } = useConnectModal();
   const { logEventWithContext } = useAnalytics();
+  const { basenameChain } = useBasenameChain();
+
   const {
     transactionData,
     transactionError,
@@ -220,7 +221,7 @@ export default function RegistrationForm() {
           <TransactionStatus
             className="mt-4 text-center"
             transaction={transactionData}
-            chainId={USERNAME_CHAIN_ID}
+            chainId={basenameChain.id}
           />
         )}
         {!isEarlyAccess && (
