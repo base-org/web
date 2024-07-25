@@ -12,12 +12,12 @@ import styles from './styles.module.css';
 type BannerName = `${string}Banner`;
 
 type BannerProps = {
-    href: string;
-    text: string;
-    bannerName: BannerName;
+  href: string;
+  text: string;
+  bannerName: BannerName;
 };
 
-export default function Banner({ href, text, bannerName}: BannerProps) {
+export default function Banner({ href, text, bannerName }: BannerProps) {
   const [isBannerVisible, setIsBannerVisible] = useLocalStorage(`${bannerName}Visible'`, true);
 
   const linkClick = useCallback(() => {

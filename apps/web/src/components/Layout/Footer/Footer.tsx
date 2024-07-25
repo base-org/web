@@ -91,6 +91,7 @@ export function Footer() {
               target="_blank"
               rel="noreferrer noopener"
               title="Join us on Discord"
+              aria-label="Join us on Discord"
             >
               <Icon name="discord" width="24" height="20" />
             </a>
@@ -99,6 +100,7 @@ export function Footer() {
               target="_blank"
               rel="noreferrer noopener"
               title="Join us on Twitter"
+              aria-label="Join us on Twitter"
             >
               <Icon name="twitter" width="24" height="20" />
             </a>
@@ -107,6 +109,7 @@ export function Footer() {
               target="_blank"
               rel="noreferrer noopener"
               title="Join us on Github"
+              aria-label="Join us on Github"
             >
               <Icon name="github" width="24" height="24" />
             </a>

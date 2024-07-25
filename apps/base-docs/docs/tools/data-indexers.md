@@ -153,7 +153,6 @@ Subsquid offers a powerful toolkit for creating custom data extraction and proce
 
 To get started, visit the [documentation](https://docs.subsquid.io/) or see this [quickstart with examples](https://docs.subsquid.io/sdk/examples/) on how to easily create subgraphs via Subsquid.
 
-
 #### Supported Networks
 
 - Base Mainnet

@@ -33,6 +33,7 @@ export function OcsBanner() {
             onClick={hideBanner}
             onKeyDown={hideBanner}
             type="button"
+            aria-label="Close banner"
           >
             <Icon name="close" color="black" width="16" height="16" />
           </button>
