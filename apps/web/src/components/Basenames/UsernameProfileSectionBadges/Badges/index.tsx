@@ -13,6 +13,7 @@ import baseInitiate from './images/baseInitiate.png';
 import baseLearnNewcomer from './images/baseLearnNewcomer.png';
 import buildathonParticipant from './images/buildathonParticipant.png';
 import buildathonWinner from './images/buildathonWinner.png';
+import talentScore from './images/talentScore.png';
 
 // gray image imports
 import verifiedIdentityGray from './images/verifiedIdentityGray.png';
@@ -24,10 +25,12 @@ import baseInitiateGray from './images/baseInitiateGray.png';
 import baseLearnNewcomerGray from './images/baseLearnNewcomerGray.png';
 import buildathonParticipantGray from './images/buildathonParticipantGray.png';
 import buildathonWinnerGray from './images/buildathonWinnerGray.png';
+import talentScoreGray from './images/talentScoreGray.png';
+import { useBadgeContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/BadgeContext';
+import Modal from 'apps/web/src/components/Modal';
+import { useCallback } from 'react';
 
-import talentScore from './images/talentScore.png';
-
-type BadgeNames = CoinbaseVerifications | GuildBadges;
+export type BadgeNames = CoinbaseVerifications | GuildBadges | 'TALENT_SCORE';
 
 export const BADGE_IMGS: Record<BadgeNames, StaticImport> = {
   VERIFIED_IDENTITY: verifiedIdentity as StaticImport,
@@ -39,6 +42,7 @@ export const BADGE_IMGS: Record<BadgeNames, StaticImport> = {
   BASE_LEARN_NEWCOMER: baseLearnNewcomer as StaticImport,
   BUILDATHON_PARTICIPANT: buildathonParticipant as StaticImport,
   BUILDATHON_WINNER: buildathonWinner as StaticImport,
+  TALENT_SCORE: talentScore as StaticImport,
 };
 
 export const GRAY_BADGE_IMGS: Record<BadgeNames, StaticImport> = {
@@ -51,6 +55,7 @@ export const GRAY_BADGE_IMGS: Record<BadgeNames, StaticImport> = {
   BASE_LEARN_NEWCOMER: baseLearnNewcomerGray as StaticImport,
   BUILDATHON_PARTICIPANT: buildathonParticipantGray as StaticImport,
   BUILDATHON_WINNER: buildathonWinnerGray as StaticImport,
+  TALENT_SCORE: talentScoreGray as StaticImport,
 };
 
 export const BADGE_NAMES: Record<BadgeNames, string> = {
@@ -63,13 +68,26 @@ export const BADGE_NAMES: Record<BadgeNames, string> = {
   BASE_LEARN_NEWCOMER: 'Base Learn Newcomer',
   BUILDATHON_PARTICIPANT: 'Buildathon Participant',
   BUILDATHON_WINNER: 'Buildathon Winner',
+  TALENT_SCORE: 'Talent Passport Score',
 };
 
 export function Badge({ badge, earned }: { badge: BadgeNames; earned?: boolean }) {
+  const { selectBadge } = useBadgeContext();
+  const onClick = useCallback(() => {
+    selectBadge(badge);
+  }, [selectBadge, badge]);
+
   const name = BADGE_NAMES[badge];
   return (
     <div className="flex flex-col gap-4">
-      <div className="relative flex h-[160px] w-[160px] items-center justify-center rounded-[24px] border border-gray-10">
+      <div
+        className="relative flex h-[160px] w-[160px] items-center justify-center rounded-[24px] border border-gray-10"
+        onClick={onClick}
+        onKeyDown={onClick}
+        aria-label={`See details for ${name}`}
+        role="button"
+        tabIndex={0}
+      >
         <Image
           src={(earned ? BADGE_IMGS : GRAY_BADGE_IMGS)[badge]}
           alt={name}
@@ -96,5 +114,28 @@ export function TalentBadge({ score }: { score: number }) {
       </div>
       <span className="text-sm font-medium">Talent Passport score</span>
     </div>
+  );
+}
+
+export function BadgeModal() {
+  const { modalOpen, closeModal, selectedBadge } = useBadgeContext();
+
+  if (!modalOpen || !selectedBadge) return null;
+
+  const name = BADGE_NAMES[selectedBadge];
+
+  return (
+    <Modal isOpen={modalOpen} onClose={closeModal} title={name}>
+      <div className="flex flex-col items-center gap-4">
+        <Image
+          src={BADGE_IMGS[selectedBadge]}
+          alt={name}
+          height={100}
+          width={100}
+          className="rounded-[24px]"
+        />
+        <span className="text-sm font-medium">{name}</span>
+      </div>
+    </Modal>
   );
 }
