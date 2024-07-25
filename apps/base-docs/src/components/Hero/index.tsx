@@ -22,7 +22,7 @@ export default function Hero() {
   }
 
   logEvent(
-    'hero_exposure',
+    'exposure__build-onchain-for-less-hero-2024-07-23',
     {
       action: ActionType.view,
       componentType: ComponentType.page,
