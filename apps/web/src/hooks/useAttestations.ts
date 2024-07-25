@@ -255,7 +255,7 @@ export function useCheckEAAttestations(): AttestationHookReturns {
     return {
       data: {
         discountValidatorAddress: EAProofResponse.discountValidatorAddress,
-        discount: Discount.CBID,
+        discount: Discount.EARLY_ACCESS,
         validationData: encodedProof,
       },
       loading: false,
