@@ -1,3 +1,4 @@
+import { BaseName } from '@coinbase/onchainkit/identity';
 import Dropdown from 'apps/web/src/components/Dropdown';
 import DropdownItem from 'apps/web/src/components/DropdownItem';
 import DropdownMenu from 'apps/web/src/components/DropdownMenu';
@@ -6,7 +7,6 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { getUserNamePicture } from 'apps/web/src/utils/usernames';
-import { type BaseName } from '@coinbase/onchainkit/identity';
 import classNames from 'classnames';
 import { Address } from 'viem';
 
