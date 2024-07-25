@@ -102,6 +102,43 @@ const USERNAME_PROFILE_SECTION_EXPLORE_LINKS: UsernameProfileSectionExploreLink[
   },
 ];
 
+function ExploreLink(
+  usernameProfileSectionExploreLink: UsernameProfileSectionExploreLink,
+  utmsWithUsername: string,
+  onCardClick: (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    usernameProfileSectionExploreLink: UsernameProfileSectionExploreLink,
+  ) => void,
+) {
+  const onClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    onCardClick(event, usernameProfileSectionExploreLink);
+  }, []);
+  return (
+    <li key={usernameProfileSectionExploreLink.title} className="inline-block w-full">
+      <Link
+        href={`${usernameProfileSectionExploreLink.href}${utmsWithUsername}`}
+        target="_blank"
+        className="group flex w-full flex-col gap-2 hover:text-blue-600"
+        onClick={onClick}
+      >
+        <ImageWithLoading
+          src={usernameProfileSectionExploreLink.image}
+          alt={usernameProfileSectionExploreLink.title}
+          title={usernameProfileSectionExploreLink.title}
+          wrapperClassName="rounded-3xl"
+          backgroundClassName={usernameProfileSectionExploreLink.backgroundClassName}
+          imageClassName="group-hover:rotate-[-1deg] group-hover:scale-105"
+        />
+        <h4 className="mt-2 flex items-center gap-2 transition-all group-hover:gap-4">
+          {usernameProfileSectionExploreLink.title}
+          <Icon name="arrowRight" color="currentColor" height="1rem" width="1rem" />
+        </h4>
+      </Link>
+    </li>
+  );
+}
+
 export default function UsernameProfileSectionExplore() {
   const { profileUsername } = useUsernameProfile();
   const utmsWithUsername = `${utms}&utm_term=${profileUsername}`;
@@ -131,29 +168,9 @@ export default function UsernameProfileSectionExplore() {
     <section className="">
       <UsernameProfileSectionTitle title="Explore ways to build your profile" />
       <ul className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2">
-        {USERNAME_PROFILE_SECTION_EXPLORE_LINKS.map((usernameProfileSectionExploreLink) => (
-          <li key={usernameProfileSectionExploreLink.title} className="inline-block w-full">
-            <Link
-              href={`${usernameProfileSectionExploreLink.href}${utmsWithUsername}`}
-              target="_blank"
-              className="group flex w-full flex-col gap-2 hover:text-blue-600"
-              onClick={(event) => onCardClick(event, usernameProfileSectionExploreLink)}
-            >
-              <ImageWithLoading
-                src={usernameProfileSectionExploreLink.image}
-                alt={usernameProfileSectionExploreLink.title}
-                title={usernameProfileSectionExploreLink.title}
-                wrapperClassName="rounded-3xl"
-                backgroundClassName={usernameProfileSectionExploreLink.backgroundClassName}
-                imageClassName="group-hover:rotate-[-1deg] group-hover:scale-105"
-              />
-              <h4 className="mt-2 flex items-center gap-2 transition-all group-hover:gap-4">
-                {usernameProfileSectionExploreLink.title}
-                <Icon name="arrowRight" color="currentColor" height="1rem" width="1rem" />
-              </h4>
-            </Link>
-          </li>
-        ))}
+        {USERNAME_PROFILE_SECTION_EXPLORE_LINKS.map((usernameProfileSectionExploreLink) =>
+          ExploreLink(usernameProfileSectionExploreLink, utmsWithUsername, onCardClick),
+        )}
       </ul>
       <Modal isOpen={isOpen} onClose={closeModal} title="" titleAlign="left">
         {modalContent}
