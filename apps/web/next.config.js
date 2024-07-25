@@ -197,16 +197,6 @@ module.exports = extendBaseConfig(
     async redirects() {
       return [
         {
-          source: '/names/:username',
-          destination: '/name/:username',
-          permanent: true,
-        },
-        {
-          source: '/name',
-          destination: '/names',
-          permanent: true,
-        },
-        {
           source: '/careers',
           destination: '/jobs',
           permanent: true,
