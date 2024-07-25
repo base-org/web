@@ -177,7 +177,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                 >
                   <DropdownLink href="/ecosystem" label="Apps" />
                   {/* todo ECO-101: add this back for GA */}
-                  {/* <DropdownLink href="/name" label="Names" /> */}
+                  {/* <DropdownLink href="/names" label="Names" /> */}
                   <DropdownLink
                     href="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
                     label="Grants"
