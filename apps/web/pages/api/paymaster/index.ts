@@ -1,25 +1,40 @@
-import { paymasterClient } from "../../../src/utils/paymasterConfig";
-import { willSponsor } from "../../../src/utils/paymasterSponsor";
+import { UserOperation } from 'permissionless';
+import { paymasterClient } from '../../../src/utils/paymasterConfig';
+import { willSponsor } from '../../../src/utils/paymasterSponsor';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-export async function POST(r: Request) {
-    const req = await r.json();
-    const method = req.method;
-    const [userOp, entrypoint, chainId] = req.params;
-    console.log(req.params);
-    if (!willSponsor({ chainId: parseInt(chainId), entrypoint, userOp })) {
-      return Response.json({ error: "Not a sponsorable operation" });
-    }
-    
-    if (method === "pm_getPaymasterStubData") {
-      const result = await paymasterClient.getPaymasterStubData({
-        userOperation: userOp,
-      });
-      return Response.json({ result });
-    } else if (method === "pm_getPaymasterData") {
-      const result = await paymasterClient.getPaymasterData({
-        userOperation: userOp,
-      });
-      return Response.json({ result });
-    }
-    return Response.json({ error: "Method not found" });
+type RequestBody = {
+  params: [
+    UserOperation<'v0.6'>, // userOp
+    string, // endpoint
+    number, // chainId
+  ];
+};
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const method = req.method;
+  if (!req.body?.params && !Array.isArray(req.body?.params)) {
+    return res.status(400).json({ error: 'invalid body' });
   }
+  const { params } = req.body as RequestBody;
+  const [userOp, entrypoint, chainId] = params;
+  try {
+    const willSponsorDecision = await willSponsor({ chainId, entrypoint, userOp });
+    if (!willSponsorDecision) {
+      return res.json({ error: 'Not a sponsorable operation' });
+    }
+
+    if (method === 'pm_getPaymasterStubData') {
+      // @ts-expect-error verified functional by @keshavSinghal
+      const result = await paymasterClient.getPaymasterStubData({ userOperation: userOp });
+      return res.json({ result });
+    } else if (method === 'pm_getPaymasterData') {
+      // @ts-expect-error verified functional by @keshavSinghal
+      const result = await paymasterClient.getPaymasterData({ userOperation: userOp });
+      return res.json({ result });
+    }
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({ error: 'something went wrong validating ' });
+  }
+}

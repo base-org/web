@@ -26,7 +26,7 @@ export async function getLinkedAddresses(address: string): Promise<LinkedAddress
     const contentType = response.headers.get('content-type');
     let errorResponse: ErrorResponse | string;
 
-    if (contentType && contentType.includes('application/json')) {
+    if (contentType?.includes('application/json')) {
       errorResponse = (await response.json()) as ErrorResponse;
     } else {
       errorResponse = await response.text();
