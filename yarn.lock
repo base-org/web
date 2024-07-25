@@ -358,7 +358,6 @@ __metadata:
     "@guildxyz/sdk": 2.6.0
     "@headlessui/react": ^1.7.19
     "@heroicons/react": ^2.1.3
-    "@next/font": ^13.1.5
     "@radix-ui/react-tooltip": ^1.1.2
     "@rainbow-me/rainbowkit": ^2.1.3
     "@tanstack/react-query": ^5.51.11
@@ -4981,13 +4980,6 @@ __metadata:
   dependencies:
     glob: 7.1.7
   checksum: 58b5ef15d8298c112c72bbbc34a7a5f63637b5a02af7937d86f26223d370c6bd7c8de0eab737851a17dff52c620068a72179eb72b565add071841b720110490f
-  languageName: node
-  linkType: hard
-
-"@next/font@npm:^13.1.5":
-  version: 13.5.6
-  resolution: "@next/font@npm:13.5.6"
-  checksum: 12aa997147094bb122e2e22b29a2f6c1872de37fca0b444f20aa5c48e20bd8176c7d8661c1c597a43d528c7dc75d3acc44bc08c47aa716a5ab450fca68e4c814
   languageName: node
   linkType: hard
 
