@@ -14,10 +14,10 @@ export default function Hero() {
   if (!isReady) {
     return <HeroLoadingState />;
   }
-  if (userVariant === 'treatment') {
-    return <TreatmentHero />;
+  if (userVariant === 'control') {
+    return <ControlHero />;
   }
-  return <ControlHero />;
+  return <TreatmentHero />;
 }
 
 function HeroLoadingState() {
