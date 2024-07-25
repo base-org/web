@@ -66,9 +66,7 @@ export function SearchBar({ setSearchText }: Props) {
   }, [setSearchText]);
 
   return (
-    <div
-      className="flex h-10 flex-row items-center gap-2 rounded-[56px] border border-gray-muted p-2 md:w-full lg:w-80"
-    >
+    <div className="flex h-10 flex-row items-center gap-2 rounded-[56px] border border-gray-60 p-2 md:w-full lg:w-80">
       <SearchIcon />
 
       <input
@@ -78,10 +76,10 @@ export function SearchBar({ setSearchText }: Props) {
         onChange={onChange}
         className="w-full bg-black font-sans text-base text-white placeholder:text-gray-muted focus:outline-none"
         placeholder="Search"
-        aria-label='Search for apps and integrations in the Base ecosystem'
+        aria-label="Search for apps and integrations in the Base ecosystem"
       />
       {text && (
-        <button type="button" onClick={clearInput}>
+        <button type="button" onClick={clearInput} aria-label="clear input">
           <XIcon />
         </button>
       )}

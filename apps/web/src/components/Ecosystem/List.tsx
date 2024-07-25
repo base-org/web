@@ -56,9 +56,12 @@ export function List() {
     }
   }, [router.query.tag]);
 
-  const selectTag = useCallback((tag: string) => {
-    void router.push({ query: { tag } });
-  }, [router]);
+  const selectTag = useCallback(
+    (tag: string) => {
+      void router.push({ query: { tag } });
+    },
+    [router],
+  );
 
   const filteredApps = useMemo(
     () =>

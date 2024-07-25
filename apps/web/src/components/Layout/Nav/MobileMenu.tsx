@@ -176,6 +176,8 @@ function MobileMenu({ color }: MobileMenuProps) {
                   label="Ecosystem"
                 >
                   <DropdownLink href="/ecosystem" label="Apps" />
+                  {/* todo ECO-101: add this back for GA */}
+                  {/* <DropdownLink href="/names" label="Names" /> */}
                   <DropdownLink
                     href="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
                     label="Grants"
@@ -234,13 +236,22 @@ function MobileMenu({ color }: MobileMenuProps) {
                   target="_blank"
                   rel="noreferrer noopener"
                   title="Join us on Farcaster"
+                  aria-label="Join us on Farcaster"
                 >
                   <Icon name="farcaster" />
                 </a>
-                <a href="https://discord.com/invite/buildonbase" title="Join us on Discord">
+                <a
+                  href="https://discord.com/invite/buildonbase"
+                  title="Join us on Discord"
+                  aria-label="Join us on Discord"
+                >
                   <Icon name="discord" />
                 </a>
-                <a href="https://twitter.com/base" title="Join us on Twitter">
+                <a
+                  href="https://twitter.com/base"
+                  title="Join us on Twitter"
+                  aria-label="Join us on Twitter"
+                >
                   <Icon name="twitter" />
                 </a>
                 <a
@@ -248,6 +259,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                   target="_blank"
                   rel="noreferrer noopener"
                   title="Join us on Github"
+                  aria-label="Join us on Github"
                 >
                   <Icon name="github" />
                 </a>

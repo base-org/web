@@ -25,7 +25,7 @@ export function Card({ name, url, description, imageUrl, tags }: Props) {
         <div className="relative h-[80px] w-[80px] overflow-hidden rounded-[3px]">
           <Image src={imageUrl} fill style={{ objectFit: 'contain' }} alt={`Logo of ${name}`} />
         </div>
-        <div className="flex h-6 flex-col justify-center rounded-[100px] bg-black py-1 px-2">
+        <div className="flex h-6 flex-col justify-center rounded-[100px] bg-black px-2 py-1">
           <span className="font-mono text-xs uppercase text-white">{tags[0]}</span>
         </div>
       </div>
@@ -36,9 +36,7 @@ export function Card({ name, url, description, imageUrl, tags }: Props) {
             {getNiceDomainDisplayFromUrl(url)}
           </span>
         </div>
-        <p className="ecosystem-card-description font-sans text-base text-white">
-          {description}
-        </p>
+        <p className="ecosystem-card-description font-sans text-base text-white">{description}</p>
       </div>
     </a>
   );
