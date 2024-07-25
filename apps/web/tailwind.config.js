@@ -11,12 +11,15 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    // https://www.figma.com/design/AH4N0fma2EvI30IltjBGPy/%E2%9C%A8-CDS-Styles-(Variables)?node-id=46-168
     colors: {
       white: '#FFFFFF',
       black: '#000000',
       ocsblue: 'rgba(0, 82, 255, 1)',
       ocspink: '#FF8DCF',
       ocsyellow: '#FEE002',
+      illoblack: '#0A0B0D',
+      transparent: 'transparent',
       blue: {
         0: '#F5F8FF',
         5: '#D3E1FF',
@@ -50,7 +53,7 @@ module.exports = {
         90: '#1E2025',
         100: '#0A0B0D',
         dark: '#0F1012',
-        muted: '#8A919E'
+        muted: '#8A919E',
       },
       green: {
         0: '#F5FFFB',
@@ -487,11 +490,11 @@ module.exports = {
         blackActive: 'rgba(80, 85, 96, 1)',
       },
     },
-    borderRadius: {
-      DEFAULT: '3px',
-      full: '9999px',
-    },
     extend: {
+      borderRadius: {
+        DEFAULT: '3px',
+        full: '9999px',
+      },
       screens: {
         '3xl': '2048px',
       },
@@ -516,6 +519,7 @@ module.exports = {
           '0px -8px 24px 0px rgba(0, 0, 0, 0.25) inset, 0px -2px 4px 0px rgba(255, 255, 255, 0) inset, 0px 2px 10px 0px rgba(35, 36, 38, 1) inset, 0px 4px 10px 0px rgba(0, 82, 255, 0.32), 0px 4px 24px 0px rgba(45, 72, 72, 0.5) inset, 0px 8px 10px 0px rgba(255, 255, 255, 0.25) inset;',
         'dark-button-3d':
           '0px 8px 24px 0px rgba(255, 255, 255, 0.5) inset, 0px -8px 24px 0px rgba(0, 0, 0, 0.25) inset, 0px -2px 4px 0px rgba(255, 255, 255, 0.25) inset, 0px 2px 10px 0px rgba(88, 89, 91, 1) inset, 0px 4px 10px 0px rgba(0, 82, 255, 0.32), 0px 4px 24px 0px rgba(155, 216, 217, 0.5) inset, 0px 8px 10px 0px rgba(255, 255, 255, 0.25) inset;',
+        'pill-glow': '0px 0px 5px 0px #0052FF;',
       },
       keyframes: {
         wiggle: {

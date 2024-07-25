@@ -1,10 +1,6 @@
 import React, { useCallback } from 'react';
 
-import logEvent, {
-  AnalyticsEventData,
-  AnalyticsEventImportance,
-  CCAEventData,
-} from 'base-ui/utils/logEvent';
+import logEvent, { AnalyticsEventData } from 'base-ui/utils/logEvent';
 import styles from './styles.module.css';
 
 type ImageCardProps = {

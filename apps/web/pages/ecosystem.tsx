@@ -1,7 +1,7 @@
 import EcosystemHeroLogos from 'apps/web/public/images/ecosystem-hero-logos-new.png';
 import { Divider } from 'apps/web/src/components/Divider/Divider';
 import { List } from 'apps/web/src/components/Ecosystem/List';
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Head from 'next/head';
 import Image from 'next/image';
 
@@ -21,7 +21,7 @@ function EcosystemHero() {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <Button variant="primary" className="w-full md:w-64">
+            <Button variant={ButtonVariants.Primary} className="w-full md:w-64">
               Apply
             </Button>
           </a>
