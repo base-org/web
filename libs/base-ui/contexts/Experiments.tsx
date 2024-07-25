@@ -10,7 +10,7 @@ import React, {
 import { Experiment, ExperimentClient } from '@amplitude/experiment-js-client';
 
 import { ampDeploymentKey } from '../constants';
-import logEvent, { AnalyticsEventImportance } from '../utils/logEvent';
+import logEvent, { ActionType, AnalyticsEventImportance, ComponentType } from '../utils/logEvent';
 
 declare const window: WindowWithAnalytics;
 
@@ -23,7 +23,17 @@ const ExperimentsContext = createContext<ExperimentsContextProps>({
 const experimentClient = Experiment.initialize(ampDeploymentKey, {
   exposureTrackingProvider: {
     track: (exposure) => {
-      logEvent('$exposure', exposure, AnalyticsEventImportance.high);
+      logEvent(
+        `exposure__${exposure.flag_key}`,
+        {
+          action: ActionType.view,
+          componentType: ComponentType.page,
+          variant: exposure.variant,
+          flag_key: exposure.flag_key,
+          experiment_key: exposure.experiment_key,
+        },
+        AnalyticsEventImportance.high,
+      );
     },
   },
   userProvider: {
