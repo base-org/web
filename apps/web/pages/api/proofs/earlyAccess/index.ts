@@ -1,13 +1,14 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { isSupportedChain, USERNAME_EA_DISCOUNT_VALIDATOR } from 'apps/web/src/addresses/usernames';
 import {
   getProofsByNamespaceAndAddress,
   hasRegisteredWithDiscount,
   ProofTableNamespace,
 } from 'apps/web/src/utils/proofs';
+import { NextApiRequest, NextApiResponse } from 'next';
 import { Address, isAddress } from 'viem';
-import { isSupportedChain, USERNAME_EA_DISCOUNT_VALIDATOR } from 'apps/web/src/addresses/usernames';
+import { base } from 'viem/chains';
 
-export type CBIDProofResponse = {
+export type EarlyAccessProofResponse = {
   discountValidatorAddress: Address;
   address: Address;
   namespace: string;
@@ -37,7 +38,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!chain || Array.isArray(chain)) {
     return res.status(400).json({ error: 'invalid chain' });
   }
-  let parsedChain = parseInt(chain);
+
+  let parsedChain = base.id as number;
+  try {
+    parsedChain = parseInt(chain);
+    console.log('jf parsedChain', parsedChain);
+  } catch (e) {
+    return res.status(400).json({ error: 'invalid chain' });
+  }
   if (!isSupportedChain(parsedChain)) {
     return res.status(400).json({ error: 'chain must be Base or Base Sepolia' });
   }
@@ -55,10 +63,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     );
 
     const proofs = content?.proofs ? (JSON.parse(content.proofs) as `0x${string}`[]) : [];
+    console.log('jf proofs', proofs);
     if (proofs.length === 0) {
-      return res.status(404).json({ error: 'address is not eligible for a cbid discount' });
+      return res.status(404).json({ error: 'address is not eligible for early access' });
     }
-    const responseData: CBIDProofResponse = {
+    const responseData: EarlyAccessProofResponse = {
       ...content,
       proofs,
       discountValidatorAddress: USERNAME_EA_DISCOUNT_VALIDATOR,
@@ -68,5 +77,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     console.error(error);
   }
 
-  return res.status(404).json({ error: 'address is not eligible for a cbid discount' });
+  return res.status(404).json({ error: 'address is not eligible for early access' });
 }

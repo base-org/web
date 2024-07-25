@@ -30,7 +30,7 @@ export function useAggregatedDiscountValidators() {
   const { data: CBIDData, loading: loadingCBIDAttestations } = useCheckCBIDAttestations();
   const { data: CB1Data, loading: loadingCB1Attestations } = useCheckCB1Attestations();
   const { data: EAData, loading: loadingEAAttestations } = useCheckEAAttestations();
-
+  console.log('jf EAData', EAData);
   const { data: coinbaseData, loading: loadingCoinbaseAttestations } =
     useCheckCoinbaseAttestations();
 

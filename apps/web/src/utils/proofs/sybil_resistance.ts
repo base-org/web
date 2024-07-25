@@ -6,6 +6,7 @@ import {
   USERNAME_CB1_DISCOUNT_VALIDATOR,
   USERNAME_CB_DISCOUNT_VALIDATOR,
   USERNAME_CHAIN_ID,
+  USERNAME_EA_DISCOUNT_VALIDATOR,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESS,
 } from 'apps/web/src/addresses/usernames';
 import { getLinkedAddresses } from 'apps/web/src/cdp/api';
@@ -44,6 +45,9 @@ const discountTypes: DiscountTypes = {
   [DiscountType.CB1]: {
     schemaId: ATTESTATION_VERIFIED_CB1_ACCOUNT_SCHEMA_ID,
     discountValidatorAddress: USERNAME_CB1_DISCOUNT_VALIDATOR,
+  },
+  [DiscountType.EARLY_ACCESS]: {
+    discountValidatorAddress: USERNAME_EA_DISCOUNT_VALIDATOR,
   },
 };
 

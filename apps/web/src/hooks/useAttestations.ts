@@ -1,6 +1,8 @@
 import { CBIDProofResponse } from 'apps/web/pages/api/proofs/cbid';
+import { EarlyAccessProofResponse } from 'apps/web/pages/api/proofs/earlyAccess';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
 import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
+import EarlyAccessValidatorABI from 'apps/web/src/abis/EarlyAccessValidator';
 import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
 import { USERNAME_CHAIN_ID } from 'apps/web/src/addresses/usernames';
 import { Discount } from 'apps/web/src/utils/usernames';
@@ -206,27 +208,28 @@ export function useCheckCB1Attestations() {
 
 export function useCheckEAAttestations(): AttestationHookReturns {
   const { address } = useAccount();
-  const [EAProofResponse, setEAProofResponse] = useState<CBIDProofResponse | null>(null);
+  const [EAProofResponse, setEAProofResponse] = useState<EarlyAccessProofResponse | null>(null);
 
   useEffect(() => {
-    async function checkCBIDAttestations(a: string) {
+    async function checkEarlyAccess(a: string) {
       try {
         const params = new URLSearchParams();
         params.append('address', a);
         params.append('chain', USERNAME_CHAIN_ID.toString());
-        const response = await fetch(`/api/proofs/usernamesEarlyAccess?${params}`);
+        const response = await fetch(`/api/proofs/earlyAccess?${params}`);
+        console.log('jf response.ok', response.ok);
         if (response.ok) {
-          const result = (await response.json()) as CBIDProofResponse;
-
+          const result = (await response.json()) as EarlyAccessProofResponse;
+          console.log('jf result', result);
           setEAProofResponse(result);
         }
       } catch (e) {
-        console.error('Error checking CB.ID attestation:', e);
+        console.error('Error checking early access:', e);
       }
     }
 
     if (address) {
-      checkCBIDAttestations(address).catch(console.error);
+      checkEarlyAccess(address).catch(console.error);
     }
   }, [address]);
 
@@ -237,19 +240,24 @@ export function useCheckEAAttestations(): AttestationHookReturns {
         : '0x0',
     [EAProofResponse?.proofs],
   );
+
+  console.log('jf encodedProof', encodedProof);
+
   const readContractArgs = useMemo(() => {
     if (!EAProofResponse?.proofs || !address) {
       return {};
     }
     return {
       address: EAProofResponse?.discountValidatorAddress,
-      abi: CBIDValidatorABI,
+      abi: EarlyAccessValidatorABI,
       functionName: 'isValidDiscountRegistration',
       args: [address, encodedProof],
     };
   }, [address, EAProofResponse?.discountValidatorAddress, EAProofResponse?.proofs, encodedProof]);
+  console.log('jf readContractArgs', readContractArgs);
 
   const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
+  console.log('jf isValid', isValid);
 
   if (isValid && EAProofResponse && address) {
     return {
