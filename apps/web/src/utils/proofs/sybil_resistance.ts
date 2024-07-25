@@ -116,6 +116,7 @@ export async function sybilResistantUsernameSigning(
   const schema = discountTypes[chainId][discountType]?.schemaId;
 
   const discountValidatorAddress = discountTypes[chainId][discountType]?.discountValidatorAddress;
+
   if (!discountValidatorAddress || !isAddress(discountValidatorAddress)) {
     throw new Error('Must provide a valid discountValidatorAddress');
   }

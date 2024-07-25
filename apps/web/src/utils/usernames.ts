@@ -9,16 +9,12 @@ import profilePictures6 from 'apps/web/src/components/ConnectWalletButton/profil
 import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/7.svg';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import { base, baseSepolia, mainnet } from 'viem/chains';
+import { BaseName } from '@coinbase/onchainkit/identity';
 
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 20;
 
 export const USERNAME_DESCRIPTION_MAX_LENGTH = 200;
-
-export type BaseMainnetName = `${string}.base.eth`;
-export type BaseSepoliaName = `${string}.basetest.eth`;
-
-export type BaseName = BaseMainnetName | BaseSepoliaName;
 
 // DANGER: Changing this post-mainnet launch means the stored data won't be accessible via the updated key
 export enum UsernameTextRecordKeys {

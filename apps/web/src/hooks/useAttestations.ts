@@ -10,6 +10,8 @@ import { Address, ReadContractErrorType, encodeAbiParameters } from 'viem';
 import { useAccount, useReadContract } from 'wagmi';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 
+const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
+
 export type AttestationData = {
   discountValidatorAddress: Address;
   discount: Discount;
@@ -40,7 +42,7 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
       }
     }
 
-    if (address) {
+    if (address && !isEarlyAccess) {
       checkCBIDAttestations(address).catch(console.error);
     }
   }, [address, basenameChain.id]);
@@ -113,7 +115,7 @@ export function useCheckCoinbaseAttestations() {
       }
     }
 
-    if (address) {
+    if (address && !isEarlyAccess) {
       checkCoinbaseAttestations(address).catch(console.error);
     }
   }, [address, basenameChain.id]);
@@ -172,7 +174,7 @@ export function useCheckCB1Attestations() {
       }
     }
 
-    if (address) {
+    if (address && !isEarlyAccess) {
       checkCB1Attestations(address).catch(console.error);
     }
   }, [address, basenameChain.id]);

@@ -14,6 +14,7 @@ import { useDebounceValue } from 'usehooks-ts';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import { Chain } from 'viem';
 
 export enum RegistrationSearchInputVariant {
   Small,
@@ -24,6 +25,33 @@ type RegistrationSearchInputProps = {
   variant: RegistrationSearchInputVariant;
   placeholder: string;
 };
+
+type SuggestionEntryProps = {
+  suggestion: string;
+  buttonClasses: string;
+  handleSelectName: (name: string) => void;
+  basenameChain: Chain;
+  iconSize: number;
+};
+
+function SuggestionEntry({
+  suggestion,
+  buttonClasses,
+  handleSelectName,
+  basenameChain,
+  iconSize,
+}: SuggestionEntryProps) {
+  const selectSuggestion = useCallback(() => {
+    handleSelectName(suggestion);
+  }, [handleSelectName, suggestion]);
+
+  return (
+    <button key={suggestion} className={buttonClasses} type="button" onClick={selectSuggestion}>
+      <span className="truncate">{formatBaseEthDomain(suggestion, basenameChain.id)}</span>
+      <Icon name="chevronRight" width={iconSize} height={iconSize} />
+    </button>
+  );
+}
 
 export default function RegistrationSearchInput({
   variant,
@@ -216,6 +244,10 @@ export default function RegistrationSearchInput({
     logEventWithContext('search_available_name_invalid', ActionType.error, { error: message });
   }, [invalidWithMessage, logEventWithContext, message, setSearchInputFocused]);
 
+  const selectName = useCallback(() => {
+    handleSelectName(debouncedSearch);
+  }, [debouncedSearch, handleSelectName]);
+
   return (
     <fieldset
       className={RegistrationSearchInputClasses}
@@ -241,11 +273,7 @@ export default function RegistrationSearchInput({
         ) : isNameAvailable === true ? (
           <>
             <p className={dropdownLabelClasses}>Available</p>
-            <button
-              className={buttonClasses}
-              type="button"
-              onClick={() => handleSelectName(debouncedSearch)}
-            >
+            <button className={buttonClasses} type="button" onClick={selectName}>
               <span className="truncate">
                 {formatBaseEthDomain(debouncedSearch, basenameChain.id)}
               </span>
@@ -282,17 +310,14 @@ export default function RegistrationSearchInput({
                   </div>
                 </Tooltip>
                 {suggestions.map((suggestion) => (
-                  <button
+                  <SuggestionEntry
                     key={suggestion}
-                    className={buttonClasses}
-                    type="button"
-                    onClick={() => handleSelectName(suggestion)}
-                  >
-                    <span className="truncate">
-                      {formatBaseEthDomain(suggestion, basenameChain.id)}
-                    </span>
-                    <Icon name="chevronRight" width={iconSize} height={iconSize} />
-                  </button>
+                    suggestion={suggestion}
+                    buttonClasses={buttonClasses}
+                    handleSelectName={handleSelectName}
+                    basenameChain={basenameChain}
+                    iconSize={iconSize}
+                  />
                 ))}
               </>
             ) : (

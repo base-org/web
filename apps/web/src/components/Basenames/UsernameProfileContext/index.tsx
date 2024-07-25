@@ -1,6 +1,6 @@
+import { BaseName } from '@coinbase/onchainkit/identity';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import { BaseName } from 'apps/web/src/utils/usernames';
 import { useParams } from 'next/navigation';
 import { ReactNode, createContext, useContext, useMemo } from 'react';
 import { Address } from 'viem';
@@ -40,6 +40,7 @@ export default function UsernameProfileProvider({ children }: UsernameProfilePro
     universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
     query: {
       enabled: !!profileUsername,
+      retry: false,
     },
   });
 

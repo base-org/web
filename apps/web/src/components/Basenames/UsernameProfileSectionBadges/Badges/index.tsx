@@ -13,6 +13,7 @@ import baseInitiate from './images/baseInitiate.png';
 import baseLearnNewcomer from './images/baseLearnNewcomer.png';
 import buildathonParticipant from './images/buildathonParticipant.png';
 import buildathonWinner from './images/buildathonWinner.png';
+import talentScore from './images/talentScore.png';
 
 // gray image imports
 import verifiedIdentityGray from './images/verifiedIdentityGray.png';
@@ -24,59 +25,159 @@ import baseInitiateGray from './images/baseInitiateGray.png';
 import baseLearnNewcomerGray from './images/baseLearnNewcomerGray.png';
 import buildathonParticipantGray from './images/buildathonParticipantGray.png';
 import buildathonWinnerGray from './images/buildathonWinnerGray.png';
+import talentScoreGray from './images/talentScoreGray.png';
+import { useBadgeContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/BadgeContext';
+import Modal from 'apps/web/src/components/Modal';
+import { useCallback } from 'react';
+import { Button } from 'apps/web/src/components/Button/Button';
+import Link from 'next/link';
 
-import talentScore from './images/talentScore.png';
+export type BadgeNames = CoinbaseVerifications | GuildBadges | 'TALENT_SCORE';
 
-type BadgeNames = CoinbaseVerifications | GuildBadges;
-
-export const BADGE_IMGS: Record<BadgeNames, StaticImport> = {
-  VERIFIED_IDENTITY: verifiedIdentity as StaticImport,
-  VERIFIED_COUNTRY: verifiedCountry as StaticImport,
-  VERIFIED_COINBASE_ONE: verifiedCoinbaseOne as StaticImport,
-  BASE_BUILDER: baseBuilder as StaticImport,
-  BASE_GRANTEE: baseGrantee as StaticImport,
-  BASE_INITIATE: baseInitiate as StaticImport,
-  BASE_LEARN_NEWCOMER: baseLearnNewcomer as StaticImport,
-  BUILDATHON_PARTICIPANT: buildathonParticipant as StaticImport,
-  BUILDATHON_WINNER: buildathonWinner as StaticImport,
+export const BADGE_INFO: Record<
+  BadgeNames,
+  {
+    name: string;
+    title: string;
+    description: string;
+    cta: string;
+    ctaLink: string;
+    image: StaticImport;
+    grayImage: StaticImport;
+  }
+> = {
+  VERIFIED_IDENTITY: {
+    name: 'Coinbase Verified ID',
+    title: 'Coinbase Verified ID',
+    description:
+      "You've got a Coinbase account and you verified your ID. Thanks for being our customer.",
+    cta: 'Get verified',
+    ctaLink: 'https://coinbase.com/onchain-verify',
+    image: verifiedIdentity,
+    grayImage: verifiedIdentityGray,
+  },
+  VERIFIED_COUNTRY: {
+    name: 'Verified Country',
+    title: 'Verified Country',
+    description: "You've verified what country you live in. It's a beautiful country, no doubt.",
+    cta: 'Get verified',
+    ctaLink: 'https://coinbase.com/onchain-verify',
+    image: verifiedCountry,
+    grayImage: verifiedCountryGray,
+  },
+  VERIFIED_COINBASE_ONE: {
+    name: 'Coinbase One',
+    title: 'Coinbase One',
+    description: "You've got an active Coinbase One membership. Hope you enjoy the perks!",
+    cta: 'Get Coinbase One',
+    ctaLink: 'https://coinbase.com/onchain-verify',
+    image: verifiedCoinbaseOne,
+    grayImage: verifiedCoinbaseOneGray,
+  },
+  BASE_BUILDER: {
+    name: 'Based Builder',
+    title: 'Base Builder',
+    description: "You've deployed 5 or more smart contracts on Base. Impressive!",
+    cta: 'Deploy a smart contract',
+    ctaLink: 'https://guild.xyz/base/based-developers',
+    image: baseBuilder,
+    grayImage: baseBuilderGray,
+  },
+  BASE_GRANTEE: {
+    name: 'Base Grant',
+    title: 'Base Grant',
+    description: 'You were the recipient of a Base Grant. Congrats!',
+    cta: 'Learn more',
+    ctaLink: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders',
+    image: baseGrantee,
+    grayImage: baseGranteeGray,
+  },
+  BASE_INITIATE: {
+    name: 'Based Initiate',
+    title: 'Base Initiate',
+    description: "You've deployed a smart contract on Base. Thanks for building with us!",
+    cta: 'Deploy a smart contract',
+    ctaLink: 'https://guild.xyz/base/based-developers',
+    image: baseInitiate,
+    grayImage: baseInitiateGray,
+  },
+  BASE_LEARN_NEWCOMER: {
+    name: 'Base Learn Newcomer',
+    title: 'Base Learn Newcomer',
+    description:
+      'You completed these Base Learn Modules: Basic Contracts, Storage, Control Structures, Arrays, Inheritance, Mappings, Structs, Error Triags, New Keyword, and Imports.',
+    cta: 'Go to Base Learn',
+    ctaLink: 'https://guild.xyz/base/base-learn',
+    image: baseLearnNewcomer,
+    grayImage: baseLearnNewcomerGray,
+  },
+  BUILDATHON_PARTICIPANT: {
+    name: 'Buildathon Participant',
+    title: 'Buildathon Participant',
+    description:
+      'You were a participant in our 2024 Onchain Summer Buildathon. Thanks for building with us!',
+    cta: 'Learn more',
+    ctaLink: 'https://www.base.org/onchainsummer',
+    image: buildathonParticipant,
+    grayImage: buildathonParticipantGray,
+  },
+  BUILDATHON_WINNER: {
+    name: 'Buildathon Winner',
+    title: 'Buildathon Winner',
+    description: 'You submitted a winning project in the Onchain Summer 2024 Buildathon. Congrats!',
+    cta: 'Learn more',
+    ctaLink: 'https://www.base.org/onchainsummer',
+    image: buildathonWinner,
+    grayImage: buildathonWinnerGray,
+  },
+  TALENT_SCORE: {
+    name: 'Talent Passport Score',
+    title: 'Talent Passport Builder Score',
+    description: "Your builder score as a Talent passport holder. You're legit!",
+    cta: 'Get your talent passport',
+    ctaLink: 'https://passport.talentprotocol.com/',
+    image: talentScore,
+    grayImage: talentScoreGray,
+  },
 };
 
-export const GRAY_BADGE_IMGS: Record<BadgeNames, StaticImport> = {
-  VERIFIED_IDENTITY: verifiedIdentityGray as StaticImport,
-  VERIFIED_COUNTRY: verifiedCountryGray as StaticImport,
-  VERIFIED_COINBASE_ONE: verifiedCoinbaseOneGray as StaticImport,
-  BASE_BUILDER: baseBuilderGray as StaticImport,
-  BASE_GRANTEE: baseGranteeGray as StaticImport,
-  BASE_INITIATE: baseInitiateGray as StaticImport,
-  BASE_LEARN_NEWCOMER: baseLearnNewcomerGray as StaticImport,
-  BUILDATHON_PARTICIPANT: buildathonParticipantGray as StaticImport,
-  BUILDATHON_WINNER: buildathonWinnerGray as StaticImport,
-};
+export function Badge({
+  badge,
+  claimed,
+  score,
+}: {
+  badge: BadgeNames;
+  claimed?: boolean;
+  score?: number;
+}) {
+  const { selectBadge } = useBadgeContext();
+  const onClick = useCallback(() => {
+    selectBadge({ badge, claimed: !!claimed });
+  }, [selectBadge, badge, claimed]);
 
-export const BADGE_NAMES: Record<BadgeNames, string> = {
-  VERIFIED_IDENTITY: 'Coinbase Verified ID',
-  VERIFIED_COUNTRY: 'Verified Country',
-  VERIFIED_COINBASE_ONE: 'Coinbase One',
-  BASE_BUILDER: 'Based Builder',
-  BASE_GRANTEE: 'Base Grantee',
-  BASE_INITIATE: 'Based Initiate',
-  BASE_LEARN_NEWCOMER: 'Base Learn Newcomer',
-  BUILDATHON_PARTICIPANT: 'Buildathon Participant',
-  BUILDATHON_WINNER: 'Buildathon Winner',
-};
+  const name = BADGE_INFO[badge].name;
+  const showTalentScore = Boolean(claimed && score && badge === 'TALENT_SCORE');
 
-export function Badge({ badge, earned }: { badge: BadgeNames; earned?: boolean }) {
-  const name = BADGE_NAMES[badge];
   return (
     <div className="flex flex-col gap-4">
-      <div className="relative flex h-[160px] w-[160px] items-center justify-center rounded-[24px] border border-gray-10">
+      <div
+        className="relative flex h-[160px] w-[160px] items-center justify-center rounded-[24px] border border-gray-10"
+        onClick={onClick}
+        onKeyDown={onClick}
+        aria-label={`See details for ${name}`}
+        role="button"
+        tabIndex={0}
+      >
         <Image
-          src={(earned ? BADGE_IMGS : GRAY_BADGE_IMGS)[badge]}
+          src={BADGE_INFO[badge][claimed ? 'image' : 'grayImage']}
           alt={name}
           height={100}
           width={100}
         />
-        {!earned && (
+        {showTalentScore && (
+          <span className="absolute font-sans text-3xl font-bold text-white">{score}</span>
+        )}
+        {!claimed && (
           <span className="absolute left-[13px] top-[13px] rounded-[99px] bg-white p-1 px-2 text-sm font-medium uppercase text-palette-primary shadow-pill-glow">
             See criteria
           </span>
@@ -96,5 +197,40 @@ export function TalentBadge({ score }: { score: number }) {
       </div>
       <span className="text-sm font-medium">Talent Passport score</span>
     </div>
+  );
+}
+
+export function BadgeModal() {
+  const { modalOpen, closeModal, selectedClaim } = useBadgeContext();
+
+  if (!modalOpen || !selectedClaim) return null;
+
+  const badge = selectedClaim.badge;
+  const name = BADGE_INFO[badge]?.name;
+
+  return (
+    <Modal isOpen={modalOpen} onClose={closeModal} title="">
+      <div className="flex flex-col items-center gap-4">
+        <Image
+          src={BADGE_INFO[badge].image}
+          alt={name}
+          height={100}
+          width={100}
+          className="rounded-[24px]"
+        />
+        <div className="mb-8 flex flex-col items-center gap-6">
+          <span className="text-2xl font-medium">{name}</span>
+          <p className="text-center">{BADGE_INFO[badge].description}</p>
+          <span className="text-l font-bold uppercase">
+            status: {selectedClaim.claimed ? 'claimed' : 'unclaimed'}
+          </span>
+        </div>
+        <Link href={BADGE_INFO[badge].ctaLink} target="_blank">
+          <Button variant="black" rounded>
+            {BADGE_INFO[badge].cta}
+          </Button>
+        </Link>
+      </div>
+    </Modal>
   );
 }
