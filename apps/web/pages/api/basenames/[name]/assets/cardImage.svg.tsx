@@ -65,7 +65,7 @@ export default async function handler(request: NextRequest) {
         }}
       >
         <figure style={{ borderRadius: '100%', overflow: 'hidden', height: 120, width: 120 }}>
-          <img src={domainName + profilePicture.src} height={120} width={120} />
+          <img src={domainName + profilePicture.src} height={120} width={120} alt={username} />
         </figure>
         <span
           style={{
