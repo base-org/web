@@ -276,11 +276,12 @@ export const convertChainIdToCoinType = (chainId: number): string => {
   }
 
   const cointype = (0x80000000 | chainId) >>> 0;
-  return cointype.toString(16);
+  return cointype.toString(16).toLocaleUpperCase();
 };
 
 export const convertReverseNodeToBytes = ({
   address,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   chainId,
 }: {
   address?: Address;
@@ -289,11 +290,11 @@ export const convertReverseNodeToBytes = ({
   if (!address) return;
   const addressFormatted = address.toLocaleLowerCase() as Address;
   const addressNode = keccak256(addressFormatted.substring(2) as Address);
-  const chainCoinType = convertChainIdToCoinType(chainId);
 
-  const baseReverseNode = namehash(`${chainCoinType}.reverse`);
+  // TODO: Why doesn't this work with baseSepolia??
+  const chainCoinType = convertChainIdToCoinType(base.id);
 
-  // TODO: This can be calculated from the chainId / coinType automatically
+  const baseReverseNode = namehash(`${chainCoinType.toLocaleUpperCase()}.reverse`);
   const addressReverseNode = keccak256(
     encodePacked(['bytes32', 'bytes32'], [baseReverseNode, addressNode]),
   );

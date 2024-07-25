@@ -53,7 +53,7 @@ export default function UsernameNav() {
           <p>
             You are on Base Sepolia.{' '}
             <button
-              className="font-bold text-orange-90 underline underline-offset-2"
+              className="text-orange-90 underline underline-offset-2"
               type="button"
               onClick={switchToMainnet}
             >
