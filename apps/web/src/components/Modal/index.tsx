@@ -82,6 +82,7 @@ export default function Modal({
                       type="button"
                       className="mr-auto text-xl text-[#0A0B0D]"
                       onClick={onBack}
+                      aria-label="Back"
                     >
                       <Icon name="backArrow" width={14} height={14} color="currentColor" />
                     </button>
@@ -91,6 +92,7 @@ export default function Modal({
                       type="button"
                       className="ml-auto text-xl text-[#0A0B0D]"
                       onClick={onClose}
+                      aria-label="Close modal"
                     >
                       <Icon name="close" width={14} height={14} color="currentColor" />
                     </button>

@@ -131,6 +131,7 @@ export default function RegistrationForm() {
                 onClick={decrement}
                 disabled={years === 1}
                 className="flex h-7 w-7 items-center justify-center rounded-full bg-[#DEE1E7]"
+                aria-label="Decrement years"
               >
                 <MinusIcon width="14" height="14" className="fill-[#32353D]" />
               </button>
@@ -141,6 +142,7 @@ export default function RegistrationForm() {
                 type="button"
                 onClick={increment}
                 className="flex h-7 w-7 items-center justify-center rounded-full bg-[#DEE1E7]"
+                aria-label="Increment years"
               >
                 <PlusIcon width="14" height="14" className="fill-[#32353D]" />
               </button>

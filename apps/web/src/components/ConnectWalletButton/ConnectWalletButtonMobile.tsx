@@ -46,6 +46,7 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
               onClick={openAccountModal}
               onKeyUp={openAccountModal}
               type="button"
+              aria-label="Open account modal"
             >
               <UserAvatar />
             </button>

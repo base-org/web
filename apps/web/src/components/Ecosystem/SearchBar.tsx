@@ -79,7 +79,7 @@ export function SearchBar({ setSearchText }: Props) {
         aria-label="Search for apps and integrations in the Base ecosystem"
       />
       {text && (
-        <button type="button" onClick={clearInput}>
+        <button type="button" onClick={clearInput} aria-label="clear input">
           <XIcon />
         </button>
       )}
