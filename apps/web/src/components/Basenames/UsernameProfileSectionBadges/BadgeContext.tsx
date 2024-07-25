@@ -13,16 +13,16 @@ import {
 export type BadgeContextProps = {
   modalOpen: boolean;
   // setSearchInputFocused: Dispatch<SetStateAction<boolean>>;
-  selectedBadge: BadgeNames | undefined;
-  setSelectedBadge: Dispatch<SetStateAction<BadgeNames | undefined>>;
+  selectedClaim: BadgeClaim | undefined;
+  setSelectedClaim: Dispatch<SetStateAction<BadgeClaim | undefined>>;
   closeModal: () => void;
-  selectBadge: (badge: BadgeNames) => void;
+  selectBadge: (claim: BadgeClaim) => void;
 };
 
 export const BadgeContext = createContext<BadgeContextProps>({
   modalOpen: false,
-  selectedBadge: undefined,
-  setSelectedBadge: () => {},
+  selectedClaim: undefined,
+  setSelectedClaim: () => {},
   closeModal: () => {},
   selectBadge: () => {},
 });
@@ -31,33 +31,34 @@ type BadgeProviderProps = {
   children?: ReactNode;
 };
 
+type BadgeClaim = { badge: BadgeNames; claimed: boolean };
+
 export default function BadgeProvider({ children }: BadgeProviderProps) {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [selectedBadge, setSelectedBadge] = useState<BadgeNames | undefined>(undefined);
+  const [selectedClaim, setSelectedClaim] = useState<BadgeClaim | undefined>(undefined);
 
   const closeModal = useCallback(() => {
     setModalOpen(false);
-    setSelectedBadge(undefined);
-  }, [setModalOpen, setSelectedBadge]);
+    setSelectedClaim(undefined);
+  }, [setModalOpen, setSelectedClaim]);
   const selectBadge = useCallback(
-    (badge: BadgeNames) => {
-      setSelectedBadge(badge);
+    (claim: BadgeClaim) => {
+      setSelectedClaim(claim);
       setModalOpen(true);
     },
-    [setModalOpen, setSelectedBadge],
+    [setModalOpen, setSelectedClaim],
   );
 
   const values = useMemo(() => {
     return {
       modalOpen,
-
-      selectedBadge,
-      setSelectedBadge,
+      selectedClaim,
+      setSelectedClaim,
       closeModal,
       selectBadge,
     };
-  }, [closeModal, modalOpen, selectBadge, selectedBadge]);
+  }, [closeModal, modalOpen, selectBadge, selectedClaim]);
 
   return <BadgeContext.Provider value={values}>{children}</BadgeContext.Provider>;
 }

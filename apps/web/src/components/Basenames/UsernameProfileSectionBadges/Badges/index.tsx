@@ -29,6 +29,7 @@ import talentScoreGray from './images/talentScoreGray.png';
 import { useBadgeContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/BadgeContext';
 import Modal from 'apps/web/src/components/Modal';
 import { useCallback } from 'react';
+import { Button } from 'apps/web/src/components/Button/Button';
 
 export type BadgeNames = CoinbaseVerifications | GuildBadges | 'TALENT_SCORE';
 
@@ -58,26 +59,95 @@ export const GRAY_BADGE_IMGS: Record<BadgeNames, StaticImport> = {
   TALENT_SCORE: talentScoreGray as StaticImport,
 };
 
-export const BADGE_NAMES: Record<BadgeNames, string> = {
-  VERIFIED_IDENTITY: 'Coinbase Verified ID',
-  VERIFIED_COUNTRY: 'Verified Country',
-  VERIFIED_COINBASE_ONE: 'Coinbase One',
-  BASE_BUILDER: 'Based Builder',
-  BASE_GRANTEE: 'Base Grantee',
-  BASE_INITIATE: 'Based Initiate',
-  BASE_LEARN_NEWCOMER: 'Base Learn Newcomer',
-  BUILDATHON_PARTICIPANT: 'Buildathon Participant',
-  BUILDATHON_WINNER: 'Buildathon Winner',
-  TALENT_SCORE: 'Talent Passport Score',
+export const BADGE_INFO: Record<
+  BadgeNames,
+  {
+    name: string;
+    title: string;
+    description: string;
+    cta: string;
+  }
+> = {
+  VERIFIED_IDENTITY: {
+    name: 'Coinbase Verified ID',
+    title: 'Coinbase Verified ID',
+    description:
+      "You've got a Coinbase account and you verified your ID. Thanks for being our customer.",
+    cta: 'Get verified',
+  },
+  VERIFIED_COUNTRY: {
+    name: 'Verified Country',
+    title: 'Verified Country',
+    description: "You've verified what country you live in. It's a beautiful country, no doubt.",
+    cta: 'Get verified',
+  },
+  VERIFIED_COINBASE_ONE: {
+    name: 'Coinbase One',
+    title: 'Coinbase One',
+    description: "You've got an active Coinbase One membership. Hope you enjoy the perks!",
+    cta: 'Get Coinbase One',
+  },
+  BASE_BUILDER: {
+    name: 'Based Builder',
+    title: 'Base Builder',
+    description: "You've deployed 5 or more smart contracts on Base. Impressive!",
+    cta: 'Deploy a smart contract',
+  },
+  BASE_GRANTEE: {
+    name: 'Base Grantee',
+    title: 'Base Grant',
+    description: 'You were the recipient of a Base Grant. Congrats!',
+    cta: 'Learn more',
+  },
+  BASE_INITIATE: {
+    name: 'Based Initiate',
+    title: 'Base Initiate',
+    description: "You've deployed a smart contract on Base. Thanks for building with us!",
+    cta: 'Deploy a smart contract',
+  },
+  BASE_LEARN_NEWCOMER: {
+    name: 'Base Learn Newcomer',
+    title: 'Base Learn Newcomer',
+    description:
+      'You completed these Base Learn Modules: Basic Contracts, Storage, Control Structures, Arrays, Inheritance, Mappings, Structs, Error Triags, New Keyword, and Imports.',
+    cta: 'Go to Base Learn',
+  },
+  BUILDATHON_PARTICIPANT: {
+    name: 'Buildathon Participant',
+    title: 'Buildathon Participant',
+    description:
+      'You were a participant in our 2024 Onchain Summer Buildathon. Thanks for building with us!',
+    cta: 'Learn more',
+  },
+  BUILDATHON_WINNER: {
+    name: 'Buildathon Winner',
+    title: 'Buildathon Winner',
+    description: 'You submitted a winning project in the Onchain Summer 2024 Buildathon. Congrats!',
+    cta: 'Learn more',
+  },
+  TALENT_SCORE: {
+    name: 'Talent Passport Score',
+    title: 'Talent Passport Builder Score',
+    description: "Your builder score as a Talent passport holder. You're legit!",
+    cta: 'Get your talent passport',
+  },
 };
 
-export function Badge({ badge, earned }: { badge: BadgeNames; earned?: boolean }) {
+export function Badge({
+  badge,
+  claimed,
+  score,
+}: {
+  badge: BadgeNames;
+  claimed?: boolean;
+  score?: number;
+}) {
   const { selectBadge } = useBadgeContext();
   const onClick = useCallback(() => {
-    selectBadge(badge);
-  }, [selectBadge, badge]);
+    selectBadge({ badge, claimed: !!claimed });
+  }, [selectBadge, badge, claimed]);
 
-  const name = BADGE_NAMES[badge];
+  const name = BADGE_INFO[badge].name;
   return (
     <div className="flex flex-col gap-4">
       <div
@@ -89,12 +159,15 @@ export function Badge({ badge, earned }: { badge: BadgeNames; earned?: boolean }
         tabIndex={0}
       >
         <Image
-          src={(earned ? BADGE_IMGS : GRAY_BADGE_IMGS)[badge]}
+          src={(claimed ? BADGE_IMGS : GRAY_BADGE_IMGS)[badge]}
           alt={name}
           height={100}
           width={100}
         />
-        {!earned && (
+        {claimed && score && badge === 'TALENT_SCORE' && (
+          <span className="absolute font-sans text-3xl font-bold text-white">{score}</span>
+        )}
+        {!claimed && (
           <span className="absolute left-[13px] top-[13px] rounded-[99px] bg-white p-1 px-2 text-sm font-medium uppercase text-palette-primary shadow-pill-glow">
             See criteria
           </span>
@@ -118,23 +191,33 @@ export function TalentBadge({ score }: { score: number }) {
 }
 
 export function BadgeModal() {
-  const { modalOpen, closeModal, selectedBadge } = useBadgeContext();
+  const { modalOpen, closeModal, selectedClaim } = useBadgeContext();
 
-  if (!modalOpen || !selectedBadge) return null;
+  if (!modalOpen || !selectedClaim) return null;
 
-  const name = BADGE_NAMES[selectedBadge];
+  const badge = selectedClaim.badge;
+  const name = BADGE_INFO[badge]?.name;
 
   return (
-    <Modal isOpen={modalOpen} onClose={closeModal} title={name}>
+    <Modal isOpen={modalOpen} onClose={closeModal} title="">
       <div className="flex flex-col items-center gap-4">
         <Image
-          src={BADGE_IMGS[selectedBadge]}
+          src={BADGE_IMGS[badge]}
           alt={name}
           height={100}
           width={100}
           className="rounded-[24px]"
         />
-        <span className="text-sm font-medium">{name}</span>
+        <div className="mb-8 flex flex-col items-center gap-6">
+          <span className="text-2xl font-medium">{name}</span>
+          <p className="text-center">{BADGE_INFO[badge].description}</p>
+          <span className="text-l font-bold uppercase">
+            status: {selectedClaim.claimed ? 'claimed' : 'unclaimed'}
+          </span>
+        </div>
+        <Button variant="black" rounded>
+          {BADGE_INFO[badge].cta}
+        </Button>
       </div>
     </Modal>
   );
