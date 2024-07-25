@@ -28,10 +28,10 @@ export default async function handler(request: NextRequest) {
     new URL('../../../../../src/fonts/CoinbaseDisplay-Regular.ttf', import.meta.url),
   ).then(async (res) => res.arrayBuffer());
 
-  // TODO: Check this works in live/production
   const url = new URL(request.url);
+  const isDevelopment = process.env.NODE_ENV === 'development';
   const username = url.searchParams.get('name') ?? 'yourname';
-  const domainName = `${url.protocol}//${url.host}`;
+  const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
   const profilePicture = getUserNamePicture(username);
 
   // Using Satori for a SVG response

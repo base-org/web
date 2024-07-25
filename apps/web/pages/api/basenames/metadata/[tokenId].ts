@@ -11,9 +11,9 @@ export const config = {
 };
 
 export default async function GET(request: Request) {
-  // TODO: Check this works in live/production
   const url = new URL(request.url);
-  const domainName = `${url.protocol}//${url.host}`;
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
   let tokenId = url.searchParams.get('tokenId');
   if (tokenId?.endsWith('.json')) tokenId = tokenId.slice(0, -5);
 

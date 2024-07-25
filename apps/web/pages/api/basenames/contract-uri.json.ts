@@ -8,7 +8,8 @@ export const config = {
 export default async function GET(request: Request) {
   // TODO: Check this works in live/production
   const url = new URL(request.url);
-  const domainName = `${url.protocol}//${url.host}`;
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
 
   const chainId = url.searchParams.get('chainId') ?? base.id;
   if (!chainId) return NextResponse.json({ error: '406: chainId is missing' }, { status: 406 });
