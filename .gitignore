@@ -1,3 +1,4 @@
+.env
 # Node stuff
 node_modules
 yarn-debug.log*
