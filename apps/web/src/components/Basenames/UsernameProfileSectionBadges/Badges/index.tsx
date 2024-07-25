@@ -156,6 +156,8 @@ export function Badge({
   }, [selectBadge, badge, claimed]);
 
   const name = BADGE_INFO[badge].name;
+  const showTalentScore = Boolean(claimed && score && badge === 'TALENT_SCORE');
+
   return (
     <div className="flex flex-col gap-4">
       <div
@@ -172,7 +174,7 @@ export function Badge({
           height={100}
           width={100}
         />
-        {claimed && score && badge === 'TALENT_SCORE' && (
+        {showTalentScore && (
           <span className="absolute font-sans text-3xl font-bold text-white">{score}</span>
         )}
         {!claimed && (

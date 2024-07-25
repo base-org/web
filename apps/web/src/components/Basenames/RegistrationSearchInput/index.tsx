@@ -26,13 +26,21 @@ type RegistrationSearchInputProps = {
   placeholder: string;
 };
 
-function SuggestionEntry(
-  suggestion: string,
-  buttonClasses: string,
-  handleSelectName: (name: string) => void,
-  basenameChain: Chain,
-  iconSize: number,
-) {
+type SuggestionEntryProps = {
+  suggestion: string;
+  buttonClasses: string;
+  handleSelectName: (name: string) => void;
+  basenameChain: Chain;
+  iconSize: number;
+};
+
+function SuggestionEntry({
+  suggestion,
+  buttonClasses,
+  handleSelectName,
+  basenameChain,
+  iconSize,
+}: SuggestionEntryProps) {
   const selectSuggestion = useCallback(() => {
     handleSelectName(suggestion);
   }, [handleSelectName, suggestion]);
@@ -301,15 +309,16 @@ export default function RegistrationSearchInput({
                     />
                   </div>
                 </Tooltip>
-                {suggestions.map((suggestion) =>
-                  SuggestionEntry(
-                    suggestion,
-                    buttonClasses,
-                    handleSelectName,
-                    basenameChain,
-                    iconSize,
-                  ),
-                )}
+                {suggestions.map((suggestion) => (
+                  <SuggestionEntry
+                    key={suggestion}
+                    suggestion={suggestion}
+                    buttonClasses={buttonClasses}
+                    handleSelectName={handleSelectName}
+                    basenameChain={basenameChain}
+                    iconSize={iconSize}
+                  />
+                ))}
               </>
             ) : (
               <p className={mutedMessage}>

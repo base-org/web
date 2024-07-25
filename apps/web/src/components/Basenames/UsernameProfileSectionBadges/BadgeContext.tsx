@@ -12,7 +12,6 @@ import {
 
 export type BadgeContextProps = {
   modalOpen: boolean;
-  // setSearchInputFocused: Dispatch<SetStateAction<boolean>>;
   selectedClaim: BadgeClaim | undefined;
   setSelectedClaim: Dispatch<SetStateAction<BadgeClaim | undefined>>;
   closeModal: () => void;
@@ -50,15 +49,16 @@ export default function BadgeProvider({ children }: BadgeProviderProps) {
     [setModalOpen, setSelectedClaim],
   );
 
-  const values = useMemo(() => {
-    return {
+  const values = useMemo(
+    () => ({
       modalOpen,
       selectedClaim,
       setSelectedClaim,
       closeModal,
       selectBadge,
-    };
-  }, [closeModal, modalOpen, selectBadge, selectedClaim]);
+    }),
+    [closeModal, modalOpen, selectBadge, selectedClaim],
+  );
 
   return <BadgeContext.Provider value={values}>{children}</BadgeContext.Provider>;
 }
