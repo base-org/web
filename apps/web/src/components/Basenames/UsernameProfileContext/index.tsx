@@ -40,6 +40,7 @@ export default function UsernameProfileProvider({ children }: UsernameProfilePro
     universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
     query: {
       enabled: !!profileUsername,
+      retry: false,
     },
   });
 
