@@ -41,6 +41,7 @@ const experimentClient = Experiment.initialize(ampDeploymentKey, {
 
 export default function ExperimentsProvider({ children }: ExperimentsProviderProps) {
   const [isReady, setIsReady] = useState(false);
+  console.log("deviceId...", window.ClientAnalytics.identity.deviceId);
 
   useEffect(() => {
     async function startExperiments() {
