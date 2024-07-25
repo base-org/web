@@ -117,6 +117,8 @@ export default function RegistrationForm() {
     price !== undefined && ethUsdPrice !== undefined ? formatUsdPrice(price, ethUsdPrice) : '--.--';
   const nameIsFree = price === 0n;
 
+  const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
+
   return (
     <>
       <div className="transition-all duration-500">
@@ -221,20 +223,29 @@ export default function RegistrationForm() {
             chainId={USERNAME_CHAIN_ID}
           />
         )}
-        <div className="mt-6 flex w-full justify-center">
-          <p className="text mr-2 text-center font-bold uppercase text-[#5B616E]">
-            {nameIsFree ? "You've qualified for a free name! " : 'Unlock your username for free! '}
-          </p>
-          <button
-            type="button"
-            className="text-line font-bold uppercase underline"
-            onClick={toggleLearnMoreModal}
-          >
-            Learn more
-          </button>
-        </div>
+        {!isEarlyAccess && (
+          <div className="mt-6 flex w-full justify-center">
+            <p className="text mr-2 text-center font-bold uppercase text-[#5B616E]">
+              {nameIsFree
+                ? "You've qualified for a free name! "
+                : 'Unlock your username for free! '}
+            </p>
+            <button
+              type="button"
+              className="text-line font-bold uppercase underline"
+              onClick={toggleLearnMoreModal}
+            >
+              Learn more
+            </button>
+          </div>
+        )}
       </div>
-      <RegistrationLearnMoreModal isOpen={learnMoreModalOpen} toggleModal={toggleLearnMoreModal} />
+      {!isEarlyAccess && (
+        <RegistrationLearnMoreModal
+          isOpen={learnMoreModalOpen}
+          toggleModal={toggleLearnMoreModal}
+        />
+      )}
     </>
   );
 }
