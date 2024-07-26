@@ -250,7 +250,7 @@ In this tutorial, you learned how to use the main features of Frames - text inpu
 [Base Learn]: https://docs.base.org/base-learn/docs/welcome
 [Farcaster]: https://www.farcaster.xyz/
 [a-frame-in-100-lines]: https://github.com/Zizzamia/a-frame-in-100-lines
-[OnchainKit]: https://github.com/coinbase/onchainkit
+[OnchainKit]: https://onchainkit.xyz
 [Vercel]: https://vercel.com
 [Frame Validator]: https://warpcast.com/~/developers/frames
 [Base channel]: https://warpcast.com/~/channel/base
