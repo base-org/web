@@ -200,7 +200,7 @@ Watch the [Base Channel] to stay up-to-date on new developments!
 [Cast Action]: https://warpcast.notion.site/Spec-Farcaster-Actions-84d5a85d479a43139ea883f6823d8caa
 [Farcaster]: https://www.farcaster.xyz/
 [a-frame-in-100-lines]: https://github.com/Zizzamia/a-frame-in-100-lines
-[OnchainKit]: https://github.com/coinbase/onchainkit
+[OnchainKit]: https://onchainkit.xyz
 [Vercel]: https://vercel.com
 [Frame Validator]: https://warpcast.com/~/developers/frames
 [Base channel]: https://warpcast.com/~/channel/base
