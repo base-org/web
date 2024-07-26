@@ -93,9 +93,7 @@ export default function RegistrationProfileForm() {
         .then(() => {
           router.push(`name/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
         })
-        .catch(() => {
-          // console.log({ error });
-        });
+        .catch(() => {});
     }
 
     if (transactionData.status === 'reverted') {
