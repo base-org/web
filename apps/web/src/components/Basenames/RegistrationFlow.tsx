@@ -14,7 +14,7 @@ import RegistrationSearchInput, {
 } from 'apps/web/src/components/Basenames/RegistrationSearchInput';
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
 import { formatBaseEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
@@ -22,7 +22,7 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 import { ExclamationCircleIcon } from '@heroicons/react/16/solid';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
-import { useAccount } from 'wagmi';
+import { useAccount, useChainId, useSwitchChain } from 'wagmi';
 
 /*
 test addresses w/ different verifications
@@ -41,6 +41,19 @@ export function RegistrationFlow() {
   const { discount, registrationStep, searchInputFocused, selectedName, setSelectedName } =
     useRegistration();
   const { basenameChain } = useBasenameChain();
+  const chainId = useChainId();
+  const { switchChain } = useSwitchChain();
+
+  useEffect(() => {
+    if (!chainId || !switchChain) {
+      return;
+    }
+
+    if (!supportedChainIds.includes(chainId)) {
+      switchChain({ chainId: basenameChain.id });
+    }
+  }, [basenameChain.id, chainId, switchChain]);
+
   const isSearch = registrationStep === RegistrationSteps.Search;
   const isClaim = registrationStep === RegistrationSteps.Claim;
   const isPending = registrationStep === RegistrationSteps.Pending;
