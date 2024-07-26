@@ -1,3 +1,4 @@
+import { premintMapping } from 'apps/web/pages/api/basenames/metadata/premintsMapping';
 import L2Resolver from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
@@ -34,12 +35,17 @@ export default async function GET(request: Request) {
   );
 
   const client = getBasenamePublicClient(Number(chainId));
-  const basename = await client.readContract({
+  let basename = await client.readContract({
     abi: L2Resolver,
     address: USERNAME_L2_RESOLVER_ADDRESSES[Number(chainId)],
     args: [namehashNode],
     functionName: 'name',
   });
+
+  // Premints are hardcoded, the list will reduce when/if they get claimed
+  if (!basename) {
+    basename = premintMapping[tokenId];
+  }
 
   if (!basename) return NextResponse.json({ error: '404: Basename not found' }, { status: 404 });
 

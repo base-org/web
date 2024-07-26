@@ -18,11 +18,12 @@ export default async function GET(request: Request) {
 
   const tokenMedata = {
     name: name,
-    description: 'TODO',
-    image: 'TODO', // TODO
-    banner_image: 'TODO.png', // TODO
-    featured_image: 'TODO.png', // TODO
-    external_link: `${domainName}/name`,
+    description:
+      'Basenames are a core onchain building block that enables anyone to establish their identity on Base by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Base.',
+    image: `${domainName}/images/basenames/contract-uri/logo.png`,
+    banner_image: `${domainName}/images/basenames/contract-uri/cover-image.png`,
+    featured_image: `${domainName}/images/basenames/contract-uri/feature-image.png`,
+    external_link: `${domainName}/names`,
     collaborators: [],
   };
 
