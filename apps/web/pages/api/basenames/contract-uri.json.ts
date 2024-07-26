@@ -6,7 +6,6 @@ export const config = {
 };
 
 export default async function GET(request: Request) {
-  // TODO: Check this works in live/production
   const url = new URL(request.url);
   const isDevelopment = process.env.NODE_ENV === 'development';
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
