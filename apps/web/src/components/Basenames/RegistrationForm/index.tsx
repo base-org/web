@@ -19,10 +19,11 @@ import {
   useNameRegistrationPrice,
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
+import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { formatEther } from 'viem';
-import { useAccount, useChains, useSwitchChain } from 'wagmi';
+import { useAccount, useBalance, useChains, useSwitchChain } from 'wagmi';
 
 const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
 
@@ -46,7 +47,7 @@ function formatUsdPrice(price: bigint, ethUsdPrice: number) {
 }
 
 export default function RegistrationForm() {
-  const { isConnected, chain: connectedChain } = useAccount();
+  const { isConnected, chain: connectedChain, address } = useAccount();
   const chains = useChains();
   const { openConnectModal } = useConnectModal();
   const { logEventWithContext } = useAnalytics();
@@ -134,6 +135,9 @@ export default function RegistrationForm() {
       .catch(() => {});
   }, [registerName]);
 
+  const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
+  const insufficientBalanceToRegister =
+    balance?.value !== undefined && price !== undefined && balance?.value < price;
   const usdPrice =
     price !== undefined && ethUsdPrice !== undefined ? formatUsdPrice(price, ethUsdPrice) : '--.--';
   const nameIsFree = price === 0n;
@@ -173,15 +177,27 @@ export default function RegistrationForm() {
               <div className="flex items-baseline justify-start gap-4">
                 {discountedPrice !== undefined ? (
                   <div className=" flex flex-row items-baseline justify-around gap-2">
-                    <p className="whitespace-nowrap text-3xl text-black line-through">
+                    <p
+                      className={classNames('whitespace-nowrap text-3xl text-black line-through', {
+                        'text-state-n-hovered': insufficientBalanceToRegister,
+                      })}
+                    >
                       {formatEtherPrice(initialPrice)}
                     </p>
-                    <p className="whitespace-nowrap text-3xl text-green-50">
+                    <p
+                      className={classNames('whitespace-nowrap text-3xl text-green-50', {
+                        'text-state-n-hovered': insufficientBalanceToRegister,
+                      })}
+                    >
                       {formatEtherPrice(discountedPrice)} ETH
                     </p>
                   </div>
                 ) : (
-                  <p className=" whitespace-nowrap text-3xl text-black">
+                  <p
+                    className={classNames('whitespace-nowrap text-3xl text-black', {
+                      'text-state-n-hovered': insufficientBalanceToRegister,
+                    })}
+                  >
                     {formatEtherPrice(price)} ETH
                   </p>
                 )}
@@ -193,11 +209,14 @@ export default function RegistrationForm() {
                   <span className="whitespace-nowrap text-xl text-gray-60">${usdPrice}</span>
                 )}
               </div>
-              {nameIsFree && <p className="text-sm text-green-50">Free with your verification</p>}
-              {Boolean(nameIsFree && isEarlyAccess) && (
+              {insufficientBalanceToRegister ? (
+                <p className="text-sm text-state-n-hovered">your ETH balance is insufficient</p>
+              ) : Boolean(nameIsFree && isEarlyAccess) ? (
                 <p className="text-sm text-green-50">
                   Registration is discounted during Early Access.
                 </p>
+              ) : (
+                nameIsFree && <p className="text-sm text-green-50">Free with your verification</p>
               )}
             </div>
 
@@ -226,7 +245,7 @@ export default function RegistrationForm() {
                     type="button"
                     variant={ButtonVariants.Black}
                     size={ButtonSizes.Small}
-                    disabled={registerNameTransactionIsPending}
+                    disabled={insufficientBalanceToRegister || registerNameTransactionIsPending}
                     isLoading={registerNameTransactionIsPending}
                     rounded
                   >
