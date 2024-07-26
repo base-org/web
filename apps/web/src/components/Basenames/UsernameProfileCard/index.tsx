@@ -44,7 +44,7 @@ export default function UsernameProfileCard() {
   return (
     <div className="flex flex-col gap-4 rounded-2xl bg-[#EEF0F3] p-8 shadow-xl">
       {!!textRecordDescription && (
-        <p className="text-lg font-bold text-[#5B616E]">{textRecordDescription}</p>
+        <p className="break-words text-lg font-bold text-[#5B616E]	">{textRecordDescription}</p>
       )}
 
       <ul className="flex flex-col gap-2">
