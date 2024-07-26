@@ -158,6 +158,7 @@ export function BadgeImage({ badge, claimed, score, size, name }: BadgeImageProp
         src={BADGE_INFO[badge][claimed ? 'image' : 'grayImage']}
         alt={name}
         height={size}
+        wrapperClassName="rounded-full"
         width={size}
       />
       {showTalentScore && (
