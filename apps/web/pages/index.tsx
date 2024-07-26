@@ -31,13 +31,6 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Base</title>
-        <meta
-          content="Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain."
-          name="description"
-        />
-      </Head>
       <FrameMetadata
         buttons={buttons}
         image="https://base.org/images/base-open-graph.png"
