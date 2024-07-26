@@ -112,7 +112,6 @@ function ExploreLink(
 ) {
   const onClick = useCallback(
     (event: React.MouseEvent<HTMLAnchorElement>) => {
-      event.preventDefault();
       onCardClick(event, usernameProfileSectionExploreLink);
     },
     [onCardClick, usernameProfileSectionExploreLink],
