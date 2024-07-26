@@ -1,6 +1,5 @@
 import { CoinbaseVerifications } from 'apps/web/src/hooks/useCoinbaseVerifications';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-import Image from 'next/image';
 import { GuildBadges } from 'apps/web/src/hooks/useBaseGuild';
 
 // image imports
@@ -31,6 +30,7 @@ import Modal from 'apps/web/src/components/Modal';
 import { useCallback } from 'react';
 import { Button } from 'apps/web/src/components/Button/Button';
 import Link from 'next/link';
+import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 
 export type BadgeNames = CoinbaseVerifications | GuildBadges | 'TALENT_SCORE';
 
@@ -154,7 +154,7 @@ export function BadgeImage({ badge, claimed, score, size, name }: BadgeImageProp
 
   return (
     <div className="relative flex h-[160px] w-[160px] items-center justify-center">
-      <Image
+      <ImageWithLoading
         src={BADGE_INFO[badge][claimed ? 'image' : 'grayImage']}
         alt={name}
         height={size}

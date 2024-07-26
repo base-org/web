@@ -1,10 +1,10 @@
 import Image, { StaticImageData } from 'next/image';
 import classNames from 'classnames';
 import { useCallback, useState } from 'react';
-import { PlaceholderValue } from 'next/dist/shared/lib/get-img-props';
+import { PlaceholderValue, StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 type ImageWithLoadingProps = {
-  src: string | StaticImageData;
+  src: string | StaticImageData | StaticImport;
   alt: string;
   title?: string;
   width?: number | `${number}` | undefined;
