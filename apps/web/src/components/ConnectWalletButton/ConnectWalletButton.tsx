@@ -112,7 +112,7 @@ export function ConnectWalletButton({
 
   if (!chainSupported) {
     return (
-      <button onClick={openChainModal} type="button">
+      <button className="px-2 py-1" onClick={openChainModal} type="button">
         Wrong network
       </button>
     );
