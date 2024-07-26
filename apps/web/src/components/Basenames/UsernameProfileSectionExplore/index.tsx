@@ -97,7 +97,7 @@ const USERNAME_PROFILE_SECTION_EXPLORE_LINKS: UsernameProfileSectionExploreLink[
   {
     title: 'Go to Base Learn',
     image: baseLearnCard,
-    href: 'https://docs.base.org/base-camp/progress',
+    href: 'https://docs.base.org/base-learn/progress',
     backgroundClassName: 'bg-blue-500',
   },
 ];
