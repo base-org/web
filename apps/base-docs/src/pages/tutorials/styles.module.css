@@ -57,6 +57,7 @@
 }
 
 .tutorialsMarkdown {
+  width: 100%;
   max-width: 841px !important;
   padding-top: 24px;
   padding-bottom: 24px;
