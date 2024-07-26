@@ -1,3 +1,4 @@
+'use client';
 import Fieldset from 'apps/web/src/components/Fieldset';
 import Input from 'apps/web/src/components/Input';
 import Label from 'apps/web/src/components/Label';

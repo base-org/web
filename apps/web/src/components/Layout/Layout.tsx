@@ -1,3 +1,4 @@
+'use client';
 import { CookieBanner } from '@coinbase/cookie-banner';
 import UsernameNav from 'apps/web/src/components/Layout/UsernameNav';
 import localFont from 'next/font/local';
@@ -67,7 +68,7 @@ const britney = localFont({
   variable: '--font-britney',
 });
 
-const cookieBannerTheme = {
+export const cookieBannerTheme = {
   colors: {
     primary: '#1652F0',
     positive: '#05B169',

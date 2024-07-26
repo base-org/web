@@ -1,3 +1,4 @@
+'use client';
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
 import { StaticImageData } from 'next/image';
 import onChainSummerPassCard from './images/onChainSummerPassCard.png';

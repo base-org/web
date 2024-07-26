@@ -1,3 +1,4 @@
+'use client';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Modal from 'apps/web/src/components/Modal';
 import { useCallback, useState } from 'react';

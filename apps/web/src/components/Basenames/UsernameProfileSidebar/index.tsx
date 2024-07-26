@@ -1,3 +1,4 @@
+'use client';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
 import UsernameProfileCard from 'apps/web/src/components/Basenames/UsernameProfileCard';

@@ -1,3 +1,4 @@
+'use client';
 import { Transition } from '@headlessui/react';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { Icon } from 'apps/web/src/components/Icon/Icon';

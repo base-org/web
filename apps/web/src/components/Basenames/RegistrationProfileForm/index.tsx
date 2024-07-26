@@ -1,3 +1,4 @@
+'use client';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import {
   registrationTransitionDuration,

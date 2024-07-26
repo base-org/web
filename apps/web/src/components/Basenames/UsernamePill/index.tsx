@@ -1,3 +1,4 @@
+'use client';
 import { BaseName } from '@coinbase/onchainkit/identity';
 import Dropdown from 'apps/web/src/components/Dropdown';
 import DropdownItem from 'apps/web/src/components/DropdownItem';

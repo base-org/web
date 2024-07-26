@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useSavedTrackingPreference, useCookie } from '@coinbase/cookie-manager';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Script from 'next/script';
 import initCCA from '../../utils/initCCA';
 

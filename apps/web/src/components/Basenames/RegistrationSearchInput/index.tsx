@@ -1,3 +1,4 @@
+'use client';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';

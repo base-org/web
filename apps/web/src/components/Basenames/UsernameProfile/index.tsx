@@ -1,3 +1,4 @@
+'use client';
 import UsernameProfileContent from 'apps/web/src/components/Basenames/UsernameProfileContent';
 import UsernameProfileSidebar from 'apps/web/src/components/Basenames/UsernameProfileSidebar';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
@@ -19,6 +20,8 @@ export default function UsernameProfile() {
   const usernameProfilePageClasses = classNames(
     'mx-auto mt-32 flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 px-4 px-4 pb-40 md:flex-row md:px-8',
   );
+
+  console.log({ profileAddress, profileUsername });
 
   if (
     profileUsername &&

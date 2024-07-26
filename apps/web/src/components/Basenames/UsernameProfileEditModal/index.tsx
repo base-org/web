@@ -1,3 +1,4 @@
+'use client';
 import { upload } from '@vercel/blob/client';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import UsernameAvatarField from 'apps/web/src/components/Basenames/UsernameAvatarField';
