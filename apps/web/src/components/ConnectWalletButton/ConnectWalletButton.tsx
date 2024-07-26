@@ -16,12 +16,13 @@ import {
   ConnectWallet,
   Wallet,
   WalletDropdown,
-  WalletDropdownLink,
   WalletDropdownDisconnect,
 } from '@coinbase/onchainkit/wallet';
 import { Name, Identity, EthBalance } from '@coinbase/onchainkit/identity';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
+import Link from 'next/link';
 
 export enum ConnectWalletButtonVariants {
   Default,
@@ -53,6 +54,8 @@ export function ConnectWalletButton({
   const chains = useChains();
   const chainSupported = !!chain && chains.includes(chain);
   const { basenameChain } = useBasenameChain();
+
+  const { data: baseName, isLoading } = useBaseEnsName({ address });
 
   useEffect(() => {
     if (address) {
@@ -118,6 +121,11 @@ export function ConnectWalletButton({
     );
   }
 
+  const onchainKitDropdownClasse = classNames(
+    'cursor-pointer bg-ock-default active:bg-ock-default-active hover:bg-ock-default-hover',
+    'flex items-center gap-2 px-4 py-2',
+  );
+
   return (
     <Wallet>
       <ConnectWallet withWalletAggregator className="bg-transparent p-2 hover:bg-gray-40/20">
@@ -130,9 +138,30 @@ export function ConnectWalletButton({
           <Name chain={basenameChain} />
           <EthBalance />
         </Identity>
-        <WalletDropdownLink icon="wallet" href="https://wallet.coinbase.com">
-          Go to Wallet Dashboard
-        </WalletDropdownLink>
+        {!isLoading && baseName && (
+          <Link href={`/name/${baseName}`} className={onchainKitDropdownClasse}>
+            <div className="flex w-full flex-row items-center items-center gap-2">
+              <span className="pl-1 text-blue-500">
+                <Icon name="blueCircle" color="currentColor" height="0.8rem" width="0.8rem" />
+              </span>
+              <span>Go to your profile</span>
+            </div>
+          </Link>
+        )}
+
+        {!isLoading && !baseName && (
+          <Link href="/names" className={onchainKitDropdownClasse}>
+            <div className="flex w-full flex-row items-center items-center gap-2">
+              <span className="pl-1 text-blue-500">
+                <Icon name="blueCircle" color="currentColor" height="0.8rem" width="0.8rem" />
+              </span>
+              <span>Claim a Basename</span>
+              <span className="ml-auto animate-pulse pt-[2px] text-xs	font-bold	tracking-widest text-blue-500">
+                NEW
+              </span>
+            </div>
+          </Link>
+        )}
         <WalletDropdownDisconnect />
       </WalletDropdown>
     </Wallet>
