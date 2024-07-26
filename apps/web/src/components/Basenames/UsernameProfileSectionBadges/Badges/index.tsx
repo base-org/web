@@ -141,19 +141,15 @@ export const BADGE_INFO: Record<
   },
 };
 
-export function BadgeImage({
-  badge,
-  claimed,
-  score,
-  size,
-  name,
-}: {
+type BadgeImageProps = {
   badge: BadgeNames;
   claimed?: boolean;
   score?: number;
   size: number;
   name: string;
-}) {
+};
+
+export function BadgeImage({ badge, claimed, score, size, name }: BadgeImageProps) {
   const showTalentScore = Boolean(claimed && score && badge === 'TALENT_SCORE');
 
   return (
