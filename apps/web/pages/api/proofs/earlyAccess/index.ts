@@ -71,7 +71,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       discountValidatorAddress: USERNAME_EA_DISCOUNT_VALIDATORS[parsedChain],
     };
 
-    console.log({ responseData });
     return res.status(200).json(responseData);
   } catch (error: unknown) {
     console.error(error);
