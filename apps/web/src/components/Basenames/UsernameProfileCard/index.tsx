@@ -44,7 +44,7 @@ export default function UsernameProfileCard() {
   return (
     <div className="flex flex-col gap-4 rounded-2xl bg-[#EEF0F3] p-8 shadow-xl">
       {!!textRecordDescription && (
-        <p className="text-lg font-bold text-[#5B616E]">{textRecordDescription}</p>
+        <p className="break-words text-lg font-bold text-[#5B616E]	">{textRecordDescription}</p>
       )}
 
       <ul className="flex flex-col gap-2">
@@ -55,15 +55,19 @@ export default function UsernameProfileCard() {
                 <Link
                   href={formatSocialFieldUrl(textRecordKey, existingTextRecords[textRecordKey])}
                   target="_blank"
-                  className="flex items-center gap-2 text-gray-40 hover:text-blue-500"
+                  className="flex items-center gap-2  text-gray-40 hover:text-blue-500"
                 >
-                  <Icon
-                    name={textRecordsSocialFieldsEnabledIcons[textRecordKey]}
-                    height="1rem"
-                    width="1rem"
-                    color="currentColor"
-                  />
-                  {formatSocialFieldForDisplay(textRecordKey, existingTextRecords[textRecordKey])}
+                  <span>
+                    <Icon
+                      name={textRecordsSocialFieldsEnabledIcons[textRecordKey]}
+                      height="1rem"
+                      width="1rem"
+                      color="currentColor"
+                    />
+                  </span>
+                  <span className="overflow-hidden text-ellipsis">
+                    {formatSocialFieldForDisplay(textRecordKey, existingTextRecords[textRecordKey])}
+                  </span>
                 </Link>
               </li>
             ),

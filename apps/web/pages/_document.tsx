@@ -1,4 +1,4 @@
-import { Head, Html, Main, NextScript, DocumentProps, DocumentContext } from 'next/document';
+import { Head, Html, Main, NextScript } from 'next/document';
 
 type CustomDocumentProps = {
   ogData: {
@@ -9,62 +9,7 @@ type CustomDocumentProps = {
   };
 };
 
-const ogDataForPath: Record<string, CustomDocumentProps['ogData']> = {
-  '/': {
-    title: 'Base',
-    description:
-      'Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain.',
-    image: 'https://base.org/images/base-open-graph.png',
-    url: 'https://base.org',
-  },
-  '/about': {
-    title: 'Base | About',
-    description:
-      'From the beginning, our secret master plan has been clear and consistent: create an open financial system that increases economic freedom globally by moving deliberately through four phases.',
-    image: 'https://base.org/images/base-open-graph.png',
-    url: 'https://base.org/about',
-  },
-  '/bootcamp': {
-    title: 'Base | Bootcamp',
-    description:
-      'Base Bootcamp is an async, cohort-based training program designed to turn web developers into Smart Contract developers.',
-    image: 'https://base.org/images/base-open-graph.png',
-    url: 'https://base.org/bootcamp',
-  },
-  '/cookie-policy': {
-    title: 'Base | Cookie Policy',
-    description: 'This Cookie Policy explains how Base uses cookies and similar technologies',
-    image: 'https://base.org/images/base-open-graph.png',
-    url: 'https://base.org/cookie-policy',
-  },
-  '/ecosystem': {
-    title: 'Base | Ecosystem',
-    description: 'An overview of apps and integrations in the Base ecosystem.',
-    image: 'https://base.org/images/base-open-graph.png',
-    url: 'https://base.org/base-ecosystem',
-  },
-  '/jobs': {
-    title: 'Base | Jobs',
-    description: 'Learn about new opportunities to apply to join the Base team.',
-    image: 'https://base.org/images/base-open-graph.png',
-    url: 'https://base.org/jobs',
-  },
-  '/third-party-cookies': {
-    title: 'Base | Third Party Cookies',
-    description: 'This page lists the companies that use cookies and other technologies.',
-    image: 'https://base.org/images/base-open-graph.png',
-    url: 'https://base.org/third-party-cookies',
-  },
-  '/onchainsummer': {
-    title: 'Onchain Summer | Buildathon',
-    description:
-      'Onchain Summer is back to unleash onchain creativity and invite everyone to build all summer long. Build, create, and get rewarded. June – August 2024.',
-    image: 'https://base.org/images/ocs/buildersummer_og.png',
-    url: 'https://base.org/onchainsummer',
-  },
-};
-
-export default function Document({ ogData }: CustomDocumentProps) {
+export default function Document({}: CustomDocumentProps) {
   return (
     <Html>
       <Head>
@@ -79,21 +24,6 @@ export default function Document({ ogData }: CustomDocumentProps) {
           name="google-site-verification"
           content="lqwNRCxYlFLIcX9EiKAvE4k4ZT8JGpdWgehEIPA7y1Y"
         />
-        <meta property="og:url" content={ogData.url} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={ogData.title} />
-        <meta property="og:description" content={ogData.description} />
-        <meta property="og:image" content={ogData.image} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="base.org" />
-        <meta property="twitter:url" content={ogData.url} />
-        <meta name="twitter:title" content={ogData.title} />
-        <meta name="twitter:description" content={ogData.description} />
-        <meta name="twitter:image" content={ogData.image} />
-        {/* Ignoring this because we do set the title based on the ogData */}
-        {/* eslint-disable-next-line @next/next/no-title-in-document-head */}
-        <title>{ogData.title}</title>
-        <meta content={ogData.description} name="description" />
       </Head>
       <body className="flex min-h-screen flex-col">
         <Main />
@@ -102,15 +32,3 @@ export default function Document({ ogData }: CustomDocumentProps) {
     </Html>
   );
 }
-
-Document.getInitialProps = async (
-  ctx: DocumentContext,
-): Promise<CustomDocumentProps & DocumentProps> => {
-  const initialProps = await ctx.defaultGetInitialProps(ctx);
-  const { pathname } = ctx;
-
-  return {
-    ...initialProps,
-    ogData: ogDataForPath[pathname] || ogDataForPath['/'],
-  };
-};

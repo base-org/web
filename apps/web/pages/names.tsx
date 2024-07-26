@@ -9,14 +9,25 @@ import { ReactElement } from 'react';
 const usernameRegistrationAnalyticContext = 'username_registration';
 
 export function Usernames() {
+  const ogData = {
+    title: 'Basenames',
+    description:
+      'Basenames are a core onchain building block that enables anyone to establish their identity on Base by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Base.',
+    image: 'https://base.org/images/base-open-graph.png', // todo: replace with shelley's cover
+    url: 'https://base.org/names',
+  };
   return (
     <>
       <Head>
-        <title>Basenames</title>
-        <meta
-          content="Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain."
-          name="description"
-        />
+        {/* Open-graph */}
+        <meta key="og:url" property="og:url" content={ogData.url} />
+        <meta key="og:title" property="og:title" content={ogData.title} />
+        <meta key="og:description" property="og:description" content={ogData.description} />
+        <meta key="og:image" property="og:image" content={ogData.image} />
+
+        {/* Default */}
+        <title key="title">{ogData.title}</title>
+        <meta key="description" content={ogData.description} name="description" />
       </Head>
       <AnalyticsProvider context={usernameRegistrationAnalyticContext}>
         <RegistrationProvider>
