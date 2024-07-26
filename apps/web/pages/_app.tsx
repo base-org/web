@@ -20,17 +20,17 @@ import {
 } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
+import ExperimentsProvider from 'base-ui/contexts/Experiments';
 import useSprig from 'base-ui/hooks/useSprig';
 import { MotionConfig } from 'framer-motion';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import { ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { createConfig, http, WagmiProvider } from 'wagmi';
-import { base, baseSepolia, mainnet, sepolia } from 'wagmi/chains';
+import { base, baseSepolia } from 'wagmi/chains';
 import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/ClientAnalyticsScript';
 import { Layout, NavigationType } from '../src/components/Layout/Layout';
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
-import ExperimentsProvider from 'base-ui/contexts/Experiments';
 
 coinbaseWallet.preference = 'all';
 
@@ -53,11 +53,9 @@ const connectors = connectorsForWallets(
 
 const config = createConfig({
   connectors,
-  chains: [mainnet, base, sepolia, baseSepolia],
+  chains: [base, baseSepolia],
   transports: {
-    [mainnet.id]: http(),
     [base.id]: http(),
-    [sepolia.id]: http(),
     [baseSepolia.id]: http(),
   },
   ssr: true,

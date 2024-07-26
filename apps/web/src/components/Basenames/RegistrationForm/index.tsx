@@ -18,6 +18,8 @@ import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useState } from 'react';
 import { formatEther } from 'viem';
 
+const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
+
 function formatEtherPrice(price?: bigint) {
   if (price === undefined) {
     return '...';
@@ -174,6 +176,11 @@ export default function RegistrationForm() {
               )}
             </div>
             {nameIsFree && <p className="text-sm text-green-50">Free with your verification</p>}
+            {Boolean(nameIsFree && isEarlyAccess) && (
+              <p className="text-sm text-green-50">
+                Registration is discounted during Early Access.
+              </p>
+            )}
           </div>
 
           <ConnectButton.Custom>
