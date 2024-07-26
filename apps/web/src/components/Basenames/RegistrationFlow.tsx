@@ -1,5 +1,4 @@
 import { Transition } from '@headlessui/react';
-import { ExclamationCircleIcon, InformationCircleIcon } from '@heroicons/react/16/solid';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import RegistrationBackground from 'apps/web/src/components/Basenames/RegistrationBackground';
 import RegistrationBrand from 'apps/web/src/components/Basenames/RegistrationBrand';
@@ -31,14 +30,12 @@ test addresses w/ different verifications
 */
 
 export const claimQueryKey = 'claim';
-const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
 
 export function RegistrationFlow() {
-  const { isConnected, chain } = useAccount();
+  const { chain } = useAccount();
   const { logEventWithContext } = useAnalytics();
   const searchParams = useSearchParams();
-  const { discount, registrationStep, searchInputFocused, selectedName, setSelectedName } =
-    useRegistration();
+  const { registrationStep, searchInputFocused, selectedName, setSelectedName } = useRegistration();
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
   const chains = useChains();
@@ -136,7 +133,7 @@ export function RegistrationFlow() {
         </Transition>
       </Transition>
       {/* 2 - Username Pill */}
-      <div className="relative flex w-full max-w-full max-w-full flex-col items-center justify-center ">
+      <div className="relative flex w-full max-w-full flex-col items-center justify-center ">
         <Transition
           appear
           show={!isSearch}
@@ -227,34 +224,7 @@ export function RegistrationFlow() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          {!isEarlyAccess || (isEarlyAccess && discount) ? (
-            <div className="mt-20">
-              <RegistrationForm />
-            </div>
-          ) : isConnected ? (
-            isOnSupportedNetwork ? (
-              <div className="z-10 mt-8 flex flex-row items-center justify-center ">
-                <ExclamationCircleIcon width={12} height={12} className="fill-state-n-hovered" />
-                <p className="ml-2 text-state-n-hovered">
-                  The connected wallet is not eligible for early access.
-                </p>
-              </div>
-            ) : (
-              <button
-                type="button"
-                className="z-10 mx-auto mt-8 flex flex-row items-center justify-center "
-                onClick={switchToIntendedNetwork}
-              >
-                <ExclamationCircleIcon width={12} height={12} className="fill-gray-40" />
-                <p className="ml-2 text-gray-40">Switch to Base to register a name.</p>
-              </button>
-            )
-          ) : (
-            <div className="z-10 mt-8 flex flex-row items-center justify-center ">
-              <InformationCircleIcon width={12} height={12} className="fill-gray-40" />
-              <p className="ml-2 text-gray-40">Connect a wallet to register a name</p>
-            </div>
-          )}
+          <RegistrationForm />
         </Transition>
 
         {/* 4. Registration Success Message */}

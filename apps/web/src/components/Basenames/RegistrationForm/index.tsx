@@ -1,4 +1,9 @@
-import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
+import {
+  ExclamationCircleIcon,
+  InformationCircleIcon,
+  MinusIcon,
+  PlusIcon,
+} from '@heroicons/react/16/solid';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
@@ -15,8 +20,9 @@ import {
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { formatEther } from 'viem';
+import { useAccount, useChains, useSwitchChain } from 'wagmi';
 
 const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
 
@@ -40,9 +46,20 @@ function formatUsdPrice(price: bigint, ethUsdPrice: number) {
 }
 
 export default function RegistrationForm() {
+  const { isConnected, chain: connectedChain } = useAccount();
+  const chains = useChains();
   const { openConnectModal } = useConnectModal();
   const { logEventWithContext } = useAnalytics();
   const { basenameChain } = useBasenameChain();
+  const { switchChain } = useSwitchChain();
+  const switchToIntendedNetwork = useCallback(
+    () => switchChain({ chainId: basenameChain.id }),
+    [basenameChain.id, switchChain],
+  );
+  const isOnSupportedNetwork = useMemo(
+    () => connectedChain && chains.includes(connectedChain),
+    [connectedChain, chains],
+  );
 
   const {
     transactionData,
@@ -121,131 +138,168 @@ export default function RegistrationForm() {
     price !== undefined && ethUsdPrice !== undefined ? formatUsdPrice(price, ethUsdPrice) : '--.--';
   const nameIsFree = price === 0n;
 
-  return (
-    <>
-      <div className="transition-all duration-500">
-        <div className="z-10 flex flex-col justify-between gap-4 rounded-2xl bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row">
-          <div>
-            <p className="text-line mb-2 text-sm font-bold uppercase">Claim for</p>
-            <div className="flex items-center justify-between">
-              <button
-                type="button"
-                onClick={decrement}
-                disabled={years === 1}
-                className="flex h-7 w-7 items-center justify-center rounded-full bg-[#DEE1E7]"
-                aria-label="Decrement years"
-              >
-                <MinusIcon width="14" height="14" className="fill-[#32353D]" />
-              </button>
-              <span className="flex w-32 items-center justify-center text-3xl text-black">
-                {years} year{years > 1 && 's'}
-              </span>
-              <button
-                type="button"
-                onClick={increment}
-                className="flex h-7 w-7 items-center justify-center rounded-full bg-[#DEE1E7]"
-                aria-label="Increment years"
-              >
-                <PlusIcon width="14" height="14" className="fill-[#32353D]" />
-              </button>
+  if (!isEarlyAccess || (isEarlyAccess && discount)) {
+    return (
+      <>
+        <div className="mt-20 transition-all duration-500">
+          <div className="z-10 flex flex-col justify-between gap-4 rounded-2xl bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row">
+            <div>
+              <p className="text-line mb-2 text-sm font-bold uppercase">Claim for</p>
+              <div className="flex items-center justify-between">
+                <button
+                  type="button"
+                  onClick={decrement}
+                  disabled={years === 1}
+                  className="flex h-7 w-7 items-center justify-center rounded-full bg-[#DEE1E7]"
+                  aria-label="Decrement years"
+                >
+                  <MinusIcon width="14" height="14" className="fill-[#32353D]" />
+                </button>
+                <span className="flex w-32 items-center justify-center text-3xl text-black">
+                  {years} year{years > 1 && 's'}
+                </span>
+                <button
+                  type="button"
+                  onClick={increment}
+                  className="flex h-7 w-7 items-center justify-center rounded-full bg-[#DEE1E7]"
+                  aria-label="Increment years"
+                >
+                  <PlusIcon width="14" height="14" className="fill-[#32353D]" />
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="min-w-[14rem] text-left">
-            <p className="text-line mb-2 text-sm font-bold uppercase">Amount</p>
-            <div className="flex items-baseline justify-start gap-4">
-              {discountedPrice !== undefined ? (
-                <div className=" flex flex-row items-baseline justify-around gap-2">
-                  <p className="whitespace-nowrap text-3xl text-black line-through">
-                    {formatEtherPrice(initialPrice)}
+            <div className="min-w-[14rem] text-left">
+              <p className="text-line mb-2 text-sm font-bold uppercase">Amount</p>
+              <div className="flex items-baseline justify-start gap-4">
+                {discountedPrice !== undefined ? (
+                  <div className=" flex flex-row items-baseline justify-around gap-2">
+                    <p className="whitespace-nowrap text-3xl text-black line-through">
+                      {formatEtherPrice(initialPrice)}
+                    </p>
+                    <p className="whitespace-nowrap text-3xl text-green-50">
+                      {formatEtherPrice(discountedPrice)} ETH
+                    </p>
+                  </div>
+                ) : (
+                  <p className=" whitespace-nowrap text-3xl text-black">
+                    {formatEtherPrice(price)} ETH
                   </p>
-                  <p className="whitespace-nowrap text-3xl text-green-50">
-                    {formatEtherPrice(discountedPrice)} ETH
-                  </p>
-                </div>
-              ) : (
-                <p className=" whitespace-nowrap text-3xl text-black">
-                  {formatEtherPrice(price)} ETH
+                )}
+                {loadingDiscounts ? (
+                  <div className="flex h-4 items-center justify-center">
+                    <Icon name="spinner" color="currentColor" />
+                  </div>
+                ) : (
+                  <span className="whitespace-nowrap text-xl text-gray-60">${usdPrice}</span>
+                )}
+              </div>
+              {nameIsFree && <p className="text-sm text-green-50">Free with your verification</p>}
+              {Boolean(nameIsFree && isEarlyAccess) && (
+                <p className="text-sm text-green-50">
+                  Registration is discounted during Early Access.
                 </p>
               )}
-              {loadingDiscounts ? (
-                <div className="flex h-4 items-center justify-center">
-                  <Icon name="spinner" color="currentColor" />
-                </div>
-              ) : (
-                <span className="whitespace-nowrap text-xl text-gray-60">${usdPrice}</span>
-              )}
             </div>
-            {nameIsFree && <p className="text-sm text-green-50">Free with your verification</p>}
-            {Boolean(nameIsFree && isEarlyAccess) && (
-              <p className="text-sm text-green-50">
-                Registration is discounted during Early Access.
-              </p>
-            )}
-          </div>
 
-          <ConnectButton.Custom>
-            {({ account, chain, mounted }) => {
-              const ready = mounted;
-              const connected = ready && account && chain;
+            <ConnectButton.Custom>
+              {({ account, chain, mounted }) => {
+                const ready = mounted;
+                const connected = ready && account && chain;
 
-              if (!connected) {
+                if (!connected) {
+                  return (
+                    <Button
+                      type="button"
+                      variant={ButtonVariants.Black}
+                      size={ButtonSizes.Small}
+                      onClick={openConnectModal}
+                      rounded
+                    >
+                      Connect wallet
+                    </Button>
+                  );
+                }
+
                 return (
                   <Button
+                    onClick={registerNameCallback}
                     type="button"
                     variant={ButtonVariants.Black}
                     size={ButtonSizes.Small}
-                    onClick={openConnectModal}
+                    disabled={registerNameTransactionIsPending}
+                    isLoading={registerNameTransactionIsPending}
                     rounded
                   >
-                    Connect wallet
+                    Register name
                   </Button>
                 );
-              }
+              }}
+            </ConnectButton.Custom>
+          </div>
 
-              return (
-                <Button
-                  onClick={registerNameCallback}
-                  type="button"
-                  variant={ButtonVariants.Black}
-                  size={ButtonSizes.Small}
-                  disabled={registerNameTransactionIsPending}
-                  isLoading={registerNameTransactionIsPending}
-                  rounded
-                >
-                  Register name
-                </Button>
-              );
-            }}
-          </ConnectButton.Custom>
+          {transactionError !== null && (
+            <TransactionError className="mt-4 text-center" error={transactionError} />
+          )}
+          {registerNameError && (
+            <TransactionError className="mt-4 text-center" error={registerNameError} />
+          )}
+          {transactionData && transactionData.status === 'reverted' && (
+            <TransactionStatus
+              className="mt-4 text-center"
+              transaction={transactionData}
+              chainId={basenameChain.id}
+            />
+          )}
+          <div className="mt-6 flex w-full justify-center">
+            <p className="text mr-2 text-center font-bold uppercase text-[#5B616E]">
+              {nameIsFree
+                ? "You've qualified for a free name! "
+                : 'Unlock your username for free! '}
+            </p>
+            <button
+              type="button"
+              className="text-line font-bold uppercase underline"
+              onClick={toggleLearnMoreModal}
+            >
+              Learn more
+            </button>
+          </div>
         </div>
-
-        {transactionError !== null && (
-          <TransactionError className="mt-4 text-center" error={transactionError} />
-        )}
-        {registerNameError && (
-          <TransactionError className="mt-4 text-center" error={registerNameError} />
-        )}
-        {transactionData && transactionData.status === 'reverted' && (
-          <TransactionStatus
-            className="mt-4 text-center"
-            transaction={transactionData}
-            chainId={basenameChain.id}
-          />
-        )}
-        <div className="mt-6 flex w-full justify-center">
-          <p className="text mr-2 text-center font-bold uppercase text-[#5B616E]">
-            {nameIsFree ? "You've qualified for a free name! " : 'Unlock your username for free! '}
+        <RegistrationLearnMoreModal
+          isOpen={learnMoreModalOpen}
+          toggleModal={toggleLearnMoreModal}
+        />
+      </>
+    );
+  }
+  if (isConnected) {
+    if (isOnSupportedNetwork) {
+      return (
+        <div className="z-10 mt-8 flex flex-row items-center justify-center ">
+          <ExclamationCircleIcon width={12} height={12} className="fill-state-n-hovered" />
+          <p className="ml-2 text-state-n-hovered">
+            The connected wallet is not eligible for early access.
           </p>
-          <button
-            type="button"
-            className="text-line font-bold uppercase underline"
-            onClick={toggleLearnMoreModal}
-          >
-            Learn more
-          </button>
         </div>
-      </div>
-      <RegistrationLearnMoreModal isOpen={learnMoreModalOpen} toggleModal={toggleLearnMoreModal} />
-    </>
+      );
+    } else {
+      return (
+        <button
+          type="button"
+          className="z-10 mx-auto mt-8 flex flex-row items-center justify-center"
+          onClick={switchToIntendedNetwork}
+        >
+          <ExclamationCircleIcon width={12} height={12} className="fill-gray-40" />
+          <p className="ml-2 text-gray-40">Switch to Base to register a name.</p>
+        </button>
+      );
+    }
+  }
+
+  return (
+    <div className="z-10 mx-auto mt-8 flex flex-row items-center justify-center">
+      <InformationCircleIcon width={12} height={12} className="fill-gray-40" />
+      <p className="ml-2 text-gray-40">Connect a wallet to register a name</p>
+    </div>
   );
 }
