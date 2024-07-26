@@ -21,6 +21,8 @@ import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useMemo } from 'react';
 import { useAccount, useChains, useSwitchChain } from 'wagmi';
+import { InformationCircleIcon } from '@heroicons/react/16/solid';
+import Tooltip from 'apps/web/src/components/Tooltip';
 
 /*
 test addresses w/ different verifications
@@ -130,6 +132,26 @@ export function RegistrationFlow() {
             variant={RegistrationSearchInputVariant.Large}
             placeholder="Search for a name"
           />
+          <div className="mx-auto mt-6 flex items-center justify-center">
+            <p
+              className={classNames({
+                'text-white': searchInputFocused,
+                'text-gray-40': !searchInputFocused,
+              })}
+            >
+              You can claim one Basename per wallet for early access.
+            </p>
+            <Tooltip content="shrekislove.base.eth is already taken.">
+              <InformationCircleIcon
+                width={12}
+                height={12}
+                className={classNames('ml-1', {
+                  'fill-white': searchInputFocused,
+                  'fill-gray-40': !searchInputFocused,
+                })}
+              />
+            </Tooltip>
+          </div>
         </Transition>
       </Transition>
       {/* 2 - Username Pill */}
