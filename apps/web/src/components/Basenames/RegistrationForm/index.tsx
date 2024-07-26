@@ -212,9 +212,7 @@ export default function RegistrationForm() {
               {insufficientBalanceToRegister ? (
                 <p className="text-sm text-state-n-hovered">your ETH balance is insufficient</p>
               ) : Boolean(nameIsFree && isEarlyAccess) ? (
-                <p className="text-sm text-green-50">
-                  Registration is discounted during Early Access.
-                </p>
+                <p className="text-sm text-green-50">Discounted during Early Access.</p>
               ) : (
                 nameIsFree && <p className="text-sm text-green-50">Free with your verification</p>
               )}
@@ -269,20 +267,22 @@ export default function RegistrationForm() {
               chainId={basenameChain.id}
             />
           )}
-          <div className="mt-6 flex w-full justify-center">
-            <p className="text mr-2 text-center font-bold uppercase text-[#5B616E]">
-              {nameIsFree
-                ? "You've qualified for a free name! "
-                : 'Unlock your username for free! '}
-            </p>
-            <button
-              type="button"
-              className="text-line font-bold uppercase underline"
-              onClick={toggleLearnMoreModal}
-            >
-              Learn more
-            </button>
-          </div>
+          {!isEarlyAccess && (
+            <div className="mt-6 flex w-full justify-center">
+              <p className="text mr-2 text-center font-bold uppercase text-[#5B616E]">
+                {nameIsFree
+                  ? "You've qualified for a free name! "
+                  : 'Unlock your username for free! '}
+              </p>
+              <button
+                type="button"
+                className="text-line font-bold uppercase underline"
+                onClick={toggleLearnMoreModal}
+              >
+                Learn more
+              </button>
+            </div>
+          )}
         </div>
         <RegistrationLearnMoreModal
           isOpen={learnMoreModalOpen}
