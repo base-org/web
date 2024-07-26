@@ -416,12 +416,12 @@ In this tutorial, you learned how to implement a system of HyperFrames - frames 
 
 [Farcaster]: https://www.farcaster.xyz/
 [a-frame-in-100-lines]: https://github.com/Zizzamia/a-frame-in-100-lines
-[OnchainKit]: https://github.com/coinbase/onchainkit
+[OnchainKit]: https://onchainkit.xyz
 [Vercel]: https://vercel.com
 [Frame Validator]: https://warpcast.com/~/developers/frames
 [deploying with Vercel]: /tutorials/farcaster-frames-deploy-to-vercel
 [Frames]: https://docs.farcaster.xyz/learn/what-is-farcaster/frames
 [NFT Minting Frame]: /tutorials/farcaster-frames-nft-minting
 [old-school adventure game]: https://warpcast.com/briandoyle81/0x108f1cdb
-[changelog]: https://github.com/coinbase/onchainkit/blob/main/CHANGELOG.md
+[changelog]: https://onchainkit.xyz/blob/main/CHANGELOG.md
 [`app/api/route.ts`]: https://github.com/Zizzamia/a-frame-in-100-lines/blob/main/app/api/frame/route.ts
