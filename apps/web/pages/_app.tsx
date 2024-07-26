@@ -31,6 +31,7 @@ import ClientAnalyticsScript from '../src/components/ClientAnalyticsScript/Clien
 import { Layout, NavigationType } from '../src/components/Layout/Layout';
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
 import ExperimentsProvider from 'base-ui/contexts/Experiments';
+import Head from 'next/head';
 
 coinbaseWallet.preference = 'all';
 
@@ -117,35 +118,61 @@ export default function StaticApp({ Component, pageProps }: AppPropsWithLayout) 
   const isDevelopment = process.env.NODE_ENV === 'development';
   if (!isMounted) return null;
 
+  const ogData = {
+    title: 'Base',
+    description:
+      'Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain.',
+    image: 'https://base.org/images/base-open-graph.png',
+    url: 'https://base.org',
+  };
+
   return (
-    <CookieManagerProvider
-      projectName="base_web"
-      locale="en"
-      region={Region.DEFAULT}
-      log={console.log}
-      onError={handleLogError}
-      onPreferenceChange={setTrackingPreference}
-      config={cookieManagerConfig}
-    >
-      <MotionConfig reducedMotion="user">
-        <ClientAnalyticsScript />
-        <WagmiProvider config={config}>
-          <QueryClientProvider client={queryClient}>
-            <OnchainKitProvider
-              chain={isDevelopment ? baseSepolia : base}
-              apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
-            >
-              <TooltipProvider>
-                <ExperimentsProvider>
-                  <RainbowKitProvider modalSize="compact" avatar={UserAvatar}>
-                    {getLayout(<Component {...pageProps} />)}
-                  </RainbowKitProvider>
-                </ExperimentsProvider>
-              </TooltipProvider>
-            </OnchainKitProvider>
-          </QueryClientProvider>
-        </WagmiProvider>
-      </MotionConfig>
-    </CookieManagerProvider>
+    <>
+      <Head>
+        {/* Open-graph */}
+        <meta key="og:url" property="og:url" content={ogData.url} />
+        <meta key="og:type" property="og:type" content="website" />
+        <meta key="og:title" property="og:title" content={ogData.title} />
+        <meta key="og:description" property="og:description" content={ogData.description} />
+        <meta key="og:image" property="og:image" content={ogData.image} />
+
+        {/* Twitter */}
+        <meta key="twitter:site" name="twitter:site" content="@base" />
+        <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
+
+        {/* Default */}
+        <title key="title">{ogData.title}</title>
+        <meta key="description" content={ogData.description} name="description" />
+      </Head>
+      <CookieManagerProvider
+        projectName="base_web"
+        locale="en"
+        region={Region.DEFAULT}
+        log={console.log}
+        onError={handleLogError}
+        onPreferenceChange={setTrackingPreference}
+        config={cookieManagerConfig}
+      >
+        <MotionConfig reducedMotion="user">
+          <ClientAnalyticsScript />
+          <WagmiProvider config={config}>
+            <QueryClientProvider client={queryClient}>
+              <OnchainKitProvider
+                chain={isDevelopment ? baseSepolia : base}
+                apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
+              >
+                <TooltipProvider>
+                  <ExperimentsProvider>
+                    <RainbowKitProvider modalSize="compact" avatar={UserAvatar}>
+                      {getLayout(<Component {...pageProps} />)}
+                    </RainbowKitProvider>
+                  </ExperimentsProvider>
+                </TooltipProvider>
+              </OnchainKitProvider>
+            </QueryClientProvider>
+          </WagmiProvider>
+        </MotionConfig>
+      </CookieManagerProvider>
+    </>
   );
 }

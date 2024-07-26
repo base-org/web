@@ -20,14 +20,23 @@ type AboutProps = {
 };
 
 export default function About({ owners }: AboutProps) {
+  const ogData = {
+    title: 'Base | About',
+    description:
+      'From the beginning, our secret master plan has been clear and consistent: create an open financial system that increases economic freedom globally by moving deliberately through four phases.',
+    url: 'https://base.org/about',
+  };
   return (
     <div>
       <Head>
-        <title>Base | About</title>
-        <meta
-          content="Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain."
-          name="description"
-        />
+        {/* Open-graph */}
+        <meta key="og:url" property="og:url" content={ogData.url} />
+        <meta key="og:title" property="og:title" content={ogData.title} />
+        <meta key="og:description" property="og:description" content={ogData.description} />
+
+        {/* Default */}
+        <title key="title">{ogData.title}</title>
+        <meta key="description" content={ogData.description} name="description" />
       </Head>
       <main className="flex w-full flex-col items-center bg-black">
         <Hero />

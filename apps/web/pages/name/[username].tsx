@@ -8,7 +8,6 @@ import {
   openGraphImageType,
   openGraphImageWidth,
 } from 'apps/web/src/utils/opengraphs';
-import { NextPageContext } from 'next';
 import Head from 'next/head';
 import { useParams } from 'next/navigation';
 import { ReactElement } from 'react';
@@ -16,22 +15,45 @@ import { ReactElement } from 'react';
 // Do not change this unless you know what you're doing (it'll break analytics)
 const usernameProfileAnalyticContext = 'username_profile';
 
-export function Username({ domain }: { domain: string }) {
+export function Username() {
   const params = useParams<{ username: BaseName }>();
   const profileUsername = params?.username;
-  const ogImageUrl = `${domain}/api/basenames/${profileUsername}/assets/coverImage.png`;
+
+  const ogData = {
+    title: `Basenames | ${profileUsername}`,
+    description: `${profileUsername}, a Basename`,
+    image: `https://base.org/api/basenames/${profileUsername}/assets/coverImage.png`,
+    url: `https://base.org/name/${profileUsername}`,
+  };
 
   return (
     <>
       <Head>
-        <title>Basenames | {profileUsername}</title>
-        <meta property="og:image" content={ogImageUrl} />
-        <meta property="og:image:secure_url" content={ogImageUrl} />
-        <meta property="og:image:type" content={openGraphImageType} />
-        <meta property="og:image:width" content={openGraphImageWidth.toString()} />
-        <meta property="og:image:height" content={openGraphImageHeight.toString()} />
-        <meta property="og:image:alt" content={`Base profile `} />
+        {/* Open-graph */}
+        <meta key="og:url" property="og:url" content={ogData.url} />
+        <meta key="og:type" property="og:type" content="website" />
+        <meta key="og:title" property="og:title" content={ogData.title} />
+        <meta key="og:description" property="og:description" content={ogData.description} />
+        <meta key="og:image" property="og:image" content={ogData.image} />
+        <meta key="og:image:secure_url" property="og:image:secure_url" content={ogData.image} />
+        <meta key="og:image:type" property="og:image:type" content={openGraphImageType} />
+        <meta
+          key="og:image:width"
+          property="og:image:width"
+          content={openGraphImageWidth.toString()}
+        />
+        <meta
+          key="og:image:height"
+          property="og:image:height"
+          content={openGraphImageHeight.toString()}
+        />
+        <meta key="og:image:alt" property="og:image:alt" content={ogData.description} />
+
+        {/* Default */}
+        <title key="title">{ogData.title}</title>
+        <meta key="description" content={ogData.description} name="description" />
       </Head>
+
       <AnalyticsProvider context={usernameProfileAnalyticContext}>
         <UsernameProfileProvider>
           <UsernameProfile />
@@ -40,11 +62,6 @@ export function Username({ domain }: { domain: string }) {
     </>
   );
 }
-
-Username.getInitialProps = async ({ req }: NextPageContext) => {
-  const domain = req?.headers.host ?? '';
-  return { domain };
-};
 
 Username.getLayout = function getLayout(page: ReactElement) {
   return <Layout navigationType={NavigationType.Username}>{page}</Layout>;

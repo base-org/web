@@ -1,11 +1,22 @@
 import Head from 'next/head';
 
 export default function ThirdPartyCookies() {
+  const ogData = {
+    title: 'Base | Third Party Cookies',
+    description: 'This page lists the companies that use cookies and other technologies.',
+    url: 'https://base.org/third-party-cookies',
+  };
   return (
     <>
       <Head>
-        <title>Base | Third Party Cookies</title>
-        <meta content="List of third-party cookies Base uses on our website." name="description" />
+        {/* Open-graph */}
+        <meta key="og:url" property="og:url" content={ogData.url} />
+        <meta key="og:title" property="og:title" content={ogData.title} />
+        <meta key="og:description" property="og:description" content={ogData.description} />
+
+        {/* Default */}
+        <title key="title">{ogData.title}</title>
+        <meta key="description" content={ogData.description} name="description" />
       </Head>
       <main className="flex w-full flex-col items-center bg-white">
         <section className="flex w-full max-w-[1440px] flex-col gap-4 px-8 pb-10 pt-10 lg:pb-28 lg:pt-20">

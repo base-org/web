@@ -8,14 +8,25 @@ import { Hero } from '../src/components/Bootcamp/Hero';
 import { FaqSidebar } from '../src/components/Bootcamp/Faq/FaqSidebar';
 
 export default function Home() {
+  const ogData = {
+    title: 'Base | Bootcamp',
+    description:
+      'Base Bootcamp is an async, cohort-based training program designed to turn web developers into Smart Contract developers.',
+
+    url: 'https://base.org/bootcamp',
+  };
+
   return (
     <>
       <Head>
-        <title>Base</title>
-        <meta
-          content="Base Bootcamp is a cohort-based training program hosted by Coinbase engineers, designed to turn senior-level developers into Smart Contract developers."
-          name="description"
-        />
+        {/* Open-graph */}
+        <meta key="og:url" property="og:url" content={ogData.url} />
+        <meta key="og:title" property="og:title" content={ogData.title} />
+        <meta key="og:description" property="og:description" content={ogData.description} />
+
+        {/* Default */}
+        <title key="title">{ogData.title}</title>
+        <meta key="description" content={ogData.description} name="description" />
       </Head>
       <Hero />
       <main className="flex w-full flex-col items-center bg-black">
