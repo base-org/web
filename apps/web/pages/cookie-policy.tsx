@@ -10,14 +10,23 @@ export default function CookiePolicy() {
 
   const handleCloseModal = useCallback(() => setIsOpen(false), []);
 
+  const ogData = {
+    title: 'Base | Cookie Policy',
+    description: 'This Cookie Policy explains how Base uses cookies and similar technologies',
+    url: 'https://base.org/cookie-policy',
+  };
+
   return (
     <>
       <Head>
-        <title>Base | Cookie Policy</title>
-        <meta
-          content="Policy explaining how Base uses cookies on our website."
-          name="description"
-        />
+        {/* Open-graph */}
+        <meta key="og:url" property="og:url" content={ogData.url} />
+        <meta key="og:title" property="og:title" content={ogData.title} />
+        <meta key="og:description" property="og:description" content={ogData.description} />
+
+        {/* Default */}
+        <title key="title">{ogData.title}</title>
+        <meta key="description" content={ogData.description} name="description" />
       </Head>
       <main className="flex w-full flex-col items-center bg-white">
         <section className="flex w-full max-w-[1440px] flex-col gap-4 px-8 pb-10 pt-10 lg:pb-28 lg:pt-20">

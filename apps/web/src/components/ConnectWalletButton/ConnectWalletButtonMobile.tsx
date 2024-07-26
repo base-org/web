@@ -33,7 +33,7 @@ export function ConnectWalletButton({ color, className }: ConnectWalletButtonPro
 
         if (chain.unsupported) {
           return (
-            <button onClick={openChainModal} type="button">
+            <button className="px-2 py-1" onClick={openChainModal} type="button">
               Wrong network
             </button>
           );

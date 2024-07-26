@@ -14,15 +14,15 @@ import RegistrationSearchInput, {
 } from 'apps/web/src/components/Basenames/RegistrationSearchInput';
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
-import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { formatBaseEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
-import { ExclamationCircleIcon } from '@heroicons/react/16/solid';
+import { useCallback, useEffect, useMemo } from 'react';
+import { useAccount, useChains, useSwitchChain } from 'wagmi';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
-import { useAccount, useChainId, useSwitchChain } from 'wagmi';
+import Tooltip from 'apps/web/src/components/Tooltip';
 
 /*
 test addresses w/ different verifications
@@ -32,27 +32,31 @@ test addresses w/ different verifications
 */
 
 export const claimQueryKey = 'claim';
-const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
 
 export function RegistrationFlow() {
-  const { isConnected } = useAccount();
+  const { chain } = useAccount();
   const { logEventWithContext } = useAnalytics();
   const searchParams = useSearchParams();
-  const { discount, registrationStep, searchInputFocused, selectedName, setSelectedName } =
-    useRegistration();
+  const { registrationStep, searchInputFocused, selectedName, setSelectedName } = useRegistration();
   const { basenameChain } = useBasenameChain();
-  const chainId = useChainId();
   const { switchChain } = useSwitchChain();
+  const chains = useChains();
+
+  const isOnSupportedNetwork = useMemo(() => chain && chains.includes(chain), [chain, chains]);
+  const switchToIntendedNetwork = useCallback(
+    () => switchChain({ chainId: basenameChain.id }),
+    [basenameChain.id, switchChain],
+  );
 
   useEffect(() => {
-    if (!chainId || !switchChain) {
+    if (!chain || !switchToIntendedNetwork) {
       return;
     }
 
-    if (!supportedChainIds.includes(chainId)) {
-      switchChain({ chainId: basenameChain.id });
+    if (!isOnSupportedNetwork) {
+      switchToIntendedNetwork();
     }
-  }, [basenameChain.id, chainId, switchChain]);
+  }, [isOnSupportedNetwork, chain, switchToIntendedNetwork]);
 
   const isSearch = registrationStep === RegistrationSteps.Search;
   const isClaim = registrationStep === RegistrationSteps.Claim;
@@ -128,10 +132,30 @@ export function RegistrationFlow() {
             variant={RegistrationSearchInputVariant.Large}
             placeholder="Search for a name"
           />
+          <div className="mx-auto mt-6 flex items-center justify-center">
+            <p
+              className={classNames({
+                'text-white': searchInputFocused,
+                'text-gray-40': !searchInputFocused,
+              })}
+            >
+              You can claim one Basename per wallet for early access.
+            </p>
+            <Tooltip content="shrekislove.base.eth is already taken.">
+              <InformationCircleIcon
+                width={12}
+                height={12}
+                className={classNames('ml-1', {
+                  'fill-white': searchInputFocused,
+                  'fill-gray-40': !searchInputFocused,
+                })}
+              />
+            </Tooltip>
+          </div>
         </Transition>
       </Transition>
       {/* 2 - Username Pill */}
-      <div className="relative flex w-full max-w-full max-w-full flex-col items-center justify-center ">
+      <div className="relative flex w-full max-w-full flex-col items-center justify-center ">
         <Transition
           appear
           show={!isSearch}
@@ -222,23 +246,7 @@ export function RegistrationFlow() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          {!isEarlyAccess || (isEarlyAccess && discount) ? (
-            <div className="mt-20">
-              <RegistrationForm />
-            </div>
-          ) : isConnected ? (
-            <div className="z-10 mt-8 flex flex-row items-center justify-center ">
-              <ExclamationCircleIcon width={12} height={12} className="fill-state-n-hovered" />
-              <p className="ml-2 text-state-n-hovered">
-                The connected wallet is not eligible for early access
-              </p>
-            </div>
-          ) : (
-            <div className="z-10 mt-8 flex flex-row items-center justify-center ">
-              <InformationCircleIcon width={12} height={12} className="fill-gray-40" />
-              <p className="ml-2 text-gray-40">Connect a wallet to register a name</p>
-            </div>
-          )}
+          <RegistrationForm />
         </Transition>
 
         {/* 4. Registration Success Message */}

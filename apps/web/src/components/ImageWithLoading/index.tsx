@@ -1,10 +1,10 @@
 import Image, { StaticImageData } from 'next/image';
 import classNames from 'classnames';
 import { useCallback, useState } from 'react';
-import { PlaceholderValue } from 'next/dist/shared/lib/get-img-props';
+import { PlaceholderValue, StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 type ImageWithLoadingProps = {
-  src: string | StaticImageData;
+  src: string | StaticImageData | StaticImport;
   alt: string;
   title?: string;
   width?: number | `${number}` | undefined;
@@ -22,7 +22,7 @@ export default function ImageWithLoading({
   width,
   height,
   wrapperClassName,
-  backgroundClassName = 'bg-gray-10',
+  backgroundClassName = 'bg-gray-10/50',
   imageClassName,
   forceIsLoading = false,
 }: ImageWithLoadingProps) {
@@ -34,8 +34,8 @@ export default function ImageWithLoading({
 
   const isLoading = imageIsLoading || forceIsLoading;
 
-  const figureClasses = classNames('overflow-hidden', wrapperClassName, backgroundClassName, {
-    'animate-pulse': isLoading,
+  const figureClasses = classNames('overflow-hidden', wrapperClassName, {
+    [`animate-pulse ${[backgroundClassName]}`]: isLoading,
   });
 
   const hasBlurDataUrl = typeof src !== 'string' && !!src.blurDataURL;

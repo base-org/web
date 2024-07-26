@@ -1,36 +1,36 @@
 import { CoinbaseVerifications } from 'apps/web/src/hooks/useCoinbaseVerifications';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-import Image from 'next/image';
 import { GuildBadges } from 'apps/web/src/hooks/useBaseGuild';
 
 // image imports
-import verifiedIdentity from './images/verifiedIdentity.png';
-import verifiedCountry from './images/verifiedCountry.png';
-import verifiedCoinbaseOne from './images/verifiedCoinbaseOne.png';
-import baseBuilder from './images/baseBuilder.png';
-import baseGrantee from './images/baseGrantee.png';
-import baseInitiate from './images/baseInitiate.png';
-import baseLearnNewcomer from './images/baseLearnNewcomer.png';
-import buildathonParticipant from './images/buildathonParticipant.png';
-import buildathonWinner from './images/buildathonWinner.png';
-import talentScore from './images/talentScore.png';
+import verifiedIdentity from './images/verifiedIdentity.webp';
+import verifiedCountry from './images/verifiedCountry.webp';
+import verifiedCoinbaseOne from './images/verifiedCoinbaseOne.webp';
+import baseBuilder from './images/baseBuilder.webp';
+import baseGrantee from './images/baseGrantee.webp';
+import baseInitiate from './images/baseInitiate.webp';
+import baseLearnNewcomer from './images/baseLearnNewcomer.webp';
+import buildathonParticipant from './images/buildathonParticipant.webp';
+import buildathonWinner from './images/buildathonWinner.webp';
+import talentScore from './images/talentScore.webp';
 
 // gray image imports
-import verifiedIdentityGray from './images/verifiedIdentityGray.png';
-import verifiedCountryGray from './images/verifiedCountryGray.png';
-import verifiedCoinbaseOneGray from './images/verifiedCoinbaseOneGray.png';
-import baseBuilderGray from './images/baseBuilderGray.png';
-import baseGranteeGray from './images/baseGranteeGray.png';
-import baseInitiateGray from './images/baseInitiateGray.png';
-import baseLearnNewcomerGray from './images/baseLearnNewcomerGray.png';
-import buildathonParticipantGray from './images/buildathonParticipantGray.png';
-import buildathonWinnerGray from './images/buildathonWinnerGray.png';
-import talentScoreGray from './images/talentScoreGray.png';
+import verifiedIdentityGray from './images/verifiedIdentityGray.webp';
+import verifiedCountryGray from './images/verifiedCountryGray.webp';
+import verifiedCoinbaseOneGray from './images/verifiedCoinbaseOneGray.webp';
+import baseBuilderGray from './images/baseBuilderGray.webp';
+import baseGranteeGray from './images/baseGranteeGray.webp';
+import baseInitiateGray from './images/baseInitiateGray.webp';
+import baseLearnNewcomerGray from './images/baseLearnNewcomerGray.webp';
+import buildathonParticipantGray from './images/buildathonParticipantGray.webp';
+import buildathonWinnerGray from './images/buildathonWinnerGray.webp';
+import talentScoreGray from './images/talentScoreGray.webp';
 import { useBadgeContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/BadgeContext';
 import Modal from 'apps/web/src/components/Modal';
 import { useCallback } from 'react';
 import { Button } from 'apps/web/src/components/Button/Button';
 import Link from 'next/link';
+import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 
 export type BadgeNames = CoinbaseVerifications | GuildBadges | 'TALENT_SCORE';
 
@@ -141,61 +141,65 @@ export const BADGE_INFO: Record<
   },
 };
 
+type BadgeImageProps = {
+  badge: BadgeNames;
+  claimed?: boolean;
+  score?: number;
+  size: number;
+  name: string;
+};
+
+export function BadgeImage({ badge, claimed, score, size, name }: BadgeImageProps) {
+  const showTalentScore = Boolean(claimed && score && badge === 'TALENT_SCORE');
+
+  return (
+    <div className="group relative flex h-[160px] w-[160px] items-center justify-center">
+      <ImageWithLoading
+        src={BADGE_INFO[badge][claimed ? 'image' : 'grayImage']}
+        alt={name}
+        height={size}
+        wrapperClassName="rounded-full"
+        width={size}
+        imageClassName="group-hover:rotate-[-1deg] group-hover:scale-105"
+      />
+      {showTalentScore && (
+        <span className="absolute font-sans text-3xl font-bold text-white">{score}</span>
+      )}
+    </div>
+  );
+}
+
 export function Badge({
   badge,
   claimed,
   score,
+  size = 120,
 }: {
   badge: BadgeNames;
   claimed?: boolean;
   score?: number;
+  size?: number;
 }) {
   const { selectBadge } = useBadgeContext();
   const onClick = useCallback(() => {
-    selectBadge({ badge, claimed: !!claimed });
-  }, [selectBadge, badge, claimed]);
+    selectBadge({ badge, claimed: !!claimed, score });
+  }, [selectBadge, badge, claimed, score]);
 
   const name = BADGE_INFO[badge].name;
-  const showTalentScore = Boolean(claimed && score && badge === 'TALENT_SCORE');
 
   return (
     <div className="flex flex-col gap-4">
       <div
-        className="relative flex h-[160px] w-[160px] items-center justify-center rounded-[24px] border border-gray-10"
         onClick={onClick}
         onKeyDown={onClick}
         aria-label={`See details for ${name}`}
         role="button"
         tabIndex={0}
+        className="rounded-[24px] border border-gray-10"
       >
-        <Image
-          src={BADGE_INFO[badge][claimed ? 'image' : 'grayImage']}
-          alt={name}
-          height={100}
-          width={100}
-        />
-        {showTalentScore && (
-          <span className="absolute font-sans text-3xl font-bold text-white">{score}</span>
-        )}
-        {!claimed && (
-          <span className="absolute left-[13px] top-[13px] rounded-[99px] bg-white p-1 px-2 text-sm font-medium uppercase text-palette-primary shadow-pill-glow">
-            See criteria
-          </span>
-        )}
+        <BadgeImage badge={badge} claimed={claimed} score={score} size={size} name={name} />
       </div>
       <span className="text-sm font-medium">{name}</span>
-    </div>
-  );
-}
-
-export function TalentBadge({ score }: { score: number }) {
-  return (
-    <div className="flex flex-col gap-4">
-      <div className="flex h-[160px] w-[160px] items-center justify-center rounded-[24px] border border-gray-10">
-        <Image src={talentScore} alt="Talent Passport score" height={100} width={100} />
-        <span className="absolute font-sans text-3xl font-bold text-white">{score}</span>
-      </div>
-      <span className="text-sm font-medium">Talent Passport score</span>
     </div>
   );
 }
@@ -210,23 +214,15 @@ export function BadgeModal() {
 
   return (
     <Modal isOpen={modalOpen} onClose={closeModal} title="">
-      <div className="flex flex-col items-center gap-4">
-        <Image
-          src={BADGE_INFO[badge].image}
-          alt={name}
-          height={100}
-          width={100}
-          className="rounded-[24px]"
-        />
-        <div className="mb-8 flex flex-col items-center gap-6">
-          <span className="text-2xl font-medium">{name}</span>
-          <p className="text-center">{BADGE_INFO[badge].description}</p>
-          <span className="text-l font-bold uppercase">
-            status: {selectedClaim.claimed ? 'claimed' : 'unclaimed'}
-          </span>
-        </div>
-        <Link href={BADGE_INFO[badge].ctaLink} target="_blank">
-          <Button variant="black" rounded>
+      <div className="flex max-w-[380px] flex-col items-center">
+        <BadgeImage badge={badge} claimed size={120} name={name} score={selectedClaim.score} />
+        <span className="mb-4 text-2xl font-medium">{name}</span>
+        <p className="mb-10 text-center">{BADGE_INFO[badge].description}</p>
+        <span className="text-l mb-8 font-bold uppercase">
+          status: {selectedClaim.claimed ? 'claimed' : 'unclaimed'}
+        </span>
+        <Link href={BADGE_INFO[badge].ctaLink} target="_blank" className="w-full">
+          <Button variant="black" rounded fullWidth>
             {BADGE_INFO[badge].cta}
           </Button>
         </Link>

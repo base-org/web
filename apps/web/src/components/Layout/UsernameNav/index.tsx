@@ -59,8 +59,8 @@ export default function UsernameNav() {
               onClick={switchToTestnet}
             >
               Switch to Testnet
-            </button>{' '}
-            to register on testnet.
+            </button>
+            ?
           </p>
         </div>
       )}
@@ -74,9 +74,9 @@ export default function UsernameNav() {
               type="button"
               onClick={switchToMainnet}
             >
-              Switch to Mainnet
+              Switch to Base Mainnet
             </button>{' '}
-            to register a name outside of testnet.
+            to register a .base.eth name.
           </p>
         </div>
       )}

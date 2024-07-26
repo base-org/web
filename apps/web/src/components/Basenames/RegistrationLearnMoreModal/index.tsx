@@ -67,7 +67,7 @@ export default function RegistrationLearnMoreModal({
                   alt="criteria icon"
                   width={30}
                   height={30}
-                  wrapperClassName="rounded-lg"
+                  wrapperClassName="rounded-full"
                   imageClassName={CBRowClasses}
                 />
                 <p className={classNames(CBRowClasses)}>Coinbase verification</p>
@@ -88,7 +88,7 @@ export default function RegistrationLearnMoreModal({
                   alt="criteria icon"
                   width={30}
                   height={30}
-                  wrapperClassName="rounded-lg"
+                  wrapperClassName="rounded-full"
                   imageClassName={CBRowClasses}
                 />
                 <p className={classNames(CB1RowClasses)}>Coinbase One verification</p>
@@ -109,7 +109,7 @@ export default function RegistrationLearnMoreModal({
                   alt="criteria icon"
                   width={30}
                   height={30}
-                  wrapperClassName="rounded-lg"
+                  wrapperClassName="rounded-full"
                   imageClassName={CBRowClasses}
                 />
                 <p className={classNames(CBIDRowClasses)}>A cb.id username</p>
@@ -130,7 +130,7 @@ export default function RegistrationLearnMoreModal({
                   alt="criteria icon"
                   width={30}
                   height={30}
-                  wrapperClassName="rounded-lg"
+                  wrapperClassName="rounded-full"
                   imageClassName={CBRowClasses}
                 />
                 <p className={classNames(BuildathonRowClasses)}>Base buildathon participant</p>
@@ -151,7 +151,7 @@ export default function RegistrationLearnMoreModal({
                   alt="criteria icon"
                   width={30}
                   height={30}
-                  wrapperClassName="rounded-lg"
+                  wrapperClassName="rounded-full"
                   imageClassName={CBRowClasses}
                 />
                 <p className={classNames(SummerPassRowClasses)}>Summer Pass Level 3</p>
