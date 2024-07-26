@@ -165,11 +165,6 @@ export function BadgeImage({ badge, claimed, score, size, name }: BadgeImageProp
       {showTalentScore && (
         <span className="absolute font-sans text-3xl font-bold text-white">{score}</span>
       )}
-      {!claimed && (
-        <span className="absolute left-[13px] top-[13px] rounded-[99px] bg-white p-1 px-2 text-xs font-medium uppercase text-palette-primary shadow-pill-glow">
-          See criteria
-        </span>
-      )}
     </div>
   );
 }
