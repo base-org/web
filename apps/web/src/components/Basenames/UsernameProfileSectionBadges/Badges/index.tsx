@@ -153,13 +153,14 @@ export function BadgeImage({ badge, claimed, score, size, name }: BadgeImageProp
   const showTalentScore = Boolean(claimed && score && badge === 'TALENT_SCORE');
 
   return (
-    <div className="relative flex h-[160px] w-[160px] items-center justify-center">
+    <div className="group relative flex h-[160px] w-[160px] items-center justify-center">
       <ImageWithLoading
         src={BADGE_INFO[badge][claimed ? 'image' : 'grayImage']}
         alt={name}
         height={size}
         wrapperClassName="rounded-full"
         width={size}
+        imageClassName="group-hover:rotate-[-1deg] group-hover:scale-105"
       />
       {showTalentScore && (
         <span className="absolute font-sans text-3xl font-bold text-white">{score}</span>
