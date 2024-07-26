@@ -30,7 +30,7 @@ type BadgeProviderProps = {
   children?: ReactNode;
 };
 
-type BadgeClaim = { badge: BadgeNames; claimed: boolean };
+type BadgeClaim = { badge: BadgeNames; claimed: boolean; score?: number };
 
 export default function BadgeProvider({ children }: BadgeProviderProps) {
   const [modalOpen, setModalOpen] = useState(false);
