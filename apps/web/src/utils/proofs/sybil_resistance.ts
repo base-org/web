@@ -149,7 +149,6 @@ export async function sybilResistantUsernameSigning(
     const previousClaim = previousClaims[discountType];
     if (previousClaim) {
       if (previousClaim.address != address) {
-        console.log(previousClaim.address, address);
         throw new Error(
           'You tried claiming this with a different address, wait a couple minutes to try again.',
         );

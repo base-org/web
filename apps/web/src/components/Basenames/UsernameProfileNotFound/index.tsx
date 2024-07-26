@@ -13,7 +13,7 @@ export default function UsernameProfileNotFound({ username }: { username: BaseNa
       <p className="text-lg">
         There&apos;s no profile associated with this name, but it could be yours!
       </p>
-      <Link href={`/name?${claimQueryKey}=${username}`}>
+      <Link href={`/names?${claimQueryKey}=${username}`}>
         <Button variant={ButtonVariants.Black} rounded>
           Register name
         </Button>

@@ -93,9 +93,7 @@ export default function RegistrationProfileForm() {
         .then(() => {
           router.push(`name/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
         })
-        .catch(() => {
-          // console.log({ error });
-        });
+        .catch(() => {});
     }
 
     if (transactionData.status === 'reverted') {
@@ -167,7 +165,7 @@ export default function RegistrationProfileForm() {
               logEventWithContext('update_text_records_transaction_approved', ActionType.change);
             } else {
               // no text records had to be updated, simply go to profile
-              router.push(`names/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
+              router.push(`name/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
             }
           })
           .catch(console.error);
