@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { useExperiment } from 'base-ui/contexts/Experiments';
-
 import ControlHero from './ControlHero';
 import TreatmentHero from './TreatmentHero';
 import styles from './styles.module.css';
@@ -23,7 +21,7 @@ export default function Hero() {
 function HeroLoadingState() {
   return (
     <div className={styles.loadingState}>
-      <div className={styles.loadingStateImg}></div>
+      <div className={styles.loadingStateImg} />
     </div>
   );
 }
