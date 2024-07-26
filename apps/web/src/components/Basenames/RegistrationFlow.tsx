@@ -24,12 +24,7 @@ import { useAccount, useChains, useSwitchChain } from 'wagmi';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import Tooltip from 'apps/web/src/components/Tooltip';
 
-/*
-test addresses w/ different verifications
-  0xB18e4C959bccc8EF86D78DC297fb5efA99550d85 - cb.id 
-  0xB18e4C959bccc8EF86D78DC297fb5efA99550d85, 0xB6944B3074F40959E1166fe010a3F86B02cF2b7c- verified account
-  0x9C02E8E28D8b706F67dcf0FC7F46A9ee1f9649FA - cb1
-*/
+const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
 
 export const claimQueryKey = 'claim';
 
@@ -132,26 +127,28 @@ export function RegistrationFlow() {
             variant={RegistrationSearchInputVariant.Large}
             placeholder="Search for a name"
           />
-          <div className="mx-auto mt-6 flex items-center justify-center">
-            <p
-              className={classNames({
-                'text-white': searchInputFocused,
-                'text-gray-40': !searchInputFocused,
-              })}
-            >
-              You can claim one Basename per wallet for early access.
-            </p>
-            <Tooltip content="shrekislove.base.eth is already taken.">
-              <InformationCircleIcon
-                width={12}
-                height={12}
-                className={classNames('ml-1', {
-                  'fill-white': searchInputFocused,
-                  'fill-gray-40': !searchInputFocused,
+          {isEarlyAccess && (
+            <div className="mx-auto mt-6 flex items-center justify-center">
+              <p
+                className={classNames({
+                  'text-white': searchInputFocused,
+                  'text-gray-40': !searchInputFocused,
                 })}
-              />
-            </Tooltip>
-          </div>
+              >
+                You can claim one Basename per wallet for early access.
+              </p>
+              <Tooltip content="shrekislove.base.eth is already taken.">
+                <InformationCircleIcon
+                  width={12}
+                  height={12}
+                  className={classNames('ml-1', {
+                    'fill-white': searchInputFocused,
+                    'fill-gray-40': !searchInputFocused,
+                  })}
+                />
+              </Tooltip>
+            </div>
+          )}
         </Transition>
       </Transition>
       {/* 2 - Username Pill */}
