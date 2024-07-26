@@ -16,6 +16,7 @@ import {
   ConnectWallet,
   Wallet,
   WalletDropdown,
+  WalletDropdownLink,
   WalletDropdownDisconnect,
 } from '@coinbase/onchainkit/wallet';
 import { Name, Identity, EthBalance } from '@coinbase/onchainkit/identity';
@@ -162,6 +163,9 @@ export function ConnectWalletButton({
             </div>
           </Link>
         )}
+        <WalletDropdownLink icon="wallet" href="https://wallet.coinbase.com">
+          Go to Wallet Dashboard
+        </WalletDropdownLink>
         <WalletDropdownDisconnect />
       </WalletDropdown>
     </Wallet>
