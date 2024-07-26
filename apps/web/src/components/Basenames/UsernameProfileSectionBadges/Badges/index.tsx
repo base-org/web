@@ -4,28 +4,28 @@ import Image from 'next/image';
 import { GuildBadges } from 'apps/web/src/hooks/useBaseGuild';
 
 // image imports
-import verifiedIdentity from './images/verifiedIdentity.png';
-import verifiedCountry from './images/verifiedCountry.png';
-import verifiedCoinbaseOne from './images/verifiedCoinbaseOne.png';
-import baseBuilder from './images/baseBuilder.png';
-import baseGrantee from './images/baseGrantee.png';
-import baseInitiate from './images/baseInitiate.png';
-import baseLearnNewcomer from './images/baseLearnNewcomer.png';
-import buildathonParticipant from './images/buildathonParticipant.png';
-import buildathonWinner from './images/buildathonWinner.png';
-import talentScore from './images/talentScore.png';
+import verifiedIdentity from './images/verifiedIdentity.webp';
+import verifiedCountry from './images/verifiedCountry.webp';
+import verifiedCoinbaseOne from './images/verifiedCoinbaseOne.webp';
+import baseBuilder from './images/baseBuilder.webp';
+import baseGrantee from './images/baseGrantee.webp';
+import baseInitiate from './images/baseInitiate.webp';
+import baseLearnNewcomer from './images/baseLearnNewcomer.webp';
+import buildathonParticipant from './images/buildathonParticipant.webp';
+import buildathonWinner from './images/buildathonWinner.webp';
+import talentScore from './images/talentScore.webp';
 
 // gray image imports
-import verifiedIdentityGray from './images/verifiedIdentityGray.png';
-import verifiedCountryGray from './images/verifiedCountryGray.png';
-import verifiedCoinbaseOneGray from './images/verifiedCoinbaseOneGray.png';
-import baseBuilderGray from './images/baseBuilderGray.png';
-import baseGranteeGray from './images/baseGranteeGray.png';
-import baseInitiateGray from './images/baseInitiateGray.png';
-import baseLearnNewcomerGray from './images/baseLearnNewcomerGray.png';
-import buildathonParticipantGray from './images/buildathonParticipantGray.png';
-import buildathonWinnerGray from './images/buildathonWinnerGray.png';
-import talentScoreGray from './images/talentScoreGray.png';
+import verifiedIdentityGray from './images/verifiedIdentityGray.webp';
+import verifiedCountryGray from './images/verifiedCountryGray.webp';
+import verifiedCoinbaseOneGray from './images/verifiedCoinbaseOneGray.webp';
+import baseBuilderGray from './images/baseBuilderGray.webp';
+import baseGranteeGray from './images/baseGranteeGray.webp';
+import baseInitiateGray from './images/baseInitiateGray.webp';
+import baseLearnNewcomerGray from './images/baseLearnNewcomerGray.webp';
+import buildathonParticipantGray from './images/buildathonParticipantGray.webp';
+import buildathonWinnerGray from './images/buildathonWinnerGray.webp';
+import talentScoreGray from './images/talentScoreGray.webp';
 import { useBadgeContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/BadgeContext';
 import Modal from 'apps/web/src/components/Modal';
 import { useCallback } from 'react';
@@ -171,14 +171,14 @@ export function Badge({
         <Image
           src={BADGE_INFO[badge][claimed ? 'image' : 'grayImage']}
           alt={name}
-          height={100}
-          width={100}
+          height={120}
+          width={120}
         />
         {showTalentScore && (
           <span className="absolute font-sans text-3xl font-bold text-white">{score}</span>
         )}
         {!claimed && (
-          <span className="absolute left-[13px] top-[13px] rounded-[99px] bg-white p-1 px-2 text-sm font-medium uppercase text-palette-primary shadow-pill-glow">
+          <span className="absolute left-[13px] top-[13px] rounded-[99px] bg-white p-1 px-2 text-xs font-medium uppercase text-palette-primary shadow-pill-glow">
             See criteria
           </span>
         )}
