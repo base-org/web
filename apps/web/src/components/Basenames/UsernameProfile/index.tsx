@@ -21,6 +21,7 @@ export default function UsernameProfile() {
   );
 
   if (
+    profileUsername &&
     !profileUsername.endsWith(`.${USERNAME_DOMAINS[baseSepolia.id]}`) &&
     !profileUsername.endsWith(`.${USERNAME_DOMAINS[base.id]}`)
   ) {

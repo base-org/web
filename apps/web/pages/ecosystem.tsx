@@ -35,14 +35,23 @@ function EcosystemHero() {
 }
 
 export default function Ecosystem() {
+  const ogData = {
+    title: 'Base | Ecosystem',
+    description: 'An overview of apps and integrations in the Base ecosystem.',
+
+    url: 'https://base.org/base-ecosystem',
+  };
   return (
     <div>
       <Head>
-        <title>Base | Ecosystem</title>
-        <meta
-          content="Base is a secure, low-cost, developer-friendly Ethereum L2 built to bring the next billion users to web3."
-          name="description"
-        />
+        {/* Open-graph */}
+        <meta key="og:url" property="og:url" content={ogData.url} />
+        <meta key="og:title" property="og:title" content={ogData.title} />
+        <meta key="og:description" property="og:description" content={ogData.description} />
+
+        {/* Default */}
+        <title key="title">{ogData.title}</title>
+        <meta key="description" content={ogData.description} name="description" />
       </Head>
       <main className="flex w-full flex-col items-center bg-black">
         <EcosystemHero />

@@ -1,5 +1,5 @@
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Address, ContractFunctionParameters, namehash } from 'viem';
 import {
   UsernameTextRecords,
@@ -22,21 +22,25 @@ export default function useReadBaseEnsTextRecords({
 }: UseReadBaseEnsTextRecordsProps) {
   const { basenameChain, basenamePublicClient } = useBasenameChain();
 
-  // TODO: this could be based on textRecordsKeysEnabled via reduce
-  const [existingTextRecords, setExistingTextRecords] = useState<UsernameTextRecords>({
-    [UsernameTextRecordKeys.Description]: '',
-    [UsernameTextRecordKeys.Twitter]: '',
-    [UsernameTextRecordKeys.Farcaster]: '',
-    [UsernameTextRecordKeys.Lens]: '',
-    [UsernameTextRecordKeys.Telegram]: '',
-    [UsernameTextRecordKeys.Discord]: '',
-    [UsernameTextRecordKeys.Keywords]: '',
-    [UsernameTextRecordKeys.Url]: '',
-    [UsernameTextRecordKeys.Github]: '',
-    [UsernameTextRecordKeys.Email]: '',
-    [UsernameTextRecordKeys.Phone]: '',
-    [UsernameTextRecordKeys.Avatar]: '',
-  });
+  const defaultTextRecords = useMemo(() => {
+    return {
+      [UsernameTextRecordKeys.Description]: '',
+      [UsernameTextRecordKeys.Twitter]: '',
+      [UsernameTextRecordKeys.Farcaster]: '',
+      [UsernameTextRecordKeys.Lens]: '',
+      [UsernameTextRecordKeys.Telegram]: '',
+      [UsernameTextRecordKeys.Discord]: '',
+      [UsernameTextRecordKeys.Keywords]: '',
+      [UsernameTextRecordKeys.Url]: '',
+      [UsernameTextRecordKeys.Github]: '',
+      [UsernameTextRecordKeys.Email]: '',
+      [UsernameTextRecordKeys.Phone]: '',
+      [UsernameTextRecordKeys.Avatar]: '',
+    };
+  }, []);
+
+  const [existingTextRecords, setExistingTextRecords] =
+    useState<UsernameTextRecords>(defaultTextRecords);
 
   const updateExistingTextRecords = useCallback((key: UsernameTextRecordKeys, value: string) => {
     setExistingTextRecords((previousTextRecords) => {
@@ -71,7 +75,13 @@ export default function useReadBaseEnsTextRecords({
     refetch: refetchExistingTextRecords,
     error: existingTextRecordsError,
   } = useQuery({
-    queryKey: ['useReadBaseEnsTextRecords', address, textRecordsKeysEnabled, basenameChain.id],
+    queryKey: [
+      'useReadBaseEnsTextRecords',
+      address,
+      textRecordsKeysEnabled,
+      basenameChain.id,
+      username,
+    ],
     queryFn: getExistingTextRecords,
     enabled: !!address && !!username,
   });
@@ -91,6 +101,12 @@ export default function useReadBaseEnsTextRecords({
       });
     }
   }, [textRecordsData, updateExistingTextRecords]);
+
+  useEffect(() => {
+    if (!username) {
+      setExistingTextRecords(defaultTextRecords);
+    }
+  }, [defaultTextRecords, username]);
 
   return {
     existingTextRecordsIsLoading,
