@@ -69,6 +69,8 @@ Selecting `Rainbow`, `MetaMask`, or `WalletConnect` will display a QR code so th
 
 This flow can be improved upon, as new crypto users won't know that digging for the smart wallet is the best path forward, and existing users who are trying to migrate to the smart wallet don't have that option.
 
+See our tutorials on [Managing Wallets] for more details!
+
 ---
 
 ## Conclusion
@@ -89,3 +91,5 @@ In this article, you've learned how libraries such as [Rainbowkit], [ConnectKit]
 [Building an Onchain App]: /building-an-onchain-app
 [Smart wallets]: https://www.coinbase.com/wallet/smart-wallet
 [passkeys]: https://safety.google/authentication/passkey/
+
+[Managing Wallets]:
