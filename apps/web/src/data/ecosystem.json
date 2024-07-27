@@ -3692,5 +3692,266 @@
     "description": "Best Farcaster client a degen can get. Built on Base.",
     "url": "https://app.wildcard.lol",
     "imageUrl": "/images/partners/wildcard.jpeg"
+  },
+  {
+    "name": "Gas.zip",
+    "tags": [
+      "bridge"
+    ],
+    "description": "Gas.zip is the fastest one-stop gas refuel bridge for over 200+ chains and counting. Users can instantly bridge to multiple destination blockchains with a single inbound transaction.",
+    "url": "https://www.gas.zip/",
+    "imageUrl": "/images/partners/gaszip.png"
+  },
+  {
+    "name": "Morpho",
+    "tags": [
+      "defi"
+    ],
+    "description": "A permissionless and non-custodial lending protocol. Earn interest on over-collateralized lending and borrow digital assets using immutable infrastructure.",
+    "url": "https://morpho.org/",
+    "imageUrl": "/images/partners/morpho.png"
+  },
+  {
+    "name": "Endaoment",
+    "tags": [
+      "defi"
+    ],
+    "description": "Endaoment provides onchain Donor Advised Funds, enabling tax-deductible giving with crypto or any other asset. Secure, transparent, and easy-to-use, it bridges crypto and philanthropy for impactful giving.",
+    "url": "https://app.endaoment.org",
+    "imageUrl": "/images/partners/endaoment.png"
+  },
+  {
+    "name": "Based Associates DAO",
+    "tags": [
+      "dao"
+    ],
+    "description": "A Nounish DAO building collective projects on Base with art, story, culture, commerce, social impact and media. Home of MoBA - The Museum of Based ARTFKTS\n",
+    "url": "https://www.based.associates",
+    "imageUrl": "/images/partners/basedassociates.png"
+  },
+  {
+    "name": "Algebra",
+    "tags": [
+      "defi"
+    ],
+    "description": "Algebra is an AMM providing modular concentrated liquidity (V4) with dynamic fees and hooks to DEXes on Base",
+    "url": "https://algebra.finance/",
+    "imageUrl": "/images/partners/algebra.jpg"
+  },
+  {
+    "name": "Unvest",
+    "tags": [
+      "defi"
+    ],
+    "description": "Fast and easy token distributions, custom vesting, streaming, milestones, airdrops, liquidity locks, staking pools, treasury management, reporting and compliance.",
+    "url": "https://unvest.io/",
+    "imageUrl": "/images/partners/unvest.png"
+  },
+  {
+    "name": "CreateMyToken",
+    "tags": [
+      "defi"
+    ],
+    "description": "Create your own token in just 1 minute and deploy it on Ethereum, Base, Optimism and more! No code, no setup, no login, and free!",
+    "url": "https://www.createmytoken.com/",
+    "imageUrl": "/images/partners/createmytoken.png"
+  },
+  {
+    "name": "Mercuryo",
+    "tags": [
+      "onramp"
+    ],
+    "description": "15 seconds fiat-to crypto on-ramping, easy bank card off-ramping and more. Trusted by 7M+ users in 165+ countries and 200+ dApps.",
+    "url": "https://mercuryo.io/",
+    "imageUrl": "/images/partners/mercuryo.svg"
+  },
+  {
+    "name": "Franklin Payroll",
+    "tags": [
+      "defi"
+    ],
+    "description": "All-in-one onchain financial operations suite. Pay US W2 employees, vendors, global contractors, and invoice customers. Franklin supports USD and crypto payouts plus stablecoin to USD off-ramping.",
+    "url": "www.hellofranklin.co",
+    "imageUrl": "/images/partners/franklin.png"
+  },
+  {
+    "name": "Birdeye.so",
+    "tags": [
+      "defi"
+    ],
+    "description": "Birdeye is an on-chain crypto trading data aggregator that provides fair access to investment opportunities for all traders. We integrate with 200+ DEXes & AMMs on Solana, Sui, Ethereum, and other EVM chains, providing users with the most precise token and trading data they need.",
+    "url": "https://birdeye.so/",
+    "imageUrl": "/images/partners/birdeye.png"
+  },
+  {
+    "name": "Palisade Custody",
+    "tags": [
+      "wallet"
+    ],
+    "description": "Palisade is a digital asset custody platform providing services ranging from fully regulated HSM wallets to MPC and passkey-enabled wallets for businesses building on web3",
+    "url": "https://www.palisade.co",
+    "imageUrl": "/images/partners/palisade.jpg"
+  },
+  {
+    "name": "RYI Unity",
+    "tags": [
+      "defi"
+    ],
+    "description": "Ryi Unity is a leading decentralized applications builder focused on providing innovative solutions for the decentralized world. We specialize in building robust and secure platforms that allow users to interact with various blockchain networks seamlessly",
+    "url": "https://unity-ventures.com/",
+    "imageUrl": "/images/partners/ryi.png"
+  },
+  {
+    "name": "CoindPay",
+    "tags": [
+      "defi"
+    ],
+    "description": "CoindPay is a decentralized payments and compound finance infrastructure.",
+    "url": "https://coindpay.xyz",
+    "imageUrl": "/images/partners/coindpay.png"
+  },
+  {
+    "name": "Okto",
+    "tags": [
+      "wallet"
+    ],
+    "description": "At Okto, we are dedicated to enhancing the web3 onboarding experience by building a comprehensive orchestration layer that simplifies chain, account, transaction, and fee abstraction for both users and developers. Our platform features a self-custody MPC wallet that supports a single asset portfolio with seamless interoperability across more than 15 chains, including EVM, Solana, Aptos, Cosmos, and others. Additionally, we offer regulated on-ramp and off-ramp features and a gas station service that allows users to pay gas fees with any stable token they possess on any chain. Our SDK allows the Okto wallet to be embedded in any web2 app transforming it almost instantly to web3 without the web2 developers having to learn web3 concepts. Our wallet is currently utilized by over 1.5 million users and has witnessed significant transaction volume, reflecting our rapid growth. More details about our products and journey can be found on our website, okto.tech.",
+    "url": "https://okto.tech",
+    "imageUrl": "/images/partners/okto.png"
+  },
+  {
+    "name": "JuicyBet",
+    "tags": [
+      "gaming"
+    ],
+    "description": "JuicyBet is an innovative GambleFi Ecosystem Decentralized Project. Our platform stands at the confluence of gambling and web3 technologies, integrating the advantages of both sectors. ",
+    "url": "https://juicybet.net/",
+    "imageUrl": "/images/partners/juicybet.png"
+  },
+  {
+    "name": "Mozaic Finance",
+    "tags": [
+      "defi"
+    ],
+    "description": "AI-Optimized Yield and Liquidity Strategies",
+    "url": "https://mozaic.finance/",
+    "imageUrl": "/images/partners/mozaic.jpg"
+  },
+  {
+    "name": "stVol",
+    "tags": [
+      "defi"
+    ],
+    "description": "Options redefined with a simple, easy, and fun trading experience. ",
+    "url": "https://www.stvol.io/",
+    "imageUrl": "/images/partners/stvol.png"
+  },
+  {
+    "name": "Mass",
+    "tags": [
+      "defi"
+    ],
+    "description": "Trade, on-ramp, off-ramp, set limit orders, and discover on-chain and off-chain data to empower your trading journey—all powered by account abstraction! Mass is available on both iOS and Android!",
+    "url": "https://mass.money",
+    "imageUrl": "/images/partners/mass.png"
+  },
+  {
+    "name": "PoolTogether",
+    "tags": [
+      "defi"
+    ],
+    "description": "PoolTogether is an open-source protocol for prize savings. It's designed to enhance financial security by making saving enjoyable. When users deposit into the system, the interest accumulates across all deposits and is then randomly distributed as prizes. The protocol turns your interest into fun rewards! Save your favorite tokens and have a chance to win big.",
+    "url": "https://pooltogether.com/",
+    "imageUrl": "/images/partners/pooltogether.png"
+  },
+  {
+    "name": "Burve Protocol",
+    "tags": [
+      "defi"
+    ],
+    "description": "Burve Protocol is a next-generation AMM and Launchpad, designed to revolutionize DeFi with innovative liquidity, launch, and lending solutions for various crypto use cases.",
+    "url": "https://app.burve.io/",
+    "imageUrl": "/images/partners/burve.png"
+  },
+  {
+    "name": "TITLES",
+    "tags": [
+      "defi"
+    ],
+    "description": "TITLES builds creative tools powered by artist-owned AI models. We empower artists and IP holders to create, share, and monetize their own custom AI models.",
+    "url": "https://titles.xyz/",
+    "imageUrl": "/images/partners/titles.png"
+  },
+  {
+    "name": "Sofamon",
+    "tags": [
+      "social"
+    ],
+    "description": "Sofamon is the first collectible chat sticker on Telegram.",
+    "url": "https://www.sofamon.xyz/",
+    "imageUrl": "/images/partners/sofamon.jpg"
+  },
+  {
+    "name": "Bountycaster",
+    "tags": [
+      "social"
+    ],
+    "description": "Easily post and discover bounties and jobs on Farcaster. Build onchain reputation for work completed with attestations issued via EAS on Base",
+    "url": "https://bountycaster.xyz/",
+    "imageUrl": "/images/partners/bountycaster.png"
+  },
+  {
+    "name": "Slice",
+    "tags": [
+      "infra"
+    ],
+    "description": "Slice is the onchain commerce protocol. We build infrastructure and web interfaces to enable smooth, fast and powerful onchain checkout experiences.",
+    "url": "https://slice.so",
+    "imageUrl": "/images/partners/slice.png"
+  },
+  {
+    "name": "Koda",
+    "tags": [
+      "nft"
+    ],
+    "description": "Generative Art Marketplace bringing always new experiment to the room",
+    "url": "https://koda.art",
+    "imageUrl": "/images/partners/koda.png"
+  },
+  {
+    "name": "Paragraph",
+    "tags": [
+      "social"
+    ],
+    "description": "Create, share, and explore the best writing on the internet.",
+    "url": "https://paragraph.xyz/",
+    "imageUrl": "/images/partners/paragraph.png"
+  },
+  {
+    "name": "Custom Punks",
+    "tags": [
+      "nft"
+    ],
+    "description": "Create and customize your very own Custom Punk. Mix and match traits, colors, accessories, and backgrounds to create a Custom Punk that's uniquely yours.",
+    "url": "https://www.custompunks.app/",
+    "imageUrl": "/images/partners/custompunks.png"
+  },
+  {
+    "name": "Receipts",
+    "tags": [
+      "social"
+    ],
+    "description": "Connect your wearable and earn points when you workout. Join challenges and compete with friends on leaderboards. Workout. Earn points. Show the receipts.",
+    "url": "https://receipts.xyz",
+    "imageUrl": "/images/partners/receipts.png"
+  },
+  {
+    "name": "ddocs.new",
+    "tags": [
+      "social"
+    ],
+    "description": "ddocs.new is your onchain alternative to Go*gle D*cs. No account needed, designed to enhance your privacy, works peer-to-peer with no centralized intermediary, and available on both mobile & desktop.",
+    "url": "https://ddocs.new",
+    "imageUrl": "/images/partners/ddocs.jpeg"
   }
 ]
