@@ -23,3 +23,8 @@ declare module 'next/config' {
 
   export default getConfig;
 }
+
+declare module '*.webm' {
+  const src: string;
+  export default src;
+}
