@@ -1,7 +1,12 @@
 import satori from 'satori';
 import { NextRequest } from 'next/server';
-import { getUserNamePicture } from 'apps/web/src/utils/usernames';
+import { getUserNamePicture, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import twemoji from 'twemoji';
+import { base } from 'viem/chains';
+import { namehash } from 'viem';
+import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
+import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
+import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 
 const emojiCache: Record<string, Promise<string>> = {};
 
@@ -22,7 +27,6 @@ export const config = {
   runtime: 'edge',
 };
 
-// TODO: Do we want to check if the name actually exists?
 export default async function handler(request: NextRequest) {
   const fontData = await fetch(
     new URL('../../../../../src/fonts/CoinbaseDisplay-Regular.ttf', import.meta.url),
@@ -33,6 +37,25 @@ export default async function handler(request: NextRequest) {
   const username = url.searchParams.get('name') ?? 'yourname';
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
   const profilePicture = getUserNamePicture(username);
+  const chainId = url.searchParams.get('chainId') ?? base.id;
+  let imageSource = domainName + profilePicture.src;
+
+  // NOTE: Do we want to fail if the name doesn't exists?
+  try {
+    const nameHash = namehash(username);
+    const client = getBasenamePublicClient(Number(chainId));
+    const avatar = await client.readContract({
+      abi: L2ResolverAbi,
+      address: USERNAME_L2_RESOLVER_ADDRESSES[Number(chainId)],
+      args: [nameHash, UsernameTextRecordKeys.Avatar],
+      functionName: 'text',
+    });
+
+    // Satori Doesn't support webp
+    if (avatar && !avatar.endsWith('.webp')) {
+      imageSource = avatar;
+    }
+  } catch (error) {}
 
   // Using Satori for a SVG response
   const svg = await satori(
@@ -67,7 +90,7 @@ export default async function handler(request: NextRequest) {
         <figure style={{ borderRadius: '100%', overflow: 'hidden', height: 120, width: 120 }}>
           {/* We cannot use <Image> in these satori rendered images */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={domainName + profilePicture.src} height={120} width={120} alt={username} />
+          <img src={imageSource} height={120} width={120} alt={username} />
         </figure>
         <span
           style={{
