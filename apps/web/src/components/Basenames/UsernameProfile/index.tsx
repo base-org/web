@@ -1,3 +1,4 @@
+'use client';
 import UsernameProfileContent from 'apps/web/src/components/Basenames/UsernameProfileContent';
 import UsernameProfileSidebar from 'apps/web/src/components/Basenames/UsernameProfileSidebar';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';

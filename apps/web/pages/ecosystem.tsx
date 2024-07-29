@@ -21,7 +21,7 @@ function EcosystemHero() {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <Button variant={ButtonVariants.Primary} className="w-full md:w-64">
+            <Button variant={ButtonVariants.Primary} fullWidth className="md:w-64">
               Apply
             </Button>
           </a>
