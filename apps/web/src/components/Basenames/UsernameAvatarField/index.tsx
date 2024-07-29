@@ -1,4 +1,3 @@
-'use client';
 import Fieldset from 'apps/web/src/components/Fieldset';
 import FileInput from 'apps/web/src/components/FileInput';
 import Hint, { HintVariants } from 'apps/web/src/components/Hint';

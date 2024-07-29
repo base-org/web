@@ -29,7 +29,7 @@ export default function Modal({
   size = ModalSizes.Medium,
   ...rest
 }: PropsWithChildren<ModalProps>) {
-  const mainClasses = classNames('font-mono text-3xl text-illoblack w-full font-bold', {
+  const mainClasses = classNames('text-3xl text-illoblack w-full font-bold', {
     'text-center': titleAlign === 'center',
     'text-left': titleAlign === 'left',
     'text-right': titleAlign === 'right',

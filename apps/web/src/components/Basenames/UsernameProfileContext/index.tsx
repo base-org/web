@@ -1,5 +1,3 @@
-'use client';
-
 import { BaseName } from '@coinbase/onchainkit/identity';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';

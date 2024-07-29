@@ -1,4 +1,3 @@
-'use client';
 import Fieldset from 'apps/web/src/components/Fieldset';
 import Hint from 'apps/web/src/components/Hint';
 import Label from 'apps/web/src/components/Label';

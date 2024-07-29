@@ -1,4 +1,3 @@
-'use client';
 import notFoundIllustration from './notFoundIllustration.svg';
 import Image, { StaticImageData } from 'next/image';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';

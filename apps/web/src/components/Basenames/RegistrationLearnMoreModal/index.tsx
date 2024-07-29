@@ -1,4 +1,3 @@
-'use client';
 import { InformationCircleIcon } from '@heroicons/react/20/solid';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import Modal from 'apps/web/src/components/Modal';

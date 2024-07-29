@@ -1,4 +1,3 @@
-'use client';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';

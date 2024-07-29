@@ -1,4 +1,3 @@
-'use client';
 import { Transition } from '@headlessui/react';
 import { FloatingENSPills } from 'apps/web/src/components/Basenames/FloatingENSPills';
 import {

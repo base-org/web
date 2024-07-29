@@ -1,4 +1,3 @@
-'use client';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import {
   Badge,

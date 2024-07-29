@@ -1,6 +1,6 @@
 import '@coinbase/onchainkit/styles.css';
 import '../pages/global.css';
-import AppProviders from 'apps/web/app/providers';
+import AppProviders from 'apps/web/app/AppProviders';
 import localFont from 'next/font/local';
 
 const coinbaseDisplay = localFont({
@@ -74,7 +74,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={fontClassNames}>
       <body>
-        {/* Layout UI */}
         <main>
           <AppProviders>{children}</AppProviders>
         </main>

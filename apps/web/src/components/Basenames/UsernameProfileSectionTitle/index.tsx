@@ -1,4 +1,3 @@
-'use client';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 type UsernameProfileSectionTitleProps = {
