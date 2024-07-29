@@ -5,7 +5,11 @@ import {
   registrationTransitionDuration,
   useRegistration,
 } from 'apps/web/src/components/Basenames/RegistrationContext';
-import tempPendingAnimation from 'apps/web/src/components/Basenames/tempPendingAnimation.png';
+
+import fireworks from './assets/fireworks.webm';
+import globe from './assets/globe.webm';
+import vortex from './assets/vortex.webm';
+
 import classNames from 'classnames';
 
 export default function RegistrationBackground() {
@@ -16,13 +20,15 @@ export default function RegistrationBackground() {
   const isPending = registrationStep === RegistrationSteps.Pending;
   const isSuccess = registrationStep === RegistrationSteps.Success;
 
-  const claimBackgroundClasses = classNames(
-    'pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center -z-10',
+  const grayVideoBackgroundClasses = classNames(
+    'pointer-events-none absolute inset-0 w-full h-full -z-10 bg-[#F7F7F7]',
   );
 
-  const successBackgroundClasses = classNames(
-    'pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center -z-10 bg-blue-600',
+  const blueVideoBackgroundClasses = classNames(
+    'pointer-events-none absolute inset-0 w-full h-full -z-10 bg-[#025cfe]',
   );
+
+  const videoClasses = classNames('absolute w-full h-full mt-[24px] object-cover');
 
   return (
     <>
@@ -39,31 +45,77 @@ export default function RegistrationBackground() {
       </Transition>
       <Transition
         appear
-        show={isClaim || isPending}
-        className={classNames('transition-opacity', registrationTransitionDuration)}
+        show={isClaim}
+        className={classNames(
+          'transition-opacity',
+          registrationTransitionDuration,
+          grayVideoBackgroundClasses,
+        )}
         enterFrom={classNames('opacity-0')}
         enterTo={classNames('opacity-100')}
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
         {/* TODO: Lottie animation file */}
-        <div
-          className={claimBackgroundClasses}
-          style={{ backgroundImage: `url(${tempPendingAnimation.src})` }}
-        />
+
+        <Transition
+          appear
+          show={isClaim}
+          className={classNames(
+            'transform-gpu transition-all',
+            registrationTransitionDuration,
+            videoClasses,
+          )}
+          enterFrom="scale-0"
+          enterTo="scale-100"
+        >
+          {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+          <video autoPlay className={videoClasses} loop>
+            <source src={globe} type="video/webm" />
+          </video>
+        </Transition>
+      </Transition>
+
+      <Transition
+        appear
+        show={isPending}
+        className={classNames(
+          'transition-opacity',
+          registrationTransitionDuration,
+          grayVideoBackgroundClasses,
+        )}
+        enterFrom={classNames('opacity-0')}
+        enterTo={classNames('opacity-100')}
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        {/* TODO: Lottie animation file */}
+
+        {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+        <video autoPlay className={videoClasses} loop>
+          <source src={vortex} type="video/webm" />
+        </video>
       </Transition>
 
       <Transition
         appear
         show={isSuccess}
-        className={classNames('transition-opacity', registrationTransitionDuration)}
+        className={classNames(
+          'transition-opacity',
+          registrationTransitionDuration,
+          blueVideoBackgroundClasses,
+        )}
         enterFrom={classNames('opacity-0')}
         enterTo={classNames('opacity-100')}
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
         {/* TODO: Lottie animation file */}
-        <div className={successBackgroundClasses} />
+
+        {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+        <video autoPlay className={videoClasses} loop>
+          <source src={fireworks} type="video/webm" />
+        </video>
       </Transition>
     </>
   );
