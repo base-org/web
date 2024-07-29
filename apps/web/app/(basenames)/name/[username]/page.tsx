@@ -6,8 +6,7 @@ type Props = {
   params: { username: string };
 };
 
-export async function generateMetadata({ params }: Props): //   parent: ResolvingMetadata,
-Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `Basenames | ${params.username}`,
     openGraph: {

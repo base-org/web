@@ -1,4 +1,3 @@
-'use client';
 import { CookieBanner } from '@coinbase/cookie-banner';
 import localFont from 'next/font/local';
 import { useRouter } from 'next/router';
