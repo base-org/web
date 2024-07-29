@@ -166,7 +166,7 @@ module.exports = extendBaseConfig(
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[hash].[ext]',
+              name: '[name][hash].[ext]',
               outputPath: 'static/assets/webm/',
               publicPath: '/_next/static/assets/webm/',
             },
