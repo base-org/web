@@ -51,11 +51,11 @@ export default async function Username({ params }: UsernameProfileProps) {
 
   // Domain doesn't exist
   if (!ensAddress) {
-    return redirect(`/name/not-found?name=${username}`);
+    redirect(`/name/not-found?name=${username}`);
   }
 
   return (
-    <ProfileProviders username={params.username} address={ensAddress}>
+    <ProfileProviders username={username} address={ensAddress}>
       <main className={usernameProfilePageClasses}>
         <UsernameProfile />
       </main>
