@@ -2,7 +2,7 @@ import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { GradientCircle } from 'apps/web/src/components/GradientCircle/GradientCircle';
 import Link from 'next/link';
 
-export function Commitment() {
+export async function Commitment() {
   return (
     <div className="flex w-full max-w-[1440px] flex-col px-8 py-12">
       <div className="flex flex-col justify-between pb-6 lg:flex-row lg:gap-20">

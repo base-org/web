@@ -23,12 +23,12 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
 
   return {
     metadataBase: new URL('https://base.org'),
-    title: `Basenames | ${params.username}`,
+    title: `Basenames | ${username}`,
     description: description ?? defaultDescription,
     openGraph: {
-      title: `Basenames | ${params.username}`,
+      title: `Basenames | ${username}`,
       url: `/${username}`,
-      images: [`/${params.username}/assets/coverImage.png`],
+      images: [`api/basenames/${username}/assets/coverImage.png`],
     },
   };
 }

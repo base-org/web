@@ -2,6 +2,8 @@ import '@coinbase/onchainkit/styles.css';
 import '../pages/global.css';
 import AppProviders from 'apps/web/app/AppProviders';
 import localFont from 'next/font/local';
+import CookieBannerWrapper from 'apps/web/src/components/CookieBannerWrapper';
+import { Footer } from 'apps/web/src/components/Layout/Footer/Footer';
 
 const coinbaseDisplay = localFont({
   src: [
@@ -64,7 +66,7 @@ const britney = localFont({
   variable: '--font-britney',
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const fontClassNames = [
     coinbaseDisplay.variable,
     coinbaseSans.variable,
@@ -75,7 +77,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={fontClassNames}>
       <body>
         <main>
-          <AppProviders>{children}</AppProviders>
+          <AppProviders>
+            {children}
+            <Footer />
+            <CookieBannerWrapper />
+          </AppProviders>
         </main>
       </body>
     </html>

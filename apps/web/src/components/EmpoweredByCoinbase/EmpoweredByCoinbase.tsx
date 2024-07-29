@@ -1,9 +1,12 @@
 function Header() {
   return (
     <div className=" font-display text-3xl text-white md:text-5xl lg:text-6xl">
-      <h2>Empowered by<br />
-        Coinbase</h2>
-    </div >
+      <h2>
+        Empowered by
+        <br />
+        Coinbase
+      </h2>
+    </div>
   );
 }
 
@@ -21,7 +24,7 @@ function UsersAssetsGraphic() {
   return (
     <div className="flex flex-col gap-4 lg:basis-1/2">
       <div className="flex w-full max-w-[534px] flex-col justify-between bg-empowered_by_coinbase bg-cover bg-center bg-no-repeat lg:h-[434px] lg:w-[534px] lg:py-4">
-        <div className="flex h-full flex-col py-3.5 px-7 lg:py-7 lg:px-12">
+        <div className="flex h-full flex-col px-7 py-3.5 lg:px-12 lg:py-7">
           <h3 className="font-display text-5xl text-white lg:text-8xl">$130B</h3>
         </div>
         <div className="flex h-full flex-col justify-center px-7 lg:space-y-4 lg:px-12">
@@ -38,7 +41,7 @@ function UsersAssetsGraphic() {
   );
 }
 
-export function EmpoweredByCoinbase() {
+export async function EmpoweredByCoinbase() {
   // Layout is a little weird, just have separate mobile and desktop divs
   return (
     <>

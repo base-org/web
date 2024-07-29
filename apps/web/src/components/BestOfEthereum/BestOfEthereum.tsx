@@ -1,4 +1,4 @@
-export function BestOfEthereum() {
+export async function BestOfEthereum() {
   return (
     <div className="flex w-full max-w-[1440px] flex-col flex-wrap items-start justify-between bg-black px-8 py-12 lg:flex-row">
       <div className="flex flex-col gap-6  pb-16 md:pr-20 lg:basis-1/2">

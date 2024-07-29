@@ -1,14 +1,14 @@
-import UsernameNav from 'apps/web/src/components/Layout/UsernameNav';
+import { Nav } from 'apps/web/src/components/Layout/Nav/Nav';
 
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
-  title: `Basenames`,
+  title: `Base`,
   description:
-    'Basenames are a core onchain building block that enables anyone to establish their identity on Base by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Base.',
+    'Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain.',
   openGraph: {
-    title: `Basenames`,
+    title: `Base`,
     url: `/`,
     images: ['https://base.org/images/base-open-graph.png'],
   },
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function BasenameLayout({
+export default async function BaseOrgLayout({
   children, // will be a page or nested layout
 }: {
   children: React.ReactNode;
 }) {
   return (
     <div className="max-w-screen flex min-h-screen flex-col">
-      <UsernameNav />
+      <Nav />
       {children}
     </div>
   );
