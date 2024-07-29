@@ -21,6 +21,7 @@ import {
 } from 'react';
 import { Address, TransactionReceipt } from 'viem';
 import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
+import { useCallsStatus } from 'wagmi/experimental';
 
 export enum RegistrationSteps {
   Search = 'search',
@@ -41,6 +42,8 @@ export type RegistrationContextProps = {
   setSelectedName: Dispatch<SetStateAction<string>>;
   registerNameTransactionHash: `0x${string}` | undefined;
   setRegisterNameTransactionHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
+  registerNameCallsBatchId: string;
+  setRegisterNameCallsBatchId: Dispatch<SetStateAction<string>>;
   loadingDiscounts: boolean;
   discount: DiscountData | undefined;
   allActiveDiscounts: Set<Discount>;
@@ -67,6 +70,10 @@ export const RegistrationContext = createContext<RegistrationContextProps>({
   },
   registerNameTransactionHash: '0x',
   setRegisterNameTransactionHash: function () {
+    return undefined;
+  },
+  registerNameCallsBatchId: '',
+  setRegisterNameCallsBatchId: function () {
     return undefined;
   },
   loadingDiscounts: true,
@@ -135,9 +142,22 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       enabled: !!registerNameTransactionHash,
     },
   });
+  const [registerNameCallsBatchId, setRegisterNameCallsBatchId] = useState<string>('');
+
+  const {
+    data: callsData,
+    isFetching: callsIsFetching,
+    isSuccess: callsIsSuccess,
+    error: callsError,
+  } = useCallsStatus({
+    id: registerNameCallsBatchId,
+    query: {
+      enabled: !!registerNameCallsBatchId,
+    },
+  });
 
   useEffect(() => {
-    if (transactionIsFetching) {
+    if (transactionIsFetching || callsIsFetching) {
       logEventWithContext('register_name_transaction_processing', ActionType.change);
 
       setRegistrationStep(RegistrationSteps.Pending);
@@ -148,9 +168,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
         logEventWithContext('register_name_transaction_success', ActionType.change);
         // Reload current ENS name
         baseEnsNameRefetch()
-          .then(() => {
-            setRegistrationStep(RegistrationSteps.Success);
-          })
+          .then(() => setRegistrationStep(RegistrationSteps.Success))
           .catch(() => {});
       }
 
@@ -160,8 +178,25 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
         });
       }
     }
+    if (callsIsSuccess && callsData) {
+      const successCall = callsData.receipts?.find((receipt) => receipt.status === 'success');
+      if (successCall) {
+        logEventWithContext('register_name_transaction_success', ActionType.change);
+        baseEnsNameRefetch()
+          .then(() => setRegistrationStep(RegistrationSteps.Success))
+          .catch(() => {});
+      } else {
+        const failCall = callsData.receipts?.find((receipt) => receipt.status !== 'success');
+        logEventWithContext('register_name_transaction_reverted', ActionType.change, {
+          error: `Smart wallet transaction reverted: ${failCall?.transactionHash}`,
+        });
+      }
+    }
   }, [
     baseEnsNameRefetch,
+    callsData,
+    callsIsFetching,
+    callsIsSuccess,
     logEventWithContext,
     setRegistrationStep,
     transactionData,
@@ -198,16 +233,20 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       setRegistrationStep,
       registerNameTransactionHash,
       setRegisterNameTransactionHash,
+      registerNameCallsBatchId,
+      setRegisterNameCallsBatchId,
       loadingDiscounts,
       discount,
       allActiveDiscounts,
       transactionData,
-      transactionError,
+      transactionError: transactionError ?? callsError,
     };
   }, [
     allActiveDiscounts,
+    callsError,
     discount,
     loadingDiscounts,
+    registerNameCallsBatchId,
     registerNameTransactionHash,
     registrationStep,
     searchInputFocused,

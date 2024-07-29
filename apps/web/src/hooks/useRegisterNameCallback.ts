@@ -21,6 +21,7 @@ function secondsInYears(years: number): bigint {
 type UseRegisterNameCallbackReturnValue = {
   callback: () => Promise<void>;
   data: `0x${string}` | undefined;
+  callBatchId: string | undefined;
   isPending: boolean;
   error: string | undefined | null;
 };
@@ -35,7 +36,7 @@ export function useRegisterNameCallback(
   const { address, chainId, isConnected } = useAccount();
   const { basenameChain } = useBasenameChain();
   const {
-    data: paymasterData,
+    data: callBatchId,
     writeContractsAsync,
     isPending: paymasterIsPending,
     error: paymasterError,
@@ -148,7 +149,8 @@ export function useRegisterNameCallback(
 
   return {
     callback: registerName,
-    data: data ?? (paymasterData as `0x${string}`),
+    data,
+    callBatchId,
     isPending: isPending ?? paymasterIsPending,
     // @ts-expect-error error will be string renderable
     error: error ?? paymasterError,
