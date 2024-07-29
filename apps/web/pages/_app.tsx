@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { ReactElement, ReactNode } from 'react';
 
 import AppProviders from 'apps/web/app/AppProviders';
+import { Layout } from 'apps/web/src/components/Layout/Layout';
 
 export type NextPageWithLayout<P = unknown, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -43,7 +44,9 @@ export default function StaticApp({ Component, pageProps }: AppPropsWithLayout) 
         <meta key="description" content={ogData.description} name="description" />
       </Head>
       <AppProviders>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </AppProviders>
     </>
   );

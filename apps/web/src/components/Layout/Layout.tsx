@@ -1,6 +1,5 @@
 'use client';
 import { CookieBanner } from '@coinbase/cookie-banner';
-import UsernameNav from 'apps/web/src/components/Layout/UsernameNav';
 import localFont from 'next/font/local';
 import { useRouter } from 'next/router';
 import { ReactElement, useMemo } from 'react';
@@ -109,12 +108,8 @@ export const cookieBannerTheme = {
     overlay: 1000,
   },
 };
-export enum NavigationType {
-  Default,
-  Username,
-}
 
-type LayoutProps = { children: ReactElement; navigationType?: NavigationType };
+type LayoutProps = { children: ReactElement };
 
 const BLACK_NAV_PATHS = [
   '/',
@@ -125,7 +120,7 @@ const BLACK_NAV_PATHS = [
   '/name',
 ];
 
-export function Layout({ children, navigationType }: LayoutProps) {
+export function Layout({ children }: LayoutProps) {
   const { pathname } = useRouter();
   const color: 'black' | 'white' = useMemo(() => {
     if (BLACK_NAV_PATHS.includes(pathname)) {
@@ -139,8 +134,7 @@ export function Layout({ children, navigationType }: LayoutProps) {
     <div
       className={`max-w-screen flex min-h-screen flex-col ${coinbaseDisplay.variable} ${coinbaseSans.variable} ${coinbaseMono.variable} ${britney.variable}`}
     >
-      {navigationType === NavigationType.Default && <Nav color={color} />}
-      {navigationType === NavigationType.Username && <UsernameNav />}
+      <Nav color={color} />
       {children}
       <Footer />
       <CookieBanner companyName="Base" link="/cookie-policy" theme={cookieBannerTheme} />

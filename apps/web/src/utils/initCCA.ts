@@ -42,7 +42,6 @@ const initCCA = (
     });
 
     identify({ deviceId: deviceId });
-    console.log('HI');
     initNextJsTrackPageview({
       nextJsRouter: router,
     });
