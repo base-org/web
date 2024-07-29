@@ -28,27 +28,37 @@ export default function ClientAnalyticsScript() {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const [deviceIdCookie, setDeviceIdCookie] = useCookie('base_device_id');
 
-  const pathname = usePathname();
-  const handler = useRef<AnalyticsEventHandler | null>(null);
+  // Coinbase's CCA is designed for Page Router.
+  // CCA cannot use the App router logic, since "router.events.on" is deprecated.
+  // As a result we have to mock this behavior
 
-  // Mock the old router since our CCA doesn't support Next App router yet
+  // CCA expects to call a handler on path change, so we need to
+
+  // 1. Keep track of the path
+  const pathname = usePathname();
+
+  // 2. Keep track of the handler
+  const onRouteChangeHandler = useRef<AnalyticsEventHandler | null>(null);
+
+  // 3. Mock the old router behavior, save the handler
   const oldRouterEvent: NextJSRouter = useMemo(() => {
     return {
       events: {
         on: (event: NextJsRouterEventTypes, analyticsHandler: AnalyticsEventHandler) => {
-          if (analyticsHandler) {
-            handler.current = analyticsHandler;
+          if (event === 'routeChangeComplete' && analyticsHandler) {
+            onRouteChangeHandler.current = analyticsHandler;
           }
         },
       },
     };
   }, []);
 
+  // 4. Call the onRouteChangeHandler on page change via useEffect
   useEffect(() => {
-    if (handler.current) {
-      handler.current();
+    if (onRouteChangeHandler.current) {
+      onRouteChangeHandler.current();
     }
-  }, [handler, pathname]);
+  }, [onRouteChangeHandler, pathname]);
 
   return (
     <Script
