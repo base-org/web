@@ -35,7 +35,7 @@ export default function UsernameProfileEditModal({
   const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
   const [avatarFile, setAvatarFile] = useState<File | undefined>();
   const { logEventWithContext } = useAnalytics();
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useBasenameChain(profileUsername);
 
   const {
     existingTextRecords,
