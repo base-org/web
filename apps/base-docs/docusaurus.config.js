@@ -322,6 +322,15 @@ const config = {
           navposition: 'topRight',
           items: [
             {
+              label: 'Farcaster',
+              icon: 'farcaster',
+              type: 'custom-dropdownLink',
+              target: '_blank',
+              to: "https://warpcast.com/~/channel/base",
+              eventLabel: 'socials_farcaster',
+              eventContext: 'navbar',
+            },
+            {
               label: 'Discord',
               icon: 'discord',
               type: 'custom-dropdownLink',
