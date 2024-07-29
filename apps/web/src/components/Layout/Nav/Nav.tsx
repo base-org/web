@@ -1,6 +1,6 @@
 'use client';
-import Link from 'next/link';
 
+import Link from 'next/link';
 import { Logo } from '../../Logo/Logo';
 import DesktopNav from './DesktopNav';
 import MobileMenu from './MobileMenu';
@@ -16,7 +16,7 @@ const BLACK_NAV_PATHS = [
   '/name',
 ];
 
-export function Nav() {
+export default function Nav() {
   const pathname = usePathname();
   const color = pathname && BLACK_NAV_PATHS.includes(pathname) ? 'black' : 'white';
   return (

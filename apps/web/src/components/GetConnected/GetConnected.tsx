@@ -1,6 +1,6 @@
 import { Icon } from '../Icon/Icon';
 
-export function GetConnected() {
+export async function GetConnected() {
   return (
     <div className="flex min-h-[300px] w-full max-w-[1440px] flex-row flex-wrap items-start justify-between bg-black px-8">
       <div className=" pb-16 font-display text-2xl uppercase text-white lg:text-3xl">
