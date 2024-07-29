@@ -20,7 +20,7 @@ export default function RegistrationBrand() {
   const { searchInputFocused } = useRegistration();
   return (
     <div className="relative flex w-full flex-row">
-      <div className="flex items-center items-center gap-1">
+      <div className="flex items-center gap-1">
         <span
           className={classNames('pt-[1px]', {
             'text-blue-600': !searchInputFocused,
@@ -42,7 +42,7 @@ export default function RegistrationBrand() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <p className="text-md absolute right-0 md:text-xl ">{string}</p>
+          <p className="text-md absolute right-0 md:text-xl">{string}</p>
         </Transition>
       ))}
     </div>
