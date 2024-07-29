@@ -1,7 +1,9 @@
+'use client';
+
 import localFont from 'next/font/local';
 import { ReactElement } from 'react';
 import { Footer } from './Footer/Footer';
-import { Nav } from './Nav/Nav';
+import Nav from './Nav/Nav';
 import CookieBannerWrapper from 'apps/web/src/components/CookieBannerWrapper';
 
 const coinbaseDisplay = localFont({
