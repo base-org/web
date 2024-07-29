@@ -1,41 +1,30 @@
 import ProfileProviders from 'apps/web/app/(basenames)/name/[username]/ProfileProviders';
-import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
-import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import { Metadata } from 'next';
-import { namehash } from 'viem';
 import { base } from 'viem/chains';
-import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
-import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
-import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
+import {
+  fetchAddress,
+  fetchDescription,
+  formatDefaultUsername,
+  USERNAME_DOMAINS,
+} from 'apps/web/src/utils/usernames';
+import { redirect } from 'next/navigation';
+import classNames from 'classnames';
+import { BaseName } from '@coinbase/onchainkit/identity';
+import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
 
-type Props = {
-  params: { username: string };
+type UsernameProfileProps = {
+  params: { username: BaseName };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const username = params.username;
-
-  let metadataDescription = `${username}, a Basename`;
-  try {
-    const nameHash = namehash(username);
-    const client = getBasenamePublicClient(base.id);
-    const description = await client.readContract({
-      abi: L2ResolverAbi,
-      address: USERNAME_L2_RESOLVER_ADDRESSES[base.id],
-      args: [nameHash, UsernameTextRecordKeys.Description],
-      functionName: 'text',
-    });
-
-    // Satori Doesn't support webp
-    if (description && !description.endsWith('.webp')) {
-      metadataDescription = description;
-    }
-  } catch (error) {}
+export async function generateMetadata({ params }: UsernameProfileProps): Promise<Metadata> {
+  const username = await formatDefaultUsername(params.username);
+  const defaultDescription = `${username}, a Basename`;
+  const description = await fetchDescription(username);
 
   return {
     metadataBase: new URL('https://base.org'),
     title: `Basenames | ${params.username}`,
-    description: metadataDescription,
+    description: description ?? defaultDescription,
     openGraph: {
       title: `Basenames | ${params.username}`,
       url: `/${username}`,
@@ -44,10 +33,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function Username({ params }: Props) {
+export default async function Username({ params }: UsernameProfileProps) {
+  let username = params.username;
+
+  // redirect /[name].base.eth to /name
+  if (username.endsWith(`.${USERNAME_DOMAINS[base.id]}`)) {
+    return redirect(username.replace(`.${USERNAME_DOMAINS[base.id]}`, ''));
+  }
+
+  username = await formatDefaultUsername(params.username);
+
+  const usernameProfilePageClasses = classNames(
+    'mx-auto mt-32 flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 px-4 px-4 pb-40 md:flex-row md:px-8',
+  );
+
+  const ensAddress = await fetchAddress(username);
+
+  // Domain doesn't exist
+  if (!ensAddress) {
+    return redirect(`/name/not-found?name=${username}`);
+  }
+
   return (
-    <ProfileProviders username={params.username}>
-      <UsernameProfile />
+    <ProfileProviders username={params.username} address={ensAddress}>
+      <main className={usernameProfilePageClasses}>
+        <UsernameProfile />
+      </main>
     </ProfileProviders>
   );
 }
