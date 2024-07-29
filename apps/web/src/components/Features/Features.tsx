@@ -50,11 +50,13 @@ const featureItems = [
   },
 ];
 
-export function Features() {
+export async function Features() {
   return (
     <div className="flex w-full max-w-[1440px] flex-col space-y-24 bg-black px-8 pt-12">
       <div className="flex w-full flex-col font-display text-3xl text-white md:text-5xl lg:text-6xl">
-        <h2>Making Ethereum<br />
+        <h2>
+          Making Ethereum
+          <br />
           accessible to <span className="italic">everyone</span>
         </h2>
       </div>
