@@ -1,4 +1,4 @@
-import { Address, encodePacked, keccak256, namehash, sha256 } from 'viem';
+import { Address, Chain, encodePacked, keccak256, namehash, sha256 } from 'viem';
 import { normalize } from 'viem/ens';
 import profilePictures1 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/1.svg';
 import profilePictures2 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/2.svg';
@@ -10,6 +10,9 @@ import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profil
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import { base, baseSepolia, mainnet } from 'viem/chains';
 import { BaseName } from '@coinbase/onchainkit/identity';
+import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
+import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 20;
@@ -311,4 +314,49 @@ export enum Discount {
 
 export function isValidDiscount(key: string): key is keyof typeof Discount {
   return Object.values(Discount).includes(key as Discount);
+}
+
+export function getChainForBasename(username: BaseName): Chain {
+  return username.endsWith(`.${USERNAME_DOMAINS[base.id]}`) ? base : baseSepolia;
+}
+
+// Resolve name to address
+export async function fetchAddress(username: BaseName) {
+  const chain = getChainForBasename(username);
+
+  try {
+    const client = getBasenamePublicClient(chain.id);
+    const ensAddress = await client.getEnsAddress({
+      name: normalize(username),
+      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
+    });
+    return ensAddress;
+  } catch (error) {}
+}
+
+export async function fetchDescription(username: BaseName) {
+  const chain = getChainForBasename(username);
+  try {
+    const client = getBasenamePublicClient(chain.id);
+    const description = await client.readContract({
+      abi: L2ResolverAbi,
+      address: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
+      args: [namehash(username), UsernameTextRecordKeys.Description],
+      functionName: 'text',
+    });
+    return description;
+  } catch (error) {}
+}
+
+// Assume domainless name to .base.eth
+export async function formatDefaultUsername(username: BaseName) {
+  if (
+    username &&
+    !username.endsWith(`.${USERNAME_DOMAINS[baseSepolia.id]}`) &&
+    !username.endsWith(`.${USERNAME_DOMAINS[base.id]}`)
+  ) {
+    return formatBaseEthDomain(username, base.id);
+  }
+
+  return username;
 }

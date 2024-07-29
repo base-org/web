@@ -20,7 +20,7 @@ export default function useReadBaseEnsTextRecords({
   address,
   username,
 }: UseReadBaseEnsTextRecordsProps) {
-  const { basenameChain, basenamePublicClient } = useBasenameChain();
+  const { basenameChain, basenamePublicClient } = useBasenameChain(username);
 
   const defaultTextRecords = useMemo(() => {
     return {
