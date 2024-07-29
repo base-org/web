@@ -25,7 +25,6 @@ export default function useBasenameChain() {
   const chains = useChains();
 
   const basenameChain: Chain = useMemo(() => {
-    return base;
     // User is connected to a valid chain, return the connected chain
     if (connectedChain && chains.includes(connectedChain)) {
       return connectedChain;
