@@ -42,7 +42,7 @@ export type RegistrationContextProps = {
   setSelectedName: Dispatch<SetStateAction<string>>;
   registerNameTransactionHash: `0x${string}` | undefined;
   setRegisterNameTransactionHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
-  registerNameCallsBatchId: string | undefined;
+  registerNameCallsBatchId: string;
   setRegisterNameCallsBatchId: Dispatch<SetStateAction<string>>;
   loadingDiscounts: boolean;
   discount: DiscountData | undefined;
@@ -159,6 +159,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   useEffect(() => {
     if (transactionIsFetching || callsIsFetching) {
       logEventWithContext('register_name_transaction_processing', ActionType.change);
+
       setRegistrationStep(RegistrationSteps.Pending);
     }
 
