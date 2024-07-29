@@ -1,3 +1,4 @@
+'use client';
 import { type BadgeNames } from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/Badges';
 import {
   Dispatch,

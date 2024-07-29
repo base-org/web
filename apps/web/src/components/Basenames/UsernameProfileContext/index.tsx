@@ -1,7 +1,6 @@
 import { BaseName } from '@coinbase/onchainkit/identity';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import { useParams } from 'next/navigation';
 import { ReactNode, createContext, useContext, useMemo } from 'react';
 import { Address } from 'viem';
 import { useAccount, useEnsAddress } from 'wagmi';
@@ -24,11 +23,14 @@ export const UsernameProfileContext = createContext<UsernameProfileContextProps>
 
 type UsernameProfileProviderProps = {
   children: ReactNode;
+  username: string;
 };
 
-export default function UsernameProfileProvider({ children }: UsernameProfileProviderProps) {
-  const params = useParams<{ username: BaseName }>();
-  const profileUsername = params?.username;
+export default function UsernameProfileProvider({
+  children,
+  username,
+}: UsernameProfileProviderProps) {
+  const profileUsername = username;
 
   const { address } = useAccount();
 

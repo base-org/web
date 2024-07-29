@@ -1,3 +1,5 @@
+'use client';
+
 import { Transition } from '@headlessui/react';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import RegistrationBackground from 'apps/web/src/components/Basenames/RegistrationBackground';

@@ -63,7 +63,7 @@ export function Button({
     variantStyles[variant],
     sizeStyles[size],
     { 'rounded-full': rounded },
-    { 'w-full text-center justify-center': fullWidth },
+    { 'w-full justify-center': fullWidth },
     { 'pointer-events-none opacity-50 select-none': disabled || isLoading },
     className,
   );
