@@ -1,3 +1,4 @@
+'use client';
 import { useCallback } from 'react';
 import { useSavedTrackingPreference, useCookie } from '@coinbase/cookie-manager';
 import { useRouter } from 'next/navigation';
