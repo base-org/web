@@ -3,7 +3,6 @@ dotenv.config();
 
 const baseConfig = {
   baseUrl: '/',
-  trailingSlash: false,
   favicon: 'img/favicon.ico',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
