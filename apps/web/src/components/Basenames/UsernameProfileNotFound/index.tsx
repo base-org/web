@@ -9,7 +9,7 @@ export default function UsernameProfileNotFound() {
   const params = useSearchParams();
   const username = params?.get('name');
 
-  const title = `${username ? username : 'Name'} is not found`;
+  const title = `${username ?? 'Name'} is not found`;
   const description = username
     ? "There's no profile associated with this name, but it could be yours!"
     : "This profile doesn't exist";
