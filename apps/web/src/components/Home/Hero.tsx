@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useMemo, useState } from 'react';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { gradientBgMap, textGradientMap, Verb, verbs } from 'apps/web/src/styles/hero';
