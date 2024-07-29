@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useMemo, useState } from 'react';
 import { Divider } from 'apps/web/src/components/Divider/Divider';
 import { Job } from 'apps/web/src/components/Jobs/Job';
