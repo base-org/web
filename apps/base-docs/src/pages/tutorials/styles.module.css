@@ -107,6 +107,7 @@
   font-size: 0.9rem;
   line-height: 1.25;
   font-weight: 400;
+  overflow: scroll;
 }
 
 .tutorialAuthor {
