@@ -39,7 +39,7 @@ export async function queryCbGpt(query: CbGptQuery): Promise<QueryCbGptResponse>
     }
 
     if (response.status === 401 || response.status === 403) {
-      throw new Error(`Forbidden: ${response.status} ${errorResponse}`);
+      throw new Error(`Forbidden: ${response.status} ${JSON.stringify(errorResponse)}`);
     }
 
     if (response.status === 500 && typeof errorResponse !== 'string' && errorResponse.code === 13) {
