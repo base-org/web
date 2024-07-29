@@ -141,7 +141,7 @@ export function ConnectWalletButton({
         </Identity>
         {!isLoading && baseName && (
           <Link href={`/name/${baseName}`} className={onchainKitDropdownClasse}>
-            <div className="flex w-full flex-row items-center items-center gap-2">
+            <div className="flex w-full flex-row items-center gap-2">
               <span className="pl-1 text-blue-500">
                 <Icon name="blueCircle" color="currentColor" height="0.8rem" width="0.8rem" />
               </span>
@@ -152,7 +152,7 @@ export function ConnectWalletButton({
 
         {!isLoading && !baseName && (
           <Link href="/names" className={onchainKitDropdownClasse}>
-            <div className="flex w-full flex-row items-center items-center gap-2">
+            <div className="flex w-full flex-row items-center gap-2">
               <span className="pl-1 text-blue-500">
                 <Icon name="blueCircle" color="currentColor" height="0.8rem" width="0.8rem" />
               </span>
