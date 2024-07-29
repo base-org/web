@@ -159,6 +159,22 @@ module.exports = extendBaseConfig(
       locales: ['en'],
       defaultLocale: 'en',
     },
+    webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
+      config.module.rules.push({
+        test: /\.webm/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash].[ext]',
+              outputPath: 'static/assets/webm/',
+              publicPath: '/_next/static/assets/webm/',
+            },
+          },
+        ],
+      });
+      return config;
+    },
     images: {
       remotePatterns: [
         {
