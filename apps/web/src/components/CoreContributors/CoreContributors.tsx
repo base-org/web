@@ -1,10 +1,10 @@
-import { memo } from 'react';
 import { EnsAvatarMapping } from 'apps/web/src/components/CoreContributors/EnsAvatarMapping';
 import Image from 'next/image';
-
 import Blockies from './Blockies';
+import contributorList from 'apps/web/src/components/CoreContributors/CoreContributors.json';
 
-type Props = { owners: EnsAvatarMapping[] };
+const owners = contributorList as unknown as EnsAvatarMapping[];
+
 const AVATAR_SIZE = 48;
 const avatarCssStyle = {
   borderRadius: `${AVATAR_SIZE}px`,
@@ -12,7 +12,7 @@ const avatarCssStyle = {
   maxWidth: `${AVATAR_SIZE}px`,
 };
 
-export const CoreContributors = memo(function CoreContributors({ owners }: Props) {
+export default async function CoreContributors() {
   return (
     <div className="flex flex-row flex-wrap items-start gap-3 bg-black pt-12">
       {owners?.length > 0 &&
@@ -45,4 +45,4 @@ export const CoreContributors = memo(function CoreContributors({ owners }: Props
         })}
     </div>
   );
-});
+}

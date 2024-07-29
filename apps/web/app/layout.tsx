@@ -76,13 +76,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" className={fontClassNames}>
       <body>
-        <main>
-          <AppProviders>
-            {children}
-            <Footer />
-            <CookieBannerWrapper />
-          </AppProviders>
-        </main>
+        <AppProviders>
+          {children}
+          <Footer />
+          <CookieBannerWrapper />
+        </AppProviders>
       </body>
     </html>
   );
