@@ -39,7 +39,7 @@ export async function queryCbGpt(query: CbGptQuery): Promise<QueryCbGptResponse>
     }
 
     if (response.status === 401 || response.status === 403) {
-      throw new Error('Unauthorized access: ensure the calling IP is permitted.');
+      throw new Error(`Forbidden: ${response.status} ${errorResponse}`);
     }
 
     if (response.status === 500 && typeof errorResponse !== 'string' && errorResponse.code === 13) {
