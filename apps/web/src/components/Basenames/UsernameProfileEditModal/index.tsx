@@ -168,10 +168,9 @@ export default function UsernameProfileEditModal({
               // We updated some text records
               if (transactionResult) {
                 logEventWithContext('update_text_records_transaction_approved', ActionType.change);
-              } else {
-                // No text records had to be updated, simply go to profile
-                toggleModal();
               }
+              // close the modal on success
+              toggleModal();
             })
 
             .catch((error) => {
