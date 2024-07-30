@@ -106,7 +106,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
 
   // Web3 data
   const { address } = useAccount();
-  const { refetch: baseEnsNameRefetch } = useBaseEnsName({
+  const { data: currentAddressName, refetch: baseEnsNameRefetch } = useBaseEnsName({
     address,
   });
 
@@ -180,7 +180,11 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     }
     if ((callsIsSuccess && callsData) || callsError) {
       baseEnsNameRefetch()
-        .then(() => setRegistrationStep(RegistrationSteps.Success))
+        .then(() => {
+          if (currentAddressName === selectedName) {
+            setRegistrationStep(RegistrationSteps.Success);
+          }
+        })
         .catch(() => {});
     }
   }, [
@@ -189,7 +193,9 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     callsError,
     callsIsFetching,
     callsIsSuccess,
+    currentAddressName,
     logEventWithContext,
+    selectedName,
     setRegistrationStep,
     transactionData,
     transactionIsFetching,
