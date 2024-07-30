@@ -11,6 +11,27 @@ import logEvent, {
 
 import { Button } from '../Button/Button';
 
+const communityCards = [
+  {
+    title: 'Aerodrome',
+    href: 'aerodrome.finance',
+    description: 'A next-generation DeFi protocol and AMM with friendly user experience',
+    tag: 'defi',
+  },
+  {
+    title: 'Doodles',
+    href: 'doodles.app',
+    description: 'Immersive storytelling through the creation of live and digital experiences',
+    tag: 'nft',
+  },
+  {
+    title: 'Morpho',
+    href: 'morpho.org',
+    description: 'A permissionless and non-custodial lending protocol',
+    tag: 'defi',
+  },
+];
+
 export default function ActiveCommunityOfBuilders() {
   const handleClick = useCallback(() => {
     logEvent(
@@ -24,7 +45,7 @@ export default function ActiveCommunityOfBuilders() {
     );
   }, []);
   return (
-    <div id='communityOfBuilders' className="flex flex-col bg-black px-20 pb-10 pt-20">
+    <div id="communityOfBuilders" className="flex flex-col bg-black px-20 pb-10 pt-20">
       <div className="flex flex-row justify-between">
         <div className="h-[320px] min-w-[550px] bg-[url('../public/images/CommunityOfBuilders.png')]" />
         <div className="mx-20 flex grow flex-col justify-around">
@@ -46,10 +67,33 @@ export default function ActiveCommunityOfBuilders() {
           </Link>
         </div>
       </div>
-      <div className="mt-16 flex flex-row justify-between">
-        <div className="h-[320px] w-[400px] bg-ocsyellow">Placeholder</div>
-        <div className="h-[320px] w-[400px] bg-ocsyellow">Placeholder</div>
-        <div className="h-[320px] w-[400px] bg-ocsyellow">Placeholder</div>
+      <div className="mt-16">
+        <span>Community Spotlight</span>
+        <div className="mt-4 flex flex-row justify-between gap-4">
+          {communityCards?.map((card) => (
+            <div key={card.href} className="grid h-[330px] w-[400px] grid-rows-[1fr_1fr]">
+              <Link
+                href={`https://${card.href}`}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="flex flex-row justify-end bg-ocsyellow pr-10 pt-8"
+              >
+                <span className="flex h-6 items-center justify-center rounded-xl bg-black px-2 py-1 text-sm uppercase">
+                  {card.tag}
+                </span>
+              </Link>
+              <div className="bg-gray-90 p-6">
+                <div className="mb-4 flex flex-col">
+                  <span className="uppercase">{card.title}</span>
+                  <span className="text-sm lowercase text-dark-palette-foregroundMuted">
+                    {card.href}
+                  </span>
+                </div>
+                <span>{card.description}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
