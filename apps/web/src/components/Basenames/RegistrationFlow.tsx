@@ -280,7 +280,7 @@ export function RegistrationFlow() {
             show={isSuccess}
             className={classNames(
               'top-full z-40 pt-20 transition-opacity',
-              'mx-auto w-full max-w-[50rem]',
+              'mx-auto w-full',
               registrationTransitionDuration,
             )}
             enter={classNames('transition-opacity', registrationTransitionDuration)}
