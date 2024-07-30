@@ -17,7 +17,11 @@ import { RegistrationSearchInputVariant } from './RegistrationSearchInput/types'
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import { formatBaseEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
+import {
+  formatBaseEthDomain,
+  IS_EARLY_ACCESS,
+  USERNAME_DOMAINS,
+} from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useSearchParams } from 'next/navigation';
@@ -28,7 +32,6 @@ import Tooltip from 'apps/web/src/components/Tooltip';
 import RegistrationShareOnSocials from 'apps/web/src/components/Basenames/RegistrationShareOnSocials';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 
-const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
 const RegistrationStateSwitcherDynamic = dynamic(
   async () => import('apps/web/src/components/Basenames/RegistrationStateSwitcher'),
   { ssr: false },
@@ -150,7 +153,7 @@ export function RegistrationFlow() {
               variant={RegistrationSearchInputVariant.Large}
               placeholder="Search for a name"
             />
-            {isEarlyAccess && (
+            {IS_EARLY_ACCESS && (
               <div className="mx-auto mt-6 flex items-center justify-center">
                 <p
                   className={classNames({

@@ -19,13 +19,12 @@ import {
   useNameRegistrationPrice,
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
+import { IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { formatEther } from 'viem';
 import { useAccount, useBalance, useChains, useSwitchChain } from 'wagmi';
-
-const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
 
 function formatEtherPrice(price?: bigint) {
   if (price === undefined) {
@@ -143,7 +142,7 @@ export default function RegistrationForm() {
     price !== undefined && ethUsdPrice !== undefined ? formatUsdPrice(price, ethUsdPrice) : '--.--';
   const nameIsFree = price === 0n;
 
-  if (!isEarlyAccess || (isEarlyAccess && discount)) {
+  if (!IS_EARLY_ACCESS || (IS_EARLY_ACCESS && discount)) {
     return (
       <>
         <div className="mt-20 transition-all duration-500">
@@ -212,7 +211,7 @@ export default function RegistrationForm() {
               </div>
               {insufficientBalanceToRegister ? (
                 <p className="text-sm text-state-n-hovered">your ETH balance is insufficient</p>
-              ) : Boolean(nameIsFree && isEarlyAccess) ? (
+              ) : Boolean(nameIsFree && IS_EARLY_ACCESS) ? (
                 <p className="text-sm text-green-50">Discounted during Early Access.</p>
               ) : (
                 nameIsFree && <p className="text-sm text-green-50">Free with your verification</p>
@@ -268,7 +267,7 @@ export default function RegistrationForm() {
               chainId={basenameChain.id}
             />
           )}
-          {!isEarlyAccess && (
+          {!IS_EARLY_ACCESS && (
             <div className="mt-6 flex w-full justify-center">
               <p className="text mr-2 text-center font-bold uppercase text-[#5B616E]">
                 {nameIsFree

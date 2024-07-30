@@ -1,7 +1,9 @@
-import abi from 'apps/web/src/abis/RegistrarControllerABI';
-import { USERNAME_REGISTRAR_CONTROLLER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import { normalizeEnsDomainName } from 'apps/web/src/utils/usernames';
+import {
+  normalizeEnsDomainName,
+  REGISTER_CONTRACT_ABI,
+  REGISTER_CONTRACT_ADDRESSES,
+} from 'apps/web/src/utils/usernames';
 import { useReadContract } from 'wagmi';
 
 function secondsInYears(years: number) {
@@ -17,19 +19,20 @@ export function useDiscountedNameRegistrationPrice(
   const normalizedName = normalizeEnsDomainName(name);
   const { basenameChain } = useBasenameChain();
   return useReadContract({
-    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[basenameChain.id],
-    abi,
+    address: REGISTER_CONTRACT_ADDRESSES[basenameChain.id],
+    abi: REGISTER_CONTRACT_ABI,
     functionName: 'discountedRegisterPrice',
     args: [normalizedName, secondsInYears(years), discountKey ?? '0x'],
     chainId: basenameChain.id,
   });
 }
+
 export function useNameRegistrationPrice(name: string, years: number) {
   const normalizedName = normalizeEnsDomainName(name);
   const { basenameChain } = useBasenameChain();
   return useReadContract({
-    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[basenameChain.id],
-    abi,
+    address: REGISTER_CONTRACT_ADDRESSES[basenameChain.id],
+    abi: REGISTER_CONTRACT_ABI,
     functionName: 'registerPrice',
     args: [normalizedName, secondsInYears(years)],
     chainId: basenameChain.id,

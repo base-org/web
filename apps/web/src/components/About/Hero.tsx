@@ -7,7 +7,7 @@ type GradientRowProps = {
   className?: string;
 };
 
-function GradientRow({ inverted = false, className }: GradientRowProps) {
+async function GradientRow({ inverted = false, className }: GradientRowProps) {
   return (
     <div
       className={`flex flex-row justify-center gap-2 p-2 xl:gap-4 xl:p-4 ${
@@ -25,10 +25,10 @@ function GradientRow({ inverted = false, className }: GradientRowProps) {
   );
 }
 
-export function Hero() {
+export async function Hero() {
   // negative top margin so it underlays the Nav
   return (
-    <div className="mt-[-96px] flex w-full flex-col items-center bg-black pt-28 pb-10 lg:px-16 lg:pt-32 lg:pb-20">
+    <div className="mt-[-96px] flex w-full flex-col items-center bg-black pb-10 pt-28 lg:px-16 lg:pb-20 lg:pt-32">
       <GradientRow className="hidden md:flex" inverted />
       <Image
         priority

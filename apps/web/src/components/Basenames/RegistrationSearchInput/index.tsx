@@ -262,7 +262,7 @@ export default function RegistrationSearchInput({
           <p className={mutedMessage}>{message}</p>
         ) : isNameAvailable === true ? (
           <>
-            <p className={dropdownLabelClasses}>Available</p>
+            <p className={`${dropdownLabelClasses} hidden md:block`}>Available</p>
             <button className={buttonClasses} type="button" onClick={selectName}>
               <span className="truncate">
                 {formatBaseEthDomain(debouncedSearch, basenameChain.id)}
