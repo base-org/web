@@ -3,6 +3,7 @@ import './global.css';
 import AppProviders from 'apps/web/app/AppProviders';
 import localFont from 'next/font/local';
 import { Footer } from 'apps/web/src/components/Layout/Footer/Footer';
+import DatadogInit from 'apps/web/app/datadog';
 
 const coinbaseDisplay = localFont({
   src: [
@@ -89,6 +90,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body className="flex min-h-screen flex-col">
         <AppProviders>
+          <DatadogInit />
           {children}
           <Footer />
         </AppProviders>
