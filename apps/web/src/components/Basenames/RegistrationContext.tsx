@@ -178,23 +178,15 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
         });
       }
     }
-    if (callsIsSuccess && callsData) {
-      const successCall = callsData.receipts?.find((receipt) => receipt.status === 'success');
-      if (successCall) {
-        logEventWithContext('register_name_transaction_success', ActionType.change);
-        baseEnsNameRefetch()
-          .then(() => setRegistrationStep(RegistrationSteps.Success))
-          .catch(() => {});
-      } else {
-        const failCall = callsData.receipts?.find((receipt) => receipt.status !== 'success');
-        logEventWithContext('register_name_transaction_reverted', ActionType.change, {
-          error: `Smart wallet transaction reverted: ${failCall?.transactionHash}`,
-        });
-      }
+    if ((callsIsSuccess && callsData) || callsError) {
+      baseEnsNameRefetch()
+        .then(() => setRegistrationStep(RegistrationSteps.Success))
+        .catch(() => {});
     }
   }, [
     baseEnsNameRefetch,
     callsData,
+    callsError,
     callsIsFetching,
     callsIsSuccess,
     logEventWithContext,
