@@ -20,11 +20,9 @@ import {
   UsernameTextRecords,
   UsernameTextRecordKeys,
   textRecordsSocialFieldsEnabled,
-  formatBaseEthDomain,
 } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
 
@@ -37,9 +35,8 @@ export enum FormSteps {
 export default function RegistrationProfileForm() {
   const [currentFormStep, setCurrentFormStep] = useState<FormSteps>(FormSteps.Description);
   const [transitionStep, setTransitionStep] = useState<boolean>(false);
-  const { selectedName } = useRegistration();
+  const { selectedName, redirectToProfile } = useRegistration();
   const { address } = useAccount();
-  const router = useRouter();
   const { logEventWithContext } = useAnalytics();
   const { basenameChain } = useBasenameChain();
   const { data: baseEnsName } = useBaseEnsName({
@@ -91,7 +88,7 @@ export default function RegistrationProfileForm() {
 
       refetchExistingTextRecords()
         .then(() => {
-          router.push(`name/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
+          redirectToProfile();
         })
         .catch(() => {});
     }
@@ -104,11 +101,11 @@ export default function RegistrationProfileForm() {
   }, [
     logEventWithContext,
     refetchExistingTextRecords,
-    router,
     baseEnsName,
     transactionData,
     selectedName,
     basenameChain.id,
+    redirectToProfile,
   ]);
 
   useEffect(() => {
@@ -165,7 +162,7 @@ export default function RegistrationProfileForm() {
               logEventWithContext('update_text_records_transaction_approved', ActionType.change);
             } else {
               // no text records had to be updated, simply go to profile
-              router.push(`name/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
+              redirectToProfile();
             }
           })
           .catch(console.error);
@@ -174,11 +171,9 @@ export default function RegistrationProfileForm() {
       event.preventDefault();
     },
     [
-      basenameChain.id,
       currentFormStep,
       logEventWithContext,
-      router,
-      selectedName,
+      redirectToProfile,
       textRecords,
       transitionFormOpacity,
       writeTextRecords,
