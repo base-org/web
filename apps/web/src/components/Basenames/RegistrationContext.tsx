@@ -167,15 +167,17 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
 
   useInterval(() => {
     void baseEnsNameRefetch();
-    if (currentAddressName === selectedName) {
+    if (currentAddressName === selectedName && registrationStep === RegistrationSteps.Pending) {
       setRegistrationStep(RegistrationSteps.Success);
     }
   }, 2000);
 
   useEffect(() => {
-    if (transactionIsFetching || callsIsFetching) {
+    if (
+      (transactionIsFetching || callsIsFetching) &&
+      registrationStep === RegistrationSteps.Claim
+    ) {
       logEventWithContext('register_name_transaction_processing', ActionType.change);
-
       setRegistrationStep(RegistrationSteps.Pending);
     }
 
