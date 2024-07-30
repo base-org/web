@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import Dropdown from 'apps/web/src/components/Dropdown';
 import DropdownItem from 'apps/web/src/components/DropdownItem';
 import DropdownMenu from 'apps/web/src/components/DropdownMenu';
@@ -36,35 +35,10 @@ export function UsernamePill({ variant, username, address }: UsernamePillProps) 
     },
   );
 
-  const userNameFontScale = useMemo(() => {
-    if (username.length >= 25) {
-      return 'text-md';
-    }
-    if (username.length >= 22) {
-      return 'text-lg';
-    }
-    if (username.length >= 19) {
-      return 'text-xl';
-    }
-    if (username.length >= 15) {
-      return 'text-2xl';
-    }
-    // 3 letter name with .base.eth
-    if (username.length >= 12) {
-      return 'text-3xl';
-    }
-    return 'text-3xl';
-  }, [username]);
-
-  const userNameClasses = classNames(
-    'text-ellipsis whitespace-nowrap',
-    transitionClasses,
-    userNameFontScale,
-    {
-      'md:text-5xl': variant === UsernamePillVariants.Inline,
-      'text-3xl pl-0 mt-20': variant === UsernamePillVariants.Card,
-    },
-  );
+  const userNameClasses = classNames('text-ellipsis whitespace-nowrap', transitionClasses, {
+    'md:text-5xl': variant === UsernamePillVariants.Inline,
+    'text-3xl pl-0 mt-20': variant === UsernamePillVariants.Card,
+  });
 
   const { existingTextRecords, existingTextRecordsIsLoading } = useReadBaseEnsTextRecords({
     address: address,
@@ -86,7 +60,14 @@ export function UsernamePill({ variant, username, address }: UsernamePillProps) 
         height={4 * 16}
         forceIsLoading={existingTextRecordsIsLoading}
       />
-      <span className={userNameClasses}>{username}</span>
+      <span
+        className={userNameClasses}
+        style={{
+          fontSize: `clamp(1rem, ${28 / username.length}rem, 3rem)`,
+        }}
+      >
+        {username}
+      </span>
       {address && (
         <div className="absolute right-4 top-4">
           <Dropdown>
