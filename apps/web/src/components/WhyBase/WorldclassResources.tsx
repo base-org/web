@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
+import Link from 'apps/web/node_modules/next/link';
 
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
