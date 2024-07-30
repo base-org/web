@@ -160,16 +160,30 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     if ((callsIsSuccess && callsData) || callsError) {
       baseEnsNameRefetch()
         .then(() => {
-          if (currentAddressName === selectedName) {
+          if (
+            currentAddressName === selectedName &&
+            registrationStep === RegistrationSteps.Pending
+          ) {
             setRegistrationStep(RegistrationSteps.Success);
           }
         })
         .catch(() => {});
     }
-  }, [baseEnsNameRefetch, callsData, callsError, callsIsSuccess, currentAddressName, selectedName]);
+  }, [
+    baseEnsNameRefetch,
+    callsData,
+    callsError,
+    callsIsSuccess,
+    currentAddressName,
+    registrationStep,
+    selectedName,
+  ]);
 
   useEffect(() => {
-    if (transactionIsFetching || callsIsFetching) {
+    if (
+      (transactionIsFetching || callsIsFetching) &&
+      registrationStep === RegistrationSteps.Claim
+    ) {
       logEventWithContext('register_name_transaction_processing', ActionType.change);
 
       setRegistrationStep(RegistrationSteps.Pending);
@@ -194,6 +208,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     baseEnsNameRefetch,
     callsIsFetching,
     logEventWithContext,
+    registrationStep,
     transactionData,
     transactionIsFetching,
     transactionIsSuccess,
