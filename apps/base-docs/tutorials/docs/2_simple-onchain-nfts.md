@@ -464,7 +464,7 @@ contract RandomColorNFT is ERC721 {
 }
 ```
 
-````json
+```json
 {
   "address": "0x59c35beE5eAdeEDDc2c34d419459243bD70AFD72",
   "abi": [
@@ -1068,4 +1068,3 @@ contract RandomColorNFT is ERC721 {
 [Coinbase Smart Wallet]: /coinbase-smart-wallet
 [Below]: #random-color-nft-contract
 [Complex Onchain NFTs]: /complex-onchain-nfts
-````
