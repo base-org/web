@@ -115,7 +115,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
 
   // Web3 data
   const { address } = useAccount();
-  const { refetch: baseEnsNameRefetch } = useBaseEnsName({
+  const { data: currentAddressName, refetch: baseEnsNameRefetch } = useBaseEnsName({
     address,
   });
 
@@ -174,7 +174,33 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   }, [basenameChain.id, router, selectedName]);
 
   useEffect(() => {
-    if (transactionIsFetching || callsIsFetching) {
+    if ((callsIsSuccess && callsData) || callsError) {
+      baseEnsNameRefetch()
+        .then(() => {
+          if (
+            currentAddressName === selectedName &&
+            registrationStep === RegistrationSteps.Pending
+          ) {
+            setRegistrationStep(RegistrationSteps.Success);
+          }
+        })
+        .catch(() => {});
+    }
+  }, [
+    baseEnsNameRefetch,
+    callsData,
+    callsError,
+    callsIsSuccess,
+    currentAddressName,
+    registrationStep,
+    selectedName,
+  ]);
+
+  useEffect(() => {
+    if (
+      (transactionIsFetching || callsIsFetching) &&
+      registrationStep === RegistrationSteps.Claim
+    ) {
       logEventWithContext('register_name_transaction_processing', ActionType.change);
 
       setRegistrationStep(RegistrationSteps.Pending);
@@ -195,27 +221,11 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
         });
       }
     }
-    if (callsIsSuccess && callsData) {
-      const successCall = callsData.receipts?.find((receipt) => receipt.status === 'success');
-      if (successCall) {
-        logEventWithContext('register_name_transaction_success', ActionType.change);
-        baseEnsNameRefetch()
-          .then(() => setRegistrationStep(RegistrationSteps.Success))
-          .catch(() => {});
-      } else {
-        const failCall = callsData.receipts?.find((receipt) => receipt.status !== 'success');
-        logEventWithContext('register_name_transaction_reverted', ActionType.change, {
-          error: `Smart wallet transaction reverted: ${failCall?.transactionHash}`,
-        });
-      }
-    }
   }, [
     baseEnsNameRefetch,
-    callsData,
     callsIsFetching,
-    callsIsSuccess,
     logEventWithContext,
-    setRegistrationStep,
+    registrationStep,
     transactionData,
     transactionIsFetching,
     transactionIsSuccess,
