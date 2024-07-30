@@ -146,8 +146,8 @@ export default function RegistrationForm() {
     return (
       <>
         <div className="mt-20 transition-all duration-500">
-          <div className="z-10 flex flex-col justify-between gap-4 rounded-2xl bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row">
-            <div>
+          <div className="z-10 flex flex-col items-start justify-between gap-6 rounded-2xl bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center">
+            <div className="max-w-[14rem]">
               <p className="text-line mb-2 text-sm font-bold uppercase">Claim for</p>
               <div className="flex items-center justify-between">
                 <button
@@ -159,7 +159,7 @@ export default function RegistrationForm() {
                 >
                   <MinusIcon width="14" height="14" className="fill-[#32353D]" />
                 </button>
-                <span className="flex w-32 items-center justify-center text-3xl text-black">
+                <span className="flex w-32 items-center justify-center text-3xl font-bold text-black">
                   {years} year{years > 1 && 's'}
                 </span>
                 <button
@@ -185,7 +185,7 @@ export default function RegistrationForm() {
                       {formatEtherPrice(initialPrice)}
                     </p>
                     <p
-                      className={classNames('whitespace-nowrap text-3xl text-green-50', {
+                      className={classNames('whitespace-nowrap text-3xl font-bold text-green-50', {
                         'text-state-n-hovered': insufficientBalanceToRegister,
                       })}
                     >
@@ -194,7 +194,7 @@ export default function RegistrationForm() {
                   </div>
                 ) : (
                   <p
-                    className={classNames('whitespace-nowrap text-3xl text-black', {
+                    className={classNames('whitespace-nowrap text-3xl font-bold text-black', {
                       'text-state-n-hovered': insufficientBalanceToRegister,
                     })}
                   >
@@ -218,40 +218,43 @@ export default function RegistrationForm() {
               )}
             </div>
 
-            <ConnectButton.Custom>
-              {({ account, chain, mounted }) => {
-                const ready = mounted;
-                const connected = ready && account && chain;
+            <div className="w-full max-w-full md:max-w-[10rem]">
+              <ConnectButton.Custom>
+                {({ account, chain, mounted }) => {
+                  const ready = mounted;
+                  const connected = ready && account && chain;
 
-                if (!connected) {
+                  if (!connected) {
+                    return (
+                      <Button
+                        type="button"
+                        variant={ButtonVariants.Black}
+                        size={ButtonSizes.Medium}
+                        onClick={openConnectModal}
+                        rounded
+                      >
+                        Connect wallet
+                      </Button>
+                    );
+                  }
+
                   return (
                     <Button
+                      onClick={registerNameCallback}
                       type="button"
                       variant={ButtonVariants.Black}
-                      size={ButtonSizes.Small}
-                      onClick={openConnectModal}
+                      size={ButtonSizes.Medium}
+                      disabled={insufficientBalanceToRegister || registerNameTransactionIsPending}
+                      isLoading={registerNameTransactionIsPending}
                       rounded
+                      fullWidth
                     >
-                      Connect wallet
+                      Register name
                     </Button>
                   );
-                }
-
-                return (
-                  <Button
-                    onClick={registerNameCallback}
-                    type="button"
-                    variant={ButtonVariants.Black}
-                    size={ButtonSizes.Small}
-                    disabled={insufficientBalanceToRegister || registerNameTransactionIsPending}
-                    isLoading={registerNameTransactionIsPending}
-                    rounded
-                  >
-                    Register name
-                  </Button>
-                );
-              }}
-            </ConnectButton.Custom>
+                }}
+              </ConnectButton.Custom>
+            </div>
           </div>
 
           {transactionError !== null && (
@@ -268,19 +271,22 @@ export default function RegistrationForm() {
             />
           )}
           {!IS_EARLY_ACCESS && (
-            <div className="mt-6 flex w-full justify-center">
-              <p className="text mr-2 text-center font-bold uppercase text-[#5B616E]">
-                {nameIsFree
-                  ? "You've qualified for a free name! "
-                  : 'Unlock your username for free! '}
+            <div className="mt-6 w-full ">
+              <p className="text mr-2 text-center font-bold uppercase ">
+                <span className="text-[#5B616E]">
+                  {nameIsFree
+                    ? "You've qualified for a free name! "
+                    : 'Unlock your username for free! '}
+                </span>
+
+                <button
+                  type="button"
+                  className="text-line font-bold uppercase text-[] underline"
+                  onClick={toggleLearnMoreModal}
+                >
+                  Learn more
+                </button>
               </p>
-              <button
-                type="button"
-                className="text-line font-bold uppercase underline"
-                onClick={toggleLearnMoreModal}
-              >
-                Learn more
-              </button>
             </div>
           )}
         </div>
