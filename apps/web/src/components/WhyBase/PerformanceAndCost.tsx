@@ -80,7 +80,7 @@ export default function PerformanceAndCost() {
       </div>
       <div className="mt-16 flex flex-row justify-center divide-x-2">
         {stats?.map((stat, index) => (
-          <div key={stat.description} className="flex flex-col justify-center align-center gap-4 p-8 w-full">
+          <div key={stat.description} className="flex flex-col justify-center items-center gap-4 p-8 w-full">
             <span className="text-8xl text-gray-40">
               {stat.value}
               <span className="text-4xl">{stat.units ?? ''}</span>

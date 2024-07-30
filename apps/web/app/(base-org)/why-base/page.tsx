@@ -7,6 +7,7 @@ import PerformanceAndCost from 'apps/web/src/components/WhyBase/PerformanceAndCo
 import EvmEquivalent from 'apps/web/src/components/WhyBase/EvmEquivalent';
 import WorldclassResources from 'apps/web/src/components/WhyBase/WorldclassResources';
 import EmpoweredByCoinbase from 'apps/web/src/components/WhyBase/EmpoweredByCoinbase';
+import BuildWithUs from 'apps/web/src/components/WhyBase/BuildWithUs';
 
 export default async function WhyBase() {
   return (
@@ -21,6 +22,7 @@ export default async function WhyBase() {
       <WorldclassResources />
       <Divider />
       <EmpoweredByCoinbase />
+      <BuildWithUs />
     </div>
   );
 }

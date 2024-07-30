@@ -1,14 +1,30 @@
 import React from 'react';
+import Link from 'apps/web/node_modules/next/link';
+
+const headerReasons: Section[] = [
+  {
+    title: 'Community of Builders',
+    id: 'communityOfBuilders'
+  },
+  {
+    title: 'Performance & cost efficiency',
+    id: 'performanceAndCost'
+  },
+  {
+    title: 'EVM compatibility',
+    id: 'evmCompatibility'
+  },
+  {
+    title: 'World class tools',
+    id: 'worldClassTools'
+  },
+  {
+    title: 'Empowered by Coinbase',
+    id: 'empoweredByCoinbase'
+  },
+];
 
 export default async function Hero() {
-  const headerReasons = [
-    'Community of Builders',
-    'Performance & cost efficiency',
-    'EVM compatibility',
-    'World class tools',
-    'Empowered by Coinbase',
-  ];
-
   return (
     <div className="mx-16 mt-[96px] flex h-[504px] max-w-[1440px] flex-col justify-start">
       <div className="my-20 grid grid-cols-[1fr_1fr]">
@@ -19,22 +35,41 @@ export default async function Hero() {
             your project
           </span>
         </div>
-        <div>
-          <ol className="list-none space-y-4 p-0">
-            {headerReasons.map((item, index) => (
-              <div key={item} className="flex flex-col justify-end gap-2">
+        <TableOfContents sections={headerReasons} />
+      </div>
+    </div>
+  );
+}
+
+
+function TableOfContents({ sections }: TableOfContentsProps) {
+  return (
+    <div className='flex flex-col justify-center gap-2'>
+          <ol className="list-none p-0">
+            {sections.map((section, index) => (
+              <div key={section.id} className="flex flex-col justify-end">
                 <li className="flex items-center text-2xl">
                   <span className="mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white font-bold text-black">
                     {index + 1}
                   </span>
-                  {item}
+                  <Link href={`#${section.id}`}>
+                    {section.title}
+                  </Link>
                 </li>
-                {index < headerReasons.length - 1 && <hr className="max-w-[450px]" />}
+                {index < sections.length - 1 && <hr className="max-w-[450px] my-4" />}
               </div>
             ))}
           </ol>
         </div>
-      </div>
-    </div>
-  );
+  )
+}
+
+
+type TableOfContentsProps = {
+  sections: Section[]
+}
+
+type Section = {
+  title: string;
+  id: string;
 }
