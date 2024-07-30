@@ -19,6 +19,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { useInterval } from 'usehooks-ts';
 import { Address, TransactionReceipt } from 'viem';
 import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
 import { useCallsStatus } from 'wagmi/experimental';
@@ -144,29 +145,32 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   });
   const [registerNameCallsBatchId, setRegisterNameCallsBatchId] = useState<string>('');
 
-  const {
-    data: callsData,
-    isFetching: callsIsFetching,
-    isSuccess: callsIsSuccess,
-    error: callsError,
-  } = useCallsStatus({
+  // The "correct" way to transition the UI would be to watch for call success, but this experimental
+  // rpc/hook combo is failing to report batch status for us as of July 30th 2024
+  const { isFetching: callsIsFetching } = useCallsStatus({
     id: registerNameCallsBatchId,
     query: {
       enabled: !!registerNameCallsBatchId,
     },
   });
+  // useEffect(() => {
+  //   if ((callsIsSuccess && callsData) || callsError) {
+  //     baseEnsNameRefetch()
+  //       .then(() => {
+  //         if (currentAddressName === selectedName) {
+  //           setRegistrationStep(RegistrationSteps.Success);
+  //         }
+  //       })
+  //       .catch(() => {});
+  //   }
+  // }, [baseEnsNameRefetch, callsData, callsError, callsIsSuccess, currentAddressName, selectedName]);
 
-  useEffect(() => {
-    if ((callsIsSuccess && callsData) || callsError) {
-      baseEnsNameRefetch()
-        .then(() => {
-          if (currentAddressName === selectedName) {
-            setRegistrationStep(RegistrationSteps.Success);
-          }
-        })
-        .catch(() => {});
+  useInterval(() => {
+    void baseEnsNameRefetch();
+    if (currentAddressName === selectedName) {
+      setRegistrationStep(RegistrationSteps.Success);
     }
-  }, [baseEnsNameRefetch, callsData, callsError, callsIsSuccess, currentAddressName, selectedName]);
+  }, 2000);
 
   useEffect(() => {
     if (transactionIsFetching || callsIsFetching) {
@@ -234,11 +238,10 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       discount,
       allActiveDiscounts,
       transactionData,
-      transactionError: transactionError ?? callsError,
+      transactionError,
     };
   }, [
     allActiveDiscounts,
-    callsError,
     discount,
     loadingDiscounts,
     registerNameCallsBatchId,
