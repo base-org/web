@@ -55,7 +55,8 @@ export function useRegisterNameCallback(
       return {
         paymasterService: {
           // url: `${document.location.origin}/api/paymaster`
-          url: 'https://api.developer.coinbase.com/rpc/v1/base-sepolia/1IhTcPOmhK5aEq-4WqRZMJoOh0oPenD2',
+          // url: 'https://api.developer.coinbase.com/rpc/v1/base-sepolia/1IhTcPOmhK5aEq-4WqRZMJoOh0oPenD2',
+          url: 'https://api.developer.coinbase.com/rpc/v1/base/vJbB-uvP1XRwu23iyk18fIoKISM6GCAC'
         },
       };
     }
@@ -124,7 +125,7 @@ export function useRegisterNameCallback(
               value,
             },
           ],
-          capabilities: capabilities,
+          // capabilities: capabilities,
           chainId: basenameChain.id,
         });
       }

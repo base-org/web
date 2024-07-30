@@ -193,14 +193,14 @@
             "Cloud Platform"
         ],
         "tags": [
-            "Account Abstraction"
+            "account abstraction"
         ],
         "difficulty": "easy",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 24, 2024",
+        "last_updated": "Jul 30, 2024",
         "duration": "27 min read",
-        "checksum": "893bd8402de9c3fa91eafb6b53e572003e3fec783c9df5e8bb9f9bf61d1d36b2"
+        "checksum": "52d06f74e8ae98119482e0c9c23e61b2d626a6f43bbe1279b3cbbab289bc4115"
     },
     "0_run-a-base-node": {
         "title": "Running a Base Node",
@@ -768,9 +768,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 30, 2024",
         "duration": "11 min read",
-        "checksum": "ba9ed921b845af072909ccca1d00675fa27dad3650e2dee32ed7efc646fc38da"
+        "checksum": "a8d146f53ed4166cc9db20bc9330686e33f9b77f7cb4402c0363da31ed61b719"
     },
     "3_farcaster-frames-hyperframes": {
         "title": "Farcaster Frames: Building HyperFrames",
@@ -793,9 +793,9 @@
         "tags": [
             "frames"
         ],
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 30, 2024",
         "duration": "16 min read",
-        "checksum": "c342f5b4fa804db468119b74291c926b44a47d0d387a90cc61108f592957db39"
+        "checksum": "92863c20aeaf836397aa7700bb1658448ba18ad964faccd1b4a347d60ba0d91a"
     },
     "3_farcaster-frames-nft-minting": {
         "title": "Farcaster Frames: Building an NFT airdrop Frame",
@@ -818,9 +818,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 30, 2024",
         "duration": "23 min read",
-        "checksum": "2632d9bfd434c9978f8c8caa45ece66bd210602d851328e219f3e6e0880876a5"
+        "checksum": "a872103049f72733d50335e30cbef38282c2bd0f7ae3214868cf465cec470ddc"
     },
     "3_farcaster-frames-nocode-minting": {
         "title": "Farcaster Frames: Building a no-code minting Frame",
@@ -844,9 +844,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 30, 2024",
         "duration": "6 min read",
-        "checksum": "cfe08c3fffa7ffaa0cd99af4e3c62aa767f6805cbd2bd8b393085f26c7eb24de"
+        "checksum": "e669fa202e9455fa51e3d48a3a5a4f3d934e592e95eadf04a911b8ea266c51ec"
     },
     "3_farcaster-frames-transactions": {
         "title": "Farcaster Frames: Making transactions",
@@ -867,9 +867,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Jul 30, 2024",
         "duration": "17 min read",
-        "checksum": "704d36753b8900a0700d0649b209902d59e5841cfee1b082346e9aca6b94df3e"
+        "checksum": "c00ea1ef98071d3c24bf587998b26e9d3bbc9d88c4c0b633d58ad842ba4eeaa9"
     },
     "4_hardhat-debugging": {
         "title": "Hardhat: Debugging smart contracts",
@@ -1088,9 +1088,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 30, 2024",
         "duration": "9 min read",
-        "checksum": "f9ad99285bb78e91cde255b71c826554b6ff1f8cec69450afe814d033af945e6"
+        "checksum": "e664b615fd5d9ed6115853ae9335276dc664f752c9a3f112105adb469f84296b"
     },
     "5_shopify-storefront-commerce": {
         "title": "Deploy a Shopify Storefront with Coinbase Commerce",
