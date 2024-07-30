@@ -4,23 +4,23 @@ import Link from 'apps/web/node_modules/next/link';
 const headerReasons: Section[] = [
   {
     title: 'Community of Builders',
-    id: 'communityOfBuilders'
+    id: 'communityOfBuilders',
   },
   {
     title: 'Performance & cost efficiency',
-    id: 'performanceAndCost'
+    id: 'performanceAndCost',
   },
   {
     title: 'EVM compatibility',
-    id: 'evmCompatibility'
+    id: 'evmCompatibility',
   },
   {
     title: 'World class tools',
-    id: 'worldClassTools'
+    id: 'worldClassTools',
   },
   {
     title: 'Empowered by Coinbase',
-    id: 'empoweredByCoinbase'
+    id: 'empoweredByCoinbase',
   },
 ];
 
@@ -41,35 +41,31 @@ export default async function Hero() {
   );
 }
 
-
 async function TableOfContents({ sections }: TableOfContentsProps) {
   return (
-    <div className='flex flex-col justify-center gap-2'>
-          <ol className="list-none p-0">
-            {sections.map((section, index) => (
-              <div key={section.id} className="flex flex-col justify-end">
-                <li className="flex items-center text-2xl">
-                  <span className="mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white font-bold text-black">
-                    {index + 1}
-                  </span>
-                  <Link href={`#${section.id}`}>
-                    {section.title}
-                  </Link>
-                </li>
-                {index < sections.length - 1 && <hr className="max-w-[450px] my-4" />}
-              </div>
-            ))}
-          </ol>
-        </div>
-  )
+    <div className="flex flex-col justify-center gap-2">
+      <ol className="list-none p-0">
+        {sections.map((section, index) => (
+          <div key={section.id} className="flex flex-col justify-end">
+            <li className="flex items-center text-2xl">
+              <span className="mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white font-bold text-black">
+                {index + 1}
+              </span>
+              <Link href={`#${section.id}`}>{section.title}</Link>
+            </li>
+            {index < sections.length - 1 && <hr className="my-4 max-w-[450px]" />}
+          </div>
+        ))}
+      </ol>
+    </div>
+  );
 }
-
 
 type TableOfContentsProps = {
-  sections: Section[]
-}
+  sections: Section[];
+};
 
 type Section = {
   title: string;
   id: string;
-}
+};

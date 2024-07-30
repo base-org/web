@@ -57,14 +57,17 @@ export default function ActiveCommunityOfBuilders() {
             Join a community of thousands builders just like you, building some of the coolest
             projects onchain. Reach out to our Discord support team for help.
           </span>
-          <Link
-            href="https://discord.com/invite/buildonbase"
-            target="_blank"
-            rel="noreferrer noopener"
-            onClick={handleClick}
-          >
-            <Button className="uppercase">Join the Discord</Button>
-          </Link>
+          <div>
+            <Link
+              href="https://discord.com/invite/buildonbase"
+              target="_blank"
+              rel="noreferrer noopener"
+              onClick={handleClick}
+              className="inline-block"
+            >
+              <Button className="uppercase">Join the Discord</Button>
+            </Link>
+          </div>
         </div>
       </div>
       <div className="mt-16">

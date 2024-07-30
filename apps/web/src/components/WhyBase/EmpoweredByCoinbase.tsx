@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import React, { useCallback } from 'react';
 import Link from 'next/link';
@@ -23,8 +23,8 @@ export default function EmpoweredByCoinbase() {
     );
   }, []);
   return (
-    <div id='empoweredByCoinbase' className="flex flex-row gap-32 bg-black px-20 pb-10 pt-10">
-      <div className="flex flex-col justify-center gap-16 max-w-[550px]">
+    <div id="empoweredByCoinbase" className="flex flex-row gap-32 bg-black px-20 pb-10 pt-10">
+      <div className="flex max-w-[550px] flex-col justify-center gap-16">
         <h2 className="flex font-display text-5xl">
           <span>5.</span>
           <span className="ml-4">Empowered by Coinbase</span>
@@ -35,12 +35,24 @@ export default function EmpoweredByCoinbase() {
             ahead. Leverage Coinbase's developer tools to make building easy and to reach Coinbase
             users.`}
           </span>
-          <Link href="/" target="_blank" rel="noreferrer noopener" onClick={handleClick}> {/*TODO: NEED A HREF */}
-            <Button className="mt-4 uppercase">Call to Action</Button>
-          </Link>
+          <div>
+            <Link
+              href="/about"
+              target="_blank"
+              rel="noreferrer noopener"
+              onClick={handleClick}
+              className="inline-block"
+            >
+              {' '}
+              {/*TODO: NEED A HREF */}
+              <Button fullWidth={false} className="mt-4 uppercase">
+                Learn More
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
-      <div className="h-[265px] w-[520px] bg-[url('../public/images/why-base-empowered-by-cb.png')] bg-no-repeat"/>
+      <div className="h-[265px] w-[520px] bg-[url('../public/images/why-base-empowered-by-cb.png')] bg-no-repeat" />
     </div>
   );
 }

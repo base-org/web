@@ -45,7 +45,7 @@ export default function PerformanceAndCost() {
     };
   }, []);
   return (
-    <div id='performanceAndCost' className="flex flex-col bg-black px-20 pb-10 pt-10">
+    <div id="performanceAndCost" className="flex flex-col bg-black px-20 pb-10 pt-10">
       <div className="flex flex-row">
         <h2 className="flex font-display text-5xl">
           <span>2.</span>
@@ -80,7 +80,10 @@ export default function PerformanceAndCost() {
       </div>
       <div className="mt-16 flex flex-row justify-center divide-x-2">
         {stats?.map((stat, index) => (
-          <div key={stat.description} className="flex flex-col justify-center items-center gap-4 p-8 w-full">
+          <div
+            key={stat.description}
+            className="flex w-full flex-col items-center justify-center gap-4 p-8"
+          >
             <span className="text-8xl text-gray-40">
               {stat.value}
               <span className="text-4xl">{stat.units ?? ''}</span>
@@ -92,8 +95,12 @@ export default function PerformanceAndCost() {
           </div>
         ))}
       </div>
-      <span className='mt-8 text-xs text-palette-backgroundAlternate'>Figures as of 7/30/2024.</span>
-      <span className='text-xs text-palette-backgroundAlternate'>Sources: 1. L2Beat 2. Rollup.wtf</span>
+      <span className="mt-8 text-xs text-palette-backgroundAlternate">
+        Figures as of 7/30/2024.
+      </span>
+      <span className="text-xs text-palette-backgroundAlternate">
+        Sources: 1. L2Beat 2. Rollup.wtf
+      </span>
     </div>
   );
 }

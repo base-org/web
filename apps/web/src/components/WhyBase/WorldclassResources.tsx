@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -36,12 +36,12 @@ const resources: Resource[] = [
     title: 'Onchain Data',
     description: 'API for wallet balances, balance history, and transaction history',
     href: 'https://portal.cdp.coinbase.com/products/onchain-data',
-  }
+  },
 ];
 
 export default function WorldclassResources() {
   return (
-    <div id='worldClassTools' className="flex flex-col bg-black px-20 pb-10 pt-10">
+    <div id="worldClassTools" className="flex flex-col bg-black px-20 pb-10 pt-10">
       <div className="flex flex-row">
         <h2 className="flex font-display text-5xl">
           <span>4.</span>
@@ -52,14 +52,17 @@ export default function WorldclassResources() {
             {`Access top-tier resources to simplify development, enhance your users' experience, and
             accelerate your project's growth.`}
           </span>
-          <Link
-            href="https://docs.base.org/docs"
-            target="_blank"
-            rel="noreferrer noopener"
-            //   onClick={createHandleClick('l2beat')}
-          >
-            <Button className="mt-8 uppercase">Start Building</Button>
-          </Link>
+          <div>
+            <Link
+              href="https://docs.base.org/docs"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-block"
+              //   onClick={createHandleClick('l2beat')}
+            >
+              <Button className="mt-8 uppercase">Start Building</Button>
+            </Link>
+          </div>
         </div>
       </div>
       <div className="mt-16 flex flex-row flex-wrap justify-center gap-8">
