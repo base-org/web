@@ -430,6 +430,9 @@ const contentSecurityPolicy = {
     'https://cdn.sprig.com', // Sprig API
     'https://flag.lab.amplitude.com/sdk/v2/flags',
     'https://api.lab.amplitude.com/sdk/v2/vardata',
+    'https://browser-intake-datadoghq.com', // datadog
+    'https://app.datadoghq.com', // datadog
+    'datadoghq.com' // datadog
   ],
   'frame-src': ["'self'", 'https://player.vimeo.com', 'https://verify.walletconnect.org'],
 };
