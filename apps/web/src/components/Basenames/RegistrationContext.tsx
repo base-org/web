@@ -164,9 +164,13 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   });
 
   useInterval(() => {
+    if (registrationStep !== RegistrationSteps.Pending) {
+      return;
+    }
     baseEnsNameRefetch()
       .then(() => {
-        if (currentAddressName === selectedName && registrationStep === RegistrationSteps.Pending) {
+        const [extractedName] = (currentAddressName ?? '').split('.');
+        if (extractedName === selectedName && registrationStep === RegistrationSteps.Pending) {
           setRegistrationStep(RegistrationSteps.Success);
         }
       })
