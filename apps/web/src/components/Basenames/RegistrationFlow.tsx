@@ -12,9 +12,8 @@ import {
 } from 'apps/web/src/components/Basenames/RegistrationContext';
 import RegistrationForm from 'apps/web/src/components/Basenames/RegistrationForm';
 import RegistrationProfileForm from 'apps/web/src/components/Basenames/RegistrationProfileForm';
-import RegistrationSearchInput, {
-  RegistrationSearchInputVariant,
-} from 'apps/web/src/components/Basenames/RegistrationSearchInput';
+import RegistrationSearchInput from 'apps/web/src/components/Basenames/RegistrationSearchInput';
+import { RegistrationSearchInputVariant } from './RegistrationSearchInput/types';
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
