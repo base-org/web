@@ -1,4 +1,3 @@
-import { BaseName } from '@coinbase/onchainkit/identity';
 import Dropdown from 'apps/web/src/components/Dropdown';
 import DropdownItem from 'apps/web/src/components/DropdownItem';
 import DropdownMenu from 'apps/web/src/components/DropdownMenu';
@@ -8,20 +7,9 @@ import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
-import { Address } from 'viem';
+import { UsernamePillProps, UsernamePillVariants } from './types';
 
-export enum UsernamePillVariants {
-  Inline = 'inline',
-  Card = 'card',
-}
-
-type UsernamePillProps = {
-  variant: UsernamePillVariants;
-  username: BaseName;
-  address?: Address;
-};
-
-export function UsernamePill({ variant, username, address }: UsernamePillProps) {
+export function UsernamePill({ variant, username, address, isRegistering }: UsernamePillProps) {
   const transitionClasses = 'transition-all duration-700 ease-in-out';
 
   const pillNameClasses = classNames(
@@ -64,6 +52,9 @@ export function UsernamePill({ variant, username, address }: UsernamePillProps) 
 
   return (
     <div className={pillNameClasses}>
+      {isRegistering && (
+        <div className="duration-1500 absolute right-0 top-0 h-32 w-64 animate-longslide bg-gradient-to-r from-transparent via-black to-transparent opacity-30 blur-lg" />
+      )}
       <ImageWithLoading
         src={selectedProfilePicture}
         alt={username}

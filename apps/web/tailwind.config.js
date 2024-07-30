@@ -535,11 +535,16 @@ module.exports = {
           '50%': { transform: 'translateX(0) rotate(6deg)' },
           '100%': { transform: 'translateX(0) rotate(6deg)' },
         },
+        longslide: {
+          '0%': { transform: 'translateX(-23rem)' },
+          '100%': { transform: 'translateX(13rem)' },
+        },
       },
       animation: {
         wiggle: 'wiggle 3s linear infinite',
         bounce: 'bounce 1s ease-in-out infinite',
-        slide: 'slide 1s linear infinite',
+        slide: 'slide 1s ease-in-out infinite',
+        longslide: 'longslide 2s linear infinite',
       },
       zIndex: {
         1: '1',
