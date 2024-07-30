@@ -16,7 +16,7 @@ import RegistrationSearchInput from 'apps/web/src/components/Basenames/Registrat
 import { RegistrationSearchInputVariant } from './RegistrationSearchInput/types';
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
-import { UsernamePillVariants } from './UsernamePill/types';
+import { UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill/types';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { formatBaseEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
@@ -35,7 +35,7 @@ const RegistrationStateSwitcherDynamic = dynamic(
   { ssr: false },
 );
 
-const claimQueryKey = 'claim';
+export const claimQueryKey = 'claim';
 
 export function RegistrationFlow() {
   const { chain } = useAccount();
@@ -231,6 +231,7 @@ export function RegistrationFlow() {
               <UsernamePill
                 variant={currentUsernamePillVariant}
                 username={formatBaseEthDomain(selectedName, basenameChain.id)}
+                isRegistering={isPending}
               />
             </Transition>
 

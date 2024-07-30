@@ -9,4 +9,5 @@ export type UsernamePillProps = {
   variant: UsernamePillVariants;
   username: BaseName;
   address?: Address;
+  isRegistering?: boolean;
 };

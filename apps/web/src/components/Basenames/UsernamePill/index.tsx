@@ -9,7 +9,7 @@ import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { UsernamePillProps, UsernamePillVariants } from './types';
 
-export function UsernamePill({ variant, username, address }: UsernamePillProps) {
+export function UsernamePill({ variant, username, address, isRegistering }: UsernamePillProps) {
   const transitionClasses = 'transition-all duration-700 ease-in-out';
 
   const pillNameClasses = classNames(
@@ -53,7 +53,9 @@ export function UsernamePill({ variant, username, address }: UsernamePillProps) 
 
   return (
     <div className={pillNameClasses}>
-      <div className="duration-1500 absolute right-0 top-0 h-32 w-64 animate-longslide bg-gradient-to-r from-transparent via-black to-transparent opacity-50 blur-lg" />
+      {isRegistering && (
+        <div className="duration-1500 absolute right-0 top-0 h-32 w-64 animate-longslide bg-gradient-to-r from-transparent via-black to-transparent opacity-30 blur-lg" />
+      )}
       <ImageWithLoading
         src={selectedProfilePicture}
         alt={username}

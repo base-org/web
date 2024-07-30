@@ -543,7 +543,7 @@ module.exports = {
       animation: {
         wiggle: 'wiggle 3s linear infinite',
         bounce: 'bounce 1s ease-in-out infinite',
-        slide: 'slide 1s linear infinite',
+        slide: 'slide 1s ease-in-out infinite',
         longslide: 'longslide 2s linear infinite',
       },
       zIndex: {
