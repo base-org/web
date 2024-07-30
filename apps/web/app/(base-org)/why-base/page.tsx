@@ -10,7 +10,7 @@ import EmpoweredByCoinbase from 'apps/web/src/components/WhyBase/EmpoweredByCoin
 
 export default async function WhyBase() {
   return (
-    <div className="mt-[-96px] bg-blue-60 text-white">
+    <div className="mt-[-96px] bg-blue-60 text-white font-display">
       <Hero />
       <ActiveCommunityOfBuilders />
       <Divider />
