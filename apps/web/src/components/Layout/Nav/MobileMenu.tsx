@@ -9,7 +9,6 @@ import { usePathname } from 'next/navigation';
 import { bridgeUrl } from 'apps/web/src/constants';
 import { ConnectWalletButton } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 import { REVERSE_COLOR } from 'apps/web/src/utils/colors';
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 // Dropdown Link
 type DropdownLinkProps = {
@@ -229,9 +228,7 @@ function MobileMenu({ color }: MobileMenuProps) {
               </div>
 
               <div className="mb-8">
-                <RainbowKitProvider modalSize="compact">
-                  <ConnectWalletButton color={REVERSE_COLOR[color]} className="" />
-                </RainbowKitProvider>
+                <ConnectWalletButton color={REVERSE_COLOR[color]} className="" />
               </div>
 
               <div className="flex flex-row justify-between gap-4 justify-self-end pb-8">

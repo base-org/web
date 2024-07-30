@@ -38,6 +38,7 @@ export default function AnalyticsProvider({ children, context }: AnalyticsProvid
   const logEventWithContext = useCallback(
     (eventName: string, action: ActionType, eventData?: CCAEventData) => {
       const sanitizedEventName = eventName.toLocaleLowerCase();
+      if (!window) return;
       logEvent(
         sanitizedEventName, // TODO: Do we want context here?
         {

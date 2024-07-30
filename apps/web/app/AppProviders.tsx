@@ -8,7 +8,7 @@ import {
 } from '@coinbase/cookie-manager';
 import { OnchainKitProvider } from '@coinbase/onchainkit';
 import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   coinbaseWallet,
@@ -124,14 +124,16 @@ export default function AppProviders({ children }: AppProvidersProps) {
               chain={isDevelopment ? baseSepolia : base}
               apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
             >
-              <TooltipProvider>
-                <ExperimentsProvider>
-                  <>
-                    {children}
-                    <DynamicCookieBannerWrapper />
-                  </>
-                </ExperimentsProvider>
-              </TooltipProvider>
+              <RainbowKitProvider modalSize="compact">
+                <TooltipProvider>
+                  <ExperimentsProvider>
+                    <>
+                      {children}
+                      <DynamicCookieBannerWrapper />
+                    </>
+                  </ExperimentsProvider>
+                </TooltipProvider>
+              </RainbowKitProvider>
             </OnchainKitProvider>
           </QueryClientProvider>
         </WagmiProvider>

@@ -8,9 +8,7 @@ import useClickAway from '../../../hooks/useClickAway';
 import { Icon } from '../../Icon/Icon';
 import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
 import { ConnectWalletButton } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
-
 import { REVERSE_COLOR, reverseTextColor } from 'apps/web/src/utils/colors';
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 // Dropdown Link
 type DropdownLinkProps = {
@@ -204,9 +202,7 @@ function DesktopNav({ color }: DesktopNavProps) {
           title="Join us on Github"
         />
       </Dropdown>
-      <RainbowKitProvider modalSize="compact">
-        <ConnectWalletButton color={color} className="relative inline-block" />
-      </RainbowKitProvider>
+      <ConnectWalletButton color={color} className="relative inline-block" />
     </div>
   );
 }
