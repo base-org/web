@@ -1,6 +1,6 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
-import abi from 'apps/web/src/abis/RegistrarControllerABI';
+import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import {
   USERNAME_L2_RESOLVER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
@@ -25,6 +25,8 @@ type UseRegisterNameCallbackReturnValue = {
   isPending: boolean;
   error: string | undefined | null;
 };
+
+const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
 
 export function useRegisterNameCallback(
   name: string,
@@ -65,7 +67,6 @@ export function useRegisterNameCallback(
   const isDiscounted = Boolean(discountKey && validationData);
   const { logEventWithContext } = useAnalytics();
 
-  // TODO: I think we could pass arguments to this function instead of the hook
   const registerName = useCallback(async () => {
     if (!address) return;
 
@@ -101,10 +102,10 @@ export function useRegisterNameCallback(
 
       if (!capabilities || Object.keys(capabilities).length === 0) {
         await writeContractAsync({
-          abi,
+          abi: RegistrarControllerABI,
           address: USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[basenameChain.id],
           chainId: basenameChain.id,
-          functionName: 'discountedRegister',
+          functionName: isDiscounted || isEarlyAccess ? 'discountedRegister' : 'register',
           // @ts-expect-error isDiscounted is sufficient guard for discountKey and validationData presence
           args: isDiscounted ? [registerRequest, discountKey, validationData] : [registerRequest],
           value,
@@ -114,11 +115,12 @@ export function useRegisterNameCallback(
           contracts: [
             {
               address: USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[basenameChain.id],
-              abi: abi,
-              functionName: 'discountedRegister',
+              abi: RegistrarControllerABI,
+              functionName: isDiscounted || isEarlyAccess ? 'discountedRegister' : 'register',
               args: isDiscounted
                 ? [registerRequest, discountKey, validationData]
                 : [registerRequest],
+              // @ts-expect-error writeContractsAsync is incorrectly typed to not accept value
               value,
             },
           ],
