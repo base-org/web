@@ -111,7 +111,7 @@ export function RegistrationFlow() {
     }
   }, [basenameChain.id, searchParams, setSelectedName]);
 
-  const isDevelopment = process.env.NODE_ENV === 'development';
+  const isDevelopment = false; // process.env.NODE_ENV === 'development';
 
   return (
     <>
