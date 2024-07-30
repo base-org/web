@@ -92,7 +92,7 @@ export default function RegistrationSearchInput({
   }, [debouncedSearch, invalidWithMessage, valid]);
 
   const RegistrationSearchInputClasses = classNames(
-    'relative z-10 transition-all duration-500 w-full mx-auto group text-black',
+    'relative z-9 transition-all duration-500 w-full mx-auto group text-black',
   );
 
   // This will change/animate the border when hovering the whole component
@@ -134,7 +134,7 @@ export default function RegistrationSearchInput({
 
   const dropdownClasses = classNames(
     'flex flex-col items-start bg-white text-black',
-    'absolute left-0 right-0 top-full z-10 border-t-0 ',
+    'absolute left-0 right-0 top-full z-9 border-t-0 ',
     groupBorderClasses,
     // radius, Padding & Font sizes
     {
@@ -176,7 +176,7 @@ export default function RegistrationSearchInput({
     },
   );
 
-  const inputIconClasses = classNames('absolute top-1/2 z-20 flex -translate-y-1/2 items-center', {
+  const inputIconClasses = classNames('absolute top-1/2 z-9 flex -translate-y-1/2 items-center', {
     'right-8': variant === RegistrationSearchInputVariant.Large,
     'right-3': variant === RegistrationSearchInputVariant.Small,
   });
