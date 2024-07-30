@@ -27,6 +27,7 @@ import { useAccount, useChains, useSwitchChain } from 'wagmi';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import RegistrationShareOnSocials from 'apps/web/src/components/Basenames/RegistrationShareOnSocials';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
 const RegistrationStateSwitcherDynamic = dynamic(
@@ -40,7 +41,13 @@ export function RegistrationFlow() {
   const { chain } = useAccount();
   const { logEventWithContext } = useAnalytics();
   const searchParams = useSearchParams();
-  const { registrationStep, searchInputFocused, selectedName, setSelectedName } = useRegistration();
+  const {
+    registrationStep,
+    searchInputFocused,
+    selectedName,
+    setSelectedName,
+    setRegistrationStep,
+  } = useRegistration();
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
   const chains = useChains();
@@ -76,15 +83,20 @@ export function RegistrationFlow() {
     layoutPadding,
     registrationTransitionDuration,
     {
-      'pt-[calc(40vh-24px)] md:pt-[calc(50vh-24px)]': isSearch || isClaim || isPending || isSuccess,
+      'pt-[calc(40vh)] md:pt-[calc(50vh)]': isSearch,
+      'pt-[calc(35vh)] md:pt-[calc(50vh)]': isClaim || isPending || isSuccess,
       'delay-500': isSuccess || isProfile,
-      'pt-32 md:pt-40': isProfile,
+      'pt-44 md:pt-48': isProfile,
     },
   );
 
   const currentUsernamePillVariant = isProfile
     ? UsernamePillVariants.Card
     : UsernamePillVariants.Inline;
+
+  const onBackArrowClick = useCallback(() => {
+    setRegistrationStep(RegistrationSteps.Search);
+  }, [setRegistrationStep]);
 
   useEffect(() => {
     logEventWithContext('initial_render', ActionType.render);
@@ -108,7 +120,7 @@ export function RegistrationFlow() {
           appear
           show={isSearch}
           className={classNames(
-            'absolute left-1/2 z-8 mx-auto w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 transform  transition-opacity',
+            'absolute left-1/2 z-8 mx-auto w-full max-w-2xl -translate-x-1/2 transform transition-opacity  md:-translate-y-1/2',
             registrationTransitionDuration,
             absoluteLayoutPosition,
             {
@@ -164,7 +176,7 @@ export function RegistrationFlow() {
           </Transition>
         </Transition>
         {/* 2 - Username Pill */}
-        <div className="relative flex w-full max-w-full flex-col items-center justify-center ">
+        <div className="relative flex w-full max-w-full -translate-y-12 flex-col items-center justify-center">
           <Transition
             appear
             show={!isSearch}
@@ -186,7 +198,7 @@ export function RegistrationFlow() {
               appear
               show={isClaim}
               className={classNames(
-                'absolute left-1/2 z-40 mx-auto w-full max-w-[14rem] -translate-x-1/2 -translate-y-20 transition-opacity',
+                'absolute left-1/2 z-40 mx-auto w-full -translate-x-1/2 -translate-y-40 transition-opacity md:max-w-[16rem]  md:-translate-y-20',
                 registrationTransitionDuration,
               )}
               enterFrom="opacity-0"
@@ -194,10 +206,15 @@ export function RegistrationFlow() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <RegistrationSearchInput
-                variant={RegistrationSearchInputVariant.Small}
-                placeholder="Find another name"
-              />
+              <div className="flex gap-4 px-2">
+                <button onClick={onBackArrowClick} type="button" aria-label="Find another name">
+                  <Icon name="backArrow" color="currentColor" height="1rem" width="1rem" />
+                </button>
+                <RegistrationSearchInput
+                  variant={RegistrationSearchInputVariant.Small}
+                  placeholder="Find another name"
+                />
+              </div>
             </Transition>
 
             {/* 2.2 - The pill  */}
@@ -298,7 +315,7 @@ export function RegistrationFlow() {
           appear
           show={isProfile}
           className={classNames(
-            'relative z-50  mx-auto mt-8 transition-opacity',
+            'relative z-50 mx-auto transition-opacity',
             'w-full max-w-[26rem]',
             registrationTransitionDuration,
           )}
