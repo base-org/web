@@ -36,7 +36,7 @@ const resources: Resource[] = [
 
 export default function WorldclassResources() {
   return (
-    <div className="flex flex-col bg-black px-20 pb-10 pt-10">
+    <div id='worldClassTools' className="flex flex-col bg-black px-20 pb-10 pt-10">
       <div className="flex flex-row">
         <h2 className="flex font-display text-5xl">
           <span>4.</span>

@@ -42,7 +42,7 @@ export default async function Hero() {
 }
 
 
-function TableOfContents({ sections }: TableOfContentsProps) {
+async function TableOfContents({ sections }: TableOfContentsProps) {
   return (
     <div className='flex flex-col justify-center gap-2'>
           <ol className="list-none p-0">

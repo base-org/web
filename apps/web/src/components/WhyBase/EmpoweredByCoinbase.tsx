@@ -23,7 +23,7 @@ export default function EmpoweredByCoinbase() {
     );
   }, []);
   return (
-    <div className="flex flex-row gap-32 bg-black px-20 pb-10 pt-10">
+    <div id='empoweredByCoinbase' className="flex flex-row gap-32 bg-black px-20 pb-10 pt-10">
       <div className="flex flex-col justify-center gap-16 max-w-[550px]">
         <h2 className="flex font-display text-5xl">
           <span>5.</span>

@@ -24,7 +24,7 @@ export default function ActiveCommunityOfBuilders() {
     );
   }, []);
   return (
-    <div className="flex flex-col bg-black px-20 pb-10 pt-20">
+    <div id='communityOfBuilders' className="flex flex-col bg-black px-20 pb-10 pt-20">
       <div className="flex flex-row justify-between">
         <div className="h-[320px] min-w-[550px] bg-[url('../public/images/CommunityOfBuilders.png')]" />
         <div className="mx-20 flex grow flex-col justify-around">

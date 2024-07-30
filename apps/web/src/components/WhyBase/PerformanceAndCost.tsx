@@ -45,7 +45,7 @@ export default function PerformanceAndCost() {
     };
   }, []);
   return (
-    <div className="flex flex-col bg-black px-20 pb-10 pt-10">
+    <div id='performanceAndCost' className="flex flex-col bg-black px-20 pb-10 pt-10">
       <div className="flex flex-row">
         <h2 className="flex font-display text-5xl">
           <span>2.</span>
