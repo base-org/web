@@ -90,6 +90,7 @@ module.exports = {
     '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: false }],
     '@typescript-eslint/parameter-properties': 'error',
     '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
+    '@typescript-eslint/no-use-before-define': 'off',
 
     // Correctness
     '@typescript-eslint/switch-exhaustiveness-check': 'error',

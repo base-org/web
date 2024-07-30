@@ -46,7 +46,9 @@ export default function RegistrationBrand() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <p className="text-md absolute right-0 md:text-xl">{string}</p>
+          <p className="sm:text-md absolute right-0 flex h-full items-center text-xs md:text-xl">
+            {string}
+          </p>
         </Transition>
       ))}
     </div>
