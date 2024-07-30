@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import React, { useCallback } from 'react';
 import Link from 'next/link';
@@ -9,6 +9,26 @@ import logEvent, {
   ComponentType,
   AnalyticsEventImportance,
 } from 'base-ui/utils/logEvent';
+
+const stats = [
+  {
+    value: '$0.002',
+    description: 'Lowest cost per txs (among L2s)',
+    footnote: 1,
+  },
+  {
+    value: '49.5',
+    units: 'TPS',
+    description: 'Best txn efficiency (among L2s)',
+    footnote: 2,
+  },
+  {
+    value: '9.14',
+    units: 'Mgas/Sec',
+    description: 'Highest throughput (among L2s)',
+    footnote: 2,
+  },
+];
 
 export default function PerformanceAndCost() {
   const createHandleClick = useCallback((eventName: string) => {
@@ -36,7 +56,7 @@ export default function PerformanceAndCost() {
             Base leads the way with the lowest transaction costs, highest throughput, and top TPS
             among Layer 2 solutions.
           </span>
-          <div className='flex flex-row justify-start gap-8'>
+          <div className="flex flex-row justify-start gap-8">
             <Link
               href="https://l2beat.com/scaling/costs"
               target="_blank"
@@ -51,16 +71,29 @@ export default function PerformanceAndCost() {
               rel="noreferrer noopener"
               onClick={createHandleClick('rollup_wtf')}
             >
-              <Button variant='secondary' className="mt-8 uppercase">Rollup.wtf</Button>
+              <Button variant="secondary" className="mt-8 uppercase">
+                Rollup.wtf
+              </Button>
             </Link>
           </div>
         </div>
       </div>
-      <div className="mt-16 flex flex-row justify-between">
-        <div className="h-[200px] w-[300px] bg-ocsyellow">Placeholder</div>
-        <div className="h-[200px] w-[300px] bg-ocsyellow">Placeholder</div>
-        <div className="h-[200px] w-[300px] bg-ocsyellow">Placeholder</div>
+      <div className="mt-16 flex flex-row justify-center divide-x-2">
+        {stats?.map((stat, index) => (
+          <div key={stat.description} className="flex flex-col justify-center align-center gap-4 p-8 w-full">
+            <span className="text-8xl text-gray-40">
+              {stat.value}
+              <span className="text-4xl">{stat.units ?? ''}</span>
+            </span>
+            <span>
+              {stat.description}
+              <span className="ml-1 align-super text-xs">{stat.footnote ?? ''}</span>
+            </span>
+          </div>
+        ))}
       </div>
+      <span className='mt-8 text-xs text-palette-backgroundAlternate'>Figures as of 7/30/2024.</span>
+      <span className='text-xs text-palette-backgroundAlternate'>Sources: 1. L2Beat 2. Rollup.wtf</span>
     </div>
   );
 }
