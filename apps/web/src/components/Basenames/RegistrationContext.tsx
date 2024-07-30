@@ -7,13 +7,15 @@ import {
 } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import { Discount, isValidDiscount } from 'apps/web/src/utils/usernames';
+import { Discount, formatBaseEthDomain, isValidDiscount } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
+import { useRouter } from 'next/navigation';
 import {
   Dispatch,
   ReactNode,
   SetStateAction,
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -21,6 +23,7 @@ import {
 } from 'react';
 import { useInterval } from 'usehooks-ts';
 import { Address, TransactionReceipt } from 'viem';
+import { base } from 'viem/chains';
 import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
 import { useCallsStatus } from 'wagmi/experimental';
 
@@ -45,6 +48,7 @@ export type RegistrationContextProps = {
   setRegisterNameTransactionHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
   registerNameCallsBatchId: string;
   setRegisterNameCallsBatchId: Dispatch<SetStateAction<string>>;
+  redirectToProfile: () => void;
   loadingDiscounts: boolean;
   discount: DiscountData | undefined;
   allActiveDiscounts: Set<Discount>;
@@ -77,6 +81,9 @@ export const RegistrationContext = createContext<RegistrationContextProps>({
   setRegisterNameCallsBatchId: function () {
     return undefined;
   },
+  redirectToProfile: function () {
+    return undefined;
+  },
   loadingDiscounts: true,
   discount: undefined,
   allActiveDiscounts: new Set(),
@@ -101,6 +108,8 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   );
 
   const { basenameChain } = useBasenameChain();
+
+  const router = useRouter();
 
   // Analytics
   const { logEventWithContext } = useAnalytics();
@@ -153,24 +162,24 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       enabled: !!registerNameCallsBatchId,
     },
   });
-  // useEffect(() => {
-  //   if ((callsIsSuccess && callsData) || callsError) {
-  //     baseEnsNameRefetch()
-  //       .then(() => {
-  //         if (currentAddressName === selectedName) {
-  //           setRegistrationStep(RegistrationSteps.Success);
-  //         }
-  //       })
-  //       .catch(() => {});
-  //   }
-  // }, [baseEnsNameRefetch, callsData, callsError, callsIsSuccess, currentAddressName, selectedName]);
 
   useInterval(() => {
-    void baseEnsNameRefetch();
-    if (currentAddressName === selectedName && registrationStep === RegistrationSteps.Pending) {
-      setRegistrationStep(RegistrationSteps.Success);
+    baseEnsNameRefetch()
+      .then(() => {
+        if (currentAddressName === selectedName && registrationStep === RegistrationSteps.Pending) {
+          setRegistrationStep(RegistrationSteps.Success);
+        }
+      })
+      .catch(() => {});
+  }, 1500);
+
+  const redirectToProfile = useCallback(() => {
+    if (basenameChain.id === base.id) {
+      router.push(`name/${selectedName}`);
+    } else {
+      router.push(`name/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
     }
-  }, 2000);
+  }, [basenameChain.id, router, selectedName]);
 
   useEffect(() => {
     if (
@@ -184,10 +193,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     if (transactionIsSuccess) {
       if (transactionData.status === 'success') {
         logEventWithContext('register_name_transaction_success', ActionType.change);
-        // Reload current ENS name
-        baseEnsNameRefetch()
-          .then(() => setRegistrationStep(RegistrationSteps.Success))
-          .catch(() => {});
       }
 
       if (transactionData.status === 'reverted') {
@@ -200,6 +205,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     baseEnsNameRefetch,
     callsIsFetching,
     logEventWithContext,
+    registrationStep,
     transactionData,
     transactionIsFetching,
     transactionIsSuccess,
@@ -236,6 +242,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       setRegisterNameTransactionHash,
       registerNameCallsBatchId,
       setRegisterNameCallsBatchId,
+      redirectToProfile,
       loadingDiscounts,
       discount,
       allActiveDiscounts,
@@ -246,6 +253,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     allActiveDiscounts,
     discount,
     loadingDiscounts,
+    redirectToProfile,
     registerNameCallsBatchId,
     registerNameTransactionHash,
     registrationStep,

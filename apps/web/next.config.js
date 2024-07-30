@@ -238,6 +238,21 @@ module.exports = extendBaseConfig(
           destination: 'https://buildonbase.deform.cc/registry-edit/',
           permanent: true,
         },
+        {
+          source: '/name/:path.base.eth',
+          destination: '/name/:path',
+          permanent: true,
+        },
+        {
+          source: '/names/:path',
+          destination: '/name/:path',
+          permanent: true,
+        },
+        {
+          source: '/name',
+          destination: '/names',
+          permanent: true,
+        },
       ];
     },
   },

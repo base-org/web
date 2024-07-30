@@ -14,25 +14,11 @@ import { useDebounceValue } from 'usehooks-ts';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import { Chain } from 'viem';
-
-export enum RegistrationSearchInputVariant {
-  Small,
-  Large,
-}
-
-type RegistrationSearchInputProps = {
-  variant: RegistrationSearchInputVariant;
-  placeholder: string;
-};
-
-type SuggestionEntryProps = {
-  suggestion: string;
-  buttonClasses: string;
-  handleSelectName: (name: string) => void;
-  basenameChain: Chain;
-  iconSize: number;
-};
+import {
+  SuggestionEntryProps,
+  RegistrationSearchInputProps,
+  RegistrationSearchInputVariant,
+} from './types';
 
 function SuggestionEntry({
   suggestion,
@@ -92,7 +78,7 @@ export default function RegistrationSearchInput({
   }, [debouncedSearch, invalidWithMessage, valid]);
 
   const RegistrationSearchInputClasses = classNames(
-    'relative z-10 transition-all duration-500 w-full mx-auto group text-black',
+    'relative z-9 transition-all duration-500 w-full mx-auto group text-black',
   );
 
   // This will change/animate the border when hovering the whole component
@@ -109,7 +95,8 @@ export default function RegistrationSearchInput({
     'w-full outline-0 placeholder:uppercase peer ',
     // Padding & Font sizes
     {
-      'py-7 pl-6 pr-16 text-2xl': variant === RegistrationSearchInputVariant.Large,
+      'py-5 md:py-7 pl-6 pr-16 text-md md:text-2xl':
+        variant === RegistrationSearchInputVariant.Large,
       'py-2 pl-3 pr-6': variant === RegistrationSearchInputVariant.Small,
     },
     // Background
@@ -134,7 +121,7 @@ export default function RegistrationSearchInput({
 
   const dropdownClasses = classNames(
     'flex flex-col items-start bg-white text-black',
-    'absolute left-0 right-0 top-full z-10 border-t-0 ',
+    'absolute left-0 right-0 top-full z-9 border-t-0 ',
     groupBorderClasses,
     // radius, Padding & Font sizes
     {
@@ -176,10 +163,13 @@ export default function RegistrationSearchInput({
     },
   );
 
-  const inputIconClasses = classNames('absolute top-1/2 z-20 flex -translate-y-1/2 items-center', {
-    'right-8': variant === RegistrationSearchInputVariant.Large,
-    'right-3': variant === RegistrationSearchInputVariant.Small,
-  });
+  const inputIconClasses = classNames(
+    'absolute top-1/2 z-9 flex -translate-y-1/2 items-center scale-75 md:scale-100',
+    {
+      'right-8': variant === RegistrationSearchInputVariant.Large,
+      'right-3': variant === RegistrationSearchInputVariant.Small,
+    },
+  );
 
   const lineClasses = classNames('w-full', {
     'px-6': variant === RegistrationSearchInputVariant.Large,

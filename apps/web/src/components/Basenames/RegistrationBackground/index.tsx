@@ -28,7 +28,7 @@ export default function RegistrationBackground() {
     'pointer-events-none absolute inset-0 w-full h-full -z-10 bg-[#025cfe]',
   );
 
-  const videoClasses = classNames('absolute w-full h-full mt-[24px] object-cover');
+  const videoClasses = classNames('absolute w-full h-full object-cover');
 
   return (
     <>
