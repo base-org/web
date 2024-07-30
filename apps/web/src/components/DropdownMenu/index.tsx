@@ -1,6 +1,8 @@
+'use client';
+
 import { DropdownContext } from 'apps/web/src/components/Dropdown';
 import classNames from 'classnames';
-import { CSSProperties, ReactNode, useContext } from 'react';
+import { CSSProperties, ReactNode, useContext, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export type DropdownMenuProps = {
@@ -9,6 +11,14 @@ export type DropdownMenuProps = {
 
 export default function DropdownMenu({ children }: DropdownMenuProps) {
   const { open, dropdownToggleRef } = useContext(DropdownContext);
+
+  // TODO: Better way to fix this Hydration Error
+  const [isClientSide, setIsClientSide] = useState(false);
+  useEffect(() => {
+    if (!isClientSide) {
+      setIsClientSide(true);
+    }
+  }, [isClientSide]);
 
   const dropdownMenuWrapper = classNames(
     'absolute z-50 w-full max-w-[80vw] -translate-x-full pt-2  md:max-w-xs',
@@ -44,13 +54,17 @@ export default function DropdownMenu({ children }: DropdownMenuProps) {
     arrowStyle.left = `${left + width / 2}px`;
   }
 
-  return createPortal(
-    <>
-      <i className={arrowClasses} style={arrowStyle} />
-      <div className={dropdownMenuWrapper} style={dropdownStyle}>
-        <ul className={dropdownMenuClasses}>{children}</ul>
-      </div>
-    </>,
-    document.body,
+  return (
+    isClientSide &&
+    typeof document !== 'undefined' &&
+    createPortal(
+      <>
+        <i className={arrowClasses} style={arrowStyle} />
+        <div className={dropdownMenuWrapper} style={dropdownStyle}>
+          <ul className={dropdownMenuClasses}>{children}</ul>
+        </div>
+      </>,
+      document.body,
+    )
   );
 }
