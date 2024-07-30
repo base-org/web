@@ -108,7 +108,7 @@ export function RegistrationFlow() {
           appear
           show={isSearch}
           className={classNames(
-            'absolute left-1/2 z-20 mx-auto w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 transform  transition-opacity',
+            'absolute left-1/2 z-8 mx-auto w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 transform  transition-opacity',
             registrationTransitionDuration,
             absoluteLayoutPosition,
             {
