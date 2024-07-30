@@ -4,8 +4,12 @@ import Link from 'next/link';
 import { Logo } from '../../Logo/Logo';
 import DesktopNav from './DesktopNav';
 import MobileMenu from './MobileMenu';
-import Banner from 'base-ui/components/Layout/Nav/Banner';
 import { usePathname } from 'next/dist/client/components/navigation';
+import dynamic from 'next/dynamic';
+
+const DynamicBanner = dynamic(async () => import('base-ui/components/Layout/Nav/Banner'), {
+  ssr: false,
+});
 
 const BLACK_NAV_PATHS = [
   '/',
@@ -21,7 +25,7 @@ export default function Nav() {
   const color = pathname && BLACK_NAV_PATHS.includes(pathname) ? 'black' : 'white';
   return (
     <>
-      <Banner
+      <DynamicBanner
         bannerName="onchainKitBanner"
         href="https://onchainkit.xyz/?utm_source=basedotorg&utm_medium=banner"
         text="Build on Base in minutes with OnchainKit!"
