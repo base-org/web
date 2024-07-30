@@ -26,6 +26,7 @@ import { useAccount, useChains, useSwitchChain } from 'wagmi';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import RegistrationStateSwitcher from 'apps/web/src/components/Basenames/RegistrationStateSwitcher';
+import RegistrationShareOnSocials from 'apps/web/src/components/Basenames/RegistrationShareOnSocials';
 
 const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
 
@@ -164,7 +165,7 @@ export function RegistrationFlow() {
             appear
             show={!isSearch}
             className={classNames(
-              'relative z-40 transition-opacity',
+              'relative z-50 transition-opacity',
               registrationTransitionDuration,
               {
                 'w-full max-w-[26rem]': isProfile,
@@ -215,7 +216,7 @@ export function RegistrationFlow() {
               />
             </Transition>
 
-            {/* 2.2 - Pending registration - positioned based on username pill, only visible when registration is pending*/}
+            {/* 2.2 - Pending registration - positioned based on username pill */}
             <Transition
               appear
               show={isPending}
@@ -229,10 +230,26 @@ export function RegistrationFlow() {
               leaveTo="opacity-0"
             >
               {isPending && (
-                <p className=" text-line text-center font-bold uppercase text-gray-60">
+                <p className=" text-line text-center font-bold uppercase tracking-widest text-gray-60">
                   Registering...
                 </p>
               )}
+            </Transition>
+
+            {/* 2.3 - Success, share on social - positioned based on username pill */}
+            <Transition
+              appear
+              show={isSuccess}
+              className={classNames(
+                'absolute left-1/2 top-full mt-6 w-full -translate-x-1/2  transform text-center transition-opacity',
+                registrationTransitionDuration,
+              )}
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              {isSuccess && <RegistrationShareOnSocials />}
             </Transition>
           </Transition>
 
