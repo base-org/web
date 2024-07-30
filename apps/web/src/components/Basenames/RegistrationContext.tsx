@@ -21,6 +21,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { useInterval } from 'usehooks-ts';
 import { Address, TransactionReceipt } from 'viem';
 import { base } from 'viem/chains';
 import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
@@ -153,17 +154,28 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   });
   const [registerNameCallsBatchId, setRegisterNameCallsBatchId] = useState<string>('');
 
-  const {
-    data: callsData,
-    isFetching: callsIsFetching,
-    isSuccess: callsIsSuccess,
-    error: callsError,
-  } = useCallsStatus({
+  // The "correct" way to transition the UI would be to watch for call success, but this experimental
+  // rpc/hook combo is failing to report batch status for us as of July 30th 2024
+  const { isFetching: callsIsFetching } = useCallsStatus({
     id: registerNameCallsBatchId,
     query: {
       enabled: !!registerNameCallsBatchId,
     },
   });
+
+  useInterval(() => {
+    if (registrationStep !== RegistrationSteps.Pending) {
+      return;
+    }
+    baseEnsNameRefetch()
+      .then(() => {
+        const [extractedName] = (currentAddressName ?? '').split('.');
+        if (extractedName === selectedName && registrationStep === RegistrationSteps.Pending) {
+          setRegistrationStep(RegistrationSteps.Success);
+        }
+      })
+      .catch(() => {});
+  }, 1500);
 
   const redirectToProfile = useCallback(() => {
     if (basenameChain.id === base.id) {
@@ -172,29 +184,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       router.push(`name/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
     }
   }, [basenameChain.id, router, selectedName]);
-
-  useEffect(() => {
-    if ((callsIsSuccess && callsData) || callsError) {
-      baseEnsNameRefetch()
-        .then(() => {
-          if (
-            currentAddressName === selectedName &&
-            registrationStep === RegistrationSteps.Pending
-          ) {
-            setRegistrationStep(RegistrationSteps.Success);
-          }
-        })
-        .catch(() => {});
-    }
-  }, [
-    baseEnsNameRefetch,
-    callsData,
-    callsError,
-    callsIsSuccess,
-    currentAddressName,
-    registrationStep,
-    selectedName,
-  ]);
 
   useEffect(() => {
     if (
@@ -209,10 +198,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     if (transactionIsSuccess) {
       if (transactionData.status === 'success') {
         logEventWithContext('register_name_transaction_success', ActionType.change);
-        // Reload current ENS name
-        baseEnsNameRefetch()
-          .then(() => setRegistrationStep(RegistrationSteps.Success))
-          .catch(() => {});
       }
 
       if (transactionData.status === 'reverted') {
@@ -267,11 +252,10 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       discount,
       allActiveDiscounts,
       transactionData,
-      transactionError: transactionError ?? callsError,
+      transactionError,
     };
   }, [
     allActiveDiscounts,
-    callsError,
     discount,
     loadingDiscounts,
     redirectToProfile,
