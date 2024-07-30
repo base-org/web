@@ -7,18 +7,23 @@ import Image from 'next/image';
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 
 const useMousePosition = () => {
-  const [position, setPosition] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsClient(true);
+      setPosition({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     let animationFrameId: number;
 
     const handleMouseMove = (event: MouseEvent) => {
-      const updatePosition = () => {
-        setPosition({ x: event.clientX, y: event.clientY });
-        animationFrameId = requestAnimationFrame(updatePosition);
-      };
-      cancelAnimationFrame(animationFrameId);
-      animationFrameId = requestAnimationFrame(updatePosition);
+      setPosition({ x: event.clientX, y: event.clientY });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -26,7 +31,7 @@ const useMousePosition = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [isClient]);
 
   return position;
 };
@@ -119,49 +124,58 @@ Pill.displayName = 'Pill';
 const X_VECTOR_SCALER = 0.4;
 const Y_VECTOR_SCALER = 0.32;
 export function FloatingENSPills() {
-  const [radiusX, setRadiusX] = useState(window.innerWidth * X_VECTOR_SCALER);
-  const [radiusY, setRadiusY] = useState(window.innerHeight * Y_VECTOR_SCALER);
+  const [radiusX, setRadiusX] = useState(0);
+  const [radiusY, setRadiusY] = useState(0);
   const pillRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
+    if (typeof window !== 'undefined') {
+      setIsMounted(true);
       setRadiusX(window.innerWidth * X_VECTOR_SCALER);
       setRadiusY(window.innerHeight * Y_VECTOR_SCALER);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+
+      const handleResize = () => {
+        setRadiusX(window.innerWidth * X_VECTOR_SCALER);
+        setRadiusY(window.innerHeight * Y_VECTOR_SCALER);
+      };
+
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
   }, []);
 
-  const centerX = window.innerWidth / 2;
-  const centerY = window.innerHeight / 2;
+  const centerX = isMounted ? window.innerWidth / 2 : 0;
+  const centerY = isMounted ? window.innerHeight / 2 : 0;
   const angleStep = (2 * Math.PI) / PILL_COUNT;
   const mousePosition = useMousePosition();
 
-  const pills = Array.from({ length: PILL_COUNT }).map((_, index) => {
-    const pill = pillRefs.current[index];
-    const pillWidth = pill ? pill.offsetWidth : 170;
-    const pillHeight = pill ? pill.offsetHeight : 170;
+  const pills = isMounted
+    ? Array.from({ length: PILL_COUNT }).map((_, index) => {
+        const pill = pillRefs.current[index];
+        const pillWidth = pill ? pill.offsetWidth : 170;
+        const pillHeight = pill ? pill.offsetHeight : 170;
 
-    const angle = index * angleStep;
-    const x = centerX + radiusX * Math.cos(angle) - pillWidth / 2;
-    const y = centerY + radiusY * Math.sin(angle) - pillHeight / 2;
+        const angle = index * angleStep;
+        const x = centerX + radiusX * Math.cos(angle) - pillWidth / 2;
+        const y = centerY + radiusY * Math.sin(angle) - pillHeight / 2;
 
-    const dx = x + pillWidth / 2 - mousePosition.x;
-    const dy = y + pillHeight / 2 - mousePosition.y;
-    const distance = Math.sqrt(dx * dx + dy * dy);
+        const dx = x + pillWidth / 2 - mousePosition.x;
+        const dy = y + pillHeight / 2 - mousePosition.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
 
-    // Normalize the direction vector
-    const length = Math.sqrt(dx * dx + dy * dy);
-    const nx = dx / length;
-    const ny = dy / length;
+        const length = Math.sqrt(dx * dx + dy * dy);
+        const nx = dx / length;
+        const ny = dy / length;
 
-    const rotationAngle = Math.min(distance / 20, 20);
-    const transform = `rotate3d(${-ny}, ${-nx}, 0, ${rotationAngle}deg)`;
-    const { name, avatar } = NAMES[index];
-    return { name, avatar, x, y, transform };
-  });
+        const rotationAngle = Math.min(distance / 20, 20);
+        const transform = `rotate3d(${-ny}, ${-nx}, 0, ${rotationAngle}deg)`;
+        const { name, avatar } = NAMES[index];
+        return { name, avatar, x, y, transform };
+      })
+    : [];
 
   const blurredIndices = useBlurCycle();
   const setRef = useCallback((index: number, el: HTMLDivElement | null) => {
@@ -182,19 +196,19 @@ export function FloatingENSPills() {
         },
       )}
     >
-      {pills.map(({ avatar, name, x, y, transform }, i) => (
-        <Pill
-          key={name}
-          avatar={avatar}
-          name={name}
-          isBlurred={blurredIndices[i]}
-          x={x}
-          y={y}
-          transform={transform}
-          // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-          ref={(el) => setRef(i, el)}
-        />
-      ))}
+      {isMounted &&
+        pills.map(({ avatar, name, x, y, transform }, i) => (
+          <Pill
+            key={name}
+            avatar={avatar}
+            name={name}
+            isBlurred={blurredIndices[i]}
+            x={x}
+            y={y}
+            transform={transform}
+            ref={(el) => setRef(i, el)}
+          />
+        ))}
     </div>
   );
 }
