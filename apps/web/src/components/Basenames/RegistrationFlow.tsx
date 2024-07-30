@@ -12,9 +12,8 @@ import {
 } from 'apps/web/src/components/Basenames/RegistrationContext';
 import RegistrationForm from 'apps/web/src/components/Basenames/RegistrationForm';
 import RegistrationProfileForm from 'apps/web/src/components/Basenames/RegistrationProfileForm';
-import RegistrationSearchInput, {
-  RegistrationSearchInputVariant,
-} from 'apps/web/src/components/Basenames/RegistrationSearchInput';
+import RegistrationSearchInput from 'apps/web/src/components/Basenames/RegistrationSearchInput';
+import { RegistrationSearchInputVariant } from './RegistrationSearchInput/types';
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
@@ -108,7 +107,7 @@ export function RegistrationFlow() {
           appear
           show={isSearch}
           className={classNames(
-            'absolute left-1/2 z-20 mx-auto w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 transform  transition-opacity',
+            'absolute left-1/2 z-8 mx-auto w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 transform  transition-opacity',
             registrationTransitionDuration,
             absoluteLayoutPosition,
             {
@@ -280,7 +279,7 @@ export function RegistrationFlow() {
             show={isSuccess}
             className={classNames(
               'top-full z-40 pt-20 transition-opacity',
-              'mx-auto w-full max-w-[50rem]',
+              'mx-auto w-full',
               registrationTransitionDuration,
             )}
             enter={classNames('transition-opacity', registrationTransitionDuration)}

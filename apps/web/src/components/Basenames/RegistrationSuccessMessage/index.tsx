@@ -23,17 +23,17 @@ export default function RegistrationSuccessMessage() {
   }, [logEventWithContext, redirectToProfile]);
 
   return (
-    <div className="items-left mx-auto flex w-full max-w-[50rem] flex-col justify-between gap-6 rounded-3xl border border-[#266EFF] bg-blue-600 p-10 shadow-xl transition-all duration-500 md:flex-row md:items-center">
-      <h1 className="text-3xl font-bold tracking-wider text-white">
-        Congrats! This name is yours!
+    <div className="items-left mx-auto flex w-full max-w-[65rem] flex-col justify-between gap-6 rounded-3xl border border-[#266EFF] bg-blue-600 p-10 shadow-xl transition-all duration-500 md:flex-row md:items-center">
+      <h1 className="text-center text-3xl font-bold tracking-wider text-white md:text-left">
+        Congrats!
+        <br className="md:hidden" /> This name is yours!
       </h1>
       <div className="flex flex-col gap-4 md:flex-row">
-        <Button rounded fullWidth variant={ButtonVariants.Secondary} onClick={goToProfileOnClick}>
-          Go to Profile
-        </Button>
-
         <Button rounded fullWidth onClick={customizeProfileOnClick}>
           Customize Profile
+        </Button>
+        <Button rounded fullWidth variant={ButtonVariants.Secondary} onClick={goToProfileOnClick}>
+          Go to Profile
         </Button>
       </div>
     </div>
