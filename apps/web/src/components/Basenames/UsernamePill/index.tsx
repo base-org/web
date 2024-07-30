@@ -1,4 +1,4 @@
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { useMemo } from 'react';
 import Dropdown from 'apps/web/src/components/Dropdown';
 import DropdownItem from 'apps/web/src/components/DropdownItem';
 import DropdownMenu from 'apps/web/src/components/DropdownMenu';
@@ -8,18 +8,7 @@ import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
-import { Address } from 'viem';
-
-export enum UsernamePillVariants {
-  Inline = 'inline',
-  Card = 'card',
-}
-
-type UsernamePillProps = {
-  variant: UsernamePillVariants;
-  username: BaseName;
-  address?: Address;
-};
+import { UsernamePillProps, UsernamePillVariants } from './types';
 
 export function UsernamePill({ variant, username, address }: UsernamePillProps) {
   const transitionClasses = 'transition-all duration-700 ease-in-out';
@@ -27,6 +16,7 @@ export function UsernamePill({ variant, username, address }: UsernamePillProps) 
   const pillNameClasses = classNames(
     'bg-blue-500 text-white relative leading-[2em] overflow-hidden text-ellipsis max-w-full',
     'shadow-[0px_8px_16px_0px_rgba(0,82,255,0.32),inset_0px_8px_16px_0px_rgba(255,255,255,0.25)]',
+    'flex items-center justify-between gap-4',
     transitionClasses,
     {
       // Note: If you change this py-5, it won't match the dropdown's height
@@ -37,21 +27,41 @@ export function UsernamePill({ variant, username, address }: UsernamePillProps) 
 
   const avatarClasses = classNames(
     'flex items-center justify-center overflow-hidden rounded-full',
-    'absolute',
     transitionClasses,
     {
-      'h-[4rem] max-h-[4rem] min-h-[4rem] w-[4rem] min-w-[4rem] max-w-[4rem] top-4 left-4':
+      'h-[4rem] max-h-[4rem] min-h-[4rem] w-[4rem] min-w-[4rem] max-w-[4rem]':
         variant === UsernamePillVariants.Inline,
       'h-[3rem] max-h-[3rem] min-h-[3rem] w-[3rem] min-w-[3rem] max-w-[3rem] top-10 left-10':
         variant === UsernamePillVariants.Card,
     },
   );
 
+  const userNameFontScale = useMemo(() => {
+    if (username.length >= 25) {
+      return 'text-md';
+    }
+    if (username.length >= 22) {
+      return 'text-lg';
+    }
+    if (username.length >= 19) {
+      return 'text-xl';
+    }
+    if (username.length >= 15) {
+      return 'text-2xl';
+    }
+    // 3 letter name with .base.eth
+    if (username.length >= 12) {
+      return 'text-3xl';
+    }
+    return 'text-3xl';
+  }, [username]);
+
   const userNameClasses = classNames(
-    'overflow-y-hidden text-ellipsis whitespace-nowrap',
+    'text-ellipsis whitespace-nowrap',
     transitionClasses,
+    userNameFontScale,
     {
-      'text-5xl pl-[4rem]': variant === UsernamePillVariants.Inline,
+      'md:text-5xl': variant === UsernamePillVariants.Inline,
       'text-3xl pl-0 mt-20': variant === UsernamePillVariants.Card,
     },
   );

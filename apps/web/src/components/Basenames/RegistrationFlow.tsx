@@ -16,7 +16,8 @@ import RegistrationSearchInput, {
   RegistrationSearchInputVariant,
 } from 'apps/web/src/components/Basenames/RegistrationSearchInput';
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
-import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
+import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
+import { UsernamePillVariants } from './UsernamePill/types';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { formatBaseEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
