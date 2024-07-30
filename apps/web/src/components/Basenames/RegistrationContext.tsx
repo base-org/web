@@ -7,19 +7,22 @@ import {
 } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import { Discount, isValidDiscount } from 'apps/web/src/utils/usernames';
+import { Discount, formatBaseEthDomain, isValidDiscount } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
+import { useRouter } from 'next/navigation';
 import {
   Dispatch,
   ReactNode,
   SetStateAction,
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
   useState,
 } from 'react';
 import { Address, TransactionReceipt } from 'viem';
+import { base } from 'viem/chains';
 import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
 import { useCallsStatus } from 'wagmi/experimental';
 
@@ -44,6 +47,7 @@ export type RegistrationContextProps = {
   setRegisterNameTransactionHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
   registerNameCallsBatchId: string;
   setRegisterNameCallsBatchId: Dispatch<SetStateAction<string>>;
+  redirectToProfile: () => void;
   loadingDiscounts: boolean;
   discount: DiscountData | undefined;
   allActiveDiscounts: Set<Discount>;
@@ -76,6 +80,9 @@ export const RegistrationContext = createContext<RegistrationContextProps>({
   setRegisterNameCallsBatchId: function () {
     return undefined;
   },
+  redirectToProfile: function () {
+    return undefined;
+  },
   loadingDiscounts: true,
   discount: undefined,
   allActiveDiscounts: new Set(),
@@ -100,6 +107,8 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   );
 
   const { basenameChain } = useBasenameChain();
+
+  const router = useRouter();
 
   // Analytics
   const { logEventWithContext } = useAnalytics();
@@ -155,6 +164,14 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       enabled: !!registerNameCallsBatchId,
     },
   });
+
+  const redirectToProfile = useCallback(() => {
+    if (basenameChain.id === base.id) {
+      router.push(`name/${selectedName}`);
+    } else {
+      router.push(`name/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
+    }
+  }, [basenameChain.id, router, selectedName]);
 
   useEffect(() => {
     if (transactionIsFetching || callsIsFetching) {
@@ -235,6 +252,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       setRegisterNameTransactionHash,
       registerNameCallsBatchId,
       setRegisterNameCallsBatchId,
+      redirectToProfile,
       loadingDiscounts,
       discount,
       allActiveDiscounts,
@@ -246,6 +264,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     callsError,
     discount,
     loadingDiscounts,
+    redirectToProfile,
     registerNameCallsBatchId,
     registerNameTransactionHash,
     registrationStep,
