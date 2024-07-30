@@ -11,7 +11,7 @@ import BuildWithUs from 'apps/web/src/components/WhyBase/BuildWithUs';
 
 export default async function WhyBase() {
   return (
-    <div className="mt-[-96px] bg-blue-60 text-white font-display">
+    <div className="mt-[-96px] bg-blue-60 text-white font-display bg-[url(../public/images/why-base-hero-bg.png)] bg-repeat">
       <Hero />
       <ActiveCommunityOfBuilders />
       <Divider />
