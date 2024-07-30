@@ -18,20 +18,25 @@ const resources: Resource[] = [
     href: 'https://onchainkit.xyz/',
   },
   {
-    title: 'Onchain Apps Toolkit',
-    description: 'Save time when building onchain experiences',
-    href: '/', // TODO NEED A LINK FOR THIS ONE
+    title: 'Coinbase OnRamp',
+    description: 'Widget enabling users to purchase 100+ tokens with 60+ fiat currencies.',
+    href: 'https://portal.cdp.coinbase.com/products/onramp',
   },
   {
     title: 'Gas Credits',
-    description: 'Reimburse your users for the transaction fees they pay in your app',
+    description: 'Sponsor gas for your users using the Coinbase Paymaster',
     href: 'https://docs.cdp.coinbase.com/node/docs/paymaster-bundler-api/',
   },
   {
-    title: 'Basescan',
+    title: 'Onchain Verifications',
     description: 'View all of the base transactions through Basescan',
-    href: 'https://basescan.org/',
+    href: 'https://www.coinbase.com/onchain-verify',
   },
+  {
+    title: 'Onchain Data',
+    description: 'API for wallet balances, balance history, and transaction history',
+    href: 'https://portal.cdp.coinbase.com/products/onchain-data',
+  }
 ];
 
 export default function WorldclassResources() {
