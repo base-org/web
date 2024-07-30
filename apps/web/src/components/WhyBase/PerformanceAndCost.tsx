@@ -79,7 +79,7 @@ export default function PerformanceAndCost() {
         </div>
       </div>
       <div className="mt-16 flex flex-row justify-center divide-x-2">
-        {stats?.map((stat, index) => (
+        {stats?.map((stat) => (
           <div
             key={stat.description}
             className="flex w-full flex-col items-center justify-center gap-4 p-8"
