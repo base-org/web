@@ -99,8 +99,7 @@ const contentSecurityPolicy = {
     'https://flag.lab.amplitude.com/sdk/v2/flags',
     'https://api.lab.amplitude.com/sdk/v2/vardata',
     'https://browser-intake-datadoghq.com', // datadog
-    'https://app.datadoghq.com', // datadog
-    'datadoghq.com' // datadog
+    'https://*.datadoghq.com' //datadog
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],

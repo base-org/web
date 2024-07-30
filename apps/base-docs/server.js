@@ -431,8 +431,7 @@ const contentSecurityPolicy = {
     'https://flag.lab.amplitude.com/sdk/v2/flags',
     'https://api.lab.amplitude.com/sdk/v2/vardata',
     'https://browser-intake-datadoghq.com', // datadog
-    'https://app.datadoghq.com', // datadog
-    'datadoghq.com' // datadog
+    'https://*.datadoghq.com'
   ],
   'frame-src': ["'self'", 'https://player.vimeo.com', 'https://verify.walletconnect.org'],
 };

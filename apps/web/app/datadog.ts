@@ -4,8 +4,8 @@
 import { datadogRum } from "@datadog/browser-rum";
 
 datadogRum.init({
-    applicationId: process.env.DD_APP_ID || "",
-    clientToken: process.env.DD_CLIENT_TOKEN || "",
+    applicationId: process.env.DD_APP_ID ?? "",
+    clientToken: process.env.DD_CLIENT_TOKEN ?? "",
     // `site` refers to the Datadog site parameter of your organization
     // see https://docs.datadoghq.com/getting_started/site/
     site: 'datadoghq.com',
