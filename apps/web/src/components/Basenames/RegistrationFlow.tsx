@@ -15,7 +15,8 @@ import RegistrationProfileForm from 'apps/web/src/components/Basenames/Registrat
 import RegistrationSearchInput from 'apps/web/src/components/Basenames/RegistrationSearchInput';
 import { RegistrationSearchInputVariant } from './RegistrationSearchInput/types';
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
-import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
+import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
+import { UsernamePillVariants } from './UsernamePill/types';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { formatBaseEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
@@ -34,7 +35,7 @@ const RegistrationStateSwitcherDynamic = dynamic(
   { ssr: false },
 );
 
-export const claimQueryKey = 'claim';
+const claimQueryKey = 'claim';
 
 export function RegistrationFlow() {
   const { chain } = useAccount();
@@ -223,9 +224,6 @@ export function RegistrationFlow() {
               className={classNames(
                 'transition-[max-width, transform] mx-auto',
                 registrationTransitionDuration,
-                {
-                  'scale-90 animate-pulse': isPending,
-                },
               )}
               enterFrom="max-w-0"
               enterTo="max-w-full"

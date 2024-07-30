@@ -1,5 +1,6 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
-import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
+import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
+import { UsernamePillVariants } from '../UsernamePill/types';
 import UsernameProfileCard from 'apps/web/src/components/Basenames/UsernameProfileCard';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import UsernameProfileEditModal from 'apps/web/src/components/Basenames/UsernameProfileEditModal';
