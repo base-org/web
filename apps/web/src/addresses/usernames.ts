@@ -9,7 +9,7 @@ export const USERNAME_L2_RESOLVER_ADDRESSES: AddressMap = {
 };
 
 export const USERNAME_REGISTRAR_CONTROLLER_ADDRESSES: AddressMap = {
-  [baseSepolia.id]: '0x49ae3cc2e3aa768b1e5654f5d3c6002144a59581',
+  [baseSepolia.id]: '0x49aE3cC2e3AA768B1e5654f5D3C6002144A59581',
   [base.id]: '0x',
 };
 
