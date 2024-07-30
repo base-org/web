@@ -4,6 +4,7 @@ import { Divider } from 'apps/web/src/components/Divider/Divider';
 import { List } from 'apps/web/src/components/Ecosystem/List';
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -48,7 +49,9 @@ export default async function Ecosystem() {
     <main className="flex w-full flex-col items-center bg-black">
       <EcosystemHero />
       <Divider />
-      <List />
+      <Suspense>
+        <List />
+      </Suspense>
     </main>
   );
 }
