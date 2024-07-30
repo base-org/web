@@ -1,5 +1,4 @@
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
-import { USERNAME_REGISTRAR_CONTROLLER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { ENTRYPOINT_ADDRESS_V06, UserOperation } from 'permissionless';
 import {
   Address,
@@ -19,6 +18,7 @@ import {
   coinbaseSmartWalletABI,
   magicSpendAddress,
 } from '../constants';
+import { REGISTER_CONTRACT_ADDRESSES } from 'apps/web/src/utils/usernames';
 
 const baseSepoliaClient = createPublicClient({
   chain: baseSepolia,
@@ -101,7 +101,7 @@ export async function willSponsor({
 
     if (
       calls[callToCheckIndex].target.toLowerCase() !==
-      USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[chainId].toLowerCase()
+      REGISTER_CONTRACT_ADDRESSES[chainId].toLowerCase()
     ) {
       return false;
     }
