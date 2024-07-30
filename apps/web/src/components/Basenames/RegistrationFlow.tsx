@@ -15,7 +15,8 @@ import RegistrationProfileForm from 'apps/web/src/components/Basenames/Registrat
 import RegistrationSearchInput from 'apps/web/src/components/Basenames/RegistrationSearchInput';
 import { RegistrationSearchInputVariant } from './RegistrationSearchInput/types';
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
-import { UsernamePill, UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill';
+import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
+import { UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill/types';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import {
   formatBaseEthDomain,
@@ -226,9 +227,6 @@ export function RegistrationFlow() {
               className={classNames(
                 'transition-[max-width, transform] mx-auto',
                 registrationTransitionDuration,
-                {
-                  'scale-90 animate-pulse': isPending,
-                },
               )}
               enterFrom="max-w-0"
               enterTo="max-w-full"
@@ -236,6 +234,7 @@ export function RegistrationFlow() {
               <UsernamePill
                 variant={currentUsernamePillVariant}
                 username={formatBaseEthDomain(selectedName, basenameChain.id)}
+                isRegistering={isPending}
               />
             </Transition>
 
