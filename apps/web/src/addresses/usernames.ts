@@ -9,27 +9,32 @@ export const USERNAME_L2_RESOLVER_ADDRESSES: AddressMap = {
 };
 
 export const USERNAME_REGISTRAR_CONTROLLER_ADDRESSES: AddressMap = {
+  [baseSepolia.id]: '0x49aE3cC2e3AA768B1e5654f5D3C6002144A59581',
+  [base.id]: '0x',
+};
+
+export const USERNAME_EA_REGISTRAR_CONTROLLER_ADDRESSES: AddressMap = {
   [baseSepolia.id]: '0x3a0e8c2a0a28f396a5e5b69edb2e630311f1517a',
   [base.id]: '0xd3e6775Ed9B7dC12B205C8E608Dc3767B9e5eFdA',
 };
 
 export const USERNAME_CB_ID_DISCOUNT_VALIDATORS: AddressMap = {
-  [baseSepolia.id]: '0x1079eF978d3c2A6CD4db142118D3C904E0Ac4Fc7',
+  [baseSepolia.id]: '0xA316d8bcEC25587a1Fad599ae6B56169cf377816',
   [base.id]: '0x',
 };
 
 export const USERNAME_CB1_DISCOUNT_VALIDATORS: AddressMap = {
-  [baseSepolia.id]: '0x502df754f25f492cad45ed85a4de0ee7540717e7',
+  [baseSepolia.id]: '0xcf3078c5f2C5d8B7E7CF1a23dD7Bb50244423273',
   [base.id]: '0x',
 };
 
 export const USERNAME_CB_DISCOUNT_VALIDATORS: AddressMap = {
-  [baseSepolia.id]: '0x87B6Bb5d4F43f7bfF78fcFAE7227B2d918828a92',
+  [baseSepolia.id]: '0x949dB534C2D5F777c7755fF22111B01934C87556',
   [base.id]: '0x',
 };
 
 export const USERNAME_EA_DISCOUNT_VALIDATORS: AddressMap = {
-  [baseSepolia.id]: '0x4944a8Ea7ec6fA356B159a2c363d83076B8f276D',
+  [baseSepolia.id]: '0x3A0E8c2a0a28f396A5E5b69Edb2e630311f1517a',
   [base.id]: '0x6E89d99643DB1223697C77A9F8B2Cb07E898e743',
 };
 

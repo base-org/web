@@ -83,6 +83,8 @@ const contentSecurityPolicy = {
     greenhouseDomains,
     ccaLiteDomains,
     ccaDomain,
+    'https://enhanced-provider.rainbow.me',
+    'https://*.coinbase.com',
     'wss://www.walletlink.org/rpc', // coinbase wallet connection
     'https://analytics-service-dev.cbhq.net',
     'mainnet.base.org',
@@ -173,6 +175,8 @@ module.exports = extendBaseConfig(
           },
         ],
       });
+
+      config.externals.push('pino-pretty');
       return config;
     },
     images: {
@@ -236,6 +240,21 @@ module.exports = extendBaseConfig(
         {
           source: '/registry-edit',
           destination: 'https://buildonbase.deform.cc/registry-edit/',
+          permanent: true,
+        },
+        {
+          source: '/name/:path.base.eth',
+          destination: '/name/:path',
+          permanent: true,
+        },
+        {
+          source: '/names/:path',
+          destination: '/name/:path',
+          permanent: true,
+        },
+        {
+          source: '/name',
+          destination: '/names',
           permanent: true,
         },
       ];

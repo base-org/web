@@ -21,6 +21,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { useInterval } from 'usehooks-ts';
 import { Address, TransactionReceipt } from 'viem';
 import { base } from 'viem/chains';
 import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
@@ -115,7 +116,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
 
   // Web3 data
   const { address } = useAccount();
-  const { refetch: baseEnsNameRefetch } = useBaseEnsName({
+  const { data: currentAddressName, refetch: baseEnsNameRefetch } = useBaseEnsName({
     address,
   });
 
@@ -153,17 +154,28 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   });
   const [registerNameCallsBatchId, setRegisterNameCallsBatchId] = useState<string>('');
 
-  const {
-    data: callsData,
-    isFetching: callsIsFetching,
-    isSuccess: callsIsSuccess,
-    error: callsError,
-  } = useCallsStatus({
+  // The "correct" way to transition the UI would be to watch for call success, but this experimental
+  // rpc/hook combo is failing to report batch status for us as of July 30th 2024
+  const { isFetching: callsIsFetching } = useCallsStatus({
     id: registerNameCallsBatchId,
     query: {
       enabled: !!registerNameCallsBatchId,
     },
   });
+
+  useInterval(() => {
+    if (registrationStep !== RegistrationSteps.Pending) {
+      return;
+    }
+    baseEnsNameRefetch()
+      .then(() => {
+        const [extractedName] = (currentAddressName ?? '').split('.');
+        if (extractedName === selectedName && registrationStep === RegistrationSteps.Pending) {
+          setRegistrationStep(RegistrationSteps.Success);
+        }
+      })
+      .catch(() => {});
+  }, 1500);
 
   const redirectToProfile = useCallback(() => {
     if (basenameChain.id === base.id) {
@@ -174,19 +186,17 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   }, [basenameChain.id, router, selectedName]);
 
   useEffect(() => {
-    if (transactionIsFetching || callsIsFetching) {
+    if (
+      (transactionIsFetching || callsIsFetching) &&
+      registrationStep === RegistrationSteps.Claim
+    ) {
       logEventWithContext('register_name_transaction_processing', ActionType.change);
-
       setRegistrationStep(RegistrationSteps.Pending);
     }
 
-    if (transactionIsSuccess) {
+    if (transactionIsSuccess && registrationStep === RegistrationSteps.Pending) {
       if (transactionData.status === 'success') {
         logEventWithContext('register_name_transaction_success', ActionType.change);
-        // Reload current ENS name
-        baseEnsNameRefetch()
-          .then(() => setRegistrationStep(RegistrationSteps.Success))
-          .catch(() => {});
       }
 
       if (transactionData.status === 'reverted') {
@@ -195,27 +205,11 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
         });
       }
     }
-    if (callsIsSuccess && callsData) {
-      const successCall = callsData.receipts?.find((receipt) => receipt.status === 'success');
-      if (successCall) {
-        logEventWithContext('register_name_transaction_success', ActionType.change);
-        baseEnsNameRefetch()
-          .then(() => setRegistrationStep(RegistrationSteps.Success))
-          .catch(() => {});
-      } else {
-        const failCall = callsData.receipts?.find((receipt) => receipt.status !== 'success');
-        logEventWithContext('register_name_transaction_reverted', ActionType.change, {
-          error: `Smart wallet transaction reverted: ${failCall?.transactionHash}`,
-        });
-      }
-    }
   }, [
     baseEnsNameRefetch,
-    callsData,
     callsIsFetching,
-    callsIsSuccess,
     logEventWithContext,
-    setRegistrationStep,
+    registrationStep,
     transactionData,
     transactionIsFetching,
     transactionIsSuccess,
@@ -257,11 +251,10 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       discount,
       allActiveDiscounts,
       transactionData,
-      transactionError: transactionError ?? callsError,
+      transactionError,
     };
   }, [
     allActiveDiscounts,
-    callsError,
     discount,
     loadingDiscounts,
     redirectToProfile,
