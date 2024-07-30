@@ -3,7 +3,7 @@ import Link from 'apps/web/node_modules/next/link';
 
 import { Button } from 'apps/web/src/components/Button/Button';
 
-export default function BuildWithUs() {
+export default async function BuildWithUs() {
   return (
     <div className="flex flex-row gap-32 bg-black px-20 pb-20 pt-10">
       <div className="flex h-[380px] w-[1250px] flex-col items-center justify-center bg-[url('../public/images/build-with-us.png')]">
