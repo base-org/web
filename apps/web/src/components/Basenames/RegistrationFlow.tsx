@@ -1,4 +1,5 @@
 'use client';
+import dynamic from 'next/dynamic';
 
 import { Transition } from '@headlessui/react';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
@@ -25,8 +26,13 @@ import { useCallback, useEffect, useMemo } from 'react';
 import { useAccount, useChains, useSwitchChain } from 'wagmi';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import Tooltip from 'apps/web/src/components/Tooltip';
+import RegistrationShareOnSocials from 'apps/web/src/components/Basenames/RegistrationShareOnSocials';
 
 const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
+const RegistrationStateSwitcherDynamic = dynamic(
+  async () => import('apps/web/src/components/Basenames/RegistrationStateSwitcher'),
+  { ssr: false },
+);
 
 export const claimQueryKey = 'claim';
 
@@ -91,79 +97,23 @@ export function RegistrationFlow() {
     }
   }, [basenameChain.id, searchParams, setSelectedName]);
 
+  const isDevelopment = process.env.NODE_ENV === 'development';
+
   return (
-    <main className={mainClasses}>
-      {/* 1. Brand & Search */}
-      <Transition
-        appear
-        show={isSearch}
-        className={classNames(
-          'absolute left-1/2 z-20 mx-auto w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 transform  transition-opacity',
-          registrationTransitionDuration,
-          absoluteLayoutPosition,
-          {
-            'text-white': searchInputFocused,
-            'text-blue-600': searchInputFocused,
-          },
-        )}
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <div className={classNames('relative bottom-full w-full pb-4', layoutPadding)}>
-          <RegistrationBrand />
-        </div>
+    <>
+      {isDevelopment && <RegistrationStateSwitcherDynamic />}
+      <main className={mainClasses}>
+        {/* 1. Brand & Search */}
         <Transition
           appear
           show={isSearch}
           className={classNames(
-            'mx-auto transition-[max-width] ',
+            'absolute left-1/2 z-20 mx-auto w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 transform  transition-opacity',
             registrationTransitionDuration,
-            layoutPadding,
-          )}
-          leaveFrom="max-w-full"
-          leaveTo="max-w-0"
-        >
-          <RegistrationSearchInput
-            variant={RegistrationSearchInputVariant.Large}
-            placeholder="Search for a name"
-          />
-          {isEarlyAccess && (
-            <div className="mx-auto mt-6 flex items-center justify-center">
-              <p
-                className={classNames({
-                  'text-white': searchInputFocused,
-                  'text-gray-40': !searchInputFocused,
-                })}
-              >
-                You can claim one Basename per wallet for early access.
-              </p>
-              <Tooltip content="shrekislove.base.eth is already taken.">
-                <InformationCircleIcon
-                  width={12}
-                  height={12}
-                  className={classNames('ml-1', {
-                    'fill-white': searchInputFocused,
-                    'fill-gray-40': !searchInputFocused,
-                  })}
-                />
-              </Tooltip>
-            </div>
-          )}
-        </Transition>
-      </Transition>
-      {/* 2 - Username Pill */}
-      <div className="relative flex w-full max-w-full flex-col items-center justify-center ">
-        <Transition
-          appear
-          show={!isSearch}
-          className={classNames(
-            'relative z-40 transition-opacity',
-            registrationTransitionDuration,
+            absoluteLayoutPosition,
             {
-              'w-full max-w-[26rem]': isProfile,
-              'max-w-full': !isProfile,
+              'text-white': searchInputFocused,
+              'text-blue-600': searchInputFocused,
             },
           )}
           enterFrom="opacity-0"
@@ -171,51 +121,149 @@ export function RegistrationFlow() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          {/* 2.1 - Small search input - positioned based on username pill, only for claim  */}
+          <div className={classNames('relative bottom-full w-full pb-4', layoutPadding)}>
+            <RegistrationBrand />
+          </div>
           <Transition
             appear
-            show={isClaim}
+            show={isSearch}
             className={classNames(
-              'absolute left-1/2 z-40 mx-auto w-full max-w-[14rem] -translate-x-1/2 -translate-y-20 transition-opacity',
+              'mx-auto transition-[max-width] ',
               registrationTransitionDuration,
+              layoutPadding,
             )}
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            leaveFrom="max-w-full"
+            leaveTo="max-w-0"
           >
             <RegistrationSearchInput
-              variant={RegistrationSearchInputVariant.Small}
-              placeholder="Find another name"
+              variant={RegistrationSearchInputVariant.Large}
+              placeholder="Search for a name"
             />
+            {isEarlyAccess && (
+              <div className="mx-auto mt-6 flex items-center justify-center">
+                <p
+                  className={classNames({
+                    'text-white': searchInputFocused,
+                    'text-gray-40': !searchInputFocused,
+                  })}
+                >
+                  You can claim one Basename per wallet for early access.
+                </p>
+                <Tooltip content="shrekislove.base.eth is already taken.">
+                  <InformationCircleIcon
+                    width={12}
+                    height={12}
+                    className={classNames('ml-1', {
+                      'fill-white': searchInputFocused,
+                      'fill-gray-40': !searchInputFocused,
+                    })}
+                  />
+                </Tooltip>
+              </div>
+            )}
           </Transition>
-
-          {/* 2.2 - The pill  */}
+        </Transition>
+        {/* 2 - Username Pill */}
+        <div className="relative flex w-full max-w-full flex-col items-center justify-center ">
           <Transition
             appear
             show={!isSearch}
             className={classNames(
-              'transition-[max-width, transform] mx-auto',
+              'relative z-50 transition-opacity',
               registrationTransitionDuration,
               {
-                'scale-90 animate-pulse': isPending,
+                'w-full max-w-[26rem]': isProfile,
+                'max-w-full': !isProfile,
               },
             )}
-            enterFrom="max-w-0"
-            enterTo="max-w-full"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
           >
-            <UsernamePill
-              variant={currentUsernamePillVariant}
-              username={formatBaseEthDomain(selectedName, basenameChain.id)}
-            />
+            {/* 2.1 - Small search input - positioned based on username pill, only for claim  */}
+            <Transition
+              appear
+              show={isClaim}
+              className={classNames(
+                'absolute left-1/2 z-40 mx-auto w-full max-w-[14rem] -translate-x-1/2 -translate-y-20 transition-opacity',
+                registrationTransitionDuration,
+              )}
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <RegistrationSearchInput
+                variant={RegistrationSearchInputVariant.Small}
+                placeholder="Find another name"
+              />
+            </Transition>
+
+            {/* 2.2 - The pill  */}
+            <Transition
+              appear
+              show={!isSearch}
+              className={classNames(
+                'transition-[max-width, transform] mx-auto',
+                registrationTransitionDuration,
+                {
+                  'scale-90 animate-pulse': isPending,
+                },
+              )}
+              enterFrom="max-w-0"
+              enterTo="max-w-full"
+            >
+              <UsernamePill
+                variant={currentUsernamePillVariant}
+                username={formatBaseEthDomain(selectedName, basenameChain.id)}
+              />
+            </Transition>
+
+            {/* 2.2 - Pending registration - positioned based on username pill */}
+            <Transition
+              appear
+              show={isPending}
+              className={classNames(
+                'absolute left-1/2 top-full mt-6 -translate-x-1/2 transform animate-pulse text-center transition-opacity ',
+                registrationTransitionDuration,
+              )}
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              {isPending && (
+                <p className=" text-line text-center font-bold uppercase tracking-widest text-gray-60">
+                  Registering...
+                </p>
+              )}
+            </Transition>
+
+            {/* 2.3 - Success, share on social - positioned based on username pill */}
+            <Transition
+              appear
+              show={isSuccess}
+              className={classNames(
+                'absolute left-1/2 top-full mt-6 w-full -translate-x-1/2  transform text-center transition-opacity',
+                registrationTransitionDuration,
+              )}
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              {isSuccess && <RegistrationShareOnSocials />}
+            </Transition>
           </Transition>
 
-          {/* 2.2 - Pending registration - positioned based on username pill, only visible when registration is pending*/}
+          {/* 3. Registration Form */}
           <Transition
             appear
-            show={isPending}
+            show={isClaim}
             className={classNames(
-              'absolute left-1/2 top-full mt-6 -translate-x-1/2 transform animate-pulse text-center transition-opacity ',
+              'relative z-40 transition-opacity',
+              'mx-auto w-full max-w-[50rem]',
               registrationTransitionDuration,
             )}
             enterFrom="opacity-0"
@@ -223,72 +271,51 @@ export function RegistrationFlow() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            {isPending && (
-              <p className=" text-line text-center font-bold uppercase text-gray-60">
-                Registering...
-              </p>
-            )}
+            <RegistrationForm />
           </Transition>
-        </Transition>
 
-        {/* 3. Registration Form */}
+          {/* 4. Registration Success Message */}
+          <Transition
+            appear
+            show={isSuccess}
+            className={classNames(
+              'top-full z-40 pt-20 transition-opacity',
+              'mx-auto w-full max-w-[50rem]',
+              registrationTransitionDuration,
+            )}
+            enter={classNames('transition-opacity', registrationTransitionDuration)}
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave={classNames('transition-opacity', 'duration-200 absolute')}
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <RegistrationSuccessMessage />
+          </Transition>
+        </div>
+        {/* 5. Registration: Edit Profile flow */}
         <Transition
           appear
-          show={isClaim}
+          show={isProfile}
           className={classNames(
-            'relative z-40 transition-opacity',
-            'mx-auto w-full max-w-[50rem]',
+            'relative z-50  mx-auto mt-8 transition-opacity',
+            'w-full max-w-[26rem]',
             registrationTransitionDuration,
           )}
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
+          enter="delay-1000"
+          enterFrom={classNames('opacity-0')}
+          enterTo={classNames('opacity-100')}
+          leave="transition-all "
           leaveFrom="opacity-100"
-          leaveTo="opacity-0"
+          leaveTo="opacity-0 "
         >
-          <RegistrationForm />
+          <RegistrationProfileForm />
         </Transition>
 
-        {/* 4. Registration Success Message */}
-        <Transition
-          appear
-          show={isSuccess}
-          className={classNames(
-            'top-full z-40 pt-20 transition-opacity',
-            'mx-auto w-full max-w-[50rem]',
-            registrationTransitionDuration,
-          )}
-          enter={classNames('transition-opacity', registrationTransitionDuration)}
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave={classNames('transition-opacity', 'duration-200 absolute')}
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <RegistrationSuccessMessage />
-        </Transition>
-      </div>
-      {/* 5. Registration: Edit Profile flow */}
-      <Transition
-        appear
-        show={isProfile}
-        className={classNames(
-          'relative z-50  mx-auto mt-8 transition-opacity',
-          'w-full max-w-[26rem]',
-          registrationTransitionDuration,
-        )}
-        enter="delay-1000"
-        enterFrom={classNames('opacity-0')}
-        enterTo={classNames('opacity-100')}
-        leave="transition-all "
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0 "
-      >
-        <RegistrationProfileForm />
-      </Transition>
-
-      {/* Misc: Animated background for each steps */}
-      <RegistrationBackground />
-    </main>
+        {/* Misc: Animated background for each steps */}
+        <RegistrationBackground />
+      </main>
+    </>
   );
 }
 
