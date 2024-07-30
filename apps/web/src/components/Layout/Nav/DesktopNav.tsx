@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useCallback } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
 import Link from 'next/link';
@@ -9,6 +10,7 @@ import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
 import { ConnectWalletButton } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 
 import { REVERSE_COLOR, reverseTextColor } from 'apps/web/src/utils/colors';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 // Dropdown Link
 type DropdownLinkProps = {
@@ -202,8 +204,9 @@ function DesktopNav({ color }: DesktopNavProps) {
           title="Join us on Github"
         />
       </Dropdown>
-
-      <ConnectWalletButton color={color} className="relative inline-block" />
+      <RainbowKitProvider modalSize="compact">
+        <ConnectWalletButton color={color} className="relative inline-block" />
+      </RainbowKitProvider>
     </div>
   );
 }

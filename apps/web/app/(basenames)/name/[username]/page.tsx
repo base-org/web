@@ -30,6 +30,9 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
       url: `/${username}`,
       images: [`api/basenames/${username}/assets/coverImage.png`],
     },
+    twitter: {
+      card: 'summary_large_image',
+    },
   };
 }
 

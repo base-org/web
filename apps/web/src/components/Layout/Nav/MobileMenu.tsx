@@ -1,3 +1,4 @@
+'use client';
 import React, { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
 import Link from 'next/link';
@@ -8,6 +9,7 @@ import { usePathname } from 'next/navigation';
 import { bridgeUrl } from 'apps/web/src/constants';
 import { ConnectWalletButton } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 import { REVERSE_COLOR } from 'apps/web/src/utils/colors';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 // Dropdown Link
 type DropdownLinkProps = {
@@ -227,7 +229,9 @@ function MobileMenu({ color }: MobileMenuProps) {
               </div>
 
               <div className="mb-8">
-                <ConnectWalletButton color={REVERSE_COLOR[color]} className="" />
+                <RainbowKitProvider modalSize="compact">
+                  <ConnectWalletButton color={REVERSE_COLOR[color]} className="" />
+                </RainbowKitProvider>
               </div>
 
               <div className="flex flex-row justify-between gap-4 justify-self-end pb-8">

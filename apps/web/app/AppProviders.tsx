@@ -7,7 +7,7 @@ import {
 } from '@coinbase/cookie-manager';
 import { OnchainKitProvider } from '@coinbase/onchainkit';
 import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
-import { connectorsForWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   coinbaseWallet,
@@ -21,7 +21,7 @@ import ExperimentsProvider from 'base-ui/contexts/Experiments';
 import useSprig from 'base-ui/hooks/useSprig';
 import { MotionConfig } from 'framer-motion';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef } from 'react';
 import { createConfig, http, WagmiProvider } from 'wagmi';
 import { base, baseSepolia } from 'wagmi/chains';
 
@@ -64,8 +64,6 @@ type AppProvidersProps = {
 };
 
 export default function AppProviders({ children }: AppProvidersProps) {
-  // Cookie Manager Provider Configuration
-  const [isMounted, setIsMounted] = useState(false);
   const trackingPreference = useRef<TrackingPreference | undefined>();
 
   const setTrackingPreference = useCallback((newPreference: TrackingPreference) => {
@@ -95,15 +93,9 @@ export default function AppProviders({ children }: AppProvidersProps) {
 
   const handleLogError = useCallback((err: Error) => console.error(err), []);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
   const isDevelopment = process.env.NODE_ENV === 'development';
 
   useSprig(sprigEnvironmentId);
-
-  if (!isMounted) return null;
 
   return (
     <CookieManagerProvider
@@ -124,9 +116,7 @@ export default function AppProviders({ children }: AppProvidersProps) {
               apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
             >
               <TooltipProvider>
-                <ExperimentsProvider>
-                  <RainbowKitProvider modalSize="compact">{children}</RainbowKitProvider>
-                </ExperimentsProvider>
+                <ExperimentsProvider>{children}</ExperimentsProvider>
               </TooltipProvider>
             </OnchainKitProvider>
           </QueryClientProvider>
