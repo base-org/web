@@ -1,4 +1,5 @@
 'use client';
+
 import logEvent, {
   ActionType,
   AnalyticsEventImportance,
@@ -38,7 +39,7 @@ export default function AnalyticsProvider({ children, context }: AnalyticsProvid
   const logEventWithContext = useCallback(
     (eventName: string, action: ActionType, eventData?: CCAEventData) => {
       const sanitizedEventName = eventName.toLocaleLowerCase();
-      if (!window) return;
+      if (typeof window === 'undefined') return;
       logEvent(
         sanitizedEventName, // TODO: Do we want context here?
         {
