@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useCallback } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
 import Link from 'next/link';
@@ -7,7 +8,6 @@ import useClickAway from '../../../hooks/useClickAway';
 import { Icon } from '../../Icon/Icon';
 import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
 import { ConnectWalletButton } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
-
 import { REVERSE_COLOR, reverseTextColor } from 'apps/web/src/utils/colors';
 
 // Dropdown Link
@@ -202,7 +202,6 @@ function DesktopNav({ color }: DesktopNavProps) {
           title="Join us on Github"
         />
       </Dropdown>
-
       <ConnectWalletButton color={color} className="relative inline-block" />
     </div>
   );

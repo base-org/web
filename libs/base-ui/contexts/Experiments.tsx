@@ -1,3 +1,4 @@
+'use client';
 import React, {
   createContext,
   useContext,
@@ -108,16 +109,16 @@ export { useExperiments, useExperiment };
 
 type WindowWithAnalytics = Window &
   typeof globalThis & {
-    ClientAnalytics: {
-      identity: {
-        userId: string;
-        deviceId: string;
-        device_os: string;
-        languageCode: string;
-        countryCode: string;
-      };
+  ClientAnalytics: {
+    identity: {
+      userId: string;
+      deviceId: string;
+      device_os: string;
+      languageCode: string;
+      countryCode: string;
     };
   };
+};
 
 type ExperimentsContextProps = {
   experimentClient: ExperimentClient | null;
