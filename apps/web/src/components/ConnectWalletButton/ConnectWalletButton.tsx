@@ -116,9 +116,14 @@ export function ConnectWalletButton({
 
   if (!chainSupported) {
     return (
-      <button className="px-2 py-1" onClick={openChainModal} type="button">
-        Wrong network
-      </button>
+      <Button
+        variant={ButtonVariants.Black}
+        size={ButtonSizes.Small}
+        onClick={openChainModal}
+        rounded
+      >
+        Wrong network, get based
+      </Button>
     );
   }
 
