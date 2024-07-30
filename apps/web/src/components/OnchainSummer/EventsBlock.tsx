@@ -1,3 +1,4 @@
+'use client';
 import Brit from 'apps/web/src/components/OnchainSummer/Brit';
 import { BlackCircle, EmptyBlackCircle } from 'apps/web/src/components/OnchainSummer/Circles';
 import { OCSButton } from 'apps/web/src/components/OnchainSummer/OCSButton';

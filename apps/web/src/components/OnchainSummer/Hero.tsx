@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import ocs_banner from 'apps/web/public/images/ocs/ocs_banner.svg';
 import ocs_banner_mobile from 'apps/web/public/images/ocs/ocs_banner_mobile.svg';
