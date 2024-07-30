@@ -63,7 +63,7 @@ const featureItems = [
   },
 ];
 
-export function HowItWorks() {
+export async function HowItWorks() {
   return (
     <div className="flex w-full max-w-[1440px] flex-col space-y-24 bg-black px-8 pt-12">
       <div className="flex w-full flex-col font-display text-3xl text-white md:text-5xl lg:text-6xl">

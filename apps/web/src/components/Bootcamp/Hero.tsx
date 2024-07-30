@@ -4,7 +4,7 @@ import Link from 'next/link';
 const subtitleCopy =
   'Base Bootcamp is an async, cohort-based training program designed to turn web developers into Smart Contract developers.';
 
-export function Hero() {
+export async function Hero() {
   return (
     <header className="mt-[-96px] flex h-[700px] w-full flex-col items-center bg-black bg-bootcamp_background_image bg-cover">
       <div className="mt-48 flex w-full max-w-[1440px] flex-col px-8 pt-12">
@@ -21,7 +21,7 @@ export function Hero() {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <Button className="w-full">Apply now</Button>
+            <Button fullWidth>Apply now</Button>
           </Link>
         </div>
       </div>
