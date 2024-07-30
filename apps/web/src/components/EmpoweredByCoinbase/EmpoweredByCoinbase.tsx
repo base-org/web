@@ -1,4 +1,4 @@
-function Header() {
+async function Header() {
   return (
     <div className=" font-display text-3xl text-white md:text-5xl lg:text-6xl">
       <h2>
@@ -10,7 +10,7 @@ function Header() {
   );
 }
 
-function Content() {
+async function Content() {
   return (
     <p className="font-display text-sm text-white lg:text-xl">
       Base is built to be the onchain home for Coinbase products, users, and assets, as well as an
@@ -20,7 +20,7 @@ function Content() {
   );
 }
 
-function UsersAssetsGraphic() {
+async function UsersAssetsGraphic() {
   return (
     <div className="flex flex-col gap-4 lg:basis-1/2">
       <div className="flex w-full max-w-[534px] flex-col justify-between bg-empowered_by_coinbase bg-cover bg-center bg-no-repeat lg:h-[434px] lg:w-[534px] lg:py-4">

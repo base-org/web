@@ -1,4 +1,5 @@
 'use client';
+
 import {
   Provider as CookieManagerProvider,
   Region,
@@ -20,13 +21,19 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ExperimentsProvider from 'base-ui/contexts/Experiments';
 import useSprig from 'base-ui/hooks/useSprig';
 import { MotionConfig } from 'framer-motion';
-
 import { useCallback, useRef } from 'react';
 import { createConfig, http, WagmiProvider } from 'wagmi';
 import { base, baseSepolia } from 'wagmi/chains';
-
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
 import ClientAnalyticsScript from 'apps/web/src/components/ClientAnalyticsScript/ClientAnalyticsScript';
+import dynamic from 'next/dynamic';
+
+const DynamicCookieBannerWrapper = dynamic(
+  async () => import('apps/web/src/components/CookieBannerWrapper'),
+  {
+    ssr: false,
+  },
+);
 
 coinbaseWallet.preference = 'all';
 
@@ -63,6 +70,8 @@ type AppProvidersProps = {
   children: React.ReactNode;
 };
 
+// TODO: Not all pages needs all these components, ideally should be split and put
+//       on the sub-layouts
 export default function AppProviders({ children }: AppProvidersProps) {
   const trackingPreference = useRef<TrackingPreference | undefined>();
 
@@ -116,7 +125,12 @@ export default function AppProviders({ children }: AppProvidersProps) {
               apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
             >
               <TooltipProvider>
-                <ExperimentsProvider>{children}</ExperimentsProvider>
+                <ExperimentsProvider>
+                  <>
+                    {children}
+                    <DynamicCookieBannerWrapper />
+                  </>
+                </ExperimentsProvider>
               </TooltipProvider>
             </OnchainKitProvider>
           </QueryClientProvider>

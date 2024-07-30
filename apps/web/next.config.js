@@ -173,6 +173,8 @@ module.exports = extendBaseConfig(
           },
         ],
       });
+
+      config.externals.push('pino-pretty');
       return config;
     },
     images: {

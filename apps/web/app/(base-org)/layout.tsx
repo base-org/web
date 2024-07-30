@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     title: `Base`,
+    description:
+      'Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain.',
     url: `/`,
     images: ['https://base.org/images/base-open-graph.png'],
   },

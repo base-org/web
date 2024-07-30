@@ -2,7 +2,6 @@ import '@coinbase/onchainkit/styles.css';
 import './global.css';
 import AppProviders from 'apps/web/app/AppProviders';
 import localFont from 'next/font/local';
-import CookieBannerWrapper from 'apps/web/src/components/CookieBannerWrapper';
 import { Footer } from 'apps/web/src/components/Layout/Footer/Footer';
 
 const coinbaseDisplay = localFont({
@@ -92,7 +91,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <AppProviders>
           {children}
           <Footer />
-          <CookieBannerWrapper />
         </AppProviders>
       </body>
     </html>
