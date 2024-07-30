@@ -1,11 +1,20 @@
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import EcosystemHeroLogos from 'apps/web/public/images/ecosystem-hero-logos-new.png';
 import { Divider } from 'apps/web/src/components/Divider/Divider';
 import { List } from 'apps/web/src/components/Ecosystem/List';
-import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
-import Head from 'next/head';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 
-function EcosystemHero() {
+export const metadata: Metadata = {
+  metadataBase: new URL('https://base.org'),
+  title: `Base | About`,
+  openGraph: {
+    title: `Base | About`,
+    url: `/about`,
+  },
+};
+
+async function EcosystemHero() {
   return (
     <div className="mt-[-96px] flex w-full flex-col items-center bg-black pb-[96px]">
       <div className="flex w-full max-w-[1440px] flex-col items-center justify-center gap-12 px-8 py-8 pt-28 md:flex-row">
@@ -34,30 +43,12 @@ function EcosystemHero() {
   );
 }
 
-export default function Ecosystem() {
-  const ogData = {
-    title: 'Base | Ecosystem',
-    description: 'An overview of apps and integrations in the Base ecosystem.',
-
-    url: 'https://base.org/base-ecosystem',
-  };
+export default async function Ecosystem() {
   return (
-    <div>
-      <Head>
-        {/* Open-graph */}
-        <meta key="og:url" property="og:url" content={ogData.url} />
-        <meta key="og:title" property="og:title" content={ogData.title} />
-        <meta key="og:description" property="og:description" content={ogData.description} />
-
-        {/* Default */}
-        <title key="title">{ogData.title}</title>
-        <meta key="description" content={ogData.description} name="description" />
-      </Head>
-      <main className="flex w-full flex-col items-center bg-black">
-        <EcosystemHero />
-        <Divider />
-        <List />
-      </main>
-    </div>
+    <main className="flex w-full flex-col items-center bg-black">
+      <EcosystemHero />
+      <Divider />
+      <List />
+    </main>
   );
 }

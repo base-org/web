@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import nftPreview from 'apps/web/public/images/builderNft/nftPreview.webp';
 import { MintStateContext, useMintState } from './useMintState';

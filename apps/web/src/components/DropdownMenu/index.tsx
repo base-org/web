@@ -10,10 +10,13 @@ export type DropdownMenuProps = {
 export default function DropdownMenu({ children }: DropdownMenuProps) {
   const { open, dropdownToggleRef } = useContext(DropdownContext);
 
-  const dropdownMenuWrapper = classNames('mt-2', {
-    hidden: !open,
-    'inline-block': open,
-  });
+  const dropdownMenuWrapper = classNames(
+    'absolute z-50 w-full max-w-[80vw] -translate-x-full pt-2  md:max-w-xs',
+    {
+      hidden: !open,
+      'inline-block': open,
+    },
+  );
 
   const dropdownMenuClasses = classNames('bg-white text-black w-full py-4 rounded-xl shadow-md');
 
@@ -28,6 +31,10 @@ export default function DropdownMenu({ children }: DropdownMenuProps) {
   // Arrow positioned center of the toggle element
   const arrowClasses = classNames(
     'absolute z-50 w-2 h-2 bg-white transform translate-y-1/2 -translate-x-1/2 rotate-[45deg] shadow-md',
+    {
+      hidden: !open,
+      'inline-block': open,
+    },
   );
 
   let arrowStyle: CSSProperties = {};
@@ -38,15 +45,12 @@ export default function DropdownMenu({ children }: DropdownMenuProps) {
   }
 
   return createPortal(
-    <div className={dropdownMenuWrapper}>
+    <>
       <i className={arrowClasses} style={arrowStyle} />
-      <div
-        className="absolute z-50 w-full max-w-[80vw] -translate-x-full pt-2  md:max-w-xs"
-        style={dropdownStyle}
-      >
+      <div className={dropdownMenuWrapper} style={dropdownStyle}>
         <ul className={dropdownMenuClasses}>{children}</ul>
       </div>
-    </div>,
+    </>,
     document.body,
   );
 }

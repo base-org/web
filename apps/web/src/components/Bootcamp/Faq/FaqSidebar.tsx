@@ -1,6 +1,6 @@
 import { QuestionAccordion } from './QuestionAccordion';
 
-export function FaqSidebar() {
+export async function FaqSidebar() {
   return (
     <div className="flex w-full max-w-[1440px] flex-col space-y-20 bg-black px-8 pt-12">
       <div className="lg:border-sidebar-border grid grid-cols-1 font-sans lg:border-l">

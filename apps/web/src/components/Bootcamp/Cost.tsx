@@ -1,4 +1,4 @@
-export function Cost() {
+export async function Cost() {
   return (
     <div className="flex w-full max-w-[1440px] flex-col space-y-20 bg-black px-8 pt-12">
       <div className="grid grid-cols-2">

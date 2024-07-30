@@ -1,3 +1,4 @@
+'use client';
 // white circle
 export function WhiteCircle() {
   return <div className="h-[.8rem] w-[.8rem] rounded-full border-2 border-white bg-white" />;
