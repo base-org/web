@@ -1,3 +1,5 @@
+import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
+import EARegistrarControllerAbi from 'apps/web/src/abis/EARegistrarControllerAbi';
 import { Address, Chain, encodePacked, keccak256, namehash, sha256 } from 'viem';
 import { normalize } from 'viem/ens';
 import profilePictures1 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/1.svg';
@@ -11,7 +13,11 @@ import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import { base, baseSepolia, mainnet } from 'viem/chains';
 import { BaseName } from '@coinbase/onchainkit/identity';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
-import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import {
+  USERNAME_EA_REGISTRAR_CONTROLLER_ADDRESSES,
+  USERNAME_L2_RESOLVER_ADDRESSES,
+  USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
+} from 'apps/web/src/addresses/usernames';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
@@ -360,3 +366,13 @@ export async function formatDefaultUsername(username: BaseName) {
 
   return username;
 }
+
+// Force EA/GA based on env
+export const IS_EARLY_ACCESS = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
+export const REGISTER_CONTRACT_ABI = IS_EARLY_ACCESS
+  ? EARegistrarControllerAbi
+  : RegistrarControllerABI;
+
+export const REGISTER_CONTRACT_ADDRESSES = IS_EARLY_ACCESS
+  ? USERNAME_EA_REGISTRAR_CONTROLLER_ADDRESSES
+  : USERNAME_REGISTRAR_CONTROLLER_ADDRESSES;

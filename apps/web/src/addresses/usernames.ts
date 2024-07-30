@@ -10,6 +10,11 @@ export const USERNAME_L2_RESOLVER_ADDRESSES: AddressMap = {
 
 export const USERNAME_REGISTRAR_CONTROLLER_ADDRESSES: AddressMap = {
   [baseSepolia.id]: '0x49aE3cC2e3AA768B1e5654f5D3C6002144A59581',
+  [base.id]: '0x',
+};
+
+export const USERNAME_EA_REGISTRAR_CONTROLLER_ADDRESSES: AddressMap = {
+  [baseSepolia.id]: '0x3a0e8c2a0a28f396a5e5b69edb2e630311f1517a',
   [base.id]: '0xd3e6775Ed9B7dC12B205C8E608Dc3767B9e5eFdA',
 };
 
@@ -29,7 +34,7 @@ export const USERNAME_CB_DISCOUNT_VALIDATORS: AddressMap = {
 };
 
 export const USERNAME_EA_DISCOUNT_VALIDATORS: AddressMap = {
-  [baseSepolia.id]: '0x4944a8Ea7ec6fA356B159a2c363d83076B8f276D',
+  [baseSepolia.id]: '0x3A0E8c2a0a28f396A5E5b69Edb2e630311f1517a',
   [base.id]: '0x6E89d99643DB1223697C77A9F8B2Cb07E898e743',
 };
 

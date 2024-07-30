@@ -1,7 +1,10 @@
-import abi from 'apps/web/src/abis/RegistrarControllerABI';
-import { USERNAME_REGISTRAR_CONTROLLER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import { normalizeEnsDomainName, validateEnsDomainName } from 'apps/web/src/utils/usernames';
+import {
+  normalizeEnsDomainName,
+  REGISTER_CONTRACT_ABI,
+  REGISTER_CONTRACT_ADDRESSES,
+  validateEnsDomainName,
+} from 'apps/web/src/utils/usernames';
 import { useMemo } from 'react';
 import { useReadContract, useReadContracts } from 'wagmi';
 
@@ -11,8 +14,8 @@ export function useIsNameAvailable(name: string) {
   const { basenameChain } = useBasenameChain();
 
   return useReadContract({
-    abi,
-    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[basenameChain.id],
+    abi: REGISTER_CONTRACT_ABI,
+    address: REGISTER_CONTRACT_ADDRESSES[basenameChain.id],
     functionName: 'available' as const,
     args: [normalizedName] as const,
     chainId: basenameChain.id,
@@ -27,8 +30,8 @@ export function useAreNamesAvailable(names: string[]) {
   const contracts = useMemo(
     () =>
       names.map((name) => ({
-        address: USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[basenameChain.id],
-        abi,
+        address: REGISTER_CONTRACT_ADDRESSES[basenameChain.id],
+        abi: REGISTER_CONTRACT_ABI,
         functionName: 'available',
         args: [name],
         chainId: basenameChain.id,
