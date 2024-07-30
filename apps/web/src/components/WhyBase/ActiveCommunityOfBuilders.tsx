@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import React, { useCallback } from 'react';
 import Link from 'next/link';
@@ -26,24 +26,23 @@ export default function ActiveCommunityOfBuilders() {
   return (
     <div className="flex flex-col bg-black px-20 pb-10 pt-20">
       <div className="flex flex-row justify-between">
-        <div className="h-[320px] min-w-[550px] bg-ocsyellow">Placeholder</div>
-        <div className="mx-20 flex grow flex-col gap-4">
+        <div className="h-[320px] min-w-[550px] bg-[url('../public/images/CommunityOfBuilders.png')]" />
+        <div className="mx-20 flex grow flex-col justify-around">
           <h2 className="flex font-display text-5xl">
             <span>1.</span>
             <span className="ml-4">Join an active community of Onchain Builders</span>
           </h2>
           <span className="text-white">
             Join a community of over X00+ builders just like you, building some of the coolest
-            projects onchain. Need help?
+            projects onchain. Reach out to our Discord support team for help.
           </span>
-          <span className="text-white">Reach out to our Discord support team!</span>
           <Link
             href="https://discord.com/invite/buildonbase"
             target="_blank"
             rel="noreferrer noopener"
             onClick={handleClick}
           >
-            <Button className="mt-8 uppercase">Join the Discord</Button>
+            <Button className="uppercase">Join the Discord</Button>
           </Link>
         </div>
       </div>
