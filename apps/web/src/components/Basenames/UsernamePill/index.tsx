@@ -19,7 +19,7 @@ export function UsernamePill({ variant, username, address }: UsernamePillProps) 
     transitionClasses,
     {
       // Note: If you change this py-5, it won't match the dropdown's height
-      'rounded-[5rem] py-5 px-8 w-fit': variant === UsernamePillVariants.Inline,
+      'rounded-[5rem] py-3 md:py-5 px-8 w-fit': variant === UsernamePillVariants.Inline,
       'rounded-[2rem] py-8 px-10 pt-40 w-full': variant === UsernamePillVariants.Card,
     },
   );
