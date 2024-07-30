@@ -4,13 +4,11 @@ import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
 import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
 import EarlyAccessValidatorABI from 'apps/web/src/abis/EarlyAccessValidator';
 import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
-import { Discount } from 'apps/web/src/utils/usernames';
+import { Discount, IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
 import { useEffect, useMemo, useState } from 'react';
 import { Address, ReadContractErrorType, encodeAbiParameters } from 'viem';
 import { useAccount, useReadContract } from 'wagmi';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-
-const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
 
 export type AttestationData = {
   discountValidatorAddress: Address;
@@ -42,7 +40,7 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
       }
     }
 
-    if (address && !isEarlyAccess) {
+    if (address && !IS_EARLY_ACCESS) {
       checkCBIDAttestations(address).catch(console.error);
     }
   }, [address, basenameChain.id]);
@@ -115,7 +113,7 @@ export function useCheckCoinbaseAttestations() {
       }
     }
 
-    if (address && !isEarlyAccess) {
+    if (address && !IS_EARLY_ACCESS) {
       checkCoinbaseAttestations(address).catch(console.error);
     }
   }, [address, basenameChain.id]);
@@ -174,7 +172,7 @@ export function useCheckCB1Attestations() {
       }
     }
 
-    if (address && !isEarlyAccess) {
+    if (address && !IS_EARLY_ACCESS) {
       checkCB1Attestations(address).catch(console.error);
     }
   }, [address, basenameChain.id]);

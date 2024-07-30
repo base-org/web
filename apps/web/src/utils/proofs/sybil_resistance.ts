@@ -6,7 +6,6 @@ import {
   USERNAME_CB1_DISCOUNT_VALIDATORS,
   USERNAME_CB_DISCOUNT_VALIDATORS,
   USERNAME_EA_DISCOUNT_VALIDATORS,
-  USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
 import { getLinkedAddresses } from 'apps/web/src/cdp/api';
 import {
@@ -23,6 +22,7 @@ import {
   PreviousClaims,
   VerifiedAccount,
 } from 'apps/web/src/utils/proofs/types';
+import { REGISTER_CONTRACT_ADDRESSES } from 'apps/web/src/utils/usernames';
 import {
   Address,
   encodeAbiParameters,
@@ -74,7 +74,7 @@ export async function hasRegisteredWithDiscount(
   const publicClient = getBasenamePublicClient(chainId);
 
   return publicClient.readContract({
-    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[chainId],
+    address: REGISTER_CONTRACT_ADDRESSES[chainId],
     abi: RegistrarControllerABI,
     functionName: 'hasRegisteredWithDiscount',
     args: [addresses],

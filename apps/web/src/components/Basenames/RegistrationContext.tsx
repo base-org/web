@@ -191,11 +191,10 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       registrationStep === RegistrationSteps.Claim
     ) {
       logEventWithContext('register_name_transaction_processing', ActionType.change);
-
       setRegistrationStep(RegistrationSteps.Pending);
     }
 
-    if (transactionIsSuccess) {
+    if (transactionIsSuccess && registrationStep === RegistrationSteps.Pending) {
       if (transactionData.status === 'success') {
         logEventWithContext('register_name_transaction_success', ActionType.change);
       }
