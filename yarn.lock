@@ -355,6 +355,7 @@ __metadata:
     "@coinbase/cookie-banner": ^1.0.3
     "@coinbase/cookie-manager": ^1.1.1
     "@coinbase/onchainkit": ^0.26.10
+    "@datadog/browser-rum": ^5.23.3
     "@guildxyz/sdk": 2.6.0
     "@headlessui/react": ^1.7.19
     "@heroicons/react": ^2.1.3
@@ -2241,6 +2242,37 @@ __metadata:
   dependencies:
     "@jridgewell/trace-mapping": 0.3.9
   checksum: 5718f267085ed8edb3e7ef210137241775e607ee18b77d95aa5bd7514f47f5019aa2d82d96b3bf342ef7aa890a346fa1044532ff7cc3009e7d24fce3ce6200fa
+  languageName: node
+  linkType: hard
+
+"@datadog/browser-core@npm:5.23.3":
+  version: 5.23.3
+  resolution: "@datadog/browser-core@npm:5.23.3"
+  checksum: 0d3b2af985b332a584d4ff6f3b5b688bb6da8153df34804a44e31815875949cd902695e1d13e4b5bcf964a857b0a31f0947c8b8cda9b948749b15c20ab0b76da
+  languageName: node
+  linkType: hard
+
+"@datadog/browser-rum-core@npm:5.23.3":
+  version: 5.23.3
+  resolution: "@datadog/browser-rum-core@npm:5.23.3"
+  dependencies:
+    "@datadog/browser-core": 5.23.3
+  checksum: d72be8d7ddcecd64a2ad7191379b738fed5077156cd63d1c1e889956d912759c9f68729962bd04b6ae257d016be40eaeaa365a4a98574ed7fefc3db32eb85b14
+  languageName: node
+  linkType: hard
+
+"@datadog/browser-rum@npm:^5.23.3":
+  version: 5.23.3
+  resolution: "@datadog/browser-rum@npm:5.23.3"
+  dependencies:
+    "@datadog/browser-core": 5.23.3
+    "@datadog/browser-rum-core": 5.23.3
+  peerDependencies:
+    "@datadog/browser-logs": 5.23.3
+  peerDependenciesMeta:
+    "@datadog/browser-logs":
+      optional: true
+  checksum: f0b8705a4667e4842981a2c4c3d2014b2d32946579088d3bfacfc80f4e95f5826e19dda186021d3af315cf8e7765267f8c90a98a3e65479a26f154c9d9654b11
   languageName: node
   linkType: hard
 
