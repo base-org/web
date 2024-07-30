@@ -1,4 +1,5 @@
 'use client';
+import dynamic from 'next/dynamic';
 
 import { Transition } from '@headlessui/react';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
@@ -25,10 +26,13 @@ import { useCallback, useEffect, useMemo } from 'react';
 import { useAccount, useChains, useSwitchChain } from 'wagmi';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import Tooltip from 'apps/web/src/components/Tooltip';
-import RegistrationStateSwitcher from 'apps/web/src/components/Basenames/RegistrationStateSwitcher';
 import RegistrationShareOnSocials from 'apps/web/src/components/Basenames/RegistrationShareOnSocials';
 
 const isEarlyAccess = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
+const RegistrationStateSwitcherDynamic = dynamic(
+  async () => import('apps/web/src/components/Basenames/RegistrationStateSwitcher'),
+  { ssr: false },
+);
 
 export const claimQueryKey = 'claim';
 
@@ -97,7 +101,7 @@ export function RegistrationFlow() {
 
   return (
     <>
-      {isDevelopment && <RegistrationStateSwitcher />}
+      {isDevelopment && <RegistrationStateSwitcherDynamic />}
       <main className={mainClasses}>
         {/* 1. Brand & Search */}
         <Transition
