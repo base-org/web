@@ -33,7 +33,7 @@ export default function ActiveCommunityOfBuilders() {
             <span className="ml-4">Join an active community of Onchain Builders</span>
           </h2>
           <span className="text-white">
-            Join a community of over X00+ builders just like you, building some of the coolest
+            Join a community of thousands builders just like you, building some of the coolest
             projects onchain. Reach out to our Discord support team for help.
           </span>
           <Link
