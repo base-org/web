@@ -24,11 +24,7 @@ export default function EmpoweredByCoinbase() {
   }, []);
   return (
     <div className="flex flex-row gap-32 bg-black px-20 pb-10 pt-10">
-      <div className="flex flex-col gap-8">
-        <div className="h-[210px] min-w-[500px] bg-ocsyellow">Placeholder</div>
-        <div className="h-[210px] min-w-[500px] bg-ocsyellow">Placeholder</div>
-      </div>
-      <div className="flex flex-col justify-around">
+      <div className="flex flex-col justify-center gap-16 max-w-[550px]">
         <h2 className="flex font-display text-5xl">
           <span>5.</span>
           <span className="ml-4">Empowered by Coinbase</span>
@@ -44,6 +40,7 @@ export default function EmpoweredByCoinbase() {
           </Link>
         </div>
       </div>
+      <div className="h-[265px] w-[520px] bg-[url('../public/images/why-base-empowered-by-cb.png')] bg-no-repeat"/>
     </div>
   );
 }

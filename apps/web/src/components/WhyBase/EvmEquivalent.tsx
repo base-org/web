@@ -26,7 +26,7 @@ export default function EvmEquivalent() {
 
   return (
     <div className="flex flex-row gap-32 bg-black px-20 pb-10 pt-10">
-      <div className="h-[520px] min-w-[550px] bg-[url('../public/images/EVM-compatibility-chains.png')] bg-no-repeat" />
+      <div className="h-[520px] w-[550px] bg-[url('../public/images/EVM-compatibility-chains.png')] bg-no-repeat" />
       <div className="flex flex-col justify-center gap-16 max-w-[550px]">
         <h2 className="flex font-display text-5xl">
           <span>3.</span>
