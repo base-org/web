@@ -1,14 +1,14 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+'use client';
+
+import { useCallback, useMemo, useState } from 'react';
 import ErrorImg from 'apps/web/public/images/error.png';
 import data from 'apps/web/src/data/ecosystem.json';
 import Image from 'next/image';
-
 import { Button } from '../Button/Button';
-
 import { Card } from './Card';
 import { SearchBar } from './SearchBar';
 import { TagChip } from './TagChip';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 const TagList = [
   'all',
@@ -44,23 +44,22 @@ const decoratedData = orderedDataAsc().map((d) => ({
 }));
 
 export function List() {
-  const [selectedTag, setSelectedTag] = useState('all');
+  const router = useRouter();
+
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const selectedTag = searchParams?.get('tag') ?? 'all';
+
   const [searchText, setSearchText] = useState('');
   const [showNum, setShowNum] = useState(16);
 
-  // Read select tag query parameter from URL
-  const router = useRouter();
-  useEffect(() => {
-    if (router.query.tag) {
-      setSelectedTag(router.query.tag as string);
-    }
-  }, [router.query.tag]);
-
   const selectTag = useCallback(
     (tag: string) => {
-      void router.push({ query: { tag } });
+      const params = new URLSearchParams();
+      params.set('tag', tag);
+      router.push(pathname + '?' + params.toString(), { scroll: false });
     },
-    [router],
+    [pathname, router],
   );
 
   const filteredApps = useMemo(
@@ -82,7 +81,7 @@ export function List() {
   const showMore = useCallback(() => setShowNum((num) => num + 16), [setShowNum]);
 
   return (
-    <div className="min-h-32 flex w-full max-w-[1440px] flex-col gap-10 px-8 pb-32">
+    <div className="flex min-h-32 w-full max-w-[1440px] flex-col gap-10 px-8 pb-32">
       <div className="flex flex-col justify-between gap-8 lg:flex-row lg:gap-12">
         <div className="flex flex-row flex-wrap gap-3">
           {TagList.map((tag) => (

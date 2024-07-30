@@ -7,9 +7,13 @@ type Props = {
 };
 
 export function TagChip({ tag, isSelected, setSelectedTag }: Props) {
-  const select = useCallback(() => {
-    setSelectedTag(tag);
-  }, [tag, setSelectedTag]);
+  const select = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      setSelectedTag(tag);
+    },
+    [tag, setSelectedTag],
+  );
 
   return (
     <button type="button" onClick={select}>
