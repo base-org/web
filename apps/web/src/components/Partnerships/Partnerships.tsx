@@ -5,7 +5,7 @@ type LearnMoreButtonProps = {
   ariaLabel: string;
 };
 
-function LearnMoreButton({ ariaLabel }: LearnMoreButtonProps) {
+async function LearnMoreButton({ ariaLabel }: LearnMoreButtonProps) {
   return (
     <div className="w-[200px]">
       <a

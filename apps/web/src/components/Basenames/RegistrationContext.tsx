@@ -191,6 +191,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       registrationStep === RegistrationSteps.Claim
     ) {
       logEventWithContext('register_name_transaction_processing', ActionType.change);
+
       setRegistrationStep(RegistrationSteps.Pending);
     }
 

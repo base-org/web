@@ -8,12 +8,14 @@ export const metadata: Metadata = {
   description:
     'Basenames are a core onchain building block that enables anyone to establish their identity on Base by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Base.',
   openGraph: {
+    type: 'website',
     title: `Basenames`,
     url: `/`,
     images: ['https://base.org/images/base-open-graph.png'],
   },
   twitter: {
     site: '@base',
+    card: 'summary_large_image',
   },
 };
 
