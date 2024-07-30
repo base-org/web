@@ -198,7 +198,7 @@ export function RegistrationFlow() {
               appear
               show={isClaim}
               className={classNames(
-                'absolute left-1/2 z-40 mx-auto w-full -translate-x-1/2 -translate-y-40 transition-opacity md:max-w-[16rem]  md:-translate-y-20',
+                'absolute left-1/2 z-40 mx-auto w-full -translate-x-1/2 -translate-y-32 transition-opacity md:max-w-[16rem]  md:-translate-y-20',
                 registrationTransitionDuration,
               )}
               enterFrom="opacity-0"
