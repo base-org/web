@@ -10,7 +10,7 @@ import logEvent, {
   identify,
 } from 'base-ui/utils/logEvent';
 import classNames from 'classnames';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useAccount, useChains } from 'wagmi';
 import {
   ConnectWallet,
@@ -48,6 +48,12 @@ export function ConnectWalletButton({
   // Rainbow kit
   const { openConnectModal } = useConnectModal();
   const { openChainModal } = useChainModal();
+
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Wagmi
   const { address, connector, isConnected, isConnecting, isReconnecting, chain } = useAccount();
@@ -89,7 +95,7 @@ export function ConnectWalletButton({
     'text-black': color === 'black',
   });
 
-  if (isConnecting || isReconnecting) {
+  if (isConnecting || isReconnecting || !isMounted) {
     return <Icon name="spinner" color="currentColor" />;
   }
 
@@ -130,25 +136,24 @@ export function ConnectWalletButton({
         <UserAvatar />
         <Name chain={basenameChain} className={userAddressClasses} />
       </ConnectWallet>
-      <WalletDropdown className="font-sans">
+      <WalletDropdown className="bg-white font-sans shadow-md">
         <Identity
-          className={classNames('px-4 pb-2 pt-3 font-display', className)}
-          hasCopyAddressOnClick
+          className={classNames('px-4 pb-2 pt-3 font-display hover:bg-gray-40/20', className)}
         >
           <UserAvatar />
           <Name chain={basenameChain} className="font-display" />
           <EthBalance className="font-display" />
         </Identity>
-        <WalletDropdownBaseName className="font-display" />
+        <WalletDropdownBaseName className="font-display hover:bg-gray-40/20" />
         <WalletDropdownLink
           icon="wallet"
           href="https://wallet.coinbase.com"
           target="_blank"
-          className="font-display"
+          className="font-display hover:bg-gray-40/20"
         >
           Go to Wallet Dashboard
         </WalletDropdownLink>
-        <WalletDropdownDisconnect className="font-display" />
+        <WalletDropdownDisconnect className="font-display hover:bg-gray-40/20" />
       </WalletDropdown>
     </Wallet>
   );

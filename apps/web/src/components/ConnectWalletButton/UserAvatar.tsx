@@ -10,12 +10,18 @@ export function UserAvatar() {
   const { data: ensName, isLoading: ensNameIsLoading } = useEnsName({
     address,
     chainId: mainnet.id,
+    query: {
+      retry: false,
+    },
   });
   const { data: ensAvatar, isLoading: ensAvatarIsLoading } = useEnsAvatar({
     name: ensName ?? undefined,
     chainId: mainnet.id,
     assetGatewayUrls: {
       ipfs: 'https://cloudflare-ipfs.com',
+    },
+    query: {
+      retry: false,
     },
   });
 
