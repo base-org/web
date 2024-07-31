@@ -71,7 +71,6 @@ export default function RegistrationForm() {
     transactionError,
     selectedName,
     setRegisterNameTransactionHash,
-    setRegisterNameCallsBatchId,
     discount,
     loadingDiscounts,
   } = useRegistration();
@@ -109,7 +108,6 @@ export default function RegistrationForm() {
   const {
     callback: registerName,
     data: registerNameTransactionHash,
-    callBatchId,
     isPending: registerNameTransactionIsPending,
     error: registerNameError,
   } = useRegisterNameCallback(
@@ -121,18 +119,11 @@ export default function RegistrationForm() {
   );
 
   useEffect(() => {
-    if (registerNameTransactionHash ?? callBatchId) {
+    if (registerNameTransactionHash) {
       logEventWithContext('register_name_transaction_approved', ActionType.change);
     }
-    if (callBatchId) setRegisterNameCallsBatchId(callBatchId);
     if (registerNameTransactionHash) setRegisterNameTransactionHash(registerNameTransactionHash);
-  }, [
-    callBatchId,
-    logEventWithContext,
-    registerNameTransactionHash,
-    setRegisterNameCallsBatchId,
-    setRegisterNameTransactionHash,
-  ]);
+  }, [logEventWithContext, registerNameTransactionHash, setRegisterNameTransactionHash]);
 
   const registerNameCallback = useCallback(() => {
     registerName()

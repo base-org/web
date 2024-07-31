@@ -11,10 +11,10 @@ import {
   REGISTER_CONTRACT_ADDRESSES,
 } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useCallback, useMemo } from 'react';
+import { chainId } from 'permissionless';
+import { useCallback } from 'react';
 import { encodeFunctionData, namehash } from 'viem';
 import { useAccount, useSwitchChain, useWriteContract } from 'wagmi';
-import { useCapabilities, useWriteContracts } from 'wagmi/experimental';
 
 function secondsInYears(years: number): bigint {
   const secondsPerYear = 365.25 * 24 * 60 * 60; // .25 accounting for leap years
@@ -36,33 +36,12 @@ export function useRegisterNameCallback(
   discountKey?: `0x${string}`,
   validationData?: `0x${string}`,
 ): UseRegisterNameCallbackReturnValue {
-  const { address, chainId, isConnected } = useAccount();
+  const { address } = useAccount();
   const { basenameChain } = useBasenameChain();
-  const { logError } = useErrors();
-  const {
-    data: callBatchId,
-    writeContractsAsync,
-    isPending: paymasterIsPending,
-    error: paymasterError,
-  } = useWriteContracts();
-  const { data, writeContractAsync, isPending, error } = useWriteContract();
-  const { data: availableCapacities } = useCapabilities({ account: address });
 
-  const capabilities = useMemo(() => {
-    if (!isConnected || !chainId || !availableCapacities) {
-      return {};
-    }
-    const chainCapabilities = availableCapacities[chainId];
-    if (chainCapabilities.paymasterService?.supported) {
-      return {
-        paymasterService: {
-          // url: `${document.location.origin}/api/paymaster`
-          url: 'https://api.developer.coinbase.com/rpc/v1/base-sepolia/1IhTcPOmhK5aEq-4WqRZMJoOh0oPenD2',
-        },
-      };
-    }
-    return {};
-  }, [availableCapacities, chainId, isConnected]);
+  const { logError } = useErrors();
+
+  const { data, writeContractAsync, isPending, error } = useWriteContract();
 
   const normalizedName = normalizeEnsDomainName(name);
   const { switchChainAsync } = useSwitchChain();
@@ -104,34 +83,17 @@ export function useRegisterNameCallback(
     logEventWithContext('register_name_transaction_initiated', ActionType.click);
 
     try {
-      if (!capabilities || Object.keys(capabilities).length === 0) {
-        await writeContractAsync({
-          abi: REGISTER_CONTRACT_ABI,
-          address: REGISTER_CONTRACT_ADDRESSES[basenameChain.id],
-          chainId: basenameChain.id,
-          functionName: isDiscounted || IS_EARLY_ACCESS ? 'discountedRegister' : 'register',
-          // @ts-expect-error isDiscounted is sufficient guard for discountKey and validationData presence
-          args: isDiscounted ? [registerRequest, discountKey, validationData] : [registerRequest],
-          value,
-        });
-      } else {
-        await writeContractsAsync({
-          contracts: [
-            {
-              abi: REGISTER_CONTRACT_ABI,
-              address: REGISTER_CONTRACT_ADDRESSES[basenameChain.id],
-              functionName: isDiscounted || IS_EARLY_ACCESS ? 'discountedRegister' : 'register',
-              args: isDiscounted
-                ? [registerRequest, discountKey, validationData]
-                : [registerRequest],
-              // @ts-expect-error writeContractsAsync is incorrectly typed to not accept value
-              value,
-            },
-          ],
-          capabilities: capabilities,
-          chainId: basenameChain.id,
-        });
-      }
+      await switchChainAsync({ chainId: basenameChain.id });
+
+      await writeContractAsync({
+        abi: REGISTER_CONTRACT_ABI,
+        address: REGISTER_CONTRACT_ADDRESSES[basenameChain.id],
+        chainId: basenameChain.id,
+        functionName: isDiscounted || IS_EARLY_ACCESS ? 'discountedRegister' : 'register',
+        // @ts-expect-error isDiscounted is sufficient guard for discountKey and validationData presence
+        args: isDiscounted ? [registerRequest, discountKey, validationData] : [registerRequest],
+        value,
+      });
     } catch (e) {
       logError(e, 'Register name transaction canceled');
       logEventWithContext('register_name_transaction_canceled', ActionType.change);
@@ -140,7 +102,6 @@ export function useRegisterNameCallback(
     address,
     chainId,
     basenameChain.id,
-    capabilities,
     discountKey,
     isDiscounted,
     logError,
@@ -151,16 +112,14 @@ export function useRegisterNameCallback(
     validationData,
     value,
     writeContractAsync,
-    writeContractsAsync,
     years,
   ]);
 
   return {
     callback: registerName,
     data,
-    callBatchId,
-    isPending: isPending ?? paymasterIsPending,
+    isPending: isPending,
     // @ts-expect-error error will be string renderable
-    error: error ?? paymasterError,
+    error: error,
   };
 }
