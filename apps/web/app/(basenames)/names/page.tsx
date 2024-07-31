@@ -1,4 +1,5 @@
 import RegistrationProviders from 'apps/web/app/(basenames)/names/RegistrationProviders';
+import ErrorsProvider from 'apps/web/contexts/Errors';
 import RegistrationFlow from 'apps/web/src/components/Basenames/RegistrationFlow';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
@@ -16,10 +17,12 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   return (
-    <RegistrationProviders>
-      <Suspense>
-        <RegistrationFlow />
-      </Suspense>
-    </RegistrationProviders>
+    <ErrorsProvider context="registration">
+      <RegistrationProviders>
+        <Suspense>
+          <RegistrationFlow />
+        </Suspense>
+      </RegistrationProviders>
+    </ErrorsProvider>
   );
 }

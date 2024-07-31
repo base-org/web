@@ -1,4 +1,5 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { useErrors } from 'apps/web/contexts/Errors';
 import {
   registrationTransitionDuration,
   useRegistration,
@@ -35,6 +36,7 @@ export enum FormSteps {
 export default function RegistrationProfileForm() {
   const [currentFormStep, setCurrentFormStep] = useState<FormSteps>(FormSteps.Description);
   const [transitionStep, setTransitionStep] = useState<boolean>(false);
+  const { logError } = useErrors();
   const { selectedName, redirectToProfile } = useRegistration();
   const { address } = useAccount();
   const { logEventWithContext } = useAnalytics();
@@ -90,7 +92,9 @@ export default function RegistrationProfileForm() {
         .then(() => {
           redirectToProfile();
         })
-        .catch(() => {});
+        .catch((error) => {
+          logError(error, 'Failed to refetch text records');
+        });
     }
 
     if (transactionData.status === 'reverted') {
@@ -106,6 +110,7 @@ export default function RegistrationProfileForm() {
     selectedName,
     basenameChain.id,
     redirectToProfile,
+    logError,
   ]);
 
   useEffect(() => {
@@ -165,13 +170,16 @@ export default function RegistrationProfileForm() {
               redirectToProfile();
             }
           })
-          .catch(console.error);
+          .catch((error) => {
+            logError(error, 'Failed to write text records');
+          });
       }
 
       event.preventDefault();
     },
     [
       currentFormStep,
+      logError,
       logEventWithContext,
       redirectToProfile,
       textRecords,

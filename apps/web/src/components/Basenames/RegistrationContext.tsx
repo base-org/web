@@ -1,5 +1,6 @@
 'use client';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { useErrors } from 'apps/web/contexts/Errors';
 import {
   DiscountData,
   findFirstValidDiscount,
@@ -113,6 +114,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
 
   // Analytics
   const { logEventWithContext } = useAnalytics();
+  const { logError } = useErrors();
 
   // Web3 data
   const { address } = useAccount();
@@ -174,7 +176,9 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
           setRegistrationStep(RegistrationSteps.Success);
         }
       })
-      .catch(() => {});
+      .catch((error) => {
+        logError(error, 'Failed to refetch basename');
+      });
   }, 1500);
 
   const redirectToProfile = useCallback(() => {
@@ -231,6 +235,11 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     if (!selectedName) return;
     logEventWithContext('selected_name', ActionType.change);
   }, [logEventWithContext, selectedName]);
+
+  // Log error
+  useEffect(() => {
+    logError(transactionError, 'Failed to fetch the transaction receipt');
+  }, [logError, transactionError]);
 
   const values = useMemo(() => {
     return {

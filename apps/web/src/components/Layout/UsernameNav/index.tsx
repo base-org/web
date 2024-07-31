@@ -13,10 +13,10 @@ import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { base, baseSepolia } from 'viem/chains';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { useCallback } from 'react';
+import { isDevelopment } from 'apps/web/src/constants';
 
 export default function UsernameNav() {
   const { isConnected } = useAccount();
-  const isDevelopment = process.env.NODE_ENV === 'development';
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
 
