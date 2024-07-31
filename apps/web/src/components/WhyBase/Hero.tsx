@@ -52,7 +52,7 @@ async function TableOfContents({ sections }: TableOfContentsProps) {
               </span>
               <Link href={`#${section.id}`}>{section.title}</Link>
             </li>
-            {index < sections.length - 1 && <hr className="my-3 lg:my-4 max-w-full lg:max-w-[450px]" />}
+            {index < sections.length - 1 && <hr className="my-3 lg:my-4 w-[300px] sm:w-[350px] lg:w-[450px]" />}
           </div>
         ))}
       </ol>
