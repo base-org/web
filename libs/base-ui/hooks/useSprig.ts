@@ -6,12 +6,11 @@ export default function useSprig(environmentId: SprigEnvironmentId) {
   const [Sprig, setSprig] = useState<unknown>(null);
 
   useEffect(() => {
+    // Disabled for development
+    if (isDevelopment) return;
+
     if (!environmentId) {
-      if (isDevelopment) {
-        console.info('Development: Sprig is not configured');
-      } else {
-        console.warn('Sprig is not configured');
-      }
+      console.warn('Sprig is not configured');
       return;
     }
 

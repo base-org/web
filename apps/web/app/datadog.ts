@@ -10,12 +10,11 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 export default function DatadogInit() {
   useEffect(() => {
+    // Disabled for development
+    if (isDevelopment) return;
+
     if (!nextPublicDatadogAppId || !nextPublicDatadogClientToken) {
-      if (isDevelopment) {
-        console.info('Development: Datadog is not configured');
-      } else {
-        console.warn('Datadog is not configured');
-      }
+      console.warn('Datadog is not configured');
       return;
     }
     datadogRum.init({
