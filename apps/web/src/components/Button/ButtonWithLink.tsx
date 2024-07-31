@@ -6,11 +6,12 @@ export async function ButtonWithLink({
   href,
   target,
   rel,
+  linkClassNames,
   linkProps,
   variant = 'Primary',
   size = 'Medium',
   children,
-  className,
+  buttonClassNames,
   rounded = false,
   fullWidth = false,
   disabled = false,
@@ -22,13 +23,13 @@ export async function ButtonWithLink({
       href={href}
       target={target}
       rel={rel}
-      className={disabled ? 'pointer-events-none' : ''}
+      className={`${linkClassNames}${disabled ? ' pointer-events-none' : ''}`}
       {...linkProps}
     >
       <Button
         variant={ButtonVariants[variant]}
         size={ButtonSizes[size]}
-        className={className}
+        className={buttonClassNames}
         rounded={rounded}
         fullWidth={fullWidth}
         disabled={disabled}
@@ -41,13 +42,15 @@ export async function ButtonWithLink({
   );
 }
 
-export type ButtonWithLinkProps = Omit<ButtonProps, 'href' | 'variant' | 'size'> & {
+export type ButtonWithLinkProps = Omit<ButtonProps, 'href' | 'variant' | 'size' | 'className'> & {
   href: string;
+  linkClassNames?: string;
   linkProps?: Omit<LinkProps, 'href' | 'passHref'>;
   target?: string;
   rel?: string;
   variant?: ButtonVariantString;
   size?: ButtonSizeString;
+  buttonClassNames?: string;
 };
 
 type ButtonVariantString = keyof typeof ButtonVariants;
