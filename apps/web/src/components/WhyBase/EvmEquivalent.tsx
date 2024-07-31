@@ -2,15 +2,21 @@ import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/Bu
 
 export default async function EvmEquivalent() {
   return (
-    <div id="evmCompatibility" className="flex flex-row gap-32 bg-black px-20 pb-10 pt-10">
-      <div className="h-[520px] w-[550px] bg-[url('../public/images/EVM-compatibility-chains.png')] bg-no-repeat" />
-      <div className="flex max-w-[550px] flex-col justify-center gap-16">
-        <h2 className="flex font-display text-5xl">
+    <div
+      id="evmCompatibility"
+      className="flex flex-col sm:flex-row gap-8 sm:gap-16 xl:gap-32 bg-black px-4 sm:px-8 lg:px-20 pb-6 sm:pb-8 lg:pb-10 pt-6 sm:pt-8 lg:pt-10"
+    >
+      <div className="w-full sm:w-1/3 lg:w-1/2 xl:w-[550px] aspect-[550/520] sm:aspect-auto h-[260px] sm:h-[200px] md:h-[260px] lg:h-[520px]">
+        <div className="w-full h-full bg-[url('../public/images/EVM-compatibility-chains.png')] bg-contain bg-no-repeat bg-center" />
+      </div>
+      {/* <div className="aspect-[550/520] h-full w-full bg-[url('../public/images/EVM-compatibility-chains.png')] bg-contain bg-no-repeat" /> */}
+      <div className="flex w-full flex-col justify-center gap-8 lg:w-1/2 lg:gap-16 xl:max-w-[550px]">
+        <h2 className="flex flex-col font-display text-3xl sm:flex-row sm:text-4xl lg:text-5xl">
           <span>3.</span>
-          <span className="ml-4">EVM Compatible for effortless migration</span>
+          <span className="mt-2 sm:ml-4 sm:mt-0">EVM Compatible for effortless migration</span>
         </h2>
         <div>
-          <span>
+          <span className="text-base sm:text-lg">
             Move your project to Base in minutes from any other EVM-compatible chain and unlock the
             full potential of the Superchain and OP stack
           </span>
@@ -22,7 +28,7 @@ export default async function EvmEquivalent() {
               target="_blank"
               rel="noreferrer noopener"
               linkClassNames="inline-block"
-              buttonClassNames="mt-4 uppercase"
+              buttonClassNames="mt-4 uppercase w-full sm:w-auto"
             >
               Start Migrating
             </ButtonWithLinkAndEventLogging>

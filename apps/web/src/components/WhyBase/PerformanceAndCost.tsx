@@ -22,25 +22,28 @@ const stats = [
 
 export default async function PerformanceAndCost() {
   return (
-    <div id="performanceAndCost" className="flex flex-col bg-black px-20 pb-10 pt-10">
-      <div className="flex flex-row">
-        <h2 className="flex font-display text-5xl">
+    <div
+      id="performanceAndCost"
+      className="flex flex-col bg-black px-4 pb-6 pt-6 sm:px-8 sm:pb-8 sm:pt-8 lg:px-20 lg:pb-10 lg:pt-10"
+    >
+      <div className="flex flex-col gap-6 lg:flex-row lg:gap-12">
+        <h2 className="flex flex-col font-display text-3xl sm:flex-row sm:text-4xl lg:w-1/2 lg:text-5xl">
           <span>2.</span>
-          <span className="ml-4">Best-in-class performance & cost efficiency</span>
+          <span className="mt-2 sm:ml-4 sm:mt-0">Best-in-class performance & cost efficiency</span>
         </h2>
-        <div>
-          <span>
+        <div className="lg:w-1/2">
+          <span className="text-base sm:text-lg">
             Base leads the way with the lowest transaction costs, highest throughput, and top TPS
             among Layer 2 solutions.
           </span>
-          <div className="flex flex-row justify-start gap-8">
+          <div className="flex flex-row justify-start gap-4 lg:gap-8 mt-4">
             <ButtonWithLinkAndEventLogging
               href="https://l2beat.com/scaling/costs"
               eventName="perf_and_cost_l2beat"
               eventContext="why_base"
               target="_blank"
               rel="noreferrer noopener"
-              buttonClassNames="mt-8 uppercase"
+              buttonClassNames="uppercase w-full sm:w-auto"
             >
               L2Beat
             </ButtonWithLinkAndEventLogging>
@@ -51,31 +54,33 @@ export default async function PerformanceAndCost() {
               target="_blank"
               rel="noreferrer noopener"
               variant="Secondary"
-              buttonClassNames="mt-8 uppercase"
+              buttonClassNames="uppercase w-full sm:w-auto"
             >
               rollup.wtf
             </ButtonWithLinkAndEventLogging>
           </div>
         </div>
       </div>
-      <div className="mt-16 flex flex-row justify-center divide-x-2">
-        {stats?.map((stat) => (
+      <div className="mt-10 flex flex-col justify-center sm:mt-12 sm:flex-row sm:divide-x-2 lg:mt-16">
+        {stats?.map((stat, index) => (
           <div
             key={stat.description}
-            className="flex w-full flex-col items-center justify-center gap-4 p-8"
+            className={`flex w-full flex-col items-center justify-center gap-2 p-4 sm:gap-4 sm:p-6 lg:p-8 ${
+              index !== 0 ? 'border-t-2 sm:border-t-0' : ''
+            }`}
           >
-            <span className="text-8xl text-gray-40">
+            <span className="text-5xl text-gray-40 sm:text-6xl lg:text-8xl">
               {stat.value}
-              <span className="text-4xl">{stat.units ?? ''}</span>
+              <span className="text-2xl sm:text-3xl lg:text-4xl">{stat.units ?? ''}</span>
             </span>
-            <span>
+            <span className="text-center text-sm sm:text-base">
               {stat.description}
               <span className="ml-1 align-super text-xs">{stat.footnote ?? ''}</span>
             </span>
           </div>
         ))}
       </div>
-      <span className="mt-8 text-xs text-palette-backgroundAlternate">
+      <span className="mt-6 sm:mt-8 text-xs text-palette-backgroundAlternate">
         Figures as of 7/30/2024.
       </span>
       <span className="text-xs text-palette-backgroundAlternate">
