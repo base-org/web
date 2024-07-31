@@ -52,6 +52,5 @@ export type ButtonWithLinkProps = Omit<ButtonProps, 'href' | 'variant' | 'size' 
   size?: ButtonSizeString;
   buttonClassNames?: string;
 };
-
 type ButtonVariantString = keyof typeof ButtonVariants;
 type ButtonSizeString = keyof typeof ButtonSizes;
