@@ -206,6 +206,7 @@ export function FloatingENSPills() {
             x={x}
             y={y}
             transform={transform}
+            // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
             ref={(el) => setRef(i, el)}
           />
         ))}

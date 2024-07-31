@@ -55,6 +55,7 @@ export default function Banner({ href, text, bannerName }: BannerProps) {
             onClick={hideBanner}
             onKeyDown={hideBanner}
             type="button"
+            aria-label="Close Banner"
           >
             <Icon name="close" color="black" width="16" height="16" />
           </button>
