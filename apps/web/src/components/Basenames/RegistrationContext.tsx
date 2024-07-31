@@ -154,6 +154,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       enabled: !!registerNameTransactionHash,
     },
   });
+
   const [registerNameCallsBatchId, setRegisterNameCallsBatchId] = useState<string>('');
 
   // The "correct" way to transition the UI would be to watch for call success, but this experimental
@@ -238,7 +239,9 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
 
   // Log error
   useEffect(() => {
-    logError(transactionError, 'Failed to fetch the transaction receipt');
+    if (transactionError) {
+      logError(transactionError, 'Failed to fetch the transaction receipt');
+    }
   }, [logError, transactionError]);
 
   const values = useMemo(() => {
