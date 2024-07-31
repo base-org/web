@@ -130,25 +130,24 @@ export function ConnectWalletButton({
         <UserAvatar />
         <Name chain={basenameChain} className={userAddressClasses} />
       </ConnectWallet>
-      <WalletDropdown className="font-sans">
+      <WalletDropdown className="bg-white font-sans shadow-md">
         <Identity
-          className={classNames('px-4 pb-2 pt-3 font-display', className)}
-          hasCopyAddressOnClick
+          className={classNames('px-4 pb-2 pt-3 font-display hover:bg-gray-40/20', className)}
         >
           <UserAvatar />
           <Name chain={basenameChain} className="font-display" />
           <EthBalance className="font-display" />
         </Identity>
-        <WalletDropdownBaseName className="font-display" />
+        <WalletDropdownBaseName className="font-display hover:bg-gray-40/20" />
         <WalletDropdownLink
           icon="wallet"
           href="https://wallet.coinbase.com"
           target="_blank"
-          className="font-display"
+          className="font-display hover:bg-gray-40/20"
         >
           Go to Wallet Dashboard
         </WalletDropdownLink>
-        <WalletDropdownDisconnect className="font-display" />
+        <WalletDropdownDisconnect className="font-display hover:bg-gray-40/20" />
       </WalletDropdown>
     </Wallet>
   );
