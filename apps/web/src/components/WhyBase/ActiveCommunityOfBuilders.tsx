@@ -1,15 +1,17 @@
 'use client';
 
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import Link from 'apps/web/node_modules/next/link';
 
 import logEvent, {
   ActionType,
   AnalyticsEventImportance,
   ComponentType,
-} from 'base-ui/utils/logEvent';
+} from 'libs/base-ui/utils/logEvent';
 
 import { Button } from '../Button/Button';
+import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
+import { AnalyticsEventData } from 'libs/base-ui/utils/logEvent';
 
 const communityCards = [
   {
@@ -58,15 +60,16 @@ export default function ActiveCommunityOfBuilders() {
             projects onchain. Reach out to our Discord support team for help.
           </span>
           <div>
-            <Link
+            <ButtonWithLinkAndEventLogging
               href="https://discord.com/invite/buildonbase"
+              event={event}
               target="_blank"
               rel="noreferrer noopener"
-              onClick={handleClick}
-              className="inline-block"
+              linkClassNames='inline-block'
+              buttonClassNames="uppercase"
             >
-              <Button className="uppercase">Join the Discord</Button>
-            </Link>
+              Join the Discord
+            </ButtonWithLinkAndEventLogging>
           </div>
         </div>
       </div>
@@ -100,4 +103,14 @@ export default function ActiveCommunityOfBuilders() {
       </div>
     </div>
   );
+}
+
+const event: AnalyticsEventData = {
+  name: 'join_discord',
+  event: {
+    action: ActionType.click,
+    componentType: ComponentType.button,
+    context: 'why_base'
+  },
+  importance: AnalyticsEventImportance.high,
 }
