@@ -19,8 +19,8 @@ export default function DatadogInit() {
       return;
     }
     datadogRum.init({
-      applicationId: process.env.NEXT_PUBLIC_DATADOG_APP_ID ?? '',
-      clientToken: process.env.NEXT_PUBLIC_DATADOG_CLIENT_TOKEN ?? '',
+      applicationId: nextPublicDatadogAppId,
+      clientToken: nextPublicDatadogClientToken,
       // `site` refers to the Datadog site parameter of your organization
       // see https://docs.datadoghq.com/getting_started/site/
       site: 'datadoghq.com',
@@ -33,7 +33,7 @@ export default function DatadogInit() {
       trackLongTasks: true,
       defaultPrivacyLevel: 'mask',
     });
-  }, [isDevelopment]);
+  }, []);
 
   return null;
 }
