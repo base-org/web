@@ -84,7 +84,7 @@ export function ConnectWalletButton({
     );
   }, [openConnectModal]);
 
-  const userAddressClasses = classNames('text-lg', {
+  const userAddressClasses = classNames('text-lg font-display', {
     'text-white': color === 'white',
     'text-black': color === 'black',
   });
@@ -126,21 +126,29 @@ export function ConnectWalletButton({
 
   return (
     <Wallet>
-      <ConnectWallet withWalletAggregator className="bg-transparent p-2 hover:bg-gray-40/20">
+      <ConnectWallet withWalletAggregator className="bg-transparent p-2  hover:bg-gray-40/20">
         <UserAvatar />
         <Name chain={basenameChain} className={userAddressClasses} />
       </ConnectWallet>
-      <WalletDropdown>
-        <Identity className={classNames('px-4 pb-2 pt-3', className)} hasCopyAddressOnClick>
+      <WalletDropdown className="font-sans">
+        <Identity
+          className={classNames('px-4 pb-2 pt-3 font-display', className)}
+          hasCopyAddressOnClick
+        >
           <UserAvatar />
-          <Name chain={basenameChain} />
-          <EthBalance />
+          <Name chain={basenameChain} className="font-display" />
+          <EthBalance className="font-display" />
         </Identity>
-        <WalletDropdownBaseName />
-        <WalletDropdownLink icon="wallet" href="https://wallet.coinbase.com">
+        <WalletDropdownBaseName className="font-display" />
+        <WalletDropdownLink
+          icon="wallet"
+          href="https://wallet.coinbase.com"
+          target="_blank"
+          className="font-display"
+        >
           Go to Wallet Dashboard
         </WalletDropdownLink>
-        <WalletDropdownDisconnect />
+        <WalletDropdownDisconnect className="font-display" />
       </WalletDropdown>
     </Wallet>
   );

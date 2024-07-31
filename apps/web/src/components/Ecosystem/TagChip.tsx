@@ -1,22 +1,19 @@
-import { useCallback } from 'react';
+import { Url } from 'next/dist/shared/lib/router/router';
+import Link from 'next/link';
 
 type Props = {
   tag: string;
   isSelected: boolean;
-  setSelectedTag: (val: string) => void;
 };
 
-export function TagChip({ tag, isSelected, setSelectedTag }: Props) {
-  const select = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      event.preventDefault();
-      setSelectedTag(tag);
-    },
-    [tag, setSelectedTag],
-  );
-
+export async function TagChip({ tag, isSelected }: Props) {
+  // eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
+  const tagHref: Url = {
+    pathname: '/ecosystem',
+    query: { tag },
+  };
   return (
-    <button type="button" onClick={select}>
+    <Link href={tagHref} scroll={false}>
       <div
         className={`flex h-10 shrink-0 cursor-pointer flex-col justify-center rounded-[100px] border border-gray-muted px-8 hover:border-white ${
           isSelected ? 'bg-gray-muted' : ''
@@ -24,6 +21,6 @@ export function TagChip({ tag, isSelected, setSelectedTag }: Props) {
       >
         <span className="text-center font-mono text-base uppercase text-white">{tag}</span>
       </div>
-    </button>
+    </Link>
   );
 }
