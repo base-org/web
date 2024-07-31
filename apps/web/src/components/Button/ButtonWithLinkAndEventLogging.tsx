@@ -2,21 +2,36 @@
 
 import { useCallback } from 'react';
 
-import logEvent, { AnalyticsEventData } from 'libs/base-ui/utils/logEvent';
+import logEvent, { AnalyticsEventData, CCAEventData } from 'libs/base-ui/utils/logEvent';
 
 import { ButtonWithLink, ButtonWithLinkProps } from './ButtonWithLink';
 
 export function ButtonWithLinkAndEventLogging({
-  event,
+  eventName,
+  eventContext,
+  eventData,
   ...buttonWithLinkProps
 }: ButtonWithLinkAndEventLogProps) {
+  const event: AnalyticsEventData = {
+    name: eventName,
+    event: {
+      ...eventData,
+      action: eventData?.action ?? 'click',
+      componentType: eventData?.componentType ?? 'button',
+      context: eventContext,
+    },
+    importance: 'high',
+  };
+
   const handleClick = useCallback(() => {
     logEvent(event.name, event.event, event.importance);
-  }, [event]);
+  }, [event.name, event.event, event.importance]);
 
   return <ButtonWithLink onClick={handleClick} {...buttonWithLinkProps} />;
 }
 
 type ButtonWithLinkAndEventLogProps = Omit<ButtonWithLinkProps, 'onClick'> & {
-  event: AnalyticsEventData;
+  eventName: string;
+  eventContext: string;
+  eventData?: CCAEventData
 };
