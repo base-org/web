@@ -40,6 +40,7 @@ export default function ErrorsProvider({ children, context }: ErrorsProviderProp
         console.log('\n--------------------------------------');
         console.info(`Error caught with message: "${message}"`);
         console.error(error);
+        console.info(`Context: "${fullContext}"`);
         console.log('--------------------------------------\n');
         return;
       }
