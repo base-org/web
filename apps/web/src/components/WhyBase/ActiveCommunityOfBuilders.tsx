@@ -1,15 +1,7 @@
 'use client';
 
-import { useCallback } from 'react';
 import Link from 'apps/web/node_modules/next/link';
 
-import logEvent, {
-  ActionType,
-  AnalyticsEventImportance,
-  ComponentType,
-} from 'libs/base-ui/utils/logEvent';
-
-import { Button } from '../Button/Button';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { AnalyticsEventData } from 'libs/base-ui/utils/logEvent';
 
@@ -34,18 +26,17 @@ const communityCards = [
   },
 ];
 
+const event: AnalyticsEventData = {
+  name: 'join_discord',
+  event: {
+    action: 'click',
+    componentType: 'button',
+    context: 'why_base'
+  },
+  importance: 'high',
+}
+
 export default function ActiveCommunityOfBuilders() {
-  const handleClick = useCallback(() => {
-    logEvent(
-      'join_discord',
-      {
-        action: ActionType.click,
-        componentType: ComponentType.button,
-        context: 'why_base',
-      },
-      AnalyticsEventImportance.high,
-    );
-  }, []);
   return (
     <div id="communityOfBuilders" className="flex flex-col bg-black px-20 pb-10 pt-20">
       <div className="flex flex-row justify-between">
@@ -103,14 +94,4 @@ export default function ActiveCommunityOfBuilders() {
       </div>
     </div>
   );
-}
-
-const event: AnalyticsEventData = {
-  name: 'join_discord',
-  event: {
-    action: ActionType.click,
-    componentType: ComponentType.button,
-    context: 'why_base'
-  },
-  importance: AnalyticsEventImportance.high,
 }
