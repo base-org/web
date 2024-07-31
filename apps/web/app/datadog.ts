@@ -6,9 +6,9 @@ import { useEffect } from 'react';
 
 const nextPublicDatadogAppId = process.env.NEXT_PUBLIC_DATADOG_APP_ID ?? '';
 const nextPublicDatadogClientToken = process.env.NEXT_PUBLIC_DATADOG_CLIENT_TOKEN ?? '';
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 export default function DatadogInit() {
-  const isDevelopment = process.env.NODE_ENV === 'development';
   useEffect(() => {
     if (!nextPublicDatadogAppId || !nextPublicDatadogClientToken) {
       if (isDevelopment) {
@@ -16,7 +16,6 @@ export default function DatadogInit() {
       } else {
         console.warn('Datadog is not configured');
       }
-
       return;
     }
     datadogRum.init({
