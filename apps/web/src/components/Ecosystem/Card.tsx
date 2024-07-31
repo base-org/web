@@ -1,5 +1,5 @@
-/* eslint-disable react-perf/jsx-no-new-object-as-prop */
-import Image from 'next/image';
+'use client';
+import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 
 type Props = {
   name: string;
@@ -13,7 +13,7 @@ function getNiceDomainDisplayFromUrl(url: string) {
   return url.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0];
 }
 
-export function Card({ name, url, description, imageUrl, tags }: Props) {
+export async function Card({ name, url, description, imageUrl, tags }: Props) {
   return (
     <a
       href={url}
@@ -23,7 +23,13 @@ export function Card({ name, url, description, imageUrl, tags }: Props) {
     >
       <div className="flex flex-row justify-between">
         <div className="relative h-[80px] w-[80px] overflow-hidden rounded-[3px]">
-          <Image src={imageUrl} fill style={{ objectFit: 'contain' }} alt={`Logo of ${name}`} />
+          <ImageWithLoading
+            src={imageUrl}
+            alt={`Logo of ${name}`}
+            width={80}
+            height={80}
+            backgroundClassName="bg-black"
+          />
         </div>
         <div className="flex h-6 flex-col justify-center rounded-[100px] bg-black px-2 py-1">
           <span className="font-mono text-xs uppercase text-white">{tags[0]}</span>
