@@ -1,8 +1,10 @@
+"use client"
+
 import Link, { LinkProps } from 'apps/web/node_modules/next/link';
 
 import { Button, ButtonProps, ButtonVariants, ButtonSizes } from './Button';
 
-export async function ButtonWithLink({
+export function ButtonWithLink({
   href,
   target,
   rel,
