@@ -19,7 +19,7 @@ function BadgesLoop({
   currentWalletIsOwner?: boolean;
 }) {
   return (
-    <ul className="mb-12 mt-6 flex flex-row flex-wrap gap-8">
+    <ul className="mb-12 mt-6 flex flex-col flex-wrap items-center gap-8 sm:flex-row sm:items-start">
       {Object.keys(badges).map((badge) => {
         const hasBadge = !!badges[badge as BadgeNames];
         const score =
