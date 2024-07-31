@@ -439,4 +439,4 @@ In this tutorial, you've learned how to connect users to your onchain app with t
 [Base Gasless Campaign]: https://www.smartwallet.dev/base-gasless-campaign
 [Paymaster]: https://www.smartwallet.dev/guides/paymasters
 [Project Settings]: https://portal.cdp.coinbase.com/project-settings
-[Simple Onchain NFTs]: /simple-onchain-nfts
+[Simple Onchain NFTs]: /tutorials/simple-onchain-nfts
