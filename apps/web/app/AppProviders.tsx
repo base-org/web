@@ -1,5 +1,6 @@
 'use client';
-
+import '@rainbow-me/rainbowkit/styles.css';
+import '@coinbase/onchainkit/styles.css';
 import {
   Provider as CookieManagerProvider,
   Region,
@@ -9,7 +10,6 @@ import {
 import { OnchainKitProvider } from '@coinbase/onchainkit';
 import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
 import { connectorsForWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import '@rainbow-me/rainbowkit/styles.css';
 import {
   coinbaseWallet,
   metaMaskWallet,
