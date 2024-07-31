@@ -725,9 +725,9 @@
         "difficulty": "easy",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 24, 2024",
+        "last_updated": "Jul 31, 2024",
         "duration": "26 min read",
-        "checksum": "d5ccb9ed0dc9b066d63d7b5e769193d60791262ece777ff0d0992ec5082f9ac9"
+        "checksum": "15e1fe93f8c085d0ea8a0e90e63054d978f65117af37640fbffbf5d1c79f392e"
     },
     "3_farcaster-frames-deploy-to-vercel": {
         "title": "Farcaster Frames: Deploying to Vercel",
