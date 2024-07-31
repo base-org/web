@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'apps/web/node_modules/next/link';
 
 const headerReasons: Section[] = [
