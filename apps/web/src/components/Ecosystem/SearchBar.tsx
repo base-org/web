@@ -1,8 +1,6 @@
+'use client';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useRef, useState } from 'react';
-
-type Props = {
-  setSearchText: (val: string) => void;
-};
 
 function SearchIcon() {
   return (
@@ -42,9 +40,24 @@ function XIcon() {
 
 const DEBOUNCE_LENGTH_MS = 300;
 
-export function SearchBar({ setSearchText }: Props) {
-  const [text, setText] = useState('');
+export function SearchBar({ value }: { value: string }) {
+  const [text, setText] = useState(value);
   const debounced = useRef<number>();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const tag = searchParams?.get('tag');
+
+  const updateRoute = useCallback(
+    (search: string) => {
+      const params = new URLSearchParams(searchParams?.toString());
+      if (tag) params.set('tag', tag);
+      if (search) params.set('search', search);
+      if (!search) params.delete('search');
+      router.push(pathname + '?' + params.toString(), { scroll: false });
+    },
+    [pathname, router, searchParams, tag],
+  );
 
   const onChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,18 +65,18 @@ export function SearchBar({ setSearchText }: Props) {
 
       const val = e.target.value;
       setText(val);
+      updateRoute(val);
 
-      debounced.current = window.setTimeout(() => {
-        setSearchText(val);
-      }, DEBOUNCE_LENGTH_MS);
+      debounced.current = window.setTimeout(() => {}, DEBOUNCE_LENGTH_MS);
     },
-    [setText, setSearchText],
+    [updateRoute],
   );
 
   const clearInput = useCallback(() => {
     setText('');
-    setSearchText('');
-  }, [setSearchText]);
+
+    updateRoute('');
+  }, [updateRoute]);
 
   return (
     <div className="flex h-10 flex-row items-center gap-2 rounded-[56px] border border-gray-60 p-2 md:w-full lg:w-80">
