@@ -1,29 +1,18 @@
-'use client';
+import { AnalyticsEventData } from 'libs/base-ui/utils/logEvent';
 
-import React, { useCallback } from 'react';
-import Link from 'apps/web/node_modules/next/link';
+import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 
-import logEvent, {
-  ActionType,
-  AnalyticsEventImportance,
-  ComponentType,
-} from 'base-ui/utils/logEvent';
+const event: AnalyticsEventData = {
+  name: 'evm_compatible_start_migrating',
+  event: {
+    action: 'click',
+    componentType: 'button',
+    context: 'why_base',
+  },
+  importance: 'high',
+};
 
-import { Button } from '../Button/Button';
-
-export default function EvmEquivalent() {
-  const handleClick = useCallback(() => {
-    logEvent(
-      'evm_compatible_migration',
-      {
-        action: ActionType.click,
-        componentType: ComponentType.button,
-        context: 'why_base',
-      },
-      AnalyticsEventImportance.high,
-    );
-  }, []);
-
+export default async function EvmEquivalent() {
   return (
     <div id="evmCompatibility" className="flex flex-row gap-32 bg-black px-20 pb-10 pt-10">
       <div className="h-[520px] w-[550px] bg-[url('../public/images/EVM-compatibility-chains.png')] bg-no-repeat" />
@@ -38,15 +27,16 @@ export default function EvmEquivalent() {
             full potential of the Superchain and OP stack
           </span>
           <div>
-            <Link
+            <ButtonWithLinkAndEventLogging
               href="https://docs.base.org/docs"
+              event={event}
               target="_blank"
               rel="noreferrer noopener"
-              onClick={handleClick}
-              className="inline-block"
+              linkClassNames="inline-block"
+              buttonClassNames="mt-4 uppercase"
             >
-              <Button className="mt-4 uppercase">Start Migrating</Button>
-            </Link>
+              Start Migrating
+            </ButtonWithLinkAndEventLogging>
           </div>
         </div>
       </div>
