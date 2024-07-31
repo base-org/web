@@ -12,7 +12,7 @@ export default async function BuildWithUs() {
             event={primaryEvent}
             target="_blank"
             rel="noreferrer noopener"
-            className="uppercase"
+            buttonClassNames="uppercase"
           >
             Get Started
           </ButtonWithLinkAndEventLogging>
@@ -22,7 +22,7 @@ export default async function BuildWithUs() {
             target="_blank"
             rel="noreferrer noopener"
             variant="Secondary"
-            className="uppercase"
+            buttonClassNames="uppercase"
           >
             View Our Docs
           </ButtonWithLinkAndEventLogging>
