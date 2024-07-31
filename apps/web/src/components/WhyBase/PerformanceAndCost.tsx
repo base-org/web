@@ -24,19 +24,19 @@ export default async function PerformanceAndCost() {
   return (
     <div
       id="performanceAndCost"
-      className="flex flex-col bg-black px-4 pb-6 pt-6 sm:px-8 sm:pb-8 sm:pt-8 lg:px-20 lg:pb-10 lg:pt-10"
+      className="flex flex-col bg-black px-12 pb-6 pt-6 sm:px-16 sm:pb-8 sm:pt-8 lg:px-24 lg:pb-10 lg:pt-10"
     >
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-12">
-        <h2 className="flex flex-col font-display text-3xl sm:flex-row sm:text-4xl lg:w-1/2 lg:text-5xl">
+        <h2 className="flex flex-row font-display text-3xl sm:text-4xl lg:w-1/2 lg:text-5xl">
           <span>2.</span>
-          <span className="mt-2 sm:ml-4 sm:mt-0">Best-in-class performance & cost efficiency</span>
+          <span className="ml-4">Best-in-class performance & cost efficiency</span>
         </h2>
         <div className="lg:w-1/2">
           <span className="text-base sm:text-lg">
             Base leads the way with the lowest transaction costs, highest throughput, and top TPS
             among Layer 2 solutions.
           </span>
-          <div className="flex flex-row justify-start gap-4 lg:gap-8 mt-4">
+          <div className="mt-4 flex flex-row justify-start gap-4 lg:gap-8">
             <ButtonWithLinkAndEventLogging
               href="https://l2beat.com/scaling/costs"
               eventName="perf_and_cost_l2beat"
@@ -61,7 +61,7 @@ export default async function PerformanceAndCost() {
           </div>
         </div>
       </div>
-      <div className="mt-10 flex flex-col justify-center sm:mt-12 sm:flex-row sm:divide-x-2 lg:mt-16">
+      <div className="mt-10 flex flex-col justify-center sm:mt-12 sm:divide-y-2 md:flex-row md:divide-y-0 md:divide-x-2 lg:mt-16">
         {stats?.map((stat, index) => (
           <div
             key={stat.description}
@@ -80,7 +80,7 @@ export default async function PerformanceAndCost() {
           </div>
         ))}
       </div>
-      <span className="mt-6 sm:mt-8 text-xs text-palette-backgroundAlternate">
+      <span className="mt-6 text-xs text-palette-backgroundAlternate sm:mt-8">
         Figures as of 7/30/2024.
       </span>
       <span className="text-xs text-palette-backgroundAlternate">
