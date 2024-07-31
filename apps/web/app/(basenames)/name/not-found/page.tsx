@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import UsernameProfileNotFound from 'apps/web/src/components/Basenames/UsernameProfileNotFound';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -18,7 +19,9 @@ export default async function UsernameNotFound() {
 
   return (
     <main className={classNames(usernameProfilePageClasses, 'items-center justify-center')}>
-      <UsernameProfileNotFound />
+      <Suspense>
+        <UsernameProfileNotFound />
+      </Suspense>
     </main>
   );
 }
