@@ -1,14 +1,6 @@
-'use client';
+import { AnalyticsEventData } from 'libs/base-ui/utils/logEvent';
 
-import React, { useCallback } from 'react';
-import Link from 'apps/web/node_modules/next/link';
-
-import { Button } from '../Button/Button';
-import logEvent, {
-  ActionType,
-  ComponentType,
-  AnalyticsEventImportance,
-} from 'base-ui/utils/logEvent';
+import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 
 const stats = [
   {
@@ -30,20 +22,27 @@ const stats = [
   },
 ];
 
-export default function PerformanceAndCost() {
-  const createHandleClick = useCallback((eventName: string) => {
-    return () => {
-      logEvent(
-        eventName,
-        {
-          action: ActionType.click,
-          componentType: ComponentType.button,
-          context: 'why_base',
-        },
-        AnalyticsEventImportance.high,
-      );
-    };
-  }, []);
+const primaryEvent: AnalyticsEventData = {
+  name: 'perf_and_cost_l2beat',
+  event: {
+    action: 'click',
+    componentType: 'button',
+    context: 'why_base',
+  },
+  importance: 'high',
+};
+
+const secondaryEvent: AnalyticsEventData = {
+  name: 'perf_and_cost_rollupwtf',
+  event: {
+    action: 'click',
+    componentType: 'button',
+    context: 'why_base',
+  },
+  importance: 'high',
+};
+
+export default async function PerformanceAndCost() {
   return (
     <div id="performanceAndCost" className="flex flex-col bg-black px-20 pb-10 pt-10">
       <div className="flex flex-row">
@@ -57,24 +56,25 @@ export default function PerformanceAndCost() {
             among Layer 2 solutions.
           </span>
           <div className="flex flex-row justify-start gap-8">
-            <Link
+            <ButtonWithLinkAndEventLogging
               href="https://l2beat.com/scaling/costs"
+              event={primaryEvent}
               target="_blank"
               rel="noreferrer noopener"
-              onClick={createHandleClick('l2beat')}
+              buttonClassNames="mt-8 uppercase"
             >
-              <Button className="mt-8 uppercase">L2Beat</Button>
-            </Link>
-            <Link
-              href="https://rollup.wtf/"
+              L2Beat
+            </ButtonWithLinkAndEventLogging>
+            <ButtonWithLinkAndEventLogging
+              href="https://l2beat.com/scaling/costs"
+              event={secondaryEvent}
               target="_blank"
               rel="noreferrer noopener"
-              onClick={createHandleClick('rollup_wtf')}
+              variant="Secondary"
+              buttonClassNames="mt-8 uppercase"
             >
-              <Button variant="secondary" className="mt-8 uppercase">
-                Rollup.wtf
-              </Button>
-            </Link>
+              rollup.wtf
+            </ButtonWithLinkAndEventLogging>
           </div>
         </div>
       </div>
