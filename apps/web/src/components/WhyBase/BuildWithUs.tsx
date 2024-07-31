@@ -1,5 +1,4 @@
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
-import { ActionType, AnalyticsEventData, AnalyticsEventImportance, ComponentType } from 'libs/base-ui/utils/logEvent';
 
 export default async function BuildWithUs() {
   return (
@@ -9,7 +8,8 @@ export default async function BuildWithUs() {
         <div className="mt-8 flex flex-row justify-center gap-8">
           <ButtonWithLinkAndEventLogging
             href="https://docs.base.org/docs"
-            event={primaryEvent}
+            eventName="start_building_with_us_get_started"
+            eventContext="why_base"
             target="_blank"
             rel="noreferrer noopener"
             buttonClassNames="uppercase"
@@ -18,7 +18,8 @@ export default async function BuildWithUs() {
           </ButtonWithLinkAndEventLogging>
           <ButtonWithLinkAndEventLogging
             href="https://docs.base.org/docs"
-            event={secondaryEvent}
+            eventName="start_building_with_us_view_docs"
+            eventContext="why_base"
             target="_blank"
             rel="noreferrer noopener"
             variant="Secondary"
@@ -31,23 +32,3 @@ export default async function BuildWithUs() {
     </div>
   );
 }
-
-const primaryEvent: AnalyticsEventData = {
-  name: 'start_building_with_us_get_started',
-  event: {
-    action: ActionType.click,
-    componentType: ComponentType.button,
-    context: 'why_base',
-  },
-  importance: AnalyticsEventImportance.high,
-};
-
-const secondaryEvent: AnalyticsEventData = {
-  name: 'start_building_with_us_view_docs',
-  event: {
-    action: ActionType.click,
-    componentType: ComponentType.button,
-    context: 'why_base',
-  },
-  importance: AnalyticsEventImportance.high,
-};

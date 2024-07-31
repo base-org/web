@@ -1,5 +1,3 @@
-import { AnalyticsEventData } from 'libs/base-ui/utils/logEvent';
-
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 
 const stats = [
@@ -22,26 +20,6 @@ const stats = [
   },
 ];
 
-const primaryEvent: AnalyticsEventData = {
-  name: 'perf_and_cost_l2beat',
-  event: {
-    action: 'click',
-    componentType: 'button',
-    context: 'why_base',
-  },
-  importance: 'high',
-};
-
-const secondaryEvent: AnalyticsEventData = {
-  name: 'perf_and_cost_rollupwtf',
-  event: {
-    action: 'click',
-    componentType: 'button',
-    context: 'why_base',
-  },
-  importance: 'high',
-};
-
 export default async function PerformanceAndCost() {
   return (
     <div id="performanceAndCost" className="flex flex-col bg-black px-20 pb-10 pt-10">
@@ -58,7 +36,8 @@ export default async function PerformanceAndCost() {
           <div className="flex flex-row justify-start gap-8">
             <ButtonWithLinkAndEventLogging
               href="https://l2beat.com/scaling/costs"
-              event={primaryEvent}
+              eventName="perf_and_cost_l2beat"
+              eventContext="why_base"
               target="_blank"
               rel="noreferrer noopener"
               buttonClassNames="mt-8 uppercase"
@@ -67,7 +46,8 @@ export default async function PerformanceAndCost() {
             </ButtonWithLinkAndEventLogging>
             <ButtonWithLinkAndEventLogging
               href="https://l2beat.com/scaling/costs"
-              event={secondaryEvent}
+              eventName="perf_and_cost_rollupwtf"
+              eventContext="why_base"
               target="_blank"
               rel="noreferrer noopener"
               variant="Secondary"

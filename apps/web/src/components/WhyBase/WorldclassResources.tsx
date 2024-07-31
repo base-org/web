@@ -1,7 +1,5 @@
 import Link from 'apps/web/node_modules/next/link';
 
-import { AnalyticsEventData } from 'libs/base-ui/utils/logEvent';
-
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { Icon } from '../Icon/Icon';
 
@@ -38,16 +36,6 @@ const resources: Resource[] = [
   },
 ];
 
-const event: AnalyticsEventData = {
-  name: 'worldclass_resources_start_building',
-  event: {
-    action: 'click',
-    componentType: 'button',
-    context: 'why_base',
-  },
-  importance: 'high',
-};
-
 export default async function WorldclassResources() {
   return (
     <div id="worldClassTools" className="flex flex-col bg-black px-20 pb-10 pt-10">
@@ -64,7 +52,8 @@ export default async function WorldclassResources() {
           <div>
             <ButtonWithLinkAndEventLogging
               href="https://docs.base.org/docs"
-              event={event}
+              eventName="worldclass_resources_start_building"
+              eventContext="why_base"
               target="_blank"
               rel="noreferrer noopener"
               linkClassNames="inline-block"

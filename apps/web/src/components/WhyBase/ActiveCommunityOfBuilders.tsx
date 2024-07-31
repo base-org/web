@@ -1,7 +1,5 @@
 import Link from 'apps/web/node_modules/next/link';
 
-import { AnalyticsEventData } from 'libs/base-ui/utils/logEvent';
-
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 
 const communityCards = [
@@ -25,16 +23,6 @@ const communityCards = [
   },
 ];
 
-const event: AnalyticsEventData = {
-  name: 'join_discord',
-  event: {
-    action: 'click',
-    componentType: 'button',
-    context: 'why_base',
-  },
-  importance: 'high',
-};
-
 export default async function ActiveCommunityOfBuilders() {
   return (
     <div id="communityOfBuilders" className="flex flex-col bg-black px-20 pb-10 pt-20">
@@ -52,7 +40,8 @@ export default async function ActiveCommunityOfBuilders() {
           <div>
             <ButtonWithLinkAndEventLogging
               href="https://discord.com/invite/buildonbase"
-              event={event}
+              eventName="join_discord"
+              eventContext="why_base"
               target="_blank"
               rel="noreferrer noopener"
               linkClassNames="inline-block"

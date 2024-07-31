@@ -1,16 +1,4 @@
-import { AnalyticsEventData } from 'libs/base-ui/utils/logEvent';
-
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
-
-const event: AnalyticsEventData = {
-  name: 'empowered_coinbase_learn_more',
-  event: {
-    action: 'click',
-    componentType: 'button',
-    context: 'why_base',
-  },
-  importance: 'high',
-};
 
 export default async function EmpoweredByCoinbase() {
   return (
@@ -29,7 +17,8 @@ export default async function EmpoweredByCoinbase() {
           <div>
             <ButtonWithLinkAndEventLogging
               href="/about"
-              event={event}
+              eventName="empowered_coinbase_learn_more"
+              eventContext="why_base"
               target="_blank"
               rel="noreferrer noopener"
               linkClassNames="inline-block"

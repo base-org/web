@@ -1,16 +1,4 @@
-import { AnalyticsEventData } from 'libs/base-ui/utils/logEvent';
-
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
-
-const event: AnalyticsEventData = {
-  name: 'evm_compatible_start_migrating',
-  event: {
-    action: 'click',
-    componentType: 'button',
-    context: 'why_base',
-  },
-  importance: 'high',
-};
 
 export default async function EvmEquivalent() {
   return (
@@ -29,7 +17,8 @@ export default async function EvmEquivalent() {
           <div>
             <ButtonWithLinkAndEventLogging
               href="https://docs.base.org/docs"
-              event={event}
+              eventName="evm_compatible_start_migrating"
+              eventContext="why_base"
               target="_blank"
               rel="noreferrer noopener"
               linkClassNames="inline-block"
