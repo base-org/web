@@ -1,9 +1,8 @@
-'use client';
-
-import React from 'react';
 import Link from 'apps/web/node_modules/next/link';
 
-import { Button } from '../Button/Button';
+import { AnalyticsEventData } from 'libs/base-ui/utils/logEvent';
+
+import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { Icon } from '../Icon/Icon';
 
 const resources: Resource[] = [
@@ -39,7 +38,17 @@ const resources: Resource[] = [
   },
 ];
 
-export default function WorldclassResources() {
+const event: AnalyticsEventData = {
+  name: 'worldclass_resources_start_building',
+  event: {
+    action: 'click',
+    componentType: 'button',
+    context: 'why_base',
+  },
+  importance: 'high',
+};
+
+export default async function WorldclassResources() {
   return (
     <div id="worldClassTools" className="flex flex-col bg-black px-20 pb-10 pt-10">
       <div className="flex flex-row">
@@ -53,15 +62,16 @@ export default function WorldclassResources() {
             accelerate your project's growth.`}
           </span>
           <div>
-            <Link
+            <ButtonWithLinkAndEventLogging
               href="https://docs.base.org/docs"
+              event={event}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-block"
-              //   onClick={createHandleClick('l2beat')}
+              linkClassNames="inline-block"
+              buttonClassNames="mt-8 uppercase"
             >
-              <Button className="mt-8 uppercase">Start Building</Button>
-            </Link>
+              Start Building
+            </ButtonWithLinkAndEventLogging>
           </div>
         </div>
       </div>
@@ -80,7 +90,7 @@ export default function WorldclassResources() {
   );
 }
 
-function ResourceCard({ counter, title, description, href }: ResourceCardProps) {
+async function ResourceCard({ counter, title, description, href }: ResourceCardProps) {
   return (
     <Link href={href} target="_blank" rel="noreferrer noopener">
       <div className="flex h-[180px] w-[330px] flex-col gap-8 bg-gray-90 p-6">
