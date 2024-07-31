@@ -10,7 +10,7 @@ import logEvent, {
   identify,
 } from 'base-ui/utils/logEvent';
 import classNames from 'classnames';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useAccount, useChains } from 'wagmi';
 import {
   ConnectWallet,
@@ -48,6 +48,12 @@ export function ConnectWalletButton({
   // Rainbow kit
   const { openConnectModal } = useConnectModal();
   const { openChainModal } = useChainModal();
+
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Wagmi
   const { address, connector, isConnected, isConnecting, isReconnecting, chain } = useAccount();
@@ -89,7 +95,7 @@ export function ConnectWalletButton({
     'text-black': color === 'black',
   });
 
-  if (isConnecting || isReconnecting) {
+  if (isConnecting || isReconnecting || !isMounted) {
     return <Icon name="spinner" color="currentColor" />;
   }
 
