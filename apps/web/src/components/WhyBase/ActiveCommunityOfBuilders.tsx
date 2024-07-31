@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'apps/web/node_modules/next/link';
 
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
@@ -36,7 +34,7 @@ const event: AnalyticsEventData = {
   importance: 'high',
 }
 
-export default function ActiveCommunityOfBuilders() {
+export default async function ActiveCommunityOfBuilders() {
   return (
     <div id="communityOfBuilders" className="flex flex-col bg-black px-20 pb-10 pt-20">
       <div className="flex flex-row justify-between">
