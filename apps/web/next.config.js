@@ -101,11 +101,12 @@ const contentSecurityPolicy = {
     'https://flag.lab.amplitude.com/sdk/v2/flags',
     'https://api.lab.amplitude.com/sdk/v2/vardata',
     'https://browser-intake-datadoghq.com', // datadog
-    'https://*.datadoghq.com' //datadog
+    'https://*.datadoghq.com', //datadog
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
   'img-src': [
+    '*',
     "'self'",
     'blob:',
     'https://blob.vercel-storage.com', // Vercel File storage
@@ -183,6 +184,10 @@ module.exports = extendBaseConfig(
     },
     images: {
       remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: '**', // allows rendering frames to user profiles
+        },
         {
           protocol: 'https',
           hostname: 'i.seadn.io',
