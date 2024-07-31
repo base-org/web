@@ -27,7 +27,7 @@ export default async function ActiveCommunityOfBuilders() {
   return (
     <div
       id="communityOfBuilders"
-      className="flex flex-col bg-black px-4 pb-6 pt-10 sm:px-8 sm:pb-8 sm:pt-16 lg:px-20 lg:pb-10 lg:pt-20"
+      className="flex flex-col bg-black px-12 pb-6 pt-10 sm:px-16 sm:pb-8 sm:pt-16 lg:px-24 lg:pb-10 lg:pt-20"
     >
       <div className="flex flex-col justify-between lg:flex-row lg:items-center">
         <div className="aspect-[550/320] h-full w-full bg-contain bg-no-repeat bg-[url('../public/images/CommunityOfBuilders.png')]" />
