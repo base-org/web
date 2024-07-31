@@ -1,27 +1,18 @@
-'use client';
+import { AnalyticsEventData } from 'libs/base-ui/utils/logEvent';
 
-import React, { useCallback } from 'react';
-import Link from 'apps/web/node_modules/next/link';
+import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 
-import { Button } from '../Button/Button';
-import logEvent, {
-  ActionType,
-  AnalyticsEventImportance,
-  ComponentType,
-} from 'libs/base-ui/utils/logEvent';
+const event: AnalyticsEventData = {
+  name: 'empowered_coinbase_learn_more',
+  event: {
+    action: 'click',
+    componentType: 'button',
+    context: 'why_base',
+  },
+  importance: 'high',
+};
 
-export default function EmpoweredByCoinbase() {
-  const handleClick = useCallback(() => {
-    logEvent(
-      'empowered_by_coinbase',
-      {
-        action: ActionType.click,
-        componentType: ComponentType.button,
-        context: 'why_base',
-      },
-      AnalyticsEventImportance.high,
-    );
-  }, []);
+export default async function EmpoweredByCoinbase() {
   return (
     <div id="empoweredByCoinbase" className="flex flex-row gap-32 bg-black px-20 pb-10 pt-10">
       <div className="flex max-w-[550px] flex-col justify-center gap-16">
@@ -36,19 +27,16 @@ export default function EmpoweredByCoinbase() {
             users.`}
           </span>
           <div>
-            <Link
+            <ButtonWithLinkAndEventLogging
               href="/about"
+              event={event}
               target="_blank"
               rel="noreferrer noopener"
-              onClick={handleClick}
-              className="inline-block"
+              linkClassNames="inline-block"
+              buttonClassNames="mt-4 uppercase"
             >
-              {' '}
-              {/*TODO: NEED A HREF */}
-              <Button fullWidth={false} className="mt-4 uppercase">
-                Learn More
-              </Button>
-            </Link>
+              Learn More
+            </ButtonWithLinkAndEventLogging>
           </div>
         </div>
       </div>
