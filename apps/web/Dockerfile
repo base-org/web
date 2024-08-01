@@ -7,14 +7,7 @@ FROM base AS deps
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y zip
-# ENV NODE_ENV=production
 RUN yarn --immutable
-
-# Add sharp support
-# RUN npm install -g --arch=x64 --platform=linux --libc=glibc sharp@0.33.0-rc.2
-# RUN mkdir special_folder
-# RUN mkdir special_folder/node_modules
-# RUN npm install --prefix ./special_folder sharp
 
 # ------------------------------------
 #   2. Build the project
@@ -23,25 +16,11 @@ FROM base AS builder
 WORKDIR /app
 
 # I don't like this, we should be able to copy just the package.json and node_modules?
-COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps ./app/node_modules ./node_modules
+
 COPY . .
 
-
-# RUN mkdir sharp
-# COPY --from=deps /app/special_folder ./app/special_folder
-
-# ENV NEXT_SHARP_PATH ./app/special_folder/node_modules/sharp
-
-# RUN mkdir special_folder
-# try sharp@next?
-# RUN mkdir special_folder/node_modules
-# RUN npm install --prefix ./special_folder sharp
-# ENV NEXT_SHARP_PATH=./app/node_modules/sharp
 ENV NEXT_PRIVATE_STANDALONE true
-
-# RUN npm install -g --arch=x64 --platform=linux --libc=glibc sharp@0.33.0-rc.2
-# RUN npm install --unsafe-perm sharp
-
 RUN yarn workspace @app/web next build
 
 # ------------------------------------
