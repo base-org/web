@@ -71,6 +71,10 @@ export function useRegisterNameCallback(
 
   const registerName = useCallback(async () => {
     if (!address) return;
+    if (chainId !== basenameChain.id) {
+      await switchChainAsync({ chainId: basenameChain.id });
+      return;
+    }
 
     const addressData = encodeFunctionData({
       abi: L2ResolverAbi,
@@ -100,8 +104,6 @@ export function useRegisterNameCallback(
     logEventWithContext('register_name_transaction_initiated', ActionType.click);
 
     try {
-      await switchChainAsync({ chainId: basenameChain.id });
-
       if (!capabilities || Object.keys(capabilities).length === 0) {
         await writeContractAsync({
           abi: REGISTER_CONTRACT_ABI,
@@ -136,6 +138,7 @@ export function useRegisterNameCallback(
     }
   }, [
     address,
+    chainId,
     basenameChain.id,
     capabilities,
     discountKey,
