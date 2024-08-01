@@ -307,7 +307,16 @@ export default function RegistrationForm() {
         <div className="z-10 mt-8 flex flex-row items-center justify-center ">
           <ExclamationCircleIcon width={12} height={12} className="fill-state-n-hovered" />
           <p className="ml-2 text-state-n-hovered">
-            The connected wallet is not eligible for early access.
+            The connected wallet is not eligible for early access. Please{' '}
+            <a
+              href="http://https://app.deform.cc/form/6acf7a89-8cb5-4c31-b71d-7979014f4db4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              fill out this form
+            </a>{' '}
+            to get notified when Basenames becomes available.
           </p>
         </div>
       );
