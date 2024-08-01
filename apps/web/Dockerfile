@@ -23,6 +23,7 @@ FROM base AS builder
 WORKDIR /app
 
 # I don't like this, we should be able to copy just the package.json and node_modules?
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 
@@ -40,6 +41,7 @@ COPY . .
 ENV NEXT_PRIVATE_STANDALONE true
 
 # RUN npm install -g --arch=x64 --platform=linux --libc=glibc sharp@0.33.0-rc.2
+# RUN npm install --unsafe-perm sharp
 
 RUN yarn workspace @app/web next build
 
