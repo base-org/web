@@ -39,6 +39,8 @@ COPY . .
 
 ENV NEXT_PRIVATE_STANDALONE true
 
+RUN npm install -g --arch=x64 --platform=linux --libc=glibc sharp@0.33.0-rc.2
+
 RUN yarn workspace @app/web next build
 
 # ------------------------------------
@@ -61,8 +63,8 @@ RUN chown nextjs:nodejs .next
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 # COPY --from=builder --chown=nextjs:nodejs /app/special_folder ./
-# COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
-# COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
 
 # USER nextjs # We can't do this as nextjs doesn't have access to the node binary
 
