@@ -247,7 +247,11 @@ export default function RegistrationForm() {
 
                   return (
                     <Button
-                      onClick={registerNameCallback}
+                      onClick={
+                        connectedChain?.id === basenameChain.id
+                          ? registerNameCallback
+                          : switchToIntendedNetwork
+                      }
                       type="button"
                       variant={ButtonVariants.Black}
                       size={ButtonSizes.Medium}
@@ -256,7 +260,7 @@ export default function RegistrationForm() {
                       rounded
                       fullWidth
                     >
-                      Register name
+                      {connectedChain?.id === basenameChain.id ? 'Register name' : 'Get based'}
                     </Button>
                   );
                 }}
@@ -318,8 +322,9 @@ export default function RegistrationForm() {
               target="_blank"
               className="text-blue-500 underline underline-offset-4"
             >
-              Join the waitlist
-            </Link>
+              Get notified
+            </Link>{' '}
+            when Basenames becomes available.
           </p>
         </div>
       );
