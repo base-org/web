@@ -295,7 +295,7 @@ export default function RegistrationSearchInput({
                     <InformationCircleIcon
                       width={12}
                       height={12}
-                      className="fill-gray-40 transition-colors hover:fill-gray-dark"
+                      className="hidden fill-gray-40 transition-colors hover:fill-gray-dark sm:block"
                     />
                   </div>
                 </Tooltip>

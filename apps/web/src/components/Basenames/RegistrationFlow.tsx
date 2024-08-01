@@ -154,26 +154,29 @@ export function RegistrationFlow() {
               placeholder="Search for a name"
             />
             {IS_EARLY_ACCESS && (
-              <div className="mx-auto mt-6 flex items-center justify-center">
-                <p
-                  className={classNames({
-                    'text-white': searchInputFocused,
-                    'text-gray-40': !searchInputFocused,
-                  })}
-                >
-                  You can claim one Basename per wallet for early access.
-                </p>
-                <Tooltip content="shrekislove.base.eth is already taken.">
+              <Tooltip
+                content="shrekislove.base.eth is already taken."
+                className="mx-auto mt-6 flex items-center justify-center"
+              >
+                <>
+                  <p
+                    className={classNames({
+                      'text-white': searchInputFocused,
+                      'text-gray-40': !searchInputFocused,
+                    })}
+                  >
+                    You can claim one Basename per wallet for early access.
+                  </p>
                   <InformationCircleIcon
                     width={12}
                     height={12}
-                    className={classNames('ml-1', {
+                    className={classNames('ml-1 hidden sm:block', {
                       'fill-white': searchInputFocused,
                       'fill-gray-40': !searchInputFocused,
                     })}
                   />
-                </Tooltip>
-              </div>
+                </>
+              </Tooltip>
             )}
           </Transition>
         </Transition>
