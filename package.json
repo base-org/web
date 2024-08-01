@@ -85,6 +85,7 @@
     "clsx": "^1.2.1",
     "moment": "^2.29.4",
     "next": "12.2.3",
+    "sharp": "next",
     "tslib": "^2.3.0"
   },
   "lint-staged": {
