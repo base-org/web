@@ -108,6 +108,10 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     RegistrationSteps.Search,
   );
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [registrationStep]);
+
   const { basenameChain } = useBasenameChain();
 
   const router = useRouter();
