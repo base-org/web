@@ -253,6 +253,7 @@ export default function RegistrationSearchInput({
         className={inputClasses}
         id={inputId}
         ref={inputRef}
+        autoCapitalize="none"
       />
       <div className={dropdownClasses}>
         <div className={lineClasses}>
