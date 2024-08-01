@@ -9,6 +9,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Address, ReadContractErrorType, encodeAbiParameters } from 'viem';
 import { useAccount, useReadContract } from 'wagmi';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import { useErrors } from 'apps/web/contexts/Errors';
 
 export type AttestationData = {
   discountValidatorAddress: Address;
@@ -21,6 +22,7 @@ type AttestationHookReturns = {
   error: ReadContractErrorType | null;
 };
 export function useCheckCBIDAttestations(): AttestationHookReturns {
+  const { logError } = useErrors();
   const { address } = useAccount();
   const [cBIDProofResponse, setCBIDProofResponse] = useState<CBIDProofResponse | null>(null);
   const { basenameChain } = useBasenameChain();
@@ -35,15 +37,17 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
           const result = (await response.json()) as CBIDProofResponse;
           setCBIDProofResponse(result);
         }
-      } catch (e) {
-        console.error('Error checking CB.ID attestation:', e);
+      } catch (error) {
+        logError(error, 'Error checking CB.ID attestation');
       }
     }
 
     if (address && !IS_EARLY_ACCESS) {
-      checkCBIDAttestations(address).catch(console.error);
+      checkCBIDAttestations(address).catch((error) => {
+        logError(error, 'Error checking CB.ID attestation');
+      });
     }
-  }, [address, basenameChain.id]);
+  }, [address, basenameChain.id, logError]);
 
   const encodedProof = useMemo(
     () =>
@@ -87,6 +91,7 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
 
 // returns info about Coinbase verified account attestations
 export function useCheckCoinbaseAttestations() {
+  const { logError } = useErrors();
   const { address } = useAccount();
   const [loading, setLoading] = useState(false);
   const [coinbaseProofResponse, setCoinbaseProofResponse] = useState<CoinbaseProofResponse | null>(
@@ -106,17 +111,19 @@ export function useCheckCoinbaseAttestations() {
         if (response.ok) {
           setCoinbaseProofResponse(result);
         }
-      } catch (e) {
-        console.error('Error checking Coinbase account attestations:', e);
+      } catch (error) {
+        logError(error, 'Error checking Coinbase account attestations');
       } finally {
         setLoading(false);
       }
     }
 
     if (address && !IS_EARLY_ACCESS) {
-      checkCoinbaseAttestations(address).catch(console.error);
+      checkCoinbaseAttestations(address).catch((error) => {
+        logError(error, 'Error checking Coinbase account attestations');
+      });
     }
-  }, [address, basenameChain.id]);
+  }, [address, basenameChain.id, logError]);
 
   const signature = coinbaseProofResponse?.signedMessage as undefined | `0x${string}`;
 
@@ -149,6 +156,7 @@ export function useCheckCoinbaseAttestations() {
 }
 
 export function useCheckCB1Attestations() {
+  const { logError } = useErrors();
   const { address } = useAccount();
   const [loading, setLoading] = useState(false);
   const [cb1ProofResponse, setCB1ProofResponse] = useState<CoinbaseProofResponse | null>(null);
@@ -165,17 +173,19 @@ export function useCheckCB1Attestations() {
           const result = (await response.json()) as CoinbaseProofResponse;
           setCB1ProofResponse(result);
         }
-      } catch (e) {
-        console.error('Error checking CB1 attestation:', e);
+      } catch (error) {
+        logError(error, 'Error checking CB1 attestation');
       } finally {
         setLoading(false);
       }
     }
 
     if (address && !IS_EARLY_ACCESS) {
-      checkCB1Attestations(address).catch(console.error);
+      checkCB1Attestations(address).catch((error) => {
+        logError(error, 'Error checking CB1 attestation');
+      });
     }
-  }, [address, basenameChain.id]);
+  }, [address, basenameChain.id, logError]);
 
   const signature = cb1ProofResponse?.signedMessage as undefined | `0x${string}`;
 
@@ -208,6 +218,7 @@ export function useCheckCB1Attestations() {
 }
 
 export function useCheckEAAttestations(): AttestationHookReturns {
+  const { logError } = useErrors();
   const { address } = useAccount();
   const [EAProofResponse, setEAProofResponse] = useState<EarlyAccessProofResponse | null>(null);
   const { basenameChain } = useBasenameChain();
@@ -223,15 +234,17 @@ export function useCheckEAAttestations(): AttestationHookReturns {
           const result = (await response.json()) as EarlyAccessProofResponse;
           setEAProofResponse(result);
         }
-      } catch (e) {
-        console.error('Error checking early access:', e);
+      } catch (error) {
+        logError(error, 'Error checking early access');
       }
     }
 
     if (address) {
-      checkEarlyAccess(address).catch(console.error);
+      checkEarlyAccess(address).catch((error) => {
+        logError(error, 'Error checking early access');
+      });
     }
-  }, [address, basenameChain.id]);
+  }, [address, basenameChain.id, logError]);
 
   const encodedProof = useMemo(
     () =>

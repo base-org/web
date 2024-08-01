@@ -6,6 +6,7 @@ import {
 } from '@heroicons/react/16/solid';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { useErrors } from 'apps/web/contexts/Errors';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import RegistrationLearnMoreModal from 'apps/web/src/components/Basenames/RegistrationLearnMoreModal';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
@@ -50,6 +51,7 @@ export default function RegistrationForm() {
   const chains = useChains();
   const { openConnectModal } = useConnectModal();
   const { logEventWithContext } = useAnalytics();
+  const { logError } = useErrors();
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
   const switchToIntendedNetwork = useCallback(
@@ -132,8 +134,10 @@ export default function RegistrationForm() {
   const registerNameCallback = useCallback(() => {
     registerName()
       .then(() => {})
-      .catch(() => {});
-  }, [registerName]);
+      .catch((error) => {
+        logError(error, 'Failed to register name');
+      });
+  }, [logError, registerName]);
 
   const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
   const insufficientBalanceToRegister =

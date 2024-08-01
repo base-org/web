@@ -8,6 +8,7 @@ import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { base } from 'viem/chains';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
+import { isDevelopment } from 'apps/web/src/constants';
 
 export const config = {
   runtime: 'edge',
@@ -19,7 +20,6 @@ export default async function handler(request: NextRequest) {
   ).then(async (res) => res.arrayBuffer());
 
   const url = new URL(request.url);
-  const isDevelopment = process.env.NODE_ENV === 'development';
   const username = url.searchParams.get('name') ?? 'yourname';
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
   const profilePicture = getUserNamePicture(username);
