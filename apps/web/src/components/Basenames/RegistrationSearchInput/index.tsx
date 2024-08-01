@@ -70,7 +70,7 @@ export default function RegistrationSearchInput({
 
   const handleSearchChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    setSearch(value.replace(/[^a-zA-Z0-9_]/g, ''));
+    setSearch(value.replace(/[\s\.]/g, ''));
   }, []);
 
   useEffect(() => {
