@@ -1,3 +1,4 @@
+import ErrorsProvider from 'apps/web/contexts/Errors';
 import UsernameNav from 'apps/web/src/components/Layout/UsernameNav';
 
 import type { Metadata } from 'next';
@@ -25,9 +26,11 @@ export default async function BasenameLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="max-w-screen flex min-h-screen flex-col">
-      <UsernameNav />
-      {children}
-    </div>
+    <ErrorsProvider context="basenames">
+      <div className="max-w-screen flex min-h-screen flex-col">
+        <UsernameNav />
+        {children}
+      </div>
+    </ErrorsProvider>
   );
 }

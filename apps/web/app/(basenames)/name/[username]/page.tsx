@@ -9,6 +9,7 @@ import { redirect } from 'next/navigation';
 import classNames from 'classnames';
 import { BaseName } from '@coinbase/onchainkit/identity';
 import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
+import ErrorsProvider from 'apps/web/contexts/Errors';
 
 type UsernameProfileProps = {
   params: { username: BaseName };
@@ -49,10 +50,12 @@ export default async function Username({ params }: UsernameProfileProps) {
   );
 
   return (
-    <ProfileProviders username={username} address={ensAddress}>
-      <main className={usernameProfilePageClasses}>
-        <UsernameProfile />
-      </main>
-    </ProfileProviders>
+    <ErrorsProvider context="profile">
+      <ProfileProviders username={username} address={ensAddress}>
+        <main className={usernameProfilePageClasses}>
+          <UsernameProfile />
+        </main>
+      </ProfileProviders>
+    </ErrorsProvider>
   );
 }

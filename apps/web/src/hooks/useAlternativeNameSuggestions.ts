@@ -1,3 +1,4 @@
+import { useErrors } from 'apps/web/contexts/Errors';
 import { NameSuggestionResponseData } from 'apps/web/pages/api/name/[alreadyClaimedName]';
 import { useAreNamesAvailable } from 'apps/web/src/hooks/useIsNameAvailable';
 import { normalizeEnsDomainName, validateEnsDomainName } from 'apps/web/src/utils/usernames';
@@ -7,7 +8,7 @@ export function useAlternativeNameSuggestions(nameNeedingAlternatives: string, d
   const [suggestions, setSuggestions] = useState<string[]>();
   const [error, setError] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
-
+  const { logError } = useErrors();
   useEffect(() => {
     async function checkAlternatives() {
       if (!doLookup || !nameNeedingAlternatives || nameNeedingAlternatives.length < 3) {
@@ -21,14 +22,14 @@ export function useAlternativeNameSuggestions(nameNeedingAlternatives: string, d
           setSuggestions(suggestionData.suggestion);
         }
       } catch (e) {
-        console.error('error checking for alternative names: ', e);
+        logError(e, 'Failed to fetch alternative names');
         setError('error fetching name suggestions');
       } finally {
         setIsLoading(false);
       }
     }
     void checkAlternatives();
-  }, [doLookup, nameNeedingAlternatives]);
+  }, [doLookup, logError, nameNeedingAlternatives]);
 
   const normalizedNames = useMemo(
     () =>

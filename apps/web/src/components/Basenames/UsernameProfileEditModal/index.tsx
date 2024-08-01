@@ -1,5 +1,6 @@
 import { upload } from '@vercel/blob/client';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { useErrors } from 'apps/web/contexts/Errors';
 import UsernameAvatarField from 'apps/web/src/components/Basenames/UsernameAvatarField';
 import UsernameDescriptionField from 'apps/web/src/components/Basenames/UsernameDescriptionField';
 import UsernameKeywordsField from 'apps/web/src/components/Basenames/UsernameKeywordsField';
@@ -35,6 +36,7 @@ export default function UsernameProfileEditModal({
   const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
   const [avatarFile, setAvatarFile] = useState<File | undefined>();
   const { logEventWithContext } = useAnalytics();
+  const { logError } = useErrors();
   const { basenameChain } = useBasenameChain(profileUsername);
 
   const {
@@ -88,7 +90,9 @@ export default function UsernameProfileEditModal({
         .then(() => {
           toggleModal();
         })
-        .catch(() => {});
+        .catch((error) => {
+          logError(error, 'Failed to refetch existing text records');
+        });
     }
 
     if (transactionData.status === 'reverted') {
@@ -103,6 +107,7 @@ export default function UsernameProfileEditModal({
     logEventWithContext,
     transactionIsFetching,
     toggleModal,
+    logError,
   ]);
 
   useEffect(() => {
@@ -174,25 +179,26 @@ export default function UsernameProfileEditModal({
             })
 
             .catch((error) => {
-              console.error(error);
+              logError(error, 'Update text records transaction canceled');
               logEventWithContext('update_text_records_transaction_canceled', ActionType.click);
             });
         })
-        .catch((e) => {
-          console.error(e);
+        .catch((error) => {
+          logError(error, 'Failed to upload avatar');
           logEventWithContext('avatar_upload_failed', ActionType.error);
         });
 
       logEventWithContext('update_text_records_transaction_initiated', ActionType.change);
     },
     [
-      avatarFile,
       currentWalletIsOwner,
-      logEventWithContext,
-      uploadAvatar,
       textRecords,
-      toggleModal,
+      uploadAvatar,
+      avatarFile,
+      logEventWithContext,
       writeTextRecords,
+      toggleModal,
+      logError,
     ],
   );
 
