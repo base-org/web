@@ -1,16 +1,54 @@
-FROM 652969937640.dkr.ecr.us-east-1.amazonaws.com/containers/node:current
+FROM 652969937640.dkr.ecr.us-east-1.amazonaws.com/containers/node:current AS base
+
+# ------------------------------------
+#   1. Install project dependencies
+# ------------------------------------
+FROM base AS deps
+WORKDIR /app
 
 RUN apt-get update && apt-get install -y zip
-
 ENV NODE_ENV=production
-
-WORKDIR /repo
-
-COPY . .
-
-# Install dependencies
 RUN yarn --immutable
 
+# ------------------------------------
+#   2. Build the project
+# ------------------------------------
+FROM base AS builder
+WORKDIR /app
+
+# I don't like this, we should be able to copy just the package.json and node_modules?
+COPY --from=deps --chown=nextjs:nodejs /app/node_modules ./node_modules
+COPY . .
+
+ENV NEXT_PRIVATE_STANDALONE true
+RUN yarn workspace @app/web next build
+
+# ------------------------------------
+#   3.Run it
+# ------------------------------------
+FROM base AS runner
+WORKDIR /app
+
+ENV NODE_ENV production
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/apps/web/public ./apps/web/public
+
+# Set the correct permission for prerender cache
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+
+# Automatically leverage output traces to reduce image size
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
+
+# USER nextjs # We can't do this as nextjs doesn't have access to the node binary
+
 EXPOSE 3000
-# Build at runtime so that we get ENV variables, this allows us to use [Automatic Static Optimization](https://nextjs.org/docs/pages/building-your-application/rendering/automatic-static-optimization)
-CMD ["/bin/bash", "-c", "yarn workspace @app/web next build ; yarn workspace @app/web start -p 3000"]
+
+ENV PORT 3000
+
+CMD HOSTNAME="0.0.0.0" node apps/web/server.js
