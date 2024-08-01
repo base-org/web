@@ -206,6 +206,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     if (transactionIsSuccess && registrationStep === RegistrationSteps.Pending) {
       if (transactionData.status === 'success') {
         logEventWithContext('register_name_transaction_success', ActionType.change);
+        setRegistrationStep(RegistrationSteps.Success);
       }
 
       if (transactionData.status === 'reverted') {
