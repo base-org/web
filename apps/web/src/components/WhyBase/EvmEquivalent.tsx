@@ -4,7 +4,7 @@ export default async function EvmEquivalent() {
   return (
     <div
       id="evmCompatibility"
-      className="flex flex-col sm:flex-row gap-8 sm:gap-16 xl:gap-32 bg-black px-4 sm:px-8 lg:px-20 pb-6 sm:pb-8 lg:pb-10 pt-6 sm:pt-8 lg:pt-10"
+      className="flex flex-col sm:flex-row gap-8 sm:gap-16 xl:gap-32 bg-black px-12 sm:px-16 lg:px-24 pb-6 sm:pb-8 lg:pb-10 pt-6 sm:pt-8 lg:pt-10"
     >
       <div className="w-full sm:w-1/3 lg:w-1/2 xl:w-[550px] aspect-[550/520] sm:aspect-auto h-[260px] sm:h-[200px] md:h-[260px] lg:h-[520px]">
         <div className="w-full h-full bg-[url('../public/images/EVM-compatibility-chains.png')] bg-contain bg-no-repeat bg-center" />

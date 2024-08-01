@@ -25,7 +25,7 @@ const headerReasons: Section[] = [
 
 export default async function Hero() {
   return (
-    <div className="mx-4 sm:mx-8 lg:mx-16 mt-12 sm:mt-16 lg:mt-[96px] flex flex-col justify-start min-h-[504px]">
+    <div className="mx-12 sm:mx-16 lg:mx-24 mt-12 sm:mt-16 lg:mt-[96px] flex flex-col justify-start min-h-[504px]">
       <div className="my-8 sm:my-12 lg:my-20 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 lg:gap-0">
         <div className="max-w-full lg:max-w-[500px]">
           <h1 className="mb-6 lg:mb-10 font-display text-4xl sm:text-5xl lg:text-6xl leading-tight lg:leading-none">5 reasons to choose Base</h1>
