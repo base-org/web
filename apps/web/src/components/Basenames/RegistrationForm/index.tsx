@@ -344,7 +344,7 @@ export default function RegistrationForm() {
 
   return (
     <div className="z-10 mx-auto mt-8 flex flex-row items-center justify-center">
-      <InformationCircleIcon width={12} height={12} className="fill-gray-40" />
+      <InformationCircleIcon width={12} height={12} className="hidden fill-gray-40 sm:block" />
       <p className="ml-2 text-gray-40">Connect a wallet to register a name</p>
     </div>
   );
