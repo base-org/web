@@ -7,7 +7,7 @@ FROM base AS deps
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y zip
-ENV NODE_ENV=production
+# ENV NODE_ENV=production
 RUN yarn --immutable
 
 # Add sharp support
@@ -36,8 +36,7 @@ COPY . .
 # try sharp@next?
 # RUN mkdir special_folder/node_modules
 # RUN npm install --prefix ./special_folder sharp
-# ENV NEXT_SHARP_PATH=./special_folder/node_modules/sharp
-
+# ENV NEXT_SHARP_PATH=./app/node_modules/sharp
 ENV NEXT_PRIVATE_STANDALONE true
 
 # RUN npm install -g --arch=x64 --platform=linux --libc=glibc sharp@0.33.0-rc.2
@@ -74,5 +73,6 @@ EXPOSE 3000
 
 # ENV NEXT_SHARP_PATH=./special_folder/node_modules/sharp
 ENV PORT 3000
+# ENV NEXT_SHARP_PATH=./app/node_modules/sharp
 
 CMD HOSTNAME="0.0.0.0" node apps/web/server.js
