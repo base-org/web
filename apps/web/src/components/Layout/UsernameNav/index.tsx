@@ -51,8 +51,10 @@ export default function UsernameNav() {
     <div className="absolute top-0 z-20 flex w-full flex-col">
       {showDevelopmentWarning && (
         <div className="flex items-center  justify-center gap-2 bg-orange-10 p-2 text-center text-orange-80">
-          <Icon name="info" color="currentColor" height="1rem" />
           <p>
+            <span className="align-center mr-1 inline-block">
+              <Icon name="info" color="currentColor" height="1rem" />
+            </span>
             You are on Base Mainnet.{' '}
             <button
               className="text-orange-90 underline underline-offset-2"
@@ -67,8 +69,10 @@ export default function UsernameNav() {
       )}
       {showProductionWarning && (
         <div className="flex items-center  justify-center gap-2 bg-orange-10 p-2 text-center text-orange-80">
-          <Icon name="info" color="currentColor" height="1rem" />
           <p>
+            <span className="align-center mr-1 inline-block">
+              <Icon name="info" color="currentColor" height="1rem" />
+            </span>
             You are on Base Sepolia.{' '}
             <button
               className="text-orange-90 underline underline-offset-2"
