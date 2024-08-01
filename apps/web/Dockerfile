@@ -60,9 +60,9 @@ RUN chown nextjs:nodejs .next
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=nextjs:nodejs /app/special_folder ./
-COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
+# COPY --from=builder --chown=nextjs:nodejs /app/special_folder ./
+# COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
+# COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
 
 # USER nextjs # We can't do this as nextjs doesn't have access to the node binary
 
