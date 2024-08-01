@@ -4,7 +4,7 @@ FROM 652969937640.dkr.ecr.us-east-1.amazonaws.com/containers/node:current AS bas
 #   1. Install project dependencies
 # ------------------------------------
 FROM base AS deps
-WORKDIR /app
+WORKDIR /repo
 
 RUN apt-get update && apt-get install -y zip
 RUN yarn --immutable
@@ -13,10 +13,9 @@ RUN yarn --immutable
 #   2. Build the project
 # ------------------------------------
 FROM base AS builder
-WORKDIR /app
 
-# I don't like this, we should be able to copy just the package.json and node_modules?
-COPY --from=deps ./app/node_modules ./node_modules
+ENV NODE_ENV=production
+WORKDIR /repo
 
 COPY . .
 
@@ -27,14 +26,14 @@ RUN yarn workspace @app/web next build
 #   3.Run it
 # ------------------------------------
 FROM base AS runner
-WORKDIR /app
+WORKDIR /repo
 
 ENV NODE_ENV production
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/apps/web/public ./apps/web/public
+COPY --from=builder /repo/apps/web/public ./apps/web/public
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
@@ -42,9 +41,9 @@ RUN chown nextjs:nodejs .next
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
-# COPY --from=builder --chown=nextjs:nodejs /app/special_folder ./
-COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
+# COPY --from=builder --chown=nextjs:nodejs /repo/special_folder ./
+COPY --from=builder --chown=nextjs:nodejs /repo/apps/web/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /repo/apps/web/.next/static ./apps/web/.next/static
 
 # USER nextjs # We can't do this as nextjs doesn't have access to the node binary
 
