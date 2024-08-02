@@ -18,7 +18,6 @@ export default function RegistrationBrand() {
 
   useEffect(() => {
     if (typedTextRef.current && !typedInstance.current) {
-      console.log('TYPE ME');
       typedInstance.current = new Typed(typedTextRef.current, {
         strings: SEARCH_LABEL_COPY_STRINGS,
         typeSpeed: 50,
