@@ -23,16 +23,17 @@ export default async function handler(request: NextRequest) {
   const username = url.searchParams.get('name') ?? 'yourname';
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
   const profilePicture = getUserNamePicture(username);
-  const chainId = url.searchParams.get('chainId') ?? base.id;
+  const chainIdFromParams = url.searchParams.get('chainId');
+  const chainId = chainIdFromParams ? Number(chainIdFromParams) : base.id;
   let imageSource = domainName + profilePicture.src;
 
   // NOTE: Do we want to fail if the name doesn't exists?
   try {
     const nameHash = namehash(username);
-    const client = getBasenamePublicClient(Number(chainId));
+    const client = getBasenamePublicClient(chainId);
     const avatar = await client.readContract({
       abi: L2ResolverAbi,
-      address: USERNAME_L2_RESOLVER_ADDRESSES[Number(chainId)],
+      address: USERNAME_L2_RESOLVER_ADDRESSES[chainId],
       args: [nameHash, UsernameTextRecordKeys.Avatar],
       functionName: 'text',
     });
