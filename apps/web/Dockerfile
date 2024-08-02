@@ -10,7 +10,10 @@ RUN apt-get update && apt-get install -y zip
 WORKDIR /repo
 
 # Check: does this actually work? do we also need to copy web/base-ui? json files from
-COPY package.json yarn.lock* ./
+COPY package.json yarn.lock* .yarnrc.yml ./
+
+RUN mkdir apps
+RUN mkdir libs
 
 COPY apps/web/package.json ./apps/web
 COPY apps/base-docs/package.json ./apps/base-docs
@@ -25,9 +28,14 @@ RUN yarn --immutable
 FROM base AS builder
 WORKDIR /repo
 
-ENV NODE_ENV=production
+# COPY --from=deps /repo/apps/web/node_modules ./apps/web/node_modules
+# COPY --from=deps /repo/apps/base-docs/node_modules ./apps/base-docs/node_modules
+# COPY --from=deps /repo/apps/bridge/node_modules ./apps/bridge/node_modules
+# COPY --from=deps /repo/apps/base-ui/node_modules ./apps/base-ui/node_modules
 
 COPY . .
+
+
 
 ENV NEXT_PRIVATE_STANDALONE true
 RUN yarn workspace @app/web next build
