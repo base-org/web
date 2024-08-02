@@ -3,7 +3,7 @@ import L2Resolver from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { isDevelopment } from 'apps/web/src/constants';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
-import { USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
+import { formatBaseEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
 import { NextResponse } from 'next/server';
 import { encodePacked, keccak256, namehash, toHex } from 'viem';
 import { base } from 'viem/chains';
@@ -18,9 +18,9 @@ export default async function GET(request: Request) {
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
   let tokenId = url.searchParams.get('tokenId');
   if (tokenId?.endsWith('.json')) tokenId = tokenId.slice(0, -5);
-
-  const chainId = url.searchParams.get('chainId') ?? base.id;
-  const baseDomainName = USERNAME_DOMAINS[Number(chainId)];
+  const chainIdFromParams = url.searchParams.get('chainId');
+  const chainId = chainIdFromParams ? Number(chainIdFromParams) : base.id;
+  const baseDomainName = USERNAME_DOMAINS[chainId];
 
   if (!tokenId) return NextResponse.json({ error: '406: tokenId is missing' }, { status: 406 });
   if (!chainId) return NextResponse.json({ error: '406: chainId is missing' }, { status: 406 });
@@ -34,34 +34,42 @@ export default async function GET(request: Request) {
   const namehashNode = keccak256(
     encodePacked(['bytes32', 'bytes32'], [namehash(baseDomainName), labelHash]),
   );
-
-  const client = getBasenamePublicClient(Number(chainId));
-  let basename = await client.readContract({
-    abi: L2Resolver,
-    address: USERNAME_L2_RESOLVER_ADDRESSES[Number(chainId)],
-    args: [namehashNode],
-    functionName: 'name',
-  });
-
-  // Premints are hardcoded, the list will reduce when/if they get claimed
-  if (!basename) {
-    basename = premintMapping[tokenId];
+  let basenameFormatted = undefined;
+  try {
+    const client = getBasenamePublicClient(chainId);
+    basenameFormatted = await client.readContract({
+      abi: L2Resolver,
+      address: USERNAME_L2_RESOLVER_ADDRESSES[chainId],
+      args: [namehashNode],
+      functionName: 'name',
+    });
+  } catch (error) {
+    console.log(error);
   }
 
-  if (!basename) return NextResponse.json({ error: '404: Basename not found' }, { status: 404 });
+  // Premints are hardcoded, the list will reduce when/if they get claimed
+  if (!basenameFormatted && premintMapping[tokenId]) {
+    basenameFormatted = formatBaseEthDomain(premintMapping[tokenId], chainId);
+  }
 
+  if (!basenameFormatted) {
+    return NextResponse.json({ error: '404: Basename not found' }, { status: 404 });
+  }
+
+  const basenamePure = basenameFormatted?.replace(`.${baseDomainName}`, '');
+  const basenameForUrl = chainId === base.id ? basenamePure : basenameFormatted;
   const tokenMedata = {
     // This is the URL to the image of the item.
-    image: `${domainName}/api/basenames/${basename}/assets/cardImage.svg`,
+    image: `${domainName}/api/basenames/${basenameFormatted}/assets/cardImage.svg`,
 
     // This is the URL that will appear below the asset's image on OpenSea and will allow users to leave OpenSea and view the item on your site.
-    external_url: `${domainName}/name/${basename}`,
+    external_url: `${domainName}/name/${basenameForUrl}`,
 
     // A human-readable description of the item. Markdown is supported.
-    description: `${basename}, a Basename`,
+    description: `${basenameFormatted}, a Basename`,
 
     // A human-readable description of the item. Markdown is supported.
-    name: basename,
+    name: basenameFormatted,
 
     // TODO: attributes?
   };
