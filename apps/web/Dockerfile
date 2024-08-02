@@ -1,17 +1,26 @@
 FROM 652969937640.dkr.ecr.us-east-1.amazonaws.com/containers/node:current
 
 
+RUN apt-get update && apt-get install -y zip
 
+ENV NODE_ENV=production
+
+WORKDIR /repo
+
+COPY . .
 
 
 # ------------------------------------
 #   1. Install project dependencies
 # ------------------------------------
 
-WORKDIR /repo
-
-COPY . .
+# Install dependencies
 RUN yarn --immutable
+
+RUN yarn workspace @app/web next build
+RUN yarn workspaces focus --all --production
+
+
 
 
 
@@ -57,19 +66,19 @@ RUN yarn --immutable
 # COPY --from=deps /repo/apps/bridge/node_modules ./apps/bridge/node_modules
 # COPY --from=deps /repo/libs/base-ui/node_modules ./libs/base-ui/node_modules
 
-ENV NEXT_PRIVATE_STANDALONE true
-RUN yarn workspace @app/web next build
+# ENV NEXT_PRIVATE_STANDALONE true
+# RUN yarn workspace @app/web next build
 
-# ------------------------------------
-#   3.Run it
-# ------------------------------------
+# # ------------------------------------
+# #   3.Run it
+# # ------------------------------------
 
-ENV NODE_ENV production
+# ENV NODE_ENV production
 
 # RUN addgroup --system --gid 1001 nodejs
 # RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /repo/apps/web/public ./apps/web/public
+COPY /repo/apps/web/public ./apps/web/public
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
@@ -82,9 +91,8 @@ COPY /repo/apps/web/.next/static ./.next/static
 
 # # USER nextjs # We can't do this as nextjs doesn't have access to the node binary
 
-
 # # ENV NEXT_SHARP_PATH=./special_folder/node_modules/sharp
 ENV PORT 3000
-# # ENV NEXT_SHARP_PATH=./app/node_modules/sharp
+EXPOSE 3000
 
 CMD HOSTNAME="0.0.0.0" node server.js
