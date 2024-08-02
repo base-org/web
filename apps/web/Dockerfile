@@ -1,7 +1,7 @@
 FROM 652969937640.dkr.ecr.us-east-1.amazonaws.com/containers/node:current AS base
 
 
-RUN corepack enable yarn
+
 
 
 # ------------------------------------
@@ -9,6 +9,9 @@ RUN corepack enable yarn
 # ------------------------------------
 FROM base AS deps
 WORKDIR /repo
+
+COPY . .
+RUN yarn --immutable
 
 
 
@@ -25,7 +28,9 @@ WORKDIR /repo
 # COPY libs/base-ui/package.json ./libs/base-ui
 
 # Nuclear solution, I think we should be able to just get the package.json(s)
-COPY . .
+# COPY . .
+# RUN yarn --immutable
+
 
 # COPY apps/web ./apps/web
 # COPY apps/base-docs ./apps/base-docs
@@ -36,7 +41,7 @@ COPY . .
 # COPY yarn.lock .
 
 # RUN yarn install --pure-lockfile --non-interactive
-RUN yarn install --pure-lockfile --non-interactive --cache-folder ./ycache; rm -rf ./ycache
+# RUN yarn install --pure-lockfile --non-interactive --cache-folder ./ycache; rm -rf ./ycache
 # RUN yarn --immutable
 
 # ------------------------------------
@@ -45,15 +50,13 @@ RUN yarn install --pure-lockfile --non-interactive --cache-folder ./ycache; rm -
 FROM base AS builder
 WORKDIR /repo
 
-# We're suppose to do at least this first line, but this makes "yarn --immutable" fail :pain:
-
+# We're suppose to do at least this first line, but this makes "yarn --immutable" fail :pain
 COPY --from=deps /repo/node_modules ./node_modules
 COPY --from=deps /repo/apps/web/node_modules ./apps/web/node_modules
 COPY --from=deps /repo/apps/base-docs/node_modules ./apps/base-docs/node_modules
 COPY --from=deps /repo/apps/bridge/node_modules ./apps/bridge/node_modules
 COPY --from=deps /repo/libs/base-ui/node_modules ./libs/base-ui/node_modules
 
-# TODO: Might only need web / base-ui
 COPY . .
 
 ENV NEXT_PRIVATE_STANDALONE true
@@ -70,7 +73,7 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /repo/apps/web/public ./public
+COPY --from=builder /repo/apps/web/public ./apps/web/public
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
