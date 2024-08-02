@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 import { Hero } from 'apps/web/src/components/About/Hero';
 import BuildingBase from 'apps/web/src/components/BuildingBase/BuildingBase';
 

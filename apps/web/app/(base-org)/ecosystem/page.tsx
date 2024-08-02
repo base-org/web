@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import EcosystemHeroLogos from 'apps/web/public/images/ecosystem-hero-logos-new.png';
 import { Divider } from 'apps/web/src/components/Divider/Divider';

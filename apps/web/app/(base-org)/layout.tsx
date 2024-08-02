@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 import Nav from 'apps/web/src/components/Layout/Nav/Nav';
 
 import type { Metadata } from 'next';

@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 import { FrameButtonMetadata } from '@coinbase/onchainkit/frame';
 import { BestOfEthereum } from 'apps/web/src/components/BestOfEthereum/BestOfEthereum';
 import { Commitment } from 'apps/web/src/components/Commitment/Commitment';
