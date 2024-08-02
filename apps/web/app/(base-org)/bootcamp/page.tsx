@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { Hero } from 'apps/web/src/components/Bootcamp/Hero';
 import { Cost } from 'apps/web/src/components/Bootcamp/Cost';
 import { Dates } from 'apps/web/src/components/Bootcamp/Dates';

@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { BuilderNftHero } from 'apps/web/src/components/BuilderNft/BuilderNftHero';
 import type { Metadata } from 'next';
 

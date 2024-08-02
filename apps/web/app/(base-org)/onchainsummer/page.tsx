@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import AboutBlock from 'apps/web/src/components/OnchainSummer/AboutBlock';
 import CommunityEventsBlock from 'apps/web/src/components/OnchainSummer/CommunityEventsBlock';
 import EventsBlock from 'apps/web/src/components/OnchainSummer/EventsBlock';
