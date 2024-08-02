@@ -11,6 +11,7 @@ WORKDIR /repo
 
 # Check: does this actually work? do we also need to copy web/base-ui? json files from
 COPY package.json yarn.lock* .yarnrc.yml ./
+COPY .yarn ./.yarn
 
 RUN mkdir apps
 RUN mkdir libs
@@ -28,6 +29,8 @@ RUN yarn --immutable
 FROM base AS builder
 WORKDIR /repo
 
+# We're suppose to do at least this first line, but this makes "yarn --immutable" fail :pain:
+# COPY --from=deps /repo/node_modules ./node_modules
 # COPY --from=deps /repo/apps/web/node_modules ./apps/web/node_modules
 # COPY --from=deps /repo/apps/base-docs/node_modules ./apps/base-docs/node_modules
 # COPY --from=deps /repo/apps/bridge/node_modules ./apps/bridge/node_modules
