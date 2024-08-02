@@ -48,6 +48,10 @@ export default async function Home() {
     <>
       <Hero />
       <main className="flex w-full flex-col items-center bg-black">
+        <p>{process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID}</p>
+        <p>{process.env.KV_REST_API_READ_ONLY_TOKEN}</p>
+        <p>{process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID}</p>
+        <p>{process.env.NEXT_PUBLIC_OCS_CREATIVE_DOWNLOAD_URL}</p>
         <Divider />
         <Features />
         <Divider />
