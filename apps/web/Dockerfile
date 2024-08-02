@@ -90,7 +90,7 @@ COPY --from=builder --chown=nextjs:nodejs /repo/apps/web/.next/static ./.next/st
 # EXPOSE 3000
 
 # # ENV NEXT_SHARP_PATH=./special_folder/node_modules/sharp
-# ENV PORT 3000
+ENV PORT 3000
 # # ENV NEXT_SHARP_PATH=./app/node_modules/sharp
 
 CMD HOSTNAME="0.0.0.0" node server.js
