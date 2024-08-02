@@ -9,16 +9,16 @@ RUN apt-get update && apt-get install -y zip
 
 WORKDIR /repo
 
-COPY ../../package.json ../../yarn.lock* ./
+# Check: does this actually work? do we also need to copy web/base-ui? json files from
+COPY package.json yarn.lock* ./
 
-RUN cd ../../ && yarn --immutable
+RUN yarn --immutable
 
 # ------------------------------------
 #   2. Build the project
 # ------------------------------------
 FROM base AS builder
 WORKDIR /repo
-
 
 ENV NODE_ENV=production
 
