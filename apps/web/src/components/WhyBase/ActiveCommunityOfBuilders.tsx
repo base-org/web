@@ -29,13 +29,14 @@ export default async function ActiveCommunityOfBuilders() {
       id="communityOfBuilders"
       className="flex flex-col bg-black px-12 pb-6 pt-10 sm:px-16 sm:pb-8 sm:pt-16 lg:px-24 lg:pb-10 lg:pt-20"
     >
-      <div className="flex flex-col justify-between lg:flex-row lg:items-center">
-        <div className="aspect-[550/320] h-full w-full bg-contain bg-no-repeat bg-[url('../public/images/CommunityOfBuilders.png')]" />
+      <div className="flex flex-col justify-between md:grid md:grid-cols-[1fr_1fr]">
+        <div className="hidden h-auto w-full bg-[url('../public/images/CommunityOfBuilders.png')] bg-contain bg-center bg-no-repeat md:block" />
         <div className="flex grow flex-col justify-start space-y-6 lg:mx-8 lg:justify-around xl:mx-20">
           <h2 className="flex flex-row font-display text-3xl sm:text-4xl lg:text-5xl">
             <span>1.</span>
             <span className="ml-4">Join an active community of Onchain Builders</span>
           </h2>
+          <div className="h-full min-h-[175px] w-full min-w-[300px] self-center bg-[url('../public/images/CommunityOfBuilders.png')] bg-contain bg-center bg-no-repeat md:hidden" />
           <span className="text-base text-white sm:text-lg">
             Join a community of thousands builders just like you, building some of the coolest
             projects onchain. Reach out to our Discord support team for help.
