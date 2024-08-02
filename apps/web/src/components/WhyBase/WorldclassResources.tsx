@@ -69,7 +69,7 @@ export default async function WorldclassResources() {
           </div>
         </div>
       </div>
-      <div className="mt-10 sm:mt-12 lg:mt-16 flex flex-row flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8">
+      <div className="mt-10 flex flex-row flex-wrap justify-center gap-4 sm:mt-12 sm:gap-6 lg:mt-16 lg:gap-8">
         {resources?.map((resource, index) => (
           <ResourceCard
             key={resource.title}
@@ -86,14 +86,19 @@ export default async function WorldclassResources() {
 
 async function ResourceCard({ counter, title, description, href }: ResourceCardProps) {
   return (
-    <Link href={href} target="_blank" rel="noreferrer noopener" className="w-full sm:w-[calc(50%-12px)] lg:w-[330px]">
-      <div className="flex h-[180px] sm:h-[230px] lg:h-[180px] w-full flex-col gap-6 sm:gap-8 bg-gray-90 p-4 sm:p-6">
+    <Link
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+      className="w-full sm:w-[calc(50%-12px)] lg:w-[330px]"
+    >
+      <div className="flex h-[180px] w-full flex-col gap-6 bg-gray-90 p-4 sm:h-[230px] sm:gap-8 sm:p-6 lg:h-[180px]">
         <div className="flex justify-between">
           <span>{String(counter + 1).padStart(2, '0')}</span>
           <Icon name="external-link" />
         </div>
         <div>
-          <h3 className="font-mono text-lg sm:text-xl uppercase mb-2">{title}</h3>
+          <h3 className="mb-2 font-mono text-lg uppercase sm:text-xl">{title}</h3>
           <span className="font-sans text-sm sm:text-base">{description}</span>
         </div>
       </div>

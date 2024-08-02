@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import Link from 'apps/web/node_modules/next/link';
-import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
+import { StaticImageData } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 
 import aerodromeImage from './aerodrome-logo-light.png';
@@ -103,7 +103,7 @@ async function CommunityCard({ card }: { card: CommunityCardType }) {
   return (
     <div
       key={card.href}
-      className="grid h-[330px] w-full grid-rows-[1fr_1fr] sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-16px)] border-2 border-gray-90"
+      className="grid h-[330px] w-full grid-rows-[1fr_1fr] border-2 border-gray-90 sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-16px)]"
     >
       <Link
         href={`https://${card.href}`}
