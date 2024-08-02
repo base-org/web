@@ -46,6 +46,7 @@ export default function UsernameTextRecordInlineField({
         disabled={disabled}
         value={value}
         autoComplete="off"
+        autoCapitalize="none"
         type={inputType}
         pattern="https?://.*"
         onChange={onTextRecordChange}

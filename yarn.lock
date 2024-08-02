@@ -383,7 +383,7 @@ __metadata:
     jose: ^5.4.1
     jsonwebtoken: ^9.0.2
     kysely: ^0.27.3
-    next: ^13.5.6
+    next: ^14.2.5
     node-fetch: ^3.3.0
     permissionless: ^0.1.41
     pg: ^8.12.0
@@ -399,9 +399,10 @@ __metadata:
     sharp: ^0.33.4
     tailwindcss: ^3.2.4
     twemoji: ^14.0.2
+    typed.js: ^2.1.0
     typescript: 5.0.4
     usehooks-ts: ^3.1.0
-    uuidv4: ^6.2.13
+    uuid: ^10.0.0
     viem: 2.x
     wagmi: ^2.11.3
   languageName: unknown
@@ -7878,13 +7879,6 @@ __metadata:
   version: 2.0.10
   resolution: "@types/unist@npm:2.0.10"
   checksum: e2924e18dedf45f68a5c6ccd6015cd62f1643b1b43baac1854efa21ae9e70505db94290434a23da1137d9e31eb58e54ca175982005698ac37300a1c889f6c4aa
-  languageName: node
-  linkType: hard
-
-"@types/uuid@npm:8.3.4":
-  version: 8.3.4
-  resolution: "@types/uuid@npm:8.3.4"
-  checksum: 6f11f3ff70f30210edaa8071422d405e9c1d4e53abbe50fdce365150d3c698fe7bbff65c1e71ae080cbfb8fded860dbb5e174da96fdbbdfcaa3fb3daa474d20f
   languageName: node
   linkType: hard
 
@@ -18507,7 +18501,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:*":
+"next@npm:*, next@npm:^14.2.5":
   version: 14.2.5
   resolution: "next@npm:14.2.5"
   dependencies:
@@ -18634,7 +18628,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^13.2.0, next@npm:^13.5.6":
+"next@npm:^13.2.0":
   version: 13.5.6
   resolution: "next@npm:13.5.6"
   dependencies:
@@ -23959,6 +23953,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typed.js@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "typed.js@npm:2.1.0"
+  checksum: 688f8a13a2a93317c87bb499f9d4159a0df5e5f67960cddd96a11ae53362b78ab5597d32eb3b300d97ddbe71c1dd5dd817625687ccc8be810643f3922d92b64d
+  languageName: node
+  linkType: hard
+
 "typedarray-to-buffer@npm:3.1.5, typedarray-to-buffer@npm:^3.1.5":
   version: 3.1.5
   resolution: "typedarray-to-buffer@npm:3.1.5"
@@ -24725,7 +24726,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:8.3.2, uuid@npm:^8.3.2":
+"uuid@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "uuid@npm:10.0.0"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: 4b81611ade2885d2313ddd8dc865d93d8dccc13ddf901745edca8f86d99bc46d7a330d678e7532e7ebf93ce616679fb19b2e3568873ac0c14c999032acb25869
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^8.3.2":
   version: 8.3.2
   resolution: "uuid@npm:8.3.2"
   bin:
@@ -24740,16 +24750,6 @@ __metadata:
   bin:
     uuid: dist/bin/uuid
   checksum: 39931f6da74e307f51c0fb463dc2462807531dc80760a9bff1e35af4316131b4fc3203d16da60ae33f07fdca5b56f3f1dd662da0c99fea9aaeab2004780cc5f4
-  languageName: node
-  linkType: hard
-
-"uuidv4@npm:^6.2.13":
-  version: 6.2.13
-  resolution: "uuidv4@npm:6.2.13"
-  dependencies:
-    "@types/uuid": 8.3.4
-    uuid: 8.3.2
-  checksum: 25b3ce1d5860c7fb2232270f20d36c320e52817356cc0dfc88610965e6faced3e7050b3628be08ed08092dffc099288ed24ac0404a2869d59963a2be1939f476
   languageName: node
   linkType: hard
 

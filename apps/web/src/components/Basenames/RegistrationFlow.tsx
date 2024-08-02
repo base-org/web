@@ -32,6 +32,7 @@ import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import RegistrationShareOnSocials from 'apps/web/src/components/Basenames/RegistrationShareOnSocials';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import { isDevelopment } from 'libs/base-ui/constants';
 
 const RegistrationStateSwitcherDynamic = dynamic(
   async () => import('apps/web/src/components/Basenames/RegistrationStateSwitcher'),
@@ -112,11 +113,9 @@ export function RegistrationFlow() {
     }
   }, [basenameChain.id, searchParams, setSelectedName]);
 
-  const isDevelopment = false; // process.env.NODE_ENV === 'development';
-
   return (
     <>
-      {isDevelopment && <RegistrationStateSwitcherDynamic />}
+      {false && isDevelopment && <RegistrationStateSwitcherDynamic />}
       <main className={mainClasses}>
         {/* 1. Brand & Search */}
         <Transition
@@ -155,36 +154,39 @@ export function RegistrationFlow() {
               placeholder="Search for a name"
             />
             {IS_EARLY_ACCESS && (
-              <div className="mx-auto mt-6 flex items-center justify-center">
-                <p
-                  className={classNames({
-                    'text-white': searchInputFocused,
-                    'text-gray-40': !searchInputFocused,
-                  })}
-                >
-                  You can claim one Basename per wallet for early access.
-                </p>
-                <Tooltip content="shrekislove.base.eth is already taken.">
+              <Tooltip
+                content="shrekislove.base.eth is already taken."
+                className="mx-auto mt-6 flex items-center justify-center"
+              >
+                <>
+                  <p
+                    className={classNames({
+                      'text-white': searchInputFocused,
+                      'text-gray-40': !searchInputFocused,
+                    })}
+                  >
+                    You can claim one Basename per wallet for early access.
+                  </p>
                   <InformationCircleIcon
                     width={12}
                     height={12}
-                    className={classNames('ml-1', {
+                    className={classNames('ml-1 hidden sm:block', {
                       'fill-white': searchInputFocused,
                       'fill-gray-40': !searchInputFocused,
                     })}
                   />
-                </Tooltip>
-              </div>
+                </>
+              </Tooltip>
             )}
           </Transition>
         </Transition>
         {/* 2 - Username Pill */}
-        <div className="relative flex w-full max-w-full -translate-y-12 flex-col items-center justify-center">
+        <div className="relative flex w-full max-w-full flex-col items-center justify-center md:-translate-y-12">
           <Transition
             appear
             show={!isSearch}
             className={classNames(
-              'relative z-50 transition-opacity',
+              'relative z-50 w-full transition-opacity',
               registrationTransitionDuration,
               {
                 'w-full max-w-[26rem]': isProfile,
@@ -201,7 +203,7 @@ export function RegistrationFlow() {
               appear
               show={isClaim}
               className={classNames(
-                'absolute left-1/2 z-40 mx-auto w-full -translate-x-1/2 -translate-y-32 transition-opacity md:max-w-[16rem]  md:-translate-y-20',
+                'absolute left-1/2 z-40 mx-auto w-full -translate-x-1/2 -translate-y-[calc(15vh)] transition-opacity md:max-w-[16rem]  md:-translate-y-20',
                 registrationTransitionDuration,
               )}
               enterFrom="opacity-0"

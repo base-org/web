@@ -6,6 +6,7 @@ import {
 } from '@heroicons/react/16/solid';
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { useErrors } from 'apps/web/contexts/Errors';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import RegistrationLearnMoreModal from 'apps/web/src/components/Basenames/RegistrationLearnMoreModal';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
@@ -22,6 +23,7 @@ import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallb
 import { IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
+import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { formatEther } from 'viem';
 import { useAccount, useBalance, useChains, useSwitchChain } from 'wagmi';
@@ -45,11 +47,14 @@ function formatUsdPrice(price: bigint, ethUsdPrice: number) {
   return parsed;
 }
 
+const WAITLIST_FORM = 'https://app.deform.cc/form/6acf7a89-8cb5-4c31-b71d-7979014f4db4';
+
 export default function RegistrationForm() {
   const { isConnected, chain: connectedChain, address } = useAccount();
   const chains = useChains();
   const { openConnectModal } = useConnectModal();
   const { logEventWithContext } = useAnalytics();
+  const { logError } = useErrors();
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
   const switchToIntendedNetwork = useCallback(
@@ -132,8 +137,10 @@ export default function RegistrationForm() {
   const registerNameCallback = useCallback(() => {
     registerName()
       .then(() => {})
-      .catch(() => {});
-  }, [registerName]);
+      .catch((error) => {
+        logError(error, 'Failed to register name');
+      });
+  }, [logError, registerName]);
 
   const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
   const insufficientBalanceToRegister =
@@ -240,7 +247,11 @@ export default function RegistrationForm() {
 
                   return (
                     <Button
-                      onClick={registerNameCallback}
+                      onClick={
+                        connectedChain?.id === basenameChain.id
+                          ? registerNameCallback
+                          : switchToIntendedNetwork
+                      }
                       type="button"
                       variant={ButtonVariants.Black}
                       size={ButtonSizes.Medium}
@@ -249,7 +260,7 @@ export default function RegistrationForm() {
                       rounded
                       fullWidth
                     >
-                      Register name
+                      {connectedChain?.id === basenameChain.id ? 'Register name' : 'Get based'}
                     </Button>
                   );
                 }}
@@ -300,10 +311,20 @@ export default function RegistrationForm() {
   if (isConnected) {
     if (isOnSupportedNetwork) {
       return (
-        <div className="z-10 mt-8 flex flex-row items-center justify-center ">
-          <ExclamationCircleIcon width={12} height={12} className="fill-state-n-hovered" />
-          <p className="ml-2 text-state-n-hovered">
-            The connected wallet is not eligible for early access.
+        <div className="z-10 mt-8 flex flex-row items-center justify-center text-gray-40">
+          <p className="ml-2 text-center">
+            <span className="mr-2 inline-block">
+              <Icon name="info" width={12} height={12} color="currentColor" />
+            </span>
+            The connected wallet is not eligible for early access.{' '}
+            <Link
+              href={WAITLIST_FORM}
+              target="_blank"
+              className="text-blue-500 underline underline-offset-4"
+            >
+              Get notified
+            </Link>{' '}
+            when Basenames becomes available.
           </p>
         </div>
       );
@@ -323,7 +344,7 @@ export default function RegistrationForm() {
 
   return (
     <div className="z-10 mx-auto mt-8 flex flex-row items-center justify-center">
-      <InformationCircleIcon width={12} height={12} className="fill-gray-40" />
+      <InformationCircleIcon width={12} height={12} className="hidden fill-gray-40 sm:block" />
       <p className="ml-2 text-gray-40">Connect a wallet to register a name</p>
     </div>
   );

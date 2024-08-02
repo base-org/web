@@ -1,5 +1,6 @@
 'use client';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { useErrors } from 'apps/web/contexts/Errors';
 import {
   DiscountData,
   findFirstValidDiscount,
@@ -107,12 +108,17 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     RegistrationSteps.Search,
   );
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [registrationStep]);
+
   const { basenameChain } = useBasenameChain();
 
   const router = useRouter();
 
   // Analytics
   const { logEventWithContext } = useAnalytics();
+  const { logError } = useErrors();
 
   // Web3 data
   const { address } = useAccount();
@@ -152,6 +158,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       enabled: !!registerNameTransactionHash,
     },
   });
+
   const [registerNameCallsBatchId, setRegisterNameCallsBatchId] = useState<string>('');
 
   // The "correct" way to transition the UI would be to watch for call success, but this experimental
@@ -174,7 +181,9 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
           setRegistrationStep(RegistrationSteps.Success);
         }
       })
-      .catch(() => {});
+      .catch((error) => {
+        logError(error, 'Failed to refetch basename');
+      });
   }, 1500);
 
   const redirectToProfile = useCallback(() => {
@@ -197,6 +206,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     if (transactionIsSuccess && registrationStep === RegistrationSteps.Pending) {
       if (transactionData.status === 'success') {
         logEventWithContext('register_name_transaction_success', ActionType.change);
+        setRegistrationStep(RegistrationSteps.Success);
       }
 
       if (transactionData.status === 'reverted') {
@@ -231,6 +241,13 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     if (!selectedName) return;
     logEventWithContext('selected_name', ActionType.change);
   }, [logEventWithContext, selectedName]);
+
+  // Log error
+  useEffect(() => {
+    if (transactionError) {
+      logError(transactionError, 'Failed to fetch the transaction receipt');
+    }
+  }, [logError, transactionError]);
 
   const values = useMemo(() => {
     return {

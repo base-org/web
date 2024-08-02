@@ -70,7 +70,7 @@ export default function RegistrationSearchInput({
 
   const handleSearchChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    setSearch(value.replace(/\s/g, ''));
+    setSearch(value.replace(/[\s\.]/g, ''));
   }, []);
 
   useEffect(() => {
@@ -253,6 +253,7 @@ export default function RegistrationSearchInput({
         className={inputClasses}
         id={inputId}
         ref={inputRef}
+        autoCapitalize="none"
       />
       <div className={dropdownClasses}>
         <div className={lineClasses}>
@@ -295,7 +296,7 @@ export default function RegistrationSearchInput({
                     <InformationCircleIcon
                       width={12}
                       height={12}
-                      className="fill-gray-40 transition-colors hover:fill-gray-dark"
+                      className="hidden fill-gray-40 transition-colors hover:fill-gray-dark sm:block"
                     />
                   </div>
                 </Tooltip>

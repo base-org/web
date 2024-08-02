@@ -13,10 +13,10 @@ import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { base, baseSepolia } from 'viem/chains';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { useCallback } from 'react';
+import { isDevelopment } from 'apps/web/src/constants';
 
 export default function UsernameNav() {
   const { isConnected } = useAccount();
-  const isDevelopment = process.env.NODE_ENV === 'development';
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
 
@@ -51,8 +51,10 @@ export default function UsernameNav() {
     <div className="absolute top-0 z-20 flex w-full flex-col">
       {showDevelopmentWarning && (
         <div className="flex items-center  justify-center gap-2 bg-orange-10 p-2 text-center text-orange-80">
-          <Icon name="info" color="currentColor" height="1rem" />
           <p>
+            <span className="align-center mr-1 inline-block">
+              <Icon name="info" color="currentColor" height="1rem" />
+            </span>
             You are on Base Mainnet.{' '}
             <button
               className="text-orange-90 underline underline-offset-2"
@@ -67,8 +69,10 @@ export default function UsernameNav() {
       )}
       {showProductionWarning && (
         <div className="flex items-center  justify-center gap-2 bg-orange-10 p-2 text-center text-orange-80">
-          <Icon name="info" color="currentColor" height="1rem" />
           <p>
+            <span className="align-center mr-1 inline-block">
+              <Icon name="info" color="currentColor" height="1rem" />
+            </span>
             You are on Base Sepolia.{' '}
             <button
               className="text-orange-90 underline underline-offset-2"

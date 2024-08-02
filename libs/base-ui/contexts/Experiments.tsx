@@ -21,50 +21,56 @@ const ExperimentsContext = createContext<ExperimentsContextProps>({
   getUserVariant: () => '',
 });
 
-const experimentClient = Experiment.initialize(ampDeploymentKey, {
-  exposureTrackingProvider: {
-    track: (exposure) => {
-      logEvent(
-        `exposure__${exposure.flag_key}`,
-        {
-          action: ActionType.view,
-          componentType: ComponentType.page,
-          variant: exposure.variant,
-          flag_key: exposure.flag_key,
-          experiment_key: exposure.experiment_key,
-        },
-        AnalyticsEventImportance.high,
-      );
-    },
-  },
-  userProvider: {
-    getUser: () => {
-      return {
-        user_id: window.ClientAnalytics.identity.userId,
-        device_id: window.ClientAnalytics.identity.deviceId,
-        os: window.ClientAnalytics.identity.device_os,
-        language: window.ClientAnalytics.identity.languageCode,
-        country: window.ClientAnalytics.identity.countryCode,
-      };
-    },
-  },
-});
-
 export default function ExperimentsProvider({ children }: ExperimentsProviderProps) {
   const [isReady, setIsReady] = useState(false);
+  const [experimentClient, setExperimentClient] = useState<ExperimentClient>();
 
   useEffect(() => {
-    async function startExperiments() {
-      try {
-        await experimentClient.start();
-      } catch (exception) {
-        console.log(`Error starting experiments for ${ampDeploymentKey}:`, exception);
-      } finally {
-        setIsReady(true);
-      }
-    }
-    void startExperiments();
+    const client = Experiment.initialize(ampDeploymentKey, {
+      exposureTrackingProvider: {
+        track: (exposure) => {
+          logEvent(
+            `exposure__${exposure.flag_key}`,
+            {
+              action: ActionType.view,
+              componentType: ComponentType.page,
+              variant: exposure.variant,
+              flag_key: exposure.flag_key,
+              experiment_key: exposure.experiment_key,
+            },
+            AnalyticsEventImportance.high,
+          );
+        },
+      },
+      userProvider: {
+        getUser: () => {
+          return {
+            user_id: window.ClientAnalytics.identity.userId,
+            device_id: window.ClientAnalytics.identity.deviceId,
+            os: window.ClientAnalytics.identity.device_os,
+            language: window.ClientAnalytics.identity.languageCode,
+            country: window.ClientAnalytics.identity.countryCode,
+          };
+        },
+      },
+    });
+
+    setExperimentClient(client);
   }, []);
+
+  const startExperiment = useCallback(async () => {
+    if (experimentClient) await experimentClient.start();
+  }, []);
+
+  useEffect(() => {
+    startExperiment()
+      .then(() => {
+        setIsReady(true);
+      })
+      .catch((error) => {
+        console.log(`Error starting experiments for ${ampDeploymentKey}:`, error);
+      });
+  }, [experimentClient]);
 
   const getUserVariant = useCallback(
     (flagKey: string): string | undefined => {

@@ -1,6 +1,7 @@
 import { premintMapping } from 'apps/web/pages/api/basenames/metadata/premintsMapping';
 import L2Resolver from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import { isDevelopment } from 'apps/web/src/constants';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import { USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
 import { NextResponse } from 'next/server';
@@ -13,7 +14,7 @@ export const config = {
 
 export default async function GET(request: Request) {
   const url = new URL(request.url);
-  const isDevelopment = process.env.NODE_ENV === 'development';
+
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
   let tokenId = url.searchParams.get('tokenId');
   if (tokenId?.endsWith('.json')) tokenId = tokenId.slice(0, -5);
