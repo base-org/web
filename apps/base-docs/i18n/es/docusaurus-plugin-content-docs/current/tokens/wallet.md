@@ -18,63 +18,63 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# How to ensure ERC-20 tokens are immediately swappable in Coinbase Wallet
+# Cómo asegurar que los tokens ERC-20 sean intercambiables inmediatamente en Coinbase Wallet
 
-This page is intended for developers that will or have recently deployed ERC-20 token contracts on Base Mainnet and would like their token details to display as quickly as possible on Coinbase Wallet.
+Esta página está destinada a desarrolladores que hayan desplegado recientemente contratos de tokens ERC-20 en Base Mainnet y deseen que los detalles de sus tokens se muestren lo más rápido posible en Coinbase Wallet.
 
-Coinbase Wallet makes any ERC-20 token instantly available for swapping seconds from when the contract is deployed.
+Coinbase Wallet hace que cualquier token ERC-20 esté disponible para intercambio instantáneamente segundos después de que se despliegue el contrato.
 
-Follow the instructions below to ensure your token logo, asset name, and other metadata also appear on Coinbase Wallet.
+Siga las instrucciones a continuación para asegurarse de que el logotipo de su token, el nombre del activo y otros metadatos también aparezcan en Coinbase Wallet.
 
-:::info Disclaimer
-Base does not endorse any specific token that is deployed on mainnet and made available for swapping.
+:::info Aviso
+Base no respalda ningún token específico que se despliegue en mainnet y esté disponible para intercambio.
 :::
 
 ---
 
-## Adding your token to the list
+## Agregar su token a la lista
 
-The steps below explain how to have your token display quickly on Coinbase Wallet. These instructions work not only for Base, but for any EVM chain supported by Coinbase Wallet (Optimism, Arbitrum, Polygon, Avalanche, Fantom, BNB).
+Los pasos a continuación explican cómo hacer que su token se muestre rápidamente en Coinbase Wallet. Estas instrucciones funcionan no solo para Base, sino para cualquier cadena EVM compatible con Coinbase Wallet (Optimism, Arbitrum, Polygon, Avalanche, Fantom, BNB).
 
-### Step 1: Deploy your ERC-20 Token on Base Mainnet
+### Paso 1: Despliegue su Token ERC-20 en Base Mainnet
 
-Write and deploy a compliant ERC-20 token smart contract. Test it and then deploy on Base Mainnet.
+Escriba y despliegue un contrato inteligente de token ERC-20 compatible. Pruébelo y luego despliegue en Base Mainnet.
 
-Once your ERC-20 contract is deployed, your asset is swappable instantly on Coinbase Wallet in the swap flow. Users can search by contract address or asset name. See below for information on how to show price charts and other metadata.
+Una vez que su contrato ERC-20 esté desplegado, su activo será intercambiable instantáneamente en Coinbase Wallet en el flujo de intercambio. Los usuarios pueden buscar por dirección de contrato o nombre del activo. Vea a continuación para obtener información sobre cómo mostrar gráficos de precios y otros metadatos.
 
-### Step 2: Prepare your metadata and asset images
+### Paso 2: Prepare sus metadatos e imágenes de activos
 
-Prepare a high-resolution image of your token's logo. Ensure it is clear, identifiable, and representative of your token.
+Prepare una imagen de alta resolución del logotipo de su token. Asegúrese de que sea clara, identificable y representativa de su token.
 
-### Step 3: List your cryptocurrency on a listing aggregator
-##### **Note:** At this time, being listed and verified on CoinMarketCap is the best way to ensure your token’s name, image, price chart all show up on Coinbase Wallet.
+### Paso 3: Liste su criptomoneda en un agregador de listados
+##### **Nota:** En este momento, estar listado y verificado en CoinMarketCap es la mejor manera de asegurar que el nombre, la imagen y el gráfico de precios de su token aparezcan en Coinbase Wallet.
 
-You can pay to be listed AND **verified** on CoinMarketCap following these [instructions](https://support.coinmarketcap.com/hc/en-us/articles/360043659351-Listings-Criteria).
+Puede pagar para ser listado Y **verificado** en CoinMarketCap siguiendo estas [instrucciones](https://support.coinmarketcap.com/hc/en-us/articles/360043659351-Listings-Criteria).
 
-You can list for free on CoinGecko following these [instructions](https://support.coingecko.com/hc/en-us/articles/7291312302617-How-to-list-new-cryptocurrencies-on-CoinGecko).
+Puede listar de forma gratuita en CoinGecko siguiendo estas [instrucciones](https://support.coingecko.com/hc/en-us/articles/7291312302617-How-to-list-new-cryptocurrencies-on-CoinGecko).
 
-Once CoinGecko lists your token OR CoinMarketCap lists it as **_verified_**, your asset's image logo and other metadata will flow into Coinbase Wallet and can be seen by users. **It can take 24-48 hours for metadata changes to update.**
+Una vez que CoinGecko liste su token O CoinMarketCap lo liste como **_verificado_**, el logotipo de la imagen de su activo y otros metadatos fluirán hacia Coinbase Wallet y podrán ser vistos por los usuarios. **Puede tomar de 24 a 48 horas para que los cambios de metadatos se actualicen.**
 
-## Why does my token display in the “Newer tokens” section?
+## ¿Por qué mi token se muestra en la sección “Tokens más nuevos”?
 
-Tokens that are newly launched and have not had significant trading volume appear in this section. Once your token reaches a market cap of at least $10M on CoinGecko or CoinMarketCap, the **newer token** label inside Coinbase Wallet is removed.
+Los tokens que se lanzan recientemente y no han tenido un volumen de comercio significativo aparecen en esta sección. Una vez que su token alcance una capitalización de mercado de al menos $10M en CoinGecko o CoinMarketCap, la etiqueta de **token más nuevo** dentro de Coinbase Wallet se eliminará.
 
-## Why is there no price chart for my token?
+## ¿Por qué no hay un gráfico de precios para mi token?
 
-Your token must be listed and marked as verified on CoinMarketCap for the price chart to display on Coinbase Wallet.
+Su token debe estar listado y marcado como verificado en CoinMarketCap para que el gráfico de precios se muestre en Coinbase Wallet.
 
-If the above guidance doesn’t resolve your issue, please submit more information using this [Deform](https://app.deform.cc/form/a331da5a-447b-43e8-b636-ea3b925e115a/).
+Si la guía anterior no resuelve su problema, por favor envíe más información utilizando este [Deform](https://app.deform.cc/form/a331da5a-447b-43e8-b636-ea3b925e115a/).
 
-# Sharing your token
-### Custom trading links
-By sharing a unique link to your token’s asset page, your community can more easily interact with your token.
+# Compartir su token
+### Enlaces de comercio personalizados
+Al compartir un enlace único a la página de su activo, su comunidad puede interactuar más fácilmente con su token.
 
-How to get your custom link:
+Cómo obtener su enlace personalizado:
 
-**Step 1:** Grab your custom link for your token by navigating to the asset page on Coinbase Wallet
+**Paso 1:** Obtenga su enlace personalizado para su token navegando a la página del activo en Coinbase Wallet
 
-**Step 2:** Click the share button
+**Paso 2:** Haga clic en el botón de compartir
 
-:::info Disclaimer
-New assets with low liquidity may result in failed swaps or may result in a user receiving less of the destination token due to slippage. An important responsibility of the token creator is to communicate to the community these risks.
+:::info Aviso
+Los nuevos activos con baja liquidez pueden resultar en intercambios fallidos o pueden resultar en que un usuario reciba menos del token de destino debido al deslizamiento. Una responsabilidad importante del creador del token es comunicar estos riesgos a la comunidad.
 :::

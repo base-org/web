@@ -19,15 +19,15 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# Differences between Ethereum and Base
+Diferencias entre Ethereum y Base
 
-Base is built on the [Bedrock](https://stack.optimism.io/docs/releases/bedrock/explainer/) release of the [OP Stack](https://stack.optimism.io/), which is designed from the ground up to be as close to Ethereum as possible. Because of this, there are very few differences when it comes to building on Base and Ethereum.
+Base está construido sobre la versión [Bedrock](https://stack.optimism.io/docs/releases/bedrock/explainer/) del [OP Stack](https://stack.optimism.io/), que está diseñado desde cero para ser lo más cercano a Ethereum posible. Debido a esto, hay muy pocas diferencias cuando se trata de construir en Base y Ethereum.
 
-However, there are still some minor discrepancies between the behavior of Base and Ethereum that you should be aware of when building apps on top of Base.
+Sin embargo, todavía hay algunas discrepancias menores entre el comportamiento de Base y Ethereum de las que debes estar al tanto al construir aplicaciones sobre Base.
 
-These minor differences include:
+Estas diferencias menores incluyen:
 
 - [Opcodes](https://stack.optimism.io/docs/releases/bedrock/differences/#opcode-differences)
-- [Blocks](https://stack.optimism.io/docs/releases/bedrock/differences/#blocks)
-- [Network specifications](https://stack.optimism.io/docs/releases/bedrock/differences/#network-specifications)
-- [Transaction costs](https://stack.optimism.io/docs/releases/bedrock/differences/#transaction-costs)
+- [Bloques](https://stack.optimism.io/docs/releases/bedrock/differences/#blocks)
+- [Especificaciones de la red](https://stack.optimism.io/docs/releases/bedrock/differences/#network-specifications)
+- [Costos de transacción](https://stack.optimism.io/docs/releases/bedrock/differences/#transaction-costs)

@@ -27,21 +27,21 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# Oracles
+# Oráculos
 
 ---
 
 ## API3
 
-[API3](https://api3.org/) is building secure first-party oracles for Base.
+[API3](https://api3.org/) está construyendo oráculos de primera parte seguros para Base.
 
-API3 is live with:
+API3 está en vivo con:
 
-- [dAPIs](https://docs.api3.org/guides/dapis/subscribing-managed-dapis/): First-party aggregated data feeds sourced directly from the data providers.
-- [Airnode](https://docs.api3.org/guides/airnode/calling-an-airnode/): The first-party serverless Oracle solution to bring any REST API onchain.
-- [QRNG](https://docs.api3.org/guides/qrng/): Quantum Random Number Generator for verifiable quantum RNG onchain.
+- [dAPIs](https://docs.api3.org/guides/dapis/subscribing-managed-dapis/): Feeds de datos agregados de primera parte obtenidos directamente de los proveedores de datos.
+- [Airnode](https://docs.api3.org/guides/airnode/calling-an-airnode/): La solución de oráculo sin servidor de primera parte para llevar cualquier API REST a la cadena.
+- [QRNG](https://docs.api3.org/guides/qrng/): Generador de Números Aleatorios Cuánticos para RNG cuántico verificable en la cadena.
 
-#### Supported Networks
+#### Redes Soportadas
 
 - Base Mainnet
 
@@ -49,17 +49,17 @@ API3 is live with:
 
 ## Chainlink
 
-[Chainlink](https://chain.link/) provides a number of [price feeds](https://docs.chain.link/data-feeds/price-feeds/addresses/?network=base) for Base.
+[Chainlink](https://chain.link/) proporciona una serie de [feeds de precios](https://docs.chain.link/data-feeds/price-feeds/addresses/?network=base) para Base.
 
-See [this guide](https://docs.chain.link/docs/get-the-latest-price/) to learn how to use the Chainlink feeds.
+Consulta [esta guía](https://docs.chain.link/docs/get-the-latest-price/) para aprender cómo usar los feeds de Chainlink.
 
 :::info
 
-To use Chainlink datafeeds, you may need [LINK](https://docs.chain.link/resources/link-token-contracts?parent=dataFeeds) token.
+Para usar los feeds de datos de Chainlink, puede que necesites el token [LINK](https://docs.chain.link/resources/link-token-contracts?parent=dataFeeds).
 
 :::
 
-#### Supported Networks
+#### Redes Soportadas
 
 - Base Mainnet
 - Base Sepolia (Testnet)
@@ -68,11 +68,11 @@ To use Chainlink datafeeds, you may need [LINK](https://docs.chain.link/resource
 
 ## Chronicle
 
-[Chronicle](https://chroniclelabs.org/) provides a number of [Oracles](https://chroniclelabs.org/dashboard) for Base.
+[Chronicle](https://chroniclelabs.org/) proporciona una serie de [Oráculos](https://chroniclelabs.org/dashboard) para Base.
 
-See [this guide](https://docs.chroniclelabs.org/Developers/tutorials/Remix) to learn how to use the Chronicle Oracles.
+Consulta [esta guía](https://docs.chroniclelabs.org/Developers/tutorials/Remix) para aprender cómo usar los oráculos de Chronicle.
 
-#### Supported Networks
+#### Redes Soportadas
 
 - Base Mainnet
 - Base Sepolia (Testnet)
@@ -81,10 +81,10 @@ See [this guide](https://docs.chroniclelabs.org/Developers/tutorials/Remix) to l
 
 ## DIA
 
-[DIA](https://www.diadata.org/) provides 2000+ [price feeds](https://www.diadata.org/app/price/) for Base.
-See [this guide](https://docs.diadata.org/introduction/intro-to-dia-oracles/request-an-oracle) to learn how to use the DIA feeds.
+[DIA](https://www.diadata.org/) proporciona más de 2000 [feeds de precios](https://www.diadata.org/app/price/) para Base.
+Consulta [esta guía](https://docs.diadata.org/introduction/intro-to-dia-oracles/request-an-oracle) para aprender cómo usar los feeds de DIA.
 
-#### Supported Networks
+#### Redes Soportadas
 
 - Base Mainnet
 - Base Sepolia (Testnet)
@@ -93,11 +93,11 @@ See [this guide](https://docs.diadata.org/introduction/intro-to-dia-oracles/requ
 
 ## Gelato
 
-Gelato VRF (Verifiable Random Function) provides a unique system offering trustable randomness on Base.
+Gelato VRF (Función Aleatoria Verificable) proporciona un sistema único que ofrece aleatoriedad confiable en Base.
 
-See this guide to learn how to get started with [Gelato VRF](https://docs.gelato.network/web3-services/vrf/quick-start).
+Consulta esta guía para aprender cómo empezar con [Gelato VRF](https://docs.gelato.network/web3-services/vrf/quick-start).
 
-#### Supported Networks
+#### Redes Soportadas
 
 - Base Mainnet
 - Base Sepolia (Testnet)
@@ -106,11 +106,11 @@ See this guide to learn how to get started with [Gelato VRF](https://docs.gelato
 
 ## Pyth
 
-[Pyth](http://pyth.network/) offers 250+ [price feeds](https://pyth.network/price-feeds) for Base.
+[Pyth](http://pyth.network/) ofrece más de 250 [feeds de precios](https://pyth.network/price-feeds) para Base.
 
-See [this guide](https://docs.pyth.network/documentation/pythnet-price-feeds/evm) to learn how to use the Pyth feeds.
+Consulta [esta guía](https://docs.pyth.network/documentation/pythnet-price-feeds/evm) para aprender cómo usar los feeds de Pyth.
 
-#### Supported Networks
+#### Redes Soportadas
 
 - Base Mainnet
 - Base Sepolia (Testnet)
@@ -119,11 +119,11 @@ See [this guide](https://docs.pyth.network/documentation/pythnet-price-feeds/evm
 
 ## RedStone
 
-[RedStone](https://redstone.finance/) provides 1200+ [price feeds](https://app.redstone.finance/) for Base.
+[RedStone](https://redstone.finance/) proporciona más de 1200 [feeds de precios](https://app.redstone.finance/) para Base.
 
-See [this guide](https://docs.redstone.finance/) to learn how to use the RedStone feeds.
+Consulta [esta guía](https://docs.redstone.finance/) para aprender cómo usar los feeds de RedStone.
 
-#### Supported Networks
+#### Redes Soportadas
 
 - Base Mainnet
 
@@ -131,11 +131,11 @@ See [this guide](https://docs.redstone.finance/) to learn how to use the RedSton
 
 ## Supra
 
-[Supra](https://supraoracles.com) provides VRF and decentralized oracle price feeds that can be used for onchain and offchain use-cases such as spot and perpetual DEXes, lending protocols, and payments protocols. Supra’s oracle chain and consensus algorithm makes it one of the fastest-to-finality oracle providers, with layer-1 security guarantees. The pull oracle has a sub-second response time. Aside from speed and security, Supra’s rotating node architecture gathers data from 40+ data sources and applies a robust calculation methodology to get the most accurate value. The node provenance on the data dashboard also provides a fully transparent historical audit trail. Supra’s Distributed Oracle Agreement (DORA) paper was accepted into ICDCS 2023, the oldest distributed systems conference.
+[Supra](https://supraoracles.com) proporciona VRF y feeds de precios de oráculos descentralizados que pueden ser utilizados para casos de uso en la cadena y fuera de la cadena, como DEXes spot y perpetuos, protocolos de préstamos y protocolos de pagos. La cadena de oráculos y el algoritmo de consenso de Supra lo convierten en uno de los proveedores de oráculos más rápidos en alcanzar la finalización, con garantías de seguridad de capa 1. El oráculo pull tiene un tiempo de respuesta inferior a un segundo. Además de la velocidad y la seguridad, la arquitectura de nodos rotativos de Supra recopila datos de más de 40 fuentes de datos y aplica una metodología de cálculo robusta para obtener el valor más preciso. La procedencia de los nodos en el panel de datos también proporciona una pista de auditoría histórica completamente transparente. El documento de Acuerdo de Oráculo Distribuido (DORA) de Supra fue aceptado en ICDCS 2023, la conferencia de sistemas distribuidos más antigua.
 
-Visit the Supra [documentation](https://supraoracles.com/docs/) to learn more about integrating Supra's oracle and VRF into your Base project.
+Visita la [documentación](https://supraoracles.com/docs/) de Supra para aprender más sobre cómo integrar el oráculo y VRF de Supra en tu proyecto Base.
 
-#### Supported Networks
+#### Redes Soportadas
 
 - Base Mainnet
 - Base Sepolia (Testnet)

@@ -26,56 +26,56 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# User Onboarding
+# Incorporación de Usuarios
 
 ---
 
 ## Crossmint
 
-[Crossmint](https://crossmint.com/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) is an enterprise-grade web3 development platform that lets you deploy smart contracts, create email wallets, enable credit-card and cross chain payments, and use APIs to create, distribute, sell, store, and edit NFTs. By abstracting away the core complexities of the Blockchain, Crossmint allows you to build NFT applications without requiring any blockchain experience or holding cryptocurrency, and making the blockchain invisible to end users. Crossmint enables you to provide a Web2 experience for your Web3 apps and onboard users.
+[Crossmint](https://crossmint.com/?utm_source=backlinks&utm_medium=docs&utm_campaign=base) es una plataforma de desarrollo web3 de nivel empresarial que te permite desplegar contratos inteligentes, crear billeteras de correo electrónico, habilitar pagos con tarjeta de crédito y entre cadenas, y usar APIs para crear, distribuir, vender, almacenar y editar NFTs. Al abstraer las complejidades centrales de la Blockchain, Crossmint te permite construir aplicaciones NFT sin requerir experiencia en blockchain o poseer criptomonedas, haciendo la blockchain invisible para los usuarios finales. Crossmint te permite proporcionar una experiencia Web2 para tus aplicaciones Web3 e incorporar usuarios.
 
 ---
 
 ## Dynamic
 
-[Dynamic](https://www.dynamic.xyz/) is a login platform designed for seamless user onboarding. It offers smart and simple login flows for both crypto-native and non-native users. Dynamic features support for non-custodial embedded wallets and consolidating multiple wallets under a single user account. The Dynamic platform is compatible with most EVM chains, including Base.
+[Dynamic](https://www.dynamic.xyz/) es una plataforma de inicio de sesión diseñada para una incorporación de usuarios sin problemas. Ofrece flujos de inicio de sesión inteligentes y simples tanto para usuarios nativos de criptomonedas como para no nativos. Dynamic cuenta con soporte para billeteras integradas no custodiales y la consolidación de múltiples billeteras bajo una sola cuenta de usuario. La plataforma Dynamic es compatible con la mayoría de las cadenas EVM, incluyendo Base.
 
 ---
 
 ## Openfort
 
-[Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. Authenticated users can instantly access the embedded, non-custodial [smart account](https://www.openfort.xyz/docs/guides/accounts/smart) natively in the game and sign blockchain transactions with one button. The Oepnfort platform is compatible with most EVM chains, including Base.
+[Openfort](https://openfort.xyz) es un proveedor de infraestructura diseñado para simplificar el desarrollo de juegos y experiencias gamificadas a través de su suite de puntos finales API. Los usuarios autenticados pueden acceder instantáneamente a la [cuenta inteligente](https://www.openfort.xyz/docs/guides/accounts/smart) integrada y no custodial de forma nativa en el juego y firmar transacciones de blockchain con un solo botón. La plataforma Openfort es compatible con la mayoría de las cadenas EVM, incluyendo Base.
 
-Use [Auth Guide](https://www.openfort.xyz/docs/guides/auth/overview) to allow several onboarding methods into your game regardless of the platform. 
+Usa la [Guía de Autenticación](https://www.openfort.xyz/docs/guides/auth/overview) para permitir varios métodos de incorporación en tu juego, independientemente de la plataforma.
 
 ---
 
 ## Privy
 
-[Privy](https://www.privy.io/) is a library designed for progressive user onboarding and authentication. It enables users to connect to your app using traditional methods such as email addresses, phone numbers, or social profiles, as well as through web3 methods like crypto wallets. Additionally, Privy supports embedded wallets, eliminating the need for users to have a self-custodial wallet prior to exploring your app. Privy is compatible with most EVM chains, including Base.
+[Privy](https://www.privy.io/) es una biblioteca diseñada para la incorporación y autenticación progresiva de usuarios. Permite a los usuarios conectarse a tu aplicación utilizando métodos tradicionales como direcciones de correo electrónico, números de teléfono o perfiles sociales, así como métodos web3 como billeteras de criptomonedas. Además, Privy soporta billeteras integradas, eliminando la necesidad de que los usuarios tengan una billetera autocustodial antes de explorar tu aplicación. Privy es compatible con la mayoría de las cadenas EVM, incluyendo Base.
 
-You can [get started with Privy here](https://docs.privy.io/guide/quickstart), and check out these starter repos for [building a Progressive Web App (PWA) on Base](https://github.com/privy-io/create-privy-pwa) and [using the Base Paymaster with Privy](https://github.com/privy-io/base-paymaster-example).
+Puedes [comenzar con Privy aquí](https://docs.privy.io/guide/quickstart), y revisar estos repositorios de inicio para [construir una Aplicación Web Progresiva (PWA) en Base](https://github.com/privy-io/create-privy-pwa) y [usar el Base Paymaster con Privy](https://github.com/privy-io/base-paymaster-example).
 
 ---
 
 ## Particle Network
 
-[Particle Network](https://particle.network/) is the intent-centric, modular access layer of Web3. With Particle's Smart Wallet-as-a-Service, developers can curate a seamless user experience through modular and customizable EOA/AA embedded wallet components. Using MPC-TSS for key management, Particle can streamline user onboarding via familiar web2 accounts - such as Google accounts, email addresses, and phone numbers. Particle Network's Smart Wallet-as-a-Service is compatible with most EVM chains, including Base.
+[Particle Network](https://particle.network/) es la capa de acceso modular centrada en la intención de Web3. Con el Smart Wallet-as-a-Service de Particle, los desarrolladores pueden curar una experiencia de usuario sin problemas a través de componentes de billetera integrados EOA/AA modulares y personalizables. Usando MPC-TSS para la gestión de claves, Particle puede agilizar la incorporación de usuarios a través de cuentas web2 familiares, como cuentas de Google, direcciones de correo electrónico y números de teléfono. El Smart Wallet-as-a-Service de Particle Network es compatible con la mayoría de las cadenas EVM, incluyendo Base.
 
 ---
 
 ## Sequence
 
-[Sequence](https://sequence.xyz/base) is an all-in-one development platform for integrating web3 into games. Onboard, monetize, grow, and retain players with Sequence’s award-winning technology including: non-custodial Embedded Wallets, white labeled marketplaces and marketplace API, indexer, relayer, node gateway, Unity/Unreal/React Native/Mobile SDKs, transaction API, contract deployment, analytics, and more. [Learn more here](https://sequence.xyz/base) and start creating on [Sequence Builder](https://sequence.build/) now.
+[Sequence](https://sequence.xyz/base) es una plataforma de desarrollo todo en uno para integrar web3 en juegos. Incorpora, monetiza, crece y retén jugadores con la tecnología galardonada de Sequence, que incluye: billeteras integradas no custodiales, mercados de marca blanca y API de mercado, indexador, retransmisor, puerta de enlace de nodos, SDKs para Unity/Unreal/React Native/Mobile, API de transacciones, despliegue de contratos, análisis y más. [Aprende más aquí](https://sequence.xyz/base) y comienza a crear en [Sequence Builder](https://sequence.build/) ahora.
 
 ---
 
 ## WalletKit
 
-[WalletKit](https://walletkit.com) is an all-in-one platform for adding smart, gasless wallets to your app. WalletKit offers pre-built components for onboarding users with email and social logins, which can be integrated in under 15 minutes using their React SDK or the wagmi connector. Alternatively, build completely bespoke experiences for your users using WalletKit's Wallets API.
+[WalletKit](https://walletkit.com) es una plataforma todo en uno para agregar billeteras inteligentes y sin gas a tu aplicación. WalletKit ofrece componentes preconstruidos para incorporar usuarios con inicios de sesión por correo electrónico y redes sociales, que se pueden integrar en menos de 15 minutos usando su SDK de React o el conector wagmi. Alternativamente, construye experiencias completamente personalizadas para tus usuarios usando la API de Wallets de WalletKit.
 
-WalletKit is compatible with most EVM chains, including Base. It has integrated support for ERC 4337 and comes with a paymaster and bundler included, requiring no extra setup.
+WalletKit es compatible con la mayoría de las cadenas EVM, incluyendo Base. Tiene soporte integrado para ERC 4337 y viene con un paymaster y un bundler incluidos, sin necesidad de configuración adicional.
 
-You can check out the [WalletKit documentation here](https://docs.walletkit.com). Start building for free on the Base testnet today.
+Puedes revisar la [documentación de WalletKit aquí](https://docs.walletkit.com). Comienza a construir gratis en la testnet de Base hoy.
 
 ---

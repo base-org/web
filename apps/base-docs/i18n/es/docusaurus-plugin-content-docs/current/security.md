@@ -20,26 +20,26 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# Security
+# Seguridad
 
 ---
 
-## Bug bounty program
+## Programa de recompensas por errores
 
-In line with our strategy of being the safest way for users to access crypto:
+En línea con nuestra estrategia de ser la forma más segura para que los usuarios accedan a criptomonedas:
 
-- Coinbase will be extending our [best-in-industry](https://www.coinbase.com/blog/celebrating-10-years-of-our-bug-bounty-program) million-dollar [HackerOne bug bounty program](https://hackerone.com/coinbase?type=team) to cover the Base network, the Base bridge contracts, and Base infrastructure.
-- Coinbase will be working in tandem with OP Labs to harden the security guarantees of Bedrock and accelerate the timeline for decentralized fault-proofs on the [OP Stack](https://stack.optimism.io/).
-- Coinbase's bug bounty program will run alongside Optimism's existing [Immunefi Bedrock bounty program](https://immunefi.com/bounty/optimism/) to support the open source [Bedrock](https://stack.optimism.io/docs/releases/bedrock/) OP Stack framework.
+- Coinbase extenderá nuestro [mejor en la industria](https://www.coinbase.com/blog/celebrating-10-years-of-our-bug-bounty-program) programa de recompensas por errores de un millón de dólares en [HackerOne](https://hackerone.com/coinbase?type=team) para cubrir la red Base, los contratos puente de Base y la infraestructura de Base.
+- Coinbase trabajará en conjunto con OP Labs para fortalecer las garantías de seguridad de Bedrock y acelerar el cronograma para pruebas de fallos descentralizadas en el [OP Stack](https://stack.optimism.io/).
+- El programa de recompensas por errores de Coinbase se ejecutará junto con el programa de recompensas existente de Optimism en [Immunefi Bedrock](https://immunefi.com/bounty/optimism/) para apoyar el marco de código abierto [Bedrock](https://stack.optimism.io/docs/releases/bedrock/) OP Stack.
 
 ---
 
-## Reporting vulnerabilities
+## Reporte de vulnerabilidades
 
-All potential vulnerability reports can be submitted via the [HackerOne](https://hackerone.com/coinbase) platform.
+Todos los posibles informes de vulnerabilidades pueden ser enviados a través de la plataforma [HackerOne](https://hackerone.com/coinbase).
 
-The HackerOne platform allows us to have a centralized and single reporting source for us to deliver optimized SLA's and results. All reports submitted to the platform are triaged around the clock by our team of Coinbase engineers with domain knowledge, assuring the best quality of review.
+La plataforma HackerOne nos permite tener una fuente centralizada y única de informes para ofrecer SLA's y resultados optimizados. Todos los informes enviados a la plataforma son evaluados las 24 horas por nuestro equipo de ingenieros de Coinbase con conocimiento de dominio, asegurando la mejor calidad de revisión.
 
-For more information on reporting vulnerabilities and our HackerOne bug bounty program, view our [security program policies](https://hackerone.com/coinbase?view_policy=true).
+Para más información sobre el reporte de vulnerabilidades y nuestro programa de recompensas por errores en HackerOne, consulta nuestras [políticas del programa de seguridad](https://hackerone.com/coinbase?view_policy=true).
 
 ---

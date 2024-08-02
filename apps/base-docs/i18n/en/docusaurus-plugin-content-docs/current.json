@@ -38,5 +38,129 @@
   "sidebar.developers.link.Brand Kit": {
     "message": "Brand Kit",
     "description": "The label for link Brand Kit in sidebar developers, linking to https://github.com/base-org/brand-kit"
+  },
+  "sidebar.developers.doc.Overview": {
+    "message": "Overview",
+    "description": "The label for the doc item Overview in sidebar developers, linking to the doc overview"
+  },
+  "sidebar.developers.doc.Using Base": {
+    "message": "Using Base",
+    "description": "The label for the doc item Using Base in sidebar developers, linking to the doc using-base"
+  },
+  "sidebar.developers.doc.Preparing for Fault Proofs on Base Sepolia": {
+    "message": "Preparing for Fault Proofs on Base Sepolia",
+    "description": "The label for the doc item Preparing for Fault Proofs on Base Sepolia in sidebar developers, linking to the doc notices/preparing-for-fault-proofs-on-base-sepolia"
+  },
+  "sidebar.developers.doc.Node Providers": {
+    "message": "Node Providers",
+    "description": "The label for the doc item Node Providers in sidebar developers, linking to the doc tools/node-providers"
+  },
+  "sidebar.developers.doc.Block Explorers": {
+    "message": "Block Explorers",
+    "description": "The label for the doc item Block Explorers in sidebar developers, linking to the doc tools/block-explorers"
+  },
+  "sidebar.developers.doc.Network Faucets": {
+    "message": "Network Faucets",
+    "description": "The label for the doc item Network Faucets in sidebar developers, linking to the doc tools/network-faucets"
+  },
+  "sidebar.developers.doc.Oracles": {
+    "message": "Oracles",
+    "description": "The label for the doc item Oracles in sidebar developers, linking to the doc tools/oracles"
+  },
+  "sidebar.developers.doc.Data Indexers": {
+    "message": "Data Indexers",
+    "description": "The label for the doc item Data Indexers in sidebar developers, linking to the doc tools/data-indexers"
+  },
+  "sidebar.developers.doc.Cross-chain": {
+    "message": "Cross-chain",
+    "description": "The label for the doc item Cross-chain in sidebar developers, linking to the doc tools/cross-chain"
+  },
+  "sidebar.developers.doc.Account Abstraction": {
+    "message": "Account Abstraction",
+    "description": "The label for the doc item Account Abstraction in sidebar developers, linking to the doc tools/account-abstraction"
+  },
+  "sidebar.developers.doc.Onramps": {
+    "message": "Onramps",
+    "description": "The label for the doc item Onramps in sidebar developers, linking to the doc tools/onramps"
+  },
+  "sidebar.developers.doc.Onboarding": {
+    "message": "Onboarding",
+    "description": "The label for the doc item Onboarding in sidebar developers, linking to the doc tools/onboarding"
+  },
+  "sidebar.developers.doc.Bridges to Mainnet": {
+    "message": "Bridges to Mainnet",
+    "description": "The label for the doc item Bridges to Mainnet in sidebar developers, linking to the doc tools/bridges-mainnet"
+  },
+  "sidebar.developers.doc.Foundry": {
+    "message": "Foundry",
+    "description": "The label for the doc item Foundry in sidebar developers, linking to the doc tools/foundry"
+  },
+  "sidebar.developers.doc.Hardhat": {
+    "message": "Hardhat",
+    "description": "The label for the doc item Hardhat in sidebar developers, linking to the doc tools/hardhat"
+  },
+  "sidebar.developers.doc.Thirdweb CLI": {
+    "message": "Thirdweb CLI",
+    "description": "The label for the doc item Thirdweb CLI in sidebar developers, linking to the doc tools/thirdweb-cli"
+  },
+  "sidebar.developers.doc.Ethers": {
+    "message": "Ethers",
+    "description": "The label for the doc item Ethers in sidebar developers, linking to the doc tools/ethers"
+  },
+  "sidebar.developers.doc.Thirdweb SDK": {
+    "message": "Thirdweb SDK",
+    "description": "The label for the doc item Thirdweb SDK in sidebar developers, linking to the doc tools/thirdweb-sdk"
+  },
+  "sidebar.developers.doc.Viem": {
+    "message": "Viem",
+    "description": "The label for the doc item Viem in sidebar developers, linking to the doc tools/viem"
+  },
+  "sidebar.developers.doc.Web3": {
+    "message": "Web3",
+    "description": "The label for the doc item Web3 in sidebar developers, linking to the doc tools/web3"
+  },
+  "sidebar.developers.doc.Token List": {
+    "message": "Token List",
+    "description": "The label for the doc item Token List in sidebar developers, linking to the doc tokens/token-list"
+  },
+  "sidebar.developers.doc.Wallet": {
+    "message": "Wallet",
+    "description": "The label for the doc item Wallet in sidebar developers, linking to the doc tokens/wallet"
+  },
+  "sidebar.developers.doc.Contracts": {
+    "message": "Contracts",
+    "description": "The label for the doc item Contracts in sidebar developers, linking to the doc contracts"
+  },
+  "sidebar.developers.doc.Security": {
+    "message": "Security",
+    "description": "The label for the doc item Security in sidebar developers, linking to the doc security"
+  },
+  "sidebar.developers.doc.Terms of Service": {
+    "message": "Terms of Service",
+    "description": "The label for the doc item Terms of Service in sidebar developers, linking to the doc terms-of-service"
+  },
+  "sidebar.developers.doc.Privacy Policy": {
+    "message": "Privacy Policy",
+    "description": "The label for the doc item Privacy Policy in sidebar developers, linking to the doc privacy-policy"
+  },
+  "sidebar.developers.doc.Cookie Policy": {
+    "message": "Cookie Policy",
+    "description": "The label for the doc item Cookie Policy in sidebar developers, linking to the doc cookie-policy"
+  },
+  "sidebar.developers.doc.Network Information": {
+    "message": "Network Information",
+    "description": "The label for the doc item Network Information in sidebar developers, linking to the doc building-with-base/network-information"
+  },
+  "sidebar.developers.doc.Base Contracts": {
+    "message": "Base Contracts",
+    "description": "The label for the doc item Base Contracts in sidebar developers, linking to the doc building-with-base/base-contracts"
+  },
+  "sidebar.developers.doc.Fees": {
+    "message": "Fees",
+    "description": "The label for the doc item Fees in sidebar developers, linking to the doc building-with-base/fees"
+  },
+  "sidebar.developers.doc.Differences": {
+    "message": "Differences",
+    "description": "The label for the doc item Differences in sidebar developers, linking to the doc building-with-base/differences"
   }
 }

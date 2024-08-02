@@ -21,89 +21,89 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# Network Faucets
+# Faucets de Red
 
 ---
 
-## Coinbase Developer Platform
+## Plataforma de Desarrolladores de Coinbase
 
-The [Coinbase Developer Platform Faucet](https://portal.cdp.coinbase.com/products/faucet) provides free testnet ETH on Base Sepolia - one claim per 24 hours.
+El [Faucet de la Plataforma de Desarrolladores de Coinbase](https://portal.cdp.coinbase.com/products/faucet) proporciona ETH de prueba gratis en Base Sepolia - un reclamo cada 24 horas.
 
 :::info
 
-Requests to Coinbase Developer Platform's Faucet are limited to one claim per 24 hours.
+Las solicitudes al Faucet de la Plataforma de Desarrolladores de Coinbase están limitadas a un reclamo cada 24 horas.
 
 :::
 
 ---
 
-## Superchain Faucet
+## Faucet de Superchain
 
-The [Superchain Faucet](https://app.optimism.io/faucet) provides testnet ETH for all OP Chains, including Base.
+El [Faucet de Superchain](https://app.optimism.io/faucet) proporciona ETH de prueba para todas las Cadenas OP, incluyendo Base.
 
 :::info
 
-The Superchain faucet allows developers to authenticate via their onchain identity. Developers that choose to authenticate via their onchain identity can claim more testnet ETH versus traditional faucets. For more information, see the [FAQ](https://app.optimism.io/faucet).
+El faucet de Superchain permite a los desarrolladores autenticarse a través de su identidad en la cadena. Los desarrolladores que elijan autenticarse a través de su identidad en la cadena pueden reclamar más ETH de prueba en comparación con los faucets tradicionales. Para más información, consulta las [FAQ](https://app.optimism.io/faucet).
 
 :::
 
 ---
 
-## Alchemy Faucet
+## Faucet de Alchemy
 
-The [Alchemy Faucet](https://basefaucet.com/) is a fast and reliable network faucet that allows users with a free Alchemy account to request testnet ETH on Base Sepolia.
+El [Faucet de Alchemy](https://basefaucet.com/) es un faucet de red rápido y confiable que permite a los usuarios con una cuenta gratuita de Alchemy solicitar ETH de prueba en Base Sepolia.
 
 :::info
 
-Requests to Alchemy's Base Sepolia Faucet are limited to one claim per 24 hours.
+Las solicitudes al Faucet de Base Sepolia de Alchemy están limitadas a un reclamo cada 24 horas.
 
 :::
 
 ---
 
-## Bware Labs Faucet
+## Faucet de Bware Labs
 
-[Bware Labs Faucet](https://bwarelabs.com/faucets) is an easy to use faucet with no registration required. You can use Bware Labs Faucet to claim Base Sepolia testnet ETH for free - one claim per 24 hours.
+[Faucet de Bware Labs](https://bwarelabs.com/faucets) es un faucet fácil de usar que no requiere registro. Puedes usar el Faucet de Bware Labs para reclamar ETH de prueba en Base Sepolia gratis - un reclamo cada 24 horas.
 
 :::info
 
-Requests to Bware Labs Faucet are limited to one claim per 24 hours.
+Las solicitudes al Faucet de Bware Labs están limitadas a un reclamo cada 24 horas.
 
 :::
 
 ---
 
-## QuickNode Faucet
+## Faucet de QuickNode
 
-[QuickNode Faucet](https://faucet.quicknode.com/drip) is an easy to use Multi-Chain Faucet. You can use QuickNode Faucet to claim Base Sepolia testnet ETH for free - one drip per network every 12 hours.
+[Faucet de QuickNode](https://faucet.quicknode.com/drip) es un faucet multi-cadena fácil de usar. Puedes usar el Faucet de QuickNode para reclamar ETH de prueba en Base Sepolia gratis - un goteo por red cada 12 horas.
 
 :::info
 
-Requests to QuickNode Faucet are limited to one drip every 12 hours.
+Las solicitudes al Faucet de QuickNode están limitadas a un goteo cada 12 horas.
 
 :::
 
 ---
 
-## LearnWeb3 Faucet
+## Faucet de LearnWeb3
 
-[LearnWeb3 Faucet](https://learnweb3.io/faucets/base_sepolia) is a multi-chain faucet by LearnWeb3. You can use the LearnWeb3 faucet to claim Base Sepolia testnet ETH for free - one claim every 24 hours.
+[Faucet de LearnWeb3](https://learnweb3.io/faucets/base_sepolia) es un faucet multi-cadena de LearnWeb3. Puedes usar el faucet de LearnWeb3 para reclamar ETH de prueba en Base Sepolia gratis - un reclamo cada 24 horas.
 
 :::info
 
-Requests to LearnWeb3 faucet are limited to one claim per 24 hours.
+Las solicitudes al faucet de LearnWeb3 están limitadas a un reclamo cada 24 horas.
 
 :::
 
 ---
 
-## Ethereum Ecosystem Faucet
+## Faucet del Ecosistema Ethereum
 
-The [Base Sepolia Faucet](https://www.ethereum-ecosystem.com/faucets/base-sepolia) is a free & easy to use testnet faucet for Base Sepolia with very generous drips that doesn't require users to log in. It's run by [Ethereum Ecosystem](https://www.ethereum-ecosystem.com).
+El [Faucet de Base Sepolia](https://www.ethereum-ecosystem.com/faucets/base-sepolia) es un faucet de prueba gratuito y fácil de usar para Base Sepolia con goteos muy generosos que no requiere que los usuarios inicien sesión. Está gestionado por [Ecosistema Ethereum](https://www.ethereum-ecosystem.com).
 
 :::info
 
-Each wallet is restricted to receiving 0.5 ETH from this faucet every 24 hours.
+Cada billetera está restringida a recibir 0.5 ETH de este faucet cada 24 horas.
 
 :::
 

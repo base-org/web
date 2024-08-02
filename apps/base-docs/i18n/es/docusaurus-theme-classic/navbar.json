@@ -1,46 +1,46 @@
 {
   "logo.alt": {
-    "message": "Base Docs",
+    "message": "Documentos de Base",
     "description": "The alt text of navbar logo"
   },
   "item.label.Home": {
-    "message": "Home",
+    "message": "Inicio",
     "description": "Navbar item with label Home"
   },
   "item.label.Docs": {
-    "message": "Docs",
+    "message": "Documentos",
     "description": "Navbar item with label Docs"
   },
   "item.label.Tutorials": {
-    "message": "Tutorials",
+    "message": "Tutoriales",
     "description": "Navbar item with label Tutorials"
   },
   "item.label.Camp": {
-    "message": "Camp",
+    "message": "Campamento",
     "description": "Navbar item with label Camp"
   },
   "item.label.Ecosystem": {
-    "message": "Ecosystem",
+    "message": "Ecosistema",
     "description": "Navbar item with label Ecosystem"
   },
   "item.label.Bridge": {
-    "message": "Bridge",
+    "message": "Puente",
     "description": "Navbar item with label Bridge"
   },
   "item.label.Builders": {
-    "message": "Builders",
+    "message": "Constructores",
     "description": "Navbar item with label Builders"
   },
   "item.label.About": {
-    "message": "About",
+    "message": "Acerca de",
     "description": "Navbar item with label About"
   },
   "item.label.Learn": {
-    "message": "Learn",
+    "message": "Aprender",
     "description": "Navbar item with label Learn"
   },
   "item.label.Track your progress": {
-    "message": "Track your progress",
+    "message": "Rastrea tu progreso",
     "description": "Navbar item with label Track your progress"
   },
   "item.label.Bootcamp": {
@@ -48,27 +48,27 @@
     "description": "Navbar item with label Bootcamp"
   },
   "item.label.Apps": {
-    "message": "Apps",
+    "message": "Aplicaciones",
     "description": "Navbar item with label Apps"
   },
   "item.label.Grants": {
-    "message": "Grants",
+    "message": "Subvenciones",
     "description": "Navbar item with label Grants"
   },
   "item.label.Block Explorer": {
-    "message": "Block Explorer",
+    "message": "Explorador de Bloques",
     "description": "Navbar item with label Block Explorer"
   },
   "item.label.Status": {
-    "message": "Status",
+    "message": "Estado",
     "description": "Navbar item with label Status"
   },
   "item.label.Bug Bounty": {
-    "message": "Bug Bounty",
+    "message": "Recompensa de Errores",
     "description": "Navbar item with label Bug Bounty"
   },
   "item.label.Mission": {
-    "message": "Mission",
+    "message": "Misión",
     "description": "Navbar item with label Mission"
   },
   "item.label.Blog": {
@@ -76,7 +76,7 @@
     "description": "Navbar item with label Blog"
   },
   "item.label.Jobs": {
-    "message": "Jobs",
+    "message": "Trabajos",
     "description": "Navbar item with label Jobs"
   }
 }

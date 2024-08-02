@@ -175,9 +175,9 @@
         "checksum": "f4b7fa789b2c65e00e467c4851857ab2e629f6d8dbed7f8c2d625abf668a124b"
     },
     "0_gassless-transactions-with-paymaster": {
-        "title": "Gasless Transactions on Base using Coinbase Paymaster",
+        "title": "Gasless Transactions on Base using a Paymaster",
         "slug": "/gasless-transaction-on-base-using-a-paymaster",
-        "description": "Learn how to leverage Coinbase Paymaster for seamless, gasless transactions on the Coinbase Cloud Developer Platform.",
+        "description": "Learn how to leverage the Base Paymaster for seamless, gasless transactions on the Coinbase Cloud Developer Platform.",
         "author": "hughescoin",
         "keywords": [
             "Gas",
@@ -203,9 +203,9 @@
         "difficulty": "easy",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "25 min read",
-        "checksum": "bb4faf87f8d0f36abf18b2f2440d2111af2c6f31552be1cede40f2dc2162c9e4"
+        "last_updated": "Jul 31, 2024",
+        "duration": "27 min read",
+        "checksum": "c865eca8e6dac99a499e6e60f127a88e056a88a1258e8a27b1d06ff0aee187d8"
     },
     "0_run-a-base-node": {
         "title": "Running a Base Node",
@@ -267,6 +267,32 @@
         "last_updated": "Jul 11, 2024",
         "duration": "8 min read",
         "checksum": "527200e33d612b0c76e5eaacddfc23633b57eaa4577f389d4429b8f862c45462"
+    },
+    "1_event-gate-nouns": {
+        "title": "Gate IRL Events with Nouns",
+        "slug": "/event-gate-with-nouns",
+        "description": "Learn how to gate entry to an IRL event for members of a Nounish DAO.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "Gate",
+            "Nouns",
+            "PFP"
+        ],
+        "tags": [
+            "nft",
+            "smart contracts",
+            "frontend"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Jul 31, 2024",
+        "duration": "19 min read",
+        "checksum": "39b4650ce0a61820c97b2dd0c87bd820905f22e7e83d17dfd809c67dcc614880"
     },
     "1_event-poap-nouns": {
         "title": "Event POAPs with Nouns",
@@ -698,9 +724,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 31, 2024",
         "duration": "9 min read",
-        "checksum": "3174ebe066db1100e389cf2b0ec1451c2711145fb645dc540f4c08c5a2e48540"
+        "checksum": "ba1677b175817133d6419243c57f4191f39ce4c66999c7e40ba25e4b9661af6a"
     },
     "3_farcaster-frames-gating-and-redirects": {
         "title": "Farcaster Frames: Gating content and creating redirects",
@@ -718,14 +744,14 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "12 min read",
-        "checksum": "81672fdd81867b1ac78f474fb670c073da4132fcccd961b809a88f84580b7fca"
+        "last_updated": "Jul 31, 2024",
+        "duration": "11 min read",
+        "checksum": "1f7e5dddd604e07f767f975d50c6ef197b93372acd72a48b8c473ef5e1b45f02"
     },
     "3_farcaster-frames-hyperframes": {
         "title": "Farcaster Frames: Building HyperFrames",
         "slug": "/farcaster-frames-hyperframes",
-        "description": "A tutorial that teaches how to make cross-linked hyperframes in an organized manner.",
+        "description": "A tutorial that teaches how to make cross-linked HyperFrames in an organized manner.",
         "author": "briandoyle81",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
@@ -733,7 +759,7 @@
             "farcaster",
             "frames",
             "farcaster frames",
-            "hyperframes",
+            "HyperFrames",
             "hyper frames",
             "state",
             "frame state",
@@ -743,9 +769,9 @@
         "tags": [
             "frames"
         ],
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 31, 2024",
         "duration": "16 min read",
-        "checksum": "dca5d7ffcf59c834221a9585628ba88e58842be3ed2c10705e1185e6c5d30715"
+        "checksum": "c342f5b4fa804db468119b74291c926b44a47d0d387a90cc61108f592957db39"
     },
     "3_farcaster-frames-nft-minting": {
         "title": "Farcaster Frames: Building an NFT airdrop Frame",
@@ -768,9 +794,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "22 min read",
-        "checksum": "4f2e23920817a1ef138ce594423b25d57080ecb1f954940cc91ef133f1050fa4"
+        "last_updated": "Jul 31, 2024",
+        "duration": "23 min read",
+        "checksum": "c5d32fe903340ddde91a3f0335c9956f7baa37f113a16d4e88b0084d88aaf866"
     },
     "3_farcaster-frames-nocode-minting": {
         "title": "Farcaster Frames: Building a no-code minting Frame",
@@ -794,9 +820,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "7 min read",
-        "checksum": "2201cf6ca7cf13fc8940de15b834076090671161a37e97a3146fd207b79b2033"
+        "last_updated": "Jul 31, 2024",
+        "duration": "6 min read",
+        "checksum": "cfe08c3fffa7ffaa0cd99af4e3c62aa767f6805cbd2bd8b393085f26c7eb24de"
     },
     "3_farcaster-frames-transactions": {
         "title": "Farcaster Frames: Making transactions",
@@ -817,9 +843,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Jul 31, 2024",
         "duration": "17 min read",
-        "checksum": "f039e4e2b33d73e803fbc7785395ca283dc0abe35c46ead630e1dfaa0d7ab275"
+        "checksum": "5e8d4730a79c444ed02c58af3960a4499d39b61b76b1e38909b1f08be0a82f78"
     },
     "4_hardhat-debugging": {
         "title": "Hardhat: Debugging smart contracts",

@@ -18,26 +18,26 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# About Base
+# Acerca de Base
 
-Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain.
+Base es una L2 de Ethereum segura, de bajo costo y amigable para desarrolladores, construida para llevar a los próximos mil millones de usuarios a la cadena.
 
-Base is incubated within Coinbase and plans to progressively decentralize in the years ahead. We believe that decentralization is critical to creating an open, global cryptoeconomy that is accessible to everyone.
+Base está incubada dentro de Coinbase y planea descentralizarse progresivamente en los próximos años. Creemos que la descentralización es crítica para crear una criptoeconomía abierta y global accesible para todos.
 
 ---
 
 ### Ethereum L2
 
-Base is built as an Ethereum L2, with the security, stability, and scalability you need to power your onchain apps. Confidently deploy any EVM codebase and onramp your users and assets from Ethereum L1, Coinbase, and other interoperable chains.
+Base está construida como una L2 de Ethereum, con la seguridad, estabilidad y escalabilidad que necesitas para impulsar tus aplicaciones en cadena. Despliega con confianza cualquier base de código EVM y facilita la incorporación de tus usuarios y activos desde Ethereum L1, Coinbase y otras cadenas interoperables.
 
-### Big features, small fees
+### Grandes características, pequeñas tarifas
 
-Get the EVM environment at a fraction of the cost. Get early access to Ethereum features like Account Abstraction (ERC4337), simple developer APIs for gasless transactions, and smart contract wallets.
+Obtén el entorno EVM a una fracción del costo. Obtén acceso temprano a características de Ethereum como la Abstracción de Cuenta (ERC4337), API simples para desarrolladores para transacciones sin gas y billeteras de contratos inteligentes.
 
-### Open source
+### Código abierto
 
-Base is built on the MIT-licensed [OP Stack](https://stack.optimism.io/), in collaboration with Optimism. We're joining as the second Core Dev team working on the OP Stack to ensure it’s a public good available to everyone.
+Base está construida sobre el [OP Stack](https://stack.optimism.io/) con licencia MIT, en colaboración con Optimism. Nos unimos como el segundo equipo de desarrollo principal trabajando en el OP Stack para asegurar que sea un bien público disponible para todos.
 
-### Scaled by Coinbase
+### Escalado por Coinbase
 
-Base is an easy way for decentralized apps to leverage Coinbase's products and distribution. Seamless Coinbase integrations, easy fiat onramps, and access to millions of verified users in the Coinbase ecosystem.
+Base es una forma fácil para que las aplicaciones descentralizadas aprovechen los productos y la distribución de Coinbase. Integraciones sin problemas con Coinbase, rampas de entrada de fiat fáciles y acceso a millones de usuarios verificados en el ecosistema de Coinbase.

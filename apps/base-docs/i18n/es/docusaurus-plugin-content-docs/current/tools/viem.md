@@ -22,27 +22,27 @@ hide_table_of_contents: true
 
 :::info
 
-Viem is currently only available on Base Sepolia testnet.
+Viem está actualmente disponible solo en la testnet Base Sepolia.
 
 :::
 
-[viem](https://viem.sh/) a TypeScript interface for Ethereum that provides low-level stateless primitives for interacting with Ethereum.
+[viem](https://viem.sh/) es una interfaz de TypeScript para Ethereum que proporciona primitivas sin estado de bajo nivel para interactuar con Ethereum.
 
-You can use viem to interact with smart contracts deployed on Base.
+Puedes usar viem para interactuar con contratos inteligentes desplegados en Base.
 
 ---
 
-## Install
+## Instalar
 
-To install viem run the following command:
+Para instalar viem, ejecuta el siguiente comando:
 
 ```bash
 npm install --save viem
 ```
 
-## Setup
+## Configuración
 
-Before you can start using viem, you need to setup a [Client](https://viem.sh/docs/clients/intro.html) with a desired [Transport](https://viem.sh/docs/clients/intro.html) and [Chain](https://viem.sh/docs/chains/introduction).
+Antes de que puedas empezar a usar viem, necesitas configurar un [Cliente](https://viem.sh/docs/clients/intro.html) con un [Transporte](https://viem.sh/docs/clients/intro.html) y [Cadena](https://viem.sh/docs/chains/introduction) deseados.
 
 ```javascript
 import { createPublicClient, http } from 'viem';
@@ -56,27 +56,27 @@ const client = createPublicClient({
 
 :::info
 
-To use Base, you must specify `base` as the chain when creating a Client.
+Para usar Base, debes especificar `base` como la cadena al crear un Cliente.
 
-To use Base Sepolia (testnet), replace `base` with `baseSepolia`.
+Para usar Base Sepolia (testnet), reemplaza `base` con `baseSepolia`.
 
 :::
 
-## Reading data from the blockchain
+## Leyendo datos de la blockchain
 
-Once you have created a client, you can use it to read and access data from Base using [Public Actions](https://viem.sh/docs/actions/public/introduction.html)
+Una vez que hayas creado un cliente, puedes usarlo para leer y acceder a datos de Base usando [Acciones Públicas](https://viem.sh/docs/actions/public/introduction.html)
 
-Public Actions are client methods that map one-to-one with a "public" Ethereum RPC method (`eth_blockNumber`, `eth_getBalance`, etc.)
+Las Acciones Públicas son métodos del cliente que se mapean uno a uno con un método RPC "público" de Ethereum (`eth_blockNumber`, `eth_getBalance`, etc.)
 
-For example, you can use the `getBlockNumber` client method to get the latest block:
+Por ejemplo, puedes usar el método del cliente `getBlockNumber` para obtener el último bloque:
 
 ```javascript
 const blockNumber = await client.getBlockNumber();
 ```
 
-## Writing data to the blockchain
+## Escribiendo datos en la blockchain
 
-In order to write data to Base, you need to create a Wallet client (`createWalletClient`) and specify an [`Account`](https://ethereum.org/en/developers/docs/accounts/) to use.
+Para escribir datos en Base, necesitas crear un cliente de Wallet (`createWalletClient`) y especificar una [`Cuenta`](https://ethereum.org/en/developers/docs/accounts/) para usar.
 
 ```javascript
 import { createWalletClient, custom } from 'viem'
@@ -98,15 +98,15 @@ client.sendTransaction({ ... })
 
 :::info
 
-In addition to making a JSON-RPC request (`eth_requestAccounts`) to get an Account, viem provides various helper methods for creating an `Account`, including: [`privateKeyToAccount`](https://viem.sh/docs/accounts/privateKey.html), [`mnemonicToAccount`](https://viem.sh/docs/accounts/mnemonic.html), and [`hdKeyToAccount`](https://viem.sh/docs/accounts/hd.html).
+Además de hacer una solicitud JSON-RPC (`eth_requestAccounts`) para obtener una Cuenta, viem proporciona varios métodos auxiliares para crear una `Cuenta`, incluyendo: [`privateKeyToAccount`](https://viem.sh/docs/accounts/privateKey.html), [`mnemonicToAccount`](https://viem.sh/docs/accounts/mnemonic.html), y [`hdKeyToAccount`](https://viem.sh/docs/accounts/hd.html).
 
-To use Base Sepolia (testnet), replace `base` with `baseSepolia`.
+Para usar Base Sepolia (testnet), reemplaza `base` con `baseSepolia`.
 
 :::
 
-## Interacting with smart contracts
+## Interactuando con contratos inteligentes
 
-You can use viem to interact with a smart contract on Base by creating a `Contract` instance using [`getContract`](https://viem.sh/docs/contract/getContract.html) and passing it the contract ABI, contract address, and [Public](https://viem.sh/docs/clients/public.html) and/or [Wallet](https://viem.sh/docs/clients/wallet.html) Client:
+Puedes usar viem para interactuar con un contrato inteligente en Base creando una instancia de `Contract` usando [`getContract`](https://viem.sh/docs/contract/getContract.html) y pasándole el ABI del contrato, la dirección del contrato, y el Cliente [Público](https://viem.sh/docs/clients/public.html) y/o [Wallet](https://viem.sh/docs/clients/wallet.html):
 
 ```javascript
 import { getContract } from 'viem';
@@ -126,6 +126,6 @@ const result = await contract.read.totalSupply();
 
 :::info
 
-`CONTRACT_ADDRESS` is the address of the deployed contract.
+`CONTRACT_ADDRESS` es la dirección del contrato desplegado.
 
 :::

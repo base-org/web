@@ -21,75 +21,75 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# Block Explorers
+# Exploradores de Bloques
 
 ## Arkham
 
-The Arkham [Platform](https://platform.arkhamintelligence.com/) supports Base.
+La [Plataforma](https://platform.arkhamintelligence.com/) de Arkham soporta Base.
 
-Arkham is a crypto intelligence platform that systematically analyzes blockchain transactions, showing users the people and companies behind blockchain activity, with a suite of advanced tools for analyzing their activity.
+Arkham es una plataforma de inteligencia cripto que analiza sistemáticamente las transacciones en blockchain, mostrando a los usuarios las personas y empresas detrás de la actividad en blockchain, con un conjunto de herramientas avanzadas para analizar su actividad.
 
 ---
 
 ## Blockscout
 
-A Blockscout explorer is available for [Base](https://base.blockscout.com/).
+Un explorador Blockscout está disponible para [Base](https://base.blockscout.com/).
 
-Blockscout provides tools to help you debug smart contracts and transactions:
+Blockscout proporciona herramientas para ayudarte a depurar contratos inteligentes y transacciones:
 
-- View, verify, and interact with smart contract source code.
-- View detailed transaction information
+- Ver, verificar e interactuar con el código fuente del contrato inteligente.
+- Ver información detallada de las transacciones
 
-A testnet explorer for [Base Sepolia](https://base-sepolia.blockscout.com/) is also available.
+También está disponible un explorador de testnet para [Base Sepolia](https://base-sepolia.blockscout.com/).
 
 ---
 
 ## Etherscan
 
-An Etherscan block explorer is available for [Base](https://basescan.org).
+Un explorador de bloques Etherscan está disponible para [Base](https://basescan.org).
 
-Etherscan provides tools to help you view transaction data and debug smart contracts:
+Etherscan proporciona herramientas para ayudarte a ver datos de transacciones y depurar contratos inteligentes:
 
-- Search by address, transaction hash, batch, or token
-- View, verify, and interact with smart contract source code
-- View detailed transaction information
-- View L1-to-L2 and L2-to-L1 transactions
+- Buscar por dirección, hash de transacción, lote o token
+- Ver, verificar e interactuar con el código fuente del contrato inteligente
+- Ver información detallada de las transacciones
+- Ver transacciones de L1 a L2 y de L2 a L1
 
-A testnet explorer for [Base Sepolia](https://sepolia.basescan.org/) is also available.
+También está disponible un explorador de testnet para [Base Sepolia](https://sepolia.basescan.org/).
 
 ---
 
 ## DexGuru
 
-[DexGuru](https://base.dex.guru) provides a familiar UI with data on transactions, blocks, account balances and more. Developers can use it to verify smart contracts and debug transactions with interactive traces and logs visualization.
+[DexGuru](https://base.dex.guru) proporciona una interfaz de usuario familiar con datos sobre transacciones, bloques, saldos de cuentas y más. Los desarrolladores pueden usarlo para verificar contratos inteligentes y depurar transacciones con trazas interactivas y visualización de registros.
 
 ---
 
 ## L2scan Explorer
 
-[L2scan Explorer](https://base.l2scan.co/) is a web-based tool that allows users to analyze Base and other layer 2 networks. It provides a user-friendly interface for viewing transaction history, checking account balances, and tracking the status of network activity.
+[L2scan Explorer](https://base.l2scan.co/) es una herramienta basada en la web que permite a los usuarios analizar Base y otras redes de capa 2. Proporciona una interfaz fácil de usar para ver el historial de transacciones, verificar saldos de cuentas y rastrear el estado de la actividad de la red.
 
 ---
 
 ## OKLink
 
-[OKLink](https://www.oklink.com/base) is a multi-chain blockchain explorer that supports Base and provides the following features for developers:
+[OKLink](https://www.oklink.com/base) es un explorador de blockchain multi-cadena que soporta Base y proporciona las siguientes características para desarrolladores:
 
-- Search by address, transaction, block, or token
-- View, verify, and interact with smart contract source code
-- Access a comprehensive and real-time stream of on-chain data, including large transactions and significant fund movements
-- Address labels (i.e. project labels, contract labels, risk labels, black address labels, etc.)
+- Buscar por dirección, transacción, bloque o token
+- Ver, verificar e interactuar con el código fuente del contrato inteligente
+- Acceder a un flujo integral y en tiempo real de datos en cadena, incluidas grandes transacciones y movimientos significativos de fondos
+- Etiquetas de direcciones (es decir, etiquetas de proyectos, etiquetas de contratos, etiquetas de riesgo, etiquetas de direcciones negras, etc.)
 
 ---
 
 ## Routescan
 
-[Routescan](https://superscan.network/) superchain explorer allows you to search for transactions, addresses, tokens, prices and other activities taking place across all Superchain blockchains, including Base.
+El explorador de supercadena [Routescan](https://superscan.network/) te permite buscar transacciones, direcciones, tokens, precios y otras actividades que tienen lugar en todas las blockchains de Superchain, incluida Base.
 
 ---
 
 ## Tenderly Explorer
 
-With the [Tenderly](https://tenderly.co/) developer explorer you can get unparalleled visibility into your smart contract code. You can easily view detailed transaction information, spot bugs in your code, and optimize gas spend. Supporting Base mainnet and Base Sepolia testnet, Tenderly Explorer helps you track your smart contracts while providing visibility on a granular level.
+Con el explorador para desarrolladores [Tenderly](https://tenderly.co/) puedes obtener una visibilidad sin igual en tu código de contrato inteligente. Puedes ver fácilmente información detallada de las transacciones, detectar errores en tu código y optimizar el gasto de gas. Al soportar la mainnet de Base y la testnet de Base Sepolia, Tenderly Explorer te ayuda a rastrear tus contratos inteligentes mientras proporciona visibilidad a un nivel granular.
 
 ---

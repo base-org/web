@@ -1,42 +1,166 @@
 {
   "version.label": {
-    "message": "Next",
-    "description": "The label for version current"
+    "message": "Siguiente",
+    "description": "La etiqueta para la versión actual"
   },
   "sidebar.developers.category.Notices": {
-    "message": "Notices",
-    "description": "The label for category Notices in sidebar developers"
+    "message": "Avisos",
+    "description": "La etiqueta para la categoría Avisos en la barra lateral de desarrolladores"
   },
   "sidebar.developers.category.Building on Base": {
-    "message": "Building on Base",
-    "description": "The label for category Building on Base in sidebar developers"
+    "message": "Construyendo en Base",
+    "description": "La etiqueta para la categoría Construyendo en Base en la barra lateral de desarrolladores"
   },
   "sidebar.developers.category.Tools": {
-    "message": "Tools",
-    "description": "The label for category Tools in sidebar developers"
+    "message": "Herramientas",
+    "description": "La etiqueta para la categoría Herramientas en la barra lateral de desarrolladores"
   },
   "sidebar.developers.category.Toolchains": {
     "message": "Toolchains",
-    "description": "The label for category Toolchains in sidebar developers"
+    "description": "La etiqueta para la categoría Toolchains en la barra lateral de desarrolladores"
   },
   "sidebar.developers.category.Clients": {
-    "message": "Clients",
-    "description": "The label for category Clients in sidebar developers"
+    "message": "Clientes",
+    "description": "La etiqueta para la categoría Clientes en la barra lateral de desarrolladores"
   },
   "sidebar.developers.category.Tokens": {
     "message": "Tokens",
-    "description": "The label for category Tokens in sidebar developers"
+    "description": "La etiqueta para la categoría Tokens en la barra lateral de desarrolladores"
   },
   "sidebar.developers.link.Decentralizing Base with Optimism": {
-    "message": "Decentralizing Base with Optimism",
-    "description": "The label for link Decentralizing Base with Optimism in sidebar developers, linking to https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I"
+    "message": "Descentralizando Base con Optimism",
+    "description": "La etiqueta para el enlace Descentralizando Base con Optimism en la barra lateral de desarrolladores, enlazando a https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I"
   },
   "sidebar.developers.link.Status": {
-    "message": "Status",
-    "description": "The label for link Status in sidebar developers, linking to https://status.base.org"
+    "message": "Estado",
+    "description": "La etiqueta para el enlace Estado en la barra lateral de desarrolladores, enlazando a https://status.base.org"
   },
   "sidebar.developers.link.Brand Kit": {
-    "message": "Brand Kit",
-    "description": "The label for link Brand Kit in sidebar developers, linking to https://github.com/base-org/brand-kit"
+    "message": "Kit de Marca",
+    "description": "La etiqueta para el enlace Kit de Marca en la barra lateral de desarrolladores, enlazando a https://github.com/base-org/brand-kit"
+  },
+  "sidebar.developers.doc.Overview": {
+    "message": "Resumen",
+    "description": "La etiqueta para el elemento de documento Resumen en la barra lateral de desarrolladores, enlazando al documento overview"
+  },
+  "sidebar.developers.doc.Using Base": {
+    "message": "Usando Base",
+    "description": "La etiqueta para el elemento de documento Usando Base en la barra lateral de desarrolladores, enlazando al documento using-base"
+  },
+  "sidebar.developers.doc.Preparing for Fault Proofs on Base Sepolia": {
+    "message": "Preparándose para Pruebas de Fallos en Base Sepolia",
+    "description": "La etiqueta para el elemento de documento Preparándose para Pruebas de Fallos en Base Sepolia en la barra lateral de desarrolladores, enlazando al documento notices/preparing-for-fault-proofs-on-base-sepolia"
+  },
+  "sidebar.developers.doc.Node Providers": {
+    "message": "Proveedores de Nodos",
+    "description": "La etiqueta para el elemento de documento Proveedores de Nodos en la barra lateral de desarrolladores, enlazando al documento tools/node-providers"
+  },
+  "sidebar.developers.doc.Block Explorers": {
+    "message": "Exploradores de Bloques",
+    "description": "La etiqueta para el elemento de documento Exploradores de Bloques en la barra lateral de desarrolladores, enlazando al documento tools/block-explorers"
+  },
+  "sidebar.developers.doc.Network Faucets": {
+    "message": "Grifos de Red",
+    "description": "La etiqueta para el elemento de documento Grifos de Red en la barra lateral de desarrolladores, enlazando al documento tools/network-faucets"
+  },
+  "sidebar.developers.doc.Oracles": {
+    "message": "Oráculos",
+    "description": "La etiqueta para el elemento de documento Oráculos en la barra lateral de desarrolladores, enlazando al documento tools/oracles"
+  },
+  "sidebar.developers.doc.Data Indexers": {
+    "message": "Indexadores de Datos",
+    "description": "La etiqueta para el elemento de documento Indexadores de Datos en la barra lateral de desarrolladores, enlazando al documento tools/data-indexers"
+  },
+  "sidebar.developers.doc.Cross-chain": {
+    "message": "Intercadena",
+    "description": "La etiqueta para el elemento de documento Intercadena en la barra lateral de desarrolladores, enlazando al documento tools/cross-chain"
+  },
+  "sidebar.developers.doc.Account Abstraction": {
+    "message": "Abstracción de Cuentas",
+    "description": "La etiqueta para el elemento de documento Abstracción de Cuentas en la barra lateral de desarrolladores, enlazando al documento tools/account-abstraction"
+  },
+  "sidebar.developers.doc.Onramps": {
+    "message": "Rampas de Entrada",
+    "description": "La etiqueta para el elemento de documento Rampas de Entrada en la barra lateral de desarrolladores, enlazando al documento tools/onramps"
+  },
+  "sidebar.developers.doc.Onboarding": {
+    "message": "Incorporación",
+    "description": "La etiqueta para el elemento de documento Incorporación en la barra lateral de desarrolladores, enlazando al documento tools/onboarding"
+  },
+  "sidebar.developers.doc.Bridges to Mainnet": {
+    "message": "Puentes a Mainnet",
+    "description": "La etiqueta para el elemento de documento Puentes a Mainnet en la barra lateral de desarrolladores, enlazando al documento tools/bridges-mainnet"
+  },
+  "sidebar.developers.doc.Foundry": {
+    "message": "Foundry",
+    "description": "La etiqueta para el elemento de documento Foundry en la barra lateral de desarrolladores, enlazando al documento tools/foundry"
+  },
+  "sidebar.developers.doc.Hardhat": {
+    "message": "Hardhat",
+    "description": "La etiqueta para el elemento de documento Hardhat en la barra lateral de desarrolladores, enlazando al documento tools/hardhat"
+  },
+  "sidebar.developers.doc.Thirdweb CLI": {
+    "message": "Thirdweb CLI",
+    "description": "La etiqueta para el elemento de documento Thirdweb CLI en la barra lateral de desarrolladores, enlazando al documento tools/thirdweb-cli"
+  },
+  "sidebar.developers.doc.Ethers": {
+    "message": "Ethers",
+    "description": "La etiqueta para el elemento de documento Ethers en la barra lateral de desarrolladores, enlazando al documento tools/ethers"
+  },
+  "sidebar.developers.doc.Thirdweb SDK": {
+    "message": "Thirdweb SDK",
+    "description": "La etiqueta para el elemento de documento Thirdweb SDK en la barra lateral de desarrolladores, enlazando al documento tools/thirdweb-sdk"
+  },
+  "sidebar.developers.doc.Viem": {
+    "message": "Viem",
+    "description": "La etiqueta para el elemento de documento Viem en la barra lateral de desarrolladores, enlazando al documento tools/viem"
+  },
+  "sidebar.developers.doc.Web3": {
+    "message": "Web3",
+    "description": "La etiqueta para el elemento de documento Web3 en la barra lateral de desarrolladores, enlazando al documento tools/web3"
+  },
+  "sidebar.developers.doc.Token List": {
+    "message": "Lista de Tokens",
+    "description": "La etiqueta para el elemento de documento Lista de Tokens en la barra lateral de desarrolladores, enlazando al documento tokens/token-list"
+  },
+  "sidebar.developers.doc.Wallet": {
+    "message": "Billetera",
+    "description": "La etiqueta para el elemento de documento Billetera en la barra lateral de desarrolladores, enlazando al documento tokens/wallet"
+  },
+  "sidebar.developers.doc.Contracts": {
+    "message": "Contratos",
+    "description": "La etiqueta para el elemento de documento Contratos en la barra lateral de desarrolladores, enlazando al documento contracts"
+  },
+  "sidebar.developers.doc.Security": {
+    "message": "Seguridad",
+    "description": "La etiqueta para el elemento de documento Seguridad en la barra lateral de desarrolladores, enlazando al documento security"
+  },
+  "sidebar.developers.doc.Terms of Service": {
+    "message": "Términos de Servicio",
+    "description": "La etiqueta para el elemento de documento Términos de Servicio en la barra lateral de desarrolladores, enlazando al documento terms-of-service"
+  },
+  "sidebar.developers.doc.Privacy Policy": {
+    "message": "Política de Privacidad",
+    "description": "La etiqueta para el elemento de documento Política de Privacidad en la barra lateral de desarrolladores, enlazando al documento privacy-policy"
+  },
+  "sidebar.developers.doc.Cookie Policy": {
+    "message": "Política de Cookies",
+    "description": "La etiqueta para el elemento de documento Política de Cookies en la barra lateral de desarrolladores, enlazando al documento cookie-policy"
+  },
+  "sidebar.developers.doc.Network Information": {
+    "message": "Información de Red",
+    "description": "La etiqueta para el elemento de documento Información de Red en la barra lateral de desarrolladores, enlazando al documento building-with-base/network-information"
+  },
+  "sidebar.developers.doc.Base Contracts": {
+    "message": "Contratos Base",
+    "description": "La etiqueta para el elemento de documento Contratos Base en la barra lateral de desarrolladores, enlazando al documento building-with-base/base-contracts"
+  },
+  "sidebar.developers.doc.Fees": {
+    "message": "Tarifas",
+    "description": "La etiqueta para el elemento de documento Tarifas en la barra lateral de desarrolladores, enlazando al documento building-with-base/fees"
+  },
+  "sidebar.developers.doc.Differences": {
+    "message": "Diferencias",
+    "description": "La etiqueta para el elemento de documento Diferencias en la barra lateral de desarrolladores, enlazando al documento building-with-base/differences"
   }
 }

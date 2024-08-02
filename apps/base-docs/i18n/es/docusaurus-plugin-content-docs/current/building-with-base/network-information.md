@@ -22,45 +22,45 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# Network Information
+# Información de la Red
 
 ---
 
 #### Base Mainnet
 
-| Name            | Value                                                                                                   |
+| Nombre            | Valor                                                                                                   |
 | :-------------- | :------------------------------------------------------------------------------------------------------ |
-| Network Name    | Base Mainnet                                                                                            |
-| Description     | The public mainnet for Base.                                                                            |
-| RPC Endpoint    | [https://mainnet.base.org](https://mainnet.base.org)<br/>_Rate limited and not for production systems._ |
-| Chain ID        | 8453                                                                                                    |
-| Currency Symbol | ETH                                                                                                     |
-| Block Explorer  | [https://base.blockscout.com/](https://base.blockscout.com/)                                            |
+| Nombre de la Red    | Base Mainnet                                                                                            |
+| Descripción     | La mainnet pública de Base.                                                                            |
+| Punto de acceso RPC    | [https://mainnet.base.org](https://mainnet.base.org)<br/>_Limitado por tasa y no para sistemas de producción._ |
+| ID de la Cadena        | 8453                                                                                                    |
+| Símbolo de la Moneda | ETH                                                                                                     |
+| Explorador de Bloques  | [https://base.blockscout.com/](https://base.blockscout.com/)                                            |
 
 ---
 
 #### Base Testnet (Sepolia)
 
-| Name            | Value                                                                                                   |
+| Nombre            | Valor                                                                                                   |
 | :-------------- | :------------------------------------------------------------------------------------------------------ |
-| Network Name    | Base Sepolia                                                                                            |
-| Description     | A public testnet for Base.                                                                              |
-| RPC Endpoint    | [https://sepolia.base.org](https://sepolia.base.org)<br/>_Rate limited and not for production systems._ |
-| Chain ID        | 84532                                                                                                   |
-| Currency Symbol | ETH                                                                                                     |
-| Block Explorer  | [https://sepolia-explorer.base.org](https://sepolia-explorer.base.org)                                  |
+| Nombre de la Red    | Base Sepolia                                                                                            |
+| Descripción     | Una testnet pública para Base.                                                                              |
+| Punto de acceso RPC    | [https://sepolia.base.org](https://sepolia.base.org)<br/>_Limitado por tasa y no para sistemas de producción._ |
+| ID de la Cadena        | 84532                                                                                                   |
+| Símbolo de la Moneda | ETH                                                                                                     |
+| Explorador de Bloques  | [https://sepolia-explorer.base.org](https://sepolia-explorer.base.org)                                  |
 
 ---
 
 :::info
-L1 & L2 protocol and network-related smart contract deployments can be found on the [Base Contracts](/docs/base-contracts) page.
+Los despliegues de contratos inteligentes relacionados con el protocolo y la red L1 y L2 se pueden encontrar en la página de [Contratos Base](/docs/base-contracts).
 :::
 
 :::info
-For production systems, we recommend using a node from one of our [node partners], or [running your own Base node].
+Para sistemas de producción, recomendamos usar un nodo de uno de nuestros [socios de nodos], o [ejecutar tu propio nodo Base].
 :::
 
 ---
 
-[running your own Base node]: /tutorials/run-a-base-node
-[node partners]: /docs/tools/node-providers
+[ejecutar tu propio nodo Base]: /tutorials/run-a-base-node
+[socios de nodos]: /docs/tools/node-providers
