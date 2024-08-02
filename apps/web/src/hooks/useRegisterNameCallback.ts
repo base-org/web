@@ -11,7 +11,6 @@ import {
   REGISTER_CONTRACT_ADDRESSES,
 } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { chainId } from 'permissionless';
 import { useCallback } from 'react';
 import { encodeFunctionData, namehash } from 'viem';
 import { useAccount, useSwitchChain, useWriteContract } from 'wagmi';
@@ -36,7 +35,7 @@ export function useRegisterNameCallback(
   discountKey?: `0x${string}`,
   validationData?: `0x${string}`,
 ): UseRegisterNameCallbackReturnValue {
-  const { address } = useAccount();
+  const { address, chainId } = useAccount();
   const { basenameChain } = useBasenameChain();
 
   const { logError } = useErrors();
