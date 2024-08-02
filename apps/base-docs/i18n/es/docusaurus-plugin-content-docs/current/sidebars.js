@@ -11,7 +11,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Building on Base',
+      label: 'Building on Base DDDDD',
       collapsible: false,
       collapsed: false,
       items: [

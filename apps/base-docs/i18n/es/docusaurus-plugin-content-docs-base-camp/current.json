@@ -5,182 +5,674 @@
   },
   "sidebar.docs.category.Introduction to Ethereum": {
     "message": "Introducción a Ethereum",
-    "description": "La etiqueta para la categoría Introducción a Ethereum en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Introducción a Ethereum en la barra lateral docs"
   },
   "sidebar.docs.category.Development Tools": {
     "message": "Herramientas de Desarrollo",
-    "description": "La etiqueta para la categoría Herramientas de Desarrollo en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Herramientas de Desarrollo en la barra lateral docs"
   },
   "sidebar.docs.category.Development with Hardhat": {
     "message": "Desarrollo con Hardhat",
-    "description": "La etiqueta para la categoría Desarrollo con Hardhat en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Desarrollo con Hardhat en la barra lateral docs"
   },
   "sidebar.docs.category.Hardhat Setup and Overview": {
-    "message": "Configuración y Descripción General de Hardhat",
-    "description": "La etiqueta para la categoría Configuración y Descripción General de Hardhat en la barra lateral de documentos"
+    "message": "Configuración y Visión General de Hardhat",
+    "description": "La etiqueta para la categoría Configuración y Visión General de Hardhat en la barra lateral docs"
   },
   "sidebar.docs.category.Testing with Typescript": {
     "message": "Pruebas con Typescript",
-    "description": "La etiqueta para la categoría Pruebas con Typescript en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Pruebas con Typescript en la barra lateral docs"
   },
   "sidebar.docs.category.Etherscan": {
     "message": "Etherscan",
-    "description": "La etiqueta para la categoría Etherscan en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Etherscan en la barra lateral docs"
   },
   "sidebar.docs.category.Deploying Smart Contracts": {
-    "message": "Despliegue de Contratos Inteligentes",
-    "description": "La etiqueta para la categoría Despliegue de Contratos Inteligentes en la barra lateral de documentos"
+    "message": "Desplegando Contratos Inteligentes",
+    "description": "La etiqueta para la categoría Desplegando Contratos Inteligentes en la barra lateral docs"
   },
   "sidebar.docs.category.Verifying Smart Contracts": {
     "message": "Verificación de Contratos Inteligentes",
-    "description": "La etiqueta para la categoría Verificación de Contratos Inteligentes en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Verificación de Contratos Inteligentes en la barra lateral docs"
   },
   "sidebar.docs.category.Mainnet Forking": {
-    "message": "Forking de Mainnet",
-    "description": "La etiqueta para la categoría Forking de Mainnet en la barra lateral de documentos"
+    "message": "Bifurcación de Mainnet",
+    "description": "La etiqueta para la categoría Bifurcación de Mainnet en la barra lateral docs"
   },
   "sidebar.docs.category.Development With Foundry": {
     "message": "Desarrollo con Foundry",
-    "description": "La etiqueta para la categoría Desarrollo con Foundry en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Desarrollo con Foundry en la barra lateral docs"
   },
   "sidebar.docs.category.Smart Contract Development": {
     "message": "Desarrollo de Contratos Inteligentes",
-    "description": "La etiqueta para la categoría Desarrollo de Contratos Inteligentes en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Desarrollo de Contratos Inteligentes en la barra lateral docs"
   },
   "sidebar.docs.category.Introduction to Solidity": {
     "message": "Introducción a Solidity",
-    "description": "La etiqueta para la categoría Introducción a Solidity en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Introducción a Solidity en la barra lateral docs"
   },
   "sidebar.docs.category.Contracts and Basic Functions": {
     "message": "Contratos y Funciones Básicas",
-    "description": "La etiqueta para la categoría Contratos y Funciones Básicas en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Contratos y Funciones Básicas en la barra lateral docs"
   },
   "sidebar.docs.category.Deploying to a Testnet": {
     "message": "Despliegue en una Testnet",
-    "description": "La etiqueta para la categoría Despliegue en una Testnet en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Despliegue en una Testnet en la barra lateral docs"
   },
   "sidebar.docs.category.Control Structures": {
     "message": "Estructuras de Control",
-    "description": "La etiqueta para la categoría Estructuras de Control en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Estructuras de Control en la barra lateral docs"
   },
   "sidebar.docs.category.Storage in Solidity": {
     "message": "Almacenamiento en Solidity",
-    "description": "La etiqueta para la categoría Almacenamiento en Solidity en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Almacenamiento en Solidity en la barra lateral docs"
   },
   "sidebar.docs.category.Arrays in Solidity": {
     "message": "Arrays en Solidity",
-    "description": "La etiqueta para la categoría Arrays en Solidity en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Arrays en Solidity en la barra lateral docs"
   },
   "sidebar.docs.category.The Mapping Type": {
-    "message": "El Tipo Mapping",
-    "description": "La etiqueta para la categoría El Tipo Mapping en la barra lateral de documentos"
+    "message": "El Tipo de Mapeo",
+    "description": "La etiqueta para la categoría El Tipo de Mapeo en la barra lateral docs"
   },
   "sidebar.docs.category.Advanced Functions": {
     "message": "Funciones Avanzadas",
-    "description": "La etiqueta para la categoría Funciones Avanzadas en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Funciones Avanzadas en la barra lateral docs"
   },
   "sidebar.docs.category.Structs": {
     "message": "Structs",
-    "description": "La etiqueta para la categoría Structs en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Structs en la barra lateral docs"
   },
   "sidebar.docs.category.Inheritance": {
     "message": "Herencia",
-    "description": "La etiqueta para la categoría Herencia en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Herencia en la barra lateral docs"
   },
   "sidebar.docs.category.Imports": {
-    "message": "Importaciones",
-    "description": "La etiqueta para la categoría Importaciones en la barra lateral de documentos"
+    "message": "Imports",
+    "description": "La etiqueta para la categoría Imports en la barra lateral docs"
   },
   "sidebar.docs.category.Errors": {
     "message": "Errores",
-    "description": "La etiqueta para la categoría Errores en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Errores en la barra lateral docs"
   },
   "sidebar.docs.category.The `new` Keyword": {
-    "message": "La palabra clave `new`",
-    "description": "La etiqueta para la categoría La palabra clave `new` en la barra lateral de documentos"
+    "message": "La Palabra Clave `new`",
+    "description": "La etiqueta para la categoría La Palabra Clave `new` en la barra lateral docs"
   },
   "sidebar.docs.category.Contract to Contract Interactions": {
-    "message": "Interacciones de Contrato a Contrato",
-    "description": "La etiqueta para la categoría Interacciones de Contrato a Contrato en la barra lateral de documentos"
+    "message": "Interacciones entre Contratos",
+    "description": "La etiqueta para la categoría Interacciones entre Contratos en la barra lateral docs"
   },
   "sidebar.docs.category.Events": {
     "message": "Eventos",
-    "description": "La etiqueta para la categoría Eventos en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Eventos en la barra lateral docs"
   },
   "sidebar.docs.category.Address and Payable": {
-    "message": "Dirección y Payable",
-    "description": "La etiqueta para la categoría Dirección y Payable en la barra lateral de documentos"
+    "message": "Address y Payable",
+    "description": "La etiqueta para la categoría Address y Payable en la barra lateral docs"
   },
   "sidebar.docs.category.Token Development": {
     "message": "Desarrollo de Tokens",
-    "description": "La etiqueta para la categoría Desarrollo de Tokens en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Desarrollo de Tokens en la barra lateral docs"
   },
   "sidebar.docs.category.Introduction to Tokens": {
     "message": "Introducción a los Tokens",
-    "description": "La etiqueta para la categoría Introducción a los Tokens en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Introducción a los Tokens en la barra lateral docs"
   },
   "sidebar.docs.category.Minimal Tokens": {
     "message": "Tokens Mínimos",
-    "description": "La etiqueta para la categoría Tokens Mínimos en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Tokens Mínimos en la barra lateral docs"
   },
   "sidebar.docs.category.ERC-20 Tokens": {
     "message": "Tokens ERC-20",
-    "description": "La etiqueta para la categoría Tokens ERC-20 en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Tokens ERC-20 en la barra lateral docs"
   },
   "sidebar.docs.category.ERC-721 Tokens": {
     "message": "Tokens ERC-721",
-    "description": "La etiqueta para la categoría Tokens ERC-721 en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Tokens ERC-721 en la barra lateral docs"
   },
   "sidebar.docs.category.Hardhat Tools and Testing": {
     "message": "Herramientas y Pruebas de Hardhat",
-    "description": "La etiqueta para la categoría Herramientas y Pruebas de Hardhat en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Herramientas y Pruebas de Hardhat en la barra lateral docs"
   },
   "sidebar.docs.category.Onchain App Development (Frontend)": {
     "message": "Desarrollo de Aplicaciones Onchain (Frontend)",
-    "description": "La etiqueta para la categoría Desarrollo de Aplicaciones Onchain (Frontend) en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Desarrollo de Aplicaciones Onchain (Frontend) en la barra lateral docs"
   },
   "sidebar.docs.category.Frontend Setup": {
     "message": "Configuración del Frontend",
-    "description": "La etiqueta para la categoría Configuración del Frontend en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Configuración del Frontend en la barra lateral docs"
   },
   "sidebar.docs.category.Reading and Displaying Data": {
     "message": "Lectura y Visualización de Datos",
-    "description": "La etiqueta para la categoría Lectura y Visualización de Datos en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Lectura y Visualización de Datos en la barra lateral docs"
   },
   "sidebar.docs.category.Writing to Contracts": {
     "message": "Escritura en Contratos",
-    "description": "La etiqueta para la categoría Escritura en Contratos en la barra lateral de documentos"
+    "description": "La etiqueta para la categoría Escritura en Contratos en la barra lateral docs"
   },
   "sidebar.docs.link.Guide to Base": {
-    "message": "Guía de Base",
-    "description": "La etiqueta para el enlace Guía de Base en la barra lateral de documentos, enlazando a https://www.coinbase.com/cloud/discover/protocol-guides/guide-to-base"
+    "message": "Guía para Base",
+    "description": "La etiqueta para el enlace Guía para Base en la barra lateral docs, enlazando a https://www.coinbase.com/cloud/discover/protocol-guides/guide-to-base"
   },
   "sidebar.docs.link.Introduction to Foundry": {
     "message": "Introducción a Foundry",
-    "description": "La etiqueta para el enlace Introducción a Foundry en la barra lateral de documentos, enlazando a https://docs.base.org/tutorials/intro-to-foundry-setup"
+    "description": "La etiqueta para el enlace Introducción a Foundry en la barra lateral docs, enlazando a https://docs.base.org/tutorials/intro-to-foundry-setup"
   },
   "sidebar.docs.link.Testing smart contracts with Foundry": {
     "message": "Pruebas de contratos inteligentes con Foundry",
-    "description": "La etiqueta para el enlace Pruebas de contratos inteligentes con Foundry en la barra lateral de documentos, enlazando a https://docs.base.org/tutorials/intro-to-foundry-testing"
+    "description": "La etiqueta para el enlace Pruebas de contratos inteligentes con Foundry en la barra lateral docs, enlazando a https://docs.base.org/tutorials/intro-to-foundry-testing"
   },
   "sidebar.docs.link.Profiling Gas": {
     "message": "Perfilado de Gas",
-    "description": "La etiqueta para el enlace Perfilado de Gas en la barra lateral de documentos, enlazando a https://docs.base.org/tutorials/hardhat-profiling-gas"
+    "description": "La etiqueta para el enlace Perfilado de Gas en la barra lateral docs, enlazando a https://docs.base.org/tutorials/hardhat-profiling-gas"
   },
   "sidebar.docs.link.Profiling Size": {
     "message": "Perfilado de Tamaño",
-    "description": "La etiqueta para el enlace Perfilado de Tamaño en la barra lateral de documentos, enlazando a https://docs.base.org/tutorials/hardhat-profiling-size"
+    "description": "La etiqueta para el enlace Perfilado de Tamaño en la barra lateral docs, enlazando a https://docs.base.org/tutorials/hardhat-profiling-size"
   },
   "sidebar.docs.link.Debugging": {
     "message": "Depuración",
-    "description": "La etiqueta para el enlace Depuración en la barra lateral de documentos, enlazando a https://docs.base.org/tutorials/hardhat-debugging"
+    "description": "La etiqueta para el enlace Depuración en la barra lateral docs, enlazando a https://docs.base.org/tutorials/hardhat-debugging"
   },
   "sidebar.docs.link.Test Coverage": {
     "message": "Cobertura de Pruebas",
-    "description": "La etiqueta para el enlace Cobertura de Pruebas en la barra lateral de documentos, enlazando a https://docs.base.org/tutorials/hardhat-test-coverage"
+    "description": "La etiqueta para el enlace Cobertura de Pruebas en la barra lateral docs, enlazando a https://docs.base.org/tutorials/hardhat-test-coverage"
   },
   "sidebar.docs.link.Connecting to the Blockchain": {
-    "message": "Conexión a la Blockchain",
-    "description": "La etiqueta para el enlace Conexión a la Blockchain en la barra lateral de documentos, enlazando a https://docs.base.org/tutorials/intro-to-providers"
+    "message": "Conectándose a la Blockchain",
+    "description": "La etiqueta para el enlace Conectándose a la Blockchain en la barra lateral docs, enlazando a https://docs.base.org/tutorials/intro-to-providers"
+  },
+  "sidebar.docs.link.Testing Smart Contracts with Foundry": {
+    "message": "Pruebas de Contratos Inteligentes con Foundry",
+    "description": "La etiqueta para el enlace Pruebas de Contratos Inteligentes con Foundry en la barra lateral docs, enlazando a https://docs.base.org/tutorials/intro-to-foundry-testing"
+  },
+  "sidebar.docs.doc.Welcome": {
+    "message": "Bienvenido",
+    "description": "La etiqueta para el documento Bienvenido en la barra lateral docs, enlazando al documento docs/welcome"
+  },
+  "sidebar.docs.doc.Intro to Ethereum (Video)": {
+    "message": "Introducción a Ethereum (Video)",
+    "description": "La etiqueta para el documento Introducción a Ethereum (Video) en la barra lateral docs, enlazando al documento docs/introduction-to-ethereum/intro-to-ethereum-vid"
+  },
+  "sidebar.docs.doc.Ethereum Dev Overview (Video)": {
+    "message": "Visión General del Desarrollo de Ethereum (Video)",
+    "description": "La etiqueta para el documento Visión General del Desarrollo de Ethereum (Video) en la barra lateral docs, enlazando al documento docs/introduction-to-ethereum/ethereum-dev-overview-vid"
+  },
+  "sidebar.docs.doc.Ethereum Applications": {
+    "message": "Aplicaciones de Ethereum",
+    "description": "La etiqueta para el documento Aplicaciones de Ethereum en la barra lateral docs, enlazando al documento docs/introduction-to-ethereum/ethereum-applications"
+  },
+  "sidebar.docs.doc.Gas Use in ETH Transactions": {
+    "message": "Uso de Gas en Transacciones ETH",
+    "description": "La etiqueta para el documento Uso de Gas en Transacciones ETH en la barra lateral docs, enlazando al documento docs/introduction-to-ethereum/gas-use-in-eth-transactions"
+  },
+  "sidebar.docs.doc.EVM Diagram": {
+    "message": "Diagrama EVM",
+    "description": "La etiqueta para el documento Diagrama EVM en la barra lateral docs, enlazando al documento docs/introduction-to-ethereum/evm-diagram"
+  },
+  "sidebar.docs.doc.Overview": {
+    "message": "Visión General",
+    "description": "La etiqueta para el documento Visión General en la barra lateral docs, enlazando al documento docs/frontend-setup/overview"
+  },
+  "sidebar.docs.doc.Hardhat Overview (Video)": {
+    "message": "Visión General de Hardhat (Video)",
+    "description": "La etiqueta para el documento Visión General de Hardhat (Video) en la barra lateral docs, enlazando al documento docs/hardhat-setup-overview/hardhat-overview-vid"
+  },
+  "sidebar.docs.doc.Creating a Project (Video)": {
+    "message": "Creando un Proyecto (Video)",
+    "description": "La etiqueta para el documento Creando un Proyecto (Video) en la barra lateral docs, enlazando al documento docs/hardhat-setup-overview/creating-a-project-vid"
+  },
+  "sidebar.docs.doc.Hardhat Setup Overview (Step-by-Step)": {
+    "message": "Visión General de la Configuración de Hardhat (Paso a Paso)",
+    "description": "La etiqueta para el documento Visión General de la Configuración de Hardhat (Paso a Paso) en la barra lateral docs, enlazando al documento docs/hardhat-setup-overview/hardhat-setup-overview-sbs"
+  },
+  "sidebar.docs.doc.Testing Overview (Video)": {
+    "message": "Visión General de Pruebas (Video)",
+    "description": "La etiqueta para el documento Visión General de Pruebas (Video) en la barra lateral docs, enlazando al documento docs/hardhat-testing/testing-overview-vid"
+  },
+  "sidebar.docs.doc.Writing Tests (Video)": {
+    "message": "Escribiendo Pruebas (Video)",
+    "description": "La etiqueta para el documento Escribiendo Pruebas (Video) en la barra lateral docs, enlazando al documento docs/hardhat-testing/writing-tests-vid"
+  },
+  "sidebar.docs.doc.Contract ABI and Testing (Video)": {
+    "message": "ABI de Contrato y Pruebas (Video)",
+    "description": "La etiqueta para el documento ABI de Contrato y Pruebas (Video) en la barra lateral docs, enlazando al documento docs/hardhat-testing/contract-abi-and-testing-vid"
+  },
+  "sidebar.docs.doc.Hardhat Testing (Step-by-Step)": {
+    "message": "Pruebas de Hardhat (Paso a Paso)",
+    "description": "La etiqueta para el documento Pruebas de Hardhat (Paso a Paso) en la barra lateral docs, enlazando al documento docs/hardhat-testing/hardhat-testing-sbs"
+  },
+  "sidebar.docs.doc.Etherscan (Step-by-Step)": {
+    "message": "Etherscan (Paso a Paso)",
+    "description": "La etiqueta para el documento Etherscan (Paso a Paso) en la barra lateral docs, enlazando al documento docs/etherscan/etherscan-sbs"
+  },
+  "sidebar.docs.doc.Etherscan (Video)": {
+    "message": "Etherscan (Video)",
+    "description": "La etiqueta para el documento Etherscan (Video) en la barra lateral docs, enlazando al documento docs/etherscan/etherscan-vid"
+  },
+  "sidebar.docs.doc.Installing Hardhat Deploy (Video)": {
+    "message": "Instalando Hardhat Deploy (Video)",
+    "description": "La etiqueta para el documento Instalando Hardhat Deploy (Video) en la barra lateral docs, enlazando al documento docs/hardhat-deploy/installing-hardhat-deploy-vid"
+  },
+  "sidebar.docs.doc.Setup Deploy Script (Video)": {
+    "message": "Configuración del Script de Despliegue (Video)",
+    "description": "La etiqueta para el documento Configuración del Script de Despliegue (Video) en la barra lateral docs, enlazando al documento docs/hardhat-deploy/setup-deploy-script-vid"
+  },
+  "sidebar.docs.doc.Testing Our Deployment (Video)": {
+    "message": "Pruebas de Nuestro Despliegue (Video)",
+    "description": "La etiqueta para el documento Pruebas de Nuestro Despliegue (Video) en la barra lateral docs, enlazando al documento docs/hardhat-deploy/testing-our-deployment-vid"
+  },
+  "sidebar.docs.doc.Test Network Configuration (Video)": {
+    "message": "Configuración de la Red de Pruebas (Video)",
+    "description": "La etiqueta para el documento Configuración de la Red de Pruebas (Video) en la barra lateral docs, enlazando al documento docs/hardhat-deploy/test-network-configuration-vid"
+  },
+  "sidebar.docs.doc.Deployment (Video)": {
+    "message": "Despliegue (Video)",
+    "description": "La etiqueta para el documento Despliegue (Video) en la barra lateral docs, enlazando al documento docs/hardhat-deploy/deployment-vid"
+  },
+  "sidebar.docs.doc.Hardhat Deploy (Step-by-Step)": {
+    "message": "Despliegue de Hardhat (Paso a Paso)",
+    "description": "La etiqueta para el documento Despliegue de Hardhat (Paso a Paso) en la barra lateral docs, enlazando al documento docs/hardhat-deploy/hardhat-deploy-sbs"
+  },
+  "sidebar.docs.doc.Hardhat Verify (Video)": {
+    "message": "Verificación de Hardhat (Video)",
+    "description": "La etiqueta para el documento Verificación de Hardhat (Video) en la barra lateral docs, enlazando al documento docs/hardhat-verify/hardhat-verify-vid"
+  },
+  "sidebar.docs.doc.Hardhat Verify (Step-by-Step)": {
+    "message": "Verificación de Hardhat (Paso a Paso)",
+    "description": "La etiqueta para el documento Verificación de Hardhat (Paso a Paso) en la barra lateral docs, enlazando al documento docs/hardhat-verify/hardhat-verify-sbs"
+  },
+  "sidebar.docs.doc.Mainnet Forking (Video)": {
+    "message": "Bifurcación de Mainnet (Video)",
+    "description": "La etiqueta para el documento Bifurcación de Mainnet (Video) en la barra lateral docs, enlazando al documento docs/hardhat-forking/mainnet-forking-vid"
+  },
+  "sidebar.docs.doc.Hardhat Forking": {
+    "message": "Bifurcación de Hardhat",
+    "description": "La etiqueta para el documento Bifurcación de Hardhat en la barra lateral docs, enlazando al documento docs/hardhat-forking/hardhat-forking"
+  },
+  "sidebar.docs.doc.Introduction to Solidity Overview": {
+    "message": "Visión General de Introducción a Solidity",
+    "description": "La etiqueta para el documento Visión General de Introducción a Solidity en la barra lateral docs, enlazando al documento docs/introduction-to-solidity/introduction-to-solidity-overview"
+  },
+  "sidebar.docs.doc.Anatomy of a Smart Contract (Video)": {
+    "message": "Anatomía de un Contrato Inteligente (Video)",
+    "description": "La etiqueta para el documento Anatomía de un Contrato Inteligente (Video) en la barra lateral docs, enlazando al documento docs/introduction-to-solidity/anatomy-of-a-smart-contract-vid"
+  },
+  "sidebar.docs.doc.Introduction to Solidity (Video)": {
+    "message": "Introducción a Solidity (Video)",
+    "description": "La etiqueta para el documento Introducción a Solidity (Video) en la barra lateral docs, enlazando al documento docs/introduction-to-solidity/introduction-to-solidity-vid"
+  },
+  "sidebar.docs.doc.Solidity Overview": {
+    "message": "Visión General de Solidity",
+    "description": "La etiqueta para el documento Visión General de Solidity en la barra lateral docs, enlazando al documento docs/introduction-to-solidity/solidity-overview"
+  },
+  "sidebar.docs.doc.Introduction to Remix (Video)": {
+    "message": "Introducción a Remix (Video)",
+    "description": "La etiqueta para el documento Introducción a Remix (Video) en la barra lateral docs, enlazando al documento docs/introduction-to-solidity/introduction-to-remix-vid"
+  },
+  "sidebar.docs.doc.Introduction to Remix": {
+    "message": "Introducción a Remix",
+    "description": "La etiqueta para el documento Introducción a Remix en la barra lateral docs, enlazando al documento docs/introduction-to-solidity/introduction-to-remix"
+  },
+  "sidebar.docs.doc.Deployment in Remix (Video)": {
+    "message": "Despliegue en Remix (Video)",
+    "description": "La etiqueta para el documento Despliegue en Remix (Video) en la barra lateral docs, enlazando al documento docs/introduction-to-solidity/deployment-in-remix-vid"
+  },
+  "sidebar.docs.doc.Deployment in Remix (Step-by-Step)": {
+    "message": "Despliegue en Remix (Paso a Paso)",
+    "description": "La etiqueta para el documento Despliegue en Remix (Paso a Paso) en la barra lateral docs, enlazando al documento docs/introduction-to-solidity/deployment-in-remix"
+  },
+  "sidebar.docs.doc.Intro to Contracts (Video)": {
+    "message": "Introducción a los Contratos (Video)",
+    "description": "La etiqueta para el documento Introducción a los Contratos (Video) en la barra lateral docs, enlazando al documento docs/contracts-and-basic-functions/intro-to-contracts-vid"
+  },
+  "sidebar.docs.doc.Hello World (Step-by-Step)": {
+    "message": "Hola Mundo (Paso a Paso)",
+    "description": "La etiqueta para el documento Hola Mundo (Paso a Paso) en la barra lateral docs, enlazando al documento docs/contracts-and-basic-functions/hello-world-step-by-step"
+  },
+  "sidebar.docs.doc.Basic Types": {
+    "message": "Tipos Básicos",
+    "description": "La etiqueta para el documento Tipos Básicos en la barra lateral docs, enlazando al documento docs/contracts-and-basic-functions/basic-types"
+  },
+  "sidebar.docs.doc.Basic Functions (Exercise)": {
+    "message": "Funciones Básicas (Ejercicio)",
+    "description": "La etiqueta para el documento Funciones Básicas (Ejercicio) en la barra lateral docs, enlazando al documento docs/contracts-and-basic-functions/basic-functions-exercise"
+  },
+  "sidebar.docs.doc.Overview of Test Networks (Video)": {
+    "message": "Visión General de Redes de Prueba (Video)",
+    "description": "La etiqueta para el documento Visión General de Redes de Prueba (Video) en la barra lateral docs, enlazando al documento docs/deployment-to-testnet/overview-of-test-networks-vid"
+  },
+  "sidebar.docs.doc.Test Networks": {
+    "message": "Redes de Prueba",
+    "description": "La etiqueta para el documento Redes de Prueba en la barra lateral docs, enlazando al documento docs/deployment-to-testnet/test-networks"
+  },
+  "sidebar.docs.doc.Deployment to Base Sepolia (Step-by-Step)": {
+    "message": "Despliegue en Base Sepolia (Paso a Paso)",
+    "description": "La etiqueta para el documento Despliegue en Base Sepolia (Paso a Paso) en la barra lateral docs, enlazando al documento docs/deployment-to-testnet/deployment-to-base-sepolia-sbs"
+  },
+  "sidebar.docs.doc.Contract Verification (Step-by-Step)": {
+    "message": "Verificación de Contratos (Paso a Paso)",
+    "description": "La etiqueta para el documento Verificación de Contratos (Paso a Paso) en la barra lateral docs, enlazando al documento docs/deployment-to-testnet/contract-verification-sbs"
+  },
+  "sidebar.docs.doc.Deployment to Testnet (Exercise)": {
+    "message": "Despliegue en Testnet (Ejercicio)",
+    "description": "La etiqueta para el documento Despliegue en Testnet (Ejercicio) en la barra lateral docs, enlazando al documento docs/deployment-to-testnet/deployment-to-testnet-exercise"
+  },
+  "sidebar.docs.doc.Standard Control Structures (Video)": {
+    "message": "Estructuras de Control Estándar (Video)",
+    "description": "La etiqueta para el documento Estructuras de Control Estándar (Video) en la barra lateral docs, enlazando al documento docs/control-structures/standard-control-structures-vid"
+  },
+  "sidebar.docs.doc.Loops (Video)": {
+    "message": "Bucles (Video)",
+    "description": "La etiqueta para el documento Bucles (Video) en la barra lateral docs, enlazando al documento docs/control-structures/loops-vid"
+  },
+  "sidebar.docs.doc.Require, Revert, and Error (Video)": {
+    "message": "Require, Revert y Error (Video)",
+    "description": "La etiqueta para el documento Require, Revert y Error (Video) en la barra lateral docs, enlazando al documento docs/control-structures/require-revert-error-vid"
+  },
+  "sidebar.docs.doc.Control Structures": {
+    "message": "Estructuras de Control",
+    "description": "La etiqueta para el documento Estructuras de Control en la barra lateral docs, enlazando al documento docs/control-structures/control-structures"
+  },
+  "sidebar.docs.doc.Control Structures (Exercise)": {
+    "message": "Estructuras de Control (Ejercicio)",
+    "description": "La etiqueta para el documento Estructuras de Control (Ejercicio) en la barra lateral docs, enlazando al documento docs/control-structures/control-structures-exercise"
+  },
+  "sidebar.docs.doc.Simple Storage (Video)": {
+    "message": "Almacenamiento Simple (Video)",
+    "description": "La etiqueta para el documento Almacenamiento Simple (Video) en la barra lateral docs, enlazando al documento docs/storage/simple-storage-video"
+  },
+  "sidebar.docs.doc.Simple Storage (Step-by-Step)": {
+    "message": "Almacenamiento Simple (Paso a Paso)",
+    "description": "La etiqueta para el documento Almacenamiento Simple (Paso a Paso) en la barra lateral docs, enlazando al documento docs/storage/simple-storage-sbs"
+  },
+  "sidebar.docs.doc.How Storage Works (Video)": {
+    "message": "Cómo Funciona el Almacenamiento (Video)",
+    "description": "La etiqueta para el documento Cómo Funciona el Almacenamiento (Video) en la barra lateral docs, enlazando al documento docs/storage/how-storage-works-video"
+  },
+  "sidebar.docs.doc.How Storage Works": {
+    "message": "Cómo Funciona el Almacenamiento",
+    "description": "La etiqueta para el documento Cómo Funciona el Almacenamiento en la barra lateral docs, enlazando al documento docs/storage/how-storage-works"
+  },
+  "sidebar.docs.doc.Storage (Exercise)": {
+    "message": "Almacenamiento (Ejercicio)",
+    "description": "La etiqueta para el documento Almacenamiento (Ejercicio) en la barra lateral docs, enlazando al documento docs/storage/storage-exercise"
+  },
+  "sidebar.docs.doc.Arrays in Solidity (Video)": {
+    "message": "Arrays en Solidity (Video)",
+    "description": "La etiqueta para el documento Arrays en Solidity (Video) en la barra lateral docs, enlazando al documento docs/arrays/arrays-in-solidity-vid"
+  },
+  "sidebar.docs.doc.Writing Arrays in Solidity (Video)": {
+    "message": "Escribiendo Arrays en Solidity (Video)",
+    "description": "La etiqueta para el documento Escribiendo Arrays en Solidity (Video) en la barra lateral docs, enlazando al documento docs/arrays/writing-arrays-in-solidity-vid"
+  },
+  "sidebar.docs.doc.Arrays in Solidity": {
+    "message": "Arrays en Solidity",
+    "description": "La etiqueta para el documento Arrays en Solidity en la barra lateral docs, enlazando al documento docs/arrays/arrays-in-solidity"
+  },
+  "sidebar.docs.doc.Filtering an Array (Step-by-Step)": {
+    "message": "Filtrando un Array (Paso a Paso)",
+    "description": "La etiqueta para el documento Filtrando un Array (Paso a Paso) en la barra lateral docs, enlazando al documento docs/arrays/filtering-an-array-sbs"
+  },
+  "sidebar.docs.doc.Fixed Size Arrays (Video)": {
+    "message": "Arrays de Tamaño Fijo (Video)",
+    "description": "La etiqueta para el documento Arrays de Tamaño Fijo (Video) en la barra lateral docs, enlazando al documento docs/arrays/fixed-size-arrays-vid"
+  },
+  "sidebar.docs.doc.Array Storage Layout (Video)": {
+    "message": "Diseño de Almacenamiento de Arrays (Video)",
+    "description": "La etiqueta para el documento Diseño de Almacenamiento de Arrays (Video) en la barra lateral docs, enlazando al documento docs/arrays/array-storage-layout-vid"
+  },
+  "sidebar.docs.doc.Arrays (Exercise)": {
+    "message": "Arrays (Ejercicio)",
+    "description": "La etiqueta para el documento Arrays (Ejercicio) en la barra lateral docs, enlazando al documento docs/arrays/arrays-exercise"
+  },
+  "sidebar.docs.doc.Mappings (Video)": {
+    "message": "Mapeos (Video)",
+    "description": "La etiqueta para el documento Mapeos (Video) en la barra lateral docs, enlazando al documento docs/mappings/mappings-vid"
+  },
+  "sidebar.docs.doc.Using msg.sender (Video)": {
+    "message": "Usando msg.sender (Video)",
+    "description": "La etiqueta para el documento Usando msg.sender (Video) en la barra lateral docs, enlazando al documento docs/mappings/using-msg-sender-vid"
+  },
+  "sidebar.docs.doc.Mappings (Step-by-Step)": {
+    "message": "Mapeos (Paso a Paso)",
+    "description": "La etiqueta para el documento Mapeos (Paso a Paso) en la barra lateral docs, enlazando al documento docs/mappings/mappings-sbs"
+  },
+  "sidebar.docs.doc.How Mappings Are Stored (Video)": {
+    "message": "Cómo se Almacenan los Mapeos (Video)",
+    "description": "La etiqueta para el documento Cómo se Almacenan los Mapeos (Video) en la barra lateral docs, enlazando al documento docs/mappings/how-mappings-are-stored-vid"
+  },
+  "sidebar.docs.doc.Mappings (Exercise)": {
+    "message": "Mapeos (Ejercicio)",
+    "description": "La etiqueta para el documento Mapeos (Ejercicio) en la barra lateral docs, enlazando al documento docs/mappings/mappings-exercise"
+  },
+  "sidebar.docs.doc.Function Visibility (Video)": {
+    "message": "Visibilidad de Funciones (Video)",
+    "description": "La etiqueta para el documento Visibilidad de Funciones (Video) en la barra lateral docs, enlazando al documento docs/advanced-functions/function-visibility-vid"
+  },
+  "sidebar.docs.doc.Function Visibility": {
+    "message": "Visibilidad de Funciones",
+    "description": "La etiqueta para el documento Visibilidad de Funciones en la barra lateral docs, enlazando al documento docs/advanced-functions/function-visibility"
+  },
+  "sidebar.docs.doc.Function Modifiers (Video)": {
+    "message": "Modificadores de Funciones (Video)",
+    "description": "La etiqueta para el documento Modificadores de Funciones (Video) en la barra lateral docs, enlazando al documento docs/advanced-functions/function-modifiers-vid"
+  },
+  "sidebar.docs.doc.Function Modifiers": {
+    "message": "Modificadores de Funciones",
+    "description": "La etiqueta para el documento Modificadores de Funciones en la barra lateral docs, enlazando al documento docs/advanced-functions/function-modifiers"
+  },
+  "sidebar.docs.doc.Structs (Video)": {
+    "message": "Structs (Video)",
+    "description": "La etiqueta para el documento Structs (Video) en la barra lateral docs, enlazando al documento docs/structs/structs-vid"
+  },
+  "sidebar.docs.doc.Structs (Step-by-Step)": {
+    "message": "Structs (Paso a Paso)",
+    "description": "La etiqueta para el documento Structs (Paso a Paso) en la barra lateral docs, enlazando al documento docs/structs/structs-sbs"
+  },
+  "sidebar.docs.doc.Structs (Exercise)": {
+    "message": "Structs (Ejercicio)",
+    "description": "La etiqueta para el documento Structs (Ejercicio) en la barra lateral docs, enlazando al documento docs/structs/structs-exercise"
+  },
+  "sidebar.docs.doc.Inheritance (Video)": {
+    "message": "Herencia (Video)",
+    "description": "La etiqueta para el documento Herencia (Video) en la barra lateral docs, enlazando al documento docs/inheritance/inheritance-vid"
+  },
+  "sidebar.docs.doc.Inheritance (Step-by-Step)": {
+    "message": "Herencia (Paso a Paso)",
+    "description": "La etiqueta para el documento Herencia (Paso a Paso) en la barra lateral docs, enlazando al documento docs/inheritance/inheritance-sbs"
+  },
+  "sidebar.docs.doc.Multiple Inheritance (Video)": {
+    "message": "Herencia Múltiple (Video)",
+    "description": "La etiqueta para el documento Herencia Múltiple (Video) en la barra lateral docs, enlazando al documento docs/inheritance/multiple-inheritance-vid"
+  },
+  "sidebar.docs.doc.Multiple Inheritance": {
+    "message": "Herencia Múltiple",
+    "description": "La etiqueta para el documento Herencia Múltiple en la barra lateral docs, enlazando al documento docs/inheritance/multiple-inheritance"
+  },
+  "sidebar.docs.doc.Abstract Contracts (Video)": {
+    "message": "Contratos Abstractos (Video)",
+    "description": "La etiqueta para el documento Contratos Abstractos (Video) en la barra lateral docs, enlazando al documento docs/inheritance/abstract-contracts-vid"
+  },
+  "sidebar.docs.doc.Abstract Contracts (Step-by-Step)": {
+    "message": "Contratos Abstractos (Paso a Paso)",
+    "description": "La etiqueta para el documento Contratos Abstractos (Paso a Paso) en la barra lateral docs, enlazando al documento docs/inheritance/abstract-contracts-sbs"
+  },
+  "sidebar.docs.doc.Inheritance (Exercise)": {
+    "message": "Herencia (Ejercicio)",
+    "description": "La etiqueta para el documento Herencia (Ejercicio) en la barra lateral docs, enlazando al documento docs/inheritance/inheritance-exercise"
+  },
+  "sidebar.docs.doc.Imports (Video)": {
+    "message": "Imports (Video)",
+    "description": "La etiqueta para el documento Imports (Video) en la barra lateral docs, enlazando al documento docs/imports/imports-vid"
+  },
+  "sidebar.docs.doc.Imports (Step-by-Step)": {
+    "message": "Imports (Paso a Paso)",
+    "description": "La etiqueta para el documento Imports (Paso a Paso) en la barra lateral docs, enlazando al documento docs/imports/imports-sbs"
+  },
+  "sidebar.docs.doc.Imports (Exercise)": {
+    "message": "Imports (Ejercicio)",
+    "description": "La etiqueta para el documento Imports (Ejercicio) en la barra lateral docs, enlazando al documento docs/imports/imports-exercise"
+  },
+  "sidebar.docs.doc.Error Triage (Video)": {
+    "message": "Clasificación de Errores (Video)",
+    "description": "La etiqueta para el documento Clasificación de Errores (Video) en la barra lateral docs, enlazando al documento docs/error-triage/error-triage-vid"
+  },
+  "sidebar.docs.doc.Error Triage": {
+    "message": "Clasificación de Errores",
+    "description": "La etiqueta para el documento Clasificación de Errores en la barra lateral docs, enlazando al documento docs/error-triage/error-triage"
+  },
+  "sidebar.docs.doc.Error Triage (Exercise)": {
+    "message": "Clasificación de Errores (Ejercicio)",
+    "description": "La etiqueta para el documento Clasificación de Errores (Ejercicio) en la barra lateral docs, enlazando al documento docs/error-triage/error-triage-exercise"
+  },
+  "sidebar.docs.doc.Creating a New Contract (Video)": {
+    "message": "Creando un Nuevo Contrato (Video)",
+    "description": "La etiqueta para el documento Creando un Nuevo Contrato (Video) en la barra lateral docs, enlazando al documento docs/new-keyword/creating-a-new-contract-vid"
+  },
+  "sidebar.docs.doc.The `new` Keyword (Step-by-Step)": {
+    "message": "La Palabra Clave `new` (Paso a Paso)",
+    "description": "La etiqueta para el documento La Palabra Clave `new` (Paso a Paso) en la barra lateral docs, enlazando al documento docs/new-keyword/new-keyword-sbs"
+  },
+  "sidebar.docs.doc.The `new` Keyword (Exercise)": {
+    "message": "La Palabra Clave `new` (Ejercicio)",
+    "description": "La etiqueta para el documento La Palabra Clave `new` (Ejercicio) en la barra lateral docs, enlazando al documento docs/new-keyword/new-keyword-exercise"
+  },
+  "sidebar.docs.doc.Intro to Interfaces (Video)": {
+    "message": "Introducción a Interfaces (Video)",
+    "description": "La etiqueta para el documento Introducción a Interfaces (Video) en la barra lateral docs, enlazando al documento docs/interfaces/intro-to-interfaces-vid"
+  },
+  "sidebar.docs.doc.Calling Another Contract (Video)": {
+    "message": "Llamando a Otro Contrato (Video)",
+    "description": "La etiqueta para el documento Llamando a Otro Contrato (Video) en la barra lateral docs, enlazando al documento docs/interfaces/calling-another-contract-vid"
+  },
+  "sidebar.docs.doc.Testing the Interface (Video)": {
+    "message": "Probando la Interfaz (Video)",
+    "description": "La etiqueta para el documento Probando la Interfaz (Video) en la barra lateral docs, enlazando al documento docs/interfaces/testing-the-interface-vid"
+  },
+  "sidebar.docs.doc.Contract to Contract Interaction": {
+    "message": "Interacción entre Contratos",
+    "description": "La etiqueta para el documento Interacción entre Contratos en la barra lateral docs, enlazando al documento docs/interfaces/contract-to-contract-interaction"
+  },
+  "sidebar.docs.doc.Hardhat Events (Step-by-Step)": {
+    "message": "Eventos de Hardhat (Paso a Paso)",
+    "description": "La etiqueta para el documento Eventos de Hardhat (Paso a Paso) en la barra lateral docs, enlazando al documento docs/events/hardhat-events-sbs"
+  },
+  "sidebar.docs.doc.Address and Payable": {
+    "message": "Address y Payable",
+    "description": "La etiqueta para el documento Address y Payable en la barra lateral docs, enlazando al documento docs/address-and-payable/address-and-payable"
+  },
+  "sidebar.docs.doc.Intro to Tokens (Video)": {
+    "message": "Introducción a los Tokens (Video)",
+    "description": "La etiqueta para el documento Introducción a los Tokens (Video) en la barra lateral docs, enlazando al documento docs/intro-to-tokens/intro-to-tokens-vid"
+  },
+  "sidebar.docs.doc.Misconceptions About Tokens (Video)": {
+    "message": "Conceptos Erróneos sobre los Tokens (Video)",
+    "description": "La etiqueta para el documento Conceptos Erróneos sobre los Tokens (Video) en la barra lateral docs, enlazando al documento docs/intro-to-tokens/misconceptions-about-tokens-vid"
+  },
+  "sidebar.docs.doc.Tokens Overview": {
+    "message": "Visión General de los Tokens",
+    "description": "La etiqueta para el documento Visión General de los Tokens en la barra lateral docs, enlazando al documento docs/intro-to-tokens/tokens-overview"
+  },
+  "sidebar.docs.doc.Creating a Minimal Token (Video)": {
+    "message": "Creando un Token Mínimo (Video)",
+    "description": "La etiqueta para el documento Creando un Token Mínimo (Video) en la barra lateral docs, enlazando al documento docs/minimal-tokens/creating-a-minimal-token-vid"
+  },
+  "sidebar.docs.doc.Transferring a Minimal Token (Video)": {
+    "message": "Transfiriendo un Token Mínimo (Video)",
+    "description": "La etiqueta para el documento Transfiriendo un Token Mínimo (Video) en la barra lateral docs, enlazando al documento docs/minimal-tokens/transferring-a-minimal-token-vid"
+  },
+  "sidebar.docs.doc.Minimal Token (Step-by-Step)": {
+    "message": "Token Mínimo (Paso a Paso)",
+    "description": "La etiqueta para el documento Token Mínimo (Paso a Paso) en la barra lateral docs, enlazando al documento docs/minimal-tokens/minimal-token-sbs"
+  },
+  "sidebar.docs.doc.Minimal Tokens (Exercise)": {
+    "message": "Tokens Mínimos (Ejercicio)",
+    "description": "La etiqueta para el documento Tokens Mínimos (Ejercicio) en la barra lateral docs, enlazando al documento docs/minimal-tokens/minimal-tokens-exercise"
+  },
+  "sidebar.docs.doc.Analyzing ERC-20 (Video)": {
+    "message": "Analizando ERC-20 (Video)",
+    "description": "La etiqueta para el documento Analizando ERC-20 (Video) en la barra lateral docs, enlazando al documento docs/erc-20-token/analyzing-erc-20-vid"
+  },
+  "sidebar.docs.doc.ERC-20 Standard": {
+    "message": "Estándar ERC-20",
+    "description": "La etiqueta para el documento Estándar ERC-20 en la barra lateral docs, enlazando al documento docs/erc-20-token/erc-20-standard"
+  },
+  "sidebar.docs.doc.OpenZeppelin ERC-20 (Video)": {
+    "message": "OpenZeppelin ERC-20 (Video)",
+    "description": "La etiqueta para el documento OpenZeppelin ERC-20 (Video) en la barra lateral docs, enlazando al documento docs/erc-20-token/openzeppelin-erc-20-vid"
+  },
+  "sidebar.docs.doc.ERC-20 Testing (Video)": {
+    "message": "Pruebas de ERC-20 (Video)",
+    "description": "La etiqueta para el documento Pruebas de ERC-20 (Video) en la barra lateral docs, enlazando al documento docs/erc-20-token/erc-20-testing-vid"
+  },
+  "sidebar.docs.doc.ERC-20 Token (Step-by-Step)": {
+    "message": "Token ERC-20 (Paso a Paso)",
+    "description": "La etiqueta para el documento Token ERC-20 (Paso a Paso) en la barra lateral docs, enlazando al documento docs/erc-20-token/erc-20-token-sbs"
+  },
+  "sidebar.docs.doc.ERC-20 (Exercise)": {
+    "message": "ERC-20 (Ejercicio)",
+    "description": "La etiqueta para el documento ERC-20 (Ejercicio) en la barra lateral docs, enlazando al documento docs/erc-20-token/erc-20-exercise"
+  },
+  "sidebar.docs.doc.ERC-721 Standard (Video)": {
+    "message": "Estándar ERC-721 (Video)",
+    "description": "La etiqueta para el documento Estándar ERC-721 (Video) en la barra lateral docs, enlazando al documento docs/erc-721-token/erc-721-standard-video"
+  },
+  "sidebar.docs.doc.ERC-721 Standard": {
+    "message": "Estándar ERC-721",
+    "description": "La etiqueta para el documento Estándar ERC-721 en la barra lateral docs, enlazando al documento docs/erc-721-token/erc-721-standard"
+  },
+  "sidebar.docs.doc.ERC-721 on OpenSea (Video)": {
+    "message": "ERC-721 en OpenSea (Video)",
+    "description": "La etiqueta para el documento ERC-721 en OpenSea (Video) en la barra lateral docs, enlazando al documento docs/erc-721-token/erc-721-on-opensea-vid"
+  },
+  "sidebar.docs.doc.OpenZeppelin ERC-721 (Video)": {
+    "message": "OpenZeppelin ERC-721 (Video)",
+    "description": "La etiqueta para el documento OpenZeppelin ERC-721 (Video) en la barra lateral docs, enlazando al documento docs/erc-721-token/openzeppelin-erc-721-vid"
+  },
+  "sidebar.docs.doc.Implementing an ERC-721 (Video)": {
+    "message": "Implementando un ERC-721 (Video)",
+    "description": "La etiqueta para el documento Implementando un ERC-721 (Video) en la barra lateral docs, enlazando al documento docs/erc-721-token/implementing-an-erc-721-vid"
+  },
+  "sidebar.docs.doc.ERC-721 (Step-by-Step)": {
+    "message": "ERC-721 (Paso a Paso)",
+    "description": "La etiqueta para el documento ERC-721 (Paso a Paso) en la barra lateral docs, enlazando al documento docs/erc-721-token/erc-721-sbs"
+  },
+  "sidebar.docs.doc.ERC-721 (Exercise)": {
+    "message": "ERC-721 (Ejercicio)",
+    "description": "La etiqueta para el documento ERC-721 (Ejercicio) en la barra lateral docs, enlazando al documento docs/erc-721-token/erc-721-exercise"
+  },
+  "sidebar.docs.doc.Wallet Connectors": {
+    "message": "Conectores de Wallet",
+    "description": "La etiqueta para el documento Conectores de Wallet en la barra lateral docs, enlazando al documento docs/frontend-setup/wallet-connectors"
+  },
+  "sidebar.docs.doc.Building an Onchain App": {
+    "message": "Construyendo una Aplicación Onchain",
+    "description": "La etiqueta para el documento Construyendo una Aplicación Onchain en la barra lateral docs, enlazando al documento docs/frontend-setup/building-an-onchain-app"
+  },
+  "sidebar.docs.doc.useAccount": {
+    "message": "useAccount",
+    "description": "La etiqueta para el documento useAccount en la barra lateral docs, enlazando al documento docs/reading-and-displaying-data/useAccount"
+  },
+  "sidebar.docs.doc.useReadContract": {
+    "message": "useReadContract",
+    "description": "La etiqueta para el documento useReadContract en la barra lateral docs, enlazando al documento docs/reading-and-displaying-data/useReadContract"
+  },
+  "sidebar.docs.doc.Configuring useReadContract": {
+    "message": "Configuración de useReadContract",
+    "description": "La etiqueta para el documento Configuración de useReadContract en la barra lateral docs, enlazando al documento docs/reading-and-displaying-data/configuring-useReadContract"
+  },
+  "sidebar.docs.doc.useWriteContract": {
+    "message": "useWriteContract",
+    "description": "La etiqueta para el documento useWriteContract en la barra lateral docs, enlazando al documento docs/writing-to-contracts/useWriteContract"
+  },
+  "sidebar.docs.doc.useSimulateContract": {
+    "message": "useSimulateContract",
+    "description": "La etiqueta para el documento useSimulateContract en la barra lateral docs, enlazando al documento docs/writing-to-contracts/useSimulateContract"
+  },
+  "sidebar.docs.doc.Exercise Contracts": {
+    "message": "Contratos de Ejercicio",
+    "description": "La etiqueta para el documento Contratos de Ejercicio en la barra lateral docs, enlazando al documento docs/exercise-contracts"
   }
 }

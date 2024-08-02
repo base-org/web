@@ -8,8 +8,8 @@
     "description": "La etiqueta para la categoría Desplegando un contrato inteligente en la barra lateral de documentos"
   },
   "sidebar.docs.category.Building an onchain app": {
-    "message": "Construyendo una aplicación en cadena",
-    "description": "La etiqueta para la categoría Construyendo una aplicación en cadena en la barra lateral de documentos"
+    "message": "Construyendo una aplicación onchain",
+    "description": "La etiqueta para la categoría Construyendo una aplicación onchain en la barra lateral de documentos"
   },
   "sidebar.docs.category.Accessing real-world data using Oracles": {
     "message": "Accediendo a datos del mundo real usando Oráculos",
@@ -20,8 +20,8 @@
     "description": "La etiqueta para la categoría Enviando datos y tokens a través de cadenas en la barra lateral de documentos"
   },
   "sidebar.docs.category.Account abstraction": {
-    "message": "Abstracción de cuenta",
-    "description": "La etiqueta para la categoría Abstracción de cuenta en la barra lateral de documentos"
+    "message": "Abstracción de cuentas",
+    "description": "La etiqueta para la categoría Abstracción de cuentas en la barra lateral de documentos"
   },
   "sidebar.docs.category.Introduction to Foundry": {
     "message": "Introducción a Foundry",
@@ -32,8 +32,8 @@
     "description": "La etiqueta para la categoría Desarrollo avanzado de NFT en la barra lateral de documentos"
   },
   "sidebar.docs.category.Farcaster Frames": {
-    "message": "Marcos de Farcaster",
-    "description": "La etiqueta para la categoría Marcos de Farcaster en la barra lateral de documentos"
+    "message": "Farcaster Frames",
+    "description": "La etiqueta para la categoría Farcaster Frames en la barra lateral de documentos"
   },
   "sidebar.docs.category.Hardhat Tools and Testing": {
     "message": "Herramientas y pruebas de Hardhat",
@@ -56,7 +56,7 @@
     "description": "La etiqueta para la categoría Cobertura de pruebas en la barra lateral de documentos"
   },
   "sidebar.docs.category.Connecting to the Blockchain": {
-    "message": "Conectando a la Blockchain",
-    "description": "La etiqueta para la categoría Conectando a la Blockchain en la barra lateral de documentos"
+    "message": "Conectándose a la Blockchain",
+    "description": "La etiqueta para la categoría Conectándose a la Blockchain en la barra lateral de documentos"
   }
 }

@@ -58,5 +58,141 @@
   "sidebar.docs.category.Connecting to the Blockchain": {
     "message": "Connecting to the Blockchain",
     "description": "The label for category Connecting to the Blockchain in sidebar docs"
+  },
+  "sidebar.docs.category.Deploying a Smart Contract": {
+    "message": "Deploying a Smart Contract",
+    "description": "The label for category Deploying a Smart Contract in sidebar docs"
+  },
+  "sidebar.docs.category.Building an Onchain App": {
+    "message": "Building an Onchain App",
+    "description": "The label for category Building an Onchain App in sidebar docs"
+  },
+  "sidebar.docs.category.Accessing Real-World Data Using Oracles": {
+    "message": "Accessing Real-World Data Using Oracles",
+    "description": "The label for category Accessing Real-World Data Using Oracles in sidebar docs"
+  },
+  "sidebar.docs.category.Sending Data and Tokens Across Chains": {
+    "message": "Sending Data and Tokens Across Chains",
+    "description": "The label for category Sending Data and Tokens Across Chains in sidebar docs"
+  },
+  "sidebar.docs.category.Account Abstraction": {
+    "message": "Account Abstraction",
+    "description": "The label for category Account Abstraction in sidebar docs"
+  },
+  "sidebar.docs.doc.Deploy with Hardhat": {
+    "message": "Deploy with Hardhat",
+    "description": "The label for the doc item Deploy with Hardhat in sidebar docs, linking to the doc docs/deploy-with-hardhat"
+  },
+  "sidebar.docs.doc.Deploy with Foundry": {
+    "message": "Deploy with Foundry",
+    "description": "The label for the doc item Deploy with Foundry in sidebar docs, linking to the doc docs/deploy-with-foundry"
+  },
+  "sidebar.docs.doc.Deploy with Remix": {
+    "message": "Deploy with Remix",
+    "description": "The label for the doc item Deploy with Remix in sidebar docs, linking to the doc docs/deploy-with-remix"
+  },
+  "sidebar.docs.doc.Deploy with Tenderly": {
+    "message": "Deploy with Tenderly",
+    "description": "The label for the doc item Deploy with Tenderly in sidebar docs, linking to the doc docs/deploy-with-tenderly"
+  },
+  "sidebar.docs.doc.Deploy with Thirdweb": {
+    "message": "Deploy with Thirdweb",
+    "description": "The label for the doc item Deploy with Thirdweb in sidebar docs, linking to the doc docs/deploy-with-thirdweb"
+  },
+  "sidebar.docs.doc.Build with Thirdweb": {
+    "message": "Build with Thirdweb",
+    "description": "The label for the doc item Build with Thirdweb in sidebar docs, linking to the doc docs/build-with-thirdweb"
+  },
+  "sidebar.docs.doc.Run a Base Node": {
+    "message": "Run a Base Node",
+    "description": "The label for the doc item Run a Base Node in sidebar docs, linking to the doc docs/run-a-base-node"
+  },
+  "sidebar.docs.doc.Chainlink Price Feeds": {
+    "message": "Chainlink Price Feeds",
+    "description": "The label for the doc item Chainlink Price Feeds in sidebar docs, linking to the doc docs/oracles-chainlink-price-feeds"
+  },
+  "sidebar.docs.doc.Pyth Price Feeds": {
+    "message": "Pyth Price Feeds",
+    "description": "The label for the doc item Pyth Price Feeds in sidebar docs, linking to the doc docs/oracles-pyth-price-feeds"
+  },
+  "sidebar.docs.doc.Supra VRF": {
+    "message": "Supra VRF",
+    "description": "The label for the doc item Supra VRF in sidebar docs, linking to the doc docs/oracles-supra-vrf"
+  },
+  "sidebar.docs.doc.Cross-Chain with CCIP": {
+    "message": "Cross-Chain with CCIP",
+    "description": "The label for the doc item Cross-Chain with CCIP in sidebar docs, linking to the doc docs/cross-chain-with-ccip"
+  },
+  "sidebar.docs.doc.Cross-Chain with LayerZero": {
+    "message": "Cross-Chain with LayerZero",
+    "description": "The label for the doc item Cross-Chain with LayerZero in sidebar docs, linking to the doc docs/cross-chain-with-layerzero"
+  },
+  "sidebar.docs.doc.Account Abstraction with Biconomy": {
+    "message": "Account Abstraction with Biconomy",
+    "description": "The label for the doc item Account Abstraction with Biconomy in sidebar docs, linking to the doc docs/account-abstraction-with-biconomy"
+  },
+  "sidebar.docs.doc.Account Abstraction with Privy and Base Paymaster": {
+    "message": "Account Abstraction with Privy and Base Paymaster",
+    "description": "The label for the doc item Account Abstraction with Privy and Base Paymaster in sidebar docs, linking to the doc docs/account-abstraction-with-privy-and-base-paymaster"
+  },
+  "sidebar.docs.doc.Account Abstraction with Particle Network": {
+    "message": "Account Abstraction with Particle Network",
+    "description": "The label for the doc item Account Abstraction with Particle Network in sidebar docs, linking to the doc docs/account-abstraction-with-particle-network"
+  },
+  "sidebar.docs.doc.Intro to Foundry Setup": {
+    "message": "Intro to Foundry Setup",
+    "description": "The label for the doc item Intro to Foundry Setup in sidebar docs, linking to the doc docs/intro-to-foundry-setup"
+  },
+  "sidebar.docs.doc.Intro to Foundry Testing": {
+    "message": "Intro to Foundry Testing",
+    "description": "The label for the doc item Intro to Foundry Testing in sidebar docs, linking to the doc docs/intro-to-foundry-testing"
+  },
+  "sidebar.docs.doc.Onchain NFTs": {
+    "message": "Onchain NFTs",
+    "description": "The label for the doc item Onchain NFTs in sidebar docs, linking to the doc docs/onchain-nfts"
+  },
+  "sidebar.docs.doc.No-Code Minting": {
+    "message": "No-Code Minting",
+    "description": "The label for the doc item No-Code Minting in sidebar docs, linking to the doc docs/farcaster-frames-nocode-minting"
+  },
+  "sidebar.docs.doc.NFT Minting": {
+    "message": "NFT Minting",
+    "description": "The label for the doc item NFT Minting in sidebar docs, linking to the doc docs/farcaster-frames-nft-minting"
+  },
+  "sidebar.docs.doc.Deploy to Vercel": {
+    "message": "Deploy to Vercel",
+    "description": "The label for the doc item Deploy to Vercel in sidebar docs, linking to the doc docs/farcaster-frames-deploy-to-vercel"
+  },
+  "sidebar.docs.doc.Gating and Redirects": {
+    "message": "Gating and Redirects",
+    "description": "The label for the doc item Gating and Redirects in sidebar docs, linking to the doc docs/farcaster-frames-gating-and-redirects"
+  },
+  "sidebar.docs.doc.Hyperframes": {
+    "message": "Hyperframes",
+    "description": "The label for the doc item Hyperframes in sidebar docs, linking to the doc docs/farcaster-frames-hyperframes"
+  },
+  "sidebar.docs.doc.Transactions": {
+    "message": "Transactions",
+    "description": "The label for the doc item Transactions in sidebar docs, linking to the doc docs/farcaster-frames-transactions"
+  },
+  "sidebar.docs.doc.Profiling Size": {
+    "message": "Profiling Size",
+    "description": "The label for the doc item Profiling Size in sidebar docs, linking to the doc docs/hardhat-profiling-size"
+  },
+  "sidebar.docs.doc.Profiling Gas": {
+    "message": "Profiling Gas",
+    "description": "The label for the doc item Profiling Gas in sidebar docs, linking to the doc docs/hardhat-profiling-gas"
+  },
+  "sidebar.docs.doc.Debugging": {
+    "message": "Debugging",
+    "description": "The label for the doc item Debugging in sidebar docs, linking to the doc docs/hardhat-debugging"
+  },
+  "sidebar.docs.doc.Test Coverage": {
+    "message": "Test Coverage",
+    "description": "The label for the doc item Test Coverage in sidebar docs, linking to the doc docs/hardhat-test-coverage"
+  },
+  "sidebar.docs.doc.Intro to Providers": {
+    "message": "Intro to Providers",
+    "description": "The label for the doc item Intro to Providers in sidebar docs, linking to the doc docs/intro-to-providers"
   }
 }

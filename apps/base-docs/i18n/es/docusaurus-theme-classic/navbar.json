@@ -1,82 +1,82 @@
 {
   "logo.alt": {
     "message": "Documentos de Base",
-    "description": "El texto alternativo del logo de la barra de navegación"
+    "description": "The alt text of navbar logo"
   },
   "item.label.Home": {
     "message": "Inicio",
-    "description": "Elemento de la barra de navegación con etiqueta Inicio"
+    "description": "Navbar item with label Home"
   },
   "item.label.Docs": {
     "message": "Documentos",
-    "description": "Elemento de la barra de navegación con etiqueta Documentos"
+    "description": "Navbar item with label Docs"
   },
   "item.label.Tutorials": {
     "message": "Tutoriales",
-    "description": "Elemento de la barra de navegación con etiqueta Tutoriales"
+    "description": "Navbar item with label Tutorials"
   },
   "item.label.Camp": {
     "message": "Campamento",
-    "description": "Elemento de la barra de navegación con etiqueta Campamento"
+    "description": "Navbar item with label Camp"
   },
   "item.label.Ecosystem": {
     "message": "Ecosistema",
-    "description": "Elemento de la barra de navegación con etiqueta Ecosistema"
+    "description": "Navbar item with label Ecosystem"
   },
   "item.label.Bridge": {
     "message": "Puente",
-    "description": "Elemento de la barra de navegación con etiqueta Puente"
+    "description": "Navbar item with label Bridge"
   },
   "item.label.Builders": {
     "message": "Constructores",
-    "description": "Elemento de la barra de navegación con etiqueta Constructores"
+    "description": "Navbar item with label Builders"
   },
   "item.label.About": {
     "message": "Acerca de",
-    "description": "Elemento de la barra de navegación con etiqueta Acerca de"
+    "description": "Navbar item with label About"
   },
   "item.label.Learn": {
     "message": "Aprender",
-    "description": "Elemento de la barra de navegación con etiqueta Aprender"
+    "description": "Navbar item with label Learn"
   },
   "item.label.Track your progress": {
     "message": "Rastrea tu progreso",
-    "description": "Elemento de la barra de navegación con etiqueta Rastrea tu progreso"
+    "description": "Navbar item with label Track your progress"
   },
   "item.label.Bootcamp": {
     "message": "Bootcamp",
-    "description": "Elemento de la barra de navegación con etiqueta Bootcamp"
+    "description": "Navbar item with label Bootcamp"
   },
   "item.label.Apps": {
     "message": "Aplicaciones",
-    "description": "Elemento de la barra de navegación con etiqueta Aplicaciones"
+    "description": "Navbar item with label Apps"
   },
   "item.label.Grants": {
     "message": "Subvenciones",
-    "description": "Elemento de la barra de navegación con etiqueta Subvenciones"
+    "description": "Navbar item with label Grants"
   },
   "item.label.Block Explorer": {
     "message": "Explorador de Bloques",
-    "description": "Elemento de la barra de navegación con etiqueta Explorador de Bloques"
+    "description": "Navbar item with label Block Explorer"
   },
   "item.label.Status": {
     "message": "Estado",
-    "description": "Elemento de la barra de navegación con etiqueta Estado"
+    "description": "Navbar item with label Status"
   },
   "item.label.Bug Bounty": {
     "message": "Recompensa de Errores",
-    "description": "Elemento de la barra de navegación con etiqueta Recompensa de Errores"
+    "description": "Navbar item with label Bug Bounty"
   },
   "item.label.Mission": {
     "message": "Misión",
-    "description": "Elemento de la barra de navegación con etiqueta Misión"
+    "description": "Navbar item with label Mission"
   },
   "item.label.Blog": {
     "message": "Blog",
-    "description": "Elemento de la barra de navegación con etiqueta Blog"
+    "description": "Navbar item with label Blog"
   },
   "item.label.Jobs": {
     "message": "Trabajos",
-    "description": "Elemento de la barra de navegación con etiqueta Trabajos"
+    "description": "Navbar item with label Jobs"
   }
 }

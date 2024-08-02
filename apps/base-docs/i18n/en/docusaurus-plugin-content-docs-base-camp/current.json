@@ -182,5 +182,497 @@
   "sidebar.docs.link.Connecting to the Blockchain": {
     "message": "Connecting to the Blockchain",
     "description": "The label for link Connecting to the Blockchain in sidebar docs, linking to https://docs.base.org/tutorials/intro-to-providers"
+  },
+  "sidebar.docs.link.Testing Smart Contracts with Foundry": {
+    "message": "Testing Smart Contracts with Foundry",
+    "description": "The label for link Testing Smart Contracts with Foundry in sidebar docs, linking to https://docs.base.org/tutorials/intro-to-foundry-testing"
+  },
+  "sidebar.docs.doc.Welcome": {
+    "message": "Welcome",
+    "description": "The label for the doc item Welcome in sidebar docs, linking to the doc docs/welcome"
+  },
+  "sidebar.docs.doc.Intro to Ethereum (Video)": {
+    "message": "Intro to Ethereum (Video)",
+    "description": "The label for the doc item Intro to Ethereum (Video) in sidebar docs, linking to the doc docs/introduction-to-ethereum/intro-to-ethereum-vid"
+  },
+  "sidebar.docs.doc.Ethereum Dev Overview (Video)": {
+    "message": "Ethereum Dev Overview (Video)",
+    "description": "The label for the doc item Ethereum Dev Overview (Video) in sidebar docs, linking to the doc docs/introduction-to-ethereum/ethereum-dev-overview-vid"
+  },
+  "sidebar.docs.doc.Ethereum Applications": {
+    "message": "Ethereum Applications",
+    "description": "The label for the doc item Ethereum Applications in sidebar docs, linking to the doc docs/introduction-to-ethereum/ethereum-applications"
+  },
+  "sidebar.docs.doc.Gas Use in ETH Transactions": {
+    "message": "Gas Use in ETH Transactions",
+    "description": "The label for the doc item Gas Use in ETH Transactions in sidebar docs, linking to the doc docs/introduction-to-ethereum/gas-use-in-eth-transactions"
+  },
+  "sidebar.docs.doc.EVM Diagram": {
+    "message": "EVM Diagram",
+    "description": "The label for the doc item EVM Diagram in sidebar docs, linking to the doc docs/introduction-to-ethereum/evm-diagram"
+  },
+  "sidebar.docs.doc.Overview": {
+    "message": "Overview",
+    "description": "The label for the doc item Overview in sidebar docs, linking to the doc docs/frontend-setup/overview"
+  },
+  "sidebar.docs.doc.Hardhat Overview (Video)": {
+    "message": "Hardhat Overview (Video)",
+    "description": "The label for the doc item Hardhat Overview (Video) in sidebar docs, linking to the doc docs/hardhat-setup-overview/hardhat-overview-vid"
+  },
+  "sidebar.docs.doc.Creating a Project (Video)": {
+    "message": "Creating a Project (Video)",
+    "description": "The label for the doc item Creating a Project (Video) in sidebar docs, linking to the doc docs/hardhat-setup-overview/creating-a-project-vid"
+  },
+  "sidebar.docs.doc.Hardhat Setup Overview (Step-by-Step)": {
+    "message": "Hardhat Setup Overview (Step-by-Step)",
+    "description": "The label for the doc item Hardhat Setup Overview (Step-by-Step) in sidebar docs, linking to the doc docs/hardhat-setup-overview/hardhat-setup-overview-sbs"
+  },
+  "sidebar.docs.doc.Testing Overview (Video)": {
+    "message": "Testing Overview (Video)",
+    "description": "The label for the doc item Testing Overview (Video) in sidebar docs, linking to the doc docs/hardhat-testing/testing-overview-vid"
+  },
+  "sidebar.docs.doc.Writing Tests (Video)": {
+    "message": "Writing Tests (Video)",
+    "description": "The label for the doc item Writing Tests (Video) in sidebar docs, linking to the doc docs/hardhat-testing/writing-tests-vid"
+  },
+  "sidebar.docs.doc.Contract ABI and Testing (Video)": {
+    "message": "Contract ABI and Testing (Video)",
+    "description": "The label for the doc item Contract ABI and Testing (Video) in sidebar docs, linking to the doc docs/hardhat-testing/contract-abi-and-testing-vid"
+  },
+  "sidebar.docs.doc.Hardhat Testing (Step-by-Step)": {
+    "message": "Hardhat Testing (Step-by-Step)",
+    "description": "The label for the doc item Hardhat Testing (Step-by-Step) in sidebar docs, linking to the doc docs/hardhat-testing/hardhat-testing-sbs"
+  },
+  "sidebar.docs.doc.Etherscan (Step-by-Step)": {
+    "message": "Etherscan (Step-by-Step)",
+    "description": "The label for the doc item Etherscan (Step-by-Step) in sidebar docs, linking to the doc docs/etherscan/etherscan-sbs"
+  },
+  "sidebar.docs.doc.Etherscan (Video)": {
+    "message": "Etherscan (Video)",
+    "description": "The label for the doc item Etherscan (Video) in sidebar docs, linking to the doc docs/etherscan/etherscan-vid"
+  },
+  "sidebar.docs.doc.Installing Hardhat Deploy (Video)": {
+    "message": "Installing Hardhat Deploy (Video)",
+    "description": "The label for the doc item Installing Hardhat Deploy (Video) in sidebar docs, linking to the doc docs/hardhat-deploy/installing-hardhat-deploy-vid"
+  },
+  "sidebar.docs.doc.Setup Deploy Script (Video)": {
+    "message": "Setup Deploy Script (Video)",
+    "description": "The label for the doc item Setup Deploy Script (Video) in sidebar docs, linking to the doc docs/hardhat-deploy/setup-deploy-script-vid"
+  },
+  "sidebar.docs.doc.Testing Our Deployment (Video)": {
+    "message": "Testing Our Deployment (Video)",
+    "description": "The label for the doc item Testing Our Deployment (Video) in sidebar docs, linking to the doc docs/hardhat-deploy/testing-our-deployment-vid"
+  },
+  "sidebar.docs.doc.Test Network Configuration (Video)": {
+    "message": "Test Network Configuration (Video)",
+    "description": "The label for the doc item Test Network Configuration (Video) in sidebar docs, linking to the doc docs/hardhat-deploy/test-network-configuration-vid"
+  },
+  "sidebar.docs.doc.Deployment (Video)": {
+    "message": "Deployment (Video)",
+    "description": "The label for the doc item Deployment (Video) in sidebar docs, linking to the doc docs/hardhat-deploy/deployment-vid"
+  },
+  "sidebar.docs.doc.Hardhat Deploy (Step-by-Step)": {
+    "message": "Hardhat Deploy (Step-by-Step)",
+    "description": "The label for the doc item Hardhat Deploy (Step-by-Step) in sidebar docs, linking to the doc docs/hardhat-deploy/hardhat-deploy-sbs"
+  },
+  "sidebar.docs.doc.Hardhat Verify (Video)": {
+    "message": "Hardhat Verify (Video)",
+    "description": "The label for the doc item Hardhat Verify (Video) in sidebar docs, linking to the doc docs/hardhat-verify/hardhat-verify-vid"
+  },
+  "sidebar.docs.doc.Hardhat Verify (Step-by-Step)": {
+    "message": "Hardhat Verify (Step-by-Step)",
+    "description": "The label for the doc item Hardhat Verify (Step-by-Step) in sidebar docs, linking to the doc docs/hardhat-verify/hardhat-verify-sbs"
+  },
+  "sidebar.docs.doc.Mainnet Forking (Video)": {
+    "message": "Mainnet Forking (Video)",
+    "description": "The label for the doc item Mainnet Forking (Video) in sidebar docs, linking to the doc docs/hardhat-forking/mainnet-forking-vid"
+  },
+  "sidebar.docs.doc.Hardhat Forking": {
+    "message": "Hardhat Forking",
+    "description": "The label for the doc item Hardhat Forking in sidebar docs, linking to the doc docs/hardhat-forking/hardhat-forking"
+  },
+  "sidebar.docs.doc.Introduction to Solidity Overview": {
+    "message": "Introduction to Solidity Overview",
+    "description": "The label for the doc item Introduction to Solidity Overview in sidebar docs, linking to the doc docs/introduction-to-solidity/introduction-to-solidity-overview"
+  },
+  "sidebar.docs.doc.Anatomy of a Smart Contract (Video)": {
+    "message": "Anatomy of a Smart Contract (Video)",
+    "description": "The label for the doc item Anatomy of a Smart Contract (Video) in sidebar docs, linking to the doc docs/introduction-to-solidity/anatomy-of-a-smart-contract-vid"
+  },
+  "sidebar.docs.doc.Introduction to Solidity (Video)": {
+    "message": "Introduction to Solidity (Video)",
+    "description": "The label for the doc item Introduction to Solidity (Video) in sidebar docs, linking to the doc docs/introduction-to-solidity/introduction-to-solidity-vid"
+  },
+  "sidebar.docs.doc.Solidity Overview": {
+    "message": "Solidity Overview",
+    "description": "The label for the doc item Solidity Overview in sidebar docs, linking to the doc docs/introduction-to-solidity/solidity-overview"
+  },
+  "sidebar.docs.doc.Introduction to Remix (Video)": {
+    "message": "Introduction to Remix (Video)",
+    "description": "The label for the doc item Introduction to Remix (Video) in sidebar docs, linking to the doc docs/introduction-to-solidity/introduction-to-remix-vid"
+  },
+  "sidebar.docs.doc.Introduction to Remix": {
+    "message": "Introduction to Remix",
+    "description": "The label for the doc item Introduction to Remix in sidebar docs, linking to the doc docs/introduction-to-solidity/introduction-to-remix"
+  },
+  "sidebar.docs.doc.Deployment in Remix (Video)": {
+    "message": "Deployment in Remix (Video)",
+    "description": "The label for the doc item Deployment in Remix (Video) in sidebar docs, linking to the doc docs/introduction-to-solidity/deployment-in-remix-vid"
+  },
+  "sidebar.docs.doc.Deployment in Remix (Step-by-Step)": {
+    "message": "Deployment in Remix (Step-by-Step)",
+    "description": "The label for the doc item Deployment in Remix (Step-by-Step) in sidebar docs, linking to the doc docs/introduction-to-solidity/deployment-in-remix"
+  },
+  "sidebar.docs.doc.Intro to Contracts (Video)": {
+    "message": "Intro to Contracts (Video)",
+    "description": "The label for the doc item Intro to Contracts (Video) in sidebar docs, linking to the doc docs/contracts-and-basic-functions/intro-to-contracts-vid"
+  },
+  "sidebar.docs.doc.Hello World (Step-by-Step)": {
+    "message": "Hello World (Step-by-Step)",
+    "description": "The label for the doc item Hello World (Step-by-Step) in sidebar docs, linking to the doc docs/contracts-and-basic-functions/hello-world-step-by-step"
+  },
+  "sidebar.docs.doc.Basic Types": {
+    "message": "Basic Types",
+    "description": "The label for the doc item Basic Types in sidebar docs, linking to the doc docs/contracts-and-basic-functions/basic-types"
+  },
+  "sidebar.docs.doc.Basic Functions (Exercise)": {
+    "message": "Basic Functions (Exercise)",
+    "description": "The label for the doc item Basic Functions (Exercise) in sidebar docs, linking to the doc docs/contracts-and-basic-functions/basic-functions-exercise"
+  },
+  "sidebar.docs.doc.Overview of Test Networks (Video)": {
+    "message": "Overview of Test Networks (Video)",
+    "description": "The label for the doc item Overview of Test Networks (Video) in sidebar docs, linking to the doc docs/deployment-to-testnet/overview-of-test-networks-vid"
+  },
+  "sidebar.docs.doc.Test Networks": {
+    "message": "Test Networks",
+    "description": "The label for the doc item Test Networks in sidebar docs, linking to the doc docs/deployment-to-testnet/test-networks"
+  },
+  "sidebar.docs.doc.Deployment to Base Sepolia (Step-by-Step)": {
+    "message": "Deployment to Base Sepolia (Step-by-Step)",
+    "description": "The label for the doc item Deployment to Base Sepolia (Step-by-Step) in sidebar docs, linking to the doc docs/deployment-to-testnet/deployment-to-base-sepolia-sbs"
+  },
+  "sidebar.docs.doc.Contract Verification (Step-by-Step)": {
+    "message": "Contract Verification (Step-by-Step)",
+    "description": "The label for the doc item Contract Verification (Step-by-Step) in sidebar docs, linking to the doc docs/deployment-to-testnet/contract-verification-sbs"
+  },
+  "sidebar.docs.doc.Deployment to Testnet (Exercise)": {
+    "message": "Deployment to Testnet (Exercise)",
+    "description": "The label for the doc item Deployment to Testnet (Exercise) in sidebar docs, linking to the doc docs/deployment-to-testnet/deployment-to-testnet-exercise"
+  },
+  "sidebar.docs.doc.Standard Control Structures (Video)": {
+    "message": "Standard Control Structures (Video)",
+    "description": "The label for the doc item Standard Control Structures (Video) in sidebar docs, linking to the doc docs/control-structures/standard-control-structures-vid"
+  },
+  "sidebar.docs.doc.Loops (Video)": {
+    "message": "Loops (Video)",
+    "description": "The label for the doc item Loops (Video) in sidebar docs, linking to the doc docs/control-structures/loops-vid"
+  },
+  "sidebar.docs.doc.Require, Revert, and Error (Video)": {
+    "message": "Require, Revert, and Error (Video)",
+    "description": "The label for the doc item Require, Revert, and Error (Video) in sidebar docs, linking to the doc docs/control-structures/require-revert-error-vid"
+  },
+  "sidebar.docs.doc.Control Structures": {
+    "message": "Control Structures",
+    "description": "The label for the doc item Control Structures in sidebar docs, linking to the doc docs/control-structures/control-structures"
+  },
+  "sidebar.docs.doc.Control Structures (Exercise)": {
+    "message": "Control Structures (Exercise)",
+    "description": "The label for the doc item Control Structures (Exercise) in sidebar docs, linking to the doc docs/control-structures/control-structures-exercise"
+  },
+  "sidebar.docs.doc.Simple Storage (Video)": {
+    "message": "Simple Storage (Video)",
+    "description": "The label for the doc item Simple Storage (Video) in sidebar docs, linking to the doc docs/storage/simple-storage-video"
+  },
+  "sidebar.docs.doc.Simple Storage (Step-by-Step)": {
+    "message": "Simple Storage (Step-by-Step)",
+    "description": "The label for the doc item Simple Storage (Step-by-Step) in sidebar docs, linking to the doc docs/storage/simple-storage-sbs"
+  },
+  "sidebar.docs.doc.How Storage Works (Video)": {
+    "message": "How Storage Works (Video)",
+    "description": "The label for the doc item How Storage Works (Video) in sidebar docs, linking to the doc docs/storage/how-storage-works-video"
+  },
+  "sidebar.docs.doc.How Storage Works": {
+    "message": "How Storage Works",
+    "description": "The label for the doc item How Storage Works in sidebar docs, linking to the doc docs/storage/how-storage-works"
+  },
+  "sidebar.docs.doc.Storage (Exercise)": {
+    "message": "Storage (Exercise)",
+    "description": "The label for the doc item Storage (Exercise) in sidebar docs, linking to the doc docs/storage/storage-exercise"
+  },
+  "sidebar.docs.doc.Arrays in Solidity (Video)": {
+    "message": "Arrays in Solidity (Video)",
+    "description": "The label for the doc item Arrays in Solidity (Video) in sidebar docs, linking to the doc docs/arrays/arrays-in-solidity-vid"
+  },
+  "sidebar.docs.doc.Writing Arrays in Solidity (Video)": {
+    "message": "Writing Arrays in Solidity (Video)",
+    "description": "The label for the doc item Writing Arrays in Solidity (Video) in sidebar docs, linking to the doc docs/arrays/writing-arrays-in-solidity-vid"
+  },
+  "sidebar.docs.doc.Arrays in Solidity": {
+    "message": "Arrays in Solidity",
+    "description": "The label for the doc item Arrays in Solidity in sidebar docs, linking to the doc docs/arrays/arrays-in-solidity"
+  },
+  "sidebar.docs.doc.Filtering an Array (Step-by-Step)": {
+    "message": "Filtering an Array (Step-by-Step)",
+    "description": "The label for the doc item Filtering an Array (Step-by-Step) in sidebar docs, linking to the doc docs/arrays/filtering-an-array-sbs"
+  },
+  "sidebar.docs.doc.Fixed Size Arrays (Video)": {
+    "message": "Fixed Size Arrays (Video)",
+    "description": "The label for the doc item Fixed Size Arrays (Video) in sidebar docs, linking to the doc docs/arrays/fixed-size-arrays-vid"
+  },
+  "sidebar.docs.doc.Array Storage Layout (Video)": {
+    "message": "Array Storage Layout (Video)",
+    "description": "The label for the doc item Array Storage Layout (Video) in sidebar docs, linking to the doc docs/arrays/array-storage-layout-vid"
+  },
+  "sidebar.docs.doc.Arrays (Exercise)": {
+    "message": "Arrays (Exercise)",
+    "description": "The label for the doc item Arrays (Exercise) in sidebar docs, linking to the doc docs/arrays/arrays-exercise"
+  },
+  "sidebar.docs.doc.Mappings (Video)": {
+    "message": "Mappings (Video)",
+    "description": "The label for the doc item Mappings (Video) in sidebar docs, linking to the doc docs/mappings/mappings-vid"
+  },
+  "sidebar.docs.doc.Using msg.sender (Video)": {
+    "message": "Using msg.sender (Video)",
+    "description": "The label for the doc item Using msg.sender (Video) in sidebar docs, linking to the doc docs/mappings/using-msg-sender-vid"
+  },
+  "sidebar.docs.doc.Mappings (Step-by-Step)": {
+    "message": "Mappings (Step-by-Step)",
+    "description": "The label for the doc item Mappings (Step-by-Step) in sidebar docs, linking to the doc docs/mappings/mappings-sbs"
+  },
+  "sidebar.docs.doc.How Mappings Are Stored (Video)": {
+    "message": "How Mappings Are Stored (Video)",
+    "description": "The label for the doc item How Mappings Are Stored (Video) in sidebar docs, linking to the doc docs/mappings/how-mappings-are-stored-vid"
+  },
+  "sidebar.docs.doc.Mappings (Exercise)": {
+    "message": "Mappings (Exercise)",
+    "description": "The label for the doc item Mappings (Exercise) in sidebar docs, linking to the doc docs/mappings/mappings-exercise"
+  },
+  "sidebar.docs.doc.Function Visibility (Video)": {
+    "message": "Function Visibility (Video)",
+    "description": "The label for the doc item Function Visibility (Video) in sidebar docs, linking to the doc docs/advanced-functions/function-visibility-vid"
+  },
+  "sidebar.docs.doc.Function Visibility": {
+    "message": "Function Visibility",
+    "description": "The label for the doc item Function Visibility in sidebar docs, linking to the doc docs/advanced-functions/function-visibility"
+  },
+  "sidebar.docs.doc.Function Modifiers (Video)": {
+    "message": "Function Modifiers (Video)",
+    "description": "The label for the doc item Function Modifiers (Video) in sidebar docs, linking to the doc docs/advanced-functions/function-modifiers-vid"
+  },
+  "sidebar.docs.doc.Function Modifiers": {
+    "message": "Function Modifiers",
+    "description": "The label for the doc item Function Modifiers in sidebar docs, linking to the doc docs/advanced-functions/function-modifiers"
+  },
+  "sidebar.docs.doc.Structs (Video)": {
+    "message": "Structs (Video)",
+    "description": "The label for the doc item Structs (Video) in sidebar docs, linking to the doc docs/structs/structs-vid"
+  },
+  "sidebar.docs.doc.Structs (Step-by-Step)": {
+    "message": "Structs (Step-by-Step)",
+    "description": "The label for the doc item Structs (Step-by-Step) in sidebar docs, linking to the doc docs/structs/structs-sbs"
+  },
+  "sidebar.docs.doc.Structs (Exercise)": {
+    "message": "Structs (Exercise)",
+    "description": "The label for the doc item Structs (Exercise) in sidebar docs, linking to the doc docs/structs/structs-exercise"
+  },
+  "sidebar.docs.doc.Inheritance (Video)": {
+    "message": "Inheritance (Video)",
+    "description": "The label for the doc item Inheritance (Video) in sidebar docs, linking to the doc docs/inheritance/inheritance-vid"
+  },
+  "sidebar.docs.doc.Inheritance (Step-by-Step)": {
+    "message": "Inheritance (Step-by-Step)",
+    "description": "The label for the doc item Inheritance (Step-by-Step) in sidebar docs, linking to the doc docs/inheritance/inheritance-sbs"
+  },
+  "sidebar.docs.doc.Multiple Inheritance (Video)": {
+    "message": "Multiple Inheritance (Video)",
+    "description": "The label for the doc item Multiple Inheritance (Video) in sidebar docs, linking to the doc docs/inheritance/multiple-inheritance-vid"
+  },
+  "sidebar.docs.doc.Multiple Inheritance": {
+    "message": "Multiple Inheritance",
+    "description": "The label for the doc item Multiple Inheritance in sidebar docs, linking to the doc docs/inheritance/multiple-inheritance"
+  },
+  "sidebar.docs.doc.Abstract Contracts (Video)": {
+    "message": "Abstract Contracts (Video)",
+    "description": "The label for the doc item Abstract Contracts (Video) in sidebar docs, linking to the doc docs/inheritance/abstract-contracts-vid"
+  },
+  "sidebar.docs.doc.Abstract Contracts (Step-by-Step)": {
+    "message": "Abstract Contracts (Step-by-Step)",
+    "description": "The label for the doc item Abstract Contracts (Step-by-Step) in sidebar docs, linking to the doc docs/inheritance/abstract-contracts-sbs"
+  },
+  "sidebar.docs.doc.Inheritance (Exercise)": {
+    "message": "Inheritance (Exercise)",
+    "description": "The label for the doc item Inheritance (Exercise) in sidebar docs, linking to the doc docs/inheritance/inheritance-exercise"
+  },
+  "sidebar.docs.doc.Imports (Video)": {
+    "message": "Imports (Video)",
+    "description": "The label for the doc item Imports (Video) in sidebar docs, linking to the doc docs/imports/imports-vid"
+  },
+  "sidebar.docs.doc.Imports (Step-by-Step)": {
+    "message": "Imports (Step-by-Step)",
+    "description": "The label for the doc item Imports (Step-by-Step) in sidebar docs, linking to the doc docs/imports/imports-sbs"
+  },
+  "sidebar.docs.doc.Imports (Exercise)": {
+    "message": "Imports (Exercise)",
+    "description": "The label for the doc item Imports (Exercise) in sidebar docs, linking to the doc docs/imports/imports-exercise"
+  },
+  "sidebar.docs.doc.Error Triage (Video)": {
+    "message": "Error Triage (Video)",
+    "description": "The label for the doc item Error Triage (Video) in sidebar docs, linking to the doc docs/error-triage/error-triage-vid"
+  },
+  "sidebar.docs.doc.Error Triage": {
+    "message": "Error Triage",
+    "description": "The label for the doc item Error Triage in sidebar docs, linking to the doc docs/error-triage/error-triage"
+  },
+  "sidebar.docs.doc.Error Triage (Exercise)": {
+    "message": "Error Triage (Exercise)",
+    "description": "The label for the doc item Error Triage (Exercise) in sidebar docs, linking to the doc docs/error-triage/error-triage-exercise"
+  },
+  "sidebar.docs.doc.Creating a New Contract (Video)": {
+    "message": "Creating a New Contract (Video)",
+    "description": "The label for the doc item Creating a New Contract (Video) in sidebar docs, linking to the doc docs/new-keyword/creating-a-new-contract-vid"
+  },
+  "sidebar.docs.doc.The `new` Keyword (Step-by-Step)": {
+    "message": "The `new` Keyword (Step-by-Step)",
+    "description": "The label for the doc item The `new` Keyword (Step-by-Step) in sidebar docs, linking to the doc docs/new-keyword/new-keyword-sbs"
+  },
+  "sidebar.docs.doc.The `new` Keyword (Exercise)": {
+    "message": "The `new` Keyword (Exercise)",
+    "description": "The label for the doc item The `new` Keyword (Exercise) in sidebar docs, linking to the doc docs/new-keyword/new-keyword-exercise"
+  },
+  "sidebar.docs.doc.Intro to Interfaces (Video)": {
+    "message": "Intro to Interfaces (Video)",
+    "description": "The label for the doc item Intro to Interfaces (Video) in sidebar docs, linking to the doc docs/interfaces/intro-to-interfaces-vid"
+  },
+  "sidebar.docs.doc.Calling Another Contract (Video)": {
+    "message": "Calling Another Contract (Video)",
+    "description": "The label for the doc item Calling Another Contract (Video) in sidebar docs, linking to the doc docs/interfaces/calling-another-contract-vid"
+  },
+  "sidebar.docs.doc.Testing the Interface (Video)": {
+    "message": "Testing the Interface (Video)",
+    "description": "The label for the doc item Testing the Interface (Video) in sidebar docs, linking to the doc docs/interfaces/testing-the-interface-vid"
+  },
+  "sidebar.docs.doc.Contract to Contract Interaction": {
+    "message": "Contract to Contract Interaction",
+    "description": "The label for the doc item Contract to Contract Interaction in sidebar docs, linking to the doc docs/interfaces/contract-to-contract-interaction"
+  },
+  "sidebar.docs.doc.Hardhat Events (Step-by-Step)": {
+    "message": "Hardhat Events (Step-by-Step)",
+    "description": "The label for the doc item Hardhat Events (Step-by-Step) in sidebar docs, linking to the doc docs/events/hardhat-events-sbs"
+  },
+  "sidebar.docs.doc.Address and Payable": {
+    "message": "Address and Payable",
+    "description": "The label for the doc item Address and Payable in sidebar docs, linking to the doc docs/address-and-payable/address-and-payable"
+  },
+  "sidebar.docs.doc.Intro to Tokens (Video)": {
+    "message": "Intro to Tokens (Video)",
+    "description": "The label for the doc item Intro to Tokens (Video) in sidebar docs, linking to the doc docs/intro-to-tokens/intro-to-tokens-vid"
+  },
+  "sidebar.docs.doc.Misconceptions About Tokens (Video)": {
+    "message": "Misconceptions About Tokens (Video)",
+    "description": "The label for the doc item Misconceptions About Tokens (Video) in sidebar docs, linking to the doc docs/intro-to-tokens/misconceptions-about-tokens-vid"
+  },
+  "sidebar.docs.doc.Tokens Overview": {
+    "message": "Tokens Overview",
+    "description": "The label for the doc item Tokens Overview in sidebar docs, linking to the doc docs/intro-to-tokens/tokens-overview"
+  },
+  "sidebar.docs.doc.Creating a Minimal Token (Video)": {
+    "message": "Creating a Minimal Token (Video)",
+    "description": "The label for the doc item Creating a Minimal Token (Video) in sidebar docs, linking to the doc docs/minimal-tokens/creating-a-minimal-token-vid"
+  },
+  "sidebar.docs.doc.Transferring a Minimal Token (Video)": {
+    "message": "Transferring a Minimal Token (Video)",
+    "description": "The label for the doc item Transferring a Minimal Token (Video) in sidebar docs, linking to the doc docs/minimal-tokens/transferring-a-minimal-token-vid"
+  },
+  "sidebar.docs.doc.Minimal Token (Step-by-Step)": {
+    "message": "Minimal Token (Step-by-Step)",
+    "description": "The label for the doc item Minimal Token (Step-by-Step) in sidebar docs, linking to the doc docs/minimal-tokens/minimal-token-sbs"
+  },
+  "sidebar.docs.doc.Minimal Tokens (Exercise)": {
+    "message": "Minimal Tokens (Exercise)",
+    "description": "The label for the doc item Minimal Tokens (Exercise) in sidebar docs, linking to the doc docs/minimal-tokens/minimal-tokens-exercise"
+  },
+  "sidebar.docs.doc.Analyzing ERC-20 (Video)": {
+    "message": "Analyzing ERC-20 (Video)",
+    "description": "The label for the doc item Analyzing ERC-20 (Video) in sidebar docs, linking to the doc docs/erc-20-token/analyzing-erc-20-vid"
+  },
+  "sidebar.docs.doc.ERC-20 Standard": {
+    "message": "ERC-20 Standard",
+    "description": "The label for the doc item ERC-20 Standard in sidebar docs, linking to the doc docs/erc-20-token/erc-20-standard"
+  },
+  "sidebar.docs.doc.OpenZeppelin ERC-20 (Video)": {
+    "message": "OpenZeppelin ERC-20 (Video)",
+    "description": "The label for the doc item OpenZeppelin ERC-20 (Video) in sidebar docs, linking to the doc docs/erc-20-token/openzeppelin-erc-20-vid"
+  },
+  "sidebar.docs.doc.ERC-20 Testing (Video)": {
+    "message": "ERC-20 Testing (Video)",
+    "description": "The label for the doc item ERC-20 Testing (Video) in sidebar docs, linking to the doc docs/erc-20-token/erc-20-testing-vid"
+  },
+  "sidebar.docs.doc.ERC-20 Token (Step-by-Step)": {
+    "message": "ERC-20 Token (Step-by-Step)",
+    "description": "The label for the doc item ERC-20 Token (Step-by-Step) in sidebar docs, linking to the doc docs/erc-20-token/erc-20-token-sbs"
+  },
+  "sidebar.docs.doc.ERC-20 (Exercise)": {
+    "message": "ERC-20 (Exercise)",
+    "description": "The label for the doc item ERC-20 (Exercise) in sidebar docs, linking to the doc docs/erc-20-token/erc-20-exercise"
+  },
+  "sidebar.docs.doc.ERC-721 Standard (Video)": {
+    "message": "ERC-721 Standard (Video)",
+    "description": "The label for the doc item ERC-721 Standard (Video) in sidebar docs, linking to the doc docs/erc-721-token/erc-721-standard-video"
+  },
+  "sidebar.docs.doc.ERC-721 Standard": {
+    "message": "ERC-721 Standard",
+    "description": "The label for the doc item ERC-721 Standard in sidebar docs, linking to the doc docs/erc-721-token/erc-721-standard"
+  },
+  "sidebar.docs.doc.ERC-721 on OpenSea (Video)": {
+    "message": "ERC-721 on OpenSea (Video)",
+    "description": "The label for the doc item ERC-721 on OpenSea (Video) in sidebar docs, linking to the doc docs/erc-721-token/erc-721-on-opensea-vid"
+  },
+  "sidebar.docs.doc.OpenZeppelin ERC-721 (Video)": {
+    "message": "OpenZeppelin ERC-721 (Video)",
+    "description": "The label for the doc item OpenZeppelin ERC-721 (Video) in sidebar docs, linking to the doc docs/erc-721-token/openzeppelin-erc-721-vid"
+  },
+  "sidebar.docs.doc.Implementing an ERC-721 (Video)": {
+    "message": "Implementing an ERC-721 (Video)",
+    "description": "The label for the doc item Implementing an ERC-721 (Video) in sidebar docs, linking to the doc docs/erc-721-token/implementing-an-erc-721-vid"
+  },
+  "sidebar.docs.doc.ERC-721 (Step-by-Step)": {
+    "message": "ERC-721 (Step-by-Step)",
+    "description": "The label for the doc item ERC-721 (Step-by-Step) in sidebar docs, linking to the doc docs/erc-721-token/erc-721-sbs"
+  },
+  "sidebar.docs.doc.ERC-721 (Exercise)": {
+    "message": "ERC-721 (Exercise)",
+    "description": "The label for the doc item ERC-721 (Exercise) in sidebar docs, linking to the doc docs/erc-721-token/erc-721-exercise"
+  },
+  "sidebar.docs.doc.Wallet Connectors": {
+    "message": "Wallet Connectors",
+    "description": "The label for the doc item Wallet Connectors in sidebar docs, linking to the doc docs/frontend-setup/wallet-connectors"
+  },
+  "sidebar.docs.doc.Building an Onchain App": {
+    "message": "Building an Onchain App",
+    "description": "The label for the doc item Building an Onchain App in sidebar docs, linking to the doc docs/frontend-setup/building-an-onchain-app"
+  },
+  "sidebar.docs.doc.useAccount": {
+    "message": "useAccount",
+    "description": "The label for the doc item useAccount in sidebar docs, linking to the doc docs/reading-and-displaying-data/useAccount"
+  },
+  "sidebar.docs.doc.useReadContract": {
+    "message": "useReadContract",
+    "description": "The label for the doc item useReadContract in sidebar docs, linking to the doc docs/reading-and-displaying-data/useReadContract"
+  },
+  "sidebar.docs.doc.Configuring useReadContract": {
+    "message": "Configuring useReadContract",
+    "description": "The label for the doc item Configuring useReadContract in sidebar docs, linking to the doc docs/reading-and-displaying-data/configuring-useReadContract"
+  },
+  "sidebar.docs.doc.useWriteContract": {
+    "message": "useWriteContract",
+    "description": "The label for the doc item useWriteContract in sidebar docs, linking to the doc docs/writing-to-contracts/useWriteContract"
+  },
+  "sidebar.docs.doc.useSimulateContract": {
+    "message": "useSimulateContract",
+    "description": "The label for the doc item useSimulateContract in sidebar docs, linking to the doc docs/writing-to-contracts/useSimulateContract"
+  },
+  "sidebar.docs.doc.Exercise Contracts": {
+    "message": "Exercise Contracts",
+    "description": "The label for the doc item Exercise Contracts in sidebar docs, linking to the doc docs/exercise-contracts"
   }
 }

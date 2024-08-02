@@ -346,16 +346,16 @@ const config = {
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'es'],
     localeConfigs: {
       en: {
         label: 'English',
         direction: 'ltr',
       },
-      // es: {
-      //   label: 'Español',
-      //   direction: 'ltr',
-      // },
+      es: {
+        label: 'Español',
+        direction: 'ltr',
+      },
     },
   },
 };
