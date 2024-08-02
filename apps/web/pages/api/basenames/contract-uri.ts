@@ -10,7 +10,8 @@ export default async function GET(request: Request) {
   const url = new URL(request.url);
 
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
-  const chainId = url.searchParams.get('chainId') ?? base.id;
+  const chainIdFromParams = url.searchParams.get('chainId');
+  const chainId = chainIdFromParams ? Number(chainIdFromParams) : base.id;
   if (!chainId) return NextResponse.json({ error: '406: chainId is missing' }, { status: 406 });
 
   return NextResponse.redirect(
