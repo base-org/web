@@ -4,18 +4,23 @@ FROM 652969937640.dkr.ecr.us-east-1.amazonaws.com/containers/node:current AS bas
 #   1. Install project dependencies
 # ------------------------------------
 FROM base AS deps
-WORKDIR /repo
 
 RUN apt-get update && apt-get install -y zip
-RUN yarn --immutable
+
+WORKDIR /repo
+
+COPY ../../package.json ../../yarn.lock* ./
+
+RUN cd ../../ && yarn --immutable
 
 # ------------------------------------
 #   2. Build the project
 # ------------------------------------
 FROM base AS builder
+WORKDIR /repo
+
 
 ENV NODE_ENV=production
-WORKDIR /repo
 
 COPY . .
 
