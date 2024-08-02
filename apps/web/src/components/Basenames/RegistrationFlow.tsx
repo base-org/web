@@ -186,7 +186,7 @@ export function RegistrationFlow() {
             appear
             show={!isSearch}
             className={classNames(
-              'relative z-50 w-full transition-opacity',
+              'relative z-10 w-full transition-opacity',
               registrationTransitionDuration,
               {
                 'w-full max-w-[26rem]': isProfile,
@@ -203,7 +203,7 @@ export function RegistrationFlow() {
               appear
               show={isClaim}
               className={classNames(
-                'absolute left-1/2 z-40 mx-auto w-full -translate-x-1/2 -translate-y-[calc(15vh)] transition-opacity md:max-w-[16rem]  md:-translate-y-20',
+                'absolute left-1/2 z-9 mx-auto w-full -translate-x-1/2 -translate-y-[calc(15vh)] transition-opacity md:max-w-[16rem]  md:-translate-y-20',
                 registrationTransitionDuration,
               )}
               enterFrom="opacity-0"
