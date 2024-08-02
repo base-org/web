@@ -1,5 +1,11 @@
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 
+import empoweredByCoinbase from './EmpoweredByCoinbase.png';
+
+const imageBackgroundStyles = {
+  backgroundImage: `url('${empoweredByCoinbase.src}')`,
+};
+
 export default async function EmpoweredByCoinbase() {
   return (
     <div
@@ -11,7 +17,10 @@ export default async function EmpoweredByCoinbase() {
           <span>5.</span>
           <span className="ml-4">Empowered by Coinbase</span>
         </h2>
-        <div className="h-[235px] w-[300px] self-center bg-[url('../public/images/why-base-empowered-by-cb.png')] bg-contain bg-center bg-no-repeat sm:hidden" />
+        <div
+          className="h-[235px] w-[300px] self-center bg-contain bg-center bg-no-repeat sm:hidden"
+          style={imageBackgroundStyles}
+        />
         <div>
           <span className="text-base sm:text-lg">
             {`Base is incubated within Coinbase and plans to progressively decentralize in the years
@@ -33,7 +42,10 @@ export default async function EmpoweredByCoinbase() {
           </div>
         </div>
       </div>
-      <div className="hidden h-auto w-full bg-[url('../public/images/why-base-empowered-by-cb.png')] bg-contain bg-center bg-no-repeat sm:block" />
+      <div
+        className="hidden h-auto w-full  bg-contain bg-center bg-no-repeat sm:block"
+        style={imageBackgroundStyles}
+      />
     </div>
   );
 }

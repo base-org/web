@@ -7,9 +7,17 @@ import WorldclassResources from 'apps/web/src/components/WhyBase/WorldclassResou
 import EmpoweredByCoinbase from 'apps/web/src/components/WhyBase/EmpoweredByCoinbase';
 import BuildWithUs from 'apps/web/src/components/WhyBase/BuildWithUs';
 
+import WhyBaseHeroBackground from 'apps/web/src/components/WhyBase/why-base-hero-bg.png';
+
 export default async function WhyBase() {
+  const backgroundStyles = {
+    backgroundImage: `url('${WhyBaseHeroBackground.src}')`,
+  };
   return (
-    <div className="mt-[-96px] bg-blue-60 bg-[url(../public/images/why-base-hero-bg.png)] bg-repeat font-display text-white">
+    <div
+      className="mt-[-96px] bg-blue-60 bg-repeat font-display text-white"
+      style={backgroundStyles}
+    >
       <Hero />
       <ActiveCommunityOfBuilders />
       <Divider />
