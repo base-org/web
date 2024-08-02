@@ -12,6 +12,11 @@ WORKDIR /repo
 # Check: does this actually work? do we also need to copy web/base-ui? json files from
 COPY package.json yarn.lock* ./
 
+COPY apps/web/package.json ./apps/web
+COPY apps/base-docs/package.json ./apps/base-docs
+COPY apps/bridge/package.json ./apps/bridge
+COPY libs/base-ui/package.json ./libs/base-ui
+
 RUN yarn --immutable
 
 # ------------------------------------
