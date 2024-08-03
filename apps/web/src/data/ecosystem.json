@@ -3208,6 +3208,15 @@
     "imageUrl": "/images/partners/rep3.png"
   },
   {
+    "name": "tribally",
+    "tags": [
+      "social"
+    ],
+    "description": "Social-fi meets game-fi at Tribally - gaming with benefits.",
+    "url": "https://tribally.games",
+    "imageUrl": "/images/partners/tribally.png"
+  },
+  {
     "name": "Nexandria",
     "tags": [
       "infra"
