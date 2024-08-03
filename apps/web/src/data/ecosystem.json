@@ -3953,5 +3953,23 @@
     "description": "ddocs.new is your onchain alternative to Go*gle D*cs. No account needed, designed to enhance your privacy, works peer-to-peer with no centralized intermediary, and available on both mobile & desktop.",
     "url": "https://ddocs.new",
     "imageUrl": "/images/partners/ddocs.jpeg"
+  },
+  {
+    "name": "Memstagram",
+    "tags": [
+      "social"
+    ],
+    "description": "Monetize meme engagement",
+    "url": "https://www.memstagram.com/sign-up",
+    "imageUrl": "/images/partners/memstagram.png"
+  },
+  {
+    "name": "Momentify",
+    "tags": [
+      "social"
+    ],
+    "description": "Make more music memories",
+    "url": "https://app.momentify.xyz/",
+    "imageUrl": "/images/partners/momentify.png"
   }
 ]
