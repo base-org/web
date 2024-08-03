@@ -22,6 +22,7 @@ keywords:
     accounts,
     user account,
     openfort,
+    Tweed
   ]
 hide_table_of_contents: true
 ---
@@ -77,5 +78,11 @@ You can [get started with Privy here](https://docs.privy.io/guide/quickstart), a
 WalletKit is compatible with most EVM chains, including Base. It has integrated support for ERC 4337 and comes with a paymaster and bundler included, requiring no extra setup.
 
 You can check out the [WalletKit documentation here](https://docs.walletkit.com). Start building for free on the Base testnet today.
+
+---
+
+## Tweed
+
+[Tweed](https://paytweed.com) end-to-end payment infrastructure enables companies to compliantly onboard and monetize users with zero friction. With Tweed, platforms can sell NFTs or Platform Tokens and deliver a native e-comm experience: buyers pay with card, sellers receive either fiat or crypto without worrying about gas fees. Companies can seamlessly create self-custodial, recoverable, white label wallets for users, eliminating any regulatory
 
 ---
