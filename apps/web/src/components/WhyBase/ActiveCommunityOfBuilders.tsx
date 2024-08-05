@@ -1,4 +1,5 @@
-import { CSSProperties } from 'react';
+'use client';
+
 import Link from 'apps/web/node_modules/next/link';
 import Image from 'apps/web/node_modules/next/image';
 import { StaticImageData } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
@@ -8,7 +9,8 @@ import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/Bu
 import aerodromeImage from './aerodrome.svg';
 import doodlesImage from './doodles.svg';
 import morphoImage from './morpho.svg';
-import communityOfBuilders from './community-of-builders.svg';
+
+import { partners, Partner } from 'apps/web/src/components/WhyBase/partners';
 
 export default async function ActiveCommunityOfBuilders() {
   return (
@@ -17,20 +19,17 @@ export default async function ActiveCommunityOfBuilders() {
       className="mt-10 flex w-full max-w-[1440px] flex-col px-12 pb-6 sm:mt-16 sm:px-16 sm:pb-8 lg:mt-20 lg:px-24 lg:pb-10"
     >
       <div className="flex flex-col justify-between md:grid md:grid-cols-[1fr_1fr]">
-        <Image
-          src={communityOfBuilders}
-          alt="community of builders"
-          className="hidden h-auto w-full md:block"
-        />
+        <div className="mr-8 hidden md:block">
+          <CommunityPartners partners={partners} />
+        </div>
         <div className="flex grow flex-col justify-start space-y-6 lg:mx-8 lg:justify-around xl:mx-20">
           <h2 className="flex flex-row font-display text-3xl sm:text-4xl lg:text-6xl">
             <span>1.</span>
-            <span className="ml-4">Join an active community of Onchain Builders</span>
+            <span className="ml-4">Join an active community of Builders</span>
           </h2>
-          <div
-            className="h-full min-h-[175px] w-full min-w-[300px] self-center bg-contain bg-center bg-no-repeat md:hidden"
-            style={imageBackgroundStyles}
-          />
+          <div className="md:hidden">
+            <CommunityPartners partners={partners} />
+          </div>
           <span className="text-base text-white sm:text-lg">
             Join a community of thousands builders just like you, building some of the coolest
             projects onchain. Reach out to our Discord support team for help.
@@ -62,11 +61,24 @@ export default async function ActiveCommunityOfBuilders() {
   );
 }
 
-async function CommunityCard({ card }: { card: CommunityCardType }) {
-  const backgroundStyles: CSSProperties = {
-    backgroundImage: `url('${card.img.src}')`,
-  };
+async function CommunityPartners({ partners }: { partners: Partner[] }) {
+  return (
+    <div className="grid h-full max-h-[300px] w-full max-w-[520px] grid-cols-12 gap-0">
+      {partners.map((partner, index) => (
+        <div
+          key={partner.name}
+          className={`col-span-2 flex max-h-[75px] max-w-[75px] items-center justify-center
+        ${index === 0 || index === 11 ? 'col-start-2' : ''}
+      `}
+        >
+          <Image src={partner.img} alt={partner.name} className="m-0 h-full w-full" />
+        </div>
+      ))}
+    </div>
+  );
+}
 
+async function CommunityCard({ card }: { card: CommunityCardType }) {
   return (
     <div
       key={card.href}
@@ -111,10 +123,6 @@ const communityCards: CommunityCardType[] = [
     img: morphoImage,
   },
 ];
-
-const imageBackgroundStyles = {
-  backgroundImage: `url('${communityOfBuilders.src}')`,
-};
 
 type CommunityCardType = {
   title: string;
