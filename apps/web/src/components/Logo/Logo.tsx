@@ -1,6 +1,6 @@
 'use client';
-import Image from 'next/image';
 import BaseBootcampLogo from '../../../public/images/base-bootcamp-white.png';
+import ImageSmart from 'apps/web/src/components/ImageSmart';
 
 type LogoProps = {
   color?: 'white' | 'black';
@@ -11,7 +11,7 @@ type LogoProps = {
 
 export function Logo({ color = 'white', width = '100%', height = '32', path }: LogoProps) {
   if (path === '/bootcamp') {
-    return <Image width={300} src={BaseBootcampLogo} alt="Base Bootcamp" />;
+    return <ImageSmart width={300} src={BaseBootcampLogo} alt="Base Bootcamp" />;
   }
 
   return (

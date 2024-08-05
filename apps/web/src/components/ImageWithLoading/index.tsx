@@ -1,10 +1,12 @@
-import Image, { StaticImageData } from 'next/image';
+'use client';
+import { StaticImageData } from 'next/image';
 import classNames from 'classnames';
 import { useCallback, useState } from 'react';
-import { PlaceholderValue, StaticImport } from 'next/dist/shared/lib/get-img-props';
+import { PlaceholderValue } from 'next/dist/shared/lib/get-img-props';
+import ImageSmart from 'apps/web/src/components/ImageSmart';
 
 type ImageWithLoadingProps = {
-  src: string | StaticImageData | StaticImport;
+  src: string | StaticImageData;
   alt: string;
   title?: string;
   width?: number | `${number}` | undefined;
@@ -48,7 +50,7 @@ export default function ImageWithLoading({
 
   return (
     <figure className={figureClasses}>
-      <Image
+      <ImageSmart
         src={src}
         className={avatarClasses}
         alt={alt}

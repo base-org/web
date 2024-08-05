@@ -3,11 +3,11 @@ import EcosystemHeroLogos from 'apps/web/public/images/ecosystem-hero-logos-new.
 import { Divider } from 'apps/web/src/components/Divider/Divider';
 import { List } from 'apps/web/src/components/Ecosystem/List';
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import ecosystemApps from 'apps/web/src/data/ecosystem.json';
 import { TagChip } from 'apps/web/src/components/Ecosystem/TagChip';
 import { SearchBar } from 'apps/web/src/components/Ecosystem/SearchBar';
 import { Suspense } from 'react';
+import ImageSmart from 'apps/web/src/components/ImageSmart';
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
   title: `Base | About`,
@@ -75,7 +75,7 @@ async function EcosystemHero() {
           </a>
         </div>
         <div className="flex w-full md:w-1/2 md:justify-end">
-          <Image className="-mr-16" src={EcosystemHeroLogos} alt="ecosystem dapp logos" />
+          <ImageSmart className="-mr-16" src={EcosystemHeroLogos} alt="ecosystem dapp logos" />
         </div>
       </div>
     </div>

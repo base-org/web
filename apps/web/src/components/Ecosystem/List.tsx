@@ -1,10 +1,10 @@
 import ErrorImg from 'apps/web/public/images/error.png';
-import Image from 'next/image';
 import { Button } from '../Button/Button';
 import { Card } from './Card';
 import { EcosystemApp } from 'apps/web/app/(base-org)/ecosystem/page';
 import Link from 'next/link';
 import { Url } from 'next/dist/shared/lib/router/router';
+import ImageSmart from 'apps/web/src/components/ImageSmart';
 
 export async function List({
   selectedTag,
@@ -35,7 +35,7 @@ export async function List({
       </div>
       {showEmptyState && (
         <div className="flex flex-col items-center gap-12">
-          <Image src={ErrorImg} alt="No search results" />
+          <ImageSmart src={ErrorImg} alt="No search results" />
           <span className="font-mono text-4xl text-white">
             NO RESULTS FOR &ldquo;{searchText === '' ? selectedTag : searchText}
             &rdquo;

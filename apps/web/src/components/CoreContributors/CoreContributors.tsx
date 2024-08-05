@@ -1,7 +1,8 @@
 import { EnsAvatarMapping } from 'apps/web/src/components/CoreContributors/EnsAvatarMapping';
-import Image from 'next/image';
 import Blockies from './Blockies';
 import contributorList from 'apps/web/src/components/CoreContributors/CoreContributors.json';
+import Link from 'next/link';
+import ImageSmart from 'apps/web/src/components/ImageSmart';
 
 const owners = contributorList as unknown as EnsAvatarMapping[];
 
@@ -19,17 +20,16 @@ export default async function CoreContributors() {
         owners.map((owner) => {
           const filename = owner.filename ?? '';
           const title = owner.ensName ?? owner.address;
-
           return (
             <div key={`avatar_${owner.address}`}>
-              <a
+              <Link
                 href={`https://etherscan.io/address/${owner.address}`}
                 title={owner.ensName ?? owner.address}
                 target="_blank"
                 rel="nofollow noopener noreferrer"
               >
                 {filename ? (
-                  <Image
+                  <ImageSmart
                     alt={title}
                     src={`/images/avatars/${filename}`}
                     width={AVATAR_SIZE}
@@ -39,7 +39,7 @@ export default async function CoreContributors() {
                 ) : (
                   <Blockies address={owner.address} size={AVATAR_SIZE} />
                 )}
-              </a>
+              </Link>
             </div>
           );
         })}

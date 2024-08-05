@@ -1,12 +1,12 @@
 'use client';
 import Link from 'next/link';
 import usernameBaseLogo from './usernameBaseLogo.svg';
-import Image from 'next/image';
+
 import {
   ConnectWalletButton,
   ConnectWalletButtonVariants,
 } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import { useAccount, useSwitchChain } from 'wagmi';
 import classNames from 'classnames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
@@ -14,6 +14,7 @@ import { base, baseSepolia } from 'viem/chains';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { useCallback } from 'react';
 import { isDevelopment } from 'apps/web/src/constants';
+import ImageSmart from 'apps/web/src/components/ImageSmart';
 
 export default function UsernameNav() {
   const { isConnected } = useAccount();
@@ -87,7 +88,7 @@ export default function UsernameNav() {
       )}
       <nav className={navigationClasses}>
         <Link href="/">
-          <Image src={usernameBaseLogo as StaticImport} alt="Base" />
+          <ImageSmart src={usernameBaseLogo as StaticImageData} alt="Base" />
         </Link>
         <span className={walletStateClasses}>
           <ConnectWalletButton

@@ -1,5 +1,5 @@
 /* eslint-disable react-perf/jsx-no-new-object-as-prop */
-import Image from 'next/image';
+import ImageSmart from 'apps/web/src/components/ImageSmart';
 
 const partners = [
   '0x',
@@ -36,11 +36,11 @@ export async function JoinTheCommunity() {
       <div className="group hidden flex-wrap gap-3 xl:flex">
         {partners.map((partner) => (
           <div className="relative h-[108px] w-[108px] overflow-hidden rounded-[3px]" key={partner}>
-            <Image
+            <ImageSmart
               src={`/images/partners/${partner}.webp`}
               alt={`${partner} logo`}
-              fill
               style={{ objectFit: 'cover' }}
+              fill
               className="duration-300 ease-partners hover:!opacity-100 group-hover:opacity-25"
               title={partner}
             />
@@ -51,11 +51,11 @@ export async function JoinTheCommunity() {
       <div className="group flex flex-wrap justify-center gap-3 xl:hidden">
         {partners.map((partner) => (
           <div className="relative h-[60px] w-[60px] overflow-hidden rounded-[3px]" key={partner}>
-            <Image
+            <ImageSmart
               src={`/images/partners/${partner}.webp`}
               alt={`${partner} logo`}
-              fill
               style={{ objectFit: 'cover' }}
+              fill
               title={partner}
               className="duration-300 ease-partners hover:!opacity-100 group-hover:opacity-50"
             />

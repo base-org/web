@@ -2,9 +2,10 @@
 import Brit from 'apps/web/src/components/OnchainSummer/Brit';
 import { BlackCircle, EmptyBlackCircle } from 'apps/web/src/components/OnchainSummer/Circles';
 import { OCSButton } from 'apps/web/src/components/OnchainSummer/OCSButton';
-import Image from 'next/image';
+import { StaticImageData } from 'next/image';
 import giantB from 'apps/web/public/images/ocs/giantB.svg';
 import { FadeInSection } from 'apps/web/src/components/OnchainSummer/FadeIns';
+import ImageSmart from 'apps/web/src/components/ImageSmart';
 
 function EventCard({
   num,
@@ -67,8 +68,7 @@ function HackathonSlab() {
             </div>
           </div>
           <div className="flex flex-col items-end">
-            {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-            <Image src={giantB} alt="Giant B" />
+            <ImageSmart src={giantB as StaticImageData} alt="Giant B" />
           </div>
         </div>
       </FadeInSection>
