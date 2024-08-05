@@ -10,14 +10,14 @@ export default async function ResourceSection({ section }: ResourceSectionProps)
         </h1>
         <span className="text-lg sm:text-xl lg:text-2xl">{section.description}</span>
       </div>
-      <div className="">
+      <div className="mt-10 flex flex-row flex-wrap justify-center gap-4 sm:mt-12 sm:gap-6 lg:mt-16 lg:gap-8">
         {section.cards.map((card, index) => (
           <ResourceCard
             key={card.title}
             title={card.title}
             description={card.description}
             href={card.href}
-            counter={index + 1}
+            counter={index}
           />
         ))}
       </div>
