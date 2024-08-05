@@ -20,7 +20,7 @@ export default async function ActiveCommunityOfBuilders() {
           style={imageBackgroundStyles}
         />
         <div className="flex grow flex-col justify-start space-y-6 lg:mx-8 lg:justify-around xl:mx-20">
-          <h2 className="flex flex-row font-display text-3xl sm:text-4xl lg:text-5xl">
+          <h2 className="flex flex-row font-display text-3xl sm:text-4xl lg:text-6xl">
             <span>1.</span>
             <span className="ml-4">Join an active community of Onchain Builders</span>
           </h2>

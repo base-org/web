@@ -44,7 +44,7 @@ export default async function WorldclassResources() {
     >
       <div className="flex flex-col gap-8 lg:flex-row lg:gap-16">
         <div className="lg:w-1/2">
-          <h2 className="mb-4 flex flex-row font-display text-3xl sm:text-4xl lg:mb-0 lg:text-5xl">
+          <h2 className="mb-4 flex flex-row font-display text-3xl sm:text-4xl lg:mb-0 lg:text-6xl">
             <span>4.</span>
             <span className="ml-4">World-class tools to help you build and grow your project</span>
           </h2>

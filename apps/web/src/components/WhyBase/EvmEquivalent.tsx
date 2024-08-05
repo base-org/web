@@ -17,7 +17,7 @@ export default async function EvmEquivalent() {
         style={imageBackgroundStyles}
       />
       <div className="flex w-full flex-col justify-center gap-8 lg:gap-16 xl:max-w-[550px]">
-        <h2 className="flex flex-row font-display text-3xl sm:text-4xl lg:text-5xl">
+        <h2 className="flex flex-row font-display text-3xl sm:text-4xl lg:text-6xl">
           <span>3.</span>
           <span className="ml-4">EVM Compatible for effortless migration</span>
         </h2>

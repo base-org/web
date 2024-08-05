@@ -27,7 +27,7 @@ export default async function PerformanceAndCost() {
       className="mb-6 mt-10 flex w-full max-w-[1440px] flex-col px-12 sm:mb-8 sm:mt-8 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
     >
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-12">
-        <h2 className="flex flex-row font-display text-3xl sm:text-4xl lg:w-1/2 lg:text-5xl">
+        <h2 className="flex flex-row font-display text-3xl sm:text-4xl lg:w-1/2 lg:text-6xl">
           <span>2.</span>
           <span className="ml-4">Best-in-class performance & cost efficiency</span>
         </h2>
