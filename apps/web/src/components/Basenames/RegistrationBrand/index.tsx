@@ -2,7 +2,6 @@ import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationC
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
 import { useEffect, useRef } from 'react';
-
 import Typed from 'typed.js';
 
 const SEARCH_LABEL_COPY_STRINGS = [
@@ -30,7 +29,7 @@ export default function RegistrationBrand() {
     }
   }, []);
   return (
-    <div className="relative flex w-full flex-row">
+    <div className="relative flex w-full flex-row justify-between">
       <div className="flex items-center gap-1">
         <span
           className={classNames('pt-[1px]', {
@@ -42,11 +41,7 @@ export default function RegistrationBrand() {
         </span>
         <h1 className="text-md font-bold md:text-xl">Basenames</h1>
       </div>
-
-      <p
-        className="sm:text-md absolute right-0 flex h-full items-center text-xs md:text-xl"
-        ref={typedTextRef}
-      />
+      <p className="sm:text-md text-xs md:text-xl" ref={typedTextRef} />
     </div>
   );
 }
