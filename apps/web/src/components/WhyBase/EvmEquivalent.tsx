@@ -13,10 +13,10 @@ export default async function EvmEquivalent() {
       className="mb-6 mt-10 flex w-full max-w-[1440px] flex-col gap-8 px-12 sm:mb-8 sm:mt-8 sm:grid sm:grid-cols-[1fr_1fr] sm:gap-16 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
     >
       <div
-        className="hidden h-auto w-full bg-contain bg-center bg-no-repeat sm:block"
+        className="hidden h-auto w-full bg-contain bg-center bg-no-repeat sm:my-[-25px] sm:block lg:my-[-40px]"
         style={imageBackgroundStyles}
       />
-      <div className="flex w-full flex-col justify-center gap-8 lg:gap-16 xl:max-w-[550px]">
+      <div className="flex w-full flex-col justify-center gap-8 sm:gap-12 lg:gap-16 xl:max-w-[550px]">
         <h2 className="flex flex-row font-display text-3xl sm:text-4xl lg:text-6xl">
           <span>3.</span>
           <span className="ml-4">EVM Compatible for effortless migration</span>
