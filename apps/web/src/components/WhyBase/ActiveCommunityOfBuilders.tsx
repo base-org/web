@@ -2,7 +2,7 @@
 
 import Link from 'apps/web/node_modules/next/link';
 import Image from 'apps/web/node_modules/next/image';
-import { StaticImageData } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
+import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
 
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 
@@ -12,7 +12,7 @@ import morphoImage from './morpho.svg';
 
 import { partners, Partner } from 'apps/web/src/components/WhyBase/partners';
 
-export default async function ActiveCommunityOfBuilders() {
+export default function ActiveCommunityOfBuilders() {
   return (
     <div
       id="communityOfBuilders"
@@ -106,21 +106,21 @@ const communityCards: CommunityCardType[] = [
     href: 'aerodrome.finance',
     description: 'A next-generation DeFi protocol and AMM with friendly user experience',
     tag: 'defi',
-    img: aerodromeImage,
+    img: aerodromeImage as StaticImport,
   },
   {
     title: 'Doodles',
     href: 'doodles.app',
     description: 'Immersive storytelling through the creation of live and digital experiences',
     tag: 'nft',
-    img: doodlesImage,
+    img: doodlesImage as StaticImport,
   },
   {
     title: 'Morpho',
     href: 'morpho.org',
     description: 'A permissionless and non-custodial lending protocol',
     tag: 'defi',
-    img: morphoImage,
+    img: morphoImage as StaticImport,
   },
 ];
 
@@ -129,5 +129,5 @@ type CommunityCardType = {
   href: string;
   description: string;
   tag: string;
-  img: StaticImageData;
+  img: StaticImport;
 };
