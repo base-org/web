@@ -216,7 +216,7 @@ export default function RegistrationForm() {
               )}
             </div>
 
-            <div className="w-full max-w-full md:max-w-[10rem]">
+            <div className="w-full max-w-full md:max-w-[13rem]">
               <ConnectButton.Custom>
                 {({ account, chain, mounted }) => {
                   const ready = mounted;
