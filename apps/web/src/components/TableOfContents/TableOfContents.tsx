@@ -10,7 +10,7 @@ export default async function TableOfContents({ sections }: TableOfContentsProps
               <span className="mr-3 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white font-bold text-black sm:h-7 sm:w-7 lg:mr-4 lg:h-8 lg:w-8">
                 {index + 1}
               </span>
-              <Link href={`#${section.id}`}>{section.title}</Link>
+              <Link href={`#${section.id}`} className="hover:underline">{section.title}</Link>
             </li>
             {index < sections.length - 1 && (
               <hr className="my-3 w-[300px] sm:w-[350px] lg:my-4 lg:w-[450px]" />
