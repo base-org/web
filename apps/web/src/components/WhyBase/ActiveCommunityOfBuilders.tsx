@@ -1,13 +1,14 @@
 import { CSSProperties } from 'react';
 import Link from 'apps/web/node_modules/next/link';
+import Image from 'apps/web/node_modules/next/image';
 import { StaticImageData } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
+
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 
 import aerodromeImage from './aerodrome.svg';
 import doodlesImage from './doodles.svg';
 import morphoImage from './morpho.svg';
-import communityOfBuilders from './CommunityOfBuilders.png';
-import Image from 'apps/web/node_modules/next/image';
+import communityOfBuilders from './community-of-builders.svg';
 
 export default async function ActiveCommunityOfBuilders() {
   return (
@@ -16,9 +17,10 @@ export default async function ActiveCommunityOfBuilders() {
       className="mt-10 flex w-full max-w-[1440px] flex-col px-12 pb-6 sm:mt-16 sm:px-16 sm:pb-8 lg:mt-20 lg:px-24 lg:pb-10"
     >
       <div className="flex flex-col justify-between md:grid md:grid-cols-[1fr_1fr]">
-        <div
-          className="hidden h-auto w-full bg-contain bg-center bg-no-repeat md:block"
-          style={imageBackgroundStyles}
+        <Image
+          src={communityOfBuilders}
+          alt="community of builders"
+          className="hidden h-auto w-full md:block"
         />
         <div className="flex grow flex-col justify-start space-y-6 lg:mx-8 lg:justify-around xl:mx-20">
           <h2 className="flex flex-row font-display text-3xl sm:text-4xl lg:text-6xl">
@@ -70,12 +72,8 @@ async function CommunityCard({ card }: { card: CommunityCardType }) {
       key={card.href}
       className="grid h-[330px] w-full grid-rows-[1fr_1fr] border-2 border-gray-90 sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-16px)]"
     >
-      <Link
-        href={`https://${card.href}`}
-        target="_blank"
-        rel="noreferrer noopener"
-      >
-        <Image src={card.img} alt={card.title} className='w-full h-full object-cover' />
+      <Link href={`https://${card.href}`} target="_blank" rel="noreferrer noopener">
+        <Image src={card.img} alt={card.title} className="h-full w-full object-cover" />
       </Link>
       <div className="bg-gray-90 p-4 sm:p-5 lg:p-6">
         <div className="mb-3 flex flex-col sm:mb-4">
