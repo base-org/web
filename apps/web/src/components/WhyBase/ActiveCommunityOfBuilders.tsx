@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'apps/web/node_modules/next/link';
 import Image from 'apps/web/node_modules/next/image';
 import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
@@ -12,7 +10,7 @@ import morphoImage from './morpho.svg';
 
 import { partners, Partner } from 'apps/web/src/components/WhyBase/partners';
 
-export default function ActiveCommunityOfBuilders() {
+export default async function ActiveCommunityOfBuilders() {
   return (
     <div
       id="communityOfBuilders"
@@ -61,7 +59,7 @@ export default function ActiveCommunityOfBuilders() {
   );
 }
 
-function CommunityPartners({ communityPartners }: { communityPartners: Partner[] }) {
+async function CommunityPartners({ communityPartners }: { communityPartners: Partner[] }) {
   return (
     <div className="grid h-full max-h-[300px] w-full max-w-[520px] grid-cols-12 gap-0">
       {communityPartners.map((partner, index) => (
@@ -78,7 +76,7 @@ function CommunityPartners({ communityPartners }: { communityPartners: Partner[]
   );
 }
 
-function CommunityCard({ card }: { card: CommunityCardType }) {
+async function CommunityCard({ card }: { card: CommunityCardType }) {
   return (
     <div
       key={card.href}
