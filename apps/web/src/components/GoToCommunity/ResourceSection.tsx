@@ -1,8 +1,5 @@
-import { ResourceSectionType } from 'apps/web/src/components/GoToCommunity/resourceSections';
-
-type ResourceSectionProps = {
-  section: ResourceSectionType;
-};
+import ResourceCard from 'apps/web/src/components/GoToCommunity/ResourceCard/ResourceCard';
+import { Resource } from 'apps/web/src/components/GoToCommunity/ResourceCard/resourceCardTypes';
 
 export default async function ResourceSection({ section }: ResourceSectionProps) {
   return (
@@ -14,10 +11,26 @@ export default async function ResourceSection({ section }: ResourceSectionProps)
         <span className="text-lg sm:text-xl lg:text-2xl">{section.description}</span>
       </div>
       <div className="">
-        {section.cards.map((card) => (
-          <div className="w-300 h-175 bg-ocsyellow">{card.title}</div>
+        {section.cards.map((card, index) => (
+          <ResourceCard
+            key={card.title}
+            title={card.title}
+            description={card.description}
+            href={card.href}
+            counter={index + 1}
+          />
         ))}
       </div>
     </div>
   );
 }
+
+export type ResourceSectionType = {
+  title: string;
+  description: string;
+  cards: Resource[];
+};
+
+type ResourceSectionProps = {
+  section: ResourceSectionType;
+};
