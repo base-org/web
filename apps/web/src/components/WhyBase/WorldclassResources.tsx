@@ -40,7 +40,7 @@ export default async function WorldclassResources() {
   return (
     <div
       id="worldClassTools"
-      className="flex flex-col bg-black px-12 pb-6 pt-6 sm:px-16 sm:pb-8 sm:pt-8 lg:px-24 lg:pb-10 lg:pt-10"
+      className="mb-6 mt-6 flex w-full max-w-[1440px] flex-col px-12 sm:mb-8 sm:mt-8 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
     >
       <div className="flex flex-col gap-8 lg:flex-row lg:gap-16">
         <div className="lg:w-1/2">

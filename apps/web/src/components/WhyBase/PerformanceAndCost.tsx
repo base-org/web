@@ -24,7 +24,7 @@ export default async function PerformanceAndCost() {
   return (
     <div
       id="performanceAndCost"
-      className="flex flex-col bg-black px-12 pb-6 pt-6 sm:px-16 sm:pb-8 sm:pt-8 lg:px-24 lg:pb-10 lg:pt-10"
+      className="mb-6 mt-10 flex w-full max-w-[1440px] flex-col px-12 sm:mb-8 sm:mt-8 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
     >
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-12">
         <h2 className="flex flex-row font-display text-3xl sm:text-4xl lg:w-1/2 lg:text-5xl">
@@ -61,7 +61,7 @@ export default async function PerformanceAndCost() {
           </div>
         </div>
       </div>
-      <div className="mt-10 flex flex-col justify-center sm:mt-12 sm:divide-y-2 md:flex-row md:divide-y-0 md:divide-x-2 lg:mt-16">
+      <div className="mt-10 flex flex-col justify-center sm:mt-12 sm:divide-y-2 md:flex-row md:divide-x-2 md:divide-y-0 lg:mt-16">
         {stats?.map((stat, index) => (
           <div
             key={stat.description}

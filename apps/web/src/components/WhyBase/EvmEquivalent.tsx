@@ -10,7 +10,7 @@ export default async function EvmEquivalent() {
   return (
     <div
       id="evmCompatibility"
-      className="flex flex-col gap-8 bg-black px-12 pb-6 pt-6 sm:grid sm:grid-cols-[1fr_1fr] sm:gap-16 sm:px-16 sm:pb-8 sm:pt-8 lg:px-24 lg:pb-10 lg:pt-10"
+      className="mb-6 mt-10 flex w-full max-w-[1440px] flex-col gap-8 px-12 sm:mb-8 sm:mt-8 sm:grid sm:grid-cols-[1fr_1fr] sm:gap-16 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
     >
       <div
         className="hidden h-auto w-full bg-contain bg-center bg-no-repeat sm:block"

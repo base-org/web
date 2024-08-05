@@ -8,9 +8,9 @@ const imageBackgroundStyles = {
 
 export default async function BuildWithUs() {
   return (
-    <div className="bg-black px-12 pb-10 pt-6 sm:px-16 sm:pb-16 sm:pt-8 lg:px-24 lg:pb-20 lg:pt-10">
+    <div className="mb-10 mt-6 w-full max-w-[1440px] px-12 sm:mb-16 sm:mt-8 sm:px-16 lg:mb-20 lg:mt-10 lg:px-24">
       <div
-        className="mx-auto flex aspect-[1250/380] w-full max-w-[1250px] flex-col items-center justify-center bg-cover bg-center bg-no-repeat p-4 sm:p-8"
+        className="mx-auto flex aspect-[1250/380] w-full max-w-[1440px] flex-col items-center justify-center bg-cover bg-center bg-no-repeat p-4 sm:p-8"
         style={imageBackgroundStyles}
       >
         <h1 className="mb-6 text-center text-3xl sm:mb-8 sm:text-4xl lg:text-6xl">

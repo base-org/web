@@ -14,21 +14,21 @@ export default async function WhyBase() {
     backgroundImage: `url('${WhyBaseHeroBackground.src}')`,
   };
   return (
-    <div
-      className="mt-[-96px] bg-blue-60 bg-repeat font-display text-white"
-      style={backgroundStyles}
-    >
+    <>
       <Hero />
-      <ActiveCommunityOfBuilders />
-      <Divider />
-      <PerformanceAndCost />
-      <Divider />
-      <EvmEquivalent />
-      <Divider />
-      <WorldclassResources />
-      <Divider />
-      <EmpoweredByCoinbase />
-      <BuildWithUs />
-    </div>
+      <main className="flex w-full flex-col items-center bg-black font-display text-white">
+        <ActiveCommunityOfBuilders />
+        <Divider />
+        <PerformanceAndCost />
+        <Divider />
+        <EvmEquivalent />
+        <Divider />
+        <WorldclassResources />
+        <Divider />
+        <EmpoweredByCoinbase />
+        <Divider />
+        <BuildWithUs />
+      </main>
+    </>
   );
 }

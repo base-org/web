@@ -8,47 +8,11 @@ import doodlesImage from './doodles-banner.png';
 import morphoImage from './Morpho-logo-horizontal-darkmode.png';
 import communityOfBuilders from './CommunityOfBuilders.png';
 
-type CommunityCardType = {
-  title: string;
-  href: string;
-  description: string;
-  tag: string;
-  img: StaticImageData;
-};
-
-const communityCards: CommunityCardType[] = [
-  {
-    title: 'Aerodrome',
-    href: 'aerodrome.finance',
-    description: 'A next-generation DeFi protocol and AMM with friendly user experience',
-    tag: 'defi',
-    img: aerodromeImage,
-  },
-  {
-    title: 'Doodles',
-    href: 'doodles.app',
-    description: 'Immersive storytelling through the creation of live and digital experiences',
-    tag: 'nft',
-    img: doodlesImage,
-  },
-  {
-    title: 'Morpho',
-    href: 'morpho.org',
-    description: 'A permissionless and non-custodial lending protocol',
-    tag: 'defi',
-    img: morphoImage,
-  },
-];
-
-const imageBackgroundStyles = {
-  backgroundImage: `url('${communityOfBuilders.src}')`,
-};
-
 export default async function ActiveCommunityOfBuilders() {
   return (
     <div
       id="communityOfBuilders"
-      className="flex flex-col bg-black px-12 pb-6 pt-10 sm:px-16 sm:pb-8 sm:pt-16 lg:px-24 lg:pb-10 lg:pt-20"
+      className="mt-10 flex w-full max-w-[1440px] flex-col px-12 pb-6 sm:mt-16 sm:px-16 sm:pb-8 lg:mt-20 lg:px-24 lg:pb-10"
     >
       <div className="flex flex-col justify-between md:grid md:grid-cols-[1fr_1fr]">
         <div
@@ -128,3 +92,39 @@ async function CommunityCard({ card }: { card: CommunityCardType }) {
     </div>
   );
 }
+
+const communityCards: CommunityCardType[] = [
+  {
+    title: 'Aerodrome',
+    href: 'aerodrome.finance',
+    description: 'A next-generation DeFi protocol and AMM with friendly user experience',
+    tag: 'defi',
+    img: aerodromeImage,
+  },
+  {
+    title: 'Doodles',
+    href: 'doodles.app',
+    description: 'Immersive storytelling through the creation of live and digital experiences',
+    tag: 'nft',
+    img: doodlesImage,
+  },
+  {
+    title: 'Morpho',
+    href: 'morpho.org',
+    description: 'A permissionless and non-custodial lending protocol',
+    tag: 'defi',
+    img: morphoImage,
+  },
+];
+
+const imageBackgroundStyles = {
+  backgroundImage: `url('${communityOfBuilders.src}')`,
+};
+
+type CommunityCardType = {
+  title: string;
+  href: string;
+  description: string;
+  tag: string;
+  img: StaticImageData;
+};
