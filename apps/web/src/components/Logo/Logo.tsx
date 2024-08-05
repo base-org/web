@@ -1,6 +1,6 @@
 'use client';
 import BaseBootcampLogo from '../../../public/images/base-bootcamp-white.png';
-import ImageSmart from 'apps/web/src/components/ImageSmart';
+import ImageOptimized from 'apps/web/src/components/ImageOptimized';
 
 type LogoProps = {
   color?: 'white' | 'black';
@@ -11,7 +11,7 @@ type LogoProps = {
 
 export function Logo({ color = 'white', width = '100%', height = '32', path }: LogoProps) {
   if (path === '/bootcamp') {
-    return <ImageSmart width={300} src={BaseBootcampLogo} alt="Base Bootcamp" />;
+    return <ImageOptimized width={300} src={BaseBootcampLogo} alt="Base Bootcamp" />;
   }
 
   return (

@@ -1,5 +1,5 @@
 import { GradientCircle } from 'apps/web/src/components/GradientCircle/GradientCircle';
-import ImageSmart from 'apps/web/src/components/ImageSmart';
+import ImageOptimized from 'apps/web/src/components/ImageOptimized';
 
 type GradientRowProps = {
   /** @default false */
@@ -30,7 +30,7 @@ export async function Hero() {
   return (
     <div className="mt-[-96px] flex w-full flex-col items-center bg-black pb-10 pt-28 lg:px-16 lg:pb-20 lg:pt-32">
       <GradientRow className="hidden md:flex" inverted />
-      <ImageSmart
+      <ImageOptimized
         priority
         quality={100}
         src="/images/about-hero.png"

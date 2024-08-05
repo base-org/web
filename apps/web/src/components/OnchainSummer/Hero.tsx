@@ -6,7 +6,7 @@ import ocs_banner_mobile from 'apps/web/public/images/ocs/ocs_banner_mobile.svg'
 import ScrollBanner from 'apps/web/src/components/OnchainSummer/ScrollBanner';
 import { OCSButton } from 'apps/web/src/components/OnchainSummer/OCSButton';
 import { FadeInSection } from 'apps/web/src/components/OnchainSummer/FadeIns';
-import ImageSmart from 'apps/web/src/components/ImageSmart';
+import ImageOptimized from 'apps/web/src/components/ImageOptimized';
 
 export default function Hero() {
   return (
@@ -14,12 +14,12 @@ export default function Hero() {
       <ScrollBanner />
       <div className="mt-6 flex w-full max-w-[1200px] flex-col px-8">
         <FadeInSection>
-          <ImageSmart
+          <ImageOptimized
             src={ocs_banner as StaticImageData}
             alt="Onchain Summer Banner"
             className="hidden md:block"
           />
-          <ImageSmart
+          <ImageOptimized
             src={ocs_banner_mobile as StaticImageData}
             alt="Onchain Summer Banner"
             className="md:hidden"

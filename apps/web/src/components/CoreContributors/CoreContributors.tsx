@@ -2,7 +2,7 @@ import { EnsAvatarMapping } from 'apps/web/src/components/CoreContributors/EnsAv
 import Blockies from './Blockies';
 import contributorList from 'apps/web/src/components/CoreContributors/CoreContributors.json';
 import Link from 'next/link';
-import ImageSmart from 'apps/web/src/components/ImageSmart';
+import ImageOptimized from 'apps/web/src/components/ImageOptimized';
 
 const owners = contributorList as unknown as EnsAvatarMapping[];
 
@@ -29,7 +29,7 @@ export default async function CoreContributors() {
                 rel="nofollow noopener noreferrer"
               >
                 {filename ? (
-                  <ImageSmart
+                  <ImageOptimized
                     alt={title}
                     src={`/images/avatars/${filename}`}
                     width={AVATAR_SIZE}

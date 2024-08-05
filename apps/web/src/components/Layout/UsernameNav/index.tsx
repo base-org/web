@@ -14,7 +14,7 @@ import { base, baseSepolia } from 'viem/chains';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { useCallback } from 'react';
 import { isDevelopment } from 'apps/web/src/constants';
-import ImageSmart from 'apps/web/src/components/ImageSmart';
+import ImageOptimized from 'apps/web/src/components/ImageOptimized';
 
 export default function UsernameNav() {
   const { isConnected } = useAccount();
@@ -88,7 +88,7 @@ export default function UsernameNav() {
       )}
       <nav className={navigationClasses}>
         <Link href="/">
-          <ImageSmart src={usernameBaseLogo as StaticImageData} alt="Base" />
+          <ImageOptimized src={usernameBaseLogo as StaticImageData} alt="Base" />
         </Link>
         <span className={walletStateClasses}>
           <ConnectWalletButton

@@ -10,7 +10,7 @@ import {
 } from 'apps/web/src/components/BuilderNft/constants';
 import { NftButton } from 'apps/web/src/components/BuilderNft/NftButton';
 import { FaqContent } from 'apps/web/src/components/BuilderNft/FaqContent';
-import ImageSmart from 'apps/web/src/components/ImageSmart';
+import ImageOptimized from 'apps/web/src/components/ImageOptimized';
 
 export function BuilderNftHero() {
   const mintState = useMintState();
@@ -33,7 +33,7 @@ export function BuilderNftHero() {
           </div>
           <div className=" flex w-full flex-col gap-8 md:w-1/3 md:justify-end">
             <div className="border-4 border-white">
-              <ImageSmart src={nftPreview} alt="Preview of the Base Builder NFT" />
+              <ImageOptimized src={nftPreview} alt="Preview of the Base Builder NFT" />
             </div>
             <div className="flex flex-col justify-between gap-2 lg:flex-row">
               <div className="flex flex-col">

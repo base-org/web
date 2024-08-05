@@ -2,12 +2,12 @@ import Image, { ImageProps, StaticImageData } from 'next/image';
 import { shouldUseNextImage } from 'apps/web/src/utils/images';
 import ImageRaw from 'apps/web/src/components/ImageRaw';
 
-type ImageSmartProps = ImageProps & {
+type ImageOptimizedProps = ImageProps & {
   // Fix next's js bad import
   src: string | StaticImageData;
 };
 
-export default function ImageSmart({
+export default function ImageOptimized({
   priority,
   src,
   alt,
@@ -20,7 +20,7 @@ export default function ImageSmart({
   quality,
   style,
   fill,
-}: ImageSmartProps) {
+}: ImageOptimizedProps) {
   const useNextImage = shouldUseNextImage(src);
 
   return useNextImage ? (

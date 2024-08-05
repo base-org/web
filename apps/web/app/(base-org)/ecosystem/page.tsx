@@ -7,7 +7,7 @@ import ecosystemApps from 'apps/web/src/data/ecosystem.json';
 import { TagChip } from 'apps/web/src/components/Ecosystem/TagChip';
 import { SearchBar } from 'apps/web/src/components/Ecosystem/SearchBar';
 import { Suspense } from 'react';
-import ImageSmart from 'apps/web/src/components/ImageSmart';
+import ImageOptimized from 'apps/web/src/components/ImageOptimized';
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
   title: `Base | About`,
@@ -75,7 +75,7 @@ async function EcosystemHero() {
           </a>
         </div>
         <div className="flex w-full md:w-1/2 md:justify-end">
-          <ImageSmart className="-mr-16" src={EcosystemHeroLogos} alt="ecosystem dapp logos" />
+          <ImageOptimized className="-mr-16" src={EcosystemHeroLogos} alt="ecosystem dapp logos" />
         </div>
       </div>
     </div>

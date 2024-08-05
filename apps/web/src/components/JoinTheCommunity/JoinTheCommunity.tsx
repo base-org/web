@@ -1,5 +1,5 @@
 /* eslint-disable react-perf/jsx-no-new-object-as-prop */
-import ImageSmart from 'apps/web/src/components/ImageSmart';
+import ImageOptimized from 'apps/web/src/components/ImageOptimized';
 
 const partners = [
   '0x',
@@ -36,7 +36,7 @@ export async function JoinTheCommunity() {
       <div className="group hidden flex-wrap gap-3 xl:flex">
         {partners.map((partner) => (
           <div className="relative h-[108px] w-[108px] overflow-hidden rounded-[3px]" key={partner}>
-            <ImageSmart
+            <ImageOptimized
               src={`/images/partners/${partner}.webp`}
               alt={`${partner} logo`}
               style={{ objectFit: 'cover' }}
@@ -51,7 +51,7 @@ export async function JoinTheCommunity() {
       <div className="group flex flex-wrap justify-center gap-3 xl:hidden">
         {partners.map((partner) => (
           <div className="relative h-[60px] w-[60px] overflow-hidden rounded-[3px]" key={partner}>
-            <ImageSmart
+            <ImageOptimized
               src={`/images/partners/${partner}.webp`}
               alt={`${partner} logo`}
               style={{ objectFit: 'cover' }}

@@ -1,7 +1,7 @@
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import optimismBase from './optimism-base.png';
 import coinbaseBase from './coinbase-base.png';
-import ImageSmart from 'apps/web/src/components/ImageSmart';
+import ImageOptimized from 'apps/web/src/components/ImageOptimized';
 
 type LearnMoreButtonProps = {
   ariaLabel: string;
@@ -26,7 +26,7 @@ export async function Partnerships() {
   return (
     <div className="flex w-full max-w-[1440px] flex-row flex-wrap items-start justify-between bg-black px-8 py-12">
       <div className="flex w-full flex-col space-y-8 pb-16 lg:basis-1/2 lg:space-y-12 lg:pt-1">
-        <ImageSmart
+        <ImageOptimized
           src={optimismBase}
           alt="Optimism Base graphic"
           width={678}
@@ -44,7 +44,7 @@ export async function Partnerships() {
         </div>
       </div>
       <div className="flex w-full flex-col space-y-12 pt-[3px] lg:basis-1/2">
-        <ImageSmart
+        <ImageOptimized
           src={coinbaseBase}
           alt="Coinbase Base graphic"
           quality={100}
