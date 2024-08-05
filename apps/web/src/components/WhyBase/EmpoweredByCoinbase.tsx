@@ -29,7 +29,7 @@ export default async function EmpoweredByCoinbase() {
           </span>
           <div>
             <ButtonWithLinkAndEventLogging
-              href="/about"
+              href="https://www.coinbase.com/blog/introducing-base"
               eventName="empowered_coinbase_learn_more"
               eventContext="why_base"
               target="_blank"
