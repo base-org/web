@@ -2,9 +2,7 @@ import { Divider } from 'apps/web/src/components/Divider/Divider';
 
 import Hero from 'apps/web/src/components/GoToCommunity/Hero';
 import BuildersMostWanted from 'apps/web/src/components/GoToCommunity/BuildersMostWanted';
-import ResourceSection, {
-  ResourceSectionType,
-} from 'apps/web/src/components/GoToCommunity/ResourceSection';
+import ResourceSection from 'apps/web/src/components/GoToCommunity/ResourceSection';
 
 import { resourceSections } from 'apps/web/src/components/GoToCommunity/resourceSections';
 
@@ -14,7 +12,7 @@ export default async function GoToCommunity() {
       <Hero />
       <BuildersMostWanted />
       <Divider />
-      {resourceSections.map((section: ResourceSectionType) => (
+      {resourceSections.map((section) => (
         <ResourceSection key={section.title} section={section} />
       ))}
     </div>
