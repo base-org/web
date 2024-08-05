@@ -125,7 +125,7 @@ const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [ke
 const securityHeaders = [
   {
     key: 'cache-control',
-    value: 'no-store',
+    value: 'no-cache',
   },
   {
     key: 'content-security-policy',
