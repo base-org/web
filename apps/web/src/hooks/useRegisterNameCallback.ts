@@ -24,7 +24,6 @@ function secondsInYears(years: number): bigint {
 type UseRegisterNameCallbackReturnValue = {
   callback: () => Promise<void>;
   data: `0x${string}` | undefined;
-
   isPending: boolean;
   error: string | undefined | null;
 };
