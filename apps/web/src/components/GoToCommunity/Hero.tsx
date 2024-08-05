@@ -1,27 +1,27 @@
-import TableOfContents, { Section } from 'apps/web/src/components/TableOfContents/TableOfContents';
+// import TableOfContents, { Section } from 'apps/web/src/components/TableOfContents/TableOfContents';
 
-const headerReasons: Section[] = [
-  {
-    title: 'Community of Builders',
-    id: 'communityOfBuilders',
-  },
-  {
-    title: 'Performance & cost efficiency',
-    id: 'performanceAndCost',
-  },
-  {
-    title: 'EVM compatibility',
-    id: 'evmCompatibility',
-  },
-  {
-    title: 'World class tools',
-    id: 'worldClassTools',
-  },
-  {
-    title: 'Empowered by Coinbase',
-    id: 'empoweredByCoinbase',
-  },
-];
+// const headerReasons: Section[] = [
+//   {
+//     title: 'Community of Builders',
+//     id: 'communityOfBuilders',
+//   },
+//   {
+//     title: 'Performance & cost efficiency',
+//     id: 'performanceAndCost',
+//   },
+//   {
+//     title: 'EVM compatibility',
+//     id: 'evmCompatibility',
+//   },
+//   {
+//     title: 'World class tools',
+//     id: 'worldClassTools',
+//   },
+//   {
+//     title: 'Empowered by Coinbase',
+//     id: 'empoweredByCoinbase',
+//   },
+// ];
 
 export default async function Hero() {
   return (
