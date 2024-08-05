@@ -3,10 +3,11 @@ import Link from 'apps/web/node_modules/next/link';
 import { StaticImageData } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 
-import aerodromeImage from './aerodrome-logo-light.png';
-import doodlesImage from './doodles-banner.png';
-import morphoImage from './Morpho-logo-horizontal-darkmode.png';
+import aerodromeImage from './aerodrome.svg';
+import doodlesImage from './doodles.svg';
+import morphoImage from './morpho.svg';
 import communityOfBuilders from './CommunityOfBuilders.png';
+import Image from 'apps/web/node_modules/next/image';
 
 export default async function ActiveCommunityOfBuilders() {
   return (
@@ -73,12 +74,8 @@ async function CommunityCard({ card }: { card: CommunityCardType }) {
         href={`https://${card.href}`}
         target="_blank"
         rel="noreferrer noopener"
-        className="flex flex-row justify-end bg-contain bg-center bg-no-repeat pr-4 pt-6 sm:pr-6 lg:pr-10 lg:pt-8"
-        style={backgroundStyles}
       >
-        <span className="flex h-6 items-center justify-center rounded-xl bg-black px-2 py-1 text-xs uppercase sm:text-sm">
-          {card.tag}
-        </span>
+        <Image src={card.img} alt={card.title} className='w-full h-full object-cover' />
       </Link>
       <div className="bg-gray-90 p-4 sm:p-5 lg:p-6">
         <div className="mb-3 flex flex-col sm:mb-4">
