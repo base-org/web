@@ -7,12 +7,7 @@ import WorldclassResources from 'apps/web/src/components/WhyBase/WorldclassResou
 import EmpoweredByCoinbase from 'apps/web/src/components/WhyBase/EmpoweredByCoinbase';
 import BuildWithUs from 'apps/web/src/components/WhyBase/BuildWithUs';
 
-import WhyBaseHeroBackground from 'apps/web/src/components/WhyBase/why-base-hero-bg.png';
-
 export default async function WhyBase() {
-  const backgroundStyles = {
-    backgroundImage: `url('${WhyBaseHeroBackground.src}')`,
-  };
   return (
     <>
       <Hero />
