@@ -35,7 +35,7 @@ export default async function EmpoweredByCoinbase() {
               target="_blank"
               rel="noreferrer noopener"
               linkClassNames="inline-block"
-              buttonClassNames="mt-4 uppercase w-full sm:w-auto"
+              buttonClassNames="mt-4 uppercase font-mono font-medium w-full sm:w-auto"
             >
               Learn More
             </ButtonWithLinkAndEventLogging>

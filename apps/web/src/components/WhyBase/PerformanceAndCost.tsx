@@ -43,7 +43,7 @@ export default async function PerformanceAndCost() {
               eventContext="why_base"
               target="_blank"
               rel="noreferrer noopener"
-              buttonClassNames="uppercase w-full sm:w-auto"
+              buttonClassNames="uppercase w-full sm:w-auto font-mono font-medium "
             >
               L2Beat
             </ButtonWithLinkAndEventLogging>
@@ -54,7 +54,7 @@ export default async function PerformanceAndCost() {
               target="_blank"
               rel="noreferrer noopener"
               variant="Secondary"
-              buttonClassNames="uppercase w-full sm:w-auto"
+              buttonClassNames="uppercase font-mono font-medium w-full sm:w-auto"
             >
               rollup.wtf
             </ButtonWithLinkAndEventLogging>

@@ -40,7 +40,7 @@ export default async function ActiveCommunityOfBuilders() {
               target="_blank"
               rel="noreferrer noopener"
               linkClassNames="inline-block"
-              buttonClassNames="uppercase"
+              buttonClassNames="uppercase font-mono font-medium"
             >
               Join the Discord
             </ButtonWithLinkAndEventLogging>

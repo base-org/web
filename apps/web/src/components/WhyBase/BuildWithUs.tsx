@@ -23,7 +23,7 @@ export default async function BuildWithUs() {
             eventContext="why_base"
             target="_blank"
             rel="noreferrer noopener"
-            buttonClassNames="uppercase w-full sm:w-auto text-xs sm:text-sm md:text-base px-2 py-1 sm:px-8 sm:py-4"
+            buttonClassNames="uppercase font-mono font-medium w-full sm:w-auto text-xs sm:text-sm md:text-base px-2 py-1 sm:px-8 sm:py-4"
           >
             Get Started
           </ButtonWithLinkAndEventLogging>
@@ -34,7 +34,7 @@ export default async function BuildWithUs() {
             target="_blank"
             rel="noreferrer noopener"
             variant="Secondary"
-            buttonClassNames="uppercase w-full sm:w-auto text-xs sm:text-sm md:text-base px-2 py-1 sm:px-8 sm:py-4"
+            buttonClassNames="uppercase font-mono font-medium w-full sm:w-auto text-xs sm:text-sm md:text-base px-2 py-1 sm:px-8 sm:py-4"
           >
             View Our Docs
           </ButtonWithLinkAndEventLogging>

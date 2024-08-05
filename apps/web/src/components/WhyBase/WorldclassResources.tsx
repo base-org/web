@@ -62,7 +62,7 @@ export default async function WorldclassResources() {
               target="_blank"
               rel="noreferrer noopener"
               linkClassNames="inline-block"
-              buttonClassNames="mt-6 lg:mt-8 uppercase w-full sm:w-auto"
+              buttonClassNames="mt-6 lg:mt-8 uppercase font-mono font-medium w-full sm:w-auto"
             >
               Start Building
             </ButtonWithLinkAndEventLogging>
