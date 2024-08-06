@@ -52,16 +52,31 @@ export const surveyDb = new Kysely<Database>({
 // /apiroutes/survey => call getAllQuestions()
 
 export async function getAllQuestions() {
-  return await surveyDb.selectFrom('frame_survey_questions').selectAll().execute();
+  const questions = await surveyDb.selectFrom('frame_survey_questions').selectAll().execute();
+  return questions;
 }
 
-export async function getQuestion(id: string) {
+async function getQuestion(id: string) {
   const question = await surveyDb
     .selectFrom('frame_survey_questions')
     .where('id', '=', Number(id))
     .selectAll()
     .executeTakeFirst()
   return question;
+}
+
+export async function getSurvey(id: string) {
+  const question = await getQuestion(id);
+  const answers = await surveyDb
+    .selectFrom('frame_survey_question_answers')
+    .where('question_id', '=', question.id)
+    .selectAll()
+    .execute();
+
+  return {
+    question,
+    answers,
+  }
 }
 
 /*
@@ -75,7 +90,6 @@ export async function getQuestion(id: string) {
     - question ID = 2 // slug = 'my-survey-two'
     - ....
 
-
   // page for each survey
   // Gets pre-rendered at build time / "yarn build"
   // app/surveys/GetAllQuestions/page // SSR
@@ -83,6 +97,7 @@ export async function getQuestion(id: string) {
     --> each survey gets own page (i think)
 
 
+    
   GetAllQuestions/postFrame // client component
     -- fetch()
     -- post()
