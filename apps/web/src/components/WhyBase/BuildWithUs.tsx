@@ -1,4 +1,5 @@
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
+import { ButtonVariants } from 'apps/web/src/components/Button/Button';
 
 import buildWithUs from './BuildWithUs.png';
 
@@ -31,7 +32,7 @@ export default async function BuildWithUs() {
             eventName="start_building_with_us_view_docs"
             target="_blank"
             rel="noreferrer noopener"
-            variant="Secondary"
+            variant={ButtonVariants.Secondary}
             buttonClassNames="uppercase font-mono font-medium w-full sm:w-auto text-xs sm:text-sm md:text-base px-2 py-1 sm:px-8 sm:py-4"
           >
             View Our Docs
