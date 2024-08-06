@@ -1,4 +1,5 @@
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
+import { ButtonVariants } from 'apps/web/src/components/Button/Button';
 
 export default async function PerformanceAndCost() {
   return (
@@ -31,7 +32,7 @@ export default async function PerformanceAndCost() {
               eventName="perf_and_cost_rollupwtf"
               target="_blank"
               rel="noreferrer noopener"
-              variant="Secondary"
+              variant={ButtonVariants.Secondary}
               buttonClassNames="uppercase font-mono font-medium w-full sm:w-auto"
             >
               rollup.wtf
@@ -68,7 +69,7 @@ export default async function PerformanceAndCost() {
   );
 }
 
-const stats = [
+const stats: Stat[] = [
   {
     value: '$0.002',
     description: 'Lowest cost per txs (among L2s)',
@@ -87,3 +88,10 @@ const stats = [
     footnote: 2,
   },
 ];
+
+type Stat = {
+  value: string;
+  description: string;
+  footnote?: number;
+  units?: string;
+};
