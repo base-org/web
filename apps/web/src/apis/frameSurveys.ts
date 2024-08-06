@@ -61,7 +61,7 @@ async function getQuestion(id: string) {
     .selectFrom('frame_survey_questions')
     .where('id', '=', Number(id))
     .selectAll()
-    .executeTakeFirst()
+    .executeTakeFirst();
   return question;
 }
 
@@ -76,7 +76,7 @@ export async function getSurvey(id: string) {
   return {
     question,
     answers,
-  }
+  };
 }
 
 /*
@@ -97,7 +97,7 @@ export async function getSurvey(id: string) {
     --> each survey gets own page (i think)
 
 
-    
+
   GetAllQuestions/postFrame // client component
     -- fetch()
     -- post()
