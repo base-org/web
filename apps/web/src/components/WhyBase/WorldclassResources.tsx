@@ -3,39 +3,6 @@ import Link from 'apps/web/node_modules/next/link';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { Icon } from '../Icon/Icon';
 
-const resources: Resource[] = [
-  {
-    title: 'Smart Wallet',
-    description: 'Help users create an account in seconds without apps or extensions',
-    href: 'https://www.coinbase.com/wallet/smart-wallet',
-  },
-  {
-    title: 'OnchainKit',
-    description: 'React components and Typescript utilities to help you build onchain',
-    href: 'https://onchainkit.xyz/',
-  },
-  {
-    title: 'Coinbase OnRamp',
-    description: 'Widget enabling users to purchase 100+ tokens with 60+ fiat currencies.',
-    href: 'https://portal.cdp.coinbase.com/products/onramp',
-  },
-  {
-    title: 'Gas Credits',
-    description: 'Sponsor gas for your users using the Coinbase Paymaster',
-    href: 'https://docs.cdp.coinbase.com/node/docs/paymaster-bundler-api/',
-  },
-  {
-    title: 'Onchain Verifications',
-    description: 'View all of the base transactions through Basescan',
-    href: 'https://www.coinbase.com/onchain-verify',
-  },
-  {
-    title: 'Onchain Data',
-    description: 'API for wallet balances, balance history, and transaction history',
-    href: 'https://portal.cdp.coinbase.com/products/onchain-data',
-  },
-];
-
 export default async function WorldclassResources() {
   return (
     <div
@@ -115,3 +82,36 @@ type Resource = {
 type ResourceCardProps = Resource & {
   counter: number;
 };
+
+const resources: Resource[] = [
+  {
+    title: 'Smart Wallet',
+    description: 'Help users create an account in seconds without apps or extensions',
+    href: 'https://www.coinbase.com/wallet/smart-wallet',
+  },
+  {
+    title: 'OnchainKit',
+    description: 'React components and Typescript utilities to help you build onchain',
+    href: 'https://onchainkit.xyz/',
+  },
+  {
+    title: 'Coinbase OnRamp',
+    description: 'Widget enabling users to purchase 100+ tokens with 60+ fiat currencies.',
+    href: 'https://portal.cdp.coinbase.com/products/onramp',
+  },
+  {
+    title: 'Gas Credits',
+    description: 'Sponsor gas for your users using the Coinbase Paymaster',
+    href: 'https://docs.cdp.coinbase.com/node/docs/paymaster-bundler-api/',
+  },
+  {
+    title: 'Onchain Verifications',
+    description: 'View all of the base transactions through Basescan',
+    href: 'https://www.coinbase.com/onchain-verify',
+  },
+  {
+    title: 'Onchain Data',
+    description: 'API for wallet balances, balance history, and transaction history',
+    href: 'https://portal.cdp.coinbase.com/products/onchain-data',
+  },
+];

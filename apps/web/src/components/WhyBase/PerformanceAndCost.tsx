@@ -1,25 +1,5 @@
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 
-const stats = [
-  {
-    value: '$0.002',
-    description: 'Lowest cost per txs (among L2s)',
-    footnote: 1,
-  },
-  {
-    value: '49.5',
-    units: 'TPS',
-    description: 'Best txn efficiency (among L2s)',
-    footnote: 2,
-  },
-  {
-    value: '9.14',
-    units: 'Mgas/Sec',
-    description: 'Highest throughput (among L2s)',
-    footnote: 2,
-  },
-];
-
 export default async function PerformanceAndCost() {
   return (
     <div
@@ -87,3 +67,23 @@ export default async function PerformanceAndCost() {
     </div>
   );
 }
+
+const stats = [
+  {
+    value: '$0.002',
+    description: 'Lowest cost per txs (among L2s)',
+    footnote: 1,
+  },
+  {
+    value: '49.5',
+    units: 'TPS',
+    description: 'Best txn efficiency (among L2s)',
+    footnote: 2,
+  },
+  {
+    value: '9.14',
+    units: 'Mgas/Sec',
+    description: 'Highest throughput (among L2s)',
+    footnote: 2,
+  },
+];
