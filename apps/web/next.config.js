@@ -4,6 +4,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const isProdEnv = process.env.NODE_ENV === 'production';
 
+// Can't import this from apps/web/src/utils/images.ts for some reason
+const allowedImageRemoteDomains = ['zku9gdedgba48lmr.public.blob.vercel-storage.com'];
+
 const baseConfig = {
   // Enable advanced features
   compiler: {
@@ -109,8 +112,6 @@ const contentSecurityPolicy = {
   'img-src': [
     "'self'",
     'blob:',
-    'https://blob.vercel-storage.com', // Vercel File storage
-    'https://zku9gdedgba48lmr.public.blob.vercel-storage.com', // Vercel File storage
     'data:',
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars
@@ -183,30 +184,12 @@ module.exports = extendBaseConfig(
       return config;
     },
     images: {
-      remotePatterns: [
-        {
+      remotePatterns: allowedImageRemoteDomains.map((hostname) => {
+        return {
           protocol: 'https',
-          hostname: 'i.seadn.io',
-        },
-        {
-          protocol: 'https',
-          hostname: 'ipfs.io',
-        },
-        {
-          protocol: 'https',
-          hostname: 'cf-ipfs.com',
-        },
-        {
-          protocol: 'https',
-          hostname: 'blob.vercel-storage.com',
-          port: '',
-        },
-        {
-          protocol: 'https',
-          hostname: 'zku9gdedgba48lmr.public.blob.vercel-storage.com',
-          port: '',
-        },
-      ],
+          hostname,
+        };
+      }),
     },
     async headers() {
       return [

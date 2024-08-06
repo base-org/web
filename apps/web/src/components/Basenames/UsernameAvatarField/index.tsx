@@ -8,7 +8,7 @@ import {
   ALLOWED_IMAGE_TYPE,
   MAX_IMAGE_SIZE_IN_MB,
 } from 'apps/web/pages/api/basenames/avatar/upload';
-import Image, { StaticImageData } from 'next/image';
+import { StaticImageData } from 'next/image';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 import cameraIcon from './cameraIcon.svg';
 
@@ -97,10 +97,10 @@ export default function UsernameAvatarField({
           width={320}
           height={320}
         />
-        <Image
+        <ImageWithLoading
           src={cameraIcon as StaticImageData}
           alt="Upload an avatar"
-          className="absolute bottom-0 right-0"
+          wrapperClassName="absolute bottom-0 right-0"
         />
         <FileInput
           id={usernameAvatarFieldId}
