@@ -72,17 +72,6 @@ async function ResourceCard({ counter, title, description, href }: ResourceCardP
   );
 }
 
-type Resource = {
-  title: string;
-  description: string;
-  href: string;
-};
-
-// TODO See if you can refactor so that ResourceCardProps always shows all of the properties
-type ResourceCardProps = Resource & {
-  counter: number;
-};
-
 const resources: Resource[] = [
   {
     title: 'Smart Wallet',
@@ -115,3 +104,14 @@ const resources: Resource[] = [
     href: 'https://portal.cdp.coinbase.com/products/onchain-data',
   },
 ];
+
+type Resource = {
+  title: string;
+  description: string;
+  href: string;
+};
+
+// TODO See if you can refactor so that ResourceCardProps always shows all of the properties
+type ResourceCardProps = Resource & {
+  counter: number;
+};
