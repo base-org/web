@@ -1,8 +1,17 @@
 import { StaticImageData } from 'next/image';
+import { cid } from 'is-ipfs';
+
+export type IpfsUri = `ipfs://${string}`;
 
 export const STATIC_IMAGE_FOLDER = '/_next/static/';
 export const PUBLIC_IMAGE_FOLDER = '/images/';
 export const VERCEL_BLOB_HOSTNAME = 'zku9gdedgba48lmr.public.blob.vercel-storage.com';
+export const IPFS_URI_PROTOCOL = 'ipfs://';
+export const CLOUDFARE_IPFS_PROXY = 'https://cloudflare-ipfs.com';
+
+// ipfs://QmRRPWG96cmgTn2qSzjwr2qvfNEuhunv6FNeMFGa9bx6mQ
+
+// https://cloudflare-ipfs.com/ipfs/QmRRPWG96cmgTn2qSzjwr2qvfNEuhunv6FNeMFGa9bx6mQ
 
 export const getImageAbsoluteSource = (src: string | StaticImageData): string => {
   return typeof src === 'string' ? src : src.src;
@@ -26,4 +35,30 @@ export const shouldUseNextImage = (src: string | StaticImageData): boolean => {
 
   // Any other image, don't load via base.org / nextjs image proxy
   return false;
+};
+
+export const IsValidIpfsUri = (ipfsUri: IpfsUri): boolean => {
+  try {
+    const url = new URL(ipfsUri);
+    const ipfsCid = url.pathname.replace('//', '');
+    const isValidCid = cid(ipfsCid);
+    const isValidIpfsUrl = url.protocol === 'ipfs:' && isValidCid;
+    return isValidIpfsUrl;
+  } catch (error) {
+    return false;
+  }
+};
+
+export const getIpfsGatewayUrl = (ipfsUri?: IpfsUri): string | undefined => {
+  if (!ipfsUri) return;
+
+  const url = new URL(ipfsUri);
+  const ipfsCid = url.pathname.replace('//', '');
+
+  const isValidCid = cid(ipfsCid);
+  const isValidIpfsUrl = url.protocol === 'ipfs:' && isValidCid;
+  console.log({ isValidIpfsUrl });
+  if (!isValidIpfsUrl) return;
+
+  return `${CLOUDFARE_IPFS_PROXY}/ipfs/${ipfsCid}`;
 };

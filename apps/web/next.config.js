@@ -97,6 +97,7 @@ const contentSecurityPolicy = {
     'https://i.seadn.io/', // ens avatars
     'https://api.opensea.io', // enables getting ENS avatars
     'https://ipfs.io', // ipfs ens avatar resolution
+    'https://cloudflare-ipfs.com', // ipfs Cloudfare ens avatar resolution
     'wss://www.walletlink.org',
     'https://base.easscan.org/graphql',
     'https://api.guild.xyz/',
@@ -116,6 +117,7 @@ const contentSecurityPolicy = {
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars
     'https://ipfs.io', // ipfs ens avatar resolution
+    'https://cloudflare-ipfs.com', // ipfs Cloudfare ens avatar resolution
   ],
 };
 

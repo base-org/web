@@ -48,7 +48,7 @@ export default function DropdownItem({ children, copyValue, onClick }: DropdownI
       {copyValue ? (
         <CopyToClipboard text={copyValue} onCopy={onCopy}>
           <div className="flex w-full cursor-pointer flex-row items-center justify-between gap-4">
-            <span className="truncate ">{children}</span>
+            <span className="inline-block w-full truncate">{children}</span>
             <i className={copied ? 'text-green-50' : 'text-gray-50'}>
               <Icon
                 name={copied ? 'checkmark' : 'copy'}
@@ -60,7 +60,7 @@ export default function DropdownItem({ children, copyValue, onClick }: DropdownI
           </div>
         </CopyToClipboard>
       ) : (
-        <span className="truncate">{children}</span>
+        <span className="inline-block w-full truncate">{children}</span>
       )}
     </button>
   );

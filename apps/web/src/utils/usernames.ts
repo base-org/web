@@ -19,6 +19,11 @@ import {
   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
+import { getIpfsGatewayUrl, IpfsUri, IsValidIpfsUri } from 'apps/web/src/utils/images';
+import {
+  ALLOWED_IMAGE_TYPE,
+  MAX_IMAGE_SIZE_IN_MB,
+} from 'apps/web/pages/api/basenames/avatar/upload';
 
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 20;
@@ -340,6 +345,19 @@ export async function fetchAddress(username: BaseName) {
   } catch (error) {}
 }
 
+export async function fetchAvatar(username: BaseName) {
+  const chain = getChainForBasename(username);
+
+  try {
+    const client = getBasenamePublicClient(chain.id);
+    const ensAvatar = await client.getEnsAvatar({
+      name: normalize(username),
+      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
+    });
+    return ensAvatar;
+  } catch (error) {}
+}
+
 export async function fetchDescription(username: BaseName) {
   const chain = getChainForBasename(username);
   try {
@@ -365,6 +383,75 @@ export async function formatDefaultUsername(username: BaseName) {
   }
 
   return username;
+}
+
+export const getBasenameAvatarUrl = (source: string) => {
+  if (!source) return;
+  try {
+    const url = new URL(source);
+    if (url.protocol === 'https:') {
+      return source;
+    }
+
+    if (url.protocol === 'ipfs:') {
+      return getIpfsGatewayUrl(source as IpfsUri);
+    }
+  } catch (error) {
+    return;
+  }
+};
+
+export function validateAvatarUpload(file: File) {
+  if (!ALLOWED_IMAGE_TYPE.includes(file.type)) {
+    return {
+      valid: false,
+      message: 'Only supported image are PNG, SVG, JPEG & WebP',
+    };
+  }
+  const bytes = file.size;
+  const bytesToMegaBytes = bytes / (1024 * 1024);
+
+  if (bytesToMegaBytes > MAX_IMAGE_SIZE_IN_MB) {
+    return {
+      valid: false,
+      message: 'Max image size is 1Mb',
+    };
+  }
+
+  // TODO: Validate a square-ish image, with a width/height ratio of minimum 0.8
+  return {
+    valid: true,
+    message: '',
+  };
+}
+
+// Only support IPFS for now
+export function validateBasenameAvatarUrl(source: string) {
+  try {
+    const url = new URL(source);
+    let isValid = true;
+    let message = '';
+
+    if (url.protocol === 'ipfs:') {
+      isValid = IsValidIpfsUri(source as IpfsUri);
+      if (!isValid) {
+        message = 'Invalid IPFS url';
+      }
+    } else {
+      isValid = false;
+      message = 'Only IPFS url are supported';
+    }
+
+    return {
+      valid: isValid,
+      message: message,
+    };
+  } catch (error) {
+    return {
+      valid: false,
+      message: 'Invalid avatar URL',
+    };
+  }
 }
 
 // Force EA/GA based on env
