@@ -30,7 +30,7 @@ meaning to the unavailable name.
 9. Be creative and think of unique variations that the user might find appealing.
 Your output should be a JSON array containing exactly ${NAME_COUNT} alternative name suggestions. Do not 
 include any explanation or additional text outside of the JSON array.
-Remember, the goal is to provide alternatives that users will find desirable and that are likely to be available on ENS. 
+Remember, the goal is to provide alternatives that users will find desirable and that are likely to be available on ENS. For example, adding a "0x" prefix to the start of a taken name would be culturally apt. 
 Focus on quality and creativity in your suggestions.`;
 const chatLlm = 'claude-3-5-sonnet@20240620';
 

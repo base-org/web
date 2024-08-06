@@ -7,6 +7,8 @@ import { namehash } from 'viem';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import { isDevelopment } from 'apps/web/src/constants';
+import ImageRaw from 'apps/web/src/components/ImageRaw';
 
 const emojiCache: Record<string, Promise<string>> = {};
 
@@ -33,20 +35,21 @@ export default async function handler(request: NextRequest) {
   ).then(async (res) => res.arrayBuffer());
 
   const url = new URL(request.url);
-  const isDevelopment = process.env.NODE_ENV === 'development';
+
   const username = url.searchParams.get('name') ?? 'yourname';
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
   const profilePicture = getUserNamePicture(username);
-  const chainId = url.searchParams.get('chainId') ?? base.id;
+  const chainIdFromParams = url.searchParams.get('chainId');
+  const chainId = chainIdFromParams ? Number(chainIdFromParams) : base.id;
   let imageSource = domainName + profilePicture.src;
 
   // NOTE: Do we want to fail if the name doesn't exists?
   try {
     const nameHash = namehash(username);
-    const client = getBasenamePublicClient(Number(chainId));
+    const client = getBasenamePublicClient(chainId);
     const avatar = await client.readContract({
       abi: L2ResolverAbi,
-      address: USERNAME_L2_RESOLVER_ADDRESSES[Number(chainId)],
+      address: USERNAME_L2_RESOLVER_ADDRESSES[chainId],
       args: [nameHash, UsernameTextRecordKeys.Avatar],
       functionName: 'text',
     });
@@ -88,9 +91,7 @@ export default async function handler(request: NextRequest) {
         }}
       >
         <figure style={{ borderRadius: '100%', overflow: 'hidden', height: 120, width: 120 }}>
-          {/* We cannot use <Image> in these satori rendered images */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={imageSource} height={120} width={120} alt={username} />
+          <ImageRaw src={imageSource} height={120} width={120} alt={username} />
         </figure>
         <span
           style={{

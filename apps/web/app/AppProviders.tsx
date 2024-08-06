@@ -1,4 +1,5 @@
 'use client';
+import '@rainbow-me/rainbowkit/styles.css';
 
 import {
   Provider as CookieManagerProvider,
@@ -9,7 +10,6 @@ import {
 import { OnchainKitProvider } from '@coinbase/onchainkit';
 import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
 import { connectorsForWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import '@rainbow-me/rainbowkit/styles.css';
 import {
   coinbaseWallet,
   metaMaskWallet,
@@ -27,6 +27,8 @@ import { base, baseSepolia } from 'wagmi/chains';
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
 import ClientAnalyticsScript from 'apps/web/src/components/ClientAnalyticsScript/ClientAnalyticsScript';
 import dynamic from 'next/dynamic';
+import ErrorsProvider from 'apps/web/contexts/Errors';
+import { isDevelopment } from 'apps/web/src/constants';
 
 const DynamicCookieBannerWrapper = dynamic(
   async () => import('apps/web/src/components/CookieBannerWrapper'),
@@ -102,42 +104,42 @@ export default function AppProviders({ children }: AppProvidersProps) {
 
   const handleLogError = useCallback((err: Error) => console.error(err), []);
 
-  const isDevelopment = process.env.NODE_ENV === 'development';
-
   useSprig(sprigEnvironmentId);
 
   return (
-    <CookieManagerProvider
-      projectName="base_web"
-      locale="en"
-      region={Region.DEFAULT}
-      log={console.log}
-      onError={handleLogError}
-      onPreferenceChange={setTrackingPreference}
-      config={cookieManagerConfig}
-    >
-      <MotionConfig reducedMotion="user">
-        <ClientAnalyticsScript />
-        <WagmiProvider config={config}>
-          <QueryClientProvider client={queryClient}>
-            <OnchainKitProvider
-              chain={isDevelopment ? baseSepolia : base}
-              apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
-            >
-              <RainbowKitProvider modalSize="compact">
-                <TooltipProvider>
-                  <ExperimentsProvider>
-                    <>
-                      {children}
-                      <DynamicCookieBannerWrapper />
-                    </>
-                  </ExperimentsProvider>
-                </TooltipProvider>
-              </RainbowKitProvider>
-            </OnchainKitProvider>
-          </QueryClientProvider>
-        </WagmiProvider>
-      </MotionConfig>
-    </CookieManagerProvider>
+    <ErrorsProvider context="web">
+      <CookieManagerProvider
+        projectName="base_web"
+        locale="en"
+        region={Region.DEFAULT}
+        log={console.log}
+        onError={handleLogError}
+        onPreferenceChange={setTrackingPreference}
+        config={cookieManagerConfig}
+      >
+        <MotionConfig reducedMotion="user">
+          <ClientAnalyticsScript />
+          <WagmiProvider config={config}>
+            <QueryClientProvider client={queryClient}>
+              <OnchainKitProvider
+                chain={isDevelopment ? baseSepolia : base}
+                apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
+              >
+                <RainbowKitProvider modalSize="compact">
+                  <TooltipProvider>
+                    <ExperimentsProvider>
+                      <>
+                        {children}
+                        <DynamicCookieBannerWrapper />
+                      </>
+                    </ExperimentsProvider>
+                  </TooltipProvider>
+                </RainbowKitProvider>
+              </OnchainKitProvider>
+            </QueryClientProvider>
+          </WagmiProvider>
+        </MotionConfig>
+      </CookieManagerProvider>
+    </ErrorsProvider>
   );
 }

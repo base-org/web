@@ -121,7 +121,7 @@ export function Hero() {
                   </Button>
                 </Link>
               </div>
-              <p className=" block w-full font-mono uppercase text-white lg:hidden">
+              <p className="block w-full font-mono uppercase text-white lg:hidden">
                 Powered by Op Stack
               </p>
             </div>

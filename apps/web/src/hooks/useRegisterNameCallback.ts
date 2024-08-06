@@ -1,4 +1,5 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { useErrors } from 'apps/web/contexts/Errors';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
@@ -37,6 +38,7 @@ export function useRegisterNameCallback(
 ): UseRegisterNameCallbackReturnValue {
   const { address, chainId, isConnected } = useAccount();
   const { basenameChain } = useBasenameChain();
+  const { logError } = useErrors();
   const {
     data: callBatchId,
     writeContractsAsync,
@@ -69,6 +71,10 @@ export function useRegisterNameCallback(
 
   const registerName = useCallback(async () => {
     if (!address) return;
+    if (chainId !== basenameChain.id) {
+      await switchChainAsync({ chainId: basenameChain.id });
+      return;
+    }
 
     const addressData = encodeFunctionData({
       abi: L2ResolverAbi,
@@ -98,8 +104,6 @@ export function useRegisterNameCallback(
     logEventWithContext('register_name_transaction_initiated', ActionType.click);
 
     try {
-      await switchChainAsync({ chainId: basenameChain.id });
-
       if (!capabilities || Object.keys(capabilities).length === 0) {
         await writeContractAsync({
           abi: REGISTER_CONTRACT_ABI,
@@ -129,15 +133,17 @@ export function useRegisterNameCallback(
         });
       }
     } catch (e) {
-      console.error('failed to register name', e);
+      logError(e, 'Register name transaction canceled');
       logEventWithContext('register_name_transaction_canceled', ActionType.change);
     }
   }, [
     address,
+    chainId,
     basenameChain.id,
     capabilities,
     discountKey,
     isDiscounted,
+    logError,
     logEventWithContext,
     name,
     normalizedName,

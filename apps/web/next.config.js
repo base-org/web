@@ -4,6 +4,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const isProdEnv = process.env.NODE_ENV === 'production';
 
+// Can't import this from apps/web/src/utils/images.ts for some reason
+const allowedImageRemoteDomains = ['zku9gdedgba48lmr.public.blob.vercel-storage.com'];
+
 const baseConfig = {
   // Enable advanced features
   compiler: {
@@ -74,6 +77,7 @@ const contentSecurityPolicy = {
     ccaLiteDomains,
     walletconnectDomains,
   ],
+  'worker-src': ['blob:'],
   'connect-src': [
     "'self'",
     'https://blob.vercel-storage.com', // Vercel File storage
@@ -109,8 +113,6 @@ const contentSecurityPolicy = {
     '*',
     "'self'",
     'blob:',
-    'https://blob.vercel-storage.com', // Vercel File storage
-    'https://zku9gdedgba48lmr.public.blob.vercel-storage.com', // Vercel File storage
     'data:',
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars
@@ -125,7 +127,7 @@ const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [ke
 const securityHeaders = [
   {
     key: 'cache-control',
-    value: 'no-store',
+    value: 'no-cache',
   },
   {
     key: 'content-security-policy',
@@ -183,34 +185,12 @@ module.exports = extendBaseConfig(
       return config;
     },
     images: {
-      remotePatterns: [
-        {
+      remotePatterns: allowedImageRemoteDomains.map((hostname) => {
+        return {
           protocol: 'https',
-          hostname: '**', // allows rendering frames to user profiles
-        },
-        {
-          protocol: 'https',
-          hostname: 'i.seadn.io',
-        },
-        {
-          protocol: 'https',
-          hostname: 'ipfs.io',
-        },
-        {
-          protocol: 'https',
-          hostname: 'cf-ipfs.com',
-        },
-        {
-          protocol: 'https',
-          hostname: 'blob.vercel-storage.com',
-          port: '',
-        },
-        {
-          protocol: 'https',
-          hostname: 'zku9gdedgba48lmr.public.blob.vercel-storage.com',
-          port: '',
-        },
-      ],
+          hostname,
+        };
+      }),
     },
     async headers() {
       return [
