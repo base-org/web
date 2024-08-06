@@ -15,7 +15,11 @@ type SurveyProps = {
 
 export default async function Survey({ params }: SurveyProps) {
   const question = await getQuestion(params.id);
-  console.log({ question });
+
+  if (!question) {
+    return <div>No Question with this ID</div>
+  }
+
   return (
     <div>
       <span>Question</span>

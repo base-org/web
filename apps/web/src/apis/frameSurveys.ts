@@ -60,9 +60,8 @@ export async function getQuestion(id: string) {
     .selectFrom('frame_survey_questions')
     .where('id', '=', Number(id))
     .selectAll()
-    .limit(1)
-    .execute();
-  return question[0];
+    .executeTakeFirst()
+  return question;
 }
 
 /*
