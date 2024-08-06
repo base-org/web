@@ -1,3 +1,5 @@
+import AnalyticsProvider from 'apps/web/contexts/Analytics';
+
 import { Divider } from 'apps/web/src/components/Divider/Divider';
 import Hero from 'apps/web/src/components/WhyBase/Hero';
 import ActiveCommunityOfBuilders from 'apps/web/src/components/WhyBase/ActiveCommunityOfBuilders';
@@ -9,7 +11,7 @@ import BuildWithUs from 'apps/web/src/components/WhyBase/BuildWithUs';
 
 export default async function WhyBase() {
   return (
-    <>
+    <AnalyticsProvider context='why_base'>
       <Hero />
       <main className="flex w-full flex-col items-center bg-black font-display text-white">
         <ActiveCommunityOfBuilders />
@@ -24,6 +26,6 @@ export default async function WhyBase() {
         <Divider />
         <BuildWithUs />
       </main>
-    </>
+    </AnalyticsProvider>
   );
 }
