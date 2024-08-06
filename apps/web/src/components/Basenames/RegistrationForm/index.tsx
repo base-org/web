@@ -73,7 +73,6 @@ export default function RegistrationForm() {
     setRegisterNameTransactionHash,
     setRegisterNameCallsBatchId,
     discount,
-    loadingDiscounts,
   } = useRegistration();
   const [years, setYears] = useState(1);
 
@@ -145,8 +144,9 @@ export default function RegistrationForm() {
   const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
   const insufficientBalanceToRegister =
     balance?.value !== undefined && price !== undefined && balance?.value < price;
-  const usdPrice =
-    price !== undefined && ethUsdPrice !== undefined ? formatUsdPrice(price, ethUsdPrice) : '--.--';
+
+  const resolvedUSDPrice = price !== undefined && ethUsdPrice !== undefined;
+  const usdPrice = resolvedUSDPrice ? formatUsdPrice(price, ethUsdPrice) : '--.--';
   const nameIsFree = price === 0n;
 
   if (!IS_EARLY_ACCESS || (IS_EARLY_ACCESS && discount)) {
@@ -154,7 +154,7 @@ export default function RegistrationForm() {
       <>
         <div className="mt-20 transition-all duration-500">
           <div className="z-10 flex flex-col items-start justify-between gap-6 rounded-2xl bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center">
-            <div className="max-w-[14rem]">
+            <div className="max-w-[14rem] self-start">
               <p className="text-line mb-2 text-sm font-bold uppercase">Claim for</p>
               <div className="flex items-center justify-between">
                 <button
@@ -179,11 +179,15 @@ export default function RegistrationForm() {
                 </button>
               </div>
             </div>
-            <div className="min-w-[14rem] text-left">
+            <div className="min-w-[14rem] self-start text-left">
               <p className="text-line mb-2 text-sm font-bold uppercase">Amount</p>
-              <div className="flex items-baseline justify-start gap-4">
-                {discountedPrice !== undefined ? (
-                  <div className=" flex flex-row items-baseline justify-around gap-2">
+              <div className="flex min-w-60 items-baseline justify-start gap-4">
+                {!price ? (
+                  <div className="flex h-9 items-center justify-center self-center">
+                    <Icon name="spinner" color="currentColor" />
+                  </div>
+                ) : discountedPrice !== undefined ? (
+                  <div className="flex flex-row items-baseline justify-around gap-2">
                     <p
                       className={classNames('whitespace-nowrap text-3xl text-black line-through', {
                         'text-state-n-hovered': insufficientBalanceToRegister,
@@ -208,11 +212,7 @@ export default function RegistrationForm() {
                     {formatEtherPrice(price)} ETH
                   </p>
                 )}
-                {loadingDiscounts ? (
-                  <div className="flex h-4 items-center justify-center">
-                    <Icon name="spinner" color="currentColor" />
-                  </div>
-                ) : (
+                {resolvedUSDPrice && (
                   <span className="whitespace-nowrap text-xl text-gray-60">${usdPrice}</span>
                 )}
               </div>

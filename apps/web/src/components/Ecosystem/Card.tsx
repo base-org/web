@@ -1,4 +1,3 @@
-'use client';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 
 type Props = {

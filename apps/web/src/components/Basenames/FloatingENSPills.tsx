@@ -2,8 +2,8 @@ import {
   registrationTransitionDuration,
   useRegistration,
 } from 'apps/web/src/components/Basenames/RegistrationContext';
+import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import classNames from 'classnames';
-import Image from 'next/image';
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 
 const useMousePosition = () => {
@@ -104,7 +104,7 @@ const Pill = forwardRef(
 
     return (
       <div ref={ref} className={pillClasses} style={{ top: `${y}px`, left: `${x}px`, transform }}>
-        <Image
+        <ImageAdaptive
           src={avatar}
           className="flex-shrink-0 rounded-full"
           alt={`${name}-avatar`}

@@ -257,7 +257,7 @@ export default function RegistrationSearchInput({
       />
       <div className={dropdownClasses}>
         <div className={lineClasses}>
-          <div className="w-full border-t border-gray-40/20 " />
+          <div className="w-full border-t border-gray-40/20" />
         </div>
         {invalidWithMessage ? (
           <p className={mutedMessage}>{message}</p>

@@ -21,6 +21,7 @@
     "strictNullChecks": true
   },
   "include": [
+    "global.d.ts",
     "next-env.d.ts",
     "**/*",
     "**/*.json",
