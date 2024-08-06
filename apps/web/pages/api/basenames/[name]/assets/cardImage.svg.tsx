@@ -8,6 +8,7 @@ import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { isDevelopment } from 'apps/web/src/constants';
+import ImageRaw from 'apps/web/src/components/ImageRaw';
 
 const emojiCache: Record<string, Promise<string>> = {};
 
@@ -90,9 +91,7 @@ export default async function handler(request: NextRequest) {
         }}
       >
         <figure style={{ borderRadius: '100%', overflow: 'hidden', height: 120, width: 120 }}>
-          {/* We cannot use <Image> in these satori rendered images */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={imageSource} height={120} width={120} alt={username} />
+          <ImageRaw src={imageSource} height={120} width={120} alt={username} />
         </figure>
         <span
           style={{
