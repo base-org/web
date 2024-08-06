@@ -4,9 +4,9 @@ import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img
 
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 
-import aerodromeImage from './aerodrome.svg';
-import doodlesImage from './doodles.svg';
-import morphoImage from './morpho.svg';
+import aerodromeImage from './images/aerodrome.svg';
+import doodlesImage from './images/doodles.svg';
+import morphoImage from './images/morpho.svg';
 
 import { partners, Partner } from 'apps/web/src/components/WhyBase/partners';
 

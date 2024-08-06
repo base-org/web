@@ -1,6 +1,6 @@
 import TableOfContents, { Section } from 'apps/web/src/components/TableOfContents/TableOfContents';
 
-import WhyBaseHeroBackground from 'apps/web/src/components/WhyBase/why-base-hero-bg.png';
+import WhyBaseHeroBackground from './images/why-base-hero-bg.png';
 
 export default async function Hero() {
   const backgroundStyles = {

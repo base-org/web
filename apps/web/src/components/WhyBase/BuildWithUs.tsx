@@ -1,7 +1,7 @@
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { ButtonVariants } from 'apps/web/src/components/Button/Button';
 
-import buildWithUs from './BuildWithUs.png';
+import buildWithUs from './images/BuildWithUs.png';
 
 const imageBackgroundStyles = {
   backgroundImage: `url('${buildWithUs.src}')`,
