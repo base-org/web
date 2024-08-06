@@ -28,7 +28,7 @@ export default async function PerformanceAndCost() {
               L2Beat
             </ButtonWithLinkAndEventLogging>
             <ButtonWithLinkAndEventLogging
-              href="https://l2beat.com/scaling/costs"
+              href="https://rollup.wtf/"
               eventName="perf_and_cost_rollupwtf"
               target="_blank"
               rel="noreferrer noopener"
