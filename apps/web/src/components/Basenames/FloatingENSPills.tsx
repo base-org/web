@@ -2,7 +2,7 @@ import {
   registrationTransitionDuration,
   useRegistration,
 } from 'apps/web/src/components/Basenames/RegistrationContext';
-import ImageOptimized from 'apps/web/src/components/ImageOptimized';
+import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import classNames from 'classnames';
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 
@@ -104,7 +104,7 @@ const Pill = forwardRef(
 
     return (
       <div ref={ref} className={pillClasses} style={{ top: `${y}px`, left: `${x}px`, transform }}>
-        <ImageOptimized
+        <ImageAdaptive
           src={avatar}
           className="flex-shrink-0 rounded-full"
           alt={`${name}-avatar`}

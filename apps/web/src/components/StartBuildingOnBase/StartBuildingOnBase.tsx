@@ -1,5 +1,5 @@
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
-import ImageOptimized from 'apps/web/src/components/ImageOptimized';
+import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import { docsUrl } from 'apps/web/src/constants';
 import Link from 'next/link';
 
@@ -21,7 +21,7 @@ export async function StartBuildingOnBase() {
         <ReadTheDocsButton />
       </div>
       <div className="relative h-[460px] w-full max-w-[678px]">
-        <ImageOptimized
+        <ImageAdaptive
           src="/images/start-building-on-base.png"
           className="object-contain"
           alt="Start building on base"

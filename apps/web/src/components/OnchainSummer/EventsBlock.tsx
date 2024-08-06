@@ -5,7 +5,7 @@ import { OCSButton } from 'apps/web/src/components/OnchainSummer/OCSButton';
 import { StaticImageData } from 'next/image';
 import giantB from 'apps/web/public/images/ocs/giantB.svg';
 import { FadeInSection } from 'apps/web/src/components/OnchainSummer/FadeIns';
-import ImageOptimized from 'apps/web/src/components/ImageOptimized';
+import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 
 function EventCard({
   num,
@@ -68,7 +68,7 @@ function HackathonSlab() {
             </div>
           </div>
           <div className="flex flex-col items-end">
-            <ImageOptimized src={giantB as StaticImageData} alt="Giant B" />
+            <ImageAdaptive src={giantB as StaticImageData} alt="Giant B" />
           </div>
         </div>
       </FadeInSection>

@@ -3,7 +3,7 @@ import { StaticImageData } from 'next/image';
 import classNames from 'classnames';
 import { useCallback, useState } from 'react';
 import { PlaceholderValue } from 'next/dist/shared/lib/get-img-props';
-import ImageOptimized from 'apps/web/src/components/ImageOptimized';
+import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 
 type ImageWithLoadingProps = {
   src: string | StaticImageData;
@@ -50,7 +50,7 @@ export default function ImageWithLoading({
 
   return (
     <figure className={figureClasses}>
-      <ImageOptimized
+      <ImageAdaptive
         src={src}
         className={avatarClasses}
         alt={alt}
