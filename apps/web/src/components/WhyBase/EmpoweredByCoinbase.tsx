@@ -31,7 +31,6 @@ export default async function EmpoweredByCoinbase() {
             <ButtonWithLinkAndEventLogging
               href="https://www.coinbase.com/blog/introducing-base"
               eventName="empowered_coinbase_learn_more"
-              eventContext="why_base"
               target="_blank"
               rel="noreferrer noopener"
               linkClassNames="inline-block"

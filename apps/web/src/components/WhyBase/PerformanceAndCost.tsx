@@ -40,7 +40,6 @@ export default async function PerformanceAndCost() {
             <ButtonWithLinkAndEventLogging
               href="https://l2beat.com/scaling/costs"
               eventName="perf_and_cost_l2beat"
-              eventContext="why_base"
               target="_blank"
               rel="noreferrer noopener"
               buttonClassNames="uppercase w-full sm:w-auto font-mono font-medium "
@@ -50,7 +49,6 @@ export default async function PerformanceAndCost() {
             <ButtonWithLinkAndEventLogging
               href="https://l2beat.com/scaling/costs"
               eventName="perf_and_cost_rollupwtf"
-              eventContext="why_base"
               target="_blank"
               rel="noreferrer noopener"
               variant="Secondary"

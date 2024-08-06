@@ -36,7 +36,6 @@ export default async function ActiveCommunityOfBuilders() {
             <ButtonWithLinkAndEventLogging
               href="https://discord.com/invite/buildonbase"
               eventName="join_discord"
-              eventContext="why_base"
               target="_blank"
               rel="noreferrer noopener"
               linkClassNames="inline-block"

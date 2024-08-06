@@ -34,7 +34,6 @@ export default async function EvmEquivalent() {
             <ButtonWithLinkAndEventLogging
               href="https://docs.base.org/docs"
               eventName="evm_compatible_start_migrating"
-              eventContext="why_base"
               target="_blank"
               rel="noreferrer noopener"
               linkClassNames="inline-block"

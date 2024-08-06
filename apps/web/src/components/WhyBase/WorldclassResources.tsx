@@ -58,7 +58,6 @@ export default async function WorldclassResources() {
             <ButtonWithLinkAndEventLogging
               href="https://docs.base.org/docs"
               eventName="worldclass_resources_start_building"
-              eventContext="why_base"
               target="_blank"
               rel="noreferrer noopener"
               linkClassNames="inline-block"

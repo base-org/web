@@ -20,7 +20,6 @@ export default async function BuildWithUs() {
           <ButtonWithLinkAndEventLogging
             href="https://docs.base.org/docs"
             eventName="start_building_with_us_get_started"
-            eventContext="why_base"
             target="_blank"
             rel="noreferrer noopener"
             buttonClassNames="uppercase font-mono font-medium w-full sm:w-auto text-xs sm:text-sm md:text-base px-2 py-1 sm:px-8 sm:py-4"
@@ -30,7 +29,6 @@ export default async function BuildWithUs() {
           <ButtonWithLinkAndEventLogging
             href="https://docs.base.org/docs"
             eventName="start_building_with_us_view_docs"
-            eventContext="why_base"
             target="_blank"
             rel="noreferrer noopener"
             variant="Secondary"
