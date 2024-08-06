@@ -354,7 +354,7 @@ __metadata:
   dependencies:
     "@coinbase/cookie-banner": ^1.0.3
     "@coinbase/cookie-manager": ^1.1.1
-    "@coinbase/onchainkit": ^0.26.14
+    "@coinbase/onchainkit": ^0.27.1
     "@datadog/browser-rum": ^5.23.3
     "@guildxyz/sdk": 2.6.0
     "@headlessui/react": ^1.7.19
@@ -2178,9 +2178,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@coinbase/onchainkit@npm:^0.26.14":
-  version: 0.26.14
-  resolution: "@coinbase/onchainkit@npm:0.26.14"
+"@coinbase/onchainkit@npm:^0.27.1":
+  version: 0.27.1
+  resolution: "@coinbase/onchainkit@npm:0.27.1"
   dependencies:
     "@rainbow-me/rainbowkit": ^2.1.3
     "@tanstack/react-query": ^5
@@ -2195,7 +2195,7 @@ __metadata:
     "@xmtp/frames-validator": ^0.6.0
     react: ^18
     react-dom: ^18
-  checksum: 677b2f258895d871c98b077408dcc22719427c935884ba21c816c46c785aaa2742c15264f9285d12c315f1543c2a787fd9eb37f1ed2a2280cbe6787437b204cc
+  checksum: e6f68ebeb9c6c764e3d53df026e8d2a0e17d7df53432b95b29cd1285516d29302823f1222ea64827ff3778912231b51a23619a8b8367cdc1f6ecef6c88f8a305
   languageName: node
   linkType: hard
 
