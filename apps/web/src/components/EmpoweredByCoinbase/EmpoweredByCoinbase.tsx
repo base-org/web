@@ -1,6 +1,6 @@
 async function Header() {
   return (
-    <div className=" font-display text-3xl text-white md:text-5xl lg:text-6xl">
+    <div className="font-display text-3xl text-white md:text-5xl lg:text-6xl">
       <h2>
         Empowered by
         <br />

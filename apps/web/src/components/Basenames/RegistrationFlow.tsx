@@ -254,7 +254,7 @@ export function RegistrationFlow() {
               leaveTo="opacity-0"
             >
               {isPending && (
-                <p className=" text-line text-center font-bold uppercase tracking-widest text-gray-60">
+                <p className="text-line text-center font-bold uppercase tracking-widest text-gray-60">
                   Registering...
                 </p>
               )}

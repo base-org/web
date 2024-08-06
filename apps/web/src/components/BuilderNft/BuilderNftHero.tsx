@@ -31,7 +31,7 @@ export function BuilderNftHero() {
               <FaqContent />
             </div>
           </div>
-          <div className=" flex w-full flex-col gap-8 md:w-1/3 md:justify-end">
+          <div className="flex w-full flex-col gap-8 md:w-1/3 md:justify-end">
             <div className="border-4 border-white">
               <ImageAdaptive src={nftPreview} alt="Preview of the Base Builder NFT" />
             </div>
