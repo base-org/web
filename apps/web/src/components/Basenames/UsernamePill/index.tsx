@@ -13,7 +13,7 @@ export function UsernamePill({ variant, username, address, isRegistering }: User
   const transitionClasses = 'transition-all duration-700 ease-in-out';
 
   const pillNameClasses = classNames(
-    'bg-blue-500 w-full text-white relative leading-[2em] overflow-hidden text-ellipsis max-w-full',
+    'bg-blue-500 w-fit-content mx-auto text-white relative leading-[2em] overflow-hidden text-ellipsis max-w-full',
     'shadow-[0px_8px_16px_0px_rgba(0,82,255,0.32),inset_0px_8px_16px_0px_rgba(255,255,255,0.25)]',
     transitionClasses,
     {
@@ -34,11 +34,21 @@ export function UsernamePill({ variant, username, address, isRegistering }: User
     },
   );
 
+  const nameLength = username.length;
+
+  const nameLengthPillFontSize = classNames({
+    'text-[clamp(0.8rem,5vw,3rem)]': nameLength > 25,
+    'text-[clamp(1rem,5vw,3rem)]': nameLength > 20 && nameLength <= 25,
+    'text-[clamp(1.5rem,5vw,3rem)]': nameLength > 15 && nameLength <= 20,
+    'text-[clamp(2rem,5vw,3rem)]': nameLength > 0 && nameLength <= 15,
+  });
+
   const userNameClasses = classNames(
     'overflow-y-hidden text-ellipsis whitespace-nowrap',
     transitionClasses,
     {
-      'text-[clamp(1rem,5vw,3rem)] pl-8 md:pl-[4rem]': variant === UsernamePillVariants.Inline,
+      'pl-8 md:pl-[4rem]': variant === UsernamePillVariants.Inline,
+      [nameLengthPillFontSize]: variant === UsernamePillVariants.Inline,
       'text-3xl pl-0 mt-20': variant === UsernamePillVariants.Card,
     },
   );

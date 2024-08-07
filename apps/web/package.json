@@ -13,7 +13,7 @@
   "dependencies": {
     "@coinbase/cookie-banner": "^1.0.3",
     "@coinbase/cookie-manager": "^1.1.1",
-    "@coinbase/onchainkit": "^0.26.14",
+    "@coinbase/onchainkit": "^0.27.1",
     "@datadog/browser-rum": "^5.23.3",
     "@guildxyz/sdk": "2.6.0",
     "@headlessui/react": "^1.7.19",
@@ -33,7 +33,7 @@
     "jose": "^5.4.1",
     "jsonwebtoken": "^9.0.2",
     "kysely": "^0.27.3",
-    "next": "^13.5.6",
+    "next": "^14.2.5",
     "node-fetch": "^3.3.0",
     "permissionless": "^0.1.41",
     "pg": "^8.12.0",
@@ -46,8 +46,9 @@
     "satori": "^0.10.14",
     "sharp": "^0.33.4",
     "twemoji": "^14.0.2",
+    "typed.js": "^2.1.0",
     "usehooks-ts": "^3.1.0",
-    "uuidv4": "^6.2.13",
+    "uuid": "^10.0.0",
     "viem": "2.x",
     "wagmi": "^2.11.3"
   },

@@ -1,5 +1,6 @@
 'use client';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { useErrors } from 'apps/web/contexts/Errors';
 import {
   DiscountData,
   findFirstValidDiscount,
@@ -25,7 +26,6 @@ import { useInterval } from 'usehooks-ts';
 import { Address, TransactionReceipt } from 'viem';
 import { base } from 'viem/chains';
 import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
-import { useCallsStatus } from 'wagmi/experimental';
 
 export enum RegistrationSteps {
   Search = 'search',
@@ -46,8 +46,6 @@ export type RegistrationContextProps = {
   setSelectedName: Dispatch<SetStateAction<string>>;
   registerNameTransactionHash: `0x${string}` | undefined;
   setRegisterNameTransactionHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
-  registerNameCallsBatchId: string;
-  setRegisterNameCallsBatchId: Dispatch<SetStateAction<string>>;
   redirectToProfile: () => void;
   loadingDiscounts: boolean;
   discount: DiscountData | undefined;
@@ -77,10 +75,6 @@ export const RegistrationContext = createContext<RegistrationContextProps>({
   setRegisterNameTransactionHash: function () {
     return undefined;
   },
-  registerNameCallsBatchId: '',
-  setRegisterNameCallsBatchId: function () {
-    return undefined;
-  },
   redirectToProfile: function () {
     return undefined;
   },
@@ -107,12 +101,17 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     RegistrationSteps.Search,
   );
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [registrationStep]);
+
   const { basenameChain } = useBasenameChain();
 
   const router = useRouter();
 
   // Analytics
   const { logEventWithContext } = useAnalytics();
+  const { logError } = useErrors();
 
   // Web3 data
   const { address } = useAccount();
@@ -152,16 +151,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       enabled: !!registerNameTransactionHash,
     },
   });
-  const [registerNameCallsBatchId, setRegisterNameCallsBatchId] = useState<string>('');
-
-  // The "correct" way to transition the UI would be to watch for call success, but this experimental
-  // rpc/hook combo is failing to report batch status for us as of July 30th 2024
-  const { isFetching: callsIsFetching } = useCallsStatus({
-    id: registerNameCallsBatchId,
-    query: {
-      enabled: !!registerNameCallsBatchId,
-    },
-  });
 
   useInterval(() => {
     if (registrationStep !== RegistrationSteps.Pending) {
@@ -174,7 +163,9 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
           setRegistrationStep(RegistrationSteps.Success);
         }
       })
-      .catch(() => {});
+      .catch((error) => {
+        logError(error, 'Failed to refetch basename');
+      });
   }, 1500);
 
   const redirectToProfile = useCallback(() => {
@@ -186,10 +177,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   }, [basenameChain.id, router, selectedName]);
 
   useEffect(() => {
-    if (
-      (transactionIsFetching || callsIsFetching) &&
-      registrationStep === RegistrationSteps.Claim
-    ) {
+    if (transactionIsFetching && registrationStep === RegistrationSteps.Claim) {
       logEventWithContext('register_name_transaction_processing', ActionType.change);
       setRegistrationStep(RegistrationSteps.Pending);
     }
@@ -197,6 +185,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     if (transactionIsSuccess && registrationStep === RegistrationSteps.Pending) {
       if (transactionData.status === 'success') {
         logEventWithContext('register_name_transaction_success', ActionType.change);
+        setRegistrationStep(RegistrationSteps.Success);
       }
 
       if (transactionData.status === 'reverted') {
@@ -207,7 +196,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     }
   }, [
     baseEnsNameRefetch,
-    callsIsFetching,
     logEventWithContext,
     registrationStep,
     transactionData,
@@ -232,6 +220,13 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     logEventWithContext('selected_name', ActionType.change);
   }, [logEventWithContext, selectedName]);
 
+  // Log error
+  useEffect(() => {
+    if (transactionError) {
+      logError(transactionError, 'Failed to fetch the transaction receipt');
+    }
+  }, [logError, transactionError]);
+
   const values = useMemo(() => {
     return {
       searchInputFocused,
@@ -244,8 +239,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       setRegistrationStep,
       registerNameTransactionHash,
       setRegisterNameTransactionHash,
-      registerNameCallsBatchId,
-      setRegisterNameCallsBatchId,
       redirectToProfile,
       loadingDiscounts,
       discount,
@@ -258,7 +251,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     discount,
     loadingDiscounts,
     redirectToProfile,
-    registerNameCallsBatchId,
     registerNameTransactionHash,
     registrationStep,
     searchInputFocused,

@@ -647,4 +647,4 @@ In this tutorial, you've learned how to set up Thirdweb's engine and use it to c
 [thirdweb engine dashboard]: https://thirdweb.com/dashboard/engine
 [wallet best practices]: https://portal.thirdweb.com/engine/features/backend-wallets#best-practices
 [conversion function]: https://blueprintue.com/blueprint/vm4ujcqe/
-[Simple Onchain NFTs]: /simple-onchain-nfts
+[Simple Onchain NFTs]: /tutorials/simple-onchain-nfts

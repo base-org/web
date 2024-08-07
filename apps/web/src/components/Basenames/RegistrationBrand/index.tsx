@@ -1,9 +1,8 @@
-import { Transition } from '@headlessui/react';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
-import { useState } from 'react';
-import { useInterval } from 'usehooks-ts';
+import { useEffect, useRef } from 'react';
+import Typed from 'typed.js';
 
 const SEARCH_LABEL_COPY_STRINGS = [
   'Build your Based profile',
@@ -11,19 +10,26 @@ const SEARCH_LABEL_COPY_STRINGS = [
   'Simplify onchain transactions',
 ];
 
-const useRotatingText = (strings: string[]) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  useInterval(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % strings.length);
-  }, 3000);
-  return strings[currentIndex];
-};
-
 export default function RegistrationBrand() {
-  const rotatingText = useRotatingText(SEARCH_LABEL_COPY_STRINGS);
+  const typedTextRef = useRef<HTMLParagraphElement>(null);
+  const typedInstance = useRef<Typed>();
   const { searchInputFocused } = useRegistration();
+
+  useEffect(() => {
+    if (typedTextRef.current && !typedInstance.current) {
+      typedInstance.current = new Typed(typedTextRef.current, {
+        strings: SEARCH_LABEL_COPY_STRINGS,
+        typeSpeed: 50,
+        backDelay: 3000,
+        backSpeed: 40,
+        loop: true,
+        showCursor: false,
+        autoInsertCss: false,
+      });
+    }
+  }, []);
   return (
-    <div className="relative flex w-full flex-row">
+    <div className="relative flex w-full flex-row justify-between">
       <div className="flex items-center gap-1">
         <span
           className={classNames('pt-[1px]', {
@@ -35,22 +41,7 @@ export default function RegistrationBrand() {
         </span>
         <h1 className="text-md font-bold md:text-xl">Basenames</h1>
       </div>
-      {SEARCH_LABEL_COPY_STRINGS.map((string) => (
-        <Transition
-          key={string}
-          show={rotatingText === string}
-          className="transition-opacity"
-          enter="delay-500"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <p className="sm:text-md absolute right-0 flex h-full items-center text-xs md:text-xl">
-            {string}
-          </p>
-        </Transition>
-      ))}
+      <p className="sm:text-md text-xs md:text-xl" ref={typedTextRef} />
     </div>
   );
 }

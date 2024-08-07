@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Divider } from 'apps/web/src/components/Divider/Divider';
 import { Job } from 'apps/web/src/components/Jobs/Job';
 import { greenhouseApiUrl } from 'apps/web/src/constants';
+import { useErrors } from 'apps/web/contexts/Errors';
 
 async function getJobs() {
   const res = await fetch(`${greenhouseApiUrl}/boards/basejobs/jobs?content=true`);
@@ -30,11 +31,14 @@ export type JobType = {
 
 export default function JobsList() {
   const [jobs, setJobs] = useState<JobType[]>([]);
+  const { logError } = useErrors();
   useEffect(() => {
     getJobs()
       .then((js) => setJobs(js))
-      .catch(console.error);
-  }, []);
+      .catch((error) => {
+        logError(error, 'Failed to get jobs');
+      });
+  }, [logError]);
 
   const departments = useMemo(() => {
     const departmentsById = jobs.reduce<DepartmentByIdReduceType>((acc, job) => {

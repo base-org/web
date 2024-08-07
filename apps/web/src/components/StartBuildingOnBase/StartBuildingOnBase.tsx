@@ -1,6 +1,6 @@
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import { docsUrl } from 'apps/web/src/constants';
-import Image from 'next/image';
 import Link from 'next/link';
 
 async function ReadTheDocsButton() {
@@ -21,7 +21,7 @@ export async function StartBuildingOnBase() {
         <ReadTheDocsButton />
       </div>
       <div className="relative h-[460px] w-full max-w-[678px]">
-        <Image
+        <ImageAdaptive
           src="/images/start-building-on-base.png"
           className="object-contain"
           alt="Start building on base"

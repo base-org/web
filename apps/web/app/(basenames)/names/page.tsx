@@ -1,6 +1,8 @@
 import RegistrationProviders from 'apps/web/app/(basenames)/names/RegistrationProviders';
+import ErrorsProvider from 'apps/web/contexts/Errors';
 import RegistrationFlow from 'apps/web/src/components/Basenames/RegistrationFlow';
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -13,10 +15,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default async function Page() {
   return (
-    <RegistrationProviders>
-      <RegistrationFlow />
-    </RegistrationProviders>
+    <ErrorsProvider context="registration">
+      <RegistrationProviders>
+        <Suspense>
+          <RegistrationFlow />
+        </Suspense>
+      </RegistrationProviders>
+    </ErrorsProvider>
   );
 }
