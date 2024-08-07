@@ -39,7 +39,7 @@ const communityCards: CommunityCardType[] = [
   },
 ];
 
-const COMMUNITY_OF_BUILDERS_SECTION_ID = 'communityOfBuilders';
+export const COMMUNITY_OF_BUILDERS_SECTION_ID = 'communityOfBuilders';
 
 export default async function ActiveCommunityOfBuilders() {
   return (
@@ -52,28 +52,32 @@ export default async function ActiveCommunityOfBuilders() {
           <CommunityPartners communityPartners={partners} />
         </div>
         <div className="flex grow flex-col justify-start space-y-6 lg:mx-8 lg:justify-around xl:mx-20">
-          <h2 className="flex flex-row font-display text-3xl sm:text-4xl lg:text-6xl">
-            <span>1.</span>
-            <span className="ml-4">Join an active community of Builders</span>
-          </h2>
-          <div className="md:hidden">
-            <CommunityPartners communityPartners={partners} />
-          </div>
-          <span className="text-base text-white sm:text-lg">
-            Join a community of thousands builders just like you, building some of the coolest
-            projects onchain. Reach out to our Discord support team for help.
-          </span>
-          <div>
-            <ButtonWithLinkAndEventLogging
-              href="https://discord.com/invite/buildonbase"
-              eventName="join_discord"
-              target="_blank"
-              rel="noreferrer noopener"
-              linkClassNames="inline-block"
-              buttonClassNames="uppercase font-mono font-medium"
-            >
-              Join the Discord
-            </ButtonWithLinkAndEventLogging>
+          <div className="flex flex-row">
+            <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white text-base font-bold text-black sm:h-7 sm:w-7 sm:text-xl lg:mr-4 lg:mt-2 lg:h-8 lg:w-8 lg:text-2xl">
+              1
+            </span>
+            <div className="ml-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-6xl">
+                Join an active community of Builders
+              </h2>
+              <div className="md:hidden">
+                <CommunityPartners communityPartners={partners} />
+              </div>
+              <p className="my-2 text-base text-white sm:text-lg lg:my-4 xl:my-6">
+                Join a community of thousands builders just like you, building some of the coolest
+                projects onchain. Reach out to our Discord support team for help.
+              </p>
+              <ButtonWithLinkAndEventLogging
+                href="https://discord.com/invite/buildonbase"
+                eventName="join_discord"
+                target="_blank"
+                rel="noreferrer noopener"
+                linkClassNames="inline-block"
+                buttonClassNames="uppercase font-mono font-medium"
+              >
+                Go To Discord
+              </ButtonWithLinkAndEventLogging>
+            </div>
           </div>
         </div>
       </div>
