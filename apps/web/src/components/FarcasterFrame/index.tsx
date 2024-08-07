@@ -91,6 +91,8 @@ export default function FarcasterFrame({ url, address }: FarcasterFrameProps) {
     },
   });
 
+  console.log({ frameState });
+
   if (!url || errorLoadingFrame) return null;
   return (
     <a href={url} aria-label="link-to-frame" target="_blank" rel="noreferrer">

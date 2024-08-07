@@ -24,8 +24,7 @@ export default function UsernameProfileSectionFrames() {
       <iframe
         src={`/farcaster-frame?url=${homeframeUrl}&address=${address}`}
         title="image"
-        className="border-1 border-gray/40 h-[30rem] w-full"
-        width="100%"
+        className="border-1 border-gray/40 aspect-ratio-[1/1.3] min-h-[30rem]"
       />
     </section>
   );
