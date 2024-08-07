@@ -60,10 +60,10 @@ export default async function ActiveCommunityOfBuilders() {
               <h2 className="text-3xl sm:text-4xl lg:text-6xl">
                 Join an active community of Builders
               </h2>
-              <div className="md:hidden">
+              <div className="md:hidden my-4">
                 <CommunityPartners communityPartners={partners} />
               </div>
-              <p className="my-2 text-base text-white sm:text-lg lg:my-4 xl:my-6">
+              <p className="my-2 text-base sm:text-lg lg:my-4 xl:my-6">
                 Join a community of thousands builders just like you, building some of the coolest
                 projects onchain. Reach out to our Discord support team for help.
               </p>
@@ -73,7 +73,7 @@ export default async function ActiveCommunityOfBuilders() {
                 target="_blank"
                 rel="noreferrer noopener"
                 linkClassNames="inline-block"
-                buttonClassNames="uppercase font-mono font-medium"
+                buttonClassNames="uppercase font-mono font-medium mt-4 "
               >
                 Go To Discord
               </ButtonWithLinkAndEventLogging>
