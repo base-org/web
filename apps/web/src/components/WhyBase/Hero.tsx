@@ -38,7 +38,7 @@ export default async function Hero() {
       className="mt-[-96px] flex flex-col items-center bg-blue-60 font-display text-white"
       style={backgroundStyles}
     >
-      <div className="mt-12 flex min-h-[504px] w-full max-w-[1440px] flex-col justify-start px-12 sm:mt-16 sm:px-16 lg:mt-[96px] lg:px-24">
+      <div className="mb-2 mt-12 flex w-full max-w-[1440px] flex-col justify-start px-12 sm:mb-4 sm:mt-16 sm:px-16 lg:mb-6 lg:mt-[96px] lg:px-24">
         <div className="my-8 grid grid-cols-1 gap-8 sm:my-12 lg:my-20 lg:grid-cols-[1fr_1fr] lg:gap-0">
           <div className="max-w-full lg:max-w-[500px]">
             <h1 className="mb-6 font-display text-4xl leading-tight sm:text-5xl lg:mb-10 lg:text-6xl lg:leading-none">
