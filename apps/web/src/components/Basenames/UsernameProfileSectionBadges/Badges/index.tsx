@@ -1,5 +1,5 @@
 import { CoinbaseVerifications } from 'apps/web/src/hooks/useCoinbaseVerifications';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import { GuildBadges } from 'apps/web/src/hooks/useBaseGuild';
 
 // image imports
@@ -28,7 +28,7 @@ import talentScoreGray from './images/talentScoreGray.webp';
 import { useBadgeContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/BadgeContext';
 import Modal from 'apps/web/src/components/Modal';
 import { useCallback } from 'react';
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Link from 'next/link';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 
@@ -42,8 +42,8 @@ export const BADGE_INFO: Record<
     description: string;
     cta: string;
     ctaLink: string;
-    image: StaticImport;
-    grayImage: StaticImport;
+    image: StaticImageData;
+    grayImage: StaticImageData;
   }
 > = {
   VERIFIED_IDENTITY: {
@@ -153,7 +153,7 @@ export function BadgeImage({ badge, claimed, score, size, name }: BadgeImageProp
   const showTalentScore = Boolean(claimed && score && badge === 'TALENT_SCORE');
 
   return (
-    <div className="group relative flex h-[160px] w-[160px] items-center justify-center">
+    <div className="group relative flex items-center justify-center p-6">
       <ImageWithLoading
         src={BADGE_INFO[badge][claimed ? 'image' : 'grayImage']}
         alt={name}
@@ -222,7 +222,7 @@ export function BadgeModal() {
           status: {selectedClaim.claimed ? 'claimed' : 'unclaimed'}
         </span>
         <Link href={BADGE_INFO[badge].ctaLink} target="_blank" className="w-full">
-          <Button variant="black" rounded fullWidth>
+          <Button variant={ButtonVariants.Black} rounded fullWidth>
             {BADGE_INFO[badge].cta}
           </Button>
         </Link>
