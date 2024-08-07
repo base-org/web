@@ -61,7 +61,7 @@ We recommend you have this configuration to run a node:
 - 8-Core CPU
 - at least 16 GB RAM
 - a locally attached NVMe SSD drive
-- adequate storage capacity to accommodate both the [snapshot restoration process](#restoring-from-snapshot) (if restoring from snapshot) and chain data, ensuring a minimum of (2 \* current_chain_size) + snapshot_size + 20%\_buffer
+- adequate storage capacity to accommodate both the snapshot restoration process (if restoring from snapshot) and chain data, ensuring a minimum of (2 \* current_chain_size) + snapshot_size + 20%\_buffer
 
 :::info
 
