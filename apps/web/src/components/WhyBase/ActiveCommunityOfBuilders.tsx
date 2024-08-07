@@ -2,6 +2,7 @@ import Link from 'apps/web/node_modules/next/link';
 import Image from 'apps/web/node_modules/next/image';
 import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
+import section1 from '../TableOfContents/sectionNumbers/section1.svg';
 import aerodromeImage from './images/aerodrome.svg';
 import doodlesImage from './images/doodles.svg';
 import morphoImage from './images/morpho.svg';
@@ -53,14 +54,14 @@ export default async function ActiveCommunityOfBuilders() {
         </div>
         <div className="flex grow flex-col justify-start space-y-6 lg:mx-8 lg:justify-around xl:mx-20">
           <div className="flex flex-row">
-            <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white text-base font-bold text-black sm:h-7 sm:w-7 sm:text-xl lg:mr-4 lg:mt-2 lg:h-8 lg:w-8 lg:text-2xl">
-              1
+            <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white sm:h-7 sm:w-7 lg:mr-4 lg:mt-2 lg:h-8 lg:w-8">
+              <Image src={section1} alt="section one" />
             </span>
             <div className="ml-4">
               <h2 className="text-3xl sm:text-4xl lg:text-6xl">
                 Join an active community of Builders
               </h2>
-              <div className="md:hidden my-4">
+              <div className="my-4 md:hidden">
                 <CommunityPartners communityPartners={partners} />
               </div>
               <p className="my-2 text-base sm:text-lg lg:my-4 xl:my-6">
