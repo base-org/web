@@ -115,7 +115,7 @@ async function CommunityCard({ card }: { card: CommunityCardType }) {
   return (
     <div
       key={card.href}
-      className="grid h-[330px] w-full grid-rows-[1fr_1fr] border-2 border-gray-90 sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-16px)]"
+      className="grid max-h-[330px] w-full grid-rows-[auto_1fr] border-2 border-gray-90 sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-16px)]"
     >
       <Link href={`https://${card.href}`} target="_blank" rel="noreferrer noopener">
         <Image src={card.img} alt={card.title} className="h-full w-full object-cover" />
