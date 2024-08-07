@@ -1,3 +1,5 @@
+'use client';
+
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
 import { type FarcasterSignerImpersonating, signFrameAction } from '@frames.js/render/farcaster';
 import { useFrame } from '@frames.js/render/use-frame';

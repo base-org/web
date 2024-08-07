@@ -111,9 +111,9 @@ const contentSecurityPolicy = {
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
   'img-src': [
-    '*', // allows loading frames
     "'self'",
     'blob:',
+    'https:',
     'data:',
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars
