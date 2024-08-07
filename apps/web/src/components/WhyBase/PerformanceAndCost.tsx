@@ -28,7 +28,7 @@ const stats: Stat[] = [
   },
 ];
 
-const PERFORMANCE_AND_COST_SECTION_ID = 'performanceAndCost';
+export const PERFORMANCE_AND_COST_SECTION_ID = 'performanceAndCost';
 
 export default async function PerformanceAndCost() {
   return (
@@ -37,35 +37,39 @@ export default async function PerformanceAndCost() {
       className="mb-6 mt-10 flex w-full max-w-[1440px] flex-col px-12 sm:mb-8 sm:mt-8 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
     >
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-12">
-        <h2 className="flex flex-row font-display text-3xl sm:text-4xl lg:w-1/2 lg:text-6xl">
-          <span>2.</span>
-          <span className="ml-4">Best-in-class performance & cost efficiency</span>
-        </h2>
-        <div className="lg:w-1/2">
-          <span className="text-base sm:text-lg">
-            Base leads the way with the lowest transaction costs, highest throughput, and top TPS
-            among Layer 2 solutions.
+        <div className="flex flex-row">
+          <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white text-base font-bold text-black sm:h-7 sm:w-7 sm:text-xl lg:mr-4 lg:mt-2 lg:h-8 lg:w-8 lg:text-2xl">
+            2
           </span>
-          <div className="mt-4 flex flex-row justify-start gap-4 lg:gap-8">
-            <ButtonWithLinkAndEventLogging
-              href="https://l2beat.com/scaling/costs"
-              eventName="perf_and_cost_l2beat"
-              target="_blank"
-              rel="noreferrer noopener"
-              buttonClassNames="uppercase w-full sm:w-auto font-mono font-medium "
-            >
-              L2Beat
-            </ButtonWithLinkAndEventLogging>
-            <ButtonWithLinkAndEventLogging
-              href="https://rollup.wtf/"
-              eventName="perf_and_cost_rollupwtf"
-              target="_blank"
-              rel="noreferrer noopener"
-              variant={ButtonVariants.Secondary}
-              buttonClassNames="uppercase font-mono font-medium w-full sm:w-auto"
-            >
-              rollup.wtf
-            </ButtonWithLinkAndEventLogging>
+          <div className="ml-4 max-w-[750px]">
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl">
+              Best-in-class performance & cost efficiency
+            </h2>
+            <p className="my-2 text-base sm:text-lg lg:my-4 xl:my-6">
+              Base leads the way with the lowest transaction costs, highest throughput, and top TPS
+              among Layer 2 solutions.
+            </p>
+            <div className="mt-4 flex flex-row justify-start gap-4 lg:gap-8">
+              <ButtonWithLinkAndEventLogging
+                href="https://l2beat.com/scaling/costs"
+                eventName="perf_and_cost_l2beat"
+                target="_blank"
+                rel="noreferrer noopener"
+                buttonClassNames="uppercase w-full sm:w-auto font-mono font-medium "
+              >
+                L2Beat
+              </ButtonWithLinkAndEventLogging>
+              <ButtonWithLinkAndEventLogging
+                href="https://rollup.wtf/"
+                eventName="perf_and_cost_rollupwtf"
+                target="_blank"
+                rel="noreferrer noopener"
+                variant={ButtonVariants.Secondary}
+                buttonClassNames="uppercase font-mono font-medium w-full sm:w-auto"
+              >
+                rollup.wtf
+              </ButtonWithLinkAndEventLogging>
+            </div>
           </div>
         </div>
       </div>
