@@ -45,7 +45,7 @@ export default function UsernameNav() {
   });
 
   const navigationClasses = classNames(
-    'flex h-24 w-full max-w-[1440px] flex-row items-center justify-between gap-16 self-center bg-transparent px-4 md:px-8',
+    'flex h-24 w-full max-w-[1440px] flex-row items-center justify-between gap-4 md:gap-16 self-center bg-transparent px-4 md:px-8',
   );
 
   return (
