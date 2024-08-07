@@ -110,7 +110,6 @@ const contentSecurityPolicy = {
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
   'img-src': [
-    '*', // allows loading frames
     "'self'",
     'blob:',
     'data:',
