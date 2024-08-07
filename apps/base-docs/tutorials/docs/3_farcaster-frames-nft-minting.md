@@ -590,7 +590,7 @@ In this tutorial, you learned how to create [Farcaster] frames. You then updated
 [testnet version of Opensea]: https://testnets.opensea.io/
 [Farcaster]: https://www.farcaster.xyz/
 [a-frame-in-100-lines]: https://github.com/Zizzamia/a-frame-in-100-lines
-[OnchainKit]: https://onchainkit.xyz
+[OnchainKit]: https://onchainkit.xyz/?utm_source=basedocs&utm_medium=tutorials&campaign=farcaster-frames-nft-minting
 [Vercel]: https://vercel.com
 [Frame Validator]: https://warpcast.com/~/developers/frames
 [Base channel]: https://warpcast.com/~/channel/base
