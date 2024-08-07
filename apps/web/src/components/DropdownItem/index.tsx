@@ -31,7 +31,7 @@ export default function DropdownItem({ children, copyValue, onClick }: DropdownI
 
   const onClickHandler = useCallback(() => {
     setOpen(false);
-    if (onClick) onClick();
+    onClick?.();
   }, [onClick, setOpen]);
 
   useEffect(() => {

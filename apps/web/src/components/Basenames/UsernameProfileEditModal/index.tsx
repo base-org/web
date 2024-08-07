@@ -192,7 +192,6 @@ export default function UsernameProfileEditModal({
             })
 
             .catch((error) => {
-              console.log(error);
               logError(error, 'Update text records transaction canceled');
               logEventWithContext('update_text_records_transaction_canceled', ActionType.click);
             });
@@ -250,7 +249,7 @@ export default function UsernameProfileEditModal({
           <UsernameAvatarField
             onChangeFile={onChangeAvatarFile}
             onChange={onChangeTextRecord}
-            value={textRecords[UsernameTextRecordKeys.Avatar]}
+            currentAvatarUrl={textRecords[UsernameTextRecordKeys.Avatar]}
             disabled={isLoading}
             username={profileUsername}
           />

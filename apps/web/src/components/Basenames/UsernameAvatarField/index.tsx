@@ -21,7 +21,7 @@ import DropdownItem from 'apps/web/src/components/DropdownItem';
 export type UsernameAvatarFieldProps = {
   onChangeFile: (file: File | undefined) => void;
   onChange: (key: UsernameTextRecordKeys, value: string) => void;
-  value: string;
+  currentAvatarUrl: string;
   disabled?: boolean;
   username: string;
 };
@@ -29,12 +29,12 @@ export type UsernameAvatarFieldProps = {
 export default function UsernameAvatarField({
   onChangeFile,
   onChange,
-  value,
+  currentAvatarUrl = '',
   disabled = false,
   username,
 }: UsernameAvatarFieldProps) {
   const [error, setError] = useState<string>();
-  const [newValue, setNewValue] = useState<string>(value || '');
+  const [newAvatarUrl, setNewAvatarUrl] = useState<string>(currentAvatarUrl);
   const [showUrlInput, setShowUrlInput] = useState<boolean>(false);
   const avatarInputRef = useRef<HTMLInputElement>(null);
   const [avatarFile, setAvatarFile] = useState<File>();
@@ -45,13 +45,13 @@ export default function UsernameAvatarField({
 
     const singleFile = files[0];
     if (!singleFile) return;
-    setNewValue('');
+    setNewAvatarUrl('');
     setAvatarFile(singleFile);
   }, []);
 
   const onChangeAvatarUrl = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const avatarUrl = event.target.value;
-    setNewValue(avatarUrl);
+    setNewAvatarUrl(avatarUrl);
 
     if (avatarInputRef.current) {
       avatarInputRef.current.value = '';
@@ -74,7 +74,7 @@ export default function UsernameAvatarField({
 
   const onClickUseDefaultAvatar = useCallback(() => {
     setShowUrlInput(false);
-    setNewValue('');
+    setNewAvatarUrl('');
     setError('');
     setAvatarFile(undefined);
   }, []);
@@ -96,32 +96,32 @@ export default function UsernameAvatarField({
 
   // Validate avatar url
   useEffect(() => {
-    if (newValue.trim() === '') {
-      onChange(UsernameTextRecordKeys.Avatar, newValue.trim());
+    if (newAvatarUrl.trim() === '') {
+      onChange(UsernameTextRecordKeys.Avatar, newAvatarUrl.trim());
       setError('');
       return;
     }
 
-    const validationResult = validateBasenameAvatarUrl(newValue);
+    const validationResult = validateBasenameAvatarUrl(newAvatarUrl);
     if (!validationResult.valid) {
-      if (onChange) onChange(UsernameTextRecordKeys.Avatar, value);
+      if (onChange) onChange(UsernameTextRecordKeys.Avatar, currentAvatarUrl);
       setError(validationResult.message);
       return;
     } else {
-      if (onChange) onChange(UsernameTextRecordKeys.Avatar, newValue);
+      if (onChange) onChange(UsernameTextRecordKeys.Avatar, newAvatarUrl);
       return setError('');
     }
-  }, [newValue, onChange, value]);
+  }, [currentAvatarUrl, newAvatarUrl, onChange]);
 
   const usernameAvatarFieldId = useId();
 
   const defaultSelectedProfilePicture = getUserNamePicture(username);
   const newAvatarFileUrl = avatarFile && !error ? URL.createObjectURL(avatarFile) : undefined;
-  const newAvatarUrl = !error ? getBasenameAvatarUrl(newValue) : undefined;
+  const newAvatarAbsoluteUrl = !error ? getBasenameAvatarUrl(newAvatarUrl) : undefined;
   const avatarSrc =
     newAvatarFileUrl ??
-    newAvatarUrl ??
-    getBasenameAvatarUrl(newValue) ??
+    newAvatarAbsoluteUrl ??
+    getBasenameAvatarUrl(newAvatarUrl) ??
     defaultSelectedProfilePicture;
 
   return (
@@ -159,7 +159,7 @@ export default function UsernameAvatarField({
       {showUrlInput && (
         <Input
           type="text"
-          value={newValue}
+          value={newAvatarUrl}
           placeholder="ipfs://..."
           onChange={onChangeAvatarUrl}
           className="flex-1 rounded-md border border-gray-40/20 p-2 text-black"
