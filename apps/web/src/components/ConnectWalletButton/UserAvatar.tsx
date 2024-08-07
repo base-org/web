@@ -4,7 +4,7 @@ import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 import useBaseEnsAvatar from 'apps/web/src/hooks/useBaseEnsAvatar';
-import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/images';
+import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/urls';
 
 export function UserAvatar() {
   const { address } = useAccount();

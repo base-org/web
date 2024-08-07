@@ -5,7 +5,7 @@ import {
   getBasenameAvatarUrl,
   getUserNamePicture,
   UsernameTextRecordKeys,
-  validateAvatarUpload,
+  validateBasenameAvatarFile,
   validateBasenameAvatarUrl,
 } from 'apps/web/src/utils/usernames';
 import { ChangeEvent, useCallback, useEffect, useId, useRef, useState } from 'react';
@@ -15,7 +15,7 @@ import cameraIcon from './cameraIcon.svg';
 import Input from 'apps/web/src/components/Input';
 import Dropdown from 'apps/web/src/components/Dropdown';
 import DropdownToggle from 'apps/web/src/components/DropdownToggle';
-import DropdownMenu from 'apps/web/src/components/DropdownMenu';
+import DropdownMenu, { DropdownMenuAlign } from 'apps/web/src/components/DropdownMenu';
 import DropdownItem from 'apps/web/src/components/DropdownItem';
 
 export type UsernameAvatarFieldProps = {
@@ -38,41 +38,51 @@ export default function UsernameAvatarField({
   const [showUrlInput, setShowUrlInput] = useState<boolean>(false);
   const avatarInputRef = useRef<HTMLInputElement>(null);
   const [avatarFile, setAvatarFile] = useState<File>();
+
   const onChangeAvatarFile = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (!files) return;
 
     const singleFile = files[0];
     if (!singleFile) return;
-
+    setNewValue('');
     setAvatarFile(singleFile);
   }, []);
 
   const onChangeAvatarUrl = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const avatarUrl = event.target.value;
     setNewValue(avatarUrl);
+
+    if (avatarInputRef.current) {
+      avatarInputRef.current.value = '';
+    }
   }, []);
 
   const onClickFileUpload = useCallback(() => {
     setShowUrlInput(false);
+    setError('');
     if (avatarInputRef.current) {
       avatarInputRef.current.click();
     }
   }, []);
 
-  const onClickSetUrl = useCallback(() => {
+  const onClickSetIpfsUrl = useCallback(() => {
+    setAvatarFile(undefined);
+    setError('');
     setShowUrlInput(true);
   }, []);
 
   const onClickUseDefaultAvatar = useCallback(() => {
     setShowUrlInput(false);
     setNewValue('');
+    setError('');
     setAvatarFile(undefined);
   }, []);
 
+  // Validate avatar file
   useEffect(() => {
     if (!avatarFile) return;
-    const validationResult = validateAvatarUpload(avatarFile);
+    const validationResult = validateBasenameAvatarFile(avatarFile);
 
     if (!validationResult.valid) {
       onChangeFile(undefined);
@@ -84,6 +94,7 @@ export default function UsernameAvatarField({
     }
   }, [avatarFile, onChangeFile]);
 
+  // Validate avatar url
   useEffect(() => {
     if (newValue.trim() === '') {
       onChange(UsernameTextRecordKeys.Avatar, newValue.trim());
@@ -125,24 +136,21 @@ export default function UsernameAvatarField({
           width={320}
           height={320}
         />
-
+        <FileInput
+          id={usernameAvatarFieldId}
+          onChange={onChangeAvatarFile}
+          disabled={disabled}
+          className="hidden"
+          ref={avatarInputRef}
+        />
         <span className="absolute bottom-0 right-0 hover:cursor-pointer">
           <Dropdown>
             <DropdownToggle>
               <ImageWithLoading src={cameraIcon as StaticImageData} alt="Upload an avatar" />
             </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem onClick={onClickFileUpload}>
-                Upload File
-                <FileInput
-                  id={usernameAvatarFieldId}
-                  onChange={onChangeAvatarFile}
-                  disabled={disabled}
-                  className="hidden"
-                  ref={avatarInputRef}
-                />
-              </DropdownItem>
-              <DropdownItem onClick={onClickSetUrl}>Set URL</DropdownItem>
+            <DropdownMenu align={DropdownMenuAlign.Center}>
+              <DropdownItem onClick={onClickFileUpload}>Upload File</DropdownItem>
+              <DropdownItem onClick={onClickSetIpfsUrl}>Use IPFS URL</DropdownItem>
               <DropdownItem onClick={onClickUseDefaultAvatar}>Use default avatar</DropdownItem>
             </DropdownMenu>
           </Dropdown>
@@ -152,6 +160,7 @@ export default function UsernameAvatarField({
         <Input
           type="text"
           value={newValue}
+          placeholder="ipfs://..."
           onChange={onChangeAvatarUrl}
           className="flex-1 rounded-md border border-gray-40/20 p-2 text-black"
         />

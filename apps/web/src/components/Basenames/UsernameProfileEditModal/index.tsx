@@ -1,3 +1,7 @@
+import classNames from 'classnames';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
+import { useCallback, useEffect, useState } from 'react';
+import { useWaitForTransactionReceipt } from 'wagmi';
 import { upload } from '@vercel/blob/client';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useErrors } from 'apps/web/contexts/Errors';
@@ -21,11 +25,6 @@ import {
   UsernameTextRecordKeys,
   UsernameTextRecords,
 } from 'apps/web/src/utils/usernames';
-import classNames from 'classnames';
-import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useCallback, useEffect, useState } from 'react';
-
-import { useWaitForTransactionReceipt } from 'wagmi';
 
 export default function UsernameProfileEditModal({
   isOpen,
@@ -193,6 +192,7 @@ export default function UsernameProfileEditModal({
             })
 
             .catch((error) => {
+              console.log(error);
               logError(error, 'Update text records transaction canceled');
               logEventWithContext('update_text_records_transaction_canceled', ActionType.click);
             });
@@ -218,7 +218,6 @@ export default function UsernameProfileEditModal({
 
   const onChangeTextRecord = useCallback(
     (key: UsernameTextRecordKeys, value: string) => {
-      console.log('UPDATE TEXT RECORD');
       updateTextRecords(key, value);
     },
     [updateTextRecords],

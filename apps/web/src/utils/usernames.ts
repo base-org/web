@@ -19,11 +19,16 @@ import {
   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
-import { getIpfsGatewayUrl, IpfsUri, IsValidIpfsUri } from 'apps/web/src/utils/images';
 import {
   ALLOWED_IMAGE_TYPE,
   MAX_IMAGE_SIZE_IN_MB,
 } from 'apps/web/pages/api/basenames/avatar/upload';
+import {
+  getIpfsGatewayUrl,
+  IpfsUrl,
+  IsValidIpfsUrl,
+  IsValidVercelBlobUrl,
+} from 'apps/web/src/utils/urls';
 
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 20;
@@ -192,12 +197,13 @@ export const sanitizeEnsDomainName = (name: string) => {
 };
 
 // Any names non-compliant with ENSIP-15 will fail when using ENS normalize()
-export type EnsDomainNameValidationResult = {
+
+export type ValidationResult = {
   valid: boolean;
-  message?: string;
+  message: string;
 };
 
-export const validateEnsDomainName = (name: string): EnsDomainNameValidationResult => {
+export const validateEnsDomainName = (name: string): ValidationResult => {
   // Proper way to count emojis' length:
   // https://stackoverflow.com/questions/54369513/how-to-count-the-correct-length-of-a-string-with-emojis-in-javascript
   const nameLength = [...name].length;
@@ -219,9 +225,17 @@ export const validateEnsDomainName = (name: string): EnsDomainNameValidationResu
   try {
     const normalizedName = normalize(name);
     const valid = typeof normalizedName === 'string';
-    return {
-      valid,
-    };
+    if (valid) {
+      return {
+        valid: true,
+        message: 'Valid name',
+      };
+    } else {
+      return {
+        valid: false,
+        message: 'Name is invalid',
+      };
+    }
   } catch (error) {
     if (error instanceof Error) {
       return {
@@ -387,6 +401,7 @@ export async function formatDefaultUsername(username: BaseName) {
 
 export const getBasenameAvatarUrl = (source: string) => {
   if (!source) return;
+
   try {
     const url = new URL(source);
     if (url.protocol === 'https:') {
@@ -394,14 +409,14 @@ export const getBasenameAvatarUrl = (source: string) => {
     }
 
     if (url.protocol === 'ipfs:') {
-      return getIpfsGatewayUrl(source as IpfsUri);
+      return getIpfsGatewayUrl(source as IpfsUrl);
     }
   } catch (error) {
     return;
   }
 };
 
-export function validateAvatarUpload(file: File) {
+export function validateBasenameAvatarFile(file: File): ValidationResult {
   if (!ALLOWED_IMAGE_TYPE.includes(file.type)) {
     return {
       valid: false,
@@ -421,35 +436,48 @@ export function validateAvatarUpload(file: File) {
   // TODO: Validate a square-ish image, with a width/height ratio of minimum 0.8
   return {
     valid: true,
-    message: '',
+    message: 'Valid avatar file',
   };
 }
 
 // Only support IPFS for now
-export function validateBasenameAvatarUrl(source: string) {
+export function validateBasenameAvatarUrl(source: string): ValidationResult {
   try {
     const url = new URL(source);
-    let isValid = true;
-    let message = '';
 
     if (url.protocol === 'ipfs:') {
-      isValid = IsValidIpfsUri(source as IpfsUri);
-      if (!isValid) {
-        message = 'Invalid IPFS url';
-      }
-    } else {
-      isValid = false;
-      message = 'Only IPFS url are supported';
+      const isValid = IsValidIpfsUrl(source as IpfsUrl);
+
+      return {
+        valid: isValid,
+        message: isValid ? 'Valid IPFS URL' : 'Invalid IPFS URL',
+      };
+    }
+
+    if (url.protocol === 'https:') {
+      // Only allow vercel upload for now
+      const isValid = IsValidVercelBlobUrl(source as IpfsUrl);
+      return {
+        valid: isValid,
+        message: isValid ? 'Valid URL' : 'Invalid URL',
+      };
+    }
+
+    if (url.protocol === 'http:') {
+      return {
+        valid: false,
+        message: 'Only IPFS URL are allowed',
+      };
     }
 
     return {
-      valid: isValid,
-      message: message,
+      valid: false,
+      message: 'Only IPFS URL are allowed',
     };
   } catch (error) {
     return {
       valid: false,
-      message: 'Invalid avatar URL',
+      message: 'Only IPFS URL are allowed',
     };
   }
 }

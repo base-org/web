@@ -2,7 +2,7 @@ import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { BaseName } from '@coinbase/onchainkit/identity';
 import { useEnsAvatar } from 'wagmi';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
-import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/images';
+import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/urls';
 
 export type UseBaseEnsNameProps = {
   name?: BaseEnsNameData;
