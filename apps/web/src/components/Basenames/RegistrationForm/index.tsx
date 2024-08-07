@@ -71,7 +71,6 @@ export default function RegistrationForm() {
     transactionError,
     selectedName,
     setRegisterNameTransactionHash,
-    setRegisterNameCallsBatchId,
     discount,
   } = useRegistration();
   const [years, setYears] = useState(1);
@@ -108,7 +107,6 @@ export default function RegistrationForm() {
   const {
     callback: registerName,
     data: registerNameTransactionHash,
-    callBatchId,
     isPending: registerNameTransactionIsPending,
     error: registerNameError,
   } = useRegisterNameCallback(
@@ -120,18 +118,11 @@ export default function RegistrationForm() {
   );
 
   useEffect(() => {
-    if (registerNameTransactionHash ?? callBatchId) {
+    if (registerNameTransactionHash) {
       logEventWithContext('register_name_transaction_approved', ActionType.change);
     }
-    if (callBatchId) setRegisterNameCallsBatchId(callBatchId);
     if (registerNameTransactionHash) setRegisterNameTransactionHash(registerNameTransactionHash);
-  }, [
-    callBatchId,
-    logEventWithContext,
-    registerNameTransactionHash,
-    setRegisterNameCallsBatchId,
-    setRegisterNameTransactionHash,
-  ]);
+  }, [logEventWithContext, registerNameTransactionHash, setRegisterNameTransactionHash]);
 
   const registerNameCallback = useCallback(() => {
     registerName()
@@ -225,7 +216,7 @@ export default function RegistrationForm() {
               )}
             </div>
 
-            <div className="w-full max-w-full md:max-w-[10rem]">
+            <div className="w-full max-w-full md:max-w-[13rem]">
               <ConnectButton.Custom>
                 {({ account, chain, mounted }) => {
                   const ready = mounted;

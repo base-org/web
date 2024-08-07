@@ -24,7 +24,6 @@ function secondsInYears(years: number): bigint {
 type UseRegisterNameCallbackReturnValue = {
   callback: () => Promise<void>;
   data: `0x${string}` | undefined;
-  callBatchId: string | undefined;
   isPending: boolean;
   error: string | undefined | null;
 };
@@ -36,17 +35,23 @@ export function useRegisterNameCallback(
   discountKey?: `0x${string}`,
   validationData?: `0x${string}`,
 ): UseRegisterNameCallbackReturnValue {
-  const { address, chainId, isConnected } = useAccount();
+  const { address, chainId, isConnected, connector } = useAccount();
   const { basenameChain } = useBasenameChain();
   const { logError } = useErrors();
   const {
-    data: callBatchId,
     writeContractsAsync,
     isPending: paymasterIsPending,
     error: paymasterError,
   } = useWriteContracts();
+
+  const isCoinbaseSmartWallet = connector?.id === 'coinbase';
+  const paymasterEnabled = isCoinbaseSmartWallet;
+
   const { data, writeContractAsync, isPending, error } = useWriteContract();
-  const { data: availableCapacities } = useCapabilities({ account: address });
+  const { data: availableCapacities } = useCapabilities({
+    account: address,
+    query: { enabled: isConnected && paymasterEnabled },
+  });
 
   const capabilities = useMemo(() => {
     if (!isConnected || !chainId || !availableCapacities) {
@@ -158,7 +163,6 @@ export function useRegisterNameCallback(
   return {
     callback: registerName,
     data,
-    callBatchId,
     isPending: isPending ?? paymasterIsPending,
     // @ts-expect-error error will be string renderable
     error: error ?? paymasterError,

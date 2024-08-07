@@ -9,7 +9,6 @@ import { useBaseGuild } from 'apps/web/src/hooks/useBaseGuild';
 import { useCoinbaseVerification } from 'apps/web/src/hooks/useCoinbaseVerifications';
 import { useTalentProtocol } from 'apps/web/src/hooks/useTalentProtocol';
 import { useMemo } from 'react';
-import BadgeContextProvider from './BadgeContext';
 
 function BadgesLoop({
   badges,
@@ -19,14 +18,14 @@ function BadgesLoop({
   currentWalletIsOwner?: boolean;
 }) {
   return (
-    <ul className="mb-12 mt-6 flex flex-col flex-wrap items-center gap-8 sm:flex-row sm:items-start">
+    <ul className="mt-6 grid grid-cols-2 gap-4 md:flex md:flex-row md:flex-wrap md:items-center md:gap-8">
       {Object.keys(badges).map((badge) => {
         const hasBadge = !!badges[badge as BadgeNames];
         const score =
           badge === 'TALENT_SCORE' ? (badges[badge as BadgeNames] as number) : undefined;
 
         return hasBadge || currentWalletIsOwner ? (
-          <li key={badge} className="inline-block">
+          <li key={badge}>
             <Badge badge={badge as BadgeNames} claimed={hasBadge} score={score} />
           </li>
         ) : null;
@@ -55,13 +54,13 @@ function VerificationsSection() {
   if (empty && !currentWalletIsOwner) return null;
 
   return (
-    <>
+    <section>
       <div className="flex flex-row items-center gap-4">
         <UsernameProfileSectionTitle title="Verifications" />
         <BadgeCount badges={badges} />
       </div>
       <BadgesLoop badges={badges} currentWalletIsOwner={currentWalletIsOwner} />
-    </>
+    </section>
   );
 }
 
@@ -79,24 +78,22 @@ function BuilderSection() {
   if (combinedEmpty && !currentWalletIsOwner) return null;
 
   return (
-    <>
+    <section>
       <div className="flex flex-row items-center gap-4">
         <UsernameProfileSectionTitle title="Builder activity" />
         <BadgeCount badges={combinedBadges} />
       </div>
       <BadgesLoop badges={combinedBadges} currentWalletIsOwner={currentWalletIsOwner} />
-    </>
+    </section>
   );
 }
 
 export default function UsernameProfileSectionBadges() {
   return (
-    <section className="">
-      <BadgeContextProvider>
-        <VerificationsSection />
-        <BuilderSection />
-        <BadgeModal />
-      </BadgeContextProvider>
-    </section>
+    <>
+      <VerificationsSection />
+      <BuilderSection />
+      <BadgeModal />
+    </>
   );
 }

@@ -167,7 +167,7 @@ export default function UsernameProfileSectionExplore() {
   );
 
   return (
-    <section className="">
+    <section>
       <UsernameProfileSectionTitle title="Explore ways to build your profile" />
       <ul className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2">
         {USERNAME_PROFILE_SECTION_EXPLORE_LINKS.map((usernameProfileSectionExploreLink) =>

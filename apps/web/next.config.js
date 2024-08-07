@@ -77,7 +77,7 @@ const contentSecurityPolicy = {
     ccaLiteDomains,
     walletconnectDomains,
   ],
-  'worker-src': ['blob:'],
+  'worker-src': ["'self'"],
   'connect-src': [
     "'self'",
     'https://blob.vercel-storage.com', // Vercel File storage
@@ -106,6 +106,7 @@ const contentSecurityPolicy = {
     'https://api.lab.amplitude.com/sdk/v2/vardata',
     'https://browser-intake-datadoghq.com', // datadog
     'https://*.datadoghq.com', //datadog
+    'https://translate.googleapis.com', // Let user translate our website
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
