@@ -36,6 +36,7 @@ export default function useReadBaseEnsTextRecords({
       [UsernameTextRecordKeys.Email]: '',
       [UsernameTextRecordKeys.Phone]: '',
       [UsernameTextRecordKeys.Avatar]: '',
+      [UsernameTextRecordKeys.Frame]: '',
     };
   }, []);
 

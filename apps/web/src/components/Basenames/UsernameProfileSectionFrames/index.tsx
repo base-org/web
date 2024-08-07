@@ -1,9 +1,13 @@
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
-import { type FarcasterSigner, signFrameAction } from '@frames.js/render/farcaster';
+import { type FarcasterSignerImpersonating, signFrameAction } from '@frames.js/render/farcaster';
 import { useFrame } from '@frames.js/render/use-frame';
 import { fallbackFrameContext } from '@frames.js/render';
 import { FrameUI, type FrameUIComponents, type FrameUITheme } from '@frames.js/render/ui';
 import { useAccount } from 'wagmi';
+import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
+import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
+import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import { useState } from 'react';
 
 /**
  * StylingProps is a type that defines the props that can be passed to the components to style them.
@@ -27,10 +31,17 @@ const components: FrameUIComponents<StylingProps> = {};
  */
 const theme: FrameUITheme<StylingProps> = {
   Root: {
-    className: 'flex flex col w-full gap-2 border rounded-lg overflow-hidden bg-white relative',
+    className: 'flex flex-col w-full border rounded-lg overflow-hidden bg-white relative mt-6',
   },
   LoadingScreen: {
     className: 'absolute top-0 left-0 right-0 bottom-0 bg-gray-90 z-10',
+  },
+  ButtonsContainer: {
+    className: 'flex sm:py-3 py-2 sm:px-7 px-2 justify-around bg-[#F3F3F3] gap-2 sm:gap-4',
+  },
+  Button: {
+    className:
+      'grow py-4 rounded-lg bg-white border border-[#CFD0D2] transition-colors hover:bg-state-b-hovered',
   },
   ImageContainer: {
     className: 'relative w-full h-full border-b border-gray-90 overflow-hidden',
@@ -42,7 +53,16 @@ const theme: FrameUITheme<StylingProps> = {
 
 export default function UsernameProfileSectionBadges() {
   const { address } = useAccount();
-  const farcasterSigner: FarcasterSigner = {
+  const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
+  const [errorLoadingFrame, setErrorLoadingFrame] = useState(false);
+  const { existingTextRecords } = useReadBaseEnsTextRecords({
+    address: profileAddress,
+    username: profileUsername,
+  });
+
+  const homeframeUrl = existingTextRecords[UsernameTextRecordKeys.Frame];
+
+  const farcasterSigner: FarcasterSignerImpersonating = {
     fid: 1,
     status: 'impersonating',
     publicKey: '0x00000000000000000000000000000000000000000000000000000000000000000',
@@ -52,11 +72,12 @@ export default function UsernameProfileSectionBadges() {
   const frameState = useFrame({
     connectedAddress: address,
     // replace with frame URL
-    homeframeUrl: 'https://safaricaster.xyz/',
+    homeframeUrl,
     // corresponds to the name of the route for POST and GET in step 2
     frameActionProxy: '/frames',
     frameGetProxy: '/frames',
     frameContext: fallbackFrameContext,
+    onError: () => setErrorLoadingFrame(true),
     // map to your identity if you have one
     signerState: {
       hasSigner: false,
@@ -76,10 +97,14 @@ export default function UsernameProfileSectionBadges() {
       },
     },
   });
+
+  if (!homeframeUrl || (errorLoadingFrame && !currentWalletIsOwner)) return null;
   return (
     <section>
       <UsernameProfileSectionTitle title="Frames" />
-      <FrameUI frameState={frameState} components={components} theme={theme} />
+      <a href={homeframeUrl} aria-label="link-to-frame" target="_blank" rel="noreferrer">
+        <FrameUI frameState={frameState} components={components} theme={theme} />
+      </a>
     </section>
   );
 }
