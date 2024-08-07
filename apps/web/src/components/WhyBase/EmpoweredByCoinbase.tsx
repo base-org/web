@@ -1,4 +1,5 @@
 import Image from 'apps/web/node_modules/next/image';
+import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import empoweredByCoinbase from './images/EmpoweredByCoinbase.png';
 import section5 from '../TableOfContents/sectionNumbers/section5.svg';
@@ -14,7 +15,7 @@ export default async function EmpoweredByCoinbase() {
       <div className="flex w-full flex-col justify-center gap-8 lg:gap-16 xl:max-w-[550px]">
         <div className="flex flex-row">
           <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white text-base font-bold text-black sm:h-7 sm:w-7 sm:text-xl lg:mr-4 lg:mt-2 lg:h-8 lg:w-8 lg:text-2xl">
-            <Image src={section5} alt="section five" />
+            <Image src={section5 as StaticImport} alt="section five" />
           </span>
           <div className="ml-4">
             <h2 className="text-3xl sm:text-4xl lg:text-6xl">Empowered by Coinbase</h2>

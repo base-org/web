@@ -1,4 +1,5 @@
 import Image from 'apps/web/node_modules/next/image';
+import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import evmCompatibleChains from './images/EVM-compatibility-chains.png';
 import section3 from '../TableOfContents/sectionNumbers/section3.svg';
@@ -17,7 +18,7 @@ export default async function EvmEquivalent() {
       <div className="flex w-full flex-row">
         <div className="flex flex-row">
           <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white text-base font-bold text-black sm:h-7 sm:w-7 sm:text-xl lg:mr-4 lg:mt-2 lg:h-8 lg:w-8 lg:text-2xl">
-            <Image src={section3} alt="section three" />
+            <Image src={section3 as StaticImport} alt="section three" />
           </span>
           <div className="ml-4">
             <h2 className="text-3xl sm:text-4xl lg:text-6xl">

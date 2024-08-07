@@ -55,7 +55,7 @@ export default async function ActiveCommunityOfBuilders() {
         <div className="flex grow flex-col justify-start space-y-6 lg:mx-8 lg:justify-around xl:mx-20">
           <div className="flex flex-row">
             <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white sm:h-7 sm:w-7 lg:mr-4 lg:mt-2 lg:h-8 lg:w-8">
-              <Image src={section1} alt="section one" />
+              <Image src={section1 as StaticImport} alt="section one" />
             </span>
             <div className="ml-4">
               <h2 className="text-3xl sm:text-4xl lg:text-6xl">

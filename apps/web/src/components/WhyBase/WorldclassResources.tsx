@@ -1,5 +1,6 @@
 import Link from 'apps/web/node_modules/next/link';
 import Image from 'apps/web/node_modules/next/image';
+import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import { Icon } from '../Icon/Icon';
 import section4 from '../TableOfContents/sectionNumbers/section4.svg';
@@ -58,7 +59,7 @@ export default async function WorldclassResources() {
       <div className="flex flex-col gap-8 lg:flex-row lg:gap-16">
         <div className="mb-4 flex flex-row">
           <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white text-base font-bold text-black sm:h-7 sm:w-7 sm:text-xl lg:mr-4 lg:mt-2 lg:h-8 lg:w-8 lg:text-2xl">
-            <Image src={section4} alt="section four" />
+            <Image src={section4 as StaticImport} alt="section four" />
           </span>
           <div className="ml-4 max-w-[750px]">
             <h2 className="text-3xl sm:text-4xl lg:mb-0 lg:text-6xl">

@@ -1,4 +1,5 @@
 import Image from 'apps/web/node_modules/next/image';
+import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import { ButtonVariants } from '../Button/Button';
 import section2 from '../TableOfContents/sectionNumbers/section2.svg';
@@ -41,7 +42,7 @@ export default async function PerformanceAndCost() {
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-12">
         <div className="flex flex-row">
           <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white sm:h-7 sm:w-7 lg:mr-4 lg:mt-2 lg:h-8 lg:w-8">
-            <Image src={section2} alt="section three" />
+            <Image src={section2 as StaticImport} alt="section three" />
           </span>
           <div className="ml-4 max-w-[750px]">
             <h2 className="text-3xl sm:text-4xl lg:text-6xl">
