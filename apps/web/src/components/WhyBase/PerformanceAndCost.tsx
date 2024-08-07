@@ -83,22 +83,23 @@ export default async function PerformanceAndCost() {
               index !== 0 ? 'border-t-2 sm:border-t-0' : ''
             }`}
           >
-            <span className="text-5xl text-gray-40 sm:text-6xl lg:text-8xl">
-              {stat.value}
-              <span className="text-2xl sm:text-3xl lg:text-4xl">{stat.units ?? ''}</span>
-            </span>
-            <span className="text-center text-sm sm:text-base">
-              {stat.description}
-              <span className="ml-1 align-super text-xs">{stat.footnote ?? ''}</span>
-            </span>
+            <div className="flex flex-col items-start">
+              <span className="text-5xl text-gray-40 sm:text-6xl lg:text-8xl">
+                {stat.value}
+                <span className="ml-1 text-2xl sm:text-3xl lg:ml-2 lg:text-4xl">
+                  {stat.units ?? ''}
+                </span>
+              </span>
+              <p className="mt-1 text-sm sm:text-base lg:mt-2">
+                {stat.description}
+                <span className="ml-1 align-super text-xs">{stat.footnote ?? ''}</span>
+              </p>
+            </div>
           </div>
         ))}
       </div>
       <span className="mt-6 text-xs text-palette-backgroundAlternate sm:mt-8">
-        Figures as of 7/30/2024.
-      </span>
-      <span className="text-xs text-palette-backgroundAlternate">
-        Sources: 1. L2Beat 2. Rollup.wtf
+        Figures as of 7/30/2024. Sources: 1. L2Beat 2. Rollup.wtf
       </span>
     </div>
   );
