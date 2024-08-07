@@ -1,6 +1,5 @@
 'use client';
 import dynamic from 'next/dynamic';
-
 import { Transition } from '@headlessui/react';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import RegistrationBackground from 'apps/web/src/components/Basenames/RegistrationBackground';
@@ -115,7 +114,7 @@ export function RegistrationFlow() {
 
   return (
     <>
-      {false && isDevelopment && <RegistrationStateSwitcherDynamic />}
+      {true && isDevelopment && <RegistrationStateSwitcherDynamic />}
       <main className={mainClasses}>
         {/* 1. Brand & Search */}
         <Transition

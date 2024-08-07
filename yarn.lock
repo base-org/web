@@ -383,6 +383,7 @@ __metadata:
     jose: ^5.4.1
     jsonwebtoken: ^9.0.2
     kysely: ^0.27.3
+    lottie-web: ^5.12.2
     next: ^14.2.5
     node-fetch: ^3.3.0
     permissionless: ^0.1.41
@@ -17740,6 +17741,13 @@ __metadata:
   bin:
     loose-envify: cli.js
   checksum: 6517e24e0cad87ec9888f500c5b5947032cdfe6ef65e1c1936a0c48a524b81e65542c9c3edc91c97d5bddc806ee2a985dbc79be89215d613b1de5db6d1cfe6f4
+  languageName: node
+  linkType: hard
+
+"lottie-web@npm:^5.12.2":
+  version: 5.12.2
+  resolution: "lottie-web@npm:5.12.2"
+  checksum: af5bc3bc405fd760de8b17a36158d5a8c3e8c586c711d0c63681ddf056b65bc6b54ea36b1fcad782fb02dbe12e696a40e0ba72daf41b8f10ab5b5d1113793636
   languageName: node
   linkType: hard
 
