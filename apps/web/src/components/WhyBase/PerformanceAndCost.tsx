@@ -44,7 +44,7 @@ export default async function PerformanceAndCost() {
           <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white sm:h-7 sm:w-7 lg:mr-4 lg:mt-2 lg:h-8 lg:w-8">
             <Image src={section2 as StaticImport} alt="section three" />
           </span>
-          <div className="ml-4 max-w-[750px]">
+          <div className="ml-4 max-w-[750px] w-full">
             <h2 className="text-3xl sm:text-4xl lg:text-6xl">
               Best-in-class performance & cost efficiency
             </h2>
@@ -52,13 +52,13 @@ export default async function PerformanceAndCost() {
               Base leads the way with the lowest transaction costs, highest throughput, and top TPS
               among Layer 2 solutions.
             </p>
-            <div className="mt-4 flex flex-row justify-start gap-4 lg:gap-8">
+            <div className="mt-4 flex flex-col sm:flex-row justify-start gap-4 lg:gap-8">
               <ButtonWithLinkAndEventLogging
                 href="https://l2beat.com/scaling/costs"
                 eventName="perf_and_cost_l2beat"
                 target="_blank"
                 rel="noreferrer noopener"
-                buttonClassNames="uppercase w-full sm:w-auto font-mono font-medium rounded-[3px]"
+                buttonClassNames="uppercase sm:w-auto font-mono font-medium rounded-[3px]"
               >
                 L2Beat
               </ButtonWithLinkAndEventLogging>
@@ -68,7 +68,7 @@ export default async function PerformanceAndCost() {
                 target="_blank"
                 rel="noreferrer noopener"
                 variant={ButtonVariants.Secondary}
-                buttonClassNames="uppercase w-full sm:w-auto font-mono font-medium rounded-[3px]"
+                buttonClassNames="uppercase sm:w-auto font-mono font-medium rounded-[3px]"
               >
                 rollup.wtf
               </ButtonWithLinkAndEventLogging>
