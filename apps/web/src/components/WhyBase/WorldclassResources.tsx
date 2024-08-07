@@ -45,7 +45,7 @@ const resources: Resource[] = [
   },
 ];
 
-const WORLDCLASS_RESOURCES_SECTION_ID = 'worldClassTools';
+export const WORLDCLASS_RESOURCES_SECTION_ID = 'worldClassTools';
 
 export default async function WorldclassResources() {
   return (
@@ -54,32 +54,34 @@ export default async function WorldclassResources() {
       className="mb-6 mt-6 flex w-full max-w-[1440px] flex-col px-12 sm:mb-8 sm:mt-8 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
     >
       <div className="flex flex-col gap-8 lg:flex-row lg:gap-16">
-        <div className="lg:w-1/2">
-          <h2 className="mb-4 flex flex-row font-display text-3xl sm:text-4xl lg:mb-0 lg:text-6xl">
-            <span>4.</span>
-            <span className="ml-4">World-class tools to help you build and grow your project</span>
-          </h2>
-        </div>
-        <div className="lg:w-1/2">
-          <span className="text-base sm:text-lg">
-            {`Access top-tier resources to simplify development, enhance your users' experience, and
-            accelerate your project's growth.`}
+        <div className="mb-4 flex flex-row">
+          <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white text-base font-bold text-black sm:h-7 sm:w-7 sm:text-xl lg:mr-4 lg:mt-2 lg:h-8 lg:w-8 lg:text-2xl">
+            4
           </span>
-          <div>
-            <ButtonWithLinkAndEventLogging
-              href="https://docs.base.org/docs"
-              eventName="worldclass_resources_start_building"
-              target="_blank"
-              rel="noreferrer noopener"
-              linkClassNames="inline-block"
-              buttonClassNames="mt-6 lg:mt-8 uppercase font-mono font-medium w-full sm:w-auto"
-            >
-              Start Building
-            </ButtonWithLinkAndEventLogging>
+          <div className="ml-4 max-w-[750px]">
+            <h2 className="text-3xl sm:text-4xl lg:mb-0 lg:text-6xl">
+              World-class tools to help you build and grow your project
+            </h2>
+            <p className="my-2 text-base sm:text-lg lg:my-4 xl:my-6">
+              {`Access top-tier resources to simplify development, enhance your users' experience, and
+                accelerate your project's growth.`}
+            </p>
+            <div>
+              <ButtonWithLinkAndEventLogging
+                href="https://docs.base.org/docs"
+                eventName="worldclass_resources_start_building"
+                target="_blank"
+                rel="noreferrer noopener"
+                linkClassNames="inline-block"
+                buttonClassNames="uppercase font-mono font-medium mt-4"
+              >
+                Start Building
+              </ButtonWithLinkAndEventLogging>
+            </div>
           </div>
         </div>
       </div>
-      <div className="mt-10 flex flex-row flex-wrap justify-center gap-4 sm:mt-12 sm:gap-6 lg:mt-16 lg:gap-8">
+      <div className="mt-10 flex flex-row flex-wrap gap-4 sm:mt-12 sm:gap-6 lg:mt-16 lg:gap-8">
         {resources.map((resource, index) => (
           <ResourceCard
             key={resource.title}
