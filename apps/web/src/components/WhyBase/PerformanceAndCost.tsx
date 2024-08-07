@@ -57,7 +57,7 @@ export default async function PerformanceAndCost() {
                 eventName="perf_and_cost_l2beat"
                 target="_blank"
                 rel="noreferrer noopener"
-                buttonClassNames="uppercase w-full sm:w-auto font-mono font-medium "
+                buttonClassNames="uppercase w-full sm:w-auto font-mono font-medium rounded-[3px]"
               >
                 L2Beat
               </ButtonWithLinkAndEventLogging>
@@ -67,7 +67,7 @@ export default async function PerformanceAndCost() {
                 target="_blank"
                 rel="noreferrer noopener"
                 variant={ButtonVariants.Secondary}
-                buttonClassNames="uppercase font-mono font-medium w-full sm:w-auto"
+                buttonClassNames="uppercase w-full sm:w-auto font-mono font-medium rounded-[3px]"
               >
                 rollup.wtf
               </ButtonWithLinkAndEventLogging>

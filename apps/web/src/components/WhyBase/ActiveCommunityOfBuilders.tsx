@@ -74,7 +74,7 @@ export default async function ActiveCommunityOfBuilders() {
                 target="_blank"
                 rel="noreferrer noopener"
                 linkClassNames="inline-block"
-                buttonClassNames="uppercase font-mono font-medium mt-4 "
+                buttonClassNames="uppercase font-mono font-medium mt-4 rounded-[3px]"
               >
                 Go To Discord
               </ButtonWithLinkAndEventLogging>

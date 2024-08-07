@@ -21,7 +21,7 @@ export default async function BuildWithUs() {
             eventName="start_building_with_us_get_started"
             target="_blank"
             rel="noreferrer noopener"
-            buttonClassNames="uppercase font-mono font-medium w-full sm:w-auto text-xs sm:text-sm md:text-base px-2 py-1 sm:px-8 sm:py-4"
+            buttonClassNames="uppercase font-mono font-medium w-full sm:w-auto text-xs sm:text-sm md:text-base px-2 py-1 sm:px-8 sm:py-4 rounded-[3px]"
           >
             Get Started
           </ButtonWithLinkAndEventLogging>
@@ -31,7 +31,7 @@ export default async function BuildWithUs() {
             target="_blank"
             rel="noreferrer noopener"
             variant={ButtonVariants.Secondary}
-            buttonClassNames="uppercase font-mono font-medium w-full sm:w-auto text-xs sm:text-sm md:text-base px-2 py-1 sm:px-8 sm:py-4"
+            buttonClassNames="uppercase font-mono font-medium w-full sm:w-auto text-xs sm:text-sm md:text-base px-2 py-1 sm:px-8 sm:py-4 rounded-[3px]"
           >
             View Our Docs
           </ButtonWithLinkAndEventLogging>
