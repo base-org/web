@@ -1,26 +1,31 @@
 import TableOfContents, { Section } from '../TableOfContents/TableOfContents';
 import WhyBaseHeroBackground from './images/why-base-hero-bg.png';
+import { COMMUNITY_OF_BUILDERS_SECTION_ID } from './ActiveCommunityOfBuilders';
+import { PERFORMANCE_AND_COST_SECTION_ID } from './PerformanceAndCost';
+import { EVM_COMPATIBILITY_SECTION_ID } from './EvmEquivalent';
+import { WORLDCLASS_RESOURCES_SECTION_ID } from './WorldclassResources';
+import { EMPOWERED_BY_COINBASE_SECTION_ID } from './EmpoweredByCoinbase';
 
 const headerReasons: Section[] = [
   {
     title: 'Community of Builders',
-    id: 'communityOfBuilders',
+    id: COMMUNITY_OF_BUILDERS_SECTION_ID,
   },
   {
     title: 'Performance & cost efficiency',
-    id: 'performanceAndCost',
+    id: PERFORMANCE_AND_COST_SECTION_ID,
   },
   {
     title: 'EVM compatibility',
-    id: 'evmCompatibility',
+    id: EVM_COMPATIBILITY_SECTION_ID,
   },
   {
     title: 'World class tools',
-    id: 'worldClassTools',
+    id: WORLDCLASS_RESOURCES_SECTION_ID,
   },
   {
     title: 'Empowered by Coinbase',
-    id: 'empoweredByCoinbase',
+    id: EMPOWERED_BY_COINBASE_SECTION_ID,
   },
 ];
 
