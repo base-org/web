@@ -1,12 +1,13 @@
 'use client';
 
 import { useCallback } from 'react';
-
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-
 import { useAnalytics } from 'apps/web/contexts/Analytics';
-
 import { ButtonWithLink, ButtonWithLinkProps } from './ButtonWithLink';
+
+type ButtonWithLinkAndEventLogProps = Omit<ButtonWithLinkProps, 'onClick'> & {
+  eventName: string;
+};
 
 export function ButtonWithLinkAndEventLogging({
   eventName,
@@ -20,7 +21,3 @@ export function ButtonWithLinkAndEventLogging({
 
   return <ButtonWithLink onClick={handleClick} {...buttonWithLinkProps} />;
 }
-
-type ButtonWithLinkAndEventLogProps = Omit<ButtonWithLinkProps, 'onClick'> & {
-  eventName: string;
-};

@@ -1,7 +1,5 @@
 import Image from 'apps/web/node_modules/next/image';
-
-import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
-
+import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import evmCompatibleChains from './images/EVM-compatibility-chains.png';
 
 export default async function EvmEquivalent() {

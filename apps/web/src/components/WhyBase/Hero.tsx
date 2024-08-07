@@ -1,6 +1,28 @@
-import TableOfContents, { Section } from 'apps/web/src/components/TableOfContents/TableOfContents';
-
+import TableOfContents, { Section } from '../TableOfContents/TableOfContents';
 import WhyBaseHeroBackground from './images/why-base-hero-bg.png';
+
+const headerReasons: Section[] = [
+  {
+    title: 'Community of Builders',
+    id: 'communityOfBuilders',
+  },
+  {
+    title: 'Performance & cost efficiency',
+    id: 'performanceAndCost',
+  },
+  {
+    title: 'EVM compatibility',
+    id: 'evmCompatibility',
+  },
+  {
+    title: 'World class tools',
+    id: 'worldClassTools',
+  },
+  {
+    title: 'Empowered by Coinbase',
+    id: 'empoweredByCoinbase',
+  },
+];
 
 export default async function Hero() {
   const backgroundStyles = {
@@ -28,26 +50,3 @@ export default async function Hero() {
     </div>
   );
 }
-
-const headerReasons: Section[] = [
-  {
-    title: 'Community of Builders',
-    id: 'communityOfBuilders',
-  },
-  {
-    title: 'Performance & cost efficiency',
-    id: 'performanceAndCost',
-  },
-  {
-    title: 'EVM compatibility',
-    id: 'evmCompatibility',
-  },
-  {
-    title: 'World class tools',
-    id: 'worldClassTools',
-  },
-  {
-    title: 'Empowered by Coinbase',
-    id: 'empoweredByCoinbase',
-  },
-];

@@ -1,5 +1,4 @@
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
-
 import { Divider } from 'apps/web/src/components/Divider/Divider';
 import Hero from 'apps/web/src/components/WhyBase/Hero';
 import ActiveCommunityOfBuilders from 'apps/web/src/components/WhyBase/ActiveCommunityOfBuilders';

@@ -1,14 +1,43 @@
 import Link from 'apps/web/node_modules/next/link';
 import Image from 'apps/web/node_modules/next/image';
 import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
-
-import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
-
+import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import aerodromeImage from './images/aerodrome.svg';
 import doodlesImage from './images/doodles.svg';
 import morphoImage from './images/morpho.svg';
+import { partners, Partner } from './partners';
 
-import { partners, Partner } from 'apps/web/src/components/WhyBase/partners';
+type CommunityCardType = {
+  title: string;
+  href: string;
+  description: string;
+  tag: string;
+  img: StaticImport;
+};
+
+const communityCards: CommunityCardType[] = [
+  {
+    title: 'Aerodrome',
+    href: 'aerodrome.finance',
+    description: 'A next-generation DeFi protocol and AMM with friendly user experience',
+    tag: 'defi',
+    img: aerodromeImage as StaticImport,
+  },
+  {
+    title: 'Doodles',
+    href: 'doodles.app',
+    description: 'Immersive storytelling through the creation of live and digital experiences',
+    tag: 'nft',
+    img: doodlesImage as StaticImport,
+  },
+  {
+    title: 'Morpho',
+    href: 'morpho.org',
+    description: 'A permissionless and non-custodial lending protocol',
+    tag: 'defi',
+    img: morphoImage as StaticImport,
+  },
+];
 
 export default async function ActiveCommunityOfBuilders() {
   return (
@@ -49,7 +78,7 @@ export default async function ActiveCommunityOfBuilders() {
       <div className="mt-10 sm:mt-12 lg:mt-16">
         <span className="text-lg sm:text-xl">Community Spotlight</span>
         <div className="mt-4 flex flex-col flex-wrap justify-between gap-4 sm:flex-row">
-          {communityCards?.map((card) => (
+          {communityCards.map((card) => (
             <CommunityCard key={card.href} card={card} />
           ))}
         </div>
@@ -96,35 +125,3 @@ async function CommunityCard({ card }: { card: CommunityCardType }) {
     </div>
   );
 }
-
-const communityCards: CommunityCardType[] = [
-  {
-    title: 'Aerodrome',
-    href: 'aerodrome.finance',
-    description: 'A next-generation DeFi protocol and AMM with friendly user experience',
-    tag: 'defi',
-    img: aerodromeImage as StaticImport,
-  },
-  {
-    title: 'Doodles',
-    href: 'doodles.app',
-    description: 'Immersive storytelling through the creation of live and digital experiences',
-    tag: 'nft',
-    img: doodlesImage as StaticImport,
-  },
-  {
-    title: 'Morpho',
-    href: 'morpho.org',
-    description: 'A permissionless and non-custodial lending protocol',
-    tag: 'defi',
-    img: morphoImage as StaticImport,
-  },
-];
-
-type CommunityCardType = {
-  title: string;
-  href: string;
-  description: string;
-  tag: string;
-  img: StaticImport;
-};

@@ -1,76 +1,16 @@
 import Link from 'apps/web/node_modules/next/link';
-
-import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
+import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import { Icon } from '../Icon/Icon';
 
-export default async function WorldclassResources() {
-  return (
-    <div
-      id="worldClassTools"
-      className="mb-6 mt-6 flex w-full max-w-[1440px] flex-col px-12 sm:mb-8 sm:mt-8 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
-    >
-      <div className="flex flex-col gap-8 lg:flex-row lg:gap-16">
-        <div className="lg:w-1/2">
-          <h2 className="mb-4 flex flex-row font-display text-3xl sm:text-4xl lg:mb-0 lg:text-6xl">
-            <span>4.</span>
-            <span className="ml-4">World-class tools to help you build and grow your project</span>
-          </h2>
-        </div>
-        <div className="lg:w-1/2">
-          <span className="text-base sm:text-lg">
-            {`Access top-tier resources to simplify development, enhance your users' experience, and
-            accelerate your project's growth.`}
-          </span>
-          <div>
-            <ButtonWithLinkAndEventLogging
-              href="https://docs.base.org/docs"
-              eventName="worldclass_resources_start_building"
-              target="_blank"
-              rel="noreferrer noopener"
-              linkClassNames="inline-block"
-              buttonClassNames="mt-6 lg:mt-8 uppercase font-mono font-medium w-full sm:w-auto"
-            >
-              Start Building
-            </ButtonWithLinkAndEventLogging>
-          </div>
-        </div>
-      </div>
-      <div className="mt-10 flex flex-row flex-wrap justify-center gap-4 sm:mt-12 sm:gap-6 lg:mt-16 lg:gap-8">
-        {resources?.map((resource, index) => (
-          <ResourceCard
-            key={resource.title}
-            counter={index}
-            title={resource.title}
-            description={resource.description}
-            href={resource.href}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
+type Resource = {
+  title: string;
+  description: string;
+  href: string;
+};
 
-async function ResourceCard({ counter, title, description, href }: ResourceCardProps) {
-  return (
-    <Link
-      href={href}
-      target="_blank"
-      rel="noreferrer noopener"
-      className="w-full sm:w-[calc(50%-12px)] lg:w-[330px]"
-    >
-      <div className="flex h-[180px] w-full flex-col gap-6 bg-gray-90 p-4 sm:h-[230px] sm:gap-8 sm:p-6 lg:h-[180px]">
-        <div className="flex justify-between">
-          <span>{String(counter + 1).padStart(2, '0')}</span>
-          <Icon name="external-link" />
-        </div>
-        <div>
-          <h3 className="mb-2 font-mono text-lg uppercase sm:text-xl">{title}</h3>
-          <span className="font-sans text-sm sm:text-base">{description}</span>
-        </div>
-      </div>
-    </Link>
-  );
-}
+type ResourceCardProps = Resource & {
+  counter: number;
+};
 
 const resources: Resource[] = [
   {
@@ -105,13 +45,71 @@ const resources: Resource[] = [
   },
 ];
 
-type Resource = {
-  title: string;
-  description: string;
-  href: string;
-};
+export default async function WorldclassResources() {
+  return (
+    <div
+      id="worldClassTools"
+      className="mb-6 mt-6 flex w-full max-w-[1440px] flex-col px-12 sm:mb-8 sm:mt-8 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
+    >
+      <div className="flex flex-col gap-8 lg:flex-row lg:gap-16">
+        <div className="lg:w-1/2">
+          <h2 className="mb-4 flex flex-row font-display text-3xl sm:text-4xl lg:mb-0 lg:text-6xl">
+            <span>4.</span>
+            <span className="ml-4">World-class tools to help you build and grow your project</span>
+          </h2>
+        </div>
+        <div className="lg:w-1/2">
+          <span className="text-base sm:text-lg">
+            {`Access top-tier resources to simplify development, enhance your users' experience, and
+            accelerate your project's growth.`}
+          </span>
+          <div>
+            <ButtonWithLinkAndEventLogging
+              href="https://docs.base.org/docs"
+              eventName="worldclass_resources_start_building"
+              target="_blank"
+              rel="noreferrer noopener"
+              linkClassNames="inline-block"
+              buttonClassNames="mt-6 lg:mt-8 uppercase font-mono font-medium w-full sm:w-auto"
+            >
+              Start Building
+            </ButtonWithLinkAndEventLogging>
+          </div>
+        </div>
+      </div>
+      <div className="mt-10 flex flex-row flex-wrap justify-center gap-4 sm:mt-12 sm:gap-6 lg:mt-16 lg:gap-8">
+        {resources.map((resource, index) => (
+          <ResourceCard
+            key={resource.title}
+            counter={index}
+            title={resource.title}
+            description={resource.description}
+            href={resource.href}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
-// TODO See if you can refactor so that ResourceCardProps always shows all of the properties
-type ResourceCardProps = Resource & {
-  counter: number;
-};
+async function ResourceCard({ counter, title, description, href }: ResourceCardProps) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+      className="w-full sm:w-[calc(50%-12px)] lg:w-[330px]"
+    >
+      <div className="flex h-[180px] w-full flex-col gap-6 bg-gray-90 p-4 sm:h-[230px] sm:gap-8 sm:p-6 lg:h-[180px]">
+        <div className="flex justify-between">
+          <span>{String(counter + 1).padStart(2, '0')}</span>
+          <Icon name="external-link" />
+        </div>
+        <div>
+          <h3 className="mb-2 font-mono text-lg uppercase sm:text-xl">{title}</h3>
+          <span className="font-sans text-sm sm:text-base">{description}</span>
+        </div>
+      </div>
+    </Link>
+  );
+}

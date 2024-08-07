@@ -1,8 +1,16 @@
 'use client';
 
 import Link, { LinkProps } from 'apps/web/node_modules/next/link';
+import { Button, ButtonProps } from './Button';
 
-import { Button, ButtonProps, ButtonVariants, ButtonSizes } from './Button';
+export type ButtonWithLinkProps = Omit<ButtonProps, 'href' | 'className'> & {
+  href: string;
+  linkClassNames?: string;
+  linkProps?: Omit<LinkProps, 'href' | 'passHref'>;
+  target?: string;
+  rel?: string;
+  buttonClassNames?: string;
+};
 
 export function ButtonWithLink({
   href,
@@ -43,14 +51,3 @@ export function ButtonWithLink({
     </Link>
   );
 }
-
-export type ButtonWithLinkProps = Omit<ButtonProps, 'href' | 'variant' | 'size' | 'className'> & {
-  href: string;
-  linkClassNames?: string;
-  linkProps?: Omit<LinkProps, 'href' | 'passHref'>;
-  target?: string;
-  rel?: string;
-  variant?: ButtonVariants;
-  size?: ButtonSizes;
-  buttonClassNames?: string;
-};

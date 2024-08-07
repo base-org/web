@@ -1,5 +1,32 @@
-import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
-import { ButtonVariants } from 'apps/web/src/components/Button/Button';
+import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
+import { ButtonVariants } from '../Button/Button';
+
+type Stat = {
+  value: string;
+  description: string;
+  footnote?: number;
+  units?: string;
+};
+
+const stats: Stat[] = [
+  {
+    value: '$0.002',
+    description: 'Lowest cost per txs (among L2s)',
+    footnote: 1,
+  },
+  {
+    value: '49.5',
+    units: 'TPS',
+    description: 'Best txn efficiency (among L2s)',
+    footnote: 2,
+  },
+  {
+    value: '9.14',
+    units: 'Mgas/Sec',
+    description: 'Highest throughput (among L2s)',
+    footnote: 2,
+  },
+];
 
 export default async function PerformanceAndCost() {
   return (
@@ -41,7 +68,7 @@ export default async function PerformanceAndCost() {
         </div>
       </div>
       <div className="mt-10 flex flex-col justify-center sm:mt-12 sm:divide-y-2 md:flex-row md:divide-x-2 md:divide-y-0 lg:mt-16">
-        {stats?.map((stat, index) => (
+        {stats.map((stat, index) => (
           <div
             key={stat.description}
             className={`flex w-full flex-col items-center justify-center gap-2 p-4 sm:gap-4 sm:p-6 lg:p-8 ${
@@ -68,30 +95,3 @@ export default async function PerformanceAndCost() {
     </div>
   );
 }
-
-const stats: Stat[] = [
-  {
-    value: '$0.002',
-    description: 'Lowest cost per txs (among L2s)',
-    footnote: 1,
-  },
-  {
-    value: '49.5',
-    units: 'TPS',
-    description: 'Best txn efficiency (among L2s)',
-    footnote: 2,
-  },
-  {
-    value: '9.14',
-    units: 'Mgas/Sec',
-    description: 'Highest throughput (among L2s)',
-    footnote: 2,
-  },
-];
-
-type Stat = {
-  value: string;
-  description: string;
-  footnote?: number;
-  units?: string;
-};

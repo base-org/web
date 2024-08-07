@@ -1,13 +1,11 @@
-import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
-import { ButtonVariants } from 'apps/web/src/components/Button/Button';
-
+import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
+import { ButtonVariants } from '../Button/Button';
 import buildWithUs from './images/BuildWithUs.png';
 
-const imageBackgroundStyles = {
-  backgroundImage: `url('${buildWithUs.src}')`,
-};
-
 export default async function BuildWithUs() {
+  const imageBackgroundStyles = {
+    backgroundImage: `url('${buildWithUs.src}')`,
+  };
   return (
     <div className="mb-10 mt-6 w-full max-w-[1440px] px-12 sm:mb-16 sm:mt-8 sm:px-16 lg:mb-20 lg:mt-10 lg:px-24">
       <div
