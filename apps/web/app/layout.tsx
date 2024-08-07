@@ -1,9 +1,7 @@
 import './global.css';
 
 import AppProviders from 'apps/web/app/AppProviders';
-
 import localFont from 'next/font/local';
-import { Footer } from 'apps/web/src/components/Layout/Footer/Footer';
 import DatadogInit from 'apps/web/app/datadog';
 
 const coinbaseDisplay = localFont({
@@ -93,7 +91,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <AppProviders>
           <DatadogInit />
           {children}
-          <Footer />
         </AppProviders>
       </body>
     </html>

@@ -1,4 +1,5 @@
 import ErrorsProvider from 'apps/web/contexts/Errors';
+import { Footer } from 'apps/web/src/components/Layout/Footer/Footer';
 import UsernameNav from 'apps/web/src/components/Layout/UsernameNav';
 
 import type { Metadata } from 'next';
@@ -31,6 +32,7 @@ export default async function BasenameLayout({
         <UsernameNav />
         {children}
       </div>
+      <Footer />
     </ErrorsProvider>
   );
 }

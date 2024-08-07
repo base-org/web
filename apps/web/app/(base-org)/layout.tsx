@@ -1,3 +1,4 @@
+import { Footer } from 'apps/web/src/components/Layout/Footer/Footer';
 import Nav from 'apps/web/src/components/Layout/Nav/Nav';
 
 import type { Metadata } from 'next';
@@ -30,6 +31,7 @@ export default async function BaseOrgLayout({
     <div className="max-w-screen flex min-h-screen flex-col">
       <Nav />
       {children}
+      <Footer />
     </div>
   );
 }
