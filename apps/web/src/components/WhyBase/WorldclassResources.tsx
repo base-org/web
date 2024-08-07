@@ -1,6 +1,7 @@
 import Link from 'apps/web/node_modules/next/link';
 import Image from 'apps/web/node_modules/next/image';
 import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
+import { whyBaseSharedClassNames } from '../../../app/(base-org)/why-base/page';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import { Icon } from '../Icon/Icon';
 import section4 from '../TableOfContents/sectionNumbers/section4.svg';
@@ -54,18 +55,18 @@ export default async function WorldclassResources() {
   return (
     <div
       id={WORLDCLASS_RESOURCES_SECTION_ID}
-      className="mb-6 mt-6 flex w-full max-w-[1440px] flex-col px-12 sm:mb-8 sm:mt-8 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
+      className={whyBaseSharedClassNames.section}
     >
       <div className="flex flex-col gap-8 lg:flex-row lg:gap-16">
         <div className="mb-4 flex flex-row">
-          <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white text-base font-bold text-black sm:h-7 sm:w-7 sm:text-xl lg:mr-4 lg:mt-2 lg:h-8 lg:w-8 lg:text-2xl">
+          <span className={whyBaseSharedClassNames.sectionNumberIcon}>
             <Image src={section4 as StaticImport} alt="section four" />
           </span>
           <div className="ml-4 max-w-[750px]">
-            <h2 className="text-3xl sm:text-4xl lg:mb-0 lg:text-6xl">
+            <h2 className={whyBaseSharedClassNames.title}>
               World-class tools to help you build and grow your project
             </h2>
-            <p className="my-2 text-base sm:text-lg lg:my-4 xl:my-6">
+            <p className={whyBaseSharedClassNames.bodyText}>
               {`Access top-tier resources to simplify development, enhance your users' experience, and
                 accelerate your project's growth.`}
             </p>
@@ -76,7 +77,7 @@ export default async function WorldclassResources() {
                 target="_blank"
                 rel="noreferrer noopener"
                 linkClassNames="inline-block"
-                buttonClassNames="uppercase font-mono font-medium mt-4 rounded-[3px]"
+                buttonClassNames={whyBaseSharedClassNames.ctaButton}
               >
                 Start Building
               </ButtonWithLinkAndEventLogging>

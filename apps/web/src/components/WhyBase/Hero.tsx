@@ -41,7 +41,7 @@ export default async function Hero() {
       <div className="mb-2 mt-12 flex w-full max-w-[1440px] flex-col justify-start px-12 sm:mb-4 sm:mt-16 sm:px-16 lg:mb-6 lg:mt-[96px] lg:px-24">
         <div className="my-8 grid grid-cols-1 gap-8 sm:my-12 lg:my-20 lg:grid-cols-[1fr_1fr] lg:gap-0">
           <div className="max-w-full lg:max-w-[500px]">
-            <h1 className="mb-6 font-display text-4xl leading-tight sm:text-5xl lg:mb-10 lg:text-6xl lg:leading-none">
+            <h1 className="mb-6 font-display text-4xl leading-tight sm:text-5xl lg:mb-10 lg:text-7xl lg:leading-none">
               5 reasons to choose Base
             </h1>
             <span className="text-lg sm:text-xl lg:text-2xl">

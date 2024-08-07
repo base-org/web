@@ -1,5 +1,6 @@
 import Image from 'apps/web/node_modules/next/image';
 import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
+import { whyBaseSharedClassNames } from '../../../app/(base-org)/why-base/page';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import { ButtonVariants } from '../Button/Button';
 import section2 from '../TableOfContents/sectionNumbers/section2.svg';
@@ -37,28 +38,28 @@ export default async function PerformanceAndCost() {
   return (
     <div
       id={PERFORMANCE_AND_COST_SECTION_ID}
-      className="mb-6 mt-10 flex w-full max-w-[1440px] flex-col px-12 sm:mb-8 sm:mt-8 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
+      className={whyBaseSharedClassNames.section}
     >
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-12">
         <div className="flex flex-row">
-          <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white sm:h-7 sm:w-7 lg:mr-4 lg:mt-2 lg:h-8 lg:w-8">
+          <span className={whyBaseSharedClassNames.sectionNumberIcon}>
             <Image src={section2 as StaticImport} alt="section three" />
           </span>
           <div className="ml-4 max-w-[750px] w-full">
-            <h2 className="text-3xl sm:text-4xl lg:text-6xl">
+            <h2 className={whyBaseSharedClassNames.title}>
               Best-in-class performance & cost efficiency
             </h2>
-            <p className="my-2 text-base sm:text-lg lg:my-4 xl:my-6">
+            <p className={whyBaseSharedClassNames.bodyText}>
               Base leads the way with the lowest transaction costs, highest throughput, and top TPS
               among Layer 2 solutions.
             </p>
-            <div className="mt-4 flex flex-col sm:flex-row justify-start gap-4 lg:gap-8">
+            <div className="mt-4 flex flex-col sm:flex-row justify-start sm:gap-4 lg:gap-8">
               <ButtonWithLinkAndEventLogging
                 href="https://l2beat.com/scaling/costs"
                 eventName="perf_and_cost_l2beat"
                 target="_blank"
                 rel="noreferrer noopener"
-                buttonClassNames="uppercase sm:w-auto font-mono font-medium rounded-[3px]"
+                buttonClassNames={whyBaseSharedClassNames.ctaButton}
               >
                 L2Beat
               </ButtonWithLinkAndEventLogging>
@@ -68,7 +69,7 @@ export default async function PerformanceAndCost() {
                 target="_blank"
                 rel="noreferrer noopener"
                 variant={ButtonVariants.Secondary}
-                buttonClassNames="uppercase sm:w-auto font-mono font-medium rounded-[3px]"
+                buttonClassNames={whyBaseSharedClassNames.ctaButton}
               >
                 rollup.wtf
               </ButtonWithLinkAndEventLogging>
@@ -76,7 +77,7 @@ export default async function PerformanceAndCost() {
           </div>
         </div>
       </div>
-      <div className="mt-10 flex flex-col justify-center sm:mt-12 sm:divide-y-2 md:flex-row md:divide-x-2 md:divide-y-0 lg:mt-16">
+      <div className="mt-10 flex flex-col justify-center sm:mt-12 sm:divide-y-2 md:flex-row md:divide-x-2 md:divide-y-0 lg:mt-16 mx-10">
         {stats.map((stat, index) => (
           <div
             key={stat.description}
@@ -85,7 +86,7 @@ export default async function PerformanceAndCost() {
             }`}
           >
             <div className="flex flex-col items-start">
-              <span className="text-5xl text-gray-40 sm:text-6xl lg:text-8xl">
+              <span className="text-5xl text-gray-40 sm:text-5xl lg:text-6xl xl:text-8xl">
                 {stat.value}
                 <span className="ml-1 text-2xl sm:text-3xl lg:ml-2 lg:text-4xl">
                   {stat.units ?? ''}

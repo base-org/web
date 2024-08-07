@@ -1,6 +1,7 @@
 import Link from 'apps/web/node_modules/next/link';
 import Image from 'apps/web/node_modules/next/image';
 import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
+import { whyBaseSharedClassNames } from '../../../app/(base-org)/why-base/page';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import section1 from '../TableOfContents/sectionNumbers/section1.svg';
 import aerodromeImage from './images/aerodrome.svg';
@@ -46,7 +47,7 @@ export default async function ActiveCommunityOfBuilders() {
   return (
     <div
       id={COMMUNITY_OF_BUILDERS_SECTION_ID}
-      className="mt-10 flex w-full max-w-[1440px] flex-col px-12 pb-6 sm:mt-16 sm:px-16 sm:pb-8 lg:mt-20 lg:px-24 lg:pb-10"
+      className={`${whyBaseSharedClassNames.section} sm:pt-8 lg:pt-10`}
     >
       <div className="flex flex-col justify-between md:grid md:grid-cols-[1fr_1fr]">
         <div className="mr-8 hidden md:block">
@@ -54,17 +55,17 @@ export default async function ActiveCommunityOfBuilders() {
         </div>
         <div className="flex grow flex-col justify-start space-y-6 lg:mx-8 lg:justify-around xl:mx-20">
           <div className="flex flex-row">
-            <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white sm:h-7 sm:w-7 lg:mr-4 lg:mt-2 lg:h-8 lg:w-8">
+            <span className={whyBaseSharedClassNames.sectionNumberIcon}>
               <Image src={section1 as StaticImport} alt="section one" />
             </span>
             <div className="ml-4">
-              <h2 className="text-3xl sm:text-4xl lg:text-6xl">
+              <h2 className={whyBaseSharedClassNames.title}>
                 Join an active community of Builders
               </h2>
               <div className="my-4 md:hidden">
                 <CommunityPartners communityPartners={partners} />
               </div>
-              <p className="my-2 text-base sm:text-lg lg:my-4 xl:my-6">
+              <p className={whyBaseSharedClassNames.bodyText}>
                 Join a community of thousands builders just like you, building some of the coolest
                 projects onchain. Reach out to our Discord support team for help.
               </p>
@@ -74,7 +75,7 @@ export default async function ActiveCommunityOfBuilders() {
                 target="_blank"
                 rel="noreferrer noopener"
                 linkClassNames="inline-block"
-                buttonClassNames="uppercase font-mono font-medium mt-4 rounded-[3px]"
+                buttonClassNames={whyBaseSharedClassNames.ctaButton}
               >
                 Go To Discord
               </ButtonWithLinkAndEventLogging>

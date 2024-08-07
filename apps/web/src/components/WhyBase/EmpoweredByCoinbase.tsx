@@ -1,5 +1,6 @@
 import Image from 'apps/web/node_modules/next/image';
 import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
+import { whyBaseSharedClassNames } from '../../../app/(base-org)/why-base/page';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import empoweredByCoinbase from './images/EmpoweredByCoinbase.png';
 import section5 from '../TableOfContents/sectionNumbers/section5.svg';
@@ -10,19 +11,20 @@ export default async function EmpoweredByCoinbase() {
   return (
     <div
       id={EMPOWERED_BY_COINBASE_SECTION_ID}
-      className="mb-6 mt-6 flex w-full max-w-[1440px] flex-col gap-8 px-12 sm:mb-8 sm:mt-8 sm:grid sm:grid-cols-[1fr_1fr] sm:gap-16 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
+      // className="mb-6 mt-10 flex w-full max-w-[1440px] flex-col gap-8 px-12 sm:mb-8 sm:mt-8 sm:grid sm:grid-cols-[1fr_1fr] sm:gap-16 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
+      className={`${whyBaseSharedClassNames.section} ${whyBaseSharedClassNames.sectionGrid}`}
     >
       <div className="flex w-full flex-col justify-center gap-8 lg:gap-16 xl:max-w-[550px]">
         <div className="flex flex-row">
-          <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white text-base font-bold text-black sm:h-7 sm:w-7 sm:text-xl lg:mr-4 lg:mt-2 lg:h-8 lg:w-8 lg:text-2xl">
+          <span className={whyBaseSharedClassNames.sectionNumberIcon}>
             <Image src={section5 as StaticImport} alt="section five" />
           </span>
           <div className="ml-4">
-            <h2 className="text-3xl sm:text-4xl lg:text-6xl">Empowered by Coinbase</h2>
+            <h2 className={whyBaseSharedClassNames.title}>Empowered by Coinbase</h2>
             <div className="my-4 h-auto w-full max-w-[300px] self-center bg-contain bg-center bg-no-repeat sm:hidden">
               <Image src={empoweredByCoinbase} alt="Empowered by Coinbase" />
             </div>
-            <p className="my-2 text-base sm:text-lg lg:my-4 xl:my-6">
+            <p className={whyBaseSharedClassNames.bodyText}>
               {`Base is incubated within Coinbase and plans to progressively decentralize in the years
               ahead. Leverage Coinbase's developer tools to make building easy and to reach Coinbase
               users.`}
@@ -33,7 +35,7 @@ export default async function EmpoweredByCoinbase() {
               target="_blank"
               rel="noreferrer noopener"
               linkClassNames="inline-block"
-              buttonClassNames="mt-4 uppercase font-mono font-medium w-full sm:w-auto rounded-[3px]"
+              buttonClassNames={whyBaseSharedClassNames.ctaButton}
             >
               Learn More
             </ButtonWithLinkAndEventLogging>
