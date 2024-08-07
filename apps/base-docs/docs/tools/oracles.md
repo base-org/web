@@ -108,23 +108,34 @@ See this guide to learn how to get started with [Gelato VRF](https://docs.gelato
 
 The [Pyth Network](https://pyth.network/) is the largest first-party Oracle network, delivering real-time data across [a vast number of chains](https://docs.pyth.network/price-feeds/contract-addresses). Pyth introduces an innovative low-latency [pull oracle design](https://docs.pyth.network/documentation/pythnet-price-feeds/on-demand), where users can pull price updates on-chain when needed, enabling everyone in the blockchain environment to access that data point most efficiently. Pyth network updates the prices every **400ms**, making Pyth the fastest on-chain oracle.
 
-Pyth Oracle Features:
+#### Pyth Price Feeds Features:
 
 - 400ms latency
 - Most efficient and cost-effective Oracle
-- First-party data sourced directly from financial institutions
+- [First-party](https://pyth.network/publishers) data sourced directly from financial institutions
 - [Price feeds ranging from Crypto, Stock, FX, Metals](https://pyth.network/developers/price-feed-ids)
-- Available on all the largest chains
+- [Available on all the largest chains](https://docs.pyth.network/price-feeds/contract-addresses)
 
-Supported Networks for Base:
+#### Supported Networks for Base(Pyth Price Feeds):
 - Base Mainnet: [`0x8250f4aF4B972684F7b336503E2D6dFeDeB1487a`](https://basescan.org/address/0x8250f4aF4B972684F7b336503E2D6dFeDeB1487a) 
 - Base Sepolia: [`0xA2aa501b19aff244D90cc15a4Cf739D2725B5729`](https://base-sepolia.blockscout.com/address/0xA2aa501b19aff244D90cc15a4Cf739D2725B5729)
 
+
+### Pyth Entropy
+Pyth Entropy allows developers to quickly and easily generate secure **random numbers** on the blockchain.
+
+Check [how to generate random numbers in EVM contracts]((https://docs.pyth.network/entropy/generate-random-numbers/evm)) for a detailed walkthrough.
+
+#### Supported Networks for Base(Pyth Entropy):
+- Base Mainnet: [`0x6E7D74FA7d5c90FEF9F0512987605a6d546181Bb`](https://basescan.org/address/0x6E7D74FA7d5c90FEF9F0512987605a6d546181Bb) 
+- Base Sepolia: [`0x41c9e39574F40Ad34c79f1C99B66A45eFB830d4c`](https://base-sepolia.blockscout.com/address/0x41c9e39574F40Ad34c79f1C99B66A45eFB830d4c)
+
+
 Check out the following links to get started with Pyth.
 
-- [Pyth EVM Integration Guide](https://docs.pyth.network/price-feeds/use-real-time-data/evm)
+- [Pyth Price Feed EVM Integration Guide](https://docs.pyth.network/price-feeds/use-real-time-data/evm)
 - [Pyth Docs](https://docs.pyth.network/home)
-- [Pyth API Reference](https://api-reference.pyth.network/price-feeds/evm/getPrice)
+- [Pyth Price Feed API Reference](https://api-reference.pyth.network/price-feeds/evm/getPrice)
 - [Pyth Examples](https://github.com/pyth-network/pyth-examples)
 - [Website](https://pyth.network/)
 - [Twitter](https://x.com/PythNetwork)
