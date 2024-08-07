@@ -44,10 +44,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: 'chain must be Base or Base Sepolia' });
   }
 
-  if (!isBasenameSupportedChain(parsedChain)) {
-    return res.status(400).json({ error: 'chain must be Base or Base Sepolia' });
-  }
-
   try {
     const hasPreviouslyRegistered = await hasRegisteredWithDiscount([address], parsedChain);
 
