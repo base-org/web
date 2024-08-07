@@ -28,10 +28,12 @@ const stats: Stat[] = [
   },
 ];
 
+const PERFORMANCE_AND_COST_SECTION_ID = 'performanceAndCost';
+
 export default async function PerformanceAndCost() {
   return (
     <div
-      id="performanceAndCost"
+      id={PERFORMANCE_AND_COST_SECTION_ID}
       className="mb-6 mt-10 flex w-full max-w-[1440px] flex-col px-12 sm:mb-8 sm:mt-8 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
     >
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-12">

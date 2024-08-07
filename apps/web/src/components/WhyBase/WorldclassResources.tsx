@@ -45,10 +45,12 @@ const resources: Resource[] = [
   },
 ];
 
+const WORLDCLASS_RESOURCES_SECTION_ID = 'worldClassTools';
+
 export default async function WorldclassResources() {
   return (
     <div
-      id="worldClassTools"
+      id={WORLDCLASS_RESOURCES_SECTION_ID}
       className="mb-6 mt-6 flex w-full max-w-[1440px] flex-col px-12 sm:mb-8 sm:mt-8 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
     >
       <div className="flex flex-col gap-8 lg:flex-row lg:gap-16">

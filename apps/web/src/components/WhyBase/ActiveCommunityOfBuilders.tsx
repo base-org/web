@@ -39,10 +39,12 @@ const communityCards: CommunityCardType[] = [
   },
 ];
 
+const COMMUNITY_OF_BUILDERS_SECTION_ID = 'communityOfBuilders';
+
 export default async function ActiveCommunityOfBuilders() {
   return (
     <div
-      id="communityOfBuilders"
+      id={COMMUNITY_OF_BUILDERS_SECTION_ID}
       className="mt-10 flex w-full max-w-[1440px] flex-col px-12 pb-6 sm:mt-16 sm:px-16 sm:pb-8 lg:mt-20 lg:px-24 lg:pb-10"
     >
       <div className="flex flex-col justify-between md:grid md:grid-cols-[1fr_1fr]">

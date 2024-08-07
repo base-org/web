@@ -2,10 +2,12 @@ import Image from 'apps/web/node_modules/next/image';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import evmCompatibleChains from './images/EVM-compatibility-chains.png';
 
+const EVM_COMPATIBILITY_SECTION_ID = 'evmCompatibility';
+
 export default async function EvmEquivalent() {
   return (
     <div
-      id="evmCompatibility"
+      id={EVM_COMPATIBILITY_SECTION_ID}
       className="mb-6 mt-10 flex w-full max-w-[1440px] flex-col gap-8 px-12 sm:mb-8 sm:mt-8 sm:grid sm:grid-cols-[1fr_1fr] sm:gap-16 sm:px-16 lg:mb-10 lg:mt-10 lg:px-24"
     >
       <div className="hidden h-auto w-full bg-contain bg-center bg-no-repeat sm:my-[-25px] sm:block lg:my-[-40px]">
