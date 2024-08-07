@@ -244,6 +244,12 @@ export default function UsernameProfileEditModal({
             value={textRecords[UsernameTextRecordKeys.Description]}
             disabled={isLoading}
           />
+          <UsernameTextRecordInlineField
+            textRecordKey={UsernameTextRecordKeys.Frame}
+            onChange={onChangeTextRecord}
+            value={textRecords[UsernameTextRecordKeys.Frame]}
+            disabled={isLoading}
+          />
           <Fieldset>
             <Label>Socials</Label>
             {textRecordsSocialFieldsEnabled.map((textRecordKey) => (

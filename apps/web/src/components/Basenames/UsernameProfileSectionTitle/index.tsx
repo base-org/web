@@ -6,7 +6,7 @@ type UsernameProfileSectionTitleProps = {
 
 export default function UsernameProfileSectionTitle({ title }: UsernameProfileSectionTitleProps) {
   return (
-    <h3 className="flex flex items-center text-lg font-medium">
+    <h3 className="flex items-center text-lg font-medium">
       <span className="text-blue-600">
         <Icon name="blueCircle" color="currentColor" height="0.75rem" />
       </span>

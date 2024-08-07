@@ -4,7 +4,7 @@ import UsernameProfileSectionExplore from 'apps/web/src/components/Basenames/Use
 
 export default function UsernameProfileContent() {
   return (
-    <div className="flex flex-col gap-8 rounded-2xl border border-[#EBEBEB] p-8 shadow-lg">
+    <div className="flex flex-col gap-4 rounded-2xl border border-[#EBEBEB] p-4 shadow-lg sm:gap-8 sm:p-8">
       <UsernameProfileSectionFrames />
       <UsernameProfileSectionBadges />
       <UsernameProfileSectionExplore />
