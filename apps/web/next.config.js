@@ -77,7 +77,7 @@ const contentSecurityPolicy = {
     ccaLiteDomains,
     walletconnectDomains,
   ],
-  'worker-src': ['blob:'],
+  'worker-src': ["'self'"],
   'connect-src': [
     "'self'",
     'https://blob.vercel-storage.com', // Vercel File storage
