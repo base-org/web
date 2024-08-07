@@ -106,14 +106,28 @@ See this guide to learn how to get started with [Gelato VRF](https://docs.gelato
 
 ## Pyth
 
-[Pyth](http://pyth.network/) offers 250+ [price feeds](https://pyth.network/price-feeds) for Base.
+The [Pyth Network](https://pyth.network/) is the largest first-party Oracle network, delivering real-time data across [a vast number of chains](https://docs.pyth.network/price-feeds/contract-addresses). Pyth introduces an innovative low-latency [pull oracle design](https://docs.pyth.network/documentation/pythnet-price-feeds/on-demand), where users can pull price updates on-chain when needed, enabling everyone in the blockchain environment to access that data point most efficiently. Pyth network updates the prices every **400ms**, making Pyth the fastest on-chain oracle.
 
-See [this guide](https://docs.pyth.network/documentation/pythnet-price-feeds/evm) to learn how to use the Pyth feeds.
+Pyth Oracle Features:
 
-#### Supported Networks
+- 400ms latency
+- Most efficient and cost-effective Oracle
+- First-party data sourced directly from financial institutions
+- [Price feeds ranging from Crypto, Stock, FX, Metals](https://pyth.network/developers/price-feed-ids)
+- Available on all the largest chains
 
-- Base Mainnet
-- Base Sepolia (Testnet)
+Supported Networks for Base:
+- Base Mainnet: [`0x8250f4aF4B972684F7b336503E2D6dFeDeB1487a`](https://basescan.org/address/0x8250f4aF4B972684F7b336503E2D6dFeDeB1487a) 
+- Base Sepolia: [`0xA2aa501b19aff244D90cc15a4Cf739D2725B5729`](https://base-sepolia.blockscout.com/address/0xA2aa501b19aff244D90cc15a4Cf739D2725B5729)
+
+Check out the following links to get started with Pyth.
+
+- [Pyth EVM Integration Guide](https://docs.pyth.network/price-feeds/use-real-time-data/evm)
+- [Pyth Docs](https://docs.pyth.network/home)
+- [Pyth API Reference](https://api-reference.pyth.network/price-feeds/evm/getPrice)
+- [Pyth Examples](https://github.com/pyth-network/pyth-examples)
+- [Website](https://pyth.network/)
+- [Twitter](https://x.com/PythNetwork)
 
 ---
 
