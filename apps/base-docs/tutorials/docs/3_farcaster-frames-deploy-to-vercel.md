@@ -18,7 +18,7 @@ hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
-To share your [Frames] on [Farcaster], you must first deploy them to the web. Farcaster reads the metadata from your site to build the Frame as it initially appears to the user. In this tutorial, we'll show you how to deploy the frame in the example - [a-frame-in-100-lines]
+To share your [Frames] on [Farcaster], you must first deploy them to the web. Farcaster reads the metadata from your site to build the Frame as it initially appears to the user. In this tutorial, you'll learn how to deploy the frame in the [OnchainKit] example - [a-frame-in-100-lines].
 
 ---
 
@@ -166,6 +166,7 @@ In this tutorial, you learned how to deploy a frame with [Vercel] and take advan
 
 ---
 
+[OnchainKit]: https://onchainkit.xyz/?utm_source=basedocs&utm_medium=tutorials&campaign=farcaster-frames-deploy-to-vercel
 [Base Learn]: https://docs.base.org/base-learn/docs/welcome
 [Farcaster]: https://www.farcaster.xyz/
 [a-frame-in-100-lines]: https://github.com/Zizzamia/a-frame-in-100-lines
