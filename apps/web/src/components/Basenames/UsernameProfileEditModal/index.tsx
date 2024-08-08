@@ -1,3 +1,7 @@
+import classNames from 'classnames';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
+import { useCallback, useEffect, useState } from 'react';
+import { useWaitForTransactionReceipt } from 'wagmi';
 import { upload } from '@vercel/blob/client';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useErrors } from 'apps/web/contexts/Errors';
@@ -12,6 +16,7 @@ import Label from 'apps/web/src/components/Label';
 import Modal, { ModalSizes } from 'apps/web/src/components/Modal';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
+import useBaseEnsAvatar from 'apps/web/src/hooks/useBaseEnsAvatar';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
@@ -20,11 +25,6 @@ import {
   UsernameTextRecordKeys,
   UsernameTextRecords,
 } from 'apps/web/src/utils/usernames';
-import classNames from 'classnames';
-import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useCallback, useEffect, useState } from 'react';
-
-import { useWaitForTransactionReceipt } from 'wagmi';
 
 export default function UsernameProfileEditModal({
   isOpen,
@@ -76,6 +76,11 @@ export default function UsernameProfileEditModal({
 
   const [textRecords, setTextRecords] = useState<UsernameTextRecords>(existingTextRecords);
 
+  // Value
+  const { refetch: refetchBaseEnsAvatar } = useBaseEnsAvatar({
+    name: profileUsername,
+  });
+
   useEffect(() => {
     if (transactionIsFetching) {
       logEventWithContext('update_text_records_transaction_processing', ActionType.change);
@@ -86,9 +91,16 @@ export default function UsernameProfileEditModal({
       logEventWithContext('update_text_records_transaction_success', ActionType.change);
 
       // TODO: Call to remove the previous avatar for vercel's blob
+
       refetchExistingTextRecords()
         .then(() => {
-          toggleModal();
+          refetchBaseEnsAvatar()
+            .then(() => {
+              toggleModal();
+            })
+            .catch((error) => {
+              logError(error, 'Failed to refetch avatar');
+            });
         })
         .catch((error) => {
           logError(error, 'Failed to refetch existing text records');
@@ -108,6 +120,7 @@ export default function UsernameProfileEditModal({
     transactionIsFetching,
     toggleModal,
     logError,
+    refetchBaseEnsAvatar,
   ]);
 
   useEffect(() => {
@@ -209,7 +222,7 @@ export default function UsernameProfileEditModal({
     [updateTextRecords],
   );
 
-  const onChangeAvatar = useCallback((file: File | undefined) => {
+  const onChangeAvatarFile = useCallback((file: File | undefined) => {
     setAvatarFile(file);
   }, []);
 
@@ -234,8 +247,9 @@ export default function UsernameProfileEditModal({
       ) : (
         <form className={formClasses}>
           <UsernameAvatarField
-            onChange={onChangeAvatar}
-            value={textRecords[UsernameTextRecordKeys.Avatar]}
+            onChangeFile={onChangeAvatarFile}
+            onChange={onChangeTextRecord}
+            currentAvatarUrl={textRecords[UsernameTextRecordKeys.Avatar]}
             disabled={isLoading}
             username={profileUsername}
           />
