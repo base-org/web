@@ -34,10 +34,10 @@
 }
 
 /* Enable if dropdown menus overflow right boundary */
-/* .navbar__items--right .dropdown__menu {
+.navbar__items--right .dropdown__menu {
   left: auto !important;
   right: 0 !important;
-} */
+}
 
 .navbar__item,
 .navbar__link {
@@ -76,8 +76,8 @@
   background-color: rgb(var(--gray100));
 }
 
+
 .dropdown__link {
-  padding: 20px var(--spacing-5);
   color: rgb(var(--gray0)) !important;
   font-size: var(--title3-font-size);
   line-height: var(--title3-line-height);
@@ -86,6 +86,13 @@
 }
 .dropdown__link:hover {
   text-decoration: underline;
+}
+.dropdown__link--content {
+  padding: 10px var(--spacing-5);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
 }
 
 /* Dropdown Caret Icon */
@@ -103,7 +110,6 @@
 }
 
 /* Hide External Link Icons */
-.dropdown__link svg,
 .navbar__link svg {
   display: none;
 }

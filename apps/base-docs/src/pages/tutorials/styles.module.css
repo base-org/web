@@ -57,6 +57,7 @@
 }
 
 .tutorialsMarkdown {
+  width: 100%;
   max-width: 841px !important;
   padding-top: 24px;
   padding-bottom: 24px;
@@ -106,6 +107,7 @@
   font-size: 0.9rem;
   line-height: 1.25;
   font-weight: 400;
+  overflow: scroll;
 }
 
 .tutorialAuthor {

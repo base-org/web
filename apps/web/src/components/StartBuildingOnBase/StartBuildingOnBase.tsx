@@ -1,19 +1,19 @@
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import { docsUrl } from 'apps/web/src/constants';
-import Image from 'next/image';
 import Link from 'next/link';
 
-function ReadTheDocsButton() {
+async function ReadTheDocsButton() {
   return (
     <div className="w-[200px]">
       <Link href={docsUrl} target="_blank" rel="noreferrer noopener">
-        <Button variant="primary">Read the docs</Button>
+        <Button variant={ButtonVariants.Primary}>Read the docs</Button>
       </Link>
     </div>
   );
 }
 
-export function StartBuildingOnBase() {
+export async function StartBuildingOnBase() {
   return (
     <section className="flex w-full max-w-[1440px] flex-row flex-wrap items-start justify-between bg-black px-8 py-8">
       <div className="pb-16 font-display text-3xl text-white md:text-5xl lg:text-6xl">
@@ -21,7 +21,7 @@ export function StartBuildingOnBase() {
         <ReadTheDocsButton />
       </div>
       <div className="relative h-[460px] w-full max-w-[678px]">
-        <Image
+        <ImageAdaptive
           src="/images/start-building-on-base.png"
           className="object-contain"
           alt="Start building on base"

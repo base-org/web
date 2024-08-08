@@ -1,11 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
 import Link from 'next/link';
-
 import useClickAway from 'base-ui/hooks/useClickAway';
-
 import { Icon } from 'base-ui';
-
 import { REVERSE_COLOR, reverseTextColor } from 'apps/bridge/src/utils/colors';
 
 // Dropdown Link

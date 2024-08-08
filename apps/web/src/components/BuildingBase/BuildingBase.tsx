@@ -1,9 +1,6 @@
-import { CoreContributors } from 'apps/web/src/components/CoreContributors/CoreContributors';
-import { EnsAvatarMapping } from 'apps/web/src/components/CoreContributors/EnsAvatarMapping';
+import CoreContributors from 'apps/web/src/components/CoreContributors/CoreContributors';
 
-type Props = { owners: EnsAvatarMapping[] };
-
-export function BuildingBase({ owners }: Props) {
+export default async function BuildingBase() {
   return (
     <section className="flex w-full max-w-[1440px] flex-col gap-24 px-6 pb-10 lg:flex-row lg:gap-16 lg:pb-40">
       <h1 className="font-display text-3xl text-white md:text-5xl lg:basis-1/2 lg:text-6xl">
@@ -92,9 +89,7 @@ export function BuildingBase({ owners }: Props) {
             EIP4844
           </a>{' '}
           with Optimism to enable L2 rollups to scale.{' '}
-          <span>
-            But we don&#39;t believe that&#39;s enough, so here we are.
-          </span>
+          <span>But we don&#39;t believe that&#39;s enough, so here we are.</span>
         </p>
         <p className="pt-8">Base is our “all in” commitment to onchain.</p>
         <p className="pt-8">
@@ -114,8 +109,8 @@ export function BuildingBase({ owners }: Props) {
             Base Contributors
           </a>
         </h2>
-        <CoreContributors owners={owners} />
+        <CoreContributors />
       </div>
-    </section >
+    </section>
   );
 }

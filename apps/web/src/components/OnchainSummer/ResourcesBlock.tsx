@@ -1,3 +1,4 @@
+'use client';
 import Brit from 'apps/web/src/components/OnchainSummer/Brit';
 import { BlackCircle } from 'apps/web/src/components/OnchainSummer/Circles';
 import { FadeInSection } from 'apps/web/src/components/OnchainSummer/FadeIns';

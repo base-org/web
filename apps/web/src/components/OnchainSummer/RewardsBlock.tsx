@@ -1,3 +1,4 @@
+'use client';
 import Brit from 'apps/web/src/components/OnchainSummer/Brit';
 import {
   BlackCircle,

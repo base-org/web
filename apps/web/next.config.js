@@ -4,6 +4,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const isProdEnv = process.env.NODE_ENV === 'production';
 
+// Can't import this from apps/web/src/utils/images.ts for some reason
+const allowedImageRemoteDomains = ['zku9gdedgba48lmr.public.blob.vercel-storage.com'];
+
 const baseConfig = {
   // Enable advanced features
   compiler: {
@@ -74,31 +77,45 @@ const contentSecurityPolicy = {
     ccaLiteDomains,
     walletconnectDomains,
   ],
+  'worker-src': ['blob:'],
   'connect-src': [
     "'self'",
+    'https://blob.vercel-storage.com', // Vercel File storage
+    'https://zku9gdedgba48lmr.public.blob.vercel-storage.com', // Vercel File storage
     walletconnectDomains,
     sprigDomains,
     greenhouseDomains,
     ccaLiteDomains,
     ccaDomain,
+    'https://enhanced-provider.rainbow.me',
+    'https://*.coinbase.com',
     'wss://www.walletlink.org/rpc', // coinbase wallet connection
     'https://analytics-service-dev.cbhq.net',
     'mainnet.base.org',
+    'sepolia.base.org',
     'https://cloudflare-eth.com',
     'https://i.seadn.io/', // ens avatars
     'https://api.opensea.io', // enables getting ENS avatars
+    'https://ipfs.io', // ipfs ens avatar resolution
+    'wss://www.walletlink.org',
+    'https://base.easscan.org/graphql',
+    'https://api.guild.xyz/',
     isLocalDevelopment ? 'ws://localhost:3000/' : '',
     isLocalDevelopment ? 'http://localhost:3000/' : '',
     'https://flag.lab.amplitude.com/sdk/v2/flags',
     'https://api.lab.amplitude.com/sdk/v2/vardata',
+    'https://browser-intake-datadoghq.com', // datadog
+    'https://*.datadoghq.com', //datadog
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
   'img-src': [
     "'self'",
+    'blob:',
     'data:',
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars
+    'https://ipfs.io', // ipfs ens avatar resolution
   ],
 };
 
@@ -109,7 +126,7 @@ const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [ke
 const securityHeaders = [
   {
     key: 'cache-control',
-    value: 'no-store',
+    value: 'no-cache',
   },
   {
     key: 'content-security-policy',
@@ -148,13 +165,31 @@ module.exports = extendBaseConfig(
       locales: ['en'],
       defaultLocale: 'en',
     },
+    webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
+      config.module.rules.push({
+        test: /\.webm/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash].[ext]',
+              outputPath: 'static/assets/webm/',
+              publicPath: '/_next/static/assets/webm/',
+            },
+          },
+        ],
+      });
+
+      config.externals.push('pino-pretty');
+      return config;
+    },
     images: {
-      remotePatterns: [
-        {
+      remotePatterns: allowedImageRemoteDomains.map((hostname) => {
+        return {
           protocol: 'https',
-          hostname: 'i.seadn.io',
-        },
-      ],
+          hostname,
+        };
+      }),
     },
     async headers() {
       return [
@@ -191,6 +226,21 @@ module.exports = extendBaseConfig(
         {
           source: '/registry-edit',
           destination: 'https://buildonbase.deform.cc/registry-edit/',
+          permanent: true,
+        },
+        {
+          source: '/name/:path.base.eth',
+          destination: '/name/:path',
+          permanent: true,
+        },
+        {
+          source: '/names/:path',
+          destination: '/name/:path',
+          permanent: true,
+        },
+        {
+          source: '/name',
+          destination: '/names',
           permanent: true,
         },
       ];

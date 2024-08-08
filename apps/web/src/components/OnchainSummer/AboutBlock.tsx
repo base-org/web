@@ -1,6 +1,6 @@
 import { PinkCircle } from 'apps/web/src/components/OnchainSummer/Circles';
 
-export default function AboutBlock() {
+export default async function AboutBlock() {
   return (
     <div className="flex w-full flex-col items-center justify-center rounded-b-[6px] bg-ocsblue text-white">
       <div className="mt-16 flex max-w-[1200px] flex-col gap-8">

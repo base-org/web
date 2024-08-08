@@ -3,12 +3,12 @@ import Link from 'next/link';
 import { useLocalStorage } from 'usehooks-ts';
 import { usePathname } from 'next/navigation';
 
-import { Icon } from 'base-ui/index';
+import { Icon } from '../../../Icon';
 import logEvent, {
   ActionType,
   AnalyticsEventImportance,
   ComponentType,
-} from 'base-ui/utils/logEvent';
+} from '../../../utils/logEvent';
 
 type BannerName = `${string}Banner`;
 
@@ -55,6 +55,7 @@ export default function Banner({ href, text, bannerName }: BannerProps) {
             onClick={hideBanner}
             onKeyDown={hideBanner}
             type="button"
+            aria-label="Close Banner"
           >
             <Icon name="close" color="black" width="16" height="16" />
           </button>

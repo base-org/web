@@ -1,9 +1,9 @@
 declare const window: Window &
   typeof globalThis & {
-    ClientAnalytics: {
-      logEvent: LogEvent;
-    };
+  ClientAnalytics: {
+    logEvent: LogEvent;
   };
+};
 
 enum ComponentType {
   unknown = 'unknown',
@@ -43,6 +43,7 @@ enum ActionType {
   view = 'view',
   search = 'search',
   keyPress = 'keyPress',
+  error = 'error',
 }
 
 enum AnalyticsEventImportance {
@@ -64,6 +65,7 @@ type CCAEventData = {
   address?: string;
   context?: string;
   userId?: string;
+  error?: string;
   wallet_type?: string;
   flag_key?: string;
   variant?: string | undefined;

@@ -1,3 +1,4 @@
+'use client';
 import Brit from 'apps/web/src/components/OnchainSummer/Brit';
 import { BlackCircle } from 'apps/web/src/components/OnchainSummer/Circles';
 import stripe from 'apps/web/public/images/ocs/sponsors/stripe.png';
@@ -9,9 +10,10 @@ import zora from 'apps/web/public/images/ocs/sponsors/zora.png';
 import shopify from 'apps/web/public/images/ocs/sponsors/shopify.png';
 import nouns from 'apps/web/public/images/ocs/sponsors/nouns.png';
 import synthetix from 'apps/web/public/images/ocs/sponsors/synthetix.png';
-import Image, { StaticImageData } from 'next/image';
+import { StaticImageData } from 'next/image';
 import { FadeInSection } from 'apps/web/src/components/OnchainSummer/FadeIns';
 import { useMemo } from 'react';
+import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 
 const sponsors = [
   {
@@ -100,7 +102,7 @@ function SponsorCard({
       className="flex min-h-[150px] min-w-[150px] flex-col items-start justify-between gap-2 rounded-[3px] p-4"
       style={{ background: color }}
     >
-      <Image src={image} alt={name} height={50} style={style} />
+      <ImageAdaptive src={image} alt={name} height={50} style={style} />
       <span className="text-l font-mono font-light uppercase" style={{ color: text }}>
         {name}
       </span>

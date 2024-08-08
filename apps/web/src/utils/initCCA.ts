@@ -4,12 +4,13 @@
 // @ts-nocheck
 import { NextRouter } from 'next/router';
 import { TrackingPreference } from '@coinbase/cookie-manager';
-import { uuid } from 'uuidv4';
 import { isDevelopment } from 'apps/web/src/constants';
+import { NextJSRouter } from 'apps/web/src/components/ClientAnalyticsScript/ClientAnalyticsScript';
+import { v4 } from 'uuid';
 
 // CCA library loads in ClientAnalyticsScript component
 const initCCA = (
-  router: NextRouter,
+  router: NextJSRouter,
   trackingPreference: TrackingPreference | undefined,
   deviceIdCookie: string | undefined,
   setDeviceIdCookie,
@@ -23,7 +24,7 @@ const initCCA = (
   if (!trackingAllowed) {
     deviceId = 'base_web_device_id';
   } else if (!deviceId) {
-    deviceId = uuid();
+    deviceId = v4();
     setDeviceIdCookie(deviceId);
   }
 
@@ -41,7 +42,6 @@ const initCCA = (
     });
 
     identify({ deviceId: deviceId });
-
     initNextJsTrackPageview({
       nextJsRouter: router,
     });

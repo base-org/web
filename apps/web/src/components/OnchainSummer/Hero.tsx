@@ -1,9 +1,12 @@
-import Image from 'next/image';
+'use client';
+
+import { StaticImageData } from 'next/image';
 import ocs_banner from 'apps/web/public/images/ocs/ocs_banner.svg';
 import ocs_banner_mobile from 'apps/web/public/images/ocs/ocs_banner_mobile.svg';
 import ScrollBanner from 'apps/web/src/components/OnchainSummer/ScrollBanner';
 import { OCSButton } from 'apps/web/src/components/OnchainSummer/OCSButton';
 import { FadeInSection } from 'apps/web/src/components/OnchainSummer/FadeIns';
+import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 
 export default function Hero() {
   return (
@@ -11,10 +14,16 @@ export default function Hero() {
       <ScrollBanner />
       <div className="mt-6 flex w-full max-w-[1200px] flex-col px-8">
         <FadeInSection>
-          {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-          <Image src={ocs_banner} alt="Onchain Summer Banner" className="hidden md:block" />
-          {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-          <Image src={ocs_banner_mobile} alt="Onchain Summer Banner" className="md:hidden" />
+          <ImageAdaptive
+            src={ocs_banner as StaticImageData}
+            alt="Onchain Summer Banner"
+            className="hidden md:block"
+          />
+          <ImageAdaptive
+            src={ocs_banner_mobile as StaticImageData}
+            alt="Onchain Summer Banner"
+            className="md:hidden"
+          />
         </FadeInSection>
         <FadeInSection delay={0.5}>
           <div className="mb-12 mt-12 flex w-full flex-col justify-between gap-6 md:flex-row md:items-center">
