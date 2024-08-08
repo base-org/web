@@ -21,11 +21,11 @@ type DropdownLinkProps = {
 function DropdownLink({ href, label, externalLink }: DropdownLinkProps) {
   const { logEventWithContext } = useAnalytics();
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     logEventWithContext(label.replace(/[\/\\\- \n]/g, '_'), ActionType.click, {
       componentType: ComponentType.link,
     });
-  };
+  }, [logEventWithContext, label]);
 
   return externalLink ? (
     <a
