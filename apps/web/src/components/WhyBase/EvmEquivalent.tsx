@@ -13,7 +13,7 @@ export default async function EvmEquivalent() {
       id={EVM_COMPATIBILITY_SECTION_ID}
       className={`${whyBaseSharedClassNames.section} ${whyBaseSharedClassNames.sectionGrid}`}
     >
-      <div className="h-[235px] w-[250px] mb-8 self-center bg-contain bg-center bg-no-repeat sm:my-[-25px] sm:h-auto sm:w-full lg:my-[-40px]">
+      <div className="mb-8 h-[235px] w-[250px] self-center bg-contain bg-center bg-no-repeat sm:my-[-25px] sm:h-auto sm:w-full lg:my-[-40px]">
         <Image src={evmCompatibleChains} alt="EVM compatible chains" />
       </div>
       <div className="flex w-full flex-row">

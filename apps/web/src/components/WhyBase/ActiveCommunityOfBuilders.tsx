@@ -50,7 +50,7 @@ export default async function ActiveCommunityOfBuilders() {
       className={`${whyBaseSharedClassNames.section} sm:pt-8 lg:pt-10`}
     >
       <div className="flex flex-col justify-between md:grid md:grid-cols-[1fr_1fr]">
-        <div className="mr-8 mb-8">
+        <div className="mb-10 mr-8">
           <CommunityPartners communityPartners={partners} />
         </div>
         <div className="flex grow flex-col justify-start space-y-6 lg:mx-8 lg:justify-around xl:mx-20">
