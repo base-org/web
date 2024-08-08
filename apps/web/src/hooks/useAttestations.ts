@@ -10,6 +10,7 @@ import { Address, ReadContractErrorType, encodeAbiParameters } from 'viem';
 import { useAccount, useReadContract } from 'wagmi';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useErrors } from 'apps/web/contexts/Errors';
+import { BNSProofResponse } from 'apps/web/pages/api/proofs/bns';
 
 export type AttestationData = {
   discountValidatorAddress: Address;
@@ -225,17 +226,13 @@ export function useCheckEAAttestations(): AttestationHookReturns {
 
   useEffect(() => {
     async function checkEarlyAccess(a: string) {
-      try {
-        const params = new URLSearchParams();
-        params.append('address', a);
-        params.append('chain', basenameChain.id.toString());
-        const response = await fetch(`/api/proofs/earlyAccess?${params}`);
-        if (response.ok) {
-          const result = (await response.json()) as EarlyAccessProofResponse;
-          setEAProofResponse(result);
-        }
-      } catch (error) {
-        logError(error, 'Error checking early access');
+      const params = new URLSearchParams();
+      params.append('address', a);
+      params.append('chain', basenameChain.id.toString());
+      const response = await fetch(`/api/proofs/earlyAccess?${params}`);
+      if (response.ok) {
+        const result = (await response.json()) as EarlyAccessProofResponse;
+        setEAProofResponse(result);
       }
     }
 
@@ -273,6 +270,78 @@ export function useCheckEAAttestations(): AttestationHookReturns {
       data: {
         discountValidatorAddress: EAProofResponse.discountValidatorAddress,
         discount: Discount.EARLY_ACCESS,
+        validationData: encodedProof,
+      },
+      loading: false,
+      error: null,
+    };
+  }
+  return { data: null, loading: isLoading, error };
+}
+
+// export function useBuildathonAttestations() {
+//   return { data: null, loading: isLoading, error };
+// }
+// export function useSummerPassAttestations() {
+//   return { data: null, loading: isLoading, error };
+// }
+// export function useBaseDotEthAttestations() {
+//   return { data: null, loading: isLoading, error };
+// }
+
+// merkle tree discount calls api endpoint
+export function useBNSAttestations() {
+  const { address } = useAccount();
+  const [proofResponse, setProofResponse] = useState<BNSProofResponse | null>(null);
+  const { basenameChain } = useBasenameChain();
+  const { logError } = useErrors();
+
+  useEffect(() => {
+    async function checkBNS(a: string) {
+      const params = new URLSearchParams();
+      params.append('address', a);
+      params.append('chain', basenameChain.id.toString());
+      const response = await fetch(`/api/proofs/bns?${params}`);
+      if (response.ok) {
+        const result = (await response.json()) as BNSProofResponse;
+        setProofResponse(result);
+      }
+    }
+
+    if (address) {
+      checkBNS(address).catch((error) => {
+        logError(error, 'Error checking BNS discount availability');
+      });
+    }
+  }, [address, basenameChain.id, logError]);
+
+  const encodedProof = useMemo(
+    () =>
+      proofResponse?.proofs
+        ? encodeAbiParameters([{ type: 'bytes32[]' }], [proofResponse?.proofs])
+        : '0x0',
+    [proofResponse?.proofs],
+  );
+
+  const readContractArgs = useMemo(() => {
+    if (!proofResponse?.proofs || !address) {
+      return {};
+    }
+    return {
+      address: proofResponse?.discountValidatorAddress,
+      abi: EarlyAccessValidatorABI,
+      functionName: 'isValidDiscountRegistration',
+      args: [address, encodedProof],
+    };
+  }, [address, proofResponse?.discountValidatorAddress, proofResponse?.proofs, encodedProof]);
+
+  const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
+
+  if (isValid && proofResponse && address) {
+    return {
+      data: {
+        discountValidatorAddress: proofResponse.discountValidatorAddress,
+        discount: Discount.BNS_NAME,
         validationData: encodedProof,
       },
       loading: false,

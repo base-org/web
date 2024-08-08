@@ -39,7 +39,7 @@ export const USERNAME_EA_DISCOUNT_VALIDATORS: AddressMap = {
 };
 
 export const USERNAME_BNS_DISCOUNT_VALIDATORS: AddressMap = {
-  [baseSepolia.id]: '0x',
+  [baseSepolia.id]: '0x1DE649d8b004A44491a7D3ebbb23F4B0DA89DE78',
   [base.id]: '0x',
 };
 
