@@ -61,7 +61,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(404).json({ error: 'address is not eligible for early access' });
     }
 
-    const responseData: EarlyAccessProofResponse = {
+    const responseData: BNSProofResponse = {
       ...content,
       proofs,
       discountValidatorAddress: USERNAME_BNS_DISCOUNT_VALIDATORS[parsedChain],
