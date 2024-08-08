@@ -16,16 +16,17 @@ type DropdownLinkProps = {
   href: string;
   label: string;
   externalLink?: boolean;
+  eventName: string;
 };
 
-function DropdownLink({ href, label, externalLink }: DropdownLinkProps) {
+function DropdownLink({ href, label, externalLink, eventName }: DropdownLinkProps) {
   const { logEventWithContext } = useAnalytics();
 
   const handleClick = useCallback(() => {
-    logEventWithContext(label.replace(/[\/\\\- \n]/g, '_'), ActionType.click, {
+    logEventWithContext(eventName, ActionType.click, {
       componentType: ComponentType.link,
     });
-  }, [logEventWithContext, label]);
+  }, [logEventWithContext, eventName]);
 
   return externalLink ? (
     <a
@@ -141,6 +142,15 @@ function MobileMenu({ color }: MobileMenuProps) {
     body.classList.remove('no-scroll');
   }, []);
 
+  const createHandleClick = useCallback(
+    (eventName: string) => {
+      return () => {
+        logEventWithContext(eventName, ActionType.click, { componentType: ComponentType.link });
+      };
+    },
+    [logEventWithContext],
+  );
+
   // make sure no-scroll gets removed when someone navigates away from the page
   useEffect(() => {
     const body = document.getElementsByTagName('body')[0];
@@ -191,13 +201,14 @@ function MobileMenu({ color }: MobileMenuProps) {
                   toggleMobileMenu={toggleMobileMenu}
                   label="Ecosystem"
                 >
-                  <DropdownLink href="/ecosystem" label="Apps" />
+                  <DropdownLink href="/ecosystem" label="Apps" eventName="ecosystem" />
                   {/* todo ECO-101: add this back for GA */}
                   {/* <DropdownLink href="/names" label="Names" /> */}
                   <DropdownLink
                     href="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
                     label="Grants"
                     externalLink
+                    eventName="grants"
                   />
                 </Dropdown>
                 <a
@@ -205,11 +216,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                   className="inline-flex items-center font-mono text-3xl text-white hover:underline"
                   target="_blank"
                   rel="noreferrer noopener"
-                  onClick={() =>
-                    logEventWithContext('bridge', ActionType.click, {
-                      componentType: ComponentType.link,
-                    })
-                  }
+                  onClick={createHandleClick('bridge')}
                 >
                   Bridge
                 </a>
@@ -220,19 +227,36 @@ function MobileMenu({ color }: MobileMenuProps) {
                   toggleMobileMenu={toggleMobileMenu}
                   label="Developers"
                 >
-                  <DropdownLink href="https://docs.base.org" label="Docs" externalLink />
+                  <DropdownLink
+                    href="https://docs.base.org"
+                    label="Docs"
+                    externalLink
+                    eventName="docs"
+                  />
                   <DropdownLink
                     href="https://base.blockscout.com/"
                     label={`Block\nExplorer`}
                     externalLink
+                    eventName="block_explorer"
                   />
-                  <DropdownLink href="https://status.base.org" label="Status" externalLink />
+                  <DropdownLink
+                    href="https://status.base.org"
+                    label="Status"
+                    externalLink
+                    eventName="status"
+                  />
                   <DropdownLink
                     href="https://hackerone.com/coinbase"
                     label="Bug Bounty"
                     externalLink
+                    eventName="bug_bounty"
                   />
-                  <DropdownLink href="https://github.com/base-org" label="GitHub" externalLink />
+                  <DropdownLink
+                    href="https://github.com/base-org"
+                    label="GitHub"
+                    externalLink
+                    eventName="github"
+                  />
                 </Dropdown>
                 <Dropdown
                   dropdownKey="about"
@@ -241,9 +265,14 @@ function MobileMenu({ color }: MobileMenuProps) {
                   toggleMobileMenu={toggleMobileMenu}
                   label="About"
                 >
-                  <DropdownLink href="/about" label="Mission" />
-                  <DropdownLink href="https://base.mirror.xyz" label="Blog" externalLink />
-                  <DropdownLink href="/jobs" label="Jobs" />
+                  <DropdownLink href="/about" label="Mission" eventName="mission" />
+                  <DropdownLink
+                    href="https://base.mirror.xyz"
+                    label="Blog"
+                    externalLink
+                    eventName="blog"
+                  />
+                  <DropdownLink href="/jobs" label="Jobs" eventName="jobs" />
                 </Dropdown>
               </div>
 
@@ -258,6 +287,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                   rel="noreferrer noopener"
                   title="Join us on Farcaster"
                   aria-label="Join us on Farcaster"
+                  onClick={createHandleClick('farcaster')}
                 >
                   <Icon name="farcaster" />
                 </a>
@@ -265,6 +295,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                   href="https://discord.com/invite/buildonbase"
                   title="Join us on Discord"
                   aria-label="Join us on Discord"
+                  onClick={createHandleClick('discord')}
                 >
                   <Icon name="discord" />
                 </a>
@@ -272,6 +303,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                   href="https://twitter.com/base"
                   title="Join us on Twitter"
                   aria-label="Join us on Twitter"
+                  onClick={createHandleClick('twitter')}
                 >
                   <Icon name="twitter" />
                 </a>
@@ -281,6 +313,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                   rel="noreferrer noopener"
                   title="Join us on Github"
                   aria-label="Join us on Github"
+                  onClick={createHandleClick('github')}
                 >
                   <Icon name="github" />
                 </a>
