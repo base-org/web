@@ -76,6 +76,7 @@
   },
   "packageManager": "yarn@3.5.0",
   "dependencies": {
+    "@frames.js/render": "^0.2.23",
     "@linaria/babel-preset": "^4.4.3",
     "@next/bundle-analyzer": "^14.2.5",
     "@radix-ui/react-icons": "^1.3.0",

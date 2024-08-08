@@ -114,6 +114,7 @@ const contentSecurityPolicy = {
   'img-src': [
     "'self'",
     'blob:',
+    'https:',
     'data:',
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars

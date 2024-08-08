@@ -41,8 +41,8 @@ export default function useWriteBaseEnsTextRecords({
       if (!username) return Promise.reject(new Error('Cannot write text records without a name'));
       const keys: UsernameTextRecordKeys[] = Object.keys(textRecords) as UsernameTextRecordKeys[];
       const keysToUpdate = keys.filter((key) => {
-        const existingValue = existingTextRecords[key].trim();
-        const updatedValueValue = textRecords[key].trim();
+        const existingValue = existingTextRecords[key]?.trim() ?? undefined;
+        const updatedValueValue = textRecords[key]?.trim() ?? undefined;
 
         return existingValue != updatedValueValue;
       });

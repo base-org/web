@@ -52,6 +52,8 @@ export enum UsernameTextRecordKeys {
   Discord = 'com.discord',
 
   Avatar = 'avatar',
+
+  Frame = 'frame',
 }
 
 // The social enabled for the current registration / profile pages
@@ -62,12 +64,13 @@ export const textRecordsSocialFieldsEnabled = [
   UsernameTextRecordKeys.Url,
 ];
 
-export const textRecordsSocialFieldsEnabledIcons: Record<UsernameTextRecordKeys, string> = {
-  [UsernameTextRecordKeys.Twitter]: 'twitter',
-  [UsernameTextRecordKeys.Farcaster]: 'farcaster',
-  [UsernameTextRecordKeys.Github]: 'github',
-  [UsernameTextRecordKeys.Url]: 'website',
-};
+export const textRecordsSocialFieldsEnabledIcons: Partial<Record<UsernameTextRecordKeys, string>> =
+  {
+    [UsernameTextRecordKeys.Twitter]: 'twitter',
+    [UsernameTextRecordKeys.Farcaster]: 'farcaster',
+    [UsernameTextRecordKeys.Github]: 'github',
+    [UsernameTextRecordKeys.Url]: 'website',
+  };
 
 // Users might add their handle as @myProfile, which breaks on some website
 // TODO: Ideally we'd sanitize these before writing them as TextRecord
@@ -120,6 +123,7 @@ export const textRecordsKeysEnabled = [
   UsernameTextRecordKeys.Telegram,
   UsernameTextRecordKeys.Discord,
   UsernameTextRecordKeys.Avatar,
+  UsernameTextRecordKeys.Frame,
 ];
 
 export const textRecordsKeysForDisplay = {
@@ -135,6 +139,7 @@ export const textRecordsKeysForDisplay = {
   [UsernameTextRecordKeys.Telegram]: 'Telegram',
   [UsernameTextRecordKeys.Discord]: 'Discord',
   [UsernameTextRecordKeys.Avatar]: 'Avatar',
+  [UsernameTextRecordKeys.Frame]: 'Frame',
 };
 
 export const textRecordsKeysPlaceholderForDisplay = {
@@ -150,6 +155,7 @@ export const textRecordsKeysPlaceholderForDisplay = {
   [UsernameTextRecordKeys.Telegram]: 'Username',
   [UsernameTextRecordKeys.Discord]: 'Username',
   [UsernameTextRecordKeys.Avatar]: 'Avatar',
+  [UsernameTextRecordKeys.Frame]: 'Farcaster frame url',
 };
 
 export const textRecordsEngineersKeywords = [
