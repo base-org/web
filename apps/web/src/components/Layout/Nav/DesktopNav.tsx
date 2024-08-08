@@ -2,7 +2,8 @@
 import React, { useState, useCallback } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
 import Link from 'next/link';
-
+import { ActionType, ComponentType } from 'libs/base-ui/utils/logEvent';
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 import useClickAway from '../../../hooks/useClickAway';
 
 import { Icon } from '../../Icon/Icon';
@@ -19,6 +20,14 @@ type DropdownLinkProps = {
 };
 
 function DropdownLink({ href, label, color, externalLink }: DropdownLinkProps) {
+  const { logEventWithContext } = useAnalytics();
+
+  const handleClick = () => {
+    logEventWithContext(label.replace(/[\/\\\- \n]/g, '_'), ActionType.click, {
+      componentType: ComponentType.link,
+    });
+  };
+
   return externalLink ? (
     <a
       href={href}
@@ -27,6 +36,7 @@ function DropdownLink({ href, label, color, externalLink }: DropdownLinkProps) {
       )}`}
       target="_blank"
       rel="noreferrer noopener"
+      onClick={handleClick}
     >
       {label}
     </a>
@@ -36,6 +46,7 @@ function DropdownLink({ href, label, color, externalLink }: DropdownLinkProps) {
       className={`whitespace-nowrap px-10 py-[1.25rem] font-mono text-xl hover:underline ${reverseTextColor(
         color,
       )}`}
+      onClick={handleClick}
     >
       {label}
     </Link>
@@ -123,6 +134,7 @@ function IconLink({
 }
 
 function DesktopNav({ color }: DesktopNavProps) {
+  const { logEventWithContext } = useAnalytics();
   return (
     <div className="hidden h-full w-fit flex-grow flex-row items-center justify-between lg:flex">
       <Dropdown label="Ecosystem" color={color}>
@@ -141,6 +153,9 @@ function DesktopNav({ color }: DesktopNavProps) {
         className={`inline-flex items-center font-mono text-xl ${
           color === 'black' ? 'text-black' : 'text-white'
         }`}
+        onClick={() =>
+          logEventWithContext('bridge', ActionType.click, { componentType: ComponentType.link })
+        }
       >
         Bridge
       </a>

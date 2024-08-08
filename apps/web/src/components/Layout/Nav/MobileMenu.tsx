@@ -2,10 +2,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
 import Link from 'next/link';
-
+import { usePathname } from 'next/navigation';
+import { ActionType, ComponentType } from 'libs/base-ui/utils/logEvent';
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { Icon } from '../../Icon/Icon';
 import { Logo } from '../../Logo/Logo';
-import { usePathname } from 'next/navigation';
 import { bridgeUrl } from 'apps/web/src/constants';
 import { ConnectWalletButton } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 import { REVERSE_COLOR } from 'apps/web/src/utils/colors';
@@ -18,17 +19,30 @@ type DropdownLinkProps = {
 };
 
 function DropdownLink({ href, label, externalLink }: DropdownLinkProps) {
+  const { logEventWithContext } = useAnalytics();
+
+  const handleClick = () => {
+    logEventWithContext(label.replace(/[\/\\\- \n]/g, '_'), ActionType.click, {
+      componentType: ComponentType.link,
+    });
+  };
+
   return externalLink ? (
     <a
       href={href}
       className="flex w-full items-center whitespace-pre-line pt-4 font-mono text-3xl text-white hover:underline"
       target="_blank"
       rel="noreferrer noopener"
+      onClick={handleClick}
     >
       {label}
     </a>
   ) : (
-    <Link href={href} className="w-full pt-4 font-mono text-3xl text-white hover:underline">
+    <Link
+      href={href}
+      className="w-full pt-4 font-mono text-3xl text-white hover:underline"
+      onClick={handleClick}
+    >
       {label}
     </Link>
   );
@@ -113,6 +127,7 @@ function MobileMenu({ color }: MobileMenuProps) {
   const [showMobileMenu, toggleMobileMenu] = useState<boolean>(false);
   const [activeKey, setActiveKey] = useState<string | null>(null);
   const pathname = usePathname();
+  const { logEventWithContext } = useAnalytics();
 
   const handleMenuOpen = useCallback(() => {
     toggleMobileMenu(true);
@@ -190,6 +205,11 @@ function MobileMenu({ color }: MobileMenuProps) {
                   className="inline-flex items-center font-mono text-3xl text-white hover:underline"
                   target="_blank"
                   rel="noreferrer noopener"
+                  onClick={() =>
+                    logEventWithContext('bridge', ActionType.click, {
+                      componentType: ComponentType.link,
+                    })
+                  }
                 >
                   Bridge
                 </a>
