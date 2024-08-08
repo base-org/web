@@ -301,7 +301,6 @@ const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
       />
     </svg>
   ),
-
   info: ({ color, width, height }: SvgProps) => (
     <svg
       width={width}
@@ -312,6 +311,20 @@ const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
     >
       <path
         d="M8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C12.42 16 16 12.42 16 8C16 3.58 12.42 0 8 0ZM9 12.5H7V10.5H9V12.5ZM9 9H7V3.5H9V9Z"
+        fill={color}
+      />
+    </svg>
+  ),
+  diagonalUpArrow: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10.5858 4H3.00001V2H14V13H12V5.41422L2.70712 14.7071L1.29291 13.2929L10.5858 4Z"
         fill={color}
       />
     </svg>
