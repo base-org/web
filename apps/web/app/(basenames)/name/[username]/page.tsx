@@ -53,7 +53,9 @@ export default async function Username({ params }: UsernameProfileProps) {
     <ErrorsProvider context="profile">
       <ProfileProviders username={username} address={ensAddress}>
         <main className={usernameProfilePageClasses}>
-          <UsernameProfile />
+          <div className="w-full">
+            <UsernameProfile />
+          </div>
         </main>
       </ProfileProviders>
     </ErrorsProvider>

@@ -12,8 +12,8 @@ import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernamePr
 import UsernameTextRecordInlineField from 'apps/web/src/components/Basenames/UsernameTextRecordInlineField';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Fieldset from 'apps/web/src/components/Fieldset';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
-import Modal, { ModalSizes } from 'apps/web/src/components/Modal';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import useBaseEnsAvatar from 'apps/web/src/hooks/useBaseEnsAvatar';
@@ -25,19 +25,40 @@ import {
   UsernameTextRecordKeys,
   UsernameTextRecords,
 } from 'apps/web/src/utils/usernames';
+import Tooltip from 'apps/web/src/components/Tooltip';
 
-export default function UsernameProfileEditModal({
-  isOpen,
-  toggleModal,
-}: {
-  isOpen: boolean;
-  toggleModal: () => void;
-}) {
-  const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
+export enum SettingsTabs {
+  ManageProfile = 'manage-profile',
+  Ownership = 'ownership',
+  Subdomain = 'subdomain',
+}
+
+// We only support this for now
+
+const settingTabsForDisplay = {
+  [SettingsTabs.ManageProfile]: 'Manage Profile',
+  [SettingsTabs.Ownership]: 'Ownership',
+  [SettingsTabs.Subdomain]: 'Subdomain',
+};
+
+const allSettingsTabs = [
+  SettingsTabs.ManageProfile,
+  SettingsTabs.Ownership,
+  SettingsTabs.Subdomain,
+];
+const settingsTabsEnabled = [SettingsTabs.ManageProfile];
+
+export default function UsernameProfileSettings() {
+  const { profileUsername, profileAddress, currentWalletIsOwner, setShowProfileSettings } =
+    useUsernameProfile();
+
   const [avatarFile, setAvatarFile] = useState<File | undefined>();
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();
   const { basenameChain } = useBasenameChain(profileUsername);
+  const [currentSettingsTab, setCurrentSettingsTab] = useState<SettingsTabs>(
+    SettingsTabs.ManageProfile,
+  );
 
   const {
     existingTextRecords,
@@ -81,6 +102,10 @@ export default function UsernameProfileEditModal({
     name: profileUsername,
   });
 
+  const closeSettings = useCallback(() => {
+    setShowProfileSettings(false);
+  }, [setShowProfileSettings]);
+
   useEffect(() => {
     if (transactionIsFetching) {
       logEventWithContext('update_text_records_transaction_processing', ActionType.change);
@@ -96,7 +121,7 @@ export default function UsernameProfileEditModal({
         .then(() => {
           refetchBaseEnsAvatar()
             .then(() => {
-              toggleModal();
+              closeSettings();
             })
             .catch((error) => {
               logError(error, 'Failed to refetch avatar');
@@ -118,9 +143,9 @@ export default function UsernameProfileEditModal({
     transactionData,
     logEventWithContext,
     transactionIsFetching,
-    toggleModal,
     logError,
     refetchBaseEnsAvatar,
+    closeSettings,
   ]);
 
   useEffect(() => {
@@ -188,7 +213,7 @@ export default function UsernameProfileEditModal({
                 logEventWithContext('update_text_records_transaction_approved', ActionType.change);
               }
               // close the modal on success
-              toggleModal();
+              closeSettings();
             })
 
             .catch((error) => {
@@ -210,7 +235,7 @@ export default function UsernameProfileEditModal({
       avatarFile,
       logEventWithContext,
       writeTextRecords,
-      toggleModal,
+      closeSettings,
       logError,
     ],
   );
@@ -226,26 +251,21 @@ export default function UsernameProfileEditModal({
     setAvatarFile(file);
   }, []);
 
-  const formClasses = classNames(
-    'flex flex-col justify-between gap-8 text-gray/60 md:items-center mt-6',
+  const settingTabClass = classNames(
+    'flex flex-col justify-between gap-8 text-gray/60 md:items-center p-4 md:p-10 max-h-[40rem] overflow-scroll',
   );
 
   const isLoading =
     existingTextRecordsIsLoading || writeTextRecordsIsPending || transactionIsFetching;
 
-  return (
-    <Modal
-      isOpen={isOpen}
-      onClose={toggleModal}
-      title="Manage Profile"
-      titleAlign="left"
-      modalAlign="top"
-      size={ModalSizes.Large}
-    >
-      {!currentWalletIsOwner ? (
-        <p>You don&apos;t have the permission to edit this profile</p>
-      ) : (
-        <form className={formClasses}>
+  console.log({ textRecords });
+
+  return !currentWalletIsOwner ? (
+    <p>You don&apos;t have the permission to edit this profile</p>
+  ) : (
+    <div className="relative mx-auto flex max-w-[60rem] rounded-2xl border border-[#EBEBEB] shadow-lg">
+      <div className="border-r border-[#EBEBEB] ">
+        <div className="p-4 md:p-10">
           <UsernameAvatarField
             onChangeFile={onChangeAvatarFile}
             onChange={onChangeTextRecord}
@@ -253,30 +273,80 @@ export default function UsernameProfileEditModal({
             disabled={isLoading}
             username={profileUsername}
           />
-          <UsernameDescriptionField
-            onChange={onChangeTextRecord}
-            value={textRecords[UsernameTextRecordKeys.Description]}
-            disabled={isLoading}
-          />
-          <Fieldset>
-            <Label>Socials</Label>
-            {textRecordsSocialFieldsEnabled.map((textRecordKey) => (
-              <UsernameTextRecordInlineField
-                key={textRecordKey}
-                textRecordKey={textRecordKey}
-                onChange={onChangeTextRecord}
-                value={textRecords[textRecordKey]}
-                disabled={isLoading}
-              />
+        </div>
+        <nav className="border-t border-[#EBEBEB] p-4 md:p-10 ">
+          <ul className="flex w-full flex-col gap-4">
+            {allSettingsTabs.map((settingTab) => (
+              <li key={settingTab}>
+                {settingsTabsEnabled.includes(settingTab) ? (
+                  <button
+                    type="button"
+                    onClick={() => setCurrentSettingsTab(settingTab)}
+                    className={classNames('text-sm font-bold uppercase', {
+                      'text-black': settingTab === currentSettingsTab,
+                      'text-gray-40': settingTab !== currentSettingsTab,
+                    })}
+                  >
+                    {settingTabsForDisplay[settingTab]}
+                  </button>
+                ) : (
+                  <Tooltip content="Coming soon" className="cursor-default	">
+                    <span
+                      className={classNames(' mb-2 text-sm font-bold uppercase ', {
+                        'text-black': settingTab === currentSettingsTab,
+                        'text-gray-40': settingTab !== currentSettingsTab,
+                      })}
+                    >
+                      {settingTabsForDisplay[settingTab]}
+                    </span>
+                  </Tooltip>
+                )}
+              </li>
             ))}
-          </Fieldset>
-          <div className="mb-2">
-            <UsernameKeywordsField
+          </ul>
+        </nav>
+      </div>
+      <div className="flex flex-col">
+        {currentSettingsTab === SettingsTabs.ManageProfile && (
+          <section className={settingTabClass}>
+            <h2 className="w-full text-3xl font-bold text-illoblack">
+              {settingTabsForDisplay[currentSettingsTab]}
+            </h2>
+            <UsernameDescriptionField
               onChange={onChangeTextRecord}
-              value={textRecords[UsernameTextRecordKeys.Keywords]}
+              value={textRecords[UsernameTextRecordKeys.Description]}
               disabled={isLoading}
             />
-          </div>
+            <Fieldset>
+              <Label>Socials</Label>
+              {textRecordsSocialFieldsEnabled.map((textRecordKey) => (
+                <UsernameTextRecordInlineField
+                  key={textRecordKey}
+                  textRecordKey={textRecordKey}
+                  onChange={onChangeTextRecord}
+                  value={textRecords[textRecordKey]}
+                  disabled={isLoading}
+                />
+              ))}
+            </Fieldset>
+            <div className="mb-2">
+              <UsernameKeywordsField
+                onChange={onChangeTextRecord}
+                value={textRecords[UsernameTextRecordKeys.Keywords]}
+                disabled={isLoading}
+              />
+            </div>
+          </section>
+        )}
+
+        <div className="border-t border-[#EBEBEB] p-4 md:p-10">
+          {writeTextRecordsError && <TransactionError error={writeTextRecordsError} />}
+          {existingTextRecordsError && <TransactionError error={existingTextRecordsError} />}
+          {transactionError && <TransactionError error={existingTextRecordsError} />}
+          {transactionData && transactionData.status === 'reverted' && (
+            <TransactionStatus transaction={transactionData} chainId={transactionData.chainId} />
+          )}
+
           <Button
             variant={ButtonVariants.Black}
             rounded
@@ -287,14 +357,17 @@ export default function UsernameProfileEditModal({
           >
             Save
           </Button>
-          {writeTextRecordsError && <TransactionError error={writeTextRecordsError} />}
-          {existingTextRecordsError && <TransactionError error={existingTextRecordsError} />}
-          {transactionError && <TransactionError error={existingTextRecordsError} />}
-          {transactionData && transactionData.status === 'reverted' && (
-            <TransactionStatus transaction={transactionData} chainId={transactionData.chainId} />
-          )}
-        </form>
-      )}
-    </Modal>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        className="absolute right-12 top-10 ml-auto text-xl text-[#0A0B0D]"
+        onClick={closeSettings}
+        aria-label="Close modal"
+      >
+        <Icon name="close" width={16} height={16} color="currentColor" />
+      </button>
+    </div>
   );
 }
