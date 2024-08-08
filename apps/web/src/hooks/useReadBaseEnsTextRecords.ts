@@ -1,15 +1,14 @@
-import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Address, ContractFunctionParameters, namehash } from 'viem';
+import { Address } from 'viem';
 import {
   UsernameTextRecords,
   UsernameTextRecordKeys,
   textRecordsKeysEnabled,
 } from 'apps/web/src/utils/usernames';
-import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { useQuery } from '@tanstack/react-query';
 import { BaseEnsNameData } from 'apps/web/src/hooks/useBaseEnsName';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import { getBasenameTextRecords } from 'apps/web/src/apis/usernames';
 
 export type UseReadBaseEnsTextRecordsProps = {
   address?: Address;
@@ -20,7 +19,7 @@ export default function useReadBaseEnsTextRecords({
   address,
   username,
 }: UseReadBaseEnsTextRecordsProps) {
-  const { basenameChain, basenamePublicClient } = useBasenameChain(username);
+  const { basenameChain } = useBasenameChain(username);
 
   const defaultTextRecords = useMemo(() => {
     return {
@@ -52,22 +51,10 @@ export default function useReadBaseEnsTextRecords({
   }, []);
 
   const getExistingTextRecords = useCallback(async () => {
-    if (!basenamePublicClient) return;
     if (!username) return;
-    const nameHash = namehash(username);
-    const readContracts: ContractFunctionParameters[] = textRecordsKeysEnabled.map((key) => {
-      return {
-        args: [nameHash, key],
-        functionName: 'text',
-        abi: L2ResolverAbi,
-        address: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
-      };
-    });
-
-    const result = await basenamePublicClient.multicall({ contracts: readContracts });
-
+    const result = await getBasenameTextRecords(username);
     return result;
-  }, [basenameChain.id, basenamePublicClient, username]);
+  }, [username]);
 
   const {
     data: textRecordsData,

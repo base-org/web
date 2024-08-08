@@ -18,7 +18,7 @@ export default function UsernameProfile() {
 
   return (
     <div className="mx-auto flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 md:flex-row md:px-8">
-      <div className="md:max-w-[25rem]">
+      <div className="w-full md:max-w-[25rem]">
         <UsernameProfileSidebar />
       </div>
       <div className="w-full">

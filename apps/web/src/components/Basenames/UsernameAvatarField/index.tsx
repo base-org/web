@@ -77,8 +77,9 @@ export default function UsernameAvatarField({
     setShowUrlInput(false);
     setNewAvatarUrl('');
     setError('');
+    onChange(UsernameTextRecordKeys.Avatar, '');
     setAvatarFile(undefined);
-  }, []);
+  }, [onChange]);
 
   // Validate avatar file
   useEffect(() => {
@@ -98,8 +99,6 @@ export default function UsernameAvatarField({
   // Validate avatar url
   useEffect(() => {
     if (newAvatarUrl.trim() === '') {
-      onChange(UsernameTextRecordKeys.Avatar, newAvatarUrl.trim());
-      setError('');
       return;
     }
 
@@ -122,7 +121,7 @@ export default function UsernameAvatarField({
   const avatarSrc =
     newAvatarFileUrl ??
     newAvatarAbsoluteUrl ??
-    getBasenameAvatarUrl(newAvatarUrl) ??
+    getBasenameAvatarUrl(currentAvatarUrl) ??
     defaultSelectedProfilePicture;
 
   return (

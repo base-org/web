@@ -1,15 +1,12 @@
 import ProfileProviders from 'apps/web/app/(basenames)/name/[username]/ProfileProviders';
 import { Metadata } from 'next';
-import {
-  fetchAddress,
-  fetchDescription,
-  formatDefaultUsername,
-} from 'apps/web/src/utils/usernames';
+import { formatDefaultUsername, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { redirect } from 'next/navigation';
 import classNames from 'classnames';
 import { BaseName } from '@coinbase/onchainkit/identity';
 import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
 import ErrorsProvider from 'apps/web/contexts/Errors';
+import { getBasenameAddress, getBasenameTextRecord } from 'apps/web/src/apis/usernames';
 
 type UsernameProfileProps = {
   params: { username: BaseName };
@@ -18,7 +15,7 @@ type UsernameProfileProps = {
 export async function generateMetadata({ params }: UsernameProfileProps): Promise<Metadata> {
   const username = await formatDefaultUsername(params.username);
   const defaultDescription = `${username}, a Basename`;
-  const description = await fetchDescription(username);
+  const description = await getBasenameTextRecord(username, UsernameTextRecordKeys.Description);
 
   return {
     metadataBase: new URL('https://base.org'),
@@ -38,7 +35,7 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
 export default async function Username({ params }: UsernameProfileProps) {
   let username = await formatDefaultUsername(params.username);
 
-  const ensAddress = await fetchAddress(username);
+  const ensAddress = await getBasenameAddress(username);
 
   // Domain doesn't exist
   if (!ensAddress) {

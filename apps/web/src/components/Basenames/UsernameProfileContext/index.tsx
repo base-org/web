@@ -42,10 +42,10 @@ export default function UsernameProfileProvider({
   address,
 }: UsernameProfileProviderProps) {
   const profileUsername = username;
-  const { address: connectedAddress } = useAccount();
-  const currentWalletIsOwner = connectedAddress === address;
 
   const [showProfileSettings, setShowProfileSettings] = useState<boolean>(false);
+  const { address: connectedAddress } = useAccount();
+  const currentWalletIsOwner = connectedAddress === address;
 
   const values = useMemo(() => {
     return {

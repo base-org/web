@@ -12,13 +12,10 @@ import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profil
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import { base, baseSepolia, mainnet } from 'viem/chains';
 import { BaseName } from '@coinbase/onchainkit/identity';
-import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import {
   USERNAME_EA_REGISTRAR_CONTROLLER_ADDRESSES,
-  USERNAME_L2_RESOLVER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
-import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import {
   ALLOWED_IMAGE_TYPE,
   MAX_IMAGE_SIZE_IN_MB,
@@ -343,47 +340,6 @@ export function isValidDiscount(key: string): key is keyof typeof Discount {
 
 export function getChainForBasename(username: BaseName): Chain {
   return username.endsWith(`.${USERNAME_DOMAINS[base.id]}`) ? base : baseSepolia;
-}
-
-// Resolve name to address
-export async function fetchAddress(username: BaseName) {
-  const chain = getChainForBasename(username);
-
-  try {
-    const client = getBasenamePublicClient(chain.id);
-    const ensAddress = await client.getEnsAddress({
-      name: normalize(username),
-      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
-    });
-    return ensAddress;
-  } catch (error) {}
-}
-
-export async function fetchAvatar(username: BaseName) {
-  const chain = getChainForBasename(username);
-
-  try {
-    const client = getBasenamePublicClient(chain.id);
-    const ensAvatar = await client.getEnsAvatar({
-      name: normalize(username),
-      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
-    });
-    return ensAvatar;
-  } catch (error) {}
-}
-
-export async function fetchDescription(username: BaseName) {
-  const chain = getChainForBasename(username);
-  try {
-    const client = getBasenamePublicClient(chain.id);
-    const description = await client.readContract({
-      abi: L2ResolverAbi,
-      address: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
-      args: [namehash(username), UsernameTextRecordKeys.Description],
-      functionName: 'text',
-    });
-    return description;
-  } catch (error) {}
 }
 
 // Assume domainless name to .base.eth

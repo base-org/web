@@ -1,3 +1,4 @@
+'use client';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useState } from 'react';
@@ -26,14 +27,18 @@ import {
   UsernameTextRecords,
 } from 'apps/web/src/utils/usernames';
 import Tooltip from 'apps/web/src/components/Tooltip';
+import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
+import Dropdown from 'apps/web/src/components/Dropdown';
+import DropdownToggle from 'apps/web/src/components/DropdownToggle';
+import DropdownMenu, { DropdownMenuAlign } from 'apps/web/src/components/DropdownMenu';
+import DropdownItem from 'apps/web/src/components/DropdownItem';
+import useSetPrimaryBasename from 'apps/web/src/hooks/useSetPrimaryBasename';
 
 export enum SettingsTabs {
   ManageProfile = 'manage-profile',
   Ownership = 'ownership',
   Subdomain = 'subdomain',
 }
-
-// We only support this for now
 
 const settingTabsForDisplay = {
   [SettingsTabs.ManageProfile]: 'Manage Profile',
@@ -46,7 +51,16 @@ const allSettingsTabs = [
   SettingsTabs.Ownership,
   SettingsTabs.Subdomain,
 ];
+
+// We only support Manage Profile for now
 const settingsTabsEnabled = [SettingsTabs.ManageProfile];
+
+// TODO: This component is too big, gotta split in
+// - UsernameProfileSettingsProvider (high level logic / read / write)
+// - UsernameProfileSettingsAvatar
+// - UsernameProfileSettingsName
+// - UsernameProfileSettingsNavigation
+// - UsernameProfileSettingsTextRecords
 
 export default function UsernameProfileSettings() {
   const { profileUsername, profileAddress, currentWalletIsOwner, setShowProfileSettings } =
@@ -59,6 +73,16 @@ export default function UsernameProfileSettings() {
   const [currentSettingsTab, setCurrentSettingsTab] = useState<SettingsTabs>(
     SettingsTabs.ManageProfile,
   );
+
+  // Get the primary name
+  const { data: primaryUsername } = useBaseEnsName({
+    address: profileAddress,
+  });
+
+  // Hook to update primary name
+  const { setPrimaryName, isLoading: setPrimaryNameIsLoading } = useSetPrimaryBasename({
+    secondaryName: profileUsername,
+  });
 
   const {
     existingTextRecords,
@@ -106,6 +130,7 @@ export default function UsernameProfileSettings() {
     setShowProfileSettings(false);
   }, [setShowProfileSettings]);
 
+  // TODO: Move all this nonsense to the hook
   useEffect(() => {
     if (transactionIsFetching) {
       logEventWithContext('update_text_records_transaction_processing', ActionType.change);
@@ -251,123 +276,181 @@ export default function UsernameProfileSettings() {
     setAvatarFile(file);
   }, []);
 
+  const setPrimaryUsername = useCallback(() => {
+    setPrimaryName().catch((error) => {
+      logError(error, 'Failed to update primary name');
+    });
+  }, [logError, setPrimaryName]);
+
+  const settingTabWrapperClass = classNames('p-4 md:p-10 max-h-[40rem] overflow-scroll');
+
   const settingTabClass = classNames(
-    'flex flex-col justify-between gap-8 text-gray/60 md:items-center p-4 md:p-10 max-h-[40rem] overflow-scroll',
+    'flex flex-col justify-between gap-8 text-gray/60 md:items-center ',
   );
 
   const isLoading =
     existingTextRecordsIsLoading || writeTextRecordsIsPending || transactionIsFetching;
 
-  console.log({ textRecords });
+  const isPrimaryName = currentWalletIsOwner && profileUsername === primaryUsername;
+  const isSecondaryName = currentWalletIsOwner && profileUsername !== primaryUsername;
 
   return !currentWalletIsOwner ? (
     <p>You don&apos;t have the permission to edit this profile</p>
   ) : (
-    <div className="relative mx-auto flex max-w-[60rem] rounded-2xl border border-[#EBEBEB] shadow-lg">
-      <div className="border-r border-[#EBEBEB] ">
-        <div className="p-4 md:p-10">
-          <UsernameAvatarField
-            onChangeFile={onChangeAvatarFile}
-            onChange={onChangeTextRecord}
-            currentAvatarUrl={textRecords[UsernameTextRecordKeys.Avatar]}
-            disabled={isLoading}
-            username={profileUsername}
-          />
-        </div>
-        <nav className="border-t border-[#EBEBEB] p-4 md:p-10 ">
-          <ul className="flex w-full flex-col gap-4">
-            {allSettingsTabs.map((settingTab) => (
-              <li key={settingTab}>
-                {settingsTabsEnabled.includes(settingTab) ? (
-                  <button
-                    type="button"
-                    onClick={() => setCurrentSettingsTab(settingTab)}
-                    className={classNames('text-sm font-bold uppercase', {
-                      'text-black': settingTab === currentSettingsTab,
-                      'text-gray-40': settingTab !== currentSettingsTab,
-                    })}
-                  >
-                    {settingTabsForDisplay[settingTab]}
-                  </button>
+    // Settings layout
+    <div className="items-left mx-auto flex w-full max-w-[60rem] flex-col">
+      {/* Back to profile */}
+      <div className="mb-6">
+        <button type="button" onClick={closeSettings} className="flex items-center gap-2">
+          <Icon name="backArrow" color="currentColor" height="1rem" width="1rem" />
+          Back to profile
+        </button>
+      </div>
+
+      {/* Settings UI: borders, layout & shadow  */}
+      <div className="relative flex rounded-2xl border border-[#EBEBEB] shadow-lg">
+        {/* Settings UI: Left side  */}
+        <div className="w-full max-w-[21rem] border-r border-[#EBEBEB]">
+          {/* Settings UI: Avatar  */}
+          <div className="flex flex-col gap-6 p-4 md:p-10">
+            <UsernameAvatarField
+              onChangeFile={onChangeAvatarFile}
+              onChange={onChangeTextRecord}
+              currentAvatarUrl={textRecords[UsernameTextRecordKeys.Avatar]}
+              disabled={isLoading}
+              username={profileUsername}
+            />
+
+            {/* Settings UI: Primary or Secondary badge  */}
+            <div>
+              {isPrimaryName && (
+                <span className="rounded-md bg-blue-0 px-2 py-1 text-sm font-bold text-blue-60">
+                  Primary Name
+                </span>
+              )}
+              {isSecondaryName && (
+                <span className="rounded-md bg-orange-0 px-2 py-1 text-sm font-bold text-orange-60">
+                  Secondary Name
+                </span>
+              )}
+            </div>
+
+            {/* Settings UI: Username & Dropdown  */}
+            <div className="flex w-full items-center justify-between gap-4">
+              <span>{profileUsername}</span>
+
+              {isSecondaryName &&
+                (setPrimaryNameIsLoading ? (
+                  <Icon name="spinner" height="1rem" width="1rem" color="currentColor" />
                 ) : (
-                  <Tooltip content="Coming soon" className="cursor-default	">
-                    <span
-                      className={classNames(' mb-2 text-sm font-bold uppercase ', {
+                  <Dropdown>
+                    <DropdownToggle>
+                      <Icon name="pen" height="1rem" width="1rem" color="currentColor" />
+                    </DropdownToggle>
+                    <DropdownMenu align={DropdownMenuAlign.Left}>
+                      <DropdownItem onClick={setPrimaryUsername}>Set as Primary name</DropdownItem>
+                    </DropdownMenu>
+                  </Dropdown>
+                ))}
+            </div>
+          </div>
+
+          {/* Settings UI: Menu  */}
+          <nav className="border-t border-[#EBEBEB] p-4 md:p-10 ">
+            <ul className="flex w-full flex-col gap-4">
+              {allSettingsTabs.map((settingTab) => (
+                <li key={settingTab}>
+                  {settingsTabsEnabled.includes(settingTab) ? (
+                    <button
+                      type="button"
+                      // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+                      onClick={() => setCurrentSettingsTab(settingTab)}
+                      className={classNames('text-sm font-bold uppercase', {
                         'text-black': settingTab === currentSettingsTab,
                         'text-gray-40': settingTab !== currentSettingsTab,
                       })}
                     >
                       {settingTabsForDisplay[settingTab]}
-                    </span>
-                  </Tooltip>
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-      <div className="flex flex-col">
-        {currentSettingsTab === SettingsTabs.ManageProfile && (
-          <section className={settingTabClass}>
-            <h2 className="w-full text-3xl font-bold text-illoblack">
+                    </button>
+                  ) : (
+                    <Tooltip content="Coming soon" className="cursor-default	">
+                      <span
+                        className={classNames(' mb-2 text-sm font-bold uppercase ', {
+                          'text-black': settingTab === currentSettingsTab,
+                          'text-gray-40': settingTab !== currentSettingsTab,
+                        })}
+                      >
+                        {settingTabsForDisplay[settingTab]}
+                      </span>
+                    </Tooltip>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+
+        {/* Settings UI: Right side  */}
+        <div className="w-full">
+          {/* Settings UI: The current settings content  */}
+          <div className={settingTabWrapperClass}>
+            <h2 className="mb-8 w-full text-3xl font-bold text-illoblack">
               {settingTabsForDisplay[currentSettingsTab]}
             </h2>
-            <UsernameDescriptionField
-              onChange={onChangeTextRecord}
-              value={textRecords[UsernameTextRecordKeys.Description]}
-              disabled={isLoading}
-            />
-            <Fieldset>
-              <Label>Socials</Label>
-              {textRecordsSocialFieldsEnabled.map((textRecordKey) => (
-                <UsernameTextRecordInlineField
-                  key={textRecordKey}
-                  textRecordKey={textRecordKey}
+
+            {/* Settings UI: Manage profile, TODO: Move this to its own component  */}
+            {currentSettingsTab === SettingsTabs.ManageProfile && (
+              <section className={settingTabClass}>
+                <UsernameDescriptionField
                   onChange={onChangeTextRecord}
-                  value={textRecords[textRecordKey]}
+                  value={textRecords[UsernameTextRecordKeys.Description]}
                   disabled={isLoading}
                 />
-              ))}
-            </Fieldset>
-            <div className="mb-2">
-              <UsernameKeywordsField
-                onChange={onChangeTextRecord}
-                value={textRecords[UsernameTextRecordKeys.Keywords]}
-                disabled={isLoading}
-              />
-            </div>
-          </section>
-        )}
+                <Fieldset>
+                  <Label>Socials</Label>
+                  {textRecordsSocialFieldsEnabled.map((textRecordKey) => (
+                    <UsernameTextRecordInlineField
+                      key={textRecordKey}
+                      textRecordKey={textRecordKey}
+                      onChange={onChangeTextRecord}
+                      value={textRecords[textRecordKey]}
+                      disabled={isLoading}
+                    />
+                  ))}
+                </Fieldset>
+                <div className="mb-2">
+                  <UsernameKeywordsField
+                    onChange={onChangeTextRecord}
+                    value={textRecords[UsernameTextRecordKeys.Keywords]}
+                    disabled={isLoading}
+                  />
+                </div>
+              </section>
+            )}
+          </div>
 
-        <div className="border-t border-[#EBEBEB] p-4 md:p-10">
-          {writeTextRecordsError && <TransactionError error={writeTextRecordsError} />}
-          {existingTextRecordsError && <TransactionError error={existingTextRecordsError} />}
-          {transactionError && <TransactionError error={existingTextRecordsError} />}
-          {transactionData && transactionData.status === 'reverted' && (
-            <TransactionStatus transaction={transactionData} chainId={transactionData.chainId} />
-          )}
+          {/* Settings UI: The save section  */}
+          <div className="border-t border-[#EBEBEB] p-4 md:p-10">
+            {writeTextRecordsError && <TransactionError error={writeTextRecordsError} />}
+            {existingTextRecordsError && <TransactionError error={existingTextRecordsError} />}
+            {transactionError && <TransactionError error={existingTextRecordsError} />}
+            {transactionData && transactionData.status === 'reverted' && (
+              <TransactionStatus transaction={transactionData} chainId={transactionData.chainId} />
+            )}
 
-          <Button
-            variant={ButtonVariants.Black}
-            rounded
-            fullWidth
-            disabled={isLoading}
-            isLoading={isLoading}
-            onClick={onClickSave}
-          >
-            Save
-          </Button>
+            <Button
+              variant={ButtonVariants.Black}
+              rounded
+              fullWidth
+              disabled={isLoading}
+              isLoading={isLoading}
+              onClick={onClickSave}
+            >
+              Save
+            </Button>
+          </div>
         </div>
       </div>
-
-      <button
-        type="button"
-        className="absolute right-12 top-10 ml-auto text-xl text-[#0A0B0D]"
-        onClick={closeSettings}
-        aria-label="Close modal"
-      >
-        <Icon name="close" width={16} height={16} color="currentColor" />
-      </button>
     </div>
   );
 }
