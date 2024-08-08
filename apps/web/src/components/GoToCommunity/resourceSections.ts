@@ -2,8 +2,7 @@ import { ResourceSectionType } from 'apps/web/src/components/GoToCommunity/Resou
 
 export const resourceSections: ResourceSectionType[] = [
   {
-    title: 'Resources to BUILD your project',
-    description: 'Resources to make your project easier to build and easier to user',
+    title: 'Build your project',
     cards: [
       {
         title: 'Smart Wallet',
@@ -28,8 +27,7 @@ export const resourceSections: ResourceSectionType[] = [
     ],
   },
   {
-    title: 'Resources to GROW your project',
-    description: 'Resources to make your project easier to build and easier to user',
+    title: 'Grow your project',
     cards: [
       {
         title: 'Smart Wallet',
@@ -54,8 +52,7 @@ export const resourceSections: ResourceSectionType[] = [
     ],
   },
   {
-    title: 'Resources to FUND your project',
-    description: 'Get money money money, get money money!',
+    title: 'Fund your project',
     cards: [
       {
         title: 'Smart Wallet',

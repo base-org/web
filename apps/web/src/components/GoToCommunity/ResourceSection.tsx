@@ -1,3 +1,4 @@
+import React from 'react';
 import ResourceCard from 'apps/web/src/components/GoToCommunity/ResourceCard/ResourceCard';
 import { Resource } from 'apps/web/src/components/GoToCommunity/ResourceCard/resourceCardTypes';
 
@@ -8,9 +9,8 @@ export default async function ResourceSection({ section }: ResourceSectionProps)
         <h1 className="mb-4 text-4xl leading-tight sm:text-5xl lg:mb-6 lg:text-6xl lg:leading-none">
           {section.title}
         </h1>
-        <span className="text-lg sm:text-xl lg:text-2xl">{section.description}</span>
       </div>
-      <div className="mt-10 flex flex-row flex-wrap justify-center gap-4 sm:mt-12 sm:gap-6 lg:mt-16 lg:gap-8">
+      <div className="mt-10 flex flex-row flex-wrap gap-4 sm:mt-12 sm:gap-6 lg:mt-16 lg:gap-8">
         {section.cards.map((card, index) => (
           <ResourceCard
             key={card.title}
@@ -27,7 +27,6 @@ export default async function ResourceSection({ section }: ResourceSectionProps)
 
 export type ResourceSectionType = {
   title: string;
-  description: string;
   cards: Resource[];
 };
 
