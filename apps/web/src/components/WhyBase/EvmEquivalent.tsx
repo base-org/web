@@ -13,7 +13,7 @@ export default async function EvmEquivalent() {
       id={EVM_COMPATIBILITY_SECTION_ID}
       className={`${whyBaseSharedClassNames.section} ${whyBaseSharedClassNames.sectionGrid}`}
     >
-      <div className="hidden h-auto w-full bg-contain bg-center bg-no-repeat sm:my-[-25px] sm:block lg:my-[-40px]">
+      <div className="h-[235px] w-[250px] mb-8 self-center bg-contain bg-center bg-no-repeat sm:my-[-25px] sm:h-auto sm:w-full lg:my-[-40px]">
         <Image src={evmCompatibleChains} alt="EVM compatible chains" />
       </div>
       <div className="flex w-full flex-row">
@@ -25,9 +25,6 @@ export default async function EvmEquivalent() {
             <h2 className={whyBaseSharedClassNames.title}>
               EVM Compatible for effortless migration
             </h2>
-            <div className="mb-8 mt-4 h-[235px] w-[250px] self-center bg-contain bg-center bg-no-repeat sm:hidden">
-              <Image src={evmCompatibleChains} alt="EVM compatible chains" />
-            </div>
             <p className={whyBaseSharedClassNames.bodyText}>
               Move your project to Base in minutes from any other EVM-compatible chain and unlock
               the full potential of the Superchain and OP stack

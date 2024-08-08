@@ -50,7 +50,7 @@ export default async function ActiveCommunityOfBuilders() {
       className={`${whyBaseSharedClassNames.section} sm:pt-8 lg:pt-10`}
     >
       <div className="flex flex-col justify-between md:grid md:grid-cols-[1fr_1fr]">
-        <div className="mr-8 hidden md:block">
+        <div className="mr-8 mb-8">
           <CommunityPartners communityPartners={partners} />
         </div>
         <div className="flex grow flex-col justify-start space-y-6 lg:mx-8 lg:justify-around xl:mx-20">
@@ -62,9 +62,6 @@ export default async function ActiveCommunityOfBuilders() {
               <h2 className={whyBaseSharedClassNames.title}>
                 Join an active community of Builders
               </h2>
-              <div className="my-4 md:hidden">
-                <CommunityPartners communityPartners={partners} />
-              </div>
               <p className={whyBaseSharedClassNames.bodyText}>
                 Join a community of thousands builders just like you, building some of the coolest
                 projects onchain. Reach out to our Discord support team for help.

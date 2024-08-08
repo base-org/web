@@ -15,15 +15,15 @@ export default async function EmpoweredByCoinbase() {
       className={`${whyBaseSharedClassNames.section} ${whyBaseSharedClassNames.sectionGrid}`}
     >
       <div className="flex w-full flex-col justify-center gap-8 lg:gap-16 xl:max-w-[550px]">
+        <div className="mb-4 h-auto w-full max-w-[300px] self-center bg-contain bg-center bg-no-repeat sm:hidden">
+          <Image src={empoweredByCoinbase} alt="Empowered by Coinbase" />
+        </div>
         <div className="flex flex-row">
           <span className={whyBaseSharedClassNames.sectionNumberIcon}>
             <Image src={section5 as StaticImport} alt="section five" />
           </span>
           <div className="ml-4">
             <h2 className={whyBaseSharedClassNames.title}>Empowered by Coinbase</h2>
-            <div className="my-4 h-auto w-full max-w-[300px] self-center bg-contain bg-center bg-no-repeat sm:hidden">
-              <Image src={empoweredByCoinbase} alt="Empowered by Coinbase" />
-            </div>
             <p className={whyBaseSharedClassNames.bodyText}>
               {`Base is incubated within Coinbase and plans to progressively decentralize in the years
               ahead. Leverage Coinbase's developer tools to make building easy and to reach Coinbase
