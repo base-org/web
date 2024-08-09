@@ -130,7 +130,7 @@ export default function UsernameAvatarField({
         <ImageWithLoading
           src={avatarSrc}
           alt={username}
-          wrapperClassName="rounded-full h-[10rem] max-h-[10rem] min-h-[10rem] w-[10rem] min-w-[10rem] max-w-[10rem] border-4 border-white "
+          wrapperClassName="rounded-full h-[10rem] max-h-[10rem] min-h-[10rem] w-[10rem] min-w-[10rem] max-w-[10rem] border-4 border-white"
           backgroundClassName="bg-blue-500"
           imageClassName="object-cover h-full w-full"
           width={320}

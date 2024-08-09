@@ -1,11 +1,14 @@
 'use client';
 
+import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
 import {
   Dispatch,
   ReactNode,
   SetStateAction,
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -55,12 +58,18 @@ export default function UsernameProfileSettingsProvider({
     SettingsTabs.ManageProfile,
   );
 
+  const { logEventWithContext } = useAnalytics();
+
   const values = useMemo(() => {
     return {
       currentSettingsTab,
       setCurrentSettingsTab,
     };
   }, [currentSettingsTab]);
+
+  useEffect(() => {
+    logEventWithContext(`settings_current_tab_${currentSettingsTab}`, ActionType.change);
+  }, [currentSettingsTab, logEventWithContext]);
 
   return (
     <UsernameProfileSettingsContext.Provider value={values}>

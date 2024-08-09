@@ -167,8 +167,6 @@ export default function useWriteBaseEnsTextRecords({
 
     if (transactionData.status === 'success') {
       logEventWithContext('update_text_records_transaction_success', ActionType.change);
-
-      // TODO: Call to remove the previous avatar for vercel's blob
       refetchExistingTextRecords()
         .then(() => {
           refetchBaseEnsAvatar()

@@ -81,8 +81,6 @@ export default function RegistrationProfileForm() {
       }
 
       if (currentFormStep === FormSteps.Keywords) {
-        logEventWithContext('update_text_records_transaction_initiated', ActionType.change);
-
         writeTextRecords()
           .then()
           .catch((error) => {
@@ -92,7 +90,7 @@ export default function RegistrationProfileForm() {
 
       event.preventDefault();
     },
-    [currentFormStep, logError, logEventWithContext, transitionFormOpacity, writeTextRecords],
+    [currentFormStep, logError, transitionFormOpacity, writeTextRecords],
   );
 
   const onChangeTextRecord = useCallback(
