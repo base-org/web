@@ -14,12 +14,32 @@ type QuestionTable = {
   created_at: ColumnType<Date, string | undefined, never>;
 };
 
+export type Question = {
+  id: number;
+  name: string;
+  description: string;
+  created_at: Date;
+};
+
 type AnswerTable = {
   id: Generated<number>;
   question_id: number;
   name: string;
   description: string;
   created_at: ColumnType<Date, string | undefined, never>;
+};
+
+export type Answer = {
+  id: number;
+  question_id: number;
+  name: string;
+  description: string;
+  created_at: Date;
+};
+
+export type Survey = {
+  question: Question;
+  answers: Answer[];
 };
 
 type UserResponseTable = {
@@ -51,13 +71,16 @@ export const surveyDb = new Kysely<Database>({
 // GetAllQuestions => call getAllQuestions()
 // /apiroutes/survey => call getAllQuestions()
 
-export async function getAllQuestions() {
-  const questions = await surveyDb.selectFrom('frame_survey_questions').selectAll().execute();
+export async function getAllQuestions(): Promise<Question[]> {
+  const questions: Question[] = await surveyDb
+    .selectFrom('frame_survey_questions')
+    .selectAll()
+    .execute();
   return questions;
 }
 
-async function getQuestion(id: string) {
-  const question = await surveyDb
+async function getQuestion(id: string): Promise<Question> {
+  const question: Question = await surveyDb
     .selectFrom('frame_survey_questions')
     .where('id', '=', Number(id))
     .selectAll()
@@ -65,7 +88,7 @@ async function getQuestion(id: string) {
   return question;
 }
 
-export async function getSurvey(id: string) {
+export async function getSurvey(id: string): Promise<Survey> {
   const question = await getQuestion(id);
   const answers = await surveyDb
     .selectFrom('frame_survey_question_answers')
@@ -76,6 +99,41 @@ export async function getSurvey(id: string) {
   return {
     question,
     answers,
+  };
+}
+
+export async function postUserResponse(
+  questionId: number,
+  answerId: number,
+  userAddress: string,
+  userId: string,
+) {
+  const survey = await getSurvey(String(questionId));
+  const surveyAnswerIds = survey.answers.map((answer) => answer.id);
+
+  if (!surveyAnswerIds.includes(answerId)) {
+    return {
+      status: 404,
+      message: 'Invalid answer for this question',
+    };
+  }
+
+  // TODO Sanitize the strings //
+  const userResponse = await surveyDb
+    .insertInto('frame_survey_user_responses')
+    .values({
+      question_id: questionId,
+      answer_id: answerId,
+      user_address: userAddress,
+      user_id: userId,
+    })
+    .returning(['question_id', 'answer_id', 'user_address', 'user_id'])
+    .executeTakeFirst();
+
+  return {
+    status: 200,
+    userResponse,
+    message: 'you fucking rock',
   };
 }
 
