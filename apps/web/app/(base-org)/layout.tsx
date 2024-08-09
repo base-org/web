@@ -1,6 +1,7 @@
 import Nav from 'apps/web/src/components/Layout/Nav/Nav';
 
 import type { Metadata } from 'next';
+import BasenamesHomepageModal from '../../src/components/Basenames/HomepageModal';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -29,6 +30,7 @@ export default async function BaseOrgLayout({
   return (
     <div className="max-w-screen flex min-h-screen flex-col">
       <Nav />
+      <BasenamesHomepageModal />
       {children}
     </div>
   );
