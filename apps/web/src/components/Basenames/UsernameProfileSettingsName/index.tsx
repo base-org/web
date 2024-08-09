@@ -1,14 +1,10 @@
 'use client';
 import { useCallback } from 'react';
-import { Icon } from 'apps/web/src/components/Icon/Icon';
-import Dropdown from 'apps/web/src/components/Dropdown';
-import DropdownToggle from 'apps/web/src/components/DropdownToggle';
-import DropdownMenu, { DropdownMenuAlign } from 'apps/web/src/components/DropdownMenu';
-import DropdownItem from 'apps/web/src/components/DropdownItem';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useSetPrimaryBasename from 'apps/web/src/hooks/useSetPrimaryBasename';
 import { useErrors } from 'apps/web/contexts/Errors';
+import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 
 export default function UsernameProfileSettingsName() {
   // Profile username
@@ -56,21 +52,20 @@ export default function UsernameProfileSettingsName() {
       </div>
       <div className="flex w-full items-center justify-between gap-4">
         <span>{profileUsername}</span>
-        {isSecondaryName &&
-          canSetUsernameAsPrimary &&
-          (setPrimaryNameIsLoading ? (
-            <Icon name="spinner" height="1rem" width="1rem" color="currentColor" />
-          ) : (
-            <Dropdown>
-              <DropdownToggle>
-                <Icon name="pen" height="1rem" width="1rem" color="currentColor" />
-              </DropdownToggle>
-              <DropdownMenu align={DropdownMenuAlign.Center}>
-                <DropdownItem onClick={setPrimaryUsername}>Set as Primary name</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          ))}
       </div>
+      {isSecondaryName && canSetUsernameAsPrimary && (
+        <Button
+          size={ButtonSizes.Small}
+          variant={ButtonVariants.Gray}
+          rounded
+          fullWidth
+          onClick={setPrimaryUsername}
+          disabled={setPrimaryNameIsLoading}
+          isLoading={setPrimaryNameIsLoading}
+        >
+          Set as Primary Name
+        </Button>
+      )}
     </div>
   );
 }
