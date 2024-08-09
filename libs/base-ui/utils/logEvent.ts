@@ -53,8 +53,8 @@ enum AnalyticsEventImportance {
 
 type CCAEventData = {
   // Standard Attributes
-  action?: ActionType | keyof typeof ActionType;
-  componentType?: ComponentType | keyof typeof ComponentType;
+  action?: ActionType;
+  componentType?: ComponentType;
   // Custom Attributes
   doc_helpful?: boolean;
   doc_feedback_reason?: string | null;
@@ -75,19 +75,19 @@ type CCAEventData = {
 type AnalyticsEventData = {
   name: string;
   event: CCAEventData;
-  importance: AnalyticsEventImportance | keyof typeof AnalyticsEventImportance | undefined;
+  importance: AnalyticsEventImportance;
 };
 
 type LogEvent = (
   eventName: string,
   eventData: CCAEventData,
-  importance?: AnalyticsEventImportance | keyof typeof AnalyticsEventImportance,
+  importance?: AnalyticsEventImportance,
 ) => void;
 
 export default function logEvent(
   name: string,
   event: CCAEventData,
-  importance: AnalyticsEventImportance | keyof typeof AnalyticsEventImportance | undefined,
+  importance: AnalyticsEventImportance | undefined,
 ) {
   const CCA = window.ClientAnalytics;
   if (CCA) {
