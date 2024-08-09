@@ -42,7 +42,13 @@ module.exports = {
         'tools/onramps',
         'tools/onboarding',
         'tools/bridges-mainnet',
-        'tools/registry-api',
+        {
+          type: 'category',
+          label: 'Onchain Registry',
+          collapsible: true,
+          collapsed: true,
+          items: ['tools/registry-api', 'tools/registry-faq'],
+        },
         {
           type: 'category',
           label: 'Toolchains',
