@@ -3,6 +3,7 @@ import { EarlyAccessProofResponse } from 'apps/web/pages/api/proofs/earlyAccess'
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
 import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
 import EarlyAccessValidatorABI from 'apps/web/src/abis/EarlyAccessValidator';
+import ERC721ValidatorABI from 'apps/web/src/abis/ERC721DiscountValidator';
 import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
 import { Discount, IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
 import { useEffect, useMemo, useState } from 'react';
@@ -11,6 +12,11 @@ import { useAccount, useReadContract } from 'wagmi';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useErrors } from 'apps/web/contexts/Errors';
 import { BNSProofResponse } from 'apps/web/pages/api/proofs/bns';
+import {
+  BASE_DOT_ETH_ERC721_DISCOUNT_VALIDATOR,
+  BUILDATHON_ERC721_DISCOUNT_VALIDATOR,
+  USERNAME_1155_DISCOUNT_VALIDATORS,
+} from 'apps/web/src/addresses/usernames';
 
 export type AttestationData = {
   discountValidatorAddress: Address;
@@ -279,15 +285,137 @@ export function useCheckEAAttestations(): AttestationHookReturns {
   return { data: null, loading: isLoading, error };
 }
 
-// export function useBuildathonAttestations() {
-//   return { data: null, loading: isLoading, error };
-// }
-// export function useSummerPassAttestations() {
-//   return { data: null, loading: isLoading, error };
-// }
-// export function useBaseDotEthAttestations() {
-//   return { data: null, loading: isLoading, error };
-// }
+// erc 1155 validator
+export function useSummerPassAttestations() {
+  const { address } = useAccount();
+  const { basenameChain } = useBasenameChain();
+
+  const discountValidatorAddress = USERNAME_1155_DISCOUNT_VALIDATORS[basenameChain.id];
+
+  const encodedEmptyArray = useMemo(
+    () =>
+      encodeAbiParameters(
+        [{ type: 'bytes32[]' }],
+        [] as unknown as readonly [readonly `0x${string}`[]],
+      ),
+    [],
+  );
+
+  const readContractArgs = useMemo(() => {
+    if (!address) {
+      return {};
+    }
+    return {
+      address: discountValidatorAddress,
+      abi: ERC721ValidatorABI,
+      functionName: 'isValidDiscountRegistration',
+      args: [address, encodedEmptyArray],
+    };
+  }, [address, discountValidatorAddress, encodedEmptyArray]);
+
+  const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
+
+  if (isValid && address) {
+    return {
+      data: {
+        discountValidatorAddress,
+        discount: Discount.SUMMER_PASS_LVL_3,
+        validationData: encodedEmptyArray,
+      },
+      loading: false,
+      error: null,
+    };
+  }
+  return { data: null, loading: isLoading, error };
+}
+
+// erc 721 validator
+export function useBuildathonAttestations() {
+  const { address } = useAccount();
+  const { basenameChain } = useBasenameChain();
+
+  const discountValidatorAddress = BUILDATHON_ERC721_DISCOUNT_VALIDATOR[basenameChain.id];
+
+  const encodedEmptyArray = useMemo(
+    () =>
+      encodeAbiParameters(
+        [{ type: 'bytes32[]' }],
+        [] as unknown as readonly [readonly `0x${string}`[]],
+      ),
+    [],
+  );
+
+  const readContractArgs = useMemo(() => {
+    if (!address) {
+      return {};
+    }
+    return {
+      address: discountValidatorAddress,
+      abi: ERC721ValidatorABI,
+      functionName: 'isValidDiscountRegistration',
+      args: [address, encodedEmptyArray],
+    };
+  }, [address, discountValidatorAddress, encodedEmptyArray]);
+
+  const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
+
+  if (isValid && address) {
+    return {
+      data: {
+        discountValidatorAddress,
+        discount: Discount.BASE_BUILDATHON_PARTICIPANT,
+        validationData: encodedEmptyArray,
+      },
+      loading: false,
+      error: null,
+    };
+  }
+  return { data: null, loading: isLoading, error };
+}
+
+// erc721 validator
+export function useBaseDotEthAttestations() {
+  const { address } = useAccount();
+  const { basenameChain } = useBasenameChain();
+
+  const discountValidatorAddress = BASE_DOT_ETH_ERC721_DISCOUNT_VALIDATOR[basenameChain.id];
+
+  const encodedEmptyArray = useMemo(
+    () =>
+      encodeAbiParameters(
+        [{ type: 'bytes32[]' }],
+        [] as unknown as readonly [readonly `0x${string}`[]],
+      ),
+    [],
+  );
+
+  const readContractArgs = useMemo(() => {
+    if (!address) {
+      return {};
+    }
+    return {
+      address: discountValidatorAddress,
+      abi: ERC721ValidatorABI,
+      functionName: 'isValidDiscountRegistration',
+      args: [address, encodedEmptyArray],
+    };
+  }, [address, discountValidatorAddress, encodedEmptyArray]);
+
+  const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
+
+  if (isValid && address) {
+    return {
+      data: {
+        discountValidatorAddress,
+        discount: Discount.BASE_DOT_ETH_NFT,
+        validationData: encodedEmptyArray,
+      },
+      loading: false,
+      error: null,
+    };
+  }
+  return { data: null, loading: isLoading, error };
+}
 
 // merkle tree discount calls api endpoint
 export function useBNSAttestations() {
