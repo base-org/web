@@ -561,5 +561,15 @@ module.exports = {
       },
     },
   },
+  safelist: [
+    'odd:bg-orange-60',
+    'even:bg-orange-80',
+    'odd:bg-purple-60',
+    'even:bg-purple-80',
+    'odd:border-orange-60',
+    'even:border-orange-80',
+    'odd:border-purple-60',
+    'even:border-purple-80',
+  ],
   plugins: [],
 };
