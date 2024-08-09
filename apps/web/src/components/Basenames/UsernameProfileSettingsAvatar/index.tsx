@@ -130,7 +130,7 @@ export default function UsernameProfileSettingsAvatar() {
         username={profileUsername}
       />
 
-      {(hasChanged || avatarFile) && (
+      {Boolean(hasChanged || avatarFile) && (
         <Button
           variant={ButtonVariants.Gray}
           size={ButtonSizes.Small}
