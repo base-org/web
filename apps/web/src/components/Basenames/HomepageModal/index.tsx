@@ -6,12 +6,13 @@ import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img
 import classNames from 'classnames';
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import { ButtonWithLinkAndEventLogging } from '../../Button/ButtonWithLinkAndEventLogging';
-import { Icon } from '../../Icon/Icon';
 import HomepageModal from './HomepageModal';
 import modalImage from './basenames-modal.svg';
+import ModalClose from './ModalClose';
 
 export default function BasenamesHomepageModal() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
+
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
   }, []);
@@ -45,14 +46,7 @@ export default function BasenamesHomepageModal() {
               className="h-full w-full object-cover object-center"
             />
             <div className="absolute right-6 top-6">
-              <button
-                type="button"
-                onClick={closeModal}
-                onKeyDown={closeModal}
-                aria-label="Close the modal"
-              >
-                <Icon name="close" color="white" width="16px" height="16px" />
-              </button>
+              <ModalClose setIsModalOpen={setIsModalOpen} />
             </div>
           </div>
           <div className={modalContentContainerClasses}>
