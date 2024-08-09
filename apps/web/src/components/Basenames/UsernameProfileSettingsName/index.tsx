@@ -20,7 +20,11 @@ export default function UsernameProfileSettingsName() {
   });
 
   // Hook to update primary name
-  const { setPrimaryName, isLoading: setPrimaryNameIsLoading } = useSetPrimaryBasename({
+  const {
+    setPrimaryName,
+    isLoading: setPrimaryNameIsLoading,
+    canSetUsernameAsPrimary,
+  } = useSetPrimaryBasename({
     secondaryName: profileUsername,
   });
 
@@ -53,6 +57,7 @@ export default function UsernameProfileSettingsName() {
       <div className="flex w-full items-center justify-between gap-4">
         <span>{profileUsername}</span>
         {isSecondaryName &&
+          canSetUsernameAsPrimary &&
           (setPrimaryNameIsLoading ? (
             <Icon name="spinner" height="1rem" width="1rem" color="currentColor" />
           ) : (

@@ -119,6 +119,7 @@ export default function UsernameProfileSettingsAvatar() {
       </div>
     );
   }
+
   return (
     <>
       <UsernameAvatarField
