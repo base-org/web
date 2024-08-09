@@ -15,6 +15,8 @@ import authors from '@app/base-docs/static/json/authors.json';
 
 import styles from './styles.module.css';
 
+const LEARN_OG_IMAGE = '/img/base-learn-open-graph.png';
+
 /**
  Title can be declared inside md content or declared through
  front matter and added manually. To make both cases consistent,
@@ -42,20 +44,14 @@ export default function DocItemContent({ children }) {
   const authorData = tutorial ? authors[tutorial.author] : null;
 
   useEffect(() => {
-    let ogImage = frontMatter.image;
-    if (!ogImage) {
-      let imageOverride = false;
-
+    if (!frontMatter.image) {
       if (location.pathname.includes('/tutorials') || location.pathname.includes('/base-learn')) {
-        if (!ogImage) {
-          ogImage = '/img/base-learn-open-graph.png';
-          imageOverride = true;
-        }
-      }
-
-      if (imageOverride) {
-        document.querySelector('meta[property="og:image"]')?.setAttribute('content', ogImage);
-        document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', ogImage);
+        document
+          .querySelector('meta[property="og:image"]')
+          ?.setAttribute('content', LEARN_OG_IMAGE);
+        document
+          .querySelector('meta[name="twitter:image"]')
+          ?.setAttribute('content', LEARN_OG_IMAGE);
       }
     }
   }, [frontMatter, location.pathname]);
