@@ -13,6 +13,17 @@ keywords:
     Base,
     blockchain development,
     dApps,
+    wagmi React hooks,
+    frontend,
+    Next.js,
+    Base,
+    Base network,
+    Base node providers,
+    Base providers,
+    blockchain development,
+    dApps,
+    smart contracts,
+    providers,
     Base,
     Base network,
     blockchain connection,
@@ -38,6 +49,7 @@ In this tutorial, you'll learn how to improve that experience when using [Rainbo
 By the end of this tutorial, you should be able to:
 
 - Customize the list of Wallets in the [RainbowKit] connection experience
+
 - Give users the option to select the [Coinbase Smart Wallet] or EOA while connecting to your app with RainbowKit
 
 ---
@@ -73,8 +85,12 @@ What about the smart wallet? Isn't it supposed to work automatically?
 It does, but only if the user **does not** have the browser extension installed. Open a private window with extensions disabled and try again. Now, you will be directed to use the smart wallet to log in.
 
 ![Default Connection](../../assets/images/smart-wallet/rainbow-smart-wallet.png)
-
 As mentioned above, this experience isn't bad for users of one type of wallet or the other, but it makes things difficult for users who are using both types of wallet and may want to choose one or the other when interacting with your app. It also might not be the listing or ordering of wallets you prefer.
+## Customizing the List of Wallets
+
+To fix this UI/UX problem, you can create a [custom wallet list]. Open `src/wagmi.ts`:
+
+As mentioned above, this experience isn't bad for users of one type of wallet or the other, but it makes things difficult for users who are using both types of wallet and may want to choose one or the other when interacting with your app.
 
 ## Customizing the List of Wallets
 
@@ -196,6 +212,20 @@ You can use these settings to direct users of your app to your preferred use cas
 The Coinbase Smart Wallet will support user-selected choice of which wallet to use very soon!
 
 :::
+
+=======
+- Import `createConfig` from wagmi
+
+```tsx
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { createConfig } from 'wagmi';
+import {
+  coinbaseWallet,
+  metaMaskWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
+import { base, baseSepolia } from 'wagmi/chains';
+```
 
 ---
 

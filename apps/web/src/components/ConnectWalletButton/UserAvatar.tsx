@@ -3,10 +3,13 @@ import { mainnet } from 'wagmi/chains';
 import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
-import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
+import useBaseEnsAvatar from 'apps/web/src/hooks/useBaseEnsAvatar';
+import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/urls';
 
 export function UserAvatar() {
   const { address } = useAccount();
+
+  // L1 Name & Avatar
   const { data: ensName, isLoading: ensNameIsLoading } = useEnsName({
     address,
     chainId: mainnet.id,
@@ -14,32 +17,33 @@ export function UserAvatar() {
       retry: false,
     },
   });
+
   const { data: ensAvatar, isLoading: ensAvatarIsLoading } = useEnsAvatar({
     name: ensName ?? undefined,
     chainId: mainnet.id,
     assetGatewayUrls: {
-      ipfs: 'https://cloudflare-ipfs.com',
+      ipfs: CLOUDFARE_IPFS_PROXY,
     },
     query: {
       retry: false,
     },
   });
 
+  // L2 Name & Avatar
   const { data: baseEnsName, isLoading: baseEnsNameIsLoading } = useBaseEnsName({
     address,
   });
 
-  const { existingTextRecords, existingTextRecordsIsLoading } = useReadBaseEnsTextRecords({
-    address: address,
-    username: baseEnsName,
+  const { data: baseEnsAvatar, isLoading: baseEnsAvatarIsLoading } = useBaseEnsAvatar({
+    name: baseEnsName,
   });
 
   const deterministicName = baseEnsName ?? ensName ?? address ?? 'default-avatar';
   const defaultSelectedProfilePicture = getUserNamePicture(deterministicName);
-  const avatar = (existingTextRecords.avatar || ensAvatar) ?? defaultSelectedProfilePicture;
+  const avatar = baseEnsAvatar ?? ensAvatar ?? defaultSelectedProfilePicture;
 
   const isLoading =
-    ensNameIsLoading || ensAvatarIsLoading || baseEnsNameIsLoading || existingTextRecordsIsLoading;
+    baseEnsAvatarIsLoading || ensNameIsLoading || ensAvatarIsLoading || baseEnsNameIsLoading;
 
   return (
     <ImageWithLoading

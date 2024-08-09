@@ -19,6 +19,16 @@ import {
   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
+import {
+  ALLOWED_IMAGE_TYPE,
+  MAX_IMAGE_SIZE_IN_MB,
+} from 'apps/web/pages/api/basenames/avatar/upload';
+import {
+  getIpfsGatewayUrl,
+  IpfsUrl,
+  IsValidIpfsUrl,
+  IsValidVercelBlobUrl,
+} from 'apps/web/src/utils/urls';
 
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 20;
@@ -187,12 +197,13 @@ export const sanitizeEnsDomainName = (name: string) => {
 };
 
 // Any names non-compliant with ENSIP-15 will fail when using ENS normalize()
-export type EnsDomainNameValidationResult = {
+
+export type ValidationResult = {
   valid: boolean;
-  message?: string;
+  message: string;
 };
 
-export const validateEnsDomainName = (name: string): EnsDomainNameValidationResult => {
+export const validateEnsDomainName = (name: string): ValidationResult => {
   // Proper way to count emojis' length:
   // https://stackoverflow.com/questions/54369513/how-to-count-the-correct-length-of-a-string-with-emojis-in-javascript
   const nameLength = [...name].length;
@@ -214,9 +225,17 @@ export const validateEnsDomainName = (name: string): EnsDomainNameValidationResu
   try {
     const normalizedName = normalize(name);
     const valid = typeof normalizedName === 'string';
-    return {
-      valid,
-    };
+    if (valid) {
+      return {
+        valid: true,
+        message: 'Valid name',
+      };
+    } else {
+      return {
+        valid: false,
+        message: 'Name is invalid',
+      };
+    }
   } catch (error) {
     if (error instanceof Error) {
       return {
@@ -316,6 +335,8 @@ export enum Discount {
   COINBASE_VERIFIED_ACCOUNT = 'COINBASE_VERIFIED_ACCOUNT',
   BASE_BUILDATHON_PARTICIPANT = 'BASE_BUILDATHON_PARTICIPANT',
   SUMMER_PASS_LVL_3 = 'SUMMER_PASS_LVL_3',
+  BNS_NAME = 'BNS_NAME',
+  BASE_ETH_NFT = 'BASE_ETH_NFT',
 }
 
 export function isValidDiscount(key: string): key is keyof typeof Discount {
@@ -337,6 +358,19 @@ export async function fetchAddress(username: BaseName) {
       universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
     });
     return ensAddress;
+  } catch (error) {}
+}
+
+export async function fetchAvatar(username: BaseName) {
+  const chain = getChainForBasename(username);
+
+  try {
+    const client = getBasenamePublicClient(chain.id);
+    const ensAvatar = await client.getEnsAvatar({
+      name: normalize(username),
+      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
+    });
+    return ensAvatar;
   } catch (error) {}
 }
 
@@ -365,6 +399,89 @@ export async function formatDefaultUsername(username: BaseName) {
   }
 
   return username;
+}
+
+export const getBasenameAvatarUrl = (source: string) => {
+  if (!source) return;
+
+  try {
+    const url = new URL(source);
+    if (url.protocol === 'https:') {
+      return source;
+    }
+
+    if (url.protocol === 'ipfs:') {
+      return getIpfsGatewayUrl(source as IpfsUrl);
+    }
+  } catch (error) {
+    return;
+  }
+};
+
+export function validateBasenameAvatarFile(file: File): ValidationResult {
+  if (!ALLOWED_IMAGE_TYPE.includes(file.type)) {
+    return {
+      valid: false,
+      message: 'Only supported image are PNG, SVG, JPEG & WebP',
+    };
+  }
+  const bytes = file.size;
+  const bytesToMegaBytes = bytes / (1024 * 1024);
+
+  if (bytesToMegaBytes > MAX_IMAGE_SIZE_IN_MB) {
+    return {
+      valid: false,
+      message: 'Max image size is 1Mb',
+    };
+  }
+
+  // TODO: Validate a square-ish image, with a width/height ratio of minimum 0.8
+  return {
+    valid: true,
+    message: 'Valid avatar file',
+  };
+}
+
+// Only support IPFS for now
+export function validateBasenameAvatarUrl(source: string): ValidationResult {
+  try {
+    const url = new URL(source);
+
+    if (url.protocol === 'ipfs:') {
+      const isValid = IsValidIpfsUrl(source as IpfsUrl);
+
+      return {
+        valid: isValid,
+        message: isValid ? 'Valid IPFS URL' : 'Invalid IPFS URL',
+      };
+    }
+
+    if (url.protocol === 'https:') {
+      // Only allow vercel upload for now
+      const isValid = IsValidVercelBlobUrl(source as IpfsUrl);
+      return {
+        valid: isValid,
+        message: isValid ? 'Valid URL' : 'Invalid URL',
+      };
+    }
+
+    if (url.protocol === 'http:') {
+      return {
+        valid: false,
+        message: 'Only IPFS URL are allowed',
+      };
+    }
+
+    return {
+      valid: false,
+      message: 'Only IPFS URL are allowed',
+    };
+  } catch (error) {
+    return {
+      valid: false,
+      message: 'Only IPFS URL are allowed',
+    };
+  }
 }
 
 // Force EA/GA based on env

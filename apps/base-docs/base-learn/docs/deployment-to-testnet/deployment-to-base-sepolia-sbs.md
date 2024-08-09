@@ -12,7 +12,7 @@ Remix contains a simulation of a blockchain that you can use to rapidly deploy a
 
 By the end of this lesson you should be able to:
 
-- Deploy a contract to the Base Sepolia testnet and interact with it in Etherscan
+- Deploy a contract to the Base Sepolia testnet and interact with it in [BaseScan]
 
 ---
 
@@ -64,6 +64,10 @@ Open the _Deploy & Run Transactions_ tab. Under _Environment_, select _Injected 
 
 ![Environment](../../assets/images/deployment-to-testnet/select-provider.png)
 
+If that option is not available, you can add it by choosing `Customize this list...`
+
+![Add Injected Wallet](../../assets/images/deployment-to-testnet/add-injected-provider.png)
+
 The first time you do this, your wallet will ask you to confirm that you want to connect this app (Remix) to your wallet.
 
 Once you are connected, you'll see the name of the network below the _Environment_ dropdown.
@@ -101,5 +105,5 @@ You now have the power to put smart contracts on the blockchain! You've only dep
 [set up]: https://www.youtube.com/watch?v=CZDgLG6jpgw
 [coinbase settings]: https://docs.cloud.coinbase.com/wallet-sdk/docs/developer-settings
 [Metamask Settings]: https://support.metamask.io/hc/en-us/articles/13946422437147-How-to-view-testnets-in-MetaMask
-[etherscan]: https://etherscan.io/
+[BaseScan]: https://sepolia.basescan.org/
 [faucets on the web]: https://coinbase.com/faucets
