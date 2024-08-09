@@ -1,8 +1,8 @@
 'use client';
 
 import { useCallback } from 'react';
-import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { ActionType, ComponentType } from 'base-ui/utils/logEvent';
+import { useAnalytics } from '../../../contexts/Analytics';
 import { ButtonWithLink, ButtonWithLinkProps } from './ButtonWithLink';
 
 type ButtonWithLinkAndEventLogProps = Omit<ButtonWithLinkProps, 'onClick'> & {
@@ -16,7 +16,7 @@ export function ButtonWithLinkAndEventLogging({
   const { logEventWithContext } = useAnalytics();
 
   const handleClick = useCallback(() => {
-    logEventWithContext(eventName, ActionType.click, { componentType: 'button' });
+    logEventWithContext(eventName, ActionType.click, { componentType: ComponentType.button });
   }, [logEventWithContext, eventName]);
 
   return <ButtonWithLink onClick={handleClick} {...buttonWithLinkProps} />;

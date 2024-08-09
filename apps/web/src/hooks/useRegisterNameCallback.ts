@@ -62,7 +62,6 @@ export function useRegisterNameCallback(
       return {
         paymasterService: {
           // url: `${document.location.origin}/api/paymaster`
-          url: 'https://api.developer.coinbase.com/rpc/v1/base-sepolia/1IhTcPOmhK5aEq-4WqRZMJoOh0oPenD2',
         },
       };
     }

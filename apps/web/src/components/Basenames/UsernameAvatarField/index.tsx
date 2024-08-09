@@ -1,114 +1,171 @@
 import Fieldset from 'apps/web/src/components/Fieldset';
 import FileInput from 'apps/web/src/components/FileInput';
 import Hint, { HintVariants } from 'apps/web/src/components/Hint';
-import Label from 'apps/web/src/components/Label';
-import { getUserNamePicture } from 'apps/web/src/utils/usernames';
-import { ChangeEvent, useCallback, useEffect, useId, useState } from 'react';
 import {
-  ALLOWED_IMAGE_TYPE,
-  MAX_IMAGE_SIZE_IN_MB,
-} from 'apps/web/pages/api/basenames/avatar/upload';
+  getBasenameAvatarUrl,
+  getUserNamePicture,
+  UsernameTextRecordKeys,
+  validateBasenameAvatarFile,
+  validateBasenameAvatarUrl,
+} from 'apps/web/src/utils/usernames';
+import { ChangeEvent, useCallback, useEffect, useId, useRef, useState } from 'react';
 import { StaticImageData } from 'next/image';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 import cameraIcon from './cameraIcon.svg';
+import Input from 'apps/web/src/components/Input';
+import Dropdown from 'apps/web/src/components/Dropdown';
+import DropdownToggle from 'apps/web/src/components/DropdownToggle';
+import DropdownMenu, { DropdownMenuAlign } from 'apps/web/src/components/DropdownMenu';
+import DropdownItem from 'apps/web/src/components/DropdownItem';
 
 export type UsernameAvatarFieldProps = {
-  onChange: (file: File | undefined) => void;
-  value: string;
+  onChangeFile: (file: File | undefined) => void;
+  onChange: (key: UsernameTextRecordKeys, value: string) => void;
+  currentAvatarUrl: string;
   disabled?: boolean;
   username: string;
 };
 
-export function validateAvatarUpload(file: File) {
-  if (!ALLOWED_IMAGE_TYPE.includes(file.type)) {
-    return {
-      valid: false,
-      message: 'Only supported image are PNG, SVG, JPEG & WebP',
-    };
-  }
-  const bytes = file.size;
-  const bytesToMegaBytes = bytes / (1024 * 1024);
-
-  if (bytesToMegaBytes > MAX_IMAGE_SIZE_IN_MB) {
-    return {
-      valid: false,
-      message: 'Max image size is 1Mb',
-    };
-  }
-
-  // TODO: Validate a square-ish image, with a width/height ratio of minimum 0.8
-  return {
-    valid: true,
-    message: '',
-  };
-}
-
 export default function UsernameAvatarField({
+  onChangeFile,
   onChange,
-  value,
+  currentAvatarUrl = '',
   disabled = false,
   username,
 }: UsernameAvatarFieldProps) {
   const [error, setError] = useState<string>();
+  const [newAvatarUrl, setNewAvatarUrl] = useState<string>(currentAvatarUrl);
+  const [showUrlInput, setShowUrlInput] = useState<boolean>(false);
+  const avatarInputRef = useRef<HTMLInputElement>(null);
   const [avatarFile, setAvatarFile] = useState<File>();
-  const onChangeAvatar = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+
+  const onChangeAvatarFile = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (!files) return;
 
     const singleFile = files[0];
     if (!singleFile) return;
-
+    setNewAvatarUrl('');
     setAvatarFile(singleFile);
   }, []);
 
+  const onChangeAvatarUrl = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    const avatarUrl = event.target.value;
+    setNewAvatarUrl(avatarUrl);
+
+    if (avatarInputRef.current) {
+      avatarInputRef.current.value = '';
+    }
+  }, []);
+
+  const onClickFileUpload = useCallback(() => {
+    setShowUrlInput(false);
+    setError('');
+    if (avatarInputRef.current) {
+      avatarInputRef.current.click();
+    }
+  }, []);
+
+  const onClickSetIpfsUrl = useCallback(() => {
+    setAvatarFile(undefined);
+    setError('');
+    setShowUrlInput(true);
+  }, []);
+
+  const onClickUseDefaultAvatar = useCallback(() => {
+    setShowUrlInput(false);
+    setNewAvatarUrl('');
+    setError('');
+    setAvatarFile(undefined);
+  }, []);
+
+  // Validate avatar file
   useEffect(() => {
     if (!avatarFile) return;
-    const validationResult = validateAvatarUpload(avatarFile);
+    const validationResult = validateBasenameAvatarFile(avatarFile);
 
     if (!validationResult.valid) {
-      onChange(undefined);
+      onChangeFile(undefined);
       setError(validationResult.message);
       return;
     } else {
-      onChange(avatarFile);
+      onChangeFile(avatarFile);
       return setError('');
     }
-  }, [avatarFile, onChange]);
+  }, [avatarFile, onChangeFile]);
+
+  // Validate avatar url
+  useEffect(() => {
+    if (newAvatarUrl.trim() === '') {
+      onChange(UsernameTextRecordKeys.Avatar, newAvatarUrl.trim());
+      setError('');
+      return;
+    }
+
+    const validationResult = validateBasenameAvatarUrl(newAvatarUrl);
+    if (!validationResult.valid) {
+      if (onChange) onChange(UsernameTextRecordKeys.Avatar, currentAvatarUrl);
+      setError(validationResult.message);
+      return;
+    } else {
+      if (onChange) onChange(UsernameTextRecordKeys.Avatar, newAvatarUrl);
+      return setError('');
+    }
+  }, [currentAvatarUrl, newAvatarUrl, onChange]);
 
   const usernameAvatarFieldId = useId();
 
   const defaultSelectedProfilePicture = getUserNamePicture(username);
-  const currentAvatar = value; // TODO: parse IPFS
-
+  const newAvatarFileUrl = avatarFile && !error ? URL.createObjectURL(avatarFile) : undefined;
+  const newAvatarAbsoluteUrl = !error ? getBasenameAvatarUrl(newAvatarUrl) : undefined;
   const avatarSrc =
-    avatarFile && !error
-      ? URL.createObjectURL(avatarFile)
-      : currentAvatar || defaultSelectedProfilePicture;
+    newAvatarFileUrl ??
+    newAvatarAbsoluteUrl ??
+    getBasenameAvatarUrl(newAvatarUrl) ??
+    defaultSelectedProfilePicture;
 
   return (
     <Fieldset>
-      <Label htmlFor={usernameAvatarFieldId} className="group relative inline-block max-w-[10rem]">
+      <div className="relative w-[10rem] min-w-[10rem]">
         <ImageWithLoading
           src={avatarSrc}
           alt={username}
-          wrapperClassName="rounded-full h-[10rem] max-h-[10rem] min-h-[10rem] w-[10rem] min-w-[10rem] max-w-[10rem] border-4 border-white group-hover:border-blue-500"
+          wrapperClassName="rounded-full h-[10rem] max-h-[10rem] min-h-[10rem] w-[10rem] min-w-[10rem] max-w-[10rem] border-4 border-white "
           backgroundClassName="bg-blue-500"
           imageClassName="object-cover h-full w-full"
           width={320}
           height={320}
         />
-        <ImageWithLoading
-          src={cameraIcon as StaticImageData}
-          alt="Upload an avatar"
-          wrapperClassName="absolute bottom-0 right-0"
-        />
         <FileInput
           id={usernameAvatarFieldId}
-          onChange={onChangeAvatar}
+          onChange={onChangeAvatarFile}
           disabled={disabled}
           className="hidden"
+          ref={avatarInputRef}
         />
-      </Label>
+        <span className="absolute bottom-0 right-0 hover:cursor-pointer">
+          <Dropdown>
+            <DropdownToggle>
+              <ImageWithLoading src={cameraIcon as StaticImageData} alt="Upload an avatar" />
+            </DropdownToggle>
+            <DropdownMenu align={DropdownMenuAlign.Center}>
+              <DropdownItem onClick={onClickFileUpload}>Upload File</DropdownItem>
+              <DropdownItem onClick={onClickSetIpfsUrl}>Use IPFS URL</DropdownItem>
+              <DropdownItem onClick={onClickUseDefaultAvatar}>Use default avatar</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </span>
+      </div>
+      {showUrlInput && (
+        <Input
+          type="text"
+          value={newAvatarUrl}
+          placeholder="ipfs://..."
+          onChange={onChangeAvatarUrl}
+          className="flex-1 rounded-md border border-gray-40/20 p-2 text-black"
+        />
+      )}
+
       {error && <Hint variant={HintVariants.Error}>{error}</Hint>}
     </Fieldset>
   );

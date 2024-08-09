@@ -13,7 +13,7 @@ export type BaseEnsNameData = BaseName | undefined;
 export default function useBaseEnsName({ address }: UseBaseEnsNameProps) {
   const { basenameChain } = useBasenameChain();
 
-  const { data, isLoading, refetch } = useName(
+  const { data, isLoading, refetch, isFetching } = useName(
     {
       // @ts-expect-error: query is disabled without an address
       address: address,
@@ -29,6 +29,7 @@ export default function useBaseEnsName({ address }: UseBaseEnsNameProps) {
   return {
     data: ensNameTyped,
     isLoading,
+    isFetching,
     refetch,
   };
 }
