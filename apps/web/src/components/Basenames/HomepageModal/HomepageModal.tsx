@@ -1,12 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
 import { Fragment, PropsWithChildren } from 'react';
-
-export enum ModalSizes {
-  Medium = 'medium',
-  Large = 'large',
-}
 
 type ModalProps = {
   isOpen: boolean;
@@ -14,7 +8,6 @@ type ModalProps = {
   title?: JSX.Element | string;
   titleAlign?: 'left' | 'center' | 'right';
   modalAlign?: 'top' | 'center';
-  size?: ModalSizes;
 };
 
 export default function Modal({
@@ -23,7 +16,6 @@ export default function Modal({
   title,
   onClose,
   modalAlign = 'center',
-  size = ModalSizes.Medium,
   ...rest
 }: PropsWithChildren<ModalProps>) {
   const dialogWrapperClasses = classNames(
@@ -35,11 +27,10 @@ export default function Modal({
   );
 
   const dialogClasses = classNames(
-    'flex h-screen max-h-screen overflow-y-scroll md:h-full w-full flex-col gap-4 md:rounded-lg bg-white shadow-lg sm:h-auto ',
-    {
-      'max-w-lg': size === ModalSizes.Medium,
-      'max-w-xl': size === ModalSizes.Large,
-    },
+    'flex flex-col gap-4 bg-white shadow-lg',
+    'rounded-md md:rounded-lg',
+    'w-[300px] sm:w-full',
+    'h-auto max-h-screen overflow-y-scroll',
   );
 
   return (
