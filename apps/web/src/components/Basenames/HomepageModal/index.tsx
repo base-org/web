@@ -4,14 +4,19 @@ import { useCallback, useState } from 'react';
 import Image from 'next/image';
 import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
 import classNames from 'classnames';
-import AnalyticsProvider from 'apps/web/contexts/Analytics';
+import { useExperiment } from 'base-ui/contexts/Experiments';
+import AnalyticsProvider from '../../../../contexts/Analytics';
 import { ButtonWithLinkAndEventLogging } from '../../Button/ButtonWithLinkAndEventLogging';
 import HomepageModal from './HomepageModal';
 import modalImage from './basenames-modal.svg';
 import ModalClose from './ModalClose';
 
+const BASENAME_MODAL_FEATURE_FLAG = 'basenames-launch-modal'
+
 export default function BasenamesHomepageModal() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
+  const { isReady, userVariant } = useExperiment(BASENAME_MODAL_FEATURE_FLAG);
+  console.log({ isReady, userVariant })
 
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
