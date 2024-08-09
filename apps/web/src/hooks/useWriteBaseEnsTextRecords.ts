@@ -93,6 +93,7 @@ export default function useWriteBaseEnsTextRecords({
     isError: writeTextRecordsIsError,
     error: writeTextRecordsError,
     isSuccess: writeTextRecordsIsSuccess,
+    reset: writeTextRecordsReset,
   } = useWriteContract();
 
   // Wait for TextRecords transaction to be processed
@@ -169,13 +170,11 @@ export default function useWriteBaseEnsTextRecords({
       logEventWithContext('update_text_records_transaction_success', ActionType.change);
       refetchExistingTextRecords()
         .then(() => {
-          refetchBaseEnsAvatar()
-            .then(() => {
-              onSuccess?.();
-            })
-            .catch((error) => {
-              logError(error, 'Failed to refetch avatar');
-            });
+          onSuccess?.();
+          writeTextRecordsReset();
+          refetchBaseEnsAvatar().catch((error) => {
+            logError(error, 'Failed to refetch avatar');
+          });
         })
         .catch((error) => {
           logError(error, 'Failed to refetch existing text records');
@@ -197,6 +196,7 @@ export default function useWriteBaseEnsTextRecords({
     refetchBaseEnsAvatar,
     onSuccess,
     writeTextRecordsIsSuccess,
+    writeTextRecordsReset,
   ]);
 
   const isLoading =

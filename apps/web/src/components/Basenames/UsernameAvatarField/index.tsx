@@ -33,7 +33,6 @@ export default function UsernameAvatarField({
   disabled = false,
   username,
 }: UsernameAvatarFieldProps) {
-  console.log({ currentAvatarUrl });
   const [error, setError] = useState<string>();
   const [newAvatarUrl, setNewAvatarUrl] = useState<string>(currentAvatarUrl);
   const [showUrlInput, setShowUrlInput] = useState<boolean>(false);

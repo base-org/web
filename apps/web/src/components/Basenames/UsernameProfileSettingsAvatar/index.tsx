@@ -103,7 +103,6 @@ export default function UsernameProfileSettingsAvatar() {
     if (avatarUploadAndReadyToSave) {
       saveAvatar();
       setAvatarUploadedAndReadyToSave(false);
-      console.log('SAVE THIS AVATAR');
     }
   }, [avatarUploadAndReadyToSave, saveAvatar]);
 
@@ -120,7 +119,6 @@ export default function UsernameProfileSettingsAvatar() {
       </div>
     );
   }
-
   return (
     <>
       <UsernameAvatarField
