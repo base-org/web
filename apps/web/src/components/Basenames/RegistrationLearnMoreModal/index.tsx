@@ -49,7 +49,7 @@ export default function RegistrationLearnMoreModal({
     'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.BNS_NAME),
   });
   const BaseDotEthNFTRowClasses = classNames(rowClasses, {
-    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.BASE_ETH_NFT),
+    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.BASE_DOT_ETH_NFT),
   });
 
   const qualifiedClasses = classNames(
@@ -208,7 +208,7 @@ export default function RegistrationLearnMoreModal({
                 <InfoIcon />
               </div>
             </Tooltip>
-            {allActiveDiscounts.has(Discount.BASE_ETH_NFT) && (
+            {allActiveDiscounts.has(Discount.BASE_DOT_ETH_NFT) && (
               <div className={qualifiedClasses}>
                 <p className="text-green-60">Qualified</p>
               </div>

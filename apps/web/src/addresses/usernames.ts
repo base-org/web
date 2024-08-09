@@ -43,6 +43,16 @@ export const USERNAME_BNS_DISCOUNT_VALIDATORS: AddressMap = {
   [base.id]: '0x',
 };
 
+export const BASE_DOT_ETH_ERC721_DISCOUNT_VALIDATOR: AddressMap = {
+  [baseSepolia.id]: '0xa0C7a114E25618538BE7fA7c6552C3122056F775',
+  [base.id]: '0x',
+};
+
+export const BUILDATHON_ERC721_DISCOUNT_VALIDATOR: AddressMap = {
+  [baseSepolia.id]: '0x7b5B2dB59c414e15Bf70b59C02E6fb00Ca919dbC',
+  [base.id]: '0x',
+};
+
 export const USERNAME_1155_DISCOUNT_VALIDATORS: AddressMap = {
   [baseSepolia.id]: '0xE41Cd25f429E10744938d5048646E721ac630aF3',
   [base.id]: '0x',
