@@ -1,11 +1,8 @@
 import React from 'react';
-import { Divider } from 'apps/web/src/components/Divider/Divider';
-
-import Hero from 'apps/web/src/components/GoToCommunity/Hero';
-import BuildersMostWanted from 'apps/web/src/components/GoToCommunity/BuildersMostWanted';
-import ResourceSection from 'apps/web/src/components/GoToCommunity/ResourceSection';
-
-import { resourceSections } from 'apps/web/src/components/GoToCommunity/resourceSections';
+import Hero from '../../../src/components/GoToCommunity/Hero';
+import BuildersMostWanted from '../../../src/components/GoToCommunity/BuildersMostWanted';
+import ResourceSection from '../../../src/components/GoToCommunity/ResourceSection';
+import { resourceSections } from '../../../src/components/GoToCommunity/resourceSections';
 
 export default async function GoToCommunity() {
   return (
