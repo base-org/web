@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable */
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 import { useDoc } from '@docusaurus/theme-common/internal';
@@ -34,9 +36,30 @@ function useSyntheticTitle() {
 export default function DocItemContent({ children }) {
   const { frontMatter } = useDoc();
   const syntheticTitle = useSyntheticTitle();
+  const location = useLocation();
   const tutorial =
     frontMatter && frontMatter.slug ? tutorialData[frontMatter.slug.substring(1)] : null;
   const authorData = tutorial ? authors[tutorial.author] : null;
+
+  useEffect(() => {
+    let ogImage = frontMatter.image;
+    if (!ogImage) {
+      let imageOverride = false;
+
+      if (location.pathname.includes('/tutorials') || location.pathname.includes('/base-learn')) {
+        if (!ogImage) {
+          ogImage = '/img/base-learn-open-graph.png';
+          imageOverride = true;
+        }
+      }
+
+      if (imageOverride) {
+        document.querySelector('meta[property="og:image"]')?.setAttribute('content', ogImage);
+        document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', ogImage);
+      }
+    }
+  }, [frontMatter, location.pathname]);
+
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
       {syntheticTitle && (
