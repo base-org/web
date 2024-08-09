@@ -1,32 +1,52 @@
-import Link from 'apps/web/node_modules/next/link';
+import React from 'react';
+import Link from 'next/link';
+import classNames from 'classnames';
+import { Icon } from '../../Icon/Icon';
 
-import { Icon } from 'apps/web/src/components/Icon/Icon';
+export type Resource = {
+  href: string;
+  title: string;
+  description: string;
+};
 
-import { ResourceCardProps } from './resourceCardTypes';
+export type ResourceCardProps = Resource & {
+  counter: number;
+};
 
-export default async function ResourceCard({
-  counter,
+export default function ResourceCard({
+  href,
   title,
   description,
-  href,
-}: ResourceCardProps) {
+  topLeft = <span></span>,
+  topRight = <span></span>,
+  colorOne,
+  colorTwo,
+}) {
+
+  const resourceCardWrapperStyle = classNames(
+    'group border-2 p-7 text-white',
+    `odd:bg-${colorOne} odd:border-${colorOne}`,
+    `even:bg-${colorTwo} even:border-${colorTwo}`,
+    // `[&:nth-child(4n-2)]:bg-${colorTwo} [&:nth-child(4n-2)]:border-${colorTwo}`,
+    // `[&:nth-child(3n)]:bg-${colorTwo} [&:nth-child(3n)]:border-${colorTwo}`,
+    // `md:[&:nth-child(odd)]:bg-${colorOne} md:[&:nth-child(odd)]:border-${colorOne}`,
+    // `md:[&:nth-child(even)]:bg-${colorTwo} md:[&:nth-child(even)]:border-${colorTwo}`,
+    'duration-200',
+    'hover:scale-105 hover:shadow-lg hover:shadow-gray-80',
+  );
+
   return (
-    <Link
-      href={href}
-      target="_blank"
-      rel="noreferrer noopener"
-      className="w-full sm:w-[calc(50%-12px)] lg:w-[330px]"
-    >
-      <div className="flex h-[180px] w-full flex-col gap-6 bg-gray-90 p-4 sm:h-[230px] sm:gap-8 sm:p-6 lg:h-[180px]">
-        <div className="flex justify-between">
-          <span>{String(counter + 1).padStart(2, '0')}</span>
-          <Icon name="diagonalUpArrow" />
+    <div key={href} className={resourceCardWrapperStyle}>
+      <Link href={href}>
+        <div className="flex w-full flex-row justify-between">
+          <div>{topLeft}</div>
+          <div>{topRight}</div>
         </div>
-        <div>
-          <h3 className="mb-2 font-mono text-lg uppercase sm:text-xl">{title}</h3>
-          <span className="font-sans text-sm sm:text-base">{description}</span>
+        <div className="mt-8">
+          <h3 className="mb-4 font-mono text-lg uppercase sm:text-xl">{title}</h3>
+          <p className="font-sans text-sm sm:text-base">{description}</p>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
