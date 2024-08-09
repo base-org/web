@@ -76,8 +76,9 @@ export default function UsernameAvatarField({
     setShowUrlInput(false);
     setNewAvatarUrl('');
     setError('');
+    onChange(UsernameTextRecordKeys.Avatar, '');
     setAvatarFile(undefined);
-  }, []);
+  }, [onChange]);
 
   // Validate avatar file
   useEffect(() => {
@@ -97,8 +98,6 @@ export default function UsernameAvatarField({
   // Validate avatar url
   useEffect(() => {
     if (newAvatarUrl.trim() === '') {
-      onChange(UsernameTextRecordKeys.Avatar, newAvatarUrl.trim());
-      setError('');
       return;
     }
 
@@ -121,7 +120,7 @@ export default function UsernameAvatarField({
   const avatarSrc =
     newAvatarFileUrl ??
     newAvatarAbsoluteUrl ??
-    getBasenameAvatarUrl(newAvatarUrl) ??
+    getBasenameAvatarUrl(currentAvatarUrl) ??
     defaultSelectedProfilePicture;
 
   return (
@@ -130,7 +129,7 @@ export default function UsernameAvatarField({
         <ImageWithLoading
           src={avatarSrc}
           alt={username}
-          wrapperClassName="rounded-full h-[10rem] max-h-[10rem] min-h-[10rem] w-[10rem] min-w-[10rem] max-w-[10rem] border-4 border-white "
+          wrapperClassName="rounded-full h-[10rem] max-h-[10rem] min-h-[10rem] w-[10rem] min-w-[10rem] max-w-[10rem] border-4 border-white"
           backgroundClassName="bg-blue-500"
           imageClassName="object-cover h-full w-full"
           width={320}
