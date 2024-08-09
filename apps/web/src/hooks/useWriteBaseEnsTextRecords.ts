@@ -55,12 +55,10 @@ export default function useWriteBaseEnsTextRecords({
 
   const updateTextRecords = useCallback(
     (key: UsernameTextRecordKeys, value: string) => {
-      setUpdatedTextRecords((previousTextRecords) => {
-        return {
+      setUpdatedTextRecords((previousTextRecords) => ({
           ...previousTextRecords,
           [key]: value,
-        };
-      });
+        }));
     },
     [setUpdatedTextRecords],
   );
