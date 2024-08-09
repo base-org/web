@@ -148,6 +148,9 @@ Now, the connection experience contains the wallets in the order you selected!
 
 If you've already connected with the site, the below won't work unless you clear site data! It will appear that the flag does nothing.
 
+In Chrome: Developer Tools -> Application Tab -> Storage Tab -> Clear Site Data button
+In Firefox: Developer Tools -> Storage -> Right-click each item -> Delete All
+
 :::
 
 With RainbowKit, you can force the connector to use the smart wallet or EOA with:
@@ -165,6 +168,22 @@ coinbaseWallet.preference = 'eoaOnly';
 The default is:
 
 ```tsx
+coinbaseWallet.preference = 'all';
+```
+
+Set this line at the root level of the document, under the imports:
+
+```tsx
+import { http, createConfig } from 'wagmi';
+import { baseSepolia } from 'wagmi/chains';
+import {
+  coinbaseWallet,
+  metaMaskWallet,
+  rainbowWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+
 coinbaseWallet.preference = 'all';
 ```
 
