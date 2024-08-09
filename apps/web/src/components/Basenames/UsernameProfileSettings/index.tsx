@@ -1,8 +1,7 @@
 'use client';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useCallback, useEffect, useState } from 'react';
-import { useWaitForTransactionReceipt } from 'wagmi';
+import { useCallback, useState } from 'react';
 import { upload } from '@vercel/blob/client';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useErrors } from 'apps/web/contexts/Errors';
@@ -16,175 +15,53 @@ import Fieldset from 'apps/web/src/components/Fieldset';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
 import TransactionError from 'apps/web/src/components/TransactionError';
-import TransactionStatus from 'apps/web/src/components/TransactionStatus';
-import useBaseEnsAvatar from 'apps/web/src/hooks/useBaseEnsAvatar';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
 import {
   textRecordsSocialFieldsEnabled,
   UsernameTextRecordKeys,
-  UsernameTextRecords,
 } from 'apps/web/src/utils/usernames';
-import Tooltip from 'apps/web/src/components/Tooltip';
-import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
-import Dropdown from 'apps/web/src/components/Dropdown';
-import DropdownToggle from 'apps/web/src/components/DropdownToggle';
-import DropdownMenu, { DropdownMenuAlign } from 'apps/web/src/components/DropdownMenu';
-import DropdownItem from 'apps/web/src/components/DropdownItem';
-import useSetPrimaryBasename from 'apps/web/src/hooks/useSetPrimaryBasename';
 
-export enum SettingsTabs {
-  ManageProfile = 'manage-profile',
-  Ownership = 'ownership',
-  Subdomain = 'subdomain',
-}
-
-const settingTabsForDisplay = {
-  [SettingsTabs.ManageProfile]: 'Manage Profile',
-  [SettingsTabs.Ownership]: 'Ownership',
-  [SettingsTabs.Subdomain]: 'Subdomain',
-};
-
-const allSettingsTabs = [
-  SettingsTabs.ManageProfile,
-  SettingsTabs.Ownership,
-  SettingsTabs.Subdomain,
-];
-
-// We only support Manage Profile for now
-const settingsTabsEnabled = [SettingsTabs.ManageProfile];
+import {
+  SettingsTabs,
+  settingTabsForDisplay,
+  useUsernameProfileSettings,
+} from 'apps/web/src/components/Basenames/UsernameProfileSettingsContext';
+import UsernameProfileSettingsMenu from 'apps/web/src/components/Basenames/UsernameProfileSettingsMenu';
+import UsernameProfileSettingsName from 'apps/web/src/components/Basenames/UsernameProfileSettingsName';
 
 // TODO: This component is too big, gotta split in
-// - UsernameProfileSettingsProvider (high level logic / read / write)
-// - UsernameProfileSettingsAvatar
-// - UsernameProfileSettingsName
-// - UsernameProfileSettingsNavigation
 // - UsernameProfileSettingsTextRecords
 
 export default function UsernameProfileSettings() {
   const { profileUsername, profileAddress, currentWalletIsOwner, setShowProfileSettings } =
     useUsernameProfile();
 
+  const { currentSettingsTab } = useUsernameProfileSettings();
   const [avatarFile, setAvatarFile] = useState<File | undefined>();
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();
-  const { basenameChain } = useBasenameChain(profileUsername);
-  const [currentSettingsTab, setCurrentSettingsTab] = useState<SettingsTabs>(
-    SettingsTabs.ManageProfile,
-  );
 
-  // Get the primary name
-  const { data: primaryUsername } = useBaseEnsName({
-    address: profileAddress,
-  });
-
-  // Hook to update primary name
-  const { setPrimaryName, isLoading: setPrimaryNameIsLoading } = useSetPrimaryBasename({
-    secondaryName: profileUsername,
-  });
-
-  const {
-    existingTextRecords,
-    existingTextRecordsIsLoading,
-    refetchExistingTextRecords,
-    existingTextRecordsError,
-  } = useReadBaseEnsTextRecords({
-    address: profileAddress,
-    username: profileUsername,
-  });
+  logEventWithContext('settings_loaded', ActionType.render);
 
   // Write text records
   const {
+    updateTextRecords,
+    updatedTextRecords,
     writeTextRecords,
     writeTextRecordsIsPending,
-    writeTextRecordsTransactionHash,
     writeTextRecordsError,
+    hasChanged,
   } = useWriteBaseEnsTextRecords({
     address: profileAddress,
     username: profileUsername,
-  });
-
-  // Wait for text record transaction to be processed
-  const {
-    data: transactionData,
-    isFetching: transactionIsFetching,
-    isSuccess: transactionIsSuccess,
-    error: transactionError,
-  } = useWaitForTransactionReceipt({
-    hash: writeTextRecordsTransactionHash,
-    chainId: basenameChain.id,
-    query: {
-      enabled: !!writeTextRecordsTransactionHash,
+    onSuccess: () => {
+      closeSettings();
     },
-  });
-
-  const [textRecords, setTextRecords] = useState<UsernameTextRecords>(existingTextRecords);
-
-  // Value
-  const { refetch: refetchBaseEnsAvatar } = useBaseEnsAvatar({
-    name: profileUsername,
   });
 
   const closeSettings = useCallback(() => {
     setShowProfileSettings(false);
   }, [setShowProfileSettings]);
-
-  // TODO: Move all this nonsense to the hook
-  useEffect(() => {
-    if (transactionIsFetching) {
-      logEventWithContext('update_text_records_transaction_processing', ActionType.change);
-    }
-    if (!transactionData) return;
-
-    if (transactionData.status === 'success') {
-      logEventWithContext('update_text_records_transaction_success', ActionType.change);
-
-      // TODO: Call to remove the previous avatar for vercel's blob
-
-      refetchExistingTextRecords()
-        .then(() => {
-          refetchBaseEnsAvatar()
-            .then(() => {
-              closeSettings();
-            })
-            .catch((error) => {
-              logError(error, 'Failed to refetch avatar');
-            });
-        })
-        .catch((error) => {
-          logError(error, 'Failed to refetch existing text records');
-        });
-    }
-
-    if (transactionData.status === 'reverted') {
-      logEventWithContext('update_text_records_transaction_reverted', ActionType.change, {
-        error: `Transaction reverted: ${transactionData.transactionHash}`,
-      });
-    }
-  }, [
-    refetchExistingTextRecords,
-    transactionIsSuccess,
-    transactionData,
-    logEventWithContext,
-    transactionIsFetching,
-    logError,
-    refetchBaseEnsAvatar,
-    closeSettings,
-  ]);
-
-  useEffect(() => {
-    setTextRecords(existingTextRecords);
-  }, [existingTextRecords]);
-
-  const updateTextRecords = useCallback((key: UsernameTextRecordKeys, value: string) => {
-    setTextRecords((previousTextRecords) => {
-      return {
-        ...previousTextRecords,
-        [key]: value,
-      };
-    });
-  }, []);
 
   const uploadAvatar = useCallback(
     async (file: File | undefined) => {
@@ -218,7 +95,7 @@ export default function UsernameProfileSettings() {
       // TODO: We can't really get to this steps, but we should show an error
       if (!currentWalletIsOwner) return false;
 
-      let writeTextRecordsRequest = { ...textRecords };
+      let writeTextRecordsRequest = { ...updatedTextRecords };
 
       // TODO: Clean this up
       // Upload the avatar first
@@ -231,19 +108,10 @@ export default function UsernameProfileSettings() {
           }
 
           // Write the records
-          writeTextRecords(writeTextRecordsRequest)
-            .then((transactionResult) => {
-              // We updated some text records
-              if (transactionResult) {
-                logEventWithContext('update_text_records_transaction_approved', ActionType.change);
-              }
-              // close the modal on success
-              closeSettings();
-            })
-
+          writeTextRecords()
+            .then()
             .catch((error) => {
-              logError(error, 'Update text records transaction canceled');
-              logEventWithContext('update_text_records_transaction_canceled', ActionType.click);
+              logError(error, 'Failed to write text records');
             });
         })
         .catch((error) => {
@@ -255,12 +123,11 @@ export default function UsernameProfileSettings() {
     },
     [
       currentWalletIsOwner,
-      textRecords,
+      updatedTextRecords,
       uploadAvatar,
       avatarFile,
       logEventWithContext,
       writeTextRecords,
-      closeSettings,
       logError,
     ],
   );
@@ -276,23 +143,11 @@ export default function UsernameProfileSettings() {
     setAvatarFile(file);
   }, []);
 
-  const setPrimaryUsername = useCallback(() => {
-    setPrimaryName().catch((error) => {
-      logError(error, 'Failed to update primary name');
-    });
-  }, [logError, setPrimaryName]);
-
-  const settingTabWrapperClass = classNames('p-4 md:p-10 max-h-[40rem] overflow-scroll');
+  const settingTabWrapperClass = classNames('p-4 md:p-8');
 
   const settingTabClass = classNames(
     'flex flex-col justify-between gap-8 text-gray/60 md:items-center ',
   );
-
-  const isLoading =
-    existingTextRecordsIsLoading || writeTextRecordsIsPending || transactionIsFetching;
-
-  const isPrimaryName = currentWalletIsOwner && profileUsername === primaryUsername;
-  const isSecondaryName = currentWalletIsOwner && profileUsername !== primaryUsername;
 
   return !currentWalletIsOwner ? (
     <p>You don&apos;t have the permission to edit this profile</p>
@@ -308,86 +163,27 @@ export default function UsernameProfileSettings() {
       </div>
 
       {/* Settings UI: borders, layout & shadow  */}
-      <div className="relative flex rounded-2xl border border-[#EBEBEB] shadow-lg">
+      <div className="relative flex flex-col rounded-2xl border border-[#EBEBEB] shadow-lg md:flex-row">
         {/* Settings UI: Left side  */}
-        <div className="w-full max-w-[21rem] border-r border-[#EBEBEB]">
+        <div className="w-full border-b border-[#EBEBEB] md:max-w-[21rem] md:border-r">
           {/* Settings UI: Avatar  */}
-          <div className="flex flex-col gap-6 p-4 md:p-10">
+          <div className="flex w-full flex-col gap-6 p-4 md:p-8">
             <UsernameAvatarField
               onChangeFile={onChangeAvatarFile}
               onChange={onChangeTextRecord}
-              currentAvatarUrl={textRecords[UsernameTextRecordKeys.Avatar]}
-              disabled={isLoading}
+              currentAvatarUrl={updatedTextRecords[UsernameTextRecordKeys.Avatar]}
+              disabled={writeTextRecordsIsPending}
               username={profileUsername}
             />
 
             {/* Settings UI: Primary or Secondary badge  */}
-            <div>
-              {isPrimaryName && (
-                <span className="rounded-md bg-blue-0 px-2 py-1 text-sm font-bold text-blue-60">
-                  Primary Name
-                </span>
-              )}
-              {isSecondaryName && (
-                <span className="rounded-md bg-orange-0 px-2 py-1 text-sm font-bold text-orange-60">
-                  Secondary Name
-                </span>
-              )}
-            </div>
-
-            {/* Settings UI: Username & Dropdown  */}
-            <div className="flex w-full items-center justify-between gap-4">
-              <span>{profileUsername}</span>
-
-              {isSecondaryName &&
-                (setPrimaryNameIsLoading ? (
-                  <Icon name="spinner" height="1rem" width="1rem" color="currentColor" />
-                ) : (
-                  <Dropdown>
-                    <DropdownToggle>
-                      <Icon name="pen" height="1rem" width="1rem" color="currentColor" />
-                    </DropdownToggle>
-                    <DropdownMenu align={DropdownMenuAlign.Left}>
-                      <DropdownItem onClick={setPrimaryUsername}>Set as Primary name</DropdownItem>
-                    </DropdownMenu>
-                  </Dropdown>
-                ))}
-            </div>
+            <UsernameProfileSettingsName />
           </div>
 
           {/* Settings UI: Menu  */}
-          <nav className="border-t border-[#EBEBEB] p-4 md:p-10 ">
-            <ul className="flex w-full flex-col gap-4">
-              {allSettingsTabs.map((settingTab) => (
-                <li key={settingTab}>
-                  {settingsTabsEnabled.includes(settingTab) ? (
-                    <button
-                      type="button"
-                      // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-                      onClick={() => setCurrentSettingsTab(settingTab)}
-                      className={classNames('text-sm font-bold uppercase', {
-                        'text-black': settingTab === currentSettingsTab,
-                        'text-gray-40': settingTab !== currentSettingsTab,
-                      })}
-                    >
-                      {settingTabsForDisplay[settingTab]}
-                    </button>
-                  ) : (
-                    <Tooltip content="Coming soon" className="cursor-default	">
-                      <span
-                        className={classNames(' mb-2 text-sm font-bold uppercase ', {
-                          'text-black': settingTab === currentSettingsTab,
-                          'text-gray-40': settingTab !== currentSettingsTab,
-                        })}
-                      >
-                        {settingTabsForDisplay[settingTab]}
-                      </span>
-                    </Tooltip>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="border-t border-[#EBEBEB] p-4 md:p-8 ">
+            <UsernameProfileSettingsMenu />
+          </div>
         </div>
 
         {/* Settings UI: Right side  */}
@@ -403,8 +199,8 @@ export default function UsernameProfileSettings() {
               <section className={settingTabClass}>
                 <UsernameDescriptionField
                   onChange={onChangeTextRecord}
-                  value={textRecords[UsernameTextRecordKeys.Description]}
-                  disabled={isLoading}
+                  value={updatedTextRecords[UsernameTextRecordKeys.Description]}
+                  disabled={writeTextRecordsIsPending}
                 />
                 <Fieldset>
                   <Label>Socials</Label>
@@ -413,16 +209,16 @@ export default function UsernameProfileSettings() {
                       key={textRecordKey}
                       textRecordKey={textRecordKey}
                       onChange={onChangeTextRecord}
-                      value={textRecords[textRecordKey]}
-                      disabled={isLoading}
+                      value={updatedTextRecords[textRecordKey]}
+                      disabled={writeTextRecordsIsPending}
                     />
                   ))}
                 </Fieldset>
                 <div className="mb-2">
                   <UsernameKeywordsField
                     onChange={onChangeTextRecord}
-                    value={textRecords[UsernameTextRecordKeys.Keywords]}
-                    disabled={isLoading}
+                    value={updatedTextRecords[UsernameTextRecordKeys.Keywords]}
+                    disabled={writeTextRecordsIsPending}
                   />
                 </div>
               </section>
@@ -430,20 +226,14 @@ export default function UsernameProfileSettings() {
           </div>
 
           {/* Settings UI: The save section  */}
-          <div className="border-t border-[#EBEBEB] p-4 md:p-10">
+          <div className="md:p-center flex items-center justify-between gap-4 border-t border-[#EBEBEB] p-4 md:p-8">
             {writeTextRecordsError && <TransactionError error={writeTextRecordsError} />}
-            {existingTextRecordsError && <TransactionError error={existingTextRecordsError} />}
-            {transactionError && <TransactionError error={existingTextRecordsError} />}
-            {transactionData && transactionData.status === 'reverted' && (
-              <TransactionStatus transaction={transactionData} chainId={transactionData.chainId} />
-            )}
-
             <Button
               variant={ButtonVariants.Black}
               rounded
-              fullWidth
-              disabled={isLoading}
-              isLoading={isLoading}
+              disabled={writeTextRecordsIsPending || !hasChanged}
+              className="ml-auto"
+              isLoading={writeTextRecordsIsPending}
               onClick={onClickSave}
             >
               Save

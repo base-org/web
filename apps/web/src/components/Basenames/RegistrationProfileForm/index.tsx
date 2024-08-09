@@ -12,20 +12,16 @@ import Fieldset from 'apps/web/src/components/Fieldset';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
 import TransactionError from 'apps/web/src/components/TransactionError';
-import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
 import {
-  UsernameTextRecords,
   UsernameTextRecordKeys,
   textRecordsSocialFieldsEnabled,
 } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useState } from 'react';
-import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
+import { useAccount } from 'wagmi';
 
 export enum FormSteps {
   Description = 'description',
@@ -37,100 +33,27 @@ export default function RegistrationProfileForm() {
   const [currentFormStep, setCurrentFormStep] = useState<FormSteps>(FormSteps.Description);
   const [transitionStep, setTransitionStep] = useState<boolean>(false);
   const { logError } = useErrors();
-  const { selectedName, redirectToProfile } = useRegistration();
+  const { redirectToProfile } = useRegistration();
   const { address } = useAccount();
   const { logEventWithContext } = useAnalytics();
-  const { basenameChain } = useBasenameChain();
+
   const { data: baseEnsName } = useBaseEnsName({
     address,
   });
 
   const {
-    existingTextRecords,
-    existingTextRecordsIsLoading,
-    refetchExistingTextRecords,
-    existingTextRecordsError,
-  } = useReadBaseEnsTextRecords({
-    address: address,
-    username: baseEnsName,
-  });
-
-  // Write text records
-  const {
+    updateTextRecords,
+    updatedTextRecords,
     writeTextRecords,
     writeTextRecordsIsPending,
-    writeTextRecordsTransactionHash,
     writeTextRecordsError,
   } = useWriteBaseEnsTextRecords({
     address: address,
     username: baseEnsName,
-  });
-
-  // Wait for text record transaction to be processed
-  const {
-    data: transactionData,
-    isFetching: transactionIsFetching,
-    error: transactionError,
-  } = useWaitForTransactionReceipt({
-    hash: writeTextRecordsTransactionHash,
-    chainId: basenameChain.id,
-    query: {
-      enabled: !!writeTextRecordsTransactionHash,
-      refetchOnWindowFocus: false,
+    onSuccess: () => {
+      redirectToProfile();
     },
   });
-
-  const [textRecords, setTextRecords] = useState<UsernameTextRecords>(existingTextRecords);
-
-  useEffect(() => {
-    if (!transactionData) return;
-
-    if (transactionData.status === 'success') {
-      logEventWithContext('update_text_records_transaction_success', ActionType.change);
-
-      refetchExistingTextRecords()
-        .then(() => {
-          redirectToProfile();
-        })
-        .catch((error) => {
-          logError(error, 'Failed to refetch text records');
-        });
-    }
-
-    if (transactionData.status === 'reverted') {
-      logEventWithContext('update_text_records_transaction_reverted', ActionType.change, {
-        error: `Transaction reverted: ${transactionData.transactionHash}`,
-      });
-    }
-  }, [
-    logEventWithContext,
-    refetchExistingTextRecords,
-    baseEnsName,
-    transactionData,
-    selectedName,
-    basenameChain.id,
-    redirectToProfile,
-    logError,
-  ]);
-
-  useEffect(() => {
-    if (transactionIsFetching) {
-      logEventWithContext('update_text_records_transaction_processing', ActionType.change);
-    }
-  }, [logEventWithContext, transactionIsFetching]);
-
-  useEffect(() => {
-    setTextRecords(existingTextRecords);
-  }, [existingTextRecords]);
-
-  const updateTextRecords = useCallback((key: UsernameTextRecordKeys, value: string) => {
-    setTextRecords((previousTextRecords) => {
-      return {
-        ...previousTextRecords,
-        [key]: value,
-      };
-    });
-  }, []);
 
   const transitionFormOpacity = useCallback((callbackFunction: () => void) => {
     // Hide the form
@@ -160,16 +83,8 @@ export default function RegistrationProfileForm() {
       if (currentFormStep === FormSteps.Keywords) {
         logEventWithContext('update_text_records_transaction_initiated', ActionType.change);
 
-        writeTextRecords(textRecords)
-          .then((result) => {
-            // We updated some text records
-            if (result) {
-              logEventWithContext('update_text_records_transaction_approved', ActionType.change);
-            } else {
-              // no text records had to be updated, simply go to profile
-              redirectToProfile();
-            }
-          })
+        writeTextRecords()
+          .then()
           .catch((error) => {
             logError(error, 'Failed to write text records');
           });
@@ -177,15 +92,7 @@ export default function RegistrationProfileForm() {
 
       event.preventDefault();
     },
-    [
-      currentFormStep,
-      logError,
-      logEventWithContext,
-      redirectToProfile,
-      textRecords,
-      transitionFormOpacity,
-      writeTextRecords,
-    ],
+    [currentFormStep, logError, logEventWithContext, transitionFormOpacity, writeTextRecords],
   );
 
   const onChangeTextRecord = useCallback(
@@ -237,9 +144,6 @@ export default function RegistrationProfileForm() {
     </div>
   );
 
-  const isLoading =
-    existingTextRecordsIsLoading || writeTextRecordsIsPending || transactionIsFetching;
-
   useEffect(() => {
     logEventWithContext(`registration_profile_form_step_${currentFormStep}`, ActionType.change);
   }, [currentFormStep, logEventWithContext]);
@@ -250,8 +154,8 @@ export default function RegistrationProfileForm() {
         <UsernameDescriptionField
           labelChildren={descriptionLabelChildren}
           onChange={onChangeTextRecord}
-          value={textRecords[UsernameTextRecordKeys.Description]}
-          disabled={isLoading}
+          value={updatedTextRecords[UsernameTextRecordKeys.Description]}
+          disabled={writeTextRecordsIsPending}
         />
       )}
       {currentFormStep === FormSteps.Socials && (
@@ -262,8 +166,8 @@ export default function RegistrationProfileForm() {
               key={textRecordKey}
               textRecordKey={textRecordKey}
               onChange={onChangeTextRecord}
-              value={textRecords[textRecordKey]}
-              disabled={isLoading}
+              value={updatedTextRecords[textRecordKey]}
+              disabled={writeTextRecordsIsPending}
             />
           ))}
         </Fieldset>
@@ -273,8 +177,8 @@ export default function RegistrationProfileForm() {
           <UsernameKeywordsField
             labelChildren={keywordsLabelChildren}
             onChange={onChangeTextRecord}
-            value={textRecords[UsernameTextRecordKeys.Keywords]}
-            disabled={isLoading}
+            value={updatedTextRecords[UsernameTextRecordKeys.Keywords]}
+            disabled={writeTextRecordsIsPending}
           />
         </div>
       )}
@@ -282,18 +186,13 @@ export default function RegistrationProfileForm() {
         variant={ButtonVariants.Black}
         rounded
         fullWidth
-        disabled={isLoading}
-        isLoading={isLoading}
+        disabled={writeTextRecordsIsPending}
+        isLoading={writeTextRecordsIsPending}
         onClick={onClickSave}
       >
         {currentFormStep === FormSteps.Keywords ? "I'm done" : 'Next'}
       </Button>
       {writeTextRecordsError && <TransactionError error={writeTextRecordsError} />}
-      {existingTextRecordsError && <TransactionError error={existingTextRecordsError} />}
-      {transactionError && <TransactionError error={transactionError} />}
-      {transactionData && transactionData.status === 'reverted' && (
-        <TransactionStatus transaction={transactionData} chainId={transactionData.chainId} />
-      )}
     </form>
   );
 }

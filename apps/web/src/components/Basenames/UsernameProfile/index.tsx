@@ -6,6 +6,7 @@ import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import UsernameProfileSettings from 'apps/web/src/components/Basenames/UsernameProfileSettings';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import UsernameProfileSettingsProvider from 'apps/web/src/components/Basenames/UsernameProfileSettingsContext';
 
 export default function UsernameProfile() {
   const { logEventWithContext } = useAnalytics();
@@ -14,10 +15,15 @@ export default function UsernameProfile() {
 
   logEventWithContext('page_loaded', ActionType.render);
 
-  if (showProfileSettings) return <UsernameProfileSettings />;
+  if (showProfileSettings)
+    return (
+      <UsernameProfileSettingsProvider>
+        <UsernameProfileSettings />
+      </UsernameProfileSettingsProvider>
+    );
 
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 md:flex-row md:px-8">
+    <div className="mx-auto flex min-h-screen flex-col justify-between gap-10 md:flex-row">
       <div className="w-full md:max-w-[25rem]">
         <UsernameProfileSidebar />
       </div>
