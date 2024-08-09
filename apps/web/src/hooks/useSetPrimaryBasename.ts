@@ -17,7 +17,6 @@ import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import { useErrors } from 'apps/web/contexts/Errors';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
-import { normalize } from 'path';
 
 /*
   A hook to set an name as primary for resolution.
@@ -56,12 +55,12 @@ export default function useSetPrimaryBasename({ secondaryName }: UseSetPrimaryBa
   const { basenameChain: primaryBaseChain } = useBasenameChain(primaryUsername);
 
   const { data: secondaryAddress } = useEnsAddress({
-    name: normalize(secondaryName),
+    name: secondaryName,
     universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[secondaryBaseChain.id],
   });
 
   const { data: primaryAddress } = useEnsAddress({
-    name: normalize(primaryUsername),
+    name: primaryUsername,
     universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[primaryBaseChain.id],
     query: {
       enabled: !!primaryUsername,
