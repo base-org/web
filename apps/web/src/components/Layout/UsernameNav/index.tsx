@@ -1,12 +1,12 @@
 'use client';
 import Link from 'next/link';
 import usernameBaseLogo from './usernameBaseLogo.svg';
-import Image from 'next/image';
+
 import {
   ConnectWalletButton,
   ConnectWalletButtonVariants,
 } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import { useAccount, useSwitchChain } from 'wagmi';
 import classNames from 'classnames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
@@ -14,6 +14,7 @@ import { base, baseSepolia } from 'viem/chains';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { useCallback } from 'react';
 import { isDevelopment } from 'apps/web/src/constants';
+import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 
 export default function UsernameNav() {
   const { isConnected } = useAccount();
@@ -44,7 +45,7 @@ export default function UsernameNav() {
   });
 
   const navigationClasses = classNames(
-    'flex h-24 w-full max-w-[1440px] flex-row items-center justify-between gap-16 self-center bg-transparent px-4 md:px-8',
+    'flex h-24 w-full max-w-[1440px] flex-row items-center justify-between gap-4 md:gap-16 self-center bg-transparent px-4 md:px-8',
   );
 
   return (
@@ -87,7 +88,7 @@ export default function UsernameNav() {
       )}
       <nav className={navigationClasses}>
         <Link href="/">
-          <Image src={usernameBaseLogo as StaticImport} alt="Base" />
+          <ImageAdaptive src={usernameBaseLogo as StaticImageData} alt="Base" />
         </Link>
         <span className={walletStateClasses}>
           <ConnectWalletButton

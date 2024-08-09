@@ -12,12 +12,6 @@ tags: ['frames']
 
 [Frames] on [Farcaster] are getting more complex. Developers are now building interactions that require a handful, or even dozens of frames in response to various user states, inputs, and actions. HyperFrames are a system to organize navigation for large numbers of frames, using [OnchainKit]. In this tutorial, we'll use making the navigation for an [old-school adventure game] fully in a frame. You can use this same technique for many other intents with your Frames, such as games, stores, customized mints, etc.
 
-:::caution
-
-Frames are brand new and tools for building them are evolving quickly. Check the [Frames] docs and OnchainKit [changelog]!
-
-:::
-
 ---
 
 ## Objectives
@@ -416,12 +410,11 @@ In this tutorial, you learned how to implement a system of HyperFrames - frames 
 
 [Farcaster]: https://www.farcaster.xyz/
 [a-frame-in-100-lines]: https://github.com/Zizzamia/a-frame-in-100-lines
-[OnchainKit]: https://onchainkit.xyz
+[OnchainKit]: https://onchainkit.xyz/?utm_source=basedocs&utm_medium=tutorials&campaign=farcaster-frames-hyperframes
 [Vercel]: https://vercel.com
 [Frame Validator]: https://warpcast.com/~/developers/frames
 [deploying with Vercel]: /tutorials/farcaster-frames-deploy-to-vercel
 [Frames]: https://docs.farcaster.xyz/learn/what-is-farcaster/frames
 [NFT Minting Frame]: /tutorials/farcaster-frames-nft-minting
 [old-school adventure game]: https://warpcast.com/briandoyle81/0x108f1cdb
-[changelog]: https://onchainkit.xyz/blob/main/CHANGELOG.md
 [`app/api/route.ts`]: https://github.com/Zizzamia/a-frame-in-100-lines/blob/main/app/api/frame/route.ts

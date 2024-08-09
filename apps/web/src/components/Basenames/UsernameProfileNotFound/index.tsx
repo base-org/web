@@ -1,9 +1,10 @@
 'use client';
 import notFoundIllustration from './notFoundIllustration.svg';
-import Image, { StaticImageData } from 'next/image';
+import { StaticImageData } from 'next/image';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 
 export default function UsernameProfileNotFound() {
   const params = useSearchParams();
@@ -16,7 +17,11 @@ export default function UsernameProfileNotFound() {
   const linkHref = username ? `/names?claim=${username}` : `/names`;
   return (
     <div className="flex w-full flex-col items-center gap-8 text-center">
-      <Image src={notFoundIllustration as StaticImageData} alt="404 Illustration" />
+      <ImageWithLoading
+        src={notFoundIllustration as StaticImageData}
+        alt="404 Illustration"
+        wrapperClassName="rounded-3xl"
+      />
       <h2 className="break-all text-3xl font-bold	">{title}</h2>
       <p className="text-lg">{description}</p>
       <Link href={linkHref}>

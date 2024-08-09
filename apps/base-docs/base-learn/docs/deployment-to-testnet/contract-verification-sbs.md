@@ -12,7 +12,7 @@ Once your contract is deployed, you can verify it using a number of popular serv
 
 By the end of this lesson you should be able to:
 
-- Verify a contract on the Base Sepolia testnet and interact with it in Etherscan
+- Verify a contract on the Base Sepolia testnet and interact with it in [BaseScan]
 
 ---
 
@@ -20,7 +20,7 @@ By the end of this lesson you should be able to:
 
 Make sure you still have the address of the contract you deployed in the last article copied to the clipboard.
 
-You can interact with your deployed contract using Remix, the same as before, but it's also possible to interact with it through Etherscan. Paste your address in the search field to find it.
+You can interact with your deployed contract using Remix, the same as before, but it's also possible to interact with it through BaseScan. Paste your address in the search field to find it.
 
 On this page, you can review the balance, information about, and all the transactions that have ever occurred with your contract.
 
@@ -52,7 +52,7 @@ If you have imports, you'll need to right click on the name of the file and choo
 
 ### Interact with the Contract
 
-You can now interact with your contract using Etherscan. Click the _Read Contract_ button. Both of your functions will be listed here and can be tested using the web interface.
+You can now interact with your contract using BaseScan. Click the _Read Contract_ button. Both of your functions will be listed here and can be tested using the web interface.
 
 You won't have anything under _Write Contract_ because this contract doesn't have any functions that save data to state.
 
@@ -71,5 +71,5 @@ With your contracts verified, you can interact with them using online tools and 
 [faucet]: https://docs.base.org/tools/network-faucets
 [set up]: https://www.youtube.com/watch?v=CZDgLG6jpgw
 [coinbase settings]: https://docs.cloud.coinbase.com/wallet-sdk/docs/developer-settings
-[etherscan]: https://etherscan.io/
+[BaseScan]: https://sepolia.basescan.org/
 [faucets on the web]: https://coinbase.com/faucets

@@ -38,7 +38,7 @@ const sizeStyles = {
   [ButtonSizes.Medium]: 'text-sm md:text-lg px-10 py-3.5',
 };
 
-type ButtonProps = {
+export type ButtonProps = {
   variant?: ButtonVariants;
   size?: ButtonSizes;
   rounded?: boolean;
