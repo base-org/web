@@ -1,22 +1,22 @@
-import { CBIDProofResponse } from 'apps/web/pages/api/proofs/cbid';
-import { EarlyAccessProofResponse } from 'apps/web/pages/api/proofs/earlyAccess';
-import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
-import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
-import EarlyAccessValidatorABI from 'apps/web/src/abis/EarlyAccessValidator';
-import ERC721ValidatorABI from 'apps/web/src/abis/ERC721DiscountValidator';
-import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
-import { Discount, IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
-import { useEffect, useMemo, useState } from 'react';
-import { Address, ReadContractErrorType, encodeAbiParameters } from 'viem';
-import { useAccount, useReadContract } from 'wagmi';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useErrors } from 'apps/web/contexts/Errors';
 import { BNSProofResponse } from 'apps/web/pages/api/proofs/bns';
+import { CBIDProofResponse } from 'apps/web/pages/api/proofs/cbid';
+import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
+import { EarlyAccessProofResponse } from 'apps/web/pages/api/proofs/earlyAccess';
+import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
+import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
+import EarlyAccessValidatorABI from 'apps/web/src/abis/EarlyAccessValidator';
+import ERC721ValidatorABI from 'apps/web/src/abis/ERC721DiscountValidator';
 import {
   BASE_DOT_ETH_ERC721_DISCOUNT_VALIDATOR,
   BUILDATHON_ERC721_DISCOUNT_VALIDATOR,
   USERNAME_1155_DISCOUNT_VALIDATORS,
 } from 'apps/web/src/addresses/usernames';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import { Discount, IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
+import { useEffect, useMemo, useState } from 'react';
+import { Address, ReadContractErrorType, encodeAbiParameters } from 'viem';
+import { useAccount, useReadContract } from 'wagmi';
 
 export type AttestationData = {
   discountValidatorAddress: Address;
