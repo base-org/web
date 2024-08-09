@@ -27,10 +27,6 @@ import { useAnalytics } from 'apps/web/contexts/Analytics';
   - Wait for the transaction to be processed
   - Refetch basename on successfull request  
   - Log errors and analytics accordingly
-
-  TODOs:
-  - Return list of all names (off-chain indexing)
-  - Compare to list of available names
 */
 
 type UseSetPrimaryBasenameProps = {

@@ -43,7 +43,6 @@ export default function UsernameProfileSettingsManageProfile() {
   const onClickSave = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
-      // TODO: We can't really get to this steps, but we should show an error
       if (!currentWalletIsOwner) return false;
       writeTextRecords().catch((error) => {
         logError(error, 'Failed to write text records');

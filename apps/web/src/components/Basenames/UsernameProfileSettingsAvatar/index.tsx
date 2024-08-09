@@ -46,7 +46,6 @@ export default function UsernameProfileSettingsAvatar() {
 
       logEventWithContext('avatar_upload_initiated', ActionType.change);
 
-      // TODO: Rename .name to username.[jpeg/webp/svg/png]
       const timestamp = Date.now();
       const newBlob = await upload(
         `basenames/avatar/${profileUsername}/${timestamp}/${file.name}`,
