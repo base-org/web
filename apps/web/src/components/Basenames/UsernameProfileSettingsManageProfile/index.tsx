@@ -33,9 +33,7 @@ export default function UsernameProfileSettingsManageProfile() {
   } = useWriteBaseEnsTextRecords({
     address: profileAddress,
     username: profileUsername,
-    onSuccess: () => {
-      closeSettings();
-    },
+    onSuccess: closeSettings,
   });
 
   const closeSettings = useCallback(() => {
