@@ -111,7 +111,7 @@ The app will work by using a QR code scanner to read the member's "pay me" QR co
 
 ### Setting up the Template
 
-Start by using [An Onchain App in 100 Components] as a template.
+Start by using the [Onchain App Template] as the foundation of your app.
 
 Clone your copy of the repo, install dependencies, and check that it works.
 
@@ -419,7 +419,7 @@ In this tutorial, you learned about [Nouns] and how the platform makes it easy t
 [Farcaster]: https://www.farcaster.xyz/
 [Smart Wallet]: https://www.smartwallet.dev/why
 [Next.js]: https://nextjs.org/
-[An Onchain App in 100 Components]: https://github.com/Zizzamia/an-onchain-app-in-100-components
+[Onchain App Template]: https://github.com/coinbase/onchain-app-template
 [Smart Wallet]: https://www.coinbase.com/wallet/smart-wallet
 [BuilderDAO]: https://nouns.build/about
 [Testnet Builder DAO]: https://testnet.nouns.build/

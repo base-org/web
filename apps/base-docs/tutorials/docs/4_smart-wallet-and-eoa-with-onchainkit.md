@@ -65,14 +65,24 @@ You need to have both the [Coinbase Wallet] and [Coinbase Smart Wallet] for this
 
 ## The Default Experience
 
-Begin by using [An Onchain App in 100 Components] as a template to quickstart a new app. Click the green `Use this template` button, create a new repo, download it, install dependencies, and run the app.
+Begin by using the [Onchain App Template] to quickstart a new app. Click the green `Use this template` button, create a new repo, and clone it.
+
+You'll need a [WalletConnect] id if you don't have one already. Obtain it, the duplicate `.env.local.example` and rename it `.env.local`. Change `NEXT_PUBLIC_WC_PROJECT_ID` to your id.
+
+Then install dependencies, and run the app.
 
 ```bash
 bun install
 bun run dev
 ```
 
-The demo app contains sections showing a number of [OnchainKit] components, including the [Wallet]. Click `Connect Wallet` in your browser with the Coinbase wallet active, and you'll get the expected experience for an EOA wallet user with the browser extension.
+::info
+
+To bring the world onchain, we'll need to speak in terms people are already comfortable with. Consider using `Log In` rather than `Connect Wallet`!
+
+:::
+
+The demo app contains sections showing a number of [OnchainKit] components, including the [Wallet]. Click `Log In` in your browser with the Coinbase wallet extension present, select `Coinbase Wallet`, and you'll get the expected experience for an EOA wallet user with the browser extension.
 
 ![Default eoa](../../assets/images/smart-wallet/onchainkit-default-eoa.png)
 
@@ -80,32 +90,38 @@ Next, open the app in a private browser window with extensions disabled, and try
 
 ![Default smart wallet](../../assets/images/smart-wallet/onchainkit-default-smart.png)
 
-Unfortunately, now that you've realized that the smart wallet is great, you've got a problem. Because you already have a Coinbase EOA wallet via the browser extension, you **can't** connect with your smart wallet **unless** you open a private window.
-
 ## Customizing the List of Wallets
 
-Luckily, it isn't too hard to fix this with the [Wallet Aggregator].
+You can customize the list of wallets with the [Wallet Aggregator].
 
 ### Setting Up the Wallet Aggregator
 
 Open `src/app/page.tsx`. Here, you find the root page for the app. You can see the `<WalletComponents />`, which is what you used to log in and out.
 
-Open `src/components/WalletComponents.tsx`, `src/wagmi.ts`, and `src/components/OnchainProviders.tsx`. Take a quick look at `WalletComponents`. It's a simple implementation that invokes a default experience without customization. You can update this, but first you'll need to make some changes to `OnchainProviders.tsx` and `wagmi.ts`.
+Open `src/components/WalletComponents.tsx`, and `src/wagmi.ts`. Take a quick look at `WalletWrapper`. It's a robust implementation of several [OnchainKit] components that shows how you can create a login experience that works well for all types of users, and provides the `<Identity>` component once logged in.
 
-Install [RainbowKit] and its dependencies:
+You can customize this by making some changes to `wagmi.ts`.
 
-```bash
-bun add @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
-```
-
-Start with `wagmi.ts`. Update it to use [RainbowKit] connectors:
+Start with `wagmi.ts`. Update it import the [RainbowKit] connectors for the wallets you want to use (We just picked the ones a the end of the supported list. Do your homework on which wallets to support!):
 
 ```tsx
 import { http, createConfig } from 'wagmi';
 import { baseSepolia } from 'wagmi/chains';
-import { metaMaskWallet, rainbowWallet, coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
+import {
+  coinbaseWallet,
+  metaMaskWallet,
+  rainbowWallet,
+  uniswapWallet,
+  walletConnectWallet,
+  xdefiWallet,
+  zerionWallet,
+} from '@rainbow-me/rainbowkit/wallets';
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+```
 
+Then, update the `connectorsForWallets` to use the wallets you've selected in the groupings of your choice:
+
+```tsx
 const connectors = connectorsForWallets(
   [
     {
@@ -114,81 +130,31 @@ const connectors = connectorsForWallets(
     },
     {
       groupName: 'Other Wallets',
-      wallets: [rainbowWallet, metaMaskWallet],
+      wallets: [rainbowWallet, metaMaskWallet, walletConnectWallet],
+    },
+    {
+      groupName: 'U Wallets',
+      wallets: [uniswapWallet],
+    },
+    {
+      groupName: 'X Wallets',
+      wallets: [xdefiWallet],
+    },
+    {
+      groupName: 'Z Wallets',
+      wallets: [zerionWallet],
     },
   ],
   {
     appName: 'onchainkit',
-    projectId: '<YOUR WALLET CONNECT ID>',
+    projectId,
   },
 );
-
-export const wagmiConfig = createConfig({
-  chains: [baseSepolia],
-  // turn off injected provider discovery
-  multiInjectedProviderDiscovery: false,
-  connectors,
-  ssr: true,
-  transports: {
-    [baseSepolia.id]: http(),
-  },
-});
-
-declare module 'wagmi' {
-  interface Register {
-    config: typeof wagmiConfig;
-  }
-}
 ```
 
-Next, open `OnchainProviders.tsx`. Import and add the css for RainbowKit, and the context provider. You'll also need a css file from OnchainKit:
+Try connecting again. You'll see your updated list with the wallets organized to your preference!
 
-```tsx
-'use client';
-import { OnchainKitProvider } from '@coinbase/onchainkit';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import type { ReactNode } from 'react';
-import { base } from 'viem/chains';
-import { WagmiProvider } from 'wagmi';
-import { NEXT_PUBLIC_CDP_API_KEY } from '../config';
-import { wagmiConfig } from '../wagmi';
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
-
-import '@coinbase/onchainkit/styles.css';
-import '@rainbow-me/rainbowkit/styles.css';
-
-type Props = { children: ReactNode };
-
-const queryClient = new QueryClient();
-
-function OnchainProviders({ children }: Props) {
-  return (
-    <WagmiProvider config={wagmiConfig}>
-      <QueryClientProvider client={queryClient}>
-        <OnchainKitProvider apiKey={NEXT_PUBLIC_CDP_API_KEY} chain={base}>
-          <RainbowKitProvider modalSize="compact">{children}</RainbowKitProvider>
-        </OnchainKitProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
-  );
-}
-
-export default OnchainProviders;
-```
-
-Finally, in `WalletComponents.tsx`, add `withWalletAggregator` to `<ConnectWallet>`:
-
-```tsx
-<Wallet>
-  <ConnectWallet withWalletAggregator>
-    <Avatar className="h-6 w-6" />
-    <Name />
-  </ConnectWallet>
-  {/* Code continues... */}
-</Wallet>
-```
-
-You've made changes that sometimes confuse the wallet connection, so clear site data, refresh the page, then try connecting again. Now, you'll get the RainbowKit modal with your list of wallets. You've solved the problem of allowing other types of wallets to connect to your app, but you'll find that the Coinbase wallet works as before - it will default to the EOA if a browser extension is present, but the smart wallet if it is not.
+![Customized List](../../assets/images/smart-wallet/customized-wallet-list.png)
 
 ## Tuning the Coinbase Wallet Connection
 
@@ -219,7 +185,7 @@ The default is:
 coinbaseWallet.preference = 'all';
 ```
 
-Set this line at the root level of the document, under the imports:
+Set this line at the root level of `wagmi.ts`, under the imports:
 
 ```tsx
 import { http, createConfig } from 'wagmi';
@@ -235,13 +201,13 @@ import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 coinbaseWallet.preference = 'all';
 ```
 
-This setting exhibits the behavior you've observed before. If the EOA is present, it will be used. Otherwise, the Smart Wallet UI/UX will pop up.
+The `all` setting exhibits the behavior you've observed before. If the EOA is present, it will be used. Otherwise, the Smart Wallet UI/UX will pop up.
 
 You can use these settings to direct users of your app to your preferred use case, or tie it to a UI element to give them a choice.
 
 :::info
 
-The Coinbase Smart Wallet will support user-selected choice of which wallet to use very soon!
+The Coinbase Smart Wallet will support user-selected choice of which wallet to use soon!
 
 :::
 
@@ -249,7 +215,7 @@ The Coinbase Smart Wallet will support user-selected choice of which wallet to u
 
 ## Conclusion
 
-In this tutorial, you've learned how to use [OnchainKit] to create a connection button. You've also learned how to customize the connection experience with [RainbowKit], enabling your users a broader choice of which wallet to use with your app and making sure all are able to enjoy it.
+In this tutorial, you've learned how to use [OnchainKit] to log your users into your onchain app. You've also learned how to customize the connection experience with [RainbowKit], enabling your users a broader choice of which wallet to use with your app and making sure all are able to enjoy it.
 
 ---
 
@@ -271,5 +237,5 @@ In this tutorial, you've learned how to use [OnchainKit] to create a connection 
 [custom wallet list]: https://www.rainbowkit.com/docs/custom-wallet-list
 [OnchainKit]: https://onchainkit.xyz/?utm_source=basedocs&utm_medium=tutorials&campaign=smart-wallet-and-eoa-with-onchainkit
 [Wallet]: https://onchainkit.xyz/wallet/wallet
-[An Onchain App in 100 Components]: https://github.com/Zizzamia/an-onchain-app-in-100-components
+[Onchain App Template]: https://github.com/coinbase/onchain-app-template
 [Wallet Aggregator]: https://onchainkit.xyz/wallet/wallet#use-wallet-aggregator
