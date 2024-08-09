@@ -2,10 +2,11 @@
 
 import { Button } from './Button';
 
-export function ButtonWithSurveyResponse({ text, surveyResponseId }) {
-  const handleClick = () => {
-    console.log(surveyResponseId);
-  };
+type ButtonWithSurveyResponseProps = {
+  text: string;
+  clickHandler: () => void;
+};
 
-  return <Button onClick={handleClick}>{text}</Button>;
+export function ButtonWithSurveyResponse({ text, clickHandler }: ButtonWithSurveyResponseProps) {
+  return <Button onClick={clickHandler}>{text}</Button>;
 }
