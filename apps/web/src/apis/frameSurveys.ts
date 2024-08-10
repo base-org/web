@@ -51,6 +51,13 @@ type UserResponseTable = {
   created_at: ColumnType<Date, string | undefined, never>;
 };
 
+export type UserResponse = {
+  user_id: string;
+  user_address: string;
+  question_id: number;
+  answer_id: number;
+};
+
 const dialect = new PostgresDialect({
   pool: new Pool({
     database: 'postgres',
