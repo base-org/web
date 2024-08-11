@@ -34,7 +34,10 @@ export default function BasenamesHomepageModal() {
   );
 
   const modalCtaClasses = classNames(
-    'mt-8 flex w-full flex-col items-center rounded-[3px] text-center font-medium leading-7',
+    'flex flex-col items-center',
+    'mt-8 w-full',
+    'text-center font-medium leading-7',
+    'rounded-[3px]',
   );
 
   return (
