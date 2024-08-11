@@ -1,7 +1,5 @@
-import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { GradientCircle } from 'apps/web/src/components/GradientCircle/GradientCircle';
-import Link from 'next/link';
 
 export async function Commitment() {
   return (

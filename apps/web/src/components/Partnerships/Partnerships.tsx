@@ -1,27 +1,8 @@
-import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import { ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import optimismBase from './optimism-base.png';
 import coinbaseBase from './coinbase-base.png';
-
-type LearnMoreButtonProps = {
-  ariaLabel: string;
-};
-
-async function LearnMoreButton({ ariaLabel }: LearnMoreButtonProps) {
-  return (
-    <div className="w-[200px]">
-      <a
-        target="_blank"
-        rel="noreferrer noopener"
-        href="https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I"
-        aria-label={ariaLabel}
-      >
-        <Button variant={ButtonVariants.Secondary}>Learn More</Button>
-      </a>
-    </div>
-  );
-}
 
 export async function Partnerships() {
   return (
