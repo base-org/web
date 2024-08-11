@@ -1,4 +1,5 @@
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { GradientCircle } from 'apps/web/src/components/GradientCircle/GradientCircle';
 import Link from 'next/link';
 
@@ -17,11 +18,13 @@ export async function Commitment() {
             need all hands on deck, working together to scale in a secure, decentralized,
             easy-to-use way.
           </p>
-          <Link href="/about" aria-label="Read more about us">
-            <Button variant={ButtonVariants.Primary} className="lg:self-start">
-              Read More
-            </Button>
-          </Link>
+          <ButtonWithLinkAndEventLogging
+            href="/about"
+            aria-label="Read more about us"
+            eventName="read_more_onchain_commitment"
+          >
+            Read More
+          </ButtonWithLinkAndEventLogging>
         </div>
       </div>
       <div className="mt-10 flex max-w-[1440px] flex-row justify-between gap-4 self-center bg-gray-90 p-4 lg:p-8">
