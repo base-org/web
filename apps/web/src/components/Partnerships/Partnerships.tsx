@@ -1,7 +1,8 @@
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
+import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import optimismBase from './optimism-base.png';
 import coinbaseBase from './coinbase-base.png';
-import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 
 type LearnMoreButtonProps = {
   ariaLabel: string;
@@ -40,7 +41,17 @@ export async function Partnerships() {
             foundation for a “superchain” of L2s that share interoperability, sequencing, and
             governance.
           </p>
-          <LearnMoreButton ariaLabel="Learn More About Optimism" />
+          <ButtonWithLinkAndEventLogging
+            href="https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I"
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label="Learn More About Optimism"
+            eventName="learn_more_optimism"
+            variant={ButtonVariants.Secondary}
+            buttonClassNames="mt-12"
+          >
+            Learn More
+          </ButtonWithLinkAndEventLogging>
         </div>
       </div>
       <div className="flex w-full flex-col space-y-12 pt-[3px] lg:basis-1/2">
@@ -57,7 +68,17 @@ export async function Partnerships() {
             ahead. We believe that decentralization is critical to creating an open, global
             cryptoeconomy that is accessible to everyone.
           </p>
-          <LearnMoreButton ariaLabel="Learn More About Coinbase" />
+          <ButtonWithLinkAndEventLogging
+            href="https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I"
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label="Learn More About Optimism"
+            eventName="learn_more_optimism"
+            variant={ButtonVariants.Secondary}
+            buttonClassNames="mt-12"
+          >
+            Learn More
+          </ButtonWithLinkAndEventLogging>
         </div>
       </div>
     </div>
