@@ -4,19 +4,16 @@ import { useCallback, useState } from 'react';
 import Image from 'next/image';
 import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
 import classNames from 'classnames';
-import { useExperiment } from 'base-ui/contexts/Experiments';
 import AnalyticsProvider from '../../../../contexts/Analytics';
+import { IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
 import { ButtonWithLinkAndEventLogging } from '../../Button/ButtonWithLinkAndEventLogging';
 import HomepageModal from './HomepageModal';
 import modalImage from './basenames-modal.svg';
 import ModalClose from './ModalClose';
 
-const BASENAME_MODAL_FEATURE_FLAG = 'basenames-launch-modal'
-
 export default function BasenamesHomepageModal() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
-  const { isReady, userVariant } = useExperiment(BASENAME_MODAL_FEATURE_FLAG);
-  console.log({ isReady, userVariant })
+  const SHOW_BANNER = !IS_EARLY_ACCESS;
 
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
@@ -41,41 +38,43 @@ export default function BasenamesHomepageModal() {
   );
 
   return (
-    <AnalyticsProvider context="basenames_modal">
-      <HomepageModal isOpen={isModalOpen} onClose={closeModal}>
-        <div className={modalContainerClasses}>
-          <div className={modalImageContainerClasses}>
-            <Image
-              src={modalImage as StaticImport}
-              alt="claim your basename today"
-              className="h-full w-full object-cover object-center"
-            />
-            <div className="absolute right-6 top-6">
-              <ModalClose setIsModalOpen={setIsModalOpen} />
+    SHOW_BANNER && (
+      <AnalyticsProvider context="basenames_modal">
+        <HomepageModal isOpen={isModalOpen} onClose={closeModal}>
+          <div className={modalContainerClasses}>
+            <div className={modalImageContainerClasses}>
+              <Image
+                src={modalImage as StaticImport}
+                alt="claim your basename today"
+                className="h-full w-full object-cover object-center"
+              />
+              <div className="absolute right-6 top-6">
+                <ModalClose setIsModalOpen={setIsModalOpen} />
+              </div>
+            </div>
+            <div className={modalContentContainerClasses}>
+              <h1 className="text-5xl font-normal leading-[56px]">
+                Basenames
+                <br />
+                are here
+              </h1>
+              <div className="mb-2 mt-3 w-full px-4">
+                <span className="font-sans leading-6">
+                  Connect with other Based builders and start building your unique onchain identity
+                  on Base with a .base.eth username.
+                </span>
+                <ButtonWithLinkAndEventLogging
+                  href="/names"
+                  eventName="get_a_basename"
+                  buttonClassNames={modalCtaClasses}
+                >
+                  Get your basename
+                </ButtonWithLinkAndEventLogging>
+              </div>
             </div>
           </div>
-          <div className={modalContentContainerClasses}>
-            <h1 className="text-5xl font-normal leading-[56px]">
-              Basenames
-              <br />
-              are here
-            </h1>
-            <div className="mb-2 mt-3 w-full px-4">
-              <span className="font-sans leading-6">
-                Connect with other Based builders and start building your unique onchain identity on
-                Base with a .base.eth username.
-              </span>
-              <ButtonWithLinkAndEventLogging
-                href="/names"
-                eventName="get_a_basename"
-                buttonClassNames={modalCtaClasses}
-              >
-                Get your basename
-              </ButtonWithLinkAndEventLogging>
-            </div>
-          </div>
-        </div>
-      </HomepageModal>
-    </AnalyticsProvider>
+        </HomepageModal>
+      </AnalyticsProvider>
+    )
   );
 }
