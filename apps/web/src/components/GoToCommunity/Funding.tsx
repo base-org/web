@@ -2,7 +2,7 @@ import {
   sectionContainer,
   titleClasses,
   FUNDING_SECTION_ID,
-} from '../../../app/(base-org)/go-to-community/page';
+} from '../../../app/(base-org)/get-started/page';
 import ResourceGrid from './ResourceGrid/ResourceGrid';
 import { ResourceSectionType } from './resourceTypes';
 
