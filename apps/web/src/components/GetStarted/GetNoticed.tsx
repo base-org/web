@@ -1,8 +1,4 @@
-import {
-  sectionContainer,
-  titleClasses,
-  GET_NOTICED_SECTION_ID,
-} from '../../../app/(base-org)/getstarted/page';
+import { sectionContainer, titleClasses } from '../../../app/(base-org)/getstarted/page';
 import ResourceGrid from './ResourceGrid/ResourceGrid';
 import { ResourceSectionType } from './resourceTypes';
 
@@ -25,6 +21,8 @@ const getNoticedResources: ResourceSectionType = {
     },
   ],
 };
+
+export const GET_NOTICED_SECTION_ID = 'GetNoticed';
 
 export default async function GetNoticed() {
   return (

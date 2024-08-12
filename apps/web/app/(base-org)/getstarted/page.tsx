@@ -35,10 +35,6 @@ export const linkTextClasses = classNames(
 
 )
 
-export const FUNDING_SECTION_ID = 'GetFunded';
-export const GET_NOTICED_SECTION_ID = 'GetNoticed';
-export const START_BUILDING_SECTION_ID = 'StartBuilding';
-
 export default async function GoToCommunity() {
   return (
     <AnalyticsProvider context="builder_resource_kit">

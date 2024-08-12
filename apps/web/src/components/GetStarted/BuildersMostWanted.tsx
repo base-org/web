@@ -1,13 +1,11 @@
 import classNames from 'classnames';
-import {
-  gridClasses,
-  // FUNDING_SECTION_ID,
-  // GET_NOTICED_SECTION_ID,
-  // START_BUILDING_SECTION_ID,
-} from '../../../app/(base-org)/getstarted/page';
+import { gridClasses } from '../../../app/(base-org)/getstarted/page';
 import { Icon } from '../Icon/Icon';
 import { Resource } from './resourceTypes';
 import ResourceCard from './ResourceGrid/ResourceCard';
+import { FUNDING_SECTION_ID } from './Funding';
+import { GET_NOTICED_SECTION_ID } from './GetNoticed';
+import { START_BUILDING_SECTION_ID } from './StartBuilding';
 
 type MostWantedResource = Resource & {
   icon: string;
@@ -35,20 +33,20 @@ const mostWanted: MostWantedResource[] = [
   {
     title: 'Get Funded',
     description: 'A collection of monetary programs to help you build or grow your project',
-    href: `#GetFunded`,
+    href: `#${FUNDING_SECTION_ID}`,
     icon: 'cash',
   },
   {
     title: 'Get Noticed',
     description:
       'Looking for help with distribution? Get noticed by millions of potential new users',
-    href: `#GetNoticed`,
+    href: `#${GET_NOTICED_SECTION_ID}`,
     icon: 'people',
   },
   {
     title: 'Build Your Project',
     description: 'Resources that make it easy to build and use your onchain project',
-    href: `#StartBuilding`,
+    href: `#${START_BUILDING_SECTION_ID}`,
     icon: 'builderHammer',
   },
 ];

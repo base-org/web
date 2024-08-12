@@ -1,8 +1,4 @@
-import {
-  sectionContainer,
-  titleClasses,
-  FUNDING_SECTION_ID,
-} from '../../../app/(base-org)/getstarted/page';
+import { sectionContainer, titleClasses } from '../../../app/(base-org)/getstarted/page';
 import ResourceGrid from './ResourceGrid/ResourceGrid';
 import { ResourceSectionType } from './resourceTypes';
 
@@ -30,6 +26,8 @@ const fundingResources: ResourceSectionType = {
     },
   ],
 };
+
+export const FUNDING_SECTION_ID = 'GetFunded';
 
 export default async function Funding() {
   return (

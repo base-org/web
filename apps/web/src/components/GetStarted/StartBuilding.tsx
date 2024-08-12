@@ -1,9 +1,5 @@
 import classNames from 'classnames';
-import {
-  sectionContainer,
-  titleClasses,
-  START_BUILDING_SECTION_ID,
-} from '../../../app/(base-org)/getstarted/page';
+import { sectionContainer, titleClasses } from '../../../app/(base-org)/getstarted/page';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import ResourceGrid from './ResourceGrid/ResourceGrid';
 import { ResourceSectionType } from './resourceTypes';
@@ -74,6 +70,8 @@ const easyToUseResources: ResourceSectionType = {
     },
   ],
 };
+
+export const START_BUILDING_SECTION_ID = 'StartBuilding';
 
 export default async function StartBuilding() {
   const subtitleClasses = classNames(
