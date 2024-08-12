@@ -47,7 +47,7 @@ The tutorial assumes you're comfortable with the basics of deploying an app and 
 
 ## Getting Started
 
-Begin by making a copy of [An Onchain App in 100 Components] by clicking the `Use this Template` button then cloning it locally.
+Begin by making a copy of the [Onchain App Template] by clicking the `Use this Template` button then cloning it locally.
 
 The team recommends using [Bun], so install it if you need to, then install the packages and run the app:
 
@@ -425,7 +425,7 @@ In this tutorial, you've learned how to build an experience using the [Zora Prot
 [wagmi template]: https://www.smartwallet.dev/guides/create-app/using-wagmi
 [superchain ecosystem]: https://www.superchain.eco/chains
 [Zora]: https://zora.co/
-[An Onchain App in 100 Components]: https://github.com/Zizzamia/an-onchain-app-in-100-components
+[Onchain App Template]: https://github.com/coinbase/onchain-app-template
 [Next.js]: https://nextjs.org/
 [Coinbase Developer Platform]: https://www.coinbase.com/developer-platform
 [Basescan]: https://basescan.org/
