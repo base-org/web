@@ -32,7 +32,7 @@ By the end of this tutorial, you should be able to:
 
 - List the features, pros, and cons of using Remix as an IDE
 - Deploy and test the Storage.sol demo contract in Remix
-- Use Remix to deploy a contract to the Base @ Sepolia testnet and interact with it in Etherscan
+- Use Remix to deploy a contract to the Base Sepolia testnet and interact with it in [BaseScan]
 
 ---
 
@@ -116,6 +116,8 @@ Once you've completed wallet setup, enable developer settings and turn on testne
 
 ### Add the Base Sepolia Network to your Wallet
 
+Most wallets will already have the Base Sepolia network as one of the testnet networks. You may need to turn on developer mode to see them.
+
 For this tutorial, you will be deploying a contract to the Base Sepolia test network. You can fund your wallet with Base Sepolia ETH using one of the faucets listed on the Base [Network Faucets](https://docs.base.org/tools/network-faucets) page.
 
 ### Get Testnet Ether
@@ -141,6 +143,10 @@ Once you have testnet Ether, you can deploy the `Storage` contract!
 Open the _Deploy & Run Transactions_ tab. Under _Environment_, select _Injected Provider_. It will list _Coinbase_, _MetaMask_, or any other wallet you have activated here.
 
 ![Environment](../../assets/images/deployment-with-remix/select-provider.png)
+
+If that option is not available, you can add it by choosing `Customize this list...`
+
+![Add injected provider](../../base-learn/assets/images/deployment-to-testnet/add-injected-provider.png)
 
 The first time you do this, your wallet will ask you to confirm that you want to connect this app (Remix) to your wallet.
 
@@ -174,7 +180,7 @@ You don't need to verify the contract if you've deployed one identical to a cont
 
 :::
 
-You can interact with your deployed contract using Remix, the same as before, but it's also possible to interact with it through Etherscan. Paste your address in the search field to find it.
+You can interact with your deployed contract using Remix, the same as before, but it's also possible to interact with it through [BaseScan]. Paste your address in the search field to find it.
 
 On this page, you can review the balance, information about, and all the transactions that have ever occurred with your contract.
 
@@ -200,7 +206,7 @@ Click the linked address to your contract to return to the contract page. You'll
 
 ### Interact with the Contract
 
-You can now interact with your contract using Etherscan. Click the _Read Contract_ button. Both of your functions will be listed here and can be tested using the web interface.
+You can now interact with your contract using [BaseScan]. Click the _Read Contract_ button. Both of your functions will be listed here and can be tested using the web interface.
 
 You won't have anything under _Write Contract_ because this contract doesn't have any functions that save data to state.
 
@@ -220,7 +226,7 @@ You now have the power to put smart contracts on the blockchain! You've only dep
 [MetaMask]: https://metamask.io/
 [set up]: https://www.youtube.com/watch?v=CZDgLG6jpgw
 [coinbase settings]: https://docs.cloud.coinbase.com/wallet-sdk/docs/developer-settings
-[etherscan]: https://etherscan.io/
+[BaseScan]: https://sepolia.basescan.org/
 [faucets on the web]: https://coinbase.com/faucets
 [here]: #prepare-for-deployment
 [remix]: https://remix.ethereum.org

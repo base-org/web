@@ -23,7 +23,6 @@ import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallb
 import { IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { formatEther } from 'viem';
 import { useAccount, useBalance, useChains, useSwitchChain } from 'wagmi';
@@ -47,8 +46,6 @@ function formatUsdPrice(price: bigint, ethUsdPrice: number) {
   return parsed;
 }
 
-const WAITLIST_FORM = 'https://app.deform.cc/form/6acf7a89-8cb5-4c31-b71d-7979014f4db4';
-
 export default function RegistrationForm() {
   const { isConnected, chain: connectedChain, address } = useAccount();
   const chains = useChains();
@@ -71,9 +68,7 @@ export default function RegistrationForm() {
     transactionError,
     selectedName,
     setRegisterNameTransactionHash,
-    setRegisterNameCallsBatchId,
     discount,
-    loadingDiscounts,
   } = useRegistration();
   const [years, setYears] = useState(1);
 
@@ -109,7 +104,6 @@ export default function RegistrationForm() {
   const {
     callback: registerName,
     data: registerNameTransactionHash,
-    callBatchId,
     isPending: registerNameTransactionIsPending,
     error: registerNameError,
   } = useRegisterNameCallback(
@@ -121,18 +115,11 @@ export default function RegistrationForm() {
   );
 
   useEffect(() => {
-    if (registerNameTransactionHash ?? callBatchId) {
+    if (registerNameTransactionHash) {
       logEventWithContext('register_name_transaction_approved', ActionType.change);
     }
-    if (callBatchId) setRegisterNameCallsBatchId(callBatchId);
     if (registerNameTransactionHash) setRegisterNameTransactionHash(registerNameTransactionHash);
-  }, [
-    callBatchId,
-    logEventWithContext,
-    registerNameTransactionHash,
-    setRegisterNameCallsBatchId,
-    setRegisterNameTransactionHash,
-  ]);
+  }, [logEventWithContext, registerNameTransactionHash, setRegisterNameTransactionHash]);
 
   const registerNameCallback = useCallback(() => {
     registerName()
@@ -145,8 +132,9 @@ export default function RegistrationForm() {
   const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
   const insufficientBalanceToRegister =
     balance?.value !== undefined && price !== undefined && balance?.value < price;
-  const usdPrice =
-    price !== undefined && ethUsdPrice !== undefined ? formatUsdPrice(price, ethUsdPrice) : '--.--';
+
+  const resolvedUSDPrice = price !== undefined && ethUsdPrice !== undefined;
+  const usdPrice = resolvedUSDPrice ? formatUsdPrice(price, ethUsdPrice) : '--.--';
   const nameIsFree = price === 0n;
 
   if (!IS_EARLY_ACCESS || (IS_EARLY_ACCESS && discount)) {
@@ -154,7 +142,7 @@ export default function RegistrationForm() {
       <>
         <div className="mt-20 transition-all duration-500">
           <div className="z-10 flex flex-col items-start justify-between gap-6 rounded-2xl bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center">
-            <div className="max-w-[14rem]">
+            <div className="max-w-[14rem] self-start">
               <p className="text-line mb-2 text-sm font-bold uppercase">Claim for</p>
               <div className="flex items-center justify-between">
                 <button
@@ -179,11 +167,15 @@ export default function RegistrationForm() {
                 </button>
               </div>
             </div>
-            <div className="min-w-[14rem] text-left">
+            <div className="min-w-[14rem] self-start text-left">
               <p className="text-line mb-2 text-sm font-bold uppercase">Amount</p>
-              <div className="flex items-baseline justify-start gap-4">
-                {discountedPrice !== undefined ? (
-                  <div className=" flex flex-row items-baseline justify-around gap-2">
+              <div className="flex min-w-60 items-baseline justify-start gap-4">
+                {!price ? (
+                  <div className="flex h-9 items-center justify-center self-center">
+                    <Icon name="spinner" color="currentColor" />
+                  </div>
+                ) : discountedPrice !== undefined ? (
+                  <div className="flex flex-row items-baseline justify-around gap-2">
                     <p
                       className={classNames('whitespace-nowrap text-3xl text-black line-through', {
                         'text-state-n-hovered': insufficientBalanceToRegister,
@@ -208,11 +200,7 @@ export default function RegistrationForm() {
                     {formatEtherPrice(price)} ETH
                   </p>
                 )}
-                {loadingDiscounts ? (
-                  <div className="flex h-4 items-center justify-center">
-                    <Icon name="spinner" color="currentColor" />
-                  </div>
-                ) : (
+                {resolvedUSDPrice && (
                   <span className="whitespace-nowrap text-xl text-gray-60">${usdPrice}</span>
                 )}
               </div>
@@ -225,7 +213,7 @@ export default function RegistrationForm() {
               )}
             </div>
 
-            <div className="w-full max-w-full md:max-w-[10rem]">
+            <div className="w-full max-w-full md:max-w-[13rem]">
               <ConnectButton.Custom>
                 {({ account, chain, mounted }) => {
                   const ready = mounted;
@@ -316,15 +304,7 @@ export default function RegistrationForm() {
             <span className="mr-2 inline-block">
               <Icon name="info" width={12} height={12} color="currentColor" />
             </span>
-            The connected wallet is not eligible for early access.{' '}
-            <Link
-              href={WAITLIST_FORM}
-              target="_blank"
-              className="text-blue-500 underline underline-offset-4"
-            >
-              Get notified
-            </Link>{' '}
-            when Basenames becomes available.
+            The connected wallet is not eligible for early access.
           </p>
         </div>
       );

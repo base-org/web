@@ -4,10 +4,10 @@ import DropdownMenu from 'apps/web/src/components/DropdownMenu';
 import DropdownToggle from 'apps/web/src/components/DropdownToggle';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
-import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { UsernamePillProps, UsernamePillVariants } from './types';
+import useBaseEnsAvatar from 'apps/web/src/hooks/useBaseEnsAvatar';
 
 export function UsernamePill({ variant, username, address, isRegistering }: UsernamePillProps) {
   const transitionClasses = 'transition-all duration-700 ease-in-out';
@@ -53,12 +53,11 @@ export function UsernamePill({ variant, username, address, isRegistering }: User
     },
   );
 
-  const { existingTextRecords, existingTextRecordsIsLoading } = useReadBaseEnsTextRecords({
-    address: address,
-    username: username,
+  const { data: baseEnsAvatar, isLoading: baseEnsAvatarIsLoading } = useBaseEnsAvatar({
+    name: username,
   });
 
-  const selectedProfilePicture = existingTextRecords.avatar || getUserNamePicture(username);
+  const selectedProfilePicture = baseEnsAvatar ?? getUserNamePicture(username);
 
   return (
     <div className={pillNameClasses}>
@@ -74,7 +73,7 @@ export function UsernamePill({ variant, username, address, isRegistering }: User
         backgroundClassName="bg-blue-500"
         width={4 * 16}
         height={4 * 16}
-        forceIsLoading={existingTextRecordsIsLoading}
+        forceIsLoading={baseEnsAvatarIsLoading}
       />
       <span className={userNameClasses}>{username}</span>
       {address && (
