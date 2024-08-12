@@ -6,7 +6,7 @@ import {
   ProofTableNamespace,
 } from 'apps/web/src/utils/proofs';
 import { isAddress } from 'viem';
-import { USERNAME_CB_ID_DISCOUNT_VALIDATORS } from 'apps/web/src/addresses/usernames';
+import { USERNAME_BASE_ETH_HOLDERS_DISCOUNT_VALIDATORS } from 'apps/web/src/addresses/usernames';
 import { isBasenameSupportedChain } from 'apps/web/src/hooks/useBasenameChain';
 
 /*
@@ -43,7 +43,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (hasPreviouslyRegistered) {
       return res.status(400).json({ error: 'This address has already claimed a username.' });
     }
-    const [content] = await getProofsByNamespaceAndAddress(address, ProofTableNamespace.Usernames);
+    const [content] = await getProofsByNamespaceAndAddress(
+      address,
+      ProofTableNamespace.BaseEthHolders,
+    );
     const proofs = content?.proofs ? (JSON.parse(content.proofs) as `0x${string}`[]) : [];
     if (proofs.length === 0) {
       return res.status(404).json({ error: 'address is not eligible for a cbid discount' });
@@ -51,7 +54,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const responseData: MerkleTreeProofResponse = {
       ...content,
       proofs,
-      discountValidatorAddress: USERNAME_CB_ID_DISCOUNT_VALIDATORS[parsedChain],
+      discountValidatorAddress: USERNAME_BASE_ETH_HOLDERS_DISCOUNT_VALIDATORS[parsedChain],
     };
     return res.status(200).json(responseData);
   } catch (error: unknown) {

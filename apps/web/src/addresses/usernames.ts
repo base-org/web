@@ -43,6 +43,11 @@ export const USERNAME_BNS_DISCOUNT_VALIDATORS: AddressMap = {
   [base.id]: '0x',
 };
 
+export const USERNAME_BASE_ETH_HOLDERS_DISCOUNT_VALIDATORS: AddressMap = {
+  [baseSepolia.id]: '0x',
+  [base.id]: '0x',
+};
+
 export const USERNAME_1155_DISCOUNT_VALIDATORS: AddressMap = {
   [baseSepolia.id]: '0xE41Cd25f429E10744938d5048646E721ac630aF3',
   [base.id]: '0x',
