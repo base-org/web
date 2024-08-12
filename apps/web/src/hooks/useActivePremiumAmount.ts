@@ -1,4 +1,4 @@
-import ExponentialPremiumPriceOracleABI from 'apps/web/src/abis/ExponentialPremiumPriceOracle';
+import ExponentialPremiumPriceOracleABI from 'apps/web/src/abis/ExponentialPremiumPriceOracleAbi';
 import { EXPONENTIAL_PREMIUM_PRICE_ORACLE } from 'apps/web/src/addresses/usernames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useBasenamesLaunchTime } from 'apps/web/src/hooks/useBasenamesLaunchTime';
