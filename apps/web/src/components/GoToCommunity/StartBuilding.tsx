@@ -1,6 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
-import { sectionContainer, titleClasses } from '../../../app/(base-org)/go-to-community/page';
+import {
+  sectionContainer,
+  titleClasses,
+  START_BUILDING_SECTION_ID,
+} from '../../../app/(base-org)/go-to-community/page';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import ResourceGrid from './ResourceGrid/ResourceGrid';
 import { ResourceSectionType } from './resourceTypes';
@@ -13,12 +17,12 @@ const learnToBuildResources: ResourceSectionType = {
     {
       title: 'Learn to Build Onchain',
       description: 'Become an onchain developer with our comprehensive smart contract curriculum',
-      href: '',
+      href: 'https://docs.base.org/base-learn/?utm_source=dotorg&utm_medium=builderkit',
     },
     {
       title: 'Tutorials',
       description: 'Making building on Base easy, with guided development tutorials',
-      href: 'https://docs.base.org/tutorials',
+      href: 'https://docs.base.org/tutorials/?utm_source=dotorg&utm_medium=builderkit',
     },
   ],
 };
@@ -31,18 +35,18 @@ const easyToBuildResources: ResourceSectionType = {
     {
       title: 'Tutorials',
       description: 'Build easier with expert how-to guides',
-      href: 'https://docs.base.org/tutorials',
+      href: 'https://docs.base.org/tutorials/?utm_source=dotorg&utm_medium=builderkit',
     },
     {
       title: 'OnchainKit',
       description:
         'Build your apps in minutes with off-the-shelf React components and onchain integrations',
-      href: 'https://onchainkit.xyz',
+      href: 'onchainkit.xyz/?utm_source=dotorg&utm_medium=builderkit',
     },
     {
       title: 'Support Team',
       description: 'If you’re ever in need, contact our Support Team via Disord',
-      href: '/discord',
+      href: 'https://discord.com/invite/buildonbase',
     },
   ],
 };
@@ -56,18 +60,18 @@ const easyToUseResources: ResourceSectionType = {
       title: 'Coinbase Smart Wallet',
       description:
         'Enable your users to create an account in seconds, without apps or seed phrases',
-      href: '/wallet',
+      href: 'https://www.coinbase.com/wallet/smart-wallet/?utm_source=dotorg&utm_medium=builderkit',
     },
     {
       title: 'Gas Sponsorship',
       description:
         'Reduce costs and Sponsor Gas for you users, with the Coinbase Paymster and Bundler',
-      href: 'https://onchainkit.xyz',
+      href: 'https://www.coinbase.com/developer-platform/products/paymaster/?utm_source=dotorg&utm_medium=builderkit',
     },
     {
       title: 'Coinbase Onramp',
       description: 'Fiat-to-crypto made fast, easy, and secure using Coinbase Onramp',
-      href: '/discord',
+      href: 'https://www.coinbase.com/developer-platform/products/onramp/?utm_source=dotorg&utm_medium=builderkit',
     },
   ],
 };
@@ -81,7 +85,7 @@ export default async function StartBuilding() {
   );
 
   return (
-    <div className={sectionContainer}>
+    <div id={START_BUILDING_SECTION_ID} className={sectionContainer}>
       <div>
         <h1 className={titleClasses}>Start Building</h1>
       </div>

@@ -1,5 +1,9 @@
 import React from 'react';
-import { sectionContainer, titleClasses } from '../../../app/(base-org)/go-to-community/page';
+import {
+  sectionContainer,
+  titleClasses,
+  FUNDING_SECTION_ID,
+} from '../../../app/(base-org)/go-to-community/page';
 import ResourceGrid from './ResourceGrid/ResourceGrid';
 import { ResourceSectionType } from './resourceTypes';
 
@@ -11,13 +15,13 @@ const fundingResources: ResourceSectionType = {
     {
       title: 'Gas Credits',
       description: 'Eligible projects may receive up to $15K in gas credits for their users',
-      href: '/about',
+      href: 'https://www.smartwallet.dev/base-gasless-campaign/?utm_source=dotorg&utm_medium=builderkit',
     },
     {
       title: 'Base Builder Grants',
       description:
         'Apply for a retroactive Base Builder Grant, rewarding great projects being built on Base',
-      href: '/about',
+      href: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders/?utm_source=dotorg&utm_medium=builderkit',
     },
     {
       title: 'Optimism Grants',
@@ -29,7 +33,7 @@ const fundingResources: ResourceSectionType = {
 
 export default async function Funding() {
   return (
-    <div className={sectionContainer}>
+    <div id={FUNDING_SECTION_ID} className={sectionContainer}>
       <div>
         <h1 className={titleClasses}>{fundingResources.title}</h1>
       </div>
