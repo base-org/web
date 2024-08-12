@@ -1,6 +1,7 @@
 'use client';
 
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback } from 'react';
+import { useLocalStorage } from 'usehooks-ts';
 import Image from 'next/image';
 import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
 import AnalyticsProvider from '../../../../contexts/Analytics';
@@ -35,24 +36,14 @@ const modalCtaClasses = `
 `;
 
 export default function BasenamesHomepageModal() {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useLocalStorage('BasenamesLaunchModalVisible', true);
   const SHOW_BANNER = !IS_EARLY_ACCESS;
-
-  useEffect(() => {
-    setIsMounted(true);
-    const storedValue = localStorage.getItem('BasenamesLaunchModalVisible');
-    if (storedValue === null) {
-      setIsModalOpen(true);
-    }
-  }, []);
 
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
-    localStorage.setItem('BasenamesLaunchModalVisible', 'false');
   }, []);
 
-  if (!SHOW_BANNER || !isModalOpen || !isMounted) {
+  if (!SHOW_BANNER || !isModalOpen) {
     return null;
   }
 
@@ -85,6 +76,7 @@ export default function BasenamesHomepageModal() {
                 href="/names"
                 eventName="get_a_basename"
                 buttonClassNames={modalCtaClasses}
+                tabIndex={1}
               >
                 Get your basename
               </ButtonWithLinkAndEventLogging>
