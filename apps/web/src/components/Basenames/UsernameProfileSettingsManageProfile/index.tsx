@@ -22,6 +22,10 @@ export default function UsernameProfileSettingsManageProfile() {
 
   const { logError } = useErrors();
 
+  const closeSettings = useCallback(() => {
+    setShowProfileSettings(false);
+  }, [setShowProfileSettings]);
+
   // Write text records
   const {
     updateTextRecords,
@@ -35,10 +39,6 @@ export default function UsernameProfileSettingsManageProfile() {
     username: profileUsername,
     onSuccess: closeSettings,
   });
-
-  const closeSettings = useCallback(() => {
-    setShowProfileSettings(false);
-  }, [setShowProfileSettings]);
 
   const onClickSave = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
