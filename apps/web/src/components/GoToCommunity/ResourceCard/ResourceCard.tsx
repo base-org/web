@@ -1,6 +1,10 @@
-import React from 'react';
+'use client';
+
+import React, { useCallback } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
+import { ActionType, ComponentType } from 'base-ui/utils/logEvent';
+import { useAnalytics } from '../../../../contexts/Analytics';
 import { Icon } from '../../Icon/Icon';
 
 export type Resource = {
@@ -10,7 +14,11 @@ export type Resource = {
 };
 
 export type ResourceCardProps = Resource & {
-  counter: number;
+  counter?: number;
+  topLeft?: React.ReactNode;
+  topRight?: React.ReactNode;
+  colorOne: string;
+  colorTwo?: string;
 };
 
 export default function ResourceCard({
@@ -21,23 +29,26 @@ export default function ResourceCard({
   topRight = <span></span>,
   colorOne,
   colorTwo,
-}) {
+}: ResourceCardProps) {
+  const { logEventWithContext } = useAnalytics();
 
   const resourceCardWrapperStyle = classNames(
     'group border-2 p-7 text-white',
     `odd:bg-${colorOne} odd:border-${colorOne}`,
-    `even:bg-${colorTwo} even:border-${colorTwo}`,
-    // `[&:nth-child(4n-2)]:bg-${colorTwo} [&:nth-child(4n-2)]:border-${colorTwo}`,
-    // `[&:nth-child(3n)]:bg-${colorTwo} [&:nth-child(3n)]:border-${colorTwo}`,
-    // `md:[&:nth-child(odd)]:bg-${colorOne} md:[&:nth-child(odd)]:border-${colorOne}`,
-    // `md:[&:nth-child(even)]:bg-${colorTwo} md:[&:nth-child(even)]:border-${colorTwo}`,
+    `even:bg-${colorTwo ?? colorOne} even:border-${colorTwo ?? colorOne}`,
     'duration-200',
     'hover:scale-105 hover:shadow-lg hover:shadow-gray-80',
   );
 
+  const handleClick = useCallback(() => {
+    logEventWithContext(title.replace(/ /g, '_').replace(/\W/g, ''), ActionType.click, {
+      componentType: ComponentType.link,
+    });
+  }, [logEventWithContext, title]);
+
   return (
     <div key={href} className={resourceCardWrapperStyle}>
-      <Link href={href}>
+      <Link href={href} onClick={handleClick}>
         <div className="flex w-full flex-row justify-between">
           <div>{topLeft}</div>
           <div>{topRight}</div>
