@@ -49,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     );
     const proofs = content?.proofs ? (JSON.parse(content.proofs) as `0x${string}`[]) : [];
     if (proofs.length === 0) {
-      return res.status(404).json({ error: 'address is not eligible for a cbid discount' });
+      return res.status(404).json({ error: 'address is not eligible for a base.eth NFT discount' });
     }
     const responseData: MerkleTreeProofResponse = {
       ...content,
@@ -61,5 +61,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     console.error(error);
   }
 
-  return res.status(404).json({ error: 'address is not eligible for a cbid discount' });
+  return res.status(404).json({ error: 'address is not eligible for a base.eth NFT discount' });
 }
