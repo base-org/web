@@ -1,9 +1,9 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
-import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
-import { gradientBgMap, textGradientMap, Verb, verbs } from 'apps/web/src/styles/hero';
 import { motion, useReducedMotion } from 'framer-motion';
-import Link from 'next/link';
+import { ButtonVariants } from 'apps/web/src/components/Button/Button';
+import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
+import { gradientBgMap, textGradientMap, Verb, verbs } from 'apps/web/src/styles/hero';
 import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
 
 const subtitleCopy =
@@ -112,14 +112,27 @@ export function Hero() {
             </p>
             <div className="flex flex-col space-y-6">
               <div className="flex flex-col items-center gap-2 pt-7 md:flex-row">
-                <Link className="w-full" href={docsUrl} target="_blank" rel="noreferrer noopener">
-                  <Button fullWidth>Read the docs</Button>
-                </Link>
-                <Link className="w-full" href={bridgeUrl} rel="noreferrer noopener">
-                  <Button fullWidth variant={ButtonVariants.Secondary}>
-                    Bridge assets
-                  </Button>
-                </Link>
+                <ButtonWithLinkAndEventLogging
+                  href={docsUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  eventName="docs"
+                  linkClassNames="w-full"
+                  fullWidth
+                >
+                  Read the docs
+                </ButtonWithLinkAndEventLogging>
+                <ButtonWithLinkAndEventLogging
+                  href={bridgeUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  eventName="bridge"
+                  linkClassNames="w-full"
+                  fullWidth
+                  variant={ButtonVariants.Secondary}
+                >
+                  Bridge assets
+                </ButtonWithLinkAndEventLogging>
               </div>
               <p className="block w-full font-mono uppercase text-white lg:hidden">
                 Powered by Op Stack

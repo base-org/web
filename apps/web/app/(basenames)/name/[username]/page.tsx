@@ -1,9 +1,10 @@
 import ProfileProviders from 'apps/web/app/(basenames)/name/[username]/ProfileProviders';
 import { Metadata } from 'next';
 import {
-  fetchAddress,
-  fetchDescription,
   formatDefaultUsername,
+  getBasenameAddress,
+  getBasenameTextRecord,
+  UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 import { redirect } from 'next/navigation';
 import classNames from 'classnames';
@@ -18,7 +19,7 @@ type UsernameProfileProps = {
 export async function generateMetadata({ params }: UsernameProfileProps): Promise<Metadata> {
   const username = await formatDefaultUsername(params.username);
   const defaultDescription = `${username}, a Basename`;
-  const description = await fetchDescription(username);
+  const description = await getBasenameTextRecord(username, UsernameTextRecordKeys.Description);
 
   return {
     metadataBase: new URL('https://base.org'),
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
 export default async function Username({ params }: UsernameProfileProps) {
   let username = await formatDefaultUsername(params.username);
 
-  const ensAddress = await fetchAddress(username);
+  const ensAddress = await getBasenameAddress(username);
 
   // Domain doesn't exist
   if (!ensAddress) {

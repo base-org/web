@@ -23,7 +23,6 @@ import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallb
 import { IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { formatEther } from 'viem';
 import { useAccount, useBalance, useChains, useSwitchChain } from 'wagmi';
@@ -46,8 +45,6 @@ function formatUsdPrice(price: bigint, ethUsdPrice: number) {
   if (parsed === '0.00') return '0';
   return parsed;
 }
-
-const WAITLIST_FORM = 'https://app.deform.cc/form/6acf7a89-8cb5-4c31-b71d-7979014f4db4';
 
 export default function RegistrationForm() {
   const { isConnected, chain: connectedChain, address } = useAccount();
@@ -307,15 +304,7 @@ export default function RegistrationForm() {
             <span className="mr-2 inline-block">
               <Icon name="info" width={12} height={12} color="currentColor" />
             </span>
-            The connected wallet is not eligible for early access.{' '}
-            <Link
-              href={WAITLIST_FORM}
-              target="_blank"
-              className="text-blue-500 underline underline-offset-4"
-            >
-              Get notified
-            </Link>{' '}
-            when Basenames becomes available.
+            The connected wallet is not eligible for early access.
           </p>
         </div>
       );
