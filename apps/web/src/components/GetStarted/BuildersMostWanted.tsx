@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { gridClasses } from '../../../app/(base-org)/getstarted/page';
+import { sectionContainerClasses, gridClasses } from '../../../app/(base-org)/getstarted/page';
 import { Icon } from '../Icon/Icon';
 import { Resource } from './resourceTypes';
 import ResourceCard from './ResourceGrid/ResourceCard';
@@ -66,7 +66,7 @@ export default async function BuildersMostWanted() {
   );
 
   return (
-    <div className="p-12 sm:p-16 lg:p-24">
+    <div className={`${sectionContainerClasses} mt-20`}>
       <h1 className={titleClasses}>The Essentials</h1>
       <h2 className={subtitleClasses}>
         The tools and resources most frequently requested by Base Builders
