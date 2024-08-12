@@ -1,4 +1,6 @@
+import { Metadata } from 'next';
 import { FrameButtonMetadata } from '@coinbase/onchainkit/frame';
+import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import { BestOfEthereum } from 'apps/web/src/components/BestOfEthereum/BestOfEthereum';
 import { Commitment } from 'apps/web/src/components/Commitment/Commitment';
 import { Divider } from 'apps/web/src/components/Divider/Divider';
@@ -8,7 +10,6 @@ import { GetConnected } from 'apps/web/src/components/GetConnected/GetConnected'
 import { Hero } from 'apps/web/src/components/Home/Hero';
 import { JoinTheCommunity } from 'apps/web/src/components/JoinTheCommunity/JoinTheCommunity';
 import { Partnerships } from 'apps/web/src/components/Partnerships/Partnerships';
-import { Metadata } from 'next';
 
 /* Farcaster Metadatas */
 const buttons: FrameButtonMetadata[] = [
@@ -45,8 +46,10 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   return (
-    <>
-      <Hero />
+    <AnalyticsProvider context="base_landing_page">
+      <AnalyticsProvider context="hero">
+        <Hero />
+      </AnalyticsProvider>
       <main className="flex w-full flex-col items-center bg-black">
         <Divider />
         <Features />
@@ -63,6 +66,6 @@ export default async function Home() {
         <Divider />
         <GetConnected />
       </main>
-    </>
+    </AnalyticsProvider>
   );
 }

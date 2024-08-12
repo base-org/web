@@ -22,7 +22,7 @@ By the end of this guide you should be able to:
 
 ## Creating the Traditional App
 
-Start by running the [Next.js] script to create a Next.js 13 app:
+Start by running the [Next.js] script to create a Next.js app:
 
 ```bash
 npx create-next-app@latest --use-yarn
@@ -63,7 +63,7 @@ Onchain libraries and packages tend to require very current versions of Node. If
 
 ## Adding Imports, Connectors, Config
 
-In Next.js 14 with the app router, the root of your app is found in `app/layout.tsx`, if you followed the recommended setup options. As you want the blockchain provider context to be available for the entire app, you'll add it here.
+In Next.js with the app router, the root of your app is found in `app/layout.tsx`, if you followed the recommended setup options. As you want the blockchain provider context to be available for the entire app, you'll add it here.
 
 You'll need to set up your providers in a second file, so that you can add `"use client":` to the top. Doing so forces this code to be run client side, which is necessary since your server won't have access to your users' wallet information.
 
@@ -99,6 +99,12 @@ If you're adapting this guide to a different set of libraries or platforms, you 
 ### Config
 
 Now, you need to configure the chains, wallet connectors, and providers for your app. You'll use `getDefaultConfig` for now, to get started. See our guide on [Connecting to the Blockchain] for more information on blockchain providers.
+
+:::info
+
+To take advantage of a more advanced set of options with [OnchainKit], see our tutorial on how to [Use the Coinbase Smart Wallet and EOAs with OnchainKit]. If you just want to customize the list of wallets in [RainbowKit], see our tutorial for [Coinbase Smart Wallet with RainbowKit].
+
+:::
 
 You'll need a `projectId` from [Wallet Connect Cloud], which you can get for free on their site. Make sure to insert it in the appropriate place.
 
@@ -193,7 +199,7 @@ You use the [Connect Button] props to modify its properties, or you can [customi
 
 In this guide, you've learned how to assemble your onchain app from several pieces. You can use this knowledge to integrate a wallet connection with an existing site, or adjust the stack to meet your preferences. Finally, you've learned how to insert and customize the connect button.
 
-If you're looking to quickly bootstrap a simple app, you can always use a script, such as the RainbowKit [quick start]. If you're looking for a robust start for a consumer application, check out our [Build Onchain Apps] template!
+If you're looking to quickly bootstrap a simple app, you can always use a script, such as the RainbowKit [quick start]. If you're looking for a robust start for a consumer application, check out [OnchainKit]!
 
 ---
 
@@ -209,5 +215,7 @@ If you're looking to quickly bootstrap a simple app, you can always use a script
 [Wallet Connect Cloud]: https://cloud.walletconnect.com/
 [Connect Button]: https://www.rainbowkit.com/docs/connect-button
 [customize the connect button]: https://www.rainbowkit.com/docs/custom-connect-button
-[Build Onchain Apps]: https://github.com/coinbase/build-onchain-apps
 [TanStack Query]: https://tanstack.com/query/latest
+[Coinbase Smart Wallet with RainbowKit]: https://docs.base.org/tutorials/smart-wallet-and-rainbowkit
+[OnchainKit]: https://onchainkit.xyz/?utm_source=basedocs&utm_medium=tutorials&campaign=building-an-onchain-app
+[Use the Coinbase Smart Wallet and EOAs with OnchainKit]: https://docs.base.org/tutorials/smart-wallet-and-eoa-with-onchainkit

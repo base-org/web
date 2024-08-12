@@ -48,6 +48,16 @@ export const USERNAME_1155_DISCOUNT_VALIDATORS: AddressMap = {
   [base.id]: '0x',
 };
 
+export const USERNAME_REVERSE_REGISTRAR_ADDRESSES: AddressMap = {
+  [baseSepolia.id]: '0xa0A8401ECF248a9375a0a71C4dedc263dA18dCd7',
+  [base.id]: '0x79ea96012eea67a83431f1701b3dff7e37f9e282',
+};
+
 export const UNISWAP_USDC_WETH_POOL: AddressMap = {
   [base.id]: '0x88A43bbDF9D098eEC7bCEda4e2494615dfD9bB9C',
+};
+
+export const EXPONENTIAL_PREMIUM_PRICE_ORACLE: AddressMap = {
+  [baseSepolia.id]: '0x2B73408052825e17e0Fe464f92De85e8c7723231',
+  [base.id]: '0x',
 };
