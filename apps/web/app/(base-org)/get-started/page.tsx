@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import AnalyticsProvider from '../../../contexts/Analytics';
-import Hero from '../../../src/components/GoToCommunity/Hero';
-import BuildersMostWanted from '../../../src/components/GoToCommunity/BuildersMostWanted';
-import Funding from '../../../src/components/GoToCommunity/Funding';
-import GetNoticed from '../../../src/components/GoToCommunity/GetNoticed';
-import StartBuilding from '../../../src/components/GoToCommunity/StartBuilding';
+import Hero from '../../../src/components/GetStarted/Hero';
+import BuildersMostWanted from '../../../src/components/GetStarted/BuildersMostWanted';
+import Funding from '../../../src/components/GetStarted/Funding';
+import GetNoticed from '../../../src/components/GetStarted/GetNoticed';
+import StartBuilding from '../../../src/components/GetStarted/StartBuilding';
 
 export const sectionContainer = classNames(
   'mx-12 sm:mx-16 lg:mx-24',
