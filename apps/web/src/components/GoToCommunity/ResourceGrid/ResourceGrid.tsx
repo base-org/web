@@ -1,12 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Icon } from '../../Icon/Icon';
+import { ResourceSectionProps } from '../resourceTypes';
 import ResourceCard from './ResourceCard';
-import { ResourceSectionProps } from '../ResourceSection';
 
 export default async function ResourceGrid({ section }: ResourceSectionProps) {
   const gridClasses = classNames(
-    'mt-6 sm:mt-8 lg:mt-10',
+    'mt-4',
     'grid grid-cols-1 md:grid-cols-3',
     'gap-2 gap-y-8 sm:gap-4 sm:gap-y-12 lg:gap-6',
   );
