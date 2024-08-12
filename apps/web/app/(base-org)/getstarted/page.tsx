@@ -31,9 +31,8 @@ export const gridClasses = classNames(
 export const linkTextClasses = classNames(
   'uppercase',
   'font-mono',
-  'leading-relaxed',
-
-)
+  'leading-none lg:leading-relaxed',
+);
 
 export default async function GoToCommunity() {
   return (
