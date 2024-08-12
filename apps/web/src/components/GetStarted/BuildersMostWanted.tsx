@@ -1,70 +1,24 @@
-import classNames from 'classnames';
-import { sectionContainerClasses, gridClasses } from '../../../app/(base-org)/getstarted/page';
 import { Icon } from '../Icon/Icon';
-import { Resource } from './resourceTypes';
-import ResourceCard from './ResourceGrid/ResourceCard';
+import ResourceCard from './ResourceCard/ResourceCard';
 import { FUNDING_SECTION_ID } from './Funding';
 import { GET_NOTICED_SECTION_ID } from './GetNoticed';
 import { START_BUILDING_SECTION_ID } from './StartBuilding';
+import { sectionContainerClasses, gridClasses } from './styles';
 
-type MostWantedResource = Resource & {
-  icon: string;
-};
+const titleClasses = `
+  mb-4 lg:mb-6
+  text-3xl sm:text-4xl lg:text-6xl
+  leading-none
+`;
 
-const mostWanted: MostWantedResource[] = [
-  {
-    title: 'Create your profile',
-    description: 'Claim a Basename and create your Based Profile to connect with other  Builders',
-    href: '/names?utm_source=dotorg&utm_medium=builderkit',
-    icon: 'basenamesIcon',
-  },
-  {
-    title: 'Office Hours',
-    description: 'Schedule time to talk to directly to a member of the Base Ecosystem team',
-    href: 'https://lu.ma/base-officehours/?utm_source=dotorg&medium=builderkit',
-    icon: 'dotGrid',
-  },
-  {
-    title: 'Host a Meetup',
-    description: 'Sign up to host a meetup with other Based builders anywhere in the world',
-    href: '/why-base/?utm_source=dotorg&utm_medium=builderkit',
-    icon: 'questionMark',
-  },
-  {
-    title: 'Get Funded',
-    description: 'A collection of monetary programs to help you build or grow your project',
-    href: `#${FUNDING_SECTION_ID}`,
-    icon: 'cash',
-  },
-  {
-    title: 'Get Noticed',
-    description:
-      'Looking for help with distribution? Get noticed by millions of potential new users',
-    href: `#${GET_NOTICED_SECTION_ID}`,
-    icon: 'people',
-  },
-  {
-    title: 'Build Your Project',
-    description: 'Resources that make it easy to build and use your onchain project',
-    href: `#${START_BUILDING_SECTION_ID}`,
-    icon: 'builderHammer',
-  },
-];
+const subtitleClasses = `
+  mb-4 sm:mb-6 lg:mb-8
+  font-sans
+  text-base sm:text-lg lg:text-xl
+  leading-snug
+`;
 
 export default async function BuildersMostWanted() {
-  const titleClasses = classNames(
-    'mb-4 lg:mb-6',
-    'text-3xl sm:text-4xl lg:text-6xl',
-    'leading-none',
-  );
-
-  const subtitleClasses = classNames(
-    'mb-4 sm:mb-6 lg:mb-8',
-    'font-sans',
-    'text-base sm:text-lg lg:text-xl',
-    'leading-snug',
-  );
-
   return (
     <div className={`${sectionContainerClasses} mt-20`}>
       <h1 className={titleClasses}>The Essentials</h1>
@@ -72,19 +26,48 @@ export default async function BuildersMostWanted() {
         Jump to our most frequently requested tools and resources.
       </h2>
       <div className={gridClasses}>
-        {mostWanted.map((card) => {
-          return (
-            <ResourceCard
-              key={card.href}
-              href={card.href}
-              title={card.title}
-              description={card.description}
-              topLeft={<Icon name={card.icon} color="white" />}
-              colorOne="purple-60"
-              colorTwo="purple-80"
-            />
-          );
-        })}
+        <ResourceCard
+          title="Create your profile"
+          description="Claim a Basename and create your Based Profile to connect with other Builders"
+          href="/names?utm_source=dotorg&utm_medium=builderkit"
+          topLeft={<Icon name="basenamesIcon" color="white" />}
+          classnames="bg-purple-60 border-purple-60"
+        />
+        <ResourceCard
+          title="Office Hours"
+          description="Schedule time to talk to directly to a member of the Base Ecosystem team"
+          href="https://lu.ma/base-officehours/?utm_source=dotorg&medium=builderkit"
+          topLeft={<Icon name="dotGrid" color="white" />}
+          classnames="bg-purple-80 border-purple-80"
+        />
+        <ResourceCard
+          title="Host a Meetup"
+          description="Sign up to host a meetup with other Based builders anywhere in the world"
+          href="/"
+          topLeft={<Icon name="people" color="white" />}
+          classnames="bg-purple-60 border-purple-60"
+        />
+        <ResourceCard
+          title="Get Funded"
+          description="A collection of monetary programs to help you build or grow your project"
+          href={`#${FUNDING_SECTION_ID}`}
+          topLeft={<Icon name="cash" color="white" />}
+          classnames="bg-purple-80 border-purple-80"
+        />
+        <ResourceCard
+          title="Get Noticed"
+          description="Looking for help with distribution? Get noticed by millions of potential new users"
+          href={`#${GET_NOTICED_SECTION_ID}`}
+          topLeft={<Icon name="people" color="white" />}
+          classnames="bg-purple-60 border-purple-60"
+        />
+        <ResourceCard
+          title="Build Your Project"
+          description="Resources that make it easy to build and use your onchain project"
+          href={`#${START_BUILDING_SECTION_ID}`}
+          topLeft={<Icon name="builderHammer" color="white" />}
+          classnames="bg-purple-80 border-purple-80"
+        />
       </div>
     </div>
   );
