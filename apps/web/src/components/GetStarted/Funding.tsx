@@ -8,6 +8,12 @@ const fundingResources: ResourceSectionType = {
   colorTwo: 'green-60',
   cards: [
     {
+      title: 'Rounds Grants',
+      description:
+        'Post to /base-builds on Farcaster to be eligible for 2.25 ETH in weekly rewards ',
+      href: 'https://warpcast.com/base/0xb3f1428b?utm_source=dotorg&urm_medium=builderkit',
+    },
+    {
       title: 'Gas Credits',
       description: 'Eligible projects may receive up to $15K in gas credits for their users',
       href: 'https://www.smartwallet.dev/base-gasless-campaign/?utm_source=dotorg&utm_medium=builderkit',
@@ -17,12 +23,6 @@ const fundingResources: ResourceSectionType = {
       description:
         'Apply for a retroactive Base Builder Grant, rewarding great projects being built on Base',
       href: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders/?utm_source=dotorg&utm_medium=builderkit',
-    },
-    {
-      title: 'Rounds Grants',
-      description:
-        'Post to /base-builds on Farcaster to be eligible for 2.25 ETH in weekly rewards ',
-      href: 'https://warpcast.com/base/0xb3f1428b?utm_source=dotorg&urm_medium=builderkit',
     },
   ],
 };
