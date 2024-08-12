@@ -1,6 +1,13 @@
 import classNames from 'classnames';
-import { sectionContainer, titleClasses } from '../../../app/(base-org)/getstarted/page';
+import Link from 'next/link';
+import {
+  sectionContainer,
+  titleClasses,
+  linkTextClasses,
+} from '../../../app/(base-org)/getstarted/page';
+import { ButtonVariants } from '../Button/Button';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
+import { Icon } from '../Icon/Icon';
 import ResourceGrid from './ResourceGrid/ResourceGrid';
 import { ResourceSectionType } from './resourceTypes';
 
@@ -90,21 +97,37 @@ export default async function StartBuilding() {
       <ResourceGrid section={learnToBuildResources} />
       <h2 className={subtitleClasses}>Make your project easy to build</h2>
       <ResourceGrid section={easyToBuildResources} />
+      {/* <div className="mt-6 flex hover:text-palette-foregroundMuted">
+        <Link href="/all">
+          <div className="flex flex-row items-center justify-around gap-2">
+            <span className={linkTextClasses}>View All Resources</span>
+            <Icon name="chevronRight" width="16px" height="16px" color='currentColor' />
+          </div>
+        </Link>
+      </div> */}
       <ButtonWithLinkAndEventLogging
         href="/all"
         eventName="easy_to_build_resources"
-        buttonClassNames="mt-6"
+        buttonClassNames="mt-6 ml-0 pl-0"
+        variant={ButtonVariants.Black}
       >
-        {`All Resources >>>`}
+        <div className="flex flex-row items-center justify-around gap-2">
+          <span className={linkTextClasses}>View All Resources</span>
+          <Icon name="chevronRight" width="16px" height="16px" />
+        </div>
       </ButtonWithLinkAndEventLogging>
       <h2 className={subtitleClasses}>Make your project easy to use</h2>
       <ResourceGrid section={easyToUseResources} />
       <ButtonWithLinkAndEventLogging
         href="https://www.coinbase.com/developer-platform/?utm_source=dotorg&utm_medium=builderkit"
         eventName="easy_to_build_resources"
-        buttonClassNames="mt-6"
+        buttonClassNames="mt-6 ml-0 pl-0"
+        variant={ButtonVariants.Black}
       >
-        {`All Resources >>>`}
+        <div className="flex flex-row items-center justify-around gap-2 ">
+          <span className={linkTextClasses}>View All Resources</span>
+          <Icon name="chevronRight" width="16px" height="16px" />
+        </div>
       </ButtonWithLinkAndEventLogging>
     </div>
   );
