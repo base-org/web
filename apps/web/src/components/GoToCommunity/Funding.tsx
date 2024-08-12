@@ -23,9 +23,10 @@ const fundingResources: ResourceSectionType = {
       href: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders/?utm_source=dotorg&utm_medium=builderkit',
     },
     {
-      title: 'Optimism Grants',
-      description: 'Apply for a retroactive Optimism Public Goods Funding Grant',
-      href: '/about',
+      title: 'Rounds Grants',
+      description:
+        'Post to /base-builds on Farcaster to be eligible for 2.25 ETH in weekly rewards ',
+      href: 'https://warpcast.com/base/0xb3f1428b?utm_source=dotorg&urm_medium=builderkit',
     },
   ],
 };
