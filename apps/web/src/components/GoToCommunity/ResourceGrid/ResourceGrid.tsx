@@ -1,10 +1,10 @@
 import React from 'react';
 import { gridClasses } from '../../../../app/(base-org)/go-to-community/page';
 import { Icon } from '../../Icon/Icon';
-import { ResourceSectionProps } from '../resourceTypes';
+import { ResourceGridProps } from '../resourceTypes';
 import ResourceCard from './ResourceCard';
 
-export default async function ResourceGrid({ section }: ResourceSectionProps) {
+export default async function ResourceGrid({ section }: ResourceGridProps) {
   return (
     <div className={gridClasses}>
       {section.cards.map((card, index) => (

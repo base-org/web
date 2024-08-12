@@ -12,6 +12,6 @@ export type ResourceSectionType = {
   cards: Resource[];
 };
 
-export type ResourceSectionProps = {
+export type ResourceGridProps = {
   section: ResourceSectionType;
 };
