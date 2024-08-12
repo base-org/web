@@ -56,3 +56,8 @@ export const USERNAME_REVERSE_REGISTRAR_ADDRESSES: AddressMap = {
 export const UNISWAP_USDC_WETH_POOL: AddressMap = {
   [base.id]: '0x88A43bbDF9D098eEC7bCEda4e2494615dfD9bB9C',
 };
+
+export const EXPONENTIAL_PREMIUM_PRICE_ORACLE: AddressMap = {
+  [baseSepolia.id]: '0x2B73408052825e17e0Fe464f92De85e8c7723231',
+  [base.id]: '0x',
+};
