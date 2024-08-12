@@ -36,20 +36,20 @@ const mostWanted: MostWantedResource[] = [
     title: 'Get Funded',
     description: 'A collection of monetary programs to help you build or grow your project',
     href: `#GetFunded`,
-    icon: 'blockchainNetwork',
+    icon: 'cash',
   },
   {
     title: 'Get Noticed',
     description:
       'Looking for help with distribution? Get noticed by millions of potential new users',
     href: `#GetNoticed`,
-    icon: 'cash',
+    icon: 'people',
   },
   {
     title: 'Build Your Project',
     description: 'Resources that make it easy to build and use your onchain project',
     href: `#StartBuilding`,
-    icon: 'clock',
+    icon: 'builderHammer',
   },
 ];
 

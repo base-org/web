@@ -8,8 +8,8 @@ import { ResourceSectionType } from './resourceTypes';
 
 const getNoticedResources: ResourceSectionType = {
   title: 'Get Noticed',
-  colorOne: 'red-80',
-  colorTwo: 'red-60',
+  colorOne: 'pink-60',
+  colorTwo: 'pink-80',
   cards: [
     {
       title: 'Onchain Content Network',

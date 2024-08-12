@@ -10,8 +10,8 @@ import { ResourceSectionType } from './resourceTypes';
 
 const learnToBuildResources: ResourceSectionType = {
   title: 'Learn how to build a project',
-  colorOne: 'orange-60',
-  colorTwo: 'orange-80',
+  colorOne: 'orange-80',
+  colorTwo: 'orange-60',
   cards: [
     {
       title: 'Learn to Build Onchain',
@@ -28,13 +28,13 @@ const learnToBuildResources: ResourceSectionType = {
 
 const easyToBuildResources: ResourceSectionType = {
   title: 'Make your project easy to build',
-  colorOne: 'orange-80',
-  colorTwo: 'orange-60',
+  colorOne: 'orange-60',
+  colorTwo: 'orange-80',
   cards: [
     {
-      title: 'Tutorials',
+      title: 'Base Learn',
       description: 'Build easier with expert how-to guides',
-      href: 'https://docs.base.org/tutorials/?utm_source=dotorg&utm_medium=builderkit',
+      href: 'https://docs.base.org/base-learn/progress/?utm_source=dotorg&utm_medium=builderkit',
     },
     {
       title: 'OnchainKit',
@@ -52,8 +52,8 @@ const easyToBuildResources: ResourceSectionType = {
 
 const easyToUseResources: ResourceSectionType = {
   title: 'Make your project easy to use',
-  colorOne: 'pink-80',
-  colorTwo: 'pink-60',
+  colorOne: 'orange-80',
+  colorTwo: 'orange-60',
   cards: [
     {
       title: 'Coinbase Smart Wallet',
