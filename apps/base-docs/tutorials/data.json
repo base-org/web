@@ -105,9 +105,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Aug 9, 2024",
         "duration": "18 min read",
-        "checksum": "039bc3fe2c561bc45a6069fbf704b2b29203fb0ce49e1d0dee97a8f0fada11df"
+        "checksum": "0988226936a6179a48ef69db917e8a8d01f3a99db85e92c8985461dc35572d9a"
     },
     "0_deploy-with-tenderly": {
         "title": "Deploying a smart contract using Tenderly",
@@ -748,9 +748,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Aug 9, 2024",
         "duration": "9 min read",
-        "checksum": "a926a0eb81cdf076b53902e170c6d31b195056bfc7dc3ccc4940f7152772f552"
+        "checksum": "e4e755e83dfadf219f70b70ca83ced3667265d0111df30086686a25cf9521800"
     },
     "3_farcaster-frames-gating-and-redirects": {
         "title": "Farcaster Frames: Gating content and creating redirects",
@@ -768,9 +768,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 30, 2024",
+        "last_updated": "Aug 9, 2024",
         "duration": "11 min read",
-        "checksum": "a8d146f53ed4166cc9db20bc9330686e33f9b77f7cb4402c0363da31ed61b719"
+        "checksum": "89352c695114fc5923cd81252771c3ce9fb5d225860ff567b670e7b9a48346b2"
     },
     "3_farcaster-frames-hyperframes": {
         "title": "Farcaster Frames: Building HyperFrames",
@@ -793,9 +793,9 @@
         "tags": [
             "frames"
         ],
-        "last_updated": "Jul 30, 2024",
+        "last_updated": "Aug 9, 2024",
         "duration": "16 min read",
-        "checksum": "92863c20aeaf836397aa7700bb1658448ba18ad964faccd1b4a347d60ba0d91a"
+        "checksum": "c147d855eef68a8919bec722d1ceba95dba62204cb761063ffe023a0210407e1"
     },
     "3_farcaster-frames-nft-minting": {
         "title": "Farcaster Frames: Building an NFT airdrop Frame",
@@ -818,9 +818,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 30, 2024",
+        "last_updated": "Aug 9, 2024",
         "duration": "23 min read",
-        "checksum": "a872103049f72733d50335e30cbef38282c2bd0f7ae3214868cf465cec470ddc"
+        "checksum": "130aedd8fe0f76fdcaef06ceab60c1deb6cb57aafdf9ac8f760385864a4cdef4"
     },
     "3_farcaster-frames-nocode-minting": {
         "title": "Farcaster Frames: Building a no-code minting Frame",
@@ -844,9 +844,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 30, 2024",
+        "last_updated": "Aug 9, 2024",
         "duration": "6 min read",
-        "checksum": "e669fa202e9455fa51e3d48a3a5a4f3d934e592e95eadf04a911b8ea266c51ec"
+        "checksum": "46ccf74f9efec55c0b2f1489352107a0a6fb2e5efd39fb178cb2f4710131dbfc"
     },
     "3_farcaster-frames-transactions": {
         "title": "Farcaster Frames: Making transactions",
@@ -867,9 +867,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 30, 2024",
+        "last_updated": "Aug 9, 2024",
         "duration": "17 min read",
-        "checksum": "c00ea1ef98071d3c24bf587998b26e9d3bbc9d88c4c0b633d58ad842ba4eeaa9"
+        "checksum": "19f69653dcd8c9d2edd669382b77a4b30a4a3404375c9687aec1173ced00763a"
     },
     "4_hardhat-debugging": {
         "title": "Hardhat: Debugging smart contracts",
@@ -1061,14 +1061,89 @@
             "smart contract development"
         ],
         "tags": [
-            "nodes"
+            "nodes",
+            "frontend"
         ],
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
+        "last_updated": "Aug 9, 2024",
         "duration": "21 min read",
-        "checksum": "40d1858aeeaef166a56357d76ef641dae4c7cb25334e23aba75c4a3a91bea8d9"
+        "checksum": "c847674db9fb136fddfb6df8ebf5fe08ae30a4cbb35d03513c0b069d0acff0ee"
+    },
+    "4_smart-wallet-and-onchainkit": {
+        "title": "Coinbase Smart Wallet with OnchainKit",
+        "slug": "/smart-wallet-and-onchainkit",
+        "description": "Learn how to use OnchainKit to easily handle the Coinbase Smart Wallet and EOA wallets including the Coinbase wallet, at the same time.",
+        "author": "briandoyle81",
+        "keywords": [
+            "JSON RPC",
+            "RainbowKit",
+            "OnchainKit",
+            "frontend",
+            "Next.js",
+            "Base",
+            "Base network",
+            "Base node providers",
+            "Base providers",
+            "blockchain development",
+            "dApps",
+            "smart contracts",
+            "providers",
+            "Base",
+            "Base network",
+            "blockchain connection",
+            "smart contract development",
+            "smart wallet",
+            "Coinbase smart wallet"
+        ],
+        "tags": [
+            "account abstraction",
+            "frontend"
+        ],
+        "difficulty": "beginner",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 9, 2024",
+        "duration": "7 min read",
+        "checksum": "baefda0f1efe057a943ad409c43600428698a9bee5cd5294a465ee94390b57b7"
+    },
+    "4_smart-wallet-and-rainbowkit": {
+        "title": "Coinbase Smart Wallet with RainbowKit",
+        "slug": "/smart-wallet-and-rainbowkit",
+        "description": "Learn how to configure RainbowKit to elegantly handle the Coinbase Smart Wallet and EOA wallets including the Coinbase wallet, at the same time.",
+        "author": "briandoyle81",
+        "keywords": [
+            "JSON RPC",
+            "RainbowKit",
+            "wagmi React hooks",
+            "frontend",
+            "Next.js",
+            "Base",
+            "Base network",
+            "Base node providers",
+            "Base providers",
+            "blockchain development",
+            "dApps",
+            "smart contracts",
+            "providers",
+            "Base",
+            "Base network",
+            "blockchain connection",
+            "smart contract development",
+            "smart wallet",
+            "Coinbase smart wallet"
+        ],
+        "tags": [
+            "account abstraction",
+            "frontend"
+        ],
+        "difficulty": "beginner",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 9, 2024",
+        "duration": "6 min read",
+        "checksum": "21bdceb19ccd7ba5517c2b63ec43fdd6f5f85db4e394287e20d6bd3623cc6c49"
     },
     "5_farcaster-cast-actions-simple": {
         "title": "Farcaster Cast Actions: Create a Simple Cast Action",
@@ -1088,9 +1163,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 30, 2024",
+        "last_updated": "Aug 9, 2024",
         "duration": "9 min read",
-        "checksum": "e664b615fd5d9ed6115853ae9335276dc664f752c9a3f112105adb469f84296b"
+        "checksum": "de35cc39119ab6c3e727a6ab1fba5388d67aa91896ddeb24a92c2387e129714d"
     },
     "5_shopify-storefront-commerce": {
         "title": "Deploy a Shopify Storefront with Coinbase Commerce",
