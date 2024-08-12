@@ -5,9 +5,10 @@ import BuildersMostWanted from '../../../src/components/GetStarted/BuildersMostW
 import Funding from '../../../src/components/GetStarted/Funding';
 import GetNoticed from '../../../src/components/GetStarted/GetNoticed';
 import StartBuilding from '../../../src/components/GetStarted/StartBuilding';
-import BuildWithUs from '../../../src/components/GetStarted/BuildWithUs';
+import BuildWithUsFooter from '../../../src/components/GetStarted/BuildWithUsFooter';
 
-export const sectionContainer = classNames(
+export const sectionContainerClasses = classNames(
+  'max-w-[1440px]',
   'mx-12 sm:mx-16 lg:mx-24',
   'mb-12 sm:mb-16 lg:mb-20',
   'bg-black',
@@ -38,12 +39,12 @@ export default async function GoToCommunity() {
   return (
     <AnalyticsProvider context="builder_resource_kit">
       <Hero />
-      <main className="flex w-full flex-col bg-black font-display text-white">
+      <main className="flex w-full flex-col items-center bg-black font-display text-white">
         <BuildersMostWanted />
         <Funding />
         <GetNoticed />
         <StartBuilding />
-        <BuildWithUs />
+        <BuildWithUsFooter />
       </main>
     </AnalyticsProvider>
   );
