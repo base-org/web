@@ -5,13 +5,7 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { ActionType, ComponentType } from 'base-ui/utils/logEvent';
 import { useAnalytics } from '../../../../contexts/Analytics';
-import { Icon } from '../../Icon/Icon';
-
-export type Resource = {
-  href: string;
-  title: string;
-  description: string;
-};
+import { Resource } from '../ResourceSection';
 
 export type ResourceCardProps = Resource & {
   counter?: number;
