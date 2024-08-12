@@ -102,7 +102,7 @@ export default async function StartBuilding() {
       <h2 className={subtitleClasses}>Make your project easy to use</h2>
       <ResourceGrid section={easyToUseResources} />
       <ButtonWithLinkAndEventLogging
-        href="/all"
+        href="https://www.coinbase.com/developer-platform/?utm_source=dotorg&utm_medium=builderkit"
         eventName="easy_to_build_resources"
         buttonClassNames="mt-6"
       >
