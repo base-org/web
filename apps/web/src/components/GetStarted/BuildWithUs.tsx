@@ -1,4 +1,4 @@
-import { titleClasses, linkTextClasses } from '../../../app/(base-org)/get-started/page';
+import { titleClasses, linkTextClasses } from '../../../app/(base-org)/getstarted/page';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import { ButtonVariants } from '../Button/Button';
 import buildWithUs from './images/build-with-us.png';

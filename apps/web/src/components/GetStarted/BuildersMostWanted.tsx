@@ -4,7 +4,7 @@ import {
   // FUNDING_SECTION_ID,
   // GET_NOTICED_SECTION_ID,
   // START_BUILDING_SECTION_ID,
-} from '../../../app/(base-org)/get-started/page';
+} from '../../../app/(base-org)/getstarted/page';
 import { Icon } from '../Icon/Icon';
 import { Resource } from './resourceTypes';
 import ResourceCard from './ResourceGrid/ResourceCard';

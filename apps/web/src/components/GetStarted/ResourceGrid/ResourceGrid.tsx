@@ -1,4 +1,4 @@
-import { gridClasses } from '../../../../app/(base-org)/get-started/page';
+import { gridClasses } from '../../../../app/(base-org)/getstarted/page';
 import { Icon } from '../../Icon/Icon';
 import { ResourceGridProps } from '../resourceTypes';
 import ResourceCard from './ResourceCard';
