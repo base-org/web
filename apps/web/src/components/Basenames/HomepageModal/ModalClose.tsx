@@ -1,3 +1,5 @@
+'use client';
+
 import { Dispatch, SetStateAction, useCallback } from 'react';
 import { ActionType, ComponentType } from 'base-ui/utils/logEvent';
 import { useAnalytics } from '../../../../contexts/Analytics';
@@ -16,7 +18,7 @@ export default function ModalClose({
     setIsModalOpen(false);
   }, [logEventWithContext, setIsModalOpen]);
   return (
-    <button type="button" onClick={closeModal} onKeyDown={closeModal} aria-label="Close the modal">
+    <button type="button" onClick={closeModal} aria-label="Close the modal">
       <Icon name="close" color="white" width="16px" height="16px" />
     </button>
   );
