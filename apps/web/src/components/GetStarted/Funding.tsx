@@ -1,4 +1,4 @@
-import { sectionContainer, titleClasses } from '../../../app/(base-org)/getstarted/page';
+import { sectionContainerClasses, titleClasses } from '../../../app/(base-org)/getstarted/page';
 import ResourceGrid from './ResourceGrid/ResourceGrid';
 import { ResourceSectionType } from './resourceTypes';
 
@@ -31,7 +31,7 @@ export const FUNDING_SECTION_ID = 'GetFunded';
 
 export default async function Funding() {
   return (
-    <div id={FUNDING_SECTION_ID} className={sectionContainer}>
+    <div id={FUNDING_SECTION_ID} className={sectionContainerClasses}>
       <div>
         <h1 className={titleClasses}>{fundingResources.title}</h1>
       </div>
