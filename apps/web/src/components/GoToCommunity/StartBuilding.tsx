@@ -40,7 +40,7 @@ const easyToBuildResources: ResourceSectionType = {
       title: 'OnchainKit',
       description:
         'Build your apps in minutes with off-the-shelf React components and onchain integrations',
-      href: 'onchainkit.xyz/?utm_source=dotorg&utm_medium=builderkit',
+      href: 'https://onchainkit.xyz/?utm_source=dotorg&utm_medium=builderkit',
     },
     {
       title: 'Support Team',
