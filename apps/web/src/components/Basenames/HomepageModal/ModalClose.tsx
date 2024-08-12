@@ -18,7 +18,7 @@ export default function ModalClose({
     setIsModalOpen(false);
   }, [logEventWithContext, setIsModalOpen]);
   return (
-    <button type="button" onClick={closeModal} aria-label="Close the modal">
+    <button type="button" onClick={closeModal} aria-label="Close the modal" tabIndex={-1}>
       <Icon name="close" color="white" width="16px" height="16px" />
     </button>
   );

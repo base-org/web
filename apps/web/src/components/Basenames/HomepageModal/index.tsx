@@ -41,7 +41,7 @@ export default function BasenamesHomepageModal() {
 
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
-  }, []);
+  }, [setIsModalOpen]);
 
   if (!SHOW_BANNER || !isModalOpen) {
     return null;
@@ -76,7 +76,7 @@ export default function BasenamesHomepageModal() {
                 href="/names"
                 eventName="get_a_basename"
                 buttonClassNames={modalCtaClasses}
-                tabIndex={1}
+                tabIndex={0}
               >
                 Get your basename
               </ButtonWithLinkAndEventLogging>
