@@ -1,11 +1,10 @@
+import Link from 'next/link';
 import classNames from 'classnames';
 import {
   sectionContainerClasses,
   titleClasses,
   linkTextClasses,
 } from '../../../app/(base-org)/getstarted/page';
-import { ButtonVariants } from '../Button/Button';
-import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import { Icon } from '../Icon/Icon';
 import ResourceGrid from './ResourceGrid/ResourceGrid';
 import { ResourceSectionType } from './resourceTypes';
@@ -84,34 +83,21 @@ export default async function StartBuilding() {
 
   return (
     <div id={START_BUILDING_SECTION_ID} className={sectionContainerClasses}>
-      <div>
-        <h1 className={titleClasses}>Start Building</h1>
-      </div>
+      <h1 className={titleClasses}>Start Building</h1>
       <h2 className={subtitleClasses}>Learn how to build a project</h2>
       <ResourceGrid section={learnToBuildResources} />
       <h2 className={subtitleClasses}>Save time building</h2>
       <ResourceGrid section={easyToBuildResources} />
       <h2 className={subtitleClasses}>Make your project easy to use</h2>
       <ResourceGrid section={easyToUseResources} />
-      <ButtonWithLinkAndEventLogging
-        href="https://www.coinbase.com/developer-platform/?utm_source=dotorg&utm_medium=builderkit"
-        eventName="easy_to_build_resources"
-        buttonClassNames="mt-6 ml-0 pl-0"
-        variant={ButtonVariants.Black}
-        >
-        <div className="flex flex-row items-center justify-around gap-2 ">
-          <span className={linkTextClasses}>View All Resources</span>
-          <Icon name="chevronRight" width="16px" height="16px" />
-        </div>
-      </ButtonWithLinkAndEventLogging>
-        {/* <div className="mt-6 flex hover:text-palette-foregroundMuted">
-          <Link href="/all">
-            <div className="flex flex-row items-center justify-around gap-2">
-              <span className={linkTextClasses}>View All Resources</span>
-              <Icon name="chevronRight" width="16px" height="16px" color='currentColor' />
-            </div>
-          </Link>
-        </div> */}
+      <div className="mt-6 flex">
+        <Link href="https://www.coinbase.com/developer-platform/?utm_source=dotorg&utm_medium=builderkit">
+          <div className="flex flex-row items-center justify-around gap-2 hover:scale-105">
+            <span className={`${linkTextClasses}`}>View All Resources</span>
+            <Icon name="chevronRight" width="16px" height="16px" color="currentColor" />
+          </div>
+        </Link>
+      </div>
     </div>
   );
 }

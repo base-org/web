@@ -16,6 +16,7 @@ export default async function Hero() {
     'mt-12 sm:mt-16 lg:mt-24',
     'mb-6',
   );
+
   return (
     <div
       className="mt-[-96px] flex w-full flex-col justify-center bg-[#283145] pt-8 font-display text-white sm:flex-row sm:pt-20 lg:pt-40"
@@ -27,7 +28,7 @@ export default async function Hero() {
             Resources for Builders
           </h1>
           <span className="text-lg sm:text-xl lg:text-2xl">
-            Get help to build and grow your project on Base with our Go-to-Community Kit
+            Get help to build and grow your project on Base with our Builder Resource Kit
           </span>
         </div>
         <div className="self-end">
