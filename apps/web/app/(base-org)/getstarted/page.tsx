@@ -39,7 +39,7 @@ export default async function GoToCommunity() {
   return (
     <AnalyticsProvider context="builder_resource_kit">
       <Hero />
-      <main className="flex w-full flex-col items-center bg-black font-display text-white">
+      <main className="flex w-full flex-col items-center bg-black font-display text-gray-5">
         <BuildersMostWanted />
         <Funding />
         <GetNoticed />
