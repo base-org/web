@@ -6,7 +6,7 @@ export type Resource = {
 };
 
 export type ResourceSectionType = {
-  title?: string;
+  title: string;
   colorOne: string;
   colorTwo: string;
   cards: Resource[];
