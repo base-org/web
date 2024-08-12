@@ -14,6 +14,7 @@ import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/But
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
+import { usePremiumEndDurationRemaining } from 'apps/web/src/hooks/useActiveEthPremiumAmount';
 import { useActiveEthPremiumAmount } from 'apps/web/src/hooks/useActivePremiumAmount';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
@@ -26,7 +27,7 @@ import { IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { formatEther, parseEther, parseGwei } from 'viem';
+import { formatEther } from 'viem';
 import { useAccount, useBalance, useChains, useSwitchChain } from 'wagmi';
 
 function formatEtherPrice(price?: bigint) {
@@ -100,6 +101,7 @@ export default function RegistrationForm() {
 
   const ethUsdPrice = useEthPriceFromUniswap();
   const { data: initialPrice } = useNameRegistrationPrice(selectedName, years);
+  const { data: singleYearEthCost } = useNameRegistrationPrice(selectedName, 1);
   const { data: discountedPrice } = useDiscountedNameRegistrationPrice(
     selectedName,
     years,
@@ -143,7 +145,9 @@ export default function RegistrationForm() {
   const nameIsFree = price === 0n;
 
   const { data: premiumEthAmount } = useActiveEthPremiumAmount();
-  const isPremiumActive = premiumEthAmount !== 0n;
+  const premiumEndTimestamp = usePremiumEndDurationRemaining();
+
+  const isPremiumActive = premiumEthAmount && premiumEthAmount !== 0n;
   const mainRegistrationElementClasses = classNames(
     'z-10 flex flex-col items-start justify-between gap-6 bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center',
     {
@@ -158,11 +162,15 @@ export default function RegistrationForm() {
         <div className="mt-20 transition-all duration-500">
           {isPremiumActive && (
             <div className="flex justify-between gap-4 rounded-t-2xl bg-gradient-to-r from-[#B139FF] to-[#FF9533] px-6 py-4 text-white">
-              <p>Temporary premium ends in dd:hh:mm:ss</p>
-              <p>{premiumEthAmount} ETH as of mm/dd/yyy hh:mm pm</p>
-              <button type="button" className="underline" onClick={togglePremiumExplainerModal}>
-                Learn more
-              </button>
+              <p>
+                Temporary premium of {premiumEthAmount} ETH{' '}
+                {premiumEndTimestamp && <>ends in {premiumEndTimestamp}</>}
+              </p>
+              {Boolean(premiumEthAmount && singleYearEthCost) && (
+                <button type="button" className="underline" onClick={togglePremiumExplainerModal}>
+                  Learn more
+                </button>
+              )}
             </div>
           )}
           <div className={mainRegistrationElementClasses}>
@@ -325,12 +333,14 @@ export default function RegistrationForm() {
           isOpen={learnMoreAboutDiscountsModalOpen}
           toggleModal={toggleLearnMoreModal}
         />
-        <PremiumExplainerModal
-          premiumEthAmount={parseEther('100')}
-          singleYearEthCost={parseEther('0.0001')}
-          isOpen={premiumExplainerModalOpen}
-          toggleModal={togglePremiumExplainerModal}
-        />
+        {Boolean(premiumEthAmount && singleYearEthCost) && (
+          <PremiumExplainerModal
+            premiumEthAmount={premiumEthAmount}
+            singleYearEthCost={singleYearEthCost as bigint}
+            isOpen={premiumExplainerModalOpen}
+            toggleModal={togglePremiumExplainerModal}
+          />
+        )}
       </>
     );
   }

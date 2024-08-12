@@ -1,11 +1,7 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef } from 'react';
-import { useSavedTrackingPreference, useCookie } from '@coinbase/cookie-manager';
 import { usePathname } from 'next/navigation';
-
-import Script from 'next/script';
-import initCCA from '../../utils/initCCA';
+import { useEffect, useRef } from 'react';
 
 export type NextJsRouterEventTypes =
   | 'routeChangeStart'
@@ -24,10 +20,6 @@ export type NextJSRouter = Record<string, unknown> & {
 };
 
 export default function ClientAnalyticsScript() {
-  const trackingPreference = useSavedTrackingPreference();
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const [deviceIdCookie, setDeviceIdCookie] = useCookie('base_device_id');
-
   // Coinbase's CCA is designed for Page Router.
   // CCA cannot use the App router logic, since "router.events.on" is deprecated.
   // As a result we have to mock this behavior
@@ -40,19 +32,6 @@ export default function ClientAnalyticsScript() {
   // 2. Keep track of the handler
   const onRouteChangeHandler = useRef<AnalyticsEventHandler | null>(null);
 
-  // 3. Mock the old router behavior, save the handler
-  const oldRouterEvent: NextJSRouter = useMemo(() => {
-    return {
-      events: {
-        on: (event: NextJsRouterEventTypes, analyticsHandler: AnalyticsEventHandler) => {
-          if (event === 'routeChangeComplete' && analyticsHandler) {
-            onRouteChangeHandler.current = analyticsHandler;
-          }
-        },
-      },
-    };
-  }, []);
-
   // 4. Call the onRouteChangeHandler on page change via useEffect
   useEffect(() => {
     if (onRouteChangeHandler.current) {
@@ -60,14 +39,5 @@ export default function ClientAnalyticsScript() {
     }
   }, [onRouteChangeHandler, pathname]);
 
-  return (
-    <Script
-      src="https://static-assets.coinbase.com/js/cca/v0.0.1.js"
-      onLoad={useCallback(
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        () => initCCA(oldRouterEvent, trackingPreference, deviceIdCookie, setDeviceIdCookie),
-        [oldRouterEvent, trackingPreference, deviceIdCookie, setDeviceIdCookie],
-      )}
-    />
-  );
+  return null;
 }
