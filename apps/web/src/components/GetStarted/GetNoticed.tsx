@@ -1,4 +1,4 @@
-import { sectionContainer, titleClasses } from '../../../app/(base-org)/getstarted/page';
+import { sectionContainerClasses, titleClasses } from '../../../app/(base-org)/getstarted/page';
 import ResourceGrid from './ResourceGrid/ResourceGrid';
 import { ResourceSectionType } from './resourceTypes';
 
@@ -26,7 +26,7 @@ export const GET_NOTICED_SECTION_ID = 'GetNoticed';
 
 export default async function GetNoticed() {
   return (
-    <div id={GET_NOTICED_SECTION_ID} className={sectionContainer}>
+    <div id={GET_NOTICED_SECTION_ID} className={sectionContainerClasses}>
       <div>
         <h1 className={titleClasses}>{getNoticedResources.title}</h1>
       </div>
