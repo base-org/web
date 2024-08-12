@@ -1,8 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
+import { gridClasses } from '../../../app/(base-org)/go-to-community/page';
 import { Icon } from '../Icon/Icon';
-import { Resource } from './ResourceCard/ResourceCard';
-import ResourceCard from './ResourceCard/ResourceCard';
+import { Resource } from './resourceTypes';
+import ResourceCard from './ResourceGrid/ResourceCard';
 
 type MostWantedResource = Resource & {
   icon: string;
@@ -56,20 +57,19 @@ export default async function BuildersMostWanted() {
     'leading-none',
   );
 
-  const gridClasses = classNames(
-    'mt-10 sm:mt-12 lg:mt-16',
-    'grid grid-cols-1 md:grid-cols-3',
-    'gap-2 gap-y-8 sm:gap-4 sm:gap-y-12 lg:gap-6',
+  const subtitleClasses = classNames(
+    'mb-4 sm:mb-6 lg:mb-8',
+    'font-sans',
+    'text-base sm:text-lg lg:text-xl',
+    'leading-snug',
   );
 
   return (
     <div className="p-12 sm:p-16 lg:p-24">
-      <div>
-        <h1 className={titleClasses}>The Essentials</h1>
-        <span className="font-sans text-base sm:text-lg lg:text-xl">
-          The tools and resources most frequently requested by Base Builders
-        </span>
-      </div>
+      <h1 className={titleClasses}>The Essentials</h1>
+      <h2 className={subtitleClasses}>
+        The tools and resources most frequently requested by Base Builders
+      </h2>
       <div className={gridClasses}>
         {mostWanted.map((card) => {
           return (
