@@ -2,7 +2,7 @@ import { titleClasses, linkTextClasses } from '../../../app/(base-org)/getstarte
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import { ButtonVariants } from '../Button/Button';
 import buildWithUs from './images/build-with-us.png';
-// import { whyBaseSharedClassNames } from '../../../app/(base-org)/why-base/page';
+
 export default async function BuildWithUs() {
   const imageBackgroundStyles = {
     backgroundImage: `url('${buildWithUs.src}')`,
@@ -22,7 +22,7 @@ export default async function BuildWithUs() {
             rel="noreferrer noopener"
             buttonClassNames={linkTextClasses}
           >
-            Contact Us
+            Office Hours
           </ButtonWithLinkAndEventLogging>
           <ButtonWithLinkAndEventLogging
             href="https://docs.base.org/docs/?utm_source=dotorg&utm_medium=builderkit"
