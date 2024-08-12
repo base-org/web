@@ -5,6 +5,7 @@ import BuildersMostWanted from '../../../src/components/GetStarted/BuildersMostW
 import Funding from '../../../src/components/GetStarted/Funding';
 import GetNoticed from '../../../src/components/GetStarted/GetNoticed';
 import StartBuilding from '../../../src/components/GetStarted/StartBuilding';
+import BuildWithUs from '../../../src/components/GetStarted/BuildWithUs';
 
 export const sectionContainer = classNames(
   'mx-12 sm:mx-16 lg:mx-24',
@@ -27,6 +28,12 @@ export const gridClasses = classNames(
   'grid grid-cols-1 md:grid-cols-3',
   'gap-2 gap-y-8 sm:gap-4 sm:gap-y-12 lg:gap-6',
 );
+export const linkTextClasses = classNames(
+  'uppercase',
+  'font-mono',
+  'leading-relaxed',
+
+)
 
 export const FUNDING_SECTION_ID = 'GetFunded';
 export const GET_NOTICED_SECTION_ID = 'GetNoticed';
@@ -41,6 +48,7 @@ export default async function GoToCommunity() {
         <Funding />
         <GetNoticed />
         <StartBuilding />
+        <BuildWithUs />
       </main>
     </AnalyticsProvider>
   );
