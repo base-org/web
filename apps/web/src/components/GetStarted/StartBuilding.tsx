@@ -34,11 +34,6 @@ const easyToBuildResources: ResourceSectionType = {
   colorTwo: 'orange-80',
   cards: [
     {
-      title: 'Base Learn',
-      description: 'Build easier with expert how-to guides',
-      href: 'https://docs.base.org/base-learn/progress/?utm_source=dotorg&utm_medium=builderkit',
-    },
-    {
       title: 'OnchainKit',
       description:
         'Build your apps in minutes with off-the-shelf React components and onchain integrations',
@@ -94,27 +89,8 @@ export default async function StartBuilding() {
       </div>
       <h2 className={subtitleClasses}>Learn how to build a project</h2>
       <ResourceGrid section={learnToBuildResources} />
-      <h2 className={subtitleClasses}>Make your project easy to build</h2>
+      <h2 className={subtitleClasses}>Save time building</h2>
       <ResourceGrid section={easyToBuildResources} />
-      {/* <div className="mt-6 flex hover:text-palette-foregroundMuted">
-        <Link href="/all">
-          <div className="flex flex-row items-center justify-around gap-2">
-            <span className={linkTextClasses}>View All Resources</span>
-            <Icon name="chevronRight" width="16px" height="16px" color='currentColor' />
-          </div>
-        </Link>
-      </div> */}
-      <ButtonWithLinkAndEventLogging
-        href="/all"
-        eventName="easy_to_build_resources"
-        buttonClassNames="mt-6 ml-0 pl-0"
-        variant={ButtonVariants.Black}
-      >
-        <div className="flex flex-row items-center justify-around gap-2">
-          <span className={linkTextClasses}>View All Resources</span>
-          <Icon name="chevronRight" width="16px" height="16px" />
-        </div>
-      </ButtonWithLinkAndEventLogging>
       <h2 className={subtitleClasses}>Make your project easy to use</h2>
       <ResourceGrid section={easyToUseResources} />
       <ButtonWithLinkAndEventLogging
@@ -122,12 +98,20 @@ export default async function StartBuilding() {
         eventName="easy_to_build_resources"
         buttonClassNames="mt-6 ml-0 pl-0"
         variant={ButtonVariants.Black}
-      >
+        >
         <div className="flex flex-row items-center justify-around gap-2 ">
           <span className={linkTextClasses}>View All Resources</span>
           <Icon name="chevronRight" width="16px" height="16px" />
         </div>
       </ButtonWithLinkAndEventLogging>
+        {/* <div className="mt-6 flex hover:text-palette-foregroundMuted">
+          <Link href="/all">
+            <div className="flex flex-row items-center justify-around gap-2">
+              <span className={linkTextClasses}>View All Resources</span>
+              <Icon name="chevronRight" width="16px" height="16px" color='currentColor' />
+            </div>
+          </Link>
+        </div> */}
     </div>
   );
 }
