@@ -1,6 +1,5 @@
-'use client';
-
 import React from 'react';
+import classNames from 'classnames';
 import { Icon } from '../Icon/Icon';
 import { Resource } from './ResourceCard/ResourceCard';
 import ResourceCard from './ResourceCard/ResourceCard';
@@ -11,8 +10,8 @@ type MostWantedResource = Resource & {
 
 const mostWanted: MostWantedResource[] = [
   {
-    title: 'Claim Your Basename',
-    description: 'Basenames are dope and you should have one. What are you waiting for?',
+    title: 'Create your profile',
+    description: 'Claim a Basename and create your Based Profile to connect with other  Builders',
     href: '/names',
     icon: 'basenamesIcon',
   },
@@ -36,7 +35,7 @@ const mostWanted: MostWantedResource[] = [
     icon: 'dotGrid',
   },
   {
-    title: 'Base Grants',
+    title: 'Base Builder Grants',
     description:
       'Apply for a retroactive Base Builder Grant, rewarding great projects built on Base',
     href: 'https://docs.google.com/forms/d/e/1FAIpQLSfXuEzmiAzRhie_z9raFCF1BXweXgVt18o-DvBuRRgyTygL2A/viewform',
@@ -50,18 +49,28 @@ const mostWanted: MostWantedResource[] = [
   },
 ];
 
-export default function BuildersMostWanted() {
+export default async function BuildersMostWanted() {
+  const titleClasses = classNames(
+    'mb-4 lg:mb-6',
+    'text-3xl sm:text-4xl lg:text-6xl',
+    'leading-none',
+  );
+
+  const gridClasses = classNames(
+    'mt-10 sm:mt-12 lg:mt-16',
+    'grid grid-cols-1 md:grid-cols-3',
+    'gap-2 gap-y-8 sm:gap-4 sm:gap-y-12 lg:gap-6',
+  );
+
   return (
     <div className="p-12 sm:p-16 lg:p-24">
       <div>
-        <h1 className="mb-4 text-3xl leading-none sm:text-4xl lg:mb-6 lg:text-6xl lg:leading-none">
-          The Essentials
-        </h1>
-        <span className="text-base sm:text-lg lg:text-xl">
+        <h1 className={titleClasses}>The Essentials</h1>
+        <span className="font-sans text-base sm:text-lg lg:text-xl">
           The tools and resources most frequently requested by Base Builders
         </span>
       </div>
-      <div className="mt-10 grid grid-cols-2 gap-2 gap-y-8 sm:mt-12 sm:gap-4 sm:gap-y-12 md:grid-cols-3 lg:mt-16 lg:gap-6">
+      <div className={gridClasses}>
         {mostWanted.map((card) => {
           return (
             <ResourceCard
@@ -69,7 +78,7 @@ export default function BuildersMostWanted() {
               href={card.href}
               title={card.title}
               description={card.description}
-              topLeft={<Icon name={card.icon} color="currentColor" />}
+              topLeft={<Icon name={card.icon} color="white" />}
               colorOne="purple-60"
               colorTwo="purple-80"
             />
