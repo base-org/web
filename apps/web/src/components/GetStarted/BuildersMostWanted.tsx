@@ -19,16 +19,16 @@ const mostWanted: MostWantedResource[] = [
     icon: 'basenamesIcon',
   },
   {
-    title: 'Why Base?',
-    description: 'Curious waht differentiates Base vs. building on other chains? Look no further',
-    href: '/why-base/?utm_source=dotorg&utm_medium=builderkit',
-    icon: 'questionMark',
-  },
-  {
     title: 'Office Hours',
     description: 'Schedule time to talk to directly to a member of the Base Ecosystem team',
     href: 'https://lu.ma/base-officehours/?utm_source=dotorg&medium=builderkit',
     icon: 'dotGrid',
+  },
+  {
+    title: 'Host a Meetup',
+    description: 'Sign up to host a meetup with other Based builders anywhere in the world',
+    href: '/why-base/?utm_source=dotorg&utm_medium=builderkit',
+    icon: 'questionMark',
   },
   {
     title: 'Get Funded',
@@ -69,7 +69,7 @@ export default async function BuildersMostWanted() {
     <div className={`${sectionContainerClasses} mt-20`}>
       <h1 className={titleClasses}>The Essentials</h1>
       <h2 className={subtitleClasses}>
-        The tools and resources most frequently requested by Base Builders
+        Jump to our most frequently requested tools and resources.
       </h2>
       <div className={gridClasses}>
         {mostWanted.map((card) => {
