@@ -96,9 +96,9 @@ You can customize the list of wallets with the [Wallet Aggregator].
 
 ### Setting Up the Wallet Aggregator
 
-Open `src/app/page.tsx`. Here, you find the root page for the app. You can see the `<WalletComponents />`, which is what you used to log in and out.
+Open `src/app/page.tsx`. Here, you find the root page for the app. You can see the `<WalletWrapper />`, which is what you used to log in and out.
 
-Open `src/components/WalletComponents.tsx`, and `src/wagmi.ts`. Take a quick look at `WalletWrapper`. It's a robust implementation of several [OnchainKit] components that shows how you can create a login experience that works well for all types of users, and provides the `<Identity>` component once logged in.
+Open `src/components/WalletWrapper.tsx`, and `src/wagmi.ts`. Take a quick look at `WalletWrapper`. It's a robust implementation of several [OnchainKit] components that shows how you can create a login experience that works well for all types of users, and provides the `<Identity>` component once logged in.
 
 You can customize this by making some changes to `wagmi.ts`.
 
