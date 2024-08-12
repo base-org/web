@@ -1,5 +1,5 @@
-import React from 'react';
 import Image from 'next/image';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import gtcBackground from './images/gtc-background.svg';
 import ocsTitle from './images/onchain-summer.svg';
 
@@ -23,7 +23,7 @@ export default async function Hero() {
         </div>
       </div>
       <div className="self-end">
-        <Image src={ocsTitle} alt="onchain summer" />
+        <Image src={ocsTitle as StaticImport} alt="onchain summer" />
       </div>
     </div>
   );

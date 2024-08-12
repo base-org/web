@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 import AnalyticsProvider from '../../../contexts/Analytics';
 import Hero from '../../../src/components/GoToCommunity/Hero';

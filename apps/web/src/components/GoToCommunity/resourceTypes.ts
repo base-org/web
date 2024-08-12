@@ -15,3 +15,11 @@ export type ResourceSectionType = {
 export type ResourceGridProps = {
   section: ResourceSectionType;
 };
+
+export type ResourceCardProps = Resource & {
+  counter?: number;
+  topLeft?: React.ReactNode;
+  topRight?: React.ReactNode;
+  colorOne: string;
+  colorTwo?: string;
+};

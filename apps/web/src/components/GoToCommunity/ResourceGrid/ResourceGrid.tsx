@@ -1,4 +1,3 @@
-import React from 'react';
 import { gridClasses } from '../../../../app/(base-org)/go-to-community/page';
 import { Icon } from '../../Icon/Icon';
 import { ResourceGridProps } from '../resourceTypes';

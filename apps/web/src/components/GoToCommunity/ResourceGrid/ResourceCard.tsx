@@ -1,26 +1,18 @@
 'use client';
 
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
 import { ActionType, ComponentType } from 'base-ui/utils/logEvent';
 import { useAnalytics } from '../../../../contexts/Analytics';
-import { Resource } from '../ResourceSection';
-
-export type ResourceCardProps = Resource & {
-  counter?: number;
-  topLeft?: React.ReactNode;
-  topRight?: React.ReactNode;
-  colorOne: string;
-  colorTwo?: string;
-};
+import { ResourceCardProps } from '../resourceTypes';
 
 export default function ResourceCard({
   href,
   title,
   description,
-  topLeft = <span></span>,
-  topRight = <span></span>,
+  topLeft = <span />,
+  topRight = <span />,
   colorOne,
   colorTwo,
 }: ResourceCardProps) {
