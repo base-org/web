@@ -1,7 +1,6 @@
 import classNames from 'classnames';
-import Link from 'next/link';
 import {
-  sectionContainer,
+  sectionContainerClasses,
   titleClasses,
   linkTextClasses,
 } from '../../../app/(base-org)/getstarted/page';
@@ -89,7 +88,7 @@ export default async function StartBuilding() {
   );
 
   return (
-    <div id={START_BUILDING_SECTION_ID} className={sectionContainer}>
+    <div id={START_BUILDING_SECTION_ID} className={sectionContainerClasses}>
       <div>
         <h1 className={titleClasses}>Start Building</h1>
       </div>
