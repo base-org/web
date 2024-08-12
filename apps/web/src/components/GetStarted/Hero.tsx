@@ -9,10 +9,10 @@ export default async function Hero() {
   };
   return (
     <div
-      className="mt-[-96px] flex flex-col bg-[#283145] pt-8 font-display text-white sm:flex-row sm:pt-20 lg:pt-40"
+      className="mt-[-96px] flex flex-col justify-center bg-[#283145] pt-8 font-display text-white sm:flex-row sm:pt-20 lg:pt-40"
       style={backgroundStyles}
     >
-      <div className="mx-12 mb-8 mt-12 flex flex-col justify-start sm:mx-16 sm:mb-12 sm:mt-16 lg:mx-24">
+      <div className="mx-12 mb-8 mt-12 flex flex-col justify-start sm:mx-16 sm:mb-12 sm:mt-16 lg:mx-24 max-w-[1440px]">
         <div className="max-w-full lg:max-w-[450px]">
           <h1 className="mb-6 font-display text-4xl leading-tight sm:text-5xl lg:mb-10 lg:text-[80px] lg:leading-none">
             Resources for Builders

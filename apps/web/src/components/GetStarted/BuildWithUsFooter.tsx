@@ -3,7 +3,7 @@ import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventL
 import { ButtonVariants } from '../Button/Button';
 import buildWithUs from './images/build-with-us.png';
 
-export default async function BuildWithUs() {
+export default async function BuildWithUsFooter() {
   const imageBackgroundStyles = {
     backgroundImage: `url('${buildWithUs.src}')`,
   };
