@@ -4,11 +4,11 @@ import {
   UsernameTextRecords,
   UsernameTextRecordKeys,
   textRecordsKeysEnabled,
+  getBasenameTextRecords,
 } from 'apps/web/src/utils/usernames';
 import { useQuery } from '@tanstack/react-query';
 import { BaseEnsNameData } from 'apps/web/src/hooks/useBaseEnsName';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import { getBasenameTextRecords } from 'apps/web/src/apis/usernames';
 
 export type UseReadBaseEnsTextRecordsProps = {
   address?: Address;

@@ -1,12 +1,16 @@
 import ProfileProviders from 'apps/web/app/(basenames)/name/[username]/ProfileProviders';
 import { Metadata } from 'next';
-import { formatDefaultUsername, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
+import {
+  formatDefaultUsername,
+  getBasenameAddress,
+  getBasenameTextRecord,
+  UsernameTextRecordKeys,
+} from 'apps/web/src/utils/usernames';
 import { redirect } from 'next/navigation';
 import classNames from 'classnames';
 import { BaseName } from '@coinbase/onchainkit/identity';
 import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
 import ErrorsProvider from 'apps/web/contexts/Errors';
-import { getBasenameAddress, getBasenameTextRecord } from 'apps/web/src/apis/usernames';
 
 type UsernameProfileProps = {
   params: { username: BaseName };
