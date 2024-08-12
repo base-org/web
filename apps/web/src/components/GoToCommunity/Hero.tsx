@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import gtcBackground from './gtc-background.svg';
-import ocsTitle from './onchain-summer.svg';
+import gtcBackground from './images/gtc-background.svg';
+import ocsTitle from './images/onchain-summer.svg';
 
 export default async function Hero() {
   const backgroundStyles = {
