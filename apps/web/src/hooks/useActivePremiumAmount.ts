@@ -3,10 +3,9 @@ import { EXPONENTIAL_PREMIUM_PRICE_ORACLE } from 'apps/web/src/addresses/usernam
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useBasenamesLaunchTime } from 'apps/web/src/hooks/useBasenamesLaunchTime';
 import { useMemo } from 'react';
-import { parseEther } from 'viem';
 import { useReadContract } from 'wagmi';
 
-export function useActiveEthPremiumAmountjf() {
+export function useActiveEthPremiumAmount() {
   const { basenameChain } = useBasenameChain();
   const { data: launchTimeSeconds } = useBasenamesLaunchTime();
 
@@ -24,8 +23,4 @@ export function useActiveEthPremiumAmountjf() {
       enabled: typeof timeSinceLaunch === 'bigint',
     },
   });
-}
-
-export function useActiveEthPremiumAmount() {
-  return { data: parseEther('10') };
 }
