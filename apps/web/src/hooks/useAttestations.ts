@@ -292,15 +292,6 @@ export function useSummerPassAttestations() {
 
   const discountValidatorAddress = USERNAME_1155_DISCOUNT_VALIDATORS[basenameChain.id];
 
-  const encodedEmptyArray = useMemo(
-    () =>
-      encodeAbiParameters(
-        [{ type: 'bytes32[]' }],
-        [] as unknown as readonly [readonly `0x${string}`[]],
-      ),
-    [],
-  );
-
   const readContractArgs = useMemo(() => {
     if (!address) {
       return {};
@@ -309,9 +300,9 @@ export function useSummerPassAttestations() {
       address: discountValidatorAddress,
       abi: ERC721ValidatorABI,
       functionName: 'isValidDiscountRegistration',
-      args: [address, encodedEmptyArray],
+      args: [address, '0x0'],
     };
-  }, [address, discountValidatorAddress, encodedEmptyArray]);
+  }, [address, discountValidatorAddress]);
 
   const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
 
@@ -320,7 +311,7 @@ export function useSummerPassAttestations() {
       data: {
         discountValidatorAddress,
         discount: Discount.SUMMER_PASS_LVL_3,
-        validationData: encodedEmptyArray,
+        validationData: '',
       },
       loading: false,
       error: null,
@@ -336,15 +327,6 @@ export function useBuildathonAttestations() {
 
   const discountValidatorAddress = BUILDATHON_ERC721_DISCOUNT_VALIDATOR[basenameChain.id];
 
-  const encodedEmptyArray = useMemo(
-    () =>
-      encodeAbiParameters(
-        [{ type: 'bytes32[]' }],
-        [] as unknown as readonly [readonly `0x${string}`[]],
-      ),
-    [],
-  );
-
   const readContractArgs = useMemo(() => {
     if (!address) {
       return {};
@@ -353,9 +335,9 @@ export function useBuildathonAttestations() {
       address: discountValidatorAddress,
       abi: ERC721ValidatorABI,
       functionName: 'isValidDiscountRegistration',
-      args: [address, encodedEmptyArray],
+      args: [address, '0x0'],
     };
-  }, [address, discountValidatorAddress, encodedEmptyArray]);
+  }, [address, discountValidatorAddress]);
 
   const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
 
@@ -364,7 +346,7 @@ export function useBuildathonAttestations() {
       data: {
         discountValidatorAddress,
         discount: Discount.BASE_BUILDATHON_PARTICIPANT,
-        validationData: encodedEmptyArray,
+        validationData: '',
       },
       loading: false,
       error: null,
@@ -380,15 +362,6 @@ export function useBaseDotEthAttestations() {
 
   const discountValidatorAddress = BASE_DOT_ETH_ERC721_DISCOUNT_VALIDATOR[basenameChain.id];
 
-  const encodedEmptyArray = useMemo(
-    () =>
-      encodeAbiParameters(
-        [{ type: 'bytes32[]' }],
-        [] as unknown as readonly [readonly `0x${string}`[]],
-      ),
-    [],
-  );
-
   const readContractArgs = useMemo(() => {
     if (!address) {
       return {};
@@ -397,9 +370,9 @@ export function useBaseDotEthAttestations() {
       address: discountValidatorAddress,
       abi: ERC721ValidatorABI,
       functionName: 'isValidDiscountRegistration',
-      args: [address, encodedEmptyArray],
+      args: [address],
     };
-  }, [address, discountValidatorAddress, encodedEmptyArray]);
+  }, [address, discountValidatorAddress]);
 
   const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
 
@@ -408,7 +381,7 @@ export function useBaseDotEthAttestations() {
       data: {
         discountValidatorAddress,
         discount: Discount.BASE_DOT_ETH_NFT,
-        validationData: encodedEmptyArray,
+        validationData: '',
       },
       loading: false,
       error: null,

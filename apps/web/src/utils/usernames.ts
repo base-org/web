@@ -70,12 +70,13 @@ export const textRecordsSocialFieldsEnabled = [
   UsernameTextRecordKeys.Url,
 ];
 
-export const textRecordsSocialFieldsEnabledIcons: Record<UsernameTextRecordKeys, string> = {
-  [UsernameTextRecordKeys.Twitter]: 'twitter',
-  [UsernameTextRecordKeys.Farcaster]: 'farcaster',
-  [UsernameTextRecordKeys.Github]: 'github',
-  [UsernameTextRecordKeys.Url]: 'website',
-};
+export const textRecordsSocialFieldsEnabledIcons: Partial<Record<UsernameTextRecordKeys, string>> =
+  {
+    [UsernameTextRecordKeys.Twitter]: 'twitter',
+    [UsernameTextRecordKeys.Farcaster]: 'farcaster',
+    [UsernameTextRecordKeys.Github]: 'github',
+    [UsernameTextRecordKeys.Url]: 'website',
+  };
 
 // Users might add their handle as @myProfile, which breaks on some website
 // TODO: Ideally we'd sanitize these before writing them as TextRecord
