@@ -14,6 +14,7 @@ import {
 } from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context';
 import AllOwnershipTransactionsState from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/AllOwnershipTransactionsState';
 import WalletIdentity from 'apps/web/src/components/WalletIdentity';
+import BasenameIdentity from 'apps/web/src/components/BasenameIdentity';
 
 const ownershipStepsTitleForDisplay = {
   [OwnershipSteps.Search]: 'Transfer ownership',
@@ -33,7 +34,7 @@ export default function UsernameProfileTransferOwnershipModal({
 }: UsernameProfileTransferOwnershipModalProps) {
   // Hooks
   const { address } = useAccount();
-  const { profileOwnerRefetch, setShowProfileSettings, profileAddress } = useUsernameProfile();
+  const { profileOwnerRefetch, setShowProfileSettings, profileUsername } = useUsernameProfile();
   const { logError } = useErrors();
   const {
     isSuccess,
@@ -127,11 +128,9 @@ export default function UsernameProfileTransferOwnershipModal({
         <div className="mt-2 flex flex-col gap-4">
           <p>Transferring token ownership can&apos;t be undone. This will trigger 4 transactions</p>
           <p>You are sending</p>
-          {profileAddress && (
-            <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
-              <WalletIdentity address={profileAddress} />
-            </div>
-          )}
+          <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
+            <BasenameIdentity username={profileUsername} />
+          </div>
           To
           {isValidRecipientAddress && (
             <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
@@ -149,11 +148,9 @@ export default function UsernameProfileTransferOwnershipModal({
         <div className="mt-2 flex flex-col gap-4">
           <p>Use your wallet to confirm the transfers.</p>
           <p>Sending</p>
-          {profileAddress && (
-            <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
-              <WalletIdentity address={profileAddress} />
-            </div>
-          )}
+          <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
+            <BasenameIdentity username={profileUsername} />
+          </div>
           To
           {isValidRecipientAddress && (
             <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">

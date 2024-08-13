@@ -4,7 +4,7 @@ import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import { Address, isAddress } from 'viem';
 import { useEnsAddress } from 'wagmi';
 import { BaseName } from '@coinbase/onchainkit/identity';
-import { isBasename } from 'apps/web/src/utils/usernames';
+import { isBasename, isEnsName } from 'apps/web/src/utils/usernames';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
@@ -12,6 +12,7 @@ import { truncateMiddle } from 'libs/base-ui/utils/string';
 import Link from 'next/link';
 import Hint from 'apps/web/src/components/Hint';
 import Fieldset from 'apps/web/src/components/Fieldset';
+import { mainnet } from 'viem/chains';
 
 type SearchAddressInputProps = {
   onChange: (value: string) => void;
@@ -22,42 +23,54 @@ export default function SearchAddressInput({ onChange }: SearchAddressInputProps
   /* 1. User enters an address */
   const valueIsAddress = isAddress(value);
 
-  // Try to resolve on base
-  const { data: basenameName, isLoading: basenameNameIsLoading } = useBaseEnsName({
+  /* Resolve name */
+  const { data: username, isLoading: usernameIsLoading } = useBaseEnsName({
     address: value as Address,
   });
 
   /* 2. User enters an Basename */
   const validBasename = isBasename(value);
+
   const { basenameChain } = useBasenameChain(value as BaseName);
 
   const { data: basenameAddress, isLoading: basenameAddressIsLoading } = useEnsAddress({
     name: value,
     universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
+    chainId: basenameChain.id,
     query: {
       enabled: validBasename,
       retry: false,
     },
   });
 
-  /* 3. TODO: User enters a ENS name ? can we even do this cross-chain? */
+  /* 3. User enters an ENS name */
+  const validEnsName = isEnsName(value);
+  const { data: ensAddress, isLoading: ensAddressIsLoading } = useEnsAddress({
+    name: value,
+    chainId: mainnet.id,
+    query: {
+      enabled: validEnsName,
+      retry: false,
+    },
+  });
 
   /* 4. Format and display a block explorer link accordingly */
-  const showName = valueIsAddress && !!basenameName;
-  const showAddress = validBasename && !!basenameAddress;
-  const showValueAddress = valueIsAddress && !basenameAddress && !basenameName;
 
+  // Value is an address that resolves to a name (ens/basename)
+  const showUsername = valueIsAddress && !!username;
+
+  // Explorer url & name
   const baseBlockExplorerUrl = basenameChain.blockExplorers?.default.url;
   const baseBlockExplorerName = basenameChain.blockExplorers?.default.name;
 
-  const showExplorerLink =
-    baseBlockExplorerUrl && baseBlockExplorerName && (showName || showAddress || showValueAddress);
+  // Final address
+  const finalAddress = basenameAddress ?? ensAddress ?? value;
+  const finalAddressIsValid = isAddress(finalAddress);
 
-  const finalAddress = basenameAddress ?? value;
+  // Explorer link with valid address
+  const explorerLink = finalAddressIsValid && `${baseBlockExplorerUrl}/address/${finalAddress}`;
 
-  const explorerLink = `${baseBlockExplorerUrl}/address/${basenameAddress ?? value}`;
-
-  const isLoading = basenameNameIsLoading || basenameAddressIsLoading;
+  const isLoading = usernameIsLoading || basenameAddressIsLoading || ensAddressIsLoading;
 
   const onInputChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
@@ -74,12 +87,12 @@ export default function SearchAddressInput({ onChange }: SearchAddressInputProps
         value={value}
         onChange={onInputChange}
         className="w-full flex-1 rounded-xl border border-gray-40/20 p-4 text-black"
-        placeholder="Search by Basename or wallet address"
+        placeholder="Search by Basename, ENS name or wallet address"
       />
       <p>
         {isLoading ? (
           <Icon name="spinner" color="currentColor" />
-        ) : showExplorerLink ? (
+        ) : explorerLink ? (
           <Hint>
             <Link
               href={explorerLink}
@@ -87,16 +100,15 @@ export default function SearchAddressInput({ onChange }: SearchAddressInputProps
               className="flex items-center gap-2 underline underline-offset-2"
             >
               <p>
-                View {showName && <strong>{basenameName}</strong>}
-                {showAddress && <strong>{truncateMiddle(basenameAddress, 6, 4)}</strong>}
-                {showValueAddress && <strong>{truncateMiddle(value, 6, 4)}</strong>} on{' '}
+                View {showUsername && <strong>{username}</strong>}
+                {finalAddress && <strong>{truncateMiddle(finalAddress, 6, 4)}</strong>}{' '}
                 {baseBlockExplorerName}
               </p>
               <Icon name="external-link" color="currentColor" height="0.8rem" width="0.8rem" />
             </Link>
           </Hint>
         ) : (
-          <Hint>Enter a valid Basename or ETH address</Hint>
+          <Hint>Enter a valid Basename, ENS name or ETH address</Hint>
         )}
       </p>
     </Fieldset>
