@@ -15,6 +15,8 @@ import {
 import WalletIdentity from 'apps/web/src/components/WalletIdentity';
 import BasenameIdentity from 'apps/web/src/components/BasenameIdentity';
 import { OwnershipTransactionState } from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/OwnershipTransactionState';
+import TransactionLink from 'apps/web/src/components/TransactionLink';
+import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 
 const ownershipStepsTitleForDisplay = {
   [OwnershipSteps.Search]: 'Send name',
@@ -44,7 +46,10 @@ export default function UsernameProfileTransferOwnershipModal({
     setRecipientAddress,
     ownershipSettings,
     batchTransactionsEnabled,
+    ownershipTransactionHash,
   } = useProfileTransferOwnership();
+
+  const { basenameChain } = useBasenameChain(profileUsername);
 
   // States
   const isValidRecipientAddress = isAddress(recipientAddress);
@@ -176,12 +181,22 @@ export default function UsernameProfileTransferOwnershipModal({
       {currentOwnershipStep === OwnershipSteps.Success && (
         <div className="mt-2 flex flex-col gap-4">
           <div className="mx-auto mb-8 flex h-[8rem] w-[8rem] items-center justify-center rounded-full bg-blue-500 text-white">
-            <Icon name="checkmark" color="currentColor" width="2rem" height="2rem" />
+            <Icon name="checkmark" color="currentColor" width="3rem" height="3rem" />
           </div>
           <div className="text-center">
             <p>
-              <strong>{profileUsername}</strong> has been sent to {recipientAddress}
+              <strong>{profileUsername}</strong> has been sent to{' '}
+              <strong>{recipientAddress}</strong>
             </p>
+            {ownershipTransactionHash && (
+              <p className="mt-4">
+                View transaction on{' '}
+                <TransactionLink
+                  transactionHash={ownershipTransactionHash}
+                  chainId={basenameChain.id}
+                />
+              </p>
+            )}
           </div>
         </div>
       )}

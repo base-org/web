@@ -193,6 +193,7 @@ export default function useWriteContractsWithLogs({
     batchCallTransactionReceiptHash,
     batchCallsStatus,
     transactionReceipt,
+    batchCallTransactionHash: transactionReceipt?.transactionHash,
     batchCallsIsLoading,
     batchCallsIsSuccess,
     batchCallsIsError,

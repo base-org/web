@@ -18,7 +18,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { ContractFunctionParameters, isAddress, namehash } from 'viem';
+import { ContractFunctionParameters, Hash, isAddress, namehash } from 'viem';
 import { useAccount } from 'wagmi';
 import L2Resolver from 'apps/web/src/abis/L2Resolver';
 import BaseRegistrarAbi from 'apps/web/src/abis/BaseRegistrarAbi';
@@ -61,6 +61,7 @@ export type ProfileTransferOwnershipContextProps = {
   batchTransactionsEnabled: boolean;
   batchCallsStatus: BatchCallsStatus;
   batchCallsIsLoading: boolean;
+  ownershipTransactionHash?: Hash;
 };
 
 export const ProfileTransferOwnershipContext = createContext<ProfileTransferOwnershipContextProps>({
@@ -73,6 +74,7 @@ export const ProfileTransferOwnershipContext = createContext<ProfileTransferOwne
   batchTransactionsEnabled: false,
   batchCallsStatus: BatchCallsStatus.Idle,
   batchCallsIsLoading: false,
+  ownershipTransactionHash: undefined,
 });
 
 export default function ProfileTransferOwnershipProvider({
@@ -89,13 +91,6 @@ export default function ProfileTransferOwnershipProvider({
   const [currentOwnershipStep, setCurrentOwnershipStep] = useState<OwnershipSteps>(
     OwnershipSteps.Search,
   );
-
-  // Send calls - Experimental
-  const { initiateBatchCalls, batchCallsEnabled, batchCallsStatus, batchCallsIsLoading } =
-    useWriteContractsWithLogs({
-      chain: basenameChain,
-      eventName: 'basename_send_calls_transfer_ownership',
-    });
 
   // TODO: Validate that it's not a contract recipient
   const isValidRecipientAddress = isAddress(recipientAddress);
@@ -143,10 +138,23 @@ export default function ProfileTransferOwnershipProvider({
     } as ContractFunctionParameters;
   }, [basenameChain.id]);
 
+  // Bundled transaction - Experimental
+  const {
+    initiateBatchCalls,
+    batchCallsEnabled,
+    batchCallsStatus,
+    batchCallsIsLoading,
+    batchCallTransactionHash,
+  } = useWriteContractsWithLogs({
+    chain: basenameChain,
+    eventName: 'basename_send_calls_transfer_ownership',
+  });
+
   // The 4 transactions we got to track
   const {
     initiateTransaction: initiateSafeTransferFrom,
     transactionStatus: safeTransferFromStatus,
+    transactionHash: safeTransferFromTransactionHash,
   } = useWriteContractWithReceipt({
     chain: basenameChain,
     eventName: 'basename_safe_transfer_from',
@@ -339,6 +347,9 @@ export default function ProfileTransferOwnershipProvider({
     }
   }, [batchCallsStatus]);
 
+  // Either the batch call hash or the single NFT transaction hash
+  const ownershipTransactionHash = batchCallTransactionHash ?? safeTransferFromTransactionHash;
+
   const value = useMemo(() => {
     return {
       ownershipSettings,
@@ -350,15 +361,17 @@ export default function ProfileTransferOwnershipProvider({
       setCurrentOwnershipStep,
       recipientAddress,
       setRecipientAddress,
+      ownershipTransactionHash,
     };
   }, [
+    ownershipSettings,
+    isSuccess,
     batchCallsEnabled,
     batchCallsStatus,
     batchCallsIsLoading,
     currentOwnershipStep,
-    isSuccess,
-    ownershipSettings,
     recipientAddress,
+    ownershipTransactionHash,
   ]);
 
   return (
