@@ -1,31 +1,25 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { Survey } from '../../apis/frameSurveys';
-import { ButtonWithSurveyResponse } from '../Button/ButtonWithSurveyResponse';
+import { ButtonWithHandler } from '../Button/ButtonWithHandler';
+import handleSurveyResponse from './handleSurveyResponse';
 
 type SurveyContentProps = {
   surveyData: Survey;
 };
 
 export default function SurveyContent({ surveyData }: SurveyContentProps) {
+  const [userResponseSubmitted, setUserResponseSubmitted] = useState<boolean>(false);
   const { question, answers } = surveyData;
 
   const createHandleClick = useCallback(
     (questionId: number, answerId: number, userAddress: string, userId: string) => () => {
       const handleClick = async () => {
-        const userResponseData = {
-          questionId,
-          answerId,
-          userAddress,
-          userId,
-        };
-
-        const fetchConfig = {
-          method: 'POST',
-          body: JSON.stringify(userResponseData),
-        };
-        await fetch('/api/surveys/postUserResponse', fetchConfig);
+        const response = await handleSurveyResponse(questionId, answerId, userAddress, userId);
+        if (response.status === 200) {
+          setUserResponseSubmitted(true);
+        }
       };
 
       handleClick().catch((error) => {
@@ -37,19 +31,24 @@ export default function SurveyContent({ surveyData }: SurveyContentProps) {
 
   return (
     <div className="mt-[-96px] bg-blue-60">
-      <div className="mt-[96px] h-screen flex flex-col items-center">
-        <h1 className='text-3xl text-white my-10'>Question: {question.description ?? ''}</h1>
-        <div className='grid grid-cols-2 max-w-[450px] gap-4'>
-          {answers.map((answer) => (
-            <div key={answer.id}>
-              <ButtonWithSurveyResponse
-                text={answer.description}
-                clickHandler={createHandleClick(question.id, answer.id, 'useraddress', 'user_id')}
-                fullWidth
-              />
-            </div>
-          ))}
-        </div>
+      <div className="mt-[96px] flex h-screen flex-col items-center">
+        <h1 className="my-10 text-3xl text-white">Question: {question.description ?? ''}</h1>
+        {userResponseSubmitted ? (
+          <div className="text-white">Thank you for your response.</div>
+        ) : (
+          <div className="grid max-w-[450px] grid-cols-2 gap-4">
+            {answers.map((answer) => (
+              <div key={answer.id}>
+                <ButtonWithHandler
+                  clickHandler={createHandleClick(question.id, answer.id, 'useraddress', 'user_id')}
+                  fullWidth
+                >
+                  {answer.description}
+                </ButtonWithHandler>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
