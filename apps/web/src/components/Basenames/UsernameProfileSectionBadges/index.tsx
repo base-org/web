@@ -5,9 +5,10 @@ import {
   BadgeNames,
 } from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/Badges';
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
-import { useBaseGuild } from 'apps/web/src/hooks/useBaseGuild';
-import { useCoinbaseVerification } from 'apps/web/src/hooks/useCoinbaseVerifications';
-import { useTalentProtocol } from 'apps/web/src/hooks/useTalentProtocol';
+import { useBaseGuild } from './hooks/useBaseGuild';
+import { useCoinbaseVerification } from './hooks/useCoinbaseVerifications';
+import { useTalentProtocol } from './hooks/useTalentProtocol';
+import useBuildathonParticipant from './hooks/useBuildathonParticipant';
 import { useMemo } from 'react';
 
 function BadgesLoop({
@@ -68,10 +69,11 @@ function BuilderSection() {
   const { profileAddress, currentWalletIsOwner } = useUsernameProfile();
   const { badges, empty } = useBaseGuild(profileAddress);
   const talentScore = useTalentProtocol(profileAddress);
+  const buildathonParticipant = useBuildathonParticipant(profileAddress);
 
   const combinedBadges = useMemo(
-    () => ({ ...badges, TALENT_SCORE: talentScore }),
-    [badges, talentScore],
+    () => ({ ...badges, TALENT_SCORE: talentScore, BUILDATHON_PARTICIPANT: buildathonParticipant }),
+    [badges, talentScore, buildathonParticipant],
   );
   const combinedEmpty = empty && !talentScore;
 
