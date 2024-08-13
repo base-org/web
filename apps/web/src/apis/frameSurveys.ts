@@ -51,12 +51,18 @@ type UserResponseTable = {
   created_at: ColumnType<Date, string | undefined, never>;
 };
 
-export type UserResponseFromDb = {
+type UserResponseFromDb = {
   user_id: string;
   user_address: string;
   question_id: number;
   answer_id: number;
 };
+
+type UserResponseReturnValueType = {
+  status: number;
+  message: string;
+  userResponse?: UserResponseFromDb;
+}
 
 const dialect = new PostgresDialect({
   pool: new Pool({
@@ -141,7 +147,7 @@ export async function postUserResponse(
   answerId: number,
   userAddress: string,
   userId: string,
-) {
+): Promise<UserResponseReturnValueType> {
   const survey = await getSurvey(questionId);
   const surveyAnswerIds = survey?.answers?.map((answer) => answer.id) ?? [];
 
