@@ -35,3 +35,10 @@ export type DiscountTypes = {
 export type PreviousClaims = {
   [key in DiscountType]?: PreviousClaim;
 };
+
+export type MerkleTreeProofResponse = {
+  discountValidatorAddress: Address;
+  address: Address;
+  namespace: string;
+  proofs: `0x${string}`[];
+};

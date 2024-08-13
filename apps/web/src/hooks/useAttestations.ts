@@ -1,4 +1,3 @@
-import { CBIDProofResponse } from 'apps/web/pages/api/proofs/cbid';
 import { EarlyAccessProofResponse } from 'apps/web/pages/api/proofs/earlyAccess';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
 import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
@@ -10,7 +9,7 @@ import { Address, ReadContractErrorType, encodeAbiParameters } from 'viem';
 import { useAccount, useReadContract } from 'wagmi';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useErrors } from 'apps/web/contexts/Errors';
-import { BNSProofResponse } from 'apps/web/pages/api/proofs/bns';
+import { MerkleTreeProofResponse } from 'apps/web/src/utils/proofs';
 
 export type AttestationData = {
   discountValidatorAddress: Address;
@@ -25,7 +24,7 @@ type AttestationHookReturns = {
 export function useCheckCBIDAttestations(): AttestationHookReturns {
   const { logError } = useErrors();
   const { address } = useAccount();
-  const [cBIDProofResponse, setCBIDProofResponse] = useState<CBIDProofResponse | null>(null);
+  const [cBIDProofResponse, setCBIDProofResponse] = useState<MerkleTreeProofResponse | null>(null);
   const { basenameChain } = useBasenameChain();
   useEffect(() => {
     async function checkCBIDAttestations(a: string) {
@@ -35,7 +34,7 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
         params.append('chain', basenameChain.id.toString());
         const response = await fetch(`/api/proofs/cbid?${params}`);
         if (response.ok) {
-          const result = (await response.json()) as CBIDProofResponse;
+          const result = (await response.json()) as MerkleTreeProofResponse;
           setCBIDProofResponse(result);
         }
       } catch (error) {
@@ -292,7 +291,7 @@ export function useCheckEAAttestations(): AttestationHookReturns {
 // merkle tree discount calls api endpoint
 export function useBNSAttestations() {
   const { address } = useAccount();
-  const [proofResponse, setProofResponse] = useState<BNSProofResponse | null>(null);
+  const [proofResponse, setProofResponse] = useState<MerkleTreeProofResponse | null>(null);
   const { basenameChain } = useBasenameChain();
   const { logError } = useErrors();
 
@@ -303,7 +302,7 @@ export function useBNSAttestations() {
       params.append('chain', basenameChain.id.toString());
       const response = await fetch(`/api/proofs/bns?${params}`);
       if (response.ok) {
-        const result = (await response.json()) as BNSProofResponse;
+        const result = (await response.json()) as MerkleTreeProofResponse;
         setProofResponse(result);
       }
     }

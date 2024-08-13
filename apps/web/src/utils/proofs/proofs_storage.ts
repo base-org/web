@@ -9,6 +9,7 @@ export enum ProofTableNamespace {
   Usernames = 'usernames',
   UsernamesEarlyAccess = 'usernames_early_access',
   BNSDiscount = 'basenames_bns_discount',
+  BaseEthHolders = 'basenames_base_eth_holders_discount',
 }
 
 type ProofsTable = {
