@@ -1,0 +1,187 @@
+import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { useErrors } from 'apps/web/contexts/Errors';
+import { decodeRawLog, USER_OPERATION_EVENT_LOG_NAME } from 'apps/web/src/utils/transactionLogs';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
+import { useCallback, useEffect, useState } from 'react';
+import { Chain } from 'viem';
+import { SendCallsParameters } from 'viem/experimental';
+import { useAccount, useSwitchChain, useWaitForTransactionReceipt } from 'wagmi';
+import { useCallsStatus, useSendCalls } from 'wagmi/experimental';
+
+/*
+  A hook to request and track a wallet write transaction
+
+  Responsabilities:
+
+*/
+
+export enum BatchCallsStatus {
+  // Wallet request
+  Idle = 'idle',
+  Initiated = 'initiated',
+  Approved = 'approved',
+  Canceled = 'canceled',
+
+  // Top transaction
+  Processing = 'processing',
+  Reverted = 'reverted',
+
+  // UserOperationEvent and top transaction are successfull
+  Failed = 'failed',
+  Success = 'success',
+}
+
+export type UseSendCallsWithLogsProps = {
+  chain: Chain;
+  eventName: string;
+};
+
+export default function useSendCallsWithLogs({ chain, eventName }: UseSendCallsWithLogsProps) {
+  // Errors & Analytics
+  const { logEventWithContext } = useAnalytics();
+  const { logError } = useErrors();
+  const { connector } = useAccount();
+  const isCoinbaseSmartWallet = connector?.id === 'coinbaseWalletSDK';
+
+  const batchCallsEnabled = isCoinbaseSmartWallet;
+
+  const { chain: connectedChain } = useAccount();
+
+  const [batchCallsStatus, setBatchCallsStatus] = useState<BatchCallsStatus>(BatchCallsStatus.Idle);
+
+  // Experimental: Send a batch call
+  const {
+    sendCallsAsync,
+    data: sendCallsId,
+    isPending: sendCallsIsPending,
+    isSuccess: sendCallsIsSuccess,
+    isError: sendCallsIsError,
+    error: sendCallsError,
+  } = useSendCalls();
+
+  // Experimental: Track batch call status
+  const { data: sendCallsResult, isPending: sendCallsResultIsPending } = useCallsStatus({
+    // @ts-expect-error: query is disabled without a sendCallsId
+    id: sendCallsId,
+    query: {
+      enabled: !!sendCallsId && batchCallsEnabled,
+      refetchInterval: 5000, // todo: smarter
+    },
+  });
+
+  // Transaction receipt (without .status)
+  const batchCallTransactionReceipts = sendCallsResult?.receipts ?? [];
+  const batchCallTransactionReceipt = batchCallTransactionReceipts[0];
+  const batchCallTransactionReceiptHash = batchCallTransactionReceipt?.transactionHash;
+
+  // Wait for transaction receipt (with correct .status)
+  const {
+    data: transactionReceipt,
+    isFetching: transactionReceiptIsFetching,
+    isSuccess: transactionReceiptIsSuccess,
+    isError: transactionReceiptIsError,
+    error: transactionReceiptError,
+  } = useWaitForTransactionReceipt({
+    hash: batchCallTransactionReceiptHash,
+    chainId: chain.id,
+    query: {
+      enabled: !!batchCallTransactionReceiptHash,
+    },
+  });
+
+  console.log({ transactionReceipt });
+
+  const { switchChainAsync } = useSwitchChain();
+
+  const initiateBatchCalls = useCallback(
+    async (calls: SendCallsParameters) => {
+      if (!isCoinbaseSmartWallet) return Promise.resolve("Wallet doesn't support sendCalls");
+
+      if (!connectedChain) return;
+      if (connectedChain.id !== chain.id) {
+        await switchChainAsync({ chainId: chain.id });
+      }
+      try {
+        setBatchCallsStatus(BatchCallsStatus.Initiated);
+        logEventWithContext(`${eventName}_transaction_initiated`, ActionType.change);
+        await sendCallsAsync(calls);
+
+        logEventWithContext(`${eventName}_transaction_approved`, ActionType.change);
+        setBatchCallsStatus(BatchCallsStatus.Approved);
+      } catch (error) {
+        logError(error, `${eventName}_transaction_canceled`);
+        setBatchCallsStatus(BatchCallsStatus.Canceled);
+      }
+    },
+    [
+      isCoinbaseSmartWallet,
+      connectedChain,
+      chain.id,
+      switchChainAsync,
+      logEventWithContext,
+      eventName,
+      sendCallsAsync,
+      logError,
+    ],
+  );
+
+  // Track processing onchain
+  useEffect(() => {
+    if (transactionReceiptIsFetching) {
+      setBatchCallsStatus(BatchCallsStatus.Processing);
+      logEventWithContext(`${eventName}_transaction_processing`, ActionType.change);
+    }
+  }, [eventName, logEventWithContext, transactionReceiptIsFetching]);
+
+  // Track onchain success or reverted state
+  useEffect(() => {
+    // Transaction is successful
+    if (transactionReceipt?.status === 'success' && sendCallsResult?.receipts?.length) {
+      const logs = transactionReceipt.logs;
+      const decodedUserOperationEventLog = logs
+        .map(decodeRawLog)
+        .find((decodedLog) => decodedLog?.eventName === USER_OPERATION_EVENT_LOG_NAME);
+
+      if (decodedUserOperationEventLog) {
+        logEventWithContext(`${eventName}_transaction_success`, ActionType.change);
+        setBatchCallsStatus(
+          decodedUserOperationEventLog.args.success
+            ? BatchCallsStatus.Success
+            : BatchCallsStatus.Failed,
+        );
+      }
+
+      return;
+    }
+
+    if (transactionReceipt?.status === 'reverted') {
+      logEventWithContext(`${eventName}_transaction_reverted`, ActionType.change);
+      setBatchCallsStatus(BatchCallsStatus.Reverted);
+      return;
+    }
+  }, [
+    eventName,
+    logEventWithContext,
+    sendCallsResult?.receipts?.length,
+    transactionReceipt,
+    transactionReceiptIsFetching,
+  ]);
+
+  const batchCallsIsLoading =
+    sendCallsIsPending || transactionReceiptIsFetching || sendCallsResultIsPending;
+  const batchCallsIsSuccess = sendCallsIsSuccess && transactionReceiptIsSuccess;
+  const batchCallsIsError = sendCallsIsError || transactionReceiptIsError;
+  const batchCallsError = sendCallsError ?? transactionReceiptError;
+
+  return {
+    initiateBatchCalls,
+    batchCallTransactionReceiptHash,
+    batchCallsStatus,
+    transactionReceipt,
+    batchCallsIsLoading,
+    batchCallsIsSuccess,
+    batchCallsIsError,
+    batchCallsError,
+    batchCallsEnabled,
+  };
+}

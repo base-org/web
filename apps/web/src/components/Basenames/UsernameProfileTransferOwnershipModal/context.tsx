@@ -18,7 +18,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { isAddress, namehash } from 'viem';
+import { encodeFunctionData, isAddress, namehash } from 'viem';
 import { useAccount } from 'wagmi';
 import L2Resolver from 'apps/web/src/abis/L2Resolver';
 import BaseRegistrarAbi from 'apps/web/src/abis/BaseRegistrarAbi';
@@ -28,6 +28,7 @@ import {
   USERNAME_L2_RESOLVER_ADDRESSES,
   USERNAME_REVERSE_REGISTRAR_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
+import useSendCallsWithLogs, { BatchCallsStatus } from 'apps/web/src/hooks/useSendCallsWithLogs';
 
 type ProfileTransferOwnershipProviderProps = {
   children?: ReactNode;
@@ -55,6 +56,8 @@ export type ProfileTransferOwnershipContextProps = {
   setCurrentOwnershipStep: Dispatch<SetStateAction<OwnershipSteps>>;
   recipientAddress: string;
   setRecipientAddress: Dispatch<SetStateAction<string>>;
+  batchTransactionsEnabled: boolean;
+  batchCallsStatus: BatchCallsStatus;
 };
 
 export const ProfileTransferOwnershipContext = createContext<ProfileTransferOwnershipContextProps>({
@@ -64,6 +67,8 @@ export const ProfileTransferOwnershipContext = createContext<ProfileTransferOwne
   setCurrentOwnershipStep: () => undefined,
   recipientAddress: '',
   setRecipientAddress: () => undefined,
+  batchTransactionsEnabled: false,
+  batchCallsStatus: BatchCallsStatus.Idle,
 });
 
 export default function ProfileTransferOwnershipProvider({
@@ -81,8 +86,13 @@ export default function ProfileTransferOwnershipProvider({
     OwnershipSteps.Search,
   );
 
-  // Values
-  // TODO: VAlidate that it's not a contract
+  // Send calls - Experimental
+  const { initiateBatchCalls, batchCallsEnabled, batchCallsStatus } = useSendCallsWithLogs({
+    chain: basenameChain,
+    eventName: 'basename_send_calls_transfer_ownership',
+  });
+
+  // TODO: Validate that it's not a contract recipient
   const isValidRecipientAddress = isAddress(recipientAddress);
   const tokenId = getTokenIdFromBasename(profileUsername);
 
@@ -112,6 +122,61 @@ export default function ProfileTransferOwnershipProvider({
       chain: basenameChain,
       eventName: 'basename_set_name',
     });
+
+  const updateViaBatchCalls = useCallback(async () => {
+    if (!isValidRecipientAddress) return;
+    if (!address) return;
+    if (!basenameChain) return;
+    if (!batchCallsEnabled) return;
+
+    await initiateBatchCalls({
+      calls: [
+        {
+          to: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
+          data: encodeFunctionData({
+            abi: L2Resolver,
+            args: [namehash(profileUsername), recipientAddress],
+            functionName: 'setAddr',
+          }),
+        },
+        {
+          to: USERNAME_BASE_REGISTRAR_ADDRESSES[basenameChain.id],
+          data: encodeFunctionData({
+            abi: BaseRegistrarAbi,
+            args: [tokenId, recipientAddress],
+            functionName: 'reclaim',
+          }),
+        },
+        {
+          to: USERNAME_BASE_REGISTRAR_ADDRESSES[basenameChain.id],
+          data: encodeFunctionData({
+            abi: BaseRegistrarAbi,
+            args: [address, recipientAddress, tokenId],
+            functionName: 'safeTransferFrom',
+          }),
+        },
+        {
+          to: USERNAME_REVERSE_REGISTRAR_ADDRESSES[basenameChain.id],
+          data: encodeFunctionData({
+            abi: ReverseRegistrarAbi,
+            args: [''],
+            functionName: 'setName',
+          }),
+        },
+      ],
+      account: address,
+      chain: basenameChain,
+    });
+  }, [
+    address,
+    basenameChain,
+    batchCallsEnabled,
+    initiateBatchCalls,
+    isValidRecipientAddress,
+    profileUsername,
+    recipientAddress,
+    tokenId,
+  ]);
 
   // The 4 Function with safety checks
   const updateSetAddr = useCallback(async () => {
@@ -178,28 +243,28 @@ export default function ProfileTransferOwnershipProvider({
       {
         id: 'setAddr',
         name: 'Address record',
-        description: 'This Basename will resolve to the new address.',
+        description: 'Your Basename will resolve to this address.',
         status: setAddrStatus,
         contractFunction: updateSetAddr,
       },
       {
         id: 'setName',
         name: 'Name record',
-        description: 'This Basename will no longer be displayed with your current address.',
+        description: 'Your Basename will no longer be displayed with your current address.',
         status: setNameStatus,
         contractFunction: updateSetName,
       },
       {
         id: 'reclaim',
         name: 'Profile editing',
-        description: 'Transfers profile editing rights for this Basename to the new address.',
+        description: 'Transfer editing rights to this address.',
         status: reclaimStatus,
         contractFunction: updateReclaim,
       },
       {
         id: 'safeTransferFrom',
         name: 'Token ownership',
-        description: 'Transfers the token for this Basename to the new address.',
+        description: 'Transfer the Basename token to this address.',
         status: safeTransferFromStatus,
         contractFunction: updateSafeTransferFrom,
       },
@@ -230,7 +295,17 @@ export default function ProfileTransferOwnershipProvider({
     )
       return;
 
-    // [Play: Johnny Cash - Hurt]
+    // Smart wallet - we can batch calls
+    if (batchCallsEnabled) {
+      updateViaBatchCalls()
+        .then()
+        .catch((error) => {
+          setCurrentOwnershipStep(OwnershipSteps.OwnershipOverview);
+          logError(error, 'Failed to update via sendCalls');
+        });
+
+      return;
+    }
 
     // For each ownership setting / wallet transaction
     for (const ownershipSetting of ownershipSettings) {
@@ -257,14 +332,17 @@ export default function ProfileTransferOwnershipProvider({
         break;
       }
     }
-  }, [currentOwnershipStep, logError, ownershipSettings]);
+  }, [batchCallsEnabled, currentOwnershipStep, logError, ownershipSettings, updateViaBatchCalls]);
 
   const isSuccess = useMemo(
     () =>
+      // Smart wallet: One transaction
+      batchCallsStatus === BatchCallsStatus.Success ||
+      // Other wallet: 4 Transactions are successfull
       ownershipSettings.every(
         (ownershipSetting) => ownershipSetting.status === WriteTransactionWithReceiptStatus.Success,
       ),
-    [ownershipSettings],
+    [batchCallsStatus, ownershipSettings],
   );
 
   useEffect(() => {
@@ -277,12 +355,21 @@ export default function ProfileTransferOwnershipProvider({
     return {
       ownershipSettings,
       isSuccess,
+      batchTransactionsEnabled: batchCallsEnabled,
+      batchCallsStatus,
       currentOwnershipStep,
       setCurrentOwnershipStep,
       recipientAddress,
       setRecipientAddress,
     };
-  }, [currentOwnershipStep, isSuccess, ownershipSettings, recipientAddress]);
+  }, [
+    batchCallsEnabled,
+    batchCallsStatus,
+    currentOwnershipStep,
+    isSuccess,
+    ownershipSettings,
+    recipientAddress,
+  ]);
 
   return (
     <ProfileTransferOwnershipContext.Provider value={value}>

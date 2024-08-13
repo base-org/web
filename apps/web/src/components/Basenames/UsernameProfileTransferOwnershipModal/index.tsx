@@ -17,9 +17,9 @@ import WalletIdentity from 'apps/web/src/components/WalletIdentity';
 import BasenameIdentity from 'apps/web/src/components/BasenameIdentity';
 
 const ownershipStepsTitleForDisplay = {
-  [OwnershipSteps.Search]: 'Transfer ownership',
-  [OwnershipSteps.OwnershipOverview]: "What you'll be transferring",
-  [OwnershipSteps.WalletRequests]: 'Confirm in wallet',
+  [OwnershipSteps.Search]: 'Send name',
+  [OwnershipSteps.OwnershipOverview]: "You'll be sending",
+  [OwnershipSteps.WalletRequests]: 'Confirm transactions',
   [OwnershipSteps.Success]: '',
 };
 
@@ -42,6 +42,8 @@ export default function UsernameProfileTransferOwnershipModal({
     setCurrentOwnershipStep,
     recipientAddress,
     setRecipientAddress,
+    ownershipSettings,
+    batchTransactionsEnabled,
   } = useProfileTransferOwnership();
 
   // States
@@ -110,7 +112,7 @@ export default function UsernameProfileTransferOwnershipModal({
     >
       {currentOwnershipStep === OwnershipSteps.Search && (
         <div className="mt-2 flex flex-col gap-4">
-          <p>Search for a name or ETH address that you want to transfer to. </p>
+          <p>Enter the ETH address or name you want to send your name to. </p>
           <SearchAddressInput onChange={onChangeSearchAddress} />
           <Button
             disabled={!isValidRecipientAddress}
@@ -126,19 +128,29 @@ export default function UsernameProfileTransferOwnershipModal({
 
       {currentOwnershipStep === OwnershipSteps.OwnershipOverview && (
         <div className="mt-2 flex flex-col gap-4">
-          <p>Transferring token ownership can&apos;t be undone. This will trigger 4 transactions</p>
-          <p>You are sending</p>
           <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
             <BasenameIdentity username={profileUsername} />
           </div>
-          To
+          <h2 className="w-full text-3xl font-bold text-illoblack">To</h2>
           {isValidRecipientAddress && (
             <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
               <WalletIdentity address={recipientAddress} />
             </div>
           )}
-          <p>Transferring ownership cannot be undone. This will trigger 4 transactions:</p>
-          <AllOwnershipTransactionsState />
+          <hr className="mb-4 mt-4 border-t border-gray-40/20" />
+          <p>What you&apos;ll send</p>
+          <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-6">
+            <ul className="flex w-full flex-col gap-4">
+              {ownershipSettings.map((ownershipSetting) => (
+                <li key={ownershipSetting.id} className="flex items-baseline gap-4">
+                  <div className="flex flex-col gap-1">
+                    <span>{ownershipSetting.name}</span>
+                    <p className="text-gray-40">{ownershipSetting.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
           <Button variant={ButtonVariants.Black} fullWidth rounded onClick={onUpdateOwnershipClick}>
             Continue
           </Button>
@@ -146,18 +158,12 @@ export default function UsernameProfileTransferOwnershipModal({
       )}
       {currentOwnershipStep === OwnershipSteps.WalletRequests && (
         <div className="mt-2 flex flex-col gap-4">
-          <p>Use your wallet to confirm the transfers.</p>
-          <p>Sending</p>
-          <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
-            <BasenameIdentity username={profileUsername} />
-          </div>
-          To
-          {isValidRecipientAddress && (
-            <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
-              <WalletIdentity address={recipientAddress} />
-            </div>
+          {batchTransactionsEnabled ? (
+            <p>Confirm the transaction in your wallet to send this name.</p>
+          ) : (
+            <p>You will need to confirm all four transactions in your wallet to send this name. </p>
           )}
-          <p>Use your wallet to confirm the transfers:</p>
+
           <AllOwnershipTransactionsState />
         </div>
       )}

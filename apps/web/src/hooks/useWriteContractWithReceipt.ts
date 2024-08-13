@@ -77,7 +77,6 @@ export default function useWriteContractWithReceipt({
 
   const initiateTransaction = useCallback(
     async (contractParameters: ContractFunctionParameters) => {
-      // TODO Compare current chain / track event
       if (!connectedChain) return;
       if (connectedChain.id !== chain.id) {
         await switchChainAsync({ chainId: chain.id });

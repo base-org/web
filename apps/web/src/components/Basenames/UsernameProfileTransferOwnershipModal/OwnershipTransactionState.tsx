@@ -1,7 +1,11 @@
 import { useErrors } from 'apps/web/contexts/Errors';
-import { OwnershipSettings } from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context';
+import {
+  OwnershipSettings,
+  useProfileTransferOwnership,
+} from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import { BatchCallsStatus } from 'apps/web/src/hooks/useSendCallsWithLogs';
 import { WriteTransactionWithReceiptStatus } from 'apps/web/src/hooks/useWriteContractWithReceipt';
 import { useCallback } from 'react';
 
@@ -12,6 +16,7 @@ export function OwnershipTransactionState({
   ownershipSetting: OwnershipSettings;
 }) {
   const { logError } = useErrors();
+  const { batchTransactionsEnabled, batchCallsStatus } = useProfileTransferOwnership();
 
   const onRetry = useCallback(() => {
     ownershipSetting
@@ -21,6 +26,24 @@ export function OwnershipTransactionState({
         logError(error, 'Failed to retry');
       });
   }, [logError, ownershipSetting]);
+
+  if (
+    batchTransactionsEnabled &&
+    [BatchCallsStatus.Approved, BatchCallsStatus.Processing].includes(batchCallsStatus)
+  ) {
+    return (
+      <>
+        <div>
+          <span className="text-gray-50">
+            <Icon name="spinner" height="1rem" width="1rem" color="currentColor" />
+          </span>
+        </div>
+        <div className="flex flex-col gap-1">
+          <strong>{ownershipSetting.name}</strong>
+        </div>
+      </>
+    );
+  }
 
   const isFailed =
     ownershipSetting.status === WriteTransactionWithReceiptStatus.Canceled ||
@@ -58,7 +81,6 @@ export function OwnershipTransactionState({
       </div>
       <div className="flex flex-col gap-1">
         <strong>{ownershipSetting.name}</strong>
-        <p>{ownershipSetting.description}</p>
         {isFailed && (
           <div>
             <Button
