@@ -28,7 +28,7 @@ export default function GetConnectedButton({
   }, [logEventWithContext, eventName]);
 
   return (
-    <div className="rounded-full border border-white p-5">
+    <div className="h-full w-full rounded-full border border-white p-5 lg:h-[90px] lg:w-[90px]">
       <Link
         href={href}
         title={title}
@@ -37,7 +37,7 @@ export default function GetConnectedButton({
         rel="noreferrer noopener"
         onClick={handleClick}
       >
-        <Icon name={iconName} width="48" height="48" />
+        <Icon name={iconName} width="100%" height="100%" />
       </Link>
     </div>
   );
