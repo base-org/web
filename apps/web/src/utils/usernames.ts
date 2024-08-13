@@ -6,11 +6,13 @@ import {
   namehash,
   sha256,
   ContractFunctionParameters,
+  labelhash,
 } from 'viem';
 import { normalize } from 'viem/ens';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import EARegistrarControllerAbi from 'apps/web/src/abis/EARegistrarControllerAbi';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
+import RegistryAbi from 'apps/web/src/abis/RegistryAbi';
 import profilePictures1 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/1.svg';
 import profilePictures2 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/2.svg';
 import profilePictures3 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/3.svg';
@@ -22,6 +24,7 @@ import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import { base, baseSepolia, mainnet } from 'viem/chains';
 import { BaseName } from '@coinbase/onchainkit/identity';
 import {
+  USERNAME_BASE_REGISTRY_ADDRESSES,
   USERNAME_EA_REGISTRAR_CONTROLLER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
@@ -368,6 +371,36 @@ export async function formatDefaultUsername(username: BaseName) {
   return username;
 }
 
+export const getTokenIdFromBasename = (username: BaseName) => {
+  const usernameWithoutDomain = username
+    .replace(`.${USERNAME_DOMAINS[base.id]}`, '')
+    .replace(`.${USERNAME_DOMAINS[baseSepolia.id]}`, '');
+
+  return BigInt(labelhash(usernameWithoutDomain));
+};
+
+export const isBasename = (username: string) => {
+  if (username.endsWith(`.${USERNAME_DOMAINS[baseSepolia.id]}`)) {
+    return true;
+  }
+
+  if (username.endsWith(`.${USERNAME_DOMAINS[base.id]}`)) {
+    return true;
+  }
+  return false;
+};
+
+export const isEnsName = (username: string) => {
+  if (username.endsWith(`.eth`)) {
+    return true;
+  }
+
+  if (username.endsWith(`.box`)) {
+    return true;
+  }
+  return false;
+};
+
 export const getBasenameAvatarUrl = (source: string) => {
   if (!source) return;
 
@@ -456,6 +489,8 @@ export function validateBasenameAvatarUrl(source: string): ValidationResult {
 */
 
 // Get username `addr`
+// Get username token `owner`
+
 export async function getBasenameAddress(username: BaseName) {
   const chain = getChainForBasename(username);
 
@@ -466,6 +501,28 @@ export async function getBasenameAddress(username: BaseName) {
       universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
     });
     return ensAddress;
+  } catch (error) {}
+}
+
+// Get username token `owner`
+export function buildBasenameOwnerContract(username: BaseName): ContractFunctionParameters {
+  const chain = getChainForBasename(username);
+  return {
+    abi: RegistryAbi,
+    address: USERNAME_BASE_REGISTRY_ADDRESSES[chain.id],
+    args: [namehash(username)],
+    functionName: 'owner',
+  };
+}
+
+export async function getBasenameOwner(username: BaseName) {
+  const chain = getChainForBasename(username);
+
+  try {
+    const client = getBasenamePublicClient(chain.id);
+    const owner = await client.readContract(buildBasenameOwnerContract(username));
+
+    return owner;
   } catch (error) {}
 }
 

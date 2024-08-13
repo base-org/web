@@ -13,9 +13,10 @@ import UsernameProfileSettingsMenu from 'apps/web/src/components/Basenames/Usern
 import UsernameProfileSettingsName from 'apps/web/src/components/Basenames/UsernameProfileSettingsName';
 import UsernameProfileSettingsManageProfile from 'apps/web/src/components/Basenames/UsernameProfileSettingsManageProfile';
 import UsernameProfileSettingsAvatar from 'apps/web/src/components/Basenames/UsernameProfileSettingsAvatar';
+import UsernameProfileSettingsOwnership from 'apps/web/src/components/Basenames/UsernameProfileSettingsOwnership';
 
 export default function UsernameProfileSettings() {
-  const { currentWalletIsOwner, setShowProfileSettings } = useUsernameProfile();
+  const { currentWalletIsProfileOwner, setShowProfileSettings } = useUsernameProfile();
 
   const { currentSettingsTab } = useUsernameProfileSettings();
   const { logEventWithContext } = useAnalytics();
@@ -26,7 +27,7 @@ export default function UsernameProfileSettings() {
     setShowProfileSettings(false);
   }, [setShowProfileSettings]);
 
-  return !currentWalletIsOwner ? (
+  return !currentWalletIsProfileOwner ? (
     <p>You don&apos;t have the permission to edit this profile</p>
   ) : (
     <div className="items-left mx-auto flex w-full max-w-[60rem] flex-col">
@@ -58,6 +59,8 @@ export default function UsernameProfileSettings() {
           {currentSettingsTab === SettingsTabs.ManageProfile && (
             <UsernameProfileSettingsManageProfile />
           )}
+
+          {currentSettingsTab === SettingsTabs.Ownership && <UsernameProfileSettingsOwnership />}
         </div>
       </div>
     </div>

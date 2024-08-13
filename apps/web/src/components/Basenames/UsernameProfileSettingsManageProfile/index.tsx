@@ -17,7 +17,7 @@ import {
 } from 'apps/web/src/utils/usernames';
 
 export default function UsernameProfileSettingsManageProfile() {
-  const { profileUsername, profileAddress, currentWalletIsOwner, setShowProfileSettings } =
+  const { profileUsername, profileAddress, currentWalletIsProfileOwner, setShowProfileSettings } =
     useUsernameProfile();
 
   const { logError } = useErrors();
@@ -43,12 +43,12 @@ export default function UsernameProfileSettingsManageProfile() {
   const onClickSave = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
-      if (!currentWalletIsOwner) return false;
+      if (!currentWalletIsProfileOwner) return false;
       writeTextRecords().catch((error) => {
         logError(error, 'Failed to write text records');
       });
     },
-    [currentWalletIsOwner, writeTextRecords, logError],
+    [currentWalletIsProfileOwner, writeTextRecords, logError],
   );
 
   const onChangeTextRecord = useCallback(
