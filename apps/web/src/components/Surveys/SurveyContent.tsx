@@ -1,8 +1,8 @@
 'use client';
 
 import { useCallback } from 'react';
-import { Survey } from 'apps/web/src/apis/frameSurveys';
-import { ButtonWithSurveyResponse } from 'apps/web/src/components/Button/ButtonWithSurveyResponse';
+import { Survey } from '../../apis/frameSurveys';
+import { ButtonWithSurveyResponse } from '../Button/ButtonWithSurveyResponse';
 
 type SurveyContentProps = {
   surveyData: Survey;
@@ -37,18 +37,19 @@ export default function SurveyContent({ surveyData }: SurveyContentProps) {
 
   return (
     <div className="mt-[-96px] bg-blue-60">
-      <div className="mt-[96px]">
-        <p>Question: {question.description ?? ''}</p>
-        <ol>
+      <div className="mt-[96px] h-screen flex flex-col items-center">
+        <h1 className='text-3xl text-white my-10'>Question: {question.description ?? ''}</h1>
+        <div className='grid grid-cols-2 max-w-[450px] gap-4'>
           {answers.map((answer) => (
-            <li key={answer.id}>
+            <div key={answer.id}>
               <ButtonWithSurveyResponse
                 text={answer.description}
                 clickHandler={createHandleClick(question.id, answer.id, 'useraddress', 'user_id')}
+                fullWidth
               />
-            </li>
+            </div>
           ))}
-        </ol>
+        </div>
       </div>
     </div>
   );
