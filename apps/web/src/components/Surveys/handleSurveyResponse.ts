@@ -8,6 +8,11 @@ export default async function handleSurveyResponse(
   userAddress: string,
   userId: string,
 ) {
-  const response = await postUserResponse(questionId, answerId, userAddress, userId);
-  return response;
+  const { status, message, userResponse } = await postUserResponse(
+    questionId,
+    answerId,
+    userAddress,
+    userId,
+  );
+  return { status, message, userResponse };
 }
