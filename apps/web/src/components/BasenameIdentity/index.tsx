@@ -19,10 +19,8 @@ export default function BasenameIdentity({ username }: { username: BaseName }) {
     universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
   });
 
-  const deterministicName = username;
-  const defaultSelectedProfilePicture = getUserNamePicture(deterministicName);
+  const defaultSelectedProfilePicture = getUserNamePicture(username);
   const avatar = basenameAvatar ?? defaultSelectedProfilePicture;
-
   const isLoading = baseEnsAvatarIsLoading || basenameAddressIsLoading;
 
   return (

@@ -99,11 +99,11 @@ export default function SearchAddressInput({ onChange }: SearchAddressInputProps
               target="_blank"
               className="flex items-center gap-2 underline underline-offset-2"
             >
-              <p>
+              <span>
                 View {showUsername && <strong>{username}</strong>}
                 {finalAddress && <strong>{truncateMiddle(finalAddress, 6, 4)}</strong>}{' '}
                 {baseBlockExplorerName}
-              </p>
+              </span>
               <Icon name="external-link" color="currentColor" height="0.8rem" width="0.8rem" />
             </Link>
           </Hint>

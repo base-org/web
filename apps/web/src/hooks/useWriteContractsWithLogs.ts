@@ -12,7 +12,18 @@ import { useCallsStatus, useWriteContracts } from 'wagmi/experimental';
   A hook to request and track a wallet write transaction
 
   Responsabilities:
+  - InitiateBatchCalls to start the flow (write multiple contracts)
+  - Keep track of the batchCall status with useCallsStatus
+  - Keep track of the batchCall transactionReceipt with useWaitForTransactionReceipt
+  - Check that transactionReceipt.status is 'success'
+  - Get and parse the logs from transactionReceipt
+  - Find and decode the 'UserOperationEvent' log
+  - Check that the decodedLog.args.success === true
 
+  - Requirement for a "true" batch calls success:
+  -- statusStatus.data === 'CONFIRMED'
+  -- transactionReceipt.status === 'success' 
+  -- decodedUserOperationEventLog.args.success === true
 */
 
 export enum BatchCallsStatus {
@@ -64,7 +75,7 @@ export default function useWriteContractsWithLogs({
 
   // Experimental: Track batch call status
   const { data: sendCallsResult, isPending: sendCallsResultIsPending } = useCallsStatus({
-    // @ts-expect-error: query is disabled without a sendCallsId
+    // @ts-expect-error: We can expect sendCallsId to be undefined since we're only enabling the query when defined
     id: sendCallsId,
     query: {
       enabled: !!sendCallsId && batchCallsEnabled,
@@ -128,7 +139,21 @@ export default function useWriteContractsWithLogs({
 
   // Track onchain success or reverted state
   useEffect(() => {
-    // Transaction is successful
+    // Onchain TransactionReceipt Fetching
+    if (transactionReceiptIsFetching) {
+      setBatchCallsStatus(BatchCallsStatus.Processing);
+      logEventWithContext(`${eventName}_transaction_processing`, ActionType.change);
+      return;
+    }
+
+    // Onchain TransactionReceipt Reverted
+    if (transactionReceipt?.status === 'reverted') {
+      logEventWithContext(`${eventName}_transaction_reverted`, ActionType.change);
+      setBatchCallsStatus(BatchCallsStatus.Reverted);
+      return;
+    }
+
+    // Onchain TransactionReceipt Successfull with logs
     if (transactionReceipt?.status === 'success' && sendCallsResult?.receipts?.length) {
       const logs = transactionReceipt.logs;
       const decodedUserOperationEventLog = logs
@@ -144,18 +169,6 @@ export default function useWriteContractsWithLogs({
         );
       }
 
-      return;
-    }
-
-    if (transactionReceiptIsFetching) {
-      setBatchCallsStatus(BatchCallsStatus.Processing);
-      logEventWithContext(`${eventName}_transaction_processing`, ActionType.change);
-      return;
-    }
-
-    if (transactionReceipt?.status === 'reverted') {
-      logEventWithContext(`${eventName}_transaction_reverted`, ActionType.change);
-      setBatchCallsStatus(BatchCallsStatus.Reverted);
       return;
     }
   }, [

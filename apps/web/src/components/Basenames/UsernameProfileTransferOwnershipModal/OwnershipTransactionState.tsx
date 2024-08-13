@@ -18,12 +18,9 @@ export function OwnershipTransactionState({
   const { batchTransactionsEnabled, batchCallsIsLoading } = useProfileTransferOwnership();
 
   const onRetry = useCallback(() => {
-    ownershipSetting
-      .contractFunction()
-      .then()
-      .catch((error) => {
-        logError(error, 'Failed to retry');
-      });
+    ownershipSetting.contractFunction().catch((error) => {
+      logError(error, 'Failed to retry');
+    });
   }, [logError, ownershipSetting]);
 
   if (batchTransactionsEnabled && batchCallsIsLoading) {

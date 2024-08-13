@@ -12,9 +12,9 @@ import {
   OwnershipSteps,
   useProfileTransferOwnership,
 } from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context';
-import AllOwnershipTransactionsState from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/AllOwnershipTransactionsState';
 import WalletIdentity from 'apps/web/src/components/WalletIdentity';
 import BasenameIdentity from 'apps/web/src/components/BasenameIdentity';
+import { OwnershipTransactionState } from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/OwnershipTransactionState';
 
 const ownershipStepsTitleForDisplay = {
   [OwnershipSteps.Search]: 'Send name',
@@ -74,20 +74,19 @@ export default function UsernameProfileTransferOwnershipModal({
   }, [address, isValidRecipientAddress, setCurrentOwnershipStep]);
 
   const handleOnClose = useCallback(() => {
-    if (currentOwnershipStep === OwnershipSteps.Success) {
-      profileOwnerRefetch()
-        .then(() => {
-          setShowProfileSettings(false);
-          onClose();
-        })
-        .catch((error) => {
-          logError(error, 'Failed to refetch Owner');
-        });
-
+    if (currentOwnershipStep !== OwnershipSteps.Success) {
+      onClose();
       return;
     }
 
-    onClose();
+    profileOwnerRefetch()
+      .then(() => {
+        setShowProfileSettings(false);
+        onClose();
+      })
+      .catch((error) => {
+        logError(error, 'Failed to refetch Owner');
+      });
   }, [currentOwnershipStep, logError, onClose, profileOwnerRefetch, setShowProfileSettings]);
 
   // Memos
@@ -164,13 +163,19 @@ export default function UsernameProfileTransferOwnershipModal({
             <p>You will need to confirm all four transactions in your wallet to send this name. </p>
           )}
 
-          <AllOwnershipTransactionsState />
+          <ul className="flex w-full flex-col gap-4">
+            {ownershipSettings.map((ownershipSetting) => (
+              <li key={ownershipSetting.id} className="flex items-baseline gap-4">
+                <OwnershipTransactionState ownershipSetting={ownershipSetting} />
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 
       {currentOwnershipStep === OwnershipSteps.Success && (
         <div className="mt-2 flex flex-col gap-4">
-          <div className="mx-auto flex h-[8rem] w-[8rem] items-center justify-center rounded-full bg-blue-500 text-white">
+          <div className="mx-auto mb-8 flex h-[8rem] w-[8rem] items-center justify-center rounded-full bg-blue-500 text-white">
             <Icon name="checkmark" color="currentColor" width="2rem" height="2rem" />
           </div>
           {isValidRecipientAddress && (

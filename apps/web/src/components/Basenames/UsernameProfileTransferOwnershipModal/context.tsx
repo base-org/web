@@ -259,29 +259,28 @@ export default function ProfileTransferOwnershipProvider({
     setNameStatus,
   ]);
 
+  const ownershipSettingsAreWaiting = useMemo(() => {
+    return ownershipSettings.every((ownershipSetting) => {
+      return [
+        WriteTransactionWithReceiptStatus.Idle,
+        WriteTransactionWithReceiptStatus.Success,
+      ].includes(ownershipSetting.status);
+    });
+  }, [ownershipSettings]);
+
   useEffect(() => {
     // Only when the wallet request steps is displaying
     if (currentOwnershipStep !== OwnershipSteps.WalletRequests) return;
 
     // Some transactions are loading / failed: return early
-    if (
-      !ownershipSettings.every((ownershipSetting) => {
-        return [
-          WriteTransactionWithReceiptStatus.Idle,
-          WriteTransactionWithReceiptStatus.Success,
-        ].includes(ownershipSetting.status);
-      })
-    )
-      return;
+    if (!ownershipSettingsAreWaiting) return;
 
     // Smart wallet - we can batch calls
     if (batchCallsEnabled) {
-      updateViaBatchCalls()
-        .then()
-        .catch((error) => {
-          setCurrentOwnershipStep(OwnershipSteps.OwnershipOverview);
-          logError(error, 'Failed to update via sendCalls');
-        });
+      updateViaBatchCalls().catch((error) => {
+        setCurrentOwnershipStep(OwnershipSteps.OwnershipOverview);
+        logError(error, 'Failed to update via sendCalls');
+      });
 
       return;
     }
@@ -302,16 +301,20 @@ export default function ProfileTransferOwnershipProvider({
 
       // then call the wallet request function
       if (canCallfunction) {
-        ownershipSetting
-          .contractFunction()
-          .then()
-          .catch((error) => {
-            logError(error, `Failed contractFunction for ${ownershipSetting.id}`);
-          });
+        ownershipSetting.contractFunction().catch((error) => {
+          logError(error, `Failed contractFunction for ${ownershipSetting.id}`);
+        });
         break;
       }
     }
-  }, [batchCallsEnabled, currentOwnershipStep, logError, ownershipSettings, updateViaBatchCalls]);
+  }, [
+    batchCallsEnabled,
+    currentOwnershipStep,
+    logError,
+    ownershipSettings,
+    ownershipSettingsAreWaiting,
+    updateViaBatchCalls,
+  ]);
 
   const isSuccess = useMemo(
     () =>
@@ -329,6 +332,12 @@ export default function ProfileTransferOwnershipProvider({
       setCurrentOwnershipStep(OwnershipSteps.Success);
     }
   }, [isSuccess]);
+
+  useEffect(() => {
+    if (batchCallsStatus === BatchCallsStatus.Canceled) {
+      setCurrentOwnershipStep(OwnershipSteps.OwnershipOverview);
+    }
+  }, [batchCallsStatus]);
 
   const value = useMemo(() => {
     return {
