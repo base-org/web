@@ -10,7 +10,7 @@ import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback } from 'react';
 
-export default function UsernameSidebar() {
+export default function UsernameProfileSidebar() {
   const {
     profileUsername,
     profileAddress,

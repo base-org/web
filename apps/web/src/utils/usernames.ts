@@ -96,6 +96,9 @@ export const formatSocialFieldUrl = (key: UsernameTextRecordKeys, handleOrUrl: s
     case UsernameTextRecordKeys.Github:
       return `https://github.com/${sanitizeHandle(handleOrUrl)}`;
     case UsernameTextRecordKeys.Url:
+      if (!/^https?:\/\//i.test(handleOrUrl)) {
+        return `https://${handleOrUrl}`;
+      }
       return handleOrUrl;
     default:
       return '';
