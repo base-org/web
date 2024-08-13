@@ -70,12 +70,13 @@ export const textRecordsSocialFieldsEnabled = [
   UsernameTextRecordKeys.Url,
 ];
 
-export const textRecordsSocialFieldsEnabledIcons: Record<UsernameTextRecordKeys, string> = {
-  [UsernameTextRecordKeys.Twitter]: 'twitter',
-  [UsernameTextRecordKeys.Farcaster]: 'farcaster',
-  [UsernameTextRecordKeys.Github]: 'github',
-  [UsernameTextRecordKeys.Url]: 'website',
-};
+export const textRecordsSocialFieldsEnabledIcons: Partial<Record<UsernameTextRecordKeys, string>> =
+  {
+    [UsernameTextRecordKeys.Twitter]: 'twitter',
+    [UsernameTextRecordKeys.Farcaster]: 'farcaster',
+    [UsernameTextRecordKeys.Github]: 'github',
+    [UsernameTextRecordKeys.Url]: 'website',
+  };
 
 // Users might add their handle as @myProfile, which breaks on some website
 // TODO: Ideally we'd sanitize these before writing them as TextRecord
@@ -344,7 +345,7 @@ export enum Discount {
   BASE_BUILDATHON_PARTICIPANT = 'BASE_BUILDATHON_PARTICIPANT',
   SUMMER_PASS_LVL_3 = 'SUMMER_PASS_LVL_3',
   BNS_NAME = 'BNS_NAME',
-  BASE_ETH_NFT = 'BASE_ETH_NFT',
+  BASE_DOT_ETH_NFT = 'BASE_DOT_ETH_NFT',
 }
 
 export function isValidDiscount(key: string): key is keyof typeof Discount {
