@@ -5,8 +5,6 @@ import {
 } from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import { BatchCallsStatus } from 'apps/web/src/hooks/useWriteContractsWithLogs';
-
 import { WriteTransactionWithReceiptStatus } from 'apps/web/src/hooks/useWriteContractWithReceipt';
 import { useCallback } from 'react';
 
@@ -17,7 +15,7 @@ export function OwnershipTransactionState({
   ownershipSetting: OwnershipSettings;
 }) {
   const { logError } = useErrors();
-  const { batchTransactionsEnabled, batchCallsStatus } = useProfileTransferOwnership();
+  const { batchTransactionsEnabled, batchCallsIsLoading } = useProfileTransferOwnership();
 
   const onRetry = useCallback(() => {
     ownershipSetting
@@ -28,10 +26,7 @@ export function OwnershipTransactionState({
       });
   }, [logError, ownershipSetting]);
 
-  if (
-    batchTransactionsEnabled &&
-    [BatchCallsStatus.Approved, BatchCallsStatus.Processing].includes(batchCallsStatus)
-  ) {
+  if (batchTransactionsEnabled && batchCallsIsLoading) {
     return (
       <>
         <div>

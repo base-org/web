@@ -60,6 +60,7 @@ export type ProfileTransferOwnershipContextProps = {
   setRecipientAddress: Dispatch<SetStateAction<string>>;
   batchTransactionsEnabled: boolean;
   batchCallsStatus: BatchCallsStatus;
+  batchCallsIsLoading: boolean;
 };
 
 export const ProfileTransferOwnershipContext = createContext<ProfileTransferOwnershipContextProps>({
@@ -71,6 +72,7 @@ export const ProfileTransferOwnershipContext = createContext<ProfileTransferOwne
   setRecipientAddress: () => undefined,
   batchTransactionsEnabled: false,
   batchCallsStatus: BatchCallsStatus.Idle,
+  batchCallsIsLoading: false,
 });
 
 export default function ProfileTransferOwnershipProvider({
@@ -89,10 +91,11 @@ export default function ProfileTransferOwnershipProvider({
   );
 
   // Send calls - Experimental
-  const { initiateBatchCalls, batchCallsEnabled, batchCallsStatus } = useWriteContractsWithLogs({
-    chain: basenameChain,
-    eventName: 'basename_send_calls_transfer_ownership',
-  });
+  const { initiateBatchCalls, batchCallsEnabled, batchCallsStatus, batchCallsIsLoading } =
+    useWriteContractsWithLogs({
+      chain: basenameChain,
+      eventName: 'basename_send_calls_transfer_ownership',
+    });
 
   // TODO: Validate that it's not a contract recipient
   const isValidRecipientAddress = isAddress(recipientAddress);
@@ -333,6 +336,7 @@ export default function ProfileTransferOwnershipProvider({
       isSuccess,
       batchTransactionsEnabled: batchCallsEnabled,
       batchCallsStatus,
+      batchCallsIsLoading,
       currentOwnershipStep,
       setCurrentOwnershipStep,
       recipientAddress,
@@ -341,6 +345,7 @@ export default function ProfileTransferOwnershipProvider({
   }, [
     batchCallsEnabled,
     batchCallsStatus,
+    batchCallsIsLoading,
     currentOwnershipStep,
     isSuccess,
     ownershipSettings,

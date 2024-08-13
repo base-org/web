@@ -92,8 +92,6 @@ export default function useWriteContractsWithLogs({
     },
   });
 
-  console.log({ transactionReceipt });
-
   const { switchChainAsync } = useSwitchChain();
 
   const initiateBatchCalls = useCallback(
@@ -171,7 +169,10 @@ export default function useWriteContractsWithLogs({
   ]);
 
   const batchCallsIsLoading =
-    sendCallsIsPending || transactionReceiptIsFetching || sendCallsResultIsPending;
+    sendCallsIsPending ||
+    transactionReceiptIsFetching ||
+    sendCallsResultIsPending ||
+    sendCallsResult?.status === 'PENDING';
   const batchCallsIsSuccess = sendCallsIsSuccess && transactionReceiptIsSuccess;
   const batchCallsIsError = sendCallsIsError || transactionReceiptIsError;
   const batchCallsError = sendCallsError ?? transactionReceiptError;
