@@ -2,6 +2,7 @@
 title: Welcome to Base Learn
 description: Base Learn is a comprehensive, free guide to learning smart contract development.
 hide_table_of_contents: false
+image: /img/base-learn-open-graph.png
 ---
 
 ![Welcome](../assets/images/welcome/Base_Learn_Hero.png)

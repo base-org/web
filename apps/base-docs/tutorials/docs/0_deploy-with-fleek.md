@@ -8,6 +8,7 @@ tags: ['frontend']
 difficulty: hard
 hide_table_of_contents: false
 displayed_sidebar: null
+image: https://docs.base.org/img/base-learn-open-graph.png
 ---
 
 One of the "secrets" of onchain apps is that they almost always have a very large web2 component that they're dependent on. Most onchain apps rely on traditional infrastructure for their frontends, APIs, and other parts of the architecture.
