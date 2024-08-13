@@ -28,7 +28,9 @@ import {
   USERNAME_L2_RESOLVER_ADDRESSES,
   USERNAME_REVERSE_REGISTRAR_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
-import useSendCallsWithLogs, { BatchCallsStatus } from 'apps/web/src/hooks/useSendCallsWithLogs';
+import useWriteContractsWithLogs, {
+  BatchCallsStatus,
+} from 'apps/web/src/hooks/useWriteContractsWithLogs';
 
 type ProfileTransferOwnershipProviderProps = {
   children?: ReactNode;
@@ -87,7 +89,7 @@ export default function ProfileTransferOwnershipProvider({
   );
 
   // Send calls - Experimental
-  const { initiateBatchCalls, batchCallsEnabled, batchCallsStatus } = useSendCallsWithLogs({
+  const { initiateBatchCalls, batchCallsEnabled, batchCallsStatus } = useWriteContractsWithLogs({
     chain: basenameChain,
     eventName: 'basename_send_calls_transfer_ownership',
   });

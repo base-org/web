@@ -31,12 +31,15 @@ export enum BatchCallsStatus {
   Success = 'success',
 }
 
-export type UseSendCallsWithLogsProps = {
+export type UseWriteContractsWithLogsProps = {
   chain: Chain;
   eventName: string;
 };
 
-export default function useSendCallsWithLogs({ chain, eventName }: UseSendCallsWithLogsProps) {
+export default function useWriteContractsWithLogs({
+  chain,
+  eventName,
+}: UseWriteContractsWithLogsProps) {
   // Errors & Analytics
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();

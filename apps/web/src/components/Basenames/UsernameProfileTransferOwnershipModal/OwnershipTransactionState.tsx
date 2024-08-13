@@ -5,7 +5,8 @@ import {
 } from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import { BatchCallsStatus } from 'apps/web/src/hooks/useSendCallsWithLogs';
+import { BatchCallsStatus } from 'apps/web/src/hooks/useWriteContractsWithLogs';
+
 import { WriteTransactionWithReceiptStatus } from 'apps/web/src/hooks/useWriteContractWithReceipt';
 import { useCallback } from 'react';
 
