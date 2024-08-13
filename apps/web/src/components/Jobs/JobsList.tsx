@@ -62,7 +62,11 @@ export default function JobsList() {
       <div className="flex flex-col">
         {departments.map((department, index) => (
           <div key={department.id}>
-            <h2 className="text-xl font-bold">{department.name}</h2>
+            <h2 className="text-xl font-bold">
+              {department.name === 'Business Development & Partnerships'
+                ? 'Ecosystem'
+                : department.name}
+            </h2>
             <div className="flex flex-col">
               {department.jobs?.map((job) => (
                 <Job key={job.id} job={job} />
