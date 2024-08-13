@@ -1,8 +1,8 @@
 'use client';
 
-import { Button } from './Button';
+import { Button, ButtonProps } from './Button';
 
-type ButtonWithSurveyResponseProps = {
+type ButtonWithSurveyResponseProps = ButtonProps & {
   text: string;
   clickHandler: () => void;
 };
