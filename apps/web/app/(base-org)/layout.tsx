@@ -1,6 +1,13 @@
+import dynamic from 'next/dynamic';
+import type { Metadata } from 'next';
 import Nav from 'apps/web/src/components/Layout/Nav/Nav';
 
-import type { Metadata } from 'next';
+const HomepageModalDynamic = dynamic(
+  async () => import('apps/web/src/components/Basenames/HomepageModal'),
+  {
+    ssr: false,
+  },
+);
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -29,6 +36,7 @@ export default async function BaseOrgLayout({
   return (
     <div className="max-w-screen flex min-h-screen flex-col">
       <Nav />
+      <HomepageModalDynamic />
       {children}
     </div>
   );
