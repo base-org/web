@@ -126,14 +126,6 @@ export default function useWriteContractsWithLogs({
     ],
   );
 
-  // Track processing onchain
-  useEffect(() => {
-    if (transactionReceiptIsFetching) {
-      setBatchCallsStatus(BatchCallsStatus.Processing);
-      logEventWithContext(`${eventName}_transaction_processing`, ActionType.change);
-    }
-  }, [eventName, logEventWithContext, transactionReceiptIsFetching]);
-
   // Track onchain success or reverted state
   useEffect(() => {
     // Transaction is successful
@@ -152,6 +144,12 @@ export default function useWriteContractsWithLogs({
         );
       }
 
+      return;
+    }
+
+    if (transactionReceiptIsFetching) {
+      setBatchCallsStatus(BatchCallsStatus.Processing);
+      logEventWithContext(`${eventName}_transaction_processing`, ActionType.change);
       return;
     }
 
