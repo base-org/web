@@ -2,7 +2,8 @@
 import React, { useState, useCallback } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
 import Link from 'next/link';
-
+import { ActionType, ComponentType } from 'libs/base-ui/utils/logEvent';
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 import useClickAway from '../../../hooks/useClickAway';
 
 import { Icon } from '../../Icon/Icon';
@@ -16,9 +17,18 @@ type DropdownLinkProps = {
   label: string;
   color: 'white' | 'black';
   externalLink?: boolean;
+  eventName: string;
 };
 
-function DropdownLink({ href, label, color, externalLink }: DropdownLinkProps) {
+function DropdownLink({ href, label, color, externalLink, eventName }: DropdownLinkProps) {
+  const { logEventWithContext } = useAnalytics();
+
+  const handleClick = useCallback(() => {
+    logEventWithContext(eventName, ActionType.click, {
+      componentType: ComponentType.link,
+    });
+  }, [logEventWithContext, eventName]);
+
   return externalLink ? (
     <a
       href={href}
@@ -27,6 +37,7 @@ function DropdownLink({ href, label, color, externalLink }: DropdownLinkProps) {
       )}`}
       target="_blank"
       rel="noreferrer noopener"
+      onClick={handleClick}
     >
       {label}
     </a>
@@ -36,6 +47,7 @@ function DropdownLink({ href, label, color, externalLink }: DropdownLinkProps) {
       className={`whitespace-nowrap px-10 py-[1.25rem] font-mono text-xl hover:underline ${reverseTextColor(
         color,
       )}`}
+      onClick={handleClick}
     >
       {label}
     </Link>
@@ -105,15 +117,22 @@ function IconLink({
   label,
   color,
   title,
+  eventName,
 }: {
   href: string;
   icon: string;
   label: string;
   color: 'white' | 'black';
   title: string;
+  eventName: string;
 }) {
+  const { logEventWithContext } = useAnalytics();
+  const handleClick = useCallback(() => {
+    logEventWithContext(eventName, ActionType.click, { componentType: ComponentType.link });
+  }, [logEventWithContext, eventName]);
+
   return (
-    <a href={href} title={title} className="p-4">
+    <a href={href} title={title} className="p-4" onClick={handleClick}>
       <div className="flex flex-row items-center gap-4">
         <Icon name={icon} width="24" height="24" color={REVERSE_COLOR[color]} />
         <span className={`${reverseTextColor(color)}`}>{label}</span>
@@ -123,10 +142,15 @@ function IconLink({
 }
 
 function DesktopNav({ color }: DesktopNavProps) {
+  const { logEventWithContext } = useAnalytics();
+  const handleBridgeClick = useCallback(() => {
+    logEventWithContext('bridge', ActionType.click, { componentType: ComponentType.link });
+  }, [logEventWithContext]);
+
   return (
     <div className="hidden h-full w-fit flex-grow flex-row items-center justify-between lg:flex">
       <Dropdown label="Ecosystem" color={color}>
-        <DropdownLink href="/ecosystem" label="Apps" color={color} />
+        <DropdownLink href="/ecosystem" label="Apps" color={color} eventName="ecosystem" />
         {/* todo ECO-101: add this back for GA */}
         {/* <DropdownLink href="/names" label="Names" color={color} /> */}
         <DropdownLink
@@ -134,6 +158,7 @@ function DesktopNav({ color }: DesktopNavProps) {
           label="Grants"
           color={color}
           externalLink
+          eventName="grants"
         />
       </Dropdown>
       <a
@@ -141,36 +166,64 @@ function DesktopNav({ color }: DesktopNavProps) {
         className={`inline-flex items-center font-mono text-xl ${
           color === 'black' ? 'text-black' : 'text-white'
         }`}
+        onClick={handleBridgeClick}
       >
         Bridge
       </a>
       <Dropdown label="Developers" color={color}>
-        <DropdownLink href={docsUrl} label="Docs" color={color} externalLink />
-        <DropdownLink href="https://base.org/learn" label="Learn" color={color} externalLink />
+        <DropdownLink
+          href="/getstarted/?utm_source=dotorg&utm_medium=nav"
+          label="Get Started"
+          color={color}
+          eventName="getstarted"
+        />
+        <DropdownLink href={docsUrl} label="Docs" color={color} externalLink eventName="docs" />
+        <DropdownLink
+          href="https://base.org/learn"
+          label="Learn"
+          color={color}
+          externalLink
+          eventName="learn"
+        />
         <DropdownLink
           href="https://base.blockscout.com/"
           label="Block Explorer"
           color={color}
           externalLink
+          eventName="block_explorer"
         />
-        <DropdownLink href="https://status.base.org" label="Status" color={color} externalLink />
+        <DropdownLink
+          href="https://status.base.org"
+          label="Status"
+          color={color}
+          externalLink
+          eventName="status"
+        />
         <DropdownLink
           href="https://hackerone.com/coinbase"
           label="Bug Bounty"
           color={color}
           externalLink
+          eventName="bug_bounty"
         />
         <DropdownLink
           href="https://github.com/base-org"
           label="GitHub"
           color={color}
           externalLink
+          eventName="github"
         />
       </Dropdown>
       <Dropdown label="About" color={color}>
-        <DropdownLink href="/about" label="Mission" color={color} />
-        <DropdownLink href="https://base.mirror.xyz" label="Blog" color={color} externalLink />
-        <DropdownLink href="/jobs" label="Jobs" color={color} />
+        <DropdownLink href="/about" label="Mission" color={color} eventName="mission" />
+        <DropdownLink
+          href="https://base.mirror.xyz"
+          label="Blog"
+          color={color}
+          externalLink
+          eventName="blog"
+        />
+        <DropdownLink href="/jobs" label="Jobs" color={color} eventName="jobs" />
       </Dropdown>
       <Dropdown label="Socials" className="align-text-bottom" color={color}>
         <IconLink
@@ -179,6 +232,7 @@ function DesktopNav({ color }: DesktopNavProps) {
           label="Farcaster"
           color={color}
           title="Join us on Warpcast"
+          eventName="farcaster"
         />
         <IconLink
           href="https://discord.com/invite/buildonbase"
@@ -186,6 +240,7 @@ function DesktopNav({ color }: DesktopNavProps) {
           label="Discord"
           color={color}
           title="Join us on Discord"
+          eventName="discord"
         />
         <IconLink
           href="https://twitter.com/base"
@@ -193,6 +248,7 @@ function DesktopNav({ color }: DesktopNavProps) {
           label="Twitter"
           color={color}
           title="Join us on Twitter"
+          eventName="twitter"
         />
         <IconLink
           href="https://github.com/base-org"
@@ -200,6 +256,7 @@ function DesktopNav({ color }: DesktopNavProps) {
           label="Github"
           color={color}
           title="Join us on Github"
+          eventName="github"
         />
       </Dropdown>
       <ConnectWalletButton color={color} className="relative inline-block" />

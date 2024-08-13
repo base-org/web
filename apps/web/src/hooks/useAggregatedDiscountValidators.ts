@@ -1,9 +1,13 @@
 import {
   AttestationData,
+  useBNSAttestations,
+  useBaseDotEthAttestations,
+  useBuildathonAttestations,
   useCheckCB1Attestations,
   useCheckCBIDAttestations,
   useCheckCoinbaseAttestations,
   useCheckEAAttestations,
+  useSummerPassAttestations,
 } from 'apps/web/src/hooks/useAttestations';
 import { useActiveDiscountValidators } from 'apps/web/src/hooks/useReadActiveDiscountValidators';
 import { Discount } from 'apps/web/src/utils/usernames';
@@ -32,13 +36,21 @@ export function useAggregatedDiscountValidators() {
   const { data: EAData, loading: loadingEAAttestations } = useCheckEAAttestations();
   const { data: coinbaseData, loading: loadingCoinbaseAttestations } =
     useCheckCoinbaseAttestations();
+  const { data: SummerPassData, loading: loadingSummerPass } = useSummerPassAttestations();
+  const { data: BuildathonData, loading: loadingBuildathon } = useBuildathonAttestations();
+  const { data: BaseDotEthData, loading: loadingBaseDotEth } = useBaseDotEthAttestations();
+  const { data: BNSData, loading: loadingBNS } = useBNSAttestations();
 
   const loadingDiscounts =
     loadingCoinbaseAttestations ||
     loadingCBIDAttestations ||
     loadingCB1Attestations ||
     loadingActiveDiscounts ||
-    loadingEAAttestations;
+    loadingEAAttestations ||
+    loadingBuildathon ||
+    loadingSummerPass ||
+    loadingBaseDotEth ||
+    loadingBNS;
 
   const discountsToAttestationData = useMemo<MappedDiscountData>(() => {
     const discountMapping: MappedDiscountData = {};
@@ -59,14 +71,54 @@ export function useAggregatedDiscountValidators() {
           discountKey: validator.key,
         };
       }
-
       if (EAData && validator.discountValidator === EAData.discountValidatorAddress) {
         discountMapping[Discount.EARLY_ACCESS] = { ...EAData, discountKey: validator.key };
+      }
+
+      if (
+        BuildathonData &&
+        validator.discountValidator === BuildathonData.discountValidatorAddress
+      ) {
+        discountMapping[Discount.BASE_BUILDATHON_PARTICIPANT] = {
+          ...BuildathonData,
+          discountKey: validator.key,
+        };
+      }
+      if (
+        SummerPassData &&
+        validator.discountValidator === SummerPassData.discountValidatorAddress
+      ) {
+        discountMapping[Discount.SUMMER_PASS_LVL_3] = {
+          ...SummerPassData,
+          discountKey: validator.key,
+        };
+      }
+      if (
+        BaseDotEthData &&
+        validator.discountValidator === BaseDotEthData.discountValidatorAddress
+      ) {
+        discountMapping[Discount.BASE_DOT_ETH_NFT] = {
+          ...BaseDotEthData,
+          discountKey: validator.key,
+        };
+      }
+      if (BNSData && validator.discountValidator === BNSData.discountValidatorAddress) {
+        discountMapping[Discount.BNS_NAME] = { ...BNSData, discountKey: validator.key };
       }
     });
 
     return discountMapping;
-  }, [activeDiscountValidators, CBIDData, CB1Data, coinbaseData, EAData]);
+  }, [
+    activeDiscountValidators,
+    CBIDData,
+    CB1Data,
+    coinbaseData,
+    EAData,
+    BuildathonData,
+    SummerPassData,
+    BaseDotEthData,
+    BNSData,
+  ]);
 
   return {
     data: discountsToAttestationData,

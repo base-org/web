@@ -38,11 +38,41 @@ export const USERNAME_EA_DISCOUNT_VALIDATORS: AddressMap = {
   [base.id]: '0x6E89d99643DB1223697C77A9F8B2Cb07E898e743',
 };
 
+export const USERNAME_BNS_DISCOUNT_VALIDATORS: AddressMap = {
+  [baseSepolia.id]: '0x1DE649d8b004A44491a7D3ebbb23F4B0DA89DE78',
+  [base.id]: '0x',
+};
+
+export const BASE_DOT_ETH_ERC721_DISCOUNT_VALIDATOR: AddressMap = {
+  [baseSepolia.id]: '0xa0C7a114E25618538BE7fA7c6552C3122056F775',
+  [base.id]: '0x',
+};
+
+export const BUILDATHON_ERC721_DISCOUNT_VALIDATOR: AddressMap = {
+  [baseSepolia.id]: '0x7b5B2dB59c414e15Bf70b59C02E6fb00Ca919dbC',
+  [base.id]: '0x',
+};
+
+export const USERNAME_BASE_ETH_HOLDERS_DISCOUNT_VALIDATORS: AddressMap = {
+  [baseSepolia.id]: '0x',
+  [base.id]: '0x',
+};
+
 export const USERNAME_1155_DISCOUNT_VALIDATORS: AddressMap = {
   [baseSepolia.id]: '0xE41Cd25f429E10744938d5048646E721ac630aF3',
   [base.id]: '0x',
 };
 
+export const USERNAME_REVERSE_REGISTRAR_ADDRESSES: AddressMap = {
+  [baseSepolia.id]: '0xa0A8401ECF248a9375a0a71C4dedc263dA18dCd7',
+  [base.id]: '0x79ea96012eea67a83431f1701b3dff7e37f9e282',
+};
+
 export const UNISWAP_USDC_WETH_POOL: AddressMap = {
   [base.id]: '0x88A43bbDF9D098eEC7bCEda4e2494615dfD9bB9C',
+};
+
+export const EXPONENTIAL_PREMIUM_PRICE_ORACLE: AddressMap = {
+  [baseSepolia.id]: '0x2B73408052825e17e0Fe464f92De85e8c7723231',
+  [base.id]: '0x',
 };

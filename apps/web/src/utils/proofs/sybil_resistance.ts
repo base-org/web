@@ -31,7 +31,7 @@ import {
   keccak256,
   parseAbiParameters,
 } from 'viem';
-import { privateKeyToAccount } from 'viem/accounts';
+import { sign } from 'viem/accounts';
 import { base, baseSepolia } from 'viem/chains';
 
 const EXPIRY = process.env.USERNAMES_SIGNATURE_EXPIRATION_SECONDS ?? '30';
@@ -86,11 +86,9 @@ async function signMessageWithTrustedSigner(
   targetAddress: Address,
   expiry: number,
 ) {
-  const account = privateKeyToAccount(`0x${trustedSignerPKey}`);
-
   // encode the message
   const message = encodePacked(
-    ['bytes2', 'address', 'address', 'address', 'uint256'],
+    ['bytes2', 'address', 'address', 'address', 'uint64'],
     ['0x1900', targetAddress, trustedSignerAddress, claimerAddress, BigInt(expiry)],
   );
 
@@ -98,13 +96,19 @@ async function signMessageWithTrustedSigner(
   const msgHash = keccak256(message);
 
   // sign the hashed message
-  const signature = await account.signMessage({ message: msgHash });
+  const { r, s, v } = await sign({
+    hash: msgHash,
+    privateKey: `0x${trustedSignerPKey}`,
+  });
+
+  // combine r, s, and v into a single signature
+  const signature = `${r.slice(2)}${s.slice(2)}${(v as bigint).toString(16)}`;
 
   // return the encoded signed message
-  return encodeAbiParameters(parseAbiParameters('address, uint256, bytes'), [
+  return encodeAbiParameters(parseAbiParameters('address, uint64, bytes'), [
     claimerAddress,
     BigInt(expiry),
-    signature,
+    `0x${signature}`,
   ]);
 }
 
@@ -140,7 +144,7 @@ export async function sybilResistantUsernameSigning(
     const hasPreviouslyRegistered = await hasRegisteredWithDiscount(linkedAddresses, chainId);
     // if any linked address registered previously return an error
     if (hasPreviouslyRegistered) {
-      throw new Error('You have already claimed a username with a different address (onchain).');
+      throw new Error('You have already claimed a discounted basename (onchain).');
     }
 
     const kvKey = `${previousClaimsKVPrefix}${idemKey}`;
@@ -153,7 +157,6 @@ export async function sybilResistantUsernameSigning(
           'You tried claiming this with a different address, wait a couple minutes to try again.',
         );
       }
-
       // return previously signed message
       return {
         signedMessage: previousClaim.signedMessage,
@@ -163,11 +166,12 @@ export async function sybilResistantUsernameSigning(
       };
     }
 
+    const expirationTimeUnix = Math.floor(Date.now() / 1000) + parseInt(EXPIRY);
     // generate and sign the message
     const signedMessage = await signMessageWithTrustedSigner(
       address,
       discountValidatorAddress,
-      parseInt(EXPIRY),
+      expirationTimeUnix,
     );
     const claim: PreviousClaim = { address, signedMessage };
     previousClaims[discountType] = claim;

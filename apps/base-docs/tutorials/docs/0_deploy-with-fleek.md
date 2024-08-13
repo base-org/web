@@ -8,13 +8,14 @@ tags: ['frontend']
 difficulty: hard
 hide_table_of_contents: false
 displayed_sidebar: null
+image: https://docs.base.org/img/base-learn-open-graph.png
 ---
 
 One of the "secrets" of onchain apps is that they almost always have a very large web2 component that they're dependent on. Most onchain apps rely on traditional infrastructure for their frontends, APIs, and other parts of the architecture.
 
 [Fleek]'s goal is to address this issue with the [Fleek Network], a fast and trustless Content Delivery Network (CDN).
 
-In this tutorial, you'll use [Fleek] to deploy a site built with the [An Onchain App in 100 Components] template.
+In this tutorial, you'll use [Fleek] to deploy a site built with the [Onchain App Template].
 
 ---
 
@@ -41,7 +42,7 @@ The tutorial assumes you're comfortable with the basics of deploying an app and 
 
 You can skip this section if you've already built an app based off the template, such as our tutorial for [How to Mint on Zora with an App].
 
-Open [An Onchain App in 100 Components], click the green `Use  this template` button, and create a new repository from the template. Clone your repo and open it in an editor.
+Open [Onchain App Template], click the green `Use  this template` button, and create a new repository from the template. Clone your repo and open it in an editor.
 
 Install _bun_ if you need to, and install dependencies.
 
@@ -173,7 +174,7 @@ Click on `Settings`. If you'd like, you can change the slug for your site to a n
 
 ## Conclusion
 
-In this tutorial, you learned how to use [Fleek] to deploy a [Next.js] site based on [An Onchain App in 100 Components]. You also learned how to link Fleek to your Git provider to enable CI/CD.
+In this tutorial, you learned how to use [Fleek] to deploy a [Next.js] site based on [Onchain App Template]. You also learned how to link Fleek to your Git provider to enable CI/CD.
 
 ---
 
@@ -182,6 +183,6 @@ In this tutorial, you learned how to use [Fleek] to deploy a [Next.js] site base
 [Fleek]: https://fleek.xyz
 [Fleek Network]: https://fleek.xyz/blog/announcements/introducing-fleek-network-and-fleek-xyz/
 [Next.js]: https://nextjs.org/
-[An Onchain App in 100 Components]: https://github.com/Zizzamia/an-onchain-app-in-100-components
+[Onchain App Template]: https://github.com/coinbase/onchain-app-template
 [Smart Wallet]: https://www.coinbase.com/wallet/smart-wallet
 [How to Mint on Zora with an App]: /tutorials/minting-nfts-with-zora

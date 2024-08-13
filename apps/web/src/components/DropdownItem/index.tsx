@@ -11,7 +11,7 @@ export type DropdownItemProps = {
 };
 
 export default function DropdownItem({ children, copyValue, onClick }: DropdownItemProps) {
-  const { lastCopiedId, setLastCopiedId } = useContext(DropdownContext);
+  const { lastCopiedId, setLastCopiedId, setOpen } = useContext(DropdownContext);
   const id = useId();
 
   const timer = useRef<NodeJS.Timeout>();
@@ -29,6 +29,11 @@ export default function DropdownItem({ children, copyValue, onClick }: DropdownI
     setLastCopiedId(id);
   }, [id, setLastCopiedId]);
 
+  const onClickHandler = useCallback(() => {
+    setOpen(false);
+    onClick?.();
+  }, [onClick, setOpen]);
+
   useEffect(() => {
     if (copied) {
       timer.current = setTimeout(() => {
@@ -44,11 +49,11 @@ export default function DropdownItem({ children, copyValue, onClick }: DropdownI
   }, [copied, setLastCopiedId]);
 
   return (
-    <button type="button" className={dropdownItemClasses} onClick={onClick}>
+    <button type="button" className={dropdownItemClasses} onClick={onClickHandler}>
       {copyValue ? (
         <CopyToClipboard text={copyValue} onCopy={onCopy}>
           <div className="flex w-full cursor-pointer flex-row items-center justify-between gap-4">
-            <span className="truncate ">{children}</span>
+            <span className="inline-block w-full truncate">{children}</span>
             <i className={copied ? 'text-green-50' : 'text-gray-50'}>
               <Icon
                 name={copied ? 'checkmark' : 'copy'}
@@ -60,7 +65,7 @@ export default function DropdownItem({ children, copyValue, onClick }: DropdownI
           </div>
         </CopyToClipboard>
       ) : (
-        <span className="truncate">{children}</span>
+        <span className="inline-block w-full truncate">{children}</span>
       )}
     </button>
   );

@@ -2,18 +2,12 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import {
   getProofsByNamespaceAndAddress,
   hasRegisteredWithDiscount,
+  MerkleTreeProofResponse,
   ProofTableNamespace,
 } from 'apps/web/src/utils/proofs';
-import { Address, isAddress } from 'viem';
+import { isAddress } from 'viem';
 import { USERNAME_CB_ID_DISCOUNT_VALIDATORS } from 'apps/web/src/addresses/usernames';
 import { isBasenameSupportedChain } from 'apps/web/src/hooks/useBasenameChain';
-
-export type CBIDProofResponse = {
-  discountValidatorAddress: Address;
-  address: Address;
-  namespace: string;
-  proofs: `0x${string}`[];
-};
 
 /*
 this endpoint returns whether or not the account has a cb.id
@@ -54,7 +48,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (proofs.length === 0) {
       return res.status(404).json({ error: 'address is not eligible for a cbid discount' });
     }
-    const responseData: CBIDProofResponse = {
+    const responseData: MerkleTreeProofResponse = {
       ...content,
       proofs,
       discountValidatorAddress: USERNAME_CB_ID_DISCOUNT_VALIDATORS[parsedChain],

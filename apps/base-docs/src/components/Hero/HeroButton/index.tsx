@@ -11,9 +11,14 @@ export default function HeroButton() {
   }, [logEvent, heroEvent]);
 
   return (
-    <a href="/docs" className={styles.cta}>
+    <a
+      href="https://base.org/getstarted/?utm_source=basedocs&utm_medium=hero"
+      className={styles.cta}
+      target="_blank"
+      rel="noreferrer noopener"
+    >
       <button className={styles.ctaButton} type="button" onClick={handleClick}>
-        LEARN MORE
+        Get Started
       </button>
     </a>
   );
