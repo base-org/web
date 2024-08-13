@@ -51,7 +51,7 @@ type UserResponseTable = {
   created_at: ColumnType<Date, string | undefined, never>;
 };
 
-export type UserResponse = {
+export type UserResponseFromDb = {
   user_id: string;
   user_address: string;
   question_id: number;
