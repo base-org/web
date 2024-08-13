@@ -6,10 +6,10 @@ import Image from 'next/image';
 import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
 import AnalyticsProvider from '../../../../contexts/Analytics';
 import { IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
-import { ButtonWithLinkAndEventLogging } from '../../Button/ButtonWithLinkAndEventLogging';
 import HomepageModal from './HomepageModal';
 import modalImage from './basenames-modal.svg';
 import ModalClose from './ModalClose';
+import ModalCta from './ModalCta';
 
 const modalContainerClasses = `
   flex flex-col justify-center
@@ -72,14 +72,7 @@ export default function BasenamesHomepageModal() {
                 Connect with other Based builders and start building your unique onchain identity on
                 Base with a .base.eth username.
               </span>
-              <ButtonWithLinkAndEventLogging
-                href="/names"
-                eventName="get_a_basename"
-                buttonClassNames={modalCtaClasses}
-                tabIndex={0}
-              >
-                Get your basename
-              </ButtonWithLinkAndEventLogging>
+              <ModalCta buttonClassNames={modalCtaClasses} setIsModalOpen={setIsModalOpen} />
             </div>
           </div>
         </div>
