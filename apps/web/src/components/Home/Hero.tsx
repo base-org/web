@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { gradientBgMap, textGradientMap, Verb, verbs } from 'apps/web/src/styles/hero';
-import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
+import { docsUrl } from 'apps/web/src/constants';
 
 const subtitleCopy =
   'Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain.';
@@ -113,25 +113,25 @@ export function Hero() {
             <div className="flex flex-col space-y-6">
               <div className="flex flex-col items-center gap-2 pt-7 md:flex-row">
                 <ButtonWithLinkAndEventLogging
-                  href={docsUrl}
+                  href="/getstarted/?utm_source=basedocs&utm_medium=hero"
+                  eventName="getstarted"
                   target="_blank"
                   rel="noreferrer noopener"
-                  eventName="docs"
                   linkClassNames="w-full"
                   fullWidth
                 >
-                  Read the docs
+                  Get Started
                 </ButtonWithLinkAndEventLogging>
                 <ButtonWithLinkAndEventLogging
-                  href={bridgeUrl}
+                  href={docsUrl}
+                  eventName="docs"
                   target="_blank"
                   rel="noreferrer noopener"
-                  eventName="bridge"
                   linkClassNames="w-full"
                   fullWidth
                   variant={ButtonVariants.Secondary}
                 >
-                  Bridge assets
+                  Read the Docs
                 </ButtonWithLinkAndEventLogging>
               </div>
               <p className="block w-full font-mono uppercase text-white lg:hidden">
