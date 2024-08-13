@@ -42,8 +42,8 @@ export default async function BuildersMostWanted() {
         />
         <ResourceCard
           title="Host a Meetup"
-          description="Sign up to host a meetup with other Based builders anywhere in the world"
-          href="/"
+          description="Apply to bring Based people together in your community."
+          href="https://docs.google.com/forms/d/e/1FAIpQLSf5wnzD_czyYOyHFeOmFK_rjsJj7Utovo3jWwR40JizPqmDZg/viewform"
           topLeft={<Icon name="people" color="white" />}
           classnames="bg-purple-60 border-purple-60"
         />
