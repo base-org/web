@@ -1,6 +1,5 @@
 /* eslint-disable */
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React from 'react';
 import clsx from 'clsx';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 import { useDoc } from '@docusaurus/theme-common/internal';
@@ -14,8 +13,6 @@ import tutorialData from '../../../../tutorials/data.json';
 import authors from '@app/base-docs/static/json/authors.json';
 
 import styles from './styles.module.css';
-
-const LEARN_OG_IMAGE = '/img/base-learn-open-graph.png';
 
 /**
  Title can be declared inside md content or declared through
@@ -38,23 +35,9 @@ function useSyntheticTitle() {
 export default function DocItemContent({ children }) {
   const { frontMatter } = useDoc();
   const syntheticTitle = useSyntheticTitle();
-  const location = useLocation();
   const tutorial =
     frontMatter && frontMatter.slug ? tutorialData[frontMatter.slug.substring(1)] : null;
   const authorData = tutorial ? authors[tutorial.author] : null;
-
-  useEffect(() => {
-    if (!frontMatter.image) {
-      if (location.pathname.includes('/tutorials') || location.pathname.includes('/base-learn')) {
-        document
-          .querySelector('meta[property="og:image"]')
-          ?.setAttribute('content', LEARN_OG_IMAGE);
-        document
-          .querySelector('meta[name="twitter:image"]')
-          ?.setAttribute('content', LEARN_OG_IMAGE);
-      }
-    }
-  }, [frontMatter, location.pathname]);
 
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
