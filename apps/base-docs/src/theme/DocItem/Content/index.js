@@ -14,8 +14,6 @@ import authors from '@app/base-docs/static/json/authors.json';
 
 import styles from './styles.module.css';
 
-const LEARN_OG_IMAGE = '/img/base-learn-open-graph.png';
-
 /**
  Title can be declared inside md content or declared through
  front matter and added manually. To make both cases consistent,
