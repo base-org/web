@@ -179,6 +179,14 @@ const config = {
           eventContext: 'navbar',
         },
         {
+          to: 'https://base.org/getstarted',
+          navposition: 'bottomLeft',
+          label: 'Get Started',
+          type: 'custom-navbarLink',
+          eventLabel: 'getstarted',
+          eventContext: 'navbar',
+        },
+        {
           to: '/docs',
           navposition: 'bottomLeft',
           label: 'Docs',
@@ -187,18 +195,17 @@ const config = {
           eventContext: 'navbar',
         },
         {
-          to: '/tutorials',
-          navposition: 'bottomLeft',
-          label: 'Tutorials',
-          type: 'custom-navbarLink',
-          eventLabel: 'tutorials',
-          eventContext: 'navbar',
-        },
-        {
           to: '/base-learn/docs/welcome',
           navposition: 'bottomLeft',
           label: 'Learn',
           items: [
+            {
+              label: 'Tutorials',
+              to: '/tutorials',
+              type: 'custom-dropdownLink',
+              eventLabel: 'tutorials',
+              eventContext: 'navbar',
+            },
             {
               label: 'Learn to Build Onchain',
               to: '/base-learn/docs/welcome',

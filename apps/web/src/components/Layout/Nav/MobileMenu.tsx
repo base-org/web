@@ -228,6 +228,11 @@ function MobileMenu({ color }: MobileMenuProps) {
                   label="Developers"
                 >
                   <DropdownLink
+                    href="/getstarted/?utm_source=dotorg&utm_medium=nav"
+                    label="Get Started"
+                    eventName="getstarted"
+                  />
+                  <DropdownLink
                     href="https://docs.base.org"
                     label="Docs"
                     externalLink

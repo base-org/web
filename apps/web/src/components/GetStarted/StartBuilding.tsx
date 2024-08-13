@@ -46,7 +46,7 @@ export default async function StartBuilding() {
         />
         <ResourceCard
           title="Support Team"
-          description="If you're ever in need, contact our Support Team via Disord"
+          description="If you're ever in need, please reach out in a dedicated Discord support channel"
           href="https://discord.com/invite/buildonbase"
           topLeft={<span className="font-mono">02</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}
