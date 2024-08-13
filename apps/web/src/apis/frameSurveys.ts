@@ -78,30 +78,57 @@ export const surveyDb = new Kysely<Database>({
 // GetAllQuestions => call getAllQuestions()
 // /apiroutes/survey => call getAllQuestions()
 
-export async function getAllQuestions(): Promise<Question[]> {
-  const questions: Question[] = await surveyDb
-    .selectFrom('frame_survey_questions')
-    .selectAll()
-    .execute();
-  return questions;
+export async function getAllQuestions(): Promise<Question[] | null> {
+  try {
+    const questions: Question[] = await surveyDb
+      .selectFrom('frame_survey_questions')
+      .selectAll()
+      .execute();
+    return questions;
+  } catch (error) {
+    console.error('Could not fetch questions:', error);
+    return null;
+  }
 }
 
-async function getQuestion(id: string): Promise<Question> {
-  const question: Question = await surveyDb
-    .selectFrom('frame_survey_questions')
-    .where('id', '=', Number(id))
-    .selectAll()
-    .executeTakeFirst();
-  return question;
+async function getQuestion(id: number): Promise<Question | null> {
+  try {
+    const question: Question = await surveyDb
+      .selectFrom('frame_survey_questions')
+      .where('id', '=', id)
+      .selectAll()
+      .executeTakeFirst();
+    return question;
+  } catch (error) {
+    console.log('Could not get question:', error);
+    return null;
+  }
 }
 
-export async function getSurvey(id: string): Promise<Survey> {
-  const question = await getQuestion(id);
-  const answers = await surveyDb
-    .selectFrom('frame_survey_question_answers')
-    .where('question_id', '=', question.id)
-    .selectAll()
-    .execute();
+async function getAllQuestionAnswers(questionId: number): Promise<Answer[] | null> {
+  try {
+    const answers = await surveyDb
+      .selectFrom('frame_survey_question_answers')
+      .where('question_id', '=', questionId)
+      .selectAll()
+      .execute();
+    return answers;
+  } catch (error) {
+    console.error('Could not get answers:', error);
+    return null;
+  }
+}
+
+export async function getSurvey(questionId: number): Promise<Survey | null> {
+  const question = await getQuestion(questionId);
+  if (!question) {
+    return null;
+  }
+
+  const answers = await getAllQuestionAnswers(question.id);
+  if (!answers) {
+    return null;
+  }
 
   return {
     question,
@@ -115,8 +142,8 @@ export async function postUserResponse(
   userAddress: string,
   userId: string,
 ) {
-  const survey = await getSurvey(String(questionId));
-  const surveyAnswerIds = survey.answers.map((answer) => answer.id);
+  const survey = await getSurvey(questionId);
+  const surveyAnswerIds = survey?.answers?.map((answer) => answer.id) ?? [];
 
   if (!surveyAnswerIds.includes(answerId)) {
     return {
