@@ -18,7 +18,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { encodeFunctionData, isAddress, namehash } from 'viem';
+import { ContractFunctionParameters, isAddress, namehash } from 'viem';
 import { useAccount } from 'wagmi';
 import L2Resolver from 'apps/web/src/abis/L2Resolver';
 import BaseRegistrarAbi from 'apps/web/src/abis/BaseRegistrarAbi';
@@ -96,6 +96,48 @@ export default function ProfileTransferOwnershipProvider({
   const isValidRecipientAddress = isAddress(recipientAddress);
   const tokenId = getTokenIdFromBasename(profileUsername);
 
+  // Contract write calls
+  const setAddrContract = useMemo(() => {
+    if (!isValidRecipientAddress || !profileUsername) return;
+
+    return {
+      abi: L2Resolver,
+      address: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
+      args: [namehash(profileUsername), recipientAddress],
+      functionName: 'setAddr',
+    } as ContractFunctionParameters;
+  }, [basenameChain.id, isValidRecipientAddress, profileUsername, recipientAddress]);
+
+  const reclaimContract = useMemo(() => {
+    if (!tokenId || !isValidRecipientAddress) return;
+    return {
+      abi: BaseRegistrarAbi,
+      address: USERNAME_BASE_REGISTRAR_ADDRESSES[basenameChain.id],
+      args: [tokenId, recipientAddress],
+      functionName: 'reclaim',
+    } as ContractFunctionParameters;
+  }, [basenameChain.id, isValidRecipientAddress, recipientAddress, tokenId]);
+
+  const safeTransferFromContract = useMemo(() => {
+    if (!tokenId || !isValidRecipientAddress || !address) return;
+
+    return {
+      abi: BaseRegistrarAbi,
+      address: USERNAME_BASE_REGISTRAR_ADDRESSES[basenameChain.id],
+      args: [address, recipientAddress, tokenId],
+      functionName: 'safeTransferFrom',
+    } as ContractFunctionParameters;
+  }, [address, basenameChain.id, isValidRecipientAddress, recipientAddress, tokenId]);
+
+  const setNameContract = useMemo(() => {
+    return {
+      abi: ReverseRegistrarAbi,
+      address: USERNAME_REVERSE_REGISTRAR_ADDRESSES[basenameChain.id],
+      args: [''],
+      functionName: 'setName',
+    } as ContractFunctionParameters;
+  }, [basenameChain.id]);
+
   // The 4 transactions we got to track
   const {
     initiateTransaction: initiateSafeTransferFrom,
@@ -123,119 +165,51 @@ export default function ProfileTransferOwnershipProvider({
       eventName: 'basename_set_name',
     });
 
+  // One batched transaction
   const updateViaBatchCalls = useCallback(async () => {
     if (!isValidRecipientAddress) return;
     if (!address) return;
     if (!basenameChain) return;
     if (!batchCallsEnabled) return;
-
-    await initiateBatchCalls({
-      calls: [
-        {
-          to: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
-          data: encodeFunctionData({
-            abi: L2Resolver,
-            args: [namehash(profileUsername), recipientAddress],
-            functionName: 'setAddr',
-          }),
-        },
-        {
-          to: USERNAME_BASE_REGISTRAR_ADDRESSES[basenameChain.id],
-          data: encodeFunctionData({
-            abi: BaseRegistrarAbi,
-            args: [tokenId, recipientAddress],
-            functionName: 'reclaim',
-          }),
-        },
-        {
-          to: USERNAME_BASE_REGISTRAR_ADDRESSES[basenameChain.id],
-          data: encodeFunctionData({
-            abi: BaseRegistrarAbi,
-            args: [address, recipientAddress, tokenId],
-            functionName: 'safeTransferFrom',
-          }),
-        },
-        {
-          to: USERNAME_REVERSE_REGISTRAR_ADDRESSES[basenameChain.id],
-          data: encodeFunctionData({
-            abi: ReverseRegistrarAbi,
-            args: [''],
-            functionName: 'setName',
-          }),
-        },
-      ],
-      account: address,
-      chain: basenameChain,
-    });
+    if (setAddrContract && reclaimContract && safeTransferFromContract && setNameContract) {
+      await initiateBatchCalls({
+        contracts: [setAddrContract, reclaimContract, safeTransferFromContract, setNameContract],
+        account: address,
+        chain: basenameChain,
+      });
+    }
   }, [
     address,
     basenameChain,
     batchCallsEnabled,
     initiateBatchCalls,
     isValidRecipientAddress,
-    profileUsername,
-    recipientAddress,
-    tokenId,
+    reclaimContract,
+    safeTransferFromContract,
+    setAddrContract,
+    setNameContract,
   ]);
 
   // The 4 Function with safety checks
   const updateSetAddr = useCallback(async () => {
-    if (!isValidRecipientAddress) return Promise.reject('Invalid target address');
-
-    await initiateSetAddr({
-      abi: L2Resolver,
-      address: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
-      args: [namehash(profileUsername), recipientAddress],
-      functionName: 'setAddr',
-    });
-  }, [
-    basenameChain.id,
-    initiateSetAddr,
-    isValidRecipientAddress,
-    profileUsername,
-    recipientAddress,
-  ]);
+    if (!setAddrContract) return Promise.reject('Invalid setAddrContract');
+    await initiateSetAddr(setAddrContract);
+  }, [initiateSetAddr, setAddrContract]);
 
   const updateReclaim = useCallback(async () => {
-    if (!isValidRecipientAddress) return Promise.reject('Invalid target address');
-
-    await initiateReclaim({
-      abi: BaseRegistrarAbi,
-      address: USERNAME_BASE_REGISTRAR_ADDRESSES[basenameChain.id],
-      args: [tokenId, recipientAddress],
-      functionName: 'reclaim',
-    });
-  }, [basenameChain.id, initiateReclaim, isValidRecipientAddress, recipientAddress, tokenId]);
+    if (!reclaimContract) return Promise.reject('Invalid reclaimContract');
+    await initiateReclaim(reclaimContract);
+  }, [initiateReclaim, reclaimContract]);
 
   const updateSafeTransferFrom = useCallback(async () => {
-    if (!isValidRecipientAddress) return Promise.reject('Invalid target address');
-    if (!address) return;
-
-    await initiateSafeTransferFrom({
-      abi: BaseRegistrarAbi,
-      address: USERNAME_BASE_REGISTRAR_ADDRESSES[basenameChain.id],
-      args: [address, recipientAddress, tokenId],
-      functionName: 'safeTransferFrom',
-    });
-  }, [
-    address,
-    basenameChain.id,
-    initiateSafeTransferFrom,
-    isValidRecipientAddress,
-    recipientAddress,
-    tokenId,
-  ]);
+    if (!safeTransferFromContract) return Promise.reject('Invalid safeTransferFromContract');
+    await initiateSafeTransferFrom(safeTransferFromContract);
+  }, [initiateSafeTransferFrom, safeTransferFromContract]);
 
   const updateSetName = useCallback(async () => {
-    if (!isValidRecipientAddress) return Promise.reject('Invalid target address');
-
-    await initiateSetName({
-      abi: ReverseRegistrarAbi,
-      address: USERNAME_REVERSE_REGISTRAR_ADDRESSES[basenameChain.id],
-      args: [''],
-      functionName: 'setName',
-    });
-  }, [basenameChain.id, initiateSetName, isValidRecipientAddress]);
+    if (!setNameContract) return Promise.reject('Invalid setNameContract');
+    await initiateSetName(setNameContract);
+  }, [initiateSetName, setNameContract]);
 
   // Function & status we can track and display the edit rec
   const ownershipSettings: OwnershipSettings[] = useMemo(() => {

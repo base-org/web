@@ -4,9 +4,9 @@ import { decodeRawLog, USER_OPERATION_EVENT_LOG_NAME } from 'apps/web/src/utils/
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useState } from 'react';
 import { Chain } from 'viem';
-import { SendCallsParameters } from 'viem/experimental';
+import { WriteContractsParameters } from 'viem/experimental';
 import { useAccount, useSwitchChain, useWaitForTransactionReceipt } from 'wagmi';
-import { useCallsStatus, useSendCalls } from 'wagmi/experimental';
+import { useCallsStatus, useWriteContracts } from 'wagmi/experimental';
 
 /*
   A hook to request and track a wallet write transaction
@@ -49,15 +49,15 @@ export default function useSendCallsWithLogs({ chain, eventName }: UseSendCallsW
 
   const [batchCallsStatus, setBatchCallsStatus] = useState<BatchCallsStatus>(BatchCallsStatus.Idle);
 
-  // Experimental: Send a batch call
+  // Write the contract
   const {
-    sendCallsAsync,
+    writeContractsAsync,
     data: sendCallsId,
     isPending: sendCallsIsPending,
     isSuccess: sendCallsIsSuccess,
     isError: sendCallsIsError,
     error: sendCallsError,
-  } = useSendCalls();
+  } = useWriteContracts();
 
   // Experimental: Track batch call status
   const { data: sendCallsResult, isPending: sendCallsResultIsPending } = useCallsStatus({
@@ -94,7 +94,7 @@ export default function useSendCallsWithLogs({ chain, eventName }: UseSendCallsW
   const { switchChainAsync } = useSwitchChain();
 
   const initiateBatchCalls = useCallback(
-    async (calls: SendCallsParameters) => {
+    async (writeContractParameters: WriteContractsParameters) => {
       if (!isCoinbaseSmartWallet) return Promise.resolve("Wallet doesn't support sendCalls");
 
       if (!connectedChain) return;
@@ -104,7 +104,7 @@ export default function useSendCallsWithLogs({ chain, eventName }: UseSendCallsW
       try {
         setBatchCallsStatus(BatchCallsStatus.Initiated);
         logEventWithContext(`${eventName}_transaction_initiated`, ActionType.change);
-        await sendCallsAsync(calls);
+        await writeContractsAsync(writeContractParameters);
 
         logEventWithContext(`${eventName}_transaction_approved`, ActionType.change);
         setBatchCallsStatus(BatchCallsStatus.Approved);
@@ -120,7 +120,7 @@ export default function useSendCallsWithLogs({ chain, eventName }: UseSendCallsW
       switchChainAsync,
       logEventWithContext,
       eventName,
-      sendCallsAsync,
+      writeContractsAsync,
       logError,
     ],
   );
