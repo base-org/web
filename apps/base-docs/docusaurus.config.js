@@ -200,17 +200,17 @@ const config = {
           label: 'Learn',
           items: [
             {
-              label: 'Tutorials',
-              to: '/tutorials',
-              type: 'custom-dropdownLink',
-              eventLabel: 'tutorials',
-              eventContext: 'navbar',
-            },
-            {
               label: 'Learn to Build Onchain',
               to: '/base-learn/docs/welcome',
               type: 'custom-dropdownLink',
               eventLabel: 'camp_learn',
+              eventContext: 'navbar',
+            },
+            {
+              label: 'Tutorials',
+              to: '/tutorials',
+              type: 'custom-dropdownLink',
+              eventLabel: 'tutorials',
               eventContext: 'navbar',
             },
             {
