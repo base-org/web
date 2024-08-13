@@ -12,7 +12,7 @@ export default function ResourceCard({
   description,
   topLeft = null,
   topRight = null,
-  classnames
+  classnames,
 }: ResourceCardProps) {
   const { logEventWithContext } = useAnalytics();
 
