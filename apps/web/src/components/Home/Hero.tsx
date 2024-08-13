@@ -113,7 +113,7 @@ export function Hero() {
             <div className="flex flex-col space-y-6">
               <div className="flex flex-col items-center gap-2 pt-7 md:flex-row">
                 <ButtonWithLinkAndEventLogging
-                  href="/getstarted"
+                  href="/getstarted/?utm_source=basedocs&utm_medium=hero"
                   eventName="getstarted"
                   target="_blank"
                   rel="noreferrer noopener"
