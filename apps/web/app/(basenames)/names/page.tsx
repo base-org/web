@@ -3,6 +3,7 @@ import ErrorsProvider from 'apps/web/contexts/Errors';
 import RegistrationFlow from 'apps/web/src/components/Basenames/RegistrationFlow';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import basenameCover from './basename_cover.png';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -11,7 +12,12 @@ export const metadata: Metadata = {
     'Basenames are a core onchain building block that enables anyone to establish their identity on Base by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Base.',
   openGraph: {
     title: `Basenames`,
-    url: `/`,
+    url: `/names`,
+    images: [basenameCover.src],
+  },
+  twitter: {
+    site: '@base',
+    card: 'summary_large_image',
   },
 };
 

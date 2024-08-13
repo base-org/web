@@ -1,7 +1,16 @@
+import {
+  Address,
+  Chain,
+  encodePacked,
+  keccak256,
+  namehash,
+  sha256,
+  ContractFunctionParameters,
+} from 'viem';
+import { normalize } from 'viem/ens';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import EARegistrarControllerAbi from 'apps/web/src/abis/EARegistrarControllerAbi';
-import { Address, Chain, encodePacked, keccak256, namehash, sha256 } from 'viem';
-import { normalize } from 'viem/ens';
+import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import profilePictures1 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/1.svg';
 import profilePictures2 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/2.svg';
 import profilePictures3 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/3.svg';
@@ -12,13 +21,10 @@ import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profil
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import { base, baseSepolia, mainnet } from 'viem/chains';
 import { BaseName } from '@coinbase/onchainkit/identity';
-import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import {
   USERNAME_EA_REGISTRAR_CONTROLLER_ADDRESSES,
-  USERNAME_L2_RESOLVER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
-import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import {
   ALLOWED_IMAGE_TYPE,
   MAX_IMAGE_SIZE_IN_MB,
@@ -29,6 +35,8 @@ import {
   IsValidIpfsUrl,
   IsValidVercelBlobUrl,
 } from 'apps/web/src/utils/urls';
+import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
+import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 20;
@@ -62,12 +70,13 @@ export const textRecordsSocialFieldsEnabled = [
   UsernameTextRecordKeys.Url,
 ];
 
-export const textRecordsSocialFieldsEnabledIcons: Record<UsernameTextRecordKeys, string> = {
-  [UsernameTextRecordKeys.Twitter]: 'twitter',
-  [UsernameTextRecordKeys.Farcaster]: 'farcaster',
-  [UsernameTextRecordKeys.Github]: 'github',
-  [UsernameTextRecordKeys.Url]: 'website',
-};
+export const textRecordsSocialFieldsEnabledIcons: Partial<Record<UsernameTextRecordKeys, string>> =
+  {
+    [UsernameTextRecordKeys.Twitter]: 'twitter',
+    [UsernameTextRecordKeys.Farcaster]: 'farcaster',
+    [UsernameTextRecordKeys.Github]: 'github',
+    [UsernameTextRecordKeys.Url]: 'website',
+  };
 
 // Users might add their handle as @myProfile, which breaks on some website
 // TODO: Ideally we'd sanitize these before writing them as TextRecord
@@ -87,6 +96,9 @@ export const formatSocialFieldUrl = (key: UsernameTextRecordKeys, handleOrUrl: s
     case UsernameTextRecordKeys.Github:
       return `https://github.com/${sanitizeHandle(handleOrUrl)}`;
     case UsernameTextRecordKeys.Url:
+      if (!/^https?:\/\//i.test(handleOrUrl)) {
+        return `https://${handleOrUrl}`;
+      }
       return handleOrUrl;
     default:
       return '';
@@ -336,7 +348,7 @@ export enum Discount {
   BASE_BUILDATHON_PARTICIPANT = 'BASE_BUILDATHON_PARTICIPANT',
   SUMMER_PASS_LVL_3 = 'SUMMER_PASS_LVL_3',
   BNS_NAME = 'BNS_NAME',
-  BASE_ETH_NFT = 'BASE_ETH_NFT',
+  BASE_DOT_ETH_NFT = 'BASE_DOT_ETH_NFT',
 }
 
 export function isValidDiscount(key: string): key is keyof typeof Discount {
@@ -345,47 +357,6 @@ export function isValidDiscount(key: string): key is keyof typeof Discount {
 
 export function getChainForBasename(username: BaseName): Chain {
   return username.endsWith(`.${USERNAME_DOMAINS[base.id]}`) ? base : baseSepolia;
-}
-
-// Resolve name to address
-export async function fetchAddress(username: BaseName) {
-  const chain = getChainForBasename(username);
-
-  try {
-    const client = getBasenamePublicClient(chain.id);
-    const ensAddress = await client.getEnsAddress({
-      name: normalize(username),
-      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
-    });
-    return ensAddress;
-  } catch (error) {}
-}
-
-export async function fetchAvatar(username: BaseName) {
-  const chain = getChainForBasename(username);
-
-  try {
-    const client = getBasenamePublicClient(chain.id);
-    const ensAvatar = await client.getEnsAvatar({
-      name: normalize(username),
-      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
-    });
-    return ensAvatar;
-  } catch (error) {}
-}
-
-export async function fetchDescription(username: BaseName) {
-  const chain = getChainForBasename(username);
-  try {
-    const client = getBasenamePublicClient(chain.id);
-    const description = await client.readContract({
-      abi: L2ResolverAbi,
-      address: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
-      args: [namehash(username), UsernameTextRecordKeys.Description],
-      functionName: 'text',
-    });
-    return description;
-  } catch (error) {}
 }
 
 // Assume domainless name to .base.eth
@@ -483,6 +454,68 @@ export function validateBasenameAvatarUrl(source: string): ValidationResult {
     };
   }
 }
+
+/* 
+  Fetch / Api functions
+*/
+
+// Get username `addr`
+export async function getBasenameAddress(username: BaseName) {
+  const chain = getChainForBasename(username);
+
+  try {
+    const client = getBasenamePublicClient(chain.id);
+    const ensAddress = await client.getEnsAddress({
+      name: normalize(username),
+      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
+    });
+    return ensAddress;
+  } catch (error) {}
+}
+
+// Build a TextRecord contract request
+export function buildBasenameTextRecordContract(
+  username: BaseName,
+  key: UsernameTextRecordKeys,
+): ContractFunctionParameters {
+  const chain = getChainForBasename(username);
+  return {
+    abi: L2ResolverAbi,
+    address: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
+    args: [namehash(username), key],
+    functionName: 'text',
+  };
+}
+
+// Get a single TextRecord
+export async function getBasenameTextRecord(username: BaseName, key: UsernameTextRecordKeys) {
+  const chain = getChainForBasename(username);
+  try {
+    const client = getBasenamePublicClient(chain.id);
+    const contractParameters = buildBasenameTextRecordContract(username, key);
+    const textRecord = await client.readContract(contractParameters);
+    return textRecord as string;
+  } catch (error) {}
+}
+
+// Get a all TextRecords
+export async function getBasenameTextRecords(username: BaseName) {
+  const chain = getChainForBasename(username);
+  try {
+    const readContracts: ContractFunctionParameters[] = textRecordsKeysEnabled.map((key) => {
+      return buildBasenameTextRecordContract(username, key);
+    });
+
+    const client = getBasenamePublicClient(chain.id);
+    const textRecords = await client.multicall({ contracts: readContracts });
+
+    return textRecords;
+  } catch (error) {}
+}
+
+/* 
+  Feature flags
+*/
 
 // Force EA/GA based on env
 export const IS_EARLY_ACCESS = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';

@@ -3,17 +3,11 @@ import { isBasenameSupportedChain } from 'apps/web/src/hooks/useBasenameChain';
 import {
   getProofsByNamespaceAndAddress,
   hasRegisteredWithDiscount,
+  MerkleTreeProofResponse,
   ProofTableNamespace,
 } from 'apps/web/src/utils/proofs';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Address, isAddress } from 'viem';
-
-export type BNSProofResponse = {
-  discountValidatorAddress: Address;
-  address: Address;
-  namespace: string;
-  proofs: `0x${string}`[];
-};
+import { isAddress } from 'viem';
 
 /*
 this endpoint returns whether or not the account has a bns account
@@ -61,7 +55,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(404).json({ error: 'address is not eligible for early access' });
     }
 
-    const responseData: BNSProofResponse = {
+    const responseData: MerkleTreeProofResponse = {
       ...content,
       proofs,
       discountValidatorAddress: USERNAME_BNS_DISCOUNT_VALIDATORS[parsedChain],

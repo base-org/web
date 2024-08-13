@@ -171,6 +171,12 @@ function DesktopNav({ color }: DesktopNavProps) {
         Bridge
       </a>
       <Dropdown label="Developers" color={color}>
+        <DropdownLink
+          href="/getstarted/?utm_source=dotorg&utm_medium=nav"
+          label="Get Started"
+          color={color}
+          eventName="getstarted"
+        />
         <DropdownLink href={docsUrl} label="Docs" color={color} externalLink eventName="docs" />
         <DropdownLink
           href="https://base.org/learn"

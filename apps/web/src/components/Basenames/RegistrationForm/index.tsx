@@ -7,12 +7,15 @@ import {
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useErrors } from 'apps/web/contexts/Errors';
+import { PremiumExplainerModal } from 'apps/web/src/components/Basenames/PremiumExplainerModal';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import RegistrationLearnMoreModal from 'apps/web/src/components/Basenames/RegistrationLearnMoreModal';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
+import { usePremiumEndDurationRemaining } from 'apps/web/src/hooks/useActiveEthPremiumAmount';
+import { useActiveEthPremiumAmount } from 'apps/web/src/hooks/useActivePremiumAmount';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
 import {
@@ -72,12 +75,17 @@ export default function RegistrationForm() {
   } = useRegistration();
   const [years, setYears] = useState(1);
 
-  const [learnMoreModalOpen, setLearnMoreModalOpen] = useState(false);
+  const [premiumExplainerModalOpen, setPremiumExplainerModalOpen] = useState(false);
+  const togglePremiumExplainerModal = useCallback(() => {
+    logEventWithContext('toggle_premium_explainer_modal', ActionType.change);
+    setPremiumExplainerModalOpen((open) => !open);
+  }, [logEventWithContext, setPremiumExplainerModalOpen]);
 
+  const [learnMoreAboutDiscountsModalOpen, setLearnMoreAboutDiscountsModalOpen] = useState(false);
   const toggleLearnMoreModal = useCallback(() => {
-    logEventWithContext('open_learn_more_modal', ActionType.change);
-    setLearnMoreModalOpen((open) => !open);
-  }, [logEventWithContext]);
+    logEventWithContext('toggle_learn_more_modal', ActionType.change);
+    setLearnMoreAboutDiscountsModalOpen((open) => !open);
+  }, [logEventWithContext, setLearnMoreAboutDiscountsModalOpen]);
 
   const increment = useCallback(() => {
     logEventWithContext('registration_form_increment_year', ActionType.click);
@@ -93,6 +101,7 @@ export default function RegistrationForm() {
 
   const ethUsdPrice = useEthPriceFromUniswap();
   const { data: initialPrice } = useNameRegistrationPrice(selectedName, years);
+  const { data: singleYearEthCost } = useNameRegistrationPrice(selectedName, 1);
   const { data: discountedPrice } = useDiscountedNameRegistrationPrice(
     selectedName,
     years,
@@ -122,26 +131,49 @@ export default function RegistrationForm() {
   }, [logEventWithContext, registerNameTransactionHash, setRegisterNameTransactionHash]);
 
   const registerNameCallback = useCallback(() => {
-    registerName()
-      .then(() => {})
-      .catch((error) => {
-        logError(error, 'Failed to register name');
-      });
+    registerName().catch((error) => {
+      logError(error, 'Failed to register name');
+    });
   }, [logError, registerName]);
 
   const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
   const insufficientBalanceToRegister =
     balance?.value !== undefined && price !== undefined && balance?.value < price;
 
-  const resolvedUSDPrice = price !== undefined && ethUsdPrice !== undefined;
-  const usdPrice = resolvedUSDPrice ? formatUsdPrice(price, ethUsdPrice) : '--.--';
+  const hasResolvedUSDPrice = price !== undefined && ethUsdPrice !== undefined;
+  const usdPrice = hasResolvedUSDPrice ? formatUsdPrice(price, ethUsdPrice) : '--.--';
   const nameIsFree = price === 0n;
+
+  const { data: premiumEthAmount } = useActiveEthPremiumAmount();
+  const premiumEndTimestamp = usePremiumEndDurationRemaining();
+
+  const isPremiumActive = premiumEthAmount && premiumEthAmount !== 0n;
+  const mainRegistrationElementClasses = classNames(
+    'z-10 flex flex-col items-start justify-between gap-6 bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center',
+    {
+      'rounded-2xl': !isPremiumActive,
+      'rounded-b-2xl': isPremiumActive,
+    },
+  );
 
   if (!IS_EARLY_ACCESS || (IS_EARLY_ACCESS && discount)) {
     return (
       <>
         <div className="mt-20 transition-all duration-500">
-          <div className="z-10 flex flex-col items-start justify-between gap-6 rounded-2xl bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center">
+          {isPremiumActive && (
+            <div className="flex justify-between gap-4 rounded-t-2xl bg-gradient-to-r from-[#B139FF] to-[#FF9533] px-6 py-4 text-white">
+              <p>
+                Temporary premium of {premiumEthAmount} ETH{' '}
+                {premiumEndTimestamp && <>ends in {premiumEndTimestamp}</>}
+              </p>
+              {Boolean(premiumEthAmount && singleYearEthCost) && (
+                <button type="button" className="underline" onClick={togglePremiumExplainerModal}>
+                  Learn more
+                </button>
+              )}
+            </div>
+          )}
+          <div className={mainRegistrationElementClasses}>
             <div className="max-w-[14rem] self-start">
               <p className="text-line mb-2 text-sm font-bold uppercase">Claim for</p>
               <div className="flex items-center justify-between">
@@ -200,7 +232,7 @@ export default function RegistrationForm() {
                     {formatEtherPrice(price)} ETH
                   </p>
                 )}
-                {resolvedUSDPrice && (
+                {hasResolvedUSDPrice && (
                   <span className="whitespace-nowrap text-xl text-gray-60">${usdPrice}</span>
                 )}
               </div>
@@ -208,9 +240,17 @@ export default function RegistrationForm() {
                 <p className="text-sm text-state-n-hovered">your ETH balance is insufficient</p>
               ) : Boolean(nameIsFree && IS_EARLY_ACCESS) ? (
                 <p className="text-sm text-green-50">Discounted during Early Access.</p>
-              ) : (
-                nameIsFree && <p className="text-sm text-green-50">Free with your verification</p>
-              )}
+              ) : nameIsFree ? (
+                <p className="text-sm text-green-50">Free with your verification</p>
+              ) : isPremiumActive ? (
+                <button
+                  className="text-sm text-blue-40 underline"
+                  type="button"
+                  onClick={togglePremiumExplainerModal}
+                >
+                  This name has a temporary premium
+                </button>
+              ) : null}
             </div>
 
             <div className="w-full max-w-full md:max-w-[13rem]">
@@ -290,9 +330,17 @@ export default function RegistrationForm() {
           )}
         </div>
         <RegistrationLearnMoreModal
-          isOpen={learnMoreModalOpen}
+          isOpen={learnMoreAboutDiscountsModalOpen}
           toggleModal={toggleLearnMoreModal}
         />
+        {Boolean(premiumEthAmount && singleYearEthCost) && (
+          <PremiumExplainerModal
+            premiumEthAmount={premiumEthAmount}
+            singleYearEthCost={singleYearEthCost as bigint}
+            isOpen={premiumExplainerModalOpen}
+            toggleModal={togglePremiumExplainerModal}
+          />
+        )}
       </>
     );
   }
