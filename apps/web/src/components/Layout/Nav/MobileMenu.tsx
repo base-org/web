@@ -228,6 +228,11 @@ function MobileMenu({ color }: MobileMenuProps) {
                   label="Developers"
                 >
                   <DropdownLink
+                    href="/getstarted"
+                    label="Get Started"
+                    eventName="getstarted"
+                  />
+                  <DropdownLink
                     href="https://docs.base.org"
                     label="Docs"
                     externalLink
