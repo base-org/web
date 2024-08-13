@@ -178,13 +178,10 @@ export default function UsernameProfileTransferOwnershipModal({
           <div className="mx-auto mb-8 flex h-[8rem] w-[8rem] items-center justify-center rounded-full bg-blue-500 text-white">
             <Icon name="checkmark" color="currentColor" width="2rem" height="2rem" />
           </div>
-          {isValidRecipientAddress && (
-            <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
-              <WalletIdentity address={recipientAddress} />
-            </div>
-          )}
           <div className="text-center">
-            <p>Has received the transfer!</p>
+            <p>
+              <strong>{profileUsername}</strong> has been sent to {recipientAddress}
+            </p>
           </div>
         </div>
       )}
