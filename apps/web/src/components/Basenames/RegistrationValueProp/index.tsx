@@ -3,7 +3,7 @@ import Image from 'next/image';
 import faceScan from './assets/faceScan.svg';
 import currencies from './assets/currencies.svg';
 import sofort from './assets/sofort.svg';
-import globe from '../assets/globeWhite.webm';
+import globe from './assets/globeWhite.webm';
 import classNames from 'classnames';
 
 type ValuePropProps = {
