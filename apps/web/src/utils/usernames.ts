@@ -101,7 +101,7 @@ export const sanitizeHandle = (handle: string) => {
     handleSanitized = handleSanitized.substring(1);
   }
 
-  return handleSanitized.replace(/^@/, '');
+  return handleSanitized;
 };
 
 export const formatSocialFieldUrl = (key: UsernameTextRecordKeys, handleOrUrl: string) => {
