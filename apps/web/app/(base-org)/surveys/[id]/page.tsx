@@ -30,10 +30,10 @@ export async function generateMetadata({ params }: SurveyProps): Promise<Metadat
     buttons: survey?.answers.map((answer) => ({
       action: 'post',
       label: answer.description,
-      postUrl: `http://localhost:3000/api/surveys/postUserResponse?questionId=${survey.question.id}&answerId=${answer.id}`,
+      postUrl: `http://localhost:3000/api/surveys/frameUserResponse?questionId=${survey.question.id}&answerId=${answer.id}`,
     })),
     image: 'https://base.org/images/base-open-graph.png',
-    postUrl: 'http://localhost:3000/api/surveys/postUserResponse',
+    postUrl: 'http://localhost:3000/api/surveys/frameUserResponse',
   };
 
   return {
