@@ -35,14 +35,14 @@ export default async function BuildersMostWanted() {
         />
         <ResourceCard
           title="Office Hours"
-          description="Schedule time to talk to directly to a member of the Base Ecosystem team"
+          description="Check out our Office Hours schedule to ask your questions live"
           href="https://lu.ma/base-officehours/?utm_source=dotorg&medium=builderkit"
           topLeft={<Icon name="dotGrid" color="white" />}
           classnames="bg-purple-80 border-purple-80"
         />
         <ResourceCard
           title="Host a Meetup"
-          description="Apply to bring Based people together in your community."
+          description="Apply to bring Based people together in your community"
           href="https://docs.google.com/forms/d/e/1FAIpQLSf5wnzD_czyYOyHFeOmFK_rjsJj7Utovo3jWwR40JizPqmDZg/viewform"
           topLeft={<Icon name="people" color="white" />}
           classnames="bg-purple-60 border-purple-60"
