@@ -4,7 +4,7 @@ slug: /farcaster-frames-nft-minting
 description: A tutorial that teaches how to make a Farcaster Frame that allows you to mint and airdrop NFTs to users.
 author: briandoyle81
 keywords: [Solidity, ERC-721, token, NFT, farcaster, frames, farcaster frames]
-tags: ['frames', 'nft']
+tags: ['frames', 'nft', 'OnchainKit']
 difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null
