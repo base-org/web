@@ -62,7 +62,7 @@ type UserResponseReturnValueType = {
   status: number;
   message: string;
   userResponse?: UserResponseFromDb;
-}
+};
 
 const dialect = new PostgresDialect({
   pool: new Pool({
@@ -78,11 +78,6 @@ const dialect = new PostgresDialect({
 export const surveyDb = new Kysely<Database>({
   dialect,
 });
-
-// (probably) Doesn't need to be in an API routes
-// web/src/apis/survey.ts // getAllQuestions
-// GetAllQuestions => call getAllQuestions()
-// /apiroutes/survey => call getAllQuestions()
 
 export async function getAllQuestions(): Promise<Question[]> {
   try {
@@ -176,32 +171,3 @@ export async function postUserResponse(
     message: 'you fucking rock',
   };
 }
-
-/*
-  // web/src/apis/survey.ts -> always present & initiated
-  db types
-  db connection
-  db queries --> READ & CREATE
-
-  Table frame_survey_questions
-    - question ID = 1 // slug = 'my-survey-one'
-    - question ID = 2 // slug = 'my-survey-two'
-    - ....
-
-  // page for each survey
-  // Gets pre-rendered at build time / "yarn build"
-  // app/surveys/GetAllQuestions/page // SSR
-    --> query web/src/apis/survey
-    --> each survey gets own page (i think)
-
-
-
-  GetAllQuestions/postFrame // client component
-    -- fetch()
-    -- post()
-    -- useEffect / useState()
-
-  // Only available when the server is started / "yarn dev" & "yarn start"
-  API routes routes (maybe)
-    --> query web/src/apis/survey
-*/
