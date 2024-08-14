@@ -21,7 +21,7 @@ keywords:
     Coinbase smart wallet,
     eoa,
   ]
-tags: ['account abstraction', 'frontend']
+tags: ['account abstraction', 'frontend', 'OnchainKit']
 difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null

@@ -4,7 +4,7 @@ slug: /farcaster-frames-transactions
 description: A tutorial that teaches how to invoke a wallet transaction from a Farcaster Frame.
 author: briandoyle81
 keywords: [farcaster, frames, farcaster frames, wallet, transaction, Base]
-tags: ['frames']
+tags: ['frames', 'OnchainKit']
 difficulty: intermediate
 hide_table_of_contents: false
 displayed_sidebar: null
