@@ -1,3 +1,5 @@
+'use client';
+
 import faceScan from './assets/faceScan.svg';
 import currencies from './assets/currencies.svg';
 import sofort from './assets/sofort.svg';
