@@ -21,6 +21,8 @@ const TagList = [
   'frames',
   'frontend',
   'OnchainKit',
+  'Smart Wallet',
+  'Paymaster',
 ];
 
 function useQuery() {

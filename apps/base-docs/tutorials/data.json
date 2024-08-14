@@ -301,14 +301,14 @@
         ],
         "tags": [
             "nft",
-            "smart wallet"
+            "Smart Wallet"
         ],
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Aug 14, 2024",
         "duration": "22 min read",
-        "checksum": "90298cc2b50fdf33b3c95d4b25bb6097ac53b0bc38868a3c92c94e3f9d56debb"
+        "checksum": "928f5cd0916d4fe6a0fae18657d01ae00e098a1e4238918692da166f58df2e9a"
     },
     "1_2_smart-wallet-and-eoa-with-onchainkit": {
         "title": "Use the Coinbase Smart Wallet and EOAs with OnchainKit",
@@ -335,14 +335,15 @@
         "tags": [
             "account abstraction",
             "frontend",
-            "OnchainKit"
+            "OnchainKit",
+            "Smart Wallet"
         ],
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Aug 14, 2024",
         "duration": "10 min read",
-        "checksum": "ba80e3879f8797cbb808ed1b958d8f0185250ab5fe5245f8eb01b344d1294a20"
+        "checksum": "85de6a102b278947d6e859bbffa9c45cf5babaf0f58f922c42fa839a04bd9e3b"
     },
     "1_3_smart-wallet-and-rainbowkit": {
         "title": "Coinbase Smart Wallet with RainbowKit",
@@ -379,14 +380,15 @@
         ],
         "tags": [
             "account abstraction",
-            "frontend"
+            "frontend",
+            "Smart Wallet"
         ],
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Aug 14, 2024",
         "duration": "11 min read",
-        "checksum": "2a7228d01aeb31136c384b09197781e5c8cfb84df47d0344dd758df453489496"
+        "checksum": "ce577b780ccf793b13c738ab52c35b9a3438aefe76fd6a85869916af1ce1acef"
     },
     "1_4_1_onchainkit-transact-component": {
         "title": "Call Smart Contract Functions with the Transaction Component",

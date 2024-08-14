@@ -4,7 +4,7 @@ slug: /coinbase-smart-wallet
 description: Learn to create an app that uses the Coinbase Smart Wallet and effectively manages assets and permissions for both native and new users of onchain apps
 author: briandoyle81
 keywords: [Solidity, ERC-721, token, NFT, wagmi, viem, smart wallet]
-tags: ['nft', 'smart wallet']
+tags: ['nft', 'Smart Wallet', 'Paymaster']
 difficulty: intermediate
 hide_table_of_contents: false
 displayed_sidebar: null
