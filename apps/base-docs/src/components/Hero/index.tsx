@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './styles.module.css';
 import HeroButton from './HeroButton/index';
 
+
 export default function Hero() {
   return (
     <header className={styles.heroContainer}>
