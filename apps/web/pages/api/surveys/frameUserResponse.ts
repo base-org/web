@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
-
+import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { postUserResponse } from '../../../src/apis/frameSurveys';
 
 export type UserSurveyResponse = {
@@ -16,15 +16,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const { questionId, answerId } = req.query;
 
-  let parsedBody: unknown;
-  try {
-    parsedBody = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-  } catch (e) {
-    return res.status(400).json({ message: 'Invalid JSON in request body' });
-  }
-
-  const userAddress: string = parsedBody.mockFrameData.address ?? '0xbrendan_test';
-  const userId: string = parsedBody.mockFrameData.interactor.fid;
+  const body: FrameRequest = req.body;
+  const userAddress: string = body.mockFrameData.address ?? '0xbrendan_test';
+  const userId = String(body.untrustedData.fid);
 
   try {
     const userSubmission = await postUserResponse(
@@ -33,8 +27,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       userAddress,
       userId,
     );
-    console.log({ userSubmission });
-    return res.status(userSubmission.status).json(userSubmission);
+
+    if (userSubmission.status !== 200) {
+      // TODO — WHAT IF USERSUBMISSION FAILED?
+    }
+
+    const frameResponse = getFrameHtmlResponse({
+      buttons: [
+        {
+          action: 'link',
+          label: 'Build On Base',
+          target: 'https://base.org/getstarted',
+        },
+      ],
+      image: {
+        src: 'https://base.org/images/base-open-graph.png',
+      },
+    });
+
+    return res.status(200).setHeader('Content-Type', 'text/html').send(frameResponse);
   } catch (error) {
     console.error('Failed to fetch questions:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
