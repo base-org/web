@@ -594,7 +594,7 @@ In this tutorial, you learned how to create [Farcaster] frames. You then updated
 [Vercel]: https://vercel.com
 [Frame Validator]: https://warpcast.com/~/developers/frames
 [Base channel]: https://warpcast.com/~/channel/base
-[Onchain NFTs]: /tutorials/onchain-nfts
+[Onchain NFTs]: ./simple-onchain-nfts
 [Frames]: https://warpcast.notion.site/Farcaster-Frames-4bd47fe97dc74a42a48d3a234636d8c5
 [viem]: https://viem.sh/
 [BaseScan]: https://basescan.org/

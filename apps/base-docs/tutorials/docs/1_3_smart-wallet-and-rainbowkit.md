@@ -249,10 +249,10 @@ In this tutorial, you've learned how connect users to your app using [RainbowKit
 [Base]: https://docs.base.org/network-information
 [smart contract development]: https://base.org/camp
 [`createConfig`]: https://wagmi.sh/react/api/createConfig
-[Introduction to Providers]: /intro-to-providers
+[Introduction to Providers]: ./intro-to-providers
 [Onchain App Development]: https://docs.base.org/base-learn/docs/frontend-setup/overview
 [Coinbase Wallet]: https://www.coinbase.com/wallet
 [Coinbase Smart Wallet]: https://www.coinbase.com/wallet/smart-wallet
 [custom wallet list]: https://www.rainbowkit.com/docs/custom-wallet-list
-[using the Wallet component]: /smart-wallet-and-onchainkit
+[using the Wallet component]: /tutorials/smart-wallet-and-eoa-with-onchainkit
 [OnchainKit]: https://onchainkit.xyz

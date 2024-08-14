@@ -132,7 +132,7 @@ A deep-dive on the technical details of each of these components is too much to 
 
 ## Creating a project
 
-Before you begin, you need to set up your smart contract development environment. You can setup a development environment using tools like [Hardhat](/tools/hardhat) or [Foundry](/tools/foundry). For this tutorial you will use Foundry.
+Before you begin, you need to set up your smart contract development environment. You can setup a development environment using tools like [Hardhat](/docs/tools/hardhat) or [Foundry](/docs/tools/foundry). For this tutorial you will use Foundry.
 
 To create a new Foundry project, first create a new directory:
 
@@ -551,7 +551,7 @@ forge create ./src/Sender.sol:Sender --rpc-url $BASE_GOERLI_RPC --constructor-ar
 
 When prompted, enter the password that you set earlier, when you imported your wallet's private key.
 
-After running the command above, the contract will be deployed on the Base Goerli test network. You can view the deployment status and contract by using a [block explorer](/tools/block-explorers).
+After running the command above, the contract will be deployed on the Base Goerli test network. You can view the deployment status and contract by using a [block explorer](/docs/tools/block-explorers).
 
 #### Deploying the Receiver contract to Optimism Goerli
 
@@ -645,7 +645,7 @@ Congratulations! You have successfully learned how to perform cross-chain messag
 
 To learn more about cross-chain messaging and Chainlink CCIP, check out the following resources:
 
-- [Cross-chain](https://docs.base.org/tools/cross-chain)
+- [Cross-chain](https://docs.base.org/docs/tools/cross-chain)
 - [Chainlink CCIP](https://docs.chain.link/ccip)
 
 ---
