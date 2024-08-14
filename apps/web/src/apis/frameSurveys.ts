@@ -84,7 +84,7 @@ export const surveyDb = new Kysely<Database>({
 // GetAllQuestions => call getAllQuestions()
 // /apiroutes/survey => call getAllQuestions()
 
-export async function getAllQuestions(): Promise<Question[] | null> {
+export async function getAllQuestions(): Promise<Question[]> {
   try {
     const questions: Question[] = await surveyDb
       .selectFrom('frame_survey_questions')
@@ -93,7 +93,7 @@ export async function getAllQuestions(): Promise<Question[] | null> {
     return questions;
   } catch (error) {
     console.error('Could not fetch questions:', error);
-    return null;
+    return [];
   }
 }
 
