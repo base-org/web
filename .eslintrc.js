@@ -17,26 +17,38 @@ module.exports = {
   ],
   parserOptions: {
     EXPERIMENTAL_useProjectService: true,
+    ecmaVersion: 2021, // Support for modern JavaScript features
+    sourceType: 'module',
+    project: './tsconfig.json',
   },
-  plugins: ['react-perf', 'relay', '@typescript-eslint', 'import'],
+  plugins: [
+    'react-perf',
+    'relay',
+    '@typescript-eslint',
+    'import',
+    'prettier', // Added Prettier plugin for automatic code formatting
+  ],
   extends: [
     'airbnb-typescript/base',
     'airbnb/rules/react',
     'airbnb/rules/react-a11y',
     'plugin:relay/strict',
+    'plugin:@typescript-eslint/recommended', // Recommended TypeScript rules
+    'plugin:prettier/recommended', // Integrates Prettier rules
   ],
   rules: {
+    'prettier/prettier': 'error', // Enforce Prettier code style
     'import/extensions': ['error', 'never'],
     'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx', '.mdx'] }],
 
-    // We utilize prop spreading
+    // Allow prop spreading
     'react/jsx-props-no-spreading': 'off',
 
-    // We utilize class properties
+    // Use class properties
     'react/state-in-constructor': 'off',
 
-    // Dont use prop types since were using TypeScript
+    // Do not use prop types since TypeScript is used
     'react/default-props-match-prop-types': 'off',
     'react/forbid-foreign-prop-types': 'off',
     'react/forbid-prop-types': 'off',
@@ -51,32 +63,31 @@ module.exports = {
     'react-perf/jsx-no-new-function-as-prop': 'warn',
     'react-perf/jsx-no-new-object-as-prop': ['warn', { nativeAllowList: ['style'] }],
 
-    // We prefer function declarations
+    // Prefer function declarations
     'react/function-component-definition': [
       'error',
       { namedComponents: 'function-declaration', unnamedComponents: 'function-expression' },
     ],
 
-    // We prefer on/handle named events
+    // Prefer named event handlers
     'react/jsx-handler-names': 'error',
 
-    // We require named functions for inferred `displayName`
-    // This is required for memo() and forwardRef() usage
+    // Require named functions for inferred `displayName`
     'prefer-arrow-callback': ['error', { allowNamedFunctions: true }],
 
     'react/jsx-one-expression-per-line': 'off',
 
-    // We dont use flow
+    // Do not use Flow
     'relay/generated-flow-types': 'off',
 
-    // Shorthand types
+    // Shortened types
     '@typescript-eslint/array-type': ['error', { default: 'array' }],
     '@typescript-eslint/consistent-indexed-object-style': ['error', 'record'],
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/method-signature-style': ['error', 'property'],
     '@typescript-eslint/no-inferrable-types': 'error',
 
-    // Forbid types
+    // Banned types
     '@typescript-eslint/ban-types': 'error',
     '@typescript-eslint/no-explicit-any': ['error', { fixToUnknown: true }],
     '@typescript-eslint/no-invalid-void-type': 'error',
@@ -128,14 +139,13 @@ module.exports = {
     '@typescript-eslint/no-misused-promises': 'error',
     '@typescript-eslint/promise-function-async': 'error',
 
-    // APIs
+    // API
     '@typescript-eslint/prefer-includes': 'error',
     '@typescript-eslint/prefer-nullish-coalescing': 'error',
     '@typescript-eslint/prefer-optional-chain': 'error',
     '@typescript-eslint/prefer-string-starts-ends-with': 'error',
 
-    // Hard to migrate
-    // Errors for all try/catch blocks and any types from third-parties
+    // Migration Difficulties
     '@typescript-eslint/no-unsafe-member-access': 'off',
   },
 };
