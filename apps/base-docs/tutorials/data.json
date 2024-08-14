@@ -83,7 +83,7 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Aug 9, 2024",
+        "last_updated": "Aug 10, 2024",
         "duration": "18 min read",
         "checksum": "0988226936a6179a48ef69db917e8a8d01f3a99db85e92c8985461dc35572d9a"
     },
@@ -754,9 +754,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Aug 13, 2024",
-        "duration": "18 min read",
-        "checksum": "e20b430c2b1696b473625584d654f4a60e313c102127730553ab75f0bb54c568"
+        "last_updated": "Aug 9, 2024",
+        "duration": "11 min read",
+        "checksum": "89352c695114fc5923cd81252771c3ce9fb5d225860ff567b670e7b9a48346b2"
     },
     "4_account-abstraction-with-biconomy": {
         "title": "Account Abstraction on Base using Biconomy",
@@ -777,13 +777,35 @@
             "Particle Auth"
         ],
         "tags": [
-            "account abstraction"
+            "frames"
+        ],
+        "last_updated": "Aug 9, 2024",
+        "duration": "16 min read",
+        "checksum": "c147d855eef68a8919bec722d1ceba95dba62204cb761063ffe023a0210407e1"
+    },
+    "3_farcaster-frames-nft-minting": {
+        "title": "Farcaster Frames: Building an NFT airdrop Frame",
+        "slug": "/farcaster-frames-nft-minting",
+        "description": "A tutorial that teaches how to make a Farcaster Frame that allows you to mint and airdrop NFTs to users.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "farcaster",
+            "frames",
+            "farcaster frames"
+        ],
+        "tags": [
+            "frames",
+            "nft"
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Aug 14, 2024",
-        "duration": "29 min read",
-        "checksum": "fd4364a5238b6bdbe765ad171c45596338fe2bb367d0f5d0da2f3516dcbbbf73"
+        "last_updated": "Aug 9, 2024",
+        "duration": "23 min read",
+        "checksum": "130aedd8fe0f76fdcaef06ceab60c1deb6cb57aafdf9ac8f760385864a4cdef4"
     },
     "4_account-abstraction-with-particle-network": {
         "title": "Account Abstraction on Base using Particle Network",
@@ -807,9 +829,9 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Aug 14, 2024",
-        "duration": "34 min read",
-        "checksum": "d307c0834f745648d2c7004595a7c60544381a0d90d4f3a3d6337f6152c4c856"
+        "last_updated": "Aug 9, 2024",
+        "duration": "6 min read",
+        "checksum": "46ccf74f9efec55c0b2f1489352107a0a6fb2e5efd39fb178cb2f4710131dbfc"
     },
     "4_account-abstraction-with-privy-and-base-paymaster": {
         "title": "Account Abstraction on Base using Privy and the Base Paymaster",
