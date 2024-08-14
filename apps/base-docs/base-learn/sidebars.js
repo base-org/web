@@ -1,5 +1,10 @@
 const sidebars = {
   docs: [
+    {
+      type: 'link',
+      label: 'Get Help on Discord',
+      href: 'https://discord.com/channels/1067165013397213286/1108389436644917328',
+    },
     ['docs/welcome'],
     {
       type: 'category',
