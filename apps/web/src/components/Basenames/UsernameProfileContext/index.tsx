@@ -71,6 +71,7 @@ export default function UsernameProfileProvider({
     refetch: profileAddressRefetch,
   } = useEnsAddress({
     name: username,
+    chainId: basenameChain.id,
     universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
     query: {
       retry: false,
