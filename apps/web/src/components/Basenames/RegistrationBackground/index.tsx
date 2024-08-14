@@ -8,7 +8,6 @@ import {
 
 import fireworks from './assets/fireworks.webm';
 import globe from './assets/globe.webm';
-import globeCopy from './assets/globeCopy.webm';
 import vortex from './assets/vortex.webm';
 
 import classNames from 'classnames';
@@ -72,7 +71,7 @@ export default function RegistrationBackground() {
         >
           {}
           <video autoPlay className={videoClasses} loop muted playsInline>
-            <source src={globeCopy} type="video/webm" />
+            <source src={globe} type="video/webm" />
           </video>
         </Transition>
       </Transition>

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import faceScan from './assets/faceScan.svg';
 import currencies from './assets/currencies.svg';
 import sofort from './assets/sofort.svg';
-import globeCopy from '../RegistrationBackground/assets/globeCopy.webm';
+import globe from '../assets/globeWhite.webm';
 import classNames from 'classnames';
 
 type ValuePropProps = {
@@ -52,7 +52,7 @@ export default function RegistrationValueProp() {
                 </div>
                 <div className="absolute inset-0 -z-10 pt-8 md:pt-12 scale-125 md:scale-150">
                     <video autoPlay className='w-full h-full motion-reduce:hidden object-fit' loop muted playsInline>
-                        <source src={globeCopy} type="video/webm" />
+                        <source src={globe} type="video/webm" />
                     </video>
                 </div>
             </div>
