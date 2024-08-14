@@ -30,7 +30,7 @@ export default function UsernameProfileSettingsOwnership() {
             type="button"
             onClick={openModal}
           >
-            Transfer ownership
+            Send name
           </button>
         </div>
       </Fieldset>
