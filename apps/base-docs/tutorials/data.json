@@ -1,26 +1,4 @@
 {
-    "0_deploy-with-fleek": {
-        "title": "Deploy an Onchain App with Fleek",
-        "slug": "/deploy-with-fleek",
-        "description": "Learn how to deploy an onchain app using Fleek.",
-        "author": "briandoyle81",
-        "keywords": [
-            "deploy",
-            "fleek",
-            "onchain",
-            "dapp",
-            "onchain app"
-        ],
-        "tags": [
-            "frontend"
-        ],
-        "difficulty": "hard",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Aug 13, 2024",
-        "duration": "9 min read",
-        "checksum": "ef085b6f74d50f93c80ea8f2be1a007a631ccd82a607e9294d05edeed5459b89"
-    },
     "0_deploy-with-foundry": {
         "title": "Deploying a smart contract using Foundry",
         "slug": "/deploy-with-foundry",
@@ -202,6 +180,57 @@
         "duration": "27 min read",
         "checksum": "52d06f74e8ae98119482e0c9c23e61b2d626a6f43bbe1279b3cbbab289bc4115"
     },
+    "0_intro-to-providers": {
+        "title": "Introduction to Providers",
+        "slug": "/intro-to-providers",
+        "description": "A tutorial that teaches what providers are, why you need one, and how to configure several providers and use them to connect to the blockchain.",
+        "author": "briandoyle81",
+        "keywords": [
+            "blockchain providers",
+            "JSON RPC",
+            "RainbowKit",
+            "wagmi React hooks",
+            "viem",
+            "frontend",
+            "smart contract development",
+            "EVM",
+            "Next.js",
+            "Base",
+            "Base network",
+            "Base node providers",
+            "Base providers",
+            "blockchain development",
+            "dApps",
+            "smart contracts",
+            "providers",
+            "public providers",
+            "wallet providers",
+            "vendor providers",
+            "rate limits",
+            "blockchain API",
+            "Ethereum provider",
+            "Base",
+            "Base network",
+            "Base node providers",
+            "Base providers",
+            "QuickNode",
+            "Alchemy",
+            "API keys",
+            "blockchain connection",
+            "public provider",
+            "smart contract development"
+        ],
+        "tags": [
+            "nodes",
+            "frontend"
+        ],
+        "difficulty": "beginner",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "21 min read",
+        "checksum": "c847674db9fb136fddfb6df8ebf5fe08ae30a4cbb35d03513c0b069d0acff0ee"
+    },
     "0_run-a-base-node": {
         "title": "Running a Base Node",
         "slug": "/run-a-base-node",
@@ -230,7 +259,400 @@
         "duration": "7 min read",
         "checksum": "3ee35c2c889d0ca625bd6786119bb0b884446ea9686c455f422597d17c67ed0c"
     },
-    "1_build-with-thirdweb": {
+    "1_10_farcaster-frames-hyperframes": {
+        "title": "Farcaster Frames: Building HyperFrames",
+        "slug": "/farcaster-frames-hyperframes",
+        "description": "A tutorial that teaches how to make cross-linked HyperFrames in an organized manner.",
+        "author": "briandoyle81",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "keywords": [
+            "farcaster",
+            "frames",
+            "farcaster frames",
+            "HyperFrames",
+            "hyper frames",
+            "state",
+            "frame state",
+            "Base"
+        ],
+        "difficulty": "intermediate",
+        "tags": [
+            "frames",
+            "OnchainKit"
+        ],
+        "last_updated": "Aug 14, 2024",
+        "duration": "16 min read",
+        "checksum": "8672df8be5f746458154b5908af0fe1ca5445ced73518bcbdfe077c40d3b1585"
+    },
+    "1_1_coinbase-smart-wallet": {
+        "title": "Coinbase Smart Wallet",
+        "slug": "/coinbase-smart-wallet",
+        "description": "Learn to create an app that uses the Coinbase Smart Wallet and effectively manages assets and permissions for both native and new users of onchain apps",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "wagmi",
+            "viem",
+            "smart wallet"
+        ],
+        "tags": [
+            "nft",
+            "smart wallet"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "22 min read",
+        "checksum": "90298cc2b50fdf33b3c95d4b25bb6097ac53b0bc38868a3c92c94e3f9d56debb"
+    },
+    "1_2_smart-wallet-and-eoa-with-onchainkit": {
+        "title": "Use the Coinbase Smart Wallet and EOAs with OnchainKit",
+        "slug": "/smart-wallet-and-eoa-with-onchainkit",
+        "description": "Learn how to use OnchainKit to easily handle the Coinbase Smart Wallet and EOA wallets including the Coinbase wallet, at the same time.",
+        "author": "briandoyle81",
+        "keywords": [
+            "JSON RPC",
+            "RainbowKit",
+            "OnchainKit",
+            "frontend",
+            "Next.js",
+            "Base",
+            "blockchain development",
+            "dApps",
+            "Base",
+            "Base network",
+            "blockchain connection",
+            "smart contract development",
+            "smart wallet",
+            "Coinbase smart wallet",
+            "eoa"
+        ],
+        "tags": [
+            "account abstraction",
+            "frontend",
+            "OnchainKit"
+        ],
+        "difficulty": "beginner",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "10 min read",
+        "checksum": "ba80e3879f8797cbb808ed1b958d8f0185250ab5fe5245f8eb01b344d1294a20"
+    },
+    "1_3_smart-wallet-and-rainbowkit": {
+        "title": "Coinbase Smart Wallet with RainbowKit",
+        "slug": "/smart-wallet-and-rainbowkit",
+        "description": "Learn how to configure RainbowKit to elegantly handle the Coinbase Smart Wallet and EOA wallets including the Coinbase wallet, at the same time.",
+        "author": "briandoyle81",
+        "keywords": [
+            "JSON RPC",
+            "RainbowKit",
+            "OnchainKit",
+            "frontend",
+            "Next.js",
+            "Base",
+            "blockchain development",
+            "dApps",
+            "wagmi React hooks",
+            "frontend",
+            "Next.js",
+            "Base",
+            "Base network",
+            "Base node providers",
+            "Base providers",
+            "blockchain development",
+            "dApps",
+            "smart contracts",
+            "providers",
+            "Base",
+            "Base network",
+            "blockchain connection",
+            "smart contract development",
+            "smart wallet",
+            "Coinbase smart wallet",
+            "eoa"
+        ],
+        "tags": [
+            "account abstraction",
+            "frontend"
+        ],
+        "difficulty": "beginner",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "11 min read",
+        "checksum": "2a7228d01aeb31136c384b09197781e5c8cfb84df47d0344dd758df453489496"
+    },
+    "1_4_1_onchainkit-transact-component": {
+        "title": "Call Smart Contract Functions with the Transaction Component",
+        "slug": "/smart-wallet-and-onchainkit",
+        "description": "Learn how to use the Transaction component in OnchainKit to build an effective UI/UX experience for users of your onchain app.",
+        "author": "briandoyle81",
+        "keywords": [
+            "OnchainKit",
+            "frontend",
+            "Next.js",
+            "Base",
+            "Base network",
+            "Base node providers",
+            "Base providers",
+            "blockchain development",
+            "dApps",
+            "smart contracts",
+            "providers",
+            "Base",
+            "Base network",
+            "blockchain connection",
+            "smart contract development",
+            "smart wallet",
+            "Coinbase smart wallet",
+            "transaction",
+            "UI/UX"
+        ],
+        "tags": [
+            "frontend",
+            "OnchainKit"
+        ],
+        "difficulty": "beginner",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "3 min read",
+        "checksum": "d994f1efff69eba20e8ff7bf1f4086629c03f3899784cab853796fd2002e3535"
+    },
+    "1_4_farcaster-frames-nft-minting": {
+        "title": "Farcaster Frames: Building an NFT airdrop Frame",
+        "slug": "/farcaster-frames-nft-minting",
+        "description": "A tutorial that teaches how to make a Farcaster Frame that allows you to mint and airdrop NFTs to users.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "farcaster",
+            "frames",
+            "farcaster frames"
+        ],
+        "tags": [
+            "frames",
+            "nft",
+            "OnchainKit"
+        ],
+        "difficulty": "beginner",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "23 min read",
+        "checksum": "1577c9e06b31e93464bab864e6efdb03ae0721ec499a9258923dff599bf38111"
+    },
+    "1_5_farcaster-frames-nocode-minting": {
+        "title": "Farcaster Frames: Building a no-code minting Frame",
+        "slug": "/farcaster-frames-nocode-minting",
+        "description": "A tutorial that teaches how to make a Farcaster Frame with an outbound link to an NFT minting website.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "farcaster",
+            "frames",
+            "farcaster frames",
+            "mint"
+        ],
+        "tags": [
+            "frames",
+            "nft",
+            "OnchainKit"
+        ],
+        "difficulty": "beginner",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "6 min read",
+        "checksum": "b1732e1ab027dcb252dd8a59314051af10c1777039638e8527aaab744c75380c"
+    },
+    "1_6_farcaster-frames-deploy-to-vercel": {
+        "title": "Farcaster Frames: Deploying to Vercel",
+        "slug": "/farcaster-frames-deploy-to-vercel",
+        "description": "A tutorial that teaches how to deploy a Farcaster Frame using Vercel.",
+        "author": "briandoyle81",
+        "keywords": [
+            "farcaster",
+            "frames farcaster frames",
+            "Vercel",
+            "OnchainKit",
+            "a frame in 100 lines",
+            "deploy"
+        ],
+        "tags": [
+            "frames",
+            "OnchainKit"
+        ],
+        "difficulty": "beginner",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "9 min read",
+        "checksum": "197d54aed1eca8f4937a5acb09382009e2e1ca9991a248496b60146b0c5efde3"
+    },
+    "1_7_farcaster-frames-gating-and-redirects": {
+        "title": "Farcaster Frames: Gating content and creating redirects",
+        "slug": "/farcaster-frames-gating-and-redirects",
+        "description": "A tutorial that teaches how to create Frames with more advanced behaviors such as gating content based on a user's follows, likes, or recasts, and creating redirect buttons.",
+        "author": "briandoyle81",
+        "keywords": [
+            "farcaster",
+            "frames",
+            "farcaster frames"
+        ],
+        "tags": [
+            "frames",
+            "OnchainKit"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "11 min read",
+        "checksum": "af4e0eee3327f226b5821067cc22b32db5c730078a8d7d163fd36822f45b5e3f"
+    },
+    "1_8_farcaster-frames-transactions": {
+        "title": "Farcaster Frames: Making transactions",
+        "slug": "/farcaster-frames-transactions",
+        "description": "A tutorial that teaches how to invoke a wallet transaction from a Farcaster Frame.",
+        "author": "briandoyle81",
+        "keywords": [
+            "farcaster",
+            "frames",
+            "farcaster frames",
+            "wallet",
+            "transaction",
+            "Base"
+        ],
+        "tags": [
+            "frames",
+            "OnchainKit"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "17 min read",
+        "checksum": "1ecf4393dbf01ca51ac07db59858cb3d359685d316451cd42cda2e1ce2685293"
+    },
+    "1_9_farcaster-cast-actions-simple": {
+        "title": "Farcaster Cast Actions: Create a Simple Cast Action",
+        "slug": "/farcaster-cast-actions-simple",
+        "description": "A tutorial that teaches how to make a simple Farcaster cast action.",
+        "author": "briandoyle81",
+        "keywords": [
+            "farcaster",
+            "cast actions",
+            "farcaster cast actions",
+            "farcaster actions"
+        ],
+        "tags": [
+            "frames",
+            "actions",
+            "OnchainKit"
+        ],
+        "difficulty": "beginner",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "9 min read",
+        "checksum": "296c34ff0988d0c72ec1a791bb3e48833bb0afa40f0111c3519354562e3350ed"
+    },
+    "2_1_simple-onchain-nfts": {
+        "title": "Simple Onchain NFTs",
+        "slug": "/simple-onchain-nfts",
+        "description": "A tutorial that teaches how to make simple nfts that are procedurally generated and have onchain metadata and images.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "SVG",
+            "generative art",
+            "onchain metadata",
+            "nft metadata",
+            "onchain images",
+            "interfaces",
+            "pseudorandom numbers",
+            "deterministic randomness"
+        ],
+        "tags": [
+            "nft"
+        ],
+        "difficulty": "easy",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "26 min read",
+        "checksum": "15e1fe93f8c085d0ea8a0e90e63054d978f65117af37640fbffbf5d1c79f392e"
+    },
+    "2_2_complex-onchain-nfts": {
+        "title": "Complex Onchain NFTs",
+        "slug": "/complex-onchain-nfts",
+        "description": "A tutorial that teaches how to make complex nfts that are procedurally generated and have onchain metadata and images.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "SVG",
+            "generative art",
+            "onchain metadata",
+            "nft metadata",
+            "onchain images",
+            "interfaces",
+            "pseudorandom numbers",
+            "deterministic randomness"
+        ],
+        "tags": [
+            "nft"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "39 min read",
+        "checksum": "25ef22543ebd7f19a66a912a33667c1378455aff457815800cd1e255f63e0d65"
+    },
+    "2_3_signature-mint": {
+        "title": "Signature Mint NFT",
+        "slug": "/signature-mint-nft",
+        "description": "A tutorial that teaches how to create a signature mint, in which minters pay their own gas, but must first be given a valid signed authorization.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "signature mint",
+            "viem",
+            "soulbound"
+        ],
+        "tags": [
+            "nft"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "19 min read",
+        "checksum": "88e6db6ecb1ee9f852aa7e414005b3c780f3c12277c18cbe2a2d85bcbc16f263"
+    },
+    "2_9_1_build-with-thirdweb": {
         "title": "Building an onchain app using thirdweb",
         "slug": "/build-with-thirdweb",
         "description": "A tutorial that teaches how to build an NFT gallery app using thirdweb, including steps for creating an NFT collection, minting NFTs, and configuring the app for the Base testnet.",
@@ -259,62 +681,11 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Aug 14, 2024",
         "duration": "8 min read",
         "checksum": "527200e33d612b0c76e5eaacddfc23633b57eaa4577f389d4429b8f862c45462"
     },
-    "1_event-gate-nouns": {
-        "title": "Gate IRL Events with Nouns",
-        "slug": "/event-gate-with-nouns",
-        "description": "Learn how to gate entry to an IRL event for members of a Nounish DAO.",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "Gate",
-            "Nouns",
-            "PFP"
-        ],
-        "tags": [
-            "nft",
-            "smart contracts",
-            "frontend"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Aug 13, 2024",
-        "duration": "19 min read",
-        "checksum": "002c298b985a448313a177066e23133963d9ae5f3c678769343efe5fdd5813aa"
-    },
-    "1_event-poap-nouns": {
-        "title": "Event POAPs with Nouns",
-        "slug": "/event-poaps-with-nouns",
-        "description": "Learn how to give attendees of an in-person event a Nouns-based POAP/PFT, even if they're not onchain yet.",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "POAP",
-            "Nouns",
-            "PFP"
-        ],
-        "tags": [
-            "nft",
-            "smart contracts"
-        ],
-        "difficulty": "hard",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jul 20, 2024",
-        "duration": "4 min read",
-        "checksum": "7718ea8fcbcdb3da50530879402b92bc244b3e59c771f50ffe7463740d34ee8e"
-    },
-    "1_thirdweb-unreal-nft-items": {
+    "2_9_2_thirdweb-unreal-nft-items": {
         "title": "Thirdweb and Unreal - NFT Items",
         "slug": "/thirdweb-unreal-nft-items",
         "description": "Learn how to use NFTs as in-game items using Thirdweb and Unreal.",
@@ -337,194 +708,9 @@
         "difficulty": "hard",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 30, 2024",
+        "last_updated": "Aug 14, 2024",
         "duration": "37 min read",
         "checksum": "644148276a060da14958bd331948201e76c94390bfeffc80d81fb58621cf8592"
-    },
-    "2_account-abstraction-with-biconomy": {
-        "title": "Account Abstraction on Base using Biconomy",
-        "slug": "/account-abstraction-with-biconomy",
-        "description": "A tutorial that teaches how to implement Account Abstraction into a Base project using Biconomy paymasters, bundlers, and smart accounts.",
-        "author": "taycaldwell",
-        "keywords": [
-            "Account Abstraction",
-            "AA",
-            "Biconomy",
-            "Paymaster",
-            "Bundler",
-            "User operations",
-            "userops",
-            "Smart contract wallet",
-            "Smart account",
-            "Particle Network",
-            "Particle Auth"
-        ],
-        "tags": [
-            "account abstraction"
-        ],
-        "difficulty": "intermediate",
-        "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "29 min read",
-        "checksum": "8c8189d19e874c08dd05549d06c1eb2e45ce924aa2b0e1239f0adf04c8ee4879"
-    },
-    "2_account-abstraction-with-particle-network": {
-        "title": "Account Abstraction on Base using Particle Network",
-        "slug": "/account-abstraction-with-particle-network",
-        "description": "A walkthrough on Particle Network's Modular Smart Wallet-as-a-Service, leveraging account abstraction and social logins across various providers.",
-        "author": "TABASCOatw",
-        "keywords": [
-            "Account Abstraction",
-            "AA",
-            "Biconomy",
-            "Paymaster",
-            "Bundler",
-            "Alchemy",
-            "ERC-4337 Smart account",
-            "Particle Network",
-            "Particle Auth",
-            "Wallet-as-a-Service"
-        ],
-        "tags": [
-            "account abstraction"
-        ],
-        "difficulty": "intermediate",
-        "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "34 min read",
-        "checksum": "d307c0834f745648d2c7004595a7c60544381a0d90d4f3a3d6337f6152c4c856"
-    },
-    "2_account-abstraction-with-privy-and-base-paymaster": {
-        "title": "Account Abstraction on Base using Privy and the Base Paymaster",
-        "slug": "/account-abstraction-with-privy-and-base-paymaster",
-        "description": "A tutorial that teaches how to implement Account Abstraction into a Base project using Privy and the Base paymaster.",
-        "author": "Brian Doyle and Aaron Hayslip",
-        "keywords": [
-            "Privy",
-            "viem",
-            "frontend",
-            "smart contract development",
-            "EVM",
-            "Next.js",
-            "Base",
-            "Base network",
-            "account abstraction",
-            "Base paymaster",
-            "embedded wallet"
-        ],
-        "tags": [
-            "account abstraction"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jul 19, 2024",
-        "duration": "46 min read",
-        "checksum": "13ddb86a1b3e42ca0c3a8a4f1678f78d0f02d7b003133351081ecb252610789c"
-    },
-    "2_coinbase-smart-wallet": {
-        "title": "Coinbase Smart Wallet",
-        "slug": "/coinbase-smart-wallet",
-        "description": "Learn to create an app that uses the Coinbase Smart Wallet and effectively manages assets and permissions for both native and new users of onchain apps",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "wagmi",
-            "viem",
-            "smart wallet"
-        ],
-        "tags": [
-            "nft",
-            "smart wallet"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jul 30, 2024",
-        "duration": "22 min read",
-        "checksum": "90298cc2b50fdf33b3c95d4b25bb6097ac53b0bc38868a3c92c94e3f9d56debb"
-    },
-    "2_complex-onchain-nfts": {
-        "title": "Complex Onchain NFTs",
-        "slug": "/complex-onchain-nfts",
-        "description": "A tutorial that teaches how to make complex nfts that are procedurally generated and have onchain metadata and images.",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "SVG",
-            "generative art",
-            "onchain metadata",
-            "nft metadata",
-            "onchain images",
-            "interfaces",
-            "pseudorandom numbers",
-            "deterministic randomness"
-        ],
-        "tags": [
-            "nft"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jul 24, 2024",
-        "duration": "39 min read",
-        "checksum": "25ef22543ebd7f19a66a912a33667c1378455aff457815800cd1e255f63e0d65"
-    },
-    "2_cross-chain-with-ccip": {
-        "title": "Sending messages and tokens from Base to other chains using Chainlink CCIP",
-        "slug": "/cross-chain-with-ccip",
-        "description": "A tutorial that teaches how to use Chainlink CCIP to perform cross-chain messaging and token transfers from Base Goerli testnet to Optimism Goerli testnet.",
-        "author": "taycaldwell",
-        "keywords": [
-            "Cross-chain",
-            "Omni-chain",
-            "Crosschain",
-            "OmniChain",
-            "Chainlink",
-            "Chainlink CCIP",
-            "CCIP",
-            "cross-chain messaging",
-            "transfer tokens across chains"
-        ],
-        "tags": [
-            "cross-chain"
-        ],
-        "difficulty": "intermediate",
-        "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "32 min read",
-        "checksum": "b613b074cbb8f4c8eb55a13651f6371a8a3211afe65b8e2190e5b9df18c1d98f"
-    },
-    "2_cross-chain-with-layerzero": {
-        "title": "Sending messages from Base to other chains using LayerZero V2",
-        "slug": "/cross-chain-with-layerzero",
-        "description": "A tutorial that teaches how to use LayerZero V2 to perform cross-chain messaging from Base Goerli testnet to Optimism Goerli testnet.",
-        "author": "taycaldwell",
-        "eywords": [
-            "Cross-chain",
-            "Omni-chain",
-            "Crosschain",
-            "OmniChain",
-            "LayerZero",
-            "LayerZero V2",
-            "lz",
-            "cross-chain messaging",
-            "transfer tokens across chains"
-        ],
-        "tags": [
-            "cross-chain"
-        ],
-        "difficulty": "intermediate",
-        "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "34 min read",
-        "checksum": "a0ce01aa1c3097efa7582a74bc73f9ccad03222b25af451be1fde4fcd45c7dd7"
     },
     "2_dynamic-nfts": {
         "title": "Building dynamic NFTs",
@@ -554,6 +740,32 @@
         "duration": "14 min read",
         "checksum": "0b1498d415cda6e83031231cd05d42edacd2faa82d68471b2ed09670481a3259"
     },
+    "2_event-gate-nouns": {
+        "title": "Gate IRL Events with Nouns",
+        "slug": "/event-gate-with-nouns",
+        "description": "Learn how to gate entry to an IRL event for members of a Nounish DAO.",
+        "author": "briandoyle81",
+        "keywords": [
+            "Solidity",
+            "ERC-721",
+            "token",
+            "NFT",
+            "Gate",
+            "Nouns",
+            "PFP"
+        ],
+        "tags": [
+            "nft",
+            "smart contracts",
+            "frontend"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "19 min read",
+        "checksum": "002c298b985a448313a177066e23133963d9ae5f3c678769343efe5fdd5813aa"
+    },
     "2_nft-minting-with-zora": {
         "title": "How to Mint on Zora with an App",
         "slug": "/minting-nfts-with-zora",
@@ -579,297 +791,86 @@
         "duration": "18 min read",
         "checksum": "e20b430c2b1696b473625584d654f4a60e313c102127730553ab75f0bb54c568"
     },
-    "2_oracles-chainlink-price-feeds": {
-        "title": "Accessing real-world data using Chainlink Data Feeds",
-        "slug": "/oracles-chainlink-price-feeds",
-        "description": "A tutorial that teaches how to use Chainlink Data Feeds to access real-world data, such as asset prices, directly from your smart contracts on the Base testnet.",
+    "4_account-abstraction-with-biconomy": {
+        "title": "Account Abstraction on Base using Biconomy",
+        "slug": "/account-abstraction-with-biconomy",
+        "description": "A tutorial that teaches how to implement Account Abstraction into a Base project using Biconomy paymasters, bundlers, and smart accounts.",
         "author": "taycaldwell",
         "keywords": [
-            "Oracle Oracles",
-            "Chainlink",
-            "price feeds",
-            "data feeds",
-            "smart contract",
-            "Base blockchain",
-            "Base network",
-            "Base testnet",
-            "Base test network",
-            "app development",
-            "dapp development",
-            "build a dapp on Base",
-            "build on Base"
+            "Account Abstraction",
+            "AA",
+            "Biconomy",
+            "Paymaster",
+            "Bundler",
+            "User operations",
+            "userops",
+            "Smart contract wallet",
+            "Smart account",
+            "Particle Network",
+            "Particle Auth"
         ],
         "tags": [
-            "oracles"
+            "account abstraction"
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "11 min read",
-        "checksum": "df42e4091a128a0bd3e7dc9fcc585f9a711a56027152d57553a54e8040a4001f"
+        "last_updated": "Aug 14, 2024",
+        "duration": "29 min read",
+        "checksum": "8c8189d19e874c08dd05549d06c1eb2e45ce924aa2b0e1239f0adf04c8ee4879"
     },
-    "2_oracles-pyth-price-feeds": {
-        "title": "Accessing real-time asset data using Pyth Price Feeds",
-        "slug": "/oracles-pyth-price-feeds",
-        "description": "A tutorial that teaches how to use Pyth Price Feeds to access real-time asset data, directly from your smart contracts on the Base testnet.",
-        "author": "taycaldwell",
+    "4_account-abstraction-with-particle-network": {
+        "title": "Account Abstraction on Base using Particle Network",
+        "slug": "/account-abstraction-with-particle-network",
+        "description": "A walkthrough on Particle Network's Modular Smart Wallet-as-a-Service, leveraging account abstraction and social logins across various providers.",
+        "author": "TABASCOatw",
         "keywords": [
-            "Oracle Oracles",
-            "Pyth",
-            "Pyth Network",
-            "price feeds",
-            "data feeds",
-            "smart contract",
-            "Base blockchain",
-            "Base network",
-            "Base testnet",
-            "Base test network",
-            "app development",
-            "dapp development",
-            "build a dapp on Base",
-            "build on Base"
+            "Account Abstraction",
+            "AA",
+            "Biconomy",
+            "Paymaster",
+            "Bundler",
+            "Alchemy",
+            "ERC-4337 Smart account",
+            "Particle Network",
+            "Particle Auth",
+            "Wallet-as-a-Service"
         ],
         "tags": [
-            "oracles"
+            "account abstraction"
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "13 min read",
-        "checksum": "983e7175434206be7c996758b09db9c33aac454ecb9b4b3da8f301f8140b7c52"
+        "last_updated": "Aug 14, 2024",
+        "duration": "34 min read",
+        "checksum": "d307c0834f745648d2c7004595a7c60544381a0d90d4f3a3d6337f6152c4c856"
     },
-    "2_oracles-supra-vrf": {
-        "title": "Generating random numbers contracts using Supra dVRF",
-        "slug": "/oracles-supra-vrf",
-        "description": "A tutorial that teaches how to use Supra dVRF to serve random numbers using an onchain randomness generation mechanism directly within your smart contracts on the Base testnet.",
-        "author": "taycaldwell",
+    "4_account-abstraction-with-privy-and-base-paymaster": {
+        "title": "Account Abstraction on Base using Privy and the Base Paymaster",
+        "slug": "/account-abstraction-with-privy-and-base-paymaster",
+        "description": "A tutorial that teaches how to implement Account Abstraction into a Base project using Privy and the Base paymaster.",
+        "author": "Brian Doyle and Aaron Hayslip",
         "keywords": [
-            "Oracle Oracles",
-            "Supra",
-            "Supra VRF",
-            "Supra dVRF",
-            "VRF",
-            "verifiable random function",
-            "verifiable random functions",
-            "random numbers",
-            "rng",
-            "random number generator",
-            "random numbers in smart contracts",
-            "random numbers on Base",
-            "smart contract",
-            "Base blockchain",
-            "Base network",
-            "Base testnet",
-            "Base test network",
-            "app development",
-            "dapp development",
-            "build a dapp on Base",
-            "build on Base"
-        ],
-        "tags": [
-            "oracles",
-            "vrf"
-        ],
-        "difficulty": "intermediate",
-        "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
-        "duration": "19 min read",
-        "checksum": "260e40333e386593cf6f211c06218042d4b93ecac34f56a0decbd398f1e3ddb1"
-    },
-    "2_signature-mint": {
-        "title": "Signature Mint NFT",
-        "slug": "/signature-mint-nft",
-        "description": "A tutorial that teaches how to create a signature mint, in which minters pay their own gas, but must first be given a valid signed authorization.",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "signature mint",
+            "Privy",
             "viem",
-            "soulbound"
+            "frontend",
+            "smart contract development",
+            "EVM",
+            "Next.js",
+            "Base",
+            "Base network",
+            "account abstraction",
+            "Base paymaster",
+            "embedded wallet"
         ],
         "tags": [
-            "nft"
+            "account abstraction"
         ],
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 20, 2024",
-        "duration": "19 min read",
-        "checksum": "88e6db6ecb1ee9f852aa7e414005b3c780f3c12277c18cbe2a2d85bcbc16f263"
-    },
-    "2_simple-onchain-nfts": {
-        "title": "Simple Onchain NFTs",
-        "slug": "/simple-onchain-nfts",
-        "description": "A tutorial that teaches how to make simple nfts that are procedurally generated and have onchain metadata and images.",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "SVG",
-            "generative art",
-            "onchain metadata",
-            "nft metadata",
-            "onchain images",
-            "interfaces",
-            "pseudorandom numbers",
-            "deterministic randomness"
-        ],
-        "tags": [
-            "nft"
-        ],
-        "difficulty": "easy",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Jul 31, 2024",
-        "duration": "26 min read",
-        "checksum": "15e1fe93f8c085d0ea8a0e90e63054d978f65117af37640fbffbf5d1c79f392e"
-    },
-    "3_farcaster-frames-deploy-to-vercel": {
-        "title": "Farcaster Frames: Deploying to Vercel",
-        "slug": "/farcaster-frames-deploy-to-vercel",
-        "description": "A tutorial that teaches how to deploy a Farcaster Frame using Vercel.",
-        "author": "briandoyle81",
-        "keywords": [
-            "farcaster",
-            "frames farcaster frames",
-            "Vercel",
-            "OnchainKit",
-            "a frame in 100 lines",
-            "deploy"
-        ],
-        "tags": [
-            "frames"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Aug 9, 2024",
-        "duration": "9 min read",
-        "checksum": "e4e755e83dfadf219f70b70ca83ced3667265d0111df30086686a25cf9521800"
-    },
-    "3_farcaster-frames-gating-and-redirects": {
-        "title": "Farcaster Frames: Gating content and creating redirects",
-        "slug": "/farcaster-frames-gating-and-redirects",
-        "description": "A tutorial that teaches how to create Frames with more advanced behaviors such as gating content based on a user's follows, likes, or recasts, and creating redirect buttons.",
-        "author": "briandoyle81",
-        "keywords": [
-            "farcaster",
-            "frames",
-            "farcaster frames"
-        ],
-        "tags": [
-            "frames"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Aug 9, 2024",
-        "duration": "11 min read",
-        "checksum": "89352c695114fc5923cd81252771c3ce9fb5d225860ff567b670e7b9a48346b2"
-    },
-    "3_farcaster-frames-hyperframes": {
-        "title": "Farcaster Frames: Building HyperFrames",
-        "slug": "/farcaster-frames-hyperframes",
-        "description": "A tutorial that teaches how to make cross-linked HyperFrames in an organized manner.",
-        "author": "briandoyle81",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "keywords": [
-            "farcaster",
-            "frames",
-            "farcaster frames",
-            "HyperFrames",
-            "hyper frames",
-            "state",
-            "frame state",
-            "Base"
-        ],
-        "difficulty": "intermediate",
-        "tags": [
-            "frames"
-        ],
-        "last_updated": "Aug 9, 2024",
-        "duration": "16 min read",
-        "checksum": "c147d855eef68a8919bec722d1ceba95dba62204cb761063ffe023a0210407e1"
-    },
-    "3_farcaster-frames-nft-minting": {
-        "title": "Farcaster Frames: Building an NFT airdrop Frame",
-        "slug": "/farcaster-frames-nft-minting",
-        "description": "A tutorial that teaches how to make a Farcaster Frame that allows you to mint and airdrop NFTs to users.",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "farcaster",
-            "frames",
-            "farcaster frames"
-        ],
-        "tags": [
-            "frames",
-            "nft"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Aug 9, 2024",
-        "duration": "23 min read",
-        "checksum": "130aedd8fe0f76fdcaef06ceab60c1deb6cb57aafdf9ac8f760385864a4cdef4"
-    },
-    "3_farcaster-frames-nocode-minting": {
-        "title": "Farcaster Frames: Building a no-code minting Frame",
-        "slug": "/farcaster-frames-nocode-minting",
-        "description": "A tutorial that teaches how to make a Farcaster Frame with an outbound link to an NFT minting website.",
-        "author": "briandoyle81",
-        "keywords": [
-            "Solidity",
-            "ERC-721",
-            "token",
-            "NFT",
-            "farcaster",
-            "frames",
-            "farcaster frames",
-            "mint"
-        ],
-        "tags": [
-            "frames",
-            "nft"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Aug 9, 2024",
-        "duration": "6 min read",
-        "checksum": "46ccf74f9efec55c0b2f1489352107a0a6fb2e5efd39fb178cb2f4710131dbfc"
-    },
-    "3_farcaster-frames-transactions": {
-        "title": "Farcaster Frames: Making transactions",
-        "slug": "/farcaster-frames-transactions",
-        "description": "A tutorial that teaches how to invoke a wallet transaction from a Farcaster Frame.",
-        "author": "briandoyle81",
-        "keywords": [
-            "farcaster",
-            "frames",
-            "farcaster frames",
-            "wallet",
-            "transaction",
-            "Base"
-        ],
-        "tags": [
-            "frames"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Aug 9, 2024",
-        "duration": "17 min read",
-        "checksum": "19f69653dcd8c9d2edd669382b77a4b30a4a3404375c9687aec1173ced00763a"
+        "last_updated": "Aug 14, 2024",
+        "duration": "46 min read",
+        "checksum": "13ddb86a1b3e42ca0c3a8a4f1678f78d0f02d7b003133351081ecb252610789c"
     },
     "4_hardhat-debugging": {
         "title": "Hardhat: Debugging smart contracts",
@@ -1020,192 +1021,175 @@
         "duration": "9 min read",
         "checksum": "2ced64394c425e5749001cb21cca5a3b0043fe6ab013be45e98299e16f337d23"
     },
-    "4_intro-to-providers": {
-        "title": "Introduction to Providers",
-        "slug": "/intro-to-providers",
-        "description": "A tutorial that teaches what providers are, why you need one, and how to configure several providers and use them to connect to the blockchain.",
-        "author": "briandoyle81",
+    "5_cross-chain-with-ccip": {
+        "title": "Sending messages and tokens from Base to other chains using Chainlink CCIP",
+        "slug": "/cross-chain-with-ccip",
+        "description": "A tutorial that teaches how to use Chainlink CCIP to perform cross-chain messaging and token transfers from Base Goerli testnet to Optimism Goerli testnet.",
+        "author": "taycaldwell",
         "keywords": [
-            "blockchain providers",
-            "JSON RPC",
-            "RainbowKit",
-            "wagmi React hooks",
-            "viem",
-            "frontend",
-            "smart contract development",
-            "EVM",
-            "Next.js",
-            "Base",
-            "Base network",
-            "Base node providers",
-            "Base providers",
-            "blockchain development",
-            "dApps",
-            "smart contracts",
-            "providers",
-            "public providers",
-            "wallet providers",
-            "vendor providers",
-            "rate limits",
-            "blockchain API",
-            "Ethereum provider",
-            "Base",
-            "Base network",
-            "Base node providers",
-            "Base providers",
-            "QuickNode",
-            "Alchemy",
-            "API keys",
-            "blockchain connection",
-            "public provider",
-            "smart contract development"
+            "Cross-chain",
+            "Omni-chain",
+            "Crosschain",
+            "OmniChain",
+            "Chainlink",
+            "Chainlink CCIP",
+            "CCIP",
+            "cross-chain messaging",
+            "transfer tokens across chains"
         ],
         "tags": [
-            "nodes",
+            "cross-chain"
+        ],
+        "difficulty": "intermediate",
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "32 min read",
+        "checksum": "b613b074cbb8f4c8eb55a13651f6371a8a3211afe65b8e2190e5b9df18c1d98f"
+    },
+    "5_cross-chain-with-layerzero": {
+        "title": "Sending messages from Base to other chains using LayerZero V2",
+        "slug": "/cross-chain-with-layerzero",
+        "description": "A tutorial that teaches how to use LayerZero V2 to perform cross-chain messaging from Base Goerli testnet to Optimism Goerli testnet.",
+        "author": "taycaldwell",
+        "eywords": [
+            "Cross-chain",
+            "Omni-chain",
+            "Crosschain",
+            "OmniChain",
+            "LayerZero",
+            "LayerZero V2",
+            "lz",
+            "cross-chain messaging",
+            "transfer tokens across chains"
+        ],
+        "tags": [
+            "cross-chain"
+        ],
+        "difficulty": "intermediate",
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "34 min read",
+        "checksum": "a0ce01aa1c3097efa7582a74bc73f9ccad03222b25af451be1fde4fcd45c7dd7"
+    },
+    "5_deploy-with-fleek": {
+        "title": "Deploy an Onchain App with Fleek",
+        "slug": "/deploy-with-fleek",
+        "description": "Learn how to deploy an onchain app using Fleek.",
+        "author": "briandoyle81",
+        "keywords": [
+            "deploy",
+            "fleek",
+            "onchain",
+            "dapp",
+            "onchain app"
+        ],
+        "tags": [
             "frontend"
         ],
-        "difficulty": "beginner",
+        "difficulty": "hard",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Aug 9, 2024",
-        "duration": "21 min read",
-        "checksum": "c847674db9fb136fddfb6df8ebf5fe08ae30a4cbb35d03513c0b069d0acff0ee"
-    },
-    "4_smart-wallet-and-eoa-with-onchainkit": {
-        "title": "Use the Coinbase Smart Wallet and EOAs with OnchainKit",
-        "slug": "/smart-wallet-and-eoa-with-onchainkit",
-        "description": "Learn how to use OnchainKit to easily handle the Coinbase Smart Wallet and EOA wallets including the Coinbase wallet, at the same time.",
-        "author": "briandoyle81",
-        "keywords": [
-            "JSON RPC",
-            "RainbowKit",
-            "OnchainKit",
-            "frontend",
-            "Next.js",
-            "Base",
-            "blockchain development",
-            "dApps",
-            "Base",
-            "Base network",
-            "blockchain connection",
-            "smart contract development",
-            "smart wallet",
-            "Coinbase smart wallet",
-            "eoa"
-        ],
-        "tags": [
-            "account abstraction",
-            "frontend"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Aug 13, 2024",
-        "duration": "10 min read",
-        "checksum": "c0418cfd18e1c53f692055a7e0cd5356953513c44f4504355ff7a8825bb84d97"
-    },
-    "4_smart-wallet-and-onchainkit": {
-        "title": "Coinbase Smart Wallet with OnchainKit",
-        "slug": "/smart-wallet-and-onchainkit",
-        "description": "Learn how to use OnchainKit to easily handle the Coinbase Smart Wallet and EOA wallets including the Coinbase wallet, at the same time.",
-        "author": "briandoyle81",
-        "keywords": [
-            "JSON RPC",
-            "RainbowKit",
-            "OnchainKit",
-            "frontend",
-            "Next.js",
-            "Base",
-            "Base network",
-            "Base node providers",
-            "Base providers",
-            "blockchain development",
-            "dApps",
-            "smart contracts",
-            "providers",
-            "Base",
-            "Base network",
-            "blockchain connection",
-            "smart contract development",
-            "smart wallet",
-            "Coinbase smart wallet"
-        ],
-        "tags": [
-            "account abstraction",
-            "frontend"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Aug 9, 2024",
-        "duration": "7 min read",
-        "checksum": "baefda0f1efe057a943ad409c43600428698a9bee5cd5294a465ee94390b57b7"
-    },
-    "4_smart-wallet-and-rainbowkit": {
-        "title": "Coinbase Smart Wallet with RainbowKit",
-        "slug": "/smart-wallet-and-rainbowkit",
-        "description": "Learn how to configure RainbowKit to elegantly handle the Coinbase Smart Wallet and EOA wallets including the Coinbase wallet, at the same time.",
-        "author": "briandoyle81",
-        "keywords": [
-            "JSON RPC",
-            "RainbowKit",
-            "OnchainKit",
-            "frontend",
-            "Next.js",
-            "Base",
-            "blockchain development",
-            "dApps",
-            "wagmi React hooks",
-            "frontend",
-            "Next.js",
-            "Base",
-            "Base network",
-            "Base node providers",
-            "Base providers",
-            "blockchain development",
-            "dApps",
-            "smart contracts",
-            "providers",
-            "Base",
-            "Base network",
-            "blockchain connection",
-            "smart contract development",
-            "smart wallet",
-            "Coinbase smart wallet",
-            "eoa"
-        ],
-        "tags": [
-            "account abstraction",
-            "frontend"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Aug 13, 2024",
-        "duration": "11 min read",
-        "checksum": "2a7228d01aeb31136c384b09197781e5c8cfb84df47d0344dd758df453489496"
-    },
-    "5_farcaster-cast-actions-simple": {
-        "title": "Farcaster Cast Actions: Create a Simple Cast Action",
-        "slug": "/farcaster-cast-actions-simple",
-        "description": "A tutorial that teaches how to make a simple Farcaster cast action.",
-        "author": "briandoyle81",
-        "keywords": [
-            "farcaster",
-            "cast actions",
-            "farcaster cast actions",
-            "farcaster actions"
-        ],
-        "tags": [
-            "frames",
-            "actions"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Aug 9, 2024",
+        "image": "https://docs.base.org/img/base-learn-open-graph.png",
+        "last_updated": "Aug 14, 2024",
         "duration": "9 min read",
-        "checksum": "de35cc39119ab6c3e727a6ab1fba5388d67aa91896ddeb24a92c2387e129714d"
+        "checksum": "d9302891627f1761507422bf35c361a30b343e77cb4d3981888ab70eb4fbd0ac"
+    },
+    "5_oracles-chainlink-price-feeds": {
+        "title": "Accessing real-world data using Chainlink Data Feeds",
+        "slug": "/oracles-chainlink-price-feeds",
+        "description": "A tutorial that teaches how to use Chainlink Data Feeds to access real-world data, such as asset prices, directly from your smart contracts on the Base testnet.",
+        "author": "taycaldwell",
+        "keywords": [
+            "Oracle Oracles",
+            "Chainlink",
+            "price feeds",
+            "data feeds",
+            "smart contract",
+            "Base blockchain",
+            "Base network",
+            "Base testnet",
+            "Base test network",
+            "app development",
+            "dapp development",
+            "build a dapp on Base",
+            "build on Base"
+        ],
+        "tags": [
+            "oracles"
+        ],
+        "difficulty": "intermediate",
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "11 min read",
+        "checksum": "df42e4091a128a0bd3e7dc9fcc585f9a711a56027152d57553a54e8040a4001f"
+    },
+    "5_oracles-pyth-price-feeds": {
+        "title": "Accessing real-time asset data using Pyth Price Feeds",
+        "slug": "/oracles-pyth-price-feeds",
+        "description": "A tutorial that teaches how to use Pyth Price Feeds to access real-time asset data, directly from your smart contracts on the Base testnet.",
+        "author": "taycaldwell",
+        "keywords": [
+            "Oracle Oracles",
+            "Pyth",
+            "Pyth Network",
+            "price feeds",
+            "data feeds",
+            "smart contract",
+            "Base blockchain",
+            "Base network",
+            "Base testnet",
+            "Base test network",
+            "app development",
+            "dapp development",
+            "build a dapp on Base",
+            "build on Base"
+        ],
+        "tags": [
+            "oracles"
+        ],
+        "difficulty": "intermediate",
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "13 min read",
+        "checksum": "983e7175434206be7c996758b09db9c33aac454ecb9b4b3da8f301f8140b7c52"
+    },
+    "5_oracles-supra-vrf": {
+        "title": "Generating random numbers contracts using Supra dVRF",
+        "slug": "/oracles-supra-vrf",
+        "description": "A tutorial that teaches how to use Supra dVRF to serve random numbers using an onchain randomness generation mechanism directly within your smart contracts on the Base testnet.",
+        "author": "taycaldwell",
+        "keywords": [
+            "Oracle Oracles",
+            "Supra",
+            "Supra VRF",
+            "Supra dVRF",
+            "VRF",
+            "verifiable random function",
+            "verifiable random functions",
+            "random numbers",
+            "rng",
+            "random number generator",
+            "random numbers in smart contracts",
+            "random numbers on Base",
+            "smart contract",
+            "Base blockchain",
+            "Base network",
+            "Base testnet",
+            "Base test network",
+            "app development",
+            "dapp development",
+            "build a dapp on Base",
+            "build on Base"
+        ],
+        "tags": [
+            "oracles",
+            "vrf"
+        ],
+        "difficulty": "intermediate",
+        "displayed_sidebar": null,
+        "last_updated": "Aug 14, 2024",
+        "duration": "19 min read",
+        "checksum": "260e40333e386593cf6f211c06218042d4b93ecac34f56a0decbd398f1e3ddb1"
     },
     "5_shopify-storefront-commerce": {
         "title": "Deploy a Shopify Storefront with Coinbase Commerce",
