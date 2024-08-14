@@ -141,15 +141,14 @@ export default function UsernameProfileTransferOwnershipModal({
               <WalletIdentity address={recipientAddress} />
             </div>
           )}
-          <hr className="mb-4 mt-4 border-t border-gray-40/20" />
           <p>What you&apos;ll send</p>
-          <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-6">
-            <ul className="flex w-full flex-col gap-4">
+          <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
+            <ul className="flex w-full flex-col gap-2">
               {ownershipSettings.map((ownershipSetting) => (
                 <li key={ownershipSetting.id} className="flex items-baseline gap-4">
                   <div className="flex flex-col gap-1">
                     <span>{ownershipSetting.name}</span>
-                    <p className="text-gray-40">{ownershipSetting.description}</p>
+                    <p className="text-sm text-gray-40">{ownershipSetting.description}</p>
                   </div>
                 </li>
               ))}
@@ -167,7 +166,6 @@ export default function UsernameProfileTransferOwnershipModal({
           ) : (
             <p>You will need to confirm all four transactions in your wallet to send this name. </p>
           )}
-
           <ul className="flex w-full flex-col gap-4">
             {ownershipSettings.map((ownershipSetting) => (
               <li key={ownershipSetting.id} className="flex items-baseline gap-4">

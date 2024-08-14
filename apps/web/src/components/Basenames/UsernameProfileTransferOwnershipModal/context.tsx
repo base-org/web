@@ -237,7 +237,7 @@ export default function ProfileTransferOwnershipProvider({
       {
         id: 'setName',
         name: 'Name record',
-        description: 'Your Basename will no longer be displayed with your current address.',
+        description: 'Your Basename will no longer be displayed with your address.',
         status: setNameStatus,
         contractFunction: updateSetName,
       },

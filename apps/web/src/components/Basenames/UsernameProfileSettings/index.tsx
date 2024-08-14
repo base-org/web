@@ -59,7 +59,6 @@ export default function UsernameProfileSettings() {
           {currentSettingsTab === SettingsTabs.ManageProfile && (
             <UsernameProfileSettingsManageProfile />
           )}
-
           {currentSettingsTab === SettingsTabs.Ownership && <UsernameProfileSettingsOwnership />}
         </div>
       </div>
