@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 import subtract from './assets/subtract.svg';
 import vector from './assets/vector.svg';  
@@ -13,23 +13,21 @@ enum CircleColors {
 
 type CircleProps = {
     color: string;
-    size: string;
-    maxWidth: string;
     className: string;
 }
 
-function Circle({ color, size, maxWidth, className }: CircleProps) {
+function Circle({ color, className }: CircleProps) {
     // bg-grey-40, bg-pink-15, bg-green-15, bg-blue-15
     const circleClass = classNames(`absolute rounded-full`, {
-        'bg-green-15': color === CircleColors.Green,
+        'bg-green-15 w-[14%] max-w-[70.11px] pt-[14%]': color === CircleColors.Green,
         'bg-blue-15': color === CircleColors.Blue,
-        'bg-pink-15': color === CircleColors.Pink,
-        'bg-gray-40': color === CircleColors.Grey,
+        'bg-pink-15 w-[8%] max-w-[41.84px] pt-[8%]': color === CircleColors.Pink,
+        'bg-gray-40 w-[14%] max-w-[71.25px] pt-[14%]': color === CircleColors.Grey,
     });
 
     return (
       <div
-        className={classNames(circleClass, `w-${size} max-w-[${maxWidth}] pt-${size}`, className)}
+        className={classNames(circleClass, className)}
       />
     );
   }
@@ -46,30 +44,30 @@ export default function PoweredByEns() {
                         <div className="absolute top-1/4 right-1/4 w-2/5 max-w-[214.93px] translate-x-1/3 -translate-y-1/4">
                             <div className="relative pt-[100%] bg-blue-500 rounded-full shadow">
                                 <div className="absolute inset-2 translate-y-1 flex items-center justify-center">
-                                    <Image src={subtract as string} alt=""/>
+                                    <Image src={subtract as StaticImageData} alt=""/>
                                 </div>
                             </div>
                         </div>
                         <div className="absolute bottom-1/4 left-1/3 w-2/5 max-w-[214.10px] -translate-x-3/4">
                             <div className="relative pt-[100%] bg-[#3580B7] rounded-full shadow">
                                 <div className="absolute inset-5 flex items-center justify-center">
-                                    <Image src={vector as string} alt=""/>
+                                    <Image src={vector as StaticImageData} alt=""/>
                                 </div>
                             </div>
                         </div>
-                        <Circle color="gray" size="[14%]" maxWidth="71.25" className="top-1/4 right-1/2 -translate-x-1/4 -translate-y-1/2" />
-                        <Circle color="gray" size="[14%]" maxWidth="71.25" className="top-2 right-0" />
-                        <Circle color="gray" size="[14%]" maxWidth="71.25" className="bottom-8 left-1/3" />
+                        <Circle color="gray" className="top-1/4 right-1/2 -translate-x-1/4 -translate-y-1/2" />
+                        <Circle color="gray" className="top-2 right-0" />
+                        <Circle color="gray" className="bottom-8 left-1/3" />
 
-                        <Circle color="pink" size="[8%]" maxWidth="41.84" className="top-1/3 left-0 -translate-x-3/4" />
-                        <Circle color="pink" size="[8%]" maxWidth="41.84" className="top-1/2 right-0" />
-                        <Circle color="pink" size="[8%]" maxWidth="41.84" className="bottom-1/4 translate-x-1/4 translate-y-3/4" />
+                        <Circle color="pink" className="top-1/3 left-0 -translate-x-3/4" />
+                        <Circle color="pink" className="top-1/2 right-0" />
+                        <Circle color="pink" className="bottom-1/4 translate-x-1/4 translate-y-3/4" />
                         
-                        <Circle color="green" size="[14%]" maxWidth="70.11" className="top-8 left-8" />
-                        <Circle color="green" size="[14%]" maxWidth="70.11" className="bottom-1/4 right-10" />
+                        <Circle color="green" className="top-8 left-8" />
+                        <Circle color="green" className="bottom-1/4 right-10" />
 
-                        <Circle color="blue" size="[8%]" maxWidth="41.84" className="top-2 right-1/2" />
-                        <Circle color="blue" size="[20%]" maxWidth="102.51" className="bottom-1/4 right-1/3 translate-y-1/4" />
+                        <div className="absolute top-2 right-1/2 w-[8%] max-w-[41.84px] pt-[8%] bg-blue-15 rounded-full" />
+                        <div className="absolute bottom-1/4 right-1/3 w-[20%] translate-y-1/4 max-w-[102.51px] pt-[20%] bg-blue-15 rounded-full" />`
                         {/* Decorative circles */}
                     </div>
                 </div>

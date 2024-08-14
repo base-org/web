@@ -6,11 +6,12 @@ import sofort from './assets/sofort.svg';
 import globe from './assets/globeWhite.webm';
 import classNames from 'classnames';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
+import { StaticImageData } from 'next/image';
 
 type ValuePropProps = {
     title: string;
     description: string;
-    image: string;
+    image: StaticImageData;
     color: string;
 };
 
@@ -42,13 +43,13 @@ export default function RegistrationValueProp() {
             <div className='relative z-10 pt-12'>
                 <div className='grid grid-cols-1 sm:grid-cols-2 row-auto gap-4 md:gap-y-12'>
                     <div className={classNames(valueClass, 'sm:col-start-2')}>
-                        <ValueProp title='Establish your identity' description='Be a part of our vibrant Base community with your own unique identity.' image={faceScan as string} color='#0052FF' />
+                        <ValueProp title='Establish your identity' description='Be a part of our vibrant Base community with your own unique identity.' image={faceScan as StaticImageData} color='#0052FF' />
                     </div>
                     <div className={classNames(valueClass,  'row-start-2 md:translate-x-20')}>
-                        <ValueProp title='Easy Payments.' description='Use your human-readable address to send payments with ease.' image={currencies as string} color='#22AD73' />
+                        <ValueProp title='Easy Payments.' description='Use your human-readable address to send payments with ease.' image={currencies as StaticImageData} color='#22AD73' />
                     </div>
                     <div className={classNames(valueClass, 'row-start-3 sm:col-start-2')}>
-                        <ValueProp title='Trusted Communities' description='Find Based builders easier. Connect, work together, or get mentorship.' image={sofort as string} color='#8A55E9' />
+                        <ValueProp title='Trusted Communities' description='Find Based builders easier. Connect, work together, or get mentorship.' image={sofort as StaticImageData} color='#8A55E9' />
                     </div>
                 </div>
                 <div className="absolute inset-0 -z-10 pt-8 md:pt-12 scale-125 md:scale-150">
