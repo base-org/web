@@ -2,7 +2,6 @@
 import React from 'react';
 import clsx from 'clsx';
 import { useWindowSize } from '@docusaurus/theme-common';
-import { useDoc } from '@docusaurus/theme-common/internal';
 // import DocItemPaginator from '@theme/DocItem/Paginator';
 import DocVersionBanner from '@theme/DocVersionBanner';
 import DocVersionBadge from '@theme/DocVersionBadge';
@@ -12,14 +11,17 @@ import DocItemTOCDesktop from '@theme/DocItem/TOC/Desktop';
 import DocItemContent from '@theme/DocItem/Content';
 // import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import styles from './styles.module.css';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
  */
 function useDocTOC() {
-  const { metadata, frontMatter, toc } = useDoc();
+  const { metadata, frontMatter, toc } = useDocusaurusContext();
   const windowSize = useWindowSize();
-  const hidden = frontMatter.hide_table_of_contents;
-  const canRender = !hidden && toc.length > 0;
+  // const hidden = frontMatter.hide_table_of_contents;
+  const hidden = false;
+  // const canRender = !hidden && toc.length > 0;
+  const canRender = true;
   const mobile = canRender ? <DocItemTOCMobile /> : undefined;
   const desktop =
     canRender && (windowSize === 'desktop' || windowSize === 'ssr') ? (

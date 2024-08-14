@@ -171,14 +171,15 @@
             "Cloud Platform"
         ],
         "tags": [
-            "account abstraction"
+            "account abstraction",
+            "Paymaster"
         ],
         "difficulty": "easy",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 30, 2024",
+        "last_updated": "Aug 14, 2024",
         "duration": "27 min read",
-        "checksum": "52d06f74e8ae98119482e0c9c23e61b2d626a6f43bbe1279b3cbbab289bc4115"
+        "checksum": "39df303029b9cfd8a5efe33a3c4a6280dd25f4d7554553fcfaf0904b0c72bd21"
     },
     "0_intro-to-providers": {
         "title": "Introduction to Providers",
@@ -301,14 +302,15 @@
         ],
         "tags": [
             "nft",
-            "Smart Wallet"
+            "Smart Wallet",
+            "Paymaster"
         ],
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
         "last_updated": "Aug 14, 2024",
         "duration": "22 min read",
-        "checksum": "928f5cd0916d4fe6a0fae18657d01ae00e098a1e4238918692da166f58df2e9a"
+        "checksum": "7ec4be15487c878540156a35cc0375aa1ca6f90f6cbfc412bb0604067a2d06d6"
     },
     "1_2_smart-wallet-and-eoa-with-onchainkit": {
         "title": "Use the Coinbase Smart Wallet and EOAs with OnchainKit",
@@ -389,43 +391,6 @@
         "last_updated": "Aug 14, 2024",
         "duration": "11 min read",
         "checksum": "ce577b780ccf793b13c738ab52c35b9a3438aefe76fd6a85869916af1ce1acef"
-    },
-    "1_4_1_onchainkit-transact-component": {
-        "title": "Call Smart Contract Functions with the Transaction Component",
-        "slug": "/smart-wallet-and-onchainkit",
-        "description": "Learn how to use the Transaction component in OnchainKit to build an effective UI/UX experience for users of your onchain app.",
-        "author": "briandoyle81",
-        "keywords": [
-            "OnchainKit",
-            "frontend",
-            "Next.js",
-            "Base",
-            "Base network",
-            "Base node providers",
-            "Base providers",
-            "blockchain development",
-            "dApps",
-            "smart contracts",
-            "providers",
-            "Base",
-            "Base network",
-            "blockchain connection",
-            "smart contract development",
-            "smart wallet",
-            "Coinbase smart wallet",
-            "transaction",
-            "UI/UX"
-        ],
-        "tags": [
-            "frontend",
-            "OnchainKit"
-        ],
-        "difficulty": "beginner",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Aug 14, 2024",
-        "duration": "3 min read",
-        "checksum": "d994f1efff69eba20e8ff7bf1f4086629c03f3899784cab853796fd2002e3535"
     },
     "1_4_farcaster-frames-nft-minting": {
         "title": "Farcaster Frames: Building an NFT airdrop Frame",

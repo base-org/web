@@ -1,9 +1,10 @@
 import { useState, useCallback } from 'react';
-import { useDoc } from '@docusaurus/theme-common/internal';
+
 import FeedbackModal from './FeedbackModal';
 import Icon from '../Icon';
 
 import styles from './styles.module.css';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 const logDocFeedback = (isHelpful: boolean, reason?: string) => {
   if (window.ClientAnalytics) {
@@ -79,8 +80,8 @@ export default function DocFeedback() {
     setVisible(false);
   }, []);
 
-  const { metadata } = useDoc();
-  const docFilePath = metadata.source.slice(6); // Remove @site/ from file path
+  const { siteMetadata } = useDocusaurusContext();
+  // const docFilePath = siteMetadata.source.slice(6); // Remove @site/ from file path
 
   return (
     <div className={styles.docFeedbackContainer}>
@@ -95,7 +96,7 @@ export default function DocFeedback() {
           {helpful === false && <Icon name="thumbs-down-filled" width="20" height="20" />}
         </button>
       </div>
-      <a
+      {/* <a
         href={`https://github.com/base-org/web/blob/master/apps/base-docs/${docFilePath}?plain=1`}
         target="_blank"
         className={styles.editDocLink}
@@ -119,7 +120,7 @@ export default function DocFeedback() {
           onSubmit={handleNotHelpfulModalSubmit}
           options={notHelpfulReasons}
         />
-      )}
+      )} */}
     </div>
   );
 }
