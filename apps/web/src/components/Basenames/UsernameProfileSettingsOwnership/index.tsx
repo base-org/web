@@ -8,11 +8,11 @@ import UsernameProfileTransferOwnershipModal from 'apps/web/src/components/Basen
 import ProfileTransferOwnershipProvider from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context';
 import WalletIdentity from 'apps/web/src/components/WalletIdentity';
 
-export default function UsernameProfileSettingsOwnership() {
-  const settingTabClass = classNames(
-    'flex flex-col justify-between gap-8 text-gray/60 md:items-center p-4 md:p-8',
-  );
+const settingTabClass = classNames(
+  'flex flex-col justify-between gap-8 text-gray/60 md:items-center p-4 md:p-8',
+);
 
+export default function UsernameProfileSettingsOwnership() {
   const { profileOwnerAddress } = useUsernameProfile();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
