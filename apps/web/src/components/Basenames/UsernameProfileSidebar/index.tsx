@@ -38,7 +38,6 @@ export default function UsernameProfileSidebar() {
   });
 
   const textRecordKeywords = existingTextRecords[UsernameTextRecordKeys.Keywords];
-
   return (
     <aside className="flex flex-col gap-6">
       <UsernamePill
