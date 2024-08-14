@@ -8,12 +8,13 @@ import { TagChip } from 'apps/web/src/components/Ecosystem/TagChip';
 import { SearchBar } from 'apps/web/src/components/Ecosystem/SearchBar';
 import { Suspense } from 'react';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
-  title: `Base | About`,
+  title: `Base | Ecosystem`,
   openGraph: {
-    title: `Base | About`,
-    url: `/about`,
+    title: `Base | Ecosystem`,
+    url: `/ecosystem`,
   },
 };
 
