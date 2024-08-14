@@ -17,7 +17,7 @@ keywords:
     Crypto,
     Cloud Platform,
   ]
-tags: ['account abstraction']
+tags: ['account abstraction', 'Paymaster']
 difficulty: easy
 hide_table_of_contents: false
 displayed_sidebar: null
