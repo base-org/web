@@ -23,7 +23,7 @@ import useSprig from 'base-ui/hooks/useSprig';
 import { MotionConfig } from 'framer-motion';
 import { useCallback, useRef } from 'react';
 import { createConfig, http, WagmiProvider } from 'wagmi';
-import { base, baseSepolia } from 'wagmi/chains';
+import { base, baseSepolia, mainnet } from 'wagmi/chains';
 import { cookieManagerConfig } from '../src/utils/cookieManagerConfig';
 import ClientAnalyticsScript from 'apps/web/src/components/ClientAnalyticsScript/ClientAnalyticsScript';
 import dynamic from 'next/dynamic';
@@ -58,10 +58,11 @@ const connectors = connectorsForWallets(
 
 const config = createConfig({
   connectors,
-  chains: [base, baseSepolia],
+  chains: [base, baseSepolia, mainnet],
   transports: {
     [base.id]: http(),
     [baseSepolia.id]: http(),
+    [mainnet.id]: http(),
   },
   ssr: true,
 });

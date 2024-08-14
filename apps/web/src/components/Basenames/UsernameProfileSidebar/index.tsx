@@ -14,7 +14,7 @@ export default function UsernameProfileSidebar() {
   const {
     profileUsername,
     profileAddress,
-    currentWalletIsOwner,
+    currentWalletIsProfileOwner,
     showProfileSettings,
     setShowProfileSettings,
   } = useUsernameProfile();
@@ -22,10 +22,15 @@ export default function UsernameProfileSidebar() {
   const { logEventWithContext } = useAnalytics();
 
   const toggleSettings = useCallback(() => {
-    if (!currentWalletIsOwner) return;
+    if (!currentWalletIsProfileOwner) return;
     logEventWithContext('profile_edit_modal_open', ActionType.render);
     setShowProfileSettings(!showProfileSettings);
-  }, [currentWalletIsOwner, logEventWithContext, setShowProfileSettings, showProfileSettings]);
+  }, [
+    currentWalletIsProfileOwner,
+    logEventWithContext,
+    setShowProfileSettings,
+    showProfileSettings,
+  ]);
 
   const { existingTextRecords } = useReadBaseEnsTextRecords({
     address: profileAddress,
@@ -41,7 +46,7 @@ export default function UsernameProfileSidebar() {
         username={profileUsername}
         address={profileAddress}
       />
-      {currentWalletIsOwner && (
+      {currentWalletIsProfileOwner && (
         <Button variant={ButtonVariants.Gray} rounded fullWidth onClick={toggleSettings}>
           {showProfileSettings ? 'Back to Profile' : 'Manage Profile'}
         </Button>

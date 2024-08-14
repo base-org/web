@@ -1,4 +1,4 @@
-import { Address } from 'viem';
+import { Address, isAddress } from 'viem';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { BaseName, GetNameReturnType, useName } from '@coinbase/onchainkit/identity';
 import { UseQueryResult } from '@tanstack/react-query';
@@ -20,11 +20,11 @@ export default function useBaseEnsName({ address }: UseBaseEnsNameProps) {
       chain: basenameChain,
     },
     {
-      enabled: !!address,
+      enabled: !!address && isAddress(address),
     },
   ) as UseQueryResult<GetNameReturnType, Error>;
 
-  const ensNameTyped = data as BaseName;
+  const ensNameTyped = data ? (data as BaseName) : undefined;
 
   return {
     data: ensNameTyped,

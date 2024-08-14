@@ -239,7 +239,7 @@ To get testnet ETH for Base Goerli, see the [prerequisites](#prerequisites).
 
 :::
 
-After running the command above, the contract will be deployed on the Base Goerli test network. You can view the deployment status and contract by using a [block explorer](/tools/block-explorers).
+After running the command above, the contract will be deployed on the Base Goerli test network. You can view the deployment status and contract by using a [block explorer](/docs/tools/block-explorers).
 
 ---
 

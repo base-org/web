@@ -13,10 +13,10 @@ import { useMemo } from 'react';
 
 function BadgesLoop({
   badges,
-  currentWalletIsOwner,
+  currentWalletIsProfileOwner,
 }: {
   badges: Partial<Record<BadgeNames, boolean | number>>;
-  currentWalletIsOwner?: boolean;
+  currentWalletIsProfileOwner?: boolean;
 }) {
   return (
     <ul className="mt-6 grid grid-cols-2 gap-4 md:flex md:flex-row md:flex-wrap md:items-center md:gap-8">
@@ -25,7 +25,7 @@ function BadgesLoop({
         const score =
           badge === 'TALENT_SCORE' ? (badges[badge as BadgeNames] as number) : undefined;
 
-        return hasBadge || currentWalletIsOwner ? (
+        return hasBadge || currentWalletIsProfileOwner ? (
           <li key={badge}>
             <Badge badge={badge as BadgeNames} claimed={hasBadge} score={score} />
           </li>
@@ -36,23 +36,23 @@ function BadgesLoop({
 }
 
 function BadgeCount({ badges }: { badges: Partial<Record<BadgeNames, boolean | number>> }) {
-  const { currentWalletIsOwner } = useUsernameProfile();
+  const { currentWalletIsProfileOwner } = useUsernameProfile();
   const [claimed, total] = useMemo(() => {
     const claimedCount = Object.values(badges).filter(Boolean).length;
     const totalCount = Object.keys(badges).length;
     return [claimedCount, totalCount];
   }, [badges]);
 
-  if (!currentWalletIsOwner) return null;
+  if (!currentWalletIsProfileOwner) return null;
 
   return <span>{`${claimed}/${total}`} claimed</span>;
 }
 
 function VerificationsSection() {
-  const { profileAddress, currentWalletIsOwner } = useUsernameProfile();
+  const { profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
   const { badges, empty } = useCoinbaseVerification(profileAddress);
 
-  if (empty && !currentWalletIsOwner) return null;
+  if (empty && !currentWalletIsProfileOwner) return null;
 
   return (
     <section>
@@ -60,13 +60,13 @@ function VerificationsSection() {
         <UsernameProfileSectionTitle title="Verifications" />
         <BadgeCount badges={badges} />
       </div>
-      <BadgesLoop badges={badges} currentWalletIsOwner={currentWalletIsOwner} />
+      <BadgesLoop badges={badges} currentWalletIsProfileOwner={currentWalletIsProfileOwner} />
     </section>
   );
 }
 
 function BuilderSection() {
-  const { profileAddress, currentWalletIsOwner } = useUsernameProfile();
+  const { profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
   const { badges, empty } = useBaseGuild(profileAddress);
   const talentScore = useTalentProtocol(profileAddress);
   const buildathonParticipant = useBuildathonParticipant(profileAddress);
@@ -77,7 +77,7 @@ function BuilderSection() {
   );
   const combinedEmpty = empty && !talentScore;
 
-  if (combinedEmpty && !currentWalletIsOwner) return null;
+  if (combinedEmpty && !currentWalletIsProfileOwner) return null;
 
   return (
     <section>
@@ -85,7 +85,10 @@ function BuilderSection() {
         <UsernameProfileSectionTitle title="Builder activity" />
         <BadgeCount badges={combinedBadges} />
       </div>
-      <BadgesLoop badges={combinedBadges} currentWalletIsOwner={currentWalletIsOwner} />
+      <BadgesLoop
+        badges={combinedBadges}
+        currentWalletIsProfileOwner={currentWalletIsProfileOwner}
+      />
     </section>
   );
 }

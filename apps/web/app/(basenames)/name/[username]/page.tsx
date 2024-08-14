@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import {
   formatDefaultUsername,
   getBasenameAddress,
+  getBasenameOwner,
   getBasenameTextRecord,
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
@@ -39,10 +40,11 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
 export default async function Username({ params }: UsernameProfileProps) {
   let username = await formatDefaultUsername(params.username);
 
-  const ensAddress = await getBasenameAddress(username);
+  const address = await getBasenameAddress(username);
+  const owner = await getBasenameOwner(username);
 
-  // Domain doesn't exist
-  if (!ensAddress) {
+  // Domain does have address or owner (ie: doesn't exist)
+  if (!address || !owner) {
     redirect(`/name/not-found?name=${username}`);
   }
 
@@ -52,7 +54,7 @@ export default async function Username({ params }: UsernameProfileProps) {
 
   return (
     <ErrorsProvider context="profile">
-      <ProfileProviders username={username} address={ensAddress}>
+      <ProfileProviders username={username}>
         <main className={usernameProfilePageClasses}>
           <UsernameProfile />
         </main>
