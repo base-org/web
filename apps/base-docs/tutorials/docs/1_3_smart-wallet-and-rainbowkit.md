@@ -32,7 +32,7 @@ keywords:
     Coinbase smart wallet,
     eoa,
   ]
-tags: ['account abstraction', 'frontend']
+tags: ['account abstraction', 'frontend', 'Smart Wallet']
 difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null
@@ -86,6 +86,7 @@ It does, but only if the user **does not** have the browser extension installed.
 
 ![Default Connection](../../assets/images/smart-wallet/rainbow-smart-wallet.png)
 As mentioned above, this experience isn't bad for users of one type of wallet or the other, but it makes things difficult for users who are using both types of wallet and may want to choose one or the other when interacting with your app. It also might not be the listing or ordering of wallets you prefer.
+
 ## Customizing the List of Wallets
 
 To fix this UI/UX problem, you can create a [custom wallet list]. Open `src/wagmi.ts`:
@@ -214,6 +215,7 @@ The Coinbase Smart Wallet will support user-selected choice of which wallet to u
 :::
 
 =======
+
 - Import `createConfig` from wagmi
 
 ```tsx

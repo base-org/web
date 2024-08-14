@@ -12,7 +12,7 @@ keywords: [
     a frame in 100 lines,
     deploy,
   ]
-tags: ['frames']
+tags: ['frames', 'OnchainKit']
 difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null

@@ -4,7 +4,7 @@ slug: /farcaster-frames-gating-and-redirects
 description: A tutorial that teaches how to create Frames with more advanced behaviors such as gating content based on a user's follows, likes, or recasts, and creating redirect buttons.
 author: briandoyle81
 keywords: [farcaster, frames, farcaster frames]
-tags: ['frames']
+tags: ['frames', 'OnchainKit']
 difficulty: intermediate
 hide_table_of_contents: false
 displayed_sidebar: null

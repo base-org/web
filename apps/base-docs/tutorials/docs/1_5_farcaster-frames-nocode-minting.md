@@ -4,7 +4,7 @@ slug: /farcaster-frames-nocode-minting
 description: A tutorial that teaches how to make a Farcaster Frame with an outbound link to an NFT minting website.
 author: briandoyle81
 keywords: [Solidity, ERC-721, token, NFT, farcaster, frames, farcaster frames, mint]
-tags: ['frames', 'nft']
+tags: ['frames', 'nft', 'OnchainKit']
 difficulty: beginner
 hide_table_of_contents: false
 displayed_sidebar: null
