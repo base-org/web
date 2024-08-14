@@ -132,22 +132,22 @@ export default function UsernameProfileTransferOwnershipModal({
 
       {currentOwnershipStep === OwnershipSteps.OwnershipOverview && (
         <div className="mt-2 flex flex-col gap-4">
-          <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
+          <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 px-4 py-3">
             <BasenameIdentity username={profileUsername} />
           </div>
           <h2 className="w-full text-3xl font-bold text-illoblack">To</h2>
           {isValidRecipientAddress && (
-            <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
+            <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 px-4 py-3">
               <WalletIdentity address={recipientAddress} />
             </div>
           )}
-          <p>What you&apos;ll send</p>
-          <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
+          <strong className="mt-2">What you&apos;ll send</strong>
+          <div className="mb-2 flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
             <ul className="flex w-full flex-col gap-2">
               {ownershipSettings.map((ownershipSetting) => (
                 <li key={ownershipSetting.id} className="flex items-baseline gap-4">
                   <div className="flex flex-col gap-1">
-                    <span>{ownershipSetting.name}</span>
+                    <strong className="text-sm">{ownershipSetting.name}</strong>
                     <p className="text-sm text-gray-40">{ownershipSetting.description}</p>
                   </div>
                 </li>

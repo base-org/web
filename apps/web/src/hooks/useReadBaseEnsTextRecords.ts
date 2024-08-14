@@ -51,11 +51,12 @@ export default function useReadBaseEnsTextRecords({
   }, []);
 
   const getExistingTextRecords = useCallback(async () => {
+    console.log('GET', { address, username });
     if (!username) return;
     const result = await getBasenameTextRecords(username);
     return result;
-  }, [username]);
-
+  }, [address, username]);
+  console.log('GET', { address, username });
   const {
     data: textRecordsData,
     isLoading: existingTextRecordsIsLoading,

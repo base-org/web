@@ -1,4 +1,5 @@
 import Fieldset from 'apps/web/src/components/Fieldset';
+import Hint, { HintVariants } from 'apps/web/src/components/Hint';
 import Input from 'apps/web/src/components/Input';
 import Label from 'apps/web/src/components/Label';
 import {
@@ -7,7 +8,7 @@ import {
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 
-import { ChangeEvent, useCallback, useId } from 'react';
+import { ChangeEvent, useCallback, useId, useState } from 'react';
 
 export type UsernameTextRecordInlineFieldProps = {
   textRecordKey: UsernameTextRecordKeys;
@@ -16,6 +17,44 @@ export type UsernameTextRecordInlineFieldProps = {
   disabled?: boolean;
 };
 
+export function validateTextRecordValue(textRecordKey: UsernameTextRecordKeys, value: string) {
+  if (textRecordKey === UsernameTextRecordKeys.Url) {
+    return value.startsWith('https://');
+  }
+  if (
+    [
+      UsernameTextRecordKeys.Github,
+      UsernameTextRecordKeys.Twitter,
+      UsernameTextRecordKeys.Farcaster,
+      UsernameTextRecordKeys.Lens,
+      UsernameTextRecordKeys.Telegram,
+      UsernameTextRecordKeys.Discord,
+    ].includes(textRecordKey)
+  ) {
+    return !value.startsWith('@') && !value.startsWith('https://');
+  }
+}
+
+export function textRecordHintForDisplay(textRecordKey: UsernameTextRecordKeys) {
+  if (textRecordKey === UsernameTextRecordKeys.Url) {
+    return 'Must be a valid https url';
+  }
+  if (
+    [
+      UsernameTextRecordKeys.Github,
+      UsernameTextRecordKeys.Twitter,
+      UsernameTextRecordKeys.Farcaster,
+      UsernameTextRecordKeys.Lens,
+      UsernameTextRecordKeys.Telegram,
+      UsernameTextRecordKeys.Discord,
+    ].includes(textRecordKey)
+  ) {
+    return 'Input username only';
+  }
+
+  return '';
+}
+
 export default function UsernameTextRecordInlineField({
   textRecordKey,
   onChange,
@@ -23,10 +62,16 @@ export default function UsernameTextRecordInlineField({
   disabled = false,
 }: UsernameTextRecordInlineFieldProps) {
   const usernameSocialHandleFieldId = useId();
-
+  const [validationError, setValiationHint] = useState<string>('');
   const onTextRecordChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const textRecordValue = event.target.value;
+
+      if (!validateTextRecordValue(textRecordKey, textRecordValue)) {
+        setValiationHint(textRecordHintForDisplay(textRecordKey));
+      } else {
+        setValiationHint('');
+      }
 
       if (onChange) onChange(textRecordKey, textRecordValue);
     },
@@ -39,19 +84,21 @@ export default function UsernameTextRecordInlineField({
       <Label htmlFor={usernameSocialHandleFieldId} className="w-full max-w-[6rem] text-sm">
         {textRecordsKeysForDisplay[textRecordKey]}
       </Label>
-      <Input
-        id={usernameSocialHandleFieldId}
-        placeholder={textRecordsKeysPlaceholderForDisplay[textRecordKey]}
-        className="flex-1 rounded-md border border-gray-40/20 p-2 text-black"
-        disabled={disabled}
-        value={value}
-        autoComplete="off"
-        autoCapitalize="none"
-        type={inputType}
-        pattern="https?://.*"
-        onChange={onTextRecordChange}
-        data-1p-ignore
-      />
+      <div className="flex w-full flex-col gap-2">
+        <Input
+          id={usernameSocialHandleFieldId}
+          placeholder={textRecordsKeysPlaceholderForDisplay[textRecordKey]}
+          className="flex-1 rounded-md border border-gray-40/20 p-2 text-black"
+          disabled={disabled}
+          value={value}
+          autoComplete="off"
+          autoCapitalize="none"
+          type={inputType}
+          onChange={onTextRecordChange}
+          data-1p-ignore
+        />
+        {validationError && <Hint variant={HintVariants.Error}>{validationError}</Hint>}
+      </div>
     </Fieldset>
   );
 }

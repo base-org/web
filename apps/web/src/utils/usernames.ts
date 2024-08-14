@@ -84,10 +84,24 @@ export const textRecordsSocialFieldsEnabledIcons: Partial<Record<UsernameTextRec
 // Users might add their handle as @myProfile, which breaks on some website
 // TODO: Ideally we'd sanitize these before writing them as TextRecord
 export const sanitizeHandle = (handle: string) => {
-  if (handle.startsWith('@')) {
-    handle = handle.substring(1);
+  let handleSanitized = handle;
+
+  // User Somehow entered a full URLs instead of a handle
+  try {
+    const handleAsUrl = new URL(handleSanitized);
+    if (handleAsUrl.pathname) {
+      handleSanitized = handleAsUrl.pathname.replace(/\//g, '');
+    }
+  } catch (error) {
+    // Handle isn't a url, no problem
   }
-  return handle.replace(/^@/, '');
+
+  // remove the '@' if present
+  if (handleSanitized.startsWith('@')) {
+    handleSanitized = handleSanitized.substring(1);
+  }
+
+  return handleSanitized.replace(/^@/, '');
 };
 
 export const formatSocialFieldUrl = (key: UsernameTextRecordKeys, handleOrUrl: string) => {
