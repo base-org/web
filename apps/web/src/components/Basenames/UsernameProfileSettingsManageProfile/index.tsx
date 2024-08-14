@@ -16,8 +16,12 @@ import {
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 
+const settingTabClass = classNames(
+  'flex flex-col justify-between gap-8 text-gray/60 md:items-center p-4 md:p-8',
+);
+
 export default function UsernameProfileSettingsManageProfile() {
-  const { profileUsername, profileAddress, currentWalletIsOwner, setShowProfileSettings } =
+  const { profileUsername, profileAddress, currentWalletIsProfileOwner, setShowProfileSettings } =
     useUsernameProfile();
 
   const { logError } = useErrors();
@@ -43,12 +47,12 @@ export default function UsernameProfileSettingsManageProfile() {
   const onClickSave = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
-      if (!currentWalletIsOwner) return false;
+      if (!currentWalletIsProfileOwner) return false;
       writeTextRecords().catch((error) => {
         logError(error, 'Failed to write text records');
       });
     },
-    [currentWalletIsOwner, writeTextRecords, logError],
+    [currentWalletIsProfileOwner, writeTextRecords, logError],
   );
 
   const onChangeTextRecord = useCallback(
@@ -56,10 +60,6 @@ export default function UsernameProfileSettingsManageProfile() {
       updateTextRecords(key, value);
     },
     [updateTextRecords],
-  );
-
-  const settingTabClass = classNames(
-    'flex flex-col justify-between gap-8 text-gray/60 md:items-center p-4 md:p-8',
   );
 
   return (
