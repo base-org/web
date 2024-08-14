@@ -55,13 +55,6 @@ const config = {
     {
       tagName: 'meta',
       attributes: {
-        property: 'og:image',
-        content: 'https://docs.base.org/img/base-open-graph.png',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
         name: 'twitter:card',
         content: 'summary_large_image',
       },
@@ -86,13 +79,6 @@ const config = {
         name: 'twitter:description',
         content:
           'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2.',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'twitter:image',
-        content: 'https://docs.base.org/img/base-open-graph.png',
       },
     },
   ],
