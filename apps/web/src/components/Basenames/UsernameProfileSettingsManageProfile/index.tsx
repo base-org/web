@@ -16,6 +16,10 @@ import {
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 
+const settingTabClass = classNames(
+  'flex flex-col justify-between gap-8 text-gray/60 md:items-center p-4 md:p-8',
+);
+
 export default function UsernameProfileSettingsManageProfile() {
   const { profileUsername, profileAddress, currentWalletIsProfileOwner, setShowProfileSettings } =
     useUsernameProfile();
@@ -56,10 +60,6 @@ export default function UsernameProfileSettingsManageProfile() {
       updateTextRecords(key, value);
     },
     [updateTextRecords],
-  );
-
-  const settingTabClass = classNames(
-    'flex flex-col justify-between gap-8 text-gray/60 md:items-center p-4 md:p-8',
   );
 
   return (
