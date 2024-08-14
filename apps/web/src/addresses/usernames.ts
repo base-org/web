@@ -68,6 +68,16 @@ export const USERNAME_REVERSE_REGISTRAR_ADDRESSES: AddressMap = {
   [base.id]: '0x79ea96012eea67a83431f1701b3dff7e37f9e282',
 };
 
+export const USERNAME_BASE_REGISTRAR_ADDRESSES: AddressMap = {
+  [baseSepolia.id]: '0xa0c70ec36c010b55e3c434d6c6ebeec50c705794',
+  [base.id]: '0x03c4738ee98ae44591e1a4a4f3cab6641d95dd9a',
+};
+
+export const USERNAME_BASE_REGISTRY_ADDRESSES: AddressMap = {
+  [baseSepolia.id]: '0x1493b2567056c2181630115660963E13A8E32735',
+  [base.id]: '0xb94704422c2a1e396835a571837aa5ae53285a95',
+};
+
 export const UNISWAP_USDC_WETH_POOL: AddressMap = {
   [base.id]: '0x88A43bbDF9D098eEC7bCEda4e2494615dfD9bB9C',
 };
