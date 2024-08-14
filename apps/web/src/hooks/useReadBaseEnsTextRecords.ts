@@ -56,7 +56,6 @@ export default function useReadBaseEnsTextRecords({
     const result = await getBasenameTextRecords(username);
     return result;
   }, [address, username]);
-  console.log('GET', { address, username });
   const {
     data: textRecordsData,
     isLoading: existingTextRecordsIsLoading,
