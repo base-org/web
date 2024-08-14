@@ -20,7 +20,7 @@ const TagList = [
   'vrf',
   'frames',
   'frontend',
-  'onchainkit',
+  'OnchainKit',
 ];
 
 function useQuery() {
