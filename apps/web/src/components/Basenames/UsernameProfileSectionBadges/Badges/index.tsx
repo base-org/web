@@ -1,6 +1,6 @@
-import { CoinbaseVerifications } from 'apps/web/src/hooks/useCoinbaseVerifications';
+import { CoinbaseVerifications } from '../hooks/useCoinbaseVerifications';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
-import { GuildBadges } from 'apps/web/src/hooks/useBaseGuild';
+import { GuildBadges } from '../hooks/useBaseGuild';
 
 // image imports
 import verifiedIdentity from './images/verifiedIdentity.webp';
