@@ -1,12 +1,16 @@
 import React, { useCallback } from 'react';
 import clsx from 'clsx';
-import {ThemeClassNames} from '@docusaurus/theme-common';
-import {isActiveSidebarItem} from '@docusaurus/theme-common/internal';
+import { ThemeClassNames } from '@docusaurus/theme-common';
+import { useLocalPathname } from '@docusaurus/theme-common/internal';
 import Link from '@docusaurus/Link';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import IconExternalLink from '@theme/Icon/ExternalLink';
 import styles from './styles.module.css';
-import logEvent, { ActionType, AnalyticsEventImportance, ComponentType } from 'base-ui/utils/logEvent';
+import logEvent, {
+  ActionType,
+  AnalyticsEventImportance,
+  ComponentType,
+} from 'base-ui/utils/logEvent';
 export default function DocSidebarItemLink({
   item,
   onItemClick,
@@ -15,8 +19,13 @@ export default function DocSidebarItemLink({
   index,
   ...props
 }) {
-  const {href, label, className, autoAddBaseUrl} = item;
-  const isActive = isActiveSidebarItem(item, activePath);
+  const { href, label, className, autoAddBaseUrl } = item;
+
+  console.log({ item });
+  const path = useLocalPathname();
+
+  // const isActive = isActiveSidebarItem(item, activePath);
+  const isActive = path === activePath;
   const isInternalLink = isInternalUrl(href);
   const linkClick = useCallback(() => {
     const eventData = {
@@ -38,20 +47,18 @@ export default function DocSidebarItemLink({
         'menu__list-item',
         className,
       )}
-      key={label}>
+      key={label}
+    >
       <Link
-        className={clsx(
-          'menu__link',
-          !isInternalLink && styles.menuExternalLink,
-          {
-            'menu__link--active': isActive,
-          },
-        )}
+        className={clsx('menu__link', !isInternalLink && styles.menuExternalLink, {
+          'menu__link--active': isActive,
+        })}
         autoAddBaseUrl={autoAddBaseUrl}
         aria-current={isActive ? 'page' : undefined}
         to={href}
         onClick={linkClick}
-        {...props}>
+        {...props}
+      >
         {label}
         {!isInternalLink && <IconExternalLink />}
       </Link>

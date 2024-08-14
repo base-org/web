@@ -18,8 +18,8 @@ const baseConfig = {
   },
 };
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/oceanicNext');
+const lightCodeTheme = require('prism-react-renderer/').themes.github;
+const darkCodeTheme = require('prism-react-renderer/').themes.oceanicNext;
 
 const APP_TITLE = 'Base';
 const PRODUCT_NAME = 'Base';

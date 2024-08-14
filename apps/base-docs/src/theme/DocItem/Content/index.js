@@ -2,7 +2,6 @@
 import React from 'react';
 import clsx from 'clsx';
 import { ThemeClassNames } from '@docusaurus/theme-common';
-import { useDoc } from '@docusaurus/theme-common/internal';
 import Heading from '@theme/Heading';
 import MDXContent from '@theme/MDXContent';
 
@@ -13,6 +12,7 @@ import tutorialData from '../../../../tutorials/data.json';
 import authors from '@app/base-docs/static/json/authors.json';
 
 import styles from './styles.module.css';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 /**
  Title can be declared inside md content or declared through
@@ -25,19 +25,20 @@ import styles from './styles.module.css';
  - the markdown content does not already contain a top-level h1 heading
 */
 function useSyntheticTitle() {
-  const { metadata, frontMatter, contentTitle } = useDoc();
-  const shouldRender = !frontMatter.hide_title && typeof contentTitle === 'undefined';
+  const { siteMetadata, frontMatter, contentTitle } = useDocusaurusContext();
+  // const shouldRender = !frontMatter.hide_title && typeof contentTitle === 'undefined';
+  const shouldRender = true;
   if (!shouldRender) {
     return null;
   }
-  return metadata.title;
+  return siteMetadata.title;
 }
 export default function DocItemContent({ children }) {
-  const { frontMatter } = useDoc();
+  const { siteMetadata } = useDocusaurusContext();
   const syntheticTitle = useSyntheticTitle();
-  const tutorial =
-    frontMatter && frontMatter.slug ? tutorialData[frontMatter.slug.substring(1)] : null;
-  const authorData = tutorial ? authors[tutorial.author] : null;
+  // const tutorial =
+  //   frontMatter && frontMatter.slug ? tutorialData[frontMatter.slug.substring(1)] : null;
+  // const authorData = tutorial ? authors[tutorial.author] : null;
 
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
@@ -46,7 +47,7 @@ export default function DocItemContent({ children }) {
           <header>
             <Heading as="h1">{syntheticTitle}</Heading>
           </header>
-          {tutorial && authorData && (
+          {/* {tutorial && authorData && (
             <div className={clsx(styles.tutorialInfo)}>
               {authorData && authorData.link && (
                 <a
@@ -64,7 +65,7 @@ export default function DocItemContent({ children }) {
               <p>{tutorial.last_updated ? tutorial.last_updated : ''}</p>
               <p>{tutorial.duration ? tutorial.duration : ''}</p>
             </div>
-          )}
+          )} */}
         </div>
       )}
       <MDXContent>{children}</MDXContent>
