@@ -58,7 +58,7 @@ To complete this tutorial, you will need to fund a wallet with ETH on Base Goerl
 
 The ETH is required for covering gas fees associated with deploying smart contracts to each network.
 
-- To fund your wallet with ETH on Base Goerli, visit a faucet listed on the [Base Faucets](https://docs.base.org/tools/network-faucets) page.
+- To fund your wallet with ETH on Base Goerli, visit a faucet listed on the [Base Faucets](/docs/tools/network-faucets) page.
 - To fund your wallet with ETH on Optimism Goerli, visit a faucet listed on the [Optimism Faucets](https://docs.optimism.io/builders/tools/faucets) page.
 
 ---
@@ -508,7 +508,7 @@ forge create ./src/ExampleContract.sol:ExampleContract --rpc-url $BASE_GOERLI_RP
 
 When prompted, enter the password that you set earlier, when you imported your wallet's private key.
 
-After running the command above, the contract will be deployed on the Base Goerli test network. You can view the deployment status and contract by using a [block explorer](/tools/block-explorers).
+After running the command above, the contract will be deployed on the Base Goerli test network. You can view the deployment status and contract by using a [block explorer](/docs/tools/block-explorers).
 
 ### Deploying the smart contract to Optimism Goerli
 
@@ -677,7 +677,7 @@ Congratulations! You have successfully learned how to perform cross-chain messag
 
 To learn more about cross-chain messaging and LayerZero V2, check out the following resources:
 
-- [Cross-chain](https://docs.base.org/tools/cross-chain)
+- [Cross-chain](/docs/tools/cross-chain)
 - [LayerZero V2](https://docs.layerzero.network)
 
 ---

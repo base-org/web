@@ -124,4 +124,4 @@ In this tutorial, you learned how to make a simple [Frame] on [Farcaster] that i
 [Frame]: https://docs.farcaster.xyz/learn/what-is-farcaster/frames
 [Frames]: https://docs.farcaster.xyz/learn/what-is-farcaster/frames
 [advanced behavior]: /tutorials/farcaster-frames-gating-and-redirects
-[mint with your own contract]: /tutorials/farcaster-framesnft-minting
+[mint with your own contract]: ./farcaster-frames-nft-minting

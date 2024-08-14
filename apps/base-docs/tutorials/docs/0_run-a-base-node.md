@@ -105,7 +105,7 @@ If you're a prospective or current Base Node operator and would like to restore 
 In the home directory of your Base Node, create a folder named `geth-data` or `reth-data`. If you already have this folder, remove it to clear the existing state and then recreate it. Next, run the following code and wait for the operation to complete.
 
 | Network | Client | Snapshot Type | Command                                                                                                               |
-|---------|--------|---------------|-----------------------------------------------------------------------------------------------------------------------|
+| ------- | ------ | ------------- | --------------------------------------------------------------------------------------------------------------------- |
 | Testnet | Geth   | Full          | `wget https://sepolia-full-snapshots.base.org/$(curl https://sepolia-full-snapshots.base.org/latest)`                 |
 | Testnet | Geth   | Archive       | `wget https://sepolia-archive-snapshots.base.org/$(curl https://sepolia-archive-snapshots.base.org/latest)`           |
 | Testnet | Reth   | Archive       | `wget https://sepolia-reth-archive-snapshots.base.org/$(curl https://sepolia-reth-archive-snapshots.base.org/latest)` |
@@ -144,4 +144,4 @@ You'll also know that the sync hasn't completed if you get `Error: nonce has alr
 [docker]: https://www.docker.com/
 [base node]: https://github.com/base-org/node
 [repo]: https://github.com/base-org/node
-[partners]: /tools/node-providers
+[partners]: /docs/tools/node-providers

@@ -136,8 +136,6 @@ const customTheme = {
 };
 
 export default function Root({ children }) {
-  const [mounted, setMounted] = useState(false);
-
   // Cookie Consent Manager Provider Configuration
   const trackingPreference = useRef();
 
@@ -174,11 +172,7 @@ export default function Root({ children }) {
 
   const handleLogError = useCallback((err) => console.error(err), []);
 
-  useEffect(() => setMounted(true), []);
-
   useSprig(sprigEnvironmentId);
-
-  if (!mounted) return null;
 
   return (
     <WagmiProvider config={config}>
