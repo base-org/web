@@ -18,9 +18,6 @@ type CircleProps = {
     className: string;
 }
 
-
-
-
 function Circle({ color, size, maxWidth, className }: CircleProps) {
     // bg-grey-40, bg-pink-15, bg-green-15, bg-blue-15
     const circleClass = classNames(`absolute rounded-full`, {

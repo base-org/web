@@ -117,7 +117,6 @@ export default function RegistrationBackground() {
           <source src={fireworks} type="video/webm" />
         </video>
       </Transition>
-      
     </>
   );
 }
