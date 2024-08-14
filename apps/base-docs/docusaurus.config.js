@@ -29,73 +29,6 @@ const config = {
   title: APP_TITLE,
   tagline: '',
   url: 'https://docs.base.org',
-  headTags: [
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'og:type',
-        content: 'website',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'og:title',
-        content: 'Base | Docs',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'og:description',
-        content:
-          'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2.',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'og:image',
-        content: 'https://docs.base.org/img/base-open-graph.png',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'twitter:card',
-        content: 'summary_large_image',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'twitter:domain',
-        content: 'base.org',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'twitter:title',
-        content: 'Base | Docs',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'twitter:description',
-        content:
-          'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2.',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'twitter:image',
-        content: 'https://docs.base.org/img/base-open-graph.png',
-      },
-    },
-  ],
   customFields: {
     nodeEnv: process.env.NODE_ENV,
     sprigEnvironmentId: 'Q2ppiEaeSEJI',
@@ -161,6 +94,24 @@ const config = {
 
   themeConfig: {
     image: 'img/base-open-graph.png',
+    metadata: [
+      { name: 'og:type', content: 'website' },
+      { name: 'og:title', content: 'Base | Docs' },
+      {
+        name: 'og:description',
+        content:
+          'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2',
+      },
+      { name: 'twitter:title', content: 'Base | Docs' },
+      {
+        name: 'twitter:description',
+        content:
+          'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2.',
+      },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:domain', content: 'base.org' },
+    ],
+
     ...baseConfig.themeConfig,
     navbar: {
       logo: {
