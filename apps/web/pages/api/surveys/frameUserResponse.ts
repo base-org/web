@@ -17,7 +17,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { questionId, answerId } = req.query;
 
   const body: FrameRequest = req.body;
-  const userAddress: string = body.mockFrameData.address ?? '0xbrendan_test';
+  console.log({ body });
+  const { isValid, message } = await getFrameMessage(body, {
+    allowFramegear: true,
+    neynarApiKey: 'NEYNAR_ONCHAIN_KIT',
+  });
+  console.log('frame message...', { isValid, message });
+
+  if (!isValid) {
+    return res.status(500).json({ message: 'Message not valid' });
+  }
+
+  const userAddress: string = message.address ?? '0xbrendan_test';
   const userId = String(body.untrustedData.fid);
 
   try {
