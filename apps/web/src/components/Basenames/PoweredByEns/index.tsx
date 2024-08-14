@@ -46,14 +46,14 @@ export default function PoweredByEns() {
                         <div className="absolute top-1/4 right-1/4 w-2/5 max-w-[214.93px] translate-x-1/3 -translate-y-1/4">
                             <div className="relative pt-[100%] bg-blue-500 rounded-full shadow">
                                 <div className="absolute inset-2 translate-y-1 flex items-center justify-center">
-                                    <Image src={subtract} alt=""/>
+                                    <Image src={subtract as string} alt=""/>
                                 </div>
                             </div>
                         </div>
                         <div className="absolute bottom-1/4 left-1/3 w-2/5 max-w-[214.10px] -translate-x-3/4">
                             <div className="relative pt-[100%] bg-[#3580B7] rounded-full shadow">
                                 <div className="absolute inset-5 flex items-center justify-center">
-                                    <Image src={vector} alt=""/>
+                                    <Image src={vector as string} alt=""/>
                                 </div>
                             </div>
                         </div>

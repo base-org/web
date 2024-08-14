@@ -1,7 +1,5 @@
 'use client';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
-
 
 import { Transition } from '@headlessui/react';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
