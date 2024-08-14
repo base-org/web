@@ -88,7 +88,7 @@ In this article, you've learned how libraries such as [Rainbowkit], [ConnectKit]
 [Next.js]: https://nextjs.org/
 [Create React App]: https://create-react-app.dev/
 [Remix]: https://remix.run/
-[Building an Onchain App]: /building-an-onchain-app
+[Building an Onchain App]: ./building-an-onchain-app
 [Smart wallets]: https://www.coinbase.com/wallet/smart-wallet
 [passkeys]: https://safety.google/authentication/passkey/
 [Use the Coinbase Smart Wallet and EOAs with OnchainKit]: https://docs.base.org/tutorials/smart-wallet-and-eoa-with-onchainkit
