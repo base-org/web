@@ -1,60 +1,55 @@
-/* Copied From neymar react SDK */
+import { encodeUrlQueryParams } from 'apps/web/src/utils/urls';
 
-import { NeynarFrame } from 'apps/web/src/components/NeymarFrame';
-
-export const NEYNAR_API_URL = 'https://sdk-api.neynar.com';
-export const SDK_VERSION = '0.7.2';
-
-export const customFetch = async (url: string, options: RequestInit = {}): Promise<Response> => {
-  options.headers = {
-    ...options.headers,
-    'x-sdk': 'react',
-    'x-sdk-version': SDK_VERSION,
-  };
-
-  return fetch(url, options);
+// TODO: There's way more that neymar returns but we only need this for now
+export type NeymarButton = {
+  action_type: string;
+  index: number;
+  post_url: string;
+  title: string;
+  target?: string;
 };
 
-// TODO: There's way more that neymar returns but we only need this fo rnow
+export type NeynarFrame = {
+  buttons: NeymarButton[];
+  frames_url: string;
+  image: string;
+  image_aspect_ratio: string;
+  title: string;
+  post_url?: string;
+  version?: string;
+};
+
 export type NeymarCastData = {
   cast: {
     frames: NeynarFrame[];
     hash: string;
+    author: {
+      display_name: string;
+      pfp_url: string;
+      username: string;
+    };
+    text: string;
+    parent_url: string;
   };
 };
-export async function fetchCastByIdentifier({
-  type,
-  identifier,
-  viewerFid,
-  clientId,
-}: {
-  type: 'url' | 'hash';
-  identifier: string;
-  viewerFid?: number;
-  clientId: string;
-}): Promise<NeymarCastData['cast'] | null> {
-  try {
-    let requestUrl = `${NEYNAR_API_URL}/v2/farcaster/cast?type=${type}&identifier=${identifier}${
-      viewerFid ? `&viewer_fid=${viewerFid}` : ''
-    }&client_id=${clientId}`;
-    const response = await customFetch(requestUrl);
-    const data = (await response.json()) as NeymarCastData;
-    return data?.cast || null;
-  } catch (error) {
-    console.error('Error fetching cast by identifier', error);
-    return null;
-  }
-}
 
-export async function fetchWithTimeout(
-  url: string,
-  options: RequestInit,
-  timeout = 8000,
-): Promise<Response> {
-  return Promise.race([
-    customFetch(url, options),
-    new Promise<Response>((_, reject) =>
-      setTimeout(() => reject(new Error('Request timed out')), timeout),
-    ),
-  ]);
+export async function fetchCast({
+  identifier,
+  type,
+}: {
+  identifier: string;
+  type: 'url' | 'hash';
+}) {
+  const url = `https://api.neynar.com/v2/farcaster/cast?${encodeUrlQueryParams({
+    identifier,
+    type,
+  })}`;
+  const options = {
+    method: 'GET',
+    headers: { accept: 'application/json', api_key: process.env.NEXT_PUBLIC_NEYNAR_API_KEY },
+  };
+
+  const response = await fetch(url, options);
+  const data = (await response.json()) as NeymarCastData;
+  return data.cast;
 }
