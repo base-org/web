@@ -48,8 +48,9 @@ export async function fetchCast({
     method: 'GET',
     headers: { accept: 'application/json', api_key: process.env.NEXT_PUBLIC_NEYNAR_API_KEY },
   };
-
-  const response = await fetch(url, options);
-  const data = (await response.json()) as NeymarCastData;
-  return data.cast;
+  try {
+    const response = await fetch(url, options);
+    const data = (await response.json()) as NeymarCastData;
+    return data.cast;
+  } catch (error) {}
 }

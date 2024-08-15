@@ -53,7 +53,7 @@ export default function NeymarCast({
       </Link>
       <ul className="flex">
         {frames.map((frame) => (
-          <li key={frame.title} className="w-2/3">
+          <li key={frame.title}>
             <NeymarFrame frame={frame} hash={hash} />
           </li>
         ))}

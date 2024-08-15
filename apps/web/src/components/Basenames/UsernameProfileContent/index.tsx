@@ -9,10 +9,11 @@ export default function UsernameProfileContent() {
   return (
     <div className="flex flex-col gap-8 rounded-2xl border border-[#EBEBEB] p-4 shadow-lg md:gap-12 md:p-12">
       <section>
-        <div className="max-w-2/3">
+        <div className="max-w-[30rem]">
           <NeymarCast identifier={identifier} type="url" />
         </div>
       </section>
+      <UsernameProfileSectionBadges />
       <BadgeContextProvider>
         <UsernameProfileSectionBadges />
       </BadgeContextProvider>
