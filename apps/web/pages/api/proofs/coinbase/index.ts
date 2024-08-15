@@ -1,9 +1,8 @@
 import { trustedSignerPKey } from 'apps/web/src/constants';
-import { isBasenameSupportedChain } from 'apps/web/src/hooks/useBasenameChain';
-import { DiscountType, VerifiedAccount } from 'apps/web/src/utils/proofs';
+import { DiscountType, proofValidation, VerifiedAccount } from 'apps/web/src/utils/proofs';
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Address, isAddress } from 'viem';
+import { Address } from 'viem';
 
 // Coinbase verified account *and* CB1 structure
 export type CoinbaseProofResponse = {
@@ -39,25 +38,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return;
   }
   const { address, chain } = req.query;
-
-  if (!address || Array.isArray(address) || !isAddress(address)) {
-    return res.status(400).json({ error: 'valid address is required' });
+  const validationErr = proofValidation(address, chain);
+  if (validationErr) {
+    return res.status(validationErr.status).json({ error: validationErr.error });
   }
-
   if (!trustedSignerPKey) {
     return res.status(500).json({ error: 'currently unable to sign' });
   }
 
-  if (!chain || Array.isArray(chain)) {
-    return res.status(400).json({ error: 'chain must be a single value' });
-  }
-  let parsedChain = parseInt(chain);
-  if (!isBasenameSupportedChain(parsedChain)) {
-    return res.status(400).json({ error: 'chain must be Base or Base Sepolia' });
-  }
-
   try {
-    const result = await sybilResistantUsernameSigning(address, DiscountType.CB, parsedChain);
+    const result = await sybilResistantUsernameSigning(
+      address as `0x${string}`,
+      DiscountType.CB,
+      parseInt(chain as string),
+    );
     return res.status(200).json(result);
   } catch (error) {
     console.error(error);
