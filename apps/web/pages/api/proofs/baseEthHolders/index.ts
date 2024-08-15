@@ -41,5 +41,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     console.error(error);
   }
 
-  return res.status(404).json({ error: 'address is not eligible for a cbid discount' });
+  // If error is not an instance of Error, return a generic error message
+  return res.status(409).json({ error: 'An unexpected error occurred' });
 }
