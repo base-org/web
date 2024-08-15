@@ -72,12 +72,13 @@ export function ConnectWalletButton({
           context: 'navbar',
           address,
           wallet_type: sanitizeEventString(connector?.name),
+          wallet_connector_id: connector?.id
         },
         AnalyticsEventImportance.low,
       );
       identify({ userId: address });
     }
-  }, [address, connector?.name]);
+  }, [address, connector]);
 
   const clickConnect = useCallback(() => {
     openConnectModal?.();
