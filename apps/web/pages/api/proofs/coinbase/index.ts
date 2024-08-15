@@ -34,8 +34,7 @@ export type CoinbaseProofResponse = {
  */
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
-    res.status(405).json({ error: 'method not allowed' });
-    return;
+    return res.status(405).json({ error: 'method not allowed' });
   }
   const { address, chain } = req.query;
   const validationErr = proofValidation(address, chain);

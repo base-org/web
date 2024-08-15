@@ -19,7 +19,7 @@ example return:
 */
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
-    return { status: 405, error: 'method not allowed' };
+    return res.status(405).json({ error: 'method not allowed' });
   }
   const { address, chain } = req.query;
   const validationErr = proofValidation(address, chain);
