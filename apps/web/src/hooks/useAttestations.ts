@@ -1,6 +1,5 @@
 import { useErrors } from 'apps/web/contexts/Errors';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
-import { EarlyAccessProofResponse } from 'apps/web/pages/api/proofs/earlyAccess';
 import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
 import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
 import EarlyAccessValidatorABI from 'apps/web/src/abis/EarlyAccessValidator';
@@ -226,7 +225,7 @@ export function useCheckCB1Attestations() {
 export function useCheckEAAttestations(): AttestationHookReturns {
   const { logError } = useErrors();
   const { address } = useAccount();
-  const [EAProofResponse, setEAProofResponse] = useState<EarlyAccessProofResponse | null>(null);
+  const [EAProofResponse, setEAProofResponse] = useState<MerkleTreeProofResponse | null>(null);
   const { basenameChain } = useBasenameChain();
 
   useEffect(() => {
@@ -236,7 +235,7 @@ export function useCheckEAAttestations(): AttestationHookReturns {
       params.append('chain', basenameChain.id.toString());
       const response = await fetch(`/api/proofs/earlyAccess?${params}`);
       if (response.ok) {
-        const result = (await response.json()) as EarlyAccessProofResponse;
+        const result = (await response.json()) as MerkleTreeProofResponse;
         setEAProofResponse(result);
       }
     }
