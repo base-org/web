@@ -26,7 +26,7 @@ import {
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useSearchParams } from 'next/navigation';
-import { useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useAccount, useChains, useSwitchChain } from 'wagmi';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import Tooltip from 'apps/web/src/components/Tooltip';
@@ -46,6 +46,7 @@ export function RegistrationFlow() {
   const { chain } = useAccount();
   const { logEventWithContext } = useAnalytics();
   const searchParams = useSearchParams();
+
   const {
     registrationStep,
     searchInputFocused,
@@ -333,7 +334,7 @@ export function RegistrationFlow() {
         </Transition>
         <Transition
           appear
-          show={isSearch && !searchInputFocused}
+          show={isSearch}
           className={classNames(
             'absolute bottom-14 left-1/2 -translate-x-1/2 flex w-full justify-center transition-opacity',
             'mx-auto w-full',

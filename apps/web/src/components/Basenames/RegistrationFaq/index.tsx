@@ -63,7 +63,7 @@ function FAQItem({ question, answer }: FAQItemProps){
 
 export default function RegistrationFAQ() { 
   return (
-      <section className="max-w-6xl mx-auto md:py-20 px-4">
+      <section className="max-w-6xl mx-auto md:pt-20 pb-36 px-4">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/2 text-left mb-8 lg:mb-0">
             <h2 className="text-5xl md:text-6xl font-normal mb-8">
