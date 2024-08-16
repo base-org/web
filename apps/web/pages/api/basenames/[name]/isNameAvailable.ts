@@ -9,8 +9,9 @@ import { ethers } from 'ethers';
 
 const url = 'https://mainnet.base.org';
 const provider = new ethers.providers.JsonRpcProvider(url);
-
 const baseMainnetChainId = 8453;
+const contractAddress = REGISTER_CONTRACT_ADDRESSES[baseMainnetChainId];
+const contract = new ethers.Contract(contractAddress, REGISTER_CONTRACT_ABI, provider);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { name } = req.query;
@@ -30,9 +31,6 @@ async function isNameAvailable(name: string): Promise<boolean> {
   if (!valid) {
     throw new Error('Invalid ENS domain name');
   }
-
-  const contractAddress = REGISTER_CONTRACT_ADDRESSES[baseMainnetChainId];
-  const contract = new ethers.Contract(contractAddress, REGISTER_CONTRACT_ABI, provider);
 
   try {
     const available = await contract.available(normalizedName);
