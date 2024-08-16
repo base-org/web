@@ -19,9 +19,19 @@ export type NeynarFrame = {
   version?: string;
 };
 
+export type NeynarEmbed = {
+  // metadata: {};
+  url: string;
+};
+
+export type NeymarEmbedCast = {
+  cast_id: { fid: number; hash: string };
+};
+
 export type NeymarCastData = {
   cast: {
     frames: NeynarFrame[];
+    embeds: NeynarEmbed[];
     hash: string;
     author: {
       display_name: string;

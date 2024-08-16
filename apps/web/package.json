@@ -30,6 +30,7 @@
     "classnames": "^2.5.1",
     "ethers": "5.7.2",
     "framer-motion": "^8.5.5",
+    "hls.js": "^1.5.14",
     "is-ipfs": "^8.0.4",
     "jose": "^5.4.1",
     "jsonwebtoken": "^9.0.2",

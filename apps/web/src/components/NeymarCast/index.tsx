@@ -2,7 +2,104 @@ import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 import NeymarFrame from 'apps/web/src/components/NeymarFrame';
 import { fetchCast, NeymarCastData } from 'apps/web/src/utils/frames';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import Hls from 'hls.js';
+import { useErrors } from 'apps/web/contexts/Errors';
+
+// Image embed
+const isImageUrl = (url: string): boolean => {
+  return (
+    /\.(jpeg|jpg|gif|png|webp|bmp|svg)$/.test(url) || url.startsWith('https://imagedelivery.net')
+  );
+};
+
+// Video embed
+const isVideoUrl = (url: string): boolean => url.endsWith('.m3u8') || url.endsWith('.mp4');
+
+type NativeVideoPlayerProps = {
+  url: string;
+};
+
+function NativeVideoPlayer({ url }: NativeVideoPlayerProps) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  useEffect(() => {
+    if (videoRef.current) {
+      if (Hls.isSupported() && url.endsWith('.m3u8')) {
+        const hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(videoRef.current);
+      } else {
+        videoRef.current.src = url;
+      }
+    }
+  }, [url]);
+
+  return <video ref={videoRef} controls muted className="overflow-hidden rounded-2xl" />;
+}
+
+// Links in text
+const WARPCAST_DOMAIN = 'https://warpcast.com';
+
+const channelRegex = /(^|\s)\/\w+/g;
+const mentionRegex = /@\w+(\.eth)?/g;
+const urlRegex = /((https?:\/\/)?([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(\/[^\s]*)?)/g;
+const combinedRegex = new RegExp(
+  `(${channelRegex.source})|(${mentionRegex.source})|(${urlRegex.source})`,
+  'g',
+);
+
+const generateUrl = (match: string): string => {
+  if (channelRegex.test(match)) {
+    return `${WARPCAST_DOMAIN}/~/channel${match.trim()}`;
+  } else if (mentionRegex.test(match)) {
+    return `${WARPCAST_DOMAIN}/${match.substring(1)}`;
+  } else if (urlRegex.test(match)) {
+    return match.startsWith('http') ? match : `http://${match}`;
+  }
+  return '';
+};
+
+function ParagraphWithLinks({ text, castUrl }: { text: string; castUrl: string }) {
+  const textWithLinks = useMemo(() => {
+    let match;
+    let lastIndex = 0;
+    const results: React.ReactNode[] = [];
+    while ((match = combinedRegex.exec(text)) !== null) {
+      const matchIndex = match.index;
+      if (lastIndex < matchIndex) {
+        const justText = text.slice(lastIndex, matchIndex);
+
+        results.push(
+          <Link href={castUrl} target="_blank">
+            {justText}
+          </Link>,
+        );
+      }
+
+      const matchedUrl = match[0].trim();
+      const url = generateUrl(matchedUrl);
+      results.push(
+        <Link key={matchIndex} href={url} target="_blank" className="break-words text-blue-500">
+          {matchedUrl}
+        </Link>,
+      );
+
+      lastIndex = combinedRegex.lastIndex;
+    }
+
+    if (lastIndex < text.length) {
+      const justText = text.slice(lastIndex);
+      results.push(
+        <Link href={castUrl} target="_blank">
+          {justText}
+        </Link>,
+      );
+    }
+    return results;
+  }, [castUrl, text]);
+
+  return textWithLinks;
+}
 
 export default function NeymarCast({
   identifier,
@@ -12,19 +109,28 @@ export default function NeymarCast({
   type: 'url' | 'hash';
 }) {
   const [data, setData] = useState<NeymarCastData['cast']>();
-
+  const { logError } = useErrors();
   useEffect(() => {
     fetchCast({ type, identifier })
       .then((result) => {
         if (result) setData(result);
       })
-      .catch((error) => console.log('ERROR', error));
-  }, [identifier, type]);
+      .catch((error) => {
+        logError(error, 'Failed to load Cast');
+      });
+  }, [identifier, logError, type]);
 
   if (!data) return null;
 
   const frames = data.frames ?? [];
+  const framesUrls = frames.map((frame) => frame.frames_url);
+  const embeds = data.embeds ?? [];
+
+  // Frames are both in .frames and .embed
+  const filteredEmbeds = embeds.filter((embed) => !framesUrls.includes(embed.url));
   const { hash, text, author, parent_url: parentUrl } = data;
+
+  const textParagraph = text.split('\n\n');
 
   return (
     <article className="flex flex-col gap-4 overflow-hidden rounded-3xl border border-gray-40/20 p-8">
@@ -48,10 +154,30 @@ export default function NeymarCast({
           </header>
         </Link>
       )}
-      <Link href={identifier} target="_blank">
-        <p>{text}</p>
-      </Link>
-      <ul className="flex">
+      <ul className="flex flex-col gap-2">
+        {textParagraph.map((paragraph, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <li key={`${paragraph}_${index}`}>
+            <ParagraphWithLinks text={paragraph} castUrl={identifier} />
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {filteredEmbeds.map((embed, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <li key={`${embed.url}_${index}`}>
+            {embed.url && isImageUrl(embed.url) && (
+              <ImageWithLoading
+                src={embed.url}
+                alt="image"
+                wrapperClassName="rounded-3xl overflow-hidden"
+              />
+            )}
+            {embed.url && isVideoUrl(embed.url) && <NativeVideoPlayer url={embed.url} />}
+          </li>
+        ))}
+      </ul>
+      <ul className="flex flex-col gap-2">
         {frames.map((frame) => (
           <li key={frame.title}>
             <NeymarFrame frame={frame} hash={hash} />
