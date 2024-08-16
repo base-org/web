@@ -15,6 +15,7 @@ import {
   textRecordsSocialFieldsEnabled,
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
+import UsernameCastsField from 'apps/web/src/components/Basenames/UsernameCastsField';
 
 const settingTabClass = classNames(
   'flex flex-col justify-between gap-8 text-gray/60 md:items-center p-4 md:p-8',
@@ -86,6 +87,14 @@ export default function UsernameProfileSettingsManageProfile() {
           <UsernameKeywordsField
             onChange={onChangeTextRecord}
             value={updatedTextRecords[UsernameTextRecordKeys.Keywords]}
+            disabled={writeTextRecordsIsPending}
+          />
+        </div>
+
+        <div className="mb-2 w-full">
+          <UsernameCastsField
+            onChange={onChangeTextRecord}
+            value={updatedTextRecords[UsernameTextRecordKeys.Casts]}
             disabled={writeTextRecordsIsPending}
           />
         </div>
