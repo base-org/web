@@ -4,12 +4,12 @@ import { initialFrame } from 'apps/web/pages/api/basenames/frame/frameResponses'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
-  title: `Basenames`,
+  title: `Basenames | Frame`,
   description:
     'Basenames are a core onchain building block that enables anyone to establish their identity on Base by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Base.',
   openGraph: {
-    title: `Basenames`,
-    url: `/names`,
+    title: `Basenames | Frame`,
+    url: `/frames/names`,
     images: [basenameCover.src],
   },
   twitter: {
