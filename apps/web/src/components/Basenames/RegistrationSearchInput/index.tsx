@@ -47,10 +47,10 @@ export default function RegistrationSearchInput({
   const { logEventWithContext } = useAnalytics();
   const [search, setSearch] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [headerBackground, setHeaderBackground] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [debouncedSearch] = useDebounceValue(search, 400);
+  const [debouncedScroll] = useDebounceValue(headerBackground, 200);
   const { basenameChain } = useBasenameChain();
   const {
     isLoading: isLoadingNameAvailability,
@@ -67,7 +67,7 @@ export default function RegistrationSearchInput({
 
   const { valid, message } = validateEnsDomainName(debouncedSearch);
   const invalidWithMessage = !valid && !!message;
-  const resetBackground = focused && headerBackground;
+  const resetBackground = focused && debouncedScroll;
 
   const { setSearchInputFocused, setSearchInputHovered, setSelectedName } = useRegistration();
 
@@ -226,26 +226,16 @@ export default function RegistrationSearchInput({
     [setSearchInputHovered],
   );
 
-  const handleScroll = () => {
-    const position = window.scrollY;
-    setScrollPosition(position);
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      console.log(window.scrollY);
+      setHeaderBackground(window.scrollY <= 250);
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  useEffect(() => {
-    if (scrollPosition > 250) {
-      setHeaderBackground(false);
-    } else {
-      setHeaderBackground(true);
-    }
-  }, [scrollPosition]);
-
 
   useEffect(() => {
     setSearchInputFocused(resetBackground);

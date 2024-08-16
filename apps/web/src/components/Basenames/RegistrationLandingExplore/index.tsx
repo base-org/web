@@ -2,18 +2,22 @@ import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationC
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
 
-export default function RegistrationLandingExplore({}) {
-    const { searchInputFocused } = useRegistration();
+export default function RegistrationLandingExplore() {
+  const { searchInputFocused } = useRegistration();
 
-    return (
-        <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 flex w-full justify-center">
-            <span className={classNames("justify-center pr-2 fontSize: md", {
-                'text-[#454545]': !searchInputFocused,
-                'text-white': searchInputFocused,
-            } )}> Scroll to explore</span>
-            <div className="w-[25px] h-[25px] pl-[6px] py-1.5 bg-[#e7e6e2] rounded-lg animate-bounce">
-                <Icon name="caret" color="black" width="12" height="12"/>
-            </div>
-        </div>
-    )
+  return (
+    <div className="absolute left-1/2 flex w-full -translate-x-1/2 -translate-y-1/2 justify-center">
+      <span
+        className={classNames('justify-center pr-2', {
+          'text-[#454545]': !searchInputFocused,
+          'text-white': searchInputFocused,
+        })}
+      >
+        Scroll to explore
+      </span>
+      <div className="h-[25px] w-[25px] animate-bounce rounded-lg bg-[#e7e6e2] py-1.5 pl-[6px]">
+        <Icon name="caret" color="black" width="12" height="12" />
+      </div>
+    </div>
+  );
 }
