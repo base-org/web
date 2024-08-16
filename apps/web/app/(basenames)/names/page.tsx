@@ -1,9 +1,22 @@
+import { Suspense } from 'react';
+import type { Metadata } from 'next';
+import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import RegistrationProviders from 'apps/web/app/(basenames)/names/RegistrationProviders';
 import ErrorsProvider from 'apps/web/contexts/Errors';
 import RegistrationFlow from 'apps/web/src/components/Basenames/RegistrationFlow';
-import type { Metadata } from 'next';
-import { Suspense } from 'react';
 import basenameCover from './basename_cover.png';
+
+const frameMetadata = getFrameMetadata({
+  buttons: [
+    {
+      label: 'Claim a basename today!',
+    },
+  ],
+  image: {
+    src: `http://localhost:3000/images/basenames/contract-uri/feature-image.png`,
+  },
+  postUrl: `http://localhost:3000/api/basenames/frame/mint`,
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -18,6 +31,9 @@ export const metadata: Metadata = {
   twitter: {
     site: '@base',
     card: 'summary_large_image',
+  },
+  other: {
+    ...frameMetadata,
   },
 };
 
