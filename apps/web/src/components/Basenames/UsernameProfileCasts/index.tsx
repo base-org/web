@@ -19,7 +19,9 @@ export default function UsernameProfileCasts() {
       <UsernameProfileSectionTitle title="Pinned casts" />
       <ul className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2">
         {casts.map((cast) => (
-          <NeymarCast identifier={cast} type="url" key={cast} />
+          <li key={cast}>
+            <NeymarCast identifier={cast} type="url" />
+          </li>
         ))}
       </ul>
     </section>
