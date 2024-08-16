@@ -1,6 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
-import { inputSearchValueFrame, setYearsFrame } from 'apps/web/pages/api/basenames/frame/frameResponses';
+import {
+  inputSearchValueFrame,
+  setYearsFrame,
+} from 'apps/web/pages/api/basenames/frame/frameResponses';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -12,19 +15,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const targetName = untrustedData.inputText;
 
   try {
-    const response = await fetch(`http://localhost:3000/api/basenames/${targetName}/isNameAvailable`);
+    const response = await fetch(
+      `http://localhost:3000/api/basenames/${targetName}/isNameAvailable`,
+    );
     const { nameIsAvailable } = await response.json();
 
-    console.log('********** validatedName', nameIsAvailable)
+    console.log('********** validatedName', nameIsAvailable);
 
     if (!nameIsAvailable) {
-      return res.status(200).setHeader('Content-Type', 'text/html').send(inputSearchValueFrame);
+      throw new Error('Name not available.');
     }
 
     return res.status(200).setHeader('Content-Type', 'text/html').send(setYearsFrame(targetName));
-
   } catch (error) {
-    console.error('Error reading name availability:', error)
+    console.error('Error reading name availability:', error);
     return res.status(200).setHeader('Content-Type', 'text/html').send(inputSearchValueFrame);
   }
 }
