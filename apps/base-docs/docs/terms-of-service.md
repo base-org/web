@@ -5,7 +5,7 @@ description: The Terms of Service for using Base, a layer-two optimistic rollup 
 hide_table_of_contents: true
 ---
 
-# Bridge Interface, Sequencer, and Testnet Terms
+# Sequencer, Testnet, Basenames Interface Terms
 
 Last Updated: August 5, 2024
 
