@@ -1,9 +1,6 @@
-import { Suspense } from 'react';
 import type { Metadata } from 'next';
-import RegistrationProviders from 'apps/web/app/(basenames)/names/RegistrationProviders';
-import ErrorsProvider from 'apps/web/contexts/Errors';
-import RegistrationFlow from 'apps/web/src/components/Basenames/RegistrationFlow';
-import basenameCover from './basename_cover.png';
+import basenameCover from 'apps/web/app/(basenames)/names/basename_cover.png';
+import { initialFrame } from 'apps/web/pages/api/basenames/frame/frameResponses';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -19,16 +16,11 @@ export const metadata: Metadata = {
     site: '@base',
     card: 'summary_large_image',
   },
+  other: {
+    ...initialFrame,
+  },
 };
 
-export default async function Page() {
-  return (
-    <ErrorsProvider context="registration">
-      <RegistrationProviders>
-        <Suspense>
-          <RegistrationFlow />
-        </Suspense>
-      </RegistrationProviders>
-    </ErrorsProvider>
-  );
+export default async function NameFrame() {
+  return <div>Hello Neo</div>;
 }
