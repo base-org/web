@@ -36,7 +36,7 @@ function ValueProp({ title, description, image, color }: ValuePropProps) {
 
 export default function RegistrationValueProp() { 
     return (
-        <section className="flex flex-col items-center max-w-5xl mx-auto pt-12 px-4 md:px-12 overflow-hidden md:overflow-visible">
+        <section className="flex flex-col items-center max-w-5xl mx-auto pt-24 px-4 md:px-12">
             <h1 className='text-left z-20 text-[##0A0B0D] text-pretty pl:2 md:text-center text-palette-foreground text-5xl sm:text-6xl'>
                 Get so much more on <br /> Base with your profile
             </h1>
@@ -46,16 +46,16 @@ export default function RegistrationValueProp() {
                         <ValueProp title='Establish your identity' description='Be a part of our vibrant Base community with your own unique identity.' image={faceScan as StaticImageData} color='#0052FF' />
                     </div>
                     <div className={classNames(valueClass,  'row-start-2 md:translate-x-20')}>
-                        <ValueProp title='Easy Payments.' description='Use your human-readable address to send payments with ease.' image={currencies as StaticImageData} color='#22AD73' />
+                        <ValueProp title='Easy Payments' description='Use your human-readable address to send payments with ease.' image={currencies as StaticImageData} color='#22AD73' />
                     </div>
                     <div className={classNames(valueClass, 'row-start-3 sm:col-start-2')}>
                         <ValueProp title='Trusted Communities' description='Find Based builders easier. Connect, work together, or get mentorship.' image={sofort as StaticImageData} color='#8A55E9' />
                     </div>
                 </div>
-                <div className="absolute inset-0 -z-10 pt-8 md:pt-12 scale-125 md:scale-[1.65]">
-                    <video autoPlay className='w-full h-full motion-reduce:hidden object-fit' loop muted playsInline>
-                        <source src={globe} type="video/webm" />
-                    </video>
+                <div className="absolute -z-10 top-8 w-full h-full sm:w-2/3 sm:translate-x-1/4">
+                    <video autoPlay className="w-full h-full motion-reduce:hidden scale-[1.05] object-fit sm:scale-[1.35]" loop muted playsInline>
+                            <source src={globe} type="video/webm" />
+                        </video>
                 </div>
             </div>
         </section>

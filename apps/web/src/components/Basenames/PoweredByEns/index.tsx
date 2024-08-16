@@ -40,13 +40,13 @@ function Circle({ color, size, maxWidth, className }: CircleProps) {
 
 export default function PoweredByEns() {
     return (
-        <section className="max-w-7xl mx-auto pt-24 z-10 md:pt-36">
+        <section className="max-w-7xl mx-auto z-10 pt-[calc(20vh)] md:pt-[calc(20vh)]">
             <div className="flex flex-col lg:flex-row justify-end items-center">
                 {/* Graphic */}
                 <div className="w-3/4 sm:w-2/5 mb-8 lg:mb-0 order-last lg:order-first">
                     <div className="relative w-full pt-[100%] max-h-[580.66] max-w-[476.95px]">
                     {/* Main circles */}
-                        <div className="absolute top-1/4 right-1/4 w-[1/2] sm::w-2/3 max-w-[234.10px] translate-x-1/2 -translate-y-1/3">
+                        <div className="absolute top-1/4 right-1/4 w-[52%] sm::w-2/3 max-w-[234.10px] translate-x-1/2 -translate-y-1/3">
                             <Image src={base as StaticImageData} alt="" className="object-cover"/>
                         </div>
                         <div className="absolute bottom-1/4 left-1/3 w-[45%] sm:w-1/2 max-w-[214.10px] -translate-x-3/4">

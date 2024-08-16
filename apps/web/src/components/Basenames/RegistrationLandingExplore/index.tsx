@@ -15,7 +15,6 @@ export default function RegistrationLandingExplore({}) {
             <div className="w-[25px] h-[25px] pl-[6px] py-1.5 bg-[#e7e6e2] rounded-lg animate-bounce">
                 <Icon name="caret" color="black" width="12" height="12"/>
             </div>
-            {/* <Image src="/images/basenames/scroll.gif" width={25} height={25} alt="" className="rounded-lg translate-x-1/4"/> */}
         </div>
     )
 }
