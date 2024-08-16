@@ -14,7 +14,7 @@ By the end of this lesson, you should be able to:
 
 - Deploy a smart contract to the Base Sepolia Testnet with hardhat-deploy
 - Deploy a smart contract to the Sepolia Testnet with hardhat-deploy
-- Use etherscan to view a deployed smart contract
+- Use BaseScan to view a deployed smart contract
 
 ---
 
