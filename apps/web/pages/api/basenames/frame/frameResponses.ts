@@ -69,12 +69,17 @@ export const setYearsFrame = (targetName: string) =>
     },
   });
 
-export const confirmationFrame = (targetName: string, targetYears: number, registrationPrice: number) =>
+export const confirmationFrame = (
+  targetName: string,
+  targetYears: number,
+  registrationPriceInWei: string,
+  registrationPriceInEth: number,
+) =>
   getFrameHtmlResponse({
     buttons: [
       {
         action: 'tx',
-        label: `Confirm: Register ${targetName} for ${targetYears} years for ${registrationPrice} ETH`,
+        label: `Confirm: Register ${targetName} for ${targetYears} years for ${registrationPriceInEth} ETH`,
         target: `http://localhost:3000/api/basenames/frame/tx`,
       },
     ],
@@ -83,4 +88,10 @@ export const confirmationFrame = (targetName: string, targetYears: number, regis
     },
     target: `http://localhost:3000/api/basenames/frame/tx`,
     postUrl: `http://localhost:3000/api/basenames/frame/tx`,
+    state: {
+      name: targetName,
+      years: targetYears,
+      priceInWei: registrationPriceInWei,
+      priceInEth: registrationPriceInEth,
+    },
   });

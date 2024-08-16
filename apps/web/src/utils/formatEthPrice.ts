@@ -1,4 +1,4 @@
-import { formatEther } from 'viem';
+import { formatEther, parseEther } from 'viem';
 
 export function formatEthPrice(price?: bigint) {
   if (price === undefined) {
@@ -10,4 +10,13 @@ export function formatEthPrice(price?: bigint) {
   } else {
     return parseFloat(value.toFixed(3));
   }
+}
+
+export function formatWeiPrice(price?: bigint) {
+  if (price === undefined) {
+    return '...';
+  }
+
+  const priceInEth = formatEther(price);
+  return parseEther(priceInEth.toString());
 }

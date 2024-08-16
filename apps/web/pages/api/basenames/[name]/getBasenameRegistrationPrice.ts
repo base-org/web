@@ -6,7 +6,7 @@ import {
   REGISTER_CONTRACT_ADDRESSES,
   validateEnsDomainName,
 } from 'apps/web/src/utils/usernames';
-import { formatEthPrice } from 'apps/web/src/utils/formatEthPrice';
+import { formatEthPrice, formatWeiPrice } from 'apps/web/src/utils/formatEthPrice';
 
 const url = 'https://mainnet.base.org';
 const provider = new ethers.providers.JsonRpcProvider(url);
@@ -19,8 +19,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const registrationPrice = await getBasenameRegistrationPrice(String(name), Number(years));
-    const formattedRegistrationPrice = formatEthPrice(registrationPrice);
-    return res.status(200).json(formattedRegistrationPrice);
+    const registrationPriceInWei = formatWeiPrice(registrationPrice).toString();
+    const registrationPriceInEth = formatEthPrice(registrationPrice);
+    return res.status(200).json({ registrationPriceInWei, registrationPriceInEth });
   } catch (error) {
     console.error('Could not get registration price: ', error);
     return res.status(500).json(error);
