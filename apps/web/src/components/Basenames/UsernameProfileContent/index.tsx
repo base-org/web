@@ -7,7 +7,6 @@ export default function UsernameProfileContent() {
   return (
     <div className="flex flex-col gap-8 rounded-2xl border border-[#EBEBEB] p-4 shadow-lg md:gap-12 md:p-12">
       <UsernameProfileCasts />
-      <UsernameProfileSectionBadges />
 
       <BadgeContextProvider>
         <UsernameProfileSectionBadges />
