@@ -67,6 +67,7 @@ export default function RegistrationSearchInput({
 
   const { valid, message } = validateEnsDomainName(debouncedSearch);
   const invalidWithMessage = !valid && !!message;
+  const resetBackground = focused && headerBackground;
 
   const { setSearchInputFocused, setSearchInputHovered, setSelectedName } = useRegistration();
 
@@ -247,8 +248,8 @@ export default function RegistrationSearchInput({
 
 
   useEffect(() => {
-    setSearchInputFocused(focused && headerBackground);
-  }, [focused && headerBackground, setSearchInputFocused]);
+    setSearchInputFocused(resetBackground);
+  }, [resetBackground, setSearchInputFocused]);
 
   useEffect(() => {
     if (!invalidWithMessage) return;

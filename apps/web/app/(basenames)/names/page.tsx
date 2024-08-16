@@ -26,19 +26,15 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   return (
-    <>
-      <ErrorsProvider context="registration">
-        <RegistrationProviders>
-          <Suspense>
-            <RegistrationFlow />
-          </Suspense>
-        </RegistrationProviders>
-      </ErrorsProvider>
-      <div className="flex w-full flex-col items-center bg-white">
+    <ErrorsProvider context="registration">
+      <RegistrationProviders>
+        <Suspense>
+          <RegistrationFlow />
           <RegistrationValueProp />
           <PoweredByEns />
           <RegistrationFAQ />
-      </div>
-    </>
+        </Suspense>
+      </RegistrationProviders>
+    </ErrorsProvider>
   );
 }

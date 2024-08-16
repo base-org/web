@@ -26,7 +26,7 @@ import {
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useSearchParams } from 'next/navigation';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useAccount, useChains, useSwitchChain } from 'wagmi';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import Tooltip from 'apps/web/src/components/Tooltip';

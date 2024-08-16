@@ -1,7 +1,6 @@
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
-import Image from 'next/image';
 
 export default function RegistrationLandingExplore({}) {
     const { searchInputFocused } = useRegistration();
