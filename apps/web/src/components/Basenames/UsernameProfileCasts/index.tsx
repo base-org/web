@@ -1,3 +1,5 @@
+'use client';
+
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
 import NeymarCast from 'apps/web/src/components/NeymarCast';

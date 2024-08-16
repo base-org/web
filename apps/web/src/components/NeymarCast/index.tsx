@@ -1,3 +1,5 @@
+'use client';
+
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 import NeymarFrame from 'apps/web/src/components/NeymarFrame';
 import { fetchCast, NeymarCastData } from 'apps/web/src/utils/frames';
