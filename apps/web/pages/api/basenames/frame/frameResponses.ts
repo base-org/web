@@ -58,6 +58,22 @@ export const setYearsFrame = (targetName) =>
     },
     postUrl: `http://localhost:3000/api/basenames/frame/confirmation`,
     state: {
-      targetName: targetName,
+      targetName,
     },
+  });
+
+export const confirmationFrame = (targetName: string, targetYears: number) =>
+  getFrameHtmlResponse({
+    buttons: [
+      {
+        action: 'tx',
+        label: `Confirm: Claim ${targetName} for ${targetYears} years`,
+        target: `http://localhost:3000/api/basenames/frame/tx`,
+      },
+    ],
+    image: {
+      src: `http://localhost:3000/api/basenames/${targetName}/assets/coverImage.png`,
+    },
+    target: `http://localhost:3000/api/basenames/frame/tx`,
+    postUrl: `http://localhost:3000/api/basenames/frame/tx`,
   });
