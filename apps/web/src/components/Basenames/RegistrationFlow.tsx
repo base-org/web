@@ -118,7 +118,7 @@ export function RegistrationFlow() {
   return (
     <>
       {false && isDevelopment && <RegistrationStateSwitcherDynamic />}
-      <main className={mainClasses}>
+      <section className={mainClasses}>
         {/* 1. Brand & Search */}
         <Transition
           appear
@@ -351,7 +351,7 @@ export function RegistrationFlow() {
 
         {/* Misc: Animated background for each steps */}
         <RegistrationBackground />
-      </main>
+      </section>
     </>
   );
 }

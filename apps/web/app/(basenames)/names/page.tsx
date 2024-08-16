@@ -29,10 +29,12 @@ export default async function Page() {
     <ErrorsProvider context="registration">
       <RegistrationProviders>
         <Suspense>
-          <RegistrationFlow />
-          <RegistrationValueProp />
-          <PoweredByEns />
-          <RegistrationFAQ />
+          <main>
+            <RegistrationFlow />
+            <RegistrationValueProp />
+            <PoweredByEns />
+            <RegistrationFAQ />
+          </main>
         </Suspense>
       </RegistrationProviders>
     </ErrorsProvider>
