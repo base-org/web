@@ -47,6 +47,8 @@ export default function RegistrationSearchInput({
   const { logEventWithContext } = useAnalytics();
   const [search, setSearch] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [headerBackground, setHeaderBackground] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [debouncedSearch] = useDebounceValue(search, 400);
   const { basenameChain } = useBasenameChain();
@@ -223,9 +225,30 @@ export default function RegistrationSearchInput({
     [setSearchInputHovered],
   );
 
+  const handleScroll = () => {
+    const position = window.scrollY;
+    setScrollPosition(position);
+  };
+
   useEffect(() => {
-    setSearchInputFocused(focused);
-  }, [focused, setSearchInputFocused]);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (scrollPosition > 250) {
+      setHeaderBackground(false);
+    } else {
+      setHeaderBackground(true);
+    }
+  }, [scrollPosition]);
+
+
+  useEffect(() => {
+    setSearchInputFocused(focused && headerBackground);
+  }, [focused && headerBackground, setSearchInputFocused]);
 
   useEffect(() => {
     if (!invalidWithMessage) return;
