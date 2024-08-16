@@ -9,9 +9,15 @@ import classNames from 'classnames';
 
 // Image embed
 const isImageUrl = (url: string): boolean => {
-  return (
-    /\.(jpeg|jpg|gif|png|webp|bmp|svg)$/.test(url) || url.startsWith('https://imagedelivery.net')
-  );
+  try {
+    // This will trigger an error if it's not a valid URL
+    const parsedUrl = new URL(url);
+
+    // Ends with an image format
+    return /\.(jpeg|jpg|gif|png|webp|bmp|svg)$/.test(parsedUrl.pathname);
+  } catch (error) {
+    return false;
+  }
 };
 
 // Video embed
