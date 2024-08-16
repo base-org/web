@@ -8,8 +8,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const body: FrameRequest = req.body;
   const { untrustedData } = body;
-  console.log('years....', { untrustedData });
-
   const targetName = untrustedData.inputText;
   console.log({ targetName });
 
