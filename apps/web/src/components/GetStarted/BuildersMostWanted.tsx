@@ -28,7 +28,7 @@ export default async function BuildersMostWanted() {
       <div className={gridClasses}>
         <ResourceCard
           title="Create your profile"
-          description="Claim a Basename and create your Based Profile to connect with other Builders"
+          description="**COMING SOON**"
           href="/names?utm_source=dotorg&utm_medium=builderkit"
           topLeft={<Icon name="basenamesIcon" color="white" />}
           classnames="bg-purple-60 border-purple-60"
