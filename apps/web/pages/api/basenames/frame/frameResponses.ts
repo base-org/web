@@ -29,7 +29,14 @@ export const inputSearchValueFrame = getFrameHtmlResponse({
   postUrl: `http://localhost:3000/api/basenames/frame/validateSearchInputAndSetYears`,
 });
 
-export const setYearsFrame = (targetName) =>
+export const buttonIndexToYears = {
+  1: 1,
+  2: 5,
+  3: 10,
+  4: 100,
+};
+
+export const setYearsFrame = (targetName: string) =>
   getFrameHtmlResponse({
     buttons: [
       {
@@ -62,12 +69,12 @@ export const setYearsFrame = (targetName) =>
     },
   });
 
-export const confirmationFrame = (targetName: string, targetYears: number) =>
+export const confirmationFrame = (targetName: string, targetYears: number, registrationPrice: number) =>
   getFrameHtmlResponse({
     buttons: [
       {
         action: 'tx',
-        label: `Confirm: Claim ${targetName} for ${targetYears} years`,
+        label: `Confirm: Register ${targetName} for ${targetYears} years for ${registrationPrice} ETH`,
         target: `http://localhost:3000/api/basenames/frame/tx`,
       },
     ],

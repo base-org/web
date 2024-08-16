@@ -20,8 +20,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     );
     const { nameIsAvailable } = await response.json();
 
-    console.log('********** validatedName', nameIsAvailable);
-
     if (!nameIsAvailable) {
       throw new Error('Name not available.');
     }

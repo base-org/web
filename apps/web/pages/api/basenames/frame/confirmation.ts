@@ -1,13 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
-import { confirmationFrame } from 'apps/web/pages/api/basenames/frame/frameResponses';
-
-const buttonIndexToYears = {
-  1: 1,
-  2: 5,
-  3: 10,
-  4: 100,
-};
+import { confirmationFrame, buttonIndexToYears } from 'apps/web/pages/api/basenames/frame/frameResponses';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -26,14 +19,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     `http://localhost:3000/api/basenames/${targetName}/getBasenameRegistrationPrice?years=${targetYears}`,
   );
   const data = await response.json();
-
-  console.log('************** ', { data });
+  const formattedRegistrationPrice = data ;
 
   try {
     return res
       .status(200)
       .setHeader('Content-Type', 'text/html')
-      .send(confirmationFrame(targetName, targetYears));
+      .send(confirmationFrame(targetName, targetYears, formattedRegistrationPrice));
   } catch (error) {
     console.error('Failed to fetch questions:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
