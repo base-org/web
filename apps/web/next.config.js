@@ -108,6 +108,7 @@ const contentSecurityPolicy = {
     'https://browser-intake-datadoghq.com', // datadog
     'https://*.datadoghq.com', //datadog
     'https://translate.googleapis.com', // Let user translate our website
+    'https://sdk-api.neynar.com/', // Neymar API
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
