@@ -596,6 +596,8 @@ export async function getBasenameTextRecords(username: BaseName) {
 
 // Force EA/GA based on env
 export const IS_EARLY_ACCESS = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
+export const USERNAMES_PINNED_CASTS_ENABLED =
+  process.env.NEXT_PUBLIC_USERNAMES_PINNED_CASTS_ENABLED === 'true';
 export const REGISTER_CONTRACT_ABI = IS_EARLY_ACCESS
   ? EARegistrarControllerAbi
   : RegistrarControllerABI;
