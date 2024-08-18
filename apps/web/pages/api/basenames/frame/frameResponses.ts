@@ -1,6 +1,7 @@
 import { getFrameMetadata, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 
-export const DOMAIN = `https://base-web-git-feat-basenames-frame-coinbase-vercel.vercel.app/`
+export const DOMAIN = `https://base-web-git-feat-basenames-frame-coinbase-vercel.vercel.app`
+// export const DOMAIN = `http://localhost:3000`
 
 export const initialFrame = getFrameMetadata({
   buttons: [
