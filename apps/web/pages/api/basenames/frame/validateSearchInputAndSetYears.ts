@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import {
+  DOMAIN,
   inputSearchValueFrame,
   setYearsFrame,
 } from 'apps/web/pages/api/basenames/frame/frameResponses';
@@ -16,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const response = await fetch(
-      `http://localhost:3000/api/basenames/${targetName}/isNameAvailable`,
+      `${DOMAIN}/api/basenames/${targetName}/isNameAvailable`,
     );
     const { nameIsAvailable } = await response.json();
 

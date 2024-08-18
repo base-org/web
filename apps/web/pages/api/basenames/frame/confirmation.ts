@@ -3,6 +3,7 @@ import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/o
 import {
   confirmationFrame,
   buttonIndexToYears,
+  DOMAIN,
 } from 'apps/web/pages/api/basenames/frame/frameResponses';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -19,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const targetYears = buttonIndexToYears[untrustedData.buttonIndex];
 
   const response = await fetch(
-    `http://localhost:3000/api/basenames/${targetName}/getBasenameRegistrationPrice?years=${targetYears}`,
+    `${DOMAIN}/api/basenames/${targetName}/getBasenameRegistrationPrice?years=${targetYears}`,
   );
   const { registrationPriceInWei, registrationPriceInEth} = await response.json();
 

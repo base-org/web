@@ -1,5 +1,7 @@
 import { getFrameMetadata, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 
+export const DOMAIN = `https://base-web-git-feat-basenames-frame-coinbase-vercel.vercel.app/`
+
 export const initialFrame = getFrameMetadata({
   buttons: [
     {
@@ -7,9 +9,9 @@ export const initialFrame = getFrameMetadata({
     },
   ],
   image: {
-    src: `http://localhost:3000/images/basenames/contract-uri/feature-image.png`,
+    src: `${DOMAIN}/images/basenames/contract-uri/feature-image.png`,
   },
-  postUrl: `http://localhost:3000/api/basenames/frame/inputSearchValue`,
+  postUrl: `${DOMAIN}/api/basenames/frame/inputSearchValue`,
 });
 
 export const inputSearchValueFrame = getFrameHtmlResponse({
@@ -17,16 +19,16 @@ export const inputSearchValueFrame = getFrameHtmlResponse({
     {
       action: 'post',
       label: 'Claim name',
-      target: `http://localhost:3000/api/basenames/frame/validateSearchInputAndSetYears`,
+      target: `${DOMAIN}/api/basenames/frame/validateSearchInputAndSetYears`,
     },
   ],
   image: {
-    src: `http://localhost:3000/images/basenames/contract-uri/cover-image.png`,
+    src: `${DOMAIN}/images/basenames/contract-uri/cover-image.png`,
   },
   input: {
     text: 'Search for a name',
   },
-  postUrl: `http://localhost:3000/api/basenames/frame/validateSearchInputAndSetYears`,
+  postUrl: `${DOMAIN}/api/basenames/frame/validateSearchInputAndSetYears`,
 });
 
 export const buttonIndexToYears = {
@@ -42,28 +44,28 @@ export const setYearsFrame = (targetName: string) =>
       {
         action: 'post',
         label: '1 year',
-        target: `http://localhost:3000/api/basenames/frame/confirmation`,
+        target: `${DOMAIN}/api/basenames/frame/confirmation`,
       },
       {
         action: 'post',
         label: '5 years',
-        target: `http://localhost:3000/api/basenames/frame/confirmation`,
+        target: `${DOMAIN}/api/basenames/frame/confirmation`,
       },
       {
         action: 'post',
         label: '10 years',
-        target: `http://localhost:3000/api/basenames/frame/confirmation`,
+        target: `${DOMAIN}/api/basenames/frame/confirmation`,
       },
       {
         action: 'post',
         label: '100 years',
-        target: `http://localhost:3000/api/basenames/frame/confirmation`,
+        target: `${DOMAIN}/api/basenames/frame/confirmation`,
       },
     ],
     image: {
-      src: `http://localhost:3000/api/basenames/${targetName}/assets/coverImage.png`,
+      src: `${DOMAIN}/api/basenames/${targetName}/assets/coverImage.png`,
     },
-    postUrl: `http://localhost:3000/api/basenames/frame/confirmation`,
+    postUrl: `${DOMAIN}/api/basenames/frame/confirmation`,
     state: {
       targetName,
     },
@@ -80,14 +82,14 @@ export const confirmationFrame = (
       {
         action: 'tx',
         label: `Confirm: Register ${targetName} for ${targetYears} years for ${registrationPriceInEth} ETH`,
-        target: `http://localhost:3000/api/basenames/frame/tx`,
+        target: `${DOMAIN}/api/basenames/frame/tx`,
       },
     ],
     image: {
-      src: `http://localhost:3000/api/basenames/${targetName}/assets/coverImage.png`,
+      src: `${DOMAIN}/api/basenames/${targetName}/assets/coverImage.png`,
     },
-    target: `http://localhost:3000/api/basenames/frame/tx`,
-    postUrl: `http://localhost:3000/api/basenames/frame/tx`,
+    target: `${DOMAIN}/api/basenames/frame/tx`,
+    postUrl: `${DOMAIN}/api/basenames/frame/tx`,
     state: {
       name: targetName,
       years: targetYears,
