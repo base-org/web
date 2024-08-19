@@ -19,8 +19,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const registrationPrice = await getBasenameRegistrationPrice(String(name), Number(years));
+    if (!registrationPrice) {
+      throw new Error('Could not get registration price.');
+    }
+
     const registrationPriceInWei = formatWeiPrice(registrationPrice).toString();
-    const registrationPriceInEth = formatEthPrice(registrationPrice);
+    const registrationPriceInEth = formatEthPrice(registrationPrice).toString();
     return res.status(200).json({ registrationPriceInWei, registrationPriceInEth });
   } catch (error) {
     console.error('Could not get registration price: ', error);
@@ -28,14 +32,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 }
 
-async function getBasenameRegistrationPrice(name: string, years: number) {
+async function getBasenameRegistrationPrice(name: string, years: number): Promise<bigint | null> {
   const normalizedName = normalizeName(name);
   if (!normalizedName) {
     throw new Error('Invalid ENS domain name');
   }
 
   try {
-    const claimPrice = await contract.registerPrice(normalizedName, secondsInYears(years));
+    const claimPrice = (await contract.registerPrice(
+      normalizedName,
+      secondsInYears(years),
+    )) as bigint;
     return claimPrice;
   } catch (error) {
     console.error('Could not get claim price:', error);
