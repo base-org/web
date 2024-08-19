@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const body: FrameRequest = req.body;
     const { untrustedData } = body;
-    const targetName: string = untrustedData.inputText;
+    const targetName: string = encodeURIComponent(untrustedData.inputText);
 
     const { valid, message } = validateEnsDomainName(targetName);
     if (!valid) {
