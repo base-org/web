@@ -20,15 +20,17 @@ type ConfirmationFrameStateType = {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // if (req.method !== 'POST') {
-  //   return res.status(405).json({ error: `Confirm Screen — Method (${req.method}) Not Allowed` });
-  // }
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: `Confirm Screen — Method (${req.method}) Not Allowed` });
+  }
 
   const body = req.body as FrameRequest;
   const { untrustedData } = body;
   console.log('confirmation.....', { untrustedData });
 
-  const messageState: ConfirmationFrameStateType = JSON.parse(untrustedData.state);
+  const messageState: ConfirmationFrameStateType = JSON.parse(
+    decodeURIComponent(untrustedData.state),
+  );
   const targetName = encodeURIComponent(messageState.targetName);
   const formattedTargetName = messageState.formattedTargetName;
 
@@ -60,7 +62,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         ),
       );
   } catch (error) {
-    console.error('Failed to fetch questions:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
