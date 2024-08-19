@@ -8,9 +8,9 @@ import {
 } from 'apps/web/pages/api/basenames/frame/frameResponses';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: `Set Years Screen — Method (${req.method}) Not Allowed` });
-  }
+  // if (req.method !== 'POST') {
+  //   return res.status(405).json({ error: `Set Years Screen — Method (${req.method}) Not Allowed` });
+  // }
 
   try {
     const body: FrameRequest = req.body;

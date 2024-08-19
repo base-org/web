@@ -16,9 +16,9 @@ type TxFrameStateType = {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: `Tx Screen — Method (${req.method}) Not Allowed` });
-  }
+  // if (req.method !== 'POST') {
+  //   return res.status(405).json({ error: `Tx Screen — Method (${req.method}) Not Allowed` });
+  // }
 
   const body = req.body as FrameRequest;
   let message;
