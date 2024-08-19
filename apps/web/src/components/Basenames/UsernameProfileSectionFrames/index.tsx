@@ -60,6 +60,32 @@ const theme: FrameUITheme<StylingProps> = {
   },
 };
 
+type TryNowHeroProps = {
+  openFrameModal: () => void;
+};
+
+function TryNowHero({ openFrameModal }: TryNowHeroProps) {
+  return (
+    <section className="relative flex flex-row items-center justify-start gap-2 rounded-xl border border-palette-line/20 pl-1 pr-6">
+      <ImageAdaptive alt="" src={frameIcon as StaticImageData} className="z-1" />
+      <div className="grow">
+        <h1 className="text-xl font-medium text-illoblack">Pin a frame to your profile</h1>
+        <p className="max-w-80 text-illoblack">
+          Add fun and interactive experiences to your profile with an frame.
+        </p>
+      </div>
+      <Button rounded variant={ButtonVariants.Black} onClick={openFrameModal}>
+        Try it now
+      </Button>
+      <ImageAdaptive
+        alt=""
+        src={cornerGarnish as StaticImageData}
+        className="absolute bottom-0 left-0 z-0 rounded-bl-xl"
+      />
+    </section>
+  );
+}
+
 export default function UsernameProfileSectionFrames() {
   const { address } = useAccount();
   const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
@@ -94,25 +120,7 @@ export default function UsernameProfileSectionFrames() {
   });
 
   if (currentWalletIsOwner && !homeframeUrl) {
-    return (
-      <section className="relative flex flex-row items-center justify-start gap-2 rounded-xl border border-palette-line/20 pl-1 pr-6">
-        <ImageAdaptive alt="" src={frameIcon as StaticImageData} className="z-1" />
-        <div className="grow">
-          <h1 className="text-xl font-medium text-illoblack">Pin a frame to your profile</h1>
-          <p className="max-w-80 text-illoblack">
-            Add fun and interactive experiences to your profile with an frame.
-          </p>
-        </div>
-        <Button rounded variant={ButtonVariants.Black} onClick={openFrameModal}>
-          Try it now
-        </Button>
-        <ImageAdaptive
-          alt=""
-          src={cornerGarnish as StaticImageData}
-          className="absolute bottom-0 left-0 z-0 rounded-bl-xl"
-        />
-      </section>
-    );
+    return <TryNowHero openFrameModal={openFrameModal} />;
   }
   if (!homeframeUrl) return null;
   return (
