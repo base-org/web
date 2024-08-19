@@ -33,10 +33,7 @@ async function isNameAvailable(name: string): Promise<boolean> {
   }
 
   try {
-    const available = await contract.available(normalizedName);
-    if (typeof available !== 'boolean') {
-      throw new Error('Invalid return type, expected boolean');
-    }
+    const available = (await contract.available(normalizedName)) as boolean;
     return available;
   } catch (error) {
     console.error('Error checking name availability:', error);
