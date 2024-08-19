@@ -1,3 +1,4 @@
+import { createContext, useContext, useState, useCallback, useMemo } from 'react';
 import { FrameUI, type FrameUIComponents, type FrameUITheme } from '@frames.js/render/ui';
 import { useFrame } from '@frames.js/render/use-frame';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
@@ -13,6 +14,7 @@ import cornerGarnish from './corner-garnish.svg';
 import frameIcon from './frame-icon.svg';
 import { StaticImageData } from 'next/image';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import Modal from 'apps/web/src/components/Modal';
 
 type StylingProps = {
   className?: string;
@@ -60,11 +62,86 @@ const theme: FrameUITheme<StylingProps> = {
   },
 };
 
-type TryNowHeroProps = {
+type FrameContextValue = {
+  frameModalOpen: boolean;
   openFrameModal: () => void;
+  closeFrameModal: () => void;
+  currentWalletIsOwner?: boolean;
+  homeframeUrl: string;
+  frameState: unknown;
 };
 
-function TryNowHero({ openFrameModal }: TryNowHeroProps) {
+// Create the FrameContext
+const FrameContext = createContext<FrameContextValue | null>(null);
+
+// Create a custom hook to use the FrameContext
+const useFrameContext = () => {
+  const context = useContext(FrameContext);
+  if (!context) {
+    throw new Error('useFrameContext must be used within a FrameProvider');
+  }
+  return context;
+};
+
+// Create the FrameProvider component
+function FrameProvider({ children }) {
+  const [frameModalOpen, setFrameModalOpen] = useState(false);
+  const openFrameModal = useCallback(() => setFrameModalOpen(true), []);
+  const closeFrameModal = useCallback(() => setFrameModalOpen(false), []);
+
+  const { address } = useAccount();
+  const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
+  const { existingTextRecords } = useReadBaseEnsTextRecords({
+    address: profileAddress,
+    username: profileUsername,
+  });
+
+  const homeframeUrl = existingTextRecords[UsernameTextRecordKeys.Frame];
+  const xmtpSignerState = useXmtpIdentity();
+  const xmtpFrameContext = useXmtpFrameContext({
+    fallbackContext: {
+      conversationTopic: 'base-name-profile',
+      participantAccountAddresses: address ? [address, zeroAddress] : [zeroAddress],
+    },
+  });
+
+  const frameState = useFrame({
+    connectedAddress: address,
+    homeframeUrl,
+    frameActionProxy: '/frames',
+    frameGetProxy: '/frames',
+    onError: (e) => console.error('frame error: ', e),
+    signerState: xmtpSignerState,
+    specification: 'farcaster',
+    frameContext: xmtpFrameContext.frameContext,
+  });
+
+  const value = useMemo(
+    () => ({
+      frameModalOpen,
+      openFrameModal,
+      closeFrameModal,
+      currentWalletIsOwner,
+      homeframeUrl,
+      frameState,
+    }),
+    [
+      closeFrameModal,
+      currentWalletIsOwner,
+      frameModalOpen,
+      frameState,
+      homeframeUrl,
+      openFrameModal,
+    ],
+  );
+
+  return <FrameContext.Provider value={value}>{children}</FrameContext.Provider>;
+}
+
+// Update the TryNowHero component
+function TryNowHero() {
+  const { openFrameModal } = useFrameContext();
+
   return (
     <section className="relative flex flex-row items-center justify-start gap-2 rounded-xl border border-palette-line/20 pl-1 pr-6">
       <ImageAdaptive alt="" src={frameIcon as StaticImageData} className="z-1" />
@@ -86,41 +163,19 @@ function TryNowHero({ openFrameModal }: TryNowHeroProps) {
   );
 }
 
-export default function UsernameProfileSectionFrames() {
-  const { address } = useAccount();
-  const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
-  const { existingTextRecords } = useReadBaseEnsTextRecords({
-    address: profileAddress,
-    username: profileUsername,
-  });
+// Update the AddFrameModal component
+function AddFrameModal() {
+  const { frameModalOpen, closeFrameModal } = useFrameContext();
 
-  const openFrameModal = console.log;
+  return <Modal isOpen={frameModalOpen} onClose={closeFrameModal} />;
+}
 
-  const homeframeUrl = existingTextRecords[UsernameTextRecordKeys.Frame];
-  const xmtpSignerState = useXmtpIdentity();
-  const xmtpFrameContext = useXmtpFrameContext({
-    fallbackContext: {
-      conversationTopic: 'base-name-profile',
-      participantAccountAddresses: address ? [address, zeroAddress] : [zeroAddress],
-    },
-  });
-
-  const frameState = useFrame({
-    connectedAddress: address,
-    // replace with frame URL
-    homeframeUrl,
-    // corresponds to the name of the route for POST and GET in step 2
-    frameActionProxy: '/frames',
-    frameGetProxy: '/frames',
-    onError: (e) => console.error('frame error: ', e),
-    // map to your identity if you have one
-    signerState: xmtpSignerState,
-    specification: 'farcaster',
-    frameContext: xmtpFrameContext.frameContext,
-  });
+// Update the SectionContent component
+function SectionContent() {
+  const { currentWalletIsOwner, homeframeUrl, frameState } = useFrameContext();
 
   if (currentWalletIsOwner && !homeframeUrl) {
-    return <TryNowHero openFrameModal={openFrameModal} />;
+    return <TryNowHero />;
   }
   if (!homeframeUrl) return null;
   return (
@@ -132,3 +187,15 @@ export default function UsernameProfileSectionFrames() {
     </section>
   );
 }
+
+// Update the main UsernameProfileSectionFrames component
+function UsernameProfileSectionFrames() {
+  return (
+    <FrameProvider>
+      <SectionContent />
+      <AddFrameModal />
+    </FrameProvider>
+  );
+}
+
+export default UsernameProfileSectionFrames;
