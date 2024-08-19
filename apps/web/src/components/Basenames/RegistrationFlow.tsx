@@ -155,7 +155,7 @@ export function RegistrationFlow() {
             />
             {IS_EARLY_ACCESS && (
               <Tooltip
-                content="shrekislove.base.eth is already taken."
+                content="shrek.base.eth is already taken."
                 className="mx-auto mt-6 flex items-center justify-center"
               >
                 <>
