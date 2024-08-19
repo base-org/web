@@ -14,7 +14,7 @@ import cornerGarnish from './corner-garnish.svg';
 import frameIcon from './frame-icon.svg';
 import { StaticImageData } from 'next/image';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
-import Modal from 'apps/web/src/components/Modal';
+import Modal, { ModalSizes } from 'apps/web/src/components/Modal';
 import { FrameState } from '@frames.js/render';
 
 type StylingProps = {
@@ -195,16 +195,28 @@ function AddFrameModal() {
   });
 
   return (
-    <Modal isOpen={frameModalOpen} onClose={closeFrameModal}>
-      <h1>Pin a frame to your profile</h1>
-      <h3>Add a link to a frame</h3>
-      <input
-        type="text"
-        value={frameUrl}
-        onChange={onFrameUrlChange}
-        className="border border-palette-line p-4"
-      />
-      <FrameUI frameState={frameState} components={components} theme={theme} />
+    <Modal isOpen={frameModalOpen} onClose={closeFrameModal} size={ModalSizes.FlexLarge}>
+      <div className="flex w-full flex-row justify-between gap-12">
+        <div className="flex flex-col">
+          <h1 className="font-display text-3xl font-medium">Pin a frame to your profile</h1>
+          <span className="mt-4 text-palette-foregroundMuted">
+            Paste a link to your frame, or use one of the suggestions below.
+          </span>
+          <h3 className="mt-8 font-medium">Add a link to a frame</h3>
+          <input
+            placeholder="https://..."
+            type="text"
+            value={frameUrl}
+            onChange={onFrameUrlChange}
+            className="mt-4 rounded-[13px] border border-palette-line p-4"
+          />
+          <h3 className="mt-8 font-medium">Suggestions</h3>
+        </div>
+        <div className="flex flex-col">
+          <span>Preview</span>
+          <FrameUI frameState={frameState} components={components} theme={theme} />
+        </div>
+      </div>
     </Modal>
   );
 }
