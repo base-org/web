@@ -67,11 +67,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const TODO_ADDRESS_FROM_NEYNAR = '0x74431A069d721FEe532fc6330fB0280A80AeEaF9';
 
-  // const addressData = encodeFunctionData({
-  //   abi: L2ResolverAbi,
-  //   functionName: 'setAddr',
-  //   args: [namehash(formatBaseEthDomain(name, baseSepolia.id)), TODO_ADDRESS_FROM_NEYNAR],
-  // });
+  const addressData = encodeFunctionData({
+    abi: L2ResolverAbi,
+    functionName: 'setAddr',
+    args: [namehash(formatBaseEthDomain(name, baseSepolia.id)), TODO_ADDRESS_FROM_NEYNAR],
+  });
 
   // const nameData = encodeFunctionData({
   //   abi: L2ResolverAbi,
@@ -88,7 +88,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     duration: secondsInYears(years),
     resolver: RESOLVER_ADDRESS,
     // data: [addressData, nameData],
-    data: [],
+    data: [addressData],
     reverseRecord: true,
   };
 
