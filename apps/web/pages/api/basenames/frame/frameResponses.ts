@@ -97,9 +97,10 @@ export const confirmationFrame = (
     target: `${DOMAIN}/api/basenames/frame/tx`,
     postUrl: `${DOMAIN}/api/basenames/frame/tx`,
     state: {
-      name: targetName,
-      years: targetYears,
-      priceInWei: registrationPriceInWei,
-      priceInEth: registrationPriceInEth,
+      targetName,
+      formattedTargetName,
+      targetYears,
+      registrationPriceInWei,
+      registrationPriceInEth,
     },
   });

@@ -14,6 +14,11 @@ type GetBasenameRegistrationPriceResponseType = {
   registrationPriceInEth: string;
 };
 
+type ConfirmationFrameStateType = {
+  targetName: string;
+  formattedTargetName: string;
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
@@ -23,9 +28,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { untrustedData } = body;
   console.log('confirmation.....', { untrustedData });
 
-  const messageState = JSON.parse(untrustedData.state);
-  const targetName: string = messageState.targetName;
-  const formattedTargetName: string = messageState.formattedTargetName;
+  const messageState: ConfirmationFrameStateType = JSON.parse(untrustedData.state);
+  const targetName = encodeURIComponent(messageState.targetName);
+  const formattedTargetName = messageState.formattedTargetName;
 
   if (!validButtonIndexes.includes(untrustedData.buttonIndex)) {
     return res.status(500).json({ error: 'Internal Server Error' });

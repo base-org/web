@@ -8,6 +8,14 @@ import {
 import { encodeFunctionData } from 'viem';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 
+type TxFrameStateType = {
+  targetName: string;
+  formattedTargetName: string;
+  targetYears: number;
+  registrationPriceInWei: string;
+  registrationPriceInEth: string;
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
@@ -16,10 +24,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const body = await req.json();
   let message;
   let isValid;
-  let state;
   let name;
   let years;
-  let price;
+  let priceInEth;
   let priceInWei;
 
   try {
@@ -28,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
     isValid = result.isValid;
     message = result.message;
-    if (!isValid) {
+    if (!isValid || !message) {
       throw new Error('Message is not valid');
     }
   } catch (e) {
@@ -37,15 +44,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   console.log({ message });
 
-  // accountAddress = message?.interactor.verified_accounts[0]; // To do verify
+  const messageState: TxFrameStateType = JSON.parse(decodeURIComponent(message.state?.serialized));
 
-  if (message?.state) {
-    state = JSON.parse(decodeURIComponent(message.state?.serialized));
-    name = state.name;
-    years = state.years;
-    price = state.registrationPriceInEth;
-    priceInWei = state.registrationPriceInWei;
+  if (!messageState) {
+    return res.status(500).json({ error: 'Internal server error' });
   }
+  name = messageState.targetName;
+  years = messageState.targetYears;
+  priceInEth = messageState.registrationPriceInEth;
+  priceInWei = messageState.registrationPriceInWei;
 
   const registerRequest = {
     name,
@@ -73,6 +80,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         value: priceInWei.toString(),
       },
     };
+    return res.status(200).json(txData);
   } catch (error) {
     console.error('Failed to fetch questions:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
