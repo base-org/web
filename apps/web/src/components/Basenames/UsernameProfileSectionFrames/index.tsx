@@ -62,7 +62,7 @@ const theme: FrameUITheme<StylingProps> = {
 
 export default function UsernameProfileSectionFrames() {
   const { address } = useAccount();
-  const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
+  const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
   const { existingTextRecords } = useReadBaseEnsTextRecords({
     address: profileAddress,
     username: profileUsername,
@@ -93,9 +93,9 @@ export default function UsernameProfileSectionFrames() {
     frameContext: xmtpFrameContext.frameContext,
   });
 
-  if (currentWalletIsOwner && !homeframeUrl) {
+  if (currentWalletIsProfileOwner && !homeframeUrl) {
     return (
-      <section className="relative flex flex-row items-center justify-start gap-2 rounded-xl border border-palette-line/20 pl-1 pr-6">
+      <section className="relative flex flex-row-reverse items-center justify-start gap-2 rounded-xl border border-palette-line/20 pl-1 pr-6 md:flex-row">
         <ImageAdaptive alt="" src={frameIcon as StaticImageData} className="z-1" />
         <div className="grow">
           <h1 className="text-xl font-medium text-illoblack">Pin a frame to your profile</h1>
