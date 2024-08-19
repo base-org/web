@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
-import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
+import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 import { formatDefaultUsername, validateEnsDomainName } from 'apps/web/src/utils/usernames';
 import {
   DOMAIN,
@@ -36,7 +36,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .setHeader('Content-Type', 'text/html')
       .send(setYearsFrame(targetName, formattedTargetName));
   } catch (error) {
-    console.error('Error reading name availability:', error);
-    return res.status(200).setHeader('Content-Type', 'text/html').send(inputSearchValueFrame);
+    return res
+      .status(200)
+      .setHeader('Content-Type', 'text/html')
+      .send(inputSearchValueFrame(String(error)));
   }
 }
