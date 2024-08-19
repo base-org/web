@@ -20,7 +20,6 @@ export default async function handler(request: NextRequest) {
     new URL('../../../../../src/fonts/CoinbaseDisplay-Regular.ttf', import.meta.url),
   ).then(async (res) => res.arrayBuffer());
 
-  console.log('**************** got here');
   const url = new URL(request.url);
   const username = url.searchParams.get('name') ?? 'yourname';
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
