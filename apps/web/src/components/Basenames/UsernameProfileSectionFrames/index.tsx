@@ -1,11 +1,11 @@
-import { createContext, useContext, useState, useCallback, useMemo } from 'react';
+import { createContext, useContext, useState, useCallback, useMemo, ChangeEvent } from 'react';
 import { FrameUI, type FrameUIComponents, type FrameUITheme } from '@frames.js/render/ui';
 import { useFrame } from '@frames.js/render/use-frame';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
-import { useXmtpFrameContext } from 'apps/web/src/hooks/useXmtpFrameContext';
+import { useXmtpFrameContext, XmtpFrameContext } from 'apps/web/src/hooks/useXmtpFrameContext';
 import { useXmtpIdentity } from 'apps/web/src/hooks/useXmtpIdentity';
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { zeroAddress } from 'viem';
@@ -15,6 +15,7 @@ import frameIcon from './frame-icon.svg';
 import { StaticImageData } from 'next/image';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Modal from 'apps/web/src/components/Modal';
+import { FrameState } from '@frames.js/render';
 
 type StylingProps = {
   className?: string;
@@ -68,7 +69,8 @@ type FrameContextValue = {
   closeFrameModal: () => void;
   currentWalletIsOwner?: boolean;
   homeframeUrl: string;
-  frameState: unknown;
+  frameState: FrameState;
+  xmtpFrameContext: XmtpFrameContext;
 };
 
 // Create the FrameContext
@@ -85,9 +87,9 @@ const useFrameContext = () => {
 
 // Create the FrameProvider component
 function FrameProvider({ children }) {
-  const [frameModalOpen, setFrameModalOpen] = useState(false);
+  const [frameModalOpen, setFrameModalOpen] = useState(true);
   const openFrameModal = useCallback(() => setFrameModalOpen(true), []);
-  const closeFrameModal = useCallback(() => setFrameModalOpen(false), []);
+  const closeFrameModal = useCallback(() => setFrameModalOpen(true), []);
 
   const { address } = useAccount();
   const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
@@ -97,13 +99,13 @@ function FrameProvider({ children }) {
   });
 
   const homeframeUrl = existingTextRecords[UsernameTextRecordKeys.Frame];
-  const xmtpSignerState = useXmtpIdentity();
-  const xmtpFrameContext = useXmtpFrameContext({
+  const { frameContext } = useXmtpFrameContext({
     fallbackContext: {
       conversationTopic: 'base-name-profile',
       participantAccountAddresses: address ? [address, zeroAddress] : [zeroAddress],
     },
   });
+  const xmtpSignerState = useXmtpIdentity();
 
   const frameState = useFrame({
     connectedAddress: address,
@@ -113,7 +115,7 @@ function FrameProvider({ children }) {
     onError: (e) => console.error('frame error: ', e),
     signerState: xmtpSignerState,
     specification: 'farcaster',
-    frameContext: xmtpFrameContext.frameContext,
+    frameContext,
   });
 
   const value = useMemo(
@@ -124,6 +126,8 @@ function FrameProvider({ children }) {
       currentWalletIsOwner,
       homeframeUrl,
       frameState,
+      xmtpSignerState,
+      xmtpFrameContext: frameContext,
     }),
     [
       closeFrameModal,
@@ -132,6 +136,8 @@ function FrameProvider({ children }) {
       frameState,
       homeframeUrl,
       openFrameModal,
+      frameContext,
+      xmtpSignerState,
     ],
   );
 
@@ -165,9 +171,42 @@ function TryNowHero() {
 
 // Update the AddFrameModal component
 function AddFrameModal() {
-  const { frameModalOpen, closeFrameModal } = useFrameContext();
+  const { address } = useAccount();
 
-  return <Modal isOpen={frameModalOpen} onClose={closeFrameModal} />;
+  const { frameModalOpen, closeFrameModal, xmtpFrameContext } = useFrameContext();
+  const [frameUrl, setFrameUrl] = useState('');
+
+  const onFrameUrlChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => setFrameUrl(e.target.value),
+    [],
+  );
+
+  const xmtpSignerState = useXmtpIdentity();
+
+  const frameState = useFrame({
+    connectedAddress: address,
+    homeframeUrl: frameUrl,
+    frameActionProxy: '/frames',
+    frameGetProxy: '/frames',
+    onError: (e) => console.error('frame error: ', e),
+    signerState: xmtpSignerState,
+    specification: 'farcaster',
+    frameContext: xmtpFrameContext,
+  });
+
+  return (
+    <Modal isOpen={frameModalOpen} onClose={closeFrameModal}>
+      <h1>Pin a frame to your profile</h1>
+      <h3>Add a link to a frame</h3>
+      <input
+        type="text"
+        value={frameUrl}
+        onChange={onFrameUrlChange}
+        className="border border-palette-line p-4"
+      />
+      <FrameUI frameState={frameState} components={components} theme={theme} />
+    </Modal>
+  );
 }
 
 // Update the SectionContent component
