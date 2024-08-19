@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
+import { formatDefaultUsername, validateEnsDomainName } from 'apps/web/src/utils/usernames';
 import {
   DOMAIN,
   inputSearchValueFrame,
@@ -11,21 +12,29 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const body: FrameRequest = req.body;
-  const { untrustedData } = body;
-  const targetName = untrustedData.inputText;
-
   try {
-    const response = await fetch(
+    const body: FrameRequest = req.body;
+    const { untrustedData } = body;
+    const targetName: string = untrustedData.inputText;
+
+    const { valid, message } = validateEnsDomainName(targetName);
+    if (!valid) {
+      throw new Error(`Invalid name: ${message}`);
+    }
+
+    const isNameAvailableResponse = await fetch(
       `${DOMAIN}/api/basenames/${targetName}/isNameAvailable`,
     );
-    const { nameIsAvailable } = await response.json();
-
+    const { nameIsAvailable } = await isNameAvailableResponse.json();
     if (!nameIsAvailable) {
       throw new Error('Name not available.');
     }
 
-    return res.status(200).setHeader('Content-Type', 'text/html').send(setYearsFrame(targetName));
+    const formattedTargetName = await formatDefaultUsername(targetName);
+    return res
+      .status(200)
+      .setHeader('Content-Type', 'text/html')
+      .send(setYearsFrame(targetName, formattedTargetName));
   } catch (error) {
     console.error('Error reading name availability:', error);
     return res.status(200).setHeader('Content-Type', 'text/html').send(inputSearchValueFrame);
