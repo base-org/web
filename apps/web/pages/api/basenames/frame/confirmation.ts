@@ -21,9 +21,7 @@ type ConfirmationFrameStateType = {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
-    return res
-      .status(405)
-      .json({ error: `Confirmation Screen — Method (${req.method}) Not Allowed` });
+    return res.status(405).json({ error: `Confirm Screen — Method (${req.method}) Not Allowed` });
   }
 
   const body = req.body as FrameRequest;
