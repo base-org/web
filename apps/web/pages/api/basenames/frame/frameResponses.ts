@@ -15,22 +15,23 @@ export const initialFrame = getFrameMetadata({
   postUrl: `${DOMAIN}/api/basenames/frame/inputSearchValue`,
 });
 
-export const inputSearchValueFrame = getFrameHtmlResponse({
-  buttons: [
-    {
-      action: 'post',
-      label: 'Register name',
-      target: `${DOMAIN}/api/basenames/frame/validateSearchInputAndSetYears`,
+export const inputSearchValueFrame = (error?: string) =>
+  getFrameHtmlResponse({
+    buttons: [
+      {
+        action: 'post',
+        label: 'Register name',
+        target: `${DOMAIN}/api/basenames/frame/validateSearchInputAndSetYears`,
+      },
+    ],
+    image: {
+      src: `${DOMAIN}/api/basenames/INVALID_NAME_FOR_INITIAL_RENDER/assets/frameImage.png?error=${error ?? ''}`, // TODO: is this too hacky?
     },
-  ],
-  image: {
-    src: `${DOMAIN}/images/basenames/contract-uri/cover-image.png`,
-  },
-  input: {
-    text: 'Search for a name',
-  },
-  postUrl: `${DOMAIN}/api/basenames/frame/validateSearchInputAndSetYears`,
-});
+    input: {
+      text: 'Search for a name',
+    },
+    postUrl: `${DOMAIN}/api/basenames/frame/validateSearchInputAndSetYears`,
+  });
 
 export const buttonIndexToYears = {
   1: 1,
