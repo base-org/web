@@ -6,6 +6,7 @@ import {
 } from '@coinbase/onchainkit/frame';
 import { encodeFunctionData } from 'viem';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
+import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 
 type TxFrameStateType = {
   targetName: string;
@@ -41,9 +42,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(500).json({ error: e });
   }
 
-  console.log({ message });
+  console.warn({ message });
 
   const messageState: TxFrameStateType = JSON.parse(decodeURIComponent(message.state?.serialized));
+
+  console.warn({ messageState });
 
   if (!messageState) {
     return res.status(500).json({ error: 'Internal server error' });
@@ -57,7 +60,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     name,
     owner: '0x74431A069d721FEe532fc6330fB0280A80AeEaF9' as `0x${string}`, // The address of the owner for the name.
     duration: secondsInYears(years), // The duration of the registration in seconds.
-    resolver: '0x8d2D30cdE6c46BC81824d0732cE8395c58da3939' as `0x${string}`, // The address of the resolver to set for this name.
+    resolver: USERNAME_L2_RESOLVER_ADDRESSES[8453], // The address of the resolver to set for this name.
     data: [], //  Multicallable data bytes for setting records in the associated resolver upon registration.
     reverseRecord: true, // Bool to decide whether to set this name as the "primary" name for the `owner`.
   };
