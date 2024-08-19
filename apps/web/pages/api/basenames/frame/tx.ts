@@ -73,22 +73,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     args: [namehash(formatBaseEthDomain(name, baseSepolia.id)), TODO_ADDRESS_FROM_NEYNAR],
   });
 
-  // const nameData = encodeFunctionData({
-  //   abi: L2ResolverAbi,
-  //   functionName: 'setName',
-  //   args: [
-  //     namehash(formatBaseEthDomain(name, baseSepolia.id)),
-  //     formatBaseEthDomain(name, baseSepolia.id),
-  //   ],
-  // });
+  const nameData = encodeFunctionData({
+    abi: L2ResolverAbi,
+    functionName: 'setName',
+    args: [
+      namehash(formatBaseEthDomain(name, baseSepolia.id)),
+      formatBaseEthDomain(name, baseSepolia.id),
+    ],
+  });
 
   const registerRequest = {
     name,
     owner: TODO_ADDRESS_FROM_NEYNAR, // TODO: The address of the owner for the name.
     duration: secondsInYears(years),
     resolver: RESOLVER_ADDRESS,
-    // data: [addressData, nameData],
-    data: [addressData],
+    data: [addressData, nameData],
     reverseRecord: true,
   };
 
