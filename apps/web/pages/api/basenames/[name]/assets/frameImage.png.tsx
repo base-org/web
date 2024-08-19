@@ -20,7 +20,7 @@ export default async function handler(request: NextRequest) {
     new URL('../../../../../src/fonts/CoinbaseDisplay-Regular.ttf', import.meta.url),
   ).then(async (res) => res.arrayBuffer());
 
-  console.log('got here');
+  console.log('**************** got here');
   const url = new URL(request.url);
   const username = url.searchParams.get('name') ?? 'yourname';
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
@@ -30,7 +30,42 @@ export default async function handler(request: NextRequest) {
   let imageSource = domainName + profilePicture.src;
   const years = url.searchParams.get('years');
   const priceInEth = url.searchParams.get('priceInEth');
+  const error = url.searchParams.get('error');
 
+  if (username === 'INVALID_NAME_FOR_INITIAL_RENDER') {
+    return new ImageResponse(
+      (
+        <div
+          style={{
+            height: '100%',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundImage: `url(${domainName + coverImageBackground.src})`,
+            backgroundPosition: 'center',
+            backgroundSize: '100% 100%',
+            padding: '1.5rem',
+          }}
+        >
+          <span
+            style={{
+              color: 'black',
+              fontSize: '3rem',
+              paddingBottom: '0.75rem',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              width: 'auto',
+            }}
+          >
+            {error}
+          </span>
+        </div>
+      ),
+    );
+  }
 
   // NOTE: Do we want to fail if the name doesn't exists?
   try {
@@ -51,8 +86,6 @@ export default async function handler(request: NextRequest) {
     console.error(error);
   }
 
-
-
   // Using vercel's OG image for a PNG response
   return new ImageResponse(
     (
@@ -71,18 +104,18 @@ export default async function handler(request: NextRequest) {
         }}
       >
         <span
-            style={{
-              color: 'black',
-              fontSize: '3rem',
-              paddingBottom: '0.75rem',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              whiteSpace: 'nowrap',
-              width: 'auto',
-            }}
-          >
-            Registering
-          </span>
+          style={{
+            color: 'black',
+            fontSize: '3rem',
+            paddingBottom: '0.75rem',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            width: 'auto',
+          }}
+        >
+          Registering
+        </span>
         <div
           style={{
             display: 'flex',
