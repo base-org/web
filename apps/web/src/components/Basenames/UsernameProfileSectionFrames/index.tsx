@@ -12,7 +12,8 @@ import { zeroAddress } from 'viem';
 import { useAccount } from 'wagmi';
 import cornerGarnish from './corner-garnish.svg';
 import frameIcon from './frame-icon.svg';
-import { StaticImageData } from 'next/image';
+import starActive from './ui/currencies.svg';
+import Image, { StaticImageData } from 'next/image';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Modal, { ModalSizes } from 'apps/web/src/components/Modal';
 import { FrameState } from '@frames.js/render';
@@ -37,7 +38,7 @@ const components: FrameUIComponents<StylingProps> = {};
 const theme: FrameUITheme<StylingProps> = {
   Error: {
     className:
-      'flex flex-col w-[380px] h-[200px] border border-gray-90 rounded-lg overflow-hidden bg-white relative mt-6 items-center justify-center opacity-50',
+      'flex flex-col w-[380px] h-[200px] border border-palette-line/20 rounded-lg overflow-hidden bg-white relative mt-4 items-center justify-center opacity-50',
   },
   Root: {
     className:
@@ -169,6 +170,22 @@ function TryNowHero() {
   );
 }
 
+type SuggestionCardProps = {
+  imgData: StaticImageData;
+  title: string;
+  description: string;
+};
+
+function SuggestionCard({ imgData, title, description }: SuggestionCardProps) {
+  return (
+    <div className="h-[150px] w-[220px] rounded-[13px] border border-palette-line/20 p-4">
+      <ImageAdaptive alt="" src={imgData} />
+      <span className="mt-4 text-sm font-medium">{title}</span>
+      <p className="text-foreground-muted text-sm">{description}</p>
+    </div>
+  );
+}
+
 // Update the AddFrameModal component
 function AddFrameModal() {
   const { address } = useAccount();
@@ -210,9 +227,16 @@ function AddFrameModal() {
               type="text"
               value={frameUrl}
               onChange={onFrameUrlChange}
-              className="mt-4 rounded-[13px] border border-palette-line p-4"
+              className="mt-4 rounded-[13px] border border-palette-line/20 p-4"
             />
             <h3 className="mt-8 font-medium">Suggestions</h3>
+            <div className="mt-4 flex flex-row">
+              <SuggestionCard
+                imgData={starActive as StaticImageData}
+                title="Nominate me"
+                description="Allow anyone to easily nominate you as a favorite builder on Build.Top."
+              />
+            </div>
           </div>
           <div className="flex flex-col">
             <span className="font-medium">Preview</span>
