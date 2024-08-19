@@ -228,7 +228,6 @@ export default function RegistrationSearchInput({
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log(window.scrollY);
       setHeaderBackground(window.scrollY <= 250);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
