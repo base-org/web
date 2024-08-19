@@ -1,6 +1,6 @@
 import { getFrameMetadata, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 
-export const DOMAIN = `https://base-web-git-feat-basenames-frame-coinbase-vercel.vercel.app`
+export const DOMAIN = `https://base-web-git-feat-basenames-frame-coinbase-vercel.vercel.app`;
 // export const DOMAIN = `http://localhost:3000`;
 
 export const initialFrame = getFrameMetadata({
@@ -94,13 +94,24 @@ export const confirmationFrame = (
     image: {
       src: `${DOMAIN}/api/basenames/${formattedTargetName}/assets/frameImage.png?years=${targetYears}&priceInEth=${registrationPriceInEth}`,
     },
-    target: `${DOMAIN}/api/basenames/frame/tx`,
-    postUrl: `${DOMAIN}/api/basenames/frame/tx`,
+    postUrl: `${DOMAIN}/api/basenames/frame/txSuccess`,
     state: {
       targetName,
       formattedTargetName,
       targetYears,
       registrationPriceInWei,
       registrationPriceInEth,
+    },
+  });
+
+export const txSuccessFrame = (txId: string) =>
+  getFrameHtmlResponse({
+    buttons: [
+      {
+        label: `Tx: ${txId}`,
+      },
+    ],
+    image: {
+      src: `${DOMAIN}/images/basenames/contract-uri/feature-image.png`,
     },
   });
