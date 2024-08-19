@@ -82,8 +82,8 @@ export default async function handler(request: NextRequest) {
     if (avatar && !avatar.endsWith('.webp')) {
       imageSource = avatar;
     }
-  } catch (error) {
-    console.error(error);
+  } catch (e) {
+    console.error(e);
   }
 
   // Using vercel's OG image for a PNG response
