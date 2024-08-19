@@ -175,6 +175,7 @@ function AddFrameModal() {
 
   const { frameModalOpen, closeFrameModal, xmtpFrameContext } = useFrameContext();
   const [frameUrl, setFrameUrl] = useState('');
+  const emptyFrameUrl = !frameUrl;
 
   const onFrameUrlChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setFrameUrl(e.target.value),
@@ -196,25 +197,33 @@ function AddFrameModal() {
 
   return (
     <Modal isOpen={frameModalOpen} onClose={closeFrameModal} size={ModalSizes.FlexLarge}>
-      <div className="flex w-full flex-row justify-between gap-12">
-        <div className="flex flex-col">
-          <h1 className="font-display text-3xl font-medium">Pin a frame to your profile</h1>
-          <span className="mt-4 text-palette-foregroundMuted">
-            Paste a link to your frame, or use one of the suggestions below.
-          </span>
-          <h3 className="mt-8 font-medium">Add a link to a frame</h3>
-          <input
-            placeholder="https://..."
-            type="text"
-            value={frameUrl}
-            onChange={onFrameUrlChange}
-            className="mt-4 rounded-[13px] border border-palette-line p-4"
-          />
-          <h3 className="mt-8 font-medium">Suggestions</h3>
-        </div>
-        <div className="flex flex-col">
-          <span>Preview</span>
-          <FrameUI frameState={frameState} components={components} theme={theme} />
+      <div className="flex flex-col">
+        <h1 className="font-display text-3xl font-medium">Pin a frame to your profile</h1>
+        <span className="mt-4 text-palette-foregroundMuted">
+          Paste a link to your frame, or use one of the suggestions below.
+        </span>
+        <div className="mt-8 flex w-full flex-row justify-between gap-12">
+          <div className="flex flex-col">
+            <h3 className="font-medium">Add a link to a frame</h3>
+            <input
+              placeholder="https://..."
+              type="text"
+              value={frameUrl}
+              onChange={onFrameUrlChange}
+              className="mt-4 rounded-[13px] border border-palette-line p-4"
+            />
+            <h3 className="mt-8 font-medium">Suggestions</h3>
+          </div>
+          <div className="flex flex-col">
+            <span className="font-medium">Preview</span>
+            {emptyFrameUrl ? (
+              <div className={theme.Error?.className}>
+                <span>Add link to preview</span>
+              </div>
+            ) : (
+              <FrameUI frameState={frameState} components={components} theme={theme} />
+            )}
+          </div>
         </div>
       </div>
     </Modal>
