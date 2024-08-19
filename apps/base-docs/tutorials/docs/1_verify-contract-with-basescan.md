@@ -28,11 +28,11 @@ By the end of this tutorial, you should be able to:
 
 **Familiarity with smart contract development and the Solidity programming language**
 
-Solidity is the primary programming language for writing smart contracts on Ethereum and Ethereum-compatible blockchains like Base. You should be comfortable with writing, compiling, and deploying basic smart contracts using Solidity.
+Solidity is the primary programming language for writing smart contracts on Ethereum and Ethereum-compatible blockchains like Base. You should be comfortable with writing, compiling, and deploying basic smart contracts using Solidity. If not, check out [Base Learn].
 
 **Basic understanding of Foundry for Ethereum development**
 
-Foundry is a fast and portable toolkit for Ethereum application development. It simplifies the process of deploying, testing, and interacting with smart contracts. This tutorial assumes you have experience using Foundry to compile and deploy smart contracts.
+Foundry is a fast and portable toolkit for Ethereum application development. It simplifies the process of deploying, testing, and interacting with smart contracts. This tutorial assumes you have experience using Foundry to compile and [deploy smart contracts].
 
 **Access to a Coinbase Developer Platform (CDP) account**
 
@@ -42,7 +42,7 @@ The [Coinbase Developer Platform] provides access to tools and services necessar
 
 ## Jump Right In
 
-For this turotial, we will deploy a simple contract that is included in the Foundry quickstart. To do so, ensure that you have Foundry installed.
+For this turotial, you will deploy a simple contract that is included in the Foundry quickstart. To do so, ensure that you have Foundry installed.
 
 If you don't have Foundry install it:
 
@@ -71,12 +71,13 @@ You should have a folder structure similar to this:
 └── test
 ```
 
-The `src` folder will contain a `Counter.sol` file which will serve as the country we want to deploy.
+The `src` folder will contain a `Counter.sol` file which will serve as the country you want to deploy.
 
 :::note You will need ETH on Base to deploy
 You (the deployer wallet) will need some ETH in order to broadcast the transaction to the Base network. Fortunately, transactions are usually < 1 cent on Base mainnet.
 
 If using a [Coinbase Wallet] use the "Buy" button to onramp crypto from your Coinbase account.
+
 :::
 
 You will need a private key of the wallet that you want to deploy the smart contract from. Obtain it and store it as an env variable in your terminal.
@@ -84,10 +85,10 @@ You will need a private key of the wallet that you want to deploy the smart cont
 Once you have the private key to the wallet of your choice, open your terminal and store it in an environment variable:
 
 ```bash
-export PRIVATE_KEY="f980byuhjhgfr45tyhglQxydfG5yu765rf"
+export PRIVATE_KEY="<YOUR_PRIVATE_KEY>"
 ```
 
-To deploy our contract we will need a RPC URL to a Base node in order to broadcast our transactions to the network. [CDP] provides us with a free node for interacting with Base mainnet and testnet.
+To deploy our contract you will need a RPC URL to a Base node in order to broadcast our transactions to the network. [CDP] provides us with a free node for interacting with Base mainnet and testnet.
 
 Obtain a rpc url from the [Node product] and store the url as an environment variable similar to the private key in the previous step.
 
@@ -113,11 +114,11 @@ Deployed to: 0xEF5fe818Cb814E5c8277C5F12B57106B4EC3DdaA
 Transaction hash: 0xb191f9679a1fee253cf430ac09a6838f6806cfb2a250757fef407880f5546836
 ```
 
-Congrats! You've now deployed a contract to Base. The output of the deployment command contiains a contract address (e.g `Deployed to: 0xEF5fe818Cb814E5c8277C5F12B57106B4EC3DdaA`). Copy this address as we will need it in the next step.
+Congrats! You've now deployed a contract to Base. The output of the deployment command contiains a contract address (e.g `Deployed to: 0xEF5fe818Cb814E5c8277C5F12B57106B4EC3DdaA`). Copy this address as you will need it in the next step.
 
 ### Verify the contract
 
-We will now interact with the [Basescan API]. For this, we need API Keys. Create an account using an email or [login to Basescan].
+You will now interact with the [Basescan API]. For this, you need API Keys. Create an account using an email or [login to Basescan].
 
 After signing in, navigate to your [Basescan account] then select `API Keys` on the left navigation bar.
 
@@ -150,9 +151,7 @@ contract Counter {
 
 Create an `async` function to call the basescan api. Basescan offers a few endpoints to interact with their api with the base url being: `https://api.basescan.org/api`
 
-To verify a contract we'll use the `verifysourcecode` route, with the `contract` module, and our `apiKey` as query parameters.
-
-We now need to pass data to the API that lets it know what we want to do.. (something like this) this includes the ffile format, contract version etc.
+To verify a contract you will use the `verifysourcecode` route, with the `contract` module, and your `apiKey` as query parameters.
 
 :::tip Unsure what data to input?
 
@@ -211,7 +210,7 @@ async function verifySourceCode() {
   const params = new URLSearchParams({
     module: 'contract',
     action: 'verifysourcecode',
-    apikey: 'DK8M329VYXDSKTF633ABTK3SAEZ2U9P8FK', //remove hardcode
+    apikey: 'YOUR_API_KEY',
   });
 
   const data = new URLSearchParams({
@@ -252,7 +251,7 @@ verifySourceCode().catch((error) => console.error('Unhandled error:', error));
 
 Save your file and then run `node verifyContractBasescan.js` in your terminal
 
-If successful, your terminal should output JSON text with three properties `status`, `message` and `result` like below:
+If successful, your terminal will output JSON text with three properties `status`, `message` and `result` like below:
 
 ```bash
 {
@@ -276,6 +275,10 @@ Run the command and you will see a that the contract should already be verified 
 { "status": "0", "message": "NOTOK", "result": "Already Verified" }
 ```
 
+## Conclusion
+
+Congratulations! You’ve successfully deployed and verified a smart contract using the Basescan API. Now, your users don’t have to rely solely on your word—they can verify the contract’s functionality through the code itself.
+
 ---
 
 [Coinbase Developer Platform]: https://portal.cdp.coinbase.com/
@@ -289,3 +292,5 @@ Run the command and you will see a that the contract should already be verified 
 [Basescan API]: https://docs.basescan.org/
 [login to Basescan]: https://basescan.org/login/
 [Node product]: https://portal.cdp.coinbase.com/products/node/
+[deploy smart contracts]: https://docs.base.org/tutorials/deploy-with-foundry/
+[Base Learn]: https://docs.base.org/base-learn/docs/welcome/
