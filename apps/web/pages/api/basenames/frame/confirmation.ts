@@ -1,29 +1,45 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
-import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
+import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 import {
   confirmationFrame,
   buttonIndexToYears,
   DOMAIN,
 } from 'apps/web/pages/api/basenames/frame/frameResponses';
 
+type ButtonIndex = 1 | 2 | 3 | 4;
+const validButtonIndexes: readonly ButtonIndex[] = [1, 2, 3, 4] as const;
+
+type GetBasenameRegistrationPriceResponseType = {
+  registrationPriceInWei: string;
+  registrationPriceInEth: string;
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const body: FrameRequest = req.body;
+  const body = req.body as FrameRequest;
   const { untrustedData } = body;
   console.log('confirmation.....', { untrustedData });
 
   const messageState = JSON.parse(untrustedData.state);
-  const targetName = messageState.targetName;
-  const formattedTargetName = messageState.formattedTargetName;
-  const targetYears = buttonIndexToYears[untrustedData.buttonIndex];
+  const targetName: string = messageState.targetName;
+  const formattedTargetName: string = messageState.formattedTargetName;
 
-  const response = await fetch(
+  if (!validButtonIndexes.includes(untrustedData.buttonIndex)) {
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+  const buttonIndex: ButtonIndex = untrustedData.buttonIndex;
+  const targetYears: number = buttonIndexToYears[buttonIndex];
+
+  const getRegistrationPriceResponse = await fetch(
     `${DOMAIN}/api/basenames/${targetName}/getBasenameRegistrationPrice?years=${targetYears}`,
   );
-  const { registrationPriceInWei, registrationPriceInEth } = await response.json();
+  const {
+    registrationPriceInWei,
+    registrationPriceInEth,
+  }: GetBasenameRegistrationPriceResponseType = await getRegistrationPriceResponse.json();
 
   try {
     return res
