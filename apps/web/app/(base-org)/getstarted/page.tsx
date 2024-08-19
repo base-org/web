@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Base | Get Started`,
     url: '/getstarted',
+    images: ['https://base.org/images/getstarted-open-graph.png'],
   },
 };
 
