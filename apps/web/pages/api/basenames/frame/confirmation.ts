@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
-import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
+import { FrameRequest } from '@coinbase/onchainkit/frame';
 import {
   confirmationFrame,
   buttonIndexToYears,
@@ -21,7 +21,9 @@ type ConfirmationFrameStateType = {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
+    return res
+      .status(405)
+      .json({ error: `Confirmation Screen — Method (${req.method}) Not Allowed` });
   }
 
   const body = req.body as FrameRequest;

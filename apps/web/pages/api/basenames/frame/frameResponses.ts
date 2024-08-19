@@ -21,7 +21,7 @@ export const inputSearchValueFrame = (error?: string) =>
       {
         action: 'post',
         label: 'Register name',
-        target: `${DOMAIN}/api/basenames/frame/validateSearchInputAndSetYears`,
+        // target: `${DOMAIN}/api/basenames/frame/validateSearchInputAndSetYears`,
       },
     ],
     image: {
@@ -48,22 +48,22 @@ export const setYearsFrame = (targetName: string, formattedTargetName: string) =
       {
         action: 'post',
         label: '1 year',
-        target: `${DOMAIN}/api/basenames/frame/confirmation`,
+        // target: `${DOMAIN}/api/basenames/frame/confirmation`,
       },
       {
         action: 'post',
         label: '5 years',
-        target: `${DOMAIN}/api/basenames/frame/confirmation`,
+        // target: `${DOMAIN}/api/basenames/frame/confirmation`,
       },
       {
         action: 'post',
         label: '10 years',
-        target: `${DOMAIN}/api/basenames/frame/confirmation`,
+        // target: `${DOMAIN}/api/basenames/frame/confirmation`,
       },
       {
         action: 'post',
         label: '100 years',
-        target: `${DOMAIN}/api/basenames/frame/confirmation`,
+        // target: `${DOMAIN}/api/basenames/frame/confirmation`,
       },
     ],
     image: {

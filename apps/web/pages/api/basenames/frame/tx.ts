@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import {
   FrameRequest,
   getFrameMessage,
-  getFrameHtmlResponse,
   FrameTransactionResponse,
 } from '@coinbase/onchainkit/frame';
 import { encodeFunctionData } from 'viem';
@@ -18,10 +17,10 @@ type TxFrameStateType = {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
+    return res.status(405).json({ error: `Tx Screen — Method (${req.method}) Not Allowed` });
   }
 
-  const body = await req.json();
+  const body = req.body as FrameRequest;
   let message;
   let isValid;
   let name;
@@ -59,7 +58,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     owner: '0x74431A069d721FEe532fc6330fB0280A80AeEaF9' as `0x${string}`, // The address of the owner for the name.
     duration: secondsInYears(years), // The duration of the registration in seconds.
     resolver: '0x8d2D30cdE6c46BC81824d0732cE8395c58da3939' as `0x${string}`, // The address of the resolver to set for this name.
-    data: [], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
+    data: [], //  Multicallable data bytes for setting records in the associated resolver upon registration.
     reverseRecord: true, // Bool to decide whether to set this name as the "primary" name for the `owner`.
   };
 
