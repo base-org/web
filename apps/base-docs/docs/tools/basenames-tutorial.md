@@ -52,8 +52,6 @@ This command will install the necessary dependencies and start a development ser
 
 To follow along with the tutorial effectively, open your web browser and your IDE side by side. This setup will allow you to code and see the changes in real time.
 
-![image](../../assets/images/basenames-tutorial/final-basename.png)
-
 ### Update Wagmi config
 
 In this section, we will configure your wagmi project to support the Base blockchain by importing the necessary modules.
