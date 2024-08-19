@@ -17,6 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const messageState = JSON.parse(untrustedData.state);
   const targetName = messageState.targetName;
+  const formattedTargetName = messageState.formattedTargetName;
   const targetYears = buttonIndexToYears[untrustedData.buttonIndex];
 
   const response = await fetch(
@@ -29,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .status(200)
       .setHeader('Content-Type', 'text/html')
       .send(
-        confirmationFrame(targetName, targetYears, registrationPriceInWei, registrationPriceInEth),
+        confirmationFrame(targetName, formattedTargetName, targetYears, registrationPriceInWei, registrationPriceInEth),
       );
   } catch (error) {
     console.error('Failed to fetch questions:', error);

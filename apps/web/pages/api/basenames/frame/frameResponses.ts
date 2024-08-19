@@ -69,11 +69,13 @@ export const setYearsFrame = (targetName: string, formattedTargetName: string) =
     postUrl: `${DOMAIN}/api/basenames/frame/confirmation`,
     state: {
       targetName,
+      formattedTargetName,
     },
   });
 
 export const confirmationFrame = (
   targetName: string,
+  formattedTargetName: string,
   targetYears: number,
   registrationPriceInWei: string,
   registrationPriceInEth: number,
@@ -87,7 +89,7 @@ export const confirmationFrame = (
       },
     ],
     image: {
-      src: `${DOMAIN}/api/basenames/${targetName}/assets/frameImage.png?years=${targetYears}&priceInEth=${registrationPriceInEth}`,
+      src: `${DOMAIN}/api/basenames/${formattedTargetName}/assets/frameImage.png?years=${targetYears}&priceInEth=${registrationPriceInEth}`,
     },
     target: `${DOMAIN}/api/basenames/frame/tx`,
     postUrl: `${DOMAIN}/api/basenames/frame/tx`,
