@@ -22,6 +22,30 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // Open img and media csp on username profile to support frames
+  if (url.pathname.startsWith('/name/')) {
+    const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+
+    // Open image src
+    const cspHeader = `
+        img-src 'self' https: data:;
+        media-src 'self' https: data: blob:;
+    `;
+
+    const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, ' ').trim();
+    const requestHeaders = new Headers(req.headers);
+    requestHeaders.set('x-nonce', nonce);
+    requestHeaders.set('Content-Security-Policy', contentSecurityPolicyHeaderValue);
+    const response = NextResponse.next({
+      request: {
+        headers: requestHeaders,
+      },
+    });
+    response.headers.set('Content-Security-Policy', contentSecurityPolicyHeaderValue);
+
+    return response;
+  }
+
   if (url.pathname === '/guides/run-a-base-goerli-node') {
     url.host = 'docs.base.org';
     url.pathname = '/tutorials/run-a-base-node';

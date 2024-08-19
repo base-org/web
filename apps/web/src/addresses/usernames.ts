@@ -10,7 +10,7 @@ export const USERNAME_L2_RESOLVER_ADDRESSES: AddressMap = {
 
 export const USERNAME_REGISTRAR_CONTROLLER_ADDRESSES: AddressMap = {
   [baseSepolia.id]: '0x49aE3cC2e3AA768B1e5654f5D3C6002144A59581',
-  [base.id]: '0x',
+  [base.id]: '0x4cCb0BB02FCABA27e82a56646E81d8c5bC4119a5',
 };
 
 export const USERNAME_EA_REGISTRAR_CONTROLLER_ADDRESSES: AddressMap = {
@@ -54,13 +54,13 @@ export const BUILDATHON_ERC721_DISCOUNT_VALIDATOR: AddressMap = {
 };
 
 export const USERNAME_BASE_ETH_HOLDERS_DISCOUNT_VALIDATORS: AddressMap = {
-  [baseSepolia.id]: '0x',
-  [base.id]: '0x',
+  [baseSepolia.id]: '0xA475f24BEa985Ff66c1F0d9D8C23661215418894',
+  [base.id]: '0x55564490a44FDC2aEEa54B60eB1c79F124FD88b9',
 };
 
 export const USERNAME_1155_DISCOUNT_VALIDATORS: AddressMap = {
   [baseSepolia.id]: '0xE41Cd25f429E10744938d5048646E721ac630aF3',
-  [base.id]: '0x',
+  [base.id]: '0x55246A2AE466257B2fB54d4BB881Fb3f17D8e03e',
 };
 
 export const USERNAME_REVERSE_REGISTRAR_ADDRESSES: AddressMap = {
@@ -84,5 +84,5 @@ export const UNISWAP_USDC_WETH_POOL: AddressMap = {
 
 export const EXPONENTIAL_PREMIUM_PRICE_ORACLE: AddressMap = {
   [baseSepolia.id]: '0x2B73408052825e17e0Fe464f92De85e8c7723231',
-  [base.id]: '0x',
+  [base.id]: '0xd53B558e1F07289acedf028d226974AbBa258312',
 };

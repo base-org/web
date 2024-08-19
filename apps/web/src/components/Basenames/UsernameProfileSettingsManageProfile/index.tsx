@@ -13,8 +13,10 @@ import TransactionError from 'apps/web/src/components/TransactionError';
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
 import {
   textRecordsSocialFieldsEnabled,
+  USERNAMES_PINNED_CASTS_ENABLED,
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
+import UsernameCastsField from 'apps/web/src/components/Basenames/UsernameCastsField';
 
 const settingTabClass = classNames(
   'flex flex-col justify-between gap-8 text-gray/60 md:items-center p-4 md:p-8',
@@ -89,6 +91,15 @@ export default function UsernameProfileSettingsManageProfile() {
             disabled={writeTextRecordsIsPending}
           />
         </div>
+        {USERNAMES_PINNED_CASTS_ENABLED && (
+          <div className="mb-2 w-full">
+            <UsernameCastsField
+              onChange={onChangeTextRecord}
+              value={updatedTextRecords[UsernameTextRecordKeys.Casts]}
+              disabled={writeTextRecordsIsPending}
+            />
+          </div>
+        )}
       </section>
       {/* Settings UI: The save section  */}
       <div className="md:p-center flex items-center justify-between gap-4 border-t border-[#EBEBEB] p-4 md:p-8">

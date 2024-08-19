@@ -48,11 +48,13 @@ export const USERNAME_DESCRIPTION_MAX_LENGTH = 200;
 
 // DANGER: Changing this post-mainnet launch means the stored data won't be accessible via the updated key
 export enum UsernameTextRecordKeys {
+  // Defaults
   Description = 'description',
   Keywords = 'keywords',
   Url = 'url',
   Email = 'email',
   Phone = 'phone',
+  Avatar = 'avatar',
 
   // Socials
   Github = 'com.github',
@@ -62,7 +64,8 @@ export enum UsernameTextRecordKeys {
   Telegram = 'org.telegram',
   Discord = 'com.discord',
 
-  Avatar = 'avatar',
+  // Basename specifics
+  Casts = 'casts',
 }
 
 // The social enabled for the current registration / profile pages
@@ -149,6 +152,7 @@ export const textRecordsKeysEnabled = [
   UsernameTextRecordKeys.Telegram,
   UsernameTextRecordKeys.Discord,
   UsernameTextRecordKeys.Avatar,
+  UsernameTextRecordKeys.Casts,
 ];
 
 export const textRecordsKeysForDisplay = {
@@ -164,6 +168,7 @@ export const textRecordsKeysForDisplay = {
   [UsernameTextRecordKeys.Telegram]: 'Telegram',
   [UsernameTextRecordKeys.Discord]: 'Discord',
   [UsernameTextRecordKeys.Avatar]: 'Avatar',
+  [UsernameTextRecordKeys.Casts]: 'Pinned Casts',
 };
 
 export const textRecordsKeysPlaceholderForDisplay = {
@@ -179,6 +184,7 @@ export const textRecordsKeysPlaceholderForDisplay = {
   [UsernameTextRecordKeys.Telegram]: 'Username',
   [UsernameTextRecordKeys.Discord]: 'Username',
   [UsernameTextRecordKeys.Avatar]: 'Avatar',
+  [UsernameTextRecordKeys.Casts]: 'https://warpcast.com/...',
 };
 
 export const textRecordsEngineersKeywords = [
@@ -590,6 +596,8 @@ export async function getBasenameTextRecords(username: BaseName) {
 
 // Force EA/GA based on env
 export const IS_EARLY_ACCESS = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
+export const USERNAMES_PINNED_CASTS_ENABLED =
+  process.env.NEXT_PUBLIC_USERNAMES_PINNED_CASTS_ENABLED === 'true';
 export const REGISTER_CONTRACT_ABI = IS_EARLY_ACCESS
   ? EARegistrarControllerAbi
   : RegistrarControllerABI;
