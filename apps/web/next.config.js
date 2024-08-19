@@ -70,6 +70,8 @@ const walletconnectDomains =
 const contentSecurityPolicy = {
   'default-src': [
     "'self'",
+    '*',
+    'data:',
     "'unsafe-inline'", // NextJS requires 'unsafe-inline'
     isLocalDevelopment ? "'unsafe-eval'" : '',
     baseXYZDomains,
@@ -80,6 +82,8 @@ const contentSecurityPolicy = {
   'worker-src': ["'self'"],
   'connect-src': [
     "'self'",
+    '*',
+    'data:',
     'https://blob.vercel-storage.com', // Vercel File storage
     'https://zku9gdedgba48lmr.public.blob.vercel-storage.com', // Vercel File storage
     walletconnectDomains,

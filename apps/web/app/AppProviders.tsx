@@ -56,7 +56,7 @@ const connectors = connectorsForWallets(
   },
 );
 
-const config = createConfig({
+export const wagmiConfig = createConfig({
   connectors,
   chains: [base, baseSepolia],
   transports: {
@@ -119,7 +119,7 @@ export default function AppProviders({ children }: AppProvidersProps) {
       >
         <MotionConfig reducedMotion="user">
           <ClientAnalyticsScript />
-          <WagmiProvider config={config}>
+          <WagmiProvider config={wagmiConfig}>
             <QueryClientProvider client={queryClient}>
               <OnchainKitProvider
                 chain={isDevelopment ? baseSepolia : base}

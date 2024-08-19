@@ -356,7 +356,7 @@ __metadata:
     "@coinbase/cookie-manager": ^1.1.1
     "@coinbase/onchainkit": ^0.27.1
     "@datadog/browser-rum": ^5.23.3
-    "@frames.js/render": ^0.2.23
+    "@frames.js/render": ^0.3.3
     "@guildxyz/sdk": 2.6.0
     "@headlessui/react": ^1.7.19
     "@heroicons/react": ^2.1.3
@@ -373,6 +373,8 @@ __metadata:
     "@vercel/kv": ^1.0.1
     "@vercel/og": ^0.6.2
     "@vercel/postgres-kysely": ^0.8.0
+    "@xmtp/frames-client": ^0.5.4
+    "@xmtp/xmtp-js": ^12.1.0
     autoprefixer: ^10.4.13
     base-ui: 0.1.1
     classnames: ^2.5.1
@@ -3461,15 +3463,15 @@ __metadata:
   linkType: hard
 
 "@farcaster/core@npm:^0.14.7":
-  version: 0.14.19
-  resolution: "@farcaster/core@npm:0.14.19"
+  version: 0.14.20
+  resolution: "@farcaster/core@npm:0.14.20"
   dependencies:
     "@noble/curves": ^1.0.0
     "@noble/hashes": ^1.3.0
     bs58: ^5.0.0
     neverthrow: ^6.0.0
-    viem: ^1.12.2
-  checksum: ca7febb3f9b0ab6513a5ca256c7908e0b25b6a974f9a2422e169fc3c350ba87b80a951740be85ce22feee943cb5f8ea66e61b2e93fd3a879ec707ba89e8846ff
+    viem: ^2.17.4
+  checksum: d3ef8b3fe3ac1bcc73bda4634298a7e67d3eeeb38a72427db91a8207e42c447e69ab40106d3460a3a97dcb25e57d26626c794755ecfc87aac1ae346e7b28f8b6
   languageName: node
   linkType: hard
 
@@ -3623,6 +3625,29 @@ __metadata:
     react-native: ^0.74.3
     viem: ^2.7.8
   checksum: d6255bcb2d6e7af9122f31140f677752cebb18d3463dce18bfe2e8b140f7378ff8555612a16973d944dca69ed3890bdd374bc2d0b3c9c5e76ebff8c0543e8261
+  languageName: node
+  linkType: hard
+
+"@frames.js/render@npm:^0.3.3":
+  version: 0.3.4
+  resolution: "@frames.js/render@npm:0.3.4"
+  dependencies:
+    "@farcaster/core": ^0.14.7
+    "@noble/ed25519": ^2.0.0
+    frames.js: ^0.19.0
+  peerDependencies:
+    "@lens-protocol/client": 2.0.0
+    "@rainbow-me/rainbowkit": ^2.1.2
+    "@types/react": ^18.2.0
+    "@types/react-native": ^0.73.0
+    "@xmtp/frames-client": ^0.5.3
+    "@xmtp/xmtp-js": ^12.0.0
+    next: ^14.1.0
+    react: ^18.2.0
+    react-native: ^0.74.3
+    viem: ^2.7.8
+    wagmi: ^2.9.10
+  checksum: e4abc78fb6403c50e89cc38083306e175078aa857d79caf8479ec3df3dd5d5031b4805197adf3c6c1dfd9d30d288940d497e0fac0feca49cfbdc88e87b047201
   languageName: node
   linkType: hard
 
@@ -5363,12 +5388,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@noble/curves@npm:1.4.2, @noble/curves@npm:^1.0.0, @noble/curves@npm:^1.4.0, @noble/curves@npm:~1.4.0":
+"@noble/curves@npm:1.4.2, @noble/curves@npm:~1.4.0":
   version: 1.4.2
   resolution: "@noble/curves@npm:1.4.2"
   dependencies:
     "@noble/hashes": 1.4.0
   checksum: c475a83c4263e2c970eaba728895b9b5d67e0ca880651e9c6e3efdc5f6a4f07ceb5b043bf71c399fc80fada0b8706e69d0772bffdd7b9de2483b988973a34cba
+  languageName: node
+  linkType: hard
+
+"@noble/curves@npm:^1.0.0, @noble/curves@npm:^1.4.0":
+  version: 1.5.0
+  resolution: "@noble/curves@npm:1.5.0"
+  dependencies:
+    "@noble/hashes": 1.4.0
+  checksum: a43464c5db67a931b1c93d6634c98e30d791dd567408ebeffd582be1a7f31169f6f26b191e24a9552d89d935408bd8c3dfb90ad8b47286ecf53cbdd2d79d02af
+  languageName: node
+  linkType: hard
+
+"@noble/ed25519@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "@noble/ed25519@npm:2.1.0"
+  checksum: f9638d5daaaadaecf33cb09675668bde144cecb9a4467f78cda2a7fbd96a1b975a1f8d00e99599f840de52adc64e723333c7c8e52cdf85e3ef160d01b95c408c
   languageName: node
   linkType: hard
 
@@ -5390,6 +5431,13 @@ __metadata:
   version: 1.3.3
   resolution: "@noble/hashes@npm:1.3.3"
   checksum: 8a6496d1c0c64797339bc694ad06cdfaa0f9e56cd0c3f68ae3666cfb153a791a55deb0af9c653c7ed2db64d537aa3e3054629740d2f2338bb1dcb7ab60cd205b
+  languageName: node
+  linkType: hard
+
+"@noble/secp256k1@npm:1.7.1":
+  version: 1.7.1
+  resolution: "@noble/secp256k1@npm:1.7.1"
+  checksum: d2301f1f7690368d8409a3152450458f27e54df47e3f917292de3de82c298770890c2de7c967d237eff9c95b70af485389a9695f73eb05a43e2bd562d18b18cb
   languageName: node
   linkType: hard
 
@@ -5439,6 +5487,24 @@ __metadata:
   dependencies:
     semver: ^7.3.5
   checksum: d960cab4b93adcb31ce223bfb75c5714edbd55747342efb67dcc2f25e023d930a7af6ece3e75f2f459b6f38fc14d031c766f116cd124fdc937fd33112579e820
+  languageName: node
+  linkType: hard
+
+"@open-frames/proxy-client@npm:^0.3.3":
+  version: 0.3.3
+  resolution: "@open-frames/proxy-client@npm:0.3.3"
+  dependencies:
+    "@open-frames/proxy-types": 0.2.3
+  checksum: 5830a932cfb8a73fa7baa0895831167110532922510e15f3ec8f43e9a4b9f01279976c1fb8d093c8848e851ed8ce89829db6d12076485bc87a2628826a96d488
+  languageName: node
+  linkType: hard
+
+"@open-frames/proxy-types@npm:0.2.3":
+  version: 0.2.3
+  resolution: "@open-frames/proxy-types@npm:0.2.3"
+  peerDependencies:
+    typescript: ^5.3.3
+  checksum: ea0d686a62296c197e5548cbe9e94149024c54228b3e3a234ac367408f1dd51f3076a7d213a00b8604f53f8ce75ab5521f54cce4faad1755b19b3858e5308d73
   languageName: node
   linkType: hard
 
@@ -7880,11 +7946,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:>=13.7.0":
-  version: 22.0.0
-  resolution: "@types/node@npm:22.0.0"
+  version: 22.4.0
+  resolution: "@types/node@npm:22.4.0"
   dependencies:
-    undici-types: ~6.11.1
-  checksum: ef58d59bbffd9a79449ef632ea9a4f3b006496926cac2717368f80fdd152b1937e44093c17c9fac74650309c9d5387bb5c5bf4fd304adafebcbda1e6e4435fe4
+    undici-types: ~6.19.2
+  checksum: 680303e9b2801f3e19453957df93f59e7ad95e2277a363ba3719e9a3e0c8949ed9bed2265a2a3444254c5e550170177c088bc2b2303eb79740fb8ee96b097ad3
   languageName: node
   linkType: hard
 
@@ -9401,6 +9467,109 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xmtp/consent-proof-signature@npm:^0.1.3":
+  version: 0.1.3
+  resolution: "@xmtp/consent-proof-signature@npm:0.1.3"
+  dependencies:
+    "@xmtp/proto": 3.56.0
+    long: ^5.2.3
+  checksum: 24f3c5298a951cbf561c7986ffba670400560b94ce51f1ace5b29f98c899c554e13f01b370752e2a9159ccb885d7a0031e75f6d96816c81d799df877bd59715f
+  languageName: node
+  linkType: hard
+
+"@xmtp/content-type-primitives@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@xmtp/content-type-primitives@npm:1.0.1"
+  dependencies:
+    "@xmtp/proto": ^3.61.1
+  checksum: e185b1cc8894acc87c5006b7f81aa421dee345ade0d7a0df1625b36acd7552538e504891c1d54f3acae1a153acdf46327c9e1f677cc6e58271517d258188f30e
+  languageName: node
+  linkType: hard
+
+"@xmtp/content-type-text@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@xmtp/content-type-text@npm:1.0.0"
+  dependencies:
+    "@xmtp/content-type-primitives": ^1.0.1
+  checksum: b195060ad5686a6ace2772d5208d535d1f5062820629764aec52cedf3f2630885b5913aea6d2f0186a49139845c20d2ded783c6bf998884f09374c07b183141f
+  languageName: node
+  linkType: hard
+
+"@xmtp/frames-client@npm:^0.5.4":
+  version: 0.5.4
+  resolution: "@xmtp/frames-client@npm:0.5.4"
+  dependencies:
+    "@noble/hashes": ^1.4.0
+    "@open-frames/proxy-client": ^0.3.3
+    "@xmtp/proto": 3.62.1
+    long: ^5.2.3
+  peerDependencies:
+    "@xmtp/xmtp-js": ">9.3.1"
+  checksum: 9e2302765ba82478a3fe12cf7ff158d9b99c44804a43570edc73978ee3d5c5a38e66756ac0962fcaba0287641d68162a46416766b0af78dad59c6131c1f079d9
+  languageName: node
+  linkType: hard
+
+"@xmtp/proto@npm:3.56.0":
+  version: 3.56.0
+  resolution: "@xmtp/proto@npm:3.56.0"
+  dependencies:
+    long: ^5.2.0
+    protobufjs: ^7.0.0
+    rxjs: ^7.8.0
+    undici: ^5.8.1
+  checksum: 988f29a1176504fda24322aadbf740884eae564a0562aee1f2b99c6b4fa0f2c2d5542ab93abcb431672564f564f77c2c25d86237c9c73f7887843c56f49d9946
+  languageName: node
+  linkType: hard
+
+"@xmtp/proto@npm:3.62.1":
+  version: 3.62.1
+  resolution: "@xmtp/proto@npm:3.62.1"
+  dependencies:
+    long: ^5.2.0
+    protobufjs: ^7.0.0
+    rxjs: ^7.8.0
+    undici: ^5.8.1
+  checksum: f452dbc314fdb1059317602aabc56b3fb92f74bd2b6d4c025343c4f50da91d144aea01f9f7c6bd590f7e6e9da31e63af30fdb5df84c5797a840382dd4e46d11d
+  languageName: node
+  linkType: hard
+
+"@xmtp/proto@npm:^3.61.1, @xmtp/proto@npm:^3.62.1":
+  version: 3.65.1
+  resolution: "@xmtp/proto@npm:3.65.1"
+  dependencies:
+    long: ^5.2.0
+    protobufjs: ^7.0.0
+    rxjs: ^7.8.0
+    undici: ^5.8.1
+  checksum: a3984d7ec43ec50e06c48a3193a8da35a49c1dbc5f65799709adaf8bc591f9349fb749213838be31ff2c8e3507eae7ab63398af87e2810de01ff74e58bb772a5
+  languageName: node
+  linkType: hard
+
+"@xmtp/user-preferences-bindings-wasm@npm:^0.3.6":
+  version: 0.3.6
+  resolution: "@xmtp/user-preferences-bindings-wasm@npm:0.3.6"
+  checksum: 57d7ee44157dd1fd980524d5e717b3fe299e6f117eb8c8200fa7d144e603dc7e74426b88c3a1ca2ce64916e599009a8f562224da1d17fef1068632767a24a8be
+  languageName: node
+  linkType: hard
+
+"@xmtp/xmtp-js@npm:^12.1.0":
+  version: 12.1.0
+  resolution: "@xmtp/xmtp-js@npm:12.1.0"
+  dependencies:
+    "@noble/secp256k1": 1.7.1
+    "@xmtp/consent-proof-signature": ^0.1.3
+    "@xmtp/content-type-primitives": ^1.0.1
+    "@xmtp/content-type-text": ^1.0.0
+    "@xmtp/proto": ^3.62.1
+    "@xmtp/user-preferences-bindings-wasm": ^0.3.6
+    async-mutex: ^0.5.0
+    elliptic: ^6.5.5
+    long: ^5.2.3
+    viem: 2.7.15
+  checksum: 220166f1063e19c3590daa2b3954176d25af4f8de42220840b36040c41b9cec8545edd38eea3990d16aceca4ffe602ba18616680826a314d37b2cf03e3aa459b
+  languageName: node
+  linkType: hard
+
 "@xtuc/ieee754@npm:^1.2.0":
   version: 1.2.0
   resolution: "@xtuc/ieee754@npm:1.2.0"
@@ -9454,6 +9623,21 @@ __metadata:
     zod:
       optional: true
   checksum: d7d887f29d6821e3f7a400de9620511b80ead3f85c5c87308aaec97965d3493e6687ed816e88722b4f512249bd66dee9e69231b49af0e1db8f69400a62c87cf6
+  languageName: node
+  linkType: hard
+
+"abitype@npm:1.0.0":
+  version: 1.0.0
+  resolution: "abitype@npm:1.0.0"
+  peerDependencies:
+    typescript: ">=5.0.4"
+    zod: ^3 >=3.22.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+    zod:
+      optional: true
+  checksum: ea2c0548c3ba58c37a6de7483d63389074da498e63d803b742bbe94eb4eaa1f51a35d000c424058b2583aef56698cf07c696eb3bc4dd0303bc20c6f0826a241a
   languageName: node
   linkType: hard
 
@@ -10050,6 +10234,15 @@ __metadata:
   dependencies:
     tslib: ^2.0.0
   checksum: f50102e0c57f6a958528cff7dff13da070897f17107b42274417a7248905b927b6e51c3387f8aed1f5cd6005b0e692d64a83a0789be602e4e7e7da4afe08b889
+  languageName: node
+  linkType: hard
+
+"async-mutex@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "async-mutex@npm:0.5.0"
+  dependencies:
+    tslib: ^2.4.0
+  checksum: be1587f4875f3bb15e34e9fcce82eac2966daef4432c8d0046e61947fb9a1b95405284601bc7ce4869319249bc07c75100880191db6af11d1498931ac2a2f9ea
   languageName: node
   linkType: hard
 
@@ -14807,8 +15000,8 @@ __metadata:
   linkType: hard
 
 "frames.js@npm:^0.18.1":
-  version: 0.18.1
-  resolution: "frames.js@npm:0.18.1"
+  version: 0.18.2
+  resolution: "frames.js@npm:0.18.2"
   dependencies:
     "@vercel/og": ^0.6.2
     cheerio: ^1.0.0-rc.12
@@ -14822,7 +15015,27 @@ __metadata:
     next: ^14.1.0
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 840bb4bc05319fde52d0b8d891b2ac28f9cbe16428ff6478a1f879b8b5b76f05e53a223c26de0e4d8563704ac264364c0583286dc9d4fc5c986fe8ce20711f07
+  checksum: bf53c9b7eda7da0e49ea8e9de0ad4967f18f511d649b3f545046983823462b152e781040839f1f27d79d20f79319f00abc2ce373828ff6f330bce44d655ca091
+  languageName: node
+  linkType: hard
+
+"frames.js@npm:^0.19.0":
+  version: 0.19.0
+  resolution: "frames.js@npm:0.19.0"
+  dependencies:
+    "@vercel/og": ^0.6.2
+    cheerio: ^1.0.0-rc.12
+    protobufjs: ^7.2.6
+    viem: ^2.7.8
+  peerDependencies:
+    "@cloudflare/workers-types": ^4.20240320.1
+    "@lens-protocol/client": ^2.0.0
+    "@types/express": ^4.17.21
+    "@xmtp/frames-validator": ^0.6.2
+    next: ^14.1.0
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 97d5eb57d7224014ad271b82e1d81ad9059fff11c142f54d7d3d7cf091c390afc5da08c8097f7cb7b3b1eb64d65411aa49f3a32e8491feeee284108146be0910
   languageName: node
   linkType: hard
 
@@ -18207,7 +18420,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"long@npm:^5.0.0":
+"long@npm:^5.0.0, long@npm:^5.2.0, long@npm:^5.2.3":
   version: 5.2.3
   resolution: "long@npm:5.2.3"
   checksum: 885ede7c3de4facccbd2cacc6168bae3a02c3e836159ea4252c87b6e34d40af819824b2d4edce330bfb5c4d6e8ce3ec5864bdcf9473fa1f53a4f8225860e5897
@@ -21180,7 +21393,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"protobufjs@npm:^7.2.6":
+"protobufjs@npm:^7.0.0, protobufjs@npm:^7.2.6":
   version: 7.3.2
   resolution: "protobufjs@npm:7.3.2"
   dependencies:
@@ -22572,7 +22785,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:^7.5.4":
+"rxjs@npm:^7.5.4, rxjs@npm:^7.8.0":
   version: 7.8.1
   resolution: "rxjs@npm:7.8.1"
   dependencies:
@@ -24760,14 +24973,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~6.11.1":
-  version: 6.11.1
-  resolution: "undici-types@npm:6.11.1"
-  checksum: d7fc11bded93bc55ef3b88464e856ab061a747cf50ef2eff5df5ba3be18b9fcafe60e1b36a8c99e28aac2eade12891d32a504f2a32422452c44662e598e3b188
+"undici-types@npm:~6.19.2":
+  version: 6.19.6
+  resolution: "undici-types@npm:6.19.6"
+  checksum: e66df2447b6d93a48b0605a54269d8c3f228edcd1e9563229f6de37e48ed53b3e49b4bc965733643ed9717e0e0fa1ee664c929db91d787c9f488fb3f9e17c533
   languageName: node
   linkType: hard
 
-"undici@npm:^5.28.4":
+"undici@npm:^5.28.4, undici@npm:^5.8.1":
   version: 5.28.4
   resolution: "undici@npm:5.28.4"
   dependencies:
@@ -25510,6 +25723,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"viem@npm:2.7.15":
+  version: 2.7.15
+  resolution: "viem@npm:2.7.15"
+  dependencies:
+    "@adraffy/ens-normalize": 1.10.0
+    "@noble/curves": 1.2.0
+    "@noble/hashes": 1.3.2
+    "@scure/bip32": 1.3.2
+    "@scure/bip39": 1.2.1
+    abitype: 1.0.0
+    isows: 1.0.3
+    ws: 8.13.0
+  peerDependencies:
+    typescript: ">=5.0.4"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: d0d3a9b48fcf64298c08d57dd782fdf6f21538c6472ebc87953928d860f5fd6296a7e22f46f230d68b667df6505fa472414cc3d8e7a041ea2a7f1fd45bc013de
+  languageName: node
+  linkType: hard
+
 "viem@npm:2.x, viem@npm:^2.1.1, viem@npm:^2.17.4, viem@npm:latest":
   version: 2.17.11
   resolution: "viem@npm:2.17.11"
@@ -25531,7 +25765,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"viem@npm:^1.0.0, viem@npm:^1.12.2, viem@npm:^1.3.1":
+"viem@npm:^1.0.0, viem@npm:^1.3.1":
   version: 1.21.4
   resolution: "viem@npm:1.21.4"
   dependencies:
@@ -25553,8 +25787,8 @@ __metadata:
   linkType: hard
 
 "viem@npm:^2.7.8":
-  version: 2.18.6
-  resolution: "viem@npm:2.18.6"
+  version: 2.19.7
+  resolution: "viem@npm:2.19.7"
   dependencies:
     "@adraffy/ens-normalize": 1.10.0
     "@noble/curves": 1.4.0
@@ -25570,7 +25804,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 30e95d6cd5611eda993f8129bdf89021e52d9d517783684a2c3f86a552fabb44ccc4782184ae0f991c7237388bf8877d43f43595990661e05b7a9165520947e2
+  checksum: 61e9bca6f38d510a8ce0308d6b093970e0d58ae45481fcea78bbfdefb0b2d8b651071dd940da07049b949a2cb4b5c005eca2fdee748139ea816edb4b7bc53a8e
   languageName: node
   linkType: hard
 

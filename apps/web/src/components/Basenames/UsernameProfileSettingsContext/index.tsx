@@ -60,13 +60,10 @@ export default function UsernameProfileSettingsProvider({
 
   const { logEventWithContext } = useAnalytics();
 
-  const values = useMemo(
-    () => ({
+  const values = useMemo(() => ({
       currentSettingsTab,
       setCurrentSettingsTab,
-    }),
-    [currentSettingsTab],
-  );
+    }), [currentSettingsTab]);
 
   useEffect(() => {
     logEventWithContext(`settings_current_tab_${currentSettingsTab}`, ActionType.change);

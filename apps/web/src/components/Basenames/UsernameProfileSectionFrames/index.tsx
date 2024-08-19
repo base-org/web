@@ -1,22 +1,14 @@
-'use client';
-
-import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
-import { type FarcasterSignerImpersonating, signFrameAction } from '@frames.js/render/farcaster';
-import { useFrame } from '@frames.js/render/use-frame';
-import { fallbackFrameContext } from '@frames.js/render';
 import { FrameUI, type FrameUIComponents, type FrameUITheme } from '@frames.js/render/ui';
-import { useAccount } from 'wagmi';
-import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
-import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
+import { useFrame } from '@frames.js/render/use-frame';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
-import { useCallback, useState } from 'react';
-import UsernameProfileEditModal from 'apps/web/src/components/Basenames/UsernameProfileEditModal';
-import { useAnalytics } from 'apps/web/contexts/Analytics';
-import { ActionType } from 'libs/base-ui/utils/logEvent';
+import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
+import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
+import { useXmtpFrameContext } from 'apps/web/src/hooks/useXmtpFrameContext';
+import { useXmtpIdentity } from 'apps/web/src/hooks/useXmtpIdentity';
+import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
+import { zeroAddress } from 'viem';
+import { useAccount } from 'wagmi';
 
-/**
- * StylingProps is a type that defines the props that can be passed to the components to style them.
- */
 type StylingProps = {
   className?: string;
   style?: React.CSSProperties;
@@ -35,12 +27,17 @@ const components: FrameUIComponents<StylingProps> = {};
  * By default there are no styles so it is up to you to style the components as you wish.
  */
 const theme: FrameUITheme<StylingProps> = {
+  Error: {
+    className:
+      'flex flex-col w-[380px] h-[200px] border border-gray-90 rounded-lg overflow-hidden bg-white relative mt-6 items-center justify-center opacity-50',
+  },
   Root: {
     className:
       'flex flex-col max-w-[380px] border rounded-lg overflow-hidden bg-white relative mt-6',
   },
   LoadingScreen: {
-    className: 'absolute top-0 left-0 right-0 bottom-0 bg-gray-90 z-10',
+    className:
+      'flex flex-col items-center justify-center border border-gray-90 rounded-lg bg-white absolute top-0 left-0 right-0 bottom-0 z-10',
   },
   ButtonsContainer: {
     className:
@@ -53,92 +50,57 @@ const theme: FrameUITheme<StylingProps> = {
   ImageContainer: {
     className: 'relative w-full h-full border-b border-gray-90 overflow-hidden',
     style: {
-      aspectRatio: 'var(--frame-image-aspect-ratio)', // helps to set the fixed loading skeleton size
+      aspectRatio: 'var(--frame-image-aspect-ratio)',
     },
   },
 };
 
 export default function UsernameProfileSectionBadges() {
   const { address } = useAccount();
-  const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
-  const [errorLoadingFrame, setErrorLoadingFrame] = useState(false);
+  const { profileUsername, profileAddress } = useUsernameProfile();
   const { existingTextRecords } = useReadBaseEnsTextRecords({
     address: profileAddress,
     username: profileUsername,
   });
 
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { logEventWithContext } = useAnalytics();
-
-  const openModal = useCallback(() => {
-    logEventWithContext('profile_edit_modal_open', ActionType.render);
-    setIsOpen(true);
-  }, [logEventWithContext]);
-
-  const closeModal = useCallback(() => {
-    logEventWithContext('profile_edit_modal_close', ActionType.render);
-    setIsOpen(false);
-  }, [logEventWithContext]);
-
   const homeframeUrl = existingTextRecords[UsernameTextRecordKeys.Frame];
-
-  const farcasterSigner: FarcasterSignerImpersonating = {
-    fid: 1,
-    status: 'impersonating',
-    publicKey: '0x00000000000000000000000000000000000000000000000000000000000000000',
-    privateKey: '0x00000000000000000000000000000000000000000000000000000000000000000',
-  };
+  const xmtpSignerState = useXmtpIdentity();
+  const xmtpFrameContext = useXmtpFrameContext({
+    fallbackContext: {
+      conversationTopic: 'base-name-profile',
+      participantAccountAddresses: address ? [address, zeroAddress] : [zeroAddress],
+    },
+  });
 
   const frameState = useFrame({
     connectedAddress: address,
     // replace with frame URL
     homeframeUrl,
+    onTransaction: async () => {
+      console.log('jf onTransaction');
+      return Promise.resolve('0x0');
+    },
+    onSignature: async () => {
+      console.log('jf onSignature');
+      return Promise.resolve('0x0');
+    },
     // corresponds to the name of the route for POST and GET in step 2
     frameActionProxy: '/frames',
     frameGetProxy: '/frames',
-    frameContext: fallbackFrameContext,
-    onError: () => setErrorLoadingFrame(true),
+    onError: (e) => console.error('jf e', e),
     // map to your identity if you have one
-    signerState: {
-      hasSigner: false,
-      // farcasterSigner.status === 'approved' || farcasterSigner.status === 'impersonating',
-      signer: farcasterSigner,
-      isLoadingSigner: false,
-      onSignerlessFramePress: () => {
-        // Only run if `hasSigner` is set to `false`
-        // This is a good place to throw an error or prompt the user to login
-        console.log(
-          'A frame button was pressed without a signer. Perhaps you want to prompt a login',
-        );
-      },
-      signFrameAction,
-      logout() {
-        console.log('logout');
-      },
-    },
+    signerState: xmtpSignerState,
+    specification: 'farcaster',
+    frameContext: xmtpFrameContext.frameContext,
   });
 
-  if (!homeframeUrl || (errorLoadingFrame && !currentWalletIsOwner)) return null;
+  if (!homeframeUrl) return null;
   return (
     <section>
       <div className="flex flex-row justify-between ">
         <UsernameProfileSectionTitle title="Frames" />
-        {currentWalletIsOwner && (
-          <button
-            onClick={openModal}
-            type="button"
-            className="text-palette-foregroundMuted transition-colors hover:text-black"
-          >
-            ＋ Change your frame
-          </button>
-        )}
       </div>
-      <a href={homeframeUrl} aria-label="link-to-frame" target="_blank" rel="noreferrer">
-        <FrameUI frameState={frameState} components={components} theme={theme} />
-      </a>
-      {currentWalletIsOwner && (
-        <UsernameProfileEditModal isOpen={isOpen} toggleModal={closeModal} />
-      )}
+      <FrameUI frameState={frameState} components={components} theme={theme} />
     </section>
   );
 }

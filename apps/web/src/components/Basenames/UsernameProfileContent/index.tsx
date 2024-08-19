@@ -1,10 +1,7 @@
 import UsernameProfileSectionBadges from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges';
 import UsernameProfileSectionExplore from 'apps/web/src/components/Basenames/UsernameProfileSectionExplore';
 import BadgeContextProvider from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/BadgeContext';
-import dynamic from 'next/dynamic';
-const UsernameProfileSectionFrames = dynamic(
-  async () => import('apps/web/src/components/Basenames/UsernameProfileSectionFrames'),
-);
+import UsernameProfileSectionFrames from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames';
 
 export default function UsernameProfileContent() {
   return (
