@@ -25,7 +25,9 @@ export const inputSearchValueFrame = (error?: string) =>
       },
     ],
     image: {
-      src: `${DOMAIN}/api/basenames/INVALID_NAME_FOR_INITIAL_RENDER/assets/frameImage.png?error=${error ?? ''}`, // TODO: is this too hacky?
+      src: `${DOMAIN}/api/basenames/INVALID_NAME_FOR_INITIAL_RENDER/assets/frameImage.png?error=${
+        error ?? ''
+      }`, // TODO: is this too hacky?
     },
     input: {
       text: 'Search for a name',
@@ -79,7 +81,7 @@ export const confirmationFrame = (
   formattedTargetName: string,
   targetYears: number,
   registrationPriceInWei: string,
-  registrationPriceInEth: number,
+  registrationPriceInEth: string,
 ) =>
   getFrameHtmlResponse({
     buttons: [
