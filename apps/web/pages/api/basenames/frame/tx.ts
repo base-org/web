@@ -6,7 +6,10 @@ import {
 } from '@coinbase/onchainkit/frame';
 import { encodeFunctionData } from 'viem';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
-import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import {
+  USERNAME_L2_RESOLVER_ADDRESSES,
+  USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
+} from 'apps/web/src/addresses/usernames';
 
 type TxFrameStateType = {
   targetName: string;
@@ -15,6 +18,9 @@ type TxFrameStateType = {
   registrationPriceInWei: string;
   registrationPriceInEth: string;
 };
+
+const RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[8453];
+const REGISTRAR_CONTROLLER_ADDRESS = USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[8453];
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -58,11 +64,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const registerRequest = {
     name,
-    owner: '0x74431A069d721FEe532fc6330fB0280A80AeEaF9' as `0x${string}`, // The address of the owner for the name.
-    duration: secondsInYears(years), // The duration of the registration in seconds.
-    resolver: USERNAME_L2_RESOLVER_ADDRESSES[8453], // The address of the resolver to set for this name.
+    owner: '0x74431A069d721FEe532fc6330fB0280A80AeEaF9' as `0x${string}`, // TODO: The address of the owner for the name.
+    duration: secondsInYears(years),
+    resolver: RESOLVER_ADDRESS,
     data: [], //  Multicallable data bytes for setting records in the associated resolver upon registration.
-    reverseRecord: true, // Bool to decide whether to set this name as the "primary" name for the `owner`.
+    reverseRecord: true,
   };
 
   const data = encodeFunctionData({
@@ -78,7 +84,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       params: {
         abi: [],
         data,
-        to: '0x16ee2051a0613e5c52127755ee3110cf4cd1ca10',
+        to: REGISTRAR_CONTROLLER_ADDRESS,
         value: priceInWei.toString(),
       },
     };
