@@ -34,6 +34,7 @@ export default async function GET(request: Request) {
   const namehashNode = keccak256(
     encodePacked(['bytes32', 'bytes32'], [namehash(baseDomainName), labelHash]),
   );
+
   let basenameFormatted = undefined;
   try {
     const client = getBasenamePublicClient(chainId);

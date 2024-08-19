@@ -1064,7 +1064,7 @@ contract RandomColorNFT is ERC721 {
 [sample project]: https://github.com/base-org/land-sea-and-sky
 [Sample Art]: https://github.com/base-org/land-sea-and-sky/tree/master/Final_SVGs
 [Basescan]: https://sepolia.basescan.org/
-[Thirdweb and Unreal - NFT Items]: /thirdweb-unreal-nft-items
-[Coinbase Smart Wallet]: /coinbase-smart-wallet
+[Thirdweb and Unreal - NFT Items]: ./thirdweb-unreal-nft-items
+[Coinbase Smart Wallet]: ./coinbase-smart-wallet
 [Below]: #random-color-nft-contract
-[Complex Onchain NFTs]: /complex-onchain-nfts
+[Complex Onchain NFTs]: ./complex-onchain-nfts

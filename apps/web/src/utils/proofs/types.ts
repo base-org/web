@@ -42,3 +42,14 @@ export type MerkleTreeProofResponse = {
   namespace: string;
   proofs: `0x${string}`[];
 };
+
+export class ProofsException extends Error {
+  public statusCode: number;
+
+  constructor(message: string, statusCode: number) {
+    super(message);
+    this.name = this.constructor.name; // Set the error name to the class name
+    this.statusCode = statusCode;
+    Error.captureStackTrace(this, this.constructor); // Capture the stack trace
+  }
+}

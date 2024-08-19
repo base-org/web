@@ -28,9 +28,9 @@ export default async function Funding() {
           classnames="bg-green-60 border-green-60"
         />
         <ResourceCard
-          title="Base Builder Grants"
-          description="Apply for a retroactive Base Builder Grant, rewarding great projects being built on Base"
-          href="https://paragraph.xyz/@grants.base.eth/calling-based-builders/?utm_source=dotorg&utm_medium=builderkit"
+          title="Base Ecosystem Fund"
+          description="Early stage projects (pre-seed to seed) building on Base can apply for investment"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeiSAod4PAbXlvvDGtHWu-GqzGpvHYfaTQR2f77AawD7GYc4Q/viewform"
           topLeft={<span className="font-mono">03</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}
           classnames="bg-green-80 border-green-80"

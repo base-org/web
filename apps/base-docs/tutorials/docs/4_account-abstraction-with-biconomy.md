@@ -195,7 +195,7 @@ forge create ./src/Counter.sol:Counter --rpc-url https://goerli.base.org --accou
 
 When prompted, enter the password that you set earlier, when you imported your wallet’s private key.
 
-After running the command above, the contract will be deployed on the Base Goerli test network. You can view the deployment status and contract by using a [block explorer](/tools/block-explorers).
+After running the command above, the contract will be deployed on the Base Goerli test network. You can view the deployment status and contract by using a [block explorer](/docs/tools/block-explorers).
 
 ---
 

@@ -33,7 +33,7 @@ export const allSettingsTabs = [
 ];
 
 // Other features are not yet supported
-export const settingsTabsEnabled = [SettingsTabs.ManageProfile];
+export const settingsTabsEnabled = [SettingsTabs.ManageProfile, SettingsTabs.Ownership];
 
 /* Context */
 export type UsernameProfileSettingsContextProps = {
@@ -60,10 +60,13 @@ export default function UsernameProfileSettingsProvider({
 
   const { logEventWithContext } = useAnalytics();
 
-  const values = useMemo(() => ({
+  const values = useMemo(
+    () => ({
       currentSettingsTab,
       setCurrentSettingsTab,
-    }), [currentSettingsTab]);
+    }),
+    [currentSettingsTab],
+  );
 
   useEffect(() => {
     logEventWithContext(`settings_current_tab_${currentSettingsTab}`, ActionType.change);

@@ -112,6 +112,7 @@ const contentSecurityPolicy = {
     'https://browser-intake-datadoghq.com', // datadog
     'https://*.datadoghq.com', //datadog
     'https://translate.googleapis.com', // Let user translate our website
+    'https://sdk-api.neynar.com/', // Neymar API
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
@@ -124,6 +125,7 @@ const contentSecurityPolicy = {
     'https://i.seadn.io/', // ens avatars
     'https://ipfs.io', // ipfs ens avatar resolution
     'https://cloudflare-ipfs.com', // ipfs Cloudfare ens avatar resolution
+    'https://zku9gdedgba48lmr.public.blob.vercel-storage.com', // basename avatar upload to vercel blob
   ],
 };
 

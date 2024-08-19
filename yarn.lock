@@ -354,7 +354,7 @@ __metadata:
   dependencies:
     "@coinbase/cookie-banner": ^1.0.3
     "@coinbase/cookie-manager": ^1.1.1
-    "@coinbase/onchainkit": ^0.27.1
+    "@coinbase/onchainkit": ^0.28.5
     "@datadog/browser-rum": ^5.23.3
     "@frames.js/render": ^0.3.3
     "@guildxyz/sdk": 2.6.0
@@ -383,6 +383,7 @@ __metadata:
     eslint-config-next: ^13.1.6
     ethers: 5.7.2
     framer-motion: ^8.5.5
+    hls.js: ^1.5.14
     is-ipfs: ^8.0.4
     jose: ^5.4.1
     jsonwebtoken: ^9.0.2
@@ -2209,9 +2210,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@coinbase/onchainkit@npm:^0.27.1":
-  version: 0.27.1
-  resolution: "@coinbase/onchainkit@npm:0.27.1"
+"@coinbase/onchainkit@npm:^0.28.5":
+  version: 0.28.7
+  resolution: "@coinbase/onchainkit@npm:0.28.7"
   dependencies:
     "@rainbow-me/rainbowkit": ^2.1.3
     "@tanstack/react-query": ^5
@@ -2226,7 +2227,7 @@ __metadata:
     "@xmtp/frames-validator": ^0.6.0
     react: ^18
     react-dom: ^18
-  checksum: e6f68ebeb9c6c764e3d53df026e8d2a0e17d7df53432b95b29cd1285516d29302823f1222ea64827ff3778912231b51a23619a8b8367cdc1f6ecef6c88f8a305
+  checksum: 49c7041ec516f41d2580115a79e0b7af562dfeb9e2a6b7567e8ed96269334d8aa39d1800e7306afcaeda5b33e47938d693532c5108814c514e2e2cd5235be7e8
   languageName: node
   linkType: hard
 
@@ -15837,6 +15838,13 @@ __metadata:
     tiny-warning: ^1.0.0
     value-equal: ^1.0.1
   checksum: addd84bc4683929bae4400419b5af132ff4e4e9b311a0d4e224579ea8e184a6b80d7f72c55927e4fa117f69076a9e47ce082d8d0b422f1a9ddac7991490ca1d0
+  languageName: node
+  linkType: hard
+
+"hls.js@npm:^1.5.14":
+  version: 1.5.14
+  resolution: "hls.js@npm:1.5.14"
+  checksum: 7e8385dd188cc2fbf089d3daed12a4b0905f1468be1b1598ddba07edc9d398f9639a054b8f2a73c2d09a177eecc6559c0030ee051611f109e23559004d953d3e
   languageName: node
   linkType: hard
 
