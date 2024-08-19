@@ -23,13 +23,8 @@ This demo uses Coinbase Smart Wallet and Coinbase Wallet, but Basenames is suppo
 
 By the end of this tutorial, you should be able to:
 
-- Implement Basenames using [OnchainKit]'s `<Identity/>` component.
-- Configure your wagmi/viem project to use Base.
-
-## Prerequisites
-
-**Familiarity with Wagmi, Viem and TypeScript**  
-The [wagmi], [viem], and [tanstack] stack is commonly used in React-based apps to create onchain applications, with TypeScript as the default language.
+- Understand how onchain identity works on the Base network
+- Enable users to use their onchain identity in your app using [OnchainKit]
 
 ---
 
@@ -57,7 +52,7 @@ This command will install the necessary dependencies and start a development ser
 
 To follow along with the tutorial effectively, open your web browser and your IDE side by side. This setup will allow you to code and see the changes in real time.
 
-[image]
+![image](../../assets/images/basenames-tutorial/final-basename.png)
 
 ### Update Wagmi config
 
@@ -102,9 +97,11 @@ This configuration sets up the wagmi project to connect to the Base and BaseSepo
 
 Now we’ll create a component to display the Basenames associated with an address.
 
-:::tip Ensure Chain is Set to Base Be sure to set the `chain={base}` parameter; otherwise, it will default to ENS (Ethereum Name Service). :::
+:::tip Use Base as your chain
+Ensure Chain is Set to Base Be sure to set the `chain={base}` parameter; otherwise, it will default to ENS (Ethereum Name Service).
+:::
 
-```typescript
+```typescript title="src/components/basename.tsx"
 'use client';
 import React from 'react';
 ('use client');
@@ -186,7 +183,7 @@ In this example, once the user connects their wallet, the Basenames component is
 
 That’s it! You’ve successfully integrated Basenames into your wagmi/viem app using OnchainKit. Test your application by connecting a wallet and observing how the Basename is displayed instead of the wallet address.
 
-[image]
+![how-basenames-looks](../../assets/images/basenames-tutorial/final-basename.png)
 
 [Basenames]: https://www.base.org/names/
 [OnchainKit]: https://onchainkit.xyz/
@@ -194,3 +191,4 @@ That’s it! You’ve successfully integrated Basenames into your wagmi/viem app
 [wagmi]: https://wagmi.sh
 [viem]: https://viem.sh
 [tanstack]: https://tanstack.com
+[other wallets]: https://help.coinbase.com/en/wallet/getting-started/smart-wallet
