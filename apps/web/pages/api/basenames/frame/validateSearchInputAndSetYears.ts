@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
-import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
+import { FrameRequest } from '@coinbase/onchainkit/frame';
 import { formatDefaultUsername, validateEnsDomainName } from 'apps/web/src/utils/usernames';
 import {
   DOMAIN,

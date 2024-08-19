@@ -62,7 +62,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
   name = messageState.targetName;
   years = messageState.targetYears;
-  priceInEth = messageState.registrationPriceInEth;
+  // priceInEth = messageState.registrationPriceInEth;
   priceInWei = messageState.registrationPriceInWei;
 
   const TODO_ADDRESS_FROM_NEYNAR = '0x74431A069d721FEe532fc6330fB0280A80AeEaF9';

@@ -1,9 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
-import {
-  FrameRequest,
-  getFrameMessage,
-  FrameTransactionResponse,
-} from '@coinbase/onchainkit/frame';
+import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 
 import { txSuccessFrame } from 'apps/web/pages/api/basenames/frame/frameResponses';
 
