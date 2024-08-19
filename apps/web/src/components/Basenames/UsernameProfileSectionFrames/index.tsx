@@ -119,6 +119,11 @@ export default function UsernameProfileSectionFrames() {
     <section>
       <div className="flex flex-row justify-between">
         <UsernameProfileSectionTitle title="Frames" />
+        {currentWalletIsOwner && (
+          <Button className="text-sm text-palette-foregroundMuted" onClick={openFrameModal}>
+            + Add Frame
+          </Button>
+        )}
       </div>
       <FrameUI frameState={frameState} components={components} theme={theme} />
     </section>
