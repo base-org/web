@@ -7,12 +7,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    return res
-      .status(200)
-      .setHeader('Content-Type', 'text/html')
-      .send(inputSearchValueFrame);
+    return res.status(200).setHeader('Content-Type', 'text/html').send(inputSearchValueFrame());
   } catch (error) {
-    console.error('Failed to fetch questions:', error);
+    console.error('Could not process request:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
