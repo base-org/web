@@ -1,12 +1,12 @@
 import { getFrameMetadata, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 
-export const DOMAIN = `https://base-web-git-feat-basenames-frame-coinbase-vercel.vercel.app`
-// export const DOMAIN = `http://localhost:3000`
+// export const DOMAIN = `https://base-web-git-feat-basenames-frame-coinbase-vercel.vercel.app`
+export const DOMAIN = `http://localhost:3000`;
 
 export const initialFrame = getFrameMetadata({
   buttons: [
     {
-      label: 'Claim a basename today!',
+      label: 'Register a basename today!',
     },
   ],
   image: {
@@ -19,7 +19,7 @@ export const inputSearchValueFrame = getFrameHtmlResponse({
   buttons: [
     {
       action: 'post',
-      label: 'Claim name',
+      label: 'Register name',
       target: `${DOMAIN}/api/basenames/frame/validateSearchInputAndSetYears`,
     },
   ],
@@ -39,7 +39,7 @@ export const buttonIndexToYears = {
   4: 100,
 };
 
-export const setYearsFrame = (targetName: string) =>
+export const setYearsFrame = (targetName: string, formattedTargetName: string) =>
   getFrameHtmlResponse({
     buttons: [
       {
@@ -64,7 +64,7 @@ export const setYearsFrame = (targetName: string) =>
       },
     ],
     image: {
-      src: `${DOMAIN}/api/basenames/${targetName}/assets/coverImage.png`,
+      src: `${DOMAIN}/api/basenames/${formattedTargetName}/assets/frameImage.png`,
     },
     postUrl: `${DOMAIN}/api/basenames/frame/confirmation`,
     state: {
@@ -82,12 +82,12 @@ export const confirmationFrame = (
     buttons: [
       {
         action: 'tx',
-        label: `Confirm: Register ${targetName} for ${targetYears} years for ${registrationPriceInEth} ETH`,
+        label: `Submit Basename Registration`,
         target: `${DOMAIN}/api/basenames/frame/tx`,
       },
     ],
     image: {
-      src: `${DOMAIN}/api/basenames/${targetName}/assets/coverImage.png`,
+      src: `${DOMAIN}/api/basenames/${targetName}/assets/frameImage.png?years=${targetYears}&priceInEth=${registrationPriceInEth}`,
     },
     target: `${DOMAIN}/api/basenames/frame/tx`,
     postUrl: `${DOMAIN}/api/basenames/frame/tx`,
