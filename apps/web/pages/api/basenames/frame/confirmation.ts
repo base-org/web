@@ -30,7 +30,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .status(200)
       .setHeader('Content-Type', 'text/html')
       .send(
-        confirmationFrame(targetName, formattedTargetName, targetYears, registrationPriceInWei, registrationPriceInEth),
+        confirmationFrame(
+          targetName,
+          formattedTargetName,
+          targetYears,
+          registrationPriceInWei,
+          registrationPriceInEth,
+        ),
       );
   } catch (error) {
     console.error('Failed to fetch questions:', error);
