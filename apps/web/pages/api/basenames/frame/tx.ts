@@ -4,8 +4,11 @@ import {
   getFrameMessage,
   FrameTransactionResponse,
 } from '@coinbase/onchainkit/frame';
-import { encodeFunctionData } from 'viem';
+import { encodeFunctionData, namehash } from 'viem';
+import { base, baseSepolia } from 'viem/chains';
+import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
+import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
 import {
   USERNAME_L2_RESOLVER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
@@ -19,8 +22,8 @@ type TxFrameStateType = {
   registrationPriceInEth: string;
 };
 
-const RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[8453];
-const REGISTRAR_CONTROLLER_ADDRESS = USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[8453];
+const RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[baseSepolia.id];
+const REGISTRAR_CONTROLLER_ADDRESS = USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[baseSepolia.id];
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -55,19 +58,36 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   console.warn({ messageState });
 
   if (!messageState) {
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ error: 'Internal server error: No message state.' });
   }
   name = messageState.targetName;
   years = messageState.targetYears;
   priceInEth = messageState.registrationPriceInEth;
   priceInWei = messageState.registrationPriceInWei;
 
+  const TODO_ADDRESS_FROM_NEYNAR = '0x';
+
+  const addressData = encodeFunctionData({
+    abi: L2ResolverAbi,
+    functionName: 'setAddr',
+    args: [namehash(formatBaseEthDomain(name, baseSepolia.id)), TODO_ADDRESS_FROM_NEYNAR],
+  });
+
+  const nameData = encodeFunctionData({
+    abi: L2ResolverAbi,
+    functionName: 'setName',
+    args: [
+      namehash(formatBaseEthDomain(name, baseSepolia.id)),
+      formatBaseEthDomain(name, baseSepolia.id),
+    ],
+  });
+
   const registerRequest = {
     name,
-    owner: '0x74431A069d721FEe532fc6330fB0280A80AeEaF9' as `0x${string}`, // TODO: The address of the owner for the name.
+    owner: TODO_ADDRESS_FROM_NEYNAR, // TODO: The address of the owner for the name.
     duration: secondsInYears(years),
     resolver: RESOLVER_ADDRESS,
-    data: [], //  Multicallable data bytes for setting records in the associated resolver upon registration.
+    data: [addressData, nameData],
     reverseRecord: true,
   };
 
@@ -79,7 +99,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const txData: FrameTransactionResponse = {
-      chainId: `eip155:8453`,
+      chainId: `eip155:${baseSepolia.id}`,
       method: 'eth_sendTransaction',
       params: {
         abi: [],
@@ -90,7 +110,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     };
     return res.status(200).json(txData);
   } catch (error) {
-    console.error('Failed to fetch questions:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
