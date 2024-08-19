@@ -2,12 +2,12 @@
   "name": "@base-org/base-web",
   "version": "1.0.0",
   "description": "Base web monorepo",
-  "repository": "git@github.com::base-org/base-web.git",
+  "repository": "git@github.com:base-org/base-web.git",
   "license": "Apache-2.0",
   "scripts": {
     "build": "yarn workspaces foreach run build",
     "lint": "yarn workspaces foreach run lint",
-    "postinstall": "sh -c 'if [ command -v ./node_modules/.bin/husky ]; then ./node_modules/.bin/husky install; fi;'",
+    "postinstall": "command -v ./node_modules/.bin/husky && ./node_modules/.bin/husky install || true",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
   },
@@ -21,12 +21,12 @@
     "@babel/preset-react": "^7.14.5",
     "@graphql-eslint/eslint-plugin": "^3.10.4",
     "@swc/core": "^1.2.173",
-    "@swc/jest": "0.2.20",
-    "@testing-library/react": "14.0.0",
+    "@swc/jest": "^0.2.20",
+    "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.4.0",
-    "@types/node": "18.14.2",
-    "@types/react": "18.0.28",
-    "@types/react-dom": "18.0.11",
+    "@types/node": "^18.14.2",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
     "@typescript-eslint/type-utils": "^7.8.0",
@@ -38,43 +38,32 @@
     "eslint": "^8.27.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-config-next": "13.1.1",
+    "eslint-config-next": "^13.1.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-formatter-codeframe": "^7.32.1",
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-compat": "^4.0.2",
     "eslint-plugin-cypress": "^2.10.3",
-    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jest": "^27.1.4",
-    "eslint-plugin-jsx-a11y": "6.7.1",
-    "eslint-plugin-react": "7.32.2",
-    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-perf": "^3.3.1",
     "eslint-plugin-relay": "^1.8.3",
     "eslint-plugin-simple-import-sort": "^8.0.0",
-    "husky": ">=6",
+    "husky": "^6.0.0",
     "jest": "^29.4.1",
     "jest-environment-jsdom": "^29.4.1",
-    "lint-staged": ">=10",
-    "pinst": ">=2",
+    "lint-staged": "^10.0.0",
+    "pinst": "^2.0.0",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
-    "react-test-renderer": "18.2.0",
+    "react-test-renderer": "^18.2.0",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
-    "typescript": "~4.9.4"
+    "typescript": "^4.9.4"
   },
-  "resolutions": {
-    "@coinbase/cookie-manager": "1.1.1",
-    "next-transpile-modules": "^10.0.0"
-  },
-  "resolutionComments": {
-    "next-transpile-modules": "Next compatibility"
-  },
-  "engines": {
-    "node": ">18.20.3"
-  },
-  "packageManager": "yarn@3.5.0",
   "dependencies": {
     "@linaria/babel-preset": "^4.4.3",
     "@next/bundle-analyzer": "^14.2.5",
@@ -84,11 +73,21 @@
     "classnames": "^2.3.2",
     "clsx": "^1.2.1",
     "moment": "^2.29.4",
-    "next": "12.2.3",
+    "next": "^12.2.3",
     "tslib": "^2.3.0"
   },
+  "resolutions": {
+    "@coinbase/cookie-manager": "1.1.1",
+    "next-transpile-modules": "^10.0.0"
+  },
+  "resolutionComments": {
+    "next-transpile-modules": "Next compatibility"
+  },
+  "engines": {
+    "node": ">=18.20.3"
+  },
+  "packageManager": "yarn@3.5.0",
   "lint-staged": {
-    "*.{ts,tsx}": "eslint --cache --fix",
-    "*.{ts,tsx,css,md}": "prettier --write"
+    "*.{ts,tsx,css,md}": ["eslint --cache --fix", "prettier --write"]
   }
 }
