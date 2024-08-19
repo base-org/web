@@ -2,12 +2,17 @@ import { FrameUI, type FrameUIComponents, type FrameUITheme } from '@frames.js/r
 import { useFrame } from '@frames.js/render/use-frame';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
+import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { useXmtpFrameContext } from 'apps/web/src/hooks/useXmtpFrameContext';
 import { useXmtpIdentity } from 'apps/web/src/hooks/useXmtpIdentity';
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { zeroAddress } from 'viem';
 import { useAccount } from 'wagmi';
+import cornerGarnish from './corner-garnish.svg';
+import frameIcon from './frame-icon.svg';
+import { StaticImageData } from 'next/image';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 
 type StylingProps = {
   className?: string;
@@ -55,13 +60,15 @@ const theme: FrameUITheme<StylingProps> = {
   },
 };
 
-export default function UsernameProfileSectionBadges() {
+export default function UsernameProfileSectionFrames() {
   const { address } = useAccount();
-  const { profileUsername, profileAddress } = useUsernameProfile();
+  const { profileUsername, profileAddress, currentWalletIsOwner } = useUsernameProfile();
   const { existingTextRecords } = useReadBaseEnsTextRecords({
     address: profileAddress,
     username: profileUsername,
   });
+
+  const openFrameModal = console.log;
 
   const homeframeUrl = existingTextRecords[UsernameTextRecordKeys.Frame];
   const xmtpSignerState = useXmtpIdentity();
@@ -76,28 +83,41 @@ export default function UsernameProfileSectionBadges() {
     connectedAddress: address,
     // replace with frame URL
     homeframeUrl,
-    onTransaction: async () => {
-      console.log('jf onTransaction');
-      return Promise.resolve('0x0');
-    },
-    onSignature: async () => {
-      console.log('jf onSignature');
-      return Promise.resolve('0x0');
-    },
     // corresponds to the name of the route for POST and GET in step 2
     frameActionProxy: '/frames',
     frameGetProxy: '/frames',
-    onError: (e) => console.error('jf e', e),
+    onError: (e) => console.error('frame error: ', e),
     // map to your identity if you have one
     signerState: xmtpSignerState,
     specification: 'farcaster',
     frameContext: xmtpFrameContext.frameContext,
   });
 
+  if (currentWalletIsOwner && !homeframeUrl) {
+    return (
+      <section className="relative flex flex-row items-center justify-start gap-2 rounded-xl border border-palette-line/20 pl-1 pr-6">
+        <ImageAdaptive alt="" src={frameIcon as StaticImageData} className="z-1" />
+        <div className="grow">
+          <h1 className="text-xl font-medium text-illoblack">Pin a frame to your profile</h1>
+          <p className="max-w-80 text-illoblack">
+            Add fun and interactive experiences to your profile with an frame.
+          </p>
+        </div>
+        <Button rounded variant={ButtonVariants.Black} onClick={openFrameModal}>
+          Try it now
+        </Button>
+        <ImageAdaptive
+          alt=""
+          src={cornerGarnish as StaticImageData}
+          className="absolute bottom-0 left-0 z-0 rounded-bl-xl"
+        />
+      </section>
+    );
+  }
   if (!homeframeUrl) return null;
   return (
     <section>
-      <div className="flex flex-row justify-between ">
+      <div className="flex flex-row justify-between">
         <UsernameProfileSectionTitle title="Frames" />
       </div>
       <FrameUI frameState={frameState} components={components} theme={theme} />

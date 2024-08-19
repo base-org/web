@@ -38,7 +38,7 @@ const baseConfig = {
   reactStrictMode: !isProdEnv,
 
   // Minifiy for production builds
-  swcMinify: true,
+  swcMinify: false,
 };
 
 function extendBaseConfig(customConfig = {}, plugins = []) {
