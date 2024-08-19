@@ -95,21 +95,34 @@ export default function UsernameProfileSectionFrames() {
 
   if (currentWalletIsProfileOwner && !homeframeUrl) {
     return (
-      <section className="relative flex flex-row-reverse items-center justify-start gap-2 rounded-xl border border-palette-line/20 pl-1 pr-6 md:flex-row">
+      <section className="relative flex flex-row-reverse items-center justify-between gap-0 rounded-xl border border-palette-line/20 pb-5 pl-5 pt-5 lg:flex-row lg:justify-start lg:gap-2 lg:pb-0 lg:pl-1 lg:pr-6 lg:pt-0">
         <ImageAdaptive alt="" src={frameIcon as StaticImageData} className="z-1" />
         <div className="grow">
           <h1 className="text-xl font-medium text-illoblack">Pin a frame to your profile</h1>
           <p className="max-w-80 text-illoblack">
             Add fun and interactive experiences to your profile with an frame.
           </p>
+          <Button
+            rounded
+            variant={ButtonVariants.Black}
+            onClick={openFrameModal}
+            className="mt-1 lg:hidden"
+          >
+            Try it now
+          </Button>
         </div>
-        <Button rounded variant={ButtonVariants.Black} onClick={openFrameModal}>
+        <Button
+          rounded
+          variant={ButtonVariants.Black}
+          onClick={openFrameModal}
+          className="hidden lg:block"
+        >
           Try it now
         </Button>
         <ImageAdaptive
           alt=""
           src={cornerGarnish as StaticImageData}
-          className="absolute bottom-0 left-0 z-0 rounded-bl-xl"
+          className="absolute right-0 top-0 z-0 rotate-180 rounded-bl-xl lg:bottom-0 lg:left-0 lg:right-[unset] lg:top-[unset] lg:rotate-0"
         />
       </section>
     );
@@ -119,7 +132,7 @@ export default function UsernameProfileSectionFrames() {
     <section>
       <div className="flex flex-row justify-between">
         <UsernameProfileSectionTitle title="Frames" />
-        {currentWalletIsOwner && (
+        {currentWalletIsProfileOwner && (
           <Button className="text-sm text-palette-foregroundMuted" onClick={openFrameModal}>
             + Add Frame
           </Button>
