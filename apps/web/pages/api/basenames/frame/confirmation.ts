@@ -22,13 +22,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const response = await fetch(
     `${DOMAIN}/api/basenames/${targetName}/getBasenameRegistrationPrice?years=${targetYears}`,
   );
-  const { registrationPriceInWei, registrationPriceInEth} = await response.json();
+  const { registrationPriceInWei, registrationPriceInEth } = await response.json();
 
   try {
     return res
       .status(200)
       .setHeader('Content-Type', 'text/html')
-      .send(confirmationFrame(targetName, targetYears, registrationPriceInWei, registrationPriceInEth));
+      .send(
+        confirmationFrame(targetName, targetYears, registrationPriceInWei, registrationPriceInEth),
+      );
   } catch (error) {
     console.error('Failed to fetch questions:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
