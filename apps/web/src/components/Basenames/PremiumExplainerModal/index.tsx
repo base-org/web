@@ -63,7 +63,7 @@ function CustomTooltip({
 type PremiumExplainerModalProps = {
   isOpen: boolean;
   toggleModal: () => void;
-  premiumEthAmount: bigint;
+  premiumEthAmount: bigint | undefined;
   singleYearEthCost: bigint;
 };
 const chartMarginValues = { top: 2, right: 2, left: 2, bottom: 2 };
