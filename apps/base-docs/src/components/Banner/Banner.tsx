@@ -68,7 +68,7 @@ export default function Banner({ href, text, bannerName }: BannerProps) {
             onKeyDown={hideBanner}
             type="button"
           >
-            <Icon name="close" width="16" height="16" />
+            <Icon name="close" width="16" height="16" color="black" />
           </button>
         </div>
       </div>
