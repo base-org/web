@@ -8,6 +8,7 @@ import {
   WalletDropdownLink,
 } from '@coinbase/onchainkit/wallet';
 import { base } from 'viem/chains';
+import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
@@ -47,6 +48,7 @@ export function ConnectWalletButton({
   connectWalletButtonVariant = ConnectWalletButtonVariants.Shiny,
 }: ConnectWalletButtonProps) {
   // Rainbow kit
+  const { openConnectModal } = useConnectModal();
   const { switchChain } = useSwitchChain();
   const switchToIntendedNetwork = useCallback(
     () => switchChain({ chainId: base.id }),
@@ -84,7 +86,7 @@ export function ConnectWalletButton({
   }, [address, connector]);
 
   const clickConnect = useCallback(() => {
-    switchToIntendedNetwork?.();
+    openConnectModal?.();
     logEvent(
       'connect_wallet',
       {
@@ -94,7 +96,7 @@ export function ConnectWalletButton({
       },
       AnalyticsEventImportance.low,
     );
-  }, [switchToIntendedNetwork]);
+  }, [openConnectModal]);
 
   const userAddressClasses = classNames('text-lg font-display', {
     'text-white': color === 'white',
