@@ -6,28 +6,41 @@ export const DOMAIN = `https://base-web-git-feat-basenames-frame-coinbase-vercel
 export const initialFrame = getFrameMetadata({
   buttons: [
     {
-      label: 'Register a basename today!',
+      label: 'Begin',
     },
   ],
   image: {
-    src: `${DOMAIN}/images/basenames/contract-uri/feature-image.png`,
+    src: `${DOMAIN}/images/frames/basenames/initial-image.png`,
   },
   postUrl: `${DOMAIN}/api/basenames/frame/inputSearchValue`,
 });
 
-export const inputSearchValueFrame = (error?: string) =>
+export const inputSearchValueFrame = getFrameHtmlResponse({
+  buttons: [
+    {
+      action: 'post',
+      label: 'Continue',
+    },
+  ],
+  image: {
+    src: `${DOMAIN}/images/frames/basenames/search-image.png`, // TODO: is this too hacky?
+  },
+  input: {
+    text: 'Search for a name',
+  },
+  postUrl: `${DOMAIN}/api/basenames/frame/validateSearchInputAndSetYears`,
+});
+
+export const retryInputSearchValueFrame = (error?: string) =>
   getFrameHtmlResponse({
     buttons: [
       {
         action: 'post',
-        label: 'Register name',
-        // target: `${DOMAIN}/api/basenames/frame/validateSearchInputAndSetYears`,
+        label: 'Search again',
       },
     ],
     image: {
-      src: `${DOMAIN}/api/basenames/INVALID_NAME_FOR_INITIAL_RENDER/assets/frameImage.png?error=${
-        error ?? ''
-      }`, // TODO: is this too hacky?
+      src: `${DOMAIN}/api/basenames/frame/assets/retrySearchFrameImage.png?error=${error}`,
     },
     input: {
       text: 'Search for a name',
@@ -48,26 +61,22 @@ export const setYearsFrame = (targetName: string, formattedTargetName: string) =
       {
         action: 'post',
         label: '1 year',
-        // target: `${DOMAIN}/api/basenames/frame/confirmation`,
       },
       {
         action: 'post',
         label: '5 years',
-        // target: `${DOMAIN}/api/basenames/frame/confirmation`,
       },
       {
         action: 'post',
         label: '10 years',
-        // target: `${DOMAIN}/api/basenames/frame/confirmation`,
       },
       {
         action: 'post',
         label: '100 years',
-        // target: `${DOMAIN}/api/basenames/frame/confirmation`,
       },
     ],
     image: {
-      src: `${DOMAIN}/api/basenames/${formattedTargetName}/assets/frameImage.png`,
+      src: `${DOMAIN}/api/basenames/frame/assets/registrationFrameImage.png?name=${formattedTargetName}`,
     },
     postUrl: `${DOMAIN}/api/basenames/frame/confirmation`,
     state: {
@@ -87,12 +96,12 @@ export const confirmationFrame = (
     buttons: [
       {
         action: 'tx',
-        label: `Submit Basename Registration`,
+        label: `Claim name`,
         target: `${DOMAIN}/api/basenames/frame/tx`,
       },
     ],
     image: {
-      src: `${DOMAIN}/api/basenames/${formattedTargetName}/assets/frameImage.png?years=${targetYears}&priceInEth=${registrationPriceInEth}`,
+      src: `${DOMAIN}/api/basenames/frame/assets/registrationFrameImage.png?name=${formattedTargetName}&years=${targetYears}&priceInEth=${registrationPriceInEth}`,
     },
     postUrl: `${DOMAIN}/api/basenames/frame/txSuccess`,
     state: {
