@@ -33,6 +33,7 @@ import Tooltip from 'apps/web/src/components/Tooltip';
 import RegistrationShareOnSocials from 'apps/web/src/components/Basenames/RegistrationShareOnSocials';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { isDevelopment } from 'libs/base-ui/constants';
+import RegistrationLandingExplore from 'apps/web/src/components/Basenames/RegistrationLandingExplore';
 
 const RegistrationStateSwitcherDynamic = dynamic(
   async () => import('apps/web/src/components/Basenames/RegistrationStateSwitcher'),
@@ -45,6 +46,7 @@ export function RegistrationFlow() {
   const { chain } = useAccount();
   const { logEventWithContext } = useAnalytics();
   const searchParams = useSearchParams();
+
   const {
     registrationStep,
     searchInputFocused,
@@ -116,7 +118,7 @@ export function RegistrationFlow() {
   return (
     <>
       {false && isDevelopment && <RegistrationStateSwitcherDynamic />}
-      <main className={mainClasses}>
+      <section className={mainClasses}>
         {/* 1. Brand & Search */}
         <Transition
           appear
@@ -221,7 +223,6 @@ export function RegistrationFlow() {
                 />
               </div>
             </Transition>
-
             {/* 2.2 - The pill  */}
             <Transition
               appear
@@ -331,10 +332,26 @@ export function RegistrationFlow() {
         >
           <RegistrationProfileForm />
         </Transition>
+        <Transition
+          appear
+          show={isSearch}
+          className={classNames(
+            'absolute bottom-14 left-1/2 -translate-x-1/2 flex w-full justify-center transition-opacity',
+            'mx-auto w-full',
+            registrationTransitionDuration,
+          )}
+          enter={classNames('transition-opacity', registrationTransitionDuration)}
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave={classNames('transition-opacity', 'duration-200 absolute')}
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0">
+            <RegistrationLandingExplore />
+          </Transition>
 
         {/* Misc: Animated background for each steps */}
         <RegistrationBackground />
-      </main>
+      </section>
     </>
   );
 }
