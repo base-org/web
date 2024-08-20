@@ -1,15 +1,15 @@
 import { ImageResponse } from '@vercel/og';
-import { getUserNamePicture, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { NextRequest } from 'next/server';
-import registrationImageBackground from './registration-bg.png';
-import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
 import { namehash } from 'viem';
+import { base } from 'viem/chains';
+import { isDevelopment } from 'apps/web/src/constants';
+import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
+import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
+import { getUserNamePicture, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
-import { base } from 'viem/chains';
-import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
-import { isDevelopment } from 'apps/web/src/constants';
 import ImageRaw from 'apps/web/src/components/ImageRaw';
+import registrationImageBackground from './registration-bg.png';
 
 export const config = {
   runtime: 'edge',

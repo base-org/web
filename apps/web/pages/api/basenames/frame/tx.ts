@@ -6,6 +6,7 @@ import {
 } from '@coinbase/onchainkit/frame';
 import { encodeFunctionData, namehash } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
+import { datadogRum } from '@datadog/browser-rum';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
@@ -52,10 +53,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   console.warn({ message });
+  datadogRum.addError('Basenames frame message', { context: message, message: message });
 
   const messageState: TxFrameStateType = JSON.parse(decodeURIComponent(message.state?.serialized));
 
   console.warn({ messageState });
+  datadogRum.addError('Basenames frame messageState', { context: messageState, message: messageState });
 
   if (!messageState) {
     return res.status(500).json({ error: 'Internal server error: No message state.' });
