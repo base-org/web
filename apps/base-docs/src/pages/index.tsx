@@ -5,6 +5,7 @@ import PageSection from '../components/PageSection';
 import ImageCard from '../components/ImageCard';
 import TextCard from '../components/TextCard';
 import FooterCategory from '../components/FooterCategory';
+import BasenamesHomepageModal from '../components/Modal/BasenamesLaunchModal';
 
 import styles from './styles.module.css';
 import { ActionType, AnalyticsEventImportance, ComponentType } from 'base-ui/utils/logEvent';
@@ -391,6 +392,7 @@ const footerCategories = [
 export default function Home() {
   return (
     <Layout title="Base Docs" description="Documentation for building with Base">
+      <BasenamesHomepageModal />
       <Hero />
       <main className={styles.homepageMain}>
         <PageSection title="Intro" description="Base builder essentials">
