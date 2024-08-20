@@ -76,7 +76,8 @@ export const setYearsFrame = (targetName: string, formattedTargetName: string) =
       },
     ],
     image: {
-      src: `${DOMAIN}/api/basenames/frame/assets/registrationFrameImage.png?name=${formattedTargetName}`,
+      // src: `${DOMAIN}/api/basenames/frame/assets/registrationFrameImage.png?name=${formattedTargetName}`,
+      src: `${DOMAIN}/api/basenames/frame/assets/retrySearchFrameImage.png?error=${formattedTargetName}`,
     },
     postUrl: `${DOMAIN}/api/basenames/frame/confirmation`,
     state: {
