@@ -139,6 +139,9 @@ export default function RegistrationForm() {
   const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
   const insufficientBalanceToRegister =
     balance?.value !== undefined && price !== undefined && balance?.value < price;
+  const correctChain = connectedChain?.id === basenameChain.id;
+  const insufficientBalanceToRegisterAndCorrectChain =
+    insufficientBalanceToRegister && correctChain;
 
   const hasResolvedUSDPrice = price !== undefined && ethUsdPrice !== undefined;
   const usdPrice = hasResolvedUSDPrice ? formatUsdPrice(price, ethUsdPrice) : '--.--';
@@ -275,20 +278,19 @@ export default function RegistrationForm() {
 
                   return (
                     <Button
-                      onClick={
-                        connectedChain?.id === basenameChain.id
-                          ? registerNameCallback
-                          : switchToIntendedNetwork
-                      }
+                      onClick={correctChain ? registerNameCallback : switchToIntendedNetwork}
                       type="button"
                       variant={ButtonVariants.Black}
                       size={ButtonSizes.Medium}
-                      disabled={insufficientBalanceToRegister || registerNameTransactionIsPending}
+                      disabled={
+                        insufficientBalanceToRegisterAndCorrectChain ||
+                        registerNameTransactionIsPending
+                      }
                       isLoading={registerNameTransactionIsPending}
                       rounded
                       fullWidth
                     >
-                      {connectedChain?.id === basenameChain.id ? 'Register name' : 'Get based'}
+                      {correctChain ? 'Register name' : 'Switch to Base'}
                     </Button>
                   );
                 }}
