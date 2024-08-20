@@ -2,7 +2,7 @@
 title: Basenames FAQ
 slug: /basenames-faq
 description: 'Frequently asked questions on basenames.'
-keywords: ['basenames', 'faq'']
+keywords: ['basenames', 'faq']
 tags: ['basenames']
 displayed_sidebar: null
 ---
