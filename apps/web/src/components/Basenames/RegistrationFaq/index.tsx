@@ -60,7 +60,7 @@ export default function RegistrationFAQ() {
             question="What are the Basename registration fees?"
             answer={
               <div>
-                <p className="mb-6 text-lg leading-relaxed">
+                <p className="mb-6 leading-relaxed">
                   Basenames are priced based on name length, and are designed to be globally
                   accessible. Annual registration fees are as follows:
                 </p>
@@ -99,10 +99,6 @@ export default function RegistrationFAQ() {
             question="How do I get a free or discounted Basename?"
             answer={
               <div className="text-gray-800 mx-auto max-w-3xl p-6 font-sans">
-                <h1 className="text-gray-900 mb-4 text-2xl font-bold">
-                  How do I get a free or discounted Basename?
-                </h1>
-
                 <p className="mb-4">
                   You can get one free Basename (5+ letters) for one year if you meet any of the
                   below criteria:
