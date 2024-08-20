@@ -27,12 +27,13 @@ import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useMemo } from 'react';
-import { useAccount, useChains, useSwitchChain } from 'wagmi';
+import { useAccount, useSwitchChain } from 'wagmi';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import RegistrationShareOnSocials from 'apps/web/src/components/Basenames/RegistrationShareOnSocials';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { isDevelopment } from 'libs/base-ui/constants';
+import { base } from 'viem/chains';
 
 const RegistrationStateSwitcherDynamic = dynamic(
   async () => import('apps/web/src/components/Basenames/RegistrationStateSwitcher'),
@@ -54,20 +55,18 @@ export function RegistrationFlow() {
   } = useRegistration();
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
-  const chains = useChains();
 
-  const isOnSupportedNetwork = useMemo(() => chain && chains.includes(chain), [chain, chains]);
+  const isOnSupportedNetwork = useMemo(() => chain && base.id == chain.id, [chain]);
   const switchToIntendedNetwork = useCallback(
-    () => switchChain({ chainId: basenameChain.id }),
-    [basenameChain.id, switchChain],
+    () => switchChain({ chainId: base.id }),
+    [switchChain],
   );
-
   useEffect(() => {
     if (!chain || !switchToIntendedNetwork) {
       return;
     }
 
-    if (!isOnSupportedNetwork) {
+    if (chain.id !== base.id) {
       switchToIntendedNetwork();
     }
   }, [isOnSupportedNetwork, chain, switchToIntendedNetwork]);
