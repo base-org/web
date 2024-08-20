@@ -284,7 +284,7 @@ export function RegistrationFlow() {
             show={isClaim}
             className={classNames(
               'relative z-40 transition-opacity',
-              'mx-auto w-full max-w-[50rem]',
+              'mx-auto',
               registrationTransitionDuration,
             )}
             enterFrom="opacity-0"
@@ -336,7 +336,7 @@ export function RegistrationFlow() {
           appear
           show={isSearch}
           className={classNames(
-            'absolute bottom-14 left-1/2 -translate-x-1/2 flex w-full justify-center transition-opacity',
+            'absolute bottom-14 left-1/2 flex w-full -translate-x-1/2 justify-center transition-opacity',
             'mx-auto w-full',
             registrationTransitionDuration,
           )}
@@ -345,9 +345,10 @@ export function RegistrationFlow() {
           enterTo="opacity-100"
           leave={classNames('transition-opacity', 'duration-200 absolute')}
           leaveFrom="opacity-100"
-          leaveTo="opacity-0">
-            <RegistrationLandingExplore />
-          </Transition>
+          leaveTo="opacity-0"
+        >
+          <RegistrationLandingExplore />
+        </Transition>
 
         {/* Misc: Animated background for each steps */}
         <RegistrationBackground />
