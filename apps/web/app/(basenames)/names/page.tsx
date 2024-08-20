@@ -7,7 +7,6 @@ import RegistrationValueProp from 'apps/web/src/components/Basenames/Registratio
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import basenameCover from './basename_cover.png';
-import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
