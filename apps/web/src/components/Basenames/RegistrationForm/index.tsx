@@ -221,13 +221,6 @@ export default function RegistrationForm() {
                 ) : discountedPrice !== undefined && !hasRegisteredWithDiscount ? (
                   <div className="flex flex-row items-baseline justify-around gap-2">
                     <p
-                      className={classNames('whitespace-nowrap text-3xl text-black line-through', {
-                        'text-state-n-hovered': insufficientBalanceToRegister,
-                      })}
-                    >
-                      {formatEtherPrice(initialPrice)}
-                    </p>
-                    <p
                       className={classNames('whitespace-nowrap text-3xl font-bold text-green-50', {
                         'text-state-n-hovered': insufficientBalanceToRegister,
                       })}
