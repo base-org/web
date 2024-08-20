@@ -17,15 +17,14 @@ import { isDevelopment } from 'apps/web/src/constants';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 
 export default function UsernameNav() {
-  const { isConnected } = useAccount();
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
-  const { chain: connectedChain } = useAccount();
+  const { chain: connectedChain, isConnected } = useAccount();
 
   const showDevelopmentWarning = isDevelopment && basenameChain.id === base.id;
   const showProductionWarning = !isDevelopment && basenameChain.id === baseSepolia.id;
   const showWrongChainWarning =
-    connectedChain?.id !== basenameChain.id && connectedChain?.id !== baseSepolia.id;
+    connectedChain?.id !== basenameChain.id && connectedChain?.id !== baseSepolia.id && isConnected;
 
   const switchToMainnet = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
