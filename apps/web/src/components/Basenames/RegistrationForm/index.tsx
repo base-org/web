@@ -350,6 +350,7 @@ export default function RegistrationForm() {
             singleYearEthCost={singleYearEthCost as bigint}
             isOpen={premiumExplainerModalOpen}
             toggleModal={togglePremiumExplainerModal}
+            nameLength={selectedName?.length}
           />
         )}
       </>
