@@ -1,6 +1,11 @@
 'use client';
 import { useState, useCallback } from 'react';
 import { Icon } from 'base-ui';
+import {
+  RegistrationSteps,
+  useRegistration,
+} from 'apps/web/src/components/Basenames/RegistrationContext';
+import classNames from 'classnames';
 
 function FaqItem({ question, answer }: { question: string; answer: JSX.Element | string }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,8 +36,16 @@ function FaqItem({ question, answer }: { question: string; answer: JSX.Element |
 }
 
 export default function RegistrationFAQ() {
+  const { registrationStep } = useRegistration();
+
+  const isSearch = registrationStep === RegistrationSteps.Search;
   return (
-    <section className="mx-auto max-w-6xl px-4 pb-36 md:pt-20">
+    <section
+      className={classNames('mx-auto max-w-6xl px-4 pb-36 md:pt-20', {
+        hidden: !isSearch,
+        'display: block': isSearch,
+      })}
+    >
       <div className="flex flex-col items-center lg:flex-row">
         <div className="mb-8 w-full text-left lg:mb-0 lg:w-1/2">
           <h2 className="mb-8 text-5xl font-normal md:text-6xl">
@@ -208,7 +221,10 @@ export default function RegistrationFAQ() {
                   OnchainKit
                 </a>{' '}
                 is the easiest way to get started (
-                <a href="#tutorial" className="text-blue-600 hover:underline">
+                <a
+                  href="https://docs.base.org/docs/basenames-tutorial-with-onchainkit"
+                  className="text-blue-600 hover:underline"
+                >
                   tutorial here
                 </a>
                 ). If you have ideas for new features or badges that you&apos;d like to integrate
