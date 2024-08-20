@@ -30,7 +30,6 @@ export default async function handler(request: NextRequest) {
   let imageSource = domainName + profilePicture.src;
   const years = url.searchParams.get('years');
   const priceInEth = url.searchParams.get('priceInEth');
-  const error = url.searchParams.get('error');
 
   // NOTE: Do we want to fail if the name doesn't exists?
   try {
