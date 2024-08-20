@@ -54,7 +54,11 @@ module.exports = {
           label: 'Basenames',
           collapsible: true,
           collapsed: true,
-          items: ['tools/basenames-faq', 'tools/basenames-tutorial'], //['tools/basenames-tutorial', ]
+          items: [
+            'tools/basenames-faq',
+            'tools/basenames-tutorial',
+            'tools/basenames-onchainkit-tutorial',
+          ],
         },
         {
           type: 'category',
