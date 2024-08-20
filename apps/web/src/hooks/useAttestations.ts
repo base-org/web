@@ -401,7 +401,7 @@ export function useBaseDotEthAttestations() {
     }
     return {
       address: baseDotEthProofResponse?.address,
-      abi: ERC721ValidatorABI,
+      abi: CBIDValidatorABI,
       functionName: 'isValidDiscountRegistration',
       args: [address, encodedProof],
     };
