@@ -355,7 +355,7 @@ export function useBuildathonAttestations() {
 // mainnet erc721 validator -- uses merkle tree
 export function useBaseDotEthAttestations() {
   const { address } = useAccount();
-  const [loading, setLoading] = useState(false);
+  const [APICallLoading, setAPICallLoading] = useState(false);
   const { basenameChain } = useBasenameChain();
   const [baseDotEthProofResponse, setBaseDotEthProofResponse] =
     useState<MerkleTreeProofResponse | null>(null);
@@ -364,7 +364,7 @@ export function useBaseDotEthAttestations() {
   useEffect(() => {
     async function checkBaseDotEthAttestations(a: string) {
       try {
-        setLoading(true);
+        setAPICallLoading(true);
         const params = new URLSearchParams();
         params.append('address', a);
         params.append('chain', basenameChain.id.toString());
@@ -376,7 +376,7 @@ export function useBaseDotEthAttestations() {
       } catch (error) {
         logError(error, 'Error checking BaseDotEth attestation');
       } finally {
-        setLoading(false);
+        setAPICallLoading(false);
       }
     }
 
@@ -420,7 +420,7 @@ export function useBaseDotEthAttestations() {
       error: null,
     };
   }
-  return { data: null, loading: loading || isLoading, error };
+  return { data: null, loading: APICallLoading || isLoading, error };
 }
 
 // merkle tree discount calls api endpoint
