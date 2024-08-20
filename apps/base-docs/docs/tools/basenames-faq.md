@@ -1,6 +1,6 @@
 ---
 title: Basenames FAQ
-slug: /basenames-faq
+slug: /tools/basenames-faq
 description: 'Frequently asked questions on basenames.'
 keywords: ['basenames', 'faq']
 tags: ['basenames']
