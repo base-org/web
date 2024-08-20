@@ -5,6 +5,7 @@ import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
 import EarlyAccessValidatorABI from 'apps/web/src/abis/EarlyAccessValidator';
 import ERC721ValidatorABI from 'apps/web/src/abis/ERC721DiscountValidator';
 import {
+  BASE_DOT_ETH_ERC721_DISCOUNT_VALIDATOR,
   BUILDATHON_ERC721_DISCOUNT_VALIDATOR,
   USERNAME_1155_DISCOUNT_VALIDATORS,
 } from 'apps/web/src/addresses/usernames';
@@ -361,6 +362,8 @@ export function useBaseDotEthAttestations() {
     useState<MerkleTreeProofResponse | null>(null);
   const { logError } = useErrors();
 
+  const discountValidatorAddress = BASE_DOT_ETH_ERC721_DISCOUNT_VALIDATOR[basenameChain.id];
+
   useEffect(() => {
     async function checkBaseDotEthAttestations(a: string) {
       try {
@@ -400,19 +403,19 @@ export function useBaseDotEthAttestations() {
       return {};
     }
     return {
-      address: baseDotEthProofResponse?.address,
+      address: discountValidatorAddress,
       abi: CBIDValidatorABI,
       functionName: 'isValidDiscountRegistration',
       args: [address, encodedProof],
     };
-  }, [address, baseDotEthProofResponse?.address, encodedProof]);
+  }, [address, discountValidatorAddress, encodedProof]);
 
   const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
 
   if (isValid && address && baseDotEthProofResponse) {
     return {
       data: {
-        discountValidatorAddress: baseDotEthProofResponse.address,
+        discountValidatorAddress: discountValidatorAddress,
         discount: Discount.BASE_DOT_ETH_NFT,
         validationData: encodedProof,
       },
