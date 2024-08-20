@@ -61,11 +61,11 @@ export default function PoweredByEns() {
         {/* Text content */}
         <div className="w-full px-4 text-left md:w-1/2 lg:pl-28">
           <div className="flex pb-8 text-5xl font-normal md:text-6xl">
-            Decentralized and open-source
+            Decentralized and open source
           </div>
           <div className="flex pb-10 text-xl">
-            Basenames are built on the decentralized, open-source ENS protocol, aligned with Base’s
-            dedication to decentralized and open-source technologies.{' '}
+            Basenames are built on the decentralized, open source ENS protocol, aligned with Base’s
+            dedication to decentralized and open source technologies.{' '}
           </div>
         </div>
       </div>
