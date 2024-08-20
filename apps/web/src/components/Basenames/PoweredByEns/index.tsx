@@ -1,8 +1,13 @@
+'use client';
 import Image, { StaticImageData } from 'next/image';
 
 import base from './assets/base.svg';
 import ens from './assets/ens.svg';
 import classNames from 'classnames';
+import {
+  RegistrationSteps,
+  useRegistration,
+} from 'apps/web/src/components/Basenames/RegistrationContext';
 
 type CircleProps = {
   className: string;
@@ -15,8 +20,16 @@ function Circle({ className }: CircleProps) {
 }
 
 export default function PoweredByEns() {
+  const { registrationStep } = useRegistration();
+  const isSearch = registrationStep === RegistrationSteps.Search;
+
   return (
-    <section className="z-10 mx-auto max-w-7xl pt-[calc(20vh)] md:pt-[calc(20vh)]">
+    <section
+      className={classNames('z-10 mx-auto max-w-7xl pt-[calc(20vh)] md:pt-[calc(20vh)]', {
+        hidden: !isSearch,
+        'display: block': isSearch,
+      })}
+    >
       <div className="flex flex-col items-center justify-end lg:flex-row">
         {/* Graphic */}
         <div className="order-last mb-8 w-3/4 sm:w-2/5 lg:order-first lg:mb-0">

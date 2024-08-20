@@ -7,6 +7,10 @@ import globe from './assets/globeWhite.webm';
 import classNames from 'classnames';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import { StaticImageData } from 'next/image';
+import {
+  RegistrationSteps,
+  useRegistration,
+} from 'apps/web/src/components/Basenames/RegistrationContext';
 
 type ValuePropProps = {
   title: string;
@@ -38,8 +42,16 @@ function ValueProp({ title, description, image, bgColor }: ValuePropProps) {
 }
 
 export default function RegistrationValueProp() {
+  const { registrationStep } = useRegistration();
+
+  const isSearch = registrationStep === RegistrationSteps.Search;
   return (
-    <section className="mx-auto flex max-w-5xl flex-col items-center px-4 pt-24 md:px-12">
+    <section
+      className={classNames('mx-auto flex max-w-5xl flex-col items-center px-4 pt-24 md:px-12', {
+        hidden: !isSearch,
+        'display: block': isSearch,
+      })}
+    >
       <h1 className="pl:2 z-20 text-pretty text-left text-5xl text-palette-foreground sm:text-6xl md:text-center">
         Get so much more on <br /> Base with your profile
       </h1>
