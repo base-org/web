@@ -2,17 +2,17 @@ import { FrameUI, type FrameUIComponents, type FrameUITheme } from '@frames.js/r
 import { useFrame } from '@frames.js/render/use-frame';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { useXmtpFrameContext } from 'apps/web/src/hooks/useXmtpFrameContext';
 import { useXmtpIdentity } from 'apps/web/src/hooks/useXmtpIdentity';
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
+import { StaticImageData } from 'next/image';
 import { zeroAddress } from 'viem';
 import { useAccount } from 'wagmi';
 import cornerGarnish from './corner-garnish.svg';
 import frameIcon from './frame-icon.svg';
-import { StaticImageData } from 'next/image';
-import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 
 type StylingProps = {
   className?: string;
@@ -23,14 +23,8 @@ type StylingProps = {
  * You can override components to change their internal logic or structure if you want.
  * By default it is not necessary to do that since the default structure is already there
  * so you can just pass an empty object and use theme to style the components.
- *
- * You can also style components here and completely ignore theme if you wish.
  */
 const components: FrameUIComponents<StylingProps> = {};
-
-/**
- * By default there are no styles so it is up to you to style the components as you wish.
- */
 const theme: FrameUITheme<StylingProps> = {
   Error: {
     className:
@@ -81,13 +75,10 @@ export default function UsernameProfileSectionFrames() {
 
   const frameState = useFrame({
     connectedAddress: address,
-    // replace with frame URL
     homeframeUrl,
-    // corresponds to the name of the route for POST and GET in step 2
     frameActionProxy: '/frames',
     frameGetProxy: '/frames',
     onError: (e) => console.error('frame error: ', e),
-    // map to your identity if you have one
     signerState: xmtpSignerState,
     specification: 'farcaster',
     frameContext: xmtpFrameContext.frameContext,

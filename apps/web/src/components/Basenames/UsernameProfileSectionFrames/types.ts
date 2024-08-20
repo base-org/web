@@ -505,7 +505,6 @@ export const themeParams = [
 
 export type FrameTheme = Partial<Record<(typeof themeParams)[number], string>>;
 
-// @TODO define minimal action body payload shape, because it is mostly the same
 export type FrameActionBodyPayload = Record<string, unknown>;
 
 export type FrameContext = Record<string, unknown>;
