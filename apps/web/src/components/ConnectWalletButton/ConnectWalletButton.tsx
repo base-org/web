@@ -72,7 +72,7 @@ export function ConnectWalletButton({
           context: 'navbar',
           address,
           wallet_type: sanitizeEventString(connector?.name),
-          wallet_connector_id: connector?.id,
+          wallet_connector_id: connector?.id
         },
         AnalyticsEventImportance.low,
       );

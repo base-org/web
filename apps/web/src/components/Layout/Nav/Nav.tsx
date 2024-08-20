@@ -25,7 +25,7 @@ export default function Nav() {
   const pathname = usePathname();
   const color = pathname && BLACK_NAV_PATHS.includes(pathname) ? 'black' : 'white';
   return (
-    <AnalyticsProvider context="navbar">
+    <AnalyticsProvider context='navbar'>
       <DynamicBanner
         bannerName="onchainKitBanner"
         href="https://onchainkit.xyz/?utm_source=basedotorg&utm_medium=banner"
