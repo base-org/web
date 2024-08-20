@@ -1,5 +1,5 @@
 ---
-title: Basenames Tutorial
+title: Basenames + OnchainKit Tutorial
 slug: /basenames-tutorial-with-onchainkit
 description: 'A tutorial that teaches how to intergrate Basenames to your wagmi/viem App using OnchainKit'
 author: hughescoin
@@ -15,7 +15,7 @@ displayed_sidebar: null
 
 Integrating Basenames into your onchain app enhances the user experience by masking complex wallet addresses. Just as domains simplify IP addresses, Basenames do the same for wallet addresses.
 
-[OnchainKit] is a React component library designed to make building Onchain applications easier. In this tutorial, we'll use the `Identity/>` component to resolve Basenames.
+[OnchainKit] is a React component library designed to make building Onchain applications easier. In this tutorial, we'll use the `<Identity/>` component to resolve Basenames.
 
 This demo uses Coinbase Smart Wallet and Coinbase Wallet, but Basenames is supported across many [other wallets].
 
