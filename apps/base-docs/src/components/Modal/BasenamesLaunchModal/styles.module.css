@@ -78,7 +78,6 @@
 
 .outerDialog {
   position: 'relative';
-  z-index: 40;
 }
 
 .dialogBackground {
@@ -105,8 +104,9 @@
   align-items: flex-start;
   justify-content: center;
   position: fixed;
-  inset: 225px 0 0 0;
+  inset: 50px 0 0 0;
   width: 100vw;
+  z-index: 201;
 }
 
 @media (min-width: 640px) {
@@ -125,6 +125,5 @@
   .dialogWrapper {
     padding: 1rem;
     align-items: center;
-    inset: 50px 0 0 0;
   }
 }
