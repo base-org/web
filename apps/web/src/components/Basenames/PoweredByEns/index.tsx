@@ -47,10 +47,12 @@ export default function PoweredByEns() {
 
         {/* Text content */}
         <div className="w-full px-4 text-left md:w-1/2 lg:pl-28">
-          <div className="flex pb-8 text-5xl font-normal md:text-6xl">Powered by ENS</div>
+          <div className="flex pb-8 text-5xl font-normal md:text-6xl">
+            Decentralized and open-source
+          </div>
           <div className="flex pb-10 text-xl">
-            Base usernames works with ENS to provide you the most powerful blockchain naming
-            standard across the superchain.{' '}
+            Basenames are built on the decentralized, open-source ENS protocol, aligned with Base’s
+            dedication to decentralized and open-source technologies.{' '}
           </div>
         </div>
       </div>

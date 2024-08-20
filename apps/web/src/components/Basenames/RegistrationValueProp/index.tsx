@@ -47,24 +47,24 @@ export default function RegistrationValueProp() {
         <div className="row-auto grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-y-12">
           <div className={classNames(valueClass, 'sm:col-start-2')}>
             <ValueProp
-              title="Establish your identity"
-              description="Be a part of our vibrant Base community with your own unique identity."
+              title="Build your onchain identity"
+              description="Use your Basename as your onchain identity in the Base ecosystem."
               image={faceScan as StaticImageData}
               bgColor="bg-[#0052FF]"
             />
           </div>
           <div className={classNames(valueClass, 'row-start-2 md:translate-x-20')}>
             <ValueProp
-              title="Easy Payments"
-              description="Use your human-readable address to send payments with ease."
+              title="Simplify transactions"
+              description="Send and receive seamlessly with a readable and memorable Basename."
               image={currencies as StaticImageData}
               bgColor="bg-[#22AD73]"
             />
           </div>
           <div className={classNames(valueClass, 'row-start-3 sm:col-start-2')}>
             <ValueProp
-              title="Trusted Communities"
-              description="Find Based builders easier. Connect, work together, or get mentorship."
+              title="Connect and collaborate"
+              description="Easily find mentors and others to build with by seeing their profiles."
               image={sofort as StaticImageData}
               bgColor="bg-[#8A55E9]"
             />

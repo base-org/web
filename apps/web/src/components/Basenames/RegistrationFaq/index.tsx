@@ -40,7 +40,7 @@ export default function RegistrationFAQ() {
           </h2>
           <p className="max-w-md text-xl">
             Get more answers in our FAQ, and view our developer docs to see how you can build with
-            usernames.
+            Basenames.
           </p>
         </div>
         <div className="w-full lg:w-1/2">
