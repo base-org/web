@@ -1,7 +1,7 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
+import { isDevelopment } from 'apps/web/src/constants';
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
-import { DOMAIN } from 'apps/web/pages/api/basenames/frame/frameResponses';
 import retrySearchImageBackground from './retry-search-image.png';
 
 export const config = {
@@ -16,6 +16,7 @@ export default async function handler(request: NextRequest) {
   ).then(async (res) => res.arrayBuffer());
 
   const url = new URL(request.url);
+  const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
   const error = url.searchParams.get('error');
   const parsedError = error?.split(':');
 
@@ -36,7 +37,7 @@ export default async function handler(request: NextRequest) {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundImage: `url(${DOMAIN + retrySearchImageBackground.src})`,
+          backgroundImage: `url(${domainName + retrySearchImageBackground.src})`,
           backgroundPosition: 'center',
           backgroundSize: '100% 100%',
           padding: '1.5rem',
