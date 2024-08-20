@@ -47,8 +47,10 @@ export default function RegistrationSearchInput({
   const { logEventWithContext } = useAnalytics();
   const [search, setSearch] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
+  const [headerBackground, setHeaderBackground] = useState(true);
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [debouncedSearch] = useDebounceValue(search, 400);
+  const [debouncedScroll] = useDebounceValue(headerBackground, 200);
   const { basenameChain } = useBasenameChain();
   const {
     isLoading: isLoadingNameAvailability,
@@ -65,6 +67,7 @@ export default function RegistrationSearchInput({
 
   const { valid, message } = validateEnsDomainName(debouncedSearch);
   const invalidWithMessage = !valid && !!message;
+  const resetBackground = focused && debouncedScroll;
 
   const { setSearchInputFocused, setSearchInputHovered, setSelectedName } = useRegistration();
 
@@ -224,8 +227,18 @@ export default function RegistrationSearchInput({
   );
 
   useEffect(() => {
-    setSearchInputFocused(focused);
-  }, [focused, setSearchInputFocused]);
+    const handleScroll = () => {
+      setHeaderBackground(window.scrollY <= 250);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    setSearchInputFocused(resetBackground);
+  }, [resetBackground, setSearchInputFocused]);
 
   useEffect(() => {
     if (!invalidWithMessage) return;
