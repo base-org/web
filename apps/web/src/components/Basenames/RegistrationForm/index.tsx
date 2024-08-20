@@ -48,7 +48,10 @@ function formatUsdPrice(price: bigint, ethUsdPrice: number) {
   if (price === 0n) return '0';
   const parsed = (parseFloat(formatEther(price)) * Number(ethUsdPrice)).toFixed(2);
   if (parsed === '0.00') return '0';
-  return parsed;
+  return new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(Number(parsed));
 }
 
 export default function RegistrationForm() {
