@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'apps/web/node_modules/next/dist/shared/lib/utils';
+import { base } from 'viem/chains';
 import { ethers } from 'ethers';
 import {
   normalizeEnsDomainName,
@@ -10,8 +11,7 @@ import { formatEthPrice, formatWeiPrice } from 'apps/web/src/utils/formatEthPric
 
 const url = 'https://mainnet.base.org';
 const provider = new ethers.providers.JsonRpcProvider(url);
-const baseMainnetChainId = 8453;
-const contractAddress = REGISTER_CONTRACT_ADDRESSES[baseMainnetChainId];
+const contractAddress = REGISTER_CONTRACT_ADDRESSES[base.id];
 const contract = new ethers.Contract(contractAddress, REGISTER_CONTRACT_ABI, provider);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -49,28 +49,6 @@ async function getBasenameRegistrationPrice(name: string, years: number): Promis
     return null;
   }
 }
-
-// async function getDiscountedBasenameClaimPrice(
-//   name: string,
-//   years: number,
-//   discountKey: `0x${string}` | undefined,
-// ) {
-//   const normalizedName = normalizeName(name);
-//   if (!normalizedName) {
-//     throw new Error('Invalid ENS domain name');
-//   }
-
-//   try {
-//     const discountedClaimPrice = await contract.discountedRegisterPrice(
-//       normalizedName,
-//       secondsInYears(years),
-//       discountKey ?? '0x',
-//     );
-//     return discountedClaimPrice;
-//   } catch (error) {
-//     console.error('Could not get discounted claim price:', error);
-//   }
-// }
 
 function normalizeName(name: string) {
   const normalizedName: string = normalizeEnsDomainName(name);

@@ -5,6 +5,7 @@ import {
   REGISTER_CONTRACT_ADDRESSES,
   validateEnsDomainName,
 } from 'apps/web/src/utils/usernames';
+import { base } from 'viem/chains'
 import { ethers } from 'ethers';
 
 export type IsNameAvailableResponse = {
@@ -13,8 +14,7 @@ export type IsNameAvailableResponse = {
 
 const url = 'https://mainnet.base.org';
 const provider = new ethers.providers.JsonRpcProvider(url);
-const baseMainnetChainId = 8453;
-const contractAddress = REGISTER_CONTRACT_ADDRESSES[baseMainnetChainId];
+const contractAddress = REGISTER_CONTRACT_ADDRESSES[base.id];
 const contract = new ethers.Contract(contractAddress, REGISTER_CONTRACT_ABI, provider);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
