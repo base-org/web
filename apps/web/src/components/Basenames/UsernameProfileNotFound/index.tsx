@@ -18,11 +18,12 @@ export default function UsernameProfileNotFound() {
   if (!username) {
     redirect(`/names`);
   }
+  const strippedUsername = username.replace(/\.base\.eth$/, '');
   const {
     isLoading: isLoadingNameAvailability,
     data: isNameAvailable,
     isFetching,
-  } = useIsNameAvailable(username);
+  } = useIsNameAvailable(strippedUsername);
 
   if (isFetching && isLoadingNameAvailability) {
     return (
