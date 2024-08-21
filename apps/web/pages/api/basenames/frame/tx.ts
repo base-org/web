@@ -15,7 +15,7 @@ import {
   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
 
-type TxFrameStateType = {
+export type TxFrameStateType = {
   targetName: string;
   formattedTargetName: string;
   targetYears: number;
