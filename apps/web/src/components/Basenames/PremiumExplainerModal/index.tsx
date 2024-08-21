@@ -83,11 +83,11 @@ export function PremiumExplainerModal({
     },
   );
   const formattedPremium = Number(formatEther(premiumEthAmount)).toLocaleString(undefined, {
-    maximumFractionDigits: 6,
+    maximumFractionDigits: formattedOneYearCost.length - 2,
   });
   const ethTotal = premiumEthAmount + baseSingleYearEthCost;
   const formattedTotal = Number(formatEther(ethTotal)).toLocaleString(undefined, {
-    maximumFractionDigits: 4,
+    maximumFractionDigits: formattedOneYearCost.length - 2,
   });
   return (
     <Modal isOpen={isOpen} onClose={toggleModal} title="">
