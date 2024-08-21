@@ -383,7 +383,7 @@ export function getChainForBasename(username: BaseName): Chain {
 }
 
 // Assume domainless name to .base.eth
-export async function formatDefaultUsername(username: BaseName) {
+export async function formatDefaultUsername(username: string | BaseName) {
   if (
     username &&
     !username.endsWith(`.${USERNAME_DOMAINS[baseSepolia.id]}`) &&
@@ -508,7 +508,7 @@ export function validateBasenameAvatarUrl(source: string): ValidationResult {
   }
 }
 
-/* 
+/*
   Fetch / Api functions
 */
 
@@ -590,7 +590,7 @@ export async function getBasenameTextRecords(username: BaseName) {
   } catch (error) {}
 }
 
-/* 
+/*
   Feature flags
 */
 
