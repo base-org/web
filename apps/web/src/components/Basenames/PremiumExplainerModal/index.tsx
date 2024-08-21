@@ -6,7 +6,7 @@ import { formatEther } from 'viem';
 
 type CustomTooltipProps = {
   active?: boolean;
-  singleYearEthCost?: bigint;
+  baseSingleYearEthCost?: bigint;
   launchTimeSeconds?: bigint;
   payload: [
     {
@@ -21,10 +21,10 @@ type CustomTooltipProps = {
 function CustomTooltip({
   active,
   payload,
-  singleYearEthCost,
+  baseSingleYearEthCost,
   launchTimeSeconds,
 }: CustomTooltipProps) {
-  if (active && payload?.length && launchTimeSeconds && singleYearEthCost) {
+  if (active && payload?.length && launchTimeSeconds && baseSingleYearEthCost) {
     const premium = payload[0].value;
     const hours = payload[0].payload.hours;
     const seconds = hours * 60 * 60;
@@ -37,7 +37,7 @@ function CustomTooltip({
       minute: '2-digit',
       hour12: true,
     });
-    const nameBasePrice = Number(formatEther(singleYearEthCost));
+    const nameBasePrice = Number(formatEther(baseSingleYearEthCost));
     const formattedBasePrice = nameBasePrice.toLocaleString(undefined, {
       maximumFractionDigits: 6,
     });
@@ -60,48 +60,34 @@ function CustomTooltip({
   return null;
 }
 
-function getSingleYearCost(length: number) {
-  if (length <= 3) {
-    return BigInt(100000000000000000);
-  }
-  if (length <= 4) {
-    return BigInt(10000000000000000);
-  }
-  if (length <= 9) {
-    return BigInt(1000000000000000);
-  }
-  return BigInt(100000000000000);
-}
-
 type PremiumExplainerModalProps = {
   isOpen: boolean;
   toggleModal: () => void;
   premiumEthAmount: bigint | undefined;
-  singleYearEthCost: bigint;
-  nameLength: number;
+  baseSingleYearEthCost: bigint;
 };
 const chartMarginValues = { top: 2, right: 2, left: 2, bottom: 2 };
 export function PremiumExplainerModal({
   isOpen,
   toggleModal,
   premiumEthAmount,
-  singleYearEthCost,
-  nameLength,
+  baseSingleYearEthCost,
 }: PremiumExplainerModalProps) {
   const { data: launchTimeSeconds } = useBasenamesLaunchTime();
 
-  const normalSingleYearCost = getSingleYearCost(nameLength);
-
-  if (!premiumEthAmount || !singleYearEthCost) return null;
-  const formattedOneYearCost = Number(formatEther(normalSingleYearCost)).toLocaleString(undefined, {
-    maximumFractionDigits: 6,
-  });
+  if (!premiumEthAmount || !baseSingleYearEthCost) return null;
+  const formattedOneYearCost = Number(formatEther(baseSingleYearEthCost)).toLocaleString(
+    undefined,
+    {
+      maximumFractionDigits: 6,
+    },
+  );
   const formattedPremium = Number(formatEther(premiumEthAmount)).toLocaleString(undefined, {
-    maximumFractionDigits: 6,
+    maximumFractionDigits: formattedOneYearCost.length - 2,
   });
-  const ethTotal = singleYearEthCost;
+  const ethTotal = premiumEthAmount + baseSingleYearEthCost;
   const formattedTotal = Number(formatEther(ethTotal)).toLocaleString(undefined, {
-    maximumFractionDigits: 4,
+    maximumFractionDigits: formattedOneYearCost.length - 2,
   });
   return (
     <Modal isOpen={isOpen} onClose={toggleModal} title="">
@@ -160,7 +146,7 @@ export function PremiumExplainerModal({
                 content={
                   // @ts-expect-error type wants an unnecessary prop
                   <CustomTooltip
-                    singleYearEthCost={normalSingleYearCost}
+                    baseSingleYearEthCost={baseSingleYearEthCost}
                     launchTimeSeconds={launchTimeSeconds}
                   />
                 }
