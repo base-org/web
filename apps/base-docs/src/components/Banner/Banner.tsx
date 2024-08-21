@@ -18,7 +18,7 @@ type BannerProps = {
 };
 
 export default function Banner({ href, text, bannerName }: BannerProps) {
-  const [isBannerVisible, setIsBannerVisible] = useLocalStorage(`${bannerName}Visible'`, true);
+  const [isBannerVisible, setIsBannerVisible] = useLocalStorage(`${bannerName}Visible`, true);
 
   const linkClick = useCallback(() => {
     logEvent(
