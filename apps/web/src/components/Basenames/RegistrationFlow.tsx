@@ -1,6 +1,6 @@
 'use client';
 import dynamic from 'next/dynamic';
-
+import { useLocalStorage } from 'usehooks-ts';
 import { Transition } from '@headlessui/react';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import RegistrationBackground from 'apps/web/src/components/Basenames/RegistrationBackground';
@@ -46,6 +46,8 @@ export function RegistrationFlow() {
   const { chain } = useAccount();
   const { logEventWithContext } = useAnalytics();
   const searchParams = useSearchParams();
+  const [, setIsModalOpen] = useLocalStorage('BasenamesLaunchModalVisible', true);
+  const [, setIsBannerVisible] = useLocalStorage('basenamesLaunchBannerVisible', true);
 
   const {
     registrationStep,
@@ -114,6 +116,13 @@ export function RegistrationFlow() {
       setSelectedName(claimQuery.replace(`.${USERNAME_DOMAINS[basenameChain.id]}`, ''));
     }
   }, [basenameChain.id, searchParams, setSelectedName]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setIsModalOpen(false);
+      setIsBannerVisible(false);
+    }
+  }, [isSuccess, setIsModalOpen, setIsBannerVisible]);
 
   return (
     <>
