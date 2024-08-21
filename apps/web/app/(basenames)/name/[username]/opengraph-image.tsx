@@ -1,40 +1,74 @@
-import { ImageResponse } from '@vercel/og';
-import { getUserNamePicture, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
-import { NextRequest } from 'next/server';
-import coverImageBackground from './coverImageBackground.png';
-import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
+import { UsernameProfileProps } from 'apps/web/app/(basenames)/name/[username]/page';
+import ImageRaw from 'apps/web/src/components/ImageRaw';
+import { ImageResponse } from 'next/og';
+import coverImageBackground from 'apps/web/app/(basenames)/name/[username]/coverImageBackground.png';
 import { namehash } from 'viem';
-import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
-import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
-import { base } from 'viem/chains';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import { isDevelopment } from 'apps/web/src/constants';
-import ImageRaw from 'apps/web/src/components/ImageRaw';
+import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
+import {
+  formatBaseEthDomain,
+  getUserNamePicture,
+  USERNAME_DOMAINS,
+  UsernameTextRecordKeys,
+} from 'apps/web/src/utils/usernames';
+import { base, baseSepolia } from 'viem/chains';
+import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+export const runtime = 'edge';
 
-export const config = {
-  runtime: 'edge',
+const size = {
+  width: 1200,
+  height: 630,
 };
 
-export default async function handler(request: NextRequest) {
+export async function generateImageMetadata({ params }: UsernameProfileProps) {
+  let username = params.username;
+  if (
+    username &&
+    !username.endsWith(`.${USERNAME_DOMAINS[baseSepolia.id]}`) &&
+    !username.endsWith(`.${USERNAME_DOMAINS[base.id]}`)
+  ) {
+    username = formatBaseEthDomain(username, base.id);
+  }
+
+  return [
+    {
+      alt: `Basenames | ${username}`,
+      contentType: 'image/png',
+      size,
+      id: username,
+    },
+  ];
+}
+
+type ImageRouteProps = { id: string };
+
+export default async function OpenGraphImage(props: ImageRouteProps) {
+  let username = props.id;
+
+  if (
+    username &&
+    !username.endsWith(`.${USERNAME_DOMAINS[baseSepolia.id]}`) &&
+    !username.endsWith(`.${USERNAME_DOMAINS[base.id]}`)
+  ) {
+    username = formatBaseEthDomain(username, base.id);
+  }
+
   const fontData = await fetch(
-    new URL('../../../../../src/fonts/CoinbaseDisplay-Regular.ttf', import.meta.url),
+    new URL('apps/web/src/fonts/CoinbaseDisplay-Regular.ttf', import.meta.url),
   ).then(async (res) => res.arrayBuffer());
 
-  const url = new URL(request.url);
-  const username = url.searchParams.get('name') ?? 'yourname';
-  const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
+  const domainName = isDevelopment ? `http://localhost:3000` : 'https://www.base.org';
   const profilePicture = getUserNamePicture(username);
-  const chainIdFromParams = url.searchParams.get('chainId');
-  const chainId = chainIdFromParams ? Number(chainIdFromParams) : base.id;
   let imageSource = domainName + profilePicture.src;
 
   // NOTE: Do we want to fail if the name doesn't exists?
   try {
     const nameHash = namehash(username);
-    const client = getBasenamePublicClient(chainId);
+    const client = getBasenamePublicClient(base.id);
     const avatar = await client.readContract({
       abi: L2ResolverAbi,
-      address: USERNAME_L2_RESOLVER_ADDRESSES[chainId],
+      address: USERNAME_L2_RESOLVER_ADDRESSES[base.id],
       args: [nameHash, UsernameTextRecordKeys.Avatar],
       functionName: 'text',
     });
@@ -45,9 +79,9 @@ export default async function handler(request: NextRequest) {
     }
   } catch (error) {}
 
-  // Using vercel's OG image for a PNG response
   return new ImageResponse(
     (
+      // ImageResponse JSX element
       <div
         style={{
           height: '100%',
@@ -98,11 +132,10 @@ export default async function handler(request: NextRequest) {
       </div>
     ),
     {
-      width: openGraphImageWidth,
-      height: openGraphImageHeight,
+      ...size,
       fonts: [
         {
-          name: 'Typewriter',
+          name: 'CoinbaseDisplay',
           data: fontData,
           style: 'normal',
         },
