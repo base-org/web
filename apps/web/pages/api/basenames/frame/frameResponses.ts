@@ -114,14 +114,15 @@ export const confirmationFrame = (
     },
   });
 
-export const txSuccessFrame = (txId: string) =>
+export const txSuccessFrame = (name: string) =>
   getFrameHtmlResponse({
     buttons: [
       {
-        label: `Tx: ${txId}`,
+        label: `Go to your profile`,
       },
     ],
     image: {
       src: `${DOMAIN}/images/basenames/contract-uri/feature-image.png`,
     },
+    postUrl: `${DOMAIN}/name/${name}`,
   });
