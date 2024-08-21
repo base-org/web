@@ -48,6 +48,7 @@ export function RegistrationFlow() {
   const searchParams = useSearchParams();
   const [, setIsModalOpen] = useLocalStorage('BasenamesLaunchModalVisible', true);
   const [, setIsBannerVisible] = useLocalStorage('basenamesLaunchBannerVisible', true);
+  const [, setIsDocsBannerVisible] = useLocalStorage('basenamesLaunchDocsBannerVisible', true);
 
   const {
     registrationStep,
@@ -121,8 +122,9 @@ export function RegistrationFlow() {
     if (isSuccess) {
       setIsModalOpen(false);
       setIsBannerVisible(false);
+      setIsDocsBannerVisible(false);
     }
-  }, [isSuccess, setIsModalOpen, setIsBannerVisible]);
+  }, [isSuccess, setIsModalOpen, setIsBannerVisible, setIsDocsBannerVisible]);
 
   return (
     <>
