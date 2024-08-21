@@ -27,9 +27,9 @@ export default function Nav() {
   return (
     <AnalyticsProvider context='navbar'>
       <DynamicBanner
-        bannerName="onchainKitBanner"
-        href="https://onchainkit.xyz/?utm_source=basedotorg&utm_medium=banner"
-        text="Build on Base in minutes with OnchainKit!"
+        bannerName="basenamesLaunchBanner"
+        href="https://base.org/names?utm_source=dotorg&utm_medium=banner"
+        text="Claim Your Basename Today!"
       />
       <nav className="z-10 flex h-24 w-full max-w-[1440px] flex-row items-center justify-between gap-16 self-center bg-transparent p-8">
         <Link href="/" aria-label="Base Homepage">
