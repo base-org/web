@@ -300,7 +300,7 @@ export const USERNAME_DOMAINS: Record<number, string> = {
 };
 
 export const formatBaseEthDomain = (name: string, chainId: number): BaseName => {
-  return `${name}.${USERNAME_DOMAINS[chainId]}`.toLocaleLowerCase() as BaseName;
+  return `${name}.${USERNAME_DOMAINS[chainId] ?? '.base.eth'}`.toLocaleLowerCase() as BaseName;
 };
 
 export const getUsernamePictureIndex = (name: string, totalOptions: number) => {
