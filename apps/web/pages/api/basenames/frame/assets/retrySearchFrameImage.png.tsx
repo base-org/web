@@ -9,6 +9,44 @@ export const config = {
 };
 
 const secondaryFontColor = '#0052FF';
+const divStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
+const errorMap: Record<string, JSX.Element> = {
+  'Error: Name unavailable': (
+    <div style={divStyle}>
+      Sorry, that name is unavailable.
+      <br />
+      Search for another name
+    </div>
+  ),
+  'Error: Name is too short': (
+    <div style={divStyle}>
+      Sorry, that name is too short.
+      <br />
+      Search for another name
+    </div>
+  ),
+  'Error: Name is too long': (
+    <div style={divStyle}>
+      Sorry, that name is too long.
+      <br />
+      Search for another name
+    </div>
+  ),
+  'Error: disallowed character:': (
+    <div style={divStyle}>
+      Sorry, that name uses
+      <br />
+      disallowed characters.
+      <br />
+      Search for another name
+    </div>
+  ),
+} as const;
 
 export default async function handler(request: NextRequest) {
   const fontData = await fetch(
@@ -18,13 +56,15 @@ export default async function handler(request: NextRequest) {
   const url = new URL(request.url);
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
   const error = url.searchParams.get('error');
-  const parsedError = error?.split(':');
-
-  let errorBody: string;
-  if (parsedError && parsedError.length > 1) {
-    errorBody = parsedError[1].trim();
-  } else {
-    errorBody = error ?? '';
+  let errorMessage: JSX.Element | undefined;
+  if (error) {
+    errorMessage = errorMap[String(error)] ?? (
+      <div style={divStyle}>
+        Sorry, unable to register that name.
+        <br />
+        Search for another name
+      </div>
+    );
   }
 
   return new ImageResponse(
@@ -43,21 +83,24 @@ export default async function handler(request: NextRequest) {
           padding: '1.5rem',
         }}
       >
-        <span
+        <div
           style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
             color: secondaryFontColor,
-            fontSize: '5rem',
+            fontSize: '3.5rem',
             paddingBottom: '0.75rem',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap',
             width: 'auto',
             textAlign: 'center',
-            // textTransform: 'capitalize',
           }}
         >
-          {errorBody ? errorBody.charAt(0).toUpperCase() + errorBody.slice(1) : ''}
-        </span>
+          {errorMessage}
+        </div>
       </div>
     ),
     {

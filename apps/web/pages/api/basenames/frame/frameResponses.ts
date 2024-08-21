@@ -7,7 +7,7 @@ export const DOMAIN = `https://base-web-git-feat-basenames-frame-coinbase-vercel
 export const initialFrame: FrameMetadataResponse = getFrameMetadata({
   buttons: [
     {
-      label: 'Begin',
+      label: 'Claim',
     },
   ],
   image: {
