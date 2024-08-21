@@ -26,27 +26,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const body = req.body as FrameRequest;
   const { untrustedData } = body;
-  console.log('confirmation.....', { untrustedData });
-
-  const messageState: ConfirmationFrameStateType = JSON.parse(
+  const messageState = JSON.parse(
     decodeURIComponent(untrustedData.state),
-  );
+  ) as ConfirmationFrameStateType;
   const targetName = encodeURIComponent(messageState.targetName);
   const formattedTargetName = messageState.formattedTargetName;
 
-  if (!validButtonIndexes.includes(untrustedData.buttonIndex)) {
+  const buttonIndex = untrustedData.buttonIndex as ButtonIndex;
+  if (!validButtonIndexes.includes(buttonIndex)) {
     return res.status(500).json({ error: 'Internal Server Error' });
   }
-  const buttonIndex: ButtonIndex = untrustedData.buttonIndex;
-  const targetYears: number = buttonIndexToYears[buttonIndex];
+  const targetYears = buttonIndexToYears[buttonIndex];
 
   const getRegistrationPriceResponse = await fetch(
     `${DOMAIN}/api/basenames/${targetName}/getBasenameRegistrationPrice?years=${targetYears}`,
   );
-  const {
-    registrationPriceInWei,
-    registrationPriceInEth,
-  }: GetBasenameRegistrationPriceResponseType = await getRegistrationPriceResponse.json();
+  const getRegistrationPriceResponseData = await getRegistrationPriceResponse.json();
+  const { registrationPriceInWei, registrationPriceInEth } =
+    getRegistrationPriceResponseData as GetBasenameRegistrationPriceResponseType;
 
   try {
     return res
