@@ -7,6 +7,10 @@ import {
 } from 'apps/web/src/utils/usernames';
 import { ethers } from 'ethers';
 
+export type IsNameAvailableResponse = {
+  nameIsAvailable: boolean;
+};
+
 const url = 'https://mainnet.base.org';
 const provider = new ethers.providers.JsonRpcProvider(url);
 const baseMainnetChainId = 8453;
@@ -16,8 +20,11 @@ const contract = new ethers.Contract(contractAddress, REGISTER_CONTRACT_ABI, pro
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { name } = req.query;
   try {
-    const nameIsAvailable = await isNameAvailable(String(name));
-    return res.status(200).json({ nameIsAvailable });
+    const isNameAvailableResponse = await isNameAvailable(String(name));
+    const responseData: IsNameAvailableResponse = {
+      nameIsAvailable: isNameAvailableResponse,
+    };
+    return res.status(200).json(responseData);
   } catch (error) {
     console.error('Could not read name availability:', error);
     return res.status(500).json({ error: 'Could not determine name availability' });
