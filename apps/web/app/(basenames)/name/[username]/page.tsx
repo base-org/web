@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
 }
 
 export default async function Username({ params }: UsernameProfileProps) {
-  let username = await formatDefaultUsername(params.username);
+  let username = await formatDefaultUsername(decodeURIComponent(params.username) as BaseName);
 
   const address = await getBasenameAddress(username);
   const owner = await getBasenameOwner(username);
