@@ -355,6 +355,7 @@ __metadata:
     "@coinbase/cookie-banner": ^1.0.3
     "@coinbase/cookie-manager": ^1.1.1
     "@coinbase/onchainkit": ^0.28.5
+    "@datadog/browser-logs": ^5.23.3
     "@datadog/browser-rum": ^5.23.3
     "@guildxyz/sdk": 2.6.0
     "@headlessui/react": ^1.7.19
@@ -1998,6 +1999,7 @@ __metadata:
   resolution: "@base-org/base-web@workspace:."
   dependencies:
     "@babel/preset-react": ^7.14.5
+    "@datadog/browser-logs": ^5.23.3
     "@graphql-eslint/eslint-plugin": ^3.10.4
     "@linaria/babel-preset": ^4.4.3
     "@next/bundle-analyzer": ^14.2.5
@@ -2278,6 +2280,20 @@ __metadata:
   version: 5.23.3
   resolution: "@datadog/browser-core@npm:5.23.3"
   checksum: 0d3b2af985b332a584d4ff6f3b5b688bb6da8153df34804a44e31815875949cd902695e1d13e4b5bcf964a857b0a31f0947c8b8cda9b948749b15c20ab0b76da
+  languageName: node
+  linkType: hard
+
+"@datadog/browser-logs@npm:^5.23.3":
+  version: 5.23.3
+  resolution: "@datadog/browser-logs@npm:5.23.3"
+  dependencies:
+    "@datadog/browser-core": 5.23.3
+  peerDependencies:
+    "@datadog/browser-rum": 5.23.3
+  peerDependenciesMeta:
+    "@datadog/browser-rum":
+      optional: true
+  checksum: a07a5491dbe0adb14333fd77823928f2523920e2c75b2d05395f2a7fca5d8fe32f2858d72cd47e0a84df38a860bc613a62ff13e2e03a4e6dccb9087951a1ab9b
   languageName: node
   linkType: hard
 

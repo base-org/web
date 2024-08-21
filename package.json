@@ -76,6 +76,7 @@
   },
   "packageManager": "yarn@3.5.0",
   "dependencies": {
+    "@datadog/browser-logs": "^5.23.3",
     "@linaria/babel-preset": "^4.4.3",
     "@next/bundle-analyzer": "^14.2.5",
     "@radix-ui/react-icons": "^1.3.0",
