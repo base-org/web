@@ -2,7 +2,12 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import RegistrationProviders from 'apps/web/app/(basenames)/names/RegistrationProviders';
 import ErrorsProvider from 'apps/web/contexts/Errors';
+import PoweredByEns from 'apps/web/src/components/Basenames/PoweredByEns';
+import RegistrationFAQ from 'apps/web/src/components/Basenames/RegistrationFaq';
 import RegistrationFlow from 'apps/web/src/components/Basenames/RegistrationFlow';
+import RegistrationValueProp from 'apps/web/src/components/Basenames/RegistrationValueProp';
+import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import basenameCover from './basename_cover.png';
 
 export const metadata: Metadata = {
@@ -26,7 +31,12 @@ export default async function Page() {
     <ErrorsProvider context="registration">
       <RegistrationProviders>
         <Suspense>
-          <RegistrationFlow />
+          <main>
+            <RegistrationFlow />
+            <RegistrationValueProp />
+            <PoweredByEns />
+            <RegistrationFAQ />
+          </main>
         </Suspense>
       </RegistrationProviders>
     </ErrorsProvider>

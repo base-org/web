@@ -22,12 +22,21 @@ export type MappedDiscountData = {
 export function findFirstValidDiscount(
   aggregatedData: MappedDiscountData,
 ): DiscountData | undefined {
-  return (
-    Object.values(aggregatedData)
-      .sort((a) => (a.discount === Discount.CB1 ? -1 : 1))
-      .find((data) => data?.discountKey) ?? undefined
-  );
+  const priorityOrder: Partial<{ [key in Discount]: number }> & { default: 2 } = {
+    [Discount.BNS_NAME]: 0,
+    [Discount.CB1]: 1,
+    default: 2,
+  };
+
+  const sortedDiscounts = Object.values(aggregatedData).sort((a, b) => {
+    const aPriority = priorityOrder[a.discount] ?? priorityOrder.default;
+    const bPriority = priorityOrder[b.discount] ?? priorityOrder.default;
+    return aPriority - bPriority;
+  });
+
+  return sortedDiscounts.find((data) => data?.discountKey) ?? undefined;
 }
+
 export function useAggregatedDiscountValidators() {
   const { data: activeDiscountValidators, isLoading: loadingActiveDiscounts } =
     useActiveDiscountValidators();

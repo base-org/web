@@ -13,7 +13,7 @@ import { BaseName } from '@coinbase/onchainkit/identity';
 import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
 import ErrorsProvider from 'apps/web/contexts/Errors';
 
-type UsernameProfileProps = {
+export type UsernameProfileProps = {
   params: { username: BaseName };
 };
 
@@ -29,7 +29,6 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
     openGraph: {
       title: `Basenames | ${username}`,
       url: `/${username}`,
-      images: [`api/basenames/${username}/assets/coverImage.png`],
     },
     twitter: {
       card: 'summary_large_image',

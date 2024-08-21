@@ -7,7 +7,8 @@ import {
   WalletDropdownDisconnect,
   WalletDropdownLink,
 } from '@coinbase/onchainkit/wallet';
-import { useChainModal, useConnectModal } from '@rainbow-me/rainbowkit';
+import { base } from 'viem/chains';
+import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
@@ -23,7 +24,7 @@ import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
 import classNames from 'classnames';
 import { useCallback, useEffect, useState } from 'react';
 import { useCopyToClipboard } from 'usehooks-ts';
-import { useAccount, useChains } from 'wagmi';
+import { useAccount, useChains, useSwitchChain } from 'wagmi';
 
 export enum ConnectWalletButtonVariants {
   Default,
@@ -48,7 +49,11 @@ export function ConnectWalletButton({
 }: ConnectWalletButtonProps) {
   // Rainbow kit
   const { openConnectModal } = useConnectModal();
-  const { openChainModal } = useChainModal();
+  const { switchChain } = useSwitchChain();
+  const switchToIntendedNetwork = useCallback(
+    () => switchChain({ chainId: base.id }),
+    [switchChain],
+  );
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {
@@ -72,7 +77,7 @@ export function ConnectWalletButton({
           context: 'navbar',
           address,
           wallet_type: sanitizeEventString(connector?.name),
-          wallet_connector_id: connector?.id
+          wallet_connector_id: connector?.id,
         },
         AnalyticsEventImportance.low,
       );
@@ -125,7 +130,7 @@ export function ConnectWalletButton({
       <Button
         variant={ButtonVariants.Black}
         size={ButtonSizes.Small}
-        onClick={openChainModal}
+        onClick={switchToIntendedNetwork}
         rounded
       >
         Wrong network, get based
