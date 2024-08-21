@@ -2,29 +2,29 @@ import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import {
   FrameRequest,
   getFrameMessage,
-  // FrameTransactionResponse,
+  FrameTransactionResponse,
 } from '@coinbase/onchainkit/frame';
-// import { encodeFunctionData, namehash } from 'viem';
-// import { base, baseSepolia } from 'viem/chains';
+import { encodeFunctionData, namehash } from 'viem';
+import { base, baseSepolia } from 'viem/chains';
 // import { datadogRum } from '@datadog/browser-rum';
-// import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
-// import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
-// import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
-// import {
-//   USERNAME_L2_RESOLVER_ADDRESSES,
-//   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
-// } from 'apps/web/src/addresses/usernames';
+import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
+import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
+import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
+import {
+  USERNAME_L2_RESOLVER_ADDRESSES,
+  USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
+} from 'apps/web/src/addresses/usernames';
 
-// type TxFrameStateType = {
-//   targetName: string;
-//   formattedTargetName: string;
-//   targetYears: number;
-//   registrationPriceInWei: string;
-//   registrationPriceInEth: string;
-// };
+type TxFrameStateType = {
+  targetName: string;
+  formattedTargetName: string;
+  targetYears: number;
+  registrationPriceInWei: string;
+  registrationPriceInEth: string;
+};
 
-// const RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[baseSepolia.id];
-// const REGISTRAR_CONTROLLER_ADDRESS = USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[baseSepolia.id];
+const RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[baseSepolia.id];
+const REGISTRAR_CONTROLLER_ADDRESS = USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[baseSepolia.id];
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -34,10 +34,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const body = req.body as FrameRequest;
   let message;
   let isValid;
-  // let name;
-  // let years;
-  // let priceInEth;
-  // let priceInWei;
+  let name;
+  let years;
+  let priceInWei;
+  let claimingAddress;
 
   try {
     const result = await getFrameMessage(body, {
@@ -45,81 +45,88 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
     isValid = result.isValid;
     message = result.message;
-    if (!isValid || !message) {
+    if (!isValid) {
       throw new Error('Message is not valid');
     }
+    if (!message) {
+      throw new Error('No message received')
+    }
+
+    claimingAddress = message.address as `0x${string}`;
+    if (!claimingAddress) {
+      throw new Error('No address received');
+    }
+
+    const messageState = JSON.parse(
+      decodeURIComponent(message.state?.serialized),
+    ) as TxFrameStateType;
+    if (!messageState) {
+      throw new Error('No message state received');
+    }
+    name = messageState.targetName;
+    years = messageState.targetYears;
+    priceInWei = messageState.registrationPriceInWei;
   } catch (e) {
     return res.status(500).json({ error: e });
   }
 
-  return res.status(200).json({ message });
+  // // console.error({ message });
+  // // datadogRum.addError('Basenames frame message', { context: message, message: message });
 
-  // console.error({ message });
-  // datadogRum.addError('Basenames frame message', { context: message, message: message });
+  // // console.error({ messageState });
+  // // datadogRum.addError('Basenames frame messageState', {
+  // //   context: messageState,
+  // //   message: messageState,
+  // // });
 
-  // const messageState: TxFrameStateType = JSON.parse(decodeURIComponent(message.state?.serialized));
+  const addressData = encodeFunctionData({
+    abi: L2ResolverAbi,
+    functionName: 'setAddr',
+    args: [namehash(formatBaseEthDomain(name, baseSepolia.id)), claimingAddress],
+  });
 
-  // console.error({ messageState });
-  // datadogRum.addError('Basenames frame messageState', { context: messageState, message: messageState });
+  const nameData = encodeFunctionData({
+    abi: L2ResolverAbi,
+    functionName: 'setName',
+    args: [
+      namehash(formatBaseEthDomain(name, baseSepolia.id)),
+      formatBaseEthDomain(name, baseSepolia.id),
+    ],
+  });
 
-  // if (!messageState) {
-  //   return res.status(500).json({ error: 'Internal server error: No message state.' });
-  // }
-  // name = messageState.targetName;
-  // years = messageState.targetYears;
-  // // priceInEth = messageState.registrationPriceInEth;
-  // priceInWei = messageState.registrationPriceInWei;
+  const registerRequest = {
+    name,
+    owner: claimingAddress,
+    duration: secondsInYears(years),
+    resolver: RESOLVER_ADDRESS,
+    data: [addressData, nameData],
+    reverseRecord: true,
+  };
 
-  // const TODO_ADDRESS_FROM_NEYNAR = '0x74431A069d721FEe532fc6330fB0280A80AeEaF9';
+  const data = encodeFunctionData({
+    abi: RegistrarControllerABI,
+    functionName: 'register',
+    args: [registerRequest],
+  });
 
-  // const addressData = encodeFunctionData({
-  //   abi: L2ResolverAbi,
-  //   functionName: 'setAddr',
-  //   args: [namehash(formatBaseEthDomain(name, baseSepolia.id)), TODO_ADDRESS_FROM_NEYNAR],
-  // });
-
-  // const nameData = encodeFunctionData({
-  //   abi: L2ResolverAbi,
-  //   functionName: 'setName',
-  //   args: [
-  //     namehash(formatBaseEthDomain(name, baseSepolia.id)),
-  //     formatBaseEthDomain(name, baseSepolia.id),
-  //   ],
-  // });
-
-  // const registerRequest = {
-  //   name,
-  //   owner: TODO_ADDRESS_FROM_NEYNAR, // TODO: The address of the owner for the name.
-  //   duration: secondsInYears(years),
-  //   resolver: RESOLVER_ADDRESS,
-  //   data: [addressData, nameData],
-  //   reverseRecord: true,
-  // };
-
-  // const data = encodeFunctionData({
-  //   abi: RegistrarControllerABI,
-  //   functionName: 'register',
-  //   args: [registerRequest],
-  // });
-
-  // try {
-  //   const txData: FrameTransactionResponse = {
-  //     chainId: `eip155:${baseSepolia.id}`,
-  //     method: 'eth_sendTransaction',
-  //     params: {
-  //       abi: [],
-  //       data,
-  //       to: REGISTRAR_CONTROLLER_ADDRESS,
-  //       value: priceInWei.toString(),
-  //     },
-  //   };
-  //   return res.status(200).json(txData);
-  // } catch (error) {
-  //   return res.status(500).json({ error: 'Internal Server Error' });
-  // }
+  try {
+    const txData: FrameTransactionResponse = {
+      chainId: `eip155:${baseSepolia.id}`,
+      method: 'eth_sendTransaction',
+      params: {
+        abi: [],
+        data,
+        to: REGISTRAR_CONTROLLER_ADDRESS,
+        value: priceInWei.toString(),
+      },
+    };
+    return res.status(200).json(txData);
+  } catch (error) {
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
 
-// function secondsInYears(years: number): bigint {
-//   const secondsPerYear = 365.25 * 24 * 60 * 60; // .25 accounting for leap years
-//   return BigInt(Math.round(years * secondsPerYear));
-// }
+function secondsInYears(years: number): bigint {
+  const secondsPerYear = 365.25 * 24 * 60 * 60; // .25 accounting for leap years
+  return BigInt(Math.round(years * secondsPerYear));
+}
