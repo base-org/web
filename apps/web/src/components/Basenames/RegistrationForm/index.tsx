@@ -17,7 +17,6 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import { usePremiumEndDurationRemaining } from 'apps/web/src/hooks/useActiveEthPremiumAmount';
-import { useActiveEthPremiumAmount } from 'apps/web/src/hooks/useActivePremiumAmount';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
 import {
@@ -105,7 +104,13 @@ export default function RegistrationForm() {
   const ethUsdPrice = useEthPriceFromUniswap();
   const { data: initialPrice } = useNameRegistrationPrice(selectedName, years);
   const { data: singleYearEthCost } = useNameRegistrationPrice(selectedName, 1);
-  const { basePrice, premiumPrice } = useRentPrice(selectedName, 1)
+  const { basePrice: singleYearBasePrice, premiumPrice } = useRentPrice(selectedName, 1);
+  const formattedPremiumCost = Number(formatEther(premiumPrice ?? 0)).toLocaleString(
+    undefined,
+    {
+      maximumFractionDigits: 3,
+    },
+  );
   const { data: discountedPrice } = useDiscountedNameRegistrationPrice(
     selectedName,
     years,
@@ -158,11 +163,9 @@ export default function RegistrationForm() {
   const usdPrice = hasResolvedUSDPrice ? formatUsdPrice(price, ethUsdPrice) : '--.--';
   const nameIsFree = !hasRegisteredWithDiscount && price === 0n;
 
-  const { data: premiumEthAmount } = useActiveEthPremiumAmount();
   const premiumEndTimestamp = usePremiumEndDurationRemaining();
 
-  const isPremiumActive = premiumEthAmount && premiumEthAmount !== 0n;
-  // const isPremiumActive = premiumPrice && premiumPrice !== 0n;
+  const isPremiumActive = premiumPrice && premiumPrice !== 0n;
   const mainRegistrationElementClasses = classNames(
     'z-10 flex flex-col items-start justify-between gap-6 bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center',
     {
@@ -178,10 +181,10 @@ export default function RegistrationForm() {
           {isPremiumActive && (
             <div className="flex justify-between gap-4 rounded-t-2xl bg-gradient-to-r from-[#B139FF] to-[#FF9533] px-6 py-4 text-white">
               <p>
-                Temporary premium of {premiumEthAmount} ETH{' '}
+                Temporary premium of {formattedPremiumCost} ETH{' '}
                 {premiumEndTimestamp && <>ends in {premiumEndTimestamp}</>}
               </p>
-              {Boolean(premiumEthAmount && singleYearEthCost) && (
+              {Boolean(premiumPrice && singleYearEthCost) && (
                 <button type="button" className="underline" onClick={togglePremiumExplainerModal}>
                   Learn more
                 </button>
@@ -347,10 +350,10 @@ export default function RegistrationForm() {
           isOpen={learnMoreAboutDiscountsModalOpen}
           toggleModal={toggleLearnMoreModal}
         />
-        {Boolean(premiumEthAmount && singleYearEthCost) && (
+        {Boolean(premiumPrice && singleYearEthCost) && (
           <PremiumExplainerModal
-            premiumEthAmount={premiumPrice as bigint}
-            baseSingleYearEthCost={basePrice as bigint}
+            premiumEthAmount={premiumPrice}
+            baseSingleYearEthCost={singleYearBasePrice}
             isOpen={premiumExplainerModalOpen}
             toggleModal={togglePremiumExplainerModal}
             nameLength={selectedName?.length}
