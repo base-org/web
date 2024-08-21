@@ -300,7 +300,7 @@ export function RegistrationFlow() {
             appear
             show={isSuccess}
             className={classNames(
-              'top-full z-40 pt-20 transition-opacity',
+              'top-full z-40 mt-20 transition-opacity',
               'mx-auto w-full',
               registrationTransitionDuration,
             )}
