@@ -25,6 +25,7 @@ import {
   useNameRegistrationPrice,
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
+import { useRentPrice } from 'apps/web/src/hooks/useRentPrice';
 import { IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
@@ -104,6 +105,7 @@ export default function RegistrationForm() {
   const ethUsdPrice = useEthPriceFromUniswap();
   const { data: initialPrice } = useNameRegistrationPrice(selectedName, years);
   const { data: singleYearEthCost } = useNameRegistrationPrice(selectedName, 1);
+  const { basePrice, premiumPrice } = useRentPrice(selectedName, 1)
   const { data: discountedPrice } = useDiscountedNameRegistrationPrice(
     selectedName,
     years,
@@ -160,6 +162,7 @@ export default function RegistrationForm() {
   const premiumEndTimestamp = usePremiumEndDurationRemaining();
 
   const isPremiumActive = premiumEthAmount && premiumEthAmount !== 0n;
+  // const isPremiumActive = premiumPrice && premiumPrice !== 0n;
   const mainRegistrationElementClasses = classNames(
     'z-10 flex flex-col items-start justify-between gap-6 bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center',
     {
@@ -346,8 +349,8 @@ export default function RegistrationForm() {
         />
         {Boolean(premiumEthAmount && singleYearEthCost) && (
           <PremiumExplainerModal
-            premiumEthAmount={premiumEthAmount}
-            singleYearEthCost={singleYearEthCost as bigint}
+            premiumEthAmount={premiumPrice as bigint}
+            baseSingleYearEthCost={basePrice as bigint}
             isOpen={premiumExplainerModalOpen}
             toggleModal={togglePremiumExplainerModal}
             nameLength={selectedName?.length}
