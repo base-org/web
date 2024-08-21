@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import { FrameRequest } from '@coinbase/onchainkit/frame';
 import { formatDefaultUsername, validateEnsDomainName } from 'apps/web/src/utils/usernames';
+import type { IsNameAvailableResponse } from 'apps/web/pages/api/basenames/[name]/isNameAvailable';
 import {
   DOMAIN,
   retryInputSearchValueFrame,
@@ -13,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const body: FrameRequest = req.body;
+    const body = req.body as FrameRequest;
     const { untrustedData } = body;
     const targetName: string = encodeURIComponent(untrustedData.inputText);
 
@@ -25,7 +26,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const isNameAvailableResponse = await fetch(
       `${DOMAIN}/api/basenames/${targetName}/isNameAvailable`,
     );
-    const { nameIsAvailable } = await isNameAvailableResponse.json();
+    const isNameAvailableResponseData = await isNameAvailableResponse.json();
+    const { nameIsAvailable } = isNameAvailableResponseData as IsNameAvailableResponse;
     if (!nameIsAvailable) {
       throw new Error('Name unavailable');
     }
