@@ -24,7 +24,6 @@ export default function UsernameProfileNotFound() {
     isFetching,
   } = useIsNameAvailable(username);
 
-  console.log('isLoading', isFetching, isLoadingNameAvailability, isNameAvailable);
   if (isFetching && isLoadingNameAvailability) {
     return (
       <div className={spinnerWrapperClasses}>
