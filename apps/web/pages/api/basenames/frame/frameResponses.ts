@@ -1,8 +1,8 @@
 import { getFrameMetadata, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { FrameMetadataResponse } from '@coinbase/onchainkit/frame/types';
+import { isDevelopment } from 'apps/web/src/constants';
 
-export const DOMAIN = `https://base-web-git-feat-basenames-frame-coinbase-vercel.vercel.app`;
-// export const DOMAIN = `http://localhost:3000`;
+export const DOMAIN = isDevelopment ? `http://localhost:3000` : 'https://www.base.org';
 
 export const initialFrame: FrameMetadataResponse = getFrameMetadata({
   buttons: [
@@ -24,7 +24,7 @@ export const inputSearchValueFrame = getFrameHtmlResponse({
     },
   ],
   image: {
-    src: `${DOMAIN}/images/frames/basenames/search-image.png`, // TODO: is this too hacky?
+    src: `${DOMAIN}/images/frames/basenames/search-image.png`,
   },
   input: {
     text: 'Search for a name',
