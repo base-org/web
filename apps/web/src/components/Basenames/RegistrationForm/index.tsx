@@ -105,12 +105,13 @@ export default function RegistrationForm() {
   const { data: initialPrice } = useNameRegistrationPrice(selectedName, years);
   const { data: singleYearEthCost } = useNameRegistrationPrice(selectedName, 1);
   const { basePrice: singleYearBasePrice, premiumPrice } = useRentPrice(selectedName, 1);
-  const formattedPremiumCost = Number(formatEther(premiumPrice ?? 0)).toLocaleString(
-    undefined,
-    {
-      maximumFractionDigits: 3,
-    },
-  );
+  const premiumValue = Number(formatEther(premiumPrice ?? 0));
+  const formattedPremiumCost =
+    premiumValue < 0.001
+      ? '<0.001'
+      : premiumValue.toLocaleString(undefined, {
+          maximumFractionDigits: 3,
+        });
   const { data: discountedPrice } = useDiscountedNameRegistrationPrice(
     selectedName,
     years,
@@ -163,9 +164,9 @@ export default function RegistrationForm() {
   const usdPrice = hasResolvedUSDPrice ? formatUsdPrice(price, ethUsdPrice) : '--.--';
   const nameIsFree = !hasRegisteredWithDiscount && price === 0n;
 
-  const premiumEndTimestamp = usePremiumEndDurationRemaining();
+  const { seconds, timestamp: premiumEndTimestamp } = usePremiumEndDurationRemaining();
 
-  const isPremiumActive = premiumPrice && premiumPrice !== 0n;
+  const isPremiumActive = premiumPrice && premiumPrice !== 0n && seconds !== 0n;
   const mainRegistrationElementClasses = classNames(
     'z-10 flex flex-col items-start justify-between gap-6 bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center',
     {
