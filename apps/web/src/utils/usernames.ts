@@ -7,6 +7,8 @@ import {
   sha256,
   ContractFunctionParameters,
   labelhash,
+  createPublicClient,
+  http,
 } from 'viem';
 import { normalize } from 'viem/ens';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
@@ -386,8 +388,18 @@ export function getChainForBasename(username: BaseName): Chain {
   return username.endsWith(`.${USERNAME_DOMAINS[base.id]}`) ? base : baseSepolia;
 }
 
+export function normalizeName(name: string) {
+  const normalizedName: string = normalizeEnsDomainName(name);
+  const { valid } = validateEnsDomainName(name);
+
+  if (!valid) {
+    return null;
+  }
+  return normalizedName;
+}
+
 // Assume domainless name to .base.eth
-export async function formatDefaultUsername(username: BaseName) {
+export async function formatDefaultUsername(username: string | BaseName) {
   if (
     username &&
     !username.endsWith(`.${USERNAME_DOMAINS[baseSepolia.id]}`) &&
@@ -512,7 +524,7 @@ export function validateBasenameAvatarUrl(source: string): ValidationResult {
   }
 }
 
-/* 
+/*
   Fetch / Api functions
 */
 
@@ -552,6 +564,30 @@ export async function getBasenameOwner(username: BaseName) {
 
     return owner;
   } catch (error) {}
+}
+
+export async function getBasenameAvailable(name: string, chain: Chain): Promise<boolean> {
+  try {
+    const client = createPublicClient({
+      chain: chain,
+      transport: http(),
+    });
+    const normalizedName = normalizeName(name);
+    if (!normalizedName) {
+      throw new Error('Invalid ENS domain name');
+    }
+
+    const available = await client.readContract({
+      address: REGISTER_CONTRACT_ADDRESSES[base.id],
+      abi: REGISTER_CONTRACT_ABI,
+      functionName: 'available',
+      args: [normalizedName],
+    });
+    return available;
+  } catch (error) {
+    console.error('Error checking name availability:', error);
+    throw error;
+  }
 }
 
 // Build a TextRecord contract request
@@ -594,7 +630,7 @@ export async function getBasenameTextRecords(username: BaseName) {
   } catch (error) {}
 }
 
-/* 
+/*
   Feature flags
 */
 
