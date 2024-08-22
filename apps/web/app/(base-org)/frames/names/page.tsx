@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
   },
   other: {
-    ...initialFrame as Record<string, string>,
+    ...(initialFrame as Record<string, string>),
   },
 };
 

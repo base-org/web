@@ -9,9 +9,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ error: `TxSuccess Screen — Method (${req.method}) Not Allowed` });
   }
 
-  // const url = new URL(req.url);
-  // const name = url.searchParams.get('name') ?? '';
-
   const body = req.body as FrameRequest;
   let message;
   let isValid;
