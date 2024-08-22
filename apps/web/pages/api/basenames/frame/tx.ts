@@ -5,8 +5,7 @@ import {
   FrameTransactionResponse,
 } from '@coinbase/onchainkit/frame';
 import { encodeFunctionData, namehash } from 'viem';
-import { base, baseSepolia } from 'viem/chains';
-// import { datadogRum } from '@datadog/browser-rum';
+import { base } from 'viem/chains';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
@@ -23,8 +22,8 @@ export type TxFrameStateType = {
   registrationPriceInEth: string;
 };
 
-const RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[baseSepolia.id];
-const REGISTRAR_CONTROLLER_ADDRESS = USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[baseSepolia.id];
+const RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[base.id];
+const REGISTRAR_CONTROLLER_ADDRESS = USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[base.id];
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -49,7 +48,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       throw new Error('Message is not valid');
     }
     if (!message) {
-      throw new Error('No message received')
+      throw new Error('No message received');
     }
 
     claimingAddress = message.address as `0x${string}`;
@@ -70,28 +69,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(500).json({ error: e });
   }
 
-  // // console.error({ message });
-  // // datadogRum.addError('Basenames frame message', { context: message, message: message });
-
-  // // console.error({ messageState });
-  // // datadogRum.addError('Basenames frame messageState', {
-  // //   context: messageState,
-  // //   message: messageState,
-  // // });
-
   const addressData = encodeFunctionData({
     abi: L2ResolverAbi,
     functionName: 'setAddr',
-    args: [namehash(formatBaseEthDomain(name, baseSepolia.id)), claimingAddress],
+    args: [namehash(formatBaseEthDomain(name, base.id)), claimingAddress],
   });
 
   const nameData = encodeFunctionData({
     abi: L2ResolverAbi,
     functionName: 'setName',
-    args: [
-      namehash(formatBaseEthDomain(name, baseSepolia.id)),
-      formatBaseEthDomain(name, baseSepolia.id),
-    ],
+    args: [namehash(formatBaseEthDomain(name, base.id)), formatBaseEthDomain(name, base.id)],
   });
 
   const registerRequest = {
@@ -111,7 +98,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const txData: FrameTransactionResponse = {
-      chainId: `eip155:${baseSepolia.id}`,
+      chainId: `eip155:${base.id}`,
       method: 'eth_sendTransaction',
       params: {
         abi: [],
