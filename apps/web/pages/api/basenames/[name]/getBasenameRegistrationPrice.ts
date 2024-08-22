@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'apps/web/node_modules/next/dist/shared/lib/utils';
+import { createPublicClient, http } from 'viem';
 import { base } from 'viem/chains';
-import { ethers } from 'ethers';
 import {
   normalizeEnsDomainName,
   REGISTER_CONTRACT_ABI,
@@ -8,11 +8,6 @@ import {
   validateEnsDomainName,
 } from 'apps/web/src/utils/usernames';
 import { formatEthPrice, formatWeiPrice } from 'apps/web/src/utils/formatEthPrice';
-
-const url = 'https://mainnet.base.org';
-const provider = new ethers.providers.JsonRpcProvider(url);
-const contractAddress = REGISTER_CONTRACT_ADDRESSES[base.id];
-const contract = new ethers.Contract(contractAddress, REGISTER_CONTRACT_ABI, provider);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { name, years } = req.query;
@@ -33,17 +28,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 }
 
 async function getBasenameRegistrationPrice(name: string, years: number): Promise<bigint | null> {
+  const client = createPublicClient({
+    chain: base,
+    transport: http(),
+  });
   const normalizedName = normalizeName(name);
   if (!normalizedName) {
     throw new Error('Invalid ENS domain name');
   }
 
   try {
-    const claimPrice = (await contract.registerPrice(
-      normalizedName,
-      secondsInYears(years),
-    )) as bigint;
-    return claimPrice;
+    const price = await client.readContract({
+      address: REGISTER_CONTRACT_ADDRESSES[base.id],
+      abi: REGISTER_CONTRACT_ABI,
+      functionName: 'registerPrice',
+      args: [normalizedName, secondsInYears(years)],
+    });
+    return price;
   } catch (error) {
     console.error('Could not get claim price:', error);
     return null;
