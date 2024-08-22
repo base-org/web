@@ -1,6 +1,8 @@
 import { getFrameMetadata, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { FrameMetadataResponse } from '@coinbase/onchainkit/frame/types';
 import { isDevelopment } from 'apps/web/src/constants';
+import initialImage from 'apps/web/pages/api/basenames/frame/assets/initial-image.png';
+import searchImage from 'apps/web/pages/api/basenames/frame/assets/search-image.png';
 
 export const DOMAIN = isDevelopment ? `http://localhost:3000` : 'https://www.base.org';
 
@@ -11,7 +13,7 @@ export const initialFrame: FrameMetadataResponse = getFrameMetadata({
     },
   ],
   image: {
-    src: `${DOMAIN}/images/frames/basenames/initial-image.png`,
+    src: `${DOMAIN}/${initialImage.src}`,
   },
   postUrl: `${DOMAIN}/api/basenames/frame/inputSearchValue`,
 });
@@ -24,7 +26,7 @@ export const inputSearchValueFrame = getFrameHtmlResponse({
     },
   ],
   image: {
-    src: `${DOMAIN}/images/frames/basenames/search-image.png`,
+    src: `${DOMAIN}/${searchImage.src}`,
   },
   input: {
     text: 'Search for a name',
