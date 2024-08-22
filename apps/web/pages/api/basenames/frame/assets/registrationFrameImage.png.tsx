@@ -4,6 +4,7 @@ import { isDevelopment } from 'apps/web/src/constants';
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
 import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import ImageRaw from 'apps/web/src/components/ImageRaw';
+import { DOMAIN } from 'apps/web/pages/api/basenames/frame/constants';
 import registrationImageBackground from 'apps/web/pages/api/basenames/frame/assets/registration-bg.png';
 
 export const config = {
@@ -18,9 +19,8 @@ export default async function handler(request: NextRequest) {
 
   const url = new URL(request.url);
   const username = url.searchParams.get('name') as string;
-  const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
   const profilePicture = getUserNamePicture(username);
-  let imageSource = domainName + profilePicture.src;
+  let imageSource = DOMAIN + profilePicture.src;
   const years = url.searchParams.get('years');
   const priceInEth = url.searchParams.get('priceInEth');
 
@@ -34,7 +34,7 @@ export default async function handler(request: NextRequest) {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundImage: `url(${domainName + registrationImageBackground.src})`,
+          backgroundImage: `url(${DOMAIN + registrationImageBackground.src})`,
           backgroundPosition: 'center',
           backgroundSize: '100% 100%',
           padding: '1.5rem',
