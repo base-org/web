@@ -1,6 +1,5 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
-import { isDevelopment } from 'apps/web/src/constants';
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
 import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import ImageRaw from 'apps/web/src/components/ImageRaw';
