@@ -139,36 +139,36 @@ export async function sybilResistantUsernameSigning(
     (attestation) => JSON.parse(attestation.decodedDataJson)[0] as VerifiedAccount,
   );
 
+  let { linkedAddresses, idemKey } = await getLinkedAddresses(address as string);
+
+  const hasPreviouslyRegistered = await hasRegisteredWithDiscount(linkedAddresses, chainId);
+  // if any linked address registered previously return an error
+  if (hasPreviouslyRegistered) {
+    throw new ProofsException('You have already claimed a discounted basename (onchain).', 409);
+  }
+
+  const kvKey = `${previousClaimsKVPrefix}${idemKey}`;
+  //check kv for previous claim entries
+  let previousClaims = (await kv.get<PreviousClaims>(kvKey)) ?? {};
+  const previousClaim = previousClaims[discountType];
+  if (previousClaim) {
+    if (previousClaim.address != address) {
+      throw new ProofsException(
+        'You tried claiming this with a different address, wait a couple minutes to try again.',
+        400,
+      );
+    }
+    // return previously signed message
+    return {
+      signedMessage: previousClaim.signedMessage,
+      attestations: attestationsRes,
+      discountValidatorAddress,
+      expires: EXPIRY.toString(),
+    };
+  }
+
+  const expirationTimeUnix = Math.floor(Date.now() / 1000) + parseInt(EXPIRY);
   try {
-    let { linkedAddresses, idemKey } = await getLinkedAddresses(address as string);
-
-    const hasPreviouslyRegistered = await hasRegisteredWithDiscount(linkedAddresses, chainId);
-    // if any linked address registered previously return an error
-    if (hasPreviouslyRegistered) {
-      throw new ProofsException('You have already claimed a discounted basename (onchain).', 409);
-    }
-
-    const kvKey = `${previousClaimsKVPrefix}${idemKey}`;
-    //check kv for previous claim entries
-    let previousClaims = (await kv.get<PreviousClaims>(kvKey)) ?? {};
-    const previousClaim = previousClaims[discountType];
-    if (previousClaim) {
-      if (previousClaim.address != address) {
-        throw new ProofsException(
-          'You tried claiming this with a different address, wait a couple minutes to try again.',
-          400,
-        );
-      }
-      // return previously signed message
-      return {
-        signedMessage: previousClaim.signedMessage,
-        attestations: attestationsRes,
-        discountValidatorAddress,
-        expires: EXPIRY.toString(),
-      };
-    }
-
-    const expirationTimeUnix = Math.floor(Date.now() / 1000) + parseInt(EXPIRY);
     // generate and sign the message
     const signedMessage = await signMessageWithTrustedSigner(
       address,
