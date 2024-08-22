@@ -7,6 +7,8 @@ import {
   sha256,
   ContractFunctionParameters,
   labelhash,
+  createPublicClient,
+  http,
 } from 'viem';
 import { normalize } from 'viem/ens';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
@@ -558,6 +560,30 @@ export async function getBasenameOwner(username: BaseName) {
 
     return owner;
   } catch (error) {}
+}
+
+export async function getBasenameAvailable(name: string, chain: Chain): Promise<boolean> {
+  try {
+    const client = createPublicClient({
+      chain: chain,
+      transport: http(),
+    });
+    const normalizedName = normalizeName(name);
+    if (!normalizedName) {
+      throw new Error('Invalid ENS domain name');
+    }
+
+    const available = await client.readContract({
+      address: REGISTER_CONTRACT_ADDRESSES[base.id],
+      abi: REGISTER_CONTRACT_ABI,
+      functionName: 'available',
+      args: [normalizedName],
+    });
+    return available;
+  } catch (error) {
+    console.error('Error checking name availability:', error);
+    throw error;
+  }
 }
 
 // Build a TextRecord contract request

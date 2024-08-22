@@ -20,7 +20,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const { valid, message } = validateEnsDomainName(targetName);
     if (!valid) {
-      throw new Error(message);
+      return res
+        .status(200)
+        .setHeader('Content-Type', 'text/html')
+        .send(retryInputSearchValueFrame(message));
     }
 
     const isNameAvailableResponse = await fetch(
@@ -29,7 +32,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const isNameAvailableResponseData = await isNameAvailableResponse.json();
     const { nameIsAvailable } = isNameAvailableResponseData as IsNameAvailableResponse;
     if (!nameIsAvailable) {
-      throw new Error('Name unavailable');
+      return res
+        .status(200)
+        .setHeader('Content-Type', 'text/html')
+        .send(retryInputSearchValueFrame('Name unavailable'));
     }
 
     const formattedTargetName = await formatDefaultUsername(targetName);
@@ -38,9 +44,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .setHeader('Content-Type', 'text/html')
       .send(setYearsFrame(targetName, formattedTargetName));
   } catch (error) {
-    return res
-      .status(200)
-      .setHeader('Content-Type', 'text/html')
-      .send(retryInputSearchValueFrame(String(error)));
+    return res.status(500).json({ error }); // TODO: figure out error state for the frame BAPP-452
   }
 }

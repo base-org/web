@@ -15,29 +15,30 @@ const divStyle = {
   alignItems: 'center',
   justifyContent: 'center',
 };
+// TODO: Make the keys a reference to an enum BAPP-453
 const errorMap: Record<string, JSX.Element> = {
-  'Error: Name unavailable': (
+  'Name unavailable': (
     <div style={divStyle}>
       Sorry, that name is unavailable.
       <br />
       Search for another name
     </div>
   ),
-  'Error: Name is too short': (
+  'Name is too short': (
     <div style={divStyle}>
       Sorry, that name is too short.
       <br />
       Search for another name
     </div>
   ),
-  'Error: Name is too long': (
+  'Name is too long': (
     <div style={divStyle}>
       Sorry, that name is too long.
       <br />
       Search for another name
     </div>
   ),
-  'Error: disallowed character:': (
+  'disallowed character:': (
     <div style={divStyle}>
       Sorry, that name uses
       <br />

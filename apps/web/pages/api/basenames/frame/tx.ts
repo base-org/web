@@ -101,7 +101,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       chainId: `eip155:${base.id}`,
       method: 'eth_sendTransaction',
       params: {
-        abi: [],
+        abi: RegistrarControllerABI,
         data,
         to: REGISTRAR_CONTROLLER_ADDRESS,
         value: priceInWei.toString(),

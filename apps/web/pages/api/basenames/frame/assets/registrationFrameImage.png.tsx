@@ -22,28 +22,13 @@ export default async function handler(request: NextRequest) {
   ).then(async (res) => res.arrayBuffer());
 
   const url = new URL(request.url);
-  const username = url.searchParams.get('name') ?? 'yourname';
+  const username = url.searchParams.get('name') as string;
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
   const profilePicture = getUserNamePicture(username);
-  const chainIdFromParams = url.searchParams.get('chainId');
-  const chainId = chainIdFromParams ? Number(chainIdFromParams) : base.id;
   let imageSource = domainName + profilePicture.src;
   const years = url.searchParams.get('years');
   const priceInEth = url.searchParams.get('priceInEth');
 
-  // NOTE: Do we want to fail if the name doesn't exists?
-  try {
-    const avatar = getBasenameTextRecord(username, UsernameTextRecordKeys.Avatar);
-
-    // Satori Doesn't support webp
-    if (avatar && !avatar.endsWith('.webp')) {
-      imageSource = avatar;
-    }
-  } catch (e) {
-    console.error(e);
-  }
-
-  // Using vercel's OG image for a PNG response
   return new ImageResponse(
     (
       <div

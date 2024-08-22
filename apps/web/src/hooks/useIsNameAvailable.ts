@@ -4,6 +4,7 @@ import {
   REGISTER_CONTRACT_ABI,
   REGISTER_CONTRACT_ADDRESSES,
   validateEnsDomainName,
+  getBasenameAvailable
 } from 'apps/web/src/utils/usernames';
 import { useMemo } from 'react';
 import { useReadContract, useReadContracts } from 'wagmi';

@@ -15,13 +15,12 @@ export const initialFrame: FrameMetadataResponse = getFrameMetadata({
   image: {
     src: `${DOMAIN}/${initialImage.src}`,
   },
-  postUrl: `${DOMAIN}/api/basenames/frame/inputSearchValue`,
+  postUrl: `${DOMAIN}/api/basenames/frame/01_inputSearchValue`,
 });
 
 export const inputSearchValueFrame = getFrameHtmlResponse({
   buttons: [
     {
-      action: 'post',
       label: 'Continue',
     },
   ],
@@ -31,14 +30,13 @@ export const inputSearchValueFrame = getFrameHtmlResponse({
   input: {
     text: 'Search for a name',
   },
-  postUrl: `${DOMAIN}/api/basenames/frame/validateSearchInputAndSetYears`,
+  postUrl: `${DOMAIN}/api/basenames/frame/02_validateSearchInputAndSetYears`,
 });
 
 export const retryInputSearchValueFrame = (error?: string) =>
   getFrameHtmlResponse({
     buttons: [
       {
-        action: 'post',
         label: 'Search again',
       },
     ],
@@ -48,7 +46,7 @@ export const retryInputSearchValueFrame = (error?: string) =>
     input: {
       text: 'Search for a name',
     },
-    postUrl: `${DOMAIN}/api/basenames/frame/validateSearchInputAndSetYears`,
+    postUrl: `${DOMAIN}/api/basenames/frame/02_validateSearchInputAndSetYears`,
   });
 
 export const buttonIndexToYears = {
@@ -62,26 +60,22 @@ export const setYearsFrame = (targetName: string, formattedTargetName: string) =
   getFrameHtmlResponse({
     buttons: [
       {
-        action: 'post',
         label: '1 year',
       },
       {
-        action: 'post',
         label: '5 years',
       },
       {
-        action: 'post',
         label: '10 years',
       },
       {
-        action: 'post',
         label: '100 years',
       },
     ],
     image: {
       src: `${DOMAIN}/api/basenames/frame/assets/registrationFrameImage.png?name=${formattedTargetName}`,
     },
-    postUrl: `${DOMAIN}/api/basenames/frame/confirmation`,
+    postUrl: `${DOMAIN}/api/basenames/frame/03_getPriceAndConfirm`,
     state: {
       targetName,
       formattedTargetName,
@@ -106,7 +100,7 @@ export const confirmationFrame = (
     image: {
       src: `${DOMAIN}/api/basenames/frame/assets/registrationFrameImage.png?name=${formattedTargetName}&years=${targetYears}&priceInEth=${registrationPriceInEth}`,
     },
-    postUrl: `${DOMAIN}/api/basenames/frame/txSuccess`,
+    postUrl: `${DOMAIN}/api/basenames/frame/04_txSuccess`,
     state: {
       targetName,
       formattedTargetName,
