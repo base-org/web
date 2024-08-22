@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'apps/web/node_modules/next/image';
 import Link from 'apps/web/node_modules/next/link';
-import claimBasename from 'apps/web/public/images/frames/basenames/initial-image.png';
+import initialFrameImage from 'apps/web/pages/api/basenames/frame/assets/initial-image.png';
 import { initialFrame } from 'apps/web/pages/api/basenames/frame/frameResponses';
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Basenames | Frame`,
     url: `/frames/names`,
-    images: [claimBasename.src],
+    images: [initialFrameImage.src],
   },
   twitter: {
     site: '@base',
@@ -29,7 +29,7 @@ export default async function NameFrame() {
       <div className="flex h-screen w-full max-w-[1440px] flex-col items-center justify-center gap-12 px-8 py-8 pt-28">
         <div className="relative flex aspect-[993/516] h-auto w-full max-w-[1024px] flex-col items-center">
           <Link href="/names">
-            <Image src={claimBasename.src} alt="Claim a basename today" fill />
+            <Image src={initialFrameImage.src} alt="Claim a basename today" fill />
           </Link>
         </div>
       </div>
