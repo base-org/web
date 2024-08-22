@@ -118,11 +118,12 @@ export const txSuccessFrame = (name: string) =>
   getFrameHtmlResponse({
     buttons: [
       {
+        action: 'link',
         label: `Go to your profile`,
       },
     ],
     image: {
       src: `${DOMAIN}/images/basenames/contract-uri/feature-image.png`,
     },
-    postUrl: `${DOMAIN}/name/${name}`,
+    target: `${DOMAIN}/name/${name}`,
   });
