@@ -24,6 +24,7 @@ export type TxFrameStateType = {
 
 const RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[base.id];
 const REGISTRAR_CONTROLLER_ADDRESS = USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[base.id];
+const NEYNAR_API_KEY = process.env.NEXT_PUBLIC_NEYNAR_API_KEY;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -40,7 +41,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const result = await getFrameMessage(body, {
-      neynarApiKey: 'BF56615F-9028-4774-9E8C-2745308382C1', // TODO DON"T HARDCODE THIS
+      neynarApiKey: NEYNAR_API_KEY,
     });
     isValid = result.isValid;
     message = result.message;
