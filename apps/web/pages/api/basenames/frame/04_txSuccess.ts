@@ -1,9 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 import { txSuccessFrame } from 'apps/web/pages/api/basenames/frame/frameResponses';
+import { NEYNAR_API_KEY } from 'apps/web/pages/api/basenames/frame/constants';
 import type { TxFrameStateType } from 'apps/web/pages/api/basenames/frame/tx';
 
-const NEYNAR_API_KEY = process.env.NEXT_PUBLIC_NEYNAR_API_KEY
+if (!NEYNAR_API_KEY) {
+  throw new Error('missing NEYNAR_API_KEY');
+}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {

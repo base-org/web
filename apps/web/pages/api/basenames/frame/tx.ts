@@ -13,6 +13,7 @@ import {
   USERNAME_L2_RESOLVER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
+import { NEYNAR_API_KEY } from 'apps/web/pages/api/basenames/frame/constants';
 
 export type TxFrameStateType = {
   targetName: string;
@@ -24,7 +25,10 @@ export type TxFrameStateType = {
 
 const RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[base.id];
 const REGISTRAR_CONTROLLER_ADDRESS = USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[base.id];
-const NEYNAR_API_KEY = process.env.NEXT_PUBLIC_NEYNAR_API_KEY;
+
+if (!NEYNAR_API_KEY) {
+  throw new Error('missing NEYNAR_API_KEY');
+}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
