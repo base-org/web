@@ -2,11 +2,9 @@ import { useCallback, useEffect, useState } from 'react';
 import Input from 'apps/web/src/components/Input';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import { Address, isAddress } from 'viem';
-import { useEnsAddress } from 'wagmi';
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { useAccount, useEnsAddress } from 'wagmi';
 import { isBasename, isEnsName } from 'apps/web/src/utils/usernames';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { truncateMiddle } from 'libs/base-ui/utils/string';
 import Link from 'next/link';
@@ -31,12 +29,13 @@ export default function SearchAddressInput({ onChange }: SearchAddressInputProps
   /* 2. User enters an Basename */
   const validBasename = isBasename(value);
 
-  const { basenameChain } = useBasenameChain(value as BaseName);
+  const { chain: basenameChain } = useAccount();
+  const resolverAddress = basenameChain?.id ? USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id] : '0x';
 
   const { data: basenameAddress, isLoading: basenameAddressIsLoading } = useEnsAddress({
     name: value,
-    universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
-    chainId: basenameChain.id,
+    universalResolverAddress: resolverAddress,
+    chainId: basenameChain?.id,
     query: {
       enabled: validBasename,
       retry: false,
@@ -60,8 +59,8 @@ export default function SearchAddressInput({ onChange }: SearchAddressInputProps
   const showUsername = valueIsAddress && !!username;
 
   // Explorer url & name
-  const baseBlockExplorerUrl = basenameChain.blockExplorers?.default.url;
-  const baseBlockExplorerName = basenameChain.blockExplorers?.default.name;
+  const baseBlockExplorerUrl = basenameChain?.blockExplorers?.default.url;
+  const baseBlockExplorerName = basenameChain?.blockExplorers?.default.name;
 
   // Final address
   const finalAddress = basenameAddress ?? ensAddress ?? value;
