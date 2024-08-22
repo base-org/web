@@ -22,7 +22,7 @@ export default function ModalCta({ buttonClassNames, setIsModalOpen }: ModalCtaP
   }, [logEventWithContext, setIsModalOpen]);
 
   return (
-    <Link href="/names" onClick={handleClick}>
+    <Link href="/names?utm_source=dotorg&utm_medium=modal" onClick={handleClick}>
       <Button className={buttonClassNames}>Get your basename</Button>
     </Link>
   );
