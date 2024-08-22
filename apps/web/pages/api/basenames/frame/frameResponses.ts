@@ -4,8 +4,7 @@ import { isDevelopment } from 'apps/web/src/constants';
 import initialImage from 'apps/web/pages/api/basenames/frame/assets/initial-image.png';
 import searchImage from 'apps/web/pages/api/basenames/frame/assets/search-image.png';
 
-// export const DOMAIN = isDevelopment ? `http://localhost:3000` : 'https://www.base.org';
-export const DOMAIN = isDevelopment ? `http://localhost:3000` : 'https://base-web-git-feat-basenames-frame-coinbase-vercel.vercel.app/';
+export const DOMAIN = isDevelopment ? `http://localhost:3000` : 'https://www.base.org';
 
 export const initialFrame: FrameMetadataResponse = getFrameMetadata({
   buttons: [

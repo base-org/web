@@ -2,7 +2,8 @@ import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 import { isDevelopment } from 'apps/web/src/constants';
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
-import retrySearchImageBackground from 'apps/web/pages/api/basenames/frame/assets/retry-search-image.png';;
+import { RawErrorStrings } from 'apps/web/src/utils/frames/basenames';
+import retrySearchImageBackground from 'apps/web/pages/api/basenames/frame/assets/retry-search-image.png';
 
 export const config = {
   runtime: 'edge',
@@ -15,34 +16,41 @@ const divStyle = {
   alignItems: 'center',
   justifyContent: 'center',
 };
-// TODO: Make the keys a reference to an enum BAPP-453
-const errorMap: Record<string, JSX.Element> = {
-  'Name unavailable': (
+
+const errorMap: Record<RawErrorStrings, JSX.Element> = {
+  [RawErrorStrings.Unavailable]: (
     <div style={divStyle}>
       Sorry, that name is unavailable.
       <br />
       Search for another name
     </div>
   ),
-  'Name is too short': (
+  [RawErrorStrings.TooShort]: (
     <div style={divStyle}>
       Sorry, that name is too short.
       <br />
       Search for another name
     </div>
   ),
-  'Name is too long': (
+  [RawErrorStrings.TooLong]: (
     <div style={divStyle}>
       Sorry, that name is too long.
       <br />
       Search for another name
     </div>
   ),
-  'disallowed character:': (
+  [RawErrorStrings.DisallowedChars]: (
     <div style={divStyle}>
       Sorry, that name uses
       <br />
       disallowed characters.
+      <br />
+      Search for another name
+    </div>
+  ),
+  [RawErrorStrings.Invalid]: (
+    <div style={divStyle}>
+      Sorry, that name is invalid.
       <br />
       Search for another name
     </div>
@@ -56,10 +64,10 @@ export default async function handler(request: NextRequest) {
 
   const url = new URL(request.url);
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
-  const error = url.searchParams.get('error');
+  const error = url.searchParams.get('error') as RawErrorStrings;
   let errorMessage: JSX.Element | undefined;
   if (error) {
-    errorMessage = errorMap[String(error)] ?? (
+    errorMessage = errorMap[error] ?? (
       <div style={divStyle}>
         Sorry, unable to register that name.
         <br />

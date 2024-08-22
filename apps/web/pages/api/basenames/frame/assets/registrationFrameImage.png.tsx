@@ -1,13 +1,8 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
-import { base } from 'viem/chains';
 import { isDevelopment } from 'apps/web/src/constants';
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
-import {
-  getUserNamePicture,
-  UsernameTextRecordKeys,
-  getBasenameTextRecord,
-} from 'apps/web/src/utils/usernames';
+import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import ImageRaw from 'apps/web/src/components/ImageRaw';
 import registrationImageBackground from 'apps/web/pages/api/basenames/frame/assets/registration-bg.png';
 
