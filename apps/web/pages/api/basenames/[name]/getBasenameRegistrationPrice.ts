@@ -2,10 +2,9 @@ import { NextApiRequest, NextApiResponse } from 'apps/web/node_modules/next/dist
 import { createPublicClient, http } from 'viem';
 import { base } from 'viem/chains';
 import {
-  normalizeEnsDomainName,
   REGISTER_CONTRACT_ABI,
   REGISTER_CONTRACT_ADDRESSES,
-  validateEnsDomainName,
+  normalizeName
 } from 'apps/web/src/utils/usernames';
 import { formatEthPrice, formatWeiPrice } from 'apps/web/src/utils/formatEthPrice';
 
@@ -32,12 +31,12 @@ async function getBasenameRegistrationPrice(name: string, years: number): Promis
     chain: base,
     transport: http(),
   });
-  const normalizedName = normalizeName(name);
-  if (!normalizedName) {
-    throw new Error('Invalid ENS domain name');
-  }
-
   try {
+    const normalizedName = normalizeName(name);
+    if (!normalizedName) {
+      throw new Error('Invalid ENS domain name');
+    }
+
     const price = await client.readContract({
       address: REGISTER_CONTRACT_ADDRESSES[base.id],
       abi: REGISTER_CONTRACT_ABI,
@@ -49,16 +48,6 @@ async function getBasenameRegistrationPrice(name: string, years: number): Promis
     console.error('Could not get claim price:', error);
     return null;
   }
-}
-
-function normalizeName(name: string) {
-  const normalizedName: string = normalizeEnsDomainName(name);
-  const { valid } = validateEnsDomainName(name);
-
-  if (!valid) {
-    return null;
-  }
-  return normalizedName;
 }
 
 function secondsInYears(years: number) {

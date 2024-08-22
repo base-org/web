@@ -2,10 +2,9 @@ import { NextApiRequest, NextApiResponse } from 'apps/web/node_modules/next/dist
 import { createPublicClient, http } from 'viem';
 import { base } from 'viem/chains';
 import {
-  normalizeEnsDomainName,
   REGISTER_CONTRACT_ABI,
   REGISTER_CONTRACT_ADDRESSES,
-  validateEnsDomainName,
+  normalizeName,
 } from 'apps/web/src/utils/usernames';
 
 export type IsNameAvailableResponse = {
@@ -31,13 +30,12 @@ async function isNameAvailable(name: string): Promise<boolean> {
     chain: base,
     transport: http(),
   });
-  const normalizedName: string = normalizeEnsDomainName(name);
-  const { valid } = validateEnsDomainName(name);
-  if (!valid) {
-    throw new Error('Invalid ENS domain name');
-  }
-
   try {
+    const normalizedName = normalizeName(name);
+    if (!normalizedName) {
+      throw new Error('Invalid ENS domain name');
+    }
+
     const available = await client.readContract({
       address: REGISTER_CONTRACT_ADDRESSES[base.id],
       abi: REGISTER_CONTRACT_ABI,
