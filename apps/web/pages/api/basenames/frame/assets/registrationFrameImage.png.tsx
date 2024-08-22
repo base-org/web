@@ -9,7 +9,7 @@ import { getUserNamePicture, UsernameTextRecordKeys } from 'apps/web/src/utils/u
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import ImageRaw from 'apps/web/src/components/ImageRaw';
-import registrationImageBackground from './registration-bg.png';
+import registrationImageBackground from 'apps/web/public/images/frames/basenames/registration-bg.png';
 
 export const config = {
   runtime: 'edge',

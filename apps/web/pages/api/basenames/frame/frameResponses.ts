@@ -120,10 +120,10 @@ export const txSuccessFrame = (name: string) =>
       {
         action: 'link',
         label: `Go to your profile`,
+        target: `${DOMAIN}/name/${name}`,
       },
     ],
     image: {
       src: `${DOMAIN}/images/basenames/contract-uri/feature-image.png`,
     },
-    target: `${DOMAIN}/name/${name}`,
   });
