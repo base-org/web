@@ -4,9 +4,10 @@ import { base } from 'viem/chains';
 import {
   REGISTER_CONTRACT_ABI,
   REGISTER_CONTRACT_ADDRESSES,
-  normalizeName
+  normalizeName,
 } from 'apps/web/src/utils/usernames';
-import { formatEthPrice, formatWeiPrice } from 'apps/web/src/utils/formatEthPrice';
+import { weiToEth } from 'apps/web/src/utils/weiToEth';
+import { formatWei } from 'apps/web/src/utils/formatWei';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { name, years } = req.query;
@@ -17,8 +18,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       throw new Error('Could not get registration price.');
     }
 
-    const registrationPriceInWei = formatWeiPrice(registrationPrice).toString();
-    const registrationPriceInEth = formatEthPrice(registrationPrice).toString();
+    const registrationPriceInWei = formatWei(registrationPrice).toString();
+    const registrationPriceInEth = weiToEth(registrationPrice).toString();
     return res.status(200).json({ registrationPriceInWei, registrationPriceInEth });
   } catch (error) {
     console.error('Could not get registration price: ', error);
