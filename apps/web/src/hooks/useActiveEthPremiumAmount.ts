@@ -40,5 +40,5 @@ export function usePremiumEndDurationRemaining() {
     }
   }, 1000);
 
-  return timeLeft;
+  return { seconds: launchTimeSeconds, timestamp: timeLeft };
 }
