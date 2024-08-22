@@ -4,4 +4,5 @@ export enum RawErrorStrings {
   TooLong = 'Name is too long',
   DisallowedChars = 'disallowed character:',
   Invalid = 'Name is invalid',
+  InvalidUnderscore = 'underscore allowed only at start',
 }

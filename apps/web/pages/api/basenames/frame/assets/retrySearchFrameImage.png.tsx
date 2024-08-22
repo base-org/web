@@ -55,6 +55,15 @@ const errorMap: Record<RawErrorStrings, JSX.Element> = {
       Search for another name
     </div>
   ),
+  [RawErrorStrings.InvalidUnderscore]: (
+    <div style={divStyle}>
+      Sorry, underscores are
+      <br />
+      only allowed at the start.
+      <br />
+      Search for another name
+    </div>
+  ),
 } as const;
 
 export default async function handler(request: NextRequest) {
