@@ -3,8 +3,8 @@ import { FrameRequest } from '@coinbase/onchainkit/frame';
 import {
   confirmationFrame,
   buttonIndexToYears,
-  DOMAIN,
 } from 'apps/web/pages/api/basenames/frame/frameResponses';
+import { DOMAIN } from 'apps/web/pages/api/basenames/frame/constants';
 
 type ButtonIndex = 1 | 2 | 3 | 4;
 const validButtonIndexes: readonly ButtonIndex[] = [1, 2, 3, 4] as const;
