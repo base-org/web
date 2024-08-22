@@ -28,7 +28,7 @@ export function middleware(req: NextRequest) {
 
     // Open image src
     const cspHeader = `
-        img-src 'self' https: data:;
+        img-src 'self' https: data: blob:;
         media-src 'self' https: data: blob:;
     `;
 
