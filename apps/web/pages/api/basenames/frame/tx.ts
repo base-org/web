@@ -106,7 +106,53 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       chainId: `eip155:${base.id}`,
       method: 'eth_sendTransaction',
       params: {
-        abi: RegistrarControllerABI,
+        abi: [
+          {
+            type: 'function',
+            name: 'register',
+            inputs: [
+              {
+                name: 'request',
+                type: 'tuple',
+                internalType: 'struct RegistrarController.RegisterRequest',
+                components: [
+                  {
+                    name: 'name',
+                    type: 'string',
+                    internalType: 'string',
+                  },
+                  {
+                    name: 'owner',
+                    type: 'address',
+                    internalType: 'address',
+                  },
+                  {
+                    name: 'duration',
+                    type: 'uint256',
+                    internalType: 'uint256',
+                  },
+                  {
+                    name: 'resolver',
+                    type: 'address',
+                    internalType: 'address',
+                  },
+                  {
+                    name: 'data',
+                    type: 'bytes[]',
+                    internalType: 'bytes[]',
+                  },
+                  {
+                    name: 'reverseRecord',
+                    type: 'bool',
+                    internalType: 'bool',
+                  },
+                ],
+              },
+            ],
+            outputs: [],
+            stateMutability: 'payable',
+          },
+        ],
         data,
         to: REGISTRAR_CONTROLLER_ADDRESS,
         value: priceInWei.toString(),
