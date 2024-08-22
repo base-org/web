@@ -28,11 +28,11 @@ export default async function GET(request: Request) {
     return NextResponse.json({ error: '406: base domain name is missing' }, { status: 406 });
 
   // Get labelhash from tokenId
-  const labelHash = toHex(BigInt(tokenId));
+  const labelhash = toHex(BigInt(tokenId), { size: 32 });
 
   // Convert labelhash to namehash
   const namehashNode = keccak256(
-    encodePacked(['bytes32', 'bytes32'], [namehash(baseDomainName), labelHash]),
+    encodePacked(['bytes32', 'bytes32'], [namehash(baseDomainName), labelhash]),
   );
 
   let basenameFormatted = undefined;
