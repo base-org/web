@@ -3,10 +3,10 @@ import { FrameRequest } from '@coinbase/onchainkit/frame';
 import { formatDefaultUsername, validateEnsDomainName } from 'apps/web/src/utils/usernames';
 import type { IsNameAvailableResponse } from 'apps/web/pages/api/basenames/[name]/isNameAvailable';
 import {
-  DOMAIN,
   retryInputSearchValueFrame,
   setYearsFrame,
 } from 'apps/web/pages/api/basenames/frame/frameResponses';
+import { DOMAIN } from 'apps/web/pages/api/basenames/frame/constants';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
