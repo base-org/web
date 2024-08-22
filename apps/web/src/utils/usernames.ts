@@ -382,6 +382,16 @@ export function getChainForBasename(username: BaseName): Chain {
   return username.endsWith(`.${USERNAME_DOMAINS[base.id]}`) ? base : baseSepolia;
 }
 
+export function normalizeName(name: string) {
+  const normalizedName: string = normalizeEnsDomainName(name);
+  const { valid } = validateEnsDomainName(name);
+
+  if (!valid) {
+    return null;
+  }
+  return normalizedName;
+}
+
 // Assume domainless name to .base.eth
 export async function formatDefaultUsername(username: string | BaseName) {
   if (
