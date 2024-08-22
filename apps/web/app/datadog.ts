@@ -2,7 +2,6 @@
 'use client';
 
 import { datadogRum } from '@datadog/browser-rum';
-import { datadogLogs } from '@datadog/browser-logs';
 import { isDevelopment } from 'apps/web/src/constants';
 import { useEffect } from 'react';
 
@@ -32,15 +31,12 @@ export default function DatadogInit() {
       trackResources: true,
       trackLongTasks: true,
       defaultPrivacyLevel: 'mask',
-    });
-    datadogLogs.init({
-      clientToken: process.env.nextPublicDatadogClientToken as string,
-      env: process.env.NODE_ENV as string,
-      site: 'datadoghq.com',
-      forwardConsoleLogs: ['error', 'info'],
-      forwardErrorsToLogs: true,
-      sessionSampleRate: 100,
-      service: 'base-org',
+      allowedTracingUrls: [
+        {
+          match: (url: string) => url.startsWith('https://base.org/api'),
+          propagatorTypes: ['datadog'],
+        },
+      ],
     });
   }, []);
 
