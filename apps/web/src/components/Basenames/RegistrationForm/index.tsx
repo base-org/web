@@ -105,12 +105,13 @@ export default function RegistrationForm() {
   const { data: initialPrice } = useNameRegistrationPrice(selectedName, years);
   const { data: singleYearEthCost } = useNameRegistrationPrice(selectedName, 1);
   const { basePrice: singleYearBasePrice, premiumPrice } = useRentPrice(selectedName, 1);
-  const formattedPremiumCost = Number(formatEther(premiumPrice ?? 0)).toLocaleString(
-    undefined,
-    {
-      maximumFractionDigits: 3,
-    },
-  );
+  const premiumValue = Number(formatEther(premiumPrice ?? 0));
+  const formattedPremiumCost =
+    premiumValue < 0.001
+      ? '<0.001'
+      : premiumValue.toLocaleString(undefined, {
+          maximumFractionDigits: 3,
+        });
   const { data: discountedPrice } = useDiscountedNameRegistrationPrice(
     selectedName,
     years,
