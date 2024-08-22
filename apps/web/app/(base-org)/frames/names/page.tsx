@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
   },
   other: {
-    ...initialFrame,
+    ...initialFrame as Record<string, string>,
   },
 };
 
@@ -27,8 +27,8 @@ export default async function NameFrame() {
   return (
     <div className="mt-[-96px] flex w-full flex-col items-center bg-black pb-[96px]">
       <div className="flex h-screen w-full max-w-[1440px] flex-col items-center justify-center gap-12 px-8 py-8 pt-28">
-        <div className="flex aspect-[993/516] h-auto w-full max-w-[1024px] flex-col items-center relative">
-          <Link href='/names'>
+        <div className="relative flex aspect-[993/516] h-auto w-full max-w-[1024px] flex-col items-center">
+          <Link href="/names">
             <Image src={claimBasename.src} alt="Claim a basename today" fill />
           </Link>
         </div>
