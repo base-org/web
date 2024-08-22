@@ -87,6 +87,9 @@ async function signMessageWithTrustedSigner(
   targetAddress: Address,
   expiry: number,
 ) {
+  if (!trustedSignerAddress || !isAddress(trustedSignerAddress)) {
+    throw new Error('Must provide a valid trustedSignerAddress');
+  }
   // encode the message
   const message = encodePacked(
     ['bytes2', 'address', 'address', 'address', 'uint64'],
