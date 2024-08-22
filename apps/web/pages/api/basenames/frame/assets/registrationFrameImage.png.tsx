@@ -1,15 +1,15 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
-import { namehash } from 'viem';
 import { base } from 'viem/chains';
 import { isDevelopment } from 'apps/web/src/constants';
-import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
-import { getUserNamePicture, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
-import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
-import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
+import {
+  getUserNamePicture,
+  UsernameTextRecordKeys,
+  getBasenameTextRecord,
+} from 'apps/web/src/utils/usernames';
 import ImageRaw from 'apps/web/src/components/ImageRaw';
-import registrationImageBackground from 'apps/web/public/images/frames/basenames/registration-bg.png';
+import registrationImageBackground from 'apps/web/pages/api/basenames/frame/assets/registration-bg.png';
 
 export const config = {
   runtime: 'edge',
@@ -33,14 +33,7 @@ export default async function handler(request: NextRequest) {
 
   // NOTE: Do we want to fail if the name doesn't exists?
   try {
-    const nameHash = namehash(username);
-    const client = getBasenamePublicClient(chainId);
-    const avatar = await client.readContract({
-      abi: L2ResolverAbi,
-      address: USERNAME_L2_RESOLVER_ADDRESSES[chainId],
-      args: [nameHash, UsernameTextRecordKeys.Avatar],
-      functionName: 'text',
-    });
+    const avatar = getBasenameTextRecord(username, UsernameTextRecordKeys.Avatar);
 
     // Satori Doesn't support webp
     if (avatar && !avatar.endsWith('.webp')) {
