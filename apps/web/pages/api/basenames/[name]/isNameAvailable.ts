@@ -1,21 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'apps/web/node_modules/next/dist/shared/lib/utils';
+import { createPublicClient, http } from 'viem';
+import { base } from 'viem/chains';
 import {
   normalizeEnsDomainName,
   REGISTER_CONTRACT_ABI,
   REGISTER_CONTRACT_ADDRESSES,
   validateEnsDomainName,
 } from 'apps/web/src/utils/usernames';
-import { base } from 'viem/chains'
-import { ethers } from 'ethers';
 
 export type IsNameAvailableResponse = {
   nameIsAvailable: boolean;
 };
-
-const url = 'https://mainnet.base.org';
-const provider = new ethers.providers.JsonRpcProvider(url);
-const contractAddress = REGISTER_CONTRACT_ADDRESSES[base.id];
-const contract = new ethers.Contract(contractAddress, REGISTER_CONTRACT_ABI, provider);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { name } = req.query;
@@ -32,15 +27,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 }
 
 async function isNameAvailable(name: string): Promise<boolean> {
+  const client = createPublicClient({
+    chain: base,
+    transport: http(),
+  });
   const normalizedName: string = normalizeEnsDomainName(name);
   const { valid } = validateEnsDomainName(name);
-
   if (!valid) {
     throw new Error('Invalid ENS domain name');
   }
 
   try {
-    const available = (await contract.available(normalizedName)) as boolean;
+    const available = await client.readContract({
+      address: REGISTER_CONTRACT_ADDRESSES[base.id],
+      abi: REGISTER_CONTRACT_ABI,
+      functionName: 'available',
+      args: [normalizedName],
+    });
     return available;
   } catch (error) {
     console.error('Error checking name availability:', error);
