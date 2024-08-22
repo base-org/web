@@ -290,7 +290,11 @@ export const normalizeEnsDomainName = (name: string) => {
   try {
     return normalize(name);
   } catch (error) {
-    return normalize(sanitizeEnsDomainName(name));
+    try {
+      return normalize(sanitizeEnsDomainName(name));
+    } catch (sanitizedError) {
+      return '';
+    }
   }
 };
 
