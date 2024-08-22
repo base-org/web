@@ -42,5 +42,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   // If error is not an instance of Error, return a generic error message
-  return res.status(409).json({ error: 'An unexpected error occurred' });
+  return res.status(500).json({ error: 'An unexpected error occurred' });
 }

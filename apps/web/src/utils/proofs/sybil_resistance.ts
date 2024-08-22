@@ -20,6 +20,7 @@ import {
   DiscountTypes,
   PreviousClaim,
   PreviousClaims,
+  ProofsException,
   VerifiedAccount,
 } from 'apps/web/src/utils/proofs/types';
 import { REGISTER_CONTRACT_ADDRESSES } from 'apps/web/src/utils/usernames';
@@ -122,7 +123,7 @@ export async function sybilResistantUsernameSigning(
   const discountValidatorAddress = discountTypes[chainId][discountType]?.discountValidatorAddress;
 
   if (!discountValidatorAddress || !isAddress(discountValidatorAddress)) {
-    throw new Error('Must provide a valid discountValidatorAddress');
+    throw new ProofsException('Must provide a valid discountValidatorAddress', 500);
   }
 
   const attestations = await getAttestations(
@@ -144,7 +145,7 @@ export async function sybilResistantUsernameSigning(
     const hasPreviouslyRegistered = await hasRegisteredWithDiscount(linkedAddresses, chainId);
     // if any linked address registered previously return an error
     if (hasPreviouslyRegistered) {
-      throw new Error('You have already claimed a discounted basename (onchain).');
+      throw new ProofsException('You have already claimed a discounted basename (onchain).', 409);
     }
 
     const kvKey = `${previousClaimsKVPrefix}${idemKey}`;
@@ -153,8 +154,9 @@ export async function sybilResistantUsernameSigning(
     const previousClaim = previousClaims[discountType];
     if (previousClaim) {
       if (previousClaim.address != address) {
-        throw new Error(
+        throw new ProofsException(
           'You tried claiming this with a different address, wait a couple minutes to try again.',
+          400,
         );
       }
       // return previously signed message
@@ -185,6 +187,9 @@ export async function sybilResistantUsernameSigning(
     };
   } catch (error) {
     console.error(error);
+    if (error instanceof Error) {
+      throw new ProofsException(error.message, 500);
+    }
     throw error;
   }
 }
