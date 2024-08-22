@@ -2,7 +2,7 @@ import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 import { isDevelopment } from 'apps/web/src/constants';
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
-import retrySearchImageBackground from 'apps/web/public/images/frames/basenames/retry-search-image.png';
+import retrySearchImageBackground from 'apps/web/pages/api/basenames/frame/assets/retry-search-image.png';;
 
 export const config = {
   runtime: 'edge',
