@@ -49,7 +49,7 @@ export async function getWalletProofs(
   const hasPreviouslyRegistered = await hasRegisteredWithDiscount([address], chain);
   // if any linked address registered previously return an error
   if (hasPreviouslyRegistered) {
-    throw new ProofsException('This address has already claimed a username.', 400);
+    throw new ProofsException('This address has already claimed a username.', 409);
   }
   const [content] = await getProofsByNamespaceAndAddress(address, namespace, caseInsensitive);
   const proofs = content?.proofs ? (JSON.parse(content.proofs) as `0x${string}`[]) : [];

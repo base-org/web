@@ -1,5 +1,5 @@
 import { trustedSignerPKey } from 'apps/web/src/constants';
-import { DiscountType, proofValidation } from 'apps/web/src/utils/proofs';
+import { DiscountType, ProofsException, proofValidation } from 'apps/web/src/utils/proofs';
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -52,12 +52,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     );
     return res.status(200).json(result);
   } catch (error) {
-    console.error(error);
-    if (error instanceof Error) {
-      return res.status(409).json({ error: error.message });
+    if (error instanceof ProofsException) {
+      return res.status(error.statusCode).json({ error: error.message });
     }
-
-    // If error is not an instance of Error, return a generic error message
-    return res.status(409).json({ error: 'An unexpected error occurred' });
+    console.error(error);
   }
+
+  // If error is not an instance of Error, return a generic error message
+  return res.status(500).json({ error: 'An unexpected error occurred' });
 }

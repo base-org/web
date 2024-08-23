@@ -2,6 +2,7 @@ import { getFrameMetadata, getFrameHtmlResponse } from '@coinbase/onchainkit/fra
 import { FrameMetadataResponse } from '@coinbase/onchainkit/frame/types';
 import initialImage from 'apps/web/pages/api/basenames/frame/assets/initial-image.png';
 import searchImage from 'apps/web/pages/api/basenames/frame/assets/search-image.png';
+import txSubmittedImage from 'apps/web/pages/api/basenames/frame/assets/tx-submitted.png';
 import { DOMAIN } from 'apps/web/pages/api/basenames/frame/constants';
 
 export const initialFrame: FrameMetadataResponse = getFrameMetadata({
@@ -118,6 +119,6 @@ export const txSuccessFrame = (name: string) =>
       },
     ],
     image: {
-      src: `${DOMAIN}/images/basenames/contract-uri/feature-image.png`,
+      src: `${DOMAIN}/${txSubmittedImage.src}`,
     },
   });
