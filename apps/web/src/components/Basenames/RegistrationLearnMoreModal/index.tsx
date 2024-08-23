@@ -8,6 +8,8 @@ import Link from 'next/link';
 import baseBuildathonParticipant from './images/base-buildathon-participant.svg';
 import summerPassLvl3 from './images/summer-pass-lvl-3.svg';
 import cbidVerification from './images/cbid-verification.svg';
+import BNSOwnership from './images/bns.jpg';
+import BaseNFT from './images/base-nft.svg';
 import coinbaseOneVerification from './images/coinbase-one-verification.svg';
 import coinbaseVerification from './images/coinbase-verification.svg';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
@@ -42,6 +44,12 @@ export default function RegistrationLearnMoreModal({
   });
   const SummerPassRowClasses = classNames(rowClasses, {
     'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.SUMMER_PASS_LVL_3),
+  });
+  const BNSRowClasses = classNames(rowClasses, {
+    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.BNS_NAME),
+  });
+  const BaseDotEthNFTRowClasses = classNames(rowClasses, {
+    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.BASE_DOT_ETH_NFT),
   });
 
   const qualifiedClasses = classNames(
@@ -89,9 +97,9 @@ export default function RegistrationLearnMoreModal({
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
-                  imageClassName={CBRowClasses}
+                  imageClassName={CB1RowClasses}
                 />
-                <p className={classNames(CB1RowClasses)}>Coinbase One verification</p>
+                <p className={CB1RowClasses}>Coinbase One verification</p>
                 <InfoIcon />
               </div>
             </Tooltip>
@@ -102,7 +110,7 @@ export default function RegistrationLearnMoreModal({
             )}
           </li>
           <li className="flex items-center gap-3">
-            <Tooltip content="cb.id must have been claimed prior to Basenames launch">
+            <Tooltip content="cb.id must have been claimed prior to August 9, 2024.">
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={cbidVerification as StaticImageData}
@@ -110,9 +118,9 @@ export default function RegistrationLearnMoreModal({
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
-                  imageClassName={CBRowClasses}
+                  imageClassName={CBIDRowClasses}
                 />
-                <p className={classNames(CBIDRowClasses)}>A cb.id username</p>
+                <p className={CBIDRowClasses}>A cb.id username</p>
                 <InfoIcon />
               </div>
             </Tooltip>
@@ -131,9 +139,9 @@ export default function RegistrationLearnMoreModal({
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
-                  imageClassName={CBRowClasses}
+                  imageClassName={BuildathonRowClasses}
                 />
-                <p className={classNames(BuildathonRowClasses)}>Base buildathon participant</p>
+                <p className={BuildathonRowClasses}>Base buildathon participant</p>
                 <InfoIcon />
               </div>
             </Tooltip>
@@ -152,13 +160,55 @@ export default function RegistrationLearnMoreModal({
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
-                  imageClassName={CBRowClasses}
+                  imageClassName={SummerPassRowClasses}
                 />
-                <p className={classNames(SummerPassRowClasses)}>Summer Pass Level 3</p>
+                <p className={SummerPassRowClasses}>Summer Pass Level 3</p>
                 <InfoIcon />
               </div>
             </Tooltip>
             {allActiveDiscounts.has(Discount.SUMMER_PASS_LVL_3) && (
+              <div className={qualifiedClasses}>
+                <p className="text-green-60">Qualified</p>
+              </div>
+            )}
+          </li>
+          <li className="flex items-center gap-3">
+            <Tooltip content="BNS (.base) username holders are eligible for a 0.01 ETH discount">
+              <div className="flex flex-row items-center justify-start gap-2">
+                <ImageWithLoading
+                  src={BNSOwnership}
+                  alt="criteria icon"
+                  width={30}
+                  height={30}
+                  wrapperClassName="rounded-full"
+                  imageClassName={BNSRowClasses}
+                />
+                <p className={BNSRowClasses}>BNS username</p>
+                <InfoIcon />
+              </div>
+            </Tooltip>
+            {allActiveDiscounts.has(Discount.BNS_NAME) && (
+              <div className={qualifiedClasses}>
+                <p className="text-green-60">Qualified</p>
+              </div>
+            )}
+          </li>
+          <li className="flex items-center gap-3">
+            <Tooltip content="Available for anyone holding a base.eth NFT">
+              <div className="flex flex-row items-center justify-start gap-2">
+                <ImageWithLoading
+                  src={BaseNFT as StaticImageData}
+                  alt="criteria icon"
+                  width={30}
+                  height={30}
+                  wrapperClassName="rounded-full"
+                  imageClassName={BaseDotEthNFTRowClasses}
+                />
+                <p className={BaseDotEthNFTRowClasses}>Base.eth NFT</p>
+                <InfoIcon />
+              </div>
+            </Tooltip>
+            {allActiveDiscounts.has(Discount.BASE_DOT_ETH_NFT) && (
               <div className={qualifiedClasses}>
                 <p className="text-green-60">Qualified</p>
               </div>

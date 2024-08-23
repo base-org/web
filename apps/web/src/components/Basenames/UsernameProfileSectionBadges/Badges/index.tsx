@@ -1,6 +1,6 @@
-import { CoinbaseVerifications } from 'apps/web/src/hooks/useCoinbaseVerifications';
+import { CoinbaseVerifications } from '../hooks/useCoinbaseVerifications';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
-import { GuildBadges } from 'apps/web/src/hooks/useBaseGuild';
+import { GuildBadges } from '../hooks/useBaseGuild';
 
 // image imports
 import verifiedIdentity from './images/verifiedIdentity.webp';
@@ -131,10 +131,11 @@ export const BADGE_INFO: Record<
     grayImage: buildathonWinnerGray,
   },
   TALENT_SCORE: {
-    name: 'Talent Passport Score',
-    title: 'Talent Passport Builder Score',
-    description: "Your builder score as a Talent passport holder. You're legit!",
-    cta: 'Get your talent passport',
+    name: 'Builder Score',
+    title: 'Builder Score',
+    description:
+      "Builder Score is the sum of all credentials in your Talent Passport. You're legit!",
+    cta: 'Increase your Builder Score',
     ctaLink: 'https://passport.talentprotocol.com/',
     image: talentScore,
     grayImage: talentScoreGray,

@@ -23,7 +23,7 @@ function SocialPlatformButton({ socialPlatform }: { socialPlatform: SocialPlatfo
   const text = [
     'I just got my Basename as part of Onchain Summer! 😎',
     `Basenames are ENS names supercharged by ${socialPlatformHandle[socialPlatform]}: low-cost (or free!), easy to use, and a powerful tool for connecting builders across the onchain economy.`,
-    'Get yours at base.org/names',
+    'Get yours today.',
   ].join('\n\n');
 
   const socialMediaShareParams: SocialMediaShareParams = {

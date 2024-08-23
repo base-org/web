@@ -77,7 +77,7 @@ const contentSecurityPolicy = {
     ccaLiteDomains,
     walletconnectDomains,
   ],
-  'worker-src': ['blob:'],
+  'worker-src': ["'self'"],
   'connect-src': [
     "'self'",
     'https://blob.vercel-storage.com', // Vercel File storage
@@ -97,6 +97,7 @@ const contentSecurityPolicy = {
     'https://i.seadn.io/', // ens avatars
     'https://api.opensea.io', // enables getting ENS avatars
     'https://ipfs.io', // ipfs ens avatar resolution
+    'https://cloudflare-ipfs.com', // ipfs Cloudfare ens avatar resolution
     'wss://www.walletlink.org',
     'https://base.easscan.org/graphql',
     'https://api.guild.xyz/',
@@ -106,6 +107,8 @@ const contentSecurityPolicy = {
     'https://api.lab.amplitude.com/sdk/v2/vardata',
     'https://browser-intake-datadoghq.com', // datadog
     'https://*.datadoghq.com', //datadog
+    'https://translate.googleapis.com', // Let user translate our website
+    'https://sdk-api.neynar.com/', // Neymar API
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
@@ -116,6 +119,8 @@ const contentSecurityPolicy = {
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars
     'https://ipfs.io', // ipfs ens avatar resolution
+    'https://cloudflare-ipfs.com', // ipfs Cloudfare ens avatar resolution
+    'https://zku9gdedgba48lmr.public.blob.vercel-storage.com', // basename avatar upload to vercel blob
   ],
 };
 

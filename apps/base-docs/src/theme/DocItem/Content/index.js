@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import clsx from 'clsx';
 import { ThemeClassNames } from '@docusaurus/theme-common';
@@ -37,6 +38,7 @@ export default function DocItemContent({ children }) {
   const tutorial =
     frontMatter && frontMatter.slug ? tutorialData[frontMatter.slug.substring(1)] : null;
   const authorData = tutorial ? authors[tutorial.author] : null;
+
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
       {syntheticTitle && (

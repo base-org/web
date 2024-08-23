@@ -8,9 +8,9 @@ export default function Navbar() {
   return (
     <>
       <Banner
-        bannerName="onchainKitBanner"
-        href="https://onchainkit.xyz/?utm_source=basedocs&utm_medium=banner"
-        text="Build on Base in minutes with OnchainKit!"
+        bannerName="basenamesLaunchDocsBanner"
+        href="https://base.org/names?utm_source=docs&utm_medium=banner"
+        text="Claim Your Basename Today!"
       />
       <NavbarLayout>
         <NavbarContent />

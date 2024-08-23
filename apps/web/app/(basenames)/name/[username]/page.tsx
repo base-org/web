@@ -1,9 +1,11 @@
 import ProfileProviders from 'apps/web/app/(basenames)/name/[username]/ProfileProviders';
 import { Metadata } from 'next';
 import {
-  fetchAddress,
-  fetchDescription,
   formatDefaultUsername,
+  getBasenameAddress,
+  getBasenameOwner,
+  getBasenameTextRecord,
+  UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 import { redirect } from 'next/navigation';
 import classNames from 'classnames';
@@ -11,14 +13,14 @@ import { BaseName } from '@coinbase/onchainkit/identity';
 import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
 import ErrorsProvider from 'apps/web/contexts/Errors';
 
-type UsernameProfileProps = {
+export type UsernameProfileProps = {
   params: { username: BaseName };
 };
 
 export async function generateMetadata({ params }: UsernameProfileProps): Promise<Metadata> {
   const username = await formatDefaultUsername(params.username);
   const defaultDescription = `${username}, a Basename`;
-  const description = await fetchDescription(username);
+  const description = await getBasenameTextRecord(username, UsernameTextRecordKeys.Description);
 
   return {
     metadataBase: new URL('https://base.org'),
@@ -27,7 +29,6 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
     openGraph: {
       title: `Basenames | ${username}`,
       url: `/${username}`,
-      images: [`api/basenames/${username}/assets/coverImage.png`],
     },
     twitter: {
       card: 'summary_large_image',
@@ -36,12 +37,13 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
 }
 
 export default async function Username({ params }: UsernameProfileProps) {
-  let username = await formatDefaultUsername(params.username);
+  let username = await formatDefaultUsername(decodeURIComponent(params.username) as BaseName);
 
-  const ensAddress = await fetchAddress(username);
+  const address = await getBasenameAddress(username);
+  const owner = await getBasenameOwner(username);
 
-  // Domain doesn't exist
-  if (!ensAddress) {
+  // Domain does have address or owner (ie: doesn't exist)
+  if (!address || !owner) {
     redirect(`/name/not-found?name=${username}`);
   }
 
@@ -51,7 +53,7 @@ export default async function Username({ params }: UsernameProfileProps) {
 
   return (
     <ErrorsProvider context="profile">
-      <ProfileProviders username={username} address={ensAddress}>
+      <ProfileProviders username={username}>
         <main className={usernameProfilePageClasses}>
           <UsernameProfile />
         </main>
