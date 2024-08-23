@@ -13,8 +13,16 @@ build:
     - BaldurECR:
         name: docs
         path: ./apps/base-docs/Dockerfile
-  multi_arch: true
+    - BaldurECR:
+        name: bridge
+        path: ./apps/bridge/Dockerfile
+    - BaldurECR:
+        name: goerli-bridge
+        path: ./apps/bridge/Dockerfile
+    - BaldurECR:
+        name: sepolia-bridge
+        path: ./apps/bridge/Dockerfile
 
 operate:
   slack_channels:
-    - '#base-codeflow-notifications'
+    - "#base-codeflow-notifications"
