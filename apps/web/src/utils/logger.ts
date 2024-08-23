@@ -39,7 +39,7 @@ class CustomLogger {
     }
   }
 
-  private log(level: LogLevel, message: string, meta?: Record<string, unknown>) {
+  private log(level: LogLevel, message: unknown, meta?: Record<string, unknown>) {
     if (level === 'debug' || level === 'verbose' || level === 'info') {
       console.log(message, meta);
     } else if (typeof console[level] === 'function') {
@@ -48,29 +48,29 @@ class CustomLogger {
       console.log(message, meta);
     }
     if (typeof window === 'undefined') {
-      this.sendToDatadog(level, message, meta).catch(() => {
+      this.sendToDatadog(level, message as string, meta).catch(() => {
         console.error('Failed to send log to Datadog');
       });
     }
   }
 
-  info(message: string, meta?: Record<string, unknown>) {
+  info(message: unknown, meta?: Record<string, unknown>) {
     this.log('info', message, meta);
   }
 
-  warn(message: string, meta?: Record<string, unknown>) {
+  warn(message: unknown, meta?: Record<string, unknown>) {
     this.log('warn', message, meta);
   }
 
-  error(message: string, meta?: Record<string, unknown>) {
+  error(message: unknown, meta?: Record<string, unknown>) {
     this.log('error', message, meta);
   }
 
-  debug(message: string, meta?: Record<string, unknown>) {
+  debug(message: unknown, meta?: Record<string, unknown>) {
     this.log('debug', message, meta);
   }
 
-  verbose(message: string, meta?: Record<string, unknown>) {
+  verbose(message: unknown, meta?: Record<string, unknown>) {
     this.log('verbose', message, meta);
   }
 }

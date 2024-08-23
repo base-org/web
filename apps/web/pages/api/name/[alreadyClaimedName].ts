@@ -61,7 +61,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   } catch (e) {
     if (e instanceof Error) {
       logger.error(e);
-      res.status(500).json({ error: `failed to generate suggestions ${e.message}` });
+      res.status(500).json({ error: `failed to generate suggestions` });
     }
   }
 }
