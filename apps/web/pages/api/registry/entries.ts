@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { db } from 'apps/web/src/utils/ocsRegistry';
 import { kv } from '@vercel/kv';
-import { logger } from 'apps/web/src/utils/logger';
 
 const pageKey = 'api.ocs_registry.entries';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -50,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     await kv.incr(`stat:requests.${pageKey}`);
   } catch (error) {
-    logger.error(error);
+    console.error(error);
   }
   // Set caching headers
   res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate');

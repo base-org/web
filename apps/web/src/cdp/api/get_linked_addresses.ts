@@ -1,5 +1,4 @@
 import { cdpGet } from 'apps/web/src/cdp/utils';
-import { logger } from 'apps/web/src/utils/logger';
 import { Address, isAddress } from 'viem';
 
 export type LinkedAddresses = {
@@ -43,7 +42,7 @@ export async function getLinkedAddresses(address: string): Promise<LinkedAddress
 
     throw new Error(`Unexpected error: ${response.statusText}, Response: ${errorResponse}`);
   } catch (error) {
-    logger.error('Error fetching linked addresses:', error);
+    console.error('Error fetching linked addresses:', error);
     throw error;
   }
 }
