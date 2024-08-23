@@ -3,7 +3,6 @@
 
 import { datadogRum } from '@datadog/browser-rum';
 import { isDevelopment } from 'apps/web/src/constants';
-import { logger } from 'apps/web/src/utils/logger';
 import { useEffect } from 'react';
 
 const nextPublicDatadogAppId = process.env.NEXT_PUBLIC_DATADOG_APP_ID ?? '';
@@ -15,7 +14,7 @@ export default function DatadogInit() {
     if (isDevelopment) return;
 
     if (!nextPublicDatadogAppId || !nextPublicDatadogClientToken) {
-      logger.warn('Datadog is not configured');
+      console.warn('Datadog is not configured');
       return;
     }
     datadogRum.init({
