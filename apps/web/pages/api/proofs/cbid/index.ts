@@ -5,6 +5,7 @@ import {
   ProofTableNamespace,
   proofValidation,
 } from 'apps/web/src/utils/proofs';
+import { logger } from 'apps/web/src/utils/logger';
 
 /*
 this endpoint returns whether or not the account has a cb.id
@@ -41,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (error instanceof ProofsException) {
       return res.status(error.statusCode).json({ error: error.message });
     }
-    console.error(error);
+    logger.error(error);
   }
   // If error is not an instance of Error, return a generic error message
   return res.status(500).json({ error: 'An unexpected error occurred' });

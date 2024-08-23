@@ -1,4 +1,5 @@
 import { trustedSignerPKey } from 'apps/web/src/constants';
+import { logger } from 'apps/web/src/utils/logger';
 import {
   DiscountType,
   ProofsException,
@@ -62,7 +63,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (error instanceof ProofsException) {
       return res.status(error.statusCode).json({ error: error.message });
     }
-    console.error(error);
+    logger.error(error);
   }
 
   // If error is not an instance of Error, return a generic error message
