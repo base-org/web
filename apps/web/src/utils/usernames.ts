@@ -42,7 +42,6 @@ import {
 } from 'apps/web/src/utils/urls';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
-import { logger } from 'apps/web/src/utils/logger';
 
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 20;
@@ -586,7 +585,7 @@ export async function getBasenameAvailable(name: string, chain: Chain): Promise<
     });
     return available;
   } catch (error) {
-    logger.error('Error checking name availability:', error);
+    console.error('Error checking name availability:', error);
     throw error;
   }
 }

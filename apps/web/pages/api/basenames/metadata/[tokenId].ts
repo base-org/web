@@ -3,7 +3,6 @@ import L2Resolver from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { isDevelopment } from 'apps/web/src/constants';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
-import { logger } from 'apps/web/src/utils/logger';
 import { formatBaseEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
 import { NextResponse } from 'next/server';
 import { encodePacked, keccak256, namehash, toHex } from 'viem';
@@ -46,7 +45,7 @@ export default async function GET(request: Request) {
       functionName: 'name',
     });
   } catch (error) {
-    logger.error(error);
+    console.log(error);
   }
 
   // Premints are hardcoded, the list will reduce when/if they get claimed

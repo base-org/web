@@ -2,7 +2,6 @@
 
 import { datadogRum } from '@datadog/browser-rum';
 import { isDevelopment } from 'apps/web/src/constants';
-import { logger } from 'apps/web/src/utils/logger';
 import { ReactNode, createContext, useCallback, useContext, useMemo } from 'react';
 
 export type ErrorsContextProps = {
@@ -44,11 +43,6 @@ export default function ErrorsProvider({ children, context }: ErrorsProviderProp
         console.info(`Context: "${fullContext}"`);
         console.log('--------------------------------------\n');
         return;
-      } else {
-        logger.error(`Error caught with message: "${message}"`, {
-          context: fullContext,
-          message: message,
-        });
       }
       datadogRum.addError(error, { context: fullContext, message: message });
     },

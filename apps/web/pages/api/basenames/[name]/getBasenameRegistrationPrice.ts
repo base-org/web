@@ -8,7 +8,6 @@ import {
 } from 'apps/web/src/utils/usernames';
 import { weiToEth } from 'apps/web/src/utils/weiToEth';
 import { formatWei } from 'apps/web/src/utils/formatWei';
-import { logger } from 'apps/web/src/utils/logger';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { name, years } = req.query;
@@ -23,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const registrationPriceInEth = weiToEth(registrationPrice).toString();
     return res.status(200).json({ registrationPriceInWei, registrationPriceInEth });
   } catch (error) {
-    logger.error('Could not get registration price: ', error);
+    console.error('Could not get registration price: ', error);
     return res.status(500).json(error);
   }
 }
@@ -47,7 +46,7 @@ async function getBasenameRegistrationPrice(name: string, years: number): Promis
     });
     return price;
   } catch (error) {
-    logger.error('Could not get claim price:', error);
+    console.error('Could not get claim price:', error);
     return null;
   }
 }
