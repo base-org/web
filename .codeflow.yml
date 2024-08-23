@@ -10,11 +10,9 @@ build:
     - BaldurECR:
         name: web
         path: ./apps/web/Dockerfile
-        architecutre: amd64
     - BaldurECR:
         name: docs
         path: ./apps/base-docs/Dockerfile
-        architecutre: amd64
   multi_arch: true
 
 operate:
