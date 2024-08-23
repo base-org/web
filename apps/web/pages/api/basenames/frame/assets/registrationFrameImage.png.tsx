@@ -110,7 +110,7 @@ export default async function handler(request: NextRequest) {
                 textAlign: 'center',
               }}
             >
-              Register for: {years} years
+              Register for: {years} year{Number(years) > 1 ? 's' : ''}
             </span>
           )}
           {priceInEth && (
