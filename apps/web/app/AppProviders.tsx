@@ -30,6 +30,7 @@ import ClientAnalyticsScript from 'apps/web/src/components/ClientAnalyticsScript
 import dynamic from 'next/dynamic';
 import ErrorsProvider from 'apps/web/contexts/Errors';
 import { isDevelopment } from 'apps/web/src/constants';
+import { logger } from 'apps/web/src/utils/logger';
 
 const DynamicCookieBannerWrapper = dynamic(
   async () => import('apps/web/src/components/CookieBannerWrapper'),
@@ -104,7 +105,7 @@ export default function AppProviders({ children }: AppProvidersProps) {
     }
   }, []);
 
-  const handleLogError = useCallback((err: Error) => console.error(err), []);
+  const handleLogError = useCallback((err: Error) => logger.error(err), []);
 
   useSprig(sprigEnvironmentId);
 
@@ -114,7 +115,7 @@ export default function AppProviders({ children }: AppProvidersProps) {
         projectName="base_web"
         locale="en"
         region={Region.DEFAULT}
-        log={console.log}
+        log={logger.info}
         onError={handleLogError}
         onPreferenceChange={setTrackingPreference}
         config={cookieManagerConfig}

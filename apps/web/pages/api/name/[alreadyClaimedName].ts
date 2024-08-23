@@ -1,4 +1,5 @@
 import { queryCbGpt } from 'apps/web/src/cdp/api/cb-gpt';
+import { logger } from 'apps/web/src/utils/logger';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export type NameSuggestionResponseData = {
@@ -58,8 +59,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     });
     res.status(200).json({ suggestion: JSON.parse(suggestion.response) as string[] });
   } catch (e) {
-    console.error(e);
     if (e instanceof Error) {
+      logger.error(e);
       res.status(500).json({ error: `failed to generate suggestions ${e.message}` });
     }
   }
