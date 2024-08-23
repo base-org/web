@@ -6,6 +6,11 @@ import {
 } from '@coinbase/onchainkit/frame';
 import { encodeFunctionData, namehash } from 'viem';
 import { base } from 'viem/chains';
+import logEvent, {
+  ActionType,
+  ComponentType,
+  AnalyticsEventImportance,
+} from 'libs/base-ui/utils/logEvent';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
@@ -34,6 +39,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method !== 'POST') {
     return res.status(405).json({ error: `Tx Screen — Method (${req.method}) Not Allowed` });
   }
+  logEvent(
+    'claim_frame_tx_validation_initiated',
+    {
+      action: ActionType.click,
+      componentType: ComponentType.button,
+      context: 'frame',
+    },
+    AnalyticsEventImportance.high,
+  );
 
   const body = req.body as FrameRequest;
   let message;
@@ -71,6 +85,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     years = messageState.targetYears;
     priceInWei = messageState.registrationPriceInWei;
   } catch (e) {
+    logEvent(
+      'claim_frame_tx_invalid_data',
+      {
+        action: ActionType.process,
+        context: 'frame',
+      },
+      AnalyticsEventImportance.high,
+    );
     return res.status(500).json({ error: e });
   }
 
@@ -158,8 +180,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         value: priceInWei.toString(),
       },
     };
+    logEvent(
+      'claim_frame_tx_validation_success',
+      {
+        action: ActionType.process,
+        context: 'frame',
+      },
+      AnalyticsEventImportance.high,
+    );
     return res.status(200).json(txData);
   } catch (error) {
+    logEvent(
+      'claim_frame_error_tx_validation',
+      {
+        action: ActionType.process,
+        context: 'frame',
+      },
+      AnalyticsEventImportance.high,
+    );
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }

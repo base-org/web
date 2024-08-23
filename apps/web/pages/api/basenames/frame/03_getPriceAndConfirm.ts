@@ -1,5 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import { FrameRequest } from '@coinbase/onchainkit/frame';
+import logEvent, {
+  ActionType,
+  ComponentType,
+  AnalyticsEventImportance,
+} from 'libs/base-ui/utils/logEvent';
 import {
   confirmationFrame,
   buttonIndexToYears,
@@ -23,6 +28,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method !== 'POST') {
     return res.status(405).json({ error: `Confirm Screen — Method (${req.method}) Not Allowed` });
   }
+  logEvent(
+    'claim_frame_set_years',
+    {
+      action: ActionType.click,
+      componentType: ComponentType.button,
+      context: 'frame',
+    },
+    AnalyticsEventImportance.high,
+  );
 
   const body = req.body as FrameRequest;
   const { untrustedData } = body;
@@ -34,8 +48,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const buttonIndex = untrustedData.buttonIndex as ButtonIndex;
   if (!validButtonIndexes.includes(buttonIndex)) {
+    logEvent(
+      'claim_frame_set_years_invalid',
+      {
+        action: ActionType.process,
+        context: 'frame',
+      },
+      AnalyticsEventImportance.high,
+    );
     return res.status(500).json({ error: 'Internal Server Error' });
   }
+  logEvent(
+    'claim_frame_set_years_success',
+    {
+      action: ActionType.process,
+      componentType: ComponentType.button,
+      context: 'frame',
+    },
+    AnalyticsEventImportance.high,
+  );
   const targetYears = buttonIndexToYears[buttonIndex];
 
   const getRegistrationPriceResponse = await fetch(
@@ -46,6 +77,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     getRegistrationPriceResponseData as GetBasenameRegistrationPriceResponseType;
 
   try {
+    logEvent(
+      'claim_frame_get_price_success',
+      {
+        action: ActionType.process,
+        componentType: ComponentType.button,
+        context: 'frame',
+      },
+      AnalyticsEventImportance.high,
+    );
     return res
       .status(200)
       .setHeader('Content-Type', 'text/html')
@@ -59,6 +99,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         ),
       );
   } catch (error) {
+    logEvent(
+      'claim_frame_error_get_price_confirm',
+      {
+        action: ActionType.process,
+        context: 'frame',
+      },
+      AnalyticsEventImportance.high,
+    );
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
