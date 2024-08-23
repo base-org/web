@@ -1,7 +1,6 @@
-FROM 652969937640.dkr.ecr.us-east-1.amazonaws.com/containers/node:current
+FROM arm64v8/node:current
 
 RUN apt-get update && apt-get install -y zip
-
 ENV NODE_ENV=production
 
 WORKDIR /repo
