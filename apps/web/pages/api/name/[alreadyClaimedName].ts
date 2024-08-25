@@ -58,9 +58,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     });
     res.status(200).json({ suggestion: JSON.parse(suggestion.response) as string[] });
   } catch (e) {
-    console.error(e);
+    console.error(`Error in queryCbGpt: ${(e as Error).message}`);
     if (e instanceof Error) {
-      res.status(500).json({ error: `failed to generate suggestions ${e.message}` });
+      res.status(500).json({ error: 'failed to generate suggestions' });
     }
   }
 }
