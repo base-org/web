@@ -72,6 +72,13 @@ To get started, [sign up](https://www.covalenthq.com/platform/?utm_source=base&u
 
 ---
 
+## DipDup
+[DipDup](https://dipdup.io) is a Python framework for building smart contract indexers. It helps developers focus on business logic instead of writing a boilerplate to store and serve data. DipDup-based indexers are selective, which means only required data is requested. This approach allows to achieve faster indexing times and decreased load on underlying APIs.
+
+To get started, visit the [documentation](https://dipdup.io/docs/supported-networks/base) or follow the [quickstart](https://dipdup.io/docs/quickstart-evm) guide.
+
+---
+
 ## Envio
 
 [Envio](https://envio.dev) is a full-featured data indexing solution that provides application developers with a seamless and efficient way to index and aggregate real-time and historical blockchain data for any EVM. The indexed data is easily accessible through custom GraphQL queries, providing developers with the flexibility and power to retrieve specific information.
@@ -96,6 +103,21 @@ To get started, visit the [documentation](https://docs.envio.dev/docs/overview) 
 GhostGraph is the first indexing solution that lets you write your index transformations in **Solidity**. Base dApps can query data with GraphQL using our hosted endpoints.
 
 To get started, you can [sign up for an account](https://app.ghostlogs.xyz/ghostgraph/sign-up) and follow [this quickstart](https://docs.ghostlogs.xyz/category/-getting-started-1) guide on how to create, deploy, and query a GhostGraph.
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
+
+---
+
+## The Indexing Company
+
+[The Indexing Company](https://www.indexing.co/) provides indexing as a service, capable of indexing any chain (EVM and non-EVM) with an RPC endpoint and integrating off-chain data within the same infrastructure.
+
+Our services include data transformations, aggregations, and streamlined data flows, allowing teams to develop their products faster while saving on developer resources, time, and money. Our solution is ideal for teams needing advanced data engineering for modular chain setups, multi-chain products, L1/L2/L3 chains and AI.
+
+To get started contact us [here](https://www.indexing.co/get-in-touch).
 
 #### Supported Networks
 
