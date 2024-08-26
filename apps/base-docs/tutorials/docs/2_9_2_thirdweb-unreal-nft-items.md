@@ -358,7 +358,7 @@ Connect the output to the `Base Color` of `M_NFT_Color`, then save and close the
 
 Again in the content browser, right-click on the `M_NFT_Color` asset and select `Create Material Instance`. Name the instance `MI_NFT_Color`.
 
-Navigate to the sports car mesh located in `VehicleTemplate>Blueprints>SportsCar` and double-click to to open the `SportsCar_pawn`. Select the `Mesh` from the `Components` tree and you should see the car in the editor.
+Navigate to the sports car mesh located in `VehicleTemplate>Blueprints>SportsCar` and double-click to open the `SportsCar_pawn`. Select the `Mesh` from the `Components` tree and you should see the car in the editor.
 
 On the right side, change the `Element 2` material to `MI_NFT_Color`. The car is now bright red. Radical! Take your newly red car for a spin.
 
