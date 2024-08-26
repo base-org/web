@@ -14,6 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const body = req.body as FrameRequest;
+  const transactionId: string = body?.untrustedData?.transactionId ?? '...';
   let message;
   let isValid;
   let name;
@@ -38,7 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       throw new Error('No message state received');
     }
     name = messageState.targetName;
-    return res.status(200).setHeader('Content-Type', 'text/html').send(txSuccessFrame(name));
+    return res.status(200).setHeader('Content-Type', 'text/html').send(txSuccessFrame(name, transactionId));
   } catch (e) {
     return res.status(500).json({ error: e });
   }

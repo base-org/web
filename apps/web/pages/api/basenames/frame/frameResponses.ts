@@ -109,13 +109,18 @@ export const confirmationFrame = (
     },
   });
 
-export const txSuccessFrame = (name: string) =>
+export const txSuccessFrame = (name: string, transactionId: string) =>
   getFrameHtmlResponse({
     buttons: [
       {
         action: 'link',
         label: `Go to your profile`,
         target: `${DOMAIN}/name/${name}`,
+      },
+      {
+        action: 'link',
+        label: `View on block explorer`,
+        target: `https://basescan.org/address/${transactionId}`,
       },
     ],
     image: {
