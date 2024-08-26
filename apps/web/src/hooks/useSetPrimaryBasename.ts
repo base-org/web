@@ -22,15 +22,15 @@ import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernamePr
 */
 
 type UseSetPrimaryBasenameProps = {
-  basename: BaseName;
+  secondaryUsername: BaseName;
 };
 
-export default function useSetPrimaryBasename({ basename }: UseSetPrimaryBasenameProps) {
+export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrimaryBasenameProps) {
   const { address } = useAccount();
   const { logError } = useErrors();
 
   const { currentWalletIsProfileOwner } = useUsernameProfile();
-  const { basenameChain: secondaryBaseChain } = useBasenameChain(basename);
+  const { basenameChain: secondaryUsernameChain } = useBasenameChain(secondaryUsername);
 
   // Get current primary username
   // Note: This is sometimes undefined
@@ -43,12 +43,12 @@ export default function useSetPrimaryBasename({ basename }: UseSetPrimaryBasenam
     address: address,
   });
 
-  const usernamesDiffer = basename !== primaryUsername;
+  const usernamesDiffer = secondaryUsername !== primaryUsername;
   const canSetUsernameAsPrimary = usernamesDiffer && currentWalletIsProfileOwner;
 
   const { initiateTransaction, transactionIsLoading, transactionIsSuccess } =
     useWriteContractWithReceipt({
-      chain: secondaryBaseChain,
+      chain: secondaryUsernameChain,
       eventName: 'update_primary_name',
     });
 
@@ -62,7 +62,7 @@ export default function useSetPrimaryBasename({ basename }: UseSetPrimaryBasenam
 
   const setPrimaryName = useCallback(async () => {
     // Already primary
-    if (basename === primaryUsername) return;
+    if (secondaryUsername === primaryUsername) return;
 
     // No user is connected
     if (!address) return;
@@ -70,8 +70,13 @@ export default function useSetPrimaryBasename({ basename }: UseSetPrimaryBasenam
     try {
       await initiateTransaction({
         abi: ReverseRegistrarAbi,
-        address: USERNAME_REVERSE_REGISTRAR_ADDRESSES[secondaryBaseChain.id],
-        args: [address, address, USERNAME_L2_RESOLVER_ADDRESSES[secondaryBaseChain.id], basename],
+        address: USERNAME_REVERSE_REGISTRAR_ADDRESSES[secondaryUsernameChain.id],
+        args: [
+          address,
+          address,
+          USERNAME_L2_RESOLVER_ADDRESSES[secondaryUsernameChain.id],
+          secondaryUsername,
+        ],
         functionName: 'setNameForAddr',
       });
     } catch (error) {
@@ -79,7 +84,14 @@ export default function useSetPrimaryBasename({ basename }: UseSetPrimaryBasenam
     }
 
     return true;
-  }, [basename, primaryUsername, address, initiateTransaction, secondaryBaseChain.id, logError]);
+  }, [
+    secondaryUsername,
+    primaryUsername,
+    address,
+    initiateTransaction,
+    secondaryUsernameChain.id,
+    logError,
+  ]);
 
   const isLoading = transactionIsLoading || primaryUsernameIsLoading || primaryUsernameIsFetching;
 

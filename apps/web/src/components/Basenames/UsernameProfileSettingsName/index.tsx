@@ -21,7 +21,7 @@ export default function UsernameProfileSettingsName() {
     isLoading: setPrimaryNameIsLoading,
     canSetUsernameAsPrimary,
   } = useSetPrimaryBasename({
-    basename: profileUsername,
+    secondaryUsername: profileUsername,
   });
 
   // Error & Analytics
