@@ -541,12 +541,26 @@ module.exports = {
           '0%': { transform: 'translateX(-23rem)' },
           '100%': { transform: 'translateX(13rem)' },
         },
+        verticalSlide: {
+          '0%': { transform: 'translateY(-80%)', opacity: 0 },
+          '30%': { transform: 'translateY(-5%)', opacity: 1 },
+          '70%': { transform: 'translateY(5%)', opacity: 1 },
+          '100%': { transform: 'translateY(80%)', opacity: 0 },
+        },
+        pulsate: {
+          '0%': { transform: 'scale(95%)' },
+          '30%': { transform: 'scale(100%)' },
+          '70%': { transform: 'scale(100%)' },
+          '100%': { transform: 'scale(95%)' },
+        },
       },
       animation: {
         wiggle: 'wiggle 3s linear infinite',
         bounce: 'bounce 1s ease-in-out infinite',
         slide: 'slide 1s ease-in-out infinite',
         longslide: 'longslide 2s linear infinite',
+        verticalSlide: 'verticalSlide 2s linear infinite',
+        pulsate: 'pulsate 2s linear infinite',
       },
       zIndex: {
         1: '1',

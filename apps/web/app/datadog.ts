@@ -31,6 +31,12 @@ export default function DatadogInit() {
       trackResources: true,
       trackLongTasks: true,
       defaultPrivacyLevel: 'mask',
+      allowedTracingUrls: [
+        {
+          match: (url: string) => url.startsWith('https://base.org/api'),
+          propagatorTypes: ['datadog'],
+        },
+      ],
     });
   }, []);
 

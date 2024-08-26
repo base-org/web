@@ -355,6 +355,7 @@ __metadata:
     "@coinbase/cookie-banner": ^1.0.3
     "@coinbase/cookie-manager": ^1.1.1
     "@coinbase/onchainkit": ^0.28.5
+    "@datadog/browser-logs": ^5.23.3
     "@datadog/browser-rum": ^5.23.3
     "@guildxyz/sdk": 2.6.0
     "@headlessui/react": ^1.7.19
@@ -380,6 +381,7 @@ __metadata:
     eslint-config-next: ^13.1.6
     ethers: 5.7.2
     framer-motion: ^8.5.5
+    hls.js: ^1.5.14
     is-ipfs: ^8.0.4
     jose: ^5.4.1
     jsonwebtoken: ^9.0.2
@@ -1997,6 +1999,7 @@ __metadata:
   resolution: "@base-org/base-web@workspace:."
   dependencies:
     "@babel/preset-react": ^7.14.5
+    "@datadog/browser-logs": ^5.23.3
     "@graphql-eslint/eslint-plugin": ^3.10.4
     "@linaria/babel-preset": ^4.4.3
     "@next/bundle-analyzer": ^14.2.5
@@ -2277,6 +2280,20 @@ __metadata:
   version: 5.23.3
   resolution: "@datadog/browser-core@npm:5.23.3"
   checksum: 0d3b2af985b332a584d4ff6f3b5b688bb6da8153df34804a44e31815875949cd902695e1d13e4b5bcf964a857b0a31f0947c8b8cda9b948749b15c20ab0b76da
+  languageName: node
+  linkType: hard
+
+"@datadog/browser-logs@npm:^5.23.3":
+  version: 5.23.3
+  resolution: "@datadog/browser-logs@npm:5.23.3"
+  dependencies:
+    "@datadog/browser-core": 5.23.3
+  peerDependencies:
+    "@datadog/browser-rum": 5.23.3
+  peerDependenciesMeta:
+    "@datadog/browser-rum":
+      optional: true
+  checksum: a07a5491dbe0adb14333fd77823928f2523920e2c75b2d05395f2a7fca5d8fe32f2858d72cd47e0a84df38a860bc613a62ff13e2e03a4e6dccb9087951a1ab9b
   languageName: node
   linkType: hard
 
@@ -15474,6 +15491,13 @@ __metadata:
     tiny-warning: ^1.0.0
     value-equal: ^1.0.1
   checksum: addd84bc4683929bae4400419b5af132ff4e4e9b311a0d4e224579ea8e184a6b80d7f72c55927e4fa117f69076a9e47ce082d8d0b422f1a9ddac7991490ca1d0
+  languageName: node
+  linkType: hard
+
+"hls.js@npm:^1.5.14":
+  version: 1.5.14
+  resolution: "hls.js@npm:1.5.14"
+  checksum: 7e8385dd188cc2fbf089d3daed12a4b0905f1468be1b1598ddba07edc9d398f9639a054b8f2a73c2d09a177eecc6559c0030ee051611f109e23559004d953d3e
   languageName: node
   linkType: hard
 

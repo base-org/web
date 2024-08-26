@@ -537,6 +537,27 @@
         "duration": "9 min read",
         "checksum": "296c34ff0988d0c72ec1a791bb3e48833bb0afa40f0111c3519354562e3350ed"
     },
+    "1_verify-contract-with-basescan": {
+        "title": "Verify a Smart Contract using Basescan API",
+        "slug": "/verify-smart-contract-using-basescan",
+        "description": "A tutorial that teaches how to verify a smart contract using Basescan APIs.",
+        "author": "hughescoin",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "keywords": [
+            "Base",
+            "Solidity",
+            "ERC-721",
+            "token"
+        ],
+        "difficulty": "beginner",
+        "tags": [
+            "smart contracts"
+        ],
+        "last_updated": "Aug 20, 2024",
+        "duration": "12 min read",
+        "checksum": "c21972264ff57035c74bc01712adc187a6302b67482000a0a6f81681ff9fa9da"
+    },
     "2_1_simple-onchain-nfts": {
         "title": "Simple Onchain NFTs",
         "slug": "/simple-onchain-nfts",

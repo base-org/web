@@ -7,6 +7,8 @@ import {
   sha256,
   ContractFunctionParameters,
   labelhash,
+  createPublicClient,
+  http,
 } from 'viem';
 import { normalize } from 'viem/ens';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
@@ -48,11 +50,13 @@ export const USERNAME_DESCRIPTION_MAX_LENGTH = 200;
 
 // DANGER: Changing this post-mainnet launch means the stored data won't be accessible via the updated key
 export enum UsernameTextRecordKeys {
+  // Defaults
   Description = 'description',
   Keywords = 'keywords',
   Url = 'url',
   Email = 'email',
   Phone = 'phone',
+  Avatar = 'avatar',
 
   // Socials
   Github = 'com.github',
@@ -62,7 +66,8 @@ export enum UsernameTextRecordKeys {
   Telegram = 'org.telegram',
   Discord = 'com.discord',
 
-  Avatar = 'avatar',
+  // Basename specifics
+  Casts = 'casts',
 }
 
 // The social enabled for the current registration / profile pages
@@ -149,6 +154,7 @@ export const textRecordsKeysEnabled = [
   UsernameTextRecordKeys.Telegram,
   UsernameTextRecordKeys.Discord,
   UsernameTextRecordKeys.Avatar,
+  UsernameTextRecordKeys.Casts,
 ];
 
 export const textRecordsKeysForDisplay = {
@@ -164,6 +170,7 @@ export const textRecordsKeysForDisplay = {
   [UsernameTextRecordKeys.Telegram]: 'Telegram',
   [UsernameTextRecordKeys.Discord]: 'Discord',
   [UsernameTextRecordKeys.Avatar]: 'Avatar',
+  [UsernameTextRecordKeys.Casts]: 'Pinned Casts',
 };
 
 export const textRecordsKeysPlaceholderForDisplay = {
@@ -179,6 +186,7 @@ export const textRecordsKeysPlaceholderForDisplay = {
   [UsernameTextRecordKeys.Telegram]: 'Username',
   [UsernameTextRecordKeys.Discord]: 'Username',
   [UsernameTextRecordKeys.Avatar]: 'Avatar',
+  [UsernameTextRecordKeys.Casts]: 'https://warpcast.com/...',
 };
 
 export const textRecordsEngineersKeywords = [
@@ -284,7 +292,11 @@ export const normalizeEnsDomainName = (name: string) => {
   try {
     return normalize(name);
   } catch (error) {
-    return normalize(sanitizeEnsDomainName(name));
+    try {
+      return normalize(sanitizeEnsDomainName(name));
+    } catch (sanitizedError) {
+      return '';
+    }
   }
 };
 
@@ -294,7 +306,7 @@ export const USERNAME_DOMAINS: Record<number, string> = {
 };
 
 export const formatBaseEthDomain = (name: string, chainId: number): BaseName => {
-  return `${name}.${USERNAME_DOMAINS[chainId]}`.toLocaleLowerCase() as BaseName;
+  return `${name}.${USERNAME_DOMAINS[chainId] ?? '.base.eth'}`.toLocaleLowerCase() as BaseName;
 };
 
 export const getUsernamePictureIndex = (name: string, totalOptions: number) => {
@@ -376,8 +388,18 @@ export function getChainForBasename(username: BaseName): Chain {
   return username.endsWith(`.${USERNAME_DOMAINS[base.id]}`) ? base : baseSepolia;
 }
 
+export function normalizeName(name: string) {
+  const normalizedName: string = normalizeEnsDomainName(name);
+  const { valid } = validateEnsDomainName(name);
+
+  if (!valid) {
+    return null;
+  }
+  return normalizedName;
+}
+
 // Assume domainless name to .base.eth
-export async function formatDefaultUsername(username: BaseName) {
+export async function formatDefaultUsername(username: string | BaseName) {
   if (
     username &&
     !username.endsWith(`.${USERNAME_DOMAINS[baseSepolia.id]}`) &&
@@ -386,7 +408,7 @@ export async function formatDefaultUsername(username: BaseName) {
     return formatBaseEthDomain(username, base.id);
   }
 
-  return username;
+  return username as BaseName;
 }
 
 export const getTokenIdFromBasename = (username: BaseName) => {
@@ -502,7 +524,7 @@ export function validateBasenameAvatarUrl(source: string): ValidationResult {
   }
 }
 
-/* 
+/*
   Fetch / Api functions
 */
 
@@ -542,6 +564,30 @@ export async function getBasenameOwner(username: BaseName) {
 
     return owner;
   } catch (error) {}
+}
+
+export async function getBasenameAvailable(name: string, chain: Chain): Promise<boolean> {
+  try {
+    const client = createPublicClient({
+      chain: chain,
+      transport: http(),
+    });
+    const normalizedName = normalizeName(name);
+    if (!normalizedName) {
+      throw new Error('Invalid ENS domain name');
+    }
+
+    const available = await client.readContract({
+      address: REGISTER_CONTRACT_ADDRESSES[base.id],
+      abi: REGISTER_CONTRACT_ABI,
+      functionName: 'available',
+      args: [normalizedName],
+    });
+    return available;
+  } catch (error) {
+    console.error('Error checking name availability:', error);
+    throw error;
+  }
 }
 
 // Build a TextRecord contract request
@@ -584,12 +630,14 @@ export async function getBasenameTextRecords(username: BaseName) {
   } catch (error) {}
 }
 
-/* 
+/*
   Feature flags
 */
 
 // Force EA/GA based on env
 export const IS_EARLY_ACCESS = process.env.NEXT_PUBLIC_USERNAMES_EARLY_ACCESS == 'true';
+export const USERNAMES_PINNED_CASTS_ENABLED =
+  process.env.NEXT_PUBLIC_USERNAMES_PINNED_CASTS_ENABLED === 'true';
 export const REGISTER_CONTRACT_ABI = IS_EARLY_ACCESS
   ? EARegistrarControllerAbi
   : RegistrarControllerABI;

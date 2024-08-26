@@ -35,6 +35,7 @@ export default function useReadBaseEnsTextRecords({
       [UsernameTextRecordKeys.Email]: '',
       [UsernameTextRecordKeys.Phone]: '',
       [UsernameTextRecordKeys.Avatar]: '',
+      [UsernameTextRecordKeys.Casts]: '',
     };
   }, []);
 
@@ -72,6 +73,7 @@ export default function useReadBaseEnsTextRecords({
     queryFn: getExistingTextRecords,
     enabled: !!address && !!username,
     retry: false,
+    refetchOnWindowFocus: false,
   });
 
   useEffect(() => {

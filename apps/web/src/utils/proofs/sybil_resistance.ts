@@ -20,6 +20,7 @@ import {
   DiscountTypes,
   PreviousClaim,
   PreviousClaims,
+  ProofsException,
   VerifiedAccount,
 } from 'apps/web/src/utils/proofs/types';
 import { REGISTER_CONTRACT_ADDRESSES } from 'apps/web/src/utils/usernames';
@@ -86,6 +87,9 @@ async function signMessageWithTrustedSigner(
   targetAddress: Address,
   expiry: number,
 ) {
+  if (!trustedSignerAddress || !isAddress(trustedSignerAddress)) {
+    throw new Error('Must provide a valid trustedSignerAddress');
+  }
   // encode the message
   const message = encodePacked(
     ['bytes2', 'address', 'address', 'address', 'uint64'],
@@ -122,7 +126,7 @@ export async function sybilResistantUsernameSigning(
   const discountValidatorAddress = discountTypes[chainId][discountType]?.discountValidatorAddress;
 
   if (!discountValidatorAddress || !isAddress(discountValidatorAddress)) {
-    throw new Error('Must provide a valid discountValidatorAddress');
+    throw new ProofsException('Must provide a valid discountValidatorAddress', 500);
   }
 
   const attestations = await getAttestations(
@@ -138,35 +142,36 @@ export async function sybilResistantUsernameSigning(
     (attestation) => JSON.parse(attestation.decodedDataJson)[0] as VerifiedAccount,
   );
 
+  let { linkedAddresses, idemKey } = await getLinkedAddresses(address as string);
+
+  const hasPreviouslyRegistered = await hasRegisteredWithDiscount(linkedAddresses, chainId);
+  // if any linked address registered previously return an error
+  if (hasPreviouslyRegistered) {
+    throw new ProofsException('You have already claimed a discounted basename (onchain).', 409);
+  }
+
+  const kvKey = `${previousClaimsKVPrefix}${idemKey}`;
+  //check kv for previous claim entries
+  let previousClaims = (await kv.get<PreviousClaims>(kvKey)) ?? {};
+  const previousClaim = previousClaims[discountType];
+  if (previousClaim) {
+    if (previousClaim.address != address) {
+      throw new ProofsException(
+        'You tried claiming this with a different address, wait a couple minutes to try again.',
+        400,
+      );
+    }
+    // return previously signed message
+    return {
+      signedMessage: previousClaim.signedMessage,
+      attestations: attestationsRes,
+      discountValidatorAddress,
+      expires: EXPIRY.toString(),
+    };
+  }
+
+  const expirationTimeUnix = Math.floor(Date.now() / 1000) + parseInt(EXPIRY);
   try {
-    let { linkedAddresses, idemKey } = await getLinkedAddresses(address as string);
-
-    const hasPreviouslyRegistered = await hasRegisteredWithDiscount(linkedAddresses, chainId);
-    // if any linked address registered previously return an error
-    if (hasPreviouslyRegistered) {
-      throw new Error('You have already claimed a discounted basename (onchain).');
-    }
-
-    const kvKey = `${previousClaimsKVPrefix}${idemKey}`;
-    //check kv for previous claim entries
-    let previousClaims = (await kv.get<PreviousClaims>(kvKey)) ?? {};
-    const previousClaim = previousClaims[discountType];
-    if (previousClaim) {
-      if (previousClaim.address != address) {
-        throw new Error(
-          'You tried claiming this with a different address, wait a couple minutes to try again.',
-        );
-      }
-      // return previously signed message
-      return {
-        signedMessage: previousClaim.signedMessage,
-        attestations: attestationsRes,
-        discountValidatorAddress,
-        expires: EXPIRY.toString(),
-      };
-    }
-
-    const expirationTimeUnix = Math.floor(Date.now() / 1000) + parseInt(EXPIRY);
     // generate and sign the message
     const signedMessage = await signMessageWithTrustedSigner(
       address,
@@ -185,6 +190,9 @@ export async function sybilResistantUsernameSigning(
     };
   } catch (error) {
     console.error(error);
+    if (error instanceof Error) {
+      throw new ProofsException(error.message, 500);
+    }
     throw error;
   }
 }

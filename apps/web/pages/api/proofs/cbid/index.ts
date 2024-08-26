@@ -29,9 +29,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const responseData = await getWalletProofs(
-      address as `0x${string}`,
+      // to lower case to be able to use index on huge dataset
+      (address as string).toLowerCase() as `0x${string}`,
       parseInt(chain as string),
       ProofTableNamespace.CBIDDiscount,
+      false,
     );
 
     return res.status(200).json(responseData);
@@ -42,5 +44,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     console.error(error);
   }
   // If error is not an instance of Error, return a generic error message
-  return res.status(409).json({ error: 'An unexpected error occurred' });
+  return res.status(500).json({ error: 'An unexpected error occurred' });
 }

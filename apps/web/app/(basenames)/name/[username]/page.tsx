@@ -12,8 +12,9 @@ import classNames from 'classnames';
 import { BaseName } from '@coinbase/onchainkit/identity';
 import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
 import ErrorsProvider from 'apps/web/contexts/Errors';
+import DynamicProfilePromo from 'apps/web/src/components/Basenames/ProfilePromo/dynamic';
 
-type UsernameProfileProps = {
+export type UsernameProfileProps = {
   params: { username: BaseName };
 };
 
@@ -29,7 +30,6 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
     openGraph: {
       title: `Basenames | ${username}`,
       url: `/${username}`,
-      images: [`api/basenames/${username}/assets/coverImage.png`],
     },
     twitter: {
       card: 'summary_large_image',
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
 }
 
 export default async function Username({ params }: UsernameProfileProps) {
-  let username = await formatDefaultUsername(params.username);
+  let username = await formatDefaultUsername(decodeURIComponent(params.username) as BaseName);
 
   const address = await getBasenameAddress(username);
   const owner = await getBasenameOwner(username);
@@ -57,6 +57,7 @@ export default async function Username({ params }: UsernameProfileProps) {
       <ProfileProviders username={username}>
         <main className={usernameProfilePageClasses}>
           <UsernameProfile />
+          <DynamicProfilePromo />
         </main>
       </ProfileProviders>
     </ErrorsProvider>
