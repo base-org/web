@@ -15,6 +15,7 @@ import RegistrationLearnMoreModal from 'apps/web/src/components/Basenames/Regist
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
+import Tooltip from 'apps/web/src/components/Tooltip';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import { usePremiumEndDurationRemaining } from 'apps/web/src/hooks/useActiveEthPremiumAmount';
@@ -26,7 +27,7 @@ import {
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
 import { useRentPrice } from 'apps/web/src/hooks/useRentPrice';
-import { IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
+import { formatBaseEthDomain, IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
@@ -226,6 +227,26 @@ export default function RegistrationForm() {
                   <PlusIcon width="14" height="14" className="fill-[#32353D]" />
                 </button>
               </div>
+              {hasExistingBasename && (
+                <Tooltip
+                  content={
+                    <>
+                      This will cause apps that support basenames to resolve{' '}
+                      <strong>{formatBaseEthDomain(selectedName, basenameChain.id)}</strong> when
+                      looking up your address.
+                    </>
+                  }
+                >
+                  <Label className="mt-4 flex items-center justify-center gap-2 text-center">
+                    <input
+                      type="checkbox"
+                      checked={reverseRecord}
+                      onChange={onChangeReverseRecord}
+                    />
+                    Set as Primary Name
+                  </Label>
+                </Tooltip>
+              )}
             </div>
             <div className="min-w-[14rem] self-start text-left">
               <p className="text-line mb-2 text-sm font-bold uppercase">Amount</p>
@@ -302,33 +323,21 @@ export default function RegistrationForm() {
                   }
 
                   return (
-                    <div>
-                      <Button
-                        onClick={correctChain ? registerNameCallback : switchToIntendedNetwork}
-                        type="button"
-                        variant={ButtonVariants.Black}
-                        size={ButtonSizes.Medium}
-                        disabled={
-                          insufficientBalanceToRegisterAndCorrectChain ||
-                          registerNameTransactionIsPending
-                        }
-                        isLoading={registerNameTransactionIsPending}
-                        rounded
-                        fullWidth
-                      >
-                        {correctChain ? 'Register name' : 'Switch to Base'}
-                      </Button>
-                      {hasExistingBasename && (
-                        <Label className="mt-2 flex items-center justify-center gap-2 text-center">
-                          <input
-                            type="checkbox"
-                            checked={reverseRecord}
-                            onChange={onChangeReverseRecord}
-                          />
-                          Set as Primary Name
-                        </Label>
-                      )}
-                    </div>
+                    <Button
+                      onClick={correctChain ? registerNameCallback : switchToIntendedNetwork}
+                      type="button"
+                      variant={ButtonVariants.Black}
+                      size={ButtonSizes.Medium}
+                      disabled={
+                        insufficientBalanceToRegisterAndCorrectChain ||
+                        registerNameTransactionIsPending
+                      }
+                      isLoading={registerNameTransactionIsPending}
+                      rounded
+                      fullWidth
+                    >
+                      {correctChain ? 'Register name' : 'Switch to Base'}
+                    </Button>
                   );
                 }}
               </ConnectButton.Custom>
