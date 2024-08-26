@@ -228,24 +228,31 @@ export default function RegistrationForm() {
                 </button>
               </div>
               {hasExistingBasename && (
-                <Tooltip
-                  content={
-                    <>
-                      This will cause apps that support basenames to resolve{' '}
-                      <strong>{formatBaseEthDomain(selectedName, basenameChain.id)}</strong> when
-                      looking up your address.
-                    </>
-                  }
+                <Label
+                  className="mt-4 flex w-full items-center justify-center gap-2 text-center"
+                  htmlFor="reverseRecord"
                 >
-                  <Label className="mt-4 flex items-center justify-center gap-2 text-center">
-                    <input
-                      type="checkbox"
-                      checked={reverseRecord}
-                      onChange={onChangeReverseRecord}
-                    />
+                  <input
+                    type="checkbox"
+                    checked={reverseRecord}
+                    onChange={onChangeReverseRecord}
+                    id="reverseRecord"
+                  />
+                  <span className="flex flex-row items-center gap-2 text-sm">
                     Set as Primary Name
-                  </Label>
-                </Tooltip>
+                    <Tooltip
+                      content={
+                        <>
+                          This will cause apps that support basenames to resolve{' '}
+                          <strong>{formatBaseEthDomain(selectedName, basenameChain.id)}</strong>{' '}
+                          when looking up your address.
+                        </>
+                      }
+                    >
+                      <Icon name="info" color="currentColor" width="0.8rem" height="0.8rem" />
+                    </Tooltip>
+                  </span>
+                </Label>
               )}
             </div>
             <div className="min-w-[14rem] self-start text-left">
