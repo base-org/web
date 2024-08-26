@@ -73,5 +73,5 @@ export const ampDeploymentKey = isDevelopment
   : 'client-agFoQg5AOvZ2ZiOChny9RrGk21jG3VrH';
 
 export enum LocalStorageKeys {
-  XMTP_FRAME_CONTEXT = 'XMTP_FRAME_CONTEXT',
+  FARCASTER_FRAME_CONTEXT = 'FARCASTER_FRAME_CONTEXT',
 }

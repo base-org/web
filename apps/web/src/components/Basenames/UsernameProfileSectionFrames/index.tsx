@@ -1,16 +1,22 @@
+'use client';
+
+import { fallbackFrameContext, OnSignatureFunc, OnTransactionFunc } from '@frames.js/render';
 import { FrameUI, type FrameUIComponents, type FrameUITheme } from '@frames.js/render/ui';
 import { useFrame } from '@frames.js/render/use-frame';
+import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import FarcasterAccountModal from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FarcasterAccountModal';
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
-import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
+import { useFarcasterFrameContext } from 'apps/web/src/hooks/useFarcasterFrameContext';
+import { useFarcasterIdentity } from 'apps/web/src/hooks/useFarcasterIdentity';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
-import { useXmtpFrameContext } from 'apps/web/src/hooks/useXmtpFrameContext';
-import { useXmtpIdentity } from 'apps/web/src/hooks/useXmtpIdentity';
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { StaticImageData } from 'next/image';
-import { zeroAddress } from 'viem';
-import { useAccount } from 'wagmi';
+import { useCallback, useState } from 'react';
+import { useAccount, useChainId, useConfig } from 'wagmi';
+import { sendTransaction, signTypedData, switchChain } from 'wagmi/actions';
 import cornerGarnish from './corner-garnish.svg';
 import frameIcon from './frame-icon.svg';
 
@@ -54,23 +60,127 @@ const theme: FrameUITheme<StylingProps> = {
   },
 };
 
+class InvalidChainIdError extends Error {}
+class CouldNotChangeChainError extends Error {}
+
+function isValidChainId(id: string): boolean {
+  return id.startsWith('eip155:');
+}
+
+function parseChainId(id: string): number {
+  if (!isValidChainId(id)) {
+    throw new InvalidChainIdError(`Invalid chainId ${id}`);
+  }
+
+  return parseInt(id.split('eip155:')[1]);
+}
+
 export default function UsernameProfileSectionFrames() {
   const { address } = useAccount();
+  const config = useConfig();
+  const currentChainId = useChainId();
   const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
   const { existingTextRecords } = useReadBaseEnsTextRecords({
     address: profileAddress,
     username: profileUsername,
   });
-
+  const { openConnectModal } = useConnectModal();
   const openFrameModal = console.log;
-
   const homeframeUrl = existingTextRecords[UsernameTextRecordKeys.Frame];
-  const xmtpSignerState = useXmtpIdentity();
-  const xmtpFrameContext = useXmtpFrameContext({
-    fallbackContext: {
-      conversationTopic: 'base-name-profile',
-      participantAccountAddresses: address ? [address, zeroAddress] : [zeroAddress],
+  const [showFarcasterQRModal, setShowFarcasterQRModal] = useState(false);
+  const [frameInteractionError, setFrameInteractionError] = useState('');
+  const farcasterSignerState = useFarcasterIdentity({
+    onMissingIdentity() {
+      setShowFarcasterQRModal(true);
     },
+  });
+
+  const onTransaction: OnTransactionFunc = useCallback(
+    async ({ transactionData }) => {
+      if (!address) {
+        openConnectModal?.();
+        console.info('Opened connect modal because the account address is not set');
+        return null;
+      }
+
+      try {
+        const { params, chainId } = transactionData;
+        const requestedChainId = parseChainId(chainId);
+
+        if (currentChainId !== requestedChainId) {
+          await switchChain(config, {
+            chainId: requestedChainId,
+          }).catch((e) => {
+            throw new CouldNotChangeChainError(e.message as string);
+          });
+        }
+
+        const transactionId = await sendTransaction(config, {
+          to: params.to,
+          data: params.data,
+          value: BigInt(params.value ?? 0),
+        });
+        return transactionId;
+      } catch (error) {
+        if (error instanceof InvalidChainIdError) {
+          setFrameInteractionError('Invalid chain id');
+        } else if (error instanceof CouldNotChangeChainError) {
+          setFrameInteractionError('Could not change chain');
+        } else {
+          setFrameInteractionError('Error sending transaction');
+        }
+
+        console.warn(error);
+
+        return null;
+      }
+    },
+    [address, config, currentChainId, openConnectModal],
+  );
+  const onError = useCallback((e: Error) => {
+    console.error(e);
+  }, []);
+  const onSignature: OnSignatureFunc = useCallback(
+    async ({ signatureData }) => {
+      if (!address) {
+        openConnectModal?.();
+        console.info('Opened connect modal because the account address is not set');
+
+        return null;
+      }
+
+      try {
+        const { params, chainId } = signatureData;
+        const requestedChainId = parseChainId(chainId);
+
+        if (currentChainId !== requestedChainId) {
+          await switchChain(config, {
+            chainId: requestedChainId,
+          }).catch((e) => {
+            throw new CouldNotChangeChainError(e.message as string);
+          });
+        }
+
+        return await signTypedData(config, params);
+      } catch (error) {
+        if (error instanceof InvalidChainIdError) {
+          setFrameInteractionError('Invalid chain id');
+        } else if (error instanceof CouldNotChangeChainError) {
+          setFrameInteractionError('Could not change chain');
+        } else {
+          setFrameInteractionError('Error signing data');
+        }
+
+        console.error(error);
+
+        return null;
+      }
+    },
+    [address, openConnectModal, currentChainId, config],
+  );
+
+  const farcasterFrameContext = useFarcasterFrameContext({
+    fallbackContext: fallbackFrameContext,
   });
 
   const frameState = useFrame({
@@ -78,10 +188,13 @@ export default function UsernameProfileSectionFrames() {
     homeframeUrl,
     frameActionProxy: '/frames',
     frameGetProxy: '/frames',
-    onError: (e) => console.error('frame error: ', e),
-    signerState: xmtpSignerState,
+    onTransaction,
+    onError,
+    onSignature,
+    onConnectWallet: openConnectModal,
+    signerState: farcasterSignerState,
     specification: 'farcaster',
-    frameContext: xmtpFrameContext.frameContext,
+    frameContext: farcasterFrameContext.frameContext,
   });
 
   if (currentWalletIsProfileOwner && !homeframeUrl) {
@@ -91,7 +204,7 @@ export default function UsernameProfileSectionFrames() {
         <div className="grow">
           <h1 className="text-xl font-medium text-illoblack">Pin a frame to your profile</h1>
           <p className="max-w-80 text-illoblack">
-            Add fun and interactive experiences to your profile with an frame.
+            Add fun and interactive experiences to your profile with a frame.
           </p>
           <Button
             rounded
@@ -129,7 +242,25 @@ export default function UsernameProfileSectionFrames() {
           </Button>
         )}
       </div>
-      <FrameUI frameState={frameState} components={components} theme={theme} />
+      <div>
+        <FrameUI frameState={frameState} components={components} theme={theme} />
+        {frameInteractionError && (
+          <Button
+            size={ButtonSizes.Small}
+            onClick={() => setFrameInteractionError('')}
+            className="text-sm text-state-n-hovered"
+          >
+            {frameInteractionError}
+          </Button>
+        )}
+      </div>
+      <FarcasterAccountModal
+        farcasterUser={farcasterSignerState.signer ?? null}
+        loading={!!farcasterSignerState.isLoadingSigner ?? false}
+        startFarcasterSignerProcess={farcasterSignerState.createSigner}
+        isOpen={showFarcasterQRModal}
+        onClose={() => setShowFarcasterQRModal(false)}
+      />
     </section>
   );
 }
