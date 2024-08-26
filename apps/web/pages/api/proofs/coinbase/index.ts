@@ -9,6 +9,7 @@ import {
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Address } from 'viem';
+import tracer from 'apps/web/tracer';
 
 // Coinbase verified account *and* CB1 structure
 export type CoinbaseProofResponse = {
@@ -39,6 +40,7 @@ export type CoinbaseProofResponse = {
  * @returns
  */
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  tracer.dogstatsd.increment('proofs.coinbase');
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
