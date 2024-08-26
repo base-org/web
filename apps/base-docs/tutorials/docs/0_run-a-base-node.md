@@ -60,11 +60,12 @@ We recommend you have this configuration to run a node:
 
 - 8-Core CPU
 - at least 16 GB RAM
-- an SSD drive (NVME recommended) with at least 750GB (full node) or 4.5TB (archive node) free
+- a locally attached NVMe SSD drive
+- adequate storage capacity to accommodate both the snapshot restoration process (if restoring from snapshot) and chain data, ensuring a minimum of (2 \* current_chain_size) + snapshot_size + 20%\_buffer
 
 :::info
 
-If utilizing Amazon Elastic Block Store (EBS), ensure timing buffered disk reads are fast enough in order to avoid latency issues alongside the rate of new blocks added to Base during the initial synchronization process.
+If utilizing Amazon Elastic Block Store (EBS), ensure timing buffered disk reads are fast enough in order to avoid latency issues alongside the rate of new blocks added to Base during the initial synchronization process; `io2 block express` is recommended.
 
 :::
 
