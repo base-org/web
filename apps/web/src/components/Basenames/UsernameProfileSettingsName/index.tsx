@@ -44,11 +44,6 @@ export default function UsernameProfileSettingsName() {
             Primary Name
           </span>
         )}
-        {isSecondaryName && (
-          <span className="rounded-md bg-orange-0 px-2 py-1 text-sm font-bold text-orange-60">
-            Secondary Name
-          </span>
-        )}
       </div>
       <div className="flex w-full items-center justify-between gap-4">
         <span>{profileUsername}</span>
