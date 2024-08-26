@@ -47,6 +47,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(500).json({ error: 'currently unable to sign' });
   }
 
+  const span = tracer.startSpan('cb1_proof');
   try {
     const result = await sybilResistantUsernameSigning(
       address as `0x${string}`,
@@ -59,6 +60,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       return res.status(error.statusCode).json({ error: error.message });
     }
     logger.error(error);
+  } finally {
+    span.finish();
   }
 
   // If error is not an instance of Error, return a generic error message

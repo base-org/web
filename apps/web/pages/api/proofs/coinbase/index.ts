@@ -53,6 +53,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(500).json({ error: 'currently unable to sign' });
   }
 
+  const span = tracer.startSpan('coinbase_proof');
   try {
     const result = await sybilResistantUsernameSigning(
       address as `0x${string}`,
@@ -66,6 +67,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(error.statusCode).json({ error: error.message });
     }
     logger.error(error);
+  } finally {
+    span.finish();
   }
 
   // If error is not an instance of Error, return a generic error message
