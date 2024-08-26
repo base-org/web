@@ -1,4 +1,5 @@
 import { trustedSignerPKey } from 'apps/web/src/constants';
+import { logger } from 'apps/web/src/utils/logger';
 import { DiscountType, ProofsException, proofValidation } from 'apps/web/src/utils/proofs';
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -37,6 +38,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
   const { address, chain } = req.query;
   const validationErr = proofValidation(address, chain);
+  logger.info('base-org cb1 proof', { address, chain });
   if (validationErr) {
     return res.status(validationErr.status).json({ error: validationErr.error });
   }
@@ -55,7 +57,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (error instanceof ProofsException) {
       return res.status(error.statusCode).json({ error: error.message });
     }
-    console.error(error);
+    logger.error(error);
   }
 
   // If error is not an instance of Error, return a generic error message
