@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 type NextApiHandler = (req: NextApiRequest, res: NextApiResponse) => void | Promise<void>;
 
-export const apiMetricsNamespace = 'base-org.api';
+export const apiLatencyMetricsNamespace = 'baseorg.api.latency';
 export function withExecutionTime(
   handler: NextApiHandler,
   metricName: string,

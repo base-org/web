@@ -64,4 +64,4 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   return res.status(500).json({ error: 'An unexpected error occurred' });
 }
 
-export default withExecutionTime(handler, `${apiMetricsNamespace}.latency`);
+export default withExecutionTime(handler, `${apiMetricsNamespace}.cb1_proof`);
