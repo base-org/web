@@ -1,3 +1,4 @@
+import { apiMetricsNamespace, withExecutionTime } from 'apps/web/pages/api/decorators';
 import { trustedSignerPKey } from 'apps/web/src/constants';
 import { logger } from 'apps/web/src/utils/logger';
 import { DiscountType, ProofsException, proofValidation } from 'apps/web/src/utils/proofs';
@@ -32,13 +33,12 @@ import type { NextApiRequest, NextApiResponse } from 'next';
  *   "discountValidatorAddress": "0x502df754f25f492cad45ed85a4de0ee7540717e7"
  * }
  */
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
   const { address, chain } = req.query;
   const validationErr = proofValidation(address, chain);
-  logger.info('base-org cb1 proof', { address, chain });
   if (validationErr) {
     return res.status(validationErr.status).json({ error: validationErr.error });
   }
@@ -63,3 +63,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // If error is not an instance of Error, return a generic error message
   return res.status(500).json({ error: 'An unexpected error occurred' });
 }
+
+export default withExecutionTime(handler, `${apiMetricsNamespace}.cb1_proof`);
