@@ -2,7 +2,7 @@ import { logger } from 'apps/web/src/utils/logger';
 
 type Metric = {
   metric: string;
-  points: [number]; // Single value or array of [timestamp, value]
+  points: [number];
   type: MetricTypeEnum;
   tags?: string[];
   interval?: number; // Required for type 'rate'
@@ -31,7 +31,7 @@ class CustomMetricLogger {
   }
 
   private async sendToDatadog(metrics: Metric[]) {
-    const nowInSeconds = Math.round(Date.now() / 1000); // Convert milliseconds to seconds
+    const nowInSeconds = Math.round(Date.now() / 1000);
     const payload = {
       series: metrics.map((metric) => ({
         ...metric,
@@ -81,16 +81,16 @@ export async function measureExecutionTime<T>(
   tags: string[] = [],
 ): Promise<T> {
   const startTime = performance.now();
-  const result = await fn(); // Execute the function
+  const result = await fn();
   const endTime = performance.now();
-  const duration = endTime - startTime;
+  const durationMs = endTime - startTime;
 
   // Send the execution time as a metric
   metricLogger.sendMetric({
     metric: metricName,
-    points: [duration], // Duration in milliseconds
+    points: [durationMs],
     type: MetricTypeEnum.gauge,
     tags: tags,
   });
-  return result; // Return the result of the function
+  return result;
 }
