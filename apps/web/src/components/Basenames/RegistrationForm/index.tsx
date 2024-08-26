@@ -14,6 +14,7 @@ import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationC
 import RegistrationLearnMoreModal from 'apps/web/src/components/Basenames/RegistrationLearnMoreModal';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import Label from 'apps/web/src/components/Label';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import { usePremiumEndDurationRemaining } from 'apps/web/src/hooks/useActiveEthPremiumAmount';
@@ -28,7 +29,7 @@ import { useRentPrice } from 'apps/web/src/hooks/useRentPrice';
 import { IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import { formatEther, zeroAddress } from 'viem';
 import { useAccount, useBalance, useChains, useReadContract, useSwitchChain } from 'wagmi';
 
@@ -132,6 +133,9 @@ export default function RegistrationForm() {
     data: registerNameTransactionHash,
     isPending: registerNameTransactionIsPending,
     error: registerNameError,
+    reverseRecord,
+    setReverseRecord,
+    hasExistingBasename,
   } = useRegisterNameCallback(
     selectedName,
     price,
@@ -152,6 +156,11 @@ export default function RegistrationForm() {
       logError(error, 'Failed to register name');
     });
   }, [logError, registerName]);
+
+  const onChangeReverseRecord = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => setReverseRecord(event.target.checked),
+    [setReverseRecord],
+  );
 
   const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
   const insufficientBalanceToRegister =
@@ -293,21 +302,33 @@ export default function RegistrationForm() {
                   }
 
                   return (
-                    <Button
-                      onClick={correctChain ? registerNameCallback : switchToIntendedNetwork}
-                      type="button"
-                      variant={ButtonVariants.Black}
-                      size={ButtonSizes.Medium}
-                      disabled={
-                        insufficientBalanceToRegisterAndCorrectChain ||
-                        registerNameTransactionIsPending
-                      }
-                      isLoading={registerNameTransactionIsPending}
-                      rounded
-                      fullWidth
-                    >
-                      {correctChain ? 'Register name' : 'Switch to Base'}
-                    </Button>
+                    <div>
+                      <Button
+                        onClick={correctChain ? registerNameCallback : switchToIntendedNetwork}
+                        type="button"
+                        variant={ButtonVariants.Black}
+                        size={ButtonSizes.Medium}
+                        disabled={
+                          insufficientBalanceToRegisterAndCorrectChain ||
+                          registerNameTransactionIsPending
+                        }
+                        isLoading={registerNameTransactionIsPending}
+                        rounded
+                        fullWidth
+                      >
+                        {correctChain ? 'Register name' : 'Switch to Base'}
+                      </Button>
+                      {hasExistingBasename && (
+                        <Label className="mt-2 flex items-center justify-center gap-2 text-center">
+                          <input
+                            type="checkbox"
+                            checked={reverseRecord}
+                            onChange={onChangeReverseRecord}
+                          />
+                          Set as Primary Name
+                        </Label>
+                      )}
+                    </div>
                   );
                 }}
               </ConnectButton.Custom>

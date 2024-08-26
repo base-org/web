@@ -12,7 +12,7 @@ import {
   REGISTER_CONTRACT_ADDRESSES,
 } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useCallback, useMemo } from 'react';
+import { Dispatch, SetStateAction, useCallback, useMemo, useState } from 'react';
 import { encodeFunctionData, namehash } from 'viem';
 import { useAccount, useSwitchChain, useWriteContract } from 'wagmi';
 import { useCapabilities, useWriteContracts } from 'wagmi/experimental';
@@ -27,6 +27,9 @@ type UseRegisterNameCallbackReturnValue = {
   data: `0x${string}` | undefined;
   isPending: boolean;
   error: string | undefined | null;
+  reverseRecord: boolean;
+  setReverseRecord: Dispatch<SetStateAction<boolean>>;
+  hasExistingBasename: boolean;
 };
 
 export function useRegisterNameCallback(
@@ -49,10 +52,12 @@ export function useRegisterNameCallback(
     address,
   });
 
-  const hasBaseName = useMemo(
+  const hasExistingBasename = useMemo(
     () => !baseEnsNameIsLoading && !!baseEnsName,
     [baseEnsName, baseEnsNameIsLoading],
   );
+
+  const [reverseRecord, setReverseRecord] = useState<boolean>(!hasExistingBasename);
 
   const isCoinbaseSmartWallet = connector?.id === 'coinbase';
   const paymasterEnabled = isCoinbaseSmartWallet;
@@ -111,9 +116,7 @@ export function useRegisterNameCallback(
       duration: secondsInYears(years), // The duration of the registration in seconds.
       resolver: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id], // The address of the resolver to set for this name.
       data: [addressData, nameData], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
-      // Bool to decide whether to set this name as the "primary" name for the `owner`.
-      // Until we have designs ready, we assume the first registered name is the primary one
-      reverseRecord: !hasBaseName,
+      reverseRecord, // Bool to decide whether to set this name as the "primary" name for the `owner`.
     };
 
     // Log attempt to register name
@@ -156,19 +159,20 @@ export function useRegisterNameCallback(
     address,
     chainId,
     basenameChain.id,
-    capabilities,
-    discountKey,
-    isDiscounted,
-    logError,
-    logEventWithContext,
     name,
     normalizedName,
+    years,
+    reverseRecord,
+    logEventWithContext,
     switchChainAsync,
+    capabilities,
+    writeContractAsync,
+    isDiscounted,
+    discountKey,
     validationData,
     value,
-    writeContractAsync,
     writeContractsAsync,
-    years,
+    logError,
   ]);
 
   return {
@@ -177,5 +181,8 @@ export function useRegisterNameCallback(
     isPending: isPending ?? paymasterIsPending,
     // @ts-expect-error error will be string renderable
     error: error ?? paymasterError,
+    reverseRecord,
+    setReverseRecord,
+    hasExistingBasename,
   };
 }
