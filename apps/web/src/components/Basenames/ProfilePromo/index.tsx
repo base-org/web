@@ -8,13 +8,22 @@ import { Button } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image from 'next/image';
 import { useLocalStorage } from 'usehooks-ts';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import Link from 'next/link';
 import { ActionType, ComponentType } from 'libs/base-ui/utils/logEvent';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { useAccount } from 'wagmi';
+import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 
 export default function ProfilePromo() {
   const [shouldShowPromo, setShouldShowPromo] = useLocalStorage('shouldShowPromo', true);
+  // Web3 data
+  const { address } = useAccount();
+  const { data: basename, isLoading: basenameIsLoading } = useBaseEnsName({
+    address,
+  });
+  const hasExistingBasename = address && basename && !basenameIsLoading;
+
   const { logEventWithContext } = useAnalytics();
   const onClose = useCallback(() => {
     logEventWithContext('profile_promo_close', ActionType.click, {
@@ -22,12 +31,19 @@ export default function ProfilePromo() {
     });
     setShouldShowPromo(false);
   }, [logEventWithContext, setShouldShowPromo]);
+
   const onCTA = useCallback(() => {
     logEventWithContext('profile_promo_cta', ActionType.click, {
       componentType: ComponentType.button,
     });
     setShouldShowPromo(false);
   }, [logEventWithContext, setShouldShowPromo]);
+
+  useEffect(() => {
+    if (hasExistingBasename) {
+      setShouldShowPromo(false);
+    }
+  }, [hasExistingBasename, setShouldShowPromo]);
 
   if (!shouldShowPromo) {
     return null;
