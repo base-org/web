@@ -12,6 +12,7 @@ import classNames from 'classnames';
 import { BaseName } from '@coinbase/onchainkit/identity';
 import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
 import ErrorsProvider from 'apps/web/contexts/Errors';
+import DynamicProfilePromo from 'apps/web/src/components/Basenames/ProfilePromo/dynamic';
 
 export type UsernameProfileProps = {
   params: { username: BaseName };
@@ -56,6 +57,7 @@ export default async function Username({ params }: UsernameProfileProps) {
       <ProfileProviders username={username}>
         <main className={usernameProfilePageClasses}>
           <UsernameProfile />
+          <DynamicProfilePromo />
         </main>
       </ProfileProviders>
     </ErrorsProvider>

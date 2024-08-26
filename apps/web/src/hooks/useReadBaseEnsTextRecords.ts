@@ -73,6 +73,7 @@ export default function useReadBaseEnsTextRecords({
     queryFn: getExistingTextRecords,
     enabled: !!address && !!username,
     retry: false,
+    refetchOnWindowFocus: false,
   });
 
   useEffect(() => {
