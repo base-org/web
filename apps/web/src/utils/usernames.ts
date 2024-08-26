@@ -408,7 +408,7 @@ export async function formatDefaultUsername(username: string | BaseName) {
     return formatBaseEthDomain(username, base.id);
   }
 
-  return username;
+  return username as BaseName;
 }
 
 export const getTokenIdFromBasename = (username: BaseName) => {

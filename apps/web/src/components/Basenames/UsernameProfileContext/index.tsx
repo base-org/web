@@ -75,6 +75,7 @@ export default function UsernameProfileProvider({
     universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
     query: {
       retry: false,
+      refetchOnWindowFocus: false,
     },
   });
 
@@ -83,7 +84,10 @@ export default function UsernameProfileProvider({
     data: profileOwnerAddress,
     isFetching: profileOwnerAddressIsFetching,
     refetch: profileOwnerRefetch,
-  } = useReadContract(buildBasenameOwnerContract(username));
+  } = useReadContract({
+    ...buildBasenameOwnerContract(username),
+    query: { refetchOnWindowFocus: false },
+  });
 
   // Owner Basename
   const { data: profileOwnerUsername } = useBaseEnsName({

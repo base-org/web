@@ -44,6 +44,9 @@ export default function useSetPrimaryBasename({ secondaryName }: UseSetPrimaryBa
   const { data: secondaryAddress } = useEnsAddress({
     name: secondaryName,
     universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[secondaryBaseChain.id],
+    query: {
+      refetchOnWindowFocus: false,
+    },
   });
 
   const usernamesHaveSameOwner = secondaryAddress === address;
