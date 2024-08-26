@@ -5,6 +5,7 @@ import { FrameUI, type FrameUIComponents, type FrameUITheme } from '@frames.js/r
 import { useFrame } from '@frames.js/render/use-frame';
 import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import AddFrameModal from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/AddFrameModal';
 import FarcasterAccountModal from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FarcasterAccountModal';
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
@@ -17,6 +18,7 @@ import { StaticImageData } from 'next/image';
 import { useCallback, useState } from 'react';
 import { useAccount, useChainId, useConfig } from 'wagmi';
 import { sendTransaction, signTypedData, switchChain } from 'wagmi/actions';
+import { FrameProvider } from './Context';
 import cornerGarnish from './corner-garnish.svg';
 import frameIcon from './frame-icon.svg';
 
@@ -24,12 +26,6 @@ type StylingProps = {
   className?: string;
   style?: React.CSSProperties;
 };
-
-/**
- * You can override components to change their internal logic or structure if you want.
- * By default it is not necessary to do that since the default structure is already there
- * so you can just pass an empty object and use theme to style the components.
- */
 const components: FrameUIComponents<StylingProps> = {};
 const theme: FrameUITheme<StylingProps> = {
   Error: {
@@ -75,7 +71,7 @@ function parseChainId(id: string): number {
   return parseInt(id.split('eip155:')[1]);
 }
 
-export default function UsernameProfileSectionFrames() {
+function SectionContent() {
   const { address } = useAccount();
   const config = useConfig();
   const currentChainId = useChainId();
@@ -264,3 +260,14 @@ export default function UsernameProfileSectionFrames() {
     </section>
   );
 }
+
+function UsernameProfileSectionFrames() {
+  return (
+    <FrameProvider>
+      <SectionContent />
+      <AddFrameModal />
+    </FrameProvider>
+  );
+}
+
+export default UsernameProfileSectionFrames;
