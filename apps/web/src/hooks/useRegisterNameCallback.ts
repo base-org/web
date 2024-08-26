@@ -2,6 +2,7 @@ import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useErrors } from 'apps/web/contexts/Errors';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import {
   formatBaseEthDomain,
@@ -43,6 +44,15 @@ export function useRegisterNameCallback(
     isPending: paymasterIsPending,
     error: paymasterError,
   } = useWriteContracts();
+
+  const { data: baseEnsName, isLoading: baseEnsNameIsLoading } = useBaseEnsName({
+    address,
+  });
+
+  const hasBaseName = useMemo(
+    () => !baseEnsNameIsLoading && !!baseEnsName,
+    [baseEnsName, baseEnsNameIsLoading],
+  );
 
   const isCoinbaseSmartWallet = connector?.id === 'coinbase';
   const paymasterEnabled = isCoinbaseSmartWallet;
@@ -101,7 +111,9 @@ export function useRegisterNameCallback(
       duration: secondsInYears(years), // The duration of the registration in seconds.
       resolver: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id], // The address of the resolver to set for this name.
       data: [addressData, nameData], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
-      reverseRecord: true, // Bool to decide whether to set this name as the "primary" name for the `owner`.
+      // Bool to decide whether to set this name as the "primary" name for the `owner`.
+      // Until we have designs ready, we assume the first registered name is the primary one
+      reverseRecord: !hasBaseName,
     };
 
     // Log attempt to register name
