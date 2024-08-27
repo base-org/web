@@ -9,7 +9,7 @@ import {
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Address } from 'viem';
-import tracer from 'apps/web/dd-trace/initialize';
+import tracer from 'dd-trace';
 
 // Coinbase verified account *and* CB1 structure
 export type CoinbaseProofResponse = {
