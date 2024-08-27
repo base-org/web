@@ -41,6 +41,7 @@ export type CoinbaseProofResponse = {
  */
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   tracer.dogstatsd.increment('proofs.coinbase');
+  console.log('test log proofs/coinbase');
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }

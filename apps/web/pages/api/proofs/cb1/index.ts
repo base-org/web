@@ -35,6 +35,7 @@ import tracer from 'apps/web/tracer';
  * }
  */
 async function handler(req: NextApiRequest, res: NextApiResponse) {
+  console.error('test log proofs/cb1');
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
