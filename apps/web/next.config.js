@@ -68,6 +68,7 @@ const walletconnectDomains =
   'https://*.walletconnect.org wss://*.walletconnect.org wss://*.walletconnect.com https://*.walletconnect.com https://explorer-api.walletconnect.com';
 
 const contentSecurityPolicy = {
+  'font-src': ['https://fonts.gstatic.com'],
   'default-src': [
     "'self'",
     "'unsafe-inline'", // NextJS requires 'unsafe-inline'
@@ -77,7 +78,7 @@ const contentSecurityPolicy = {
     ccaLiteDomains,
     walletconnectDomains,
   ],
-  'worker-src': ["'self'"],
+  'worker-src': ["'self'", 'blob:'],
   'connect-src': [
     "'self'",
     'https://blob.vercel-storage.com', // Vercel File storage
@@ -87,6 +88,10 @@ const contentSecurityPolicy = {
     greenhouseDomains,
     ccaLiteDomains,
     ccaDomain,
+    'https://ccip-v2.ens.xyz',
+    'https://euc.li',
+    'https://arweave.net',
+    'https://ens.xyz',
     'https://enhanced-provider.rainbow.me',
     'https://*.coinbase.com',
     'wss://www.walletlink.org/rpc', // coinbase wallet connection
@@ -116,6 +121,7 @@ const contentSecurityPolicy = {
     "'self'",
     'blob:',
     'data:',
+    'https://euc.li',
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars
     'https://ipfs.io', // ipfs ens avatar resolution
