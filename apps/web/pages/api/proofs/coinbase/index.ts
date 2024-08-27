@@ -9,6 +9,7 @@ import {
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Address } from 'viem';
+import tracer from 'apps/web/tracer';
 
 // Coinbase verified account *and* CB1 structure
 export type CoinbaseProofResponse = {
@@ -39,6 +40,8 @@ export type CoinbaseProofResponse = {
  * @returns
  */
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  tracer.dogstatsd.increment('proofs.coinbase');
+  console.log('test log proofs/coinbase');
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
@@ -51,6 +54,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(500).json({ error: 'currently unable to sign' });
   }
 
+  const span = tracer.startSpan('coinbase_proof');
   try {
     const result = await sybilResistantUsernameSigning(
       address as `0x${string}`,
@@ -64,6 +68,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(error.statusCode).json({ error: error.message });
     }
     logger.error(error);
+  } finally {
+    span.finish();
   }
 
   // If error is not an instance of Error, return a generic error message

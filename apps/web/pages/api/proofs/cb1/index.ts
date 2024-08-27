@@ -4,6 +4,7 @@ import { logger } from 'apps/web/src/utils/logger';
 import { DiscountType, ProofsException, proofValidation } from 'apps/web/src/utils/proofs';
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import tracer from 'apps/web/tracer';
 
 /**
  * This endpoint checks if the provided address has access to the cb1 attestation.
@@ -34,6 +35,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
  * }
  */
 async function handler(req: NextApiRequest, res: NextApiResponse) {
+  console.error('test log proofs/cb1');
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
@@ -46,6 +48,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(500).json({ error: 'currently unable to sign' });
   }
 
+  const span = tracer.startSpan('cb1_proof');
   try {
     const result = await sybilResistantUsernameSigning(
       address as `0x${string}`,
@@ -58,6 +61,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       return res.status(error.statusCode).json({ error: error.message });
     }
     logger.error(error);
+  } finally {
+    span.finish();
   }
 
   // If error is not an instance of Error, return a generic error message

@@ -29,6 +29,7 @@
     "@vercel/postgres-kysely": "^0.8.0",
     "base-ui": "0.1.1",
     "classnames": "^2.5.1",
+    "dd-trace": "^5.21.0",
     "ethers": "5.7.2",
     "framer-motion": "^8.5.5",
     "hls.js": "^1.5.14",
