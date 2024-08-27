@@ -60,11 +60,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     );
     return res.status(200).json(result);
   } catch (error) {
-    logger.error(error);
     if (error instanceof ProofsException) {
       return res.status(error.statusCode).json({ error: error.message });
     }
-    logger.error(error);
+    logger.error('error getting proofs for cb1 discount', { error });
   }
 
   // If error is not an instance of Error, return a generic error message
