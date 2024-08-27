@@ -21,11 +21,10 @@ export default function UsernameProfileSidebar() {
     profileUsername,
     profileAddress,
     currentWalletIsProfileEditor,
-    currentWalletIsProfileOwner,
     showProfileSettings,
     setShowProfileSettings,
     profileRefetch,
-    canReclaim,
+    currentWalletNeedsToReclaimProfile,
   } = useUsernameProfile();
 
   const { address } = useAccount();
@@ -49,14 +48,11 @@ export default function UsernameProfileSidebar() {
     username: profileUsername,
   });
 
-  // Current wallet is the NFT owner, but not the editor
-  const walletNeedsToReclaimProfile =
-    canReclaim && !!address && !currentWalletIsProfileEditor && currentWalletIsProfileOwner;
-
   const reclaimContract = useMemo(() => {
-    if (!walletNeedsToReclaimProfile) return;
+    if (!currentWalletNeedsToReclaimProfile) return;
+    if (!address) return;
     return buildBasenameReclaimContract(profileUsername, address);
-  }, [address, profileUsername, walletNeedsToReclaimProfile]);
+  }, [address, profileUsername, currentWalletNeedsToReclaimProfile]);
 
   const {
     initiateTransaction: initiateReclaim,
@@ -99,7 +95,7 @@ export default function UsernameProfileSidebar() {
           {showProfileSettings ? 'Back to Profile' : 'Manage Profile'}
         </Button>
       )}
-      {walletNeedsToReclaimProfile && (
+      {currentWalletNeedsToReclaimProfile && (
         <Button
           variant={ButtonVariants.Gray}
           rounded

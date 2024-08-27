@@ -46,6 +46,7 @@ export type UsernameProfileContextProps = {
   canSetAddr: boolean;
   canReclaim: boolean;
   canSafeTransferFrom: boolean;
+  currentWalletNeedsToReclaimProfile: boolean;
 };
 
 export const UsernameProfileContext = createContext<UsernameProfileContextProps>({
@@ -61,6 +62,7 @@ export const UsernameProfileContext = createContext<UsernameProfileContextProps>
   canSetAddr: false,
   canReclaim: false,
   canSafeTransferFrom: false,
+  currentWalletNeedsToReclaimProfile: false,
 });
 
 type UsernameProfileProviderProps = {
@@ -129,6 +131,10 @@ export default function UsernameProfileProvider({
   const canReclaim = currentWalletIsProfileOwner;
   const canSafeTransferFrom = currentWalletIsProfileOwner;
 
+  // Current wallet is the NFT owner, but not the editor
+  const currentWalletNeedsToReclaimProfile =
+    canReclaim && !currentWalletIsProfileEditor && currentWalletIsProfileOwner;
+
   const profileRefetch = useCallback(async () => {
     await profileAddressRefetch();
     await profileEditorRefetch();
@@ -150,6 +156,7 @@ export default function UsernameProfileProvider({
       canSafeTransferFrom,
       showProfileSettings,
       setShowProfileSettings,
+      currentWalletNeedsToReclaimProfile,
     };
   }, [
     profileAddress,
@@ -164,6 +171,7 @@ export default function UsernameProfileProvider({
     canReclaim,
     canSafeTransferFrom,
     showProfileSettings,
+    currentWalletNeedsToReclaimProfile,
   ]);
 
   return (
