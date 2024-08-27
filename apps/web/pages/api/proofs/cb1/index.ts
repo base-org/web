@@ -37,6 +37,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
+  logger.info('cb1 proofs request', { query: req.query });
   const { address, chain } = req.query;
   const validationErr = proofValidation(address, chain);
   if (validationErr) {
@@ -56,7 +57,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (error instanceof ProofsException) {
       return res.status(error.statusCode).json({ error: error.message });
     }
-    logger.error(error);
+    logger.error('error getting proofs for cb1 discount', { error });
   }
 
   // If error is not an instance of Error, return a generic error message

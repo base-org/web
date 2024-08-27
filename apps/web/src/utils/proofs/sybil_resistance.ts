@@ -198,11 +198,7 @@ export async function sybilResistantUsernameSigning(
     const signedMessage = await measureExecutionTime<`0x${string}`>(
       `${latencyMetricsNamespace}.sign_message`,
       async () => {
-        return signMessageWithTrustedSigner(
-          address,
-          discountValidatorAddress,
-          expirationTimeUnix,
-        );
+        return signMessageWithTrustedSigner(address, discountValidatorAddress, expirationTimeUnix);
       },
       [discountType],
     );
@@ -224,7 +220,7 @@ export async function sybilResistantUsernameSigning(
       expires: EXPIRY,
     };
   } catch (error) {
-    logger.error(error);
+    logger.error('error while getting sybilResistant basename signature', { error });
     if (error instanceof Error) {
       throw new ProofsException(error.message, 500);
     }

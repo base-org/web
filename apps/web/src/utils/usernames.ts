@@ -601,7 +601,7 @@ export async function getBasenameAvailable(name: string, chain: Chain): Promise<
     });
     return available;
   } catch (error) {
-    logger.error('Error checking name availability:', error);
+    logger.error('Error checking name availability:', { error });
     throw error;
   }
 }
