@@ -15,6 +15,7 @@ import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import EARegistrarControllerAbi from 'apps/web/src/abis/EARegistrarControllerAbi';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import RegistryAbi from 'apps/web/src/abis/RegistryAbi';
+import BaseRegistrarAbi from 'apps/web/src/abis/BaseRegistrarAbi';
 import profilePictures1 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/1.svg';
 import profilePictures2 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/2.svg';
 import profilePictures3 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/3.svg';
@@ -26,6 +27,7 @@ import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import { base, baseSepolia, mainnet } from 'viem/chains';
 import { BaseName } from '@coinbase/onchainkit/identity';
 import {
+  USERNAME_BASE_REGISTRAR_ADDRESSES,
   USERNAME_BASE_REGISTRY_ADDRESSES,
   USERNAME_EA_REGISTRAR_CONTROLLER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
@@ -545,14 +547,42 @@ export async function getBasenameAddress(username: BaseName) {
   } catch (error) {}
 }
 
-// Get username token `owner`
-export function buildBasenameOwnerContract(username: BaseName): ContractFunctionParameters {
+/*
+  Get username Basename `editor` in the Base Registrar (different from NFT owner)
+*/
+export function buildBasenameEditorContract(username: BaseName): ContractFunctionParameters {
   const chain = getChainForBasename(username);
   return {
     abi: RegistryAbi,
     address: USERNAME_BASE_REGISTRY_ADDRESSES[chain.id],
     args: [namehash(username)],
     functionName: 'owner',
+  };
+}
+
+export async function getBasenameEditor(username: BaseName) {
+  const chain = getChainForBasename(username);
+
+  try {
+    const client = getBasenamePublicClient(chain.id);
+    const owner = await client.readContract(buildBasenameEditorContract(username));
+
+    return owner;
+  } catch (error) {}
+}
+
+/*
+  Get username NFT `owner` in the Base Registry (different from Basename editor)
+*/
+
+export function buildBasenameOwnerContract(username: BaseName): ContractFunctionParameters {
+  const chain = getChainForBasename(username);
+  const tokenId = getTokenIdFromBasename(username);
+  return {
+    abi: BaseRegistrarAbi,
+    address: USERNAME_BASE_REGISTRAR_ADDRESSES[chain.id],
+    args: [tokenId],
+    functionName: 'ownerOf',
   };
 }
 
@@ -629,6 +659,23 @@ export async function getBasenameTextRecords(username: BaseName) {
 
     return textRecords;
   } catch (error) {}
+}
+
+/*
+  Reclaim a Basename contrat write method
+*/
+export function buildBasenameReclaimContract(
+  username: BaseName,
+  address: Address,
+): ContractFunctionParameters {
+  const chain = getChainForBasename(username);
+  const tokenId = getTokenIdFromBasename(username);
+  return {
+    abi: BaseRegistrarAbi,
+    address: USERNAME_BASE_REGISTRAR_ADDRESSES[chain.id],
+    args: [tokenId, address],
+    functionName: 'reclaim',
+  };
 }
 
 /*
