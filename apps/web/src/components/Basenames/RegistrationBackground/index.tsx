@@ -1,3 +1,4 @@
+'use client';
 import { Transition } from '@headlessui/react';
 import { FloatingENSPills } from 'apps/web/src/components/Basenames/FloatingENSPills';
 import {
@@ -8,9 +9,9 @@ import {
 
 import fireworks from './assets/fireworks.webm';
 import globe from './assets/globe.webm';
-import vortex from './assets/vortex.webm';
-
+import vortexJson from './assets/vortex.json';
 import classNames from 'classnames';
+import LottieAnimation from 'apps/web/src/components/LottieAnimation';
 
 export default function RegistrationBackground() {
   const { registrationStep } = useRegistration();
@@ -89,12 +90,7 @@ export default function RegistrationBackground() {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        {/* TODO: Lottie animation file */}
-
-        {}
-        <video autoPlay className={videoClasses} loop muted playsInline>
-          <source src={vortex} type="video/webm" />
-        </video>
+        <LottieAnimation data={vortexJson} wrapperClassName={videoClasses} />
       </Transition>
 
       <Transition
