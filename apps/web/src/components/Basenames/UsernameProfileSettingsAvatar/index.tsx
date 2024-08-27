@@ -13,7 +13,7 @@ import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 export default function UsernameProfileSettingsAvatar() {
-  const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
+  const { profileUsername, profileAddress, currentWalletIsProfileEditor } = useUsernameProfile();
   const [avatarFile, setAvatarFile] = useState<File | undefined>();
 
   const [avatarIsLoading, setAvatarIsLoading] = useState<boolean>(false);
@@ -40,7 +40,7 @@ export default function UsernameProfileSettingsAvatar() {
   const uploadAvatar = useCallback(
     async (file: File | undefined) => {
       if (!file) return Promise.resolve();
-      if (!currentWalletIsProfileOwner) return false;
+      if (!currentWalletIsProfileEditor) return false;
 
       setAvatarIsLoading(true);
 
@@ -60,7 +60,7 @@ export default function UsernameProfileSettingsAvatar() {
 
       return newBlob;
     },
-    [currentWalletIsProfileOwner, logEventWithContext, profileUsername, updateTextRecords],
+    [currentWalletIsProfileEditor, logEventWithContext, profileUsername, updateTextRecords],
   );
 
   const saveAvatar = useCallback(() => {
@@ -76,7 +76,7 @@ export default function UsernameProfileSettingsAvatar() {
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
 
-      if (!currentWalletIsProfileOwner) return false;
+      if (!currentWalletIsProfileEditor) return false;
 
       if (avatarFile) {
         uploadAvatar(avatarFile)
@@ -96,7 +96,7 @@ export default function UsernameProfileSettingsAvatar() {
       }
     },
     [
-      currentWalletIsProfileOwner,
+      currentWalletIsProfileEditor,
       avatarFile,
       uploadAvatar,
       logEventWithContext,

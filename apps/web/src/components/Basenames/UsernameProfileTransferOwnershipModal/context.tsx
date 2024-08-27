@@ -6,7 +6,7 @@ import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import useWriteContractWithReceipt, {
   WriteTransactionWithReceiptStatus,
 } from 'apps/web/src/hooks/useWriteContractWithReceipt';
-import { getTokenIdFromBasename } from 'apps/web/src/utils/usernames';
+import { buildBasenameReclaimContract, getTokenIdFromBasename } from 'apps/web/src/utils/usernames';
 import {
   createContext,
   Dispatch,
@@ -82,7 +82,7 @@ export default function ProfileTransferOwnershipProvider({
 }: ProfileTransferOwnershipProviderProps) {
   // Hooks
   const { address } = useAccount();
-  const { profileUsername } = useUsernameProfile();
+  const { profileUsername, canReclaim, canSafeTransferFrom, canSetAddr } = useUsernameProfile();
   const { basenameChain } = useBasenameChain(profileUsername);
   const { logError } = useErrors();
 
@@ -110,13 +110,8 @@ export default function ProfileTransferOwnershipProvider({
 
   const reclaimContract = useMemo(() => {
     if (!tokenId || !isValidRecipientAddress) return;
-    return {
-      abi: BaseRegistrarAbi,
-      address: USERNAME_BASE_REGISTRAR_ADDRESSES[basenameChain.id],
-      args: [tokenId, recipientAddress],
-      functionName: 'reclaim',
-    } as ContractFunctionParameters;
-  }, [basenameChain.id, isValidRecipientAddress, recipientAddress, tokenId]);
+    return buildBasenameReclaimContract(profileUsername, recipientAddress);
+  }, [isValidRecipientAddress, profileUsername, recipientAddress, tokenId]);
 
   const safeTransferFromContract = useMemo(() => {
     if (!tokenId || !isValidRecipientAddress || !address) return;
@@ -226,45 +221,58 @@ export default function ProfileTransferOwnershipProvider({
 
   // Function & status we can track and display the edit rec
   const ownershipSettings: OwnershipSettings[] = useMemo(() => {
-    return [
-      {
+    const settings: OwnershipSettings[] = [];
+
+    if (canSetAddr) {
+      settings.push({
         id: 'setAddr',
         name: 'Address record',
         description: 'Your Basename will resolve to this address.',
         status: setAddrStatus,
         contractFunction: updateSetAddr,
-      },
-      {
+      });
+      settings.push({
         id: 'setName',
         name: 'Name record',
         description: 'Your Basename will no longer be displayed with your address.',
         status: setNameStatus,
         contractFunction: updateSetName,
-      },
-      {
+      });
+    }
+
+    if (canReclaim) {
+      settings.push({
         id: 'reclaim',
         name: 'Profile editing',
         description: 'Transfer editing rights to this address.',
         status: reclaimStatus,
         contractFunction: updateReclaim,
-      },
-      {
+      });
+    }
+
+    if (canSafeTransferFrom) {
+      settings.push({
         id: 'safeTransferFrom',
         name: 'Token ownership',
         description: 'Transfer the Basename token to this address.',
         status: safeTransferFromStatus,
         contractFunction: updateSafeTransferFrom,
-      },
-    ];
+      });
+    }
+
+    return settings;
   }, [
-    updateSetAddr,
-    updateSetName,
-    updateReclaim,
-    updateSafeTransferFrom,
-    reclaimStatus,
-    safeTransferFromStatus,
+    canSetAddr,
+    canReclaim,
+    canSafeTransferFrom,
     setAddrStatus,
+    updateSetAddr,
     setNameStatus,
+    updateSetName,
+    reclaimStatus,
+    updateReclaim,
+    safeTransferFromStatus,
+    updateSafeTransferFrom,
   ]);
 
   const ownershipSettingsAreWaiting = useMemo(() => {
