@@ -1,30 +1,10 @@
-import { type FrameUIComponents, type FrameUITheme } from '@frames.js/render/ui';
-
-type StylingProps = {
-  className?: string;
-  style?: React.CSSProperties;
-};
-
-/**
- * You can override components to change their internal logic or structure if you want.
- * By default it is not necessary to do that since the default structure is already there
- * so you can just pass an empty object and use theme to style the components.
- *
- * You can also style components here and completely ignore theme if you wish.
- */
-export const components: FrameUIComponents<StylingProps> = {};
-
-/**
- * By default there are no styles so it is up to you to style the components as you wish.
- */
-export const theme: FrameUITheme<StylingProps> = {
+export const theme = {
   Error: {
     className:
-      'flex flex-col w-[380px] h-[200px] border border-palette-line/20 rounded-lg overflow-hidden bg-white relative mt-4 items-center justify-center opacity-50',
+      'flex flex-col w-[380px] h-[200px] border border-gray-90 rounded-lg overflow-hidden bg-white relative items-center justify-center opacity-50',
   },
   Root: {
-    className:
-      'flex flex-col max-w-[380px] border rounded-lg overflow-hidden bg-white relative mt-6',
+    className: 'flex flex-col max-w-[380px] border rounded-lg overflow-hidden bg-white relative',
   },
   LoadingScreen: {
     className:

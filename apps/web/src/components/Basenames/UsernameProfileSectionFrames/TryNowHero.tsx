@@ -7,7 +7,7 @@ import frameIcon from './frame-icon.svg';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 
 export default function TryNowHero() {
-  const { openFrameModal } = useFrameContext();
+  const { openFrameManagerModal } = useFrameContext();
 
   return (
     <section className="relative flex flex-row items-center justify-start gap-2 rounded-xl border border-palette-line/20 pl-1 pr-6">
@@ -18,7 +18,7 @@ export default function TryNowHero() {
           Add fun and interactive experiences to your profile with a frame.
         </p>
       </div>
-      <Button rounded variant={ButtonVariants.Black} onClick={openFrameModal}>
+      <Button rounded variant={ButtonVariants.Black} onClick={openFrameManagerModal}>
         Try it now
       </Button>
       <ImageAdaptive

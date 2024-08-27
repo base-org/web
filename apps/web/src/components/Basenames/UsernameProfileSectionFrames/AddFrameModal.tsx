@@ -1,30 +1,25 @@
+import { FrameUI } from '@frames.js/render/ui';
 import { useFrame } from '@frames.js/render/use-frame';
 import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
+import { theme } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FrameTheme';
 import { SuggestionCard } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/SuggestionCard';
+import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import Input from 'apps/web/src/components/Input';
 import Modal, { ModalSizes } from 'apps/web/src/components/Modal';
-import { useXmtpIdentity } from 'apps/web/src/hooks/useXmtpIdentity';
 import { StaticImageData } from 'next/image';
 import { ChangeEvent, useCallback, useState } from 'react';
-import { useAccount } from 'wagmi';
-
-import starActive from './ui/starActive.svg';
 import currencies from './ui/currencies.svg';
 import email from './ui/email.svg';
 import nftProduct from './ui/nftProduct.svg';
 import payouts from './ui/payouts.svg';
-import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
-import { FrameUI } from '@frames.js/render';
-
-import {
-  components,
-  theme,
-} from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FrameTheme';
+import starActive from './ui/starActive.svg';
 
 export default function AddFrameModal() {
-  const { address } = useAccount();
-
-  const { frameModalOpen, closeFrameModal, xmtpFrameContext } = useFrameContext();
   const [frameUrl, setFrameUrl] = useState('');
+  const [farcasterUsername, setFarcasterUsername] = useState('');
+  const handleFarcasterUsernameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setFarcasterUsername(e.target.value);
+  }, []);
   const emptyFrameUrl = !frameUrl;
 
   const onFrameUrlChange = useCallback(
@@ -32,88 +27,203 @@ export default function AddFrameModal() {
     [],
   );
 
-  const xmtpSignerState = useXmtpIdentity();
+  const {
+    frameConfig,
+    frameManagerModalOpen,
+    closeFrameManagerModal,
+    pendingFrameChange,
+    setFrameRecord,
+  } = useFrameContext();
 
   const frameState = useFrame({
-    connectedAddress: address,
+    ...frameConfig,
     homeframeUrl: frameUrl,
-    frameActionProxy: '/frames',
-    frameGetProxy: '/frames',
-    onError: (e) => console.error('frame error: ', e),
-    signerState: xmtpSignerState,
-    specification: 'farcaster',
-    frameContext: xmtpFrameContext,
   });
 
+  const handlePaycasterClick = useCallback(() => {
+    if (farcasterUsername) {
+      setFrameUrl(`https://app.paycaster.co/api/frames/users/${farcasterUsername}`);
+    } else {
+      setFrameUrl('');
+    }
+  }, [farcasterUsername]);
+
+  const handleAddFrameClick = useCallback(
+    () => setFrameRecord(frameUrl),
+    [frameUrl, setFrameRecord],
+  );
+
   return (
-    <Modal isOpen={frameModalOpen} onClose={closeFrameModal} size={ModalSizes.FlexLarge}>
+    <Modal
+      isOpen={frameManagerModalOpen}
+      onClose={closeFrameManagerModal}
+      size={ModalSizes.FlexLarge}
+    >
       <div className="flex flex-col">
         <h1 className="font-display text-3xl font-medium">Pin a frame to your profile</h1>
         <span className="mt-4 text-palette-foregroundMuted">
           Paste a link to your frame, or use one of the suggestions below.
         </span>
-        <div className="mt-4 flex w-full flex-row justify-between gap-12">
-          <div className="flex flex-col">
-            <h3 className="mt-8 font-medium">Suggestions</h3>
-            <div className="mt-4 flex max-w-[600px] flex-row gap-4 overflow-x-scroll">
-              <SuggestionCard
-                imgData={payouts as StaticImageData}
-                title="Add by URL"
-                description="Add your own Frame by URL"
-              />
+        <div className="mt-4 flex flex-row justify-between gap-12">
+          <div className="flex max-w-md flex-col rounded-xl border border-palette-line/20 bg-[#F3F3F3] p-4">
+            <h3 className="font-medium">Suggestions</h3>
+            <div className="mt-4 flex flex-col gap-4 overflow-x-scroll">
               <SuggestionCard
                 imgData={payouts as StaticImageData}
                 title="Pay me"
-                description="Allow anyone to easily pay you directly from your Base profile using Paycaster."
-              />
+                description="Get paid with Paycaster."
+              >
+                <p className="text-sm text-palette-foreground">
+                  Add your farcaster to show a preview.
+                </p>
+                <div className="mt-3 flex flex-row gap-4">
+                  <Input
+                    placeholder="@username"
+                    value={farcasterUsername}
+                    onChange={handleFarcasterUsernameChange}
+                    type="text"
+                    className="flex-grow rounded-xl border border-palette-line/20 p-4"
+                  />{' '}
+                  <Button
+                    rounded
+                    variant={ButtonVariants.Black}
+                    size={ButtonSizes.Small}
+                    onClick={handlePaycasterClick}
+                  >
+                    Show preview
+                  </Button>
+                </div>
+              </SuggestionCard>
               <SuggestionCard
                 imgData={starActive as StaticImageData}
                 title="Nominate me"
-                description="Allow anyone to easily nominate you as a favorite builder on Build.Top."
-              />
+                description="Get nominated with Build.Top"
+              >
+                <div className="flex flex-row items-center gap-2">
+                  <p className="max-w-80 text-sm text-palette-foreground">
+                    We’ll use your address to show a preview on{' '}
+                    <a
+                      href="http://build.top"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline"
+                    >
+                      build.top
+                    </a>
+                  </p>
+                  <Button rounded variant={ButtonVariants.Black} size={ButtonSizes.Small}>
+                    Show preview
+                  </Button>
+                </div>
+              </SuggestionCard>
               <SuggestionCard
                 imgData={starActive as StaticImageData}
                 title="Buy from me"
-                description="Paste a link to a product on Slice.so to let anyone buy it directly from your profile."
-              />
+                description="Sell products from your Slice shop"
+              >
+                <ol className="list-decimal text-sm text-palette-foreground">
+                  <li>
+                    Visit your onchain shop on{' '}
+                    <a
+                      href="http://slice.so"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline"
+                    >
+                      slice.so
+                    </a>
+                  </li>
+                  <li>Paste a link to the product you want to sell on your profile</li>
+                </ol>
+              </SuggestionCard>
               <SuggestionCard
                 imgData={nftProduct as StaticImageData}
                 title="Subscribe to me"
-                description="Paste the link to your Hypersub page to let anyone subscribe directly from your profile."
-              />
+                description="Get subscriptions to your Hypersub"
+              >
+                <ol className="list-decimal text-sm text-palette-foreground">
+                  <li>
+                    Visit{' '}
+                    <a
+                      href="http://hypersub.xyz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline"
+                    >
+                      hypersub.xyz
+                    </a>
+                  </li>
+                  <li>Paste a link to your Hypersub Subscription page</li>
+                </ol>
+              </SuggestionCard>
               <SuggestionCard
                 imgData={currencies as StaticImageData}
                 title="Mint me"
-                description="Paste a link to an NFT on Highlight to let others mint it directly from your profile."
-              />
+                description="Mint your NFT on Highlight"
+              >
+                <ol className="list-decimal text-sm text-palette-foreground">
+                  <li>
+                    Visit{' '}
+                    <a
+                      href="http://highlight.xyz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline"
+                    >
+                      highlight.xyz
+                    </a>
+                  </li>
+                  <li>Paste a link to the NFT you want others to mint</li>
+                </ol>
+              </SuggestionCard>
               <SuggestionCard
+                hideHr
                 imgData={email as StaticImageData}
                 title="RSVP me"
-                description="Paste a link to an event on Events.xyz to let anyone RSVP directly from your profile."
-              />
+                description="Get RSVPs to your events on events.xyz"
+              >
+                <ol className="list-decimal text-sm text-palette-foreground">
+                  <li>
+                    Visit{' '}
+                    <a
+                      href="http://events.xyz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline"
+                    >
+                      events.xyz
+                    </a>
+                  </li>
+                  <li>
+                    Create a new event, or paste a link to the event you want others to RSVP to
+                  </li>
+                </ol>
+              </SuggestionCard>
             </div>
-            <h3 className="mt-8 font-medium">Add a link to a frame</h3>
-            <input
+          </div>
+          <div className="flex flex-col">
+            <h3 className="font-medium">Link to a frame</h3>
+            <Input
               placeholder="https://..."
               type="text"
               value={frameUrl}
               onChange={onFrameUrlChange}
-              className="mt-4 rounded-[13px] border border-palette-line/20 p-4"
+              className="mt-2 rounded-xl border border-palette-line/20 p-4"
             />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-medium">Preview</span>
+            <span className="mt-6 font-medium">Preview</span>
             {emptyFrameUrl ? (
               <div className={theme.Error?.className}>
                 <span>Choose a card to preview</span>
               </div>
             ) : (
-              <FrameUI frameState={frameState} components={components} theme={theme} />
+              <FrameUI frameState={frameState} theme={theme} />
             )}
             <Button
               rounded
               variant={ButtonVariants.Black}
-              className="mt-8 self-end justify-self-end"
+              className="mt-4 self-end"
+              onClick={handleAddFrameClick}
+              disabled={pendingFrameChange}
             >
               Add frame
             </Button>
