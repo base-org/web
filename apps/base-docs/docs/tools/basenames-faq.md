@@ -88,7 +88,7 @@ Currently, only one address at a time can be linked to a Basename. However, we p
 
 ### 14. I am a builder. How do I integrate Basenames to my app?
 
-If you're a builder looking to integrate Basenames into your app, [OnchainKit](https://onchainkit.xyz/wallet/wallet-dropdown-base-name) is the easiest way to get started (tutorial [here](https://docs.base.org/docs/tools/basenames-tutorial)). If you have ideas for new features or badges that you'd like to integrate with Basenames, we'd love to [hear from you](https://app.deform.cc/form/b9c1c39f-f238-459e-a765-5093ca638075/?page_number=0).
+If you're a builder looking to integrate Basenames into your app, [OnchainKit](https://onchainkit.xyz/wallet/wallet-dropdown-base-name) is the easiest way to get started (tutorial [here](https://docs.base.org/docs/tools/basenames-tutorial)). If you're using [ethers.js](https://ethers.org) you can see an example integration [here](https://gist.github.com/okwme/dde885bced64c92473639a8d2722883c). If you have ideas for new features or badges that you'd like to integrate with Basenames, we'd love to [hear from you](https://app.deform.cc/form/b9c1c39f-f238-459e-a765-5093ca638075/?page_number=0).
 
 ### 15. How do I get a Basename for my app or project?
 
