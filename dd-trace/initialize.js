@@ -23,10 +23,11 @@ tracer.init({
   logLevel: 'debug',
   // default DD-agent host for odin deploys
   hostname: '192.168.133.7',
+  port: 8126,
   dogstatsd: {
     hostname: '192.168.133.7',
+    port: 8125,
   },
-  env: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 });
 
 tracer.use('http', {
