@@ -68,7 +68,6 @@ const walletconnectDomains =
   'https://*.walletconnect.org wss://*.walletconnect.org wss://*.walletconnect.com https://*.walletconnect.com https://explorer-api.walletconnect.com';
 
 const contentSecurityPolicy = {
-  'font-src': ['https://fonts.gstatic.com'],
   'default-src': [
     "'self'",
     "'unsafe-inline'", // NextJS requires 'unsafe-inline'
