@@ -20,7 +20,7 @@ tracer.init({
     debug: (message) => logger.debug(message),
   },
   dogstatsd: {
-    hostname: '10.166.21.89',
+    hostname: '192.168.133.7',
   },
 });
 
