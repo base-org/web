@@ -4,7 +4,7 @@ import { logger } from 'apps/web/src/utils/logger';
 import { DiscountType, ProofsException, proofValidation } from 'apps/web/src/utils/proofs';
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import tracer from 'apps/web/tracer';
+import tracer from 'apps/web/dd-trace/initialize';
 
 /**
  * This endpoint checks if the provided address has access to the cb1 attestation.

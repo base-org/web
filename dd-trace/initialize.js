@@ -1,5 +1,5 @@
 import ddtracer from 'dd-trace';
-import { logger } from 'apps/web/src/utils/logger';
+import { logger } from '../apps/web/src/utils/logger';
 
 const { tracer } = ddtracer;
 tracer.init({
@@ -13,6 +13,7 @@ tracer.init({
   profiling: true,
   logInjection: true,
   startupLogs: true,
+  runtimeMetrics: true,
   logger: {
     error: (err) => logger.error(err),
     warn: (message) => logger.warn(message),
@@ -20,15 +21,19 @@ tracer.init({
     debug: (message) => logger.debug(message),
   },
   logLevel: 'debug',
+  // default DD-agent host for odin deploys
   hostname: '192.168.133.7',
-  port: 8126,
   dogstatsd: {
     hostname: '192.168.133.7',
-    port: 8125,
   },
+  env: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 });
 
 tracer.use('http', {
+  enabled: true,
+});
+
+tracer.use('next', {
   enabled: true,
 });
 
