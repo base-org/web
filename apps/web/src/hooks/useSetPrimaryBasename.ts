@@ -29,7 +29,7 @@ export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrima
   const { address } = useAccount();
   const { logError } = useErrors();
 
-  const { currentWalletIsProfileOwner } = useUsernameProfile();
+  const { currentWalletIsProfileEditor } = useUsernameProfile();
   const { basenameChain: secondaryUsernameChain } = useBasenameChain(secondaryUsername);
 
   // Get current primary username
@@ -44,7 +44,7 @@ export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrima
   });
 
   const usernamesDiffer = secondaryUsername !== primaryUsername;
-  const canSetUsernameAsPrimary = usernamesDiffer && currentWalletIsProfileOwner;
+  const canSetUsernameAsPrimary = usernamesDiffer && currentWalletIsProfileEditor;
 
   const { initiateTransaction, transactionIsLoading, transactionIsSuccess } =
     useWriteContractWithReceipt({
