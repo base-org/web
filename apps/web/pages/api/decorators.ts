@@ -15,14 +15,14 @@ export function withExecutionTime(
   };
 }
 
-const defaultTimeout = 5000;
+const defaultTimeout = process.env.DEFAULT_API_TIMEOUT ?? 5000;
 export function withTimeout(
   handler: NextApiHandler,
   timeoutLimit = defaultTimeout,
 ): NextApiHandler {
   return async (req, res) => {
     const timeoutPromise = new Promise((_, reject) =>
-      setTimeout(() => reject(new Error('Request timed out')), timeoutLimit),
+      setTimeout(() => reject(new Error('Request timed out')), timeoutLimit as number),
     );
 
     const handlerPromise = new Promise<void>((resolve, reject) => {
