@@ -128,7 +128,7 @@ export function RegistrationFlow() {
 
   return (
     <>
-      {true && isDevelopment && <RegistrationStateSwitcherDynamic />}
+      {false && isDevelopment && <RegistrationStateSwitcherDynamic />}
       <section className={mainClasses}>
         {/* 1. Brand & Search */}
         <Transition
