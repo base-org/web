@@ -1,4 +1,4 @@
-import { apiLatencyMetricsNamespace, withExecutionTime } from 'apps/web/pages/api/decorators';
+import { withTimeout } from 'apps/web/pages/api/decorators';
 import { trustedSignerPKey } from 'apps/web/src/constants';
 import { logger } from 'apps/web/src/utils/logger';
 import { DiscountType, ProofsException, proofValidation } from 'apps/web/src/utils/proofs';
@@ -45,7 +45,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!trustedSignerPKey) {
     return res.status(500).json({ error: 'currently unable to sign' });
   }
-
   try {
     const result = await sybilResistantUsernameSigning(
       address as `0x${string}`,
@@ -64,4 +63,4 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   return res.status(500).json({ error: 'An unexpected error occurred' });
 }
 
-export default withExecutionTime(handler, `${apiLatencyMetricsNamespace}.cb1_proof`);
+export default withTimeout(handler);
