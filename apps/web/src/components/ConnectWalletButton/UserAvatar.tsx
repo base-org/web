@@ -1,3 +1,4 @@
+'use client';
 import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';

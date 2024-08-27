@@ -1,9 +1,11 @@
+'use client';
 import { Avatar } from '@coinbase/onchainkit/identity';
-import BasenameAvatar, { getBasenameImage } from 'apps/web/src/components/Basenames/BasenameAvatar';
+import BasenameAvatar from 'apps/web/src/components/Basenames/BasenameAvatar';
 import useBaseEnsAvatar from 'apps/web/src/hooks/useBaseEnsAvatar';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/urls';
+import { getBasenameImage } from 'apps/web/src/utils/usernames';
 import { truncateMiddle } from 'libs/base-ui/utils/string';
 import Image from 'next/image';
 import { Address } from 'viem';

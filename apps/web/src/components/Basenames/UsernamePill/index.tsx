@@ -1,3 +1,4 @@
+'use client';
 import Dropdown from 'apps/web/src/components/Dropdown';
 import DropdownItem from 'apps/web/src/components/DropdownItem';
 import DropdownMenu from 'apps/web/src/components/DropdownMenu';

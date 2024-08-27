@@ -3,6 +3,7 @@ import FileInput from 'apps/web/src/components/FileInput';
 import Hint, { HintVariants } from 'apps/web/src/components/Hint';
 import {
   getBasenameAvatarUrl,
+  getBasenameImage,
   UsernameTextRecordKeys,
   validateBasenameAvatarFile,
   validateBasenameAvatarUrl,
@@ -16,7 +17,6 @@ import Dropdown from 'apps/web/src/components/Dropdown';
 import DropdownToggle from 'apps/web/src/components/DropdownToggle';
 import DropdownMenu, { DropdownMenuAlign } from 'apps/web/src/components/DropdownMenu';
 import DropdownItem from 'apps/web/src/components/DropdownItem';
-import { getBasenameImage } from 'apps/web/src/components/Basenames/BasenameAvatar';
 
 export type UsernameAvatarFieldProps = {
   onChangeFile: (file: File | undefined) => void;

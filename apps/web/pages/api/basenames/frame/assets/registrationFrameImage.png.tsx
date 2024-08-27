@@ -4,7 +4,7 @@ import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/op
 import ImageRaw from 'apps/web/src/components/ImageRaw';
 import { DOMAIN } from 'apps/web/pages/api/basenames/frame/constants';
 import registrationImageBackground from 'apps/web/pages/api/basenames/frame/assets/registration-bg.png';
-import { getBasenameImage } from 'apps/web/src/components/Basenames/BasenameAvatar';
+import { getBasenameImage } from 'apps/web/src/utils/usernames';
 
 export const config = {
   runtime: 'edge',

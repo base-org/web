@@ -8,12 +8,12 @@ import { isDevelopment } from 'apps/web/src/constants';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import {
   formatBaseEthDomain,
+  getBasenameImage,
   USERNAME_DOMAINS,
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 import { base, baseSepolia } from 'viem/chains';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
-import { getBasenameImage } from 'apps/web/src/components/Basenames/BasenameAvatar';
 export const runtime = 'edge';
 
 const size = {

@@ -1,6 +1,6 @@
 import satori from 'satori';
 import { NextRequest } from 'next/server';
-import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
+import { getBasenameImage, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import twemoji from 'twemoji';
 import { base } from 'viem/chains';
 import { namehash } from 'viem';
@@ -9,8 +9,6 @@ import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { isDevelopment } from 'apps/web/src/constants';
 import ImageRaw from 'apps/web/src/components/ImageRaw';
-import { getBasenameImage } from 'apps/web/src/components/Basenames/BasenameAvatar';
-
 const emojiCache: Record<string, Promise<string>> = {};
 
 export async function loadEmoji(emojiString: string) {
