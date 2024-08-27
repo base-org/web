@@ -6,6 +6,7 @@ import {
   proofValidation,
 } from 'apps/web/src/utils/proofs';
 import { logger } from 'apps/web/src/utils/logger';
+import { withTimeout } from 'apps/web/pages/api/decorators';
 
 /*
 this endpoint returns whether or not the account has a cb.id
@@ -18,7 +19,7 @@ example return:
   "discountValidatorAddress": "0x..."
 }
 */
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
@@ -47,3 +48,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // If error is not an instance of Error, return a generic error message
   return res.status(500).json({ error: 'An unexpected error occurred' });
 }
+
+export default withTimeout(handler);

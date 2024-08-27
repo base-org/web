@@ -1,3 +1,4 @@
+import { withTimeout } from 'apps/web/pages/api/decorators';
 import { queryCbGpt } from 'apps/web/src/cdp/api/cb-gpt';
 import { logger } from 'apps/web/src/utils/logger';
 import { NextApiRequest, NextApiResponse } from 'next';
@@ -35,7 +36,7 @@ Remember, the goal is to provide alternatives that users will find desirable and
 Focus on quality and creativity in your suggestions.`;
 const chatLlm = 'claude-3-5-sonnet@20240620';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<ApiResponse>) {
+async function handler(req: NextApiRequest, res: NextApiResponse<ApiResponse>) {
   const { alreadyClaimedName } = req.query;
   if (typeof alreadyClaimedName !== 'string') {
     res.status(400).json({ error: 'name must be a string' });
@@ -65,3 +66,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     }
   }
 }
+
+export default withTimeout(handler);
