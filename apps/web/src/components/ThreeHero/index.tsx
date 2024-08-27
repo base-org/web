@@ -6,9 +6,9 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, MeshTransmissionMaterial, Environment, Lightformer } from '@react-three/drei';
 import { CuboidCollider, BallCollider, Physics, RigidBody } from '@react-three/rapier';
 import { EffectComposer, N8AO } from '@react-three/postprocessing';
-// import { easing } from 'maath';
+import { easing } from 'maath';
 
-const accents = ['#4060ff', '#20ffa0', '#ff4060', '#ffcc00'];
+const accents = ['#4060ff'];
 const shuffle = (accent = 0) => [
   { color: '#444', roughness: 0.1 },
   { color: '#444', roughness: 0.75 },
@@ -140,11 +140,10 @@ function Pointer({ vec = new THREE.Vector3() }) {
 
 function Model({ children, color = 'white', roughness = 0, ...props }) {
   const ref = useRef();
-  const { nodes, materials } = useGLTF('/three/headphones.gltf');
-  // useFrame((state, delta) => {
-  //   // easing.dampC(ref.current.material.color, color, 0.2, delta);
-  //   re
-  // });
+  const { nodes, materials } = useGLTF('/three/spindle.glb');
+  useFrame((state, delta) => {
+    easing.dampC(ref.current.material.color, color, 0.2, delta);
+  });
   return (
     <mesh ref={ref} castShadow receiveShadow scale={10} geometry={nodes.connector.geometry}>
       <meshStandardMaterial metalness={0.2} roughness={roughness} map={materials.base.map} />

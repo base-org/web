@@ -49,10 +49,11 @@ export default async function Home() {
   return (
     <AnalyticsProvider context="base_landing_page">
       <AnalyticsProvider context="hero">
-        <Hero />
+        <div className="h-[600px] w-full">
+          <ThreeHero />
+        </div>
       </AnalyticsProvider>
       <main className="flex w-full flex-col items-center bg-black">
-        <ThreeHero />
         <Divider />
         <Features />
         <Divider />

@@ -77,7 +77,7 @@ const contentSecurityPolicy = {
     ccaLiteDomains,
     walletconnectDomains,
   ],
-  'worker-src': ["'self'"],
+  'worker-src': ["'self' blob:"],
   'connect-src': [
     "'self'",
     'https://blob.vercel-storage.com', // Vercel File storage
@@ -109,6 +109,8 @@ const contentSecurityPolicy = {
     'https://*.datadoghq.com', //datadog
     'https://translate.googleapis.com', // Let user translate our website
     'https://sdk-api.neynar.com/', // Neymar API
+    'https://www.gstatic.com/',
+    'blob:',
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
