@@ -19,6 +19,7 @@ tracer.init({
     info: (message) => logger.info(message),
     debug: (message) => logger.debug(message),
   },
+  logLevel: 'debug',
   hostname: '192.168.133.7',
   port: 8126,
   dogstatsd: {
