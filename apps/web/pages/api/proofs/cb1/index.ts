@@ -37,7 +37,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
-  logger.info('cb1 proofs request', { query: req.query });
   const { address, chain } = req.query;
   const validationErr = proofValidation(address, chain);
   if (validationErr) {
