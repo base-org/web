@@ -101,7 +101,9 @@ export default function SearchAddressInput({ onChange }: SearchAddressInputProps
             >
               <span>
                 View {showUsername && <strong>{username}</strong>}
-                {finalAddress && <strong>{truncateMiddle(finalAddress, 6, 4)}</strong>}{' '}
+                {!showUsername && finalAddress && (
+                  <strong>{truncateMiddle(finalAddress, 6, 4)}</strong>
+                )}{' '}
                 {baseBlockExplorerName}
               </span>
               <Icon name="external-link" color="currentColor" height="0.8rem" width="0.8rem" />

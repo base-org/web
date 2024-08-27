@@ -1,4 +1,6 @@
+import { apiLatencyMetricsNamespace, withExecutionTime } from 'apps/web/pages/api/decorators';
 import { trustedSignerPKey } from 'apps/web/src/constants';
+import { logger } from 'apps/web/src/utils/logger';
 import { DiscountType, ProofsException, proofValidation } from 'apps/web/src/utils/proofs';
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -31,7 +33,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
  *   "discountValidatorAddress": "0x502df754f25f492cad45ed85a4de0ee7540717e7"
  * }
  */
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
@@ -55,9 +57,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (error instanceof ProofsException) {
       return res.status(error.statusCode).json({ error: error.message });
     }
-    console.error(error);
+    logger.error(error);
   }
 
   // If error is not an instance of Error, return a generic error message
   return res.status(500).json({ error: 'An unexpected error occurred' });
 }
+
+export default withExecutionTime(handler, `${apiLatencyMetricsNamespace}.cb1_proof`);

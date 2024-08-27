@@ -13,6 +13,7 @@ keywords:
     Supra,
     Chainlink,
     Chronicle,
+    ORA,
     Pyth,
     VRF,
     Gelato VRF,
@@ -101,6 +102,18 @@ See this guide to learn how to get started with [Gelato VRF](https://docs.gelato
 
 - Base Mainnet
 - Base Sepolia (Testnet)
+
+---
+
+## ORA
+
+[ORA](https://ora.io) provides an [Onchain AI Oracle](https://docs.ora.io/doc/oao-onchain-ai-oracle/introduction) for Base.
+
+See [this guide](https://docs.ora.io/doc/oao-onchain-ai-oracle/develop-guide/tutorials/interaction-with-oao-tutorial) to learn how to use ORA Onchain AI Oracle.
+
+#### Supported Networks
+
+- Base Mainnet
 
 ---
 

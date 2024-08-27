@@ -99,7 +99,7 @@ export function useCCTPBridgeStatus({
 
         // We still need to check whether or not the message was received on the other chain.
         // If it hasn't been received yet, the user needs to call receiveMessage on the MessageTransmitter.
-        // It it has been received, the bridge is complete.
+        // If it has been received, the bridge is complete.
         // We can check if the message has been received by simulating a call to receiveMessage.
         // If it fails, assume it's because the message has already been received.
         try {
