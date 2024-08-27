@@ -3,7 +3,10 @@ import { BaseName } from '@coinbase/onchainkit/identity';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import { buildBasenameOwnerContract } from 'apps/web/src/utils/usernames';
+import {
+  buildBasenameOwnerContract,
+  buildBasenameEditorContract,
+} from 'apps/web/src/utils/usernames';
 import {
   Dispatch,
   ReactNode,
@@ -25,28 +28,39 @@ export type UsernameProfileContextProps = {
   profileAddress?: Address;
 
   // Profile owner
-  profileOwnerAddress?: Address;
+  profileEditorAddress?: Address;
   profileOwnerUsername?: BaseName;
-  profileOwnerRefetch: () => Promise<void>;
+  profileRefetch: () => Promise<void>;
 
   // State
-  currentWalletIsProfileOwner: boolean;
+  currentWalletIsProfileEditor: boolean;
   currentWalletIsProfileAddress: boolean;
 
   // Settings
   showProfileSettings: boolean;
   setShowProfileSettings: Dispatch<SetStateAction<boolean>>;
+
+  currentWalletIsProfileOwner: boolean;
+
+  // Permissions
+  canSetAddr: boolean;
+  canReclaim: boolean;
+  canSafeTransferFrom: boolean;
 };
 
 export const UsernameProfileContext = createContext<UsernameProfileContextProps>({
   profileUsername: 'default.basetest.eth',
   profileAddress: undefined,
-  profileOwnerAddress: undefined,
-  profileOwnerRefetch: async () => undefined,
-  currentWalletIsProfileOwner: false,
+  profileEditorAddress: undefined,
+  profileRefetch: async () => undefined,
+  currentWalletIsProfileEditor: false,
   currentWalletIsProfileAddress: false,
   showProfileSettings: false,
   setShowProfileSettings: () => undefined,
+  currentWalletIsProfileOwner: false,
+  canSetAddr: false,
+  canReclaim: false,
+  canSafeTransferFrom: false,
 });
 
 type UsernameProfileProviderProps = {
@@ -79,51 +93,76 @@ export default function UsernameProfileProvider({
     },
   });
 
-  // Owner address
+  // Profile Editor
+  const {
+    data: profileEditorAddress,
+    isFetching: profileEditorAddressIsFetching,
+    refetch: profileEditorRefetch,
+  } = useReadContract({
+    ...buildBasenameEditorContract(username),
+    query: { refetchOnWindowFocus: false },
+  });
+
+  // Registry Owner Basename
+  const { data: profileOwnerUsername } = useBaseEnsName({
+    address: profileEditorAddress as Address,
+  });
+
+  // Profile Owner
   const {
     data: profileOwnerAddress,
-    isFetching: profileOwnerAddressIsFetching,
+    isFetching: profileOwnerIsFetching,
     refetch: profileOwnerRefetch,
   } = useReadContract({
     ...buildBasenameOwnerContract(username),
     query: { refetchOnWindowFocus: false },
   });
 
-  // Owner Basename
-  const { data: profileOwnerUsername } = useBaseEnsName({
-    address: profileOwnerAddress as Address,
-  });
-
+  const currentWalletIsProfileEditor =
+    !profileEditorAddressIsFetching && isConnected && connectedAddress === profileEditorAddress;
   const currentWalletIsProfileOwner =
-    !profileOwnerAddressIsFetching && isConnected && connectedAddress === profileOwnerAddress;
+    !profileOwnerIsFetching && isConnected && connectedAddress === profileOwnerAddress;
   const currentWalletIsProfileAddress =
     !profileAddressIsFetching && isConnected && connectedAddress === profileAddress;
 
-  const refechOwnerAndAddress = useCallback(async () => {
+  const canSetAddr = currentWalletIsProfileEditor || currentWalletIsProfileOwner;
+  const canReclaim = currentWalletIsProfileOwner;
+  const canSafeTransferFrom = currentWalletIsProfileOwner;
+
+  const profileRefetch = useCallback(async () => {
     await profileAddressRefetch();
+    await profileEditorRefetch();
     await profileOwnerRefetch();
-  }, [profileAddressRefetch, profileOwnerRefetch]);
+  }, [profileAddressRefetch, profileEditorRefetch, profileOwnerRefetch]);
 
   const values = useMemo(() => {
     return {
       profileAddress: profileAddress ? profileAddress : undefined,
       profileUsername: username,
-      profileOwnerAddress: profileOwnerAddress ? (profileOwnerAddress as Address) : undefined,
+      profileEditorAddress: profileEditorAddress ? (profileEditorAddress as Address) : undefined,
       profileOwnerUsername,
-      profileOwnerRefetch: refechOwnerAndAddress, // for now we refetch both since ownership sets both
+      profileRefetch, // for now we refetch both since ownership sets both
+      currentWalletIsProfileEditor,
       currentWalletIsProfileOwner,
       currentWalletIsProfileAddress,
+      canSetAddr,
+      canReclaim,
+      canSafeTransferFrom,
       showProfileSettings,
       setShowProfileSettings,
     };
   }, [
     profileAddress,
     username,
-    profileOwnerAddress,
+    profileEditorAddress,
     profileOwnerUsername,
-    refechOwnerAndAddress,
+    profileRefetch,
+    currentWalletIsProfileEditor,
     currentWalletIsProfileOwner,
     currentWalletIsProfileAddress,
+    canSetAddr,
+    canReclaim,
+    canSafeTransferFrom,
     showProfileSettings,
   ]);
 
