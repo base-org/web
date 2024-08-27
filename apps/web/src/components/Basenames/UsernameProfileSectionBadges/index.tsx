@@ -8,7 +8,7 @@ import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/Usern
 import { useBaseGuild } from './hooks/useBaseGuild';
 import { useCoinbaseVerification } from './hooks/useCoinbaseVerifications';
 import { useTalentProtocol } from './hooks/useTalentProtocol';
-import useBuildathonParticipant from './hooks/useBuildathonParticipant';
+import useBuildathonParticipant from './hooks/useBuildathon';
 import { useMemo } from 'react';
 
 function BadgesLoop({
@@ -69,11 +69,16 @@ function BuilderSection() {
   const { profileAddress, currentWalletIsProfileEditor } = useUsernameProfile();
   const { badges, empty } = useBaseGuild(profileAddress);
   const talentScore = useTalentProtocol(profileAddress);
-  const buildathonParticipant = useBuildathonParticipant(profileAddress);
+  const { isParticipant, isWinner } = useBuildathonParticipant(profileAddress);
 
   const combinedBadges = useMemo(
-    () => ({ ...badges, TALENT_SCORE: talentScore, BUILDATHON_PARTICIPANT: buildathonParticipant }),
-    [badges, talentScore, buildathonParticipant],
+    () => ({
+      ...badges,
+      TALENT_SCORE: talentScore,
+      BUILDATHON_PARTICIPANT: isParticipant,
+      BUILDATHON_WINNER: isWinner,
+    }),
+    [badges, talentScore, isParticipant, isWinner],
   );
   const combinedEmpty = empty && !talentScore;
 
