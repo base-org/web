@@ -10,6 +10,7 @@ import { GetConnected } from 'apps/web/src/components/GetConnected/GetConnected'
 import { Hero } from 'apps/web/src/components/Home/Hero';
 import { JoinTheCommunity } from 'apps/web/src/components/JoinTheCommunity/JoinTheCommunity';
 import { Partnerships } from 'apps/web/src/components/Partnerships/Partnerships';
+import ThreeHero from 'apps/web/src/components/ThreeHero';
 
 /* Farcaster Metadatas */
 const buttons: FrameButtonMetadata[] = [
@@ -51,6 +52,7 @@ export default async function Home() {
         <Hero />
       </AnalyticsProvider>
       <main className="flex w-full flex-col items-center bg-black">
+        <ThreeHero />
         <Divider />
         <Features />
         <Divider />
