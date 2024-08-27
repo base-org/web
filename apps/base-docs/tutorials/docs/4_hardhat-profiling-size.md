@@ -499,5 +499,5 @@ As you continue your journey in smart contract development, keep in mind that op
 [modifiers]: https://docs.base.org/base-learn/docs/advanced-functions/function-modifiers
 [Solidity official docs]: https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html
 [Delegate call]: https://solidity-by-example.org/delegatecall/
-[Gas Optimization]: ./4_hardhat-profiling-gas
+[Gas Optimization]: ./hardhat-profiling-gas
 [Solidity documentation]: https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html#optimizer-parameter-runs

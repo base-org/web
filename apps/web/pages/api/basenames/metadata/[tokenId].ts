@@ -3,6 +3,7 @@ import L2Resolver from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { isDevelopment } from 'apps/web/src/constants';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
+import { logger } from 'apps/web/src/utils/logger';
 import { formatBaseEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
 import { NextResponse } from 'next/server';
 import { encodePacked, keccak256, namehash, toHex } from 'viem';
@@ -28,12 +29,13 @@ export default async function GET(request: Request) {
     return NextResponse.json({ error: '406: base domain name is missing' }, { status: 406 });
 
   // Get labelhash from tokenId
-  const labelHash = toHex(BigInt(tokenId));
+  const labelhash = toHex(BigInt(tokenId), { size: 32 });
 
   // Convert labelhash to namehash
   const namehashNode = keccak256(
-    encodePacked(['bytes32', 'bytes32'], [namehash(baseDomainName), labelHash]),
+    encodePacked(['bytes32', 'bytes32'], [namehash(baseDomainName), labelhash]),
   );
+
   let basenameFormatted = undefined;
   try {
     const client = getBasenamePublicClient(chainId);
@@ -44,7 +46,7 @@ export default async function GET(request: Request) {
       functionName: 'name',
     });
   } catch (error) {
-    console.log(error);
+    logger.error(error);
   }
 
   // Premints are hardcoded, the list will reduce when/if they get claimed

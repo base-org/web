@@ -21,12 +21,12 @@ export default function UsernameProfileCard() {
 
   const textRecordDescription = existingTextRecords[UsernameTextRecordKeys.Description];
 
-  const textRecordsSocial: UsernameTextRecords = textRecordsSocialFieldsEnabled.reduce(
+  const textRecordsSocial = textRecordsSocialFieldsEnabled.reduce(
     (previousValue, textRecordKey) => {
       previousValue[textRecordKey] = existingTextRecords[textRecordKey];
       return previousValue;
     },
-    {},
+    {} as UsernameTextRecords,
   );
 
   // TODO: Empty state / CTA to edit if owner

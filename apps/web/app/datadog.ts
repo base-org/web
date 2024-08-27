@@ -3,6 +3,7 @@
 
 import { datadogRum } from '@datadog/browser-rum';
 import { isDevelopment } from 'apps/web/src/constants';
+import { logger } from 'apps/web/src/utils/logger';
 import { useEffect } from 'react';
 
 const nextPublicDatadogAppId = process.env.NEXT_PUBLIC_DATADOG_APP_ID ?? '';
@@ -14,7 +15,7 @@ export default function DatadogInit() {
     if (isDevelopment) return;
 
     if (!nextPublicDatadogAppId || !nextPublicDatadogClientToken) {
-      console.warn('Datadog is not configured');
+      logger.warn('Datadog is not configured');
       return;
     }
     datadogRum.init({
@@ -31,6 +32,12 @@ export default function DatadogInit() {
       trackResources: true,
       trackLongTasks: true,
       defaultPrivacyLevel: 'mask',
+      allowedTracingUrls: [
+        {
+          match: (url: string) => url.startsWith('https://base.org/api'),
+          propagatorTypes: ['datadog'],
+        },
+      ],
     });
   }, []);
 

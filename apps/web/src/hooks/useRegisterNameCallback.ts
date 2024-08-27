@@ -2,6 +2,7 @@ import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useErrors } from 'apps/web/contexts/Errors';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import {
   formatBaseEthDomain,
@@ -11,7 +12,7 @@ import {
   REGISTER_CONTRACT_ADDRESSES,
 } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useCallback, useMemo } from 'react';
+import { Dispatch, SetStateAction, useCallback, useMemo, useState } from 'react';
 import { encodeFunctionData, namehash } from 'viem';
 import { useAccount, useSwitchChain, useWriteContract } from 'wagmi';
 import { useCapabilities, useWriteContracts } from 'wagmi/experimental';
@@ -24,9 +25,11 @@ function secondsInYears(years: number): bigint {
 type UseRegisterNameCallbackReturnValue = {
   callback: () => Promise<void>;
   data: `0x${string}` | undefined;
-  callBatchId: string | undefined;
   isPending: boolean;
   error: string | undefined | null;
+  reverseRecord: boolean;
+  setReverseRecord: Dispatch<SetStateAction<boolean>>;
+  hasExistingBasename: boolean;
 };
 
 export function useRegisterNameCallback(
@@ -36,17 +39,34 @@ export function useRegisterNameCallback(
   discountKey?: `0x${string}`,
   validationData?: `0x${string}`,
 ): UseRegisterNameCallbackReturnValue {
-  const { address, chainId, isConnected } = useAccount();
+  const { address, chainId, isConnected, connector } = useAccount();
   const { basenameChain } = useBasenameChain();
   const { logError } = useErrors();
   const {
-    data: callBatchId,
     writeContractsAsync,
     isPending: paymasterIsPending,
     error: paymasterError,
   } = useWriteContracts();
+
+  const { data: baseEnsName, isLoading: baseEnsNameIsLoading } = useBaseEnsName({
+    address,
+  });
+
+  const hasExistingBasename = useMemo(
+    () => !baseEnsNameIsLoading && !!baseEnsName,
+    [baseEnsName, baseEnsNameIsLoading],
+  );
+
+  const [reverseRecord, setReverseRecord] = useState<boolean>(!hasExistingBasename);
+
+  const isCoinbaseSmartWallet = connector?.id === 'coinbase';
+  const paymasterEnabled = isCoinbaseSmartWallet;
+
   const { data, writeContractAsync, isPending, error } = useWriteContract();
-  const { data: availableCapacities } = useCapabilities({ account: address });
+  const { data: availableCapacities } = useCapabilities({
+    account: address,
+    query: { enabled: isConnected && paymasterEnabled },
+  });
 
   const capabilities = useMemo(() => {
     if (!isConnected || !chainId || !availableCapacities) {
@@ -57,7 +77,6 @@ export function useRegisterNameCallback(
       return {
         paymasterService: {
           // url: `${document.location.origin}/api/paymaster`
-          url: 'https://api.developer.coinbase.com/rpc/v1/base-sepolia/1IhTcPOmhK5aEq-4WqRZMJoOh0oPenD2',
         },
       };
     }
@@ -97,7 +116,7 @@ export function useRegisterNameCallback(
       duration: secondsInYears(years), // The duration of the registration in seconds.
       resolver: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id], // The address of the resolver to set for this name.
       data: [addressData, nameData], //  Multicallable data bytes for setting records in the associated resolver upon reigstration.
-      reverseRecord: true, // Bool to decide whether to set this name as the "primary" name for the `owner`.
+      reverseRecord, // Bool to decide whether to set this name as the "primary" name for the `owner`.
     };
 
     // Log attempt to register name
@@ -140,27 +159,30 @@ export function useRegisterNameCallback(
     address,
     chainId,
     basenameChain.id,
-    capabilities,
-    discountKey,
-    isDiscounted,
-    logError,
-    logEventWithContext,
     name,
     normalizedName,
+    years,
+    reverseRecord,
+    logEventWithContext,
     switchChainAsync,
+    capabilities,
+    writeContractAsync,
+    isDiscounted,
+    discountKey,
     validationData,
     value,
-    writeContractAsync,
     writeContractsAsync,
-    years,
+    logError,
   ]);
 
   return {
     callback: registerName,
     data,
-    callBatchId,
     isPending: isPending ?? paymasterIsPending,
     // @ts-expect-error error will be string renderable
     error: error ?? paymasterError,
+    reverseRecord,
+    setReverseRecord,
+    hasExistingBasename,
   };
 }

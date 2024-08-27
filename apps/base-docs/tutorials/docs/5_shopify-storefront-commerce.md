@@ -150,4 +150,4 @@ Remember to link "activate" your Coinbase Commerce plugin.
 
 You now have a custom store front with the products from your Shopify account.
 
-In this tutorial, you learned how to to integrate Coinbase as a payment provider for your Shopify store. You've also learned how to use Hydrogen and Oxygen to create and deploy a version of your store separate from Shopify.
+In this tutorial, you learned how to integrate Coinbase as a payment provider for your Shopify store. You've also learned how to use Hydrogen and Oxygen to create and deploy a version of your store separate from Shopify.

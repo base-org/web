@@ -6,8 +6,10 @@ type Database = {
 };
 
 export enum ProofTableNamespace {
-  Usernames = 'usernames',
   UsernamesEarlyAccess = 'usernames_early_access',
+  BNSDiscount = 'basenames_bns_discount',
+  BaseEthHolders = 'basenames_base_eth_holders_discount',
+  CBIDDiscount = 'basenames_cbid_discount',
 }
 
 type ProofsTable = {
@@ -23,12 +25,19 @@ const proofTableName = 'proofs';
 export async function getProofsByNamespaceAndAddress(
   address: Address,
   namespace: ProofTableNamespace,
+  caseInsensitive = true, // set false for big data sets
 ) {
-  return createKysely<Database>()
+  let query = createKysely<Database>()
     .selectFrom(proofTableName)
-    .where('address', 'ilike', address)
-    .where('namespace', '=', namespace.valueOf())
-    .selectAll()
-    .limit(1)
-    .execute();
+    .where('namespace', '=', namespace.valueOf());
+
+  /**
+   * use = when possible to search by namespace_address index otherwise it's a text based search.
+   */
+  if (caseInsensitive) {
+    query = query.where('address', 'ilike', address);
+  } else {
+    query = query.where('address', '=', address);
+  }
+  return query.selectAll().limit(1).execute();
 }

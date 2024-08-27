@@ -17,12 +17,14 @@ import { isDevelopment } from 'apps/web/src/constants';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 
 export default function UsernameNav() {
-  const { isConnected } = useAccount();
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
+  const { chain: connectedChain, isConnected } = useAccount();
 
   const showDevelopmentWarning = isDevelopment && basenameChain.id === base.id;
   const showProductionWarning = !isDevelopment && basenameChain.id === baseSepolia.id;
+  const showWrongChainWarning =
+    connectedChain?.id !== basenameChain.id && connectedChain?.id !== baseSepolia.id && isConnected;
 
   const switchToMainnet = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -45,7 +47,7 @@ export default function UsernameNav() {
   });
 
   const navigationClasses = classNames(
-    'flex h-24 w-full max-w-[1440px] flex-row items-center justify-between gap-16 self-center bg-transparent px-4 md:px-8',
+    'flex h-24 w-full max-w-[1440px] flex-row items-center justify-between gap-4 md:gap-16 self-center bg-transparent px-4 md:px-8',
   );
 
   return (
@@ -83,6 +85,24 @@ export default function UsernameNav() {
               Switch to Base Mainnet
             </button>{' '}
             to register a .base.eth name.
+          </p>
+        </div>
+      )}
+      {showWrongChainWarning && (
+        <div className="flex items-center  justify-center gap-2 bg-orange-10 p-2 text-center text-orange-80">
+          <p>
+            <span className="align-center mr-1 inline-block">
+              <Icon name="info" color="currentColor" height="1rem" />
+            </span>
+            You are not on Base.{' '}
+            <button
+              className="text-orange-90 underline underline-offset-2"
+              type="button"
+              onClick={switchToMainnet}
+            >
+              Switch to Base Mainnet
+            </button>{' '}
+            to access Basenames features.
           </p>
         </div>
       )}

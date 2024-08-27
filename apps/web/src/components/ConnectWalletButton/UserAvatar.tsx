@@ -1,12 +1,14 @@
 import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
-import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
-import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
+import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/urls';
+import BasenameAvatar from 'apps/web/src/components/Basenames/BasenameAvatar';
 
 export function UserAvatar() {
   const { address } = useAccount();
+
+  // L1 Name & Avatar
   const { data: ensName, isLoading: ensNameIsLoading } = useEnsName({
     address,
     chainId: mainnet.id,
@@ -14,32 +16,38 @@ export function UserAvatar() {
       retry: false,
     },
   });
+
   const { data: ensAvatar, isLoading: ensAvatarIsLoading } = useEnsAvatar({
     name: ensName ?? undefined,
     chainId: mainnet.id,
     assetGatewayUrls: {
-      ipfs: 'https://cloudflare-ipfs.com',
+      ipfs: CLOUDFARE_IPFS_PROXY,
     },
     query: {
       retry: false,
     },
   });
 
+  // L2 Name
   const { data: baseEnsName, isLoading: baseEnsNameIsLoading } = useBaseEnsName({
     address,
   });
 
-  const { existingTextRecords, existingTextRecordsIsLoading } = useReadBaseEnsTextRecords({
-    address: address,
-    username: baseEnsName,
-  });
+  const isLoading = ensNameIsLoading || ensAvatarIsLoading || baseEnsNameIsLoading;
+  const avatar = ensAvatar;
 
-  const deterministicName = baseEnsName ?? ensName ?? address ?? 'default-avatar';
-  const defaultSelectedProfilePicture = getUserNamePicture(deterministicName);
-  const avatar = (existingTextRecords.avatar || ensAvatar) ?? defaultSelectedProfilePicture;
+  if (baseEnsName) {
+    return (
+      <BasenameAvatar
+        basename={baseEnsName}
+        width={32}
+        height={32}
+        wrapperClassName="rounded-full h-[2rem] max-h-[2rem] min-h-[2rem] w-[2rem] min-w-[2rem] max-w-[2rem]"
+      />
+    );
+  }
 
-  const isLoading =
-    ensNameIsLoading || ensAvatarIsLoading || baseEnsNameIsLoading || existingTextRecordsIsLoading;
+  if (!avatar) return null;
 
   return (
     <ImageWithLoading

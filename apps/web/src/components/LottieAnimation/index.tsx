@@ -12,7 +12,7 @@ export default function LottieAnimation({
   wrapperClassName,
 }: {
   data: unknown;
-  wrapperClassName: string;
+  wrapperClassName?: string;
 }) {
   const animationContainer = useRef<HTMLDivElement>(null);
   const lotteAnimation = useRef<AnimationItem>();

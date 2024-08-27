@@ -20,7 +20,7 @@ By the end of this guide you should be able to:
 
 ## Refining the Claim Component
 
-In the previous step-by-step, you used [`useWriteContract`] to set up a hook you can use to to call the `claim` function in your smart contract when the user clicks a button. The component works well enough, but it can take a long time for the wallet to pop up, particularly if there is network congestion. You also have no way of responding to a problem with the transaction inputs until after the user tries to initiate a transaction.
+In the previous step-by-step, you used [`useWriteContract`] to set up a hook you can use to call the `claim` function in your smart contract when the user clicks a button. The component works well enough, but it can take a long time for the wallet to pop up, particularly if there is network congestion. You also have no way of responding to a problem with the transaction inputs until after the user tries to initiate a transaction.
 
 ### Using `useSimulateContract`
 

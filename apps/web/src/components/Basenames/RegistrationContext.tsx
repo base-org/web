@@ -26,7 +26,6 @@ import { useInterval } from 'usehooks-ts';
 import { Address, TransactionReceipt } from 'viem';
 import { base } from 'viem/chains';
 import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
-import { useCallsStatus } from 'wagmi/experimental';
 
 export enum RegistrationSteps {
   Search = 'search',
@@ -47,8 +46,6 @@ export type RegistrationContextProps = {
   setSelectedName: Dispatch<SetStateAction<string>>;
   registerNameTransactionHash: `0x${string}` | undefined;
   setRegisterNameTransactionHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
-  registerNameCallsBatchId: string;
-  setRegisterNameCallsBatchId: Dispatch<SetStateAction<string>>;
   redirectToProfile: () => void;
   loadingDiscounts: boolean;
   discount: DiscountData | undefined;
@@ -76,10 +73,6 @@ export const RegistrationContext = createContext<RegistrationContextProps>({
   },
   registerNameTransactionHash: '0x',
   setRegisterNameTransactionHash: function () {
-    return undefined;
-  },
-  registerNameCallsBatchId: '',
-  setRegisterNameCallsBatchId: function () {
     return undefined;
   },
   redirectToProfile: function () {
@@ -159,17 +152,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     },
   });
 
-  const [registerNameCallsBatchId, setRegisterNameCallsBatchId] = useState<string>('');
-
-  // The "correct" way to transition the UI would be to watch for call success, but this experimental
-  // rpc/hook combo is failing to report batch status for us as of July 30th 2024
-  const { isFetching: callsIsFetching } = useCallsStatus({
-    id: registerNameCallsBatchId,
-    query: {
-      enabled: !!registerNameCallsBatchId,
-    },
-  });
-
   useInterval(() => {
     if (registrationStep !== RegistrationSteps.Pending) {
       return;
@@ -186,19 +168,20 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       });
   }, 1500);
 
-  const redirectToProfile = useCallback(() => {
+  const profilePath = useMemo(() => {
     if (basenameChain.id === base.id) {
-      router.push(`name/${selectedName}`);
+      return `name/${selectedName}`;
     } else {
-      router.push(`name/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
+      return `name/${formatBaseEthDomain(selectedName, basenameChain.id)}`;
     }
-  }, [basenameChain.id, router, selectedName]);
+  }, [basenameChain.id, selectedName]);
+
+  const redirectToProfile = useCallback(() => {
+    router.push(profilePath);
+  }, [profilePath, router]);
 
   useEffect(() => {
-    if (
-      (transactionIsFetching || callsIsFetching) &&
-      registrationStep === RegistrationSteps.Claim
-    ) {
+    if (transactionIsFetching && registrationStep === RegistrationSteps.Claim) {
       logEventWithContext('register_name_transaction_processing', ActionType.change);
       setRegistrationStep(RegistrationSteps.Pending);
     }
@@ -207,6 +190,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       if (transactionData.status === 'success') {
         logEventWithContext('register_name_transaction_success', ActionType.change);
         setRegistrationStep(RegistrationSteps.Success);
+        router.prefetch(profilePath);
       }
 
       if (transactionData.status === 'reverted') {
@@ -217,9 +201,10 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     }
   }, [
     baseEnsNameRefetch,
-    callsIsFetching,
     logEventWithContext,
+    profilePath,
     registrationStep,
+    router,
     transactionData,
     transactionIsFetching,
     transactionIsSuccess,
@@ -261,8 +246,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       setRegistrationStep,
       registerNameTransactionHash,
       setRegisterNameTransactionHash,
-      registerNameCallsBatchId,
-      setRegisterNameCallsBatchId,
       redirectToProfile,
       loadingDiscounts,
       discount,
@@ -275,7 +258,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     discount,
     loadingDiscounts,
     redirectToProfile,
-    registerNameCallsBatchId,
     registerNameTransactionHash,
     registrationStep,
     searchInputFocused,

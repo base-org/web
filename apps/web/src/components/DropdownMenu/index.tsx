@@ -5,11 +5,20 @@ import classNames from 'classnames';
 import { CSSProperties, ReactNode, useContext, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
+export enum DropdownMenuAlign {
+  Left = 'left',
+  Center = 'center',
+}
+
 export type DropdownMenuProps = {
   children: ReactNode;
+  align?: DropdownMenuAlign;
 };
 
-export default function DropdownMenu({ children }: DropdownMenuProps) {
+export default function DropdownMenu({
+  children,
+  align = DropdownMenuAlign.Left,
+}: DropdownMenuProps) {
   const { open, dropdownToggleRef } = useContext(DropdownContext);
 
   // TODO: Better way to fix this Hydration Error
@@ -28,7 +37,9 @@ export default function DropdownMenu({ children }: DropdownMenuProps) {
     },
   );
 
-  const dropdownMenuClasses = classNames('bg-white text-black w-full py-4 rounded-xl shadow-md');
+  const dropdownMenuClasses = classNames('bg-white text-black w-full py-4 rounded-xl shadow-lg', {
+    'translate-x-1/2': align === DropdownMenuAlign.Center,
+  });
 
   let dropdownStyle: CSSProperties = {};
   if (dropdownToggleRef?.current) {
@@ -40,7 +51,7 @@ export default function DropdownMenu({ children }: DropdownMenuProps) {
 
   // Arrow positioned center of the toggle element
   const arrowClasses = classNames(
-    'absolute z-50 w-2 h-2 bg-white transform translate-y-1/2 -translate-x-1/2 rotate-[45deg] shadow-md',
+    'absolute z-50 w-2 h-2 bg-white transform translate-y-1/2 -translate-x-1/2 rotate-[45deg] shadow-lg',
     {
       hidden: !open,
       'inline-block': open,
