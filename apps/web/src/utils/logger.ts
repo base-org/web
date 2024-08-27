@@ -56,7 +56,7 @@ class CustomLogger {
     } else {
       console.log(message, meta);
     }
-    if (typeof window === 'undefined' && message !== undefined) {
+    if (typeof window === 'undefined') {
       this.sendToDatadog(level, message, meta).catch(() => {
         console.error('Failed to send log to Datadog');
       });
