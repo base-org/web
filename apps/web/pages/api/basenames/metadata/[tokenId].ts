@@ -46,7 +46,7 @@ export default async function GET(request: Request) {
       functionName: 'name',
     });
   } catch (error) {
-    logger.error(error);
+    logger.error('Error getting token metadata', { error });
   }
 
   // Premints are hardcoded, the list will reduce when/if they get claimed
