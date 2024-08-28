@@ -133,7 +133,7 @@ export const txRevertedFrame = (name: string, transactionId: string) =>
     buttons: [
       {
         action: 'link',
-        label: `Go to your profile`,
+        label: `txStatus: ${name}`,
         target: `${DOMAIN}/name/${name}`,
       },
       {

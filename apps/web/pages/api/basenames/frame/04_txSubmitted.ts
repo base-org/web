@@ -49,11 +49,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       throw new Error('transactionId is not valid');
     }
     const { status: txStatus } = await getTransactionStatus(CHAIN, transactionId);
-    if (txStatus === 'reverted') {
+    if (txStatus !== 'success') {
       return res
         .status(200)
         .setHeader('Content-Type', 'text/html')
-        .send(txRevertedFrame('reverted', transactionId));
+        .send(txRevertedFrame(txStatus as string, transactionId));
     }
 
     return res
