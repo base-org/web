@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
+import { getTransactionStatus } from 'apps/web/src/utils/frames/basenames';
 import { txSuccessFrame } from 'apps/web/pages/api/basenames/frame/frameResponses';
 import { NEYNAR_API_KEY } from 'apps/web/pages/api/basenames/frame/constants';
+import { chain } from 'apps/web/pages/api/basenames/frame/tx';
 import type { TxFrameStateType } from 'apps/web/pages/api/basenames/frame/tx';
 
 if (!NEYNAR_API_KEY) {
@@ -14,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const body = req.body as FrameRequest;
-  const transactionId: string = body?.untrustedData?.transactionId ?? '...';
+  const transactionId: string | undefined = body?.untrustedData?.transactionId;
   let message;
   let isValid;
   let name;
@@ -39,6 +41,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       throw new Error('No message state received');
     }
     name = messageState.targetName;
+
+    if (!transactionId) {
+      throw new Error('transactionId is not valid');
+    }
+    const { status: txStatus } = await getTransactionStatus(chain, transactionId)
+    if (txStatus === 'reverted') {
+      return res.status(200).setHeader('Content-Type', 'text/html').send(txSuccessFrame(name, transactionId));
+    }
+
     return res.status(200).setHeader('Content-Type', 'text/html').send(txSuccessFrame(name, transactionId));
   } catch (e) {
     return res.status(500).json({ error: e });
