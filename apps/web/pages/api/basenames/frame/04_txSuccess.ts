@@ -47,7 +47,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     const { status: txStatus } = await getTransactionStatus(CHAIN, transactionId)
     if (txStatus === 'reverted') {
-      return res.status(200).setHeader('Content-Type', 'text/html').send(txSuccessFrame(name, transactionId));
+      return res.status(200).setHeader('Content-Type', 'text/html').send(txSuccessFrame("reverted", transactionId));
     }
 
     return res.status(200).setHeader('Content-Type', 'text/html').send(txSuccessFrame(name, transactionId));
