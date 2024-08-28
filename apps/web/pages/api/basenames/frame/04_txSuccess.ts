@@ -3,7 +3,7 @@ import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 import { getTransactionStatus } from 'apps/web/src/utils/frames/basenames';
 import { txSuccessFrame } from 'apps/web/pages/api/basenames/frame/frameResponses';
 import { NEYNAR_API_KEY } from 'apps/web/pages/api/basenames/frame/constants';
-import { chain } from 'apps/web/pages/api/basenames/frame/tx';
+import { CHAIN } from 'apps/web/pages/api/basenames/frame/constants';
 import type { TxFrameStateType } from 'apps/web/pages/api/basenames/frame/tx';
 
 if (!NEYNAR_API_KEY) {
@@ -45,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!transactionId) {
       throw new Error('transactionId is not valid');
     }
-    const { status: txStatus } = await getTransactionStatus(chain, transactionId)
+    const { status: txStatus } = await getTransactionStatus(CHAIN, transactionId)
     if (txStatus === 'reverted') {
       return res.status(200).setHeader('Content-Type', 'text/html').send(txSuccessFrame(name, transactionId));
     }
