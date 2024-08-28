@@ -105,7 +105,10 @@ export default function AppProviders({ children }: AppProvidersProps) {
     }
   }, []);
 
-  const handleLogError = useCallback((err: Error) => logger.error(err), []);
+  const handleLogError = useCallback(
+    (err: Error) => logger.error('Cookie manager provider error', err),
+    [],
+  );
 
   useSprig(sprigEnvironmentId);
   return (

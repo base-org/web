@@ -1,3 +1,4 @@
+import { withTimeout } from 'apps/web/pages/api/decorators';
 import { trustedSignerPKey } from 'apps/web/src/constants';
 import { logger } from 'apps/web/src/utils/logger';
 import {
@@ -9,6 +10,7 @@ import {
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Address } from 'viem';
+import tracer from 'apps/web/tracer/tracer';
 
 // Coinbase verified account *and* CB1 structure
 export type CoinbaseProofResponse = {
@@ -38,7 +40,9 @@ export type CoinbaseProofResponse = {
  * }
  * @returns
  */
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // leave in for testing for now
+  tracer.dogstatsd.increment('proofs.coinbase.endpoint.hit');
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
@@ -59,13 +63,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     );
     return res.status(200).json(result);
   } catch (error) {
-    console.error(error);
     if (error instanceof ProofsException) {
       return res.status(error.statusCode).json({ error: error.message });
     }
-    logger.error(error);
+    logger.error('error getting proofs for cb1 discount', error);
   }
 
   // If error is not an instance of Error, return a generic error message
   return res.status(500).json({ error: 'An unexpected error occurred' });
 }
+
+export default withTimeout(handler);

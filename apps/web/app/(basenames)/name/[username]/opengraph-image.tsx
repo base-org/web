@@ -8,7 +8,7 @@ import { isDevelopment } from 'apps/web/src/constants';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import {
   formatBaseEthDomain,
-  getUserNamePicture,
+  getBasenameImage,
   USERNAME_DOMAINS,
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
@@ -59,7 +59,7 @@ export default async function OpenGraphImage(props: ImageRouteProps) {
   ).then(async (res) => res.arrayBuffer());
 
   const domainName = isDevelopment ? `http://localhost:3000` : 'https://www.base.org';
-  const profilePicture = getUserNamePicture(username);
+  const profilePicture = getBasenameImage(username);
   let imageSource = domainName + profilePicture.src;
 
   // NOTE: Do we want to fail if the name doesn't exists?

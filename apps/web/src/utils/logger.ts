@@ -48,7 +48,7 @@ class CustomLogger {
     }
   }
 
-  private log(level: LogLevel, message: unknown, meta?: Record<string, unknown>) {
+  private log(level: LogLevel, message: string, meta?: Record<string, unknown>) {
     if (level === 'debug' || level === 'verbose' || level === 'info') {
       console.log(message, meta);
     } else if (typeof console[level] === 'function') {
@@ -56,30 +56,49 @@ class CustomLogger {
     } else {
       console.log(message, meta);
     }
-    if (typeof window === 'undefined' && typeof message !== 'string') {
-      this.sendToDatadog(level, message as string, meta).catch(() => {
+    if (typeof window === 'undefined') {
+      this.sendToDatadog(level, message, meta).catch(() => {
         console.error('Failed to send log to Datadog');
       });
     }
   }
 
-  public info(message: unknown, meta?: Record<string, unknown>) {
+  public info(message: string, meta?: Record<string, unknown>) {
     this.log('info', message, meta);
   }
 
-  public warn(message: unknown, meta?: Record<string, unknown>) {
+  public warn(message: string, meta?: Record<string, unknown>) {
     this.log('warn', message, meta);
   }
 
-  public error(message: unknown, meta?: Record<string, unknown>) {
+  public error(message: string, error: Error | unknown, meta?: Record<string, unknown>) {
+    var e;
+    if (error instanceof Error) {
+      e = {
+        name: error.name,
+        cause: error.cause,
+        message: error.message,
+        stack: error.stack,
+      };
+    } else {
+      e = {
+        message: JSON.stringify(error),
+      };
+    }
+    if (error) {
+      this.log('error', message, {
+        ...meta,
+        error: e,
+      });
+    }
     this.log('error', message, meta);
   }
 
-  public debug(message: unknown, meta?: Record<string, unknown>) {
+  public debug(message: string, meta?: Record<string, unknown>) {
     this.log('debug', message, meta);
   }
 
-  public verbose(message: unknown, meta?: Record<string, unknown>) {
+  public verbose(message: string, meta?: Record<string, unknown>) {
     this.log('verbose', message, meta);
   }
 }

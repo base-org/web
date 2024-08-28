@@ -1,7 +1,7 @@
 import ErrorImg from 'apps/web/public/images/error.png';
 import { Button } from '../Button/Button';
 import { Card } from './Card';
-import { EcosystemApp } from 'apps/web/app/(base-org)/ecosystem/page';
+import { EcosystemApp } from 'apps/web/src/components/Ecosystem/Content';
 import Link from 'next/link';
 import { Url } from 'next/dist/shared/lib/router/router';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';

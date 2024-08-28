@@ -1,8 +1,10 @@
+import { withTimeout } from 'apps/web/pages/api/decorators';
 import { trustedSignerPKey } from 'apps/web/src/constants';
 import { logger } from 'apps/web/src/utils/logger';
 import { DiscountType, ProofsException, proofValidation } from 'apps/web/src/utils/proofs';
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import tracer from 'apps/web/tracer/tracer';
 
 /**
  * This endpoint checks if the provided address has access to the cb1 attestation.
@@ -32,20 +34,20 @@ import type { NextApiRequest, NextApiResponse } from 'next';
  *   "discountValidatorAddress": "0x502df754f25f492cad45ed85a4de0ee7540717e7"
  * }
  */
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // leave in for testing for now
+  tracer.dogstatsd.increment('proofs.cb1.endpoint.hit');
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
   const { address, chain } = req.query;
   const validationErr = proofValidation(address, chain);
-  logger.info('base-org cb1 proof', { address, chain });
   if (validationErr) {
     return res.status(validationErr.status).json({ error: validationErr.error });
   }
   if (!trustedSignerPKey) {
     return res.status(500).json({ error: 'currently unable to sign' });
   }
-
   try {
     const result = await sybilResistantUsernameSigning(
       address as `0x${string}`,
@@ -54,12 +56,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     );
     return res.status(200).json(result);
   } catch (error) {
+    logger.error('error getting proofs for cb1 discount', error);
     if (error instanceof ProofsException) {
       return res.status(error.statusCode).json({ error: error.message });
     }
-    logger.error(error);
   }
 
   // If error is not an instance of Error, return a generic error message
   return res.status(500).json({ error: 'An unexpected error occurred' });
 }
+
+export default withTimeout(handler);

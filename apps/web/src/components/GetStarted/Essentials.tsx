@@ -2,6 +2,7 @@ import { Icon } from '../Icon/Icon';
 import ResourceCard from './ResourceCard/ResourceCard';
 import { FUNDING_SECTION_ID } from './Funding';
 import { GET_NOTICED_SECTION_ID } from './GetNoticed';
+import { GET_INVOLVED_SECTION_ID } from './GetInvolved';
 import { START_BUILDING_SECTION_ID } from './StartBuilding';
 import { sectionContainerClasses, gridClasses } from './styles';
 
@@ -18,7 +19,7 @@ const subtitleClasses = `
   leading-snug
 `;
 
-export default async function BuildersMostWanted() {
+export default async function Essentials() {
   return (
     <div className={`${sectionContainerClasses} mt-20`}>
       <h1 className={titleClasses}>The Essentials</h1>
@@ -41,9 +42,9 @@ export default async function BuildersMostWanted() {
           classnames="bg-purple-80 border-purple-80"
         />
         <ResourceCard
-          title="Host a Meetup"
-          description="Apply to bring Based people together in your community"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSf5wnzD_czyYOyHFeOmFK_rjsJj7Utovo3jWwR40JizPqmDZg/viewform"
+          title="Get Involved"
+          description="Become an active participant in the Base community"
+          href={`#${GET_INVOLVED_SECTION_ID}`}
           topLeft={<Icon name="people" color="white" />}
           classnames="bg-purple-60 border-purple-60"
         />
@@ -58,7 +59,7 @@ export default async function BuildersMostWanted() {
           title="Get Noticed"
           description="Looking for help with distribution? Get noticed by millions of potential new users"
           href={`#${GET_NOTICED_SECTION_ID}`}
-          topLeft={<Icon name="people" color="white" />}
+          topLeft={<Icon name="eye" color="white" />}
           classnames="bg-purple-60 border-purple-60"
         />
         <ResourceCard

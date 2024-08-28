@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import {
   formatDefaultUsername,
   getBasenameAddress,
+  getBasenameEditor,
   getBasenameOwner,
   getBasenameTextRecord,
   UsernameTextRecordKeys,
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
     description: description ?? defaultDescription,
     openGraph: {
       title: `Basenames | ${username}`,
-      url: `/${username}`,
+      url: `/name/${params.username}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -41,10 +42,11 @@ export default async function Username({ params }: UsernameProfileProps) {
   let username = await formatDefaultUsername(decodeURIComponent(params.username) as BaseName);
 
   const address = await getBasenameAddress(username);
+  const editor = await getBasenameEditor(username);
   const owner = await getBasenameOwner(username);
 
-  // Domain does have address or owner (ie: doesn't exist)
-  if (!address || !owner) {
+  // Domain does have address or editor (ie: doesn't exist)
+  if (!address || !editor || !owner) {
     redirect(`/name/not-found?name=${username}`);
   }
 

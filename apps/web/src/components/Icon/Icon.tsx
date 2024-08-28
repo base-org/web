@@ -7,8 +7,8 @@ type IconProps = {
 
 type SvgProps = {
   color?: 'white' | 'black' | 'currentColor';
-  width?: string;
-  height?: string;
+  width?: string | number;
+  height?: string | number;
 };
 
 const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
@@ -489,6 +489,20 @@ const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
       />
       <path
         d="M11.16 11.16L12.68 10.19L14.69 8.92L16.21 7.95L24 3C24 3 19.96 0 14.28 0C11.02 0 8.88 0.78 6.5 2.25L0 6.5L5.5 14.75L11.16 11.15V11.16Z"
+        fill={color}
+      />
+    </svg>
+  ),
+  eye: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0.131956 12.5505C2.58714 17.4562 7.13762 20.5 12 20.5C16.8624 20.5 21.4049 17.4481 23.868 12.5505C24.044 12.2024 24.044 11.7976 23.868 11.4495C21.4129 6.54381 16.8624 3.5 12 3.5C7.13762 3.5 2.58714 6.54381 0.131956 11.4495C-0.0439853 11.7976 -0.0439853 12.2024 0.131956 12.5505ZM15.5987 11.9999C15.5987 14.0118 13.9875 15.6428 11.9999 15.6428C10.0124 15.6428 8.40117 14.0118 8.40117 11.9999C8.40117 9.98802 10.0124 8.35706 11.9999 8.35706C13.9875 8.35706 15.5987 9.98802 15.5987 11.9999Z"
         fill={color}
       />
     </svg>
