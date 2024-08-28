@@ -4,6 +4,7 @@ import { logger } from 'apps/web/src/utils/logger';
 import { DiscountType, ProofsException, proofValidation } from 'apps/web/src/utils/proofs';
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import tracer from 'apps/web/tracer/tracer';
 
 /**
  * This endpoint checks if the provided address has access to the cb1 attestation.
@@ -34,6 +35,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
  * }
  */
 async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // leave in for testing for now
+  tracer.dogstatsd.increment('proofs.cb1.endpoint.hit');
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
