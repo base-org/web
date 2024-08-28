@@ -76,7 +76,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const addressData = encodeFunctionData({
     abi: L2ResolverAbi,
     functionName: 'setAddr',
-    args: [namehash(formatBaseEthDomain(name, CHAIN.id)), claimingAddress],
+    args: [namehash(formatBaseEthDomain('nadnerb234vds234', CHAIN.id)), claimingAddress],
   });
 
   const nameData = encodeFunctionData({
