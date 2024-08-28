@@ -120,7 +120,7 @@ export const txSuccessFrame = (name: string, transactionId: string) =>
       {
         action: 'link',
         label: `View on block explorer`,
-        target: `https://basescan.org/address/${transactionId}`,
+        target: `https://basescan.org/tx/${transactionId}`,
       },
     ],
     image: {
