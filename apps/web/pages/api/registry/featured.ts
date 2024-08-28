@@ -22,7 +22,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     await kv.incr(`stat:requests.${pageKey}`);
   } catch (error) {
-    logger.error('error getting featured registry entries', { error });
+    logger.error('error getting featured registry entries', error);
   }
 
   // Set caching headers
