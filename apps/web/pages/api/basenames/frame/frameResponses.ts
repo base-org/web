@@ -99,7 +99,7 @@ export const confirmationFrame = (
     image: {
       src: `${DOMAIN}/api/basenames/frame/assets/registrationFrameImage.png?name=${formattedTargetName}&years=${targetYears}&priceInEth=${registrationPriceInEth}`,
     },
-    postUrl: `${DOMAIN}/api/basenames/frame/04_txSuccess`,
+    postUrl: `${DOMAIN}/api/basenames/frame/04_txSubmitted`,
     state: {
       targetName,
       formattedTargetName,
@@ -109,7 +109,26 @@ export const confirmationFrame = (
     },
   });
 
-export const txSuccessFrame = (name: string, transactionId: string) =>
+export const txSucceededFrame = (name: string, transactionId: string) =>
+  getFrameHtmlResponse({
+    buttons: [
+      {
+        action: 'link',
+        label: `Go to your profile`,
+        target: `${DOMAIN}/name/${name}`,
+      },
+      {
+        action: 'link',
+        label: `View on block explorer`,
+        target: `https://basescan.org/tx/${transactionId}`,
+      },
+    ],
+    image: {
+      src: `${DOMAIN}/${txSubmittedImage.src}`,
+    },
+  });
+
+export const txRevertedFrame = (name: string, transactionId: string) =>
   getFrameHtmlResponse({
     buttons: [
       {

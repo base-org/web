@@ -1,7 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 import { getTransactionStatus } from 'apps/web/src/utils/frames/basenames';
-import { txSuccessFrame } from 'apps/web/pages/api/basenames/frame/frameResponses';
+import {
+  txSucceededFrame,
+  txRevertedFrame,
+} from 'apps/web/pages/api/basenames/frame/frameResponses';
 import { NEYNAR_API_KEY } from 'apps/web/pages/api/basenames/frame/constants';
 import { CHAIN } from 'apps/web/pages/api/basenames/frame/constants';
 import type { TxFrameStateType } from 'apps/web/pages/api/basenames/frame/tx';
@@ -45,14 +48,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!transactionId) {
       throw new Error('transactionId is not valid');
     }
-    const { status: txStatus } = await getTransactionStatus(CHAIN, transactionId)
+    const { status: txStatus } = await getTransactionStatus(CHAIN, transactionId);
     if (txStatus === 'reverted') {
-      return res.status(200).setHeader('Content-Type', 'text/html').send(txSuccessFrame("reverted", transactionId));
+      return res
+        .status(200)
+        .setHeader('Content-Type', 'text/html')
+        .send(txRevertedFrame('reverted', transactionId));
     }
 
-    return res.status(200).setHeader('Content-Type', 'text/html').send(txSuccessFrame(name, transactionId));
+    return res
+      .status(200)
+      .setHeader('Content-Type', 'text/html')
+      .send(txSucceededFrame(name, transactionId));
   } catch (e) {
-    // return res.status(500).json({ error: e });
-    return res.status(200).setHeader('Content-Type', 'text/html').send(txSuccessFrame(String(e), String(transactionId)));
+    return res.status(500).json({ error: e });
+    // return res.status(200).setHeader('Content-Type', 'text/html').send(txSuccessFrame(String(e), String(transactionId)));
   }
 }
