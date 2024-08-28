@@ -594,7 +594,7 @@ export async function getBasenameAvailable(name: string, chain: Chain): Promise<
     }
 
     const available = await client.readContract({
-      address: REGISTER_CONTRACT_ADDRESSES[base.id],
+      address: REGISTER_CONTRACT_ADDRESSES[chain.id],
       abi: REGISTER_CONTRACT_ABI,
       functionName: 'available',
       args: [normalizedName],
@@ -663,7 +663,7 @@ export function buildBasenameReclaimContract(
   };
 }
 
-/* 
+/*
   Basename avatar / animations
 */
 
