@@ -10,7 +10,7 @@ import { getBasenameAnimation, getBasenameImage } from 'apps/web/src/utils/usern
 export default function BasenameAvatar({
   basename,
   wrapperClassName = 'h-8 w-8 overflow-hidden rounded-full',
-  animate = true,
+  animate = false,
   width,
   height,
 }: {
