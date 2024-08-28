@@ -16,7 +16,7 @@ import UsernameProfileSettingsAvatar from 'apps/web/src/components/Basenames/Use
 import UsernameProfileSettingsOwnership from 'apps/web/src/components/Basenames/UsernameProfileSettingsOwnership';
 
 export default function UsernameProfileSettings() {
-  const { currentWalletIsProfileOwner, setShowProfileSettings } = useUsernameProfile();
+  const { currentWalletIsProfileEditor, setShowProfileSettings } = useUsernameProfile();
 
   const { currentSettingsTab } = useUsernameProfileSettings();
   const { logEventWithContext } = useAnalytics();
@@ -27,7 +27,7 @@ export default function UsernameProfileSettings() {
     setShowProfileSettings(false);
   }, [setShowProfileSettings]);
 
-  return !currentWalletIsProfileOwner ? (
+  return !currentWalletIsProfileEditor ? (
     <p>You don&apos;t have the permission to edit this profile</p>
   ) : (
     <div className="items-left mx-auto flex w-full max-w-[60rem] flex-col">

@@ -3,7 +3,7 @@ import FileInput from 'apps/web/src/components/FileInput';
 import Hint, { HintVariants } from 'apps/web/src/components/Hint';
 import {
   getBasenameAvatarUrl,
-  getUserNamePicture,
+  getBasenameImage,
   UsernameTextRecordKeys,
   validateBasenameAvatarFile,
   validateBasenameAvatarUrl,
@@ -114,7 +114,7 @@ export default function UsernameAvatarField({
 
   const usernameAvatarFieldId = useId();
 
-  const defaultSelectedProfilePicture = getUserNamePicture(username);
+  const defaultSelectedProfilePicture = getBasenameImage(username);
   const newAvatarFileUrl = avatarFile && !error ? URL.createObjectURL(avatarFile) : undefined;
   const newAvatarAbsoluteUrl = !error ? getBasenameAvatarUrl(newAvatarUrl) : undefined;
   const avatarSrc =

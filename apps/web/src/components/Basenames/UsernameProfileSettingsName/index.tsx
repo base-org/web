@@ -8,7 +8,7 @@ import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/But
 
 export default function UsernameProfileSettingsName() {
   // Profile username
-  const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
+  const { profileUsername, profileAddress, currentWalletIsProfileEditor } = useUsernameProfile();
 
   // Primary username
   const { data: primaryUsername } = useBaseEnsName({
@@ -33,8 +33,8 @@ export default function UsernameProfileSettingsName() {
     });
   }, [logError, setPrimaryName]);
 
-  const isPrimaryName = currentWalletIsProfileOwner && profileUsername === primaryUsername;
-  const isSecondaryName = currentWalletIsProfileOwner && profileUsername !== primaryUsername;
+  const isPrimaryName = currentWalletIsProfileEditor && profileUsername === primaryUsername;
+  const isSecondaryName = currentWalletIsProfileEditor && profileUsername !== primaryUsername;
 
   return (
     <div className="flex flex-col gap-4">
