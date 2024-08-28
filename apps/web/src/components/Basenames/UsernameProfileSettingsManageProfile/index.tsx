@@ -23,7 +23,7 @@ const settingTabClass = classNames(
 );
 
 export default function UsernameProfileSettingsManageProfile() {
-  const { profileUsername, profileAddress, currentWalletIsProfileOwner, setShowProfileSettings } =
+  const { profileUsername, profileAddress, currentWalletIsProfileEditor, setShowProfileSettings } =
     useUsernameProfile();
 
   const { logError } = useErrors();
@@ -49,12 +49,12 @@ export default function UsernameProfileSettingsManageProfile() {
   const onClickSave = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
-      if (!currentWalletIsProfileOwner) return false;
+      if (!currentWalletIsProfileEditor) return false;
       writeTextRecords().catch((error) => {
         logError(error, 'Failed to write text records');
       });
     },
-    [currentWalletIsProfileOwner, writeTextRecords, logError],
+    [currentWalletIsProfileEditor, writeTextRecords, logError],
   );
 
   const onChangeTextRecord = useCallback(

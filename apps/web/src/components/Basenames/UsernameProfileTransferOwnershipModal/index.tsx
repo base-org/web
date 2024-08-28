@@ -36,7 +36,7 @@ export default function UsernameProfileTransferOwnershipModal({
 }: UsernameProfileTransferOwnershipModalProps) {
   // Hooks
   const { address } = useAccount();
-  const { profileOwnerRefetch, setShowProfileSettings, profileUsername } = useUsernameProfile();
+  const { profileRefetch, setShowProfileSettings, profileUsername } = useUsernameProfile();
   const { logError } = useErrors();
   const {
     isSuccess,
@@ -84,7 +84,7 @@ export default function UsernameProfileTransferOwnershipModal({
       return;
     }
 
-    profileOwnerRefetch()
+    profileRefetch()
       .then(() => {
         setShowProfileSettings(false);
         onClose();
@@ -92,7 +92,7 @@ export default function UsernameProfileTransferOwnershipModal({
       .catch((error) => {
         logError(error, 'Failed to refetch Owner');
       });
-  }, [currentOwnershipStep, logError, onClose, profileOwnerRefetch, setShowProfileSettings]);
+  }, [currentOwnershipStep, logError, onClose, profileRefetch, setShowProfileSettings]);
 
   // Memos
   const onBack = useMemo(() => {

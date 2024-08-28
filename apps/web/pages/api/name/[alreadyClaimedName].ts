@@ -1,4 +1,6 @@
+import { withTimeout } from 'apps/web/pages/api/decorators';
 import { queryCbGpt } from 'apps/web/src/cdp/api/cb-gpt';
+import { logger } from 'apps/web/src/utils/logger';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export type NameSuggestionResponseData = {
@@ -34,7 +36,7 @@ Remember, the goal is to provide alternatives that users will find desirable and
 Focus on quality and creativity in your suggestions.`;
 const chatLlm = 'claude-3-5-sonnet@20240620';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<ApiResponse>) {
+async function handler(req: NextApiRequest, res: NextApiResponse<ApiResponse>) {
   const { alreadyClaimedName } = req.query;
   if (typeof alreadyClaimedName !== 'string') {
     res.status(400).json({ error: 'name must be a string' });
@@ -58,9 +60,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     });
     res.status(200).json({ suggestion: JSON.parse(suggestion.response) as string[] });
   } catch (e) {
-    console.error(e);
     if (e instanceof Error) {
-      res.status(500).json({ error: `failed to generate suggestions ${e.message}` });
+      logger.error('error generating sugestions', e);
+      res.status(500).json({ error: `failed to generate suggestions` });
     }
   }
 }
+
+export default withTimeout(handler);

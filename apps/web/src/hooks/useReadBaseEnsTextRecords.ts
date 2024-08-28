@@ -77,6 +77,7 @@ export default function useReadBaseEnsTextRecords({
     enabled: !!address && !!username,
     retry: false,
     refetchInterval,
+    refetchOnWindowFocus: false,
   });
 
   useEffect(() => {

@@ -201,9 +201,8 @@ function MobileMenu({ color }: MobileMenuProps) {
                   toggleMobileMenu={toggleMobileMenu}
                   label="Ecosystem"
                 >
+                  <DropdownLink href="/names" label="Basenames" eventName="names" />
                   <DropdownLink href="/ecosystem" label="Apps" eventName="ecosystem" />
-                  {/* todo ECO-101: add this back for GA */}
-                  {/* <DropdownLink href="/names" label="Names" /> */}
                   <DropdownLink
                     href="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
                     label="Grants"
