@@ -95,7 +95,7 @@ This command adds Resend as a dependency to your project, making it available fo
 In this templates, environment variables are stored in a `.env.example` file. You’ll need to rename this file to `.env` to ensure the environment variables are properly loaded. Run the following command:
 
 ```bash
-mv .env.example .env
+mv .env.local.example .env
 ```
 
 With the `.env` file in place, open it in your preferred text editor and update it with your API keys and project IDs. These keys are essential for connecting to Resend, WalletConnect, and the Coinbase Developer Platform.
@@ -103,7 +103,7 @@ With the `.env` file in place, open it in your preferred text editor and update 
 Here’s an example of how your `.env` file should look:
 
 ```bash
-NEXT_PUBLIC_CDP_API_KEY="YOUR_COINBASE_API_KEY"
+NEXT_CDP_API_KEY="YOUR_COINBASE_API_KEY"
 NEXT_PUBLIC_WC_PROJECT_ID="YOUR_WALLET_CONNECT_PROJECT_ID"
 RESEND_API_KEY="YOUR_RESEND_API_KEY"
 RESEND_AUDIENCE_ID="YOUR_RESEND_AUDIENCE_ID"
@@ -115,7 +115,7 @@ Make sure to replace the placeholder values (YOUR_COINBASE_API_KEY, etc.) with y
 
 :::
 
-## TO DO: Deploy template to Vercel
+## Deploy template to Vercel
 
 To send emails from your application using Resend, you’ll need to deploy your project to a live environment. Vercel is a popular platform for deploying web applications, and it’s ideal for this purpose. By deploying your cloned repo on Vercel, you’ll obtain a live domain where your app can interact with Resend.
 
@@ -147,39 +147,49 @@ After the build is complete, Vercel will provide you with a deployment URL. This
 
 Let's start by removing a few imports to clean our `page.tsx` file up.
 
-Start by removing:
+Start by removing `TransactionWrapper` and `WalletWrapper` imports and the code within the second `<section/>` html element.
 
-```
-import TransactionWrapper from 'src/components/TransactionWrapper';
-import WalletWrapper from 'src/components/WalletWrapper';
-import { ONCHAINKIT_LINK } from 'src/links';
-import OnchainkitSvg from 'src/svg/OnchainkitSvg';
-```
-
-Remove the code within the second `<section/> ` html element
+Your `src/app/page.tsx` file should look like this:
 
 ```typescript
-<div className="flex h-[450px] w-[450px] max-w-full items-center justify-center rounded-xl bg-[#030712]">
-  <div className="rounded-xl bg-[#F3F4F6] px-4 py-[11px]">
-    <p className="text-xl font-normal not-italic tracking-[-1.2px] text-indigo-600">
-      npm install @coinbase/onchainkit
-    </p>
-  </div>
-</div>;
-{
-  address ? (
-    <TransactionWrapper />
-  ) : (
-    <WalletWrapper className="w-[450px] max-w-full" text="Sign in to transact" />
+'use client';
+import Footer from 'src/components/Footer';
+import { ONCHAINKIT_LINK } from 'src/links';
+import OnchainkitSvg from 'src/svg/OnchainkitSvg';
+import { useAccount } from 'wagmi';
+import LoginButton from '../components/LoginButton';
+import SignupButton from '../components/SignupButton';
+
+export default function Page() {
+  const { address } = useAccount();
+
+  return (
+    <div className="flex h-full w-96 max-w-full flex-col px-1 md:w-[1008px]">
+      <section className="mb-6 mt-6 flex w-full flex-col md:flex-row">
+        <div className="flex w-full flex-row items-center justify-between gap-2 md:gap-0">
+          <a href={ONCHAINKIT_LINK} title="onchainkit" target="_blank" rel="noreferrer">
+            <OnchainkitSvg />
+          </a>
+          <div className="flex items-center gap-3">
+            <SignupButton />
+            {!address && <LoginButton />}
+          </div>
+        </div>
+      </section>
+      <section className="templateSection flex w-full flex-col items-center justify-center gap-4 rounded-xl bg-gray-100 px-2 py-4 md:grow"></section>
+      <Footer />
+    </div>
   );
 }
 ```
 
-import `useState` and `useEffect` and create # of state variables
+import `useState` and `useEffect` and create the following state variables
 
 ```
 import { useState, useEffect } from  'react';
 ```
+
+`src/app/page.tsx:`
 
 ```typescript title="src/app/page.tsx"
 const [showForm, setShowForm] = useState(false);
@@ -263,6 +273,8 @@ const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
 
 Create a componenet that will serve as the email template:
 
+`src/components/emailTemplate.tsx: `
+
 ```typescript title="src/components/emailTemplate.tsx"
 import * as React from 'react';
 
@@ -276,7 +288,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ firstNam
 );
 ```
 
-Add a section to display wether the user is a member or not:
+In `src/app/page.tsx` add a section to display wether the user is a member or not:
 
 ```html
 <section
@@ -297,7 +309,7 @@ Add a section to display wether the user is a member or not:
 </section>
 ```
 
-Add some logic to display the form:
+In the same file (`src/app/page.tsx`) add the following logic to display the form:
 
 ```jsx
 {
@@ -358,13 +370,13 @@ Add some logic to display the form:
 }
 ```
 
-## Backend stuff
-
 Now, let's set up our API routes for creating contacts and sending emails. In your project's `app` directory, create a new folder called `api`. Inside this `api` folder, create two more folders: `create` and `send`.
 
 In the `create` folder, we'll create a file named `route.ts`. This route will handle creating a new contact using the Resend API. In the `send` folder, create another `route.ts` file. This route will be responsible for sending an email to the user, also using the Resend API.
 
 These two routes will work together to add a new subscriber to your list and send them a welcome email.
+
+`src/app/api/send/route.ts: `
 
 ```typescript title="src/app/api/send/route.ts"
 import { EmailTemplate } from '../../../components/EmailTemplate';
@@ -391,6 +403,8 @@ export async function POST() {
   }
 }
 ```
+
+`src/app/api/send/route.ts: `
 
 ```typescript title="src/app/api/send/route.ts"
 import { Resend } from 'resend';
@@ -419,6 +433,10 @@ export async function POST(request: Request) {
   }
 }
 ```
+
+## Conclusion
+
+Congratulations! You've set up a seamless process to capture user emails after signing in with a Smart Wallet. You can better engage with your users more effectively and build stronger, lasting relationships. Keep exploring the potential of onchain apps and continue enhancing your user experience!
 
 ---
 
