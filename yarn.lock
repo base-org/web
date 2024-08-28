@@ -360,6 +360,7 @@ __metadata:
     "@guildxyz/sdk": 2.6.0
     "@headlessui/react": ^1.7.19
     "@heroicons/react": ^2.1.3
+    "@lottiefiles/dotlottie-react": ^0.8.10
     "@radix-ui/react-tooltip": ^1.1.2
     "@rainbow-me/rainbowkit": ^2.1.3
     "@tanstack/react-query": ^5
@@ -386,7 +387,6 @@ __metadata:
     jose: ^5.4.1
     jsonwebtoken: ^9.0.2
     kysely: ^0.27.3
-    lottie-web: ^5.12.2
     next: ^14.2.5
     node-fetch: ^3.3.0
     permissionless: ^0.1.41
@@ -4633,6 +4633,26 @@ __metadata:
   dependencies:
     "@lit-labs/ssr-dom-shim": ^1.0.0
   checksum: 79b58631c38effeabad090070324431da8a22cf0ff665f5e4de35e4d791f984742b3d340c9c7fce996d1124a8da95febc582471b4c237236c770b1300b56ef6e
+  languageName: node
+  linkType: hard
+
+"@lottiefiles/dotlottie-react@npm:^0.8.10":
+  version: 0.8.10
+  resolution: "@lottiefiles/dotlottie-react@npm:0.8.10"
+  dependencies:
+    "@lottiefiles/dotlottie-web": 0.31.1
+    debounce: ^2.0.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: ee81621eda9a421f30c0e8c1c985a05cd99a01868597be65eeb6ccde4410ef59cfa0f860070245bbc3b8934912662548d7e899da0a4bb7ed345de75b731f968a
+  languageName: node
+  linkType: hard
+
+"@lottiefiles/dotlottie-web@npm:0.31.1":
+  version: 0.31.1
+  resolution: "@lottiefiles/dotlottie-web@npm:0.31.1"
+  checksum: f215deaf2171fca1399b3a67fb0f413e7c9ae4d03e1b3e8ce3ecfc5cf0b08687e7f6e1e00704067baf161374aa4bddac2840c0e7ca9ab3c57f16770abf02306a
   languageName: node
   linkType: hard
 
@@ -12256,6 +12276,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"debounce@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "debounce@npm:2.1.0"
+  checksum: 9fa12d893b23f7f8574aceefeebd259f1058c74e80c3590d4dc319f35fd5feab08b8e7771ca2af626eb4d24562defb61c6b5a53a1741686de7732273579a5d50
+  languageName: node
+  linkType: hard
+
 "debug@npm:2.6.9, debug@npm:^2.6.0":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
@@ -18090,13 +18117,6 @@ __metadata:
   bin:
     loose-envify: cli.js
   checksum: 6517e24e0cad87ec9888f500c5b5947032cdfe6ef65e1c1936a0c48a524b81e65542c9c3edc91c97d5bddc806ee2a985dbc79be89215d613b1de5db6d1cfe6f4
-  languageName: node
-  linkType: hard
-
-"lottie-web@npm:^5.12.2":
-  version: 5.12.2
-  resolution: "lottie-web@npm:5.12.2"
-  checksum: af5bc3bc405fd760de8b17a36158d5a8c3e8c586c711d0c63681ddf056b65bc6b54ea36b1fcad782fb02dbe12e696a40e0ba72daf41b8f10ab5b5d1113793636
   languageName: node
   linkType: hard
 

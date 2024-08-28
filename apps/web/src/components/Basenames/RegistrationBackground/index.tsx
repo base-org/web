@@ -31,6 +31,11 @@ export default function RegistrationBackground() {
 
   const videoClasses = classNames('absolute w-full h-full object-cover motion-reduce:hidden');
 
+  // Large canvas tends to be laggy for complex animation, so we give them a maximum size (50rem)
+  const lottieClasses = classNames(
+    'absolute w-full h-full max-w-[50rem] max-h-[50rem] object-cover motion-reduce:hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+  );
+
   return (
     <>
       <Transition
@@ -58,7 +63,6 @@ export default function RegistrationBackground() {
         leaveTo="opacity-0"
       >
         {/* TODO: Lottie animation file */}
-
         <Transition
           appear
           show={isClaim}
@@ -90,7 +94,7 @@ export default function RegistrationBackground() {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <LottieAnimation data={vortexJson} wrapperClassName={videoClasses} />
+        <LottieAnimation data={vortexJson} wrapperClassName={lottieClasses} />
       </Transition>
 
       <Transition
