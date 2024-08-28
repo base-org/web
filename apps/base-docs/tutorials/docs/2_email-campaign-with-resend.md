@@ -271,7 +271,7 @@ const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
 };
 ```
 
-Create a componenet that will serve as the email template:
+Create a component that will serve as the email template:
 
 `src/components/emailTemplate.tsx: `
 
