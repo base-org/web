@@ -288,7 +288,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ firstNam
 );
 ```
 
-In `src/app/page.tsx` add a section to display wether the user is a member or not:
+In `src/app/page.tsx` add the following section to display wether the user is a member or not:
 
 ```html
 <section
@@ -309,65 +309,61 @@ In `src/app/page.tsx` add a section to display wether the user is a member or no
 </section>
 ```
 
-In the same file (`src/app/page.tsx`) add the following logic to display the form:
+In the same file (`src/app/page.tsx`) add the following logic to display the form after the last `section/>` element:
 
-```jsx
-{
-  showForm && (
-    <div
-      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
-      onClick={handleOutsideClick}
-    >
-      <div className="w-80 rounded-lg bg-white p-8 shadow-lg">
-        {isSubscribed ? (
-          <h2 className="text-center text-2xl font-bold text-black">Subscribed!</h2>
-        ) : (
-          <form onSubmit={handleSubscribe} className="space-y-4">
-            <h2 className="mb-6 text-center text-2xl font-bold text-gray-800">
-              Join our mailing list
-            </h2>
-            {/* Form inputs */}
-            <div className="space-y-2">
-              <input
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-                value={formData.firstName}
-                onChange={handleChange}
-                className="focus:black w-full rounded-md border border-gray-300 p-3 text-sm focus:outline-none focus:ring-2"
-                required
-              />
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                value={formData.lastName}
-                onChange={handleChange}
-                className="focus:black w-full rounded-md border border-gray-300 p-3 text-sm focus:outline-none focus:ring-2"
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
-                className="focus:black w-full rounded-md border border-gray-300 p-3 text-sm focus:outline-none focus:ring-2"
-                required
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full rounded-md bg-blue-600 p-3 text-sm font-semibold text-white transition duration-300 ease-in-out hover:bg-blue-700"
-            >
-              Subscribe
-            </button>
-          </form>
-        )}
+```html
+{ showForm && (
+<div
+  className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+  onClick="{handleOutsideClick}"
+>
+  <div className="w-80 rounded-lg bg-white p-8 shadow-lg">
+    {isSubscribed ? (
+    <h2 className="text-center text-2xl font-bold text-black">Subscribed!</h2>
+    ) : (
+    <form onSubmit="{handleSubscribe}" className="space-y-4">
+      <h2 className="mb-6 text-center text-2xl font-bold text-gray-800">Join our mailing list</h2>
+      {/* Form inputs */}
+      <div className="space-y-2">
+        <input
+          type="text"
+          name="firstName"
+          placeholder="First Name"
+          value="{formData.firstName}"
+          onChange="{handleChange}"
+          className="focus:black w-full rounded-md border border-gray-300 p-3 text-sm focus:outline-none focus:ring-2"
+          required
+        />
+        <input
+          type="text"
+          name="lastName"
+          placeholder="Last Name"
+          value="{formData.lastName}"
+          onChange="{handleChange}"
+          className="focus:black w-full rounded-md border border-gray-300 p-3 text-sm focus:outline-none focus:ring-2"
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value="{formData.email}"
+          onChange="{handleChange}"
+          className="focus:black w-full rounded-md border border-gray-300 p-3 text-sm focus:outline-none focus:ring-2"
+          required
+        />
       </div>
-    </div>
-  );
-}
+      <button
+        type="submit"
+        className="w-full rounded-md bg-blue-600 p-3 text-sm font-semibold text-white transition duration-300 ease-in-out hover:bg-blue-700"
+      >
+        Subscribe
+      </button>
+    </form>
+    )}
+  </div>
+</div>
+) }
 ```
 
 Now, let's set up our API routes for creating contacts and sending emails. In your project's `app` directory, create a new folder called `api`. Inside this `api` folder, create two more folders: `create` and `send`.
