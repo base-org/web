@@ -488,6 +488,11 @@ export type FrameState<
   onComposerActionButtonPress: ComposerActionButtonPressFunction;
 };
 
+export type FarcasterCreateSignerResult = {
+  token: string;
+  signerApprovalUrl: string;
+};
+
 export type OnMintArgs = {
   target: string;
   frameButton: FrameButton;

@@ -56,7 +56,7 @@ export type FrameContextValue = {
   showFarcasterQRModal: boolean;
   pendingFrameChange: boolean;
   setShowFarcasterQRModal: (b: boolean) => void;
-  setFrameRecord: (url: string) => void;
+  setFrameRecord: (url: string) => Promise<`0x${string}` | undefined>;
 };
 
 export const FrameContext = createContext<FrameContextValue | null>(null);
@@ -81,9 +81,10 @@ export function FrameProvider({ children }: FrameProviderProps) {
 
   const { address } = useAccount();
   const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
-  const { existingTextRecords } = useReadBaseEnsTextRecords({
+  const { existingTextRecords, refetchExistingTextRecords } = useReadBaseEnsTextRecords({
     address: profileAddress,
     username: profileUsername,
+    refetchInterval: currentWalletIsProfileOwner ? 1000 * 5 : Infinity,
   });
 
   const homeframeUrl = existingTextRecords[UsernameTextRecordKeys.Frame];
@@ -187,7 +188,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
   const { writeContractAsync, isPending: pendingFrameChange } = useWriteContract();
   const { basenameChain } = useBasenameChain(profileUsername);
   const setFrameRecord = useCallback(
-    (frameUrl: string) => {
+    async (frameUrl: string) => {
       async function doTransaction() {
         if (!frameUrl) return;
         if (!address) {
@@ -202,17 +203,28 @@ export function FrameProvider({ children }: FrameProviderProps) {
           });
         }
         const nameHash = namehash(profileUsername);
-        await writeContractAsync({
+        const result = await writeContractAsync({
           abi: L2ResolverAbi,
           chainId: basenameChain.id,
           address: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
           args: [nameHash, UsernameTextRecordKeys.Frame, frameUrl.trim()],
           functionName: 'setText',
         });
+        refetchExistingTextRecords().catch(console.warn);
+        return result;
       }
-      doTransaction().catch(console.warn);
+      return doTransaction();
     },
-    [writeContractAsync],
+    [
+      address,
+      profileUsername,
+      basenameChain,
+      writeContractAsync,
+      config,
+      currentChainId,
+      openConnectModal,
+      refetchExistingTextRecords,
+    ],
   );
 
   const value = useMemo(

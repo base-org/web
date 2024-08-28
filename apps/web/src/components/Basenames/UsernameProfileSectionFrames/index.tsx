@@ -28,8 +28,6 @@ function SectionContent() {
     frameConfig,
     frameInteractionError,
     setFrameInteractionError,
-    showFarcasterQRModal,
-    setShowFarcasterQRModal,
     pendingFrameChange,
   } = useFrameContext();
 
@@ -96,13 +94,6 @@ function SectionContent() {
           </Button>
         )}
       </div>
-      <FarcasterAccountModal
-        farcasterUser={frameConfig.signerState.signer ?? null}
-        loading={!!frameConfig.signerState.isLoadingSigner ?? false}
-        startFarcasterSignerProcess={frameConfig.signerState.createSigner}
-        isOpen={showFarcasterQRModal}
-        onClose={() => setShowFarcasterQRModal(false)}
-      />
     </section>
   );
 }
@@ -112,6 +103,7 @@ function UsernameProfileSectionFrames() {
     <FrameProvider>
       <SectionContent />
       <AddFrameModal />
+      <FarcasterAccountModal />
     </FrameProvider>
   );
 }

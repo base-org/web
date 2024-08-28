@@ -10,15 +10,23 @@ import { StaticImageData } from 'next/image';
 import { ChangeEvent, useCallback, useState } from 'react';
 import currencies from './ui/currencies.svg';
 import email from './ui/email.svg';
+import { ShoppingCartIcon } from '@heroicons/react/24/solid';
 import nftProduct from './ui/nftProduct.svg';
 import payouts from './ui/payouts.svg';
+import swap from './ui/swap.svg';
 import starActive from './ui/starActive.svg';
+import { useAccount } from 'wagmi';
 
 export default function AddFrameModal() {
+  const { address } = useAccount();
   const [frameUrl, setFrameUrl] = useState('');
   const [farcasterUsername, setFarcasterUsername] = useState('');
   const handleFarcasterUsernameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setFarcasterUsername(e.target.value);
+  }, []);
+  const [swapTokenAddress, setSwapTokenAddress] = useState('');
+  const handleSwapTokenAddressChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setSwapTokenAddress(e.target.value);
   }, []);
   const emptyFrameUrl = !frameUrl;
 
@@ -48,10 +56,21 @@ export default function AddFrameModal() {
     }
   }, [farcasterUsername]);
 
-  const handleAddFrameClick = useCallback(
-    () => setFrameRecord(frameUrl),
-    [frameUrl, setFrameRecord],
-  );
+  const handleBuildTopClick = useCallback(() => {
+    if (address) {
+      setFrameUrl(`https://build.top/nominate/${address}`);
+    } else {
+      setFrameUrl('');
+    }
+  }, [address]);
+
+  const handleAddFrameClick = useCallback(() => {
+    setFrameRecord(frameUrl)
+      .then(() => {
+        closeFrameManagerModal();
+      })
+      .catch(console.warn);
+  }, [frameUrl, setFrameRecord, closeFrameManagerModal]);
 
   return (
     <Modal
@@ -65,9 +84,9 @@ export default function AddFrameModal() {
           Paste a link to your frame, or use one of the suggestions below.
         </span>
         <div className="mt-4 flex flex-row justify-between gap-12">
-          <div className="flex max-w-md flex-col rounded-xl border border-palette-line/20 bg-[#F3F3F3] p-4">
+          <div className="flex max-w-md flex-col self-start rounded-xl border border-palette-line/20 bg-[#F3F3F3] p-4">
             <h3 className="font-medium">Suggestions</h3>
-            <div className="mt-4 flex flex-col gap-4 overflow-x-scroll">
+            <div className="mt-4 flex flex-col overflow-x-scroll">
               <SuggestionCard
                 imgData={payouts as StaticImageData}
                 title="Pay me"
@@ -82,8 +101,8 @@ export default function AddFrameModal() {
                     value={farcasterUsername}
                     onChange={handleFarcasterUsernameChange}
                     type="text"
-                    className="flex-grow rounded-xl border border-palette-line/20 p-4"
-                  />{' '}
+                    className="mr-3 flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
+                  />
                   <Button
                     rounded
                     variant={ButtonVariants.Black}
@@ -97,9 +116,9 @@ export default function AddFrameModal() {
               <SuggestionCard
                 imgData={starActive as StaticImageData}
                 title="Nominate me"
-                description="Get nominated with Build.Top"
+                description="Get nominated with build.top"
               >
-                <div className="flex flex-row items-center gap-2">
+                <div className="flex flex-row items-center gap-4">
                   <p className="max-w-80 text-sm text-palette-foreground">
                     We’ll use your address to show a preview on{' '}
                     <a
@@ -111,17 +130,22 @@ export default function AddFrameModal() {
                       build.top
                     </a>
                   </p>
-                  <Button rounded variant={ButtonVariants.Black} size={ButtonSizes.Small}>
+                  <Button
+                    rounded
+                    variant={ButtonVariants.Black}
+                    size={ButtonSizes.Small}
+                    onClick={handleBuildTopClick}
+                  >
                     Show preview
                   </Button>
                 </div>
               </SuggestionCard>
               <SuggestionCard
-                imgData={starActive as StaticImageData}
+                icon={<ShoppingCartIcon width={24} height={24} fill="#3CC28A" />}
                 title="Buy from me"
                 description="Sell products from your Slice shop"
               >
-                <ol className="list-decimal text-sm text-palette-foreground">
+                <ol className="list-inside list-decimal indent-1 text-sm text-palette-foreground">
                   <li>
                     Visit your onchain shop on{' '}
                     <a
@@ -141,7 +165,7 @@ export default function AddFrameModal() {
                 title="Subscribe to me"
                 description="Get subscriptions to your Hypersub"
               >
-                <ol className="list-decimal text-sm text-palette-foreground">
+                <ol className="list-inside list-decimal indent-1 text-sm text-palette-foreground">
                   <li>
                     Visit{' '}
                     <a
@@ -161,7 +185,7 @@ export default function AddFrameModal() {
                 title="Mint me"
                 description="Mint your NFT on Highlight"
               >
-                <ol className="list-decimal text-sm text-palette-foreground">
+                <ol className="list-inside list-decimal indent-1 text-sm text-palette-foreground">
                   <li>
                     Visit{' '}
                     <a
@@ -177,12 +201,37 @@ export default function AddFrameModal() {
                 </ol>
               </SuggestionCard>
               <SuggestionCard
-                hideHr
+                imgData={swap as StaticImageData}
+                title="Swap with me"
+                description="Buy my bags"
+              >
+                <p className="text-sm text-palette-foreground">
+                  Add the Base address of the token you want people to buy
+                </p>
+                <div className="mt-3 flex flex-row gap-4">
+                  <Input
+                    placeholder="token address"
+                    value={swapTokenAddress}
+                    onChange={handleSwapTokenAddressChange}
+                    type="text"
+                    className="flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
+                  />
+                  <Button
+                    rounded
+                    variant={ButtonVariants.Black}
+                    size={ButtonSizes.Small}
+                    onClick={handlePaycasterClick}
+                  >
+                    Show preview
+                  </Button>
+                </div>
+              </SuggestionCard>
+              <SuggestionCard
                 imgData={email as StaticImageData}
                 title="RSVP me"
                 description="Get RSVPs to your events on events.xyz"
               >
-                <ol className="list-decimal text-sm text-palette-foreground">
+                <ol className="list-inside list-decimal indent-1 text-sm text-palette-foreground">
                   <li>
                     Visit{' '}
                     <a

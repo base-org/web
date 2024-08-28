@@ -2,33 +2,31 @@
 
 import type { FarcasterSigner } from '@frames.js/render/identity/farcaster';
 import { EllipsisHorizontalIcon, UserIcon } from '@heroicons/react/24/outline';
+import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import { Button } from 'apps/web/src/components/Button/Button';
 import Modal from 'apps/web/src/components/Modal';
-import { FarcasterCreateSignerResult } from 'apps/web/src/hooks/useFarcasterIdentity';
 import QRCode from 'qrcode.react';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
-type FarcasterAccountModalProps = {
-  farcasterUser: FarcasterSigner | null;
-  loading: boolean;
-  startFarcasterSignerProcess: () => Promise<FarcasterCreateSignerResult>;
-  isOpen: boolean;
-  onClose: () => void;
-};
-
-export default function FarcasterAccountModal({
-  farcasterUser,
-  loading,
-  startFarcasterSignerProcess,
-  isOpen,
-  onClose,
-}: FarcasterAccountModalProps) {
+export default function FarcasterAccountModal() {
+  const { frameConfig, showFarcasterQRModal, setShowFarcasterQRModal } = useFrameContext();
+  const farcasterUser = useMemo(
+    () => frameConfig.signerState.signer ?? null,
+    [frameConfig.signerState.signer],
+  );
+  const loading = useMemo(
+    () => !!frameConfig.signerState.isLoadingSigner ?? false,
+    [frameConfig.signerState.isLoadingSigner],
+  );
   const handleButtonClick = useCallback(() => {
-    startFarcasterSignerProcess().catch(console.error).finally(onClose);
-  }, [onClose, startFarcasterSignerProcess]);
+    frameConfig.signerState
+      .createSigner()
+      .catch(console.error)
+      .finally(() => setShowFarcasterQRModal(false));
+  }, [frameConfig.signerState.createSigner, frameConfig.signerState, setShowFarcasterQRModal]);
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={showFarcasterQRModal} onClose={() => setShowFarcasterQRModal(false)}>
       <div className="space-y-2">
         {!farcasterUser && (
           <div className="mt-4 flex flex-col gap-2">
