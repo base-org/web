@@ -170,7 +170,7 @@ async function getAvatarUri(address, uri, provider) {
           }
           return `${baseUrl}/${id}`;
         } catch (e) {
-          logger.error('error getting avatar URI', { error });
+          logger.error('error getting avatar URI', error);
           return null;
         }
       }

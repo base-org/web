@@ -220,7 +220,7 @@ export async function sybilResistantUsernameSigning(
       expires: EXPIRY,
     };
   } catch (error) {
-    logger.error('error while getting sybilResistant basename signature', { error });
+    logger.error('error while getting sybilResistant basename signature', error);
     if (error instanceof Error) {
       throw new ProofsException(error.message, 500);
     }

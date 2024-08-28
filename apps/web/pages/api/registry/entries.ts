@@ -51,7 +51,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     await kv.incr(`stat:requests.${pageKey}`);
   } catch (error) {
-    logger.error('error getting registry entries', { error });
+    logger.error('error getting registry entries', error);
   }
   // Set caching headers
   res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate');
