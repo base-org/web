@@ -7,7 +7,6 @@ import { Divider } from 'apps/web/src/components/Divider/Divider';
 import { EmpoweredByCoinbase } from 'apps/web/src/components/EmpoweredByCoinbase/EmpoweredByCoinbase';
 import { Features } from 'apps/web/src/components/Features/Features';
 import { GetConnected } from 'apps/web/src/components/GetConnected/GetConnected';
-import { Hero } from 'apps/web/src/components/Home/Hero';
 import { JoinTheCommunity } from 'apps/web/src/components/JoinTheCommunity/JoinTheCommunity';
 import { Partnerships } from 'apps/web/src/components/Partnerships/Partnerships';
 import ThreeHero from 'apps/web/src/components/ThreeHero';
@@ -55,14 +54,14 @@ export default async function Home() {
         </div>
       </AnalyticsProvider>
       <main className="flex w-full flex-col items-center bg-black">
-        <div className="flex w-full flex-col items-center bg-black pb-[96px]">
-          <ShimmerCard active className="h-20 w-20">
+        <div className="container flex w-full flex-row items-center gap-12 bg-black p-12 pb-[96px]">
+          <ShimmerCard>
             <span className="text-white">Hello, welcome to base</span>
           </ShimmerCard>
-          <ShimmerCard active className="h-20 w-20">
+          <ShimmerCard>
             <span className="text-white">Hello, welcome to base</span>
           </ShimmerCard>
-          <ShimmerCard active className="h-20 w-20">
+          <ShimmerCard>
             <span className="text-white">Hello, welcome to base</span>
           </ShimmerCard>
         </div>

@@ -1,86 +1,68 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, useSpring, useMotionValue } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
 
 type HoverShimmerProps = {
-  className?: string;
-  active?: boolean;
-  shrink?: boolean;
   children: React.ReactNode;
 };
 
-export default function ShimmerCard({
-  className = '',
-  active = false,
-  shrink = false,
-  children,
-}: HoverShimmerProps) {
-  const outerRef = useRef<HTMLDivElement>(null);
-  const [top, setTop] = useState(0);
-  const [left, setLeft] = useState(0);
-  const glowRadius = 400;
+export default function ShimmerCard({ children }: HoverShimmerProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const blobRef = useRef<HTMLDivElement>(null);
+  const fakeBlobRef = useRef<HTMLDivElement>(null);
 
-  const x = useMotionValue(50);
-  const y = useMotionValue(50);
-
-  const springConfig = { stiffness: 180, damping: 74 };
-  const springX = useSpring(x, springConfig);
-  const springY = useSpring(y, springConfig);
-
+  // Note: This will add an event for every card on the page.
+  //       If this leads to performance issue, consider a context / one event
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
+    const handleMouseMove = (ev: MouseEvent) => {
+      if (blobRef.current && fakeBlobRef.current) {
+        const rec = fakeBlobRef.current.getBoundingClientRect();
 
-      if (outerRef.current) {
-        const rect = outerRef.current.getBoundingClientRect();
-        setTop(rect.top);
-        setLeft(rect.left);
-      }
-    };
-
-    const handleScroll = () => {
-      if (outerRef.current) {
-        const rect = outerRef.current.getBoundingClientRect();
-        setTop(rect.top);
-        setLeft(rect.left);
+        blobRef.current.animate(
+          [
+            {
+              transform: `translate(${ev.clientX - rec.left - rec.width / 2}px,${
+                ev.clientY - rec.top - rec.height / 2
+              }px)`,
+            },
+          ],
+          {
+            duration: 300,
+            fill: 'forwards',
+          },
+        );
+        blobRef.current.classList.remove('opacity-0');
       }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  });
+
+  /* 
+    Shimmer / Tailwind integration notes:
+    - Converted from https://codepen.io/yxshv/pen/JjaRZmb
+    - The card "border" is controlled via the padding, p-[1px]
+    - if you change the "border", you need to change the inner class radius accordingly
+  */
+  const cardClassName =
+    'card overflow-hidden p-[1px] m-0 bg-white/20 rounded-[16px] relative  group';
+
+  const blobClassName =
+    'blob blur-[40px] z-10 absolute opacity-0 w-[30rem] h-[30rem] rounded-full bg-[rgb(255,255,255,0.2)]';
+
+  const fakeBlobClassName = 'fake-blob absolute w-[30rem] h-[30rem] rounded-full opacity-0';
+
+  const innerClassName = 'inner relative rounded-[15px] p-12 bg-black z-20 h-full';
 
   return (
-    <div
-      ref={outerRef}
-      className={`bg-neutral-900 relative w-full overflow-hidden rounded-xl p-px transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        active ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
-      } ${shrink ? 'active:scale-98' : ''}`}
-    >
-      <div
-        className={`relative z-30 h-full w-full overflow-hidden rounded-[11px] bg-[#0f0f0f] bg-opacity-100 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-[#141414] ${className}`}
-      >
-        {children}
-      </div>
-      <motion.div
-        className="glow bg-neutral-500 absolute z-10 rounded-full"
-        style={{
-          width: glowRadius,
-          height: glowRadius,
-          filter: `blur(${glowRadius / 4}px)`,
-          x: springX,
-          y: springY,
-          top: -top - glowRadius / 2,
-          left: -left - glowRadius / 2,
-        }}
-      />
+    <div className={cardClassName} ref={cardRef}>
+      <div className={innerClassName}>{children}</div>
+      <div className={blobClassName} ref={blobRef} />
+      <div className={fakeBlobClassName} ref={fakeBlobRef} />
     </div>
   );
 }
