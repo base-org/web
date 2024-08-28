@@ -52,6 +52,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     return res.status(200).setHeader('Content-Type', 'text/html').send(txSuccessFrame(name, transactionId));
   } catch (e) {
-    return res.status(500).json({ error: e });
+    // return res.status(500).json({ error: e });
+    return res.status(200).setHeader('Content-Type', 'text/html').send(txSuccessFrame(String(e), String(transactionId)));
   }
 }
