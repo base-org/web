@@ -18,7 +18,7 @@ export async function getTransactionStatus(chain: Chain, transactionId: string) 
   });
 
   try {
-    const tx = client.waitForTransactionReceipt(transactionId) as TransactionReceipt;
+    const tx = client.waitForTransactionReceipt({ hash: transactionId }) as TransactionReceipt;
     const txStatus = tx.status;
     return txStatus;
   } catch (error) {
