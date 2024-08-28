@@ -4,7 +4,13 @@ import * as THREE from 'three';
 import { useRef, useReducer, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, MeshTransmissionMaterial, Environment, Lightformer } from '@react-three/drei';
-import { CuboidCollider, BallCollider, Physics, RigidBody } from '@react-three/rapier';
+import {
+  CuboidCollider,
+  BallCollider,
+  Physics,
+  RigidBody,
+  CylinderCollider,
+} from '@react-three/rapier';
 import { EffectComposer, N8AO } from '@react-three/postprocessing';
 import { easing } from 'maath';
 
@@ -33,7 +39,7 @@ export default function Scene(props) {
       camera={{ position: [0, 0, 15], fov: 17.5, near: 1, far: 20 }}
       {...props}
     >
-      <color attach="background" args={['#141622']} />
+      <color attach="background" args={[0.01, 0.01, 0.01]} />
       <ambientLight intensity={0.4} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
       <Physics /*debug*/ gravity={[0, 0, 0]}>
@@ -115,9 +121,7 @@ function Connector({
       ref={api}
       colliders={false}
     >
-      <CuboidCollider args={[0.38, 1.27, 0.38]} />
-      <CuboidCollider args={[1.27, 0.38, 0.38]} />
-      <CuboidCollider args={[0.38, 0.38, 1.27]} />
+      <CylinderCollider args={[0.5, 3]} />
       {children ? children : <Model {...props} />}
       {accent && <pointLight intensity={4} distance={2.5} color={props.color} />}
     </RigidBody>
@@ -140,13 +144,15 @@ function Pointer({ vec = new THREE.Vector3() }) {
 
 function Model({ children, color = 'white', roughness = 0, ...props }) {
   const ref = useRef();
-  const { nodes, materials } = useGLTF('/three/spindle.glb');
+  const glb = useGLTF('/three/base.glb');
   useFrame((state, delta) => {
     easing.dampC(ref.current.material.color, color, 0.2, delta);
   });
+  console.log(glb);
+  const nodes = glb.nodes;
   return (
-    <mesh ref={ref} castShadow receiveShadow scale={10} geometry={nodes.connector.geometry}>
-      <meshStandardMaterial metalness={0.2} roughness={roughness} map={materials.base.map} />
+    <mesh ref={ref} castShadow receiveShadow scale={0.3} geometry={nodes.Base_Icon.geometry}>
+      <meshStandardMaterial metalness={0.2} roughness={roughness} />
       {children}
     </mesh>
   );

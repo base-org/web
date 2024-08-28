@@ -11,6 +11,7 @@ import { Hero } from 'apps/web/src/components/Home/Hero';
 import { JoinTheCommunity } from 'apps/web/src/components/JoinTheCommunity/JoinTheCommunity';
 import { Partnerships } from 'apps/web/src/components/Partnerships/Partnerships';
 import ThreeHero from 'apps/web/src/components/ThreeHero';
+import ShimmerCard from 'apps/web/src/components/ShimmerCard';
 
 /* Farcaster Metadatas */
 const buttons: FrameButtonMetadata[] = [
@@ -49,11 +50,22 @@ export default async function Home() {
   return (
     <AnalyticsProvider context="base_landing_page">
       <AnalyticsProvider context="hero">
-        <div className="h-[600px] w-full">
+        <div className="h-[875px] w-full">
           <ThreeHero />
         </div>
       </AnalyticsProvider>
       <main className="flex w-full flex-col items-center bg-black">
+        <div className="flex w-full flex-col items-center bg-black pb-[96px]">
+          <ShimmerCard active className="h-20 w-20">
+            <span className="text-white">Hello, welcome to base</span>
+          </ShimmerCard>
+          <ShimmerCard active className="h-20 w-20">
+            <span className="text-white">Hello, welcome to base</span>
+          </ShimmerCard>
+          <ShimmerCard active className="h-20 w-20">
+            <span className="text-white">Hello, welcome to base</span>
+          </ShimmerCard>
+        </div>
         <Divider />
         <Features />
         <Divider />
