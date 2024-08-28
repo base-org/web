@@ -113,6 +113,7 @@ const contentSecurityPolicy = {
     'https://*.datadoghq.com', //datadog
     'https://translate.googleapis.com', // Let user translate our website
     'https://sdk-api.neynar.com/', // Neymar API
+    'https://unpkg.com/@lottiefiles/dotlottie-web@0.31.1/dist/dotlottie-player.wasm', // lottie player
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],

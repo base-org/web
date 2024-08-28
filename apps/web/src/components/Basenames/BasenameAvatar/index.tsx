@@ -10,7 +10,7 @@ import { getBasenameAnimation, getBasenameImage } from 'apps/web/src/utils/usern
 export default function BasenameAvatar({
   basename,
   wrapperClassName = 'h-8 w-8 overflow-hidden rounded-full',
-  animate = false,
+  animate = true,
   width,
   height,
 }: {
@@ -23,7 +23,6 @@ export default function BasenameAvatar({
   const { data: basenameAvatar, isLoading: basenameAvatarIsLoading } = useBaseEnsAvatar({
     name: basename,
   });
-
   if (basenameAvatar ?? !animate) {
     const image = getBasenameImage(basename);
     return (
