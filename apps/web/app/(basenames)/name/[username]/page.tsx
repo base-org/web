@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
     description: description ?? defaultDescription,
     openGraph: {
       title: `Basenames | ${username}`,
-      url: `/${username}`,
+      url: `/name/${params.username}`,
     },
     twitter: {
       card: 'summary_large_image',
