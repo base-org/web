@@ -48,7 +48,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!transactionId) {
       throw new Error('transactionId is not valid');
     }
-    const { status: txStatus } = await getTransactionStatus(CHAIN, transactionId);
+    const txStatus = await getTransactionStatus(CHAIN, transactionId);
     if (txStatus !== 'success') {
       return res
         .status(200)
