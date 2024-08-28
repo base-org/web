@@ -23,8 +23,9 @@ export type TxFrameStateType = {
   registrationPriceInEth: string;
 };
 
-const RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[base.id];
-const REGISTRAR_CONTROLLER_ADDRESS = USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[base.id];
+export const chain = base;
+const RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[chain.id];
+const REGISTRAR_CONTROLLER_ADDRESS = USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[chain.id];
 
 if (!NEYNAR_API_KEY) {
   throw new Error('missing NEYNAR_API_KEY');
@@ -77,13 +78,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const addressData = encodeFunctionData({
     abi: L2ResolverAbi,
     functionName: 'setAddr',
-    args: [namehash(formatBaseEthDomain(name, base.id)), claimingAddress],
+    args: [namehash(formatBaseEthDomain(name, chain.id)), claimingAddress],
   });
 
   const nameData = encodeFunctionData({
     abi: L2ResolverAbi,
     functionName: 'setName',
-    args: [namehash(formatBaseEthDomain(name, base.id)), formatBaseEthDomain(name, base.id)],
+    args: [namehash(formatBaseEthDomain(name, chain.id)), formatBaseEthDomain(name, chain.id)],
   });
 
   const registerRequest = {
@@ -103,7 +104,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const txData: FrameTransactionResponse = {
-      chainId: `eip155:${base.id}`,
+      chainId: `eip155:${chain.id}`,
       method: 'eth_sendTransaction',
       params: {
         abi: [
