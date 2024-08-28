@@ -60,7 +60,6 @@ export function UsernamePill({ variant, username, address, isRegistering }: User
       <BasenameAvatar
         basename={username}
         wrapperClassName={avatarClasses}
-        animate
         width={4 * 16}
         height={4 * 16}
       />
