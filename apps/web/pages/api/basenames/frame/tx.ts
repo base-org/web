@@ -5,7 +5,7 @@ import {
   FrameTransactionResponse,
 } from '@coinbase/onchainkit/frame';
 import { encodeFunctionData, namehash } from 'viem';
-import { base } from 'viem/chains';
+import { base, baseSepolia } from 'viem/chains';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
@@ -23,7 +23,7 @@ export type TxFrameStateType = {
   registrationPriceInEth: string;
 };
 
-export const chain = base;
+export const chain = baseSepolia;
 const RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[chain.id];
 const REGISTRAR_CONTROLLER_ADDRESS = USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[chain.id];
 
