@@ -59,7 +59,7 @@ export default async function Essentials() {
           title="Get Noticed"
           description="Looking for help with distribution? Get noticed by millions of potential new users"
           href={`#${GET_NOTICED_SECTION_ID}`}
-          topLeft={<Icon name="people" color="white" />}
+          topLeft={<Icon name="eye" color="white" />}
           classnames="bg-purple-60 border-purple-60"
         />
         <ResourceCard

@@ -17,7 +17,7 @@ export default async function GetInvolved() {
           href="https://discord.com/invite/buildonbase"
           topLeft={<span className="font-mono">01</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}
-          classnames="bg-pink-60 border-pink-60"
+          classnames="bg-teal-80 border-teal-80"
         />
         <ResourceCard
           title="Host a Meetup"
@@ -25,7 +25,7 @@ export default async function GetInvolved() {
           href="https://docs.google.com/forms/d/e/1FAIpQLSf5wnzD_czyYOyHFeOmFK_rjsJj7Utovo3jWwR40JizPqmDZg/viewform"
           topLeft={<span className="font-mono">02</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}
-          classnames="bg-pink-80 border-pink-80"
+          classnames="bg-teal-60 border-teal-60"
         />
         <ResourceCard
           title="Use Apps on Base"
@@ -33,7 +33,7 @@ export default async function GetInvolved() {
           href="https://www.base.org/ecosystem?utm_source=dotorg&utm_medium=builderkit"
           topLeft={<span className="font-mono">03</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}
-          classnames="bg-pink-60 border-pink-60"
+          classnames="bg-teal-80 border-teal-80"
         />
       </div>
     </div>
