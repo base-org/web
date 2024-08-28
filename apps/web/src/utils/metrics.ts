@@ -53,19 +53,19 @@ class CustomMetricLogger {
         body: JSON.stringify(payload),
       });
     } catch (error) {
-      logger.error('Failed to send metrics to Datadog', { error });
+      logger.error('Failed to send metrics to Datadog', error);
     }
   }
 
   public sendMetric(metric: Metric) {
     this.sendToDatadog([metric]).catch((error) => {
-      logger.error('Failed to send metrics to Datadog', { error });
+      logger.error('Failed to send metrics to Datadog', error);
     });
   }
 
   public sendMetrics(metrics: Metric[]) {
     this.sendToDatadog(metrics).catch((error) => {
-      logger.error('Failed to send metrics to Datadog', { error });
+      logger.error('Failed to send metrics to Datadog', error);
     });
   }
 }

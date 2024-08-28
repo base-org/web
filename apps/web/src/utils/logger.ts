@@ -71,7 +71,26 @@ class CustomLogger {
     this.log('warn', message, meta);
   }
 
-  public error(message: string, meta?: Record<string, unknown>) {
+  public error(message: string, error: Error | unknown, meta?: Record<string, unknown>) {
+    var e;
+    if (error instanceof Error) {
+      e = {
+        name: error.name,
+        cause: error.cause,
+        message: error.message,
+        stack: error.stack,
+      };
+    } else {
+      e = {
+        message: JSON.stringify(error),
+      };
+    }
+    if (error) {
+      this.log('error', message, {
+        ...meta,
+        error: e,
+      });
+    }
     this.log('error', message, meta);
   }
 

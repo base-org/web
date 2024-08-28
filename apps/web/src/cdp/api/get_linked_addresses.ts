@@ -43,7 +43,7 @@ export async function getLinkedAddresses(address: string): Promise<LinkedAddress
 
     throw new Error(`Unexpected error: ${response.statusText}, Response: ${errorResponse}`);
   } catch (error) {
-    logger.error('Error fetching linked addresses:', { error });
+    logger.error('Error fetching linked addresses:', error);
     throw error;
   }
 }
