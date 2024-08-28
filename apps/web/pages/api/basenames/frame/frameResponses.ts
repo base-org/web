@@ -2,7 +2,8 @@ import { getFrameMetadata, getFrameHtmlResponse } from '@coinbase/onchainkit/fra
 import { FrameMetadataResponse } from '@coinbase/onchainkit/frame/types';
 import initialImage from 'apps/web/pages/api/basenames/frame/assets/initial-image.png';
 import searchImage from 'apps/web/pages/api/basenames/frame/assets/search-image.png';
-import txSubmittedImage from 'apps/web/pages/api/basenames/frame/assets/tx-submitted.png';
+import txSucceededImage from 'apps/web/pages/api/basenames/frame/assets/tx-succeeded.png';
+import txFailedImage from 'apps/web/pages/api/basenames/frame/assets/tx-failed.png';
 import { DOMAIN } from 'apps/web/pages/api/basenames/frame/constants';
 
 export const initialFrame: FrameMetadataResponse = getFrameMetadata({
@@ -124,7 +125,7 @@ export const txSucceededFrame = (name: string, transactionId: string) =>
       },
     ],
     image: {
-      src: `${DOMAIN}/${txSubmittedImage.src}`,
+      src: `${DOMAIN}/${txSucceededImage.src}`,
     },
   });
 
@@ -143,6 +144,6 @@ export const txRevertedFrame = (name: string, transactionId: string) =>
       },
     ],
     image: {
-      src: `${DOMAIN}/${txSubmittedImage.src}`,
+      src: `${DOMAIN}/${txFailedImage.src}`,
     },
   });
