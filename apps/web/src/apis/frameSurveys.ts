@@ -2,45 +2,47 @@ import { ColumnType, Generated, Kysely, PostgresDialect } from 'kysely';
 import { Pool } from 'pg';
 
 type Database = {
+  frame_surveys: SurveyTable;
   frame_survey_questions: QuestionTable;
-  frame_survey_question_answers: AnswerTable;
+  frame_survey_question_answers: AnswerOptionsTable;
   frame_survey_user_responses: UserResponseTable;
+};
+
+type SurveyTable = {
+  id: Generated<number>;
+  name: string;
+  description: string;
+  created_at: ColumnType<Date, string | undefined, never>;
+  updated_at: Date;
+  concluded_at: Date;
+};
+
+export type Survey = Pick<SurveyTable, 'id' | 'name' | 'description' | 'concluded_at'>;
+
+export type SurveyQuestionWithAnswerOptions = {
+  question: Question;
+  answers: AnswerOption[];
 };
 
 type QuestionTable = {
   id: Generated<number>;
+  survey_id: number;
   name: string;
   description: string;
+  question_type: 'Multiple Choice' | 'Text Input';
   created_at: ColumnType<Date, string | undefined, never>;
 };
 
-export type Question = {
-  id: number;
-  name: string;
-  description: string;
-  created_at: Date;
-};
+export type Question = Pick<QuestionTable, 'id' | 'name' | 'description' | 'question_type'>;
 
-type AnswerTable = {
+type AnswerOptionsTable = {
   id: Generated<number>;
   question_id: number;
-  name: string;
-  description: string;
+  answer_choice: string;
   created_at: ColumnType<Date, string | undefined, never>;
 };
 
-export type Answer = {
-  id: number;
-  question_id: number;
-  name: string;
-  description: string;
-  created_at: Date;
-};
-
-export type Survey = {
-  question: Question;
-  answers: Answer[];
-};
+export type AnswerOption = Pick<AnswerOptionsTable, 'id' | 'question_id' | 'answer_choice'>;
 
 type UserResponseTable = {
   id: Generated<number>;
@@ -79,10 +81,57 @@ export const surveyDb = new Kysely<Database>({
   dialect,
 });
 
-export async function getAllQuestions(): Promise<Question[]> {
+export async function getAllSurveys(): Promise<SurveyTable[]> {
   try {
-    const questions: Question[] = await surveyDb
+    const surveys: SurveyTable[] = await surveyDb.selectFrom('frame_surveys').selectAll().execute();
+    return surveys;
+  } catch (error) {
+    console.error('Could not fetch questions:', error);
+    return [];
+  }
+}
+
+export async function getSurvey(surveyId: number): Promise<Survey | null> {
+  try {
+    const survey: Survey = await surveyDb
+      .selectFrom('frame_surveys')
+      .where('id', '=', surveyId)
+      .select(['id', 'name', 'description', 'concluded_at'])
+      .executeTakeFirst();
+    return survey;
+  } catch (error) {
+    return null;
+  }
+}
+
+export async function getAllSurveyQuestionsAndAnswerOptions(
+  surveyId: number,
+): Promise<SurveyQuestionWithAnswerOptions[]> {
+  const questions = await getAllSurveyQuestions(surveyId);
+
+  const questionsWithAnswers: SurveyQuestionWithAnswerOptions[] = [];
+
+  for (const question of questions) {
+    const answers = await getAllQuestionAnswerOptions(question.id);
+    questionsWithAnswers.push({
+      question: {
+        id: question.id,
+        name: question.name,
+        description: question.description,
+        question_type: question.question_type,
+      },
+      answers,
+    });
+  }
+
+  return questionsWithAnswers;
+}
+
+export async function getAllSurveyQuestions(surveyId: number): Promise<QuestionTable[]> {
+  try {
+    const questions: QuestionTable[] = await surveyDb
       .selectFrom('frame_survey_questions')
+      .where('survey_id', '=', surveyId)
       .selectAll()
       .execute();
     return questions;
@@ -92,49 +141,32 @@ export async function getAllQuestions(): Promise<Question[]> {
   }
 }
 
-async function getQuestion(id: number): Promise<Question | null> {
-  try {
-    const question: Question = await surveyDb
-      .selectFrom('frame_survey_questions')
-      .where('id', '=', id)
-      .selectAll()
-      .executeTakeFirst();
-    return question;
-  } catch (error) {
-    console.log('Could not get question:', error);
-    return null;
-  }
-}
+// async function getQuestion(id: number): Promise<QuestionTable | null> {
+//   try {
+//     const question: QuestionTable = await surveyDb
+//       .selectFrom('frame_survey_questions')
+//       .where('id', '=', id)
+//       .selectAll()
+//       .executeTakeFirst();
+//     return question;
+//   } catch (error) {
+//     console.log('Could not get question:', error);
+//     return null;
+//   }
+// }
 
-async function getAllQuestionAnswers(questionId: number): Promise<Answer[] | null> {
+async function getAllQuestionAnswerOptions(questionId: number): Promise<AnswerOption[]> {
   try {
     const answers = await surveyDb
-      .selectFrom('frame_survey_question_answers')
+      .selectFrom('frame_survey_question_answer_options')
       .where('question_id', '=', questionId)
-      .selectAll()
+      .select(['id', 'question_id', 'answer_choice'])
       .execute();
     return answers;
   } catch (error) {
     console.error('Could not get answers:', error);
-    return null;
+    return [];
   }
-}
-
-export async function getSurvey(questionId: number): Promise<Survey | null> {
-  const question = await getQuestion(questionId);
-  if (!question) {
-    return null;
-  }
-
-  const answers = await getAllQuestionAnswers(question.id);
-  if (!answers) {
-    return null;
-  }
-
-  return {
-    question,
-    answers,
-  };
 }
 
 export async function postUserResponse(
