@@ -6,7 +6,7 @@ type Props = {
   isSelected: boolean;
 };
 
-export async function TagChip({ tag, isSelected }: Props) {
+export function TagChip({ tag, isSelected }: Props) {
   // eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
   const tagHref: Url = {
     pathname: '/ecosystem',
