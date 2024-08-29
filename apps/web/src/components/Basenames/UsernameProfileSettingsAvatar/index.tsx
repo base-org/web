@@ -56,15 +56,14 @@ export default function UsernameProfileSettingsAvatar() {
         if (uploadRequest.ok) {
           const uploadData = (await uploadRequest.json()) as PinResponse;
           updateTextRecords(UsernameTextRecordKeys.Avatar, `ipfs://${uploadData.IpfsHash}`);
+          setAvatarIsLoading(false);
           return uploadData;
         } else {
           alert(uploadRequest.statusText);
           logError(uploadRequest, 'Failed to upload Avatar');
+          setAvatarIsLoading(false);
         }
-
-        setAvatarIsLoading(false);
       } catch (e) {
-        setAvatarIsLoading(false);
         alert('Trouble uploading file');
       }
     },

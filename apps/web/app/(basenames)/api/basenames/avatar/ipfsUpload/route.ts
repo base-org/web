@@ -11,12 +11,6 @@ export const ALLOWED_IMAGE_TYPE = [
 
 export const MAX_IMAGE_SIZE_IN_MB = 1; // max 1mb
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 export async function POST(request: NextRequest) {
   try {
     // Rerrer validation
