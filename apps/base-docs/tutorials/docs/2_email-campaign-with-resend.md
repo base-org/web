@@ -273,9 +273,9 @@ const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
 
 Create a component that will serve as the email template:
 
-`src/components/emailTemplate.tsx: `
+`src/components/EmailTemplate.tsx: `
 
-```typescript title="src/components/emailTemplate.tsx"
+```typescript title="src/components/EmailTemplate.tsx"
 import * as React from 'react';
 
 interface EmailTemplateProps {
@@ -430,6 +430,24 @@ export async function POST(request: Request) {
 }
 ```
 
+Now that everything is set up, it’s time to test your integration to ensure everything is working as expected.
+
+Start your development server by running the following command:
+
+```bash
+bun run dev
+```
+
+Open your application in a web browser by navigating to `http://localhost:3000` or the port specified in your `package.json`. You can sign up or log in using your smart wallet. This will trigger the wallet connection process.
+
+After connecting your wallet, you should see a prompt to join the mailing list. Enter your name and email address in the form provided.
+
+![resend-](../../assets/images/resend-email-campaigns/resend-mailing-list-prompt.png)
+
+Once you’ve submitted the form, navigate to your [Resend Audience] dashboard. You should see a new contact with the name and email information you provided while testing on the development server.
+
+![resend-](../../assets/images/resend-email-campaigns/resend-user-subscribed.png)
+
 ## Conclusion
 
 Congratulations! You've set up a seamless process to capture user emails after signing in with a Smart Wallet. You can better engage with your users more effectively and build stronger, lasting relationships. Keep exploring the potential of onchain apps and continue enhancing your user experience!
@@ -442,3 +460,4 @@ Congratulations! You've set up a seamless process to capture user emails after s
 [OnchainKit App template]: https://github.com/coinbase/onchain-app-template
 [Bun]: https://bun.sh/package-manager
 [adding environment variables]: https://vercel.com/docs/projects/environment-variables
+[Resend Audience]: https://resend.com/audiences/
