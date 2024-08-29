@@ -134,11 +134,6 @@ export const txRevertedFrame = (name: string, transactionId: string) =>
     buttons: [
       {
         action: 'link',
-        label: `txStatus: ${name}`,
-        target: `${DOMAIN}/name/${name}`,
-      },
-      {
-        action: 'link',
         label: `View on block explorer`,
         target: `https://basescan.org/tx/${transactionId}`,
       },
