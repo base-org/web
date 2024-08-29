@@ -13,7 +13,7 @@ import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/But
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
 import logEvent, {
   ActionType,
   AnalyticsEventImportance,
@@ -24,7 +24,7 @@ import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
 import classNames from 'classnames';
 import { useCallback, useEffect, useState } from 'react';
 import { useCopyToClipboard } from 'usehooks-ts';
-import { useAccount, useChains, useSwitchChain } from 'wagmi';
+import { useAccount, useSwitchChain } from 'wagmi';
 
 export enum ConnectWalletButtonVariants {
   Default,
@@ -62,8 +62,8 @@ export function ConnectWalletButton({
 
   // Wagmi
   const { address, connector, isConnected, isConnecting, isReconnecting, chain } = useAccount();
-  const chains = useChains();
-  const chainSupported = !!chain && chains.includes(chain);
+
+  const chainSupported = !!chain && supportedChainIds.includes(chain.id);
   const { basenameChain } = useBasenameChain();
   const [, copy] = useCopyToClipboard();
   const copyAddress = useCallback(() => void copy(address ?? ''), [address, copy]);

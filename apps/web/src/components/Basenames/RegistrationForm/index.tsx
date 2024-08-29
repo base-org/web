@@ -19,7 +19,7 @@ import Tooltip from 'apps/web/src/components/Tooltip';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import { usePremiumEndDurationRemaining } from 'apps/web/src/hooks/useActiveEthPremiumAmount';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
 import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
 import {
   useDiscountedNameRegistrationPrice,
@@ -32,7 +32,7 @@ import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import { formatEther, zeroAddress } from 'viem';
-import { useAccount, useBalance, useChains, useReadContract, useSwitchChain } from 'wagmi';
+import { useAccount, useBalance, useReadContract, useSwitchChain } from 'wagmi';
 
 function formatEtherPrice(price?: bigint) {
   if (price === undefined) {
@@ -55,19 +55,20 @@ function formatUsdPrice(price: bigint, ethUsdPrice: number) {
 
 export default function RegistrationForm() {
   const { isConnected, chain: connectedChain, address } = useAccount();
-  const chains = useChains();
+
   const { openConnectModal } = useConnectModal();
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
+
   const switchToIntendedNetwork = useCallback(
     () => switchChain({ chainId: basenameChain.id }),
     [basenameChain.id, switchChain],
   );
   const isOnSupportedNetwork = useMemo(
-    () => connectedChain && chains.includes(connectedChain),
-    [connectedChain, chains],
+    () => connectedChain && supportedChainIds.includes(connectedChain.id),
+    [connectedChain],
   );
 
   const {
