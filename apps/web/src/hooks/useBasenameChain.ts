@@ -1,4 +1,4 @@
-import { useAccount, useChains } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { useMemo } from 'react';
 import { base, baseSepolia, Chain } from 'viem/chains';
 import { createPublicClient, http } from 'viem';
@@ -17,27 +17,26 @@ export function getBasenamePublicClient(chainId: number) {
   });
 }
 
-const supportedChainIds: number[] = [base.id, baseSepolia.id];
+export const supportedChainIds: number[] = [base.id, baseSepolia.id];
 export function isBasenameSupportedChain(chainId: number) {
   return supportedChainIds.includes(chainId);
 }
 
 export default function useBasenameChain(username?: BaseName) {
   const { chain: connectedChain } = useAccount();
-  const chains = useChains();
 
   const basenameChain: Chain = useMemo(() => {
     // Assume chain based on name
     if (username) return getChainForBasename(username);
 
     // User is connected to a valid chain, return the connected chain
-    if (connectedChain && chains.includes(connectedChain)) {
+    if (connectedChain && supportedChainIds.includes(connectedChain.id)) {
       return connectedChain;
     }
 
     // Not connected, default to Sepolia for development, base for other envs
     return isDevelopment ? baseSepolia : base;
-  }, [chains, connectedChain, username]);
+  }, [connectedChain, username]);
 
   const basenamePublicClient = getBasenamePublicClient(basenameChain.id);
 

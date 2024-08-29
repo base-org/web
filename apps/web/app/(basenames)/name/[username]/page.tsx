@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import {
   formatDefaultUsername,
   getBasenameAddress,
+  getBasenameEditor,
   getBasenameOwner,
   getBasenameTextRecord,
   UsernameTextRecordKeys,
@@ -12,8 +13,9 @@ import classNames from 'classnames';
 import { BaseName } from '@coinbase/onchainkit/identity';
 import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
 import ErrorsProvider from 'apps/web/contexts/Errors';
+import DynamicProfilePromo from 'apps/web/src/components/Basenames/ProfilePromo/dynamic';
 
-type UsernameProfileProps = {
+export type UsernameProfileProps = {
   params: { username: BaseName };
 };
 
@@ -28,8 +30,7 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
     description: description ?? defaultDescription,
     openGraph: {
       title: `Basenames | ${username}`,
-      url: `/${username}`,
-      images: [`api/basenames/${username}/assets/coverImage.png`],
+      url: `/name/${params.username}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -38,13 +39,14 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
 }
 
 export default async function Username({ params }: UsernameProfileProps) {
-  let username = await formatDefaultUsername(params.username);
+  let username = await formatDefaultUsername(decodeURIComponent(params.username) as BaseName);
 
   const address = await getBasenameAddress(username);
+  const editor = await getBasenameEditor(username);
   const owner = await getBasenameOwner(username);
 
-  // Domain does have address or owner (ie: doesn't exist)
-  if (!address || !owner) {
+  // Domain does have address or editor (ie: doesn't exist)
+  if (!address || !editor || !owner) {
     redirect(`/name/not-found?name=${username}`);
   }
 
@@ -57,6 +59,7 @@ export default async function Username({ params }: UsernameProfileProps) {
       <ProfileProviders username={username}>
         <main className={usernameProfilePageClasses}>
           <UsernameProfile />
+          <DynamicProfilePromo />
         </main>
       </ProfileProviders>
     </ErrorsProvider>

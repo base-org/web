@@ -13,7 +13,7 @@ const settingTabClass = classNames(
 );
 
 export default function UsernameProfileSettingsOwnership() {
-  const { profileOwnerAddress } = useUsernameProfile();
+  const { profileEditorAddress } = useUsernameProfile();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const openModal = useCallback(() => setIsOpen(true), []);
@@ -24,7 +24,7 @@ export default function UsernameProfileSettingsOwnership() {
       <Fieldset>
         <Label>Owner</Label>
         <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 p-4">
-          {profileOwnerAddress && <WalletIdentity address={profileOwnerAddress} />}
+          {profileEditorAddress && <WalletIdentity address={profileEditorAddress} />}
           <button
             className="ml-auto underline underline-offset-2"
             type="button"

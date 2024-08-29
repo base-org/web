@@ -1,12 +1,11 @@
 import ExponentialPremiumPriceOracleABI from 'apps/web/src/abis/ExponentialPremiumPriceOracleAbi';
 import { EXPONENTIAL_PREMIUM_PRICE_ORACLE } from 'apps/web/src/addresses/usernames';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useBasenamesLaunchTime } from 'apps/web/src/hooks/useBasenamesLaunchTime';
 import { useMemo } from 'react';
 import { useReadContract } from 'wagmi';
+import { base } from 'viem/chains';
 
 export function useActiveEthPremiumAmount() {
-  const { basenameChain } = useBasenameChain();
   const { data: launchTimeSeconds } = useBasenamesLaunchTime();
 
   const timeSinceLaunch = useMemo(
@@ -16,7 +15,7 @@ export function useActiveEthPremiumAmount() {
 
   return useReadContract({
     abi: ExponentialPremiumPriceOracleABI,
-    address: EXPONENTIAL_PREMIUM_PRICE_ORACLE[basenameChain.id],
+    address: EXPONENTIAL_PREMIUM_PRICE_ORACLE[base.id],
     functionName: 'decayedPremium',
     args: [timeSinceLaunch as bigint],
     query: {

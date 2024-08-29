@@ -46,6 +46,6 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
     return response.status(200).json(jsonResponse);
   } catch (error) {
-    return response.status(400).json({ error: (error as Error).message });
+    return response.status(500).json({ error: (error as Error).message });
   }
 }

@@ -1,5 +1,6 @@
 'use client';
 import '@rainbow-me/rainbowkit/styles.css';
+import '@coinbase/onchainkit/styles.css';
 
 import {
   Provider as CookieManagerProvider,
@@ -29,6 +30,7 @@ import ClientAnalyticsScript from 'apps/web/src/components/ClientAnalyticsScript
 import dynamic from 'next/dynamic';
 import ErrorsProvider from 'apps/web/contexts/Errors';
 import { isDevelopment } from 'apps/web/src/constants';
+import { logger } from 'apps/web/src/utils/logger';
 
 const DynamicCookieBannerWrapper = dynamic(
   async () => import('apps/web/src/components/CookieBannerWrapper'),
@@ -103,17 +105,19 @@ export default function AppProviders({ children }: AppProvidersProps) {
     }
   }, []);
 
-  const handleLogError = useCallback((err: Error) => console.error(err), []);
+  const handleLogError = useCallback(
+    (err: Error) => logger.error('Cookie manager provider error', err),
+    [],
+  );
 
   useSprig(sprigEnvironmentId);
-
   return (
     <ErrorsProvider context="web">
       <CookieManagerProvider
         projectName="base_web"
         locale="en"
         region={Region.DEFAULT}
-        log={console.log}
+        log={(str, options) => logger.info(str, options)}
         onError={handleLogError}
         onPreferenceChange={setTrackingPreference}
         config={cookieManagerConfig}

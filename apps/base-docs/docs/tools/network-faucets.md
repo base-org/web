@@ -37,6 +37,18 @@ Requests to Coinbase Developer Platform's Faucet are limited to one claim per 24
 
 ---
 
+## thirdweb Faucet
+
+The [thirdweb Faucet](https://thirdweb.com/base-sepolia-testnet) provides free testnet ETH on Base Sepolia - one claim per 24 hours.
+
+:::info
+
+The thirdweb faucet allows developers to connect their wallet through EOA or social logins and claim Base Sepolia testnet funds.
+
+:::
+
+---
+
 ## Superchain Faucet
 
 The [Superchain Faucet](https://app.optimism.io/faucet) provides testnet ETH for all OP Chains, including Base.

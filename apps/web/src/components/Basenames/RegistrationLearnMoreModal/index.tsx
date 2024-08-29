@@ -110,7 +110,7 @@ export default function RegistrationLearnMoreModal({
             )}
           </li>
           <li className="flex items-center gap-3">
-            <Tooltip content="cb.id must have been claimed prior to Basenames launch">
+            <Tooltip content="cb.id must have been claimed prior to August 9, 2024.">
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={cbidVerification as StaticImageData}

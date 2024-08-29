@@ -1,9 +1,13 @@
 import RegistrationProviders from 'apps/web/app/(basenames)/names/RegistrationProviders';
 import ErrorsProvider from 'apps/web/contexts/Errors';
+import PoweredByEns from 'apps/web/src/components/Basenames/PoweredByEns';
+import RegistrationFAQ from 'apps/web/src/components/Basenames/RegistrationFaq';
 import RegistrationFlow from 'apps/web/src/components/Basenames/RegistrationFlow';
+import RegistrationValueProp from 'apps/web/src/components/Basenames/RegistrationValueProp';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import basenameCover from './basename_cover.png';
+import { initialFrame } from 'apps/web/pages/api/basenames/frame/frameResponses';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -19,6 +23,9 @@ export const metadata: Metadata = {
     site: '@base',
     card: 'summary_large_image',
   },
+  other: {
+    ...(initialFrame as Record<string, string>),
+  },
 };
 
 export default async function Page() {
@@ -26,7 +33,12 @@ export default async function Page() {
     <ErrorsProvider context="registration">
       <RegistrationProviders>
         <Suspense>
-          <RegistrationFlow />
+          <main>
+            <RegistrationFlow />
+            <RegistrationValueProp />
+            <PoweredByEns />
+            <RegistrationFAQ />
+          </main>
         </Suspense>
       </RegistrationProviders>
     </ErrorsProvider>

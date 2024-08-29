@@ -1,6 +1,6 @@
 'use client';
 import dynamic from 'next/dynamic';
-
+import { useLocalStorage } from 'usehooks-ts';
 import { Transition } from '@headlessui/react';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import RegistrationBackground from 'apps/web/src/components/Basenames/RegistrationBackground';
@@ -17,7 +17,7 @@ import { RegistrationSearchInputVariant } from './RegistrationSearchInput/types'
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
 import { UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill/types';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
 import {
   formatBaseEthDomain,
   IS_EARLY_ACCESS,
@@ -27,12 +27,13 @@ import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useMemo } from 'react';
-import { useAccount, useChains, useSwitchChain } from 'wagmi';
+import { useAccount, useSwitchChain } from 'wagmi';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import RegistrationShareOnSocials from 'apps/web/src/components/Basenames/RegistrationShareOnSocials';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { isDevelopment } from 'libs/base-ui/constants';
+import RegistrationLandingExplore from 'apps/web/src/components/Basenames/RegistrationLandingExplore';
 
 const RegistrationStateSwitcherDynamic = dynamic(
   async () => import('apps/web/src/components/Basenames/RegistrationStateSwitcher'),
@@ -45,6 +46,10 @@ export function RegistrationFlow() {
   const { chain } = useAccount();
   const { logEventWithContext } = useAnalytics();
   const searchParams = useSearchParams();
+  const [, setIsModalOpen] = useLocalStorage('BasenamesLaunchModalVisible', true);
+  const [, setIsBannerVisible] = useLocalStorage('basenamesLaunchBannerVisible', true);
+  const [, setIsDocsBannerVisible] = useLocalStorage('basenamesLaunchDocsBannerVisible', true);
+
   const {
     registrationStep,
     searchInputFocused,
@@ -54,9 +59,12 @@ export function RegistrationFlow() {
   } = useRegistration();
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
-  const chains = useChains();
 
-  const isOnSupportedNetwork = useMemo(() => chain && chains.includes(chain), [chain, chains]);
+  const isOnSupportedNetwork = useMemo(
+    () => chain && supportedChainIds.includes(chain.id),
+    [chain],
+  );
+
   const switchToIntendedNetwork = useCallback(
     () => switchChain({ chainId: basenameChain.id }),
     [basenameChain.id, switchChain],
@@ -113,10 +121,18 @@ export function RegistrationFlow() {
     }
   }, [basenameChain.id, searchParams, setSelectedName]);
 
+  useEffect(() => {
+    if (isSuccess) {
+      setIsModalOpen(false);
+      setIsBannerVisible(false);
+      setIsDocsBannerVisible(false);
+    }
+  }, [isSuccess, setIsModalOpen, setIsBannerVisible, setIsDocsBannerVisible]);
+
   return (
     <>
-      {false && isDevelopment && <RegistrationStateSwitcherDynamic />}
-      <main className={mainClasses}>
+      {true && isDevelopment && <RegistrationStateSwitcherDynamic />}
+      <section className={mainClasses}>
         {/* 1. Brand & Search */}
         <Transition
           appear
@@ -155,7 +171,7 @@ export function RegistrationFlow() {
             />
             {IS_EARLY_ACCESS && (
               <Tooltip
-                content="shrekislove.base.eth is already taken."
+                content="shrek.base.eth is already taken."
                 className="mx-auto mt-6 flex items-center justify-center"
               >
                 <>
@@ -221,7 +237,6 @@ export function RegistrationFlow() {
                 />
               </div>
             </Transition>
-
             {/* 2.2 - The pill  */}
             <Transition
               appear
@@ -283,7 +298,7 @@ export function RegistrationFlow() {
             show={isClaim}
             className={classNames(
               'relative z-40 transition-opacity',
-              'mx-auto w-full max-w-[50rem]',
+              'mx-auto',
               registrationTransitionDuration,
             )}
             enterFrom="opacity-0"
@@ -299,7 +314,7 @@ export function RegistrationFlow() {
             appear
             show={isSuccess}
             className={classNames(
-              'top-full z-40 pt-20 transition-opacity',
+              'top-full z-40 mt-20 transition-opacity',
               'mx-auto w-full',
               registrationTransitionDuration,
             )}
@@ -331,10 +346,27 @@ export function RegistrationFlow() {
         >
           <RegistrationProfileForm />
         </Transition>
+        <Transition
+          appear
+          show={isSearch}
+          className={classNames(
+            'absolute bottom-14 left-1/2 flex w-full -translate-x-1/2 justify-center transition-opacity',
+            'mx-auto w-full',
+            registrationTransitionDuration,
+          )}
+          enter={classNames('transition-opacity', registrationTransitionDuration)}
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave={classNames('transition-opacity', 'duration-200 absolute')}
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <RegistrationLandingExplore />
+        </Transition>
 
         {/* Misc: Animated background for each steps */}
         <RegistrationBackground />
-      </main>
+      </section>
     </>
   );
 }

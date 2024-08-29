@@ -1,23 +1,16 @@
-import { USERNAME_EA_DISCOUNT_VALIDATORS } from 'apps/web/src/addresses/usernames';
-import { isBasenameSupportedChain } from 'apps/web/src/hooks/useBasenameChain';
+import { withTimeout } from 'apps/web/pages/api/decorators';
+import { logger } from 'apps/web/src/utils/logger';
 import {
-  getProofsByNamespaceAndAddress,
-  hasRegisteredWithDiscount,
+  getWalletProofs,
+  ProofsException,
   ProofTableNamespace,
+  proofValidation,
 } from 'apps/web/src/utils/proofs';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Address, isAddress } from 'viem';
-
-export type EarlyAccessProofResponse = {
-  discountValidatorAddress: Address;
-  address: Address;
-  namespace: string;
-  proofs: `0x${string}`[];
-};
 
 /*
-this endpoint returns whether or not the account has a cb.id
-if result array is empty, user has no cb.id
+this endpoint returns whether or not the account has early access
+if result array is empty, user has no early access
 example return: 
 {
   "address": "0xB18e4C959bccc8EF86D78DC297fb5efA99550d85",
@@ -26,55 +19,32 @@ example return:
   "discountValidatorAddress": "0x..."
 }
 */
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
   const { address, chain } = req.query;
-  if (!address || Array.isArray(address) || !isAddress(address)) {
-    return res.status(400).json({ error: 'A single valid address is required' });
-  }
-
-  if (!chain || Array.isArray(chain)) {
-    return res.status(400).json({ error: 'invalid chain' });
-  }
-
-  let parsedChain = parseInt(chain);
-  if (!isBasenameSupportedChain(parsedChain)) {
-    return res.status(400).json({ error: 'chain must be Base or Base Sepolia' });
-  }
-
-  if (!isBasenameSupportedChain(parsedChain)) {
-    return res.status(400).json({ error: 'chain must be Base or Base Sepolia' });
+  const validationErr = proofValidation(address, chain);
+  if (validationErr) {
+    return res.status(validationErr.status).json({ error: validationErr.error });
   }
 
   try {
-    const hasPreviouslyRegistered = await hasRegisteredWithDiscount([address], parsedChain);
-
-    // if any linked address registered previously return an error
-    if (hasPreviouslyRegistered) {
-      return res.status(400).json({ error: 'This address has already claimed a username.' });
-    }
-    const [content] = await getProofsByNamespaceAndAddress(
-      address,
-      ProofTableNamespace.UsernamesEarlyAccess,
+    const responseData = await getWalletProofs(
+      address as `0x${string}`,
+      parseInt(chain as string),
+      ProofTableNamespace.BNSDiscount,
     );
-
-    const proofs = content?.proofs ? (JSON.parse(content.proofs) as `0x${string}`[]) : [];
-    if (proofs.length === 0) {
-      return res.status(404).json({ error: 'address is not eligible for early access' });
-    }
-
-    const responseData: EarlyAccessProofResponse = {
-      ...content,
-      proofs,
-      discountValidatorAddress: USERNAME_EA_DISCOUNT_VALIDATORS[parsedChain],
-    };
 
     return res.status(200).json(responseData);
   } catch (error: unknown) {
-    console.error(error);
+    if (error instanceof ProofsException) {
+      return res.status(error.statusCode).json({ error: error.message });
+    }
+    logger.error('error getting proofs for earlyAccess', error);
   }
-
-  return res.status(404).json({ error: 'address is not eligible for early access' });
+  // If error is not an instance of Error, return a generic error message
+  return res.status(500).json({ error: 'An unexpected error occurred' });
 }
+
+export default withTimeout(handler);

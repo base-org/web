@@ -1,4 +1,3 @@
-import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useErrors } from 'apps/web/contexts/Errors';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
@@ -6,11 +5,10 @@ import useBaseEnsAvatar from 'apps/web/src/hooks/useBaseEnsAvatar';
 import { BaseEnsNameData } from 'apps/web/src/hooks/useBaseEnsName';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
+import useWriteContractWithReceipt from 'apps/web/src/hooks/useWriteContractWithReceipt';
 import { UsernameTextRecords, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
-import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { namehash, encodeFunctionData, Address } from 'viem';
-import { useSwitchChain, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
 
 export type UseWriteBaseEnsTextRecordsProps = {
   address?: Address;
@@ -35,8 +33,7 @@ export default function useWriteBaseEnsTextRecords({
   username,
   onSuccess,
 }: UseWriteBaseEnsTextRecordsProps) {
-  // Errors & Analytics
-  const { logEventWithContext } = useAnalytics();
+  // Errors
   const { logError } = useErrors();
 
   // Fetch existing TextRecords
@@ -56,9 +53,9 @@ export default function useWriteBaseEnsTextRecords({
   const updateTextRecords = useCallback(
     (key: UsernameTextRecordKeys, value: string) => {
       setUpdatedTextRecords((previousTextRecords) => ({
-          ...previousTextRecords,
-          [key]: value,
-        }));
+        ...previousTextRecords,
+        [key]: value,
+      }));
     },
     [setUpdatedTextRecords],
   );
@@ -83,44 +80,25 @@ export default function useWriteBaseEnsTextRecords({
 
   const { basenameChain } = useBasenameChain();
 
-  // Write TextRecords
   const {
-    data: writeTextRecordsTransactionHash,
-    writeContractAsync,
-    isPending: writeTextRecordsIsPending,
-    isError: writeTextRecordsIsError,
-    error: writeTextRecordsError,
-    isSuccess: writeTextRecordsIsSuccess,
-    reset: writeTextRecordsReset,
-  } = useWriteContract();
-
-  // Wait for TextRecords transaction to be processed
-  const {
-    data: transactionData,
-    isFetching: transactionIsFetching,
-    isSuccess: transactionIsSuccess,
-    isError: transactionIsError,
-    error: transactionError,
-  } = useWaitForTransactionReceipt({
-    hash: writeTextRecordsTransactionHash,
-    chainId: basenameChain.id,
-    query: {
-      enabled: !!writeTextRecordsTransactionHash,
-    },
+    initiateTransaction: initiateWriteTextRecords,
+    transactionIsLoading: writeTextRecordsTransactionIsLoading,
+    transactionIsSuccess: writeTextRecordsTransactionIsSuccess,
+    transactionIsError: writeTextRecordsTransactionIsError,
+    transactionError: writeTextRecordsTransactionError,
+  } = useWriteContractWithReceipt({
+    chain: basenameChain,
+    eventName: 'update_text_records',
   });
 
   const { refetch: refetchBaseEnsAvatar } = useBaseEnsAvatar({
     name: username,
   });
 
-  const { switchChainAsync } = useSwitchChain();
-
   const writeTextRecords = useCallback(async () => {
     if (!username) return Promise.reject(new Error('Cannot write text records without a name'));
-
     if (!hasChanged) return onSuccess?.();
 
-    logEventWithContext('update_text_records_transaction_initiated', ActionType.change);
     const nameHash = namehash(username);
 
     const textRecordsBytes = keysToUpdate.map((key) => {
@@ -133,9 +111,7 @@ export default function useWriteBaseEnsTextRecords({
       });
     });
 
-    await switchChainAsync({ chainId: basenameChain.id });
-
-    await writeContractAsync({
+    await initiateWriteTextRecords({
       abi: L2ResolverAbi,
       address: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
       args: [nameHash, textRecordsBytes],
@@ -144,65 +120,32 @@ export default function useWriteBaseEnsTextRecords({
   }, [
     basenameChain.id,
     hasChanged,
+    initiateWriteTextRecords,
     keysToUpdate,
-    logEventWithContext,
     onSuccess,
-    switchChainAsync,
     updatedTextRecords,
     username,
-    writeContractAsync,
   ]);
 
-  // Keep track of request, transaction & log analytics/errors
   useEffect(() => {
-    if (writeTextRecordsIsSuccess) {
-      logEventWithContext('update_text_records_transaction_approved', ActionType.change);
-    }
+    if (writeTextRecordsTransactionIsSuccess) {
+      onSuccess?.();
 
-    if (transactionIsFetching) {
-      logEventWithContext('update_text_records_transaction_processing', ActionType.change);
-    }
-    if (!transactionData) return;
+      refetchBaseEnsAvatar().catch((error) => {
+        logError(error, 'Failed to refetch avatar');
+      });
 
-    if (transactionData.status === 'success') {
-      logEventWithContext('update_text_records_transaction_success', ActionType.change);
-      refetchExistingTextRecords()
-        .then(() => {
-          onSuccess?.();
-          writeTextRecordsReset();
-          refetchBaseEnsAvatar().catch((error) => {
-            logError(error, 'Failed to refetch avatar');
-          });
-        })
-        .catch((error) => {
-          logError(error, 'Failed to refetch existing text records');
-        });
-    }
-
-    if (transactionData.status === 'reverted') {
-      logEventWithContext('update_text_records_transaction_reverted', ActionType.change, {
-        error: `Transaction reverted: ${transactionData.transactionHash}`,
+      refetchExistingTextRecords().catch((error) => {
+        logError(error, 'Failed to refetch textRecords');
       });
     }
   }, [
-    refetchExistingTextRecords,
-    transactionIsSuccess,
-    transactionData,
-    logEventWithContext,
-    transactionIsFetching,
     logError,
-    refetchBaseEnsAvatar,
     onSuccess,
-    writeTextRecordsIsSuccess,
-    writeTextRecordsReset,
+    refetchBaseEnsAvatar,
+    refetchExistingTextRecords,
+    writeTextRecordsTransactionIsSuccess,
   ]);
-
-  const isLoading =
-    existingTextRecordsIsLoading || writeTextRecordsIsPending || transactionIsFetching;
-
-  const isError = writeTextRecordsIsError || transactionIsError;
-
-  const error = writeTextRecordsError ?? transactionError;
 
   return {
     existingTextRecords,
@@ -211,9 +154,8 @@ export default function useWriteBaseEnsTextRecords({
     setUpdatedTextRecords,
     writeTextRecords,
     hasChanged,
-    writeTextRecordsIsPending: isLoading,
-    writeTextRecordsIsError: isError,
-    writeTextRecordsError: error,
-    writeTextRecordsTransactionHash,
+    writeTextRecordsIsPending: writeTextRecordsTransactionIsLoading || existingTextRecordsIsLoading,
+    writeTextRecordsIsError: writeTextRecordsTransactionIsError,
+    writeTextRecordsError: writeTextRecordsTransactionError,
   };
 }

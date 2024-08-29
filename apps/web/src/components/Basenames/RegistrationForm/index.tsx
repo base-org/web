@@ -7,28 +7,32 @@ import {
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useErrors } from 'apps/web/contexts/Errors';
+import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
+import { USERNAME_REGISTRAR_CONTROLLER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { PremiumExplainerModal } from 'apps/web/src/components/Basenames/PremiumExplainerModal';
 import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
 import RegistrationLearnMoreModal from 'apps/web/src/components/Basenames/RegistrationLearnMoreModal';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import Label from 'apps/web/src/components/Label';
+import Tooltip from 'apps/web/src/components/Tooltip';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import { usePremiumEndDurationRemaining } from 'apps/web/src/hooks/useActiveEthPremiumAmount';
-import { useActiveEthPremiumAmount } from 'apps/web/src/hooks/useActivePremiumAmount';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
 import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
 import {
   useDiscountedNameRegistrationPrice,
   useNameRegistrationPrice,
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
-import { IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
+import { useRentPrice } from 'apps/web/src/hooks/useRentPrice';
+import { formatBaseEthDomain, IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { formatEther } from 'viem';
-import { useAccount, useBalance, useChains, useSwitchChain } from 'wagmi';
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import { formatEther, zeroAddress } from 'viem';
+import { useAccount, useBalance, useReadContract, useSwitchChain } from 'wagmi';
 
 function formatEtherPrice(price?: bigint) {
   if (price === undefined) {
@@ -51,19 +55,20 @@ function formatUsdPrice(price: bigint, ethUsdPrice: number) {
 
 export default function RegistrationForm() {
   const { isConnected, chain: connectedChain, address } = useAccount();
-  const chains = useChains();
+
   const { openConnectModal } = useConnectModal();
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
+
   const switchToIntendedNetwork = useCallback(
     () => switchChain({ chainId: basenameChain.id }),
     [basenameChain.id, switchChain],
   );
   const isOnSupportedNetwork = useMemo(
-    () => connectedChain && chains.includes(connectedChain),
-    [connectedChain, chains],
+    () => connectedChain && supportedChainIds.includes(connectedChain.id),
+    [connectedChain],
   );
 
   const {
@@ -102,25 +107,43 @@ export default function RegistrationForm() {
   const ethUsdPrice = useEthPriceFromUniswap();
   const { data: initialPrice } = useNameRegistrationPrice(selectedName, years);
   const { data: singleYearEthCost } = useNameRegistrationPrice(selectedName, 1);
+  const { basePrice: singleYearBasePrice, premiumPrice } = useRentPrice(selectedName, 1);
+  const premiumValue = Number(formatEther(premiumPrice ?? 0));
+  const formattedPremiumCost =
+    premiumValue < 0.001
+      ? '<0.001'
+      : premiumValue.toLocaleString(undefined, {
+          maximumFractionDigits: 3,
+        });
   const { data: discountedPrice } = useDiscountedNameRegistrationPrice(
     selectedName,
     years,
     discount?.discountKey,
   );
 
-  const price = discountedPrice ?? initialPrice;
+  const { data: hasRegisteredWithDiscount } = useReadContract({
+    abi: RegistrarControllerABI,
+    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[basenameChain.id],
+    functionName: 'discountedRegistrants',
+    args: [address ?? zeroAddress],
+  });
+
+  const price = hasRegisteredWithDiscount ? initialPrice : discountedPrice ?? initialPrice;
 
   const {
     callback: registerName,
     data: registerNameTransactionHash,
     isPending: registerNameTransactionIsPending,
     error: registerNameError,
+    reverseRecord,
+    setReverseRecord,
+    hasExistingBasename,
   } = useRegisterNameCallback(
     selectedName,
     price,
     years,
-    discount?.discountKey,
-    discount?.validationData,
+    hasRegisteredWithDiscount ? undefined : discount?.discountKey,
+    hasRegisteredWithDiscount ? undefined : discount?.validationData,
   );
 
   useEffect(() => {
@@ -136,18 +159,25 @@ export default function RegistrationForm() {
     });
   }, [logError, registerName]);
 
+  const onChangeReverseRecord = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => setReverseRecord(event.target.checked),
+    [setReverseRecord],
+  );
+
   const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
   const insufficientBalanceToRegister =
     balance?.value !== undefined && price !== undefined && balance?.value < price;
+  const correctChain = connectedChain?.id === basenameChain.id;
+  const insufficientBalanceToRegisterAndCorrectChain =
+    insufficientBalanceToRegister && correctChain;
 
   const hasResolvedUSDPrice = price !== undefined && ethUsdPrice !== undefined;
   const usdPrice = hasResolvedUSDPrice ? formatUsdPrice(price, ethUsdPrice) : '--.--';
-  const nameIsFree = price === 0n;
+  const nameIsFree = !hasRegisteredWithDiscount && price === 0n;
 
-  const { data: premiumEthAmount } = useActiveEthPremiumAmount();
-  const premiumEndTimestamp = usePremiumEndDurationRemaining();
+  const { seconds, timestamp: premiumEndTimestamp } = usePremiumEndDurationRemaining();
 
-  const isPremiumActive = premiumEthAmount && premiumEthAmount !== 0n;
+  const isPremiumActive = premiumPrice && premiumPrice !== 0n && seconds !== 0n;
   const mainRegistrationElementClasses = classNames(
     'z-10 flex flex-col items-start justify-between gap-6 bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center',
     {
@@ -163,10 +193,10 @@ export default function RegistrationForm() {
           {isPremiumActive && (
             <div className="flex justify-between gap-4 rounded-t-2xl bg-gradient-to-r from-[#B139FF] to-[#FF9533] px-6 py-4 text-white">
               <p>
-                Temporary premium of {premiumEthAmount} ETH{' '}
+                Temporary premium of {formattedPremiumCost} ETH{' '}
                 {premiumEndTimestamp && <>ends in {premiumEndTimestamp}</>}
               </p>
-              {Boolean(premiumEthAmount && singleYearEthCost) && (
+              {Boolean(premiumPrice && singleYearEthCost) && (
                 <button type="button" className="underline" onClick={togglePremiumExplainerModal}>
                   Learn more
                 </button>
@@ -198,15 +228,42 @@ export default function RegistrationForm() {
                   <PlusIcon width="14" height="14" className="fill-[#32353D]" />
                 </button>
               </div>
+              {hasExistingBasename && (
+                <Label
+                  className="mt-4 flex w-full items-center justify-center gap-2 text-center"
+                  htmlFor="reverseRecord"
+                >
+                  <input
+                    type="checkbox"
+                    checked={reverseRecord}
+                    onChange={onChangeReverseRecord}
+                    id="reverseRecord"
+                  />
+                  <span className="flex flex-row items-center gap-2 text-sm">
+                    Set as Primary Name
+                    <Tooltip
+                      content={
+                        <>
+                          This will cause apps that support basenames to resolve{' '}
+                          <strong>{formatBaseEthDomain(selectedName, basenameChain.id)}</strong>{' '}
+                          when looking up your address.
+                        </>
+                      }
+                    >
+                      <Icon name="info" color="currentColor" width="0.8rem" height="0.8rem" />
+                    </Tooltip>
+                  </span>
+                </Label>
+              )}
             </div>
             <div className="min-w-[14rem] self-start text-left">
               <p className="text-line mb-2 text-sm font-bold uppercase">Amount</p>
               <div className="flex min-w-60 items-baseline justify-start gap-4">
-                {!price ? (
+                {price === undefined ? (
                   <div className="flex h-9 items-center justify-center self-center">
                     <Icon name="spinner" color="currentColor" />
                   </div>
-                ) : discountedPrice !== undefined ? (
+                ) : discountedPrice !== undefined && !hasRegisteredWithDiscount ? (
                   <div className="flex flex-row items-baseline justify-around gap-2">
                     <p
                       className={classNames('whitespace-nowrap text-3xl text-black line-through', {
@@ -241,7 +298,7 @@ export default function RegistrationForm() {
               ) : Boolean(nameIsFree && IS_EARLY_ACCESS) ? (
                 <p className="text-sm text-green-50">Discounted during Early Access.</p>
               ) : nameIsFree ? (
-                <p className="text-sm text-green-50">Free with your verification</p>
+                <p className="text-sm text-green-50">Free with your discount</p>
               ) : isPremiumActive ? (
                 <button
                   className="text-sm text-blue-40 underline"
@@ -275,20 +332,19 @@ export default function RegistrationForm() {
 
                   return (
                     <Button
-                      onClick={
-                        connectedChain?.id === basenameChain.id
-                          ? registerNameCallback
-                          : switchToIntendedNetwork
-                      }
+                      onClick={correctChain ? registerNameCallback : switchToIntendedNetwork}
                       type="button"
                       variant={ButtonVariants.Black}
                       size={ButtonSizes.Medium}
-                      disabled={insufficientBalanceToRegister || registerNameTransactionIsPending}
+                      disabled={
+                        insufficientBalanceToRegisterAndCorrectChain ||
+                        registerNameTransactionIsPending
+                      }
                       isLoading={registerNameTransactionIsPending}
                       rounded
                       fullWidth
                     >
-                      {connectedChain?.id === basenameChain.id ? 'Register name' : 'Get based'}
+                      {correctChain ? 'Register name' : 'Switch to Base'}
                     </Button>
                   );
                 }}
@@ -333,12 +389,13 @@ export default function RegistrationForm() {
           isOpen={learnMoreAboutDiscountsModalOpen}
           toggleModal={toggleLearnMoreModal}
         />
-        {Boolean(premiumEthAmount && singleYearEthCost) && (
+        {Boolean(premiumPrice && singleYearEthCost) && (
           <PremiumExplainerModal
-            premiumEthAmount={premiumEthAmount}
-            singleYearEthCost={singleYearEthCost as bigint}
+            premiumEthAmount={premiumPrice}
+            baseSingleYearEthCost={singleYearBasePrice}
             isOpen={premiumExplainerModalOpen}
             toggleModal={togglePremiumExplainerModal}
+            nameLength={selectedName?.length}
           />
         )}
       </>

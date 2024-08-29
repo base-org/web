@@ -168,13 +168,17 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       });
   }, 1500);
 
-  const redirectToProfile = useCallback(() => {
+  const profilePath = useMemo(() => {
     if (basenameChain.id === base.id) {
-      router.push(`name/${selectedName}`);
+      return `name/${selectedName}`;
     } else {
-      router.push(`name/${formatBaseEthDomain(selectedName, basenameChain.id)}`);
+      return `name/${formatBaseEthDomain(selectedName, basenameChain.id)}`;
     }
-  }, [basenameChain.id, router, selectedName]);
+  }, [basenameChain.id, selectedName]);
+
+  const redirectToProfile = useCallback(() => {
+    router.push(profilePath);
+  }, [profilePath, router]);
 
   useEffect(() => {
     if (transactionIsFetching && registrationStep === RegistrationSteps.Claim) {
@@ -186,6 +190,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       if (transactionData.status === 'success') {
         logEventWithContext('register_name_transaction_success', ActionType.change);
         setRegistrationStep(RegistrationSteps.Success);
+        router.prefetch(profilePath);
       }
 
       if (transactionData.status === 'reverted') {
@@ -197,7 +202,9 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   }, [
     baseEnsNameRefetch,
     logEventWithContext,
+    profilePath,
     registrationStep,
+    router,
     transactionData,
     transactionIsFetching,
     transactionIsSuccess,

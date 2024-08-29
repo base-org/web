@@ -1,6 +1,5 @@
 import { useErrors } from 'apps/web/contexts/Errors';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
-import { EarlyAccessProofResponse } from 'apps/web/pages/api/proofs/earlyAccess';
 import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
 import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
 import EarlyAccessValidatorABI from 'apps/web/src/abis/EarlyAccessValidator';
@@ -20,7 +19,7 @@ import { useAccount, useReadContract } from 'wagmi';
 export type AttestationData = {
   discountValidatorAddress: Address;
   discount: Discount;
-  validationData: `0x${string}`;
+  validationData: `0x${string}` | undefined;
 };
 type AttestationHookReturns = {
   data: AttestationData | null;
@@ -226,7 +225,7 @@ export function useCheckCB1Attestations() {
 export function useCheckEAAttestations(): AttestationHookReturns {
   const { logError } = useErrors();
   const { address } = useAccount();
-  const [EAProofResponse, setEAProofResponse] = useState<EarlyAccessProofResponse | null>(null);
+  const [EAProofResponse, setEAProofResponse] = useState<MerkleTreeProofResponse | null>(null);
   const { basenameChain } = useBasenameChain();
 
   useEffect(() => {
@@ -236,12 +235,12 @@ export function useCheckEAAttestations(): AttestationHookReturns {
       params.append('chain', basenameChain.id.toString());
       const response = await fetch(`/api/proofs/earlyAccess?${params}`);
       if (response.ok) {
-        const result = (await response.json()) as EarlyAccessProofResponse;
+        const result = (await response.json()) as MerkleTreeProofResponse;
         setEAProofResponse(result);
       }
     }
 
-    if (address) {
+    if (address && IS_EARLY_ACCESS) {
       checkEarlyAccess(address).catch((error) => {
         logError(error, 'Error checking early access');
       });
@@ -270,7 +269,7 @@ export function useCheckEAAttestations(): AttestationHookReturns {
 
   const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
 
-  if (isValid && EAProofResponse && address) {
+  if (isValid && EAProofResponse && address && IS_EARLY_ACCESS) {
     return {
       data: {
         discountValidatorAddress: EAProofResponse.discountValidatorAddress,
@@ -310,7 +309,7 @@ export function useSummerPassAttestations() {
       data: {
         discountValidatorAddress,
         discount: Discount.SUMMER_PASS_LVL_3,
-        validationData: '',
+        validationData: '0x0' as `0x${string}`,
       },
       loading: false,
       error: null,
@@ -345,7 +344,7 @@ export function useBuildathonAttestations() {
       data: {
         discountValidatorAddress,
         discount: Discount.BASE_BUILDATHON_PARTICIPANT,
-        validationData: '',
+        validationData: '0x0' as `0x${string}`,
       },
       loading: false,
       error: null,
@@ -354,12 +353,50 @@ export function useBuildathonAttestations() {
   return { data: null, loading: isLoading, error };
 }
 
-// erc721 validator
+// mainnet erc721 validator -- uses merkle tree
 export function useBaseDotEthAttestations() {
   const { address } = useAccount();
+  const [APICallLoading, setAPICallLoading] = useState(false);
   const { basenameChain } = useBasenameChain();
+  const [baseDotEthProofResponse, setBaseDotEthProofResponse] =
+    useState<MerkleTreeProofResponse | null>(null);
+  const { logError } = useErrors();
 
   const discountValidatorAddress = BASE_DOT_ETH_ERC721_DISCOUNT_VALIDATOR[basenameChain.id];
+
+  useEffect(() => {
+    async function checkBaseDotEthAttestations(a: string) {
+      try {
+        setAPICallLoading(true);
+        const params = new URLSearchParams();
+        params.append('address', a);
+        params.append('chain', basenameChain.id.toString());
+        const response = await fetch(`/api/proofs/baseEthHolders?${params}`);
+        if (response.ok) {
+          const result = (await response.json()) as MerkleTreeProofResponse;
+          setBaseDotEthProofResponse(result);
+        }
+      } catch (error) {
+        logError(error, 'Error checking BaseDotEth attestation');
+      } finally {
+        setAPICallLoading(false);
+      }
+    }
+
+    if (address && !IS_EARLY_ACCESS) {
+      checkBaseDotEthAttestations(address).catch((error) => {
+        logError(error, 'Error checking BaseDotEth attestation');
+      });
+    }
+  }, [address, basenameChain.id, logError]);
+
+  const encodedProof = useMemo(
+    () =>
+      baseDotEthProofResponse?.proofs
+        ? encodeAbiParameters([{ type: 'bytes32[]' }], [baseDotEthProofResponse?.proofs])
+        : '0x0',
+    [baseDotEthProofResponse?.proofs],
+  );
 
   const readContractArgs = useMemo(() => {
     if (!address) {
@@ -367,26 +404,26 @@ export function useBaseDotEthAttestations() {
     }
     return {
       address: discountValidatorAddress,
-      abi: ERC721ValidatorABI,
+      abi: CBIDValidatorABI,
       functionName: 'isValidDiscountRegistration',
-      args: [address],
+      args: [address, encodedProof],
     };
-  }, [address, discountValidatorAddress]);
+  }, [address, discountValidatorAddress, encodedProof]);
 
   const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
 
-  if (isValid && address) {
+  if (isValid && address && baseDotEthProofResponse) {
     return {
       data: {
-        discountValidatorAddress,
+        discountValidatorAddress: discountValidatorAddress,
         discount: Discount.BASE_DOT_ETH_NFT,
-        validationData: '',
+        validationData: encodedProof,
       },
       loading: false,
       error: null,
     };
   }
-  return { data: null, loading: isLoading, error };
+  return { data: null, loading: APICallLoading || isLoading, error };
 }
 
 // merkle tree discount calls api endpoint
