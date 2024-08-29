@@ -1,17 +1,17 @@
 'use client';
-import { FrameUI } from '@frames.js/render/ui';
-import { useFrame } from '@frames.js/render/use-frame';
+
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import AddFrameModal from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/AddFrameModal';
 import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import FarcasterAccountModal from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FarcasterAccountModal';
-import { theme } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FrameTheme';
+import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Frame';
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { StaticImageData } from 'next/image';
+import { useCallback } from 'react';
 import { FrameProvider } from './Context';
 import cornerGarnish from './corner-garnish.svg';
 import frameIcon from './frame-icon.svg';
@@ -25,16 +25,15 @@ function SectionContent() {
   const homeframeUrl = existingTextRecords[UsernameTextRecordKeys.Frame];
   const {
     openFrameManagerModal,
-    frameConfig,
     frameInteractionError,
     setFrameInteractionError,
     pendingFrameChange,
   } = useFrameContext();
 
-  const frameState = useFrame({
-    ...frameConfig,
-    homeframeUrl,
-  });
+  const handleErrorClick = useCallback(
+    () => setFrameInteractionError(''),
+    [setFrameInteractionError],
+  );
 
   if (currentWalletIsProfileOwner && !homeframeUrl) {
     return (
@@ -83,11 +82,11 @@ function SectionContent() {
         )}
       </div>
       <div>
-        <FrameUI frameState={frameState} theme={theme} />
+        <Frame url={homeframeUrl} />
         {frameInteractionError && (
           <Button
             size={ButtonSizes.Small}
-            onClick={() => setFrameInteractionError('')}
+            onClick={handleErrorClick}
             className="text-sm text-state-n-hovered"
           >
             {frameInteractionError}

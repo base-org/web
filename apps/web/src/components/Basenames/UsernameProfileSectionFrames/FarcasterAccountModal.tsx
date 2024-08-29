@@ -9,21 +9,21 @@ import QRCode from 'qrcode.react';
 import { useCallback, useMemo } from 'react';
 
 export default function FarcasterAccountModal() {
-  const { frameConfig, showFarcasterQRModal, setShowFarcasterQRModal } = useFrameContext();
+  const { farcasterSignerState, showFarcasterQRModal, setShowFarcasterQRModal } = useFrameContext();
   const farcasterUser = useMemo(
-    () => frameConfig.signerState.signer ?? null,
-    [frameConfig.signerState.signer],
+    () => farcasterSignerState.signer ?? null,
+    [farcasterSignerState.signer],
   );
   const loading = useMemo(
-    () => !!frameConfig.signerState.isLoadingSigner ?? false,
-    [frameConfig.signerState.isLoadingSigner],
+    () => !!farcasterSignerState.isLoadingSigner ?? false,
+    [farcasterSignerState.isLoadingSigner],
   );
   const handleButtonClick = useCallback(() => {
-    frameConfig.signerState
+    farcasterSignerState
       .createSigner()
       .catch(console.error)
       .finally(() => setShowFarcasterQRModal(false));
-  }, [frameConfig.signerState.createSigner, frameConfig.signerState, setShowFarcasterQRModal]);
+  }, [farcasterSignerState, setShowFarcasterQRModal]);
 
   return (
     <Modal isOpen={showFarcasterQRModal} onClose={() => setShowFarcasterQRModal(false)}>

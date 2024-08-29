@@ -3,6 +3,7 @@ import {
   FarcasterFrameContext,
   OnSignatureFunc,
   OnTransactionFunc,
+  SignerStateInstance,
 } from '@frames.js/render';
 import {
   FarcasterSignerInstance,
@@ -21,6 +22,7 @@ import { createContext, useCallback, useContext, useMemo, useState } from 'react
 import { namehash } from 'viem';
 import { useAccount, useChainId, useConfig, useWriteContract } from 'wagmi';
 import { sendTransaction, signTypedData, switchChain } from 'wagmi/actions';
+import { useAnonymousIdentity, type AnonymousSigner } from '@frames.js/render/identity/anonymous';
 
 class InvalidChainIdError extends Error {}
 class CouldNotChangeChainError extends Error {}
@@ -49,10 +51,10 @@ export type FrameContextValue = {
     Parameters<typeof useFrame>[0],
     'homeframeUrl' | 'signerState' | 'frameContext'
   > & {
-    specification: 'farcaster';
-    signerState: FarcasterSignerInstance;
     frameContext: FarcasterFrameContext;
   };
+  farcasterSignerState: FarcasterSignerInstance;
+  anonSignerState: SignerStateInstance<AnonymousSigner>;
   showFarcasterQRModal: boolean;
   pendingFrameChange: boolean;
   setShowFarcasterQRModal: (b: boolean) => void;
@@ -91,7 +93,9 @@ export function FrameProvider({ children }: FrameProviderProps) {
   const { frameContext: farcasterFrameContext } = useFarcasterFrameContext({
     fallbackContext: fallbackFrameContext,
   });
-  const signerState = useFarcasterIdentity({
+
+  const anonSignerState = useAnonymousIdentity();
+  const farcasterSignerState = useFarcasterIdentity({
     signerUrl: '/frames/signer',
     onMissingIdentity() {
       setShowFarcasterQRModal(true);
@@ -144,7 +148,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
     [address, config, currentChainId, openConnectModal],
   );
   const onError = useCallback((e: Error) => {
-    console.error(e);
+    console.error('jf', e);
   }, []);
   const onSignature: OnSignatureFunc = useCallback(
     async ({ signatureData }) => {
@@ -234,6 +238,8 @@ export function FrameProvider({ children }: FrameProviderProps) {
       closeFrameManagerModal,
       currentWalletIsProfileOwner,
       homeframeUrl,
+      anonSignerState,
+      farcasterSignerState,
       frameConfig: {
         connectedAddress: address,
         frameActionProxy: '/frames',
@@ -242,8 +248,6 @@ export function FrameProvider({ children }: FrameProviderProps) {
         onError,
         onSignature,
         onConnectWallet: openConnectModal,
-        signerState,
-        specification: 'farcaster' as const,
         frameContext: farcasterFrameContext,
       },
       frameInteractionError,
@@ -259,12 +263,13 @@ export function FrameProvider({ children }: FrameProviderProps) {
       closeFrameManagerModal,
       currentWalletIsProfileOwner,
       homeframeUrl,
+      anonSignerState,
+      farcasterSignerState,
       address,
       onTransaction,
       onError,
       onSignature,
       openConnectModal,
-      signerState,
       farcasterFrameContext,
       frameInteractionError,
       showFarcasterQRModal,

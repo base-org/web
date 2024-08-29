@@ -1,6 +1,6 @@
-import { FrameUI } from '@frames.js/render/ui';
-import { useFrame } from '@frames.js/render/use-frame';
+import { ShoppingCartIcon } from '@heroicons/react/24/solid';
 import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
+import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Frame';
 import { theme } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FrameTheme';
 import { SuggestionCard } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/SuggestionCard';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
@@ -8,14 +8,13 @@ import Input from 'apps/web/src/components/Input';
 import Modal, { ModalSizes } from 'apps/web/src/components/Modal';
 import { StaticImageData } from 'next/image';
 import { ChangeEvent, useCallback, useState } from 'react';
+import { useAccount } from 'wagmi';
 import currencies from './ui/currencies.svg';
 import email from './ui/email.svg';
-import { ShoppingCartIcon } from '@heroicons/react/24/solid';
 import nftProduct from './ui/nftProduct.svg';
 import payouts from './ui/payouts.svg';
-import swap from './ui/swap.svg';
 import starActive from './ui/starActive.svg';
-import { useAccount } from 'wagmi';
+import swap from './ui/swap.svg';
 
 export default function AddFrameModal() {
   const { address } = useAccount();
@@ -35,18 +34,8 @@ export default function AddFrameModal() {
     [],
   );
 
-  const {
-    frameConfig,
-    frameManagerModalOpen,
-    closeFrameManagerModal,
-    pendingFrameChange,
-    setFrameRecord,
-  } = useFrameContext();
-
-  const frameState = useFrame({
-    ...frameConfig,
-    homeframeUrl: frameUrl,
-  });
+  const { frameManagerModalOpen, closeFrameManagerModal, pendingFrameChange, setFrameRecord } =
+    useFrameContext();
 
   const handlePaycasterClick = useCallback(() => {
     if (farcasterUsername) {
@@ -265,7 +254,7 @@ export default function AddFrameModal() {
                 <span>Choose a card to preview</span>
               </div>
             ) : (
-              <FrameUI frameState={frameState} theme={theme} />
+              <Frame url={frameUrl} />
             )}
             <Button
               rounded
