@@ -1,4 +1,5 @@
 import { pinata } from 'apps/web/src/utils/pinata';
+import { isDevelopment } from 'libs/base-ui/constants';
 import { NextResponse, NextRequest } from 'next/server';
 
 export const ALLOWED_IMAGE_TYPE = [
@@ -27,8 +28,8 @@ export async function POST(request: NextRequest) {
     // referer can only be us
     // TODO: Won't work on vercel previews
     const refererUrl = new URL(referer);
-    const allowedReferersHosts = ['localhost:3000', 'base.org'];
-    if (!allowedReferersHosts.includes(refererUrl.host)) {
+    const allowedReferersHost = isDevelopment ? 'localhost:3000' : 'www.base.org';
+    if (allowedReferersHost !== refererUrl.host) {
       return NextResponse.json({ error: 'Invalid request' }, { status: 500 });
     }
 
