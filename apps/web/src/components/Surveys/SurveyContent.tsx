@@ -1,55 +1,43 @@
 'use client';
 
-import { useCallback, useState } from 'react';
-import { Survey } from '../../apis/frameSurveys';
-import { ButtonWithHandler } from '../Button/ButtonWithHandler';
-import handleSurveyResponse from './handleSurveyResponse';
+import { useEffect, useState } from 'react';
+import { Survey, SurveyQuestionWithAnswerOptions } from 'apps/web/src/apis/frameSurveys';
+import getSurveyQuestionsAndAnswerOptions from 'apps/web/src/components/Surveys/ServerActions/getSurveyQuestionsAndAnswerOptions';
+import SurveyWelcome from 'apps/web/src/components/Surveys/SurveyWelcome';
+import SurveyBody from 'apps/web/src/components/Surveys/SurveyBody';
 
 type SurveyContentProps = {
-  surveyData: Survey;
+  survey: Survey;
 };
 
-export default function SurveyContent({ surveyData }: SurveyContentProps) {
-  const [userResponseSubmitted, setUserResponseSubmitted] = useState<boolean>(false);
-  const { question, answers } = surveyData;
+export enum SurveyStatus {
+  Unloaded = 'unloaded',
+  Loaded = 'loaded',
+  Started = 'started',
+  Completed = 'completed',
+}
 
-  const createHandleClick = useCallback(
-    (questionId: number, answerId: number, userAddress: string, userId: string) => () => {
-      const handleClick = async () => {
-        const response = await handleSurveyResponse(questionId, answerId, userAddress, userId);
-        if (response.status === 200) {
-          setUserResponseSubmitted(true);
-        }
-      };
+export default function SurveyContent({ survey }: SurveyContentProps) {
+  const [surveyStatus, setSurveyStatus] = useState<SurveyStatus>(SurveyStatus.Unloaded);
+  const [surveyQuestions, setSurveyQuestions] = useState<SurveyQuestionWithAnswerOptions[]>([]);
 
-      handleClick().catch((error) => {
-        console.error('Error in handleClick:', error);
-      });
-    },
-    [],
-  );
+  useEffect(() => {
+    async function getSurveyData() {
+      const surveyData = await getSurveyQuestionsAndAnswerOptions(survey.id);
+      setSurveyQuestions(surveyData);
+    }
+
+    if (surveyStatus === SurveyStatus.Unloaded) {
+      getSurveyData();
+    }
+  }, [surveyStatus]);
 
   return (
-    <div className="mt-[-96px] bg-blue-60">
-      <div className="mt-[96px] flex h-screen flex-col items-center">
-        <h1 className="my-10 text-3xl text-white">Question: {question.description ?? ''}</h1>
-        {userResponseSubmitted ? (
-          <div className="text-white">Thank you for your response.</div>
-        ) : (
-          <div className="grid max-w-[450px] grid-cols-2 gap-4">
-            {answers.map((answer) => (
-              <div key={answer.id}>
-                <ButtonWithHandler
-                  clickHandler={createHandleClick(question.id, answer.id, 'useraddress', 'user_id')}
-                  fullWidth
-                >
-                  {answer.description}
-                </ButtonWithHandler>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+    <div className="flex flex-col items-center p-10">
+      {surveyStatus === SurveyStatus.Unloaded ? (
+        <SurveyWelcome survey={survey} statusUpdater={setSurveyStatus} />
+      ) : null}
+      {surveyStatus === SurveyStatus.Loaded ? <SurveyBody surveyData={surveyQuestions} /> : null}
     </div>
   );
 }
