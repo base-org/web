@@ -2,7 +2,6 @@
 
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useState } from 'react';
-import { upload } from '@vercel/blob/client';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useErrors } from 'apps/web/contexts/Errors';
 import UsernameAvatarField from 'apps/web/src/components/Basenames/UsernameAvatarField';
@@ -11,6 +10,7 @@ import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/But
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import { PinResponse } from 'pinata';
 
 export default function UsernameProfileSettingsAvatar() {
   const { profileUsername, profileAddress, currentWalletIsProfileEditor } = useUsernameProfile();
@@ -37,30 +37,38 @@ export default function UsernameProfileSettingsAvatar() {
     },
   });
 
-  const uploadAvatar = useCallback(
+  const uploadFile = useCallback(
     async (file: File | undefined) => {
       if (!file) return Promise.resolve();
-      if (!currentWalletIsProfileEditor) return false;
 
-      setAvatarIsLoading(true);
+      try {
+        setAvatarIsLoading(true);
+        const data = new FormData();
+        data.set('file', file);
+        const uploadRequest = await fetch(
+          `/api/basenames/avatar/ipfsUpload?username=${profileUsername}`,
+          {
+            method: 'POST',
+            body: data,
+          },
+        );
 
-      logEventWithContext('avatar_upload_initiated', ActionType.change);
+        if (uploadRequest.ok) {
+          const uploadData = (await uploadRequest.json()) as PinResponse;
+          updateTextRecords(UsernameTextRecordKeys.Avatar, `ipfs://${uploadData.IpfsHash}`);
+          return uploadData;
+        } else {
+          alert(uploadRequest.statusText);
+          logError(uploadRequest, 'Failed to upload Avatar');
+        }
 
-      const timestamp = Date.now();
-      const newBlob = await upload(
-        `basenames/avatar/${profileUsername}/${timestamp}/${file.name}`,
-        file,
-        {
-          access: 'public',
-          handleUploadUrl: `/api/basenames/avatar/upload?username=${profileUsername}`,
-        },
-      );
-      setAvatarIsLoading(false);
-      updateTextRecords(UsernameTextRecordKeys.Avatar, newBlob.url);
-
-      return newBlob;
+        setAvatarIsLoading(false);
+      } catch (e) {
+        setAvatarIsLoading(false);
+        alert('Trouble uploading file');
+      }
     },
-    [currentWalletIsProfileEditor, logEventWithContext, profileUsername, updateTextRecords],
+    [logError, profileUsername, updateTextRecords],
   );
 
   const saveAvatar = useCallback(() => {
@@ -79,7 +87,7 @@ export default function UsernameProfileSettingsAvatar() {
       if (!currentWalletIsProfileEditor) return false;
 
       if (avatarFile) {
-        uploadAvatar(avatarFile)
+        uploadFile(avatarFile)
           .then((result) => {
             // set the uploaded result as the url
             if (result) {
@@ -98,7 +106,7 @@ export default function UsernameProfileSettingsAvatar() {
     [
       currentWalletIsProfileEditor,
       avatarFile,
-      uploadAvatar,
+      uploadFile,
       logEventWithContext,
       logError,
       saveAvatar,
