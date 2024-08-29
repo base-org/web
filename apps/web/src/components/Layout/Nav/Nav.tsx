@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import { usePathname } from 'next/dist/client/components/navigation';
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import DesktopNav from './DesktopNav';
