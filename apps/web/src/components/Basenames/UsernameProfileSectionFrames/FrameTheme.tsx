@@ -1,14 +1,14 @@
 export const theme = {
   Error: {
     className:
-      'flex flex-col w-[380px] h-[200px] border border-gray-90 rounded-lg overflow-hidden bg-white relative items-center justify-center opacity-50',
+      'flex flex-col w-[380px] h-[200px] rounded-lg overflow-hidden bg-white relative items-center justify-center opacity-50',
   },
   Root: {
-    className: 'flex flex-col max-w-[380px] border rounded-lg overflow-hidden bg-white relative',
+    className: 'flex flex-col max-w-[380px] rounded-lg overflow-hidden bg-white relative',
   },
   LoadingScreen: {
     className:
-      'flex flex-col items-center justify-center border border-gray-90 rounded-lg bg-white absolute top-0 left-0 right-0 bottom-0 z-10',
+      'flex flex-col items-center justify-center rounded-lg bg-white absolute top-0 left-0 right-0 bottom-0 z-10',
   },
   ButtonsContainer: {
     className:
@@ -19,7 +19,7 @@ export const theme = {
       'grow py-4 rounded-lg bg-white border border-[#CFD0D2] transition-colors hover:bg-state-b-hovered',
   },
   ImageContainer: {
-    className: 'relative w-full h-full border-b border-gray-90 overflow-hidden',
+    className: 'relative w-full h-full border-0 overflow-hidden',
     style: {
       aspectRatio: 'var(--frame-image-aspect-ratio)',
     },
