@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
-// import {
-//   getFrameMetadata,
-//   FrameMetadataType,
-//   FrameMetadataResponse,
-// } from '@coinbase/onchainkit/frame';
-import { getFrameMetadata } from 'apps/web/src/utils/getFrameMetadata';
+import { getFrameMetadata } from '@coinbase/onchainkit/frame';
+import { DOMAIN } from 'apps/web/src/constants';
 import { getAllQuestions, getSurvey } from '../../../../src/apis/frameSurveys';
 import SurveyContent from '../../../../src/components/Surveys/SurveyContent';
 
@@ -32,7 +28,9 @@ export async function generateMetadata({ params }: SurveyProps): Promise<Metadat
       label: answer.description,
       postUrl: `http://localhost:3000/api/surveys/frameUserResponse?questionId=${survey.question.id}&answerId=${answer.id}`,
     })),
-    image: 'https://base.org/images/base-open-graph.png',
+    image: {
+      src: `${DOMAIN}/api/surveys/assets/questionFrameImage.png?survey=${survey?.question.description}`,
+    },
     postUrl: 'http://localhost:3000/api/surveys/frameUserResponse',
   };
 
@@ -45,7 +43,7 @@ export async function generateMetadata({ params }: SurveyProps): Promise<Metadat
       images: ['https://base.org/images/base-open-graph.png'],
     },
     other: {
-      ...getFrameMetadata(frameMetadata),
+      ...(getFrameMetadata(frameMetadata) as Record<string, string>),
     },
   };
 }
