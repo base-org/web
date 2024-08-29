@@ -71,3 +71,5 @@ export const coinbaseSmartWalletABI = [
 export const ampDeploymentKey = isDevelopment
   ? 'client-Wvf63OdaukDZyCBtwgbOvHgGTuASBZFG'
   : 'client-agFoQg5AOvZ2ZiOChny9RrGk21jG3VrH';
+
+export const DOMAIN = isDevelopment ? `http://localhost:3000` : 'https://www.base.org';
