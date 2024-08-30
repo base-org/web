@@ -38,7 +38,6 @@ async function validateSurveyResonse(
   surveyResponse: UserQuestionResponse[],
 ): Promise<boolean> {
   const surveyQuestionsWithAnswerOptions = await getAllSurveyQuestionsAndAnswerOptions(survey.id);
-  console.log(JSON.stringify(surveyQuestionsWithAnswerOptions, null, 2));
 
   const surveyQuestionIds = surveyQuestionsWithAnswerOptions
     .map((question) => question.question.id)
