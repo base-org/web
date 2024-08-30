@@ -39,6 +39,7 @@ const sizeStyles = {
 };
 
 export type ButtonProps = {
+  type?: 'button' | 'submit' | 'reset';
   variant?: ButtonVariants;
   size?: ButtonSizes;
   rounded?: boolean;
@@ -48,6 +49,7 @@ export type ButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export function Button({
+  type = 'button',
   variant = ButtonVariants.Primary,
   size = ButtonSizes.Medium,
   children,
@@ -69,7 +71,7 @@ export function Button({
   );
 
   return (
-    <button {...props} type="button" className={buttonClasses} disabled={disabled}>
+    <button {...props} type={type} className={buttonClasses} disabled={disabled}>
       {isLoading ? (
         <span className="flex justify-center">
           <Icon name="spinner" color="currentColor" />
