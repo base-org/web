@@ -5,7 +5,6 @@ import {
   FrameTransactionResponse,
 } from '@coinbase/onchainkit/frame';
 import { encodeFunctionData, namehash } from 'viem';
-import { base } from 'viem/chains';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import { formatBaseEthDomain } from 'apps/web/src/utils/usernames';
@@ -13,7 +12,7 @@ import {
   USERNAME_L2_RESOLVER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
-import { NEYNAR_API_KEY } from 'apps/web/pages/api/basenames/frame/constants';
+import { CHAIN, NEYNAR_API_KEY } from 'apps/web/pages/api/basenames/frame/constants';
 
 export type TxFrameStateType = {
   targetName: string;
@@ -23,8 +22,8 @@ export type TxFrameStateType = {
   registrationPriceInEth: string;
 };
 
-const RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[base.id];
-const REGISTRAR_CONTROLLER_ADDRESS = USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[base.id];
+const RESOLVER_ADDRESS = USERNAME_L2_RESOLVER_ADDRESSES[CHAIN.id];
+const REGISTRAR_CONTROLLER_ADDRESS = USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[CHAIN.id];
 
 if (!NEYNAR_API_KEY) {
   throw new Error('missing NEYNAR_API_KEY');
@@ -77,13 +76,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const addressData = encodeFunctionData({
     abi: L2ResolverAbi,
     functionName: 'setAddr',
-    args: [namehash(formatBaseEthDomain(name, base.id)), claimingAddress],
+    args: [namehash(formatBaseEthDomain(name, CHAIN.id)), claimingAddress],
   });
 
   const nameData = encodeFunctionData({
     abi: L2ResolverAbi,
     functionName: 'setName',
-    args: [namehash(formatBaseEthDomain(name, base.id)), formatBaseEthDomain(name, base.id)],
+    args: [namehash(formatBaseEthDomain(name, CHAIN.id)), formatBaseEthDomain(name, CHAIN.id)],
   });
 
   const registerRequest = {
@@ -103,7 +102,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const txData: FrameTransactionResponse = {
-      chainId: `eip155:${base.id}`,
+      chainId: `eip155:${CHAIN.id}`,
       method: 'eth_sendTransaction',
       params: {
         abi: [

@@ -24,10 +24,7 @@ import {
   USERNAME_EA_REGISTRAR_CONTROLLER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
-import {
-  ALLOWED_IMAGE_TYPE,
-  MAX_IMAGE_SIZE_IN_MB,
-} from 'apps/web/pages/api/basenames/avatar/upload';
+
 import {
   getIpfsGatewayUrl,
   IpfsUrl,
@@ -57,6 +54,10 @@ import image6 from 'apps/web/src/components/Basenames/BasenameAvatar/images/6.sv
 import image7 from 'apps/web/src/components/Basenames/BasenameAvatar/images/7.svg';
 
 import { StaticImageData } from 'next/image';
+import {
+  ALLOWED_IMAGE_TYPE,
+  MAX_IMAGE_SIZE_IN_MB,
+} from 'apps/web/app/(basenames)/api/basenames/avatar/ipfsUpload/route';
 
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 20;
@@ -594,7 +595,7 @@ export async function getBasenameAvailable(name: string, chain: Chain): Promise<
     }
 
     const available = await client.readContract({
-      address: REGISTER_CONTRACT_ADDRESSES[base.id],
+      address: REGISTER_CONTRACT_ADDRESSES[chain.id],
       abi: REGISTER_CONTRACT_ABI,
       functionName: 'available',
       args: [normalizedName],
@@ -663,7 +664,7 @@ export function buildBasenameReclaimContract(
   };
 }
 
-/* 
+/*
   Basename avatar / animations
 */
 

@@ -1,14 +1,13 @@
 import satori from 'satori';
 import { NextRequest } from 'next/server';
-import { getBasenameImage, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
+import { getBasenameImage } from 'apps/web/src/utils/usernames';
 import twemoji from 'twemoji';
 import { base } from 'viem/chains';
-import { namehash } from 'viem';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
-import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { isDevelopment } from 'apps/web/src/constants';
 import ImageRaw from 'apps/web/src/components/ImageRaw';
+import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/urls';
 const emojiCache: Record<string, Promise<string>> = {};
 
 export async function loadEmoji(emojiString: string) {
@@ -44,13 +43,13 @@ export default async function handler(request: NextRequest) {
 
   // NOTE: Do we want to fail if the name doesn't exists?
   try {
-    const nameHash = namehash(username);
     const client = getBasenamePublicClient(chainId);
-    const avatar = await client.readContract({
-      abi: L2ResolverAbi,
-      address: USERNAME_L2_RESOLVER_ADDRESSES[chainId],
-      args: [nameHash, UsernameTextRecordKeys.Avatar],
-      functionName: 'text',
+    const avatar = await client.getEnsAvatar({
+      name: username,
+      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chainId],
+      assetGatewayUrls: {
+        ipfs: CLOUDFARE_IPFS_PROXY,
+      },
     });
 
     // Satori Doesn't support webp
