@@ -6,7 +6,7 @@ import {
   Survey,
   SurveyQuestionWithAnswerOptions,
   UserQuestionResponse,
-} from 'apps/web/pages/api/surveys/frameSurveys';
+} from 'apps/web/pages/api/surveys/surveys';
 import getSurveyQuestionsAndAnswerOptions from 'apps/web/src/components/Surveys/ServerActions/getSurveyQuestionsAndAnswerOptions';
 import SurveyWelcome from 'apps/web/src/components/Surveys/SurveyWelcome';
 import SurveyBody from 'apps/web/src/components/Surveys/SurveyBody';

@@ -2,7 +2,7 @@
 
 import { Dispatch, SetStateAction } from 'react';
 import { ButtonWithHandler } from 'apps/web/src/components/Button/ButtonWithHandler';
-import type { Survey } from 'apps/web/pages/api/surveys/frameSurveys';
+import type { Survey } from 'apps/web/pages/api/surveys/surveys';
 import { SurveyStatus } from 'apps/web/src/components/Surveys/SurveyContent';
 
 type SurveyWelcomeProps = {

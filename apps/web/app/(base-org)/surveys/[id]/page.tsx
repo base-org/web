@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import { DOMAIN } from 'apps/web/src/constants';
-import { getAllSurveys, getSurvey } from 'apps/web/pages/api/surveys/frameSurveys';
+import { getAllSurveys, getSurvey } from 'apps/web/pages/api/surveys/surveys';
 import SurveyContent from 'apps/web/src/components/Surveys/SurveyContent';
+import { initialFrame } from 'apps/web/pages/api/surveys/frame/frameResponses';
 
 export async function generateStaticParams() {
   try {
@@ -20,33 +21,22 @@ type SurveyProps = {
   params: { id: number };
 };
 
-// export async function generateMetadata({ params }: SurveyProps): Promise<Metadata> {
-//   const survey = await getSurvey(params.id);
-//   const frameMetadata = {
-//     buttons: survey?.answers.map((answer) => ({
-//       action: 'post',
-//       label: answer.description,
-//       postUrl: `http://localhost:3000/api/surveys/frameUserResponse?questionId=${survey.question.id}&answerId=${answer.id}`,
-//     })),
-//     image: {
-//       src: `${DOMAIN}/api/surveys/assets/questionFrameImage.png?survey=${survey?.question.description}`,
-//     },
-//     postUrl: 'http://localhost:3000/api/surveys/frameUserResponse',
-//   };
+export async function generateMetadata({ params }: SurveyProps): Promise<Metadata> {
+  const survey = await getSurvey(params.id);
 
-//   return {
-//     title: 'Based Surveys',
-//     description: 'LFG',
-//     openGraph: {
-//       title: 'Base.org | Surveys',
-//       description: 'LFGooooo',
-//       images: ['https://base.org/images/base-open-graph.png'],
-//     },
-//     other: {
-//       ...(getFrameMetadata(frameMetadata) as Record<string, string>),
-//     },
-//   };
-// }
+  return {
+    title: 'Based Surveys',
+    description: 'LFG',
+    openGraph: {
+      title: 'Base.org | Surveys',
+      description: 'LFGooooo',
+      images: ['https://base.org/images/base-open-graph.png'],
+    },
+    other: {
+      ...(initialFrame(survey) as Record<string, string>),
+    },
+  };
+}
 
 export default async function Survey({ params }: SurveyProps) {
   const survey = await getSurvey(params.id);

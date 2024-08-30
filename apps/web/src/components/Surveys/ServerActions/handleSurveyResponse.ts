@@ -6,7 +6,7 @@ import {
   Survey,
   UserQuestionResponse,
   UserSurveyResponseForDb,
-} from '../../../../pages/api/surveys/frameSurveys';
+} from '../../../../pages/api/surveys/surveys';
 
 /*
   survey_id, answer, user_address, user_id

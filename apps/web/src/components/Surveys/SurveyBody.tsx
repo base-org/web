@@ -5,7 +5,7 @@ import {
   AnswerOption,
   SurveyQuestionWithAnswerOptions,
   UserQuestionResponse,
-} from '../../../pages/api/surveys/frameSurveys';
+} from '../../../pages/api/surveys/surveys';
 import { ButtonWithHandler } from '../Button/ButtonWithHandler';
 import { Button } from 'apps/web/src/components/Button/Button';
 

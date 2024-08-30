@@ -49,8 +49,8 @@ export default async function handler(request: NextRequest) {
               paddingBottom: '0.75rem',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
-              whiteSpace: 'nowrap',
-              width: 'auto',
+              whiteSpace: 'normal',
+              width: '80%',
               textAlign: 'center',
             }}
           >
