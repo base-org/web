@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useAccount } from 'wagmi';
 import {
   Survey,
   SurveyQuestionWithAnswerOptions,
@@ -36,6 +37,8 @@ export default function SurveyContent({ survey }: SurveyContentProps) {
     SurveySubmissionStatus.NotStarted,
   );
 
+  const { status: walletConnectedStatus, address } = useAccount();
+
   useEffect(() => {
     async function getSurveyData() {
       const surveyData = await getSurveyQuestionsAndAnswerOptions(survey.id);
@@ -61,6 +64,14 @@ export default function SurveyContent({ survey }: SurveyContentProps) {
       setSurveyStatus(SurveyStatus.Succeeded);
     }
   }, [surveySubmissionStatus]);
+
+  if (walletConnectedStatus !== 'connected') {
+    return (
+      <div className="flex flex-col items-center p-10">
+        <h1 className="my-10 text-3xl">Please connect a wallet to continue.</h1>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center p-10">
