@@ -44,6 +44,28 @@ type AnswerOptionsTable = {
 
 export type AnswerOption = Pick<AnswerOptionsTable, 'id' | 'question_id' | 'answer_choice'>;
 
+export type UserSurveyResponse = {
+  response: UserQuestionResponse[];
+}
+
+export type UserQuestionResponse = {
+  question_id: number;
+  answer: number | string;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 type UserResponseTable = {
   id: Generated<number>;
   user_id: string;
