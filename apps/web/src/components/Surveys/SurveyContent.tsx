@@ -83,13 +83,18 @@ export default function SurveyContent({ survey }: SurveyContentProps) {
       ) : null}
       {surveyStatus === SurveyStatus.Completed ? (
         <SurveyConfirmationAndSubmission
+          userAddress={address}
           survey={survey}
           surveyQuestions={surveyQuestions}
           surveyResponse={surveyResponse}
           surveySubmissionStatusUpdater={setSurveySubmissionStatus}
         />
       ) : null}
-      {surveyStatus === SurveyStatus.Succeeded ? <div>Hoooray!!</div> : null}
+      {surveyStatus === SurveyStatus.Succeeded ? (
+        <div className="flex flex-col items-center p-10">
+          <h1 className="my-10 text-3xl">Thank you for your response.</h1>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -11,6 +11,7 @@ import handleSurveySubmission from 'apps/web/src/components/Surveys/ServerAction
 import { SurveySubmissionStatus } from 'apps/web/src/components/Surveys/SurveyContent';
 
 type SurveySubmissionProps = {
+  userAddress: `0x${string}`;
   survey: Survey;
   surveyQuestions: SurveyQuestionWithAnswerOptions[];
   surveyResponse: UserQuestionResponse[];
@@ -18,13 +19,14 @@ type SurveySubmissionProps = {
 };
 
 export default function SurveyConfirmationAndSubmission({
+  userAddress,
   survey,
   surveyQuestions,
   surveyResponse,
   surveySubmissionStatusUpdater,
 }: SurveySubmissionProps) {
   const createHandleSurveySubmission = useCallback(async () => {
-    const response = await handleSurveySubmission(survey, surveyResponse);
+    const response = await handleSurveySubmission(survey, surveyResponse, userAddress);
     if (response?.status === 200) {
       surveySubmissionStatusUpdater(SurveySubmissionStatus.Succeeded);
     }

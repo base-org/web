@@ -15,6 +15,7 @@ import {
 export default async function handleSurveySubmission(
   survey: Survey,
   surveyResponse: UserQuestionResponse[],
+  userAddress: `0x${string}`,
 ) {
   try {
     const isValid = validateSurveyResonse(survey, surveyResponse);
@@ -29,7 +30,7 @@ export default async function handleSurveySubmission(
     const response = await postUserResponse(
       survey.id,
       surveyResponseForSubmission,
-      '0xBrendanRocks',
+      userAddress,
       null,
     );
     return response;

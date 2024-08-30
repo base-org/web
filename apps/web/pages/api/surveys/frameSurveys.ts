@@ -169,7 +169,7 @@ export async function postUserResponse(
   surveyId: number,
   answer: UserSurveyResponseForDb,
   userAddress: string,
-  userId: string,
+  userId: string | null,
 ): Promise<UserResponseReturnValueType> {
   const userResponse = await surveyDb
     .insertInto('frame_survey_user_responses')
