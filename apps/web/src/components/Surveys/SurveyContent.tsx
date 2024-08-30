@@ -12,7 +12,6 @@ type SurveyContentProps = {
 
 export enum SurveyStatus {
   Unloaded = 'unloaded',
-  Loaded = 'loaded',
   Started = 'started',
   Completed = 'completed',
 }
@@ -37,7 +36,7 @@ export default function SurveyContent({ survey }: SurveyContentProps) {
       {surveyStatus === SurveyStatus.Unloaded ? (
         <SurveyWelcome survey={survey} statusUpdater={setSurveyStatus} />
       ) : null}
-      {surveyStatus === SurveyStatus.Loaded ? <SurveyBody surveyData={surveyQuestions} /> : null}
+      {surveyStatus === SurveyStatus.Started ? <SurveyBody surveyData={surveyQuestions} surveyStatusUpdater={setSurveyStatus} /> : null}
     </div>
   );
 }
