@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
-import { postUserResponse } from '../../../src/apis/frameSurveys';
+import { postUserResponse } from './frameSurveys';
 
 export type UserSurveyResponse = {
   userId: string;

@@ -1,6 +1,6 @@
 'use server';
 
-import { getAllSurveyQuestionsAndAnswerOptions } from 'apps/web/src/apis/frameSurveys';
+import { getAllSurveyQuestionsAndAnswerOptions } from 'apps/web/pages/api/surveys/frameSurveys';
 
 export default async function getSurveyQuestionsAndAnswerOptions(surveyId: number) {
   try {

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import { DOMAIN } from 'apps/web/src/constants';
-import { getAllSurveys, getSurvey } from 'apps/web/src/apis/frameSurveys';
+import { getAllSurveys, getSurvey } from 'apps/web/pages/api/surveys/frameSurveys';
 import SurveyContent from 'apps/web/src/components/Surveys/SurveyContent';
 
 export async function generateStaticParams() {
@@ -64,6 +64,4 @@ export default async function Survey({ params }: SurveyProps) {
       </div>
     </div>
   );
-
-  // return <SurveyContent surveyData={survey} />;
 }

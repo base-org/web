@@ -6,7 +6,7 @@ import {
   Survey,
   UserQuestionResponse,
   UserSurveyResponseForDb,
-} from '../../../apis/frameSurveys';
+} from '../../../../pages/api/surveys/frameSurveys';
 
 /*
   survey_id, answer, user_address, user_id
@@ -26,7 +26,12 @@ export default async function handleSurveySubmission(
       response: surveyResponse,
     };
 
-    const response = await postUserResponse(survey.id, surveyResponseForSubmission, '0xBrendanRocks', null);
+    const response = await postUserResponse(
+      survey.id,
+      surveyResponseForSubmission,
+      '0xBrendanRocks',
+      null,
+    );
     return response;
   } catch (error) {
     // TODO: handle errors
