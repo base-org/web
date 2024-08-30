@@ -1,7 +1,11 @@
 'use client';
 
 import { Dispatch, SetStateAction, useCallback, useState } from 'react';
-import { SurveyQuestionWithAnswerOptions, UserQuestionResponse } from '../../apis/frameSurveys';
+import {
+  AnswerOption,
+  SurveyQuestionWithAnswerOptions,
+  UserQuestionResponse,
+} from '../../apis/frameSurveys';
 import { ButtonWithHandler } from '../Button/ButtonWithHandler';
 import { Button } from 'apps/web/src/components/Button/Button';
 
@@ -15,12 +19,13 @@ export default function SurveyBody({ surveyData, surveyResponseUpdater }: Survey
   const [inputValue, setInputValue] = useState('');
 
   const createHandleButtonClick = useCallback(
-    (answer: number | string) => () => {
+    (answer: AnswerOption) => () => {
       surveyResponseUpdater((prev) => [
         ...prev,
         {
-          question_id: surveyData[questionIndex].question.id,
-          answer,
+          questionId: surveyData[questionIndex].question.id,
+          answerId: answer.id,
+          answer: answer.answer_choice,
         },
       ]);
       if (questionIndex + 1 < surveyData.length) {
@@ -36,7 +41,8 @@ export default function SurveyBody({ surveyData, surveyResponseUpdater }: Survey
       surveyResponseUpdater((prev) => [
         ...prev,
         {
-          question_id: surveyData[questionIndex].question.id,
+          questionId: surveyData[questionIndex].question.id,
+          answerId: null,
           answer: inputValue,
         },
       ]);
@@ -57,7 +63,7 @@ export default function SurveyBody({ surveyData, surveyResponseUpdater }: Survey
           surveyData[questionIndex].answers.map((answer) => (
             <ButtonWithHandler
               key={answer.answer_choice}
-              clickHandler={createHandleButtonClick(answer.id)}
+              clickHandler={createHandleButtonClick(answer)}
             >
               {answer.answer_choice}
             </ButtonWithHandler>
@@ -74,7 +80,7 @@ export default function SurveyBody({ surveyData, surveyResponseUpdater }: Survey
                 value={inputValue}
               />
             </label>
-            <Button type="submit">Submit</Button>
+            <Button type="submit">Continue</Button>
           </form>
         )}
       </div>

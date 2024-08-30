@@ -44,27 +44,15 @@ type AnswerOptionsTable = {
 
 export type AnswerOption = Pick<AnswerOptionsTable, 'id' | 'question_id' | 'answer_choice'>;
 
-export type UserSurveyResponse = {
+export type UserSurveyResponseForDb = {
   response: UserQuestionResponse[];
-}
+};
 
 export type UserQuestionResponse = {
-  question_id: number;
-  answer: number | string;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+  questionId: number;
+  answerId: number | null;
+  answer: string;
+};
 
 type UserResponseTable = {
   id: Generated<number>;
@@ -163,21 +151,7 @@ export async function getAllSurveyQuestions(surveyId: number): Promise<QuestionT
   }
 }
 
-// async function getQuestion(id: number): Promise<QuestionTable | null> {
-//   try {
-//     const question: QuestionTable = await surveyDb
-//       .selectFrom('frame_survey_questions')
-//       .where('id', '=', id)
-//       .selectAll()
-//       .executeTakeFirst();
-//     return question;
-//   } catch (error) {
-//     console.log('Could not get question:', error);
-//     return null;
-//   }
-// }
-
-async function getAllQuestionAnswerOptions(questionId: number): Promise<AnswerOption[]> {
+export async function getAllQuestionAnswerOptions(questionId: number): Promise<AnswerOption[]> {
   try {
     const answers = await surveyDb
       .selectFrom('frame_survey_question_answer_options')
@@ -192,31 +166,20 @@ async function getAllQuestionAnswerOptions(questionId: number): Promise<AnswerOp
 }
 
 export async function postUserResponse(
-  questionId: number,
-  answerId: number,
+  surveyId: number,
+  answer: UserSurveyResponseForDb,
   userAddress: string,
   userId: string,
 ): Promise<UserResponseReturnValueType> {
-  const survey = await getSurvey(questionId);
-  const surveyAnswerIds = survey?.answers?.map((answer) => answer.id) ?? [];
-
-  if (!surveyAnswerIds.includes(answerId)) {
-    return {
-      status: 404,
-      message: 'Invalid answer for this question',
-    };
-  }
-
-  // TODO Sanitize the strings //
   const userResponse = await surveyDb
     .insertInto('frame_survey_user_responses')
     .values({
-      question_id: questionId,
-      answer_id: answerId,
+      survey_id: surveyId,
+      answer: JSON.stringify(answer),
       user_address: userAddress,
-      user_id: userId,
+      user_id: userId ?? 'NotAFrameResponse',
     })
-    .returning(['question_id', 'answer_id', 'user_address', 'user_id'])
+    .returning(['survey_id', 'answer', 'user_address', 'user_id'])
     .executeTakeFirst();
 
   return {
