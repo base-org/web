@@ -42,7 +42,7 @@
     "node-fetch": "^3.3.0",
     "permissionless": "^0.1.41",
     "pg": "^8.12.0",
-    "pinata": "^0.4.0",
+    "pinata-web3": "^0.4.1",
     "react": "^18.2.0",
     "react-blockies": "^1.4.1",
     "react-copy-to-clipboard": "^5.1.0",
