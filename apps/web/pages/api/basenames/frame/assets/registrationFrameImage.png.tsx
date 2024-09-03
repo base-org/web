@@ -1,10 +1,10 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 import { openGraphImageHeight, openGraphImageWidth } from 'apps/web/src/utils/opengraphs';
-import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import ImageRaw from 'apps/web/src/components/ImageRaw';
 import { DOMAIN } from 'apps/web/pages/api/basenames/frame/constants';
 import registrationImageBackground from 'apps/web/pages/api/basenames/frame/assets/registration-bg.png';
+import { getBasenameImage } from 'apps/web/src/utils/usernames';
 
 export const config = {
   runtime: 'edge',
@@ -18,7 +18,7 @@ export default async function handler(request: NextRequest) {
 
   const url = new URL(request.url);
   const username = url.searchParams.get('name') as string;
-  const profilePicture = getUserNamePicture(username);
+  const profilePicture = getBasenameImage(username);
   let imageSource = DOMAIN + profilePicture.src;
   const years = url.searchParams.get('years');
   const priceInEth = url.searchParams.get('priceInEth');
@@ -110,7 +110,7 @@ export default async function handler(request: NextRequest) {
                 textAlign: 'center',
               }}
             >
-              Register for: {years} years
+              Register for: {years} year{Number(years) > 1 ? 's' : ''}
             </span>
           )}
           {priceInEth && (

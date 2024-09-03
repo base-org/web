@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { kv } from '@vercel/kv';
+import { logger } from 'apps/web/src/utils/logger';
 
 type RequestBody = {
   address: `0x${string}`;
@@ -19,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(200).json({ result: proof });
     }
   } catch (error) {
-    console.error(error);
+    logger.error('error getting message', error);
   }
 
   return res.status(404).json({ error: 'address is not eligible for the nft' });

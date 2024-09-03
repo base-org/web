@@ -1,9 +1,11 @@
+'use client';
 import { Avatar } from '@coinbase/onchainkit/identity';
+import BasenameAvatar from 'apps/web/src/components/Basenames/BasenameAvatar';
 import useBaseEnsAvatar from 'apps/web/src/hooks/useBaseEnsAvatar';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/urls';
-import { getUserNamePicture } from 'apps/web/src/utils/usernames';
+import { getBasenameImage } from 'apps/web/src/utils/usernames';
 import { truncateMiddle } from 'libs/base-ui/utils/string';
 import Image from 'next/image';
 import { Address } from 'viem';
@@ -40,16 +42,21 @@ export default function WalletIdentity({ address }: { address: Address }) {
   });
 
   const deterministicName = basename ?? ensName ?? address ?? 'default-avatar';
-  const defaultSelectedProfilePicture = getUserNamePicture(deterministicName);
+  const defaultSelectedProfilePicture = getBasenameImage(deterministicName);
   const avatar = basenameAvatar ?? ensAvatar ?? defaultSelectedProfilePicture;
 
   return (
     <div className="flex items-center gap-4">
-      <Avatar
-        address={address}
-        chain={basenameChain}
-        defaultComponent={<Image src={avatar} height={32} width={32} alt={deterministicName} />}
-      />
+      {basename ? (
+        <BasenameAvatar basename={basename} width={32} height={32} />
+      ) : (
+        <Avatar
+          address={address}
+          chain={basenameChain}
+          defaultComponent={<Image src={avatar} height={32} width={32} alt={deterministicName} />}
+        />
+      )}
+
       <div>
         <strong>{basename ?? truncateMiddle(address, 6, 4)}</strong>
         {!!basename && <p className="text-gray-40">{truncateMiddle(address, 6, 4)}</p>}

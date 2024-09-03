@@ -299,7 +299,7 @@ export default function RegistrationSearchInput({
         ) : (
           <>
             <p className={mutedMessage}>
-              {formatBaseEthDomain(debouncedSearch, basenameChain.id)} is not available
+              {formatBaseEthDomain(debouncedSearch, basenameChain.id)} is already registered
             </p>
             {suggestions.length > 0 ? (
               <>

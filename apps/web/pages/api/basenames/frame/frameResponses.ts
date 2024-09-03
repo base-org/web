@@ -2,6 +2,8 @@ import { getFrameMetadata, getFrameHtmlResponse } from '@coinbase/onchainkit/fra
 import { FrameMetadataResponse } from '@coinbase/onchainkit/frame/types';
 import initialImage from 'apps/web/pages/api/basenames/frame/assets/initial-image.png';
 import searchImage from 'apps/web/pages/api/basenames/frame/assets/search-image.png';
+import txSucceededImage from 'apps/web/pages/api/basenames/frame/assets/tx-succeeded.png';
+import txFailedImage from 'apps/web/pages/api/basenames/frame/assets/tx-failed.png';
 import { DOMAIN } from 'apps/web/pages/api/basenames/frame/constants';
 
 export const initialFrame: FrameMetadataResponse = getFrameMetadata({
@@ -98,7 +100,7 @@ export const confirmationFrame = (
     image: {
       src: `${DOMAIN}/api/basenames/frame/assets/registrationFrameImage.png?name=${formattedTargetName}&years=${targetYears}&priceInEth=${registrationPriceInEth}`,
     },
-    postUrl: `${DOMAIN}/api/basenames/frame/04_txSuccess`,
+    postUrl: `${DOMAIN}/api/basenames/frame/04_txSubmitted`,
     state: {
       targetName,
       formattedTargetName,
@@ -108,7 +110,7 @@ export const confirmationFrame = (
     },
   });
 
-export const txSuccessFrame = (name: string) =>
+export const txSucceededFrame = (name: string, transactionId: string) =>
   getFrameHtmlResponse({
     buttons: [
       {
@@ -116,8 +118,27 @@ export const txSuccessFrame = (name: string) =>
         label: `Go to your profile`,
         target: `${DOMAIN}/name/${name}`,
       },
+      {
+        action: 'link',
+        label: `View on block explorer`,
+        target: `https://basescan.org/tx/${transactionId}`,
+      },
     ],
     image: {
-      src: `${DOMAIN}/images/basenames/contract-uri/feature-image.png`,
+      src: `${DOMAIN}/${txSucceededImage.src}`,
+    },
+  });
+
+export const txRevertedFrame = (name: string, transactionId: string) =>
+  getFrameHtmlResponse({
+    buttons: [
+      {
+        action: 'link',
+        label: `View on block explorer`,
+        target: `https://basescan.org/tx/${transactionId}`,
+      },
+    ],
+    image: {
+      src: `${DOMAIN}/${txFailedImage.src}`,
     },
   });

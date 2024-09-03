@@ -2,6 +2,7 @@ import { UserOperation } from 'permissionless';
 import { paymasterClient } from '../../../src/utils/paymasterConfig';
 import { willSponsor } from '../../../src/utils/paymasterSponsor';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { logger } from 'apps/web/src/utils/logger';
 
 type RequestBody = {
   params: [
@@ -34,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.json({ result });
     }
   } catch (e) {
-    console.error(e);
+    logger.error('error validating paymaster', e);
     return res.status(500).json({ error: 'something went wrong validating ' });
   }
 }

@@ -77,7 +77,7 @@ Onchain applications are difficult to use for many people, as they require a len
 
 For example,the preliminary steps a user needs to go through before they can use an onchain app are:
 
-1. Create a wallet wallet (Coinbase Wallet, Metamask, etc)
+1. Create a wallet (Coinbase Wallet, Metamask, etc)
 1. Store the wallet mnemonic safely, without losing it or compromising it
 1. Sign a slightly frightening message to connect to an onchain app
 1. Try to do anything with the app and get a popup asking them to approve a transaction

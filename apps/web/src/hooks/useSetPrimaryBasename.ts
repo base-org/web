@@ -6,11 +6,11 @@ import {
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useCallback, useEffect } from 'react';
 import { BaseName } from '@coinbase/onchainkit/identity';
-import { useAccount, useEnsAddress } from 'wagmi';
+import { useAccount } from 'wagmi';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import { useErrors } from 'apps/web/contexts/Errors';
-
 import useWriteContractWithReceipt from 'apps/web/src/hooks/useWriteContractWithReceipt';
+import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 
 /*
   A hook to set an name as primary for resolution.
@@ -22,13 +22,18 @@ import useWriteContractWithReceipt from 'apps/web/src/hooks/useWriteContractWith
 */
 
 type UseSetPrimaryBasenameProps = {
-  secondaryName: BaseName;
+  secondaryUsername: BaseName;
 };
 
-export default function useSetPrimaryBasename({ secondaryName }: UseSetPrimaryBasenameProps) {
+export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrimaryBasenameProps) {
   const { address } = useAccount();
   const { logError } = useErrors();
 
+  const { currentWalletIsProfileEditor } = useUsernameProfile();
+  const { basenameChain: secondaryUsernameChain } = useBasenameChain(secondaryUsername);
+
+  // Get current primary username
+  // Note: This is sometimes undefined
   const {
     data: primaryUsername,
     refetch: refetchPrimaryUsername,
@@ -38,24 +43,12 @@ export default function useSetPrimaryBasename({ secondaryName }: UseSetPrimaryBa
     address: address,
   });
 
-  const { basenameChain: secondaryBaseChain } = useBasenameChain(secondaryName);
-  const { basenameChain: primaryBaseChain } = useBasenameChain(primaryUsername);
-
-  const { data: secondaryAddress } = useEnsAddress({
-    name: secondaryName,
-    universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[secondaryBaseChain.id],
-  });
-
-  const usernamesHaveSameOwner = secondaryAddress === address;
-  const usernamesOnSameChains = secondaryBaseChain.id === primaryBaseChain.id;
-  const usernamesDiffer = secondaryName !== primaryUsername;
-
-  const canSetUsernameAsPrimary =
-    usernamesDiffer && usernamesOnSameChains && usernamesHaveSameOwner;
+  const usernamesDiffer = secondaryUsername !== primaryUsername;
+  const canSetUsernameAsPrimary = usernamesDiffer && currentWalletIsProfileEditor;
 
   const { initiateTransaction, transactionIsLoading, transactionIsSuccess } =
     useWriteContractWithReceipt({
-      chain: secondaryBaseChain,
+      chain: secondaryUsernameChain,
       eventName: 'update_primary_name',
     });
 
@@ -69,7 +62,7 @@ export default function useSetPrimaryBasename({ secondaryName }: UseSetPrimaryBa
 
   const setPrimaryName = useCallback(async () => {
     // Already primary
-    if (secondaryName === primaryUsername) return;
+    if (secondaryUsername === primaryUsername) return;
 
     // No user is connected
     if (!address) return;
@@ -77,12 +70,12 @@ export default function useSetPrimaryBasename({ secondaryName }: UseSetPrimaryBa
     try {
       await initiateTransaction({
         abi: ReverseRegistrarAbi,
-        address: USERNAME_REVERSE_REGISTRAR_ADDRESSES[secondaryBaseChain.id],
+        address: USERNAME_REVERSE_REGISTRAR_ADDRESSES[secondaryUsernameChain.id],
         args: [
           address,
           address,
-          USERNAME_L2_RESOLVER_ADDRESSES[secondaryBaseChain.id],
-          secondaryName,
+          USERNAME_L2_RESOLVER_ADDRESSES[secondaryUsernameChain.id],
+          secondaryUsername,
         ],
         functionName: 'setNameForAddr',
       });
@@ -92,11 +85,11 @@ export default function useSetPrimaryBasename({ secondaryName }: UseSetPrimaryBa
 
     return true;
   }, [
-    secondaryName,
+    secondaryUsername,
     primaryUsername,
     address,
     initiateTransaction,
-    secondaryBaseChain.id,
+    secondaryUsernameChain.id,
     logError,
   ]);
 

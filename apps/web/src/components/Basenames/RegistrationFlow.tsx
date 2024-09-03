@@ -17,7 +17,7 @@ import { RegistrationSearchInputVariant } from './RegistrationSearchInput/types'
 import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
 import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
 import { UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill/types';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
 import {
   formatBaseEthDomain,
   IS_EARLY_ACCESS,
@@ -27,7 +27,7 @@ import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useMemo } from 'react';
-import { useAccount, useChains, useSwitchChain } from 'wagmi';
+import { useAccount, useSwitchChain } from 'wagmi';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import RegistrationShareOnSocials from 'apps/web/src/components/Basenames/RegistrationShareOnSocials';
@@ -59,9 +59,12 @@ export function RegistrationFlow() {
   } = useRegistration();
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
-  const chains = useChains();
 
-  const isOnSupportedNetwork = useMemo(() => chain && chains.includes(chain), [chain, chains]);
+  const isOnSupportedNetwork = useMemo(
+    () => chain && supportedChainIds.includes(chain.id),
+    [chain],
+  );
+
   const switchToIntendedNetwork = useCallback(
     () => switchChain({ chainId: basenameChain.id }),
     [basenameChain.id, switchChain],
@@ -128,7 +131,7 @@ export function RegistrationFlow() {
 
   return (
     <>
-      {false && isDevelopment && <RegistrationStateSwitcherDynamic />}
+      {true && isDevelopment && <RegistrationStateSwitcherDynamic />}
       <section className={mainClasses}>
         {/* 1. Brand & Search */}
         <Transition

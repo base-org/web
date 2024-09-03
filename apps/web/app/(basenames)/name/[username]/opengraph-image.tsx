@@ -2,18 +2,16 @@ import { UsernameProfileProps } from 'apps/web/app/(basenames)/name/[username]/p
 import ImageRaw from 'apps/web/src/components/ImageRaw';
 import { ImageResponse } from 'next/og';
 import coverImageBackground from 'apps/web/app/(basenames)/name/[username]/coverImageBackground.png';
-import { namehash } from 'viem';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import { isDevelopment } from 'apps/web/src/constants';
-import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import {
   formatBaseEthDomain,
-  getUserNamePicture,
+  getBasenameImage,
   USERNAME_DOMAINS,
-  UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 import { base, baseSepolia } from 'viem/chains';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/urls';
 export const runtime = 'edge';
 
 const size = {
@@ -59,18 +57,18 @@ export default async function OpenGraphImage(props: ImageRouteProps) {
   ).then(async (res) => res.arrayBuffer());
 
   const domainName = isDevelopment ? `http://localhost:3000` : 'https://www.base.org';
-  const profilePicture = getUserNamePicture(username);
+  const profilePicture = getBasenameImage(username);
   let imageSource = domainName + profilePicture.src;
 
   // NOTE: Do we want to fail if the name doesn't exists?
   try {
-    const nameHash = namehash(username);
     const client = getBasenamePublicClient(base.id);
-    const avatar = await client.readContract({
-      abi: L2ResolverAbi,
-      address: USERNAME_L2_RESOLVER_ADDRESSES[base.id],
-      args: [nameHash, UsernameTextRecordKeys.Avatar],
-      functionName: 'text',
+    const avatar = await client.getEnsAvatar({
+      name: username,
+      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[base.id],
+      assetGatewayUrls: {
+        ipfs: CLOUDFARE_IPFS_PROXY,
+      },
     });
 
     // Satori Doesn't support webp

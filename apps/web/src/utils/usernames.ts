@@ -4,36 +4,27 @@ import {
   encodePacked,
   keccak256,
   namehash,
-  sha256,
   ContractFunctionParameters,
   labelhash,
   createPublicClient,
   http,
+  sha256,
 } from 'viem';
 import { normalize } from 'viem/ens';
 import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import EARegistrarControllerAbi from 'apps/web/src/abis/EARegistrarControllerAbi';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import RegistryAbi from 'apps/web/src/abis/RegistryAbi';
-import profilePictures1 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/1.svg';
-import profilePictures2 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/2.svg';
-import profilePictures3 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/3.svg';
-import profilePictures4 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/4.svg';
-import profilePictures5 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/5.svg';
-import profilePictures6 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/6.svg';
-import profilePictures7 from 'apps/web/src/components/ConnectWalletButton/profilesPictures/7.svg';
-import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
+import BaseRegistrarAbi from 'apps/web/src/abis/BaseRegistrarAbi';
 import { base, baseSepolia, mainnet } from 'viem/chains';
 import { BaseName } from '@coinbase/onchainkit/identity';
 import {
+  USERNAME_BASE_REGISTRAR_ADDRESSES,
   USERNAME_BASE_REGISTRY_ADDRESSES,
   USERNAME_EA_REGISTRAR_CONTROLLER_ADDRESSES,
   USERNAME_REGISTRAR_CONTROLLER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
-import {
-  ALLOWED_IMAGE_TYPE,
-  MAX_IMAGE_SIZE_IN_MB,
-} from 'apps/web/pages/api/basenames/avatar/upload';
+
 import {
   getIpfsGatewayUrl,
   IpfsUrl,
@@ -42,6 +33,31 @@ import {
 } from 'apps/web/src/utils/urls';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import { logger } from 'apps/web/src/utils/logger';
+
+// Note: The animations provided by the studio team didn't match the number from our SVGs
+//       If we replace those, double check the animation avatar is the same shape as the SVG
+import animation1 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/01.json';
+import animation2 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/02.json';
+import animation3 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/03.json';
+import animation4 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/04.json';
+import animation5 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/05.json';
+import animation6 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/06.json';
+import animation7 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/07.json';
+
+import image1 from 'apps/web/src/components/Basenames/BasenameAvatar/images/1.svg';
+import image2 from 'apps/web/src/components/Basenames/BasenameAvatar/images/2.svg';
+import image3 from 'apps/web/src/components/Basenames/BasenameAvatar/images/3.svg';
+import image4 from 'apps/web/src/components/Basenames/BasenameAvatar/images/4.svg';
+import image5 from 'apps/web/src/components/Basenames/BasenameAvatar/images/5.svg';
+import image6 from 'apps/web/src/components/Basenames/BasenameAvatar/images/6.svg';
+import image7 from 'apps/web/src/components/Basenames/BasenameAvatar/images/7.svg';
+
+import { StaticImageData } from 'next/image';
+import {
+  ALLOWED_IMAGE_TYPE,
+  MAX_IMAGE_SIZE_IN_MB,
+} from 'apps/web/app/(basenames)/api/basenames/avatar/ipfsUpload/route';
 
 export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 20;
@@ -309,33 +325,6 @@ export const formatBaseEthDomain = (name: string, chainId: number): BaseName => 
   return `${name}.${USERNAME_DOMAINS[chainId] ?? '.base.eth'}`.toLocaleLowerCase() as BaseName;
 };
 
-export const getUsernamePictureIndex = (name: string, totalOptions: number) => {
-  const nameAsUint8Array = Uint8Array.from(name.split('').map((letter) => letter.charCodeAt(0)));
-  const hash = sha256(nameAsUint8Array);
-  const hashValue = parseInt(hash, 16);
-  const remainder = hashValue % totalOptions;
-  const selectedOption = remainder;
-  return selectedOption;
-};
-
-export const getUserNamePicture = (username: string) => {
-  const profilePictures = [
-    profilePictures1,
-    profilePictures2,
-    profilePictures3,
-    profilePictures4,
-    profilePictures5,
-    profilePictures6,
-    profilePictures7,
-  ];
-
-  const profilePictureIndex = getUsernamePictureIndex(username, profilePictures.length);
-
-  const selectedProfilePicture = profilePictures[profilePictureIndex] as unknown as StaticImageData;
-
-  return selectedProfilePicture;
-};
-
 export const convertChainIdToCoinType = (chainId: number): string => {
   // L1 resolvers to addr
   if (chainId === mainnet.id) {
@@ -408,7 +397,7 @@ export async function formatDefaultUsername(username: string | BaseName) {
     return formatBaseEthDomain(username, base.id);
   }
 
-  return username;
+  return username as BaseName;
 }
 
 export const getTokenIdFromBasename = (username: BaseName) => {
@@ -544,14 +533,42 @@ export async function getBasenameAddress(username: BaseName) {
   } catch (error) {}
 }
 
-// Get username token `owner`
-export function buildBasenameOwnerContract(username: BaseName): ContractFunctionParameters {
+/*
+  Get username Basename `editor` in the Base Registrar (different from NFT owner)
+*/
+export function buildBasenameEditorContract(username: BaseName): ContractFunctionParameters {
   const chain = getChainForBasename(username);
   return {
     abi: RegistryAbi,
     address: USERNAME_BASE_REGISTRY_ADDRESSES[chain.id],
     args: [namehash(username)],
     functionName: 'owner',
+  };
+}
+
+export async function getBasenameEditor(username: BaseName) {
+  const chain = getChainForBasename(username);
+
+  try {
+    const client = getBasenamePublicClient(chain.id);
+    const owner = await client.readContract(buildBasenameEditorContract(username));
+
+    return owner;
+  } catch (error) {}
+}
+
+/*
+  Get username NFT `owner` in the Base Registry (different from Basename editor)
+*/
+
+export function buildBasenameOwnerContract(username: BaseName): ContractFunctionParameters {
+  const chain = getChainForBasename(username);
+  const tokenId = getTokenIdFromBasename(username);
+  return {
+    abi: BaseRegistrarAbi,
+    address: USERNAME_BASE_REGISTRAR_ADDRESSES[chain.id],
+    args: [tokenId],
+    functionName: 'ownerOf',
   };
 }
 
@@ -578,14 +595,14 @@ export async function getBasenameAvailable(name: string, chain: Chain): Promise<
     }
 
     const available = await client.readContract({
-      address: REGISTER_CONTRACT_ADDRESSES[base.id],
+      address: REGISTER_CONTRACT_ADDRESSES[chain.id],
       abi: REGISTER_CONTRACT_ABI,
       functionName: 'available',
       args: [normalizedName],
     });
     return available;
   } catch (error) {
-    console.error('Error checking name availability:', error);
+    logger.error('Error checking name availability:', error);
     throw error;
   }
 }
@@ -629,6 +646,58 @@ export async function getBasenameTextRecords(username: BaseName) {
     return textRecords;
   } catch (error) {}
 }
+
+/*
+  Reclaim a Basename contrat write method
+*/
+export function buildBasenameReclaimContract(
+  username: BaseName,
+  address: Address,
+): ContractFunctionParameters {
+  const chain = getChainForBasename(username);
+  const tokenId = getTokenIdFromBasename(username);
+  return {
+    abi: BaseRegistrarAbi,
+    address: USERNAME_BASE_REGISTRAR_ADDRESSES[chain.id],
+    args: [tokenId, address],
+    functionName: 'reclaim',
+  };
+}
+
+/*
+  Basename avatar / animations
+*/
+
+export const getUsernamePictureIndex = (name: string, totalOptions: number) => {
+  const nameAsUint8Array = Uint8Array.from(name.split('').map((letter) => letter.charCodeAt(0)));
+  const hash = sha256(nameAsUint8Array);
+  const hashValue = parseInt(hash, 16);
+  const remainder = hashValue % totalOptions;
+  const selectedOption = remainder;
+  return selectedOption;
+};
+
+export const getBasenameAnimation = (username: string) => {
+  const animations = [
+    animation1,
+    animation2,
+    animation3,
+    animation4,
+    animation5,
+    animation6,
+    animation7,
+  ];
+  const profilePictureIndex = getUsernamePictureIndex(username, animations.length);
+  const selectedAnimation = animations[profilePictureIndex];
+  return selectedAnimation;
+};
+
+export const getBasenameImage = (username: string) => {
+  const images = [image1, image2, image3, image4, image5, image6, image7];
+  const profilePictureIndex = getUsernamePictureIndex(username, images.length);
+  const selectedAnimation = images[profilePictureIndex] as StaticImageData;
+  return selectedAnimation;
+};
 
 /*
   Feature flags

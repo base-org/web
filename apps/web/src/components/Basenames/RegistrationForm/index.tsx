@@ -14,10 +14,12 @@ import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationC
 import RegistrationLearnMoreModal from 'apps/web/src/components/Basenames/RegistrationLearnMoreModal';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import Label from 'apps/web/src/components/Label';
+import Tooltip from 'apps/web/src/components/Tooltip';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import { usePremiumEndDurationRemaining } from 'apps/web/src/hooks/useActiveEthPremiumAmount';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
 import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
 import {
   useDiscountedNameRegistrationPrice,
@@ -25,12 +27,12 @@ import {
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
 import { useRentPrice } from 'apps/web/src/hooks/useRentPrice';
-import { IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
+import { formatBaseEthDomain, IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import { formatEther, zeroAddress } from 'viem';
-import { useAccount, useBalance, useChains, useReadContract, useSwitchChain } from 'wagmi';
+import { useAccount, useBalance, useReadContract, useSwitchChain } from 'wagmi';
 
 function formatEtherPrice(price?: bigint) {
   if (price === undefined) {
@@ -53,19 +55,20 @@ function formatUsdPrice(price: bigint, ethUsdPrice: number) {
 
 export default function RegistrationForm() {
   const { isConnected, chain: connectedChain, address } = useAccount();
-  const chains = useChains();
+
   const { openConnectModal } = useConnectModal();
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
+
   const switchToIntendedNetwork = useCallback(
     () => switchChain({ chainId: basenameChain.id }),
     [basenameChain.id, switchChain],
   );
   const isOnSupportedNetwork = useMemo(
-    () => connectedChain && chains.includes(connectedChain),
-    [connectedChain, chains],
+    () => connectedChain && supportedChainIds.includes(connectedChain.id),
+    [connectedChain],
   );
 
   const {
@@ -132,6 +135,9 @@ export default function RegistrationForm() {
     data: registerNameTransactionHash,
     isPending: registerNameTransactionIsPending,
     error: registerNameError,
+    reverseRecord,
+    setReverseRecord,
+    hasExistingBasename,
   } = useRegisterNameCallback(
     selectedName,
     price,
@@ -152,6 +158,11 @@ export default function RegistrationForm() {
       logError(error, 'Failed to register name');
     });
   }, [logError, registerName]);
+
+  const onChangeReverseRecord = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => setReverseRecord(event.target.checked),
+    [setReverseRecord],
+  );
 
   const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
   const insufficientBalanceToRegister =
@@ -217,6 +228,33 @@ export default function RegistrationForm() {
                   <PlusIcon width="14" height="14" className="fill-[#32353D]" />
                 </button>
               </div>
+              {hasExistingBasename && (
+                <Label
+                  className="mt-4 flex w-full items-center justify-center gap-2 text-center"
+                  htmlFor="reverseRecord"
+                >
+                  <input
+                    type="checkbox"
+                    checked={reverseRecord}
+                    onChange={onChangeReverseRecord}
+                    id="reverseRecord"
+                  />
+                  <span className="flex flex-row items-center gap-2 text-sm">
+                    Set as Primary Name
+                    <Tooltip
+                      content={
+                        <>
+                          This will cause apps that support basenames to resolve{' '}
+                          <strong>{formatBaseEthDomain(selectedName, basenameChain.id)}</strong>{' '}
+                          when looking up your address.
+                        </>
+                      }
+                    >
+                      <Icon name="info" color="currentColor" width="0.8rem" height="0.8rem" />
+                    </Tooltip>
+                  </span>
+                </Label>
+              )}
             </div>
             <div className="min-w-[14rem] self-start text-left">
               <p className="text-line mb-2 text-sm font-bold uppercase">Amount</p>
