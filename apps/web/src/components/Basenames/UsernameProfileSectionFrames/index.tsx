@@ -15,27 +15,23 @@ import { useCallback } from 'react';
 import { FrameProvider } from './Context';
 import cornerGarnish from './corner-garnish.svg';
 import frameIcon from './frame-icon.svg';
+import Link from 'next/link';
 
 function SectionContent() {
   const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
-  const { existingTextRecords } = useReadBaseEnsTextRecords({
+  const { existingTextRecords, existingTextRecordsIsLoading } = useReadBaseEnsTextRecords({
     address: profileAddress,
     username: profileUsername,
   });
   const homeframeUrl = existingTextRecords[UsernameTextRecordKeys.Frame];
-  const {
-    openFrameManagerModal,
-    frameInteractionError,
-    setFrameInteractionError,
-    pendingFrameChange,
-  } = useFrameContext();
+  const { frameInteractionError, setFrameInteractionError, pendingFrameChange } = useFrameContext();
 
   const handleErrorClick = useCallback(
     () => setFrameInteractionError(''),
     [setFrameInteractionError],
   );
 
-  if (currentWalletIsProfileOwner && !homeframeUrl) {
+  if (currentWalletIsProfileOwner && !homeframeUrl && !existingTextRecordsIsLoading) {
     return (
       <section className="relative flex flex-row-reverse items-center justify-between gap-0 rounded-xl border border-palette-line/20 pb-5 pl-5 pt-5 lg:flex-row lg:justify-start lg:gap-2 lg:pb-0 lg:pl-1 lg:pr-6 lg:pt-0">
         <ImageAdaptive alt="" src={frameIcon as StaticImageData} className="z-1" />
@@ -44,24 +40,19 @@ function SectionContent() {
           <p className="max-w-80 text-illoblack">
             Add fun and interactive experiences to your profile with a frame.
           </p>
-          <Button
-            rounded
-            disabled={pendingFrameChange}
-            variant={ButtonVariants.Black}
-            onClick={openFrameManagerModal}
-            className="mt-1 lg:hidden"
+          <Link
+            href={`/name/${profileUsername}/configure-frames`}
+            className="mt-1 rounded-xl bg-illoblack text-white lg:hidden"
           >
             Try it now
-          </Button>
+          </Link>
         </div>
-        <Button
-          rounded
-          variant={ButtonVariants.Black}
-          onClick={openFrameManagerModal}
-          className="hidden lg:block"
+        <Link
+          href={`/name/${profileUsername}/configure-frames`}
+          className="hidden rounded-xl bg-illoblack text-white lg:block"
         >
           Try it now
-        </Button>
+        </Link>
         <ImageAdaptive
           alt=""
           src={cornerGarnish as StaticImageData}
@@ -76,9 +67,12 @@ function SectionContent() {
       <div className="flex flex-row justify-between">
         <UsernameProfileSectionTitle title="Frames" />
         {currentWalletIsProfileOwner && (
-          <Button className="text-sm text-palette-foregroundMuted" onClick={openFrameManagerModal}>
+          <Link
+            className="text-sm text-palette-foregroundMuted"
+            href={`/name/${profileUsername}/configure-frames`}
+          >
             + Add Frame
-          </Button>
+          </Link>
         )}
       </div>
       <div>
