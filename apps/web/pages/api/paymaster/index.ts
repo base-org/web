@@ -35,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.json({ result });
     }
   } catch (e) {
-    logger.error(e);
+    logger.error('error validating paymaster', e);
     return res.status(500).json({ error: 'something went wrong validating ' });
   }
 }

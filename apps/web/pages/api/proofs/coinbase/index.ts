@@ -10,6 +10,7 @@ import {
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Address } from 'viem';
+import tracer from 'apps/web/tracer/tracer';
 
 // Coinbase verified account *and* CB1 structure
 export type CoinbaseProofResponse = {
@@ -40,6 +41,8 @@ export type CoinbaseProofResponse = {
  * @returns
  */
 async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // leave in for testing for now
+  tracer.dogstatsd.increment('proofs.coinbase.endpoint.hit');
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
@@ -60,11 +63,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     );
     return res.status(200).json(result);
   } catch (error) {
-    logger.error(error);
     if (error instanceof ProofsException) {
       return res.status(error.statusCode).json({ error: error.message });
     }
-    logger.error(error);
+    logger.error('error getting proofs for cb1 discount', error);
   }
 
   // If error is not an instance of Error, return a generic error message

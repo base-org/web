@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(200).json({ result: proof });
     }
   } catch (error) {
-    logger.error(error);
+    logger.error('error getting message', error);
   }
 
   return res.status(404).json({ error: 'address is not eligible for the nft' });

@@ -1,4 +1,5 @@
 import { cdpPost } from 'apps/web/src/cdp/utils';
+import { logger } from 'apps/web/src/utils/logger';
 
 type ErrorResponse = {
   code: number;
@@ -50,7 +51,7 @@ export async function queryCbGpt(query: CbGptQuery): Promise<QueryCbGptResponse>
       `Unexpected error: ${response.statusText}, Response: ${JSON.stringify(errorResponse)}`,
     );
   } catch (error) {
-    console.error('Error querying cb-gpt:', error);
+    logger.error('Error querying cb-gpt:', error);
     throw error;
   }
 }

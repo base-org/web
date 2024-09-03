@@ -36,10 +36,17 @@ export function withTimeout(
     } catch (error) {
       if (error instanceof Error) {
         if (error.message === 'Request timed out') {
-          logger.error('Request timed out');
+          logger.error('Request timed out', error, {
+            endpoint_url: req.url,
+            params: req.query,
+          });
           return res.status(408).json({ error: 'Request timed out' });
         }
       }
+      logger.error('Error in withTimeout', error, {
+        endpoint_url: req.url,
+        params: req.query,
+      });
       return res.status(500).json({ error: 'Something went wrong' });
     }
   };

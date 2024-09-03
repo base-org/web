@@ -17,7 +17,7 @@ export function getBasenamePublicClient(chainId: number) {
   });
 }
 
-const supportedChainIds: number[] = [base.id, baseSepolia.id];
+export const supportedChainIds: number[] = [base.id, baseSepolia.id];
 export function isBasenameSupportedChain(chainId: number) {
   return supportedChainIds.includes(chainId);
 }

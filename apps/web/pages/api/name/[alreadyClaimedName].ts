@@ -61,7 +61,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ApiResponse>) {
     res.status(200).json({ suggestion: JSON.parse(suggestion.response) as string[] });
   } catch (e) {
     if (e instanceof Error) {
-      logger.error(e);
+      logger.error('error generating sugestions', e);
       res.status(500).json({ error: `failed to generate suggestions` });
     }
   }
