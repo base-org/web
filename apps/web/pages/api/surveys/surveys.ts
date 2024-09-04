@@ -176,7 +176,7 @@ export async function postUserResponse(
     .values({
       survey_id: surveyId,
       answer: JSON.stringify(answer),
-      user_address: userAddress,
+      user_address: userAddress ?? 'NoAddress',
       user_id: userId ?? 'NotAFrameResponse',
     })
     .returning(['survey_id', 'answer', 'user_address', 'user_id'])

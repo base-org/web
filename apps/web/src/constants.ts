@@ -73,3 +73,4 @@ export const ampDeploymentKey = isDevelopment
   : 'client-agFoQg5AOvZ2ZiOChny9RrGk21jG3VrH';
 
 export const DOMAIN = isDevelopment ? `http://localhost:3000` : 'https://www.base.org';
+export const NEYNAR_API_KEY = process.env.NEXT_PUBLIC_NEYNAR_API_KEY;

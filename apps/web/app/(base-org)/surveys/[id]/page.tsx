@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
-import { getFrameMetadata } from '@coinbase/onchainkit/frame';
-import { DOMAIN } from 'apps/web/src/constants';
-import { getAllSurveys, getSurvey } from 'apps/web/pages/api/surveys/surveys';
+import { getAllSurveyQuestionsAndAnswerOptions, getAllSurveys, getSurvey } from 'apps/web/pages/api/surveys/surveys';
 import SurveyContent from 'apps/web/src/components/Surveys/SurveyContent';
 import { initialFrame } from 'apps/web/pages/api/surveys/frame/frameResponses';
 
@@ -23,17 +21,17 @@ type SurveyProps = {
 
 export async function generateMetadata({ params }: SurveyProps): Promise<Metadata> {
   const survey = await getSurvey(params.id);
-
+  const questionsWithAnswerOptions = await getAllSurveyQuestionsAndAnswerOptions(params.id)
   return {
     title: 'Based Surveys',
-    description: 'LFG',
+    description: 'Base <3 Builders',
     openGraph: {
       title: 'Base.org | Surveys',
-      description: 'LFGooooo',
+      description: 'Base <3 Builders',
       images: ['https://base.org/images/base-open-graph.png'],
     },
     other: {
-      ...(initialFrame(survey) as Record<string, string>),
+      ...(initialFrame(survey, questionsWithAnswerOptions) as Record<string, string>),
     },
   };
 }
