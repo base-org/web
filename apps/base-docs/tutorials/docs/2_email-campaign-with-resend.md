@@ -183,7 +183,7 @@ export default function Page() {
 }
 ```
 
-import **useState** and **useEffect** react hooks and create the following state variables
+Use react hooks and create the following state variables
 
 ```
 import { useState, useEffect } from  'react';
