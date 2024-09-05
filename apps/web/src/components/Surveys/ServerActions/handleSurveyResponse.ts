@@ -18,7 +18,7 @@ export default async function handleSurveySubmission(
   userAddress: `0x${string}`,
 ) {
   try {
-    const isValid = validateSurveyResonse(survey, surveyResponse);
+    const isValid = await validateSurveyResonse(survey, surveyResponse);
     if (!isValid) {
       throw new Error('Invalid response.');
     }

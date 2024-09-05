@@ -25,12 +25,22 @@ export default function SurveyConfirmationAndSubmission({
   surveyResponse,
   surveySubmissionStatusUpdater,
 }: SurveySubmissionProps) {
-  const createHandleSurveySubmission = useCallback(async () => {
-    const response = await handleSurveySubmission(survey, surveyResponse, userAddress);
-    if (response?.status === 200) {
-      surveySubmissionStatusUpdater(SurveySubmissionStatus.Succeeded);
-    }
-  }, []);
+  // const createHandleSurveySubmission = useCallback(async () => {
+  //   const response = await handleSurveySubmission(survey, surveyResponse, userAddress);
+  //   if (response?.status === 200) {
+  //     surveySubmissionStatusUpdater(SurveySubmissionStatus.Succeeded);
+  //   }
+  // }, [survey, surveyResponse, surveySubmissionStatusUpdater, userAddress]);
+
+  const createHandleSurveySubmission = useCallback(() => {
+    handleSurveySubmission(survey, surveyResponse, userAddress)
+      .then((result) => {
+        if (result?.status === 200) {
+          surveySubmissionStatusUpdater(SurveySubmissionStatus.Succeeded);
+        }
+      })
+      .catch((error) => console.log(error));
+  }, [survey, surveyResponse, surveySubmissionStatusUpdater, userAddress]);
 
   return (
     <div className="flex flex-col items-start justify-start">

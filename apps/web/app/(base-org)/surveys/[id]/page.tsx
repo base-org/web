@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
-import { getAllSurveyQuestionsAndAnswerOptions, getAllSurveys, getSurvey } from 'apps/web/pages/api/surveys/surveys';
+import {
+  getAllSurveyQuestionsAndAnswerOptions,
+  getAllSurveys,
+  getSurvey,
+} from 'apps/web/pages/api/surveys/surveys';
 import SurveyContent from 'apps/web/src/components/Surveys/SurveyContent';
 import { initialFrame } from 'apps/web/pages/api/surveys/frame/frameResponses';
 
@@ -21,7 +25,13 @@ type SurveyProps = {
 
 export async function generateMetadata({ params }: SurveyProps): Promise<Metadata> {
   const survey = await getSurvey(params.id);
-  const questionsWithAnswerOptions = await getAllSurveyQuestionsAndAnswerOptions(params.id)
+  if (!survey) {
+    return;
+  }
+  const questionsWithAnswerOptions = await getAllSurveyQuestionsAndAnswerOptions(params.id);
+  if (!questionsWithAnswerOptions) {
+    return;
+  }
   return {
     title: 'Based Surveys',
     description: 'Base <3 Builders',

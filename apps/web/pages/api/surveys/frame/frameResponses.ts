@@ -1,5 +1,5 @@
 import { getFrameMetadata, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
-import { FrameMetadataResponse } from '@coinbase/onchainkit/frame/types';
+import { type FrameMetadataResponse } from '@coinbase/onchainkit/frame/types';
 import { DOMAIN } from 'apps/web/src/constants';
 import {
   Survey,
@@ -19,10 +19,10 @@ export type ConfirmationFrameState = {
   responses: UserQuestionResponse[];
 };
 
-export const initialFrame: FrameMetadataResponse = (
+export const initialFrame = (
   survey: Survey,
   questionsWithAnswerOptions: SurveyQuestionWithAnswerOptions[],
-) =>
+): FrameMetadataResponse =>
   getFrameMetadata({
     buttons: [
       {
@@ -41,13 +41,13 @@ export const initialFrame: FrameMetadataResponse = (
     },
   });
 
-export const questionFrame: FrameMetadataResponse = (
+export const questionFrame = (
   surveyId: number,
   index: number,
   currentQuestion: SurveyQuestionWithAnswerOptions,
   questions: SurveyQuestionWithAnswerOptions[],
   responses: UserQuestionResponse[],
-) => {
+): string => {
   const frameAnswerOptions =
     currentQuestion.question.question_type === 'Multiple Choice'
       ? {
@@ -85,7 +85,7 @@ export const questionFrame: FrameMetadataResponse = (
   });
 };
 
-export const confirmationFrame = (surveyId: number, responses: UserQuestionResponse[]) => {
+export const confirmationFrame = (surveyId: number, responses: UserQuestionResponse[]): string => {
   const formattedResponses = encodeURIComponent(JSON.stringify(responses));
 
   return getFrameHtmlResponse({
@@ -101,7 +101,7 @@ export const confirmationFrame = (surveyId: number, responses: UserQuestionRespo
   });
 };
 
-export const successFrame = () => {
+export const successFrame = (): string => {
   const thankYou = 'Thank you for your submission!'
 
   return getFrameHtmlResponse({

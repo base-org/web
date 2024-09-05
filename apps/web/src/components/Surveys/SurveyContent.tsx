@@ -46,9 +46,9 @@ export default function SurveyContent({ survey }: SurveyContentProps) {
     }
 
     if (surveyStatus === SurveyStatus.Unloaded) {
-      getSurveyData();
+      void getSurveyData();
     }
-  }, [surveyStatus]);
+  }, [survey.id, surveyStatus]);
 
   useEffect(() => {
     if (
@@ -57,7 +57,7 @@ export default function SurveyContent({ survey }: SurveyContentProps) {
     ) {
       setSurveyStatus(SurveyStatus.Completed);
     }
-  }, [surveyResponse]);
+  }, [surveyQuestions.length, surveyResponse, surveyStatus]);
 
   useEffect(() => {
     if (surveySubmissionStatus === SurveySubmissionStatus.Succeeded) {

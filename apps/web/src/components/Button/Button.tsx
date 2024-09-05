@@ -2,6 +2,8 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 
+export type ButtonType = 'button' | 'submit' | 'reset';
+
 export enum ButtonVariants {
   Primary = 'primary',
   Secondary = 'secondary',
@@ -39,7 +41,7 @@ const sizeStyles = {
 };
 
 export type ButtonProps = {
-  type?: 'button' | 'submit' | 'reset';
+  type?: ButtonType;
   variant?: ButtonVariants;
   size?: ButtonSizes;
   rounded?: boolean;
@@ -71,6 +73,7 @@ export function Button({
   );
 
   return (
+    // eslint-disable-next-line react/button-has-type
     <button {...props} type={type} className={buttonClasses} disabled={disabled}>
       {isLoading ? (
         <span className="flex justify-center">

@@ -27,11 +27,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const userAddress = message.address;
     const userId = message.interactor.fid;
 
-    const messageState = JSON.parse(decodeURIComponent(message.state?.serialized));
+    const messageState = JSON.parse(decodeURIComponent(message.state?.serialized ?? '')) as ConfirmationFrameState;
     if (!messageState) {
       throw new Error('No message state received');
     }
-    const { surveyId, responses } = messageState as ConfirmationFrameState;
+    const { surveyId, responses } = messageState;
     if (!responses || responses.length === 0) {
       throw new Error('Invalid responses received');
     }

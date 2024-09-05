@@ -1,6 +1,6 @@
 'use client';
 
-import { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction, useCallback, useState } from 'react';
 import {
   AnswerOption,
   SurveyQuestionWithAnswerOptions,
@@ -32,7 +32,12 @@ export default function SurveyBody({ surveyData, surveyResponseUpdater }: Survey
         setQuestionIndex(questionIndex + 1);
       }
     },
-    [surveyData, questionIndex],
+    [surveyResponseUpdater, surveyData, questionIndex],
+  );
+
+  const handleInputChange = useCallback(
+    (e: ChangeEvent<HTMLTextAreaElement>) => setInputValue(e.target.value),
+    [setInputValue],
   );
 
   const handleFormSubmit = useCallback(
@@ -50,7 +55,7 @@ export default function SurveyBody({ surveyData, surveyResponseUpdater }: Survey
         setQuestionIndex(questionIndex + 1);
       }
     },
-    [surveyData, questionIndex, inputValue],
+    [surveyResponseUpdater, surveyData, questionIndex, inputValue],
   );
 
   return (
@@ -70,12 +75,13 @@ export default function SurveyBody({ surveyData, surveyResponseUpdater }: Survey
           ))
         ) : (
           <form onSubmit={handleFormSubmit} className="flex flex-col items-center">
-            <label htmlFor="inputValue">
+            <label htmlFor="inputValue" className="flex flex-col items-start">
+              Response:
               <textarea
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={handleInputChange}
                 id="inputValue"
                 name="inputValue"
-                placeholder="..."
+                placeholder="Input your response..."
                 className="mb-4 h-[100px] w-[400px] resize-none px-4 py-2 text-xl text-black"
                 value={inputValue}
               />
