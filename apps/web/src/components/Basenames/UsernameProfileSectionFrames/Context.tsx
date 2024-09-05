@@ -54,7 +54,7 @@ export type FrameContextValue = {
     frameContext: FarcasterFrameContext;
   };
   farcasterSignerState: FarcasterSignerInstance;
-  anonSignerState: SignerStateInstance<AnonymousSigner> | AnonymousSignerInstance;
+  anonSignerState: SignerStateInstance<AnonymousSigner>;
   showFarcasterQRModal: boolean;
   pendingFrameChange: boolean;
   setShowFarcasterQRModal: (b: boolean) => void;
@@ -76,7 +76,7 @@ type FrameProviderProps = {
 };
 
 export function FrameProvider({ children }: FrameProviderProps) {
-  const [frameManagerModalOpen, setFrameManagerModalOpen] = useState(false);
+  const [frameManagerModalOpen, setFrameManagerModalOpen] = useState(true);
   const openFrameManagerModal = useCallback(() => setFrameManagerModalOpen(true), []);
   const closeFrameManagerModal = useCallback(() => setFrameManagerModalOpen(false), []);
   const [showFarcasterQRModal, setShowFarcasterQRModal] = useState(false);
