@@ -53,6 +53,7 @@ export default function SurveyContent({ survey }: SurveyContentProps) {
   useEffect(() => {
     if (
       surveyStatus !== SurveyStatus.Unloaded &&
+      surveyStatus !== SurveyStatus.Succeeded &&
       surveyResponse.length === surveyQuestions.length
     ) {
       setSurveyStatus(SurveyStatus.Completed);
@@ -72,6 +73,8 @@ export default function SurveyContent({ survey }: SurveyContentProps) {
       </div>
     );
   }
+
+  console.log({surveyQuestions, surveyStatus})
 
   return (
     <div className="flex flex-col items-center p-10">

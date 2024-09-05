@@ -185,6 +185,6 @@ export async function postUserResponse(
   return {
     status: 200,
     userResponse,
-    message: 'you fucking rock',
+    message: 'User response recorded.',
   };
 }
