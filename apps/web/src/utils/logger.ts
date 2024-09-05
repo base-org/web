@@ -2,7 +2,6 @@ type LogLevel = 'info' | 'warn' | 'error' | 'debug' | 'verbose';
 
 type LoggerOptions = {
   service: string;
-  datadogApiKey: string;
 };
 
 class CustomLogger {
@@ -10,11 +9,8 @@ class CustomLogger {
 
   private service: string;
 
-  private datadogApiKey: string;
-
   private constructor(options: LoggerOptions) {
     this.service = options.service;
-    this.datadogApiKey = options.datadogApiKey;
   }
 
   public static getInstance(options: LoggerOptions): CustomLogger {
@@ -24,42 +20,13 @@ class CustomLogger {
     return CustomLogger.instance;
   }
 
-  private async sendToDatadog(level: LogLevel, message: string, meta?: Record<string, unknown>) {
-    const log = {
-      level,
-      message,
-      service: this.service,
-      ...meta,
-    };
-
-    try {
-      await fetch(
-        `https://http-intake.logs.datadoghq.com/api/v2/logs?dd-api-key=${this.datadogApiKey}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(log),
-        },
-      );
-    } catch (error) {
-      console.error('Failed to send log to Datadog', error);
-    }
-  }
-
   private log(level: LogLevel, message: string, meta?: Record<string, unknown>) {
     if (level === 'debug' || level === 'verbose' || level === 'info') {
-      console.log(message, meta);
+      console.log(`[${this.service}] ${message}`, meta);
     } else if (typeof console[level] === 'function') {
-      console[level](message, meta);
+      console[level](`[${this.service}] ${message}`, meta);
     } else {
-      console.log(message, meta);
-    }
-    if (typeof window === 'undefined') {
-      this.sendToDatadog(level, message, meta).catch(() => {
-        console.error('Failed to send log to Datadog');
-      });
+      console.log(`[${this.service}] ${message}`, meta);
     }
   }
 
@@ -106,5 +73,4 @@ class CustomLogger {
 // Usage example
 export const logger = CustomLogger.getInstance({
   service: 'base-org',
-  datadogApiKey: process.env.DD_API_KEY ?? '',
 });
