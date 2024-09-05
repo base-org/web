@@ -22,7 +22,7 @@ export function useAddFollowsCallback(
   name: string,
   follows: string[],
 ): UseAddFollowsCallbackReturnValue {
-  const { address, chainId, isConnected, connector } = useAccount();
+  const { address, chainId, isConnected } = useAccount();
   const { basenameChain } = useBasenameChain();
   const { logError } = useErrors();
   const { writeContractsAsync } = useWriteContracts();
@@ -87,6 +87,8 @@ export function useAddFollowsCallback(
     address,
     chainId,
     basenameChain.id,
+    name,
+    follows,
     logEventWithContext,
     switchChainAsync,
     capabilities,
