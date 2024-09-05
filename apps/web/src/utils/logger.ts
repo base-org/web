@@ -37,11 +37,11 @@ class CustomLogger {
     };
 
     if (level === 'debug' || level === 'verbose' || level === 'info') {
-      console.log(JSON.stringify(logEntry), meta);
+      console.log(logEntry);
     } else if (typeof console[level] === 'function') {
-      console[level](logEntry, meta);
+      console[level](logEntry);
     } else {
-      console.log(logEntry, meta);
+      console.log(logEntry);
     }
   }
 
