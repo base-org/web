@@ -3,7 +3,7 @@ import { FeatureCard } from 'apps/web/src/components/Features/FeatureCard';
 function OpenSourceDescription() {
   return (
     <p className="text-md font-sans text-white">
-      Base is built on Optimism’s open-source{' '}
+      Base is built on the Superchain&apos;s{' '}
       <a href="http://optimism.io" target="_blank" rel="noreferrer noopener" className="underline">
         OP Stack
       </a>
