@@ -16,24 +16,31 @@ import {
 /* Settings tabs */
 export enum SettingsTabs {
   ManageProfile = 'manage-profile',
+  ManageFriends = 'manage-friends',
   Ownership = 'ownership',
   Subdomain = 'subdomain',
 }
 
 export const settingTabsForDisplay = {
   [SettingsTabs.ManageProfile]: 'Manage Profile',
+  [SettingsTabs.ManageFriends]: 'Manage Friends',
   [SettingsTabs.Ownership]: 'Ownership',
   [SettingsTabs.Subdomain]: 'Subdomain',
 };
 
 export const allSettingsTabs = [
   SettingsTabs.ManageProfile,
+  SettingsTabs.ManageFriends,
   SettingsTabs.Ownership,
   SettingsTabs.Subdomain,
 ];
 
 // Other features are not yet supported
-export const settingsTabsEnabled = [SettingsTabs.ManageProfile, SettingsTabs.Ownership];
+export const settingsTabsEnabled = [
+  SettingsTabs.ManageProfile,
+  SettingsTabs.ManageFriends,
+  SettingsTabs.Ownership,
+];
 
 /* Context */
 export type UsernameProfileSettingsContextProps = {

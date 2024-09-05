@@ -12,6 +12,7 @@ import {
 import UsernameProfileSettingsMenu from 'apps/web/src/components/Basenames/UsernameProfileSettingsMenu';
 import UsernameProfileSettingsName from 'apps/web/src/components/Basenames/UsernameProfileSettingsName';
 import UsernameProfileSettingsManageProfile from 'apps/web/src/components/Basenames/UsernameProfileSettingsManageProfile';
+import UsernameProfileSettingsManageFriends from 'apps/web/src/components/Basenames/UsernameProfileSettingsManageFriends';
 import UsernameProfileSettingsAvatar from 'apps/web/src/components/Basenames/UsernameProfileSettingsAvatar';
 import UsernameProfileSettingsOwnership from 'apps/web/src/components/Basenames/UsernameProfileSettingsOwnership';
 
@@ -58,6 +59,9 @@ export default function UsernameProfileSettings() {
           </h2>
           {currentSettingsTab === SettingsTabs.ManageProfile && (
             <UsernameProfileSettingsManageProfile />
+          )}
+          {currentSettingsTab === SettingsTabs.ManageFriends && (
+            <UsernameProfileSettingsManageFriends />
           )}
           {currentSettingsTab === SettingsTabs.Ownership && <UsernameProfileSettingsOwnership />}
         </div>
