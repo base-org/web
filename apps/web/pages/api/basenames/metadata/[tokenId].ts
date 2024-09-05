@@ -1,10 +1,15 @@
+import { BaseName } from '@coinbase/onchainkit/identity';
 import { premintMapping } from 'apps/web/pages/api/basenames/metadata/premintsMapping';
 import L2Resolver from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { isDevelopment } from 'apps/web/src/constants';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import { logger } from 'apps/web/src/utils/logger';
-import { formatBaseEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
+import {
+  formatBaseEthDomain,
+  getBasenameNameExpires,
+  USERNAME_DOMAINS,
+} from 'apps/web/src/utils/usernames';
 import { NextResponse } from 'next/server';
 import { encodePacked, keccak256, namehash, toHex } from 'viem';
 import { base } from 'viem/chains';
@@ -37,6 +42,7 @@ export default async function GET(request: Request) {
   );
 
   let basenameFormatted = undefined;
+  let nameExpires = undefined;
   try {
     const client = getBasenamePublicClient(chainId);
     basenameFormatted = await client.readContract({
@@ -45,6 +51,7 @@ export default async function GET(request: Request) {
       args: [namehashNode],
       functionName: 'name',
     });
+    nameExpires = await getBasenameNameExpires(basenameFormatted as BaseName);
   } catch (error) {
     logger.error('Error getting token metadata', error);
   }
@@ -72,6 +79,8 @@ export default async function GET(request: Request) {
 
     // A human-readable description of the item. Markdown is supported.
     name: basenameFormatted,
+
+    nameExpires: Number(nameExpires),
 
     // TODO: attributes?
   };
