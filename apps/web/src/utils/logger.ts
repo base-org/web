@@ -1,3 +1,5 @@
+import ddTrace from 'dd-trace';
+
 type LogLevel = 'info' | 'warn' | 'error' | 'debug' | 'verbose';
 
 type LoggerOptions = {
@@ -10,6 +12,7 @@ class CustomLogger {
   private service: string;
 
   private constructor(options: LoggerOptions) {
+    ddTrace.init();
     this.service = options.service;
   }
 
@@ -20,14 +23,33 @@ class CustomLogger {
     return CustomLogger.instance;
   }
 
-  private log(level: LogLevel, message: string, meta?: Record<string, unknown>) {
+  private createDatadogLog(level: LogLevel, message: string, meta?: Record<string, unknown>) {
+    const activeSpan = ddTrace.tracer.scope().active();
+    const traceId = activeSpan?.context().toTraceId() ?? '0';
+    const spanId = activeSpan?.context().toSpanId() ?? '0';
+
+    const logEntry = {
+      message: `[${this.service}] ${message}`,
+      level,
+      dd: {
+        trace_id: traceId,
+        span_id: spanId,
+      },
+      data: meta,
+      timestamp: new Date().toISOString(),
+    };
+
     if (level === 'debug' || level === 'verbose' || level === 'info') {
-      console.log(`[${this.service}] ${message}`, meta);
+      console.log(JSON.stringify(logEntry), meta);
     } else if (typeof console[level] === 'function') {
-      console[level](`[${this.service}] ${message}`, meta);
+      console[level](JSON.stringify(logEntry), meta);
     } else {
-      console.log(`[${this.service}] ${message}`, meta);
+      console.log(JSON.stringify(logEntry), meta);
     }
+  }
+
+  private log(level: LogLevel, message: string, meta?: Record<string, unknown>) {
+    this.createDatadogLog(level, message, meta);
   }
 
   public info(message: string, meta?: Record<string, unknown>) {
