@@ -12,6 +12,9 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { FriendSearchInputProps, FriendSearchInputVariant } from './types';
+import { useAddFollowsCallback } from 'apps/web/src/hooks/useAddFollows';
+import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import { useReadFollows } from 'apps/web/src/hooks/useReadFollows';
 
 export default function FriendSearchInput({ variant, placeholder }: FriendSearchInputProps) {
   const { ref, focused } = useFocusWithin<HTMLFieldSetElement>();
@@ -35,7 +38,11 @@ export default function FriendSearchInput({ variant, placeholder }: FriendSearch
   const invalidWithMessage = !valid && !!message;
   const resetBackground = focused && debouncedScroll;
 
-  const { setSearchInputFocused, setSearchInputHovered, setSelectedName } = useRegistration();
+  const { setSearchInputFocused, setSearchInputHovered } = useRegistration();
+  const { profileUsername } = useUsernameProfile();
+
+  const { callback: addFollows } = useAddFollowsCallback(profileUsername);
+  const { data: follows } = useReadFollows(profileUsername);
 
   const handleSearchChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -172,9 +179,9 @@ export default function FriendSearchInput({ variant, placeholder }: FriendSearch
   const handleSelectFriend = useCallback(
     (name: string) => {
       setDropdownOpen(false);
-      setSelectedName(name.trim());
+      void addFollows([name]);
     },
-    [setSelectedName],
+    [addFollows],
   );
 
   const resetSearch = useCallback(() => {
@@ -239,8 +246,16 @@ export default function FriendSearchInput({ variant, placeholder }: FriendSearch
         {invalidWithMessage ? (
           <p className={mutedMessage}>{message}</p>
         ) : isNameAvailable === true ? (
+          <p className={`${dropdownLabelClasses} hidden md:block`}>Couldn't find this friend</p>
+        ) : isLoading || isFetching ? (
+          <div className={spinnerWrapperClasses}>
+            <Icon name="spinner" color="currentColor" />
+          </div>
+        ) : errorCheckingNameAvailability ? (
+          <p className={mutedMessage}>There was an error searching for this friend</p>
+        ) : (
           <>
-            <p className={`${dropdownLabelClasses} hidden md:block`}>Available</p>
+            <p className={`${dropdownLabelClasses} hidden md:block`}>Found friend!</p>
             <button className={buttonClasses} type="button" onClick={selectName}>
               <span className="truncate">
                 {formatBaseEthDomain(debouncedSearch, basenameChain.id)}
@@ -248,18 +263,6 @@ export default function FriendSearchInput({ variant, placeholder }: FriendSearch
               <ChevronRightIcon width={iconSize} height={iconSize} />
             </button>
           </>
-        ) : isLoading || isFetching ? (
-          <div className={spinnerWrapperClasses}>
-            <Icon name="spinner" color="currentColor" />
-          </div>
-        ) : errorCheckingNameAvailability ? (
-          <p className={mutedMessage}>
-            There was an error checking if your desired name is available
-          </p>
-        ) : (
-          <p className={mutedMessage}>
-            {formatBaseEthDomain(debouncedSearch, basenameChain.id)} is already registered
-          </p>
         )}
       </div>
       <span className={inputIconClasses}>
