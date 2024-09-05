@@ -33,8 +33,7 @@ class CustomLogger {
         trace_id: traceId,
         span_id: spanId,
       },
-      data: meta,
-      timestamp: new Date().toISOString(),
+      ...meta,
     };
 
     if (level === 'debug' || level === 'verbose' || level === 'info') {
