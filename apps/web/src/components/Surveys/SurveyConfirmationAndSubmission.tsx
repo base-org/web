@@ -39,7 +39,7 @@ export default function SurveyConfirmationAndSubmission({
           surveySubmissionStatusUpdater(SurveySubmissionStatus.Succeeded);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   }, [survey, surveyResponse, surveySubmissionStatusUpdater, userAddress]);
 
   return (

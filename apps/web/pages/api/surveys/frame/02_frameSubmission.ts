@@ -35,7 +35,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!responses || responses.length === 0) {
       throw new Error('Invalid responses received');
     }
-    console.log('confirmation of responses:', { responses });
 
     const userSubmission = await postUserResponse(
       surveyId,

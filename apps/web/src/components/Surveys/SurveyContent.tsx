@@ -74,8 +74,6 @@ export default function SurveyContent({ survey }: SurveyContentProps) {
     );
   }
 
-  console.log({surveyQuestions, surveyStatus})
-
   return (
     <div className="flex flex-col items-center p-10">
       {surveyStatus === SurveyStatus.Unloaded ? (
