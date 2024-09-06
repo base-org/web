@@ -20,7 +20,6 @@ class CustomLogger {
   }
 
   public static getInstance(options: LoggerOptions): CustomLogger {
-    console.log('what up here?');
     if (!CustomLogger.instance) {
       CustomLogger.instance = new CustomLogger(options);
     }
@@ -31,6 +30,7 @@ class CustomLogger {
     let traceId: string | undefined;
     let spanId: string | undefined;
 
+    //TODO: initialice ddTrace through dd-tracer
     if (ddTrace) {
       // Access trace information server-side
       const currentSpan = ddTrace?.scope().active();
