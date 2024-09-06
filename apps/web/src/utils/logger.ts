@@ -30,11 +30,11 @@ class CustomLogger {
     };
 
     if (level === 'debug' || level === 'verbose' || level === 'info') {
-      console.log(logEntry);
+      console.log(JSON.stringify(logEntry));
     } else if (typeof console[level] === 'function') {
-      console[level](logEntry);
+      console[level](JSON.stringify(logEntry));
     } else {
-      console.log(logEntry);
+      console.log(JSON.stringify(logEntry));
     }
   }
 
