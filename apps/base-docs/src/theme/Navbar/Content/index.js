@@ -1,10 +1,11 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useThemeConfig, ErrorCauseBoundary } from '@docusaurus/theme-common';
 import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle';
 import NavbarItem from '@theme/NavbarItem';
 import NavbarLogo from '@theme/Navbar/Logo';
+import SuperchainLogo from '../SuperchainLogo/index';
 import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle';
 import NavbarSearch from '@theme/Navbar/Search';
 import SearchBar from '@theme/SearchBar';
@@ -42,7 +43,7 @@ ${JSON.stringify(item, null, 2)}`,
 function NavbarLayoutTopContent({ left, right }) {
   return (
     <div className="navbar__inner">
-      <div className="navbar__items">{left}</div>
+      <div className="navbar__items navbar__items--logos">{left}</div>
       <div className="navbar__items navbar__items--right">{right}</div>
     </div>
   );
@@ -75,7 +76,15 @@ export default function NavbarContent() {
   const searchBarItem = items.find((item) => item.type === 'search');
   return (
     <>
-      <NavbarLayoutTopContent left={<NavbarLogo />} right={<NavbarItems items={topRightItems} />} />
+      <NavbarLayoutTopContent
+        left={
+          <>
+            <NavbarLogo />
+            <SuperchainLogo />
+          </>
+        }
+        right={<NavbarItems items={topRightItems} />}
+      />
       <NavbarLayoutBottomContent
         left={
           <>
