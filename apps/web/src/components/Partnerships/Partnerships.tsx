@@ -17,9 +17,9 @@ export async function Partnerships() {
         />
         <div className="space-y-12 px-4">
           <p className="font-display text-sm text-white md:text-lg lg:text-xl">
-            Base is powered by Optimism&apos;s OP Stack, making it one of the most secure, scalable
-            EVM L2s out there. The OP Stack is an open-source public good that will serve as the
-            foundation for a “superchain” of L2s that share interoperability, sequencing, and
+            Base is built on the Superchain&apos;s OP Stack, making it one of the most secure,
+            scalable EVM L2s out there. The OP Stack is an open-source public good that will serve
+            as the foundation for a “superchain” of L2s that share interoperability, sequencing, and
             governance.
           </p>
           <ButtonWithLinkAndEventLogging
