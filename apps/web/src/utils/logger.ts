@@ -1,17 +1,29 @@
+// lib/logger.ts
+import type { Tracer } from 'dd-trace';
+
 type LogLevel = 'info' | 'warn' | 'error' | 'debug' | 'verbose';
 
 type LoggerOptions = {
   service: string;
 };
 
+let ddTrace: Tracer | undefined;
+
 if (typeof window === 'undefined') {
-  const ddTrace = require('dd-trace') as typeof import('dd-trace'); // Add type for dd-trace
-  ddTrace.init({
-    service: 'your-nextjs-service-name',
-    env: process.env.NODE_ENV,
-    version: '1.0.0',
-    logInjection: true,
-  });
+  // Use dynamic import to avoid build-time errors
+  import('dd-trace')
+    .then((module) => {
+      ddTrace = module.default || module; // Handle default or named export
+      ddTrace.init({
+        service: 'your-nextjs-service-name',
+        env: process.env.NODE_ENV,
+        version: '1.0.0',
+        logInjection: true,
+      });
+    })
+    .catch((err) => {
+      console.error('Failed to initialize dd-trace', err);
+    });
 }
 
 class CustomLogger {
@@ -31,7 +43,9 @@ class CustomLogger {
   }
 
   private createDatadogLog(level: LogLevel, message: string, meta?: Record<string, unknown>) {
-    var traceId, spanId;
+    const activeSpan = ddTrace?.scope().active();
+    const traceId = activeSpan?.context().toTraceId() ?? '0';
+    const spanId = activeSpan?.context().toSpanId() ?? '0';
 
     const logEntry = {
       message: `[${this.service}] ${message}`,
@@ -65,19 +79,18 @@ class CustomLogger {
   }
 
   public error(message: string, error: Error | unknown, meta?: Record<string, unknown>) {
-    var e;
-    if (error instanceof Error) {
-      e = {
-        name: error.name,
-        cause: error.cause,
-        message: error.message,
-        stack: error.stack,
-      };
-    } else {
-      e = {
-        message: JSON.stringify(error),
-      };
-    }
+    const e =
+      error instanceof Error
+        ? {
+            name: error.name,
+            cause: error.cause,
+            message: error.message,
+            stack: error.stack,
+          }
+        : {
+            message: JSON.stringify(error),
+          };
+
     if (error) {
       this.log('error', message, {
         ...meta,

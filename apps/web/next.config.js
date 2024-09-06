@@ -198,6 +198,8 @@ module.exports = extendBaseConfig(
         // Exclude fs from client-side bundles
         config.node = {
           fs: 'empty',
+          net: 'empty',
+          tls: 'empty',
         };
       }
       return config;
