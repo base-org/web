@@ -193,17 +193,6 @@ module.exports = extendBaseConfig(
         ],
       });
       config.externals.push('pino-pretty');
-
-      if (!isServer) {
-        // Exclude fs from client-side bundles
-        config.resolve.fallback = {
-          fs: false,
-          net: false,
-          tls: false,
-          path: false,
-          os: false,
-        };
-      }
       return config;
     },
     images: {

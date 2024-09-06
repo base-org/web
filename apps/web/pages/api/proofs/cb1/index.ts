@@ -34,8 +34,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
  * }
  */
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  logger.error('hello world', new Error('hello world error'), { some_meta: 'hello world meta' });
-  logger.info('this works as well', { some_meta: 'hello world meta' });
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
