@@ -1,4 +1,5 @@
 // lib/logger.ts
+
 import type { Tracer } from 'dd-trace';
 
 type LogLevel = 'info' | 'warn' | 'error' | 'debug' | 'verbose';
@@ -10,9 +11,6 @@ type LoggerOptions = {
 let ddTrace: Tracer | undefined;
 
 if (typeof window === 'undefined') {
-  require('os');
-  require('path');
-  require('fs');
   // Use dynamic import to avoid build-time errors
   import('dd-trace')
     .then((module) => {
@@ -46,9 +44,15 @@ class CustomLogger {
   }
 
   private createDatadogLog(level: LogLevel, message: string, meta?: Record<string, unknown>) {
-    const activeSpan = ddTrace?.scope().active();
-    const traceId = activeSpan?.context().toTraceId() ?? '0';
-    const spanId = activeSpan?.context().toSpanId() ?? '0';
+    let traceId: string | undefined;
+    let spanId: string | undefined;
+
+    if (ddTrace) {
+      // Access trace information server-side
+      const currentSpan = ddTrace?.scope().active();
+      traceId = currentSpan?.context().toTraceId() ?? undefined;
+      spanId = currentSpan?.context().toSpanId() ?? undefined;
+    }
 
     const logEntry = {
       message: `[${this.service}] ${message}`,
