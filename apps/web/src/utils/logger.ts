@@ -1,10 +1,14 @@
 // lib/logger.ts
 
+import type { Tracer } from 'dd-trace';
+
 type LogLevel = 'info' | 'warn' | 'error' | 'debug' | 'verbose';
 
 type LoggerOptions = {
   service: string;
 };
+
+let ddTrace: Tracer | undefined;
 
 class CustomLogger {
   private static instance: CustomLogger;
@@ -16,6 +20,7 @@ class CustomLogger {
   }
 
   public static getInstance(options: LoggerOptions): CustomLogger {
+    console.log('what up here?');
     if (!CustomLogger.instance) {
       CustomLogger.instance = new CustomLogger(options);
     }
@@ -23,9 +28,23 @@ class CustomLogger {
   }
 
   private createDatadogLog(level: LogLevel, message: string, meta?: Record<string, unknown>) {
+    let traceId: string | undefined;
+    let spanId: string | undefined;
+
+    if (ddTrace) {
+      // Access trace information server-side
+      const currentSpan = ddTrace?.scope().active();
+      traceId = currentSpan?.context().toTraceId() ?? undefined;
+      spanId = currentSpan?.context().toSpanId() ?? undefined;
+    }
+
     const logEntry = {
       message: `[${this.service}] ${message}`,
       level,
+      dd: {
+        trace_id: traceId,
+        span_id: spanId,
+      },
       ...meta,
     };
 
