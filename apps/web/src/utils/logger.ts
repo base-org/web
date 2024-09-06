@@ -38,7 +38,7 @@ class CustomLogger {
       spanId = currentSpan?.context().toSpanId() ?? undefined;
     }
 
-    const logEntry = {
+    const logEntry = JSON.stringify({
       message: `[${this.service}] ${message}`,
       level,
       dd: {
@@ -46,14 +46,22 @@ class CustomLogger {
         span_id: spanId,
       },
       ...meta,
-    };
+    });
 
-    if (level === 'debug' || level === 'verbose' || level === 'info') {
-      console.log(JSON.stringify(logEntry));
-    } else if (typeof console[level] === 'function') {
-      console[level](JSON.stringify(logEntry));
-    } else {
-      console.log(JSON.stringify(logEntry));
+    switch (level) {
+      case 'debug':
+      case 'verbose':
+      case 'info':
+        console.log(logEntry);
+        break;
+      case 'warn':
+        console.warn(logEntry);
+        break;
+      case 'error':
+        console.error(logEntry);
+        break;
+      default:
+        console.log(logEntry);
     }
   }
 
