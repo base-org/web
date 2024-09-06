@@ -1,10 +1,31 @@
 // lib/logger.ts
 
+import type { Tracer } from 'dd-trace';
+
 type LogLevel = 'info' | 'warn' | 'error' | 'debug' | 'verbose';
 
 type LoggerOptions = {
   service: string;
 };
+
+let ddTrace: Tracer | undefined;
+
+if (typeof window === 'undefined') {
+  // Use dynamic import to avoid build-time errors
+  import('dd-trace')
+    .then((module) => {
+      ddTrace = module.default || module; // Handle default or named export
+      ddTrace.init({
+        service: 'your-nextjs-service-name',
+        env: process.env.NODE_ENV,
+        version: '1.0.0',
+        logInjection: true,
+      });
+    })
+    .catch((err) => {
+      console.error('Failed to initialize dd-trace', err);
+    });
+}
 
 class CustomLogger {
   private static instance: CustomLogger;
@@ -23,9 +44,23 @@ class CustomLogger {
   }
 
   private createDatadogLog(level: LogLevel, message: string, meta?: Record<string, unknown>) {
+    let traceId: string | undefined;
+    let spanId: string | undefined;
+
+    if (ddTrace) {
+      // Access trace information server-side
+      const currentSpan = ddTrace?.scope().active();
+      traceId = currentSpan?.context().toTraceId() ?? undefined;
+      spanId = currentSpan?.context().toSpanId() ?? undefined;
+    }
+
     const logEntry = {
       message: `[${this.service}] ${message}`,
       level,
+      dd: {
+        trace_id: traceId,
+        span_id: spanId,
+      },
       ...meta,
     };
 

@@ -196,7 +196,7 @@ module.exports = extendBaseConfig(
 
       if (!isServer) {
         // Exclude fs from client-side bundles
-        config.node = {
+        config.resolve.fallback = {
           fs: false,
           net: false,
           tls: false,
