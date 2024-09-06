@@ -10,6 +10,9 @@ type LoggerOptions = {
 let ddTrace: Tracer | undefined;
 
 if (typeof window === 'undefined') {
+  require('os');
+  require('path');
+  require('fs');
   // Use dynamic import to avoid build-time errors
   import('dd-trace')
     .then((module) => {
