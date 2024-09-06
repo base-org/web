@@ -60,11 +60,15 @@ function FriendDisplay({
   removeFriend: (name: string) => void;
 }) {
   return (
-    <div className="flex flex-row items-center justify-between">
+    <div className="flex flex-row items-center justify-between gap-4">
       <div>{friend}</div>
-      <Button variant={ButtonVariants.SecondaryDark} onClick={() => removeFriend(friend)}>
+      <button
+        type="button"
+        onClick={() => removeFriend(friend)}
+        className="h-8 w-8 rounded-full bg-red-50 text-white"
+      >
         X
-      </Button>
+      </button>
     </div>
   );
 }
