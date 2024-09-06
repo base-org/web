@@ -19,16 +19,18 @@ export default function UsernameProfileSettingsManageProfile() {
   const { data: follows, ...rest } = useReadFollows(profileUsername);
   const { callback: addFollows, ...addFollowsRest } = useAddFollowsCallback(profileUsername);
 
-  const [friends, setFriends] = useState<string[]>(['test.basetest.eth', 'test2.basetest.eth']);
+  // const [friends, setFriends] = useState<string[]>(['test.basetest.eth', 'test2.basetest.eth']);
+  const { data: friends, ...friendsRest } = useReadFollows(profileUsername);
+  console.log({ friends, friendsRest });
 
   const onSubmit = useCallback((name: string) => {
-    setFriends((prev) => [...prev, name]);
+    // setFriends((prev) => [...prev, name]);
   }, []);
 
   const removeFriend = useCallback(
     (name: string) => {
       void addFollows([name]).then(() => {
-        setFriends((prev) => prev.filter((friend) => friend !== name));
+        // setFriends((prev) => prev.filter((friend) => friend !== name));
       });
     },
     [addFollows],
