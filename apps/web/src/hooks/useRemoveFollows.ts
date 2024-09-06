@@ -10,7 +10,7 @@ import { useCallback, useMemo } from 'react';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 
 type UseRemoveFollowsCallbackReturnValue = {
-  callback: () => Promise<void>;
+  callback: (follows: string[]) => Promise<void>;
   data: `0x${string}` | undefined;
   isPending: boolean;
   error: string | undefined | null;

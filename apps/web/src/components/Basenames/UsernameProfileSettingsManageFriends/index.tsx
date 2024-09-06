@@ -8,6 +8,7 @@ import { FriendSearchInputVariant } from 'apps/web/src/components/Basenames/Frie
 import { useReadFollows } from 'apps/web/src/hooks/useReadFollows';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { useAddFollowsCallback } from 'apps/web/src/hooks/useAddFollows';
+import { useRemoveFollowsCallback } from 'apps/web/src/hooks/useRemoveFollows';
 
 const settingTabClass = classNames(
   'flex flex-col justify-between gap-8 text-gray/60 md:items-center p-4 md:p-8',
@@ -21,6 +22,8 @@ export default function UsernameProfileSettingsManageProfile() {
 
   // const [friends, setFriends] = useState<string[]>(['test.basetest.eth', 'test2.basetest.eth']);
   const { data: friends, ...friendsRest } = useReadFollows(profileUsername);
+  const { callback: removeFollows, ...removeFollowsRest } =
+    useRemoveFollowsCallback(profileUsername);
   console.log({ friends, friendsRest });
 
   const onSubmit = useCallback((name: string) => {
@@ -29,11 +32,9 @@ export default function UsernameProfileSettingsManageProfile() {
 
   const removeFriend = useCallback(
     (name: string) => {
-      void addFollows([name]).then(() => {
-        // setFriends((prev) => prev.filter((friend) => friend !== name));
-      });
+      void removeFollows([name]);
     },
-    [addFollows],
+    [removeFollows],
   );
 
   return (
