@@ -8,6 +8,7 @@ export enum FriendSearchInputVariant {
 export type FriendSearchInputProps = {
   variant: FriendSearchInputVariant;
   placeholder: string;
+  onSubmit: (name: string) => void;
 };
 
 export type FriendSuggestionEntryProps = {

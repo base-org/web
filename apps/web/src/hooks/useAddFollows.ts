@@ -5,7 +5,6 @@ import { useAnalytics } from 'apps/web/contexts/Analytics';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { namehash } from 'viem';
 import { useAccount, useSwitchChain, useWriteContract } from 'wagmi';
-import { useCapabilities, useWriteContracts } from 'wagmi/experimental';
 import { useCallback, useMemo } from 'react';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 
@@ -22,21 +21,8 @@ export function useAddFollowsCallback(name: string): UseAddFollowsCallbackReturn
   const { address, chainId, isConnected } = useAccount();
   const { basenameChain } = useBasenameChain();
   const { logError } = useErrors();
-  const { writeContractsAsync } = useWriteContracts();
-
-  const { data: availableCapacities } = useCapabilities({
-    account: address,
-    query: { enabled: isConnected },
-  });
 
   const { data, writeContractAsync, isPending, error } = useWriteContract();
-
-  const capabilities = useMemo(() => {
-    if (!isConnected || !chainId || !availableCapacities) {
-      return {};
-    }
-    return {};
-  }, [availableCapacities, chainId, isConnected]);
 
   const { switchChainAsync } = useSwitchChain();
   const { logEventWithContext } = useAnalytics();
@@ -55,28 +41,13 @@ export function useAddFollowsCallback(name: string): UseAddFollowsCallbackReturn
       logEventWithContext('add_follows_transaction_initiated', ActionType.click);
 
       try {
-        if (!capabilities || Object.keys(capabilities).length === 0) {
-          await writeContractAsync({
-            address: BASEFRIENDS_ADDRESSES[basenameChain.id],
-            abi: BASEFRIENDS_ABI,
-            functionName: 'addFollows',
-            args: [nameAsNode, followsAsNodes],
-            chainId: basenameChain.id,
-          });
-        } else {
-          await writeContractsAsync({
-            contracts: [
-              {
-                address: BASEFRIENDS_ADDRESSES[basenameChain.id],
-                abi: BASEFRIENDS_ABI,
-                functionName: 'addFollows',
-                args: [nameAsNode, followsAsNodes],
-              },
-            ],
-            capabilities: capabilities,
-            chainId: basenameChain.id,
-          });
-        }
+        await writeContractAsync({
+          address: BASEFRIENDS_ADDRESSES[basenameChain.id],
+          abi: BASEFRIENDS_ABI,
+          functionName: 'addFollows',
+          args: [nameAsNode, followsAsNodes],
+          chainId: basenameChain.id,
+        });
       } catch (e) {
         logError(e, 'Add Follow transaction canceled');
         logEventWithContext('add_follows_transaction_canceled', ActionType.change);
@@ -89,9 +60,7 @@ export function useAddFollowsCallback(name: string): UseAddFollowsCallbackReturn
       name,
       logEventWithContext,
       switchChainAsync,
-      capabilities,
       writeContractAsync,
-      writeContractsAsync,
       logError,
     ],
   );

@@ -14,9 +14,12 @@ import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { FriendSearchInputProps, FriendSearchInputVariant } from './types';
 import { useAddFollowsCallback } from 'apps/web/src/hooks/useAddFollows';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
-import { useReadFollows } from 'apps/web/src/hooks/useReadFollows';
 
-export default function FriendSearchInput({ variant, placeholder }: FriendSearchInputProps) {
+export default function FriendSearchInput({
+  variant,
+  placeholder,
+  onSubmit,
+}: FriendSearchInputProps) {
   const { ref, focused } = useFocusWithin<HTMLFieldSetElement>();
   const { logEventWithContext } = useAnalytics();
   const [search, setSearch] = useState<string>('');
@@ -42,7 +45,7 @@ export default function FriendSearchInput({ variant, placeholder }: FriendSearch
   const { profileUsername } = useUsernameProfile();
 
   const { callback: addFollows } = useAddFollowsCallback(profileUsername);
-  const { data: follows } = useReadFollows(profileUsername);
+  console.log({ profileUsername });
 
   const handleSearchChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -179,9 +182,13 @@ export default function FriendSearchInput({ variant, placeholder }: FriendSearch
   const handleSelectFriend = useCallback(
     (name: string) => {
       setDropdownOpen(false);
-      void addFollows([name]);
+      console.log('adding follow', name);
+      void addFollows([`${name}.basetest.eth`]).then(() => {
+        onSubmit(`${name}.basetest.eth`);
+      });
+      setSearch('');
     },
-    [addFollows],
+    [addFollows, onSubmit, setSearch],
   );
 
   const resetSearch = useCallback(() => {

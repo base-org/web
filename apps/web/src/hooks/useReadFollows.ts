@@ -15,7 +15,7 @@ import { namehash, toBytes, toHex } from 'viem';
 export function useReadFollows(name: string) {
   const { basenameChain } = useBasenameChain();
   const nameAsNode = namehash(name);
-  console.log({ nameAsNode });
+  console.log({ nameAsNode, name, bestfriend: namehash('bestfriend.basetest.eth') });
   return useReadContract({
     address: BASEFRIENDS_ADDRESSES[basenameChain.id],
     abi: BASEFRIENDS_ABI,

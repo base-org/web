@@ -5,6 +5,11 @@ export default [
     type: 'constructor',
   },
   {
+    inputs: [{ internalType: 'bytes32', name: 'node', type: 'bytes32' }],
+    name: 'InvalidNode',
+    type: 'error',
+  },
+  {
     inputs: [
       { internalType: 'bytes32', name: 'node', type: 'bytes32' },
       { internalType: 'address', name: 'addr', type: 'address' },
