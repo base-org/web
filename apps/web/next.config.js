@@ -200,6 +200,8 @@ module.exports = extendBaseConfig(
           fs: 'empty',
           net: 'empty',
           tls: 'empty',
+          path: 'empty',
+          os: 'empty',
         };
       }
       return config;
