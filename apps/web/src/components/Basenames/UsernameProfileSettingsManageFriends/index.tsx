@@ -6,7 +6,7 @@ import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernamePr
 import FriendSearchInput from 'apps/web/src/components/Basenames/FriendSearchInput';
 import { FriendSearchInputVariant } from 'apps/web/src/components/Basenames/FriendSearchInput/types';
 import { useReadFollows } from 'apps/web/src/hooks/useReadFollows';
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { useAddFollowsCallback } from 'apps/web/src/hooks/useAddFollows';
 
 const settingTabClass = classNames(
@@ -60,8 +60,11 @@ function FriendDisplay({
   removeFriend: (name: string) => void;
 }) {
   return (
-    <div>
-      {friend} <Button onClick={() => removeFriend(friend)}>Remove friend</Button>
+    <div className="flex flex-row items-center justify-between">
+      <div>{friend}</div>
+      <Button variant={ButtonVariants.SecondaryDark} onClick={() => removeFriend(friend)}>
+        X
+      </Button>
     </div>
   );
 }

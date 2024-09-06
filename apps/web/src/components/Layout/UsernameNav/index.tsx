@@ -21,7 +21,8 @@ export default function UsernameNav() {
   const { switchChain } = useSwitchChain();
   const { chain: connectedChain, isConnected } = useAccount();
 
-  const showDevelopmentWarning = isDevelopment && basenameChain.id === base.id;
+  // const showDevelopmentWarning = isDevelopment && basenameChain.id === base.id;
+  const showDevelopmentWarning = true;
   const showProductionWarning = !isDevelopment && basenameChain.id === baseSepolia.id;
   const showWrongChainWarning =
     connectedChain?.id !== basenameChain.id && connectedChain?.id !== baseSepolia.id && isConnected;
