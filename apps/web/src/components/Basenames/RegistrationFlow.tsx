@@ -34,7 +34,6 @@ import RegistrationShareOnSocials from 'apps/web/src/components/Basenames/Regist
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { isDevelopment } from 'libs/base-ui/constants';
 import RegistrationLandingExplore from 'apps/web/src/components/Basenames/RegistrationLandingExplore';
-import { logger } from 'apps/web/src/utils/logger';
 
 const RegistrationStateSwitcherDynamic = dynamic(
   async () => import('apps/web/src/components/Basenames/RegistrationStateSwitcher'),
@@ -44,7 +43,6 @@ const RegistrationStateSwitcherDynamic = dynamic(
 export const claimQueryKey = 'claim';
 
 export function RegistrationFlow() {
-  logger.error('RegistrationFlow useclient', new Error('This is a test error'));
   const { chain } = useAccount();
   const { logEventWithContext } = useAnalytics();
   const searchParams = useSearchParams();

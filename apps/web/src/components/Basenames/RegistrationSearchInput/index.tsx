@@ -19,7 +19,6 @@ import {
   RegistrationSearchInputProps,
   RegistrationSearchInputVariant,
 } from './types';
-import { logger } from 'apps/web/src/utils/logger';
 
 function SuggestionEntry({
   suggestion,
@@ -44,7 +43,6 @@ export default function RegistrationSearchInput({
   variant,
   placeholder,
 }: RegistrationSearchInputProps) {
-  logger.error('RegistrationSearchInput not client', new Error('This is a test error'));
   const { ref, focused } = useFocusWithin<HTMLFieldSetElement>();
   const { logEventWithContext } = useAnalytics();
   const [search, setSearch] = useState<string>('');
