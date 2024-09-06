@@ -1,13 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
-import {useThemeConfig} from '@docusaurus/theme-common';
-import {
-  useHideableNavbar,
-  useNavbarMobileSidebar,
-} from '@docusaurus/theme-common/internal';
-import {translate} from '@docusaurus/Translate';
+import { useThemeConfig } from '@docusaurus/theme-common';
+import { useHideableNavbar, useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
+import { translate } from '@docusaurus/Translate';
 import NavbarMobileSidebar from '@theme/Navbar/MobileSidebar';
 import styles from './styles.module.css';
+
 function NavbarBackdrop(props) {
   return (
     <div
@@ -17,12 +15,13 @@ function NavbarBackdrop(props) {
     />
   );
 }
-export default function NavbarLayout({children}) {
+
+export default function NavbarLayout({ children }) {
   const {
-    navbar: {hideOnScroll, style},
+    navbar: { hideOnScroll, style },
   } = useThemeConfig();
   const mobileSidebar = useNavbarMobileSidebar();
-  const {navbarRef, isNavbarVisible} = useHideableNavbar(hideOnScroll);
+  const { navbarRef, isNavbarVisible } = useHideableNavbar(hideOnScroll);
   return (
     <nav
       ref={navbarRef}
@@ -34,16 +33,14 @@ export default function NavbarLayout({children}) {
       className={clsx(
         'navbar',
         'navbar--fixed-top',
-        hideOnScroll && [
-          styles.navbarHideable,
-          !isNavbarVisible && styles.navbarHidden,
-        ],
+        hideOnScroll && [styles.navbarHideable, !isNavbarVisible && styles.navbarHidden],
         {
           'navbar--dark': style === 'dark',
           'navbar--primary': style === 'primary',
           'navbar-sidebar--show': mobileSidebar.shown,
         },
-      )}>
+      )}
+    >
       {children}
       <NavbarBackdrop onClick={mobileSidebar.toggle} />
       <NavbarMobileSidebar />
