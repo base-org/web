@@ -1,16 +1,12 @@
-import { Tracer } from 'dd-trace';
 type LogLevel = 'info' | 'warn' | 'error' | 'debug' | 'verbose';
 
 type LoggerOptions = {
   service: string;
 };
 
-let tracer: Tracer | undefined;
-
 if (typeof window === 'undefined') {
-  // Dynamically import dd-trace with type annotation
   const ddTrace = require('dd-trace') as typeof import('dd-trace'); // Add type for dd-trace
-  tracer = ddTrace.init({
+  ddTrace.init({
     service: 'your-nextjs-service-name',
     env: process.env.NODE_ENV,
     version: '1.0.0',
@@ -36,11 +32,6 @@ class CustomLogger {
 
   private createDatadogLog(level: LogLevel, message: string, meta?: Record<string, unknown>) {
     var traceId, spanId;
-    if (tracer) {
-      const activeSpan = tracer.scope().active();
-      traceId = activeSpan?.context().toTraceId() ?? '0';
-      spanId = activeSpan?.context().toSpanId() ?? '0';
-    }
 
     const logEntry = {
       message: `[${this.service}] ${message}`,
