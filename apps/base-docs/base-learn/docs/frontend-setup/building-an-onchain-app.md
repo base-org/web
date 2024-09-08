@@ -63,11 +63,11 @@ Onchain libraries and packages tend to require very current versions of Node. If
 
 In Next.js with the app router, the root of your app is found in `app/layout.tsx`, if you followed the recommended setup options. As you want the blockchain provider context to be available for the entire app, you'll add it here.
 
-You'll need to set up your providers in a second file, so that you can add `"use client";` to the top. Doing so forces this code to be run client side, which is necessary since your server won't have access to your users' wallet information.
+You'll need to set up your providers in a second file, so that you can add `'use client';` to the top. Doing so forces this code to be run client side, which is necessary since your server won't have access to your users' wallet information.
 
 :::caution
 
-You must configure these wrappers in a separate file. It will not work if you try to add them and `"use client":` directly in `layout.tsx`!
+You must configure these wrappers in a separate file. It will not work if you try to add them and `'use client';` directly in `layout.tsx`!
 
 :::
 
@@ -75,7 +75,7 @@ Add a new file in the `app` folder called `providers.tsx`.
 
 ### Imports
 
-As discussed above, add `"use client":` to the top of the file.
+As discussed above, add `'use client';` to the top of the file.
 
 Continue with the imports:
 
