@@ -357,7 +357,7 @@ __metadata:
     "@coinbase/onchainkit": ^0.28.5
     "@datadog/browser-logs": ^5.23.3
     "@datadog/browser-rum": ^5.23.3
-    "@frames.js/render": ^0.3.3
+    "@frames.js/render": ^0.3.5
     "@guildxyz/sdk": 2.6.0
     "@headlessui/react": ^1.7.19
     "@heroicons/react": ^2.1.3
@@ -2005,7 +2005,6 @@ __metadata:
   dependencies:
     "@babel/preset-react": ^7.14.5
     "@datadog/browser-logs": ^5.23.3
-    "@frames.js/render": ^0.3.4
     "@graphql-eslint/eslint-plugin": ^3.10.4
     "@linaria/babel-preset": ^4.4.3
     "@next/bundle-analyzer": ^14.2.5
@@ -3692,9 +3691,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@frames.js/render@npm:^0.3.3, @frames.js/render@npm:^0.3.4":
-  version: 0.3.4
-  resolution: "@frames.js/render@npm:0.3.4"
+"@frames.js/render@npm:^0.3.5":
+  version: 0.3.5
+  resolution: "@frames.js/render@npm:0.3.5"
   dependencies:
     "@farcaster/core": ^0.14.7
     "@noble/ed25519": ^2.0.0
@@ -3711,7 +3710,7 @@ __metadata:
     react-native: ^0.74.3
     viem: ^2.7.8
     wagmi: ^2.9.10
-  checksum: e4abc78fb6403c50e89cc38083306e175078aa857d79caf8479ec3df3dd5d5031b4805197adf3c6c1dfd9d30d288940d497e0fac0feca49cfbdc88e87b047201
+  checksum: a5e8f69ef99b8ba33fff9f78263ca41dad09a6728c5aacaeeff43e4db68668822bceec8d44602c504c164921e1372c3776b0d892185bfc2fc0481c645608efc9
   languageName: node
   linkType: hard
 

@@ -1,14 +1,16 @@
-export const theme = {
+import { type FrameUITheme } from '@frames.js/render/ui';
+
+export const theme: FrameUITheme<Record<string, unknown>> = {
   Error: {
     className:
-      'flex flex-col w-[380px] h-[200px] rounded-lg overflow-hidden bg-white relative items-center justify-center opacity-50',
+      'flex flex-col max-w-[380px] rounded-lg overflow-hidden bg-white relative items-center justify-center opacity-50',
   },
   Root: {
     className: 'flex flex-col max-w-[380px] rounded-lg overflow-hidden bg-white relative',
   },
   LoadingScreen: {
     className:
-      'flex flex-col items-center justify-center rounded-lg bg-white absolute top-0 left-0 right-0 bottom-0 z-10',
+      'flex flex-col items-center max-w-[380px] justify-center rounded-lg bg-white absolute top-0 left-0 right-0 bottom-0 z-10',
   },
   ButtonsContainer: {
     className:
@@ -23,5 +25,11 @@ export const theme = {
     style: {
       aspectRatio: 'var(--frame-image-aspect-ratio)',
     },
+  },
+  TextInputContainer: {
+    className: 'flex flex-row items-center justify-around gap-2 w-full',
+  },
+  TextInput: {
+    className: 'w-full outline-0 focus:outline-0',
   },
 };
