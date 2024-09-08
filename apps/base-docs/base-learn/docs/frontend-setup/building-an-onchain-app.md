@@ -51,11 +51,9 @@ The [quick start] guide for RainbowKit also contains step-by-step instructions f
 
 Start by installing the dependencies:
 
-:::bash
-
+```bash
 npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
-
-:::
+```
 
 :::info
 Onchain libraries and packages tend to require very current versions of Node. If you're not already using it, you may want to install [nvm].
