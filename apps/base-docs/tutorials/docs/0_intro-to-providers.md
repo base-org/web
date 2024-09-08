@@ -335,7 +335,7 @@ In this tutorial, you've learned how Providers supply blockchain connection as a
 [Subgraph]: https://thegraph.com/docs/en/developing/creating-a-subgraph/
 [data for Base Sepolia here]: https://github.com/wagmi-dev/viem/blob/main/src/chains/definitions/baseSepolia.ts
 [Base]: https://docs.base.org/network-information
-[Optimism]: https://community.optimism.io/docs/useful-tools/networks/
+[Optimism]: https://docs.optimism.io/chain/networks
 [EIP-1193]: https://eips.ethereum.org/EIPS/eip-1193
 [QuickNode]: https://www.quicknode.com/
 [Alchemy Costs]: https://docs.alchemy.com/reference/compute-unit-costs
