@@ -1,4 +1,4 @@
-type IconProps = {
+export type IconProps = {
   name: keyof typeof ICONS;
   color?: 'white' | 'black' | 'currentColor';
   width?: string | number;
@@ -335,6 +335,20 @@ const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
     >
       <path
         d="M10.5858 4H3.00001V2H14V13H12V5.41422L2.70712 14.7071L1.29291 13.2929L10.5858 4Z"
+        fill={color}
+      />
+    </svg>
+  ),
+  baseOrgdiagonalUpArrow: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 8 8"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0.414 6.908L5.972 1.35H1.338L2.472 0.215999H7.974V5.732L6.84 6.852V2.218L1.282 7.79L0.414 6.908Z"
         fill={color}
       />
     </svg>
