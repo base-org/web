@@ -11,6 +11,8 @@ import { JoinTheCommunity } from 'apps/web/src/components/JoinTheCommunity/JoinT
 import { Partnerships } from 'apps/web/src/components/Partnerships/Partnerships';
 import ThreeHero from 'apps/web/src/components/ThreeHero';
 import ShimmerCard from 'apps/web/src/components/ShimmerCard';
+import Button from 'apps/web/src/components/base-org/Button';
+import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 
 /* Farcaster Metadatas */
 const buttons: FrameButtonMetadata[] = [
@@ -56,13 +58,71 @@ export default async function Home() {
       <main className="flex w-full flex-col items-center bg-black">
         <div className="container flex w-full flex-row items-center gap-12 bg-black p-12 pb-[96px]">
           <ShimmerCard>
-            <span className="text-white">Hello, welcome to base</span>
+            <p className="text-white">Hello, welcome to base</p>
           </ShimmerCard>
           <ShimmerCard>
-            <span className="text-white">Hello, welcome to base</span>
+            <p className="text-white">Hello, welcome to base</p>
           </ShimmerCard>
           <ShimmerCard>
-            <span className="text-white">Hello, welcome to base</span>
+            <p className="text-white">Hello, welcome to base</p>
+            <br />
+            <br />
+            <Button roundedFull>Connect</Button>
+            <br />
+            <br />
+            <Button>Button</Button>
+            <br />
+            <br />
+            <Button disabled>Button Disabled</Button>
+
+            <br />
+            <br />
+            <Button variant={ButtonVariants.Secondary}>Button</Button>
+            <br />
+            <br />
+            <Button variant={ButtonVariants.Secondary} disabled>
+              Button Disabled
+            </Button>
+
+            <br />
+            <br />
+            <Button variant={ButtonVariants.Outlined}>Button</Button>
+            <br />
+            <br />
+            <Button variant={ButtonVariants.Outlined} disabled>
+              Button Disabled
+            </Button>
+
+            <br />
+            <br />
+            <Button iconName="baseOrgdiagonalUpArrow">Button</Button>
+            <br />
+            <br />
+            <Button iconName="baseOrgdiagonalUpArrow" disabled>
+              Button Disabled
+            </Button>
+
+            <br />
+            <br />
+            <Button iconName="baseOrgdiagonalUpArrow" variant={ButtonVariants.Secondary}>
+              Button
+            </Button>
+            <br />
+            <br />
+            <Button iconName="baseOrgdiagonalUpArrow" variant={ButtonVariants.Secondary} disabled>
+              Button Disabled
+            </Button>
+
+            <br />
+            <br />
+            <Button iconName="baseOrgdiagonalUpArrow" variant={ButtonVariants.Outlined}>
+              Button
+            </Button>
+            <br />
+            <br />
+            <Button iconName="baseOrgdiagonalUpArrow" variant={ButtonVariants.Outlined} disabled>
+              Button Disabled
+            </Button>
           </ShimmerCard>
         </div>
         <Divider />
