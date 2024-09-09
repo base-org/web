@@ -1,3 +1,4 @@
+'use client';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 
 type Props = {
@@ -12,7 +13,7 @@ function getNiceDomainDisplayFromUrl(url: string) {
   return url.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0];
 }
 
-export async function Card({ name, url, description, imageUrl, tags }: Props) {
+export function Card({ name, url, description, imageUrl, tags }: Props) {
   return (
     <a
       href={url}

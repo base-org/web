@@ -1,30 +1,35 @@
+'use client';
 import ErrorImg from 'apps/web/public/images/error.png';
 import { Button } from '../Button/Button';
 import { Card } from './Card';
 import { EcosystemApp } from 'apps/web/src/components/Ecosystem/Content';
-import Link from 'next/link';
-import { Url } from 'next/dist/shared/lib/router/router';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
+import { Dispatch, SetStateAction, useCallback } from 'react';
 
-export async function List({
+export function List({
   selectedTag,
   searchText,
   apps,
   showCount,
+  setShowCount,
 }: {
   selectedTag: string;
   searchText: string;
   apps: EcosystemApp[];
   showCount: number;
+  setShowCount: Dispatch<SetStateAction<number>>;
 }) {
   const canShowMore = showCount < apps.length;
   const showEmptyState = apps.length === 0;
   const truncatedApps = apps.slice(0, showCount);
-  // eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
-  const tagHref: Url = {
-    pathname: '/ecosystem',
-    query: { tag: selectedTag, search: searchText, showCount: showCount + 16 },
-  };
+
+  const onClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      setShowCount(showCount + 16);
+    },
+    [setShowCount, showCount],
+  );
 
   return (
     <>
@@ -45,9 +50,7 @@ export async function List({
       )}
       {canShowMore && (
         <div className="mt-12 flex justify-center">
-          <Link href={tagHref} scroll={false}>
-            <Button>VIEW MORE</Button>
-          </Link>
+          <Button onClick={onClick}>VIEW MORE</Button>
         </div>
       )}
     </>
