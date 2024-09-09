@@ -10,11 +10,11 @@ import {
 import classNames from 'classnames';
 import { redirect } from 'next/navigation';
 
-export type ConfigureFrameProps = {
+export type ConfigureFramesProps = {
   params: { username: BaseName };
 };
 
-export default async function Username({ params }: ConfigureFrameProps) {
+export default async function ConfigureFrames({ params }: ConfigureFramesProps) {
   let username = await formatDefaultUsername(decodeURIComponent(params.username) as BaseName);
 
   const address = await getBasenameAddress(username);
@@ -33,7 +33,7 @@ export default async function Username({ params }: ConfigureFrameProps) {
   return (
     <ErrorsProvider context="profile">
       <ProfileProviders username={username}>
-        <main className={usernameProfilePageClasses}>asdf</main>
+        <main className={usernameProfilePageClasses} />
       </ProfileProviders>
     </ErrorsProvider>
   );
