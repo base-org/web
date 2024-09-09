@@ -583,6 +583,22 @@ export async function getBasenameOwner(username: BaseName) {
   } catch (error) {}
 }
 
+export async function getBasenameNameExpires(username: BaseName) {
+  const chain = getChainForBasename(username);
+  const tokenId = getTokenIdFromBasename(username);
+  try {
+    const client = getBasenamePublicClient(chain.id);
+    const nameExpires = await client.readContract({
+      abi: BaseRegistrarAbi,
+      address: USERNAME_BASE_REGISTRAR_ADDRESSES[chain.id],
+      args: [tokenId],
+      functionName: 'nameExpires',
+    });
+
+    return nameExpires;
+  } catch (error) {}
+}
+
 export async function getBasenameAvailable(name: string, chain: Chain): Promise<boolean> {
   try {
     const client = createPublicClient({
