@@ -77,7 +77,7 @@ const contentSecurityPolicy = {
     ccaLiteDomains,
     walletconnectDomains,
   ],
-  'worker-src': ["'self' blob:"],
+  'worker-src': ["'self'", 'blob:'],
   'connect-src': [
     "'self'",
     'https://blob.vercel-storage.com', // Vercel File storage
@@ -87,6 +87,10 @@ const contentSecurityPolicy = {
     greenhouseDomains,
     ccaLiteDomains,
     ccaDomain,
+    'https://ccip-v2.ens.xyz',
+    'https://euc.li',
+    'https://arweave.net',
+    'https://ens.xyz',
     'https://enhanced-provider.rainbow.me',
     'https://*.coinbase.com',
     'wss://www.walletlink.org/rpc', // coinbase wallet connection
@@ -109,8 +113,8 @@ const contentSecurityPolicy = {
     'https://*.datadoghq.com', //datadog
     'https://translate.googleapis.com', // Let user translate our website
     'https://sdk-api.neynar.com/', // Neymar API
-    'https://www.gstatic.com/',
-    'blob:',
+    'https://unpkg.com/@lottiefiles/dotlottie-web@0.31.1/dist/dotlottie-player.wasm', // lottie player
+    `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
@@ -118,11 +122,13 @@ const contentSecurityPolicy = {
     "'self'",
     'blob:',
     'data:',
+    'https://euc.li',
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars
     'https://ipfs.io', // ipfs ens avatar resolution
     'https://cloudflare-ipfs.com', // ipfs Cloudfare ens avatar resolution
     'https://zku9gdedgba48lmr.public.blob.vercel-storage.com', // basename avatar upload to vercel blob
+    `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
   ],
 };
 

@@ -45,7 +45,7 @@ export default function ErrorsProvider({ children, context }: ErrorsProviderProp
         console.log('--------------------------------------\n');
         return;
       } else {
-        logger.error(`Error caught with message: "${message}"`, {
+        logger.error(`Error caught with message: "${message}"`, error, {
           context: fullContext,
           message: message,
         });

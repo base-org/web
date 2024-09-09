@@ -1,20 +1,22 @@
+// lib/logger.ts
+
+import type { Tracer } from 'dd-trace';
+
 type LogLevel = 'info' | 'warn' | 'error' | 'debug' | 'verbose';
 
 type LoggerOptions = {
   service: string;
-  datadogApiKey: string;
 };
+
+let ddTrace: Tracer | undefined;
 
 class CustomLogger {
   private static instance: CustomLogger;
 
   private service: string;
 
-  private datadogApiKey: string;
-
   private constructor(options: LoggerOptions) {
     this.service = options.service;
-    this.datadogApiKey = options.datadogApiKey;
   }
 
   public static getInstance(options: LoggerOptions): CustomLogger {
@@ -24,62 +26,84 @@ class CustomLogger {
     return CustomLogger.instance;
   }
 
-  private async sendToDatadog(level: LogLevel, message: string, meta?: Record<string, unknown>) {
-    const log = {
+  private createDatadogLog(level: LogLevel, message: string, meta?: Record<string, unknown>) {
+    let traceId: string | undefined;
+    let spanId: string | undefined;
+
+    //TODO: initialice ddTrace through dd-tracer
+    if (ddTrace) {
+      // Access trace information server-side
+      const currentSpan = ddTrace.scope().active();
+      traceId = currentSpan?.context().toTraceId() ?? undefined;
+      spanId = currentSpan?.context().toSpanId() ?? undefined;
+    }
+
+    const logEntry = JSON.stringify({
+      message: `[${this.service}] ${message}`,
       level,
-      message,
-      service: this.service,
+      dd: {
+        trace_id: traceId,
+        span_id: spanId,
+      },
       ...meta,
-    };
+    });
 
-    try {
-      await fetch(
-        `https://http-intake.logs.datadoghq.com/api/v2/logs?dd-api-key=${this.datadogApiKey}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(log),
-        },
-      );
-    } catch (error) {
-      console.error('Failed to send log to Datadog', error);
+    switch (level) {
+      case 'debug':
+      case 'verbose':
+      case 'info':
+        console.log(logEntry);
+        break;
+      case 'warn':
+        console.warn(logEntry);
+        break;
+      case 'error':
+        console.error(logEntry);
+        break;
+      default:
+        console.log(logEntry);
     }
   }
 
-  private log(level: LogLevel, message: unknown, meta?: Record<string, unknown>) {
-    if (level === 'debug' || level === 'verbose' || level === 'info') {
-      console.log(message, meta);
-    } else if (typeof console[level] === 'function') {
-      console[level](message, meta);
-    } else {
-      console.log(message, meta);
-    }
-    if (typeof window === 'undefined' && message !== undefined) {
-      this.sendToDatadog(level, JSON.stringify(message), meta).catch(() => {
-        console.error('Failed to send log to Datadog');
-      });
-    }
+  private log(level: LogLevel, message: string, meta?: Record<string, unknown>) {
+    this.createDatadogLog(level, message, meta);
   }
 
-  public info(message: unknown, meta?: Record<string, unknown>) {
+  public info(message: string, meta?: Record<string, unknown>) {
     this.log('info', message, meta);
   }
 
-  public warn(message: unknown, meta?: Record<string, unknown>) {
+  public warn(message: string, meta?: Record<string, unknown>) {
     this.log('warn', message, meta);
   }
 
-  public error(message: unknown, meta?: Record<string, unknown>) {
+  public error(message: string, error: Error | unknown, meta?: Record<string, unknown>) {
+    const e =
+      error instanceof Error
+        ? {
+            name: error.name,
+            cause: error.cause,
+            message: error.message,
+            stack: error.stack,
+          }
+        : {
+            message: JSON.stringify(error),
+          };
+
+    if (error) {
+      this.log('error', message, {
+        ...meta,
+        error: e,
+      });
+    }
     this.log('error', message, meta);
   }
 
-  public debug(message: unknown, meta?: Record<string, unknown>) {
+  public debug(message: string, meta?: Record<string, unknown>) {
     this.log('debug', message, meta);
   }
 
-  public verbose(message: unknown, meta?: Record<string, unknown>) {
+  public verbose(message: string, meta?: Record<string, unknown>) {
     this.log('verbose', message, meta);
   }
 }
@@ -87,5 +111,4 @@ class CustomLogger {
 // Usage example
 export const logger = CustomLogger.getInstance({
   service: 'base-org',
-  datadogApiKey: process.env.DD_API_KEY ?? '',
 });

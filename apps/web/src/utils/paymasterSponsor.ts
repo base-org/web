@@ -116,7 +116,7 @@ export async function willSponsor({
     }
     return true;
   } catch (e) {
-    logger.error(`willSponsor check failed: ${e}`);
+    logger.error(`willSponsor check failed:`, e);
     return false;
   }
 }
