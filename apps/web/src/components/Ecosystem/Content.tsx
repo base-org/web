@@ -3,7 +3,7 @@
 import ecosystemApps from 'apps/web/src/data/ecosystem.json';
 import { TagChip } from 'apps/web/src/components/Ecosystem/TagChip';
 import { SearchBar } from 'apps/web/src/components/Ecosystem/SearchBar';
-import { Suspense } from 'react';
+import { useState } from 'react';
 import { List } from 'apps/web/src/components/Ecosystem/List';
 
 export type EcosystemApp = {
@@ -42,14 +42,10 @@ const decoratedEcosystemApps: EcosystemApp[] = orderedEcosystemAppsAsc().map((d)
   searchName: d.name.toLowerCase(),
 }));
 
-export type EcosystemProps = {
-  searchParams: { tag?: string; search?: string; showCount: number };
-};
-
-export default function Content({ searchParams }: EcosystemProps) {
-  const selectedTag = searchParams.tag ?? tags[0];
-  const search = searchParams.search ?? '';
-  const showCount = searchParams.showCount ? Number(searchParams.showCount) : 16;
+export default function Content() {
+  const [selectedTag, setSelectedTag] = useState(tags[0]);
+  const [search, setSearch] = useState('');
+  const [showCount, setShowCount] = useState(16);
 
   const filteredEcosystemApps = decoratedEcosystemApps.filter((app) => {
     const isTagged = selectedTag === 'all' || app.tags.includes(selectedTag);
@@ -62,13 +58,16 @@ export default function Content({ searchParams }: EcosystemProps) {
       <div className="flex flex-col justify-between gap-8 lg:flex-row lg:gap-12">
         <div className="flex flex-row flex-wrap gap-3">
           {tags.map((tag) => (
-            <TagChip tag={tag} isSelected={selectedTag === tag} key={tag} />
+            <TagChip
+              tag={tag}
+              isSelected={selectedTag === tag}
+              key={tag}
+              setSelectedTag={setSelectedTag}
+            />
           ))}
         </div>
         <div className="order-first grow lg:order-last">
-          <Suspense>
-            <SearchBar value={search} />
-          </Suspense>
+          <SearchBar search={search} setSearch={setSearch} />
         </div>
       </div>
       <List
@@ -76,6 +75,7 @@ export default function Content({ searchParams }: EcosystemProps) {
         searchText={search}
         apps={filteredEcosystemApps}
         showCount={showCount}
+        setShowCount={setShowCount}
       />
     </div>
   );
