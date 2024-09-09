@@ -6,7 +6,7 @@ type HoverShimmerProps = {
   children: React.ReactNode;
 };
 
-export default function ShimmerCard({ children }: HoverShimmerProps) {
+export default function Card({ children }: HoverShimmerProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const blobRef = useRef<HTMLDivElement>(null);
   const fakeBlobRef = useRef<HTMLDivElement>(null);

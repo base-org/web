@@ -1,5 +1,5 @@
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
-import ShimmerCard from 'apps/web/src/components/ShimmerCard';
+import Card from 'apps/web/src/components/base-org/Card';
 
 type Props = {
   name: string;
@@ -13,9 +13,9 @@ function getNiceDomainDisplayFromUrl(url: string) {
   return url.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0];
 }
 
-export async function Card({ name, url, description, imageUrl, tags }: Props) {
+export async function EcosystemCard({ name, url, description, imageUrl, tags }: Props) {
   return (
-    <ShimmerCard>
+    <Card>
       <a
         href={url}
         rel="noreferrer noopener"
@@ -46,6 +46,6 @@ export async function Card({ name, url, description, imageUrl, tags }: Props) {
           <p className="ecosystem-card-description font-sans text-base text-white">{description}</p>
         </div>
       </a>
-    </ShimmerCard>
+    </Card>
   );
 }

@@ -22,6 +22,7 @@ module.exports = {
       ocsyellow: '#FEE002',
       illoblack: '#0A0B0D',
       transparent: 'transparent',
+      currentColor: 'currentColor',
       blue: {
         0: '#F5F8FF',
         5: '#D3E1FF',

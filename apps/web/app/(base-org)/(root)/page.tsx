@@ -10,9 +10,11 @@ import { GetConnected } from 'apps/web/src/components/GetConnected/GetConnected'
 import { JoinTheCommunity } from 'apps/web/src/components/JoinTheCommunity/JoinTheCommunity';
 import { Partnerships } from 'apps/web/src/components/Partnerships/Partnerships';
 import ThreeHero from 'apps/web/src/components/ThreeHero';
-import ShimmerCard from 'apps/web/src/components/ShimmerCard';
+import Card from 'apps/web/src/components/base-org/Card';
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
+import Title from 'apps/web/src/components/base-org/typography/Title';
+import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 
 /* Farcaster Metadatas */
 const buttons: FrameButtonMetadata[] = [
@@ -56,14 +58,30 @@ export default async function Home() {
         </div>
       </AnalyticsProvider>
       <main className="flex w-full flex-col items-center bg-black">
-        <div className="container flex w-full flex-row items-center gap-12 bg-black p-12 pb-[96px]">
-          <ShimmerCard>
+        <div className="container flex w-full flex-row items-center gap-12 bg-black p-12 pb-[96px] text-white">
+          <Card>
             <p className="text-white">Hello, welcome to base</p>
-          </ShimmerCard>
-          <ShimmerCard>
-            <p className="text-white">Hello, welcome to base</p>
-          </ShimmerCard>
-          <ShimmerCard>
+          </Card>
+          <Card>
+            <br />
+            <Title level={TitleLevel.Display1}>Display 1</Title>
+            <br />
+            <Title level={TitleLevel.Display2}>Display 2</Title>
+            <br />
+            <Title level={TitleLevel.Display3}>Display 3</Title>
+            <br />
+            <Title level={TitleLevel.Display4}>Display 4</Title>
+            <br />
+            <Title level={TitleLevel.Title1}>Title 1</Title>
+            <br />
+            <Title level={TitleLevel.Title2}>Title 2</Title>
+            <br />
+            <Title level={TitleLevel.Title3}>Title 3</Title>
+            <br />
+            <Title level={TitleLevel.Title4}>Title 4</Title>
+            <br />
+          </Card>
+          <Card>
             <p className="text-white">Hello, welcome to base</p>
             <br />
             <br />
@@ -123,7 +141,7 @@ export default async function Home() {
             <Button iconName="baseOrgdiagonalUpArrow" variant={ButtonVariants.Outlined} disabled>
               Button Disabled
             </Button>
-          </ShimmerCard>
+          </Card>
         </div>
         <Divider />
         <Features />
