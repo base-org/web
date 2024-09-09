@@ -8,4 +8,6 @@ export enum TitleLevel {
   Title2 = 'title-2',
   Title3 = 'title-3',
   Title4 = 'title-5',
+
+  Headline = 'headline',
 }

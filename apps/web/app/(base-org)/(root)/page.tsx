@@ -80,6 +80,8 @@ export default async function Home() {
             <br />
             <Title level={TitleLevel.Title4}>Title 4</Title>
             <br />
+            <Title level={TitleLevel.Headline}>Headline</Title>
+            <br />
           </Card>
           <Card>
             <p className="text-white">Hello, welcome to base</p>
