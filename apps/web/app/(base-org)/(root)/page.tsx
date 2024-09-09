@@ -53,8 +53,26 @@ export default async function Home() {
   return (
     <AnalyticsProvider context="base_landing_page">
       <AnalyticsProvider context="hero">
-        <div className="h-[875px] w-full">
+        <div className="relative h-[875px] w-full">
           <ThreeHero />
+
+          <div className="absolute bottom-0 left-0 w-full p-12 text-white">
+            <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-2 ">
+              <Title level={TitleLevel.Headline}>Base is for everyone.</Title>
+              <p className="max-w-[19rem]">
+                Bringing the world onchain to create a global economy that increases innovation,
+                creativity, and freedom.
+              </p>
+              <div className="mt-4 flex gap-4">
+                <Button variant={ButtonVariants.Secondary} iconName="baseOrgdiagonalUpArrow">
+                  Start building
+                </Button>
+                <Button variant={ButtonVariants.Outlined} iconName="baseOrgdiagonalUpArrow">
+                  Get a Basename
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </AnalyticsProvider>
       <main className="flex w-full flex-col items-center bg-black">
