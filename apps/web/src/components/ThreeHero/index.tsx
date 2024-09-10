@@ -1,16 +1,11 @@
+/* eslint-disable react/no-unknown-property */
 'use client';
 
 import * as THREE from 'three';
 import { useRef, useReducer, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, MeshTransmissionMaterial, Environment, Lightformer } from '@react-three/drei';
-import {
-  CuboidCollider,
-  BallCollider,
-  Physics,
-  RigidBody,
-  CylinderCollider,
-} from '@react-three/rapier';
+import { BallCollider, Physics, RigidBody, CylinderCollider } from '@react-three/rapier';
 import { EffectComposer, N8AO } from '@react-three/postprocessing';
 import { easing } from 'maath';
 
@@ -27,25 +22,42 @@ const shuffle = (accent = 0) => [
   { color: accents[accent], roughness: 0.1, accent: true },
 ];
 
-export default function Scene(props) {
-  const [accent, click] = useReducer((state) => ++state % accents.length, 0);
-  const connectors = useMemo(() => shuffle(accent), [accent]);
+const dpr: [min: number, max: number] = [1, 1.5];
+const gl = { antialias: false };
+const camera: { position: [number, number, number]; fov: number; near: number; far: number } = {
+  position: [0, 0, 15],
+  fov: 17.5,
+  near: 1,
+  far: 20,
+};
+
+const colorArgs: [number, number, number] = [0.01, 0.01, 0.01];
+const lightPosition: [number, number, number] = [10, 10, 10];
+const lightAngle = 0.15;
+const lightPenumbra = 1;
+const lightIntensity = 1;
+const gravity: [number, number, number] = [0, 0, 0];
+
+export default function Scene() {
+  // const [accent, click] = useReducer((state) => ++state % accents.length, 0);
+  // const connectors = useMemo(() => shuffle(accent), [accent]);
   return (
-    <Canvas
-      onClick={click}
-      shadows
-      dpr={[1, 1.5]}
-      gl={{ antialias: false }}
-      camera={{ position: [0, 0, 15], fov: 17.5, near: 1, far: 20 }}
-      {...props}
-    >
-      <color attach="background" args={[0.01, 0.01, 0.01]} />
+    <Canvas shadows dpr={dpr} gl={gl} camera={camera}>
+      <color attach="background" args={colorArgs} />
       <ambientLight intensity={0.4} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
-      <Physics /*debug*/ gravity={[0, 0, 0]}>
+      <spotLight
+        position={lightPosition}
+        angle={lightAngle}
+        penumbra={lightPenumbra}
+        intensity={lightIntensity}
+        castShadow
+      />
+      <Physics /*debug*/ gravity={gravity}>
         <Pointer />
-        {connectors.map((props, i) => <Connector key={i} {...props} />) /* prettier-ignore */}
-        <Connector position={[10, 10, 5]}>
+        {/* {connectors.map((props, i) => (
+          <Connector key={i} {...props} />
+        ))} */}
+        <Connector position={[0, 0, 0]} scale={undefined} accent={undefined}>
           <Model>
             <MeshTransmissionMaterial
               clearcoat={1}
@@ -54,6 +66,8 @@ export default function Scene(props) {
               chromaticAberration={0.1}
               samples={8}
               resolution={512}
+              distortionScale={0}
+              temporalDistortion={0}
             />
           </Model>
         </Connector>
@@ -122,7 +136,7 @@ function Connector({
       colliders={false}
     >
       <CylinderCollider args={[0.5, 3]} />
-      {children ? children : <Model {...props} />}
+      {children ? children : <Model children={undefined} {...props} />}
       {accent && <pointLight intensity={4} distance={2.5} color={props.color} />}
     </RigidBody>
   );
@@ -144,7 +158,7 @@ function Pointer({ vec = new THREE.Vector3() }) {
 
 function Model({ children, color = 'white', roughness = 0, ...props }) {
   const ref = useRef();
-  const glb = useGLTF('/three/BaseOrg_BaseIcon_glTF_v06.gltf', false, false);
+  const glb = useGLTF('/three/All_3D_models.gltf', false, false);
   useFrame((state, delta) => {
     easing.dampC(ref.current.material.color, color, 0.2, delta);
   });
