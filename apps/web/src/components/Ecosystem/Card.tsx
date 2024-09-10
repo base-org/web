@@ -14,7 +14,7 @@ function getNiceDomainDisplayFromUrl(url: string) {
   return url.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0];
 }
 
-export function EcosystemCard({ name, url, description, imageUrl, tags }: Props) {
+export default function EcosystemCard({ name, url, description, imageUrl, tags }: Props) {
   return (
     <Card>
       <a

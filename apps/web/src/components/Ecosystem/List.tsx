@@ -1,7 +1,7 @@
 'use client';
 import ErrorImg from 'apps/web/public/images/error.png';
 import { Button } from '../Button/Button';
-import { Card } from './Card';
+import EcosystemCard from './Card';
 import { EcosystemApp } from 'apps/web/src/components/Ecosystem/Content';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import { Dispatch, SetStateAction, useCallback } from 'react';
@@ -35,7 +35,7 @@ export function List({
     <>
       <div className="flex flex-col gap-10 lg:grid lg:grid-cols-4">
         {truncatedApps.map((app) => (
-          <Card {...app} key={app.url} />
+          <EcosystemCard {...app} key={app.url} />
         ))}
       </div>
       {showEmptyState && (
