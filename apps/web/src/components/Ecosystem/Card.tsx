@@ -1,3 +1,4 @@
+'use client';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 import Card from 'apps/web/src/components/base-org/Card';
 
@@ -13,7 +14,7 @@ function getNiceDomainDisplayFromUrl(url: string) {
   return url.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0];
 }
 
-export async function EcosystemCard({ name, url, description, imageUrl, tags }: Props) {
+export function EcosystemCard({ name, url, description, imageUrl, tags }: Props) {
   return (
     <Card>
       <a
