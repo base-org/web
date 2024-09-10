@@ -36,7 +36,7 @@ export const levelStyles: Record<TitleLevel, string> = {
 //       wrapper around the Title
 type TitleProps = {
   children: ReactNode;
-  level: TitleLevel;
+  level?: TitleLevel;
   as?: ElementType;
 };
 

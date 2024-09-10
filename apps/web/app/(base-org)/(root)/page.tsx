@@ -12,9 +12,11 @@ import { Partnerships } from 'apps/web/src/components/Partnerships/Partnerships'
 import ThreeHero from 'apps/web/src/components/ThreeHero';
 import Card from 'apps/web/src/components/base-org/Card';
 import Button from 'apps/web/src/components/base-org/Button';
-import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
+import { ButtonVariants, ButtonSizes } from 'apps/web/src/components/base-org/Button/types';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
+import Text from 'apps/web/src/components/base-org/typography/Text';
+import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
 
 /* Farcaster Metadatas */
 const buttons: FrameButtonMetadata[] = [
@@ -100,6 +102,18 @@ export default async function Home() {
             <br />
             <Title level={TitleLevel.Headline}>Headline</Title>
             <br />
+
+            <br />
+            <Text variant={TextVariant.Body}>Body</Text>
+            <br />
+
+            <br />
+            <Text variant={TextVariant.Label1}>Label1</Text>
+            <br />
+
+            <br />
+            <Text variant={TextVariant.Label2}>Label2</Text>
+            <br />
           </Card>
           <Card>
             <p className="text-white">Hello, welcome to base</p>
@@ -153,12 +167,108 @@ export default async function Home() {
 
             <br />
             <br />
-            <Button iconName="baseOrgdiagonalUpArrow" variant={ButtonVariants.Outlined}>
+            <Button
+              size={ButtonSizes.Large}
+              iconName="baseOrgdiagonalUpArrow"
+              variant={ButtonVariants.Outlined}
+            >
               Button
             </Button>
             <br />
             <br />
-            <Button iconName="baseOrgdiagonalUpArrow" variant={ButtonVariants.Outlined} disabled>
+            <Button
+              size={ButtonSizes.Large}
+              iconName="baseOrgdiagonalUpArrow"
+              variant={ButtonVariants.Outlined}
+              disabled
+            >
+              Button Disabled
+            </Button>
+
+            <br />
+            <br />
+            <Button size={ButtonSizes.Large} roundedFull>
+              Connect
+            </Button>
+            <br />
+            <br />
+            <Button size={ButtonSizes.Large}>Button</Button>
+            <br />
+            <br />
+            <Button size={ButtonSizes.Large} disabled>
+              Button Disabled
+            </Button>
+
+            <br />
+            <br />
+            <Button size={ButtonSizes.Large} variant={ButtonVariants.Secondary}>
+              Button
+            </Button>
+            <br />
+            <br />
+            <Button size={ButtonSizes.Large} variant={ButtonVariants.Secondary} disabled>
+              Button Disabled
+            </Button>
+
+            <br />
+            <br />
+            <Button size={ButtonSizes.Large} variant={ButtonVariants.Outlined}>
+              Button
+            </Button>
+            <br />
+            <br />
+            <Button size={ButtonSizes.Large} variant={ButtonVariants.Outlined} disabled>
+              Button Disabled
+            </Button>
+
+            <br />
+            <br />
+            <Button size={ButtonSizes.Large} iconName="baseOrgdiagonalUpArrow">
+              Button
+            </Button>
+            <br />
+            <br />
+            <Button size={ButtonSizes.Large} iconName="baseOrgdiagonalUpArrow" disabled>
+              Button Disabled
+            </Button>
+
+            <br />
+            <br />
+            <Button
+              size={ButtonSizes.Large}
+              iconName="baseOrgdiagonalUpArrow"
+              variant={ButtonVariants.Secondary}
+            >
+              Button
+            </Button>
+            <br />
+            <br />
+            <Button
+              size={ButtonSizes.Large}
+              iconName="baseOrgdiagonalUpArrow"
+              variant={ButtonVariants.Secondary}
+              disabled
+            >
+              Button Disabled
+            </Button>
+
+            <br />
+            <br />
+            <Button
+              size={ButtonSizes.Large}
+              iconName="baseOrgdiagonalUpArrow"
+              variant={ButtonVariants.Outlined}
+            >
+              Button
+            </Button>
+            <br />
+            <br />
+            <Button
+              size={ButtonSizes.Large}
+              iconName="baseOrgdiagonalUpArrow"
+              variant={ButtonVariants.Outlined}
+              disabled
+            >
               Button Disabled
             </Button>
           </Card>

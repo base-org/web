@@ -3,3 +3,8 @@ export enum ButtonVariants {
   Secondary = 'secondary',
   Outlined = 'outlined',
 }
+
+export enum ButtonSizes {
+  Medium = 'medium',
+  Large = 'large',
+}

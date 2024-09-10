@@ -2,12 +2,13 @@
 
 import { ButtonHTMLAttributes } from 'react';
 import classNames from 'classnames';
-import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
+import { ButtonVariants, ButtonSizes } from 'apps/web/src/components/base-org/Button/types';
 import { Icon, IconProps } from 'apps/web/src/components/Icon/Icon';
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   connectWallet?: boolean;
   variant?: ButtonVariants;
+  size?: ButtonSizes;
   iconName?: IconProps['name'];
   roundedFull?: boolean;
 };
@@ -24,20 +25,37 @@ const variantStyles: Record<ButtonVariants, string> = {
     'bg-transparent text-white border border-white hover:bg-white hover:text-black active:bg-[#E3E7E9]',
 };
 
+const sizeStyles: Record<ButtonSizes, string> = {
+  // Blue button
+  [ButtonSizes.Medium]: 'text-md px-4 py-2 gap-3',
+
+  // White buton
+  [ButtonSizes.Large]: 'text-lg px-6 py-4 gap-5',
+};
+
+const sizeIconRatio: Record<ButtonSizes, string> = {
+  // Blue button
+  [ButtonSizes.Medium]: '0.75rem',
+
+  // White buton
+  [ButtonSizes.Large]: '1rem',
+};
+
 export default function Button({
   children,
   onClick,
   disabled,
   variant = ButtonVariants.Primary,
+  size = ButtonSizes.Medium,
   iconName,
   roundedFull = false,
 }: ButtonProps) {
   const buttonClasses = classNames(
     // Shared - base
-    'text-md px-4 py-2 ',
+    'text-md px-4 py-2',
 
     // Shared - layout
-    'flex gap-3 items-center justify-center',
+    'flex items-center justify-center',
 
     // Shared - Disabled
     'disabled:opacity-40 disabled:pointer-events-none',
@@ -48,13 +66,19 @@ export default function Button({
     // Variants
     variantStyles[variant],
 
+    // Sizes
+    sizeStyles[size],
+
     // Rounded, mostly for connect wallet
     roundedFull ? 'rounded-full' : 'rounded-lg',
   );
+
+  const iconSize = sizeIconRatio[size];
+
   return (
     <button type="button" onClick={onClick} disabled={disabled} className={buttonClasses}>
       <span>{children}</span>
-      {iconName && <Icon name={iconName} width="0.75rem" height="0.75rem" color="currentColor" />}
+      {iconName && <Icon name={iconName} width={iconSize} height={iconSize} color="currentColor" />}
     </button>
   );
 }
