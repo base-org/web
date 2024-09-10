@@ -135,7 +135,7 @@ function Connector({
       ref={api}
       colliders={false}
     >
-      <CylinderCollider args={[0.5, 3]} />
+      <BallCollider args={[1]} />
       {children ? children : <Model children={undefined} {...props} />}
       {accent && <pointLight intensity={4} distance={2.5} color={props.color} />}
     </RigidBody>
@@ -165,7 +165,13 @@ function Model({ children, color = 'white', roughness = 0, ...props }) {
   console.log(glb);
   const nodes = glb.nodes;
   return (
-    <mesh ref={ref} castShadow receiveShadow scale={0.3} geometry={glb.scene.children[0].geometry}>
+    <mesh
+      ref={ref}
+      castShadow
+      receiveShadow
+      scale={0.3}
+      geometry={nodes.Base_Icon.children[0].geometry}
+    >
       <meshStandardMaterial metalness={0.2} roughness={roughness} />
       {children}
     </mesh>
