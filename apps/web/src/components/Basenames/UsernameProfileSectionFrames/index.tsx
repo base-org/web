@@ -66,7 +66,7 @@ function SectionContent() {
           </Link>
         )}
       </div>
-      <div className="flex flex-row flex-wrap justify-start gap-3">
+      <div className="grid grid-flow-row-dense auto-rows-min grid-cols-1 gap-4 p-4 xl:grid-cols-2">
         {frameUrls.map((url) => (
           <FrameListItem url={url} key={url} />
         ))}

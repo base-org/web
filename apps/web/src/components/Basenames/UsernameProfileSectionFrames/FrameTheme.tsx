@@ -1,6 +1,7 @@
 import type { FrameUIComponents, FrameUITheme } from '@frames.js/render/ui';
 import Image from 'next/image';
 import BaseLoading from './base-loading.gif';
+import classNames from 'classnames';
 
 type StylingProps = {
   className?: string;
@@ -13,11 +14,12 @@ export const theme: FrameUITheme<StylingProps> = {
       'flex flex-col rounded-lg overflow-hidden bg-transparent relative items-center justify-center opacity-50',
   },
   Root: {
-    className: 'flex flex-col rounded-lg overflow-hidden bg-transparent relative',
+    className:
+      'flex flex-col rounded-lg overflow-hidden bg-transparent relative min-h-[245px] min-w-[346px]',
   },
   LoadingScreen: {
     className:
-      'flex flex-col items-center justify-center rounded-lg bg-transparent absolute top-0 left-0 right-0 bottom-0 z-10',
+      'flex flex-col flex-1 items-center justify-center rounded-lg bg-white absolute top-0 left-0 right-0 bottom-0 z-10',
   },
   ButtonsContainer: {
     className:
@@ -28,7 +30,7 @@ export const theme: FrameUITheme<StylingProps> = {
       'grow py-4 rounded-lg bg-white border border-[#CFD0D2] transition-colors hover:bg-state-b-hovered',
   },
   ImageContainer: {
-    className: 'relative w-full h-full border-0 overflow-hidden',
+    className: 'flex w-full h-full border-0 overflow-hidden',
     style: {
       aspectRatio: 'var(--frame-image-aspect-ratio)',
     },
@@ -47,17 +49,11 @@ export const components: FrameUIComponents<StylingProps> = {
       <Image
         src={BaseLoading}
         alt="loading..."
-        className={stylingProps.className}
+        width={22}
+        height={22}
+        className={classNames('', stylingProps.className)}
         style={stylingProps.style}
-        {...props}
       />
     );
   },
-  // Error: (props, stylingProps) => {
-  //   return (
-  //     <div className={stylingProps.className} style={stylingProps.style} {...props}>
-  //       <Image src={BaseLoading} alt="loading..." />
-  //     </div>
-  //   );
-  // },
 };

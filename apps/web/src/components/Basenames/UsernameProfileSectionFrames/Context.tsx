@@ -41,9 +41,6 @@ function parseChainId(id: string): number {
 }
 
 export type FrameContextValue = {
-  frameManagerModalOpen: boolean;
-  openFrameManagerModal: () => void;
-  closeFrameManagerModal: () => void;
   currentWalletIsProfileOwner?: boolean;
   frameUrlRecord: string;
   frameInteractionError: string;
@@ -77,9 +74,6 @@ type FrameProviderProps = {
 };
 
 export function FrameProvider({ children }: FrameProviderProps) {
-  const [frameManagerModalOpen, setFrameManagerModalOpen] = useState(false);
-  const openFrameManagerModal = useCallback(() => setFrameManagerModalOpen(true), []);
-  const closeFrameManagerModal = useCallback(() => setFrameManagerModalOpen(false), []);
   const [showFarcasterQRModal, setShowFarcasterQRModal] = useState(false);
 
   const { address } = useAccount();
@@ -234,9 +228,6 @@ export function FrameProvider({ children }: FrameProviderProps) {
 
   const value = useMemo(
     () => ({
-      frameManagerModalOpen,
-      openFrameManagerModal,
-      closeFrameManagerModal,
       currentWalletIsProfileOwner,
       frameUrlRecord,
       anonSignerState,
@@ -259,9 +250,6 @@ export function FrameProvider({ children }: FrameProviderProps) {
       setFrameRecord,
     }),
     [
-      frameManagerModalOpen,
-      openFrameManagerModal,
-      closeFrameManagerModal,
       currentWalletIsProfileOwner,
       frameUrlRecord,
       anonSignerState,

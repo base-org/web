@@ -2,16 +2,18 @@
 import { ArrowLeftIcon } from '@heroicons/react/16/solid';
 import { PlusIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
 import * as Accordion from '@radix-ui/react-accordion';
+import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Frame';
 import { SuggestionCard } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/SuggestionCard';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Input from 'apps/web/src/components/Input';
+import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { ChangeEvent, useCallback, useState } from 'react';
-import { useMediaQuery } from 'usehooks-ts';
+import { useDebounceValue, useMediaQuery } from 'usehooks-ts';
 import { useAccount } from 'wagmi';
 import currencies from './ui/currencies.svg';
 import email from './ui/email.svg';
@@ -21,56 +23,64 @@ import previewBackground from './ui/preview-background.svg';
 import emptyPreviewFrame from './ui/preview-frame.svg';
 import starActive from './ui/starActive.svg';
 import swap from './ui/swap.svg';
+import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 
 export default function FrameBuilder() {
   const { address } = useAccount();
-  const [frameUrl, setFrameUrl] = useState('');
-  const [farcasterUsername, setFarcasterUsername] = useState('');
-  const handleFarcasterUsernameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setFarcasterUsername(e.target.value);
-  }, []);
+  const params = useParams();
+  const router = useRouter();
+  const basename = params?.username ?? '';
+  const [newFrameUrl, setNewFrameUrl] = useState('');
+  const [debouncedNewFrameUrl] = useDebounceValue(newFrameUrl, 250);
+
+  const { profileUsername, profileAddress } = useUsernameProfile();
+  const { existingTextRecords } = useReadBaseEnsTextRecords({
+    address: profileAddress,
+    username: profileUsername,
+  });
+  const homeframeUrlString = existingTextRecords[UsernameTextRecordKeys.Frame] ?? '';
+
   const [swapTokenAddress, setSwapTokenAddress] = useState('');
   const handleSwapTokenAddressChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setSwapTokenAddress(e.target.value);
   }, []);
-  const emptyFrameUrl = !frameUrl;
+  const emptyFrameUrl = !debouncedNewFrameUrl;
 
   const onFrameUrlChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => setFrameUrl(e.target.value),
+    (e: ChangeEvent<HTMLInputElement>) => setNewFrameUrl(e.target.value),
     [],
   );
 
-  const { closeFrameManagerModal, pendingFrameChange, setFrameRecord } = useFrameContext();
+  const { pendingFrameChange, setFrameRecord } = useFrameContext();
 
   const handlePaycasterClick = useCallback(() => {
-    if (farcasterUsername) {
-      setFrameUrl(`https://app.paycaster.co/api/frames/users/${farcasterUsername}`);
+    if (basename) {
+      setNewFrameUrl(`https://app.paycaster.co/api/frames/users/${basename}`);
     } else {
-      setFrameUrl('');
+      setNewFrameUrl('');
     }
-  }, [farcasterUsername]);
+  }, [basename]);
 
   const handleBuildTopClick = useCallback(() => {
     if (address) {
-      setFrameUrl(`https://build.top/nominate/${address}`);
+      setNewFrameUrl(`https://build.top/nominate/${address}`);
     } else {
-      setFrameUrl('');
+      setNewFrameUrl('');
     }
   }, [address]);
 
   const handleAddFrameClick = useCallback(() => {
-    if (!frameUrl) return;
-    setFrameRecord(frameUrl)
+    if (!newFrameUrl) return;
+    setFrameRecord(homeframeUrlString ? `${homeframeUrlString}|${newFrameUrl}` : newFrameUrl)
       .then(() => {
-        closeFrameManagerModal();
+        router.push(`/name/${basename}`);
       })
       .catch(console.warn);
-  }, [frameUrl, setFrameRecord, closeFrameManagerModal]);
+  }, [newFrameUrl, setFrameRecord, homeframeUrlString, router, basename]);
 
   // corresponds to tailwind's md: rule
   const isDesktop = useMediaQuery('(min-width: 768px)');
   const isMobile = useMediaQuery('(max-width: 769px)');
-  const params = useParams();
 
   if (!isDesktop && !isMobile) return null;
 
@@ -78,7 +88,7 @@ export default function FrameBuilder() {
     return (
       <div className="flex w-full flex-col">
         <Link
-          href={`/name/${params?.username}`}
+          href={`/name/${basename}`}
           className="mb-8 flex max-w-36 items-center justify-start gap-2 text-base font-medium hover:underline"
         >
           <ArrowLeftIcon width="12px" /> Back to profile
@@ -97,16 +107,17 @@ export default function FrameBuilder() {
               description="Get paid with Paycaster."
             >
               <p className="text-sm text-palette-foreground">
-                Add your farcaster to show a preview.
+                We will use your basename to show a preview from
+                <a
+                  href="https://paycaster.co/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  paycaster.co
+                </a>
               </p>
               <div className="mt-3 flex flex-row gap-4">
-                <Input
-                  placeholder="@username"
-                  value={farcasterUsername}
-                  onChange={handleFarcasterUsernameChange}
-                  type="text"
-                  className="mr-3 flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
-                />
                 <Button
                   rounded
                   variant={ButtonVariants.Black}
@@ -257,7 +268,7 @@ export default function FrameBuilder() {
             >
               <Input
                 placeholder="https://"
-                value={frameUrl}
+                value={newFrameUrl}
                 onChange={onFrameUrlChange}
                 type="text"
                 className="mr-3 mt-1 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
@@ -276,7 +287,7 @@ export default function FrameBuilder() {
                   alt="preview frame"
                 />
               ) : (
-                <Frame url={frameUrl} />
+                <Frame url={debouncedNewFrameUrl} />
               )}
             </div>
             <Button
@@ -284,7 +295,7 @@ export default function FrameBuilder() {
               variant={ButtonVariants.Black}
               className="mt-4 self-end"
               onClick={handleAddFrameClick}
-              disabled={pendingFrameChange || !frameUrl}
+              disabled={pendingFrameChange || !newFrameUrl}
             >
               Add frame
             </Button>

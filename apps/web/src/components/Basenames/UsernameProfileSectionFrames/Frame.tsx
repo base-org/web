@@ -27,18 +27,31 @@ export default function Frame({ url }: FrameProps) {
 
   const openFrameWorks = useMemo(() => {
     const stackItem = openFrameState.framesStack[0];
-    console.log('jf stackItem', stackItem);
+    console.log('jf openFrameWorks:stackItem', stackItem);
     if (!stackItem) return false;
     const status = stackItem.status;
-    console.log('jf status', status);
+    console.log('jf openFrameWorks:status', status);
     if (status !== 'done') return false;
-    console.log('jf stackItem.frameResult', stackItem.frameResult);
+    console.log('jf openFrameWorks:stackItem.frameResult', stackItem.frameResult);
     return stackItem.frameResult.status !== 'failure';
   }, [openFrameState.framesStack]);
 
-  return openFrameWorks ? (
-    <FrameUI frameState={openFrameState} theme={theme} components={components} />
-  ) : (
-    <FrameUI frameState={farcasterFrameState} theme={theme} components={components} />
-  );
+  const farcasterFrameWorks = useMemo(() => {
+    const stackItem = farcasterFrameState.framesStack[0];
+    console.log('jf farcasterFrameWorks:stackItem', stackItem);
+    if (!stackItem) return false;
+    const status = stackItem.status;
+    console.log('jf farcasterFrameWorks:status', status);
+    if (status !== 'done') return false;
+    console.log('jf farcasterFrameWorks:stackItem.frameResult', stackItem.frameResult);
+    return stackItem.frameResult.status !== 'failure';
+  }, [farcasterFrameState.framesStack]);
+
+  console.log('jf farcasterFrameWorks', farcasterFrameWorks);
+  console.log('jf openFrameWorks', openFrameWorks);
+  if (openFrameWorks)
+    return <FrameUI frameState={openFrameState} theme={theme} components={components} />;
+  if (farcasterFrameWorks)
+    return <FrameUI frameState={farcasterFrameState} theme={theme} components={components} />;
+  return <FrameUI frameState={openFrameState} theme={theme} components={components} />;
 }

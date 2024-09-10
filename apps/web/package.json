@@ -16,7 +16,7 @@
     "@coinbase/onchainkit": "^0.28.5",
     "@datadog/browser-logs": "^5.23.3",
     "@datadog/browser-rum": "^5.23.3",
-    "@frames.js/render": "^0.3.5",
+    "@frames.js/render": "^0.3.7",
     "@guildxyz/sdk": "2.6.0",
     "@headlessui/react": "^1.7.19",
     "@heroicons/react": "^2.1.3",
