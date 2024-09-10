@@ -16,6 +16,7 @@ import SlidingTextSection from 'apps/web/src/components/base-org/root/SlidingTex
 import TransactionsFeesSection from 'apps/web/src/components/base-org/root/TransactionsFeesSection';
 import BuildAndRewardSection from 'apps/web/src/components/base-org/root/BuildAndRewardSection';
 import ErrorsProvider from 'apps/web/contexts/Errors';
+import BlogSection from 'apps/web/src/components/base-org/root/BlogSection';
 
 /* Farcaster Metadatas */
 const buttons: FrameButtonMetadata[] = [
@@ -91,6 +92,7 @@ export default async function Home() {
                 <SlidingTextSection />
                 <TransactionsFeesSection />
                 <BuildAndRewardSection />
+                <BlogSection />
               </div>
             </Container>
           </main>
