@@ -24,11 +24,15 @@ export default function Frame({ url }: FrameProps) {
 
   const openFrameWorks = useMemo(() => {
     const stackItem = openFrameState.framesStack[0];
+    console.log('jf stackItem', stackItem);
+    if (!stackItem) return false;
     const status = stackItem.status;
+    console.log('jf status', status);
     if (status !== 'done') return false;
+    console.log('jf stackItem.frameResult', stackItem.frameResult);
     return stackItem.frameResult.status !== 'failure';
   }, [openFrameState.framesStack]);
-  console.log('jf frameConfig.frame', frameConfig.frame);
+
   return openFrameWorks ? (
     <FrameUI frameState={openFrameState} theme={theme} />
   ) : (

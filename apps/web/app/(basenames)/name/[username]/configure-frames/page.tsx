@@ -1,6 +1,8 @@
 import { BaseName } from '@coinbase/onchainkit/identity';
 import ProfileProviders from 'apps/web/app/(basenames)/name/[username]/ProfileProviders';
 import ErrorsProvider from 'apps/web/contexts/Errors';
+import FrameBuilder from 'apps/web/src/components/Basenames/ConfigureFramesPageContent/FrameBuilder';
+import { FrameProvider } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import {
   formatDefaultUsername,
   getBasenameAddress,
@@ -33,7 +35,11 @@ export default async function ConfigureFrames({ params }: ConfigureFramesProps) 
   return (
     <ErrorsProvider context="profile">
       <ProfileProviders username={username}>
-        <main className={usernameProfilePageClasses} />
+        <FrameProvider>
+          <main className={usernameProfilePageClasses}>
+            <FrameBuilder />
+          </main>
+        </FrameProvider>
       </ProfileProviders>
     </ErrorsProvider>
   );

@@ -1,3 +1,4 @@
+'use client';
 import {
   fallbackFrameContext,
   FarcasterFrameContext,
@@ -44,7 +45,7 @@ export type FrameContextValue = {
   openFrameManagerModal: () => void;
   closeFrameManagerModal: () => void;
   currentWalletIsProfileOwner?: boolean;
-  homeframeUrl: string;
+  frameUrlRecord: string;
   frameInteractionError: string;
   setFrameInteractionError: (s: string) => void;
   frameConfig: Omit<
@@ -54,7 +55,7 @@ export type FrameContextValue = {
     frameContext: FarcasterFrameContext;
   };
   farcasterSignerState: FarcasterSignerInstance;
-  anonSignerState: SignerStateInstance<AnonymousSigner> | AnonymousSignerInstance;
+  anonSignerState: SignerStateInstance<AnonymousSigner>;
   showFarcasterQRModal: boolean;
   pendingFrameChange: boolean;
   setShowFarcasterQRModal: (b: boolean) => void;
@@ -89,7 +90,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
     refetchInterval: currentWalletIsProfileOwner ? 1000 * 5 : Infinity,
   });
 
-  const homeframeUrl = existingTextRecords[UsernameTextRecordKeys.Frame];
+  const frameUrlRecord = existingTextRecords[UsernameTextRecordKeys.Frame];
   const { frameContext: farcasterFrameContext } = useFarcasterFrameContext({
     fallbackContext: fallbackFrameContext,
   });
@@ -194,7 +195,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
   const setFrameRecord = useCallback(
     async (frameUrl: string) => {
       async function doTransaction() {
-        if (!frameUrl) return;
+        if (frameUrl === 'undefined') return;
         if (!address) {
           openConnectModal?.();
           return;
@@ -237,7 +238,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
       openFrameManagerModal,
       closeFrameManagerModal,
       currentWalletIsProfileOwner,
-      homeframeUrl,
+      frameUrlRecord,
       anonSignerState,
       farcasterSignerState,
       frameConfig: {
@@ -262,7 +263,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
       openFrameManagerModal,
       closeFrameManagerModal,
       currentWalletIsProfileOwner,
-      homeframeUrl,
+      frameUrlRecord,
       anonSignerState,
       farcasterSignerState,
       address,
