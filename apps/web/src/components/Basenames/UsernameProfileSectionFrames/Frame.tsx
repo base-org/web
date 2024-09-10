@@ -1,7 +1,10 @@
 import { FrameUI } from '@frames.js/render/ui';
 import { useFrame } from '@frames.js/render/use-frame';
 import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
-import { theme } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FrameTheme';
+import {
+  theme,
+  components,
+} from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FrameTheme';
 import { useMemo } from 'react';
 
 type FrameProps = {
@@ -34,8 +37,8 @@ export default function Frame({ url }: FrameProps) {
   }, [openFrameState.framesStack]);
 
   return openFrameWorks ? (
-    <FrameUI frameState={openFrameState} theme={theme} />
+    <FrameUI frameState={openFrameState} theme={theme} components={components} />
   ) : (
-    <FrameUI frameState={farcasterFrameState} theme={theme} />
+    <FrameUI frameState={farcasterFrameState} theme={theme} components={components} />
   );
 }

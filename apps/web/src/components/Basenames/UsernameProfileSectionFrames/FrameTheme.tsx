@@ -1,16 +1,23 @@
-import { type FrameUITheme } from '@frames.js/render/ui';
+import type { FrameUIComponents, FrameUITheme } from '@frames.js/render/ui';
+import Image from 'next/image';
+import BaseLoading from './base-loading.gif';
 
-export const theme: FrameUITheme<Record<string, unknown>> = {
+type StylingProps = {
+  className?: string;
+  style?: React.CSSProperties;
+};
+
+export const theme: FrameUITheme<StylingProps> = {
   Error: {
     className:
-      'flex flex-col max-w-[380px] rounded-lg overflow-hidden bg-white relative items-center justify-center opacity-50',
+      'flex flex-col rounded-lg overflow-hidden bg-transparent relative items-center justify-center opacity-50',
   },
   Root: {
-    className: 'flex flex-col max-w-[380px] rounded-lg overflow-hidden bg-white relative',
+    className: 'flex flex-col rounded-lg overflow-hidden bg-transparent relative',
   },
   LoadingScreen: {
     className:
-      'flex flex-col items-center max-w-[380px] justify-center rounded-lg bg-white absolute top-0 left-0 right-0 bottom-0 z-10',
+      'flex flex-col items-center justify-center rounded-lg bg-transparent absolute top-0 left-0 right-0 bottom-0 z-10',
   },
   ButtonsContainer: {
     className:
@@ -32,4 +39,25 @@ export const theme: FrameUITheme<Record<string, unknown>> = {
   TextInput: {
     className: 'w-full outline-0 focus:outline-0',
   },
+};
+
+export const components: FrameUIComponents<StylingProps> = {
+  LoadingScreen: (props, stylingProps) => {
+    return (
+      <Image
+        src={BaseLoading}
+        alt="loading..."
+        className={stylingProps.className}
+        style={stylingProps.style}
+        {...props}
+      />
+    );
+  },
+  // Error: (props, stylingProps) => {
+  //   return (
+  //     <div className={stylingProps.className} style={stylingProps.style} {...props}>
+  //       <Image src={BaseLoading} alt="loading..." />
+  //     </div>
+  //   );
+  // },
 };
