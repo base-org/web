@@ -144,14 +144,14 @@ function Pointer({ vec = new THREE.Vector3() }) {
 
 function Model({ children, color = 'white', roughness = 0, ...props }) {
   const ref = useRef();
-  const glb = useGLTF('/three/base.glb');
+  const glb = useGLTF('/three/BaseOrg_BaseIcon_glTF_v06.gltf', false, false);
   useFrame((state, delta) => {
     easing.dampC(ref.current.material.color, color, 0.2, delta);
   });
   console.log(glb);
   const nodes = glb.nodes;
   return (
-    <mesh ref={ref} castShadow receiveShadow scale={0.3} geometry={nodes.Base_Icon.geometry}>
+    <mesh ref={ref} castShadow receiveShadow scale={0.3} geometry={glb.scene.children[0].geometry}>
       <meshStandardMaterial metalness={0.2} roughness={roughness} />
       {children}
     </mesh>
