@@ -63,7 +63,7 @@ The [Building an Onchain App] tutorial will show you how to do this!
 
 ### Coinbase Smart Wallet
 
-If you have the Coinbase Wallet extension, you might be wondering were the smart wallet can be found. By default, the smart wallet will only be invoked if you click the `Coinbase Wallet` button to log in **and** you **don't** have the browser extension. To test, open a private window with extensions disabled and try to log in.
+If you have the Coinbase Wallet extension, you might be wondering where the smart wallet can be found. By default, the smart wallet will only be invoked if you click the `Coinbase Wallet` button to log in **and** you **don't** have the browser extension. To test, open a private window with extensions disabled and try to log in.
 
 Selecting `Rainbow`, `MetaMask`, or `WalletConnect` will display a QR code so that the user can log in with their phone. Picking `Coinbase Wallet` will instead invoke the smart wallet login.
 
