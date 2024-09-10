@@ -14,12 +14,7 @@ export const theme: FrameUITheme<StylingProps> = {
       'flex flex-col rounded-lg overflow-hidden bg-transparent relative items-center justify-center opacity-50',
   },
   Root: {
-    className:
-      'flex flex-col rounded-lg overflow-hidden bg-transparent relative min-h-[245px] min-w-[346px]',
-  },
-  LoadingScreen: {
-    className:
-      'flex flex-col flex-1 items-center justify-center rounded-lg bg-white absolute top-0 left-0 right-0 bottom-0 z-10',
+    className: 'flex flex-col rounded-lg overflow-hidden bg-transparent relative',
   },
   ButtonsContainer: {
     className:
@@ -44,16 +39,23 @@ export const theme: FrameUITheme<StylingProps> = {
 };
 
 export const components: FrameUIComponents<StylingProps> = {
-  LoadingScreen: (props, stylingProps) => {
+  LoadingScreen: (props) => {
     return (
       <Image
         src={BaseLoading}
-        alt="loading..."
+        alt=""
         width={22}
         height={22}
-        className={classNames('', stylingProps.className)}
-        style={stylingProps.style}
+        className={classNames({
+          // eslint-disable-next-line react/prop-types
+          hidden: props.frameState.status !== 'loading',
+        })}
       />
     );
+  },
+  Image: (props) => {
+    // @ts-expect-error asdf
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @next/next/no-img-element, react/prop-types
+    return <img src={props.src} {...props} alt="" />;
   },
 };
