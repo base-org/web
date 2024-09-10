@@ -2,7 +2,6 @@ import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import EcosystemHeroLogos from 'apps/web/public/images/ecosystem-hero-logos-new.png';
 import { Divider } from 'apps/web/src/components/Divider/Divider';
 import type { Metadata } from 'next';
-
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import Content from 'apps/web/src/components/Ecosystem/Content';
 
@@ -44,16 +43,12 @@ async function EcosystemHero() {
   );
 }
 
-export type EcosystemProps = {
-  searchParams: { tag?: string; search?: string; showCount: number };
-};
-
-export default async function Ecosystem(page: EcosystemProps) {
+export default async function Ecosystem() {
   return (
     <main className="flex w-full flex-col items-center bg-black">
       <EcosystemHero />
       <Divider />
-      <Content searchParams={page.searchParams} />
+      <Content />
     </main>
   );
 }
