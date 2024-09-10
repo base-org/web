@@ -1,4 +1,5 @@
 'use client';
+import { ArrowLeftIcon } from '@heroicons/react/16/solid';
 import { PlusIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
 import * as Accordion from '@radix-ui/react-accordion';
 import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
@@ -7,6 +8,8 @@ import { SuggestionCard } from 'apps/web/src/components/Basenames/UsernameProfil
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Input from 'apps/web/src/components/Input';
 import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { ChangeEvent, useCallback, useState } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 import { useAccount } from 'wagmi';
@@ -56,6 +59,7 @@ export default function FrameBuilder() {
   }, [address]);
 
   const handleAddFrameClick = useCallback(() => {
+    if (!frameUrl) return;
     setFrameRecord(frameUrl)
       .then(() => {
         closeFrameManagerModal();
@@ -66,12 +70,19 @@ export default function FrameBuilder() {
   // corresponds to tailwind's md: rule
   const isDesktop = useMediaQuery('(min-width: 768px)');
   const isMobile = useMediaQuery('(max-width: 769px)');
+  const params = useParams();
 
   if (!isDesktop && !isMobile) return null;
 
   if (isDesktop) {
     return (
       <div className="flex w-full flex-col">
+        <Link
+          href={`/name/${params?.username}`}
+          className="mb-8 flex max-w-36 items-center justify-start gap-2 text-base font-medium hover:underline"
+        >
+          <ArrowLeftIcon width="12px" /> Back to profile
+        </Link>
         <h1 className="font-display text-3xl">Choose a frame to pin</h1>
         <div className="mt-4 flex flex-row justify-between gap-12">
           <Accordion.Root
@@ -259,7 +270,11 @@ export default function FrameBuilder() {
               style={{ backgroundImage: `url(${previewBackground.src})` }}
             >
               {emptyFrameUrl ? (
-                <Image src={emptyPreviewFrame as StaticImageData} alt="preview frame" />
+                <Image
+                  className="pointer-events-none select-none"
+                  src={emptyPreviewFrame as StaticImageData}
+                  alt="preview frame"
+                />
               ) : (
                 <Frame url={frameUrl} />
               )}
@@ -269,7 +284,7 @@ export default function FrameBuilder() {
               variant={ButtonVariants.Black}
               className="mt-4 self-end"
               onClick={handleAddFrameClick}
-              disabled={pendingFrameChange}
+              disabled={pendingFrameChange || !frameUrl}
             >
               Add frame
             </Button>
