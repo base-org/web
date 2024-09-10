@@ -1,27 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/dist/client/components/navigation';
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import DesktopNav from './DesktopNav';
 import MobileMenu from './MobileMenu';
-import logoBlack from './logoBlack.svg';
 import logoWhite from './logoWhite.svg';
 import Image, { StaticImageData } from 'next/image';
 
-const BLACK_NAV_PATHS = [
-  '/',
-  '/jobs/apply',
-  '/cookie-policy',
-  '/third-party-cookies',
-  '/onchainsummer',
-  '/name',
-];
-
 export default function Nav() {
-  const pathname = usePathname();
-  const color = pathname && BLACK_NAV_PATHS.includes(pathname) ? 'black' : 'white';
-  const logo = color === 'black' ? (logoBlack as StaticImageData) : (logoWhite as StaticImageData);
+  const color = 'white';
+  const logo = logoWhite as StaticImageData;
   return (
     <AnalyticsProvider context="navbar">
       <nav className="z-10 flex h-24 w-full max-w-[1440px] flex-row items-center justify-between gap-16 self-center bg-transparent p-8">

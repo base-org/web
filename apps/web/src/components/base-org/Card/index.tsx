@@ -4,9 +4,11 @@ import React, { useEffect, useRef } from 'react';
 
 type HoverShimmerProps = {
   children: React.ReactNode;
+  wrapperClassName?: string;
+  innerClassName?: string;
 };
 
-export default function Card({ children }: HoverShimmerProps) {
+export default function Card({ children, wrapperClassName, innerClassName }: HoverShimmerProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const blobRef = useRef<HTMLDivElement>(null);
   const fakeBlobRef = useRef<HTMLDivElement>(null);
@@ -48,21 +50,20 @@ export default function Card({ children }: HoverShimmerProps) {
     - The card "border" is controlled via the padding, p-[1px]
     - if you change the "border", you need to change the inner class radius accordingly
   */
-  const cardClassName =
-    'card overflow-hidden p-[1px] m-0 bg-white/20 rounded-[16px] relative  group';
+  const cardClasses = `card overflow-hidden p-[1px] m-0 bg-white/20 rounded-[16px] relative group ${wrapperClassName} w-full`;
 
-  const blobClassName =
+  const blobClasses =
     'blob blur-[40px] z-10 absolute opacity-0 w-[30rem] h-[30rem] rounded-full bg-[rgb(255,255,255,0.2)]';
 
-  const fakeBlobClassName = 'fake-blob absolute w-[30rem] h-[30rem] rounded-full opacity-0';
+  const fakeBlobClasses = 'fake-blob absolute w-[30rem] h-[30rem] rounded-full opacity-0';
 
-  const innerClassName = 'inner relative rounded-[15px] p-12 bg-black z-20 h-full';
+  const innerClasses = `inner relative rounded-[15px] bg-black z-20 h-full ${innerClassName}`;
 
   return (
-    <div className={cardClassName} ref={cardRef}>
-      <div className={innerClassName}>{children}</div>
-      <div className={blobClassName} ref={blobRef} />
-      <div className={fakeBlobClassName} ref={fakeBlobRef} />
+    <div className={cardClasses} ref={cardRef}>
+      <div className={innerClasses}>{children}</div>
+      <div className={blobClasses} ref={blobRef} />
+      <div className={fakeBlobClasses} ref={fakeBlobRef} />
     </div>
   );
 }

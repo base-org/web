@@ -49,6 +49,7 @@ export default function Button({
   size = ButtonSizes.Medium,
   iconName,
   roundedFull = false,
+  className,
 }: ButtonProps) {
   const buttonClasses = classNames(
     // Shared - base
@@ -71,6 +72,8 @@ export default function Button({
 
     // Rounded, mostly for connect wallet
     roundedFull ? 'rounded-full' : 'rounded-lg',
+
+    className,
   );
 
   const iconSize = sizeIconRatio[size];

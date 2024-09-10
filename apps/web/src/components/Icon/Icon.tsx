@@ -339,7 +339,7 @@ const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
       />
     </svg>
   ),
-  baseOrgdiagonalUpArrow: ({ color, width, height }: SvgProps) => (
+  baseOrgDiagonalUpArrow: ({ color, width, height }: SvgProps) => (
     <svg
       width={width}
       height={height}

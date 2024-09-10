@@ -31,18 +31,16 @@ export const levelStyles: Record<TitleLevel, string> = {
   [TitleLevel.Headline]: 'font-sans text-[1rem] leading-[1.4375rem] font-bold',
 };
 
-// Note: We don't pass className here to accidental font size override
-//       padding, margin and other tweaks should be done in a
-//       wrapper around the Title
 type TitleProps = {
   children: ReactNode;
   level?: TitleLevel;
   as?: ElementType;
+  className?: string;
 };
 
-export default function Title({ level = TitleLevel.Title1, children, as }: TitleProps) {
+export default function Title({ level = TitleLevel.Title1, children, as, className }: TitleProps) {
   const Tag = as ?? defaultTags[level];
 
-  const titleClasses = classNames('text-currentColor', levelStyles[level]);
+  const titleClasses = classNames('text-currentColor', levelStyles[level], className);
   return <Tag className={titleClasses}>{children}</Tag>;
 }

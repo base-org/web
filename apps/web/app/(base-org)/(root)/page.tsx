@@ -1,22 +1,21 @@
 import { Metadata } from 'next';
 import { FrameButtonMetadata } from '@coinbase/onchainkit/frame';
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
-import { BestOfEthereum } from 'apps/web/src/components/BestOfEthereum/BestOfEthereum';
-import { Commitment } from 'apps/web/src/components/Commitment/Commitment';
-import { Divider } from 'apps/web/src/components/Divider/Divider';
-import { EmpoweredByCoinbase } from 'apps/web/src/components/EmpoweredByCoinbase/EmpoweredByCoinbase';
-import { Features } from 'apps/web/src/components/Features/Features';
-import { GetConnected } from 'apps/web/src/components/GetConnected/GetConnected';
-import { JoinTheCommunity } from 'apps/web/src/components/JoinTheCommunity/JoinTheCommunity';
-import { Partnerships } from 'apps/web/src/components/Partnerships/Partnerships';
+
+// Clean up assets while removing below
+// import { JoinTheCommunity } from 'apps/web/src/components/JoinTheCommunity/JoinTheCommunity';
 import ThreeHero from 'apps/web/src/components/ThreeHero';
-import Card from 'apps/web/src/components/base-org/Card';
 import Button from 'apps/web/src/components/base-org/Button';
-import { ButtonVariants, ButtonSizes } from 'apps/web/src/components/base-org/Button/types';
+import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
-import Text from 'apps/web/src/components/base-org/typography/Text';
-import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
+import Container from 'apps/web/src/components/base-org/Container';
+import VideoCardsSection from 'apps/web/src/components/base-org/root/VideoCardsSection';
+import BuildExploreSection from 'apps/web/src/components/base-org/root/BuildExploreSection';
+import SlidingTextSection from 'apps/web/src/components/base-org/root/SlidingTextSection';
+import TransactionsFeesSection from 'apps/web/src/components/base-org/root/TransactionsFeesSection';
+import BuildAndRewardSection from 'apps/web/src/components/base-org/root/BuildAndRewardSection';
+import ErrorsProvider from 'apps/web/contexts/Errors';
 
 /* Farcaster Metadatas */
 const buttons: FrameButtonMetadata[] = [
@@ -53,241 +52,50 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   return (
-    <AnalyticsProvider context="base_landing_page">
-      <AnalyticsProvider context="hero">
-        <div className="relative h-[875px] w-full">
-          <ThreeHero />
+    <ErrorsProvider context="base_landing_page">
+      <AnalyticsProvider context="base_landing_page">
+        <AnalyticsProvider context="hero">
+          <div className="relative h-[875px] w-full">
+            <ThreeHero />
 
-          <div className="absolute bottom-0 left-0 w-full p-12 text-white">
-            <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-2 ">
-              <Title level={TitleLevel.Headline}>Base is for everyone.</Title>
-              <p className="max-w-[19rem]">
-                Bringing the world onchain to create a global economy that increases innovation,
-                creativity, and freedom.
-              </p>
-              <div className="mt-4 flex gap-4">
-                <Button variant={ButtonVariants.Secondary} iconName="baseOrgdiagonalUpArrow">
-                  Start building
-                </Button>
-                <Button variant={ButtonVariants.Outlined} iconName="baseOrgdiagonalUpArrow">
-                  Get a Basename
-                </Button>
-              </div>
+            <div className="absolute bottom-0 left-0 w-full pb-20 text-white">
+              <Container>
+                <Title level={TitleLevel.Headline}>Base is for everyone.</Title>
+                <p className="max-w-[19rem]">
+                  Bringing the world onchain to create a global economy that increases innovation,
+                  creativity, and freedom.
+                </p>
+                <div className="mt-4 flex gap-4">
+                  <Button variant={ButtonVariants.Secondary} iconName="baseOrgDiagonalUpArrow">
+                    Start building
+                  </Button>
+                  <Button variant={ButtonVariants.Outlined} iconName="baseOrgDiagonalUpArrow">
+                    Get a Basename
+                  </Button>
+                </div>
+              </Container>
             </div>
           </div>
-        </div>
+        </AnalyticsProvider>
+        <AnalyticsProvider context="content">
+          <main className="flex w-full flex-col items-center bg-black">
+            <Container>
+              <div className="flex flex-col gap-40 pb-40 pt-20">
+                <section>
+                  <h1 className="text-[4.8125rem] leading-[1.1em] tracking-[-0.01em]">
+                    The future of the internet is onchain. Base is here to help you build it.
+                  </h1>
+                </section>
+                <BuildExploreSection />
+                <VideoCardsSection />
+                <SlidingTextSection />
+                <TransactionsFeesSection />
+                <BuildAndRewardSection />
+              </div>
+            </Container>
+          </main>
+        </AnalyticsProvider>
       </AnalyticsProvider>
-      <main className="flex w-full flex-col items-center bg-black">
-        <div className="container flex w-full flex-row items-center gap-12 bg-black p-12 pb-[96px] text-white">
-          <Card>
-            <p className="text-white">Hello, welcome to base</p>
-          </Card>
-          <Card>
-            <br />
-            <Title level={TitleLevel.Display1}>Display 1</Title>
-            <br />
-            <Title level={TitleLevel.Display2}>Display 2</Title>
-            <br />
-            <Title level={TitleLevel.Display3}>Display 3</Title>
-            <br />
-            <Title level={TitleLevel.Display4}>Display 4</Title>
-            <br />
-            <Title level={TitleLevel.Title1}>Title 1</Title>
-            <br />
-            <Title level={TitleLevel.Title2}>Title 2</Title>
-            <br />
-            <Title level={TitleLevel.Title3}>Title 3</Title>
-            <br />
-            <Title level={TitleLevel.Title4}>Title 4</Title>
-            <br />
-            <Title level={TitleLevel.Headline}>Headline</Title>
-            <br />
-
-            <br />
-            <Text variant={TextVariant.Body}>Body</Text>
-            <br />
-
-            <br />
-            <Text variant={TextVariant.Label1}>Label1</Text>
-            <br />
-
-            <br />
-            <Text variant={TextVariant.Label2}>Label2</Text>
-            <br />
-          </Card>
-          <Card>
-            <p className="text-white">Hello, welcome to base</p>
-            <br />
-            <br />
-            <Button roundedFull>Connect</Button>
-            <br />
-            <br />
-            <Button>Button</Button>
-            <br />
-            <br />
-            <Button disabled>Button Disabled</Button>
-
-            <br />
-            <br />
-            <Button variant={ButtonVariants.Secondary}>Button</Button>
-            <br />
-            <br />
-            <Button variant={ButtonVariants.Secondary} disabled>
-              Button Disabled
-            </Button>
-
-            <br />
-            <br />
-            <Button variant={ButtonVariants.Outlined}>Button</Button>
-            <br />
-            <br />
-            <Button variant={ButtonVariants.Outlined} disabled>
-              Button Disabled
-            </Button>
-
-            <br />
-            <br />
-            <Button iconName="baseOrgdiagonalUpArrow">Button</Button>
-            <br />
-            <br />
-            <Button iconName="baseOrgdiagonalUpArrow" disabled>
-              Button Disabled
-            </Button>
-
-            <br />
-            <br />
-            <Button iconName="baseOrgdiagonalUpArrow" variant={ButtonVariants.Secondary}>
-              Button
-            </Button>
-            <br />
-            <br />
-            <Button iconName="baseOrgdiagonalUpArrow" variant={ButtonVariants.Secondary} disabled>
-              Button Disabled
-            </Button>
-
-            <br />
-            <br />
-            <Button
-              size={ButtonSizes.Large}
-              iconName="baseOrgdiagonalUpArrow"
-              variant={ButtonVariants.Outlined}
-            >
-              Button
-            </Button>
-            <br />
-            <br />
-            <Button
-              size={ButtonSizes.Large}
-              iconName="baseOrgdiagonalUpArrow"
-              variant={ButtonVariants.Outlined}
-              disabled
-            >
-              Button Disabled
-            </Button>
-
-            <br />
-            <br />
-            <Button size={ButtonSizes.Large} roundedFull>
-              Connect
-            </Button>
-            <br />
-            <br />
-            <Button size={ButtonSizes.Large}>Button</Button>
-            <br />
-            <br />
-            <Button size={ButtonSizes.Large} disabled>
-              Button Disabled
-            </Button>
-
-            <br />
-            <br />
-            <Button size={ButtonSizes.Large} variant={ButtonVariants.Secondary}>
-              Button
-            </Button>
-            <br />
-            <br />
-            <Button size={ButtonSizes.Large} variant={ButtonVariants.Secondary} disabled>
-              Button Disabled
-            </Button>
-
-            <br />
-            <br />
-            <Button size={ButtonSizes.Large} variant={ButtonVariants.Outlined}>
-              Button
-            </Button>
-            <br />
-            <br />
-            <Button size={ButtonSizes.Large} variant={ButtonVariants.Outlined} disabled>
-              Button Disabled
-            </Button>
-
-            <br />
-            <br />
-            <Button size={ButtonSizes.Large} iconName="baseOrgdiagonalUpArrow">
-              Button
-            </Button>
-            <br />
-            <br />
-            <Button size={ButtonSizes.Large} iconName="baseOrgdiagonalUpArrow" disabled>
-              Button Disabled
-            </Button>
-
-            <br />
-            <br />
-            <Button
-              size={ButtonSizes.Large}
-              iconName="baseOrgdiagonalUpArrow"
-              variant={ButtonVariants.Secondary}
-            >
-              Button
-            </Button>
-            <br />
-            <br />
-            <Button
-              size={ButtonSizes.Large}
-              iconName="baseOrgdiagonalUpArrow"
-              variant={ButtonVariants.Secondary}
-              disabled
-            >
-              Button Disabled
-            </Button>
-
-            <br />
-            <br />
-            <Button
-              size={ButtonSizes.Large}
-              iconName="baseOrgdiagonalUpArrow"
-              variant={ButtonVariants.Outlined}
-            >
-              Button
-            </Button>
-            <br />
-            <br />
-            <Button
-              size={ButtonSizes.Large}
-              iconName="baseOrgdiagonalUpArrow"
-              variant={ButtonVariants.Outlined}
-              disabled
-            >
-              Button Disabled
-            </Button>
-          </Card>
-        </div>
-        <Divider />
-        <Features />
-        <Divider />
-        <BestOfEthereum />
-        <Divider />
-        <EmpoweredByCoinbase />
-        <Divider />
-        <Partnerships />
-        <Divider />
-        <Commitment />
-        <Divider />
-        <JoinTheCommunity />
-        <Divider />
-        <GetConnected />
-      </main>
-    </AnalyticsProvider>
+    </ErrorsProvider>
   );
 }

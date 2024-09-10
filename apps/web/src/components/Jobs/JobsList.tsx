@@ -5,6 +5,8 @@ import { Divider } from 'apps/web/src/components/Divider/Divider';
 import { Job } from 'apps/web/src/components/Jobs/Job';
 import { greenhouseApiUrl } from 'apps/web/src/constants';
 import { useErrors } from 'apps/web/contexts/Errors';
+import Title from 'apps/web/src/components/base-org/typography/Title';
+import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 
 async function getJobs() {
   const res = await fetch(`${greenhouseApiUrl}/boards/basejobs/jobs?content=true`);
@@ -62,11 +64,11 @@ export default function JobsList() {
       <div className="flex flex-col">
         {departments.map((department, index) => (
           <div key={department.id}>
-            <h2 className="text-xl font-bold">
+            <Title level={TitleLevel.Title1}>
               {department.name === 'Business Development & Partnerships'
                 ? 'Ecosystem'
                 : department.name}
-            </h2>
+            </Title>
             <div className="flex flex-col">
               {department.jobs?.map((job) => (
                 <Job key={job.id} job={job} />

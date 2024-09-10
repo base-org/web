@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default async function ThirdPartyCookies() {
   return (
-    <main className="flex w-full flex-col items-center bg-white">
+    <main className="flex w-full flex-col items-center">
       <section className="flex w-full max-w-[1440px] flex-col gap-4 px-8 pb-10 pt-10 lg:pb-28 lg:pt-20">
         <h1 className="text-4xl font-bold">Third-Party Cookies</h1>
         <p className="mb-10">
@@ -23,7 +23,7 @@ export default async function ThirdPartyCookies() {
         </p>
         <table className="w-full lg:w-2/3">
           <thead>
-            <tr className="border-b-[1px] border-black bg-[#EFF0F3]">
+            <tr className="border-b-[1px] border-black bg-[#222]">
               <td className="w-1/4 p-4 font-medium">Name</td>
               <td className="w-2/4 p-4 font-medium">Purpose</td>
               <td className="w-1/4 p-4 font-medium">Domain</td>

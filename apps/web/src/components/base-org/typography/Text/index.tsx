@@ -9,23 +9,21 @@ const defaultTags: Record<TextVariant, ElementType> = {
 };
 
 export const variantStyles: Record<TextVariant, string> = {
-  [TextVariant.Body]: 'font-sans text-[1rem] leading-[1.2em]',
+  [TextVariant.Body]: 'font-sans text-[1rem] leading-[1.6em]',
   [TextVariant.Label1]: 'font-display text-[0.875rem] leading-[1.1em]',
   [TextVariant.Label2]: 'font-sans text-[0.75rem] leading-[1.0625rem]',
 };
 
-// Note: We don't pass className here to accidental font size override
-//       padding, margin and other tweaks should be done in a
-//       wrapper around the Text
 type TextProps = {
   children: ReactNode;
   variant?: TextVariant;
   as?: ElementType;
+  className?: string;
 };
 
-export default function Text({ variant = TextVariant.Body, children, as }: TextProps) {
+export default function Text({ variant = TextVariant.Body, children, as, className }: TextProps) {
   const Tag = as ?? defaultTags[variant];
 
-  const textClasses = classNames('text-currentColor', variantStyles[variant]);
+  const textClasses = classNames('text-currentColor', variantStyles[variant], className);
   return <Tag className={textClasses}>{children}</Tag>;
 }
