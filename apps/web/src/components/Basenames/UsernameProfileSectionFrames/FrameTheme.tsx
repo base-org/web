@@ -2,6 +2,7 @@ import type { FrameUIComponents, FrameUITheme } from '@frames.js/render/ui';
 import Image from 'next/image';
 import BaseLoading from './base-loading.gif';
 import classNames from 'classnames';
+import { createElement } from 'react';
 
 type StylingProps = {
   className?: string;
@@ -53,9 +54,29 @@ export const components: FrameUIComponents<StylingProps> = {
       />
     );
   },
-  Image: (props) => {
-    // @ts-expect-error asdf
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @next/next/no-img-element, react/prop-types
-    return <img src={props.src} {...props} alt="" />;
+  // this implementation is taken from frames.js with a slight modification to account for a bug with alt text
+  Image(props, stylingProps) {
+    // eslint-disable-next-line react/prop-types
+    const aspectRatio = props.aspectRatio.replace(':', '/');
+
+    return createElement('img', {
+      ...stylingProps,
+      'data-aspect-ratio': aspectRatio,
+
+      style: {
+        '--frame-image-aspect-ratio': aspectRatio,
+        ...(isCssProperties(stylingProps.style) && stylingProps.style),
+      },
+      // eslint-disable-next-line react/prop-types
+      onLoad: props.onImageLoadEnd,
+      // eslint-disable-next-line react/prop-types
+      onError: props.onImageLoadEnd,
+      // eslint-disable-next-line react/prop-types
+      src: props.status === 'frame-loading' ? undefined : props.src,
+    });
   },
 };
+
+function isCssProperties(value: unknown): value is React.CSSProperties {
+  return typeof value === 'object' && value !== null;
+}
