@@ -54,7 +54,7 @@ export default function Content() {
   });
 
   return (
-    <div className="flex min-h-32 w-full max-w-[1440px] flex-col gap-10 px-8 pb-32">
+    <div className="flex min-h-32 w-full flex-col gap-10 pb-32">
       <div className="flex flex-col justify-between gap-8 lg:flex-row lg:gap-12">
         <div className="flex flex-row flex-wrap gap-3">
           {tags.map((tag) => (

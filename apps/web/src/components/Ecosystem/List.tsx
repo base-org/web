@@ -1,10 +1,11 @@
 'use client';
 import ErrorImg from 'apps/web/public/images/error.png';
-import { Button } from '../Button/Button';
 import EcosystemCard from './Card';
 import { EcosystemApp } from 'apps/web/src/components/Ecosystem/Content';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import { Dispatch, SetStateAction, useCallback } from 'react';
+import Button from 'apps/web/src/components/base-org/Button';
+import { ButtonSizes, ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 
 export function List({
   selectedTag,
@@ -50,7 +51,9 @@ export function List({
       )}
       {canShowMore && (
         <div className="mt-12 flex justify-center">
-          <Button onClick={onClick}>VIEW MORE</Button>
+          <Button size={ButtonSizes.Large} variant={ButtonVariants.Secondary} onClick={onClick}>
+            VIEW MORE
+          </Button>
         </div>
       )}
     </>

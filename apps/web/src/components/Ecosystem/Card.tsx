@@ -16,7 +16,7 @@ function getNiceDomainDisplayFromUrl(url: string) {
 
 export default function EcosystemCard({ name, url, description, imageUrl, tags }: Props) {
   return (
-    <Card>
+    <Card innerClassName="p-8">
       <a
         href={url}
         rel="noreferrer noopener"
