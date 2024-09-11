@@ -24,6 +24,7 @@ import previewBackground from './ui/preview-background.svg';
 import emptyPreviewFrame from './ui/preview-frame.svg';
 import starActive from './ui/starActive.svg';
 import swap from './ui/swap.svg';
+import { isValidUrl } from 'apps/web/src/utils/urls';
 
 export default function FrameBuilder() {
   const { address } = useAccount();
@@ -55,6 +56,7 @@ export default function FrameBuilder() {
     setSwapTokenAddress(e.target.value);
   }, []);
   const emptyFrameUrl = !debouncedNewFrameUrl;
+  const isValidFrameUrl = isValidUrl(debouncedNewFrameUrl);
 
   const onFrameUrlChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setNewFrameUrl(e.target.value),
@@ -99,19 +101,20 @@ export default function FrameBuilder() {
       <SuggestionCard
         imgData={payouts as StaticImageData}
         title="Pay me"
-        description="Let others pay your Basename with Paycaster.co."
+        description="Get paid with Paycaster."
       >
         <div className="flex flex-row items-center justify-between gap-4">
           <p className="text-sm text-palette-foreground">
-            We will use your basename to show a preview from{' '}
+            Let others pay your Basename with{' '}
             <a
               href="https://paycaster.co/"
               target="_blank"
               rel="noopener noreferrer"
               className="underline"
             >
-              paycaster.co
+              Paycaster.co
             </a>
+            .
           </p>
           <Button
             rounded
@@ -126,19 +129,11 @@ export default function FrameBuilder() {
       <SuggestionCard
         imgData={starActive as StaticImageData}
         title="Nominate me"
-        description="Let others nominate you as a builder using your Basename address."
+        description="Get nominated with build.top"
       >
         <div className="flex flex-row items-center justify-between gap-4">
           <p className="text-sm text-palette-foreground">
-            We’ll use your address to show a preview on{' '}
-            <a
-              href="http://build.top"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
-              build.top
-            </a>
+            Let others nominate you as a builder using your Basename address.
           </p>
           <Button
             rounded
@@ -328,7 +323,7 @@ export default function FrameBuilder() {
               className="flex min-h-96 w-full items-center justify-center rounded-3xl bg-cover bg-center bg-no-repeat p-6"
               style={{ backgroundImage: `url(${previewBackground.src})` }}
             >
-              {emptyFrameUrl ? (
+              {Boolean(emptyFrameUrl || !isValidFrameUrl) ? (
                 <Image
                   className="pointer-events-none select-none"
                   src={emptyPreviewFrame as StaticImageData}
@@ -343,7 +338,7 @@ export default function FrameBuilder() {
               variant={ButtonVariants.Black}
               className="mt-4 self-end"
               onClick={handleAddFrameClick}
-              disabled={pendingFrameChange || !newFrameUrl}
+              disabled={pendingFrameChange || emptyFrameUrl || !isValidFrameUrl}
             >
               Add frame
             </Button>
@@ -375,7 +370,7 @@ export default function FrameBuilder() {
           variant={ButtonVariants.Black}
           className="mx-auto mt-4"
           onClick={handleNextStep}
-          disabled={emptyFrameUrl}
+          disabled={emptyFrameUrl || !isValidFrameUrl}
         >
           Preview
         </Button>
@@ -398,7 +393,7 @@ export default function FrameBuilder() {
             className="flex w-full items-center justify-center rounded-3xl bg-cover bg-center bg-no-repeat p-6"
             style={{ backgroundImage: `url(${previewBackground.src})` }}
           >
-            {emptyFrameUrl ? (
+            {Boolean(emptyFrameUrl || !isValidFrameUrl) ? (
               <Image
                 className="pointer-events-none select-none"
                 src={emptyPreviewFrame as StaticImageData}
@@ -413,6 +408,7 @@ export default function FrameBuilder() {
           rounded
           variant={ButtonVariants.Black}
           className="mx-auto mt-4"
+          disabled={pendingFrameChange || emptyFrameUrl || !isValidFrameUrl}
           onClick={handleAddFrameClick}
         >
           Add Frame
