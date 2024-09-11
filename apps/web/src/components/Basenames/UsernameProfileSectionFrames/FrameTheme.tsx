@@ -15,11 +15,12 @@ export const theme: FrameUITheme<StylingProps> = {
       'flex flex-col rounded-lg overflow-hidden bg-transparent relative items-center justify-center opacity-50',
   },
   Root: {
-    className: 'flex flex-col rounded-lg overflow-hidden bg-transparent relative',
+    className:
+      'flex flex-col rounded-lg items-center justify-center overflow-hidden bg-transparent relative border border-palette-line/20 min-h-[245px] min-w-[346px]',
   },
   ButtonsContainer: {
     className:
-      'text-xs sm:text-sm flex sm:py-3 py-2 sm:px-7 px-2 justify-around bg-[#F3F3F3] gap-2 sm:gap-4',
+      'flex-1 w-full text-xs sm:text-sm flex sm:py-3 py-2 sm:px-7 px-2 justify-around bg-[#F3F3F3] gap-2 sm:gap-4',
   },
   Button: {
     className:
@@ -27,9 +28,6 @@ export const theme: FrameUITheme<StylingProps> = {
   },
   ImageContainer: {
     className: 'flex w-full h-full border-0 overflow-hidden',
-    style: {
-      aspectRatio: 'var(--frame-image-aspect-ratio)',
-    },
   },
   TextInputContainer: {
     className: 'flex flex-row items-center justify-around gap-2 w-full',
