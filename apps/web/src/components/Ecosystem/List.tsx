@@ -52,7 +52,7 @@ export function List({
       {canShowMore && (
         <div className="mt-12 flex justify-center">
           <Button size={ButtonSizes.Large} variant={ButtonVariants.Secondary} onClick={onClick}>
-            VIEW MORE
+            View more
           </Button>
         </div>
       )}

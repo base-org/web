@@ -11,6 +11,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   size?: ButtonSizes;
   iconName?: IconProps['name'];
   roundedFull?: boolean;
+  fullWidth?: boolean;
 };
 
 const variantStyles: Record<ButtonVariants, string> = {
@@ -50,6 +51,7 @@ export default function Button({
   iconName,
   roundedFull = false,
   className,
+  fullWidth = false,
 }: ButtonProps) {
   const buttonClasses = classNames(
     // Shared - base
@@ -72,6 +74,8 @@ export default function Button({
 
     // Rounded, mostly for connect wallet
     roundedFull ? 'rounded-full' : 'rounded-lg',
+
+    fullWidth ? 'w-full' : 'w-auto',
 
     className,
   );
