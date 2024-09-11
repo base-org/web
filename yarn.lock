@@ -388,7 +388,6 @@ __metadata:
     dotenv: ^16.0.3
     eslint-config-next: ^13.1.6
     ethers: 5.7.2
-    framer-motion: ^8.5.5
     hls.js: ^1.5.14
     is-ipfs: ^8.0.4
     jose: ^5.4.1
@@ -5096,7 +5095,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@motionone/dom@npm:^10.15.3, @motionone/dom@npm:^10.16.2, @motionone/dom@npm:^10.16.4":
+"@motionone/dom@npm:^10.16.2, @motionone/dom@npm:^10.16.4":
   version: 10.18.0
   resolution: "@motionone/dom@npm:10.18.0"
   dependencies:
@@ -15355,24 +15354,6 @@ __metadata:
   version: 4.3.7
   resolution: "fraction.js@npm:4.3.7"
   checksum: e1553ae3f08e3ba0e8c06e43a3ab20b319966dfb7ddb96fd9b5d0ee11a66571af7f993229c88ebbb0d4a816eb813a24ed48207b140d442a8f76f33763b8d1f3f
-  languageName: node
-  linkType: hard
-
-"framer-motion@npm:^8.5.5":
-  version: 8.5.5
-  resolution: "framer-motion@npm:8.5.5"
-  dependencies:
-    "@emotion/is-prop-valid": ^0.8.2
-    "@motionone/dom": ^10.15.3
-    hey-listen: ^1.0.8
-    tslib: ^2.4.0
-  peerDependencies:
-    react: ^18.0.0
-    react-dom: ^18.0.0
-  dependenciesMeta:
-    "@emotion/is-prop-valid":
-      optional: true
-  checksum: 25912b88eaa954d641f0b5f2b811badfb9ca0dbff659cb0dfdae79216ee917b0004d43b9eeb3f74144f4924cf63d8fbd1c93de519eadd8968b6344ed0d5d9d4c
   languageName: node
   linkType: hard
 

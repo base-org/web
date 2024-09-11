@@ -21,7 +21,6 @@ import {
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ExperimentsProvider from 'base-ui/contexts/Experiments';
 import useSprig from 'base-ui/hooks/useSprig';
-import { MotionConfig } from 'framer-motion';
 import { useCallback, useRef } from 'react';
 import { createConfig, http, WagmiProvider } from 'wagmi';
 import { base, baseSepolia, mainnet } from 'wagmi/chains';
@@ -122,28 +121,26 @@ export default function AppProviders({ children }: AppProvidersProps) {
         onPreferenceChange={setTrackingPreference}
         config={cookieManagerConfig}
       >
-        <MotionConfig reducedMotion="user">
-          <ClientAnalyticsScript />
-          <WagmiProvider config={config}>
-            <QueryClientProvider client={queryClient}>
-              <OnchainKitProvider
-                chain={isDevelopment ? baseSepolia : base}
-                apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
-              >
-                <RainbowKitProvider modalSize="compact">
-                  <TooltipProvider>
-                    <ExperimentsProvider>
-                      <>
-                        {children}
-                        <DynamicCookieBannerWrapper />
-                      </>
-                    </ExperimentsProvider>
-                  </TooltipProvider>
-                </RainbowKitProvider>
-              </OnchainKitProvider>
-            </QueryClientProvider>
-          </WagmiProvider>
-        </MotionConfig>
+        <ClientAnalyticsScript />
+        <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}>
+            <OnchainKitProvider
+              chain={isDevelopment ? baseSepolia : base}
+              apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
+            >
+              <RainbowKitProvider modalSize="compact">
+                <TooltipProvider>
+                  <ExperimentsProvider>
+                    <>
+                      {children}
+                      <DynamicCookieBannerWrapper />
+                    </>
+                  </ExperimentsProvider>
+                </TooltipProvider>
+              </RainbowKitProvider>
+            </OnchainKitProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
       </CookieManagerProvider>
     </ErrorsProvider>
   );
