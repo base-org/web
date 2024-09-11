@@ -17,20 +17,14 @@ import {
 export enum SettingsTabs {
   ManageProfile = 'manage-profile',
   Ownership = 'ownership',
-  Subdomain = 'subdomain',
 }
 
 export const settingTabsForDisplay = {
   [SettingsTabs.ManageProfile]: 'Manage Profile',
   [SettingsTabs.Ownership]: 'Ownership',
-  [SettingsTabs.Subdomain]: 'Subdomain',
 };
 
-export const allSettingsTabs = [
-  SettingsTabs.ManageProfile,
-  SettingsTabs.Ownership,
-  SettingsTabs.Subdomain,
-];
+export const allSettingsTabs = [SettingsTabs.ManageProfile, SettingsTabs.Ownership];
 
 // Other features are not yet supported
 export const settingsTabsEnabled = [SettingsTabs.ManageProfile, SettingsTabs.Ownership];
