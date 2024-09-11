@@ -7,6 +7,8 @@ import Link from 'next/link';
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import logo from './logo.svg';
 import Image, { StaticImageData } from 'next/image';
+import { useGasPrice } from 'wagmi';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 type SubItem = {
   name: string;
@@ -88,6 +90,12 @@ export default function Nav() {
   const [hoverIndex, setHoverIndex] = useState<number>(-1);
   const [subActive, setSubActive] = useState<boolean>(false);
 
+  const { data: gasPriceInWei } = useGasPrice({
+    query: {
+      refetchInterval: 10_000,
+    },
+  });
+
   const [glowStyle, setGlowStyle] = useState({
     width: 0,
     height: 0,
@@ -132,15 +140,31 @@ export default function Nav() {
     handleHover(index);
   }, []);
 
+  const convertWeiToMwei = (weiValue: bigint): number => {
+    // 1 mwei = 10^6 wei
+    const mweiValue = Number(weiValue) / 1_000_000;
+    return Number(mweiValue.toFixed(2)); // Round to 2 decimal places
+  };
+
   return (
     <AnalyticsProvider context="navbar">
       <nav className="fixed top-0 z-50 w-full shrink-0 px-4 py-4">
         <div className="flex w-full justify-between px-4">
           {/* TODO: Logo and TVL section */}
-          <div className="min-w-[140px] gap-2">
+          <div className="flex items-center gap-4">
             <Link href="/">
               <Image src={logo as StaticImageData} alt="Base Logo" />{' '}
             </Link>
+
+            {gasPriceInWei && (
+              <div className="flex items-center gap-2 rounded-xl bg-black px-4 py-2">
+                <span className="animate-pulse text-palette-positive">
+                  <Icon name="blueCircle" color="currentColor" height="0.75rem" width="0.75rem" />
+                </span>
+                <strong>{convertWeiToMwei(gasPriceInWei)}</strong>
+                <small>Mgwei</small>
+              </div>
+            )}
           </div>
 
           {/* Top Navigation links */}
