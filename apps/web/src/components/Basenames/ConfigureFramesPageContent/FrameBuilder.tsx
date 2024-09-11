@@ -99,24 +99,24 @@ export default function FrameBuilder() {
       <SuggestionCard
         imgData={payouts as StaticImageData}
         title="Pay me"
-        description="Get paid with Paycaster."
+        description="Let others pay your Basename with Paycaster.co."
       >
-        <p className="text-sm text-palette-foreground">
-          We will use your basename to show a preview from
-          <a
-            href="https://paycaster.co/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline"
-          >
-            paycaster.co
-          </a>
-        </p>
-        <div className="mt-3 flex flex-row gap-4">
+        <div className="flex flex-row items-center justify-between gap-4">
+          <p className="text-sm text-palette-foreground">
+            We will use your basename to show a preview from{' '}
+            <a
+              href="https://paycaster.co/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              paycaster.co
+            </a>
+          </p>
           <Button
             rounded
             variant={ButtonVariants.Black}
-            size={ButtonSizes.Small}
+            size={ButtonSizes.Tiny}
             onClick={handlePaycasterClick}
           >
             Show preview
@@ -126,7 +126,7 @@ export default function FrameBuilder() {
       <SuggestionCard
         imgData={starActive as StaticImageData}
         title="Nominate me"
-        description="Get nominated with build.top"
+        description="Let others nominate you as a builder using your Basename address."
       >
         <div className="flex flex-row items-center justify-between gap-4">
           <p className="text-sm text-palette-foreground">
@@ -143,7 +143,7 @@ export default function FrameBuilder() {
           <Button
             rounded
             variant={ButtonVariants.Black}
-            size={ButtonSizes.Small}
+            size={ButtonSizes.Tiny}
             onClick={handleBuildTopClick}
           >
             Show preview
@@ -155,6 +155,7 @@ export default function FrameBuilder() {
         title="Buy from me"
         description="Sell products from your Slice shop"
       >
+        <p className="text-sm">To pin a frame:</p>
         <ol className="list-inside list-decimal indent-1 text-sm text-palette-foreground">
           <li>
             Visit your onchain shop on{' '}
@@ -169,12 +170,20 @@ export default function FrameBuilder() {
           </li>
           <li>Paste a link to the product you want to sell on your profile</li>
         </ol>
+        <Input
+          placeholder="https://"
+          value={newFrameUrl}
+          onChange={onFrameUrlChange}
+          type="text"
+          className="mr-3 mt-3 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
+        />
       </SuggestionCard>
       <SuggestionCard
         imgData={nftProduct as StaticImageData}
         title="Subscribe to me"
         description="Get subscriptions to your Hypersub"
       >
+        <p className="text-sm">To pin a frame:</p>
         <ol className="list-inside list-decimal indent-1 text-sm text-palette-foreground">
           <li>
             Visit{' '}
@@ -189,12 +198,20 @@ export default function FrameBuilder() {
           </li>
           <li>Paste a link to your Hypersub Subscription page</li>
         </ol>
+        <Input
+          placeholder="https://"
+          value={newFrameUrl}
+          onChange={onFrameUrlChange}
+          type="text"
+          className="mr-3 mt-3 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
+        />
       </SuggestionCard>
       <SuggestionCard
         imgData={currencies as StaticImageData}
         title="Mint me"
         description="Mint your NFT on Highlight"
       >
+        <p className="text-sm">To pin a frame:</p>
         <ol className="list-inside list-decimal indent-1 text-sm text-palette-foreground">
           <li>
             Visit{' '}
@@ -209,6 +226,13 @@ export default function FrameBuilder() {
           </li>
           <li>Paste a link to the NFT you want others to mint</li>
         </ol>
+        <Input
+          placeholder="https://"
+          value={newFrameUrl}
+          onChange={onFrameUrlChange}
+          type="text"
+          className="mr-3 mt-3 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
+        />
       </SuggestionCard>
       <SuggestionCard
         imgData={swap as StaticImageData}
@@ -229,7 +253,7 @@ export default function FrameBuilder() {
           <Button
             rounded
             variant={ButtonVariants.Black}
-            size={ButtonSizes.Small}
+            size={ButtonSizes.Tiny}
             onClick={handlePaycasterClick}
           >
             Show preview
@@ -241,6 +265,7 @@ export default function FrameBuilder() {
         title="RSVP me"
         description="Get RSVPs to your events on events.xyz"
       >
+        <p className="text-sm">To pin a frame:</p>
         <ol className="list-inside list-decimal indent-1 text-sm text-palette-foreground">
           <li>
             Visit{' '}
@@ -255,6 +280,13 @@ export default function FrameBuilder() {
           </li>
           <li>Create a new event, or paste a link to the event you want others to RSVP to</li>
         </ol>
+        <Input
+          placeholder="https://"
+          value={newFrameUrl}
+          onChange={onFrameUrlChange}
+          type="text"
+          className="mr-3 mt-3 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
+        />
       </SuggestionCard>
       <SuggestionCard
         icon={<PlusIcon width="24px" />}

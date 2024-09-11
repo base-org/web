@@ -38,7 +38,7 @@ export function SuggestionCard({
           </div>
         </Accordion.Trigger>
       </Accordion.Header>
-      <Accordion.Content className="pb-4">{children}</Accordion.Content>
+      <Accordion.Content className="pb-4 pl-4 md:pl-8">{children}</Accordion.Content>
     </Accordion.Item>
   );
 }
