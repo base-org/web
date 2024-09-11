@@ -17,12 +17,12 @@ export default async function BuildAndRewardSection() {
           </figure>
           <div className="relative flex w-full flex-row gap-4">
             <Card>
-              <div className="min-h-[24rem]" />
+              <div className="min-h-[14rem] md:min-h-[24rem]" />
             </Card>
           </div>
         </div>
 
-        <div className="flex w-full flex-col gap-4 pl-20">
+        <div className="flex w-full flex-col gap-4 md:pl-20">
           <Title level={TitleLevel.Display2} className="text-[#E3E7E9]">
             Build and you will be rewarded
           </Title>
@@ -36,7 +36,7 @@ export default async function BuildAndRewardSection() {
             <Button
               variant={ButtonVariants.Primary}
               iconName="baseOrgDiagonalUpArrow"
-              className="ml-auto"
+              className="md:ml-auto"
             >
               Get rewarded
             </Button>
