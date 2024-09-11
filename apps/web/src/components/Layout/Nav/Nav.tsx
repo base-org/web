@@ -149,7 +149,7 @@ export default function Nav() {
   return (
     <AnalyticsProvider context="navbar">
       <nav className="fixed top-0 z-50 w-full shrink-0 px-4 py-4">
-        <div className="flex w-full items-start justify-between px-4">
+        <div className="flex w-full items-center justify-between px-4">
           {/* TODO: Logo and TVL section */}
           <div className="flex items-center gap-4">
             <Link href="/">
@@ -169,7 +169,7 @@ export default function Nav() {
 
           {/* Top Navigation links */}
           <div
-            className="flex flex-col items-center gap-2 overflow-hidden rounded-xl p-1"
+            className="relative flex flex-col items-center gap-2  rounded-xl p-1"
             onMouseLeave={onMouseLeaveNav}
           >
             <Card innerClassName="py-1" radius={8}>
@@ -203,10 +203,9 @@ export default function Nav() {
             </Card>
 
             {/* Sub Menu */}
-
             <div
               ref={subItemsRef}
-              className="w-full duration-300 ease-in-out"
+              className="absolute top-full w-full duration-300 ease-in-out"
               style={{
                 height: `${subItemsHeight}px`,
                 opacity: subActive ? 1 : 0,
