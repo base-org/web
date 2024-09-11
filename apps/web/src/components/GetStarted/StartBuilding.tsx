@@ -1,20 +1,18 @@
 import Link from 'next/link';
 import { Icon } from '../Icon/Icon';
 import ResourceCard from './ResourceCard/ResourceCard';
-import {
-  sectionContainerClasses,
-  titleClasses,
-  subtitleClasses,
-  linkTextClasses,
-  gridClasses,
-} from './styles';
+import { subtitleClasses, linkTextClasses, gridClasses } from './styles';
+import Title from 'apps/web/src/components/base-org/typography/Title';
+import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 
 export const START_BUILDING_SECTION_ID = 'StartBuilding';
 
 export default async function StartBuilding() {
   return (
-    <div id={START_BUILDING_SECTION_ID} className={sectionContainerClasses}>
-      <h1 className={titleClasses}>Start Building</h1>
+    <div id={START_BUILDING_SECTION_ID}>
+      <Title level={TitleLevel.Display2} className="mb-4">
+        Start Building
+      </Title>
       <h2 className={subtitleClasses}>Learn how to build a project</h2>
       <div className={gridClasses}>
         <ResourceCard

@@ -1,15 +1,17 @@
+import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { Icon } from '../Icon/Icon';
 import ResourceCard from './ResourceCard/ResourceCard';
-import { gridClasses, sectionContainerClasses, titleClasses } from './styles';
+import { gridClasses } from './styles';
+import Title from 'apps/web/src/components/base-org/typography/Title';
 
 export const FUNDING_SECTION_ID = 'GetFunded';
 
 export default async function Funding() {
   return (
-    <div id={FUNDING_SECTION_ID} className={sectionContainerClasses}>
-      <div>
-        <h1 className={titleClasses}>Fund Your Project</h1>
-      </div>
+    <div id={FUNDING_SECTION_ID}>
+      <Title level={TitleLevel.Display2} className="mb-6">
+        Fund Your Project
+      </Title>
       <div className={gridClasses}>
         <ResourceCard
           title="Base Ecosystem Fund"

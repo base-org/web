@@ -1,7 +1,9 @@
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
 import { ButtonVariants } from '../Button/Button';
 import buildWithUs from './images/build-with-us.png';
-import { titleClasses, linkTextClasses } from './styles';
+import { linkTextClasses } from './styles';
+import Title from 'apps/web/src/components/base-org/typography/Title';
+import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 
 const containerClasses = `
   w-full max-w-[1440px]
@@ -26,7 +28,10 @@ export default async function BuildWithUsFooter() {
   return (
     <div className={containerClasses}>
       <div className={imageClasses} style={imageBackgroundStyles}>
-        <h2 className={`${titleClasses} mb-6 text-center sm:mb-8`}>Start building with us</h2>
+        <Title level={TitleLevel.Display2} className="mb-6 text-center sm:mb-8">
+          Start building with us
+        </Title>
+
         <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row sm:gap-8">
           <ButtonWithLinkAndEventLogging
             href="https://lu.ma/base-officehours/?utm_source=dotorg&medium=builderkit"

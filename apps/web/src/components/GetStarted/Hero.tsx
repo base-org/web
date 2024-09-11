@@ -2,6 +2,9 @@ import Image from 'next/image';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import gtcBackground from './images/gtc-background.svg';
 import getStartedHeroImage from './images/gs_hero_img.webp';
+import Container from 'apps/web/src/components/base-org/Container';
+import Title from 'apps/web/src/components/base-org/typography/Title';
+import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 
 const heroContainerClasses = `
   w-full
@@ -27,19 +30,21 @@ export default async function Hero() {
 
   return (
     <div className={heroContainerClasses} style={backgroundStyles}>
-      <div className="flex w-full max-w-[1440px] flex-col justify-between sm:flex-row">
-        <div className={textContainerClasses}>
-          <h1 className="mb-6 font-display text-4xl leading-tight sm:text-5xl lg:mb-10 lg:text-[80px] lg:leading-none">
-            Resources for Builders
-          </h1>
-          <span className="text-lg sm:text-xl lg:text-2xl">
-            Get help to build and grow your project on Base with our Builder Resource Kit
-          </span>
+      <Container>
+        <div className="flex w-full flex-col justify-between sm:flex-row">
+          <div className={textContainerClasses}>
+            <Title className="mb-6" level={TitleLevel.Display1}>
+              Resources for Builders
+            </Title>
+            <span className="text-lg sm:text-xl lg:text-2xl">
+              Get help to build and grow your project on Base with our Builder Resource Kit
+            </span>
+          </div>
+          <div className="self-end">
+            <Image src={getStartedHeroImage as StaticImport} alt="onchain summer" />
+          </div>
         </div>
-        <div className="self-end">
-          <Image src={getStartedHeroImage as StaticImport} alt="onchain summer" />
-        </div>
-      </div>
+      </Container>
     </div>
   );
 }
