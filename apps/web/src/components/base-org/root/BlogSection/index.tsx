@@ -105,16 +105,16 @@ export default function BlogSection() {
           >
             {limitedBlogPosts.map((post) => (
               <div key={post.title} className="relative h-auto w-full flex-shrink-0">
-                <Link target="_blank" href={post.url} className="inline-block h-full w-full">
-                  <figure className="h-full min-h-[20rem] w-full md:min-h-[40rem]	">
-                    <ImageAdaptive
-                      src={post.publicImagePath}
-                      alt={post.title}
-                      className="object-cover"
-                      fill
-                    />
-                  </figure>
-                </Link>
+                {/* <Link target="_blank" href={post.url} className="inline-block h-full w-full"> */}
+                <figure className="h-full min-h-[20rem] w-full md:min-h-[40rem]	">
+                  <ImageAdaptive
+                    src={post.publicImagePath}
+                    alt={post.title}
+                    className="object-cover"
+                    fill
+                  />
+                </figure>
+                {/* </Link> */}
               </div>
             ))}
           </div>
@@ -135,7 +135,7 @@ export default function BlogSection() {
           </div>
         </div>
 
-        <div className="absolute left-0 top-0 z-20 flex w-full flex-col gap-4 px-8 pt-6 md:flex-row md:justify-between">
+        <div className="absolute left-0 top-0 z-20 flex min-h-[17rem] w-full flex-col justify-between gap-4 px-4 pt-4 md:min-h-0 md:flex-row md:px-8 md:pt-6">
           <Title
             level={TitleLevel.Title2}
             className="flex w-full items-center gap-4 text-white drop-shadow-md"
@@ -145,7 +145,7 @@ export default function BlogSection() {
             </span>
             {blogPosts[currentIndex].title}
           </Title>
-          <div className="flex items-center gap-4 ">
+          <div className="ml-auto flex items-center gap-4">
             <Link href={blogPosts[currentIndex].url} target="_blank">
               <Button variant={ButtonVariants.Secondary}>Read</Button>
             </Link>
