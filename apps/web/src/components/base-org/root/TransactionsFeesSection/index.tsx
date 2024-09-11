@@ -16,12 +16,14 @@ export default async function TransactionsFeesSection() {
         </div>
 
         <div className="flex w-full flex-row gap-4">
-          <Image
-            src={mainnetFee as StaticImageData}
-            className="pointer-events-none select-none"
-            alt="Ethereum Mainnet Transactions fees are high"
-          />
-          <div className="self-end">
+          <div className="w-full">
+            <Image
+              src={mainnetFee as StaticImageData}
+              className="pointer-events-none max-w-full select-none"
+              alt="Ethereum Mainnet Transactions fees are high"
+            />
+          </div>
+          <div className="w-full self-end">
             <Text className="mb-6 text-[#E3E7E9]">
               Base is the best of Ethereum but 10-100x cheaper. To make onchain accessible for
               everyone, we&apos;re working to keep fees consistently below 1 cent.
@@ -30,7 +32,7 @@ export default async function TransactionsFeesSection() {
             <Image
               src={baseFee as StaticImageData}
               alt="Base Mainnet Transactions fees are low"
-              className="pointer-events-none select-none"
+              className="pointer-events-none max-w-full select-none"
             />
           </div>
         </div>

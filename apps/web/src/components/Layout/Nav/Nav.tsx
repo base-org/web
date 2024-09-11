@@ -149,7 +149,7 @@ export default function Nav() {
   return (
     <AnalyticsProvider context="navbar">
       <nav className="fixed top-0 z-50 w-full shrink-0 px-4 py-4">
-        <div className="flex w-full justify-between px-4">
+        <div className="flex w-full items-start justify-between px-4">
           {/* TODO: Logo and TVL section */}
           <div className="flex items-center gap-4">
             <Link href="/">

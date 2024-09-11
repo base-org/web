@@ -20,10 +20,11 @@ const defaultTags: Record<TitleLevel, ElementType> = {
 //       check the swap between display/sans is intentional
 
 export const levelStyles: Record<TitleLevel, string> = {
-  [TitleLevel.Display1]: 'font-display text-[4.8125rem] leading-[1.1em] tracking-[-0.01em]',
-  [TitleLevel.Display2]: 'font-display text-[3.75rem] leading-[1.1em]',
-  [TitleLevel.Display3]: 'font-display text-[2.625rem] leading-[1em]',
-  [TitleLevel.Display4]: 'font-sans text-[2rem] leading-[1.1em]',
+  [TitleLevel.Display1]:
+    'font-display text-[3.8125rem] lg:text-[4.8125rem] leading-[1.1em] tracking-[-0.01em]',
+  [TitleLevel.Display2]: 'font-display text-[2.75rem] lg:text-[3.75rem] leading-[1.1em]',
+  [TitleLevel.Display3]: 'font-display text-[1.625rem] lg:text-[2.625rem] leading-[1em]',
+  [TitleLevel.Display4]: 'font-sans text-[1.5rem] lg:text-[2rem] leading-[1.1em]',
   [TitleLevel.Title1]: 'font-display text-[1.75rem] leading-[1.2em] font-bold',
   [TitleLevel.Title2]: 'font-sans text-[1.625rem] leading-[2.375rem] tracking-[-0.01em]',
   [TitleLevel.Title3]: 'font-display text-[1.25rem] leading-[1.75rem]',
