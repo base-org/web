@@ -4,7 +4,6 @@ import AnalyticsProvider from 'apps/web/contexts/Analytics';
 
 // Clean up assets while removing below
 // import { JoinTheCommunity } from 'apps/web/src/components/JoinTheCommunity/JoinTheCommunity';
-import ThreeHero from 'apps/web/src/components/ThreeHero';
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Title from 'apps/web/src/components/base-org/typography/Title';
@@ -18,6 +17,11 @@ import BuildAndRewardSection from 'apps/web/src/components/base-org/root/BuildAn
 import ErrorsProvider from 'apps/web/contexts/Errors';
 import BlogSection from 'apps/web/src/components/base-org/root/BlogSection';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+const DynamicThreeHero = dynamic(async () => import('apps/web/src/components/ThreeHero'), {
+  ssr: false,
+});
 
 /* Farcaster Metadatas */
 const buttons: FrameButtonMetadata[] = [
@@ -58,7 +62,7 @@ export default async function Home() {
       <AnalyticsProvider context="base_landing_page">
         <AnalyticsProvider context="hero">
           <div className="relative h-screen w-full">
-            <ThreeHero />
+            <DynamicThreeHero />
 
             <div className="absolute bottom-0 left-0 w-full pb-20 text-white">
               <Container>
