@@ -1,8 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/prop-types */
 import type { FrameUIComponents, FrameUITheme } from '@frames.js/render/ui';
 import classNames from 'classnames';
 import Image from 'next/image';
-import { createElement } from 'react';
+import { useEffect, useState } from 'react';
 import BaseLoading from './base-loading.gif';
 
 type StylingProps = {
@@ -39,6 +40,74 @@ export const theme: FrameUITheme<StylingProps> = {
   },
 };
 
+type TransitionWrapperProps = {
+  aspectRatio: '1:1' | '1.91:1';
+  src: string;
+  alt: string;
+  onImageLoadEnd: () => void;
+  stylingProps: StylingProps;
+  status: 'frame-loading' | 'frame-loading-complete';
+};
+
+function TransitionWrapper({
+  aspectRatio,
+  src,
+  alt,
+  onImageLoadEnd,
+  stylingProps,
+  status,
+}: TransitionWrapperProps) {
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const isLoading = status === 'frame-loading';
+  useEffect(() => {
+    let timeout: number;
+    if (!isLoading) {
+      timeout = setTimeout(() => {
+        setIsTransitioning(false);
+      }, 500) as unknown as number;
+    } else {
+      setIsTransitioning(true);
+    }
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [isLoading]);
+
+  const ar = aspectRatio.replace(':', '/');
+
+  return (
+    <div className="relative">
+      {/* Loading Screen */}
+      <div
+        className={classNames(
+          'absolute inset-0 flex items-center justify-center transition-opacity duration-500',
+          { 'opacity-0': !isLoading || !isTransitioning, 'opacity-100': isLoading },
+        )}
+      >
+        <Image src={BaseLoading} alt="" width={22} height={22} />
+      </div>
+
+      {/* Image */}
+      <img
+        {...stylingProps}
+        src={isLoading ? undefined : src}
+        alt={alt}
+        onLoad={onImageLoadEnd}
+        onError={onImageLoadEnd}
+        data-aspect-ratio={ar}
+        style={{
+          '--frame-image-aspect-ratio': ar,
+          ...(isCssProperties(stylingProps.style) && stylingProps.style),
+        }}
+        className={classNames('transition-opacity duration-500', {
+          'opacity-0': isLoading || isTransitioning,
+          'opacity-100': !isLoading && !isTransitioning,
+        })}
+      />
+    </div>
+  );
+}
+
 export const components: FrameUIComponents<StylingProps> = {
   LoadingScreen: (props) => {
     return (
@@ -53,22 +122,9 @@ export const components: FrameUIComponents<StylingProps> = {
       />
     );
   },
-  // This implementation is taken from frames.js with a slight modification to account for a bug with alt text.
   Image(props, stylingProps) {
-    const aspectRatio = props.aspectRatio.replace(':', '/');
-
-    return createElement('img', {
-      ...stylingProps,
-      'data-aspect-ratio': aspectRatio,
-
-      style: {
-        '--frame-image-aspect-ratio': aspectRatio,
-        ...(isCssProperties(stylingProps.style) && stylingProps.style),
-      },
-      onLoad: props.onImageLoadEnd,
-      onError: props.onImageLoadEnd,
-      src: props.status === 'frame-loading' ? undefined : props.src,
-    });
+    // @ts-expect-error frames.js doesn't export this type so ours is a little off
+    return <TransitionWrapper {...props} stylingProps={stylingProps} />;
   },
 };
 
