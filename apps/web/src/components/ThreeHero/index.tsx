@@ -9,17 +9,63 @@ import { BallCollider, Physics, RigidBody, CylinderCollider } from '@react-three
 import { EffectComposer, N8AO } from '@react-three/postprocessing';
 import { easing } from 'maath';
 
-const accents = ['#4060ff'];
-const shuffle = (accent = 0) => [
-  { color: '#444', roughness: 0.1 },
-  { color: '#444', roughness: 0.75 },
-  { color: '#444', roughness: 0.75 },
-  { color: 'white', roughness: 0.1 },
-  { color: 'white', roughness: 0.75 },
-  { color: 'white', roughness: 0.1 },
-  { color: accents[accent], roughness: 0.1, accent: true },
-  { color: accents[accent], roughness: 0.75, accent: true },
-  { color: accents[accent], roughness: 0.1, accent: true },
+// const accents = ['#4060ff'];
+// const shuffle = (accent = 0) => [
+//   { color: '#444', roughness: 0.1 },
+//   { color: '#444', roughness: 0.75 },
+//   { color: '#444', roughness: 0.75 },
+//   { color: 'white', roughness: 0.1 },
+//   { color: 'white', roughness: 0.75 },
+//   { color: 'white', roughness: 0.1 },
+//   { color: accents[accent], roughness: 0.1, accent: true },
+//   { color: accents[accent], roughness: 0.75, accent: true },
+//   { color: accents[accent], roughness: 0.1, accent: true },
+// ];
+
+const objectNames: string[] = [
+  'Base_Icon',
+  'Box',
+  'Box_1',
+  'Box_2',
+  'Box_3',
+  'Box_4',
+  'Box_5',
+  'Box_6',
+  'Box_7',
+  'Cloth_Avatars',
+  'Cloth_Avatars_1',
+  'Controller',
+  'Cursor',
+  'ETH',
+  'Globe',
+  'Headphone',
+  'Mobile_Remesh',
+  'Play_Low',
+  'Rock',
+  'SpikeyShape',
+];
+
+const unitSpherePositions: [number, number, number][] = [
+  [1, 0, 0],
+  [-1, 0, 0],
+  [0, 1, 0],
+  [0, -1, 0],
+  [0, 0, 1],
+  [0, 0, -1],
+  [0.707, 0.707, 0],
+  [-0.707, 0.707, 0],
+  [0.707, -0.707, 0],
+  [-0.707, -0.707, 0],
+  [0.707, 0, 0.707],
+  [-0.707, 0, 0.707],
+  [0.707, 0, -0.707],
+  [-0.707, 0, -0.707],
+  [0, 0.707, 0.707],
+  [0, -0.707, 0.707],
+  [0, 0.707, -0.707],
+  [0, -0.707, -0.707],
+  [0.577, 0.577, 0.577],
+  [-0.577, -0.577, -0.577],
 ];
 
 const dpr: [min: number, max: number] = [1, 1.5];
@@ -38,9 +84,23 @@ const lightPenumbra = 1;
 const lightIntensity = 1;
 const gravity: [number, number, number] = [0, 0, 0];
 
+type Glb = {
+  nodes: Record<
+    string,
+    {
+      children: {
+        geometry: THREE.BufferGeometry;
+      }[];
+    }
+  >;
+};
+
 export default function Scene() {
   // const [accent, click] = useReducer((state) => ++state % accents.length, 0);
   // const connectors = useMemo(() => shuffle(accent), [accent]);
+
+  const glb = useGLTF('/three/All_3D_models.gltf', false, false) as unknown as Glb;
+
   return (
     <Canvas shadows dpr={dpr} gl={gl} camera={camera}>
       <color attach="background" args={colorArgs} />
@@ -54,11 +114,27 @@ export default function Scene() {
       />
       <Physics /*debug*/ gravity={gravity}>
         <Pointer />
+        {objectNames.map((name, index) => (
+          <Connector key={name} position={unitSpherePositions[index]} accent={undefined}>
+            <Model geometry={glb.nodes[name].children[0].geometry}>
+              <MeshTransmissionMaterial
+                clearcoat={1}
+                thickness={0.1}
+                anisotropicBlur={0.1}
+                chromaticAberration={0.1}
+                samples={8}
+                resolution={512}
+                distortionScale={0}
+                temporalDistortion={0}
+              />
+            </Model>
+          </Connector>
+        ))}
         {/* {connectors.map((props, i) => (
           <Connector key={i} {...props} />
         ))} */}
-        <Connector position={[0, 0, 0]} scale={undefined} accent={undefined}>
-          <Model>
+        <Connector position={[0, 0, 0]} accent={undefined}>
+          <Model geometry={glb.nodes.Base_Icon.children[0].geometry}>
             <MeshTransmissionMaterial
               clearcoat={1}
               thickness={0.1}
@@ -111,15 +187,23 @@ export default function Scene() {
   );
 }
 
+type ConnectorProps = {
+  position: [number, number, number];
+  children: React.ReactNode;
+  vec: THREE.Vector3;
+  r: (arg0: number) => number;
+  accent: boolean;
+  color: string;
+};
+
 function Connector({
   position,
   children,
   vec = new THREE.Vector3(),
-  scale,
   r = THREE.MathUtils.randFloatSpread,
   accent,
-  ...props
-}) {
+  color,
+}: ConnectorProps) {
   const api = useRef();
   const pos = useMemo(() => position || [r(10), r(10), r(10)], []);
   useFrame((state, delta) => {
@@ -135,9 +219,9 @@ function Connector({
       ref={api}
       colliders={false}
     >
-      <BallCollider args={[1]} />
-      {children ? children : <Model children={undefined} {...props} />}
-      {accent && <pointLight intensity={4} distance={2.5} color={props.color} />}
+      <BallCollider args={[0.5]} />
+      {children}
+      {accent && <pointLight intensity={4} distance={2.5} color={color} />}
     </RigidBody>
   );
 }
@@ -151,27 +235,30 @@ function Pointer({ vec = new THREE.Vector3() }) {
   });
   return (
     <RigidBody position={[0, 0, 0]} type="kinematicPosition" colliders={false} ref={ref}>
-      <BallCollider args={[1]} />
+      <BallCollider args={[0.5]} />
     </RigidBody>
   );
 }
 
-function Model({ children, color = 'white', roughness = 0, ...props }) {
-  const ref = useRef();
-  const glb = useGLTF('/three/All_3D_models.gltf', false, false);
+function Model({
+  children,
+  color = 'white',
+  roughness = 0.3,
+  geometry,
+}: {
+  children: React.ReactNode;
+  color?: string;
+  roughness?: number;
+  geometry?: THREE.BufferGeometry;
+}) {
+  const ref = useRef<THREE.Mesh<THREE.BufferGeometry, THREE.Material | THREE.Material[]>>(null);
+
   useFrame((state, delta) => {
-    easing.dampC(ref.current.material.color, color, 0.2, delta);
+    easing.dampC(ref.current?.material?.color as THREE.Color, color, 0.2, delta);
   });
-  console.log(glb);
-  const nodes = glb.nodes;
+
   return (
-    <mesh
-      ref={ref}
-      castShadow
-      receiveShadow
-      scale={0.3}
-      geometry={nodes.Base_Icon.children[0].geometry}
-    >
+    <mesh ref={ref} castShadow receiveShadow scale={0.3} geometry={geometry}>
       <meshStandardMaterial metalness={0.2} roughness={roughness} />
       {children}
     </mesh>
