@@ -17,8 +17,11 @@ export const metadata: Metadata = {
 
 async function getJobs() {
   const res = await fetch(`${greenhouseApiUrl}/boards/basejobs/jobs?content=true`);
-  const { jobs } = (await res.json()) as { jobs: JobType[] };
-  return jobs;
+  try {
+    const { jobs } = (await res.json()) as { jobs: JobType[] };
+    return jobs;
+  } catch (error) {}
+  return [];
 }
 
 export default async function Jobs() {
