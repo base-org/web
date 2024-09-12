@@ -31,7 +31,7 @@ By the end of this quickstart, you'll be able to:
 
 :::tip Why Base?
 
-Base is a fast, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain. By following this guide, you'll join a vibrant ecosystem of builders, creators, and innovators who are building the next generation of applications, services, and experiences.
+Base is a fast, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain. By following this guide, you'll join a vibrant ecosystem of developers, creators, and innovators who are building a global onchain economy.
 
 :::
 
