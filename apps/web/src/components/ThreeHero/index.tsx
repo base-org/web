@@ -8,6 +8,7 @@ import { useGLTF, MeshTransmissionMaterial, Environment, Lightformer } from '@re
 import { BallCollider, Physics, RigidBody, CylinderCollider } from '@react-three/rapier';
 import { EffectComposer, N8AO } from '@react-three/postprocessing';
 import { easing } from 'maath';
+import modelsGLB from './assets/new_out.glb';
 
 // const accents = ['#4060ff'];
 // const shuffle = (accent = 0) => [
@@ -99,7 +100,7 @@ export default function Scene() {
   // const [accent, click] = useReducer((state) => ++state % accents.length, 0);
   // const connectors = useMemo(() => shuffle(accent), [accent]);
 
-  const glb = useGLTF('/three/All_3D_models.gltf', false, false) as unknown as Glb;
+  const glb = useGLTF(modelsGLB, false, false) as unknown as Glb;
 
   return (
     <Canvas shadows dpr={dpr} gl={gl} camera={camera}>
