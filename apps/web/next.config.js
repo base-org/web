@@ -193,6 +193,33 @@ module.exports = extendBaseConfig(
           },
         ],
       });
+      config.module.rules.push({
+        test: /\.gltf/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash].[ext]',
+              outputPath: 'static/assets/gltf/',
+              publicPath: '/_next/static/assets/gltf/',
+            },
+          },
+        ],
+      });
+      config.module.rules.push({
+        test: /\.glb/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash].[ext]',
+              outputPath: 'static/assets/glb/',
+              publicPath: '/_next/static/assets/glb/',
+            },
+          },
+        ],
+      });
+
       config.externals.push('pino-pretty');
       return config;
     },
