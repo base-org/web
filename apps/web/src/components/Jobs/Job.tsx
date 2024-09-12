@@ -41,7 +41,7 @@ export function Job({ job }: JobProps) {
       className="inline-block w-full rounded-2xl bg-white/0 p-4 transition-all hover:bg-white/20"
     >
       <div className="flex w-full flex-col items-center justify-between text-white sm:flex-row">
-        <div className="flex flex-col">
+        <div className="flex w-full flex-col">
           <p className="w-full text-xl">{title}</p>
           <small className="opacity-70">{location.name}</small>
         </div>
