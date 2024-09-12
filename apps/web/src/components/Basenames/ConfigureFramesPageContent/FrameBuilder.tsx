@@ -9,6 +9,7 @@ import { SuggestionCard } from 'apps/web/src/components/Basenames/UsernameProfil
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Input from 'apps/web/src/components/Input';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
+import { isValidUrl } from 'apps/web/src/utils/urls';
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
@@ -24,7 +25,6 @@ import previewBackground from './ui/preview-background.svg';
 import emptyPreviewFrame from './ui/preview-frame.svg';
 import starActive from './ui/starActive.svg';
 import swap from './ui/swap.svg';
-import { isValidUrl } from 'apps/web/src/utils/urls';
 
 export default function FrameBuilder() {
   const { address } = useAccount();
@@ -51,9 +51,9 @@ export default function FrameBuilder() {
   });
   const homeframeUrlString = existingTextRecords[UsernameTextRecordKeys.Frame] ?? '';
 
-  const [swapTokenAddress, setSwapTokenAddress] = useState('');
-  const handleSwapTokenAddressChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setSwapTokenAddress(e.target.value);
+  const [swapTokenSymbol, setSwapTokenSymbol] = useState('');
+  const handleSwapTokenSymbolChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setSwapTokenSymbol(e.target.value);
   }, []);
   const emptyFrameUrl = !debouncedNewFrameUrl;
   const isValidFrameUrl = isValidUrl(debouncedNewFrameUrl);
@@ -72,6 +72,14 @@ export default function FrameBuilder() {
       setNewFrameUrl('');
     }
   }, [basename]);
+
+  const handleSwapPreviewClick = useCallback(() => {
+    if (swapTokenSymbol) {
+      setNewFrameUrl(`https://social-dex-frontend.vercel.app/api/buy/ticker/${swapTokenSymbol}`);
+    } else {
+      setNewFrameUrl('');
+    }
+  }, [swapTokenSymbol]);
 
   const handleBuildTopClick = useCallback(() => {
     if (address) {
@@ -235,13 +243,13 @@ export default function FrameBuilder() {
         description="Buy my bags"
       >
         <p className="text-sm text-palette-foreground">
-          Add the Base address of the token you want people to buy
+          Add the symbol of the token you want people to buy
         </p>
         <div className="mt-3 flex flex-row gap-4">
           <Input
-            placeholder="token address"
-            value={swapTokenAddress}
-            onChange={handleSwapTokenAddressChange}
+            placeholder="token symbol"
+            value={swapTokenSymbol}
+            onChange={handleSwapTokenSymbolChange}
             type="text"
             className="flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
           />
@@ -249,7 +257,7 @@ export default function FrameBuilder() {
             rounded
             variant={ButtonVariants.Black}
             size={ButtonSizes.Tiny}
-            onClick={handlePaycasterClick}
+            onClick={handleSwapPreviewClick}
           >
             Show preview
           </Button>
