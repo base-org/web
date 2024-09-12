@@ -1,6 +1,6 @@
 ---
-title: Quick Start: Deploy on Base
-slug: /quick-start
+title: 'Quickstart: Deploy on Base'
+slug: /quickstart
 description: A guide to help you get started with deploying your smart contracts on Base.
 keywords:
   [
@@ -8,112 +8,153 @@ keywords:
     Base network,
     contracts,
     Base contracts,
-    Base quick start,
+    Base quickstart,
     smart contracts,
     Base smart contracts,
     Base Mainnet,
     Base Testnet,
   ]
-hide_table_of_contents: true
+hide_table_of_contents: false
 ---
 
 # Quick Start: Deploy on Base
 
-Set up your environment to deploy your smart contracts on Base. This guide uses best in class tools to get you started.
+Welcome to the Base deployment quickstart guide! This comprehensive walkthrough will help you set up your environment and deploy smart contracts on Base using industry-leading tools. Whether you're a seasoned developer or just starting out, this guide has got you covered.
 
-## Prerequisites
+## What You'll Achieve
 
-- None! We'll get you started from scratch.
+By the end of this quickstart, you'll be able to:
 
-:::tip What you'll learn
+- Set up your develompent environment to deploy on Base
+- Deploy your smart contracts to Base
+- Connect your frontend to your smart
 
-- How to set up your develompent environment to deploy on Base
-- How to deploy your smart contracts to Base
-  :::
+:::tip Why Base?
 
-## Set up your development environment
+Base is a fast, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain. By following this guide, you'll join a vibrant ecosystem of builders, creators, and innovators who are building the next generation of applications, services, and experiences.
 
-In a new directory, create a new project:
+:::
+
+## Set Up Your Development Environment
+
+Follow these steps to set up your development environment for Base:
+
+1. create a new project directory:
 
 ```bash
 mkdir my-base-project && cd my-base-project
 ```
 
-Install Foundry, a powerful framework for building and deploying smart contracts:
+2. Install Foundry, a powerful framework for smart contract development:
 
 ```bash
 curl -L https://foundry.paradigm.xyz | bash
-```
-
-Run foundryup to install the latest version of Foundry:
-
-```bash
 foundryup
 ```
 
-Initialize a new Solidity project:
+This installs Foundry and updates it to the latest version.
+
+3. Initialize a new Solidity project:
 
 ```bash
 forge init
 ```
 
-Your Foundry project is now initialized. The `src` directory contains an example contract, you can replace this with your own contracts.
+Your Foundry project is now ready. You'll find an example contract in the src directory, which you can replace with your own contracts. For the purposes of this guide, we'll use the Counter contract provided.
+
+:::tip
+Foundry provides a suite of tools for Ethereum application development, including Forge (for testing), Cast (for interacting with the chain), and Anvil (for setting up a local node).
+:::
 
 ## Configure Foundry with Base
 
-To deploy your smart contracts to Base, you need two pieces of infrastructure:
+To deploy your smart contracts to Base, you need two key components:
 
 1. A node connection to interact with the Base network
-2. A funded private key
+2. A funded private key to deploy the contract
 
-### Set up your node connection
+Lets set up both of these:
 
-Create a `.env` file in the root of our project and add the Base network RPC URL
+### 1. Set up your node connection
+
+1. Create a `.env` file in your project's root directory
+2. Add the Base network RPC URL to your `.env` file
 
 ```bash
 BASE_RPC_URL="https://mainnet.base.org"
 BASE_SEPOLIA_RPC_URL="https://sepolia.base.org"
 ```
 
-:::tip
-Base Sepolia is the test network for Base. You can fund your private key with free Base Sepolia ETH by using one of the [faucets listed here](/tools/network-faucets).
-:::
-
-To load your environment variables, run the following command:
+3. Load your environment variables
 
 ```bash
 source .env
 ```
 
+:::tip
+Base Sepolia is the test network for Base, which we will use for the rest of this guide. You can obtain free Base Sepolia ETH from one of the [faucets listed here](/tools/network-faucets).
+:::
+
 ### Secure your private key
 
-To securely store your private key within Foundry's secure keystore you may run the following command:
+source .env
+
+````
+
+### 2. Secure your private key
+
+1. Store your private key in Foundry's secure keystore
 
 ```bash
 cast wallet import deployer --interactive
-```
+````
 
-You will be prompted to enter your private key and a password. Your private key is stored in `~/.foundry/keystores` which is not tracked by git.
+2. When prompted enter your private key and a password.
 
-## Deploy your smart contracts
+Your private key is stored in `~/.foundry/keystores` which is not tracked by git.
 
-To deploy your smart contracts to Base, you can use the following command:
+:::warning
+Never share or commit your private key. Always keep it secure and handle with care.
+:::
+
+## Deploy Your Cntracts
+
+Now that your enviornment is set up, let's deploy your contracts to Base Sepolia.
+
+1. Use the following command to compile and deploy your contract:
 
 ```bash
 forge create ./src/Counter.sol:Counter --rpc-url $BASE_SEPOLIA_RPC_URL --account deployer
 ```
 
-This will compile your contracts and deploy your contract to the Base Sepolia network. The transaction hash will be printed to the console. Grab the address the contract was deployed to and add it to your `.env` file as `COUNTER_CONTRACT_ADDRESS`.
+Note the format of the contract being deployed is `<contract-path>:<contract-name>`.
+
+2. After successful deployment, the transaction hash will be printed to the console output.
+
+3. Copy the deployed contract address and add it to your `.env` file
 
 ```bash
 COUNTER_CONTRACT_ADDRESS="0x..."
 ```
 
-Then load the new environment variable:
+4. Load the new environment variable:
 
 ```bash
 source .env
 ```
+
+### Verify Your Deployment
+
+To ensure your contract was deployed successfully:
+
+1. Check the transaction on Base Sepolia Explorer.
+2. Use the cast command to interact with your deployed contract:
+
+```bash
+cast call $COUNTER_CONTRACT_ADDRESS "number()(uint256)" --rpc-url $BASE_SEPOLIA_RPC_URL
+```
+
+This should return the initial value of the counter, which will be `0`.
 
 **Congratulations! You've deployed your smart contracts to Base!**
 
