@@ -6,7 +6,7 @@ import CoreContributors from 'apps/web/src/components/CoreContributors/CoreContr
 export default async function BuildingBase() {
   return (
     <Container>
-      <section className="flex w-full  flex-col gap-24 pb-10 lg:flex-row lg:gap-16 lg:pb-40">
+      <section className="flex w-full flex-col gap-24 pb-10 lg:flex-row lg:gap-16 lg:pb-40">
         <Title level={TitleLevel.Display1}>
           We&#39;ve been building towards Base for the last 10 years.
         </Title>

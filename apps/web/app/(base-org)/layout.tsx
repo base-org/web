@@ -37,7 +37,7 @@ export default async function BaseOrgLayout({
     <div className="max-w-screen flex min-h-screen flex-col bg-black text-white">
       <TopNavigation />
       <HomepageModalDynamic />
-      <div className="mt-20">{children}</div>
+      {children}
     </div>
   );
 }

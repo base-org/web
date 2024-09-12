@@ -23,7 +23,7 @@ type JobProps = {
 };
 
 export function Job({ job }: JobProps) {
-  const { id, title } = job;
+  const { id, title, location } = job;
 
   const href = useMemo(
     () => ({
@@ -34,13 +34,18 @@ export function Job({ job }: JobProps) {
   );
 
   return (
-    <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row">
-      <div className="flex flex-col">
-        <Link href={href} rel="noreferrer" target="_self">
-          <p className="mt-2 max-w-[750px] text-xl">{title}</p>
-        </Link>
-      </div>
-      <Link href={href} rel="noreferrer" target="_self" className="w-full self-center sm:w-auto">
+    <Link
+      href={href}
+      rel="noreferrer"
+      target="_blank"
+      className="inline-block w-full rounded-2xl bg-white/0 p-4 transition-all hover:bg-white/20"
+    >
+      <div className="flex w-full flex-col items-center justify-between text-white sm:flex-row">
+        <div className="flex flex-col">
+          <p className="w-full text-xl">{title}</p>
+          <small className="opacity-70">{location.name}</small>
+        </div>
+
         <Button
           variant={ButtonVariants.Secondary}
           size={ButtonSizes.Large}
@@ -48,7 +53,7 @@ export function Job({ job }: JobProps) {
         >
           <p className="text-sm">Apply now</p>
         </Button>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }

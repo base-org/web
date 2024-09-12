@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 async function EcosystemHero() {
   return (
-    <div className="flex w-full flex-col items-center bg-black pb-[96px]">
+    <div className="flex w-full flex-col items-center bg-black pb-[96px] pt-20">
       <Container>
         <div className="flex w-full  flex-col items-center justify-center gap-12 pt-28 md:flex-row">
           <div className="flex w-full flex-col gap-8 md:w-1/2">

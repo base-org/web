@@ -9,7 +9,6 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 const heroContainerClasses = `
   w-full
   flex flex-col sm:flex-row justify-center
-  mt-[-96px]
   font-display text-white
   bg-[#283145]
   relative

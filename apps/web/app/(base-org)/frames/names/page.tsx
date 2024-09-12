@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 export default async function NameFrame() {
   return (
-    <div className="mt-[-96px] flex w-full flex-col items-center bg-black pb-[96px]">
+    <div className="flex w-full flex-col items-center bg-black pb-[96px]">
       <div className="flex h-screen w-full max-w-[1440px] flex-col items-center justify-center gap-12 px-8 py-8 pt-28">
         <div className="relative flex aspect-[993/516] h-auto w-full max-w-[1024px] flex-col items-center">
           <Link href="/names">

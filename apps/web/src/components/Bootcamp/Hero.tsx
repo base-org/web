@@ -9,7 +9,7 @@ const subtitleCopy =
 
 export async function Hero() {
   return (
-    <header className="mt-[-96px] flex h-[700px] w-full flex-col items-center bg-black bg-bootcamp_background_image bg-cover">
+    <header className="flex h-[700px] w-full flex-col items-center bg-black bg-bootcamp_background_image bg-cover">
       <Container>
         <div className="mt-48 flex w-full flex-col pt-12">
           <div className="flex w-full flex-col font-display text-4xl text-white md:text-6xl lg:text-7xl">

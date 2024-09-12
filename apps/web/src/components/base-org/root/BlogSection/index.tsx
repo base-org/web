@@ -75,6 +75,7 @@ export default function BlogSection() {
 
   const wrapperClasses = classNames('relative overflow-hidden rounded-xl');
   const svgNoiseBackgroundUrl = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`;
+  // const svgNoiseBackgroundUrl = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`;
 
   return (
     <section>
@@ -89,16 +90,10 @@ export default function BlogSection() {
             className="absolute left-0 right-0 top-0 z-10 h-[10rem] bg-black/30 backdrop-blur-[3rem]"
             style={{
               maskImage: 'linear-gradient(to bottom, black, transparent)',
+              backgroundImage: `${svgNoiseBackgroundUrl}, linear-gradient(to bottom, transparent, rgba(0,0,0,0.5))`,
               WebkitMaskImage: 'linear-gradient(to bottom, black, transparent)',
             }}
-          >
-            <div
-              className="absolute inset-0 bg-black/30 mix-blend-multiply"
-              style={{
-                backgroundImage: svgNoiseBackgroundUrl,
-              }}
-            />
-          </div>
+          />
           <div
             className="flex transition-transform duration-300 ease-in-out"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -120,19 +115,13 @@ export default function BlogSection() {
           </div>
           {/* Bottom blur/gradient for progress lines visibility */}
           <div
-            className="absolute bottom-0 left-0 right-0 z-10 h-[6rem] bg-black/30 backdrop-blur-[3rem]"
+            className="absolute bottom-0 left-0 right-0 z-10 h-[10rem] bg-black/30 backdrop-blur-[3rem]"
             style={{
               maskImage: 'linear-gradient(to top, black, transparent)',
+              backgroundImage: `${svgNoiseBackgroundUrl}, linear-gradient(to top, transparent, rgba(0,0,0,0.5))`,
               WebkitMaskImage: 'linear-gradient(to top, black, transparent)',
             }}
-          >
-            <div
-              className="absolute inset-0 bg-black/30 mix-blend-multiply"
-              style={{
-                backgroundImage: svgNoiseBackgroundUrl,
-              }}
-            />
-          </div>
+          />
         </div>
 
         <div className="absolute left-0 top-0 z-20 flex min-h-[17rem] w-full flex-col justify-between gap-4 px-4 pt-4 md:min-h-0 md:flex-row md:px-8 md:pt-6">

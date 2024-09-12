@@ -1,10 +1,10 @@
 import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
+import { JobType } from 'apps/web/src/components/Jobs/Job';
+import JobsList from 'apps/web/src/components/Jobs/JobsList';
+import { greenhouseApiUrl } from 'apps/web/src/constants';
 import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
-
-const JobsList = dynamic(async () => import('apps/web/src/components/Jobs/JobsList'));
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -15,14 +15,22 @@ export const metadata: Metadata = {
   },
 };
 
+async function getJobs() {
+  const res = await fetch(`${greenhouseApiUrl}/boards/basejobs/jobs?content=true`);
+  const { jobs } = (await res.json()) as { jobs: JobType[] };
+  return jobs;
+}
+
 export default async function Jobs() {
+  const jobs = await getJobs();
+
   return (
-    <main className="flex w-full grow flex-col items-center">
+    <main className="flex w-full grow flex-col items-center pt-20">
       <Container>
         <section className="mb-[140px] flex w-full flex-col pb-10 pt-20 ">
           <Title level={TitleLevel.Display3}>Join our team</Title>
           <div className="flex w-full flex-col font-display text-sm text-white lg:text-xl">
-            <JobsList />
+            <JobsList jobs={jobs} />
           </div>
         </section>
       </Container>

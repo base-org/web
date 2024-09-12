@@ -57,7 +57,7 @@ export default async function Home() {
     <ErrorsProvider context="base_landing_page">
       <AnalyticsProvider context="base_landing_page">
         <AnalyticsProvider context="hero">
-          <div className="relative h-[875px] w-full">
+          <div className="relative h-screen w-full">
             <ThreeHero />
 
             <div className="absolute bottom-0 left-0 w-full pb-20 text-white">
@@ -88,9 +88,9 @@ export default async function Home() {
             <Container>
               <div className="flex flex-col gap-40 pb-40 pt-20">
                 <section>
-                  <h1 className="text-[4.8125rem] leading-[1.1em] tracking-[-0.01em]">
+                  <Title level={TitleLevel.Display1}>
                     The future of the internet is onchain. Base is here to help you build it.
-                  </h1>
+                  </Title>
                 </section>
                 <BuildExploreSection />
                 <VideoCardsSection />
