@@ -130,8 +130,8 @@ const handleClaimClick = () => {
 return (
   <div>
     <p>{'Token Balance: ' + tokenBalance}</p>
-    <button disabled={claimIsLoading} onClick={handleClaimClick}>
-      {claimIsLoading ? 'Complete In Wallet' : 'Claim Tokens'}
+    <button disabled={claimIsPending} onClick={handleClaimClick}>
+      {claimIsPending ? 'Complete In Wallet' : 'Claim Tokens'}
     </button>
   </div>
 );
