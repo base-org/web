@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import type { Metadata } from 'next';
-import Nav from 'apps/web/src/components/Layout/Nav/Nav';
+import TopNavigation from 'apps/web/src/components/base-org/shared/TopNavigation';
 
 const HomepageModalDynamic = dynamic(
   async () => import('apps/web/src/components/Basenames/HomepageModal'),
@@ -35,7 +35,7 @@ export default async function BaseOrgLayout({
 }) {
   return (
     <div className="max-w-screen flex min-h-screen flex-col bg-black text-white">
-      <Nav />
+      <TopNavigation />
       <HomepageModalDynamic />
       <div className="mt-20">{children}</div>
     </div>

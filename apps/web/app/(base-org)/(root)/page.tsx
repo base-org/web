@@ -17,6 +17,7 @@ import TransactionsFeesSection from 'apps/web/src/components/base-org/root/Trans
 import BuildAndRewardSection from 'apps/web/src/components/base-org/root/BuildAndRewardSection';
 import ErrorsProvider from 'apps/web/contexts/Errors';
 import BlogSection from 'apps/web/src/components/base-org/root/BlogSection';
+import Link from 'next/link';
 
 /* Farcaster Metadatas */
 const buttons: FrameButtonMetadata[] = [
@@ -67,12 +68,16 @@ export default async function Home() {
                   creativity, and freedom.
                 </p>
                 <div className="mt-4 flex gap-4">
-                  <Button variant={ButtonVariants.Secondary} iconName="baseOrgDiagonalUpArrow">
-                    Start building
-                  </Button>
-                  <Button variant={ButtonVariants.Outlined} iconName="baseOrgDiagonalUpArrow">
-                    Get a Basename
-                  </Button>
+                  <Link href="/getstarted?utm_source=dotorg&medium=hero">
+                    <Button variant={ButtonVariants.Secondary} iconName="baseOrgDiagonalUpArrow">
+                      Start building
+                    </Button>
+                  </Link>
+                  <Link href="/names?utm_source=dotorg&medium=hero">
+                    <Button variant={ButtonVariants.Outlined} iconName="baseOrgDiagonalUpArrow">
+                      Get a Basename
+                    </Button>
+                  </Link>
                 </div>
               </Container>
             </div>

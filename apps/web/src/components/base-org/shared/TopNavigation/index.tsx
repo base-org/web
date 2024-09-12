@@ -1,14 +1,17 @@
 'use client';
 
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
-import Button from 'apps/web/src/components/base-org/Button';
 import Card from 'apps/web/src/components/base-org/Card';
 import Link from 'next/link';
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import logo from './logo.svg';
+import logo from './assets/logo.svg';
 import Image, { StaticImageData } from 'next/image';
 import { useGasPrice } from 'wagmi';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import {
+  ConnectWalletButton,
+  ConnectWalletButtonVariants,
+} from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 
 type SubItem = {
   name: string;
@@ -57,8 +60,8 @@ const links: TopNavigationLink[] = [
     href: '/',
     emoji: '👥',
     subItems: [
-      { name: 'Events', href: '/' }, // TODO?
-      { name: 'Community Jobs', href: '/' }, // TODO?
+      // { name: 'Events', href: '/' }, // TODO?
+      // { name: 'Community Jobs', href: '/' }, // TODO?
       { name: 'Grants', href: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders' },
     ],
   },
@@ -86,7 +89,7 @@ const links: TopNavigationLink[] = [
   },
 ];
 
-export default function Nav() {
+export default function TopNavigation() {
   const [hoverIndex, setHoverIndex] = useState<number>(-1);
   const [subActive, setSubActive] = useState<boolean>(false);
 
@@ -150,7 +153,7 @@ export default function Nav() {
     <AnalyticsProvider context="navbar">
       <nav className="fixed top-0 z-50 w-full shrink-0 px-4 py-4">
         <div className="flex w-full items-center justify-between px-4">
-          {/* TODO: Logo and TVL section */}
+          {/* Logo and Gas price section */}
           <div className="flex items-center gap-4">
             <Link href="/">
               <Image src={logo as StaticImageData} alt="Base Logo" />{' '}
@@ -248,7 +251,7 @@ export default function Nav() {
 
           {/* Connect Wallet button */}
           <div className="justify-end">
-            <Button roundedFull>Connect Wallet</Button>
+            <ConnectWalletButton connectWalletButtonVariant={ConnectWalletButtonVariants.BaseOrg} />
           </div>
         </div>
       </nav>
