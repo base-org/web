@@ -33,28 +33,33 @@ export default function FarcasterAccountModal() {
 
   return (
     <Modal isOpen={showFarcasterQRModal} onClose={handleModalClose}>
-      <div className="space-y-2">
+      <div className="max-w-lg rounded-lg bg-white">
+        {/* Sign-in section when the user is not signed in */}
         {!farcasterUser && (
-          <div className="mt-4 flex flex-col gap-2">
-            <div>
-              <h1>Sign in with Farcaster</h1>
-              <div>
-                <p className="mb-2 block">
-                  Uses real signer. Works with remote frames and other libraries.
-                </p>
-                <p className="text-orange-400">Be careful this action costs warps.</p>
-              </div>
-
-              <Button disabled={loading} type="button" onClick={handleButtonClick}>
-                {loading ? 'Signing in...' : 'Sign in'}
-              </Button>
+          <div className="flex flex-col items-center gap-4">
+            <div className="text-center">
+              <h1 className="text-xl font-bold text-gray-80">Sign in with Farcaster</h1>
+              <p className="mt-2 text-sm text-gray-50">Use your Farcaster account to sign in.</p>
+              <p className="mt-1 text-xs text-red-50">Be careful! This action costs warps.</p>
             </div>
+
+            <Button
+              disabled={loading}
+              variant={ButtonVariants.Black}
+              type="button"
+              className="mt-4 w-full"
+              onClick={handleButtonClick}
+            >
+              {loading ? 'Signing in...' : 'Sign in'}
+            </Button>
           </div>
         )}
+
+        {/* Displays user state after signing in */}
         {farcasterUser && (
           <>
             <IdentityState user={farcasterUser} onLogout={handleModalClose} />
-            {!!farcasterUser && <SelectedIdentity user={farcasterUser} />}
+            <SelectedIdentity user={farcasterUser} />
           </>
         )}
       </div>
@@ -82,12 +87,17 @@ function IdentityState({ user, onLogout }: { user: FarcasterSigner; onLogout: ()
         {farcasterIdentity ? (
           <>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={farcasterIdentity.pfp_url} alt="pfp" className="h-12 w-auto object-contain" />
+            <img
+              src={farcasterIdentity.pfp_url}
+              alt="pfp"
+              className="h-16 w-16 rounded-full object-cover shadow-sm"
+            />
             Signed in as {farcasterIdentity.display_name}
           </>
         ) : (
           <>
-            <UserCircleIcon className="h-12" /> Signed in as fid: {user.fid}
+            <UserCircleIcon className="h-16 w-16 rounded-full object-cover shadow-sm" /> Signed in
+            as fid: {user.fid}
           </>
         )}
         <Button

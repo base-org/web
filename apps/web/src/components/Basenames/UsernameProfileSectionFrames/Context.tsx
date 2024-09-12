@@ -74,7 +74,7 @@ type FrameProviderProps = {
 };
 
 export function FrameProvider({ children }: FrameProviderProps) {
-  const [showFarcasterQRModal, setShowFarcasterQRModal] = useState(true);
+  const [showFarcasterQRModal, setShowFarcasterQRModal] = useState(false);
 
   const { address } = useAccount();
   const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
