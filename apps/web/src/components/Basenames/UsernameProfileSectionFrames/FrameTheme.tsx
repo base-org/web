@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import type { FrameUIComponents, FrameUITheme } from '@frames.js/render/ui';
 import classNames from 'classnames';
 import Image from 'next/image';
@@ -27,7 +28,7 @@ export const theme: FrameUITheme<StylingProps> = {
       'grow py-3 px-8 rounded-full bg-[#F3F3F3] text-palette-secondaryForeground font-medium transition-colors hover:bg-state-b-hovered max-h-[44px]',
   },
   ImageContainer: {
-    className: 'flex w-full h-full border-0 overflow-hidden',
+    className: 'flex border-0 overflow-hidden',
   },
   TextInputContainer: {
     className:
@@ -47,7 +48,6 @@ export const components: FrameUIComponents<StylingProps> = {
         width={22}
         height={22}
         className={classNames({
-          // eslint-disable-next-line react/prop-types
           hidden: props.frameState.status !== 'loading',
         })}
       />
@@ -55,7 +55,6 @@ export const components: FrameUIComponents<StylingProps> = {
   },
   // This implementation is taken from frames.js with a slight modification to account for a bug with alt text.
   Image(props, stylingProps) {
-    // eslint-disable-next-line react/prop-types
     const aspectRatio = props.aspectRatio.replace(':', '/');
 
     return createElement('img', {
@@ -66,11 +65,8 @@ export const components: FrameUIComponents<StylingProps> = {
         '--frame-image-aspect-ratio': aspectRatio,
         ...(isCssProperties(stylingProps.style) && stylingProps.style),
       },
-      // eslint-disable-next-line react/prop-types
       onLoad: props.onImageLoadEnd,
-      // eslint-disable-next-line react/prop-types
       onError: props.onImageLoadEnd,
-      // eslint-disable-next-line react/prop-types
       src: props.status === 'frame-loading' ? undefined : props.src,
     });
   },
