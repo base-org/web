@@ -89,7 +89,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           content="lqwNRCxYlFLIcX9EiKAvE4k4ZT8JGpdWgehEIPA7y1Y"
         />
       </head>
-      <body className="flex min-h-screen flex-col bg-black">
+      <body className="flex min-h-screen flex-col">
         <AppProviders>
           <DatadogInit />
           {children}
