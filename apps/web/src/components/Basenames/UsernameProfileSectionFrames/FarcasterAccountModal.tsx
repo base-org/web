@@ -1,10 +1,12 @@
 'use client';
 
-import type { FarcasterSigner } from '@frames.js/render/identity/farcaster';
-import { EllipsisHorizontalIcon, UserIcon } from '@heroicons/react/24/outline';
+import { type FarcasterSigner } from '@frames.js/render/identity/farcaster';
+import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
+import { UserCircleIcon } from '@heroicons/react/24/solid';
 import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Modal from 'apps/web/src/components/Modal';
+import { useFIDQuery } from 'apps/web/src/hooks/useFarcasterUserByFID';
 import QRCode from 'qrcode.react';
 import { useCallback, useMemo } from 'react';
 
@@ -25,8 +27,12 @@ export default function FarcasterAccountModal() {
       .finally(() => setShowFarcasterQRModal(false));
   }, [farcasterSignerState, setShowFarcasterQRModal]);
 
+  const handleModalClose = useCallback(() => {
+    setShowFarcasterQRModal(false);
+  }, [setShowFarcasterQRModal]);
+
   return (
-    <Modal isOpen={showFarcasterQRModal} onClose={() => setShowFarcasterQRModal(false)}>
+    <Modal isOpen={showFarcasterQRModal} onClose={handleModalClose}>
       <div className="space-y-2">
         {!farcasterUser && (
           <div className="mt-4 flex flex-col gap-2">
@@ -46,17 +52,22 @@ export default function FarcasterAccountModal() {
           </div>
         )}
         {farcasterUser && (
-          <div>
-            <IdentityState user={farcasterUser} />
+          <>
+            <IdentityState user={farcasterUser} onLogout={handleModalClose} />
             {!!farcasterUser && <SelectedIdentity user={farcasterUser} />}
-          </div>
+          </>
         )}
       </div>
     </Modal>
   );
 }
 
-function IdentityState({ user }: { user: FarcasterSigner }) {
+function IdentityState({ user, onLogout }: { user: FarcasterSigner; onLogout: () => void }) {
+  const { data } = useFIDQuery(user.status === 'approved' ? user.fid : undefined);
+  const { farcasterSignerState } = useFrameContext();
+  const handleLogoutClick = useCallback(() => {
+    farcasterSignerState.logout().catch(console.warn).finally(onLogout);
+  }, [farcasterSignerState, onLogout]);
   if (user.status === 'pending_approval') {
     return (
       <div>
@@ -65,9 +76,31 @@ function IdentityState({ user }: { user: FarcasterSigner }) {
     );
   }
   if (user.status === 'approved') {
+    const farcasterIdentity = data?.users[0];
     return (
-      <div className="space-y-2">
-        <UserIcon className="mr-2 h-4 w-4" /> Signed in as fid {user.fid}
+      <div className="flex flex-col items-center justify-center gap-4">
+        {farcasterIdentity ? (
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={farcasterIdentity.pfp_url} alt="pfp" className="h-12 w-auto object-contain" />
+            Signed in as {farcasterIdentity.display_name}
+          </>
+        ) : (
+          <>
+            <UserCircleIcon className="h-12" /> Signed in as fid: {user.fid}
+          </>
+        )}
+        <Button
+          variant={ButtonVariants.Gray}
+          size={ButtonSizes.Small}
+          className="rounded-full"
+          onClick={handleLogoutClick}
+        >
+          logout
+        </Button>
+        <p className="text-sm text-palette-foregroundMuted">
+          warning: logging back in will require paying warps
+        </p>
       </div>
     );
   }

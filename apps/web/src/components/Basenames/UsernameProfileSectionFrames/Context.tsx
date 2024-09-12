@@ -6,6 +6,7 @@ import {
   OnTransactionFunc,
   SignerStateInstance,
 } from '@frames.js/render';
+import { useAnonymousIdentity, type AnonymousSigner } from '@frames.js/render/identity/anonymous';
 import {
   FarcasterSignerInstance,
   useFarcasterFrameContext,
@@ -23,7 +24,6 @@ import { createContext, useCallback, useContext, useMemo, useState } from 'react
 import { namehash } from 'viem';
 import { useAccount, useChainId, useConfig, useWriteContract } from 'wagmi';
 import { sendTransaction, signTypedData, switchChain } from 'wagmi/actions';
-import { useAnonymousIdentity, type AnonymousSigner } from '@frames.js/render/identity/anonymous';
 
 class InvalidChainIdError extends Error {}
 class CouldNotChangeChainError extends Error {}
@@ -74,7 +74,7 @@ type FrameProviderProps = {
 };
 
 export function FrameProvider({ children }: FrameProviderProps) {
-  const [showFarcasterQRModal, setShowFarcasterQRModal] = useState(false);
+  const [showFarcasterQRModal, setShowFarcasterQRModal] = useState(true);
 
   const { address } = useAccount();
   const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
