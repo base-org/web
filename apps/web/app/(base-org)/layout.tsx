@@ -34,7 +34,7 @@ export default async function BaseOrgLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="max-w-screen flex min-h-screen flex-col bg-black text-white">
+    <div className="max-w-screen flex min-h-screen flex-col bg-black text-white selection:bg-[#C5DAFC] selection:text-blue">
       <TopNavigation />
       <HomepageModalDynamic />
       {children}
