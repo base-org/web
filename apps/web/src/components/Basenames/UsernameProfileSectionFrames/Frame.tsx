@@ -33,17 +33,8 @@ export default function Frame({ url }: FrameProps) {
     return stackItem.frameResult.status !== 'failure';
   }, [openFrameState.framesStack]);
 
-  const farcasterFrameWorks = useMemo(() => {
-    const stackItem = farcasterFrameState.framesStack[0];
-    if (!stackItem) return false;
-    const status = stackItem.status;
-    if (status !== 'done') return false;
-    return stackItem.frameResult.status !== 'failure';
-  }, [farcasterFrameState.framesStack]);
-
-  if (openFrameWorks)
+  if (openFrameWorks) {
     return <FrameUI frameState={openFrameState} theme={theme} components={components} />;
-  if (farcasterFrameWorks)
-    return <FrameUI frameState={farcasterFrameState} theme={theme} components={components} />;
-  return <FrameUI frameState={openFrameState} theme={theme} components={components} />;
+  }
+  return <FrameUI frameState={farcasterFrameState} theme={theme} components={components} />;
 }

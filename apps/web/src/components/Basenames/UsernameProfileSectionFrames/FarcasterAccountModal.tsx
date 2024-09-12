@@ -1,7 +1,6 @@
 'use client';
 
 import { type FarcasterSigner } from '@frames.js/render/identity/farcaster';
-import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
 import { UserCircleIcon } from '@heroicons/react/24/solid';
 import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
@@ -37,7 +36,7 @@ export default function FarcasterAccountModal() {
         {/* Sign-in section when the user is not signed in */}
         {!farcasterUser && (
           <div className="flex flex-col items-center gap-4">
-            <div className="text-center">
+            <div className="flex flex-col items-center">
               <h1 className="text-xl font-bold text-gray-80">Sign in with Farcaster</h1>
               <p className="mt-2 text-sm text-gray-50">Use your Farcaster account to sign in.</p>
               <p className="mt-1 text-xs text-red-50">Be careful! This action costs warps.</p>
@@ -74,11 +73,7 @@ function IdentityState({ user, onLogout }: { user: FarcasterSigner; onLogout: ()
     farcasterSignerState.logout().catch(console.warn).finally(onLogout);
   }, [farcasterSignerState, onLogout]);
   if (user.status === 'pending_approval') {
-    return (
-      <div>
-        <EllipsisHorizontalIcon className="mr-2 h-4 w-4" /> Pending approval on Warpcast
-      </div>
-    );
+    return 'Sign in with Warpcast';
   }
   if (user.status === 'approved') {
     const farcasterIdentity = data?.users[0];
@@ -123,14 +118,14 @@ function SelectedIdentity({ user }: { user: FarcasterSigner }) {
       <div className="mt-4 flex flex-col items-center gap-2 border-t pt-4">
         Scan with your camera app
         <QRCode value={user.signerApprovalUrl} size={128} />
-        <div className="or-divider text-muted-foreground">OR</div>
+        <div className="text-muted-foreground lg:hidden">OR</div>
         <a
           href={user.signerApprovalUrl}
           target="_blank"
-          className="w-full"
+          className="underline lg:hidden"
           rel="noopener noreferrer"
         >
-          Open URL
+          Open URL on mobile
         </a>
       </div>
     );

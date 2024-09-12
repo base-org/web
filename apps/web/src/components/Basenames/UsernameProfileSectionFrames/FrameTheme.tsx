@@ -1,8 +1,8 @@
 import type { FrameUIComponents, FrameUITheme } from '@frames.js/render/ui';
-import Image from 'next/image';
-import BaseLoading from './base-loading.gif';
 import classNames from 'classnames';
+import Image from 'next/image';
 import { createElement } from 'react';
+import BaseLoading from './base-loading.gif';
 
 type StylingProps = {
   className?: string;
