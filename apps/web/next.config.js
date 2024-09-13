@@ -118,6 +118,7 @@ const contentSecurityPolicy = {
     'https://translate.googleapis.com', // Let user translate our website
     'https://sdk-api.neynar.com/', // Neymar API
     'https://unpkg.com/@lottiefiles/dotlottie-web@0.31.1/dist/dotlottie-player.wasm', // lottie player
+    `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
@@ -132,6 +133,7 @@ const contentSecurityPolicy = {
     'https://ipfs.io', // ipfs ens avatar resolution
     'https://cloudflare-ipfs.com', // ipfs Cloudfare ens avatar resolution
     'https://zku9gdedgba48lmr.public.blob.vercel-storage.com', // basename avatar upload to vercel blob
+    `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
   ],
 };
 
@@ -225,6 +227,11 @@ module.exports = extendBaseConfig(
         {
           source: '/buildersummer',
           destination: '/onchainsummer',
+          permanent: true,
+        },
+        {
+          source: '/onchainsummer',
+          destination: '/getstarted',
           permanent: true,
         },
         {

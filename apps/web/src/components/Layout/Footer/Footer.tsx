@@ -28,13 +28,10 @@ export function Footer() {
             </div>
             <div className="flex flex-col">
               <p className="text-white">
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSdvX-a6LqOIR7Uk5cDPGUjUkpSCetvTor25M1JmW9eqgubS5Q/viewform?usp=sf_link"
-                  className="underline"
-                >
-                  Build on Base
-                </a>
-                : Get in touch with our teams about your project.
+                <Link href="/getstarted" className="underline">
+                  Builder Resource Kit
+                </Link>
+                : Get help to build and grow your project on Base.
               </p>
             </div>
           </div>

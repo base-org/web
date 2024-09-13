@@ -366,7 +366,7 @@ __metadata:
     "@radix-ui/react-accordion": ^1.2.0
     "@radix-ui/react-popover": ^1.1.1
     "@radix-ui/react-tooltip": ^1.1.2
-    "@rainbow-me/rainbowkit": ^2.1.3
+    "@rainbow-me/rainbowkit": ^2.1.5
     "@tanstack/react-query": ^5
     "@types/jsonwebtoken": ^9.0.6
     "@types/node": 18.11.18
@@ -396,6 +396,7 @@ __metadata:
     node-fetch: ^3.3.0
     permissionless: ^0.1.41
     pg: ^8.12.0
+    pinata: ^0.4.0
     postcss: ^8.4.21
     prettier-plugin-tailwindcss: ^0.2.5
     qrcode.react: ^3.1.0
@@ -6840,6 +6841,27 @@ __metadata:
     viem: 2.x
     wagmi: ^2.9.0
   checksum: 415b9361710c4f91d0ca84f8918e3957cda9f7501707e433498a1b7c0d95132b8ef58b7a1b16ee873b8e9380a42932d73b9529b491654439bb2a4e4f849d60f1
+  languageName: node
+  linkType: hard
+
+"@rainbow-me/rainbowkit@npm:^2.1.5":
+  version: 2.1.5
+  resolution: "@rainbow-me/rainbowkit@npm:2.1.5"
+  dependencies:
+    "@vanilla-extract/css": 1.14.0
+    "@vanilla-extract/dynamic": 2.1.0
+    "@vanilla-extract/sprinkles": 1.6.1
+    clsx: 2.1.0
+    qrcode: 1.5.3
+    react-remove-scroll: 2.5.7
+    ua-parser-js: ^1.0.37
+  peerDependencies:
+    "@tanstack/react-query": ">=5.0.0"
+    react: ">=18"
+    react-dom: ">=18"
+    viem: 2.x
+    wagmi: ^2.9.0
+  checksum: 5f740674c61e26a7f2000f92188f5efbcfed2076bf1c5045344064b77da98324e8553928cf02674f41098ab6d893eb700aad0699fec5b955129871bb2a0963d4
   languageName: node
   linkType: hard
 
@@ -19729,7 +19751,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^3.3.0":
+"node-fetch@npm:^3.3.0, node-fetch@npm:^3.3.1":
   version: 3.3.2
   resolution: "node-fetch@npm:3.3.2"
   dependencies:
@@ -20741,6 +20763,16 @@ __metadata:
   version: 5.0.0
   resolution: "pify@npm:5.0.0"
   checksum: 443e3e198ad6bfa8c0c533764cf75c9d5bc976387a163792fb553ffe6ce923887cf14eebf5aea9b7caa8eab930da8c33612990ae85bd8c2bc18bedb9eae94ecb
+  languageName: node
+  linkType: hard
+
+"pinata@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "pinata@npm:0.4.0"
+  dependencies:
+    is-ipfs: ^8.0.4
+    node-fetch: ^3.3.1
+  checksum: 698505682f20e644cfe16c7ba4117e1e0d926408cd9a0946a75981d6aa554a73afca7fa7ad1b5ecd85c79411f03845f6f1e35ca633ce874a450ddc4d80496a71
   languageName: node
   linkType: hard
 

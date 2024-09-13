@@ -2,18 +2,16 @@ import { UsernameProfileProps } from 'apps/web/app/(basenames)/name/[username]/p
 import ImageRaw from 'apps/web/src/components/ImageRaw';
 import { ImageResponse } from 'next/og';
 import coverImageBackground from 'apps/web/app/(basenames)/name/[username]/coverImageBackground.png';
-import { namehash } from 'viem';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import { isDevelopment } from 'apps/web/src/constants';
-import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import {
   formatBaseEthDomain,
   getBasenameImage,
   USERNAME_DOMAINS,
-  UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 import { base, baseSepolia } from 'viem/chains';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
+import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/urls';
 export const runtime = 'edge';
 
 const size = {
@@ -31,20 +29,25 @@ export async function generateImageMetadata({ params }: UsernameProfileProps) {
     username = formatBaseEthDomain(username, base.id);
   }
 
+  // Remove funky char which breaks OG image path
+  const alphanumericRegex = /[^a-zA-Z0-9]/g;
+  const sanitizedId = username.replace(alphanumericRegex, '');
+
   return [
     {
       alt: `Basenames | ${username}`,
       contentType: 'image/png',
       size,
-      id: username,
+      id: sanitizedId,
     },
   ];
 }
 
-type ImageRouteProps = { id: string };
+type ImageRouteProps = { id: string; params: { username: string } };
 
 export default async function OpenGraphImage(props: ImageRouteProps) {
-  let username = props.id;
+  // Decode emoji
+  let username = decodeURIComponent(props.params.username);
 
   if (
     username &&
@@ -64,13 +67,13 @@ export default async function OpenGraphImage(props: ImageRouteProps) {
 
   // NOTE: Do we want to fail if the name doesn't exists?
   try {
-    const nameHash = namehash(username);
     const client = getBasenamePublicClient(base.id);
-    const avatar = await client.readContract({
-      abi: L2ResolverAbi,
-      address: USERNAME_L2_RESOLVER_ADDRESSES[base.id],
-      args: [nameHash, UsernameTextRecordKeys.Avatar],
-      functionName: 'text',
+    const avatar = await client.getEnsAvatar({
+      name: username,
+      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[base.id],
+      assetGatewayUrls: {
+        ipfs: CLOUDFARE_IPFS_PROXY,
+      },
     });
 
     // Satori Doesn't support webp

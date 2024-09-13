@@ -11,7 +11,7 @@ displayed_sidebar: null
 
 ### 1. What are Basenames?
 
-Basenames are a core onchain building block that enable builders to establish their identity on Base by registering human-readable names for their wallet address(es). They are fully onchain, built on the same technology powering ENS names and deployed on Base. These human-readable names can be used when connecting to onchain apps, and sending and receiving on Base and any other EVM chain.
+[Basenames](https://base.org/names) are a core onchain building block that enable builders to establish their identity on Base by registering human-readable names for their wallet address(es). They are fully onchain, built on the same technology powering ENS names and deployed on Base. These human-readable names can be used when connecting to onchain apps, and sending and receiving on Base and any other EVM chain. Get your Basename at [base.org/names](https://base.org/names).
 
 ### 2. What are the Basename registration fees?
 

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import gtcBackground from './images/gtc-background.svg';
-import ocsTitle from './images/onchain-summer.svg';
+import getStartedHeroImage from './images/gs_hero_img.webp';
 
 const heroContainerClasses = `
   w-full
@@ -37,7 +37,7 @@ export default async function Hero() {
           </span>
         </div>
         <div className="self-end">
-          <Image src={ocsTitle as StaticImport} alt="onchain summer" />
+          <Image src={getStartedHeroImage as StaticImport} alt="onchain summer" />
         </div>
       </div>
     </div>
