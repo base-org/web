@@ -34,7 +34,7 @@ export function List({
 
   return (
     <>
-      <div className="flex flex-col gap-10 lg:grid lg:grid-cols-4">
+      <div className="flex flex-col gap-4 lg:grid lg:grid-cols-4">
         {truncatedApps.map((app) => (
           <EcosystemCard {...app} key={app.url} />
         ))}
