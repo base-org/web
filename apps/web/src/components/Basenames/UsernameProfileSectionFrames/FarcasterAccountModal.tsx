@@ -20,10 +20,7 @@ export default function FarcasterAccountModal() {
     [farcasterSignerState.isLoadingSigner],
   );
   const handleButtonClick = useCallback(() => {
-    farcasterSignerState
-      .createSigner()
-      .catch(console.error)
-      .finally(() => setShowFarcasterQRModal(false));
+    farcasterSignerState.createSigner().catch(console.error);
   }, [farcasterSignerState, setShowFarcasterQRModal]);
 
   const handleModalClose = useCallback(() => {

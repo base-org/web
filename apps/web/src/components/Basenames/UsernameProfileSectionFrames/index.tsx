@@ -30,6 +30,7 @@ function SectionContent() {
   const { existingTextRecords, existingTextRecordsIsLoading } = useReadBaseEnsTextRecords({
     address: profileAddress,
     username: profileUsername,
+    refetchInterval: currentWalletIsProfileOwner ? 5000 : Infinity,
   });
   const homeframeUrlString = existingTextRecords[UsernameTextRecordKeys.Frame] ?? '';
   const frameUrls = homeframeUrlString.split('|').filter(Boolean);
