@@ -58,10 +58,41 @@ export default function FrameBuilder() {
   const emptyFrameUrl = !debouncedNewFrameUrl;
   const isValidFrameUrl = isValidUrl(debouncedNewFrameUrl);
 
-  const onFrameUrlChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => setNewFrameUrl(e.target.value),
-    [],
-  );
+  const [customFrameURL, setCustomFrameURL] = useState('');
+  const handleCustomFrameUrlChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setCustomFrameURL(e.target.value);
+    if (isValidUrl(e.target.value)) {
+      setNewFrameUrl(e.target.value);
+    }
+  }, []);
+  const [sliceSOFrameURL, setSliceSOFrameURL] = useState('');
+  const handleSliceSOFrameURLChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setSliceSOFrameURL(e.target.value);
+    if (isValidUrl(e.target.value)) {
+      setNewFrameUrl(e.target.value);
+    }
+  }, []);
+  const [hypersubXYZFrameURL, setHypersubXYZFrameURL] = useState('');
+  const handleHypersubXYZFrameURLChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setHypersubXYZFrameURL(e.target.value);
+    if (isValidUrl(e.target.value)) {
+      setNewFrameUrl(e.target.value);
+    }
+  }, []);
+  const [highlightXYZFrameURL, setHighlightXYZFrameURL] = useState('');
+  const handleHighlightXYZFrameURLChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setHighlightXYZFrameURL(e.target.value);
+    if (isValidUrl(e.target.value)) {
+      setNewFrameUrl(e.target.value);
+    }
+  }, []);
+  const [eventsXYZFrameURL, setEventsXYZFrameURL] = useState('');
+  const handleEventsXYZFrameURLChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setEventsXYZFrameURL(e.target.value);
+    if (isValidUrl(e.target.value)) {
+      setNewFrameUrl(e.target.value);
+    }
+  }, []);
 
   const { pendingFrameChange, setFrameRecord } = useFrameContext();
 
@@ -175,8 +206,8 @@ export default function FrameBuilder() {
         </ol>
         <Input
           placeholder="https://"
-          value={newFrameUrl}
-          onChange={onFrameUrlChange}
+          value={sliceSOFrameURL}
+          onChange={handleSliceSOFrameURLChange}
           type="text"
           className="mr-3 mt-3 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
         />
@@ -203,8 +234,8 @@ export default function FrameBuilder() {
         </ol>
         <Input
           placeholder="https://"
-          value={newFrameUrl}
-          onChange={onFrameUrlChange}
+          value={hypersubXYZFrameURL}
+          onChange={handleHypersubXYZFrameURLChange}
           type="text"
           className="mr-3 mt-3 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
         />
@@ -231,8 +262,8 @@ export default function FrameBuilder() {
         </ol>
         <Input
           placeholder="https://"
-          value={newFrameUrl}
-          onChange={onFrameUrlChange}
+          value={highlightXYZFrameURL}
+          onChange={handleHighlightXYZFrameURLChange}
           type="text"
           className="mr-3 mt-3 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
         />
@@ -285,8 +316,8 @@ export default function FrameBuilder() {
         </ol>
         <Input
           placeholder="https://"
-          value={newFrameUrl}
-          onChange={onFrameUrlChange}
+          value={eventsXYZFrameURL}
+          onChange={handleEventsXYZFrameURLChange}
           type="text"
           className="mr-3 mt-3 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
         />
@@ -298,8 +329,8 @@ export default function FrameBuilder() {
       >
         <Input
           placeholder="https://"
-          value={newFrameUrl}
-          onChange={onFrameUrlChange}
+          value={customFrameURL}
+          onChange={handleCustomFrameUrlChange}
           type="text"
           className="mr-3 mt-1 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
         />
