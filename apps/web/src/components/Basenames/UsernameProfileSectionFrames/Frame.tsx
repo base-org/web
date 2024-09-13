@@ -6,12 +6,14 @@ import {
   components,
   theme,
 } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FrameTheme';
+import cn from 'classnames';
 import { useMemo } from 'react';
 
 type FrameProps = {
   url: string;
+  className?: string;
 };
-export default function Frame({ url }: FrameProps) {
+export default function Frame({ url, className }: FrameProps) {
   const { frameConfig, farcasterSignerState, anonSignerState } = useFrameContext();
   const queryClient = useQueryClient();
 
@@ -60,5 +62,13 @@ export default function Frame({ url }: FrameProps) {
     [farcasterFrameState, openFrameState, openFrameWorks],
   );
 
-  return <FrameUI frameState={frameState} theme={theme} components={components} />;
+  const aggregatedTheme = {
+    ...theme,
+    Root: {
+      ...theme.Root,
+      className: cn(theme.Root?.className, className),
+    },
+  };
+
+  return <FrameUI frameState={frameState} theme={aggregatedTheme} components={components} />;
 }

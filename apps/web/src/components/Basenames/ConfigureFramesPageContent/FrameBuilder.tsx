@@ -118,6 +118,7 @@ export default function FrameBuilder() {
         context: 'paycaster.co',
       });
       setNewFrameUrl(`https://app.paycaster.co/api/frames/users/${basename}`);
+      handleNextStep();
     } else {
       setNewFrameUrl('');
     }
@@ -129,6 +130,7 @@ export default function FrameBuilder() {
         context: 'social-dex',
       });
       setNewFrameUrl(`https://social-dex-frontend.vercel.app/api/buy/ticker/${swapTokenSymbol}`);
+      handleNextStep();
     } else {
       setNewFrameUrl('');
     }
@@ -243,6 +245,16 @@ export default function FrameBuilder() {
           type="text"
           className="mr-3 mt-3 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
         />
+        <Button
+          rounded
+          variant={ButtonVariants.Black}
+          size={ButtonSizes.Small}
+          className="mx-auto mt-2 md:hidden"
+          onClick={handleNextStep}
+          disabled={emptyFrameUrl || !isValidFrameUrl}
+        >
+          Show Preview
+        </Button>
       </SuggestionCard>
       <SuggestionCard
         handleTriggerClick={() =>
@@ -274,6 +286,16 @@ export default function FrameBuilder() {
           type="text"
           className="mr-3 mt-3 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
         />
+        <Button
+          rounded
+          variant={ButtonVariants.Black}
+          size={ButtonSizes.Small}
+          className="mx-auto mt-2 md:hidden"
+          onClick={handleNextStep}
+          disabled={emptyFrameUrl || !isValidFrameUrl}
+        >
+          Show Preview
+        </Button>
       </SuggestionCard>
       <SuggestionCard
         handleTriggerClick={() =>
@@ -305,6 +327,16 @@ export default function FrameBuilder() {
           type="text"
           className="mr-3 mt-3 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
         />
+        <Button
+          rounded
+          variant={ButtonVariants.Black}
+          size={ButtonSizes.Small}
+          className="mx-auto mt-2 md:hidden"
+          onClick={handleNextStep}
+          disabled={emptyFrameUrl || !isValidFrameUrl}
+        >
+          Show Preview
+        </Button>
       </SuggestionCard>
       <SuggestionCard
         handleTriggerClick={() =>
@@ -317,16 +349,18 @@ export default function FrameBuilder() {
         <p className="text-sm text-palette-foreground">
           Enter the token symbol of the token you want others to buy from your profile
         </p>
-        <div className="mt-3 flex flex-row gap-4">
+        <div className="mt-3 flex flex-row gap-2 lg:gap-4">
           <Input
             placeholder="token symbol (example: USDC)"
             value={swapTokenSymbol}
             onChange={handleSwapTokenSymbolChange}
             type="text"
-            className="flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
+            className="flex-grow rounded-xl border border-palette-line/20 px-3 py-2 md:max-w-[180px] lg:max-w-full"
           />
           <Button
             rounded
+            disabled={!swapTokenSymbol}
+            className="flex grow items-center justify-center md:max-w-[120px]"
             variant={ButtonVariants.Black}
             size={ButtonSizes.Tiny}
             onClick={handleSwapPreviewClick}
@@ -365,6 +399,16 @@ export default function FrameBuilder() {
           type="text"
           className="mr-3 mt-3 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
         />
+        <Button
+          rounded
+          variant={ButtonVariants.Black}
+          size={ButtonSizes.Small}
+          className="mx-auto mt-2 md:hidden"
+          onClick={handleNextStep}
+          disabled={emptyFrameUrl || !isValidFrameUrl}
+        >
+          Show Preview
+        </Button>
       </SuggestionCard>
       <SuggestionCard
         handleTriggerClick={() =>
@@ -381,6 +425,16 @@ export default function FrameBuilder() {
           type="text"
           className="mr-3 mt-1 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
         />
+        <Button
+          rounded
+          variant={ButtonVariants.Black}
+          size={ButtonSizes.Small}
+          className="mx-auto mt-2 md:hidden"
+          onClick={handleNextStep}
+          disabled={emptyFrameUrl || !isValidFrameUrl}
+        >
+          Show Preview
+        </Button>
       </SuggestionCard>
     </>
   );
@@ -451,15 +505,6 @@ export default function FrameBuilder() {
         >
           {suggestionCards}
         </Accordion.Root>
-        <Button
-          rounded
-          variant={ButtonVariants.Black}
-          className="mx-auto mt-4"
-          onClick={handleNextStep}
-          disabled={emptyFrameUrl || !isValidFrameUrl}
-        >
-          Preview
-        </Button>
       </>
     ),
     preview: (
