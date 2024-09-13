@@ -1,7 +1,8 @@
 'use client';
 
+import { isDevelopment } from 'libs/base-ui/constants';
 import logEvent, { ActionType, AnalyticsEventImportance, CCAEventData } from '../utils/logEvent';
-import { ReactNode, createContext, useCallback, useContext, useMemo } from 'react';
+import React, { ReactNode, createContext, useCallback, useContext, useMemo } from 'react';
 
 export type AnalyticsContextProps = {
   logEventWithContext: (eventName: string, action: ActionType, eventData?: CCAEventData) => void;
@@ -36,6 +37,18 @@ export default function AnalyticsProvider({ children, context }: AnalyticsProvid
     (eventName: string, action: ActionType, eventData?: CCAEventData) => {
       const sanitizedEventName = eventName.toLocaleLowerCase();
       if (typeof window === 'undefined') return;
+
+      if (isDevelopment) {
+        return console.log('\nlogEventWithContext: \n', {
+          eventName,
+          sanitizedEventName,
+          action,
+          fullContext,
+          page_path: window.location.pathname,
+          ...eventData,
+        });
+      }
+
       logEvent(
         sanitizedEventName, // TODO: Do we want context here?
         {

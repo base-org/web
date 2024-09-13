@@ -77,6 +77,8 @@ const contentSecurityPolicy = {
     ccaDomain,
     ccaLiteDomains,
     walletconnectDomains,
+    'https://fonts.googleapis.com', // OCK styles loads google fonts via CSS
+    'https://fonts.gstatic.com/', // OCK styles loads google fonts via CSS
   ],
   'worker-src': ["'self'", 'blob:'],
   'connect-src': [

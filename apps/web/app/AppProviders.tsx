@@ -109,14 +109,20 @@ export default function AppProviders({ children }: AppProvidersProps) {
     [],
   );
 
+  const handleCookieManagerLog = useCallback(
+    (str: string, options: Record<string, unknown> | undefined) => logger.info(str, options),
+    [],
+  );
+
   useSprig(sprigEnvironmentId);
+
   return (
     <ErrorsProvider context="web">
       <CookieManagerProvider
         projectName="base_web"
         locale="en"
         region={Region.DEFAULT}
-        log={(str, options) => logger.info(str, options)}
+        log={handleCookieManagerLog}
         onError={handleLogError}
         onPreferenceChange={setTrackingPreference}
         config={cookieManagerConfig}
