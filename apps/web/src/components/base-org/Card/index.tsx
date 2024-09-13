@@ -1,6 +1,7 @@
 'use client';
 
-import React, { CSSProperties, useEffect, useRef } from 'react';
+import { useCards } from 'apps/web/src/components/base-org/Card/context';
+import React, { CSSProperties, useEffect, useId, useRef } from 'react';
 
 type HoverShimmerProps = {
   children: React.ReactNode;
@@ -19,36 +20,13 @@ export default function Card({
   const blobRef = useRef<HTMLDivElement>(null);
   const fakeBlobRef = useRef<HTMLDivElement>(null);
 
-  // Note: This will add an event for every card on the page.
-  //       If this leads to performance issue, consider a context / one event
+  const { registerCard, unregisterCard } = useCards();
+  const id = useId();
+
   useEffect(() => {
-    const handleMouseMove = (ev: MouseEvent) => {
-      if (blobRef.current && fakeBlobRef.current) {
-        const rec = fakeBlobRef.current.getBoundingClientRect();
-
-        blobRef.current.animate(
-          [
-            {
-              transform: `translate(${ev.clientX - rec.left - rec.width / 2}px,${
-                ev.clientY - rec.top - rec.height / 2
-              }px)`,
-            },
-          ],
-          {
-            duration: 300,
-            fill: 'forwards',
-          },
-        );
-        blobRef.current.classList.remove('opacity-0');
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  });
+    registerCard(id, { blobRef, fakeBlobRef });
+    return () => unregisterCard(id);
+  }, [registerCard, unregisterCard, id]);
 
   /* 
     Shimmer / Tailwind integration notes:
