@@ -14,12 +14,14 @@ import {
 } from '@frames.js/render/identity/farcaster';
 import { useFrame } from '@frames.js/render/use-frame';
 import { useConnectModal } from '@rainbow-me/rainbowkit';
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import useBasenameChain, { isBasenameSupportedChain } from 'apps/web/src/hooks/useBasenameChain';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import { namehash } from 'viem';
 import { useAccount, useChainId, useConfig, useWriteContract } from 'wagmi';
@@ -75,7 +77,7 @@ type FrameProviderProps = {
 
 export function FrameProvider({ children }: FrameProviderProps) {
   const [showFarcasterQRModal, setShowFarcasterQRModal] = useState(false);
-
+  const { logEventWithContext } = useAnalytics();
   const { address } = useAccount();
   const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
   const { existingTextRecords, refetchExistingTextRecords } = useReadBaseEnsTextRecords({
@@ -93,6 +95,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
   const farcasterSignerState = useFarcasterIdentity({
     signerUrl: '/frames/signer',
     onMissingIdentity() {
+      logEventWithContext('basename_profile_frame_farcaster_sign_in_rendered', ActionType.render);
       setShowFarcasterQRModal(true);
     },
   });
@@ -101,6 +104,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
   const config = useConfig();
   const { openConnectModal } = useConnectModal();
   const [frameInteractionError, setFrameInteractionError] = useState('');
+
   const onTransaction: OnTransactionFunc = useCallback(
     async ({ transactionData }) => {
       if (!address) {
@@ -124,11 +128,16 @@ export function FrameProvider({ children }: FrameProviderProps) {
           data: params.data,
           value: BigInt(params.value ?? 0),
         });
+        logEventWithContext('basename_profile_frame_transacted', ActionType.process, {
+          context: `value: ${params.value}`,
+        });
         return transactionId;
       } catch (error) {
         if (error instanceof InvalidChainIdError) {
           setFrameInteractionError('Invalid chain id');
+          logEventWithContext('basename_profile_frame_invalid_chain_id', ActionType.error);
         } else if (error instanceof CouldNotChangeChainError) {
+          logEventWithContext('basename_profile_frame_could_not_change_chain', ActionType.error);
           setFrameInteractionError(`Must switch chain to ${requestedChainId}`);
         } else {
           setFrameInteractionError('Error sending transaction');

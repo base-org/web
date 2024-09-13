@@ -17,6 +17,8 @@ import Link from 'next/link';
 import { useCallback } from 'react';
 import cornerGarnish from './corner-garnish.svg';
 import frameIcon from './frame-icon.svg';
+import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
 
 function SectionContent() {
   const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
@@ -32,6 +34,11 @@ function SectionContent() {
   const homeframeUrlString = existingTextRecords[UsernameTextRecordKeys.Frame] ?? '';
   const frameUrls = homeframeUrlString.split('|').filter(Boolean);
 
+  const { logEventWithContext } = useAnalytics();
+  const handleAddFrameLinkClick = useCallback(() => {
+    logEventWithContext('basename_profile_frame_try_now_clicked', ActionType.click);
+  }, [logEventWithContext]);
+
   if (currentWalletIsProfileOwner && frameUrls.length === 0 && !existingTextRecordsIsLoading) {
     return (
       <section className="relative flex flex-row-reverse items-center justify-between gap-0 rounded-xl border border-palette-line/20 pb-5 pl-5 pt-5 lg:flex-row lg:justify-start lg:gap-2 lg:pb-0 lg:pl-1 lg:pr-6 lg:pt-0">
@@ -42,6 +49,7 @@ function SectionContent() {
             Add fun and interactive experiences to your profile with a frame.
           </p>
           <Link
+            onClick={handleAddFrameLinkClick}
             href={`/name/${profileUsername}/configure-frames`}
             className="rounded-full bg-illoblack px-6 py-2 text-white xl:hidden"
           >
@@ -49,6 +57,7 @@ function SectionContent() {
           </Link>
         </div>
         <Link
+          onClick={handleAddFrameLinkClick}
           href={`/name/${profileUsername}/configure-frames`}
           className="hidden rounded-full bg-illoblack px-9 py-3 text-white xl:block"
         >
@@ -69,6 +78,7 @@ function SectionContent() {
         <UsernameProfileSectionTitle title="Frames" />
         {currentWalletIsProfileOwner && (
           <Link
+            onClick={handleAddFrameLinkClick}
             className="text-sm text-palette-foregroundMuted"
             href={`/name/${profileUsername}/configure-frames`}
           >

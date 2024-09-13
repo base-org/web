@@ -1,7 +1,9 @@
+/* eslint-disable react-perf/jsx-no-new-function-as-prop */
 'use client';
 import { ArrowLeftIcon } from '@heroicons/react/16/solid';
 import { PlusIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
 import * as Accordion from '@radix-ui/react-accordion';
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Frame';
@@ -11,6 +13,7 @@ import Input from 'apps/web/src/components/Input';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { isValidUrl } from 'apps/web/src/utils/urls';
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
@@ -54,11 +57,15 @@ export default function FrameBuilder() {
   }, []);
   const emptyFrameUrl = !debouncedNewFrameUrl;
   const isValidFrameUrl = isValidUrl(debouncedNewFrameUrl);
+  const { logEventWithContext } = useAnalytics();
 
   const [customFrameURL, setCustomFrameURL] = useState('');
   const handleCustomFrameUrlChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setCustomFrameURL(e.target.value);
     if (isValidUrl(e.target.value)) {
+      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
+        context: e.target.value,
+      });
       setNewFrameUrl(e.target.value);
     }
   }, []);
@@ -66,6 +73,9 @@ export default function FrameBuilder() {
   const handleSliceSOFrameURLChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setSliceSOFrameURL(e.target.value);
     if (isValidUrl(e.target.value)) {
+      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
+        context: 'slice.so',
+      });
       setNewFrameUrl(e.target.value);
     }
   }, []);
@@ -73,6 +83,9 @@ export default function FrameBuilder() {
   const handleHypersubXYZFrameURLChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setHypersubXYZFrameURL(e.target.value);
     if (isValidUrl(e.target.value)) {
+      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
+        context: 'hypersub.xyz',
+      });
       setNewFrameUrl(e.target.value);
     }
   }, []);
@@ -80,6 +93,9 @@ export default function FrameBuilder() {
   const handleHighlightXYZFrameURLChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setHighlightXYZFrameURL(e.target.value);
     if (isValidUrl(e.target.value)) {
+      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
+        context: 'highlight.xyz',
+      });
       setNewFrameUrl(e.target.value);
     }
   }, []);
@@ -87,6 +103,9 @@ export default function FrameBuilder() {
   const handleEventsXYZFrameURLChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setEventsXYZFrameURL(e.target.value);
     if (isValidUrl(e.target.value)) {
+      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
+        context: 'events.xyz',
+      });
       setNewFrameUrl(e.target.value);
     }
   }, []);
@@ -95,6 +114,9 @@ export default function FrameBuilder() {
 
   const handlePaycasterClick = useCallback(() => {
     if (basename) {
+      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
+        context: 'paycaster.co',
+      });
       setNewFrameUrl(`https://app.paycaster.co/api/frames/users/${basename}`);
     } else {
       setNewFrameUrl('');
@@ -103,6 +125,9 @@ export default function FrameBuilder() {
 
   const handleSwapPreviewClick = useCallback(() => {
     if (swapTokenSymbol) {
+      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
+        context: 'social-dex',
+      });
       setNewFrameUrl(`https://social-dex-frontend.vercel.app/api/buy/ticker/${swapTokenSymbol}`);
     } else {
       setNewFrameUrl('');
@@ -121,10 +146,13 @@ export default function FrameBuilder() {
     if (!newFrameUrl) return;
     setFrameRecord(homeframeUrlString ? `${homeframeUrlString}|${newFrameUrl}` : newFrameUrl)
       .then(() => {
+        logEventWithContext('basename_profile_frame_posted', ActionType.click, {
+          context: newFrameUrl,
+        });
         router.push(`/name/${basename}`);
       })
       .catch(console.warn);
-  }, [newFrameUrl, setFrameRecord, homeframeUrlString, router, basename]);
+  }, [newFrameUrl, setFrameRecord, homeframeUrlString, logEventWithContext, router, basename]);
 
   // corresponds to tailwind's md: rule
   const isDesktop = useMediaQuery('(min-width: 768px)');
@@ -135,6 +163,9 @@ export default function FrameBuilder() {
   const suggestionCards = (
     <>
       <SuggestionCard
+        handleTriggerClick={() =>
+          logEventWithContext('basename_profile_frame_pay_opened', ActionType.click)
+        }
         imgData={payouts as StaticImageData}
         title="Pay me"
         description="Get paid with Paycaster."
@@ -163,6 +194,7 @@ export default function FrameBuilder() {
         </div>
       </SuggestionCard>
       {/* <SuggestionCard
+        handleTriggerClick={() => logEventWithContext('basename_profile_frame_nominate_opened', ActionType.click)}
         imgData={starActive as StaticImageData}
         title="Nominate me"
         description="Get nominated with build.top"
@@ -182,6 +214,9 @@ export default function FrameBuilder() {
         </div>
       </SuggestionCard> */}
       <SuggestionCard
+        handleTriggerClick={() =>
+          logEventWithContext('basename_profile_frame_buy_opened', ActionType.click)
+        }
         icon={<ShoppingCartIcon width={24} height={24} fill="#3CC28A" />}
         title="Buy from me"
         description="Sell products from your Slice shop"
@@ -210,6 +245,9 @@ export default function FrameBuilder() {
         />
       </SuggestionCard>
       <SuggestionCard
+        handleTriggerClick={() =>
+          logEventWithContext('basename_profile_frame_sub_opened', ActionType.click)
+        }
         imgData={nftProduct as StaticImageData}
         title="Subscribe to me"
         description="Get subscriptions to your Hypersub"
@@ -238,6 +276,9 @@ export default function FrameBuilder() {
         />
       </SuggestionCard>
       <SuggestionCard
+        handleTriggerClick={() =>
+          logEventWithContext('basename_profile_frame_mint_opened', ActionType.click)
+        }
         imgData={currencies as StaticImageData}
         title="Mint me"
         description="Mint your NFT on Highlight"
@@ -265,7 +306,14 @@ export default function FrameBuilder() {
           className="mr-3 mt-3 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
         />
       </SuggestionCard>
-      <SuggestionCard imgData={swap as StaticImageData} title="Swap me" description="Buy my tokens">
+      <SuggestionCard
+        handleTriggerClick={() =>
+          logEventWithContext('basename_profile_frame_swap_opened', ActionType.click)
+        }
+        imgData={swap as StaticImageData}
+        title="Swap me"
+        description="Buy my tokens"
+      >
         <p className="text-sm text-palette-foreground">
           Enter the token symbol of the token you want others to buy from your profile
         </p>
@@ -288,6 +336,9 @@ export default function FrameBuilder() {
         </div>
       </SuggestionCard>
       <SuggestionCard
+        handleTriggerClick={() =>
+          logEventWithContext('basename_profile_frame_rsvp_opened', ActionType.click)
+        }
         imgData={email as StaticImageData}
         title="RSVP me"
         description="Get RSVPs to your events on events.xyz"
@@ -316,6 +367,9 @@ export default function FrameBuilder() {
         />
       </SuggestionCard>
       <SuggestionCard
+        handleTriggerClick={() =>
+          logEventWithContext('basename_profile_frame_custom_opened', ActionType.click)
+        }
         icon={<PlusIcon width="24px" />}
         title="Add custom frame"
         description="Add a custom link to your frame"

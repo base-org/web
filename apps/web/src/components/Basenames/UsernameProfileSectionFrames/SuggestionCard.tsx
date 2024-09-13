@@ -9,7 +9,7 @@ type SuggestionCardProps = PropsWithChildren<{
   icon?: JSX.Element;
   title: string;
   description: string;
-  onClick?: () => void;
+  handleTriggerClick?: () => void;
 }>;
 
 export function SuggestionCard({
@@ -18,6 +18,7 @@ export function SuggestionCard({
   title,
   description,
   children,
+  handleTriggerClick,
 }: SuggestionCardProps) {
   return (
     <Accordion.Item
@@ -25,7 +26,10 @@ export function SuggestionCard({
       className="border-b border-palette-line/20 last-of-type:border-transparent last-of-type:pb-0"
     >
       <Accordion.Header>
-        <Accordion.Trigger className="flex w-full cursor-pointer items-center justify-start gap-2 pb-3 pt-4 text-palette-foreground">
+        <Accordion.Trigger
+          className="flex w-full cursor-pointer items-center justify-start gap-2 pb-3 pt-4 text-palette-foreground"
+          onClick={handleTriggerClick}
+        >
           {icon ? icon : imgData ? <ImageAdaptive alt="menu option icon" src={imgData} /> : null}
           <p className="text-sm font-medium">{title}</p>
           <p className="text-sm text-palette-foregroundMuted">{description}</p>

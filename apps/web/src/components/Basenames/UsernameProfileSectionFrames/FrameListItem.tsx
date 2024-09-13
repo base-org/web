@@ -3,9 +3,11 @@
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
 import { TrashIcon } from '@heroicons/react/24/solid';
 import * as Popover from '@radix-ui/react-popover';
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Frame';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback } from 'react';
 
 function removeUrl(urls: string, urlSubstringToRemove: string): string {
@@ -17,11 +19,16 @@ function removeUrl(urls: string, urlSubstringToRemove: string): string {
 export default function FrameListItem({ url }: { url: string }) {
   const { frameUrlRecord, setFrameRecord } = useFrameContext();
   const { currentWalletIsProfileOwner } = useUsernameProfile();
+  const { logEventWithContext } = useAnalytics();
 
   const handleRemoveFrameClick = useCallback(() => {
     const newFrameUrlRecord = removeUrl(frameUrlRecord, url);
-    setFrameRecord(newFrameUrlRecord).catch(console.error);
-  }, [frameUrlRecord, setFrameRecord, url]);
+    setFrameRecord(newFrameUrlRecord)
+      .catch(console.error)
+      .finally(() => {
+        logEventWithContext('basename_profile_frame_removed', ActionType.click, { context: url });
+      });
+  }, [frameUrlRecord, logEventWithContext, setFrameRecord, url]);
 
   return (
     <div className="relative">
