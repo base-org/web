@@ -28,7 +28,7 @@ async function EcosystemHero() {
   const bottomKeys = generateKeys('bottom', 4);
 
   return (
-    <div className="flex w-full flex-col items-center bg-black pb-20 pt-20">
+    <div className="flex w-full flex-col items-center overflow-hidden bg-black pb-20 pt-20">
       <Container>
         <div className="flex w-full  flex-col items-center justify-between gap-12 py-20 md:flex-row">
           <div className="flex w-full w-full flex-col gap-8 md:max-w-lg">
@@ -43,7 +43,7 @@ async function EcosystemHero() {
               <Button variant={ButtonVariants.Secondary}>Submit your app</Button>
             </a>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col ">
             <div className="flex flex-shrink-0 justify-center gap-4">
               {topKeys.map((key, i) => (
                 <div key={key} className="w-[80px] md:w-[100px]">
