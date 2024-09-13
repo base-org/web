@@ -49,7 +49,10 @@ export default function CardsProvider({ children }: CardsProviderProps) {
   const [cards, setCards] = useState<Record<string, CardRef>>({});
 
   useEffect(() => {
-    const handleMouseMove = (ev: MouseEvent) => {
+    const handleInteraction = (ev: MouseEvent | TouchEvent) => {
+      const clientX = 'touches' in ev ? ev.touches[0].clientX : ev.clientX;
+      const clientY = 'touches' in ev ? ev.touches[0].clientY : ev.clientY;
+
       Object.values(cards).forEach(({ blobRef, fakeBlobRef }) => {
         if (blobRef.current && fakeBlobRef.current) {
           const rec = fakeBlobRef.current.getBoundingClientRect();
@@ -57,8 +60,8 @@ export default function CardsProvider({ children }: CardsProviderProps) {
           blobRef.current.animate(
             [
               {
-                transform: `translate(${ev.clientX - rec.left - rec.width / 2}px,${
-                  ev.clientY - rec.top - rec.height / 2
+                transform: `translate(${clientX - rec.left - rec.width / 2}px,${
+                  clientY - rec.top - rec.height / 2
                 }px)`,
               },
             ],
@@ -72,10 +75,12 @@ export default function CardsProvider({ children }: CardsProviderProps) {
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleInteraction);
+    window.addEventListener('touchmove', handleInteraction);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousemove', handleInteraction);
+      window.removeEventListener('touchmove', handleInteraction);
     };
   }, [cards]);
 
