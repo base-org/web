@@ -8,13 +8,13 @@ import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonSizes, ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 
 export function List({
-  selectedTag,
+  selectedTags,
   searchText,
   apps,
   showCount,
   setShowCount,
 }: {
-  selectedTag: string;
+  selectedTags: string[];
   searchText: string;
   apps: EcosystemApp[];
   showCount: number;
@@ -43,7 +43,7 @@ export function List({
         <div className="flex flex-col items-center gap-12">
           <ImageAdaptive src={ErrorImg} alt="No search results" />
           <span className="font-mono text-4xl text-white">
-            NO RESULTS FOR &ldquo;{searchText === '' ? selectedTag : searchText}
+            NO RESULTS FOR &ldquo;{searchText === '' ? selectedTags.join(', ') : searchText}
             &rdquo;
           </span>
           <span className="font-sans text-gray-muted">Try searching for another term</span>

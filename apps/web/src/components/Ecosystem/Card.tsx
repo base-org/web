@@ -1,6 +1,7 @@
 'use client';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 import Card from 'apps/web/src/components/base-org/Card';
+import Text from 'apps/web/src/components/base-org/typography/Text';
 
 type Props = {
   name: string;
@@ -16,7 +17,7 @@ function getNiceDomainDisplayFromUrl(url: string) {
 
 export default function EcosystemCard({ name, url, description, imageUrl, tags }: Props) {
   return (
-    <Card innerClassName="p-8">
+    <Card innerClassName="p-4 group/ecosystem-card">
       <a
         href={url}
         rel="noreferrer noopener"
@@ -24,7 +25,7 @@ export default function EcosystemCard({ name, url, description, imageUrl, tags }
         className="flex w-full flex-col justify-start gap-8"
       >
         <div className="flex flex-row justify-between">
-          <div className="relative h-[80px] w-[80px] overflow-hidden rounded-[3px]">
+          <div className="relative h-[80px] w-[80px] rounded-[3px]">
             <ImageWithLoading
               src={imageUrl}
               alt={`Logo of ${name}`}
@@ -32,9 +33,20 @@ export default function EcosystemCard({ name, url, description, imageUrl, tags }
               height={80}
               backgroundClassName="bg-black"
             />
+            <div className="absolute inset-0 h-full w-full blur-[2rem]">
+              <ImageWithLoading
+                src={imageUrl}
+                alt={`Logo of ${name}`}
+                width={80}
+                height={80}
+                backgroundClassName="bg-black"
+              />
+            </div>
           </div>
           <div className="flex h-6 flex-col justify-center rounded-[100px] bg-black px-2 py-1">
-            <span className="font-mono text-xs uppercase text-white">{tags[0]}</span>
+            <span className="rounded-full border border-white px-2 py-1 font-mono text-xs uppercase text-white">
+              {tags[0]}
+            </span>
           </div>
         </div>
         <div className="flex flex-col gap-4">
@@ -44,7 +56,7 @@ export default function EcosystemCard({ name, url, description, imageUrl, tags }
               {getNiceDomainDisplayFromUrl(url)}
             </span>
           </div>
-          <p className="ecosystem-card-description font-sans text-base text-white">{description}</p>
+          <Text className="opacity-80 group-hover/ecosystem-card:opacity-100">{description}</Text>
         </div>
       </a>
     </Card>

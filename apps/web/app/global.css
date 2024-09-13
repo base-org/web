@@ -45,14 +45,6 @@ body {
   overflow: hidden;
 }
 
-.ecosystem-card-description {
-  overflow: hidden;
-  word-wrap: break-word;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 8;
-  display: -webkit-box;
-}
-
 .animate-pause {
   animation-play-state: paused;
 }
