@@ -22,11 +22,11 @@ export const theme: FrameUITheme<StylingProps> = {
   },
   ButtonsContainer: {
     className:
-      'flex-1 w-full text-xs sm:text-sm flex sm:py-3 py-2 sm:px-7 px-2 justify-around bg-palette-positiveForeground gap-2 sm:gap-4',
+      'w-full text-xs sm:text-sm flex p-2 justify-around bg-palette-positiveForeground gap-2 sm:gap-4',
   },
   Button: {
     className:
-      'grow py-3 px-8 rounded-full bg-[#F3F3F3] text-palette-secondaryForeground font-medium transition-colors hover:bg-state-b-hovered max-h-[44px]',
+      'grow py-3 px-5 rounded-full bg-[#F3F3F3] text-palette-secondaryForeground font-medium transition-colors hover:bg-state-b-hovered min-h-[44px]',
   },
   ImageContainer: {
     className: 'flex border-0 overflow-hidden',
