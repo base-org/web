@@ -531,6 +531,12 @@ module.exports = {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
         },
+
+        progress: {
+          '0%': { width: '0%' },
+          '100%': { width: '100%' },
+        },
+
         wiggle: {
           '0%, 100%': { transform: 'rotate(-2deg)' },
           '50%': { transform: 'rotate(2deg)' },
@@ -563,6 +569,7 @@ module.exports = {
       },
       animation: {
         'slide-left': 'slide-left var(--animation-duration, 20s) linear infinite',
+        progress: 'progress 5s linear',
         wiggle: 'wiggle 3s linear infinite',
         bounce: 'bounce 1s ease-in-out infinite',
         slide: 'slide 1s ease-in-out infinite',
@@ -581,6 +588,11 @@ module.exports = {
         8: '8',
         9: '9',
       },
+    },
+  },
+  variants: {
+    extend: {
+      animation: ['group-hover'],
     },
   },
   plugins: [],
