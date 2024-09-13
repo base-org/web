@@ -26,7 +26,7 @@ export const theme: FrameUITheme<StylingProps> = {
   },
   Button: {
     className:
-      'grow py-3 px-5 rounded-full bg-[#F3F3F3] text-palette-secondaryForeground font-medium transition-colors hover:bg-state-b-hovered min-h-[44px]',
+      'text-sm grow py-3 px-5 rounded-full bg-[#F3F3F3] text-palette-secondaryForeground font-medium transition-colors hover:bg-state-b-hovered min-h-[44px]',
   },
   ImageContainer: {
     className: 'flex border-0 overflow-hidden',
