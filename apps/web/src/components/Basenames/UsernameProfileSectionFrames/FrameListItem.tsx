@@ -6,7 +6,6 @@ import * as Popover from '@radix-ui/react-popover';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Frame';
-import { Button, ButtonSizes } from 'apps/web/src/components/Button/Button';
 import { useCallback } from 'react';
 
 function removeUrl(urls: string, urlSubstringToRemove: string): string {
@@ -16,14 +15,9 @@ function removeUrl(urls: string, urlSubstringToRemove: string): string {
 }
 
 export default function FrameListItem({ url }: { url: string }) {
-  const { frameInteractionError, setFrameInteractionError, frameUrlRecord, setFrameRecord } =
-    useFrameContext();
+  const { frameUrlRecord, setFrameRecord } = useFrameContext();
   const { currentWalletIsProfileOwner } = useUsernameProfile();
 
-  const handleErrorClick = useCallback(
-    () => setFrameInteractionError(''),
-    [setFrameInteractionError],
-  );
   const handleRemoveFrameClick = useCallback(() => {
     const newFrameUrlRecord = removeUrl(frameUrlRecord, url);
     setFrameRecord(newFrameUrlRecord).catch(console.error);
@@ -61,15 +55,6 @@ export default function FrameListItem({ url }: { url: string }) {
         </Popover.Root>
       )}
       <Frame url={url} />
-      {frameInteractionError && (
-        <Button
-          size={ButtonSizes.Small}
-          onClick={handleErrorClick}
-          className="text-sm text-state-n-hovered"
-        >
-          {frameInteractionError}
-        </Button>
-      )}
     </div>
   );
 }

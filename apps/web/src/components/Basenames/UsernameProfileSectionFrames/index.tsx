@@ -1,20 +1,30 @@
 'use client';
 
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
-import { FrameProvider } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
+import {
+  FrameProvider,
+  useFrameContext,
+} from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import FarcasterAccountModal from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FarcasterAccountModal';
 import FrameListItem from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FrameListItem';
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
+import { Button, ButtonSizes } from 'apps/web/src/components/Button/Button';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { StaticImageData } from 'next/image';
 import Link from 'next/link';
+import { useCallback } from 'react';
 import cornerGarnish from './corner-garnish.svg';
 import frameIcon from './frame-icon.svg';
 
 function SectionContent() {
   const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
+  const { frameInteractionError, setFrameInteractionError } = useFrameContext();
+  const handleErrorClick = useCallback(
+    () => setFrameInteractionError(''),
+    [setFrameInteractionError],
+  );
   const { existingTextRecords, existingTextRecordsIsLoading } = useReadBaseEnsTextRecords({
     address: profileAddress,
     username: profileUsername,
@@ -66,6 +76,15 @@ function SectionContent() {
           </Link>
         )}
       </div>
+      {frameInteractionError && (
+        <Button
+          size={ButtonSizes.Small}
+          onClick={handleErrorClick}
+          className="text-sm text-state-n-hovered"
+        >
+          {frameInteractionError}
+        </Button>
+      )}
       <div className="grid grid-flow-row-dense auto-rows-min grid-cols-1 gap-4 p-4 xl:grid-cols-2">
         {frameUrls.map((url) => (
           <FrameListItem url={url} key={url} />

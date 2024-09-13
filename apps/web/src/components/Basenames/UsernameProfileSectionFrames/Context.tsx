@@ -108,10 +108,9 @@ export function FrameProvider({ children }: FrameProviderProps) {
         return null;
       }
 
+      const { params, chainId } = transactionData;
+      const requestedChainId = parseChainId(chainId);
       try {
-        const { params, chainId } = transactionData;
-        const requestedChainId = parseChainId(chainId);
-
         if (currentChainId !== requestedChainId) {
           await switchChain(config, {
             chainId: requestedChainId,
@@ -130,12 +129,12 @@ export function FrameProvider({ children }: FrameProviderProps) {
         if (error instanceof InvalidChainIdError) {
           setFrameInteractionError('Invalid chain id');
         } else if (error instanceof CouldNotChangeChainError) {
-          setFrameInteractionError('Could not change chain');
+          setFrameInteractionError(`Must switch chain to ${requestedChainId}`);
         } else {
           setFrameInteractionError('Error sending transaction');
         }
 
-        console.warn(error);
+        console.error(error);
 
         return null;
       }
