@@ -9,12 +9,13 @@ import { Transition } from '@headlessui/react';
 export default function TransactionsFeesSection() {
   const [showText, setShowText] = useState<boolean>(false);
   const [progress, setProgress] = useState(0);
+  const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const lastScrollY = useRef(0);
   const animationFrameId = useRef<number | null>(null);
 
   const updateProgress = useCallback(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef.current || !isInView) return;
 
     const rect = sectionRef.current.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
@@ -43,10 +44,34 @@ export default function TransactionsFeesSection() {
     } else if (newProgress < 0.99 && showText) {
       setShowText(false);
     }
-  }, [showText]);
+  }, [showText, isInView]);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.1, // Trigger when at least 10% of the section is visible
+      },
+    );
+
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => {
+      if (section) {
+        observer.unobserve(section);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
+      if (!isInView) return;
+
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
@@ -57,8 +82,10 @@ export default function TransactionsFeesSection() {
       }
     };
 
-    window.addEventListener('scroll', onScroll);
-    updateProgress(); // Initial call to set correct state on mount
+    if (isInView) {
+      window.addEventListener('scroll', onScroll);
+      updateProgress(); // Initial call to set correct state when coming into view
+    }
 
     return () => {
       window.removeEventListener('scroll', onScroll);
@@ -66,7 +93,7 @@ export default function TransactionsFeesSection() {
         cancelAnimationFrame(animationFrameId.current);
       }
     };
-  }, [updateProgress]);
+  }, [isInView, updateProgress]);
 
   return (
     <section ref={sectionRef}>
@@ -77,7 +104,7 @@ export default function TransactionsFeesSection() {
             <br /> below <span className="text-blue">one cent</span>
           </Title>
         </div>
-        <div className="flex w-full flex-row gap-4">
+        <div className="flex w-full flex-row gap-2 md:gap-4">
           <div className="w-full">
             <AnimatedfeeDots
               color="#656565"
