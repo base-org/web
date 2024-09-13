@@ -70,7 +70,7 @@ function IdentityState({ user, onLogout }: { user: FarcasterSigner; onLogout: ()
     farcasterSignerState.logout().catch(console.warn).finally(onLogout);
   }, [farcasterSignerState, onLogout]);
   if (user.status === 'pending_approval') {
-    return 'Sign in with Warpcast';
+    return <p className="flex items-center justify-center">Sign in with Warpcast</p>;
   }
   if (user.status === 'approved') {
     const farcasterIdentity = data?.users[0];
