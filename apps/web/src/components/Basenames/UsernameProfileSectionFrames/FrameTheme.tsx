@@ -18,7 +18,7 @@ export const theme: FrameUITheme<StylingProps> = {
   },
   Root: {
     className:
-      'flex flex-col rounded-lg items-center justify-center overflow-hidden bg-transparent relative border border-palette-line/20 min-h-[245px] min-w-[346px]',
+      'flex flex-col rounded-lg items-center justify-center overflow-hidden bg-transparent relative border border-palette-line/20 min-h-[245px]',
   },
   ButtonsContainer: {
     className:

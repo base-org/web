@@ -16,18 +16,15 @@ import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { ChangeEvent, useCallback, useState } from 'react';
 import { useDebounceValue, useMediaQuery } from 'usehooks-ts';
-import { useAccount } from 'wagmi';
 import currencies from './ui/currencies.svg';
 import email from './ui/email.svg';
 import nftProduct from './ui/nftProduct.svg';
 import payouts from './ui/payouts.svg';
 import previewBackground from './ui/preview-background.svg';
 import emptyPreviewFrame from './ui/preview-frame.svg';
-import starActive from './ui/starActive.svg';
 import swap from './ui/swap.svg';
 
 export default function FrameBuilder() {
-  const { address } = useAccount();
   const params = useParams();
   const router = useRouter();
   const basename = params?.username ?? '';
@@ -112,13 +109,13 @@ export default function FrameBuilder() {
     }
   }, [swapTokenSymbol]);
 
-  const handleBuildTopClick = useCallback(() => {
-    if (address) {
-      setNewFrameUrl(`https://build.top/nominate/${address}`);
-    } else {
-      setNewFrameUrl('');
-    }
-  }, [address]);
+  // const handleBuildTopClick = useCallback(() => {
+  //   if (address) {
+  //     setNewFrameUrl(`https://build.top/nominate/${address}`);
+  //   } else {
+  //     setNewFrameUrl('');
+  //   }
+  // }, [address]);
 
   const handleAddFrameClick = useCallback(() => {
     if (!newFrameUrl) return;
@@ -165,7 +162,7 @@ export default function FrameBuilder() {
           </Button>
         </div>
       </SuggestionCard>
-      <SuggestionCard
+      {/* <SuggestionCard
         imgData={starActive as StaticImageData}
         title="Nominate me"
         description="Get nominated with build.top"
@@ -183,7 +180,7 @@ export default function FrameBuilder() {
             Show preview
           </Button>
         </div>
-      </SuggestionCard>
+      </SuggestionCard> */}
       <SuggestionCard
         icon={<ShoppingCartIcon width={24} height={24} fill="#3CC28A" />}
         title="Buy from me"
@@ -268,17 +265,13 @@ export default function FrameBuilder() {
           className="mr-3 mt-3 w-full flex-grow rounded-xl border border-palette-line/20 px-3 py-2"
         />
       </SuggestionCard>
-      <SuggestionCard
-        imgData={swap as StaticImageData}
-        title="Swap with me"
-        description="Buy my bags"
-      >
+      <SuggestionCard imgData={swap as StaticImageData} title="Swap me" description="Buy my tokens">
         <p className="text-sm text-palette-foreground">
-          Add the symbol of the token you want people to buy
+          Enter the token symbol of the token you want others to buy from your profile
         </p>
         <div className="mt-3 flex flex-row gap-4">
           <Input
-            placeholder="token symbol"
+            placeholder="token symbol (example: USDC)"
             value={swapTokenSymbol}
             onChange={handleSwapTokenSymbolChange}
             type="text"

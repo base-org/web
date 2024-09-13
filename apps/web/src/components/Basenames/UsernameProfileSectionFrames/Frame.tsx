@@ -33,12 +33,14 @@ export default function Frame({ url }: FrameProps) {
     if (!currentFrameStackItem) return false;
     const status = currentFrameStackItem.status;
     // console.log('jf openFrameWorks:status', status);
-    if (status !== 'done') return false;
-    // console.log(
-    //   'jf openFrameWorks:currentFrameStackItem.frameResult',
-    //   currentFrameStackItem.frameResult,
-    // );
-    return currentFrameStackItem.frameResult.status !== 'failure';
+    if (status === 'done' && currentFrameStackItem.frameResult.frame.accepts) {
+      return currentFrameStackItem.frameResult.frame.accepts.some(
+        (element) => element.id === 'anonymous',
+      );
+      // return currentFrameStackItem.frameResult.status !== 'failure';
+    } else {
+      return false;
+    }
   }, [openFrameState]);
 
   // const farcasterFrameWorks = useMemo(() => {

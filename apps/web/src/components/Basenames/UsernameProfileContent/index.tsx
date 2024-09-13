@@ -7,7 +7,7 @@ import { USERNAMES_PINNED_CASTS_ENABLED } from 'apps/web/src/utils/usernames';
 
 export default function UsernameProfileContent() {
   return (
-    <div className="flex flex-col gap-4 rounded-2xl border border-[#EBEBEB] p-4 shadow-lg sm:gap-8 sm:p-8 md:gap-12 md:p-12">
+    <div className="flex flex-col gap-4 rounded-2xl border border-[#EBEBEB] p-4 shadow-lg sm:gap-8 sm:p-8 md:gap-10 md:p-10 lg:gap-12 lg:p-12">
       <UsernameProfileSectionFrames />
       {USERNAMES_PINNED_CASTS_ENABLED && <UsernameProfileCasts />}
       <BadgeContextProvider>
