@@ -117,37 +117,12 @@ export default function Scene() {
         <Pointer />
         {objectNames.map((name, index) => (
           <Connector key={name} position={unitSpherePositions[index]} accent={undefined}>
-            <Model geometry={glb.nodes[name].children[0].geometry}>
-              <MeshTransmissionMaterial
-                clearcoat={1}
-                thickness={0.1}
-                anisotropicBlur={0.1}
-                chromaticAberration={0.1}
-                samples={8}
-                resolution={512}
-                distortionScale={0}
-                temporalDistortion={0}
-              />
-            </Model>
+            <Model geometry={glb.nodes[name].children[0].geometry} />
           </Connector>
         ))}
         {/* {connectors.map((props, i) => (
           <Connector key={i} {...props} />
         ))} */}
-        <Connector position={[0, 0, 0]} accent={undefined}>
-          <Model geometry={glb.nodes.Base_Icon.children[0].geometry}>
-            <MeshTransmissionMaterial
-              clearcoat={1}
-              thickness={0.1}
-              anisotropicBlur={0.1}
-              chromaticAberration={0.1}
-              samples={8}
-              resolution={512}
-              distortionScale={0}
-              temporalDistortion={0}
-            />
-          </Model>
-        </Connector>
       </Physics>
       <EffectComposer disableNormalPass multisampling={8}>
         <N8AO distanceFalloff={1} aoRadius={1} intensity={4} />
@@ -243,7 +218,7 @@ function Pointer({ vec = new THREE.Vector3() }) {
 
 function Model({
   children,
-  color = 'white',
+  color = 'blue',
   roughness = 0.3,
   geometry,
 }: {
