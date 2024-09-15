@@ -42,4 +42,4 @@ same implementation as the L1; you can read more about it
 
 For additional details about fee calculation on Base, please refer to the
 [op-stack developer
-documentation](https://community.optimism.io/docs/developers/build/transaction-fees/).
+documentation](https://docs.optimism.io/stack/transactions/fees).
