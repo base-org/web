@@ -90,7 +90,7 @@ export function ConnectWalletButton({
     );
   }, [openConnectModal]);
 
-  const userAddressClasses = classNames('text-lg font-display', {
+  const userAddressClasses = classNames('text-lg font-display hidden lg:inline-block', {
     'text-white': connectWalletButtonVariant === ConnectWalletButtonVariants.BaseOrg,
     'text-black': connectWalletButtonVariant === ConnectWalletButtonVariants.Basename,
   });
