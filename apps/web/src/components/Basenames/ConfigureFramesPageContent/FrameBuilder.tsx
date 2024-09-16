@@ -26,6 +26,7 @@ import payouts from './ui/payouts.svg';
 import previewBackground from './ui/preview-background.svg';
 import emptyPreviewFrame from './ui/preview-frame.svg';
 import swap from './ui/swap.svg';
+import starActive from './ui/starActive.svg';
 
 export default function FrameBuilder() {
   const params = useParams();
@@ -151,13 +152,17 @@ export default function FrameBuilder() {
     }
   }, [swapTokenSymbol, handleNextStep, logEventWithContext]);
 
-  // const handleBuildTopClick = useCallback(() => {
-  //   if (address) {
-  //     setNewFrameUrl(`https://build.top/nominate/${address}`);
-  //   } else {
-  //     setNewFrameUrl('');
-  //   }
-  // }, [address]);
+  const handleBuildTopClick = useCallback(() => {
+    if (profileAddress) {
+      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
+        context: 'social-dex',
+      });
+      setNewFrameUrl(`https://build.top/nominate/${profileAddress}`);
+      handleNextStep();
+    } else {
+      setNewFrameUrl('');
+    }
+  }, [profileAddress]);
 
   const handleAddFrameClick = useCallback(() => {
     if (!newFrameUrl) return;
@@ -210,8 +215,10 @@ export default function FrameBuilder() {
           </Button>
         </div>
       </SuggestionCard>
-      {/* <SuggestionCard
-        handleTriggerClick={() => logEventWithContext('basename_profile_frame_nominate_opened', ActionType.click)}
+      <SuggestionCard
+        handleTriggerClick={() =>
+          logEventWithContext('basename_profile_frame_nominate_opened', ActionType.click)
+        }
         imgData={starActive as StaticImageData}
         title="Nominate me"
         description="Get nominated with build.top"
@@ -229,7 +236,7 @@ export default function FrameBuilder() {
             Show preview
           </Button>
         </div>
-      </SuggestionCard> */}
+      </SuggestionCard>
       <SuggestionCard
         handleTriggerClick={() =>
           logEventWithContext('basename_profile_frame_buy_opened', ActionType.click)

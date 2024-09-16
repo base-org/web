@@ -11,7 +11,7 @@ export async function redirectIfNotNameOwner(username: BaseName) {
   const editor = await getBasenameEditor(username);
   const owner = await getBasenameOwner(username);
 
-  // Domain does have address or editor (ie: doesn't exist)
+  // Domain does not have address or editor (ie: doesn't exist)
   if (!address || !editor || !owner) {
     redirect(`/name/not-found?name=${username}`);
   }
