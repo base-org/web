@@ -60,55 +60,70 @@ export default function FrameBuilder() {
   const { logEventWithContext } = useAnalytics();
 
   const [customFrameURL, setCustomFrameURL] = useState('');
-  const handleCustomFrameUrlChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setCustomFrameURL(e.target.value);
-    if (isValidUrl(e.target.value)) {
-      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
-        context: e.target.value,
-      });
-      setNewFrameUrl(e.target.value);
-    }
-  }, []);
+  const handleCustomFrameUrlChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setCustomFrameURL(e.target.value);
+      if (isValidUrl(e.target.value)) {
+        logEventWithContext('basename_profile_frame_preview', ActionType.click, {
+          context: e.target.value,
+        });
+        setNewFrameUrl(e.target.value);
+      }
+    },
+    [logEventWithContext],
+  );
   const [sliceSOFrameURL, setSliceSOFrameURL] = useState('');
-  const handleSliceSOFrameURLChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setSliceSOFrameURL(e.target.value);
-    if (isValidUrl(e.target.value)) {
-      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
-        context: 'slice.so',
-      });
-      setNewFrameUrl(e.target.value);
-    }
-  }, []);
+  const handleSliceSOFrameURLChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setSliceSOFrameURL(e.target.value);
+      if (isValidUrl(e.target.value)) {
+        logEventWithContext('basename_profile_frame_preview', ActionType.click, {
+          context: 'slice.so',
+        });
+        setNewFrameUrl(e.target.value);
+      }
+    },
+    [logEventWithContext],
+  );
   const [hypersubXYZFrameURL, setHypersubXYZFrameURL] = useState('');
-  const handleHypersubXYZFrameURLChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setHypersubXYZFrameURL(e.target.value);
-    if (isValidUrl(e.target.value)) {
-      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
-        context: 'hypersub.xyz',
-      });
-      setNewFrameUrl(e.target.value);
-    }
-  }, []);
+  const handleHypersubXYZFrameURLChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setHypersubXYZFrameURL(e.target.value);
+      if (isValidUrl(e.target.value)) {
+        logEventWithContext('basename_profile_frame_preview', ActionType.click, {
+          context: 'hypersub.xyz',
+        });
+        setNewFrameUrl(e.target.value);
+      }
+    },
+    [logEventWithContext],
+  );
   const [highlightXYZFrameURL, setHighlightXYZFrameURL] = useState('');
-  const handleHighlightXYZFrameURLChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setHighlightXYZFrameURL(e.target.value);
-    if (isValidUrl(e.target.value)) {
-      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
-        context: 'highlight.xyz',
-      });
-      setNewFrameUrl(e.target.value);
-    }
-  }, []);
+  const handleHighlightXYZFrameURLChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setHighlightXYZFrameURL(e.target.value);
+      if (isValidUrl(e.target.value)) {
+        logEventWithContext('basename_profile_frame_preview', ActionType.click, {
+          context: 'highlight.xyz',
+        });
+        setNewFrameUrl(e.target.value);
+      }
+    },
+    [logEventWithContext],
+  );
   const [eventsXYZFrameURL, setEventsXYZFrameURL] = useState('');
-  const handleEventsXYZFrameURLChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setEventsXYZFrameURL(e.target.value);
-    if (isValidUrl(e.target.value)) {
-      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
-        context: 'events.xyz',
-      });
-      setNewFrameUrl(e.target.value);
-    }
-  }, []);
+  const handleEventsXYZFrameURLChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setEventsXYZFrameURL(e.target.value);
+      if (isValidUrl(e.target.value)) {
+        logEventWithContext('basename_profile_frame_preview', ActionType.click, {
+          context: 'events.xyz',
+        });
+        setNewFrameUrl(e.target.value);
+      }
+    },
+    [logEventWithContext],
+  );
 
   const { pendingFrameChange, setFrameRecord } = useFrameContext();
 
@@ -122,7 +137,7 @@ export default function FrameBuilder() {
     } else {
       setNewFrameUrl('');
     }
-  }, [basename]);
+  }, [basename, handleNextStep, logEventWithContext]);
 
   const handleSwapPreviewClick = useCallback(() => {
     if (swapTokenSymbol) {
@@ -134,7 +149,7 @@ export default function FrameBuilder() {
     } else {
       setNewFrameUrl('');
     }
-  }, [swapTokenSymbol]);
+  }, [swapTokenSymbol, handleNextStep, logEventWithContext]);
 
   // const handleBuildTopClick = useCallback(() => {
   //   if (address) {

@@ -150,11 +150,14 @@ export function FramesProvider({ children }: FramesProviderProps) {
         return null;
       }
     },
-    [address, config, currentChainId, openConnectModal],
+    [address, config, currentChainId, openConnectModal, logEventWithContext, logError],
   );
-  const onError = useCallback((e: Error) => {
-    logError(e, 'frame error');
-  }, []);
+  const onError = useCallback(
+    (e: Error) => {
+      logError(e, 'frame error');
+    },
+    [logError],
+  );
   const onSignature: OnSignatureFunc = useCallback(
     async ({ signatureData }) => {
       if (!address) {

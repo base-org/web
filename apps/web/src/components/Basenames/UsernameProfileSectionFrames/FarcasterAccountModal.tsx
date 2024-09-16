@@ -2,6 +2,7 @@
 
 import { type FarcasterSigner } from '@frames.js/render/identity/farcaster';
 import { UserCircleIcon } from '@heroicons/react/24/solid';
+import { useErrors } from 'apps/web/contexts/Errors';
 import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Modal from 'apps/web/src/components/Modal';
@@ -11,6 +12,7 @@ import { useCallback, useMemo } from 'react';
 
 export default function FarcasterAccountModal() {
   const { farcasterSignerState, showFarcasterQRModal, setShowFarcasterQRModal } = useFrameContext();
+  const { logError } = useErrors();
   const farcasterUser = useMemo(
     () => farcasterSignerState.signer ?? null,
     [farcasterSignerState.signer],
@@ -20,8 +22,8 @@ export default function FarcasterAccountModal() {
     [farcasterSignerState.isLoadingSigner],
   );
   const handleButtonClick = useCallback(() => {
-    farcasterSignerState.createSigner().catch(console.error);
-  }, [farcasterSignerState, setShowFarcasterQRModal]);
+    farcasterSignerState.createSigner().catch((e) => logError(e, 'error'));
+  }, [farcasterSignerState, logError]);
 
   const handleModalClose = useCallback(() => {
     setShowFarcasterQRModal(false);

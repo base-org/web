@@ -62,13 +62,16 @@ export default function Frame({ url, className }: FrameProps) {
     [farcasterFrameState, openFrameState, openFrameWorks],
   );
 
-  const aggregatedTheme = {
-    ...theme,
-    Root: {
-      ...theme.Root,
-      className: cn(theme.Root?.className, className),
-    },
-  };
+  const aggregatedTheme = useMemo(
+    () => ({
+      ...theme,
+      Root: {
+        ...theme.Root,
+        className: cn(theme.Root?.className, className),
+      },
+    }),
+    [],
+  );
 
   return <FrameUI frameState={frameState} theme={aggregatedTheme} components={components} />;
 }
