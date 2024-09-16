@@ -68,6 +68,21 @@ export const coinbaseSmartWalletABI = [
   },
 ] as const;
 
+export const analyticsConfig = {
+  ampDeploymentKey: {
+    dev: 'client-Wvf63OdaukDZyCBtwgbOvHgGTuASBZFG',
+    prod: 'client-agFoQg5AOvZ2ZiOChny9RrGk21jG3VrH',
+  },
+  amplitudeApiKey: {
+    dev: '',
+    prod: '',
+  },
+  serverSideAnalyticsURL: {
+    dev: 'https://analytics-service-dev.cbhq.net/amp',
+    prod: 'https://cca-lite.coinbase.com/amp',
+  }
+}
+
 export const ampDeploymentKey = isDevelopment
-  ? 'client-Wvf63OdaukDZyCBtwgbOvHgGTuASBZFG'
-  : 'client-agFoQg5AOvZ2ZiOChny9RrGk21jG3VrH';
+  ? analyticsConfig.ampDeploymentKey.dev
+  : analyticsConfig.ampDeploymentKey.prod;

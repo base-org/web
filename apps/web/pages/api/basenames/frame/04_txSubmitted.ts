@@ -1,6 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
+import { ActionType, ComponentType } from 'libs/base-ui/utils/logEvent';
 import { getTransactionStatus } from 'apps/web/src/utils/frames/basenames';
+import logServerSideEvent, { generateCustomUUID } from 'apps/web/src/utils/logServerSideEvent';
+import { logger } from 'apps/web/src/utils/logger';
 import {
   txSucceededFrame,
   txRevertedFrame,
@@ -16,6 +19,22 @@ if (!NEYNAR_API_KEY) {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: `TxSuccess Screen — Method (${req.method}) Not Allowed` });
+  }
+  const userAgent = req.headers['user-agent'] ?? 'No user agent';
+  const ip = req.headers['x-forwarded-for'] ?? req.socket.remoteAddress ?? 'No IP';
+  const deviceId = generateCustomUUID(userAgent, ip);
+  
+  try {
+    const eventName = 'tx_submitted';
+    const eventProperties = {
+      action: ActionType.click,
+      context: 'basenames_claim_frame',
+      componentType: ComponentType.button,
+    };
+
+    logServerSideEvent(eventName, deviceId, eventProperties);
+  } catch (error) {
+    logger.error('Could not log event:', error);
   }
 
   const body = req.body as FrameRequest;
@@ -50,10 +69,36 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     const txStatus = await getTransactionStatus(CHAIN, transactionId);
     if (txStatus !== 'success') {
+      try {
+        const eventName = 'tx_reverted';
+        const eventProperties = {
+          action: ActionType.process,
+          context: 'basenames_claim_frame',
+          componentType: ComponentType.service_worker,
+        };
+
+        logServerSideEvent(eventName, deviceId, eventProperties);
+      } catch (error) {
+        logger.error('Could not log event:', error);
+      }
+
       return res
         .status(200)
         .setHeader('Content-Type', 'text/html')
         .send(txRevertedFrame(txStatus as string, transactionId));
+    }
+
+    try {
+      const eventName = 'tx_succeeded';
+      const eventProperties = {
+        action: ActionType.process,
+        context: 'basenames_claim_frame',
+        componentType: ComponentType.service_worker,
+      };
+
+      logServerSideEvent(eventName, deviceId, eventProperties);
+    } catch (error) {
+      logger.error('Could not log event:', error);
     }
 
     return res
