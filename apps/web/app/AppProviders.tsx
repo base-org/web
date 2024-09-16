@@ -135,7 +135,7 @@ export default function AppProviders({ children }: AppProvidersProps) {
                     <ExperimentsProvider>
                       <>
                         {children}
-                        {/* <DynamicCookieBannerWrapper /> */}
+                        <DynamicCookieBannerWrapper />
                       </>
                     </ExperimentsProvider>
                   </TooltipProvider>

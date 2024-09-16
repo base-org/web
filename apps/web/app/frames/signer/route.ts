@@ -14,6 +14,11 @@ const SIGNED_KEY_REQUEST_VALIDATOR_EIP_712_DOMAIN = {
   name: 'Farcaster SignedKeyRequestValidator',
   version: '1',
   chainId: 10,
+  // Farcaster's SignedKeyRequestValidator
+  // https://github.com/farcasterxyz/contracts?tab=readme-ov-file#op-mainnet
+  // block explorer: https://optimistic.etherscan.io/address/0x00000000fc700472606ed4fa22623acf62c60553#code
+  // architecture overview: https://github.com/farcasterxyz/contracts/blob/v3.1.0/docs/docs.md#151-signed-key-request-validator
+  // used to authenticate requests to add a signer
   verifyingContract: '0x00000000fc700472606ed4fa22623acf62c60553',
 } as const;
 

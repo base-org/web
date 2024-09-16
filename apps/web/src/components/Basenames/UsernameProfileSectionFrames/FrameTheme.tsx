@@ -4,7 +4,7 @@ import type { FrameUIComponents, FrameUITheme } from '@frames.js/render/ui';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import BaseLoading from './base-loading.gif';
+import baseLoading from './base-loading.gif';
 
 type StylingProps = {
   className?: string;
@@ -84,7 +84,7 @@ function TransitionWrapper({
           { 'opacity-0': !isLoading || !isTransitioning, 'opacity-100': isLoading },
         )}
       >
-        <Image src={BaseLoading} alt="" width={22} height={22} />
+        <Image src={baseLoading} alt="" width={22} height={22} />
       </div>
 
       {/* Image */}
@@ -112,7 +112,7 @@ export const components: FrameUIComponents<StylingProps> = {
   LoadingScreen: (props) => {
     return (
       <Image
-        src={BaseLoading}
+        src={baseLoading}
         alt=""
         width={22}
         height={22}

@@ -2,7 +2,7 @@
 
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import {
-  FrameProvider,
+  FramesProvider,
   useFrameContext,
 } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import FarcasterAccountModal from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FarcasterAccountModal';
@@ -32,7 +32,7 @@ function SectionContent() {
     username: profileUsername,
     refetchInterval: currentWalletIsProfileOwner ? 5000 : Infinity,
   });
-  const homeframeUrlString = existingTextRecords[UsernameTextRecordKeys.Frame] ?? '';
+  const homeframeUrlString = existingTextRecords[UsernameTextRecordKeys.Frames] ?? '';
   const frameUrls = homeframeUrlString.split('|').filter(Boolean);
 
   const { logEventWithContext } = useAnalytics();
@@ -107,10 +107,10 @@ function SectionContent() {
 
 function UsernameProfileSectionFrames() {
   return (
-    <FrameProvider>
+    <FramesProvider>
       <SectionContent />
       <FarcasterAccountModal />
-    </FrameProvider>
+    </FramesProvider>
   );
 }
 

@@ -15,6 +15,7 @@ import {
 import { useFrame } from '@frames.js/render/use-frame';
 import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
+import { useErrors } from 'apps/web/contexts/Errors';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
@@ -66,19 +67,20 @@ export const FrameContext = createContext<FrameContextValue | null>(null);
 export const useFrameContext = () => {
   const context = useContext(FrameContext);
   if (!context) {
-    throw new Error('useFrameContext must be used within a FrameProvider');
+    throw new Error('useFrameContext must be used within a FramesProvider');
   }
   return context;
 };
 
-type FrameProviderProps = {
+type FramesProviderProps = {
   children: React.ReactNode;
 };
 
-export function FrameProvider({ children }: FrameProviderProps) {
+export function FramesProvider({ children }: FramesProviderProps) {
   const [showFarcasterQRModal, setShowFarcasterQRModal] = useState(false);
   const { logEventWithContext } = useAnalytics();
   const { address } = useAccount();
+  const { logError } = useErrors();
   const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
   const { existingTextRecords, refetchExistingTextRecords } = useReadBaseEnsTextRecords({
     address: profileAddress,
@@ -86,7 +88,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
     refetchInterval: currentWalletIsProfileOwner ? 1000 * 5 : Infinity,
   });
 
-  const frameUrlRecord = existingTextRecords[UsernameTextRecordKeys.Frame];
+  const frameUrlRecord = existingTextRecords[UsernameTextRecordKeys.Frames];
   const { frameContext: farcasterFrameContext } = useFarcasterFrameContext({
     fallbackContext: fallbackFrameContext,
   });
@@ -143,7 +145,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
           setFrameInteractionError('Error sending transaction');
         }
 
-        console.error(error);
+        logError(error, 'failed to complete a frame transaction');
 
         return null;
       }
@@ -151,7 +153,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
     [address, config, currentChainId, openConnectModal],
   );
   const onError = useCallback((e: Error) => {
-    console.error('jf', e);
+    logError(e, 'frame error');
   }, []);
   const onSignature: OnSignatureFunc = useCallback(
     async ({ signatureData }) => {
@@ -214,7 +216,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
           abi: L2ResolverAbi,
           chainId: basenameChain.id,
           address: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
-          args: [nameHash, UsernameTextRecordKeys.Frame, frameUrl.trim()],
+          args: [nameHash, UsernameTextRecordKeys.Frames, frameUrl.trim()],
           functionName: 'setText',
         });
         refetchExistingTextRecords().catch(console.warn);

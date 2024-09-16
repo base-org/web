@@ -49,7 +49,7 @@ export default function FrameBuilder() {
     address: profileAddress,
     username: profileUsername,
   });
-  const homeframeUrlString = existingTextRecords[UsernameTextRecordKeys.Frame] ?? '';
+  const homeframeUrlString = existingTextRecords[UsernameTextRecordKeys.Frames] ?? '';
 
   const [swapTokenSymbol, setSwapTokenSymbol] = useState('');
   const handleSwapTokenSymbolChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {

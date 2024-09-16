@@ -2,15 +2,10 @@ import { BaseName } from '@coinbase/onchainkit/identity';
 import ProfileProviders from 'apps/web/app/(basenames)/name/[username]/ProfileProviders';
 import ErrorsProvider from 'apps/web/contexts/Errors';
 import FrameBuilder from 'apps/web/src/components/Basenames/ConfigureFramesPageContent/FrameBuilder';
-import { FrameProvider } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
-import {
-  formatDefaultUsername,
-  getBasenameAddress,
-  getBasenameEditor,
-  getBasenameOwner,
-} from 'apps/web/src/utils/usernames';
+import { FramesProvider } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
+import { redirectIfNotNameOwner } from 'apps/web/src/utils/redirectIfNotNameOwner';
+import { formatDefaultUsername } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
-import { redirect } from 'next/navigation';
 
 export type ConfigureFramesProps = {
   params: { username: BaseName };
@@ -18,28 +13,20 @@ export type ConfigureFramesProps = {
 
 export default async function ConfigureFrames({ params }: ConfigureFramesProps) {
   let username = await formatDefaultUsername(decodeURIComponent(params.username) as BaseName);
-
-  const address = await getBasenameAddress(username);
-  const editor = await getBasenameEditor(username);
-  const owner = await getBasenameOwner(username);
-
-  // Domain does have address or editor (ie: doesn't exist)
-  if (!address || !editor || !owner) {
-    redirect(`/name/not-found?name=${username}`);
-  }
+  await redirectIfNotNameOwner(username);
 
   const usernameProfilePageClasses = classNames(
     'mx-auto mt-32 flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 px-4 px-4 pb-40 md:flex-row md:px-8',
   );
 
   return (
-    <ErrorsProvider context="profile">
+    <ErrorsProvider context="profile_configure_frames">
       <ProfileProviders username={username}>
-        <FrameProvider>
+        <FramesProvider>
           <main className={usernameProfilePageClasses}>
             <FrameBuilder />
           </main>
-        </FrameProvider>
+        </FramesProvider>
       </ProfileProviders>
     </ErrorsProvider>
   );

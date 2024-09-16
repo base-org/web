@@ -83,7 +83,7 @@ export enum UsernameTextRecordKeys {
   Discord = 'com.discord',
 
   // Basename specifics
-  Frame = 'frame',
+  Frames = 'frames',
   Casts = 'casts',
 }
 
@@ -171,7 +171,7 @@ export const textRecordsKeysEnabled = [
   UsernameTextRecordKeys.Telegram,
   UsernameTextRecordKeys.Discord,
   UsernameTextRecordKeys.Avatar,
-  UsernameTextRecordKeys.Frame,
+  UsernameTextRecordKeys.Frames,
   UsernameTextRecordKeys.Casts,
 ];
 
@@ -188,7 +188,7 @@ export const textRecordsKeysForDisplay = {
   [UsernameTextRecordKeys.Telegram]: 'Telegram',
   [UsernameTextRecordKeys.Discord]: 'Discord',
   [UsernameTextRecordKeys.Avatar]: 'Avatar',
-  [UsernameTextRecordKeys.Frame]: 'Frame',
+  [UsernameTextRecordKeys.Frames]: 'Frames',
   [UsernameTextRecordKeys.Casts]: 'Pinned Casts',
 };
 
@@ -205,7 +205,7 @@ export const textRecordsKeysPlaceholderForDisplay = {
   [UsernameTextRecordKeys.Telegram]: 'Username',
   [UsernameTextRecordKeys.Discord]: 'Username',
   [UsernameTextRecordKeys.Avatar]: 'Avatar',
-  [UsernameTextRecordKeys.Frame]: 'Farcaster frame url',
+  [UsernameTextRecordKeys.Frames]: 'Farcaster frame url',
   [UsernameTextRecordKeys.Casts]: 'https://warpcast.com/...',
 };
 
