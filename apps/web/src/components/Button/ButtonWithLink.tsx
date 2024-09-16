@@ -1,7 +1,7 @@
 'use client';
 
 import Link, { LinkProps } from 'apps/web/node_modules/next/link';
-import { Button, ButtonProps } from './Button';
+import Button, { ButtonProps } from 'apps/web/src/components/base-org/Button';
 
 export type ButtonWithLinkProps = Omit<ButtonProps, 'href' | 'className'> & {
   href: string;
@@ -22,10 +22,10 @@ export function ButtonWithLink({
   size,
   children,
   buttonClassNames,
-  rounded = false,
+  roundedFull = false,
   fullWidth = false,
   disabled = false,
-  isLoading = false,
+
   ...buttonProps
 }: ButtonWithLinkProps) {
   return (
@@ -40,10 +40,9 @@ export function ButtonWithLink({
         variant={variant}
         size={size}
         className={buttonClassNames}
-        rounded={rounded}
+        roundedFull={roundedFull}
         fullWidth={fullWidth}
         disabled={disabled}
-        isLoading={isLoading}
         {...buttonProps}
       >
         {children}

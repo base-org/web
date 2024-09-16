@@ -1,5 +1,5 @@
+import { ButtonSizes, ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import { ButtonWithLinkAndEventLogging } from '../Button/ButtonWithLinkAndEventLogging';
-import { ButtonVariants } from '../Button/Button';
 import buildWithUs from './images/build-with-us.png';
 import { linkTextClasses } from './styles';
 import Title from 'apps/web/src/components/base-org/typography/Title';
@@ -38,6 +38,8 @@ export default async function BuildWithUsFooter() {
             eventName="start_building_with_us_contact_us"
             target="_blank"
             rel="noreferrer noopener"
+            variant={ButtonVariants.Secondary}
+            size={ButtonSizes.Large}
             buttonClassNames={`${linkTextClasses} rounded-[3px]`}
           >
             Office Hours
@@ -47,7 +49,8 @@ export default async function BuildWithUsFooter() {
             eventName="start_building_with_us_view_docs"
             target="_blank"
             rel="noreferrer noopener"
-            variant={ButtonVariants.Secondary}
+            variant={ButtonVariants.Outlined}
+            size={ButtonSizes.Large}
             buttonClassNames={`${linkTextClasses} rounded-[3px]`}
           >
             View Our Docs
