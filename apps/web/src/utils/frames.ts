@@ -56,7 +56,7 @@ export async function fetchCast({
   })}`;
   const options = {
     method: 'GET',
-    headers: { accept: 'application/json', api_key: process.env.NEXT_PUBLIC_NEYNAR_API_KEY },
+    headers: { accept: 'application/json', api_key: process.env.NEYNAR_API_KEY },
   };
   try {
     const response = await fetch(url, options);
