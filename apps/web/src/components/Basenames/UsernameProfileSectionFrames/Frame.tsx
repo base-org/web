@@ -70,7 +70,7 @@ export default function Frame({ url, className }: FrameProps) {
         className: cn(theme.Root?.className, className),
       },
     }),
-    [],
+    [className],
   );
 
   return <FrameUI frameState={frameState} theme={aggregatedTheme} components={components} />;

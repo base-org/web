@@ -18,7 +18,7 @@ export const theme: FrameUITheme<StylingProps> = {
   },
   Root: {
     className:
-      'flex flex-col rounded-lg items-center justify-center overflow-hidden bg-transparent relative border border-palette-line/20 min-w-[245px] min-h-[245px]',
+      'relative flex flex-col rounded-lg items-center justify-center overflow-hidden bg-transparent relative border border-palette-line/20 min-w-[245px] min-h-[245px]',
   },
   ButtonsContainer: {
     className:
@@ -29,7 +29,7 @@ export const theme: FrameUITheme<StylingProps> = {
       'text-sm grow py-3 px-5 rounded-full bg-[#F3F3F3] text-palette-secondaryForeground font-medium transition-colors hover:bg-state-b-hovered min-h-[44px]',
   },
   ImageContainer: {
-    className: 'flex border-0 overflow-hidden',
+    className: 'flex flex-grow border-0 overflow-hidden',
   },
   TextInputContainer: {
     className:
@@ -109,17 +109,20 @@ function TransitionWrapper({
 }
 
 export const components: FrameUIComponents<StylingProps> = {
-  LoadingScreen: (props) => {
+  LoadingScreen: (props, stylingProps) => {
     return (
-      <Image
-        src={baseLoading}
-        alt=""
-        width={22}
-        height={22}
-        className={classNames({
-          hidden: props.frameState.status !== 'loading',
-        })}
-      />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <Image
+          src={baseLoading}
+          alt=""
+          width={22}
+          height={22}
+          className={classNames('', {
+            hidden: props.frameState.status !== 'loading',
+          })}
+          style={stylingProps.style}
+        />
+      </div>
     );
   },
   Image(props, stylingProps) {
