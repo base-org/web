@@ -74,8 +74,8 @@ export const analyticsConfig = {
     prod: 'client-agFoQg5AOvZ2ZiOChny9RrGk21jG3VrH',
   },
   amplitudeApiKey: {
-    dev: '',
-    prod: '',
+    dev: process.env.AMPLITUDE_API_KEY_DEVELOPMENT,
+    prod: process.env.AMPLITUDE_API_KEY_PROD,
   },
   serverSideAnalyticsURL: {
     dev: 'https://analytics-service-dev.cbhq.net/amp',
