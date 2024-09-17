@@ -351,6 +351,19 @@ const assets: Asset[] = [
     decimals: 18,
     protocol: 'OP',
   },
+  {
+    L1symbol: 'ASI',
+    L2symbol: 'ASI',
+    L1chainId: 1,
+    L2chainId: 8453,
+    L1contract: '0xaea46A60368A7bD060eec7DF8CBa43b7EF41Ad85',
+    L2contract: '0x74F804B4140ee70830B3Eef4e690325841575F89',
+    apiId: 'fetch-ai',
+    L1icon: '/icons/currency/asi.svg',
+    L2icon: '/icons/currency/asi.svg',
+    decimals: 18,
+    protocol: 'OP',
+  },
 ];
 
 export default assets;
