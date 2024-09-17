@@ -162,8 +162,6 @@ export function FramesProvider({ children }: FramesProviderProps) {
     async ({ signatureData }) => {
       if (!address) {
         openConnectModal?.();
-        console.info('Opened connect modal because the account address is not set');
-
         return null;
       }
 
@@ -189,12 +187,12 @@ export function FramesProvider({ children }: FramesProviderProps) {
           setFrameInteractionError('Error signing data');
         }
 
-        console.error(error);
+        logError(error, 'failed to sign frame data');
 
         return null;
       }
     },
-    [address, openConnectModal, currentChainId, config],
+    [address, openConnectModal, currentChainId, config, logError],
   );
 
   const { writeContractAsync, isPending: pendingFrameChange } = useWriteContract();
@@ -222,20 +220,21 @@ export function FramesProvider({ children }: FramesProviderProps) {
           args: [nameHash, UsernameTextRecordKeys.Frames, frameUrl.trim()],
           functionName: 'setText',
         });
-        refetchExistingTextRecords().catch(console.warn);
+        refetchExistingTextRecords().catch((e) => logError(e, 'failed to refetch text records'));
         return result;
       }
       return doTransaction();
     },
     [
       address,
-      profileUsername,
-      basenameChain,
-      writeContractAsync,
-      config,
       currentChainId,
-      openConnectModal,
+      profileUsername,
+      writeContractAsync,
+      basenameChain.id,
       refetchExistingTextRecords,
+      openConnectModal,
+      config,
+      logError,
     ],
   );
 
