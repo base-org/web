@@ -3,11 +3,11 @@ import { mnemonicToAccount } from 'viem/accounts';
 
 const FARCASTER_DEVELOPER_FID = process.env.FARCASTER_DEVELOPER_FID;
 if (!FARCASTER_DEVELOPER_FID) {
-  throw new Error('FARCASTER_DEVELOPER_FID is required to facilitate frame interactivity');
+  console.error('FARCASTER_DEVELOPER_FID is required to facilitate frame interactivity');
 }
 const FARCASTER_DEVELOPER_MNEMONIC = process.env.FARCASTER_DEVELOPER_MNEMONIC;
 if (!FARCASTER_DEVELOPER_MNEMONIC) {
-  throw new Error('FARCASTER_DEVELOPER_MNEMONIC is required to facilitate frame interactivity');
+  console.error('FARCASTER_DEVELOPER_MNEMONIC is required to facilitate frame interactivity');
 }
 
 const SIGNED_KEY_REQUEST_VALIDATOR_EIP_712_DOMAIN = {
