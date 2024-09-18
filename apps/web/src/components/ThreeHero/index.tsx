@@ -19,10 +19,8 @@ import {
   Bloom,
   ToneMapping,
   DepthOfField,
-  Noise,
   Vignette,
 } from '@react-three/postprocessing';
-
 import { BlendFunction } from 'postprocessing';
 
 // Environnment
@@ -55,7 +53,15 @@ const RotationContext = createContext<RotationContextType>({ rotationSpeed: 0 })
   - Global setup such as gravity, dpr & Physics
 */
 const dprSettings: Dpr = [1, 1.5];
-const glSettings = { antialias: true };
+const glSettings = {
+  antialias: true,
+  alpha: true,
+  stencil: false,
+  depth: true,
+  logarithmicDepthBuffer: false,
+  toneMapping: THREE.ACESFilmicToneMapping,
+  toneMappingExposure: 1,
+};
 const gravity: Vector3Tuple = [0, 0, 0];
 
 export default function Scene(): JSX.Element {
@@ -144,7 +150,7 @@ export default function Scene(): JSX.Element {
 
           <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
           <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
-          <Noise opacity={0.3} premultiply />
+
           <Vignette eskil={false} offset={0.01} darkness={0.5} />
         </EffectComposer>
       </Canvas>
@@ -152,6 +158,11 @@ export default function Scene(): JSX.Element {
   );
 }
 
+/* 
+  The Environment
+  - Loads the JPEG / HDR gainmap file
+  - Set as global texture
+*/
 function EnvironmentSetup() {
   const { gl, scene } = useThree();
   const [envMap, setEnvMap] = useState<THREE.Texture | null>(null);
@@ -315,7 +326,6 @@ function GLTFceneRenderer({ glbPath, rotationSpeed }: GLTFceneRendererProps): JS
   - Display 3D object(s)
   - Apply centrifugal force
   - CenterPosition (Base logo)
-
 */
 type PhysicsObjectProps = {
   objects: THREE.Object3D[];
@@ -334,126 +344,101 @@ function PhysicsObject({
   const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
   const { rotationSpeed } = useContext(RotationContext);
 
-  // Store initial properties
-  const initialPropsRef = useRef<
-    { position: THREE.Vector3; quaternion: THREE.Quaternion; scale: THREE.Vector3; size: number }[]
-  >([]);
+  const floatIntensity = 3;
+  const rotationResponseStrength = 1; // Adjust this to control how strongly objects respond to rotation
+  const returnStrength = 0.01; // Adjust this to control how quickly objects return to their original positions
 
-  // Store initial properties and calculate object size
-  useEffect(() => {
-    initialPropsRef.current = objects.map((object) => {
-      const box = new THREE.Box3().setFromObject(object);
-      const size = box.getSize(new THREE.Vector3()).length();
-      return {
-        position: object.position.clone(),
-        quaternion: object.quaternion.clone(),
-        scale: object.scale.clone(),
-        size: size,
-      };
-    });
-
-    objects.forEach((object, index) => {
-      const initialProps = initialPropsRef.current[index];
-      object.position.copy(initialProps.position);
-      object.quaternion.copy(initialProps.quaternion);
-      object.scale.copy(initialProps.scale);
-    });
-  }, [objects]);
+  const objectsData = useRef(
+    objects.map((object, index) => ({
+      initialPosition: object.position.clone(),
+      currentPosition: object.position.clone(),
+      initialOffset:
+        isCursor && index === 1
+          ? object.position.clone().sub(objects[0].position)
+          : new THREE.Vector3(),
+      floatSpeed: (Math.random() * 0.5 + 0.5) * floatIntensity,
+      floatAmplitude: (Math.random() * 0.1 + 0.05) * floatIntensity,
+      floatOffset: Math.random() * Math.PI * 2,
+    })),
+  );
 
   useFrame((state) => {
-    const rigidBody = rigidBodyRef.current;
-    console.log({ state });
-    if (rigidBody && meshRefs.current.length > 0 && !isBaseIcon) {
+    if (!isBaseIcon) {
       const time = state.clock.getElapsedTime();
-      const currentPosition = rigidBody.translation();
-      const currentRotation = rigidBodyRef.current.rotation();
 
-      const objectSize = initialPropsRef.current[0].size;
+      // For cursor, we'll use the first object as reference
+      const referenceObjectData = objectsData.current[0];
+      const referenceObject = objects[0];
 
-      // Adjust forces based on object size
-      const sizeAdjustment = Math.max(0.1, Math.min(objectSize, 1));
-
-      // Convert Rapier Vector to Three.js Vector3
-      const position = new THREE.Vector3(currentPosition.x, currentPosition.y, currentPosition.z);
-
-      // Convert Rapier Rotation to Three.js Quaternion
-      const rotation = new THREE.Quaternion(
-        currentRotation.x,
-        currentRotation.y,
-        currentRotation.z,
-        currentRotation.w,
+      // Calculate forces for the reference object (or single object if not cursor)
+      const floatEffect =
+        Math.sin(time * referenceObjectData.floatSpeed + referenceObjectData.floatOffset) *
+        referenceObjectData.floatAmplitude;
+      const directionFromCenter = referenceObject.position.clone().sub(centerPosition).normalize();
+      const rotationForce = directionFromCenter.multiplyScalar(
+        Math.abs(rotationSpeed) * rotationResponseStrength,
       );
+      const returnForce = referenceObjectData.initialPosition
+        .clone()
+        .sub(referenceObjectData.currentPosition)
+        .multiplyScalar(returnStrength);
+      const totalForce = new THREE.Vector3().addVectors(rotationForce, returnForce);
 
-      // Floating motion
-      const floatOffset = Math.sin(time + objects[0].position.x * 0.5) * 0.005 * sizeAdjustment;
+      // Update reference object position
+      referenceObjectData.currentPosition.add(totalForce);
+      const newPosition = referenceObjectData.currentPosition.clone();
+      newPosition.y += floatEffect;
+      newPosition.x +=
+        Math.sin(time * referenceObjectData.floatSpeed * 0.5) *
+        referenceObjectData.floatAmplitude *
+        0.2;
+      newPosition.z +=
+        Math.cos(time * referenceObjectData.floatSpeed * 0.5) *
+        referenceObjectData.floatAmplitude *
+        0.2;
 
-      // Center attraction
-      const towardsCenter = new THREE.Vector3(
-        centerPosition.x - currentPosition.x,
-        centerPosition.y - currentPosition.y,
-        centerPosition.z - currentPosition.z,
-      );
-      const distanceToCenter = towardsCenter.length();
-      const centerAttractionStrength = Math.min(distanceToCenter * 0.005, 0.05) * sizeAdjustment;
+      // Apply position to reference object
+      referenceObject.position.copy(newPosition);
 
-      const centerAttraction = towardsCenter.normalize().multiplyScalar(centerAttractionStrength);
+      // If it's a cursor, update the second object relative to the first
+      if (isCursor && objects.length > 1) {
+        const secondObjectData = objectsData.current[1];
+        const secondObject = objects[1];
+        secondObject.position.copy(newPosition).add(secondObjectData.initialOffset);
+      } else if (!isCursor) {
+        // For non-cursor objects, update each object individually
+        objects.slice(1).forEach((object, index) => {
+          const data = objectsData.current[index + 1];
+          const individualFloatEffect =
+            Math.sin(time * data.floatSpeed + data.floatOffset) * data.floatAmplitude;
 
-      // Centrifugal force
-      const centrifugalForceFactor = 0.005 * sizeAdjustment; // Further reduced and adjusted for size
-
-      const centrifugalForce = new THREE.Vector3(currentPosition.x, 0, currentPosition.z)
-        .normalize()
-        .multiplyScalar(Math.abs(rotationSpeed) * centrifugalForceFactor);
-
-      // Random movement
-      const randomMovement = new THREE.Vector3(
-        (Math.random() - 0.5) * 0.00005,
-        (Math.random() - 0.5) * 0.00005,
-        (Math.random() - 0.5) * 0.00005,
-      );
-
-      // Combine forces
-      const totalForce = new THREE.Vector3()
-        .addScaledVector(centerAttraction, 1)
-        .addScaledVector(centrifugalForce, 1)
-        .add(randomMovement);
-
-      // Apply forces
-      rigidBody.applyImpulse(totalForce, true);
-
-      // Update position with floating effect
-      rigidBody.setTranslation(
-        {
-          x: currentPosition.x,
-          y: currentPosition.y + floatOffset,
-          z: currentPosition.z,
-        },
-        true,
-      );
-
-      meshRefs.current.forEach((mesh, index) => {
-        if (mesh) {
-          const initialProps = initialPropsRef.current[index];
-
-          // Apply physics position while preserving initial offset
-          mesh.position.copy(position).add(initialProps.position);
-
-          // Combine physics rotation with initial rotation
-          mesh.quaternion.multiplyQuaternions(rotation, initialProps.quaternion);
-
-          // Preserve initial scale
-          mesh.scale.copy(initialProps.scale);
-
-          // If it's a cursor, apply the specific offset to the second part
-          if (isCursor && index === 1) {
-            const offset = new THREE.Vector3(0, 0.1, 0);
-            mesh.position.add(offset);
-          }
-        }
-      });
+          object.position.copy(data.currentPosition);
+          object.position.y += individualFloatEffect;
+          object.position.x += Math.sin(time * data.floatSpeed * 0.5) * data.floatAmplitude * 0.2;
+          object.position.z += Math.cos(time * data.floatSpeed * 0.5) * data.floatAmplitude * 0.2;
+        });
+      }
     }
   });
 
+  // Effect to change material color when isBaseIcon is true
+  useEffect(() => {
+    if (isBaseIcon) {
+      const baseIconMaterial = new THREE.MeshStandardMaterial({
+        color: new THREE.Color(0x105eff),
+        metalness: 0,
+        roughness: 0.5,
+      });
+
+      objects.forEach((object) => {
+        object.traverse((child) => {
+          if (child instanceof THREE.Mesh) {
+            child.material = baseIconMaterial;
+          }
+        });
+      });
+    }
+  }, [isBaseIcon, objects]);
   return (
     <RigidBody
       ref={rigidBodyRef}
@@ -461,9 +446,9 @@ function PhysicsObject({
       mass={0.1}
       linearDamping={0.8}
       angularDamping={0.8}
-      colliders="ball"
+      colliders={false}
       restitution={0.3}
-      friction={0.2}
+      friction={0.01}
       scale={1}
     >
       {objects.map((object, index) => (
