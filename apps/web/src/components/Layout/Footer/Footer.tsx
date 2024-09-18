@@ -9,7 +9,7 @@ import Image, { StaticImageData } from 'next/image';
 import Container from 'apps/web/src/components/base-org/Container';
 export function Footer() {
   return (
-    <footer className="z-10 mx-auto mt-auto flex w-full flex-col justify-center bg-black pb-8 pt-20">
+    <footer className="relative z-20 mx-auto mt-auto flex w-full flex-col justify-center bg-black bg-black pb-8 pt-20">
       <Container>
         <div className="flex flex-col justify-between lg:flex-row">
           <div className="flex flex-col font-display text-sm text-white">

@@ -62,9 +62,11 @@ export default async function Home() {
       <AnalyticsProvider context="base_landing_page">
         <AnalyticsProvider context="hero">
           <div className="relative h-screen w-full">
-            <DynamicThreeHero />
+            <div className="fixed z-10 h-full w-full">
+              <DynamicThreeHero />
+            </div>
 
-            <div className="absolute bottom-0 left-0 w-full pb-20 text-white">
+            <div className="absolute bottom-0 left-0 z-20 w-full pb-20 text-white">
               <Container>
                 <Title level={TitleLevel.Headline}>Base is for everyone.</Title>
                 <p className="max-w-[19rem]">
@@ -88,7 +90,7 @@ export default async function Home() {
           </div>
         </AnalyticsProvider>
         <AnalyticsProvider context="content">
-          <main className="flex w-full flex-col items-center bg-black">
+          <main className="relative z-20 flex w-full flex-col items-center bg-black">
             <Container>
               <div className="flex flex-col gap-40 pb-40 pt-20">
                 <section>
