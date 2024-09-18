@@ -108,7 +108,7 @@ export function FramesProvider({ children }: FramesProviderProps) {
   const [frameInteractionError, setFrameInteractionError] = useState('');
 
   const onTransaction: OnTransactionFunc = useCallback(
-    async ({ transactionData }) => {
+    async ({ transactionData, frame }) => {
       if (!address) {
         openConnectModal?.();
         return null;
@@ -131,7 +131,7 @@ export function FramesProvider({ children }: FramesProviderProps) {
           value: BigInt(params.value ?? 0),
         });
         logEventWithContext('basename_profile_frame_transacted', ActionType.process, {
-          context: `value: ${params.value}`,
+          context: frame.postUrl ?? frame.title,
         });
         return transactionId;
       } catch (error) {
@@ -145,7 +145,7 @@ export function FramesProvider({ children }: FramesProviderProps) {
           setFrameInteractionError('Error sending transaction');
         }
 
-        logError(error, 'failed to complete a frame transaction');
+        logError(error, `${frame.postUrl ?? frame.title} failed to complete a frame transaction`);
 
         return null;
       }
@@ -159,7 +159,7 @@ export function FramesProvider({ children }: FramesProviderProps) {
     [logError],
   );
   const onSignature: OnSignatureFunc = useCallback(
-    async ({ signatureData }) => {
+    async ({ signatureData, frame }) => {
       if (!address) {
         openConnectModal?.();
         return null;
@@ -187,7 +187,7 @@ export function FramesProvider({ children }: FramesProviderProps) {
           setFrameInteractionError('Error signing data');
         }
 
-        logError(error, 'failed to sign frame data');
+        logError(error, `${frame.postUrl ?? frame.title} failed to sign frame data`);
 
         return null;
       }
