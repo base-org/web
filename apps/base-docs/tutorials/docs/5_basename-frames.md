@@ -1,0 +1,102 @@
+---
+title: 'Add Frames to A Basenames Profile'
+slug: /add-frames-to-basenames-profile
+description: Learn how to customize your Basenames profile by adding Frames, showcasing dynamic content with ease on the Base blockchain.
+author: hughescoin
+keywords:
+  [
+    Sponsored Transactions,
+    Onchain,
+    Coinbase,
+    Base,
+    Crypto,
+    Cloud Platform,
+    Basenames,
+    Frames,
+    Profile Customization,
+    Open Graph,
+    ENS,
+  ]
+tags: ['account abstraction', 'Paymaster']
+difficulty: easy
+hide_table_of_contents: false
+displayed_sidebar: null
+---
+
+# Add Frames to A Basenames Profile
+
+Welcome to the exciting world of Frames for your Basenames profile! This tutorial will guide you step-by-step through adding a frame to your Basenames profile, allowing you to personalize and display unique content on the Base blockchain.
+
+## What Are Frames?
+
+Frames are dynamic visual elements that display custom content on your Basenames profile using the [Open Graph spec]. You may be familiar with frames from platforms like [Warpcast], where they are used to enhance social interactions like minting NFTs onchain, sharing information, and more. Base Frames work similarly, but they are independent of Warpcast. With Base Frames, anyone can create and display content directly on their Basenames profile.
+
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
+- A registered Basename. [Claim a basename](https://www.base.org/names)
+- A small amount of ETH to submit the text record onchain
+
+## Navigate to Your Basename
+
+To get started, head over to a Basename that you own. For example:
+
+`https://www.base.org/name/pathughes`
+
+_Insert image of the Basenames profile page_ ![basenames-profile-homepage](url)
+
+## Look for the Frame Banner
+
+Once you're on your profile, you’ll be greeted with a new banner inviting you to pin a frame to your profile. Look for the call-to-action button and click `Try it now`.
+
+_Insert image of the banner with the `Try it now` button_ ![try-now-buton](url)
+
+## Explore the Frame Selection Panels
+
+You’ll now see two panels to help you choose and preview frames for your profile:
+
+- **Left Panel**: This panel contains pre-built frames created by the Base community.
+- **Right Panel**: Here, you can preview how the selected frame will look on your Basenames profile.
+
+_Insert image of the two panels_ ![frame-selector-page](url)
+
+## Choose a Frame
+
+You can select any frame from the available options. For this tutorial, we’ll use the pre-built "Pay Me" Frame by [Paycaster](https://paycaster.co/), which allows anyone to gift you USDC or ETH.
+
+Click on the dropdown menu to select the "Pay Me" Frame.
+
+_Insert image showing the dropdown with "Pay Me" Frame selected_ ![Payme dropdown](url)
+
+## Preview the Frame
+
+Once you've selected the frame, click on the `Show preview` button to see how it will appear on your profile.
+
+_Insert image of the frame preview on the right panel_ ![Frame-preview](url)
+
+## Add the Frame to Your Profile
+
+If you're happy with the preview, it's time to add the frame to your profile! Click the `Add frame` button.
+
+You'll be prompted to confirm the transaction in your wallet. Approve the transaction, and the page will automatically reload.
+
+_Insert image of the `Add frame` button and wallet confirmation process_ ![confirm-txn](url)
+
+## View Your Updated Profile
+
+After the page reloads, you’ll see your profile with the newly added frame. Congratulations! You’ve successfully added a frame to your Basenames profile.
+
+_Insert image of the updated profile with the new frame_ ![profile](url)
+
+## Resources
+
+For more information on Frames and how to customize them, check out the following resources:
+
+[Open Frames Spec]: https://www.openframes.xyz/#required-properties
+[Frames Debugger: https://debugger.framesjs.org/ [Openframes Website]: https://www.openframes.xyz/
+[Open Graph spec]: https://ogp.me/
+
+## [Warpcast]: https://warpcast.com/
+
+Feel free to customize your Frames further or explore new designs from the community!
