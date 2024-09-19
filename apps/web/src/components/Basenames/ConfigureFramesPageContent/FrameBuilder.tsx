@@ -1,7 +1,7 @@
 /* eslint-disable react-perf/jsx-no-new-function-as-prop */
 'use client';
 import { ArrowLeftIcon } from '@heroicons/react/16/solid';
-import { PlusIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
+import { PlusIcon } from '@heroicons/react/24/solid';
 import * as Accordion from '@radix-ui/react-accordion';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
@@ -17,10 +17,11 @@ import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { ChangeEvent, useCallback, useState } from 'react';
 import { useDebounceValue, useMediaQuery } from 'usehooks-ts';
-import currencies from './ui/currencies.svg';
+import buyFromMe from './ui/buy-from-me.svg';
+import payMe from './ui/currencies.svg';
 import email from './ui/email.svg';
+import mintMe from './ui/mint-me.svg';
 import nftProduct from './ui/nftProduct.svg';
-import payouts from './ui/payouts.svg';
 import previewBackground from './ui/preview-background.svg';
 import emptyPreviewFrame from './ui/preview-frame.svg';
 import starActive from './ui/starActive.svg';
@@ -177,7 +178,7 @@ export default function FrameBuilder() {
         handleTriggerClick={() =>
           logEventWithContext('basename_profile_frame_pay_opened', ActionType.click)
         }
-        imgData={payouts as StaticImageData}
+        imgData={payMe as StaticImageData}
         title="Pay me"
         description="Get paid with Paycaster."
       >
@@ -230,7 +231,7 @@ export default function FrameBuilder() {
         handleTriggerClick={() =>
           logEventWithContext('basename_profile_frame_buy_opened', ActionType.click)
         }
-        icon={<ShoppingCartIcon width={24} height={24} fill="#3CC28A" />}
+        imgData={buyFromMe as StaticImageData}
         title="Buy from me"
         description="Sell products from your Slice shop"
       >
@@ -313,7 +314,7 @@ export default function FrameBuilder() {
         handleTriggerClick={() =>
           logEventWithContext('basename_profile_frame_mint_opened', ActionType.click)
         }
-        imgData={currencies as StaticImageData}
+        imgData={mintMe as StaticImageData}
         title="Mint me"
         description="Mint your NFT on Highlight"
       >
@@ -355,7 +356,7 @@ export default function FrameBuilder() {
           logEventWithContext('basename_profile_frame_swap_opened', ActionType.click)
         }
         imgData={swap as StaticImageData}
-        title="Swap me"
+        title="Swap with me"
         description="Buy my tokens"
       >
         <p className="text-sm text-palette-foreground">
