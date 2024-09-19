@@ -44,13 +44,13 @@ To get started, head over to a Basename that you own. For example:
 
 `https://www.base.org/name/pathughes`
 
-_Insert image of the Basenames profile page_ ![basenames-profile-homepage](url)
+![basenames-profile-homepage](../../assets/images/basenames-tutorial/basenames-homepage.png)
 
 ## Look for the Frame Banner
 
 Once you're on your profile, you’ll be greeted with a new banner inviting you to pin a frame to your profile. Look for the call-to-action button and click `Try it now`.
 
-_Insert image of the banner with the `Try it now` button_ ![try-now-buton](url)
+![try-now-buton](../../assets/images/basenames-tutorial/try-now.png)
 
 ## Explore the Frame Selection Panels
 
@@ -59,7 +59,7 @@ You’ll now see two panels to help you choose and preview frames for your profi
 - **Left Panel**: This panel contains pre-built frames created by the Base community.
 - **Right Panel**: Here, you can preview how the selected frame will look on your Basenames profile.
 
-_Insert image of the two panels_ ![frame-selector-page](url)
+![frame-selector-page](../../assets/images/basenames-tutorial/frames-selector.png)
 
 ## Choose a Frame
 
@@ -67,13 +67,13 @@ You can select any frame from the available options. For this tutorial, we’ll 
 
 Click on the dropdown menu to select the "Pay Me" Frame.
 
-_Insert image showing the dropdown with "Pay Me" Frame selected_ ![Payme dropdown](url)
+![frame-payme-](../../assets/images/basenames-tutorial/show-preview.png)
 
 ## Preview the Frame
 
 Once you've selected the frame, click on the `Show preview` button to see how it will appear on your profile.
 
-_Insert image of the frame preview on the right panel_ ![Frame-preview](url)
+![Frame-preview](../../assets/images/basenames-tutorial/frame-preview.png)
 
 ## Add the Frame to Your Profile
 
@@ -81,22 +81,22 @@ If you're happy with the preview, it's time to add the frame to your profile! Cl
 
 You'll be prompted to confirm the transaction in your wallet. Approve the transaction, and the page will automatically reload.
 
-_Insert image of the `Add frame` button and wallet confirmation process_ ![confirm-txn](url)
+![confirm-txn](../../assets/images/basenames-tutorial/confirm-txn.png)
 
 ## View Your Updated Profile
 
 After the page reloads, you’ll see your profile with the newly added frame. Congratulations! You’ve successfully added a frame to your Basenames profile.
 
-_Insert image of the updated profile with the new frame_ ![profile](url)
+![profile](../../assets/images/basenames-tutorial/basenames-frame-final.png)
 
 ## Resources
 
 For more information on Frames and how to customize them, check out the following resources:
 
-[Open Frames Spec]: https://www.openframes.xyz/#required-properties
-[Frames Debugger: https://debugger.framesjs.org/ [Openframes Website]: https://www.openframes.xyz/
-[Open Graph spec]: https://ogp.me/
-
-## [Warpcast]: https://warpcast.com/
+[Open Frames Spec]https://www.openframes.xyz/#required-properties
+[Frames Debugger]https://debugger.framesjs.org/
+[Openframes Website]https://www.openframes.xyz/
+[Open Graph spec]https://ogp.me/
+[Warpcast]https://warpcast.com/
 
 Feel free to customize your Frames further or explore new designs from the community!
