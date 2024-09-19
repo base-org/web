@@ -91,7 +91,7 @@ function SectionContent() {
           {frameInteractionError}
         </Button>
       )}
-      <div className="grid grid-flow-row-dense auto-rows-min grid-cols-1 gap-4 p-4 xl:grid-cols-2">
+      <div className="columns-1 p-4 xl:columns-2">
         {frameUrls.map((url) => (
           <FrameListItem url={url} key={url} />
         ))}
