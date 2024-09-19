@@ -1,7 +1,7 @@
 ---
-title: 'Add Frames to A Basenames Profile'
-slug: /add-frames-to-basenames-profile
-description: Learn how to customize your Basenames profile by adding Frames, showcasing dynamic content with ease on the Base blockchain.
+title: 'Add Frames to A Basename Profile'
+slug: /add-frames-to-Basename-profile
+description: Learn how to customize your Basename profile by adding Frames, showcasing dynamic content with ease on Base.
 author: hughescoin
 keywords:
   [
@@ -23,13 +23,13 @@ hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
-# Add Frames to A Basenames Profile
+# Add Frames to A Basename Profile
 
-Welcome to the exciting world of Frames for your Basenames profile! This tutorial will guide you step-by-step through adding a frame to your Basenames profile, allowing you to personalize and display unique content on the Base blockchain.
+Welcome to the exciting world of Frames for your Basename profile! This tutorial will guide you step-by-step through adding a frame to your Basename profile, allowing you to personalize and display unique content on the Base blockchain.
 
 ## What Are Frames?
 
-Frames are dynamic visual elements that display custom content on your Basenames profile using the [Open Graph spec]. You may be familiar with frames from platforms like [Warpcast], where they are used to enhance social interactions like minting NFTs onchain, sharing information, and more. Base Frames work similarly, but they are independent of Warpcast. With Base Frames, anyone can create and display content directly on their Basenames profile.
+Frames are dynamic visual elements that display custom content on your Basename profile using the [Open Graph spec]. You may be familiar with frames from platforms like [Warpcast], where they are used to enhance social interactions like minting NFTs onchain, sharing information, and more. Base Frames work similarly, but they are independent of Warpcast. With Base Frames, anyone can create and display content directly on their Basename profile.
 
 ## Prerequisites
 
