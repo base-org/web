@@ -10,28 +10,21 @@ import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrame
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback } from 'react';
 
-function removeUrl(urls: string, urlSubstringToRemove: string): string {
-  const urlArray = urls.split('|');
-  const filteredUrls = urlArray.filter((url) => !url.includes(urlSubstringToRemove));
-  return filteredUrls.filter(Boolean).join('|');
-}
-
 export default function FrameListItem({ url }: { url: string }) {
-  const { frameUrlRecord, setFrameRecord } = useFrameContext();
+  const { removeFrame } = useFrameContext();
   const { currentWalletIsProfileOwner } = useUsernameProfile();
   const { logEventWithContext } = useAnalytics();
 
   const handleRemoveFrameClick = useCallback(() => {
-    const newFrameUrlRecord = removeUrl(frameUrlRecord, url);
-    setFrameRecord(newFrameUrlRecord)
+    removeFrame(url)
       .catch(console.error)
       .finally(() => {
         logEventWithContext('basename_profile_frame_removed', ActionType.click, { context: url });
       });
-  }, [frameUrlRecord, logEventWithContext, setFrameRecord, url]);
+  }, [logEventWithContext, removeFrame, url]);
 
   return (
-    <div className="relative">
+    <div className="relative mb-4 break-inside-avoid">
       {currentWalletIsProfileOwner && (
         <Popover.Root>
           <Popover.Trigger asChild>

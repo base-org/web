@@ -9,6 +9,7 @@ import Modal from 'apps/web/src/components/Modal';
 import { useFIDQuery } from 'apps/web/src/hooks/useFarcasterUserByFID';
 import QRCode from 'qrcode.react';
 import { useCallback, useMemo } from 'react';
+import FarcasterIcon from './white-purple-farcaster-icon.svg';
 
 export default function FarcasterAccountModal() {
   const { farcasterSignerState, showFarcasterQRModal, setShowFarcasterQRModal } = useFrameContext();
@@ -31,7 +32,7 @@ export default function FarcasterAccountModal() {
 
   return (
     <Modal isOpen={showFarcasterQRModal} onClose={handleModalClose}>
-      <div className="max-w-lg rounded-lg bg-white">
+      <div className="max-w-72 rounded-lg bg-white">
         {/* Sign-in section when the user is not signed in */}
         {!farcasterUser && (
           <div className="flex flex-col items-center gap-4">
@@ -72,7 +73,11 @@ function IdentityState({ user, onLogout }: { user: FarcasterSigner; onLogout: ()
     farcasterSignerState.logout().catch(console.warn).finally(onLogout);
   }, [farcasterSignerState, onLogout]);
   if (user.status === 'pending_approval') {
-    return <p className="flex items-center justify-center">Sign in with Warpcast</p>;
+    return (
+      <p className="mb-2 flex items-center justify-center text-2xl text-illoblack">
+        Sign in with Warpcast
+      </p>
+    );
   }
   if (user.status === 'approved') {
     const farcasterIdentity = data?.users[0];
@@ -111,12 +116,24 @@ function IdentityState({ user, onLogout }: { user: FarcasterSigner; onLogout: ()
   return null;
 }
 
+const imageSettings = {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  src: FarcasterIcon.src,
+  x: undefined,
+  y: undefined,
+  height: 60,
+  width: 60,
+  opacity: 1,
+  excavate: true,
+};
 function SelectedIdentity({ user }: { user: FarcasterSigner }) {
   if (user.status === 'pending_approval') {
     return (
-      <div className="mt-4 flex flex-col items-center gap-2 border-t pt-4">
-        Scan with your camera app
-        <QRCode value={user.signerApprovalUrl} size={128} />
+      <div className="flex flex-col items-center gap-2">
+        <p className="mb-3 text-palette-foregroundMuted">
+          Scan this QR code to sign in. You may need to use warps to connect
+        </p>
+        <QRCode value={user.signerApprovalUrl} size={276} level="H" imageSettings={imageSettings} />
         <div className="text-muted-foreground lg:hidden">OR</div>
         <a
           href={user.signerApprovalUrl}

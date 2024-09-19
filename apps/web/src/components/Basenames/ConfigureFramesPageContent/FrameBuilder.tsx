@@ -10,9 +10,7 @@ import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrame
 import { SuggestionCard } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/SuggestionCard';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Input from 'apps/web/src/components/Input';
-import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { isValidUrl } from 'apps/web/src/utils/urls';
-import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
@@ -25,8 +23,8 @@ import nftProduct from './ui/nftProduct.svg';
 import payouts from './ui/payouts.svg';
 import previewBackground from './ui/preview-background.svg';
 import emptyPreviewFrame from './ui/preview-frame.svg';
-import swap from './ui/swap.svg';
 import starActive from './ui/starActive.svg';
+import swap from './ui/swap.svg';
 
 export default function FrameBuilder() {
   const params = useParams();
@@ -45,12 +43,7 @@ export default function FrameBuilder() {
     scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  const { profileUsername, profileAddress } = useUsernameProfile();
-  const { existingTextRecords } = useReadBaseEnsTextRecords({
-    address: profileAddress,
-    username: profileUsername,
-  });
-  const homeframeUrlString = existingTextRecords[UsernameTextRecordKeys.Frames] ?? '';
+  const { profileAddress } = useUsernameProfile();
 
   const [swapTokenSymbol, setSwapTokenSymbol] = useState('');
   const handleSwapTokenSymbolChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -126,7 +119,7 @@ export default function FrameBuilder() {
     [logEventWithContext],
   );
 
-  const { pendingFrameChange, setFrameRecord } = useFrameContext();
+  const { pendingFrameChange, addFrame } = useFrameContext();
 
   const handlePaycasterClick = useCallback(() => {
     if (basename) {
@@ -162,21 +155,17 @@ export default function FrameBuilder() {
     } else {
       setNewFrameUrl('');
     }
-  }, [profileAddress]);
+  }, [handleNextStep, logEventWithContext, profileAddress]);
 
   const handleAddFrameClick = useCallback(() => {
     if (!newFrameUrl) return;
-    setFrameRecord(homeframeUrlString ? `${homeframeUrlString}|${newFrameUrl}` : newFrameUrl)
-      .then(() => {
-        logEventWithContext('basename_profile_frame_posted', ActionType.click, {
-          context: newFrameUrl,
-        });
-        router.push(`/name/${basename}`);
-      })
+    addFrame(newFrameUrl)
+      .then(() => router.push(`/name/${basename}`))
       .catch(console.warn);
-  }, [newFrameUrl, setFrameRecord, homeframeUrlString, logEventWithContext, router, basename]);
+  }, [newFrameUrl, addFrame, router, basename]);
 
   // corresponds to tailwind's md: rule
+  // this might be breaking ssr hydration
   const isDesktop = useMediaQuery('(min-width: 768px)');
   const isMobile = useMediaQuery('(max-width: 769px)');
 
@@ -258,7 +247,8 @@ export default function FrameBuilder() {
               slice.so
             </a>
           </li>
-          <li>Paste a link to the product you want to sell on your profile</li>
+          <li>Find the product you want to sell on your profile</li>
+          <li>Click on the “share“ icon to copy a link to the product and paste it here</li>
         </ol>
         <Input
           placeholder="https://"

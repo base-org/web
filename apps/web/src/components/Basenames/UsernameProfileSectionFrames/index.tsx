@@ -1,5 +1,6 @@
 'use client';
 
+import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import {
   FramesProvider,
@@ -10,31 +11,25 @@ import FrameListItem from 'apps/web/src/components/Basenames/UsernameProfileSect
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
 import { Button, ButtonSizes } from 'apps/web/src/components/Button/Button';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
-import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
-import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
+import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { useCallback } from 'react';
 import cornerGarnish from './corner-garnish.svg';
 import frameIcon from './frame-icon.svg';
-import { useAnalytics } from 'apps/web/contexts/Analytics';
-import { ActionType } from 'libs/base-ui/utils/logEvent';
 
 function SectionContent() {
-  const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
-  const { frameInteractionError, setFrameInteractionError } = useFrameContext();
+  const { profileUsername, currentWalletIsProfileOwner } = useUsernameProfile();
+  const {
+    frameInteractionError,
+    setFrameInteractionError,
+    frameUrls,
+    existingTextRecordsIsLoading,
+  } = useFrameContext();
   const handleErrorClick = useCallback(
     () => setFrameInteractionError(''),
     [setFrameInteractionError],
   );
-  const { existingTextRecords, existingTextRecordsIsLoading } = useReadBaseEnsTextRecords({
-    address: profileAddress,
-    username: profileUsername,
-    refetchInterval: currentWalletIsProfileOwner ? 5000 : Infinity,
-  });
-  const homeframeUrlString = existingTextRecords[UsernameTextRecordKeys.Frames] ?? '';
-  const frameUrls = homeframeUrlString.split('|').filter(Boolean);
-
   const { logEventWithContext } = useAnalytics();
   const handleAddFrameLinkClick = useCallback(() => {
     logEventWithContext('basename_profile_frame_try_now_clicked', ActionType.click);
@@ -96,7 +91,7 @@ function SectionContent() {
           {frameInteractionError}
         </Button>
       )}
-      <div className="grid grid-flow-row-dense auto-rows-min grid-cols-1 gap-4 p-4 xl:grid-cols-2">
+      <div className="columns-1 gap-4 p-4 sm:columns-2 lg:columns-3">
         {frameUrls.map((url) => (
           <FrameListItem url={url} key={url} />
         ))}

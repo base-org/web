@@ -23,7 +23,7 @@ import useBasenameChain, { isBasenameSupportedChain } from 'apps/web/src/hooks/u
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { namehash } from 'viem';
 import { useAccount, useChainId, useConfig, useWriteContract } from 'wagmi';
 import { sendTransaction, signTypedData, switchChain } from 'wagmi/actions';
@@ -43,6 +43,12 @@ function parseChainId(id: string): number {
   return parseInt(id.split('eip155:')[1]);
 }
 
+function removeUrl(urls: string, urlSubstringToRemove: string): string {
+  const urlArray = urls.split('|');
+  const filteredUrls = urlArray.filter((url) => !url.includes(urlSubstringToRemove));
+  return filteredUrls.filter(Boolean).join('|');
+}
+
 export type FrameContextValue = {
   currentWalletIsProfileOwner?: boolean;
   frameUrlRecord: string;
@@ -60,6 +66,10 @@ export type FrameContextValue = {
   pendingFrameChange: boolean;
   setShowFarcasterQRModal: (b: boolean) => void;
   setFrameRecord: (url: string) => Promise<`0x${string}` | undefined>;
+  frameUrls: string[];
+  addFrame: (url: string) => Promise<`0x${string}` | undefined>;
+  removeFrame: (url: string) => Promise<`0x${string}` | undefined>;
+  existingTextRecordsIsLoading: boolean;
 };
 
 export const FrameContext = createContext<FrameContextValue | null>(null);
@@ -82,13 +92,15 @@ export function FramesProvider({ children }: FramesProviderProps) {
   const { address } = useAccount();
   const { logError } = useErrors();
   const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
-  const { existingTextRecords, refetchExistingTextRecords } = useReadBaseEnsTextRecords({
-    address: profileAddress,
-    username: profileUsername,
-    refetchInterval: currentWalletIsProfileOwner ? 1000 * 5 : Infinity,
-  });
+  const { existingTextRecords, existingTextRecordsIsLoading, refetchExistingTextRecords } =
+    useReadBaseEnsTextRecords({
+      address: profileAddress,
+      username: profileUsername,
+      refetchInterval: currentWalletIsProfileOwner ? 1000 * 5 : Infinity,
+    });
 
   const frameUrlRecord = existingTextRecords[UsernameTextRecordKeys.Frames];
+
   const { frameContext: farcasterFrameContext } = useFarcasterFrameContext({
     fallbackContext: fallbackFrameContext,
   });
@@ -197,6 +209,11 @@ export function FramesProvider({ children }: FramesProviderProps) {
 
   const { writeContractAsync, isPending: pendingFrameChange } = useWriteContract();
   const { basenameChain } = useBasenameChain(profileUsername);
+
+  const [optimisticFrameUrls, setOptimisticFrameUrls] = useState<string[]>([]);
+  useEffect(() => {
+    setOptimisticFrameUrls(frameUrlRecord.split('|').filter(Boolean));
+  }, [frameUrlRecord]);
   const setFrameRecord = useCallback(
     async (frameUrl: string) => {
       async function doTransaction() {
@@ -238,6 +255,31 @@ export function FramesProvider({ children }: FramesProviderProps) {
     ],
   );
 
+  const removeFrame = useCallback(
+    async (url: string) => {
+      const newRecord = removeUrl(frameUrlRecord, url);
+      logEventWithContext('basename_profile_frame_removed', ActionType.click, {
+        context: url,
+      });
+      setOptimisticFrameUrls(newRecord.split('|').filter(Boolean));
+      return setFrameRecord(newRecord);
+    },
+    [frameUrlRecord, logEventWithContext, setFrameRecord],
+  );
+
+  const addFrame = useCallback(
+    async (url: string) => {
+      const newUrls = [...optimisticFrameUrls, url];
+      const newRecord = newUrls.join('|');
+      logEventWithContext('basename_profile_frame_posted', ActionType.click, {
+        context: url,
+      });
+      setOptimisticFrameUrls(newUrls);
+      return setFrameRecord(newRecord);
+    },
+    [logEventWithContext, optimisticFrameUrls, setFrameRecord],
+  );
+
   const value = useMemo(
     () => ({
       currentWalletIsProfileOwner,
@@ -259,7 +301,10 @@ export function FramesProvider({ children }: FramesProviderProps) {
       showFarcasterQRModal,
       setShowFarcasterQRModal,
       pendingFrameChange,
-      setFrameRecord,
+      addFrame,
+      removeFrame,
+      existingTextRecordsIsLoading,
+      frameUrls: optimisticFrameUrls,
     }),
     [
       currentWalletIsProfileOwner,
@@ -275,7 +320,10 @@ export function FramesProvider({ children }: FramesProviderProps) {
       frameInteractionError,
       showFarcasterQRModal,
       pendingFrameChange,
-      setFrameRecord,
+      addFrame,
+      removeFrame,
+      existingTextRecordsIsLoading,
+      optimisticFrameUrls,
     ],
   );
 
