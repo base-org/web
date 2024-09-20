@@ -1,7 +1,7 @@
 ---
-title: 'Add Frames to A Basename Profile'
-slug: /add-frames-to-basename-profile
-description: Learn how to customize your Basename profile by adding Frames, showcasing dynamic content with ease on Base.
+title: 'Add Frames to A Basename'
+slug: /add-frames-to-basename
+description: Learn how to customize your Basename by adding Frames, showcasing dynamic content with ease on Base.
 author: hughescoin
 keywords:
   [
@@ -23,9 +23,9 @@ hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
-# Add Frames to A Basename Profile
+# Add Frames to A Basename
 
-Welcome to the exciting world of Frames for your Basename profile! This tutorial will guide you step-by-step through adding a frame to your Basename profile, allowing you to personalize and display unique content on the Base blockchain.
+Welcome to the exciting world of Frames for your Basename! This tutorial will guide you step-by-step through adding a frame to your Basename, allowing you to personalize and display unique content on the Base blockchain.
 
 ## What Are Frames?
 

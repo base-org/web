@@ -110,4 +110,4 @@ Follow our step-by-step [guide] to get started. While Basenames supports all fra
 
 ---
 
-[guide]: https://docs.base.org/tutorials/add-frames-to-basename-profile
+[guide]: https://docs.base.org/tutorials/add-frames-to-basename
