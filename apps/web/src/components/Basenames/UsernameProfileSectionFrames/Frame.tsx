@@ -48,6 +48,9 @@ export default function Frame({ url, className }: FrameProps) {
     const currentFrameStackItem = openFrameState.currentFrameStackItem;
     if (!currentFrameStackItem) return false;
     const status = currentFrameStackItem.status;
+    if (status === 'requestError') {
+      return true;
+    }
     if (status === 'done' && currentFrameStackItem.frameResult.frame.accepts) {
       return currentFrameStackItem.frameResult.frame.accepts.some(
         (element) => element.id === 'anonymous',
