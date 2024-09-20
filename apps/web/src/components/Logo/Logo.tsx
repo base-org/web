@@ -1,5 +1,6 @@
-import Image from 'next/image';
+'use client';
 import BaseBootcampLogo from '../../../public/images/base-bootcamp-white.png';
+import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 
 type LogoProps = {
   color?: 'white' | 'black';
@@ -10,7 +11,7 @@ type LogoProps = {
 
 export function Logo({ color = 'white', width = '100%', height = '32', path }: LogoProps) {
   if (path === '/bootcamp') {
-    return <Image width={300} src={BaseBootcampLogo} alt="Base Bootcamp" />;
+    return <ImageAdaptive width={300} src={BaseBootcampLogo} alt="Base Bootcamp" />;
   }
 
   return (

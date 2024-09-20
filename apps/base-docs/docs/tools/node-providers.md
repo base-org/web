@@ -30,13 +30,14 @@ hide_table_of_contents: true
 
 ---
 
-## Coinbase Cloud
+## Coinbase Developer Platform (CDP)
 
-[Coinbase Cloud](https://coinbase.com/cloud) provides an RPC endpoint that runs on the same node infrastructure that powers Coinbase's retail exchange, meaning you get the rock solid reliability of our retail exchange as a developer. Coinbase Cloud gives you a free, rate limited RPC endpoint to begin building on Base.
+[CDP](https://portal.cdp.coinbase.com/) provides an RPC endpoint that runs on the same node infrastructure that powers Coinbase's retail exchange, meaning you get the rock solid reliability of our retail exchange as a developer. CDP gives you a free, rate limited RPC endpoint to begin building on Base.
 
 #### Supported Networks
 
 - Base Mainnet
+- Base Sepolia (Testnet)
 
 ---
 
@@ -53,6 +54,17 @@ hide_table_of_contents: true
 ## Alchemy
 
 [Alchemy](https://www.alchemy.com/base) is a popular API provider and developer platform. Its robust, free tier offers access to enhanced features like SDKs, [JSON-RPC APIs](https://docs.alchemy.com/reference/base-api-quickstart), and hosted mainnet and testnet nodes for Base.
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
+
+---
+
+## All That Node
+
+[All That Node](https://www.allthatnode.com/base.dsrv) is a comprehensive multi-chain development suite, designed to support multiple networks from a single platform. They offer free and [paid plans](https://www.allthatnode.com/pricing.dsrv) with additional features and increased request limits.
 
 #### Supported Networks
 
@@ -191,6 +203,15 @@ hide_table_of_contents: true
 
 ---
 
+## RockX
+[RockX](https://access.rockx.com) offers a global blockchain node network and developer tools for onchain innovation. Start with our free [Base RPC](https://access.rockx.com/product/base-blockchain-api-for-web3-builders) to access institutional-grade solutions.
+
+#### Supported Networks
+
+- Base Mainnet
+
+---
+
 ## Stackup
 
 [Stackup](https://www.stackup.sh/) is a leading ERC-4337 infrastructure platform. You can access hosted Base nodes with built-in [account abstraction tools](https://docs.stackup.sh/docs) like bundlers and paymasters.
@@ -225,7 +246,17 @@ hide_table_of_contents: true
 
 ## Unifra
 
-[Unifra](https://base.unifra.io/) is a Web3 developer platform that provides tools, APIs, and node infrastructure, and provides access to Base nodes that are nodes are reliabile, scalable, and easy to use.
+[Unifra](https://base.unifra.io/) is a Web3 developer platform that provides tools, APIs, and node infrastructure, and provides access to Base nodes that are nodes are reliable, scalable, and easy to use.
+
+#### Supported Networks
+
+- Base Mainnet
+
+---
+
+## Validation Cloud
+
+[Validation Cloud](https://app.validationcloud.io/) is the world’s fastest node provider according to Compare Nodes. With 50 million compute units available for use without a credit card and a scale tier that never has rate limits, Validation Cloud is built to support your most rigorous and low-latency workloads.
 
 #### Supported Networks
 

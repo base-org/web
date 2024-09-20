@@ -29,75 +29,9 @@ const config = {
   title: APP_TITLE,
   tagline: '',
   url: 'https://docs.base.org',
-  headTags: [
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'og:type',
-        content: 'website',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'og:title',
-        content: 'Base | Docs',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'og:description',
-        content:
-          'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2.',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'og:image',
-        content: 'https://docs.base.org/img/base-open-graph.png',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'twitter:card',
-        content: 'summary_large_image',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'twitter:domain',
-        content: 'base.org',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'twitter:title',
-        content: 'Base | Docs',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'twitter:description',
-        content:
-          'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2.',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'twitter:image',
-        content: 'https://docs.base.org/img/base-open-graph.png',
-      },
-    },
-  ],
   customFields: {
     nodeEnv: process.env.NODE_ENV,
+    sprigEnvironmentId: 'Q2ppiEaeSEJI',
   },
 
   presets: [
@@ -121,10 +55,10 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'base-camp',
-        path: 'base-camp',
-        routeBasePath: 'base-camp',
-        sidebarPath: require.resolve('./base-camp/sidebars.js'),
+        id: 'base-learn',
+        path: 'base-learn',
+        routeBasePath: 'base-learn',
+        sidebarPath: require.resolve('./base-learn/sidebars.js'),
       },
     ],
     [
@@ -160,6 +94,24 @@ const config = {
 
   themeConfig: {
     image: 'img/base-open-graph.png',
+    metadata: [
+      { name: 'og:type', content: 'website' },
+      { name: 'og:title', content: 'Base | Docs' },
+      {
+        name: 'og:description',
+        content:
+          'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2',
+      },
+      { name: 'twitter:title', content: 'Base | Docs' },
+      {
+        name: 'twitter:description',
+        content:
+          'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2.',
+      },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:domain', content: 'base.org' },
+    ],
+
     ...baseConfig.themeConfig,
     navbar: {
       logo: {
@@ -173,34 +125,59 @@ const config = {
           exact: true,
           navposition: 'bottomLeft',
           label: 'Home',
+          type: 'custom-navbarLink',
+          eventLabel: 'home',
+          eventContext: 'navbar',
         },
         {
-          type: 'doc',
-          docId: 'overview',
+          to: 'https://base.org/getstarted',
+          navposition: 'bottomLeft',
+          label: 'Get Started',
+          type: 'custom-navbarLink',
+          eventLabel: 'getstarted',
+          eventContext: 'navbar',
+        },
+        {
+          to: '/docs',
           navposition: 'bottomLeft',
           label: 'Docs',
+          type: 'custom-navbarLink',
+          eventLabel: 'docs',
+          eventContext: 'navbar',
         },
         {
-          to: '/tutorials',
+          to: '/base-learn/docs/welcome',
           navposition: 'bottomLeft',
-          label: 'Tutorials',
-        },
-        {
-          to: '/base-camp/docs/welcome',
-          navposition: 'bottomLeft',
-          label: 'Camp',
+          label: 'Learn',
           items: [
             {
-              label: 'Learn',
-              to: '/base-camp/docs/welcome',
+              label: 'Learn to Build Onchain',
+              to: '/base-learn/docs/welcome',
+              type: 'custom-dropdownLink',
+              eventLabel: 'camp_learn',
+              eventContext: 'navbar',
+            },
+            {
+              label: 'Tutorials',
+              to: '/tutorials',
+              type: 'custom-dropdownLink',
+              eventLabel: 'tutorials',
+              eventContext: 'navbar',
             },
             {
               label: 'Track your progress',
-              to: '/base-camp/progress',
+              to: '/base-learn/progress',
+              type: 'custom-dropdownLink',
+              eventLabel: 'camp_trackprogress',
+              eventContext: 'navbar',
             },
             {
               label: 'Bootcamp',
-              href: 'https://base.org/bootcamp',
+              to: 'https://base.org/bootcamp',
+              target: '_blank',
+              type: 'custom-dropdownLink',
+              eventLabel: 'camp_bootcamp',
+              eventContext: 'navbar',
             },
           ],
         },
@@ -211,18 +188,29 @@ const config = {
           items: [
             {
               label: 'Apps',
-              href: 'https://www.base.org/ecosystem',
+              to: 'https://www.base.org/ecosystem',
+              target: '_blank',
+              type: 'custom-dropdownLink',
+              eventLabel: 'ecosystem_apps',
+              eventContext: 'navbar',
             },
             {
               label: 'Grants',
-              href: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders',
+              to: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders',
+              target: '_blank',
+              type: 'custom-dropdownLink',
+              eventLabel: 'ecosystem_grants',
+              eventContext: 'navbar',
             },
           ],
         },
         {
           label: 'Bridge',
           navposition: 'topRight',
-          href: 'https://bridge.base.org/',
+          to: 'https://bridge.base.org/',
+          type: 'custom-navbarLink',
+          eventLabel: 'bridge',
+          eventContext: 'navbar',
         },
         {
           type: 'dropdown',
@@ -231,15 +219,27 @@ const config = {
           items: [
             {
               label: 'Block Explorer',
-              href: 'https://explorer.base.org/',
+              to: 'https://base.blockscout.com/',
+              target: '_blank',
+              type: 'custom-dropdownLink',
+              eventLabel: 'builders_blockexplorer',
+              eventContext: 'navbar',
             },
             {
               label: 'Status',
-              href: 'https://status.base.org/',
+              to: 'https://status.base.org/',
+              target: '_blank',
+              type: 'custom-dropdownLink',
+              eventLabel: 'builders_status',
+              eventContext: 'navbar',
             },
             {
               label: 'Bug Bounty',
-              href: 'https://hackerone.com/coinbase',
+              to: 'https://hackerone.com/coinbase',
+              target: '_blank',
+              type: 'custom-dropdownLink',
+              eventLabel: 'builders_bugbounty',
+              eventContext: 'navbar',
             },
           ],
         },
@@ -250,15 +250,70 @@ const config = {
           items: [
             {
               label: 'Mission',
-              href: 'https://www.base.org/about',
+              to: 'https://www.base.org/about',
+              target: '_blank',
+              type: 'custom-dropdownLink',
+              eventLabel: 'about_mission',
+              eventContext: 'navbar',
             },
             {
               label: 'Blog',
-              href: 'https://base.mirror.xyz/',
+              to: 'https://base.mirror.xyz/',
+              target: '_blank',
+              type: 'custom-dropdownLink',
+              eventLabel: 'about_blog',
+              eventContext: 'navbar',
             },
             {
               label: 'Jobs',
-              href: 'https://www.base.org/jobs',
+              to: 'https://www.base.org/jobs',
+              target: '_blank',
+              type: 'custom-dropdownLink',
+              eventLabel: 'about_jobs',
+              eventContext: 'navbar',
+            },
+          ],
+        },
+        {
+          type: 'dropdown',
+          label: 'Socials',
+          navposition: 'topRight',
+          items: [
+            {
+              label: 'Farcaster',
+              icon: 'farcaster',
+              type: 'custom-dropdownLink',
+              target: '_blank',
+              to: 'https://warpcast.com/~/channel/base',
+              eventLabel: 'socials_farcaster',
+              eventContext: 'navbar',
+            },
+            {
+              label: 'Discord',
+              icon: 'discord',
+              type: 'custom-dropdownLink',
+              target: '_blank',
+              to: 'https://discord.com/invite/buildonbase',
+              eventLabel: 'socials_discord',
+              eventContext: 'navbar',
+            },
+            {
+              label: 'Twitter',
+              icon: 'twitter',
+              type: 'custom-dropdownLink',
+              target: '_blank',
+              to: 'https://www.twitter.com/base',
+              eventLabel: 'socials_twitter',
+              eventContext: 'navbar',
+            },
+            {
+              label: 'Github',
+              icon: 'github',
+              type: 'custom-dropdownLink',
+              target: '_blank',
+              to: 'https://www.github.com/base-org',
+              eventLabel: 'socials_github',
+              eventContext: 'navbar',
             },
           ],
         },

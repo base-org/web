@@ -50,11 +50,19 @@ app.post('/api/rateMessage', (req, res) => {
 });
 
 app.get('/base-camp', (req, res) => {
-  res.redirect('/base-camp/docs/welcome');
+  res.redirect('/base-learn/docs/welcome');
+});
+
+app.get('/base-learn', (req, res) => {
+  res.redirect('/base-learn/docs/welcome');
 });
 
 app.get('/basecamp', (req, res) => {
-  res.redirect('/base-camp/docs/welcome');
+  res.redirect('/base-learn/docs/welcome');
+});
+
+app.get('/baselearn', (req, res) => {
+  res.redirect('/base-learn/docs/welcome');
 });
 
 app.get('/using-base', (req, res) => {
@@ -141,12 +149,12 @@ app.get('/tools/bridges', (req, res) => {
   res.redirect('/docs/tools/bridges');
 });
 
-app.get('/tools/bridges-testnet', (req, res) => {
-  res.redirect('/docs/tools/bridges-testnet');
+app.get('/docs/tools/bridges-testnet', (req, res) => {
+  res.redirect('/docs/tools/bridges');
 });
 
-app.get('/tools/bridge-faq', (req, res) => {
-  res.redirect('/docs/tools/bridge-faq');
+app.get('docs/tools/bridge-faq', (req, res) => {
+  res.redirect('/docs/tools/bridges');
 });
 
 app.get('/tools/foundry', (req, res) => {
@@ -422,6 +430,12 @@ const contentSecurityPolicy = {
     'https://api.mendable.ai/v1/newConversation', // Mendable API
     'https://api.mendable.ai/v1/mendableChat', // Mendable API
     'https://api.mendable.ai/v1/rateMessage', // Mendable API
+    'https://api.sprig.com', // Sprig API
+    'https://cdn.sprig.com', // Sprig API
+    'https://flag.lab.amplitude.com/sdk/v2/flags',
+    'https://api.lab.amplitude.com/sdk/v2/vardata',
+    'https://browser-intake-datadoghq.com', // datadog
+    'https://*.datadoghq.com'
   ],
   'frame-src': ["'self'", 'https://player.vimeo.com', 'https://verify.walletconnect.org'],
 };
@@ -435,7 +449,7 @@ app.use(
     setHeaders: function (res) {
       res.setHeader('cache-control', 'no-store');
       res.setHeader('content-security-policy', cspObjectToString);
-      res.setHeader('cross-origin-opener-policy', 'same-origin');
+      res.setHeader('cross-origin-opener-policy', 'same-origin-allow-popups');
       res.setHeader('referrer-policy', 'strict-origin-when-cross-origin');
       res.setHeader('strict-transport-security', 'max-age=63072000; includeSubDomains; preload');
       res.setHeader('x-content-type-options', 'nosniff');

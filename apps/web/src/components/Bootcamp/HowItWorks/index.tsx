@@ -35,10 +35,10 @@ const featureItems = [
           <a
             className="underline"
             target="_blank"
-            href="https://docs.base.org/base-camp/docs/welcome"
+            href="https://docs.base.org/base-learn/docs/welcome"
             rel="noreferrer"
           >
-            Base Camp
+            Base Learn
           </a>
           , meeting regularly with your mentor. You’ll build your final project during the final two
           weeks - a real-world, onchain app that you’ll demo virtually on Demo Day.
@@ -63,7 +63,7 @@ const featureItems = [
   },
 ];
 
-export function HowItWorks() {
+export async function HowItWorks() {
   return (
     <div className="flex w-full max-w-[1440px] flex-col space-y-24 bg-black px-8 pt-12">
       <div className="flex w-full flex-col font-display text-3xl text-white md:text-5xl lg:text-6xl">

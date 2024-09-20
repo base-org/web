@@ -96,12 +96,19 @@ Certain contracts are mandatory according to the [OP Stack SDK](https://stack.op
 | Name                         | Address                                                                                                                       |
 | :--------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | AddressManager               | [0x709c2B8ef4A9feFc629A8a2C1AF424Dc5BD6ad1B](https://sepolia.etherscan.io/address/0x709c2B8ef4A9feFc629A8a2C1AF424Dc5BD6ad1B) |
+| AnchorStateRegistryProxy     | [0x4C8BA32A5DAC2A720bb35CeDB51D6B067D104205](https://sepolia.etherscan.io/address/0x4C8BA32A5DAC2A720bb35CeDB51D6B067D104205) |
+| DelayedWETHProxy             | [0x7698b262B7a534912c8366dD8a531672deEC634e](https://sepolia.etherscan.io/address/0x7698b262B7a534912c8366dD8a531672deEC634e) |
+| DisputeGameFactoryProxy      | [0xd6E6dBf4F7EA0ac412fD8b65ED297e64BB7a06E1](https://sepolia.etherscan.io/address/0xd6E6dBf4F7EA0ac412fD8b65ED297e64BB7a06E1) |
+| FaultDisputeGame             | [0x48F9F3190b7B5231cBf2aD1A1315AF7f6A554020](https://sepolia.etherscan.io/address/0x48F9F3190b7B5231cBf2aD1A1315AF7f6A554020) |
 | L1CrossDomainMessenger       | [0xC34855F4De64F1840e5686e64278da901e261f20](https://sepolia.etherscan.io/address/0xC34855F4De64F1840e5686e64278da901e261f20) |
 | L1ERC721Bridge               | [0x21eFD066e581FA55Ef105170Cc04d74386a09190](https://sepolia.etherscan.io/address/0x21eFD066e581FA55Ef105170Cc04d74386a09190) |
 | L1StandardBridge             | [0xfd0Bf71F60660E2f608ed56e1659C450eB113120](https://sepolia.etherscan.io/address/0xfd0Bf71F60660E2f608ed56e1659C450eB113120) |
 | L2OutputOracle               | [0x84457ca9D0163FbC4bbfe4Dfbb20ba46e48DF254](https://sepolia.etherscan.io/address/0x84457ca9D0163FbC4bbfe4Dfbb20ba46e48DF254) |
+| MIPS                         | [0xFF760A87E41144b336E29b6D4582427dEBdB6dee](https://sepolia.etherscan.io/address/0xFF760A87E41144b336E29b6D4582427dEBdB6dee) |
 | OptimismMintableERC20Factory | [0xb1efB9650aD6d0CC1ed3Ac4a0B7f1D5732696D37](https://sepolia.etherscan.io/address/0xb1efB9650aD6d0CC1ed3Ac4a0B7f1D5732696D37) |
 | OptimismPortal               | [0x49f53e41452C74589E85cA1677426Ba426459e85](https://sepolia.etherscan.io/address/0x49f53e41452C74589E85cA1677426Ba426459e85) |
+| PermissionedDisputeGame      | [0x54966d5A42a812D0dAaDe1FA2321FF8b102d1ee1](https://sepolia.etherscan.io/address/0x54966d5A42a812D0dAaDe1FA2321FF8b102d1ee1) |
+| PreimageOracle               | [0x627F825CBd48c4102d36f287be71f4234426b9e4](https://sepolia.etherscan.io/address/0x627F825CBd48c4102d36f287be71f4234426b9e4) |
 | ProxyAdmin                   | [0x0389E59Aa0a41E4A413Ae70f0008e76CAA34b1F3](https://sepolia.etherscan.io/address/0x0389E59Aa0a41E4A413Ae70f0008e76CAA34b1F3) |
 | SystemConfig                 | [0xf272670eb55e895584501d564AfEB048bEd26194](https://sepolia.etherscan.io/address/0xf272670eb55e895584501d564AfEB048bEd26194) |
 
@@ -131,8 +138,8 @@ Certain contracts are mandatory according to the [OP Stack SDK](https://stack.op
 | Batch Sender           | [0x6CDEbe940BC0F26850285cacA097C11c33103E47](https://sepolia.etherscan.io/address/0x6CDEbe940BC0F26850285cacA097C11c33103E47)      | EOA managed by Coinbase Technologies |
 | Batch Inbox            | [0xff00000000000000000000000000000000084532](https://sepolia.etherscan.io/address/0xff00000000000000000000000000000000084532)      | EOA (with no known private key)      |
 | Output Proposer        | [0x20044a0d104E9e788A0C984A2B7eAe615afD046b](https://sepolia.etherscan.io/address/0x20044a0d104E9e788A0C984A2B7eAe615afD046b)      | EOA managed by Coinbase Technologies |
-| Proxy Admin Owner (L1) | [0x608081689Fe46936fB2fBDF7552CbB1D80ad4822](https://sepolia.etherscan.io/address/0x608081689Fe46936fB2fBDF7552CbB1D80ad4822)      | EOA managed by Coinbase Technologies |
-| Proxy Admin Owner (L2) | [0x608081689Fe46936fB2fBDF7552CbB1D80ad4822](https://sepolia-explorer.base.org/address/0x608081689Fe46936fB2fBDF7552CbB1D80ad4822) | EOA managed by Coinbase Technologies |
+| Proxy Admin Owner (L1) | [0x0fe884546476dDd290eC46318785046ef68a0BA9](https://sepolia.etherscan.io/address/0x0fe884546476dDd290eC46318785046ef68a0BA9)      | Gnosis Safe                          |
+| Proxy Admin Owner (L2) | [0x20f984546476ddd290ec46318785046ef68a1cba](https://sepolia-explorer.base.org/address/0x20f984546476ddd290ec46318785046ef68a1cba) | Gnosis Safe                          |
 | Challenger             | [0xDa3037Ff70Ac92CD867c683BD807e5A484857405](https://sepolia.etherscan.io/address/0xDa3037Ff70Ac92CD867c683BD807e5A484857405)      | EOA managed by Coinbase Technologies |
-| System config owner    | [0x608081689Fe46936fB2fBDF7552CbB1D80ad4822](https://sepolia.etherscan.io/address/0x608081689Fe46936fB2fBDF7552CbB1D80ad4822)      | EOA managed by Coinbase Technologies |
+| System config owner    | [0x0fe884546476dDd290eC46318785046ef68a0BA9](https://sepolia.etherscan.io/address/0x0fe884546476dDd290eC46318785046ef68a0BA9)      | Gnosis Safe                          |
 | Guardian               | [0xA9FF930151130fd19DA1F03E5077AFB7C78F8503](https://sepolia.etherscan.io/address/0xA9FF930151130fd19DA1F03E5077AFB7C78F8503)      | EOA managed by Coinbase Technologies |

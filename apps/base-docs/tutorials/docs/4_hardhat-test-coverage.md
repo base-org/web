@@ -55,7 +55,7 @@ Once the installation completes either manually or via the default Hardhat templ
 
 ## My first test coverage
 
-Review the following contract and test suite (You'll recognize these if you completed the [Hardhat testing lesson] in our [Basecamp] series).
+Review the following contract and test suite (You'll recognize these if you completed the [Hardhat testing lesson] in our [Base Learn] series).
 
 Contract:
 
@@ -257,5 +257,5 @@ In this tutorial, you've learned how to profile and analyze the test coverage of
 
 [Hardhat]: https://hardhat.org/
 [Solidity Coverage]: https://github.com/sc-forks/solidity-coverage
-[Hardhat testing lesson]: https://docs.base.org/base-camp/docs/hardhat-testing/hardhat-testing-sbs
-[Basecamp]: https://base.org/camp
+[Hardhat testing lesson]: https://docs.base.org/base-learn/docs/hardhat-testing/hardhat-testing-sbs
+[Base Learn]: https://base.org/learn

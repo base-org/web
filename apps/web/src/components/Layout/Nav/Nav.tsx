@@ -1,28 +1,36 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+'use client';
 
-import { Logo } from '../../Logo/Logo';
+import Link from 'next/link';
+import { usePathname } from 'next/dist/client/components/navigation';
+import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import DesktopNav from './DesktopNav';
 import MobileMenu from './MobileMenu';
-import { NftBanner } from './NftBanner';
+import logoBlack from './logoBlack.svg';
+import logoWhite from './logoWhite.svg';
+import Image, { StaticImageData } from 'next/image';
 
-type NavProps = {
-  color: 'white' | 'black';
-};
+const BLACK_NAV_PATHS = [
+  '/',
+  '/jobs/apply',
+  '/cookie-policy',
+  '/third-party-cookies',
+  '/onchainsummer',
+  '/name',
+];
 
-export function Nav({ color }: NavProps) {
-  const { pathname } = useRouter();
-
+export default function Nav() {
+  const pathname = usePathname();
+  const color = pathname && BLACK_NAV_PATHS.includes(pathname) ? 'black' : 'white';
+  const logo = color === 'black' ? (logoBlack as StaticImageData) : (logoWhite as StaticImageData);
   return (
-    <>
-      <NftBanner />
-      <nav className="bg-transparent z-10 flex h-24 w-full max-w-[1440px] flex-row items-center justify-between gap-16 self-center p-8">
+    <AnalyticsProvider context="navbar">
+      <nav className="z-10 flex h-24 w-full max-w-[1440px] flex-row items-center justify-between gap-16 self-center bg-transparent p-8">
         <Link href="/" aria-label="Base Homepage">
-          <Logo color={color} path={pathname} width="106px" />
+          <Image src={logo} alt="Base Logo" title="Base Logo" width="106" />
         </Link>
         <DesktopNav color={color} />
         <MobileMenu color={color} />
       </nav>
-    </>
+    </AnalyticsProvider>
   );
 }

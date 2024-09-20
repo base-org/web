@@ -1,20 +1,13 @@
-import { useState, useCallback } from 'react';
+'use client';
 import Link from 'next/link';
-import { CookiePreferencesModal } from '@coinbase/cookie-banner';
-
 import { Icon } from '../../Icon/Icon';
 import { Logo } from '../../Logo/Logo';
 import { bridgeUrl, docsUrl } from 'apps/web/src/constants';
+import { CookieManagerButton } from 'apps/web/src/components/CookieManagerButton';
 
 export function Footer() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleOpenModal = useCallback(() => setIsOpen(true), []);
-
-  const handleCloseModal = useCallback(() => setIsOpen(false), []);
-
   return (
-    <footer className="z-10 mt-auto flex w-full justify-center bg-gray lg:pb-64">
+    <footer className="z-10 mt-auto flex w-full justify-center bg-gray-90 lg:pb-64">
       <div className="flex w-full max-w-[1440px] flex-col justify-between p-8 lg:flex-row">
         <div className="flex flex-col font-display text-sm text-white">
           <div className="bg-blue-300 flex w-32 flex-row items-start justify-start">
@@ -35,13 +28,10 @@ export function Footer() {
             </div>
             <div className="flex flex-col">
               <p className="text-white">
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSdvX-a6LqOIR7Uk5cDPGUjUkpSCetvTor25M1JmW9eqgubS5Q/viewform?usp=sf_link"
-                  className="underline"
-                >
-                  Build on Base
-                </a>
-                : Get in touch with our teams about your project.
+                <Link href="/getstarted" className="underline">
+                  Builder Resource Kit
+                </Link>
+                : Get help to build and grow your project on Base.
               </p>
             </div>
           </div>
@@ -52,9 +42,7 @@ export function Footer() {
             <br />
             <Link href="/cookie-policy">Cookie Policy</Link>
             <br />
-            <button type="button" className="appearance-none underline" onClick={handleOpenModal}>
-              Cookie Manager
-            </button>
+            <CookieManagerButton />
           </p>
         </div>
         <div className="flex h-full flex-col gap-5 pt-24 lg:flex-row lg:gap-10 lg:pt-0">
@@ -91,6 +79,7 @@ export function Footer() {
               target="_blank"
               rel="noreferrer noopener"
               title="Join us on Discord"
+              aria-label="Join us on Discord"
             >
               <Icon name="discord" width="24" height="20" />
             </a>
@@ -99,6 +88,7 @@ export function Footer() {
               target="_blank"
               rel="noreferrer noopener"
               title="Join us on Twitter"
+              aria-label="Join us on Twitter"
             >
               <Icon name="twitter" width="24" height="20" />
             </a>
@@ -107,13 +97,13 @@ export function Footer() {
               target="_blank"
               rel="noreferrer noopener"
               title="Join us on Github"
+              aria-label="Join us on Github"
             >
               <Icon name="github" width="24" height="24" />
             </a>
           </div>
         </div>
       </div>
-      {isOpen && <CookiePreferencesModal isOpen={isOpen} onClose={handleCloseModal} />}
     </footer>
   );
 }

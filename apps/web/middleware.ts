@@ -5,16 +5,45 @@ export function middleware(req: NextRequest) {
 
   if (
     url.pathname === '/base-camp' ||
+    url.pathname === '/base-learn' ||
     url.pathname === '/basecamp' ||
+    url.pathname === '/baselearn' ||
     url.pathname === '/base-camp/docs' ||
+    url.pathname === '/base-learn/docs' ||
     url.pathname === '/basecamp/docs' ||
-    url.pathname === '/camp'
+    url.pathname === '/baselearn/docs' ||
+    url.pathname === '/camp' ||
+    url.pathname === '/learn'
   ) {
     url.host = 'docs.base.org';
-    url.pathname = '/base-camp/docs/welcome';
+    url.pathname = '/base-learn/docs/welcome';
     url.port = '443';
 
     return NextResponse.redirect(url);
+  }
+
+  // Open img and media csp on username profile to support frames
+  if (url.pathname.startsWith('/name/')) {
+    const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+
+    // Open image src
+    const cspHeader = `
+        img-src 'self' https: data: blob:;
+        media-src 'self' https: data: blob:;
+    `;
+
+    const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, ' ').trim();
+    const requestHeaders = new Headers(req.headers);
+    requestHeaders.set('x-nonce', nonce);
+    requestHeaders.set('Content-Security-Policy', contentSecurityPolicyHeaderValue);
+    const response = NextResponse.next({
+      request: {
+        headers: requestHeaders,
+      },
+    });
+    response.headers.set('Content-Security-Policy', contentSecurityPolicyHeaderValue);
+
+    return response;
   }
 
   if (url.pathname === '/guides/run-a-base-goerli-node') {

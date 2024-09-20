@@ -60,11 +60,12 @@ We recommend you have this configuration to run a node:
 
 - 8-Core CPU
 - at least 16 GB RAM
-- an SSD drive with at least 2.5 TB free
+- a locally attached NVMe SSD drive
+- adequate storage capacity to accommodate both the snapshot restoration process (if restoring from snapshot) and chain data, ensuring a minimum of (2 \* current_chain_size) + snapshot_size + 20%\_buffer
 
 :::info
 
-If utilizing Amazon Elastic Block Store (EBS), ensure timing buffered disk reads are fast enough in order to avoid latency issues alongside the rate of new blocks added to Base during the initial synchronization process.
+If utilizing Amazon Elastic Block Store (EBS), ensure timing buffered disk reads are fast enough in order to avoid latency issues alongside the rate of new blocks added to Base during the initial synchronization process; `io2 block express` is recommended.
 
 :::
 
@@ -102,31 +103,16 @@ If you're a prospective or current Base Node operator and would like to restore 
 
 #### Restoring from snapshot
 
-In the home directory of your Base Node, create a folder named `geth-data`. If you already have this folder, remove it to clear the existing state and then recreate it. Next, run the following code and wait for the operation to complete.
+In the home directory of your Base Node, create a folder named `geth-data` or `reth-data`. If you already have this folder, remove it to clear the existing state and then recreate it. Next, run the following code and wait for the operation to complete.
 
-**Testnet (Full)**
-
-```
-wget https://sepolia-full-snapshots.base.org/$(curl https://sepolia-full-snapshots.base.org/latest)
-```
-
-**Testnet (Archive)**
-
-```
-wget https://sepolia-archive-snapshots.base.org/$(curl https://sepolia-archive-snapshots.base.org/latest)
-```
-
-**Mainnet (Full)**
-
-```
-wget https://mainnet-full-snapshots.base.org/$(curl https://mainnet-full-snapshots.base.org/latest)
-```
-
-**Mainnet (Archive)**
-
-```
-wget https://mainnet-archive-snapshots.base.org/$(curl https://mainnet-archive-snapshots.base.org/latest)
-```
+| Network | Client | Snapshot Type | Command                                                                                                               |
+| ------- | ------ | ------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Testnet | Geth   | Full          | `wget https://sepolia-full-snapshots.base.org/$(curl https://sepolia-full-snapshots.base.org/latest)`                 |
+| Testnet | Geth   | Archive       | `wget https://sepolia-archive-snapshots.base.org/$(curl https://sepolia-archive-snapshots.base.org/latest)`           |
+| Testnet | Reth   | Archive       | `wget https://sepolia-reth-archive-snapshots.base.org/$(curl https://sepolia-reth-archive-snapshots.base.org/latest)` |
+| Mainnet | Geth   | Full          | `wget https://mainnet-full-snapshots.base.org/$(curl https://mainnet-full-snapshots.base.org/latest)`                 |
+| Mainnet | Geth   | Archive       | `wget https://mainnet-archive-snapshots.base.org/$(curl https://mainnet-archive-snapshots.base.org/latest)`           |
+| Mainnet | Reth   | Archive       | `wget https://mainnet-reth-archive-snapshots.base.org/$(curl https://mainnet-reth-archive-snapshots.base.org/latest)` |
 
 You'll then need to untar the downloaded snapshot and place the `geth` subfolder inside of it in the `geth-data` folder you created (unless you changed the location of your data directory).
 
@@ -159,4 +145,4 @@ You'll also know that the sync hasn't completed if you get `Error: nonce has alr
 [docker]: https://www.docker.com/
 [base node]: https://github.com/base-org/node
 [repo]: https://github.com/base-org/node
-[partners]: /tools/node-providers
+[partners]: /docs/tools/node-providers

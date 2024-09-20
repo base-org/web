@@ -3,7 +3,7 @@ import { FeatureCard } from 'apps/web/src/components/Features/FeatureCard';
 function OpenSourceDescription() {
   return (
     <p className="text-md font-sans text-white">
-      Base is built on Optimism’s open-source{' '}
+      Base is built on the Superchain&apos;s{' '}
       <a href="http://optimism.io" target="_blank" rel="noreferrer noopener" className="underline">
         OP Stack
       </a>
@@ -50,11 +50,13 @@ const featureItems = [
   },
 ];
 
-export function Features() {
+export async function Features() {
   return (
     <div className="flex w-full max-w-[1440px] flex-col space-y-24 bg-black px-8 pt-12">
       <div className="flex w-full flex-col font-display text-3xl text-white md:text-5xl lg:text-6xl">
-        <h2>Making Ethereum<br />
+        <h2>
+          Making Ethereum
+          <br />
           accessible to <span className="italic">everyone</span>
         </h2>
       </div>

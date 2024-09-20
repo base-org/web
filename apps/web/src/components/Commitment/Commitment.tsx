@@ -1,8 +1,7 @@
-import { Button } from 'apps/web/src/components/Button/Button';
+import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { GradientCircle } from 'apps/web/src/components/GradientCircle/GradientCircle';
-import Link from 'next/link';
 
-export function Commitment() {
+export async function Commitment() {
   return (
     <div className="flex w-full max-w-[1440px] flex-col px-8 py-12">
       <div className="flex flex-col justify-between pb-6 lg:flex-row lg:gap-20">
@@ -17,14 +16,16 @@ export function Commitment() {
             need all hands on deck, working together to scale in a secure, decentralized,
             easy-to-use way.
           </p>
-          <Link href="/about" aria-label="Read more about us">
-            <Button variant="primary" className="lg:self-start">
-              Read More
-            </Button>
-          </Link>
+          <ButtonWithLinkAndEventLogging
+            href="/about"
+            aria-label="Read more about us"
+            eventName="read_more_onchain_commitment"
+          >
+            Read More
+          </ButtonWithLinkAndEventLogging>
         </div>
       </div>
-      <div className="mt-10 flex max-w-[1440px] flex-row justify-between gap-4 self-center bg-gray p-4 lg:p-8">
+      <div className="mt-10 flex max-w-[1440px] flex-row justify-between gap-4 self-center bg-gray-90 p-4 lg:p-8">
         <GradientCircle className="h-[90px] w-[90px] md:h-[100px] md:w-[100px] xl:h-[163px] xl:w-[163px]" />
         <GradientCircle className="hidden h-[90px] w-[90px] md:h-[100px] md:w-[100px] lg:inline-block xl:h-[163px] xl:w-[163px]" />
         <GradientCircle className="hidden h-[90px] w-[90px] md:h-[100px] md:w-[100px] lg:inline-block xl:h-[163px] xl:w-[163px]" />

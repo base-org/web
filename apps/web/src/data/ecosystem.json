@@ -27,6 +27,15 @@
     "imageUrl": "/images/partners/infusion.png"
   },
   {
+    "name": "Frenpet",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Own and grow with your onchain fren.",
+    "url": "https://frenpet.xyz/",
+    "imageUrl": "/images/partners/frenpet.png"
+  },
+  {
     "name": "Defi Launch",
     "tags": [
       "defi"
@@ -194,7 +203,7 @@
       "infra"
     ],
     "description": "Upgrade Your Web3 Experience with Lore as your primary explorer for Ethereum, Avalanche (C-Chain), Fantom Opera, Base. Stay ahead of the curve with LoreAI, notifications, and more.",
-    "url": "https://searchcrypto.com/",
+    "url": "https://lorescan.com/",
     "imageUrl": "/images/partners/lore.png"
   },
   {
@@ -909,15 +918,6 @@
     "imageUrl": "/images/partners/shibaments.webp"
   },
   {
-    "name": "Universe Island",
-    "url": "https://universeisland.games/",
-    "description": "Immersive, 1vs1 Sci-Fi themed mobile open world game. Universe Island offers a riveting environment. Discover gaming features that will take your gaming experience to another level and the remarkable story of four attractive characters exploring mysterious islands and cities in the deep universe. Unique skills and weapons will add pure adrenaline to a 1vs1 fighting match with your opponent to win extraordinary rewards.",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/universeisland.webp"
-  },
-  {
     "name": "Coinarcade",
     "url": "https://dapp.playcoinarcade.xyz/entryPage",
     "description": "CoinArcade is a Decentralized Esports Layer for All Gamers. With our unified platform experience and weekly tournament designing, players can play/battle/stake 2 earn prizes anytime and anywhere.",
@@ -954,15 +954,6 @@
     "imageUrl": "/images/partners/supra.webp"
   },
   {
-    "name": "OpenOcean",
-    "url": "https://openocean.finance/",
-    "description": "OpenOcean is the leading DEX aggregator, integrating the most liquidity sources across a wide range of blockchains into one seamless trading interface, to bring users the best swap return for decentralized crypto trading.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/oocean.webp"
-  },
-  {
     "name": "Pheasant Network",
     "url": "https://pheasant.network/",
     "description": "Pheasant Network is an optimistic bridge specialized for Layer 2. Cheap gas fees and strong security improve scalability and interoperability of Ethereum.",
@@ -979,15 +970,6 @@
       "dao"
     ],
     "imageUrl": "/images/partners/nouns.webp"
-  },
-  {
-    "name": "Metopia",
-    "url": "https://metopia.xyz/",
-    "description": "Web3's Growth-Focused Contribution Platform, providing the SBT protocol and customized loyalty program for communities to capture on-chain contributions, and distribute rewards accordingly.",
-    "tags": [
-      "social"
-    ],
-    "imageUrl": "/images/partners/metopia.webp"
   },
   {
     "name": "SimpleHash",
@@ -1053,15 +1035,6 @@
     "imageUrl": "/images/partners/intentx.webp"
   },
   {
-    "name": "Raft",
-    "url": "https://raft.fi/",
-    "description": "Raft enables the generation of R, a leading USD stablecoin, by opening a CDP (collateralized debt position), or by depositing stablecoins into the Raft protocol reserve.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/raft.webp"
-  },
-  {
     "name": "Llama",
     "url": "https://llama.xyz/",
     "description": "Llama is a fullstack platform for onchain governance and access control. It enables protocols to securely take action using onchain policies and custom execution strategies.",
@@ -1098,24 +1071,6 @@
     "imageUrl": "/images/partners/Halliday.webp"
   },
   {
-    "name": "NFTA",
-    "url": "https://www.nfta.pl/",
-    "description": "daily eth price prediction game",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/nfta.webp"
-  },
-  {
-    "name": "Base Battles",
-    "url": "https://basebattles.xyz/",
-    "description": "BaseBattles is a game about war, designed around Game Theory concepts.  Players purchase votes to add firepower to their team, frantically building armies until a fixed final block.",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/basebattles.webp"
-  },
-  {
     "name": "QuestN",
     "url": "https://questn.com/",
     "description": "QuestN is a one-stop tool offering comprehensive solutions for Marketing, Growth, and Analysis in Web3. QuestN's range of services enables Projects to effectively engage in the entire cycle of user attraction, acquisition, and analysis.",
@@ -1141,15 +1096,6 @@
       "social"
     ],
     "imageUrl": "/images/partners/appicon.webp"
-  },
-  {
-    "name": "Sismo",
-    "url": "https://www.sismo.io/",
-    "description": "Sismo is a sovereign identity aggregator and crypto-native sso. ",
-    "tags": [
-      "social"
-    ],
-    "imageUrl": "/images/partners/sismo.webp"
   },
   {
     "name": "Bitget Wallet",
@@ -1584,9 +1530,9 @@
     "imageUrl": "/images/partners/commerce.webp"
   },
   {
-    "name": "Coinbase Pay",
-    "url": "https://www.coinbase.com/cloud/products/pay-sdk",
-    "description": "Let your users buy or transfer digital assets with the most trusted name in crypto. Join the waitlist for access to the SDK.",
+    "name": "Coinbase Onramp",
+    "url": "https://www.coinbase.com/developer-platform/products/onramp",
+    "description": "Let your users buy or transfer digital assets with the most trusted name in crypto.",
     "tags": [
       "onramp"
     ],
@@ -1672,15 +1618,6 @@
       "defi"
     ],
     "imageUrl": "/images/partners/dackie.webp"
-  },
-  {
-    "name": "Plasma Finance",
-    "url": "https://plasma.finance/",
-    "description": "Multichain DeFi Aggregator, HyperDEX aggregator, Bridge Aggregator, Farming, Portfolio Management and Mobile App.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/plasma.webp"
   },
   {
     "name": "Synapse Protocol",
@@ -2015,15 +1952,6 @@
       "defi"
     ],
     "imageUrl": "/images/partners/omni_network.webp"
-  },
-  {
-    "name": "OpenCover",
-    "url": "https://opencover.com",
-    "description": "OpenCover makes it easy and affordable to cover your portfolio against onchain risks such as smart contract exploits and oracle failures.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/opencover.webp"
   },
   {
     "name": "Pyth Network",
@@ -2751,9 +2679,9 @@
   {
     "name": "Zora",
     "url": "https://zora.co/",
-    "description": "ZORA is a universal media registry protocol. It’s a way for creators to publish creative media, earn money on their work, and have others build and share what they create.",
+    "description": "Zora is a new kind of social network to express yourself. Create freely, connect with others, and discover the value of your imagination. Explore art, music, memes, and more.",
     "tags": [
-      "nft"
+      "social"
     ],
     "imageUrl": "/images/partners/zora.webp"
   },
@@ -2801,15 +2729,6 @@
       "infra"
     ],
     "imageUrl": "/images/partners/etherscan.webp"
-  },
-  {
-    "name": "Sablier",
-    "url": "https://sablier.com",
-    "description": "Sablier is a token streaming protocol that enables by-the-second payments in web3. DAOs and businesses use it for vesting, payroll, airdrops, and more.\n\nThe Sablier protocol features a streaming model Lockup, in which the sender locks up a specified amount of ERC-20 tokens in a contract. The contract progressively allocates the funds to the designated recipient, who can access them as they become available over time. The streaming rate is influenced by various factors, including the start and end times, as well as the total amount of assets locked up.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/sablier.webp"
   },
   {
     "name": "RedStone",
@@ -3145,13 +3064,13 @@
     "imageUrl": "/images/partners/everyworld.png"
   },
   {
-    "name": "Circle.tech",
+    "name": "Time.fun",
     "tags": [
       "social"
     ],
-    "description": "Paywall and monetize your time by providing gated access and content to your most valuable fans.",
-    "url": "https://circle.tech",
-    "imageUrl": "/images/partners/circletech.jpeg"
+    "description": "Tokenize your time and allow your fans to get 1-on-1 time with you through unique experiences.",
+    "url": "https://time.fun",
+    "imageUrl": "/images/partners/timefun.png"
   },
   {
     "name": "ResearchHub",
@@ -3170,5 +3089,995 @@
     "description": "Tide helps projects retain users via points and targeted airdrops",
     "url": "https://landing.tideprotocol.xyz/",
     "imageUrl": "/images/partners/tide.png"
+  },
+  {
+    "name": "LogX",
+    "tags": [
+      "defi"
+    ],
+    "description": "LogX Pro is an Advanced Orderbook DEX for pro traders with instant trades, deep liquidity, tight spreads, and seamless, gas-free experience - all with unmatched security and transparency",
+    "url": "https://pro.logx.trade/?redirect=true",
+    "imageUrl": "/images/partners/logx.svg"
+  },
+  {
+    "name": "OpenBlock Wallet",
+    "tags": [
+      "wallet"
+    ],
+    "description": "OpenBlock is an MPC wallet supporting BASE network with both Web portal and a Mobile App. OpenBlock incorporates a built-in DEX that also support BASE bridge and BASE swap. ",
+    "url": "https://openblock.com/#/",
+    "imageUrl": "/images/partners/openblock.png"
+  },
+  {
+    "name": "Wert",
+    "tags": [
+      "onramp"
+    ],
+    "description": "Fiat Onramp and NFT checkout. Users paying with a card can execute any smart contract function and receive tokens/nfts directly to their wallet in the same transaction. ",
+    "url": "wert.io",
+    "imageUrl": "/images/partners/wert.png"
+  },
+  {
+    "name": "Token Cache",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Introducing Token Cache° The ultimate crypto treasure hunt for degens. Whoever can locate the hidden wallet via GPS coordianates first wins and may claim the crypto within. \nStart searching and be the first to uncover a hidden Token Cache° near you. Our inaugural drop is currently LIVE, a wallet containing 1 ETH is waiting to be found in Arizona.\n\nLedger Location: 33.46203° N, \n\nGo to bonfire.xyz/tokencache to UNLOCK the remaining GPS coordinates and begin your search! \n\nHappy Hunting ⛏",
+    "url": "https://bonfire.xyz/tokencache",
+    "imageUrl": "/images/partners/tokencache.png"
+  },
+  {
+    "name": "Sablier",
+    "tags": [
+      "defi"
+    ],
+    "description": "Infrastructure for money streaming and token distribution. DAOs and businesses use Sablier for vesting, payroll, airdrops, and more.",
+    "url": "https://sablier.com",
+    "imageUrl": "/images/partners/sablier.png"
+  },
+  {
+    "name": "Lossless",
+    "tags": [
+      "security"
+    ],
+    "description": "World's first unrivaled exploit identification and mitigation tools, designed to foolproof web3 from hacks. ",
+    "url": "https://lossless.io/",
+    "imageUrl": "/images/partners/lossless.png"
+  },
+  {
+    "name": "W3.email",
+    "tags": [
+      "social"
+    ],
+    "description": "W3 email represents the future of email services. It allows you to read and respond to blockchain-based emails sent to you in a decentralized manner across multiple networks.",
+    "url": "https://w3.email",
+    "imageUrl": "/images/partners/w3mail.png"
+  },
+  {
+    "name": "JOJO Exchange",
+    "tags": [
+      "defi"
+    ],
+    "description": "JOJO is a decentralized perpetual contract trading platform built on Base.\n\nJOJO balances liquidity and composability with an off-chain matching and on-chain settlement order book model, providing a smooth, fast, and low-cost trading experience.",
+    "url": "https://app.jojo.exchange/trade/base/",
+    "imageUrl": "/images/partners/jojo.png"
+  },
+  {
+    "name": "JELLI",
+    "tags": [
+      "infra"
+    ],
+    "description": "JELLI is the first ever animated ERC20i token on Base! It uses ERC20i to depict dynamic, evolvable and interchangeable jellyfish on-chain. We're here to help grow and expand the ERC20i ecosystem!",
+    "url": "https://jelli.blue",
+    "imageUrl": "/images/partners/jelli.png"
+  },
+  {
+    "name": "Civic",
+    "tags": [
+      "infra"
+    ],
+    "description": "Civic is a tokenized identity solution for the verifiable web, empowering people to privately manage their identities across chains with an on-chain representation of their reusable identity. ",
+    "url": "https://www.civic.com/",
+    "imageUrl": "/images/partners/civic.png"
+  },
+  {
+    "name": "Arcadia Finance",
+    "tags": [
+      "defi"
+    ],
+    "description": "Arcadia built an intent-centric application where users can deposit their assets into sophisticated strategies that beat staking APRs and will dynamically suggest rebalancing actions into the highest-yielding opportunities available according to each individual’s preferences and constraints. Arcadia takes advantage of the composability of DeFi to combine different protocols in interesting ways to maximize yields while providing best-in-class execution that streamline the way users interface with underlying protocols.",
+    "url": "https://arcadia.finance/",
+    "imageUrl": "/images/partners/arcadiafinance.png"
+  },
+  {
+    "name": "Basenji",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Meet Basenji, the oldest dog breed in history, with Base in its name. ",
+    "url": "https://app.basenjibase.com",
+    "imageUrl": "/images/partners/basenji.png"
+  },
+  {
+    "name": "rep3",
+    "tags": [
+      "social"
+    ],
+    "description": "rep3 is a gamified community engagement platform. No-code platform for you to build engaging campaigns via quests, loyalty programs, points and airdrops",
+    "url": "https://rep3.gg",
+    "imageUrl": "/images/partners/rep3.png"
+  },
+  {
+    "name": "Nexandria",
+    "tags": [
+      "infra"
+    ],
+    "description": "Nexandria helps solve the blockchain data access trilemma of speed, cost & completeness, enabling uniquely powerful API endpoints for DeFi, SocialFi, AI agents or Analytics.",
+    "url": "https://www.nexandria.com/",
+    "imageUrl": "/images/partners/nexandria.png"
+  },
+  {
+    "name": "Truffi",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Truffi is an ERC20i on-chain art project which was designed and animated by Shameless Art Studio. The goal is to create fun on-chain art and to take ERC-20 inscriptions to the next level by introducing a flexible tier system and incorporating gamified elements like Seasonal Collections with rewards.",
+    "url": "https://www.truffi.xyz/",
+    "imageUrl": "/images/partners/truffi.png"
+  },
+  {
+    "name": "Mint Sniper",
+    "tags": [
+      "nft"
+    ],
+    "description": "Realtime NFT mint monitor. Discover new projects, schedule mints ahead of time, and see what's minting live!",
+    "url": "https://www.mintsniper.com/",
+    "imageUrl": "/images/partners/mintsniper.png"
+  },
+  {
+    "name": "Aylab",
+    "tags": [
+      "infra"
+    ],
+    "description": "Aylab is a cutting-edge Web3 traffic acquisition platform revolutionizing how web3 projects acquire traffic at scale.\n",
+    "url": "https://aylab.io/",
+    "imageUrl": "/images/partners/aylab.png"
+  },
+  {
+    "name": "NFTPriceFloor",
+    "tags": [
+      "nft"
+    ],
+    "description": "A gateway to the NFT ecosystem. Track and buy digital collectibles and other non-fungible tokens with the best data and marketplace aggregator in the market.",
+    "url": "https://nftpricefloor.com/?blockchains=base",
+    "imageUrl": "/images/partners/nftpricefloor.png"
+  },
+  {
+    "name": "RockX",
+    "tags": [
+      "infra"
+    ],
+    "description": "RockX is a global blockchain node network and gateway for users to seamlessly access Web3, offering institutional-grade solutions and a full suite of developer tools for users to stake and build on all major blockchains.",
+    "url": "https://access.rockx.com/product/base-blockchain-api-for-web3-builders",
+    "imageUrl": "/images/partners/rockx.png"
+  },
+  {
+    "name": "AlfaFrens",
+    "tags": [
+      "social"
+    ],
+    "description": "AlfaFrens is a SocialFi app on Farcaster for gated alfa chat subscriptions powered by Superfluid. Subscribe to creators with $DEGEN, earn $ALFA and stake it on creators for a share of their revenue.",
+    "url": "https://alfafrens.com",
+    "imageUrl": "/images/partners/alfafrens.png"
+  },
+  {
+    "name": "Dockhive",
+    "tags": [
+      "infra"
+    ],
+    "description": "DockHive integrates Docker with blockchain for a decentralized cloud infrastructure, offering enhanced security, fault tolerance, dynamic scaling, and leveraging the DHT token for ecosystem transactions.",
+    "url": "https://dockhive.io",
+    "imageUrl": "/images/partners/dockhive.png"
+  },
+  {
+    "name": "HERE Wallet",
+    "tags": [
+      "wallet"
+    ],
+    "description": "HERE wallet is a MPC mobile and Telegram wallet built on HOT Protocol. HOT Protocol is a decentralized validator network for MPC wallets.",
+    "url": "https://hotdao.ai/",
+    "imageUrl": "/images/partners/here-wallet.jpeg"
+  },
+  {
+    "name": "Robots.Farm",
+    "tags": [
+      "defi"
+    ],
+    "description": "Robots.Farm is a Gamified Trading Platform that seamlessly merges decentralized finance with a captivating gaming experience. Developed independently, free from VC funding or paid influencers, $RBF platform serves as a decentralized exchange and aggregator, enabling effortless transactions across 9 networks with scalable capabilities. Engage in gameplay, swap tokens, farm rewards, and enhance your profile with XP points while collecting unique items to unlock special features!",
+    "url": "https://robots.farm/",
+    "imageUrl": "/images/partners/robots-farm.png"
+  },
+  {
+    "name": "Galaxy Exchange",
+    "tags": [
+      "defi"
+    ],
+    "description": "Galaxy provides instant access to cross-chain liquidity from over 100 blockchains, bridges, and liquidity aggregators. Perform non-custodial token swaps and bridging for a wide range of crypto assets, any token to any token, irrespective of the underlying blockchain.",
+    "url": "https://galaxy.exchange/",
+    "imageUrl": "/images/partners/galaxy-exchange.png"
+  },
+  {
+    "name": "Tegro",
+    "tags": [
+      "defi"
+    ],
+    "description": "Tegro is a Gen2 order book DEX for high-frequency trading. Enjoy CEX-level efficiency on-chain with efficient order books, unmatched gas efficiency, lightning-fast order matching and more!",
+    "url": "https://tegro.com/",
+    "imageUrl": "/images/partners/tegro.jpg"
+  },
+  {
+    "name": "Vooi",
+    "tags": [
+      "defi"
+    ],
+    "description": "Vooi is an emerging intent-based Perp DEX Aggregator that provides an efficient liquidity mechanism, and the highest trade quality for professional and retail traders. \n",
+    "url": "https://app.vooi.io/",
+    "imageUrl": "/images/partners/vooi.png"
+  },
+  {
+    "name": "Dyson Money",
+    "tags": [
+      "defi"
+    ],
+    "description": "Dyson is a yield maximizer & CL ALM that amplifies your yield returns. Offering auto-compounding vaults for diverse LPs across multiple chains, it aims to be the go-to dApp for maximising yields.",
+    "url": "https://www.dyson.money/",
+    "imageUrl": "/images/partners/dyson-money.png"
+  },
+  {
+    "name": "QuillAudits",
+    "tags": [
+      "security"
+    ],
+    "description": "Web3 security leader equipped with robust security solutions and infra, trusted by teams from ZetaChain, Taiko, Polygon and many more since 2018. ",
+    "url": "https://quillaudits.com",
+    "imageUrl": "/images/partners/quill-audits.png"
+  },
+  {
+    "name": "Center",
+    "tags": [
+      "infra"
+    ],
+    "description": "Real-time blockchain data, delivered instantly",
+    "url": "https://center.app/",
+    "imageUrl": "/images/partners/center-logo.png"
+  },
+  {
+    "name": "droplinked",
+    "tags": [
+      "social"
+    ],
+    "description": "Providing web2 and web3 e-commerce functionality with diverse applications like tokenpay, inventory management, on-chain loyalty, gating and drops for physical and digital goods.",
+    "url": "https://droplinked.com",
+    "imageUrl": "/images/partners/droplinked.png"
+  },
+  {
+    "name": "omni",
+    "tags": [
+      "defi"
+    ],
+    "description": "Create a token on Base (paired with liquidity from user wallet) in less than 30 seconds. ",
+    "url": "https://www.omniswap.ai",
+    "imageUrl": "/images/partners/omni.png"
+  },
+  {
+    "name": "Bitoro Network",
+    "tags": [
+      "defi"
+    ],
+    "description": "Bitoro is a leveraged trading protocol and aggregator for the perpetual futures market. Our goal is to unify the fragmented market under one platform with optimal prices, fees, liquidity, incentives, and unparalleled ease of use.",
+    "url": "https://bitoro.network/",
+    "imageUrl": "/images/partners/bitoro.png"
+  },
+  {
+    "name": "CoinTracker",
+    "tags": [
+      "infra"
+    ],
+    "description": "Crypto taxes that simply work — with complete coverage for onchain activity. Generate accurate reports and file in minutes with the only solution that integrates directly with TurboTax and H&R Block.",
+    "url": "https://www.cointracker.io/?utm_source=base",
+    "imageUrl": "/images/partners/cointracker.png"
+  },
+  {
+    "name": "All That Node",
+    "tags": [
+      "infra"
+    ],
+    "description": "All That Node is the most comprehensive multi-chain development suite, designed to support multiple networks from a single platform.",
+    "url": "https://www.allthatnode.com/",
+    "imageUrl": "/images/partners/allthatnode.png"
+  },
+  {
+    "name": "Base Colors",
+    "tags": [
+      "nft"
+    ],
+    "description": "Base Colors is the NFT collection for every color on the internet. Own Colors. Name Colors. Base Colors.",
+    "url": "https://basecolors.com",
+    "imageUrl": "/images/partners/basecolors.png"
+  },
+  {
+    "name": "BlockPI Network",
+    "tags": [
+      "infra"
+    ],
+    "description": "BlockPI is a top infra provider in APAC. With 6+ years of experience, BlockPI currently offers one-stop high performance infra services including but not limited to RPC service, validator service, relayer service, account abstraction services across 50+ networks and helps in building the infras for more than 10 public blockchains (Berachain, Blast, Merlin Chain, Taiko, ZetaChain, etc) as their official infra partner. BlockPI also closely partners with over 300+ well-known projects and developers communities. With millions of public users and over 35,000 registered users, BlockPI stably processes 60B+ monthly requests.",
+    "url": "https://blockpi.io/",
+    "imageUrl": "/images/partners/blockpi.png"
+  },
+  {
+    "name": "Bright Moments",
+    "tags": [
+      "nft"
+    ],
+    "description": "Bright Moments is a digital art gallery that works with generative and AI artists to help them produce iconic real world experiences of their art.",
+    "url": "https://app.brightmoments.io",
+    "imageUrl": "/images/partners/brightmoments.png"
+  },
+  {
+    "name": "CompareNodes",
+    "tags": [
+      "infra"
+    ],
+    "description": "RPC endpoint performance inspector from 27 global locations in 30 seconds.",
+    "url": "https://www.comparenodes.com/performance-inspector/#base",
+    "imageUrl": "/images/partners/comparenodes.png"
+  },
+  {
+    "name": "Crate",
+    "tags": [
+      "social"
+    ],
+    "description": "The music trading platform. Launch a tokenized song in seconds.",
+    "url": "https://crate.place",
+    "imageUrl": "/images/partners/crate.png"
+  },
+  {
+    "name": "Crowdmuse",
+    "tags": [
+      "nft"
+    ],
+    "description": "Crowdmuse is a social commerce platform developing innovative no-code smart contracts for creators and brands selling consumer products onchain with creator IP rights. ",
+    "url": "https://crowdmuse.xyz/",
+    "imageUrl": "/images/partners/crowdmuse.png"
+  },
+  {
+    "name": "Daylight",
+    "tags": [
+      "social"
+    ],
+    "description": "Onchain for you - discover fun things to do in crypto, personalized to your onchain identity.",
+    "url": "https://www.daylight.xyz/",
+    "imageUrl": "/images/partners/daylight.png"
+  },
+  {
+    "name": "Dot",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Dot transforms user-generated pixel art into collectible cards playable in unique challenges and onchain games. Create your own cards or open card packs from your favorite artists today.",
+    "url": "https://dot.fan",
+    "imageUrl": "/images/partners/dot.png"
+  },
+  {
+    "name": "Drakula",
+    "tags": [
+      "social"
+    ],
+    "description": "Drakula is a social network for video creators on Base.",
+    "url": "https://drakula.app",
+    "imageUrl": "/images/partners/drakula.png"
+  },
+  {
+    "name": "Dynamic",
+    "tags": [
+      "infra"
+    ],
+    "description": "Dynamic offers a suite of tools for effortless log in, wallet creation and user management. Designed for users. Built for developers.",
+    "url": "www.dynamic.xyz",
+    "imageUrl": "/images/partners/dynamic.png"
+  },
+  {
+    "name": "Farworld",
+    "tags": [
+      "gaming"
+    ],
+    "description": "A mysterious world 🪐 filled with mysterious creatures 👾 The onchain monster collecting game of Farcaster, built on Base.",
+    "url": "https://farworld.gg",
+    "imageUrl": "/images/partners/farworld.png"
+  },
+  {
+    "name": "HAPI",
+    "tags": [
+      "security"
+    ],
+    "description": "HAPI ID enhances blockchain security with Trust Scores, human verification, and multi-account protection, ensuring fair and secure interactions for users, DApps, and businesses.",
+    "url": "https://hapi.one/",
+    "imageUrl": "/images/partners/hapi.png"
+  },
+  {
+    "name": "Interface",
+    "tags": [
+      "social"
+    ],
+    "description": "Interface is a mobile companion for your onchain journey ",
+    "url": "https://www.interface.social",
+    "imageUrl": "/images/partners/interface.png"
+  },
+  {
+    "name": "King of the Degens",
+    "tags": [
+      "social"
+    ],
+    "description": "King of the Degens is an Onchain RPG on Farcaster. Players are streamed $DEGEN in real time and storm the castle to become King!",
+    "url": "https://www.degen.game/kotd",
+    "imageUrl": "/images/partners/kingofdegens.png"
+  },
+  {
+    "name": "Lunchbreak",
+    "tags": [
+      "social"
+    ],
+    "description": "Lunchbreak is a socialFi app where creators start earning crypto in seconds. Signup with one click, get lifetime royalties from fans collecting your profile, and earn from paid DM and call requests. ",
+    "url": "https://lunchbreak.com",
+    "imageUrl": "/images/partners/lunchbreak.png"
+  },
+  {
+    "name": "Metopia",
+    "tags": [
+      "social"
+    ],
+    "description": "Metopia is a decentralized reputation network, empowering onchain actions and attestations.",
+    "url": "https://metopia.xyz",
+    "imageUrl": "/images/partners/metopia.png"
+  },
+  {
+    "name": "Moralis",
+    "tags": [
+      "infra"
+    ],
+    "description": "Moralis is a leading crypto data provider helping companies build great user experiences, drive engagement, growth, and revenue in their applications through Moralis’ suite of Web3 APIs and RPC nodes.",
+    "url": "https://moralis.io",
+    "imageUrl": "/images/partners/moralis.png"
+  },
+  {
+    "name": "Moshicam",
+    "tags": [
+      "social"
+    ],
+    "description": "The most fun and rewarding onchain photosharing app.",
+    "url": "https://moshi.cam",
+    "imageUrl": "/images/partners/moshicam.png"
+  },
+  {
+    "name": "NFT Gallery App",
+    "tags": [
+      "nft"
+    ],
+    "description": "Bring your NFTs onto your home screen on all of Apple's platforms.\nLet your Widgets seamlessly rotate through your NFT & POAP Collections and resurface moments from your web3 journey.",
+    "url": "https://apps.apple.com/de/app/nft-gallery-widget/id6462826516?l=en-GB",
+    "imageUrl": "/images/partners/nftgallery.png"
+  },
+  {
+    "name": "NiftyKit",
+    "tags": [
+      "nft"
+    ],
+    "description": "Turn assets into NFTs with ease. Mint, manage, and sell artwork, music, game assets, membership tokens, and more, all without developer assistance.",
+    "url": "https://niftykit.com?ref=coinbase",
+    "imageUrl": "/images/partners/niftykit.jpeg"
+  },
+  {
+    "name": "OpenCoin AI",
+    "tags": [
+      "infra"
+    ],
+    "description": "OpenCoin AI is a series of AI-powered applications fueled by real-time cross-chain data.",
+    "url": "https://opencoin.ai",
+    "imageUrl": "/images/partners/opencoin.png"
+  },
+  {
+    "name": "OpenVotes",
+    "tags": [
+      "social"
+    ],
+    "description": "A democratized, secured, and transparent voting platform on the blockchain.",
+    "url": "https://openvotes.io",
+    "imageUrl": "/images/partners/openvotes.png"
+  },
+  {
+    "name": "Pentacle Tarot",
+    "tags": [
+      "gaming"
+    ],
+    "description": "An Alchemically based collection of 2222 unique Pentacle Tarot Keys that unlock authentic, personalised daily Tarot readings. ",
+    "url": "https://pentacletarot.com",
+    "imageUrl": "/images/partners/pentacle.png"
+  },
+  {
+    "name": "pods.media",
+    "tags": [
+      "nft"
+    ],
+    "description": "The leading platform for onchain podcasts.",
+    "url": "https://pods.media/",
+    "imageUrl": "/images/partners/pods.png"
+  },
+  {
+    "name": "0xPPL",
+    "tags": [
+      "social"
+    ],
+    "description": "0xPPL is a web3 social platform enabling you to follow or interact with onchain activities of your peers & discover trends in a human-readable feed. Access your multi-chain portfolio across EVMs, Solana, Cosmos, and TON.",
+    "url": "https://0xppl.com",
+    "imageUrl": "/images/partners/poorvisachar.jpeg"
+  },
+  {
+    "name": "QUANTELICA",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Quantelica ecosystem is developing own Games, NFT Collections, SDKs, Launcher, NFT Marketplace, and much more...",
+    "url": "https://quantelica.com/",
+    "imageUrl": "/images/partners/quantelica.png"
+  },
+  {
+    "name": "SoMon",
+    "tags": [
+      "social"
+    ],
+    "description": "SoMon is a web3 topic-based forum with… Social Monsters! It is a fun space where users create vibrant and engaging Tribes centered around all their passions and fandoms. On SoMon, Tribes, content, and social connections are self-owned by users and communities, and monetization tools are at their disposal to fully leverage their social capital. Users earn SoMon Points and rewards in $OwO by actively participating in Tribes.\n\nAs the first dApp powered by OpenSocial, a protocol providing a scalable Web3 Social infrastructure toolkit to builders, SoMon represents a significant milestone! ",
+    "url": "https://www.social.monster/",
+    "imageUrl": "/images/partners/somon.png"
+  },
+  {
+    "name": "Speedtracer",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Trace fast to win",
+    "url": "https://speedtracer.xyz",
+    "imageUrl": "/images/partners/speedtracer.jpg"
+  },
+  {
+    "name": "Surreal",
+    "tags": [
+      "social"
+    ],
+    "description": "A mobile app for discovering, collecting, and enjoying onchain media like music, art, videos, and memes across marketplaces. Users can follow friends for updates and earn by creating and curating content.",
+    "url": "https://surr.app",
+    "imageUrl": "/images/partners/surreal.png"
+  },
+  {
+    "name": "TapBase",
+    "tags": [
+      "nft"
+    ],
+    "description": "We are very excited about our new innovation. TapBase is a great new innovation in NFT and Tap to Earn. Now, for the first time in the world, you can tap to earn TapBase and buy and sell NFTs with it. this is fabulous. TapBase has started working on the Base network and we are now in the first phase of TapBase development. Now is the time to get all the coins and NFTs.",
+    "url": "https://t.me/TapBaseBot",
+    "imageUrl": "/images/partners/tapbase.jpg"
+  },
+  {
+    "name": "Warpcast",
+    "tags": [
+      "social"
+    ],
+    "description": "Warpcast is a Farcaster client.",
+    "url": "https://warpcast.com",
+    "imageUrl": "/images/partners/warpcast.png"
+  },
+  {
+    "name": "Welcome Onchain",
+    "tags": [
+      "social"
+    ],
+    "description": "Discovery and research platform for onchain culture and technology",
+    "url": "https://welcomeonchain.xyz",
+    "imageUrl": "/images/partners/welcomeonchain.png"
+  },
+  {
+    "name": "Wildcard",
+    "tags": [
+      "social"
+    ],
+    "description": "Best Farcaster client a degen can get. Built on Base.",
+    "url": "https://app.wildcard.lol",
+    "imageUrl": "/images/partners/wildcard.jpeg"
+  },
+  {
+    "name": "Gas.zip",
+    "tags": [
+      "bridge"
+    ],
+    "description": "Gas.zip is the fastest one-stop gas refuel bridge for over 200+ chains and counting. Users can instantly bridge to multiple destination blockchains with a single inbound transaction.",
+    "url": "https://www.gas.zip/",
+    "imageUrl": "/images/partners/gaszip.png"
+  },
+  {
+    "name": "Morpho",
+    "tags": [
+      "defi"
+    ],
+    "description": "A permissionless and non-custodial lending protocol. Earn interest on over-collateralized lending and borrow digital assets using immutable infrastructure.",
+    "url": "https://morpho.org/",
+    "imageUrl": "/images/partners/morpho.png"
+  },
+  {
+    "name": "Endaoment",
+    "tags": [
+      "defi"
+    ],
+    "description": "Endaoment provides onchain Donor Advised Funds, enabling tax-deductible giving with crypto or any other asset. Secure, transparent, and easy-to-use, it bridges crypto and philanthropy for impactful giving.",
+    "url": "https://app.endaoment.org",
+    "imageUrl": "/images/partners/endaoment.png"
+  },
+  {
+    "name": "Based Associates DAO",
+    "tags": [
+      "dao"
+    ],
+    "description": "A Nounish DAO building collective projects on Base with art, story, culture, commerce, social impact and media. Home of MoBA - The Museum of Based ARTFKTS\n",
+    "url": "https://www.based.associates",
+    "imageUrl": "/images/partners/basedassociates.png"
+  },
+  {
+    "name": "Algebra",
+    "tags": [
+      "defi"
+    ],
+    "description": "Algebra is an AMM providing modular concentrated liquidity (V4) with dynamic fees and hooks to DEXes on Base",
+    "url": "https://algebra.finance/",
+    "imageUrl": "/images/partners/algebra.jpg"
+  },
+  {
+    "name": "Unvest",
+    "tags": [
+      "defi"
+    ],
+    "description": "Fast and easy token distributions, custom vesting, streaming, milestones, airdrops, liquidity locks, staking pools, treasury management, reporting and compliance.",
+    "url": "https://unvest.io/",
+    "imageUrl": "/images/partners/unvest.png"
+  },
+  {
+    "name": "CreateMyToken",
+    "tags": [
+      "defi"
+    ],
+    "description": "Create your own token in just 1 minute and deploy it on Ethereum, Base, Optimism and more! No code, no setup, no login, and free!",
+    "url": "https://www.createmytoken.com/",
+    "imageUrl": "/images/partners/createmytoken.png"
+  },
+  {
+    "name": "Mercuryo",
+    "tags": [
+      "onramp"
+    ],
+    "description": "15 seconds fiat-to crypto on-ramping, easy bank card off-ramping and more. Trusted by 7M+ users in 165+ countries and 200+ dApps.",
+    "url": "https://mercuryo.io/",
+    "imageUrl": "/images/partners/mercuryo.svg"
+  },
+  {
+    "name": "Franklin Payroll",
+    "tags": [
+      "defi"
+    ],
+    "description": "All-in-one onchain financial operations suite. Pay US W2 employees, vendors, global contractors, and invoice customers. Franklin supports USD and crypto payouts plus stablecoin to USD off-ramping.",
+    "url": "www.hellofranklin.co",
+    "imageUrl": "/images/partners/franklin.png"
+  },
+  {
+    "name": "Birdeye.so",
+    "tags": [
+      "defi"
+    ],
+    "description": "Birdeye is an on-chain crypto trading data aggregator that provides fair access to investment opportunities for all traders. We integrate with 200+ DEXes & AMMs on Solana, Sui, Ethereum, and other EVM chains, providing users with the most precise token and trading data they need.",
+    "url": "https://birdeye.so/",
+    "imageUrl": "/images/partners/birdeye.png"
+  },
+  {
+    "name": "Palisade Custody",
+    "tags": [
+      "wallet"
+    ],
+    "description": "Palisade is a digital asset custody platform providing services ranging from fully regulated HSM wallets to MPC and passkey-enabled wallets for businesses building on web3",
+    "url": "https://www.palisade.co",
+    "imageUrl": "/images/partners/palisade.jpg"
+  },
+  {
+    "name": "RYI Unity",
+    "tags": [
+      "defi"
+    ],
+    "description": "Ryi Unity is a leading decentralized applications builder focused on providing innovative solutions for the decentralized world. We specialize in building robust and secure platforms that allow users to interact with various blockchain networks seamlessly",
+    "url": "https://unity-ventures.com/",
+    "imageUrl": "/images/partners/ryi.png"
+  },
+  {
+    "name": "CoindPay",
+    "tags": [
+      "defi"
+    ],
+    "description": "CoindPay is a decentralized payments and compound finance infrastructure.",
+    "url": "https://coindpay.xyz",
+    "imageUrl": "/images/partners/coindpay.png"
+  },
+  {
+    "name": "Okto",
+    "tags": [
+      "wallet"
+    ],
+    "description": "At Okto, we are dedicated to enhancing the web3 onboarding experience by building a comprehensive orchestration layer that simplifies chain, account, transaction, and fee abstraction for both users and developers. Our platform features a self-custody MPC wallet that supports a single asset portfolio with seamless interoperability across more than 15 chains, including EVM, Solana, Aptos, Cosmos, and others. Additionally, we offer regulated on-ramp and off-ramp features and a gas station service that allows users to pay gas fees with any stable token they possess on any chain. Our SDK allows the Okto wallet to be embedded in any web2 app transforming it almost instantly to web3 without the web2 developers having to learn web3 concepts. Our wallet is currently utilized by over 1.5 million users and has witnessed significant transaction volume, reflecting our rapid growth. More details about our products and journey can be found on our website, okto.tech.",
+    "url": "https://okto.tech",
+    "imageUrl": "/images/partners/okto.png"
+  },
+  {
+    "name": "JuicyBet",
+    "tags": [
+      "gaming"
+    ],
+    "description": "JuicyBet is an innovative GambleFi Ecosystem Decentralized Project. Our platform stands at the confluence of gambling and web3 technologies, integrating the advantages of both sectors. ",
+    "url": "https://juicybet.net/",
+    "imageUrl": "/images/partners/juicybet.png"
+  },
+  {
+    "name": "Mozaic Finance",
+    "tags": [
+      "defi"
+    ],
+    "description": "AI-Optimized Yield and Liquidity Strategies",
+    "url": "https://mozaic.finance/",
+    "imageUrl": "/images/partners/mozaic.jpg"
+  },
+  {
+    "name": "stVol",
+    "tags": [
+      "defi"
+    ],
+    "description": "Options redefined with a simple, easy, and fun trading experience. ",
+    "url": "https://www.stvol.io/",
+    "imageUrl": "/images/partners/stvol.png"
+  },
+  {
+    "name": "Mass",
+    "tags": [
+      "defi"
+    ],
+    "description": "Trade, on-ramp, off-ramp, set limit orders, and discover on-chain and off-chain data to empower your trading journey—all powered by account abstraction! Mass is available on both iOS and Android!",
+    "url": "https://mass.money",
+    "imageUrl": "/images/partners/mass.png"
+  },
+  {
+    "name": "PoolTogether",
+    "tags": [
+      "defi"
+    ],
+    "description": "PoolTogether is an open-source protocol for prize savings. It's designed to enhance financial security by making saving enjoyable. When users deposit into the system, the interest accumulates across all deposits and is then randomly distributed as prizes. The protocol turns your interest into fun rewards! Save your favorite tokens and have a chance to win big.",
+    "url": "https://pooltogether.com/",
+    "imageUrl": "/images/partners/pooltogether.png"
+  },
+  {
+    "name": "Burve Protocol",
+    "tags": [
+      "defi"
+    ],
+    "description": "Burve Protocol is a next-generation AMM and Launchpad, designed to revolutionize DeFi with innovative liquidity, launch, and lending solutions for various crypto use cases.",
+    "url": "https://app.burve.io/",
+    "imageUrl": "/images/partners/burve.png"
+  },
+  {
+    "name": "TITLES",
+    "tags": [
+      "defi"
+    ],
+    "description": "TITLES builds creative tools powered by artist-owned AI models. We empower artists and IP holders to create, share, and monetize their own custom AI models.",
+    "url": "https://titles.xyz/",
+    "imageUrl": "/images/partners/titles.png"
+  },
+  {
+    "name": "Sofamon",
+    "tags": [
+      "social"
+    ],
+    "description": "Sofamon is the first collectible chat sticker on Telegram.",
+    "url": "https://www.sofamon.xyz/",
+    "imageUrl": "/images/partners/sofamon.jpg"
+  },
+  {
+    "name": "Bountycaster",
+    "tags": [
+      "social"
+    ],
+    "description": "Easily post and discover bounties and jobs on Farcaster. Build onchain reputation for work completed with attestations issued via EAS on Base",
+    "url": "https://bountycaster.xyz/",
+    "imageUrl": "/images/partners/bountycaster.png"
+  },
+  {
+    "name": "Slice",
+    "tags": [
+      "infra"
+    ],
+    "description": "Slice is the onchain commerce protocol. We build infrastructure and web interfaces to enable smooth, fast and powerful onchain checkout experiences.",
+    "url": "https://slice.so",
+    "imageUrl": "/images/partners/slice.png"
+  },
+  {
+    "name": "Koda",
+    "tags": [
+      "nft"
+    ],
+    "description": "Generative Art Marketplace bringing always new experiment to the room",
+    "url": "https://koda.art",
+    "imageUrl": "/images/partners/koda.png"
+  },
+  {
+    "name": "Paragraph",
+    "tags": [
+      "social"
+    ],
+    "description": "Create, share, and explore the best writing on the internet.",
+    "url": "https://paragraph.xyz/",
+    "imageUrl": "/images/partners/paragraph.png"
+  },
+  {
+    "name": "Custom Punks",
+    "tags": [
+      "nft"
+    ],
+    "description": "Create and customize your very own Custom Punk. Mix and match traits, colors, accessories, and backgrounds to create a Custom Punk that's uniquely yours.",
+    "url": "https://www.custompunks.app/",
+    "imageUrl": "/images/partners/custompunks.png"
+  },
+  {
+    "name": "Receipts",
+    "tags": [
+      "social"
+    ],
+    "description": "Connect your wearable and earn points when you workout. Join challenges and compete with friends on leaderboards. Workout. Earn points. Show the receipts.",
+    "url": "https://receipts.xyz",
+    "imageUrl": "/images/partners/receipts.png"
+  },
+  {
+    "name": "ddocs.new",
+    "tags": [
+      "social"
+    ],
+    "description": "ddocs.new is your onchain alternative to Go*gle D*cs. No account needed, designed to enhance your privacy, works peer-to-peer with no centralized intermediary, and available on both mobile & desktop.",
+    "url": "https://ddocs.new",
+    "imageUrl": "/images/partners/ddocs.jpeg"
+  },
+  {
+    "name": "Memstagram",
+    "tags": [
+      "social"
+    ],
+    "description": "Monetize meme engagement",
+    "url": "https://www.memstagram.com/sign-up",
+    "imageUrl": "/images/partners/memstagram.png"
+  },
+  {
+    "name": "Momentify",
+    "tags": [
+      "social"
+    ],
+    "description": "Make more music memories",
+    "url": "https://app.momentify.xyz/",
+    "imageUrl": "/images/partners/momentify.png"
+  },
+  {
+    "name": "anglez.xyz",
+    "tags": [
+      "nft"
+    ],
+    "description": "Abstract, generative NFT art that is customisable, fully on-chain and 100% generated by Solidity code. Created by volstrate, customised by you!",
+    "url": "https://www.anglez.xyz",
+    "imageUrl": "/images/partners/anglez.png"
+  },
+  {
+    "name": "Conduit",
+    "tags": [
+      "infra"
+    ],
+    "description": "Launch your Base L3 in minutes with Conduit: the rollup-native cloud platform. Customize your chain to your use case, get automatic upgrades, and manage all your infra in one central location.",
+    "url": "https://www.conduit.xyz/",
+    "imageUrl": "/images/partners/conduit.png"
+  },
+  {
+    "name": "Fit Club",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Fit Club is an innovative fully onchain game on base where players can own & customize their character and compete against other players to earn a bigger share of the overall ETH generated by the ecosystem.",
+    "url": "https://www.fitclub.tech/",
+    "imageUrl": "/images/partners/fit-club.png"
+  },
+  {
+    "name": "HUG",
+    "tags": [
+      "nft"
+    ],
+    "description": "An inclusive social marketplace for creators to showcase & sell their work onchain and offchain, while connecting with one-of-a-kind opportunities. Home to 25,000+ creatives from 150 countries.",
+    "url": "https://thehug.xyz",
+    "imageUrl": "/images/partners/hug.png"
+  },
+  {
+    "name": "NFTarot",
+    "tags": [
+      "nft"
+    ],
+    "description": "Enter a space of reflection & guidance within the chaos of crypto, receive a tarot reading through onchain energy exchange.",
+    "url": "https://www.nftarot.com",
+    "imageUrl": "/images/partners/nftarot.png"
+  },
+  {
+    "name": "OmniHub",
+    "tags": [
+      "nft"
+    ],
+    "description": "OmniHub NFT Launchpad allows creators to launch NFT collections. With an intuitive design, users can create digital art objects without needing special programming skills, and it takes less than a minute to start. OmniHub also incorporates AI technology, enabling the creation of unique art pieces that can be seamlessly transformed into digital assets.",
+    "url": "https://omnihub.xyz/collections?chain=base",
+    "imageUrl": "/images/partners/omnihub.png"
+  },
+  {
+    "name": "Safary",
+    "tags": [
+      "infra"
+    ],
+    "description": "Safary is a customer intelligence platform helping teams reach, engage, and activate their users. By enriching wallets with social profiles and insights, we drive higher conversions and stronger connections.",
+    "url": "https://www.safary.club",
+    "imageUrl": "/images/partners/safary.png"
+  },
+  {
+    "name": "Shadow",
+    "tags": [
+      "infra"
+    ],
+    "description": "Shadow provides realtime data for top crypto teams, powered by highly flexible 'shadow events'. In just a few lines of code, get onchain data to power your applications and make data-driven decisions.",
+    "url": "https://shadow.xyz",
+    "imageUrl": "/images/partners/shadow.png"
+  },
+  {
+    "name": "Talent Protocol",
+    "tags": [
+      "social"
+    ],
+    "description": "Talent Protocol is building the resume for the onchain era of the internet. It unlocks unique reputation data and makes human potential more visible.",
+    "url": "https://talentprotocol.com",
+    "imageUrl": "/images/partners/talent-protocol.png"
+  },
+  {
+    "name": "Thirdwave Labs",
+    "tags": [
+      "infra"
+    ],
+    "description": "Thirdwave's Wallet Intelligence is a powerful tool designed to provide developers and businesses in the Web3 ecosystem with deep insights into their user's wallets. By leveraging this API data, builders can transform blockchain data into meaningful actions. Utilize wallet-based value tiers, wallet scoring, token ownership, bot warnings, and behavioral insights to personalize experiences, enhance engagement, and drive monetization.",
+    "url": "https://thirdwavelabs.com/",
+    "imageUrl": "/images/partners/thirdwave.png"
+  },
+  {
+    "name": "Umbra",
+    "tags": [
+      "security"
+    ],
+    "description": "Umbra is a stealth address protocol. A payer can send funds to a fresh address belonging to the recipient. Only the sender and the receiver know who owns the newly created address.",
+    "url": "https://app.umbra.cash/",
+    "imageUrl": "/images/partners/umbra.png"
+  },
+  {
+    "name": "Vela Exchange",
+    "tags": [
+      "defi"
+    ],
+    "description": "Empowering DeFi traders with fast execution, cheap transactions, advanced trading features and self-custody. ",
+    "url": "https://app.vela.exchange/",
+    "imageUrl": "/images/partners/vela.png"
   }
 ]

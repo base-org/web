@@ -1,4 +1,11 @@
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 const isProdEnv = process.env.NODE_ENV === 'production';
+
+// Can't import this from apps/web/src/utils/images.ts for some reason
+const allowedImageRemoteDomains = ['zku9gdedgba48lmr.public.blob.vercel-storage.com'];
 
 const baseConfig = {
   // Enable advanced features
@@ -53,7 +60,7 @@ function extendBaseConfig(customConfig = {}, plugins = []) {
 // csp headers
 const isLocalDevelopment = process.env.NODE_ENV === 'development';
 const baseXYZDomains = 'https://base.mirror.xyz';
-const greenhouseDomains = 'https://boards.greenhouse.io';
+const greenhouseDomains = 'https://boards.greenhouse.io https://boards-api.greenhouse.io';
 const ccaDomain = 'https://static-assets.coinbase.com/js/cca/v0.0.1.js';
 const ccaLiteDomains = 'https://cca-lite.coinbase.com';
 const sprigDomains = 'https://api.sprig.com https://cdn.sprig.com';
@@ -70,28 +77,58 @@ const contentSecurityPolicy = {
     ccaLiteDomains,
     walletconnectDomains,
   ],
+  'worker-src': ["'self'", 'blob:'],
   'connect-src': [
     "'self'",
+    'https://blob.vercel-storage.com', // Vercel File storage
+    'https://zku9gdedgba48lmr.public.blob.vercel-storage.com', // Vercel File storage
     walletconnectDomains,
     sprigDomains,
     greenhouseDomains,
     ccaLiteDomains,
     ccaDomain,
+    'https://ccip-v2.ens.xyz',
+    'https://euc.li',
+    'https://arweave.net',
+    'https://ens.xyz',
+    'https://enhanced-provider.rainbow.me',
+    'https://*.coinbase.com',
+    'wss://www.walletlink.org/rpc', // coinbase wallet connection
     'https://analytics-service-dev.cbhq.net',
     'mainnet.base.org',
+    'sepolia.base.org',
     'https://cloudflare-eth.com',
     'https://i.seadn.io/', // ens avatars
     'https://api.opensea.io', // enables getting ENS avatars
+    'https://ipfs.io', // ipfs ens avatar resolution
+    'https://cloudflare-ipfs.com', // ipfs Cloudfare ens avatar resolution
+    'wss://www.walletlink.org',
+    'https://base.easscan.org/graphql',
+    'https://api.guild.xyz/',
     isLocalDevelopment ? 'ws://localhost:3000/' : '',
     isLocalDevelopment ? 'http://localhost:3000/' : '',
+    'https://flag.lab.amplitude.com/sdk/v2/flags',
+    'https://api.lab.amplitude.com/sdk/v2/vardata',
+    'https://browser-intake-datadoghq.com', // datadog
+    'https://*.datadoghq.com', //datadog
+    'https://translate.googleapis.com', // Let user translate our website
+    'https://sdk-api.neynar.com/', // Neymar API
+    'https://unpkg.com/@lottiefiles/dotlottie-web@0.31.1/dist/dotlottie-player.wasm', // lottie player
+    `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
   'img-src': [
     "'self'",
+    'blob:',
     'data:',
+    'https://euc.li',
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars
+    'https://ipfs.io', // ipfs ens avatar resolution
+    'https://cloudflare-ipfs.com', // ipfs Cloudfare ens avatar resolution
+    'https://zku9gdedgba48lmr.public.blob.vercel-storage.com', // basename avatar upload to vercel blob
+    `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
   ],
 };
 
@@ -102,7 +139,7 @@ const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [ke
 const securityHeaders = [
   {
     key: 'cache-control',
-    value: 'no-store',
+    value: 'no-cache',
   },
   {
     key: 'content-security-policy',
@@ -110,7 +147,7 @@ const securityHeaders = [
   },
   {
     key: 'cross-origin-opener-policy',
-    value: 'same-origin',
+    value: 'same-origin-allow-popups',
   },
   {
     key: 'referrer-policy',
@@ -134,36 +171,97 @@ const securityHeaders = [
   },
 ];
 
-module.exports = extendBaseConfig({
-  transpilePackages: ['base-ui'],
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
+module.exports = extendBaseConfig(
+  {
+    transpilePackages: ['base-ui'],
+    i18n: {
+      locales: ['en'],
+      defaultLocale: 'en',
+    },
+    webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
+      config.module.rules.push({
+        test: /\.webm/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash].[ext]',
+              outputPath: 'static/assets/webm/',
+              publicPath: '/_next/static/assets/webm/',
+            },
+          },
+        ],
+      });
+      config.externals.push('pino-pretty');
+      return config;
+    },
+    images: {
+      remotePatterns: allowedImageRemoteDomains.map((hostname) => {
+        return {
+          protocol: 'https',
+          hostname,
+        };
+      }),
+    },
+    async headers() {
+      return [
+        {
+          source: '/:path*',
+          basePath: false,
+          headers: securityHeaders,
+        },
+      ];
+    },
+    async redirects() {
+      return [
+        {
+          source: '/careers',
+          destination: '/jobs',
+          permanent: true,
+        },
+        {
+          source: '/buildersummer',
+          destination: '/onchainsummer',
+          permanent: true,
+        },
+        {
+          source: '/onchainsummer',
+          destination: '/getstarted',
+          permanent: true,
+        },
+        {
+          source: '/onchainfont',
+          // just so the build doesn't fail in CI
+          destination: process.env.NEXT_PUBLIC_OCS_CREATIVE_DOWNLOAD_URL ?? '/',
+          permanent: false,
+        },
+        {
+          source: '/registry',
+          destination: 'https://buildonbase.deform.cc/registry/',
+          permanent: true,
+        },
+        {
+          source: '/registry-edit',
+          destination: 'https://buildonbase.deform.cc/registry-edit/',
+          permanent: true,
+        },
+        {
+          source: '/name/:path.base.eth',
+          destination: '/name/:path',
+          permanent: true,
+        },
+        {
+          source: '/names/:path',
+          destination: '/name/:path',
+          permanent: true,
+        },
+        {
+          source: '/name',
+          destination: '/names',
+          permanent: true,
+        },
+      ];
+    },
   },
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'i.seadn.io',
-      },
-    ],
-  },
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        basePath: false,
-        headers: securityHeaders,
-      },
-    ];
-  },
-  async redirects() {
-    return [
-      {
-        source: '/careers',
-        destination: '/jobs',
-        permanent: true,
-      },
-    ];
-  },
-});
+  [withBundleAnalyzer],
+);

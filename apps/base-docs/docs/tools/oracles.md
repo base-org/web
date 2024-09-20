@@ -12,8 +12,12 @@ keywords:
     Base network,
     Supra,
     Chainlink,
+    Chronicle,
+    ORA,
     Pyth,
     VRF,
+    Gelato VRF,
+    Gelato verifable random function,
     verifiable random function,
     generate random numbers,
     RNG,
@@ -63,6 +67,19 @@ To use Chainlink datafeeds, you may need [LINK](https://docs.chain.link/resource
 
 ---
 
+## Chronicle
+
+[Chronicle](https://chroniclelabs.org/) provides a number of [Oracles](https://chroniclelabs.org/dashboard) for Base.
+
+See [this guide](https://docs.chroniclelabs.org/Developers/tutorials/Remix) to learn how to use the Chronicle Oracles.
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
+
+---
+
 ## DIA
 
 [DIA](https://www.diadata.org/) provides 2000+ [price feeds](https://www.diadata.org/app/price/) for Base.
@@ -72,6 +89,31 @@ See [this guide](https://docs.diadata.org/introduction/intro-to-dia-oracles/requ
 
 - Base Mainnet
 - Base Sepolia (Testnet)
+
+---
+
+## Gelato
+
+Gelato VRF (Verifiable Random Function) provides a unique system offering trustable randomness on Base.
+
+See this guide to learn how to get started with [Gelato VRF](https://docs.gelato.network/web3-services/vrf/quick-start).
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
+
+---
+
+## ORA
+
+[ORA](https://ora.io) provides an [Onchain AI Oracle](https://docs.ora.io/doc/oao-onchain-ai-oracle/introduction) for Base.
+
+See [this guide](https://docs.ora.io/doc/oao-onchain-ai-oracle/develop-guide/tutorials/interaction-with-oao-tutorial) to learn how to use ORA Onchain AI Oracle.
+
+#### Supported Networks
+
+- Base Mainnet
 
 ---
 
