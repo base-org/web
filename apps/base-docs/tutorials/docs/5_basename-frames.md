@@ -1,6 +1,6 @@
 ---
 title: 'Add Frames to A Basename Profile'
-slug: /add-frames-to-Basename-profile
+slug: /add-frames-to-basename-profile
 description: Learn how to customize your Basename profile by adding Frames, showcasing dynamic content with ease on Base.
 author: hughescoin
 keywords:
