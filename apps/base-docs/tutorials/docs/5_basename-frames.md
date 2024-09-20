@@ -104,6 +104,7 @@ For more information on Frames and how to customize them, check out the followin
 ---
 
 [Open Frames Spec]: https://www.openframes.xyz/#required-properties
+[Open Frames]: https://www.openframes.xyz/
 [Frames Debugger]: https://debugger.framesjs.org/
 [Openframes Website]: https://www.openframes.xyz/
 [Open Graph spec]: https://ogp.me/
