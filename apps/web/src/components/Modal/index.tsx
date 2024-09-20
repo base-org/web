@@ -6,6 +6,7 @@ import { Fragment, PropsWithChildren } from 'react';
 export enum ModalSizes {
   Medium = 'medium',
   Large = 'large',
+  FlexLarge = 'flex-large',
 }
 
 type ModalProps = {
@@ -98,7 +99,7 @@ export default function Modal({
                     </button>
                   )}
                 </div>
-                <div className="flex max-w-prose flex-1 flex-col place-content-center place-items-center gap-2">
+                <div className="flex flex-1 flex-col place-content-center place-items-center gap-2">
                   {Boolean(title) && (
                     <Dialog.Title as="h2" className={mainClasses}>
                       {title}
