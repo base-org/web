@@ -30,7 +30,7 @@ Exploring them separately will highlight the functionality provided by the prepa
 
 :::caution
 
-In this module, you'll'll extend the onchain app you build in the previous module, [Reading and Displaying Data].
+In this module, you'll extend the onchain app you build in the previous module, [Reading and Displaying Data].
 
 :::
 
@@ -54,14 +54,13 @@ You'll need to know how many tokens the user has to be able to make decisions on
 
 You'll need the user's address to use in `args`, which you can conveniently get from the [`useAccount`] hook using the pattern below.
 
-```tsx:
-const { data: balanceData, queryKey: balanceQueryKey } =
-  useReadContract({
-    address: contractData.address as `0x${string}`,
-    abi: contractData.abi,
-    functionName: "balanceOf",
-    args: [useAccount().address],
-  });
+```tsx
+const { data: balanceData, queryKey: balanceQueryKey } = useReadContract({
+  address: contractData.address as `0x${string}`,
+  abi: contractData.abi,
+  functionName: 'balanceOf',
+  args: [useAccount().address],
+});
 
 useEffect(() => {
   if (balanceData) {
@@ -130,8 +129,8 @@ const handleClaimClick = () => {
 return (
   <div>
     <p>{'Token Balance: ' + tokenBalance}</p>
-    <button disabled={claimIsLoading} onClick={handleClaimClick}>
-      {claimIsLoading ? 'Complete In Wallet' : 'Claim Tokens'}
+    <button disabled={claimIsPending} onClick={handleClaimClick}>
+      {claimIsPending ? 'Complete In Wallet' : 'Claim Tokens'}
     </button>
   </div>
 );
