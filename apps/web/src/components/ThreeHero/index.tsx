@@ -44,7 +44,7 @@ type RotationContextType = {
   rotationSpeed: number;
 };
 
-const RotationContext = createContext<RotationContextType>({ rotationSpeed: 0 });
+const RotationContext = createContext<RotationContextType>({ rotationSpeed: 1 });
 
 /* 
   The Main Scene
@@ -324,7 +324,7 @@ function GLTFceneRenderer({ glbPath, rotationSpeed }: GLTFceneRendererProps): JS
 /* 
   3D Model
   - Display 3D object(s)
-  - Apply centrifugal force
+  - Apply attractive force towards the Base logo
   - CenterPosition (Base logo)
 */
 type PhysicsObjectProps = {
@@ -344,80 +344,26 @@ function PhysicsObject({
   const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
   const { rotationSpeed } = useContext(RotationContext);
 
-  const floatIntensity = 3;
-  const rotationResponseStrength = 1; // Adjust this to control how strongly objects respond to rotation
-  const returnStrength = 0.01; // Adjust this to control how quickly objects return to their original positions
-
-  const objectsData = useRef(
-    objects.map((object, index) => ({
-      initialPosition: object.position.clone(),
-      currentPosition: object.position.clone(),
-      initialOffset:
-        isCursor && index === 1
-          ? object.position.clone().sub(objects[0].position)
-          : new THREE.Vector3(),
-      floatSpeed: (Math.random() * 0.5 + 0.5) * floatIntensity,
-      floatAmplitude: (Math.random() * 0.1 + 0.05) * floatIntensity,
-      floatOffset: Math.random() * Math.PI * 2,
-    })),
-  );
+  const attractionStrength = 5; // Adjust this to change the strength of attraction
 
   useFrame((state) => {
-    if (!isBaseIcon) {
-      const time = state.clock.getElapsedTime();
-
-      // For cursor, we'll use the first object as reference
-      const referenceObjectData = objectsData.current[0];
-      const referenceObject = objects[0];
-
-      // Calculate forces for the reference object (or single object if not cursor)
-      const floatEffect =
-        Math.sin(time * referenceObjectData.floatSpeed + referenceObjectData.floatOffset) *
-        referenceObjectData.floatAmplitude;
-      const directionFromCenter = referenceObject.position.clone().sub(centerPosition).normalize();
-      const rotationForce = directionFromCenter.multiplyScalar(
-        Math.abs(rotationSpeed) * rotationResponseStrength,
+    if (!isBaseIcon && rigidBodyRef.current) {
+      const currentPosition = rigidBodyRef.current.translation();
+      const force = new THREE.Vector3(
+        centerPosition.x - currentPosition.x,
+        centerPosition.y - currentPosition.y,
+        centerPosition.z - currentPosition.z,
       );
-      const returnForce = referenceObjectData.initialPosition
-        .clone()
-        .sub(referenceObjectData.currentPosition)
-        .multiplyScalar(returnStrength);
-      const totalForce = new THREE.Vector3().addVectors(rotationForce, returnForce);
 
-      // Update reference object position
-      referenceObjectData.currentPosition.add(totalForce);
-      const newPosition = referenceObjectData.currentPosition.clone();
-      newPosition.y += floatEffect;
-      newPosition.x +=
-        Math.sin(time * referenceObjectData.floatSpeed * 0.5) *
-        referenceObjectData.floatAmplitude *
-        0.2;
-      newPosition.z +=
-        Math.cos(time * referenceObjectData.floatSpeed * 0.5) *
-        referenceObjectData.floatAmplitude *
-        0.2;
+      // Normalize and scale the force
+      force.normalize().multiplyScalar(attractionStrength);
 
-      // Apply position to reference object
-      referenceObject.position.copy(newPosition);
+      // Apply force
+      rigidBodyRef.current.applyImpulse(force, true);
 
-      // If it's a cursor, update the second object relative to the first
-      if (isCursor && objects.length > 1) {
-        const secondObjectData = objectsData.current[1];
-        const secondObject = objects[1];
-        secondObject.position.copy(newPosition).add(secondObjectData.initialOffset);
-      } else if (!isCursor) {
-        // For non-cursor objects, update each object individually
-        objects.slice(1).forEach((object, index) => {
-          const data = objectsData.current[index + 1];
-          const individualFloatEffect =
-            Math.sin(time * data.floatSpeed + data.floatOffset) * data.floatAmplitude;
-
-          object.position.copy(data.currentPosition);
-          object.position.y += individualFloatEffect;
-          object.position.x += Math.sin(time * data.floatSpeed * 0.5) * data.floatAmplitude * 0.2;
-          object.position.z += Math.cos(time * data.floatSpeed * 0.5) * data.floatAmplitude * 0.2;
-        });
-      }
+      // Apply rotation based on global rotation speed
+      const torque = new THREE.Vector3(0, rotationSpeed * 0.1, 0);
+      rigidBodyRef.current.applyTorqueImpulse(torque, true);
     }
   });
 
@@ -439,14 +385,15 @@ function PhysicsObject({
       });
     }
   }, [isBaseIcon, objects]);
+
   return (
     <RigidBody
       ref={rigidBodyRef}
       type={isBaseIcon ? 'fixed' : 'dynamic'}
-      mass={0.1}
+      mass={20}
+      colliders="cuboid"
       linearDamping={0.8}
       angularDamping={0.8}
-      colliders={false}
       restitution={0.3}
       friction={0.01}
       scale={1}
