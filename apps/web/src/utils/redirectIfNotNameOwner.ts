@@ -7,10 +7,13 @@ import {
 import { redirect } from 'next/navigation';
 
 export async function redirectIfNotNameOwner(username: BaseName) {
-  const address = await getBasenameAddress(username);
-  const editor = await getBasenameEditor(username);
-  const owner = await getBasenameOwner(username);
-
+  const [address, editor, owner] = await Promise.all([
+    getBasenameAddress(username),
+    getBasenameEditor(username),
+    getBasenameOwner(username),
+  ]).catch(() => {
+    redirect(`/name/not-found?name=${username}`);
+  });
   // Domain does not have address or editor (ie: doesn't exist)
   if (!address || !editor || !owner) {
     redirect(`/name/not-found?name=${username}`);

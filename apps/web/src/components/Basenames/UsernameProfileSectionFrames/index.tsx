@@ -34,7 +34,7 @@ function SectionContent() {
   const handleAddFrameLinkClick = useCallback(() => {
     logEventWithContext('basename_profile_frame_try_now_clicked', ActionType.click);
   }, [logEventWithContext]);
-
+  if (frameUrls.length === 0 && !currentWalletIsProfileOwner) return null;
   if (currentWalletIsProfileOwner && frameUrls.length === 0 && !existingTextRecordsIsLoading) {
     return (
       <section className="relative flex flex-row-reverse items-center justify-between gap-0 rounded-xl border border-palette-line/20 pb-5 pl-5 pt-5 lg:flex-row lg:justify-start lg:gap-2 lg:pb-0 lg:pl-1 lg:pr-6 lg:pt-0">
@@ -67,7 +67,6 @@ function SectionContent() {
       </section>
     );
   }
-  if (frameUrls.length === 0) return null;
   return (
     <section>
       <div className="flex flex-row justify-between">
