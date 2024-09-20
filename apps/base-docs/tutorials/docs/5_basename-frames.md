@@ -89,14 +89,22 @@ After the page reloads, you’ll see your profile with the newly added frame. Co
 
 ![profile](../../assets/images/basenames-tutorial/basenames-frame-final.png)
 
+Feel free to customize your Frames further or explore new designs from the community!
+
 ## Resources
 
 For more information on Frames and how to customize them, check out the following resources:
 
-[Open Frames Spec]https://www.openframes.xyz/#required-properties
-[Frames Debugger]https://debugger.framesjs.org/
-[Openframes Website]https://www.openframes.xyz/
-[Open Graph spec]https://ogp.me/
-[Warpcast]https://warpcast.com/
+- [Open Frames Spec](https://www.openframes.xyz/#required-properties)
+- [Frames Debugger](https://debugger.framesjs.org/)
+- [Openframes Website](https://www.openframes.xyz/)
+- [Open Graph spec](https://ogp.me/)
+- [Warpcast](https://warpcast.com/)
 
-Feel free to customize your Frames further or explore new designs from the community!
+---
+
+[Open Frames Spec]: https://www.openframes.xyz/#required-properties
+[Frames Debugger]: https://debugger.framesjs.org/
+[Openframes Website]: https://www.openframes.xyz/
+[Open Graph spec]: https://ogp.me/
+[Warpcast]: https://warpcast.com/
