@@ -2,6 +2,7 @@
 import {
   fallbackFrameContext,
   FarcasterFrameContext,
+  OnMintArgs,
   OnSignatureFunc,
   OnTransactionFunc,
   SignerStateInstance,
@@ -164,6 +165,34 @@ export function FramesProvider({ children }: FramesProviderProps) {
     },
     [address, config, currentChainId, openConnectModal, logEventWithContext, logError],
   );
+  const onMint = useCallback(
+    async (t: OnMintArgs) => {
+      if (!address) {
+        openConnectModal?.();
+        return null;
+      }
+      const searchParams = new URLSearchParams({
+        target: t.target,
+        taker: address,
+      });
+
+      fetch(`/frames/mint?${searchParams.toString()}`)
+        .then(async (res) => {
+          if (!res.ok) {
+            const json = await res.json();
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
+            throw new Error((json as any).message);
+          }
+          return res.json();
+        })
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
+        .then(async (json) => onTransaction({ ...t, transactionData: (json as any).data }))
+        .catch((e) => {
+          logError(e, 'error minting');
+        });
+    },
+    [address, openConnectModal, onTransaction, logError],
+  );
   const onError = useCallback(
     (e: Error) => {
       logError(e, 'frame error');
@@ -291,6 +320,7 @@ export function FramesProvider({ children }: FramesProviderProps) {
         frameActionProxy: '/frames',
         frameGetProxy: '/frames',
         onTransaction,
+        onMint,
         onError,
         onSignature,
         onConnectWallet: openConnectModal,
@@ -307,6 +337,7 @@ export function FramesProvider({ children }: FramesProviderProps) {
       frameUrls: optimisticFrameUrls,
     }),
     [
+      onMint,
       currentWalletIsProfileOwner,
       frameUrlRecord,
       anonSignerState,
