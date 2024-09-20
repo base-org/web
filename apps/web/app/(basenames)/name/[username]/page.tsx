@@ -1,19 +1,16 @@
+import { BaseName } from '@coinbase/onchainkit/identity';
 import ProfileProviders from 'apps/web/app/(basenames)/name/[username]/ProfileProviders';
-import { Metadata } from 'next';
+import ErrorsProvider from 'apps/web/contexts/Errors';
+import DynamicProfilePromo from 'apps/web/src/components/Basenames/ProfilePromo/dynamic';
+import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
+import { redirectIfNotNameOwner } from 'apps/web/src/utils/redirectIfNotNameOwner';
 import {
   formatDefaultUsername,
-  getBasenameAddress,
-  getBasenameEditor,
-  getBasenameOwner,
   getBasenameTextRecord,
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
-import { redirect } from 'next/navigation';
 import classNames from 'classnames';
-import { BaseName } from '@coinbase/onchainkit/identity';
-import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
-import ErrorsProvider from 'apps/web/contexts/Errors';
-import DynamicProfilePromo from 'apps/web/src/components/Basenames/ProfilePromo/dynamic';
+import { Metadata } from 'next';
 
 export type UsernameProfileProps = {
   params: { username: BaseName };
@@ -40,15 +37,7 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
 
 export default async function Username({ params }: UsernameProfileProps) {
   let username = await formatDefaultUsername(decodeURIComponent(params.username) as BaseName);
-
-  const address = await getBasenameAddress(username);
-  const editor = await getBasenameEditor(username);
-  const owner = await getBasenameOwner(username);
-
-  // Domain does have address or editor (ie: doesn't exist)
-  if (!address || !editor || !owner) {
-    redirect(`/name/not-found?name=${username}`);
-  }
+  await redirectIfNotNameOwner(username);
 
   const usernameProfilePageClasses = classNames(
     'mx-auto mt-32 flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 px-4 px-4 pb-40 md:flex-row md:px-8',
