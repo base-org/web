@@ -5,7 +5,6 @@ import FrameBuilder from 'apps/web/src/components/Basenames/ConfigureFramesPageC
 import { FramesProvider } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import { redirectIfNotNameOwner } from 'apps/web/src/utils/redirectIfNotNameOwner';
 import { formatDefaultUsername } from 'apps/web/src/utils/usernames';
-import classNames from 'classnames';
 
 export type ConfigureFramesProps = {
   params: { username: BaseName };
@@ -15,15 +14,11 @@ export default async function ConfigureFrames({ params }: ConfigureFramesProps) 
   let username = await formatDefaultUsername(decodeURIComponent(params.username) as BaseName);
   await redirectIfNotNameOwner(username);
 
-  const usernameProfilePageClasses = classNames(
-    'mx-auto mt-32 flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 px-4 px-4 pb-40 md:flex-row md:px-8',
-  );
-
   return (
     <ErrorsProvider context="profile_configure_frames">
       <ProfileProviders username={username}>
         <FramesProvider>
-          <main className={usernameProfilePageClasses}>
+          <main className="mx-auto mt-32 flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 px-4 pb-40 md:flex-row md:px-8">
             <FrameBuilder />
           </main>
         </FramesProvider>
