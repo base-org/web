@@ -228,9 +228,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Aug 14, 2024",
+        "last_updated": "Sep 12, 2024",
         "duration": "21 min read",
-        "checksum": "c847674db9fb136fddfb6df8ebf5fe08ae30a4cbb35d03513c0b069d0acff0ee"
+        "checksum": "774c94bba584693d64a3db2ec4da3554ac5bc69b54956874d78d0abdd6701c62"
     },
     "0_run-a-base-node": {
         "title": "Running a Base Node",
@@ -256,9 +256,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Aug 14, 2024",
+        "last_updated": "Sep 12, 2024",
         "duration": "7 min read",
-        "checksum": "dd2f73c4b26b8126cca282e46fe39a1faba31cde44243fe9abaeace771841e0f"
+        "checksum": "1b62db4c90fac97453acd2f9bc09b3d23e75baa6ba765caa647721c5ce20d95a"
     },
     "1_10_farcaster-frames-hyperframes": {
         "title": "Farcaster Frames: Building HyperFrames",
@@ -554,9 +554,9 @@
         "tags": [
             "smart contracts"
         ],
-        "last_updated": "Aug 20, 2024",
+        "last_updated": "Sep 12, 2024",
         "duration": "12 min read",
-        "checksum": "c21972264ff57035c74bc01712adc187a6302b67482000a0a6f81681ff9fa9da"
+        "checksum": "c39c756f2f8f9940b0a041d5212d868f82aa0f949f11742d3fffedd37a5d2b35"
     },
     "2_1_simple-onchain-nfts": {
         "title": "Simple Onchain NFTs",
@@ -696,9 +696,9 @@
         "difficulty": "hard",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Aug 14, 2024",
+        "last_updated": "Sep 12, 2024",
         "duration": "37 min read",
-        "checksum": "644148276a060da14958bd331948201e76c94390bfeffc80d81fb58621cf8592"
+        "checksum": "5a5ce14de1c4ea8416346409bec25aa6fb5d65e86f931771a58328d0280d1647"
     },
     "2_dynamic-nfts": {
         "title": "Building dynamic NFTs",
@@ -724,9 +724,30 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Sep 13, 2024",
         "duration": "14 min read",
-        "checksum": "0b1498d415cda6e83031231cd05d42edacd2faa82d68471b2ed09670481a3259"
+        "checksum": "50ab75b2f4db041666bd7bf24bea0a3079389213810517bd8087807c3528fb0c"
+    },
+    "2_email-campaign-with-resend": {
+        "title": "Create Email Marketing Campaigns Onchain using Coinbase Smart Wallet + Resend",
+        "slug": "/onchain-email-campaigns-using-resend",
+        "description": "A tutorial that teaches how to create a mailing list and email customers using Resend",
+        "author": "hughescoin",
+        "keywords": [
+            "build on base",
+            "viem",
+            "wagmi",
+            "frontend",
+            "onchain app development"
+        ],
+        "tags": [
+            "account abstraction"
+        ],
+        "difficulty": "beginner",
+        "displayed_sidebar": null,
+        "last_updated": "Sep 12, 2024",
+        "duration": "21 min read",
+        "checksum": "e04c640da09b69b49d92c792d7cc6ddfddbcbee6facc44de85690c73da1f3aeb"
     },
     "2_event-gate-nouns": {
         "title": "Gate IRL Events with Nouns",
@@ -856,9 +877,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Aug 14, 2024",
+        "last_updated": "Sep 12, 2024",
         "duration": "46 min read",
-        "checksum": "13ddb86a1b3e42ca0c3a8a4f1678f78d0f02d7b003133351081ecb252610789c"
+        "checksum": "aabfa2f90ea76b3e76b29d22f15262c84734e21d657e27ebc81b09f7f23b142d"
     },
     "4_hardhat-debugging": {
         "title": "Hardhat: Debugging smart contracts",
@@ -1205,8 +1226,8 @@
         "difficulty": "easy",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Sep 12, 2024",
         "duration": "8 min read",
-        "checksum": "1d485f4ded5aa492578d9887e36fefefea452c262769f5f30f6e9750c24c2913"
+        "checksum": "59d04f2a46bc95b68a0f50c83f78a0b0d2f2549ecf0e8c7e592aaa4eae6bf6d1"
     }
 }
