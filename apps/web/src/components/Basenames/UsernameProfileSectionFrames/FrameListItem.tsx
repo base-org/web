@@ -32,9 +32,9 @@ export default function FrameListItem({ url }: { url: string }) {
             <button
               type="button"
               aria-label="more"
-              className="absolute right-2.5 top-2.5 z-2 flex items-center justify-center rounded-lg bg-white p-2 text-gray-80 transition-colors hover:bg-gray-5"
+              className="absolute right-2.5 top-2.5 z-2 flex items-center justify-center rounded-lg bg-white p-1 text-gray-80 transition-colors hover:bg-gray-5"
             >
-              <EllipsisHorizontalIcon width="12px" />
+              <EllipsisHorizontalIcon width="20px" />
             </button>
           </Popover.Trigger>
           <Popover.Portal>
