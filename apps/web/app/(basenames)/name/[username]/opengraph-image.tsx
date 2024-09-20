@@ -29,20 +29,25 @@ export async function generateImageMetadata({ params }: UsernameProfileProps) {
     username = formatBaseEthDomain(username, base.id);
   }
 
+  // Remove funky char which breaks OG image path
+  const alphanumericRegex = /[^a-zA-Z0-9]/g;
+  const sanitizedId = username.replace(alphanumericRegex, '');
+
   return [
     {
       alt: `Basenames | ${username}`,
       contentType: 'image/png',
       size,
-      id: username,
+      id: sanitizedId,
     },
   ];
 }
 
-type ImageRouteProps = { id: string };
+type ImageRouteProps = { id: string; params: { username: string } };
 
 export default async function OpenGraphImage(props: ImageRouteProps) {
-  let username = props.id;
+  // Decode emoji
+  let username = decodeURIComponent(props.params.username);
 
   if (
     username &&

@@ -25,7 +25,7 @@ displayed_sidebar: null
 
 # Build a Dynamic NFT on Base with Irys
 
-In this tutorial, you will create a dynamic NFT using Irys' [mutable references].
+In this tutorial, you will create a dynamic NFT using Irys's [mutability features].
 
 ![Overview](../../assets/images/dynamic-nfts/all-characters.png)
 
@@ -40,7 +40,7 @@ By the end of this tutorial, you should be able to:
 
 - Permanently upload data onchain using Irys
 - Create NFT metadata and use it to mint an NFT
-- "Mutate" (change) the NFT metadata using Irys' mutable references
+- "Mutate" (change) the NFT metadata using Irys's mutability features
 
 ## Prerequisites
 
@@ -50,7 +50,7 @@ By the end of this tutorial, you should be able to:
 
 ## About Irys
 
-Irys is a provenance layer. Data uploaded to Irys is:
+[Irys] is a datachain, a blockchain optimized for data storage. Data uploaded to Irys is:
 
 - Permanent and immutable
 - Onchain
@@ -64,20 +64,19 @@ When you store your NFT assets on Irys and mint them using a smart contract on B
 
 Irys has a pay-once-store-forever model and accepts payment for storage using multiple tokens, including ETH on Base.
 
-## Mutable references
+## "Mutability"
 
-Data on Irys is permanent and immutable, but you use Irys' [mutable references] to simulate mutability and create dynamic NFTs that evolve based on onchain or offchain actions.
+Data on Irys is permanent and immutable, but you use Irys's [mutability features] to simulate mutability and create dynamic NFTs that evolve based on onchain or offchain actions.
 
 ![Overview](../../assets/images/dynamic-nfts/mutable-references.png)
 
-With mutable references, you create a single, static URL that is linked to a series of transactions. You can add a new transaction to the series at any time, and the URL will always resolve to the most recent transaction.
+Using Irys's mutability features, you create a single, static URL that is linked to a series of transactions. Then, you can add a new transaction to the series at any time, and the URL will always resolve to the most recent transaction.
 
-You'll mint your NFT using a mutable reference URL, and then push updates to that URL. The URL won't change, but the metadata it resolves to will.
+You'll mint your NFT using a mutable-style URL, and then push updates to that URL. The URL won't change, but the metadata it resolves to will.
 
 ## About
 
-This tutorial focuses on creating a SuperMon NFT, similar to one used in a web3 game that would evolve during gameplay. The NFT starts with a basic appearance
-and can be "upgraded" twice. You will use the Irys CLI to "mutate" the metadata, simulating the automatic changes that would occur through player interactions in an actual game.
+This tutorial focuses on creating a SuperMon NFT, similar to one used in a web3 game that would evolve during gameplay. The NFT starts with a basic appearance and can be "upgraded" twice. You will use the Irys CLI to "mutate" the metadata, simulating the automatic changes that would occur through player interactions in an actual game.
 
 ## Smart contract
 
@@ -122,10 +121,14 @@ You'll use the [Irys CLI] to upload images and metadata.
 
 Install the Irys CLI globally using the `-g` flag. Depending on your setup, you may need to use sudo.
 
-```console
-npm i -g @irys/sdk
-# Or
-sudo npm i -g @irys/sdk
+```bash
+npm i -g @irys/cli
+```
+
+Or:
+
+```bash
+sudo npm i -g @irys/cli
 ```
 
 ### Using private keys
@@ -142,7 +145,7 @@ irys -w <base-private-key> -t base-eth
 
 [Download a zip containing PNGs] for each level, and save them on your local drive.
 
-Next, fund the Irys Devnet node with 0.1 [Base Sepolia ETH] to pay for your uploads.
+Next, fund Irys with 0.1 [Base Sepolia ETH] to pay for your uploads.
 
 > In all of these CLI examples, make sure to replace the value of the `-w` parameter with your own private key.
 
@@ -151,14 +154,14 @@ irys fund 100000000000000000 \
   -n devnet \
   -t base-eth \
   -w 6dd5e....54a120201cb6a \
-  --provider-url https://sepolia-explorer.base.org/
+  --provider-url https://sepolia.base.org
 ```
 
 > The `fund` command accepts a value in atomic units, 0.1 ETH is equal to 100000000000000000 in atomic units.
 
 Next, use the Irys CLI to upload each of the images to the Irys Devnet.
 
-> Uploads to Irys' devnet are kept for ~60 days and are paid for using free tokens available from faucets [Base Sepolia]. Uploads to Irys' mainnet are permanent and can be paid for using ETH on Base.
+> Uploads to Irys's devnet are kept for ~60 days and are paid for using free tokens available from [faucets].
 
 ```console
 irys upload image-level-1.png \
@@ -188,7 +191,7 @@ Create three metadata files similar to the ones below. Make sure to change the v
 {
   "name": "SuperMon",
   "symbol": "SMON",
-  "image": "https://gateway.irys.xyz/QH3rksVhbFg5L9vvjGzb4POUibCEG-TGPInmofp-O-o",
+  "image": "https://gateway.irys.xyz/3JE8cucmpLkXK1t84QwqDRv25FTB2EJWCUgpWdtvuJZd",
   "description": "Super dooper, changing shapes, changing power",
   "attributes": [
     {
@@ -203,7 +206,7 @@ Create three metadata files similar to the ones below. Make sure to change the v
 {
   "name": "SuperMon",
   "symbol": "SMON",
-  "image": "https://gateway.irys.xyz/QH3rksVhbFg5L9vvjGzb4POUibCEG-TGPInmofp-O-o",
+  "image": "https://gateway.irys.xyz/3JE8cucmpLkXK1t84QwqDRv25FTB2EJWCUgpWdtvuJZd",
   "description": "Super dooper, changing shapes, changing power",
   "attributes": [
     {
@@ -219,7 +222,7 @@ Create three metadata files similar to the ones below. Make sure to change the v
 {
   "name": "SuperMon",
   "symbol": "SMON",
-  "image": "https://gateway.irys.xyz/QH3rksVhbFg5L9vvjGzb4POUibCEG-TGPInmofp-O-o",
+  "image": "https://gateway.irys.xyz/3JE8cucmpLkXK1t84QwqDRv25FTB2EJWCUgpWdtvuJZd",
   "description": "Super dooper, changing shapes, changing power",
   "attributes": [
     {
@@ -238,12 +241,12 @@ irys upload metadata-level-1.json \
   -n devnet \
   -t base-eth \
   -w 6dd5e....54a120201cb6a \
-  --provider-url 	https://sepolia-explorer.base.org
+  --provider-url https://sepolia.base.org
 ```
 
-The CLI will return a URL similar to `https://gateway.irys.xyz/NDtKvjlmZL2iXUPmX6P-BuvtnvAEFkUiQWG8ToyK5FM`. To convert that to a mutable references URL, interpolate it by adding `/mutable/` after the domain and before the transaction ID.
+The CLI will return a URL similar to `https://gateway.irys.xyz/94TNg3UUKyZ96Dj8eSo9DVkBiivAz9jT39jjMFeTFvm3`. To convert that to a mutable-style URL, interpolate it by adding `/mutable/` after the domain and before the transaction ID.
 
-Your final URL will be similar to `https://gateway.irys.xyz/mutable/NDtKvjlmZL2iXUPmX6P-BuvtnvAEFkUiQWG8ToyK5FM`.
+Your final URL will be similar to `https://gateway.irys.xyz/mutable/94TNg3UUKyZ96Dj8eSo9DVkBiivAz9jT39jjMFeTFvm3`.
 
 ## Minting the NFT
 
@@ -251,7 +254,7 @@ To mint your NFT in Remix:
 
 1. Return to Remix.
 2. Under "Deployed Contracts", locate your contract and expand it to see its functions.
-3. Under the `Mint` function, enter the wallet address you want to mint the NFT to and the metadata URL (e.g. `https://gateway.irys.xyz/mutable/NDtKvjlmZL2iXUPmX6P-BuvtnvAEFkUiQWG8ToyK5FM`) from the previous step.
+3. Under the `Mint` function, enter the wallet address you want to mint the NFT to and the metadata URL (e.g. `https://gateway.irys.xyz/mutable/94TNg3UUKyZ96Dj8eSo9DVkBiivAz9jT39jjMFeTFvm3`) from the previous step.
 4. Click Transact.
 
 ![Image Level 3](../../assets/images/dynamic-nfts/open-sea-mockup.jpg)
@@ -260,15 +263,15 @@ You can now view the NFT on the [Opensea Testnet].
 
 ## Mutating the metadata
 
-To now "mutate" the NFT, upload a new version of the metadata tagging it as having a `Root-TX` equal to the transaction ID of your first transaction. In my example, I pass the value of `NDtKvjlmZL2iXUPmX6P-BuvtnvAEFkUiQWG8ToyK5FM`, however make sure to change this to match your unique transaction ID.
+To now "mutate" the NFT, upload a new version of the metadata tagging it as having a `Root-TX` equal to the transaction ID of your first transaction. In my example, I pass the value of `94TNg3UUKyZ96Dj8eSo9DVkBiivAz9jT39jjMFeTFvm3`, however make sure to change this to match your unique transaction ID.
 
 ```console
 irys upload metadata-level-2.json \
   -n devnet \
   -t base-eth \
   -w 6dd5e....54a120201cb6a \
-  --tags Root-TX NDtKvjlmZL2iXUPmX6P-BuvtnvAEFkUiQWG8ToyK5FM \
-  --provider-url https://sepolia-explorer.base.org
+  --tags Root-TX 94TNg3UUKyZ96Dj8eSo9DVkBiivAz9jT39jjMFeTFvm3 \
+  --provider-url https://rpc.sepolia.org
 ```
 
 Return to Opensea and request that it refresh your metadata.
@@ -302,13 +305,15 @@ Dynamic NFTs are commonly used with gaming projects, similar to the one we built
 
 ---
 
-[Base Faucet]: https://docs.base.org/tools/network-faucet
-[Base Sepolia ETH]: https://docs.base.org/tools/network-faucet
-[browser]: https://docs.irys.xyz/developer-docs/irys-sdk/irys-in-the-browser
+[Irys]: https://www.irys.xyz/
+[Base Faucet]: https://docs.base.org/docs/tools/network-faucets/
+[faucets]: https://docs.base.org/docs/tools/network-faucets/
+[Base Sepolia]: https://docs.base.org/docs/tools/network-faucets/
+[browser]: https://docs.irys.xyz/build/d/irys-in-the-browser
 [Coinbase Wallet]: https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad?hl=e
 [Download a zip containing PNGs]: https://gateway.irys.xyz/MoOvEzePMwFgc_v6Gw3U8ovV6ostgrkWb9tS4baAJhc
-[Irys CLI]: https://docs.irys.xyz/developer-docs/cli
-[mutable references]: https://docs.irys.xyz/developer-docs/mutable-references
+[Irys CLI]: https://docs.irys.xyz/build/d/storage-cli/installation
+[mutability features]: https://docs.irys.xyz/build/d/features/mutability
 [Opensea Testnet]: https://testnets.opensea.io/accoun
 [Remix]: https://docs.base.org/tutorials/deploy-with-remix
-[server]: https://docs.irys.xyz/developer-docs/irys-sdk
+[server]: https://docs.irys.xyz/build/d/quickstart
