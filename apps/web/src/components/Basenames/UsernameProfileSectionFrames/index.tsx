@@ -90,7 +90,7 @@ function SectionContent() {
           {frameInteractionError}
         </Button>
       )}
-      <div className="columns-1 p-4 xl:columns-2">
+      <div className="columns-1 gap-4 p-4 md:gap-8 xl:columns-2">
         {frameUrls.map((url) => (
           <FrameListItem url={url} key={url} />
         ))}

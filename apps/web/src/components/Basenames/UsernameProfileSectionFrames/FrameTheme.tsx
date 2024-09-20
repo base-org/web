@@ -36,7 +36,7 @@ export const theme: FrameUITheme<StylingProps> = {
       'bg-palette-positiveForeground flex flex-row items-center justify-around gap-2 w-full',
   },
   TextInput: {
-    className: 'rounded-xl border border-palette-line/20 px-3 py-2 mt-3 mx-3 w-full',
+    className: 'rounded-xl border border-palette-line/20 px-3 py-2 mt-2 mb-1 mx-3 w-full',
   },
 };
 
