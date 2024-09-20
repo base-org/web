@@ -14,11 +14,11 @@ type StylingProps = {
 export const theme: FrameUITheme<StylingProps> = {
   Error: {
     className:
-      'flex flex-col rounded-[24px] overflow-hidden bg-transparent relative items-center justify-center opacity-50',
+      'flex flex-col rounded-3xl overflow-hidden bg-transparent relative items-center justify-center opacity-50',
   },
   Root: {
     className:
-      'relative flex flex-col rounded-[24px] items-center justify-center overflow-hidden bg-transparent relative border border-palette-line/20 min-w-[245px] min-h-[245px]',
+      'relative flex flex-col rounded-3xl items-center justify-center overflow-hidden bg-transparent relative border border-palette-line/20 min-w-[245px] min-h-[245px]',
   },
   ButtonsContainer: {
     className:

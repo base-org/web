@@ -1,14 +1,15 @@
 'use client';
 
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
-import { TrashIcon } from '@heroicons/react/24/solid';
 import * as Popover from '@radix-ui/react-popover';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Frame';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
+import Image, { StaticImageData } from 'next/image';
 import { useCallback } from 'react';
+import TrashIcon from './assets/trash-icon.svg';
 
 export default function FrameListItem({ url }: { url: string }) {
   const { removeFrame } = useFrameContext();
@@ -48,7 +49,7 @@ export default function FrameListItem({ url }: { url: string }) {
                 onClick={handleRemoveFrameClick}
                 className="flex flex-row items-center justify-start gap-2 px-2 py-1"
               >
-                <TrashIcon width="12px" /> Remove frame
+                <Image alt="" src={TrashIcon as StaticImageData} width={16} /> Remove frame
               </button>
             </Popover.Content>
           </Popover.Portal>
