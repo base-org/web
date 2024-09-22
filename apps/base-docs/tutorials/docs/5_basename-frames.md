@@ -42,7 +42,7 @@ Before you begin, ensure you have the following:
 
 To get started, head over to a Basename that you own. For example:
 
-`https://www.base.org/name/pathughes`
+`https://www.base.org/name/devrel`
 
 ![basenames-profile-homepage](../../assets/images/basenames-tutorial/basenames-homepage.png)
 
