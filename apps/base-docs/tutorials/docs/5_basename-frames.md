@@ -35,7 +35,7 @@ Frames are dynamic visual elements that display custom content on your Basename 
 
 Before you begin, ensure you have the following:
 
-- A registered Basename. [Claim a basename](https://www.base.org/names)
+- A registered Basename. If you do not have one, [claim a basename](https://www.base.org/names) now.
 - A small amount of ETH to submit the text record onchain
 
 ## Navigate to Your Basename
