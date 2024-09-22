@@ -54,10 +54,7 @@ Once you're on your profile, you’ll be greeted with a new banner inviting you 
 
 ## Explore the Frame Selection Panels
 
-You’ll now see two panels to help you choose and preview frames for your profile:
-
-- **Left Panel**: This panel contains pre-built frames created by the Base community.
-- **Right Panel**: Here, you can preview how the selected frame will look on your Basenames profile.
+You'll now see two panels to help you choose and preview frames for your profile. The left panel contains pre-built frames created by the Base community, while the right panel allows you to preview how the selected frame will look on your Basenames profile.
 
 ![frame-selector-page](../../assets/images/basenames-tutorial/frames-selector.png)
 
