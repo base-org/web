@@ -25,11 +25,11 @@ displayed_sidebar: null
 
 # Add Frames to A Basename
 
-Welcome to the exciting world of Frames for your Basename! This tutorial will guide you step-by-step through adding a frame to your Basename, allowing you to personalize and display unique content on the Base blockchain.
+Welcome to the exciting world of Frames for your Basename! This tutorial will guide you step-by-step through adding a frame to your Basename, allowing you to personalize and display unique content on the Base.
 
 ## What Are Frames?
 
-Frames are dynamic visual elements that display custom content on your Basename using any [Open Graph spec] extensions. You may be familiar with frames from platforms like [Warpcast], where they are used to enhance social interactions like minting NFTs onchain, sharing information, and more. Open Frames work similarly, but they are independent of Warpcast are the best way for adding frames to your Basename. With Open Frames, anyone can create and display content directly on their Basename.
+Frames are dynamic visual elements that display custom content on your Basename using any [Open Graph spec] extensions. You may be familiar with frames from platforms like [Warpcast], where they are used to enhance social interactions like minting NFTs onchain, sharing information, and more. Open Frames work similarly, but they are independent of Warpcast and are the best way for adding frames to your Basename. With Open Frames, anyone can create and display content directly on their Basename.
 
 ## Prerequisites
 
