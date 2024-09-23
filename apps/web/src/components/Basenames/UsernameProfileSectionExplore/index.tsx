@@ -1,19 +1,18 @@
+import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
-import { StaticImageData } from 'next/image';
-import onChainSummerPassCard from './images/onChainSummerPassCard.png';
-import onChainSummerRegistryCard from './images/onChainSummerRegistryCard.png';
-import baseGuildCard from './images/baseGuildCard.png';
-import grantsCard from './images/grantsCard.png';
-import verificationCard from './images/verificationCard.png';
-import baseLearnCard from './images/baseLearnCard.png';
-import roundsWftIllustrationfrom from './images/roundsWftIllustration.svg';
-import Link from 'next/link';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import Modal from 'apps/web/src/components/Modal';
+import { StaticImageData } from 'next/image';
+import Link from 'next/link';
 import { useCallback, useState } from 'react';
-import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import baseGuildCard from './images/baseGuildCard.png';
+import baseLearnCard from './images/baseLearnCard.png';
+import grantsCard from './images/grantsCard.png';
+import onChainSummerRegistryCard from './images/onChainSummerRegistryCard.png';
+import roundsWftIllustrationfrom from './images/roundsWftIllustration.svg';
+import verificationCard from './images/verificationCard.png';
 
 export type UsernameProfileSectionExploreLink = {
   title: string;
@@ -26,12 +25,6 @@ export type UsernameProfileSectionExploreLink = {
 const utms = `?utm_source=baseprofile&utm_medium=badge&utm_campaign=registry`;
 
 const USERNAME_PROFILE_SECTION_EXPLORE_LINKS: UsernameProfileSectionExploreLink[] = [
-  {
-    title: 'Get an Onchain Summer Pass',
-    image: onChainSummerPassCard,
-    href: 'https://wallet.coinbase.com/ocs/progress',
-    backgroundClassName: 'bg-[#F1A1D7]',
-  },
   {
     title: 'Add project to Onchain Registry',
     image: onChainSummerRegistryCard,
