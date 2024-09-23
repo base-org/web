@@ -71,7 +71,6 @@ const links: TopNavigationLink[] = [
       { name: 'Vision', href: '/about' },
       { name: 'Blog', href: 'https://base.mirror.xyz/' },
       { name: 'Jobs', href: '/jobs' },
-      { name: 'Media Kit', href: 'https://github.com/base-org/brand-kit' },
     ],
   },
   {

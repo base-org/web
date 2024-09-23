@@ -6,6 +6,7 @@ import Text from 'apps/web/src/components/base-org/typography/Text';
 import Card from 'apps/web/src/components/base-org/Card';
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
+import Link from 'next/link';
 
 export default async function BuildAndRewardSection() {
   return (
@@ -33,13 +34,15 @@ export default async function BuildAndRewardSection() {
           </Text>
 
           <div>
-            <Button
-              variant={ButtonVariants.Primary}
-              iconName="baseOrgDiagonalUpArrow"
-              className="md:ml-auto"
-            >
-              Get rewarded
-            </Button>
+            <Link href="https://retrofunding.optimism.io/" target="_blank">
+              <Button
+                variant={ButtonVariants.Primary}
+                iconName="baseOrgDiagonalUpArrow"
+                className="md:ml-auto"
+              >
+                Get rewarded
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
