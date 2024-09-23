@@ -86,6 +86,7 @@ export default async function Home() {
                   </Link>
                 </div>
               </Container>
+              <div className="pointer-events-none absolute bottom-0 left-0 z-20 h-[50px] w-full bg-gradient-to-b from-transparent to-black" />
             </div>
           </div>
         </AnalyticsProvider>

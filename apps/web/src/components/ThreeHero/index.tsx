@@ -1,27 +1,38 @@
-'use client';
+/* eslint-disable react/prop-types */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable react-perf/jsx-no-new-object-as-prop */
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react-perf/jsx-no-new-function-as-prop */
+/* eslint-disable react-perf/jsx-no-new-array-as-prop */
+/* eslint-disable react/no-unknown-property */
+/* sorry! */
 
+'use client';
 import * as THREE from 'three';
+import { useRef, useMemo, useCallback, useState, useEffect, Suspense } from 'react';
+import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
 import {
-  useRef,
-  useCallback,
-  useState,
-  useEffect,
-  useContext,
-  createContext,
-  useMemo,
-} from 'react';
-import { Canvas, Dpr, useFrame, useThree } from '@react-three/fiber';
-import { useGLTF, SoftShadows } from '@react-three/drei';
-import { Physics, RapierRigidBody, RigidBody, Vector3Tuple } from '@react-three/rapier';
-import { HDRJPGLoader } from '@monogrid/gainmap-js';
+  useGLTF,
+  Lightformer,
+  Environment,
+  //MeshTransmissionMaterial,
+  Html,
+  Center,
+} from '@react-three/drei';
 import {
-  EffectComposer,
-  Bloom,
-  ToneMapping,
-  DepthOfField,
-  Vignette,
-} from '@react-three/postprocessing';
-import { BlendFunction } from 'postprocessing';
+  Physics,
+  RigidBody,
+  BallCollider,
+  Vector3Tuple,
+  CylinderCollider,
+} from '@react-three/rapier';
+import { SVGLoader } from 'three-stdlib';
+import { EffectComposer, Bloom, SMAA } from '@react-three/postprocessing';
 
 // Environnment
 import environmentLight from './assets/environmentLight.jpg';
@@ -29,22 +40,16 @@ import environmentLight from './assets/environmentLight.jpg';
 // Models
 import babylong_optimize_1 from './assets/babylon_optimize_1.glb';
 
+import baseLogo from './assets/base-logo.svg';
+
+const blue = '#105eff';
+
 const modelToUse = babylong_optimize_1;
 
 /*
   Constants
 */
-const baseIconName = 'Wallet';
-const cursor = 'Cursor';
-const cursor1 = 'Cursor1';
-/*
-  Scene Rotation context
-*/
-type RotationContextType = {
-  rotationSpeed: number;
-};
-
-const RotationContext = createContext<RotationContextType>({ rotationSpeed: 0 });
+const blackColor = new THREE.Color(0.08, 0.08, 0.08);
 
 /* 
   The Main Scene
@@ -52,16 +57,7 @@ const RotationContext = createContext<RotationContextType>({ rotationSpeed: 0 })
   - Listen to Mouse event for rotation context
   - Global setup such as gravity, dpr & Physics
 */
-const dprSettings: Dpr = [1, 1.5];
-const glSettings = {
-  antialias: true,
-  alpha: true,
-  stencil: false,
-  depth: true,
-  logarithmicDepthBuffer: false,
-  toneMapping: THREE.ACESFilmicToneMapping,
-  toneMappingExposure: 1,
-};
+
 const gravity: Vector3Tuple = [0, 0, 0];
 
 export default function Scene(): JSX.Element {
@@ -98,63 +94,41 @@ export default function Scene(): JSX.Element {
   }, []);
 
   const isActive = isVisible && isWindowFocused;
-  const [isDragging, setIsDragging] = useState(false);
-  const previousMouseX = useRef(0);
-  const rotationSpeed = useRef(0);
-
-  const onPointerDown = useCallback((event: React.PointerEvent) => {
-    setIsDragging(true);
-    previousMouseX.current = event.clientX;
-  }, []);
-
-  const onPointerMove = useCallback(
-    (event: React.PointerEvent) => {
-      if (isDragging) {
-        const deltaX = event.clientX - previousMouseX.current;
-        rotationSpeed.current = deltaX * 0.005; // Adjust this multiplier to change rotation sensitivity
-        previousMouseX.current = event.clientX;
-      }
-    },
-    [isDragging],
-  );
-
-  const onPointerUp = useCallback(() => {
-    setIsDragging(false);
-  }, []);
 
   return (
-    <div
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerLeave={onPointerUp}
-      style={{ width: '100%', height: '100%', touchAction: 'none' }}
-      ref={containerRef}
-    >
-      <Canvas shadows frameloop={isActive ? 'always' : 'never'} dpr={dprSettings} gl={glSettings}>
-        <SoftShadows size={2.5} samples={16} focus={0.5} />
-        <Physics gravity={gravity}>
-          <GLTFceneRenderer glbPath={modelToUse} rotationSpeed={rotationSpeed} />
-        </Physics>
-        <EffectComposer>
-          <Bloom intensity={0.5} luminanceThreshold={0.9} luminanceSmoothing={0.025} />
-          <ToneMapping
-            blendFunction={BlendFunction.LIGHTEN}
-            adaptive
-            resolution={256}
-            middleGrey={0.6}
-            maxLuminance={16.0}
-            averageLuminance={1.0}
-            adaptationRate={1.0}
-          />
+    <div style={{ width: '100%', height: '100%' }} ref={containerRef}>
+      <Canvas shadows frameloop={isActive ? 'always' : 'never'} camera={{ position: [0, 0, 5] }}>
+        <fog attach="fog" args={['#111', 2, 7]} />
+        <mesh>
+          <sphereGeometry args={[7, 64, 64]} />
+          <meshPhysicalMaterial color="#666" side={THREE.BackSide} />
+        </mesh>
 
-          <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
-          <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
-
-          <Vignette eskil={false} offset={0.01} darkness={0.5} />
+        <EffectComposer multisampling={0} stencilBuffer={false}>
+          <Bloom mipmapBlur luminanceThreshold={1} intensity={1.5} />
+          <SMAA />
         </EffectComposer>
+
+        <EnvironmentSetup />
+        <Suspense fallback={<Loader />}>
+          <Physics gravity={gravity} timeStep="vary">
+            <Pointer />
+            <Everything />
+          </Physics>
+        </Suspense>
       </Canvas>
     </div>
+  );
+}
+
+function Loader() {
+  //const { progress } = useProgress();
+  return (
+    <Html center>
+      <div className="h-[50px] w-[50px] animate-pulse">
+        <img src={baseLogo.src} alt="Loading..." className="w-[50px]" />
+      </div>
+    </Html>
   );
 }
 
@@ -164,31 +138,57 @@ export default function Scene(): JSX.Element {
   - Set as global texture
 */
 function EnvironmentSetup() {
-  const { gl, scene } = useThree();
-  const [envMap, setEnvMap] = useState<THREE.Texture | null>(null);
+  return (
+    <Environment files={environmentLight.src}>
+      <Lightformer
+        form="ring"
+        intensity={10}
+        rotation-x={Math.PI / 2}
+        position={[5, 5, -3]}
+        scale={4}
+        color={blue}
+      />
+      <Lightformer
+        form="circle"
+        intensity={20}
+        rotation-x={Math.PI / 2}
+        position={[0, 5, -9]}
+        scale={2}
+      />
+      <Lightformer
+        form="circle"
+        intensity={2}
+        rotation-y={-Math.PI / 2}
+        position={[10, 1, 0]}
+        scale={8}
+      />
+      <Lightformer
+        form="ring"
+        color={blue}
+        intensity={10}
+        onUpdate={(self) => self.lookAt(0, 0, 0)}
+        position={[10, 10, 0]}
+        scale={4}
+      />
+    </Environment>
+  );
+}
 
-  useEffect(() => {
-    const loader = new HDRJPGLoader(gl);
-    loader.load(environmentLight.src, (result) => {
-      const texture = result.renderTarget.texture;
-      texture.mapping = THREE.EquirectangularReflectionMapping;
+function BlackMaterial() {
+  return (
+    <meshPhysicalMaterial
+      color={blackColor}
+      metalness={0.5}
+      roughness={0.5}
+      side={THREE.DoubleSide}
+    />
+  );
+}
 
-      setEnvMap(texture);
-
-      // Clean up function
-      return () => {
-        result.dispose();
-      };
-    });
-  }, [gl]);
-
-  useEffect(() => {
-    if (envMap) {
-      scene.environment = envMap;
-    }
-  }, [scene, envMap]);
-
-  return null;
+function MetalMaterial() {
+  return (
+    <meshPhysicalMaterial color="white" metalness={0.8} roughness={0.3} side={THREE.DoubleSide} />
+  );
 }
 
 /* 
@@ -198,268 +198,245 @@ function EnvironmentSetup() {
   - Setup the camera
   - Setup the HDR environnment (ie: "lighting")
 */
-
-type GLTFceneRendererProps = {
-  glbPath: string;
-  rotationSpeed: React.MutableRefObject<number>;
-};
-
-function GLTFceneRenderer({ glbPath, rotationSpeed }: GLTFceneRendererProps): JSX.Element {
-  const groupRef = useRef<THREE.Group>(null);
-  const { set } = useThree();
-  const { scene: gltfScene, cameras } = useGLTF(glbPath);
-  const [currentRotationSpeed, setCurrentRotationSpeed] = useState<number>(0);
-
-  // Clone the GLTF scene to avoid modifying the original
-  const clonedScene = useMemo(() => gltfScene.clone(true), [gltfScene]);
-
-  const [centerPosition, physicsObjects] = useMemo(() => {
-    const objects: { objects: THREE.Object3D[]; isBaseIcon: boolean; isCursor: boolean }[] = [];
-    let centerPos = new THREE.Vector3();
-    let cursorObjects: THREE.Object3D[] = [];
-
-    clonedScene.children.map((object) => {
-      // Added by designer by accident, can be ignored
-      if (object.name === 'Boole') return;
-
-      // Base logo is the "center" of the scene
-      if (object.name === baseIconName) {
-        centerPos.copy(object.position);
-      }
-
-      // Filtering all children except 3D ones
-      if (object instanceof THREE.Object3D) {
-        if ([cursor, cursor1].includes(object.name)) {
-          cursorObjects.push(object);
-        } else {
-          objects.push({
-            objects: [object],
-            isBaseIcon: object.name === baseIconName,
-            isCursor: false,
-          });
-        }
-      }
-    });
-
-    if (cursorObjects.length === 2) {
-      objects.push({
-        objects: cursorObjects,
-        isBaseIcon: false,
-        isCursor: true,
-      });
-    }
-
-    return [centerPos, objects];
-  }, [clonedScene]);
-
-  const zoom = 3;
-  useEffect(() => {
-    if (cameras && cameras.length > 0) {
-      const gltfCamera = cameras[0];
-      if (gltfCamera instanceof THREE.PerspectiveCamera) {
-        // Store the original position
-        const originalPosition = gltfCamera.position.clone();
-
-        // Function to update camera position based on zoom
-        const updateCameraZoom = () => {
-          const zoomedPosition = originalPosition.clone().multiplyScalar(1 / zoom);
-          gltfCamera.position.copy(zoomedPosition);
-        };
-
-        // Initial zoom application
-        updateCameraZoom();
-
-        // Set up the camera
-        set({ camera: gltfCamera });
-
-        // Return a cleanup function that resets the camera position
-        return () => {
-          gltfCamera.position.copy(originalPosition);
-        };
-      }
-    }
-  }, [cameras, set, zoom]);
-
-  useFrame(() => {
-    if (groupRef.current) {
-      // Apply rotation to the entire group
-      groupRef.current.rotation.y += rotationSpeed.current;
-
-      // Apply friction to rotation
-      rotationSpeed.current *= 0.95;
-
-      // Stop rotation if speed is very low
-      if (Math.abs(rotationSpeed.current) < 0.001) {
-        rotationSpeed.current = 0;
-      }
-
-      setCurrentRotationSpeed(rotationSpeed.current);
-    }
-  });
-
-  const rotationContextValue = useMemo<RotationContextType>(
-    () => ({ rotationSpeed: currentRotationSpeed }),
-    [currentRotationSpeed],
-  );
+export function Everything(props) {
+  const groupRef = useRef();
+  const { nodes } = useGLTF(modelToUse);
 
   return (
-    <RotationContext.Provider value={rotationContextValue}>
-      <EnvironmentSetup />
+    <group
+      ref={groupRef}
+      {...props}
+      dispose={null}
+      //rotation={[0, -Math.PI / 2, 0]}
+      //position={[0, 0, -10]}
+    >
+      <PhysicsMesh>
+        <mesh geometry={nodes.Object_1.geometry}>
+          <BlackMaterial />
+        </mesh>
+      </PhysicsMesh>
 
-      <group ref={groupRef}>
-        {physicsObjects.map(({ objects, isBaseIcon, isCursor }) => (
-          <PhysicsObject
-            key={objects[0].uuid}
-            objects={objects}
-            isBaseIcon={isBaseIcon}
-            centerPosition={centerPosition}
-            isCursor={isCursor}
-          />
-        ))}
-      </group>
-    </RotationContext.Provider>
+      <PhysicsMesh>
+        <mesh geometry={nodes.ETH.geometry}>
+          <MetalMaterial />
+        </mesh>
+      </PhysicsMesh>
+      <PhysicsMesh>
+        <mesh geometry={nodes.Spikey.geometry}>
+          <BlackMaterial />
+        </mesh>
+      </PhysicsMesh>
+      <PhysicsMesh>
+        <mesh geometry={nodes.Mobile_Phone.geometry}>
+          <BlackMaterial />
+        </mesh>
+      </PhysicsMesh>
+
+      <PhysicsMesh>
+        <group>
+          <mesh geometry={nodes.Cursor.geometry} scale={[0.88, 0.88, 0.88]}>
+            <BlackMaterial />
+          </mesh>
+
+          <mesh geometry={nodes.Cursor1.geometry}>
+            <MetalMaterial />
+          </mesh>
+        </group>
+      </PhysicsMesh>
+      <Boxes count={10} geometry={nodes.Box_08.geometry} />
+
+      <PhysicsMesh>
+        <mesh geometry={nodes.Boole.geometry}>
+          <BlackMaterial />
+        </mesh>
+      </PhysicsMesh>
+      <PhysicsMesh>
+        <mesh geometry={nodes.Globe.geometry}>
+          <MetalMaterial />
+        </mesh>
+      </PhysicsMesh>
+      <PhysicsMesh>
+        <mesh geometry={nodes.Controller.geometry}>
+          <BlackMaterial />
+        </mesh>
+      </PhysicsMesh>
+      <PhysicsMesh>
+        <mesh geometry={nodes.headphone.geometry}>
+          <BlackMaterial />
+        </mesh>
+      </PhysicsMesh>
+      <PhysicsMesh>
+        <mesh geometry={nodes.Object_02.geometry}>
+          <BlackMaterial />
+        </mesh>
+      </PhysicsMesh>
+      <PhysicsMesh>
+        <mesh geometry={nodes.Object_01.geometry}>
+          <BlackMaterial />
+        </mesh>
+      </PhysicsMesh>
+      <PhysicsMesh>
+        <mesh geometry={nodes.Extrude.geometry}>
+          <BlackMaterial />
+        </mesh>
+      </PhysicsMesh>
+      <BaseLogo /*geometry={nodes.Wallet.geometry}*/ />
+      <Balls />
+    </group>
   );
 }
 
-/* 
-  3D Model
-  - Display 3D object(s)
-  - Apply centrifugal force
-  - CenterPosition (Base logo)
-*/
-type PhysicsObjectProps = {
-  objects: THREE.Object3D[];
-  isBaseIcon: boolean;
-  centerPosition: THREE.Vector3;
-  isCursor?: boolean;
-};
-
-function PhysicsObject({
-  objects,
-  isBaseIcon,
-  centerPosition,
-  isCursor = false,
-}: PhysicsObjectProps): JSX.Element {
-  const rigidBodyRef = useRef<RapierRigidBody>(null);
-  const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
-  const { rotationSpeed } = useContext(RotationContext);
-
-  const floatIntensity = 3;
-  const rotationResponseStrength = 1; // Adjust this to control how strongly objects respond to rotation
-  const returnStrength = 0.01; // Adjust this to control how quickly objects return to their original positions
-
-  const objectsData = useRef(
-    objects.map((object, index) => ({
-      initialPosition: object.position.clone(),
-      currentPosition: object.position.clone(),
-      initialOffset:
-        isCursor && index === 1
-          ? object.position.clone().sub(objects[0].position)
-          : new THREE.Vector3(),
-      floatSpeed: (Math.random() * 0.5 + 0.5) * floatIntensity,
-      floatAmplitude: (Math.random() * 0.1 + 0.05) * floatIntensity,
-      floatOffset: Math.random() * Math.PI * 2,
-    })),
+function Boxes({ geometry, count = 10 }: { geometry: any; count?: number }) {
+  const boxes = useMemo(
+    () =>
+      new Array(count).fill(null).map((_, index) => {
+        return (
+          <PhysicsMesh scale={0.5} gravityEffect={0.03} key={index}>
+            <mesh geometry={geometry} scale={0.5}>
+              <BlackMaterial />
+            </mesh>
+          </PhysicsMesh>
+        );
+      }),
+    [count],
   );
 
-  useFrame((state) => {
-    if (!isBaseIcon) {
-      const time = state.clock.getElapsedTime();
+  return <group>{boxes}</group>;
+}
 
-      // For cursor, we'll use the first object as reference
-      const referenceObjectData = objectsData.current[0];
-      const referenceObject = objects[0];
+function Balls({ count = 10 }: { count?: number }) {
+  const boxes = useMemo(
+    () =>
+      new Array(count).fill(null).map((_, index) => {
+        return (
+          <PhysicsMesh scale={0.25} gravityEffect={0.004} key={index}>
+            <mesh>
+              <sphereGeometry args={[0.25, 64, 64]} />
+              <meshPhysicalMaterial color={blue} />
+            </mesh>
+          </PhysicsMesh>
+        );
+      }),
+    [count],
+  );
 
-      // Calculate forces for the reference object (or single object if not cursor)
-      const floatEffect =
-        Math.sin(time * referenceObjectData.floatSpeed + referenceObjectData.floatOffset) *
-        referenceObjectData.floatAmplitude;
-      const directionFromCenter = referenceObject.position.clone().sub(centerPosition).normalize();
-      const rotationForce = directionFromCenter.multiplyScalar(
-        Math.abs(rotationSpeed) * rotationResponseStrength,
-      );
-      const returnForce = referenceObjectData.initialPosition
-        .clone()
-        .sub(referenceObjectData.currentPosition)
-        .multiplyScalar(returnStrength);
-      const totalForce = new THREE.Vector3().addVectors(rotationForce, returnForce);
+  return <group>{boxes}</group>;
+}
 
-      // Update reference object position
-      referenceObjectData.currentPosition.add(totalForce);
-      const newPosition = referenceObjectData.currentPosition.clone();
-      newPosition.y += floatEffect;
-      newPosition.x +=
-        Math.sin(time * referenceObjectData.floatSpeed * 0.5) *
-        referenceObjectData.floatAmplitude *
-        0.2;
-      newPosition.z +=
-        Math.cos(time * referenceObjectData.floatSpeed * 0.5) *
-        referenceObjectData.floatAmplitude *
-        0.2;
+function BaseLogo() {
+  const logoRef = useRef<THREE.Group>(null!);
+  const doneRef = useRef<boolean>(false);
 
-      // Apply position to reference object
-      referenceObject.position.copy(newPosition);
+  const svg = useLoader(SVGLoader, baseLogo.src);
 
-      // If it's a cursor, update the second object relative to the first
-      if (isCursor && objects.length > 1) {
-        const secondObjectData = objectsData.current[1];
-        const secondObject = objects[1];
-        secondObject.position.copy(newPosition).add(secondObjectData.initialOffset);
-      } else if (!isCursor) {
-        // For non-cursor objects, update each object individually
-        objects.slice(1).forEach((object, index) => {
-          const data = objectsData.current[index + 1];
-          const individualFloatEffect =
-            Math.sin(time * data.floatSpeed + data.floatOffset) * data.floatAmplitude;
+  useFrame(({ mouse }) => {
+    if (doneRef.current) {
+      logoRef.current.rotation.y = THREE.MathUtils.lerp(logoRef.current.rotation.y, mouse.x, 0.05);
+      logoRef.current.rotation.x = THREE.MathUtils.lerp(logoRef.current.rotation.x, -mouse.y, 0.05);
+    } else {
+      logoRef.current.rotation.y = THREE.MathUtils.lerp(logoRef.current.rotation.y, 0, 0.05);
+    }
+    logoRef.current.position.z = THREE.MathUtils.lerp(logoRef.current.position.z, 0, 0.05);
 
-          object.position.copy(data.currentPosition);
-          object.position.y += individualFloatEffect;
-          object.position.x += Math.sin(time * data.floatSpeed * 0.5) * data.floatAmplitude * 0.2;
-          object.position.z += Math.cos(time * data.floatSpeed * 0.5) * data.floatAmplitude * 0.2;
-        });
-      }
+    // lerp never gets to 0
+    if (logoRef.current.position.z > -0.01) {
+      doneRef.current = true;
     }
   });
+  return (
+    <RigidBody type="kinematicPosition" colliders={false}>
+      <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[10, 2]} />
+      <group ref={logoRef} position={[0, 0, -10]} rotation={[0, -Math.PI, 0]}>
+        <Center>
+          <mesh scale={0.13}>
+            <extrudeGeometry
+              args={[
+                svg.paths[0].toShapes(),
+                {
+                  curveSegments: 64,
+                  depth: 5,
+                  bevelEnabled: true,
+                  bevelSegments: 64,
+                  bevelSize: 0.5,
+                  bevelThickness: 1,
+                },
+              ]}
+            />
 
-  // Effect to change material color when isBaseIcon is true
-  useEffect(() => {
-    if (isBaseIcon) {
-      const baseIconMaterial = new THREE.MeshStandardMaterial({
-        color: new THREE.Color(0x105eff),
-        metalness: 0,
-        roughness: 0.5,
-      });
+            <meshPhysicalMaterial color={blue} metalness={0} roughness={1} clearcoat={0.1} />
+          </mesh>
+        </Center>
+      </group>
+    </RigidBody>
+  );
+}
 
-      objects.forEach((object) => {
-        object.traverse((child) => {
-          if (child instanceof THREE.Mesh) {
-            child.material = baseIconMaterial;
-          }
-        });
-      });
-    }
-  }, [isBaseIcon, objects]);
+function PhysicsMesh({
+  vec = new THREE.Vector3(),
+  r = THREE.MathUtils.randFloatSpread,
+  scale = 1,
+  gravityEffect = 0.2,
+  children,
+}: {
+  vec?: THREE.Vector3;
+  r?: (a: number) => number;
+  scale?: number;
+  gravityEffect?: number;
+  children: React.ReactNode;
+}) {
+  const api = useRef();
+  const { viewport } = useThree();
+
+  const randomNumberBetween = (min: number, max: number) => {
+    const posOrNeg = Math.random() > 0.5 ? 1 : -1;
+    const num = Math.min(Math.random() * (max - min) + min, 14);
+    return posOrNeg * num;
+  };
+
+  const pos = useMemo(
+    () =>
+      new THREE.Vector3(
+        randomNumberBetween(viewport.width * 0.5, viewport.width * 2),
+        randomNumberBetween(viewport.height * 0.5, viewport.height * 2),
+        randomNumberBetween(viewport.width * 0.5, viewport.width * 2),
+      ),
+    [],
+  );
+  const rot = useMemo(() => new THREE.Vector3(r(Math.PI), r(Math.PI), r(Math.PI)), []);
+
+  useFrame(() => {
+    api.current?.applyImpulse(
+      vec.copy(api.current.translation()).negate().multiplyScalar(gravityEffect),
+    );
+  });
+
   return (
     <RigidBody
-      ref={rigidBodyRef}
-      type={isBaseIcon ? 'fixed' : 'dynamic'}
-      mass={0.1}
-      linearDamping={0.8}
-      angularDamping={0.8}
+      linearDamping={4}
+      angularDamping={1}
+      friction={0.1}
+      position={pos.toArray()}
+      rotation={rot.toArray()}
+      ref={api}
       colliders={false}
-      restitution={0.3}
-      friction={0.01}
-      scale={1}
+      scale={scale}
     >
-      {objects.map((object, index) => (
-        <primitive
-          key={object.uuid}
-          // eslint-disable-next-line react/no-unknown-property
-          object={object}
-          // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-          ref={(el: THREE.Mesh) => (meshRefs.current[index] = el)}
-        />
-      ))}
+      <BallCollider args={[1]} />
+      {children}
+    </RigidBody>
+  );
+}
+
+function Pointer({ vec = new THREE.Vector3() }) {
+  const ref = useRef();
+  useFrame(({ mouse, viewport }) => {
+    ref.current?.setNextKinematicTranslation(
+      vec.set((mouse.x * viewport.width) / 2, (mouse.y * viewport.height) / 2, 0),
+    );
+  });
+  return (
+    <RigidBody position={[0, 0, 0]} type="kinematicPosition" colliders={false} ref={ref}>
+      <BallCollider args={[2]} />
     </RigidBody>
   );
 }
