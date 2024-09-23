@@ -16,14 +16,7 @@
 import * as THREE from 'three';
 import { useRef, useMemo, useCallback, useState, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
-import {
-  useGLTF,
-  Lightformer,
-  Environment,
-  //MeshTransmissionMaterial,
-  Html,
-  Center,
-} from '@react-three/drei';
+import { useGLTF, Lightformer, Environment, Html, Center } from '@react-three/drei';
 import {
   Physics,
   RigidBody,
@@ -111,7 +104,7 @@ export default function Scene(): JSX.Element {
 
         <EnvironmentSetup />
         <Suspense fallback={<Loader />}>
-          <Physics gravity={gravity} timeStep="vary">
+          <Physics gravity={gravity} timeStep="vary" paused={!isActive}>
             <Pointer />
             <Everything />
           </Physics>
@@ -203,13 +196,7 @@ export function Everything(props) {
   const { nodes } = useGLTF(modelToUse);
 
   return (
-    <group
-      ref={groupRef}
-      {...props}
-      dispose={null}
-      //rotation={[0, -Math.PI / 2, 0]}
-      //position={[0, 0, -10]}
-    >
+    <group ref={groupRef} {...props} dispose={null}>
       <PhysicsMesh>
         <mesh geometry={nodes.Object_1.geometry}>
           <BlackMaterial />
