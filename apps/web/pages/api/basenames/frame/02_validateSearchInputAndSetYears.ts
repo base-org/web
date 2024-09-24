@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import { FrameRequest } from '@coinbase/onchainkit/frame';
 import { ActionType, ComponentType } from 'libs/base-ui/utils/logEvent';
 import { formatDefaultUsername, validateEnsDomainName } from 'apps/web/src/utils/usernames';
-import logServerSideEvent, { generateCustomUUID } from 'apps/web/src/utils/logServerSideEvent';
+import logServerSideEvent, { generateDeviceId } from 'apps/web/src/utils/logServerSideEvent';
 import { logger } from 'apps/web/src/utils/logger';
 import type { IsNameAvailableResponse } from 'apps/web/pages/api/basenames/[name]/isNameAvailable';
 import {
@@ -17,16 +17,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const userAgent = req.headers['user-agent'] ?? 'No user agent';
-    const ip = req.headers['x-forwarded-for'] ?? req.socket.remoteAddress ?? 'No IP';
-    const deviceId = generateCustomUUID(userAgent, ip);
     const eventName = 'selected_name';
+    const deviceId = generateDeviceId(req);
     const eventProperties = {
       action: ActionType.click,
       context: 'basenames_claim_frame',
       componentType: ComponentType.button,
     };
-
     logServerSideEvent(eventName, deviceId, eventProperties);
   } catch (error) {
     logger.error('Could not log event:', error);

@@ -1,6 +1,7 @@
 import crypto from 'crypto';
 import { logger } from 'apps/web/src/utils/logger';
 import { isDevelopment, analyticsConfig } from 'apps/web/src/constants';
+import { NextApiRequest } from 'apps/web/node_modules/next/dist/shared/lib/utils';
 
 type EventProperties = {
   action: string;
@@ -109,6 +110,15 @@ export function createEventData(
     platform: 'Web',
     ...supplementalEventData,
   };
+}
+
+export function generateDeviceId(req: NextApiRequest ) {
+  const userAgent = req.headers['user-agent'] ?? 'No user agent';
+  let ip = req.headers['x-forwarded-for'] ?? req.socket.remoteAddress ?? 'No IP';
+  if (typeof ip === 'object') {
+    ip = ip.join();
+  }
+  return generateCustomUUID(userAgent, ip);
 }
 
 export function generateCustomUUID(userAgent: string, ipAddress: string) {

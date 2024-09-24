@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next/dist/shared/lib/utils';
 import { FrameRequest, getFrameMessage } from '@coinbase/onchainkit/frame';
 import { ActionType, ComponentType } from 'libs/base-ui/utils/logEvent';
 import { getTransactionStatus } from 'apps/web/src/utils/frames/basenames';
-import logServerSideEvent, { generateCustomUUID } from 'apps/web/src/utils/logServerSideEvent';
+import logServerSideEvent, { generateDeviceId } from 'apps/web/src/utils/logServerSideEvent';
 import { logger } from 'apps/web/src/utils/logger';
 import {
   txSucceededFrame,
@@ -20,10 +20,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method !== 'POST') {
     return res.status(405).json({ error: `TxSuccess Screen — Method (${req.method}) Not Allowed` });
   }
-  const userAgent = req.headers['user-agent'] ?? 'No user agent';
-  const ip = req.headers['x-forwarded-for'] ?? req.socket.remoteAddress ?? 'No IP';
-  const deviceId = generateCustomUUID(userAgent, ip);
-  
+  const deviceId = generateDeviceId(req);
+
   try {
     const eventName = 'tx_submitted';
     const eventProperties = {
