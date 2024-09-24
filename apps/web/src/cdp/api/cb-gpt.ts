@@ -15,6 +15,7 @@ type QueryCbGptResponse = {
 type CbGptQuery = {
   taskConfig: CbGptTaskConfig;
   query: string;
+  orComponentId: string;
 };
 
 type CbGptTaskConfig = {
