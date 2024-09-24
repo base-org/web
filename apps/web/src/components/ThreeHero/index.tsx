@@ -16,7 +16,15 @@
 import * as THREE from 'three';
 import { useRef, useMemo, useCallback, useState, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
-import { useGLTF, Lightformer, Environment, Html, Center } from '@react-three/drei';
+import {
+  useGLTF,
+  Lightformer,
+  Environment,
+  Html,
+  Center,
+  OrbitControls,
+  MeshTransmissionMaterial,
+} from '@react-three/drei';
 import {
   Physics,
   RigidBody,
@@ -91,7 +99,7 @@ export default function Scene(): JSX.Element {
   return (
     <div style={{ width: '100%', height: '100%' }} ref={containerRef}>
       <Canvas shadows frameloop={isActive ? 'always' : 'never'} camera={{ position: [0, 0, 5] }}>
-        <fog attach="fog" args={['#111', 2, 7]} />
+        <fog attach="fog" args={['#111', 2.5, 7]} />
         <mesh>
           <sphereGeometry args={[7, 64, 64]} />
           <meshPhysicalMaterial color="#666" side={THREE.BackSide} />
@@ -197,11 +205,11 @@ export function Everything(props) {
 
   return (
     <group ref={groupRef} {...props} dispose={null}>
-      <PhysicsMesh>
+      {/*<PhysicsMesh>
         <mesh geometry={nodes.Object_1.geometry}>
           <BlackMaterial />
         </mesh>
-      </PhysicsMesh>
+      </PhysicsMesh>*/}
 
       <PhysicsMesh>
         <mesh geometry={nodes.ETH.geometry}>
@@ -311,6 +319,7 @@ function Balls({ count = 10 }: { count?: number }) {
 }
 
 function BaseLogo() {
+  const [click, setClick] = useState(false);
   const logoRef = useRef<THREE.Group>(null!);
   const doneRef = useRef<boolean>(false);
 
@@ -333,7 +342,17 @@ function BaseLogo() {
   return (
     <RigidBody type="kinematicPosition" colliders={false}>
       <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[10, 2]} />
-      <group ref={logoRef} position={[0, 0, -10]} rotation={[0, -Math.PI, 0]}>
+      <group
+        ref={logoRef}
+        position={[0, 0, -10]}
+        rotation={[0, -Math.PI, 0]}
+        onPointerDown={() => {
+          setClick(true);
+        }}
+        onPointerUp={() => {
+          setClick(false);
+        }}
+      >
         <Center>
           <mesh scale={0.13}>
             <extrudeGeometry
@@ -350,7 +369,22 @@ function BaseLogo() {
               ]}
             />
 
-            <meshPhysicalMaterial color={blue} metalness={0} roughness={1} clearcoat={0.1} />
+            <meshPhysicalMaterial
+              color={blue}
+              metalness={0.5}
+              roughness={0.5}
+              iridescence={0.5}
+              // ior={2}
+              // clearcoat={0.1}
+            />
+            {/*<MeshTransmissionMaterial
+              color={blue}
+              metalness={0}
+              roughness={1}
+              backside
+              backsideThickness={1}
+              thickness={2}
+            />*/}
           </mesh>
         </Center>
       </group>
