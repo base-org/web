@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import { v5 as uuidv5 } from 'uuid';
 import { logger } from 'apps/web/src/utils/logger';
 import { isDevelopment, analyticsConfig } from 'apps/web/src/constants';
 import { NextApiRequest } from 'apps/web/node_modules/next/dist/shared/lib/utils';
@@ -60,6 +60,8 @@ type ServerSideEvent = {
   userAgent?: unknown;
 };
 
+const SERVER_SIDE_EVENT_NAMESPACE = 'b3456910-afdb-4a15-a498-8bd5885fc956';
+
 export default function logServerSideEvent(
   eventName: string,
   deviceId: string,
@@ -69,10 +71,7 @@ export default function logServerSideEvent(
   const event = createEventData(eventName, deviceId, eventProperties, supplementalEventData);
   const stringifiedEvent = JSON.stringify([convertKeys(event)]);
   const uploadTime = new Date().getTime().toString();
-  const checksum = crypto
-    .createHash('md5')
-    .update(stringifiedEvent + uploadTime)
-    .digest('hex');
+  const checksum = uuidv5(stringifiedEvent + uploadTime, SERVER_SIDE_EVENT_NAMESPACE) as string;
   const eventData = {
     e: stringifiedEvent,
     client: analyticsConfig.amplitudeApiKey.prod,
@@ -118,24 +117,13 @@ export function generateDeviceId(req: NextApiRequest) {
   if (typeof ip === 'object') {
     ip = ip.join();
   }
-  return generateCustomUUID(userAgent, ip);
-}
-
-export function generateCustomUUID(userAgent: string, ipAddress: string) {
-  const data = `${userAgent}|${ipAddress}`;
-  const hash = crypto.createHash('md5').update(data).digest('hex');
-
-  return `${hash.substring(0, 8)}-${hash.substring(8, 4)}-${hash.substring(12, 4)}-${hash.substring(
-    16,
-    4,
-  )}-${hash.substring(20)}`;
+  return uuidv5(`${userAgent}|${ip}`, SERVER_SIDE_EVENT_NAMESPACE) as string;
 }
 
 function convertKeys(obj: unknown): unknown {
   if (typeof obj !== 'object' || obj === null) {
     return obj;
   }
-
   return Object.fromEntries(
     Object.entries(obj).map(([key, value]) => [camelToSnakeCase(key), convertKeys(value)]),
   );
