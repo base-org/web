@@ -1,3 +1,3 @@
 # Base Marketing Site
 
-The Base marketing site is a Next.js app. You can run the dev server locally with `yarn workspace @app/web dev`.
+The Base marketing site is a Next.js app. You can run the dev server locally with `yarn workspace @app/web dev`. Make sure you have the right env vars in your .env
