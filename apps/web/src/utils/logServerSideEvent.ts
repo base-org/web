@@ -87,9 +87,9 @@ export default function logServerSideEvent(
       'Content-Type': 'application/json',
     },
   };
-  fetch(postUrl, fetchConfig)
-    // .then((res) => console.log('Response Status:', res.status))
-    .catch((error) => logger.error('Failed to create server-side event', error));
+  fetch(postUrl, fetchConfig).catch((error) =>
+    logger.error('Failed to create server-side event', error),
+  );
 }
 
 export function createEventData(
@@ -112,7 +112,7 @@ export function createEventData(
   };
 }
 
-export function generateDeviceId(req: NextApiRequest ) {
+export function generateDeviceId(req: NextApiRequest) {
   const userAgent = req.headers['user-agent'] ?? 'No user agent';
   let ip = req.headers['x-forwarded-for'] ?? req.socket.remoteAddress ?? 'No IP';
   if (typeof ip === 'object') {
