@@ -357,7 +357,7 @@ __metadata:
     "@coinbase/onchainkit": ^0.28.5
     "@datadog/browser-logs": ^5.23.3
     "@datadog/browser-rum": ^5.23.3
-    "@frames.js/render": ^0.3.12
+    "@frames.js/render": ^0.3.7
     "@guildxyz/sdk": 2.6.0
     "@headlessui/react": ^1.7.19
     "@heroicons/react": ^2.1.3
@@ -3693,13 +3693,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@frames.js/render@npm:^0.3.12":
-  version: 0.3.12
-  resolution: "@frames.js/render@npm:0.3.12"
+"@frames.js/render@npm:^0.3.7":
+  version: 0.3.7
+  resolution: "@frames.js/render@npm:0.3.7"
   dependencies:
     "@farcaster/core": ^0.14.7
     "@noble/ed25519": ^2.0.0
-    frames.js: ^0.19.3
+    frames.js: ^0.19.1
   peerDependencies:
     "@lens-protocol/client": 2.0.0
     "@rainbow-me/rainbowkit": ^2.1.2
@@ -3712,7 +3712,7 @@ __metadata:
     react-native: ^0.74.3
     viem: ^2.7.8
     wagmi: ^2.9.10
-  checksum: e8600f67eeb2527f8052f044abbaa8e58124cda72011a5998910a350ba6a6dd3d803974f6e11bd5b0439935f5be3dd29f862700d68970f068060f9fb57ab3d92
+  checksum: 1391c86861b5d8c637f6c3fdea265ad0f81a0a8b7bed57180e90e998302a709131efe4488a7a1dc3dae84ef128c1a4db94dd9599ba795cb9b8ef5e3f8595d670
   languageName: node
   linkType: hard
 
@@ -8867,17 +8867,6 @@ __metadata:
     satori: 0.10.9
     yoga-wasm-web: 0.3.3
   checksum: b8bf5614c669f20d5cd985cfce1724c267da8fcd0441819b7d782b4fc0db6eceff5623d7714668e0654e55b0d6ba89d3c2918b3e435570ab1ce1e0f3390032e3
-  languageName: node
-  linkType: hard
-
-"@vercel/og@npm:^0.6.3":
-  version: 0.6.3
-  resolution: "@vercel/og@npm:0.6.3"
-  dependencies:
-    "@resvg/resvg-wasm": 2.4.0
-    satori: 0.10.9
-    yoga-wasm-web: 0.3.3
-  checksum: bae2fa64533faf7ae25fabecca30ed1c213d3856aa823777997ea29155237bb7cdd18af1b9add31c7959ec69cd996287ad0c58ef9b221a05e16f2c38c64be0b5
   languageName: node
   linkType: hard
 
@@ -15223,11 +15212,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"frames.js@npm:^0.19.3":
-  version: 0.19.3
-  resolution: "frames.js@npm:0.19.3"
+"frames.js@npm:^0.19.1":
+  version: 0.19.1
+  resolution: "frames.js@npm:0.19.1"
   dependencies:
-    "@vercel/og": ^0.6.3
+    "@vercel/og": ^0.6.2
     cheerio: ^1.0.0-rc.12
     protobufjs: ^7.2.6
     viem: ^2.7.8
@@ -15239,7 +15228,7 @@ __metadata:
     next: ^14.1.0
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 28d6465e12e658b28768bfa8860b155eee443ac3cf0f8d32a4701dd92e2bb182dbc83f2e8d4a378fe75b35903bda34c4fe16f3351438845c05b5fd272f481052
+  checksum: 56e9735c3005a2ade000f43790a3446f98e71b827bd95be80e609eb1ae7e9fa7eaf778676fdabd882420ace1230cfec7174318fea6a5d7858b9cd044074c04aa
   languageName: node
   linkType: hard
 
