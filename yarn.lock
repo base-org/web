@@ -3693,7 +3693,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-
 "@frames.js/render@npm:^0.3.12":
   version: 0.3.12
   resolution: "@frames.js/render@npm:0.3.12"
@@ -15229,7 +15228,6 @@ __metadata:
   resolution: "frames.js@npm:0.19.3"
   dependencies:
     "@vercel/og": ^0.6.3
-
     cheerio: ^1.0.0-rc.12
     protobufjs: ^7.2.6
     viem: ^2.7.8
