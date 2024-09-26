@@ -3,8 +3,7 @@ title: 'Convert Farcaster Frame to Open Frame using OnchainKit'
 slug: /convert-farcaster-frame-to-open-frame
 description: Learn how to convert your Farcaster Frame to an Open Frame using Onchain Kit, enabling broader compatibility and usage.
 author: hughescoin
-keywords:
-[farcaster, openframe, onchainKit, farcaster,  open frames]
+keywords: [farcaster, openframe, onchainKit, farcaster, open frames]
 tags: ['frontend']
 difficulty: intermediate
 hide_table_of_contents: false
@@ -280,18 +279,18 @@ Before redeploying your Frame check how the routes differ using the [Frame Debug
 Frame Dugger allows you to select the protocol you wish to debug.
 For Open Frame, use the `anonymous (openframes)` option
 
-![debugger-selector]()
+![debugger-selector](/assets/images/openframes-fc/debugger-of-not-valid-zoom.png)
 
 :::
 
 ### Before:
 
-![degugger-before]()
+![debugger-before](/assets/images/openframes-fc/debugger-of-not-valid-zoom.png)
 
 ### After:
 
 Your converted Farcaster Frame should pass all checks like the below image:
-![degugger-after]()
+![debugger-after](/assets/images/openframes-fc/frame-custom-no-url.png)
 
 Your frame should still have functionality w/o the farcaster dependency. Use the [Farcaster Frame Validator] to confirm.
 
