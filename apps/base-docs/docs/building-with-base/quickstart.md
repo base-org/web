@@ -25,7 +25,7 @@ Welcome to the Base deployment quickstart guide! This comprehensive walkthrough 
 
 By the end of this quickstart, you'll be able to:
 
-- Set up your develompent environment to deploy on Base
+- Set up your development environment to deploy on Base
 - Deploy your smart contracts to Base
 - Connect your frontend to your smart contracts
 
@@ -111,7 +111,7 @@ Never share or commit your private key. Always keep it secure and handle with ca
 
 ## Deploy Your Contracts
 
-Now that your enviornment is set up, let's deploy your contracts to Base Sepolia.
+Now that your environment is set up, let's deploy your contracts to Base Sepolia.
 
 1. Use the following command to compile and deploy your contract
 
