@@ -724,9 +724,9 @@
         "difficulty": "intermediate",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Sep 13, 2024",
+        "last_updated": "Sep 26, 2024",
         "duration": "14 min read",
-        "checksum": "50ab75b2f4db041666bd7bf24bea0a3079389213810517bd8087807c3528fb0c"
+        "checksum": "28f843ebc47bc9d69b6bf040a6ec3d1b92237e78a462121d74ff70ab64d66018"
     },
     "2_email-campaign-with-resend": {
         "title": "Create Email Marketing Campaigns Onchain using Coinbase Smart Wallet + Resend",
@@ -1002,9 +1002,9 @@
         "difficulty": "beginner",
         "hide_table_of_contents": false,
         "displayed_sidebar": null,
-        "last_updated": "Jul 11, 2024",
+        "last_updated": "Sep 26, 2024",
         "duration": "6 min read",
-        "checksum": "0b50de1197db8c50cbf02405a904f99ec7e32159f86ae884993aa6cc36b10fcb"
+        "checksum": "9cd3979515e3c4b2ccc8a59c6ac08c9e3d2b69e108c8ddc58ef010f0f77670fa"
     },
     "4_intro-to-foundry-testing": {
         "title": "Foundry: Testing smart contracts",
@@ -1029,6 +1029,35 @@
         "last_updated": "Jul 11, 2024",
         "duration": "9 min read",
         "checksum": "2ced64394c425e5749001cb21cca5a3b0043fe6ab013be45e98299e16f337d23"
+    },
+    "5_basename-frames": {
+        "title": "Add Frames to A Basename",
+        "slug": "/add-frames-to-basename",
+        "description": "Learn how to customize your Basename by adding Frames, showcasing dynamic content with ease on Base.",
+        "author": "hughescoin",
+        "keywords": [
+            "Sponsored Transactions",
+            "Onchain",
+            "Coinbase",
+            "Base",
+            "Crypto",
+            "Cloud Platform",
+            "Basenames",
+            "Frames",
+            "Profile Customization",
+            "Open Graph",
+            "ENS"
+        ],
+        "tags": [
+            "account abstraction",
+            "Paymaster"
+        ],
+        "difficulty": "easy",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Sep 26, 2024",
+        "duration": "5 min read",
+        "checksum": "17b2137efd031251de2beb3683b5c75006b8723bff189e59d655d86f5abc296d"
     },
     "5_cross-chain-with-ccip": {
         "title": "Sending messages and tokens from Base to other chains using Chainlink CCIP",
@@ -1076,9 +1105,9 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Aug 14, 2024",
+        "last_updated": "Sep 26, 2024",
         "duration": "34 min read",
-        "checksum": "5b2ccc63f23434488c8404f76547707a8b83601215bdbac8e729ca05444bc955"
+        "checksum": "0f984180e209b250b61c437f6cb53af4695e73e5c08297d09bd64f25a2b20122"
     },
     "5_deploy-with-fleek": {
         "title": "Deploy an Onchain App with Fleek",
@@ -1128,9 +1157,9 @@
         ],
         "difficulty": "intermediate",
         "displayed_sidebar": null,
-        "last_updated": "Aug 14, 2024",
+        "last_updated": "Sep 26, 2024",
         "duration": "11 min read",
-        "checksum": "3a230905924424d5d065346fc2ea6a3e253836f31852fe6b2b4301995d107016"
+        "checksum": "0abeee6a45dc60ad4e4c5945dc7ba2e9094c731c7353914365ef268edc10f789"
     },
     "5_oracles-pyth-price-feeds": {
         "title": "Accessing real-time asset data using Pyth Price Feeds",
