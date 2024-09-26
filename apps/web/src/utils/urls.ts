@@ -18,6 +18,16 @@ export const urlWithQueryParams = (url: string, queryParams: QueryParams) => {
   return `${url}?${encodeUrlQueryParams(queryParams)}`;
 };
 
+export function isValidUrl(string?: string) {
+  if (!string) return false;
+  try {
+    new URL(string);
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
 export const IsValidIpfsUrl = (ipfsUrl: IpfsUrl): boolean => {
   try {
     const url = new URL(ipfsUrl);

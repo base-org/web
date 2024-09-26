@@ -138,7 +138,7 @@ Chainlink provides a number of price feeds for Base. For a list of available pri
    // SPDX-License-Identifier: MIT
    pragma solidity ^0.8.0;
 
-   import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+   import "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 
    contract DataConsumerV3 {
        AggregatorV3Interface internal priceFeed;

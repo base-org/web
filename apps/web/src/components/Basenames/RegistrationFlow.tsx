@@ -2,7 +2,6 @@
 import dynamic from 'next/dynamic';
 import { useLocalStorage } from 'usehooks-ts';
 import { Transition } from '@headlessui/react';
-import { useAnalytics } from 'apps/web/contexts/Analytics';
 import RegistrationBackground from 'apps/web/src/components/Basenames/RegistrationBackground';
 import RegistrationBrand from 'apps/web/src/components/Basenames/RegistrationBrand';
 import {
@@ -24,7 +23,6 @@ import {
   USERNAME_DOMAINS,
 } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
-import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useMemo } from 'react';
 import { useAccount, useSwitchChain } from 'wagmi';
@@ -44,7 +42,6 @@ export const claimQueryKey = 'claim';
 
 export function RegistrationFlow() {
   const { chain } = useAccount();
-  const { logEventWithContext } = useAnalytics();
   const searchParams = useSearchParams();
   const [, setIsModalOpen] = useLocalStorage('BasenamesLaunchModalVisible', true);
   const [, setIsBannerVisible] = useLocalStorage('basenamesLaunchBannerVisible', true);
@@ -109,10 +106,6 @@ export function RegistrationFlow() {
   const onBackArrowClick = useCallback(() => {
     setRegistrationStep(RegistrationSteps.Search);
   }, [setRegistrationStep]);
-
-  useEffect(() => {
-    logEventWithContext('initial_render', ActionType.render);
-  }, [logEventWithContext]);
 
   useEffect(() => {
     const claimQuery = searchParams?.get(claimQueryKey);

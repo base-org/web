@@ -93,7 +93,7 @@ src = 'contracts'
 In order to compile the project, simply run:
 
 ```bash
-forge build:
+forge build
 ```
 
 ## Setting up Foundry with Base

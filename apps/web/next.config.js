@@ -38,7 +38,7 @@ const baseConfig = {
   reactStrictMode: !isProdEnv,
 
   // Minifiy for production builds
-  swcMinify: true,
+  swcMinify: false,
 };
 
 function extendBaseConfig(customConfig = {}, plugins = []) {
@@ -222,6 +222,11 @@ module.exports = extendBaseConfig(
         {
           source: '/buildersummer',
           destination: '/onchainsummer',
+          permanent: true,
+        },
+        {
+          source: '/onchainsummer',
+          destination: '/getstarted',
           permanent: true,
         },
         {

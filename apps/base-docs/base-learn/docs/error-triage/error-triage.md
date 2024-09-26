@@ -340,7 +340,7 @@ The second item, at `0x20` has the error code of `32` hidden in it, which is for
 It's sometimes better to just review the code first to see if the error is obvious.
 
 ```solidity
-unction badGetLastValueFixed() public pure returns (uint) {
+function badGetLastValueFixed() public pure returns (uint) {
     uint[4] memory arr = [uint(1), 2, 3, 4];
 
     return arr[arr.length-1];

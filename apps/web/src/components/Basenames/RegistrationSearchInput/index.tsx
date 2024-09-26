@@ -241,11 +241,17 @@ export default function RegistrationSearchInput({
   }, [resetBackground, setSearchInputFocused]);
 
   useEffect(() => {
-    if (!invalidWithMessage) return;
-
-    // Log invalid
-    logEventWithContext('search_available_name_invalid', ActionType.error, { error: message });
-  }, [invalidWithMessage, logEventWithContext, message, setSearchInputFocused]);
+    if (debouncedSearch.length > 2 && invalidWithMessage) {
+      // Log invalid
+      logEventWithContext('search_available_name_invalid', ActionType.error, { error: message });
+    }
+  }, [
+    debouncedSearch.length,
+    invalidWithMessage,
+    logEventWithContext,
+    message,
+    setSearchInputFocused,
+  ]);
 
   const selectName = useCallback(() => {
     handleSelectName(debouncedSearch);

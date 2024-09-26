@@ -13,11 +13,13 @@ import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 export type UseReadBaseEnsTextRecordsProps = {
   address?: Address;
   username: BaseEnsNameData;
+  refetchInterval?: number;
 };
 
 export default function useReadBaseEnsTextRecords({
   address,
   username,
+  refetchInterval = Infinity,
 }: UseReadBaseEnsTextRecordsProps) {
   const { basenameChain } = useBasenameChain(username);
 
@@ -35,6 +37,7 @@ export default function useReadBaseEnsTextRecords({
       [UsernameTextRecordKeys.Email]: '',
       [UsernameTextRecordKeys.Phone]: '',
       [UsernameTextRecordKeys.Avatar]: '',
+      [UsernameTextRecordKeys.Frames]: '',
       [UsernameTextRecordKeys.Casts]: '',
     };
   }, []);
@@ -73,6 +76,7 @@ export default function useReadBaseEnsTextRecords({
     queryFn: getExistingTextRecords,
     enabled: !!address && !!username,
     retry: false,
+    refetchInterval,
     refetchOnWindowFocus: false,
   });
 
