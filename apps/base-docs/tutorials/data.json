@@ -749,27 +749,6 @@
         "duration": "21 min read",
         "checksum": "e04c640da09b69b49d92c792d7cc6ddfddbcbee6facc44de85690c73da1f3aeb"
     },
-    "2_email-campaign-with-resend": {
-        "title": "Create Email Marketing Campaigns Onchain using Coinbase Smart Wallet + Resend",
-        "slug": "/onchain-email-campaigns-using-resend",
-        "description": "A tutorial that teaches how to create a mailing list and email customers using Resend",
-        "author": "hughescoin",
-        "keywords": [
-            "build on base",
-            "viem",
-            "wagmi",
-            "frontend",
-            "onchain app development"
-        ],
-        "tags": [
-            "account abstraction"
-        ],
-        "difficulty": "beginner",
-        "displayed_sidebar": null,
-        "last_updated": "Sep 12, 2024",
-        "duration": "21 min read",
-        "checksum": "e04c640da09b69b49d92c792d7cc6ddfddbcbee6facc44de85690c73da1f3aeb"
-    },
     "2_event-gate-nouns": {
         "title": "Gate IRL Events with Nouns",
         "slug": "/event-gate-with-nouns",
