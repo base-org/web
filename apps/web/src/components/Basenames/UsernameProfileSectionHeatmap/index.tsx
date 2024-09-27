@@ -10,6 +10,10 @@ import {
 } from 'apps/web/src/components/Basenames/UsernameProfileSectionHeatmap/contracts';
 import { Address } from 'viem';
 
+const ETHERSCAN_API_KEY = process.env.NEXT_PUBLIC_ETHERSCAN_API_KEY;
+const BASESCAN_API_KEY = process.env.NEXT_PUBLIC_BASESCAN_API_KEY;
+const TALENT_PROTOCOL_API_KEY = process.env.NEXT_PUBLIC_TALENT_PROTOCOL_API_KEY;
+
 type HeatmapValue = {
   date: string;
   count: number;
@@ -241,19 +245,19 @@ export default function UsernameProfileSectionHeatmap() {
         const [ethereumTransactions, baseTransactions, baseInternalTransactions] =
           await Promise.all([
             fetchTransactions(
-              `https://api.etherscan.io/api?module=account&action=txlist&address=${addrs}&apikey=${ETH_API_KEY}`,
+              `https://api.etherscan.io/api?module=account&action=txlist&address=${addrs}&apikey=${ETHERSCAN_API_KEY}`,
             ).catch(() => {
               setApiErrors((prev) => ({ ...prev, ethereum: true }));
               return [];
             }),
             fetchTransactions(
-              `https://api.basescan.org/api?module=account&action=txlist&address=${addrs}&apikey=${BASE_API_KEY}`,
+              `https://api.basescan.org/api?module=account&action=txlist&address=${addrs}&apikey=${BASESCAN_API_KEY}`,
             ).catch(() => {
               setApiErrors((prev) => ({ ...prev, base: true }));
               return [];
             }),
             fetchTransactions(
-              `https://api.basescan.org/api?module=account&action=txlistinternal&address=${addrs}&apikey=${BASE_API_KEY}`,
+              `https://api.basescan.org/api?module=account&action=txlistinternal&address=${addrs}&apikey=${BASESCAN_API_KEY}`,
             ).catch(() => {
               setApiErrors((prev) => ({ ...prev, base: true }));
               return [];
@@ -417,28 +421,45 @@ export default function UsernameProfileSectionHeatmap() {
   }, [baseDeployments.length, ethereumDeployments.length]);
 
   return (
-    <Collapsible.Root>
-      <div>
-        <h3>Onchain Score</h3>
-        <div>{credentialsScore}</div>
+    <Collapsible.Root className="rounded-3xl border border-palette-line/20">
+      <div className="mb-6 px-6 pt-9">
+        <div className="relative mb-6">
+          <h3 className="text-sm font-medium text-gray-60">ONCHAIN SCORE</h3>
+          <p className="font-display text-3xl">{credentialsScore}/100</p>
+          <div className="absolute right-0 flex flex-row items-center gap-1 text-xs text-palette-foregroundMuted">
+            <p>Less</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="46"
+              height="10"
+              viewBox="0 0 46 10"
+              fill="none"
+            >
+              <rect width="10" height="10" rx="2" fill="#597393" fillOpacity="0.04" />
+              <rect x="36" width="10" height="10" rx="2" fill="#0052FF" />
+              <rect x="12" width="10" height="10" rx="2" fill="#D3E1FF" />
+              <rect x="24" width="10" height="10" rx="2" fill="#73A2FF" />
+            </svg>
+            <p>More</p>
+          </div>
+        </div>
+        <CalendarHeatmap
+          startDate={new Date(new Date().setFullYear(new Date().getFullYear() - 1))}
+          endDate={new Date()}
+          horizontal
+          values={heatmapData}
+          classForValue={classForValue}
+          titleForValue={titleForValue}
+        />
       </div>
-
-      <CalendarHeatmap
-        startDate={new Date(new Date().setFullYear(new Date().getFullYear() - 1))}
-        endDate={new Date()}
-        horizontal
-        values={heatmapData}
-        classForValue={classForValue}
-        titleForValue={titleForValue}
-      />
-      <Collapsible.Trigger className="flex flex-row items-center">
+      <Collapsible.Trigger className="flex w-full flex-row items-center border-t border-palette-line/20 px-6 py-4">
         <ChevronDownIcon
           className="mr-2 h-5 w-5 transition-transform duration-300 group-data-[state=open]:rotate-180"
           aria-hidden
         />
         View details
       </Collapsible.Trigger>
-      <Collapsible.Content className="flex flex-row flex-wrap items-start justify-start gap-8">
+      <Collapsible.Content className="flex flex-row flex-wrap items-start justify-start gap-8 px-6 pb-9 data-[state=closed]:pb-0">
         <div className="w-28">
           <div className="text-xl font-medium text-palette-primary">{totalTx}</div>
           <p className="text-xs text-palette-foregroundMuted">Transactions on Ethereum & Base</p>
