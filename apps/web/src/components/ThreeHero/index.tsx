@@ -141,7 +141,7 @@ function EnvironmentSetup() {
         rotation-x={Math.PI / 2}
         position={[5, 5, -3]}
         scale={4}
-        color={blue}
+        color={'white'}
       />
       <Lightformer
         form="circle"
@@ -159,7 +159,7 @@ function EnvironmentSetup() {
       />
       <Lightformer
         form="ring"
-        color={blue}
+        color={'white'}
         intensity={10}
         onUpdate={(self) => self.lookAt(0, 0, 0)}
         position={[10, 10, 0]}
@@ -499,7 +499,7 @@ function Pointer({ vec = new THREE.Vector3() }) {
         <BallCollider args={[2]} />
       </RigidBody>
 
-      <directionalLight ref={light} position={[0, 0, 10]} intensity={18} color={blue} />
+      <directionalLight ref={light} position={[0, 0, 10]} intensity={21} color={blue} />
     </>
   );
 }
