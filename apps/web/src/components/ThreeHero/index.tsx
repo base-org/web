@@ -96,15 +96,12 @@ export default function Scene(): JSX.Element {
 
         <mesh>
           <sphereGeometry args={[7, 64, 64]} />
-          <meshPhysicalMaterial color="#666" side={THREE.BackSide} />
+          <meshPhysicalMaterial color="#666" side={THREE.BackSide} depthTest={false} />
         </mesh>
 
-        <EffectComposer multisampling={0} stencilBuffer={false}>
-          <Bloom mipmapBlur luminanceThreshold={1} intensity={1.5} />
-          <SMAA />
-        </EffectComposer>
-
+        <Effects />
         <EnvironmentSetup />
+
         <Suspense fallback={<Loader />}>
           <Physics gravity={gravity} timeStep="vary" paused={!isActive}>
             <Pointer />
@@ -113,6 +110,15 @@ export default function Scene(): JSX.Element {
         </Suspense>
       </Canvas>
     </div>
+  );
+}
+
+function Effects() {
+  return (
+    <EffectComposer multisampling={0} stencilBuffer={false}>
+      <Bloom mipmapBlur luminanceThreshold={1} intensity={1.5} />
+      <SMAA />
+    </EffectComposer>
   );
 }
 
@@ -346,6 +352,7 @@ export function Glasses() {
 }
 
 function BaseLogo() {
+  const { size } = useThree();
   const [click, setClick] = useState(false);
   const portalMaterial = useRef();
   const logoRef = useRef<THREE.Group>(null!);
@@ -368,9 +375,14 @@ function BaseLogo() {
     }
   });
 
+  let mobile = false;
+  if (size.width < 768) {
+    mobile = true;
+  }
+
   return (
     <RigidBody type="kinematicPosition" colliders={false}>
-      <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[10, 2]} />
+      <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[10, mobile ? 0.75 : 2]} />
       <group
         ref={logoRef}
         position={[0, 0, -10]}
@@ -383,7 +395,7 @@ function BaseLogo() {
         }}
       >
         <Center>
-          <mesh scale={0.13} castShadow receiveShadow>
+          <mesh scale={mobile ? 0.05 : 0.13} castShadow receiveShadow>
             <extrudeGeometry
               args={[
                 svg.paths[0].toShapes(),
@@ -404,16 +416,8 @@ function BaseLogo() {
               roughness={0.5}
               iridescence={0.5}
               // ior={2}
-              // clearcoat={0.1}
+              //clearcoat={0.1}
             />
-            {/*<MeshTransmissionMaterial
-              color={blue}
-              metalness={0}
-              roughness={1}
-              backside
-              backsideThickness={1}
-              thickness={2}
-            />*/}
           </mesh>
         </Center>
       </group>
@@ -480,23 +484,23 @@ function PhysicsMesh({
 function Pointer({ vec = new THREE.Vector3() }) {
   const ref = useRef();
   const light = useRef();
+  const { size } = useThree();
+  let mobile = false;
+  if (size.width < 768) {
+    mobile = true;
+  }
+
   useFrame(({ mouse, viewport }) => {
     ref.current?.setNextKinematicTranslation(
       vec.set((mouse.x * viewport.width) / 2, (mouse.y * viewport.height) / 2, 0),
     );
-    light.current?.position.set(
-      //(mouse.x * viewport.width) / 2,
-      //(mouse.y * viewport.height) / 2,
-      0,
-      0,
-      10,
-    );
+    light.current?.position.set(0, 0, 10);
     light.current?.lookAt((mouse.x * viewport.width) / 2, (mouse.y * viewport.height) / 2, 0);
   });
   return (
     <>
       <RigidBody position={[0, 0, 0]} type="kinematicPosition" colliders={false} ref={ref}>
-        <BallCollider args={[2]} />
+        <BallCollider args={[mobile ? 1 : 2]} />
       </RigidBody>
 
       <directionalLight ref={light} position={[0, 0, 10]} intensity={21} color={blue} />
