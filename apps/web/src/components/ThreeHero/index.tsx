@@ -394,8 +394,8 @@ function BaseLogo() {
           setClick(false);
         }}
       >
-        <Center>
-          <mesh scale={mobile ? 0.05 : 0.13} castShadow receiveShadow>
+        <Center scale={mobile ? 0.05 : 0.13}>
+          <mesh castShadow receiveShadow>
             <extrudeGeometry
               args={[
                 svg.paths[0].toShapes(),
