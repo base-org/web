@@ -16,7 +16,15 @@
 import * as THREE from 'three';
 import { useRef, useMemo, useCallback, useState, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
-import { useGLTF, Lightformer, Environment, Html, Center } from '@react-three/drei';
+import {
+  useGLTF,
+  Lightformer,
+  Environment,
+  Html,
+  Center,
+  OrbitControls,
+  MeshTransmissionMaterial,
+} from '@react-three/drei';
 import {
   Physics,
   RigidBody,
@@ -32,7 +40,6 @@ import environmentLight from './assets/environmentLight.jpg';
 
 // Models
 import babylong_optimize_1 from './assets/babylon_optimize_1.glb';
-import nogglesModel from './assets/glasses.glb';
 
 import baseLogo from './assets/base-logo.svg';
 
@@ -116,7 +123,7 @@ export default function Scene(): JSX.Element {
 function Effects() {
   return (
     <EffectComposer multisampling={0} stencilBuffer={false}>
-      <Bloom mipmapBlur luminanceThreshold={1} intensity={1.5} />
+      <Bloom mipmapBlur luminanceThreshold={1} intensity={1} />
       <SMAA />
     </EffectComposer>
   );
@@ -225,6 +232,10 @@ export function Everything(props) {
         <mesh geometry={nodes.Mobile_Phone.geometry} castShadow receiveShadow>
           <BlackMaterial />
         </mesh>
+        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.07, 0]}>
+          <planeGeometry args={[0.9, 1.8]} />
+          <MetalMaterial />
+        </mesh>
       </PhysicsMesh>
 
       <PhysicsMesh>
@@ -282,7 +293,6 @@ export function Everything(props) {
       </PhysicsMesh>
       <BaseLogo />
       <Balls />
-      <Glasses />
     </group>
   );
 }
@@ -322,33 +332,6 @@ function Balls({ count = 10 }: { count?: number }) {
   );
 
   return <group>{boxes}</group>;
-}
-
-export function Glasses() {
-  const { nodes } = useGLTF(nogglesModel);
-
-  return (
-    <PhysicsMesh>
-      <group dispose={null} scale={0.25}>
-        <Center>
-          <mesh geometry={nodes.Gold.geometry} castShadow receiveShadow>
-            <BlackMaterial />
-          </mesh>
-          <mesh geometry={nodes.Black.geometry}>
-            <meshPhysicalMaterial
-              color={'#000'}
-              metalness={1}
-              roughness={0.1}
-              side={THREE.DoubleSide}
-            />
-          </mesh>
-          <mesh geometry={nodes.Transparent.geometry}>
-            <MetalMaterial />
-          </mesh>
-        </Center>
-      </group>
-    </PhysicsMesh>
-  );
 }
 
 function BaseLogo() {
@@ -415,9 +398,19 @@ function BaseLogo() {
               metalness={0.5}
               roughness={0.5}
               iridescence={0.5}
+
               // ior={2}
               //clearcoat={0.1}
             />
+            {/*<MeshTransmissionMaterial
+              backside
+              color={blue}
+              metalness={0.5}
+              roughness={0.5}
+              thickness={0.1}
+              distortion={2}
+              temporalDistortion={2}
+            />*/}
           </mesh>
         </Center>
       </group>

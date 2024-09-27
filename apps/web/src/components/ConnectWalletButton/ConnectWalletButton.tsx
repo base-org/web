@@ -125,7 +125,7 @@ export function ConnectWalletButton({
         onClick={switchToIntendedNetwork}
         rounded
       >
-        Wrong network, get based
+        Switch to Base
       </Button>
     );
   }
