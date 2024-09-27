@@ -212,22 +212,16 @@ export function Everything(props) {
 
   return (
     <group ref={groupRef} {...props} dispose={null}>
-      {/*<PhysicsMesh>
-        <mesh geometry={nodes.Object_1.geometry}>
-          <BlackMaterial />
-        </mesh>
-      </PhysicsMesh>*/}
-
       <PhysicsMesh>
         <mesh geometry={nodes.ETH.geometry} castShadow receiveShadow>
           <MetalMaterial />
         </mesh>
       </PhysicsMesh>
-      <PhysicsMesh>
+      {/*<PhysicsMesh>
         <mesh geometry={nodes.Spikey.geometry} castShadow receiveShadow>
           <BlackMaterial />
         </mesh>
-      </PhysicsMesh>
+      </PhysicsMesh>*/}
       <PhysicsMesh>
         <mesh geometry={nodes.Mobile_Phone.geometry} castShadow receiveShadow>
           <BlackMaterial />
