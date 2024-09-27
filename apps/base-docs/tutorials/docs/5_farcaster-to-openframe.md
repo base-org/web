@@ -279,18 +279,19 @@ Before redeploying your Frame check how the routes differ using the [Frame Debug
 Frame Dugger allows you to select the protocol you wish to debug.
 For Open Frame, use the `anonymous (openframes)` option
 
-![debugger-selector](/assets/images/openframes-fc/debugger-of-not-valid-zoom.png)
+<!-- ![debugger-selector](/assets/images/openframes-fc/debugger-of-not-valid-zoom.png) -->
 
 :::
 
 ### Before:
 
-![debugger-before](/assets/images/openframes-fc/debugger-of-not-valid-zoom.png)
+<!-- ![debugger-before](/assets/images/openframes-fc/debugger-of-not-valid-zoom.png) -->
 
 ### After:
 
 Your converted Farcaster Frame should pass all checks like the below image:
-![debugger-after](/assets/images/openframes-fc/frame-custom-no-url.png)
+
+<!-- ![debugger-after](/assets/images/openframes-fc/frame-custom-no-url.png) -->
 
 Your frame should still have functionality w/o the farcaster dependency. Use the [Farcaster Frame Validator] to confirm.
 
