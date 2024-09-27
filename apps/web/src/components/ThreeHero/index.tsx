@@ -16,15 +16,7 @@
 import * as THREE from 'three';
 import { useRef, useMemo, useCallback, useState, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
-import {
-  useGLTF,
-  Lightformer,
-  Environment,
-  Html,
-  Center,
-  OrbitControls,
-  MeshTransmissionMaterial,
-} from '@react-three/drei';
+import { useGLTF, Lightformer, Environment, Html, Center } from '@react-three/drei';
 import {
   Physics,
   RigidBody,
@@ -40,6 +32,7 @@ import environmentLight from './assets/environmentLight.jpg';
 
 // Models
 import babylong_optimize_1 from './assets/babylon_optimize_1.glb';
+import nogglesModel from './assets/glasses.glb';
 
 import baseLogo from './assets/base-logo.svg';
 
@@ -100,6 +93,7 @@ export default function Scene(): JSX.Element {
     <div style={{ width: '100%', height: '100%' }} ref={containerRef}>
       <Canvas shadows frameloop={isActive ? 'always' : 'never'} camera={{ position: [0, 0, 5] }}>
         <fog attach="fog" args={['#111', 2.5, 7]} />
+
         <mesh>
           <sphereGeometry args={[7, 64, 64]} />
           <meshPhysicalMaterial color="#666" side={THREE.BackSide} />
@@ -212,28 +206,33 @@ export function Everything(props) {
       </PhysicsMesh>*/}
 
       <PhysicsMesh>
-        <mesh geometry={nodes.ETH.geometry}>
+        <mesh geometry={nodes.ETH.geometry} castShadow receiveShadow>
           <MetalMaterial />
         </mesh>
       </PhysicsMesh>
       <PhysicsMesh>
-        <mesh geometry={nodes.Spikey.geometry}>
+        <mesh geometry={nodes.Spikey.geometry} castShadow receiveShadow>
           <BlackMaterial />
         </mesh>
       </PhysicsMesh>
       <PhysicsMesh>
-        <mesh geometry={nodes.Mobile_Phone.geometry}>
+        <mesh geometry={nodes.Mobile_Phone.geometry} castShadow receiveShadow>
           <BlackMaterial />
         </mesh>
       </PhysicsMesh>
 
       <PhysicsMesh>
         <group>
-          <mesh geometry={nodes.Cursor.geometry} scale={[0.88, 0.88, 0.88]}>
+          <mesh
+            geometry={nodes.Cursor.geometry}
+            scale={[0.88, 0.88, 0.88]}
+            castShadow
+            receiveShadow
+          >
             <BlackMaterial />
           </mesh>
 
-          <mesh geometry={nodes.Cursor1.geometry}>
+          <mesh geometry={nodes.Cursor1.geometry} castShadow receiveShadow>
             <MetalMaterial />
           </mesh>
         </group>
@@ -241,42 +240,43 @@ export function Everything(props) {
       <Boxes count={10} geometry={nodes.Box_08.geometry} />
 
       <PhysicsMesh>
-        <mesh geometry={nodes.Boole.geometry}>
+        <mesh geometry={nodes.Boole.geometry} castShadow receiveShadow>
           <BlackMaterial />
         </mesh>
       </PhysicsMesh>
       <PhysicsMesh>
-        <mesh geometry={nodes.Globe.geometry}>
+        <mesh geometry={nodes.Globe.geometry} castShadow receiveShadow>
           <MetalMaterial />
         </mesh>
       </PhysicsMesh>
       <PhysicsMesh>
-        <mesh geometry={nodes.Controller.geometry}>
+        <mesh geometry={nodes.Controller.geometry} castShadow receiveShadow>
           <BlackMaterial />
         </mesh>
       </PhysicsMesh>
       <PhysicsMesh>
-        <mesh geometry={nodes.headphone.geometry}>
+        <mesh geometry={nodes.headphone.geometry} castShadow receiveShadow>
           <BlackMaterial />
         </mesh>
       </PhysicsMesh>
       <PhysicsMesh>
-        <mesh geometry={nodes.Object_02.geometry}>
+        <mesh geometry={nodes.Object_02.geometry} castShadow receiveShadow>
           <BlackMaterial />
         </mesh>
       </PhysicsMesh>
       <PhysicsMesh>
-        <mesh geometry={nodes.Object_01.geometry}>
+        <mesh geometry={nodes.Object_01.geometry} castShadow receiveShadow>
           <BlackMaterial />
         </mesh>
       </PhysicsMesh>
       <PhysicsMesh>
-        <mesh geometry={nodes.Extrude.geometry}>
+        <mesh geometry={nodes.Extrude.geometry} castShadow receiveShadow>
           <BlackMaterial />
         </mesh>
       </PhysicsMesh>
-      <BaseLogo /*geometry={nodes.Wallet.geometry}*/ />
+      <BaseLogo />
       <Balls />
+      <Glasses />
     </group>
   );
 }
@@ -287,7 +287,7 @@ function Boxes({ geometry, count = 10 }: { geometry: any; count?: number }) {
       new Array(count).fill(null).map((_, index) => {
         return (
           <PhysicsMesh scale={0.5} gravityEffect={0.03} key={index}>
-            <mesh geometry={geometry} scale={0.5}>
+            <mesh geometry={geometry} scale={0.5} castShadow receiveShadow>
               <BlackMaterial />
             </mesh>
           </PhysicsMesh>
@@ -305,7 +305,7 @@ function Balls({ count = 10 }: { count?: number }) {
       new Array(count).fill(null).map((_, index) => {
         return (
           <PhysicsMesh scale={0.25} gravityEffect={0.004} key={index}>
-            <mesh>
+            <mesh castShadow receiveShadow>
               <sphereGeometry args={[0.25, 64, 64]} />
               <meshPhysicalMaterial color={blue} />
             </mesh>
@@ -318,8 +318,36 @@ function Balls({ count = 10 }: { count?: number }) {
   return <group>{boxes}</group>;
 }
 
+export function Glasses() {
+  const { nodes } = useGLTF(nogglesModel);
+
+  return (
+    <PhysicsMesh>
+      <group dispose={null} scale={0.25}>
+        <Center>
+          <mesh geometry={nodes.Gold.geometry} castShadow receiveShadow>
+            <BlackMaterial />
+          </mesh>
+          <mesh geometry={nodes.Black.geometry}>
+            <meshPhysicalMaterial
+              color={'#000'}
+              metalness={1}
+              roughness={0.1}
+              side={THREE.DoubleSide}
+            />
+          </mesh>
+          <mesh geometry={nodes.Transparent.geometry}>
+            <MetalMaterial />
+          </mesh>
+        </Center>
+      </group>
+    </PhysicsMesh>
+  );
+}
+
 function BaseLogo() {
   const [click, setClick] = useState(false);
+  const portalMaterial = useRef();
   const logoRef = useRef<THREE.Group>(null!);
   const doneRef = useRef<boolean>(false);
 
@@ -339,6 +367,7 @@ function BaseLogo() {
       doneRef.current = true;
     }
   });
+
   return (
     <RigidBody type="kinematicPosition" colliders={false}>
       <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[10, 2]} />
@@ -354,7 +383,7 @@ function BaseLogo() {
         }}
       >
         <Center>
-          <mesh scale={0.13}>
+          <mesh scale={0.13} castShadow receiveShadow>
             <extrudeGeometry
               args={[
                 svg.paths[0].toShapes(),
