@@ -479,14 +479,27 @@ function PhysicsMesh({
 
 function Pointer({ vec = new THREE.Vector3() }) {
   const ref = useRef();
+  const light = useRef();
   useFrame(({ mouse, viewport }) => {
     ref.current?.setNextKinematicTranslation(
       vec.set((mouse.x * viewport.width) / 2, (mouse.y * viewport.height) / 2, 0),
     );
+    light.current?.position.set(
+      //(mouse.x * viewport.width) / 2,
+      //(mouse.y * viewport.height) / 2,
+      0,
+      0,
+      10,
+    );
+    light.current?.lookAt((mouse.x * viewport.width) / 2, (mouse.y * viewport.height) / 2, 0);
   });
   return (
-    <RigidBody position={[0, 0, 0]} type="kinematicPosition" colliders={false} ref={ref}>
-      <BallCollider args={[2]} />
-    </RigidBody>
+    <>
+      <RigidBody position={[0, 0, 0]} type="kinematicPosition" colliders={false} ref={ref}>
+        <BallCollider args={[2]} />
+      </RigidBody>
+
+      <directionalLight ref={light} position={[0, 0, 10]} intensity={18} color={blue} />
+    </>
   );
 }
