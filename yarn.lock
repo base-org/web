@@ -2030,6 +2030,7 @@ __metadata:
     babel-plugin-tsconfig-paths: ^1.0.3
     classnames: ^2.3.2
     clsx: ^1.2.1
+    dotenv: ^16.0.3
     eslint: ^8.27.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-airbnb-typescript: ^17.0.0
