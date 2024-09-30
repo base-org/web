@@ -15,6 +15,7 @@ module.exports = {
       collapsible: false,
       collapsed: false,
       items: [
+        'building-with-base/quickstart',
         'building-with-base/network-information',
         'building-with-base/base-contracts',
         'building-with-base/fees',
