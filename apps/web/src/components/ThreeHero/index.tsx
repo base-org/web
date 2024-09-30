@@ -405,7 +405,7 @@ function BaseLogo() {
               //roughness={0.5}
               //iridescence={0.5}
               metalness={0}
-              roughness={0.2}
+              roughness={0.25}
               transmission={0.9}
               thickness={1}
               side={THREE.DoubleSide}
