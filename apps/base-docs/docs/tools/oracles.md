@@ -119,7 +119,7 @@ See [this guide](https://docs.ora.io/doc/oao-onchain-ai-oracle/develop-guide/tut
 
 ## Pyth
 
-The [Pyth Network](https://pyth.network/) is the one of the largest first-party Oracle network, delivering real-time data across [a vast number of chains](https://docs.pyth.network/price-feeds/contract-addresses). Pyth introduces an innovative low-latency [pull oracle design](https://docs.pyth.network/documentation/pythnet-price-feeds/on-demand), where users can pull price updates onchain when needed, enabling everyone in the onchain environment to access that data point most efficiently. Pyth network updates the prices every **400ms**, making Pyth one of the fastest onchain oracle.
+The [Pyth Network](https://pyth.network/) is one of the largest first-party Oracle network, delivering real-time data across [a vast number of chains](https://docs.pyth.network/price-feeds/contract-addresses). Pyth introduces an innovative low-latency [pull oracle design](https://docs.pyth.network/documentation/pythnet-price-feeds/on-demand), where users can pull price updates onchain when needed, enabling everyone in the onchain environment to access that data point most efficiently. Pyth network updates the prices every **400ms**, making Pyth one of the fastest onchain oracles.
 
 #### Pyth Price Feeds Features:
 
