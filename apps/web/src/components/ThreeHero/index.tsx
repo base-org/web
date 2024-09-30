@@ -16,15 +16,7 @@
 import * as THREE from 'three';
 import { useRef, useMemo, useCallback, useState, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
-import {
-  useGLTF,
-  Lightformer,
-  Environment,
-  Html,
-  Center,
-  OrbitControls,
-  MeshTransmissionMaterial,
-} from '@react-three/drei';
+import { useGLTF, Lightformer, Environment, Html, Center } from '@react-three/drei';
 import {
   Physics,
   RigidBody,
@@ -42,6 +34,7 @@ import environmentLight from './assets/environmentLight.jpg';
 import babylong_optimize_1 from './assets/babylon_optimize_1.glb';
 
 import baseLogo from './assets/base-logo.svg';
+import lightningSVG from './assets/lightning.svg';
 
 const blue = '#105eff';
 
@@ -122,7 +115,7 @@ export default function Scene(): JSX.Element {
 
 function Effects() {
   return (
-    <EffectComposer multisampling={0} stencilBuffer={false}>
+    <EffectComposer>
       <Bloom mipmapBlur luminanceThreshold={1} intensity={1} />
       <SMAA />
     </EffectComposer>
@@ -287,6 +280,7 @@ export function Everything(props) {
       </PhysicsMesh>
       <BaseLogo />
       <Balls />
+      <Lightning />
     </group>
   );
 }
@@ -328,9 +322,37 @@ function Balls({ count = 10 }: { count?: number }) {
   return <group>{boxes}</group>;
 }
 
+function Lightning() {
+  const svg = useLoader(SVGLoader, lightningSVG.src);
+
+  return (
+    <PhysicsMesh>
+      <group>
+        <Center>
+          <mesh castShadow receiveShadow scale={0.015}>
+            <extrudeGeometry
+              args={[
+                svg.paths[0].toShapes(),
+                {
+                  curveSegments: 64,
+                  depth: 5,
+                  bevelEnabled: true,
+                  bevelSegments: 64,
+                  bevelSize: 0.5,
+                  bevelThickness: 1,
+                },
+              ]}
+            />
+            <MetalMaterial />
+          </mesh>
+        </Center>
+      </group>
+    </PhysicsMesh>
+  );
+}
+
 function BaseLogo() {
   const { size } = useThree();
-  const [click, setClick] = useState(false);
   const portalMaterial = useRef();
   const logoRef = useRef<THREE.Group>(null!);
   const doneRef = useRef<boolean>(false);
@@ -360,17 +382,7 @@ function BaseLogo() {
   return (
     <RigidBody type="kinematicPosition" colliders={false}>
       <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[10, mobile ? 0.75 : 2]} />
-      <group
-        ref={logoRef}
-        position={[0, 0, -10]}
-        rotation={[0, -Math.PI, 0]}
-        onPointerDown={() => {
-          setClick(true);
-        }}
-        onPointerUp={() => {
-          setClick(false);
-        }}
-      >
+      <group ref={logoRef} position={[0, 0, -10]} rotation={[0, -Math.PI, 0]}>
         <Center scale={mobile ? 0.05 : 0.13}>
           <mesh castShadow receiveShadow>
             <extrudeGeometry
@@ -389,9 +401,14 @@ function BaseLogo() {
 
             <meshPhysicalMaterial
               color={blue}
-              metalness={0.5}
-              roughness={0.5}
-              iridescence={0.5}
+              //metalness={0.5}
+              //roughness={0.5}
+              //iridescence={0.5}
+              metalness={0}
+              roughness={0.2}
+              transmission={0.9}
+              thickness={1}
+              side={THREE.DoubleSide}
 
               // ior={2}
               //clearcoat={0.1}
