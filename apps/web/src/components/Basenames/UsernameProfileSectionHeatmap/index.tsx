@@ -1,15 +1,14 @@
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import * as Collapsible from '@radix-ui/react-collapsible';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import {
   bridges,
   lendBorrowEarn,
 } from 'apps/web/src/components/Basenames/UsernameProfileSectionHeatmap/contracts';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import CalendarHeatmap, { ReactCalendarHeatmapValue } from 'react-calendar-heatmap';
 import { Address } from 'viem';
-
 import './cal.css';
 
 type HeatmapValue = {
@@ -428,11 +427,8 @@ export default function UsernameProfileSectionHeatmap() {
         </div>
       </div>
       <Collapsible.Trigger className="flex w-full flex-row items-center border-t border-palette-line/20 px-6 py-4">
-        <ChevronDownIcon
-          className="mr-2 h-5 w-5 transition-transform duration-300 group-data-[state=open]:rotate-180"
-          aria-hidden
-        />
-        View details
+        <Icon name="caret" color="currentColor" width="1rem" height="1rem" />
+        <p className="ml-1">View details</p>
       </Collapsible.Trigger>
       <Collapsible.Content className="flex flex-row flex-wrap items-start justify-around gap-8 px-6 pb-9 data-[state=closed]:pb-0">
         <div className="w-28">
