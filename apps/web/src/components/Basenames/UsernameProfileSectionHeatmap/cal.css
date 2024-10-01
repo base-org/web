@@ -1,5 +1,6 @@
 .react-calendar-heatmap {
   min-width: 780px;
+  height: auto;
   width: 100%;
 }
 

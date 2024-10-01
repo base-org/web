@@ -26,7 +26,7 @@ type Transaction = {
 };
 
 export default function UsernameProfileSectionHeatmap() {
-  // The ref/effect here are a kinda jank approach to reaching into the heatmap library's rendered dom and modifying the individual rect attributes.
+  // The ref/effect here are a kinda jank approach to reaching into the heatmap library's rendered dom and modifying individual rect attributes.
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const pollForRects = () => {
@@ -39,6 +39,9 @@ export default function UsernameProfileSectionHeatmap() {
           rect.setAttribute('ry', '2');
         });
         clearInterval(timerId);
+
+        // this line ensures that if the element is scrollable it will be all the way right (showing newest cal data)
+        containerElement.scrollLeft = containerElement.scrollWidth;
       }
     };
     const timerId = setInterval(pollForRects, 100);
@@ -415,7 +418,10 @@ export default function UsernameProfileSectionHeatmap() {
             <p>More</p>
           </div>
         </div>
-        <div ref={containerRef} className="overflow-x-auto overflow-y-hidden whitespace-nowrap">
+        <div
+          ref={containerRef}
+          className="w-full max-w-full overflow-x-auto overflow-y-hidden whitespace-nowrap"
+        >
           <CalendarHeatmap
             startDate={new Date(new Date().setFullYear(new Date().getFullYear() - 1))}
             endDate={new Date()}
