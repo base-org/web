@@ -2,11 +2,27 @@
   font-size: 10px;
   fill: #aaa;
 }
+.react-calendar-heatmap {
+  width: max-content;
+  border-collapse: separate;
+  border-spacing: 3px;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
 
 .react-calendar-heatmap .react-calendar-heatmap-small-text {
   font-size: 5px;
 }
 
 .react-calendar-heatmap rect:hover {
-  stroke-width: 0;
+  stroke-width: 1;
+  stroke: #fff;
+}
+.react-calendar-heatmap rect {
+  stroke-width: 1;
+  stroke: #fff;
 }

@@ -1,18 +1,16 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import CalendarHeatmap, { ReactCalendarHeatmapValue } from 'react-calendar-heatmap';
-import * as Collapsible from '@radix-ui/react-collapsible';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
-import './cal.css';
+import * as Collapsible from '@radix-ui/react-collapsible';
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import {
   bridges,
   lendBorrowEarn,
 } from 'apps/web/src/components/Basenames/UsernameProfileSectionHeatmap/contracts';
+import Image from 'next/image';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import CalendarHeatmap, { ReactCalendarHeatmapValue } from 'react-calendar-heatmap';
 import { Address } from 'viem';
 
-const ETHERSCAN_API_KEY = process.env.NEXT_PUBLIC_ETHERSCAN_API_KEY;
-const BASESCAN_API_KEY = process.env.NEXT_PUBLIC_BASESCAN_API_KEY;
-const TALENT_PROTOCOL_API_KEY = process.env.NEXT_PUBLIC_TALENT_PROTOCOL_API_KEY;
+import './cal.css';
 
 type HeatmapValue = {
   date: string;
@@ -28,27 +26,29 @@ type Transaction = {
   hash: string;
 };
 
-type TalentProtocolData = {
-  passport: {
-    score: number;
-    passport_socials: {
-      source: string;
-      profile_url: string;
-      profile_image_url: string;
-      profile_display_name: string;
-    }[];
-    verified_wallets: string[];
-    passport_profile: {
-      display_name: string;
-      image_url: string;
-      location: string;
-      bio: string;
-    };
-  };
-};
-
 export default function UsernameProfileSectionHeatmap() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  // The ref/effect here are a kinda jank approach to reaching into the heatmap library's rendered dom and modifying the individual rect attributes.
+  const containerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const pollForRects = () => {
+      const containerElement = containerRef.current;
+      if (!containerElement) return;
+      const rects = containerElement.querySelectorAll('rect');
+      if (rects.length > 0) {
+        rects.forEach((rect) => {
+          rect.setAttribute('rx', '2');
+          rect.setAttribute('ry', '2');
+        });
+        clearInterval(timerId);
+      }
+    };
+    const timerId = setInterval(pollForRects, 100);
+    return () => {
+      clearInterval(timerId);
+    };
+  }, []);
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isDataFetched, setIsDataFetched] = useState<boolean>(false);
   const [totalTx, setTotalTx] = useState<number>(0);
   const [tokenSwapCount, setTokenSwapCount] = useState<number>(0);
@@ -62,23 +62,16 @@ export default function UsernameProfileSectionHeatmap() {
   const [longestStreak, setLongestStreak] = useState<number>(0);
   const [currentStreak, setCurrentStreak] = useState<number>(0);
   const [activityPeriod, setActivityPeriod] = useState<number>(0);
-  const [credentialsScore, setCredentialsScore] = useState<number | null>(null);
   const [ethereumDeployments, setEthereumDeployments] = useState<string[]>([]);
   const [baseDeployments, setBaseDeployments] = useState<string[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [apiErrors, setApiErrors] = useState<Record<string, boolean>>({
-    ethereum: false,
-    base: false,
-    sepolia: false,
-  });
 
   const classForValue = useCallback((value: ReactCalendarHeatmapValue<string> | undefined) => {
-    if (!value) return 'fill-[#ebedf0]';
-    if (value.count >= 10) return 'fill-[#0052FF]';
-    if (value.count >= 7) return 'fill-[#668cff]';
-    if (value.count >= 4) return 'fill-[#99b3ff]';
-    if (value.count >= 1) return 'fill-[#ccd9ff]';
-    return 'fill-[#ebedf0]';
+    if (!value) return 'm-1 fill-[#F8F9FB]'; // empty
+    if (value.count >= 10) return 'm-1 fill-[#0052FF]'; // 4 - most
+    if (value.count >= 7) return 'm-1 fill-[#73A2FF]'; // 3
+    if (value.count >= 4) return 'm-1 fill-[#D3E1FF]'; // 2
+    if (value.count >= 1) return 'm-1 fill-[#ccd9ff]'; // 1
+    return 'm-1 fill-[#F8F9FB]'; // empty - least
   }, []);
 
   const titleForValue = useCallback((value: ReactCalendarHeatmapValue<string> | undefined) => {
@@ -153,22 +146,20 @@ export default function UsernameProfileSectionHeatmap() {
       try {
         const response = await fetch(apiUrl);
         const json = (await response.json()) as {
-          result: Transaction[];
-          status: '1' | '0';
-          message: string;
+          data: { result: Transaction[]; status: '1' | '0'; message: string };
         };
 
-        if (json.status === '1' && Array.isArray(json.result)) {
-          return json.result;
-        } else if (json.status === '0' && json.message === 'No transactions found') {
+        if (json.data?.status === '1' && Array.isArray(json.data.result)) {
+          return json.data.result;
+        } else if (json.data?.status === '0' && json.data.message === 'No transactions found') {
           return []; // Return an empty array for no transactions
-        } else if (json.status === '0' && json.message === 'Exception') {
+        } else if (json.data?.status === '0' && json.data.message === 'Exception') {
           if (retryCount > 0) {
             console.log(`API returned an exception. Retrying... (${retryCount} attempts left)`);
             await new Promise((resolve) => setTimeout(resolve, 2000));
             return await fetchTransactions(apiUrl, retryCount - 1);
           } else {
-            throw new Error(`API Error: ${json.message}`);
+            throw new Error(`API Error: ${json.data.message}`);
           }
         } else {
           console.error('Unexpected API response structure:', json);
@@ -234,8 +225,6 @@ export default function UsernameProfileSectionHeatmap() {
   const fetchData = useCallback(
     async (addrs: Address) => {
       setIsLoading(true);
-      setError(null);
-      setApiErrors({ ethereum: false, base: false, sepolia: false });
 
       try {
         const allTransactions: Transaction[] = [];
@@ -245,23 +234,14 @@ export default function UsernameProfileSectionHeatmap() {
         const [ethereumTransactions, baseTransactions, baseInternalTransactions] =
           await Promise.all([
             fetchTransactions(
-              `https://api.etherscan.io/api?module=account&action=txlist&address=${addrs}&apikey=${ETHERSCAN_API_KEY}`,
-            ).catch(() => {
-              setApiErrors((prev) => ({ ...prev, ethereum: true }));
-              return [];
-            }),
+              `/api/proxy?apiType=etherscan&module=account&action=txlist&address=${addrs}`,
+            ).catch(() => []),
             fetchTransactions(
-              `https://api.basescan.org/api?module=account&action=txlist&address=${addrs}&apikey=${BASESCAN_API_KEY}`,
-            ).catch(() => {
-              setApiErrors((prev) => ({ ...prev, base: true }));
-              return [];
-            }),
+              `/api/proxy?apiType=basescan&module=account&action=txlist&address=${addrs}`,
+            ).catch(() => []),
             fetchTransactions(
-              `https://api.basescan.org/api?module=account&action=txlistinternal&address=${addrs}&apikey=${BASESCAN_API_KEY}`,
-            ).catch(() => {
-              setApiErrors((prev) => ({ ...prev, base: true }));
-              return [];
-            }),
+              `/api/proxy?apiType=basescan&module=account&action=txlistinternal&address=${addrs}`,
+            ).catch(() => []),
           ]);
 
         const filteredEthereumTransactions = filterTransactions(ethereumTransactions, [addrs]);
@@ -292,9 +272,6 @@ export default function UsernameProfileSectionHeatmap() {
         ];
 
         if (allTransactions.length === 0) {
-          setError(
-            'No transactions found or there was an error fetching the data. Please try again later.',
-          );
           return;
         }
 
@@ -315,11 +292,11 @@ export default function UsernameProfileSectionHeatmap() {
         setTokenSwapCount(
           allTransactions.filter(
             (tx) =>
-              (tx.functionName &&
+              ((tx.functionName &&
                 (tx.functionName.includes('swap') ||
                   tx.functionName.includes('fillOtcOrderWithEth') ||
-                  tx.functionName.includes('proxiedSwap'))) ||
-              tx.to === '0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad' ||
+                  tx.functionName.includes('proxiedSwap'))) ??
+                tx.to === '0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad') ||
               tx.to === '0x6cb442acf35158d5eda88fe602221b67b400be3e' ||
               tx.to === '0x1111111254eeb25477b68fb85ed929f73a960582',
           ).length,
@@ -362,7 +339,6 @@ export default function UsernameProfileSectionHeatmap() {
         setFinalScore(calculateScore(tasksCompleted, allTransactions));
       } catch (e) {
         console.error('Error fetching data:', e);
-        setError('Failed to fetch transaction data. Please try again later.');
       } finally {
         setIsLoading(false);
         setIsDataFetched(true);
@@ -379,53 +355,33 @@ export default function UsernameProfileSectionHeatmap() {
     ],
   );
 
-  const fetchTalentProtocolData = useCallback(async (addrs: Address) => {
-    try {
-      try {
-        const response = await fetch(`https://api.talentprotocol.com/api/v2/passports/${addrs}`, {
-          headers: { 'X-API-KEY': TALENT_PROTOCOL_API_KEY },
-        });
-        const json = await response.json();
-
-        // Check if the response is an error
-        if ((json as { error: string }).error === 'Resource not found.') {
-          console.warn(`No Talent Protocol data found for address ${addrs}`);
-          return;
-        }
-
-        setCredentialsScore((json as TalentProtocolData).passport.score);
-      } catch (e) {
-        // Handle 404 error or any other fetch error
-        if (e instanceof Error && e.message.includes('404')) {
-          console.warn(`No Talent Protocol data found for address ${addrs}`);
-        } else {
-          console.error(`Error fetching Talent Protocol data for address ${addrs}:`, e);
-        }
-      }
-    } catch (e) {
-      console.error('Error fetching Talent Protocol data:', e);
-      setCredentialsScore(null);
-    }
-  }, []);
-
   useEffect(() => {
     if (!profileAddress) return;
     if (!isDataFetched) {
       void fetchData(profileAddress);
-      void fetchTalentProtocolData(profileAddress);
     }
-  }, [fetchData, fetchTalentProtocolData, isDataFetched, profileAddress]);
+  }, [fetchData, isDataFetched, profileAddress]);
 
   const contractsDeployed = useMemo(() => {
     return ethereumDeployments.length + baseDeployments.length;
   }, [baseDeployments.length, ethereumDeployments.length]);
 
+  if (isLoading) {
+    return (
+      <div className="relative rounded-3xl border border-palette-line/20 p-10">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Image src="/images/base-loading.gif" alt="" width={22} height={22} />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Collapsible.Root className="rounded-3xl border border-palette-line/20">
-      <div className="mb-6 px-6 pt-9">
+      <div className="mb-6 px-6 pt-6">
         <div className="relative mb-6">
-          <h3 className="text-sm font-medium text-gray-60">ONCHAIN SCORE</h3>
-          <p className="font-display text-3xl">{credentialsScore}/100</p>
+          <h3 className="mb-1 text-sm font-medium text-gray-60">ONCHAIN SCORE</h3>
+          <p className="font-display text-3xl">{finalScore}/100</p>
           <div className="absolute right-0 flex flex-row items-center gap-1 text-xs text-palette-foregroundMuted">
             <p>Less</p>
             <svg
@@ -443,14 +399,19 @@ export default function UsernameProfileSectionHeatmap() {
             <p>More</p>
           </div>
         </div>
-        <CalendarHeatmap
-          startDate={new Date(new Date().setFullYear(new Date().getFullYear() - 1))}
-          endDate={new Date()}
-          horizontal
-          values={heatmapData}
-          classForValue={classForValue}
-          titleForValue={titleForValue}
-        />
+        <div
+          ref={containerRef}
+          className="height-full flex flex-col items-end overflow-hidden text-center xl:items-center"
+        >
+          <CalendarHeatmap
+            startDate={new Date(new Date().setFullYear(new Date().getFullYear() - 1))}
+            endDate={new Date()}
+            horizontal
+            values={heatmapData}
+            classForValue={classForValue}
+            titleForValue={titleForValue}
+          />
+        </div>
       </div>
       <Collapsible.Trigger className="flex w-full flex-row items-center border-t border-palette-line/20 px-6 py-4">
         <ChevronDownIcon
@@ -459,7 +420,7 @@ export default function UsernameProfileSectionHeatmap() {
         />
         View details
       </Collapsible.Trigger>
-      <Collapsible.Content className="flex flex-row flex-wrap items-start justify-start gap-8 px-6 pb-9 data-[state=closed]:pb-0">
+      <Collapsible.Content className="flex flex-row flex-wrap items-start justify-around gap-8 px-6 pb-9 data-[state=closed]:pb-0">
         <div className="w-28">
           <div className="text-xl font-medium text-palette-primary">{totalTx}</div>
           <p className="text-xs text-palette-foregroundMuted">Transactions on Ethereum & Base</p>
