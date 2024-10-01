@@ -153,7 +153,7 @@ function EnvironmentSetup() {
         form="circle"
         intensity={20}
         rotation-x={Math.PI / 2}
-        position={[0, 5, -9]}
+        position={[0, -15, -9]}
         scale={2}
       />
       <Lightformer
