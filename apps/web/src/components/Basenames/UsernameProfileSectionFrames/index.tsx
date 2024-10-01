@@ -8,7 +8,6 @@ import {
 } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import FarcasterAccountModal from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FarcasterAccountModal';
 import FrameListItem from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FrameListItem';
-import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
 import { Button, ButtonSizes } from 'apps/web/src/components/Button/Button';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
@@ -69,8 +68,7 @@ function SectionContent() {
   }
   return (
     <section>
-      <div className="flex flex-row justify-between">
-        <UsernameProfileSectionTitle title="Frames" />
+      <div className="flex flex-row-reverse justify-between">
         {currentWalletIsProfileOwner && (
           <Link
             onClick={handleAddFrameLinkClick}
