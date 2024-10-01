@@ -1,17 +1,11 @@
+.react-calendar-heatmap {
+  min-width: 780px;
+  width: 100%;
+}
+
 .react-calendar-heatmap text {
   font-size: 10px;
   fill: #aaa;
-}
-.react-calendar-heatmap {
-  width: max-content;
-  border-collapse: separate;
-  border-spacing: 3px;
-  overflow: hidden;
-  position: relative;
-  height: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
 }
 
 .react-calendar-heatmap .react-calendar-heatmap-small-text {

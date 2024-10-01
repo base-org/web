@@ -21,7 +21,7 @@ export default function UsernameProfile() {
       <div className="w-full md:max-w-[25rem]">
         <UsernameProfileSidebar />
       </div>
-      <div className="w-full">
+      <div className="w-full md:max-w-[75vw]">
         <UsernameProfileContent />
       </div>
     </div>

@@ -41,6 +41,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       case 'etherscan':
         apiUrl = `https://api.etherscan.io/api?${queryParams}&apikey=${ETHERSCAN_API_KEY}`;
         break;
+      case 'base-sepolia':
+        apiUrl = `https://api-sepolia.basescan.org/api?${queryParams}&apikey=${BASESCAN_API_KEY}`;
+        break;
       case 'basescan':
         apiUrl = `https://api.basescan.org/api?${queryParams}&apikey=${BASESCAN_API_KEY}`;
         break;

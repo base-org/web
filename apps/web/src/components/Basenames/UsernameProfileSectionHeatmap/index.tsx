@@ -56,7 +56,6 @@ export default function UsernameProfileSectionHeatmap() {
   const [bridgeCount, setBridgeCount] = useState<number>(0);
   const [lendCount, setLendCount] = useState<number>(0);
   const [buildCount, setBuildCount] = useState<number>(0);
-  const [finalScore, setFinalScore] = useState<number | null>(null);
   const [heatmapData, setHeatmapData] = useState<HeatmapValue[]>([]);
   const [uniqueActiveDays, setUniqueActiveDays] = useState<number>(0);
   const [longestStreak, setLongestStreak] = useState<number>(0);
@@ -64,6 +63,7 @@ export default function UsernameProfileSectionHeatmap() {
   const [activityPeriod, setActivityPeriod] = useState<number>(0);
   const [ethereumDeployments, setEthereumDeployments] = useState<string[]>([]);
   const [baseDeployments, setBaseDeployments] = useState<string[]>([]);
+  const [totalTransactionsList, setTotalTransactionsList] = useState<Transaction[]>([]);
 
   const classForValue = useCallback((value: ReactCalendarHeatmapValue<string> | undefined) => {
     if (!value) return 'm-1 fill-[#F8F9FB]'; // empty
@@ -180,8 +180,8 @@ export default function UsernameProfileSectionHeatmap() {
   };
 
   const calculateScore = useCallback(
-    (tasksCompleted: number, transactions: Transaction[]): number => {
-      const taskScore = (Math.min(tasksCompleted, 6) / 6) * 35;
+    (completedTasks: number, transactions: Transaction[]): number => {
+      const taskScore = (Math.min(completedTasks, 6) / 6) * 35;
       const txScore = (Math.min(totalTx, 100) / 100) * 20;
       const daysScore = (Math.min(uniqueActiveDays, 100) / 100) * 15;
       const longestStreakScore = (Math.min(longestStreak, 30) / 30) * 5;
@@ -189,8 +189,7 @@ export default function UsernameProfileSectionHeatmap() {
       const activityPeriodScore = (Math.min(activityPeriod, 365) / 365) * 5;
 
       const recencyScore = calculateRecencyScore(transactions);
-
-      return Math.round(
+      const total = Math.round(
         taskScore +
           txScore +
           daysScore +
@@ -199,6 +198,8 @@ export default function UsernameProfileSectionHeatmap() {
           activityPeriodScore +
           recencyScore,
       );
+
+      return total;
     },
     [activityPeriod, currentStreak, longestStreak, totalTx, uniqueActiveDays],
   );
@@ -230,22 +231,31 @@ export default function UsernameProfileSectionHeatmap() {
         const allTransactions: Transaction[] = [];
         let allEthereumDeployments: string[] = [];
         let allBaseDeployments: string[] = [];
+        let allSepoliaDeployments: string[] = [];
 
-        const [ethereumTransactions, baseTransactions, baseInternalTransactions] =
-          await Promise.all([
-            fetchTransactions(
-              `/api/proxy?apiType=etherscan&module=account&action=txlist&address=${addrs}`,
-            ).catch(() => []),
-            fetchTransactions(
-              `/api/proxy?apiType=basescan&module=account&action=txlist&address=${addrs}`,
-            ).catch(() => []),
-            fetchTransactions(
-              `/api/proxy?apiType=basescan&module=account&action=txlistinternal&address=${addrs}`,
-            ).catch(() => []),
-          ]);
+        const [
+          ethereumTransactions,
+          baseTransactions,
+          baseInternalTransactions,
+          sepoliaTransactions,
+        ] = await Promise.all([
+          fetchTransactions(
+            `/api/proxy?apiType=etherscan&module=account&action=txlist&address=${addrs}`,
+          ).catch(() => []),
+          fetchTransactions(
+            `/api/proxy?apiType=basescan&module=account&action=txlist&address=${addrs}`,
+          ).catch(() => []),
+          fetchTransactions(
+            `/api/proxy?apiType=basescan&module=account&action=txlistinternal&address=${addrs}`,
+          ).catch(() => []),
+          fetchTransactions(
+            `/api/proxy?apiType=base-sepolia&module=account&action=txlistinternal&address=${addrs}`,
+          ).catch(() => []),
+        ]);
 
         const filteredEthereumTransactions = filterTransactions(ethereumTransactions, [addrs]);
         const filteredBaseTransactions = filterTransactions(baseTransactions, [addrs]);
+        const filteredSepoliaTransactions = filterTransactions(sepoliaTransactions, [addrs]);
 
         // Filter and deduplicate internal Base transactions
         const filteredBaseInternalTransactions = baseInternalTransactions
@@ -270,11 +280,18 @@ export default function UsernameProfileSectionHeatmap() {
             .filter((tx) => tx.input.includes('60806040'))
             .map((tx) => tx.hash),
         ];
+        allSepoliaDeployments = [
+          ...allSepoliaDeployments,
+          ...filteredSepoliaTransactions
+            .filter((tx) => tx.input.includes('60806040'))
+            .map((tx) => tx.hash),
+        ];
 
         if (allTransactions.length === 0) {
           return;
         }
 
+        setTotalTransactionsList(allTransactions);
         setTotalTx(allTransactions.length);
         setHeatmapData(generateHeatmapData(allTransactions));
 
@@ -296,13 +313,13 @@ export default function UsernameProfileSectionHeatmap() {
                 (tx.functionName.includes('swap') ||
                   tx.functionName.includes('fillOtcOrderWithEth') ||
                   tx.functionName.includes('proxiedSwap'))) ??
-                tx.to === '0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad') ||
-              tx.to === '0x6cb442acf35158d5eda88fe602221b67b400be3e' ||
-              tx.to === '0x1111111254eeb25477b68fb85ed929f73a960582',
+                tx.to === '0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad') || // uniswap - base
+              tx.to === '0x6cb442acf35158d5eda88fe602221b67b400be3e' || // aerodrome - base
+              tx.to === '0x1111111254eeb25477b68fb85ed929f73a960582', // 1inch - base
           ).length,
         );
 
-        // Modified ENS count calculation
+        // ENS count calculation
         setEnsCount(
           allTransactions.filter((tx) =>
             [
@@ -323,20 +340,11 @@ export default function UsernameProfileSectionHeatmap() {
           ).length,
         );
 
-        setBuildCount(allEthereumDeployments.length + allBaseDeployments.length);
+        setBuildCount(
+          allEthereumDeployments.length + allBaseDeployments.length + allSepoliaDeployments.length,
+        );
         setEthereumDeployments(allEthereumDeployments);
         setBaseDeployments(allBaseDeployments);
-
-        const tasksCompleted = [
-          allTransactions.length > 0,
-          tokenSwapCount > 0,
-          bridgeCount > 0,
-          lendCount > 0,
-          ensCount > 0,
-          buildCount > 0,
-        ].filter(Boolean).length;
-
-        setFinalScore(calculateScore(tasksCompleted, allTransactions));
       } catch (e) {
         console.error('Error fetching data:', e);
       } finally {
@@ -344,15 +352,7 @@ export default function UsernameProfileSectionHeatmap() {
         setIsDataFetched(true);
       }
     },
-    [
-      bridgeCount,
-      buildCount,
-      calculateScore,
-      ensCount,
-      fetchTransactions,
-      lendCount,
-      tokenSwapCount,
-    ],
+    [fetchTransactions],
   );
 
   useEffect(() => {
@@ -365,6 +365,23 @@ export default function UsernameProfileSectionHeatmap() {
   const contractsDeployed = useMemo(() => {
     return ethereumDeployments.length + baseDeployments.length;
   }, [baseDeployments.length, ethereumDeployments.length]);
+
+  const tasksCompleted = useMemo(
+    () =>
+      [
+        totalTransactionsList.length > 0,
+        tokenSwapCount > 0,
+        bridgeCount > 0,
+        lendCount > 0,
+        ensCount > 0,
+        buildCount > 0,
+      ].filter(Boolean).length,
+    [bridgeCount, buildCount, ensCount, lendCount, tokenSwapCount, totalTransactionsList.length],
+  );
+  const finalScore = useMemo(
+    () => calculateScore(tasksCompleted, totalTransactionsList),
+    [calculateScore, tasksCompleted, totalTransactionsList],
+  );
 
   if (isLoading) {
     return (
@@ -399,10 +416,7 @@ export default function UsernameProfileSectionHeatmap() {
             <p>More</p>
           </div>
         </div>
-        <div
-          ref={containerRef}
-          className="height-full flex flex-col items-end overflow-hidden text-center xl:items-center"
-        >
+        <div ref={containerRef} className="overflow-x-auto overflow-y-hidden whitespace-nowrap">
           <CalendarHeatmap
             startDate={new Date(new Date().setFullYear(new Date().getFullYear() - 1))}
             endDate={new Date()}
