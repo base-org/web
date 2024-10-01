@@ -1,6 +1,5 @@
 /* eslint-disable react-perf/jsx-no-new-function-as-prop */
 'use client';
-import { ArrowLeftIcon } from '@heroicons/react/16/solid';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import * as Accordion from '@radix-ui/react-accordion';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
@@ -9,6 +8,7 @@ import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfi
 import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Frame';
 import { SuggestionCard } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/SuggestionCard';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Input from 'apps/web/src/components/Input';
 import { isValidUrl } from 'apps/web/src/utils/urls';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
@@ -459,7 +459,7 @@ export default function FrameBuilder() {
           href={`/name/${basename}`}
           className="mb-8 flex max-w-36 items-center justify-start gap-2 text-base font-medium hover:underline"
         >
-          <ArrowLeftIcon width="12px" /> Back to profile
+          <Icon name="backArrow" color="currentColor" height="1rem" width="1rem" /> Back to profile
         </Link>
         <h1 className="font-display text-3xl">Choose a frame to pin</h1>
         <div className="mt-4 flex flex-row justify-between gap-12">
@@ -507,7 +507,7 @@ export default function FrameBuilder() {
           href={`/name/${basename}`}
           className="mb-3 flex max-w-36 items-center justify-start gap-2 text-base hover:underline"
         >
-          <ArrowLeftIcon width="12px" /> Back to profile
+          <Icon name="backArrow" color="currentColor" height="1rem" width="1rem" /> Back to profile
         </Link>
         <h1 className="mb-4 font-display text-2xl">Choose a frame to pin</h1>
         <Accordion.Root
@@ -530,7 +530,7 @@ export default function FrameBuilder() {
             className="mb-4"
             onClick={handlePrevStep}
           >
-            <ArrowLeftIcon width="12px" /> Back
+            <Icon name="backArrow" color="currentColor" height="1rem" width="1rem" /> Back
           </Button>
           <h1 className="mb-4 font-display text-2xl">Preview your frame</h1>
           <div
