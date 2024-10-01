@@ -1,24 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { isAddress } from 'viem';
 
 // Make sure the environment variables are properly set
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 const BASESCAN_API_KEY = process.env.BASESCAN_API_KEY;
 const TALENT_PROTOCOL_API_KEY = process.env.TALENT_PROTOCOL_API_KEY;
-
-// Utility function to serialize query parameters
-const buildQueryParams = (params: Record<string, string | string[] | undefined>): string => {
-  const queryParams = new URLSearchParams();
-  Object.entries(params).forEach(([key, value]) => {
-    if (value) {
-      if (Array.isArray(value)) {
-        value.forEach((val) => queryParams.append(key, val));
-      } else {
-        queryParams.set(key, value);
-      }
-    }
-  });
-  return queryParams.toString();
-};
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { query, method } = req;
@@ -26,26 +12,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const apiType = query.apiType as string;
   const body = req.body as Record<string, unknown>; // Explicitly type the body
 
-  if (!address) {
+  if (!address || !isAddress(address)) {
     return res.status(400).json({ error: 'Missing or invalid address parameter' });
   }
 
   let apiUrl: string;
 
   try {
-    // Build the base query string from the client request's query parameters
-    const queryParams = buildQueryParams({ ...query, apikey: undefined }); // Exclude the API key from the query
-
-    // Construct API URL based on `apiType`
     switch (apiType) {
       case 'etherscan':
-        apiUrl = `https://api.etherscan.io/api?${queryParams}&apikey=${ETHERSCAN_API_KEY}`;
+        apiUrl = `https://api.etherscan.io/api?address=${address}&apikey=${ETHERSCAN_API_KEY}&module=account&action=txlist`;
         break;
       case 'base-sepolia':
-        apiUrl = `https://api-sepolia.basescan.org/api?${queryParams}&apikey=${BASESCAN_API_KEY}`;
+        apiUrl = `https://api-sepolia.basescan.org/api?address=${address}&apikey=${BASESCAN_API_KEY}&module=account&action=txlistinternal`;
         break;
       case 'basescan':
-        apiUrl = `https://api.basescan.org/api?${queryParams}&apikey=${BASESCAN_API_KEY}`;
+        apiUrl = `https://api.basescan.org/api?address=${address}&apikey=${BASESCAN_API_KEY}&module=account&action=txlist`;
+        break;
+      case 'basescan-internal':
+        apiUrl = `https://api.basescan.org/api?address=${address}&apikey=${BASESCAN_API_KEY}&module=account&action=txlistinternal`;
         break;
       case 'talent':
         apiUrl = `https://api.talentprotocol.com/api/v2/passports/${address}`;

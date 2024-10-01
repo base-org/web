@@ -241,18 +241,12 @@ export default function UsernameProfileSectionHeatmap() {
           baseInternalTransactions,
           sepoliaTransactions,
         ] = await Promise.all([
-          fetchTransactions(
-            `/api/proxy?apiType=etherscan&module=account&action=txlist&address=${addrs}`,
-          ).catch(() => []),
-          fetchTransactions(
-            `/api/proxy?apiType=basescan&module=account&action=txlist&address=${addrs}`,
-          ).catch(() => []),
-          fetchTransactions(
-            `/api/proxy?apiType=basescan&module=account&action=txlistinternal&address=${addrs}`,
-          ).catch(() => []),
-          fetchTransactions(
-            `/api/proxy?apiType=base-sepolia&module=account&action=txlistinternal&address=${addrs}`,
-          ).catch(() => []),
+          fetchTransactions(`/api/proxy?apiType=etherscan&address=${addrs}`).catch(() => []),
+          fetchTransactions(`/api/proxy?apiType=basescan&address=${addrs}`).catch(() => []),
+          fetchTransactions(`/api/proxy?apiType=basescan-internal&address=${addrs}`).catch(
+            () => [],
+          ),
+          fetchTransactions(`/api/proxy?apiType=base-sepolia&address=${addrs}`).catch(() => []),
         ]);
 
         const filteredEthereumTransactions = filterTransactions(ethereumTransactions, [addrs]);
