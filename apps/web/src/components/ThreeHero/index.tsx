@@ -15,8 +15,8 @@
 'use client';
 import * as THREE from 'three';
 import { useRef, useMemo, useCallback, useState, useEffect, Suspense } from 'react';
-import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
-import { useGLTF, Lightformer, Environment, Html, Center } from '@react-three/drei';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Lightformer, Environment, Html, Center } from '@react-three/drei';
 import {
   Physics,
   RigidBody,
@@ -24,26 +24,28 @@ import {
   Vector3Tuple,
   CylinderCollider,
 } from '@react-three/rapier';
-import { SVGLoader } from 'three-stdlib';
+
 import { EffectComposer, Bloom, SMAA } from '@react-three/postprocessing';
+
+import {
+  Box,
+  BaseLogoModel,
+  Lightning,
+  blue,
+  Controller,
+  Eth,
+  Globe,
+  Phone,
+  Headphones,
+  Spikey,
+  Play,
+  Blobby,
+} from './models';
+
+import baseLogo from './assets/base-logo.svg';
 
 // Environnment
 import environmentLight from './assets/environmentLight.jpg';
-
-// Models
-import babylong_optimize_1 from './assets/babylon_optimize_1.glb';
-
-import baseLogo from './assets/base-logo.svg';
-import lightningSVG from './assets/lightning.svg';
-
-const blue = '#105eff';
-
-const modelToUse = babylong_optimize_1;
-
-/*
-  Constants
-*/
-const blackColor = new THREE.Color(0.08, 0.08, 0.08);
 
 /* 
   The Main Scene
@@ -143,11 +145,11 @@ function EnvironmentSetup() {
     <Environment files={environmentLight.src}>
       <Lightformer
         form="ring"
-        intensity={10}
+        intensity={6}
         rotation-x={Math.PI / 2}
         position={[5, 5, -3]}
         scale={4}
-        color={'white'}
+        color="white"
       />
       <Lightformer
         form="circle"
@@ -165,8 +167,8 @@ function EnvironmentSetup() {
       />
       <Lightformer
         form="ring"
-        color={'white'}
-        intensity={10}
+        color="white"
+        intensity={5}
         onUpdate={(self) => self.lookAt(0, 0, 0)}
         position={[10, 10, 0]}
         scale={4}
@@ -175,125 +177,39 @@ function EnvironmentSetup() {
   );
 }
 
-function BlackMaterial() {
-  return (
-    <meshPhysicalMaterial
-      color={blackColor}
-      metalness={0.5}
-      roughness={0.5}
-      side={THREE.DoubleSide}
-    />
-  );
-}
-
-function MetalMaterial() {
-  return (
-    <meshPhysicalMaterial color="white" metalness={0.8} roughness={0.3} side={THREE.DoubleSide} />
-  );
-}
-
 /* 
   The GLTF Scene
   - Loads the GLTF file / 3D scene
-  - Handle / update rotation from context
-  - Setup the camera
-  - Setup the HDR environnment (ie: "lighting")
 */
 export function Everything(props) {
   const groupRef = useRef();
-  const { nodes } = useGLTF(modelToUse);
 
   return (
     <group ref={groupRef} {...props} dispose={null}>
-      <PhysicsMesh>
-        <mesh geometry={nodes.ETH.geometry} castShadow receiveShadow>
-          <MetalMaterial />
-        </mesh>
-      </PhysicsMesh>
-      {/*<PhysicsMesh>
-        <mesh geometry={nodes.Spikey.geometry} castShadow receiveShadow>
-          <BlackMaterial />
-        </mesh>
-      </PhysicsMesh>*/}
-      <PhysicsMesh>
-        <mesh geometry={nodes.Mobile_Phone.geometry} castShadow receiveShadow>
-          <BlackMaterial />
-        </mesh>
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.07, 0]}>
-          <planeGeometry args={[0.9, 1.8]} />
-          <MetalMaterial />
-        </mesh>
-      </PhysicsMesh>
-
-      <PhysicsMesh>
-        <group>
-          <mesh
-            geometry={nodes.Cursor.geometry}
-            scale={[0.88, 0.88, 0.88]}
-            castShadow
-            receiveShadow
-          >
-            <BlackMaterial />
-          </mesh>
-
-          <mesh geometry={nodes.Cursor1.geometry} castShadow receiveShadow>
-            <MetalMaterial />
-          </mesh>
-        </group>
-      </PhysicsMesh>
-      <Boxes count={10} geometry={nodes.Box_08.geometry} />
-
-      <PhysicsMesh>
-        <mesh geometry={nodes.Boole.geometry} castShadow receiveShadow>
-          <BlackMaterial />
-        </mesh>
-      </PhysicsMesh>
-      <PhysicsMesh>
-        <mesh geometry={nodes.Globe.geometry} castShadow receiveShadow>
-          <MetalMaterial />
-        </mesh>
-      </PhysicsMesh>
-      <PhysicsMesh>
-        <mesh geometry={nodes.Controller.geometry} castShadow receiveShadow>
-          <BlackMaterial />
-        </mesh>
-      </PhysicsMesh>
-      <PhysicsMesh>
-        <mesh geometry={nodes.headphone.geometry} castShadow receiveShadow>
-          <BlackMaterial />
-        </mesh>
-      </PhysicsMesh>
-      <PhysicsMesh>
-        <mesh geometry={nodes.Object_02.geometry} castShadow receiveShadow>
-          <BlackMaterial />
-        </mesh>
-      </PhysicsMesh>
-      <PhysicsMesh>
-        <mesh geometry={nodes.Object_01.geometry} castShadow receiveShadow>
-          <BlackMaterial />
-        </mesh>
-      </PhysicsMesh>
-      <PhysicsMesh>
-        <mesh geometry={nodes.Extrude.geometry} castShadow receiveShadow>
-          <BlackMaterial />
-        </mesh>
-      </PhysicsMesh>
       <BaseLogo />
       <Balls />
       <Lightning />
+      <Boxes />
+      <Controller />
+      <Eth />
+      <Globe />
+      <Phone />
+      <Headphones />
+      <Spikey />
+      <Play />
+      <Blobby />
+      <Blobby />
     </group>
   );
 }
 
-function Boxes({ geometry, count = 10 }: { geometry: any; count?: number }) {
+function Boxes({ count = 10 }: { count?: number }) {
   const boxes = useMemo(
     () =>
       new Array(count).fill(null).map((_, index) => {
         return (
           <PhysicsMesh scale={0.5} gravityEffect={0.03} key={index}>
-            <mesh geometry={geometry} scale={0.5} castShadow receiveShadow>
-              <BlackMaterial />
-            </mesh>
+            <Box />
           </PhysicsMesh>
         );
       }),
@@ -322,42 +238,10 @@ function Balls({ count = 10 }: { count?: number }) {
   return <group>{boxes}</group>;
 }
 
-function Lightning() {
-  const svg = useLoader(SVGLoader, lightningSVG.src);
-
-  return (
-    <PhysicsMesh>
-      <group>
-        <Center>
-          <mesh castShadow receiveShadow scale={0.015}>
-            <extrudeGeometry
-              args={[
-                svg.paths[0].toShapes(),
-                {
-                  curveSegments: 64,
-                  depth: 5,
-                  bevelEnabled: true,
-                  bevelSegments: 64,
-                  bevelSize: 0.5,
-                  bevelThickness: 1,
-                },
-              ]}
-            />
-            <MetalMaterial />
-          </mesh>
-        </Center>
-      </group>
-    </PhysicsMesh>
-  );
-}
-
 function BaseLogo() {
   const { size } = useThree();
-  const portalMaterial = useRef();
   const logoRef = useRef<THREE.Group>(null!);
   const doneRef = useRef<boolean>(false);
-
-  const svg = useLoader(SVGLoader, baseLogo.src);
 
   useFrame(({ mouse }) => {
     if (doneRef.current) {
@@ -384,52 +268,14 @@ function BaseLogo() {
       <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[10, mobile ? 0.75 : 2]} />
       <group ref={logoRef} position={[0, 0, -10]} rotation={[0, -Math.PI, 0]}>
         <Center scale={mobile ? 0.05 : 0.13}>
-          <mesh castShadow receiveShadow>
-            <extrudeGeometry
-              args={[
-                svg.paths[0].toShapes(),
-                {
-                  curveSegments: 64,
-                  depth: 5,
-                  bevelEnabled: true,
-                  bevelSegments: 64,
-                  bevelSize: 0.5,
-                  bevelThickness: 1,
-                },
-              ]}
-            />
-
-            <meshPhysicalMaterial
-              color={blue}
-              //metalness={0.5}
-              //roughness={0.5}
-              //iridescence={0.5}
-              metalness={0}
-              roughness={0.25}
-              transmission={0.9}
-              thickness={1}
-              side={THREE.DoubleSide}
-
-              // ior={2}
-              //clearcoat={0.1}
-            />
-            {/*<MeshTransmissionMaterial
-              backside
-              color={blue}
-              metalness={0.5}
-              roughness={0.5}
-              thickness={0.1}
-              distortion={2}
-              temporalDistortion={2}
-            />*/}
-          </mesh>
+          <BaseLogoModel />
         </Center>
       </group>
     </RigidBody>
   );
 }
 
-function PhysicsMesh({
+export function PhysicsMesh({
   vec = new THREE.Vector3(),
   r = THREE.MathUtils.randFloatSpread,
   scale = 1,

@@ -10,4 +10,5 @@ export enum TitleLevel {
   Title4 = 'title-5',
 
   Headline = 'headline',
+  Big = 'big',
 }
