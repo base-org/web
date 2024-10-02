@@ -2,6 +2,7 @@ import Card from 'apps/web/src/components/base-org/Card';
 import { TopNavigationLink } from 'apps/web/src/components/base-org/shared/TopNavigation';
 import Link from 'next/link';
 import { useState, useRef, useEffect, useCallback } from 'react';
+import AnimatedIcon from './AnimatedIcon';
 
 type MenuDesktopProps = {
   links: TopNavigationLink[];
@@ -120,11 +121,12 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
               </div>
             )}
             {links[hoverIndex]?.subItems && (
-              <div className="min-h-[200px] flex-1 basis-0 overflow-hidden rounded-lg bg-white/20 bg-opacity-10">
-                {links[hoverIndex]?.emoji && (
+              <div className="min-h-[200px] flex-1 basis-0 overflow-hidden rounded-lg bg-blue">
+                {links[hoverIndex]?.name && (
                   <div className="flex h-full w-full flex-col items-center justify-center gap-2">
-                    <span className="text-7xl">{links[hoverIndex].emoji}</span>
-                    <p className="text-xs opacity-40">(FPO)</p>
+                    {subActive && (
+                      <AnimatedIcon key={links[hoverIndex].name} icon={links[hoverIndex].name} />
+                    )}
                   </div>
                 )}
               </div>

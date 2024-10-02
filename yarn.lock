@@ -392,6 +392,7 @@ __metadata:
     dotenv: ^16.0.3
     eslint-config-next: ^13.1.6
     ethers: 5.7.2
+    framer-motion: ^11.9.0
     hls.js: ^1.5.14
     is-ipfs: ^8.0.4
     jose: ^5.4.1
@@ -15651,6 +15652,26 @@ __metadata:
   version: 4.3.7
   resolution: "fraction.js@npm:4.3.7"
   checksum: e1553ae3f08e3ba0e8c06e43a3ab20b319966dfb7ddb96fd9b5d0ee11a66571af7f993229c88ebbb0d4a816eb813a24ed48207b140d442a8f76f33763b8d1f3f
+  languageName: node
+  linkType: hard
+
+"framer-motion@npm:^11.9.0":
+  version: 11.9.0
+  resolution: "framer-motion@npm:11.9.0"
+  dependencies:
+    tslib: ^2.4.0
+  peerDependencies:
+    "@emotion/is-prop-valid": "*"
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  peerDependenciesMeta:
+    "@emotion/is-prop-valid":
+      optional: true
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 9aabbd9eeddbc79cb59068336d7700a62f4ab28c116a7f9285c9fe1145c82618331013fa7a80359109a0feba4b85375379c50e40edbcea251d72a06100c6d79f
   languageName: node
   linkType: hard
 
