@@ -1,8 +1,5 @@
 'use client';
 import classNames from 'classnames';
-
-const videoClasses = classNames('mix-blend-screen');
-
 import globe from './assets/globe.webp';
 import { Button } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
@@ -15,8 +12,16 @@ import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useAccount } from 'wagmi';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 
+const videoClasses = classNames('mix-blend-screen');
+
 export default function ProfilePromo() {
   const [shouldShowPromo, setShouldShowPromo] = useLocalStorage('shouldShowPromo', true);
+  const [hasClickedGetBasename, setHasClickedGetBasename] = useLocalStorage(
+    'hasClickedGetBasename',
+    false,
+  );
+  const [hasClosedPromo, setHasClosedPromo] = useLocalStorage('hasClosedPromo', false);
+
   // Web3 data
   const { address } = useAccount();
   const { data: basename, isLoading: basenameIsLoading } = useBaseEnsName({
@@ -25,19 +30,22 @@ export default function ProfilePromo() {
   const hasExistingBasename = address && basename && !basenameIsLoading;
 
   const { logEventWithContext } = useAnalytics();
+
   const onClose = useCallback(() => {
     logEventWithContext('profile_promo_close', ActionType.click, {
       componentType: ComponentType.button,
     });
     setShouldShowPromo(false);
-  }, [logEventWithContext, setShouldShowPromo]);
+    setHasClosedPromo(true);
+  }, [logEventWithContext, setShouldShowPromo, setHasClosedPromo]);
 
   const onCTA = useCallback(() => {
     logEventWithContext('profile_promo_cta', ActionType.click, {
       componentType: ComponentType.button,
     });
     setShouldShowPromo(false);
-  }, [logEventWithContext, setShouldShowPromo]);
+    setHasClickedGetBasename(true);
+  }, [logEventWithContext, setShouldShowPromo, setHasClickedGetBasename]);
 
   useEffect(() => {
     if (hasExistingBasename) {
@@ -45,13 +53,14 @@ export default function ProfilePromo() {
     }
   }, [hasExistingBasename, setShouldShowPromo]);
 
-  if (!shouldShowPromo) {
+  // Don't show promo if the user has already clicked "Get a Basename" or closed it
+  if (!shouldShowPromo || hasClickedGetBasename || hasClosedPromo) {
     return null;
   }
 
   return (
     <div
-      className="absolute bottom-4 right-4 flex max-w-[18rem] flex-col items-center justify-between gap-4 rounded-[24px] p-6"
+      className="fixed bottom-4 right-4 flex max-w-[18rem] flex-col items-center justify-between gap-4 rounded-[24px] p-6"
       style={{ background: 'linear-gradient(180deg, #000 0%, #725EE5 158.87%)' }}
     >
       <button

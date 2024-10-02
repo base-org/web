@@ -7,12 +7,13 @@ import {
   theme,
 } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FrameTheme';
 import cn from 'classnames';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 type FrameProps = {
   url: string;
   className?: string;
 };
+
 export default function Frame({ url, className }: FrameProps) {
   const { frameConfig, farcasterSignerState, anonSignerState } = useFrameContext();
   const queryClient = useQueryClient();
@@ -44,25 +45,27 @@ export default function Frame({ url, className }: FrameProps) {
     fetchFn,
   });
 
-  const openFrameWorks = useMemo(() => {
+  // Persist if openFrameWorks has ever been true for this frame
+  const [openFrameWorksPersisted, setOpenFrameWorksPersisted] = useState(false);
+
+  useEffect(() => {
     const currentFrameStackItem = openFrameState.currentFrameStackItem;
-    if (!currentFrameStackItem) return false;
-    const status = currentFrameStackItem.status;
-    if (status === 'requestError') {
-      return true;
+    if (!openFrameWorksPersisted && currentFrameStackItem) {
+      const status = currentFrameStackItem.status;
+      if (status === 'done' && currentFrameStackItem.frameResult.frame.accepts) {
+        const acceptsAnonymous = currentFrameStackItem.frameResult.frame.accepts.some(
+          (element) => element.id === 'anonymous',
+        );
+        if (acceptsAnonymous) {
+          setOpenFrameWorksPersisted(true);
+        }
+      }
     }
-    if (status === 'done' && currentFrameStackItem.frameResult.frame.accepts) {
-      return currentFrameStackItem.frameResult.frame.accepts.some(
-        (element) => element.id === 'anonymous',
-      );
-    } else {
-      return false;
-    }
-  }, [openFrameState]);
+  }, [openFrameState, openFrameWorksPersisted]);
 
   const frameState = useMemo(
-    () => (openFrameWorks ? openFrameState : farcasterFrameState),
-    [farcasterFrameState, openFrameState, openFrameWorks],
+    () => (openFrameWorksPersisted ? openFrameState : farcasterFrameState),
+    [farcasterFrameState, openFrameState, openFrameWorksPersisted],
   );
 
   const aggregatedTheme = useMemo(
