@@ -316,7 +316,7 @@ export default function FrameBuilder() {
         }
         imgData={mintMe as StaticImageData}
         title="Mint me"
-        description="Mint your NFT on Highlight"
+        description="Mint your Base NFT on Highlight"
       >
         <p className="text-sm">To pin a frame:</p>
         <ol className="list-inside list-decimal indent-1 text-sm text-palette-foreground">
@@ -331,7 +331,7 @@ export default function FrameBuilder() {
               highlight.xyz
             </a>
           </li>
-          <li>Paste a link to the NFT you want others to mint</li>
+          <li>Paste a link to the Base NFT you want others to mint</li>
         </ol>
         <Input
           placeholder="https://"
