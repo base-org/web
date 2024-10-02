@@ -69,10 +69,10 @@ export default function UsernameProfileSectionHeatmap() {
 
   const classForValue = useCallback((value: ReactCalendarHeatmapValue<string> | undefined) => {
     if (!value) return 'm-1 fill-[#F8F9FB]'; // empty
-    if (value.count >= 10) return 'm-1 fill-[#0052FF]'; // 4 - most
-    if (value.count >= 7) return 'm-1 fill-[#73A2FF]'; // 3
-    if (value.count >= 4) return 'm-1 fill-[#D3E1FF]'; // 2
-    if (value.count >= 1) return 'm-1 fill-[#ccd9ff]'; // 1
+    if (value.count >= 10) return 'm-1 fill-[#003EC1]'; // 4 - most
+    if (value.count >= 7) return 'm-1 fill-[#266EFF]'; // 3
+    if (value.count >= 4) return 'm-1 fill-[#92B6FF]'; // 2
+    if (value.count >= 1) return 'm-1 fill-[#D3E1FF]'; // 1
     return 'm-1 fill-[#F8F9FB]'; // empty - least
   }, []);
 
@@ -395,19 +395,20 @@ export default function UsernameProfileSectionHeatmap() {
         <div className="relative mb-6">
           <h3 className="mb-1 text-sm font-medium text-gray-60">ONCHAIN SCORE</h3>
           <p className="font-display text-3xl">{finalScore}/100</p>
-          <div className="absolute right-0 flex flex-row items-center gap-1 text-xs text-palette-foregroundMuted">
+          <div className="absolute right-0 flex items-center gap-1 text-xs text-palette-foregroundMuted">
             <p>Less</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="46"
+              width="60"
               height="10"
-              viewBox="0 0 46 10"
+              viewBox="0 0 60 10"
               fill="none"
             >
-              <rect width="10" height="10" rx="2" fill="#597393" fillOpacity="0.04" />
-              <rect x="36" width="10" height="10" rx="2" fill="#0052FF" />
+              <rect x="0" width="10" height="10" rx="2" fill="#F8F9FB" />
               <rect x="12" width="10" height="10" rx="2" fill="#D3E1FF" />
-              <rect x="24" width="10" height="10" rx="2" fill="#73A2FF" />
+              <rect x="24" width="10" height="10" rx="2" fill="#92B6FF" />
+              <rect x="36" width="10" height="10" rx="2" fill="#266EFF" />
+              <rect x="48" width="10" height="10" rx="2" fill="#003EC1" />
             </svg>
             <p>More</p>
           </div>
