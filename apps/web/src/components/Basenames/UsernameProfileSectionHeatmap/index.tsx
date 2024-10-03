@@ -10,6 +10,24 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import CalendarHeatmap, { ReactCalendarHeatmapValue } from 'react-calendar-heatmap';
 import { Address } from 'viem';
 import './cal.css';
+import Tooltip from 'apps/web/src/components/Tooltip';
+
+// Routers
+const UNISWAP_ROUTER = '0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad'; // Uniswap router - base
+const AERODROME_ROUTER = '0x6cb442acf35158d5eda88fe602221b67b400be3e'; // Aerodrome router - base
+const ONEINCH_ROUTER = '0x1111111254eeb25477b68fb85ed929f73a960582'; // 1inch router - base
+
+// ENS Registrar Controllers
+const ETH_REGISTRAR_CONTROLLER_1 = '0x283af0b28c62c092c9727f1ee09c02ca627eb7f5'; // ETHRegistrarController
+const ETH_REGISTRAR_CONTROLLER_2 = '0x253553366da8546fc250f225fe3d25d0c782303b'; // ETHRegistrarController
+const BASENAMES_REGISTRAR_CONTROLLER = '0x4ccb0bb02fcaba27e82a56646e81d8c5bc4119a5'; // Basenames RegistrarController
+const BASENAMES_EA_REGISTRAR_CONTROLLER = '0xd3e6775ed9b7dc12b205c8e608dc3767b9e5efda'; // Basenames EARegistrarController
+
+// Lending and Borrowing
+const MOONWELL_WETH_UNWRAPPER = '0x1382cff3cee10d283dcca55a30496187759e4caf'; // Base Moonwell WETH Unwrapper
+
+// Swap Function Names
+const SWAP_FUNCTION_NAMES = ['swap', 'fillOtcOrderWithEth', 'proxiedSwap'];
 
 type HeatmapValue = {
   date: string;
@@ -306,12 +324,10 @@ export default function UsernameProfileSectionHeatmap() {
           allTransactions.filter(
             (tx) =>
               ((tx.functionName &&
-                (tx.functionName.includes('swap') ||
-                  tx.functionName.includes('fillOtcOrderWithEth') ||
-                  tx.functionName.includes('proxiedSwap'))) ??
-                tx.to === '0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad') || // uniswap - base
-              tx.to === '0x6cb442acf35158d5eda88fe602221b67b400be3e' || // aerodrome - base
-              tx.to === '0x1111111254eeb25477b68fb85ed929f73a960582', // 1inch - base
+                SWAP_FUNCTION_NAMES.some((fn) => tx.functionName?.includes(fn))) ??
+                tx.to === UNISWAP_ROUTER) ||
+              tx.to === AERODROME_ROUTER ||
+              tx.to === ONEINCH_ROUTER,
           ).length,
         );
 
@@ -319,10 +335,10 @@ export default function UsernameProfileSectionHeatmap() {
         setEnsCount(
           allTransactions.filter((tx) =>
             [
-              '0x283af0b28c62c092c9727f1ee09c02ca627eb7f5',
-              '0x253553366da8546fc250f225fe3d25d0c782303b',
-              '0x4ccb0bb02fcaba27e82a56646e81d8c5bc4119a5',
-              '0xd3e6775ed9b7dc12b205c8e608dc3767b9e5efda',
+              ETH_REGISTRAR_CONTROLLER_1,
+              ETH_REGISTRAR_CONTROLLER_2,
+              BASENAMES_REGISTRAR_CONTROLLER,
+              BASENAMES_EA_REGISTRAR_CONTROLLER,
             ].includes(tx.to),
           ).length,
         );
@@ -331,8 +347,7 @@ export default function UsernameProfileSectionHeatmap() {
 
         setLendCount(
           allTransactions.filter(
-            (tx) =>
-              lendBorrowEarn.has(tx.to) || tx.from === '0x1382cff3cee10d283dcca55a30496187759e4caf',
+            (tx) => lendBorrowEarn.has(tx.to) || tx.from === MOONWELL_WETH_UNWRAPPER,
           ).length,
         );
 
@@ -393,7 +408,12 @@ export default function UsernameProfileSectionHeatmap() {
     <Collapsible.Root className="rounded-3xl border border-palette-line/20">
       <div className="mb-6 px-6 pt-6">
         <div className="relative mb-6">
-          <h3 className="mb-1 text-sm font-medium text-gray-60">ONCHAIN SCORE</h3>
+          <Tooltip content="Onchain score is a number out of 100 that measures onchain activity">
+            <h3 className="mb-1 flex items-center text-sm font-medium text-gray-60">
+              ONCHAIN SCORE
+              <Icon name="info" color="currentColor" height="12px" />
+            </h3>
+          </Tooltip>
           <p className="font-display text-3xl">{finalScore}/100</p>
           <div className="absolute right-0 flex items-center gap-1 text-xs text-palette-foregroundMuted">
             <p>Less</p>
