@@ -8,7 +8,7 @@ import Card from 'apps/web/src/components/base-org/Card';
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Link from 'next/link';
-import { useCallback, useState, useRef, useEffect } from 'react';
+import { useCallback, useRef } from 'react';
 import cubes from './assets/cubes.webm';
 
 export default function BuildAndRewardSection() {

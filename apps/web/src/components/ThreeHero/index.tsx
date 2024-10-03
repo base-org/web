@@ -16,7 +16,7 @@
 import * as THREE from 'three';
 import { useRef, useMemo, useCallback, useState, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Lightformer, Environment, Html, Center } from '@react-three/drei';
+import { Lightformer, Environment, Html, Center, Stats } from '@react-three/drei';
 import {
   Physics,
   RigidBody,
@@ -113,6 +113,7 @@ export default function Scene(): JSX.Element {
             <Everything />
           </Physics>
         </Suspense>
+        <Stats />
       </Canvas>
     </div>
   );
@@ -201,7 +202,6 @@ export function Everything(props) {
       <Spikey />
       <Play />
       <Blobby />
-      <Blobby />
     </group>
   );
 }
@@ -210,7 +210,7 @@ function Boxes({ count = 10 }) {
   const instancedApi = useRef(null);
   const { viewport } = useThree();
   const vec = useMemo(() => new THREE.Vector3(), []);
-  const gravityEffect = 0.003;
+  const gravityEffect = 0.001;
 
   const instances = useMemo(() => {
     const temp = [];
@@ -258,48 +258,11 @@ function Boxes({ count = 10 }) {
   );
 }
 
-/*
-function Boxes({ count = 10 }: { count?: number }) {
-  const boxes = useMemo(
-    () =>
-      new Array(count).fill(null).map((_, index) => {
-        return (
-          <PhysicsMesh scale={0.5} gravityEffect={0.03} key={index}>
-            <Box />
-          </PhysicsMesh>
-        );
-      }),
-    [count],
-  );
-
-  return <group>{boxes}</group>;
-}
-
-
-function Balls({ count = 10 }: { count?: number }) {
-  const boxes = useMemo(
-    () =>
-      new Array(count).fill(null).map((_, index) => {
-        return (
-          <PhysicsMesh scale={0.25} gravityEffect={0.004} key={index}>
-            <mesh castShadow receiveShadow>
-              <sphereGeometry args={[0.25, 64, 64]} />
-              <meshPhysicalMaterial color={blue} />
-            </mesh>
-          </PhysicsMesh>
-        );
-      }),
-    [count],
-  );
-
-  return <group>{boxes}</group>;
-}*/
-
 function Balls({ count = 20 }) {
   const instancedApi = useRef(null);
   const { viewport } = useThree();
   const vec = useMemo(() => new THREE.Vector3(), []);
-  const gravityEffect = 0.00005;
+  const gravityEffect = 0.00003;
 
   const instances = useMemo(() => {
     const temp = [];
