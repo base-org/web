@@ -21,14 +21,17 @@ import {
   Physics,
   RigidBody,
   BallCollider,
+  CuboidCollider,
   Vector3Tuple,
   CylinderCollider,
+  InstancedRigidBodies,
 } from '@react-three/rapier';
 
 import { EffectComposer, Bloom, SMAA } from '@react-three/postprocessing';
 
 import {
-  Box,
+  //Box,
+  BlackMaterial,
   BaseLogoModel,
   Lightning,
   blue,
@@ -203,6 +206,59 @@ export function Everything(props) {
   );
 }
 
+function Boxes({ count = 10 }) {
+  const instancedApi = useRef(null);
+  const { viewport } = useThree();
+  const vec = useMemo(() => new THREE.Vector3(), []);
+  const gravityEffect = 0.003;
+
+  const instances = useMemo(() => {
+    const temp = [];
+    for (let i = 0; i < count; i++) {
+      temp.push({
+        key: 'instance_' + i,
+        position: [
+          THREE.MathUtils.randFloatSpread(viewport.width * 2),
+          THREE.MathUtils.randFloatSpread(viewport.height * 2),
+          THREE.MathUtils.randFloatSpread(viewport.width * 2),
+        ],
+        rotation: [Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI],
+        scale: 0.5,
+      });
+    }
+    return temp;
+  }, [count, viewport]);
+
+  useFrame(() => {
+    if (instancedApi.current) {
+      for (let i = 0; i < count; i++) {
+        if (!instancedApi.current.at(i)) continue;
+        const instance = instancedApi.current.at(i);
+        const translation = instance.translation();
+        vec.set(translation.x, translation.y, translation.z).negate().multiplyScalar(gravityEffect);
+        instance.applyImpulse(vec);
+      }
+    }
+  });
+
+  return (
+    <InstancedRigidBodies
+      instances={instances}
+      ref={instancedApi}
+      linearDamping={4}
+      angularDamping={1}
+      friction={0.1}
+    >
+      <instancedMesh args={[null, null, count]} castShadow receiveShadow>
+        <boxGeometry args={[0.75, 0.75, 0.75]} />
+        <BlackMaterial />
+      </instancedMesh>
+      <CuboidCollider args={[0.5, 0.5, 0.5]} />
+    </InstancedRigidBodies>
+  );
+}
+
+/*
 function Boxes({ count = 10 }: { count?: number }) {
   const boxes = useMemo(
     () =>
@@ -218,6 +274,7 @@ function Boxes({ count = 10 }: { count?: number }) {
 
   return <group>{boxes}</group>;
 }
+
 
 function Balls({ count = 10 }: { count?: number }) {
   const boxes = useMemo(
@@ -236,6 +293,58 @@ function Balls({ count = 10 }: { count?: number }) {
   );
 
   return <group>{boxes}</group>;
+}*/
+
+function Balls({ count = 20 }) {
+  const instancedApi = useRef(null);
+  const { viewport } = useThree();
+  const vec = useMemo(() => new THREE.Vector3(), []);
+  const gravityEffect = 0.00005;
+
+  const instances = useMemo(() => {
+    const temp = [];
+    for (let i = 0; i < count; i++) {
+      temp.push({
+        key: 'instance_' + i,
+        position: [
+          THREE.MathUtils.randFloatSpread(viewport.width * 2),
+          THREE.MathUtils.randFloatSpread(viewport.height * 2),
+          THREE.MathUtils.randFloatSpread(viewport.width * 2),
+        ],
+        rotation: [Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI],
+        scale: 0.25,
+      });
+    }
+    return temp;
+  }, [count, viewport]);
+
+  useFrame(() => {
+    if (instancedApi.current) {
+      for (let i = 0; i < count; i++) {
+        if (!instancedApi.current.at(i)) continue;
+        const instance = instancedApi.current.at(i);
+        const translation = instance.translation();
+        vec.set(translation.x, translation.y, translation.z).negate().multiplyScalar(gravityEffect);
+        instance.applyImpulse(vec);
+      }
+    }
+  });
+
+  return (
+    <InstancedRigidBodies
+      instances={instances}
+      ref={instancedApi}
+      linearDamping={4}
+      angularDamping={1}
+      friction={0.1}
+    >
+      <instancedMesh args={[null, null, count]} castShadow receiveShadow>
+        <sphereGeometry args={[0.25, 64, 64]} />
+        <meshPhysicalMaterial color={blue} />
+      </instancedMesh>
+      <BallCollider args={[0.25]} />
+    </InstancedRigidBodies>
+  );
 }
 
 function BaseLogo() {
@@ -265,9 +374,9 @@ function BaseLogo() {
 
   return (
     <RigidBody type="kinematicPosition" colliders={false}>
-      <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[10, mobile ? 0.75 : 2]} />
+      <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[10, mobile ? 1.1 : 2]} />
       <group ref={logoRef} position={[0, 0, -10]} rotation={[0, -Math.PI, 0]}>
-        <Center scale={mobile ? 0.05 : 0.13}>
+        <Center scale={mobile ? 0.075 : 0.13}>
           <BaseLogoModel />
         </Center>
       </group>

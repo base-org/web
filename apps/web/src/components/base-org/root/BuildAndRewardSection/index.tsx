@@ -14,57 +14,19 @@ import cubes from './assets/cubes.webm';
 export default function BuildAndRewardSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { logError } = useErrors();
+  const playVideo = useCallback(() => {
+    if (!videoRef.current) return;
 
-  const [isVisible, setIsVisible] = useState(true);
-  const [isWindowFocused, setIsWindowFocused] = useState(true);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const handleVisibilityChange = useCallback(() => {
-    setIsWindowFocused(!document.hidden);
-  }, []);
-
-  useEffect(() => {
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, [handleVisibilityChange]);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }, // Adjust this value as needed
-    );
-
-    observer.observe(containerRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isVisible && isWindowFocused) {
-      videoRef.current.play().catch((error) => {
-        logError(error, 'failed to play video');
-      });
-    } else {
-      videoRef.current?.pause();
-    }
-  }, [isVisible, isWindowFocused]);
+    videoRef.current.play().catch((error) => {
+      logError(error, 'failed to play video');
+    });
+  }, [logError]);
 
   return (
     <section>
-      <div
-        ref={containerRef}
-        className="mb-12 mt-8 flex w-full flex-col items-center gap-4 md:flex-row"
-      >
+      <div className="mb-12 mt-8 flex w-full flex-col items-center gap-4 md:flex-row">
         <div className="relative flex w-full flex-row gap-4">
-          <div className="relative flex w-full flex-row gap-4">
+          <div className="relative flex w-full flex-row gap-4" onMouseEnter={playVideo}>
             <Card>
               <video
                 src={cubes}
