@@ -7,6 +7,7 @@
   "scripts": {
     "build": "yarn workspaces foreach run build",
     "lint": "yarn workspaces foreach run lint",
+    "test": "yarn workspaces foreach run test",
     "postinstall": "sh -c 'if [ command -v ./node_modules/.bin/husky ]; then ./node_modules/.bin/husky install; fi;'",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
