@@ -13,8 +13,8 @@
 /* sorry! */
 
 import React from 'react';
-import { useGLTF, Center } from '@react-three/drei';
-import { useLoader } from '@react-three/fiber';
+import { useGLTF, Center, Image, RoundedBox, useCursor } from '@react-three/drei';
+import { useLoader, useThree, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { SVGLoader } from 'three-stdlib';
 
@@ -38,6 +38,9 @@ import lightningSVG from './assets/lightning.svg';
 
 export const blue = '#105eff';
 
+import mintImage from './assets/mint.png';
+import { CuboidCollider, RigidBody } from '@react-three/rapier';
+
 /*
   Constants
 */
@@ -49,14 +52,18 @@ export function BlackMaterial() {
       color={blackColor}
       metalness={0.5}
       roughness={0.5}
-      side={THREE.DoubleSide}
+      //  side={THREE.DoubleSide}
     />
   );
 }
 
 export function MetalMaterial() {
   return (
-    <meshPhysicalMaterial color="white" metalness={0.8} roughness={0.3} side={THREE.DoubleSide} />
+    <meshPhysicalMaterial
+      color="white"
+      metalness={0.8}
+      roughness={0.3} /*side={THREE.DoubleSide}*/
+    />
   );
 }
 
@@ -236,5 +243,61 @@ export function Blobby(props) {
         <BlackMaterial />
       </mesh>
     </PhysicsMesh>
+  );
+}
+
+export function MintCTA(props) {
+  const [hover, setHover] = React.useState(false);
+  const { viewport } = useThree();
+  const boxRef = React.useRef();
+
+  useCursor(hover ? 'pointer' : 'auto');
+
+  useFrame(({ clock }) => {
+    if (boxRef.current) {
+      boxRef.current.rotation.z = clock.getElapsedTime() * 0.5;
+    }
+    boxRef.current.position.x = THREE.MathUtils.lerp(
+      boxRef.current.position.x,
+      hover ? -0.3 : 0,
+      0.1,
+    );
+  });
+
+  return (
+    <RigidBody
+      position={[viewport.width * 0.35, viewport.width * 0.25, 0]}
+      type="fixed"
+      //colliders={true}
+      rotation={[0, Math.PI / 3, 0]}
+    >
+      <group
+        ref={boxRef}
+        onPointerEnter={() => setHover(true)}
+        onPointerLeave={() => setHover(false)}
+        onPointerUp={() => {
+          window.open('https://mint.base.org', '_blank');
+        }}
+      >
+        <RoundedBox args={[0.3, 0.3, 1]} radius={0.05} {...props} castShadow receiveShadow>
+          <meshPhysicalMaterial color={blue} metalness={0.5} roughness={0.5} />
+        </RoundedBox>
+        <Image
+          scale={[0.3, 0.1, 0.2]}
+          url={mintImage.src}
+          transparent
+          rotation={[0, Math.PI / 2, 0]}
+          position={[0.17, 0, 0]}
+        />
+        <Image
+          scale={[0.3, 0.1, 0.2]}
+          url={mintImage.src}
+          transparent
+          rotation={[0, -Math.PI / 2, 0]}
+          position={[-0.17, 0, 0]}
+        />
+      </group>
+      <CuboidCollider args={[0.3, 0.3, 1]} />
+    </RigidBody>
   );
 }

@@ -121,7 +121,7 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
               </div>
             )}
             {links[hoverIndex]?.subItems && (
-              <div className="min-h-[200px] flex-1 basis-0 overflow-hidden rounded-lg bg-blue">
+              <div className="min-h-[200px] flex-1 basis-0 overflow-hidden rounded-lg bg-[#27272B]">
                 {links[hoverIndex]?.name && (
                   <div className="flex h-full w-full flex-col items-center justify-center gap-2">
                     {subActive && (

@@ -16,7 +16,7 @@
 import * as THREE from 'three';
 import { useRef, useMemo, useCallback, useState, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Lightformer, Environment, Html, Center, Stats } from '@react-three/drei';
+import { Lightformer, Environment, Html, Center, Stats, OrbitControls } from '@react-three/drei';
 import {
   Physics,
   RigidBody,
@@ -43,6 +43,7 @@ import {
   Spikey,
   Play,
   Blobby,
+  MintCTA,
 } from './models';
 
 import baseLogo from './assets/base-logo.svg';
@@ -198,8 +199,8 @@ export function Everything(props) {
   return (
     <group ref={groupRef} {...props} dispose={null}>
       <BaseLogo />
-      <Balls />
       <Lightning />
+      <Balls />
       <Boxes />
       <Controller />
       <Eth />
@@ -209,6 +210,7 @@ export function Everything(props) {
       <Spikey />
       <Play />
       <Blobby />
+      <MintCTA />
     </group>
   );
 }
@@ -234,17 +236,15 @@ function Boxes({ count = 10 }) {
       });
     }
     return temp;
-  }, [count, viewport]);
+  }, []);
 
   useFrame(() => {
-    if (instancedApi.current) {
-      for (let i = 0; i < count; i++) {
-        if (!instancedApi.current.at(i)) continue;
-        const instance = instancedApi.current.at(i);
-        const translation = instance.translation();
-        vec.set(translation.x, translation.y, translation.z).negate().multiplyScalar(gravityEffect);
-        instance.applyImpulse(vec);
-      }
+    if (!instancedApi.current) return;
+    for (let i = 0; i < count; i++) {
+      const instance = instancedApi.current.at(i);
+      const translation = instance.translation();
+      vec.set(translation.x, translation.y, translation.z).negate().multiplyScalar(gravityEffect);
+      instance.applyImpulse(vec);
     }
   });
 
@@ -286,17 +286,16 @@ function Balls({ count = 20 }) {
       });
     }
     return temp;
-  }, [count, viewport]);
+  }, []);
 
   useFrame(() => {
-    if (instancedApi.current) {
-      for (let i = 0; i < count; i++) {
-        if (!instancedApi.current.at(i)) continue;
-        const instance = instancedApi.current.at(i);
-        const translation = instance.translation();
-        vec.set(translation.x, translation.y, translation.z).negate().multiplyScalar(gravityEffect);
-        instance.applyImpulse(vec);
-      }
+    if (!instancedApi.current) return;
+
+    for (let i = 0; i < count; i++) {
+      const instance = instancedApi.current.at(i);
+      const translation = instance.translation();
+      vec.set(translation.x, translation.y, translation.z).negate().multiplyScalar(gravityEffect);
+      instance.applyImpulse(vec);
     }
   });
 
