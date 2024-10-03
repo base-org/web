@@ -43,6 +43,7 @@ import {
   Spikey,
   Play,
   Blobby,
+  Cursor,
   MintCTA,
 } from './models';
 
@@ -210,6 +211,7 @@ export function Everything(props) {
       <Spikey />
       <Play />
       <Blobby />
+      <Cursor />
       <MintCTA />
     </group>
   );

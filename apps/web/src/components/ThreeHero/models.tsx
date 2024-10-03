@@ -31,6 +31,7 @@ import spikeyModel from './assets/spikey.glb';
 import playModel from './assets/play.glb';
 import objectModel from './assets/object.glb';
 import logoModel from './assets/logo.glb';
+import cursorModel from './assets/cursor.glb';
 
 /* svgs */
 import baseLogo from './assets/base-logo.svg';
@@ -235,6 +236,7 @@ export function Play(props) {
     </PhysicsMesh>
   );
 }
+
 export function Blobby(props) {
   const { nodes } = useGLTF(objectModel);
   return (
@@ -242,6 +244,25 @@ export function Blobby(props) {
       <mesh {...props} geometry={nodes.Object_02.geometry} castShadow receiveShadow scale={0.4}>
         <BlackMaterial />
       </mesh>
+    </PhysicsMesh>
+  );
+}
+
+export function Cursor(props) {
+  const { nodes } = useGLTF(cursorModel);
+
+  return (
+    <PhysicsMesh>
+      <Center>
+        <group {...props} scale={0.35}>
+          <mesh geometry={nodes.Cursor.geometry} castShadow receiveShadow>
+            <BlackMaterial />
+          </mesh>
+          <mesh geometry={nodes.Cursor1.geometry} castShadow receiveShadow>
+            <MetalMaterial />
+          </mesh>
+        </group>
+      </Center>
     </PhysicsMesh>
   );
 }
@@ -286,7 +307,7 @@ export function MintCTA(props) {
           scale={[0.3, 0.1, 0.2]}
           url={mintImage.src}
           transparent
-          rotation={[0, Math.PI / 2, 0]}
+          rotation={[0, Math.PI / 2, Math.PI]}
           position={[0.17, 0, 0]}
         />
         <Image
