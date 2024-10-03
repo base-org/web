@@ -22,6 +22,7 @@
     "@graphql-eslint/eslint-plugin": "^3.10.4",
     "@swc/core": "^1.2.173",
     "@swc/jest": "0.2.20",
+    "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "14.0.0",
     "@types/jest": "^29.4.0",
     "@types/node": "18.14.2",

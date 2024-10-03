@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node --require ./tracer/initialize.js ./node_modules/.bin/next start",
     "build": "next build",
+    "test": "jest",
     "analyze": "ANALYZE=true next build",
     "dev": "node --require ./tracer/initialize.js ./node_modules/.bin/next dev",
     "lint": "next lint",
@@ -65,6 +66,9 @@
     "wagmi": "^2.11.3"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@types/jest": "^29.5.13",
     "@types/node": "18.11.18",
     "@types/pg": "^8.11.6",
     "@types/react": "^18",
@@ -74,9 +78,11 @@
     "csv-parser": "^3.0.0",
     "dotenv": "^16.0.3",
     "eslint-config-next": "^13.1.6",
+    "jest": "^29.7.0",
     "postcss": "^8.4.21",
     "prettier-plugin-tailwindcss": "^0.2.5",
     "tailwindcss": "^3.2.4",
+    "ts-jest": "^29.2.5",
     "typescript": "5.0.4"
   }
 }

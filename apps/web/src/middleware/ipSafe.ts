@@ -15,12 +15,15 @@ export function ipSafe(ipStr: string): boolean {
   if (!ip.kind() || (ip.kind() !== 'ipv4' && ip.kind() !== 'ipv6')) {
     return false;
   }
+  try {
+    if (ip.kind() === 'ipv6') {
+      return ipv6Safe(ip as ipaddr.IPv6);
+    }
 
-  if (ip.kind() === 'ipv6') {
-    return ipv6Safe(ip as ipaddr.IPv6);
+    return ipv4Safe(ip as ipaddr.IPv4);
+  } catch (e) {
+    return false;
   }
-
-  return ipv4Safe(ip as ipaddr.IPv4);
 }
 
 function ipv4Safe(ip: ipaddr.IPv4): boolean {
@@ -32,7 +35,7 @@ function ipv4Safe(ip: ipaddr.IPv4): boolean {
   // Reject network or broadcast addresses
   // We assume /32 is for hosts, so /32 addresses are considered safe, others are not
   const subnetMask = ipaddr.IPv4.subnetMaskFromPrefixLength(32);
-  if (!ip.match([subnetMask, 32]) || ip.toString() === '0.0.0.0') {
+  if (!ip.match(subnetMask, 32) || ip.toString() === '0.0.0.0') {
     return false;
   }
 
@@ -59,7 +62,7 @@ function ipv6Safe(ip: ipaddr.IPv6): boolean {
 
   // Assume /64 is for hosts in IPv6; others are not considered safe
   const subnetMask = ipaddr.IPv6.subnetMaskFromPrefixLength(64);
-  if (!ip.match([subnetMask, 64])) {
+  if (!ip.match(subnetMask, 64)) {
     return false;
   }
 
