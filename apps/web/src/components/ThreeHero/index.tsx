@@ -62,18 +62,25 @@ const gravity: Vector3Tuple = [0, 0, 0];
 export default function Scene(): JSX.Element {
   const [isVisible, setIsVisible] = useState(true);
   const [isWindowFocused, setIsWindowFocused] = useState(true);
+  const [scrollPosition, setScrollPosition] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleVisibilityChange = useCallback(() => {
     setIsWindowFocused(!document.hidden);
   }, []);
 
+  const handleScroll = useCallback(() => {
+    setScrollPosition(window.scrollY);
+  }, []);
+
   useEffect(() => {
     document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('scroll', handleScroll);
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [handleVisibilityChange]);
+  }, [handleVisibilityChange, handleScroll]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -92,7 +99,7 @@ export default function Scene(): JSX.Element {
     };
   }, []);
 
-  const isActive = isVisible && isWindowFocused;
+  const isActive = isVisible && scrollPosition <= 100;
 
   return (
     <div style={{ width: '100%', height: '100%' }} ref={containerRef}>
