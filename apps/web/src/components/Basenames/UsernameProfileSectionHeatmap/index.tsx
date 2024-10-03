@@ -10,6 +10,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import CalendarHeatmap, { ReactCalendarHeatmapValue } from 'react-calendar-heatmap';
 import { Address } from 'viem';
 import './cal.css';
+import Tooltip from 'apps/web/src/components/Tooltip';
 
 type HeatmapValue = {
   date: string;
@@ -393,7 +394,12 @@ export default function UsernameProfileSectionHeatmap() {
     <Collapsible.Root className="rounded-3xl border border-palette-line/20">
       <div className="mb-6 px-6 pt-6">
         <div className="relative mb-6">
-          <h3 className="mb-1 text-sm font-medium text-gray-60">ONCHAIN SCORE</h3>
+          <Tooltip content="Onchain score is a number out of 100 that measures onchain activity">
+            <h3 className="mb-1 flex items-center text-sm font-medium text-gray-60">
+              ONCHAIN SCORE
+              <Icon name="info" color="currentColor" height="12px" />
+            </h3>
+          </Tooltip>
           <p className="font-display text-3xl">{finalScore}/100</p>
           <div className="absolute right-0 flex items-center gap-1 text-xs text-palette-foregroundMuted">
             <p>Less</p>
