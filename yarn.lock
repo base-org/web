@@ -357,12 +357,13 @@ __metadata:
     "@coinbase/onchainkit": ^0.28.5
     "@datadog/browser-logs": ^5.23.3
     "@datadog/browser-rum": ^5.23.3
-    "@frames.js/render": ^0.3.7
+    "@frames.js/render": ^0.3.12
     "@guildxyz/sdk": 2.6.0
     "@headlessui/react": ^1.7.19
     "@heroicons/react": ^2.1.3
     "@lottiefiles/dotlottie-react": ^0.8.10
     "@radix-ui/react-accordion": ^1.2.0
+    "@radix-ui/react-collapsible": ^1.1.0
     "@radix-ui/react-popover": ^1.1.1
     "@radix-ui/react-tooltip": ^1.1.2
     "@rainbow-me/rainbowkit": ^2.1.5
@@ -371,6 +372,7 @@ __metadata:
     "@types/node": 18.11.18
     "@types/pg": ^8.11.6
     "@types/react": ^18
+    "@types/react-calendar-heatmap": ^1.6.7
     "@types/react-copy-to-clipboard": ^5.0.7
     "@types/react-dom": ^18
     "@vercel/blob": ^0.23.4
@@ -401,6 +403,7 @@ __metadata:
     qrcode.react: ^3.1.0
     react: ^18.2.0
     react-blockies: ^1.4.1
+    react-calendar-heatmap: ^1.9.0
     react-copy-to-clipboard: ^5.1.0
     react-dom: ^18.2.0
     react-intersection-observer: ^9.10.2
@@ -3693,13 +3696,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@frames.js/render@npm:^0.3.7":
-  version: 0.3.7
-  resolution: "@frames.js/render@npm:0.3.7"
+"@frames.js/render@npm:^0.3.12":
+  version: 0.3.12
+  resolution: "@frames.js/render@npm:0.3.12"
   dependencies:
     "@farcaster/core": ^0.14.7
     "@noble/ed25519": ^2.0.0
-    frames.js: ^0.19.1
+    frames.js: ^0.19.3
   peerDependencies:
     "@lens-protocol/client": 2.0.0
     "@rainbow-me/rainbowkit": ^2.1.2
@@ -3712,7 +3715,7 @@ __metadata:
     react-native: ^0.74.3
     viem: ^2.7.8
     wagmi: ^2.9.10
-  checksum: 1391c86861b5d8c637f6c3fdea265ad0f81a0a8b7bed57180e90e998302a709131efe4488a7a1dc3dae84ef128c1a4db94dd9599ba795cb9b8ef5e3f8595d670
+  checksum: e8600f67eeb2527f8052f044abbaa8e58124cda72011a5998910a350ba6a6dd3d803974f6e11bd5b0439935f5be3dd29f862700d68970f068060f9fb57ab3d92
   languageName: node
   linkType: hard
 
@@ -5949,7 +5952,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-collapsible@npm:1.1.0":
+"@radix-ui/react-collapsible@npm:1.1.0, @radix-ui/react-collapsible@npm:^1.1.0":
   version: 1.1.0
   resolution: "@radix-ui/react-collapsible@npm:1.1.0"
   dependencies:
@@ -8286,6 +8289,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-calendar-heatmap@npm:^1.6.7":
+  version: 1.6.7
+  resolution: "@types/react-calendar-heatmap@npm:1.6.7"
+  dependencies:
+    "@types/react": "*"
+  checksum: 5a7734ad1253b550909302cbcf5b88fca6d05aa3aed07d80671312ff32a0aec90ddf9a6d382cdd63f055d305b0ebffe961c40e66b06940e627112ae837f330dd
+  languageName: node
+  linkType: hard
+
 "@types/react-copy-to-clipboard@npm:^5.0.4, @types/react-copy-to-clipboard@npm:^5.0.7":
   version: 5.0.7
   resolution: "@types/react-copy-to-clipboard@npm:5.0.7"
@@ -8867,6 +8879,17 @@ __metadata:
     satori: 0.10.9
     yoga-wasm-web: 0.3.3
   checksum: b8bf5614c669f20d5cd985cfce1724c267da8fcd0441819b7d782b4fc0db6eceff5623d7714668e0654e55b0d6ba89d3c2918b3e435570ab1ce1e0f3390032e3
+  languageName: node
+  linkType: hard
+
+"@vercel/og@npm:^0.6.3":
+  version: 0.6.3
+  resolution: "@vercel/og@npm:0.6.3"
+  dependencies:
+    "@resvg/resvg-wasm": 2.4.0
+    satori: 0.10.9
+    yoga-wasm-web: 0.3.3
+  checksum: bae2fa64533faf7ae25fabecca30ed1c213d3856aa823777997ea29155237bb7cdd18af1b9add31c7959ec69cd996287ad0c58ef9b221a05e16f2c38c64be0b5
   languageName: node
   linkType: hard
 
@@ -15212,11 +15235,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"frames.js@npm:^0.19.1":
-  version: 0.19.1
-  resolution: "frames.js@npm:0.19.1"
+"frames.js@npm:^0.19.3":
+  version: 0.19.3
+  resolution: "frames.js@npm:0.19.3"
   dependencies:
-    "@vercel/og": ^0.6.2
+    "@vercel/og": ^0.6.3
     cheerio: ^1.0.0-rc.12
     protobufjs: ^7.2.6
     viem: ^2.7.8
@@ -15228,7 +15251,7 @@ __metadata:
     next: ^14.1.0
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 56e9735c3005a2ade000f43790a3446f98e71b827bd95be80e609eb1ae7e9fa7eaf778676fdabd882420ace1230cfec7174318fea6a5d7858b9cd044074c04aa
+  checksum: 28d6465e12e658b28768bfa8860b155eee443ac3cf0f8d32a4701dd92e2bb182dbc83f2e8d4a378fe75b35903bda34c4fe16f3351438845c05b5fd272f481052
   languageName: node
   linkType: hard
 
@@ -18925,6 +18948,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"memoize-one@npm:^5.0.0":
+  version: 5.2.1
+  resolution: "memoize-one@npm:5.2.1"
+  checksum: a3cba7b824ebcf24cdfcd234aa7f86f3ad6394b8d9be4c96ff756dafb8b51c7f71320785fbc2304f1af48a0467cbbd2a409efc9333025700ed523f254cb52e3d
+  languageName: node
+  linkType: hard
+
 "meow@npm:^6.1.1":
   version: 6.1.1
   resolution: "meow@npm:6.1.1"
@@ -22089,6 +22119,18 @@ __metadata:
   peerDependencies:
     react: ">=15.0.0"
   checksum: 87139fc2cc682d34ff8633c58ce96f89826cc3127499b623fb1d8c99dd8e1fe21055750a051933ffc500ca9c88aa017930deae963ffc635135c02907e5d75e22
+  languageName: node
+  linkType: hard
+
+"react-calendar-heatmap@npm:^1.9.0":
+  version: 1.9.0
+  resolution: "react-calendar-heatmap@npm:1.9.0"
+  dependencies:
+    memoize-one: ^5.0.0
+    prop-types: ^15.6.2
+  peerDependencies:
+    react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: 00ee57373f9827c383f5060520ab57cce99960ca8c6e35fa7a9bd885ab98642560473d617e3696dc2f4116e5ca47a42bf9f9f6df69860b87249c1ce2d3f7a0b3
   languageName: node
   linkType: hard
 
