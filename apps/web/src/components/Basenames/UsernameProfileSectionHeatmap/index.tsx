@@ -11,6 +11,7 @@ import CalendarHeatmap, { ReactCalendarHeatmapValue } from 'react-calendar-heatm
 import { Address } from 'viem';
 import './cal.css';
 import Tooltip from 'apps/web/src/components/Tooltip';
+import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
 
 // Routers
 const UNISWAP_ROUTER = '0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad'; // Uniswap router - base
@@ -396,103 +397,109 @@ export default function UsernameProfileSectionHeatmap() {
 
   if (isLoading) {
     return (
-      <div className="relative rounded-3xl border border-palette-line/20 p-10">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <Image src="/images/base-loading.gif" alt="" width={22} height={22} />
+      <section>
+        <UsernameProfileSectionTitle title="Activity" />
+        <div className="relative mt-6 rounded-3xl border border-palette-line/20 p-10">
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Image src="/images/base-loading.gif" alt="" width={22} height={22} />
+          </div>
         </div>
-      </div>
+      </section>
     );
   }
 
   return (
-    <Collapsible.Root className="rounded-3xl border border-palette-line/20">
-      <div className="mb-6 px-6 pt-6">
-        <div className="relative mb-6">
-          <Tooltip content="Onchain score is a number out of 100 that measures onchain activity">
-            <h3 className="mb-1 flex items-center text-sm font-medium text-gray-60">
-              ONCHAIN SCORE
-              <Icon name="info" color="currentColor" height="12px" />
-            </h3>
-          </Tooltip>
-          <p className="font-display text-3xl">{finalScore}/100</p>
-          <div className="absolute right-0 flex items-center gap-1 text-xs text-palette-foregroundMuted">
-            <p>Less</p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="60"
-              height="10"
-              viewBox="0 0 60 10"
-              fill="none"
-            >
-              <rect x="0" width="10" height="10" rx="2" fill="#F8F9FB" />
-              <rect x="12" width="10" height="10" rx="2" fill="#D3E1FF" />
-              <rect x="24" width="10" height="10" rx="2" fill="#92B6FF" />
-              <rect x="36" width="10" height="10" rx="2" fill="#266EFF" />
-              <rect x="48" width="10" height="10" rx="2" fill="#003EC1" />
-            </svg>
-            <p>More</p>
+    <section>
+      <UsernameProfileSectionTitle title="Activity" />
+      <Collapsible.Root className="mt-6 rounded-3xl border border-palette-line/20">
+        <div className="mb-6 px-6 pt-6">
+          <div className="relative mb-6">
+            <Tooltip content="Onchain score is a number out of 100 that measures onchain activity">
+              <h3 className="mb-1 flex items-center text-sm font-medium text-gray-60">
+                ONCHAIN SCORE
+                <Icon name="info" color="currentColor" height="12px" />
+              </h3>
+            </Tooltip>
+            <p className="font-display text-3xl">{finalScore}/100</p>
+            <div className="absolute right-0 flex items-center gap-1 text-xs text-palette-foregroundMuted">
+              <p>Less</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="60"
+                height="10"
+                viewBox="0 0 60 10"
+                fill="none"
+              >
+                <rect x="0" width="10" height="10" rx="2" fill="#F8F9FB" />
+                <rect x="12" width="10" height="10" rx="2" fill="#D3E1FF" />
+                <rect x="24" width="10" height="10" rx="2" fill="#92B6FF" />
+                <rect x="36" width="10" height="10" rx="2" fill="#266EFF" />
+                <rect x="48" width="10" height="10" rx="2" fill="#003EC1" />
+              </svg>
+              <p>More</p>
+            </div>
+          </div>
+          <div
+            ref={containerRef}
+            className="w-full max-w-full overflow-x-auto overflow-y-hidden whitespace-nowrap"
+          >
+            <CalendarHeatmap
+              startDate={new Date(new Date().setFullYear(new Date().getFullYear() - 1))}
+              endDate={new Date()}
+              horizontal
+              values={heatmapData}
+              classForValue={classForValue}
+              titleForValue={titleForValue}
+            />
           </div>
         </div>
-        <div
-          ref={containerRef}
-          className="w-full max-w-full overflow-x-auto overflow-y-hidden whitespace-nowrap"
-        >
-          <CalendarHeatmap
-            startDate={new Date(new Date().setFullYear(new Date().getFullYear() - 1))}
-            endDate={new Date()}
-            horizontal
-            values={heatmapData}
-            classForValue={classForValue}
-            titleForValue={titleForValue}
-          />
-        </div>
-      </div>
-      <Collapsible.Trigger className="flex w-full flex-row items-center border-t border-palette-line/20 px-6 py-4">
-        <Icon name="caret" color="currentColor" width="1rem" height="1rem" />
-        <p className="ml-1">View details</p>
-      </Collapsible.Trigger>
-      <Collapsible.Content className="flex flex-row flex-wrap items-start justify-around gap-8 px-6 pb-9 data-[state=closed]:pb-0">
-        <div className="w-28">
-          <div className="text-xl font-medium text-palette-primary">{totalTx}</div>
-          <p className="text-xs text-palette-foregroundMuted">Transactions on Ethereum & Base</p>
-        </div>
-        <div className="w-28">
-          <div className="text-xl font-medium text-palette-primary">{uniqueActiveDays}</div>
-          <p className="text-xs text-palette-foregroundMuted">Unique days active</p>
-        </div>
-        <div className="w-28">
-          <div className="text-xl font-medium text-palette-primary">{longestStreak}</div>
-          <p className="text-xs text-palette-foregroundMuted">Day longest streak</p>
-        </div>
-        <div className="w-28">
-          <div className="text-xl font-medium text-palette-primary">{currentStreak}</div>
-          <p className="text-xs text-palette-foregroundMuted">Day current streak</p>
-        </div>
-        <div className="w-28">
-          <div className="text-xl font-medium text-palette-primary">{activityPeriod}</div>
-          <p className="text-xs text-palette-foregroundMuted">Day activity period</p>
-        </div>
-        <div className="w-28">
-          <div className="text-xl font-medium text-palette-primary">{tokenSwapCount}</div>
-          <p className="text-xs text-palette-foregroundMuted">Token swaps performed</p>
-        </div>
-        <div className="w-28">
-          <div className="text-xl font-medium text-palette-primary">{bridgeCount}</div>
-          <p className="text-xs text-palette-foregroundMuted">Bridge transactions</p>
-        </div>
-        <div className="w-28">
-          <div className="text-xl font-medium text-palette-primary">{lendCount}</div>
-          <p className="text-xs text-palette-foregroundMuted">Lend/borrow/stake transactions</p>
-        </div>
-        <div className="w-28">
-          <div className="text-xl font-medium text-palette-primary">{ensCount}</div>
-          <p className="text-xs text-palette-foregroundMuted">ENS contract interactions</p>
-        </div>
-        <div className="w-28">
-          <div className="text-xl font-medium text-palette-primary">{contractsDeployed}</div>
-          <p className="text-xs text-palette-foregroundMuted">Smart contracts deployed</p>
-        </div>
-      </Collapsible.Content>
-    </Collapsible.Root>
+        <Collapsible.Trigger className="flex w-full flex-row items-center border-t border-palette-line/20 px-6 py-4">
+          <Icon name="caret" color="currentColor" width="1rem" height="1rem" />
+          <p className="ml-1">View details</p>
+        </Collapsible.Trigger>
+        <Collapsible.Content className="flex flex-row flex-wrap items-start justify-around gap-8 px-6 pb-9 data-[state=closed]:pb-0">
+          <div className="w-28">
+            <div className="text-xl font-medium text-palette-primary">{totalTx}</div>
+            <p className="text-xs text-palette-foregroundMuted">Transactions on Ethereum & Base</p>
+          </div>
+          <div className="w-28">
+            <div className="text-xl font-medium text-palette-primary">{uniqueActiveDays}</div>
+            <p className="text-xs text-palette-foregroundMuted">Unique days active</p>
+          </div>
+          <div className="w-28">
+            <div className="text-xl font-medium text-palette-primary">{longestStreak}</div>
+            <p className="text-xs text-palette-foregroundMuted">Day longest streak</p>
+          </div>
+          <div className="w-28">
+            <div className="text-xl font-medium text-palette-primary">{currentStreak}</div>
+            <p className="text-xs text-palette-foregroundMuted">Day current streak</p>
+          </div>
+          <div className="w-28">
+            <div className="text-xl font-medium text-palette-primary">{activityPeriod}</div>
+            <p className="text-xs text-palette-foregroundMuted">Day activity period</p>
+          </div>
+          <div className="w-28">
+            <div className="text-xl font-medium text-palette-primary">{tokenSwapCount}</div>
+            <p className="text-xs text-palette-foregroundMuted">Token swaps performed</p>
+          </div>
+          <div className="w-28">
+            <div className="text-xl font-medium text-palette-primary">{bridgeCount}</div>
+            <p className="text-xs text-palette-foregroundMuted">Bridge transactions</p>
+          </div>
+          <div className="w-28">
+            <div className="text-xl font-medium text-palette-primary">{lendCount}</div>
+            <p className="text-xs text-palette-foregroundMuted">Lend/borrow/stake transactions</p>
+          </div>
+          <div className="w-28">
+            <div className="text-xl font-medium text-palette-primary">{ensCount}</div>
+            <p className="text-xs text-palette-foregroundMuted">ENS contract interactions</p>
+          </div>
+          <div className="w-28">
+            <div className="text-xl font-medium text-palette-primary">{contractsDeployed}</div>
+            <p className="text-xs text-palette-foregroundMuted">Smart contracts deployed</p>
+          </div>
+        </Collapsible.Content>
+      </Collapsible.Root>
+    </section>
   );
 }
