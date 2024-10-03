@@ -24,7 +24,7 @@ const BASENAMES_REGISTRAR_CONTROLLER = '0x4ccb0bb02fcaba27e82a56646e81d8c5bc4119
 const BASENAMES_EA_REGISTRAR_CONTROLLER = '0xd3e6775ed9b7dc12b205c8e608dc3767b9e5efda'; // Basenames EARegistrarController
 
 // Lending and Borrowing
-const WETH_UNWRAPPER = '0x1382cff3cee10d283dcca55a30496187759e4caf'; // Base Moonwell WETH Unwrapper
+const MOONWELL_WETH_UNWRAPPER = '0x1382cff3cee10d283dcca55a30496187759e4caf'; // Base Moonwell WETH Unwrapper
 
 // Swap Function Names
 const SWAP_FUNCTION_NAMES = ['swap', 'fillOtcOrderWithEth', 'proxiedSwap'];
@@ -346,8 +346,9 @@ export default function UsernameProfileSectionHeatmap() {
         setBridgeCount(allTransactions.filter((tx) => bridges.has(tx.to)).length);
 
         setLendCount(
-          allTransactions.filter((tx) => lendBorrowEarn.has(tx.to) || tx.from === WETH_UNWRAPPER)
-            .length,
+          allTransactions.filter(
+            (tx) => lendBorrowEarn.has(tx.to) || tx.from === MOONWELL_WETH_UNWRAPPER,
+          ).length,
         );
 
         setBuildCount(
