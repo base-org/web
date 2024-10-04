@@ -216,6 +216,45 @@ export function Everything(props) {
   );
 }
 
+function Boxes({ count = 10 }: { count?: number }) {
+  const boxes = useMemo(
+    () =>
+      new Array(count).fill(null).map((_, index) => {
+        return (
+          <PhysicsMesh scale={0.5} gravityEffect={0.03} key={index}>
+            <mesh castShadow receiveShadow>
+              <boxGeometry args={[0.5, 0.5, 0.5]} />
+              <BlackMaterial />
+            </mesh>
+          </PhysicsMesh>
+        );
+      }),
+    [count],
+  );
+
+  return <group>{boxes}</group>;
+}
+
+function Balls({ count = 10 }: { count?: number }) {
+  const boxes = useMemo(
+    () =>
+      new Array(count).fill(null).map((_, index) => {
+        return (
+          <PhysicsMesh scale={0.25} gravityEffect={0.004} key={index}>
+            <mesh castShadow receiveShadow>
+              <sphereGeometry args={[0.25, 64, 64]} />
+              <meshPhysicalMaterial color={blue} />
+            </mesh>
+          </PhysicsMesh>
+        );
+      }),
+    [count],
+  );
+
+  return <group>{boxes}</group>;
+}
+
+/*
 function Boxes({ count = 10 }) {
   const instancedApi = useRef(null);
   const { viewport } = useThree();
@@ -315,10 +354,11 @@ function Balls({ count = 20 }) {
       <BallCollider args={[0.25]} />
     </InstancedRigidBodies>
   );
-}
+}*/
 
 function BaseLogo() {
   const { size } = useThree();
+  const [clicked, setClicked] = useState<boolean>(false);
   const logoRef = useRef<THREE.Group>(null!);
   const doneRef = useRef<boolean>(false);
 
@@ -329,7 +369,11 @@ function BaseLogo() {
     } else {
       logoRef.current.rotation.y = THREE.MathUtils.lerp(logoRef.current.rotation.y, 0, 0.05);
     }
-    logoRef.current.position.z = THREE.MathUtils.lerp(logoRef.current.position.z, 0, 0.05);
+    logoRef.current.position.z = THREE.MathUtils.lerp(
+      logoRef.current.position.z,
+      clicked ? 2 : 0,
+      0.05,
+    );
 
     // lerp never gets to 0
     if (logoRef.current.position.z > -0.01) {
@@ -345,10 +389,16 @@ function BaseLogo() {
   return (
     <RigidBody type="kinematicPosition" colliders={false}>
       <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[10, mobile ? 1.1 : 2]} />
-      <group ref={logoRef} position={[0, 0, -10]} rotation={[0, -Math.PI, 0]}>
+      <group
+        ref={logoRef}
+        position={[0, 0, -10]}
+        rotation={[0, -Math.PI, 0]}
+        onPointerUp={() => setClicked((s) => !s)}
+      >
         <Center scale={mobile ? 0.075 : 0.13}>
           <BaseLogoModel />
         </Center>
+        <MintCTA position={[0, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} clicked={clicked} />
       </group>
     </RigidBody>
   );

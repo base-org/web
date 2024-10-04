@@ -241,7 +241,7 @@ export function Blobby(props) {
   const { nodes } = useGLTF(objectModel);
   return (
     <PhysicsMesh>
-      <mesh {...props} geometry={nodes.Object_02.geometry} castShadow receiveShadow scale={0.4}>
+      <mesh {...props} geometry={nodes.Object_02.geometry} castShadow receiveShadow scale={0.3}>
         <BlackMaterial />
       </mesh>
     </PhysicsMesh>
@@ -267,7 +267,7 @@ export function Cursor(props) {
   );
 }
 
-export function MintCTA(props) {
+export function MintCTA({ clicked = false, ...props }: { clicked?: boolean }) {
   const [hover, setHover] = React.useState(false);
   const { viewport } = useThree();
   const boxRef = React.useRef();
@@ -275,11 +275,12 @@ export function MintCTA(props) {
   useCursor(hover ? 'pointer' : 'auto');
 
   useFrame(({ clock }) => {
-    boxRef.current.rotation.z = THREE.MathUtils.lerp(
-      boxRef.current.position.z,
-      hover ? Math.PI / 2 : 0,
-      0.1,
-    );
+    const h = hover ? 1.1 : 1;
+
+    boxRef.current.scale.x =
+      boxRef.current.scale.y =
+      boxRef.current.scale.z =
+        THREE.MathUtils.lerp(boxRef.current.scale.x, clicked ? h : 0, 0.1);
   });
 
   return (
@@ -290,23 +291,21 @@ export function MintCTA(props) {
       onPointerUp={() => {
         window.open('https://mint.base.org', '_blank');
       }}
+      {...props}
     >
-      <RoundedBox args={[0.3, 0.3, 1]} radius={0.05} {...props} castShadow receiveShadow>
+      {/*<RoundedBox args={[0.3, 0.3, 1]} radius={0.05} rotation={[0, 0, 0]} castShadow receiveShadow>
         <meshPhysicalMaterial color={blue} metalness={0.5} roughness={0.5} />
-      </RoundedBox>
+      </RoundedBox>*/}
+      <mesh>
+        <cylinderGeometry args={[0.5, 0.5, 0.1, 64, 64]} />
+        <BlackMaterial />
+      </mesh>
       <Image
         scale={[0.3, 0.1, 0.2]}
         url={mintImage.src}
         transparent
-        rotation={[0, Math.PI / 2, Math.PI]}
-        position={[0.17, 0, 0]}
-      />
-      <Image
-        scale={[0.3, 0.1, 0.2]}
-        url={mintImage.src}
-        transparent
-        rotation={[0, -Math.PI / 2, 0]}
-        position={[-0.17, 0, 0]}
+        position={[0, 0.1, 0]}
+        rotation={[-Math.PI / 2, 0, 0]}
       />
     </group>
   );
