@@ -1,15 +1,6 @@
-import { ipSafe } from 'apps/web/src/middleware/ipSafe';
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(req: NextRequest) {
-  // Extract the client IP from the x-forwarded-for header
-  const xForwardedFor = req.headers.get('x-forwarded-for');
-  // If x-forwarded-for is available, the client's IP address is typically the first one in the list
-  const ip = xForwardedFor ? xForwardedFor.split(',')[0].trim() : req.ip;
-  if (!ip || !ipSafe(ip)) {
-    return NextResponse.json({ message: 'Forbidden: Unsafe IP' }, { status: 403 });
-  }
-
   const url = req.nextUrl;
 
   if (

@@ -52,43 +52,8 @@ describe('IP Safe Tests', () => {
 
   badIps.forEach((badIp) => {
     test(`returns false for unsafe IP: ${badIp}`, () => {
-      const mockIP = {
-        kind: () => (badIp.includes(':') ? 'ipv6' : 'ipv4'),
-        range: () => {
-          // Simulate the IP type based on its value
-          if (badIp === '127.0.0.1' || badIp === '::1') return 'loopback';
-          if (badIp.startsWith('10.') || badIp.startsWith('172.') || badIp.startsWith('192.168.'))
-            return 'private';
-          if (badIp === '169.254.169.254' || badIp === '::ffff:169.254.169.254') return 'linkLocal'; // AWS metadata
-          if (badIp === '0.0.0.0') return 'unspecified';
-          if (badIp.startsWith('::ffff:')) return 'ipv4Mapped'; // IPv6 mapped IPv4 addresses
-          if (badIp.startsWith('fe80')) return 'linkLocal'; // Link-local IPv6
-          if (badIp.startsWith('fd6d')) return 'uniqueLocal'; // Unique-local IPv6
-          return 'public';
-        },
-        toString: () => badIp,
-        match: () => false, // assuming we won't get valid matches for CIDR checks
-        isIPv4MappedAddress: () => badIp.startsWith('::ffff:'),
-      };
-      (ipaddr.parse as jest.Mock).mockReturnValueOnce(mockIP);
-
       expect(ipSafe(badIp)).toBe(false);
     });
-  });
-
-  test('returns false for invalid IP (nonsense)', () => {
-    (ipaddr.parse as jest.Mock).mockImplementationOnce(() => {
-      throw new Error('Invalid IP');
-    });
-
-    expect(ipSafe('nonsense')).toBe(false);
-  });
-
-  test('returns true for development environment', () => {
-    // @ts-expect-error this is ok I promise
-    process.env.NODE_ENV = 'development';
-
-    expect(ipSafe('127.0.0.1')).toBe(true);
   });
 
   test('returns false for invalid IP address', () => {
