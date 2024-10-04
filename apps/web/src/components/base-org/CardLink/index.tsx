@@ -2,19 +2,20 @@
 
 import Card from 'apps/web/src/components/base-org/Card';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import Link from 'next/link';
+import Link from 'apps/web/src/components/Link';
 import React from 'react';
 
 type CardLinkProps = {
   children: React.ReactNode;
   href: string;
+  eventName?: string;
 };
 
-export default function CardLink({ children, href }: CardLinkProps) {
+export default function CardLink({ children, href, eventName }: CardLinkProps) {
   const externalResource = href.startsWith('https://');
   const target = externalResource ? '_blank' : undefined;
   return (
-    <Link href={href} target={target} className="group w-full">
+    <Link href={href} target={target} className="group w-full" eventName={eventName}>
       <Card
         innerClassName="p-4 transition-all active:p-6 bg-[#181818] group-hover:bg-[#1C1C1C]"
         wrapperClassName="transition-all"

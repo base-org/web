@@ -3,13 +3,13 @@
 import { useState, useCallback, useMemo, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
-import Link from 'next/link';
 import blogPosts from 'apps/web/scripts/blog_posts.json';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
+import Link from 'apps/web/src/components/Link';
 
 const blogPostMaxCount = 6;
 
@@ -103,6 +103,13 @@ export default function BlogSection() {
     [],
   );
 
+  const eventData = useMemo(() => {
+    return {
+      url: limitedBlogPosts[currentIndex].url,
+      title: limitedBlogPosts[currentIndex].title,
+    };
+  }, [currentIndex, limitedBlogPosts]);
+
   return (
     <section ref={sectionRef} className="group">
       <div className="relative mx-auto w-full">
@@ -155,10 +162,15 @@ export default function BlogSection() {
             {limitedBlogPosts[currentIndex].title}
           </Title>
           <div className="ml-auto flex items-center gap-4">
-            <Link href={limitedBlogPosts[currentIndex].url} target="_blank">
+            <Link
+              href={limitedBlogPosts[currentIndex].url}
+              target="_blank"
+              eventName="blog_post"
+              eventData={eventData}
+            >
               <Button variant={ButtonVariants.Secondary}>Read</Button>
             </Link>
-            <Link href="https://base.mirror.xyz/" target="_blank">
+            <Link href="https://base.mirror.xyz/" target="_blank" eventName="subscribe">
               <Button variant={ButtonVariants.Outlined}>Subscribe</Button>
             </Link>
           </div>

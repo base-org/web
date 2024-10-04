@@ -16,6 +16,7 @@ import MenuMobile from 'apps/web/src/components/base-org/shared/TopNavigation/Me
 export type SubItem = {
   name: string;
   href: string;
+  eventName: string;
 };
 
 export type TopNavigationLink = {
@@ -24,11 +25,13 @@ export type TopNavigationLink = {
   emoji?: string;
   image?: string;
   subItems: SubItem[];
+  analyticContext: string;
 };
 
 const links: TopNavigationLink[] = [
   {
     name: 'Build',
+    analyticContext: 'build',
     href: '/getstarted',
     emoji: '🛠️',
     image:
@@ -36,52 +39,63 @@ const links: TopNavigationLink[] = [
     subItems: [
       {
         name: 'Get Started',
+
+        eventName: 'get_started',
         href: '/getstarted',
       },
-      { name: 'Docs', href: 'https://docs.base.org' },
-      { name: 'Learn', href: 'https://docs.base.org/base-learn/docs/welcome' },
-      { name: 'Status Page', href: 'https://status.base.org' },
-      { name: 'Block Explorer', href: 'https://base.blockscout.com' },
-      { name: 'Bug Bounty', href: 'https://hackerone.com/coinbase' },
-      { name: 'Github', href: 'https://github.com/base-org' },
+      { name: 'Docs', eventName: 'docs', href: 'https://docs.base.org' },
+      { name: 'Learn', eventName: 'learn', href: 'https://docs.base.org/base-learn/docs/welcome' },
+      { name: 'Status Page', eventName: 'status_page', href: 'https://status.base.org' },
+      { name: 'Block Explorer', eventName: 'block_explorer', href: 'https://base.blockscout.com' },
+      { name: 'Bug Bounty', eventName: 'bug_bounty', href: 'https://hackerone.com/coinbase' },
+      { name: 'Github', eventName: 'github', href: 'https://github.com/base-org' },
     ],
   },
   {
     name: 'Explore',
+    analyticContext: 'explore',
     href: '/ecosystem',
     emoji: '🔍',
     subItems: [
-      { name: 'Apps', href: '/ecosystem' },
-      { name: 'Bridge', href: 'https://bridge.base.org' },
+      { name: 'Apps', eventName: 'ecosystem', href: '/ecosystem' },
+      { name: 'Bridge', eventName: 'bridge', href: 'https://bridge.base.org' },
     ],
   },
   {
     name: 'Community',
+    analyticContext: 'community',
     href: '/',
     emoji: '👥',
     subItems: [
-      { name: 'Grants', href: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders' },
+      {
+        name: 'Grants',
+        eventName: 'grants',
+        href: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders',
+      },
     ],
   },
   {
     name: 'About',
+    analyticContext: 'about',
     href: '/about',
     emoji: '📜',
     subItems: [
-      { name: 'Vision', href: '/about' },
-      { name: 'Blog', href: 'https://base.mirror.xyz/' },
-      { name: 'Jobs', href: '/jobs' },
+      { name: 'Vision', eventName: 'vision', href: '/about' },
+      { name: 'Blog', eventName: 'blog', href: 'https://base.mirror.xyz/' },
+      { name: 'Jobs', eventName: 'jobs', href: '/jobs' },
+      { name: 'Media Kit', eventName: 'media_kit', href: 'https://github.com/base-org/brand-kit' },
     ],
   },
   {
     name: 'Socials',
+    analyticContext: 'socials',
     href: '#socials',
     emoji: '🌐',
     subItems: [
-      { name: 'X', href: 'https://x.com/base' },
-      { name: 'Farcaster', href: 'https://warpcast.com/~/channel/base' },
-      { name: 'Github', href: 'https://github.com/base-org' },
-      { name: 'Discord', href: 'https://discord.com/invite/buildonbase' },
+      { name: 'X', eventName: 'x', href: 'https://x.com/base' },
+      { name: 'Farcaster', eventName: 'farcaster', href: 'https://warpcast.com/~/channel/base' },
+      { name: 'Github', eventName: 'github', href: 'https://github.com/base-org' },
+      { name: 'Discord', eventName: 'discord', href: 'https://discord.com/invite/buildonbase' },
     ],
   },
 ];

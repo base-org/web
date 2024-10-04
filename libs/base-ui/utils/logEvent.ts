@@ -73,6 +73,8 @@ type CCAEventData = {
   flag_key?: string;
   variant?: string | undefined;
   experiment_key?: string | undefined;
+  url?: string;
+  title?: string;
 };
 
 type AnalyticsEventData = {

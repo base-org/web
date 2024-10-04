@@ -4,11 +4,12 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { TopNavigationLink } from 'apps/web/src/components/base-org/shared/TopNavigation';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
-import Link from 'next/link';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
 import logo from './assets/logo.svg';
 import Image, { StaticImageData } from 'next/image';
+import AnalyticsProvider from 'apps/web/contexts/Analytics';
+import Link from 'apps/web/src/components/Link';
 
 type MenuMobileProps = {
   links: TopNavigationLink[];
@@ -55,7 +56,7 @@ function MenuMobileButton({
   );
 
   return (
-    <>
+    <AnalyticsProvider context={link.analyticContext}>
       <button
         type="button"
         onClick={onClickHandler}
@@ -78,6 +79,7 @@ function MenuMobileButton({
             >
               <Link
                 href={subItem.href + '?utm_source=dotorg&utm_medium=nav'}
+                eventName={subItem.eventName}
                 target={subItem.href.startsWith('https://') ? '_blank' : undefined}
                 className="group/sublink inline-block flex w-full items-center justify-between gap-2 rounded-2xl py-2 "
               >
@@ -90,7 +92,7 @@ function MenuMobileButton({
           ))}
         </ul>
       </div>
-    </>
+    </AnalyticsProvider>
   );
 }
 

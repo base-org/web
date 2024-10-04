@@ -1,8 +1,9 @@
 import Card from 'apps/web/src/components/base-org/Card';
 import { TopNavigationLink } from 'apps/web/src/components/base-org/shared/TopNavigation';
-import Link from 'next/link';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import AnimatedIcon from './AnimatedIcon';
+import AnalyticsProvider from 'apps/web/contexts/Analytics';
+import Link from 'apps/web/src/components/Link';
 
 type MenuDesktopProps = {
   links: TopNavigationLink[];
@@ -104,21 +105,24 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
         <Card radius={8}>
           <div className="flex w-full items-stretch gap-1 p-1">
             {links[hoverIndex]?.subItems && (
-              <div className="flex flex-1 flex-col">
-                {links[hoverIndex].subItems.map((subItem) => (
-                  <Link
-                    key={`link-${links[hoverIndex].name}-subitem-${subItem.name}`.toLocaleLowerCase()}
-                    href={subItem.href + '?utm_source=dotorg&utm_medium=nav'}
-                    target={subItem.href.startsWith('https://') ? '_blank' : undefined}
-                    className="group/sublink flex justify-between rounded-lg bg-white bg-opacity-0 px-3 py-2 text-sm transition-all duration-300 hover:bg-opacity-20"
-                  >
-                    <span>{subItem.name}</span>
-                    <span className="rotate-0 transform opacity-0 transition-all delay-75 duration-300 group-hover/sublink:rotate-45 group-hover/sublink:opacity-60">
-                      ↗
-                    </span>
-                  </Link>
-                ))}
-              </div>
+              <AnalyticsProvider context={links[hoverIndex].analyticContext}>
+                <div className="flex flex-1 flex-col">
+                  {links[hoverIndex].subItems.map((subItem) => (
+                    <Link
+                      key={`link-${links[hoverIndex].name}-subitem-${subItem.name}`.toLocaleLowerCase()}
+                      href={subItem.href + '?utm_source=dotorg&utm_medium=nav'}
+                      eventName={subItem.eventName}
+                      target={subItem.href.startsWith('https://') ? '_blank' : undefined}
+                      className="group/sublink flex justify-between rounded-lg bg-white bg-opacity-0 px-3 py-2 text-sm transition-all duration-300 hover:bg-opacity-20"
+                    >
+                      <span>{subItem.name}</span>
+                      <span className="rotate-0 transform opacity-0 transition-all delay-75 duration-300 group-hover/sublink:rotate-45 group-hover/sublink:opacity-60">
+                        ↗
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </AnalyticsProvider>
             )}
             {links[hoverIndex]?.subItems && (
               <div className="min-h-[200px] flex-1 basis-0 overflow-hidden rounded-lg bg-[#27272B]">
