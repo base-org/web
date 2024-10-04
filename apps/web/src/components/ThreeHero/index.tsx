@@ -124,7 +124,6 @@ export default function Scene(): JSX.Element {
           </Physics>
         </Suspense>
         <Stats />
-        <OrbitControls />
       </Canvas>
     </div>
   );
