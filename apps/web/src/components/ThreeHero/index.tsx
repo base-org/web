@@ -123,7 +123,6 @@ export default function Scene(): JSX.Element {
             <Everything />
           </Physics>
         </Suspense>
-        <Stats />
       </Canvas>
     </div>
   );
