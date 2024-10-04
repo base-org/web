@@ -35,17 +35,6 @@ jest.mock('ipaddr.js', () => ({
   },
 }));
 describe('IP Safe Tests', () => {
-  let originalEnv: string | undefined;
-
-  beforeAll(() => {
-    originalEnv = process.env.NODE_ENV;
-  });
-
-  afterAll(() => {
-    // @ts-expect-error this is ok I promise
-    process.env.NODE_ENV = originalEnv;
-  });
-
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -57,9 +46,6 @@ describe('IP Safe Tests', () => {
   });
 
   test('returns false for invalid IP address', () => {
-    // @ts-expect-error this is ok I promise
-    process.env.NODE_ENV = 'production';
-
     (ipaddr.parse as jest.Mock).mockImplementationOnce(() => {
       throw new Error('Invalid IP');
     });
@@ -68,9 +54,6 @@ describe('IP Safe Tests', () => {
   });
 
   test('returns false for unsafe IPv4 address', () => {
-    // @ts-expect-error this is ok I promise
-    process.env.NODE_ENV = 'production';
-
     const mockIPv4 = {
       kind: () => 'ipv4',
       range: () => 'private',
@@ -83,9 +66,6 @@ describe('IP Safe Tests', () => {
   });
 
   test('returns true for safe IPv4 address', () => {
-    // @ts-expect-error this is ok I promise
-    process.env.NODE_ENV = 'production';
-
     const mockIPv4 = {
       kind: () => 'ipv4',
       range: () => 'unicast',
@@ -98,9 +78,6 @@ describe('IP Safe Tests', () => {
   });
 
   test('returns false for unsafe IPv6 address', () => {
-    // @ts-expect-error this is ok I promise
-    process.env.NODE_ENV = 'production';
-
     const mockIPv6 = {
       kind: () => 'ipv6',
       range: () => 'loopback',
@@ -113,9 +90,6 @@ describe('IP Safe Tests', () => {
   });
 
   test('returns true for safe IPv6 address', () => {
-    // @ts-expect-error this is ok I promise
-    process.env.NODE_ENV = 'production';
-
     const mockIPv6 = {
       kind: () => 'ipv6',
       range: () => 'unicast',
@@ -128,9 +102,6 @@ describe('IP Safe Tests', () => {
   });
 
   test('returns true for safe IPv6 mapped IPv4 address', () => {
-    // @ts-expect-error this is ok I promise
-    process.env.NODE_ENV = 'production';
-
     const mockIPv6 = {
       kind: () => 'ipv6',
       range: () => 'unicast',
