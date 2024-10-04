@@ -22,7 +22,6 @@ function withIPCheck(handler: (req: NextRequest) => Promise<Response>) {
           if (ipaddr.isValid(address)) {
             if (!ipSafe(address)) {
               allSafe = false;
-            } else {
             }
           } else {
             return NextResponse.json({ message: 'Invalid IP address resolution' }, { status: 400 });
@@ -30,7 +29,7 @@ function withIPCheck(handler: (req: NextRequest) => Promise<Response>) {
         }
 
         if (!allSafe) {
-          return NextResponse.json({ message: 'Forbidden: Unsafe IP' }, { status: 403 });
+          return NextResponse.json({ message: 'Forbidden' }, { status: 403 });
         }
 
         return await handler(req);
@@ -43,6 +42,5 @@ function withIPCheck(handler: (req: NextRequest) => Promise<Response>) {
   };
 }
 
-//
 export const GET = withIPCheck(getHandler);
 export const POST = withIPCheck(postHandler);
