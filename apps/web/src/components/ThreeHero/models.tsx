@@ -114,9 +114,9 @@ export function BaseLogoModel() {
         color={blue}
         metalness={0}
         roughness={0.29}
-        transmission={0.9}
-        thickness={1}
-        side={THREE.DoubleSide}
+        //transmission={0.9}
+        //thickness={1}
+        //side={THREE.DoubleSide}
       />
     </mesh>
   );
@@ -275,50 +275,39 @@ export function MintCTA(props) {
   useCursor(hover ? 'pointer' : 'auto');
 
   useFrame(({ clock }) => {
-    if (boxRef.current) {
-      boxRef.current.rotation.z = clock.getElapsedTime() * 0.5;
-    }
-    boxRef.current.position.x = THREE.MathUtils.lerp(
-      boxRef.current.position.x,
-      hover ? -0.3 : 0,
+    boxRef.current.rotation.z = THREE.MathUtils.lerp(
+      boxRef.current.position.z,
+      hover ? Math.PI / 2 : 0,
       0.1,
     );
   });
 
   return (
-    <RigidBody
-      position={[viewport.width * 0.35, viewport.width * 0.25, 0]}
-      type="fixed"
-      //colliders={true}
-      rotation={[0, Math.PI / 3, 0]}
+    <group
+      ref={boxRef}
+      onPointerEnter={() => setHover(true)}
+      onPointerLeave={() => setHover(false)}
+      onPointerUp={() => {
+        window.open('https://mint.base.org', '_blank');
+      }}
     >
-      <group
-        ref={boxRef}
-        onPointerEnter={() => setHover(true)}
-        onPointerLeave={() => setHover(false)}
-        onPointerUp={() => {
-          window.open('https://mint.base.org', '_blank');
-        }}
-      >
-        <RoundedBox args={[0.3, 0.3, 1]} radius={0.05} {...props} castShadow receiveShadow>
-          <meshPhysicalMaterial color={blue} metalness={0.5} roughness={0.5} />
-        </RoundedBox>
-        <Image
-          scale={[0.3, 0.1, 0.2]}
-          url={mintImage.src}
-          transparent
-          rotation={[0, Math.PI / 2, Math.PI]}
-          position={[0.17, 0, 0]}
-        />
-        <Image
-          scale={[0.3, 0.1, 0.2]}
-          url={mintImage.src}
-          transparent
-          rotation={[0, -Math.PI / 2, 0]}
-          position={[-0.17, 0, 0]}
-        />
-      </group>
-      <CuboidCollider args={[0.3, 0.3, 1]} />
-    </RigidBody>
+      <RoundedBox args={[0.3, 0.3, 1]} radius={0.05} {...props} castShadow receiveShadow>
+        <meshPhysicalMaterial color={blue} metalness={0.5} roughness={0.5} />
+      </RoundedBox>
+      <Image
+        scale={[0.3, 0.1, 0.2]}
+        url={mintImage.src}
+        transparent
+        rotation={[0, Math.PI / 2, Math.PI]}
+        position={[0.17, 0, 0]}
+      />
+      <Image
+        scale={[0.3, 0.1, 0.2]}
+        url={mintImage.src}
+        transparent
+        rotation={[0, -Math.PI / 2, 0]}
+        position={[-0.17, 0, 0]}
+      />
+    </group>
   );
 }

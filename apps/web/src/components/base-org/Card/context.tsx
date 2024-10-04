@@ -75,12 +75,12 @@ export default function CardsProvider({ children }: CardsProviderProps) {
       });
     };
 
-    window.addEventListener('mousemove', handleInteraction);
-    window.addEventListener('touchmove', handleInteraction);
+    //window.addEventListener('mousemove', handleInteraction);
+    //window.addEventListener('touchmove', handleInteraction);
 
     return () => {
-      window.removeEventListener('mousemove', handleInteraction);
-      window.removeEventListener('touchmove', handleInteraction);
+      //window.removeEventListener('mousemove', handleInteraction);
+      //window.removeEventListener('touchmove', handleInteraction);
     };
   }, [cards]);
 

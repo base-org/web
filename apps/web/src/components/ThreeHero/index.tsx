@@ -212,7 +212,6 @@ export function Everything(props) {
       <Play />
       <Blobby />
       <Cursor />
-      <MintCTA />
     </group>
   );
 }
