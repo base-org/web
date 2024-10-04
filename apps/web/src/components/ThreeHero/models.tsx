@@ -80,16 +80,24 @@ export function Box(props) {
 export function BaseLogoModel2() {
   const { nodes } = useGLTF(logoModel);
   return (
-    <mesh geometry={nodes.Base_Logo.geometry} castShadow receiveShadow scale={3}>
-      <meshPhysicalMaterial
-        color={blue}
-        metalness={0}
-        roughness={0.25}
-        transmission={0.9}
-        thickness={1}
-        side={THREE.DoubleSide}
-      />
-    </mesh>
+    <Center>
+      <mesh
+        geometry={nodes.Base_Logo.geometry}
+        castShadow
+        receiveShadow
+        scale={3.2}
+        // rotation={[0, Math.PI, 0]}
+      >
+        <meshPhysicalMaterial
+          color={blue}
+          metalness={0}
+          roughness={0.25}
+          //transmission={0.9}
+          //thickness={1}
+          //side={THREE.DoubleSide}
+        />
+      </mesh>
+    </Center>
   );
 }
 
@@ -306,6 +314,19 @@ export function MintCTA({ clicked = false, ...props }: { clicked?: boolean }) {
         transparent
         position={[0, 0.1, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
+      />
+    </group>
+  );
+}
+
+export function Model(props) {
+  const { nodes, materials } = useGLTF('/BaseOrg_BaseLogo_v01-transformed.glb');
+  return (
+    <group {...props} dispose={null}>
+      <mesh
+        geometry={nodes.Base_Logo.geometry}
+        material={nodes.Base_Logo.material}
+        position={[0, 0, 1.435]}
       />
     </group>
   );

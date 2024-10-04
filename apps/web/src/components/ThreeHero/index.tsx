@@ -33,6 +33,7 @@ import {
   //Box,
   BlackMaterial,
   BaseLogoModel,
+  BaseLogoModel2,
   Lightning,
   blue,
   Controller,
@@ -123,6 +124,7 @@ export default function Scene(): JSX.Element {
           </Physics>
         </Suspense>
         <Stats />
+        <OrbitControls />
       </Canvas>
     </div>
   );
@@ -392,11 +394,11 @@ function BaseLogo() {
       <group
         ref={logoRef}
         position={[0, 0, -10]}
-        rotation={[0, -Math.PI, 0]}
+        // rotation={[0, -Math.PI, 0]}
         onPointerUp={() => setClicked((s) => !s)}
       >
         <Center scale={mobile ? 0.075 : 0.13}>
-          <BaseLogoModel />
+          <BaseLogoModel2 />
         </Center>
         <MintCTA position={[0, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} clicked={clicked} />
       </group>
