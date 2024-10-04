@@ -97,6 +97,8 @@ export default function Scene(): JSX.Element {
 
     observer.observe(containerRef.current);
 
+    // containerRef.current.style.height = window.innerHeight + 'px';
+
     return () => {
       observer.disconnect();
     };
@@ -105,7 +107,7 @@ export default function Scene(): JSX.Element {
   const isActive = isVisible && scrollPosition <= 100;
 
   return (
-    <div style={{ width: '100%', height: '100%' }} ref={containerRef}>
+    <div className="absolute h-[100dvh] w-[100dvw]" ref={containerRef}>
       <Canvas shadows frameloop={isActive ? 'always' : 'never'} camera={{ position: [0, 0, 5] }}>
         <fog attach="fog" args={['#111', 2.5, 7]} />
 
