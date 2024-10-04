@@ -254,111 +254,8 @@ function Balls({ count = 10 }: { count?: number }) {
   return <group>{boxes}</group>;
 }
 
-/*
-function Boxes({ count = 10 }) {
-  const instancedApi = useRef(null);
-  const { viewport } = useThree();
-  const vec = useMemo(() => new THREE.Vector3(), []);
-  const gravityEffect = 0.001;
-
-  const instances = useMemo(() => {
-    const temp = [];
-    for (let i = 0; i < count; i++) {
-      temp.push({
-        key: 'instance_' + i,
-        position: [
-          THREE.MathUtils.randFloatSpread(viewport.width * 2),
-          THREE.MathUtils.randFloatSpread(viewport.height * 2),
-          THREE.MathUtils.randFloatSpread(viewport.width * 2),
-        ],
-        rotation: [Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI],
-        scale: 0.5,
-      });
-    }
-    return temp;
-  }, []);
-
-  useFrame(() => {
-    if (!instancedApi.current) return;
-    for (let i = 0; i < count; i++) {
-      const instance = instancedApi.current.at(i);
-      const translation = instance.translation();
-      vec.set(translation.x, translation.y, translation.z).negate().multiplyScalar(gravityEffect);
-      instance.applyImpulse(vec);
-    }
-  });
-
-  return (
-    <InstancedRigidBodies
-      instances={instances}
-      ref={instancedApi}
-      linearDamping={4}
-      angularDamping={1}
-      friction={0.1}
-    >
-      <instancedMesh args={[null, null, count]} castShadow receiveShadow>
-        <boxGeometry args={[0.75, 0.75, 0.75]} />
-        <BlackMaterial />
-      </instancedMesh>
-      <CuboidCollider args={[0.5, 0.5, 0.5]} />
-    </InstancedRigidBodies>
-  );
-}
-
-function Balls({ count = 20 }) {
-  const instancedApi = useRef(null);
-  const { viewport } = useThree();
-  const vec = useMemo(() => new THREE.Vector3(), []);
-  const gravityEffect = 0.00003;
-
-  const instances = useMemo(() => {
-    const temp = [];
-    for (let i = 0; i < count; i++) {
-      temp.push({
-        key: 'instance_' + i,
-        position: [
-          THREE.MathUtils.randFloatSpread(viewport.width * 2),
-          THREE.MathUtils.randFloatSpread(viewport.height * 2),
-          THREE.MathUtils.randFloatSpread(viewport.width * 2),
-        ],
-        rotation: [Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI],
-        scale: 0.25,
-      });
-    }
-    return temp;
-  }, []);
-
-  useFrame(() => {
-    if (!instancedApi.current) return;
-
-    for (let i = 0; i < count; i++) {
-      const instance = instancedApi.current.at(i);
-      const translation = instance.translation();
-      vec.set(translation.x, translation.y, translation.z).negate().multiplyScalar(gravityEffect);
-      instance.applyImpulse(vec);
-    }
-  });
-
-  return (
-    <InstancedRigidBodies
-      instances={instances}
-      ref={instancedApi}
-      linearDamping={4}
-      angularDamping={1}
-      friction={0.1}
-    >
-      <instancedMesh args={[null, null, count]} castShadow receiveShadow>
-        <sphereGeometry args={[0.25, 64, 64]} />
-        <meshPhysicalMaterial color={blue} />
-      </instancedMesh>
-      <BallCollider args={[0.25]} />
-    </InstancedRigidBodies>
-  );
-}*/
-
 function BaseLogo() {
   const { size } = useThree();
-  const [clicked, setClicked] = useState<boolean>(false);
   const logoRef = useRef<THREE.Group>(null!);
   const doneRef = useRef<boolean>(false);
 
@@ -369,11 +266,7 @@ function BaseLogo() {
     } else {
       logoRef.current.rotation.y = THREE.MathUtils.lerp(logoRef.current.rotation.y, 0, 0.05);
     }
-    logoRef.current.position.z = THREE.MathUtils.lerp(
-      logoRef.current.position.z,
-      clicked ? 2 : 0,
-      0.05,
-    );
+    logoRef.current.position.z = THREE.MathUtils.lerp(logoRef.current.position.z, 0, 0.05);
 
     // lerp never gets to 0
     if (logoRef.current.position.z > -0.01) {
@@ -389,16 +282,10 @@ function BaseLogo() {
   return (
     <RigidBody type="kinematicPosition" colliders={false}>
       <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[10, mobile ? 1.1 : 2]} />
-      <group
-        ref={logoRef}
-        position={[0, 0, -10]}
-        // rotation={[0, -Math.PI, 0]}
-        onPointerUp={() => setClicked((s) => !s)}
-      >
+      <group ref={logoRef} position={[0, 0, -10]}>
         <Center scale={mobile ? 0.075 : 0.13}>
           <BaseLogoModel2 />
         </Center>
-        <MintCTA position={[0, 0, 0.75]} rotation={[Math.PI / 2, 0, 0]} clicked={clicked} />
       </group>
     </RigidBody>
   );

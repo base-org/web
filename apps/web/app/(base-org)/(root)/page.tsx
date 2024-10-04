@@ -61,7 +61,7 @@ export default async function Home() {
     <ErrorsProvider context="base_landing_page">
       <AnalyticsProvider context="base_landing_page">
         <AnalyticsProvider context="hero">
-          <div className="relative h-screen w-full">
+          <div className="relative h-[100dvh] w-full">
             <div className="fixed z-10 h-full w-full">
               <DynamicThreeHero />
             </div>
