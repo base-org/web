@@ -400,7 +400,7 @@ function BaseLogo() {
         <Center scale={mobile ? 0.075 : 0.13}>
           <BaseLogoModel2 />
         </Center>
-        <MintCTA position={[0, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} clicked={clicked} />
+        <MintCTA position={[0, 0, 0.75]} rotation={[Math.PI / 2, 0, 0]} clicked={clicked} />
       </group>
     </RigidBody>
   );
