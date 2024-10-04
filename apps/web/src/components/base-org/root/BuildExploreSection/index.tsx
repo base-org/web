@@ -12,7 +12,7 @@ export default async function BuildExploreSection() {
       <AnalyticsProvider context="build_tiles">
         <Title level={TitleLevel.Title1}>Build</Title>
         <div className="mb-12 mt-8 flex w-full flex-col gap-4 md:flex-row">
-          <CardLink href="https://docs.base.org/" eventName="docs">
+          <CardLink href="https://docs.base.org/">
             <div className="flex items-center gap-4">
               <svg
                 className="h-[60px]"
@@ -51,7 +51,7 @@ export default async function BuildExploreSection() {
               </div>
             </div>
           </CardLink>
-          <CardLink href="/getstarted" eventName="get_started">
+          <CardLink href="/getstarted">
             <div className="flex items-center gap-4">
               <svg
                 className="h-[60px]"
@@ -82,7 +82,7 @@ export default async function BuildExploreSection() {
       <AnalyticsProvider context="explore_tiles">
         <Title level={TitleLevel.Title1}>Explore</Title>
         <div className="mt-8 flex w-full flex-col gap-4 md:flex-row">
-          <CardLink href="/ecosystem" eventName="ecosystem">
+          <CardLink href="/ecosystem">
             <div className="flex items-center gap-4">
               <svg
                 className="h-[60px]"
@@ -119,7 +119,7 @@ export default async function BuildExploreSection() {
               </div>
             </div>
           </CardLink>
-          <CardLink href="https://bridge.base.org/" eventName="bridge">
+          <CardLink href="https://bridge.base.org/">
             <div className="flex items-center gap-4">
               <svg
                 className="h-[60px]"

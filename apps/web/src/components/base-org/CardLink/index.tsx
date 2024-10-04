@@ -8,14 +8,13 @@ import React from 'react';
 type CardLinkProps = {
   children: React.ReactNode;
   href: string;
-  eventName?: string;
 };
 
-export default function CardLink({ children, href, eventName }: CardLinkProps) {
+export default function CardLink({ children, href }: CardLinkProps) {
   const externalResource = href.startsWith('https://');
   const target = externalResource ? '_blank' : undefined;
   return (
-    <Link href={href} target={target} className="group w-full" eventName={eventName}>
+    <Link href={href} target={target} className="group w-full">
       <Card
         innerClassName="p-4 transition-all active:p-6 bg-[#181818] group-hover:bg-[#1C1C1C]"
         wrapperClassName="transition-all"

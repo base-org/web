@@ -79,7 +79,6 @@ function MenuMobileButton({
             >
               <Link
                 href={subItem.href + '?utm_source=dotorg&utm_medium=nav'}
-                eventName={subItem.eventName}
                 target={subItem.href.startsWith('https://') ? '_blank' : undefined}
                 className="group/sublink inline-block flex w-full items-center justify-between gap-2 rounded-2xl py-2 "
               >

@@ -111,7 +111,6 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
                     <Link
                       key={`link-${links[hoverIndex].name}-subitem-${subItem.name}`.toLocaleLowerCase()}
                       href={subItem.href + '?utm_source=dotorg&utm_medium=nav'}
-                      eventName={subItem.eventName}
                       target={subItem.href.startsWith('https://') ? '_blank' : undefined}
                       className="group/sublink flex justify-between rounded-lg bg-white bg-opacity-0 px-3 py-2 text-sm transition-all duration-300 hover:bg-opacity-20"
                     >

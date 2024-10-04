@@ -25,7 +25,7 @@ export default function EcosystemCard({ name, url, description, imageUrl, tags }
         className="flex w-full flex-col justify-start gap-8"
       >
         <div className="flex flex-row justify-between">
-          <div className="relative h-[80px] w-[80px] rounded-[3px]">
+          <div className="relative z-20 h-[80px] w-[80px] rounded-[3px]">
             <ImageWithLoading
               src={imageUrl}
               alt={`Logo of ${name}`}
@@ -33,7 +33,7 @@ export default function EcosystemCard({ name, url, description, imageUrl, tags }
               height={80}
               backgroundClassName="bg-black"
             />
-            <div className="absolute inset-0 h-full w-full blur-[2rem]">
+            <div className="absolute inset-0 -z-10 h-full w-full opacity-70 blur-[1rem]">
               <ImageWithLoading
                 src={imageUrl}
                 alt={`Logo of ${name}`}

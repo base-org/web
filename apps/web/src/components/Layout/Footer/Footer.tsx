@@ -35,7 +35,7 @@ export function Footer() {
                 </div>
                 <div className="flex flex-col">
                   <p className="text-white">
-                    <Link href="/getstarted" className="underline" eventName="get_started">
+                    <Link href="/getstarted" className="underline">
                       Builder Resource Kit
                     </Link>
                     : Get help to build and grow your project on Base.
@@ -54,7 +54,7 @@ export function Footer() {
             </div>
             <div className="flex h-full flex-col gap-5 pt-24 lg:flex-row lg:gap-10 lg:pt-0">
               <div className="flex h-full flex-col gap-4 lg:flex-row lg:gap-10">
-                <Link href="/about" eventName="about">
+                <Link href="/about">
                   <span className="font-mono text-xl text-white">About</span>
                 </Link>
                 <Link
@@ -62,7 +62,6 @@ export function Footer() {
                   className="font-mono text-xl text-white"
                   target="_blank"
                   rel="noreferrer noopener"
-                  eventName="docs"
                 >
                   Docs
                 </Link>
@@ -71,18 +70,13 @@ export function Footer() {
                   className="font-mono text-xl text-white"
                   target="_blank"
                   rel="noreferrer noopener"
-                  eventName="bridge"
                 >
                   Bridge
                 </Link>
-                <Link
-                  href="https://base.mirror.xyz"
-                  className="font-mono text-xl text-white"
-                  eventName="blog"
-                >
+                <Link href="https://base.mirror.xyz" className="font-mono text-xl text-white">
                   Blog
                 </Link>
-                <Link href="/jobs" eventName="jobs">
+                <Link href="/jobs">
                   <span className="font-mono text-xl text-white">Jobs</span>
                 </Link>
               </div>
@@ -93,7 +87,6 @@ export function Footer() {
                   rel="noreferrer noopener"
                   title="Join us on Discord"
                   aria-label="Join us on Discord"
-                  eventName="discord"
                 >
                   <Icon name="discord" width="24" height="20" />
                 </Link>
@@ -103,7 +96,6 @@ export function Footer() {
                   rel="noreferrer noopener"
                   title="Join us on Twitter"
                   aria-label="Join us on Twitter"
-                  eventName="x"
                 >
                   <Icon name="twitter" width="24" height="20" />
                 </Link>
@@ -113,7 +105,6 @@ export function Footer() {
                   rel="noreferrer noopener"
                   title="Join us on Github"
                   aria-label="Join us on Github"
-                  eventName="github"
                 >
                   <Icon name="github" width="24" height="24" />
                 </Link>

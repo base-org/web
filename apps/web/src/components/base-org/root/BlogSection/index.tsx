@@ -103,13 +103,6 @@ export default function BlogSection() {
     [],
   );
 
-  const eventData = useMemo(() => {
-    return {
-      url: limitedBlogPosts[currentIndex].url,
-      title: limitedBlogPosts[currentIndex].title,
-    };
-  }, [currentIndex, limitedBlogPosts]);
-
   return (
     <section ref={sectionRef} className="group">
       <div className="relative mx-auto w-full">
@@ -162,15 +155,10 @@ export default function BlogSection() {
             {limitedBlogPosts[currentIndex].title}
           </Title>
           <div className="ml-auto flex items-center gap-4">
-            <Link
-              href={limitedBlogPosts[currentIndex].url}
-              target="_blank"
-              eventName="blog_post"
-              eventData={eventData}
-            >
+            <Link href={limitedBlogPosts[currentIndex].url} target="_blank">
               <Button variant={ButtonVariants.Secondary}>Read</Button>
             </Link>
-            <Link href="https://base.mirror.xyz/" target="_blank" eventName="subscribe">
+            <Link href="https://base.mirror.xyz/" target="_blank">
               <Button variant={ButtonVariants.Outlined}>Subscribe</Button>
             </Link>
           </div>

@@ -1,32 +1,37 @@
 'use client';
-import { ActionType, CCAEventData, ComponentType } from 'libs/base-ui/utils/logEvent';
+import { ActionType, ComponentType } from 'libs/base-ui/utils/logEvent';
 import NextLink, { LinkProps } from 'next/link';
 import { AnchorHTMLAttributes, MouseEvent, useCallback } from 'react';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 
-type AnchorProps = LinkProps &
-  AnchorHTMLAttributes<HTMLAnchorElement> & {
-    eventName?: string;
-    eventData?: CCAEventData;
-  };
+type AnchorProps = LinkProps & AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export default function Link({ children, eventName, eventData, onClick, ...props }: AnchorProps) {
+export default function Link({ children, onClick, ...props }: AnchorProps) {
   const { logEventWithContext } = useAnalytics();
 
   const handleOnClick = useCallback(
     (event: MouseEvent<HTMLAnchorElement>) => {
-      // Log event if eventName is defined
-      if (eventName) {
-        logEventWithContext(eventName, ActionType.click, {
+      const target = event.currentTarget;
+
+      try {
+        const url = new URL(target.href);
+        const { href, hostname, origin, pathname, search } = url;
+
+        // Log event if eventName is defined
+        logEventWithContext('link_clicked', ActionType.click, {
           componentType: ComponentType.link,
-          ...eventData,
+          href,
+          hostname,
+          origin,
+          pathname,
+          search,
         });
-      }
+      } catch (error) {}
 
       // Default onClick event
       if (onClick) onClick(event);
     },
-    [eventName, onClick, logEventWithContext, eventData],
+    [onClick, logEventWithContext],
   );
 
   return (

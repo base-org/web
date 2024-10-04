@@ -21,7 +21,7 @@ const tags = [
     .map((app) => app.tags)
     .flat()
     .filter((value, index, array) => {
-      return array.indexOf(value) === index;
+      return array.indexOf(value.toLocaleLowerCase()) === index;
     }),
 ];
 

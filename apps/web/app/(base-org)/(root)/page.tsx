@@ -73,12 +73,12 @@ export default async function Home() {
                 creativity, and freedom.
               </p>
               <div className="mt-4 flex gap-4">
-                <Link href="/getstarted?utm_source=dotorg&medium=hero" eventName="get_started">
+                <Link href="/getstarted?utm_source=dotorg&medium=hero">
                   <Button variant={ButtonVariants.Secondary} iconName="baseOrgDiagonalUpArrow">
                     Start building
                   </Button>
                 </Link>
-                <Link href="/names?utm_source=dotorg&medium=hero" eventName="basenames">
+                <Link href="/names?utm_source=dotorg&medium=hero">
                   <Button variant={ButtonVariants.Outlined} iconName="baseOrgDiagonalUpArrow">
                     Get a Basename
                   </Button>
