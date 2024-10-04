@@ -131,7 +131,7 @@ export default function Scene(): JSX.Element {
 function Effects() {
   return (
     <EffectComposer multisampling={0} stencilBuffer={false}>
-      <Bloom mipmapBlur luminanceThreshold={1} intensity={1} />
+      <Bloom mipmapBlur luminanceThreshold={0.5} intensity={1} />
       <SMAA />
     </EffectComposer>
   );

@@ -297,7 +297,7 @@ export function MintCTA({ clicked = false, ...props }: { clicked?: boolean }) {
         <meshPhysicalMaterial color={blue} metalness={0.5} roughness={0.5} />
       </RoundedBox>*/}
       <mesh>
-        <cylinderGeometry args={[0.5, 0.5, 0.1, 64, 64]} />
+        <cylinderGeometry args={[0.4, 0.4, 0.1, 64, 64]} />
         <BlackMaterial />
       </mesh>
       <Image
