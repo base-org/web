@@ -1,6 +1,6 @@
 'use client';
 
-import { isDevelopment } from 'libs/base-ui/constants';
+import { isDevelopment } from '../constants';
 import logEvent, { ActionType, AnalyticsEventImportance, CCAEventData } from '../utils/logEvent';
 import React, { ReactNode, createContext, useCallback, useContext, useMemo } from 'react';
 
