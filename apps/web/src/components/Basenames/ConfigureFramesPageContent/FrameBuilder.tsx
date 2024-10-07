@@ -483,7 +483,7 @@ export default function FrameBuilder() {
                   alt="preview frame"
                 />
               ) : (
-                <Frame url={debouncedNewFrameUrl} />
+                <Frame className="w-[414px]" url={debouncedNewFrameUrl} />
               )}
             </div>
             <Button
