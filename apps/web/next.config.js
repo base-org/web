@@ -224,6 +224,8 @@ module.exports = extendBaseConfig(
       });
 
       config.externals.push('pino-pretty');
+      config.experiments = { ...config.experiments, asyncWebAssembly: true };
+
       return config;
     },
     images: {

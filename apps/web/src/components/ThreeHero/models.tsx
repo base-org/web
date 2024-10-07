@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 'use client';
+
 import { useGLTF, Center } from '@react-three/drei';
 import { MeshProps, Vector3, Euler, useLoader } from '@react-three/fiber';
 
@@ -24,8 +25,8 @@ import lightningSVG from './assets/lightning.svg';
 import { useMemo } from 'react';
 import { ExtrudeGeometryOptions } from 'three';
 
-/* load draco locally */
-// useGLTF.setDecoderPath('draco/');
+/* load draco locally (v1.5.7) */
+useGLTF.setDecoderPath('draco/');
 
 /* Constants */
 export const blue = '#105eff';
