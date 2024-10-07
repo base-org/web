@@ -3,7 +3,6 @@ import Input from 'apps/web/src/components/Input';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import { Address, isAddress } from 'viem';
 import { useEnsAddress } from 'wagmi';
-import { BaseName } from '@coinbase/onchainkit/identity';
 import { isBasename, isEnsName } from 'apps/web/src/utils/usernames';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
@@ -31,7 +30,7 @@ export default function SearchAddressInput({ onChange }: SearchAddressInputProps
   /* 2. User enters an Basename */
   const validBasename = isBasename(value);
 
-  const { basenameChain } = useBasenameChain(value as BaseName);
+  const { basenameChain } = useBasenameChain();
 
   const { data: basenameAddress, isLoading: basenameAddressIsLoading } = useEnsAddress({
     name: value,
