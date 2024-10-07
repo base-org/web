@@ -9,6 +9,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { useMediaQuery } from 'usehooks-ts';
 
 type CardRef = {
   blobRef: React.RefObject<HTMLDivElement>;
@@ -47,8 +48,9 @@ to use only one event
 */
 export default function CardsProvider({ children }: CardsProviderProps) {
   const [cards, setCards] = useState<Record<string, CardRef>>({});
-
+  const isDesktop = useMediaQuery('(min-width: 768px)');
   useEffect(() => {
+    if (!isDesktop) return;
     const handleInteraction = (ev: MouseEvent | TouchEvent) => {
       const clientX = 'touches' in ev ? ev.touches[0].clientX : ev.clientX;
       const clientY = 'touches' in ev ? ev.touches[0].clientY : ev.clientY;
@@ -75,14 +77,14 @@ export default function CardsProvider({ children }: CardsProviderProps) {
       });
     };
 
-    //window.addEventListener('mousemove', handleInteraction);
-    //window.addEventListener('touchmove', handleInteraction);
+    window.addEventListener('mousemove', handleInteraction);
+    window.addEventListener('touchmove', handleInteraction);
 
     return () => {
-      //window.removeEventListener('mousemove', handleInteraction);
-      //window.removeEventListener('touchmove', handleInteraction);
+      window.removeEventListener('mousemove', handleInteraction);
+      window.removeEventListener('touchmove', handleInteraction);
     };
-  }, [cards]);
+  }, [cards, isDesktop]);
 
   const registerCard = useCallback((id: string, cardRef: CardRef) => {
     setCards((prevCards) => ({ ...prevCards, [id]: cardRef }));
