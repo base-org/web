@@ -1,6 +1,7 @@
+/* eslint-disable react/no-unknown-property */
 'use client';
 import * as THREE from 'three';
-import { useRef, useMemo, useCallback, useState, useEffect, Suspense } from 'react';
+import { useRef, useMemo, Suspense } from 'react';
 import { Canvas, useFrame, useThree, Vector3 } from '@react-three/fiber';
 import { Lightformer, Environment, Html, Center } from '@react-three/drei';
 import {
@@ -136,10 +137,8 @@ function EnvironmentSetup() {
   - Loads the GLTF file / 3D scene
 */
 export function Everything() {
-  const groupRef = useRef();
-
   return (
-    <group ref={groupRef} dispose={null}>
+    <group dispose={null}>
       <BaseLogo />
       <Lightning />
       <Balls />
@@ -197,10 +196,12 @@ function Balls({ count = 10 }: { count?: number }) {
 
 function BaseLogo() {
   const { size } = useThree();
-  const logoRef = useRef<THREE.Group>(null!);
+  const logoRef = useRef<THREE.Group>(null);
   const doneRef = useRef<boolean>(false);
 
-  useFrame(({ mouse }) => {
+  useFrame(() => {
+    if (!logoRef.current) return;
+
     if (doneRef.current) {
       logoRef.current.rotation.y = THREE.MathUtils.lerp(logoRef.current.rotation.y, mouse.x, 0.05);
       logoRef.current.rotation.x = THREE.MathUtils.lerp(logoRef.current.rotation.x, -mouse.y, 0.05);
