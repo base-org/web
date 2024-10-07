@@ -1,15 +1,19 @@
 /* eslint-disable react/no-unknown-property */
 'use client';
+
 import * as THREE from 'three';
-import { useRef, useMemo, Suspense } from 'react';
-import { Canvas, useFrame, useThree, Vector3 } from '@react-three/fiber';
+import { useRef, useMemo, Suspense, useCallback } from 'react';
+import { Canvas, Euler, useFrame, useThree, Vector3 } from '@react-three/fiber';
 import { Lightformer, Environment, Html, Center } from '@react-three/drei';
 import {
   Physics,
-  RigidBody,
   BallCollider,
   Vector3Tuple,
   CylinderCollider,
+  CylinderArgs,
+  RapierRigidBody,
+  RigidBody,
+  BallArgs,
 } from '@react-three/rapier';
 import { EffectComposer, Bloom, SMAA } from '@react-three/postprocessing';
 import {
@@ -33,25 +37,36 @@ import baseLogo from './assets/base-logo.svg';
 // Environnment
 import environmentLight from './assets/environmentLight.jpg';
 import Image, { StaticImageData } from 'next/image';
+import { useMediaQuery } from 'usehooks-ts';
 
 /* 
   The Main Scene
   - Keeps track of window focus, intersection observer
-  - Listen to Mouse event for rotation context
+  - Listen to pointer event for rotation context
   - Global setup such as gravity, dpr & Physics
 */
 
 const gravity: Vector3Tuple = [0, 0, 0];
 
+const sceneFogArguments: [color: THREE.ColorRepresentation, near: number, far: number] = [
+  '#111',
+  2.5,
+  7,
+];
+
+const sceneCamera = { position: [0, 0, 5] as Vector3 };
+const sceneSphereArguments: [radius: number, widthSegments: number, heightSegments: number] = [
+  7, 64, 64,
+];
 export default function Scene(): JSX.Element {
   const isActive = true;
 
   return (
-    <Canvas shadows frameloop={isActive ? 'always' : 'never'} camera={{ position: [0, 0, 5] }}>
-      <fog attach="fog" args={['#111', 2.5, 7]} />
+    <Canvas shadows frameloop={isActive ? 'always' : 'never'} camera={sceneCamera}>
+      <fog attach="fog" args={sceneFogArguments} />
 
       <mesh>
-        <sphereGeometry args={[7, 64, 64]} />
+        <sphereGeometry args={sceneSphereArguments} />
         <meshPhysicalMaterial color="#666" side={THREE.BackSide} depthTest={false} />
       </mesh>
       <Effects />
@@ -90,12 +105,20 @@ function Loader() {
   - Loads the JPEG / HDR gainmap file
   - Set as global texture
 */
+const light1: Vector3 = [5, 5, -3];
+const light2: Vector3 = [0, -15, -9];
+const light3: Vector3 = [10, 1, 0];
+const light4: Vector3 = [10, 10, 0];
 function EnvironmentSetup() {
-  const light1: Vector3 = useMemo(() => [5, 5, -3], []);
-  const light2: Vector3 = useMemo(() => [0, -15, -9], []);
-  const light3: Vector3 = useMemo(() => [10, 1, 0], []);
-  const light4: Vector3 = useMemo(() => [10, 10, 0], []);
-
+  const onLightUpdated = useCallback(
+    (
+      self: THREE.Mesh<
+        THREE.BufferGeometry<THREE.NormalBufferAttributes>,
+        THREE.Material | THREE.Material[]
+      >,
+    ) => self.lookAt(0, 0, 0),
+    [],
+  );
   return (
     <Environment files={environmentLight.src}>
       <Lightformer
@@ -124,7 +147,7 @@ function EnvironmentSetup() {
         form="ring"
         color="white"
         intensity={5}
-        onUpdate={(self) => self.lookAt(0, 0, 0)}
+        onUpdate={onLightUpdated}
         position={light4}
         scale={4}
       />
@@ -156,55 +179,70 @@ export function Everything() {
   );
 }
 
-function Boxes({ count = 10 }: { count?: number }) {
+const boxGeometry: [width: number, height: number, depth: number] = [0.5, 0.5, 0.5];
+const boxesCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+function Boxes() {
   const boxes = useMemo(
     () =>
-      new Array(count).fill(null).map((_, index) => {
+      boxesCount.map((id) => {
         return (
-          <PhysicsMesh scale={0.5} gravityEffect={0.03} key={index}>
+          <PhysicsMesh scale={0.5} gravityEffect={0.03} key={id}>
             <mesh castShadow receiveShadow>
-              <boxGeometry args={[0.5, 0.5, 0.5]} />
+              <boxGeometry args={boxGeometry} />
               <BlackMaterial />
             </mesh>
           </PhysicsMesh>
         );
       }),
-    [count],
+    [],
   );
 
   return <group>{boxes}</group>;
 }
 
-function Balls({ count = 10 }: { count?: number }) {
+const sphereGeometry: [width: number, height: number, depth: number] = [0.25, 64, 64];
+const sphereCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+function Balls() {
   const boxes = useMemo(
     () =>
-      new Array(count).fill(null).map((_, index) => {
+      sphereCount.map((id) => {
         return (
-          <PhysicsMesh scale={0.25} gravityEffect={0.004} key={index}>
+          <PhysicsMesh scale={0.25} gravityEffect={0.004} key={id}>
             <mesh castShadow receiveShadow>
-              <sphereGeometry args={[0.25, 64, 64]} />
+              <sphereGeometry args={sphereGeometry} />
               <meshPhysicalMaterial color={blue} />
             </mesh>
           </PhysicsMesh>
         );
       }),
-    [count],
+    [],
   );
 
   return <group>{boxes}</group>;
 }
 
+const baseLogoRotation: Euler = [Math.PI / 2, 0, 0];
+const baseLogoPosition: [x: number, y: number, z: number] = [0, 0, -10];
+
 function BaseLogo() {
-  const { size } = useThree();
   const logoRef = useRef<THREE.Group>(null);
   const doneRef = useRef<boolean>(false);
+  const isMobile = useMediaQuery('(max-width: 769px)');
 
-  useFrame(({ mouse }) => {
+  useFrame(({ pointer }) => {
     if (!logoRef.current) return;
 
     if (doneRef.current) {
-      logoRef.current.rotation.y = THREE.MathUtils.lerp(logoRef.current.rotation.y, mouse.x, 0.05);
-      logoRef.current.rotation.x = THREE.MathUtils.lerp(logoRef.current.rotation.x, -mouse.y, 0.05);
+      logoRef.current.rotation.y = THREE.MathUtils.lerp(
+        logoRef.current.rotation.y,
+        pointer.x,
+        0.05,
+      );
+      logoRef.current.rotation.x = THREE.MathUtils.lerp(
+        logoRef.current.rotation.x,
+        -pointer.y,
+        0.05,
+      );
     } else {
       logoRef.current.rotation.y = THREE.MathUtils.lerp(logoRef.current.rotation.y, 0, 0.05);
     }
@@ -216,16 +254,13 @@ function BaseLogo() {
     }
   });
 
-  let mobile = false;
-  if (size.width < 768) {
-    mobile = true;
-  }
+  const cylinderArguments: CylinderArgs = useMemo(() => [10, isMobile ? 1.1 : 2], [isMobile]);
 
   return (
     <RigidBody type="kinematicPosition" colliders={false}>
-      <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[10, mobile ? 1.1 : 2]} />
-      <group ref={logoRef} position={[0, 0, -10]}>
-        <Center scale={mobile ? 0.075 : 0.13}>
+      <CylinderCollider rotation={baseLogoRotation} args={cylinderArguments} />
+      <group ref={logoRef} position={baseLogoPosition}>
+        <Center scale={isMobile ? 0.075 : 0.13}>
           <BaseLogoModel />
         </Center>
       </group>
@@ -233,6 +268,7 @@ function BaseLogo() {
   );
 }
 
+const ballArguments: BallArgs = [1];
 export function PhysicsMesh({
   vec = new THREE.Vector3(),
   r = THREE.MathUtils.randFloatSpread,
@@ -246,7 +282,7 @@ export function PhysicsMesh({
   gravityEffect?: number;
   children: React.ReactNode;
 }) {
-  const api = useRef();
+  const rigidBodyApiRef = useRef<RapierRigidBody>(null);
   const { viewport } = useThree();
 
   const randomNumberBetween = (min: number, max: number) => {
@@ -262,13 +298,17 @@ export function PhysicsMesh({
         randomNumberBetween(viewport.height * 0.5, viewport.height * 2),
         randomNumberBetween(viewport.width * 0.5, viewport.width * 2),
       ),
-    [],
+    [viewport.height, viewport.width],
   );
-  const rot = useMemo(() => new THREE.Vector3(r(Math.PI), r(Math.PI), r(Math.PI)), []);
+  const rot = useMemo(() => new THREE.Vector3(r(Math.PI), r(Math.PI), r(Math.PI)), [r]);
 
   useFrame(() => {
-    api.current?.applyImpulse(
-      vec.copy(api.current.translation()).negate().multiplyScalar(gravityEffect),
+    if (!rigidBodyApiRef.current) return;
+    const vector = rigidBodyApiRef.current.translation();
+    const vector3 = new THREE.Vector3(vector.x, vector.y, vector.z);
+    rigidBodyApiRef.current.applyImpulse(
+      vec.copy(vector3).negate().multiplyScalar(gravityEffect),
+      true,
     );
   });
 
@@ -279,39 +319,46 @@ export function PhysicsMesh({
       friction={0.1}
       position={pos.toArray()}
       rotation={rot.toArray()}
-      ref={api}
+      ref={rigidBodyApiRef}
       colliders={false}
       scale={scale}
     >
-      <BallCollider args={[1]} />
+      <BallCollider args={ballArguments} />
       {children}
     </RigidBody>
   );
 }
 
-function Pointer({ vec = new THREE.Vector3() }) {
-  const ref = useRef();
-  const light = useRef();
-  const { size } = useThree();
-  let mobile = false;
-  if (size.width < 768) {
-    mobile = true;
-  }
+const pointerPosition: Vector3 = [0, 0, 0];
+const pointerLightPosition: Vector3 = [0, 0, 10];
+function Pointer() {
+  const vec = new THREE.Vector3();
+  const rigidBodyApiRef = useRef<RapierRigidBody>(null);
+  const light = useRef<THREE.DirectionalLight>(null);
+  const isMobile = useMediaQuery('(max-width: 769px)');
 
-  useFrame(({ mouse, viewport }) => {
-    ref.current?.setNextKinematicTranslation(
-      vec.set((mouse.x * viewport.width) / 2, (mouse.y * viewport.height) / 2, 0),
+  useFrame(({ pointer, viewport }) => {
+    rigidBodyApiRef.current?.setNextKinematicTranslation(
+      vec.set((pointer.x * viewport.width) / 2, (pointer.y * viewport.height) / 2, 0),
     );
     light.current?.position.set(0, 0, 10);
-    light.current?.lookAt((mouse.x * viewport.width) / 2, (mouse.y * viewport.height) / 2, 0);
+    light.current?.lookAt((pointer.x * viewport.width) / 2, (pointer.y * viewport.height) / 2, 0);
   });
+
+  const ballColliderArgs: BallArgs = useMemo(() => [isMobile ? 1 : 2], [isMobile]);
+
   return (
     <>
-      <RigidBody position={[0, 0, 0]} type="kinematicPosition" colliders={false} ref={ref}>
-        <BallCollider args={[mobile ? 1 : 2]} />
+      <RigidBody
+        position={pointerPosition}
+        type="kinematicPosition"
+        colliders={false}
+        ref={rigidBodyApiRef}
+      >
+        <BallCollider args={ballColliderArgs} />
       </RigidBody>
 
-      <directionalLight ref={light} position={[0, 0, 10]} intensity={10} color={blue} />
+      <directionalLight ref={light} position={pointerLightPosition} intensity={10} color={blue} />
     </>
   );
 }
