@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 const AnimatedIcon = ({
@@ -25,7 +24,7 @@ const AnimatedIcon = ({
 
   const pathVariants = {
     hidden: { pathLength: 0, opacity: 0 },
-    visible: (custom) => ({
+    visible: (custom: number) => ({
       pathLength: 1,
       opacity: 1,
       transition: {
