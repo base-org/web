@@ -71,7 +71,6 @@ const contentSecurityPolicy = {
   'default-src': [
     "'self'",
     "'unsafe-inline'", // NextJS requires 'unsafe-inline'
-    "'wasm-unsafe-eval'", // wasm requires 'unsafe-eval'
     isLocalDevelopment ? "'unsafe-eval'" : '',
     baseXYZDomains,
     ccaDomain,
@@ -118,7 +117,6 @@ const contentSecurityPolicy = {
     'https://sdk-api.neynar.com/', // Neymar API
     'https://unpkg.com/@lottiefiles/dotlottie-web@0.31.1/dist/dotlottie-player.wasm', // lottie player
     `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
-    `https://www.gstatic.com/draco/versioned/decoders/`,
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
