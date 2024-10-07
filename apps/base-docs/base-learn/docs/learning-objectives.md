@@ -48,7 +48,7 @@ Use the script to regenerate this file.
 
 - Verify a deployed smart contract on Etherscan
 - Connect a wallet to a contract in Etherscan
-- Use etherscan to interact with your own deployed contact
+- Use etherscan to interact with your own deployed contract
 
 ### [Hardhat Forking](./hardhat-forking/hardhat-forking.md)
 
