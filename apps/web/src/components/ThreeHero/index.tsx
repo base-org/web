@@ -1,39 +1,19 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable react-perf/jsx-no-new-object-as-prop */
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react-perf/jsx-no-new-function-as-prop */
-/* eslint-disable react-perf/jsx-no-new-array-as-prop */
-/* eslint-disable react/no-unknown-property */
-/* sorry! */
-
 'use client';
 import * as THREE from 'three';
 import { useRef, useMemo, useCallback, useState, useEffect, Suspense } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame, useThree, Vector3 } from '@react-three/fiber';
 import { Lightformer, Environment, Html, Center, Stats, OrbitControls } from '@react-three/drei';
 import {
   Physics,
   RigidBody,
   BallCollider,
-  CuboidCollider,
   Vector3Tuple,
   CylinderCollider,
-  InstancedRigidBodies,
 } from '@react-three/rapier';
-
 import { EffectComposer, Bloom, SMAA } from '@react-three/postprocessing';
-
 import {
-  //Box,
   BlackMaterial,
   BaseLogoModel,
-  BaseLogoModel2,
   Lightning,
   blue,
   Controller,
@@ -45,13 +25,13 @@ import {
   Play,
   Blobby,
   Cursor,
-  MintCTA,
 } from './models';
 
 import baseLogo from './assets/base-logo.svg';
 
 // Environnment
 import environmentLight from './assets/environmentLight.jpg';
+import Image, { StaticImageData } from 'next/image';
 
 /* 
   The Main Scene
@@ -115,10 +95,8 @@ export default function Scene(): JSX.Element {
           <sphereGeometry args={[7, 64, 64]} />
           <meshPhysicalMaterial color="#666" side={THREE.BackSide} depthTest={false} />
         </mesh>
-
         <Effects />
         <EnvironmentSetup />
-
         <Suspense fallback={<Loader />}>
           <Physics gravity={gravity} timeStep="vary" paused={!isActive}>
             <Pointer />
@@ -140,11 +118,10 @@ function Effects() {
 }
 
 function Loader() {
-  //const { progress } = useProgress();
   return (
     <Html center>
       <div className="h-[50px] w-[50px] animate-pulse">
-        <img src={baseLogo.src} alt="Loading..." className="w-[50px]" />
+        <Image src={baseLogo as StaticImageData} alt="Loading..." className="w-[50px]" />
       </div>
     </Html>
   );
@@ -156,13 +133,18 @@ function Loader() {
   - Set as global texture
 */
 function EnvironmentSetup() {
+  const light1: Vector3 = useMemo(() => [5, 5, -3], []);
+  const light2: Vector3 = useMemo(() => [0, -15, -9], []);
+  const light3: Vector3 = useMemo(() => [10, 1, 0], []);
+  const light4: Vector3 = useMemo(() => [10, 10, 0], []);
+
   return (
     <Environment files={environmentLight.src}>
       <Lightformer
         form="ring"
         intensity={6}
         rotation-x={Math.PI / 2}
-        position={[5, 5, -3]}
+        position={light1}
         scale={4}
         color="white"
       />
@@ -170,14 +152,14 @@ function EnvironmentSetup() {
         form="circle"
         intensity={20}
         rotation-x={Math.PI / 2}
-        position={[0, -15, -9]}
+        position={light2}
         scale={2}
       />
       <Lightformer
         form="circle"
         intensity={2}
         rotation-y={-Math.PI / 2}
-        position={[10, 1, 0]}
+        position={light3}
         scale={8}
       />
       <Lightformer
@@ -185,7 +167,7 @@ function EnvironmentSetup() {
         color="white"
         intensity={5}
         onUpdate={(self) => self.lookAt(0, 0, 0)}
-        position={[10, 10, 0]}
+        position={light4}
         scale={4}
       />
     </Environment>
@@ -196,11 +178,11 @@ function EnvironmentSetup() {
   The GLTF Scene
   - Loads the GLTF file / 3D scene
 */
-export function Everything(props) {
+export function Everything() {
   const groupRef = useRef();
 
   return (
-    <group ref={groupRef} {...props} dispose={null}>
+    <group ref={groupRef} dispose={null}>
       <BaseLogo />
       <Lightning />
       <Balls />
@@ -286,7 +268,7 @@ function BaseLogo() {
       <CylinderCollider rotation={[Math.PI / 2, 0, 0]} args={[10, mobile ? 1.1 : 2]} />
       <group ref={logoRef} position={[0, 0, -10]}>
         <Center scale={mobile ? 0.075 : 0.13}>
-          <BaseLogoModel2 />
+          <BaseLogoModel />
         </Center>
       </group>
     </RigidBody>

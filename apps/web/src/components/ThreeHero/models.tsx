@@ -1,27 +1,13 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable react-perf/jsx-no-new-object-as-prop */
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react-perf/jsx-no-new-function-as-prop */
-/* eslint-disable react-perf/jsx-no-new-array-as-prop */
 /* eslint-disable react/no-unknown-property */
-/* sorry! */
+'use client';
+import { useGLTF, Center } from '@react-three/drei';
+import { MeshProps, Vector3, Euler, useLoader } from '@react-three/fiber';
 
-import React from 'react';
-import { useGLTF, Center, Image, RoundedBox, useCursor } from '@react-three/drei';
-import { useLoader, useThree, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { SVGLoader } from 'three-stdlib';
-
+import { SVGLoader, SVGResult } from 'three-stdlib';
 import { PhysicsMesh } from './index';
 
 /* glbs */
-import boxModel from './assets/box.glb';
 import controlerModel from './assets/controller.glb';
 import ethModel from './assets/eth.glb';
 import globeModel from './assets/globe.glb';
@@ -34,121 +20,61 @@ import logoModel from './assets/logo.glb';
 import cursorModel from './assets/cursor.glb';
 
 /* svgs */
-import baseLogo from './assets/base-logo.svg';
 import lightningSVG from './assets/lightning.svg';
+import { useMemo } from 'react';
+import { ExtrudeGeometryOptions } from 'three';
 
+/* load draco locally */
+// useGLTF.setDecoderPath('draco/');
+
+/* Constants */
 export const blue = '#105eff';
-
-import mintImage from './assets/mint.png';
-import { CuboidCollider, RigidBody } from '@react-three/rapier';
-
-/*
-  Constants
-*/
 const blackColor = new THREE.Color(0.08, 0.08, 0.08);
 
+/* Models */
 export function BlackMaterial() {
-  return (
-    <meshPhysicalMaterial
-      color={blackColor}
-      metalness={0.5}
-      roughness={0.5}
-      //  side={THREE.DoubleSide}
-    />
-  );
+  return <meshPhysicalMaterial color={blackColor} metalness={0.5} roughness={0.5} />;
 }
 
 export function MetalMaterial() {
-  return (
-    <meshPhysicalMaterial
-      color="white"
-      metalness={0.8}
-      roughness={0.3} /*side={THREE.DoubleSide}*/
-    />
-  );
+  return <meshPhysicalMaterial color="white" metalness={0.8} roughness={0.3} />;
 }
 
-export function Box(props) {
-  const { nodes } = useGLTF(boxModel);
-  return (
-    <mesh {...props} geometry={nodes.Box_01.geometry} scale={0.5} castShadow receiveShadow>
-      <BlackMaterial />
-    </mesh>
-  );
-}
-
-export function BaseLogoModel2() {
+export function BaseLogoModel() {
   const { nodes } = useGLTF(logoModel);
+  const model = nodes.Base_Logo as THREE.Mesh;
+
   return (
     <Center>
-      <mesh
-        geometry={nodes.Base_Logo.geometry}
-        castShadow
-        receiveShadow
-        scale={3.2}
-        // rotation={[0, Math.PI, 0]}
-      >
-        <meshPhysicalMaterial
-          color={blue}
-          metalness={0}
-          roughness={0.25}
-          //transmission={0.9}
-          //thickness={1}
-          //side={THREE.DoubleSide}
-        />
+      <mesh scale={3.2} geometry={model.geometry} castShadow receiveShadow>
+        <meshPhysicalMaterial color={blue} metalness={0} roughness={0.25} />
       </mesh>
     </Center>
   );
 }
 
-export function BaseLogoModel() {
-  const svg = useLoader(SVGLoader, baseLogo.src);
-  return (
-    <mesh castShadow receiveShadow>
-      <extrudeGeometry
-        args={[
-          svg.paths[0].toShapes(),
-          {
-            curveSegments: 64,
-            depth: 5,
-            bevelEnabled: true,
-            bevelSegments: 64,
-            bevelSize: 0.5,
-            bevelThickness: 1,
-          },
-        ]}
-      />
-      <meshPhysicalMaterial
-        color={blue}
-        metalness={0}
-        roughness={0.29}
-        //transmission={0.9}
-        //thickness={1}
-        //side={THREE.DoubleSide}
-      />
-    </mesh>
-  );
-}
-
 export function Lightning() {
   const svg = useLoader(SVGLoader, lightningSVG.src);
+  const shapes = (svg as SVGResult).paths[0].toShapes(true);
+  const extrudeArguments: [shapes: THREE.Shape[], options: ExtrudeGeometryOptions] = useMemo(
+    () => [
+      shapes,
+      {
+        curveSegments: 64,
+        depth: 5,
+        bevelEnabled: true,
+        bevelSegments: 64,
+        bevelSize: 0.5,
+        bevelThickness: 1,
+      },
+    ],
+    [shapes],
+  );
   return (
     <PhysicsMesh>
       <Center>
-        <mesh castShadow receiveShadow scale={0.019}>
-          <extrudeGeometry
-            args={[
-              svg.paths[0].toShapes(),
-              {
-                curveSegments: 64,
-                depth: 5,
-                bevelEnabled: true,
-                bevelSegments: 64,
-                bevelSize: 0.5,
-                bevelThickness: 1,
-              },
-            ]}
-          />
+        <mesh scale={0.019} castShadow receiveShadow>
+          <extrudeGeometry args={extrudeArguments} />
           <MetalMaterial />
         </mesh>
       </Center>
@@ -156,178 +82,128 @@ export function Lightning() {
   );
 }
 
-export function Controller(props) {
+export function Controller(props: MeshProps) {
   const { nodes } = useGLTF(controlerModel);
+  const model = nodes.Controller as THREE.Mesh;
   return (
     <PhysicsMesh>
-      <mesh {...props} geometry={nodes.Controller.geometry} castShadow receiveShadow scale={0.3}>
+      <mesh {...props} geometry={model.geometry} castShadow receiveShadow scale={0.3}>
         <BlackMaterial />
       </mesh>
     </PhysicsMesh>
   );
 }
 
-export function Eth(props) {
+export function Eth() {
   const { nodes } = useGLTF(ethModel);
+  const model = nodes.ETH as THREE.Mesh;
   return (
     <PhysicsMesh>
-      <mesh {...props} geometry={nodes.ETH.geometry} castShadow receiveShadow scale={0.25}>
+      <mesh geometry={model.geometry} castShadow receiveShadow scale={0.25}>
         <MetalMaterial />
       </mesh>
     </PhysicsMesh>
   );
 }
 
-export function Globe(props) {
+export function Globe() {
   const { nodes } = useGLTF(globeModel);
+  const model = nodes.Globe as THREE.Mesh;
 
   return (
     <PhysicsMesh>
-      <mesh {...props} geometry={nodes.Globe.geometry} castShadow receiveShadow scale={0.25}>
+      <mesh geometry={model.geometry} castShadow receiveShadow scale={0.25}>
         <MetalMaterial />
       </mesh>
     </PhysicsMesh>
   );
 }
 
-export function Phone(props) {
+const phonePosition: Vector3 = [0, 0, 0.06];
+const phoneRotation: Euler = [Math.PI / 2, 0, 0];
+const phoneWidth = 1.8;
+const phoneHeight = 0.86;
+const phoneDimension: [width?: number | undefined, height?: number] = [phoneWidth, phoneHeight];
+export function Phone() {
   const { nodes } = useGLTF(phoneModel);
+  const model = nodes.Cylinder as THREE.Mesh;
   return (
     <PhysicsMesh>
-      <mesh
-        {...props}
-        geometry={nodes.Cylinder.geometry}
-        castShadow
-        receiveShadow
-        // scale={0.25}
-        rotation={[Math.PI / 2, 0, 0]}
-      >
+      <mesh geometry={model.geometry} castShadow receiveShadow rotation={phoneRotation}>
         <BlackMaterial />
       </mesh>
-      <mesh position={[0, 0, 0.06]}>
-        <planeGeometry args={[1.8, 0.86]} />
+      <mesh position={phonePosition}>
+        <planeGeometry args={phoneDimension} />
         <MetalMaterial />
       </mesh>
     </PhysicsMesh>
   );
 }
 
-export function Headphones(props) {
+export function Headphones() {
   const { nodes } = useGLTF(headphonesModel);
+  const model = nodes.Headphones as THREE.Mesh;
   return (
     <PhysicsMesh>
-      <mesh {...props} geometry={nodes.Headphones.geometry} castShadow receiveShadow scale={0.2}>
+      <mesh geometry={model.geometry} castShadow receiveShadow scale={0.2}>
         <BlackMaterial />
       </mesh>
     </PhysicsMesh>
   );
 }
 
-export function Spikey(props) {
+export function Spikey() {
   const { nodes } = useGLTF(spikeyModel);
+  const model = nodes.Spikey as THREE.Mesh;
   return (
     <PhysicsMesh>
-      <mesh {...props} geometry={nodes.Spikey.geometry} castShadow receiveShadow scale={0.3}>
+      <mesh geometry={model.geometry} castShadow receiveShadow scale={0.3}>
         <BlackMaterial />
       </mesh>
     </PhysicsMesh>
   );
 }
 
-export function Play(props) {
+export function Play() {
   const { nodes } = useGLTF(playModel);
+  const model = nodes.Play as THREE.Mesh;
   return (
     <PhysicsMesh>
-      <mesh {...props} geometry={nodes.Play.geometry} castShadow receiveShadow scale={0.4}>
+      <mesh geometry={model.geometry} castShadow receiveShadow scale={0.4}>
         <BlackMaterial />
       </mesh>
     </PhysicsMesh>
   );
 }
 
-export function Blobby(props) {
+export function Blobby() {
   const { nodes } = useGLTF(objectModel);
+  const model = nodes.Object_02 as THREE.Mesh;
   return (
     <PhysicsMesh>
-      <mesh {...props} geometry={nodes.Object_02.geometry} castShadow receiveShadow scale={0.3}>
+      <mesh geometry={model.geometry} castShadow receiveShadow scale={0.3}>
         <BlackMaterial />
       </mesh>
     </PhysicsMesh>
   );
 }
 
-export function Cursor(props) {
+export function Cursor() {
   const { nodes } = useGLTF(cursorModel);
-
+  const cursor = nodes.Cursor as THREE.Mesh;
+  const cursor1 = nodes.Cursor1 as THREE.Mesh;
   return (
     <PhysicsMesh>
       <Center>
-        <group {...props} scale={0.35}>
-          <mesh geometry={nodes.Cursor.geometry} castShadow receiveShadow>
+        <group scale={0.35}>
+          <mesh geometry={cursor.geometry} castShadow receiveShadow>
             <BlackMaterial />
           </mesh>
-          <mesh geometry={nodes.Cursor1.geometry} castShadow receiveShadow>
+          <mesh geometry={cursor1.geometry} castShadow receiveShadow>
             <MetalMaterial />
           </mesh>
         </group>
       </Center>
     </PhysicsMesh>
-  );
-}
-
-export function MintCTA({ clicked = false, ...props }: { clicked?: boolean }) {
-  const [hover, setHover] = React.useState(false);
-  const { viewport } = useThree();
-  const boxRef = React.useRef();
-
-  useCursor(hover ? 'pointer' : 'auto');
-
-  useFrame(({ clock }) => {
-    const h = hover ? 1.1 : 1;
-
-    boxRef.current.scale.x =
-      boxRef.current.scale.y =
-      boxRef.current.scale.z =
-        THREE.MathUtils.lerp(boxRef.current.scale.x, clicked ? h : 0, 0.1);
-  });
-
-  return (
-    <group
-      ref={boxRef}
-      onPointerEnter={() => setHover(true)}
-      onPointerLeave={() => setHover(false)}
-      onPointerUp={() => {
-        window.open('https://mint.base.org', '_blank');
-      }}
-      {...props}
-    >
-      {/*<RoundedBox args={[0.3, 0.3, 1]} radius={0.05} rotation={[0, 0, 0]} castShadow receiveShadow>
-        <meshPhysicalMaterial color={blue} metalness={0.5} roughness={0.5} />
-      </RoundedBox>*/}
-      <mesh>
-        <cylinderGeometry args={[0.4, 0.4, 0.1, 64, 64]} />
-        <BlackMaterial />
-      </mesh>
-      <Image
-        scale={[0.3, 0.1, 0.2]}
-        url={mintImage.src}
-        transparent
-        position={[0, 0.1, 0]}
-        rotation={[-Math.PI / 2, 0, 0]}
-      />
-    </group>
-  );
-}
-
-export function Model(props) {
-  const { nodes, materials } = useGLTF('/BaseOrg_BaseLogo_v01-transformed.glb');
-  return (
-    <group {...props} dispose={null}>
-      <mesh
-        geometry={nodes.Base_Logo.geometry}
-        material={nodes.Base_Logo.material}
-        position={[0, 0, 1.435]}
-      />
-    </group>
   );
 }
