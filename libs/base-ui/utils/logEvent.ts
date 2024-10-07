@@ -1,4 +1,4 @@
-import { isDevelopment } from 'libs/base-ui/constants';
+import { isDevelopment } from '../constants';
 
 declare const window: Window &
   typeof globalThis & {
