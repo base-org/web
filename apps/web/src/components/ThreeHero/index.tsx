@@ -199,7 +199,7 @@ function BaseLogo() {
   const logoRef = useRef<THREE.Group>(null);
   const doneRef = useRef<boolean>(false);
 
-  useFrame(() => {
+  useFrame(({ mouse }) => {
     if (!logoRef.current) return;
 
     if (doneRef.current) {
