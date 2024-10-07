@@ -47,6 +47,7 @@ Fix by correcting the type or value, as appropriate for your needs:
 
 <summary>Reveal code</summary>
 
+
 ```solidity
 function compilerTypeErrorFixed() public pure returns (string) {
     string myNumber = "One";
@@ -85,6 +86,7 @@ Fix by explicitly casting as necessary:
 <details>
 
 <summary>Reveal code</summary>
+
 
 ```solidity
 function compilerConversionErrorFixed() public pure returns (uint) {
@@ -143,6 +145,7 @@ Resolve by explicitly converting to the final type:
 <details>
 
 <summary>Reveal code</summary>
+
 
 ```
 function compilerOperatorErrorFixed() public pure returns (uint) {
@@ -222,6 +225,7 @@ Resolve this error by breaking up large functions and separating operations into
 <details>
 
 <summary>Reveal code</summary>
+
 
 ```solidity
 function stackDepthLimitFixed() public pure returns (uint) {
@@ -420,6 +424,7 @@ Fix by changing your code to handle the expected range of values.
 <details>
 
 <summary>Reveal code</summary>
+
 
 ```solidity
 function badSubstractionFixed() public pure returns (int) {
