@@ -2,7 +2,7 @@
 import * as THREE from 'three';
 import { useRef, useMemo, useCallback, useState, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useThree, Vector3 } from '@react-three/fiber';
-import { Lightformer, Environment, Html, Center, Stats, OrbitControls } from '@react-three/drei';
+import { Lightformer, Environment, Html, Center } from '@react-three/drei';
 import {
   Physics,
   RigidBody,
@@ -43,68 +43,25 @@ import Image, { StaticImageData } from 'next/image';
 const gravity: Vector3Tuple = [0, 0, 0];
 
 export default function Scene(): JSX.Element {
-  const [isVisible, setIsVisible] = useState(true);
-  const [isWindowFocused, setIsWindowFocused] = useState(true);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const handleVisibilityChange = useCallback(() => {
-    setIsWindowFocused(!document.hidden);
-  }, []);
-
-  const handleScroll = useCallback(() => {
-    setScrollPosition(window.scrollY);
-  }, []);
-
-  useEffect(() => {
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [handleVisibilityChange, handleScroll]);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }, // Adjust this value as needed
-    );
-
-    observer.observe(containerRef.current);
-
-    // containerRef.current.style.height = window.innerHeight + 'px';
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  const isActive = isVisible && scrollPosition <= 100;
+  const isActive = true;
 
   return (
-    <div className="absolute h-[100dvh] w-[100dvw]" ref={containerRef}>
-      <Canvas shadows frameloop={isActive ? 'always' : 'never'} camera={{ position: [0, 0, 5] }}>
-        <fog attach="fog" args={['#111', 2.5, 7]} />
+    <Canvas shadows frameloop={isActive ? 'always' : 'never'} camera={{ position: [0, 0, 5] }}>
+      <fog attach="fog" args={['#111', 2.5, 7]} />
 
-        <mesh>
-          <sphereGeometry args={[7, 64, 64]} />
-          <meshPhysicalMaterial color="#666" side={THREE.BackSide} depthTest={false} />
-        </mesh>
-        <Effects />
-        <EnvironmentSetup />
-        <Suspense fallback={<Loader />}>
-          <Physics gravity={gravity} timeStep="vary" paused={!isActive}>
-            <Pointer />
-            <Everything />
-          </Physics>
-        </Suspense>
-      </Canvas>
-    </div>
+      <mesh>
+        <sphereGeometry args={[7, 64, 64]} />
+        <meshPhysicalMaterial color="#666" side={THREE.BackSide} depthTest={false} />
+      </mesh>
+      <Effects />
+      <EnvironmentSetup />
+      <Suspense fallback={<Loader />}>
+        <Physics gravity={gravity} timeStep="vary" paused={!isActive}>
+          <Pointer />
+          <Everything />
+        </Physics>
+      </Suspense>
+    </Canvas>
   );
 }
 
