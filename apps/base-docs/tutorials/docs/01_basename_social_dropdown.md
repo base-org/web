@@ -40,9 +40,11 @@ A basename with a few text records (Github, Twitter, website) is required for th
 
 ## Set a Text Record
 
+![image-basename](../../assets/images/basenames-tutorial/basename-profile-home.png)
+
 To set a text record for your basename, start by visiting `https://www.base.org/name/<YOUR-BASE-NAME>`. Connect your wallet to manage your profile, then click the `Manage profile` button. Add one or more text records, such as your X (formerly Twitter) URL. Once you've added the desired records, click the `Save` button at the bottom of the page. Finally, confirm and sign the transaction to make the changes onchain.
 
-![image-basename](img-url)
+![image-basename](../../assets/images/basenames-tutorial/confirm-textrecord-update.png)
 
 ## Setting up the Environment
 
@@ -59,7 +61,7 @@ bun install framer-motion
 bun install lucide-react
 ```
 
-Create a .env file:
+Create a `.env` file:
 
 ```
 cp .env.local .env
@@ -286,7 +288,7 @@ import IdentityWrapper from '../components/IdentityWrapper';
 <IdentityWrapper address={userAddress} />;
 ```
 
-![image-basename](img-url)
+![profile-dropdown](../../assets/images/basenames-tutorial/profile-component-dropdown.png)
 
 Example code snippets are available for:
 
