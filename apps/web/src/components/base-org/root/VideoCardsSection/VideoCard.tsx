@@ -30,7 +30,7 @@ export default function VideoCard({ title, description, src }: VideoCardProps) {
           autoPlay={false}
           ref={videoRef}
         />
-        <Title level={TitleLevel.Title2} className="mb-4">
+        <Title level={TitleLevel.Title1} className="mb-4">
           {title}
         </Title>
         <Text className="text-[#e3e7e9]">{description}</Text>
