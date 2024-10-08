@@ -16,6 +16,7 @@ import Link from 'next/link';
 import { useCallback } from 'react';
 import cornerGarnish from './corner-garnish.svg';
 import frameIcon from './frame-icon.svg';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 function SectionContent() {
   const { profileUsername, currentWalletIsProfileOwner } = useUsernameProfile();
@@ -72,10 +73,10 @@ function SectionContent() {
         {currentWalletIsProfileOwner && (
           <Link
             onClick={handleAddFrameLinkClick}
-            className="text-sm text-palette-foregroundMuted"
+            className="rounded-lg bg-palette-backgroundAlternate p-2 text-sm text-palette-foreground"
             href={`/name/${profileUsername}/configure-frames`}
           >
-            + Add Frame
+            <Icon name="plus" color="currentColor" width="12px" height="12px" />
           </Link>
         )}
       </div>
