@@ -33,6 +33,10 @@
   gap: 40px;
 }
 
+.navbar__items--logos {
+  gap: 20px;
+}
+
 /* Enable if dropdown menus overflow right boundary */
 .navbar__items--right .dropdown__menu {
   left: auto !important;

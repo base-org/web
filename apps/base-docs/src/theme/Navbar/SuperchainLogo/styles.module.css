@@ -1,0 +1,9 @@
+.svgContainer {
+  width: 130px;
+  height: 32px;
+}
+
+.svgContainer img {
+  width: 100%;
+  height: 100%;
+}
