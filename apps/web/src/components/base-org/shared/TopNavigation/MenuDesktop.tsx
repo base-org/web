@@ -59,7 +59,7 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
 
   return (
     <div
-      className="relative flex flex-col items-center gap-2  rounded-xl p-1"
+      className="relative flex flex-col items-center gap-2 rounded-xl p-1"
       onMouseLeave={onMouseLeaveNav}
     >
       <Card innerClassName="py-1" radius={8}>
@@ -95,7 +95,7 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
       {/* Sub Menu */}
       <div
         ref={subItemsRef}
-        className="absolute top-full w-full duration-300 ease-in-out"
+        className="absolute top-full w-full p-1 duration-300 ease-in-out"
         style={{
           height: `${subItemsHeight}px`,
           opacity: subActive ? 1 : 0,

@@ -7,9 +7,9 @@ import Text from 'apps/web/src/components/base-org/typography/Text';
 import Card from 'apps/web/src/components/base-org/Card';
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
-import Link from 'next/link';
 import { useCallback, useRef } from 'react';
 import cubes from './assets/cubes.webm';
+import Link from 'apps/web/src/components/Link';
 
 export default function BuildAndRewardSection() {
   const videoRef = useRef<HTMLVideoElement>(null);

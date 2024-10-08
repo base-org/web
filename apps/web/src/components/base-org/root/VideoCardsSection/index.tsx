@@ -9,7 +9,7 @@ export default function VideoCardsSection() {
     <section className="flex w-full flex-col gap-4 md:flex-row">
       <VideoCard
         title="Built for Billions"
-        description="Our vision to keep fees low (below 1 cent) and transactions fast(below 1 second) will help bring the next billion people onchain."
+        description="Our vision to keep fees low (below 1 cent) and transactions fast (below 1 second) will help bring the next billion people onchain."
         src={bolt}
       />
       <VideoCard

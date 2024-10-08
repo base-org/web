@@ -21,8 +21,6 @@ export type SubItem = {
 export type TopNavigationLink = {
   name: string;
   href: string;
-  emoji?: string;
-  image?: string;
   subItems: SubItem[];
   analyticContext: string;
 };
@@ -32,13 +30,9 @@ const links: TopNavigationLink[] = [
     name: 'Build',
     analyticContext: 'build',
     href: '/getstarted',
-    emoji: '🛠️',
-    image:
-      'https://images.unsplash.com/photo-1533564810842-e9a55942212f?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     subItems: [
       {
         name: 'Get Started',
-
         href: '/getstarted',
       },
       { name: 'Docs', href: 'https://docs.base.org' },
@@ -53,7 +47,6 @@ const links: TopNavigationLink[] = [
     name: 'Explore',
     analyticContext: 'explore',
     href: '/ecosystem',
-    emoji: '🔍',
     subItems: [
       { name: 'Apps', href: '/ecosystem' },
       { name: 'Bridge', href: 'https://bridge.base.org' },
@@ -63,12 +56,14 @@ const links: TopNavigationLink[] = [
     name: 'Community',
     analyticContext: 'community',
     href: '/',
-    emoji: '👥',
     subItems: [
       {
         name: 'Grants',
-
         href: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders',
+      },
+      {
+        name: 'Events',
+        href: 'https://lu.ma/BaseMeetups',
       },
     ],
   },
@@ -76,7 +71,6 @@ const links: TopNavigationLink[] = [
     name: 'About',
     analyticContext: 'about',
     href: '/about',
-    emoji: '📜',
     subItems: [
       { name: 'Vision', href: '/about' },
       { name: 'Blog', href: 'https://base.mirror.xyz/' },
@@ -88,7 +82,6 @@ const links: TopNavigationLink[] = [
     name: 'Socials',
     analyticContext: 'socials',
     href: '#socials',
-    emoji: '🌐',
     subItems: [
       { name: 'X', href: 'https://x.com/base' },
       { name: 'Farcaster', href: 'https://warpcast.com/~/channel/base' },

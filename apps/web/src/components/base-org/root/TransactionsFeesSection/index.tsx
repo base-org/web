@@ -101,7 +101,7 @@ export default function TransactionsFeesSection() {
         <div className="w-full">
           <Title level={TitleLevel.Display2} className="text-[#E3E7E9]">
             Transactions
-            <br /> below <span className="text-blue">one cent</span>
+            <br /> below <span className="text-blue">one cent*</span>
           </Title>
         </div>
         <div className="flex w-full flex-row gap-2 md:gap-4">
@@ -126,7 +126,7 @@ export default function TransactionsFeesSection() {
                 Base is the best of Ethereum but 10-100x cheaper. To make onchain accessible for
                 everyone, we&apos;re working to keep fees consistently below 1 cent.
               </Text>
-              <Text className="mb-6 text-[#E3E7E9]">Based on 90-day average</Text>
+              <Text className="mb-6 text-[#E3E7E9]">*Based on 90-day average</Text>
             </Transition>
             <AnimatedfeeDots
               isBase
