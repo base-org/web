@@ -16,10 +16,12 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const variantStyles: Record<ButtonVariants, string> = {
   // Blue button
-  [ButtonVariants.Primary]: 'bg-blue text-white hover:bg-blue-80 active:bg-[#06318E]',
+  [ButtonVariants.Primary]:
+    'bg-blue text-white border border-blue hover:bg-blue-80 active:bg-[#06318E]',
 
   // White buton
-  [ButtonVariants.Secondary]: 'bg-white text-palette-foreground hover:bg-gray-15 active:bg-gray-30',
+  [ButtonVariants.Secondary]:
+    'bg-white border border-white text-palette-foreground hover:bg-gray-15 active:bg-gray-30',
 
   // White outlined
   [ButtonVariants.Outlined]:

@@ -92,7 +92,7 @@ export default async function Home() {
 
       <main className="relative z-20 flex w-full flex-col items-center bg-black">
         <Container>
-          <div className="flex flex-col gap-40 pb-40 pt-20">
+          <div className="flex flex-col gap-20 pb-40 pt-20 md:gap-40">
             <section>
               <Title level={TitleLevel.Display1}>
                 The future of the internet is onchain. Base is here to help you build it.

@@ -110,12 +110,12 @@ export default function TopNavigation() {
         <div className="flex w-full items-center justify-between gap-2">
           {/* Logo and Gas price section */}
           <div className="relative z-20 flex items-center gap-4">
-            <Link href="/" className="flex min-h-[2.875rem] min-w-[2.875rem]">
+            <Link href="/" className="flex min-h-[3rem] min-w-[3rem]">
               <Image src={logo as StaticImageData} alt="Base Logo" />
             </Link>
 
             {gasPriceInWei && (
-              <div className="flex hidden items-center gap-2 rounded-xl bg-black px-4 py-2 md:flex">
+              <div className="flex hidden items-center gap-2 rounded-xl bg-black px-4 py-3 md:flex">
                 <span className="animate-pulse text-palette-positive">
                   <Icon name="blueCircle" color="currentColor" height="0.75rem" width="0.75rem" />
                 </span>
