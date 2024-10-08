@@ -20,10 +20,12 @@ function MenuMobileButton({
   activeLinkId,
   linkId,
   toggleLink,
+  toggleMenu,
 }: {
   link: TopNavigationLink;
   linkId: string;
   toggleLink: (key: string) => void;
+  toggleMenu: () => void;
   activeLinkId?: string;
 }) {
   const onClickHandler = useCallback(() => toggleLink(linkId), [linkId, toggleLink]);
@@ -80,6 +82,7 @@ function MenuMobileButton({
               <Link
                 href={subItem.href + '?utm_source=dotorg&utm_medium=nav'}
                 target={subItem.href.startsWith('https://') ? '_blank' : undefined}
+                onClick={toggleMenu}
                 className="group/sublink inline-block flex w-full items-center justify-between gap-2 rounded-2xl py-2 "
               >
                 <Title level={TitleLevel.Title4}>{subItem.name}</Title>
@@ -142,6 +145,7 @@ export default function MenuMobile({ links }: MenuMobileProps) {
                     activeLinkId={activeLinkId}
                     linkId={linkId}
                     toggleLink={toggleLink}
+                    toggleMenu={toggleMenu}
                   />
                 </li>
               );
