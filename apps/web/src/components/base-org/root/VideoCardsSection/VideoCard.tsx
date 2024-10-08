@@ -22,12 +22,6 @@ export default function VideoCard({ title, description, src }: VideoCardProps) {
   return (
     <div onMouseEnter={playVideo} className="w-full">
       <Card innerClassName="p-6 transition-all bg-[#0A0B0C] group-hover:bg-[#111111]">
-        <div className="">
-          <Title level={TitleLevel.Big} className="mb-4">
-            {title}
-          </Title>
-        </div>
-
         <video
           src={src}
           muted
@@ -36,6 +30,9 @@ export default function VideoCard({ title, description, src }: VideoCardProps) {
           autoPlay={false}
           ref={videoRef}
         />
+        <Title level={TitleLevel.Title3} className="mb-4">
+          {title}
+        </Title>
         <Text className="text-[#e3e7e9]">{description}</Text>
       </Card>
     </div>
