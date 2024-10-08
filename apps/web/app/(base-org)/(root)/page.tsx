@@ -1,9 +1,4 @@
-import { Metadata } from 'next';
-import { FrameButtonMetadata } from '@coinbase/onchainkit/frame';
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
-
-// Clean up assets while removing below
-// import { JoinTheCommunity } from 'apps/web/src/components/JoinTheCommunity/JoinTheCommunity';
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Title from 'apps/web/src/components/base-org/typography/Title';
@@ -22,39 +17,6 @@ import Link from 'apps/web/src/components/Link';
 const DynamicThreeHero = dynamic(async () => import('apps/web/src/components/ThreeHero'), {
   ssr: false,
 });
-
-/* Farcaster Metadatas */
-const buttons: FrameButtonMetadata[] = [
-  {
-    action: 'link',
-    label: 'Read the docs',
-    target: 'https://docs.base.org/',
-  },
-  {
-    action: 'link',
-    label: 'Bridge assets',
-    target: 'https://bridge.base.org/deposit',
-  },
-];
-
-const otherMetadata: Metadata['other'] = {
-  'fc:frame:image': 'https://base.org/images/base-open-graph.png',
-};
-
-buttons
-  .map((button, index) => {
-    const metadataKey = `fc:frame:button:${index + 1}`;
-    otherMetadata[metadataKey] = [button.label];
-    if (button.action) otherMetadata[`${metadataKey}:action`] = [button.action];
-    if (button.target) otherMetadata[`${metadataKey}:target`] = [button.target];
-    return otherMetadata;
-  })
-  .flat();
-
-/* Page Metadatas */
-export const metadata: Metadata = {
-  other: otherMetadata,
-};
 
 export default async function Home() {
   return (
