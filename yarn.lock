@@ -364,7 +364,7 @@ __metadata:
     "@coinbase/onchainkit": ^0.28.5
     "@datadog/browser-logs": ^5.23.3
     "@datadog/browser-rum": ^5.23.3
-    "@frames.js/render": ^0.3.12
+    "@frames.js/render": ^0.3.14
     "@guildxyz/sdk": 2.6.0
     "@headlessui/react": ^1.7.19
     "@heroicons/react": ^2.1.3
@@ -3710,9 +3710,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@frames.js/render@npm:^0.3.12":
-  version: 0.3.12
-  resolution: "@frames.js/render@npm:0.3.12"
+"@frames.js/render@npm:^0.3.14":
+  version: 0.3.14
+  resolution: "@frames.js/render@npm:0.3.14"
   dependencies:
     "@farcaster/core": ^0.14.7
     "@noble/ed25519": ^2.0.0
@@ -3729,7 +3729,7 @@ __metadata:
     react-native: ^0.74.3
     viem: ^2.7.8
     wagmi: ^2.9.10
-  checksum: e8600f67eeb2527f8052f044abbaa8e58124cda72011a5998910a350ba6a6dd3d803974f6e11bd5b0439935f5be3dd29f862700d68970f068060f9fb57ab3d92
+  checksum: eba32b8b3bbe684d8afb37223b003656e479c1809887bb5e3a066f2d55a0e9cd38364cc37f47ecf69ac69dc6fbe375cb35bb97ec99529c4c0db3aacb20397ad4
   languageName: node
   linkType: hard
 
