@@ -9,7 +9,9 @@ import Modal from 'apps/web/src/components/Modal';
 import { useFIDQuery } from 'apps/web/src/hooks/useFarcasterUserByFID';
 import QRCode from 'qrcode.react';
 import { useCallback, useMemo } from 'react';
-import FarcasterIcon from './white-purple-farcaster-icon.svg';
+import WPFarcasterIcon from './assets/white-purple-farcaster-icon.svg';
+import PWFarcasterIcon from './assets/purple-white-farcaster-icon.svg';
+import Image, { StaticImageData } from 'next/image';
 
 export default function FarcasterAccountModal() {
   const { farcasterSignerState, showFarcasterQRModal, setShowFarcasterQRModal } = useFrameContext();
@@ -19,7 +21,7 @@ export default function FarcasterAccountModal() {
     [farcasterSignerState.signer],
   );
   const loading = useMemo(
-    () => !!farcasterSignerState.isLoadingSigner ?? false,
+    () => !!farcasterSignerState.isLoadingSigner,
     [farcasterSignerState.isLoadingSigner],
   );
   const handleButtonClick = useCallback(() => {
@@ -32,21 +34,31 @@ export default function FarcasterAccountModal() {
 
   return (
     <Modal isOpen={showFarcasterQRModal} onClose={handleModalClose}>
-      <div className="max-w-72 rounded-lg bg-white">
+      <div className="min-w-80 rounded-lg bg-white">
         {/* Sign-in section when the user is not signed in */}
         {!farcasterUser && (
           <div className="flex flex-col items-center gap-4">
             <div className="flex flex-col items-center">
-              <h1 className="text-xl font-bold text-gray-80">Sign in with Farcaster</h1>
-              <p className="mt-2 text-sm text-gray-50">Use your Farcaster account to sign in.</p>
-              <p className="mt-1 text-xs text-red-50">Be careful! This action costs warps.</p>
+              <Image
+                src={PWFarcasterIcon as StaticImageData}
+                alt="farcaster icon"
+                width={156}
+                height={148}
+                className="mb-6"
+              />
+              <h1 className="mb-1 font-display text-2xl font-medium text-illoblack">
+                Sign in with Warpcast
+              </h1>
+              <p className="text-sm text-palette-foregroundMuted">
+                You will need to pay warps to sign in.
+              </p>
             </div>
 
             <Button
               disabled={loading}
               variant={ButtonVariants.Black}
               type="button"
-              className="mt-4 w-full"
+              className="flex w-full items-center justify-center rounded-full"
               onClick={handleButtonClick}
             >
               {loading ? 'Signing in...' : 'Sign in'}
@@ -118,7 +130,7 @@ function IdentityState({ user, onLogout }: { user: FarcasterSigner; onLogout: ()
 
 const imageSettings = {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  src: FarcasterIcon.src,
+  src: WPFarcasterIcon.src,
   x: undefined,
   y: undefined,
   height: 60,
