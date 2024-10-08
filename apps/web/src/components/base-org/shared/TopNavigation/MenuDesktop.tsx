@@ -62,7 +62,7 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
       className="relative flex flex-col items-center gap-2 rounded-xl p-1"
       onMouseLeave={onMouseLeaveNav}
     >
-      <Card innerClassName="py-1" radius={8}>
+      <Card innerClassName="py-1 bg-[#0C0C0C]" radius={8}>
         <div className="group relative flex items-center gap-0 p-1">
           {links.map((link, index) => (
             <Link
@@ -102,7 +102,7 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
           transform: `translateY(${subActive ? 0 : -20}px)`,
         }}
       >
-        <Card radius={8}>
+        <Card radius={8} innerClassName="bg-[#191919]">
           <div className="flex w-full items-stretch gap-1 p-1">
             {links[hoverIndex]?.subItems && (
               <AnalyticsProvider context={links[hoverIndex].analyticContext}>
@@ -124,9 +124,9 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
               </AnalyticsProvider>
             )}
             {links[hoverIndex]?.subItems && (
-              <div className="min-h-[200px] flex-1 basis-0 overflow-hidden rounded-lg bg-[#27272B]">
+              <div className="min-h-[200px] flex-1 basis-0 overflow-hidden p-2">
                 {links[hoverIndex]?.name && (
-                  <div className="flex h-full w-full flex-col items-center justify-center gap-2">
+                  <div className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-lg bg-black">
                     {subActive && (
                       <AnimatedIcon key={links[hoverIndex].name} icon={links[hoverIndex].name} />
                     )}

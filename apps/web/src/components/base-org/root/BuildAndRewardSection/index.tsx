@@ -4,7 +4,6 @@ import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 
 import Text from 'apps/web/src/components/base-org/typography/Text';
-import Card from 'apps/web/src/components/base-org/Card';
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import { useCallback, useRef } from 'react';
@@ -25,19 +24,15 @@ export default function BuildAndRewardSection() {
   return (
     <section>
       <div className="mb-12 mt-8 flex w-full flex-col items-center gap-4 md:flex-row">
-        <div className="relative flex w-full flex-row gap-4">
-          <div className="relative flex w-full flex-row gap-4" onMouseEnter={playVideo}>
-            <Card>
-              <video
-                src={cubes}
-                muted
-                playsInline
-                className="mx-auto p-2 motion-reduce:hidden"
-                autoPlay={false}
-                ref={videoRef}
-              />
-            </Card>
-          </div>
+        <div className="relative flex w-full flex-row gap-4" onMouseEnter={playVideo}>
+          <video
+            src={cubes}
+            muted
+            playsInline
+            className="mx-auto p-2 motion-reduce:hidden"
+            autoPlay={false}
+            ref={videoRef}
+          />
         </div>
 
         <div className="flex w-full flex-col gap-4 md:pl-20">

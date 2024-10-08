@@ -7,7 +7,7 @@ const AnimatedIcon = ({
   delay = 0,
   scaleEasing = [0.55, 0, 0.45, 1], // quadInOut
   startScale = 1.2,
-  color = '#B5C9D7',
+  color = '#0052FF',
 }) => {
   const svgVariants = {
     hidden: { scale: startScale, opacity: 0 },

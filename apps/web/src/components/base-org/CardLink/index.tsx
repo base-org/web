@@ -16,12 +16,11 @@ export default function CardLink({ children, href }: CardLinkProps) {
   return (
     <Link href={href} target={target} className="group w-full">
       <Card
-        innerClassName="p-4 transition-all active:p-6 bg-[#181818] group-hover:bg-[#1C1C1C]"
+        innerClassName="p-4 transition-all bg-[#181818] group-hover:bg-[#1C1C1C]"
         wrapperClassName="transition-all"
       >
         {children}
-
-        <i className="absolute right-4 top-4 opacity-50 transition-all group-hover:opacity-100 group-active:right-6 group-active:top-6">
+        <i className="absolute right-4 top-4 opacity-50 transition-all group-hover:opacity-100">
           <Icon name="baseOrgDiagonalUpArrow" color="currentColor" height="0.8rem" width="0.8rem" />
         </i>
       </Card>
