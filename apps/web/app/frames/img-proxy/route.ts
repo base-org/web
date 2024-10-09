@@ -1,7 +1,7 @@
-import { withIPCheck } from 'apps/web/app/frames/proxy-ip-check';
 import { NextRequest, NextResponse } from 'next/server';
+import { withIPCheck } from '../proxy-ip-check';
 
-export async function getHandler(request: NextRequest) {
+async function getHandler(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const url = searchParams.get('url');
 
