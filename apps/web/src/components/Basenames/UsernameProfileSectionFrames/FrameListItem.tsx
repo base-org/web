@@ -8,7 +8,7 @@ import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfi
 import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Frame';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import Image, { StaticImageData } from 'next/image';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import TrashIcon from './assets/trash-icon.svg';
 import { useCopyToClipboard } from 'usehooks-ts';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
@@ -17,10 +17,22 @@ export default function FrameListItem({ url }: { url: string }) {
   const { removeFrame } = useFrameContext();
   const { currentWalletIsProfileOwner } = useUsernameProfile();
   const { logEventWithContext } = useAnalytics();
+  const [isCopied, setIsCopied] = useState(false);
 
   const [, copy] = useCopyToClipboard();
   const handleCopyFrameURLClick = useCallback(() => {
-    void copy(url);
+    copy(url)
+      .then(() => {
+        setIsCopied(true);
+      })
+      .catch((e) => {
+        console.error(e);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setIsCopied(false);
+        }, 2000);
+      });
   }, [copy, url]);
 
   const handleRemoveFrameClick = useCallback(() => {
@@ -55,7 +67,15 @@ export default function FrameListItem({ url }: { url: string }) {
               onClick={handleCopyFrameURLClick}
               className="flex flex-row items-center justify-start gap-2 px-2 py-1"
             >
-              <Icon name="copy" color="currentColor" width={16} /> Copy frame URL
+              {isCopied ? (
+                <>
+                  <Icon name="checkmark" color="currentColor" width={16} /> Frame link copied!
+                </>
+              ) : (
+                <>
+                  <Icon name="copy" color="currentColor" width={16} /> Copy frame URL
+                </>
+              )}
             </button>
             {currentWalletIsProfileOwner && (
               <button
