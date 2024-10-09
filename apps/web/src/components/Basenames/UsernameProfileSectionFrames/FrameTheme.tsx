@@ -3,7 +3,7 @@
 import type { FrameUIComponents, FrameUITheme } from '@frames.js/render/ui';
 import classNames from 'classnames';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import baseLoading from './base-loading.gif';
 
 type StylingProps = {
@@ -40,6 +40,14 @@ export const theme: FrameUITheme<StylingProps> = {
   },
 };
 
+function isDataUrl(url: string) {
+  return /^data:image\/[a-zA-Z]+;base64,/.test(url);
+}
+
+function isSvgDataUrl(url: string) {
+  return url.startsWith('data:image/svg+xml');
+}
+
 type TransitionWrapperProps = {
   aspectRatio: '1:1' | '1.91:1';
   src: string;
@@ -75,6 +83,24 @@ function TransitionWrapper({
 
   const ar = aspectRatio.replace(':', '/');
 
+  const style = useMemo(
+    () => ({
+      '--frame-image-aspect-ratio': ar,
+      ...(isCssProperties(stylingProps.style) && stylingProps.style),
+    }),
+    [ar, stylingProps.style],
+  );
+
+  const assetSrc = useMemo(
+    () =>
+      isLoading || isSvgDataUrl(src)
+        ? '' // todo: in the svg case, add an error state instead
+        : isDataUrl(src)
+        ? src
+        : `/frames/img-proxy?url=${encodeURIComponent(src)}`,
+    [isLoading, src],
+  );
+
   return (
     <div className="relative">
       {/* Loading Screen */}
@@ -90,15 +116,12 @@ function TransitionWrapper({
       {/* Image */}
       <img
         {...stylingProps}
-        src={isLoading ? undefined : src}
+        src={assetSrc}
         alt={alt}
         onLoad={onImageLoadEnd}
         onError={onImageLoadEnd}
         data-aspect-ratio={ar}
-        style={{
-          '--frame-image-aspect-ratio': ar,
-          ...(isCssProperties(stylingProps.style) && stylingProps.style),
-        }}
+        style={style}
         className={classNames('transition-opacity duration-500', {
           'opacity-0': isLoading || isTransitioning,
           'opacity-100': !isLoading && !isTransitioning,

@@ -1,11 +1,10 @@
-import { GET as getHandler, POST as postHandler } from '@frames.js/render/next';
 import { ipSafe } from 'apps/web/src/middleware/ipSafe';
-import { NextRequest, NextResponse } from 'next/server';
-import ipaddr from 'ipaddr.js';
-import { URL } from 'url';
 import dns from 'dns/promises';
+import ipaddr from 'ipaddr.js';
+import { NextRequest, NextResponse } from 'next/server';
+import { URL } from 'url';
 
-function withIPCheck(handler: (req: NextRequest) => Promise<Response>) {
+export function withIPCheck(handler: (req: NextRequest) => Promise<Response>) {
   return async function (req: NextRequest) {
     const searchParams = req.nextUrl.searchParams;
     const url = searchParams.get('url');
@@ -41,6 +40,3 @@ function withIPCheck(handler: (req: NextRequest) => Promise<Response>) {
     return handler(req);
   };
 }
-
-export const GET = withIPCheck(getHandler);
-export const POST = withIPCheck(postHandler);
