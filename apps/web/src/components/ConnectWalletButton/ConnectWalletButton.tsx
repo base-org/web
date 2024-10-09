@@ -134,12 +134,12 @@ export function ConnectWalletButton({
     <Wallet>
       <ConnectWallet
         withWalletAggregator
-        className="rounded-none bg-transparent p-2 hover:bg-gray-40/20"
+        className="rounded-xl bg-transparent p-2 hover:bg-gray-40/20"
       >
         <UserAvatar />
         <Name chain={basenameChain} className={userAddressClasses} />
       </ConnectWallet>
-      <WalletDropdown className="rounded bg-white font-sans shadow-md">
+      <WalletDropdown className="rounded-xl bg-white font-sans shadow-md">
         <Identity className={classNames('px-4 pb-2 pt-3 font-display')}>
           <UserAvatar />
           <Name

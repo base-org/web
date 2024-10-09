@@ -15,22 +15,36 @@ const AnimatedIcon = ({
       scale: 1,
       opacity: 1,
       transition: {
-        duration: duration / 1000,
-        delay: delay / 1000,
-        ease: scaleEasing,
+        scale: {
+          duration: duration / 1000,
+          delay: delay / 1000,
+          ease: scaleEasing,
+        },
+        opacity: {
+          duration: duration / 2 / 1000, // Faster opacity animation
+          delay: delay / 1000,
+          ease: 'easeOut',
+        },
       },
     },
   };
 
   const pathVariants = {
-    hidden: { pathLength: 0, opacity: 0 },
+    hidden: { pathLength: 0.1, opacity: 0 },
     visible: (custom: number) => ({
       pathLength: 1,
       opacity: 1,
       transition: {
-        duration: (duration + custom) / 1000,
-        delay: delay / 1000,
-        ease: easing,
+        pathLength: {
+          duration: (duration + custom) / 1000,
+          delay: 0,
+          ease: easing,
+        },
+        opacity: {
+          duration: (duration + custom) / 3 / 1000, // Faster opacity animation
+          delay: 0,
+          ease: 'easeOut',
+        },
       },
     }),
   };
@@ -271,52 +285,6 @@ const AnimatedIcon = ({
             />
           </motion.svg>
         );
-      case 'about':
-        return (
-          <motion.svg
-            variants={svgVariants}
-            initial="hidden"
-            animate="visible"
-            width="87"
-            height="87"
-            viewBox="0 0 87 87"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <motion.path
-              variants={pathVariants}
-              custom={0}
-              d="M43.1858 0V32.5663"
-              stroke={color}
-              strokeWidth="2.47787"
-              strokeMiterlimit="10"
-            />
-            <motion.path
-              variants={pathVariants}
-              custom={0}
-              d="M0 43.1855H32.5663"
-              stroke={color}
-              strokeWidth="2.47787"
-              strokeMiterlimit="10"
-            />
-            <motion.path
-              variants={pathVariants}
-              custom={0}
-              d="M43.1858 86.3709V53.8047"
-              stroke={color}
-              strokeWidth="2.47787"
-              strokeMiterlimit="10"
-            />
-            <motion.path
-              variants={pathVariants}
-              custom={0}
-              d="M86.3714 43.1855H53.8052"
-              stroke={color}
-              strokeWidth="2.47787"
-              strokeMiterlimit="10"
-            />
-          </motion.svg>
-        );
       case 'socials':
         return (
           <motion.svg
@@ -395,7 +363,7 @@ const AnimatedIcon = ({
             />
           </motion.svg>
         );
-      case 'about2':
+      case 'about':
         return (
           <motion.svg
             variants={svgVariants}

@@ -2,7 +2,7 @@
 'use client';
 
 import * as THREE from 'three';
-import { useRef, useMemo, Suspense, useCallback } from 'react';
+import { useRef, useMemo, Suspense, useCallback, useState, useEffect } from 'react';
 import { Canvas, Euler, useFrame, useThree, Vector3 } from '@react-three/fiber';
 import { Lightformer, Environment, Html, Center } from '@react-three/drei';
 import {
@@ -59,10 +59,57 @@ const sceneSphereArguments: [radius: number, widthSegments: number, heightSegmen
   7, 64, 64,
 ];
 export default function Scene(): JSX.Element {
-  const isActive = true;
+  const [isActive, setIsActive] = useState(true);
+  const [isIntoView, setIsIntoView] = useState(true);
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      updateIsActive();
+    };
+
+    const handleFocus = () => {
+      updateIsActive();
+    };
+
+    const handleBlur = () => {
+      updateIsActive();
+    };
+
+    const handleScroll = () => {
+      updateIsActive();
+    };
+
+    const updateIsActive = () => {
+      const isFocused = !document.hidden && document.hasFocus();
+      const isScrolledInView = window.pageYOffset < window.innerHeight;
+      setIsActive(isFocused);
+      setIsIntoView(isScrolledInView);
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('blur', handleBlur);
+    window.addEventListener('scroll', handleScroll);
+
+    // Initial check
+    updateIsActive();
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('blur', handleBlur);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
-    <Canvas shadows frameloop={isActive ? 'always' : 'never'} camera={sceneCamera}>
+    <Canvas
+      shadows
+      frameloop={isActive && isIntoView ? 'always' : 'never'}
+      camera={sceneCamera}
+      className={isIntoView ? 'opacity-100' : 'opacity-0'}
+      style={{ background: 'transparent' }}
+    >
       <fog attach="fog" args={sceneFogArguments} />
 
       <mesh>

@@ -103,7 +103,7 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
         }}
       >
         <Card radius={8} innerClassName="bg-[#191919]">
-          <div className="flex w-full items-stretch gap-1 p-1">
+          <div className="flex w-full items-stretch gap-2 rounded-lg bg-[#191919] p-2">
             {links[hoverIndex]?.subItems && (
               <AnalyticsProvider context={links[hoverIndex].analyticContext}>
                 <div className="flex flex-1 flex-col">
@@ -124,7 +124,7 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
               </AnalyticsProvider>
             )}
             {links[hoverIndex]?.subItems && (
-              <div className="min-h-[200px] flex-1 basis-0 overflow-hidden p-2">
+              <div className="min-h-[200px] flex-1 basis-0 overflow-hidden ">
                 {links[hoverIndex]?.name && (
                   <div className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-lg bg-black">
                     {subActive && (
