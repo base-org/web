@@ -92,18 +92,6 @@ export default function Scene(): JSX.Element {
   }, [handleClick]);
 
   useEffect(() => {
-    const handleVisibilityChange = () => {
-      updateIsActive();
-    };
-
-    const handleFocus = () => {
-      updateIsActive();
-    };
-
-    const handleBlur = () => {
-      updateIsActive();
-    };
-
     const updateIsActive = () => {
       const isFocused = !document.hidden && document.hasFocus();
       setIsActive(isFocused);
@@ -125,10 +113,6 @@ export default function Scene(): JSX.Element {
       observer.observe(containerRef.current);
     }
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('focus', handleFocus);
-    window.addEventListener('blur', handleBlur);
-
     // Initial check
     updateIsActive();
 
@@ -136,9 +120,6 @@ export default function Scene(): JSX.Element {
       if (containerRef.current) {
         observer.unobserve(containerRef.current);
       }
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('focus', handleFocus);
-      window.removeEventListener('blur', handleBlur);
     };
   }, []);
 
