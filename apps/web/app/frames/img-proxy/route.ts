@@ -1,6 +1,7 @@
+import { withIPCheck } from 'apps/web/app/frames/proxy-ip-check';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
+export async function getHandler(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const url = searchParams.get('url');
 
@@ -31,3 +32,5 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Failed to fetch image' }, { status: 500 });
   }
 }
+
+export const GET = withIPCheck(getHandler);
