@@ -38,6 +38,7 @@ import baseLogo from './assets/base-logo.svg';
 import environmentLight from './assets/environmentLight.jpg';
 import Image, { StaticImageData } from 'next/image';
 import { useMediaQuery } from 'usehooks-ts';
+import classNames from 'classnames';
 
 /* 
   The Main Scene
@@ -60,7 +61,7 @@ const sceneSphereArguments: [radius: number, widthSegments: number, heightSegmen
 ];
 export default function Scene(): JSX.Element {
   const [isActive, setIsActive] = useState(true);
-  const [isIntoView, setIsIntoView] = useState(true);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const handleVisibilityChange = () => {
@@ -75,56 +76,74 @@ export default function Scene(): JSX.Element {
       updateIsActive();
     };
 
-    const handleScroll = () => {
-      updateIsActive();
-    };
-
     const updateIsActive = () => {
       const isFocused = !document.hidden && document.hasFocus();
-      const isScrolledInView = window.pageYOffset < window.innerHeight;
       setIsActive(isFocused);
-      setIsIntoView(isScrolledInView);
     };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+
+        setIsActive(entry.isIntersecting);
+      },
+      {
+        threshold: 0,
+        rootMargin: '0px 0px -100% 0px',
+      },
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
     window.addEventListener('focus', handleFocus);
     window.addEventListener('blur', handleBlur);
-    window.addEventListener('scroll', handleScroll);
 
     // Initial check
     updateIsActive();
 
     return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('focus', handleFocus);
       window.removeEventListener('blur', handleBlur);
-      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  return (
-    <Canvas
-      shadows
-      frameloop={isActive && isIntoView ? 'always' : 'never'}
-      camera={sceneCamera}
-      className={isIntoView ? 'opacity-100' : 'opacity-0'}
-      style={{ background: 'transparent' }}
-    >
-      <fog attach="fog" args={sceneFogArguments} />
+  const canvaClasses = classNames(
+    'fixed h-screen w-full transition-all',
+    isActive ? 'opacity-100' : 'opacity-0',
+  );
 
-      <mesh>
-        <sphereGeometry args={sceneSphereArguments} />
-        <meshPhysicalMaterial color="#666" side={THREE.BackSide} depthTest={false} />
-      </mesh>
-      <Effects />
-      <EnvironmentSetup />
-      <Suspense fallback={<Loader />}>
-        <Physics gravity={gravity} timeStep="vary" paused={!isActive}>
-          <Pointer />
-          <Everything />
-        </Physics>
-      </Suspense>
-    </Canvas>
+  return (
+    <div ref={containerRef} className="h-full w-full">
+      <Canvas
+        shadows
+        frameloop={isActive ? 'always' : 'never'}
+        camera={sceneCamera}
+        style={{ background: 'transparent' }}
+        className={canvaClasses}
+      >
+        <fog attach="fog" args={sceneFogArguments} />
+
+        <mesh>
+          <sphereGeometry args={sceneSphereArguments} />
+          <meshPhysicalMaterial color="#666" side={THREE.BackSide} depthTest={false} />
+        </mesh>
+        <Effects />
+        <EnvironmentSetup />
+        <Suspense fallback={<Loader />}>
+          <Physics gravity={gravity} timeStep="vary" paused={!isActive}>
+            <Pointer />
+            <Everything />
+          </Physics>
+        </Suspense>
+      </Canvas>
+    </div>
   );
 }
 
