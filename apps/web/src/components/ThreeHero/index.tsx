@@ -2,7 +2,7 @@
 'use client';
 
 import * as THREE from 'three';
-import { useRef, useMemo, Suspense, useCallback } from 'react';
+import { useRef, useMemo, useState, useEffect, Suspense, useCallback } from 'react';
 import { Canvas, Euler, useFrame, useThree, Vector3 } from '@react-three/fiber';
 import { Lightformer, Environment, Html, Center } from '@react-three/drei';
 import {
@@ -58,26 +58,69 @@ const sceneCamera = { position: [0, 0, 5] as Vector3 };
 const sceneSphereArguments: [radius: number, widthSegments: number, heightSegments: number] = [
   7, 64, 64,
 ];
+
+type MouseXY = {
+  x: number;
+  y: number;
+};
+
 export default function Scene(): JSX.Element {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [position, setPosition] = useState<MouseXY>({ x: 0, y: 0 });
+
+  const handleContextMenu = useCallback((event: any) => {
+    event.preventDefault();
+    setIsVisible(true);
+    setPosition({ x: event.clientX, y: event.clientY });
+  }, []);
+
+  const handleClick = useCallback(() => {
+    setIsVisible(false);
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener('click', handleClick);
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, [handleClick]);
+
   const isActive = true;
 
   return (
-    <Canvas shadows frameloop={isActive ? 'always' : 'never'} camera={sceneCamera}>
-      <fog attach="fog" args={sceneFogArguments} />
+    <div className="absolute h-full w-full" onContextMenu={handleContextMenu}>
+      <Canvas shadows frameloop={isActive ? 'always' : 'never'} camera={sceneCamera}>
+        <fog attach="fog" args={sceneFogArguments} />
 
-      <mesh>
-        <sphereGeometry args={sceneSphereArguments} />
-        <meshPhysicalMaterial color="#666" side={THREE.BackSide} depthTest={false} />
-      </mesh>
-      <Effects />
-      <EnvironmentSetup />
-      <Suspense fallback={<Loader />}>
-        <Physics gravity={gravity} timeStep="vary" paused={!isActive}>
-          <Pointer />
-          <Everything />
-        </Physics>
-      </Suspense>
-    </Canvas>
+        <mesh>
+          <sphereGeometry args={sceneSphereArguments} />
+          <meshPhysicalMaterial color="#666" side={THREE.BackSide} depthTest={false} />
+        </mesh>
+        <Effects />
+        <EnvironmentSetup />
+        <Suspense fallback={<Loader />}>
+          <Physics gravity={gravity} timeStep="vary" paused={!isActive}>
+            <Pointer />
+            <Everything />
+          </Physics>
+        </Suspense>
+      </Canvas>
+      {isVisible && (
+        <div
+          className="absolute rounded border border-white/20 bg-black px-4 py-2 shadow-md"
+          style={{ top: `${position.y}px`, left: `${position.x}px` }}
+        >
+          <a
+            href="https://wallet.coinbase.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className=" hover:text-blue"
+          >
+            Mint This
+          </a>
+        </div>
+      )}
+    </div>
   );
 }
 
