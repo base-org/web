@@ -39,6 +39,7 @@ import environmentLight from './assets/environmentLight.jpg';
 import Image, { StaticImageData } from 'next/image';
 import { useMediaQuery } from 'usehooks-ts';
 import classNames from 'classnames';
+import Link from 'apps/web/src/components/Link';
 
 /* 
   The Main Scene
@@ -73,7 +74,7 @@ export default function Scene(): JSX.Element {
   const [isActive, setIsActive] = useState(true);
   const containerRef = useRef(null);
 
-  const handleContextMenu = useCallback((event: any) => {
+  const handleContextMenu = useCallback((event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     setIsVisible(true);
     setPosition({ x: event.clientX, y: event.clientY });
@@ -176,9 +177,14 @@ export default function Scene(): JSX.Element {
           className="absolute rounded border border-white/20 bg-black px-4 py-2 shadow-md"
           style={{ top: `${position.y}px`, left: `${position.x}px` }}
         >
-          <a href={mintLink} target="_blank" rel="noopener noreferrer" className=" hover:text-blue">
+          <Link
+            href={mintLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue"
+          >
             Mint This
-          </a>
+          </Link>
         </div>
       )}
     </div>

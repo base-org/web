@@ -1132,28 +1132,6 @@
         "duration": "9 min read",
         "checksum": "d9302891627f1761507422bf35c361a30b343e77cb4d3981888ab70eb4fbd0ac"
     },
-    "5_farcaster-to-openframe": {
-        "title": "Convert Farcaster Frame to Open Frame using OnchainKit",
-        "slug": "/convert-farcaster-frame-to-open-frame",
-        "description": "Learn how to convert your Farcaster Frame to an Open Frame using Onchain Kit, enabling broader compatibility and usage.",
-        "author": "hughescoin",
-        "keywords": [
-            "farcaster",
-            "openframe",
-            "onchainKit",
-            "farcaster",
-            "open frames"
-        ],
-        "tags": [
-            "frontend"
-        ],
-        "difficulty": "intermediate",
-        "hide_table_of_contents": false,
-        "displayed_sidebar": null,
-        "last_updated": "Oct 7, 2024",
-        "duration": "10 min read",
-        "checksum": "a81681ca9176774c2b8d20b6a2a873bdbaab99944a4d90526797f699db3e7b86"
-    },
     "5_oracles-chainlink-price-feeds": {
         "title": "Accessing real-world data using Chainlink Data Feeds",
         "slug": "/oracles-chainlink-price-feeds",
