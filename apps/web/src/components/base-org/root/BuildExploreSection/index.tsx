@@ -23,6 +23,7 @@ export default async function BuildExploreSection() {
                 src={docsIllustration as StaticImageData}
                 alt="Base docs"
                 title="Base docs illustration"
+                className="max-h-[4rem]"
               />
               <div>
                 <Text className="mr-2 inline-block">Docs</Text>{' '}
@@ -38,6 +39,7 @@ export default async function BuildExploreSection() {
                 src={resourcesIllustration as StaticImageData}
                 alt="Resources"
                 title="Resources illustration"
+                className="max-h-[4rem]"
               />
               <div>
                 <Text className="mr-2 inline-block">Resources</Text>{' '}
@@ -58,6 +60,7 @@ export default async function BuildExploreSection() {
                 src={appsIllustration as StaticImageData}
                 alt="Resources"
                 title="Resources illustration"
+                className="max-h-[4rem]"
               />
               <div>
                 <Text className="mr-2 inline-block">Apps</Text>{' '}
@@ -73,6 +76,7 @@ export default async function BuildExploreSection() {
                 src={bridgeIllustration as StaticImageData}
                 alt="Bridge"
                 title="Bridge illustration"
+                className="max-h-[4rem]"
               />
               <div>
                 <Text className="mr-2 inline-block">Bridge</Text>{' '}

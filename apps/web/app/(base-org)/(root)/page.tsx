@@ -22,10 +22,8 @@ export default async function Home() {
   return (
     <ErrorsProvider context="base_landing_page">
       <AnalyticsProvider context="hero">
-        <div className="relative h-screen w-full">
-          <div className="fixed z-10 h-screen w-full">
-            <DynamicThreeHero />
-          </div>
+        <div className="relative z-10 h-screen w-full">
+          <DynamicThreeHero />
 
           <div className="absolute bottom-0 left-0 z-20 w-full pb-20 text-white">
             <Container>

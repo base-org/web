@@ -38,6 +38,7 @@ import baseLogo from './assets/base-logo.svg';
 import environmentLight from './assets/environmentLight.jpg';
 import Image, { StaticImageData } from 'next/image';
 import { useMediaQuery } from 'usehooks-ts';
+import classNames from 'classnames';
 
 /* 
   The Main Scene
@@ -45,6 +46,8 @@ import { useMediaQuery } from 'usehooks-ts';
   - Listen to pointer event for rotation context
   - Global setup such as gravity, dpr & Physics
 */
+
+const mintLink = 'https://wallet.coinbase.com';
 
 const gravity: Vector3Tuple = [0, 0, 0];
 
@@ -67,6 +70,8 @@ type MouseXY = {
 export default function Scene(): JSX.Element {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [position, setPosition] = useState<MouseXY>({ x: 0, y: 0 });
+  const [isActive, setIsActive] = useState(true);
+  const containerRef = useRef(null);
 
   const handleContextMenu = useCallback((event: any) => {
     event.preventDefault();
@@ -85,11 +90,71 @@ export default function Scene(): JSX.Element {
     };
   }, [handleClick]);
 
-  const isActive = true;
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      updateIsActive();
+    };
+
+    const handleFocus = () => {
+      updateIsActive();
+    };
+
+    const handleBlur = () => {
+      updateIsActive();
+    };
+
+    const updateIsActive = () => {
+      const isFocused = !document.hidden && document.hasFocus();
+      setIsActive(isFocused);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+
+        setIsActive(entry.isIntersecting);
+      },
+      {
+        threshold: 0,
+        rootMargin: '0px 0px -100% 0px',
+      },
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('blur', handleBlur);
+
+    // Initial check
+    updateIsActive();
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('blur', handleBlur);
+    };
+  }, []);
+
+  const canvaClasses = classNames(
+    'fixed h-screen w-full transition-all',
+    isActive ? 'opacity-100' : 'opacity-0',
+  );
 
   return (
-    <div className="absolute h-full w-full" onContextMenu={handleContextMenu}>
-      <Canvas shadows frameloop={isActive ? 'always' : 'never'} camera={sceneCamera}>
+    <div ref={containerRef} className="absolute h-full w-full" onContextMenu={handleContextMenu}>
+      <Canvas
+        shadows
+        frameloop={isActive ? 'always' : 'never'}
+        camera={sceneCamera}
+        style={{ background: 'transparent' }}
+        className={canvaClasses}
+      >
         <fog attach="fog" args={sceneFogArguments} />
 
         <mesh>
@@ -105,17 +170,13 @@ export default function Scene(): JSX.Element {
           </Physics>
         </Suspense>
       </Canvas>
+
       {isVisible && (
         <div
           className="absolute rounded border border-white/20 bg-black px-4 py-2 shadow-md"
           style={{ top: `${position.y}px`, left: `${position.x}px` }}
         >
-          <a
-            href="https://wallet.coinbase.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className=" hover:text-blue"
-          >
+          <a href={mintLink} target="_blank" rel="noopener noreferrer" className=" hover:text-blue">
             Mint This
           </a>
         </div>

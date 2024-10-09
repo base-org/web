@@ -47,11 +47,7 @@ export default function BuildAndRewardSection() {
 
           <div>
             <Link href="https://retrofunding.optimism.io/" target="_blank">
-              <Button
-                variant={ButtonVariants.Primary}
-                iconName="baseOrgDiagonalUpArrow"
-                className="md:ml-auto"
-              >
+              <Button variant={ButtonVariants.Primary} iconName="baseOrgDiagonalUpArrow">
                 Get rewarded
               </Button>
             </Link>
