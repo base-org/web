@@ -441,6 +441,7 @@ export default function UsernameProfileSectionHeatmap() {
           </div>
           <div
             ref={containerRef}
+            style={{ direction: 'rtl' }}
             className="w-full max-w-full overflow-x-auto overflow-y-hidden whitespace-nowrap"
           >
             <CalendarHeatmap
