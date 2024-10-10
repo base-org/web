@@ -25,6 +25,8 @@ import classNames from 'classnames';
 import { useCallback, useEffect, useState } from 'react';
 import { useCopyToClipboard } from 'usehooks-ts';
 import { useAccount, useSwitchChain } from 'wagmi';
+import ChainDropdown from 'apps/web/src/components/ChainDropdown';
+import { useSearchParams } from 'next/navigation';
 
 export enum ConnectWalletButtonVariants {
   Default,
@@ -54,6 +56,9 @@ export function ConnectWalletButton({
     () => switchChain({ chainId: base.id }),
     [switchChain],
   );
+  const searchParams = useSearchParams();
+  const showChainSwitcher = searchParams?.get('showChainSwitcher');
+
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {
@@ -142,11 +147,15 @@ export function ConnectWalletButton({
     <Wallet>
       <ConnectWallet
         withWalletAggregator
-        className="rounded-none bg-transparent p-2 hover:bg-gray-40/20"
+        className="flex items-center justify-center rounded-none bg-transparent p-2 hover:bg-gray-40/20"
       >
-        <UserAvatar />
-        <Name chain={basenameChain} className={userAddressClasses} />
+        <div className="flex items-center gap-2">
+          <UserAvatar />
+          <Name chain={basenameChain} className={userAddressClasses} />
+          {showChainSwitcher && <ChainDropdown />}
+        </div>
       </ConnectWallet>
+
       <WalletDropdown className="rounded bg-white font-sans shadow-md">
         <Identity className={classNames('px-4 pb-2 pt-3 font-display', className)}>
           <UserAvatar />
