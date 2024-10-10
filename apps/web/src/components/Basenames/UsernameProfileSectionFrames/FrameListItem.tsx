@@ -69,7 +69,10 @@ export default function FrameListItem({ url }: { url: string }) {
             >
               {isCopied ? (
                 <>
-                  <Icon name="checkmark" color="currentColor" width={16} /> Frame link copied!
+                  <span className="text-[#62A77E]">
+                    <Icon name="checkmark" color="currentColor" width={16} />{' '}
+                  </span>
+                  <span>Frame link copied!</span>
                 </>
               ) : (
                 <>
