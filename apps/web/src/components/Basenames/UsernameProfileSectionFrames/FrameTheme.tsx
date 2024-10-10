@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/prop-types */
 import type { FrameUIComponents, FrameUITheme } from '@frames.js/render/ui';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 import baseLoading from './base-loading.gif';
+import ImageRaw from 'apps/web/src/components/ImageRaw';
 
 type StylingProps = {
   className?: string;
@@ -39,14 +39,6 @@ export const theme: FrameUITheme<StylingProps> = {
     className: 'rounded-xl border border-palette-line/20 px-3 py-2 mt-3 mx-3 w-full',
   },
 };
-
-function isDataUrl(url: string) {
-  return /^data:image\/[a-zA-Z]+;base64,/.test(url);
-}
-
-function isSvgDataUrl(url: string) {
-  return url.startsWith('data:image/svg+xml');
-}
 
 type TransitionWrapperProps = {
   aspectRatio: '1:1' | '1.91:1';
@@ -91,16 +83,6 @@ function TransitionWrapper({
     [ar, stylingProps.style],
   );
 
-  const assetSrc = useMemo(
-    () =>
-      isLoading || isSvgDataUrl(src)
-        ? '' // todo: in the svg case, add an error state instead
-        : isDataUrl(src)
-        ? src
-        : `/frames/img-proxy?url=${encodeURIComponent(src)}`,
-    [isLoading, src],
-  );
-
   return (
     <div className="relative">
       {/* Loading Screen */}
@@ -114,19 +96,22 @@ function TransitionWrapper({
       </div>
 
       {/* Image */}
-      <img
-        {...stylingProps}
-        src={assetSrc}
-        alt={alt}
-        onLoad={onImageLoadEnd}
-        onError={onImageLoadEnd}
-        data-aspect-ratio={ar}
-        style={style}
-        className={classNames('transition-opacity duration-500', {
-          'opacity-0': isLoading || isTransitioning,
-          'opacity-100': !isLoading && !isTransitioning,
-        })}
-      />
+      {src && (
+        <ImageRaw
+          {...stylingProps}
+          src={src}
+          alt={alt}
+          width={775}
+          onLoad={onImageLoadEnd}
+          onError={onImageLoadEnd}
+          data-aspect-ratio={ar}
+          style={style}
+          className={classNames('transition-opacity duration-500', {
+            'opacity-0': isLoading || isTransitioning,
+            'opacity-100': !isLoading && !isTransitioning,
+          })}
+        />
+      )}
     </div>
   );
 }

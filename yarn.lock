@@ -359,6 +359,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@app/web@workspace:apps/web"
   dependencies:
+    "@cloudinary/react": ^1.13.0
+    "@cloudinary/url-gen": ^1.21.0
     "@coinbase/cookie-banner": ^1.0.3
     "@coinbase/cookie-manager": ^1.1.1
     "@coinbase/onchainkit": ^0.28.5
@@ -392,6 +394,7 @@ __metadata:
     autoprefixer: ^10.4.13
     base-ui: 0.1.1
     classnames: ^2.5.1
+    cloudinary: ^2.5.1
     csv-parser: ^3.0.0
     dd-trace: ^5.21.0
     dotenv: ^16.0.3
@@ -2190,6 +2193,49 @@ __metadata:
   dependencies:
     "@chainsafe/is-ip": ^2.0.1
   checksum: 90d27154c11ff878130150766ebfc490c829cd5249a61f7018fa4cefe3a18d92394285bb435c38bd0dbe45261006a82572e95ac201e9b28157de80127a6a3d06
+  languageName: node
+  linkType: hard
+
+"@cloudinary/html@npm:^1.13.0":
+  version: 1.13.0
+  resolution: "@cloudinary/html@npm:1.13.0"
+  dependencies:
+    "@types/lodash.clonedeep": ^4.5.6
+    "@types/lodash.debounce": ^4.0.6
+    "@types/node": ^14.14.10
+    lodash.clonedeep: ^4.5.0
+    lodash.debounce: ^4.0.8
+    typescript: ^4.1.2
+  checksum: 68b930096d0fef7c55d4bbc69f79a237ede3402f3e7df1e76afe5ae29c821d4a427278e0cd6855981ee079886243a0170f366000b48fb36b2c62c089b12f7b8d
+  languageName: node
+  linkType: hard
+
+"@cloudinary/react@npm:^1.13.0":
+  version: 1.13.0
+  resolution: "@cloudinary/react@npm:1.13.0"
+  dependencies:
+    "@cloudinary/html": ^1.13.0
+  peerDependencies:
+    react: ^16.3.0 || ^17.0.0 || ^18.0.0
+  checksum: dd272972a460e1e0a242d3fe9b2c1d8d5c4876fc5ef033c82ed85eadd2ce2739684a399a9715f0ddcc5ed95f5e8227b74b247c80fa6e95ea3e952c839025ce39
+  languageName: node
+  linkType: hard
+
+"@cloudinary/transformation-builder-sdk@npm:^1.15.1":
+  version: 1.15.2
+  resolution: "@cloudinary/transformation-builder-sdk@npm:1.15.2"
+  dependencies:
+    "@cloudinary/url-gen": ^1.7.0
+  checksum: 40d5d5955e31c5be3f778ef170d1aaa04aa3bbe2021bf1d0e320851ea80e7ad209f0216d74988dd4c34d12ecd880f9592a67475192d0d31c35f572602e58f7f8
+  languageName: node
+  linkType: hard
+
+"@cloudinary/url-gen@npm:^1.21.0, @cloudinary/url-gen@npm:^1.7.0":
+  version: 1.21.0
+  resolution: "@cloudinary/url-gen@npm:1.21.0"
+  dependencies:
+    "@cloudinary/transformation-builder-sdk": ^1.15.1
+  checksum: ff2106b3e47d7a12c1a56ddc1771565847184dd8825ffe106f9b67caec7a3c3238a08cc8b8b1ffa4169b28238f8c096414105fdc81fb6e84d7abb870e7a4fc71
   languageName: node
   linkType: hard
 
@@ -8199,6 +8245,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash.clonedeep@npm:^4.5.6":
+  version: 4.5.9
+  resolution: "@types/lodash.clonedeep@npm:4.5.9"
+  dependencies:
+    "@types/lodash": "*"
+  checksum: ef85512b7dce7a4f981a818ae44d11982907e1f26b5b26bedf0957c35e8591eb8e1d24fa31ca851d4b40e0a1ee88563853d762412691fe5f357e8335cead2325
+  languageName: node
+  linkType: hard
+
+"@types/lodash.debounce@npm:^4.0.6":
+  version: 4.0.9
+  resolution: "@types/lodash.debounce@npm:4.0.9"
+  dependencies:
+    "@types/lodash": "*"
+  checksum: 8183a152e01928e3b97ca773f6ae6038b8695e76493ba8bf6b743ec143948a62294fbc9d49fa4a78b52265b3ba4892ef57534e0c13d04aa0f111671b5a944feb
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:*":
+  version: 4.17.10
+  resolution: "@types/lodash@npm:4.17.10"
+  checksum: 4600f2f25270c8fee6953e363d318149a5f0f1b1bb820aa2f42d7ada6e4f7de31848bb5ffc2c687b40bd73aa982167bdd6e6d8d456e72abe0c660ec77d1fa7e9
+  languageName: node
+  linkType: hard
+
 "@types/mdast@npm:^3.0.0":
   version: 3.0.15
   resolution: "@types/mdast@npm:3.0.15"
@@ -8274,6 +8345,13 @@ __metadata:
   dependencies:
     undici-types: ~6.19.2
   checksum: 3710b6f42416796061cf47cff0a37955f2ca0afc63ab281cc23e46b3ec8dffcabc66b970e4ee34fff5e2082617bed47610b4a1122c7b3880f551d3c673c40f84
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^14.14.10":
+  version: 14.18.63
+  resolution: "@types/node@npm:14.18.63"
+  checksum: be909061a54931778c71c49dc562586c32f909c4b6197e3d71e6dac726d8bd9fccb9f599c0df99f52742b68153712b5097c0f00cac4e279fa894b0ea6719a8fd
   languageName: node
   linkType: hard
 
@@ -11698,6 +11776,16 @@ __metadata:
   dependencies:
     mimic-response: ^1.0.0
   checksum: 4e671cac39b11c60aa8ba0a450657194a5d6504df51bca3fac5b3bd0145c4f8e8464898f87c8406b83232e3bc5cca555f51c1f9c8ac023969ebfbf7f6bdabb2e
+  languageName: node
+  linkType: hard
+
+"cloudinary@npm:^2.5.1":
+  version: 2.5.1
+  resolution: "cloudinary@npm:2.5.1"
+  dependencies:
+    lodash: ^4.17.21
+    q: ^1.5.1
+  checksum: 4e4a09fe37677fce1051371b8906bf3a28f31017b867701e7c51977b6bcd0185603f0ca2e47052730e5691b5d0d40abd7f7d7774c046784b1ba55b390b687493
   languageName: node
   linkType: hard
 
@@ -18648,6 +18736,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.clonedeep@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.clonedeep@npm:4.5.0"
+  checksum: 92c46f094b064e876a23c97f57f81fbffd5d760bf2d8a1c61d85db6d1e488c66b0384c943abee4f6af7debf5ad4e4282e74ff83177c9e63d8ff081a4837c3489
+  languageName: node
+  linkType: hard
+
 "lodash.curry@npm:^4.0.1":
   version: 4.1.1
   resolution: "lodash.curry@npm:4.1.1"
@@ -21977,6 +22072,13 @@ __metadata:
   version: 1.1.3
   resolution: "pvutils@npm:1.1.3"
   checksum: 2ee26a9e5176c348977d6ec00d8ee80bff62f51743b1c5fe8abeeb4c5d29d9959cdfe0ce146707a9e6801bce88190fed3002d720b072dc87d031c692820b44c9
+  languageName: node
+  linkType: hard
+
+"q@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "q@npm:1.5.1"
+  checksum: 147baa93c805bc1200ed698bdf9c72e9e42c05f96d007e33a558b5fdfd63e5ea130e99313f28efc1783e90e6bdb4e48b67a36fcc026b7b09202437ae88a1fb12
   languageName: node
   linkType: hard
 
@@ -25334,6 +25436,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^4.1.2, typescript@npm:~4.9.4":
+  version: 4.9.5
+  resolution: "typescript@npm:4.9.5"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: ee000bc26848147ad423b581bd250075662a354d84f0e06eb76d3b892328d8d4440b7487b5a83e851b12b255f55d71835b008a66cbf8f255a11e4400159237db
+  languageName: node
+  linkType: hard
+
 "typescript@npm:^5.1.3":
   version: 5.5.4
   resolution: "typescript@npm:5.5.4"
@@ -25354,16 +25466,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:~4.9.4":
-  version: 4.9.5
-  resolution: "typescript@npm:4.9.5"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: ee000bc26848147ad423b581bd250075662a354d84f0e06eb76d3b892328d8d4440b7487b5a83e851b12b255f55d71835b008a66cbf8f255a11e4400159237db
-  languageName: node
-  linkType: hard
-
 "typescript@patch:typescript@5.0.4#~builtin<compat/typescript>":
   version: 5.0.4
   resolution: "typescript@patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"
@@ -25371,6 +25473,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: bb309d320c59a26565fb3793dba550576ab861018ff3fd1b7fccabbe46ae4a35546bc45f342c0a0b6f265c801ccdf64ffd68f548f117ceb7f0eac4b805cd52a9
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^4.1.2#~builtin<compat/typescript>, typescript@patch:typescript@~4.9.4#~builtin<compat/typescript>":
+  version: 4.9.5
+  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: ab417a2f398380c90a6cf5a5f74badd17866adf57f1165617d6a551f059c3ba0a3e4da0d147b3ac5681db9ac76a303c5876394b13b3de75fdd5b1eaa06181c9d
   languageName: node
   linkType: hard
 
@@ -25391,16 +25503,6 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: fd0016800105961d663ce1158b09689b857c3a22fb49255b771058de635c7d7b08518b419fbbcc81db2cf689053023ea3bd3ea9de0716c24639b46ca7d86be4d
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@~4.9.4#~builtin<compat/typescript>":
-  version: 4.9.5
-  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: ab417a2f398380c90a6cf5a5f74badd17866adf57f1165617d6a551f059c3ba0a3e4da0d147b3ac5681db9ac76a303c5876394b13b3de75fdd5b1eaa06181c9d
   languageName: node
   linkType: hard
 

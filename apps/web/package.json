@@ -12,6 +12,8 @@
     "update-contributors": "node ./scripts/updateContributors.js && npx prettier ./src/components/CoreContributors/CoreContributors.json -w"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.13.0",
+    "@cloudinary/url-gen": "^1.21.0",
     "@coinbase/cookie-banner": "^1.0.3",
     "@coinbase/cookie-manager": "^1.1.1",
     "@coinbase/onchainkit": "^0.28.5",
@@ -36,6 +38,7 @@
     "@vercel/postgres-kysely": "^0.8.0",
     "base-ui": "0.1.1",
     "classnames": "^2.5.1",
+    "cloudinary": "^2.5.1",
     "dd-trace": "^5.21.0",
     "ethers": "5.7.2",
     "framer-motion": "^8.5.5",
