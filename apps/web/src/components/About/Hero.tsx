@@ -28,7 +28,7 @@ async function GradientRow({ inverted = false, className }: GradientRowProps) {
 export async function Hero() {
   // negative top margin so it underlays the Nav
   return (
-    <div className="mt-[-96px] flex w-full flex-col items-center bg-black pb-10 pt-28 lg:px-16 lg:pb-20 lg:pt-32">
+    <div className="flex w-full flex-col items-center bg-black pb-10 pt-28 lg:pb-20 lg:pt-32">
       <GradientRow className="hidden md:flex" inverted />
       <ImageAdaptive
         priority

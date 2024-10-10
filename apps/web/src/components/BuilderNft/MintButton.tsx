@@ -17,7 +17,7 @@ export function MintButton() {
   if (!isBase) {
     return (
       <Button variant={ButtonVariants.Primary} className="w-fit" onClick={switchToBase}>
-        Switch to Base
+        Connect to Base
       </Button>
     );
   }

@@ -71,11 +71,14 @@ const contentSecurityPolicy = {
   'default-src': [
     "'self'",
     "'unsafe-inline'", // NextJS requires 'unsafe-inline'
+    "'wasm-unsafe-eval'", // wasm requires 'unsafe-eval'
     isLocalDevelopment ? "'unsafe-eval'" : '',
     baseXYZDomains,
     ccaDomain,
     ccaLiteDomains,
     walletconnectDomains,
+    'https://fonts.googleapis.com', // OCK styles loads google fonts via CSS
+    'https://fonts.gstatic.com/', // OCK styles loads google fonts via CSS
   ],
   'worker-src': ["'self'", 'blob:'],
   'connect-src': [
@@ -192,7 +195,36 @@ module.exports = extendBaseConfig(
           },
         ],
       });
+      config.module.rules.push({
+        test: /\.gltf/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash].[ext]',
+              outputPath: 'static/assets/gltf/',
+              publicPath: '/_next/static/assets/gltf/',
+            },
+          },
+        ],
+      });
+      config.module.rules.push({
+        test: /\.glb/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash].[ext]',
+              outputPath: 'static/assets/glb/',
+              publicPath: '/_next/static/assets/glb/',
+            },
+          },
+        ],
+      });
+
       config.externals.push('pino-pretty');
+      config.experiments = { ...config.experiments, asyncWebAssembly: true };
+
       return config;
     },
     images: {

@@ -1,15 +1,17 @@
+import Title from 'apps/web/src/components/base-org/typography/Title';
 import { Icon } from '../Icon/Icon';
 import ResourceCard from './ResourceCard/ResourceCard';
-import { gridClasses, sectionContainerClasses, titleClasses } from './styles';
+import { gridClasses } from './styles';
+import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 
 export const GET_INVOLVED_SECTION_ID = 'GetInvolved';
 
 export default async function GetInvolved() {
   return (
-    <div id={GET_INVOLVED_SECTION_ID} className={sectionContainerClasses}>
-      <div>
-        <h1 className={titleClasses}>Get Involved</h1>
-      </div>
+    <div id={GET_INVOLVED_SECTION_ID}>
+      <Title level={TitleLevel.Display2} className="mb-6">
+        Get Involved
+      </Title>
       <div className={gridClasses}>
         <ResourceCard
           title="Join the Discord"

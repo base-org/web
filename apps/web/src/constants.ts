@@ -80,8 +80,8 @@ export const analyticsConfig = {
   serverSideAnalyticsURL: {
     dev: 'https://analytics-service-dev.cbhq.net/amp',
     prod: 'https://cca-lite.coinbase.com/amp',
-  }
-}
+  },
+};
 
 export const ampDeploymentKey = isDevelopment
   ? 'client-Wvf63OdaukDZyCBtwgbOvHgGTuASBZFG'

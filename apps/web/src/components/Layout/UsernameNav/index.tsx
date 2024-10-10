@@ -111,10 +111,7 @@ export default function UsernameNav() {
           <ImageAdaptive src={usernameBaseLogo as StaticImageData} alt="Base" />
         </Link>
         <span className={walletStateClasses}>
-          <ConnectWalletButton
-            color="black"
-            connectWalletButtonVariant={ConnectWalletButtonVariants.Default}
-          />
+          <ConnectWalletButton connectWalletButtonVariant={ConnectWalletButtonVariants.Basename} />
         </span>
       </nav>
     </div>

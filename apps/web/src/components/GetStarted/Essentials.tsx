@@ -4,13 +4,9 @@ import { FUNDING_SECTION_ID } from './Funding';
 import { GET_NOTICED_SECTION_ID } from './GetNoticed';
 import { GET_INVOLVED_SECTION_ID } from './GetInvolved';
 import { START_BUILDING_SECTION_ID } from './StartBuilding';
-import { sectionContainerClasses, gridClasses } from './styles';
-
-const titleClasses = `
-  mb-4 lg:mb-6
-  text-3xl sm:text-4xl lg:text-6xl
-  leading-none
-`;
+import { gridClasses } from './styles';
+import Title from 'apps/web/src/components/base-org/typography/Title';
+import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 
 const subtitleClasses = `
   mb-4 sm:mb-6 lg:mb-8
@@ -21,8 +17,10 @@ const subtitleClasses = `
 
 export default async function Essentials() {
   return (
-    <div className={`${sectionContainerClasses} mt-20`}>
-      <h1 className={titleClasses}>The Essentials</h1>
+    <div>
+      <Title level={TitleLevel.Display2} className="mb-4">
+        The Essentials
+      </Title>
       <h2 className={subtitleClasses}>
         Jump to our most frequently requested tools and resources.
       </h2>

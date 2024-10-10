@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 
 import Script from 'next/script';
 import initCCA from '../../utils/initCCA';
+import { isDevelopment } from 'apps/web/src/constants';
 
 export type NextJsRouterEventTypes =
   | 'routeChangeStart'
@@ -60,14 +61,15 @@ export default function ClientAnalyticsScript() {
     }
   }, [onRouteChangeHandler, pathname]);
 
+  const onLoadHandler = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    () => initCCA(oldRouterEvent, trackingPreference, deviceIdCookie, setDeviceIdCookie),
+    [oldRouterEvent, trackingPreference, deviceIdCookie, setDeviceIdCookie],
+  );
+
+  if (isDevelopment) return null;
+
   return (
-    <Script
-      src="https://static-assets.coinbase.com/js/cca/v0.0.1.js"
-      onLoad={useCallback(
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        () => initCCA(oldRouterEvent, trackingPreference, deviceIdCookie, setDeviceIdCookie),
-        [oldRouterEvent, trackingPreference, deviceIdCookie, setDeviceIdCookie],
-      )}
-    />
+    <Script src="https://static-assets.coinbase.com/js/cca/v0.0.1.js" onLoad={onLoadHandler} />
   );
 }
