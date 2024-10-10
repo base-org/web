@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, Suspense } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
 import Link from 'next/link';
 import { ActionType, ComponentType } from 'libs/base-ui/utils/logEvent';
@@ -258,7 +258,9 @@ function DesktopNav({ color }: DesktopNavProps) {
           eventName="github"
         />
       </Dropdown>
-      <ConnectWalletButton color={color} className="relative inline-block" />
+      <Suspense>
+        <ConnectWalletButton color={color} className="relative inline-block" />
+      </Suspense>
     </div>
   );
 }
