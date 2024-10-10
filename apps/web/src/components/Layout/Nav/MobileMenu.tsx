@@ -1,5 +1,5 @@
 'use client';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { Suspense, useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion, cubicBezier } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -281,7 +281,9 @@ function MobileMenu({ color }: MobileMenuProps) {
               </div>
 
               <div className="mb-8">
-                <ConnectWalletButton color={REVERSE_COLOR[color]} className="" />
+                <Suspense>
+                  <ConnectWalletButton color={REVERSE_COLOR[color]} className="" />
+                </Suspense>
               </div>
 
               <div className="flex flex-row justify-between gap-4 justify-self-end pb-8">
