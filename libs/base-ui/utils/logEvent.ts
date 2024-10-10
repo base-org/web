@@ -67,6 +67,7 @@ type CCAEventData = {
   userId?: string;
   error?: string;
   wallet_type?: string;
+  wallet_connector_id?: string;
   flag_key?: string;
   variant?: string | undefined;
   experiment_key?: string | undefined;
