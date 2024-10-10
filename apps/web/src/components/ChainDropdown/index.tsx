@@ -19,9 +19,9 @@ export function DropdownChainSwitcher({
 
   const handleSwitchChain = useCallback(() => {
     if (chain !== currentChain) {
-      switchChainAsync({ chainId: chain.id })
-        .then(() => console.log('chainSwitched'))
-        .catch((error) => logError(error, 'Failed to switch chain'));
+      switchChainAsync({ chainId: chain.id }).catch((error) =>
+        logError(error, 'Failed to switch chain'),
+      );
     }
   }, [chain, currentChain, logError, switchChainAsync]);
   return <DropdownItem onClick={handleSwitchChain}>{chain.name}</DropdownItem>;
