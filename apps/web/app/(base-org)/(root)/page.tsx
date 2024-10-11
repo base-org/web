@@ -1,5 +1,4 @@
-import Image from 'apps/web/node_modules/next/image';
-import { StaticImport } from 'apps/web/node_modules/next/dist/shared/lib/get-img-props';
+import Image, { StaticImageData } from 'apps/web/node_modules/next/image';
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
@@ -49,7 +48,7 @@ export default async function Home() {
             <div className="px-[1rem] lg:mr-16 lg:self-end">
               <Link href="https://optimism.io/build">
                 <div className="flex flex-row gap-2">
-                  <Image src={OpLogo as StaticImport} alt="optimism logo" />
+                  <Image src={OpLogo as StaticImageData} alt="optimism logo" />
                   <span>Built on the Superchain</span>
                 </div>
               </Link>
