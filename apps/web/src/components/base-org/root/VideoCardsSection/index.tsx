@@ -19,7 +19,7 @@ export default function VideoCardsSection() {
       />
       <VideoCard
         title="Open and trusted"
-        description="Base is secured by Ethereum as a Layer 2, decentralized on the Superchain and incubated by Coinbase."
+        description="Base is built as an Ethereum L2, decentralized with the Optimism Superchain, and incubated by Coinbase."
         src={eth}
       />
     </section>
