@@ -1,5 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getDiscountCode, ProofsException, proofValidation } from 'apps/web/src/utils/proofs';
+import {
+  getDiscountCode,
+  ProofsException,
+  proofValidation,
+  signDiscountMessageWithTrustedSigner,
+} from 'apps/web/src/utils/proofs';
 import { logger } from 'apps/web/src/utils/logger';
 import { withTimeout } from 'apps/web/pages/api/decorators';
 
@@ -19,7 +24,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   try {
     console.log({ address, chain, discountCode });
-    const test = await getDiscountCode('LA_DINNER_TEST');
+
+    // 1. get the database model
+    const discountCode = await getDiscountCode('LA_DINNER_TEST');
 
     // const responseData = await getWalletProofs(
     //   // to lower case to be able to use index on huge dataset
@@ -29,6 +36,14 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     //   false,
     // );
 
+    // 2. format the payload {}
+    // 3. sign (reference: signMessageWithTrustedSigner (will match validator expected paylaod))
+    // 4. should return something similar to CoinbaseProofResponse
+    signDiscountMessageWithTrustedSigner(
+      '0xvalidatoraddress',
+      discountCode.expires_at,
+      discountCode.salt,
+    );
     console.log({ test });
 
     return res.status(200).json(test);

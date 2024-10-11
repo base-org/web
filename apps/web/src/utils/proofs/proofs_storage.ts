@@ -43,6 +43,7 @@ export async function getProofsByNamespaceAndAddress(
   return query.selectAll().limit(1).execute();
 }
 
+// Not a proof: should be somewhere else?
 export async function getDiscountCode(code: string) {
   const codeBuffer = Buffer.from(code);
   const query = createKysely<Database>()

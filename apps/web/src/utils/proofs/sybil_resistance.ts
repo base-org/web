@@ -83,6 +83,7 @@ export async function hasRegisteredWithDiscount(
   });
 }
 
+// message: `0x${string}`?
 async function signMessageWithTrustedSigner(
   claimerAddress: Address,
   targetAddress: Address,
@@ -108,6 +109,66 @@ async function signMessageWithTrustedSigner(
 
   // combine r, s, and v into a single signature
   const signature = `${r.slice(2)}${s.slice(2)}${(v as bigint).toString(16)}`;
+
+  // return the encoded signed message
+  return encodeAbiParameters(parseAbiParameters('address, uint64, bytes'), [
+    claimerAddress,
+    BigInt(expiry),
+    `0x${signature}`,
+  ]);
+}
+
+export async function signDiscountMessageWithTrustedSigner(
+  targetAddress: Address,
+  expiry: Date,
+  salt: string,
+) {
+  if (!trustedSignerAddress || !isAddress(trustedSignerAddress)) {
+    throw new Error('Must provide a valid trustedSignerAddress');
+  }
+  // encode the message
+  const expiryTimestamp = BigInt(Math.floor(expiry.getTime() / 1000));
+
+  // uuid: string => bytes32
+
+  // validatoraddres
+  // signer (trust)
+  // claimer
+  // couppoun => (bytes32)
+  // expires => (bytes32)
+
+  const message = encodePacked(
+    ['bytes2', 'address', 'address', 'address', 'uint64', 'string'],
+    ['0x1900', targetAddress, trustedSignerAddress, '0x2', expiryTimestamp, salt],
+  );
+
+  // hex"1900",
+  // target,
+  // signer,
+  // uuid,
+  // expiry,
+  // salt
+  // where `target` is the address of the deployed discount validator,`signer` is the expected signer, `nonce` is the `uuid` of the coupon and `expiry` is the uint64 expiry timestamp.
+
+  // hash the message
+  const msgHash = keccak256(message);
+
+  // sign the hashed message
+  const { r, s, v } = await sign({
+    hash: msgHash,
+    privateKey: `0x${trustedSignerPKey}`,
+  });
+
+  // combine r, s, and v into a single signature
+  const signature = `${r.slice(2)}${s.slice(2)}${(v as bigint).toString(16)}`;
+
+  //
+  // abi.encode(
+  //   uint64 expiry,
+  //   bytes32 uuid,
+  //   uint256 salt,
+  //   bytes sig
+  // )
 
   // return the encoded signed message
   return encodeAbiParameters(parseAbiParameters('address, uint64, bytes'), [
