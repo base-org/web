@@ -3,7 +3,7 @@
 import ecosystemApps from 'apps/web/src/data/ecosystem.json';
 import { TagChip } from 'apps/web/src/components/Ecosystem/TagChip';
 import { SearchBar } from 'apps/web/src/components/Ecosystem/SearchBar';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { List } from 'apps/web/src/components/Ecosystem/List';
 
 export type EcosystemApp = {
@@ -21,7 +21,7 @@ const tags = [
     .map((app) => app.tags)
     .flat()
     .filter((value, index, array) => {
-      return array.indexOf(value) === index;
+      return array.indexOf(value.toLocaleLowerCase()) === index;
     }),
 ];
 
@@ -43,26 +43,41 @@ const decoratedEcosystemApps: EcosystemApp[] = orderedEcosystemAppsAsc().map((d)
 }));
 
 export default function Content() {
-  const [selectedTag, setSelectedTag] = useState(tags[0]);
-  const [search, setSearch] = useState('');
-  const [showCount, setShowCount] = useState(16);
+  const [selectedTags, setSelectedTags] = useState<string[]>(['all']);
+  const [search, setSearch] = useState<string>('');
+  const [showCount, setShowCount] = useState<number>(16);
 
-  const filteredEcosystemApps = decoratedEcosystemApps.filter((app) => {
-    const isTagged = selectedTag === 'all' || app.tags.includes(selectedTag);
-    const isSearched = search === '' || app.name.toLowerCase().match(search.toLocaleLowerCase());
-    return isTagged && isSearched;
-  });
+  const selectTag = (tag: string): void => {
+    setSelectedTags((prevTags) => {
+      if (tag === 'all') {
+        return ['all'];
+      }
+      const newTags = prevTags.includes(tag)
+        ? prevTags.filter((t) => t !== tag)
+        : [...prevTags.filter((t) => t !== 'all'), tag];
+      return newTags.length === 0 ? ['all'] : newTags;
+    });
+  };
+
+  const filteredEcosystemApps = useMemo(() => {
+    return decoratedEcosystemApps.filter((app) => {
+      const isTagged =
+        selectedTags.includes('all') || app.tags.some((tag) => selectedTags.includes(tag));
+      const isSearched = search === '' || app.name.toLowerCase().includes(search.toLowerCase());
+      return isTagged && isSearched;
+    });
+  }, [selectedTags, search]);
 
   return (
-    <div className="flex min-h-32 w-full max-w-[1440px] flex-col gap-10 px-8 pb-32">
+    <div className="flex min-h-32 w-full flex-col gap-10 pb-32">
       <div className="flex flex-col justify-between gap-8 lg:flex-row lg:gap-12">
         <div className="flex flex-row flex-wrap gap-3">
           {tags.map((tag) => (
             <TagChip
               tag={tag}
-              isSelected={selectedTag === tag}
+              isSelected={selectedTags.includes(tag)}
               key={tag}
-              setSelectedTag={setSelectedTag}
+              selectTag={selectTag}
             />
           ))}
         </div>
@@ -71,7 +86,7 @@ export default function Content() {
         </div>
       </div>
       <List
-        selectedTag={selectedTag}
+        selectedTags={selectedTags}
         searchText={search}
         apps={filteredEcosystemApps}
         showCount={showCount}
