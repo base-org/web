@@ -8,7 +8,7 @@ import Link from 'apps/web/src/components/Link';
 export function Footer() {
   return (
     <AnalyticsProvider context="footer">
-      <footer className="relative z-20 mx-auto mt-auto flex w-full flex-col justify-center bg-black bg-black pb-8 pt-20 text-white">
+      <footer className="relative z-20 mx-auto mt-auto flex w-full flex-col justify-center bg-black bg-black pb-8 pt-12 text-white">
         <Container>
           <ul className="flex w-full justify-between gap-2 ">
             <li>
