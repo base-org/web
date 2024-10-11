@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import type { Metadata } from 'next';
 import TopNavigation from 'apps/web/src/components/base-org/shared/TopNavigation';
 import CardsProvider from 'apps/web/src/components/base-org/Card/context';
+import Container from 'apps/web/src/components/base-org/Container';
 
 const HomepageModalDynamic = dynamic(
   async () => import('apps/web/src/components/Basenames/HomepageModal'),
@@ -41,6 +42,11 @@ export default async function BaseOrgLayout({
         <HomepageModalDynamic />
         {children}
       </CardsProvider>
+
+      {/* Line between content & footer */}
+      <Container>
+        <hr className="opacity-50" />
+      </Container>
     </div>
   );
 }

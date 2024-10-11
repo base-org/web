@@ -48,7 +48,8 @@ import Link from 'apps/web/src/components/Link';
   - Global setup such as gravity, dpr & Physics
 */
 
-const mintLink = 'https://wallet.coinbase.com';
+const mintLink =
+  'https://wallet.coinbase.com/nft/mint/eip155:8453:erc721:0x803Fc79D31AB30a39B3BD2A90171470cC82Ba44a';
 
 const gravity: Vector3Tuple = [0, 0, 0];
 
@@ -97,6 +98,8 @@ export default function Scene(): JSX.Element {
       setIsActive(isFocused);
     };
 
+    const container = containerRef.current;
+
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
@@ -109,16 +112,16 @@ export default function Scene(): JSX.Element {
       },
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    if (container) {
+      observer.observe(container);
     }
 
     // Initial check
     updateIsActive();
 
     return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
+      if (container) {
+        observer.unobserve(container);
       }
     };
   }, []);
@@ -134,7 +137,6 @@ export default function Scene(): JSX.Element {
         shadows
         frameloop={isActive ? 'always' : 'never'}
         camera={sceneCamera}
-        style={{ background: 'transparent' }}
         className={canvaClasses}
       >
         <fog attach="fog" args={sceneFogArguments} />

@@ -105,6 +105,9 @@ export default function BlogSection() {
 
   return (
     <section ref={sectionRef} className="group">
+      <Title level={TitleLevel.Title1} className="mb-6">
+        Read the latest from Base
+      </Title>
       <div className="relative mx-auto w-full">
         <div className="relative overflow-hidden rounded-xl">
           {/* Top blur/gradient for title visibility */}

@@ -13,6 +13,7 @@ import ErrorsProvider from 'apps/web/contexts/Errors';
 import BlogSection from 'apps/web/src/components/base-org/root/BlogSection';
 import dynamic from 'next/dynamic';
 import Link from 'apps/web/src/components/Link';
+import MissionSection from 'apps/web/src/components/base-org/root/MissionSection';
 
 const DynamicThreeHero = dynamic(async () => import('apps/web/src/components/ThreeHero'), {
   ssr: false,
@@ -27,11 +28,7 @@ export default async function Home() {
 
           <div className="absolute bottom-0 left-0 z-20 w-full pb-20 text-white">
             <Container>
-              <Title level={TitleLevel.Headline}>Base is for everyone.</Title>
-              <p className="max-w-[19rem]">
-                Bringing the world onchain to create a global economy that increases innovation,
-                creativity, and freedom.
-              </p>
+              <Title level={TitleLevel.Title1}>Base is for everyone.</Title>
               <div className="mt-4 flex gap-4">
                 <Link href="/getstarted?utm_source=dotorg&medium=hero">
                   <Button variant={ButtonVariants.Secondary} iconName="baseOrgDiagonalUpArrow">
@@ -53,11 +50,7 @@ export default async function Home() {
       <main className="relative z-20 flex w-full flex-col items-center bg-black">
         <Container>
           <div className="flex flex-col gap-20 pb-40 pt-20 md:gap-40">
-            <section>
-              <Title level={TitleLevel.Display1}>
-                The future of the internet is onchain. Base is here to help you build it.
-              </Title>
-            </section>
+            <MissionSection />
             <BuildExploreSection />
             <VideoCardsSection />
             <SlidingTextSection />

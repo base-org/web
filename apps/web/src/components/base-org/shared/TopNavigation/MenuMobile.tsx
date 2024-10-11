@@ -116,7 +116,7 @@ export default function MenuMobile({ links }: MenuMobileProps) {
         type="button"
         onClick={toggleMenu}
         aria-label="Open Menu"
-        className="rounded.xl relative z-20 bg-black px-4 py-2"
+        className="relative z-20 rounded-xl bg-black px-4 py-2"
       >
         <Icon name="more-menu" color="currentColor" />
       </button>

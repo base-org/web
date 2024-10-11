@@ -46,7 +46,7 @@ export default function BuildAndRewardSection() {
           </Text>
 
           <div>
-            <Link href="https://retrofunding.optimism.io/" target="_blank">
+            <Link href="https://rounds.wtf/base-builds" target="_blank">
               <Button variant={ButtonVariants.Primary} iconName="baseOrgDiagonalUpArrow">
                 Get rewarded
               </Button>

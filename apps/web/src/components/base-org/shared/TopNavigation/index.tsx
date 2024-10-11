@@ -4,14 +4,13 @@ import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import Link from 'next/link';
 import logo from './assets/logo.svg';
 import Image, { StaticImageData } from 'next/image';
-import { useGasPrice } from 'wagmi';
-import { Icon } from 'apps/web/src/components/Icon/Icon';
 import {
   ConnectWalletButton,
   ConnectWalletButtonVariants,
 } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 import MenuDesktop from 'apps/web/src/components/base-org/shared/TopNavigation/MenuDesktop';
 import MenuMobile from 'apps/web/src/components/base-org/shared/TopNavigation/MenuMobile';
+import GasPriceDropdown from 'apps/web/src/components/base-org/shared/TopNavigation/GasPriceDropdown';
 
 export type SubItem = {
   name: string;
@@ -92,37 +91,16 @@ const links: TopNavigationLink[] = [
 ];
 
 export default function TopNavigation() {
-  const { data: gasPriceInWei } = useGasPrice({
-    query: {
-      refetchInterval: 10_000,
-    },
-  });
-
-  const convertWeiToMwei = (weiValue: bigint): number => {
-    // 1 mwei = 10^6 wei
-    const mweiValue = Number(weiValue) / 1_000_000;
-    return Number(mweiValue.toFixed(2)); // Round to 2 decimal places
-  };
-
   return (
     <AnalyticsProvider context="navbar">
       <nav className="fixed top-0 z-50 w-full shrink-0 px-[1rem] py-4 md:px-[1.5rem] lg:px-[2rem]">
         <div className="flex w-full items-center justify-between gap-2">
           {/* Logo and Gas price section */}
-          <div className="relative z-20 flex items-center gap-4">
+          <div className="relative z-20 flex items-center gap-4 md:min-w-[16rem]">
             <Link href="/" className="flex min-h-[3rem] min-w-[3rem]">
               <Image src={logo as StaticImageData} alt="Base Logo" />
             </Link>
-
-            {gasPriceInWei && (
-              <div className="flex hidden items-center gap-2 rounded-xl bg-black px-4 py-3 md:flex">
-                <span className="animate-pulse text-palette-positive">
-                  <Icon name="blueCircle" color="currentColor" height="0.75rem" width="0.75rem" />
-                </span>
-                <strong>{convertWeiToMwei(gasPriceInWei)}</strong>
-                <small>Mgwei</small>
-              </div>
-            )}
+            <GasPriceDropdown />
           </div>
 
           <div className="hidden md:inline-block">
@@ -134,7 +112,7 @@ export default function TopNavigation() {
           </div>
 
           {/* Connect Wallet button */}
-          <div className="justify-end">
+          <div className="flex items-end justify-end md:min-w-[16rem]">
             <ConnectWalletButton connectWalletButtonVariant={ConnectWalletButtonVariants.BaseOrg} />
           </div>
         </div>
