@@ -25,7 +25,6 @@ import nftProduct from './ui/nftProduct.svg';
 import previewBackground from './ui/preview-background.svg';
 import emptyPreviewFrame from './ui/preview-frame.svg';
 import starActive from './ui/starActive.svg';
-import swap from './ui/swap.svg';
 
 export default function FrameBuilder() {
   const params = useParams();
@@ -46,10 +45,6 @@ export default function FrameBuilder() {
 
   const { profileAddress } = useUsernameProfile();
 
-  const [swapTokenSymbol, setSwapTokenSymbol] = useState('');
-  const handleSwapTokenSymbolChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setSwapTokenSymbol(e.target.value);
-  }, []);
   const emptyFrameUrl = !debouncedNewFrameUrl;
   const isValidFrameUrl = isValidUrl(debouncedNewFrameUrl);
   const { logEventWithContext } = useAnalytics();
@@ -133,18 +128,6 @@ export default function FrameBuilder() {
       setNewFrameUrl('');
     }
   }, [basename, handleNextStep, logEventWithContext]);
-
-  const handleSwapPreviewClick = useCallback(() => {
-    if (swapTokenSymbol) {
-      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
-        context: 'social-dex',
-      });
-      setNewFrameUrl(`https://social-dex-frontend.vercel.app/api/buy/ticker/${swapTokenSymbol}`);
-      handleNextStep();
-    } else {
-      setNewFrameUrl('');
-    }
-  }, [swapTokenSymbol, handleNextStep, logEventWithContext]);
 
   const handleBuildTopClick = useCallback(() => {
     if (profileAddress) {
@@ -350,37 +333,6 @@ export default function FrameBuilder() {
         >
           Show Preview
         </Button>
-      </SuggestionCard>
-      <SuggestionCard
-        handleTriggerClick={() =>
-          logEventWithContext('basename_profile_frame_swap_opened', ActionType.click)
-        }
-        imgData={swap as StaticImageData}
-        title="Swap with me"
-        description="Buy my tokens"
-      >
-        <p className="text-sm text-palette-foreground">
-          Enter the token symbol of the token you want others to buy from your profile
-        </p>
-        <div className="mt-3 flex flex-row gap-2 lg:gap-4">
-          <Input
-            placeholder="token symbol (example: USDC)"
-            value={swapTokenSymbol}
-            onChange={handleSwapTokenSymbolChange}
-            type="text"
-            className="flex-grow rounded-xl border border-palette-line/20 px-3 py-2 md:max-w-[180px] lg:max-w-full"
-          />
-          <Button
-            rounded
-            disabled={!swapTokenSymbol}
-            className="flex grow items-center justify-center md:max-w-[120px]"
-            variant={ButtonVariants.Black}
-            size={ButtonSizes.Tiny}
-            onClick={handleSwapPreviewClick}
-          >
-            Show preview
-          </Button>
-        </div>
       </SuggestionCard>
       <SuggestionCard
         handleTriggerClick={() =>
