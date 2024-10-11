@@ -135,12 +135,11 @@ function TransitionWrapper({
 }
 
 export const components: FrameUIComponents<StylingProps> = {
-  Error: (frameErrorProps) => {
-    console.log('jf frameErrorProps', frameErrorProps);
+  Error: () => {
     return (
       <div className={baseRootClasses}>
-        <p className="flex flex-row items-center justify-start gap-1 rounded-xl border border-red-30 bg-red-0 px-4 py-2 text-sm font-medium text-palette-negative">
-          <ExclamationCircleIcon className="h-4 w-4 rounded-full" /> invalid frame
+        <p className="flex flex-row items-center justify-start gap-1 text-palette-foregroundMuted">
+          <ExclamationCircleIcon className="h-4 w-4 rounded-full" /> Failed to load frame
         </p>
       </div>
     );
