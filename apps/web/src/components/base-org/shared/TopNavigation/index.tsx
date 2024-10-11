@@ -11,6 +11,7 @@ import {
 import MenuDesktop from 'apps/web/src/components/base-org/shared/TopNavigation/MenuDesktop';
 import MenuMobile from 'apps/web/src/components/base-org/shared/TopNavigation/MenuMobile';
 import GasPriceDropdown from 'apps/web/src/components/base-org/shared/TopNavigation/GasPriceDropdown';
+import { Suspense } from 'react';
 
 export type SubItem = {
   name: string;
@@ -113,7 +114,11 @@ export default function TopNavigation() {
 
           {/* Connect Wallet button */}
           <div className="flex items-end justify-end md:min-w-[16rem]">
-            <ConnectWalletButton connectWalletButtonVariant={ConnectWalletButtonVariants.BaseOrg} />
+            <Suspense>
+              <ConnectWalletButton
+                connectWalletButtonVariant={ConnectWalletButtonVariants.BaseOrg}
+              />
+            </Suspense>
           </div>
         </div>
       </nav>

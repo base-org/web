@@ -25,6 +25,8 @@ import classNames from 'classnames';
 import { useCallback, useEffect, useState } from 'react';
 import { useCopyToClipboard } from 'usehooks-ts';
 import { useAccount, useSwitchChain } from 'wagmi';
+import ChainDropdown from 'apps/web/src/components/ChainDropdown';
+import { useSearchParams } from 'next/navigation';
 
 export enum ConnectWalletButtonVariants {
   BaseOrg,
@@ -46,7 +48,8 @@ export function ConnectWalletButton({
     () => switchChain({ chainId: base.id }),
     [switchChain],
   );
-  // Hydration bug
+  const searchParams = useSearchParams();
+  const showChainSwitcher = searchParams?.get('showChainSwitcher');
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {
@@ -134,13 +137,17 @@ export function ConnectWalletButton({
     <Wallet>
       <ConnectWallet
         withWalletAggregator
-        className="rounded-xl bg-transparent p-2 hover:bg-gray-40/20"
+        className="flex items-center justify-center rounded-xl bg-transparent p-2 hover:bg-gray-40/20"
       >
-        <UserAvatar />
-        <Name chain={basenameChain} className={userAddressClasses} />
+        <div className="flex items-center gap-2">
+          <UserAvatar />
+          <Name chain={basenameChain} className={userAddressClasses} />
+          {showChainSwitcher && <ChainDropdown />}
+        </div>
       </ConnectWallet>
+
       <WalletDropdown className="rounded-xl bg-white font-sans shadow-md">
-        <Identity className={classNames('px-4 pb-2 pt-3 font-display')}>
+        <Identity className="px-4 pb-2 pt-3 font-display">
           <UserAvatar />
           <Name
             onClick={copyAddress}
