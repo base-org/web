@@ -1,11 +1,9 @@
 import { StaticImageData } from 'next/image';
-
 import { Cloudinary, transformationStringFromObject } from '@cloudinary/url-gen';
 
-// Create and configure your Cloudinary instance.
 const cloudinaryClient = new Cloudinary({
   cloud: {
-    cloudName: 'coinbase',
+    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
   },
 });
 
@@ -40,14 +38,7 @@ type GetCloudinaryMediaUrlParams = {
   width: number;
 };
 
-export function getCloudinaryMediaUrl({
-  media,
-  width,
-}: // transformation = '',
-// cloudName = 'coin-nft-dev',
-GetCloudinaryMediaUrlParams) {
-  // const parts = [`https://res.cloudinary.com/${cloudName}/image/fetch`];
-
+export function getCloudinaryMediaUrl({ media, width }: GetCloudinaryMediaUrlParams) {
   if (isDataUrl(media)) return media;
 
   // * 2 for high pixel density screens

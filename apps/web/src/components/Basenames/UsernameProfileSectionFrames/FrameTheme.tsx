@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 import baseLoading from './base-loading.gif';
-import ImageRaw from 'apps/web/src/components/ImageRaw';
+import ImageCloudinary from 'apps/web/src/components/ImageCloudinary';
 
 type StylingProps = {
   className?: string;
@@ -86,18 +86,20 @@ function TransitionWrapper({
   return (
     <div className="relative">
       {/* Loading Screen */}
-      <div
-        className={classNames(
-          'absolute inset-0 flex items-center justify-center transition-opacity duration-500',
-          { 'opacity-0': !isLoading || !isTransitioning, 'opacity-100': isLoading },
-        )}
-      >
-        <Image src={baseLoading} alt="" width={22} height={22} />
-      </div>
+      {isLoading && (
+        <div
+          className={classNames(
+            'absolute inset-0 flex items-center justify-center transition-opacity duration-500',
+            { 'opacity-0': !isLoading || !isTransitioning, 'opacity-100': isLoading },
+          )}
+        >
+          <Image src={baseLoading} alt="" width={22} height={22} />
+        </div>
+      )}
 
       {/* Image */}
       {src && (
-        <ImageRaw
+        <ImageCloudinary
           {...stylingProps}
           src={src}
           alt={alt}
