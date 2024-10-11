@@ -27,7 +27,7 @@ export default function GasPriceDropdown() {
 
   return (
     <div className="group relative hidden md:block">
-      <div className="flex  flex items-center gap-2 rounded-xl bg-black px-4 py-3">
+      <div className="flex flex cursor-pointer items-center gap-2 rounded-xl bg-black px-4 py-3 transition-all group-hover:bg-[#333]">
         <span className="animate-pulse text-palette-positive">
           <Icon name="blueCircle" color="currentColor" height="0.75rem" width="0.75rem" />
         </span>
@@ -35,7 +35,7 @@ export default function GasPriceDropdown() {
         <small>Mgwei</small>
       </div>
       <div className="absolute left-0 top-full hidden pt-2 group-hover:inline-block">
-        <Card innerClassName="p-4">
+        <Card innerClassName="p-4 bg-[#191919]">
           <ul className="flex flex-col gap-2 whitespace-nowrap">
             <li className="flex gap-2">
               <strong className="font-normal">{base.name}</strong>
