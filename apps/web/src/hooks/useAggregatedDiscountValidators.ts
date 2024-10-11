@@ -7,6 +7,7 @@ import {
   useCheckCBIDAttestations,
   useCheckCoinbaseAttestations,
   useCheckEAAttestations,
+  useDiscountCodeAttestations,
   useSummerPassAttestations,
 } from 'apps/web/src/hooks/useAttestations';
 import { useActiveDiscountValidators } from 'apps/web/src/hooks/useReadActiveDiscountValidators';
@@ -50,6 +51,8 @@ export function useAggregatedDiscountValidators() {
   const { data: BaseDotEthData, loading: loadingBaseDotEth } = useBaseDotEthAttestations();
   const { data: BNSData, loading: loadingBNS } = useBNSAttestations();
 
+  const { data: DiscountCodeData, loading: loadingDiscountCode } = useDiscountCodeAttestations();
+  console.log({ DiscountCodeData, loadingDiscountCode });
   const loadingDiscounts =
     loadingCoinbaseAttestations ||
     loadingCBIDAttestations ||

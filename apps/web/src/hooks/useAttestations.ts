@@ -487,3 +487,70 @@ export function useBNSAttestations() {
   }
   return { data: null, loading: isLoading, error };
 }
+
+// returns info about Coinbase verified account attestations
+export function useDiscountCodeAttestations() {
+  const { logError } = useErrors();
+  const { address } = useAccount();
+  const [loading, setLoading] = useState(false);
+  const [coinbaseProofResponse, setCoinbaseProofResponse] = useState<CoinbaseProofResponse | null>(
+    null,
+  );
+  const { basenameChain } = useBasenameChain();
+
+  useEffect(() => {
+    async function checkCoinbaseAttestations(a: string) {
+      try {
+        setLoading(true);
+        const params = new URLSearchParams();
+        params.append('address', a);
+        params.append('chain', basenameChain.id.toString());
+        params.append('discountCode', 'LA_DINNER'.toString());
+        const response = await fetch(`/api/proofs/discountCode?${params}`);
+        const result = (await response.json()) as CoinbaseProofResponse;
+        if (response.ok) {
+          setCoinbaseProofResponse(result);
+        }
+      } catch (error) {
+        logError(error, 'Error checking Discount code');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (address && !IS_EARLY_ACCESS) {
+      checkCoinbaseAttestations(address).catch((error) => {
+        logError(error, 'Error checking Discount code');
+      });
+    }
+  }, [address, basenameChain.id, logError]);
+
+  const signature = coinbaseProofResponse?.signedMessage as undefined | `0x${string}`;
+
+  const readContractArgs = useMemo(() => {
+    if (!address || !signature) {
+      return {};
+    }
+    return {
+      address: coinbaseProofResponse?.discountValidatorAddress,
+      abi: AttestationValidatorABI,
+      functionName: 'isValidDiscountRegistration',
+      args: [address, signature],
+    };
+  }, [address, coinbaseProofResponse?.discountValidatorAddress, signature]);
+
+  const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
+
+  if (isValid && coinbaseProofResponse && address && signature) {
+    return {
+      data: {
+        discountValidatorAddress: coinbaseProofResponse.discountValidatorAddress,
+        discount: Discount.COINBASE_VERIFIED_ACCOUNT,
+        validationData: signature,
+      },
+      loading: false,
+      error: null,
+    };
+  }
+  return { data: null, loading: loading || isLoading, error };
+}

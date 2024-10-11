@@ -10,6 +10,7 @@ export enum ProofTableNamespace {
   BNSDiscount = 'basenames_bns_discount',
   BaseEthHolders = 'basenames_base_eth_holders_discount',
   CBIDDiscount = 'basenames_cbid_discount',
+  DiscountCodes = 'basenames_discount_codes',
 }
 
 type ProofsTable = {
@@ -18,7 +19,7 @@ type ProofsTable = {
   proofs: string;
 };
 
-//username_proofs
+// username_proofs
 
 const proofTableName = 'proofs';
 
@@ -39,5 +40,14 @@ export async function getProofsByNamespaceAndAddress(
   } else {
     query = query.where('address', '=', address);
   }
+  return query.selectAll().limit(1).execute();
+}
+
+export async function getDiscountCode(code: string) {
+  const codeBuffer = Buffer.from(code);
+  const query = createKysely<Database>()
+    .selectFrom('public.basenames_discount_codes')
+    .where('code', '=', codeBuffer);
+
   return query.selectAll().limit(1).execute();
 }
