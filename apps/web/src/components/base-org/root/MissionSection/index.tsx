@@ -29,7 +29,7 @@ export default function MissionSection() {
     }
   }, []);
   return (
-    <section>
+    <section className="min-h-[32rem] sm:min-h-[19rem] md:min-h-[16rem] lg:min-h-[18rem] xl:min-h-[12rem]">
       <Title level={TitleLevel.Display1}>
         We are bringing the world onchain to <p className="inline text-blue" ref={typedTextRef} />.
       </Title>
