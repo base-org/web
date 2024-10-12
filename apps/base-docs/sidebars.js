@@ -34,6 +34,7 @@ module.exports = {
       collapsed: false,
       items: [
         'tools/node-providers',
+        'tools/rpc-proxy-caching',
         'tools/block-explorers',
         'tools/network-faucets',
         'tools/oracles',
