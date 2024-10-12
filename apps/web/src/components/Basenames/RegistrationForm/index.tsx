@@ -21,6 +21,7 @@ import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import { usePremiumEndDurationRemaining } from 'apps/web/src/hooks/useActiveEthPremiumAmount';
 import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
 import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
+import { useIsAuxiliaryFundsEnabled } from 'apps/web/src/hooks/useIsAuxiliaryFundsEnabled';
 import {
   useDiscountedNameRegistrationPrice,
   useNameRegistrationPrice,
@@ -164,12 +165,16 @@ export default function RegistrationForm() {
     [setReverseRecord],
   );
 
+  const isAuxiliaryFundsEnabled = useIsAuxiliaryFundsEnabled();
   const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
   const insufficientBalanceToRegister =
     balance?.value !== undefined && price !== undefined && balance?.value < price;
   const correctChain = connectedChain?.id === basenameChain.id;
+  const insufficientFundsAndNoAuxFunds = insufficientBalanceToRegister && !isAuxiliaryFundsEnabled;
   const insufficientBalanceToRegisterAndCorrectChain =
     insufficientBalanceToRegister && correctChain;
+  const insufficientFundsNoAuxFundsAndCorrectChain =
+    !isAuxiliaryFundsEnabled && insufficientBalanceToRegisterAndCorrectChain;
 
   const hasResolvedUSDPrice = price !== undefined && ethUsdPrice !== undefined;
   const usdPrice = hasResolvedUSDPrice ? formatUsdPrice(price, ethUsdPrice) : '--.--';
@@ -267,14 +272,14 @@ export default function RegistrationForm() {
                   <div className="flex flex-row items-baseline justify-around gap-2">
                     <p
                       className={classNames('whitespace-nowrap text-3xl text-black line-through', {
-                        'text-state-n-hovered': insufficientBalanceToRegister,
+                        'text-state-n-hovered': insufficientFundsAndNoAuxFunds,
                       })}
                     >
                       {formatEtherPrice(initialPrice)}
                     </p>
                     <p
                       className={classNames('whitespace-nowrap text-3xl font-bold text-green-50', {
-                        'text-state-n-hovered': insufficientBalanceToRegister,
+                        'text-state-n-hovered': insufficientFundsAndNoAuxFunds,
                       })}
                     >
                       {formatEtherPrice(discountedPrice)} ETH
@@ -283,7 +288,7 @@ export default function RegistrationForm() {
                 ) : (
                   <p
                     className={classNames('whitespace-nowrap text-3xl font-bold text-black', {
-                      'text-state-n-hovered': insufficientBalanceToRegister,
+                      'text-state-n-hovered': insufficientFundsAndNoAuxFunds,
                     })}
                   >
                     {formatEtherPrice(price)} ETH
@@ -293,7 +298,7 @@ export default function RegistrationForm() {
                   <span className="whitespace-nowrap text-xl text-gray-60">${usdPrice}</span>
                 )}
               </div>
-              {insufficientBalanceToRegister ? (
+              {insufficientFundsAndNoAuxFunds ? (
                 <p className="text-sm text-state-n-hovered">your ETH balance is insufficient</p>
               ) : Boolean(nameIsFree && IS_EARLY_ACCESS) ? (
                 <p className="text-sm text-green-50">Discounted during Early Access.</p>
@@ -337,7 +342,7 @@ export default function RegistrationForm() {
                       variant={ButtonVariants.Black}
                       size={ButtonSizes.Medium}
                       disabled={
-                        insufficientBalanceToRegisterAndCorrectChain ||
+                        insufficientFundsNoAuxFundsAndCorrectChain ||
                         registerNameTransactionIsPending
                       }
                       isLoading={registerNameTransactionIsPending}
@@ -395,7 +400,6 @@ export default function RegistrationForm() {
             baseSingleYearEthCost={singleYearBasePrice}
             isOpen={premiumExplainerModalOpen}
             toggleModal={togglePremiumExplainerModal}
-            nameLength={selectedName?.length}
           />
         )}
       </>
