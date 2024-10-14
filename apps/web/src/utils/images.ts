@@ -1,5 +1,7 @@
 import { StaticImageData } from 'next/image';
 import { Cloudinary, transformationStringFromObject } from '@cloudinary/url-gen';
+import { webp } from '@cloudinary/url-gen/qualifiers/format';
+import { format } from '@cloudinary/url-gen/actions/delivery';
 
 const cloudinaryClient = new Cloudinary({
   cloud: {
@@ -47,6 +49,7 @@ export function getCloudinaryMediaUrl({ media, width }: GetCloudinaryMediaUrlPar
   let image = cloudinaryClient
     .image(media)
     .addTransformation(transformation)
+    .delivery(format(webp()))
     .setDeliveryType('fetch');
   return image.toURL();
 }

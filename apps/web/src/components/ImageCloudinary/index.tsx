@@ -1,5 +1,6 @@
 'use client';
 
+import { CloudinaryMediaUrlResponse } from 'apps/web/app/api/cloudinaryUrl/route';
 import { getImageAbsoluteSource, getCloudinaryMediaUrl } from 'apps/web/src/utils/images';
 import { isDataUrl } from 'apps/web/src/utils/urls';
 import { StaticImageData } from 'next/image';
@@ -22,7 +23,7 @@ export default function ImageCloudinary({
   src,
   alt,
   title,
-  width,
+  width = 1200, // realistically, no image needs to be higher res
   height,
   className,
   onLoad,
@@ -35,7 +36,7 @@ export default function ImageCloudinary({
 
   const cloudinaryFetchUrl = getCloudinaryMediaUrl({
     media: absoluteSrc,
-    width: width ? Number(width) : 1200,
+    width: Number(width),
   });
 
   const shouldUploadToCloudinary = isDataUrl(absoluteSrc) || absoluteSrc.length > 255;
@@ -43,9 +44,9 @@ export default function ImageCloudinary({
   useEffect(() => {
     // Some image needs to be upload befored being proxied
     // dataUrl & long Urls (dataUrl in disguise) needs to be uploaded to Cloudinary
+
     // ref: https://support.cloudinary.com/hc/en-us/articles/209209649-Does-Cloudinary-impose-a-URL-length-limit
     if (shouldUploadToCloudinary) {
-      console.log('FETCH YO');
       async function handleGetCloudinaryUrl() {
         try {
           const response = await fetch('/api/cloudinaryUrl', {
@@ -63,8 +64,8 @@ export default function ImageCloudinary({
             throw new Error('Failed to get Cloudinary URL');
           }
 
-          const data = await response.json();
-          const url = data?.url as unknown;
+          const data = (await response.json()) as CloudinaryMediaUrlResponse;
+          const url = data?.url;
           if (url) {
             setCloudinaryUploadUrl(url);
           }

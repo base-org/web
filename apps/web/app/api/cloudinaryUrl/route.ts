@@ -11,16 +11,20 @@ cloudinary.config({
 
 const folderName = 'base-org-uploads';
 
-type CloudinaryMediaUrlParams = {
+export type CloudinaryMediaUrlRequest = {
   media: string;
   width: number;
+};
+
+export type CloudinaryMediaUrlResponse = {
+  url: string;
 };
 
 function generateAssetId(media: string): string {
   return createHash('md5').update(media).digest('hex');
 }
 
-async function checkAssetExists(assetId: string): Promise<string | boolean> {
+async function checkAssetExists(assetId: string): Promise<string | false> {
   try {
     const response = await cloudinary.api.resources_by_ids([`${folderName}/${assetId}`]);
     if (response && response.resources.length > 0) {
@@ -44,8 +48,9 @@ async function uploadToCloudinary(media: string, width: number) {
     const result = await cloudinary.uploader.upload(media, {
       public_id: assetId,
       folder: folderName,
+      format: 'webp',
       transformation: {
-        width: width * 2,
+        width: width,
       },
     });
 
@@ -56,7 +61,10 @@ async function uploadToCloudinary(media: string, width: number) {
   }
 }
 
-async function getCloudinaryMediaUrl({ media, width }: CloudinaryMediaUrlParams) {
+async function getCloudinaryMediaUrl({
+  media,
+  width,
+}: CloudinaryMediaUrlRequest): Promise<string | false> {
   // Asset idea based on URL
   const assetId = generateAssetId(media);
 
@@ -71,21 +79,29 @@ async function getCloudinaryMediaUrl({ media, width }: CloudinaryMediaUrlParams)
   if (cloudinaryUpload) {
     return cloudinaryUpload.secure_url;
   }
+
+  return false;
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = (await request.json()) as CloudinaryMediaUrlRequest;
 
-    const { media, width } = body as unknown as CloudinaryMediaUrlParams;
+    const { media, width } = body;
 
     if (!media || !width) {
       return NextResponse.json({ error: 'Missing required parameters' }, { status: 400 });
     }
 
     const cloudinaryUrl = await getCloudinaryMediaUrl({ media, width });
-
-    return NextResponse.json({ url: cloudinaryUrl });
+    if (cloudinaryUrl) {
+      const response: CloudinaryMediaUrlResponse = {
+        url: cloudinaryUrl,
+      };
+      return NextResponse.json(response);
+    } else {
+      return NextResponse.json({ error: 'Failed to upload Cloudinary URL' }, { status: 500 });
+    }
   } catch (error) {
     console.error('Error processing Cloudinary URL:', error);
     return NextResponse.json({ error: 'Failed to process Cloudinary URL' }, { status: 500 });

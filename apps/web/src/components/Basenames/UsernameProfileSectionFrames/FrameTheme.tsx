@@ -40,6 +40,9 @@ export const theme: FrameUITheme<StylingProps> = {
   },
 };
 
+// Image is never displayed with a higher width
+const maxFrameImageWidth = 775;
+
 type TransitionWrapperProps = {
   aspectRatio: '1:1' | '1.91:1';
   src: string;
@@ -103,7 +106,7 @@ function TransitionWrapper({
           {...stylingProps}
           src={src}
           alt={alt}
-          width={775}
+          width={maxFrameImageWidth}
           onLoad={onImageLoadEnd}
           onError={onImageLoadEnd}
           data-aspect-ratio={ar}
