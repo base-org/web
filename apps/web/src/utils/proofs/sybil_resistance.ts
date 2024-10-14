@@ -5,6 +5,7 @@ import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import {
   USERNAME_CB1_DISCOUNT_VALIDATORS,
   USERNAME_CB_DISCOUNT_VALIDATORS,
+  USERNAME_DISCOUNT_CODE_VALIDATORS,
   USERNAME_EA_DISCOUNT_VALIDATORS,
 } from 'apps/web/src/addresses/usernames';
 import { getLinkedAddresses } from 'apps/web/src/cdp/api';
@@ -66,6 +67,9 @@ const discountTypes: DiscountTypesByChainId = {
     [DiscountType.EARLY_ACCESS]: {
       discountValidatorAddress: USERNAME_EA_DISCOUNT_VALIDATORS[baseSepolia.id],
     },
+    [DiscountType.DISCOUNT_CODE]: {
+      discountValidatorAddress: USERNAME_DISCOUNT_CODE_VALIDATORS[baseSepolia.id],
+    },
   },
 };
 
@@ -119,36 +123,26 @@ async function signMessageWithTrustedSigner(
 }
 
 export async function signDiscountMessageWithTrustedSigner(
+  claimerAddress: Address,
+  couponCodeUuid: Address,
   targetAddress: Address,
-  expiry: Date,
-  salt: string,
+  expiry: number,
 ) {
   if (!trustedSignerAddress || !isAddress(trustedSignerAddress)) {
     throw new Error('Must provide a valid trustedSignerAddress');
   }
-  // encode the message
-  const expiryTimestamp = BigInt(Math.floor(expiry.getTime() / 1000));
 
   // uuid: string => bytes32
-
-  // validatoraddres
+  // targetAddress validatoraddres
   // signer (trust)
   // claimer
   // couppoun => (bytes32)
   // expires => (bytes32)
 
   const message = encodePacked(
-    ['bytes2', 'address', 'address', 'address', 'uint64', 'string'],
-    ['0x1900', targetAddress, trustedSignerAddress, '0x2', expiryTimestamp, salt],
+    ['bytes2', 'address', 'address', 'address', 'bytes32', 'uint64'],
+    ['0x1900', targetAddress, trustedSignerAddress, claimerAddress, couponCodeUuid, BigInt(expiry)],
   );
-
-  // hex"1900",
-  // target,
-  // signer,
-  // uuid,
-  // expiry,
-  // salt
-  // where `target` is the address of the deployed discount validator,`signer` is the expected signer, `nonce` is the `uuid` of the coupon and `expiry` is the uint64 expiry timestamp.
 
   // hash the message
   const msgHash = keccak256(message);
@@ -162,18 +156,10 @@ export async function signDiscountMessageWithTrustedSigner(
   // combine r, s, and v into a single signature
   const signature = `${r.slice(2)}${s.slice(2)}${(v as bigint).toString(16)}`;
 
-  //
-  // abi.encode(
-  //   uint64 expiry,
-  //   bytes32 uuid,
-  //   uint256 salt,
-  //   bytes sig
-  // )
-
   // return the encoded signed message
-  return encodeAbiParameters(parseAbiParameters('address, uint64, bytes'), [
-    claimerAddress,
+  return encodeAbiParameters(parseAbiParameters('uint64, bytes32, bytes'), [
     BigInt(expiry),
+    couponCodeUuid,
     `0x${signature}`,
   ]);
 }
@@ -240,6 +226,94 @@ export async function sybilResistantUsernameSigning(
     const signedMessage = await signMessageWithTrustedSigner(
       address,
       discountValidatorAddress,
+      expirationTimeUnix,
+    );
+
+    const claim: PreviousClaim = { address, signedMessage };
+    previousClaims[discountType] = claim;
+
+    await kv.set(kvKey, previousClaims, { nx: true, ex: parseInt(EXPIRY) });
+
+    return {
+      signedMessage: claim.signedMessage,
+      attestations: attestationsRes,
+      discountValidatorAddress,
+      expires: EXPIRY,
+    };
+  } catch (error) {
+    logger.error('error while getting sybilResistant basename signature', error);
+    if (error instanceof Error) {
+      throw new ProofsException(error.message, 500);
+    }
+    throw error;
+  }
+}
+
+export async function sybilResistantUsernameSigningBadDuplicate(
+  address: `0x${string}`,
+  discountType: DiscountType,
+  chainId: number,
+  couponCodeUuid: Address,
+  expirationTimeUnix: number,
+): Promise<CoinbaseProofResponse> {
+  const schema = discountTypes[chainId][discountType]?.schemaId;
+
+  const discountValidatorAddress = discountTypes[chainId][discountType]?.discountValidatorAddress;
+
+  if (!discountValidatorAddress || !isAddress(discountValidatorAddress)) {
+    throw new ProofsException('Must provide a valid discountValidatorAddress', 500);
+  }
+
+  const attestations = await getAttestations(
+    address,
+    // @ts-expect-error onchainkit expects a different type for Chain (??)
+    { id: chainId },
+    { schemas: [schema] },
+  );
+
+  if (!attestations?.length) {
+    return { attestations: [], discountValidatorAddress };
+  }
+  const attestationsRes = attestations.map(
+    (attestation) => JSON.parse(attestation.decodedDataJson)[0] as VerifiedAccount,
+  );
+
+  let { linkedAddresses, idemKey } = await getLinkedAddresses(address as string);
+
+  const hasPreviouslyRegistered = await hasRegisteredWithDiscount(linkedAddresses, chainId);
+
+  // if any linked address registered previously return an error
+  if (hasPreviouslyRegistered) {
+    throw new ProofsException('You have already claimed a discounted basename (onchain).', 409);
+  }
+
+  const kvKey = `${previousClaimsKVPrefix}${idemKey}`;
+  //check kv for previous claim entries
+  let previousClaims = (await kv.get<PreviousClaims>(kvKey)) ?? {};
+  const previousClaim = previousClaims[discountType];
+  if (previousClaim) {
+    if (previousClaim.address != address) {
+      throw new ProofsException(
+        'You tried claiming this with a different address, wait a couple minutes to try again.',
+        400,
+      );
+    }
+    // return previously signed message
+    return {
+      signedMessage: previousClaim.signedMessage,
+      attestations: attestationsRes,
+      discountValidatorAddress,
+      expires: expirationTimeUnix.toString(),
+    };
+  }
+
+  try {
+    // generate and sign the message
+
+    const signedMessage = await signDiscountMessageWithTrustedSigner(
+      address,
+      couponCodeUuid,
+      '0x52acEeB464F600437a3681bEC087fb53F3f75638',
       expirationTimeUnix,
     );
 

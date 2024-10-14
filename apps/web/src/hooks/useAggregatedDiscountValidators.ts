@@ -52,7 +52,7 @@ export function useAggregatedDiscountValidators() {
   const { data: BNSData, loading: loadingBNS } = useBNSAttestations();
 
   const { data: DiscountCodeData, loading: loadingDiscountCode } = useDiscountCodeAttestations();
-  console.log({ DiscountCodeData, loadingDiscountCode });
+
   const loadingDiscounts =
     loadingCoinbaseAttestations ||
     loadingCBIDAttestations ||
@@ -62,7 +62,8 @@ export function useAggregatedDiscountValidators() {
     loadingBuildathon ||
     loadingSummerPass ||
     loadingBaseDotEth ||
-    loadingBNS;
+    loadingBNS ||
+    loadingDiscountCode;
 
   const discountsToAttestationData = useMemo<MappedDiscountData>(() => {
     const discountMapping: MappedDiscountData = {};
@@ -117,6 +118,16 @@ export function useAggregatedDiscountValidators() {
       if (BNSData && validator.discountValidator === BNSData.discountValidatorAddress) {
         discountMapping[Discount.BNS_NAME] = { ...BNSData, discountKey: validator.key };
       }
+
+      if (
+        DiscountCodeData &&
+        validator.discountValidator === DiscountCodeData.discountValidatorAddress
+      ) {
+        discountMapping[Discount.DISCOUNT_CODE] = {
+          ...DiscountCodeData,
+          discountKey: validator.key,
+        };
+      }
     });
 
     return discountMapping;
@@ -130,6 +141,7 @@ export function useAggregatedDiscountValidators() {
     SummerPassData,
     BaseDotEthData,
     BNSData,
+    DiscountCodeData,
   ]);
 
   return {

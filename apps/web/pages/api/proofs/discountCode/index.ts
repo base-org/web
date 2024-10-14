@@ -1,12 +1,17 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import {
-  getDiscountCode,
-  ProofsException,
-  proofValidation,
-  signDiscountMessageWithTrustedSigner,
-} from 'apps/web/src/utils/proofs';
+import { proofValidation, signDiscountMessageWithTrustedSigner } from 'apps/web/src/utils/proofs';
 import { logger } from 'apps/web/src/utils/logger';
 import { withTimeout } from 'apps/web/pages/api/decorators';
+import { Address, Hash, stringToHex } from 'viem';
+import { USERNAME_DISCOUNT_CODE_VALIDATORS } from 'apps/web/src/addresses/usernames';
+import { baseSepolia } from 'viem/chains';
+import { getDiscountCode } from 'apps/web/src/utils/proofs/discount_code_storage';
+
+export type DiscountCodeResponse = {
+  discountValidatorAddress: Address;
+  address: Address;
+  signedMessage: Hash;
+};
 
 /*
 this endpoint returns whether or a discount code is valid
@@ -16,41 +21,36 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
-  const { address, chain, discountCode } = req.query;
+  const { address, chain } = req.query;
   const validationErr = proofValidation(address, chain);
   if (validationErr) {
     return res.status(validationErr.status).json({ error: validationErr.error });
   }
 
   try {
-    console.log({ address, chain, discountCode });
-
     // 1. get the database model
-    const discountCode = await getDiscountCode('LA_DINNER_TEST');
+    const discountCodes = await getDiscountCode('LA_DINNER_TEST');
+    const discountCode = discountCodes[0];
 
-    // const responseData = await getWalletProofs(
-    //   // to lower case to be able to use index on huge dataset
-    //   (address as string).toLowerCase() as `0x${string}`,
-    //   parseInt(chain as string),
-    //   ProofTableNamespace.DiscountCodes,
-    //   false,
-    // );
+    // 2. Sign the payload
+    const couponCodeUuid = stringToHex(discountCode.code, { size: 32 });
+    const expirationTimeUnix = Math.floor(discountCode.expires_at.getTime() / 1000);
 
-    // 2. format the payload {}
-    // 3. sign (reference: signMessageWithTrustedSigner (will match validator expected paylaod))
-    // 4. should return something similar to CoinbaseProofResponse
-    signDiscountMessageWithTrustedSigner(
-      '0xvalidatoraddress',
-      discountCode.expires_at,
-      discountCode.salt,
+    const signature = await signDiscountMessageWithTrustedSigner(
+      address as Address,
+      couponCodeUuid,
+      USERNAME_DISCOUNT_CODE_VALIDATORS[baseSepolia.id],
+      expirationTimeUnix,
     );
-    console.log({ test });
 
-    return res.status(200).json(test);
+    const result: DiscountCodeResponse = {
+      discountValidatorAddress: USERNAME_DISCOUNT_CODE_VALIDATORS[baseSepolia.id],
+      address: address as Address,
+      signedMessage: signature,
+    };
+
+    return res.status(200).json(result);
   } catch (error: unknown) {
-    if (error instanceof ProofsException) {
-      return res.status(error.statusCode).json({ error: error.message });
-    }
     console.log({ error });
     logger.error('error getting proofs for discount code', error);
   }

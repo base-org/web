@@ -1,5 +1,6 @@
 import { useErrors } from 'apps/web/contexts/Errors';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
+import { DiscountCodeResponse } from 'apps/web/pages/api/proofs/discountCode';
 import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
 import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
 import EarlyAccessValidatorABI from 'apps/web/src/abis/EarlyAccessValidator';
@@ -488,18 +489,18 @@ export function useBNSAttestations() {
   return { data: null, loading: isLoading, error };
 }
 
-// returns info about Coinbase verified account attestations
+// returns info about Discount Codes attestations
 export function useDiscountCodeAttestations() {
   const { logError } = useErrors();
   const { address } = useAccount();
   const [loading, setLoading] = useState(false);
-  const [coinbaseProofResponse, setCoinbaseProofResponse] = useState<CoinbaseProofResponse | null>(
+  const [discountCodeResponse, setDiscountCodeResponse] = useState<DiscountCodeResponse | null>(
     null,
   );
   const { basenameChain } = useBasenameChain();
 
   useEffect(() => {
-    async function checkCoinbaseAttestations(a: string) {
+    async function checkDiscountCode(a: string) {
       try {
         setLoading(true);
         const params = new URLSearchParams();
@@ -507,9 +508,9 @@ export function useDiscountCodeAttestations() {
         params.append('chain', basenameChain.id.toString());
         params.append('discountCode', 'LA_DINNER'.toString());
         const response = await fetch(`/api/proofs/discountCode?${params}`);
-        const result = (await response.json()) as CoinbaseProofResponse;
+        const result = (await response.json()) as DiscountCodeResponse;
         if (response.ok) {
-          setCoinbaseProofResponse(result);
+          setDiscountCodeResponse(result);
         }
       } catch (error) {
         logError(error, 'Error checking Discount code');
@@ -519,33 +520,35 @@ export function useDiscountCodeAttestations() {
     }
 
     if (address && !IS_EARLY_ACCESS) {
-      checkCoinbaseAttestations(address).catch((error) => {
+      checkDiscountCode(address).catch((error) => {
         logError(error, 'Error checking Discount code');
       });
     }
   }, [address, basenameChain.id, logError]);
 
-  const signature = coinbaseProofResponse?.signedMessage as undefined | `0x${string}`;
-
+  const signature = discountCodeResponse?.signedMessage;
+  console.log({ signature, address });
   const readContractArgs = useMemo(() => {
     if (!address || !signature) {
       return {};
     }
+
+    console.log('READ');
     return {
-      address: coinbaseProofResponse?.discountValidatorAddress,
+      address: discountCodeResponse?.discountValidatorAddress,
       abi: AttestationValidatorABI,
       functionName: 'isValidDiscountRegistration',
       args: [address, signature],
     };
-  }, [address, coinbaseProofResponse?.discountValidatorAddress, signature]);
+  }, [address, discountCodeResponse?.discountValidatorAddress, signature]);
 
-  const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
-
-  if (isValid && coinbaseProofResponse && address && signature) {
+  const { data: isValid, isLoading, error, isError } = useReadContract(readContractArgs);
+  console.log({ isValid, isLoading, error, isError });
+  if (isValid && discountCodeResponse && address && signature) {
     return {
       data: {
-        discountValidatorAddress: coinbaseProofResponse.discountValidatorAddress,
-        discount: Discount.COINBASE_VERIFIED_ACCOUNT,
+        discountValidatorAddress: discountCodeResponse.discountValidatorAddress,
+        discount: Discount.DISCOUNT_CODE,
         validationData: signature,
       },
       loading: false,
