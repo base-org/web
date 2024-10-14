@@ -3,11 +3,22 @@ title: 'Coinbase Commerce Payment Integration Tutorial'
 slug: /coinbase-commerce-payment-integration
 description: Learn how to integrate Coinbase Commerce payments into your application using OnchainKit.
 author: hughescoin
-keywords: [coinbase, commerce, payment, integration, onchainkit, web3]
-tags: ['payment', 'coinbase', 'onchainkit', 'web3']
+keywords: [
+    Account Abstraction,
+    AA,
+    Smart account,
+    Smart Wallet,
+    Funding,
+    Onramps,
+    Onchainkit,
+    Onboarding
+    Smart contract wallet,
+    Smart account,
+  ]
+tags: ['account abstraction']
 difficulty: intermediate
 hide_table_of_contents: false
-displayed_sidebar: tutorialSidebar
+displayed_sidebar: null
 ---
 
 # Coinbase Commerce Payment Integration Tutorial

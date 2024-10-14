@@ -3,10 +3,20 @@ title: 'Build a Smart Wallet Funding app with OnchainKit'
 slug: /build-smart-wallet-funding-dapp
 description: Learn how to create a dApp that detects if a smart wallet has ETH and prompts users to add funds if needed.
 author: hughescoin
-keywords: [smart wallet, funding, dApp, onchain kit, ethereum]
+keywords: [
+    Account Abstraction,
+    AA,
+    Smart account,
+    Smart Wallet,
+    Funding,
+    Onramps,
+    Onchainkit,
+    Onboarding
+    Smart contract wallet,
+    Smart account,
+  ]
 tags: ['frontend', 'wallet', 'ethereum']
 difficulty: medium
-hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
