@@ -17,6 +17,7 @@ import {
   rainbowWallet,
   uniswapWallet,
   walletConnectWallet,
+  phantomWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ExperimentsProvider from 'base-ui/contexts/Experiments';
@@ -44,7 +45,14 @@ const connectors = connectorsForWallets(
   [
     {
       groupName: 'Recommended',
-      wallets: [coinbaseWallet, metaMaskWallet, uniswapWallet, rainbowWallet, walletConnectWallet],
+      wallets: [
+        coinbaseWallet,
+        metaMaskWallet,
+        uniswapWallet,
+        rainbowWallet,
+        phantomWallet,
+        walletConnectWallet,
+      ],
     },
   ],
   {

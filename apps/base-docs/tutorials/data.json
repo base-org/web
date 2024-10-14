@@ -24,9 +24,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 24, 2024",
+        "last_updated": "Oct 14, 2024",
         "duration": "17 min read",
-        "checksum": "01acc27579fdc15f4087491bb6a9bed9c4142d893c7eafd2aa2ae023fbefb8a3"
+        "checksum": "ab181fab0003c30eb98f8b5f7621f8d5cc7bd3bbf4c8357d339b95b7a44d68f1"
     },
     "0_deploy-with-hardhat": {
         "title": "Deploying a smart contract using Hardhat",
@@ -1131,6 +1131,28 @@
         "last_updated": "Aug 14, 2024",
         "duration": "9 min read",
         "checksum": "d9302891627f1761507422bf35c361a30b343e77cb4d3981888ab70eb4fbd0ac"
+    },
+    "5_farcaster-to-openframe": {
+        "title": "Convert Farcaster Frame to Open Frame using OnchainKit",
+        "slug": "/convert-farcaster-frame-to-open-frame",
+        "description": "Learn how to convert your Farcaster Frame to an Open Frame using Onchain Kit, enabling broader compatibility and usage.",
+        "author": "hughescoin",
+        "keywords": [
+            "farcaster",
+            "openframe",
+            "onchainKit",
+            "farcaster",
+            "open frames"
+        ],
+        "tags": [
+            "frontend"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Oct 14, 2024",
+        "duration": "10 min read",
+        "checksum": "a81681ca9176774c2b8d20b6a2a873bdbaab99944a4d90526797f699db3e7b86"
     },
     "5_oracles-chainlink-price-feeds": {
         "title": "Accessing real-world data using Chainlink Data Feeds",
