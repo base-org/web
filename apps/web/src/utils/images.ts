@@ -35,9 +35,12 @@ type GetCloudinaryMediaUrlParams = {
 export function getCloudinaryMediaUrl({ media, width }: GetCloudinaryMediaUrlParams) {
   if (isDataUrl(media)) return media;
 
-  const imageFormat = 'webp';
-  const url = `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/fetch/w_${
-    width * 2
-  }/f_${imageFormat}/${encodeURI(media)}`;
+  const imageWidth = `w_${width * 2}`;
+  const imageFormat = 'f_webp';
+  const imageUrl = encodeURI(media);
+  const fetchOptions = [imageWidth, imageFormat, imageUrl].join('/');
+
+  const url = `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/fetch/${fetchOptions}`;
+
   return url;
 }
