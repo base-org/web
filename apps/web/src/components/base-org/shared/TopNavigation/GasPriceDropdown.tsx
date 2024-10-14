@@ -1,6 +1,5 @@
 import Card from 'apps/web/src/components/base-org/Card';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import Link from 'apps/web/src/components/Link';
 import { base, mainnet } from 'viem/chains';
 import { useGasPrice } from 'wagmi';
 
@@ -50,17 +49,6 @@ export default function GasPriceDropdown() {
                 {mainnetGasPriceInWei ? convertWeiToMwei(mainnetGasPriceInWei) : <>&mdash;</>}{' '}
                 <span>Mgwei</span>
               </span>
-            </li>
-
-            <li>
-              <Link
-                href="https://tokentool.bitbond.com/gas-price/base"
-                className="flex items-center gap-2"
-                target="_blank"
-              >
-                <span>Click to compare</span>
-                <Icon name="baseOrgDiagonalUpArrow" height="0.5rem" width="0.5rem" />
-              </Link>
             </li>
           </ul>
         </Card>
