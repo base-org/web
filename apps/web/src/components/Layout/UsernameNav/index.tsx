@@ -113,8 +113,7 @@ export default function UsernameNav() {
         <span className={walletStateClasses}>
           <Suspense>
             <ConnectWalletButton
-              color="black"
-              connectWalletButtonVariant={ConnectWalletButtonVariants.Default}
+              connectWalletButtonVariant={ConnectWalletButtonVariants.Basename}
             />
           </Suspense>
         </span>

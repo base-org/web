@@ -1,3 +1,5 @@
+import { isDevelopment } from '../constants';
+
 declare const window: Window &
   typeof globalThis & {
   ClientAnalytics: {
@@ -71,6 +73,11 @@ type CCAEventData = {
   flag_key?: string;
   variant?: string | undefined;
   experiment_key?: string | undefined;
+  href?: string;
+  hostname?: string;
+  origin?: string;
+  pathname?: string;
+  search?: string;
 };
 
 type AnalyticsEventData = {
@@ -90,6 +97,14 @@ export default function logEvent(
   event: CCAEventData,
   importance: AnalyticsEventImportance | undefined,
 ) {
+  if (isDevelopment) {
+    return console.log('logEvent: ', {
+      name,
+      event,
+      importance,
+    });
+  }
+
   const CCA = window.ClientAnalytics;
   if (CCA) {
     CCA?.logEvent(name, event, importance);
@@ -97,6 +112,12 @@ export default function logEvent(
 }
 
 export function identify(event: CCAEventData) {
+  if (isDevelopment) {
+    return console.log('identify: ', {
+      event,
+    });
+  }
+
   const CCA = window.ClientAnalytics;
   if (CCA) {
     CCA?.logEvent('identify', event, AnalyticsEventImportance.low);

@@ -1,71 +1,78 @@
-import { Metadata } from 'next';
-import { FrameButtonMetadata } from '@coinbase/onchainkit/frame';
+import Image, { StaticImageData } from 'apps/web/node_modules/next/image';
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
-import { BestOfEthereum } from 'apps/web/src/components/BestOfEthereum/BestOfEthereum';
-import { Commitment } from 'apps/web/src/components/Commitment/Commitment';
-import { Divider } from 'apps/web/src/components/Divider/Divider';
-import { EmpoweredByCoinbase } from 'apps/web/src/components/EmpoweredByCoinbase/EmpoweredByCoinbase';
-import { Features } from 'apps/web/src/components/Features/Features';
-import { GetConnected } from 'apps/web/src/components/GetConnected/GetConnected';
-import { Hero } from 'apps/web/src/components/Home/Hero';
-import { JoinTheCommunity } from 'apps/web/src/components/JoinTheCommunity/JoinTheCommunity';
-import { Partnerships } from 'apps/web/src/components/Partnerships/Partnerships';
+import Button from 'apps/web/src/components/base-org/Button';
+import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
+import Title from 'apps/web/src/components/base-org/typography/Title';
+import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
+import Container from 'apps/web/src/components/base-org/Container';
+import VideoCardsSection from 'apps/web/src/components/base-org/root/VideoCardsSection';
+import BuildExploreSection from 'apps/web/src/components/base-org/root/BuildExploreSection';
+import SlidingTextSection from 'apps/web/src/components/base-org/root/SlidingTextSection';
+import TransactionsFeesSection from 'apps/web/src/components/base-org/root/TransactionsFeesSection';
+import BuildAndRewardSection from 'apps/web/src/components/base-org/root/BuildAndRewardSection';
+import ErrorsProvider from 'apps/web/contexts/Errors';
+import BlogSection from 'apps/web/src/components/base-org/root/BlogSection';
+import dynamic from 'next/dynamic';
+import Link from 'apps/web/src/components/Link';
+import MissionSection from 'apps/web/src/components/base-org/root/MissionSection';
+import OpLogo from 'apps/web/public/images/op_logo.svg';
 
-/* Farcaster Metadatas */
-const buttons: FrameButtonMetadata[] = [
-  {
-    action: 'link',
-    label: 'Read the docs',
-    target: 'https://docs.base.org/',
-  },
-  {
-    action: 'link',
-    label: 'Bridge assets',
-    target: 'https://bridge.base.org/deposit',
-  },
-];
-
-const otherMetadata: Metadata['other'] = {
-  'fc:frame:image': 'https://base.org/images/base-open-graph.png',
-};
-
-buttons
-  .map((button, index) => {
-    const metadataKey = `fc:frame:button:${index + 1}`;
-    otherMetadata[metadataKey] = [button.label];
-    if (button.action) otherMetadata[`${metadataKey}:action`] = [button.action];
-    if (button.target) otherMetadata[`${metadataKey}:target`] = [button.target];
-    return otherMetadata;
-  })
-  .flat();
-
-/* Page Metadatas */
-export const metadata: Metadata = {
-  other: otherMetadata,
-};
+const DynamicThreeHero = dynamic(async () => import('apps/web/src/components/ThreeHero'), {
+  ssr: false,
+});
 
 export default async function Home() {
   return (
-    <AnalyticsProvider context="base_landing_page">
+    <ErrorsProvider context="base_landing_page">
       <AnalyticsProvider context="hero">
-        <Hero />
+        <div className="relative z-10 h-screen w-full">
+          <DynamicThreeHero />
+          <div className="absolute bottom-0 z-20 flex w-full flex-col justify-between gap-6 pb-20 text-white lg:flex-row">
+            <div className="lg:ml-20">
+              <Container>
+                <Title level={TitleLevel.Title1}>Base is for everyone.</Title>
+                <div className="mt-4 flex gap-4">
+                  <Link href="/getstarted?utm_source=dotorg&medium=hero">
+                    <Button variant={ButtonVariants.Secondary} iconName="baseOrgDiagonalUpArrow">
+                      Start building
+                    </Button>
+                  </Link>
+                  <Link href="/names?utm_source=dotorg&medium=hero">
+                    <Button variant={ButtonVariants.Outlined} iconName="baseOrgDiagonalUpArrow">
+                      Get a Basename
+                    </Button>
+                  </Link>
+                </div>
+              </Container>
+            </div>
+            <div className="px-[1rem] lg:mr-16 lg:self-end">
+              <Link href="https://optimism.io/build">
+                <div className="flex flex-row gap-2">
+                  <Image src={OpLogo as StaticImageData} alt="optimism logo" />
+                  <span>Built on the Superchain</span>
+                </div>
+              </Link>
+            </div>
+            <div className="pointer-events-none absolute bottom-0 left-0 z-20 h-[50px] w-full bg-gradient-to-b from-transparent to-black" />
+          </div>
+        </div>
       </AnalyticsProvider>
-      <main className="flex w-full flex-col items-center bg-black">
-        <Divider />
-        <Features />
-        <Divider />
-        <BestOfEthereum />
-        <Divider />
-        <EmpoweredByCoinbase />
-        <Divider />
-        <Partnerships />
-        <Divider />
-        <Commitment />
-        <Divider />
-        <JoinTheCommunity />
-        <Divider />
-        <GetConnected />
+
+      <main className="relative z-20 flex w-full flex-col items-center bg-black">
+        <Container>
+          <div className="flex flex-col gap-20 pb-40 pt-20 md:gap-40">
+            <MissionSection />
+            <BuildExploreSection />
+            <VideoCardsSection />
+            <SlidingTextSection />
+            <TransactionsFeesSection />
+            <BuildAndRewardSection />
+            <AnalyticsProvider context="blog_carousel">
+              <BlogSection />
+            </AnalyticsProvider>
+          </div>
+        </Container>
       </main>
-    </AnalyticsProvider>
+    </ErrorsProvider>
   );
 }
