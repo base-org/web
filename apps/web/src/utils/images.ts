@@ -1,14 +1,6 @@
 import { StaticImageData } from 'next/image';
-import { Cloudinary, transformationStringFromObject } from '@cloudinary/url-gen';
-import { webp } from '@cloudinary/url-gen/qualifiers/format';
-import { format } from '@cloudinary/url-gen/actions/delivery';
 
-const cloudinaryClient = new Cloudinary({
-  cloud: {
-    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-  },
-});
-
+export const CLOUDINARY_CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 export const STATIC_IMAGE_FOLDER = '/_next/static/';
 export const PUBLIC_IMAGE_FOLDER = '/images/';
 
@@ -43,13 +35,9 @@ type GetCloudinaryMediaUrlParams = {
 export function getCloudinaryMediaUrl({ media, width }: GetCloudinaryMediaUrlParams) {
   if (isDataUrl(media)) return media;
 
-  // * 2 for high pixel density screens
-  const transformation = transformationStringFromObject([{ width: width * 2 }]);
-
-  let image = cloudinaryClient
-    .image(media)
-    .addTransformation(transformation)
-    .delivery(format(webp()))
-    .setDeliveryType('fetch');
-  return image.toURL();
+  const imageFormat = 'webp';
+  const url = `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/fetch/w_${
+    width * 2
+  }/f_${imageFormat}/${encodeURI(media)}`;
+  return url;
 }

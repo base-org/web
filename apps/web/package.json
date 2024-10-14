@@ -13,8 +13,6 @@
     "fetch-mirror-blog": "node ./scripts/pullLatestBlogPosts.js"
   },
   "dependencies": {
-    "@cloudinary/react": "^1.13.0",
-    "@cloudinary/url-gen": "^1.21.0",
     "@coinbase/cookie-banner": "^1.0.3",
     "@coinbase/cookie-manager": "^1.1.1",
     "@coinbase/onchainkit": "^0.28.5",
