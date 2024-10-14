@@ -5,11 +5,15 @@ import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 import baseLoading from './base-loading.gif';
 import ImageCloudinary from 'apps/web/src/components/ImageCloudinary';
+import { ExclamationCircleIcon } from '@heroicons/react/16/solid';
 
 type StylingProps = {
   className?: string;
   style?: React.CSSProperties;
 };
+
+const baseRootClasses =
+  'relative flex flex-col rounded-3xl items-center justify-center overflow-hidden bg-transparent relative border border-palette-line/20 min-w-[245px] min-h-[245px]';
 
 export const theme: FrameUITheme<StylingProps> = {
   Error: {
@@ -17,8 +21,7 @@ export const theme: FrameUITheme<StylingProps> = {
       'flex flex-col rounded-3xl overflow-hidden bg-transparent relative items-center justify-center opacity-50',
   },
   Root: {
-    className:
-      'relative flex flex-col rounded-3xl items-center justify-center overflow-hidden bg-transparent relative border border-palette-line/20 min-w-[245px] min-h-[245px]',
+    className: baseRootClasses,
   },
   ButtonsContainer: {
     className:
@@ -122,6 +125,15 @@ function TransitionWrapper({
 }
 
 export const components: FrameUIComponents<StylingProps> = {
+  Error: () => {
+    return (
+      <div className={baseRootClasses}>
+        <p className="flex flex-row items-center justify-start gap-1 text-palette-foregroundMuted">
+          <ExclamationCircleIcon className="h-4 w-4 rounded-full" /> Failed to load frame
+        </p>
+      </div>
+    );
+  },
   LoadingScreen: (props, stylingProps) => {
     return (
       <div className="absolute inset-0 flex items-center justify-center">

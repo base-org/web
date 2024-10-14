@@ -1,13 +1,7 @@
-import dynamic from 'next/dynamic';
 import type { Metadata } from 'next';
-import Nav from 'apps/web/src/components/Layout/Nav/Nav';
-
-const HomepageModalDynamic = dynamic(
-  async () => import('apps/web/src/components/Basenames/HomepageModal'),
-  {
-    ssr: false,
-  },
-);
+import TopNavigation from 'apps/web/src/components/base-org/shared/TopNavigation';
+import CardsProvider from 'apps/web/src/components/base-org/Card/context';
+import Container from 'apps/web/src/components/base-org/Container';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -34,10 +28,16 @@ export default async function BaseOrgLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="max-w-screen flex min-h-screen flex-col">
-      <Nav />
-      <HomepageModalDynamic />
-      {children}
+    <div className="max-w-screen flex min-h-screen flex-col bg-black text-white selection:bg-[#C5DAFC] selection:text-blue">
+      <CardsProvider>
+        <TopNavigation />
+        {children}
+      </CardsProvider>
+
+      {/* Line between content & footer */}
+      <Container>
+        <hr className="opacity-50" />
+      </Container>
     </div>
   );
 }
