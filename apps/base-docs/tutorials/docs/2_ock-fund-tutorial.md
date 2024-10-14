@@ -39,8 +39,9 @@ You'll need to set up an account on with [Coinbase Developer Platform (CDP) Acco
 
 :::tip CDP Configurations
 
-[This section will be filled in later]
+If you see a "something went wrong" error message when navigating to pay.coinbase.com, make sure you have "enforce secure initialization" disabled on the [Onramp config page] in Coinbase Developer Platform Dashboard.
 
+![fund-onramp-config](../../assets/images/onchainkit-tutorials/fund-onramp-config.png)
 :::
 
 ---
@@ -166,3 +167,4 @@ This app can serve as a foundation for more complex onchain applications that re
 [Smart Wallets]: https://keys.coinbase.com/onboarding
 [viem]: https://viem.sh/docs/introduction
 [react hooks]: https://react.dev/reference/react/hooks
+[Onramp config page]: https://portal.cdp.coinbase.com/products/onramp
