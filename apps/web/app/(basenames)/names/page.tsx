@@ -31,16 +31,16 @@ export const metadata: Metadata = {
 export default async function Page() {
   return (
     <ErrorsProvider context="registration">
-      <RegistrationProviders>
-        <Suspense>
+      <Suspense>
+        <RegistrationProviders>
           <main>
             <RegistrationFlow />
             <RegistrationValueProp />
             <PoweredByEns />
             <RegistrationFAQ />
           </main>
-        </Suspense>
-      </RegistrationProviders>
+        </RegistrationProviders>
+      </Suspense>
     </ErrorsProvider>
   );
 }
