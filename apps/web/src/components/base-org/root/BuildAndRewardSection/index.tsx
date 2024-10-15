@@ -32,6 +32,7 @@ export default function BuildAndRewardSection() {
             className="mx-auto p-2 motion-reduce:hidden"
             autoPlay={false}
             ref={videoRef}
+            preload="auto"
           />
         </div>
 
