@@ -134,6 +134,7 @@ export default function UsernameAvatarField({
           imageClassName="object-cover h-full w-full"
           width={320}
           height={320}
+          useCloudinary={false}
         />
         <FileInput
           id={usernameAvatarFieldId}
