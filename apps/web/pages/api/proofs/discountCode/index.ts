@@ -15,7 +15,6 @@ export type DiscountCodeResponse = {
 
 /*
 this endpoint returns whether or a discount code is valid
-
 */
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
@@ -30,9 +29,25 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     // 1. get the database model
     const discountCodes = await getDiscountCode('LA_DINNER_TEST');
+
+    // 2. Validation: Coupon exists
+    if (!discountCodes || discountCodes.length === 0) {
+      return res.status(500).json({ error: 'Discount code invalid' });
+    }
+
     const discountCode = discountCodes[0];
 
-    // 2. Sign the payload
+    // 2.1 Validation: Coupon is expired
+    if (new Date(discountCode.expires_at) < new Date()) {
+      return res.status(500).json({ error: 'Discount code invalid' });
+    }
+
+    // 2.2 Validation: Coupon can be redeemed
+    if (Number(discountCode.usage_count) >= Number(discountCode.usage_limit)) {
+      return res.status(500).json({ error: 'Discount code invalid' });
+    }
+
+    // 3. Sign the validationData
     const couponCodeUuid = stringToHex(discountCode.code, { size: 32 });
     const expirationTimeUnix = Math.floor(discountCode.expires_at.getTime() / 1000);
 
@@ -43,6 +58,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       expirationTimeUnix,
     );
 
+    // 4. Return the discount data
     const result: DiscountCodeResponse = {
       discountValidatorAddress: USERNAME_DISCOUNT_CODE_VALIDATORS[baseSepolia.id],
       address: address as Address,
@@ -51,7 +67,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     return res.status(200).json(result);
   } catch (error: unknown) {
-    console.log({ error });
     logger.error('error getting proofs for discount code', error);
   }
   // If error is not an instance of Error, return a generic error message

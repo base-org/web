@@ -10,7 +10,7 @@ import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { Discount, formatBaseEthDomain, isValidDiscount } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import {
   Dispatch,
   ReactNode,
@@ -20,6 +20,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 import { useInterval } from 'usehooks-ts';
@@ -119,8 +120,12 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     address,
   });
 
+  // Discount code from URL
+  const searchParams = useSearchParams();
+  const code = searchParams?.get('code');
+
   // Username discount states
-  const { data: discounts, loading: loadingDiscounts } = useAggregatedDiscountValidators();
+  const { data: discounts, loading: loadingDiscounts } = useAggregatedDiscountValidators(code);
   const discount = findFirstValidDiscount(discounts);
 
   const allActiveDiscounts = useMemo(
@@ -210,11 +215,45 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     transactionIsSuccess,
   ]);
 
+  // Move from search to claim
   useEffect(() => {
     if (selectedName.length) {
       setRegistrationStep(RegistrationSteps.Claim);
     }
   }, [selectedName.length]);
+
+  // On registration success with discount code: mark as consumed
+  const hasRun = useRef(false);
+
+  useEffect(() => {
+    const consumeDiscountCode = async () => {
+      if (
+        !hasRun.current &&
+        registrationStep === RegistrationSteps.Success &&
+        code &&
+        discount &&
+        discount.discount === Discount.DISCOUNT_CODE
+      ) {
+        hasRun.current = true;
+        const response = await fetch('/api/proofs/discountCode/consume', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ code }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to record discount code consumption');
+        }
+      }
+    };
+
+    consumeDiscountCode().catch((error) => {
+      logError(error, 'Error recording discount code consumption');
+      hasRun.current = false;
+    });
+  }, [discount, code, registrationStep, logError]);
 
   // Log user moving through the flow
   useEffect(() => {

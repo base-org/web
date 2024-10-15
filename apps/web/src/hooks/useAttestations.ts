@@ -490,23 +490,24 @@ export function useBNSAttestations() {
 }
 
 // returns info about Discount Codes attestations
-export function useDiscountCodeAttestations() {
+export function useDiscountCodeAttestations(code: string | null | undefined) {
   const { logError } = useErrors();
   const { address } = useAccount();
   const [loading, setLoading] = useState(false);
   const [discountCodeResponse, setDiscountCodeResponse] = useState<DiscountCodeResponse | null>(
     null,
   );
+
   const { basenameChain } = useBasenameChain();
 
   useEffect(() => {
-    async function checkDiscountCode(a: string) {
+    async function checkDiscountCode(a: string, c: string) {
       try {
         setLoading(true);
         const params = new URLSearchParams();
         params.append('address', a);
         params.append('chain', basenameChain.id.toString());
-        params.append('discountCode', 'LA_DINNER'.toString());
+        params.append('discountCode', c.toString());
         const response = await fetch(`/api/proofs/discountCode?${params}`);
         const result = (await response.json()) as DiscountCodeResponse;
         if (response.ok) {
@@ -519,31 +520,29 @@ export function useDiscountCodeAttestations() {
       }
     }
 
-    if (address && !IS_EARLY_ACCESS) {
-      checkDiscountCode(address).catch((error) => {
+    if (address && !IS_EARLY_ACCESS && !!code) {
+      checkDiscountCode(address, code).catch((error) => {
         logError(error, 'Error checking Discount code');
       });
     }
-  }, [address, basenameChain.id, logError]);
+  }, [address, basenameChain.id, code, logError]);
 
   const signature = discountCodeResponse?.signedMessage;
-  console.log({ signature, address });
   const readContractArgs = useMemo(() => {
-    if (!address || !signature) {
+    if (!address || !signature || !code) {
       return {};
     }
 
-    console.log('READ');
     return {
       address: discountCodeResponse?.discountValidatorAddress,
       abi: AttestationValidatorABI,
       functionName: 'isValidDiscountRegistration',
       args: [address, signature],
     };
-  }, [address, discountCodeResponse?.discountValidatorAddress, signature]);
+  }, [address, code, discountCodeResponse?.discountValidatorAddress, signature]);
 
-  const { data: isValid, isLoading, error, isError } = useReadContract(readContractArgs);
-  console.log({ isValid, isLoading, error, isError });
+  const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
+
   if (isValid && discountCodeResponse && address && signature) {
     return {
       data: {

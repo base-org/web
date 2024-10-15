@@ -38,7 +38,7 @@ export function findFirstValidDiscount(
   return sortedDiscounts.find((data) => data?.discountKey) ?? undefined;
 }
 
-export function useAggregatedDiscountValidators() {
+export function useAggregatedDiscountValidators(code: string | null | undefined) {
   const { data: activeDiscountValidators, isLoading: loadingActiveDiscounts } =
     useActiveDiscountValidators();
   const { data: CBIDData, loading: loadingCBIDAttestations } = useCheckCBIDAttestations();
@@ -50,8 +50,8 @@ export function useAggregatedDiscountValidators() {
   const { data: BuildathonData, loading: loadingBuildathon } = useBuildathonAttestations();
   const { data: BaseDotEthData, loading: loadingBaseDotEth } = useBaseDotEthAttestations();
   const { data: BNSData, loading: loadingBNS } = useBNSAttestations();
-
-  const { data: DiscountCodeData, loading: loadingDiscountCode } = useDiscountCodeAttestations();
+  const { data: DiscountCodeData, loading: loadingDiscountCode } =
+    useDiscountCodeAttestations(code);
 
   const loadingDiscounts =
     loadingCoinbaseAttestations ||
