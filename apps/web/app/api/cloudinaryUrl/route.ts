@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { v2 as cloudinary } from 'cloudinary';
 import { createHash } from 'crypto';
+import { logger } from 'apps/web/src/utils/logger';
 
 // Configure Cloudinary
 cloudinary.config({
@@ -35,7 +36,7 @@ async function checkAssetExists(assetId: string): Promise<string | false> {
     }
   } catch (error) {
     // For other errors, log and assume the asset doesn't exist
-    console.error('Error checking if asset exists in Cloudinary:', error);
+    logger.error('Error checking if asset exists in Cloudinary', error, { assetId });
     return false;
   }
 }
@@ -56,7 +57,7 @@ async function uploadToCloudinary(media: string, width: number) {
 
     return result;
   } catch (error) {
-    console.log('Failed to upload asset', error);
+    logger.error('Failed to upload asset', error, { media });
     return false;
   }
 }
@@ -103,7 +104,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to upload Cloudinary URL' }, { status: 500 });
     }
   } catch (error) {
-    console.error('Error processing Cloudinary URL:', error);
+    logger.error('Error processing Cloudinary URL:', error);
     return NextResponse.json({ error: 'Failed to process Cloudinary URL' }, { status: 500 });
   }
 }
