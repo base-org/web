@@ -87,7 +87,6 @@ export async function hasRegisteredWithDiscount(
   });
 }
 
-// message: `0x${string}`?
 async function signMessageWithTrustedSigner(
   claimerAddress: Address,
   targetAddress: Address,
@@ -131,13 +130,6 @@ export async function signDiscountMessageWithTrustedSigner(
   if (!trustedSignerAddress || !isAddress(trustedSignerAddress)) {
     throw new Error('Must provide a valid trustedSignerAddress');
   }
-
-  // uuid: string => bytes32
-  // targetAddress validatoraddres
-  // signer (trust)
-  // claimer
-  // couppoun => (bytes32)
-  // expires => (bytes32)
 
   const message = encodePacked(
     ['bytes2', 'address', 'address', 'address', 'bytes32', 'uint64'],
