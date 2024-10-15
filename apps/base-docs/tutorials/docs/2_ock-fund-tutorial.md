@@ -37,7 +37,7 @@ By the end of this tutorial you should be able to:
 
 ### React and TypeScript
 
-You should be familiar with React and TypeScript. If you're new to these technologies, consider reviewing their official documentation first.
+You should be familiar with React and TypeScript. If you're new to these technologies, consider reviewing their [official documentation] first.
 
 ### OnchainKit
 
@@ -178,3 +178,4 @@ This app can serve as a foundation for more complex onchain applications that re
 [viem]: https://viem.sh/docs/introduction
 [react hooks]: https://react.dev/reference/react/hooks
 [Onramp config page]: https://portal.cdp.coinbase.com/products/onramp
+[official documentation]: https://react.dev/
