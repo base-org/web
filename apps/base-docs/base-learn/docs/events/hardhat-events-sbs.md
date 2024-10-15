@@ -144,7 +144,7 @@ describe("Lock tests", function () {
 
 Notice that the previous code is logging the sender address and the logs coming from the transaction receipt. You are also decoding the `receipts.logs[0].data` field that contains the information emitted by the event but not in a human-readable way, since it is encoded. For that reason, you can use `AbiCoder` to decode the raw data.
 
-By running `npx harhdat test`, you should be able to see the following:
+By running `npx hardhat test`, you should be able to see the following:
 
 ```solidity
   Lock tests
