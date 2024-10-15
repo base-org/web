@@ -292,7 +292,7 @@ import IdentityWrapper from '../components/IdentityWrapper';
 
 Example code snippets are available for:
 
-- [IdentityWrapper componenet](https://gist.github.com/hughescoin/5e5cd6cbfb3c6d1cada0a9d206b003c6)
+- [IdentityWrapper component](https://gist.github.com/hughescoin/5e5cd6cbfb3c6d1cada0a9d206b003c6)
 - [Page.tsx](https://gist.github.com/hughescoin/49afc9e999d69d372a67186e804e693b)
 
 ## Conclusion
