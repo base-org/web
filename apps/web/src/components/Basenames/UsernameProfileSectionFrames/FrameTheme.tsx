@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/prop-types */
 import type { FrameUIComponents, FrameUITheme } from '@frames.js/render/ui';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 import baseLoading from './base-loading.gif';
+import ImageCloudinary from 'apps/web/src/components/ImageCloudinary';
 import { ExclamationCircleIcon } from '@heroicons/react/16/solid';
 
 type StylingProps = {
@@ -43,13 +43,8 @@ export const theme: FrameUITheme<StylingProps> = {
   },
 };
 
-function isDataUrl(url: string) {
-  return /^data:image\/[a-zA-Z]+;base64,/.test(url);
-}
-
-function isSvgDataUrl(url: string) {
-  return url.startsWith('data:image/svg+xml');
-}
+// Image is never displayed with a higher width
+const maxFrameImageWidth = 775;
 
 type TransitionWrapperProps = {
   aspectRatio: '1:1' | '1.91:1';
@@ -94,19 +89,10 @@ function TransitionWrapper({
     [ar, stylingProps.style],
   );
 
-  const assetSrc = useMemo(
-    () =>
-      isLoading || isSvgDataUrl(src)
-        ? '' // todo: in the svg case, add an error state instead
-        : isDataUrl(src)
-        ? src
-        : `/frames/img-proxy?url=${encodeURIComponent(src)}`,
-    [isLoading, src],
-  );
-
   return (
     <div className="relative">
       {/* Loading Screen */}
+
       <div
         className={classNames(
           'absolute inset-0 flex items-center justify-center transition-opacity duration-500',
@@ -117,19 +103,22 @@ function TransitionWrapper({
       </div>
 
       {/* Image */}
-      <img
-        {...stylingProps}
-        src={assetSrc}
-        alt={alt}
-        onLoad={onImageLoadEnd}
-        onError={onImageLoadEnd}
-        data-aspect-ratio={ar}
-        style={style}
-        className={classNames('transition-opacity duration-500', {
-          'opacity-0': isLoading || isTransitioning,
-          'opacity-100': !isLoading && !isTransitioning,
-        })}
-      />
+      {src && (
+        <ImageCloudinary
+          {...stylingProps}
+          src={src}
+          alt={alt}
+          width={maxFrameImageWidth}
+          onLoad={onImageLoadEnd}
+          onError={onImageLoadEnd}
+          data-aspect-ratio={ar}
+          style={style}
+          className={classNames('transition-opacity duration-500', {
+            'opacity-0': isLoading || isTransitioning,
+            'opacity-100': !isLoading && !isTransitioning,
+          })}
+        />
+      )}
     </div>
   );
 }
