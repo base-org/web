@@ -87,6 +87,22 @@ export async function hasRegisteredWithDiscount(
   });
 }
 
+async function getMessageSignature(message: `0x${string}`) {
+  // hash the message
+  const msgHash = keccak256(message);
+
+  // sign the hashed message
+  const { r, s, v } = await sign({
+    hash: msgHash,
+    privateKey: `0x${trustedSignerPKey}`,
+  });
+
+  // combine r, s, and v into a single signature
+  const signature = `${r.slice(2)}${s.slice(2)}${(v as bigint).toString(16)}`;
+
+  return signature;
+}
+
 async function signMessageWithTrustedSigner(
   claimerAddress: Address,
   targetAddress: Address,
@@ -101,17 +117,7 @@ async function signMessageWithTrustedSigner(
     ['0x1900', targetAddress, trustedSignerAddress, claimerAddress, BigInt(expiry)],
   );
 
-  // hash the message
-  const msgHash = keccak256(message);
-
-  // sign the hashed message
-  const { r, s, v } = await sign({
-    hash: msgHash,
-    privateKey: `0x${trustedSignerPKey}`,
-  });
-
-  // combine r, s, and v into a single signature
-  const signature = `${r.slice(2)}${s.slice(2)}${(v as bigint).toString(16)}`;
+  const signature = getMessageSignature(message);
 
   // return the encoded signed message
   return encodeAbiParameters(parseAbiParameters('address, uint64, bytes'), [
@@ -136,17 +142,7 @@ export async function signDiscountMessageWithTrustedSigner(
     ['0x1900', targetAddress, trustedSignerAddress, claimerAddress, couponCodeUuid, BigInt(expiry)],
   );
 
-  // hash the message
-  const msgHash = keccak256(message);
-
-  // sign the hashed message
-  const { r, s, v } = await sign({
-    hash: msgHash,
-    privateKey: `0x${trustedSignerPKey}`,
-  });
-
-  // combine r, s, and v into a single signature
-  const signature = `${r.slice(2)}${s.slice(2)}${(v as bigint).toString(16)}`;
+  const signature = getMessageSignature(message);
 
   // return the encoded signed message
   return encodeAbiParameters(parseAbiParameters('uint64, bytes32, bytes'), [
