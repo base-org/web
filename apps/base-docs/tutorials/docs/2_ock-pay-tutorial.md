@@ -48,7 +48,7 @@ You’ll need to set up a cloud account with [Reown] (FKA, WalletConnect), a pro
 
 Let's first start by getting started by creating a product on Coinbase Commerce.
 
-To begin integrating Coinbase Commerce payments, you'll need to set up your account and create a product. Start by logging into your Coinbase Commerce account. Once you're in, navigate to the product creation section.
+To begin integrating Coinbase Commerce payments, you'll need to set up your account and create a product. Start by logging into your Coinbase Commerce account. Once you're in, navigate to the [product creation page].
 
 ![pay-commerce-uuid](../../assets/images/onchainkit-tutorials/pay-commerce-products.png)
 
@@ -91,7 +91,7 @@ In your Wagmi configuration file, add the following line after the `useMemo()` R
 coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
-Ensure your `src/app/components/OnchainProviders.tsx` file looks like this:
+Ensure your `src/app/components/OnchainProviders.tsx` file has configured its `apiKey` to your CDP API key and `chain` to **base**:
 
 ```typescript:src/app/components/OnchainProviders.tsx
 'use client';
@@ -206,3 +206,4 @@ As next steps, consider expanding your product catalog by adding more items to y
 
 [Passkeys]: https://www.coinbase.com/blog/introducing-passkeys-a-safer-and-easier-way-to-sign-in-to-coinbase
 [Reown]: https://cloud.reown.com/
+[product creation page]: https://beta.commerce.coinbase.com/products
