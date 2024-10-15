@@ -7,7 +7,11 @@ import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { useCallback, useRef } from 'react';
 
-type VideoCardProps = { title: string; description: string; src: string };
+type VideoCardProps = {
+  title: string;
+  description: string | React.ReactNode;
+  src: string;
+};
 
 export default function VideoCard({ title, description, src }: VideoCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);

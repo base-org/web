@@ -1,4 +1,5 @@
 'use client';
+import Link from 'apps/web/node_modules/next/link';
 import bolt from './assets/bolt.webm';
 import eth from './assets/eth.webm';
 import globe from './assets/globe.webm';
@@ -19,7 +20,15 @@ export default function VideoCardsSection() {
       />
       <VideoCard
         title="Open and trusted"
-        description="Base is built as an Ethereum L2, decentralized with the Optimism Superchain, and incubated by Coinbase."
+        description={
+          <span>
+            Base is built as an Ethereum L2, decentralized with the{' '}
+            <Link href="https://optimism.io/build" className="hover:text-blue-30">
+              Optimism Superchain
+            </Link>
+            , and incubated by Coinbase.
+          </span>
+        }
         src={eth}
       />
     </section>
