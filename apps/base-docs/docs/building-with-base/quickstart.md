@@ -71,7 +71,7 @@ To deploy your smart contracts to Base, you need two key components:
 1. A node connection to interact with the Base network
 2. A funded private key to deploy the contract
 
-Lets set up both of these:
+Let's set up both of these:
 
 ### 1. Set up your node connection
 
