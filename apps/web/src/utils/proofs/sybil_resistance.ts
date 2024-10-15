@@ -117,7 +117,7 @@ async function signMessageWithTrustedSigner(
     ['0x1900', targetAddress, trustedSignerAddress, claimerAddress, BigInt(expiry)],
   );
 
-  const signature = getMessageSignature(message);
+  const signature = await getMessageSignature(message);
 
   // return the encoded signed message
   return encodeAbiParameters(parseAbiParameters('address, uint64, bytes'), [
@@ -142,7 +142,7 @@ export async function signDiscountMessageWithTrustedSigner(
     ['0x1900', targetAddress, trustedSignerAddress, claimerAddress, couponCodeUuid, BigInt(expiry)],
   );
 
-  const signature = getMessageSignature(message);
+  const signature = await getMessageSignature(message);
 
   // return the encoded signed message
   return encodeAbiParameters(parseAbiParameters('uint64, bytes32, bytes'), [

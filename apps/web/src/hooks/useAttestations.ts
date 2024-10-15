@@ -507,7 +507,7 @@ export function useDiscountCodeAttestations(code: string | null | undefined) {
         const params = new URLSearchParams();
         params.append('address', a);
         params.append('chain', basenameChain.id.toString());
-        params.append('discountCode', c.toString());
+        params.append('code', c.toString());
         const response = await fetch(`/api/proofs/discountCode?${params}`);
         const result = (await response.json()) as DiscountCodeResponse;
         if (response.ok) {
