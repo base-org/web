@@ -128,7 +128,7 @@ function OnchainProviders({ children }: Props) {
 export default OnchainProviders;
 ```
 
-Update your `Config.ts` file to look like this:
+Update your `Config.ts` file to correspond to the correct environment variables and hosted URL if you have one. In the example below, the hosted url is `https://based-jerseys.vercel.app`.
 
 ```typescript:Config.ts
 export const NEXT_PUBLIC_URL =
