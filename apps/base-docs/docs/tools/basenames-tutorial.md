@@ -1,7 +1,7 @@
 ---
 title: Basenames + Wagmi Tutorial
 slug: /basenames-tutorial-using-wagmi
-description: 'A tutorial that teaches how to intergrate Basenames to your wagmi/viem App'
+description: 'A tutorial that teaches how to integrate Basenames to your wagmi/viem App'
 author: hughescoin
 keywords:
   ['build on base', 'viem', 'wagmi', 'frontend', 'onchain app development']
