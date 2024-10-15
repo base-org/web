@@ -1,6 +1,6 @@
-import { IsValidVercelBlobUrl } from 'apps/web/src/utils/urls';
 import { StaticImageData } from 'next/image';
 
+export const CLOUDINARY_CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 export const STATIC_IMAGE_FOLDER = '/_next/static/';
 export const PUBLIC_IMAGE_FOLDER = '/images/';
 
@@ -19,10 +19,28 @@ export const shouldUseNextImage = (src: string | StaticImageData): boolean => {
   const isPublicImage = absoluteImageSource.startsWith(PUBLIC_IMAGE_FOLDER);
   if (isPublicImage) return true;
 
-  // Vercel blolb images (Basename Avatar)
-  const isVercelBlobImage = IsValidVercelBlobUrl(absoluteImageSource);
-  if (isVercelBlobImage) return true;
-
   // Any other image, don't load via base.org / nextjs image proxy
   return false;
 };
+
+function isDataUrl(url: string) {
+  return /^data:image\/[a-zA-Z]+;base64,/.test(url);
+}
+
+type GetCloudinaryMediaUrlParams = {
+  media: string;
+  width: number;
+};
+
+export function getCloudinaryMediaUrl({ media, width }: GetCloudinaryMediaUrlParams) {
+  if (isDataUrl(media)) return media;
+
+  const imageWidth = `w_${width * 2}`;
+  const imageFormat = 'f_webp';
+  const imageUrl = encodeURI(media);
+  const fetchOptions = [imageWidth, imageFormat, imageUrl].join('/');
+
+  const url = `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/fetch/${fetchOptions}`;
+
+  return url;
+}
