@@ -118,6 +118,7 @@ const contentSecurityPolicy = {
     'https://sdk-api.neynar.com/', // Neymar API
     'https://unpkg.com/@lottiefiles/dotlottie-web@0.31.1/dist/dotlottie-player.wasm', // lottie player
     `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
+    'https://sheets.googleapis.com/v4/spreadsheets/',
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
