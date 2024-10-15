@@ -92,16 +92,15 @@ function TransitionWrapper({
   return (
     <div className="relative">
       {/* Loading Screen */}
-      {isLoading && (
-        <div
-          className={classNames(
-            'absolute inset-0 flex items-center justify-center transition-opacity duration-500',
-            { 'opacity-0': !isLoading || !isTransitioning, 'opacity-100': isLoading },
-          )}
-        >
-          <Image src={baseLoading} alt="" width={22} height={22} />
-        </div>
-      )}
+
+      <div
+        className={classNames(
+          'absolute inset-0 flex items-center justify-center transition-opacity duration-500',
+          { 'opacity-0': !isLoading || !isTransitioning, 'opacity-100': isLoading },
+        )}
+      >
+        <Image src={baseLoading} alt="" width={22} height={22} />
+      </div>
 
       {/* Image */}
       {src && (
