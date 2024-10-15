@@ -39,7 +39,11 @@ export default function ImageCloudinary({
     width: Number(width),
   });
 
-  const shouldUploadToCloudinary = isDataUrl(absoluteSrc) || absoluteSrc.length > 255;
+  const shouldUploadToCloudinary =
+    isDataUrl(absoluteSrc) ||
+    absoluteSrc.length > 255 ||
+    absoluteSrc.includes('?image=') ||
+    absoluteSrc.includes('?url=');
 
   useEffect(() => {
     // Some images need to be uploaded before being proxied
