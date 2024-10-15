@@ -33,6 +33,7 @@ export default function VideoCard({ title, description, src }: VideoCardProps) {
           className="mx-auto mt-6 motion-reduce:hidden"
           autoPlay={false}
           ref={videoRef}
+          preload="auto"
         />
         <Title level={TitleLevel.Title1} className="mb-4">
           {title}
