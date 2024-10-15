@@ -20,15 +20,19 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
   }
-  const { address, chain } = req.query;
+  const { address, chain, code } = req.query;
   const validationErr = proofValidation(address, chain);
   if (validationErr) {
     return res.status(validationErr.status).json({ error: validationErr.error });
   }
 
+  if (!code || typeof code !== 'string') {
+    return res.status(500).json({ error: 'Discount code invalid' });
+  }
+
   try {
     // 1. get the database model
-    const discountCodes = await getDiscountCode('LA_DINNER_TEST');
+    const discountCodes = await getDiscountCode(code);
 
     // 2. Validation: Coupon exists
     if (!discountCodes || discountCodes.length === 0) {
