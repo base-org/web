@@ -42,7 +42,7 @@ export default function ImageCloudinary({
   const shouldUploadToCloudinary = isDataUrl(absoluteSrc) || absoluteSrc.length > 255;
 
   useEffect(() => {
-    // Some image needs to be upload befored being proxied
+    // Some images need to be uploaded before being proxied
     // dataUrl & long Urls (dataUrl in disguise) needs to be uploaded to Cloudinary
 
     // ref: https://support.cloudinary.com/hc/en-us/articles/209209649-Does-Cloudinary-impose-a-URL-length-limit
