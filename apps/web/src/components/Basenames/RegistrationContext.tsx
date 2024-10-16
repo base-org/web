@@ -34,6 +34,7 @@ import {
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { BatchCallsStatus } from 'apps/web/src/hooks/useWriteContractsWithLogs';
 import { WriteTransactionWithReceiptStatus } from 'apps/web/src/hooks/useWriteContractWithReceipt';
+import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 
 export enum RegistrationSteps {
   Search = 'search',
@@ -116,6 +117,11 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   const [registrationStep, setRegistrationStep] = useState<RegistrationSteps>(
     RegistrationSteps.Search,
   );
+
+  // If user has a basename, reverse record is set to false
+  const { refetch: refetchBaseEnsName } = useBaseEnsName({
+    address,
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -223,6 +229,13 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       setRegistrationStep(RegistrationSteps.Success);
     }
   }, [registerNameStatus, setRegistrationStep]);
+
+  // Refetch name on success
+  useEffect(() => {
+    if (registrationStep === RegistrationSteps.Success) {
+      refetchBaseEnsName().catch((error) => logError(error, 'Failed to refetch Basename'));
+    }
+  }, [logError, refetchBaseEnsName, registrationStep]);
 
   // On registration success with discount code: mark as consumed
   const hasRun = useRef(false);

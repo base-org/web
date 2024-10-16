@@ -23,7 +23,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       return res.status(500).json({ error: 'Invalid request' });
     }
 
-    // 1. get the database model
     await incrementDiscountCodeUsage(code);
 
     return res.status(200).json({ success: true });
