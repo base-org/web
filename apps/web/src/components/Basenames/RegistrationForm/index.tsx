@@ -20,8 +20,8 @@ import TransactionError from 'apps/web/src/components/TransactionError';
 import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import { usePremiumEndDurationRemaining } from 'apps/web/src/hooks/useActiveEthPremiumAmount';
 import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
+import useCapabilitiesSafe from 'apps/web/src/hooks/useCapabilitiesSafe';
 import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
-import { useIsAuxiliaryFundsEnabled } from 'apps/web/src/hooks/useIsAuxiliaryFundsEnabled';
 import {
   useDiscountedNameRegistrationPrice,
   useNameRegistrationPrice,
@@ -165,16 +165,16 @@ export default function RegistrationForm() {
     [setReverseRecord],
   );
 
-  const isAuxiliaryFundsEnabled = useIsAuxiliaryFundsEnabled();
+  const { auxiliaryFundsEnabled } = useCapabilitiesSafe({ chain: connectedChain.id });
   const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
   const insufficientBalanceToRegister =
     balance?.value !== undefined && price !== undefined && balance?.value < price;
   const correctChain = connectedChain?.id === basenameChain.id;
-  const insufficientFundsAndNoAuxFunds = insufficientBalanceToRegister && !isAuxiliaryFundsEnabled;
+  const insufficientFundsAndNoAuxFunds = insufficientBalanceToRegister && !auxiliaryFundsEnabled;
   const insufficientBalanceToRegisterAndCorrectChain =
     insufficientBalanceToRegister && correctChain;
   const insufficientFundsNoAuxFundsAndCorrectChain =
-    !isAuxiliaryFundsEnabled && insufficientBalanceToRegisterAndCorrectChain;
+    !auxiliaryFundsEnabled && insufficientBalanceToRegisterAndCorrectChain;
 
   const hasResolvedUSDPrice = price !== undefined && ethUsdPrice !== undefined;
   const usdPrice = hasResolvedUSDPrice ? formatUsdPrice(price, ethUsdPrice) : '--.--';

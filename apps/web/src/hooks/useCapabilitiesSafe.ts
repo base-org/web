@@ -29,9 +29,12 @@ export default function useCapabilitiesSafe({ chain }: UseCapabilitiesSafeProps)
     (capabilities && capabilities[chain.id]?.atomicBatch?.supported === true) ?? false;
   const paymasterServiceEnabled =
     (capabilities && capabilities[chain.id]?.paymasterService?.supported === true) ?? false;
+  const auxiliaryFundsEnabled =
+    (capabilities && capabilities[chain.id]?.auxiliaryFunds?.supported === true) ?? false;
 
   return {
     atomicBatchEnabled,
+    auxiliaryFundsEnabled,
     paymasterServiceEnabled,
   };
 }
