@@ -3,6 +3,7 @@ import dns from 'dns/promises';
 import ipaddr from 'ipaddr.js';
 import { NextRequest, NextResponse } from 'next/server';
 import { URL } from 'url';
+import { isDevelopment } from 'apps/web/src/constants';
 
 export function withIPCheck(handler: (req: NextRequest) => Promise<Response>) {
   return async function (req: NextRequest) {
@@ -10,6 +11,9 @@ export function withIPCheck(handler: (req: NextRequest) => Promise<Response>) {
     const url = searchParams.get('url');
 
     if (url) {
+      if (isDevelopment) {
+        return await handler(req);
+      }
       try {
         const parsedUrl = new URL(url);
         const hostname = parsedUrl.hostname;
