@@ -18,7 +18,7 @@ type ProofsTable = {
   proofs: string;
 };
 
-// username_proofs
+//username_proofs
 
 const proofTableName = 'proofs';
 
