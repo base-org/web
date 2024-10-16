@@ -4,9 +4,7 @@ import initialImage from 'apps/web/pages/api/basenames/frame/assets/initial-imag
 import searchImage from 'apps/web/pages/api/basenames/frame/assets/search-image.png';
 import txSucceededImage from 'apps/web/pages/api/basenames/frame/assets/tx-succeeded.png';
 import txFailedImage from 'apps/web/pages/api/basenames/frame/assets/tx-failed.png';
-import { DOMAIN } from 'apps/web/pages/api/basenames/frame/constants';
-
-const acceptedProtocols = { anonymous: 'vNext' };
+import { DOMAIN, acceptedProtocols } from 'apps/web/pages/api/basenames/frame/constants';
 
 export const initialFrame: FrameMetadataResponse = getFrameMetadata({
   isOpenFrame: true,
