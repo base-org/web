@@ -49,6 +49,13 @@ export default function GrantApplicationForm({
     }));
   }, [basename, basenameRecords]);
 
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setGrantApp((prevGrantApp) => ({
+      ...prevGrantApp,
+      [e.target.name]: e.target.value,
+    }))
+  }, [])
+
   const handleClick = useCallback(() => {
     appendGrantApplicationToGoogleSheet(grantApp, reqUrl, sheetId)
       .then((res) => {
@@ -61,19 +68,108 @@ export default function GrantApplicationForm({
 
   return (
     <div>
-      <ul>
-        <li>Builder Name: {grantApp.builderName}</li>
-        <li>Builder Twitter: {grantApp.builderTwitter}</li>
-        <li>Builder Farcaster: {grantApp.builderFarcaster}</li>
-        <li>Builder Email: {grantApp.builderEmail}</li>
-        <li>Project Name: {grantApp.projectName}</li>
-        <li>Project URL: {grantApp.projectUrl}</li>
-        <li>Project Twitter: {grantApp.projectTwitter}</li>
-        <li>Project Farcaster: {grantApp.projectFarcaster}</li>
-        <li>Project Demo Link: {grantApp.projectDemoLink}</li>
-        <li>Project Live on Base: {grantApp.liveOnBase ? 'true' : 'false'}</li>
-        <li>Reasoning: {grantApp.reasoning}</li>
-      </ul>
+      <div className='my-6'>
+        <div className='my-4'>
+          <span className='pr-6'>Builder Name:</span>
+          <input
+            type="text"
+            name="builderName"
+            value={grantApp.builderName}
+            onChange={handleChange}
+            className='text-black w-full p-2'
+          />
+        </div>
+        <div className='my-4'>
+          <span className='pr-6'>Builder Twitter:</span>
+          <input
+            type="text"
+            name="builderTwitter"
+            value={grantApp.builderTwitter}
+            onChange={handleChange}
+            className='text-black w-full p-2'
+          />
+        </div>
+        <div className='my-4'>
+          <span className='pr-6'>Builder Farcaster:</span>
+          <input
+            type="text"
+            name="builderFarcaster"
+            value={grantApp.builderFarcaster}
+            onChange={handleChange}
+            className='text-black w-full p-2'
+          />
+        </div>
+        <div className='my-4'>
+          <span className='pr-6'>Builder Email:</span>
+          <input
+            type="text"
+            name="builderEmail"
+            value={grantApp.builderEmail}
+            onChange={handleChange}
+            className='text-black w-full p-2'
+          />
+        </div>
+        <div className='my-4'>
+          <span className='pr-6'>Project Name:</span>
+          <input
+            type="text"
+            name="projectName"
+            value={grantApp.projectName}
+            onChange={handleChange}
+            className='text-black w-full p-2'
+          />
+        </div>
+        <div className='my-4'>
+          <span className='pr-6'>Project URL:</span>
+          <input
+            type="text"
+            name="projectUrl"
+            value={grantApp.projectUrl}
+            onChange={handleChange}
+            className='text-black w-full p-2'
+          />
+        </div>
+        <div className='my-4'>
+          <span className='pr-6'>Project Twitter:</span>
+          <input
+            type="text"
+            name="projectTwitter"
+            value={grantApp.projectTwitter}
+            onChange={handleChange}
+            className='text-black w-full p-2'
+          />
+        </div>
+        <div className='my-4'>
+          <span className='pr-6'>Project Farcaster:</span>
+          <input
+            type="text"
+            name="projectFarcaster"
+            value={grantApp.projectFarcaster}
+            onChange={handleChange}
+            className='text-black w-full p-2'
+          />
+        </div>
+        <div className='my-4'>
+          <span className='pr-6'>Project Demo Link:</span>
+          <input
+            type="text"
+            name="projectDemoLink"
+            value={grantApp.projectDemoLink}
+            onChange={handleChange}
+            className='text-black w-full p-2'
+          />
+        </div>
+        <div className='my-4'>
+          <span className='pr-6'>Why does this project deserve a base Grant?</span>
+          <input
+            type="text"
+            name="reasoning"
+            value={grantApp.reasoning}
+            onChange={handleChange}
+            className='text-black w-full p-2'
+          />
+        </div>
+      </div>
       <Button onClick={handleClick} className="mt-12">
         Submit
       </Button>
