@@ -1,4 +1,6 @@
 'use client';
+import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
+import { USERNAME_REGISTRAR_CONTROLLER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useErrors } from 'apps/web/contexts/Errors';
 import {
@@ -6,8 +8,8 @@ import {
   findFirstValidDiscount,
   useAggregatedDiscountValidators,
 } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
-import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
 import { Discount, formatBaseEthDomain, isValidDiscount } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -23,10 +25,15 @@ import {
   useRef,
   useState,
 } from 'react';
-import { useInterval } from 'usehooks-ts';
-import { Address, TransactionReceipt } from 'viem';
 import { base } from 'viem/chains';
-import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
+import { useAccount, useReadContract } from 'wagmi';
+import { zeroAddress } from 'viem';
+import {
+  useDiscountedNameRegistrationPrice,
+  useNameRegistrationPrice,
+} from 'apps/web/src/hooks/useNameRegistrationPrice';
+import { BatchCallsStatus } from 'apps/web/src/hooks/useWriteContractsWithLogs';
+import { WriteTransactionWithReceiptStatus } from 'apps/web/src/hooks/useWriteContractWithReceipt';
 
 export enum RegistrationSteps {
   Search = 'search',
@@ -45,14 +52,18 @@ export type RegistrationContextProps = {
   setRegistrationStep: Dispatch<SetStateAction<RegistrationSteps>>;
   selectedName: string;
   setSelectedName: Dispatch<SetStateAction<string>>;
-  registerNameTransactionHash: `0x${string}` | undefined;
-  setRegisterNameTransactionHash: Dispatch<SetStateAction<`0x${string}` | undefined>>;
+  years: number;
+  setYears: Dispatch<SetStateAction<number>>;
   redirectToProfile: () => void;
   loadingDiscounts: boolean;
   discount: DiscountData | undefined;
   allActiveDiscounts: Set<Discount>;
-  transactionData: TransactionReceipt | undefined;
-  transactionError: unknown | null;
+  reverseRecord: boolean;
+  setReverseRecord: Dispatch<SetStateAction<boolean>>;
+  hasExistingBasename: boolean;
+  registerNameIsPending: boolean;
+  registerNameError: unknown;
+  registerName: () => Promise<void>;
 };
 
 export const RegistrationContext = createContext<RegistrationContextProps>({
@@ -72,18 +83,19 @@ export const RegistrationContext = createContext<RegistrationContextProps>({
   setSelectedName: function () {
     return undefined;
   },
-  registerNameTransactionHash: '0x',
-  setRegisterNameTransactionHash: function () {
+  redirectToProfile: function () {
     return undefined;
   },
-  redirectToProfile: function () {
+  years: 1,
+  setYears: function () {
     return undefined;
   },
   loadingDiscounts: true,
   discount: undefined,
   allActiveDiscounts: new Set(),
-  transactionData: undefined,
-  transactionError: null,
+  registerName: function () {
+    return undefined;
+  },
 });
 
 type RegistrationProviderProps = {
@@ -94,6 +106,9 @@ type RegistrationProviderProps = {
 export const registrationTransitionDuration = 'duration-700';
 
 export default function RegistrationProvider({ children }: RegistrationProviderProps) {
+  // Wallet
+  const { address } = useAccount();
+
   // UI state
   const [searchInputFocused, setSearchInputFocused] = useState<boolean>(false);
   const [searchInputHovered, setSearchInputHovered] = useState<boolean>(false);
@@ -107,18 +122,11 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   }, [registrationStep]);
 
   const { basenameChain } = useBasenameChain();
-
   const router = useRouter();
 
   // Analytics
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();
-
-  // Web3 data
-  const { address } = useAccount();
-  const { data: currentAddressName, refetch: baseEnsNameRefetch } = useBaseEnsName({
-    address,
-  });
 
   // Discount code from URL
   const searchParams = useSearchParams();
@@ -138,41 +146,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     [discounts],
   );
 
-  // TODO: Not a big fan of this, I think ideally we'd have useRegisterNameCallback here
-  const [registerNameTransactionHash, setRegisterNameTransactionHash] = useState<
-    Address | undefined
-  >();
-
-  // Wait for text record transaction to be processed
-  const {
-    data: transactionData,
-    isFetching: transactionIsFetching,
-    isSuccess: transactionIsSuccess,
-    error: transactionError,
-  } = useWaitForTransactionReceipt({
-    hash: registerNameTransactionHash,
-    chainId: basenameChain.id,
-    query: {
-      enabled: !!registerNameTransactionHash,
-    },
-  });
-
-  useInterval(() => {
-    if (registrationStep !== RegistrationSteps.Pending) {
-      return;
-    }
-    baseEnsNameRefetch()
-      .then(() => {
-        const [extractedName] = (currentAddressName ?? '').split('.');
-        if (extractedName === selectedName && registrationStep === RegistrationSteps.Pending) {
-          setRegistrationStep(RegistrationSteps.Success);
-        }
-      })
-      .catch((error) => {
-        logError(error, 'Failed to refetch basename');
-      });
-  }, 1500);
-
   const profilePath = useMemo(() => {
     if (basenameChain.id === base.id) {
       return `name/${selectedName}`;
@@ -185,42 +158,71 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     router.push(profilePath);
   }, [profilePath, router]);
 
-  useEffect(() => {
-    if (transactionIsFetching && registrationStep === RegistrationSteps.Claim) {
-      logEventWithContext('register_name_transaction_processing', ActionType.change);
-      setRegistrationStep(RegistrationSteps.Pending);
-    }
+  const [years, setYears] = useState(1);
 
-    if (transactionIsSuccess && registrationStep === RegistrationSteps.Pending) {
-      if (transactionData.status === 'success') {
-        logEventWithContext('register_name_transaction_success', ActionType.change);
-        setRegistrationStep(RegistrationSteps.Success);
-        router.prefetch(profilePath);
-      }
+  // Has already registered with discount
+  const { data: hasRegisteredWithDiscount } = useReadContract({
+    abi: RegistrarControllerABI,
+    address: USERNAME_REGISTRAR_CONTROLLER_ADDRESSES[basenameChain.id],
+    functionName: 'discountedRegistrants',
+    args: [address ?? zeroAddress],
+  });
 
-      if (transactionData.status === 'reverted') {
-        logEventWithContext('register_name_transaction_reverted', ActionType.change, {
-          error: `Transaction reverted: ${transactionData.transactionHash}`,
-        });
-      }
-    }
-  }, [
-    baseEnsNameRefetch,
-    logEventWithContext,
-    profilePath,
-    registrationStep,
-    router,
-    transactionData,
-    transactionIsFetching,
-    transactionIsSuccess,
-  ]);
+  const { data: discountedPrice } = useDiscountedNameRegistrationPrice(
+    selectedName,
+    years,
+    discount?.discountKey,
+  );
+
+  const { data: initialPrice } = useNameRegistrationPrice(selectedName, years);
+
+  const price = hasRegisteredWithDiscount ? initialPrice : discountedPrice ?? initialPrice;
+
+  // Registration time
+  const {
+    callback: registerName,
+    isPending: registerNameIsPending,
+    error: registerNameError,
+    reverseRecord,
+    setReverseRecord,
+    hasExistingBasename,
+    batchCallsStatus,
+    registerNameStatus,
+  } = useRegisterNameCallback(
+    selectedName,
+    price,
+    years,
+    hasRegisteredWithDiscount ? undefined : discount?.discountKey,
+    hasRegisteredWithDiscount ? undefined : discount?.validationData,
+  );
 
   // Move from search to claim
   useEffect(() => {
-    if (selectedName.length) {
+    if (registrationStep === RegistrationSteps.Search && selectedName.length) {
       setRegistrationStep(RegistrationSteps.Claim);
     }
-  }, [selectedName.length]);
+  }, [registrationStep, selectedName.length]);
+
+  // transaction with paymaster
+  useEffect(() => {
+    if (batchCallsStatus === BatchCallsStatus.Approved) {
+      setRegistrationStep(RegistrationSteps.Pending);
+    }
+    if (batchCallsStatus === BatchCallsStatus.Success) {
+      setRegistrationStep(RegistrationSteps.Success);
+    }
+  }, [batchCallsStatus, setRegistrationStep]);
+
+  // transaction without paymaster
+  useEffect(() => {
+    if (registerNameStatus === WriteTransactionWithReceiptStatus.Approved) {
+      setRegistrationStep(RegistrationSteps.Pending);
+    }
+
+    if (registerNameStatus === WriteTransactionWithReceiptStatus.Success) {
+      setRegistrationStep(RegistrationSteps.Success);
+    }
+  }, [registerNameStatus, setRegistrationStep]);
 
   // On registration success with discount code: mark as consumed
   const hasRun = useRef(false);
@@ -266,13 +268,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     logEventWithContext('selected_name', ActionType.change);
   }, [logEventWithContext, selectedName]);
 
-  // Log error
-  useEffect(() => {
-    if (transactionError) {
-      logError(transactionError, 'Failed to fetch the transaction receipt');
-    }
-  }, [logError, transactionError]);
-
   const values = useMemo(() => {
     return {
       searchInputFocused,
@@ -283,27 +278,35 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       setSelectedName,
       registrationStep,
       setRegistrationStep,
-      registerNameTransactionHash,
-      setRegisterNameTransactionHash,
       redirectToProfile,
       loadingDiscounts,
       discount,
       allActiveDiscounts,
-      transactionData,
-      transactionError,
+      years,
+      setYears,
+      reverseRecord,
+      setReverseRecord,
+      hasExistingBasename,
+      registerNameIsPending,
+      registerNameError,
+      registerName,
     };
   }, [
-    allActiveDiscounts,
-    discount,
-    loadingDiscounts,
-    redirectToProfile,
-    registerNameTransactionHash,
-    registrationStep,
     searchInputFocused,
     searchInputHovered,
     selectedName,
-    transactionData,
-    transactionError,
+    registrationStep,
+    redirectToProfile,
+    loadingDiscounts,
+    discount,
+    allActiveDiscounts,
+    years,
+    reverseRecord,
+    setReverseRecord,
+    hasExistingBasename,
+    registerNameIsPending,
+    registerNameError,
+    registerName,
   ]);
 
   return <RegistrationContext.Provider value={values}>{children}</RegistrationContext.Provider>;
