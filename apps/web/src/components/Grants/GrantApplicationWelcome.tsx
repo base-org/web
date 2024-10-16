@@ -2,12 +2,18 @@ import React, { Dispatch, SetStateAction, useCallback, useState } from 'react';
 import Button from 'apps/web/src/components/base-org/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Link from 'apps/web/src/components/Link';
-import { ButtonWithLink } from 'apps/web/src/components/Button/ButtonWithLink';
 import {
   ConnectWalletButton,
   ConnectWalletButtonVariants,
 } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 import { FormStates } from 'apps/web/src/components/Grants/grantApplicationTypes';
+import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Frame';
+import {
+  FramesProvider,
+  useFrameContext,
+} from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
+import FarcasterAccountModal from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FarcasterAccountModal';
+import { DOMAIN } from 'apps/web/pages/api/basenames/frame/constants';
 
 type WelcomeProps = {
   addressCheck: boolean;
@@ -20,6 +26,65 @@ export default function GrantApplicationWelcome({
   basenameCheck,
   formSetter,
 }: WelcomeProps) {
+  return (
+    <FramesProvider>
+      <div className="flex flex-col items-center gap-6 pb-16">
+        <WelcomeMessage
+          addressCheck={addressCheck}
+          basenameCheck={basenameCheck}
+          formSetter={formSetter}
+        />
+        <div>
+          <h2 className="mb-4 mt-12 text-2xl">Application FAQ</h2>
+          <FaqItem
+            question="What is a Base Builder Grant?"
+            answer={
+              <ul className="mt-4 flex list-inside list-disc flex-col items-start">
+                <li className="mb-2">
+                  You must log in with your Basename to submit your application
+                </li>
+                <li className="mb-2">
+                  Read more{' '}
+                  <Link
+                    className="underline hover:text-gray-30 hover:no-underline"
+                    href="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
+                  >
+                    here
+                  </Link>
+                </li>
+              </ul>
+            }
+          />
+          <FaqItem
+            question="What are the application requirements?"
+            answer={
+              <ul className="mt-4 flex list-inside list-disc flex-col items-start">
+                <li className="mb-2">
+                  You must log in with your Basename to submit your application
+                </li>
+                <li className="mb-2">Your project must be live on Base Mainnet</li>
+              </ul>
+            }
+          />
+          <FaqItem
+            question="How can I set myself up for success?"
+            answer={
+              <ul className="mt-4 flex list-inside list-disc flex-col items-start">
+                <li className="mb-2">
+                  Apply with a project that's unique, fun, and/or making an impact
+                </li>
+                <li className="mb-2">Build something that brings more users onchain</li>
+              </ul>
+            }
+          />
+        </div>
+      </div>
+    </FramesProvider>
+  );
+}
+
+function WelcomeMessage({ addressCheck, basenameCheck, formSetter }: WelcomeProps) {
+  const { showFarcasterQRModal } = useFrameContext();
   const handleClick = useCallback(() => formSetter(FormStates.Started), [formSetter]);
 
   let welcomeMessage: React.ReactNode;
@@ -37,7 +102,7 @@ export default function GrantApplicationWelcome({
           This wallet is not associated with a basename. <br />
           Please connect another address or claim a basename to continue.
         </div>
-        <ButtonWithLink href="/names">Claim a Basename</ButtonWithLink>
+        <Frame url={`${DOMAIN}/names`} />
       </>
     );
   } else {
@@ -53,53 +118,10 @@ export default function GrantApplicationWelcome({
     );
   }
   return (
-    <div className="flex flex-col items-center gap-6 pb-16">
+    <>
+      {showFarcasterQRModal && <FarcasterAccountModal />}
       {welcomeMessage}
-      <div>
-        <h2 className="mb-4 mt-12 text-2xl">Application FAQ</h2>
-        <FaqItem
-          question="What is a Base Builder Grant?"
-          answer={
-            <ul className="mt-4 flex list-inside list-disc flex-col items-start">
-              <li className="mb-2">
-                You must log in with your Basename to submit your application
-              </li>
-              <li className="mb-2">
-                Read more{' '}
-                <Link
-                  className="underline hover:text-gray-30 hover:no-underline"
-                  href="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
-                >
-                  here
-                </Link>
-              </li>
-            </ul>
-          }
-        />
-        <FaqItem
-          question="What are the application requirements?"
-          answer={
-            <ul className="mt-4 flex list-inside list-disc flex-col items-start">
-              <li className="mb-2">
-                You must log in with your Basename to submit your application
-              </li>
-              <li className="mb-2">Your project must be live on Base Mainnet</li>
-            </ul>
-          }
-        />
-        <FaqItem
-          question="How can I set myself up for success?"
-          answer={
-            <ul className="mt-4 flex list-inside list-disc flex-col items-start">
-              <li className="mb-2">
-                Apply with a project that's unique, fun, and/or making an impact
-              </li>
-              <li className="mb-2">Build something that brings more users onchain</li>
-            </ul>
-          }
-        />
-      </div>
-    </div>
+    </>
   );
 }
 
