@@ -1,3 +1,4 @@
+import Image, { StaticImageData } from 'apps/web/node_modules/next/image';
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
@@ -14,6 +15,7 @@ import BlogSection from 'apps/web/src/components/base-org/root/BlogSection';
 import dynamic from 'next/dynamic';
 import Link from 'apps/web/src/components/Link';
 import MissionSection from 'apps/web/src/components/base-org/root/MissionSection';
+import OpLogo from 'apps/web/public/images/op_logo.svg';
 
 const DynamicThreeHero = dynamic(async () => import('apps/web/src/components/ThreeHero'), {
   ssr: false,
@@ -25,23 +27,32 @@ export default async function Home() {
       <AnalyticsProvider context="hero">
         <div className="relative z-10 h-screen w-full">
           <DynamicThreeHero />
-
-          <div className="absolute bottom-0 left-0 z-20 w-full pb-20 text-white">
-            <Container>
-              <Title level={TitleLevel.Title1}>Base is for everyone.</Title>
-              <div className="mt-4 flex gap-4">
-                <Link href="/getstarted?utm_source=dotorg&medium=hero">
-                  <Button variant={ButtonVariants.Secondary} iconName="baseOrgDiagonalUpArrow">
-                    Start building
-                  </Button>
-                </Link>
-                <Link href="/names?utm_source=dotorg&medium=hero">
-                  <Button variant={ButtonVariants.Outlined} iconName="baseOrgDiagonalUpArrow">
-                    Get a Basename
-                  </Button>
-                </Link>
-              </div>
-            </Container>
+          <div className="absolute bottom-0 z-20 flex w-full flex-col justify-between gap-6 pb-20 text-white lg:flex-row">
+            <div className="lg:ml-20">
+              <Container>
+                <Title level={TitleLevel.Title1}>Base is for everyone.</Title>
+                <div className="mt-4 flex gap-4">
+                  <Link href="/getstarted?utm_source=dotorg&medium=hero">
+                    <Button variant={ButtonVariants.Secondary} iconName="baseOrgDiagonalUpArrow">
+                      Start building
+                    </Button>
+                  </Link>
+                  <Link href="/names?utm_source=dotorg&medium=hero">
+                    <Button variant={ButtonVariants.Outlined} iconName="baseOrgDiagonalUpArrow">
+                      Get a Basename
+                    </Button>
+                  </Link>
+                </div>
+              </Container>
+            </div>
+            <div className="px-[1rem] lg:mr-16 lg:self-end">
+              <Link href="https://optimism.io/build">
+                <div className="flex flex-row gap-2">
+                  <Image src={OpLogo as StaticImageData} alt="optimism logo" />
+                  <span>Built on the Superchain</span>
+                </div>
+              </Link>
+            </div>
             <div className="pointer-events-none absolute bottom-0 left-0 z-20 h-[50px] w-full bg-gradient-to-b from-transparent to-black" />
           </div>
         </div>

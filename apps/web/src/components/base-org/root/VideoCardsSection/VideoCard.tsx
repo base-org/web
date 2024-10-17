@@ -7,7 +7,11 @@ import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { useCallback, useRef } from 'react';
 
-type VideoCardProps = { title: string; description: string; src: string };
+type VideoCardProps = {
+  title: string;
+  description: string | React.ReactNode;
+  src: string;
+};
 
 export default function VideoCard({ title, description, src }: VideoCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -29,6 +33,7 @@ export default function VideoCard({ title, description, src }: VideoCardProps) {
           className="mx-auto mt-6 motion-reduce:hidden"
           autoPlay={false}
           ref={videoRef}
+          preload="auto"
         />
         <Title level={TitleLevel.Title1} className="mb-4">
           {title}

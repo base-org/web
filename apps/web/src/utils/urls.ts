@@ -66,3 +66,7 @@ export const getIpfsGatewayUrl = (ipfsUrl?: IpfsUrl): string | undefined => {
     return;
   }
 };
+
+export function isDataUrl(url: string): boolean {
+  return url.startsWith('data:');
+}

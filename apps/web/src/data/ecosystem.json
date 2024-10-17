@@ -63,15 +63,6 @@
     "imageUrl": "/images/partners/openx.png"
   },
   {
-    "name": "Earn Finance",
-    "tags": [
-      "defi"
-    ],
-    "description": "Earn Finance is the first token within the #Hold2Earn sector of crypto that is exclusively on the Base Network. Holding $EarnFi gives you automatic & passive Ethereum rewards sent directly to your wallet!",
-    "url": "https://earnfinance.org/",
-    "imageUrl": "/images/partners/earnfinance.png"
-  },
-  {
     "name": "MoonPay",
     "tags": [
       "onramp"

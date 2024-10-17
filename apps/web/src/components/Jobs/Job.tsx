@@ -23,7 +23,7 @@ type JobProps = {
 };
 
 export function Job({ job }: JobProps) {
-  const { id, title, location } = job;
+  const { id, title } = job;
 
   const href = useMemo(
     () => ({
@@ -43,7 +43,6 @@ export function Job({ job }: JobProps) {
       <div className="flex w-full flex-col items-center justify-between text-white sm:flex-row">
         <div className="flex w-full flex-col">
           <p className="w-full text-xl">{title}</p>
-          <small className="opacity-70">{location.name}</small>
         </div>
 
         <Button

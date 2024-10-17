@@ -15,6 +15,7 @@ type ImageWithLoadingProps = {
   backgroundClassName?: string;
   imageClassName?: string;
   forceIsLoading?: boolean;
+  useCloudinary?: boolean;
 };
 
 export default function ImageWithLoading({
@@ -27,6 +28,7 @@ export default function ImageWithLoading({
   backgroundClassName = 'bg-gray-10/50',
   imageClassName,
   forceIsLoading = false,
+  useCloudinary = true,
 }: ImageWithLoadingProps) {
   const [imageIsLoading, setImageIsLoading] = useState<boolean>(true);
 
@@ -60,6 +62,7 @@ export default function ImageWithLoading({
         width={width}
         height={height}
         quality={100}
+        useCloudinary={useCloudinary}
       />
     </figure>
   );

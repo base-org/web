@@ -28,14 +28,14 @@ import { namehash } from 'viem';
 import { useAccount, useChainId, useConfig, useWriteContract } from 'wagmi';
 import { sendTransaction, signTypedData, switchChain } from 'wagmi/actions';
 
-class InvalidChainIdError extends Error {}
-class CouldNotChangeChainError extends Error {}
+export class InvalidChainIdError extends Error {}
+export class CouldNotChangeChainError extends Error {}
 
 function isValidChainId(id: string): boolean {
   return id.startsWith('eip155:');
 }
 
-function parseChainId(id: string): number {
+export function parseChainId(id: string): number {
   if (!isValidChainId(id)) {
     throw new InvalidChainIdError(`Invalid chainId ${id}`);
   }
@@ -52,8 +52,6 @@ function removeUrl(urls: string, urlSubstringToRemove: string): string {
 export type FrameContextValue = {
   currentWalletIsProfileOwner?: boolean;
   frameUrlRecord: string;
-  frameInteractionError: string;
-  setFrameInteractionError: (s: string) => void;
   frameConfig: Omit<
     Parameters<typeof useFrame>[0],
     'homeframeUrl' | 'signerState' | 'frameContext'
@@ -117,7 +115,6 @@ export function FramesProvider({ children }: FramesProviderProps) {
   const currentChainId = useChainId();
   const config = useConfig();
   const { openConnectModal } = useConnectModal();
-  const [frameInteractionError, setFrameInteractionError] = useState('');
 
   const onTransaction: OnTransactionFunc = useCallback(
     async ({ transactionData, frame }) => {
@@ -148,18 +145,15 @@ export function FramesProvider({ children }: FramesProviderProps) {
         return transactionId;
       } catch (error) {
         if (error instanceof InvalidChainIdError) {
-          setFrameInteractionError('Invalid chain id');
           logEventWithContext('basename_profile_frame_invalid_chain_id', ActionType.error);
         } else if (error instanceof CouldNotChangeChainError) {
           logEventWithContext('basename_profile_frame_could_not_change_chain', ActionType.error);
-          setFrameInteractionError(`Must switch chain to ${requestedChainId}`);
         } else {
-          setFrameInteractionError('Error sending transaction');
+          logError(error, `${frame.postUrl ?? frame.title} failed to complete a frame transaction`);
         }
 
-        logError(error, `${frame.postUrl ?? frame.title} failed to complete a frame transaction`);
-
-        return null;
+        // intentional re-throw to be caught by individual frames
+        throw error;
       }
     },
     [address, config, currentChainId, openConnectModal, logEventWithContext, logError],
@@ -191,17 +185,9 @@ export function FramesProvider({ children }: FramesProviderProps) {
 
         return await signTypedData(config, params);
       } catch (error) {
-        if (error instanceof InvalidChainIdError) {
-          setFrameInteractionError('Invalid chain id');
-        } else if (error instanceof CouldNotChangeChainError) {
-          setFrameInteractionError('Could not change chain');
-        } else {
-          setFrameInteractionError('Error signing data');
-        }
-
         logError(error, `${frame.postUrl ?? frame.title} failed to sign frame data`);
-
-        return null;
+        // intentional re-throw to be caught by individual frames
+        throw error;
       }
     },
     [address, openConnectModal, currentChainId, config, logError],
@@ -296,8 +282,6 @@ export function FramesProvider({ children }: FramesProviderProps) {
         onConnectWallet: openConnectModal,
         frameContext: farcasterFrameContext,
       },
-      frameInteractionError,
-      setFrameInteractionError,
       showFarcasterQRModal,
       setShowFarcasterQRModal,
       pendingFrameChange,
@@ -317,7 +301,6 @@ export function FramesProvider({ children }: FramesProviderProps) {
       onSignature,
       openConnectModal,
       farcasterFrameContext,
-      frameInteractionError,
       showFarcasterQRModal,
       pendingFrameChange,
       addFrame,

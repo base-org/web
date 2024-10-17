@@ -7,6 +7,7 @@ import { Chain } from 'viem';
 import { WriteContractsParameters } from 'viem/experimental';
 import { useAccount, useSwitchChain, useWaitForTransactionReceipt } from 'wagmi';
 import { useCallsStatus, useWriteContracts } from 'wagmi/experimental';
+import useCapabilitiesSafe from 'apps/web/src/hooks/useCapabilitiesSafe';
 
 /*
   A hook to request and track a wallet write transaction
@@ -54,11 +55,7 @@ export default function useWriteContractsWithLogs({
   // Errors & Analytics
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();
-  const { connector } = useAccount();
-  const isCoinbaseSmartWallet = connector?.id === 'coinbaseWalletSDK';
-
-  const batchCallsEnabled = isCoinbaseSmartWallet;
-
+  const { atomicBatchEnabled } = useCapabilitiesSafe({ chain });
   const { chain: connectedChain } = useAccount();
 
   const [batchCallsStatus, setBatchCallsStatus] = useState<BatchCallsStatus>(BatchCallsStatus.Idle);
@@ -78,7 +75,7 @@ export default function useWriteContractsWithLogs({
     // @ts-expect-error: We can expect sendCallsId to be undefined since we're only enabling the query when defined
     id: sendCallsId,
     query: {
-      enabled: !!sendCallsId && batchCallsEnabled,
+      enabled: !!sendCallsId && atomicBatchEnabled,
       refetchInterval: 5000, // todo: smarter
     },
   });
@@ -107,7 +104,7 @@ export default function useWriteContractsWithLogs({
 
   const initiateBatchCalls = useCallback(
     async (writeContractParameters: WriteContractsParameters) => {
-      if (!isCoinbaseSmartWallet) return Promise.resolve("Wallet doesn't support sendCalls");
+      if (!atomicBatchEnabled) return Promise.resolve("Wallet doesn't support sendCalls");
 
       if (!connectedChain) return;
       if (connectedChain.id !== chain.id) {
@@ -126,7 +123,7 @@ export default function useWriteContractsWithLogs({
       }
     },
     [
-      isCoinbaseSmartWallet,
+      atomicBatchEnabled,
       connectedChain,
       chain.id,
       switchChainAsync,
@@ -198,6 +195,6 @@ export default function useWriteContractsWithLogs({
     batchCallsIsSuccess,
     batchCallsIsError,
     batchCallsError,
-    batchCallsEnabled,
+    batchCallsEnabled: atomicBatchEnabled,
   };
 }
