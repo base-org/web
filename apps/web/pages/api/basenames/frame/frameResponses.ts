@@ -105,6 +105,7 @@ export const confirmationFrame = (
         action: 'tx',
         label: `Claim name`,
         target: `${DOMAIN}/api/basenames/frame/tx`,
+        postUrl: `${DOMAIN}/api/basenames/frame/04_txSubmitted`,
       },
     ],
     image: {
