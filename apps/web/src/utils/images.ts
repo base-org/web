@@ -37,7 +37,7 @@ export function getCloudinaryMediaUrl({ media, width }: GetCloudinaryMediaUrlPar
 
   const imageWidth = `w_${width * 2}`;
   const imageFormat = 'f_webp';
-  const imageUrl = encodeURI(media);
+  const imageUrl = encodeURIComponent(media);
   const fetchOptions = [imageWidth, imageFormat, imageUrl].join('/');
 
   const url = `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/fetch/${fetchOptions}`;
