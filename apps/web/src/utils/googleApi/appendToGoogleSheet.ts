@@ -1,4 +1,4 @@
-import { type GrantApplicationData } from 'apps/web/app/(base-org)/grants/page';
+import { type GrantApplicationData } from 'apps/web/src/components/Grants/grantApplicationTypes';
 import { getAccessToken } from 'apps/web/src/utils/googleApi/googleApiOAuth2';
 
 type AppendCellsResponseData = {
@@ -19,16 +19,16 @@ export async function appendGrantApplicationToGoogleSheet(
           rows: [
             {
               values: [
-                { userEnteredValue: { stringValue: app.builderName } },
+                { userEnteredValue: { stringValue: app.nomineeName } },
                 {
                   userEnteredValue: {
-                    stringValue: app.builderEmail,
+                    stringValue: app.nomineeEmail,
                   },
                 },
-                { userEnteredValue: { stringValue: app.builderTwitter } },
+                { userEnteredValue: { stringValue: app.nomineeTwitter } },
                 {
                   userEnteredValue: {
-                    stringValue: app.builderFarcaster,
+                    stringValue: app.nomineeFarcaster,
                   },
                 },
                 {
@@ -41,17 +41,8 @@ export async function appendGrantApplicationToGoogleSheet(
                     stringValue: app.projectUrl,
                   },
                 },
-                {
-                  userEnteredValue: {
-                    stringValue: app.projectTwitter,
-                  },
-                },
-                {
-                  userEnteredValue: {
-                    stringValue: app.projectFarcaster,
-                  },
-                },
                 { userEnteredValue: { boolValue: app.liveOnBase } },
+                { userEnteredValue: { boolValue: app.acceptedLegalDisclaimer } },
                 {
                   userEnteredValue: {
                     stringValue: app.reasoning,
@@ -86,7 +77,7 @@ export async function appendGrantApplicationToGoogleSheet(
     if (!res.ok) {
       throw new Error(`HTTP error. Status: ${res.status}`);
     }
-    const data: AppendCellsResponseData = await res.json();
+    const data = (await res.json()) as AppendCellsResponseData;
     return {
       spreadsheetId: data.spreadsheetId,
       success: true,
