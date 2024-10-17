@@ -1,7 +1,7 @@
 /*
   A hook to safely check wallet_getCapabilities support
 
-  Responsabilities:
+  Responsibilities:
   - Check for unsupported wallets (e.g: metamask)
   - Use experimental useCapabilities
   - Check atomicBatch (batchcall) and paymasterService for a given chain
@@ -12,29 +12,38 @@ import { Chain } from 'viem';
 import { useAccount } from 'wagmi';
 import { useCapabilities } from 'wagmi/experimental';
 
+// To add a new capability, add it to this list
+const capabilitiesList = ['atomicBatch', 'paymasterService', 'auxiliaryFunds'] as const;
+
+type ListedCapabilities = (typeof capabilitiesList)[number];
+
 export type UseCapabilitiesSafeProps = {
-  chain: Chain;
+  chain?: Chain;
 };
 
-export default function useCapabilitiesSafe({ chain }: UseCapabilitiesSafeProps) {
-  const { connector, isConnected } = useAccount();
+export default function useCapabilitiesSafe({
+  chain: paramChain,
+}: UseCapabilitiesSafeProps): Record<ListedCapabilities, boolean> {
+  const { connector, isConnected, chain: accountChain } = useAccount();
+  const chain = paramChain ?? accountChain;
 
   // Metamask doesn't support wallet_getCapabilities
   const isMetamaskWallet = connector?.id === 'io.metamask';
   const enabled = isConnected && !isMetamaskWallet;
 
-  const { data: capabilities } = useCapabilities({ query: { enabled } });
+  const { data: rawCapabilities } = useCapabilities({ query: { enabled } });
 
-  const atomicBatchEnabled =
-    (capabilities && capabilities[chain.id]?.atomicBatch?.supported === true) ?? false;
-  const paymasterServiceEnabled =
-    (capabilities && capabilities[chain.id]?.paymasterService?.supported === true) ?? false;
-  const auxiliaryFundsEnabled =
-    (capabilities && capabilities[chain.id]?.auxiliaryFunds?.supported === true) ?? false;
+  function isCapabilitySupported(capability: ListedCapabilities) {
+    return (
+      (chain && rawCapabilities && rawCapabilities[chain.id]?.[capability]?.supported === true) ??
+      false
+    );
+  }
 
-  return {
-    atomicBatchEnabled,
-    auxiliaryFundsEnabled,
-    paymasterServiceEnabled,
-  };
+  const capabilities = capabilitiesList.reduce((acc, capability) => {
+    acc[capability] = isCapabilitySupported(capability);
+    return acc;
+  }, {} as Record<ListedCapabilities, boolean>);
+
+  return capabilities;
 }
