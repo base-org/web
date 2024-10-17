@@ -41,13 +41,13 @@ export default function Frame({ url, className }: FrameProps) {
   const [error, setError] = useState<string>('');
   const clearError = useCallback(() => setError(''), []);
   const [isDismissing, setIsDismissing] = useState<boolean>(false);
-  const handleDismissError = () => {
+  const handleDismissError = useCallback(() => {
     setIsDismissing(true);
     setTimeout(() => {
       clearError();
       setIsDismissing(false);
-    }, 200); // Match the fade-out duration
-  };
+    }, 200);
+  }, [clearError]);
 
   const fetchFn = async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
     const queryKey = ['frame-data', input];
@@ -59,22 +59,27 @@ export default function Frame({ url, className }: FrameProps) {
     });
   };
 
-  const useSharedCallback = <T extends SignatureData | TransactionData>(
-    callback: ((a: T) => Promise<null | `0x${string}`>) | undefined,
+  // Frames all have the same shared logic defined at the context level for handling transaction and signature requests.
+  // We wrap the handlers for those events in each instance of this component can manage its own errors.
+  const useErrorDecorator = <D extends SignatureData | TransactionData>(
+    callback: ((interactionData: D) => Promise<null | `0x${string}`>) | undefined,
   ) =>
     useCallback(
-      async (a: T) => {
+      async (interactionData: D) => {
         if (!callback) return null;
         try {
-          return await callback(a);
+          return await callback(interactionData);
         } catch (err) {
-          const signatureData = 'signatureData' in a && a.signatureData;
-          const transactionData = 'transactionData' in a && a.transactionData;
+          const signatureData = 'signatureData' in interactionData && interactionData.signatureData;
+          const transactionData =
+            'transactionData' in interactionData && interactionData.transactionData;
           if (err instanceof InvalidChainIdError) {
             setError('Invalid chain id');
           } else if (err instanceof CouldNotChangeChainError) {
             const chainId =
-              'signatureData' in a ? a.signatureData.chainId : a.transactionData.chainId;
+              'signatureData' in interactionData
+                ? interactionData.signatureData.chainId
+                : interactionData.transactionData.chainId;
             const requestedChainId = parseChainId(chainId);
             setError(`Must switch chain to ${requestedChainId}`);
           } else {
@@ -92,8 +97,8 @@ export default function Frame({ url, className }: FrameProps) {
       [callback],
     );
 
-  const onSignature: OnSignatureFunc = useSharedCallback(sharedConfig.onSignature);
-  const onTransaction: OnTransactionFunc = useSharedCallback(sharedConfig.onTransaction);
+  const onSignature: OnSignatureFunc = useErrorDecorator(sharedConfig.onSignature);
+  const onTransaction: OnTransactionFunc = useErrorDecorator(sharedConfig.onTransaction);
 
   const frameConfig = useMemo(
     () => ({
