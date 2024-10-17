@@ -63,6 +63,11 @@ export const USERNAME_1155_DISCOUNT_VALIDATORS: AddressMap = {
   [base.id]: '0x55246A2AE466257B2fB54d4BB881Fb3f17D8e03e',
 };
 
+export const TALENT_PROTOCOL_DISCOUNT_VALIDATORS: AddressMap = {
+  [baseSepolia.id]: '0x0',
+  [base.id]: '0x0',
+};
+
 export const USERNAME_REVERSE_REGISTRAR_ADDRESSES: AddressMap = {
   [baseSepolia.id]: '0xa0A8401ECF248a9375a0a71C4dedc263dA18dCd7',
   [base.id]: '0x79ea96012eea67a83431f1701b3dff7e37f9e282',

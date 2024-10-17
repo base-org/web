@@ -8,6 +8,7 @@ import {
   useCheckCoinbaseAttestations,
   useCheckEAAttestations,
   useSummerPassAttestations,
+  useTalentProtocolAttestations,
 } from 'apps/web/src/hooks/useAttestations';
 import { useActiveDiscountValidators } from 'apps/web/src/hooks/useReadActiveDiscountValidators';
 import { Discount } from 'apps/web/src/utils/usernames';
@@ -40,6 +41,8 @@ export function findFirstValidDiscount(
 export function useAggregatedDiscountValidators() {
   const { data: activeDiscountValidators, isLoading: loadingActiveDiscounts } =
     useActiveDiscountValidators();
+  const { data: talentProtocolData, loading: loadingTalentProtocolAttestations } =
+    useTalentProtocolAttestations();
   const { data: CBIDData, loading: loadingCBIDAttestations } = useCheckCBIDAttestations();
   const { data: CB1Data, loading: loadingCB1Attestations } = useCheckCB1Attestations();
   const { data: EAData, loading: loadingEAAttestations } = useCheckEAAttestations();
@@ -51,6 +54,7 @@ export function useAggregatedDiscountValidators() {
   const { data: BNSData, loading: loadingBNS } = useBNSAttestations();
 
   const loadingDiscounts =
+    loadingTalentProtocolAttestations ||
     loadingCoinbaseAttestations ||
     loadingCBIDAttestations ||
     loadingCB1Attestations ||
@@ -114,6 +118,15 @@ export function useAggregatedDiscountValidators() {
       if (BNSData && validator.discountValidator === BNSData.discountValidatorAddress) {
         discountMapping[Discount.BNS_NAME] = { ...BNSData, discountKey: validator.key };
       }
+      if (
+        talentProtocolData &&
+        validator.discountValidator === talentProtocolData.discountValidatorAddress
+      ) {
+        discountMapping[Discount.TALENT_PROTOCOL] = {
+          ...talentProtocolData,
+          discountKey: validator.key,
+        };
+      }
     });
 
     return discountMapping;
@@ -127,6 +140,7 @@ export function useAggregatedDiscountValidators() {
     SummerPassData,
     BaseDotEthData,
     BNSData,
+    talentProtocolData,
   ]);
 
   return {
