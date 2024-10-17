@@ -168,7 +168,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     }
   }, [basenameChain.id, selectedName, selectedNameFormatted]);
 
-  const redirectToProfile = useCallback(() => {
+  const redirectToProfile = useCallback(async () => {
     router.push(profilePath);
   }, [profilePath, router]);
 
@@ -242,8 +242,9 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   useEffect(() => {
     if (registrationStep === RegistrationSteps.Success) {
       refetchBaseEnsName().catch((error) => logError(error, 'Failed to refetch Basename'));
+      router.prefetch(profilePath);
     }
-  }, [logError, refetchBaseEnsName, registrationStep]);
+  }, [logError, profilePath, refetchBaseEnsName, registrationStep, router]);
 
   // On registration success with discount code: mark as consumed
   const hasRun = useRef(false);
