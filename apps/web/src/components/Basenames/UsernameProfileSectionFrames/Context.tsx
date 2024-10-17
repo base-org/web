@@ -24,7 +24,7 @@ import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextReco
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { namehash } from 'viem';
+import { EstimateGasExecutionError, namehash } from 'viem';
 import { useAccount, useChainId, useConfig, useWriteContract } from 'wagmi';
 import { sendTransaction, signTypedData, switchChain } from 'wagmi/actions';
 
