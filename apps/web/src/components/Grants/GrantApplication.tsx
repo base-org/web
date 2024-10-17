@@ -5,7 +5,7 @@ import { useAccount } from 'wagmi';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { FormStates } from 'apps/web/src/components/Grants/grantApplicationTypes';
-import GrantApplicationWelcome from 'apps/web/src/components/Grants/GrantApplicationWelcome';
+import GrantApplicationWelcome from 'apps/web/src/components/Grants/GrantApplicationWelcome/GrantApplicationWelcome';
 import GrantApplicationForm from 'apps/web/src/components/Grants/GrantApplicationForm';
 import GrantApplicationSubmitted from 'apps/web/src/components/Grants/GrantApplicationSubmitted';
 
@@ -25,6 +25,14 @@ export default function GrantApplication() {
   );
 
   useEffect(() => {
+    if (!address || !basename) {
+      setFormState(FormStates.Welcome);
+    } else if (address && basename) {
+      setFormState(FormStates.Started);
+    }
+  }, [address, basename]);
+
+  useEffect(() => {
     if (!textRecords.existingTextRecordsIsLoading) {
       setTextRecordsLoading(false);
     }
@@ -34,13 +42,7 @@ export default function GrantApplication() {
     if (isBasenameLoading) {
       return;
     }
-    return (
-      <GrantApplicationWelcome
-        addressCheck={!!address}
-        basenameCheck={!!basename}
-        formSetter={setFormState}
-      />
-    );
+    return <GrantApplicationWelcome addressCheck={!!address} basenameCheck={!!basename} />;
   }
 
   if (formState === FormStates.Started) {
