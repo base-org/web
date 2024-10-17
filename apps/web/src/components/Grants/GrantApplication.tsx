@@ -18,8 +18,8 @@ export default function GrantApplication() {
   const textRecords = useReadBaseEnsTextRecords({ address, username: basename });
   const memoizedTextRecords = useMemo(
     () => ({
-      twitter: textRecords.existingTextRecords['com.twitter'],
-      farcaster: textRecords.existingTextRecords['xyz.farcaster'],
+      nomineeTwitter: textRecords.existingTextRecords['com.twitter'],
+      nomineeFarcaster: textRecords.existingTextRecords['xyz.farcaster'],
     }),
     [textRecords.existingTextRecords],
   );
