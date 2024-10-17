@@ -36,7 +36,7 @@ async function EcosystemHero() {
               Base ecosystem apps and integrations overview.
             </Title>
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLScKCOjB4wFmb7u-1VpgMZOGLYq4GUBGt3AwQKqUAlTgjnucGQ/viewform"
+              href="https://github.com/base-org/web/?tab=readme-ov-file#updating-the-base-ecosystem-page"
               target="_blank"
               rel="noreferrer noopener"
             >
