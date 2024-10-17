@@ -13,9 +13,9 @@ import { useAccount } from 'wagmi';
 import { useCapabilities } from 'wagmi/experimental';
 
 // To add a new capability, add it to this list
-const capabilitiesList = ['atomicBatch', 'paymasterService', 'auxiliaryFunds'] as const;
+const CAPABILITIES_LIST = ['atomicBatch', 'paymasterService', 'auxiliaryFunds'] as const;
 
-type ListedCapabilities = (typeof capabilitiesList)[number];
+type ListedCapabilities = (typeof CAPABILITIES_LIST)[number];
 
 export type UseCapabilitiesSafeProps = {
   chain?: Chain;
@@ -40,7 +40,7 @@ export default function useCapabilitiesSafe({
     );
   }
 
-  const capabilities = capabilitiesList.reduce((acc, capability) => {
+  const capabilities = CAPABILITIES_LIST.reduce((acc, capability) => {
     acc[capability] = isCapabilitySupported(capability);
     return acc;
   }, {} as Record<ListedCapabilities, boolean>);
