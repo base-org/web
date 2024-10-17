@@ -37,31 +37,33 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const body = req.body as FrameRequest;
   let message;
   let isValid;
+  let messageState;
   let name;
   let years;
   let priceInWei;
   let claimingAddress;
 
   try {
-    const result = await getFrameMessage(body, {
-      neynarApiKey: NEYNAR_API_KEY,
-    });
-    isValid = result.isValid;
-    message = result.message;
-    if (!isValid) {
-      throw new Error('Message is not valid');
+    if (body.trustedData) {
+      const result = await getFrameMessage(body, {
+        neynarApiKey: NEYNAR_API_KEY,
+      });
+      isValid = result.isValid;
+      message = result.message;
+      if (!isValid) {
+        throw new Error('Message is not valid');
+      }
+      if (!message) {
+        throw new Error('No message received');
+      }
     }
-    if (!message) {
-      throw new Error('No message received');
-    }
-
-    claimingAddress = message.address as `0x${string}`;
+    
+    claimingAddress = (message?.address ?? body.untrustedData.address) as `0x${string}`;
     if (!claimingAddress) {
       throw new Error('No address received');
     }
-
-    const messageState = JSON.parse(
-      decodeURIComponent(message.state?.serialized),
+    messageState = JSON.parse(
+      decodeURIComponent(message?.state?.serialized ?? body.untrustedData.state),
     ) as TxFrameStateType;
     if (!messageState) {
       throw new Error('No message state received');
@@ -70,6 +72,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     years = messageState.targetYears;
     priceInWei = messageState.registrationPriceInWei;
   } catch (e) {
+    console.error('Error:', e);
     return res.status(500).json({ error: e });
   }
 
