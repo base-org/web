@@ -3,6 +3,7 @@ import bolt from './assets/bolt.webm';
 import eth from './assets/eth.webm';
 import globe from './assets/globe.webm';
 import VideoCard from 'apps/web/src/components/base-org/root/VideoCardsSection/VideoCard';
+import Link from 'apps/web/src/components/Link/index';
 
 export default function VideoCardsSection() {
   return (
@@ -19,7 +20,15 @@ export default function VideoCardsSection() {
       />
       <VideoCard
         title="Open and trusted"
-        description="Base is secured by Ethereum as a Layer 2, decentralized on the Superchain and incubated by Coinbase."
+        description={
+          <span>
+            Base is built as an Ethereum L2, decentralized with the{' '}
+            <Link href="https://optimism.io/build" className="hover:underline">
+              Optimism Superchain
+            </Link>
+            , and incubated by Coinbase.
+          </span>
+        }
         src={eth}
       />
     </section>
