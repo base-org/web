@@ -35,6 +35,7 @@ import {
 import { BatchCallsStatus } from 'apps/web/src/hooks/useWriteContractsWithLogs';
 import { WriteTransactionWithReceiptStatus } from 'apps/web/src/hooks/useWriteContractWithReceipt';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
+import { BaseName } from '@coinbase/onchainkit/identity';
 
 export enum RegistrationSteps {
   Search = 'search',
@@ -53,6 +54,7 @@ export type RegistrationContextProps = {
   setRegistrationStep: Dispatch<SetStateAction<RegistrationSteps>>;
   selectedName: string;
   setSelectedName: Dispatch<SetStateAction<string>>;
+  selectedNameFormatted: BaseName;
   years: number;
   setYears: Dispatch<SetStateAction<number>>;
   redirectToProfile: () => void;
@@ -72,6 +74,7 @@ export const RegistrationContext = createContext<RegistrationContextProps>({
   searchInputHovered: false,
   registrationStep: RegistrationSteps.Search,
   selectedName: '',
+  selectedNameFormatted: '.base.eth',
   setSearchInputFocused: function () {
     return undefined;
   },
@@ -142,6 +145,11 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   const { data: discounts, loading: loadingDiscounts } = useAggregatedDiscountValidators(code);
   const discount = findFirstValidDiscount(discounts);
 
+  const selectedNameFormatted = useMemo(
+    () => formatBaseEthDomain(selectedName, basenameChain.id),
+    [basenameChain.id, selectedName],
+  );
+
   const allActiveDiscounts = useMemo(
     () =>
       new Set(
@@ -156,9 +164,9 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     if (basenameChain.id === base.id) {
       return `name/${selectedName}`;
     } else {
-      return `name/${formatBaseEthDomain(selectedName, basenameChain.id)}`;
+      return `name/${selectedNameFormatted}`;
     }
-  }, [basenameChain.id, selectedName]);
+  }, [basenameChain.id, selectedName, selectedNameFormatted]);
 
   const redirectToProfile = useCallback(() => {
     router.push(profilePath);
@@ -288,6 +296,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
       setSearchInputFocused,
       setSearchInputHovered,
       selectedName,
+      selectedNameFormatted,
       setSelectedName,
       registrationStep,
       setRegistrationStep,
@@ -308,6 +317,7 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
     searchInputFocused,
     searchInputHovered,
     selectedName,
+    selectedNameFormatted,
     registrationStep,
     redirectToProfile,
     loadingDiscounts,
