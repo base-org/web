@@ -5,6 +5,7 @@ import RegistrarControllerABI from 'apps/web/src/abis/RegistrarControllerABI';
 import {
   USERNAME_CB1_DISCOUNT_VALIDATORS,
   USERNAME_CB_DISCOUNT_VALIDATORS,
+  USERNAME_DISCOUNT_CODE_VALIDATORS,
   USERNAME_EA_DISCOUNT_VALIDATORS,
 } from 'apps/web/src/addresses/usernames';
 import { getLinkedAddresses } from 'apps/web/src/cdp/api';
@@ -66,6 +67,9 @@ const discountTypes: DiscountTypesByChainId = {
     [DiscountType.EARLY_ACCESS]: {
       discountValidatorAddress: USERNAME_EA_DISCOUNT_VALIDATORS[baseSepolia.id],
     },
+    [DiscountType.DISCOUNT_CODE]: {
+      discountValidatorAddress: USERNAME_DISCOUNT_CODE_VALIDATORS[baseSepolia.id],
+    },
   },
 };
 
@@ -83,6 +87,22 @@ export async function hasRegisteredWithDiscount(
   });
 }
 
+async function getMessageSignature(message: `0x${string}`) {
+  // hash the message
+  const msgHash = keccak256(message);
+
+  // sign the hashed message
+  const { r, s, v } = await sign({
+    hash: msgHash,
+    privateKey: `0x${trustedSignerPKey}`,
+  });
+
+  // combine r, s, and v into a single signature
+  const signature = `${r.slice(2)}${s.slice(2)}${(v as bigint).toString(16)}`;
+
+  return signature;
+}
+
 async function signMessageWithTrustedSigner(
   claimerAddress: Address,
   targetAddress: Address,
@@ -97,22 +117,37 @@ async function signMessageWithTrustedSigner(
     ['0x1900', targetAddress, trustedSignerAddress, claimerAddress, BigInt(expiry)],
   );
 
-  // hash the message
-  const msgHash = keccak256(message);
-
-  // sign the hashed message
-  const { r, s, v } = await sign({
-    hash: msgHash,
-    privateKey: `0x${trustedSignerPKey}`,
-  });
-
-  // combine r, s, and v into a single signature
-  const signature = `${r.slice(2)}${s.slice(2)}${(v as bigint).toString(16)}`;
+  const signature = await getMessageSignature(message);
 
   // return the encoded signed message
   return encodeAbiParameters(parseAbiParameters('address, uint64, bytes'), [
     claimerAddress,
     BigInt(expiry),
+    `0x${signature}`,
+  ]);
+}
+
+export async function signDiscountMessageWithTrustedSigner(
+  claimerAddress: Address,
+  couponCodeUuid: Address,
+  targetAddress: Address,
+  expiry: number,
+) {
+  if (!trustedSignerAddress || !isAddress(trustedSignerAddress)) {
+    throw new Error('Must provide a valid trustedSignerAddress');
+  }
+
+  const message = encodePacked(
+    ['bytes2', 'address', 'address', 'address', 'bytes32', 'uint64'],
+    ['0x1900', targetAddress, trustedSignerAddress, claimerAddress, couponCodeUuid, BigInt(expiry)],
+  );
+
+  const signature = await getMessageSignature(message);
+
+  // return the encoded signed message
+  return encodeAbiParameters(parseAbiParameters('uint64, bytes32, bytes'), [
+    BigInt(expiry),
+    couponCodeUuid,
     `0x${signature}`,
   ]);
 }
