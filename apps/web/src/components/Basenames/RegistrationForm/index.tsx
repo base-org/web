@@ -165,7 +165,7 @@ export default function RegistrationForm() {
     [setReverseRecord],
   );
 
-  const { auxiliaryFundsEnabled } = useCapabilitiesSafe({ chain: connectedChain.id });
+  const { auxiliaryFundsEnabled } = useCapabilitiesSafe({ chain: basenameChain });
   const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
   const insufficientBalanceToRegister =
     balance?.value !== undefined && price !== undefined && balance?.value < price;
