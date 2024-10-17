@@ -55,7 +55,7 @@ export default function useWriteContractsWithLogs({
   // Errors & Analytics
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();
-  const { atomicBatchEnabled } = useCapabilitiesSafe({ chain });
+  const { atomicBatch: atomicBatchEnabled } = useCapabilitiesSafe({ chain });
   const { chain: connectedChain } = useAccount();
 
   const [batchCallsStatus, setBatchCallsStatus] = useState<BatchCallsStatus>(BatchCallsStatus.Idle);
