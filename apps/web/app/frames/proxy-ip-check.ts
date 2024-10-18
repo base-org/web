@@ -12,7 +12,8 @@ export function withIPCheck(handler: (req: NextRequest) => Promise<Response>) {
 
     if (url) {
       if (isDevelopment) {
-        return await handler(req);
+        const res = await handler(req);
+        return res;
       }
       try {
         const parsedUrl = new URL(url);
