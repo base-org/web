@@ -1,15 +1,19 @@
-/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/prop-types */
 import type { FrameUIComponents, FrameUITheme } from '@frames.js/render/ui';
 import classNames from 'classnames';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import baseLoading from './base-loading.gif';
+import ImageCloudinary from 'apps/web/src/components/ImageCloudinary';
+import { ExclamationCircleIcon } from '@heroicons/react/16/solid';
 
 type StylingProps = {
   className?: string;
   style?: React.CSSProperties;
 };
+
+const baseRootClasses =
+  'relative flex flex-col rounded-3xl items-center justify-center overflow-hidden bg-transparent relative border border-palette-line/20 min-w-[245px] min-h-[245px]';
 
 export const theme: FrameUITheme<StylingProps> = {
   Error: {
@@ -17,8 +21,7 @@ export const theme: FrameUITheme<StylingProps> = {
       'flex flex-col rounded-3xl overflow-hidden bg-transparent relative items-center justify-center opacity-50',
   },
   Root: {
-    className:
-      'relative flex flex-col rounded-3xl items-center justify-center overflow-hidden bg-transparent relative border border-palette-line/20 min-w-[245px] min-h-[245px]',
+    className: baseRootClasses,
   },
   ButtonsContainer: {
     className:
@@ -39,6 +42,9 @@ export const theme: FrameUITheme<StylingProps> = {
     className: 'rounded-xl border border-palette-line/20 px-3 py-2 mt-3 mx-3 w-full',
   },
 };
+
+// Image is never displayed with a higher width
+const maxFrameImageWidth = 775;
 
 type TransitionWrapperProps = {
   aspectRatio: '1:1' | '1.91:1';
@@ -75,9 +81,18 @@ function TransitionWrapper({
 
   const ar = aspectRatio.replace(':', '/');
 
+  const style = useMemo(
+    () => ({
+      '--frame-image-aspect-ratio': ar,
+      ...(isCssProperties(stylingProps.style) && stylingProps.style),
+    }),
+    [ar, stylingProps.style],
+  );
+
   return (
     <div className="relative">
       {/* Loading Screen */}
+
       <div
         className={classNames(
           'absolute inset-0 flex items-center justify-center transition-opacity duration-500',
@@ -88,27 +103,36 @@ function TransitionWrapper({
       </div>
 
       {/* Image */}
-      <img
-        {...stylingProps}
-        src={isLoading ? undefined : src}
-        alt={alt}
-        onLoad={onImageLoadEnd}
-        onError={onImageLoadEnd}
-        data-aspect-ratio={ar}
-        style={{
-          '--frame-image-aspect-ratio': ar,
-          ...(isCssProperties(stylingProps.style) && stylingProps.style),
-        }}
-        className={classNames('transition-opacity duration-500', {
-          'opacity-0': isLoading || isTransitioning,
-          'opacity-100': !isLoading && !isTransitioning,
-        })}
-      />
+      {src && (
+        <ImageCloudinary
+          {...stylingProps}
+          src={src}
+          alt={alt}
+          width={maxFrameImageWidth}
+          onLoad={onImageLoadEnd}
+          onError={onImageLoadEnd}
+          data-aspect-ratio={ar}
+          style={style}
+          className={classNames('transition-opacity duration-500', {
+            'opacity-0': isLoading || isTransitioning,
+            'opacity-100': !isLoading && !isTransitioning,
+          })}
+        />
+      )}
     </div>
   );
 }
 
 export const components: FrameUIComponents<StylingProps> = {
+  Error: () => {
+    return (
+      <div className={baseRootClasses}>
+        <p className="flex flex-row items-center justify-start gap-1 text-palette-foregroundMuted">
+          <ExclamationCircleIcon className="h-4 w-4 rounded-full" /> Failed to load frame
+        </p>
+      </div>
+    );
+  },
   LoadingScreen: (props, stylingProps) => {
     return (
       <div className="absolute inset-0 flex items-center justify-center">

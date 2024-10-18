@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Link from 'next/link';
+import Button from 'apps/web/src/components/base-org/Button';
+import { ButtonSizes, ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 
 type Department = {
   id: string;
@@ -33,17 +34,25 @@ export function Job({ job }: JobProps) {
   );
 
   return (
-    <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row">
-      <div className="flex flex-col">
-        <Link href={href} rel="noreferrer" target="_self">
-          <p className="mt-2 max-w-[750px] text-xl">{title}</p>
-        </Link>
-      </div>
-      <Link href={href} rel="noreferrer" target="_self" className="w-full self-center sm:w-auto">
-        <Button variant={ButtonVariants.Primary} className="mt-4 w-full border sm:mt-0 sm:w-auto">
+    <Link
+      href={href}
+      rel="noreferrer"
+      target="_blank"
+      className="inline-block w-full rounded-2xl bg-white/0 p-4 transition-all hover:bg-white/20"
+    >
+      <div className="flex w-full flex-col items-center justify-between text-white sm:flex-row">
+        <div className="flex w-full flex-col">
+          <p className="w-full text-xl">{title}</p>
+        </div>
+
+        <Button
+          variant={ButtonVariants.Secondary}
+          size={ButtonSizes.Large}
+          className="mt-4 w-full border sm:mt-0 sm:w-auto"
+        >
           <p className="text-sm">Apply now</p>
         </Button>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }

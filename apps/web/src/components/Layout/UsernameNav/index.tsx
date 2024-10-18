@@ -12,7 +12,7 @@ import classNames from 'classnames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { base, baseSepolia } from 'viem/chains';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import { useCallback } from 'react';
+import { Suspense, useCallback } from 'react';
 import { isDevelopment } from 'apps/web/src/constants';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 
@@ -111,10 +111,11 @@ export default function UsernameNav() {
           <ImageAdaptive src={usernameBaseLogo as StaticImageData} alt="Base" />
         </Link>
         <span className={walletStateClasses}>
-          <ConnectWalletButton
-            color="black"
-            connectWalletButtonVariant={ConnectWalletButtonVariants.Default}
-          />
+          <Suspense>
+            <ConnectWalletButton
+              connectWalletButtonVariant={ConnectWalletButtonVariants.Basename}
+            />
+          </Suspense>
         </span>
       </nav>
     </div>

@@ -8,8 +8,7 @@ import {
 } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import FarcasterAccountModal from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FarcasterAccountModal';
 import FrameListItem from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FrameListItem';
-import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
-import { Button, ButtonSizes } from 'apps/web/src/components/Button/Button';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { StaticImageData } from 'next/image';
@@ -20,16 +19,7 @@ import frameIcon from './frame-icon.svg';
 
 function SectionContent() {
   const { profileUsername, currentWalletIsProfileOwner } = useUsernameProfile();
-  const {
-    frameInteractionError,
-    setFrameInteractionError,
-    frameUrls,
-    existingTextRecordsIsLoading,
-  } = useFrameContext();
-  const handleErrorClick = useCallback(
-    () => setFrameInteractionError(''),
-    [setFrameInteractionError],
-  );
+  const { frameUrls, existingTextRecordsIsLoading } = useFrameContext();
   const { logEventWithContext } = useAnalytics();
   const handleAddFrameLinkClick = useCallback(() => {
     logEventWithContext('basename_profile_frame_try_now_clicked', ActionType.click);
@@ -69,27 +59,17 @@ function SectionContent() {
   }
   return (
     <section>
-      <div className="flex flex-row justify-between">
-        <UsernameProfileSectionTitle title="Frames" />
+      <div className="flex flex-row-reverse justify-between">
         {currentWalletIsProfileOwner && (
           <Link
             onClick={handleAddFrameLinkClick}
-            className="text-sm text-palette-foregroundMuted"
+            className="rounded-lg bg-palette-backgroundAlternate p-2 text-sm text-palette-foreground"
             href={`/name/${profileUsername}/configure-frames`}
           >
-            + Add Frame
+            <Icon name="plus" color="currentColor" width="12px" height="12px" />
           </Link>
         )}
       </div>
-      {frameInteractionError && (
-        <Button
-          size={ButtonSizes.Small}
-          onClick={handleErrorClick}
-          className="text-sm text-state-n-hovered"
-        >
-          {frameInteractionError}
-        </Button>
-      )}
       <div className="columns-1 p-4 xl:columns-2">
         {frameUrls.map((url) => (
           <FrameListItem url={url} key={url} />

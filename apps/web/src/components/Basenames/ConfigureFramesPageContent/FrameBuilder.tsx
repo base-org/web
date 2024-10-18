@@ -1,6 +1,5 @@
 /* eslint-disable react-perf/jsx-no-new-function-as-prop */
 'use client';
-import { ArrowLeftIcon } from '@heroicons/react/16/solid';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import * as Accordion from '@radix-ui/react-accordion';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
@@ -9,6 +8,7 @@ import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfi
 import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Frame';
 import { SuggestionCard } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/SuggestionCard';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Input from 'apps/web/src/components/Input';
 import { isValidUrl } from 'apps/web/src/utils/urls';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
@@ -25,7 +25,6 @@ import nftProduct from './ui/nftProduct.svg';
 import previewBackground from './ui/preview-background.svg';
 import emptyPreviewFrame from './ui/preview-frame.svg';
 import starActive from './ui/starActive.svg';
-import swap from './ui/swap.svg';
 
 export default function FrameBuilder() {
   const params = useParams();
@@ -46,10 +45,6 @@ export default function FrameBuilder() {
 
   const { profileAddress } = useUsernameProfile();
 
-  const [swapTokenSymbol, setSwapTokenSymbol] = useState('');
-  const handleSwapTokenSymbolChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setSwapTokenSymbol(e.target.value);
-  }, []);
   const emptyFrameUrl = !debouncedNewFrameUrl;
   const isValidFrameUrl = isValidUrl(debouncedNewFrameUrl);
   const { logEventWithContext } = useAnalytics();
@@ -133,18 +128,6 @@ export default function FrameBuilder() {
       setNewFrameUrl('');
     }
   }, [basename, handleNextStep, logEventWithContext]);
-
-  const handleSwapPreviewClick = useCallback(() => {
-    if (swapTokenSymbol) {
-      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
-        context: 'social-dex',
-      });
-      setNewFrameUrl(`https://social-dex-frontend.vercel.app/api/buy/ticker/${swapTokenSymbol}`);
-      handleNextStep();
-    } else {
-      setNewFrameUrl('');
-    }
-  }, [swapTokenSymbol, handleNextStep, logEventWithContext]);
 
   const handleBuildTopClick = useCallback(() => {
     if (profileAddress) {
@@ -316,7 +299,7 @@ export default function FrameBuilder() {
         }
         imgData={mintMe as StaticImageData}
         title="Mint me"
-        description="Mint your NFT on Highlight"
+        description="Mint your Base NFT on Highlight"
       >
         <p className="text-sm">To pin a frame:</p>
         <ol className="list-inside list-decimal indent-1 text-sm text-palette-foreground">
@@ -331,7 +314,7 @@ export default function FrameBuilder() {
               highlight.xyz
             </a>
           </li>
-          <li>Paste a link to the NFT you want others to mint</li>
+          <li>Paste a link to the Base NFT you want others to mint</li>
         </ol>
         <Input
           placeholder="https://"
@@ -350,37 +333,6 @@ export default function FrameBuilder() {
         >
           Show Preview
         </Button>
-      </SuggestionCard>
-      <SuggestionCard
-        handleTriggerClick={() =>
-          logEventWithContext('basename_profile_frame_swap_opened', ActionType.click)
-        }
-        imgData={swap as StaticImageData}
-        title="Swap with me"
-        description="Buy my tokens"
-      >
-        <p className="text-sm text-palette-foreground">
-          Enter the token symbol of the token you want others to buy from your profile
-        </p>
-        <div className="mt-3 flex flex-row gap-2 lg:gap-4">
-          <Input
-            placeholder="token symbol (example: USDC)"
-            value={swapTokenSymbol}
-            onChange={handleSwapTokenSymbolChange}
-            type="text"
-            className="flex-grow rounded-xl border border-palette-line/20 px-3 py-2 md:max-w-[180px] lg:max-w-full"
-          />
-          <Button
-            rounded
-            disabled={!swapTokenSymbol}
-            className="flex grow items-center justify-center md:max-w-[120px]"
-            variant={ButtonVariants.Black}
-            size={ButtonSizes.Tiny}
-            onClick={handleSwapPreviewClick}
-          >
-            Show preview
-          </Button>
-        </div>
       </SuggestionCard>
       <SuggestionCard
         handleTriggerClick={() =>
@@ -459,7 +411,7 @@ export default function FrameBuilder() {
           href={`/name/${basename}`}
           className="mb-8 flex max-w-36 items-center justify-start gap-2 text-base font-medium hover:underline"
         >
-          <ArrowLeftIcon width="12px" /> Back to profile
+          <Icon name="backArrow" color="currentColor" height="1rem" width="1rem" /> Back to profile
         </Link>
         <h1 className="font-display text-3xl">Choose a frame to pin</h1>
         <div className="mt-4 flex flex-row justify-between gap-12">
@@ -483,7 +435,7 @@ export default function FrameBuilder() {
                   alt="preview frame"
                 />
               ) : (
-                <Frame url={debouncedNewFrameUrl} />
+                <Frame className="w-[414px]" url={debouncedNewFrameUrl} />
               )}
             </div>
             <Button
@@ -507,7 +459,7 @@ export default function FrameBuilder() {
           href={`/name/${basename}`}
           className="mb-3 flex max-w-36 items-center justify-start gap-2 text-base hover:underline"
         >
-          <ArrowLeftIcon width="12px" /> Back to profile
+          <Icon name="backArrow" color="currentColor" height="1rem" width="1rem" /> Back to profile
         </Link>
         <h1 className="mb-4 font-display text-2xl">Choose a frame to pin</h1>
         <Accordion.Root
@@ -530,7 +482,7 @@ export default function FrameBuilder() {
             className="mb-4"
             onClick={handlePrevStep}
           >
-            <ArrowLeftIcon width="12px" /> Back
+            <Icon name="backArrow" color="currentColor" height="1rem" width="1rem" /> Back
           </Button>
           <h1 className="mb-4 font-display text-2xl">Preview your frame</h1>
           <div
