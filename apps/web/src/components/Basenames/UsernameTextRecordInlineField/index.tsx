@@ -36,7 +36,11 @@ export function validateTextRecordValue(textRecordKey: UsernameTextRecordKeys, v
 }
 
 export function textRecordHintForDisplay(textRecordKey: UsernameTextRecordKeys) {
-  if (textRecordKey === UsernameTextRecordKeys.Url) {
+  if (
+    [UsernameTextRecordKeys.Url, UsernameTextRecordKeys.Url2, UsernameTextRecordKeys.Url3].includes(
+      textRecordKey,
+    )
+  ) {
     return 'Must be a valid https url';
   }
   if (
@@ -78,7 +82,13 @@ export default function UsernameTextRecordInlineField({
     [onChange, textRecordKey],
   );
 
-  const inputType = textRecordKey === UsernameTextRecordKeys.Url ? 'url' : 'text';
+  const inputType = [
+    UsernameTextRecordKeys.Url,
+    UsernameTextRecordKeys.Url2,
+    UsernameTextRecordKeys.Url3,
+  ].includes(textRecordKey)
+    ? 'url'
+    : 'text';
   return (
     <Fieldset inline>
       <Label htmlFor={usernameSocialHandleFieldId} className="w-full max-w-[6rem] text-sm">
