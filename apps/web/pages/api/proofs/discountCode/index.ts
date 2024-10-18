@@ -58,6 +58,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const signature = await signDiscountMessageWithTrustedSigner(
       address as Address,
       couponCodeUuid,
+      // TODO: Set variable chain
       USERNAME_DISCOUNT_CODE_VALIDATORS[baseSepolia.id],
       expirationTimeUnix,
     );

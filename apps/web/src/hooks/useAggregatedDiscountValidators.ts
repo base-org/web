@@ -38,7 +38,7 @@ export function findFirstValidDiscount(
   return sortedDiscounts.find((data) => data?.discountKey) ?? undefined;
 }
 
-export function useAggregatedDiscountValidators(code: string | null | undefined) {
+export function useAggregatedDiscountValidators(code?: string) {
   const { data: activeDiscountValidators, isLoading: loadingActiveDiscounts } =
     useActiveDiscountValidators();
   const { data: CBIDData, loading: loadingCBIDAttestations } = useCheckCBIDAttestations();

@@ -490,7 +490,7 @@ export function useBNSAttestations() {
 }
 
 // returns info about Discount Codes attestations
-export function useDiscountCodeAttestations(code: string | null | undefined) {
+export function useDiscountCodeAttestations(code?: string) {
   const { logError } = useErrors();
   const { address } = useAccount();
   const [loading, setLoading] = useState(false);

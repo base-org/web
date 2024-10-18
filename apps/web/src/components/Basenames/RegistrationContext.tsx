@@ -12,7 +12,7 @@ import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
 import { Discount, formatBaseEthDomain, isValidDiscount } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import {
   Dispatch,
   ReactNode,
@@ -104,12 +104,13 @@ export const RegistrationContext = createContext<RegistrationContextProps>({
 
 type RegistrationProviderProps = {
   children?: ReactNode;
+  code?: string;
 };
 
 // Maybe not the best place for this
 export const registrationTransitionDuration = 'duration-700';
 
-export default function RegistrationProvider({ children }: RegistrationProviderProps) {
+export default function RegistrationProvider({ children, code }: RegistrationProviderProps) {
   // Wallet
   const { address } = useAccount();
 
@@ -136,10 +137,6 @@ export default function RegistrationProvider({ children }: RegistrationProviderP
   // Analytics
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();
-
-  // Discount code from URL
-  const searchParams = useSearchParams();
-  const code = searchParams?.get('code');
 
   // Username discount states
   const { data: discounts, loading: loadingDiscounts } = useAggregatedDiscountValidators(code);

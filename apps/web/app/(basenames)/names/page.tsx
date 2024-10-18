@@ -5,7 +5,6 @@ import RegistrationFAQ from 'apps/web/src/components/Basenames/RegistrationFaq';
 import RegistrationFlow from 'apps/web/src/components/Basenames/RegistrationFlow';
 import RegistrationValueProp from 'apps/web/src/components/Basenames/RegistrationValueProp';
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
 import basenameCover from './basename_cover.png';
 import { initialFrame } from 'apps/web/pages/api/basenames/frame/frameResponses';
 
@@ -28,19 +27,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Page() {
+type PageProps = { searchParams?: { code?: string } };
+export default async function Page({ searchParams }: PageProps) {
+  const code = searchParams?.code;
+
   return (
     <ErrorsProvider context="registration">
-      <Suspense>
-        <RegistrationProviders>
-          <main>
-            <RegistrationFlow />
-            <RegistrationValueProp />
-            <PoweredByEns />
-            <RegistrationFAQ />
-          </main>
-        </RegistrationProviders>
-      </Suspense>
+      <RegistrationProviders code={code}>
+        <main>
+          <RegistrationFlow />
+          <RegistrationValueProp />
+          <PoweredByEns />
+          <RegistrationFAQ />
+        </main>
+      </RegistrationProviders>
     </ErrorsProvider>
   );
 }
