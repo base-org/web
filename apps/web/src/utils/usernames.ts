@@ -217,6 +217,7 @@ export const textRecordsEngineersKeywords = [
   'Typescript',
   'Go',
   'Game development',
+  'Data',
 ];
 export const textRecordsCreativesKeywords = [
   'UI/UX',
@@ -229,6 +230,9 @@ export const textRecordsCreativesKeywords = [
   'Graphic design',
   'Animation',
   'Visual design',
+  'Design',
+  'Digital art',
+  'Photography',
 ];
 export const textRecordsCommunnicationKeywords = [
   'Community',
