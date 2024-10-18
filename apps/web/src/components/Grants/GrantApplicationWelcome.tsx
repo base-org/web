@@ -27,13 +27,13 @@ export default function GrantApplicationWelcome({ addressCheck, basenameCheck }:
 function WelcomeMessage({ addressCheck, basenameCheck }: WelcomeProps) {
   if (!addressCheck) {
     return (
-      <>
+      <Suspense>
         <div className="text-center text-xl">Please connect a wallet to continue.</div>
         <ConnectWalletButton
           cta="Login with Basename"
           connectWalletButtonVariant={ConnectWalletButtonVariants.BaseOrg}
         />
-      </>
+      </Suspense>
     );
   } else if (!basenameCheck) {
     return (
