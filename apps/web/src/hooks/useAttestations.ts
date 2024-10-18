@@ -1,5 +1,6 @@
 import { useErrors } from 'apps/web/contexts/Errors';
 import { CoinbaseProofResponse } from 'apps/web/pages/api/proofs/coinbase';
+import { DiscountCodeResponse } from 'apps/web/pages/api/proofs/discountCode';
 import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
 import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
 import EarlyAccessValidatorABI from 'apps/web/src/abis/EarlyAccessValidator';
@@ -486,4 +487,72 @@ export function useBNSAttestations() {
     };
   }
   return { data: null, loading: isLoading, error };
+}
+
+// returns info about Discount Codes attestations
+export function useDiscountCodeAttestations(code?: string) {
+  const { logError } = useErrors();
+  const { address } = useAccount();
+  const [loading, setLoading] = useState(false);
+  const [discountCodeResponse, setDiscountCodeResponse] = useState<DiscountCodeResponse | null>(
+    null,
+  );
+
+  const { basenameChain } = useBasenameChain();
+
+  useEffect(() => {
+    async function checkDiscountCode(a: string, c: string) {
+      try {
+        setLoading(true);
+        const params = new URLSearchParams();
+        params.append('address', a);
+        params.append('chain', basenameChain.id.toString());
+        params.append('code', c.toString());
+        const response = await fetch(`/api/proofs/discountCode?${params}`);
+        const result = (await response.json()) as DiscountCodeResponse;
+        if (response.ok) {
+          setDiscountCodeResponse(result);
+        }
+      } catch (error) {
+        logError(error, 'Error checking Discount code');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (address && !IS_EARLY_ACCESS && !!code) {
+      checkDiscountCode(address, code).catch((error) => {
+        logError(error, 'Error checking Discount code');
+      });
+    }
+  }, [address, basenameChain.id, code, logError]);
+
+  const signature = discountCodeResponse?.signedMessage;
+  const readContractArgs = useMemo(() => {
+    if (!address || !signature || !code) {
+      return {};
+    }
+
+    return {
+      address: discountCodeResponse?.discountValidatorAddress,
+      abi: AttestationValidatorABI,
+      functionName: 'isValidDiscountRegistration',
+      args: [address, signature],
+    };
+  }, [address, code, discountCodeResponse?.discountValidatorAddress, signature]);
+
+  const { data: isValid, isLoading, error } = useReadContract(readContractArgs);
+
+  if (isValid && discountCodeResponse && address && signature) {
+    return {
+      data: {
+        discountValidatorAddress: discountCodeResponse.discountValidatorAddress,
+        discount: Discount.DISCOUNT_CODE,
+        validationData: signature,
+      },
+      loading: false,
+      error: null,
+    };
+  }
+  return { data: null, loading: loading || isLoading, error };
 }

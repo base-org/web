@@ -21,6 +21,7 @@ export enum DiscountType {
   CB = 'CB',
   CB1 = 'CB1',
   CB_ID = 'CB_ID',
+  DISCOUNT_CODE = 'DISCOUNT_CODE',
 }
 
 export type DiscountValue = {
