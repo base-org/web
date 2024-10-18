@@ -1,4 +1,27 @@
 {
+    "01_basename_social_dropdown": {
+        "title": "Create a Basename Profile Component",
+        "slug": "/create-basename-profile-component",
+        "description": "Learn how to create a component that displays social media and profile information for a given basename.",
+        "author": "hughescoin",
+        "keywords": [
+            "basename",
+            "profile",
+            "component",
+            "onchain",
+            "dapp"
+        ],
+        "tags": [
+            "frontend",
+            "identity"
+        ],
+        "difficulty": "medium",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Oct 18, 2024",
+        "duration": "9 min read",
+        "checksum": "df2b47bc5f070da32258d9533d04c1840d5e1ebeb58de4196e57b272b9b1a6b7"
+    },
     "0_deploy-with-foundry": {
         "title": "Deploying a smart contract using Foundry",
         "slug": "/deploy-with-foundry",
@@ -24,9 +47,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 24, 2024",
+        "last_updated": "Oct 18, 2024",
         "duration": "17 min read",
-        "checksum": "01acc27579fdc15f4087491bb6a9bed9c4142d893c7eafd2aa2ae023fbefb8a3"
+        "checksum": "ab181fab0003c30eb98f8b5f7621f8d5cc7bd3bbf4c8357d339b95b7a44d68f1"
     },
     "0_deploy-with-hardhat": {
         "title": "Deploying a smart contract using Hardhat",
@@ -800,6 +823,59 @@
         "duration": "18 min read",
         "checksum": "e20b430c2b1696b473625584d654f4a60e313c102127730553ab75f0bb54c568"
     },
+    "2_ock-fund-tutorial": {
+        "title": "Build a Smart Wallet Funding app with OnchainKit",
+        "slug": "/build-smart-wallet-funding-app",
+        "description": "Learn how to create a app that detects if a smart wallet has ETH and prompts users to add funds if needed.",
+        "author": "hughescoin",
+        "keywords": [
+            "Account Abstraction",
+            "AA",
+            "Smart account",
+            "Smart Wallet",
+            "Funding",
+            "Onramps",
+            "Onchainkit",
+            "Onboarding Smart contract wallet",
+            "Smart account"
+        ],
+        "tags": [
+            "frontend",
+            "wallet",
+            "ethereum"
+        ],
+        "difficulty": "medium",
+        "displayed_sidebar": null,
+        "last_updated": "Oct 18, 2024",
+        "duration": "8 min read",
+        "checksum": "a16b99dfe6c2f434e02d5e7abd204eb02f9becd503596542021f29ac6a410b8e"
+    },
+    "2_ock-pay-tutorial": {
+        "title": "Build a eCommerce App using Coinbase Commerce and OnchainKit",
+        "slug": "/coinbase-commerce-payment-integration",
+        "description": "Learn how to integrate Coinbase Commerce payments into your application using OnchainKit.",
+        "author": "hughescoin",
+        "keywords": [
+            "Account Abstraction",
+            "AA",
+            "Smart account",
+            "Smart Wallet",
+            "Funding",
+            "Onramps",
+            "Onchainkit",
+            "Onboarding Smart contract wallet",
+            "Smart account"
+        ],
+        "tags": [
+            "account abstraction"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Oct 18, 2024",
+        "duration": "11 min read",
+        "checksum": "d0d87e9dfa64558f8feaadb585241e4a6826b26195fc9bc494e9747f577898a8"
+    },
     "4_account-abstraction-with-biconomy": {
         "title": "Account Abstraction on Base using Biconomy",
         "slug": "/account-abstraction-with-biconomy",
@@ -1132,6 +1208,28 @@
         "duration": "9 min read",
         "checksum": "d9302891627f1761507422bf35c361a30b343e77cb4d3981888ab70eb4fbd0ac"
     },
+    "5_farcaster-to-openframe": {
+        "title": "Convert Farcaster Frame to Open Frame using OnchainKit",
+        "slug": "/convert-farcaster-frame-to-open-frame",
+        "description": "Learn how to convert your Farcaster Frame to an Open Frame using Onchain Kit, enabling broader compatibility and usage.",
+        "author": "hughescoin",
+        "keywords": [
+            "farcaster",
+            "openframe",
+            "onchainKit",
+            "farcaster",
+            "open frames"
+        ],
+        "tags": [
+            "frontend"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Oct 18, 2024",
+        "duration": "10 min read",
+        "checksum": "a81681ca9176774c2b8d20b6a2a873bdbaab99944a4d90526797f699db3e7b86"
+    },
     "5_oracles-chainlink-price-feeds": {
         "title": "Accessing real-world data using Chainlink Data Feeds",
         "slug": "/oracles-chainlink-price-feeds",
@@ -1258,5 +1356,30 @@
         "last_updated": "Sep 12, 2024",
         "duration": "8 min read",
         "checksum": "59d04f2a46bc95b68a0f50c83f78a0b0d2f2549ecf0e8c7e592aaa4eae6bf6d1"
+    },
+    "6_orbis-blockchain-listener": {
+        "title": "Import OnChain Base Data into Ceramic with OrbisDB",
+        "slug": "/orbis-blockchain-listener",
+        "description": "Import onchain data from any Base smart contract and automatically index in your crypto database on the Ceramic Network.",
+        "author": "mzkrasner",
+        "keywords": [
+            "Ceramic",
+            "Orbis",
+            "OrbisDB",
+            "SQL",
+            "data availability"
+        ],
+        "tags": [
+            "data",
+            "data availability",
+            "crypto",
+            "database"
+        ],
+        "difficulty": "easy",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Oct 18, 2024",
+        "duration": "14 min read",
+        "checksum": "403577ae002c3957cc839d983badf5ccd0d564ff4a3f971d3d2fe3b482227771"
     }
 }
