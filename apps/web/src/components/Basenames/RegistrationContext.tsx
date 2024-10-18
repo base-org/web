@@ -67,6 +67,7 @@ export type RegistrationContextProps = {
   registerNameIsPending: boolean;
   registerNameError: unknown;
   registerName: () => Promise<void>;
+  code: string | undefined;
 };
 
 export const RegistrationContext = createContext<RegistrationContextProps>({
@@ -310,6 +311,7 @@ export default function RegistrationProvider({ children, code }: RegistrationPro
       registerNameIsPending,
       registerNameError,
       registerName,
+      code,
     };
   }, [
     searchInputFocused,
@@ -328,6 +330,7 @@ export default function RegistrationProvider({ children, code }: RegistrationPro
     registerNameIsPending,
     registerNameError,
     registerName,
+    code,
   ]);
 
   return <RegistrationContext.Provider value={values}>{children}</RegistrationContext.Provider>;

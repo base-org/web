@@ -80,6 +80,7 @@ export default function RegistrationForm() {
     registerName,
     registerNameError,
     registerNameIsPending,
+    code,
   } = useRegistration();
 
   const [premiumExplainerModalOpen, setPremiumExplainerModalOpen] = useState(false);
@@ -158,7 +159,7 @@ export default function RegistrationForm() {
 
   const isPremiumActive = premiumPrice && premiumPrice !== 0n && seconds !== 0n;
   const mainRegistrationElementClasses = classNames(
-    'z-10 flex flex-col items-start justify-between gap-6 bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center',
+    'z-10 flex flex-col items-start justify-between gap-6 bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center relative z-20',
     {
       'rounded-2xl': !isPremiumActive,
       'rounded-b-2xl': isPremiumActive,
@@ -329,6 +330,12 @@ export default function RegistrationForm() {
               </ConnectButton.Custom>
             </div>
           </div>
+          {code && (
+            <div className="relative z-10 -mt-8 rounded-xl bg-gradient-to-r from-indigo-40 to-orange-30 px-4 py-4 pt-12 text-center text-lg text-white">
+              Claim your <strong>free creator basename</strong> &mdash; See you this{' '}
+              <strong>friday for dinner</strong>
+            </div>
+          )}
 
           {registerNameError && (
             <TransactionError className="mt-4 text-center" error={registerNameError} />
