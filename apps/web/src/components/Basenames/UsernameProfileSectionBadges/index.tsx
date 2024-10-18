@@ -10,6 +10,7 @@ import { useCoinbaseVerification } from './hooks/useCoinbaseVerifications';
 import { useTalentProtocol } from './hooks/useTalentProtocol';
 import useBuildathonParticipant from './hooks/useBuildathon';
 import { useMemo } from 'react';
+import useBaseGrant from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/hooks/useBaseGrant';
 
 function BadgesLoop({
   badges,
@@ -70,6 +71,7 @@ function BuilderSection() {
   const { badges, empty } = useBaseGuild(profileAddress);
   const talentScore = useTalentProtocol(profileAddress);
   const { isParticipant, isWinner } = useBuildathonParticipant(profileAddress);
+  const isBaseGrantee = useBaseGrant(profileAddress);
 
   const combinedBadges = useMemo(
     () => ({
@@ -77,8 +79,9 @@ function BuilderSection() {
       TALENT_SCORE: talentScore,
       BUILDATHON_PARTICIPANT: isParticipant,
       BUILDATHON_WINNER: isWinner,
+      BASE_GRANTEE: isBaseGrantee,
     }),
-    [badges, talentScore, isParticipant, isWinner],
+    [badges, talentScore, isParticipant, isWinner, isBaseGrantee],
   );
   const combinedEmpty = empty && !talentScore;
 

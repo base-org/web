@@ -14,7 +14,7 @@ By the end of this lesson, you should be able to:
 
 - Verify a deployed smart contract on Etherscan
 - Connect a wallet to a contract in Etherscan
-- Use etherscan to interact with your own deployed contact
+- Use etherscan to interact with your own deployed contract
 
 ---
 

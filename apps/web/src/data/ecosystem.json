@@ -63,15 +63,6 @@
     "imageUrl": "/images/partners/openx.png"
   },
   {
-    "name": "Earn Finance",
-    "tags": [
-      "defi"
-    ],
-    "description": "Earn Finance is the first token within the #Hold2Earn sector of crypto that is exclusively on the Base Network. Holding $EarnFi gives you automatic & passive Ethereum rewards sent directly to your wallet!",
-    "url": "https://earnfinance.org/",
-    "imageUrl": "/images/partners/earnfinance.png"
-  },
-  {
     "name": "MoonPay",
     "tags": [
       "onramp"
@@ -772,15 +763,6 @@
       "wallet"
     ],
     "imageUrl": "/images/partners/desig.webp"
-  },
-  {
-    "name": "friend.tech",
-    "url": "https://www.friend.tech/",
-    "description": "Your network is your net worth.",
-    "tags": [
-      "social"
-    ],
-    "imageUrl": "/images/partners/friendtech.webp"
   },
   {
     "name": "Cradles",
@@ -4079,5 +4061,158 @@
     "description": "Empowering DeFi traders with fast execution, cheap transactions, advanced trading features and self-custody. ",
     "url": "https://app.vela.exchange/",
     "imageUrl": "/images/partners/vela.png"
+  },
+  {
+    "name": "Folks Finance",
+    "tags": [
+      "defi"
+    ],
+    "description": "Folks Finance is a pioneering DeFi platform offering cross-chain lending, borrowing, staking, and trading, with a focus on security, efficiency, and a user experience competitive to centralized exchanges.",
+    "url": "https://folks.finance",
+    "imageUrl": "/images/partners/folks.png"
+  },
+  {
+    "name": "DeGenerous DAO",
+    "tags": [
+      "social"
+    ],
+    "description": "We're converging AI and Gaming to build the infrastructure for interactive storytelling. Our SocialFi app will allow anyone to create, publish, and consume quality stories easily. ",
+    "url": "https://www.degenerousdao.com/",
+    "imageUrl": "/images/partners/degenerous.png"
+  },
+  {
+    "name": "AuditOne & Insura",
+    "tags": [
+      "security"
+    ],
+    "description": "AuditOne is an all-in-one audit platform, that offers security services, tools & risk coverage to ensure the safety and reliability of smart contracts and AI-systems. We redefine blockchain auditing by perfectly balancing quality, speed, affordability, and reliability.\nOur unique approach is tailored to the dynamic nature of the blockchain industry, ensuring we deliver excellence without compromise.\n",
+    "url": "https://www.auditone.io/, \n\n\n",
+    "imageUrl": "/images/partners/audit.png"
+  },
+  {
+    "name": "Stack",
+    "tags": [
+      "infra"
+    ],
+    "description": "Stack offers scalable infrastructure for loyalty and rewards programs. Our mission is to revolutionizing loyalty by reducing time spent away from core business.",
+    "url": "stack.so",
+    "imageUrl": "/images/partners/stack.png"
+  },
+  {
+    "name": "OtterSec",
+    "tags": [
+      "security"
+    ],
+    "description": "OtterSec is a blockchain security firm focused on identifying and remedying critical vulnerabilities.",
+    "url": "https://osec.io/",
+    "imageUrl": "/images/partners/ottersec.png"
+  },
+  {
+    "name": "MASQ Network",
+    "tags": [
+      "infra"
+    ],
+    "description": "MASQ dVPN and web3 browser provides Base users with global freedom and a privacy layer to your life online.",
+    "url": "https://masqbrowser.com",
+    "imageUrl": "/images/partners/masq.png"
+  },
+  {
+    "name": "Skybreach Dungeons",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Skybreach Dungeons is an onchain roguelike dungeon crawler game built on Base. Battle enemies, overcome challenges, and climb leaderboards.",
+    "url": "https://skybreach.app/dungeons",
+    "imageUrl": "/images/partners/skybreach.png"
+  },
+  {
+    "name": "NINFA",
+    "tags": [
+      "nft"
+    ],
+    "description": "Fine Digital Art Collection Marketplace",
+    "url": "https://ninfa.io/",
+    "imageUrl": "/images/partners/ninfa.png"
+  },
+  {
+    "name": "Aleph.im",
+    "tags": [
+      "infra"
+    ],
+    "description": "Open source and agnostic Decentralized Physical Infrastructure Network providing Confidential VMs, Indexing, Web hosting, Storage, Databases, Compute, AI and VRF.",
+    "url": "https://aleph.im",
+    "imageUrl": "/images/partners/aleph.png"
+  },
+  {
+    "name": "Lobster Fishing League",
+    "tags": [
+      "gaming"
+    ],
+    "description": "A decentralised fishing game built on Base. Take some time out of your day to relax and catch some onchain lobsters with friends.",
+    "url": "https://lobsterfishingleague.com",
+    "imageUrl": "/images/partners/lobsterfishingleague.png"
+  },
+  {
+    "name": "Formo",
+    "tags": [
+      "infra"
+    ],
+    "description": "Formo is a blockchain analytics platform that helps teams understand and use onchain data to engage active users in web3. Spend less time building analytics, and more time building products.",
+    "url": "https://formo.so",
+    "imageUrl": "/images/partners/formo.png"
+  },
+  {
+    "name": "Rentality",
+    "tags": [
+      "other"
+    ],
+    "description": "Rentality is a Web 3.0 car rental service provider, specifically catering to the needs of the growing US crypto community.",
+    "url": "https://rentality.xyz/",
+    "imageUrl": "/images/partners/rentality.png"
+  },
+  {
+    "name": "PolyFlow",
+    "tags": [
+      "infra"
+    ],
+    "description": "PolyFlow is a PayFi protocol linking Real World Assets with DeFi.",
+    "url": "https://app.polyflow.tech/",
+    "imageUrl": "/images/partners/polyflow.png"
+  },
+  {
+    "name": "Hypersub",
+    "tags": [
+      "nft"
+    ],
+    "description": "Discover creators. Subscribe for access, perks and benefits. Earn rewards.",
+    "url": "hypersub.xyz",
+    "imageUrl": "/images/partners/hypersub.png"
+  },
+  {
+    "name": "Lyvely ",
+    "tags": [
+      "social"
+    ],
+    "description": "Lyvely is a disruptive SocialFi platform built for the trillion dollar creator and freelancer economy. \n\nThe ecosystem is powered by our native Utility Token, LVLY,  built on the Base network. \n\nLyvely is backed by institutional giants including the Phoenix group, who is public listed and top 5 largest Bitcoin miners in the world. Other institutional investors include M2, the UAE's fully regulated Crypto exchange, and Cypher Capital, a global Web3 VC fund. \n",
+    "url": "https://get.lyvely.com/",
+    "imageUrl": "/images/partners/lyvely.png"
+  },
+  {
+    "name": "Gun Game",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Gun Game is a Russian Roulette game played via Telegram on Base. Games have instant onchain settlement, all gas is abstracted away from users, and more games and features are in development!",
+    "url": "https://gungame.tech/",
+    "imageUrl": "/images/partners/gungame.jpg"
+  },
+  {
+    "name": "Phantom",
+    "tags": [
+      "wallet"
+    ],
+    "description": "The friendly crypto wallet built for DeFi & NFTs.",
+    "url": "https://phantom.app/",
+    "imageUrl": "/images/partners/phantom.svg"
   }
 ]

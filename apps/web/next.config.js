@@ -38,7 +38,7 @@ const baseConfig = {
   reactStrictMode: !isProdEnv,
 
   // Minifiy for production builds
-  swcMinify: true,
+  swcMinify: false,
 };
 
 function extendBaseConfig(customConfig = {}, plugins = []) {
@@ -71,11 +71,14 @@ const contentSecurityPolicy = {
   'default-src': [
     "'self'",
     "'unsafe-inline'", // NextJS requires 'unsafe-inline'
+    "'wasm-unsafe-eval'", // wasm requires 'unsafe-eval'
     isLocalDevelopment ? "'unsafe-eval'" : '',
     baseXYZDomains,
     ccaDomain,
     ccaLiteDomains,
     walletconnectDomains,
+    'https://fonts.googleapis.com', // OCK styles loads google fonts via CSS
+    'https://fonts.gstatic.com/', // OCK styles loads google fonts via CSS
   ],
   'worker-src': ["'self'", 'blob:'],
   'connect-src': [
@@ -127,7 +130,7 @@ const contentSecurityPolicy = {
     'https://i.seadn.io/', // ens avatars
     'https://ipfs.io', // ipfs ens avatar resolution
     'https://cloudflare-ipfs.com', // ipfs Cloudfare ens avatar resolution
-    'https://zku9gdedgba48lmr.public.blob.vercel-storage.com', // basename avatar upload to vercel blob
+    'https://res.cloudinary.com',
     `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
   ],
 };
@@ -192,7 +195,36 @@ module.exports = extendBaseConfig(
           },
         ],
       });
+      config.module.rules.push({
+        test: /\.gltf/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash].[ext]',
+              outputPath: 'static/assets/gltf/',
+              publicPath: '/_next/static/assets/gltf/',
+            },
+          },
+        ],
+      });
+      config.module.rules.push({
+        test: /\.glb/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash].[ext]',
+              outputPath: 'static/assets/glb/',
+              publicPath: '/_next/static/assets/glb/',
+            },
+          },
+        ],
+      });
+
       config.externals.push('pino-pretty');
+      config.experiments = { ...config.experiments, asyncWebAssembly: true };
+
       return config;
     },
     images: {

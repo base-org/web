@@ -70,6 +70,8 @@ export enum UsernameTextRecordKeys {
   Description = 'description',
   Keywords = 'keywords',
   Url = 'url',
+  Url2 = 'url2',
+  Url3 = 'url3',
   Email = 'email',
   Phone = 'phone',
   Avatar = 'avatar',
@@ -83,6 +85,7 @@ export enum UsernameTextRecordKeys {
   Discord = 'com.discord',
 
   // Basename specifics
+  Frames = 'frames',
   Casts = 'casts',
 }
 
@@ -92,6 +95,8 @@ export const textRecordsSocialFieldsEnabled = [
   UsernameTextRecordKeys.Farcaster,
   UsernameTextRecordKeys.Github,
   UsernameTextRecordKeys.Url,
+  UsernameTextRecordKeys.Url2,
+  UsernameTextRecordKeys.Url3,
 ];
 
 export const textRecordsSocialFieldsEnabledIcons: Partial<Record<UsernameTextRecordKeys, string>> =
@@ -100,6 +105,8 @@ export const textRecordsSocialFieldsEnabledIcons: Partial<Record<UsernameTextRec
     [UsernameTextRecordKeys.Farcaster]: 'farcaster',
     [UsernameTextRecordKeys.Github]: 'github',
     [UsernameTextRecordKeys.Url]: 'website',
+    [UsernameTextRecordKeys.Url2]: 'website',
+    [UsernameTextRecordKeys.Url3]: 'website',
   };
 
 // Users might add their handle as @myProfile, which breaks on some website
@@ -134,6 +141,8 @@ export const formatSocialFieldUrl = (key: UsernameTextRecordKeys, handleOrUrl: s
     case UsernameTextRecordKeys.Github:
       return `https://github.com/${sanitizeHandle(handleOrUrl)}`;
     case UsernameTextRecordKeys.Url:
+    case UsernameTextRecordKeys.Url2:
+    case UsernameTextRecordKeys.Url3:
       if (!/^https?:\/\//i.test(handleOrUrl)) {
         return `https://${handleOrUrl}`;
       }
@@ -151,6 +160,8 @@ export const formatSocialFieldForDisplay = (key: UsernameTextRecordKeys, handleO
       return sanitizeHandle(handleOrUrl);
 
     case UsernameTextRecordKeys.Url:
+    case UsernameTextRecordKeys.Url2:
+    case UsernameTextRecordKeys.Url3:
       return handleOrUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');
     default:
       return '';
@@ -161,6 +172,8 @@ export const textRecordsKeysEnabled = [
   UsernameTextRecordKeys.Description,
   UsernameTextRecordKeys.Keywords,
   UsernameTextRecordKeys.Url,
+  UsernameTextRecordKeys.Url2,
+  UsernameTextRecordKeys.Url3,
   UsernameTextRecordKeys.Github,
   UsernameTextRecordKeys.Email,
   UsernameTextRecordKeys.Phone,
@@ -170,6 +183,7 @@ export const textRecordsKeysEnabled = [
   UsernameTextRecordKeys.Telegram,
   UsernameTextRecordKeys.Discord,
   UsernameTextRecordKeys.Avatar,
+  UsernameTextRecordKeys.Frames,
   UsernameTextRecordKeys.Casts,
 ];
 
@@ -177,6 +191,8 @@ export const textRecordsKeysForDisplay = {
   [UsernameTextRecordKeys.Description]: 'Bio',
   [UsernameTextRecordKeys.Keywords]: 'Skills',
   [UsernameTextRecordKeys.Url]: 'Website',
+  [UsernameTextRecordKeys.Url2]: 'Website',
+  [UsernameTextRecordKeys.Url3]: 'Website',
   [UsernameTextRecordKeys.Github]: 'Github',
   [UsernameTextRecordKeys.Email]: 'Email',
   [UsernameTextRecordKeys.Phone]: 'Phone',
@@ -186,6 +202,7 @@ export const textRecordsKeysForDisplay = {
   [UsernameTextRecordKeys.Telegram]: 'Telegram',
   [UsernameTextRecordKeys.Discord]: 'Discord',
   [UsernameTextRecordKeys.Avatar]: 'Avatar',
+  [UsernameTextRecordKeys.Frames]: 'Frames',
   [UsernameTextRecordKeys.Casts]: 'Pinned Casts',
 };
 
@@ -193,6 +210,8 @@ export const textRecordsKeysPlaceholderForDisplay = {
   [UsernameTextRecordKeys.Description]: 'Tell us about yourself',
   [UsernameTextRecordKeys.Keywords]: 'Skills',
   [UsernameTextRecordKeys.Url]: 'www.name.com',
+  [UsernameTextRecordKeys.Url2]: 'www.thingyoubuilt.com',
+  [UsernameTextRecordKeys.Url3]: 'www.workyoureproudof.com',
   [UsernameTextRecordKeys.Github]: 'Username',
   [UsernameTextRecordKeys.Email]: 'Personal email',
   [UsernameTextRecordKeys.Phone]: '+1 415 ..',
@@ -202,6 +221,7 @@ export const textRecordsKeysPlaceholderForDisplay = {
   [UsernameTextRecordKeys.Telegram]: 'Username',
   [UsernameTextRecordKeys.Discord]: 'Username',
   [UsernameTextRecordKeys.Avatar]: 'Avatar',
+  [UsernameTextRecordKeys.Frames]: 'Farcaster frame url',
   [UsernameTextRecordKeys.Casts]: 'https://warpcast.com/...',
 };
 
@@ -213,6 +233,7 @@ export const textRecordsEngineersKeywords = [
   'Typescript',
   'Go',
   'Game development',
+  'Data',
 ];
 export const textRecordsCreativesKeywords = [
   'UI/UX',
@@ -225,6 +246,9 @@ export const textRecordsCreativesKeywords = [
   'Graphic design',
   'Animation',
   'Visual design',
+  'Design',
+  'Digital art',
+  'Photography',
 ];
 export const textRecordsCommunnicationKeywords = [
   'Community',

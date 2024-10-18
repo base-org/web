@@ -11,7 +11,7 @@ displayed_sidebar: null
 
 ### 1. What are Basenames?
 
-Basenames are a core onchain building block that enable builders to establish their identity on Base by registering human-readable names for their wallet address(es). They are fully onchain, built on the same technology powering ENS names and deployed on Base. These human-readable names can be used when connecting to onchain apps, and sending and receiving on Base and any other EVM chain.
+[Basenames](https://base.org/names) are a core onchain building block that enable builders to establish their identity on Base by registering human-readable names for their wallet address(es). They are fully onchain, built on the same technology powering ENS names and deployed on Base. These human-readable names can be used when connecting to onchain apps, and sending and receiving on Base and any other EVM chain. Get your Basename at [base.org/names](https://base.org/names).
 
 ### 2. What are the Basename registration fees?
 
@@ -88,7 +88,7 @@ Currently, only one address at a time can be linked to a Basename. However, we p
 
 ### 14. I am a builder. How do I integrate Basenames to my app?
 
-If you're a builder looking to integrate Basenames into your app, [OnchainKit](https://onchainkit.xyz/wallet/wallet-dropdown-base-name) is the easiest way to get started (tutorial [here](https://docs.base.org/docs/tools/basenames-tutorial)). If you have ideas for new features or badges that you'd like to integrate with Basenames, we'd love to [hear from you](https://app.deform.cc/form/b9c1c39f-f238-459e-a765-5093ca638075/?page_number=0).
+If you're a builder looking to integrate Basenames into your app, [OnchainKit](https://onchainkit.xyz/wallet/wallet-dropdown-basename) is the easiest way to get started (tutorial [here](https://docs.base.org/docs/tools/basenames-tutorial)). If you have ideas for new features or badges that you'd like to integrate with Basenames, we'd love to [hear from you](https://app.deform.cc/form/b9c1c39f-f238-459e-a765-5093ca638075/?page_number=0).
 
 ### 15. How do I get a Basename for my app or project?
 
@@ -101,3 +101,13 @@ Basenames are built using the Ethereum Name Service (ENS) protocol, leveraging i
 ### 17. Do Basenames work on different chains?
 
 Yes, your Name will work on any chain as long as the app is ENSIP-10 compliant. Note that when sending money or interacting across different chains, you should ensure the receiving platform supports ENS.
+
+### 18. How do I use frames with my basename?
+
+You can pin frames as the ultimate way to make a profile yours. Want someone to mint? Frame it. Want someone to pay you? Frame it. Want to display your onchain identity your own way? Frame it.
+
+Follow our step-by-step [guide] to get started. While Basenames supports all frames, we recommend using the Open Frames standard for the best experience.
+
+---
+
+[guide]: https://docs.base.org/tutorials/add-frames-to-basename
