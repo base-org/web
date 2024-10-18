@@ -33,7 +33,7 @@ export default function SearchAddressInput({ onChange }: SearchAddressInputProps
   const { basenameChain } = useBasenameChain();
 
   const { data: basenameAddress, isLoading: basenameAddressIsLoading } = useEnsAddress({
-    name: value,
+    name: value.toLowerCase(),
     universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
     chainId: basenameChain.id,
     query: {
@@ -45,7 +45,7 @@ export default function SearchAddressInput({ onChange }: SearchAddressInputProps
   /* 3. User enters an ENS name */
   const validEnsName = isEnsName(value);
   const { data: ensAddress, isLoading: ensAddressIsLoading } = useEnsAddress({
-    name: value,
+    name: value.toLowerCase(),
     chainId: mainnet.id,
     query: {
       enabled: validEnsName,
