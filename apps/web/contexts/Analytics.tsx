@@ -33,12 +33,13 @@ type AnalyticsProviderProps = {
 };
 
 export default function AnalyticsProvider({ children, context }: AnalyticsProviderProps) {
-  const { fullContext: previousContext } = useAnalytics();
+  // Directly using useContext instead of useAnalytics to avoid context initialization issues
+  const previousContext = useContext(AnalyticsContext).fullContext;
 
-  const fullContext = [previousContext, context].filter((c) => !!c).join('_');
+  const fullContext = [previousContext, context].filter(Boolean).join('_');
   const logEventWithContext = useCallback(
     (eventName: string, action: ActionType, eventData?: CCAEventData) => {
-      const sanitizedEventName = eventName.toLocaleLowerCase();
+      const sanitizedEventName = eventName.toLowerCase(); // Using toLowerCase instead of toLocaleLowerCase for performance
       if (typeof window === 'undefined') return;
       logEvent(
         sanitizedEventName, // TODO: Do we want context here?
