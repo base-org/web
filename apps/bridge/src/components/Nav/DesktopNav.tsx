@@ -159,7 +159,7 @@ function DesktopNav({ color }: DesktopNavProps) {
       </Dropdown>
       <Dropdown label="Socials" className="align-text-bottom" color={color}>
         <IconLink
-          href="https://warpcast.com/~/channel/base"
+          href="https://warpcast.com/base"
           icon="farcaster"
           label="Farcaster"
           color={color}
