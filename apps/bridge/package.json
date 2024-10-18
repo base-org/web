@@ -13,7 +13,7 @@
     "@bugsnag/plugin-react": "^7.19.0",
     "@eth-optimism/contracts-ts": "^0.16.2",
     "@eth-optimism/indexer-api": "^0.0.4",
-    "@headlessui/react": "latest",
+    "@headlessui/react": "^1.7.19",
     "@heroicons/react": "^2.0.13",
     "@rainbow-me/rainbowkit": "^1",
     "@types/react-copy-to-clipboard": "^5.0.4",

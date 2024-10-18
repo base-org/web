@@ -12,6 +12,8 @@ keywords:
     Base network,
     Supra,
     Chainlink,
+    Chronicle,
+    ORA,
     Pyth,
     VRF,
     Gelato VRF,
@@ -40,11 +42,11 @@ Unlike traditional data feeds, reading [API3 price feeds](https://docs.api3.org/
 
 Apart from data feeds, API3 also provides [Quantum Random Number Generation](https://docs.api3.org/explore/qrng/) on Base Mainnet and Testnet. QRNG is a free-to-use service that provides quantum randomness onchain. It is powered by [Airnode](https://docs.api3.org/reference/airnode/latest/understand/), the first-party oracle that is directly operated by the [QRNG API providers](https://docs.api3.org/reference/qrng/providers.html). Read more about QRNG [here](https://docs.api3.org/reference/qrng).
 
-Check out these guides on how to:
+Check out these guides to learn more:
 
-- [Use dAPIs on the Market](https://docs.api3.org/guides/dapis/subscribing-to-dapis/)
-- [Read a dAPI](https://docs.api3.org/guides/dapis/read-a-dapi/)
-- [Get started with QRNG](https://docs.api3.org/guides/qrng/)
+- [dAPIs](https://docs.api3.org/guides/dapis/subscribing-to-dapis/): First-party aggregated data feeds sourced directly from the data providers.
+- [Airnode](https://docs.api3.org/guides/airnode/calling-an-airnode/): The first-party serverless Oracle solution to bring any REST API onchain.
+- [QRNG](https://docs.api3.org/guides/qrng/): Quantum Random Number Generator for verifiable quantum RNG onchain.
 
 #### Supported Networks
 
@@ -64,6 +66,19 @@ See [this guide](https://docs.chain.link/docs/get-the-latest-price/) to learn ho
 To use Chainlink datafeeds, you may need [LINK](https://docs.chain.link/resources/link-token-contracts?parent=dataFeeds) token.
 
 :::
+
+#### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
+
+---
+
+## Chronicle
+
+[Chronicle](https://chroniclelabs.org/) provides a number of [Oracles](https://chroniclelabs.org/dashboard) for Base.
+
+See [this guide](https://docs.chroniclelabs.org/Developers/tutorials/Remix) to learn how to use the Chronicle Oracles.
 
 #### Supported Networks
 
@@ -94,6 +109,18 @@ See this guide to learn how to get started with [Gelato VRF](https://docs.gelato
 
 - Base Mainnet
 - Base Sepolia (Testnet)
+
+---
+
+## ORA
+
+[ORA](https://ora.io) provides an [Onchain AI Oracle](https://docs.ora.io/doc/oao-onchain-ai-oracle/introduction) for Base.
+
+See [this guide](https://docs.ora.io/doc/oao-onchain-ai-oracle/develop-guide/tutorials/interaction-with-oao-tutorial) to learn how to use ORA Onchain AI Oracle.
+
+#### Supported Networks
+
+- Base Mainnet
 
 ---
 

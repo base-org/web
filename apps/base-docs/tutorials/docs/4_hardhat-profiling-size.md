@@ -236,7 +236,7 @@ From a contract size perspective, having multiple independent contracts will red
 
 In order to explain this example, create a contract called `Computer` that contains a function called `executeProcess`:
 
-```typescript
+```tsx
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
@@ -496,8 +496,8 @@ As you continue your journey in smart contract development, keep in mind that op
 
 [Hardhat Contract Sizer]: https://github.com/ItsNickBarry/hardhat-contract-sizer
 [maximum size of a smart contract in Ethereum]: https://ethereum.org/en/developers/tutorials/downsizing-contracts-to-fight-the-contract-size-limit/#why-is-there-a-limit
-[modifiers]: https://docs.base.org/base-camp/docs/advanced-functions/function-modifiers
+[modifiers]: https://docs.base.org/base-learn/docs/advanced-functions/function-modifiers
 [Solidity official docs]: https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html
 [Delegate call]: https://solidity-by-example.org/delegatecall/
-[Gas Optimization]: ./4_hardhat-profiling-gas
+[Gas Optimization]: ./hardhat-profiling-gas
 [Solidity documentation]: https://docs.soliditylang.org/en/v0.8.20/internals/optimizer.html#optimizer-parameter-runs

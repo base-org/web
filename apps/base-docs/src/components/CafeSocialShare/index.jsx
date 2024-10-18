@@ -3,11 +3,11 @@ import { Button } from '../Button/Button';
 import Icon from '../Icon';
 import styles from './styles.module.css';
 
-const url = 'https://base.org/camp';
+const url = 'https://base.org/learn';
 
 export function CafeSocialShare({ name }) {
   const shareText = encodeURIComponent(
-    `I earned my ${name} badge on Base Camp!  Join Onchain Summer and learn to build the future at ${url}.`,
+    `I earned my ${name} badge on Base Learn!  Join Onchain Summer and learn to build the future at ${url}.`,
   );
 
   return (

@@ -56,7 +56,7 @@ import "hardhat-gas-reporter"
 
 Configure the plugin in the `hardhat.config.ts` file:
 
-```typescript
+```tsx
 const config: HardhatUserConfig = {
   // ....
   gasReporter: {
@@ -109,7 +109,7 @@ contract Store {
 
 Add a test file called `Store.test.ts` in order to test the gas reporter plugin. The test file should contain the following:
 
-```typescript
+```tsx
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
 import { HardhatEthersSigner } from '@nomicfoundation/hardhat-ethers/signers';

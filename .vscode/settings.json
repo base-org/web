@@ -25,5 +25,11 @@
     { "pattern": "examples/*" },
     { "pattern": "libs/*" },
     { "pattern": "packages/*" }
-  ]
+  ],
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  }
 }

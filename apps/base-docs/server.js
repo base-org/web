@@ -50,11 +50,19 @@ app.post('/api/rateMessage', (req, res) => {
 });
 
 app.get('/base-camp', (req, res) => {
-  res.redirect('/base-camp/docs/welcome');
+  res.redirect('/base-learn/docs/welcome');
+});
+
+app.get('/base-learn', (req, res) => {
+  res.redirect('/base-learn/docs/welcome');
 });
 
 app.get('/basecamp', (req, res) => {
-  res.redirect('/base-camp/docs/welcome');
+  res.redirect('/base-learn/docs/welcome');
+});
+
+app.get('/baselearn', (req, res) => {
+  res.redirect('/base-learn/docs/welcome');
 });
 
 app.get('/using-base', (req, res) => {
@@ -420,6 +428,10 @@ const contentSecurityPolicy = {
     'https://api.mendable.ai/v1/rateMessage', // Mendable API
     'https://api.sprig.com', // Sprig API
     'https://cdn.sprig.com', // Sprig API
+    'https://flag.lab.amplitude.com/sdk/v2/flags',
+    'https://api.lab.amplitude.com/sdk/v2/vardata',
+    'https://browser-intake-datadoghq.com', // datadog
+    'https://*.datadoghq.com'
   ],
   'frame-src': ["'self'", 'https://player.vimeo.com', 'https://verify.walletconnect.org'],
 };

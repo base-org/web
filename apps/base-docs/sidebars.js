@@ -4,10 +4,18 @@ module.exports = {
     ['using-base'],
     {
       type: 'category',
+      label: 'Notices',
+      collapsible: false,
+      collapsed: false,
+      items: ['notices/preparing-for-fault-proofs-on-base-sepolia'],
+    },
+    {
+      type: 'category',
       label: 'Building on Base',
       collapsible: false,
       collapsed: false,
       items: [
+        'building-with-base/quickstart',
         'building-with-base/network-information',
         'building-with-base/base-contracts',
         'building-with-base/fees',
@@ -25,6 +33,7 @@ module.exports = {
       collapsible: false,
       collapsed: false,
       items: [
+        'tools/registry-api',
         'tools/node-providers',
         'tools/block-explorers',
         'tools/network-faucets',
@@ -35,6 +44,24 @@ module.exports = {
         'tools/onramps',
         'tools/onboarding',
         'tools/bridges-mainnet',
+        {
+          type: 'category',
+          label: 'Onchain Registry',
+          collapsible: true,
+          collapsed: true,
+          items: ['tools/registry-api', 'tools/registry-faq'],
+        },
+        {
+          type: 'category',
+          label: 'Basenames',
+          collapsible: true,
+          collapsed: true,
+          items: [
+            'tools/basenames-faq',
+            'tools/basenames-tutorial',
+            'tools/basenames-onchainkit-tutorial',
+          ],
+        },
         {
           type: 'category',
           label: 'Toolchains',

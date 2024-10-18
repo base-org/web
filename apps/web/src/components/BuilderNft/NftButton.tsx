@@ -1,4 +1,4 @@
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { MintButton } from './MintButton';
 import { DisconnectButton } from './DisconnectButton';
@@ -10,7 +10,7 @@ export function NftButton() {
 
   if (status === 'mint-error') {
     return (
-      <Button variant="primary" className="w-fit" onClick={reset}>
+      <Button variant={ButtonVariants.Primary} className="w-fit" onClick={reset}>
         Reset
       </Button>
     );
@@ -26,7 +26,7 @@ export function NftButton() {
 
   if (status === 'disconnected') {
     return (
-      <Button variant="primary" className="w-fit" onClick={openConnectModal}>
+      <Button variant={ButtonVariants.Primary} className="w-fit" onClick={openConnectModal}>
         Connect
       </Button>
     );
@@ -34,7 +34,7 @@ export function NftButton() {
 
   if (status === 'loading-proof') {
     return (
-      <Button variant="primary" className="w-fit">
+      <Button variant={ButtonVariants.Primary} className="w-fit">
         Checking eligibility...
       </Button>
     );

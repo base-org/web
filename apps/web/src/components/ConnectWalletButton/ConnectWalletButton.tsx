@@ -1,69 +1,172 @@
-import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
+import { EthBalance, Identity, Name } from '@coinbase/onchainkit/identity';
+import {
+  ConnectWallet,
+  Wallet,
+  WalletDropdown,
+  WalletDropdownBaseName,
+  WalletDropdownDisconnect,
+  WalletDropdownLink,
+} from '@coinbase/onchainkit/wallet';
+import { base } from 'viem/chains';
+import { useConnectModal } from '@rainbow-me/rainbowkit';
+import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
+import { default as BaseOrgButton } from 'apps/web/src/components/base-org/Button';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
-import { ShinyButton } from 'apps/web/src/components/ShinyButton/ShinyButton';
-import logEvent, { identify } from 'apps/web/src/utils/logEvent';
-import { useCallback, useEffect } from 'react';
-import { useAccount } from 'wagmi';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
+import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
+import logEvent, {
+  ActionType,
+  AnalyticsEventImportance,
+  ComponentType,
+  identify,
+} from 'base-ui/utils/logEvent';
+import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
+import classNames from 'classnames';
+import { useCallback, useEffect, useState } from 'react';
+import { useCopyToClipboard } from 'usehooks-ts';
+import { useAccount, useSwitchChain } from 'wagmi';
+import ChainDropdown from 'apps/web/src/components/ChainDropdown';
+import { useSearchParams } from 'next/navigation';
+
+export enum ConnectWalletButtonVariants {
+  BaseOrg,
+  Basename,
+}
 
 type ConnectWalletButtonProps = {
-  color: 'white' | 'black';
-  className: string;
+  connectWalletButtonVariant: ConnectWalletButtonVariants;
 };
 
-const colorVariant: Record<'white' | 'black', 'white' | 'black'> = {
-  white: 'white',
-  black: 'black',
-};
-
-export function ConnectWalletButton({ color, className }: ConnectWalletButtonProps) {
+export function ConnectWalletButton({
+  connectWalletButtonVariant = ConnectWalletButtonVariants.BaseOrg,
+}: ConnectWalletButtonProps) {
+  // Rainbow kit
   const { openConnectModal } = useConnectModal();
-  const { address } = useAccount();
+  const { switchChain } = useSwitchChain();
+
+  const switchToIntendedNetwork = useCallback(
+    () => switchChain({ chainId: base.id }),
+    [switchChain],
+  );
+  const searchParams = useSearchParams();
+  const showChainSwitcher = searchParams?.get('showChainSwitcher');
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Wagmi
+  const { address, connector, isConnected, isConnecting, isReconnecting, chain } = useAccount();
+  const chainSupported = !!chain && supportedChainIds.includes(chain.id);
+  const { basenameChain } = useBasenameChain();
+  const [, copy] = useCopyToClipboard();
+  const copyAddress = useCallback(() => void copy(address ?? ''), [address, copy]);
 
   useEffect(() => {
     if (address) {
-      logEvent('connected_wallet', { address });
+      logEvent(
+        'wallet_connected',
+        {
+          action: ActionType.change,
+          context: 'navbar',
+          address,
+          wallet_type: sanitizeEventString(connector?.name),
+          wallet_connector_id: connector?.id,
+        },
+        AnalyticsEventImportance.low,
+      );
       identify({ userId: address });
     }
-  }, [address]);
+  }, [address, connector]);
 
   const clickConnect = useCallback(() => {
     openConnectModal?.();
-    logEvent('ConnectWalletButton_Clicked', {});
+    logEvent(
+      'connect_wallet',
+      {
+        action: ActionType.click,
+        componentType: ComponentType.button,
+        context: 'navbar',
+      },
+      AnalyticsEventImportance.low,
+    );
   }, [openConnectModal]);
 
+  const userAddressClasses = classNames('text-lg font-display hidden lg:inline-block', {
+    'text-white': connectWalletButtonVariant === ConnectWalletButtonVariants.BaseOrg,
+    'text-black': connectWalletButtonVariant === ConnectWalletButtonVariants.Basename,
+  });
+
+  if (isConnecting || isReconnecting || !isMounted) {
+    return <Icon name="spinner" color="currentColor" />;
+  }
+
+  if (!isConnected) {
+    const baseOrgButton = connectWalletButtonVariant === ConnectWalletButtonVariants.BaseOrg;
+    return baseOrgButton ? (
+      <BaseOrgButton onClick={clickConnect} roundedFull>
+        Connect
+      </BaseOrgButton>
+    ) : (
+      <Button
+        variant={ButtonVariants.Black}
+        size={ButtonSizes.Small}
+        onClick={clickConnect}
+        rounded
+      >
+        Connect
+      </Button>
+    );
+  }
+
+  if (!chainSupported) {
+    return (
+      <Button
+        variant={ButtonVariants.Black}
+        size={ButtonSizes.Small}
+        onClick={switchToIntendedNetwork}
+        rounded
+      >
+        Connect to Base
+      </Button>
+    );
+  }
+
   return (
-    <ConnectButton.Custom>
-      {({ account, chain, openAccountModal, openChainModal, mounted }) => {
-        const ready = mounted;
-        const connected = ready && account && chain;
+    <Wallet>
+      <ConnectWallet
+        withWalletAggregator
+        className="flex items-center justify-center rounded-xl bg-transparent p-2 hover:bg-gray-40/20"
+      >
+        <div className="flex items-center gap-2">
+          <UserAvatar />
+          <Name chain={basenameChain} className={userAddressClasses} />
+          {showChainSwitcher && <ChainDropdown />}
+        </div>
+      </ConnectWallet>
 
-        if (!connected) {
-          return (
-            <ShinyButton variant={colorVariant[color]} onClick={clickConnect}>
-              Connect
-            </ShinyButton>
-          );
-        }
-
-        if (chain.unsupported) {
-          return (
-            <button onClick={openChainModal} type="button">
-              Wrong network
-            </button>
-          );
-        }
-
-        return (
-          <button
-            className={`cursor-pointer ${className}`}
-            onClick={openAccountModal}
-            onKeyUp={openAccountModal}
-            type="button"
-          >
-            <UserAvatar />
-          </button>
-        );
-      }}
-    </ConnectButton.Custom>
+      <WalletDropdown className="rounded-xl bg-white font-sans shadow-md">
+        <Identity className="px-4 pb-2 pt-3 font-display">
+          <UserAvatar />
+          <Name
+            onClick={copyAddress}
+            chain={basenameChain}
+            className="cursor-pointer font-display transition-all hover:opacity-65"
+          />
+          <EthBalance className="font-display" />
+        </Identity>
+        <WalletDropdownBaseName className="font-display hover:bg-gray-40/20" />
+        <WalletDropdownLink
+          icon="wallet"
+          href="https://wallet.coinbase.com"
+          target="_blank"
+          className="font-display hover:bg-gray-40/20"
+        >
+          Go to Wallet Dashboard
+        </WalletDropdownLink>
+        <WalletDropdownDisconnect className="font-display hover:bg-gray-40/20" />
+      </WalletDropdown>
+    </Wallet>
   );
 }

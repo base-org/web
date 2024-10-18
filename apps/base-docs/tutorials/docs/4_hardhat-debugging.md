@@ -148,7 +148,7 @@ These log functions are handy when the type you intend to log doesn't fall withi
 
 While debugging your smart contracts, it's crucial to be familiar with common errors that can arise during development. Recognizing these errors and knowing how to resolve them is an important skill.
 
-In our [Basecamp] series of tutorials, we cover a few compile-time errors in [Error Triage]. Other errors, such as `reverts` or `index out of bounds errors` can be unexpected during the runtime of the smart contract.
+In our [Base Learn] series of tutorials, we cover a few compile-time errors in [Error Triage]. Other errors, such as `reverts` or `index out of bounds errors` can be unexpected during the runtime of the smart contract.
 
 The following explores typical techniques to debug these types of errors.
 
@@ -420,5 +420,5 @@ In this tutorial, you've learned some techniques about how to debug smart contra
 ## See also
 
 [Console.log]: https://hardhat.org/hardhat-network/docs/reference#console.log
-[Error Triage]: https://docs.base.org/base-camp/docs/error-triage
-[Basecamp]: https://base.org/camp
+[Error Triage]: https://docs.base.org/base-learn/docs/error-triage
+[Base Learn]: https://base.org/learn

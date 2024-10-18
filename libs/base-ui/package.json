@@ -6,6 +6,7 @@
   "types": "./index.ts",
   "main": "./index.ts",
   "dependencies": {
+    "@amplitude/experiment-js-client": "^1.11.0",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-select": "^1.2.1",
     "@sprig-technologies/sprig-browser": "^2.29.0",
@@ -14,6 +15,7 @@
     "next": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-intl": "^6.2.1"
+    "react-intl": "^6.2.1",
+    "usehooks-ts": "^3.1.0"
   }
 }

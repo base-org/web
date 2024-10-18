@@ -1,3 +1,5 @@
+import React from 'react';
+
 type IconProps = {
   name: keyof typeof ICONS;
   color?: 'white' | 'black';

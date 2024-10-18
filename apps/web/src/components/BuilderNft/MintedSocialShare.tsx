@@ -1,5 +1,5 @@
 import { useMintStateContext } from 'apps/web/src/components/BuilderNft/useMintState';
-import { Button } from 'apps/web/src/components/Button/Button';
+import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Link from 'next/link';
 
@@ -14,7 +14,7 @@ export function MintedSocialShare() {
   return (
     <div className="flex flex-row items-center gap-4">
       <Link href={`https://basescan.org/tx/${txHash}`} target="_blank" rel="noreferrer">
-        <Button variant="secondary">View on Basescan</Button>
+        <Button variant={ButtonVariants.Secondary}>View on Basescan</Button>
       </Link>
       <Link
         href={`https://warpcast.com/~/compose?embeds[]=${encodeURIComponent(
@@ -23,7 +23,7 @@ export function MintedSocialShare() {
         target="_blank"
         rel="noreferrer"
       >
-        <Button variant="secondary">
+        <Button variant={ButtonVariants.Secondary}>
           <Icon name="farcaster" />
         </Button>
       </Link>
@@ -32,7 +32,7 @@ export function MintedSocialShare() {
         target="_blank"
         rel="noreferrer"
       >
-        <Button variant="secondary">
+        <Button variant={ButtonVariants.Secondary}>
           <Icon name="twitter" />
         </Button>
       </Link>

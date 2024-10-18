@@ -56,6 +56,14 @@
   padding-left: 0 !important;
 }
 
+.menu__list .dropdown__link--content {
+  color: var(--foreground-muted);
+}
+
+.menu__list svg {
+  display: none;
+}
+
 .menu__list-item-collapsible {
   border-radius: var(--interactable-border-radius);
   border-radius: var(--border-radius-none) !important;

@@ -1,13 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Divider } from 'apps/web/src/components/Divider/Divider';
 import { Job } from 'apps/web/src/components/Jobs/Job';
-import { greenhouseApiUrl } from 'apps/web/src/constants';
-
-async function getJobs() {
-  const res = await fetch(`${greenhouseApiUrl}/boards/basejobs/jobs?content=true`);
-  const { jobs } = (await res.json()) as { jobs: JobType[] };
-  return jobs;
-}
+import Card from 'apps/web/src/components/base-org/Card';
+import Title from 'apps/web/src/components/base-org/typography/Title';
+import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 
 type Department = {
   id: string;
@@ -26,43 +20,42 @@ export type JobType = {
   departments: Department[];
 };
 
-export default function JobsList() {
-  const [jobs, setJobs] = useState<JobType[]>([]);
-  useEffect(() => {
-    getJobs()
-      .then((js) => setJobs(js))
-      .catch(console.error);
-  }, []);
+export default async function JobsList({ jobs }: { jobs: JobType[] }) {
+  const departmentsById = jobs.reduce<DepartmentByIdReduceType>((acc, job) => {
+    const name = !job.departments.length ? 'Other' : job.departments[0].name;
+    const id = !job.departments.length ? 'no-department' : job.departments[0].id;
+    acc[id] = {
+      name,
+      jobs: !acc[id] ? [job] : [...acc[id].jobs, job],
+    };
 
-  const departments = useMemo(() => {
-    const departmentsById = jobs.reduce<DepartmentByIdReduceType>((acc, job) => {
-      const name = !job.departments.length ? 'Other' : job.departments[0].name;
-      const id = !job.departments.length ? 'no-department' : job.departments[0].id;
-      acc[id] = {
-        name,
-        jobs: !acc[id] ? [job] : [...acc[id].jobs, job],
-      };
+    return acc;
+  }, {} as DepartmentByIdReduceType);
 
-      return acc;
-    }, {} as DepartmentByIdReduceType);
-
-    return Object.entries(departmentsById).map(([id, department]) => ({ id, ...department }));
-  }, [jobs]);
+  const departments = Object.entries(departmentsById).map(([id, department]) => ({
+    id,
+    ...department,
+  }));
 
   return !jobs.length ? (
     <p className="text-md my-8 p-1">Loading jobs...</p>
   ) : (
     <div className="mt-10 flex w-full flex-col">
-      <div className="flex flex-col">
-        {departments.map((department, index) => (
+      <div className="flex flex-col gap-12">
+        {departments.map((department) => (
           <div key={department.id}>
-            <h2 className="text-xl font-bold">{department.name}</h2>
-            <div className="flex flex-col">
-              {department.jobs?.map((job) => (
-                <Job key={job.id} job={job} />
-              ))}
-            </div>
-            {departments.length - 1 !== index && <Divider fullWidth />}
+            <Title level={TitleLevel.Title1} className="mb-6">
+              {department.name === 'Business Development & Partnerships'
+                ? 'Ecosystem'
+                : department.name}
+            </Title>
+            <Card innerClassName="p-6 transition-all bg-[#0A0B0C] hover:bg-[#111111]">
+              <div className="flex flex-col gap-2">
+                {department.jobs?.map((job) => (
+                  <Job key={job.id} job={job} />
+                ))}
+              </div>
+            </Card>
           </div>
         ))}
       </div>

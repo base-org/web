@@ -1,25 +1,35 @@
+'use client';
+
+import classNames from 'classnames';
 import { useCallback } from 'react';
 
 type Props = {
   tag: string;
   isSelected: boolean;
-  setSelectedTag: (val: string) => void;
+  selectTag: (tag: string) => void;
 };
 
-export function TagChip({ tag, isSelected, setSelectedTag }: Props) {
-  const select = useCallback(() => {
-    setSelectedTag(tag);
-  }, [tag, setSelectedTag]);
+export function TagChip({ tag, isSelected, selectTag }: Props) {
+  const onClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      selectTag(tag);
+    },
+    [selectTag, tag],
+  );
+
+  const buttonClasses = classNames(
+    'uppercase tracking-wider border border-white/20 h-10 whitespace-nowrap rounded-full px-4  transition-colors ',
+
+    {
+      'bg-white text-black': isSelected,
+      'text-white/50 hover:bg-white/20 hover:text-white': !isSelected,
+    },
+  );
 
   return (
-    <button type="button" onClick={select}>
-      <div
-        className={`flex h-10 shrink-0 cursor-pointer flex-col justify-center rounded-[100px] border border-muted px-8 hover:border-white ${
-          isSelected ? 'bg-muted' : ''
-        }`}
-      >
-        <span className="text-center font-mono text-base uppercase text-white">{tag}</span>
-      </div>
+    <button onClick={onClick} type="button" className={buttonClasses}>
+      {tag}
     </button>
   );
 }
