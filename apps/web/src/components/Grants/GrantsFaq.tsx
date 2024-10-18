@@ -41,7 +41,7 @@ export default function GrantsFaq() {
         answer={
           <ul className="mt-4 flex list-inside list-disc flex-col items-start">
             <li className="mb-2">
-              Apply for a project that's unique, fun, and/or making an impact
+              Apply for a project that&apos;s unique, fun, and/or making an impact
             </li>
             <li className="mb-2">Build something that brings more users onchain</li>
           </ul>
