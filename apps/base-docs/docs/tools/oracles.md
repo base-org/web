@@ -137,7 +137,7 @@ The [Pyth Network](https://pyth.network/) is one of the largest first-party Orac
 ### Pyth Entropy
 Pyth Entropy allows developers to quickly and easily generate secure **random numbers** onchain.
 
-Check [how to generate random numbers in EVM contracts]((https://docs.pyth.network/entropy/generate-random-numbers/evm)) for a detailed walkthrough.
+Check [how to generate random numbers in EVM contracts](https://docs.pyth.network/entropy/generate-random-numbers/evm) for a detailed walkthrough.
 
 #### Supported Networks for Base (Pyth Entropy):
 - Base Mainnet: [`0x6E7D74FA7d5c90FEF9F0512987605a6d546181Bb`](https://basescan.org/address/0x6E7D74FA7d5c90FEF9F0512987605a6d546181Bb) 
