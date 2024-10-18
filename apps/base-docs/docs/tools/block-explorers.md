@@ -59,6 +59,20 @@ A testnet explorer for [Base Sepolia](https://sepolia.basescan.org/) is also ava
 
 ---
 
+## sim Explorer
+
+[sim Explorer](https://explorer.sim.io) (formerly evm.storage) is a dev focused explorer available for Base. 
+
+With sim Explorer, you can:
+
+- Explore contract storage, regardless of verification status
+- Navigate contracts and accounts by address, ENS, or Basenames, and time-travel to view state at any block height
+- Trace transactions with unparalleled visibility into storage operations
+- Simulate transactions, explore and share simulated traces
+- View flattened source code without navigating through multiple files
+
+---
+
 ## DexGuru
 
 [DexGuru](https://base.dex.guru) provides a familiar UI with data on transactions, blocks, account balances and more. Developers can use it to verify smart contracts and debug transactions with interactive traces and logs visualization.
