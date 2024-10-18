@@ -211,6 +211,19 @@ const footerCategories = [
     title: 'Tools',
     links: [
       {
+        title: 'Onchain Registry',
+        href: '/docs/tools/registry-api/',
+        analyticsData: {
+          name: 'tools_onchain_registry',
+          event: {
+            action: ActionType.click,
+            componentType: ComponentType.link,
+            context: 'explore_documentation',
+          },
+          importance: AnalyticsEventImportance.high,
+        },
+      },
+      {
         title: 'Node Providers',
         href: '/docs/tools/node-providers',
         analyticsData: {

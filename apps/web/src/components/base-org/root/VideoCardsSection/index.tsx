@@ -1,9 +1,9 @@
 'use client';
-import Link from 'apps/web/node_modules/next/link';
 import bolt from './assets/bolt.webm';
 import eth from './assets/eth.webm';
 import globe from './assets/globe.webm';
 import VideoCard from 'apps/web/src/components/base-org/root/VideoCardsSection/VideoCard';
+import Link from 'apps/web/src/components/Link/index';
 
 export default function VideoCardsSection() {
   return (
