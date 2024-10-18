@@ -12,11 +12,11 @@ displayed_sidebar: null
 
 Deploy a blockchain event listener with [OrbisDB](https://useorbis.com/), a decentralized relational database built on the [Ceramic Network](https://ceramic.network/).
 
-This tutorial will guide you through what Ceramic is, how OrbisDB provides a relational database interface to Ceramic's verifiable data streams, and how Base developers can leverage an OrbisDB plugin to listen and index blockchain events for any smart contract.
+This tutorial will guide you through what Ceramic is, how OrbisDB provides a relational database interface to Ceramic's verifiable data streams, and how Base developers can leverage an OrbisDB plugin to listen to and index blockchain events for any smart contract.
 
 ## Objectives
 
-By the end of this tutorial you will be able to:
+By the end of this tutorial, you will be able to:
 
 - Use the OrbisDB UI to set plugins and view data
 - Use OrbisDB to index smart contract events from a Base contract
@@ -24,21 +24,21 @@ By the end of this tutorial you will be able to:
 
 ## Overview
 
-Developers building on Base (and other blockchains) are frequently tasked with building trustless, resilient, decentralized systems that service customer needs beyond what's available exclusively on-chain. For some applications, representing highly dynamic data (like identity), or high volumes of sensor data from DePin networks would be too costly and inefficient to write on-chain. Other developers need to traverse, aggregate, and query on-chain data using patterns that aren't possible with standard Web3 libraries. As such, decentralized data availability providers are purpose-built for use cases like these, in addition to any project that requires higher performance, faster processing, and more cost-effective solutions for decentralized data at scale. One of those providers is [Ceramic](https://ceramic.network/).
+Developers building on Base (and other blockchains) are frequently tasked with creating trustless, resilient, decentralized systems that serve customer needs beyond what's available exclusively on-chain. For some applications, representing highly dynamic data (like identity) or high volumes of sensor data from DePin networks would be too costly and inefficient to store on-chain. Other developers need to traverse, aggregate, and query on-chain data using patterns not supported by standard Web3 libraries. As such, decentralized data availability providers are purpose-built for these use cases, as well as any project requiring higher performance, faster processing, and more cost-effective solutions for decentralized data at scale. One of those providers is [Ceramic](https://ceramic.network/).
 
-Ceramic is a decentralized data network that combines high data provenance and verifiability most often associated with blockchain networks with the cost efficiencies, scalability, and flexible querying capabilities usually associated with traditional database systems.
+Ceramic is a decentralized data network that combines the high data provenance and verifiability typically associated with blockchain networks with the cost efficiencies, scalability, and flexible querying capabilities of traditional database systems.
 
 ### How does Ceramic work?
 
-The Ceramic Protocol operates on decentralized event streams, where user accounts—powered by decentralized identifiers (DIDs) cryptographically sign data events and submit them to the network. These events are synchronized across subscribing nodes in the network and arranged into event logs, or Ceramic "streams." Each stream offers the flexibility to hold various types of content, making Ceramic suitable for a wide range of data applications, including user profiles, posts, relationships, and more, while retaining the history of changes that stream has endured over its lifetime.
+The Ceramic Protocol operates on decentralized event streams, where user accounts—powered by decentralized identifiers (DIDs)—cryptographically sign data events and submit them to the network. These events are synchronized across subscribing nodes in the network and arranged into event logs, or Ceramic "streams." Each stream offers the flexibility to hold various types of content, making Ceramic suitable for a wide range of data applications, including user profiles, posts, relationships, and more, while retaining the history of changes the stream has undergone throughout its lifetime.
 
-To further extend Ceramic's functionality, most developers will utilize a database interface that sits on top of the Ceramic protocol, which opens flexible optionality around preferred database types, hosting methods, and other developer tooling.
+To extend Ceramic's functionality, most developers utilize a database interface that sits on top of the Ceramic protocol, enabling flexible options for preferred database types, hosting methods, and other developer tools.
 
 ### OrbisDB
 
-As the objectives suggest, this guide will show you how to use OrbisDB, an open-source relational database that inherits data ownership, composability, and the decentralized properties of the network it’s built on (Ceramic). OrbisDB provides many developer-friendly experiences in a highly scalable way such as multiple ways to query data, a built-in dashboard UI, shared nodes for testing and iteration, and an ecosystem of plugins that extends its data functionality.
+As the objectives suggest, this guide will demonstrate how to use OrbisDB, an open-source relational database that inherits data ownership, composability, and the decentralized properties of the network it’s built on (Ceramic). OrbisDB offers many developer-friendly features in a highly scalable way, including multiple ways to query data, a built-in dashboard UI, shared nodes for testing and iteration, and an ecosystem of plugins that extend its data functionality.
 
-This guide will show developers how to use the on-chain event listener plugin to index events from a Base smart contract.
+This guide will also show developers how to use the on-chain event listener plugin to index events from a Base smart contract.
 
 ## Getting Started
 
