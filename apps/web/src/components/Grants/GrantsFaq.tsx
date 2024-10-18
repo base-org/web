@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import Link from 'apps/web/src/components/Link';
 import { Icon } from 'libs/base-ui';

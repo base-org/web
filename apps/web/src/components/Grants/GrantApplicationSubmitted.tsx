@@ -1,5 +1,3 @@
 export default function GrantApplicationSubmitted() {
-  return (
-    null
-  )
+  return <div>Thanks for your submission</div>;
 }

@@ -5,7 +5,7 @@ import { useAccount } from 'wagmi';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 import { FormStates } from 'apps/web/src/components/Grants/grantApplicationTypes';
-import GrantApplicationWelcome from 'apps/web/src/components/Grants/GrantApplicationWelcome/GrantApplicationWelcome';
+import GrantApplicationWelcome from 'apps/web/src/components/Grants/GrantApplicationWelcome';
 import GrantApplicationForm from 'apps/web/src/components/Grants/GrantApplicationForm';
 import GrantApplicationSubmitted from 'apps/web/src/components/Grants/GrantApplicationSubmitted';
 
@@ -51,8 +51,8 @@ export default function GrantApplication() {
     }
     return (
       <GrantApplicationForm
-        basenameRecords={memoizedTextRecords}
         basename={basename ?? ''}
+        basenameRecords={memoizedTextRecords}
         formSetter={setFormState}
       />
     );

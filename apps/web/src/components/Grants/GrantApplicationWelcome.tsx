@@ -1,21 +1,32 @@
-'use client';
-
-import { DOMAIN } from 'apps/web/pages/api/basenames/frame/constants';
-import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
+import { Suspense } from 'react';
+import { FramesProvider } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Frame';
+import { DOMAIN } from 'apps/web/pages/api/basenames/frame/constants';
 import {
   ConnectWalletButton,
   ConnectWalletButtonVariants,
 } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
-import { WelcomeProps } from 'apps/web/src/components/Grants/GrantApplicationWelcome/GrantApplicationWelcome';
-import { Suspense } from 'react';
+import GrantsFaq from 'apps/web/src/components/Grants/GrantsFaq';
 
-export default function WelcomeMessage({ addressCheck, basenameCheck }: WelcomeProps) {
-  const { frameInteractionError } = useFrameContext();
+export type WelcomeProps = {
+  addressCheck: boolean;
+  basenameCheck: boolean;
+};
 
-  let welcomeMessage: React.ReactNode;
+export default function GrantApplicationWelcome({ addressCheck, basenameCheck }: WelcomeProps) {
+  return (
+    <FramesProvider>
+      <div className="flex flex-col items-center gap-6 pb-16">
+        <WelcomeMessage addressCheck={addressCheck} basenameCheck={basenameCheck} />
+        <GrantsFaq />
+      </div>
+    </FramesProvider>
+  );
+}
+
+function WelcomeMessage({ addressCheck, basenameCheck }: WelcomeProps) {
   if (!addressCheck) {
-    welcomeMessage = (
+    return (
       <>
         <div className="text-center text-xl">Please connect a wallet to continue.</div>
         <ConnectWalletButton
@@ -25,7 +36,7 @@ export default function WelcomeMessage({ addressCheck, basenameCheck }: WelcomeP
       </>
     );
   } else if (!basenameCheck) {
-    welcomeMessage = (
+    return (
       <>
         <div className="text-center text-xl">
           This wallet is not associated with a basename. <br />
@@ -40,10 +51,5 @@ export default function WelcomeMessage({ addressCheck, basenameCheck }: WelcomeP
     );
   }
 
-  return (
-    <>
-      {welcomeMessage}
-      {frameInteractionError && <div>{frameInteractionError}</div>}
-    </>
-  );
+  return null;
 }
