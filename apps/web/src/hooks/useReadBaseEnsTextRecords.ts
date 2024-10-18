@@ -33,6 +33,8 @@ export default function useReadBaseEnsTextRecords({
       [UsernameTextRecordKeys.Discord]: '',
       [UsernameTextRecordKeys.Keywords]: '',
       [UsernameTextRecordKeys.Url]: '',
+      [UsernameTextRecordKeys.Url2]: '',
+      [UsernameTextRecordKeys.Url3]: '',
       [UsernameTextRecordKeys.Github]: '',
       [UsernameTextRecordKeys.Email]: '',
       [UsernameTextRecordKeys.Phone]: '',
