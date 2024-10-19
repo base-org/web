@@ -4223,5 +4223,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "Metacade",
+    "tags": [
+      "gaming"
+    ],
+    "description": "The Best Place to Play, Build, Connect and Earn Onchain.",
+    "url": "https://metacade.co/",
+    "imageUrl": "/images/partners/metacade_logo.png"
   }
 ]
