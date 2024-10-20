@@ -4223,5 +4223,12 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "Talentir",
+    "tags": ["social", "nft"],
+    "description": "Talentir brings YouTube channels onchain and lets creators & co-owners receive their YouTube AdSense as USDC on Base",
+    "url": "https://talentir.com,
+    "imageUrl": "/images/partners/talentir.png"
   }
 ]
