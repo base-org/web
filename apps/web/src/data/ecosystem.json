@@ -4223,5 +4223,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "Xocolatl Finance",
+    "tags": [
+      "defi"
+    ],
+    "description": "Xocolatl Finance: a scaffold-eth app for building on XOC smart contracts, a stablecoin pegged to the MXN peso.",
+    "url": "https://xocolatl.finance/",
+    "imageUrl": "/images/partners/xoc-logo.png"
   }
 ]
