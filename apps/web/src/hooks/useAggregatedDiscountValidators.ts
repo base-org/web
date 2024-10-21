@@ -66,7 +66,8 @@ export function useAggregatedDiscountValidators(code?: string) {
     loadingSummerPass ||
     loadingBaseDotEth ||
     loadingBNS ||
-    loadingDiscountCode;
+    loadingDiscountCode ||
+    loadingTalentProtocolAttestations;
 
   const discountsToAttestationData = useMemo<MappedDiscountData>(() => {
     const discountMapping: MappedDiscountData = {};
