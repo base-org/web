@@ -128,56 +128,53 @@ Use the "Inspect" feature in your browser to identify the element you wish to ov
   .base,
   .cyberpunk,
   .hacker {
-    --ock-border-radius: 4px; /* Keeping it sharp for the hacker theme */
-    --ock-border-radius-inner: 2px;
-
     /* Text colors */
-    --ock-text-inverse: #f1d579; /* Tuscany for inverted text */
-    --ock-text-foreground: #8c3e21; /* Cumin for regular text */
-    --ock-text-foreground-muted: #f1d579; /* Golden Sand for muted or secondary text */
-    --ock-text-error: #c85c2d; /* Tuscany for error text */
-    --ock-text-primary: #e1a04c; /* Anzac for primary text elements */
-    --ock-text-success: #f5b370; /* Rajah for success text */
-    --ock-text-warning: #f1d579; /* Golden Sand for warnings */
-    --ock-text-disabled: #8c3e21; /* Cumin for disabled text */
+    --ock-text-inverse: #f1d579;
+    --ock-text-foreground: #8c3e21;
+    --ock-text-foreground-muted: #f1d579;
+    --ock-text-error: #c85c2d;
+    --ock-text-primary: #e1a04c;
+    --ock-text-success: #f5b370;
+    --ock-text-warning: #f1d579;
+    --ock-text-disabled: #8c3e21;
 
     /* Background colors */
-    --ock-bg-default: #8c3e21; /* Cumin for primary background */
-    --ock-bg-default-hover: #c85c2d; /* Tuscany hover effect */
-    --ock-bg-default-active: #f1d579; /* Golden Sand active background */
-    --ock-bg-alternate: #f1d579; /* Golden Sand for alternate background */
-    --ock-bg-alternate-hover: #e1a04c; /* Anzac hover for alternate background */
-    --ock-bg-alternate-active: #c85c2d; /* Tuscany active for alternate */
-    --ock-bg-inverse: #c85c2d; /* Tuscany for inverse backgrounds */
-    --ock-bg-inverse-hover: #e1a04c; /* Anzac hover for inverse backgrounds */
-    --ock-bg-inverse-active: #f5b370; /* Rajah for active inverse */
-    --ock-bg-primary: #c85c2d; /* Tuscany for primary background */
-    --ock-bg-primary-hover: #e1a04c; /* Anzac hover for primary */
-    --ock-bg-primary-active: #f1d579; /* Golden Sand for active primary */
-    --ock-bg-primary-washed: #f5b370; /* Rajah for washed background effect */
-    --ock-bg-primary-disabled: #8c3e21; /* Cumin for disabled backgrounds */
-    --ock-bg-secondary: #e1a04c; /* Anzac for secondary background */
-    --ock-bg-secondary-hover: #f1d579; /* Golden Sand hover for secondary */
-    --ock-bg-secondary-active: #f5b370; /* Rajah for active secondary */
-    --ock-bg-error: #c85c2d; /* Tuscany for error backgrounds */
-    --ock-bg-warning: #f1d579; /* Golden Sand for warning backgrounds */
-    --ock-bg-success: #f5b370; /* Rajah for success backgrounds */
-    --ock-bg-default-reverse: #c85c2d; /* Tuscany for reverse default background */
+    --ock-bg-default: #8c3e21;
+    --ock-bg-default-hover: #c85c2d;
+    --ock-bg-default-active: #f1d579;
+    --ock-bg-alternate: #f1d579;
+    --ock-bg-alternate-hover: #e1a04c;
+    --ock-bg-alternate-active: #c85c2d;
+    --ock-bg-inverse: #c85c2d;
+    --ock-bg-inverse-hover: #e1a04c;
+    --ock-bg-inverse-active: #f5b370;
+    --ock-bg-primary: #c85c2d;
+    --ock-bg-primary-hover: #e1a04c;
+    --ock-bg-primary-active: #f1d579;
+    --ock-bg-primary-washed: #f5b370;
+    --ock-bg-primary-disabled: #8c3e21;
+    --ock-bg-secondary: #e1a04c;
+    --ock-bg-secondary-hover: #f1d579;
+    --ock-bg-secondary-active: #f5b370;
+    --ock-bg-error: #c85c2d;
+    --ock-bg-warning: #f1d579;
+    --ock-bg-success: #f5b370;
+    --ock-bg-default-reverse: #c85c2d;
 
     /* Icon colors */
-    --ock-icon-color-primary: #c85c2d; /* Tuscany for primary icons */
-    --ock-icon-color-foreground: #c85c2d; /* Golden Sand for regular icons */
-    --ock-icon-color-foreground-muted: #e1a04c; /* Anzac for muted icons */
-    --ock-icon-color-inverse: #f5b370; /* Rajah for inverse icons */
-    --ock-icon-color-error: #c85c2d; /* Tuscany for error icons */
-    --ock-icon-color-success: #f5b370; /* Rajah for success icons */
-    --ock-icon-color-warning: #f1d579; /* Golden Sand for warning icons */
+    --ock-icon-color-primary: #c85c2d;
+    --ock-icon-color-foreground: #c85c2d;
+    --ock-icon-color-foreground-muted: #e1a04c;
+    --ock-icon-color-inverse: #f5b370;
+    --ock-icon-color-error: #c85c2d;
+    --ock-icon-color-success: #f5b370;
+    --ock-icon-color-warning: #f1d579;
 
     /* Line colors */
-    --ock-line-primary: #c85c2d; /* Tuscany for primary lines */
-    --ock-line-default: #8c3e21; /* Cumin for default lines */
-    --ock-line-heavy: #f1d579; /* Golden Sand for heavy lines */
-    --ock-line-inverse: #e1a04c; /* Anzac for inverse lines */
+    --ock-line-primary: #c85c2d;
+    --ock-line-default: #8c3e21;
+    --ock-line-heavy: #f1d579;
+    --ock-line-inverse: #e1a04c;
   }
 }
 
