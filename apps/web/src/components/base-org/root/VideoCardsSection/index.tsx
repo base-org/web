@@ -23,7 +23,12 @@ export default function VideoCardsSection() {
         description={
           <span>
             Base is built as an Ethereum L2, decentralized with the{' '}
-            <Link href="https://optimism.io/build" className="hover:underline">
+            <Link
+              href="https://optimism.io/vision"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
               Optimism Superchain
             </Link>
             , and incubated by Coinbase.
