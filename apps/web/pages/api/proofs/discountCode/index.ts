@@ -4,7 +4,6 @@ import { logger } from 'apps/web/src/utils/logger';
 import { withTimeout } from 'apps/web/pages/api/decorators';
 import { Address, Hash, stringToHex } from 'viem';
 import { USERNAME_DISCOUNT_CODE_VALIDATORS } from 'apps/web/src/addresses/usernames';
-import { baseSepolia } from 'viem/chains';
 import { getDiscountCode } from 'apps/web/src/utils/proofs/discount_code_storage';
 
 export type DiscountCodeResponse = {
@@ -25,6 +24,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (validationErr) {
     return res.status(validationErr.status).json({ error: validationErr.error });
   }
+
+  const chainId = parseInt(chain as string);
 
   if (!code || typeof code !== 'string') {
     return res.status(500).json({ error: 'Discount code invalid' });
@@ -58,14 +59,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const signature = await signDiscountMessageWithTrustedSigner(
       address as Address,
       couponCodeUuid,
-      // TODO: Set variable chain
-      USERNAME_DISCOUNT_CODE_VALIDATORS[baseSepolia.id],
+      USERNAME_DISCOUNT_CODE_VALIDATORS[chainId],
       expirationTimeUnix,
     );
 
     // 4. Return the discount data
     const result: DiscountCodeResponse = {
-      discountValidatorAddress: USERNAME_DISCOUNT_CODE_VALIDATORS[baseSepolia.id],
+      discountValidatorAddress: USERNAME_DISCOUNT_CODE_VALIDATORS[chainId],
       address: address as Address,
       signedMessage: signature,
     };

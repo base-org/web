@@ -54,6 +54,9 @@ const discountTypes: DiscountTypesByChainId = {
     [DiscountType.EARLY_ACCESS]: {
       discountValidatorAddress: USERNAME_EA_DISCOUNT_VALIDATORS[base.id],
     },
+    [DiscountType.DISCOUNT_CODE]: {
+      discountValidatorAddress: USERNAME_DISCOUNT_CODE_VALIDATORS[base.id],
+    },
   },
   [baseSepolia.id]: {
     [DiscountType.CB]: {
