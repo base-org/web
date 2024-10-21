@@ -284,7 +284,7 @@ const config = {
               icon: 'farcaster',
               type: 'custom-dropdownLink',
               target: '_blank',
-              to: 'https://warpcast.com/~/channel/base',
+              to: 'https://warpcast.com/base',
               eventLabel: 'socials_farcaster',
               eventContext: 'navbar',
             },
