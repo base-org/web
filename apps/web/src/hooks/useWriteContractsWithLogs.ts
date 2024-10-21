@@ -55,7 +55,7 @@ export default function useWriteContractsWithLogs({
   // Errors & Analytics
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();
-  const { atomicBatch: atomicBatchEnabled } = useCapabilitiesSafe({ chain });
+  const { atomicBatch: atomicBatchEnabled } = useCapabilitiesSafe({ chainId: chain.id });
   const { chain: connectedChain } = useAccount();
 
   const [batchCallsStatus, setBatchCallsStatus] = useState<BatchCallsStatus>(BatchCallsStatus.Idle);
@@ -71,7 +71,7 @@ export default function useWriteContractsWithLogs({
   } = useWriteContracts();
 
   // Experimental: Track batch call status
-  const { data: sendCallsResult, isPending: sendCallsResultIsPending } = useCallsStatus({
+  const { data: sendCallsResult, isFetching: sendCallsResultIsFetching } = useCallsStatus({
     // @ts-expect-error: We can expect sendCallsId to be undefined since we're only enabling the query when defined
     id: sendCallsId,
     query: {
@@ -179,7 +179,7 @@ export default function useWriteContractsWithLogs({
   const batchCallsIsLoading =
     sendCallsIsPending ||
     transactionReceiptIsFetching ||
-    sendCallsResultIsPending ||
+    sendCallsResultIsFetching ||
     sendCallsResult?.status === 'PENDING';
   const batchCallsIsSuccess = sendCallsIsSuccess && transactionReceiptIsSuccess;
   const batchCallsIsError = sendCallsIsError || transactionReceiptIsError;

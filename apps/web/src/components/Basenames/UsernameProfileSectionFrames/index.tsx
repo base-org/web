@@ -8,7 +8,7 @@ import {
 } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import FarcasterAccountModal from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FarcasterAccountModal';
 import FrameListItem from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FrameListItem';
-import { Button, ButtonSizes } from 'apps/web/src/components/Button/Button';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { StaticImageData } from 'next/image';
@@ -16,20 +16,10 @@ import Link from 'next/link';
 import { useCallback } from 'react';
 import cornerGarnish from './corner-garnish.svg';
 import frameIcon from './frame-icon.svg';
-import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 function SectionContent() {
   const { profileUsername, currentWalletIsProfileOwner } = useUsernameProfile();
-  const {
-    frameInteractionError,
-    setFrameInteractionError,
-    frameUrls,
-    existingTextRecordsIsLoading,
-  } = useFrameContext();
-  const handleErrorClick = useCallback(
-    () => setFrameInteractionError(''),
-    [setFrameInteractionError],
-  );
+  const { frameUrls, existingTextRecordsIsLoading } = useFrameContext();
   const { logEventWithContext } = useAnalytics();
   const handleAddFrameLinkClick = useCallback(() => {
     logEventWithContext('basename_profile_frame_try_now_clicked', ActionType.click);
@@ -80,15 +70,6 @@ function SectionContent() {
           </Link>
         )}
       </div>
-      {frameInteractionError && (
-        <Button
-          size={ButtonSizes.Small}
-          onClick={handleErrorClick}
-          className="text-sm text-state-n-hovered"
-        >
-          {frameInteractionError}
-        </Button>
-      )}
       <div className="columns-1 p-4 xl:columns-2">
         {frameUrls.map((url) => (
           <FrameListItem url={url} key={url} />

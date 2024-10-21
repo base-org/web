@@ -9,6 +9,7 @@
 */
 
 import { Chain } from 'viem';
+import { base } from 'viem/chains';
 import { useAccount } from 'wagmi';
 import { useCapabilities } from 'wagmi/experimental';
 
@@ -18,14 +19,11 @@ const CAPABILITIES_LIST = ['atomicBatch', 'paymasterService', 'auxiliaryFunds'] 
 type ListedCapabilities = (typeof CAPABILITIES_LIST)[number];
 
 export type UseCapabilitiesSafeProps = {
-  chain?: Chain;
+  chainId?: Chain['id'];
 };
 
-export default function useCapabilitiesSafe({
-  chain: paramChain,
-}: UseCapabilitiesSafeProps): Record<ListedCapabilities, boolean> {
-  const { connector, isConnected, chain: accountChain } = useAccount();
-  const chain = paramChain ?? accountChain;
+export default function useCapabilitiesSafe({ chainId }: UseCapabilitiesSafeProps) {
+  const { connector, isConnected, chainId: currentChainId } = useAccount();
 
   // Metamask doesn't support wallet_getCapabilities
   const isMetamaskWallet = connector?.id === 'io.metamask';
@@ -33,9 +31,11 @@ export default function useCapabilitiesSafe({
 
   const { data: rawCapabilities } = useCapabilities({ query: { enabled } });
 
+  const featureChainId = chainId ?? currentChainId ?? base.id;
+
   function isCapabilitySupported(capability: ListedCapabilities) {
     return (
-      (chain && rawCapabilities && rawCapabilities[chain.id]?.[capability]?.supported === true) ??
+      (rawCapabilities && rawCapabilities[featureChainId]?.[capability]?.supported === true) ??
       false
     );
   }
