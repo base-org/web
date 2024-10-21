@@ -4,10 +4,13 @@ import { DiscountCodeResponse } from 'apps/web/pages/api/proofs/discountCode';
 import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
 import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
 import EarlyAccessValidatorABI from 'apps/web/src/abis/EarlyAccessValidator';
+import ERC1155DiscountValidator from 'apps/web/src/abis/ERC1155DiscountValidator';
 import ERC721ValidatorABI from 'apps/web/src/abis/ERC721DiscountValidator';
+import TalentProtocolDiscountValidatorABI from 'apps/web/src/abis/TalentProtocolDiscountValidator';
 import {
   BASE_DOT_ETH_ERC721_DISCOUNT_VALIDATOR,
   BUILDATHON_ERC721_DISCOUNT_VALIDATOR,
+  TALENT_PROTOCOL_DISCOUNT_VALIDATORS,
   USERNAME_1155_DISCOUNT_VALIDATORS,
 } from 'apps/web/src/addresses/usernames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
@@ -297,7 +300,7 @@ export function useSummerPassAttestations() {
     }
     return {
       address: discountValidatorAddress,
-      abi: ERC721ValidatorABI,
+      abi: ERC1155DiscountValidator,
       functionName: 'isValidDiscountRegistration',
       args: [address, '0x0'],
     };
@@ -555,4 +558,38 @@ export function useDiscountCodeAttestations(code?: string) {
     };
   }
   return { data: null, loading: loading || isLoading, error };
+}
+
+export function useTalentProtocolAttestations() {
+  const { address } = useAccount();
+  const { basenameChain } = useBasenameChain();
+
+  const discountValidatorAddress = TALENT_PROTOCOL_DISCOUNT_VALIDATORS[basenameChain.id];
+
+  const readContractArgs = useMemo(() => {
+    if (!address) {
+      return {};
+    }
+    return {
+      address: discountValidatorAddress,
+      abi: TalentProtocolDiscountValidatorABI,
+      functionName: 'isValidDiscountRegistration',
+      args: [address, '0x0'],
+    };
+  }, [address, discountValidatorAddress]);
+
+  const { data: isValid, isLoading, error } = useReadContract({ ...readContractArgs, query: {} });
+  console.log();
+  if (isValid && address) {
+    return {
+      data: {
+        discountValidatorAddress,
+        discount: Discount.TALENT_PROTOCOL,
+        validationData: '0x0' as `0x${string}`,
+      },
+      loading: false,
+      error: null,
+    };
+  }
+  return { data: null, loading: isLoading, error };
 }

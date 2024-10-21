@@ -91,3 +91,8 @@ export const USERNAME_DISCOUNT_CODE_VALIDATORS: AddressMap = {
   [baseSepolia.id]: '0x52acEeB464F600437a3681bEC087fb53F3f75638',
   [base.id]: '0x6F9A31238F502E9C9489274E59a44c967F4deC91',
 };
+
+export const TALENT_PROTOCOL_DISCOUNT_VALIDATORS: AddressMap = {
+  [baseSepolia.id]: '0x8b769A3fbC29AC02344218840602615B6c9200e7',
+  [base.id]: '0x0',
+};

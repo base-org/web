@@ -9,6 +9,7 @@ import {
   useCheckEAAttestations,
   useDiscountCodeAttestations,
   useSummerPassAttestations,
+  useTalentProtocolAttestations,
 } from 'apps/web/src/hooks/useAttestations';
 import { useActiveDiscountValidators } from 'apps/web/src/hooks/useReadActiveDiscountValidators';
 import { Discount } from 'apps/web/src/utils/usernames';
