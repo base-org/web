@@ -53,6 +53,8 @@ export function useAggregatedDiscountValidators(code?: string) {
   const { data: BNSData, loading: loadingBNS } = useBNSAttestations();
   const { data: DiscountCodeData, loading: loadingDiscountCode } =
     useDiscountCodeAttestations(code);
+  const { data: talentProtocolData, loading: loadingTalentProtocolAttestations } =
+    useTalentProtocolAttestations();
 
   const loadingDiscounts =
     loadingCoinbaseAttestations ||
@@ -126,6 +128,16 @@ export function useAggregatedDiscountValidators(code?: string) {
       ) {
         discountMapping[Discount.DISCOUNT_CODE] = {
           ...DiscountCodeData,
+          discountKey: validator.key,
+        };
+      }
+
+      if (
+        talentProtocolData &&
+        validator.discountValidator === talentProtocolData.discountValidatorAddress
+      ) {
+        discountMapping[Discount.TALENT_PROTOCOL] = {
+          ...talentProtocolData,
           discountKey: validator.key,
         };
       }
