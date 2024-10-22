@@ -4223,5 +4223,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
-  }
+  },
+  {
+  "name": "ArtGridz",
+  "tags": [
+    "gaming"
+  ],
+  "description": "Artgridz is a free2use pixel art platform on Base, where users can collaborate, create, own, and sell blockchain event based onchain NFTs to earn GRIDZ. No IPFS needed for image storage!  ",
+  "url": "https://artgridz.decentraplace.com",
+  "imageUrl": "/images/partners/artgridz.png"
+}
 ]
