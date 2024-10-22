@@ -6,8 +6,6 @@ import { useEffect, useMemo, useState } from 'react';
 import baseLoading from './base-loading.gif';
 import ImageCloudinary from 'apps/web/src/components/ImageCloudinary';
 import { ExclamationCircleIcon } from '@heroicons/react/16/solid';
-import { isDevelopment } from 'apps/web/src/constants';
-import ImageRaw from 'apps/web/src/components/ImageRaw';
 
 type StylingProps = {
   className?: string;
