@@ -4223,5 +4223,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "PVPBet",
+    "tags": [
+      "gaming"
+    ],
+    "description": "A decentralized PVP betting platform built on the Ethereum Virtual Machine (EVM). By enabling interaction with contracts through simple transfers, players can participate in bets without the need to connect a wallet or register. Rewards are automatically distributed once results are announced, ensuring a safe, convenient, and fast process.",
+    "url": "https://pvpbet.xyz/",
+    "imageUrl": "/images/partners/pvpbet.png"
   }
 ]
