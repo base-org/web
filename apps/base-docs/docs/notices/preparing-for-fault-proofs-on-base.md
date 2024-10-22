@@ -1,7 +1,7 @@
 ---
 title: Preparing for fault proofs on Base
 slug: /preparing-for-fault-proofs-on-base
-description: Fault proofs are expected to go live on Base Mainnet in late October / early November.
+description: Fault proofs are expected to go live on Base Mainnet in late October.
 keywords:
   [
     Fault proofs,
@@ -10,6 +10,7 @@ keywords:
     Permissionless output proposals,
     Permissionless challenges,
     Withdrawals,
+    Base Mainnet,
     DisputeGameFactory,
     L2OutputOracle,
     Seven-day finalization,
@@ -45,7 +46,7 @@ These changes allow anyone to withdraw funds from Base to L1 without having to r
 
 ## Preparing for fault proofs
 
-Fault proofs are expected to go live for Base Mainnet in late October / early November.
+Fault proofs are expected to go live for Base Mainnet in late October.
 
 **What’s changing for withdrawals:**
 
@@ -54,14 +55,12 @@ Fault proofs are expected to go live for Base Mainnet in late October / early No
 
 **If you are in the process of withdrawing your funds from L2 to L1:**
 
-- **Withdrawals _during_ or _after_ the fault proofs upgrade** for Base Mainnet will take at least seven days to complete.
-
-If your withdrawal of funds from Base to Ethereum coincides with the upgrade proceeding in late October / early November, you will be required to resubmit your withdrawal.
+- **Withdrawals _before_ the upgrade** must wait the 7-day challenge period before finalization.
+- **Withdrawals _during_ or _after_ the fault proofs upgrade** for Base Mainnet will be proven by the Fault Proof system and generally take 7 days to finalize, but could see additional delays if challenged.
 
 **If your team is operating a bridge on Base Mainnet:**
 
-- Please provide your users with a notice on your UI to inform them that fault proofs will be enabled for Base Mainnet in late October / early November.
-- Please ensure it’s clear to your users that withdrawals will now take at least seven days.
+- Please provide your users with a notice on your UI to inform them that fault proofs will be enabled for Base Mainnet in late October.
 - Assess and update your bridging logic, and make sure the new L1 contracts are being used.
 
 Fault proof contract upgrades will be completed atomically, meaning all affected L1 contracts will be upgraded in a single transaction. No action will be required from node operators.
