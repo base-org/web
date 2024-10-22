@@ -1,7 +1,7 @@
 ---
-title: Preparing for fault proofs on Base Sepolia
-slug: /preparing-for-fault-proofs-on-base-sepolia
-description: Fault proofs are expected to go live for Base Sepolia testnet in mid-July.
+title: Preparing for fault proofs on Base
+slug: /preparing-for-fault-proofs-on-base
+description: Fault proofs are expected to go live for Base in late October / early November.
 keywords:
   [
     Fault proofs,
@@ -10,7 +10,6 @@ keywords:
     Permissionless output proposals,
     Permissionless challenges,
     Withdrawals,
-    Base Sepolia testnet,
     DisputeGameFactory,
     L2OutputOracle,
     Seven-day finalization,
@@ -24,16 +23,16 @@ keywords:
     L1 to L2 deposits,
     L2 to L1 withdrawals,
     Mid-July upgrade,
-    Ethereum Sepolia,
+    Ethereum,
     Bridging logic,
-    Testnet funds,
+    Bridge funds,
     Decentralized validation,
     Community participation,
   ]
 hide_table_of_contents: true
 ---
 
-# Preparing for fault proofs on Base Sepolia (Testnet)
+# Preparing for fault proofs on Base
 
 Fault proofs are a critical implementation in an L2’s path towards decentralization. They enable a more decentralized approach to validating L2 state and pave the way towards more community participation.
 
@@ -46,25 +45,23 @@ These changes allow anyone to withdraw funds from Base to L1 without having to r
 
 ## Preparing for fault proofs
 
-Fault proofs are expected to go live for Base Sepolia (Testnet) in mid-July.
+Fault proofs are expected to go live for Base in late October / early November.
 
-**What’s changing for testnet withdrawals:**
+**What’s changing for withdrawals:**
 
 - Withdrawals will involve proving and finalizing based on the fault proof system.
-- Withdrawals will no longer be instantaneous: they will take at least seven days to finalize, but can take longer depending on the outcome of the corresponding dispute game used.
 - In addition, the 'DisputeGameFactory' will replace the 'L2OutputOracle' as the new contract for proposing output root statements. This change is part of the broader shift towards the fault proofing system, which is expected to enhance the security and reliability of the platform.
-   
-**If you are in the process of withdrawing your testnet funds from L2 to L1:**
 
-- **Withdrawals _before_ the upgrade in mid-July** will be processed instantaneously.
-- **Withdrawals _during_ or _after_ the fault proofs upgrade** for Base Sepolia will take at least seven days to complete.
+**If you are in the process of withdrawing your funds from L2 to L1:**
 
-If your withdrawal of testnet funds from Base Sepolia to Ethereum Sepolia coincides with the upgrade proceeding in mid-July, you will be required to resubmit your withdrawal.
+- **Withdrawals _during_ or _after_ the fault proofs upgrade** for Base will take at least seven days to complete.
 
-**If your team is operating a bridge on Base Sepolia:**
+If your withdrawal of funds from Base to Ethereum coincides with the upgrade proceeding in late October / early November, you will be required to resubmit your withdrawal.
 
-- Please provide your users with a notice on your UI to inform them that fault proofs will be enabled for Base Sepolia in mid-July.
-- Please ensure it’s clear to your users that testnet withdrawals will now take at least seven days.
+**If your team is operating a bridge on Base:**
+
+- Please provide your users with a notice on your UI to inform them that fault proofs will be enabled for Base in late October / early November.
+- Please ensure it’s clear to your users that withdrawals will now take at least seven days.
 - Assess and update your bridging logic, and make sure the new L1 contracts are being used.
 
 Fault proof contract upgrades will be completed atomically, meaning all affected L1 contracts will be upgraded in a single transaction. No action will be required from node operators.
