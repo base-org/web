@@ -94,5 +94,5 @@ export const USERNAME_DISCOUNT_CODE_VALIDATORS: AddressMap = {
 
 export const TALENT_PROTOCOL_DISCOUNT_VALIDATORS: AddressMap = {
   [baseSepolia.id]: '0x8b769A3fbC29AC02344218840602615B6c9200e7',
-  [base.id]: '0x0',
+  [base.id]: '0xb16A4f14A9dED9e27F0Fe59Dc907D245769de19E',
 };
