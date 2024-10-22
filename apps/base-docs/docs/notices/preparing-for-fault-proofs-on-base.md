@@ -1,7 +1,7 @@
 ---
 title: Preparing for fault proofs on Base
 slug: /preparing-for-fault-proofs-on-base
-description: Fault proofs are expected to go live for Base in late October / early November.
+description: Fault proofs are expected to go live on Base Mainnet in late October / early November.
 keywords:
   [
     Fault proofs,
@@ -32,7 +32,7 @@ keywords:
 hide_table_of_contents: true
 ---
 
-# Preparing for fault proofs on Base
+# Preparing for fault proofs on Base Mainnet
 
 Fault proofs are a critical implementation in an L2’s path towards decentralization. They enable a more decentralized approach to validating L2 state and pave the way towards more community participation.
 
@@ -45,7 +45,7 @@ These changes allow anyone to withdraw funds from Base to L1 without having to r
 
 ## Preparing for fault proofs
 
-Fault proofs are expected to go live for Base in late October / early November.
+Fault proofs are expected to go live for Base Mainnet in late October / early November.
 
 **What’s changing for withdrawals:**
 
@@ -54,13 +54,13 @@ Fault proofs are expected to go live for Base in late October / early November.
 
 **If you are in the process of withdrawing your funds from L2 to L1:**
 
-- **Withdrawals _during_ or _after_ the fault proofs upgrade** for Base will take at least seven days to complete.
+- **Withdrawals _during_ or _after_ the fault proofs upgrade** for Base Mainnet will take at least seven days to complete.
 
 If your withdrawal of funds from Base to Ethereum coincides with the upgrade proceeding in late October / early November, you will be required to resubmit your withdrawal.
 
-**If your team is operating a bridge on Base:**
+**If your team is operating a bridge on Base Mainnet:**
 
-- Please provide your users with a notice on your UI to inform them that fault proofs will be enabled for Base in late October / early November.
+- Please provide your users with a notice on your UI to inform them that fault proofs will be enabled for Base Mainnet in late October / early November.
 - Please ensure it’s clear to your users that withdrawals will now take at least seven days.
 - Assess and update your bridging logic, and make sure the new L1 contracts are being used.
 
