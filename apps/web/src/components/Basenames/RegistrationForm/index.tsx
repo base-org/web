@@ -331,7 +331,7 @@ export default function RegistrationForm() {
             </div>
           </div>
           {code && (
-            <div className="relative z-10 -mt-8 rounded-xl bg-gradient-to-r from-indigo-40 to-orange-30 px-4 py-4 pt-12 text-center text-lg text-white">
+            <div className="relative z-10 -mt-8 rounded-2xl bg-gradient-to-r from-indigo-40 to-orange-30 px-4 py-4 pt-12 text-center text-lg text-white">
               Claim your <strong>free creator basename</strong> &mdash; See you{' '}
               <strong>Friday at Botanica</strong>
             </div>
