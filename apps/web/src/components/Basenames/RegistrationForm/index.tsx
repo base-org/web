@@ -336,9 +336,9 @@ export default function RegistrationForm() {
             </div>
           </div>
           {code && (
-            <div className="relative z-10 -mt-8 rounded-xl bg-gradient-to-r from-indigo-40 to-orange-30 px-4 py-4 pt-12 text-center text-lg text-white">
-              Claim your <strong>free creator basename</strong> &mdash; See you this{' '}
-              <strong>friday for dinner</strong>
+            <div className="relative z-10 -mt-8 rounded-2xl bg-gradient-to-r from-indigo-40 to-orange-30 px-4 py-4 pt-12 text-center text-lg text-white">
+              Claim your <strong>free creator basename</strong> &mdash; See you{' '}
+              <strong>Friday at Botanica</strong>
             </div>
           )}
 
@@ -346,7 +346,7 @@ export default function RegistrationForm() {
             <TransactionError className="mt-4 text-center" error={registerNameError} />
           )}
 
-          {!IS_EARLY_ACCESS && (
+          {!code && !IS_EARLY_ACCESS && (
             <div className="mt-6 w-full ">
               <p className="text mr-2 text-center font-bold uppercase ">
                 <span className="text-[#5B616E]">

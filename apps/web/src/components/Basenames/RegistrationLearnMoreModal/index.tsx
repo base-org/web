@@ -10,6 +10,7 @@ import summerPassLvl3 from './images/summer-pass-lvl-3.svg';
 import cbidVerification from './images/cbid-verification.svg';
 import BNSOwnership from './images/bns.jpg';
 import BaseNFT from './images/base-nft.svg';
+import TalentProtocolIcon from './images/TalentProtocol.svg';
 import coinbaseOneVerification from './images/coinbase-one-verification.svg';
 import coinbaseVerification from './images/coinbase-verification.svg';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
@@ -72,7 +73,7 @@ export default function RegistrationLearnMoreModal({
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={coinbaseVerification as StaticImageData}
-                  alt="criteria icon"
+                  alt="icon of coinbase"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
@@ -93,7 +94,7 @@ export default function RegistrationLearnMoreModal({
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={coinbaseOneVerification as StaticImageData}
-                  alt="criteria icon"
+                  alt="icon of coinbase one"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
@@ -114,7 +115,7 @@ export default function RegistrationLearnMoreModal({
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={cbidVerification as StaticImageData}
-                  alt="criteria icon"
+                  alt="icon of CBID"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
@@ -135,7 +136,7 @@ export default function RegistrationLearnMoreModal({
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={baseBuildathonParticipant as StaticImageData}
-                  alt="criteria icon"
+                  alt="icon of base buildathon"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
@@ -152,11 +153,32 @@ export default function RegistrationLearnMoreModal({
             )}
           </li>
           <li className="flex items-center gap-3">
+            <Tooltip content="Available for anyone with an onchain builder score 50+. Go to passport.talentprotocol.com to mint yours.">
+              <div className="flex flex-row items-center justify-start gap-2">
+                <ImageWithLoading
+                  src={TalentProtocolIcon as StaticImageData}
+                  alt="icon of talent protocol"
+                  width={30}
+                  height={30}
+                  wrapperClassName="rounded-full"
+                  imageClassName={BaseDotEthNFTRowClasses}
+                />
+                <p className={BaseDotEthNFTRowClasses}>Builder score 50+</p>
+                <InfoIcon />
+              </div>
+            </Tooltip>
+            {allActiveDiscounts.has(Discount.BASE_DOT_ETH_NFT) && (
+              <div className={qualifiedClasses}>
+                <p className="text-green-60">Qualified</p>
+              </div>
+            )}
+          </li>
+          <li className="flex items-center gap-3">
             <Tooltip content="Available for anyone holding a Summer Pass Level 3 NFT. Go to wallet.coinbase.com/ocs to get your Summer Pass">
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={summerPassLvl3 as StaticImageData}
-                  alt="criteria icon"
+                  alt="icon of summer pass"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
@@ -177,7 +199,7 @@ export default function RegistrationLearnMoreModal({
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={BNSOwnership}
-                  alt="criteria icon"
+                  alt="icon of BNS"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
@@ -198,7 +220,7 @@ export default function RegistrationLearnMoreModal({
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={BaseNFT as StaticImageData}
-                  alt="criteria icon"
+                  alt="icon of Base"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
