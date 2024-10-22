@@ -4223,5 +4223,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "LINK",
+    "tags": [
+      "infra"
+    ],
+    "description": "LINK is building the infrastructure layer for global FX onchain powered by fiat-backed stablecoins enabling businesses make instant, affordable and compliant payments globally..",
+    "url": "https://linkio.world/",
+    "imageUrl": "/images/partners/link_icon.png"
   }
 ]
