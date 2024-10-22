@@ -105,37 +105,22 @@ function TransitionWrapper({
       </div>
 
       {/* Image */}
-      {src &&
-        (isDevelopment ? (
-          <ImageRaw
-            {...stylingProps}
-            src={src}
-            alt={alt}
-            width={maxFrameImageWidth}
-            onLoad={onImageLoadEnd}
-            data-aspect-ratio={ar}
-            style={style}
-            className={classNames('transition-opacity duration-500', {
-              'opacity-0': isLoading || isTransitioning,
-              'opacity-100': !isLoading && !isTransitioning,
-            })}
-          />
-        ) : (
-          <ImageCloudinary
-            {...stylingProps}
-            src={src}
-            alt={alt}
-            width={maxFrameImageWidth}
-            onLoad={onImageLoadEnd}
-            onError={onImageLoadEnd}
-            data-aspect-ratio={ar}
-            style={style}
-            className={classNames('transition-opacity duration-500', {
-              'opacity-0': isLoading || isTransitioning,
-              'opacity-100': !isLoading && !isTransitioning,
-            })}
-          />
-        ))}
+      {src && (
+        <ImageCloudinary
+          {...stylingProps}
+          src={src}
+          alt={alt}
+          width={maxFrameImageWidth}
+          onLoad={onImageLoadEnd}
+          onError={onImageLoadEnd}
+          data-aspect-ratio={ar}
+          style={style}
+          className={classNames('transition-opacity duration-500', {
+            'opacity-0': isLoading || isTransitioning,
+            'opacity-100': !isLoading && !isTransitioning,
+          })}
+        />
+      )}
     </div>
   );
 }
