@@ -579,7 +579,6 @@ export function useTalentProtocolAttestations() {
   }, [address, discountValidatorAddress]);
 
   const { data: isValid, isLoading, error } = useReadContract({ ...readContractArgs, query: {} });
-  console.log();
   if (isValid && address) {
     return {
       data: {

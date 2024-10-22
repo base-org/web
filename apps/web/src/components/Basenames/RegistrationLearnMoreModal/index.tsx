@@ -73,7 +73,7 @@ export default function RegistrationLearnMoreModal({
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={coinbaseVerification as StaticImageData}
-                  alt=""
+                  alt="icon of coinbase"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
@@ -94,7 +94,7 @@ export default function RegistrationLearnMoreModal({
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={coinbaseOneVerification as StaticImageData}
-                  alt=""
+                  alt="icon of coinbase one"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
@@ -115,7 +115,7 @@ export default function RegistrationLearnMoreModal({
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={cbidVerification as StaticImageData}
-                  alt=""
+                  alt="icon of CBID"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
@@ -136,7 +136,7 @@ export default function RegistrationLearnMoreModal({
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={baseBuildathonParticipant as StaticImageData}
-                  alt=""
+                  alt="icon of base buildathon"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
@@ -157,7 +157,7 @@ export default function RegistrationLearnMoreModal({
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={TalentProtocolIcon as StaticImageData}
-                  alt=""
+                  alt="icon of talent protocol"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
@@ -178,7 +178,7 @@ export default function RegistrationLearnMoreModal({
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={summerPassLvl3 as StaticImageData}
-                  alt=""
+                  alt="icon of summer pass"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
@@ -199,7 +199,7 @@ export default function RegistrationLearnMoreModal({
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={BNSOwnership}
-                  alt=""
+                  alt="icon of BNS"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
@@ -220,7 +220,7 @@ export default function RegistrationLearnMoreModal({
               <div className="flex flex-row items-center justify-start gap-2">
                 <ImageWithLoading
                   src={BaseNFT as StaticImageData}
-                  alt=""
+                  alt="icon of Base"
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
