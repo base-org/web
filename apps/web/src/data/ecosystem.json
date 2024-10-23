@@ -4223,5 +4223,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "ETH  Gas Tracker",
+    "tags": [
+      "infra"
+    ],
+    "description": "Monitor and track Ethereum and L2 gas prices to reduce transaction fees, save money and take control of your blockchain experience.",
+    "url": "https://www.ethgastracker.com/",
+    "imageUrl": "/images/partners/ethgastracker.png"
   }
 ]
