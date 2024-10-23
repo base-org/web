@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import Button from 'apps/web/src/components/base-org/Button';
-import appendGrantApplicationToGoogleSheet from 'apps/web/src/utils/googleApi/appendToGoogleSheet';
+import appendGrantApplicationToGoogleSheet from 'apps/web/src/utils/googleApi/appendToGoogleSheet'
 import {
   FormStates,
   type GrantApplicationData,
