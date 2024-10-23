@@ -70,7 +70,7 @@ export default function GrantApplicationForm({
       console.error('invalid form');
       return;
     }
-    appendGrantApplicationToGoogleSheet(grantApp, reqUrl, sheetId)
+    void appendGrantApplicationToGoogleSheet(grantApp, reqUrl, sheetId)
       .then((res) => {
         if (res.success) {
           formSetter(FormStates.Submitted);

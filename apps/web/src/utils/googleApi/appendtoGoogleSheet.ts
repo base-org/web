@@ -1,16 +1,21 @@
 import { type GrantApplicationData } from 'apps/web/src/components/Grants/grantApplicationTypes';
 import { getAccessToken } from 'apps/web/src/utils/googleApi/googleApiOAuth2';
 
-type AppendCellsResponseData = {
+type AppendCellsApiResponseData = {
   spreadsheetId: string;
   replies: unknown[];
 };
+
+type AppendGrantApplicationResult = {
+  spreadsheetId?: string;
+  success: boolean;
+}
 
 export async function appendGrantApplicationToGoogleSheet(
   app: GrantApplicationData,
   reqUrl: string,
   sheetId: string,
-) {
+): Promise<AppendGrantApplicationResult> {
   const reqBody = {
     requests: [
       {
@@ -86,7 +91,7 @@ export async function appendGrantApplicationToGoogleSheet(
     if (!res.ok) {
       throw new Error(`HTTP error. Status: ${res.status}`);
     }
-    const data = (await res.json()) as AppendCellsResponseData;
+    const data = (await res.json()) as AppendCellsApiResponseData;
     return {
       spreadsheetId: data.spreadsheetId,
       success: true,
