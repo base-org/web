@@ -52,6 +52,9 @@ export default function RegistrationLearnMoreModal({
   const BaseDotEthNFTRowClasses = classNames(rowClasses, {
     'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.BASE_DOT_ETH_NFT),
   });
+  const TalentProtocolRowClasses = classNames(rowClasses, {
+    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.TALENT_PROTOCOL),
+  });
 
   const qualifiedClasses = classNames(
     'flex flex-row items-center justify-center py-3 px-1 h-5 text-xs bg-green-0 rounded ml-3',
@@ -161,9 +164,9 @@ export default function RegistrationLearnMoreModal({
                   width={30}
                   height={30}
                   wrapperClassName="rounded-full"
-                  imageClassName={BaseDotEthNFTRowClasses}
+                  imageClassName={TalentProtocolRowClasses}
                 />
-                <p className={BaseDotEthNFTRowClasses}>Builder score 50+</p>
+                <p className={TalentProtocolRowClasses}>Builder score 50+</p>
                 <InfoIcon />
               </div>
             </Tooltip>
