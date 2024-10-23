@@ -68,7 +68,7 @@ async function getBatchValuesFromGoogleSheet(requestUrl: string) {
     if (!res.ok) {
       throw new Error(`HTTP error. Status: ${res.status}`);
     }
-    const data = await res.json();
+    const data: unknown = await res.json();
     return data;
   } catch (error) {
     console.error('Error:', error);
