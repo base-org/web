@@ -32,7 +32,7 @@ export function useRegisterNameCallback(
   const { address } = useAccount();
   const { basenameChain } = useBasenameChain();
   const { logError } = useErrors();
-  const { paymasterServiceEnabled } = useCapabilitiesSafe({
+  const { paymasterService: paymasterServiceEnabled } = useCapabilitiesSafe({
     chainId: basenameChain.id,
   });
 
