@@ -31,6 +31,8 @@ function DropdownLink({ href, label, color, externalLink }: DropdownLinkProps) {
       className={`whitespace-nowrap px-10 py-[1.25rem] font-mono text-xl hover:underline ${reverseTextColor(
         color,
       )}`}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       {label}
     </Link>
@@ -108,7 +110,7 @@ function IconLink({
   title: string;
 }) {
   return (
-    <a href={href} title={title} className="p-4">
+    <a href={href} title={title} className="p-4" >
       <div className="flex flex-row items-center gap-4">
         <Icon name={icon} width="24" height="24" color={REVERSE_COLOR[color]} />
         <span className={`${reverseTextColor(color)}`}>{label}</span>
@@ -126,6 +128,8 @@ function DesktopNav({ color }: DesktopNavProps) {
           href="https://paragraph.xyz/@grants.base.eth/calling-based-builders"
           label="Grants"
           color={color}
+          target="_blank"
+          rel="noopener noreferrer"
           externalLink
         />
       </Dropdown>
@@ -136,6 +140,8 @@ function DesktopNav({ color }: DesktopNavProps) {
           href="https://base.blockscout.com/"
           label="Block Explorer"
           color={color}
+          target="_blank"
+          rel="noopener noreferrer"
           externalLink
         />
         <DropdownLink href="https://status.base.org" label="Status" color={color} externalLink />
@@ -143,6 +149,8 @@ function DesktopNav({ color }: DesktopNavProps) {
           href="https://hackerone.com/coinbase"
           label="Bug Bounty"
           color={color}
+          target="_blank"
+          rel="noopener noreferrer"
           externalLink
         />
         <DropdownLink
@@ -171,6 +179,8 @@ function DesktopNav({ color }: DesktopNavProps) {
           label="Discord"
           color={color}
           title="Join us on Discord"
+          target="_blank"
+          rel="noopener noreferrer"
         />
         <IconLink
           href="https://twitter.com/base"
@@ -178,6 +188,8 @@ function DesktopNav({ color }: DesktopNavProps) {
           label="Twitter"
           color={color}
           title="Join us on Twitter"
+          target="_blank"
+          rel="noopener noreferrer"
         />
         <IconLink
           href="https://github.com/base-org"
@@ -185,6 +197,8 @@ function DesktopNav({ color }: DesktopNavProps) {
           label="Github"
           color={color}
           title="Join us on Github"
+          target="_blank"
+          rel="noopener noreferrer"
         />
       </Dropdown>
     </div>
