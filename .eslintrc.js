@@ -2,7 +2,6 @@ module.exports = {
   root: true,
   reportUnusedDisableDirectives: true,
   overrides: [
-    // Docusaurus, Storybook
     {
       files: [
         'apps/*-docs/**/*',
@@ -11,11 +10,13 @@ module.exports = {
         'examples/storybook/**/*',
       ],
       rules: {
+        // Disable rule for extraneous dependencies in documentation and Storybook
         'import/no-extraneous-dependencies': 'off',
       },
     },
   ],
   parserOptions: {
+    // Enable experimental project service
     EXPERIMENTAL_useProjectService: true,
   },
   plugins: ['react-perf', 'relay', '@typescript-eslint', 'import'],
@@ -26,116 +27,80 @@ module.exports = {
     'plugin:relay/strict',
   ],
   rules: {
+    // General import settings
     'import/extensions': ['error', 'never'],
-    'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx', '.mdx'] }],
-
-    // We utilize prop spreading
+    
+    // Disable certain React rules as TypeScript is used
     'react/jsx-props-no-spreading': 'off',
-
-    // We utilize class properties
     'react/state-in-constructor': 'off',
-
-    // Dont use prop types since were using TypeScript
-    'react/default-props-match-prop-types': 'off',
-    'react/forbid-foreign-prop-types': 'off',
-    'react/forbid-prop-types': 'off',
-    'react/no-unused-prop-types': 'off',
-    'react/prefer-read-only-props': 'off',
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
-    'react/sort-prop-types': 'off',
+    'react/jsx-one-expression-per-line': 'off',
 
-    // Performance: Avoid unnecessary renders
+    // Performance-related rules
     'react-perf/jsx-no-new-array-as-prop': 'warn',
     'react-perf/jsx-no-new-function-as-prop': 'warn',
     'react-perf/jsx-no-new-object-as-prop': ['warn', { nativeAllowList: ['style'] }],
-
-    // We prefer function declarations
+    
+    // Component definition style
     'react/function-component-definition': [
       'error',
       { namedComponents: 'function-declaration', unnamedComponents: 'function-expression' },
     ],
-
-    // We prefer on/handle named events
+    
+    // Enforce named event handlers
     'react/jsx-handler-names': 'error',
 
-    // We require named functions for inferred `displayName`
-    // This is required for memo() and forwardRef() usage
-    'prefer-arrow-callback': ['error', { allowNamedFunctions: true }],
-
-    'react/jsx-one-expression-per-line': 'off',
-
-    // We dont use flow
+    // Disable Flow rules, using TypeScript instead
     'relay/generated-flow-types': 'off',
 
-    // Shorthand types
+    // TypeScript rules
     '@typescript-eslint/array-type': ['error', { default: 'array' }],
-    '@typescript-eslint/consistent-indexed-object-style': ['error', 'record'],
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
-    '@typescript-eslint/method-signature-style': ['error', 'property'],
-    '@typescript-eslint/no-inferrable-types': 'error',
-
-    // Forbid types
-    '@typescript-eslint/ban-types': 'error',
     '@typescript-eslint/no-explicit-any': ['error', { fixToUnknown: true }],
-    '@typescript-eslint/no-invalid-void-type': 'error',
-    '@typescript-eslint/no-unsafe-argument': 'error',
-    '@typescript-eslint/no-unsafe-assignment': 'error',
-    '@typescript-eslint/no-unsafe-call': 'error',
-    '@typescript-eslint/no-unsafe-return': 'error',
+    
+    // Enforce type safety
+    '@typescript-eslint/no-unsafe-*': 'error',
 
-    // Readability
-    '@typescript-eslint/adjacent-overload-signatures': 'error',
-    '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: false }],
-    '@typescript-eslint/parameter-properties': 'error',
-    '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
-    '@typescript-eslint/no-use-before-define': 'off',
+    // Promote newer TypeScript features
+    '@typescript-eslint/prefer-optional-chain': 'error',
+    '@typescript-eslint/prefer-nullish-coalescing': 'error',
 
-    // Correctness
-    '@typescript-eslint/switch-exhaustiveness-check': 'error',
-    '@typescript-eslint/no-for-in-array': 'error',
-    '@typescript-eslint/no-misused-new': 'error',
-    '@typescript-eslint/no-this-alias': 'error',
-    '@typescript-eslint/no-unnecessary-qualifier': 'error',
-    '@typescript-eslint/no-unnecessary-type-assertion': 'error',
-    '@typescript-eslint/no-unnecessary-type-constraint': 'error',
-    '@typescript-eslint/prefer-for-of': 'error',
-    '@typescript-eslint/prefer-literal-enum-member': 'error',
-    '@typescript-eslint/restrict-plus-operands': ['error', { skipCompoundAssignments: false }],
-    '@typescript-eslint/unified-signatures': 'error',
-
-    // Assertions
+    // Require consistent type usage
     '@typescript-eslint/consistent-type-assertions': 'error',
     '@typescript-eslint/no-confusing-non-null-assertion': 'error',
-    '@typescript-eslint/no-extra-non-null-assertion': 'error',
     '@typescript-eslint/no-non-null-assertion': 'error',
-    '@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
     '@typescript-eslint/prefer-as-const': 'error',
 
-    // Comments
-    '@typescript-eslint/ban-ts-comment': ['error', { 'ts-expect-error': 'allow-with-description' }],
-    '@typescript-eslint/prefer-ts-expect-error': 'error',
-    '@typescript-eslint/triple-slash-reference': [
-      'error',
-      { path: 'never', types: 'never', lib: 'never' },
-    ],
-
-    // Async
-    'no-void': 'off',
+    // Promises handling
     '@typescript-eslint/await-thenable': 'error',
     '@typescript-eslint/no-floating-promises': 'error',
     '@typescript-eslint/no-misused-promises': 'error',
     '@typescript-eslint/promise-function-async': 'error',
 
-    // APIs
-    '@typescript-eslint/prefer-includes': 'error',
-    '@typescript-eslint/prefer-nullish-coalescing': 'error',
-    '@typescript-eslint/prefer-optional-chain': 'error',
-    '@typescript-eslint/prefer-string-starts-ends-with': 'error',
+    // Other improvements
+    '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: false }],
+    '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
+    '@typescript-eslint/prefer-for-of': 'error',
+    '@typescript-eslint/restrict-plus-operands': ['error', { skipCompoundAssignments: false }],
 
-    // Hard to migrate
-    // Errors for all try/catch blocks and any types from third-parties
+    // Comment rules
+    '@typescript-eslint/ban-ts-comment': ['error', { 'ts-expect-error': 'allow-with-description' }],
+    '@typescript-eslint/prefer-ts-expect-error': 'error',
+    '@typescript-eslint/triple-slash-reference': ['error', { path: 'never', types: 'never', lib: 'never' }],
+
+    // Structure and correctness rules
+    '@typescript-eslint/switch-exhaustiveness-check': 'error',
+    '@typescript-eslint/no-for-in-array': 'error',
+    '@typescript-eslint/no-this-alias': 'error',
+    '@typescript-eslint/no-unnecessary-qualifier': 'error',
+    '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+    '@typescript-eslint/no-unnecessary-type-constraint': 'error',
+    '@typescript-eslint/prefer-literal-enum-member': 'error',
+    '@typescript-eslint/unified-signatures': 'error',
+
+    // Disable rule for unsafe member access
     '@typescript-eslint/no-unsafe-member-access': 'off',
   },
 };
