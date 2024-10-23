@@ -19,7 +19,16 @@ export async function appendGrantApplicationToGoogleSheet(
           rows: [
             {
               values: [
-                { userEnteredValue: { stringValue: app.nomineeName } },
+                {
+                  userEnteredValue: {
+                    stringValue: new Date().toISOString(),
+                  },
+                },
+                {
+                  userEnteredValue: {
+                    stringValue: app.nomineeName,
+                  },
+                },
                 {
                   userEnteredValue: {
                     stringValue: app.nomineeEmail,
