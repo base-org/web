@@ -1,8 +1,7 @@
-export default function GrantApplicationSubmitted({ applications }: { applications: string[][] }) {
+export default function GrantApplicationSubmitted() {
   return (
     <div>
-      <h1 className="text-2xl m-6">Thanks for being a great Base community member.</h1>
-      
+      <h1 className="m-6 text-2xl">Thanks for submitting your application.</h1>
     </div>
   );
 }

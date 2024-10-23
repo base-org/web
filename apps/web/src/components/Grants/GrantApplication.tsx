@@ -81,7 +81,7 @@ export default function GrantApplication() {
       }
       break;
     case FormStates.Submitted:
-      applicationStep = <GrantApplicationSubmitted applications={applications} />;
+      applicationStep = <GrantApplicationSubmitted />;
       break;
     default:
       applicationStep = null;
