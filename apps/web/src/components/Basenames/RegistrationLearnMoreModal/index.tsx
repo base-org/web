@@ -167,7 +167,7 @@ export default function RegistrationLearnMoreModal({
                 <InfoIcon />
               </div>
             </Tooltip>
-            {allActiveDiscounts.has(Discount.BASE_DOT_ETH_NFT) && (
+            {allActiveDiscounts.has(Discount.TALENT_PROTOCOL) && (
               <div className={qualifiedClasses}>
                 <p className="text-green-60">Qualified</p>
               </div>
