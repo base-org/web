@@ -7,7 +7,7 @@ module.exports = {
       label: 'Notices',
       collapsible: false,
       collapsed: false,
-      items: ['notices/preparing-for-fault-proofs-on-base-sepolia'],
+      items: ['notices/preparing-for-fault-proofs-on-base'],
     },
     {
       type: 'category',

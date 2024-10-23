@@ -5,10 +5,16 @@ import RegistrationProvider from 'apps/web/src/components/Basenames/Registration
 
 const usernameRegistrationAnalyticContext = 'username_registration';
 
-export default function RegistrationProviders({ children }: { children: React.ReactNode }) {
+export default function RegistrationProviders({
+  children,
+  code,
+}: {
+  children: React.ReactNode;
+  code?: string;
+}) {
   return (
     <AnalyticsProvider context={usernameRegistrationAnalyticContext}>
-      <RegistrationProvider>{children}</RegistrationProvider>
+      <RegistrationProvider code={code}>{children}</RegistrationProvider>
     </AnalyticsProvider>
   );
 }

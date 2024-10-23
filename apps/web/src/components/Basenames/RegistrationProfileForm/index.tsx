@@ -12,7 +12,6 @@ import Fieldset from 'apps/web/src/components/Fieldset';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
 import TransactionError from 'apps/web/src/components/TransactionError';
-import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
 import {
   UsernameTextRecordKeys,
@@ -33,13 +32,9 @@ export default function RegistrationProfileForm() {
   const [currentFormStep, setCurrentFormStep] = useState<FormSteps>(FormSteps.Description);
   const [transitionStep, setTransitionStep] = useState<boolean>(false);
   const { logError } = useErrors();
-  const { redirectToProfile } = useRegistration();
+  const { redirectToProfile, selectedNameFormatted } = useRegistration();
   const { address } = useAccount();
   const { logEventWithContext } = useAnalytics();
-
-  const { data: baseEnsName } = useBaseEnsName({
-    address,
-  });
 
   const {
     updateTextRecords,
@@ -49,7 +44,7 @@ export default function RegistrationProfileForm() {
     writeTextRecordsError,
   } = useWriteBaseEnsTextRecords({
     address: address,
-    username: baseEnsName,
+    username: selectedNameFormatted,
     onSuccess: () => {
       redirectToProfile();
     },
@@ -108,37 +103,37 @@ export default function RegistrationProfileForm() {
 
   const descriptionLabelChildren = (
     <div className="flex w-full cursor-pointer flex-col">
-      <p className="flex flex-row justify-between text-black">
+      <div className="flex flex-row justify-between text-black">
         <div className="flex flex-row items-center gap-1 text-blue-500">
           <Icon name="blueCircle" color="currentColor" height="0.8rem" width="0.8rem" />
           <strong className="text-black">Add Bio</strong>
         </div>
         <span className="font-normal">Step 1 of 3</span>
-      </p>
+      </div>
     </div>
   );
 
   const socialsLabelChildren = (
     <div className="flex w-full cursor-pointer flex-col">
-      <p className="flex flex-row justify-between text-black">
+      <div className="flex flex-row justify-between text-black">
         <div className="flex flex-row items-center gap-1 text-blue-500">
           <Icon name="blueCircle" color="currentColor" height="0.8rem" width="0.8rem" />
           <strong className="text-black">Add Socials</strong>
         </div>
         <span className="font-normal">Step 2 of 3</span>
-      </p>
+      </div>
     </div>
   );
 
   const keywordsLabelChildren = (
     <div className="mb-2 flex w-full cursor-pointer flex-col">
-      <p className="flex flex-row justify-between text-black">
+      <div className="flex flex-row justify-between text-black">
         <div className="flex flex-row items-center gap-1 text-blue-500">
           <Icon name="blueCircle" color="currentColor" height="0.8rem" width="0.8rem" />
           <strong className="text-black">Add areas of expertise</strong>
         </div>
         <span className="font-normal">Step 3 of 3</span>
-      </p>
+      </div>
     </div>
   );
 

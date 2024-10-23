@@ -46,7 +46,7 @@ export default async function Home() {
               </Container>
             </div>
             <div className="px-[1rem] lg:mr-16 lg:self-end">
-              <Link href="https://optimism.io/build">
+              <Link href="https://optimism.io/vision" target="_blank" rel="noopener noreferrer">
                 <div className="flex flex-row gap-2">
                   <Image src={OpLogo as StaticImageData} alt="optimism logo" />
                   <span>Built on the Superchain</span>
