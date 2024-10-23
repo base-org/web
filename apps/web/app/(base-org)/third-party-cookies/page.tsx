@@ -36,7 +36,7 @@ export default async function ThirdPartyCookies() {
                 <td className="w-1/4 p-4">__cf_bm</td>
                 <td className="w-2/4 p-4">Used to prevent bot traffic</td>
                 <td className="w-1/4 p-4">
-                  <a href="https://www.cloudflare.com/cookie-policy/" className="text-blue-500">
+                  <a href="https://www.cloudflare.com/cookie-policy/" className="text-blue-500" target="_blank" rel="noopener noreferrer" title="Read Cloudflare's cookie policy">
                     Cloudflare Cookie Policy
                   </a>
                 </td>
