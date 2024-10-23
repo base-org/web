@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import Button from 'apps/web/src/components/base-org/Button';
-import { appendGrantApplicationToGoogleSheet } from 'apps/web/src/utils/googleApi/appendToGoogleSheet';
+import appendGrantApplicationToGoogleSheet from 'apps/web/src/utils/googleApi/appendToGoogleSheet';
 import {
   FormStates,
   type GrantApplicationData,
@@ -70,7 +70,7 @@ export default function GrantApplicationForm({
       console.error('invalid form');
       return;
     }
-    void appendGrantApplicationToGoogleSheet(grantApp, reqUrl, sheetId)
+    appendGrantApplicationToGoogleSheet(grantApp, reqUrl, sheetId)
       .then((res) => {
         if (res.success) {
           formSetter(FormStates.Submitted);
