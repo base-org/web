@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useAccount } from 'wagmi';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
@@ -8,11 +8,14 @@ import { FormStates } from 'apps/web/src/components/Grants/grantApplicationTypes
 import GrantApplicationWelcome from 'apps/web/src/components/Grants/GrantApplicationWelcome';
 import GrantApplicationForm from 'apps/web/src/components/Grants/GrantApplicationForm';
 import GrantApplicationSubmitted from 'apps/web/src/components/Grants/GrantApplicationSubmitted';
+import getApplicationsByBasename from 'apps/web/src/utils/googleApi/readFromGoogleSheet';
+import GrantApplicationStatusTable from 'apps/web/src/components/Grants/GrantApplicationStatusTable';
 
 export default function GrantApplication() {
   const [textRecordsLoading, setTextRecordsLoading] = useState(true);
   const [formState, setFormState] = useState<FormStates>(FormStates.Welcome);
-
+  const [applications, setApplications] = useState<string[][]>([]);
+  const [showExistingApplications, setShowExistingApplications] = useState(false);
   const { address } = useAccount();
   const { data: basename, isLoading: isBasenameLoading } = useBaseEnsName({ address });
   const textRecords = useReadBaseEnsTextRecords({ address, username: basename });
@@ -38,27 +41,59 @@ export default function GrantApplication() {
     }
   }, [textRecords.existingTextRecordsIsLoading]);
 
-  if (formState === FormStates.Welcome) {
-    if (isBasenameLoading) {
+  useEffect(() => {
+    if (!basename) {
+      setApplications([]);
       return;
     }
-    return <GrantApplicationWelcome addressCheck={!!address} basenameCheck={!!basename} />;
+
+    const getApplications = async () => {
+      const userApplications = await getApplicationsByBasename(basename);
+      if (userApplications.length > 0) {
+        setApplications(userApplications);
+      }
+    };
+    void getApplications();
+  }, [basename]);
+
+  const handleSeeExistingApplications = useCallback(() => {
+    setShowExistingApplications(!showExistingApplications);
+  }, [showExistingApplications]);
+
+  let applicationStep: React.ReactNode;
+  switch (formState) {
+    case FormStates.Welcome:
+      if (!isBasenameLoading) {
+        applicationStep = (
+          <GrantApplicationWelcome addressCheck={!!address} basenameCheck={!!basename} />
+        );
+      }
+      break;
+    case FormStates.Started:
+      if (!textRecordsLoading) {
+        applicationStep = (
+          <GrantApplicationForm
+            basename={basename ?? ''}
+            basenameRecords={memoizedTextRecords}
+            formSetter={setFormState}
+          />
+        );
+      }
+      break;
+    case FormStates.Submitted:
+      applicationStep = <GrantApplicationSubmitted applications={applications} />;
+      break;
+    default:
+      applicationStep = null;
   }
 
-  if (formState === FormStates.Started) {
-    if (textRecordsLoading) {
-      return;
-    }
-    return (
-      <GrantApplicationForm
-        basename={basename ?? ''}
-        basenameRecords={memoizedTextRecords}
-        formSetter={setFormState}
-      />
-    );
-  }
-
-  if (formState === FormStates.Submitted) {
-    return <GrantApplicationSubmitted />;
-  }
+  return (
+    <div>
+      <button type="button" onClick={handleSeeExistingApplications}>
+        See Existing Applications
+      </button>
+      {showExistingApplications && <GrantApplicationStatusTable applications={applications} />}
+      {applicationStep}
+    </div>
+  );
 }

@@ -13,10 +13,10 @@ type GetBatchValuesResponseType = {
   valueRanges: GetValuesResponseType[];
 };
 
-export default async function getApplicationStatusByBasename(basename: string | undefined) {
-  const applicationRowIndexes = await getApplicationsByBasename(basename);
+export default async function getApplicationsByBasename(basename: string | undefined) {
+  const applicationRowIndexes = await getApplicationRowIndexesByBasename(basename);
   if (applicationRowIndexes.length === 0) {
-    return null;
+    return [];
   }
   let url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values:batchGet?`;
   for (const rowIndex of applicationRowIndexes) {
@@ -25,10 +25,11 @@ export default async function getApplicationStatusByBasename(basename: string | 
   url += '&majorDimension=ROWS&valueRenderOption=FORMATTED_VALUE';
 
   const response = (await getBatchValuesFromGoogleSheet(url)) as GetBatchValuesResponseType;
-  return response.valueRanges.map((val) => val.values);
+  const rawApplications = response.valueRanges.map((val) => val.values);
+  return rawApplications.map((application) => application[0]);
 }
 
-async function getApplicationsByBasename(basename: string | undefined) {
+async function getApplicationRowIndexesByBasename(basename: string | undefined) {
   const sheetId = 'Sheet1';
   const cellRef = 'B2:B';
   const range = `${sheetId}!${cellRef}`;
