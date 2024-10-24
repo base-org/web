@@ -48,6 +48,7 @@
     "dd-trace": "^5.21.0",
     "ethers": "5.7.2",
     "framer-motion": "^11.9.0",
+    "google-auth-library": "^9.14.2",
     "hls.js": "^1.5.14",
     "ipaddr.js": "^2.2.0",
     "is-ipfs": "^8.0.4",
