@@ -27,6 +27,15 @@
     "imageUrl": "/images/partners/infusion.png"
   },
   {
+    "name": "Stoke Fire",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Grow your village onchain.",
+    "url": "https://stokefire.xyz/",
+    "imageUrl": "/images/partners/stokefire.png"
+  },
+  {
     "name": "Frenpet",
     "tags": [
       "gaming"
