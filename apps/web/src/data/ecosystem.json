@@ -4223,5 +4223,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "We.Rich",
+    "tags": [
+      "social"
+    ],
+    "description": "The #1 UGA memecoin launchpad on Base. Anyone can be a founder. Anything is tradable.",
+    "url": "https://we.rich",
+    "imageUrl": "/images/partners/WeRich.svg"
   }
 ]
