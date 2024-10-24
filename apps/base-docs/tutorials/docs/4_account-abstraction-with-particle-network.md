@@ -48,7 +48,7 @@ This guide requires you to have ETH on Base Sepolia, which will be used to showc
 
 ### Familiarity with modern, frontend web development
 
-In this example, you'll be building a React-based application using Next JS and the `create-connectkit` CLI.
+In this example, you'll be building a React-based application using Next JS.
 
 ---
 
@@ -95,13 +95,27 @@ To learn more about Account Abstraction and the concepts outlined above, see [ER
 
 ## Integrating Particle Connect
 
-Start by creating a [new Next JS](https://nextjs.org/docs/getting-started/installation) project.
-
 The Particle Connect SDK simplifies wallet creation, user login, and interactions with Particle. It provides a unified interface for both social logins (via Particle Auth) and traditional Web3 wallets, ensuring an accessible experience for all users, whether familiar with Web3 or not.
+
+### Create a New Next Project
+
+First, create a new [Next.js](https://nextjs.org/docs/getting-started/installation) project by following the instructions in the Next.js CLI. Use the default settings, enabling TypeScript and Tailwind CSS.
+
+```sh
+$ npx create-next-app@latest
+
+What is your project named? particle-connect-app
+Would you like to use TypeScript? Yes
+Would you like to use ESLint? Yes
+Would you like to use Tailwind CSS? Yes
+Would you like your code inside a `src/` directory? Yes
+Would you like to use App Router? (recommended) Yes
+Would you like to customize the import alias (`@/*` by default)? No
+```
 
 ### Install Dependencies
 
-To get started, install the necessary dependencies:
+Then, install the necessary dependencies:
 
 ```sh
 yarn add @particle-network/connectkit viem@^2
@@ -111,13 +125,39 @@ OR
 npm install @particle-network/connectkit viem@^2
 ```
 
+This command installs the latest version of the Particle Connect SDK along with Viem v2. Viem is the default library used by Particle Connect to interact with blockchain networks and send transactions.
+
+:::info
+
+Particle Connect comes with built-in Account Abstraction functionality, making it the only Particle package you'll need to install.
+
+If you prefer, you can still use EIP-1193 providers like ethers, but you'll need to integrate the [Particle AA SDK](https://developers.particle.network/api-reference/aa/sdks/desktop/web) for that. For more details, refer to the [Particle Docs](https://developers.particle.network/api-reference/connect/desktop/web#use-eip-1193-provider-ethers-web3-js).
+:::
+
 ### Configure Particle Connect
 
-Once the dependencies are installed, go to the [Particle Network dashboard](https://dashboard.particle.network/#/login) to create a project and application. This step will provide you with essential keys (projectId, clientKey, and appId) needed for configuring Particle Connect.
+Once the dependencies are installed, you must create a project and an application in the Particle Dashboard to obtain the keys required for configuring Particle Connect (`projectId`, `clientKey`, and `appId`).
 
-Next, wrap your application with the `ParticleConnectkit` component. This allows you to input the project keys and customize the SDK settings.
+Steps to follow:
 
-Here’s an example `Connectkit.tsx` file (using Next.js) that exports the `ParticleConnectkit` component:
+1. Go to the [Particle Dashboard](https://dashboard.particle.network) and login using your email.
+2. Click **Add New Project** and enter a name for your project.
+3. Copy and save the **Project ID** and **Client Key**.
+4. Create a new application by selecting **Web** as the platform.
+5. Provide a name for the application and specify the domain where it will be hosted. If you don’t have a domain, you can use any placeholder (e.g., 'base.org'); this won’t affect functionality.
+6. After creating the application, copy the **App ID**.
+
+Place the API keys in a `.env` file in the root of your project following this template:
+
+```.env
+NEXT_PUBLIC_PROJECT_ID='PROJECT_ID'
+NEXT_PUBLIC_CLIENT_KEY='CLIENT_KEY'
+NEXT_PUBLIC_APP_ID='APP_ID'
+```
+
+Now you are ready to configure Particle Connect. The main configuration is handled through the `ConnectKitProvider` component.
+
+In the `src` directory, create a new file named `Connectkit.tsx` and paste the following code:
 
 ```ts
 'use client';
@@ -148,12 +188,27 @@ export const ParticleConnectkit = ({ children }: React.PropsWithChildren) => {
 };
 ```
 
+This file now exports the `ParticleConnectKit` component, where you input the project keys and configure SDK settings.
+
+In this example, we load the API keys from the `.env` file, enable social logins through `authWalletConnectors`, set up the `COINBASE` smart account, and restrict the available chains to Base and Base Sepolia.
+
+Here is a breakdown:
+
+This `config` object holds the Particle Connect SDK's settings:
+
+- **projectId, clientKey, appId**: These values are loaded from environment variables (`.env` file).
+- **walletConnectors**: This is an array of connectors representing the onboarding options you want to support within your app, in this case social login features via `authWalletConnectors`.
+- **plugins**: Plugins allow to add extra configuration to the Particle embedded wallet. The `aa` plugin is used to set up a smart account.
+- **chains**: The configuration restricts the supported chains to `base` (Base mainnet) and `baseSepolia` (Base Sepolia testnet).
+
 :::info
 
-This example provides a minimal version of the ConnectKit.tsx file to help you get started. For detailed configuration options and full implementation guidelines, refer to the [Particle Network documentation](https://developers.particle.network/api-reference/connect/desktop/web#configuration).
+This example provides a minimal version of the `ConnectKit.tsx` file to help you get started. For detailed configuration options and full implementation guidelines, refer to the [Particle Network documentation](https://developers.particle.network/api-reference/connect/desktop/web#configuration).
 :::
 
-To integrate this into your app, wrap your application with the ParticleConnectkit component. Here's an example layout.tsx file:
+### Integrate the `ParticleConnectKit` Component in Your App
+
+With the configuration complete, the next step is to wrap your application with the `ParticleConnectKit` component to provide global access to the Particle Connect SDK. Below is an example of how to set this up in your `layout.tsx` file in `src`:
 
 ```ts
 import { ParticleConnectkit } from '@/connectkit';
@@ -183,9 +238,11 @@ export default function RootLayout({
 }
 ```
 
-### Enabling Login and Connection
+This wraps the entire application and injects the Particle Connect configuration to the child components. All components rendered inside children will have access to the Particle Connect SDK via this provider.
 
-After setting up Particle Connect, you can facilitate social logins in your application using the ConnectButton component.
+### Enabling Login and Wallet Connection
+
+After setting up Particle Connect, you can easily enable your application's social logins and wallet connections using the `ConnectButton` component from the Particle ConnectKit library. Below is a basic implementation, which can be added to the `page.tsx` file located in the `src` directory:
 
 ```ts
 import { ConnectButton, useAccount } from '@particle-network/connectkit';
@@ -207,48 +264,191 @@ export const App = () => {
 };
 ```
 
+Here is a code breakdown:
+
+1. **Imports**:
+
+   - `ConnectButton`: A pre-built button component that allows users to log into the application.
+
+   - `useAccount`: A hook that gives access to functions and details about the connected account.
+
+2. **Component `App`**:
+
+   - **useAccount Hook**: Retrieves the current account's status (`isConnected`), wallet `address`, and `chainId`.
+   - **Render Logic**:
+     - The `ConnectButton` is rendered at all times because it will turn into an embedded widget after the user logs in.
+     - Once the user is connected (i.e., `isConnected` is true), the wallet address and active chain ID are displayed.
+     - The `address` represents the user’s public wallet address, and `chainId` specifies the ID of the connected blockchain network.
+
+3. **Conditional Rendering**:
+   - The `isConnected` flag ensures that the account information (address and chain ID) is only shown when a user is successfully connected. Until a connection is established, only the `ConnectButton` is visible.
+
 To manage interactions at the application level after onboarding, `@particle-network/connectkit` offers a variety of hooks. You can explore all [available hooks](https://developers.particle.network/api-reference/connect/desktop/web#key-react-hooks-for-particle-connect) in the Particle Connect SDK documentation.
 
 ## Sending a Gasless Transaction
 
-Particle Connect provides all the necessary infrastructure to send gasless transactions easily.
+Particle Connect provides all the infrastructure needed to send gasless transactions easily. A gasless transaction allows users to interact with the blockchain without needing to cover gas fees. Instead, fees can be sponsored, improving user experience.
+
+Unlike standard transactions, gasless transactions sent through ERC-4337 account abstraction use a structure called `UserOperations` (or `UserOps`).
+
+This section will guide you through building a `UserOp`.
 
 ### Step 1: Create a Smart Account Instance
 
-Begin by creating an instance of `smartAccount`. This will allow you to utilize the smart account as the signer for the transaction.
+To begin, create an instance of `smartAccount`. This instance will allow you to sign transactions using the smart account and leverage the Particle Connect infrastructure for gasless operations.
 
 ```ts
 import { useSmartAccount } from '@particle-network/connectkit';
+import { parseEther } from 'viem'; // To be used in the transaction function
 
-// Inside your app
+// Inside your component or app
 const smartAccount = useSmartAccount();
 ```
 
+#### Code Breakdown:
+
+- **`useSmartAccount()`**: This hook provides access to the smart account instance that you'll use as the transaction signer.
+
+---
+
 ### Step 2: Execute a Gasless Transaction
 
-Once you have the `smartAccount` instance, you can create and send a gasless transaction by constructing a `userOp`. The example below shows how to transfer 0.01 ETH without the user paying gas fees.
+Once you have the `smartAccount` instance, you can execute a gasless transaction by constructing a `UserOperation` (also called `userOp`). Below is an example that shows how to transfer 0.01 ETH without requiring the user to pay gas fees.
 
 ```ts
 const executeTxNative = async () => {
   const tx = {
-    to: recipientAddress,
-    value: parseEther('0.01').toString(),
-    data: '0x',
+    to: recipientAddress, // Recipient's address
+    value: parseEther('0.01').toString(), // Amount to send (in ETH)
+    data: '0x', // No additional data
   };
 
-  // Fetch fee quotes and use verifyingPaymasterGasless for a gasless transaction
+  // Fetch fee quotes and set up the transaction for gasless execution
   const feeQuotesResult = await smartAccount?.getFeeQuotes(tx);
   const { userOp, userOpHash } = feeQuotesResult?.verifyingPaymasterGasless || {};
 
   if (userOp && userOpHash) {
     const txHash = await smartAccount?.sendUserOperation({ userOp, userOpHash });
-    setTransactionHash(txHash);
     console.log('Transaction sent:', txHash);
   }
 };
 ```
 
-This function will send a gasless transfer of 0.01 ETH to the specified recipient address.
+Here is a breakdown:
+
+- **`tx` Object**: This defines the transaction parameters.
+  - `to`: The recipient's address where the 0.01 ETH will be sent.
+  - `value`: The amount of ETH to transfer (in this case, 0.01 ETH). It is converted to the correct format using `parseEther` from Viem.
+  - `data`: This is set to `'0x'` since there is no additional data needed for a simple transfer.
+- **`getFeeQuotes(tx)`**: This method returns an array of `UserOperation` objects and hashes derived from a standard transaction object. One of the quotes returned will be the `verifyingPaymasterGasless` option, which facilitates gasless transactions by sponsoring the transaction fee.
+
+- **`userOp` and `userOpHash`**: These values are extracted from the gasless fee quote. The `userOp` is the gasless operation to be sent, and `userOpHash` is its hash, ensuring integrity and security during the transaction.
+
+- **`sendUserOperation({ userOp, userOpHash })`**: This method sends the constructed gasless transaction to the network. Upon success, the `txHash` (transaction hash) is returned, which can be used to track the transaction status on the blockchain.
+
+## Complete `page.tsx` File
+
+Now that you have a solid understanding of each step, let’s bring everything together in the `page.tsx` file:
+
+```tsx
+import React, { useState } from 'react';
+import { ConnectButton, useAccount, useSmartAccount } from '@particle-network/connectkit';
+import { parseEther } from 'viem'; // Used to handle ETH value parsing
+
+export const App = () => {
+  const { address, isConnected, chainId } = useAccount(); // Fetch user account information
+  const smartAccount = useSmartAccount(); // Initialize smart account
+  const [recipientAddress, setRecipientAddress] = useState(''); // State to store recipient address
+  const [transactionHash, setTransactionHash] = useState(''); // State to store transaction hash
+
+  // Function to execute gasless transaction
+  const executeTxNative = async () => {
+    if (!recipientAddress) {
+      alert('Please enter a recipient address');
+      return;
+    }
+
+    const tx = {
+      to: recipientAddress, // Recipient's address
+      value: parseEther('0.01').toString(), // Amount to send (in ETH)
+      data: '0x', // No additional data for a basic transfer
+    };
+
+    // Fetch fee quotes and execute the gasless transaction
+    const feeQuotesResult = await smartAccount?.getFeeQuotes(tx);
+    const { userOp, userOpHash } = feeQuotesResult?.verifyingPaymasterGasless || {};
+
+    if (userOp && userOpHash) {
+      const txHash = await smartAccount?.sendUserOperation({ userOp, userOpHash });
+      setTransactionHash(txHash); // Set the transaction hash state
+      console.log('Transaction sent:', txHash);
+    } else {
+      console.error('Error fetching gasless transaction details');
+    }
+  };
+
+  return (
+    <div>
+      <ConnectButton /> {/* Button to connect wallet */}
+      {isConnected && (
+        <>
+          <h2>Address: {address}</h2>
+          <h2>Chain ID: {chainId}</h2>
+
+          <div>
+            <label>Recipient Address: </label>
+            <input
+              type="text"
+              value={recipientAddress}
+              onChange={(e) => setRecipientAddress(e.target.value)}
+              placeholder="Enter recipient address"
+            />
+          </div>
+
+          <button onClick={executeTxNative}>Send 0.01 ETH Gasless</button>
+
+          {transactionHash && (
+            <div>
+              <h3>Transaction Hash: {transactionHash}</h3>
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+};
+```
+
+### Code Breakdown:
+
+1. **State Management**:
+
+   - `recipientAddress`: Stores the recipient's address entered by the user.
+   - `transactionHash`: Stores the hash of the executed transaction to display it later.
+
+2. **`executeTxNative` function**:
+
+   - Validates that a recipient address is provided.
+   - Constructs the transaction object (`tx`) with the recipient's address and 0.01 ETH to be sent.
+   - Fetches the gasless transaction details (`userOp` and `userOpHash`).
+   - Sends the gasless transaction using `sendUserOperation` and updates the UI with the transaction hash.
+
+3. **UI Components**:
+   - **ConnectButton**: Allows users to connect to the app.
+   - **Input Field**: Lets the user enter the recipient's address.
+   - **Button**: Triggers the gasless transaction when clicked.
+   - **Transaction Hash Display**: Shows the transaction hash after sending the transaction.
+
+This code creates a simple interface to send gasless transactions with an input field for the recipient's address and displays the transaction hash once the transaction is sent successfully.
+
+With everything set up, you're now ready to run your application and test it. Follow these steps:
+
+1. Navigate to your project’s root directory.
+2. Start the development server by running either `npm run dev` or `yarn dev`.
+3. Once the app is running, log in using your preferred social login.
+4. Fund the wallet address displayed in the bottom-right wallet modal.
+5. Input the address you want to send funds to.
+6. Click the **Send 0.01 ETH Gasless** button to execute a gasless transaction.
 
 ### Quickstart Guide
 
