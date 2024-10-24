@@ -4223,5 +4223,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "ImaginAIryNFTs",
+    "tags": [
+      "NFT"
+    ],
+    "description": "Unleash creativity with AI-generated art. Mint unique NFTs from your AI-dreamed designs. Your Prompt, Your Art, Your NFT!",
+    "url": "https://www.imaginairynfts.com/",
+    "imageUrl": "/images/partners/imaginairy.png"
   }
 ]
