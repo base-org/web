@@ -1,5 +1,12 @@
 [
   {
+  "name": "Silo Finance",
+  "tags": ["defi"],
+  "description": "Silo Finance creates permissionless and risk-isolated lending markets for yield bearing assets and derrivatives on Base.",
+  "url": "https://app.silo.finance",
+  "imageUrl": "apps/web/public/images/partners/SiloLogo.webp"
+  },
+  {
     "name": "Coinbase",
     "url": "https://www.coinbase.com",
     "description": "Coinbase is a secure online platform for buying, selling, transferring, and storing cryptocurrency.",
