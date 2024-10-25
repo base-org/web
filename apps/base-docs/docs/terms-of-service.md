@@ -11,8 +11,6 @@ Last Updated: October 25, 2024
 
 ---
 
-
-
 We’re excited you’re interested in Base, a layer-two optimistic rollup on the Ethereum public blockchain. While we do not control Base, these Terms of Service (“Terms”) constitute a legally binding contract made between you and Coinbase Technologies, Inc. (“Coinbase,” “we,” or “us”) that governs your access to and use of the Coinbase Sequencer, Base Testnet, Basenames Interface, and Basenames Profile Pages each of which is defined below (collectively, the “Services”). By using the Services in any way, you agree to be bound by these Terms. If you do not accept the terms and conditions of these Terms, you are not permitted to access or otherwise use the Services.
 
 **BEFORE WE INCLUDE ANY OTHER DETAILS, WE WANT TO GIVE YOU NOTICE OF SOMETHING UP FRONT: BY AGREEING TO THESE TERMS, YOU AND WE AGREE TO RESOLVE ANY DISPUTES WE MAY HAVE WITH EACH OTHER VIA BINDING ARBITRATION OR IN SMALL CLAIMS COURT (INSTEAD OF A COURT OF GENERAL JURISDICTION), AND YOU AGREE TO DO SO AS AN INDIVIDUAL (INSTEAD OF, FOR EXAMPLE, AS A REPRESENTATIVE OR MEMBER OF A CLASS IN A CLASS ACTION). TO THE EXTENT THAT THE LAW ALLOWS, YOU ALSO WAIVE YOUR RIGHT TO A TRIAL BY JURY. FOR MORE INFORMATION, SEE OUR [ARBITRATION AGREEMENT](https://docs.base.org/docs/arbitration) “DISPUTE RESOLUTION, ARBITRATION AGREEMENT, CLASS ACTION WAIVER, AND JURY TRIAL WAIVER.”**
