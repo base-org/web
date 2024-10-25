@@ -242,7 +242,7 @@ This wraps the entire application and injects the Particle Connect configuration
 
 ### Enabling Login and Wallet Connection
 
-After setting up Particle Connect, you can easily enable your application's social logins and wallet connections using the `ConnectButton` component from the Particle ConnectKit library. Below is a basic implementation, which can be added to the `page.tsx` file located in the `src` directory:
+After setting up Particle Connect, you can easily enable social logins and wallet connection for your application using the `ConnectButton` frontend component from the Particle ConnectKit library. Below is a basic implementation, which can be added to the `page.tsx` file located in the `src` directory:
 
 ```ts
 import { ConnectButton, useAccount } from '@particle-network/connectkit';
@@ -342,9 +342,9 @@ Here is a breakdown:
   - `data`: This is set to `'0x'` since there is no additional data needed for a simple transfer.
 - **`getFeeQuotes(tx)`**: This method returns an array of `UserOperation` objects and hashes derived from a standard transaction object. One of the quotes returned will be the `verifyingPaymasterGasless` option, which facilitates gasless transactions by sponsoring the transaction fee.
 
-- **`userOp` and `userOpHash`**: These values are extracted from the gasless fee quote. The `userOp` is the gasless operation to be sent, and `userOpHash` is its hash, ensuring integrity and security during the transaction.
+- **`userOp` and `userOpHash`**: These values are extracted from the gasless fee quote. The `userOp` is the gasless operation to be sent, and `userOpHash` is its hash.
 
-- **`sendUserOperation({ userOp, userOpHash })`**: This method sends the constructed gasless transaction to the network. Upon success, the `txHash` (transaction hash) is returned, which can be used to track the transaction status on the blockchain.
+- **`sendUserOperation({ userOp, userOpHash })`**: This method sends the constructed gasless transaction to the network. Upon success, the `txHash` (transaction hash) is returned.
 
 ## Complete `page.tsx` File
 
