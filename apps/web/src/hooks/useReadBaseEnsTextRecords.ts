@@ -38,6 +38,7 @@ export default function useReadBaseEnsTextRecords({
       [UsernameTextRecordKeys.Github]: '',
       [UsernameTextRecordKeys.Email]: '',
       [UsernameTextRecordKeys.Phone]: '',
+      [UsernameTextRecordKeys.Location]: '',
       [UsernameTextRecordKeys.Avatar]: '',
       [UsernameTextRecordKeys.Frames]: '',
       [UsernameTextRecordKeys.Casts]: '',
