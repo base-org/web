@@ -99,7 +99,7 @@ The Particle Connect SDK simplifies wallet creation, user login, and interaction
 
 ### Create a New Next Project
 
-First, create a new [Next.js](https://nextjs.org/docs/getting-started/installation) project by following the instructions in the Next.js CLI. Use the default settings, enabling TypeScript and Tailwind CSS.
+First, create a new [Next.js] project by following the instructions in the Next.js CLI. Use the default settings, enabling TypeScript and Tailwind CSS.
 
 ```sh
 $ npx create-next-app@latest
@@ -131,7 +131,7 @@ This command installs the latest version of the Particle Connect SDK along with 
 
 Particle Connect comes with built-in Account Abstraction functionality, making it the only Particle package you'll need to install.
 
-If you prefer, you can still use EIP-1193 providers like ethers, but you'll need to integrate the [Particle AA SDK](https://developers.particle.network/api-reference/aa/sdks/desktop/web) for that. For more details, refer to the [Particle Docs](https://developers.particle.network/api-reference/connect/desktop/web#use-eip-1193-provider-ethers-web3-js).
+If you prefer, you can still use EIP-1193 providers like ethers, but you'll need to integrate the [Particle AA SDK] for that. For more details, refer to the [Particle Docs].
 :::
 
 ### Configure Particle Connect
@@ -140,7 +140,7 @@ Once the dependencies are installed, you must create a project and an applicatio
 
 Steps to follow:
 
-1. Go to the [Particle Dashboard](https://dashboard.particle.network) and login using your email.
+1. Go to the [Particle Dashboard] and login using your email.
 2. Click **Add New Project** and enter a name for your project.
 3. Copy and save the **Project ID** and **Client Key**.
 4. Create a new application by selecting **Web** as the platform.
@@ -192,8 +192,6 @@ This file now exports the `ParticleConnectKit` component, where you input the pr
 
 In this example, we load the API keys from the `.env` file, enable social logins through `authWalletConnectors`, set up the `COINBASE` smart account, and restrict the available chains to Base and Base Sepolia.
 
-Here is a breakdown:
-
 This `config` object holds the Particle Connect SDK's settings:
 
 - **projectId, clientKey, appId**: These values are loaded from environment variables (`.env` file).
@@ -203,7 +201,7 @@ This `config` object holds the Particle Connect SDK's settings:
 
 :::info
 
-This example provides a minimal version of the `ConnectKit.tsx` file to help you get started. For detailed configuration options and full implementation guidelines, refer to the [Particle Network documentation](https://developers.particle.network/api-reference/connect/desktop/web#configuration).
+This example provides a minimal version of the `ConnectKit.tsx` file to help you get started. For detailed configuration options and full implementation guidelines, refer to the [Particle Connect documentation].
 :::
 
 ### Integrate the `ParticleConnectKit` Component in Your App
@@ -264,7 +262,9 @@ export const App = () => {
 };
 ```
 
-Here is a code breakdown:
+This code snippet creates a simple interface for logging in and connecting users to your application. Once they are authenticated, it displays their wallet address and the connected blockchain’s chain ID.
+
+Here’s a breakdown of how each part works:
 
 1. **Imports**:
 
@@ -283,7 +283,7 @@ Here is a code breakdown:
 3. **Conditional Rendering**:
    - The `isConnected` flag ensures that the account information (address and chain ID) is only shown when a user is successfully connected. Until a connection is established, only the `ConnectButton` is visible.
 
-To manage interactions at the application level after onboarding, `@particle-network/connectkit` offers a variety of hooks. You can explore all [available hooks](https://developers.particle.network/api-reference/connect/desktop/web#key-react-hooks-for-particle-connect) in the Particle Connect SDK documentation.
+To manage interactions at the application level after onboarding, `@particle-network/connectkit` offers a variety of hooks. You can explore all [available hooks] in the Particle Connect SDK documentation.
 
 ## Sending a Gasless Transaction
 
@@ -305,11 +305,7 @@ import { parseEther } from 'viem'; // To be used in the transaction function
 const smartAccount = useSmartAccount();
 ```
 
-#### Code Breakdown:
-
-- **`useSmartAccount()`**: This hook provides access to the smart account instance that you'll use as the transaction signer.
-
----
+This code initializes a `smartAccount` instance, which serves as the primary signer for executing transactions through Particle Connect.
 
 ### Step 2: Execute a Gasless Transaction
 
@@ -320,7 +316,6 @@ const executeTxNative = async () => {
   const tx = {
     to: recipientAddress, // Recipient's address
     value: parseEther('0.01').toString(), // Amount to send (in ETH)
-    data: '0x', // No additional data
   };
 
   // Fetch fee quotes and set up the transaction for gasless execution
@@ -334,12 +329,13 @@ const executeTxNative = async () => {
 };
 ```
 
-Here is a breakdown:
+This code demonstrates executing a gasless transaction by building a `UserOp` and using the `smartAccount` instance as the signer.
+
+Here’s a detailed look at each part of the process:
 
 - **`tx` Object**: This defines the transaction parameters.
   - `to`: The recipient's address where the 0.01 ETH will be sent.
   - `value`: The amount of ETH to transfer (in this case, 0.01 ETH). It is converted to the correct format using `parseEther` from Viem.
-  - `data`: This is set to `'0x'` since there is no additional data needed for a simple transfer.
 - **`getFeeQuotes(tx)`**: This method returns an array of `UserOperation` objects and hashes derived from a standard transaction object. One of the quotes returned will be the `verifyingPaymasterGasless` option, which facilitates gasless transactions by sponsoring the transaction fee.
 
 - **`userOp` and `userOpHash`**: These values are extracted from the gasless fee quote. The `userOp` is the gasless operation to be sent, and `userOpHash` is its hash.
@@ -419,7 +415,7 @@ export const App = () => {
 };
 ```
 
-### Code Breakdown:
+This code creates a simple interface to send gasless transactions with an input field for the recipient's address and displays the transaction hash once the transaction is sent successfully. Follows a detailed code breakdown:
 
 1. **State Management**:
 
@@ -439,8 +435,6 @@ export const App = () => {
    - **Button**: Triggers the gasless transaction when clicked.
    - **Transaction Hash Display**: Shows the transaction hash after sending the transaction.
 
-This code creates a simple interface to send gasless transactions with an input field for the recipient's address and displays the transaction hash once the transaction is sent successfully.
-
 With everything set up, you're now ready to run your application and test it. Follow these steps:
 
 1. Navigate to your project’s root directory.
@@ -452,7 +446,7 @@ With everything set up, you're now ready to run your application and test it. Fo
 
 ### Quickstart Guide
 
-For a complete step-by-step guide to starting and configuring a new project with Particle Connect, check out the [Particle Connect Quickstart](https://developers.particle.network/guides/wallet-as-a-service/waas/connect/web-quickstart) in the Particle Network documentation.
+For a complete step-by-step guide to starting and configuring a new project with Particle Connect, check out the [Particle Connect Quickstart] in the Particle Network documentation.
 
 ## Conclusion
 
@@ -467,7 +461,6 @@ To learn more about using Particle Network on Base, take a look at the following
 
 ---
 
-[create-react-app]: https://create-react-app.dev
 [Base Faucets]: https://docs.base.org/tools/network-faucets
 [Web3Auth]: https://web3auth.io
 [Privy]: https://docs.base.org/tutorials/account-abstraction-with-privy-and-base-paymaster/
@@ -481,3 +474,9 @@ To learn more about using Particle Network on Base, take a look at the following
 [Account Abstraction on Base]: https://docs.base.org/tools/account-abstraction
 [Particle Network Documentation]: https://developers.particle.network
 [Particle Network 101: Developer Experience]: https://blog.particle.network/particle-network-101-developer-experience-edition
+[Next.js]: https://nextjs.org/docs/getting-started/installation
+[Particle AA SDK]: https://developers.particle.network/api-reference/aa/sdks/desktop/web
+[Particle Docs]: https://developers.particle.network/api-reference/connect/desktop/web#use-eip-1193-provider-ethers-web3-js
+[Particle Connect documentation]: https://developers.particle.network/api-reference/connect/desktop/web#configuration
+[available hooks]: https://developers.particle.network/api-reference/connect/desktop/web#key-react-hooks-for-particle-connect
+[Particle Connect Quickstart]: https://developers.particle.network/guides/wallet-as-a-service/waas/connect/web-quickstart
