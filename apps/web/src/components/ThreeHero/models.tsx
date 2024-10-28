@@ -59,7 +59,7 @@ useGLTF.setDecoderPath('draco/');
 
 /* Constants */
 export const blue = '#105eff';
-export const blackColor = '#141414'; // equivalent to rgb(0.08, 0.08, 0.08)
+export const blackColor = '#444'; // equivalent to rgb(0.08, 0.08, 0.08)
 
 /* Models */
 export function BlackMaterial() {

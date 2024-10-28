@@ -2,20 +2,22 @@
 
 import { useEffect, useState, forwardRef } from 'react';
 import type { RigidBodyProps, RapierRigidBody, RigidBody } from '@react-three/rapier';
+import { useErrors } from 'apps/web/contexts/Errors';
 
 // RigidBody cannot be imported using dynamic() due to some import issues
 export const DynamicRigidBody = forwardRef<RapierRigidBody, RigidBodyProps>(
   ({ children, ...props }, ref) => {
     const [RigidBodyDynamic, setRigidBody] = useState<typeof RigidBody>();
+    const { logError } = useErrors();
 
-    // Import happens on render
+    // Import needs to happens on render
     useEffect(() => {
       import('@react-three/rapier')
         .then((mod) => {
           setRigidBody(() => mod.RigidBody);
         })
-        .catch((error) => console.log('error', error));
-    }, []);
+        .catch((error) => logError(error, 'Failed to load RigidBody'));
+    }, [logError]);
 
     if (!RigidBodyDynamic) return null;
 
