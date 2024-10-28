@@ -24,12 +24,11 @@ import type { Mesh, Shape, DirectionalLight, ExtrudeGeometryOptions } from 'thre
 import type { SVGResult } from 'three-stdlib';
 import type { MeshProps, Vector3, Euler } from '@react-three/fiber';
 import type { CylinderArgs, BallArgs, RapierRigidBody } from '@react-three/rapier';
-import { MathUtils, Group, Vector3 as ThreeVector3 } from 'three';
 
 // 3D Libraries - static - These cannot be dynamically imported
+import { Color, MathUtils, Group, Vector3 as ThreeVector3 } from 'three';
 import { useGLTF } from '@react-three/drei';
 import { useFrame, useLoader, useThree } from '@react-three/fiber';
-import { Color } from 'three';
 import { SVGLoader } from 'three-stdlib';
 
 // 3D libraries - dynamic imports
