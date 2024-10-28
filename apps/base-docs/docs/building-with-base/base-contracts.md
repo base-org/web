@@ -74,7 +74,8 @@ hide_table_of_contents: true
 | :--------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
 | AddressManager               | [0x8EfB6B5c4767B09Dc9AA6Af4eAA89F749522BaE2](https://etherscan.io/address/0x8EfB6B5c4767B09Dc9AA6Af4eAA89F749522BaE2) |
 | AnchorStateRegistryProxy     | [0xdB9091e48B1C42992A1213e6916184f9eBDbfEDf](https://etherscan.io/address/0xdB9091e48B1C42992A1213e6916184f9eBDbfEDf) |
-| DelayedWETHProxy             | [0xa2f2aC6F5aF72e494A227d79Db20473Cf7A1FFE8](https://etherscan.io/address/0xa2f2aC6F5aF72e494A227d79Db20473Cf7A1FFE8) |
+| DelayedWETHProxy (FDG)       | [0xa2f2aC6F5aF72e494A227d79Db20473Cf7A1FFE8](https://etherscan.io/address/0xa2f2aC6F5aF72e494A227d79Db20473Cf7A1FFE8) |
+| DelayedWETHProxy (PDG)       | [0x3E8a0B63f57e975c268d610ece93da5f78c01321](https://etherscan.io/address/0x3E8a0B63f57e975c268d610ece93da5f78c01321) |
 | DisputeGameFactoryProxy      | [0x43edB88C4B80fDD2AdFF2412A7BebF9dF42cB40e](https://etherscan.io/address/0x43edB88C4B80fDD2AdFF2412A7BebF9dF42cB40e) |
 | FaultDisputeGame             | [0xCd3c0194db74C23807D4B90A5181e1B28cF7007C](https://etherscan.io/address/0xCd3c0194db74C23807D4B90A5181e1B28cF7007C) |
 | L1CrossDomainMessenger       | [0x866E82a600A1414e583f7F13623F1aC5d58b0Afa](https://etherscan.io/address/0x866E82a600A1414e583f7F13623F1aC5d58b0Afa) |
