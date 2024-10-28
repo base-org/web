@@ -1,21 +1,14 @@
 /* eslint-disable react/no-unknown-property */
 'use client';
 
-import * as THREE from 'three';
+// Libraries
+import { useMediaQuery } from 'usehooks-ts';
+import classNames from 'classnames';
 import { useRef, useMemo, useState, useEffect, Suspense, useCallback } from 'react';
-import { Canvas, Euler, useFrame, useThree, Vector3 } from '@react-three/fiber';
-import { Lightformer, Environment, Html, Center } from '@react-three/drei';
-import {
-  Physics,
-  BallCollider,
-  Vector3Tuple,
-  CylinderCollider,
-  CylinderArgs,
-  RapierRigidBody,
-  RigidBody,
-  BallArgs,
-} from '@react-three/rapier';
-import { EffectComposer, Bloom, SMAA } from '@react-three/postprocessing';
+import dynamic from 'next/dynamic';
+
+// Components
+import Image, { StaticImageData } from 'next/image';
 import {
   BlackMaterial,
   BaseLogoModel,
@@ -31,15 +24,91 @@ import {
   Blobby,
   Cursor,
 } from './models';
-
-import baseLogo from './assets/base-logo.svg';
-
-// Environnment
-import environmentLight from './assets/environmentLight.jpg';
-import Image, { StaticImageData } from 'next/image';
-import { useMediaQuery } from 'usehooks-ts';
-import classNames from 'classnames';
 import Link from 'apps/web/src/components/Link';
+
+// Assets
+import baseLogo from './assets/base-logo.svg';
+import environmentLight from './assets/environmentLight.jpg';
+
+// 3D libraries - types
+import type { Euler, Vector3 } from '@react-three/fiber';
+import type { Vector3Tuple, CylinderArgs, BallArgs, RapierRigidBody } from '@react-three/rapier';
+import type {
+  ColorRepresentation,
+  Mesh,
+  BufferGeometry,
+  NormalBufferAttributes,
+  Material,
+  Group,
+  DirectionalLight,
+} from 'three';
+
+// 3D Libraries - static - These cannot be dynamically imported
+import { useThree, useFrame } from '@react-three/fiber';
+import { MathUtils, Vector3 as ThreeVector3, BackSide } from 'three';
+
+// 3D libraries - dynamic imports
+
+// Dynamic - react-three/fiber
+const Canvas = dynamic(async () => import('@react-three/fiber').then((mod) => mod.Canvas), {
+  ssr: false,
+});
+
+// Dynamic - react-three/drei
+const Html = dynamic(async () => import('@react-three/drei').then((mod) => mod.Html), {
+  ssr: false,
+});
+
+const Center = dynamic(async () => import('@react-three/drei').then((mod) => mod.Center), {
+  ssr: false,
+});
+
+const Lightformer = dynamic(
+  async () => import('@react-three/drei').then((mod) => mod.Lightformer),
+  {
+    ssr: false,
+  },
+);
+
+const Environment = dynamic(
+  async () => import('@react-three/drei').then((mod) => mod.Environment),
+  {
+    ssr: false,
+  },
+);
+
+// Dynamic - react-three/rapier
+const Physics = dynamic(async () => import('@react-three/rapier').then((mod) => mod.Physics), {
+  ssr: false,
+});
+
+const BallCollider = dynamic(
+  async () => import('@react-three/rapier').then((mod) => mod.BallCollider),
+  { ssr: false },
+);
+
+const CylinderCollider = dynamic(
+  async () => import('@react-three/rapier').then((mod) => mod.CylinderCollider),
+  { ssr: false },
+);
+
+const RigidBody = dynamic(async () => import('@react-three/rapier').then((mod) => mod.RigidBody), {
+  ssr: false,
+});
+
+// Dynamic - react-three/postprocessing
+const EffectComposer = dynamic(
+  async () => import('@react-three/postprocessing').then((mod) => mod.EffectComposer),
+  { ssr: false },
+);
+
+const Bloom = dynamic(async () => import('@react-three/postprocessing').then((mod) => mod.Bloom), {
+  ssr: false,
+});
+
+const SMAA = dynamic(async () => import('@react-three/postprocessing').then((mod) => mod.SMAA), {
+  ssr: false,
+});
 
 /* 
   The Main Scene
@@ -53,11 +122,7 @@ const mintLink =
 
 const gravity: Vector3Tuple = [0, 0, 0];
 
-const sceneFogArguments: [color: THREE.ColorRepresentation, near: number, far: number] = [
-  '#111',
-  2.5,
-  7,
-];
+const sceneFogArguments: [color: ColorRepresentation, near: number, far: number] = ['#111', 2.5, 7];
 
 const sceneCamera = { position: [0, 0, 5] as Vector3 };
 const sceneSphereArguments: [radius: number, widthSegments: number, heightSegments: number] = [
@@ -69,7 +134,7 @@ type MouseXY = {
   y: number;
 };
 
-export default function Scene(): JSX.Element {
+export function Scene(): JSX.Element {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [position, setPosition] = useState<MouseXY>({ x: 0, y: 0 });
   const [isActive, setIsActive] = useState(true);
@@ -143,7 +208,7 @@ export default function Scene(): JSX.Element {
 
         <mesh>
           <sphereGeometry args={sceneSphereArguments} />
-          <meshPhysicalMaterial color="#666" side={THREE.BackSide} depthTest={false} />
+          <meshPhysicalMaterial color="#666" side={BackSide} depthTest={false} />
         </mesh>
         <Effects />
         <EnvironmentSetup />
@@ -204,12 +269,8 @@ const light3: Vector3 = [10, 1, 0];
 const light4: Vector3 = [10, 10, 0];
 function EnvironmentSetup() {
   const onLightUpdated = useCallback(
-    (
-      self: THREE.Mesh<
-        THREE.BufferGeometry<THREE.NormalBufferAttributes>,
-        THREE.Material | THREE.Material[]
-      >,
-    ) => self.lookAt(0, 0, 0),
+    (self: Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[]>) =>
+      self.lookAt(0, 0, 0),
     [],
   );
   return (
@@ -318,7 +379,7 @@ const baseLogoRotation: Euler = [Math.PI / 2, 0, 0];
 const baseLogoPosition: [x: number, y: number, z: number] = [0, 0, -10];
 
 function BaseLogo() {
-  const logoRef = useRef<THREE.Group>(null);
+  const logoRef = useRef<Group>(null);
   const doneRef = useRef<boolean>(false);
   const isMobile = useMediaQuery('(max-width: 769px)');
 
@@ -326,20 +387,12 @@ function BaseLogo() {
     if (!logoRef.current) return;
 
     if (doneRef.current) {
-      logoRef.current.rotation.y = THREE.MathUtils.lerp(
-        logoRef.current.rotation.y,
-        pointer.x,
-        0.05,
-      );
-      logoRef.current.rotation.x = THREE.MathUtils.lerp(
-        logoRef.current.rotation.x,
-        -pointer.y,
-        0.05,
-      );
+      logoRef.current.rotation.y = MathUtils.lerp(logoRef.current.rotation.y, pointer.x, 0.05);
+      logoRef.current.rotation.x = MathUtils.lerp(logoRef.current.rotation.x, -pointer.y, 0.05);
     } else {
-      logoRef.current.rotation.y = THREE.MathUtils.lerp(logoRef.current.rotation.y, 0, 0.05);
+      logoRef.current.rotation.y = MathUtils.lerp(logoRef.current.rotation.y, 0, 0.05);
     }
-    logoRef.current.position.z = THREE.MathUtils.lerp(logoRef.current.position.z, 0, 0.05);
+    logoRef.current.position.z = MathUtils.lerp(logoRef.current.position.z, 0, 0.05);
 
     // lerp never gets to 0
     if (logoRef.current.position.z > -0.01) {
@@ -363,13 +416,13 @@ function BaseLogo() {
 
 const ballArguments: BallArgs = [1];
 export function PhysicsMesh({
-  vec = new THREE.Vector3(),
-  r = THREE.MathUtils.randFloatSpread,
+  vec = new ThreeVector3(),
+  r = MathUtils.randFloatSpread,
   scale = 1,
   gravityEffect = 0.2,
   children,
 }: {
-  vec?: THREE.Vector3;
+  vec?: ThreeVector3;
   r?: (a: number) => number;
   scale?: number;
   gravityEffect?: number;
@@ -386,19 +439,19 @@ export function PhysicsMesh({
 
   const pos = useMemo(
     () =>
-      new THREE.Vector3(
+      new ThreeVector3(
         randomNumberBetween(viewport.width * 0.5, viewport.width * 2),
         randomNumberBetween(viewport.height * 0.5, viewport.height * 2),
         randomNumberBetween(viewport.width * 0.5, viewport.width * 2),
       ),
     [viewport.height, viewport.width],
   );
-  const rot = useMemo(() => new THREE.Vector3(r(Math.PI), r(Math.PI), r(Math.PI)), [r]);
+  const rot = useMemo(() => new ThreeVector3(r(Math.PI), r(Math.PI), r(Math.PI)), [r]);
 
   useFrame(() => {
     if (!rigidBodyApiRef.current) return;
     const vector = rigidBodyApiRef.current.translation();
-    const vector3 = new THREE.Vector3(vector.x, vector.y, vector.z);
+    const vector3 = new ThreeVector3(vector.x, vector.y, vector.z);
     rigidBodyApiRef.current.applyImpulse(
       vec.copy(vector3).negate().multiplyScalar(gravityEffect),
       true,
@@ -425,9 +478,9 @@ export function PhysicsMesh({
 const pointerPosition: Vector3 = [0, 0, 0];
 const pointerLightPosition: Vector3 = [0, 0, 10];
 function Pointer() {
-  const vec = new THREE.Vector3();
+  const vec = new ThreeVector3();
   const rigidBodyApiRef = useRef<RapierRigidBody>(null);
-  const light = useRef<THREE.DirectionalLight>(null);
+  const light = useRef<DirectionalLight>(null);
   const isMobile = useMediaQuery('(max-width: 769px)');
 
   useFrame(({ pointer, viewport }) => {

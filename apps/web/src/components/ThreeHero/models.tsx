@@ -4,7 +4,7 @@
 import { useGLTF, Center } from '@react-three/drei';
 import { MeshProps, Vector3, Euler, useLoader } from '@react-three/fiber';
 
-import * as THREE from 'three';
+import { Color, Mesh, Shape } from 'three';
 import { SVGLoader, SVGResult } from 'three-stdlib';
 import { PhysicsMesh } from './index';
 
@@ -23,14 +23,14 @@ import cursorModel from './assets/cursor.glb';
 /* svgs */
 import lightningSVG from './assets/lightning.svg';
 import { useMemo } from 'react';
-import { ExtrudeGeometryOptions } from 'three';
+import type { ExtrudeGeometryOptions } from 'three';
 
 /* load draco locally (v1.5.7) */
 useGLTF.setDecoderPath('draco/');
 
 /* Constants */
 export const blue = '#105eff';
-const blackColor = new THREE.Color(0.08, 0.08, 0.08);
+const blackColor = new Color(0.08, 0.08, 0.08);
 
 /* Models */
 export function BlackMaterial() {
@@ -43,7 +43,7 @@ export function MetalMaterial() {
 
 export function BaseLogoModel() {
   const { nodes } = useGLTF(logoModel);
-  const model = nodes.Base_Logo as THREE.Mesh;
+  const model = nodes.Base_Logo as Mesh;
 
   return (
     <Center>
@@ -57,7 +57,7 @@ export function BaseLogoModel() {
 export function Lightning() {
   const svg = useLoader(SVGLoader, lightningSVG.src);
   const shapes = (svg as SVGResult).paths[0].toShapes(true);
-  const extrudeArguments: [shapes: THREE.Shape[], options: ExtrudeGeometryOptions] = useMemo(
+  const extrudeArguments: [shapes: Shape[], options: ExtrudeGeometryOptions] = useMemo(
     () => [
       shapes,
       {
@@ -85,7 +85,7 @@ export function Lightning() {
 
 export function Controller(props: MeshProps) {
   const { nodes } = useGLTF(controlerModel);
-  const model = nodes.Controller as THREE.Mesh;
+  const model = nodes.Controller as Mesh;
   return (
     <PhysicsMesh>
       <mesh {...props} geometry={model.geometry} castShadow receiveShadow scale={0.3}>
@@ -97,7 +97,7 @@ export function Controller(props: MeshProps) {
 
 export function Eth() {
   const { nodes } = useGLTF(ethModel);
-  const model = nodes.ETH as THREE.Mesh;
+  const model = nodes.ETH as Mesh;
   return (
     <PhysicsMesh>
       <mesh geometry={model.geometry} castShadow receiveShadow scale={0.25}>
@@ -109,7 +109,7 @@ export function Eth() {
 
 export function Globe() {
   const { nodes } = useGLTF(globeModel);
-  const model = nodes.Globe as THREE.Mesh;
+  const model = nodes.Globe as Mesh;
 
   return (
     <PhysicsMesh>
@@ -127,7 +127,7 @@ const phoneHeight = 0.86;
 const phoneDimension: [width?: number | undefined, height?: number] = [phoneWidth, phoneHeight];
 export function Phone() {
   const { nodes } = useGLTF(phoneModel);
-  const model = nodes.Cylinder as THREE.Mesh;
+  const model = nodes.Cylinder as Mesh;
   return (
     <PhysicsMesh>
       <mesh geometry={model.geometry} castShadow receiveShadow rotation={phoneRotation}>
@@ -143,7 +143,7 @@ export function Phone() {
 
 export function Headphones() {
   const { nodes } = useGLTF(headphonesModel);
-  const model = nodes.Headphones as THREE.Mesh;
+  const model = nodes.Headphones as Mesh;
   return (
     <PhysicsMesh>
       <mesh geometry={model.geometry} castShadow receiveShadow scale={0.2}>
@@ -155,7 +155,7 @@ export function Headphones() {
 
 export function Spikey() {
   const { nodes } = useGLTF(spikeyModel);
-  const model = nodes.Spikey as THREE.Mesh;
+  const model = nodes.Spikey as Mesh;
   return (
     <PhysicsMesh>
       <mesh geometry={model.geometry} castShadow receiveShadow scale={0.3}>
@@ -167,7 +167,7 @@ export function Spikey() {
 
 export function Play() {
   const { nodes } = useGLTF(playModel);
-  const model = nodes.Play as THREE.Mesh;
+  const model = nodes.Play as Mesh;
   return (
     <PhysicsMesh>
       <mesh geometry={model.geometry} castShadow receiveShadow scale={0.4}>
@@ -179,7 +179,7 @@ export function Play() {
 
 export function Blobby() {
   const { nodes } = useGLTF(objectModel);
-  const model = nodes.Object_02 as THREE.Mesh;
+  const model = nodes.Object_02 as Mesh;
   return (
     <PhysicsMesh>
       <mesh geometry={model.geometry} castShadow receiveShadow scale={0.3}>
@@ -191,8 +191,8 @@ export function Blobby() {
 
 export function Cursor() {
   const { nodes } = useGLTF(cursorModel);
-  const cursor = nodes.Cursor as THREE.Mesh;
-  const cursor1 = nodes.Cursor1 as THREE.Mesh;
+  const cursor = nodes.Cursor as Mesh;
+  const cursor1 = nodes.Cursor1 as Mesh;
   return (
     <PhysicsMesh>
       <Center>
