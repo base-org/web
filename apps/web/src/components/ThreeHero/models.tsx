@@ -26,9 +26,11 @@ import type { MeshProps, Vector3, Euler } from '@react-three/fiber';
 import type { CylinderArgs, BallArgs, RapierRigidBody } from '@react-three/rapier';
 
 // 3D Libraries - static - These cannot be dynamically imported
-import { Color, MathUtils, Group, Vector3 as ThreeVector3 } from 'three';
+import { Color, Group, Vector3 as ThreeVector3 } from 'three';
+import { lerp, randFloatSpread } from 'three/src/math/MathUtils.js';
 import { useGLTF } from '@react-three/drei';
 import { useFrame, useLoader, useThree } from '@react-three/fiber';
+import { RigidBody } from '@react-three/rapier';
 import { SVGLoader } from 'three-stdlib';
 
 // 3D libraries - dynamic imports
@@ -43,10 +45,6 @@ const CylinderCollider = dynamic(
   async () => import('@react-three/rapier').then((mod) => mod.CylinderCollider),
   { ssr: false },
 );
-
-const RigidBody = dynamic(async () => import('@react-three/rapier').then((mod) => mod.RigidBody), {
-  ssr: false,
-});
 
 // Dynamic - react-three/drei
 const Center = dynamic(async () => import('@react-three/drei').then((mod) => mod.Center), {
@@ -123,12 +121,12 @@ export function BaseLogo() {
     if (!logoRef.current) return;
 
     if (doneRef.current) {
-      logoRef.current.rotation.y = MathUtils.lerp(logoRef.current.rotation.y, pointer.x, 0.05);
-      logoRef.current.rotation.x = MathUtils.lerp(logoRef.current.rotation.x, -pointer.y, 0.05);
+      logoRef.current.rotation.y = lerp(logoRef.current.rotation.y, pointer.x, 0.05);
+      logoRef.current.rotation.x = lerp(logoRef.current.rotation.x, -pointer.y, 0.05);
     } else {
-      logoRef.current.rotation.y = MathUtils.lerp(logoRef.current.rotation.y, 0, 0.05);
+      logoRef.current.rotation.y = lerp(logoRef.current.rotation.y, 0, 0.05);
     }
-    logoRef.current.position.z = MathUtils.lerp(logoRef.current.position.z, 0, 0.05);
+    logoRef.current.position.z = lerp(logoRef.current.position.z, 0, 0.05);
 
     // lerp never gets to 0
     if (logoRef.current.position.z > -0.01) {
@@ -153,7 +151,7 @@ export function BaseLogo() {
 const ballArguments: BallArgs = [1];
 export function PhysicsMesh({
   vec = new ThreeVector3(),
-  r = MathUtils.randFloatSpread,
+  r = randFloatSpread,
   scale = 1,
   gravityEffect = 0.2,
   children,
