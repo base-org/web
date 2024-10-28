@@ -97,7 +97,8 @@ Certain contracts are mandatory according to the [OP Stack SDK](https://stack.op
 | :--------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | AddressManager               | [0x709c2B8ef4A9feFc629A8a2C1AF424Dc5BD6ad1B](https://sepolia.etherscan.io/address/0x709c2B8ef4A9feFc629A8a2C1AF424Dc5BD6ad1B) |
 | AnchorStateRegistryProxy     | [0x4C8BA32A5DAC2A720bb35CeDB51D6B067D104205](https://sepolia.etherscan.io/address/0x4C8BA32A5DAC2A720bb35CeDB51D6B067D104205) |
-| DelayedWETHProxy             | [0x489c2E5ebe0037bDb2DC039C5770757b8E54eA1F](https://sepolia.etherscan.io/address/0x489c2E5ebe0037bDb2DC039C5770757b8E54eA1F) |
+| DelayedWETHProxy (FDG)       | [0x489c2E5ebe0037bDb2DC039C5770757b8E54eA1F](https://sepolia.etherscan.io/address/0x489c2E5ebe0037bDb2DC039C5770757b8E54eA1F) |
+| DelayedWETHProxy (PDG)       | [0x27A6128F707de3d99F89Bf09c35a4e0753E1B808](https://sepolia.etherscan.io/address/0x27A6128F707de3d99F89Bf09c35a4e0753E1B808) |
 | DisputeGameFactoryProxy      | [0xd6E6dBf4F7EA0ac412fD8b65ED297e64BB7a06E1](https://sepolia.etherscan.io/address/0xd6E6dBf4F7EA0ac412fD8b65ED297e64BB7a06E1) |
 | FaultDisputeGame             | [0x5062792ED6A85cF72a1424a1b7f39eD0f7972a4B](https://sepolia.etherscan.io/address/0x5062792ED6A85cF72a1424a1b7f39eD0f7972a4B) |
 | L1CrossDomainMessenger       | [0xC34855F4De64F1840e5686e64278da901e261f20](https://sepolia.etherscan.io/address/0xC34855F4De64F1840e5686e64278da901e261f20) |
