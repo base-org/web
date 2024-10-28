@@ -173,7 +173,7 @@ function DesktopNav({ color }: DesktopNavProps) {
           title="Join us on Discord"
         />
         <IconLink
-          href="https://twitter.com/base"
+          href="https://x.com/base"
           icon="twitter"
           label="Twitter"
           color={color}
