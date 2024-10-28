@@ -17,6 +17,7 @@ import {
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 import UsernameCastsField from 'apps/web/src/components/Basenames/UsernameCastsField';
+import UsernameLocationField from 'apps/web/src/components/Basenames/UsernameLocationField';
 
 const settingTabClass = classNames(
   'flex flex-col justify-between gap-8 text-gray/60 md:items-center p-4 md:p-8',
@@ -70,6 +71,11 @@ export default function UsernameProfileSettingsManageProfile() {
         <UsernameDescriptionField
           onChange={onChangeTextRecord}
           value={updatedTextRecords[UsernameTextRecordKeys.Description]}
+          disabled={writeTextRecordsIsPending}
+        />
+        <UsernameLocationField
+          onChange={onChangeTextRecord}
+          value={updatedTextRecords[UsernameTextRecordKeys.Location]}
           disabled={writeTextRecordsIsPending}
         />
         <Fieldset>
