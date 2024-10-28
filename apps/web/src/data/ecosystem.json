@@ -4223,5 +4223,15 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
-  }
+  },
+  {
+  "name": "FWX",
+  "tags": [
+      "defi"
+  ],
+  "description": " FWX is a permissionless perps DEX, any token can be permissionlessly listed to create their own onchain perps and lending markets. Trades are hedged in onchain DEXs to create zero risk environment for lenders.",
+  "url": "https://fwx.finance/",
+  "imageUrl": "/images/partners/your-project-logo.png"
+}
+  
 ]
