@@ -20,20 +20,23 @@ import cursorModel from './assets/cursor.glb';
 import lightningSVG from './assets/lightning.svg';
 
 // 3D libraries - types
-import type { Mesh, Shape, DirectionalLight, ExtrudeGeometryOptions } from 'three';
+import type { Mesh, Shape, DirectionalLight, ExtrudeGeometryOptions, Group } from 'three';
 import type { SVGResult } from 'three-stdlib';
 import type { MeshProps, Vector3, Euler } from '@react-three/fiber';
 import type { CylinderArgs, BallArgs, RapierRigidBody } from '@react-three/rapier';
 
 // 3D Libraries - static - These cannot be dynamically imported
-import { Color, Group, Vector3 as ThreeVector3 } from 'three';
-import { lerp, randFloatSpread } from 'three/src/math/MathUtils.js';
+import { Vector3 as ThreeVector3 } from 'three';
+import { lerp } from 'three/src/math/MathUtils.js';
 import { useGLTF } from '@react-three/drei';
-import { useFrame, useLoader, useThree } from '@react-three/fiber';
-import { RigidBody } from '@react-three/rapier';
+import { useFrame, useLoader } from '@react-three/fiber';
 import { SVGLoader } from 'three-stdlib';
+import DynamicRigidBody from 'apps/web/src/components/ThreeHero/DynamicRigidBody';
 
 // 3D libraries - dynamic imports
+const PhysicsMesh = dynamic(async () => import('./PhysicsMesh').then((mod) => mod.PhysicsMesh), {
+  ssr: false,
+});
 
 // Dynamic - react-three/rapier
 const BallCollider = dynamic(
@@ -56,7 +59,7 @@ useGLTF.setDecoderPath('draco/');
 
 /* Constants */
 export const blue = '#105eff';
-const blackColor = new Color(0.08, 0.08, 0.08);
+export const blackColor = '#141414'; // equivalent to rgb(0.08, 0.08, 0.08)
 
 /* Models */
 export function BlackMaterial() {
@@ -137,75 +140,14 @@ export function BaseLogo() {
   const cylinderArguments: CylinderArgs = useMemo(() => [10, isMobile ? 1.1 : 2], [isMobile]);
 
   return (
-    <RigidBody type="kinematicPosition" colliders={false}>
+    <DynamicRigidBody type="kinematicPosition" colliders={false}>
       <CylinderCollider rotation={baseLogoRotation} args={cylinderArguments} />
       <group ref={logoRef} position={baseLogoPosition}>
         <Center scale={isMobile ? 0.075 : 0.13}>
           <BaseLogoModel />
         </Center>
       </group>
-    </RigidBody>
-  );
-}
-
-const ballArguments: BallArgs = [1];
-export function PhysicsMesh({
-  vec = new ThreeVector3(),
-  r = randFloatSpread,
-  scale = 1,
-  gravityEffect = 0.2,
-  children,
-}: {
-  vec?: ThreeVector3;
-  r?: (a: number) => number;
-  scale?: number;
-  gravityEffect?: number;
-  children: React.ReactNode;
-}) {
-  const rigidBodyApiRef = useRef<RapierRigidBody>(null);
-  const { viewport } = useThree();
-
-  const randomNumberBetween = (min: number, max: number) => {
-    const posOrNeg = Math.random() > 0.5 ? 1 : -1;
-    const num = Math.min(Math.random() * (max - min) + min, 14);
-    return posOrNeg * num;
-  };
-
-  const pos = useMemo(
-    () =>
-      new ThreeVector3(
-        randomNumberBetween(viewport.width * 0.5, viewport.width * 2),
-        randomNumberBetween(viewport.height * 0.5, viewport.height * 2),
-        randomNumberBetween(viewport.width * 0.5, viewport.width * 2),
-      ),
-    [viewport.height, viewport.width],
-  );
-  const rot = useMemo(() => new ThreeVector3(r(Math.PI), r(Math.PI), r(Math.PI)), [r]);
-
-  useFrame(() => {
-    if (!rigidBodyApiRef.current) return;
-    const vector = rigidBodyApiRef.current.translation();
-    const vector3 = new ThreeVector3(vector.x, vector.y, vector.z);
-    rigidBodyApiRef.current.applyImpulse(
-      vec.copy(vector3).negate().multiplyScalar(gravityEffect),
-      true,
-    );
-  });
-
-  return (
-    <RigidBody
-      linearDamping={4}
-      angularDamping={1}
-      friction={0.1}
-      position={pos.toArray()}
-      rotation={rot.toArray()}
-      ref={rigidBodyApiRef}
-      colliders={false}
-      scale={scale}
-    >
-      <BallCollider args={ballArguments} />
-      {children}
-    </RigidBody>
+    </DynamicRigidBody>
   );
 }
 
@@ -230,14 +172,14 @@ export function Pointer() {
 
   return (
     <>
-      <RigidBody
+      <DynamicRigidBody
         position={pointerPosition}
         type="kinematicPosition"
         colliders={false}
         ref={rigidBodyApiRef}
       >
         <BallCollider args={ballColliderArgs} />
-      </RigidBody>
+      </DynamicRigidBody>
 
       <directionalLight ref={light} position={pointerLightPosition} intensity={10} color={blue} />
     </>
