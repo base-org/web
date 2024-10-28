@@ -4223,5 +4223,13 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+ },
+  {
+  "name": "CoinMath Dex",
+  "tags": ["Dapp"],
+  "description": "AThe CoinMath DEX provides a seamless and decentralized trading experience for users looking to trade $COIM and other supported tokens.",
+  "url": "https://dex.coinmath.org",
+  "imageUrl": "/apps/web/public/images/partners/CoinMath-Logo.png"
+}
   }
 ]
