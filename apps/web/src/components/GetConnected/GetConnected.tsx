@@ -25,7 +25,7 @@ export async function GetConnected() {
           />
           <GetConnectedButton
             iconName="twitter"
-            href="https://twitter.com/base"
+            href="https://x.com/base"
             eventName="twitter"
             title="Join us on Twitter"
             aria-label="Join us on Twitter"
