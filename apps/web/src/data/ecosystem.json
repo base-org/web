@@ -9,6 +9,15 @@
     "imageUrl": "/images/partners/wallet-retail.webp"
   },
   {
+    "name": "Anzen",
+    "url": "https://anzen.finance",
+    "description": "Anzen is the creator of USDz, a stablecoin backed by a diversified RWA portfolio, allowing holders to mitigate volatility and earn rewards through all market cycles",
+    "tags": [
+      "defi"
+    ],
+    "imageUrl": "/images/partners/anzen.png"
+  },
+  {
     "name": "Connext",
     "tags": [
       "bridge"
