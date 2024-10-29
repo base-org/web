@@ -1,14 +1,12 @@
 /* eslint-disable react/no-unknown-property */
 'use client';
 
-import { useGLTF, Center } from '@react-three/drei';
-import { MeshProps, Vector3, Euler, useLoader } from '@react-three/fiber';
+// Libraries
+import { useMemo, useRef } from 'react';
+import { useMediaQuery } from 'usehooks-ts';
+import dynamic from 'next/dynamic';
 
-import * as THREE from 'three';
-import { SVGLoader, SVGResult } from 'three-stdlib';
-import { PhysicsMesh } from './index';
-
-/* glbs */
+// Assets
 import controlerModel from './assets/controller.glb';
 import ethModel from './assets/eth.glb';
 import globeModel from './assets/globe.glb';
@@ -19,18 +17,49 @@ import playModel from './assets/play.glb';
 import objectModel from './assets/object.glb';
 import logoModel from './assets/logo.glb';
 import cursorModel from './assets/cursor.glb';
-
-/* svgs */
 import lightningSVG from './assets/lightning.svg';
-import { useMemo } from 'react';
-import { ExtrudeGeometryOptions } from 'three';
+
+// 3D libraries - types
+import type { Mesh, Shape, DirectionalLight, ExtrudeGeometryOptions, Group } from 'three';
+import type { SVGResult } from 'three-stdlib';
+import type { MeshProps, Vector3, Euler } from '@react-three/fiber';
+import type { CylinderArgs, BallArgs, RapierRigidBody } from '@react-three/rapier';
+
+// 3D Libraries - static - These cannot be dynamically imported
+import { Vector3 as ThreeVector3 } from 'three';
+import { lerp } from 'three/src/math/MathUtils.js';
+import { useGLTF } from '@react-three/drei';
+import { useFrame, useLoader } from '@react-three/fiber';
+import { SVGLoader } from 'three-stdlib';
+import DynamicRigidBody from 'apps/web/src/components/ThreeHero/DynamicRigidBody';
+
+// 3D libraries - dynamic imports
+const PhysicsMesh = dynamic(async () => import('./PhysicsMesh').then((mod) => mod.PhysicsMesh), {
+  ssr: false,
+});
+
+// Dynamic - react-three/rapier
+const BallCollider = dynamic(
+  async () => import('@react-three/rapier').then((mod) => mod.BallCollider),
+  { ssr: false },
+);
+
+const CylinderCollider = dynamic(
+  async () => import('@react-three/rapier').then((mod) => mod.CylinderCollider),
+  { ssr: false },
+);
+
+// Dynamic - react-three/drei
+const Center = dynamic(async () => import('@react-three/drei').then((mod) => mod.Center), {
+  ssr: false,
+});
 
 /* load draco locally (v1.5.7) */
 useGLTF.setDecoderPath('draco/');
 
 /* Constants */
 export const blue = '#105eff';
-const blackColor = new THREE.Color(0.08, 0.08, 0.08);
+export const blackColor = '#444'; // equivalent to rgb(0.08, 0.08, 0.08)
 
 /* Models */
 export function BlackMaterial() {
@@ -41,9 +70,125 @@ export function MetalMaterial() {
   return <meshPhysicalMaterial color="white" metalness={0.8} roughness={0.3} />;
 }
 
+const boxGeometry: [width: number, height: number, depth: number] = [0.5, 0.5, 0.5];
+const boxesCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+export function Boxes() {
+  const boxes = useMemo(
+    () =>
+      boxesCount.map((id) => {
+        return (
+          <PhysicsMesh scale={0.5} gravityEffect={0.03} key={id}>
+            <mesh castShadow receiveShadow>
+              <boxGeometry args={boxGeometry} />
+              <BlackMaterial />
+            </mesh>
+          </PhysicsMesh>
+        );
+      }),
+    [],
+  );
+
+  return <group>{boxes}</group>;
+}
+
+const sphereGeometry: [width: number, height: number, depth: number] = [0.25, 64, 64];
+const sphereCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+export function Balls() {
+  const boxes = useMemo(
+    () =>
+      sphereCount.map((id) => {
+        return (
+          <PhysicsMesh scale={0.25} gravityEffect={0.004} key={id}>
+            <mesh castShadow receiveShadow>
+              <sphereGeometry args={sphereGeometry} />
+              <meshPhysicalMaterial color={blue} />
+            </mesh>
+          </PhysicsMesh>
+        );
+      }),
+    [],
+  );
+
+  return <group>{boxes}</group>;
+}
+
+const baseLogoRotation: Euler = [Math.PI / 2, 0, 0];
+const baseLogoPosition: [x: number, y: number, z: number] = [0, 0, -10];
+
+export function BaseLogo() {
+  const logoRef = useRef<Group>(null);
+  const doneRef = useRef<boolean>(false);
+  const isMobile = useMediaQuery('(max-width: 769px)');
+
+  useFrame(({ pointer }) => {
+    if (!logoRef.current) return;
+
+    if (doneRef.current) {
+      logoRef.current.rotation.y = lerp(logoRef.current.rotation.y, pointer.x, 0.05);
+      logoRef.current.rotation.x = lerp(logoRef.current.rotation.x, -pointer.y, 0.05);
+    } else {
+      logoRef.current.rotation.y = lerp(logoRef.current.rotation.y, 0, 0.05);
+    }
+    logoRef.current.position.z = lerp(logoRef.current.position.z, 0, 0.05);
+
+    // lerp never gets to 0
+    if (logoRef.current.position.z > -0.01) {
+      doneRef.current = true;
+    }
+  });
+
+  const cylinderArguments: CylinderArgs = useMemo(() => [10, isMobile ? 1.1 : 2], [isMobile]);
+
+  return (
+    <DynamicRigidBody type="kinematicPosition" colliders={false}>
+      <CylinderCollider rotation={baseLogoRotation} args={cylinderArguments} />
+      <group ref={logoRef} position={baseLogoPosition}>
+        <Center scale={isMobile ? 0.075 : 0.13}>
+          <BaseLogoModel />
+        </Center>
+      </group>
+    </DynamicRigidBody>
+  );
+}
+
+const pointerPosition: Vector3 = [0, 0, 0];
+const pointerLightPosition: Vector3 = [0, 0, 10];
+
+export function Pointer() {
+  const vec = new ThreeVector3();
+  const rigidBodyApiRef = useRef<RapierRigidBody>(null);
+  const light = useRef<DirectionalLight>(null);
+  const isMobile = useMediaQuery('(max-width: 769px)');
+
+  useFrame(({ pointer, viewport }) => {
+    rigidBodyApiRef.current?.setNextKinematicTranslation(
+      vec.set((pointer.x * viewport.width) / 2, (pointer.y * viewport.height) / 2, 0),
+    );
+    light.current?.position.set(0, 0, 10);
+    light.current?.lookAt((pointer.x * viewport.width) / 2, (pointer.y * viewport.height) / 2, 0);
+  });
+
+  const ballColliderArgs: BallArgs = useMemo(() => [isMobile ? 1 : 2], [isMobile]);
+
+  return (
+    <>
+      <DynamicRigidBody
+        position={pointerPosition}
+        type="kinematicPosition"
+        colliders={false}
+        ref={rigidBodyApiRef}
+      >
+        <BallCollider args={ballColliderArgs} />
+      </DynamicRigidBody>
+
+      <directionalLight ref={light} position={pointerLightPosition} intensity={10} color={blue} />
+    </>
+  );
+}
+
 export function BaseLogoModel() {
   const { nodes } = useGLTF(logoModel);
-  const model = nodes.Base_Logo as THREE.Mesh;
+  const model = nodes.Base_Logo as Mesh;
 
   return (
     <Center>
@@ -57,7 +202,7 @@ export function BaseLogoModel() {
 export function Lightning() {
   const svg = useLoader(SVGLoader, lightningSVG.src);
   const shapes = (svg as SVGResult).paths[0].toShapes(true);
-  const extrudeArguments: [shapes: THREE.Shape[], options: ExtrudeGeometryOptions] = useMemo(
+  const extrudeArguments: [shapes: Shape[], options: ExtrudeGeometryOptions] = useMemo(
     () => [
       shapes,
       {
@@ -85,7 +230,7 @@ export function Lightning() {
 
 export function Controller(props: MeshProps) {
   const { nodes } = useGLTF(controlerModel);
-  const model = nodes.Controller as THREE.Mesh;
+  const model = nodes.Controller as Mesh;
   return (
     <PhysicsMesh>
       <mesh {...props} geometry={model.geometry} castShadow receiveShadow scale={0.3}>
@@ -97,7 +242,7 @@ export function Controller(props: MeshProps) {
 
 export function Eth() {
   const { nodes } = useGLTF(ethModel);
-  const model = nodes.ETH as THREE.Mesh;
+  const model = nodes.ETH as Mesh;
   return (
     <PhysicsMesh>
       <mesh geometry={model.geometry} castShadow receiveShadow scale={0.25}>
@@ -109,7 +254,7 @@ export function Eth() {
 
 export function Globe() {
   const { nodes } = useGLTF(globeModel);
-  const model = nodes.Globe as THREE.Mesh;
+  const model = nodes.Globe as Mesh;
 
   return (
     <PhysicsMesh>
@@ -127,7 +272,7 @@ const phoneHeight = 0.86;
 const phoneDimension: [width?: number | undefined, height?: number] = [phoneWidth, phoneHeight];
 export function Phone() {
   const { nodes } = useGLTF(phoneModel);
-  const model = nodes.Cylinder as THREE.Mesh;
+  const model = nodes.Cylinder as Mesh;
   return (
     <PhysicsMesh>
       <mesh geometry={model.geometry} castShadow receiveShadow rotation={phoneRotation}>
@@ -143,7 +288,7 @@ export function Phone() {
 
 export function Headphones() {
   const { nodes } = useGLTF(headphonesModel);
-  const model = nodes.Headphones as THREE.Mesh;
+  const model = nodes.Headphones as Mesh;
   return (
     <PhysicsMesh>
       <mesh geometry={model.geometry} castShadow receiveShadow scale={0.2}>
@@ -155,7 +300,7 @@ export function Headphones() {
 
 export function Spikey() {
   const { nodes } = useGLTF(spikeyModel);
-  const model = nodes.Spikey as THREE.Mesh;
+  const model = nodes.Spikey as Mesh;
   return (
     <PhysicsMesh>
       <mesh geometry={model.geometry} castShadow receiveShadow scale={0.3}>
@@ -167,7 +312,7 @@ export function Spikey() {
 
 export function Play() {
   const { nodes } = useGLTF(playModel);
-  const model = nodes.Play as THREE.Mesh;
+  const model = nodes.Play as Mesh;
   return (
     <PhysicsMesh>
       <mesh geometry={model.geometry} castShadow receiveShadow scale={0.4}>
@@ -179,7 +324,7 @@ export function Play() {
 
 export function Blobby() {
   const { nodes } = useGLTF(objectModel);
-  const model = nodes.Object_02 as THREE.Mesh;
+  const model = nodes.Object_02 as Mesh;
   return (
     <PhysicsMesh>
       <mesh geometry={model.geometry} castShadow receiveShadow scale={0.3}>
@@ -191,8 +336,8 @@ export function Blobby() {
 
 export function Cursor() {
   const { nodes } = useGLTF(cursorModel);
-  const cursor = nodes.Cursor as THREE.Mesh;
-  const cursor1 = nodes.Cursor1 as THREE.Mesh;
+  const cursor = nodes.Cursor as Mesh;
+  const cursor1 = nodes.Cursor1 as Mesh;
   return (
     <PhysicsMesh>
       <Center>
