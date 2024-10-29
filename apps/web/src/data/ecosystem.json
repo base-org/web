@@ -4223,5 +4223,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "Defi.money",
+    "tags": [
+      "defi"
+    ],
+    "description": "$MONEY is a freely tradable decentralized digital dollar built by defi.money.",
+    "url": "https://defi.money/",
+    "imageUrl": "/images/partners/defi-money.png"
   }
 ]
