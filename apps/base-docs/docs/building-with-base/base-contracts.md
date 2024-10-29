@@ -73,12 +73,20 @@ hide_table_of_contents: true
 | Name                         | Address                                                                                                               |
 | :--------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
 | AddressManager               | [0x8EfB6B5c4767B09Dc9AA6Af4eAA89F749522BaE2](https://etherscan.io/address/0x8EfB6B5c4767B09Dc9AA6Af4eAA89F749522BaE2) |
+| AnchorStateRegistryProxy     | [0xdB9091e48B1C42992A1213e6916184f9eBDbfEDf](https://etherscan.io/address/0xdB9091e48B1C42992A1213e6916184f9eBDbfEDf) |
+| DelayedWETHProxy (FDG)       | [0xa2f2aC6F5aF72e494A227d79Db20473Cf7A1FFE8](https://etherscan.io/address/0xa2f2aC6F5aF72e494A227d79Db20473Cf7A1FFE8) |
+| DelayedWETHProxy (PDG)       | [0x3E8a0B63f57e975c268d610ece93da5f78c01321](https://etherscan.io/address/0x3E8a0B63f57e975c268d610ece93da5f78c01321) |
+| DisputeGameFactoryProxy      | [0x43edB88C4B80fDD2AdFF2412A7BebF9dF42cB40e](https://etherscan.io/address/0x43edB88C4B80fDD2AdFF2412A7BebF9dF42cB40e) |
+| FaultDisputeGame             | [0xCd3c0194db74C23807D4B90A5181e1B28cF7007C](https://etherscan.io/address/0xCd3c0194db74C23807D4B90A5181e1B28cF7007C) |
 | L1CrossDomainMessenger       | [0x866E82a600A1414e583f7F13623F1aC5d58b0Afa](https://etherscan.io/address/0x866E82a600A1414e583f7F13623F1aC5d58b0Afa) |
 | L1ERC721Bridge               | [0x608d94945A64503E642E6370Ec598e519a2C1E53](https://etherscan.io/address/0x608d94945A64503E642E6370Ec598e519a2C1E53) |
 | L1StandardBridge             | [0x3154Cf16ccdb4C6d922629664174b904d80F2C35](https://etherscan.io/address/0x3154Cf16ccdb4C6d922629664174b904d80F2C35) |
 | L2OutputOracle               | [0x56315b90c40730925ec5485cf004d835058518A0](https://etherscan.io/address/0x56315b90c40730925ec5485cf004d835058518A0) |
+| MIPS                         | [0x16e83cE5Ce29BF90AD9Da06D2fE6a15d5f344ce4](https://etherscan.io/address/0x16e83cE5Ce29BF90AD9Da06D2fE6a15d5f344ce4) |
 | OptimismMintableERC20Factory | [0x05cc379EBD9B30BbA19C6fA282AB29218EC61D84](https://etherscan.io/address/0x05cc379EBD9B30BbA19C6fA282AB29218EC61D84) |
 | OptimismPortal               | [0x49048044D57e1C92A77f79988d21Fa8fAF74E97e](https://etherscan.io/address/0x49048044D57e1C92A77f79988d21Fa8fAF74E97e) |
+| PermissionedDisputeGame      | [0x19009dEBF8954B610f207D5925EEDe827805986e](https://etherscan.io/address/0x19009dEBF8954B610f207D5925EEDe827805986e) |
+| PreimageOracle               | [0x9c065e11870B891D214Bc2Da7EF1f9DDFA1BE277](https://etherscan.io/address/0x9c065e11870B891D214Bc2Da7EF1f9DDFA1BE277) |
 | ProxyAdmin                   | [0x0475cBCAebd9CE8AfA5025828d5b98DFb67E059E](https://etherscan.io/address/0x0475cBCAebd9CE8AfA5025828d5b98DFb67E059E) |
 | SystemConfig                 | [0x73a79Fab69143498Ed3712e519A88a918e1f4072](https://etherscan.io/address/0x73a79Fab69143498Ed3712e519A88a918e1f4072) |
 | SystemDictator               | [0x1fE3fdd1F0193Dd657C0a9AAC37314D6B479E557](https://etherscan.io/address/0x1fE3fdd1F0193Dd657C0a9AAC37314D6B479E557) |
