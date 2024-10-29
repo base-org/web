@@ -17,20 +17,19 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import TransactionError from 'apps/web/src/components/TransactionError';
-import TransactionStatus from 'apps/web/src/components/TransactionStatus';
 import { usePremiumEndDurationRemaining } from 'apps/web/src/hooks/useActiveEthPremiumAmount';
 import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
+import useCapabilitiesSafe from 'apps/web/src/hooks/useCapabilitiesSafe';
 import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
 import {
   useDiscountedNameRegistrationPrice,
   useNameRegistrationPrice,
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
-import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
 import { useRentPrice } from 'apps/web/src/hooks/useRentPrice';
 import { formatBaseEthDomain, IS_EARLY_ACCESS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, useCallback, useMemo, useState } from 'react';
 import { formatEther, zeroAddress } from 'viem';
 import { useAccount, useBalance, useReadContract, useSwitchChain } from 'wagmi';
 
@@ -72,13 +71,18 @@ export default function RegistrationForm() {
   );
 
   const {
-    transactionData,
-    transactionError,
     selectedName,
-    setRegisterNameTransactionHash,
     discount,
+    years,
+    setYears,
+    reverseRecord,
+    setReverseRecord,
+    hasExistingBasename,
+    registerName,
+    registerNameError,
+    registerNameIsPending,
+    code,
   } = useRegistration();
-  const [years, setYears] = useState(1);
 
   const [premiumExplainerModalOpen, setPremiumExplainerModalOpen] = useState(false);
   const togglePremiumExplainerModal = useCallback(() => {
@@ -96,13 +100,13 @@ export default function RegistrationForm() {
     logEventWithContext('registration_form_increment_year', ActionType.click);
 
     setYears((n) => n + 1);
-  }, [logEventWithContext]);
+  }, [logEventWithContext, setYears]);
 
   const decrement = useCallback(() => {
     logEventWithContext('registration_form_decement_year', ActionType.click);
 
     setYears((n) => (n > 1 ? n - 1 : n));
-  }, [logEventWithContext]);
+  }, [logEventWithContext, setYears]);
 
   const ethUsdPrice = useEthPriceFromUniswap();
   const { data: initialPrice } = useNameRegistrationPrice(selectedName, years);
@@ -130,29 +134,6 @@ export default function RegistrationForm() {
 
   const price = hasRegisteredWithDiscount ? initialPrice : discountedPrice ?? initialPrice;
 
-  const {
-    callback: registerName,
-    data: registerNameTransactionHash,
-    isPending: registerNameTransactionIsPending,
-    error: registerNameError,
-    reverseRecord,
-    setReverseRecord,
-    hasExistingBasename,
-  } = useRegisterNameCallback(
-    selectedName,
-    price,
-    years,
-    hasRegisteredWithDiscount ? undefined : discount?.discountKey,
-    hasRegisteredWithDiscount ? undefined : discount?.validationData,
-  );
-
-  useEffect(() => {
-    if (registerNameTransactionHash) {
-      logEventWithContext('register_name_transaction_approved', ActionType.change);
-    }
-    if (registerNameTransactionHash) setRegisterNameTransactionHash(registerNameTransactionHash);
-  }, [logEventWithContext, registerNameTransactionHash, setRegisterNameTransactionHash]);
-
   const registerNameCallback = useCallback(() => {
     registerName().catch((error) => {
       logError(error, 'Failed to register name');
@@ -164,12 +145,18 @@ export default function RegistrationForm() {
     [setReverseRecord],
   );
 
+  const { auxiliaryFunds: auxiliaryFundsEnabled } = useCapabilitiesSafe({
+    chainId: connectedChain?.id,
+  });
   const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
   const insufficientBalanceToRegister =
     balance?.value !== undefined && price !== undefined && balance?.value < price;
   const correctChain = connectedChain?.id === basenameChain.id;
+  const insufficientFundsAndNoAuxFunds = insufficientBalanceToRegister && !auxiliaryFundsEnabled;
   const insufficientBalanceToRegisterAndCorrectChain =
     insufficientBalanceToRegister && correctChain;
+  const insufficientFundsNoAuxFundsAndCorrectChain =
+    !auxiliaryFundsEnabled && insufficientBalanceToRegisterAndCorrectChain;
 
   const hasResolvedUSDPrice = price !== undefined && ethUsdPrice !== undefined;
   const usdPrice = hasResolvedUSDPrice ? formatUsdPrice(price, ethUsdPrice) : '--.--';
@@ -179,7 +166,7 @@ export default function RegistrationForm() {
 
   const isPremiumActive = premiumPrice && premiumPrice !== 0n && seconds !== 0n;
   const mainRegistrationElementClasses = classNames(
-    'z-10 flex flex-col items-start justify-between gap-6 bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center',
+    'z-10 flex flex-col items-start justify-between gap-6 bg-[#F7F7F7] p-8 text-gray-60 shadow-xl md:flex-row md:items-center relative z-20',
     {
       'rounded-2xl': !isPremiumActive,
       'rounded-b-2xl': isPremiumActive,
@@ -267,14 +254,14 @@ export default function RegistrationForm() {
                   <div className="flex flex-row items-baseline justify-around gap-2">
                     <p
                       className={classNames('whitespace-nowrap text-3xl text-black line-through', {
-                        'text-state-n-hovered': insufficientBalanceToRegister,
+                        'text-state-n-hovered': insufficientFundsAndNoAuxFunds,
                       })}
                     >
                       {formatEtherPrice(initialPrice)}
                     </p>
                     <p
                       className={classNames('whitespace-nowrap text-3xl font-bold text-green-50', {
-                        'text-state-n-hovered': insufficientBalanceToRegister,
+                        'text-state-n-hovered': insufficientFundsAndNoAuxFunds,
                       })}
                     >
                       {formatEtherPrice(discountedPrice)} ETH
@@ -283,7 +270,7 @@ export default function RegistrationForm() {
                 ) : (
                   <p
                     className={classNames('whitespace-nowrap text-3xl font-bold text-black', {
-                      'text-state-n-hovered': insufficientBalanceToRegister,
+                      'text-state-n-hovered': insufficientFundsAndNoAuxFunds,
                     })}
                   >
                     {formatEtherPrice(price)} ETH
@@ -293,7 +280,7 @@ export default function RegistrationForm() {
                   <span className="whitespace-nowrap text-xl text-gray-60">${usdPrice}</span>
                 )}
               </div>
-              {insufficientBalanceToRegister ? (
+              {insufficientFundsAndNoAuxFunds ? (
                 <p className="text-sm text-state-n-hovered">your ETH balance is insufficient</p>
               ) : Boolean(nameIsFree && IS_EARLY_ACCESS) ? (
                 <p className="text-sm text-green-50">Discounted during Early Access.</p>
@@ -336,11 +323,8 @@ export default function RegistrationForm() {
                       type="button"
                       variant={ButtonVariants.Black}
                       size={ButtonSizes.Medium}
-                      disabled={
-                        insufficientBalanceToRegisterAndCorrectChain ||
-                        registerNameTransactionIsPending
-                      }
-                      isLoading={registerNameTransactionIsPending}
+                      disabled={insufficientFundsNoAuxFundsAndCorrectChain || registerNameIsPending}
+                      isLoading={registerNameIsPending}
                       rounded
                       fullWidth
                     >
@@ -351,21 +335,18 @@ export default function RegistrationForm() {
               </ConnectButton.Custom>
             </div>
           </div>
-
-          {transactionError !== null && (
-            <TransactionError className="mt-4 text-center" error={transactionError} />
+          {code && (
+            <div className="relative z-10 -mt-8 rounded-2xl bg-gradient-to-r from-indigo-40 to-orange-30 px-4 py-4 pt-12 text-center text-lg text-white">
+              Claim your <strong>free creator basename</strong> &mdash; See you{' '}
+              <strong>Friday at Botanica</strong>
+            </div>
           )}
+
           {registerNameError && (
             <TransactionError className="mt-4 text-center" error={registerNameError} />
           )}
-          {transactionData && transactionData.status === 'reverted' && (
-            <TransactionStatus
-              className="mt-4 text-center"
-              transaction={transactionData}
-              chainId={basenameChain.id}
-            />
-          )}
-          {!IS_EARLY_ACCESS && (
+
+          {!code && !IS_EARLY_ACCESS && (
             <div className="mt-6 w-full ">
               <p className="text mr-2 text-center font-bold uppercase ">
                 <span className="text-[#5B616E]">
@@ -395,7 +376,6 @@ export default function RegistrationForm() {
             baseSingleYearEthCost={singleYearBasePrice}
             isOpen={premiumExplainerModalOpen}
             toggleModal={togglePremiumExplainerModal}
-            nameLength={selectedName?.length}
           />
         )}
       </>
