@@ -23,9 +23,14 @@ const ExperimentsContext = createContext<ExperimentsContextProps>({
 
 export default function ExperimentsProvider({ children }: ExperimentsProviderProps) {
   const [isReady, setIsReady] = useState(false);
-  const [experimentClient, setExperimentClient] = useState<ExperimentClient>();
+  const [experimentClient, setExperimentClient] = useState<ExperimentClient | null>(null);
 
   useEffect(() => {
+    if (!window.ClientAnalytics) {
+      console.warn("ClientAnalytics is not defined on the window object.");
+      return;
+    }
+
     const client = Experiment.initialize(ampDeploymentKey, {
       exposureTrackingProvider: {
         track: (exposure) => {
@@ -43,60 +48,55 @@ export default function ExperimentsProvider({ children }: ExperimentsProviderPro
         },
       },
       userProvider: {
-        getUser: () => {
-          return {
-            user_id: window.ClientAnalytics.identity.userId,
-            device_id: window.ClientAnalytics.identity.deviceId,
-            os: window.ClientAnalytics.identity.device_os,
-            language: window.ClientAnalytics.identity.languageCode,
-            country: window.ClientAnalytics.identity.countryCode,
-          };
-        },
+        getUser: () => ({
+          user_id: window.ClientAnalytics.identity.userId,
+          device_id: window.ClientAnalytics.identity.deviceId,
+          os: window.ClientAnalytics.identity.device_os,
+          language: window.ClientAnalytics.identity.languageCode,
+          country: window.ClientAnalytics.identity.countryCode,
+        }),
       },
     });
 
     setExperimentClient(client);
-  }, []);
+  }, [ampDeploymentKey]);
 
   const startExperiment = useCallback(async () => {
-    if (experimentClient) await experimentClient.start();
-  }, []);
+    if (!experimentClient) return;
+    try {
+      await experimentClient.start();
+      setIsReady(true);
+    } catch (error) {
+      console.error(`Error starting experiments for ${ampDeploymentKey}:`, error);
+    }
+  }, [experimentClient]);
 
   useEffect(() => {
-    startExperiment()
-      .then(() => {
-        setIsReady(true);
-      })
-      .catch((error) => {
-        console.log(`Error starting experiments for ${ampDeploymentKey}:`, error);
-      });
-  }, [experimentClient]);
+    startExperiment();
+  }, [startExperiment]);
 
   const getUserVariant = useCallback(
     (flagKey: string): string | undefined => {
-      if (!isReady) {
-        return undefined;
-      }
-      if (!experimentClient) {
-        console.error('No experiment clients found');
+      if (!isReady || !experimentClient) {
         return undefined;
       }
       const variant = experimentClient.variant(flagKey);
       return variant.value;
     },
-    [isReady],
+    [isReady, experimentClient],
   );
 
-  const values = useMemo(() => {
-    return { experimentClient, isReady, getUserVariant };
-  }, [isReady, getUserVariant]);
+  const values = useMemo(
+    () => ({ experimentClient, isReady, getUserVariant }),
+    [isReady, getUserVariant, experimentClient]
+  );
 
   return <ExperimentsContext.Provider value={values}>{children}</ExperimentsContext.Provider>;
 }
 
 const useExperiments = () => {
   const context = useContext(ExperimentsContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useExperiments must be used within an ExperimentsProvider');
   }
   return context;
@@ -104,9 +104,7 @@ const useExperiments = () => {
 
 const useExperiment = (flagKey: string): UseExperimentReturnValue => {
   const { isReady, getUserVariant } = useExperiments();
-  const userVariant = useMemo(() => {
-    return getUserVariant(flagKey);
-  }, [getUserVariant, flagKey]);
+  const userVariant = useMemo(() => getUserVariant(flagKey), [getUserVariant, flagKey]);
 
   return { isReady, userVariant };
 };
@@ -115,16 +113,16 @@ export { useExperiments, useExperiment };
 
 type WindowWithAnalytics = Window &
   typeof globalThis & {
-  ClientAnalytics: {
-    identity: {
-      userId: string;
-      deviceId: string;
-      device_os: string;
-      languageCode: string;
-      countryCode: string;
+    ClientAnalytics: {
+      identity: {
+        userId: string;
+        deviceId: string;
+        device_os: string;
+        languageCode: string;
+        countryCode: string;
+      };
     };
   };
-};
 
 type ExperimentsContextProps = {
   experimentClient: ExperimentClient | null;
