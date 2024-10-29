@@ -1,7 +1,6 @@
 import { BaseName } from '@coinbase/onchainkit/identity';
 import ProfileProviders from 'apps/web/app/(basenames)/name/[username]/ProfileProviders';
 import ErrorsProvider from 'apps/web/contexts/Errors';
-import DynamicProfilePromo from 'apps/web/src/components/Basenames/ProfilePromo/dynamic';
 import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
 import { redirectIfNotNameOwner } from 'apps/web/src/utils/redirectIfNotNameOwner';
 import {
@@ -48,7 +47,6 @@ export default async function Username({ params }: UsernameProfileProps) {
       <ProfileProviders username={username}>
         <main className={usernameProfilePageClasses}>
           <UsernameProfile />
-          <DynamicProfilePromo />
         </main>
       </ProfileProviders>
     </ErrorsProvider>

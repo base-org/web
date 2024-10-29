@@ -63,6 +63,7 @@ export const USERNAME_MIN_CHARACTER_LENGTH = 3;
 export const USERNAME_MAX_CHARACTER_LENGTH = 20;
 
 export const USERNAME_DESCRIPTION_MAX_LENGTH = 200;
+export const USERNAME_LOCATION_MAX_LENGTH = 100;
 
 // DANGER: Changing this post-mainnet launch means the stored data won't be accessible via the updated key
 export enum UsernameTextRecordKeys {
@@ -75,6 +76,7 @@ export enum UsernameTextRecordKeys {
   Email = 'email',
   Phone = 'phone',
   Avatar = 'avatar',
+  Location = 'location',
 
   // Socials
   Github = 'com.github',
@@ -177,6 +179,7 @@ export const textRecordsKeysEnabled = [
   UsernameTextRecordKeys.Github,
   UsernameTextRecordKeys.Email,
   UsernameTextRecordKeys.Phone,
+  UsernameTextRecordKeys.Location,
   UsernameTextRecordKeys.Twitter,
   UsernameTextRecordKeys.Farcaster,
   UsernameTextRecordKeys.Lens,
@@ -196,6 +199,7 @@ export const textRecordsKeysForDisplay = {
   [UsernameTextRecordKeys.Github]: 'Github',
   [UsernameTextRecordKeys.Email]: 'Email',
   [UsernameTextRecordKeys.Phone]: 'Phone',
+  [UsernameTextRecordKeys.Location]: 'Location',
   [UsernameTextRecordKeys.Twitter]: 'Twitter / X',
   [UsernameTextRecordKeys.Farcaster]: 'Farcaster',
   [UsernameTextRecordKeys.Lens]: 'Lens',
@@ -215,6 +219,7 @@ export const textRecordsKeysPlaceholderForDisplay = {
   [UsernameTextRecordKeys.Github]: 'Username',
   [UsernameTextRecordKeys.Email]: 'Personal email',
   [UsernameTextRecordKeys.Phone]: '+1 415 ..',
+  [UsernameTextRecordKeys.Location]: 'New York, NY, USA',
   [UsernameTextRecordKeys.Twitter]: 'Username',
   [UsernameTextRecordKeys.Farcaster]: 'Username',
   [UsernameTextRecordKeys.Lens]: 'name.lens',
@@ -392,6 +397,7 @@ export enum Discount {
   BNS_NAME = 'BNS_NAME',
   BASE_DOT_ETH_NFT = 'BASE_DOT_ETH_NFT',
   DISCOUNT_CODE = 'DISCOUNT_CODE',
+  TALENT_PROTOCOL = 'TALENT_PROTOCOL',
 }
 
 export function isValidDiscount(key: string): key is keyof typeof Discount {
