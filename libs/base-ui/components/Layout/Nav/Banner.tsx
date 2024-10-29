@@ -33,7 +33,7 @@ export default function Banner({ href, text, bannerName }: BannerProps) {
       },
       AnalyticsEventImportance.high,
     );
-  }, [logEvent, ActionType, ComponentType, AnalyticsEventImportance]);
+  }, [bannerName]);
 
   const hideBanner = useCallback(() => {
     setIsBannerVisible(false);
@@ -47,13 +47,12 @@ export default function Banner({ href, text, bannerName }: BannerProps) {
     <div className="bg-yellow-20 z-10 flex w-full flex-row justify-center text-black">
       <div className="bg-yellow-20 z-10 flex w-full max-w-[1440px] flex-row items-center justify-between self-center p-2 pl-8 pr-6">
         <Link href={href} onClick={linkClick}>
-          <span className="text-xs  underline md:text-base">{text}</span>
+          <span className="text-xs underline md:text-base">{text}</span>
         </Link>
         <div className="flex flex-row items-center gap-4">
           <button
             className="cursor-pointer p-2 text-sm"
             onClick={hideBanner}
-            onKeyDown={hideBanner}
             type="button"
             aria-label="Close Banner"
           >
