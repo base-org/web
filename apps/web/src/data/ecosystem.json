@@ -9,6 +9,15 @@
     "imageUrl": "/images/partners/wallet-retail.webp"
   },
   {
+    "name": "SEDA",
+    "tags": [
+      "infra"
+    ],
+    "description": "SEDA is Web3's most powerful oracle connecting any network with millions of feeds in one integration. Permissionlessly deploy app-specific oracle feeds for any use case on day one.",
+    "url": "https://seda.xyz",
+    "imageUrl": "/images/partners/seda.png"
+  },
+  {
     "name": "Connext",
     "tags": [
       "bridge"
