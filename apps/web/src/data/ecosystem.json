@@ -4223,5 +4223,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "Beliefs",
+    "tags": [
+      "social"
+    ],
+    "description": "Trenches 2.0. Hunt social content, launch and grow community coins. Bulletproof anti-sniping, max. buys, tipdrops like in $DEGEN. Tokenize tweets/casts in one click for free and get 0.5% of supply on UNI.",
+    "url": "https://beliefs.social/",
+    "imageUrl": "/images/partners/beliefs.svg"
   }
 ]
