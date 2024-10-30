@@ -5,7 +5,7 @@ import {
 } from 'apps/web/src/addresses/usernames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useCallback, useEffect } from 'react';
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { Basename } from '@coinbase/onchainkit/identity';
 import { useAccount } from 'wagmi';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import { useErrors } from 'apps/web/contexts/Errors';
@@ -22,7 +22,7 @@ import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernamePr
 */
 
 type UseSetPrimaryBasenameProps = {
-  secondaryUsername: BaseName;
+  secondaryUsername: Basename;
 };
 
 export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrimaryBasenameProps) {

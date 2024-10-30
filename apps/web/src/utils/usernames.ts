@@ -17,7 +17,7 @@ import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import RegistryAbi from 'apps/web/src/abis/RegistryAbi';
 import BaseRegistrarAbi from 'apps/web/src/abis/BaseRegistrarAbi';
 import { base, baseSepolia, mainnet } from 'viem/chains';
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { Basename } from '@coinbase/onchainkit/identity';
 import {
   USERNAME_BASE_REGISTRAR_ADDRESSES,
   USERNAME_BASE_REGISTRY_ADDRESSES,
@@ -350,8 +350,8 @@ export const USERNAME_DOMAINS: Record<number, string> = {
   [base.id]: 'base.eth',
 };
 
-export const formatBaseEthDomain = (name: string, chainId: number): BaseName => {
-  return `${name}.${USERNAME_DOMAINS[chainId] ?? '.base.eth'}`.toLocaleLowerCase() as BaseName;
+export const formatBaseEthDomain = (name: string, chainId: number): Basename => {
+  return `${name}.${USERNAME_DOMAINS[chainId] ?? '.base.eth'}`.toLocaleLowerCase() as Basename;
 };
 
 export const convertChainIdToCoinType = (chainId: number): string => {
@@ -404,7 +404,7 @@ export function isValidDiscount(key: string): key is keyof typeof Discount {
   return Object.values(Discount).includes(key as Discount);
 }
 
-export function getChainForBasename(username: BaseName): Chain {
+export function getChainForBasename(username: Basename): Chain {
   return username.endsWith(`.${USERNAME_DOMAINS[base.id]}`) ? base : baseSepolia;
 }
 
