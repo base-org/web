@@ -1,5 +1,14 @@
 [
   {
+    "name": "Patron",
+    "url": "https://patron.visioncommunity.xyz",
+    "description": "Patron is a gamified social platform where users support private communities, earn rewards using their NFT Shards, and build reputation through engagement",
+    "tags": [
+      "social"
+    ],
+    "imageUrl": "/images/partners/patron-192.png"
+  },
+  {
     "name": "Coinbase",
     "url": "https://www.coinbase.com",
     "description": "Coinbase is a secure online platform for buying, selling, transferring, and storing cryptocurrency.",
