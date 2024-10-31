@@ -4216,6 +4216,15 @@
     "imageUrl": "/images/partners/blocklords.png"
   },
   {
+    "name": "OpenSeason",
+    "tags": [
+      "gaming"
+    ],
+    "description": "A skill2earn shooter breaking grounds in GameFI. Now an audience can change the battlefield. Win with skill, Stake on players, or introduce some chaos watching. We’ve got something for everyone.",
+    "url": "https://openseason.games",
+    "imageUrl": "/images/partners/openseason.png"
+  },
+  {
     "name": "Phantom",
     "tags": [
       "wallet"
