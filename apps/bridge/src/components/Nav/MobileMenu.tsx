@@ -215,7 +215,7 @@ function MobileMenu({ color }: MobileMenuProps) {
 
               <div className="flex flex-row justify-between gap-4 justify-self-end pb-8">
                 <a
-                  href="https://warpcast.com/~/channel/base"
+                  href="https://warpcast.com/base"
                   target="_blank"
                   rel="noreferrer noopener"
                   title="Join us on Farcaster"

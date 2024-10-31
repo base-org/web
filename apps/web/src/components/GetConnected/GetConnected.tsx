@@ -11,7 +11,7 @@ export async function GetConnected() {
         <div className="flex flex-row gap-4 lg:h-full lg:items-center lg:gap-8">
           <GetConnectedButton
             iconName="farcaster"
-            href="https://warpcast.com/~/channel/base"
+            href="https://warpcast.com/base"
             eventName="farcaster"
             title="Join us on Warpcast"
             aria-label="Join us on Warpcast"
