@@ -4229,7 +4229,7 @@
     "tags": [
       "defi"
     ],
-    "description": "Sumer Money is blockchain liquidity infrastructure designed for maximum capital efficiency. Sumer's unified liquidity pool governing its lending market intelligently balances risk and capital efficiency using asset correlation-driven LTVs. Users can mint Sumer Money Multipliers (SuTokens) with supported assets for multi-chain DeFi, keeping yields and security on the native chain.",
+    "description": "Sumer is a highly capital efficient blockchain liquidity infrastructure that combines correlated/noncorrelated asset lending, Sumer Money Multipliers (collateral backed synthetics) and bridge liquidity in a unified liquidity pool. With the help of Sumer Money Multipliers, user could participate in multi-chain DeFi while keeping yields and security on the native chain.",
     "url": "https://sumer.money",
     "imageUrl": "/images/partners/sumer-money.png"
   }
