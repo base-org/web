@@ -4223,5 +4223,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "Million Bit Homepage",
+    "tags": [
+      "social"
+    ],
+    "description": "Own a bit of onchain history! Add your pixels to the homepage and receive an NFT of your plot.",
+    "url": "https://millionbithomepage.com/",
+    "imageUrl": "/images/partners/millionbithomepage.png"
   }
 ]
