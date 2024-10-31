@@ -110,6 +110,10 @@ export default function UsernameNav() {
         <Link href="/">
           <ImageAdaptive src={usernameBaseLogo as StaticImageData} alt="Base" />
         </Link>
+        {/* TODO only display this if they have a basename */}
+        <span className="text-sm text-orange-90">
+          <Link href="/manage-names">My Basenames</Link>
+        </span>
         <span className={walletStateClasses}>
           <Suspense>
             <ConnectWalletButton
