@@ -4223,5 +4223,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+    {
+    "name": "Sumer Money",
+    "tags": [
+      "defi"
+    ],
+    "description": "Sumer Money is blockchain liquidity infrastructure designed for maximum capital efficiency. Sumer's unified liquidity pool governing its lending market intelligently balances risk and capital efficiency using asset correlation-driven LTVs. Users can mint Sumer Money Multipliers (SuTokens) with supported assets for multi-chain DeFi, keeping yields and security on the native chain.",
+    "url": "https://sumer.money",
+    "imageUrl": "/images/partners/sumer-money.png"
   }
 ]
