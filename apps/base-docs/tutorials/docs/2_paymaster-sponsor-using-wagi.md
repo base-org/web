@@ -37,10 +37,9 @@ You’ll need to set up a cloud account with [Reown] (FKA, WalletConnect), a pro
 
 You'll need to set up an account (free) with the [Coinbase Developer Platform (CDP)](https://www.coinbase.com/cloud) to obtain a Paymaster + Bundler endpoint, which is required for this tutorial. The CDP provides these essential services that enable transaction sponsorship.
 
-### Smart Wallet 
+### Smart Wallet
 
-Smart Wallets enables users to create an account in seconds with no app or extension required through the use of Passskey signing. This tutorial uses the [Base Wallet]() (FKA Coinbase Smart Wallet) to sign and mint transactions. 
-
+Smart Wallets enables users to create an account in seconds with no app or extension required through the use of Passskey signing. This tutorial uses the [Base Wallet] (FKA Coinbase Smart Wallet) to sign and mint transactions.
 
 ---
 
@@ -98,6 +97,7 @@ declare module 'wagmi' {
   }
 }
 ```
+
 This configuration sets up your project to connect to the Base network and supports multiple connectors, including WalletConnect.
 
 ### Create utils.ts for Contract ABI and Address
@@ -111,8 +111,7 @@ Create a new file `utils.ts` in the `src` folder. This file will store the contr
 
 import { Abi } from 'viem';
 
-export const contractAddress =
-  '0x83bd615eb93ee1336aca53e185b03b54ff4a17e8' as `0x${string}`;
+export const contractAddress = '0x83bd615eb93ee1336aca53e185b03b54ff4a17e8' as `0x${string}`;
 
 export const abi = [
   {
@@ -177,36 +176,33 @@ export default function Home() {
 Using `useCapabilities`, we retrieve the wallet’s supported capabilities, grouped by chain ID. In this example, we’re checking if the wallet has the `paymasterService` capability, which indicates it can use a Base Paymaster for gas-free transactions. If paymaster service is supported, we configure the capabilities object to include the Base Paymaster URL.
 
 ```tsx
-
 // Retrieve wallet capabilities to check for paymaster support
-  const { data: availableCapabilities } = useCapabilities({
-    account: address,
-  });
-  const capabilities = useMemo(() => {
-    if (!availableCapabilities || !address) return {};
-    const capabilitiesForChain = availableCapabilities[address.chainId];
-    if (
-      capabilitiesForChain['paymasterService'] &&
-      capabilitiesForChain['paymasterService'].supported
-    ) {
-      return {
-        paymasterService: {
-          url: `https://api.developer.coinbase.com/rpc/v1/base/rcNfIncd3jL3FztkZ7TPOV_sfHUGlcVP`,
-        },
-      };
-    }
-    return {};
-  }, [availableCapabilities, address]);
-
+const { data: availableCapabilities } = useCapabilities({
+  account: address,
+});
+const capabilities = useMemo(() => {
+  if (!availableCapabilities || !address) return {};
+  const capabilitiesForChain = availableCapabilities[address.chainId];
+  if (
+    capabilitiesForChain['paymasterService'] &&
+    capabilitiesForChain['paymasterService'].supported
+  ) {
+    return {
+      paymasterService: {
+        url: `https://api.developer.coinbase.com/rpc/v1/base/rcNfIncd3jL3FztkZ7TPOV_sfHUGlcVP`,
+      },
+    };
+  }
+  return {};
+}, [availableCapabilities, address]);
 ```
-
 
 **Minting Logic with `useWriteContracts`:**
 We use `useWriteContracts` to interact with the smart contract and call the mintTo function, which mints the NFT. By passing capabilities, the transaction is sponsored by the Base Paymaster, covering gas fees for the user.
 
 The Mint button will either prompt the user to connect their wallet (if not connected), or execute the handleMint function to mint an NFT (if connected). During the minting process, the button shows “Minting…” to indicate the ongoing transaction.
 
-The full `src/app/mint/page.tsx` file should look something like this: 
+The full `src/app/mint/page.tsx` file should look something like this:
 
 :::tip Smart Wallet Only
 
@@ -228,10 +224,10 @@ To enable [Base Wallet] functionality add the `smartWalletOnly` prefence to the 
     disabled={isMinting}
 >
 ```
+
 :::
 
 ```tsx
-
 'use client';
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
 import { useState, useMemo } from 'react';
@@ -295,14 +291,14 @@ export default function Home() {
   }, [availableCapabilities, address]);
 
   return (
-    <div className='min-h-screen flex items-center justify-center'>
+    <div className="flex min-h-screen items-center justify-center">
       <div>
         <h1>Connected Wallet: </h1>
         <p>{address ? address : 'No wallet detected'}</p>
       </div>
       <div>
         {isConnected && (
-          <button type='button' onClick={() => disconnect()}>
+          <button type="button" onClick={() => disconnect()}>
             Disconnect
           </button>
         )}
@@ -318,7 +314,7 @@ export default function Home() {
                   }),
                 })
         }
-        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+        className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
         disabled={isMinting}
       >
         {isMinting ? 'Minting...' : isConnected ? 'Mint NFT' : 'Connect Wallet'}
@@ -330,15 +326,13 @@ export default function Home() {
 
 This component detects if a wallet is connected, then allows users to mint an NFT. If no wallet is detected, it prompts the user to connect via the Coinbase Smart Wallet.
 
-
-
 ### Testing
 
 Start your development server to test the minting functionality:
 
 ```bash
 bun run dev
-``` 
+```
 
 Open your browser and navigate to your site’s local URL:
 
@@ -346,14 +340,13 @@ Open your browser and navigate to your site’s local URL:
 
 http://localhost:3000/mint
 ```
- 
+
 ![image-of-server](../../assets/images/paymaster-tutorials/connect-wallet-mint-page.png)
 
 **Connect Your Wallet and Mint**
 Once on the mint page, connect your wallet. You should see a Mint button appear. Upon clicking the Mint button, a smart wallet popup will prompt you to confirm the mint transaction.
 
 ![image-of-mint-modal](../../assets/images/paymaster-tutorials/sponsored_mint_nft.png)
-
 
 ## Verify Your NFT
 
@@ -375,8 +368,7 @@ Congratulations! You’ve successfully integrated a Base Paymaster to enable gas
 
 Happy building!
 
---- 
-
+---
 
 [OnchainKit]: https://github.com/coinbase/onchainkit
 [Viem]: https://viem.sh/
