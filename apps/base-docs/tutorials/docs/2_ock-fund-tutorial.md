@@ -172,7 +172,7 @@ This app can serve as a foundation for more complex onchain applications that re
 
 ---
 
-[Onchain Kit]: https://github.com/coinbase/onchainkit
+[OnchainKit]: https://github.com/coinbase/onchainkit
 [Viem]: https://viem.sh/
 [Smart Wallets]: https://keys.coinbase.com/onboarding
 [viem]: https://viem.sh/docs/introduction
