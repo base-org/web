@@ -17,7 +17,7 @@ export default function Document() {
         />
         <meta property="og:image" content="https://bridge.base.org/images/base-open-graph.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="base.org" />
+        <meta name="twitter:domain" content="base.org" />
         <meta name="twitter:title" content="Base | Superchain Bridges" />
         <meta
           name="twitter:description"
