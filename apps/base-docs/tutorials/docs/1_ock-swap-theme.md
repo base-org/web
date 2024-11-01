@@ -116,7 +116,6 @@ Once you've chosen your colors, add them to the CSS file. Update the `src/app/gl
 
 Use the "Inspect" feature in your browser to identify the element you wish to override in your `global.css` file.
 
-![Inspect Element GIF](../../assets/images/onchainkit-tutorials/inspect-ock-theme.gif)
 
 :::
 
