@@ -1,4 +1,4 @@
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { Basename } from '@coinbase/onchainkit/identity';
 import ProfileProviders from 'apps/web/app/(basenames)/name/[username]/ProfileProviders';
 import ErrorsProvider from 'apps/web/contexts/Errors';
 import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
@@ -12,7 +12,7 @@ import classNames from 'classnames';
 import { Metadata } from 'next';
 
 export type UsernameProfileProps = {
-  params: { username: BaseName };
+  params: { username: Basename };
 };
 
 export async function generateMetadata({ params }: UsernameProfileProps): Promise<Metadata> {
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: UsernameProfileProps): Promis
 }
 
 export default async function Username({ params }: UsernameProfileProps) {
-  let username = await formatDefaultUsername(decodeURIComponent(params.username) as BaseName);
+  let username = await formatDefaultUsername(decodeURIComponent(params.username) as Basename);
   await redirectIfNotNameOwner(username);
 
   const usernameProfilePageClasses = classNames(
