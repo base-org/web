@@ -15,7 +15,7 @@
   "dependencies": {
     "@coinbase/cookie-banner": "^1.0.3",
     "@coinbase/cookie-manager": "^1.1.1",
-    "@coinbase/onchainkit": "^0.28.5",
+    "@coinbase/onchainkit": "^0.35.2",
     "@datadog/browser-logs": "^5.23.3",
     "@datadog/browser-rum": "^5.23.3",
     "@frames.js/render": "^0.3.14",
@@ -55,7 +55,7 @@
     "jsdom": "^25.0.0",
     "jsonwebtoken": "^9.0.2",
     "kysely": "^0.27.3",
-    "next": "^14.2.5",
+    "next": "^14.2.16",
     "node-fetch": "^3.3.0",
     "permissionless": "^0.1.41",
     "pg": "^8.12.0",

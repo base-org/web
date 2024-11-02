@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { base, baseSepolia, Chain } from 'viem/chains';
 import { createPublicClient, http } from 'viem';
 import { cdpBaseRpcEndpoint, cdpBaseSepoliaRpcEndpoint } from 'apps/web/src/cdp/constants';
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { Basename } from '@coinbase/onchainkit/identity';
 import { getChainForBasename } from 'apps/web/src/utils/usernames';
 import { isDevelopment } from 'apps/web/src/constants';
 
@@ -22,7 +22,7 @@ export function isBasenameSupportedChain(chainId: number) {
   return supportedChainIds.includes(chainId);
 }
 
-export default function useBasenameChain(username?: BaseName) {
+export default function useBasenameChain(username?: Basename) {
   const { chain: connectedChain } = useAccount();
 
   const basenameChain: Chain = useMemo(() => {

@@ -5,7 +5,7 @@ import { QueryParams, urlWithQueryParams } from 'apps/web/src/utils/urls';
  */
 
 export enum SocialPlatform {
-  Twitter = 'twitter', // Never surrender
+  Twitter = 'X', // Never surrender
   Farcaster = 'farcaster',
 }
 
@@ -25,7 +25,7 @@ export const socialPlatformCtaForDisplay = {
 };
 
 export const socialPlatformIconName: Record<SocialPlatform, string> = {
-  [SocialPlatform.Twitter]: 'twitter',
+  [SocialPlatform.Twitter]: 'x',
   [SocialPlatform.Farcaster]: 'farcaster',
 };
 
@@ -44,7 +44,7 @@ export const socialPlatformShareLinkFunction: SocialPlatformShareLinkFunction = 
       url: url,
     };
 
-    return urlWithQueryParams('https://twitter.com/intent/tweet', shareParams);
+    return urlWithQueryParams('https://x.com/intent/tweet', shareParams);
   },
   [SocialPlatform.Farcaster]: ({ text, url }: SocialMediaShareParams) => {
     const shareParams: QueryParams = {
