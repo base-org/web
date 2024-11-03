@@ -4223,5 +4223,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "PulseLN",
+    "tags": [
+      "bridge"
+    ],
+    "description": "PulseLN is a high speed cross-chain bridging and onramping solution designed to streamline cross blockain network exchanges.",
+    "url": "https://PulseLN.com/",
+    "imageUrl": "/images/partners/pulseln.png"
   }
 ]
