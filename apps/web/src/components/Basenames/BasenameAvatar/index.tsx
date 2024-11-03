@@ -1,6 +1,7 @@
 'use client';
 
-import { Basename } from '@coinbase/onchainkit/identity';
+import { BaseName } from '@coinbase/onchainkit/identity';
+
 import LottieAnimation from 'apps/web/src/components/LottieAnimation';
 import useBaseEnsAvatar from 'apps/web/src/hooks/useBaseEnsAvatar';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
@@ -13,7 +14,7 @@ export default function BasenameAvatar({
   width,
   height,
 }: {
-  basename: Basename;
+  basename: BaseName;
   wrapperClassName?: string;
   animate?: boolean;
   width?: number | `${number}` | undefined;

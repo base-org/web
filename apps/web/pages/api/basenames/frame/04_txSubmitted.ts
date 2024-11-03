@@ -42,22 +42,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   let name;
 
   try {
-    if (body.trustedData) {
-      const result = await getFrameMessage(body, {
-        neynarApiKey: NEYNAR_API_KEY,
-      });
-      isValid = result.isValid;
-      message = result.message;
-      if (!isValid) {
-        throw new Error('Message is not valid');
-      }
-      if (!message) {
-        throw new Error('No message received');
-      }
+    const result = await getFrameMessage(body, {
+      neynarApiKey: NEYNAR_API_KEY,
+    });
+    isValid = result.isValid;
+    message = result.message;
+    if (!isValid) {
+      throw new Error('Message is not valid');
+    }
+    if (!message) {
+      throw new Error('No message received');
     }
 
     const messageState = JSON.parse(
-      decodeURIComponent(message?.state?.serialized ?? body.untrustedData.state),
+      decodeURIComponent(message.state?.serialized),
     ) as TxFrameStateType;
     if (!messageState) {
       throw new Error('No message state received');

@@ -5,5 +5,3 @@ export const DOMAIN = isDevelopment ? `http://localhost:3000` : 'https://www.bas
 export const NEYNAR_API_KEY = process.env.NEYNAR_API_KEY;
 
 export const CHAIN = base;
-
-export const acceptedProtocols = { anonymous: 'vNext' };
