@@ -1818,6 +1818,15 @@
     "imageUrl": "/images/partners/debridge.webp"
   },
   {
+    "name": "PulseLN",
+    "tags": [
+      "bridge"
+    ],
+    "description": "PulseLN is a high speed cross-chain bridging and onramping solution designed to streamline cross blockain network exchanges.",
+    "url": "https://PulseLN.com/",
+    "imageUrl": "/images/partners/pulseln.png"
+  },
+  {
     "name": "Decent",
     "url": "https://decent.xyz/",
     "description": "Cross-chain transactions, meet one-tap payments. Serve customers of every stripe with The Box, empowering them with automatic swaps, built‑in bridging, and seamless secondary sales.",
@@ -4223,14 +4232,5 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
-  },
-  {
-    "name": "PulseLN",
-    "tags": [
-      "bridge"
-    ],
-    "description": "PulseLN is a high speed cross-chain bridging and onramping solution designed to streamline cross blockain network exchanges.",
-    "url": "https://PulseLN.com/",
-    "imageUrl": "/images/partners/pulseln.png"
   }
 ]
