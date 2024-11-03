@@ -16,7 +16,6 @@ import {
 } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/FrameTheme';
 import cn from 'classnames';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { EstimateGasExecutionError } from 'viem';
 
 type FrameProps = {
   url: string;
@@ -83,8 +82,6 @@ export default function Frame({ url, className }: FrameProps) {
                 : interactionData.transactionData.chainId;
             const requestedChainId = parseChainId(chainId);
             setError(`Must switch chain to ${requestedChainId}`);
-          } else if (err instanceof EstimateGasExecutionError) {
-            setError(`Insufficient funds for this transaction`);
           } else {
             if (signatureData) {
               setError('Error signing data');

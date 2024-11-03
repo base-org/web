@@ -1,4 +1,4 @@
-import { Basename } from '@coinbase/onchainkit/identity';
+import { BaseName } from '@coinbase/onchainkit/identity';
 import { Address } from 'viem';
 
 export enum UsernamePillVariants {
@@ -7,7 +7,7 @@ export enum UsernamePillVariants {
 }
 export type UsernamePillProps = {
   variant: UsernamePillVariants;
-  username: Basename;
+  username: BaseName;
   address?: Address;
   isRegistering?: boolean;
 };

@@ -1,5 +1,5 @@
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import { Basename } from '@coinbase/onchainkit/identity';
+import { BaseName } from '@coinbase/onchainkit/identity';
 import { useEnsAvatar } from 'wagmi';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/urls';
@@ -8,7 +8,7 @@ export type UseBaseEnsNameProps = {
   name?: BaseEnsNameData;
 };
 
-export type BaseEnsNameData = Basename | undefined;
+export type BaseEnsNameData = BaseName | undefined;
 
 // Wrapper around onchainkit's useName
 export default function useBaseEnsAvatar({ name }: UseBaseEnsNameProps) {

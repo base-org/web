@@ -24,7 +24,7 @@ import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextReco
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { EstimateGasExecutionError, namehash } from 'viem';
+import { namehash } from 'viem';
 import { useAccount, useChainId, useConfig, useWriteContract } from 'wagmi';
 import { sendTransaction, signTypedData, switchChain } from 'wagmi/actions';
 
@@ -148,8 +148,6 @@ export function FramesProvider({ children }: FramesProviderProps) {
           logEventWithContext('basename_profile_frame_invalid_chain_id', ActionType.error);
         } else if (error instanceof CouldNotChangeChainError) {
           logEventWithContext('basename_profile_frame_could_not_change_chain', ActionType.error);
-        } else if (error instanceof EstimateGasExecutionError) {
-          logEventWithContext('basename_profile_frame_insufficient_funds', ActionType.error);
         } else {
           logError(error, `${frame.postUrl ?? frame.title} failed to complete a frame transaction`);
         }

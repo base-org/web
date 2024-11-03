@@ -1,13 +1,13 @@
 import { Address, isAddress } from 'viem';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import { Basename, GetNameReturnType, useName } from '@coinbase/onchainkit/identity';
+import { BaseName, GetNameReturnType, useName } from '@coinbase/onchainkit/identity';
 import { UseQueryResult } from '@tanstack/react-query';
 
 export type UseBaseEnsNameProps = {
   address?: Address;
 };
 
-export type BaseEnsNameData = Basename | undefined;
+export type BaseEnsNameData = BaseName | undefined;
 
 // Wrapper around onchainkit's useName
 export default function useBaseEnsName({ address }: UseBaseEnsNameProps) {
@@ -24,7 +24,7 @@ export default function useBaseEnsName({ address }: UseBaseEnsNameProps) {
     },
   ) as UseQueryResult<GetNameReturnType, Error>;
 
-  const ensNameTyped = data ? (data as Basename) : undefined;
+  const ensNameTyped = data ? (data as BaseName) : undefined;
 
   return {
     data: ensNameTyped,

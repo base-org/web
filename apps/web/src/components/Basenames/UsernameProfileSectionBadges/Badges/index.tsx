@@ -49,7 +49,8 @@ export const BADGE_INFO: Record<
   VERIFIED_IDENTITY: {
     name: 'Coinbase Verified ID',
     title: 'Coinbase Verified ID',
-    description: "You've got a Coinbase account and you verified your ID. Thanks for being legit!",
+    description:
+      "You've got a Coinbase account and you verified your ID. Thanks for being our customer.",
     cta: 'Get verified',
     ctaLink: 'https://coinbase.com/onchain-verify',
     image: verifiedIdentity,

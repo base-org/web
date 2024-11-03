@@ -1,4 +1,4 @@
-import { Basename } from '@coinbase/onchainkit/identity';
+import { BaseName } from '@coinbase/onchainkit/identity';
 import {
   getBasenameAddress,
   getBasenameEditor,
@@ -6,7 +6,7 @@ import {
 } from 'apps/web/src/utils/usernames';
 import { redirect } from 'next/navigation';
 
-export async function redirectIfNotNameOwner(username: Basename) {
+export async function redirectIfNotNameOwner(username: BaseName) {
   const [address, editor, owner] = await Promise.all([
     getBasenameAddress(username),
     getBasenameEditor(username),
