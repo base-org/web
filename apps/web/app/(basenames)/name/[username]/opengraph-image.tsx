@@ -84,7 +84,10 @@ export default async function OpenGraphImage(props: ImageRouteProps) {
 
     // IPFS Resolution
     if (IsValidIpfsUrl(avatar)) {
-      imageSource = getIpfsGatewayUrl(avatar as IpfsUrl) || '';
+      const ipfsUrl = getIpfsGatewayUrl(avatar as IpfsUrl);
+      if (ipfsUrl) {
+        imageSource = ipfsUrl;
+      }
     } else {
       imageSource = avatar;
     }

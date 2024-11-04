@@ -59,7 +59,10 @@ export default async function handler(request: NextRequest) {
 
     // IPFS Resolution
     if (IsValidIpfsUrl(avatar)) {
-      imageSource = getIpfsGatewayUrl(avatar as IpfsUrl) || '';
+      const ipfsUrl = getIpfsGatewayUrl(avatar as IpfsUrl);
+      if (ipfsUrl) {
+        imageSource = ipfsUrl;
+      }
     } else {
       imageSource = avatar;
     }

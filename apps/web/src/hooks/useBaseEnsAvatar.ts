@@ -15,14 +15,17 @@ export default function useBaseEnsAvatar({ name }: UseBaseEnsNameProps) {
       username: name,
     });
 
-  let avatarURI = existingTextRecords[UsernameTextRecordKeys.Avatar];
+  let avatar = existingTextRecords[UsernameTextRecordKeys.Avatar];
 
-  if (IsValidIpfsUrl(avatarURI)) {
-    avatarURI = getIpfsGatewayUrl(avatarURI as IpfsUrl) || '';
+  if (IsValidIpfsUrl(avatar)) {
+    const ipfsUrl = getIpfsGatewayUrl(avatar as IpfsUrl);
+    if (ipfsUrl) {
+      avatar = ipfsUrl;
+    }
   }
 
   return {
-    data: avatarURI,
+    data: avatar,
     refetch: refetchExistingTextRecords,
     isLoading: existingTextRecordsIsLoading,
   };
