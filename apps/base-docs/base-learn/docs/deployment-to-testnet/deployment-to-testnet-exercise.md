@@ -34,4 +34,4 @@ import CafeUnitTest from '../../../src/components/CafeUnitTest/index.jsx'
 
 ---
 
-[basic math]: ../contracts-and-basic-functions/basic-functions-exercise
+[basic math]: ../../contracts-and-basic-functions/basic-functions-exercise
