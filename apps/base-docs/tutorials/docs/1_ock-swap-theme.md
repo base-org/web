@@ -9,13 +9,13 @@ difficulty: medium
 displayed_sidebar: null
 ---
 
-In this tutorial, you'll learn how to create a swap component with a custom theme using OnchainKit. We'll start with the OnchainKit App Template and modify it to include a swap interface for ERC20 tokens on the Base.
+In this tutorial, you'll learn how to create a swap component with a custom theme using OnchainKit. We'll start with the OnchainKit App Template and modify it to include a swap interface for ERC20 tokens on Base.
 
 ---
 
 ## Objectives
 
-By the end of this tutorial, you should be able to:
+By the end of this tutorial, you will be able to:
 
 - Set up a project using the OnchainKit App Template
 - Implement a swap component for ERC20 tokens
@@ -30,7 +30,7 @@ You should be familiar with React and TypeScript. If you're new to these technol
 
 ### OnchainKit
 
-This tutorial uses OnchainKit. Familiarity with its basic concepts will be helpful.
+This tutorial uses [OnchainKit]. Familiarity with its basic concepts will be helpful.
 
 ---
 
@@ -116,7 +116,6 @@ Once you've chosen your colors, add them to the CSS file. Update the `src/app/gl
 
 Use the "Inspect" feature in your browser to identify the element you wish to override in your `global.css` file.
 
-
 :::
 
 ```css
@@ -191,7 +190,7 @@ If something looks off, remember to check that you've overridden the correct ele
 ## Conclusion
 
 Congratulations! You've successfully implemented the `<Swap/>` component and customized it to a theme of your choice. Pretty neat, right?
-
+[OnchainKit]: https://github.com/coinbase/onchainkit
 [OnchainKit App Template]: https://github.com/coinbase/onchain-app-template
 [color magic]: https://colormagic.app
 [sample]: https://gist.github.com/hughescoin/4558feabb4f40b51f800091f04a945ae
