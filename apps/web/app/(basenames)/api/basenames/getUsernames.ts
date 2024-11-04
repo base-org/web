@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'No address provided' }, { status: 400 });
   }
 
-  const network = request.nextUrl.searchParams.get('network') || 'base-mainnet';
+  const network = request.nextUrl.searchParams.get('network') ?? 'base-mainnet';
   if (network !== 'base-mainnet' && network !== 'base-sepolia') {
     return NextResponse.json({ error: 'Invalid network provided' }, { status: 400 });
   }
