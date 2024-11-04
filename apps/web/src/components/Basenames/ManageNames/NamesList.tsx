@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import BasenameAvatar from 'apps/web/src/components/Basenames/BasenameAvatar';
 import { BaseName } from '@coinbase/onchainkit/identity';
 import { formatDistanceToNow, parseISO } from 'date-fns';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 const transitionClasses = 'transition-all duration-700 ease-in-out';
 const pillNameClasses = classNames(
@@ -47,9 +48,12 @@ function NameDisplay({ domain, isPrimary, tokenId, expiresAt }: NameDisplayProps
             <p className="text-sm opacity-75">Expires {expirationText}</p>
           </div>
         </div>
-        {isPrimary && (
-          <span className="rounded-full bg-white px-2 py-1 text-sm text-black">Primary</span>
-        )}
+        <div className="flex items-center gap-2">
+          {isPrimary && (
+            <span className="rounded-full bg-white px-2 py-1 text-sm text-black">Primary</span>
+          )}
+          <Icon name="verticalDots" color="currentColor" width="2rem" height="2rem" />
+        </div>
       </div>
     </li>
   );
