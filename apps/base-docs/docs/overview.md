@@ -28,7 +28,7 @@ Base is incubated within Coinbase and plans to progressively decentralize in the
 
 ### Ethereum L2
 
-Base is built as an Ethereum L2, with the security, stability, and scalability you need to power your onchain apps. Confidently deploy any EVM codebase and onramp your users and assets from Ethereum L1, Coinbase, and other interoperable chains.
+Base is built as an Ethereum L2, with the security, stability, and scalability you need to power your onchain apps. Confidently deploy any EVM codebase and on-ramp your users and assets from Ethereum L1, Coinbase, and other interoperable chains.
 
 ### Big features, small fees
 
@@ -36,7 +36,7 @@ Get the EVM environment at a fraction of the cost. Get early access to Ethereum 
 
 ### Open source
 
-Base is built on the MIT-licensed [OP Stack](https://stack.optimism.io/), in collaboration with Optimism. We're joining as the second Core Dev team working on the OP Stack to ensure it’s a public good available to everyone.
+Base is built on the MIT-licensed [OP Stack](https://stack.optimism.io/), in collaboration with Optimism. We are joining as the second Core Dev team working on the OP Stack to ensure it’s a public good available to everyone.
 
 ### Scaled by Coinbase
 
