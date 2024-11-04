@@ -11,13 +11,11 @@ import { BaseEnsNameData } from 'apps/web/src/hooks/useBaseEnsName';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 
 export type UseReadBaseEnsTextRecordsProps = {
-  address?: Address;
   username: BaseEnsNameData;
   refetchInterval?: number;
 };
 
 export default function useReadBaseEnsTextRecords({
-  address,
   username,
   refetchInterval = Infinity,
 }: UseReadBaseEnsTextRecordsProps) {
@@ -69,15 +67,9 @@ export default function useReadBaseEnsTextRecords({
     refetch: refetchExistingTextRecords,
     error: existingTextRecordsError,
   } = useQuery({
-    queryKey: [
-      'useReadBaseEnsTextRecords',
-      address,
-      textRecordsKeysEnabled,
-      basenameChain.id,
-      username,
-    ],
+    queryKey: ['useReadBaseEnsTextRecords', textRecordsKeysEnabled, basenameChain.id, username],
     queryFn: getExistingTextRecords,
-    enabled: !!address && !!username,
+    enabled: !!username,
     retry: false,
     refetchInterval,
     refetchOnWindowFocus: false,

@@ -1,8 +1,7 @@
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { Basename } from '@coinbase/onchainkit/identity';
-import { useEnsAvatar } from 'wagmi';
-import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
-import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/urls';
+import { getIpfsGatewayUrl, IpfsUrl, IsValidIpfsUrl } from 'apps/web/src/utils/urls';
+import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
+import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 
 export type UseBaseEnsNameProps = {
   name?: BaseEnsNameData;
@@ -10,20 +9,21 @@ export type UseBaseEnsNameProps = {
 
 export type BaseEnsNameData = Basename | undefined;
 
-// Wrapper around onchainkit's useName
 export default function useBaseEnsAvatar({ name }: UseBaseEnsNameProps) {
-  const { basenameChain } = useBasenameChain(name);
+  const { existingTextRecords, refetchExistingTextRecords, existingTextRecordsIsLoading } =
+    useReadBaseEnsTextRecords({
+      username: name,
+    });
 
-  return useEnsAvatar({
-    name: name,
-    chainId: basenameChain.id,
-    universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
-    assetGatewayUrls: {
-      ipfs: CLOUDFARE_IPFS_PROXY,
-    },
-    query: {
-      retry: false,
-      enabled: !!name,
-    },
-  });
+  let avatarURI = existingTextRecords[UsernameTextRecordKeys.Avatar];
+
+  if (IsValidIpfsUrl(avatarURI)) {
+    avatarURI = getIpfsGatewayUrl(avatarURI as IpfsUrl) || '';
+  }
+
+  return {
+    data: avatarURI,
+    refetch: refetchExistingTextRecords,
+    isLoading: existingTextRecordsIsLoading,
+  };
 }

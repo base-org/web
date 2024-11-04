@@ -3,8 +3,12 @@ import { cid } from 'is-ipfs';
 export type IpfsUrl = `ipfs://${string}`;
 export const VERCEL_BLOB_HOSTNAME = 'zku9gdedgba48lmr.public.blob.vercel-storage.com';
 export const IPFS_URI_PROTOCOL = 'ipfs://';
-export const CLOUDFARE_IPFS_PROXY = process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL
-  ? `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`
+
+export const PINATA_GATEWAY_URL = process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL ?? undefined;
+export const PINATA_GATEWAY_KEY = process.env.NEXT_PUBLIC_PINATA_GATEWAY_KEY ?? undefined;
+
+export const CLOUDFARE_IPFS_PROXY = PINATA_GATEWAY_URL
+  ? `https://${PINATA_GATEWAY_URL}`
   : 'https://cloudflare-ipfs.com';
 
 export type QueryParams = Record<string, string>;
@@ -28,13 +32,17 @@ export function isValidUrl(string?: string) {
   }
 }
 
-export const IsValidIpfsUrl = (ipfsUrl: IpfsUrl): boolean => {
+export const IsValidIpfsUrl = (ipfsUrl: string): boolean => {
   try {
     const url = new URL(ipfsUrl);
-    const ipfsCid = url.pathname.replace('//', '');
+    if (url.protocol !== 'ipfs:') return false;
+
+    // Get first path segment after hostname as CID
+    const ipfsCid = url.host;
+
+    // Validate the CID directly
     const isValidCid = cid(ipfsCid);
-    const isValidIpfsUrl = url.protocol === 'ipfs:' && isValidCid;
-    return isValidIpfsUrl;
+    return isValidCid;
   } catch (error) {
     return false;
   }
@@ -50,18 +58,16 @@ export const IsValidVercelBlobUrl = (source: string): boolean => {
   }
 };
 
-export const getIpfsGatewayUrl = (ipfsUrl?: IpfsUrl): string | undefined => {
+export const getIpfsGatewayUrl = (ipfsUrl: IpfsUrl): string | undefined => {
   if (!ipfsUrl) return;
+  if (!IsValidIpfsUrl(ipfsUrl)) return;
 
   try {
     const url = new URL(ipfsUrl);
-    const ipfsCid = url.pathname.replace('//', '');
+    const path = url.host;
+    const pathname = url.pathname;
 
-    const isValidCid = cid(ipfsCid);
-    const isValidIpfsUrl = url.protocol === 'ipfs:' && isValidCid;
-    if (!isValidIpfsUrl) return;
-
-    return `${CLOUDFARE_IPFS_PROXY}/ipfs/${ipfsCid}`;
+    return `${CLOUDFARE_IPFS_PROXY}/ipfs/${path}${pathname}?pinataGatewayToken=${PINATA_GATEWAY_KEY}`;
   } catch (error) {
     return;
   }

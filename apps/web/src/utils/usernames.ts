@@ -508,7 +508,7 @@ export function validateBasenameAvatarUrl(source: string): ValidationResult {
     const url = new URL(source);
 
     if (url.protocol === 'ipfs:') {
-      const isValid = IsValidIpfsUrl(source as IpfsUrl);
+      const isValid = IsValidIpfsUrl(source);
 
       return {
         valid: isValid,
