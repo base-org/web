@@ -1,18 +1,21 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { useAccount } from 'wagmi';
+import { useAccount, useChainId } from 'wagmi';
 import { ManagedAddressesResponse } from '../../../types/ManagedAddresses';
 import classNames from 'classnames';
 
 export default function NamesList() {
   const { address } = useAccount();
+  const chainId = useChainId();
+
+  const network = chainId === 8453 ? 'base-mainnet' : 'base-sepolia';
 
   const { data: namesData, isLoading } = useQuery<ManagedAddressesResponse>({
-    queryKey: ['usernames', address],
+    queryKey: ['usernames', address, network],
     queryFn: async (): Promise<ManagedAddressesResponse> => {
       const response = await fetch(
-        `/api/basenames/getUsernames?address=${address}&network=base-mainnet`,
+        `/api/basenames/getUsernames?address=${address}&network=${network}`,
       );
       if (!response.ok) {
         throw new Error('Failed to fetch usernames');

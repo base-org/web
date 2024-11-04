@@ -1,4 +1,3 @@
-import RegistrationProviders from 'apps/web/app/(basenames)/names/RegistrationProviders';
 import ErrorsProvider from 'apps/web/contexts/Errors';
 import type { Metadata } from 'next';
 import { initialFrame } from 'apps/web/pages/api/basenames/frame/frameResponses';
@@ -22,17 +21,12 @@ export const metadata: Metadata = {
   },
 };
 
-type PageProps = { searchParams?: { code?: string } };
-export default async function Page({ searchParams }: PageProps) {
-  const code = searchParams?.code;
-
+export default async function Page() {
   return (
     <ErrorsProvider context="registration">
-      <RegistrationProviders code={code}>
-        <main>
-          <NamesList />
-        </main>
-      </RegistrationProviders>
+      <main className="mt-48">
+        <NamesList />
+      </main>
     </ErrorsProvider>
   );
 }

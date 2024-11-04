@@ -18,6 +18,7 @@ export async function GET(request: NextRequest) {
     {
       headers: {
         Authorization: `Bearer ${process.env.CDP_BEARER_TOKEN}`,
+        'Content-Type': 'application/json',
       },
     },
   );
