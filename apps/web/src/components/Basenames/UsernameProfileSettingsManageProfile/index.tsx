@@ -24,7 +24,7 @@ const settingTabClass = classNames(
 );
 
 export default function UsernameProfileSettingsManageProfile() {
-  const { profileUsername, profileAddress, currentWalletIsProfileEditor, setShowProfileSettings } =
+  const { profileUsername, currentWalletIsProfileEditor, setShowProfileSettings } =
     useUsernameProfile();
 
   const { logError } = useErrors();
@@ -42,7 +42,6 @@ export default function UsernameProfileSettingsManageProfile() {
     writeTextRecordsError,
     hasChanged,
   } = useWriteBaseEnsTextRecords({
-    address: profileAddress,
     username: profileUsername,
     onSuccess: closeSettings,
   });

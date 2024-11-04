@@ -13,7 +13,7 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { PinResponse } from 'pinata';
 
 export default function UsernameProfileSettingsAvatar() {
-  const { profileUsername, profileAddress, currentWalletIsProfileEditor } = useUsernameProfile();
+  const { profileUsername, currentWalletIsProfileEditor } = useUsernameProfile();
   const [avatarFile, setAvatarFile] = useState<File | undefined>();
 
   const [avatarIsLoading, setAvatarIsLoading] = useState<boolean>(false);
@@ -30,7 +30,6 @@ export default function UsernameProfileSettingsAvatar() {
     writeTextRecordsIsPending,
     hasChanged,
   } = useWriteBaseEnsTextRecords({
-    address: profileAddress,
     username: profileUsername,
     onSuccess: () => {
       setAvatarFile(undefined);
