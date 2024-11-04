@@ -5,6 +5,14 @@ import { useAccount, useChainId } from 'wagmi';
 import { ManagedAddressesResponse } from '../../../types/ManagedAddresses';
 import classNames from 'classnames';
 
+const transitionClasses = 'transition-all duration-700 ease-in-out';
+const pillNameClasses = classNames(
+  'bg-blue-500 mx-auto text-white relative leading-[2em] overflow-hidden text-ellipsis max-w-full',
+  'shadow-[0px_8px_16px_0px_rgba(0,82,255,0.32),inset_0px_8px_16px_0px_rgba(255,255,255,0.25)]',
+  transitionClasses,
+  'rounded-[2rem] py-8 px-10 pt-40 w-full',
+);
+
 export default function NamesList() {
   const { address } = useAccount();
   const chainId = useChainId();
@@ -34,19 +42,12 @@ export default function NamesList() {
   }
 
   return (
-    <ul className="space-y-4">
+    <ul className="mx-auto max-w-2xl space-y-4 p-8">
       {namesData.data.map((name) => (
-        <li
-          key={name.token_id}
-          className={classNames('rounded-lg border p-4', {
-            'border-blue-500 bg-blue-50': name.is_primary,
-            'border-gray-200': !name.is_primary,
-          })}
-        >
+        <li key={name.token_id} className={pillNameClasses}>
           <div className="flex items-center justify-between">
             <div>
               <p className="text-lg font-medium">{name.domain}</p>
-              <p className="text-gray-500 text-sm">Token ID: {name.token_id}</p>
             </div>
             {name.is_primary && (
               <span className="text-blue-700 rounded bg-blue-100 px-2 py-1 text-sm">Primary</span>
