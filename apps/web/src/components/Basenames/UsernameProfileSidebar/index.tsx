@@ -44,7 +44,6 @@ export default function UsernameProfileSidebar() {
   ]);
 
   const { existingTextRecords } = useReadBaseEnsTextRecords({
-    address: profileAddress,
     username: profileUsername,
   });
 
