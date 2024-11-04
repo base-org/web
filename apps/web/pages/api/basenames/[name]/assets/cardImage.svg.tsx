@@ -49,7 +49,7 @@ export default async function handler(request: NextRequest) {
 
   try {
     const client = getBasenamePublicClient(chain.id);
-    let avatar = await client.getEnsText({
+    const avatar = await client.getEnsText({
       name: username,
       key: UsernameTextRecordKeys.Avatar,
       universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],

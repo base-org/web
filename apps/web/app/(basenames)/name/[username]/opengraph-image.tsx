@@ -74,7 +74,7 @@ export default async function OpenGraphImage(props: ImageRouteProps) {
   // NOTE: Do we want to fail if the name doesn't exists?
   try {
     const client = getBasenamePublicClient(chain.id);
-    let avatar = await client.getEnsText({
+    const avatar = await client.getEnsText({
       name: username,
       key: UsernameTextRecordKeys.Avatar,
       universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
@@ -93,7 +93,7 @@ export default async function OpenGraphImage(props: ImageRouteProps) {
     }
 
     // Cloudinary resize / fetch
-    imageSource = getCloudinaryMediaUrl({ media: imageSource, format: 'png', width: 120 });
+    imageSource = getCloudinaryMediaUrl({ media: imageSource, format: 'png', width: 80 });
   } catch (error) {
     logger.error('Error fetching basename Avatar:', error);
   }
