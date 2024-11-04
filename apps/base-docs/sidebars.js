@@ -7,7 +7,7 @@ module.exports = {
       label: 'Notices',
       collapsible: false,
       collapsed: false,
-      items: ['notices/preparing-for-fault-proofs-on-base-sepolia'],
+      items: ['notices/preparing-for-fault-proofs-on-base'],
     },
     {
       type: 'category',
@@ -86,7 +86,13 @@ module.exports = {
       items: ['tokens/token-list', 'tokens/wallet'],
     },
     ['contracts'],
-    ['security'],
+    {
+      type: 'category',
+      label: 'Security',
+      collapsible: false,
+      collapsed: false,
+      items: ['security/bounty', 'security/report', 'security/app-blocklist'],
+    },
     {
       type: 'link',
       label: 'Status',

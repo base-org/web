@@ -4,9 +4,11 @@ import initialImage from 'apps/web/pages/api/basenames/frame/assets/initial-imag
 import searchImage from 'apps/web/pages/api/basenames/frame/assets/search-image.png';
 import txSucceededImage from 'apps/web/pages/api/basenames/frame/assets/tx-succeeded.png';
 import txFailedImage from 'apps/web/pages/api/basenames/frame/assets/tx-failed.png';
-import { DOMAIN } from 'apps/web/pages/api/basenames/frame/constants';
+import { DOMAIN, acceptedProtocols } from 'apps/web/pages/api/basenames/frame/constants';
 
 export const initialFrame: FrameMetadataResponse = getFrameMetadata({
+  isOpenFrame: true,
+  accepts: acceptedProtocols,
   buttons: [
     {
       label: 'Claim',
@@ -19,6 +21,8 @@ export const initialFrame: FrameMetadataResponse = getFrameMetadata({
 });
 
 export const inputSearchValueFrame = getFrameHtmlResponse({
+  isOpenFrame: true,
+  accepts: acceptedProtocols,
   buttons: [
     {
       label: 'Continue',
@@ -35,6 +39,8 @@ export const inputSearchValueFrame = getFrameHtmlResponse({
 
 export const retryInputSearchValueFrame = (error?: string) =>
   getFrameHtmlResponse({
+    isOpenFrame: true,
+    accepts: acceptedProtocols,
     buttons: [
       {
         label: 'Search again',
@@ -58,6 +64,8 @@ export const buttonIndexToYears = {
 
 export const setYearsFrame = (targetName: string, formattedTargetName: string) =>
   getFrameHtmlResponse({
+    isOpenFrame: true,
+    accepts: acceptedProtocols,
     buttons: [
       {
         label: '1 year',
@@ -90,11 +98,14 @@ export const confirmationFrame = (
   registrationPriceInEth: string,
 ) =>
   getFrameHtmlResponse({
+    isOpenFrame: true,
+    accepts: acceptedProtocols,
     buttons: [
       {
         action: 'tx',
         label: `Claim name`,
         target: `${DOMAIN}/api/basenames/frame/tx`,
+        postUrl: `${DOMAIN}/api/basenames/frame/04_txSubmitted`,
       },
     ],
     image: {
@@ -112,6 +123,8 @@ export const confirmationFrame = (
 
 export const txSucceededFrame = (name: string, transactionId: string) =>
   getFrameHtmlResponse({
+    isOpenFrame: true,
+    accepts: acceptedProtocols,
     buttons: [
       {
         action: 'link',
@@ -131,6 +144,8 @@ export const txSucceededFrame = (name: string, transactionId: string) =>
 
 export const txRevertedFrame = (name: string, transactionId: string) =>
   getFrameHtmlResponse({
+    isOpenFrame: true,
+    accepts: acceptedProtocols,
     buttons: [
       {
         action: 'link',

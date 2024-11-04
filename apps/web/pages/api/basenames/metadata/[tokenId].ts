@@ -1,4 +1,4 @@
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { Basename } from '@coinbase/onchainkit/identity';
 import { premintMapping } from 'apps/web/pages/api/basenames/metadata/premintsMapping';
 import L2Resolver from 'apps/web/src/abis/L2Resolver';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
@@ -51,7 +51,7 @@ export default async function GET(request: Request) {
       args: [namehashNode],
       functionName: 'name',
     });
-    nameExpires = await getBasenameNameExpires(basenameFormatted as BaseName);
+    nameExpires = await getBasenameNameExpires(basenameFormatted as Basename);
   } catch (error) {
     logger.error('Error getting token metadata', error);
   }
