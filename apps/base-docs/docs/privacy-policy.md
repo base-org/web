@@ -36,7 +36,7 @@ We collect the following personal information when providing the Services:
 
 - App, Browser and Device Information:
 
-- Information about the device, operating system, and browser you’re using~~ ~~
+- Information about the device, operating system, and browser you are using~~ ~~
 - Other device characteristics or identifiers (e.g. plugins, the network you connect to)
 - IP address/derived location information
 
