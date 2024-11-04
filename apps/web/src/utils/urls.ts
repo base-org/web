@@ -7,10 +7,6 @@ export const IPFS_URI_PROTOCOL = 'ipfs://';
 export const PINATA_GATEWAY_URL = process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL ?? undefined;
 export const PINATA_GATEWAY_KEY = process.env.NEXT_PUBLIC_PINATA_GATEWAY_KEY ?? undefined;
 
-export const CLOUDFARE_IPFS_PROXY = PINATA_GATEWAY_URL
-  ? `https://${PINATA_GATEWAY_URL}`
-  : 'https://cloudflare-ipfs.com';
-
 export type QueryParams = Record<string, string>;
 
 export const encodeUrlQueryParams = (queryParams: QueryParams) => {
@@ -67,7 +63,11 @@ export const getIpfsGatewayUrl = (ipfsUrl: IpfsUrl): string | undefined => {
     const path = url.host;
     const pathname = url.pathname;
 
-    return `${CLOUDFARE_IPFS_PROXY}/ipfs/${path}${pathname}?pinataGatewayToken=${PINATA_GATEWAY_KEY}`;
+    if (PINATA_GATEWAY_URL && PINATA_GATEWAY_KEY) {
+      return `https://${PINATA_GATEWAY_URL}/ipfs/${path}${pathname}?pinataGatewayToken=${PINATA_GATEWAY_KEY}`;
+    } else {
+      return `https://ipfs.io/ipfs/${path}${pathname}`;
+    }
   } catch (error) {
     return;
   }
