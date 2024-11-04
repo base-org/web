@@ -35,8 +35,7 @@ import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { logger } from 'apps/web/src/utils/logger';
 
-// Removed redundant comments
-// Removed unused imports
+
 import animation1 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/01.json';
 import animation2 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/02.json';
 import animation3 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/03.json';
