@@ -1,8 +1,8 @@
 import RegistrationProviders from 'apps/web/app/(basenames)/names/RegistrationProviders';
 import ErrorsProvider from 'apps/web/contexts/Errors';
-import RegistrationFAQ from 'apps/web/src/components/Basenames/RegistrationFaq';
 import type { Metadata } from 'next';
 import { initialFrame } from 'apps/web/pages/api/basenames/frame/frameResponses';
+import NamesList from 'apps/web/src/components/Basenames/ManageNames/NamesList';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -30,7 +30,7 @@ export default async function Page({ searchParams }: PageProps) {
     <ErrorsProvider context="registration">
       <RegistrationProviders code={code}>
         <main>
-          <RegistrationFAQ />
+          <NamesList />
         </main>
       </RegistrationProviders>
     </ErrorsProvider>
