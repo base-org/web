@@ -1,0 +1,20 @@
+{
+  "pull_request": {
+    "base": {
+      "sha": "0000000000000000000000000000000000000000",
+      "ref": "main"
+    },
+    "head": {
+      "sha": "1111111111111111111111111111111111111111",
+      "ref": "feature-branch"
+    },
+    "number": 1
+  },
+  "repository": {
+    "name": "your-repo-name",
+    "owner": {
+      "login": "your-username"
+    }
+  },
+  "event_name": "pull_request"
+}
