@@ -4223,5 +4223,12 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "A51 Finance",
+    "tags": ["defi"],
+    "description": "A51 offers a liquidity automation engine to enhance the trading and liquidity provisioning experience. The automation gear, including auto-rebalance, auto-exit and reinvest, liquidity distribution, and hedging, gives LPs fine-grained control over their liquidity, allowing them to dictate asset and risk management actions.",
+    "url": "https://app.a51.finance/",
+    "imageUrl": "/images/partners/a51-finance.svg"
   }
 ]
