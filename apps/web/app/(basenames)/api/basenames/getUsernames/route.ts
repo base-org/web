@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
   }
 
   const response = await fetch(
-    `https://api.developer.coinbase.com/platform/v1/networks/${network}/addresses/${address}/identity?limit=50`,
+    `https://api.cdp.coinbase.com/platform/v1/networks/${network}/addresses/${address}/identity?limit=50`,
     {
       headers: {
         Authorization: `Bearer ${process.env.CDP_BEARER_TOKEN}`,

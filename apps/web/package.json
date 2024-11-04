@@ -45,6 +45,7 @@
     "base-ui": "0.1.1",
     "classnames": "^2.5.1",
     "cloudinary": "^2.5.1",
+    "date-fns": "^4.1.0",
     "dd-trace": "^5.21.0",
     "ethers": "5.7.2",
     "framer-motion": "^11.9.0",
