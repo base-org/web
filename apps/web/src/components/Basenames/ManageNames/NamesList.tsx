@@ -1,29 +1,10 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
-import { useAccount, useChainId } from 'wagmi';
-import { ManagedAddressesResponse } from 'apps/web/src/types/ManagedAddresses';
 import NameDisplay from './NameDisplay';
+import { useNameList } from 'apps/web/src/components/Basenames/ManageNames/hooks';
 
 export default function NamesList() {
-  const { address } = useAccount();
-  const chainId = useChainId();
-
-  const network = chainId === 8453 ? 'base-mainnet' : 'base-sepolia';
-
-  const { data: namesData, isLoading } = useQuery<ManagedAddressesResponse>({
-    queryKey: ['usernames', address, network],
-    queryFn: async (): Promise<ManagedAddressesResponse> => {
-      const response = await fetch(
-        `/api/basenames/getUsernames?address=${address}&network=${network}`,
-      );
-      if (!response.ok) {
-        throw new Error('Failed to fetch usernames');
-      }
-      return response.json() as Promise<ManagedAddressesResponse>;
-    },
-    enabled: !!address,
-  });
+  const { namesData, isLoading } = useNameList();
 
   if (isLoading) {
     return <div>Loading names...</div>;

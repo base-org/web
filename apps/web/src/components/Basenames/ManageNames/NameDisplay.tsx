@@ -7,6 +7,7 @@ import DropdownItem from 'apps/web/src/components/DropdownItem';
 import DropdownMenu from 'apps/web/src/components/DropdownMenu';
 import DropdownToggle from 'apps/web/src/components/DropdownToggle';
 import classNames from 'classnames';
+import { useUpdatePrimaryName } from 'apps/web/src/components/Basenames/ManageNames/hooks';
 
 const transitionClasses = 'transition-all duration-700 ease-in-out';
 
@@ -33,6 +34,8 @@ type NameDisplayProps = {
 export default function NameDisplay({ domain, isPrimary, tokenId, expiresAt }: NameDisplayProps) {
   const expirationText = formatDistanceToNow(parseISO(expiresAt), { addSuffix: true });
 
+  const { setPrimaryUsername } = useUpdatePrimaryName(domain as BaseName);
+
   return (
     <li key={tokenId} className={pillNameClasses}>
       <div className="flex items-center justify-between">
@@ -58,7 +61,9 @@ export default function NameDisplay({ domain, isPrimary, tokenId, expiresAt }: N
             </DropdownToggle>
             <DropdownMenu>
               <DropdownItem onClick={() => {}}>Transfer name</DropdownItem>
-              <DropdownItem onClick={() => {}}>Set as primary</DropdownItem>
+              {!isPrimary ? (
+                <DropdownItem onClick={setPrimaryUsername}>Set as primary</DropdownItem>
+              ) : null}
             </DropdownMenu>
           </Dropdown>
         </div>
