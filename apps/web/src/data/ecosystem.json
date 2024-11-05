@@ -4223,5 +4223,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "Valora",
+    "tags": [
+      "wallet"
+    ],
+    "description": "Valora is a mobile app that makes crypto simple and accessible for all.",
+    "url": "https://valora.xyz/",
+    "imageUrl": "/images/partners/valora.png"
   }
 ]
