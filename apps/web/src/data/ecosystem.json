@@ -4223,5 +4223,13 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
-  }
-]
+  },
+ {
+    "name": "DFLX",
+    "tags": [
+      "nft"
+    ],
+    "description": "Marketplace for crypto funded infrastructure NFT's.",
+    "url": "https://app.dflx.xyz/",
+    "imageUrl": "/images/partners/DFLX%20LOGO%20NEW.png" 
+   ]
