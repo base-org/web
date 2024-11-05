@@ -13,6 +13,7 @@ import BaseNFT from './images/base-nft.svg';
 import TalentProtocolIcon from './images/TalentProtocol.svg';
 import coinbaseOneVerification from './images/coinbase-one-verification.svg';
 import coinbaseVerification from './images/coinbase-verification.svg';
+import BaseWorldNFT from './images/base-around-the-world-nft.svg';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 
@@ -89,8 +90,7 @@ const DISCOUNT_ITEMS: DiscountItem[] = [
   },
   {
     discount: Discount.BASE_WORLD,
-    // TODO: Add Base World NFT icon
-    icon: BaseNFT as StaticImageData,
+    icon: BaseWorldNFT as StaticImageData,
     alt: 'icon of Base World',
     label: 'Base around the world NFT',
     tooltipContent: 'Available for anyone holding one of the Base around the world NFTs',

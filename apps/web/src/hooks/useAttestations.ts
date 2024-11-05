@@ -595,7 +595,15 @@ export function useTalentProtocolAttestations() {
   return { data: null, loading: isLoading, error };
 }
 
-const baseWorldTokenIds = [BigInt(0), BigInt(1), BigInt(2), BigInt(3), BigInt(4), BigInt(5)];
+const baseWorldTokenIds = [
+  BigInt(0),
+  BigInt(1),
+  BigInt(2),
+  BigInt(3),
+  BigInt(4),
+  BigInt(5),
+  BigInt(6),
+];
 
 export function useBaseWorldAttestations() {
   const { address } = useAccount();

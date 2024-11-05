@@ -99,5 +99,5 @@ export const TALENT_PROTOCOL_DISCOUNT_VALIDATORS: AddressMap = {
 
 export const BASE_WORLD_DISCOUNT_VALIDATORS: AddressMap = {
   [baseSepolia.id]: '0xFa69f6167F40247fe3EFF2d8375B25C5d7834c48',
-  // [base.id]: '0xTODO',
+  [base.id]: '0xfEb00a4EfF372a307fDc556Cf4359f7D679E4d11',
 };
