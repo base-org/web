@@ -91,6 +91,7 @@ export default function ProfileTransferOwnershipProvider({
   const [currentOwnershipStep, setCurrentOwnershipStep] = useState<OwnershipSteps>(
     OwnershipSteps.Search,
   );
+  console.log({ currentOwnershipStep, recipientAddress });
 
   // TODO: Validate that it's not a contract recipient
   const isValidRecipientAddress = isAddress(recipientAddress);
@@ -337,14 +338,17 @@ export default function ProfileTransferOwnershipProvider({
       // Smart wallet: One transaction
       batchCallsStatus === BatchCallsStatus.Success ||
       // Other wallet: 4 Transactions are successfull
-      ownershipSettings.every(
-        (ownershipSetting) => ownershipSetting.status === WriteTransactionWithReceiptStatus.Success,
-      ),
+      (ownershipSettings.length > 0 &&
+        ownershipSettings.every(
+          (ownershipSetting) =>
+            ownershipSetting.status === WriteTransactionWithReceiptStatus.Success,
+        )),
     [batchCallsStatus, ownershipSettings],
   );
 
   useEffect(() => {
     if (isSuccess) {
+      console.log('isSuccess triggered');
       setCurrentOwnershipStep(OwnershipSteps.Success);
     }
   }, [isSuccess]);

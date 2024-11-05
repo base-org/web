@@ -1,3 +1,9 @@
+'use client';
+
+import { useState, useCallback } from 'react';
+import UsernameProfileProvider from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import ProfileTransferOwnershipProvider from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context';
+import UsernameProfileTransferOwnershipModal from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal';
 import BasenameAvatar from 'apps/web/src/components/Basenames/BasenameAvatar';
 import { BaseName } from '@coinbase/onchainkit/identity';
 import { formatDistanceToNow, parseISO } from 'date-fns';
@@ -8,6 +14,7 @@ import DropdownMenu from 'apps/web/src/components/DropdownMenu';
 import DropdownToggle from 'apps/web/src/components/DropdownToggle';
 import classNames from 'classnames';
 import { useUpdatePrimaryName } from 'apps/web/src/components/Basenames/ManageNames/hooks';
+import Link from 'apps/web/src/components/Link';
 
 const transitionClasses = 'transition-all duration-700 ease-in-out';
 
@@ -36,21 +43,27 @@ export default function NameDisplay({ domain, isPrimary, tokenId, expiresAt }: N
 
   const { setPrimaryUsername } = useUpdatePrimaryName(domain as BaseName);
 
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const openModal = useCallback(() => setIsOpen(true), []);
+  const closeModal = useCallback(() => setIsOpen(false), []);
+
   return (
     <li key={tokenId} className={pillNameClasses}>
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <BasenameAvatar
-            basename={domain as BaseName}
-            wrapperClassName={avatarClasses}
-            width={4 * 16}
-            height={4 * 16}
-          />
-          <div>
-            <p className="text-lg font-medium">{domain}</p>
-            <p className="text-sm opacity-75">Expires {expirationText}</p>
+        <Link href={`/name/${domain.split('.')[0]}`}>
+          <div className="flex items-center gap-4">
+            <BasenameAvatar
+              basename={domain as BaseName}
+              wrapperClassName={avatarClasses}
+              width={4 * 16}
+              height={4 * 16}
+            />
+            <div>
+              <p className="text-lg font-medium">{domain}</p>
+              <p className="text-sm opacity-75">Expires {expirationText}</p>
+            </div>
           </div>
-        </div>
+        </Link>
         <div className="flex items-center gap-2">
           {isPrimary && (
             <span className="rounded-full bg-white px-2 py-1 text-sm text-black">Primary</span>
@@ -60,7 +73,7 @@ export default function NameDisplay({ domain, isPrimary, tokenId, expiresAt }: N
               <Icon name="verticalDots" color="currentColor" width="2rem" height="2rem" />
             </DropdownToggle>
             <DropdownMenu>
-              <DropdownItem onClick={() => {}}>Transfer name</DropdownItem>
+              <DropdownItem onClick={openModal}>Transfer name</DropdownItem>
               {!isPrimary ? (
                 <DropdownItem onClick={setPrimaryUsername}>Set as primary</DropdownItem>
               ) : null}
@@ -68,6 +81,11 @@ export default function NameDisplay({ domain, isPrimary, tokenId, expiresAt }: N
           </Dropdown>
         </div>
       </div>
+      <UsernameProfileProvider username={domain as BaseName}>
+        <ProfileTransferOwnershipProvider>
+          <UsernameProfileTransferOwnershipModal isOpen={isOpen} onClose={closeModal} />
+        </ProfileTransferOwnershipProvider>
+      </UsernameProfileProvider>
     </li>
   );
 }
