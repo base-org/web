@@ -8,10 +8,9 @@ import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextReco
 import useWriteContractWithReceipt from 'apps/web/src/hooks/useWriteContractWithReceipt';
 import { UsernameTextRecords, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { namehash, encodeFunctionData, Address } from 'viem';
+import { namehash, encodeFunctionData } from 'viem';
 
 export type UseWriteBaseEnsTextRecordsProps = {
-  address?: Address;
   username: BaseEnsNameData;
   onSuccess?: () => void;
 };
@@ -29,7 +28,6 @@ export type UseWriteBaseEnsTextRecordsProps = {
 */
 
 export default function useWriteBaseEnsTextRecords({
-  address,
   username,
   onSuccess,
 }: UseWriteBaseEnsTextRecordsProps) {
@@ -39,7 +37,6 @@ export default function useWriteBaseEnsTextRecords({
   // Fetch existing TextRecords
   const { existingTextRecords, existingTextRecordsIsLoading, refetchExistingTextRecords } =
     useReadBaseEnsTextRecords({
-      address,
       username,
     });
 

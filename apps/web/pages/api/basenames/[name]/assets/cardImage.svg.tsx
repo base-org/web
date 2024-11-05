@@ -1,13 +1,20 @@
 import satori from 'satori';
 import { NextRequest } from 'next/server';
-import { getBasenameImage } from 'apps/web/src/utils/usernames';
+import {
+  getBasenameImage,
+  getChainForBasename,
+  UsernameTextRecordKeys,
+} from 'apps/web/src/utils/usernames';
 import twemoji from 'twemoji';
-import { base } from 'viem/chains';
 import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import { isDevelopment } from 'apps/web/src/constants';
 import ImageRaw from 'apps/web/src/components/ImageRaw';
-import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/urls';
+import { getIpfsGatewayUrl, IpfsUrl, IsValidIpfsUrl } from 'apps/web/src/utils/urls';
+import { logger } from 'apps/web/src/utils/logger';
+import { Basename } from '@coinbase/onchainkit/identity';
+import { getCloudinaryMediaUrl } from 'apps/web/src/utils/images';
+
 const emojiCache: Record<string, Promise<string>> = {};
 
 export async function loadEmoji(emojiString: string) {
@@ -37,26 +44,34 @@ export default async function handler(request: NextRequest) {
   const username = url.searchParams.get('name') ?? 'yourname';
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
   const profilePicture = getBasenameImage(username);
-  const chainIdFromParams = url.searchParams.get('chainId');
-  const chainId = chainIdFromParams ? Number(chainIdFromParams) : base.id;
+  const chain = getChainForBasename(username as Basename);
   let imageSource = domainName + profilePicture.src;
 
-  // NOTE: Do we want to fail if the name doesn't exists?
   try {
-    const client = getBasenamePublicClient(chainId);
-    const avatar = await client.getEnsAvatar({
+    const client = getBasenamePublicClient(chain.id);
+    const avatar = await client.getEnsText({
       name: username,
-      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chainId],
-      assetGatewayUrls: {
-        ipfs: CLOUDFARE_IPFS_PROXY,
-      },
+      key: UsernameTextRecordKeys.Avatar,
+      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
     });
 
-    // Satori Doesn't support webp
-    if (avatar && !avatar.endsWith('.webp')) {
+    if (!avatar) return;
+
+    // IPFS Resolution
+    if (IsValidIpfsUrl(avatar)) {
+      const ipfsUrl = getIpfsGatewayUrl(avatar as IpfsUrl);
+      if (ipfsUrl) {
+        imageSource = ipfsUrl;
+      }
+    } else {
       imageSource = avatar;
     }
-  } catch (error) {}
+
+    // Cloudinary resize / fetch
+    imageSource = getCloudinaryMediaUrl({ media: imageSource, format: 'png', width: 120 });
+  } catch (error) {
+    logger.error('Error fetching basename Avatar:', error);
+  }
 
   // Using Satori for a SVG response
   const svg = await satori(
