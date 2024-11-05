@@ -13,7 +13,10 @@ import DropdownItem from 'apps/web/src/components/DropdownItem';
 import DropdownMenu from 'apps/web/src/components/DropdownMenu';
 import DropdownToggle from 'apps/web/src/components/DropdownToggle';
 import classNames from 'classnames';
-import { useUpdatePrimaryName } from 'apps/web/src/components/Basenames/ManageNames/hooks';
+import {
+  useUpdatePrimaryName,
+  useRemoveNameFromUI,
+} from 'apps/web/src/components/Basenames/ManageNames/hooks';
 import Link from 'apps/web/src/components/Link';
 
 const transitionClasses = 'transition-all duration-700 ease-in-out';
@@ -46,6 +49,8 @@ export default function NameDisplay({ domain, isPrimary, tokenId, expiresAt }: N
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
+
+  const { removeNameFromUI } = useRemoveNameFromUI(domain as BaseName);
 
   return (
     <li key={tokenId} className={pillNameClasses}>
@@ -83,7 +88,11 @@ export default function NameDisplay({ domain, isPrimary, tokenId, expiresAt }: N
       </div>
       <UsernameProfileProvider username={domain as BaseName}>
         <ProfileTransferOwnershipProvider>
-          <UsernameProfileTransferOwnershipModal isOpen={isOpen} onClose={closeModal} />
+          <UsernameProfileTransferOwnershipModal
+            isOpen={isOpen}
+            onClose={closeModal}
+            onSuccess={removeNameFromUI}
+          />
         </ProfileTransferOwnershipProvider>
       </UsernameProfileProvider>
     </li>

@@ -29,6 +29,25 @@ export function useNameList() {
   return { namesData, isLoading };
 }
 
+export function useRemoveNameFromUI(domain: BaseName) {
+  const { address } = useAccount();
+  const chainId = useChainId();
+
+  const network = chainId === 8453 ? 'base-mainnet' : 'base-sepolia';
+  const queryClient = useQueryClient();
+
+  const removeNameFromUI = useCallback(() => {
+    queryClient.setQueryData(
+      ['usernames', address, network],
+      (prevData: ManagedAddressesResponse) => {
+        return { ...prevData, data: prevData.data.filter((name) => name.domain !== domain) };
+      },
+    );
+  }, [address, domain, network, queryClient]);
+
+  return { removeNameFromUI };
+}
+
 export function useUpdatePrimaryName(domain: BaseName) {
   const { address } = useAccount();
   const chainId = useChainId();
