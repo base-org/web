@@ -60,7 +60,7 @@ export function useUpdatePrimaryName(domain: BaseName) {
   // Hook to update primary name
   const { setPrimaryName } = useSetPrimaryBasename({
     secondaryUsername: domain,
-  });
+  }) as { setPrimaryName: () => Promise<void> };
 
   const setPrimaryUsername = useCallback(() => {
     setPrimaryName()

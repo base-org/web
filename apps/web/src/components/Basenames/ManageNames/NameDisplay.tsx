@@ -5,7 +5,7 @@ import UsernameProfileProvider from 'apps/web/src/components/Basenames/UsernameP
 import ProfileTransferOwnershipProvider from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context';
 import UsernameProfileTransferOwnershipModal from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal';
 import BasenameAvatar from 'apps/web/src/components/Basenames/BasenameAvatar';
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { Basename } from '@coinbase/onchainkit/identity';
 import { formatDistanceToNow, parseISO } from 'date-fns';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Dropdown from 'apps/web/src/components/Dropdown';
@@ -44,13 +44,13 @@ type NameDisplayProps = {
 export default function NameDisplay({ domain, isPrimary, tokenId, expiresAt }: NameDisplayProps) {
   const expirationText = formatDistanceToNow(parseISO(expiresAt), { addSuffix: true });
 
-  const { setPrimaryUsername } = useUpdatePrimaryName(domain as BaseName);
+  const { setPrimaryUsername } = useUpdatePrimaryName(domain as Basename);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
 
-  const { removeNameFromUI } = useRemoveNameFromUI(domain as BaseName);
+  const { removeNameFromUI } = useRemoveNameFromUI(domain as Basename);
 
   return (
     <li key={tokenId} className={pillNameClasses}>
@@ -58,7 +58,7 @@ export default function NameDisplay({ domain, isPrimary, tokenId, expiresAt }: N
         <Link href={`/name/${domain.split('.')[0]}`}>
           <div className="flex items-center gap-4">
             <BasenameAvatar
-              basename={domain as BaseName}
+              basename={domain as Basename}
               wrapperClassName={avatarClasses}
               width={4 * 16}
               height={4 * 16}
@@ -96,7 +96,7 @@ export default function NameDisplay({ domain, isPrimary, tokenId, expiresAt }: N
           </Dropdown>
         </div>
       </div>
-      <UsernameProfileProvider username={domain as BaseName}>
+      <UsernameProfileProvider username={domain as Basename}>
         <ProfileTransferOwnershipProvider>
           <UsernameProfileTransferOwnershipModal
             isOpen={isOpen}

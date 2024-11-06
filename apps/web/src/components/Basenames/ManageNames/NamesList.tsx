@@ -9,7 +9,7 @@ function NamesLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="mx-auto max-w-2xl space-y-4 p-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">My Basenames</h1>
+        <h1 className="mb-4 text-3xl font-bold">My Basenames</h1>
         <Link
           className="rounded-lg bg-palette-backgroundAlternate p-2 text-sm text-palette-foreground"
           href="/names/"
@@ -38,6 +38,7 @@ export default function NamesList() {
       <NamesLayout>
         <div>
           No names found.
+          <br />
           <Link href="/names/">Get a Basename!</Link>
         </div>
       </NamesLayout>
