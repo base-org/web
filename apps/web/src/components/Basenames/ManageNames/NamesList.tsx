@@ -11,7 +11,7 @@ const usernameManagementListAnalyticContext = 'username_management_list';
 function NamesLayout({ children }: { children: React.ReactNode }) {
   return (
     <AnalyticsProvider context={usernameManagementListAnalyticContext}>
-      <div className="mx-auto max-w-2xl space-y-4 p-8">
+      <div className="mx-auto max-w-2xl space-y-4 pb-16 pt-4">
         <div className="flex items-center justify-between">
           <h1 className="mb-4 text-3xl font-bold">My Basenames</h1>
           <Link
