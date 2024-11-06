@@ -17,7 +17,7 @@ import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import RegistryAbi from 'apps/web/src/abis/RegistryAbi';
 import BaseRegistrarAbi from 'apps/web/src/abis/BaseRegistrarAbi';
 import { base, baseSepolia, mainnet } from 'viem/chains';
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { Basename } from '@coinbase/onchainkit/identity';
 import {
   USERNAME_BASE_REGISTRAR_ADDRESSES,
   USERNAME_BASE_REGISTRY_ADDRESSES,
@@ -350,8 +350,8 @@ export const USERNAME_DOMAINS: Record<number, string> = {
   [base.id]: 'base.eth',
 };
 
-export const formatBaseEthDomain = (name: string, chainId: number): BaseName => {
-  return `${name}.${USERNAME_DOMAINS[chainId] ?? '.base.eth'}`.toLocaleLowerCase() as BaseName;
+export const formatBaseEthDomain = (name: string, chainId: number): Basename => {
+  return `${name}.${USERNAME_DOMAINS[chainId] ?? '.base.eth'}`.toLocaleLowerCase() as Basename;
 };
 
 export const convertChainIdToCoinType = (chainId: number): string => {
@@ -398,13 +398,14 @@ export enum Discount {
   BASE_DOT_ETH_NFT = 'BASE_DOT_ETH_NFT',
   DISCOUNT_CODE = 'DISCOUNT_CODE',
   TALENT_PROTOCOL = 'TALENT_PROTOCOL',
+  BASE_WORLD = 'BASE_WORLD',
 }
 
 export function isValidDiscount(key: string): key is keyof typeof Discount {
   return Object.values(Discount).includes(key as Discount);
 }
 
-export function getChainForBasename(username: BaseName): Chain {
+export function getChainForBasename(username: Basename): Chain {
   return username.endsWith(`.${USERNAME_DOMAINS[base.id]}`) ? base : baseSepolia;
 }
 
@@ -419,7 +420,7 @@ export function normalizeName(name: string) {
 }
 
 // Assume domainless name to .base.eth
-export async function formatDefaultUsername(username: string | BaseName) {
+export async function formatDefaultUsername(username: string) {
   if (
     username &&
     !username.endsWith(`.${USERNAME_DOMAINS[baseSepolia.id]}`) &&
@@ -428,11 +429,11 @@ export async function formatDefaultUsername(username: string | BaseName) {
     return formatBaseEthDomain(username, base.id);
   }
 
-  return username as BaseName;
+  return username as Basename;
 }
 
-export const getTokenIdFromBasename = (username: BaseName) => {
-  const usernameWithoutDomain = username
+export const getTokenIdFromBasename = (username: Basename) => {
+  const usernameWithoutDomain = (username as string)
     .replace(`.${USERNAME_DOMAINS[base.id]}`, '')
     .replace(`.${USERNAME_DOMAINS[baseSepolia.id]}`, '');
 
@@ -508,7 +509,7 @@ export function validateBasenameAvatarUrl(source: string): ValidationResult {
     const url = new URL(source);
 
     if (url.protocol === 'ipfs:') {
-      const isValid = IsValidIpfsUrl(source as IpfsUrl);
+      const isValid = IsValidIpfsUrl(source);
 
       return {
         valid: isValid,
@@ -551,13 +552,13 @@ export function validateBasenameAvatarUrl(source: string): ValidationResult {
 // Get username `addr`
 // Get username token `owner`
 
-export async function getBasenameAddress(username: BaseName) {
+export async function getBasenameAddress(username: Basename) {
   const chain = getChainForBasename(username);
 
   try {
     const client = getBasenamePublicClient(chain.id);
     const ensAddress = await client.getEnsAddress({
-      name: normalize(username),
+      name: normalize(username as string),
       universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
     });
     return ensAddress;
@@ -567,17 +568,17 @@ export async function getBasenameAddress(username: BaseName) {
 /*
   Get username Basename `editor` in the Base Registrar (different from NFT owner)
 */
-export function buildBasenameEditorContract(username: BaseName): ContractFunctionParameters {
+export function buildBasenameEditorContract(username: Basename): ContractFunctionParameters {
   const chain = getChainForBasename(username);
   return {
     abi: RegistryAbi,
     address: USERNAME_BASE_REGISTRY_ADDRESSES[chain.id],
-    args: [namehash(username)],
+    args: [namehash(username as string)],
     functionName: 'owner',
   };
 }
 
-export async function getBasenameEditor(username: BaseName) {
+export async function getBasenameEditor(username: Basename) {
   const chain = getChainForBasename(username);
 
   try {
@@ -592,7 +593,7 @@ export async function getBasenameEditor(username: BaseName) {
   Get username NFT `owner` in the Base Registry (different from Basename editor)
 */
 
-export function buildBasenameOwnerContract(username: BaseName): ContractFunctionParameters {
+export function buildBasenameOwnerContract(username: Basename): ContractFunctionParameters {
   const chain = getChainForBasename(username);
   const tokenId = getTokenIdFromBasename(username);
   return {
@@ -603,7 +604,7 @@ export function buildBasenameOwnerContract(username: BaseName): ContractFunction
   };
 }
 
-export async function getBasenameOwner(username: BaseName) {
+export async function getBasenameOwner(username: Basename) {
   const chain = getChainForBasename(username);
 
   try {
@@ -614,7 +615,7 @@ export async function getBasenameOwner(username: BaseName) {
   } catch (error) {}
 }
 
-export async function getBasenameNameExpires(username: BaseName) {
+export async function getBasenameNameExpires(username: Basename) {
   const chain = getChainForBasename(username);
   const tokenId = getTokenIdFromBasename(username);
   try {
@@ -656,20 +657,20 @@ export async function getBasenameAvailable(name: string, chain: Chain): Promise<
 
 // Build a TextRecord contract request
 export function buildBasenameTextRecordContract(
-  username: BaseName,
+  username: Basename,
   key: UsernameTextRecordKeys,
 ): ContractFunctionParameters {
   const chain = getChainForBasename(username);
   return {
     abi: L2ResolverAbi,
     address: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
-    args: [namehash(username), key],
+    args: [namehash(username as string), key],
     functionName: 'text',
   };
 }
 
 // Get a single TextRecord
-export async function getBasenameTextRecord(username: BaseName, key: UsernameTextRecordKeys) {
+export async function getBasenameTextRecord(username: Basename, key: UsernameTextRecordKeys) {
   const chain = getChainForBasename(username);
   try {
     const client = getBasenamePublicClient(chain.id);
@@ -680,7 +681,7 @@ export async function getBasenameTextRecord(username: BaseName, key: UsernameTex
 }
 
 // Get a all TextRecords
-export async function getBasenameTextRecords(username: BaseName) {
+export async function getBasenameTextRecords(username: Basename) {
   const chain = getChainForBasename(username);
   try {
     const readContracts: ContractFunctionParameters[] = textRecordsKeysEnabled.map((key) => {
@@ -698,7 +699,7 @@ export async function getBasenameTextRecords(username: BaseName) {
   Reclaim a Basename contrat write method
 */
 export function buildBasenameReclaimContract(
-  username: BaseName,
+  username: Basename,
   address: Address,
 ): ContractFunctionParameters {
   const chain = getChainForBasename(username);
