@@ -1,6 +1,6 @@
 'use client';
 
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { Basename } from '@coinbase/onchainkit/identity';
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import UsernameProfileProvider from 'apps/web/src/components/Basenames/UsernameProfileContext';
 
@@ -9,7 +9,7 @@ const usernameProfileAnalyticContext = 'username_profile';
 
 type ProfileProvidersProps = {
   children: React.ReactNode;
-  username: BaseName;
+  username: Basename;
 };
 
 export default function ProfileProviders({ children, username }: ProfileProvidersProps) {

@@ -1,5 +1,5 @@
 'use client';
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { Basename } from '@coinbase/onchainkit/identity';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
@@ -24,12 +24,12 @@ export enum UsernameProfileSteps {}
 
 export type UsernameProfileContextProps = {
   // Profile details
-  profileUsername: BaseName;
+  profileUsername: Basename;
   profileAddress?: Address;
 
   // Profile owner
   profileEditorAddress?: Address;
-  profileOwnerUsername?: BaseName;
+  profileOwnerUsername?: Basename;
   profileRefetch: () => Promise<void>;
 
   // State
@@ -67,7 +67,7 @@ export const UsernameProfileContext = createContext<UsernameProfileContextProps>
 
 type UsernameProfileProviderProps = {
   children: ReactNode;
-  username: BaseName;
+  username: Basename;
 };
 
 export default function UsernameProfileProvider({
