@@ -4,7 +4,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useAccount, useChainId } from 'wagmi';
 import { ManagedAddressesResponse } from 'apps/web/src/types/ManagedAddresses';
 import useSetPrimaryBasename from 'apps/web/src/hooks/useSetPrimaryBasename';
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { Basename } from '@coinbase/onchainkit/identity';
 
 export function useNameList() {
   const { address } = useAccount();
@@ -29,7 +29,7 @@ export function useNameList() {
   return { namesData, isLoading };
 }
 
-export function useRemoveNameFromUI(domain: BaseName) {
+export function useRemoveNameFromUI(domain: Basename) {
   const { address } = useAccount();
   const chainId = useChainId();
 
@@ -48,7 +48,7 @@ export function useRemoveNameFromUI(domain: BaseName) {
   return { removeNameFromUI };
 }
 
-export function useUpdatePrimaryName(domain: BaseName) {
+export function useUpdatePrimaryName(domain: Basename) {
   const { address } = useAccount();
   const chainId = useChainId();
   const { logError } = useErrors();
