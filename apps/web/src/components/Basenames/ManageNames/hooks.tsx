@@ -9,24 +9,34 @@ import { Basename } from '@coinbase/onchainkit/identity';
 export function useNameList() {
   const { address } = useAccount();
   const chainId = useChainId();
+  const { logError } = useErrors();
 
   const network = chainId === 8453 ? 'base-mainnet' : 'base-sepolia';
 
-  const { data: namesData, isLoading } = useQuery<ManagedAddressesResponse>({
+  const {
+    data: namesData,
+    isLoading,
+    error,
+  } = useQuery<ManagedAddressesResponse>({
     queryKey: ['usernames', address, network],
     queryFn: async (): Promise<ManagedAddressesResponse> => {
-      const response = await fetch(
-        `/api/basenames/getUsernames?address=${address}&network=${network}`,
-      );
-      if (!response.ok) {
-        throw new Error('Failed to fetch usernames');
+      try {
+        const response = await fetch(
+          `/api/basenames/getUsernames?address=${address}&network=${network}`,
+        );
+        if (!response.ok) {
+          throw new Error(`Failed to fetch usernames: ${response.statusText}`);
+        }
+        return (await response.json()) as ManagedAddressesResponse;
+      } catch (err) {
+        logError(err, 'Failed to fetch usernames');
+        throw err;
       }
-      return response.json() as Promise<ManagedAddressesResponse>;
     },
     enabled: !!address,
   });
 
-  return { namesData, isLoading };
+  return { namesData, isLoading, error };
 }
 
 export function useRemoveNameFromUI(domain: Basename) {

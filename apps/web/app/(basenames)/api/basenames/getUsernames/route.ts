@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import type { ManagedAddressesResponse } from '../../../../../src/types/ManagedAddresses';
+import type { ManagedAddressesResponse } from 'apps/web/src/types/ManagedAddresses';
 
 export async function GET(request: NextRequest) {
   const address = request.nextUrl.searchParams.get('address');

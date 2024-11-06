@@ -28,7 +28,17 @@ function NamesLayout({ children }: { children: React.ReactNode }) {
 }
 
 export default function NamesList() {
-  const { namesData, isLoading } = useNameList();
+  const { namesData, isLoading, error } = useNameList();
+
+  if (error) {
+    return (
+      <NamesLayout>
+        <div className="text-palette-error">
+          <span className="text-lg">Failed to load names. Please try again later.</span>
+        </div>
+      </NamesLayout>
+    );
+  }
 
   if (isLoading) {
     return (
