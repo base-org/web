@@ -577,6 +577,20 @@ const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
       />
     </svg>
   ),
+  transfer: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 16 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.43483 1.93433L5.5662 3.0657L3.93188 4.70001H10.2505V6.30001H3.93188L5.5662 7.93433L4.43483 9.0657L0.869141 5.50001L4.43483 1.93433ZM11.5662 7.93433L15.1319 11.5L11.5662 15.0657L10.4348 13.9343L12.0691 12.3H5.75051V10.7H12.0691L10.4348 9.0657L11.5662 7.93433Z"
+        fill={color}
+      />
+    </svg>
+  ),
 };
 
 export function Icon({ name, color = 'white', width = '24', height = '24' }: IconProps) {

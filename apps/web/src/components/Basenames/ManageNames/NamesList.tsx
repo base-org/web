@@ -5,17 +5,7 @@ import { useNameList } from 'apps/web/src/components/Basenames/ManageNames/hooks
 import Link from 'apps/web/src/components/Link';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 
-export default function NamesList() {
-  const { namesData, isLoading } = useNameList();
-
-  if (isLoading) {
-    return <div>Loading names...</div>;
-  }
-
-  if (!namesData?.data?.length) {
-    return <div>No names found</div>;
-  }
-
+function NamesLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="mx-auto max-w-2xl space-y-4 p-8">
       <div className="flex items-center justify-between">
@@ -27,6 +17,32 @@ export default function NamesList() {
           <Icon name="plus" color="currentColor" width="12px" height="12px" />
         </Link>
       </div>
+      {children}
+    </div>
+  );
+}
+
+export default function NamesList() {
+  const { namesData, isLoading } = useNameList();
+
+  if (isLoading) {
+    return (
+      <NamesLayout>
+        <div>Loading names...</div>
+      </NamesLayout>
+    );
+  }
+
+  if (!namesData?.data?.length) {
+    return (
+      <NamesLayout>
+        <div>No names found</div>
+      </NamesLayout>
+    );
+  }
+
+  return (
+    <NamesLayout>
       <ul className="mx-auto flex max-w-2xl flex-col gap-4">
         {namesData.data.map((name) => (
           <NameDisplay
@@ -38,6 +54,6 @@ export default function NamesList() {
           />
         ))}
       </ul>
-    </div>
+    </NamesLayout>
   );
 }

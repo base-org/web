@@ -78,9 +78,19 @@ export default function NameDisplay({ domain, isPrimary, tokenId, expiresAt }: N
               <Icon name="verticalDots" color="currentColor" width="2rem" height="2rem" />
             </DropdownToggle>
             <DropdownMenu>
-              <DropdownItem onClick={openModal}>Transfer name</DropdownItem>
+              <DropdownItem onClick={openModal}>
+                <span className="flex flex-row items-center gap-2">
+                  <Icon name="transfer" color="currentColor" width="1rem" height="1rem" /> Transfer
+                  name
+                </span>
+              </DropdownItem>
               {!isPrimary ? (
-                <DropdownItem onClick={setPrimaryUsername}>Set as primary</DropdownItem>
+                <DropdownItem onClick={setPrimaryUsername}>
+                  <span className="flex flex-row items-center gap-2">
+                    <Icon name="plus" color="currentColor" width="1rem" height="1rem" /> Set as
+                    primary
+                  </span>
+                </DropdownItem>
               ) : null}
             </DropdownMenu>
           </Dropdown>
