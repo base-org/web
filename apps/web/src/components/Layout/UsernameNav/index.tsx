@@ -111,13 +111,14 @@ export default function UsernameNav() {
           <ImageAdaptive src={usernameBaseLogo as StaticImageData} alt="Base" />
         </Link>
         <span className={walletStateClasses}>
-          {/* TODO only display this if they have a basename */}
-          <span className="text-md text-palette-primary">
-            <Link href="/manage-names" className="flex items-center gap-2">
-              <Icon name="list" color="currentColor" width="1rem" height="1rem" />
-              My Basenames
-            </Link>
-          </span>
+          {isConnected && (
+            <span className="text-md text-palette-primary">
+              <Link href="/manage-names" className="flex items-center gap-2">
+                <Icon name="list" color="currentColor" width="1rem" height="1rem" />
+                My Basenames
+              </Link>
+            </span>
+          )}
           <Suspense>
             <ConnectWalletButton
               connectWalletButtonVariant={ConnectWalletButtonVariants.Basename}
