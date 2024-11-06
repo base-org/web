@@ -36,7 +36,10 @@ export default function NamesList() {
   if (!namesData?.data?.length) {
     return (
       <NamesLayout>
-        <div>No names found</div>
+        <div>
+          No names found.
+          <Link href="/names/">Get a Basename!</Link>
+        </div>
       </NamesLayout>
     );
   }
