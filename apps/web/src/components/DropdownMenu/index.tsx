@@ -44,8 +44,8 @@ export default function DropdownMenu({
   let dropdownStyle: CSSProperties = {};
   if (dropdownToggleRef?.current) {
     const { top, height, right } = dropdownToggleRef.current.getBoundingClientRect();
-    dropdownStyle.top = top + height + 'px';
-    dropdownStyle.left = `${right}px`;
+    dropdownStyle.top = top + height + window.scrollY + 'px';
+    dropdownStyle.left = `${right + window.scrollX}px`;
     dropdownStyle.transform = `translateX(-100%)`;
   }
 
@@ -61,8 +61,8 @@ export default function DropdownMenu({
   let arrowStyle: CSSProperties = {};
   if (dropdownToggleRef?.current) {
     const { top, height, left, width } = dropdownToggleRef.current.getBoundingClientRect();
-    arrowStyle.top = top + height + 'px';
-    arrowStyle.left = `${left + width / 2}px`;
+    arrowStyle.top = top + height + window.scrollY + 'px';
+    arrowStyle.left = `${left + width / 2 + window.scrollX}px`;
   }
 
   return (
