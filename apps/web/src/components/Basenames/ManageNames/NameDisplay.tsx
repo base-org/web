@@ -85,6 +85,7 @@ export default function NameDisplay({ domain, isPrimary, tokenId, expiresAt }: N
                 </span>
               </DropdownItem>
               {!isPrimary ? (
+                // eslint-disable-next-line @typescript-eslint/no-misused-promises
                 <DropdownItem onClick={setPrimaryUsername}>
                   <span className="flex flex-row items-center gap-2">
                     <Icon name="plus" color="currentColor" width="1rem" height="1rem" /> Set as
