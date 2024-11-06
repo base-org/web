@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useErrors } from 'apps/web/contexts/Errors';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useAccount, useChainId } from 'wagmi';
@@ -68,33 +68,38 @@ export function useUpdatePrimaryName(domain: Basename) {
   const network = chainId === 8453 ? 'base-mainnet' : 'base-sepolia';
 
   // Hook to update primary name
-  const { setPrimaryName } = useSetPrimaryBasename({
+  const { setPrimaryName, transactionIsSuccess } = useSetPrimaryBasename({
     secondaryUsername: domain,
-  }) as { setPrimaryName: () => Promise<void> };
+  });
 
-  const setPrimaryUsername = useCallback(() => {
-    setPrimaryName()
-      .then(() => {
-        queryClient.setQueryData(
-          ['usernames', address, network],
-          (prevData: ManagedAddressesResponse) => {
-            return {
-              ...prevData,
-              data: prevData.data.map((name) =>
-                name.domain === domain
-                  ? { ...name, is_primary: true }
-                  : name.is_primary
-                  ? { ...name, is_primary: false }
-                  : name,
-              ),
-            };
-          },
-        );
-      })
-      .catch((error) => {
-        logError(error, 'Failed to update primary name');
-      });
-  }, [address, domain, logError, network, queryClient, setPrimaryName]);
+  const setPrimaryUsername = useCallback(async () => {
+    try {
+      await setPrimaryName();
+    } catch (error) {
+      logError(error, 'Failed to update primary name');
+      throw error;
+    }
+  }, [logError, setPrimaryName]);
+
+  useEffect(() => {
+    if (transactionIsSuccess) {
+      queryClient.setQueryData(
+        ['usernames', address, network],
+        (prevData: ManagedAddressesResponse) => {
+          return {
+            ...prevData,
+            data: prevData.data.map((name) =>
+              name.domain === domain
+                ? { ...name, is_primary: true }
+                : name.is_primary
+                ? { ...name, is_primary: false }
+                : name,
+            ),
+          };
+        },
+      );
+    }
+  }, [transactionIsSuccess, address, domain, network, queryClient]);
 
   return { setPrimaryUsername };
 }

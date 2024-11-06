@@ -96,5 +96,5 @@ export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrima
 
   const isLoading = transactionIsLoading || primaryUsernameIsLoading || primaryUsernameIsFetching;
 
-  return { setPrimaryName, canSetUsernameAsPrimary, isLoading };
+  return { setPrimaryName, canSetUsernameAsPrimary, isLoading, transactionIsSuccess };
 }
