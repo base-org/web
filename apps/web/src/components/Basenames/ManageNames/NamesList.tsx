@@ -4,21 +4,26 @@ import NameDisplay from './NameDisplay';
 import { useNameList } from 'apps/web/src/components/Basenames/ManageNames/hooks';
 import Link from 'apps/web/src/components/Link';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import AnalyticsProvider from 'apps/web/contexts/Analytics';
+
+const usernameManagementListAnalyticContext = 'username_management_list';
 
 function NamesLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mx-auto max-w-2xl space-y-4 p-8">
-      <div className="flex items-center justify-between">
-        <h1 className="mb-4 text-3xl font-bold">My Basenames</h1>
-        <Link
-          className="rounded-lg bg-palette-backgroundAlternate p-2 text-sm text-palette-foreground"
-          href="/names/"
-        >
-          <Icon name="plus" color="currentColor" width="12px" height="12px" />
-        </Link>
+    <AnalyticsProvider context={usernameManagementListAnalyticContext}>
+      <div className="mx-auto max-w-2xl space-y-4 p-8">
+        <div className="flex items-center justify-between">
+          <h1 className="mb-4 text-3xl font-bold">My Basenames</h1>
+          <Link
+            className="rounded-lg bg-palette-backgroundAlternate p-2 text-sm text-palette-foreground"
+            href="/names/"
+          >
+            <Icon name="plus" color="currentColor" width="12px" height="12px" />
+          </Link>
+        </div>
+        {children}
       </div>
-      {children}
-    </div>
+    </AnalyticsProvider>
   );
 }
 
@@ -37,9 +42,12 @@ export default function NamesList() {
     return (
       <NamesLayout>
         <div>
-          No names found.
+          <span className="text-lg">No names found.</span>
           <br />
-          <Link href="/names/">Get a Basename!</Link>
+          <br />
+          <Link href="/names/" className="text-lg font-bold text-palette-primary underline">
+            Get a Basename!
+          </Link>
         </div>
       </NamesLayout>
     );
