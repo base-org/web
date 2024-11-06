@@ -91,7 +91,6 @@ export default function ProfileTransferOwnershipProvider({
   const [currentOwnershipStep, setCurrentOwnershipStep] = useState<OwnershipSteps>(
     OwnershipSteps.Search,
   );
-  console.log({ currentOwnershipStep, recipientAddress });
 
   // TODO: Validate that it's not a contract recipient
   const isValidRecipientAddress = isAddress(recipientAddress);
@@ -348,7 +347,6 @@ export default function ProfileTransferOwnershipProvider({
 
   useEffect(() => {
     if (isSuccess) {
-      console.log('isSuccess triggered');
       setCurrentOwnershipStep(OwnershipSteps.Success);
     }
   }, [isSuccess]);
