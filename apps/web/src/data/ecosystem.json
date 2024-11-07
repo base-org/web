@@ -2857,13 +2857,13 @@
     "imageUrl": "/images/partners/cryptohub.png"
   },
   {
-    "name": "Threebalance",
+    "name": "3Balance",
     "tags": [
       "defi"
     ],
-    "description": "Threebalance is a portfolio rebalancing tool built on top of 1inch API. \nThe DApp enables you to rebalance or reposition your portfolio in 3 steps via one simple interface.",
-    "url": "https://threebalance.co/",
-    "imageUrl": "/images/partners/threebalance.png"
+    "description": "3Balance enables you to achieve your ideal crypto portfolio across multiple wallets and chains in a single flow.",
+    "url": "https://3balance.co/",
+    "imageUrl": "/images/partners/3balance.png"
   },
   {
     "name": "Cat Town",
