@@ -629,7 +629,7 @@ export function useBaseWorldAttestations() {
       data: {
         discountValidatorAddress,
         discount: Discount.BASE_WORLD,
-        validationData: '0x0' as `0x${string}`,
+        validationData: encodeAbiParameters([{ type: 'uint256[]' }], [baseWorldTokenIds]),
       },
       loading: false,
       error: null,
