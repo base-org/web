@@ -26,8 +26,8 @@ A function called `adder`. It must:
 
 - Accept two `uint` arguments, called `_a` and `_b`
 - Return a `uint` `sum` and a `bool` `error`
-- If `_a` + `_b` do not overflow, it should return the `sum` and an `error` of `false`
-- If `_a` + `_b` overflow, it should return `0` as the `sum`, and an `error` of `true`
+- If `_a` + `_b` does not overflow, it should return the `sum` and an `error` of `false`
+- If `_a` + `_b` overflows, it should return `0` as the `sum`, and an `error` of `true`
 
 ### Subtractor
 
