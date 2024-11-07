@@ -4214,5 +4214,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "PeakChain MoveUp",
+    "tags": [
+      "nft"
+    ],
+    "description": "PeakChain MoveUp is a blockchain-powered app rewarding eco-friendly travel with points that can be exchanged for NFTs, promoting sustainable mobility.",
+    "url": "https://peakchain.network/move-up",
+    "imageUrl": "/images/partners/peakchain.png"
   }
 ]
