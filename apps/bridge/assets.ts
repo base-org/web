@@ -351,6 +351,19 @@ const assets: Asset[] = [
     decimals: 18,
     protocol: 'OP',
   },
+  {
+    L1symbol: 'BICO',
+    L2symbol: 'BICO',
+    L1chainId: 1,
+    L2chainId: 8453,
+    L1contract: '0xf17e65822b568b3903685a7c9f496cf7656cc6c2',
+    L2contract: '0xf5Dbaa3DFC5e81405c7306039fB037a3DCD57Ce2',
+    apiId: 'biconomy',
+    L1icon: '/icons/currency/bico.svg',
+    L2icon: '/icons/currency/bico.svg',
+    decimals: 18,
+    protocol: 'OP',
+  },
 ];
 
 export default assets;
