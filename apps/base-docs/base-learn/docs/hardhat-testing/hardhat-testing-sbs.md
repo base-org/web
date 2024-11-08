@@ -1,5 +1,5 @@
 ---
-title: 'Testing with Hardhat and Typechain'
+title: Testing with Hardhat and Typechain
 description: Testing smart contracts with Hardhat and Typechain.
 hide_table_of_contents: false
 ---

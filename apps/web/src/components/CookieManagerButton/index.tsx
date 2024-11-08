@@ -12,7 +12,7 @@ export function CookieManagerButton() {
 
   return (
     <>
-      <button type="button" className="appearance-none underline" onClick={handleOpenModal}>
+      <button type="button" className="appearance-none" onClick={handleOpenModal}>
         Cookie Manager
       </button>
       {isOpen && <CookiePreferencesModal isOpen={isOpen} onClose={handleCloseModal} />}

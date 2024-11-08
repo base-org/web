@@ -340,7 +340,7 @@ The second item, at `0x20` has the error code of `32` hidden in it, which is for
 It's sometimes better to just review the code first to see if the error is obvious.
 
 ```solidity
-unction badGetLastValueFixed() public pure returns (uint) {
+function badGetLastValueFixed() public pure returns (uint) {
     uint[4] memory arr = [uint(1), 2, 3, 4];
 
     return arr[arr.length-1];
@@ -406,7 +406,7 @@ function badRandomLoopFixed() public view returns (uint) {
 The `uint` type will _panic_ in the event of an overflow or underflow.
 
 ```solidity
-function badSubstraction() public pure returns (uint) {
+function badSubtraction() public pure returns (uint) {
     uint first = 1;
     uint second = 2;
     return first - second;

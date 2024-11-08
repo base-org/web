@@ -1,3 +1,4 @@
+'use client';
 import { Transition } from '@headlessui/react';
 import { FloatingENSPills } from 'apps/web/src/components/Basenames/FloatingENSPills';
 import {
@@ -8,9 +9,9 @@ import {
 
 import fireworks from './assets/fireworks.webm';
 import globe from './assets/globe.webm';
-import vortex from './assets/vortex.webm';
-
+import vortexJson from './assets/vortex.json';
 import classNames from 'classnames';
+import LottieAnimation from 'apps/web/src/components/LottieAnimation';
 
 export default function RegistrationBackground() {
   const { registrationStep } = useRegistration();
@@ -29,6 +30,11 @@ export default function RegistrationBackground() {
   );
 
   const videoClasses = classNames('absolute w-full h-full object-cover motion-reduce:hidden');
+
+  // Large canvas tends to be laggy for complex animation, so we give them a maximum size (50rem)
+  const lottieClasses = classNames(
+    'absolute w-full h-full max-w-[50rem] max-h-[50rem] object-cover motion-reduce:hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+  );
 
   return (
     <>
@@ -57,7 +63,6 @@ export default function RegistrationBackground() {
         leaveTo="opacity-0"
       >
         {/* TODO: Lottie animation file */}
-
         <Transition
           appear
           show={isClaim}
@@ -89,12 +94,7 @@ export default function RegistrationBackground() {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        {/* TODO: Lottie animation file */}
-
-        {}
-        <video autoPlay className={videoClasses} loop muted playsInline>
-          <source src={vortex} type="video/webm" />
-        </video>
+        <LottieAnimation data={vortexJson} wrapperClassName={lottieClasses} />
       </Transition>
 
       <Transition

@@ -1,13 +1,12 @@
+'use client';
 import Dropdown from 'apps/web/src/components/Dropdown';
 import DropdownItem from 'apps/web/src/components/DropdownItem';
 import DropdownMenu from 'apps/web/src/components/DropdownMenu';
 import DropdownToggle from 'apps/web/src/components/DropdownToggle';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
-import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
-import { getUserNamePicture } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { UsernamePillProps, UsernamePillVariants } from './types';
+import BasenameAvatar from 'apps/web/src/components/Basenames/BasenameAvatar';
 
 export function UsernamePill({ variant, username, address, isRegistering }: UsernamePillProps) {
   const transitionClasses = 'transition-all duration-700 ease-in-out';
@@ -53,28 +52,16 @@ export function UsernamePill({ variant, username, address, isRegistering }: User
     },
   );
 
-  const { existingTextRecords, existingTextRecordsIsLoading } = useReadBaseEnsTextRecords({
-    address: address,
-    username: username,
-  });
-
-  const selectedProfilePicture = existingTextRecords.avatar || getUserNamePicture(username);
-
   return (
     <div className={pillNameClasses}>
       {isRegistering && (
         <div className="duration-1500 absolute right-0 top-0 h-32 w-64 animate-longslide bg-gradient-to-r from-transparent via-black to-transparent opacity-30 blur-lg" />
       )}
-      <ImageWithLoading
-        src={selectedProfilePicture}
-        alt={username}
-        title={username}
+      <BasenameAvatar
+        basename={username}
         wrapperClassName={avatarClasses}
-        imageClassName="object-cover w-full h-full"
-        backgroundClassName="bg-blue-500"
         width={4 * 16}
         height={4 * 16}
-        forceIsLoading={existingTextRecordsIsLoading}
       />
       <span className={userNameClasses}>{username}</span>
       {address && (

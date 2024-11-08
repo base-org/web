@@ -1,5 +1,9 @@
 const sidebars = {
   docs: [
+    {
+      type: 'doc',
+      id: 'docs/help-on-discord',
+    },
     ['docs/welcome'],
     {
       type: 'category',

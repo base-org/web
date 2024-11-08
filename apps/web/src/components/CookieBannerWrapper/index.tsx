@@ -39,8 +39,14 @@ export const cookieBannerTheme = {
     tablet: 768,
   },
   zIndex: {
+    hidden: 0,
+    normal: 1,
+    elevated: 2,
     high: 2,
+    extraHigh: 3,
+    backdrop: 999,
     overlay: 1000,
+    top: 1001,
   },
 };
 

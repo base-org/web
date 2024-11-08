@@ -13,6 +13,7 @@ export enum ButtonVariants {
 }
 
 export enum ButtonSizes {
+  Tiny = 'tiny',
   Small = 'small',
   Medium = 'medium',
 }
@@ -34,11 +35,12 @@ const variantStyles = {
 };
 
 const sizeStyles = {
+  [ButtonSizes.Tiny]: 'text-xs md:text-sm px-3 py-2',
   [ButtonSizes.Small]: 'text-sm md:text-md px-6 py-3',
   [ButtonSizes.Medium]: 'text-sm md:text-lg px-10 py-3.5',
 };
 
-type ButtonProps = {
+export type ButtonProps = {
   variant?: ButtonVariants;
   size?: ButtonSizes;
   rounded?: boolean;

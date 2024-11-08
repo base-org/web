@@ -1,26 +1,35 @@
-import { Url } from 'next/dist/shared/lib/router/router';
-import Link from 'next/link';
+'use client';
+
+import classNames from 'classnames';
+import { useCallback } from 'react';
 
 type Props = {
   tag: string;
   isSelected: boolean;
+  selectTag: (tag: string) => void;
 };
 
-export async function TagChip({ tag, isSelected }: Props) {
-  // eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
-  const tagHref: Url = {
-    pathname: '/ecosystem',
-    query: { tag },
-  };
+export function TagChip({ tag, isSelected, selectTag }: Props) {
+  const onClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      selectTag(tag);
+    },
+    [selectTag, tag],
+  );
+
+  const buttonClasses = classNames(
+    'uppercase tracking-wider border border-white/20 h-10 whitespace-nowrap rounded-full px-4  transition-colors ',
+
+    {
+      'bg-white text-black': isSelected,
+      'text-white/50 hover:bg-white/20 hover:text-white': !isSelected,
+    },
+  );
+
   return (
-    <Link href={tagHref} scroll={false}>
-      <div
-        className={`flex h-10 shrink-0 cursor-pointer flex-col justify-center rounded-[100px] border border-gray-muted px-8 hover:border-white ${
-          isSelected ? 'bg-gray-muted' : ''
-        }`}
-      >
-        <span className="text-center font-mono text-base uppercase text-white">{tag}</span>
-      </div>
-    </Link>
+    <button onClick={onClick} type="button" className={buttonClasses}>
+      {tag}
+    </button>
   );
 }

@@ -9,7 +9,7 @@ import { useIsNameAvailable } from 'apps/web/src/hooks/useIsNameAvailable';
 import { formatBaseEthDomain, validateEnsDomainName } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
@@ -19,6 +19,7 @@ import {
   RegistrationSearchInputProps,
   RegistrationSearchInputVariant,
 } from './types';
+import Link from 'apps/web/src/components/Link';
 
 function SuggestionEntry({
   suggestion,
@@ -47,8 +48,10 @@ export default function RegistrationSearchInput({
   const { logEventWithContext } = useAnalytics();
   const [search, setSearch] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
+  const [headerBackground, setHeaderBackground] = useState(true);
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [debouncedSearch] = useDebounceValue(search, 400);
+  const [debouncedScroll] = useDebounceValue(headerBackground, 200);
   const { basenameChain } = useBasenameChain();
   const {
     isLoading: isLoadingNameAvailability,
@@ -65,12 +68,13 @@ export default function RegistrationSearchInput({
 
   const { valid, message } = validateEnsDomainName(debouncedSearch);
   const invalidWithMessage = !valid && !!message;
+  const resetBackground = focused && debouncedScroll;
 
   const { setSearchInputFocused, setSearchInputHovered, setSelectedName } = useRegistration();
 
   const handleSearchChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    setSearch(value.replace(/[\s\.]/g, ''));
+    setSearch(value.replace(/[\s\.]+/g, ''));
   }, []);
 
   useEffect(() => {
@@ -163,6 +167,10 @@ export default function RegistrationSearchInput({
     },
   );
 
+  const registeredContentClasses = classNames(
+    'flex grow-0 w-full flex-row items-center justify-between',
+  );
+
   const inputIconClasses = classNames(
     'absolute top-1/2 z-9 flex -translate-y-1/2 items-center scale-75 md:scale-100',
     {
@@ -179,6 +187,11 @@ export default function RegistrationSearchInput({
   const mutedMessage = classNames('text-gray-60', {
     'px-6 py-4 text': variant === RegistrationSearchInputVariant.Large,
     'px-3 py-2 text-sm': variant === RegistrationSearchInputVariant.Small,
+  });
+
+  const mutedStatus = classNames('text-gray-60', {
+    'text-sm': variant === RegistrationSearchInputVariant.Large,
+    'text-xs': variant === RegistrationSearchInputVariant.Small,
   });
 
   const spinnerWrapperClasses = classNames('flex w-full items-center justify-center', {
@@ -224,19 +237,40 @@ export default function RegistrationSearchInput({
   );
 
   useEffect(() => {
-    setSearchInputFocused(focused);
-  }, [focused, setSearchInputFocused]);
+    const handleScroll = () => {
+      setHeaderBackground(window.scrollY <= 250);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
-    if (!invalidWithMessage) return;
+    setSearchInputFocused(resetBackground);
+  }, [resetBackground, setSearchInputFocused]);
 
-    // Log invalid
-    logEventWithContext('search_available_name_invalid', ActionType.error, { error: message });
-  }, [invalidWithMessage, logEventWithContext, message, setSearchInputFocused]);
+  useEffect(() => {
+    if (debouncedSearch.length > 2 && invalidWithMessage) {
+      // Log invalid
+      logEventWithContext('search_available_name_invalid', ActionType.error, { error: message });
+    }
+  }, [
+    debouncedSearch.length,
+    invalidWithMessage,
+    logEventWithContext,
+    message,
+    setSearchInputFocused,
+  ]);
 
   const selectName = useCallback(() => {
     handleSelectName(debouncedSearch);
   }, [debouncedSearch, handleSelectName]);
+
+  const formattedBaseEthDomain = useMemo(
+    () => formatBaseEthDomain(debouncedSearch, basenameChain.id),
+    [basenameChain.id, debouncedSearch],
+  );
 
   return (
     <fieldset
@@ -265,9 +299,7 @@ export default function RegistrationSearchInput({
           <>
             <p className={`${dropdownLabelClasses} hidden md:block`}>Available</p>
             <button className={buttonClasses} type="button" onClick={selectName}>
-              <span className="truncate">
-                {formatBaseEthDomain(debouncedSearch, basenameChain.id)}
-              </span>
+              <span className="truncate">{formattedBaseEthDomain}</span>
               <ChevronRightIcon width={iconSize} height={iconSize} />
             </button>
           </>
@@ -285,9 +317,12 @@ export default function RegistrationSearchInput({
           </p>
         ) : (
           <>
-            <p className={mutedMessage}>
-              {formatBaseEthDomain(debouncedSearch, basenameChain.id)} is not available
-            </p>
+            <Link href={`name/${formattedBaseEthDomain}`} className={buttonClasses}>
+              <div className={registeredContentClasses}>
+                <span className="truncate">{formattedBaseEthDomain}</span>
+                <span className={mutedStatus}>Registered</span>
+              </div>
+            </Link>
             {suggestions.length > 0 ? (
               <>
                 <Tooltip content="Suggestions are generated by AI. Do not type in any sensitive information.">

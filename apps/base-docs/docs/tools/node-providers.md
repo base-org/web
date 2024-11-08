@@ -259,7 +259,7 @@ To get started, visit the [develoepr documentation](https://docs.erpc.cloud/).
 
 ## Unifra
 
-[Unifra](https://base.unifra.io/) is a Web3 developer platform that provides tools, APIs, and node infrastructure, and provides access to Base nodes that are nodes are reliabile, scalable, and easy to use.
+[Unifra](https://base.unifra.io/) is a Web3 developer platform that provides tools, APIs, and node infrastructure, and provides access to Base nodes that are nodes are reliable, scalable, and easy to use.
 
 #### Supported Networks
 

@@ -38,7 +38,7 @@ const baseConfig = {
   reactStrictMode: !isProdEnv,
 
   // Minifiy for production builds
-  swcMinify: true,
+  swcMinify: false,
 };
 
 function extendBaseConfig(customConfig = {}, plugins = []) {
@@ -71,13 +71,16 @@ const contentSecurityPolicy = {
   'default-src': [
     "'self'",
     "'unsafe-inline'", // NextJS requires 'unsafe-inline'
+    "'wasm-unsafe-eval'", // wasm requires 'unsafe-eval'
     isLocalDevelopment ? "'unsafe-eval'" : '',
     baseXYZDomains,
     ccaDomain,
     ccaLiteDomains,
     walletconnectDomains,
+    'https://fonts.googleapis.com', // OCK styles loads google fonts via CSS
+    'https://fonts.gstatic.com/', // OCK styles loads google fonts via CSS
   ],
-  'worker-src': ["'self'"],
+  'worker-src': ["'self'", 'blob:'],
   'connect-src': [
     "'self'",
     'https://blob.vercel-storage.com', // Vercel File storage
@@ -87,6 +90,10 @@ const contentSecurityPolicy = {
     greenhouseDomains,
     ccaLiteDomains,
     ccaDomain,
+    'https://ccip-v2.ens.xyz',
+    'https://euc.li',
+    'https://arweave.net',
+    'https://ens.xyz',
     'https://enhanced-provider.rainbow.me',
     'https://*.coinbase.com',
     'wss://www.walletlink.org/rpc', // coinbase wallet connection
@@ -97,6 +104,7 @@ const contentSecurityPolicy = {
     'https://i.seadn.io/', // ens avatars
     'https://api.opensea.io', // enables getting ENS avatars
     'https://ipfs.io', // ipfs ens avatar resolution
+    'https://cloudflare-ipfs.com', // ipfs Cloudfare ens avatar resolution
     'wss://www.walletlink.org',
     'https://base.easscan.org/graphql',
     'https://api.guild.xyz/',
@@ -107,6 +115,9 @@ const contentSecurityPolicy = {
     'https://browser-intake-datadoghq.com', // datadog
     'https://*.datadoghq.com', //datadog
     'https://translate.googleapis.com', // Let user translate our website
+    'https://sdk-api.neynar.com/', // Neymar API
+    'https://unpkg.com/@lottiefiles/dotlottie-web@0.31.1/dist/dotlottie-player.wasm', // lottie player
+    `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
   ],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
@@ -114,9 +125,13 @@ const contentSecurityPolicy = {
     "'self'",
     'blob:',
     'data:',
+    'https://euc.li',
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars
     'https://ipfs.io', // ipfs ens avatar resolution
+    'https://cloudflare-ipfs.com', // ipfs Cloudfare ens avatar resolution
+    'https://res.cloudinary.com',
+    `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
   ],
 };
 
@@ -180,8 +195,36 @@ module.exports = extendBaseConfig(
           },
         ],
       });
+      config.module.rules.push({
+        test: /\.gltf/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash].[ext]',
+              outputPath: 'static/assets/gltf/',
+              publicPath: '/_next/static/assets/gltf/',
+            },
+          },
+        ],
+      });
+      config.module.rules.push({
+        test: /\.glb/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash].[ext]',
+              outputPath: 'static/assets/glb/',
+              publicPath: '/_next/static/assets/glb/',
+            },
+          },
+        ],
+      });
 
       config.externals.push('pino-pretty');
+      config.experiments = { ...config.experiments, asyncWebAssembly: true };
+
       return config;
     },
     images: {
@@ -211,6 +254,11 @@ module.exports = extendBaseConfig(
         {
           source: '/buildersummer',
           destination: '/onchainsummer',
+          permanent: true,
+        },
+        {
+          source: '/onchainsummer',
+          destination: '/getstarted',
           permanent: true,
         },
         {

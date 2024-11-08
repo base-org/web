@@ -29,73 +29,6 @@ const config = {
   title: APP_TITLE,
   tagline: '',
   url: 'https://docs.base.org',
-  headTags: [
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'og:type',
-        content: 'website',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'og:title',
-        content: 'Base | Docs',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'og:description',
-        content:
-          'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2.',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'og:image',
-        content: 'https://docs.base.org/img/base-open-graph.png',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'twitter:card',
-        content: 'summary_large_image',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        property: 'twitter:domain',
-        content: 'base.org',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'twitter:title',
-        content: 'Base | Docs',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'twitter:description',
-        content:
-          'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2.',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'twitter:image',
-        content: 'https://docs.base.org/img/base-open-graph.png',
-      },
-    },
-  ],
   customFields: {
     nodeEnv: process.env.NODE_ENV,
     sprigEnvironmentId: 'Q2ppiEaeSEJI',
@@ -161,6 +94,24 @@ const config = {
 
   themeConfig: {
     image: 'img/base-open-graph.png',
+    metadata: [
+      { name: 'og:type', content: 'website' },
+      { name: 'og:title', content: 'Base | Docs' },
+      {
+        name: 'og:description',
+        content:
+          'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2',
+      },
+      { name: 'twitter:title', content: 'Base | Docs' },
+      {
+        name: 'twitter:description',
+        content:
+          'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2.',
+      },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:domain', content: 'base.org' },
+    ],
+
     ...baseConfig.themeConfig,
     navbar: {
       logo: {
@@ -179,19 +130,19 @@ const config = {
           eventContext: 'navbar',
         },
         {
+          to: 'https://base.org/getstarted',
+          navposition: 'bottomLeft',
+          label: 'Get Started',
+          type: 'custom-navbarLink',
+          eventLabel: 'getstarted',
+          eventContext: 'navbar',
+        },
+        {
           to: '/docs',
           navposition: 'bottomLeft',
           label: 'Docs',
           type: 'custom-navbarLink',
           eventLabel: 'docs',
-          eventContext: 'navbar',
-        },
-        {
-          to: '/tutorials',
-          navposition: 'bottomLeft',
-          label: 'Tutorials',
-          type: 'custom-navbarLink',
-          eventLabel: 'tutorials',
           eventContext: 'navbar',
         },
         {
@@ -204,6 +155,13 @@ const config = {
               to: '/base-learn/docs/welcome',
               type: 'custom-dropdownLink',
               eventLabel: 'camp_learn',
+              eventContext: 'navbar',
+            },
+            {
+              label: 'Tutorials',
+              to: '/tutorials',
+              type: 'custom-dropdownLink',
+              eventLabel: 'tutorials',
               eventContext: 'navbar',
             },
             {
@@ -326,7 +284,7 @@ const config = {
               icon: 'farcaster',
               type: 'custom-dropdownLink',
               target: '_blank',
-              to: "https://warpcast.com/~/channel/base",
+              to: 'https://warpcast.com/base',
               eventLabel: 'socials_farcaster',
               eventContext: 'navbar',
             },
@@ -335,7 +293,7 @@ const config = {
               icon: 'discord',
               type: 'custom-dropdownLink',
               target: '_blank',
-              to: "https://discord.com/invite/buildonbase",
+              to: 'https://discord.com/invite/buildonbase',
               eventLabel: 'socials_discord',
               eventContext: 'navbar',
             },
@@ -344,7 +302,7 @@ const config = {
               icon: 'twitter',
               type: 'custom-dropdownLink',
               target: '_blank',
-              to: "https://www.twitter.com/base",
+              to: 'https://www.twitter.com/base',
               eventLabel: 'socials_twitter',
               eventContext: 'navbar',
             },
@@ -353,11 +311,11 @@ const config = {
               icon: 'github',
               type: 'custom-dropdownLink',
               target: '_blank',
-              to: "https://www.github.com/base-org",
+              to: 'https://www.github.com/base-org',
               eventLabel: 'socials_github',
               eventContext: 'navbar',
             },
-          ]
+          ],
         },
         // Langauge selection dropdown will be supported in the future
         // {

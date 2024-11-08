@@ -1,6 +1,6 @@
 'use client';
-import Link from 'next/link';
 import usernameBaseLogo from './usernameBaseLogo.svg';
+import Link from 'apps/web/src/components/Link';
 
 import {
   ConnectWalletButton,
@@ -12,17 +12,19 @@ import classNames from 'classnames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { base, baseSepolia } from 'viem/chains';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import { useCallback } from 'react';
+import { Suspense, useCallback } from 'react';
 import { isDevelopment } from 'apps/web/src/constants';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 
 export default function UsernameNav() {
-  const { isConnected } = useAccount();
   const { basenameChain } = useBasenameChain();
   const { switchChain } = useSwitchChain();
+  const { chain: connectedChain, isConnected } = useAccount();
 
   const showDevelopmentWarning = isDevelopment && basenameChain.id === base.id;
   const showProductionWarning = !isDevelopment && basenameChain.id === baseSepolia.id;
+  const showWrongChainWarning =
+    connectedChain?.id !== basenameChain.id && connectedChain?.id !== baseSepolia.id && isConnected;
 
   const switchToMainnet = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -40,7 +42,7 @@ export default function UsernameNav() {
     [switchChain],
   );
 
-  const walletStateClasses = classNames('p2 rounded', {
+  const walletStateClasses = classNames('p2 rounded flex items-center gap-6', {
     'bg-white': isConnected,
   });
 
@@ -86,15 +88,42 @@ export default function UsernameNav() {
           </p>
         </div>
       )}
+      {showWrongChainWarning && (
+        <div className="flex items-center  justify-center gap-2 bg-orange-10 p-2 text-center text-orange-80">
+          <p>
+            <span className="align-center mr-1 inline-block">
+              <Icon name="info" color="currentColor" height="1rem" />
+            </span>
+            You are not on Base.{' '}
+            <button
+              className="text-orange-90 underline underline-offset-2"
+              type="button"
+              onClick={switchToMainnet}
+            >
+              Switch to Base Mainnet
+            </button>{' '}
+            to access Basenames features.
+          </p>
+        </div>
+      )}
       <nav className={navigationClasses}>
         <Link href="/">
           <ImageAdaptive src={usernameBaseLogo as StaticImageData} alt="Base" />
         </Link>
         <span className={walletStateClasses}>
-          <ConnectWalletButton
-            color="black"
-            connectWalletButtonVariant={ConnectWalletButtonVariants.Default}
-          />
+          {isConnected && (
+            <span className="text-md text-palette-primary">
+              <Link href="/manage-names" className="flex items-center gap-2">
+                <Icon name="list" color="currentColor" width="1rem" height="1rem" />
+                My Basenames
+              </Link>
+            </span>
+          )}
+          <Suspense>
+            <ConnectWalletButton
+              connectWalletButtonVariant={ConnectWalletButtonVariants.Basename}
+            />
+          </Suspense>
         </span>
       </nav>
     </div>

@@ -1,4 +1,6 @@
+import { withTimeout } from 'apps/web/pages/api/decorators';
 import { queryCbGpt } from 'apps/web/src/cdp/api/cb-gpt';
+import { logger } from 'apps/web/src/utils/logger';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export type NameSuggestionResponseData = {
@@ -33,8 +35,9 @@ include any explanation or additional text outside of the JSON array.
 Remember, the goal is to provide alternatives that users will find desirable and that are likely to be available on ENS. For example, adding a "0x" prefix to the start of a taken name would be culturally apt. 
 Focus on quality and creativity in your suggestions.`;
 const chatLlm = 'claude-3-5-sonnet@20240620';
+const ownershipRegistryComponentId = process.env.OWNERSHIP_REGISTRY_COMPONENT_ID ?? '';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<ApiResponse>) {
+async function handler(req: NextApiRequest, res: NextApiResponse<ApiResponse>) {
   const { alreadyClaimedName } = req.query;
   if (typeof alreadyClaimedName !== 'string') {
     res.status(400).json({ error: 'name must be a string' });
@@ -55,12 +58,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         },
       },
       query: alreadyClaimedName,
+      orComponentId: ownershipRegistryComponentId,
     });
     res.status(200).json({ suggestion: JSON.parse(suggestion.response) as string[] });
   } catch (e) {
-    console.error(e);
     if (e instanceof Error) {
-      res.status(500).json({ error: `failed to generate suggestions ${e.message}` });
+      logger.error('error generating sugestions', e);
+      res.status(500).json({ error: `failed to generate suggestions` });
     }
   }
 }
+
+export default withTimeout(handler);

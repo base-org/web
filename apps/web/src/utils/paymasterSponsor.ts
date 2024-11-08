@@ -19,6 +19,7 @@ import {
   magicSpendAddress,
 } from '../constants';
 import { REGISTER_CONTRACT_ADDRESSES } from 'apps/web/src/utils/usernames';
+import { logger } from 'apps/web/src/utils/logger';
 
 const baseSepoliaClient = createPublicClient({
   chain: baseSepolia,
@@ -115,7 +116,7 @@ export async function willSponsor({
     }
     return true;
   } catch (e) {
-    console.error(`willSponsor check failed: ${e}`);
+    logger.error(`willSponsor check failed:`, e);
     return false;
   }
 }

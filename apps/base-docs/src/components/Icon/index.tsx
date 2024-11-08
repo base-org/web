@@ -325,16 +325,16 @@ export default function Icon({ name, width = '24', height = '24', color }: IconP
           fillRule="evenodd"
           clipRule="evenodd"
           d="M2.82845 0.272185L25.4559 22.8996L22.6274 25.728L2.28882e-05 3.10061L2.82845 0.272185Z"
-          fill="black"
+          fill={color}
         />
         <path
           fillRule="evenodd"
           clipRule="evenodd"
           d="M22.6274 0.272185L3.33786e-06 22.8996L2.82843 25.728L25.4558 3.10061L22.6274 0.272185Z"
-          fill="black"
+          fill={color}
         />
       </svg>
-    )
+    );
   }
   return null;
 }

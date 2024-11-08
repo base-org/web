@@ -12,26 +12,28 @@ import {
 import Link from 'next/link';
 
 export default function UsernameProfileCard() {
-  const { profileUsername, profileAddress } = useUsernameProfile();
+  const { profileUsername } = useUsernameProfile();
 
   const { existingTextRecords } = useReadBaseEnsTextRecords({
-    address: profileAddress,
     username: profileUsername,
   });
 
   const textRecordDescription = existingTextRecords[UsernameTextRecordKeys.Description];
+  const textRecordLocation = existingTextRecords[UsernameTextRecordKeys.Location];
 
-  const textRecordsSocial: UsernameTextRecords = textRecordsSocialFieldsEnabled.reduce(
+  const textRecordsSocial = textRecordsSocialFieldsEnabled.reduce(
     (previousValue, textRecordKey) => {
       previousValue[textRecordKey] = existingTextRecords[textRecordKey];
       return previousValue;
     },
-    {},
+    {} as UsernameTextRecords,
   );
+
+  const hasTextRecordsSocials = Object.values(textRecordsSocial).filter((v) => !!v).length > 0;
 
   // TODO: Empty state / CTA to edit if owner
   const hasTextRecordsToDisplay =
-    !!textRecordDescription || Object.values(textRecordsSocial).filter((v) => !!v).length > 0;
+    !!textRecordDescription || !!textRecordLocation || hasTextRecordsSocials;
 
   if (!hasTextRecordsToDisplay) {
     return;
@@ -47,32 +49,45 @@ export default function UsernameProfileCard() {
         <p className="break-words font-bold text-illoblack">{textRecordDescription}</p>
       )}
 
-      <ul className="flex flex-col gap-2">
-        {textRecordsSocialFieldsEnabled.map(
-          (textRecordKey) =>
-            !!existingTextRecords[textRecordKey] && (
-              <li key={textRecordKey}>
-                <Link
-                  href={formatSocialFieldUrl(textRecordKey, existingTextRecords[textRecordKey])}
-                  target="_blank"
-                  className="flex items-center gap-2 text-palette-foregroundMuted hover:text-blue-500"
-                >
-                  <span>
-                    <Icon
-                      name={textRecordsSocialFieldsEnabledIcons[textRecordKey]}
-                      height="1rem"
-                      width="1rem"
-                      color="currentColor"
-                    />
-                  </span>
-                  <span className="overflow-hidden text-ellipsis">
-                    {formatSocialFieldForDisplay(textRecordKey, existingTextRecords[textRecordKey])}
-                  </span>
-                </Link>
-              </li>
-            ),
-        )}
-      </ul>
+      {!!textRecordLocation && (
+        <p className="flex items-center gap-2 text-palette-foregroundMuted ">
+          <span>
+            <Icon name="map" height="1rem" width="1rem" color="currentColor" />
+          </span>
+          <span className="overflow-hidden text-ellipsis">{textRecordLocation}</span>
+        </p>
+      )}
+      {hasTextRecordsSocials && (
+        <ul className="flex flex-col gap-2">
+          {textRecordsSocialFieldsEnabled.map(
+            (textRecordKey) =>
+              !!existingTextRecords[textRecordKey] && (
+                <li key={textRecordKey}>
+                  <Link
+                    href={formatSocialFieldUrl(textRecordKey, existingTextRecords[textRecordKey])}
+                    target="_blank"
+                    className="flex items-center gap-2 text-palette-foregroundMuted hover:text-blue-500"
+                  >
+                    <span>
+                      <Icon
+                        name={textRecordsSocialFieldsEnabledIcons[textRecordKey]}
+                        height="1rem"
+                        width="1rem"
+                        color="currentColor"
+                      />
+                    </span>
+                    <span className="overflow-hidden text-ellipsis">
+                      {formatSocialFieldForDisplay(
+                        textRecordKey,
+                        existingTextRecords[textRecordKey],
+                      )}
+                    </span>
+                  </Link>
+                </li>
+              ),
+          )}
+        </ul>
+      )}
     </div>
   );
 }

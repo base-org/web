@@ -1,43 +1,49 @@
+'use client';
 import ErrorImg from 'apps/web/public/images/error.png';
-import { Button } from '../Button/Button';
-import { Card } from './Card';
-import { EcosystemApp } from 'apps/web/app/(base-org)/ecosystem/page';
-import Link from 'next/link';
-import { Url } from 'next/dist/shared/lib/router/router';
+import EcosystemCard from './Card';
+import { EcosystemApp } from 'apps/web/src/components/Ecosystem/Content';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
+import { Dispatch, SetStateAction, useCallback } from 'react';
+import Button from 'apps/web/src/components/base-org/Button';
+import { ButtonSizes, ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 
-export async function List({
-  selectedTag,
+export function List({
+  selectedTags,
   searchText,
   apps,
   showCount,
+  setShowCount,
 }: {
-  selectedTag: string;
+  selectedTags: string[];
   searchText: string;
   apps: EcosystemApp[];
   showCount: number;
+  setShowCount: Dispatch<SetStateAction<number>>;
 }) {
   const canShowMore = showCount < apps.length;
   const showEmptyState = apps.length === 0;
   const truncatedApps = apps.slice(0, showCount);
-  // eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
-  const tagHref: Url = {
-    pathname: '/ecosystem',
-    query: { tag: selectedTag, search: searchText, showCount: showCount + 16 },
-  };
+
+  const onClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      setShowCount(showCount + 16);
+    },
+    [setShowCount, showCount],
+  );
 
   return (
     <>
-      <div className="flex flex-col gap-10 lg:grid lg:grid-cols-4">
+      <div className="flex flex-col gap-4 lg:grid lg:grid-cols-4">
         {truncatedApps.map((app) => (
-          <Card {...app} key={app.url} />
+          <EcosystemCard {...app} key={app.url} />
         ))}
       </div>
       {showEmptyState && (
         <div className="flex flex-col items-center gap-12">
           <ImageAdaptive src={ErrorImg} alt="No search results" />
           <span className="font-mono text-4xl text-white">
-            NO RESULTS FOR &ldquo;{searchText === '' ? selectedTag : searchText}
+            NO RESULTS FOR &ldquo;{searchText === '' ? selectedTags.join(', ') : searchText}
             &rdquo;
           </span>
           <span className="font-sans text-gray-muted">Try searching for another term</span>
@@ -45,9 +51,9 @@ export async function List({
       )}
       {canShowMore && (
         <div className="mt-12 flex justify-center">
-          <Link href={tagHref} scroll={false}>
-            <Button>VIEW MORE</Button>
-          </Link>
+          <Button size={ButtonSizes.Large} variant={ButtonVariants.Secondary} onClick={onClick}>
+            View more
+          </Button>
         </div>
       )}
     </>

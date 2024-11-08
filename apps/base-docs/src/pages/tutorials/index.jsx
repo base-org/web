@@ -20,6 +20,9 @@ const TagList = [
   'vrf',
   'frames',
   'frontend',
+  'OnchainKit',
+  'Smart Wallet',
+  'Paymaster',
 ];
 
 function useQuery() {
@@ -46,21 +49,21 @@ function TagChip({ tag, isSelected, setSelectedTag }) {
 
 const handleContainerClick = (event, tutorial, history) => {
   if (event.target.closest('a')) return;
-  history.push(`/tutorials${tutorial.slug}`)
-}
+  history.push(`/tutorials${tutorial.slug}`);
+};
 
 const handleClick = (event) => {
   event.stopPropagation();
 };
 
 function TutorialListCell({ tutorial }) {
-  const history = useHistory()
+  const history = useHistory();
   const authorData = authors[tutorial.author];
   return (
     // <Link to={`/tutorials${tutorial.slug}`}>
     <div
       onClick={(event) => {
-        handleContainerClick(event, tutorial, history)
+        handleContainerClick(event, tutorial, history);
       }}
       role="button"
       tabIndex={0}
@@ -86,8 +89,11 @@ function TutorialListCell({ tutorial }) {
           </div>
         )}
         <div className={clsx(styles.tutorialListCellInfo)}>
-          {tutorial.tags &&
-            tutorial.tags.map((tag) => <p key={tag} className={clsx(styles.tutorialListTag)}>{tag}</p>)}
+          {tutorial.tags?.map((tag) => (
+            <p key={tag} className={clsx(styles.tutorialListTag)}>
+              {tag}
+            </p>
+          ))}
         </div>
       </div>
     </div>

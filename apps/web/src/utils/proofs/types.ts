@@ -21,6 +21,7 @@ export enum DiscountType {
   CB = 'CB',
   CB1 = 'CB1',
   CB_ID = 'CB_ID',
+  DISCOUNT_CODE = 'DISCOUNT_CODE',
 }
 
 export type DiscountValue = {
@@ -35,3 +36,21 @@ export type DiscountTypes = {
 export type PreviousClaims = {
   [key in DiscountType]?: PreviousClaim;
 };
+
+export type MerkleTreeProofResponse = {
+  discountValidatorAddress: Address;
+  address: Address;
+  namespace: string;
+  proofs: `0x${string}`[];
+};
+
+export class ProofsException extends Error {
+  public statusCode: number;
+
+  constructor(message: string, statusCode: number) {
+    super(message);
+    this.name = this.constructor.name; // Set the error name to the class name
+    this.statusCode = statusCode;
+    Error.captureStackTrace(this, this.constructor); // Capture the stack trace
+  }
+}

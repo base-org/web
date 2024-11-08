@@ -69,6 +69,11 @@ The Coinbase Developer Platform [Account Abstraction Kit](https://www.coinbase.c
 
 ---
 
+## thirdweb
+[thirdweb](https://portal.thirdweb.com/typescript/v5/account-abstraction/get-started) offers the complete toolkit to leverage account abstraction technology to enable seamless user experiences for your users. This includes Account Factory contracts that let your users spin up Smart Accounts, Bundler for UserOps support, and Paymaster to enable gas sponsorships.
+
+---
+
 ## WalletKit
 
 [WalletKit](https://walletkit.com) is an all-in-one platform for adding smart, gasless wallets to your app. It has integrated support for ERC 4337 and comes with a paymaster and bundler included, requiring no extra setup.

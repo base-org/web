@@ -130,7 +130,7 @@ To add the OpenZeppelin Contracts library to your project, run:
 forge install openzeppelin/openzeppelin-contracts
 ```
 
-In your project, delete the `src/Counter.sol` contract that was generated with the project and add the above code in a new file called `contracts/NFT.sol`. (You can also delete the `test/Counter.t.sol` and `script/Counter.s.sol` files, but you should add your own tests ASAP!).
+In your project, delete the `src/Counter.sol` contract that was generated with the project and add the above code in a new file called `src/NFT.sol`. (You can also delete the `test/Counter.t.sol` and `script/Counter.s.sol` files, but you should add your own tests ASAP!).
 
 To compile our basic NFT contract using Foundry, run:
 
