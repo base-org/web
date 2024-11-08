@@ -1,3 +1,6 @@
+import '@rainbow-me/rainbowkit/styles.css';
+import '@coinbase/onchainkit/styles.css';
+
 import { OnchainKitProvider } from '@coinbase/onchainkit';
 import { connectorsForWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
