@@ -5,13 +5,14 @@ import Link from 'next/link';
 import logo from './assets/logo.svg';
 import Image, { StaticImageData } from 'next/image';
 import {
-  ConnectWalletButton,
+  WrappedConnectWalletButton,
   ConnectWalletButtonVariants,
 } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 import MenuDesktop from 'apps/web/src/components/base-org/shared/TopNavigation/MenuDesktop';
 import MenuMobile from 'apps/web/src/components/base-org/shared/TopNavigation/MenuMobile';
-import GasPriceDropdown from 'apps/web/src/components/base-org/shared/TopNavigation/GasPriceDropdown';
+import { WrappedGasPriceDropdown } from 'apps/web/src/components/base-org/shared/TopNavigation/GasPriceDropdown';
 import { Suspense } from 'react';
+import { usePathname } from 'next/navigation';
 
 export type SubItem = {
   name: string;
@@ -92,6 +93,13 @@ const links: TopNavigationLink[] = [
 ];
 
 export default function TopNavigation() {
+  const pathname = usePathname();
+  const showGasDropdownAndConnectWallet = ![
+    '/jobs',
+    '/about',
+    '/ecosystem',
+    '/getstarted',
+  ].includes(pathname ?? '');
   return (
     <AnalyticsProvider context="navbar">
       <nav className="fixed top-0 z-50 w-full shrink-0 px-[1rem] py-4 md:px-[1.5rem] lg:px-[2rem]">
@@ -101,7 +109,7 @@ export default function TopNavigation() {
             <Link href="/" className="flex min-h-[3rem] min-w-[3rem]">
               <Image src={logo as StaticImageData} alt="Base Logo" />
             </Link>
-            <GasPriceDropdown />
+            {showGasDropdownAndConnectWallet && <WrappedGasPriceDropdown />}
           </div>
 
           <div className="hidden md:inline-block">
@@ -114,11 +122,13 @@ export default function TopNavigation() {
 
           {/* Connect Wallet button */}
           <div className="flex items-end justify-end md:min-w-[16rem]">
-            <Suspense>
-              <ConnectWalletButton
-                connectWalletButtonVariant={ConnectWalletButtonVariants.BaseOrg}
-              />
-            </Suspense>
+            {showGasDropdownAndConnectWallet && (
+              <Suspense>
+                <WrappedConnectWalletButton
+                  connectWalletButtonVariant={ConnectWalletButtonVariants.BaseOrg}
+                />
+              </Suspense>
+            )}
           </div>
         </div>
       </nav>
