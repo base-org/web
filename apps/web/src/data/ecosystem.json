@@ -4214,5 +4214,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "DipDup",
+    "tags": [
+      "infra"
+    ],
+    "description": "DipDup is a Python framework for building smart contract indexers. It helps developers focus on business logic instead of writing a boilerplate to store and serve data. DipDup-based indexers are selective, which means only required data is requested. This approach allows to achieve faster indexing times and decreased load on underlying APIs.",
+    "url": "https://github.com/base-org/web/blob/master/apps/base-docs/docs/tools/data-indexers.md",
+    "imageUrl": "/images/partners/dipdup.png"
   }
 ]
