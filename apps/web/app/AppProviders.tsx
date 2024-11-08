@@ -136,13 +136,13 @@ export default function AppProviders({ children }: AppProvidersProps) {
         config={cookieManagerConfig}
       >
         <ClientAnalyticsScript />
-        <WagmiProvider config={config}>
+        {/* <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
             <OnchainKitProvider
               chain={isDevelopment ? baseSepolia : base}
               apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
             >
-              <RainbowKitProvider modalSize="compact">
+              <RainbowKitProvider modalSize="compact"> */}
                 <TooltipProvider>
                   <ExperimentsProvider>
                     <>
@@ -151,10 +151,10 @@ export default function AppProviders({ children }: AppProvidersProps) {
                     </>
                   </ExperimentsProvider>
                 </TooltipProvider>
-              </RainbowKitProvider>
+              {/* </RainbowKitProvider>
             </OnchainKitProvider>
           </QueryClientProvider>
-        </WagmiProvider>
+        </WagmiProvider> */}
       </CookieManagerProvider>
     </ErrorsProvider>
   );
