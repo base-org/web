@@ -16,11 +16,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # - name: Setup environment
-      #   run: |
-      #     apt-get update
-      #     apt-get install -y git bc
-
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -85,20 +80,7 @@ jobs:
             const largeFiles = `${{ steps.check-sizes.outputs.large_files }}`;
 
             try {
-              // Only create status check if we have permission (not a fork PR)
-              if (context.payload.pull_request.head.repo.full_name === context.payload.repository.full_name) {
-                await github.rest.repos.createCommitStatus({
-                  owner: context.payload.repository.owner.login,
-                  repo: context.payload.repository.name,
-                  sha: context.payload.pull_request.head.sha,
-                  state: hugeFiles ? 'failure' : 'success',
-                  context: 'File Size Check',
-                  description: hugeFiles ? 'Files over 40MB found' : 'All files within size limits',
-                  target_url: `https://github.com/${context.payload.repository.owner.login}/${context.payload.repository.name}/actions/runs/${context.runId}`
-                });
-              }
-
-              // Comments should work for both fork and non-fork PRs
+              // Only comment if issues were found
               if (hugeFiles || largeFiles) {
                 let comment = '## ⚠️ File Size Check Results\n\n';
 
@@ -121,11 +103,5 @@ jobs:
               }
             } catch (error) {
               console.error('Error:', error);
-              console.error('Context:', JSON.stringify(context.payload, null, 2));
-              // Only ignore status check permission errors for fork PRs
-              if (error.status === 403 && context.payload.pull_request.head.repo.full_name !== context.payload.repository.full_name) {
-                console.log('Ignoring status check permission error for fork PR');
-              } else {
-                core.setFailed(error.message);
-              }
+              core.setFailed(error.message);
             }
