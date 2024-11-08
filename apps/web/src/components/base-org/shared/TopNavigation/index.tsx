@@ -94,11 +94,12 @@ const links: TopNavigationLink[] = [
 
 export default function TopNavigation() {
   const pathname = usePathname();
-  const showGasDropdownAndConnectWallet =
-    pathname !== '/jobs' &&
-    pathname !== '/about' &&
-    pathname !== '/ecosystem' &&
-    pathname !== '/getstarted';
+  const showGasDropdownAndConnectWallet = ![
+    '/jobs',
+    '/about',
+    '/ecosystem',
+    '/getstarted',
+  ].includes(pathname ?? '');
   return (
     <AnalyticsProvider context="navbar">
       <nav className="fixed top-0 z-50 w-full shrink-0 px-[1rem] py-4 md:px-[1.5rem] lg:px-[2rem]">
