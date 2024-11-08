@@ -398,6 +398,7 @@ export enum Discount {
   BASE_DOT_ETH_NFT = 'BASE_DOT_ETH_NFT',
   DISCOUNT_CODE = 'DISCOUNT_CODE',
   TALENT_PROTOCOL = 'TALENT_PROTOCOL',
+  BASE_WORLD = 'BASE_WORLD',
 }
 
 export function isValidDiscount(key: string): key is keyof typeof Discount {

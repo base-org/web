@@ -4,7 +4,7 @@ description: Verify your contract and interact with it.
 hide_table_of_contents: false
 ---
 
-Once your contract is deployed, you can verify it using a number of popular services. Doing so will let you users have confidence that your contract does what you claim, and will allow you to interact with it using a similar interface to what you used in Remix.
+Once your contract is deployed, you can verify it using a number of popular services. Doing so will let your users have confidence that your contract does what you claim, and will allow you to interact with it using a similar interface to what you used in Remix.
 
 ---
 

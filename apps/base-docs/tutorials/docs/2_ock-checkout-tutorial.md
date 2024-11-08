@@ -1,6 +1,6 @@
 ---
 title: 'Build a eCommerce App using Coinbase Commerce and OnchainKit'
-slug: /coinbase-commerce-payment-integration
+slug: /coinbase-commerce-onchainkit-checkout
 description: Learn how to integrate Coinbase Commerce payments into your application using OnchainKit.
 author: hughescoin
 keywords: [
@@ -56,7 +56,7 @@ Here, you'll need to add a detailed description of the product or service you're
 
 ![pay-commerce-uuid](../../assets/images/onchainkit-tutorials/pay-create-product-details.png)
 
-Once your product is created you will be presented with a small popup that contains a link to your products hosted page. Click on the `View product` button. This will take you to a page with more details about your newly created product. Pay close attention to the URL of this page, as it contains a crucial piece of information: the product's UUID. You'll need to copy this UUID from the URL.
+After creating your product, click `View product` in the popup to access the product page and copy the UUID from its URL.
 
 ![pay-commerce-uuid](../../assets/images/onchainkit-tutorials/pay-copy-product-link.png)
 
@@ -142,12 +142,12 @@ export const NEXT_PUBLIC_WC_PROJECT_ID = process.env.NEXT_PUBLIC_WC_PROJECT_ID;
 
 ## Implementing the Payment Component
 
-To implement the payment component, start by opening the `src/app/page.tsx` file. You'll need to add some new imports at the top of the file: import the `Pay`, `PayButton`, and `PayStatus` components from '@coinbase/onchainkit', as well as the `Image` component from 'next/image'.
+To implement the payment component, start by opening the `src/app/page.tsx` file. You'll need to add some new imports at the top of the file: import the `Checkout`, `CheckoutButton`, `CheckoutStatus` components from '@coinbase/onchainkit', as well as the `Image` component from 'next/image'.
 
 Next, create a constant for your product ID using the environment variable you set up earlier. This will allow you to easily reference your product in the payment component.
 
 ```typescript
-import { Pay, PayButton, PayStatus } from '@coinbase/onchainkit';
+import { Checkout, CheckoutButton, CheckoutStatus } from '@coinbase/onchainkit/checkout';
 import Image from 'next/image';
 
 const productId = process.env.NEXT_PUBLIC_PRODUCT_ID;
@@ -168,7 +168,7 @@ For visual appeal, add an image of your product to the `/public` folder. This im
 When setting up the payment component, it's important to implement conditional rendering. This ensures that the payment button only appears once the user's wallet is connected. This approach provides a smoother user experience and prevents potential errors from attempting to initiate a payment before a wallet is available.
 :::
 
-Finally, configure the Pay component within your JSX. Wrap the `PayButton` and `PayStatus` components inside the `Pay` component, passing your `productId` as a prop to the `Pay` component. Set the `coinbaseBranded` prop on the `PayButton` to true for consistent branding. This setup creates a complete payment flow, allowing users to initiate a payment and view its status all within your application.
+Finally, configure the Checkout component within your JSX. Wrap the `CheckoutButton` and `CheckoutStatus` components inside the `Checkout` component, passing your `productId` as a prop to the `Checkout` component. Set the `coinbaseBranded` prop on the `CheckoutButton` to true for consistent branding. This setup creates a complete payment flow, allowing users to initiate a payment and view its status all within your application.
 
 ```jsx
 <section className="templateSection flex w-full flex-col items-center justify-center gap-4 rounded-xl bg-gray-100 px-2 py-4 md:grow">
@@ -181,10 +181,10 @@ Finally, configure the Pay component within your JSX. Wrap the `PayButton` and `
     {' '}
     {/* Added spacing */}
     {address ? (
-      <Pay productId={productId}>
-        <PayButton coinbaseBranded={true} />
-        <PayStatus />
-      </Pay>
+      <Checkout productId={productId}>
+        <CheckoutButton coinbaseBranded={true} />
+        <CheckoutStatus />
+      </Checkout>
     ) : (
       <WalletWrapper className="w-[450px] max-w-full" text="Sign in to transact" />
     )}
@@ -200,7 +200,7 @@ You may now test your implementation locally by running `bun run dev`
 
 Congratulations! You've successfully integrated Coinbase Commerce payments into your application using OnchainKit. This is a significant achievement that opens up new possibilities for your business.
 
-As next steps, consider expanding your product catalog by adding more items to your site. Each new product can be seamlessly integrated using the same Pay component, allowing you to create a diverse and engaging e-commerce experience. Once you're satisfied with your application, you can easily deploy it using a service like Vercel, making your creation accessible to users worldwide. Keep exploring and building – the potential for your onchain commerce application is limitless!
+As next steps, consider expanding your product catalog by adding more items to your site. Each new product can be seamlessly integrated using the same Checkout component, allowing you to create a diverse and engaging e-commerce experience. Once you're satisfied with your application, you can easily deploy it using a service like Vercel, making your creation accessible to users worldwide. Keep exploring and building – the potential for your onchain commerce application is limitless!
 
 ---
 

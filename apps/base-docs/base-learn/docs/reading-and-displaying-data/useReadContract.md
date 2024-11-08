@@ -58,19 +58,19 @@ Add the following two issues:
 
 ```text
 _issueDesc: We should enable light mode by default.
-_quorom: 2
+_quorum: 2
 ```
 
 ```text
 _issueDesc: We should make inverted mouse controls the default selection.
-_quorom: 2
+_quorum: 2
 ```
 
 Switch to a **different wallet address**. Claim your tokens with the new address, and add one more issue:
 
 ```text
 _issueDesc: Two spaces, not four, not tabs!
-_quorom: 2
+_quorum: 2
 ```
 
 Call the `getAllIssues` function under the `Read Contract` tab to make sure all three are there.

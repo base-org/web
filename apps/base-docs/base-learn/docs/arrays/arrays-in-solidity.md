@@ -69,7 +69,7 @@ contract StorageArray {
 
 You cannot use a `storage` array as a function parameter, and you cannot write a function that `return`s a `storage` array.
 
-Storage arrays are dynamic, unless they are declared with an explicit size. However, their functionality is limited compared to other languages. The `.push(value)` function works as expected. the `.pop()` function removes the last value of an array, but it **does not** return that value. You also **may not** use `.pop()` with an index to remove an element from the middle of an array, or to remove more than one element.
+Storage arrays are dynamic, unless they are declared with an explicit size. However, their functionality is limited compared to other languages. The `.push(value)` function works as expected. The `.pop()` function removes the last value of an array, but it **does not** return that value. You also **may not** use `.pop()` with an index to remove an element from the middle of an array, or to remove more than one element.
 
 You can use the `delete` keyword with an array. Doing so on an entire array will reset the array to zero length. Calling it on an element within the array will reset that value to its default. It **will not** resize the array!
 

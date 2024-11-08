@@ -12,8 +12,8 @@ The ERC-20 is a standard that allows for the development of fungible tokens and 
 
 By the end of this lesson you should be able to:
 
-- Describe OpenZepplin
-- Import the OpenZepplin ERC-20 implementation
+- Describe OpenZeppelin
+- Import the OpenZeppelin ERC-20 implementation
 - Describe the difference between the ERC-20 standard and OpenZeppelin's ERC20.sol
 - Build and deploy an ERC-20 compliant token
 

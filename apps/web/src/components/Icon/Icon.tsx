@@ -538,6 +538,59 @@ const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
       />
     </svg>
   ),
+  list: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M16 0.75H5.5V3.25H16V0.75Z" fill={color} />
+      <path
+        d="M2 4C3.10457 4 4 3.10457 4 2C4 0.89543 3.10457 0 2 0C0.89543 0 0 0.89543 0 2C0 3.10457 0.89543 4 2 4Z"
+        fill={color}
+      />
+      <path
+        d="M2 10C3.10457 10 4 9.10457 4 8C4 6.89543 3.10457 6 2 6C0.89543 6 0 6.89543 0 8C0 9.10457 0.89543 10 2 10Z"
+        fill={color}
+      />
+      <path
+        d="M2 16C3.10457 16 4 15.1046 4 14C4 12.8954 3.10457 12 2 12C0.89543 12 0 12.8954 0 14C0 15.1046 0.89543 16 2 16Z"
+        fill={color}
+      />
+      <path d="M16 6.75H5.5V9.25H16V6.75Z" fill={color} />
+      <path d="M16 12.75H5.5V15.25H16V12.75Z" fill={color} />
+    </svg>
+  ),
+  verticalDots: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"
+        fill={color}
+      />
+    </svg>
+  ),
+  transfer: ({ color, width, height }: SvgProps) => (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 16 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.43483 1.93433L5.5662 3.0657L3.93188 4.70001H10.2505V6.30001H3.93188L5.5662 7.93433L4.43483 9.0657L0.869141 5.50001L4.43483 1.93433ZM11.5662 7.93433L15.1319 11.5L11.5662 15.0657L10.4348 13.9343L12.0691 12.3H5.75051V10.7H12.0691L10.4348 9.0657L11.5662 7.93433Z"
+        fill={color}
+      />
+    </svg>
+  ),
 };
 
 export function Icon({ name, color = 'white', width = '24', height = '24' }: IconProps) {

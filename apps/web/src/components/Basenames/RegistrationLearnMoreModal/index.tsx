@@ -13,12 +13,89 @@ import BaseNFT from './images/base-nft.svg';
 import TalentProtocolIcon from './images/TalentProtocol.svg';
 import coinbaseOneVerification from './images/coinbase-one-verification.svg';
 import coinbaseVerification from './images/coinbase-verification.svg';
+import BaseWorldNFT from './images/base-around-the-world-nft.svg';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 
 function InfoIcon() {
   return <InformationCircleIcon width={12} height={12} className="fill-gray-40" />;
 }
+
+type DiscountItem = {
+  discount: Discount;
+  icon: StaticImageData;
+  alt: string;
+  label: string;
+  tooltipContent: string;
+};
+
+const DISCOUNT_ITEMS: DiscountItem[] = [
+  {
+    discount: Discount.COINBASE_VERIFIED_ACCOUNT,
+    icon: coinbaseVerification as StaticImageData,
+    alt: 'icon of coinbase',
+    label: 'Coinbase verification',
+    tooltipContent: 'Verifies you have a valid trading account on Coinbase',
+  },
+  {
+    discount: Discount.CB1,
+    icon: coinbaseOneVerification as StaticImageData,
+    alt: 'icon of coinbase one',
+    label: 'Coinbase One verification',
+    tooltipContent: 'Verifies you have an active Coinbase One subscription',
+  },
+  {
+    discount: Discount.CBID,
+    icon: cbidVerification as StaticImageData,
+    alt: 'icon of CBID',
+    label: 'A cb.id username',
+    tooltipContent: 'cb.id must have been claimed prior to August 9, 2024.',
+  },
+  {
+    discount: Discount.BASE_BUILDATHON_PARTICIPANT,
+    icon: baseBuildathonParticipant as StaticImageData,
+    alt: 'icon of base buildathon',
+    label: 'Base buildathon participant',
+    tooltipContent: 'Available for anyone holding a Base Buildathon participant NFT.',
+  },
+  {
+    discount: Discount.TALENT_PROTOCOL,
+    icon: TalentProtocolIcon as StaticImageData,
+    alt: 'icon of talent protocol',
+    label: 'Builder score 50+',
+    tooltipContent:
+      'Available for anyone with an onchain builder score 50+. Go to passport.talentprotocol.com to mint yours.',
+  },
+  {
+    discount: Discount.SUMMER_PASS_LVL_3,
+    icon: summerPassLvl3 as StaticImageData,
+    alt: 'icon of summer pass',
+    label: 'Summer Pass Level 3',
+    tooltipContent:
+      'Available for anyone holding a Summer Pass Level 3 NFT. Go to wallet.coinbase.com/ocs to get your Summer Pass',
+  },
+  {
+    discount: Discount.BNS_NAME,
+    icon: BNSOwnership,
+    alt: 'icon of BNS',
+    label: 'BNS username',
+    tooltipContent: 'BNS (.base) username holders are eligible for a 0.01 ETH discount',
+  },
+  {
+    discount: Discount.BASE_DOT_ETH_NFT,
+    icon: BaseNFT as StaticImageData,
+    alt: 'icon of Base',
+    label: 'Base.eth NFT',
+    tooltipContent: 'Available for anyone holding a base.eth NFT',
+  },
+  {
+    discount: Discount.BASE_WORLD,
+    icon: BaseWorldNFT as StaticImageData,
+    alt: 'icon of Base World',
+    label: 'Base around the world NFT',
+    tooltipContent: 'Available for anyone holding one of the Base around the world NFTs',
+  },
+];
 
 export default function RegistrationLearnMoreModal({
   isOpen,
@@ -31,30 +108,6 @@ export default function RegistrationLearnMoreModal({
 
   const hasDiscount = allActiveDiscounts.size > 0;
   const rowClasses = 'flex flex-row items-center justify-start';
-  const CBRowClasses = classNames(rowClasses, {
-    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.COINBASE_VERIFIED_ACCOUNT),
-  });
-  const CB1RowClasses = classNames(rowClasses, {
-    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.CB1),
-  });
-  const CBIDRowClasses = classNames(rowClasses, {
-    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.CBID),
-  });
-  const BuildathonRowClasses = classNames(rowClasses, {
-    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.BASE_BUILDATHON_PARTICIPANT),
-  });
-  const SummerPassRowClasses = classNames(rowClasses, {
-    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.SUMMER_PASS_LVL_3),
-  });
-  const BNSRowClasses = classNames(rowClasses, {
-    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.BNS_NAME),
-  });
-  const BaseDotEthNFTRowClasses = classNames(rowClasses, {
-    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.BASE_DOT_ETH_NFT),
-  });
-  const TalentProtocolRowClasses = classNames(rowClasses, {
-    'opacity-40': hasDiscount && !allActiveDiscounts.has(Discount.TALENT_PROTOCOL),
-  });
 
   const qualifiedClasses = classNames(
     'flex flex-row items-center justify-center py-3 px-1 h-5 text-xs bg-green-0 rounded ml-3',
@@ -71,174 +124,37 @@ export default function RegistrationLearnMoreModal({
             : "You'll receive a name for free (5+ characters for 1 year) if your wallet has any of the following:"}
         </p>
         <ul className="mb-3 flex flex-col gap-3 self-start">
-          <li className="flex items-center gap-3">
-            <Tooltip content="Verifies you have a valid trading account on Coinbase">
-              <div className="flex flex-row items-center justify-start gap-2">
-                <ImageWithLoading
-                  src={coinbaseVerification as StaticImageData}
-                  alt="icon of coinbase"
-                  width={30}
-                  height={30}
-                  wrapperClassName="rounded-full"
-                  imageClassName={CBRowClasses}
-                />
-                <p className={classNames(CBRowClasses)}>Coinbase verification</p>
-                <InfoIcon />
-              </div>
-            </Tooltip>
-            {allActiveDiscounts.has(Discount.COINBASE_VERIFIED_ACCOUNT) && (
-              <div className={qualifiedClasses}>
-                <p className="text-green-60">Qualified</p>
-              </div>
-            )}
-          </li>
-          <li className="flex items-center gap-3">
-            <Tooltip content="Verifies you have an active Coinbase One subscription">
-              <div className="flex flex-row items-center justify-start gap-2">
-                <ImageWithLoading
-                  src={coinbaseOneVerification as StaticImageData}
-                  alt="icon of coinbase one"
-                  width={30}
-                  height={30}
-                  wrapperClassName="rounded-full"
-                  imageClassName={CB1RowClasses}
-                />
-                <p className={CB1RowClasses}>Coinbase One verification</p>
-                <InfoIcon />
-              </div>
-            </Tooltip>
-            {allActiveDiscounts.has(Discount.CB1) && (
-              <div className={qualifiedClasses}>
-                <p className="text-green-60">Qualified</p>
-              </div>
-            )}
-          </li>
-          <li className="flex items-center gap-3">
-            <Tooltip content="cb.id must have been claimed prior to August 9, 2024.">
-              <div className="flex flex-row items-center justify-start gap-2">
-                <ImageWithLoading
-                  src={cbidVerification as StaticImageData}
-                  alt="icon of CBID"
-                  width={30}
-                  height={30}
-                  wrapperClassName="rounded-full"
-                  imageClassName={CBIDRowClasses}
-                />
-                <p className={CBIDRowClasses}>A cb.id username</p>
-                <InfoIcon />
-              </div>
-            </Tooltip>
-            {allActiveDiscounts.has(Discount.CBID) && (
-              <div className={qualifiedClasses}>
-                <p className="text-green-60">Qualified</p>
-              </div>
-            )}
-          </li>
-          <li className="flex items-center gap-3">
-            <Tooltip content="Available for anyone holding a Base Buildathon participant NFT.">
-              <div className="flex flex-row items-center justify-start gap-2">
-                <ImageWithLoading
-                  src={baseBuildathonParticipant as StaticImageData}
-                  alt="icon of base buildathon"
-                  width={30}
-                  height={30}
-                  wrapperClassName="rounded-full"
-                  imageClassName={BuildathonRowClasses}
-                />
-                <p className={BuildathonRowClasses}>Base buildathon participant</p>
-                <InfoIcon />
-              </div>
-            </Tooltip>
-            {allActiveDiscounts.has(Discount.BASE_BUILDATHON_PARTICIPANT) && (
-              <div className={qualifiedClasses}>
-                <p className="text-green-60">Qualified</p>
-              </div>
-            )}
-          </li>
-          <li className="flex items-center gap-3">
-            <Tooltip content="Available for anyone with an onchain builder score 50+. Go to passport.talentprotocol.com to mint yours.">
-              <div className="flex flex-row items-center justify-start gap-2">
-                <ImageWithLoading
-                  src={TalentProtocolIcon as StaticImageData}
-                  alt="icon of talent protocol"
-                  width={30}
-                  height={30}
-                  wrapperClassName="rounded-full"
-                  imageClassName={TalentProtocolRowClasses}
-                />
-                <p className={TalentProtocolRowClasses}>Builder score 50+</p>
-                <InfoIcon />
-              </div>
-            </Tooltip>
-            {allActiveDiscounts.has(Discount.TALENT_PROTOCOL) && (
-              <div className={qualifiedClasses}>
-                <p className="text-green-60">Qualified</p>
-              </div>
-            )}
-          </li>
-          <li className="flex items-center gap-3">
-            <Tooltip content="Available for anyone holding a Summer Pass Level 3 NFT. Go to wallet.coinbase.com/ocs to get your Summer Pass">
-              <div className="flex flex-row items-center justify-start gap-2">
-                <ImageWithLoading
-                  src={summerPassLvl3 as StaticImageData}
-                  alt="icon of summer pass"
-                  width={30}
-                  height={30}
-                  wrapperClassName="rounded-full"
-                  imageClassName={SummerPassRowClasses}
-                />
-                <p className={SummerPassRowClasses}>Summer Pass Level 3</p>
-                <InfoIcon />
-              </div>
-            </Tooltip>
-            {allActiveDiscounts.has(Discount.SUMMER_PASS_LVL_3) && (
-              <div className={qualifiedClasses}>
-                <p className="text-green-60">Qualified</p>
-              </div>
-            )}
-          </li>
-          <li className="flex items-center gap-3">
-            <Tooltip content="BNS (.base) username holders are eligible for a 0.01 ETH discount">
-              <div className="flex flex-row items-center justify-start gap-2">
-                <ImageWithLoading
-                  src={BNSOwnership}
-                  alt="icon of BNS"
-                  width={30}
-                  height={30}
-                  wrapperClassName="rounded-full"
-                  imageClassName={BNSRowClasses}
-                />
-                <p className={BNSRowClasses}>BNS username</p>
-                <InfoIcon />
-              </div>
-            </Tooltip>
-            {allActiveDiscounts.has(Discount.BNS_NAME) && (
-              <div className={qualifiedClasses}>
-                <p className="text-green-60">Qualified</p>
-              </div>
-            )}
-          </li>
-          <li className="flex items-center gap-3">
-            <Tooltip content="Available for anyone holding a base.eth NFT">
-              <div className="flex flex-row items-center justify-start gap-2">
-                <ImageWithLoading
-                  src={BaseNFT as StaticImageData}
-                  alt="icon of Base"
-                  width={30}
-                  height={30}
-                  wrapperClassName="rounded-full"
-                  imageClassName={BaseDotEthNFTRowClasses}
-                />
-                <p className={BaseDotEthNFTRowClasses}>Base.eth NFT</p>
-                <InfoIcon />
-              </div>
-            </Tooltip>
-            {allActiveDiscounts.has(Discount.BASE_DOT_ETH_NFT) && (
-              <div className={qualifiedClasses}>
-                <p className="text-green-60">Qualified</p>
-              </div>
-            )}
-          </li>
+          {DISCOUNT_ITEMS.map(({ discount, icon, alt, label, tooltipContent }) => (
+            <li key={discount} className="flex items-center gap-3">
+              <Tooltip content={tooltipContent}>
+                <div className="flex flex-row items-center justify-start gap-2">
+                  <ImageWithLoading
+                    src={icon}
+                    alt={alt}
+                    width={30}
+                    height={30}
+                    wrapperClassName="rounded-full"
+                    imageClassName={classNames(rowClasses, {
+                      'opacity-40': hasDiscount && !allActiveDiscounts.has(discount),
+                    })}
+                  />
+                  <p
+                    className={classNames(rowClasses, {
+                      'opacity-40': hasDiscount && !allActiveDiscounts.has(discount),
+                    })}
+                  >
+                    {label}
+                  </p>
+                  <InfoIcon />
+                </div>
+              </Tooltip>
+              {allActiveDiscounts.has(discount) && (
+                <div className={qualifiedClasses}>
+                  <p className="text-green-60">Qualified</p>
+                </div>
+              )}
+            </li>
+          ))}
         </ul>
         {!hasDiscount && (
           <>

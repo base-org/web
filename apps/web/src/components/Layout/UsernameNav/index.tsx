@@ -1,6 +1,6 @@
 'use client';
-import Link from 'next/link';
 import usernameBaseLogo from './usernameBaseLogo.svg';
+import Link from 'apps/web/src/components/Link';
 
 import {
   ConnectWalletButton,
@@ -42,7 +42,7 @@ export default function UsernameNav() {
     [switchChain],
   );
 
-  const walletStateClasses = classNames('p2 rounded', {
+  const walletStateClasses = classNames('p2 rounded flex items-center gap-6', {
     'bg-white': isConnected,
   });
 
@@ -111,6 +111,14 @@ export default function UsernameNav() {
           <ImageAdaptive src={usernameBaseLogo as StaticImageData} alt="Base" />
         </Link>
         <span className={walletStateClasses}>
+          {isConnected && (
+            <span className="text-md text-palette-primary">
+              <Link href="/manage-names" className="flex items-center gap-2">
+                <Icon name="list" color="currentColor" width="1rem" height="1rem" />
+                My Basenames
+              </Link>
+            </span>
+          )}
           <Suspense>
             <ConnectWalletButton
               connectWalletButtonVariant={ConnectWalletButtonVariants.Basename}
