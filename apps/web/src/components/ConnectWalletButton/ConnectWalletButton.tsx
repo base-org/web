@@ -48,7 +48,7 @@ export function WrappedConnectWalletButton({
   )
 }
 
-function ConnectWalletButton({
+export function ConnectWalletButton({
   connectWalletButtonVariant = ConnectWalletButtonVariants.BaseOrg,
 }: ConnectWalletButtonProps) {
   // Rainbow kit
