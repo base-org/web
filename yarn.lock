@@ -401,6 +401,7 @@ __metadata:
     classnames: ^2.5.1
     cloudinary: ^2.5.1
     csv-parser: ^3.0.0
+    date-fns: ^4.1.0
     dd-trace: ^5.21.0
     dotenv: ^16.0.3
     eslint-config-next: ^13.1.6
@@ -13295,6 +13296,13 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.21.0
   checksum: f7be01523282e9bb06c0cd2693d34f245247a29098527d4420628966a2d9aad154bd0e90a6b1cf66d37adcb769cd108cf8a7bd49d76db0fb119af5cdd13644f4
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "date-fns@npm:4.1.0"
+  checksum: fb681b242cccabed45494468f64282a7d375ea970e0adbcc5dcc92dcb7aba49b2081c2c9739d41bf71ce89ed68dd73bebfe06ca35129490704775d091895710b
   languageName: node
   linkType: hard
 
