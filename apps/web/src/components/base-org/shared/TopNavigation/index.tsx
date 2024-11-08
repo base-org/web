@@ -1,18 +1,19 @@
 'use client';
 
-import AnalyticsProvider from 'apps/web/contexts/Analytics';
-import Link from 'next/link';
-import logo from './assets/logo.svg';
+import { Suspense } from 'react';
 import Image, { StaticImageData } from 'next/image';
-import {
-  WrappedConnectWalletButton,
-  ConnectWalletButtonVariants,
-} from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+import AnalyticsProvider from 'apps/web/contexts/Analytics';
+import logo from 'apps/web/src/components/base-org/shared/TopNavigation/assets/logo.svg';
 import MenuDesktop from 'apps/web/src/components/base-org/shared/TopNavigation/MenuDesktop';
 import MenuMobile from 'apps/web/src/components/base-org/shared/TopNavigation/MenuMobile';
-import { WrappedGasPriceDropdown } from 'apps/web/src/components/base-org/shared/TopNavigation/GasPriceDropdown';
-import { Suspense } from 'react';
-import { usePathname } from 'next/navigation';
+import { DynamicWrappedGasPriceDropdown } from 'apps/web/src/components/base-org/shared/TopNavigation/GasPriceDropdown';
+import {
+  DynamicWrappedConnectWalletButton,
+  ConnectWalletButtonVariants,
+} from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 
 export type SubItem = {
   name: string;
@@ -109,7 +110,7 @@ export default function TopNavigation() {
             <Link href="/" className="flex min-h-[3rem] min-w-[3rem]">
               <Image src={logo as StaticImageData} alt="Base Logo" />
             </Link>
-            {showGasDropdownAndConnectWallet && <WrappedGasPriceDropdown />}
+            {showGasDropdownAndConnectWallet && <DynamicWrappedGasPriceDropdown />}
           </div>
 
           <div className="hidden md:inline-block">
@@ -124,7 +125,7 @@ export default function TopNavigation() {
           <div className="flex items-end justify-end md:min-w-[16rem]">
             {showGasDropdownAndConnectWallet && (
               <Suspense>
-                <WrappedConnectWalletButton
+                <DynamicWrappedConnectWalletButton
                   connectWalletButtonVariant={ConnectWalletButtonVariants.BaseOrg}
                 />
               </Suspense>
