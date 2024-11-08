@@ -159,8 +159,8 @@ Reuse `Lock__factory` but use the connect function and pass the address of the n
     ✔ should get the unlockTime value
     ✔ should have the right ether balance
     ✔ should have the right owner
-    ✔ shouldn"t allow to withdraw before unlock time (51ms)
-    ✔ shouldn"t allow to withdraw a non owner
+    ✔ shouldn't allow to withdraw before unlock time (51ms)
+    ✔ shouldn't allow to withdraw a non owner
     ✔ should allow to withdraw a owner
 
   6 passing (2s)
@@ -170,7 +170,7 @@ Reuse `Lock__factory` but use the connect function and pass the address of the n
 
 Deploying to a real test network involves configuring the network parameters in the hardhat config file. You need to include parameters such as:
 
-- The JSON RPC url
+- The JSON RPC URL
 - The account you want to use
 - Real test ether or the native Blockchain token for gas costs
 
