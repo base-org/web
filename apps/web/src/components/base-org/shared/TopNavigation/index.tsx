@@ -114,11 +114,11 @@ export default function TopNavigation() {
 
           {/* Connect Wallet button */}
           <div className="flex items-end justify-end md:min-w-[16rem]">
-            <Suspense>
+            {/* <Suspense>
               <ConnectWalletButton
                 connectWalletButtonVariant={ConnectWalletButtonVariants.BaseOrg}
               />
-            </Suspense>
+            </Suspense> */}
           </div>
         </div>
       </nav>

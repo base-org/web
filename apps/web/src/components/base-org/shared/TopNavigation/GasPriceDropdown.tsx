@@ -10,19 +10,20 @@ const convertWeiToMwei = (weiValue: bigint): number => {
 };
 
 export default function GasPriceDropdown() {
-  const { data: baseGasPriceInWei } = useGasPrice({
-    chainId: base.id,
-    query: {
-      refetchInterval: 10_000,
-    },
-  });
+  return null;
+  // const { data: baseGasPriceInWei } = useGasPrice({
+  //   chainId: base.id,
+  //   query: {
+  //     refetchInterval: 10_000,
+  //   },
+  // });
 
-  const { data: mainnetGasPriceInWei } = useGasPrice({
-    chainId: mainnet.id,
-    query: {
-      refetchInterval: 10_000,
-    },
-  });
+  // const { data: mainnetGasPriceInWei } = useGasPrice({
+  //   chainId: mainnet.id,
+  //   query: {
+  //     refetchInterval: 10_000,
+  //   },
+  // });
 
   return (
     <div className="group relative hidden md:block">
