@@ -16,11 +16,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # - name: Setup environment
-      #   run: |
-      #     apt-get update
-      #     apt-get install -y git bc
-
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -85,21 +80,6 @@ jobs:
             const largeFiles = `${{ steps.check-sizes.outputs.large_files }}`;
 
             try {
-              console.log('Repository:', context.payload.repository.name);
-              console.log('Owner:', context.payload.repository.owner.login);
-              console.log('SHA:', context.payload.pull_request.head.sha);
-              
-              // Set status check that will be used by branch protection
-              await github.rest.repos.createCommitStatus({
-                owner: context.payload.repository.owner.login,
-                repo: context.payload.repository.name,
-                sha: context.payload.pull_request.head.sha,
-                state: hugeFiles ? 'failure' : 'success',
-                context: 'File Size Check',
-                description: hugeFiles ? 'Files over 40MB found' : 'All files within size limits',
-                target_url: `https://github.com/${context.payload.repository.owner.login}/${context.payload.repository.name}/actions/runs/${context.runId}`
-              });
-
               // Only comment if issues were found
               if (hugeFiles || largeFiles) {
                 let comment = '## ⚠️ File Size Check Results\n\n';
@@ -123,6 +103,5 @@ jobs:
               }
             } catch (error) {
               console.error('Error:', error);
-              console.error('Context:', JSON.stringify(context.payload, null, 2));
               core.setFailed(error.message);
             }
