@@ -149,7 +149,7 @@ export default function Tutorials() {
                 Object.values(tutorialData)
                   .filter((tutorial) => tutorial.tags)
                   .filter((tutorial) =>
-                    selectedTag == 'all' ? tutorial : tutorial.tags.includes(selectedTag),
+                    selectedTag === 'all' ? tutorial : tutorial.tags.includes(selectedTag),
                   )
                   .map((tutorial) => <TutorialListCell key={tutorial.slug} tutorial={tutorial} />)}
             </div>
