@@ -42,7 +42,7 @@ export default function UsernameNav() {
     [switchChain],
   );
 
-  const walletStateClasses = classNames('p2 rounded flex items-center gap-6', {
+  const walletStateClasses = classNames('p-2 rounded flex items-center gap-6', {
     'bg-white': isConnected,
   });
 

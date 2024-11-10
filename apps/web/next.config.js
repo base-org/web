@@ -119,6 +119,7 @@ const contentSecurityPolicy = {
     'https://unpkg.com/@lottiefiles/dotlottie-web@0.31.1/dist/dotlottie-player.wasm', // lottie player
     `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
   ],
+  'frame-src': ["https://p.datadoghq.com"],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
   'img-src': [
