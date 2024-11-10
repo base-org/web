@@ -4214,5 +4214,12 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
-  }
+  },
+  {
+  "name": "Silent Base",
+  "tags": ["defi"],
+  "description": "Decentralized Orderbook on Ethereum Layer 2",
+  "url": "https://silentbase.xyz",
+  "imageUrl": "/images/partners/silentbase.png"
+}
 ]
