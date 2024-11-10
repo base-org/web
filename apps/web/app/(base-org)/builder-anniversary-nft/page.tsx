@@ -1,4 +1,3 @@
-import CryptoProviders from 'apps/web/app/CryptoProviders';
 import { BuilderNftHero } from 'apps/web/src/components/BuilderNft/BuilderNftHero';
 import type { Metadata } from 'next';
 
@@ -14,9 +13,7 @@ export const metadata: Metadata = {
 export default async function About() {
   return (
     <main className="flex w-full flex-col items-center bg-black">
-      <CryptoProviders>
-        <BuilderNftHero />
-      </CryptoProviders>
+      <BuilderNftHero />
     </main>
   );
 }

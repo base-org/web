@@ -1,4 +1,3 @@
-import CryptoProviders from 'apps/web/app/CryptoProviders';
 import Card from 'apps/web/src/components/base-org/Card';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { base, mainnet } from 'viem/chains';
@@ -10,15 +9,7 @@ const convertWeiToMwei = (weiValue: bigint): number => {
   return Number(mweiValue.toFixed(2)); // Round to 2 decimal places
 };
 
-export function WrappedGasPriceDropdown() {
-  return (
-    <CryptoProviders>
-      <GasPriceDropdown />
-    </CryptoProviders>
-  );
-}
-
-function GasPriceDropdown() {
+export default function GasPriceDropdown() {
   const { data: baseGasPriceInWei } = useGasPrice({
     chainId: base.id,
     query: {

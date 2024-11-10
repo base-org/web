@@ -27,7 +27,6 @@ import { useCopyToClipboard } from 'usehooks-ts';
 import { useAccount, useSwitchChain } from 'wagmi';
 import ChainDropdown from 'apps/web/src/components/ChainDropdown';
 import { useSearchParams } from 'next/navigation';
-import CryptoProviders from 'apps/web/app/CryptoProviders';
 
 export enum ConnectWalletButtonVariants {
   BaseOrg,
@@ -37,16 +36,6 @@ export enum ConnectWalletButtonVariants {
 type ConnectWalletButtonProps = {
   connectWalletButtonVariant: ConnectWalletButtonVariants;
 };
-
-export function WrappedConnectWalletButton({
-  connectWalletButtonVariant = ConnectWalletButtonVariants.BaseOrg,
-}: ConnectWalletButtonProps) {
-  return (
-    <CryptoProviders>
-      <ConnectWalletButton connectWalletButtonVariant={connectWalletButtonVariant} />
-    </CryptoProviders>
-  )
-}
 
 export function ConnectWalletButton({
   connectWalletButtonVariant = ConnectWalletButtonVariants.BaseOrg,
