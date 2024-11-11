@@ -12,6 +12,7 @@ import {
   BASE_DOT_ETH_ERC721_DISCOUNT_VALIDATOR,
   BASE_WORLD_DISCOUNT_VALIDATORS,
   BUILDATHON_ERC721_DISCOUNT_VALIDATOR,
+  DEVCON_DISCOUNT_VALIDATORS,
   TALENT_PROTOCOL_DISCOUNT_VALIDATORS,
   USERNAME_1155_DISCOUNT_VALIDATORS,
 } from 'apps/web/src/addresses/usernames';
@@ -630,6 +631,43 @@ export function useBaseWorldAttestations() {
         discountValidatorAddress,
         discount: Discount.BASE_WORLD,
         validationData: encodeAbiParameters([{ type: 'uint256[]' }], [baseWorldTokenIds]),
+      },
+      loading: false,
+      error: null,
+    };
+  }
+
+  return { data: null, loading: isLoading, error };
+}
+
+// @TODO populate with accurate token id(s)
+const devconTokenIds = [BigInt(0)];
+
+export function useDevconAttestations() {
+  const { address } = useAccount();
+  const { basenameChain } = useBasenameChain();
+
+  const discountValidatorAddress = DEVCON_DISCOUNT_VALIDATORS[basenameChain.id];
+
+  const readContractArgs = useMemo(() => {
+    if (!address) {
+      return {};
+    }
+    return {
+      address: discountValidatorAddress,
+      abi: ERC1155DiscountValidatorV2,
+      functionName: 'isValidDiscountRegistration',
+      args: [address, encodeAbiParameters([{ type: 'uint256[]' }], [devconTokenIds])],
+    };
+  }, [address, discountValidatorAddress]);
+
+  const { data: isValid, isLoading, error } = useReadContract({ ...readContractArgs, query: {} });
+  if (isValid && address) {
+    return {
+      data: {
+        discountValidatorAddress,
+        discount: Discount.DEVCON,
+        validationData: encodeAbiParameters([{ type: 'uint256[]' }], [devconTokenIds]),
       },
       loading: false,
       error: null,

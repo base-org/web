@@ -8,6 +8,7 @@ import {
   useCheckCBIDAttestations,
   useCheckCoinbaseAttestations,
   useCheckEAAttestations,
+  useDevconAttestations,
   useDiscountCodeAttestations,
   useSummerPassAttestations,
   useTalentProtocolAttestations,
@@ -58,6 +59,7 @@ export function useAggregatedDiscountValidators(code?: string) {
   const { data: TalentProtocolData, loading: loadingTalentProtocolAttestations } =
     useTalentProtocolAttestations();
   const { data: BaseWorldData, loading: loadingBaseWorld } = useBaseWorldAttestations();
+  const { data: DevconData, loading: loadingDevcon } = useDevconAttestations();
 
   const loadingDiscounts =
     loadingCoinbaseAttestations ||
@@ -150,6 +152,13 @@ export function useAggregatedDiscountValidators(code?: string) {
       if (BaseWorldData && validator.discountValidator === BaseWorldData.discountValidatorAddress) {
         discountMapping[Discount.BASE_WORLD] = {
           ...BaseWorldData,
+          discountKey: validator.key,
+        };
+      }
+
+      if (DevconData && validator.discountValidator === DevconData.discountValidatorAddress) {
+        discountMapping[Discount.DEVCON] = {
+          ...DevconData,
           discountKey: validator.key,
         };
       }

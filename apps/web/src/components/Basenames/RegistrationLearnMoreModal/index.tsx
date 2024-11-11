@@ -10,6 +10,7 @@ import summerPassLvl3 from './images/summer-pass-lvl-3.svg';
 import cbidVerification from './images/cbid-verification.svg';
 import BNSOwnership from './images/bns.jpg';
 import BaseNFT from './images/base-nft.svg';
+import DevconPNG from './images/devcon.png';
 import TalentProtocolIcon from './images/TalentProtocol.svg';
 import coinbaseOneVerification from './images/coinbase-one-verification.svg';
 import coinbaseVerification from './images/coinbase-verification.svg';
@@ -94,6 +95,13 @@ const DISCOUNT_ITEMS: DiscountItem[] = [
     alt: 'icon of Base World',
     label: 'Base around the world NFT',
     tooltipContent: 'Available for anyone holding one of the Base around the world NFTs',
+  },
+  {
+    discount: Discount.DEVCON,
+    icon: DevconPNG as StaticImageData,
+    alt: 'icon of Devcon',
+    label: 'Devcon attendance NFT',
+    tooltipContent: 'Available for anyone holding one of the Base Devcon NFTs',
   },
 ];
 
