@@ -4214,5 +4214,15 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+    {
+    "name": "UFO.fun",
+    "tags": [
+      "defi",
+      "social"
+    ],
+    "description": "UFO.fun is a no-code platform for creating instantly tradable tokens using bonding curves, with features like staking, vesting, customizable token supply, and launch liquidity target.",
+    "url": "https://ufo.fun/",
+    "imageUrl": "/images/partners/ufo.png"
   }
 ]
