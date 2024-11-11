@@ -98,7 +98,7 @@ const DISCOUNT_ITEMS: DiscountItem[] = [
   },
   {
     discount: Discount.DEVCON,
-    icon: DevconPNG as StaticImageData,
+    icon: DevconPNG,
     alt: 'icon of Devcon',
     label: 'Devcon attendance NFT',
     tooltipContent: 'Available for anyone holding one of the Base Devcon NFTs',

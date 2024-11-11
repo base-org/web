@@ -73,7 +73,8 @@ export function useAggregatedDiscountValidators(code?: string) {
     loadingBNS ||
     loadingDiscountCode ||
     loadingTalentProtocolAttestations ||
-    loadingBaseWorld;
+    loadingBaseWorld ||
+    loadingDevcon;
 
   const discountsToAttestationData = useMemo<MappedDiscountData>(() => {
     const discountMapping: MappedDiscountData = {};
