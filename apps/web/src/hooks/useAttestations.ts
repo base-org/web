@@ -640,8 +640,7 @@ export function useBaseWorldAttestations() {
   return { data: null, loading: isLoading, error };
 }
 
-// @TODO populate with accurate token id(s)
-const devconTokenIds = [BigInt(0)];
+const devconTokenIds = [BigInt(100), BigInt(101)];
 
 export function useDevconAttestations() {
   const { address } = useAccount();
