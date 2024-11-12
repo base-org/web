@@ -103,6 +103,6 @@ export const BASE_WORLD_DISCOUNT_VALIDATORS: AddressMap = {
 };
 
 export const DEVCON_DISCOUNT_VALIDATORS: AddressMap = {
-  [baseSepolia.id]: '',
-  [base.id]: '',
+  [baseSepolia.id]: '0x5c81c392c22cba477a70d809de6d6cd362a1c3de',
+  [base.id]: '0x5c81c392c22cba477a70d809de6d6cd362a1c3de', // @todo update with mainnet address
 };
