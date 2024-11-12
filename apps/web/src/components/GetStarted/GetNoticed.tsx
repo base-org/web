@@ -16,7 +16,7 @@ export default async function GetNoticed() {
         <ResourceCard
           title="Onchain Content Network"
           description="Submit your project to be viewed by millions of potential users across the network"
-          href="https://base.mirror.xyz/fD9-3Bl_3PLoUw7T8St6a6UpDIiPxJ-itzmME-b5pwA?utm_source=dotorg&utm_medium=builderkit"
+          href="https://buildonbase.deform.cc/getstarted/?utm_source=dotorg&utm_medium=builderkit"
           topLeft={<span className="font-mono">01</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}
           classnames="bg-pink-60 border-pink-60"
