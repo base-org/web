@@ -8,7 +8,7 @@ import {
   TrackingCategory,
   TrackingPreference,
 } from '@coinbase/cookie-manager';
-import { OnchainKitProvider } from '@coinbase/onchainkit';
+import { AppConfig, OnchainKitProvider } from '@coinbase/onchainkit';
 import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
 import { connectorsForWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import {
@@ -78,6 +78,12 @@ const config = createConfig({
 const queryClient = new QueryClient();
 const sprigEnvironmentId = process.env.NEXT_PUBLIC_SPRIG_ENVIRONMENT_ID;
 
+const onchainKitConfig: AppConfig = {
+  appearance: {
+    mode: 'light',
+  },
+};
+
 type AppProvidersProps = {
   children: React.ReactNode;
 };
@@ -141,6 +147,7 @@ export default function AppProviders({ children }: AppProvidersProps) {
             <OnchainKitProvider
               chain={isDevelopment ? baseSepolia : base}
               apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
+              config={onchainKitConfig}
             >
               <RainbowKitProvider modalSize="compact">
                 <TooltipProvider>
