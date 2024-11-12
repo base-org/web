@@ -179,6 +179,7 @@ export function useAggregatedDiscountValidators(code?: string) {
     DiscountCodeData,
     TalentProtocolData,
     BaseWorldData,
+    DevconData,
   ]);
 
   return {
