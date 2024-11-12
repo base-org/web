@@ -1,3 +1,4 @@
+import CryptoProviders from 'apps/web/app/CryptoProviders';
 import ErrorsProvider from 'apps/web/contexts/Errors';
 import UsernameNav from 'apps/web/src/components/Layout/UsernameNav';
 
@@ -27,10 +28,12 @@ export default async function BasenameLayout({
 }) {
   return (
     <ErrorsProvider context="basenames">
-      <div className="max-w-screen flex min-h-screen flex-col">
-        <UsernameNav />
-        {children}
-      </div>
+      <CryptoProviders>
+        <div className="max-w-screen flex min-h-screen flex-col">
+          <UsernameNav />
+          {children}
+        </div>
+      </CryptoProviders>
     </ErrorsProvider>
   );
 }

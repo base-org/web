@@ -2,6 +2,7 @@ import Card from 'apps/web/src/components/base-org/Card';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { base, mainnet } from 'viem/chains';
 import { useGasPrice } from 'wagmi';
+import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
 
 const convertWeiToMwei = (weiValue: bigint): number => {
   // 1 mwei = 10^6 wei
@@ -9,7 +10,15 @@ const convertWeiToMwei = (weiValue: bigint): number => {
   return Number(mweiValue.toFixed(2)); // Round to 2 decimal places
 };
 
-export default function GasPriceDropdown() {
+export function DynamicWrappedGasPriceDropdown() {
+  return (
+    <DynamicCryptoProviders>
+      <GasPriceDropdown />
+    </DynamicCryptoProviders>
+  );
+}
+
+export function GasPriceDropdown() {
   const { data: baseGasPriceInWei } = useGasPrice({
     chainId: base.id,
     query: {
