@@ -101,3 +101,8 @@ export const BASE_WORLD_DISCOUNT_VALIDATORS: AddressMap = {
   [baseSepolia.id]: '0xFa69f6167F40247fe3EFF2d8375B25C5d7834c48',
   [base.id]: '0xfEb00a4EfF372a307fDc556Cf4359f7D679E4d11',
 };
+
+export const DEVCON_DISCOUNT_VALIDATORS: AddressMap = {
+  [baseSepolia.id]: '0x5c81c392C22Cba477a70D809DE6d6Cd362A1c3DE',
+  [base.id]: '0xFca2EB54EaB56085e25a32BfF30fe8C452216c5F',
+};

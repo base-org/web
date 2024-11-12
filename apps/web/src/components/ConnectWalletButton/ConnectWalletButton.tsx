@@ -23,7 +23,7 @@ import logEvent, {
 import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
 import classNames from 'classnames';
 import { useCallback, useEffect, useState } from 'react';
-import { useCopyToClipboard } from 'usehooks-ts';
+import { useCopyToClipboard, useMediaQuery } from 'usehooks-ts';
 import { useAccount, useSwitchChain } from 'wagmi';
 import ChainDropdown from 'apps/web/src/components/ChainDropdown';
 import { useSearchParams } from 'next/navigation';
@@ -93,10 +93,12 @@ export function ConnectWalletButton({
     );
   }, [openConnectModal]);
 
-  const userAddressClasses = classNames('text-lg font-display hidden lg:inline-block', {
+  const userAddressClasses = classNames('text-lg font-display', {
     'text-white': connectWalletButtonVariant === ConnectWalletButtonVariants.BaseOrg,
     'text-black': connectWalletButtonVariant === ConnectWalletButtonVariants.Basename,
   });
+
+  const isDesktop = useMediaQuery('(min-width: 768px)');
 
   if (isConnecting || isReconnecting || !isMounted) {
     return <Icon name="spinner" color="currentColor" />;
@@ -141,7 +143,7 @@ export function ConnectWalletButton({
       >
         <div className="flex items-center gap-2">
           <UserAvatar />
-          <Name chain={basenameChain} className={userAddressClasses} />
+          {isDesktop && <Name chain={basenameChain} className={userAddressClasses} />}
           {showChainSwitcher && <ChainDropdown />}
         </div>
       </ConnectWallet>
