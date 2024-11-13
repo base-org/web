@@ -35,7 +35,7 @@ export function GasPriceDropdown() {
 
   return (
     <div className="group relative hidden md:block">
-      <div className="flex flex cursor-pointer items-center gap-2 rounded-xl bg-black px-4 py-3 transition-all group-hover:bg-[#333]">
+      <div className="flex flex-row cursor-pointer items-center gap-2 rounded-xl bg-black px-4 py-3 transition-all group-hover:bg-[#333]">
         <span className="animate-pulse text-palette-positive">
           <Icon name="blueCircle" color="currentColor" height="0.75rem" width="0.75rem" />
         </span>
