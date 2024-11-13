@@ -148,7 +148,7 @@ export function ConnectWalletButton({
         </div>
       </ConnectWallet>
 
-      <WalletDropdown className="rounded-xl bg-white font-sans shadow-md">
+      <WalletDropdown className="z-50 rounded-xl bg-white font-sans shadow-md">
         <Identity className="px-4 pb-2 pt-3 font-display">
           <UserAvatar />
           <Name
