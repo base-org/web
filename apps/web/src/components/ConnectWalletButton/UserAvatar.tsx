@@ -4,6 +4,10 @@ import { mainnet } from 'wagmi/chains';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 import BasenameAvatar from 'apps/web/src/components/Basenames/BasenameAvatar';
+import { Basename } from '@coinbase/onchainkit/identity';
+import { getBasenameImage } from 'apps/web/src/utils/usernames';
+import { StaticImageData } from 'next/image';
+import { GetEnsAvatarReturnType } from 'viem';
 
 export function UserAvatar() {
   const { address } = useAccount();
@@ -31,7 +35,6 @@ export function UserAvatar() {
   });
 
   const isLoading = ensNameIsLoading || ensAvatarIsLoading || baseEnsNameIsLoading;
-  const avatar = ensAvatar;
 
   if (baseEnsName) {
     return (
@@ -44,7 +47,11 @@ export function UserAvatar() {
     );
   }
 
-  if (!avatar) return null;
+  let avatar: GetEnsAvatarReturnType | undefined | StaticImageData = ensAvatar;
+  // Default to basename avatar if none exists
+  if (!avatar) {
+    avatar = getBasenameImage(address as Basename);
+  }
 
   return (
     <ImageWithLoading

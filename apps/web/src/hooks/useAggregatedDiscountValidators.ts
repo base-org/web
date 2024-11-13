@@ -8,6 +8,7 @@ import {
   useCheckCBIDAttestations,
   useCheckCoinbaseAttestations,
   useCheckEAAttestations,
+  useDevconAttestations,
   useDiscountCodeAttestations,
   useSummerPassAttestations,
   useTalentProtocolAttestations,
@@ -58,6 +59,7 @@ export function useAggregatedDiscountValidators(code?: string) {
   const { data: TalentProtocolData, loading: loadingTalentProtocolAttestations } =
     useTalentProtocolAttestations();
   const { data: BaseWorldData, loading: loadingBaseWorld } = useBaseWorldAttestations();
+  const { data: DevconData, loading: loadingDevcon } = useDevconAttestations();
 
   const loadingDiscounts =
     loadingCoinbaseAttestations ||
@@ -71,7 +73,8 @@ export function useAggregatedDiscountValidators(code?: string) {
     loadingBNS ||
     loadingDiscountCode ||
     loadingTalentProtocolAttestations ||
-    loadingBaseWorld;
+    loadingBaseWorld ||
+    loadingDevcon;
 
   const discountsToAttestationData = useMemo<MappedDiscountData>(() => {
     const discountMapping: MappedDiscountData = {};
@@ -153,6 +156,13 @@ export function useAggregatedDiscountValidators(code?: string) {
           discountKey: validator.key,
         };
       }
+
+      if (DevconData && validator.discountValidator === DevconData.discountValidatorAddress) {
+        discountMapping[Discount.DEVCON] = {
+          ...DevconData,
+          discountKey: validator.key,
+        };
+      }
     });
 
     return discountMapping;
@@ -169,6 +179,7 @@ export function useAggregatedDiscountValidators(code?: string) {
     DiscountCodeData,
     TalentProtocolData,
     BaseWorldData,
+    DevconData,
   ]);
 
   return {
