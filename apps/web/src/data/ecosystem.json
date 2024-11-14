@@ -4214,5 +4214,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "USX",
+    "tags": [
+      "defi"
+    ],
+    "description": "Scalable, decentralized, vertically-integrated, real-yield stablecoin across all layers.",
+    "url": "https://usx.finance",
+    "imageUrl": "/images/partners/usx.png"
   }
 ]
