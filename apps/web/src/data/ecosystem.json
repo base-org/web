@@ -4214,5 +4214,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "Unitus",
+    "tags": [
+      "defi"
+    ],
+    "description": "A Next-Generation Multi-Chain Money Market",
+    "url": "https://unitus.finance/",
+    "imageUrl": "/images/partners/unitus.png"
   }
 ]
