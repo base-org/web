@@ -270,7 +270,7 @@ module.exports = extendBaseConfig(
         },
         {
           source: '/registry',
-          destination: 'https://buildonbase.deform.cc/registry/',
+          destination: 'https://buildonbase.deform.cc/getstarted/',
           permanent: true,
         },
         {
