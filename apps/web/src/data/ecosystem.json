@@ -4214,5 +4214,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
-  }
+  },
+  {
+  "name": "Base MultiSender",
+    "tags": [
+      "defi"
+    ],
+  "description": "A fast and cost-efficient tool to distribute tokens in bulk on the Base Blockchain, supporting up to 500 addresses at once.",
+  "url": "https://send.difi.market",
+  "imageUrl": "/images/partners/dobmultisender.png"
+}
 ]
