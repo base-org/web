@@ -63,7 +63,7 @@ Tokens that are newly launched and have not had significant trading volume appea
 
 Your token must be listed and marked as verified on CoinMarketCap for the price chart to display on Coinbase Wallet.
 
-If the above guidance doesn’t resolve your issue, please submit more information using this [Deform](https://app.deform.cc/form/a331da5a-447b-43e8-b636-ea3b925e115a/).
+If the above guidance doesn’t resolve your issue, please submit more information using this [DeForm](https://app.deform.cc/form/a331da5a-447b-43e8-b636-ea3b925e115a/).
 
 # Sharing your token
 ### Custom trading links
