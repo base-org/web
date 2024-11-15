@@ -34,7 +34,7 @@ This tutorial uses Coinbase's [OnchainKit]. Familiarity with its basic concepts 
 
 ### Basename
 
-A basename with a few text records (Github, Twitter, website) is required for this tutorial. If you don't have a Basename. Get one [here](https://www.base.org/names).
+A basename with a few text records (GitHub, Twitter, website) is required for this tutorial. If you don't have a Basename, get one [here](https://www.base.org/names).
 
 ---
 
