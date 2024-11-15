@@ -153,7 +153,7 @@ To interact with your smart contract, you can use the thirdweb [CLI](https://por
 To create a web application preconfigured with the thirdweb SDK, run:
 
 ```bash
-npx thirdweb create app –evm
+npx thirdweb create app --evm
 ```
 
 This will kick off an interactive series of questions to help you get started:
