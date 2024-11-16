@@ -27,6 +27,7 @@ import { useCopyToClipboard, useMediaQuery } from 'usehooks-ts';
 import { useAccount, useSwitchChain } from 'wagmi';
 import ChainDropdown from 'apps/web/src/components/ChainDropdown';
 import { useSearchParams } from 'next/navigation';
+import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
 
 export enum ConnectWalletButtonVariants {
   BaseOrg,
@@ -36,6 +37,16 @@ export enum ConnectWalletButtonVariants {
 type ConnectWalletButtonProps = {
   connectWalletButtonVariant: ConnectWalletButtonVariants;
 };
+
+export function DynamicWrappedConnectWalletButton({
+  connectWalletButtonVariant = ConnectWalletButtonVariants.BaseOrg,
+}: ConnectWalletButtonProps) {
+  return (
+    <DynamicCryptoProviders>
+      <ConnectWalletButton connectWalletButtonVariant={connectWalletButtonVariant} />
+    </DynamicCryptoProviders>
+  )
+}
 
 export function ConnectWalletButton({
   connectWalletButtonVariant = ConnectWalletButtonVariants.BaseOrg,
@@ -148,7 +159,7 @@ export function ConnectWalletButton({
         </div>
       </ConnectWallet>
 
-      <WalletDropdown className="rounded-xl bg-white font-sans shadow-md">
+      <WalletDropdown className="z-50 rounded-xl bg-white font-sans shadow-md">
         <Identity className="px-4 pb-2 pt-3 font-display">
           <UserAvatar />
           <Name
