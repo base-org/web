@@ -18,6 +18,15 @@
     "imageUrl": "/images/partners/connext.webp"
   },
   {
+    "name": "Layerswap",
+    "tags": [
+      "bridge"
+    ],
+    "description": "Layerswap is a fast, reliable and cost-efficient solution for bridging crypto assets across 55+ EVM and non-EVM networks.",
+    "url": "https://layerswap.io/",
+    "imageUrl": "/images/partners/Layerswap-logo.png"
+  },
+  {
     "name": "Infusion",
     "tags": [
       "defi"
