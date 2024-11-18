@@ -4215,4 +4215,11 @@
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
   }
+  {
+  "name": "CryptoChill",
+  "tags": ["wallet"],
+  "description": "CryptoChill is a multi-chain crypto payment gateway and wallets-as-a-service provider. We support BASE, BTC, ETH, SOL, XRP, TRX, TON, USDT, and more. Create an unlimited number of MPC wallets.",
+  "url": "https://cryptochill.com",
+  "imageUrl": "/images/partners/cryptochill-base.png"
+  }
 ]
