@@ -17,7 +17,7 @@ keywords:
     Pyth,
     VRF,
     Gelato VRF,
-    Gelato verifable random function,
+    Gelato verifiable random function,
     verifiable random function,
     generate random numbers,
     RNG,
@@ -63,7 +63,7 @@ See [this guide](https://docs.chain.link/docs/get-the-latest-price/) to learn ho
 
 :::info
 
-To use Chainlink datafeeds, you may need [LINK](https://docs.chain.link/resources/link-token-contracts?parent=dataFeeds) token.
+To use Chainlink data feeds, you may need [LINK](https://docs.chain.link/resources/link-token-contracts?parent=dataFeeds) token.
 
 :::
 
