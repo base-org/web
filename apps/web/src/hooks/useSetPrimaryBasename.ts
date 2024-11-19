@@ -60,12 +60,12 @@ export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrima
     }
   }, [logError, refetchPrimaryUsername, transactionIsSuccess]);
 
-  const setPrimaryName = useCallback(async () => {
+  const setPrimaryName = useCallback(async (): Promise<boolean | undefined> => {
     // Already primary
-    if (secondaryUsername === primaryUsername) return;
+    if (secondaryUsername === primaryUsername) return undefined;
 
     // No user is connected
-    if (!address) return;
+    if (!address) return undefined;
 
     try {
       await initiateTransaction({
@@ -81,6 +81,7 @@ export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrima
       });
     } catch (error) {
       logError(error, 'Set primary name transaction canceled');
+      return undefined;
     }
 
     return true;
@@ -95,5 +96,5 @@ export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrima
 
   const isLoading = transactionIsLoading || primaryUsernameIsLoading || primaryUsernameIsFetching;
 
-  return { setPrimaryName, canSetUsernameAsPrimary, isLoading };
+  return { setPrimaryName, canSetUsernameAsPrimary, isLoading, transactionIsSuccess };
 }

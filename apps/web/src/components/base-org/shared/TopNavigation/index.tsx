@@ -1,17 +1,18 @@
 'use client';
 
-import AnalyticsProvider from 'apps/web/contexts/Analytics';
-import Link from 'next/link';
-import logo from './assets/logo.svg';
+import { Suspense } from 'react';
 import Image, { StaticImageData } from 'next/image';
-import {
-  ConnectWalletButton,
-  ConnectWalletButtonVariants,
-} from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import AnalyticsProvider from 'apps/web/contexts/Analytics';
+import logo from 'apps/web/src/components/base-org/shared/TopNavigation/assets/logo.svg';
 import MenuDesktop from 'apps/web/src/components/base-org/shared/TopNavigation/MenuDesktop';
 import MenuMobile from 'apps/web/src/components/base-org/shared/TopNavigation/MenuMobile';
-import GasPriceDropdown from 'apps/web/src/components/base-org/shared/TopNavigation/GasPriceDropdown';
-import { Suspense } from 'react';
+import { DynamicWrappedGasPriceDropdown } from 'apps/web/src/components/base-org/shared/TopNavigation/GasPriceDropdown';
+import {
+  ConnectWalletButtonVariants,
+  DynamicWrappedConnectWalletButton,
+} from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 
 export type SubItem = {
   name: string;
@@ -91,7 +92,11 @@ const links: TopNavigationLink[] = [
   },
 ];
 
+const cryptoExcludedPaths = ['/jobs', '/about', '/ecosystem', '/getstarted'];
+
 export default function TopNavigation() {
+  const pathname = usePathname();
+  const showGasDropdownAndConnectWallet = !cryptoExcludedPaths.includes(pathname ?? '');
   return (
     <AnalyticsProvider context="navbar">
       <nav className="fixed top-0 z-50 w-full shrink-0 px-[1rem] py-4 md:px-[1.5rem] lg:px-[2rem]">
@@ -101,7 +106,7 @@ export default function TopNavigation() {
             <Link href="/" className="flex min-h-[3rem] min-w-[3rem]">
               <Image src={logo as StaticImageData} alt="Base Logo" />
             </Link>
-            <GasPriceDropdown />
+            {showGasDropdownAndConnectWallet && <DynamicWrappedGasPriceDropdown />}
           </div>
 
           <div className="hidden md:inline-block">
@@ -114,11 +119,13 @@ export default function TopNavigation() {
 
           {/* Connect Wallet button */}
           <div className="flex items-end justify-end md:min-w-[16rem]">
-            <Suspense>
-              <ConnectWalletButton
-                connectWalletButtonVariant={ConnectWalletButtonVariants.BaseOrg}
-              />
-            </Suspense>
+            {showGasDropdownAndConnectWallet && (
+              <Suspense>
+                <DynamicWrappedConnectWalletButton
+                  connectWalletButtonVariant={ConnectWalletButtonVariants.BaseOrg}
+                />
+              </Suspense>
+            )}
           </div>
         </div>
       </nav>
