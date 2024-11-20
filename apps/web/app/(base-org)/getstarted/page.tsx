@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: `Base | Get Started`,
   openGraph: {
     title: `Base | Get Started`,
-    url: '/getstarted',
+    url: '/resourcekit',
     images: ['https://base.org/images/getstarted-open-graph.png'],
   },
 };

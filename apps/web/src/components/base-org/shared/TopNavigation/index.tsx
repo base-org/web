@@ -30,11 +30,11 @@ const links: TopNavigationLink[] = [
   {
     name: 'Build',
     analyticContext: 'build',
-    href: '/getstarted',
+    href: '/resourcekit',
     subItems: [
       {
         name: 'Get Started',
-        href: '/getstarted',
+        href: '/resourcekit',
       },
       { name: 'Docs', href: 'https://docs.base.org' },
       { name: 'Learn', href: 'https://docs.base.org/base-learn/docs/welcome' },
@@ -92,7 +92,7 @@ const links: TopNavigationLink[] = [
   },
 ];
 
-const cryptoExcludedPaths = ['/jobs', '/about', '/ecosystem', '/getstarted'];
+const cryptoExcludedPaths = ['/jobs', '/about', '/ecosystem', '/resourcekit'];
 
 export default function TopNavigation() {
   const pathname = usePathname();
