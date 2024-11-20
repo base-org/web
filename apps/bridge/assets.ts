@@ -351,6 +351,19 @@ const assets: Asset[] = [
     decimals: 18,
     protocol: 'OP',
   },
+  {
+    L1symbol: 'NCT',
+    L2symbol: 'NCT',
+    L1chainId: 1,
+    L2chainId: 8453,
+    L1contract: '0x9E46A38F5DaaBe8683E10793b06749EEF7D733d1',
+    L2contract: '0xE6bAA3Fedb5Dc88b2c59ba4812388Bb0906D19dB',
+    apiId: 'polyswarm',
+    L1icon: '/icons/currency/polyswarm.svg',
+    L2icon: '/icons/currency/polyswarm.svg',
+    decimals: 18,
+    protocol: 'OP',
+  },
 ];
 
 export default assets;
