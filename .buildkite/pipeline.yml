@@ -1,14 +1,13 @@
-_shared_step: &shared_step
+shared_step: &shared_step
   commands:
     - tools/ci/setup.sh
   plugins:
     - file:///buildkite/plugins/docker: &docker_plugin
-        image: 652969937640.dkr.ecr.us-east-1.amazonaws.com/containers/node:current
+        image: ${DOCKER_IMAGE:-652969937640.dkr.ecr.us-east-1.amazonaws.com/containers/node:current}  # Используем переменную для образа
         always-pull: true
         propagate-environment: true
         propagate-uid-gid: true
         volumes:
-          # Allow git operations to work
           - ${HOME}/.ssh:/root/.ssh
           - ${HOME}/.git:/root/.git
         environment:
@@ -26,18 +25,15 @@ _shared_step: &shared_step
       limit: 1
   env:
     NODE_OPTIONS: --max-old-space-size=8192
+  parallelism: 1  # Можно задать уровень параллельности на уровне общего шага
 
 steps:
   - label: Build
     <<: *shared_step
-    parallelism: 1
     commands:
-      - tools/ci/setup.sh
       - yarn build
 
   - label: Lint
     <<: *shared_step
-    parallelism: 1
     commands:
-      - tools/ci/setup.sh
       - yarn lint
