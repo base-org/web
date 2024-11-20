@@ -351,6 +351,19 @@ const assets: Asset[] = [
     decimals: 18,
     protocol: 'OP',
   },
+  {
+    L1symbol: 'GRT',
+    L2symbol: 'GRT',
+    L1chainId: 1,
+    L2chainId: 8453,
+    L1contract: '0xc944e90c64b2c07662a292be6244bdf05cda44a7',
+    L2contract: '0x0F4d237B09Cb37d207BA60353Dc254d4530D4dF1',
+    apiId: 'the-graph',
+    L1icon: '/icons/currency/grt.svg',
+    L2icon: '/icons/currency/grt.svg',
+    decimals: 18,
+    protocol: 'OP',
+  },
 ];
 
 export default assets;
