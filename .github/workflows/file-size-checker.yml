@@ -28,41 +28,36 @@ jobs:
           large_files=""
           huge_files=""
 
-          # Get all files in the PR
-          echo "Files changed in PR:"
-          git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }}
+          # Get all files changed in the PR
+          changed_files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
+          echo "Files changed in PR: $changed_files"
 
-          for file in $(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }}); do
+          for file in $changed_files; do
             if [ -f "$file" ]; then
               size=$(stat -c%s "$file")
               size_mb=$(echo "scale=2; $size/1048576" | bc)
-              
+
               echo "Checking $file: ${size_mb}MB"
-              
+
               # Check for files over 40MB
               if (( $(echo "$size_mb > 40" | bc -l) )); then
-                huge_files="${huge_files}* ${file} (${size_mb}MB)\n"
+                huge_files+=$(printf "* %s (%sMB)\n" "$file" "$size_mb")
               # Check for files over 10MB
               elif (( $(echo "$size_mb > 10" | bc -l) )); then
-                large_files="${large_files}* ${file} (${size_mb}MB)\n"
+                large_files+=$(printf "* %s (%sMB)\n" "$file" "$size_mb")
               fi
             fi
           done
 
           # Print findings for debugging
           echo "Large files found:"
-          echo -e "$large_files"
+          echo "$large_files"
           echo "Huge files found:"
-          echo -e "$huge_files"
+          echo "$huge_files"
 
           # Set outputs for use in next steps
-          echo "large_files<<EOF" >> $GITHUB_OUTPUT
-          echo -e "$large_files" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-
-          echo "huge_files<<EOF" >> $GITHUB_OUTPUT
-          echo -e "$huge_files" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          echo "large_files=$large_files" >> $GITHUB_OUTPUT
+          echo "huge_files=$huge_files" >> $GITHUB_OUTPUT
 
           # Fail if huge files are found
           if [ ! -z "$huge_files" ]; then
