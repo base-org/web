@@ -4214,5 +4214,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "Wit/Oracle",
+    "tags": [
+      "infra"
+    ],
+    "description": "The Wit/Oracle is a Layer 1 decentralized oracle network enabling trustless data delivery to smart contracts, powering blockchain apps with reliable, tamper-proof real-world information.",
+    "url": "https://witnet.io/",
+    "imageUrl": "/images/partners/witnet.png"
   }
 ]
