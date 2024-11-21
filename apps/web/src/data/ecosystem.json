@@ -1,5 +1,12 @@
 [
   {
+    "name": "Juicy Adventure",
+    "tags": ["gaming"],
+    "description": "A casual third-person shooter game.Shoot, brawl, and juice up to lead your team in the ultimate showdown!",
+    "url": "https://gram.voyage/game/juicyadventure",
+    "imageUrl": "/images/partners/wallet-retail.webp"
+  },
+  {
     "name": "Coinbase",
     "url": "https://www.coinbase.com",
     "description": "Coinbase is a secure online platform for buying, selling, transferring, and storing cryptocurrency.",
