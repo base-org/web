@@ -406,7 +406,7 @@ function badRandomLoopFixed() public view returns (uint) {
 The `uint` type will _panic_ in the event of an overflow or underflow.
 
 ```solidity
-function badSubstraction() public pure returns (uint) {
+function badSubtraction() public pure returns (uint) {
     uint first = 1;
     uint second = 2;
     return first - second;

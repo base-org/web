@@ -35,7 +35,7 @@ import {
 import { BatchCallsStatus } from 'apps/web/src/hooks/useWriteContractsWithLogs';
 import { WriteTransactionWithReceiptStatus } from 'apps/web/src/hooks/useWriteContractWithReceipt';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { Basename } from '@coinbase/onchainkit/identity';
 
 export enum RegistrationSteps {
   Search = 'search',
@@ -54,7 +54,7 @@ export type RegistrationContextProps = {
   setRegistrationStep: Dispatch<SetStateAction<RegistrationSteps>>;
   selectedName: string;
   setSelectedName: Dispatch<SetStateAction<string>>;
-  selectedNameFormatted: BaseName;
+  selectedNameFormatted: Basename;
   years: number;
   setYears: Dispatch<SetStateAction<number>>;
   redirectToProfile: () => void;

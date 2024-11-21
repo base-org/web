@@ -1,6 +1,6 @@
 'use client';
 
-// import { CookieBanner } from '@coinbase/cookie-banner';
+import { CookieBanner } from '@coinbase/cookie-banner';
 
 export const cookieBannerTheme = {
   colors: {
@@ -39,12 +39,17 @@ export const cookieBannerTheme = {
     tablet: 768,
   },
   zIndex: {
+    hidden: 0,
+    normal: 1,
+    elevated: 2,
     high: 2,
+    extraHigh: 3,
+    backdrop: 999,
     overlay: 1000,
+    top: 1001,
   },
 };
 
 export default function CookieBannerWrapper() {
-  // return <CookieBanner companyName="Base" link="/cookie-policy" theme={cookieBannerTheme} />;
-  return null;
+  return <CookieBanner companyName="Base" link="/cookie-policy" theme={cookieBannerTheme} />;
 }
