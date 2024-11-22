@@ -42,7 +42,7 @@ The [Coinbase Developer Platform] provides access to tools and services necessar
 
 ## Jump Right In
 
-For this turotial, you will deploy a simple contract that is included in the Foundry quickstart. To do so, ensure that you have Foundry installed.
+For this tutorial, you will deploy a simple contract that is included in the Foundry quickstart. To do so, ensure that you have Foundry installed.
 
 If you don't have Foundry install it:
 
