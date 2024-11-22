@@ -9,16 +9,17 @@ import {
 import { NextApiRequest, NextApiResponse } from 'next';
 
 /*
-this endpoint returns whether or not the account has early access
-if result array is empty, user has no early access
-example return: 
+This endpoint checks whether the account has early access.
+If the result array is empty, the user does not have early access.
+Example response: 
 {
   "address": "0xB18e4C959bccc8EF86D78DC297fb5efA99550d85",
   "namespace": "usernames",
-  "proofs": "[0x56ce3bbc909b90035ae373d32c56a9d81d26bb505dd935cdee6afc384bcaed8d, 0x99e940ed9482bf59ba5ceab7df0948798978a1acaee0ecb41f64fe7f40eedd17]"
+  "proofs": "[0x56ce3bbc909b90035ae373d32c56a9d81d26bb505dd935cdee6afc384bcaed8d, 0x99e940ed9482bf59ba5ceab7df0948798978a1acaee0ecb41f64fe7f40eedd17]",
   "discountValidatorAddress": "0x..."
 }
 */
+
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'method not allowed' });
