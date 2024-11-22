@@ -4214,5 +4214,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
-  }
+  },
+  {
+    "name": "Tipping Point",
+    "tags": [
+      "social"
+    ],
+    "description": "A crypto-based crowdfunding platform that solves the collective action problem on BASE. Using the USDC erc-20 token, collect funds for your campaign, and funds don't move unless your goal of money or number of attendees is reached using our trustless and secure BankTeller smart contract.",
+    "url": "https://tippingpoint.app/",
+    "imageUrl": "/images/partners/tippingpoint.png"
+  }	
 ]
