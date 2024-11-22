@@ -105,7 +105,8 @@ export function RegistrationFlow() {
 
   const onBackArrowClick = useCallback(() => {
     setRegistrationStep(RegistrationSteps.Search);
-  }, [setRegistrationStep]);
+    setSelectedName('');
+  }, [setRegistrationStep, setSelectedName]);
 
   useEffect(() => {
     const claimQuery = searchParams?.get(claimQueryKey);

@@ -9,7 +9,7 @@ export default function SlidingTextSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const text =
-    ' Base is for everyone - القاعدة للجميع - 基地适合所有人 - La Base è per tutti - Base est pour tout le monde - ';
+    ' Base is for everyone - القاعدة للجميع - Base es para todos - 基地适合所有人 - La Base è per tutti - Base est pour tout le monde - Base ni ya kila mtu - ';
 
   const containerClasses = classNames(
     'relative w-full overflow-hidden rounded-2xl bg-blue p-8',

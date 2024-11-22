@@ -12,21 +12,17 @@ import TransactionsFeesSection from 'apps/web/src/components/base-org/root/Trans
 import BuildAndRewardSection from 'apps/web/src/components/base-org/root/BuildAndRewardSection';
 import ErrorsProvider from 'apps/web/contexts/Errors';
 import BlogSection from 'apps/web/src/components/base-org/root/BlogSection';
-import dynamic from 'next/dynamic';
 import Link from 'apps/web/src/components/Link';
 import MissionSection from 'apps/web/src/components/base-org/root/MissionSection';
 import OpLogo from 'apps/web/public/images/op_logo.svg';
-
-const DynamicThreeHero = dynamic(async () => import('apps/web/src/components/ThreeHero'), {
-  ssr: false,
-});
+import SceneDynamic from 'apps/web/src/components/ThreeHero/dynamic';
 
 export default async function Home() {
   return (
     <ErrorsProvider context="base_landing_page">
       <AnalyticsProvider context="hero">
         <div className="relative z-10 h-screen w-full">
-          <DynamicThreeHero />
+          <SceneDynamic />
           <div className="absolute bottom-0 z-20 flex w-full flex-col justify-between gap-6 pb-20 text-white lg:flex-row">
             <div className="lg:ml-20">
               <Container>
