@@ -155,7 +155,7 @@ To verify a contract you will use the `verifysourcecode` route, with the `contra
 
 :::tip Unsure what data to input?
 
-In every foundry project you will have a `.json` file that contains the conrtacts metadata and ABI. For this particular project, this information is located in the `/verify_contracts/out/Counter.sol/Counter.json`
+In every foundry project you will have a `.json` file that contains the contracts metadata and ABI. For this particular project, this information is located in the `/verify_contracts/out/Counter.sol/Counter.json`
 
 Under the `Metadata` object you will find the compiler version under `evmversion`
 :::
