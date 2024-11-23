@@ -46,7 +46,7 @@ Click the linked address to your contract to return to the contract page. You'll
 
 :::tip
 
-If you have imports, you'll need to right click on the name of the file and choose `Flatten`. Submit the newly generated `filename_flattened.sol` for verification.
+If you have imports, you'll need to right-click on the name of the file and choose `Flatten`. Submit the newly generated `filename_flattened.sol` for verification.
 
 :::
 
