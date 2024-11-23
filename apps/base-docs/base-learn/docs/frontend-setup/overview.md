@@ -10,7 +10,7 @@ Welcome! The course you are about to begin will rapidly introduce you to fronten
 
 Before these lessons, you should:
 
-- Be comfortable with traditional frontend development using React, ideally with NextJS
+- Be comfortable with traditional frontend development using React, ideally with Next.js
 - Possess a general understanding of the EVM and smart contracts
 
 ---
