@@ -1,3 +1,4 @@
+.env
 # Node stuff
 node_modules
 yarn-debug.log*
@@ -69,3 +70,6 @@ package-lock.json
 schema.graphql
 persisted_queries.json
 **/*.graphql.ts
+
+# eslint
+.eslintcache

@@ -23,3 +23,18 @@ declare module 'next/config' {
 
   export default getConfig;
 }
+
+declare module '*.webm' {
+  const src: string;
+  export default src;
+}
+
+declare module '*.glb' {
+  const src: string;
+  export default src;
+}
+
+declare module '*.gltf' {
+  const src: string;
+  export default src;
+}

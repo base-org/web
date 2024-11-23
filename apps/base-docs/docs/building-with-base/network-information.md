@@ -35,7 +35,7 @@ hide_table_of_contents: true
 | RPC Endpoint    | [https://mainnet.base.org](https://mainnet.base.org)<br/>_Rate limited and not for production systems._ |
 | Chain ID        | 8453                                                                                                    |
 | Currency Symbol | ETH                                                                                                     |
-| Block Explorer  | [https://basescan.org](https://basescan.org)                                                            |
+| Block Explorer  | [https://base.blockscout.com/](https://base.blockscout.com/)                                            |
 
 ---
 
@@ -53,7 +53,7 @@ hide_table_of_contents: true
 ---
 
 :::info
-L1 & L2 protocol and network-related smart contract deployments can be found on the [Base Contracts](/base-contracts) page.
+L1 & L2 protocol and network-related smart contract deployments can be found on the [Base Contracts](/docs/base-contracts) page.
 :::
 
 :::info
@@ -62,5 +62,5 @@ For production systems, we recommend using a node from one of our [node partners
 
 ---
 
-[running your own Base node]: /guides/run-a-base-node
-[node partners]: /tools/node-providers
+[running your own Base node]: /tutorials/run-a-base-node
+[node partners]: /docs/tools/node-providers

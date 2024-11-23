@@ -3,11 +3,10 @@
 /* eslint-disable */
 // @ts-nocheck
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
-import { customFields } from './docusaurusCustomFields';
 import { setCookie, getCookie, deserializeCookie } from './cookieManagement';
 import { TrackingPreference } from '@coinbase/cookie-manager';
+import { isDevelopment, amplitudeApiKey } from '../constants';
 
-const isDevelopment = customFields.nodeEnv === 'development';
 
 // Initialize Client Analytics
 const initCCA = () => {
@@ -31,9 +30,7 @@ const initCCA = () => {
 
       init({
         isProd: !isDevelopment,
-        amplitudeApiKey: isDevelopment
-          ? 'ca92bbcb548f7ec4b8ebe9194b8eda81'
-          : '2b38c7ac93c0dccc83ebf9acc5107413',
+        amplitudeApiKey: amplitudeApiKey,
         platform: PlatformName.web,
         projectName: 'base_docs',
         showDebugLogging: isDevelopment,

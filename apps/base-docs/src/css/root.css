@@ -241,6 +241,7 @@ html {
   --base-docs-color-fg-warning: #ffffff;
   --base-docs-color-secondary: #eef0f3;
   --base-docs-color-fg-secondary: #0a0b0d;
+  --base-docs-color-nav-container: #ebedf0;
 }
 
 html[data-theme='light'] {
@@ -598,4 +599,5 @@ html[data-theme='dark'] {
   --base-docs-color-fg-warning: #0a0b0d;
   --base-docs-color-secondary: #32353d;
   --base-docs-color-fg-secondary: #ffffff;
+  --base-docs-color-nav-container: #32353d;
 }

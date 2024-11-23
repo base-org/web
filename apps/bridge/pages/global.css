@@ -25,20 +25,6 @@
 .text-cds-primary {
   color: #588af5;
 }
-.statusDot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.statusDot-Complete {
-  background-color: green;
-}
-
-.statusDot-Pending {
-  background-color: yellow;
-}
 
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
 :not(.scrollbar)::-webkit-scrollbar {

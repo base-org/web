@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/parameter-properties */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-parameter-properties */
 export class HTTPError extends Error {
   constructor(
     readonly status: number,

@@ -14,5 +14,17 @@
   "tenderly": {
     "name": "Tenderly",
     "link": "https://tenderly.co"
+  },
+  "cturakhia-cb": {
+    "name": "Chintan Turakhia",
+    "link": "https://warpcast.com/chintan"
+  },
+  "TABASCOatw": {
+    "name": "TABASCO",
+    "link": "https://github.com/TABASCOatw"
+  },
+  "lukecd": {
+    "name": "Luke Cassady-Dorion",
+    "link": "https://twitter.com/spaceagente"
   }
 }

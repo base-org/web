@@ -11,10 +11,10 @@ export function QuestionAccordion({ question, answer }: QuestionAccordionProps) 
   const toggleOpen = useCallback(() => setIsOpen((o) => !o), [setIsOpen]);
 
   return (
-    <div className="flex flex-col gap-6 border-b border-gray pb-6">
+    <div className="flex flex-col gap-6 border-b border-gray py-4">
       <button
         type="button"
-        className="flex flex-row justify-between py-2 text-base font-medium text-white"
+        className="flex flex-row justify-between py-2 text-base text-white"
         onClick={toggleOpen}
       >
         <span className="text-left">{question}</span>
@@ -26,7 +26,7 @@ export function QuestionAccordion({ question, answer }: QuestionAccordionProps) 
           )}
         </span>
       </button>
-      {isOpen && <span className="text-base text-white">{answer}</span>}
+      {isOpen && <span className="text-base text-muted">{answer}</span>}
     </div>
   );
 }

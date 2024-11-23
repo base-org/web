@@ -128,6 +128,6 @@ async function getValue() {
 
 :::info
 
-For more information on deploying contracts on Base, see [Deploying a Smart Contract](/guides/deploy-smart-contracts).
+For more information on deploying contracts on Base, see [Deploying a Smart Contract](/tutorials/deploy-with-hardhat).
 
 :::

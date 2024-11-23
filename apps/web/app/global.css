@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '@rainbow-me/rainbowkit/styles.css';
+@import '@coinbase/onchainkit/styles.css';
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+:not(.scrollbar)::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+*:not(.scrollbar) {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar {
+  -ms-overflow-style: auto; /* IE and Edge */
+  scrollbar-width: auto; /* Firefox */
+}
+
+.scrollbar::-webkit-scrollbar {
+  display: auto;
+}
+
+:root {
+  --hero-gradient-angle: 90.01deg;
+  --hero-gradient-stop-point: 20%;
+}
+
+body {
+  overflow-x: hidden;
+  height: 100%;
+  margin: 0;
+  min-height: 100vh;
+  font-family: '__coinbaseDisplay_7118f1';
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.animate-pause {
+  animation-play-state: paused;
+}

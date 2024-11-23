@@ -23,6 +23,8 @@
       "text": "article p, article li"
     }
   },
+  "js_render": true,
+  "js_wait": 2,
   "strip_chars": " .,;:#",
   "custom_settings": {
     "separatorsToIndex": "_",
