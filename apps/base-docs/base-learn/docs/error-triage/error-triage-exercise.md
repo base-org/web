@@ -16,7 +16,7 @@ pragma solidity ^0.8.17;
 contract ErrorTriageExercise {
     /**
      * Finds the difference between each uint with it's neighbor (a to b, b to c, etc.)
-     * and returns a uint array with the absolute integer difference of each pairing.
+     * and returns an uint array with the absolute integer difference of each pairing.
      */
     function diffWithNeighbor(
         uint _a,
