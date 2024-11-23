@@ -4214,5 +4214,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+    {
+    "name": "Gamma Options",
+    "tags": [
+      "defi"
+    ],
+    "description": "Gamma Options is a decentralized finance (DeFi) protocol built on Base that allows users to trade options on AMM markets. It enables users to hedge risk, speculate, and become liquidity providers to earn yield. The protocol features margin trading with up to 4X leverage and offers a variety of products and features, including European options trading.",
+"url": "https://gammaoptions.com/",
+    "imageUrl": "/images/partners/gammaoptions.jpg"
   }
 ]
