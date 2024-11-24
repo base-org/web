@@ -4214,5 +4214,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "Base Token Creator",
+    "tags": [
+      "defi"
+    ],
+    "description": "Easily Create your own Base ERC-20 Token in just 3+1 steps without Coding.",
+    "url": "https://tools.smithii.io/token-creator/base",
+    "imageUrl": "/images/partners/smithii.png"
   }
 ]
