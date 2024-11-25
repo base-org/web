@@ -259,12 +259,12 @@ module.exports = extendBaseConfig(
         },
         {
           source: '/onchainsummer',
-          destination: '/resourcekit',
+          destination: '/build',
           permanent: true,
         },
         {
           source: '/getstarted',
-          destination: '/resourcekit',
+          destination: '/build',
           permanent: true,
         },
         {
