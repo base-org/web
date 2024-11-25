@@ -30,13 +30,18 @@ function isDataUrl(url: string) {
 type GetCloudinaryMediaUrlParams = {
   media: string;
   width: number;
+  format?: 'webp' | 'png' | 'jpg';
 };
 
-export function getCloudinaryMediaUrl({ media, width }: GetCloudinaryMediaUrlParams) {
+export function getCloudinaryMediaUrl({
+  media,
+  width,
+  format = 'webp',
+}: GetCloudinaryMediaUrlParams) {
   if (isDataUrl(media)) return media;
 
   const imageWidth = `w_${width * 2}`;
-  const imageFormat = 'f_webp';
+  const imageFormat = `f_${format}`;
   const imageUrl = encodeURIComponent(media);
   const fetchOptions = [imageWidth, imageFormat, imageUrl].join('/');
 

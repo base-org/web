@@ -12,10 +12,9 @@ import {
 import Link from 'next/link';
 
 export default function UsernameProfileCard() {
-  const { profileUsername, profileAddress } = useUsernameProfile();
+  const { profileUsername } = useUsernameProfile();
 
   const { existingTextRecords } = useReadBaseEnsTextRecords({
-    address: profileAddress,
     username: profileUsername,
   });
 

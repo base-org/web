@@ -170,7 +170,7 @@ uint[] public numbers;
 uint numEven;
 ```
 
-Add a new function called `debugLoadArray` that takes a `uint` called `_number` as an argument, and fills the array by looping through `_numbers` times, pushing each number into the array. **For now, _don't_ update `numEven`**.
+Add a new function called `debugLoadArray` that takes a `uint` called `_number` as an argument, and fills the array by looping through `_number` times, pushing each number into the array. **For now, _don't_ update `numEven`**.
 
 <details>
 

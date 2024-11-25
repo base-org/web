@@ -20,7 +20,6 @@ import {
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useState } from 'react';
-import { useAccount } from 'wagmi';
 
 export enum FormSteps {
   Description = 'description',
@@ -33,7 +32,6 @@ export default function RegistrationProfileForm() {
   const [transitionStep, setTransitionStep] = useState<boolean>(false);
   const { logError } = useErrors();
   const { redirectToProfile, selectedNameFormatted } = useRegistration();
-  const { address } = useAccount();
   const { logEventWithContext } = useAnalytics();
 
   const {
@@ -43,7 +41,6 @@ export default function RegistrationProfileForm() {
     writeTextRecordsIsPending,
     writeTextRecordsError,
   } = useWriteBaseEnsTextRecords({
-    address: address,
     username: selectedNameFormatted,
     onSuccess: () => {
       redirectToProfile();

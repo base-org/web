@@ -28,11 +28,13 @@ const ownershipStepsTitleForDisplay = {
 type UsernameProfileTransferOwnershipModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  onSuccess?: () => void;
 };
 
 export default function UsernameProfileTransferOwnershipModal({
   isOpen,
   onClose,
+  onSuccess,
 }: UsernameProfileTransferOwnershipModalProps) {
   // Hooks
   const { address } = useAccount();
@@ -103,8 +105,9 @@ export default function UsernameProfileTransferOwnershipModal({
   useEffect(() => {
     if (isSuccess) {
       setCurrentOwnershipStep(OwnershipSteps.Success);
+      onSuccess?.();
     }
-  }, [isSuccess, setCurrentOwnershipStep]);
+  }, [isSuccess, setCurrentOwnershipStep, onSuccess]);
 
   return (
     <Modal

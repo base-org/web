@@ -2,6 +2,7 @@ import Card from 'apps/web/src/components/base-org/Card';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { base, mainnet } from 'viem/chains';
 import { useGasPrice } from 'wagmi';
+import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
 
 const convertWeiToMwei = (weiValue: bigint): number => {
   // 1 mwei = 10^6 wei
@@ -9,7 +10,15 @@ const convertWeiToMwei = (weiValue: bigint): number => {
   return Number(mweiValue.toFixed(2)); // Round to 2 decimal places
 };
 
-export default function GasPriceDropdown() {
+export function DynamicWrappedGasPriceDropdown() {
+  return (
+    <DynamicCryptoProviders>
+      <GasPriceDropdown />
+    </DynamicCryptoProviders>
+  );
+}
+
+export function GasPriceDropdown() {
   const { data: baseGasPriceInWei } = useGasPrice({
     chainId: base.id,
     query: {
@@ -26,7 +35,7 @@ export default function GasPriceDropdown() {
 
   return (
     <div className="group relative hidden md:block">
-      <div className="flex flex cursor-pointer items-center gap-2 rounded-xl bg-black px-4 py-3 transition-all group-hover:bg-[#333]">
+      <div className="flex flex-row cursor-pointer items-center gap-2 rounded-xl bg-black px-4 py-3 transition-all group-hover:bg-[#333]">
         <span className="animate-pulse text-palette-positive">
           <Icon name="blueCircle" color="currentColor" height="0.75rem" width="0.75rem" />
         </span>

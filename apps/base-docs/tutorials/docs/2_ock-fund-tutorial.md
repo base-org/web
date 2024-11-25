@@ -28,10 +28,10 @@ In this tutorial, you'll learn how to build an onchain app that checks a user's 
 
 By the end of this tutorial you should be able to:
 
-- Set up a project using the Onchain Kit App Template
+- Set up a project using the [OnchainKit App Template]
 - Configure the app for to onboard users easily using [Smart Wallets]
 - Implement balance checking and conditional rendering
-- Use the Fund component to allow users to add funds to their wallet
+- Use the Fund component to allow users to add buy tokens from their wallet without leaving your app
 
 ## Prerequisites
 
@@ -41,7 +41,7 @@ You should be familiar with React and TypeScript. If you're new to these technol
 
 ### OnchainKit
 
-This tutorial uses Coinbase's Onchain Kit. Familiarity with its basic concepts will be helpful.
+This tutorial uses Coinbase's OnchainKit. Familiarity with its basic concepts will be helpful.
 
 ### Access to the Coinbase Developer Platform
 
@@ -58,7 +58,7 @@ If you see a "something went wrong" error message when navigating to pay.coinbas
 
 ## Setting up the Project
 
-To get started, clone the Onchain Kit App Template by running
+To get started, clone the OnchainKit App Template by running:
 
 ```bash
 git clone git@github.com:coinbase/onchain-app-template.git
@@ -172,7 +172,8 @@ This app can serve as a foundation for more complex onchain applications that re
 
 ---
 
-[Onchain Kit]: https://github.com/coinbase/onchainkit
+[OnchainKit]: https://github.com/coinbase/onchainkit
+[OnchainKit App Template]: https://github.com/coinbase/onchain-app-template
 [Viem]: https://viem.sh/
 [Smart Wallets]: https://keys.coinbase.com/onboarding
 [viem]: https://viem.sh/docs/introduction
