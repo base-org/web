@@ -1,4 +1,4 @@
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { Basename } from '@coinbase/onchainkit/identity';
 import ProfileProviders from 'apps/web/app/(basenames)/name/[username]/ProfileProviders';
 import ErrorsProvider from 'apps/web/contexts/Errors';
 import FrameBuilder from 'apps/web/src/components/Basenames/ConfigureFramesPageContent/FrameBuilder';
@@ -7,11 +7,11 @@ import { redirectIfNotNameOwner } from 'apps/web/src/utils/redirectIfNotNameOwne
 import { formatDefaultUsername } from 'apps/web/src/utils/usernames';
 
 export type ConfigureFramesProps = {
-  params: { username: BaseName };
+  params: { username: Basename };
 };
 
 export default async function ConfigureFrames({ params }: ConfigureFramesProps) {
-  let username = await formatDefaultUsername(decodeURIComponent(params.username) as BaseName);
+  let username = await formatDefaultUsername(decodeURIComponent(params.username) as Basename);
   await redirectIfNotNameOwner(username);
 
   return (

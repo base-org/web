@@ -2,11 +2,13 @@ import {
   AttestationData,
   useBNSAttestations,
   useBaseDotEthAttestations,
+  useBaseWorldAttestations,
   useBuildathonAttestations,
   useCheckCB1Attestations,
   useCheckCBIDAttestations,
   useCheckCoinbaseAttestations,
   useCheckEAAttestations,
+  useDevconAttestations,
   useDiscountCodeAttestations,
   useSummerPassAttestations,
   useTalentProtocolAttestations,
@@ -56,6 +58,8 @@ export function useAggregatedDiscountValidators(code?: string) {
     useDiscountCodeAttestations(code);
   const { data: TalentProtocolData, loading: loadingTalentProtocolAttestations } =
     useTalentProtocolAttestations();
+  const { data: BaseWorldData, loading: loadingBaseWorld } = useBaseWorldAttestations();
+  const { data: DevconData, loading: loadingDevcon } = useDevconAttestations();
 
   const loadingDiscounts =
     loadingCoinbaseAttestations ||
@@ -68,7 +72,9 @@ export function useAggregatedDiscountValidators(code?: string) {
     loadingBaseDotEth ||
     loadingBNS ||
     loadingDiscountCode ||
-    loadingTalentProtocolAttestations;
+    loadingTalentProtocolAttestations ||
+    loadingBaseWorld ||
+    loadingDevcon;
 
   const discountsToAttestationData = useMemo<MappedDiscountData>(() => {
     const discountMapping: MappedDiscountData = {};
@@ -143,6 +149,20 @@ export function useAggregatedDiscountValidators(code?: string) {
           discountKey: validator.key,
         };
       }
+
+      if (BaseWorldData && validator.discountValidator === BaseWorldData.discountValidatorAddress) {
+        discountMapping[Discount.BASE_WORLD] = {
+          ...BaseWorldData,
+          discountKey: validator.key,
+        };
+      }
+
+      if (DevconData && validator.discountValidator === DevconData.discountValidatorAddress) {
+        discountMapping[Discount.DEVCON] = {
+          ...DevconData,
+          discountKey: validator.key,
+        };
+      }
     });
 
     return discountMapping;
@@ -158,6 +178,8 @@ export function useAggregatedDiscountValidators(code?: string) {
     BNSData,
     DiscountCodeData,
     TalentProtocolData,
+    BaseWorldData,
+    DevconData,
   ]);
 
   return {
