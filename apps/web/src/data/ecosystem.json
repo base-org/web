@@ -9,6 +9,15 @@
     "imageUrl": "/images/partners/wallet-retail.webp"
   },
   {
+    "name": "D2 Finance",
+    "tags": [
+      "defi"
+    ],
+    "description": "D2 Finance is a Multi-strategy Fund delivering Tokenized Derivatives Strategies and derivatives trading, in a 100% on-chain and non-custodial solution.",
+    "url": "https://d2.finance/strategies",
+    "imageUrl": "/images/partners/D2FinanceLogo.png"
+  },
+  {
     "name": "Connext",
     "tags": [
       "bridge"
