@@ -4214,5 +4214,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
-  }
+  },
+    {
+    "name": "ArtGridz",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Create Imprints on ArtGridz: Introducing a revolutionary onchain NFT platform live on Base. Fully gas-free experience & free GRIDZ-dripz for your activity. ",
+    "url": "https://artgridz.decentraplace.io",
+    "imageUrl": "/images/partners/artgridz.webp"
+  },
 ]
