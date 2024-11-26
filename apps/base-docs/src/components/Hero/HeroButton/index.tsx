@@ -12,7 +12,7 @@ export default function HeroButton() {
 
   return (
     <a
-      href="https://base.org/getstarted/?utm_source=basedocs&utm_medium=hero"
+      href="https://base.org/build/?utm_source=basedocs&utm_medium=hero"
       className={styles.cta}
       target="_blank"
       rel="noreferrer noopener"
