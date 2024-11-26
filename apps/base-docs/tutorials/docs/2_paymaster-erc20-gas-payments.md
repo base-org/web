@@ -60,7 +60,7 @@ Verify the number of decimals for your token (in this case, 8 decimals) to set t
 3. **Approval Notification**  
    Once approved, your Coinbase Developer Platform (CDP) dashboard under the **ERC-20 Paymaster** tab will show your token configuration.
 
-   ![image-of-cdp](link-to-image)
+![cdp-erc20-configuration](../../assets/images/paymaster-tutorials/cdp-paymaster-config.png)
 
 ## Configure Gas Policy
 
@@ -84,12 +84,12 @@ If users are new to your application and do not have the required token, conside
 
    This ensures all transactions use the ERC-20 token for gas.
 
-   ![image-of-policy](link-to-policy-screenshot)
+![cdp-policy-setting](../../assets/images/paymaster-tutorials/cdp-policy-settings.png)
 
 3. **Copy Endpoint URLs**  
    Save your Paymaster and Bundler endpoints as environment variables for use in your project.
 
-   ![image-of-policy](link-to-policy-screenshot)
+![cdp-pm-bundler-endpoint](../../assets/images/paymaster-tutorials/cdp-copy-endpoint.png)
 
 ## Enable ERC-20 Gas Payments in Your Project
 
@@ -180,11 +180,21 @@ Finally, update your component to include a button that triggers the `handleMint
 </button>
 ```
 
+![mint-with-cbbtc](../../assets/images/paymaster-tutorials/mint-cbbtc.png)
+
 ## Verify the Transactions
 
 After minting, verify the gas payments and NFT minting on a block explorer like [Basescan](https://basescan.org/). Transactions will appear under the **Token Transfers (ERC-20)** tab for the receiving address.
 
-![image-of-cdp](image-of-basescan)
+![basescan-transaction-page](../../assets/images/paymaster-tutorials/basescan-token-transfer.png)
+
+## Conclusion
+
+Congratulations! You’ve successfully integrated ERC-20 token-based gas payments into your application using the Coinbase Paymaster. By enabling users to pay for gas fees with tokens like `cbBTC`, you’ve significantly enhanced the onboarding experience and aligned your application’s functionality with its ecosystem token.
+
+This tutorial demonstrated how to request token approval, configure Paymaster gas policies, and implement the necessary functions and hooks in your project. With this setup, your application now offers a seamless and user-friendly experience that abstracts away native token dependencies.
+
+Next, explore further customization options for Paymaster policies to tailor your application’s transaction flow and improve user engagement. Happy building!
 
 ---
 
