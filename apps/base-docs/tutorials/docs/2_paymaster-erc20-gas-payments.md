@@ -35,38 +35,40 @@ Ready? Let's build!
 
 ---
 
-## Request Access for ERC-20 Gas Payments
+## Objectives
+
+- Configure the Coinbase Paymaster to allow users to pay gas fees using a custom ERC-20 token, such as `cbBTC`.
+- Integrate Paymaster policies to secure transactions and align them with your application’s user experience goals.
+- Abstract native token dependencies (ETH) to simplify onboarding and provide a streamlined, user-friendly transaction flow for your onchain application.
+
+## Prerequisites
+
+### Access to the Coinbase Developer Platform
+
+You'll need to set up an account on with [Coinbase Developer Platform (CDP)](https://www.coinbase.com/cloud) account. The CDP provides various tools and services for blockchain development, including access to API endpoints and other resources that will be instrumental in your project. Once you've created your account, you'll be ready to move forward with integrating these services into your application.
+
+### Request Access for ERC-20 Gas Payments
 
 To enable ERC-20 tokens as gas payment options, you need to configure the Coinbase Paymaster to recognize your token. This involves submitting a request to whitelist your token and defining where the gas payments (in ERC-20 tokens) will be sent.
 
 Follow the steps below to request access and get your token approved:
 
-1. **Submit the Form**  
-   Use [this form](https://app.deform.cc/form/9b59499b-e82e-4879-8100-40c603084747/?page_number=0) to request access to enable ERC-20 gas payments. You'll need:
+**Submit the Form**  
+ Use [this form](https://app.deform.cc/form/9b59499b-e82e-4879-8100-40c603084747/?page_number=0) to request access to enable ERC-20 gas payments. You'll need:
 
-   - **Contract Address**: The address of the ERC-20 token you want to use for gas payments.
-   - **Receiving Address**: An address where the tokens will be sent as users pay for gas.
+- **Contract Address**: The address of the ERC-20 token you want to use for gas payments.
+- **Receiving Address**: An address where the tokens will be sent as users pay for gas.
 
-2. **Example for `cbBTC`:**
-
-   - Contract Address: `0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf` ([Token Tracker on Basescan](https://basescan.org/token/0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf)).
-
-:::tip Token Decimals
-
-Verify the number of decimals for your token (in this case, 8 decimals) to set the correct allowances.
-
-:::
-
-3. **Approval Notification**  
-   Once approved, your Coinbase Developer Platform (CDP) dashboard under the **ERC-20 Paymaster** tab will show your token configuration.
+**Approval Notification**  
+Once approved, your Coinbase Developer Platform (CDP) dashboard under the **ERC-20 Paymaster** tab will show your token configuration.
 
 ![cdp-erc20-configuration](../../assets/images/paymaster-tutorials/cdp-paymaster-config.png)
 
-## Configure Gas Policy
+## Configure Paymaster & Bundler Gas Policy
 
 Once your ERC-20 token is approved for gas payments, the next step is to configure your Paymaster’s gas policy. Gas policies allow you to fine-tune how transactions are handled, ensuring that your application remains secure, fair, and functional while providing a seamless experience for your users.
 
-For this example, we’ll configure the policy to always require a custom ERC-20 token for gas payments. This setup ensures that users interact with your application in a predictable and consistent manner.
+For this example, you'll configure the policy to always require a custom ERC-20 token for gas payments. This setup ensures that users interact with your application in a predictable and consistent manner.
 
 :::info
 
@@ -74,20 +76,13 @@ If users are new to your application and do not have the required token, conside
 
 :::
 
-1. **Navigate to the Configuration Page**  
-   Go to the [Paymaster Configuration Tab](https://portal.cdp.coinbase.com/products/bundler-and-paymaster).
+Navigate to the [Paymaster Configuration Tab](https://portal.cdp.coinbase.com/products/bundler-and-paymaster) and configure the policy parameters with a **per user limit of $0.01** and set the **maximum number of user operations to 1**. These settings ensure that all transactions will utilize the ERC-20 token for gas payments.
 
-2. **Set Policy Parameters:**
-
-   - **Per User Limit:** `$0.01`
-   - **Max Number of User Operations:** `1`
-
-   This ensures all transactions use the ERC-20 token for gas.
+This ensures all transactions use the ERC-20 token for gas.
 
 ![cdp-policy-setting](../../assets/images/paymaster-tutorials/cdp-policy-settings.png)
 
-3. **Copy Endpoint URLs**  
-   Save your Paymaster and Bundler endpoints as environment variables for use in your project.
+Save your Paymaster and Bundler endpoints as environment variables for use in your project.
 
 ![cdp-pm-bundler-endpoint](../../assets/images/paymaster-tutorials/cdp-copy-endpoint.png)
 
