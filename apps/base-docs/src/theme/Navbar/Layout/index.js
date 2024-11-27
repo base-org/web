@@ -29,7 +29,7 @@ export default function NavbarLayout({children}) {
       aria-label={translate({
         id: 'theme.NavBar.navAriaLabel',
         message: 'Main',
-        description: 'The ARIA label for the main navigation',
+        description: 'ARIA label for the main navigation',
       })}
       className={clsx(
         'navbar',
