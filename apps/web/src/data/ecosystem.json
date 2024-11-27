@@ -4207,6 +4207,15 @@
     "imageUrl": "/images/partners/blocklords.png"
   },
   {
+    "name": "BTCFi",
+    "tags": [
+      "defi"
+    ],
+    "description": "BTCFi is a decentralized crosschain Bitcoin asset management platform offering native Bitcoin collateralization to mint a Bitcoin-backed stablecoin, BtcUSD.",
+    "url": "https://www.btcfi.one/",
+    "imageUrl": "/images/partners/btcfi.svg"
+  },
+  {
     "name": "Phantom",
     "tags": [
       "wallet"
