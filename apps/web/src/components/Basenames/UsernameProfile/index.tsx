@@ -28,7 +28,7 @@ export default function UsernameProfile() {
       </div>
       <span className="mt-24">
         Content displayed on this profile page is rendered directly from the decentralized Basenames
-        protocol, and is not maintained or moderated by, nor under the control of, Coinbase.
+        protocol and is neither maintained nor moderated by Coinbase.
       </span>
     </div>
   );
