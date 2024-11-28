@@ -230,11 +230,7 @@ function MobileMenu({ color }: MobileMenuProps) {
                 >
                   <Icon name="discord" />
                 </a>
-                <a
-                  href="https://twitter.com/base"
-                  title="Join us on Twitter"
-                  aria-label="Join us on Twitter"
-                >
+                <a href="https://x.com/base" title="Join us on X" aria-label="Join us on X">
                   <Icon name="twitter" />
                 </a>
                 <a

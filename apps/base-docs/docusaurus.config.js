@@ -302,7 +302,7 @@ const config = {
               icon: 'twitter',
               type: 'custom-dropdownLink',
               target: '_blank',
-              to: 'https://www.twitter.com/base',
+              to: 'https://www.x.com/base',
               eventLabel: 'socials_twitter',
               eventContext: 'navbar',
             },
