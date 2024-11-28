@@ -3072,6 +3072,14 @@
     "subcategory": "social"
   },
   {
+    "name": "Toucan",
+    "description": "Toucan provides onchain infrastructure and liquid markets for carbon removal credits, making climate action directly accessible to Base's users and decentralized apps.",
+    "url": "https://toucan.earth/",
+    "imageUrl": "/images/partners/toucan.png"
+    "category": "consumer",
+    "subcategory": "real world"
+  },
+  {
     "name": "Warpcast",
     "description": "Warpcast is a Farcaster client.",
     "url": "https://warpcast.com",
