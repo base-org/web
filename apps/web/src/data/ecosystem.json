@@ -3048,6 +3048,14 @@
     "subcategory": "creator"
   },
   {
+    "name": "plant-based",
+    "description": "plant-based is a (re)generative art series that evolves, grows and stores carbon. Created by cyrus clarke in partnership with Toucan and fxHash.",
+    "url": "https://www.plantbased.art/",
+    "imageUrl": "/images/partners/plantbased.jpg",
+    "category": "consumer",
+    "subcategory": "nft"
+  },
+  {
     "name": "0xPPL",
     "description": "0xPPL is a web3 social platform enabling you to follow or interact with onchain activities of your peers & discover trends in a human-readable feed. Access your multi-chain portfolio across EVMs, Solana, Cosmos, and TON.",
     "url": "https://0xppl.com",
