@@ -34,7 +34,7 @@ This tutorial uses Coinbase's [OnchainKit]. Familiarity with its basic concepts 
 
 ### Basename
 
-A basename with a few text records (Github, Twitter, website) is required for this tutorial. If you don't have a Basename. Get one [here](https://www.base.org/names).
+A basename with a few text records (Github, X, website) is required for this tutorial. If you don't have a Basename. Get one [here](https://www.base.org/names).
 
 ---
 
@@ -42,7 +42,7 @@ A basename with a few text records (Github, Twitter, website) is required for th
 
 ![image-basename](../../assets/images/basenames-tutorial/basename-profile-home.png)
 
-To set a text record for your basename, start by visiting `https://www.base.org/name/<YOUR-BASE-NAME>`. Connect your wallet to manage your profile, then click the `Manage profile` button. Add one or more text records, such as your X (formerly Twitter) URL. Once you've added the desired records, click the `Save` button at the bottom of the page. Finally, confirm and sign the transaction to make the changes onchain.
+To set a text record for your basename, start by visiting `https://www.base.org/name/<YOUR-BASE-NAME>`. Connect your wallet to manage your profile, then click the `Manage profile` button. Add one or more text records, such as your X (formerly X) URL. Once you've added the desired records, click the `Save` button at the bottom of the page. Finally, confirm and sign the transaction to make the changes onchain.
 
 ![image-basename](../../assets/images/basenames-tutorial/confirm-textrecord-update.png)
 
@@ -115,7 +115,7 @@ import { publicClient } from '../client';
 // Component code will go here
 ```
 
-`IdentityWrapper` will fetch and display social media and profile information for a given Base address using OnchainKit and the Ethereum Name Service (ENS). It will query for the ENS name associated with the address and retrieve relevant text records (Twitter, GitHub, and website URL) using the specified resolver, storing this data in both component state and local storage for optimized performance. The component will be designed to present this information in a user-friendly, expandable format.
+`IdentityWrapper` will fetch and display social media and profile information for a given Base address using OnchainKit and the Ethereum Name Service (ENS). It will query for the ENS name associated with the address and retrieve relevant text records (X, GitHub, and website URL) using the specified resolver, storing this data in both component state and local storage for optimized performance. The component will be designed to present this information in a user-friendly, expandable format.
 
 ## Implementing the Component Logic
 
@@ -186,7 +186,7 @@ The full list of existing text records for a basename:
   Github,
   Email,
   Phone,
-  Twitter,
+  X,
   Farcaster,
   Lens,
   Telegram,
@@ -228,7 +228,7 @@ return (
             {ensText.twitter && (
               <div className="flex items-center space-x-2">
                 <Twitter className="h-4 w-4" />
-                <span>Twitter:</span>
+                <span>X:</span>
                 <a
                   href={`https://x.com/${ensText.twitter}`}
                   target="_blank"

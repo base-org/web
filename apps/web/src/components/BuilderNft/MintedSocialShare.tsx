@@ -27,11 +27,7 @@ export function MintedSocialShare() {
           <Icon name="farcaster" />
         </Button>
       </Link>
-      <Link
-        href={`https://twitter.com/intent/tweet?text=${shareText}`}
-        target="_blank"
-        rel="noreferrer"
-      >
+      <Link href={`https://x.com/intent/tweet?text=${shareText}`} target="_blank" rel="noreferrer">
         <Button variant={ButtonVariants.Secondary}>
           <Icon name="twitter" />
         </Button>
