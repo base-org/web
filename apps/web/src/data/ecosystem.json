@@ -4214,5 +4214,15 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
-  }
+  },
+  {  
+    "name": "Akronswap",
+    "tags": [
+      "defi"
+    ],
+    "description": "A DEX where LPs can earn stable yield, optimized for restaking interest-bearing tokens such as aaveUSDC and aaveWETH.",
+    "url": "https://akronswap.com/",
+    "imageUrl": "/images/partners/phantom.svg"
+  }  
+  
 ]
