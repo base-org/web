@@ -23,6 +23,7 @@
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+    
   },
 
   // ESLint

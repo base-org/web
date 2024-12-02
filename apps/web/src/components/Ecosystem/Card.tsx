@@ -8,14 +8,14 @@ type Props = {
   url: string;
   description: string;
   imageUrl: string;
-  tags: string[];
+  category: string;
 };
 
 function getNiceDomainDisplayFromUrl(url: string) {
   return url.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0];
 }
 
-export default function EcosystemCard({ name, url, description, imageUrl, tags }: Props) {
+export default function EcosystemCard({ name, url, description, imageUrl, category }: Props) {
   return (
     <Card innerClassName="p-4 group/ecosystem-card">
       <a
@@ -45,7 +45,7 @@ export default function EcosystemCard({ name, url, description, imageUrl, tags }
           </div>
           <div className="flex h-6 flex-col justify-center rounded-[100px] bg-black px-2 py-1">
             <span className="rounded-full border border-white px-2 py-1 font-mono text-xs uppercase text-white">
-              {tags[0]}
+              {category}
             </span>
           </div>
         </div>
