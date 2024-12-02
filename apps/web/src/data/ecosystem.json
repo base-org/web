@@ -107,7 +107,9 @@
     "name": "GhostLogs.xyz",
     "description": "GhostLogs allows anyone to edit live smart contract code for tailored data emission.",
     "url": "https://ghostlogs.xyz",
-    "imageUrl": "/images/partners/ghostLogs.webp"
+    "imageUrl": "/images/partners/ghostLogs.webp",
+    "category": "infra",
+    "subcategory": "data"
   },
   {
     "name": "Bulla Network",
@@ -175,11 +177,11 @@
   },
   {
     "name": "Blocto",
-    "category": "wallet",
-    "subcategory": "account abstraction",
     "description": "Blocto is an account abstraction wallet supporting EVM chains. We boast a user base of 1.7 million so far with a seamless social log in and speedy 30-second onboarding experience, completely coinless.",
     "url": "https://blocto.io/",
-    "imageUrl": "/images/partners/Blocto.webp"
+    "imageUrl": "/images/partners/Blocto.webp",
+    "category": "wallet",
+    "subcategory": "account abstraction"
   },
   {
     "name": "Cred Protocol",
@@ -207,11 +209,11 @@
   },
   {
     "name": "Oku Trade",
-    "category": "defi",
-    "subcategory": "dex",
     "description": "Oku Trade is the best DEX interface. Powered by Uniswap v3, the trading platform offers limit orders, analytics, and position management without fees.",
     "url": "https://oku.trade",
-    "imageUrl": "/images/partners/Oku.webp"
+    "imageUrl": "/images/partners/Oku.webp",
+    "category": "defi",
+    "subcategory": "dex"
   },
   {
     "name": "SubQuery",
@@ -329,9 +331,9 @@
     "name": "BaseSwap",
     "url": "https://baseswap.fi/",
     "description": "BaseSwap is an independent decentralized exchange (DEX) that introduces a groundbreaking concept by allowing users to not only trade assets but also earn protocol-generated revenue from fees. This innovative feature is made possible through the $BSWAP & $BSX tokens, boosting rewards, and enabling users to directly earn cryptocurrencies from swap fees.",
+    "imageUrl": "/images/partners/baseswap.webp",
     "category": "defi",
-    "subcategory": "dex",
-    "imageUrl": "/images/partners/baseswap.webp"
+    "subcategory": "dex"
   },
   {
     "name": "Bitwave",
@@ -385,9 +387,9 @@
     "name": "Everdex",
     "url": "https://www.everdex.app/",
     "description": "Everdex is a multi-chain native decentralized exchange (DEX) that makes trading various tokens across networks simple and efficient. Leveraging Chainrunner, we provide optimized route for swap.",
+    "imageUrl": "/images/partners/everdex.webp",
     "category": "defi",
-    "subcategory": "dex",
-    "imageUrl": "/images/partners/everdex.webp"
+    "subcategory": "dex"
   },
   {
     "name": "Contango",
@@ -449,9 +451,9 @@
     "name": "BlockWallet",
     "url": "https://blockwallet.io/networks/base-wallet",
     "description": "BlockWallet is a self-custodial Web3 wallet focused on speed, reliability, and security ensuring users genuinely own their digital assets without technical concerns.",
+    "imageUrl": "/images/partners/blockwallet.webp",
     "category": "wallet",
-    "subcategory": "self-custody",
-    "imageUrl": "/images/partners/blockwallet.webp"
+    "subcategory": "self-custody"
   },
   {
     "name": "Redlion Printer",

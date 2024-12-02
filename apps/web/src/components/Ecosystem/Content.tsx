@@ -5,6 +5,7 @@ import { TagChip } from 'apps/web/src/components/Ecosystem/TagChip';
 import { SearchBar } from 'apps/web/src/components/Ecosystem/SearchBar';
 import { useMemo, useState } from 'react';
 import { List } from 'apps/web/src/components/Ecosystem/List';
+import { useSearchParams } from 'next/navigation';
 
 export type EcosystemApp = {
   searchName: string;
@@ -16,9 +17,40 @@ export type EcosystemApp = {
   imageUrl: string;
 };
 
+const config = {
+  wallet: ['self-custody', 'account abstraction', 'multisig'],
+  defi: [
+    'stablecoin',
+    'dex',
+    'dex aggregator',
+    'lending/borrowing',
+    'derivatives',
+    'liquidity management',
+    'perpetuals',
+    'options',
+    'options',
+    'portfolio',
+    'insurance',
+    'yield vault',
+  ],
+  consumer: [
+    'creator',
+    'social',
+    'gaming',
+    'messaging',
+    'payments',
+    'music',
+    'real world',
+    'nft',
+    'dao',
+    'crypto taxes',
+  ],
+  onramp: ['centralized exchange', 'fiat on-ramp'],
+  infra: ['ai', 'depin', 'bridge', 'security', 'developer tool', 'node provider', 'raas'],
+};
+
 // Get unique categories and subcategories
 const categories = ['all', ...new Set(ecosystemApps.map((app) => app.category))];
-const subcategories = ['all', ...new Set(ecosystemApps.map((app) => app.subcategory))];
 
 function orderedEcosystemAppsAsc() {
   return ecosystemApps.sort((a, b) => {
@@ -37,35 +69,90 @@ const decoratedEcosystemApps: EcosystemApp[] = orderedEcosystemAppsAsc().map((d)
   searchName: d.name.toLowerCase(),
 }));
 
+const updateUrlParams = (params: { category?: string[]; subcategory?: string[] }) => {
+  const searchParams = new URLSearchParams(window.location.search);
+
+  if (params.category) {
+    searchParams.set('category', params.category.join(','));
+  }
+  if (params.subcategory) {
+    searchParams.set('subcategory', params.subcategory.join(','));
+  }
+
+  window.history.pushState({}, '', `${window.location.pathname}?${searchParams.toString()}`);
+};
+
 export default function Content() {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>(['all']);
-  const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>(['all']);
+  //  This is in Next.js's docs
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const searchParams = useSearchParams()!;
+
+  // Parse multiple categories/subcategories from URL
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(() => {
+    const cats = searchParams.get('category')?.split(',') ?? ['all'];
+    return cats.filter(Boolean); // Remove empty strings
+  });
+
+  const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>(() => {
+    const subs = searchParams.get('subcategory')?.split(',') ?? ['all'];
+    return subs.filter(Boolean);
+  });
+
   const [search, setSearch] = useState<string>('');
   const [showCount, setShowCount] = useState<number>(16);
 
-  console.log('length of json:', ecosystemApps.length);
-
   const selectCategory = (category: string): void => {
     setSelectedCategories((prevCategories) => {
+      const newCategories =
+        category === 'all'
+          ? ['all']
+          : prevCategories.includes(category)
+          ? prevCategories.filter((c) => c !== category)
+          : [...prevCategories.filter((c) => c !== 'all'), category];
+
+      const finalCategories = newCategories.length === 0 ? ['all'] : newCategories;
+
       if (category === 'all') {
-        return ['all'];
+        // Clear URL params when 'all' is selected
+        window.history.pushState({}, '', window.location.pathname);
+        setSelectedSubcategories(['all']);
+        return finalCategories;
       }
-      const newCategories = prevCategories.includes(category)
-        ? prevCategories.filter((c) => c !== category)
-        : [...prevCategories.filter((c) => c !== 'all'), category];
-      return newCategories.length === 0 ? ['all'] : newCategories;
+
+      // Rest of the logic for other categories
+      if (!prevCategories.includes(category) && config[category as keyof typeof config]) {
+        const newSubs = [
+          ...selectedSubcategories.filter((s) => s !== 'all'),
+          ...config[category as keyof typeof config],
+        ];
+        setSelectedSubcategories(newSubs);
+        updateUrlParams({ category: finalCategories, subcategory: newSubs });
+      } else {
+        const categorySubcategories = config[category as keyof typeof config] || [];
+        const newSubs = selectedSubcategories.filter(
+          (sub) => sub === 'all' || !categorySubcategories.includes(sub),
+        );
+        setSelectedSubcategories(newSubs);
+        updateUrlParams({ category: finalCategories, subcategory: newSubs });
+      }
+
+      return finalCategories;
     });
   };
 
   const selectSubcategory = (subcategory: string): void => {
     setSelectedSubcategories((prevSubcategories) => {
-      if (subcategory === 'all') {
-        return ['all'];
-      }
-      const newSubcategories = prevSubcategories.includes(subcategory)
-        ? prevSubcategories.filter((s) => s !== subcategory)
-        : [...prevSubcategories.filter((s) => s !== 'all'), subcategory];
-      return newSubcategories.length === 0 ? ['all'] : newSubcategories;
+      const newSubcategories =
+        subcategory === 'all'
+          ? ['all']
+          : prevSubcategories.includes(subcategory)
+          ? prevSubcategories.filter((s) => s !== subcategory)
+          : [...prevSubcategories.filter((s) => s !== 'all'), subcategory];
+
+      const finalSubcategories = newSubcategories.length === 0 ? ['all'] : newSubcategories;
+
+      updateUrlParams({ subcategory: finalSubcategories });
+      return finalSubcategories;
     });
   };
 
@@ -91,16 +178,9 @@ export default function Content() {
                 isSelected={selectedCategories.includes(category)}
                 key={category}
                 selectTag={selectCategory}
-              />
-            ))}
-          </div>
-          <div className="flex flex-row flex-wrap gap-3">
-            {subcategories.map((subcategory) => (
-              <TagChip
-                tag={subcategory}
-                isSelected={selectedSubcategories.includes(subcategory)}
-                key={subcategory}
-                selectTag={selectSubcategory}
+                subcategories={config[category as keyof typeof config]}
+                selectedSubcategories={selectedSubcategories}
+                selectSubcategory={selectSubcategory}
               />
             ))}
           </div>
@@ -111,7 +191,6 @@ export default function Content() {
       </div>
       <List
         selectedCategories={selectedCategories}
-        selectedSubcategories={selectedSubcategories}
         searchText={search}
         apps={filteredEcosystemApps}
         showCount={showCount}

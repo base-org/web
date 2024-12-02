@@ -9,13 +9,21 @@ type Props = {
   description: string;
   imageUrl: string;
   category: string;
+  subcategory: string;
 };
 
 function getNiceDomainDisplayFromUrl(url: string) {
   return url.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0];
 }
 
-export default function EcosystemCard({ name, url, description, imageUrl, category }: Props) {
+export default function EcosystemCard({
+  name,
+  url,
+  description,
+  imageUrl,
+  category,
+  subcategory,
+}: Props) {
   return (
     <Card innerClassName="p-4 group/ecosystem-card">
       <a
@@ -43,10 +51,17 @@ export default function EcosystemCard({ name, url, description, imageUrl, catego
               />
             </div>
           </div>
-          <div className="flex h-6 flex-col justify-center rounded-[100px] bg-black px-2 py-1">
-            <span className="rounded-full border border-white px-2 py-1 font-mono text-xs uppercase text-white">
-              {category}
-            </span>
+          <div className="flex flex-col items-end gap-y-2.5">
+            <div className="flex h-6 flex-col justify-center rounded-[100px] bg-black px-2 py-1">
+              <span className="rounded-full border border-white px-2 py-1 font-mono text-xs uppercase text-white">
+                {category}
+              </span>
+            </div>
+            <div className="flex h-6 flex-col justify-center rounded-[100px] bg-black px-2 py-1">
+              <span className="rounded-full border border-gray-muted px-2 py-1 font-mono text-[10px] uppercase text-gray-muted">
+                {subcategory}
+              </span>
+            </div>
           </div>
         </div>
         <div className="flex flex-col gap-4">
