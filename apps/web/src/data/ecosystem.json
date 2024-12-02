@@ -9,6 +9,15 @@
     "imageUrl": "/images/partners/wallet-retail.webp"
   },
   {
+    "name": "Arcadia Games",
+    "url": "https://www.arcadiagames.io",
+    "description": "Arcadia Games provides PvP board games on the blockchain. Play chess, battleship and other classic games against other players for crypto.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/arcadia-games.png"
+  },
+  {
     "name": "Connext",
     "tags": [
       "bridge"
