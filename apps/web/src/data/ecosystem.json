@@ -63,6 +63,13 @@
     "imageUrl": "/images/partners/openx.png"
   },
   {
+    "name": "MetaLend",
+    "tags": ["defi", "onramp", "bridge"],
+    "description": "MetaLend simplifies DeFi: track, trade, borrow, and lend across wallets. Compare APYs, manage deposits with top platforms like AAVE and Compound, and trade cross-chain seamlessly within one app.",
+    "url": "https://www.metalend.tech/coinbase?utm_source=baseorg",
+    "imageUrl": "/images/partners/metalend.png"
+  },
+  {
     "name": "MoonPay",
     "tags": [
       "onramp"
