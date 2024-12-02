@@ -40,15 +40,6 @@
     "subcategory": "bridge"
   },
   {
-    "name": "Chad Finance",
-    "tags": [
-      "defi"
-    ],
-    "description": "Chad Finance allows for the minting of stable coins against yield bearing LP positions of concentrated liquidity based Dexes like Uniswap. ",
-    "url": "https://chadfinance.xyz/",
-    "imageUrl": "/images/partners/chadfinance.png"
-  },
-  {
     "name": "The Open X Project",
     "description": "Auto-compounding Vaults. 1% fee NFT Marketplace. Next-gen Aggregator. DeFi applications accessible and open to everyone.",
     "url": "https://app.openxswap.exchange/",
@@ -208,12 +199,11 @@
   },
   {
     "name": "Nirvana Labs",
-    "tags": [
-      "infra"
-    ],
     "description": "Built by crypto engineers and optimized for the bandwidth, storage, and compute workloads of blockchain transactions, Nirvana offers a bare metal cloud with vertically integrated managed RPC services.",
     "url": "https://nirvanalabs.io/",
-    "imageUrl": "/images/partners/Nirvana.webp"
+    "imageUrl": "/images/partners/Nirvana.webp",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "Oku Trade",
@@ -297,21 +287,11 @@
   },
   {
     "name": "Cyberscope ",
-    "tags": [
-      "security"
-    ],
     "description": "An award-winning blockchain security firm specializing in smart contract audits. We work with some of the biggest networks out there such as Polygon, Chainlink, Klaytn, Oasis, and many more.",
     "url": "cyberscope.io",
-    "imageUrl": "/images/partners/cyberscope.webp"
-  },
-  {
-    "name": "Intract",
-    "tags": [
-      "social"
-    ],
-    "description": "Intract is a web3 growth platform to help you educate new users and build community engagement.\n\n\n",
-    "url": "www.intract.io",
-    "imageUrl": "/images/partners/intract.webp"
+    "imageUrl": "/images/partners/cyberscope.webp",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "Layerr",
@@ -320,15 +300,6 @@
     "imageUrl": "/images/partners/layerr.webp",
     "category": "consumer",
     "subcategory": "nft"
-  },
-  {
-    "name": "Irys",
-    "tags": [
-      "infra"
-    ],
-    "description": "Irys is the only provenance layer. It enables users to limitlessly upload and sequence data while precisely attributing its origin.",
-    "url": "https://irys.xyz/",
-    "imageUrl": "/images/partners/irys.webp"
   },
   {
     "name": "Envio",
@@ -350,10 +321,9 @@
     "name": "ARPA Network",
     "url": "https://www.arpanetwork.io/en-US/randcast",
     "description": "A secure computation network that builds Randcast, an onchain verifiable RNG for tamper-proof randomness in AW, gaming, and NFTs.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/arpa2.webp"
+    "imageUrl": "/images/partners/arpa2.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "BaseSwap",
@@ -404,22 +374,12 @@
     "subcategory": "perpetuals"
   },
   {
-    "name": "XDOGE",
-    "url": "https://xdoge.art/",
-    "description": "xdoge is a perpetual contract trading platform on Base to support up to 150x leverage, designed to be user-friendly, secure, and simple.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/xdoge.webp"
-  },
-  {
     "name": "SlashToken",
     "url": "https://slashtoken.io/",
     "description": "SlashToken is a powerful and budget-friendly tool for sending tokens and NFTs to multiple wallets at once.",
-    "tags": [
-      "other"
-    ],
-    "imageUrl": "/images/partners/slashtoken.webp"
+    "imageUrl": "/images/partners/slashtoken.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Everdex",
@@ -481,10 +441,9 @@
     "name": "trustalabs",
     "url": "https://www.trustalabs.ai/",
     "description": "Trusta Labs aims to build web3 security and data infrastructure to bring more trust and less friction to the web3 world.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/trusta.webp"
+    "imageUrl": "/images/partners/trusta.webp",
+    "category": "infra",
+    "subcategory": "identity"
   },
   {
     "name": "BlockWallet",
@@ -503,22 +462,12 @@
     "subcategory": "nft"
   },
   {
-    "name": "builder.fi",
-    "url": "https://www.builder.fi/",
-    "description": "builder.fi is a SocialFi app where builders can capitalize on their reputation and earn crypto for answering questions.",
-    "tags": [
-      "social"
-    ],
-    "imageUrl": "/images/partners/builderfi.webp"
-  },
-  {
     "name": "Collab.Land",
     "url": "https://www.collab.land/",
     "description": "Collab.Land is the original community management tool that curates social membership based on tokens. We verify and confirm that members possess the required token(s) to participate in communities.",
-    "tags": [
-      "social"
-    ],
-    "imageUrl": "/images/partners/collabland.webp"
+    "imageUrl": "/images/partners/collabland.webp",
+    "category": "infra",
+    "subcategory": "identity"
   },
   {
     "name": "OpenFrind",
@@ -548,28 +497,17 @@
     "name": "GetBlock",
     "url": "https://getblock.io/",
     "description": "GetBlock offers fast and cost-efficient RPC nodes for over 50 blockchains, including Base, catering to hundreds of dApps from diverse segments.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/getblock.webp"
-  },
-  {
-    "name": "Moralis",
-    "url": "https://moralis.io/",
-    "description": "Moralis is a leading crypto data provider that helps companies build great user experiences, drive engagement, growth & revenue in their applications with plug-and-play Web3 APIs. ",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/moralis.webp"
+    "imageUrl": "/images/partners/getblock.webp",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "Quick Intel",
     "url": "https://app.quickintel.io/",
     "description": "Quick intel provides the security tools you need to avoid scams, have more peace of mind and become a confident crypto trader.",
-    "tags": [
-      "security"
-    ],
-    "imageUrl": "/images/partners/quickintel.webp"
+    "imageUrl": "/images/partners/quickintel.webp",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "Cobo Argus",
@@ -591,10 +529,9 @@
     "name": "LlamaNodes",
     "url": "https://llamanodes.com/",
     "description": "Fast and private RPC infrastructure designed for Web3 native teams 🦙",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/llamanodes.webp"
+    "imageUrl": "/images/partners/llamanodes.webp",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "OKLink",
@@ -709,15 +646,6 @@
     "imageUrl": "/images/partners/gemwallet.webp"
   },
   {
-    "name": "DrawTech",
-    "url": "https://www.draw.tech/",
-    "description": "A fully onchain drawing game. Draw with others and earn rewards — until you get drawn over!",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/drawtechlogo.webp"
-  },
-  {
     "name": "TokenTerminal",
     "url": "https://app.xtokenterminal.io/mining/discover?utm_source=coinbase&utm_medium=web",
     "description": "The vision for Terminal is to build a capital markets and liquidity management platform designed for DeFi and NFT projects.",
@@ -758,22 +686,12 @@
     "subcategory": "dex aggregator"
   },
   {
-    "name": "DIP Exchange",
-    "url": "https://www.dip.exchange/#/",
-    "description": "A transparent decentralized derivatives exchange enabling permissionless perpetual trading for any asset by anyone.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/dip.webp"
-  },
-  {
     "name": "OpenPool",
     "url": "https://www.openpool.co/",
     "description": "OpenPool's onchain API processes wallet txs at scale to calculate real-time and historical pricing, cost basis, P&Ls, and realization events so you don't have to.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/openpool2.webp"
+    "imageUrl": "/images/partners/openpool2.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Sweep n' Flip",
@@ -800,31 +718,12 @@
     "subcategory": "gaming"
   },
   {
-    "name": "Shibaments",
-    "url": "https://app.shibaments.com/",
-    "description": "Shibaments is a GameFi ecosystem that will allow users to play, trade and earn on the Base Network. We will be offering not only our own in-house developed P2E games, but also ShibaCore - an interface allowing the community to rapidly plug their own NFT collections, smart contracts and web3 games into the ecosystem. At launch, Shibaments and ShiBattle will be available - The Genesis NFT collection based on unique powerful elemental shibas,and their associated game that allows players to earn rewards such by battling each other's NFTs.",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/shibaments.webp"
-  },
-  {
-    "name": "Coinarcade",
-    "url": "https://dapp.playcoinarcade.xyz/entryPage",
-    "description": "CoinArcade is a Decentralized Esports Layer for All Gamers. With our unified platform experience and weekly tournament designing, players can play/battle/stake 2 earn prizes anytime and anywhere.",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/coinarcade.webp"
-  },
-  {
     "name": "Add3",
     "url": "https://add3.io",
     "description": "EVM smart contract creation and management for web3 projects - Use Add3 to deploy customizable & compliant web3 smart contract products, dapp & analytics in minutes. Code or no-code options available!",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/add3.webp"
+    "imageUrl": "/images/partners/add3.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Timeswap",
@@ -862,10 +761,9 @@
     "name": "SimpleHash",
     "url": "https://simplehash.com/",
     "description": "The SimpleHash API provides access to all NFT data across 40+ chains, including media, floor prices, sales, listings and more. Get started today!",
-    "tags": [
-      "NFT"
-    ],
-    "imageUrl": "/images/partners/simplehash.webp"
+    "imageUrl": "/images/partners/simplehash.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Cymbal",
@@ -887,19 +785,17 @@
     "name": "Omniscia",
     "url": "https://omniscia.io/",
     "description": "Omniscia is a smart contract auditing firm. Our team of experienced smart contract auditors & developers have been building and auditing complex decentralized networks and applications since. 2017.",
-    "tags": [
-      "security"
-    ],
-    "imageUrl": "/images/partners/omniscia.webp"
+    "imageUrl": "/images/partners/omniscia.webp",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "Hexens Cybersecurity",
     "url": "https://hexens.io/",
     "description": "Leading cybersecurity provider and novel cryptography experts, including zk, liquid staking and more.",
-    "tags": [
-      "security"
-    ],
-    "imageUrl": "/images/partners/hexens.ong.webp"
+    "imageUrl": "/images/partners/hexens.ong.webp",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "Toaster Finance",
@@ -929,10 +825,9 @@
     "name": "Chainstack",
     "url": "https://chainstack.com/",
     "description": "The limitless Web3 development stack to build applications for every scale, in DeFi, NFT, gaming, analytics, and everything in between.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/chainstack.webp"
+    "imageUrl": "/images/partners/chainstack.webp",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "Halliday",
@@ -949,15 +844,6 @@
     "imageUrl": "/images/partners/questn.webp",
     "category": "consumer",
     "subcategory": "social"
-  },
-  {
-    "name": "Unlonely",
-    "url": "https://www.unlonely.app/",
-    "description": "Your cozy space on the internet. Start your own channel and launch your own arcade token.",
-    "tags": [
-      "social"
-    ],
-    "imageUrl": "/images/partners/unlonley.webp"
   },
   {
     "name": "PitchTalk",
@@ -1011,10 +897,9 @@
     "name": "Alchemy",
     "url": "https://www.alchemy.com/",
     "description": "Alchemy is the leading web3 developer platform. Alchemy's Account Abstraction APIs and SDK make it easy to offer seamless transactions and simple, secure accounts. Build anything on Base with Alchemy!",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/alchemy.webp"
+    "imageUrl": "/images/partners/alchemy.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Fonbnk",
@@ -1052,10 +937,9 @@
     "name": "OpenName",
     "url": "https://open.name/",
     "description": "Building Omnichain Name Service for 1,000,000,000 Users.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/openname.webp"
+    "imageUrl": "/images/partners/openname.webp",
+    "category": "infra",
+    "subcategory": "identity"
   },
   {
     "name": "GeckoTerminal",
@@ -1069,10 +953,9 @@
     "name": "NFTScan",
     "url": "https://www.nftscan.com/",
     "description": "The world's largest NFT data infrastructure, supporting the complete amount of NFT data for 17 blockchain networks. Providing NFT API for developers.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/nftscan.webp"
+    "imageUrl": "/images/partners/nftscan.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Alien Base",
@@ -1158,10 +1041,9 @@
     "name": "NodeReal",
     "url": "https://nodereal.io/",
     "description": "NodeReal is a one-stop blockchain infrastructure and service provider that embraces the high-speed blockchain era and empowers developers.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/nodereal.webp"
+    "imageUrl": "/images/partners/nodereal.webp",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "zkLink",
@@ -1223,10 +1105,9 @@
     "name": "RSS3",
     "url": "https://rss3.io",
     "description": "RSS3 is an information dissemination protocol designed to achieve open, efficient, and secure flow of information on the Open Web.",
-    "tags": [
-      "social"
-    ],
-    "imageUrl": "/images/partners/rss3.webp"
+    "imageUrl": "/images/partners/rss3.webp",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "Zerion",
@@ -1240,10 +1121,9 @@
     "name": "OpenZeppelin",
     "url": "https://www.openzeppelin.com/",
     "description": "Technology, processes, and people to minimize risk when launching and scaling. Ship faster and more safely.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/oz.webp"
+    "imageUrl": "/images/partners/oz.webp",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "PancakeSwap",
@@ -1297,19 +1177,17 @@
     "name": "DRPC",
     "url": "https://drpc.org",
     "description": "Reliable, Scalable & Cost-efficient RPC solution for EVM-based networks.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/drpc.webp"
+    "imageUrl": "/images/partners/drpc.webp",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "Particle Network",
     "url": "https://particle.network",
     "description": "Particle Network simplifies Web3 app development with seamless authentication and wallet infra solutions.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/particle.webp"
+    "imageUrl": "/images/partners/particle.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Masa",
@@ -1323,10 +1201,9 @@
     "name": "Pocket Universe",
     "url": "https://www.pocketuniverse.app",
     "description": "Pocket Universe analyzes transactions to protect you from scam transactions. As a user, you get up to $2000 of insurance for free on your transactions.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/pocket.webp"
+    "imageUrl": "/images/partners/pocket.webp",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "Openfort",
@@ -1409,30 +1286,12 @@
     "subcategory": "liquidity management"
   },
   {
-    "name": "HaloFi",
-    "url": "https://halofi.me",
-    "description": "Join HaloFi's savings challenges on Base! 🚀 Earn NFTs, build wealth & foster good financial habits. Fun & rewarding personal finance. All onchain!",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/halofi.webp"
-  },
-  {
     "name": "Slingshot Finance",
     "url": "https://slingshot.finance",
     "description": "The Slingshot web app and DeFi wallet support multi-chain swapping for top networks, 70k+ cryptocurrencies, cross-chain bridging, and the ultimate DeFi experience!",
     "imageUrl": "/images/partners/slingshot.webp",
     "category": "defi",
     "subcategory": "dex aggregator"
-  },
-  {
-    "name": "Theaggregator",
-    "url": "https://theaggregator.xyz",
-    "description": "Theaggregator stands as an exemplar of a highly potent decentralized finance (DeFi) toolkit, developed upon the foundational network of Base. This innovative toolkit seamlessly transposes the sophisticated realm of centralized finance into the domain of Decentralized Finance, exclusively within the confines of the Base network.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/theaggregator.webp"
   },
   {
     "name": "Dackieswap",
@@ -1475,15 +1334,6 @@
     "imageUrl": "/images/partners/krystal.webp"
   },
   {
-    "name": "Coinbase WaaS",
-    "url": "https://www.coinbase.com/cloud/products/waas",
-    "description": "The most user-friendly way to onboard your customers to web3.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/waas.webp"
-  },
-  {
     "name": "Coinbase Wallet",
     "url": "https://www.coinbase.com/wallet",
     "description": "The easiest and most secure crypto wallet and dapp browser. Your gateway to the decentralized web.",
@@ -1495,10 +1345,9 @@
     "name": "1rpc",
     "url": "https://1rpc.io",
     "description": "1RPC is a private RPC relay that eradicates metadata exposure and leakage, allowing users to gain control of their interactions with the blockchain with a one-click user experience.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/1rpc.webp"
+    "imageUrl": "/images/partners/1rpc.webp",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "Aave",
@@ -1552,19 +1401,17 @@
     "name": "Blockdaemon",
     "url": "https://blockdaemon.com",
     "description": "The institutional-grade blockchain infrastructure for Web3. Blockdaemon provides an end-to-end suite of blockchain tools, including dedicated nodes, APIs, staking, liquid staking, MPC tech, and more.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/blockdaemon.webp"
+    "imageUrl": "/images/partners/blockdaemon.webp",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "Blocknative",
     "url": "https://onboard.blocknative.com",
-    "description": "Blocknative’s Web3 Onboard is an open-source library that enables dapps to easily connect 40+ wallets, preview transactions, deliver real-time notifications, and more through a great developer UX.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/blocknative.webp"
+    "description": "Blocknative's Web3 Onboard is an open-source library that enables dapps to easily connect 40+ wallets, preview transactions, deliver real-time notifications, and more through a great developer UX.",
+    "imageUrl": "/images/partners/blocknative.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Bonfire",
@@ -1602,10 +1449,9 @@
     "name": "Covalent",
     "url": "https://www.covalenthq.com/",
     "description": "Covalent's industry-leading Unified API brings visibility to billions of data points across 100+ blockchains for developers building multi-chain applications.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/covalent.webp"
+    "imageUrl": "/images/partners/covalent.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Crossmint",
@@ -1614,15 +1460,6 @@
     "imageUrl": "/images/partners/crossmint.webp",
     "category": "consumer",
     "subcategory": "nft"
-  },
-  {
-    "name": "CyberConnect",
-    "url": "https://cyberconnect.me/",
-    "description": "CyberConnect is web3's earliest and biggest social network that enables developers to create social applications utilizing ERC-4337/Account Abstraction, empowering users to own their digital identity, content, connections, and interactions.",
-    "tags": [
-      "social"
-    ],
-    "imageUrl": "/images/partners/cyberconnect.webp"
   },
   {
     "name": "Debank",
@@ -1643,7 +1480,7 @@
   {
     "name": "Decent",
     "url": "https://decent.xyz/",
-    "description": "Cross-chain transactions, meet one-tap payments. Serve customers of every stripe with The Box, empowering them with automatic swaps, built‑in bridging, and seamless secondary sales.",
+    "description": "Cross-chain transactions, meet one-tap payments. Serve customers of every stripe with The Box, empowering them with automatic swaps, built-in bridging, and seamless secondary sales.",
     "imageUrl": "/images/partners/decent.webp",
     "category": "infra",
     "subcategory": "bridge"
@@ -1660,11 +1497,9 @@
     "name": "Gauntlet",
     "url": "https://www.gauntlet.xyz",
     "description": "Solving DeFi's most complex economic problems to drive adoption and understanding of the financial systems of the future | research, risk mgmt, and optimization",
-    "tags": [
-      "security",
-      "infra"
-    ],
-    "imageUrl": "/images/partners/gauntlet.webp"
+    "imageUrl": "/images/partners/gauntlet.webp",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "Helika",
@@ -1774,10 +1609,9 @@
     "name": "Syndicate",
     "url": "https://syndicate.io/",
     "description": "Syndicate is a platform that allows customers to create communities, products, and experiences onchain at enterprise scale.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/syndicate.webp"
+    "imageUrl": "/images/partners/syndicate.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Tally",
@@ -1791,11 +1625,9 @@
     "name": "Tenderly",
     "url": "https://tenderly.co/",
     "description": "Tenderly is a full-stack infrastructure solution for every step of the dapp development lifecycle. Focus on your product with Tenderly infra and tooling for dapp development, testing, deployment, and monitoring.",
-    "tags": [
-      "security",
-      "infra"
-    ],
-    "imageUrl": "/images/partners/tenderly.webp"
+    "imageUrl": "/images/partners/tenderly.webp",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "The Graph",
@@ -1809,10 +1641,9 @@
     "name": "ThirdWeb",
     "url": "https://thirdweb.com/",
     "description": "thirdweb is a complete web3 development framework that provides everything you need to build, launch, and manage web3 apps. We provide dev tools (SDKs in common languages, plug-and-play UI components, ContractKit) and fully managed infrastructure services (storage, RPC nodes, onchain analytics, and more) to enable you to go-to-market faster.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/thirdweb.webp"
+    "imageUrl": "/images/partners/thirdweb.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Wormhole",
@@ -1850,10 +1681,9 @@
     "name": "0x",
     "url": "https://0x.org/",
     "description": "Your one stop shop to build financial products on crypto rails. Enable faster trading, better prices and superior UX in your app.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/0x.webp"
+    "imageUrl": "/images/partners/0x.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Amberdata",
@@ -1883,10 +1713,9 @@
     "name": "Blast by Bware Labs",
     "url": "https://blastapi.io/",
     "description": "Blast is a decentralized API platform with best-in-class response times and availability. It leverages the power of hundreds of node providers and advanced routing algorithms for unmatched service quality!",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/blast.webp"
+    "imageUrl": "/images/partners/blast.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Blockscout",
@@ -1908,10 +1737,9 @@
     "name": "Bridge",
     "url": "https://bridge.xyz",
     "description": "APIs to move into, out of, and between any form of a dollar.",
-    "tags": [
-      "defi"
-    ],
-    "imageUrl": "/images/partners/bridge.webp"
+    "imageUrl": "/images/partners/bridge.webp",
+    "category": "infra",
+    "subcategory": "bridge"
   },
   {
     "name": "Bungee",
@@ -1925,10 +1753,9 @@
     "name": "ChainSafe Gaming",
     "url": "https://gaming.chainsafe.io/",
     "description": "We empower creators. From digital collectibles to in-game assets, incentive mechanisms, and everything in between, change how your players own, create, and get rewarded with ChainSafe Gaming.",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/chainsafe_gaming.webp"
+    "imageUrl": "/images/partners/chainsafe_gaming.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "DefiLlama",
@@ -1942,10 +1769,9 @@
     "name": "DeForm",
     "url": "https://deform.cc/",
     "description": "DeForm is the most beautiful and easiest to use web3 form builder. Get verified wallet addresses, onchain data lookups, Twitter/Discord/Telegram accounts, and talk to your community!",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/deform.webp"
+    "imageUrl": "/images/partners/deform.webp",
+    "category": "infra",
+    "subcategory": "identity"
   },
   {
     "name": "Exodus",
@@ -1967,10 +1793,9 @@
     "name": "Fireblocks",
     "url": "https://www.fireblocks.com/",
     "description": "Fireblocks provides a suite of applications to manage digital asset operations and a complete development platform to build your business on the blockchain.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/fireblocks.webp"
+    "imageUrl": "/images/partners/fireblocks.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Flipside",
@@ -1987,15 +1812,6 @@
     "imageUrl": "/images/partners/gangstaverse.webp",
     "category": "consumer",
     "subcategory": "gaming"
-  },
-  {
-    "name": "Go-Go-Glover",
-    "url": "https://go-go-glover.com",
-    "description": "\"Dive into the Glover universe in a thrilling endless runner! Dodge obstacles, collect magic crystals, and relive the N64 magic on mobile!\"",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/go-go-glover.webp"
   },
   {
     "name": "Guild",
@@ -2041,10 +1857,9 @@
     "name": "Quicknode",
     "url": "https://www.quicknode.com/",
     "description": "As the leading end-to-end web3 developer platform, QuickNode is transforming blockchain infrastructure and tooling by simplifying web3 development and providing high-performance access to 24+ blockchains. Since 2017, QuickNode has empowered hundreds of thousands of top developers and companies to focus on innovation by accelerating dApp build times and offering enterprise-grade solutions to businesses of every size.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/quicknode.webp"
+    "imageUrl": "/images/partners/quicknode.webp",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "Rabby Wallet",
@@ -2058,10 +1873,9 @@
     "name": "Reservoir",
     "url": "https://reservoir.tools/",
     "description": "The most powerful tools to build buying & selling into your app - access NFT data, create, store, and fill NFT orders.",
-    "tags": [
-      "nft"
-    ],
-    "imageUrl": "/images/partners/reservoir.webp"
+    "imageUrl": "/images/partners/reservoir.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "rhino.fi",
@@ -2083,10 +1897,9 @@
     "name": "Sequence",
     "url": "https://sequence.xyz/",
     "description": "Sequence is the all-in-one developer platform + smart wallet that makes building web3 games and applications easy.",
-    "tags": [
-      "wallet"
-    ],
-    "imageUrl": "/images/partners/sequence.webp"
+    "imageUrl": "/images/partners/sequence.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Snaky Cat",
@@ -2100,11 +1913,9 @@
     "name": "Spearbit",
     "url": "https://spearbit.com/",
     "description": "Spearbit is a global distributed network of industry-leading security experts that offer web3 security review and consulting services.",
-    "tags": [
-      "security",
-      "infra"
-    ],
-    "imageUrl": "/images/partners/spearbit.webp"
+    "imageUrl": "/images/partners/spearbit.webp",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "Superfluid",
@@ -2174,20 +1985,17 @@
     "name": "Zellic",
     "url": "https://zellic.io/",
     "description": "Zellic is a blockchain security firm solving the most critical software assurance problems. Our audits prevent business-ending hacks.",
-    "tags": [
-      "security",
-      "infra"
-    ],
-    "imageUrl": "/images/partners/zellic.webp"
+    "imageUrl": "/images/partners/zellic.webp",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "Ankr",
     "url": "https://www.ankr.com/",
     "description": "Build on Web3 with a fast, reliable and distributed network of blockchain nodes",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/ankr.webp"
+    "imageUrl": "/images/partners/ankr.webp",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "Chainlink",
@@ -2289,19 +2097,9 @@
     "name": "Goldsky",
     "url": "https://goldsky.com/",
     "description": "Web3's Realtime Data Platform.\n\nBuild powerful dApps faster with premium blockchain indexing, instant subgraphs, and custom data streaming pipelines.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/goldsky.webp"
-  },
-  {
-    "name": "Landtorn",
-    "url": "https://landtorn.com/lorak",
-    "description": "LandTorn is a platform hosting BASE native games. Play, compete, trade and win. Initially powered by multiple games around the TORN IP and NFT system.",
-    "tags": [
-      "gaming"
-    ],
-    "imageUrl": "/images/partners/landtorn.webp"
+    "imageUrl": "/images/partners/goldsky.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Maverick Protocol",
@@ -2467,10 +2265,9 @@
     "name": "0xSplits",
     "url": "https://www.0xsplits.xyz/",
     "description": "Splits is a set of simple, modular smart contracts for safe and efficient onchain payments. You can split revenue from NFT sales, recoup expenses, diversify an income stream, withhold taxes, and much more.",
-    "tags": [
-      "infra"
-    ],
-    "imageUrl": "/images/partners/0xSplits.webp"
+    "imageUrl": "/images/partners/0xSplits.webp",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Mnemonic",
@@ -2570,21 +2367,11 @@
   },
   {
     "name": "Bitbond Token Tool",
-    "tags": [
-      "defi"
-    ],
     "description": "Bitbond Token Tool is a web3 app that enables users to effortlessly create, manage and multisend ERC20 / ERC1400 tokens and NFTs across leading EVM chains. Users can rely on Token Tool’s configurable smart contract templates that have been audited by CertiK instead of having to program their own smart contracts. Token Tool offers a convenient user interface as well as an API in its enterprise version.",
     "url": "https://tokentool.bitbond.com/",
-    "imageUrl": "/images/partners/tokentool.png"
-  },
-  {
-    "name": "Crypto Hub",
-    "tags": [
-      "defi"
-    ],
-    "description": "Community-Driven Launchpad: Empowering Base Network startups with marketing services, retail fundraising, blockchain development, and tokenization.",
-    "url": "https://cryptohub.investments/",
-    "imageUrl": "/images/partners/cryptohub.png"
+    "imageUrl": "/images/partners/tokentool.png",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Threebalance",
@@ -2683,22 +2470,12 @@
     "subcategory": "data"
   },
   {
-    "name": "Cryptix Tokenization - Tokenlaunchpad",
-    "tags": [
-      "infra"
-    ],
-    "description": "Tokenlaunchpad by Cryptix Tokenization is a web app that enables anyone, with or without coding skills, to create a token. All that’s needed is a working browser and browser wallet such as Metamask.",
-    "url": "https://app.tokenlaunchpad.eu/",
-    "imageUrl": "/images/partners/cryptix.png"
-  },
-  {
     "name": "Portal",
-    "tags": [
-      "infra"
-    ],
     "description": "Portal is an embedded blockchain infrastructure company with non-custodial wallets, on/off ramps, and security firewall to power cross-border payments, embedded Web3 wallets, remittances, and more.",
     "url": "https://www.portalhq.io/",
-    "imageUrl": "/images/partners/portal.jpg"
+    "imageUrl": "/images/partners/portal.jpg",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Mobula",
@@ -2718,12 +2495,11 @@
   },
   {
     "name": "Collectify",
-    "tags": [
-      "nft"
-    ],
     "description": "Launch NFT projects and build your own ecosystem with Collectify.\nOur no-code toolkit empowers small teams and individuals with tools from contract creation, to post-mint project management.",
     "url": "https://collectify.app/",
-    "imageUrl": "/images/partners/collectify.png"
+    "imageUrl": "/images/partners/collectify.png",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Innovaz",
@@ -2735,12 +2511,11 @@
   },
   {
     "name": "Codeslaw",
-    "tags": [
-      "security"
-    ],
     "description": "Codeslaw is a code search engine for verified smart contracts on Base, Ethereum and beyond to help developers find and learn from verified and live smart contracts",
     "url": "https://codeslaw.app",
-    "imageUrl": "/images/partners/codeslaw.png"
+    "imageUrl": "/images/partners/codeslaw.png",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "Everyworld ",
@@ -2749,15 +2524,6 @@
     "imageUrl": "/images/partners/everyworld.png",
     "category": "consumer",
     "subcategory": "social"
-  },
-  {
-    "name": "Time.fun",
-    "tags": [
-      "social"
-    ],
-    "description": "Tokenize your time and allow your fans to get 1-on-1 time with you through unique experiences.",
-    "url": "https://time.fun",
-    "imageUrl": "/images/partners/timefun.png"
   },
   {
     "name": "ResearchHub",
@@ -2800,15 +2566,6 @@
     "subcategory": "fiat on-ramp"
   },
   {
-    "name": "Token Cache",
-    "tags": [
-      "gaming"
-    ],
-    "description": "Introducing Token Cache° The ultimate crypto treasure hunt for degens. Whoever can locate the hidden wallet via GPS coordianates first wins and may claim the crypto within. \nStart searching and be the first to uncover a hidden Token Cache° near you. Our inaugural drop is currently LIVE, a wallet containing 1 ETH is waiting to be found in Arizona.\n\nLedger Location: 33.46203° N, \n\nGo to bonfire.xyz/tokencache to UNLOCK the remaining GPS coordinates and begin your search! \n\nHappy Hunting ⛏",
-    "url": "https://bonfire.xyz/tokencache",
-    "imageUrl": "/images/partners/tokencache.png"
-  },
-  {
     "name": "Sablier",
     "description": "Infrastructure for money streaming and token distribution. DAOs and businesses use Sablier for vesting, payroll, airdrops, and more.",
     "url": "https://sablier.com",
@@ -2818,12 +2575,11 @@
   },
   {
     "name": "Lossless",
-    "tags": [
-      "security"
-    ],
     "description": "World's first unrivaled exploit identification and mitigation tools, designed to foolproof web3 from hacks. ",
     "url": "https://lossless.io/",
-    "imageUrl": "/images/partners/lossless.png"
+    "imageUrl": "/images/partners/lossless.png",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "W3.email",
@@ -2851,12 +2607,11 @@
   },
   {
     "name": "Civic",
-    "tags": [
-      "infra"
-    ],
     "description": "Civic is a tokenized identity solution for the verifiable web, empowering people to privately manage their identities across chains with an on-chain representation of their reusable identity. ",
     "url": "https://www.civic.com/",
-    "imageUrl": "/images/partners/civic.png"
+    "imageUrl": "/images/partners/civic.png",
+    "category": "infra",
+    "subcategory": "identity"
   },
   {
     "name": "Arcadia Finance",
@@ -2875,22 +2630,12 @@
     "subcategory": "gaming"
   },
   {
-    "name": "rep3",
-    "tags": [
-      "social"
-    ],
-    "description": "rep3 is a gamified community engagement platform. No-code platform for you to build engaging campaigns via quests, loyalty programs, points and airdrops",
-    "url": "https://rep3.gg",
-    "imageUrl": "/images/partners/rep3.png"
-  },
-  {
     "name": "Nexandria",
-    "tags": [
-      "infra"
-    ],
     "description": "Nexandria helps solve the blockchain data access trilemma of speed, cost & completeness, enabling uniquely powerful API endpoints for DeFi, SocialFi, AI agents or Analytics.",
     "url": "https://www.nexandria.com/",
-    "imageUrl": "/images/partners/nexandria.png"
+    "imageUrl": "/images/partners/nexandria.png",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Truffi",
@@ -2926,12 +2671,11 @@
   },
   {
     "name": "RockX",
-    "tags": [
-      "infra"
-    ],
     "description": "RockX is a global blockchain node network and gateway for users to seamlessly access Web3, offering institutional-grade solutions and a full suite of developer tools for users to stake and build on all major blockchains.",
     "url": "https://access.rockx.com/product/base-blockchain-api-for-web3-builders",
-    "imageUrl": "/images/partners/rockx.png"
+    "imageUrl": "/images/partners/rockx.png",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "AlfaFrens",
@@ -2943,12 +2687,11 @@
   },
   {
     "name": "Dockhive",
-    "tags": [
-      "infra"
-    ],
     "description": "DockHive integrates Docker with blockchain for a decentralized cloud infrastructure, offering enhanced security, fault tolerance, dynamic scaling, and leveraging the DHT token for ecosystem transactions.",
     "url": "https://dockhive.io",
-    "imageUrl": "/images/partners/dockhive.png"
+    "imageUrl": "/images/partners/dockhive.png",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "HERE Wallet",
@@ -3000,12 +2743,11 @@
   },
   {
     "name": "QuillAudits",
-    "tags": [
-      "security"
-    ],
     "description": "Web3 security leader equipped with robust security solutions and infra, trusted by teams from ZetaChain, Taiko, Polygon and many more since 2018. ",
     "url": "https://quillaudits.com",
-    "imageUrl": "/images/partners/quill-audits.png"
+    "imageUrl": "/images/partners/quill-audits.png",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "Center",
@@ -3022,15 +2764,6 @@
     "imageUrl": "/images/partners/droplinked.png",
     "category": "consumer",
     "subcategory": "payments"
-  },
-  {
-    "name": "omni",
-    "tags": [
-      "defi"
-    ],
-    "description": "Create a token on Base (paired with liquidity from user wallet) in less than 30 seconds. ",
-    "url": "https://www.omniswap.ai",
-    "imageUrl": "/images/partners/omni.png"
   },
   {
     "name": "Bitoro Network",
@@ -3050,12 +2783,11 @@
   },
   {
     "name": "All That Node",
-    "tags": [
-      "infra"
-    ],
     "description": "All That Node is the most comprehensive multi-chain development suite, designed to support multiple networks from a single platform.",
     "url": "https://www.allthatnode.com/",
-    "imageUrl": "/images/partners/allthatnode.png"
+    "imageUrl": "/images/partners/allthatnode.png",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "Base Colors",
@@ -3067,12 +2799,11 @@
   },
   {
     "name": "BlockPI Network",
-    "tags": [
-      "infra"
-    ],
     "description": "BlockPI is a top infra provider in APAC. With 6+ years of experience, BlockPI currently offers one-stop high performance infra services including but not limited to RPC service, validator service, relayer service, account abstraction services across 50+ networks and helps in building the infras for more than 10 public blockchains (Berachain, Blast, Merlin Chain, Taiko, ZetaChain, etc) as their official infra partner. BlockPI also closely partners with over 300+ well-known projects and developers communities. With millions of public users and over 35,000 registered users, BlockPI stably processes 60B+ monthly requests.",
     "url": "https://blockpi.io/",
-    "imageUrl": "/images/partners/blockpi.png"
+    "imageUrl": "/images/partners/blockpi.png",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "Bright Moments",
@@ -3084,12 +2815,11 @@
   },
   {
     "name": "CompareNodes",
-    "tags": [
-      "infra"
-    ],
     "description": "RPC endpoint performance inspector from 27 global locations in 30 seconds.",
     "url": "https://www.comparenodes.com/performance-inspector/#base",
-    "imageUrl": "/images/partners/comparenodes.png"
+    "imageUrl": "/images/partners/comparenodes.png",
+    "category": "infra",
+    "subcategory": "node provider"
   },
   {
     "name": "Crate",
@@ -3149,12 +2879,11 @@
   },
   {
     "name": "HAPI",
-    "tags": [
-      "security"
-    ],
     "description": "HAPI ID enhances blockchain security with Trust Scores, human verification, and multi-account protection, ensuring fair and secure interactions for users, DApps, and businesses.",
     "url": "https://hapi.one/",
-    "imageUrl": "/images/partners/hapi.png"
+    "imageUrl": "/images/partners/hapi.png",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "Interface",
@@ -3182,21 +2911,19 @@
   },
   {
     "name": "Metopia",
-    "tags": [
-      "social"
-    ],
     "description": "Metopia is a decentralized reputation network, empowering onchain actions and attestations.",
     "url": "https://metopia.xyz",
-    "imageUrl": "/images/partners/metopia.png"
+    "imageUrl": "/images/partners/metopia.png",
+    "category": "infra",
+    "subcategory": "identity"
   },
   {
     "name": "Moralis",
-    "tags": [
-      "infra"
-    ],
     "description": "Moralis is a leading crypto data provider helping companies build great user experiences, drive engagement, growth, and revenue in their applications through Moralis’ suite of Web3 APIs and RPC nodes.",
     "url": "https://moralis.io",
-    "imageUrl": "/images/partners/moralis.png"
+    "imageUrl": "/images/partners/moralis.png",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Moshicam",
@@ -3263,24 +2990,6 @@
     "subcategory": "social"
   },
   {
-    "name": "QUANTELICA",
-    "tags": [
-      "gaming"
-    ],
-    "description": "Quantelica ecosystem is developing own Games, NFT Collections, SDKs, Launcher, NFT Marketplace, and much more...",
-    "url": "https://quantelica.com/",
-    "imageUrl": "/images/partners/quantelica.png"
-  },
-  {
-    "name": "SoMon",
-    "tags": [
-      "social"
-    ],
-    "description": "SoMon is a web3 topic-based forum with… Social Monsters! It is a fun space where users create vibrant and engaging Tribes centered around all their passions and fandoms. On SoMon, Tribes, content, and social connections are self-owned by users and communities, and monetization tools are at their disposal to fully leverage their social capital. Users earn SoMon Points and rewards in $OwO by actively participating in Tribes.\n\nAs the first dApp powered by OpenSocial, a protocol providing a scalable Web3 Social infrastructure toolkit to builders, SoMon represents a significant milestone! ",
-    "url": "https://www.social.monster/",
-    "imageUrl": "/images/partners/somon.png"
-  },
-  {
     "name": "Speedtracer",
     "description": "Trace fast to win",
     "url": "https://speedtracer.xyz",
@@ -3295,15 +3004,6 @@
     "imageUrl": "/images/partners/surreal.png",
     "category": "consumer",
     "subcategory": "social"
-  },
-  {
-    "name": "TapBase",
-    "tags": [
-      "nft"
-    ],
-    "description": "We are very excited about our new innovation. TapBase is a great new innovation in NFT and Tap to Earn. Now, for the first time in the world, you can tap to earn TapBase and buy and sell NFTs with it. this is fabulous. TapBase has started working on the Base network and we are now in the first phase of TapBase development. Now is the time to get all the coins and NFTs.",
-    "url": "https://t.me/TapBaseBot",
-    "imageUrl": "/images/partners/tapbase.jpg"
   },
   {
     "name": "Warpcast",
@@ -3379,12 +3079,11 @@
   },
   {
     "name": "CreateMyToken",
-    "tags": [
-      "defi"
-    ],
     "description": "Create your own token in just 1 minute and deploy it on Ethereum, Base, Optimism and more! No code, no setup, no login, and free!",
     "url": "https://www.createmytoken.com/",
-    "imageUrl": "/images/partners/createmytoken.png"
+    "imageUrl": "/images/partners/createmytoken.png",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Mercuryo",
@@ -3412,21 +3111,11 @@
   },
   {
     "name": "Palisade Custody",
-    "tags": [
-      "wallet"
-    ],
     "description": "Palisade is a digital asset custody platform providing services ranging from fully regulated HSM wallets to MPC and passkey-enabled wallets for businesses building on web3",
     "url": "https://www.palisade.co",
-    "imageUrl": "/images/partners/palisade.jpg"
-  },
-  {
-    "name": "RYI Unity",
-    "tags": [
-      "defi"
-    ],
-    "description": "Ryi Unity is a leading decentralized applications builder focused on providing innovative solutions for the decentralized world. We specialize in building robust and secure platforms that allow users to interact with various blockchain networks seamlessly",
-    "url": "https://unity-ventures.com/",
-    "imageUrl": "/images/partners/ryi.png"
+    "imageUrl": "/images/partners/palisade.jpg",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "CoindPay",
@@ -3443,15 +3132,6 @@
     "description": "At Okto, we are dedicated to enhancing the web3 onboarding experience by building a comprehensive orchestration layer that simplifies chain, account, transaction, and fee abstraction for both users and developers. Our platform features a self-custody MPC wallet that supports a single asset portfolio with seamless interoperability across more than 15 chains, including EVM, Solana, Aptos, Cosmos, and others. Additionally, we offer regulated on-ramp and off-ramp features and a gas station service that allows users to pay gas fees with any stable token they possess on any chain. Our SDK allows the Okto wallet to be embedded in any web2 app transforming it almost instantly to web3 without the web2 developers having to learn web3 concepts. Our wallet is currently utilized by over 1.5 million users and has witnessed significant transaction volume, reflecting our rapid growth. More details about our products and journey can be found on our website, okto.tech.",
     "url": "https://okto.tech",
     "imageUrl": "/images/partners/okto.png"
-  },
-  {
-    "name": "JuicyBet",
-    "tags": [
-      "gaming"
-    ],
-    "description": "JuicyBet is an innovative GambleFi Ecosystem Decentralized Project. Our platform stands at the confluence of gambling and web3 technologies, integrating the advantages of both sectors. ",
-    "url": "https://juicybet.net/",
-    "imageUrl": "/images/partners/juicybet.png"
   },
   {
     "name": "Mozaic Finance",
@@ -3526,15 +3206,6 @@
     "subcategory": "payments"
   },
   {
-    "name": "Koda",
-    "tags": [
-      "nft"
-    ],
-    "description": "Generative Art Marketplace bringing always new experiment to the room",
-    "url": "https://koda.art",
-    "imageUrl": "/images/partners/koda.png"
-  },
-  {
     "name": "Paragraph",
     "description": "Create, share, and explore the best writing on the internet.",
     "url": "https://paragraph.xyz/",
@@ -3592,12 +3263,11 @@
   },
   {
     "name": "Conduit",
-    "tags": [
-      "infra"
-    ],
     "description": "Launch your Base L3 in minutes with Conduit: the rollup-native cloud platform. Customize your chain to your use case, get automatic upgrades, and manage all your infra in one central location.",
     "url": "https://www.conduit.xyz/",
-    "imageUrl": "/images/partners/conduit.png"
+    "imageUrl": "/images/partners/conduit.png",
+    "category": "infra",
+    "subcategory": "raas"
   },
   {
     "name": "Fit Club",
@@ -3649,21 +3319,19 @@
   },
   {
     "name": "Talent Protocol",
-    "tags": [
-      "social"
-    ],
     "description": "Talent Protocol is building the resume for the onchain era of the internet. It unlocks unique reputation data and makes human potential more visible.",
     "url": "https://talentprotocol.com",
-    "imageUrl": "/images/partners/talent-protocol.png"
+    "imageUrl": "/images/partners/talent-protocol.png",
+    "category": "infra",
+    "subcategory": "identity"
   },
   {
     "name": "Thirdwave Labs",
-    "tags": [
-      "infra"
-    ],
     "description": "Thirdwave's Wallet Intelligence is a powerful tool designed to provide developers and businesses in the Web3 ecosystem with deep insights into their user's wallets. By leveraging this API data, builders can transform blockchain data into meaningful actions. Utilize wallet-based value tiers, wallet scoring, token ownership, bot warnings, and behavioral insights to personalize experiences, enhance engagement, and drive monetization.",
     "url": "https://thirdwavelabs.com/",
-    "imageUrl": "/images/partners/thirdwave.png"
+    "imageUrl": "/images/partners/thirdwave.png",
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Umbra",
@@ -3699,12 +3367,11 @@
   },
   {
     "name": "AuditOne & Insura",
-    "tags": [
-      "security"
-    ],
     "description": "AuditOne is an all-in-one audit platform, that offers security services, tools & risk coverage to ensure the safety and reliability of smart contracts and AI-systems. We redefine blockchain auditing by perfectly balancing quality, speed, affordability, and reliability.\nOur unique approach is tailored to the dynamic nature of the blockchain industry, ensuring we deliver excellence without compromise.\n",
     "url": "https://www.auditone.io/, \n\n\n",
-    "imageUrl": "/images/partners/audit.png"
+    "imageUrl": "/images/partners/audit.png",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "Stack",
@@ -3716,12 +3383,11 @@
   },
   {
     "name": "OtterSec",
-    "tags": [
-      "security"
-    ],
     "description": "OtterSec is a blockchain security firm focused on identifying and remedying critical vulnerabilities.",
     "url": "https://osec.io/",
-    "imageUrl": "/images/partners/ottersec.png"
+    "imageUrl": "/images/partners/ottersec.png",
+    "category": "infra",
+    "subcategory": "security"
   },
   {
     "name": "MASQ Network",
