@@ -4214,5 +4214,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "Turbopump",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Compete in fast-paced, multiplayer trading races. Win ETH. Support real world animal charities.",
+    "url": "https://turbopump.xyz",
+    "imageUrl": "/images/partners/turbopump.png"
   }
 ]
