@@ -2225,6 +2225,15 @@
     "imageUrl": "/images/partners/layerzero.webp"
   },
   {
+    "name": "Onmeta",
+    "url": "https://onmeta.in",
+    "description": "Onmeta specializes in offering seamless On & Off-ramp solutions for the Indian 🇮🇳 and Philippine 🇵🇭 markets. Our platform integrates a wide range of local payment methods, including UPI, GCash, PayMaya, GrabPay, and more, addressing the needs of regions with limited card penetration. We are committed to making crypto accessible and easy to use for everyone, ensuring secure and efficient transactions.",
+    "tags": [
+      "onramp"
+    ],
+    "imageUrl": "/images/partners/onmeta.webp"
+  },
+  {
     "name": "Onramp Money",
     "url": "https://onramp.money/",
     "description": "Onramp.money is a convenient & secure way to convert your FIAT to Web3 money in <60s! We allow your users to buy & sell digital assets with lowest processing fees. Onramp.money can be easily integrated with your global decentralized application (dApp) to smoothly onboard users to purchase multiple digital assets across chains.",
