@@ -36,7 +36,7 @@ We collect the following personal information when providing the Services:
 
 - App, Browser and Device Information:
 
-- Information about the device, operating system, and browser you are using~~ ~~
+- Information about the device, operating system, and browser you’re using~~ ~~
 - Other device characteristics or identifiers (e.g. plugins, the network you connect to)
 - IP address/derived location information
 
@@ -44,8 +44,8 @@ We collect the following personal information when providing the Services:
 
 - Information from Coinbase Companies (“**Affiliates**”):  We may obtain information about you, such as Basic User Information from our Affiliates (for instance, if you use Base with your Coinbase-hosted wallet) as part of facilitating, supporting, or providing our Services.
 - Blockchain Data: We may analyze public blockchain data, including timestamps of transactions or events, transaction IDs, digital signatures, transaction amounts and wallet addresses
-- Information from Analytics Providers: We receive information about your website usage and interactions from third-party analytics providers. This includes browser fingerprint, device information, and IP address.
-- Error Tracking Data: We utilize information from third party service providers to provide automated error monitoring, reporting, alerting and diagnostic capture for Service and Site errors to allow User and Developers to build more effectively on the Base platform.
+- Information from Analytics Providers: We receive information about your website usage and interactions from third party analytics providers. This includes browser fingerprint, device information, and IP address.
+- Error Tracking Data: We utilize information from third party service providers to provide automated error monitoring, reporting, alerting and diagnostic capture for Service and Site errors to allow User or Developers to build more effectively on the Base platform.
 
 # 2. HOW WE USE YOUR INFORMATION 
 
