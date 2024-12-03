@@ -43,9 +43,9 @@ yarn build
 
 ## Local development
 
-To start a development server on localhost, run `yarn workspace @app/<project> dev`.
+To start a development server on localhost, run `yarn dev:<project>`.
 
-For example, to start the `web` app locally, you would run `yarn workspace @app/web dev`.
+For example, to start the `web` app locally, you would run `yarn dev:web`.
 
 ## Projects
 
@@ -53,20 +53,20 @@ There are three projects which can be run individually.
 
 ### Web
 
-```
-yarn workspace @app/web dev
+```shell
+yarn dev:web
 ```
 
 ### Docs
 
-```
-yarn workspace @app/base-docs dev
+```shell
+yarn dev:docs
 ```
 
 ### Bridge
 
-```
-yarn workspace @app/bridge dev
+```shell
+yarn dev:bridge
 ```
 
 ## Contributing
