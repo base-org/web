@@ -3,7 +3,7 @@ import {
   ConnectWallet,
   Wallet,
   WalletDropdown,
-  WalletDropdownBaseName,
+  WalletDropdownBasename,
   WalletDropdownDisconnect,
   WalletDropdownLink,
 } from '@coinbase/onchainkit/wallet';
@@ -23,10 +23,11 @@ import logEvent, {
 import sanitizeEventString from 'base-ui/utils/sanitizeEventString';
 import classNames from 'classnames';
 import { useCallback, useEffect, useState } from 'react';
-import { useCopyToClipboard } from 'usehooks-ts';
+import { useCopyToClipboard, useMediaQuery } from 'usehooks-ts';
 import { useAccount, useSwitchChain } from 'wagmi';
 import ChainDropdown from 'apps/web/src/components/ChainDropdown';
 import { useSearchParams } from 'next/navigation';
+import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
 
 export enum ConnectWalletButtonVariants {
   BaseOrg,
@@ -36,6 +37,16 @@ export enum ConnectWalletButtonVariants {
 type ConnectWalletButtonProps = {
   connectWalletButtonVariant: ConnectWalletButtonVariants;
 };
+
+export function DynamicWrappedConnectWalletButton({
+  connectWalletButtonVariant = ConnectWalletButtonVariants.BaseOrg,
+}: ConnectWalletButtonProps) {
+  return (
+    <DynamicCryptoProviders>
+      <ConnectWalletButton connectWalletButtonVariant={connectWalletButtonVariant} />
+    </DynamicCryptoProviders>
+  )
+}
 
 export function ConnectWalletButton({
   connectWalletButtonVariant = ConnectWalletButtonVariants.BaseOrg,
@@ -93,10 +104,12 @@ export function ConnectWalletButton({
     );
   }, [openConnectModal]);
 
-  const userAddressClasses = classNames('text-lg font-display hidden lg:inline-block', {
+  const userAddressClasses = classNames('text-lg font-display', {
     'text-white': connectWalletButtonVariant === ConnectWalletButtonVariants.BaseOrg,
     'text-black': connectWalletButtonVariant === ConnectWalletButtonVariants.Basename,
   });
+
+  const isDesktop = useMediaQuery('(min-width: 768px)');
 
   if (isConnecting || isReconnecting || !isMounted) {
     return <Icon name="spinner" color="currentColor" />;
@@ -141,12 +154,12 @@ export function ConnectWalletButton({
       >
         <div className="flex items-center gap-2">
           <UserAvatar />
-          <Name chain={basenameChain} className={userAddressClasses} />
+          {isDesktop && <Name chain={basenameChain} className={userAddressClasses} />}
           {showChainSwitcher && <ChainDropdown />}
         </div>
       </ConnectWallet>
 
-      <WalletDropdown className="rounded-xl bg-white font-sans shadow-md">
+      <WalletDropdown className="z-50 rounded-xl bg-white font-sans shadow-md">
         <Identity className="px-4 pb-2 pt-3 font-display">
           <UserAvatar />
           <Name
@@ -156,7 +169,7 @@ export function ConnectWalletButton({
           />
           <EthBalance className="font-display" />
         </Identity>
-        <WalletDropdownBaseName className="font-display hover:bg-gray-40/20" />
+        <WalletDropdownBasename className="font-display hover:bg-gray-40/20" />
         <WalletDropdownLink
           icon="wallet"
           href="https://wallet.coinbase.com"

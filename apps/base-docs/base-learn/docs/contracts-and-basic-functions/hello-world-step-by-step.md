@@ -77,7 +77,7 @@ Is `public` the most appropriate [visibility specifier]?
 
 It would work, but you won't be calling this function from within the contract, so `external` is more appropriate.
 
-You also need to specify a return type, and we've decided this function should return a string. You'll learn more about this later, but in Solidity, many of the more complex types require you to specify if they are `storage` or `memory`. You can then have your function return a string of `"Hello World!`.
+You also need to specify a return type, and we've decided this function should return a string. You'll learn more about this later, but in Solidity, many of the more complex types require you to specify if they are `storage` or `memory`. You can then have your function return a string of `"Hello World!"`.
 
 Don't forget your semicolon. They're mandatory in Solidity!
 
@@ -136,7 +136,7 @@ function Greeter(string memory _name) external pure returns (string memory) {
 
 Unfortunately, this does not work in Solidity. The error message you receive is a little confusing:
 
-> TypeError: Operator + not compatible with types literal_string "Hello " and string memory.
+> TypeError: Operator + not compatible with types literal_string "Hello" and string memory.
 
 You might think that there is some sort of type casting or conversion error that could be solved by explicitly casting the string literal to string memory, or vice versa. This is a great instinct. Solidity is a very explicit language.
 
