@@ -3,7 +3,7 @@
 import Card from '../base-org/Card';
 import classNames from 'classnames';
 import * as Popover from '@radix-ui/react-popover';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon, CheckIcon } from '@heroicons/react/24/outline';
 
 const config = {
   wallet: ['self-custody', 'account abstraction', 'multisig'],
@@ -106,18 +106,17 @@ export function EcosystemFilters({
                   <Card radius={8} innerClassName="bg-[#191919] p-4">
                     <div className="flex flex-col gap-2">
                       {config[category as keyof typeof config]?.map((subcategory) => (
-                        <label
+                        <button
                           key={subcategory}
-                          htmlFor={subcategory}
-                          className="flex cursor-pointer items-center gap-2 text-sm uppercase transition-colors hover:text-white"
+                          type="button"
+                          onClick={() => onSubcategorySelect(subcategory)}
+                          className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm uppercase transition-colors hover:bg-white/10"
                         >
-                          <input
-                            id={subcategory}
-                            type="checkbox"
-                            checked={selectedSubcategories.includes(subcategory)}
-                            onChange={() => onSubcategorySelect(subcategory)}
-                            className="h-4 w-4 rounded border-white/20 bg-transparent checked:bg-white checked:hover:bg-white/80"
-                          />
+                          <div className="h-4 w-4 flex-shrink-0">
+                            {selectedSubcategories.includes(subcategory) && (
+                              <CheckIcon className="h-4 w-4 text-white" />
+                            )}
+                          </div>
                           <span
                             className={
                               selectedSubcategories.includes(subcategory)
@@ -127,7 +126,7 @@ export function EcosystemFilters({
                           >
                             {subcategory}
                           </span>
-                        </label>
+                        </button>
                       ))}
                     </div>
                   </Card>
