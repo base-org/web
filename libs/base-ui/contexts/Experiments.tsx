@@ -58,14 +58,8 @@ export default function ExperimentsProvider({ children }: ExperimentsProviderPro
  }, [ampDeploymentKey]);
 
   const startExperiment = useCallback(async () => {
-    if (!experimentClient) return;
-    try {
-      await experimentClient.start();
-      setIsReady(true);
-    } catch (error) {
-      console.error(`Error starting experiments for ${ampDeploymentKey}:`, error);
-    }
-  }, [experimentClient]);
+     if (experimentClient) await experimentClient.start();
+  }, []);
 
   useEffect(() => {
     startExperiment()
