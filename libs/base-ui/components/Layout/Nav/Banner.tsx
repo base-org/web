@@ -19,7 +19,10 @@ type BannerProps = {
 };
 
 export default function Banner({ href, text, bannerName }: BannerProps) {
-  const [isBannerVisible, setIsBannerVisible] = useLocalStorage(`${bannerName}Visible`, true);
+  const [isBannerVisible, setIsBannerVisible] = useLocalStorage(
+    `${bannerName}Visible`,
+    true,
+  );
   const pathname = usePathname();
   const isOnPage = pathname === href.split('?')[0];
 
@@ -33,7 +36,7 @@ export default function Banner({ href, text, bannerName }: BannerProps) {
       },
       AnalyticsEventImportance.high,
     );
-  }, [bannerName]);
+  }, [logEvent, ActionType, ComponentType, AnalyticsEventImportance, bannerName]);
 
   const hideBanner = useCallback(() => {
     setIsBannerVisible(false);
@@ -53,6 +56,7 @@ export default function Banner({ href, text, bannerName }: BannerProps) {
           <button
             className="cursor-pointer p-2 text-sm"
             onClick={hideBanner}
+            onKeyDown={hideBanner}
             type="button"
             aria-label="Close Banner"
           >
