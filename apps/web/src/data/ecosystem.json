@@ -4214,5 +4214,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "BlockAI",
+    "tags": [
+      "gaming"
+    ],
+    "description": "BlockAI combines blockchain and AI to offer decentralized access to innovative tools like Text and image generation, video summarization, games etc.",
+    "url": "https://blockai.dev",
+    "imageUrl": "/images/partners/blockai.png"
   }
 ]
