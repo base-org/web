@@ -207,15 +207,6 @@
     "imageUrl": "/images/partners/rubyscore.png"
   },
   {
-    "name": "BotFi.app",
-    "tags": [
-      "defi"
-    ],
-    "description": "BotFi is an innovative AI-assisted crypto bot available on Telegram and Messenger designed to streamline your daily DeFi tasks, including swapping, bridging, and sniping across various blockchains.",
-    "url": "https://botfi.app",
-    "imageUrl": "/images/partners/botfi.webp"
-  },
-  {
     "name": "Blocto",
     "tags": [
       "wallet"

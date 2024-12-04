@@ -7,11 +7,16 @@ import { isDevelopment } from 'apps/web/src/constants';
 import {
   formatBaseEthDomain,
   getBasenameImage,
+  getChainForBasename,
   USERNAME_DOMAINS,
+  UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 import { base, baseSepolia } from 'viem/chains';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
-import { CLOUDFARE_IPFS_PROXY } from 'apps/web/src/utils/urls';
+import { getIpfsGatewayUrl, IpfsUrl, IsValidIpfsUrl } from 'apps/web/src/utils/urls';
+import { Basename } from '@coinbase/onchainkit/identity';
+import { getCloudinaryMediaUrl } from 'apps/web/src/utils/images';
+import { logger } from 'apps/web/src/utils/logger';
 export const runtime = 'edge';
 
 const size = {
@@ -63,24 +68,35 @@ export default async function OpenGraphImage(props: ImageRouteProps) {
 
   const domainName = isDevelopment ? `http://localhost:3000` : 'https://www.base.org';
   const profilePicture = getBasenameImage(username);
+  const chain = getChainForBasename(username as Basename);
   let imageSource = domainName + profilePicture.src;
 
   // NOTE: Do we want to fail if the name doesn't exists?
   try {
-    const client = getBasenamePublicClient(base.id);
-    const avatar = await client.getEnsAvatar({
+    const client = getBasenamePublicClient(chain.id);
+    const avatar = await client.getEnsText({
       name: username,
-      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[base.id],
-      assetGatewayUrls: {
-        ipfs: CLOUDFARE_IPFS_PROXY,
-      },
+      key: UsernameTextRecordKeys.Avatar,
+      universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
     });
 
-    // Satori Doesn't support webp
-    if (avatar && !avatar.endsWith('.webp')) {
+    if (!avatar) return;
+
+    // IPFS Resolution
+    if (IsValidIpfsUrl(avatar)) {
+      const ipfsUrl = getIpfsGatewayUrl(avatar as IpfsUrl);
+      if (ipfsUrl) {
+        imageSource = ipfsUrl;
+      }
+    } else {
       imageSource = avatar;
     }
-  } catch (error) {}
+
+    // Cloudinary resize / fetch
+    imageSource = getCloudinaryMediaUrl({ media: imageSource, format: 'png', width: 80 });
+  } catch (error) {
+    logger.error('Error fetching basename Avatar:', error);
+  }
 
   return new ImageResponse(
     (

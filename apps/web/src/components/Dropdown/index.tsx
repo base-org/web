@@ -47,7 +47,10 @@ export default function Dropdown({ children }: DropdownProps) {
   }, [open, lastCopiedId]);
 
   const closeDropdown = useCallback(() => {
-    setOpen(false);
+    const timeoutId = setTimeout(() => {
+      setOpen(false);
+    }, 300);
+    return () => clearTimeout(timeoutId);
   }, []);
 
   const openDropdown = useCallback(() => {
@@ -56,7 +59,15 @@ export default function Dropdown({ children }: DropdownProps) {
 
   return (
     <DropdownContext.Provider value={values}>
-      <div onMouseLeave={closeDropdown} onMouseEnter={openDropdown}>
+      <div
+        onMouseLeave={closeDropdown}
+        onMouseEnter={openDropdown}
+        style={{
+          padding: '0 8px 0 120px',
+          margin: '0 -8px 0 -120px',
+          position: 'relative',
+        }}
+      >
         {children}
       </div>
     </DropdownContext.Provider>
