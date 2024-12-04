@@ -57,6 +57,7 @@ export function EcosystemFilters({
         {categories.map((category, index) =>
           index === 0 ? (
             <button
+              type="button"
               key={category}
               onClick={() => onCategorySelect(category)}
               className={classNames(
@@ -84,11 +85,12 @@ export function EcosystemFilters({
                 >
                   {category}
                 </button>
-                <div className="w-px bg-white/20" />
+                <div className="hidden w-px bg-white/20 sm:block" />
                 <Popover.Trigger asChild>
                   <button
                     type="button"
-                    className={classNames('group px-2 pr-3 transition-colors', {
+                    aria-label="Open Subcategory Menu"
+                    className={classNames('group hidden px-2 pr-3 transition-colors sm:block', {
                       'bg-white text-black': selectedCategories.includes(category),
                       'text-white/50 hover:bg-white/20 hover:text-white':
                         !selectedCategories.includes(category),

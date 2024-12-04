@@ -49,9 +49,6 @@ const config = {
   infra: ['ai', 'depin', 'bridge', 'security', 'developer tool', 'node provider', 'raas'],
 };
 
-// Get unique categories and subcategories
-const categories = ['all', ...new Set(ecosystemApps.map((app) => app.category))];
-
 function orderedEcosystemAppsAsc() {
   return ecosystemApps.sort((a, b) => {
     if (a.name.toLowerCase() > b.name.toLowerCase()) {
