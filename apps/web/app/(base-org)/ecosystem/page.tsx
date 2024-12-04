@@ -39,6 +39,8 @@ async function EcosystemHero() {
               href="https://github.com/base-org/web?tab=readme-ov-file#updating-the-base-ecosystem-page"
               target="_blank"
               rel="noreferrer noopener"
+              className="max-w-fit"
+              tabIndex={-1} // Prevents focus on anchor (want to focus on button)
             >
               <Button variant={ButtonVariants.Secondary}>Submit your app</Button>
             </a>

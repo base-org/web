@@ -1,11 +1,12 @@
 'use client';
 
 import ecosystemApps from 'apps/web/src/data/ecosystem.json';
-import { TagChip } from 'apps/web/src/components/Ecosystem/TagChip';
 import { SearchBar } from 'apps/web/src/components/Ecosystem/SearchBar';
 import { useMemo, useState } from 'react';
 import { List } from 'apps/web/src/components/Ecosystem/List';
 import { useSearchParams } from 'next/navigation';
+import { EcosystemFilters } from 'apps/web/src/components/Ecosystem/EcosystemFilters';
+import EcosystemFiltersMobile from 'apps/web/src/components/Ecosystem/EcosystemFiltersMobile';
 
 export type EcosystemApp = {
   searchName: string;
@@ -27,7 +28,6 @@ const config = {
     'derivatives',
     'liquidity management',
     'perpetuals',
-    'options',
     'options',
     'portfolio',
     'insurance',
@@ -144,12 +144,12 @@ export default function Content() {
     setSelectedSubcategories((prevSubcategories) => {
       const newSubcategories =
         subcategory === 'all'
-          ? ['all']
+          ? []
           : prevSubcategories.includes(subcategory)
           ? prevSubcategories.filter((s) => s !== subcategory)
           : [...prevSubcategories.filter((s) => s !== 'all'), subcategory];
 
-      const finalSubcategories = newSubcategories.length === 0 ? ['all'] : newSubcategories;
+      const finalSubcategories = newSubcategories.length === 0 ? [] : newSubcategories;
 
       updateUrlParams({ subcategory: finalSubcategories });
       return finalSubcategories;
@@ -170,24 +170,22 @@ export default function Content() {
   return (
     <div className="flex min-h-32 w-full flex-col gap-10 pb-32">
       <div className="flex flex-col justify-between gap-8 lg:flex-row lg:gap-12">
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-row flex-wrap gap-3">
-            {categories.map((category) => (
-              <TagChip
-                tag={category}
-                isSelected={selectedCategories.includes(category)}
-                key={category}
-                selectTag={selectCategory}
-                subcategories={config[category as keyof typeof config]}
-                selectedSubcategories={selectedSubcategories}
-                selectSubcategory={selectSubcategory}
-              />
-            ))}
-          </div>
-        </div>
-        <div className="order-first grow lg:order-last">
+        <EcosystemFilters
+          selectedCategories={selectedCategories}
+          selectedSubcategories={selectedSubcategories}
+          onCategorySelect={selectCategory}
+          onSubcategorySelect={selectSubcategory}
+        />
+
+        <div className="order-first lg:order-last">
           <SearchBar search={search} setSearch={setSearch} />
         </div>
+
+        <EcosystemFiltersMobile
+          categories={config}
+          selectedSubcategories={selectedSubcategories}
+          onSubcategorySelect={selectSubcategory}
+        />
       </div>
       <List
         selectedCategories={selectedCategories}
