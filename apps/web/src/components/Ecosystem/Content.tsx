@@ -2,7 +2,7 @@
 
 import ecosystemApps from 'apps/web/src/data/ecosystem.json';
 import { SearchBar } from 'apps/web/src/components/Ecosystem/SearchBar';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { List } from 'apps/web/src/components/Ecosystem/List';
 import { useSearchParams } from 'next/navigation';
 import { EcosystemFilters } from 'apps/web/src/components/Ecosystem/EcosystemFilters';
@@ -18,7 +18,7 @@ export type EcosystemApp = {
   imageUrl: string;
 };
 
-const config = {
+const config: Record<string, string[]> = {
   wallet: ['self-custody', 'account abstraction', 'multisig'],
   defi: [
     'stablecoin',
@@ -66,112 +66,74 @@ const decoratedEcosystemApps: EcosystemApp[] = orderedEcosystemAppsAsc().map((d)
   searchName: d.name.toLowerCase(),
 }));
 
-const updateUrlParams = (params: { category?: string[]; subcategory?: string[] }) => {
+const updateUrlParams = (params: { categories?: string[]; subcategories?: string[] }) => {
+  console.log('categories:', params.categories);
+
+  console.log('subcategories:', params.subcategories);
   const searchParams = new URLSearchParams(window.location.search);
 
-  if (params.category) {
-    searchParams.set('category', params.category.join(','));
-  }
-  if (params.subcategory) {
-    searchParams.set('subcategory', params.subcategory.join(','));
+  if (params.categories?.length) {
+    searchParams.set('category', params.categories.join(','));
+  } else {
+    searchParams.delete('category');
   }
 
-  window.history.pushState({}, '', `${window.location.pathname}?${searchParams.toString()}`);
+  if (params.subcategories?.length) {
+    searchParams.set('subcategory', params.subcategories.join(','));
+  } else {
+    searchParams.delete('subcategory');
+  }
+
+  window.history.pushState(
+    {},
+    '',
+    `${window.location.pathname}${searchParams.toString() ? '?' + searchParams.toString() : ''}`,
+  );
 };
 
 export default function Content() {
-  //  This is in Next.js's docs
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const searchParams = useSearchParams()!;
-
-  // Parse multiple categories/subcategories from URL
-  const [selectedCategories, setSelectedCategories] = useState<string[]>(() => {
-    const cats = searchParams.get('category')?.split(',') ?? ['all'];
-    return cats.filter(Boolean); // Remove empty strings
-  });
-
-  const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>(() => {
-    const subs = searchParams.get('subcategory')?.split(',') ?? ['all'];
-    return subs.filter(Boolean);
-  });
-
-  const [search, setSearch] = useState<string>('');
+  const [search, setSearch] = useState('');
   const [showCount, setShowCount] = useState<number>(16);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- followed Next.js docs
+  const searchParams = useSearchParams()!;
+  const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>(() => {
+    const subcategories = searchParams.get('subcategory');
+    return subcategories ? subcategories.split(',') : [];
+  });
 
-  const selectCategory = (category: string): void => {
-    setSelectedCategories((prevCategories) => {
-      const newCategories =
-        category === 'all'
-          ? ['all']
-          : prevCategories.includes(category)
-          ? prevCategories.filter((c) => c !== category)
-          : [...prevCategories.filter((c) => c !== 'all'), category];
-
-      const finalCategories = newCategories.length === 0 ? ['all'] : newCategories;
-
-      if (category === 'all') {
-        // Clear URL params when 'all' is selected
-        window.history.pushState({}, '', window.location.pathname);
-        setSelectedSubcategories(['all']);
-        return finalCategories;
-      }
-
-      // Rest of the logic for other categories
-      if (!prevCategories.includes(category) && config[category as keyof typeof config]) {
-        const newSubs = [
-          ...selectedSubcategories.filter((s) => s !== 'all'),
-          ...config[category as keyof typeof config],
-        ];
-        setSelectedSubcategories(newSubs);
-        updateUrlParams({ category: finalCategories, subcategory: newSubs });
-      } else {
-        const categorySubcategories = config[category as keyof typeof config] || [];
-        const newSubs = selectedSubcategories.filter(
-          (sub) => sub === 'all' || !categorySubcategories.includes(sub),
-        );
-        setSelectedSubcategories(newSubs);
-        updateUrlParams({ category: finalCategories, subcategory: newSubs });
-      }
-
-      return finalCategories;
-    });
-  };
-
-  const selectSubcategory = (subcategory: string): void => {
-    setSelectedSubcategories((prevSubcategories) => {
-      const newSubcategories =
-        subcategory === 'all'
-          ? []
-          : prevSubcategories.includes(subcategory)
-          ? prevSubcategories.filter((s) => s !== subcategory)
-          : [...prevSubcategories.filter((s) => s !== 'all'), subcategory];
-
-      const finalSubcategories = newSubcategories.length === 0 ? [] : newSubcategories;
-
-      updateUrlParams({ subcategory: finalSubcategories });
-      return finalSubcategories;
-    });
-  };
+  // If a subcategory is selected, the category is selected automatically
+  const selectedCategories = useMemo(() => {
+    return [
+      ...new Set(
+        selectedSubcategories.map(
+          (subcategory) =>
+            Object.keys(config).find((category) => config[category].includes(subcategory)) ?? 'all',
+        ),
+      ),
+    ];
+  }, [selectedSubcategories]);
 
   const filteredEcosystemApps = useMemo(() => {
     return decoratedEcosystemApps.filter((app) => {
-      const isCategoryMatched =
-        selectedCategories.includes('all') || selectedCategories.includes(app.category);
       const isSubcategoryMatched =
-        selectedSubcategories.includes('all') || selectedSubcategories.includes(app.subcategory);
+        selectedSubcategories.length === 0 || selectedSubcategories.includes(app.subcategory);
       const isSearched = search === '' || app.searchName.includes(search.toLowerCase());
-      return isCategoryMatched && isSubcategoryMatched && isSearched;
+      return isSubcategoryMatched && isSearched;
     });
-  }, [selectedCategories, selectedSubcategories, search]);
+  }, [selectedSubcategories, search]);
+
+  useEffect(() => {
+    updateUrlParams({ categories: selectedCategories, subcategories: selectedSubcategories });
+  }, [selectedCategories, selectedSubcategories]);
 
   return (
     <div className="flex min-h-32 w-full flex-col gap-10 pb-32">
       <div className="flex flex-col justify-between gap-8 lg:flex-row lg:gap-12">
         <EcosystemFilters
+          config={config}
           selectedCategories={selectedCategories}
           selectedSubcategories={selectedSubcategories}
-          onCategorySelect={selectCategory}
-          onSubcategorySelect={selectSubcategory}
+          setSelectedSubcategories={setSelectedSubcategories}
         />
 
         <div className="order-first lg:order-last">
@@ -181,7 +143,7 @@ export default function Content() {
         <EcosystemFiltersMobile
           categories={config}
           selectedSubcategories={selectedSubcategories}
-          onSubcategorySelect={selectSubcategory}
+          onSubcategorySelect={setSelectedSubcategories}
         />
       </div>
       <List

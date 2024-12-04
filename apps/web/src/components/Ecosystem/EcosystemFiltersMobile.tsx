@@ -9,7 +9,7 @@ export default function EcosystemFiltersMobile({
 }: {
   categories: Record<string, string[]>;
   selectedSubcategories: string[];
-  onSubcategorySelect: (subcategory: string) => void;
+  onSubcategorySelect: (subcategories: string[]) => void;
 }) {
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
@@ -19,9 +19,13 @@ export default function EcosystemFiltersMobile({
 
   const handleSubcategorySelect = useCallback(
     (subcategory: string) => {
-      onSubcategorySelect(subcategory);
+      if (selectedSubcategories.includes(subcategory)) {
+        onSubcategorySelect(selectedSubcategories.filter((sc) => sc !== subcategory));
+      } else {
+        onSubcategorySelect([...selectedSubcategories, subcategory]);
+      }
     },
-    [onSubcategorySelect],
+    [onSubcategorySelect, selectedSubcategories],
   );
 
   return (
@@ -41,13 +45,10 @@ export default function EcosystemFiltersMobile({
               <TagChip
                 tag="Clear filters"
                 isSelected={false}
-                selectTag={() => onSubcategorySelect('all')}
+                selectTag={() => onSubcategorySelect([])}
                 className="text-xs"
               />
             ) : (
-              //   <button type="button" onClick={() => onSubcategorySelect('all')}>
-              //     Clear filters
-              //   </button>
               <div />
             )}
             <button

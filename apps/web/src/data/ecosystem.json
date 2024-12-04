@@ -620,7 +620,7 @@
     "url": "https://desig.io/",
     "description": "Meet Desig: A Smart Multisig wallet simplifying treasury ops. Flourishing funds with intuitive tracking, smart allocation & insightful cashflow reports. Enjoy gasless vault control; intel-driven swap.",
     "category": "wallet",
-    "subcategory": "account abstraction",
+    "subcategory": "multisig",
     "imageUrl": "/images/partners/desig.webp"
   },
   {
@@ -2140,7 +2140,7 @@
     "url": "https://safe.global/",
     "description": "Safe is the most trusted platform to manage digital assets on Ethereum.",
     "category": "wallet",
-    "subcategory": "account abstraction",
+    "subcategory": "multisig",
     "imageUrl": "/images/partners/safe.webp"
   },
   {
