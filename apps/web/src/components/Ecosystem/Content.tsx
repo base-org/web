@@ -19,31 +19,41 @@ export type EcosystemApp = {
 };
 
 const config: Record<string, string[]> = {
-  wallet: ['self-custody', 'account abstraction', 'multisig'],
+  wallet: ['account abstraction', 'multisig', 'self-custody'],
   defi: [
-    'stablecoin',
     'dex',
     'dex aggregator',
+    'insurance',
     'lending/borrowing',
     'liquidity management',
     'portfolio',
-    'insurance',
+    'stablecoin',
     'yield vault',
   ],
   consumer: [
     'creator',
-    'social',
+    'crypto taxes',
+    'dao',
     'gaming',
     'messaging',
-    'payments',
     'music',
-    'real world',
     'nft',
-    'dao',
-    'crypto taxes',
+    'payments',
+    'real world',
+    'social',
   ],
   onramp: ['centralized exchange', 'fiat on-ramp'],
-  infra: ['ai', 'data', 'depin', 'bridge', 'security', 'developer tool', 'node provider', 'raas'],
+  infra: [
+    'ai',
+    'bridge',
+    'data',
+    'depin',
+    'developer tool',
+    'identity',
+    'node provider',
+    'raas',
+    'security',
+  ],
 };
 
 function orderedEcosystemAppsAsc() {
