@@ -42,7 +42,7 @@ In order to obtain an Etherscan API key, visit [Etherscan](https://etherscan.io/
 
 Then, go to [https://etherscan.io/myapikey](https://etherscan.io/myapikey) and create an API key by clicking the **Add** button:
 
-![Add key](../../assets/images/hardhat-verify/hardhat-verify-create-key.png)
+![Add key](../../assets/images/hardhat-verify/harhat-verify-create-key.png)
 
 Bear in mind that different networks have other Blockchain explorers. For example:
 
