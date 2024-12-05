@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import Content from 'apps/web/src/components/Ecosystem/Content';
 import Container from 'apps/web/src/components/base-org/Container';
 import Button from 'apps/web/src/components/base-org/Button';
@@ -6,7 +7,6 @@ import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import RotatingCircle from 'apps/web/src/components/base-org/ecosystem/RotatingCircle';
-import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
