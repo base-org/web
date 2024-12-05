@@ -43,7 +43,7 @@ const config: Record<string, string[]> = {
     'crypto taxes',
   ],
   onramp: ['centralized exchange', 'fiat on-ramp'],
-  infra: ['ai', 'depin', 'bridge', 'security', 'developer tool', 'node provider', 'raas'],
+  infra: ['ai', 'data', 'depin', 'bridge', 'security', 'developer tool', 'node provider', 'raas'],
 };
 
 function orderedEcosystemAppsAsc() {
