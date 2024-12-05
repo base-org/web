@@ -67,7 +67,7 @@ The ETH is required for covering gas fees associated with deploying smart contra
 
 LayerZero is an interoperability protocol that allows developers to build applications (and tokens) that can connect to multiple blockchains. LayerZero defines these types of applications as "omnichain" applications.
 
-The LayerZero protocol is made up of immutable on-chain [Endpoints](https://docs.layerzero.network/explore/layerzero-endpoint), a configurable [Security Stack](https://docs.layerzero.network/explore/decentralized-verifier-networks), and a permissionless set of [Executors](https://docs.layerzero.network/explore/executors) that transfer messages between chains.
+The LayerZero protocol is made up of immutable on-chain [Endpoints](https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts), a configurable [Security Stack](https://docs.layerzero.network/explore/decentralized-verifier-networks), and a permissionless set of [Executors](https://docs.layerzero.network/explore/executors) that transfer messages between chains.
 
 ### High-level concepts
 
