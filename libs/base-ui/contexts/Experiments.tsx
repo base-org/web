@@ -48,12 +48,10 @@ export default function ExperimentsProvider({ children }: ExperimentsProviderPro
           device_id: window.ClientAnalytics.identity.deviceId,
           os: window.ClientAnalytics.identity.device_os,
           language: window.ClientAnalytics.identity.languageCode,
-          country: window.ClientAnalytics.identity.countryCode,
+          country: window.ClientAnalytics.identity.countryCode
         }),
         },
-      },
-    });
-
+   
     setExperimentClient(client);
  }, [ampDeploymentKey]);
 
