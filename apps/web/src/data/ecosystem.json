@@ -4214,5 +4214,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "Fishing Frenzy",
+    "tags": [
+      "gaming"
+    ],
+    "description": "Fishing Frenzy's mission is to build a cozy deconstructed RPG with thriving player-driven economy.",
+    "url": "https://fishingfrenzy.co/",
+    "imageUrl": "/images/partners/fishing_frenzy.jpg"
   }
 ]
