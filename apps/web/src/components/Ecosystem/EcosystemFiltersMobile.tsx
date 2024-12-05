@@ -11,7 +11,7 @@ export default function EcosystemFiltersMobile({
   selectedSubcategories: string[];
   onSubcategorySelect: (subcategories: string[]) => void;
 }) {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggleMenu = useCallback(() => {
     setIsOpen(!isOpen);
