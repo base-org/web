@@ -53,8 +53,9 @@ export function EcosystemFilters({
   return (
     <div className="relative flex flex-col items-start gap-2">
       <div className="relative flex flex-wrap gap-2">
-        {categories.map((category, index) =>
-          index === 0 ? (
+        {categories.map((category, index) => {
+          const categoryIsSelected = selectedCategories.includes(category);
+          return index === 0 ? (
             <button
               type="button"
               key={category}
@@ -76,11 +77,9 @@ export function EcosystemFilters({
                   type="button"
                   className={classNames(
                     'peer rounded-full border border-white/20 px-4 uppercase tracking-wider transition-colors sm:rounded-r-none sm:border-r-0',
-                    {
-                      'bg-white text-black': selectedCategories.includes(category),
-                      'text-white/50 hover:bg-white/20 hover:text-white':
-                        !selectedCategories.includes(category),
-                    },
+                    categoryIsSelected
+                      ? 'bg-white text-black'
+                      : 'text-white/50 hover:bg-white/20 hover:text-white',
                   )}
                   onClick={() => handleCategorySelect(category)}
                 >
@@ -95,11 +94,9 @@ export function EcosystemFilters({
                     aria-label="Open Subcategory Menu"
                     className={classNames(
                       'group peer hidden rounded-r-full border border-white/20 px-2 pr-3 transition-colors sm:block sm:border-l-0',
-                      {
-                        'bg-white text-black': selectedCategories.includes(category),
-                        'text-white/50 hover:bg-white/20 hover:text-white':
-                          !selectedCategories.includes(category),
-                      },
+                      categoryIsSelected
+                        ? 'bg-white text-black'
+                        : 'text-white/50 hover:bg-white/20 hover:text-white',
                     )}
                   >
                     <ChevronDownIcon className="h-4 w-4 transition-transform ease-[cubic-bezier(0.87,_0,_0.13,_1)] group-data-[state=open]:rotate-180" />
@@ -111,36 +108,37 @@ export function EcosystemFilters({
                 <Popover.Content className="z-50 w-64" sideOffset={5}>
                   <Card radius={8} innerClassName="bg-[#191919] p-4">
                     <div className="flex flex-col gap-2">
-                      {config[category]?.map((subcategory) => (
-                        <button
-                          key={subcategory}
-                          type="button"
-                          onClick={() => handleSubcategorySelect(subcategory)}
-                          className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm uppercase transition-colors hover:bg-white/10"
-                        >
-                          <div className="h-4 w-4 flex-shrink-0">
-                            {selectedSubcategories.includes(subcategory) && (
-                              <CheckIcon className="h-4 w-4 text-white" />
-                            )}
-                          </div>
-                          <span
-                            className={
-                              selectedSubcategories.includes(subcategory)
-                                ? 'text-white'
-                                : 'text-white/50'
-                            }
+                      {config[category]?.map((subcategory) => {
+                        const subcategoryIsSelected = selectedSubcategories.includes(subcategory);
+                        return (
+                          <button
+                            key={subcategory}
+                            type="button"
+                            onClick={() => handleSubcategorySelect(subcategory)}
+                            className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm uppercase transition-colors hover:bg-white/10"
                           >
-                            {subcategory}
-                          </span>
-                        </button>
-                      ))}
+                            <div className="h-4 w-4 flex-shrink-0">
+                              {subcategoryIsSelected && (
+                                <CheckIcon className="h-4 w-4 text-white" />
+                              )}
+                            </div>
+                            <span
+                              className={classNames(
+                                subcategoryIsSelected ? 'text-white' : 'text-white/50',
+                              )}
+                            >
+                              {subcategory}
+                            </span>
+                          </button>
+                        );
+                      })}
                     </div>
                   </Card>
                 </Popover.Content>
               </Popover.Portal>
             </Popover.Root>
-          ),
-        )}
+          );
+        })}
       </div>
     </div>
   );
