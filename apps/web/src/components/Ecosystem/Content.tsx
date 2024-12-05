@@ -15,6 +15,7 @@ export type EcosystemApp = {
   imageUrl: string;
 };
 
+<<<<<<< Updated upstream
 const tags = [
   'all',
   ...ecosystemApps
@@ -24,6 +25,45 @@ const tags = [
       return array.indexOf(value.toLocaleLowerCase()) === index;
     }),
 ];
+=======
+const config: Record<string, string[]> = {
+  wallet: ['account abstraction', 'multisig', 'self-custody'],
+  defi: [
+    'dex',
+    'dex aggregator',
+    'insurance',
+    'lending/borrowing',
+    'liquidity management',
+    'portfolio',
+    'stablecoin',
+    'yield vault',
+  ],
+  consumer: [
+    'creator',
+    'crypto taxes',
+    'dao',
+    'gaming',
+    'messaging',
+    'music',
+    'nft',
+    'payments',
+    'real world',
+    'social',
+  ],
+  onramp: ['centralized exchange', 'fiat on-ramp'],
+  infra: [
+    'ai',
+    'bridge',
+    'data',
+    'depin',
+    'developer tool',
+    'identity',
+    'node provider',
+    'raas',
+    'security',
+  ],
+};
+>>>>>>> Stashed changes
 
 function orderedEcosystemAppsAsc() {
   return ecosystemApps.sort((a, b) => {
