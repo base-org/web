@@ -27,7 +27,7 @@ By the end of this module, you should be able to:
   - Relate an overview of the history (and pace of change) of Solidity and its strengths and weaknesses
   - Deploy and test the Storage.sol demo contract in Remix
 - **Contracts and Basic Functions**
-  - Construct a simple ""Hello World" contract
+  - Construct a simple "Hello World" contract
   - Categorize basic data types
   - List the major differences between data types in Solidity as compared to other languages
   - Compare and contrast signed and unsigned integers
