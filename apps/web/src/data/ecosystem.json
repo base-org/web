@@ -373,7 +373,7 @@
     "description": "Nether.Fi is a Base-native Perpetuals and Spot DEX. Traders can enjoy deep liquidity and reliable price data backed by industry-leading oracles. 100% of fees generated on Nether.Fi are distributed to liquidity providers and stakers!",
     "imageUrl": "/images/partners/netherfi.webp",
     "category": "defi",
-    "subcategory": "perpetuals"
+    "subcategory": "dex"
   },
   {
     "name": "SlashToken",
@@ -395,17 +395,17 @@
     "name": "Contango",
     "url": "https://contango.xyz/",
     "description": "Perps built through looping, the native way of trading on-chain",
-    "imageUrl": "/images/partners/contango.webp",
+    "imageUrl": "/images/partners/contango.png",
     "category": "defi",
-    "subcategory": "perpetuals"
+    "subcategory": "dex"
   },
   {
     "name": "Avantis",
     "url": "https://www.avantisfi.com/",
     "description": "Onchain perpetuals exchange for crypto, forex and commodities with advanced risk management for LPs and up to 100x leverage for traders.",
-    "imageUrl": "/images/partners/avantis.webp",
+    "imageUrl": "/images/partners/avantis.png",
     "category": "defi",
-    "subcategory": "perpetuals"
+    "subcategory": "dex"
   },
   {
     "name": "Seamless Protocol",
@@ -525,7 +525,7 @@
     "description": "the first permissionless derivative exchange, enabling trading and listing of over 10,000+ assets.",
     "imageUrl": "/images/partners/surf.webp",
     "category": "defi",
-    "subcategory": "derivatives"
+    "subcategory": "dex"
   },
   {
     "name": "LlamaNodes",
@@ -573,7 +573,7 @@
     "description": "BMX by Morphex: A unique derivative trading platform that boosts capital efficiency. Liquidity providers access market-making liquidity via wBLT, which is transferable and can pair with any asset to LP for rewards.",
     "imageUrl": "/images/partners/bmx.webp",
     "category": "defi",
-    "subcategory": "derivatives"
+    "subcategory": "dex"
   },
   {
     "name": "F1337",
@@ -677,7 +677,7 @@
     "description": "Xena Finance is a Perpetual DEX Platform that aims to revolutionize digital asset trading by seamlessly integrating optimized strategies and bespoke risk management. With minimal collateral, users can harness on-demand liquidity, access an automated trading system, and benefit from on-chain transparency.",
     "imageUrl": "/images/partners/xena.webp",
     "category": "defi",
-    "subcategory": "perpetuals"
+    "subcategory": "dex"
   },
   {
     "name": "OKX DEX",
@@ -813,7 +813,7 @@
     "description": "Decentralized derivatives exchange using intent based architecture to provide the best trading experience possible.",
     "imageUrl": "/images/partners/intentx.webp",
     "category": "defi",
-    "subcategory": "derivatives"
+    "subcategory": "dex"
   },
   {
     "name": "Overtime",
@@ -989,7 +989,7 @@
     "description": "Thales provides an oracle-based automated liquidity solution that is used to create various types of onchain Positional Markets limited only by the amount of data that is available to the blockchain.",
     "imageUrl": "/images/partners/thales.webp",
     "category": "defi",
-    "subcategory": "options"
+    "subcategory": "dex"
   },
   {
     "name": "Arkham",
@@ -1093,7 +1093,7 @@
     "description": "Angle is a decentralized and community governed protocol. Everyone is welcome to take part in the governance of the protocol to collectively start shaping its future.",
     "imageUrl": "/images/partners/angle.webp",
     "category": "defi",
-    "subcategory": "perpetuals"
+    "subcategory": "dex"
   },
   {
     "name": "DexGuru Block Explorer",
@@ -1261,7 +1261,7 @@
     "description": "A decentralized protocol for trading with margin and synthetics on the Ethereum network - best known for Low Fees, Concentrated Liquidity and Futures.",
     "imageUrl": "/images/partners/synthswap.webp",
     "category": "defi",
-    "subcategory": "derivatives"
+    "subcategory": "dex"
   },
   {
     "name": "FXDX",
@@ -1269,7 +1269,7 @@
     "description": "FXDX is a 0-trading fee decentralized derivative exchange offering 50x Leverage on ETH, cbETH and offers innovative yet robust LP structure for Real Yield.",
     "imageUrl": "/images/partners/fxdx.webp",
     "category": "defi",
-    "subcategory": "derivatives"
+    "subcategory": "dex"
   },
   {
     "name": "Tarot",
@@ -2317,7 +2317,7 @@
     "url": "https://app.deperp.com/",
     "imageUrl": "/images/partners/deperp.png",
     "category": "defi",
-    "subcategory": "perpetuals"
+    "subcategory": "dex"
   },
   {
     "name": "Astaria",
@@ -2341,7 +2341,7 @@
     "url": "https://krav.trade/",
     "imageUrl": "/images/partners/krav.png",
     "category": "defi",
-    "subcategory": "perpetuals"
+    "subcategory": "dex"
   },
   {
     "name": "goodcryptoX",
@@ -2597,7 +2597,7 @@
     "url": "https://app.jojo.exchange/trade/base/",
     "imageUrl": "/images/partners/jojo.png",
     "category": "defi",
-    "subcategory": "perpetuals"
+    "subcategory": "dex"
   },
   {
     "name": "JELLI",
@@ -2733,7 +2733,7 @@
     "url": "https://app.vooi.io/",
     "imageUrl": "/images/partners/vooi.png",
     "category": "defi",
-    "subcategory": "derivatives"
+    "subcategory": "dex"
   },
   {
     "name": "Dyson Money",
@@ -2773,7 +2773,7 @@
     "url": "https://bitoro.network/",
     "imageUrl": "/images/partners/bitoro.png",
     "category": "defi",
-    "subcategory": "perpetuals"
+    "subcategory": "dex"
   },
   {
     "name": "CoinTracker",
@@ -3149,7 +3149,7 @@
     "url": "https://www.stvol.io/",
     "imageUrl": "/images/partners/stvol.png",
     "category": "defi",
-    "subcategory": "options"
+    "subcategory": "dex"
   },
   {
     "name": "Mass",
@@ -3349,7 +3349,7 @@
     "url": "https://app.vela.exchange/",
     "imageUrl": "/images/partners/vela.png",
     "category": "defi",
-    "subcategory": "perpetuals"
+    "subcategory": "dex"
   },
   {
     "name": "Folks Finance",
@@ -3507,16 +3507,32 @@
     "name": "USDC",
     "category": "defi",
     "subcategory": "stablecoin",
-    "description": "",
+    "description": "USDC is a regulated digital currency you can redeem 1:1 for US dollars.",
     "url": "https://www.circle.com/usdc",
     "imageUrl": "/images/partners/usdc.svg"
+  },
+  {
+    "name": "IDRX",
+    "category": "defi",
+    "subcategory": "stablecoin",
+    "description": "IDRX is a regulated digital asset that offers seamless conversions and can be redeemed at a fixed rate for Indonesian Rupiah.",
+    "url": "https://home.idrx.co",
+    "imageUrl": "/images/partners/idrx.png"
   },
   {
     "name": "EURC",
     "category": "defi",
     "subcategory": "stablecoin",
-    "description": "",
+    "description": "EURC is a euro-backed stablecoin.",
     "url": "https://www.circle.com/eurc",
     "imageUrl": "/images/partners/eurc.svg"
+  },
+  {
+    "name": "ZARP",
+    "category": "defi",
+    "subcategory": "stablecoin",
+    "description": "ZARP is a stablecoin pegged to the price of the South African Rand (ZAR).",
+    "url": "https://zarp.io/",
+    "imageUrl": "/images/partners/zarp.png"
   }
 ]

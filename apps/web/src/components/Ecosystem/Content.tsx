@@ -25,10 +25,7 @@ const config: Record<string, string[]> = {
     'dex',
     'dex aggregator',
     'lending/borrowing',
-    'derivatives',
     'liquidity management',
-    'perpetuals',
-    'options',
     'portfolio',
     'insurance',
     'yield vault',
@@ -67,9 +64,6 @@ const decoratedEcosystemApps: EcosystemApp[] = orderedEcosystemAppsAsc().map((d)
 }));
 
 const updateUrlParams = (params: { categories?: string[]; subcategories?: string[] }) => {
-  console.log('categories:', params.categories);
-
-  console.log('subcategories:', params.subcategories);
   const searchParams = new URLSearchParams(window.location.search);
 
   if (params.categories?.length) {
