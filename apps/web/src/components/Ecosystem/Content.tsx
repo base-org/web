@@ -1,60 +1,29 @@
 'use client';
 
 import ecosystemApps from 'apps/web/src/data/ecosystem.json';
+import { TagChip } from 'apps/web/src/components/Ecosystem/TagChip';
 import { SearchBar } from 'apps/web/src/components/Ecosystem/SearchBar';
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState } from 'react';
 import { List } from 'apps/web/src/components/Ecosystem/List';
-import { useSearchParams } from 'next/navigation';
-import { EcosystemFilters } from 'apps/web/src/components/Ecosystem/EcosystemFilters';
-import EcosystemFiltersMobile from 'apps/web/src/components/Ecosystem/EcosystemFiltersMobile';
 
 export type EcosystemApp = {
   searchName: string;
   name: string;
-  category: string;
-  subcategory: string;
   url: string;
   description: string;
+  tags: string[];
   imageUrl: string;
 };
 
-const config: Record<string, string[]> = {
-  wallet: ['account abstraction', 'multisig', 'self-custody'],
-  defi: [
-    'dex',
-    'dex aggregator',
-    'insurance',
-    'lending/borrowing',
-    'liquidity management',
-    'portfolio',
-    'stablecoin',
-    'yield vault',
-  ],
-  consumer: [
-    'creator',
-    'crypto taxes',
-    'dao',
-    'gaming',
-    'messaging',
-    'music',
-    'nft',
-    'payments',
-    'real world',
-    'social',
-  ],
-  onramp: ['centralized exchange', 'fiat on-ramp'],
-  infra: [
-    'ai',
-    'bridge',
-    'data',
-    'depin',
-    'developer tool',
-    'identity',
-    'node provider',
-    'raas',
-    'security',
-  ],
-};
+const tags = [
+  'all',
+  ...ecosystemApps
+    .map((app) => app.tags)
+    .flat()
+    .filter((value, index, array) => {
+      return array.indexOf(value.toLocaleLowerCase()) === index;
+    }),
+];
 
 function orderedEcosystemAppsAsc() {
   return ecosystemApps.sort((a, b) => {
@@ -73,90 +42,51 @@ const decoratedEcosystemApps: EcosystemApp[] = orderedEcosystemAppsAsc().map((d)
   searchName: d.name.toLowerCase(),
 }));
 
-const updateUrlParams = (params: { categories?: string[]; subcategories?: string[] }) => {
-  const searchParams = new URLSearchParams(window.location.search);
-
-  if (params.categories?.length) {
-    searchParams.set('category', params.categories.join(','));
-  } else {
-    searchParams.delete('category');
-  }
-
-  if (params.subcategories?.length) {
-    searchParams.set('subcategory', params.subcategories.join(','));
-  } else {
-    searchParams.delete('subcategory');
-  }
-
-  window.history.pushState(
-    {},
-    '',
-    `${window.location.pathname}${searchParams.toString() ? '?' + searchParams.toString() : ''}`,
-  );
-};
-
 export default function Content() {
-  const [search, setSearch] = useState('');
+  const [selectedTags, setSelectedTags] = useState<string[]>(['all']);
+  const [search, setSearch] = useState<string>('');
   const [showCount, setShowCount] = useState<number>(16);
-  const searchParams = useSearchParams();
-  const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>(() => {
-    const subcategories = searchParams?.get('subcategory');
-    return subcategories ? subcategories.split(',') : [];
-  });
 
-  // If a subcategory is selected, the category is selected automatically
-  const selectedCategories = useMemo(
-    () => [
-      ...new Set(
-        selectedSubcategories.map(
-          (subcategory) =>
-            Object.keys(config).find((category) => config[category].includes(subcategory)) ?? 'all',
-        ),
-      ),
-    ],
-    [selectedSubcategories],
-  );
-
-  const filteredEcosystemApps = useMemo(
-    () =>
-      decoratedEcosystemApps.filter((app) => {
-        const isSubcategoryMatched =
-          selectedSubcategories.length === 0 || selectedSubcategories.includes(app.subcategory);
-        const isSearched = search === '' || app.searchName.includes(search.toLowerCase());
-        return isSubcategoryMatched && isSearched;
-      }),
-    [selectedSubcategories, search],
-  );
-
-  useEffect(() => {
-    updateUrlParams({
-      categories: selectedCategories,
-      subcategories: selectedSubcategories,
+  const selectTag = (tag: string): void => {
+    setSelectedTags((prevTags) => {
+      if (tag === 'all') {
+        return ['all'];
+      }
+      const newTags = prevTags.includes(tag)
+        ? prevTags.filter((t) => t !== tag)
+        : [...prevTags.filter((t) => t !== 'all'), tag];
+      return newTags.length === 0 ? ['all'] : newTags;
     });
-  }, [selectedCategories, selectedSubcategories]);
+  };
+
+  const filteredEcosystemApps = useMemo(() => {
+    return decoratedEcosystemApps.filter((app) => {
+      const isTagged =
+        selectedTags.includes('all') || app.tags.some((tag) => selectedTags.includes(tag));
+      const isSearched = search === '' || app.name.toLowerCase().includes(search.toLowerCase());
+      return isTagged && isSearched;
+    });
+  }, [selectedTags, search]);
 
   return (
     <div className="flex min-h-32 w-full flex-col gap-10 pb-32">
       <div className="flex flex-col justify-between gap-8 lg:flex-row lg:gap-12">
-        <EcosystemFilters
-          config={config}
-          selectedCategories={selectedCategories}
-          selectedSubcategories={selectedSubcategories}
-          setSelectedSubcategories={setSelectedSubcategories}
-        />
-
-        <div className="order-first lg:order-last">
+        <div className="flex flex-row flex-wrap gap-3">
+          {tags.map((tag) => (
+            <TagChip
+              tag={tag}
+              isSelected={selectedTags.includes(tag)}
+              key={tag}
+              selectTag={selectTag}
+            />
+          ))}
+        </div>
+        <div className="order-first grow lg:order-last">
           <SearchBar search={search} setSearch={setSearch} />
         </div>
-
-        <EcosystemFiltersMobile
-          categories={config}
-          selectedSubcategories={selectedSubcategories}
-          onSubcategorySelect={setSelectedSubcategories}
-        />
       </div>
       <List
-        selectedCategories={selectedCategories}
+        selectedTags={selectedTags}
         searchText={search}
         apps={filteredEcosystemApps}
         showCount={showCount}

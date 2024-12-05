@@ -24,6 +24,8 @@
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+
+  // ESLint
   "editor.codeActionsOnSave": ["source.fixAll.eslint"],
   "eslint.packageManager": "yarn",
   "eslint.useESLintClass": true,
