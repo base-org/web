@@ -6,6 +6,7 @@ import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import RotatingCircle from 'apps/web/src/components/base-org/ecosystem/RotatingCircle';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -80,7 +81,9 @@ export default async function Ecosystem() {
       <EcosystemHero />
 
       <Container>
-        <Content />
+        <Suspense fallback={<div />}>
+          <Content />
+        </Suspense>
       </Container>
     </main>
   );
