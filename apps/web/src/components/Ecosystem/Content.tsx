@@ -101,25 +101,28 @@ export default function Content() {
   });
 
   // If a subcategory is selected, the category is selected automatically
-  const selectedCategories = useMemo(() => {
-    return [
+  const selectedCategories = useMemo(
+    () => [
       ...new Set(
         selectedSubcategories.map(
           (subcategory) =>
             Object.keys(config).find((category) => config[category].includes(subcategory)) ?? 'all',
         ),
       ),
-    ];
-  }, [selectedSubcategories]);
+    ],
+    [selectedSubcategories],
+  );
 
-  const filteredEcosystemApps = useMemo(() => {
-    return decoratedEcosystemApps.filter((app) => {
-      const isSubcategoryMatched =
-        selectedSubcategories.length === 0 || selectedSubcategories.includes(app.subcategory);
-      const isSearched = search === '' || app.searchName.includes(search.toLowerCase());
-      return isSubcategoryMatched && isSearched;
-    });
-  }, [selectedSubcategories, search]);
+  const filteredEcosystemApps = useMemo(
+    () =>
+      decoratedEcosystemApps.filter((app) => {
+        const isSubcategoryMatched =
+          selectedSubcategories.length === 0 || selectedSubcategories.includes(app.subcategory);
+        const isSearched = search === '' || app.searchName.includes(search.toLowerCase());
+        return isSubcategoryMatched && isSearched;
+      }),
+    [selectedSubcategories, search],
+  );
 
   useEffect(() => {
     updateUrlParams({

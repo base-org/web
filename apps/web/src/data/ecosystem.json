@@ -3502,5 +3502,21 @@
     "subcategory": "self-custody",
     "url": "https://bend.eco",
     "imageUrl": "/images/partners/bend.jpg"
+  },
+  {
+    "name": "USDC",
+    "category": "defi",
+    "subcategory": "stablecoin",
+    "description": "",
+    "url": "https://www.circle.com/usdc",
+    "imageUrl": "/images/partners/usdc.svg"
+  },
+  {
+    "name": "EURC",
+    "category": "defi",
+    "subcategory": "stablecoin",
+    "description": "",
+    "url": "https://www.circle.com/eurc",
+    "imageUrl": "/images/partners/eurc.svg"
   }
 ]
