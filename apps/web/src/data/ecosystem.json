@@ -4230,5 +4230,14 @@
     "description": "Tokenize new or existing domain names and bring them onchain to Base. Get access to rapid, low-cost domain trading featuring our unique Bid-to-Earn auction model.",
     "url": "https://gbm.domains/",
     "imageUrl": "/images/partners/gbm-domains.png"
+  },
+  {
+    "name": "ECOIN Wallet",
+    "url": "https://ecoinfinance.org",
+    "description": "ECOIN Wallet is a multichain, user-friendly crypto wallet designed with the Samsung One UI design. It gives you complete control of your crypto assets and private keys, enabling you to securely buy, sell, swap, bridge, store, and transfer cryptocurrencies. Currently, it supports Bitcoin, BNB Chain, Ethereum, Polygon, ZetaChain, and Base. Rediscover what a #CryptoWallet is!",
+    "tags": [
+      "wallet"
+    ],
+    "imageUrl": "/images/partners/ecoinwallet.png"
   }
 ]
