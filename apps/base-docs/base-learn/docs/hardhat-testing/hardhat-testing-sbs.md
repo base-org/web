@@ -320,7 +320,7 @@ You can then run `npx hardhat test` and you should get:
     ✔ should have the right owner
     ✔ shouldn"t allow to withdraw before unlock time (51ms)
     ✔ shouldn"t allow to withdraw a non owner
-    ✔ should allow to withdraw a owner
+    ✔ should allow to withdraw an owner
 
   6 passing (2s)
 ```
