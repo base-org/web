@@ -287,7 +287,7 @@ Finally, test that the owner can withdraw. You can manipulate the time similarly
 <summary>Reveal code</summary>
 
 ```tsx
-it('should allow to withdraw a owner', async () => {
+it('should allow to withdraw an owner', async () => {
   const balanceBefore = await ethers.provider.getBalance(await lockInstance.getAddress());
 
   // Its value will be the one we lock at deployment time.
