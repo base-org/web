@@ -73,7 +73,7 @@ This tutorial won't cover all of the frontend development, auth, databases, or o
 - Add tokens to that collection
 - Allow other people to mint the tokens
 
-Begin by opening `src/app/page.tsx` and doing some cleanup. Delete everything expect the wallet integration, and add some copy that is friendly to non-crypto-native users:
+Begin by opening `src/app/page.tsx` and doing some cleanup. Delete everything except the wallet integration, and add some copy that is friendly to non-crypto-native users:
 
 ```tsx
 'use client';
