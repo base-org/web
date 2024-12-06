@@ -4230,5 +4230,14 @@
     "description": "Tokenize new or existing domain names and bring them onchain to Base. Get access to rapid, low-cost domain trading featuring our unique Bid-to-Earn auction model.",
     "url": "https://gbm.domains/",
     "imageUrl": "/images/partners/gbm-domains.png"
+  },
+  {
+    "name": "PeakChain MoveUp",
+    "tags": [
+      "nft"
+    ],
+    "description": "PeakChain MoveUp is a blockchain-powered app rewarding eco-friendly travel with points that can be exchanged for NFTs, promoting sustainable mobility.",
+    "url": "https://peakchain.network/base",
+    "imageUrl": "/images/partners/peakchain-moveup.png"
   }
 ]
