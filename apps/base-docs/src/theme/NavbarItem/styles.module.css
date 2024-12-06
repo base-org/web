@@ -23,6 +23,10 @@
   line-height: 24px;
   text-transform: uppercase;
   background-color: transparent;
+  cursor: pointer;
+}
+.errorButton:hover {
+  text-decoration: underline;
 }
 
 .network {
