@@ -119,7 +119,11 @@ function IconLink({
 
 function DesktopNav({ color }: DesktopNavProps) {
   return (
+<<<<<<< HEAD
     <div className="hidden h-full w-fit flex-grow items-center justify-between lg:flex">
+=======
+    <div className="hidden h-full w-fit flex-grow flex-row items-center justify-between lg:flex">
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
       <Dropdown label="Ecosystem" color={color}>
         <DropdownLink href="https://base.org/ecosystem" label="Apps" color={color} />
         <DropdownLink

@@ -46,6 +46,7 @@
     "imageUrl": "/images/partners/wallet-retail.webp",
     "category": "wallet",
     "subcategory": "centralized exchange"
+<<<<<<< HEAD
   },
   {
     "name": "Anzen",
@@ -54,6 +55,8 @@
     "category": "defi",
     "subcategory": "stablecoin",
     "imageUrl": "/images/partners/anzen.png"
+=======
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
   },
   {
     "name": "Connext",
@@ -105,7 +108,11 @@
   },
   {
     "name": "Vrbs DAO",
+<<<<<<< HEAD
     "description": "Vrbs is a global, community-run organization that uses money raised by the community to fund open-source technology, art and public-works projects.",
+=======
+    "description": "Vrbs is a global, community-run organization that uses money raised by the community to fund open-source technology, art and public-works projects. ",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "url": "https://vrbs.build",
     "imageUrl": "/images/partners/vrbsdao.png",
     "category": "consumer",
@@ -118,6 +125,7 @@
     "imageUrl": "/images/partners/transfi.png",
     "category": "onramp",
     "subcategory": "fiat on-ramp"
+<<<<<<< HEAD
   },
   {
     "name": "MiniMatch",
@@ -126,6 +134,8 @@
     "imageUrl": "/images/partners/minimatch.png",
     "category": "consumer",
     "subcategory": "gaming"
+=======
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
   },
   {
     "name": "Heroes of Mavia",
@@ -337,7 +347,11 @@
   },
   {
     "name": "OmniKingdoms",
+<<<<<<< HEAD
     "description": "OmniKingdoms is an on-chain MMORPG that focuses on state transactions. Players can join the community and earn rewards for questing, battling, crafting and much more. We aim to integrate the newest gaming mechanics and other projects.",
+=======
+    "description": "OmniKingdoms is an on-chain MMORPG that focuses on state transitions. Players can join the community and earn rewards for questing, battling, crafting and much more. We aim to integrate the newest gaming mechanics and other projects.",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "url": "https://www.omnikingdoms.io/",
     "imageUrl": "/images/partners/omnikingdom.webp",
     "category": "consumer",
@@ -451,7 +465,11 @@
     "name": "Contango",
     "url": "https://contango.xyz/",
     "description": "Perps built through looping, the native way of trading on-chain",
+<<<<<<< HEAD
     "imageUrl": "/images/partners/contango.webp",
+=======
+    "imageUrl": "/images/partners/contango.png",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "category": "defi",
     "subcategory": "dex"
   },
@@ -528,7 +546,7 @@
     "subcategory": "identity"
   },
   {
-    "name": "OpenFriend",
+    "name": "OpenFrind",
     "url": "https://openfriend.tech/",
     "description": "OpenFriend.Tech is an auxiliary tool providing multi-dimensional data analytics for Friend.Tech users, allowing every user to build their own on-chain reputation based on Friend.Tech.",
     "imageUrl": "/images/partners/openfriend.webp",
@@ -1066,7 +1084,11 @@
   {
     "name": "Transit Swap",
     "url": "https://swap.transit.finance/",
+<<<<<<< HEAD
     "description": "The brand new way to experience decentralized exchanges, better liquidity and better returns, all chains in one single Transit Swap.",
+=======
+    "description": "The brand new way to experience decentralized exchanges, better liquitidy and better returns, all chains in one single Transit Swap.",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "imageUrl": "/images/partners/transitswap.webp",
     "category": "infra",
     "subcategory": "bridge"
@@ -1114,7 +1136,11 @@
   {
     "name": "Element Market",
     "url": "https://element.market",
+<<<<<<< HEAD
     "description": "Element Market, the first community-driven aggregated marketplace, provides users with high liquidity, lowest transaction fee, powerful trading utilities, and intelligent & instant data services.",
+=======
+    "description": "Element Market, the first community-driven aggregated marketplace, provides users with high liquidity, lowest transition fee, powerful trading utilities, and intelligent & instant data services.",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "imageUrl": "/images/partners/elementmarket.webp",
     "category": "consumer",
     "subcategory": "nft"
@@ -1266,7 +1292,11 @@
   {
     "name": "Openfort",
     "url": "https://www.openfort.xyz",
+<<<<<<< HEAD
     "description": "Openfort is a headless wallet service for developers that want to offer a seamless experience to their players. It allows you to create and manage smart wallets powered by account abstraction.",
+=======
+    "description": "Openfort is a headless wallet service for developers that want to offer a seemless experience to their players. It allows you to create and manage smart wallets powered by account abstraction.",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "category": "wallet",
     "subcategory": "account abstraction",
     "imageUrl": "/images/partners/openfort.webp"
@@ -1354,7 +1384,11 @@
   {
     "name": "Dackieswap",
     "url": "https://www.dackieswap.xyz",
+<<<<<<< HEAD
     "description": "The Premier Multichain DEX with AI Agent Technology.",
+=======
+    "description": "DackieSwap is the native and community-owned DEX/Launchpad on Base. It offers great liquidity, simple features, friendly interface and unlimited benefits.",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "category": "defi",
     "subcategory": "dex",
     "imageUrl": "/images/partners/dackie.webp"
@@ -1378,7 +1412,11 @@
   {
     "name": "Obvious",
     "url": "https://www.obvious.technology",
+<<<<<<< HEAD
     "description": "Obvious is a ERC-4337 compatible smart contract wallet focused on simplifying transaction experience.",
+=======
+    "description": "Obvious is a ERC-4337 compatible smart contract wallet focussed on simplifying transaction experience.",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "category": "wallet",
     "subcategory": "account abstraction",
     "imageUrl": "/images/partners/obvious.webp"
@@ -1908,8 +1946,13 @@
     "url": "https://www.privy.io/",
     "description": "Privy is a simple library to onboard all your users to web3, with embedded wallets for web3 newcomers, reliable connectors for web3 natives, and powerful user management.",
     "imageUrl": "/images/partners/privy.webp",
+<<<<<<< HEAD
     "category": "infra",
     "subcategory": "developer tool"
+=======
+    "category": "onramp",
+    "subcategory": "fiat on-ramp"
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
   },
   {
     "name": "Quicknode",
@@ -1986,7 +2029,11 @@
   {
     "name": "Transak",
     "url": "https://transak.com/",
+<<<<<<< HEAD
     "description": "Transak is a global web3 payment and onboarding infrastructure provider, facilitating seamless transactions between traditional finance and crypto assets.\n\nWeb3 platforms using Transak can embed the best way to onboard users by enabling them to buy or sell crypto assets from 150+ countries, as Transak abstracts away the complexity of user KYC, risk monitoring, compliance, payment methods and customer support.\n\nTransak’s product suite includes robust fiat-to-crypto services (On/Off-Ramps), a fiat-to-smart-contract solution (Transak One), and a fiat-to-NFT checkout solution.\n\nAs a regulated, non-custodial payments layer, Transak supports onboarding to 160+ crypto assets across 75+ blockchains. Trusted by over 350+ applications, including MetaMask and Coinbase Wallet, Transak is making web3 applications more accessible.\n\nFor more information, visit transak.com or follow us on twitter.com/transak",
+=======
+    "description": "Transak is a global web3 payment and onboarding infrastructure provider, facilitating seamless transitions between traditional finance and crypto assets.\n\nWeb3 platforms using Transak can embed the best way to onboard users by enabling them to buy or sell crypto assets from 150+ countries, as Transak abstracts away the complexity of user KYC, risk monitoring, compliance, payment methods and customer support.\n\nTransak’s product suite includes robust fiat-to-crypto services (On/Off-Ramps), a fiat-to-smart-contract solution (Transak One), and a fiat-to-NFT checkout solution.\n\nAs a regulated, non-custodial payments layer, Transak supports onboarding to 160+ crypto assets across 75+ blockchains. Trusted by over 350+ applications, including MetaMask and Coinbase Wallet, Transak is making web3 applications more accessible.\n\nFor more information, visit transak.com or follow us on twitter.com/transak",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "imageUrl": "/images/partners/transak.webp",
     "category": "onramp",
     "subcategory": "fiat on-ramp"
@@ -2082,7 +2129,11 @@
   {
     "name": "Manifold",
     "url": "https://studio.manifold.xyz/",
+<<<<<<< HEAD
     "description": "Manifold Studio allows you to build your own personalized web3 creative platform and sell digital goods (NFTs). The tools allow for the highest level of provenance and complete control of your work.",
+=======
+    "description": "Manifold Studio allows you to build your own personalized web3 creative platform and sell digital goods(NFTs). The tools allow for the highest level of provenance and complete control of your work.",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "imageUrl": "/images/partners/manifold.webp",
     "category": "consumer",
     "subcategory": "creator"
@@ -2393,7 +2444,11 @@
   },
   {
     "name": "Krav Trade ",
+<<<<<<< HEAD
     "description": "At Krav, we're all about creating a robust DeFi infrastructure where you, whether as a trader or a liquidity provider (LP), can truly thrive. If you're a trader, you'll love how you can use altcoins such as PEPE as collateral to open long or short positions on Bitcoin (BTC). And if you're an LP, you'll appreciate the steady income from transaction fees every time a trade happens.",
+=======
+    "description": "At Krav, we're all about creating a robust DeFi infrasturcture where you, whether as a trader or a liquidity provider (LP), can truly thrive. If you're a trader, you'll love how you can use altcoins such as PEPE as collateral to open long or short positions on Bitcoin (BTC). And if you're an LP, you'll appreciate the steady income from transaction fees every time a trade happens.",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "url": "https://krav.trade/",
     "imageUrl": "/images/partners/krav.png",
     "category": "defi",
@@ -2576,7 +2631,11 @@
     "subcategory": "security"
   },
   {
+<<<<<<< HEAD
     "name": "Everyworld",
+=======
+    "name": "Everyworld ",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "description": "Everyworld is a rewarded ads protocol that rewards people for consuming and engaging with promoted content. ",
     "url": "https://www.everyworld.com/",
     "imageUrl": "/images/partners/everyworld.png",
@@ -3154,7 +3213,11 @@
   {
     "name": "Franklin Payroll",
     "description": "All-in-one onchain financial operations suite. Pay US W2 employees, vendors, global contractors, and invoice customers. Franklin supports USD and crypto payouts plus stablecoin to USD off-ramping.",
+<<<<<<< HEAD
     "url": "https://www.hellofranklin.co",
+=======
+    "url": "www.hellofranklin.co",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "imageUrl": "/images/partners/franklin.png",
     "category": "consumer",
     "subcategory": "payments"
@@ -3426,7 +3489,11 @@
   {
     "name": "AuditOne & Insura",
     "description": "AuditOne is an all-in-one audit platform, that offers security services, tools & risk coverage to ensure the safety and reliability of smart contracts and AI-systems. We redefine blockchain auditing by perfectly balancing quality, speed, affordability, and reliability.\nOur unique approach is tailored to the dynamic nature of the blockchain industry, ensuring we deliver excellence without compromise.\n",
+<<<<<<< HEAD
     "url": "https://www.auditone.io",
+=======
+    "url": "https://www.auditone.io/, \n\n\n",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "imageUrl": "/images/partners/audit.png",
     "category": "infra",
     "subcategory": "security"
@@ -3434,7 +3501,11 @@
   {
     "name": "Stack",
     "description": "Stack offers scalable infrastructure for loyalty and rewards programs. Our mission is to revolutionizing loyalty by reducing time spent away from core business.",
+<<<<<<< HEAD
     "url": "https://stack.so",
+=======
+    "url": "stack.so",
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "imageUrl": "/images/partners/stack.png",
     "category": "consumer",
     "subcategory": "social"
@@ -3600,6 +3671,7 @@
     "imageUrl": "/images/partners/zarp.png"
   },
   {
+<<<<<<< HEAD
     "name": "GBM Domains",
     "description": "Tokenize new or existing domain names and bring them onchain to Base. Get access to rapid, low-cost domain trading featuring our unique Bid-to-Earn auction model.",
     "url": "https://gbm.domains/",
@@ -3616,12 +3688,13 @@
     "subcategory": "gaming"
   },
   {
+=======
+>>>>>>> 21fc38cd (feat: add new ecosystem page (#1342))
     "name": "GBM Domains",
-    "tags": [
-      "nft"
-    ],
     "description": "Tokenize new or existing domain names and bring them onchain to Base. Get access to rapid, low-cost domain trading featuring our unique Bid-to-Earn auction model.",
     "url": "https://gbm.domains/",
-    "imageUrl": "/images/partners/gbm-domains.png"
+    "imageUrl": "/images/partners/gbm-domains.png",
+    "category": "consumer",
+    "subcategory": "nft"
   }
 ]
