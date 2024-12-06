@@ -1,5 +1,12 @@
 [
   {
+    "name": "MADNFT",
+    "tags": ["nft"],
+    "description": "MADNFT is a creator-first NFT platform empowering artists, collectors, and communities with tools to mint, list, and engage while earning XP points and rewards.",
+    "url": "https://madnft.io",
+    "imageUrl": "/images/partners/madnft.png"
+  },
+  {
     "name": "Coinbase",
     "url": "https://www.coinbase.com",
     "description": "Coinbase is a secure online platform for buying, selling, transferring, and storing cryptocurrency.",
@@ -4214,5 +4221,14 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "GBM Domains",
+    "tags": [
+      "nft"
+    ],
+    "description": "Tokenize new or existing domain names and bring them onchain to Base. Get access to rapid, low-cost domain trading featuring our unique Bid-to-Earn auction model.",
+    "url": "https://gbm.domains/",
+    "imageUrl": "/images/partners/gbm-domains.png"
   }
 ]
