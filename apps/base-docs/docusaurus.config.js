@@ -130,11 +130,11 @@ const config = {
           eventContext: 'navbar',
         },
         {
-          to: 'https://base.org/getstarted',
+          to: 'https://base.org/build',
           navposition: 'bottomLeft',
           label: 'Get Started',
           type: 'custom-navbarLink',
-          eventLabel: 'getstarted',
+          eventLabel: 'build',
           eventContext: 'navbar',
         },
         {
