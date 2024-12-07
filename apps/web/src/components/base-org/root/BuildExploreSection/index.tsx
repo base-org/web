@@ -33,7 +33,7 @@ export default async function BuildExploreSection() {
               </div>
             </div>
           </CardLink>
-          <CardLink href="/getstarted">
+          <CardLink href="/build">
             <div className="flex items-center gap-4">
               <ImageAdaptive
                 src={resourcesIllustration as StaticImageData}
