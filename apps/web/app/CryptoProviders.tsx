@@ -1,9 +1,6 @@
 'use client';
 
-import '@rainbow-me/rainbowkit/styles.css';
-import '@coinbase/onchainkit/styles.css';
-
-import { OnchainKitProvider } from '@coinbase/onchainkit';
+import { AppConfig, OnchainKitProvider } from '@coinbase/onchainkit';
 import { connectorsForWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { isDevelopment } from 'apps/web/src/constants';
@@ -58,6 +55,12 @@ type CryptoProvidersProps = {
   children: React.ReactNode;
 };
 
+const onchainKitConfig: AppConfig = {
+  appearance: {
+    mode: 'light',
+  },
+};
+
 export default function CryptoProviders({ children }: CryptoProvidersProps) {
   return (
     <WagmiProvider config={config}>
@@ -65,6 +68,7 @@ export default function CryptoProviders({ children }: CryptoProvidersProps) {
         <OnchainKitProvider
           chain={isDevelopment ? baseSepolia : base}
           apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
+          config={onchainKitConfig}
         >
           <RainbowKitProvider modalSize="compact">{children}</RainbowKitProvider>
         </OnchainKitProvider>

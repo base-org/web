@@ -102,7 +102,7 @@ Ensure Chain is Set to Base Be sure to set the `chain={base}` parameter; otherwi
 ```typescript title="src/components/basename.tsx"
 'use client';
 import React from 'react';
-('use client');
+'use client';
 import React from 'react';
 import { Avatar, Identity, Name, Address } from '@coinbase/onchainkit/identity';
 import { base } from 'viem/chains';
