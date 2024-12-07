@@ -17,13 +17,19 @@ export default function UsernameProfile() {
     );
 
   return (
-    <div className="mx-auto grid min-h-screen grid-cols-1 gap-10 md:grid-cols-[25rem_minmax(0,1fr)]">
-      <div className="w-full">
-        <UsernameProfileSidebar />
+    <div className="flex flex-col gap-10 items-center">
+      <div className="mx-auto grid min-h-screen grid-cols-1 gap-10 md:grid-cols-[25rem_minmax(0,1fr)]">
+        <div className="w-full">
+          <UsernameProfileSidebar />
+        </div>
+        <div className="w-full">
+          <UsernameProfileContent />
+        </div>
       </div>
-      <div className="w-full">
-        <UsernameProfileContent />
-      </div>
+      <span className="mt-24">
+        Content displayed on this profile page is rendered directly from the decentralized Basenames
+        protocol, and is not maintained or moderated by, nor under the control of, Coinbase.
+      </span>
     </div>
   );
 }
