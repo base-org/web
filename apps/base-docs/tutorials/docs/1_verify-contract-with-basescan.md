@@ -42,7 +42,7 @@ The [Coinbase Developer Platform] provides access to tools and services necessar
 
 ## Jump Right In
 
-For this turotial, you will deploy a simple contract that is included in the Foundry quickstart. To do so, ensure that you have Foundry installed.
+For this tutorial, you will deploy a simple contract that is included in the Foundry quickstart. To do so, ensure that you have Foundry installed.
 
 If you don't have Foundry install it:
 
@@ -114,7 +114,7 @@ Deployed to: 0xEF5fe818Cb814E5c8277C5F12B57106B4EC3DdaA
 Transaction hash: 0xb191f9679a1fee253cf430ac09a6838f6806cfb2a250757fef407880f5546836
 ```
 
-Congrats! You've now deployed a contract to Base. The output of the deployment command contiains a contract address (e.g `Deployed to: 0xEF5fe818Cb814E5c8277C5F12B57106B4EC3DdaA`). Copy this address as you will need it in the next step.
+Congrats! You've now deployed a contract to Base. The output of the deployment command contains a contract address (e.g `Deployed to: 0xEF5fe818Cb814E5c8277C5F12B57106B4EC3DdaA`). Copy this address as you will need it in the next step.
 
 ### Verify the contract
 
@@ -155,7 +155,7 @@ To verify a contract you will use the `verifysourcecode` route, with the `contra
 
 :::tip Unsure what data to input?
 
-In every foundry project you will have a `.json` file that contains the conrtacts metadata and ABI. For this particular project, this information is located in the `/verify_contracts/out/Counter.sol/Counter.json`
+In every foundry project you will have a `.json` file that contains the contracts metadata and ABI. For this particular project, this information is located in the `/verify_contracts/out/Counter.sol/Counter.json`
 
 Under the `Metadata` object you will find the compiler version under `evmversion`
 :::
@@ -263,7 +263,7 @@ If successful, your terminal will output JSON text with three properties `status
 
 Result is the GUID and is a unique identifier for checking the status of your contracts verification.
 
-To verify the contract, let's create a curl request with the following paramters
+To verify the contract, let's create a curl request with the following parameters
 
 ```bash
 curl "https://api.basescan.org/api?module=contract&action=checkverifystatus&guid=cqjzzvppgswqw5adq4v6iq4xkmf519pj1higvcxsdiwcvwxemd&apikey=DK8M329VYXDSKTF633ABTK3SAEZ2U9P8FK"
