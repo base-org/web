@@ -3549,5 +3549,13 @@
     "imageUrl": "/images/partners/gbm-domains.png",
     "category": "consumer",
     "subcategory": "nft"
+  },
+  {
+    "name": "Cryptodefi",
+    "description": "The grooviest way to go on chain. Interact with DeFi protocols on Base and learn from a friendly AI Agent the basics of crypto, defi, smart wallets, and more.",
+    "url": "https://cryptodefi.com/",
+    "imageUrl": "/images/partners/cryptodefi.png",
+    "category": "defi",
+    "subcategory": "lending/borrowing"
   }
 ]
