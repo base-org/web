@@ -105,6 +105,12 @@ If you're a prospective or current Base Node operator and would like to restore 
 
 In the home directory of your Base Node, create a folder named `geth-data` or `reth-data`. If you already have this folder, remove it to clear the existing state and then recreate it. Next, run the following code and wait for the operation to complete.
 
+:::info
+
+We will be deprecating the Public Geth Archive Snapshots on _December 15th, 2024_ and recommend switching to Reth going forward. We will continue to maintain the Reth archive snapshot.
+
+:::
+
 | Network | Client | Snapshot Type | Command                                                                                                               |
 | ------- | ------ | ------------- | --------------------------------------------------------------------------------------------------------------------- |
 | Testnet | Geth   | Full          | `wget https://sepolia-full-snapshots.base.org/$(curl https://sepolia-full-snapshots.base.org/latest)`                 |

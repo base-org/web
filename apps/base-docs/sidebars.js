@@ -7,7 +7,7 @@ module.exports = {
       label: 'Notices',
       collapsible: false,
       collapsed: false,
-      items: ['notices/preparing-for-fault-proofs-on-base'],
+      items: ['notices/decomissioning-public-geth-archive-snapshots'],
     },
     {
       type: 'category',
