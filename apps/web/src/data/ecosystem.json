@@ -15,6 +15,14 @@
     "subcategory": "centralized exchange"
   },
   {
+    "name": "D2 Finance",
+    "description": "D2 Finance is a Multi-strategy Fund delivering Tokenized Derivatives Strategies and institutional level derivatives trading, 100% verifiable on-chain",
+    "url": "https://d2.finance/strategies",
+    "imageUrl": "/images/partners/D2FinanceLogo.png",
+    "category": "defi",
+    "subcategory": "derivatives"
+  },
+  {
     "name": "Connext",
     "description": "Connext is an intent-based modular interoperability protocol for securely passing funds and data between chains with the best possible speed, pricing, and security.",
     "url": "https://bridge.connext.network/",
