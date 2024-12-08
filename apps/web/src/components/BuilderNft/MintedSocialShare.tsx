@@ -28,7 +28,7 @@ export function MintedSocialShare() {
         </Button>
       </Link>
       <Link
-        href={`https://twitter.com/intent/tweet?text=${shareText}`}
+        href={`https://x.com/intent/tweet?text=${shareText}`}
         target="_blank"
         rel="noreferrer"
       >
