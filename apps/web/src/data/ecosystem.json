@@ -15,6 +15,15 @@
     "subcategory": "centralized exchange"
   },
   {
+    "name": "SEDA",
+    "tags": [
+      "infra"
+    ],
+    "description": "SEDA is Web3's most powerful oracle connecting any network with millions of feeds in one integration. Permissionlessly deploy app-specific oracle feeds for any use case on day one.",
+    "url": "https://seda.xyz",
+    "imageUrl": "/images/partners/seda.png"
+  },
+  {
     "name": "Connext",
     "description": "Connext is an intent-based modular interoperability protocol for securely passing funds and data between chains with the best possible speed, pricing, and security.",
     "url": "https://bridge.connext.network/",
