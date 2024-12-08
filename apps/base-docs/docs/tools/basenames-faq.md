@@ -76,7 +76,7 @@ Transferring all 3 to the same address will fully transfer ownership of the Base
 
 ### 11. What happens if I forget to renew my Basename?
 
-If you forget to renew your Name, it will enter a grace period of 90 days, during which you can still renew it. If not renewed during this period, the Basename will become available for others to register.
+If you forget to renew your Name, it will enter a grace period of 90-days, during which you can still renew it. If not renewed during this period, the Basename will become available for others to register.
 
 ### 12. What happens if a Basename is not renewed during the grace period?
 
