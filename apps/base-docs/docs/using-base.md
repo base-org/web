@@ -32,7 +32,7 @@ The [Coinbase Wallet](https://chrome.google.com/webstore/detail/coinbase-wallet-
 To use Base with Coinbase Wallet:
 
 1. Open the Coinbase Wallet browser extension and log in to your account.
-2. Connect to an app using Coinbase Wallet.
+2. Connect to a dApp using Coinbase Wallet.
 3. Open the network selection menu by clicking the network icon in the upper right-hand corner.
 4. Select **Base**.
 
