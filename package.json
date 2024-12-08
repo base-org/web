@@ -8,6 +8,9 @@
     "build": "yarn workspaces foreach run build",
     "lint": "yarn workspaces foreach run lint",
     "test": "yarn workspaces foreach run test",
+    "dev:web": "yarn workspace @app/web dev",
+    "dev:docs": "yarn workspace @app/base-docs dev",
+    "dev:bridge": "yarn workspace @app/bridge dev",
     "postinstall": "sh -c 'if [ command -v ./node_modules/.bin/husky ]; then ./node_modules/.bin/husky install; fi;'",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"

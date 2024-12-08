@@ -26,7 +26,32 @@ function configureBackupJsonRpcProvider<TChain extends Chain>(url: string) {
 }
 
 export function connectWallet(activeChainIds: number[]) {
+  // Validate chain configuration
+  if (!activeChainIds?.length) {
+    throw new Error(
+      'Chain configuration is missing. Please check your environment variables L1_CHAIN_ID and L2_CHAIN_ID.',
+    );
+  }
+
+  // Validate WalletConnect project ID
+  if (!publicRuntimeConfig.walletConnectProjectId) {
+    throw new Error(
+      'WalletConnect project ID is missing. Please add WALLET_CONNECT_PROJECT_ID to your .env file.\n' +
+        'You can get a project ID from https://cloud.walletconnect.com',
+    );
+  }
+
   const customChains = chainList.filter((chain) => activeChainIds?.includes(chain.id));
+
+  // Validate that chains were found
+  if (!customChains.length) {
+    throw new Error(
+      `No chains found for IDs: ${activeChainIds.join(
+        ', ',
+      )}. Please check your chain configuration.`,
+    );
+  }
+
   const { chains, publicClient } = configureChains(
     [...customChains],
     [
@@ -35,10 +60,12 @@ export function connectWallet(activeChainIds: number[]) {
       configureBackupJsonRpcProvider('https://eth.llamarpc.com'),
     ],
   );
+
   let autoConnect = false;
   if (typeof window !== 'undefined') {
     autoConnect = localStorage.getItem('autoconnect') === '1';
   }
+
   const connectors = connectorsForWallets([
     {
       groupName: 'Recommended',
@@ -56,6 +83,7 @@ export function connectWallet(activeChainIds: number[]) {
       ],
     },
   ]);
+
   const wagmiConfig = createConfig({
     autoConnect,
     connectors,

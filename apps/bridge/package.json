@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "next start",
-    "dev": "next dev",
+    "setup": "node scripts/setup.js",
+    "dev": "yarn setup && next dev",
     "build": "next build",
     "lint": "next lint"
   },
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
+    "chalk": "^4.1.2",
     "eslint-config-next": "^13.1.6",
     "postcss": "^8.4.20",
     "prettier-plugin-tailwindcss": "^0.2.3",

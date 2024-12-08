@@ -1,4 +1,27 @@
 {
+    "01_basename_social_dropdown": {
+        "title": "Create a Basename Profile Component",
+        "slug": "/create-basename-profile-component",
+        "description": "Learn how to create a component that displays social media and profile information for a given basename.",
+        "author": "hughescoin",
+        "keywords": [
+            "basename",
+            "profile",
+            "component",
+            "onchain",
+            "dapp"
+        ],
+        "tags": [
+            "frontend",
+            "identity"
+        ],
+        "difficulty": "medium",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Dec 3, 2024",
+        "duration": "9 min read",
+        "checksum": "df2b47bc5f070da32258d9533d04c1840d5e1ebeb58de4196e57b272b9b1a6b7"
+    },
     "0_deploy-with-foundry": {
         "title": "Deploying a smart contract using Foundry",
         "slug": "/deploy-with-foundry",
@@ -24,9 +47,9 @@
         ],
         "difficulty": "beginner",
         "displayed_sidebar": null,
-        "last_updated": "Jul 24, 2024",
+        "last_updated": "Dec 3, 2024",
         "duration": "17 min read",
-        "checksum": "01acc27579fdc15f4087491bb6a9bed9c4142d893c7eafd2aa2ae023fbefb8a3"
+        "checksum": "ab181fab0003c30eb98f8b5f7621f8d5cc7bd3bbf4c8357d339b95b7a44d68f1"
     },
     "0_deploy-with-hardhat": {
         "title": "Deploying a smart contract using Hardhat",
@@ -537,6 +560,32 @@
         "duration": "9 min read",
         "checksum": "296c34ff0988d0c72ec1a791bb3e48833bb0afa40f0111c3519354562e3350ed"
     },
+    "1_ock-swap-theme": {
+        "title": "Create a Custom Themed Swap Component with OnchainKit",
+        "slug": "/create-custom-themed-swap-component",
+        "description": "Learn how to implement a swap component with a custom theme using OnchainKit in your React application.",
+        "author": "hughescoin",
+        "keywords": [
+            "OnchainKit",
+            "Swap Component",
+            "Custom Theme",
+            "React",
+            "TypeScript",
+            "ERC20 Tokens",
+            "Base Chain"
+        ],
+        "tags": [
+            "frontend",
+            "defi",
+            "ethereum",
+            "base"
+        ],
+        "difficulty": "medium",
+        "displayed_sidebar": null,
+        "last_updated": "Dec 3, 2024",
+        "duration": "6 min read",
+        "checksum": "6f687231958dc79d5264bcfeadfdb5704b860a7653d788491bdf4c8c41a0e0d3"
+    },
     "1_verify-contract-with-basescan": {
         "title": "Verify a Smart Contract using Basescan API",
         "slug": "/verify-smart-contract-using-basescan",
@@ -799,6 +848,111 @@
         "last_updated": "Aug 13, 2024",
         "duration": "18 min read",
         "checksum": "e20b430c2b1696b473625584d654f4a60e313c102127730553ab75f0bb54c568"
+    },
+    "2_ock-checkout-tutorial": {
+        "title": "Build a eCommerce App using Coinbase Commerce and OnchainKit",
+        "slug": "/coinbase-commerce-onchainkit-checkout",
+        "description": "Learn how to integrate Coinbase Commerce payments into your application using OnchainKit.",
+        "author": "hughescoin",
+        "keywords": [
+            "Account Abstraction",
+            "AA",
+            "Smart account",
+            "Smart Wallet",
+            "Funding",
+            "Onramps",
+            "Onchainkit",
+            "Onboarding Smart contract wallet",
+            "Smart account"
+        ],
+        "tags": [
+            "account abstraction"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Dec 3, 2024",
+        "duration": "10 min read",
+        "checksum": "d6301d407efde110a3d11bb66aab5275c19fdf490a5c65e1ed76994a5e732181"
+    },
+    "2_ock-fund-tutorial": {
+        "title": "Build a Smart Wallet Funding app with OnchainKit",
+        "slug": "/build-smart-wallet-funding-app",
+        "description": "Learn how to create a app that detects if a smart wallet has ETH and prompts users to add funds if needed.",
+        "author": "hughescoin",
+        "keywords": [
+            "Account Abstraction",
+            "AA",
+            "Smart account",
+            "Smart Wallet",
+            "Funding",
+            "Onramps",
+            "Onchainkit",
+            "Onboarding Smart contract wallet",
+            "Smart account"
+        ],
+        "tags": [
+            "frontend",
+            "wallet",
+            "ethereum"
+        ],
+        "difficulty": "medium",
+        "displayed_sidebar": null,
+        "last_updated": "Dec 3, 2024",
+        "duration": "8 min read",
+        "checksum": "7c0f5e6d29bac8f14d6bc3f169994b35553e2076541a6be37d90d70f15d6406c"
+    },
+    "2_paymaster-erc20-gas-payments": {
+        "title": "Enable ERC-20 Gas Payments with Coinbase Paymaster",
+        "slug": "/enable-erc20-gas-payments",
+        "description": "Learn how to enable ERC-20 tokens as gas payment options for smart wallets using Coinbase Paymaster, improving UX and onboarding for your onchain application.",
+        "author": "hughescoin",
+        "keywords": [
+            "Paymaster",
+            "ERC20 Gas Payments",
+            "Wagmi",
+            "React",
+            "TypeScript",
+            "Base",
+            "cbBTC",
+            "Bitcoin",
+            "Smart Wallets",
+            "Paymaster Policy"
+        ],
+        "tags": [
+            "backend",
+            "ethereum",
+            "base",
+            "erc20"
+        ],
+        "difficulty": "medium",
+        "displayed_sidebar": null,
+        "last_updated": "Dec 3, 2024",
+        "duration": "11 min read",
+        "checksum": "fba9f07d79bc71831f303b9c85d3748571041e605987bb04a1044d7dcf1d9e28"
+    },
+    "2_paymaster-sponsor-using-wagi": {
+        "title": "How to Implement Base Paymaster into a Wagmi Project",
+        "slug": "/implement-base-paymaster-wagmi",
+        "description": "A tutorial to create a Mint button for free NFT minting with Base Paymaster sponsorship",
+        "author": "hughescoin",
+        "keywords": [
+            "Base Paymaster",
+            "NFT",
+            "Wagmi",
+            "WalletConnect",
+            "Coinbase Wallet"
+        ],
+        "tags": [
+            "smart wallets",
+            "NFT minting",
+            "Wagmi integration"
+        ],
+        "difficulty": "beginner",
+        "displayed_sidebar": null,
+        "last_updated": "Dec 3, 2024",
+        "duration": "15 min read",
+        "checksum": "c3637099bddcc48e1480b60b3bf560c1a6ee901b8ed7bf598e8bf8d26cb23200"
     },
     "4_account-abstraction-with-biconomy": {
         "title": "Account Abstraction on Base using Biconomy",
@@ -1131,6 +1285,28 @@
         "last_updated": "Aug 14, 2024",
         "duration": "9 min read",
         "checksum": "d9302891627f1761507422bf35c361a30b343e77cb4d3981888ab70eb4fbd0ac"
+    },
+    "5_farcaster-to-openframe": {
+        "title": "Convert Farcaster Frame to Open Frame using OnchainKit",
+        "slug": "/convert-farcaster-frame-to-open-frame",
+        "description": "Learn how to convert your Farcaster Frame to an Open Frame using Onchain Kit, enabling broader compatibility and usage.",
+        "author": "hughescoin",
+        "keywords": [
+            "farcaster",
+            "openframe",
+            "onchainKit",
+            "farcaster",
+            "open frames"
+        ],
+        "tags": [
+            "frontend"
+        ],
+        "difficulty": "intermediate",
+        "hide_table_of_contents": false,
+        "displayed_sidebar": null,
+        "last_updated": "Dec 3, 2024",
+        "duration": "10 min read",
+        "checksum": "a81681ca9176774c2b8d20b6a2a873bdbaab99944a4d90526797f699db3e7b86"
     },
     "5_oracles-chainlink-price-feeds": {
         "title": "Accessing real-world data using Chainlink Data Feeds",
