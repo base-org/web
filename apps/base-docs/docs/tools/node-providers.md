@@ -139,6 +139,19 @@ hide_table_of_contents: true
 
 ---
 
+## eRPC
+
+[eRPC](https://github.com/erpc/erpc) is a fault-tolerant EVM RPC proxy and re-org aware permanent caching solution. It is built with read-heavy use-cases in mind such as data indexing and high-load frontend usage.
+
+To get started, visit the [develoepr documentation](https://docs.erpc.cloud/).
+
+### Supported Networks
+
+- Base Mainnet
+- Base Sepolia (Testnet)
+
+---
+
 ## GetBlock
 
 [GetBlock](https://getblock.io/nodes/base/) is a Blockchain-as-a-Service (BaaS) platform that provides instant API access to full nodes for Base. They offer free, pay per use, and unlimited pricing plans.
