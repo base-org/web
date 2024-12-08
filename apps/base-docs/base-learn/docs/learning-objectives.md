@@ -194,8 +194,8 @@ Use the script to regenerate this file.
 
 ### [ERC-20 Implementation](./erc-20-token/erc-20-token-sbs.md)
 
-- Describe OpenZepplin
-- Import the OpenZepplin ERC-20 implementation
+- Describe OpenZeppelin
+- Import the OpenZeppelin ERC-20 implementation
 - Describe the difference between the ERC-20 standard and OpenZeppelin's ERC20.sol
 - Build and deploy an ERC-20 compliant token
 
