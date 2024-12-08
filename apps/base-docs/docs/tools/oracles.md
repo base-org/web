@@ -17,7 +17,7 @@ keywords:
     Pyth,
     VRF,
     Gelato VRF,
-    Gelato verifable random function,
+    Gelato verifiable random function,
     verifiable random function,
     generate random numbers,
     RNG,
