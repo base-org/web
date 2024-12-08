@@ -87,6 +87,13 @@
     "subcategory": "gaming"
   },
   {
+  "name": "H3IR",
+  "tags": ["onramp"],
+  "description": "Onboard your loved ones to H3IR with an Onchain Estate and Trust. Securely transfer assets posthumously, ensuring your estate is protected and passed on, even if the unexpected happens.",
+  "url": "https://my.heir.es",
+  "imageUrl": "/images/partners/h3ir_logo.png"
+}
+  {
     "name": "KOMPETE",
     "description": "Create your build, lock in your playstyle, and drop into some of the best multiplayer game modes of all time across different genres. ",
     "url": "https://kompete.game",
