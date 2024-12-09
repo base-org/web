@@ -18,7 +18,7 @@ fi
 echo "--- Updating local '$BASE_BRANCH' base branch"
 
 # Required for correct Nx affected project resolution
-git fetch -f --no-tags origin $BASE_BRANCH:$BASE_BRANCH
+git fetch -f --no-tags origin "$BASE_BRANCH":"$BASE_BRANCH"
 
 echo "--- Building required packages"
 
