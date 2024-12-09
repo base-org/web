@@ -38,7 +38,7 @@ Ensuring that your app is perceived as trustworthy and not flagged as malicious 
 - **Accessibility Across Regions**: Avoid geo-blocking or access restrictions that prevent certain regions or countries from accessing your app.
 - **Consistent Web2 Behavior**: Avoid rapid or unexplained changes in UI that can make users feel uncertain about the app’s reliability.
 - **Transparent Web3 Interactions**: Make sure your app’s web3 interactions are clear and match the UI actions. For example, a “Mint” button should clearly emit a mint transaction.
-- **Standard Sign-in Methods**: Provide all standard connection methods for users to sign in, such as WalletConnect / WalletLink or popular browser extension wallets.
+- **Standard Sign-in Methods**: Provide all standard connection methods for users to sign in, such as WalletConnect / Coinbase Wallet SDK or popular browser extension wallets.
 
 ---
 
