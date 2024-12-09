@@ -3549,5 +3549,13 @@
     "imageUrl": "/images/partners/gbm-domains.png",
     "category": "consumer",
     "subcategory": "nft"
+  },
+  {
+    "name": "Traceye",
+    "description": "Traceye is a next-gen, powerful data indexing solution for Web3 and blockchain. Diverse range L1/L2 blockchains, rollups, and appchains can leverage Traceye to build and deploy their custom data indexers optimized for ultrafast indexing, 50% reduced data lag,99.99% uptime, automated sync, and 24/7 monitoring. Traceye also offers value-added features like webhooks, BI analytics tool, custom entities, community subgraphs, and more for personalization.",
+    "url": "https://www.traceye.io",
+    "imageUrl": "/images/partners/traceye.png",
+    "category": "infra",
+    "subcategory": "indexer"
   }
 ]
