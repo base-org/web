@@ -103,7 +103,7 @@ If you're a builder who wants to add or update your project on the [Base Ecosyst
       - `consumer`: _One_ of `creator`, `crypto taxes`, `dao`, `gaming`, `messaging`, `music`, `nft`, `payments`, `real world`, `social`
       - `defi`: _One_ of `dex`, `dex aggregator`, `insurance`, `lending/borrowing`, `liquidity management`, `portfolio`, `stablecoin`, `yield vault`
       - `infra`: _One_ of `ai`, `bridge`, `data`, `depin`, `developer tool`, `identity`, `node provider`, `raas`, `security`
-      - `onramp`: _One_ of `centralized-exchange`, `fiat on-ramp`
+      - `onramp`: _One_ of `centralized exchange`, `fiat on-ramp`
       - `wallet`: _One_ of `account abstraction`, `multisig`, `self-custody`
 
 4. When adding and/or updating a logo, place a 192x192 pixel PNG file in the `web/apps/web/public/images/partners/`. The file should be named appropriately (e.g., your-project-name.png). The logo should be an App Store or Play Store iconographic version, not a full wordmark.
