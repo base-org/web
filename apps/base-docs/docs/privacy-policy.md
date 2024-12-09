@@ -44,7 +44,7 @@ We collect the following personal information when providing the Services:
 
 - Information from Coinbase Companies (“**Affiliates**”):  We may obtain information about you, such as Basic User Information from our Affiliates (for instance, if you use Base with your Coinbase-hosted wallet) as part of facilitating, supporting, or providing our Services.
 - Blockchain Data: We may analyze public blockchain data, including timestamps of transactions or events, transaction IDs, digital signatures, transaction amounts and wallet addresses
-- Information from Analytics Providers: We receive information about your website usage and interactions from third party analytics providers. This includes browser fingerprint, device information,and IP address.
+- Information from Analytics Providers: We receive information about your website usage and interactions from third party analytics providers. This includes browser fingerprint, device information, and IP address.
 - Error Tracking Data: We utilize information from third party service providers to provide automated error monitoring, reporting, alerting and diagnostic capture for Service and Site errors to allow User or Developers to build more effectively on the Base platform.
 
 # 2. HOW WE USE YOUR INFORMATION 
@@ -54,14 +54,14 @@ We may use your personal information for the following purposes or as otherwise 
 |                                                                                                                                                                          |                                                            |                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- | --------------------- |
 | **Purpose**                                                                                                                                                              | **Information Used**                                       | **Our Legal Basis**   |
-| To provide you with the Base Services We use certain information that is necessary to conclude and perform our Terms of Service or other relevant contract(s) with you.  | Wallet AddressBlockchain Data                              | Contractual Necessity |
-| To promote the safety, security and integrity of our Services                                                                                                            | Basic User InformationInformation from Analytics Providers | Contractual Necessity |
+| To provide you with the Base Services We use certain information that is necessary to conclude and perform our Terms of Service or other relevant contract(s) with you.  | Wallet Address Blockchain Data                              | Contractual Necessity |
+| To promote the safety, security and integrity of our Services                                                                                                            | Basic User Information Information from Analytics Providers | Contractual Necessity |
 | To allow Users or Developers to build more effectively on the Base platform                                                                                              | Error Tracking Data                                        | Legitimate Interests  |
 | To send you Base Forms for marketing and product development                                                                                                             | Basic User Information                                     | Legitimate Interests  |
 
 # 3. HOW AND WHY WE SHARE YOUR INFORMATION 
 
-We share certain information about you  with service providers, partners and other third parties in order to help us provide our Services. Here’s how:
+We share certain information about you with service providers, partners and other third parties in order to help us provide our Services. Here’s how:
 
 **Affiliates.** Basic User Information that we process and collect may be transferred between Affiliates, Services, and employees affiliated with us as a normal part of conducting business and offering our Services to you.
 

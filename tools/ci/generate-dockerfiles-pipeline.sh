@@ -39,7 +39,7 @@ done
 
 echo "Builds: ${#files[@]}"
 
-# Generate a buildkite pipeline for each a docker build
+# Generate a Buildkite pipeline for each Docker build
 echo "--- Generating build pipelines"
 
 for i in "${!files[@]}"; do
