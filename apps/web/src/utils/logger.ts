@@ -95,9 +95,9 @@ class CustomLogger {
         ...meta,
         error: e,
       });
+    } else {
+      this.log('error', message, meta);
     }
-    this.log('error', message, meta);
-  }
 
   public debug(message: string, meta?: Record<string, unknown>) {
     this.log('debug', message, meta);
