@@ -287,7 +287,7 @@ Finally, test that the owner can withdraw. You can manipulate the time similarly
 <summary>Reveal code</summary>
 
 ```tsx
-it('should allow to withdraw a owner', async () => {
+it('should allow to withdraw an owner', async () => {
   const balanceBefore = await ethers.provider.getBalance(await lockInstance.getAddress());
 
   // Its value will be the one we lock at deployment time.
@@ -320,7 +320,7 @@ You can then run `npx hardhat test` and you should get:
     ✔ should have the right owner
     ✔ shouldn"t allow to withdraw before unlock time (51ms)
     ✔ shouldn"t allow to withdraw a non owner
-    ✔ should allow to withdraw a owner
+    ✔ should allow to withdraw an owner
 
   6 passing (2s)
 ```
