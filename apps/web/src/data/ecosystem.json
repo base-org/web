@@ -224,6 +224,15 @@
     "subcategory": "dex"
   },
   {
+    "name": "SynFutures",
+    "tags": [
+      "defi"
+    ],
+    "description": "SynFutures (F) is a leading decentralized exchange (DEX) and full-stack financial infrastructure powering the future of trading.",
+    "url": "https://www.synfutures.com/",
+    "imageUrl": "/images/partners/synfutures.png"
+  },
+  {
     "name": "SubQuery",
     "description": "Fast, reliable, opens source, decentralised, and customised APIs supercharging dApps on over 150 networks, enabling a user-focused web3 world. SubQuery Network is innovating web3 infrastructure with tools that empower builders to decentralise the future.\n",
     "url": "https://subquery.network/",
