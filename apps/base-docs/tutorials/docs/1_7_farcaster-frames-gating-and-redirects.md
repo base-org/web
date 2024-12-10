@@ -254,7 +254,7 @@ In this tutorial, you learned how to use the main features of Frames - text inpu
 [Vercel]: https://vercel.com
 [Frame Validator]: https://warpcast.com/~/developers/frames
 [Base channel]: https://warpcast.com/~/channel/base
-[deploying with Vercel]: /tutorials/farcaster-frames-deploy-to-vercel
+[deploying with Vercel]: https://docs.base.org/tutorials/farcaster-frames-deploy-to-vercel/
 [NFT Minting Frame]: /tutorials/farcaster-frames-nft-minting
 [Frames]: https://warpcast.notion.site/Farcaster-Frames-4bd47fe97dc74a42a48d3a234636d8c5
 [viem]: https://viem.sh/
