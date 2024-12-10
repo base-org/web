@@ -39,7 +39,7 @@ export default function AnalyticsProvider({ children, context }: AnalyticsProvid
       if (typeof window === 'undefined') return;
 
       if (isDevelopment) {
-        return console.log('\nlogEventWithContext: \n', {
+        console.log('\nlogEventWithContext: \n', {
           eventName,
           sanitizedEventName,
           action,
@@ -47,6 +47,7 @@ export default function AnalyticsProvider({ children, context }: AnalyticsProvid
           page_path: window.location.pathname,
           ...eventData,
         });
+        return;
       }
 
       logEvent(
@@ -63,9 +64,10 @@ export default function AnalyticsProvider({ children, context }: AnalyticsProvid
     [fullContext],
   );
 
-  const values = useMemo(() => {
-    return { logEventWithContext, context, fullContext };
-  }, [context, fullContext, logEventWithContext]);
+  const values = useMemo(() => ({ logEventWithContext, fullContext }), [
+    fullContext,
+    logEventWithContext,
+  ]);
 
   return <AnalyticsContext.Provider value={values}>{children}</AnalyticsContext.Provider>;
 }
