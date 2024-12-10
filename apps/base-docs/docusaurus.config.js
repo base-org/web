@@ -317,7 +317,7 @@ const config = {
             },
           ],
         },
-        // Langauge selection dropdown will be supported in the future
+        // Language selection dropdown will be supported in the future
         // {
         //   type: 'localeDropdown',
         //   navposition: 'bottomRight',
@@ -344,7 +344,7 @@ const config = {
       respectPrefersColorScheme: false,
     },
   },
-  // Langauge selection dropdown will be supported in the future
+  // Language selection dropdown will be supported in the future
   // i18n: {
   //   defaultLocale: 'en',
   //   locales: ['en', 'fr'],
