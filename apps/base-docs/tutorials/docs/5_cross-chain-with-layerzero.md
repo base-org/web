@@ -184,13 +184,13 @@ In this tutorial, you will be implementing the [OApp](https://docs.layerzero.net
 
 :::info
 
-An extension of the [OApp](https://docs.layerzero.network/contracts/oapp) contract standard known as [OFT](https://docs.layerzero.network/contracts/oft) is also available for supporting omnichain fungible token transfers.
+An extension of the [OApp](https://docs.layerzero.network/contracts/oapp) contract standard known as [OFT](https://docs.layerzero.network/v2/developers/evm/oapp/overview) is also available for supporting omnichain fungible token transfers.
 
 :::
 
 :::info
 
-For more information on transferring tokens across chains using LayerZero, visit the [LayerZero documentation](https://docs.layerzero.network/contracts/oft).
+For more information on transferring tokens across chains using LayerZero, visit the [LayerZero documentation](https://docs.layerzero.network/v2/developers/evm/oapp/overview).
 
 :::
 
