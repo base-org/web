@@ -66,7 +66,7 @@ The ETH is required for covering gas fees associated with deploying smart contra
 
 - To fund your wallet with ETH on Base Goerli, visit a faucet listed on the [Base Faucets](https://docs.base.org/tools/network-faucets) page.
 - To fund your wallet with ETH on Optimism Goerli, visit a faucet listed on the [Optimism Faucets](https://docs.optimism.io/builders/tools/faucets) page.
-- To fund your wallet with LINK, visit the [Chainlink Faucet](https://faucets.chain.link/base-testnet).
+- To fund your wallet with LINK, visit the [Chainlink Faucet](https://faucets.chain.link/base-sepolia).
 
 :::info
 
