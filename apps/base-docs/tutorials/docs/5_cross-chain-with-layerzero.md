@@ -149,7 +149,7 @@ remappings = [
 
 ## Getting started with LayerZero
 
-LayerZero provides a smart contract standard called [OApp](https://docs.layerzero.network/contracts/oapp) that is intended for omnichain messaging and configuration.
+LayerZero provides a smart contract standard called [OApp](https://docs.layerzero.network/v2/developers/evm/oapp/overview) that is intended for omnichain messaging and configuration.
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -180,17 +180,17 @@ To get started using LayerZero, developers simply need to inherit from the [OApp
 - `_lzSend`: A function used to send an omnichain message
 - `_lzReceive`: A function used to receive an omnichain message
 
-In this tutorial, you will be implementing the [OApp](https://docs.layerzero.network/contracts/oapp) standard into your own project to add the capability to send messages from a smart contract on Base to a smart contract on Optimism.
+In this tutorial, you will be implementing the [OApp](https://docs.layerzero.network/v2/developers/evm/oapp/overview) standard into your own project to add the capability to send messages from a smart contract on Base to a smart contract on Optimism.
 
 :::info
 
-An extension of the [OApp](https://docs.layerzero.network/contracts/oapp) contract standard known as [OFT](https://docs.layerzero.network/contracts/oft) is also available for supporting omnichain fungible token transfers.
+An extension of the [OApp](https://docs.layerzero.network/v2/developers/evm/oapp/overview) contract standard known as [OFT](https://docs.layerzero.network/v2/developers/evm/oft/quickstart) is also available for supporting omnichain fungible token transfers.
 
 :::
 
 :::info
 
-For more information on transferring tokens across chains using LayerZero, visit the [LayerZero documentation](https://docs.layerzero.network/contracts/oft).
+For more information on transferring tokens across chains using LayerZero, visit the [LayerZero documentation](https://docs.layerzero.network/v2/developers/evm/oft/quickstart).
 
 :::
 
@@ -226,7 +226,7 @@ The contract's constructor expects two arguments:
 
 ### Implementing message sending (`_lzSend`)
 
-To send messages to another chain, your smart contract must call the `_lzSend` function inherited from the [OApp](https://docs.layerzero.network/contracts/oapp) contract.
+To send messages to another chain, your smart contract must call the `_lzSend` function inherited from the [OApp](https://docs.layerzero.network/v2/developers/evm/oapp/overview) contract.
 
 Add a new custom function named `sendMessage` to your smart contract that has the following content:
 
@@ -302,7 +302,7 @@ Your contract’s `estimateFee` function should always be called immediately bef
 
 ### Implementing message receiving (`_lzReceive`)
 
-To receive messages on the destination chain, your smart contract must override the `_lzReceive` function inherited from the [OApp](https://docs.layerzero.network/contracts/oapp) contract.
+To receive messages on the destination chain, your smart contract must override the `_lzReceive` function inherited from the [OApp](https://docs.layerzero.network/v2/developers/evm/oapp/overview) contract.
 
 Add the following code snippet to your `ExampleContract` contract to override the `_lzReceive` function:
 
