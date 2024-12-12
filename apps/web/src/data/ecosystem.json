@@ -345,7 +345,7 @@
   },
   {
     "name": "Bitwave",
-    "url": "bitwave.io",
+    "url": "https://bitwave.io",
     "description": "The #1 Digital Asset Finance Platform For Enterprises! Bitwave combines audit-proven tax and accounting automation software with workflow and process expertise.",
     "imageUrl": "/images/partners/bitwave.webp",
     "category": "consumer",
@@ -1860,8 +1860,8 @@
     "url": "https://www.privy.io/",
     "description": "Privy is a simple library to onboard all your users to web3, with embedded wallets for web3 newcomers, reliable connectors for web3 natives, and powerful user management.",
     "imageUrl": "/images/partners/privy.webp",
-    "category": "onramp",
-    "subcategory": "fiat on-ramp"
+    "category": "infra",
+    "subcategory": "developer tool"
   },
   {
     "name": "Quicknode",
