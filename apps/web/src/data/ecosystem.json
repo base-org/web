@@ -4217,11 +4217,10 @@
   },
   {
     "name": "20lab",
-    "tags": [
-      "infra"
-    ],
     "description": "20lab.app is the most customizable ERC-20, SPL & Sui token generator with over 17 extendable features. Test our generator for free and manage functions via token owner dashboard.",
-    "url": "https://20lab.app/",
-    "imageUrl": "/images/partners/20lab.png"
+    "url": "https://20lab.app/generate/erc20-token/base/",
+    "imageUrl": "/images/partners/20lab.png",
+    "category": "infra",
+    "subcategory": "developer tool"
   }
 ]
