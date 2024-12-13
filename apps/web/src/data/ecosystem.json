@@ -8,6 +8,14 @@
     "subcategory": "nft"
   },
   {
+    "name": "DIMO",
+    "description": "DIMO is connected car platform for developers, enabling user-authorized access to vehicle data to create new types of games, social apps, leaderboards, dashboards, and more. For vehicle owners, the DIMO Mobile app unlocks your car’s data providing valuable vehicle health insights, personalized service offers ,and weekly rewards. DIMO Mobile is your all-in-one app for maximizing your car’s potential and helping you drive smarter.",
+    "url": "https://dimo.co",
+    "imageUrl": "/images/partners/dimo.png",
+    "category": "infra",
+    "subcategory": "developer tool"
+  },
+  {
     "name": "Coinbase",
     "url": "https://www.coinbase.com",
     "description": "Coinbase is a secure online platform for buying, selling, transferring, and storing cryptocurrency.",
