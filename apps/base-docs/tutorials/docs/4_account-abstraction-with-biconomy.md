@@ -805,7 +805,7 @@ To add the ABI, create a new directory named `src/utils` and create a new file n
 
 :::info
 
-If your deployed contract is verified, you can also get the ABI for the contract from [BaseScan](https://goerli.basescan.org/).
+If your deployed contract is verified, you can also get the ABI for the contract from [BaseScan](https://basescan.org/).
 
 :::
 
