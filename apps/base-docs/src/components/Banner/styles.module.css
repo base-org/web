@@ -47,7 +47,7 @@
 }
 
 .bannerSpacer {
-  display: hidden;
+  display: none;
   font-size: 0.75rem;
 }
 
