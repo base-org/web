@@ -16,6 +16,14 @@
     "subcategory": "developer tool"
   },
   {
+    "name": "SynFutures",
+    "description": "SynFutures (F) is a leading decentralized exchange (DEX) and full-stack financial infrastructure powering the future of trading.",
+    "url": "https://www.synfutures.com/",
+    "imageUrl": "/images/partners/synfutures.png",
+    "category": "defi",
+    "subcategory": "dex"
+  },
+  {
     "name": "Coinbase",
     "url": "https://www.coinbase.com",
     "description": "Coinbase is a secure online platform for buying, selling, transferring, and storing cryptocurrency.",
