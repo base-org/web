@@ -314,6 +314,6 @@ Dynamic NFTs are commonly used with gaming projects, similar to the one we built
 [Download a zip containing PNGs]: https://gateway.irys.xyz/MoOvEzePMwFgc_v6Gw3U8ovV6ostgrkWb9tS4baAJhc
 [Irys CLI]: https://docs.irys.xyz/build/d/storage-cli/installation
 [mutability features]: https://docs.irys.xyz/build/d/features/mutability
-[Opensea Testnet]: https://testnets.opensea.io/accoun
+[Opensea Testnet]: https://testnets.opensea.io/account
 [Remix]: https://docs.base.org/tutorials/deploy-with-remix
 [server]: https://docs.irys.xyz/build/d/quickstart
