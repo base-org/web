@@ -187,7 +187,7 @@ irys upload image-level-3.png \
 
 Create three metadata files similar to the ones below. Make sure to change the value of the image field to match the URLs generated in the previous step.
 
-```jason filename="metadata-level-1.json"
+```json filename="metadata-level-1.json"
 {
   "name": "SuperMon",
   "symbol": "SMON",
@@ -202,7 +202,7 @@ Create three metadata files similar to the ones below. Make sure to change the v
 }
 ```
 
-```jason filename="metadata-level-2.json"
+```json filename="metadata-level-2.json"
 {
   "name": "SuperMon",
   "symbol": "SMON",
@@ -218,7 +218,7 @@ Create three metadata files similar to the ones below. Make sure to change the v
 }
 ```
 
-```jason filename="metadata-level-3.json"
+```json filename="metadata-level-3.json"
 {
   "name": "SuperMon",
   "symbol": "SMON",
