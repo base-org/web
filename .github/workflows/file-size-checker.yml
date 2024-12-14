@@ -55,7 +55,7 @@ jobs:
           echo "Huge files found:"
           echo -e "$huge_files"
 
-          # Set outputs for use in next steps
+          # Set outputs for use in the next steps
           echo "large_files<<EOF" >> $GITHUB_OUTPUT
           echo -e "$large_files" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
