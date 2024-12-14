@@ -188,7 +188,7 @@ To get started, visit the [documentation](https://docs.subsquid.io/) or see this
 
 SubQuery provides the ability to aggregate this data across multiple blockchains, all within a single project.
 
-Other advantages of SubQuery includes performance with multiple RPC endpoint configurations, multi-worker capabilities and a configurable caching architecture.
+Other advantages of SubQuery include performance with multiple RPC endpoint configurations, multi-worker capabilities and a configurable caching architecture.
 
 To get started, visit the [developer documentation](https://academy.subquery.network/) or follow [this step-by-step guide](https://academy.subquery.network/quickstart/quickstart_chains/base.html) on how to index any smart contract on Base.
 
