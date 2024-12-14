@@ -85,7 +85,7 @@ coinbaseWallet.preference = 'smartWalletOnly';
 
 ## Implementing Balance Checking
 
-Now well implement a check on the user's wallet to see if they have enough funds. Before we implement this check, let's create a helper function that grabs the user's Ethereum balance using [viem]. To do so, create a `utils.ts` file in the `src` directory that creates a client connected to Base and fetches the user's ETH balance:
+Now we'll implement a check on the user's wallet to see if they have enough funds. Before we implement this check, let's create a helper function that grabs the user's Ethereum balance using [viem]. To do so, create a `utils.ts` file in the `src` directory that creates a client connected to Base and fetches the user's ETH balance:
 
 ```typescript
 import { createPublicClient, http } from 'viem';
