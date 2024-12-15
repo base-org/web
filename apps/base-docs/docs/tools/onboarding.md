@@ -44,7 +44,7 @@ hide_table_of_contents: true
 
 ## Openfort
 
-[Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. Authenticated users can instantly access the embedded, non-custodial [smart account](https://www.openfort.xyz/docs/guides/accounts/smart) natively in the game and sign blockchain transactions with one button. The Oepnfort platform is compatible with most EVM chains, including Base.
+[Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. Authenticated users can instantly access the embedded, non-custodial [smart account](https://www.openfort.xyz/docs/guides/accounts/smart) natively in the game and sign blockchain transactions with one button. The Openfort platform is compatible with most EVM chains, including Base.
 
 Use [Auth Guide](https://www.openfort.xyz/docs/guides/auth/overview) to allow several onboarding methods into your game regardless of the platform. 
 
@@ -72,7 +72,7 @@ You can [get started with Privy here](https://docs.privy.io/guide/quickstart), a
 
 ## thirdweb
 
-[thirdweb](https://thirdweb.com/) is the full stack open source web3 solution for bringing web3 into ANY consumer application on ANY platform. Utilize our wide range of sdks on web, mobile, Unity/Unreal or through our cloud hosted engine service! Connect your users with EOA or social logins, create contracts for marketplaces or tokenize in-game items, handle thousands of transactions to build apps that scale, and provide a fiat onramper for your users. 
+[thirdweb](https://thirdweb.com/) is the full stack open source web3 solution for bringing web3 into ANY consumer application on ANY platform. Utilize our wide range of SDKs on web, mobile, Unity/Unreal or through our cloud hosted engine service! Connect your users with EOA or social logins, create contracts for marketplaces or tokenize in-game items, handle thousands of transactions to build apps that scale, and provide a fiat onramper for your users. 
 
 ---
 
