@@ -1,5 +1,13 @@
 [
   {
+    "name": "UltimateDeal",
+    "description": "UltimateDeal is a real products and curses marketplace based on Base blockchain with NFT and ERCUltra Tech. Launch your own crypto shop on USDC and sell goods.",
+    "url": "https://ultimatedeal.net",
+    "imageUrl": "/images/partners/ultimatedeal.png",
+    "category": "defi",
+    "subcategory": "nft"
+  },
+  {
     "name": "MADNFT",
     "description": "MADNFT is a creator-first NFT platform empowering artists, collectors, and communities with tools to mint, list, and engage while earning XP points and rewards.",
     "url": "https://madnft.io",
