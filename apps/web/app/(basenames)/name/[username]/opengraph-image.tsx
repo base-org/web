@@ -80,20 +80,20 @@ export default async function OpenGraphImage(props: ImageRouteProps) {
       universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
     });
 
-    if (!avatar) return;
-
-    // IPFS Resolution
-    if (IsValidIpfsUrl(avatar)) {
-      const ipfsUrl = getIpfsGatewayUrl(avatar as IpfsUrl);
-      if (ipfsUrl) {
-        imageSource = ipfsUrl;
+    if (avatar) {
+      // IPFS Resolution
+      if (IsValidIpfsUrl(avatar)) {
+        const ipfsUrl = getIpfsGatewayUrl(avatar as IpfsUrl);
+        if (ipfsUrl) {
+          imageSource = ipfsUrl;
+        }
+      } else {
+        imageSource = avatar;
       }
-    } else {
-      imageSource = avatar;
-    }
 
-    // Cloudinary resize / fetch
-    imageSource = getCloudinaryMediaUrl({ media: imageSource, format: 'png', width: 80 });
+      // Cloudinary resize / fetch
+      imageSource = getCloudinaryMediaUrl({ media: imageSource, format: 'png', width: 80 });
+    }
   } catch (error) {
     logger.error('Error fetching basename Avatar:', error);
   }
