@@ -3574,5 +3574,13 @@
     "imageUrl": "/images/partners/gbm-domains.png",
     "category": "consumer",
     "subcategory": "nft"
-  }
+  },
+  {
+  "name": "Bario Entertainment System",
+  "description": ""Bario Entertainment System is the ultimate onchain gaming console: mint, own, and play unique games. Empowering developers, rewarding players, and redefining gaming, one arcade at a time.",
+  "url": "https://app.baes.so",
+  "imageUrl": "/images/partners/bario.png",
+  "category": "consumer",
+  "subcategory": "gaming"
+}
 ]
