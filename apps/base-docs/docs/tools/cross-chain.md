@@ -80,12 +80,12 @@ To get started with integrating Chainlink CCIP in your Base project, visit the C
 
 [LayerZero](https://layerzero.network/) is an omnichain interoperability protocol that enables cross-chain messaging. Applications built on Base can use the LayerZero protocol to connect to 35+ supported blockchains seamlessly.
 
-To get started with integrating LayerZero, visit the LayerZero [documentation](https://layerzero.gitbook.io/docs/evm-guides/master/how-to-send-a-message) and provided examples on [GitHub](https://github.com/LayerZero-Labs/solidity-examples).
+To get started with integrating LayerZero, visit the LayerZero [documentation](https://docs.layerzero.network/v1/developers/evm/evm-guides/send-messages) and provided examples on [GitHub](https://github.com/LayerZero-Labs/solidity-examples).
 
 #### Supported Networks
 
-- [Base Mainnet](https://layerzero.gitbook.io/docs/technical-reference/mainnet/supported-chain-ids)
-- [Base Sepolia](https://layerzero.gitbook.io/docs/technical-reference/testnet/testnet-addresses#layerzero-endpoints-testnet) (Testnet)
+- [Base Mainnet](https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts#base)
+- [Base Sepolia](https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts#base-sepolia) (Testnet)
 
 ---
 
