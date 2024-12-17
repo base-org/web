@@ -1,5 +1,5 @@
 ---
-title: 'Create Subscription Payments with Spend Permissions'
+title: 'Create Onchain Subscription Payments with Spend Permissions'
 slug: /create-subscription-payments-with-spend-permissions
 description: Learn how to implement a smart wallet signer for a subscription payment application.
 author: hughescoin
@@ -10,7 +10,7 @@ hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
-# Create Subscription Payments with Spend Permissions
+# Create Onchain Subscription Payments with Spend Permissions
 
 Before Smart Wallets, onchain apps primarily prompted users to sign and approve transactions. Now, apps can have their own wallets (App Wallets), enabling them to do more onchain. This is possible through Smart Wallets (ERC-4337).
 
