@@ -67,7 +67,7 @@ The ETH is required for covering gas fees associated with deploying smart contra
 
 LayerZero is an interoperability protocol that allows developers to build applications (and tokens) that can connect to multiple blockchains. LayerZero defines these types of applications as "omnichain" applications.
 
-The LayerZero protocol is made up of immutable on-chain [Endpoints](https://docs.layerzero.network/explore/layerzero-endpoint), a configurable [Security Stack](https://docs.layerzero.network/explore/decentralized-verifier-networks), and a permissionless set of [Executors](https://docs.layerzero.network/explore/executors) that transfer messages between chains.
+The LayerZero protocol is made up of immutable on-chain [Endpoints](https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts), a configurable [Security Stack](https://docs.layerzero.network/explore/decentralized-verifier-networks), and a permissionless set of [Executors](https://docs.layerzero.network/v2/home/permissionless-execution/executors) that transfer messages between chains.
 
 ### High-level concepts
 
@@ -81,7 +81,7 @@ The [Security Stack](https://docs.layerzero.network/explore/decentralized-verifi
 
 #### Executors
 
-[Executors](https://docs.layerzero.network/explore/executors) are responsible for initiating message delivery. They will automatically execute the `lzReceive` function of the endpoint on the destination chain once a message has been verified by the Security Stack.
+[Executors](https://docs.layerzero.network/v2/home/permissionless-execution/executors) are responsible for initiating message delivery. They will automatically execute the `lzReceive` function of the endpoint on the destination chain once a message has been verified by the Security Stack.
 
 ---
 
@@ -149,7 +149,7 @@ remappings = [
 
 ## Getting started with LayerZero
 
-LayerZero provides a smart contract standard called [OApp](https://docs.layerzero.network/contracts/oapp) that is intended for omnichain messaging and configuration.
+LayerZero provides a smart contract standard called [OApp](https://docs.layerzero.network/v2/developers/evm/oapp/overview) that is intended for omnichain messaging and configuration.
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -180,17 +180,17 @@ To get started using LayerZero, developers simply need to inherit from the [OApp
 - `_lzSend`: A function used to send an omnichain message
 - `_lzReceive`: A function used to receive an omnichain message
 
-In this tutorial, you will be implementing the [OApp](https://docs.layerzero.network/contracts/oapp) standard into your own project to add the capability to send messages from a smart contract on Base to a smart contract on Optimism.
+In this tutorial, you will be implementing the [OApp](https://docs.layerzero.network/v2/developers/evm/oapp/overview) standard into your own project to add the capability to send messages from a smart contract on Base to a smart contract on Optimism.
 
 :::info
 
-An extension of the [OApp](https://docs.layerzero.network/contracts/oapp) contract standard known as [OFT](https://docs.layerzero.network/contracts/oft) is also available for supporting omnichain fungible token transfers.
+An extension of the [OApp](https://docs.layerzero.network/v2/developers/evm/oapp/overview) contract standard known as [OFT](https://docs.layerzero.network/v2/developers/evm/oft/quickstart) is also available for supporting omnichain fungible token transfers.
 
 :::
 
 :::info
 
-For more information on transferring tokens across chains using LayerZero, visit the [LayerZero documentation](https://docs.layerzero.network/contracts/oft).
+For more information on transferring tokens across chains using LayerZero, visit the [LayerZero documentation](https://docs.layerzero.network/v2/developers/evm/oft/quickstart).
 
 :::
 
@@ -215,18 +215,18 @@ The code snippet above defines a new smart contract named `ExampleContract` that
 
 The contract's constructor expects two arguments:
 
-- `_endpoint`: The [LayerZero Endpoint](https://docs.layerzero.network/explore/layerzero-endpoint) `address` for the chain the smart contract is deployed to.
+- `_endpoint`: The [LayerZero Endpoint](https://docs.layerzero.network/v2/home/protocol/layerzero-endpoint) `address` for the chain the smart contract is deployed to.
 - `_owner`: The `address` of the owner of the smart contract.
 
 :::info
 
-[LayerZero Endpoints](https://docs.layerzero.network/explore/layerzero-endpoint) are smart contracts that expose an interface for OApp contracts to manage security configurations and send and receive messages via the LayerZero protocol.
+[LayerZero Endpoints](https://docs.layerzero.network/v2/home/protocol/layerzero-endpoint) are smart contracts that expose an interface for OApp contracts to manage security configurations and send and receive messages via the LayerZero protocol.
 
 :::
 
 ### Implementing message sending (`_lzSend`)
 
-To send messages to another chain, your smart contract must call the `_lzSend` function inherited from the [OApp](https://docs.layerzero.network/contracts/oapp) contract.
+To send messages to another chain, your smart contract must call the `_lzSend` function inherited from the [OApp](https://docs.layerzero.network/v2/developers/evm/oapp/overview) contract.
 
 Add a new custom function named `sendMessage` to your smart contract that has the following content:
 
@@ -302,7 +302,7 @@ Your contract’s `estimateFee` function should always be called immediately bef
 
 ### Implementing message receiving (`_lzReceive`)
 
-To receive messages on the destination chain, your smart contract must override the `_lzReceive` function inherited from the [OApp](https://docs.layerzero.network/contracts/oapp) contract.
+To receive messages on the destination chain, your smart contract must override the `_lzReceive` function inherited from the [OApp](https://docs.layerzero.network/v2/developers/evm/oapp/overview) contract.
 
 Add the following code snippet to your `ExampleContract` contract to override the `_lzReceive` function:
 
@@ -335,8 +335,8 @@ The overridden `_lzReceive` function receives the following arguments when recei
 | `_origin`     | `Origin`  | The origin information containing the source endpoint and sender address.                                             |
 | `_guid`       | `bytes32` | The unique identifier for the received LayerZero message.                                                             |
 | `payload`     | `bytes`   | The payload of the received message (encoded).                                                                        |
-| `_executor`   | `address` | The `address` of the [Executor](https://docs.layerzero.network/explore/executors) for the received message.           |
-| `_extraData ` | `bytes`   | Additional arbitrary data provided by the corresponding [Executor](https://docs.layerzero.network/explore/executors). |
+| `_executor`   | `address` | The `address` of the [Executor](https://docs.layerzero.network/v2/home/permissionless-execution/executors) for the received message.           |
+| `_extraData ` | `bytes`   | Additional arbitrary data provided by the corresponding [Executor](https://docs.layerzero.network/v2/home/permissionless-execution/executors). |
 
 Note that the overridden method decodes the message payload, and stores the string into a variable named `data` that you can read from later to fetch the latest message.
 
@@ -579,7 +579,7 @@ Sending a message using the newly created `ExampleContract` contract can be done
 
 The `estimateFee` and `sendMessage` custom functions of the `ExampleContract` contract both require a [message options](https://docs.layerzero.network/contracts/options) (`_options`) argument to be provided.
 
-Message options allow you to specify arbitrary logic as part of the message transaction, such as the gas amount the [Executor](https://docs.layerzero.network/explore/executors) pays for message delivery, the order of message execution, or dropping an amount of gas to a destination address.
+Message options allow you to specify arbitrary logic as part of the message transaction, such as the gas amount the [Executor](https://docs.layerzero.network/v2/home/permissionless-execution/executors) pays for message delivery, the order of message execution, or dropping an amount of gas to a destination address.
 
 LayerZero provides a [Solidity](https://github.com/LayerZero-Labs/LayerZero-v2/blob/ccfd0d38f83ca8103b14ab9ca77f32e0419510ff/oapp/contracts/oapp/libs/OptionsBuilder.sol#L12) library and [TypeScript SDK](https://docs.layerzero.network/contracts/options) for building these message options.
 

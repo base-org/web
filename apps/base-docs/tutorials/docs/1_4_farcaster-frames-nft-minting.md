@@ -106,7 +106,7 @@ You'll also want to keep track of addresses that have already minted, to prevent
 
 :::danger
 
-Make sure you added `.env.local` to ``.gitignore`! **If you don't do this you are going to expose your key and lose your wallet!**
+Make sure you added `.env.local` to `.gitignore`! **If you don't do this you are going to expose your key and lose your wallet!**
 
 :::
 
