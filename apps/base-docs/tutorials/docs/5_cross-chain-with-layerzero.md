@@ -215,12 +215,12 @@ The code snippet above defines a new smart contract named `ExampleContract` that
 
 The contract's constructor expects two arguments:
 
-- `_endpoint`: The [LayerZero Endpoint](https://docs.layerzero.network/explore/layerzero-endpoint) `address` for the chain the smart contract is deployed to.
+- `_endpoint`: The [LayerZero Endpoint](https://docs.layerzero.network/v2/home/protocol/layerzero-endpoint) `address` for the chain the smart contract is deployed to.
 - `_owner`: The `address` of the owner of the smart contract.
 
 :::info
 
-[LayerZero Endpoints](https://docs.layerzero.network/explore/layerzero-endpoint) are smart contracts that expose an interface for OApp contracts to manage security configurations and send and receive messages via the LayerZero protocol.
+[LayerZero Endpoints](https://docs.layerzero.network/v2/home/protocol/layerzero-endpoint) are smart contracts that expose an interface for OApp contracts to manage security configurations and send and receive messages via the LayerZero protocol.
 
 :::
 
