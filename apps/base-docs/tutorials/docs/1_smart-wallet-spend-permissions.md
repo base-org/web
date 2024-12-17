@@ -10,7 +10,7 @@ hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
-# Create an App Wallet using Smart Wallet
+# Create Subscription Payments with Spend Permissions
 
 Before Smart Wallets, onchain apps primarily prompted users to sign and approve transactions. Now, apps can have their own wallets (App Wallets), enabling them to do more onchain. This is possible through Smart Wallets (ERC-4337).
 
