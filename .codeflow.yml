@@ -1,9 +1,11 @@
----
 secure:
-  required_reviews: 1
+  required_reviews: 2
   requires_mfa: true
   requires_verified: true
-  upstream_repository: base-org/web
+  protected_branches:
+    - main
+    - develop
+  static_code_analysis: true
 
 build:
   engines:
@@ -11,16 +13,23 @@ build:
         name: web
         path: ./apps/web/Dockerfile
         architecture: arm64
+        cache: true
     - BaldurECR:
         name: docs
         path: ./apps/base-docs/Dockerfile
         architecture: amd64
+        cache: true
     - BaldurECR:
         name: bridge
         path: ./apps/bridge/Dockerfile
         architecture: amd64
+        cache: true
   multi_arch: true
+  environments:
+    staging:
+      name: web-staging
+      path: ./apps/web/Dockerfile
+      architecture: amd64
+    production:
+   
 
-operate:
-  slack_channels:
-    - '#base-codeflow-notifications'
