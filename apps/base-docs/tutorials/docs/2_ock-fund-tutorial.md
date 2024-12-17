@@ -1,7 +1,7 @@
 ---
 title: 'Build a Smart Wallet Funding app with OnchainKit'
 slug: /build-smart-wallet-funding-app
-description: Learn how to create a app that detects if a smart wallet has ETH and prompts users to add funds if needed.
+description: Learn how to create an app that detects if a smart wallet has ETH and prompts users to add funds if needed.
 author: hughescoin
 keywords: [
     Account Abstraction,
@@ -29,9 +29,9 @@ In this tutorial, you'll learn how to build an onchain app that checks a user's 
 By the end of this tutorial you should be able to:
 
 - Set up a project using the [OnchainKit App Template]
-- Configure the app for to onboard users easily using [Smart Wallets]
+- Configure the app to onboard users easily using [Smart Wallets]
 - Implement balance checking and conditional rendering
-- Use the Fund component to allow users to add buy tokens from their wallet without leaving your app
+- Use the Fund component to allow users to buy tokens from their wallet without leaving your app
 
 ## Prerequisites
 
@@ -167,7 +167,7 @@ Sweet! Now our conditional rendering is in full force. If a user clicks on the `
 
 ## Conclusion
 
-Congratulations! You've built a app that checks a user's smart wallet balance and provides appropriate options based on their funds.
+Congratulations! You've built an app that checks a user's smart wallet balance and provides appropriate options based on their funds.
 This app can serve as a foundation for more complex onchain applications that require users to have funded smart wallets.
 
 ---
