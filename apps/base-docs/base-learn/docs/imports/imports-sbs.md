@@ -31,7 +31,7 @@ Find the documentation for the `EnumerableSet` under _Utils_. This library will 
 
 Create a new file to work in and add the `pragma` and license identifier.
 
-In Remix, you can import libraries directly from Github!
+In Remix, you can import libraries directly from GitHub!
 
 ```solidity
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/structs/EnumerableSet.sol";
