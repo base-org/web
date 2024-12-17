@@ -1,5 +1,13 @@
 [
   {
+    "name": "Moxie Protocol",
+    "description": "Moxie is a SocialFi protocol on the Base blockchain that allows users to create and interact with Fan Tokens.".
+    "url": "https://moxie.xyz",
+    "imageUrl": "/images/partners/moxie.png",
+    "category": "consumer",
+    "subcategory": "social"
+  },
+  {
     "name": "MADNFT",
     "description": "MADNFT is a creator-first NFT platform empowering artists, collectors, and communities with tools to mint, list, and engage while earning XP points and rewards.",
     "url": "https://madnft.io",
