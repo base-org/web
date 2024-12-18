@@ -228,7 +228,7 @@ Use the script to regenerate this file.
 
 ### [The `useAccount` Hook](./reading-and-displaying-data/useAccount.md)
 
-- Implement the `useAccount`` hook to show the user's address, connection state, network, and balance
+- Implement the `useAccount` hook to show the user's address, connection state, network, and balance
 - Implement an `isMounted` hook to prevent hydration errors
 
 ### [The `useReadContract` Hook](./reading-and-displaying-data/useReadContract.md)
