@@ -72,7 +72,7 @@ Wagmi/viem are two libraries that enable smart contract interaction using typesc
 Let's first start at a common place. Clone the template e-commerce store:
 
 ```bash
-git clone https://github.com/hughescoin/healing-honey.git
+git clone https://github.com/hughescoin/learn-spend-permissions.git
 
 bun install
 ```
