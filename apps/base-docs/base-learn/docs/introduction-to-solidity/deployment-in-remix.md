@@ -50,7 +50,7 @@ Click the chevron to expand your contract in the Deployed Contracts section of t
 
 ![Function Buttons](../../assets/images/introduction-to-solidity/remix-contract-buttons.png)
 
-Let's click the retrieve button first. Before clicking, make a prediction: given that the `number` variable was instantiated without a value, what do you thing the return will be?
+Let's click the retrieve button first. Before clicking, make a prediction: given that the `number` variable was instantiated without a value, what do you think the return will be?
 
 Go ahead and click – the result will appear below the button as:
 
