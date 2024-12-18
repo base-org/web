@@ -26,7 +26,6 @@ A typical flow is as follows:
 
 At any point, the user can revoke their Spend Permission.
 
----
 
 ### Use Cases for Spend Permissions  
 
@@ -39,16 +38,19 @@ Spend Permissions allow for the following onchain functionalities:
 
 ---
 
-### What You'll Learn in This Tutorial  
+## Objectives
+ 
 
 In this tutorial, we’ll walk through a demo application that uses Spend Permissions to enable onchain subscription payments. Specifically, you will:
 
+  
+- Create a smart account from a public/private keypair.
+- Enable an EOA to receive subscription payments.
 - Implement a **Subscribe** button that:  
   - Calls the **spend** function to initiate transactions.  
   - Adds the **SpendPermission singleton contract** as an owner to the user’s Smart Wallet.  
 
 By the end of this tutorial, your application will seamlessly request and utilize Spend Permissions to facilitate recurring onchain payments.
-
 
 ## Prerequisites:
 
@@ -64,12 +66,6 @@ Understand the basics of Smart Accounts and the ERC-4337 standard for advanced t
 
 Wagmi/viem are two libraries that enable smart contract interaction using typescript. It makes onchain development smoother and what you will use to create smart accounts, functions, etc. It easily allows onchain developers to use the same skillsets from Javascript/typescript and frontend development and bring it onchain.
 
-
-## Objectives
-
-* Create a smart account from a public/private keypair.
-* Enable a smart account to receive subscription payments.
-* Set up the App Wallet with a paymaster.
 
 ## Template Project
 
