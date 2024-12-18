@@ -16,7 +16,7 @@ We want to keep the Registry as open and permissionless as we can, but we also n
 
 ---
 
-### How do I edit my entry if I make a mistake?
+### How do I edit my entry if I made a mistake?
 
 To edit your original entry, use our [Registry edit form](https://base.org/registry-edit). This form will ask you for your original entry ID, which you can find at the bottom of your original entry's confirmation email. On the edit form, you only need to fill in the fields that you would like to change.
 
