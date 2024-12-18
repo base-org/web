@@ -12,11 +12,43 @@ displayed_sidebar: null
 
 # Create Onchain Subscription Payments with Spend Permissions
 
-Before Smart Wallets, onchain apps primarily prompted users to sign and approve transactions. Now, apps can have their own wallets (App Wallets), enabling them to do more onchain. This is possible through Smart Wallets (ERC-4337).
+## Overview
 
-In this guide, we'll integrate an App Wallet to facilitate subscription payments for users purchasing goods from a fictitious e-commerce store.
+Spend Permissions are a new onchain primitive that allows any user to grant an application permission to pull a specified amount of funds from their account. Spend Permissions are similar to **Session Keys**, where temporary permissions enable seamless user interaction without repeatedly prompting signatures. However, Spend Permissions are more secure because they are scoped and controlled by parameters such as **token**, **start time**, **end time**, **period**, and **allowance**, which a user signs off on when approving a Spend Permission.
 
-Your App Wallet can be any public/private keypair wallet. However, our App Wallet will be an ERC-4337 smart account. Using a smart wallet provides advantages such as the programmability to facilitate payouts, gas sponsorship with paymasters, and the ability to avoid storing funds directly in the wallet. Additionally, with a paymaster and a smart wallet, gas costs can be covered by the app or funded using the user's payment method, including ERC-20 tokens.
+For Spend Permissions to work, the user must have a **Smart Account**. Newly created Smart Accounts add the Permission Manager during account creation, and it cannot be removed. Existing Smart Wallets must manually enable Spend Permissions by adding the Permission Manager via a one-time approval flow when an app requests them.
+
+A typical flow is as follows:  
+1. The user logs into an app with their Smart Wallet.  
+2. The app requests approval by presenting the user with the scoped parameters.  
+3. The user reviews the scopes and either confirms or denies the request.  
+4. Upon approval, the app calls the **SpendPermission singleton contract** to initiate transactions, pulling funds from the user's Smart Wallet under the granted scope.  
+
+At any point, the user can revoke their Spend Permission.
+
+---
+
+### Use Cases for Spend Permissions  
+
+Spend Permissions allow for the following onchain functionalities:
+
+- **Subscription Payments**: Apps can collect recurring payments (e.g., monthly subscriptions) without requiring the user to re-sign each time.  
+- **Seamless In-App Purchases**: E-commerce stores and apps can pull funds directly for purchases without popup interruptions.  
+- **Gas Sponsorship**: Spend Permissions can be used alongside paymasters to sponsor gas fees for user transactions.  
+- **One-Click Mints**: Users can allocate an amount of funds for an app to spend on their behalf, enabling a series of onchain actions without requiring repeated approvals.
+
+---
+
+### What You'll Learn in This Tutorial  
+
+In this tutorial, we’ll walk through a demo application that uses Spend Permissions to enable onchain subscription payments. Specifically, you will:
+
+- Implement a **Subscribe** button that:  
+  - Calls the **spend** function to initiate transactions.  
+  - Adds the **SpendPermission singleton contract** as an owner to the user’s Smart Wallet.  
+
+By the end of this tutorial, your application will seamlessly request and utilize Spend Permissions to facilitate recurring onchain payments.
+
 
 ## Prerequisites:
 
