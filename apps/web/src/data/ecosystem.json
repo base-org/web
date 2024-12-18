@@ -3551,18 +3551,11 @@
     "subcategory": "nft"
   },
  {
-    "name": "Toros Finance",
+    "name": "dHEDGE",
     "tags": ["defi"],
-    "description": "Toros Finance is a DeFi platform providing non-liquidating automated leveraged vaults, yield strategies, and risk-managed investments, simplifying access to advanced financial strategies for its users",
-    "url": "https://toros.finance/",
+    "description": "dHEDGE is architecture for creating tokenized vaults enabling tokens that perform any strategy",
+    "url": "https://dhedge.org/",
     "imageUrl": "/images/partners/toros_logo.base.eco.png"
-  }, 
- {
-  "name": "Flat Money",
-  "tags": ["defi"],
-  "description": "Flat Money enables users to deposit rETH or USDC to mint UNIT, a delta-neutral flatcoin designed to outpace inflation. UNIT is powered by leveraged long positions on rETH available via Flat Money's rETH perpetual futures market.",
-  "url": "https://flat.money/",
-  "imageUrl": "/images/partners/flat_money_logo.base.eco"
- }
+  } 
 ]
 
