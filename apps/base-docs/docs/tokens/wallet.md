@@ -20,7 +20,7 @@ hide_table_of_contents: true
 
 # How to ensure ERC-20 tokens are immediately swappable in Coinbase Wallet
 
-This page is intended for developers that will or have recently deployed ERC-20 token contracts on Base Mainnet and would like their token details to display as quickly as possible on Coinbase Wallet.
+This page is intended for developers who will or have recently deployed ERC-20 token contracts on Base Mainnet and would like their token details to display as quickly as possible on Coinbase Wallet.
 
 Coinbase Wallet makes any ERC-20 token instantly available for swapping seconds from when the contract is deployed.
 

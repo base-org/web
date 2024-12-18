@@ -11,7 +11,7 @@ displayed_sidebar: null
 
 ### 1. What are Basenames?
 
-[Basenames](https://base.org/names) are a core onchain building block that enable builders to establish their identity on Base by registering human-readable names for their wallet address(es). They are fully onchain, built on the same technology powering ENS names and deployed on Base. These human-readable names can be used when connecting to onchain apps, and sending and receiving on Base and any other EVM chain. Get your Basename at [base.org/names](https://base.org/names).
+[Basenames](https://base.org/names) are a core onchain building block that enables builders to establish their identity on Base by registering human-readable names for their wallet address(es). They are fully onchain, built on the same technology powering ENS names and deployed on Base. These human-readable names can be used when connecting to onchain apps, and sending and receiving on Base and any other EVM chain. Get your Basename at [base.org/names](https://base.org/names).
 
 ### 2. What are the Basename registration fees?
 
@@ -42,7 +42,7 @@ We are always looking to add more discounts. If you or your project have ideas f
 
 ### 4. Why is there an auction at launch, and how does it work?
 
-Upon initial launch, there will be a temporary premium placed on all Basenames in the form of a Dutch auction, to ensure a fair and quality distribution of names, and to maximize everyone's chance of getting a name they like without being outcompeted by bots. The premium will start at 100 ETH and decay exponentially over the course of 36 hours. Premiums will be added on to the total registration cost of a Basename. Please note: the premium is intentionally designed to be high so that names can't be instantly bought by bots or traders, and can instead enable fairer access and price discovery for the general public.
+Upon initial launch, there will be a temporary premium placed on all Basenames in the form of a Dutch auction, to ensure a fair and quality distribution of names, and to maximize everyone's chance of getting a name they like without being outcompeted by bots. The premium will start at 100 ETH and decay exponentially over the course of 36 hours. Premiums will be added to the total registration cost of a Basename. Please note: the premium is intentionally designed to be high so that names can't be instantly bought by bots or traders, and can instead enable fairer access and price discovery for the general public.
 
 ### 5. Do I have to pay gas to register a Basename?
 
