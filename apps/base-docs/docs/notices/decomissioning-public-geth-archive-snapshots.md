@@ -1,6 +1,6 @@
 ---
 title: Decommissioning Public Geth Archive Snapshots
-slug: /decommissioning-public-geth-archive-snapshots
+slug: /decomissioning-public-geth-archive-snapshots
 description: Public Geth archive snapshots will be decommissioned on December 15th, 2024.
 keywords:
   [
