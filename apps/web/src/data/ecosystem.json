@@ -1,5 +1,13 @@
 [
   {
+  "name": "CoW Swap",
+  "description": "CoW Swap is an open-source, permissionless DEX aggregation protocol",
+  "url": "https://swap.cow.fi",
+  "imageUrl": "/images/partners/cowswap.png",
+  "category": "defi",
+  "subcategory": "dex aggregator"
+  },
+  {
     "name": "MADNFT",
     "description": "MADNFT is a creator-first NFT platform empowering artists, collectors, and communities with tools to mint, list, and engage while earning XP points and rewards.",
     "url": "https://madnft.io",
