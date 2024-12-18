@@ -41,7 +41,7 @@ networks: {
      accounts: [process.env.PRIVATE_KEY as string],
      gasPrice: 1000000000,
    },
-   // for Sepolia testnet
+   // for Base Sepolia testnet
    "base-sepolia": {
      url: "https://sepolia.base.org",
      accounts: [process.env.PRIVATE_KEY as string],
