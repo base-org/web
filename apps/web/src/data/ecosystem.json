@@ -1,5 +1,13 @@
 [
   {
+  "name": "The Innovation Game",
+  "description": "The home of algorithmic innovation. Accelerate tech and science through innovative algorithm optimisation for real-world solutions.",
+  "url": "https://www.tig.foundation/home",
+  "imageUrl": "/images/partners/the-innovation-game.png",
+  "category": "infra",
+  "subcategory": "ai"
+},
+  {
     "name": "MADNFT",
     "description": "MADNFT is a creator-first NFT platform empowering artists, collectors, and communities with tools to mint, list, and engage while earning XP points and rewards.",
     "url": "https://madnft.io",
