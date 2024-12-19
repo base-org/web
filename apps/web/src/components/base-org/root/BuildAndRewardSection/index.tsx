@@ -7,7 +7,7 @@ import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import { useCallback, useRef } from 'react';
 import cubes from './assets/cubes.mp4';
-import poster from './assets/cubes_poster.png';
+import poster from './assets/cubes_poster.jpg';
 import Link from 'apps/web/src/components/Link';
 
 export default function BuildAndRewardSection() {
