@@ -3,7 +3,7 @@ title: 'Create Onchain Subscription Payments with Spend Permissions'
 slug: /create-subscription-payments-with-spend-permissions
 description: Implement a smart wallet signer for a subscription payment application.
 author: hughescoin
-keywords: [smart wallet, onchain, spend permissions, smart account, account abstraction]
+keywords: [smart wallet, onchain, spend permissions, smart wallet, account abstraction]
 tags: ['frontend', 'account abstraction']
 difficulty: medium
 hide_table_of_contents: false
@@ -14,9 +14,9 @@ displayed_sidebar: null
 
 ## Overview
 
-Spend Permissions are a new onchain primitive that allows any user to grant an application permission to spend a specified amount of funds from their account. Spend Permissions are similar to **Session Keys**, where temporary permissions enable seamless user interaction without repeatedly prompting signatures. However, Spend Permissions are more secure because they are scoped and controlled by parameters such as **token**, **start time**, **end time**, **period**, and **allowance**, which a user signs off on when approving a Spend Permission.
+Spend Permissions are a new onchain primitive that allows any user to grant an application permission to spend a specified amount of funds from their wallet. Spend Permissions are similar to **Session Keys**, where temporary permissions enable seamless user interaction without repeatedly prompting signatures. However, Spend Permissions are more secure because they are scoped and controlled by parameters such as **token**, **start time**, **end time**, **period**, and **allowance**, which a user signs off on when approving a Spend Permission.
 
-For Spend Permissions to work, the user must have a **Smart Account**. Newly created Smart Accounts add the Permission Manager during account creation, and it cannot be removed. Existing Smart Wallets must manually enable Spend Permissions by adding the Permission Manager via a one-time approval flow when an app requests them.
+For Spend Permissions to work, the user must have a **Smart Wallet**. Newly created Smart Wallets add the Permission Manager during wallet creation, and it cannot be removed. Existing Smart Wallets must manually enable Spend Permissions by adding the Permission Manager via a one-time approval flow when an app requests them.
 
 A typical flow is as follows:  
 1. The user logs into an app with their Smart Wallet.  
@@ -44,7 +44,7 @@ Spend Permissions allow for the following onchain functionalities:
 In this tutorial, we’ll walk through a demo application that uses Spend Permissions to enable onchain subscription payments. Specifically, you will:
 
   
-- Create a smart account from a public/private keypair.
+- Create a smart wallet from a public/private keypair.
 - Enable an EOA to receive subscription payments.
 - Implement a **Subscribe** button that:  
   - Calls the **spend** function to initiate transactions.  
@@ -54,17 +54,17 @@ By the end of this tutorial, your application will seamlessly request and utiliz
 
 ## Prerequisites:
 
-### Coinbase CDP account[​](https://docs.base.org/tutorials/gasless-transaction-on-base-using-a-paymaster/#coinbase-cdp-account "Direct link to Coinbase CDP account")
+### Coinbase CDP account[](https://docs.base.org/tutorials/gasless-transaction-on-base-using-a-paymaster/#coinbase-cdp-account "Direct link to Coinbase CDP account")
 
 This is your access point to the Coinbase Cloud Developer Platform, where you can manage projects and utilize tools like the Paymaster. 
 
-### Familiarity with Smart Accounts and ERC 4337[​](https://docs.base.org/tutorials/gasless-transaction-on-base-using-a-paymaster/#familiarity-with-smart-accounts-and-erc-4337 "Direct link to Familiarity with Smart Accounts and ERC 4337")
+### Familiarity with Smart Wallets and ERC 4337[​](https://docs.base.org/tutorials/gasless-transaction-on-base-using-a-paymaster/#familiarity-with-smart-accounts-and-erc-4337 "Direct link to Familiarity with Smart Accounts and ERC 4337")
 
-Understand the basics of Smart Accounts and the ERC-4337 standard for advanced transaction patterns and account abstractions.
+Understand the basics of Smart Wallets and the ERC-4337 standard for advanced transaction patterns and account abstraction.
 
 ### Familiarity with wagmi/viem
 
-Wagmi/viem are two libraries that enable smart contract interaction using typescript. It makes onchain development smoother and what you will use to create smart accounts, functions, etc. It easily allows onchain developers to use the same skillsets from Javascript/typescript and frontend development and bring it onchain.
+Wagmi/viem are two libraries that enable smart contract interaction using typescript. It makes onchain development smoother and what you will use to create smart wallets, functions, etc. It easily allows onchain developers to use the same skillsets from Javascript/typescript and frontend development and bring it onchain.
 
 
 ## Template Project
@@ -113,7 +113,7 @@ Start by opening the `.env` file in the Healing Honey project and adding your pr
 ```bash
 SPENDER_PRIVATE_KEY=0xcd57753bb4e308ba0c6f574e8af04a7bae0ca0aff5750ddd6275460f49635527
 ```
-Next, navigate to the `src/app/lib/spender.ts` file. Here, you'll see the `privateKeyToAccount` function from Viem in use. This function creates an account from the private key, enabling it to sign transactions and messages. The generated `account` is then used to create a [Wallet Client], which allows signing and executing onchain transactions to interact with the Spend Permission contract.
+Next, navigate to the `src/app/lib/spender.ts` file. Here, you'll see the `privateKeyToAccount` function from Viem in use. This function creates an wallet from the private key, enabling it to sign transactions and messages. The generated `account` is then used to create a [Wallet Client], which allows signing and executing onchain transactions to interact with the Spend Permission contract.
 
 With your Spender Client set up, ensure all other required environment variables are configured for the app to work when running the dev server.
 
