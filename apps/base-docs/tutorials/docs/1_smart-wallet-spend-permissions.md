@@ -20,7 +20,7 @@ For Spend Permissions to work, the user must have a **Smart Wallet**. Newly crea
 
 A typical flow is as follows:  
 1. The user logs into an app with their Smart Wallet.  
-2. The app requests approval by presenting the user with the scoped parameters.  
+2. The app requests approval by presenting the user with the spend permissions.  
 3. The user reviews the scopes and either confirms or denies the request.  
 4. Upon approval, the app calls the **SpendPermission singleton contract** to initiate transactions, spending funds from the user's Smart Wallet under the granted scope.  
 
@@ -165,7 +165,7 @@ To ensure your app communicates with the correct server when a user interacts wi
 Replace the // TODO comment with the following value for the keysUrl property: 
 
 ```json
-keysUrl: "https://keys-dev.coinbase.com/connect"
+keysUrl: "https://keys.coinbase.com/connect"
 ```
 
 With these steps complete, your environment and Spender Client are ready to support onchain interactions. Now, let's move on to building the **Subscribe** button.
