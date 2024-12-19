@@ -16,7 +16,7 @@ displayed_sidebar: null
 
 Spend Permissions are a new onchain primitive that allows any user to grant an application permission to spend a specified amount of funds from their wallet. Spend Permissions are similar to **Session Keys**, where temporary permissions enable seamless user interaction without repeatedly prompting signatures. However, Spend Permissions are more secure because they are scoped and controlled by parameters such as **token**, **start time**, **end time**, **period**, and **allowance**, which a user signs off on when approving a Spend Permission.
 
-For Spend Permissions to work, the user must have a **Smart Wallet**. Newly created Smart Wallets add the Permission Manager during wallet creation, and it cannot be removed. Existing Smart Wallets must manually enable Spend Permissions by adding the Permission Manager via a one-time approval flow when an app requests them.
+Existing Smart Wallets without Spend Permissions enabled will be asked to enable Spend Permissions the first time they interact with an application that requests a Spend Permission approval. Enabling Spend Permissions is easily done via a one-click, one-time approval flow.
 
 A typical flow is as follows:  
 1. The user logs into an app with their Smart Wallet.  
