@@ -337,9 +337,11 @@ export default function ProfileTransferOwnershipProvider({
       // Smart wallet: One transaction
       batchCallsStatus === BatchCallsStatus.Success ||
       // Other wallet: 4 Transactions are successfull
-      ownershipSettings.every(
-        (ownershipSetting) => ownershipSetting.status === WriteTransactionWithReceiptStatus.Success,
-      ),
+      (ownershipSettings.length > 0 &&
+        ownershipSettings.every(
+          (ownershipSetting) =>
+            ownershipSetting.status === WriteTransactionWithReceiptStatus.Success,
+        )),
     [batchCallsStatus, ownershipSettings],
   );
 

@@ -105,16 +105,22 @@ If you're a prospective or current Base Node operator and would like to restore 
 
 In the home directory of your Base Node, create a folder named `geth-data` or `reth-data`. If you already have this folder, remove it to clear the existing state and then recreate it. Next, run the following code and wait for the operation to complete.
 
+:::info
+
+Public Geth Archive Snapshots were deprecated on _December 15th, 2024_ and recommend switching to Reth going forward. We will continue to maintain the Reth archive snapshot.
+
+:::
+
 | Network | Client | Snapshot Type | Command                                                                                                               |
 | ------- | ------ | ------------- | --------------------------------------------------------------------------------------------------------------------- |
 | Testnet | Geth   | Full          | `wget https://sepolia-full-snapshots.base.org/$(curl https://sepolia-full-snapshots.base.org/latest)`                 |
-| Testnet | Geth   | Archive       | `wget https://sepolia-archive-snapshots.base.org/$(curl https://sepolia-archive-snapshots.base.org/latest)`           |
+| Testnet | Geth   | Archive       | No longer supported                                                                                                   |
 | Testnet | Reth   | Archive       | `wget https://sepolia-reth-archive-snapshots.base.org/$(curl https://sepolia-reth-archive-snapshots.base.org/latest)` |
 | Mainnet | Geth   | Full          | `wget https://mainnet-full-snapshots.base.org/$(curl https://mainnet-full-snapshots.base.org/latest)`                 |
-| Mainnet | Geth   | Archive       | `wget https://mainnet-archive-snapshots.base.org/$(curl https://mainnet-archive-snapshots.base.org/latest)`           |
+| Mainnet | Geth   | Archive       | No longer supported                                                                                                   |
 | Mainnet | Reth   | Archive       | `wget https://mainnet-reth-archive-snapshots.base.org/$(curl https://mainnet-reth-archive-snapshots.base.org/latest)` |
 
-You'll then need to untar the downloaded snapshot and place the `geth` subfolder inside of it in the `geth-data` folder you created (unless you changed the location of your data directory).
+You'll then need to untar the downloaded snapshot and place the `geth` or `reth` subfolder inside of it in the `geth-data` or `reth-data` folder you created (unless you changed the location of your data directory).
 
 Return to the root of your Base node folder and start your node.
 

@@ -6,10 +6,9 @@ import NeymarCast from 'apps/web/src/components/NeymarCast';
 import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
 
 export default function UsernameProfileCasts() {
-  const { profileUsername, profileAddress } = useUsernameProfile();
+  const { profileUsername } = useUsernameProfile();
 
   const { existingTextRecords } = useReadBaseEnsTextRecords({
-    address: profileAddress,
     username: profileUsername,
   });
   const casts = existingTextRecords.casts.split(',').filter((cast) => !!cast);

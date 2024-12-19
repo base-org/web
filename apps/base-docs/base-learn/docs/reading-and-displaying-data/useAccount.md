@@ -14,7 +14,7 @@ You can use this for connection-status-based rendering, to enable or disable con
 
 By the end of this guide you should be able to:
 
-- Implement the `useAccount`` hook to show the user's address, connection state, network, and balance
+- Implement the `useAccount` hook to show the user's address, connection state, network, and balance
 - Implement an `isMounted` hook to prevent hydration errors
 
 ---
