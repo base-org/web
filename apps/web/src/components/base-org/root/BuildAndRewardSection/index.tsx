@@ -7,6 +7,7 @@ import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import { useCallback, useRef } from 'react';
 import cubes from './assets/cubes.mp4';
+import poster from './assets/cubes_poster.png';
 import Link from 'apps/web/src/components/Link';
 
 export default function BuildAndRewardSection() {
@@ -26,6 +27,7 @@ export default function BuildAndRewardSection() {
         <div className="relative flex w-full flex-row gap-4" onMouseEnter={playVideo}>
           <video
             src={cubes}
+            poster={poster.src}
             muted
             playsInline
             className="mx-auto p-2 motion-reduce:hidden"

@@ -11,9 +11,10 @@ type VideoCardProps = {
   title: string;
   description: string | React.ReactNode;
   src: string;
+  poster: string;
 };
 
-export default function VideoCard({ title, description, src }: VideoCardProps) {
+export default function VideoCard({ title, description, src, poster }: VideoCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { logError } = useErrors();
   const playVideo = useCallback(() => {
@@ -23,11 +24,13 @@ export default function VideoCard({ title, description, src }: VideoCardProps) {
       logError(error, 'failed to play video');
     });
   }, [logError]);
+
   return (
     <div onMouseEnter={playVideo} className="w-full">
       <Card innerClassName="p-6 transition-all bg-[#0A0B0C] group-hover:bg-[#111111]">
         <video
           src={src}
+          poster={poster}
           muted
           playsInline
           className="mx-auto mt-6 motion-reduce:hidden"
