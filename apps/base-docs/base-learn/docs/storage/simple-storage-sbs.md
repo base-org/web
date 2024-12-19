@@ -149,7 +149,7 @@ Review the **Warning** in the [layout] section of the docs for more details!
 
 ### Add a Function to Update `age`
 
-It would also be good to be able update the `age` value. This problem has slightly different considerations. Sadly, `age` will never go down. It should also probably only go up by one year for each update. The `++` operator works in Solidity, so we can use that to create a function that simple increments age when called.
+It would also be good to be able to update the `age` value. This problem has slightly different considerations. Sadly, `age` will never go down. It should also probably only go up by one year for each update. The `++` operator works in Solidity, so we can use that to create a function that simple increments age when called.
 
 <details>
 

@@ -22,7 +22,7 @@ changed_files=$(git --no-pager diff --name-only --relative "$merge_base" HEAD)
 
 echo "$changed_files"
 
-# Extract Dockerfile's from the codeflow config
+# Extract Dockerfiles from the codeflow config
 echo "--- Extracting builds from Codeflow config"
 
 names=()

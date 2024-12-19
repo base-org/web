@@ -55,20 +55,20 @@ export default async function handler(request: NextRequest) {
       universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
     });
 
-    if (!avatar) return;
-
-    // IPFS Resolution
-    if (IsValidIpfsUrl(avatar)) {
-      const ipfsUrl = getIpfsGatewayUrl(avatar as IpfsUrl);
-      if (ipfsUrl) {
-        imageSource = ipfsUrl;
+    if (avatar) {
+      // IPFS Resolution
+      if (avatar && IsValidIpfsUrl(avatar)) {
+        const ipfsUrl = getIpfsGatewayUrl(avatar as IpfsUrl);
+        if (ipfsUrl) {
+          imageSource = ipfsUrl;
+        }
+      } else if (avatar) {
+        imageSource = avatar;
       }
-    } else {
-      imageSource = avatar;
-    }
 
-    // Cloudinary resize / fetch
-    imageSource = getCloudinaryMediaUrl({ media: imageSource, format: 'png', width: 120 });
+      // Cloudinary resize / fetch
+      imageSource = getCloudinaryMediaUrl({ media: imageSource, format: 'png', width: 120 });
+    }
   } catch (error) {
     logger.error('Error fetching basename Avatar:', error);
   }
