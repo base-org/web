@@ -33,7 +33,7 @@ The editor pane loads with the Remix home screen, which contains news, helpful l
 
 ![Remix Editor](../../assets/images/introduction-to-solidity/editor-pane.png)
 
-You'll edit your code in the editor pane. It also has most of the features you're expecting, such as syntax and error highlighting. Note that in Remix, errors are not underlines. Instead, you'll see an❗to the left of the line number where the error is present.
+You'll edit your code in the editor pane. It also has most of the features you're expecting, such as syntax and error highlighting. Note that in Remix, errors are not underlined. Instead, you'll see an❗to the left of the line number where the error is present.
 
 At the top, you'll see a large green arrow similar to the _Run_ button in other editors. In Solidity, this compiles your code, but it does not run it because you must first deploy your code to the simulated blockchain.
 
