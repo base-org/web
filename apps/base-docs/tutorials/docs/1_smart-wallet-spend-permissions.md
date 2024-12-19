@@ -236,9 +236,13 @@ const spendTxnHash = await spenderBundlerClient.writeContract({
 
 These updates ensure that the `/collect` route correctly processes both the approval and spending steps, enabling seamless interaction with the `Spend Permission Manager`. With these fixes in place, the backend can fully support the Spend Permission flow.
 
----
-
 Excellent! You just added a Spender Client as a backend app wallet. Now, when users click the `Subscribe` button, the component will call the `handleCollectSubscription` function, and the request will be handled by the `route` function.
+
+Go ahead and run your app locally to see your hard work come to life:
+
+```bash
+bun run dev
+```
 
 I know what you're thinking: how can I see the valid (non-revoked) spend permissions for each user (wallet)? That's an easy one. Base provides an endpoint that allows you to retrieve valid spend permissions for an account by polling the utility API at: https://rpc.wallet.coinbase.com.
 
@@ -263,9 +267,11 @@ curl --location 'https://rpc.wallet.coinbase.com' \
 
 ## Conclusion
 
-In this tutorial you created a smart wallet by converting a private key (EOA) to a smart wallet, enableed functionality of your app to have a backend signer be a smartWallet or a traditional EOA.
+And there you have it - an onchain subscription application enabled by Spend Permissions. By combining Smart Wallets with scoped permissions, you’ve seen how we can streamline recurring payments, enable one-click purchases, and revolutionize how users interact with decentralized applications.
 
-Remember, our app is designed to allow for users to purchase a good repeatedly without having to sign for the transaction or make additional requests.
+Now, it’s your turn! The code and concepts we’ve explored today are just the beginning. Start experimenting, integrate Spend Permissions into your app, and redefine what’s possible with blockchain technology.
+
+We can’t wait to see what you’ll build. When you implement Spend Permissions, tag us on X/Farcaster [@Base](https://x.com/base) to share your creations. Let’s make 2025 the year of onchain apps—together! 🚀
 
 ---
 
