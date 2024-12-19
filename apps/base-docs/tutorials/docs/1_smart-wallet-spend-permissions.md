@@ -78,6 +78,13 @@ cd learn-spend-permissions
 
 bun install
 ```
+
+Create a .env file from the example provided:
+
+```bash
+cp env.local.example .env
+```
+
 If you don’t have an existing keypair, follow these steps to generate one using Foundry:
 
 Install foundry if you don't have it.
