@@ -119,7 +119,7 @@ Next, navigate to the `src/app/lib/spender.ts` file. Here, you'll see the `priva
 With your Spender Client set up, ensure all other required environment variables are configured for the app to work when running the dev server.
 
 Head over to [Coinbase Developer Platform](https://portal.cdp.coinbase.com/) to retrieve your Paymaster URL and API Key. These can be found under **Onchain Tools > Paymaster > Configuration**.
-![cdp-config]()
+![cdp-config](../../assets/images/paymaster-tutorials/cdp-copy-endpoint.png)
 
 Copy the **Base Sepolia** (Base testnet) Paymaster URL and API Key, then update your `.env` file as follows:
 
