@@ -11,10 +11,9 @@ type VideoCardProps = {
   title: string;
   description: string | React.ReactNode;
   src: string;
-  poster: string;
 };
 
-export default function VideoCard({ title, description, src, poster }: VideoCardProps) {
+export default function VideoCard({ title, description, src }: VideoCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { logError } = useErrors();
   const playVideo = useCallback(() => {
@@ -29,8 +28,7 @@ export default function VideoCard({ title, description, src, poster }: VideoCard
     <div onMouseEnter={playVideo} className="w-full">
       <Card innerClassName="p-6 transition-all bg-[#0A0B0C] group-hover:bg-[#111111]">
         <video
-          src={src}
-          poster={poster}
+          src={`${src}#t=0.001`}
           muted
           playsInline
           className="mx-auto mt-6 motion-reduce:hidden"
