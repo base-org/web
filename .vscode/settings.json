@@ -1,17 +1,17 @@
 {
   // Prettier
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true, // use ⌘-K S to format without saving
+  "editor.formatOnSave": true, // Use manual formatting with ⌘-K S without saving
 
   // Disable built-in formatters
   "html.format.enable": false,
   "json.format.enable": false,
 
   // TypeScript
-  "javascript.validate.enable": false,
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.preferences.importModuleSpecifier": "non-relative",
-  "typescript.preferences.quoteStyle": "single",
+  "javascript.validate.enable": false, // Disable JavaScript validation in TypeScript projects
+  "typescript.tsdk": "${workspaceFolder}/node_modules/typescript/lib",
+  "typescript.preferences.importModuleSpecifier": "non-relative", // Prefer non-relative imports
+  "typescript.preferences.quoteStyle": "single", // Use single quotes in TypeScript files
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -24,9 +24,9 @@
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.codeActionsOnSave": ["source.fixAll.eslint"],
-  "eslint.packageManager": "yarn",
-  "eslint.useESLintClass": true,
+  "editor.codeActionsOnSave": ["source.fixAll.eslint": true // Automatically fix ESLint issues on save],
+  "eslint.packageManager": "yarn", // Set the package manager to Yarn
+  "eslint.useESLintClass": true, // Check compatibility with ESLint version
   "eslint.workingDirectories": [
     { "pattern": "apps/*" },
     { "pattern": "examples/*" },
