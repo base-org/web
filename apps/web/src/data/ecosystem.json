@@ -4223,5 +4223,16 @@
     "description": "The friendly crypto wallet built for DeFi & NFTs.",
     "url": "https://phantom.app/",
     "imageUrl": "/images/partners/phantom.svg"
+  },
+  {
+    "name": "Xocolatl Finance",
+    "tags": [
+      "defi"
+    ],
+    "description": "Xocolatl Finance is a Scaffolding dApp for Mexico's DeFi ecosystem, featuring an MXN-pegged stablecoin, CDP, and Lending Protocol to earn interest.",
+    "url": "https://xocolatl.finance/",
+    "imageUrl": "/images/partners/xoc-logo.png",
+    "category": "defi",
+    "subcategory": "stablecoin, lending/borrowing, liquidity management"
   }
 ]
