@@ -13,7 +13,7 @@ import useWriteContractWithReceipt from 'apps/web/src/hooks/useWriteContractWith
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 
 /*
-  A hook to set an name as primary for resolution.
+  A hook to set a name as primary for resolution.
 
   Responsabilities:
   - Get and validate the primary username against the new username
