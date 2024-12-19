@@ -244,6 +244,8 @@ Go ahead and run your app locally to see your hard work come to life:
 bun run dev
 ```
 
+### Obtaining Wallet Spend Permissions (Optional)
+
 I know what you're thinking: how can I see the valid (non-revoked) spend permissions for each user (wallet)? That's an easy one. Base provides an endpoint that allows you to retrieve valid spend permissions for an account by polling the utility API at: https://rpc.wallet.coinbase.com.
 
 An optional step you can take is to create a "My Subscriptions" tab on your site to present users with their valid spend permissions. Below is an example of the curl request to the RPC endpoint. A sample response can be found [here](https://gist.github.com/hughescoin/d1566557f85cb2fafd281833affbe022).
