@@ -1,7 +1,7 @@
 ---
 title: 'Create Onchain Subscription Payments with Spend Permissions'
 slug: /create-subscription-payments-with-spend-permissions
-description: Learn how to implement a smart wallet signer for a subscription payment application.
+description: Implement a smart wallet signer for a subscription payment application.
 author: hughescoin
 keywords: [smart wallet, onchain, spend permissions, smart account, account abstraction]
 tags: ['frontend', 'account abstraction']
@@ -74,6 +74,8 @@ Let's first start at a common place. Clone the template e-commerce store:
 ```bash
 git clone https://github.com/hughescoin/learn-spend-permissions.git
 
+cd learn-spend-permissions
+
 bun install
 ```
 If you don’t have an existing keypair, follow these steps to generate one using Foundry:
@@ -88,7 +90,7 @@ Then, create a private key pair:
 cast wallet new
 ```
 
-It should output something similar to this:
+Your terminal should output something similar to this:
 ```bash
 Successfully created new keypair.
 
@@ -97,22 +99,21 @@ Address: 0x48155Eca1EC9e6986Eef6129A0024f84B8483B59
 Private key: 0xcd57753bb4e308ba0c6f574e8af04a7bae0ca0aff5750ddd6275460f49635527
 ```
 
-Excellent, now that you have your keypair, let's start building out our `.env` file with the appropriate values.
+Now that you have your keypair, it's time to create a "`Spender` client". The **Spender** is the account that will receive funds from users granting Spend Permissions. We'll use the keypair generated earlier to set this up.
 
-Open the `.env` file from Healing Honey project and add the private key to the file 
+Start by opening the `.env` file in the Healing Honey project and adding your private key:
 
 ```bash
 SPENDER_PRIVATE_KEY=0xcd57753bb4e308ba0c6f574e8af04a7bae0ca0aff5750ddd6275460f49635527
 ```
-Now let's get the other environment variable values.
+Next, navigate to the `src/app/lib/spender.ts` file. Here, you'll see the `privateKeyToAccount` function from Viem in use. This function creates an account from the private key, enabling it to sign transactions and messages. The generated `account` is then used to create a [Wallet Client], which allows signing and executing onchain transactions to interact with the Spend Permission contract.
 
-Navigate to [CDP](https://portal.cdp.coinbase.com/) to get your Paymaster URL and API key.
+With your Spender Client set up, ensure all other required environment variables are configured for the app to work when running the dev server.
 
-They can be found by navigating to Onchain Tools > [Paymaster] > Configuration.  
+Head over to [Coinbase Developer Platform](https://portal.cdp.coinbase.com/) to retrieve your Paymaster URL and API Key. These can be found under **Onchain Tools > Paymaster > Configuration**.
+![cdp-config]()
 
-![cdp-config](apps/base-docs/assets/images/paymaster-tutorials/cdp-copy-endpoint.png)
-
-Copy the **Base Sepolia** (Base testnet) Paymaster URL and API Key then update your .env file:
+Copy the **Base Sepolia** (Base testnet) Paymaster URL and API Key, then update your `.env` file as follows:
 
 ```bash
 BASE_SEPOLIA_PAYMASTER_URL=https://api.developer.coinbase.com/rpc/v1/base-sepolia/YOUR_API_KEY
@@ -120,19 +121,22 @@ CDP_API_KEY=YOUR_API_KEY
 NEXT_PUBLIC_ONCHAINKIT_API_KEY=YOUR_API_KEY
 ```
 
-:::tip
-For your `CDP_API_KEY` and `NEXT_PUBLIC_ONCHAINKIT_API_KEY`, extract the alphanumeric string that comes **after the `base-sepolia` path** in your Paymaster URL.
+:::tip CDP API KEYS
+For the `CDP_API_KEY` and `NEXT_PUBLIC_ONCHAINKIT_API_KEY`, extract the alphanumeric string from the Paymaster URL after the `base-sepolia` path.
 
-For example, if your Paymaster URL is: `https://api.developer.coinbase.com/rpc/v1/base-sepolia/JJ8uIiSMZWgCOyL0EpJgNAf0qPegLMC0`
+For example, if your Paymaster URL is: https://api.developer.coinbase.com/rpc/v1/base-sepolia/JJ8uIiSMZWgCOyL0EpJgNAf0qPegLMC0
 
+The API Key would be: `JJ8uIiSMZWgCOyL0EpJgNAf0qPegLMC0`
+:::
 
-The API key would be: `JJ8uIiSMZWgCOyL0EpJgNAf0qPegLMC0`
+:::warning 
+Please do not use these API Keys
 :::
 
 
-Your  `.env` file should look like this:
+Your .env file should now look like this:
 
-```bash
+```
 COINBASE_COMMERCE_API_KEY="f3cbce52-6f03-49b1-ab34-4fe9e1311d9a"
 
 CDP_API_KEY="JJ8uIiSMZWgCOyL0EpJgNAf0qPegLMC0"
@@ -141,258 +145,94 @@ NEXT_PUBLIC_ENVIRONMENT=localhost
 
 SPENDER_PRIVATE_KEY=0xa72d316dd59a9e9a876b80fa2bbe825a9836e66fd45d87a2ea3c9924a5b131a1
 
-NEXT_PUBLIC_SPENDER_ADDRESS=
-
 NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME=Healing Honey Shop
 
 NEXT_PUBLIC_ONCHAINKIT_API_KEY="JJ8uIiSMZWgCOyL0EpJgNAf0qPegLMC0"
 
 BASE_SEPOLIA_PAYMASTER_URL=https://api.developer.coinbase.com/rpc/v1/base-sepolia/JJ8uIiSMZWgCOyL0EpJgNAf0qPegLMC0
+
 ```
 
-You'll notice that the `NEXT_PUBLIC_SPENDER_ADDRESS` is empty. this is because we will need to compute the public address. Let's do that now
+To ensure your app communicates with the correct server when a user interacts with their wallet, open the src/components/OnchainProviders.tsx file.
 
-To create a Smart Contract Account (also known as [Smart Wallets](https://www.coinbase.com/wallet/smart-wallet)) from a private key, we'll need to use the account abstraction tools provided by Viem that takes our `SPENDER_PRIVATE_KEY` as the parameter and converts. this to a smart account. Once the smart account is created, we'll log it's address in our console and then add it to your `.env` file.  
+Replace the // TODO comment with the following value for the keysUrl property: 
 
-First, update the `tsconfig.jso`n file: Change the `module` type to `commonjs`:
-
-```bash
-"module": "commonjs"
+```json
+keysUrl: "https://keys-dev.coinbase.com/connect"
 ```
 
-With your `module` set to `commonjs` you can now create a file to run the script.
+With these steps complete, your environment and Spender Client are ready to support onchain interactions. Now, let's move on to building the **Subscribe** button.
 
-In the root of your project create a file called `generateSmartWalletAddress.ts` and add the following code:
-```ts
-import { createPublicClient, Hex, http } from 'viem';
-import { baseSepolia } from 'viem/chains';
-import { privateKeyToAccount } from 'viem/accounts';
-import { toCoinbaseSmartAccount } from 'viem/account-abstraction';
-import dotenv from 'dotenv';
+Navigate to `src/components/Subscribe.tsx`. You'll notice that the component is incomplete and currently shows multiple errors. We'll address these issues to enable Spend Permission functionality.
 
-dotenv.config();
-
-export async function logSpenderSmartContractWalletAddress() {
-  const client = createPublicClient({
-    chain: baseSepolia,
-    transport: http(),
-  });
-
-  const spenderAccountOwner = privateKeyToAccount(
-    process.env.SPENDER_PRIVATE_KEY! as Hex
-  );
-  console.log('spenderAccountOwner', spenderAccountOwner.address);
-
-  const spenderAccount = await toCoinbaseSmartAccount({
-    client,
-    owners: [spenderAccountOwner],
-  });
-  console.log('Spender Smart Wallet Address:', spenderAccount.address);
-}
-
-async function main() {
-  await logSpenderSmartContractWalletAddress();
-}
-
-if (require.main === module) {
-  main().catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
-  }
-```
-
-Save it then run the following:
-
-```bash
-bun install -g ts-node typescript @types/node dotenv && ts-node generateSmartWalletAddress.ts
-```
-
-This script installs ts-node along with typescript and runs the script made in the previous step.
-
-Your terminal should output something similar to this:
-
-```bash
-spenderAccountOwner 0x2a83b0e4462449660B6E7567b2C808Bud04d877D
-Spender Smart Wallet Address: 0x2269Cc26eBEc78C0fB04c26edDdc65FE15807C8E
-```
-
-You may now add the Spender Smart Wallet Address to the `.env` file :
-
-```bash
-NEXT_PUBLIC_SPENDER_ADDRESS=0x2269Cc26eBEc78C0fB04c26edDdc65FE15807C8E
-```
-
-Revert the module changes made in the `tsconfig.json` file  back to `esnext`
-
-## Creating the Smart Spender
-
-Create a file `smartSpender.ts` under `app/lib`
+Spend Permissions rely on [EIP-712] signatures and include several parameters, or [scopes]. One key scope is the `allowance`, which defines the amount an app can spend on behalf of the user. For our application, this will be set to **85% of the user's cart total**, reflecting a **15% subscription discount**. To achieve this, add the following code to line 95 to calculate the `subscriptionAmountInWei` variable:
 
 ```ts
-import { createPublicClient, createWalletClient, Hex, http } from 'viem';
-import { baseSepolia } from 'viem/chains';
-import { privateKeyToAccount } from 'viem/accounts';
-import {
-  createBundlerClient,
-  createPaymasterClient,
-  toCoinbaseSmartAccount,
-} from 'viem/account-abstraction';
-
-export async function getPublicClient() {
-  const client = createPublicClient({
-    chain: baseSepolia,
-    transport: http(),
-  });
-  return client;
-}
-export async function getSpenderBundlerClient() {
-  const client = createPublicClient({
-    chain: baseSepolia,
-    transport: http(),
-  });
-
-  const spenderAccountOwner = privateKeyToAccount(
-    process.env.SPENDER_PRIVATE_KEY! as Hex
-  );
-
-  console.log({ spenderAccountOwner });
-  const spenderAccount = await toCoinbaseSmartAccount({
-    client,
-    owners: [spenderAccountOwner],
-  });
-  console.log({ spenderAccount: spenderAccount });
-  const paymasterClient = createPaymasterClient({
-    transport: http(process.env.BASE_SEPOLIA_PAYMASTER_URL),
-  });
-
-  const spenderBundlerClient = createBundlerClient({
-    account: spenderAccount,
-    client,
-    paymaster: paymasterClient,
-    transport: http(process.env.BASE_SEPOLIA_PAYMASTER_URL),
-  });
-
-  return spenderBundlerClient;
-}
+const subscriptionAmountInEther = price ? subscriptionAmount / price : 0;
+const subscriptionAmountInWei = parseEther(
+  subscriptionAmountInEther.toString()
+);
 ```
+By adding these lines of code, we enable the discounted price to be passed as the `allowance` in the Spend Permission.
 
-Now that you have a `smartSpender` set up with an address you will need to create a function that tells your app to transfer the user's subscription payment to the `smartSpender`'s wallet in the `collect/route.tsx` file.
+Next, we need to define the `period` and `end` parameters. The `period` specifies the time interval for resetting the used allowance (recurring basis), and the `end` specifies the Unix timestamp until which the Spend Permission remains valid.
 
-Currently the `route.tsx` file is programmed to have our Spender make onchain actions using a Externally Owned Account (EOA) which is the more common/traditional wallet.  This can be observed by looking at the `getSpenderWalletClient()` which requries a private key in order to interact onchain.
+For this demo, we'll set:
+  - `period`: 2629743 seconds (equivalent to one month)
+  - `end`: 1767291546 (Unix timestamp for January 1, 2026)
 
-:::tip
-
-An easy way to tell if a function is making onchain calls using a Smart Wallet is if it uses a [userOperation](https://www.biconomy.io/post/decoding-entrypoint-and-useroperation-with-erc-4337-part1). EOAs do not use userOperations; instead, they sign transactions themselves and post them directly onchain.
-
-:::
-
-You want the application to use the Smart Account while still maintaining functionality for EOAs in the future. To achieve this, let's create two functions: one for making calls using an EOA and another for using a Smart Account.
-
-Create a function called `transactUsingEOA` that takes two parameters: `spendPermission` (of type `any`) and `signature` (of type `any`). Then, paste the logic from the current `POST` function into the `transactUsingEOA` function.
-
-Your `transactUsingEOA` function should look like this:
-
+Now, update the message constant to include these parameters. It should look like this:
 
 ```ts
-async function transactUsingEOA(spendPermission: any, signature: any) {
-  const spenderBundlerClient = await getSpenderWalletClient();
-  const publicClient = await getPublicClient();
-
-  const approvalTxnHash = await spenderBundlerClient.writeContract({
-    address: spendPermissionManagerAddress,
-    abi: spendPermissionManagerAbi,
-    functionName: "approveWithSignature",
-    args: [spendPermission, signature],
-  });
-
-  const approvalReceipt = await publicClient.waitForTransactionReceipt({
-    hash: approvalTxnHash,
-  });
-
-  const spendTxnHash = await spenderBundlerClient.writeContract({
-    address: spendPermissionManagerAddress,
-    abi: spendPermissionManagerAbi,
-    functionName: "spend",
-    args: [spendPermission, "1"],
-  });
-
-  const spendReceipt = await publicClient.waitForTransactionReceipt({
-    hash: spendTxnHash,
-  });
-
-  return {
-    success: spendReceipt.status == "success",
-    transactionHash: spendReceipt.transactionHash,
-  };
-}
+const message = {
+  account: accountAddress,
+  spender: process.env.NEXT_PUBLIC_SPENDER_ADDRESS! as Address,
+  token: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE' as Address,
+  allowance: subscriptionAmountInWei,
+  period: 2629743,
+  start: Math.floor(Date.now() / 1000),
+  end: 1767291546,
+  salt: BigInt(0),
+  extraData: '0x' as Hex,
+} as const;
 ```
 
-Now let's create a function for transacting using the Smart Account you created earlier.
+By setting these values, we have defined the essential parameters for the Spend Permission, allowing our **Subscribe** button to handle recurring payments with ease. Let's continue enhancing the functionality in the next steps.
 
-In the same file, create a function named `transactUsingSmartWallet` that takes the same parameters.
+You may have noticed that when the user clicks the **Subscribe** button, it sends data to the `/collect` route. However, this route is currently broken. Let's address this issue to complete the functionality of our application.
 
+In its current state, the `/collect` route contains incomplete logic for interacting with the `Spend Permission Manager` singleton contract. Specifically, we need to update the `approvalTxnHash` and `spendTxnHash` functions to properly handle user approvals and spending operations.
+
+### Step 1: Fix the Approval Transaction
+
+The `approvalTxnHash` function is responsible for calling the `approveWithSignature` method on the `Spend Permission Manager` contract. Update it with the following properties and values:
 
 ```ts
-async function transactUsingSmartWallet(spendPermission: any, signature: any) {
-  const spenderBundlerClient = await getSpenderBundlerClient();
-  const userOpHash = await spenderBundlerClient.sendUserOperation({
-    calls: [
-      {
-        abi: spendPermissionManagerAbi,
-        functionName: "approveWithSignature",
-        to: spendPermissionManagerAddress,
-        args: [spendPermission, signature],
-      },
-      {
-        abi: spendPermissionManagerAbi,
-        functionName: "spend",
-        to: spendPermissionManagerAddress,
-        args: [spendPermission, BigInt(1)], // spend 1 wei
-      },
-    ],
-  });
-
-  const userOpReceipt = await spenderBundlerClient.waitForUserOperationReceipt({
-    hash: userOpHash,
-  });
-
-  return {
-    success: userOpReceipt.success,
-    transactionHash: userOpReceipt.receipt.transactionHash,
-  };
-}
+const approvalTxnHash = await spenderBundlerClient.writeContract({
+  address: spendPermissionManagerAddress,
+  abi: spendPermissionManagerAbi,
+  functionName: 'approveWithSignature',
+  args: [spendPermission, signature],
+});
 ```
+Once the approval transaction completes, the app will have the user's permission to spend their funds.
 
-You'll notice that this function uses userOperations, a clear giveaway that you are using a Smart Wallet and **not** an EOA.
-
-Now that we have separate functions for transacting with an EOA and a Smart Wallet, let's update the `POST` function to use the Smart Wallet for transactions.
+Next, we need to call the `spend` function to utilize the user's approved funds. Update the `spendTxnHash` function with the following code:
 
 ```ts
-export async function POST(request: NextRequest) {
-  const spenderBundlerClient = await getSpenderWalletClient();
-  const publicClient = await getPublicClient();
-  try {
-    const body = await request.json();
-    const { spendPermission, signature } = body;
-    const { success, transactionHash } = await transactUsingSmartWallet(
-      spendPermission,
-      signature
-    );
- return NextResponse.json({
-      status: success ? "success" : "failure",
-      transactionHash: transactionHash,
-      transactionUrl: `https://sepolia.basescan.org/tx/${transactionHash}`,
-    });
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({}, { status: 500 });
-  }
-}
+const spendTxnHash = await spenderBundlerClient.writeContract({
+  address: spendPermissionManagerAddress,
+  abi: spendPermissionManagerAbi,
+  functionName: 'spend',
+  args: [spendPermission, BigInt(1)],
+});
 ```
-> The full code sample is available [here](https://github.com/ilikesymmetry/spend-permissions-quickstart/blob/main/app/collect/route.tsx#L38)
 
-Excellent! You just added a Smart Wallet as a backend app wallet. Now, when users click the `Subscribe` button, the component will call the `handleCollectSubscription` function, and the request will be handled by the `transactUsingSmartWallet` function.
+These updates ensure that the `/collect` route correctly processes both the approval and spending steps, enabling seamless interaction with the `Spend Permission Manager`. With these fixes in place, the backend can fully support the Spend Permission flow.
+
+--- 
+
+Excellent! You just added a Spender Client as a backend app wallet. Now, when users click the `Subscribe` button, the component will call the `handleCollectSubscription` function, and the request will be handled by the `route` function.
 
 I know what you're thinking: how can I see the valid (non-revoked) spend permissions for each user (wallet)? That's an easy one. Base provides an endpoint that allows you to retrieve valid spend permissions for an account by polling the utility API at: https://rpc.wallet.coinbase.com.
 
@@ -424,3 +264,7 @@ Remember, our app is designed to allow for users to purchase a good repeatedly w
 
 ---
 [Paymaster]: https://portal.cdp.coinbase.com/products/bundler-and-paymaster
+[Spender]: https://www.smartwallet.dev/guides/spend-permissions/api-reference/spendpermissionmanager#:~:text=spender,%27s%20tokens.
+[Wallet Client]: https://viem.sh/docs/clients/wallet.html
+[scopes]: https://www.smartwallet.dev/guides/spend-permissions/overview#the-spendpermission-details
+[EIP-712]: https://eips.ethereum.org/EIPS/eip-712
