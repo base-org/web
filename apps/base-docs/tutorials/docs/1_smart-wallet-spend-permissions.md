@@ -14,7 +14,7 @@ displayed_sidebar: null
 
 ## Overview
 
-Spend Permissions are a new onchain primitive that allows any user to grant an application permission to pull a specified amount of funds from their account. Spend Permissions are similar to **Session Keys**, where temporary permissions enable seamless user interaction without repeatedly prompting signatures. However, Spend Permissions are more secure because they are scoped and controlled by parameters such as **token**, **start time**, **end time**, **period**, and **allowance**, which a user signs off on when approving a Spend Permission.
+Spend Permissions are a new onchain primitive that allows any user to grant an application permission to spend a specified amount of funds from their account. Spend Permissions are similar to **Session Keys**, where temporary permissions enable seamless user interaction without repeatedly prompting signatures. However, Spend Permissions are more secure because they are scoped and controlled by parameters such as **token**, **start time**, **end time**, **period**, and **allowance**, which a user signs off on when approving a Spend Permission.
 
 For Spend Permissions to work, the user must have a **Smart Account**. Newly created Smart Accounts add the Permission Manager during account creation, and it cannot be removed. Existing Smart Wallets must manually enable Spend Permissions by adding the Permission Manager via a one-time approval flow when an app requests them.
 
@@ -22,7 +22,7 @@ A typical flow is as follows:
 1. The user logs into an app with their Smart Wallet.  
 2. The app requests approval by presenting the user with the scoped parameters.  
 3. The user reviews the scopes and either confirms or denies the request.  
-4. Upon approval, the app calls the **SpendPermission singleton contract** to initiate transactions, pulling funds from the user's Smart Wallet under the granted scope.  
+4. Upon approval, the app calls the **SpendPermission singleton contract** to initiate transactions, spending funds from the user's Smart Wallet under the granted scope.  
 
 At any point, the user can revoke their Spend Permission.
 
@@ -32,7 +32,7 @@ At any point, the user can revoke their Spend Permission.
 Spend Permissions allow for the following onchain functionalities:
 
 - **Subscription Payments**: Apps can collect recurring payments (e.g., monthly subscriptions) without requiring the user to re-sign each time.  
-- **Seamless In-App Purchases**: E-commerce stores and apps can pull funds directly for purchases without popup interruptions.  
+- **Seamless In-App Purchases**: E-commerce stores and apps can spend funds directly for purchases without popup interruptions.  
 - **Gas Sponsorship**: Spend Permissions can be used alongside paymasters to sponsor gas fees for user transactions.  
 - **One-Click Mints**: Users can allocate an amount of funds for an app to spend on their behalf, enabling a series of onchain actions without requiring repeated approvals.
 
