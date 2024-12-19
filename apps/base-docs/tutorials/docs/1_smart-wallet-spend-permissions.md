@@ -18,54 +18,51 @@ Spend Permissions are a new onchain primitive that allows any user to grant an a
 
 Existing Smart Wallets without Spend Permissions enabled will be asked to enable Spend Permissions the first time they interact with an application that requests a Spend Permission approval. Enabling Spend Permissions is easily done via a one-click, one-time approval flow.
 
-A typical flow is as follows:  
-1. The user logs into an app with their Smart Wallet.  
-2. The app requests approval by presenting the user with the spend permissions.  
-3. The user reviews the scopes and either confirms or denies the request.  
-4. Upon approval, the app calls the **SpendPermission singleton contract** to initiate transactions, spending funds from the user's Smart Wallet under the granted scope.  
+A typical flow is as follows:
+
+1. The user logs into an app with their Smart Wallet.
+2. The app requests approval by presenting the user with the spend permissions.
+3. The user reviews the scopes and either confirms or denies the request.
+4. Upon approval, the app calls the **SpendPermission singleton contract** to initiate transactions, spending funds from the user's Smart Wallet under the granted scope.
 
 At any point, the user can revoke their Spend Permission.
 
-
-### Use Cases for Spend Permissions  
+### Use Cases for Spend Permissions
 
 Spend Permissions allow for the following onchain functionalities:
 
-- **Subscription Payments**: Apps can collect recurring payments (e.g., monthly subscriptions) without requiring the user to re-sign each time.  
-- **Seamless In-App Purchases**: E-commerce stores and apps can spend funds directly for purchases without popup interruptions.  
-- **Gas Sponsorship**: Spend Permissions can be used alongside paymasters to sponsor gas fees for user transactions.  
+- **Subscription Payments**: Apps can collect recurring payments (e.g., monthly subscriptions) without requiring the user to re-sign each time.
+- **Seamless In-App Purchases**: E-commerce stores and apps can spend funds directly for purchases without popup interruptions.
+- **Gas Sponsorship**: Spend Permissions can be used alongside paymasters to sponsor gas fees for user transactions.
 - **One-Click Mints**: Users can allocate an amount of funds for an app to spend on their behalf, enabling a series of onchain actions without requiring repeated approvals.
 
 ---
 
 ## Objectives
- 
 
 In this tutorial, we’ll walk through a demo application that uses Spend Permissions to enable onchain subscription payments. Specifically, you will:
 
-  
 - Create a smart wallet from a public/private keypair.
 - Enable an EOA to receive subscription payments.
-- Implement a **Subscribe** button that:  
-  - Calls the **spend** function to initiate transactions.  
-  - Adds the **SpendPermission singleton contract** as an owner to the user’s Smart Wallet.  
+- Implement a **Subscribe** button that:
+  - Calls the **spend** function to initiate transactions.
+  - Adds the **SpendPermission singleton contract** as an owner to the user’s Smart Wallet.
 
 By the end of this tutorial, your application will seamlessly request and utilize Spend Permissions to facilitate recurring onchain payments.
 
 ## Prerequisites:
 
-### Coinbase CDP account[](https://docs.base.org/tutorials/gasless-transaction-on-base-using-a-paymaster/#coinbase-cdp-account "Direct link to Coinbase CDP account")
+### Coinbase CDP account[](https://docs.base.org/tutorials/gasless-transaction-on-base-using-a-paymaster/#coinbase-cdp-account 'Direct link to Coinbase CDP account')
 
-This is your access point to the Coinbase Cloud Developer Platform, where you can manage projects and utilize tools like the Paymaster. 
+This is your access point to the Coinbase Cloud Developer Platform, where you can manage projects and utilize tools like the Paymaster.
 
-### Familiarity with Smart Wallets and ERC 4337[​](https://docs.base.org/tutorials/gasless-transaction-on-base-using-a-paymaster/#familiarity-with-smart-accounts-and-erc-4337 "Direct link to Familiarity with Smart Accounts and ERC 4337")
+### Familiarity with Smart Wallets and ERC 4337[​](https://docs.base.org/tutorials/gasless-transaction-on-base-using-a-paymaster/#familiarity-with-smart-accounts-and-erc-4337 'Direct link to Familiarity with Smart Accounts and ERC 4337')
 
 Understand the basics of Smart Wallets and the ERC-4337 standard for advanced transaction patterns and account abstraction.
 
 ### Familiarity with wagmi/viem
 
 Wagmi/viem are two libraries that enable smart contract interaction using typescript. It makes onchain development smoother and what you will use to create smart wallets, functions, etc. It easily allows onchain developers to use the same skillsets from Javascript/typescript and frontend development and bring it onchain.
-
 
 ## Template Project
 
@@ -88,16 +85,19 @@ cp env.local.example .env
 If you don’t have an existing keypair, follow these steps to generate one using Foundry:
 
 Install foundry if you don't have it.
+
 ```sh
 curl -L https://foundry.paradigm.xyz | bash
 ```
 
 Then, create a private key pair:
+
 ```bash
 cast wallet new
 ```
 
 Your terminal should output something similar to this:
+
 ```bash
 Successfully created new keypair.
 
@@ -113,6 +113,7 @@ Start by opening the `.env` file in the Healing Honey project and adding your pr
 ```bash
 SPENDER_PRIVATE_KEY=0xcd57753bb4e308ba0c6f574e8af04a7bae0ca0aff5750ddd6275460f49635527
 ```
+
 Next, navigate to the `src/app/lib/spender.ts` file. Here, you'll see the `privateKeyToAccount` function from Viem in use. This function creates an wallet from the private key, enabling it to sign transactions and messages. The generated `account` is then used to create a [Wallet Client], which allows signing and executing onchain transactions to interact with the Spend Permission contract.
 
 With your Spender Client set up, ensure all other required environment variables are configured for the app to work when running the dev server.
@@ -136,10 +137,9 @@ For example, if your Paymaster URL is: https://api.developer.coinbase.com/rpc/v1
 The API Key would be: `JJ8uIiSMZWgCOyL0EpJgNAf0qPegLMC0`
 :::
 
-:::warning 
+:::warning
 Please do not use these API Keys
 :::
-
 
 Your .env file should now look like this:
 
@@ -162,7 +162,7 @@ BASE_SEPOLIA_PAYMASTER_URL=https://api.developer.coinbase.com/rpc/v1/base-sepoli
 
 To ensure your app communicates with the correct server when a user interacts with their wallet, open the src/components/OnchainProviders.tsx file.
 
-Replace the // TODO comment with the following value for the keysUrl property: 
+Replace the // TODO comment with the following value for the keysUrl property:
 
 ```json
 keysUrl: "https://keys.coinbase.com/connect"
@@ -176,17 +176,17 @@ Spend Permissions rely on [EIP-712] signatures and include several parameters, o
 
 ```ts
 const subscriptionAmountInEther = price ? subscriptionAmount / price : 0;
-const subscriptionAmountInWei = parseEther(
-  subscriptionAmountInEther.toString()
-);
+const subscriptionAmountInWei = parseEther(subscriptionAmountInEther.toString());
 ```
+
 By adding these lines of code, we enable the discounted price to be passed as the `allowance` in the Spend Permission.
 
 Next, we need to define the `period` and `end` parameters. The `period` specifies the time interval for resetting the used allowance (recurring basis), and the `end` specifies the Unix timestamp until which the Spend Permission remains valid.
 
 For this demo, we'll set:
-  - `period`: 2629743 seconds (equivalent to one month)
-  - `end`: 1767291546 (Unix timestamp for January 1, 2026)
+
+- `period`: 2629743 seconds (equivalent to one month)
+- `end`: 1767291546 (Unix timestamp for January 1, 2026)
 
 Now, update the message constant to include these parameters. It should look like this:
 
@@ -210,8 +210,6 @@ You may have noticed that when the user clicks the **Subscribe** button, it send
 
 In its current state, the `/collect` route contains incomplete logic for interacting with the `Spend Permission Manager` singleton contract. Specifically, we need to update the `approvalTxnHash` and `spendTxnHash` functions to properly handle user approvals and spending operations.
 
-### Step 1: Fix the Approval Transaction
-
 The `approvalTxnHash` function is responsible for calling the `approveWithSignature` method on the `Spend Permission Manager` contract. Update it with the following properties and values:
 
 ```ts
@@ -222,6 +220,7 @@ const approvalTxnHash = await spenderBundlerClient.writeContract({
   args: [spendPermission, signature],
 });
 ```
+
 Once the approval transaction completes, the app will have the user's permission to spend their funds.
 
 Next, we need to call the `spend` function to utilize the user's approved funds. Update the `spendTxnHash` function with the following code:
@@ -237,14 +236,13 @@ const spendTxnHash = await spenderBundlerClient.writeContract({
 
 These updates ensure that the `/collect` route correctly processes both the approval and spending steps, enabling seamless interaction with the `Spend Permission Manager`. With these fixes in place, the backend can fully support the Spend Permission flow.
 
---- 
+---
 
 Excellent! You just added a Spender Client as a backend app wallet. Now, when users click the `Subscribe` button, the component will call the `handleCollectSubscription` function, and the request will be handled by the `route` function.
 
 I know what you're thinking: how can I see the valid (non-revoked) spend permissions for each user (wallet)? That's an easy one. Base provides an endpoint that allows you to retrieve valid spend permissions for an account by polling the utility API at: https://rpc.wallet.coinbase.com.
 
 An optional step you can take is to create a "My Subscriptions" tab on your site to present users with their valid spend permissions. Below is an example of the curl request to the RPC endpoint. A sample response can be found [here](https://gist.github.com/hughescoin/d1566557f85cb2fafd281833affbe022).
-
 
 ```bash
 curl --location 'https://rpc.wallet.coinbase.com' \
@@ -263,13 +261,14 @@ curl --location 'https://rpc.wallet.coinbase.com' \
 }'
 ```
 
+## Conclusion
 
-## Conclusion 
 In this tutorial you created a smart wallet by converting a private key (EOA) to a smart wallet, enableed functionality of your app to have a backend signer be a smartWallet or a traditional EOA.
 
-Remember, our app is designed to allow for users to purchase a good repeatedly without having to sign for the transaction or make additional requests. 
+Remember, our app is designed to allow for users to purchase a good repeatedly without having to sign for the transaction or make additional requests.
 
 ---
+
 [Paymaster]: https://portal.cdp.coinbase.com/products/bundler-and-paymaster
 [Spender]: https://www.smartwallet.dev/guides/spend-permissions/api-reference/spendpermissionmanager#:~:text=spender,%27s%20tokens.
 [Wallet Client]: https://viem.sh/docs/clients/wallet.html
