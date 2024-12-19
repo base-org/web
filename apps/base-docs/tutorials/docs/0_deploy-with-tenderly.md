@@ -417,4 +417,4 @@ For more information on the Tenderly full-stack infrastructure, check out the fo
 
 - [Documentation](https://docs.tenderly.co/)
 - [Blog](https://blog.tenderly.co/)
-- [Twitter](https://twitter.com/TenderlyApp)
+- [X](https://x.com/TenderlyApp)

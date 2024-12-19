@@ -392,7 +392,7 @@ Upon calling `connect`, a user will be brought through the social login process,
 
 `connect` takes the following parameters:
 
-- `socialType`, the specific social login mechanism you'd like users to go through. If left as an empty string, a generalized social login modal will be shown. Otherwise, use strings such as 'google', 'twitter', 'email', etc.
+- `socialType`, the specific social login mechanism you'd like users to go through. If left as an empty string, a generalized social login modal will be shown. Otherwise, use strings such as 'google', 'x', 'email', etc.
 - `chain`, an object (imported from `@particle-network/chains`) corresponding with the chain you'd like to use. In this example, it'll be `BaseSepolia`.
 
 Ideally, some logic should be set in place to ensure `connect` isn't called if a user has already logged in. This can be done by only calling `connect` on the condition that `userInfo` (from `useAuthCore`) is undefined, indicating that the user isn't logged in.
@@ -476,7 +476,7 @@ You've now initiated social login (through `handleLogin`), assigned a smart acco
 
 To present all of this to the user and allow them to interact with these functions for themselves, you'll need to map `handleLogin` and `executeUserOp` to the JSX of your `App` component. This will format the frontend that a user interacts with to test this application.
 
-Essentially, this displays either "Sign in with Google" or "Sign in with Twitter" through custom buttons that are only shown if the user hasn't logged in (determined through the state of `userInfo`). Upon logging in, the user can either call `executeUserOp` or `disconnect` (which was defined from `useConnect`).
+Essentially, this displays either "Sign in with Google" or "Sign in with X" through custom buttons that are only shown if the user hasn't logged in (determined through the state of `userInfo`). Upon logging in, the user can either call `executeUserOp` or `disconnect` (which was defined from `useConnect`).
 
 Below is an example of what your `App.jsx/tsx` file may look at this point. At the bottom of this snippet you'll find the JSX:
 
@@ -552,7 +552,7 @@ const App = () => {
             Sign in with Google
           </button>
           <button className="sign-button" onClick={() => handleLogin('twitter')}>
-            Sign in with Twitter
+            Sign in with X
           </button>
         </div>
       ) : (
@@ -579,7 +579,7 @@ With everything complete, you're ready to run your application to test it. To do
 
 1. Navigate to the root of your project.
 2. Run either `npm run start` or `yarn start`.
-3. Once running, log in with either your Google or Twitter.
+3. Once running, log in with either your Google or X.
 4. Fund the address displayed on the wallet modal in the bottom right.
 5. Click "Execute User Operation".
 
