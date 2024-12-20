@@ -12,7 +12,7 @@ import useCapabilitiesSafe from 'apps/web/src/hooks/useCapabilitiesSafe';
 /*
   A hook to request and track a wallet write transaction
 
-  Responsabilities:
+  Responsibilities:
   - InitiateBatchCalls to start the flow (write multiple contracts)
   - Keep track of the batchCall status with useCallsStatus
   - Keep track of the batchCall transactionReceipt with useWaitForTransactionReceipt

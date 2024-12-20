@@ -71,7 +71,7 @@ You should have a folder structure similar to this:
 └── test
 ```
 
-The `src` folder will contain a `Counter.sol` file which will serve as the country you want to deploy.
+The `src` folder will contain a `Counter.sol` file which will serve as the contract you want to deploy.
 
 :::note You will need ETH on Base to deploy
 You (the deployer wallet) will need some ETH in order to broadcast the transaction to the Base network. Fortunately, transactions are usually < 1 cent on Base mainnet.
