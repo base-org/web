@@ -118,7 +118,7 @@ Deploy and test again. Success!
 
 One challenging limitation of the `mapping` data type is that it is **not** iterable - you cannot loop through and manipulate or return **all** values in the `mapping`.
 
-At least not with any built in features, but you can solve this on your own. A common practice in Solidity with this and similar problems is to use multiple variables or data types to store the right combination needed to address the issue.
+At least not with any built-in features, but you can solve this on your own. A common practice in Solidity with this and similar problems is to use multiple variables or data types to store the right combination needed to address the issue.
 
 ### Using a Helper Array
 

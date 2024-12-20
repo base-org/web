@@ -1,7 +1,7 @@
 ---
 title: Basenames + OnchainKit Tutorial
 slug: /basenames-tutorial-with-onchainkit
-description: 'A tutorial that teaches how to intergrate Basenames to your wagmi/viem App using OnchainKit'
+description: 'A tutorial that teaches how to integrate Basenames to your wagmi/viem App using OnchainKit'
 author: hughescoin
 keywords: ['build on base', 'viem', 'wagmi', 'frontend', 'onchain app development']
 tags: ['account abstraction']
@@ -102,7 +102,7 @@ Ensure Chain is Set to Base Be sure to set the `chain={base}` parameter; otherwi
 ```typescript title="src/components/basename.tsx"
 'use client';
 import React from 'react';
-('use client');
+'use client';
 import React from 'react';
 import { Avatar, Identity, Name, Address } from '@coinbase/onchainkit/identity';
 import { base } from 'viem/chains';

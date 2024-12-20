@@ -19,7 +19,10 @@ type BannerProps = {
 };
 
 export default function Banner({ href, text, bannerName }: BannerProps) {
-  const [isBannerVisible, setIsBannerVisible] = useLocalStorage(`${bannerName}Visible`, true);
+  const [isBannerVisible, setIsBannerVisible] = useLocalStorage(
+    `${bannerName}Visible`,
+    true,
+  );
   const pathname = usePathname();
   const isOnPage = pathname === href.split('?')[0];
 
@@ -33,7 +36,7 @@ export default function Banner({ href, text, bannerName }: BannerProps) {
       },
       AnalyticsEventImportance.high,
     );
-  }, [logEvent, ActionType, ComponentType, AnalyticsEventImportance]);
+  }, [logEvent, ActionType, ComponentType, AnalyticsEventImportance, bannerName]);
 
   const hideBanner = useCallback(() => {
     setIsBannerVisible(false);
@@ -47,7 +50,7 @@ export default function Banner({ href, text, bannerName }: BannerProps) {
     <div className="bg-yellow-20 z-10 flex w-full flex-row justify-center text-black">
       <div className="bg-yellow-20 z-10 flex w-full max-w-[1440px] flex-row items-center justify-between self-center p-2 pl-8 pr-6">
         <Link href={href} onClick={linkClick}>
-          <span className="text-xs  underline md:text-base">{text}</span>
+          <span className="text-xs underline md:text-base">{text}</span>
         </Link>
         <div className="flex flex-row items-center gap-4">
           <button

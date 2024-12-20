@@ -187,7 +187,7 @@ irys upload image-level-3.png \
 
 Create three metadata files similar to the ones below. Make sure to change the value of the image field to match the URLs generated in the previous step.
 
-```jason filename="metadata-level-1.json"
+```json filename="metadata-level-1.json"
 {
   "name": "SuperMon",
   "symbol": "SMON",
@@ -202,7 +202,7 @@ Create three metadata files similar to the ones below. Make sure to change the v
 }
 ```
 
-```jason filename="metadata-level-2.json"
+```json filename="metadata-level-2.json"
 {
   "name": "SuperMon",
   "symbol": "SMON",
@@ -218,7 +218,7 @@ Create three metadata files similar to the ones below. Make sure to change the v
 }
 ```
 
-```jason filename="metadata-level-3.json"
+```json filename="metadata-level-3.json"
 {
   "name": "SuperMon",
   "symbol": "SMON",
@@ -314,6 +314,6 @@ Dynamic NFTs are commonly used with gaming projects, similar to the one we built
 [Download a zip containing PNGs]: https://gateway.irys.xyz/MoOvEzePMwFgc_v6Gw3U8ovV6ostgrkWb9tS4baAJhc
 [Irys CLI]: https://docs.irys.xyz/build/d/storage-cli/installation
 [mutability features]: https://docs.irys.xyz/build/d/features/mutability
-[Opensea Testnet]: https://testnets.opensea.io/accoun
+[Opensea Testnet]: https://testnets.opensea.io/account
 [Remix]: https://docs.base.org/tutorials/deploy-with-remix
 [server]: https://docs.irys.xyz/build/d/quickstart

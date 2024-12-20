@@ -93,7 +93,7 @@ Put `mintTo(address)` as the function to allowlist then click `Save` at the bott
 ![cdp-allowlist-contracts.png](../../assets/images/gasless-transaction-on-base/cdp-allowlist-contract.png)
 
 :::note Use your own contract
-You will be using this [simple NFT contract]deployed on Base mainnet for our example. Feel free to use a contract of your choice.
+You will be using this [simple NFT contract] deployed on Base mainnet for our example. Feel free to use a contract of your choice.
 :::
 
 ### Global & Per User Limits:
@@ -126,7 +126,7 @@ You will now test the policy that was created.
 
 In this tutorial, You use foundry to create two key pairs that will allow us to create Smart Accounts that you will sponsor transactions on behalf of. You will **not** need to send any funds (ETH) to these wallets. You may use private keys of wallets you own as an alternative.
 
-Foundry depends on Rust to work. If you do not have rust install:
+Foundry depends on Rust to work. If you do not have rust installed:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -198,7 +198,7 @@ You will also need the address of the entrypoint contract for Base. A full list 
 Add the following to lines of code after your import statements:
 
 ```javascript
-const rpcUrl = https://api.developer.coinbase.com/rpc/v1/base/<SPECIAL-KEY> //Paymaster & Bundler endpoint
+const rpcUrl = 'https://api.developer.coinbase.com/rpc/v1/base/<SPECIAL-KEY>' //Paymaster & Bundler endpoint
 ```
 
 ```javascript
@@ -328,7 +328,7 @@ Feel free to use your own contract to interact with the Paymaster. For learning 
 
 You will be interacting with the NFT + ABI from a simple NFT contract deployed at: `0x83bd615eb93eE1336acA53e185b03B54fF4A17e8`
 
-Copy and paste the NFT's abi into `index.js`
+Copy and paste the NFT's ABI into `index.js`
 
 ```javascript
 const abi = [
