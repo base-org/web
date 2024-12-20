@@ -3590,5 +3590,13 @@
     "imageUrl": "/images/partners/gbm-domains.png",
     "category": "consumer",
     "subcategory": "nft"
+  },
+  {
+    "name": "Xocolatl Finance",
+    "description": "Xocolatl Finance is a decentralized lending protocol that allows users to borrow and lend assets on Base. Users can earn interest on their assets by supplying liquidity to the protocol, or borrow assets by providing collateral.",
+    "url": "https://xocolatl.finance/",
+    "imageUrl": "/images/partners/xoc-logo.png",
+    "category": "defi",
+    "subcategory": "stablecoin, lending/borrowing, liquidity management"
   }
 ]
