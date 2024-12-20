@@ -95,7 +95,7 @@ export type UseFrameOptions<
   frameActionProxy: string;
   /** the route used to GET the initial frame via proxy */
   frameGetProxy: string;
-  /** an signer state object used to determine what actions are possible */
+  /** a signer state object used to determine what actions are possible */
   signerState: SignerStateInstance<TSignerStorageType, TFrameActionBodyType, TFrameContextType>;
   /** the url of the homeframe, if null / undefined won't load a frame */
   homeframeUrl: string | null | undefined;

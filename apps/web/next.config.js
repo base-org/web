@@ -197,6 +197,19 @@ module.exports = extendBaseConfig(
         ],
       });
       config.module.rules.push({
+        test: /\.mp4$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash].[ext]',
+              outputPath: 'static/assets/mp4/',
+              publicPath: '/_next/static/assets/mp4/',
+            },
+          },
+        ],
+      });
+      config.module.rules.push({
         test: /\.gltf/,
         use: [
           {

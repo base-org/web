@@ -1,7 +1,7 @@
 'use client';
-import bolt from './assets/bolt.webm';
-import eth from './assets/eth.webm';
-import globe from './assets/globe.webm';
+import bolt from './assets/bolt.mp4';
+import eth from './assets/eth.mp4';
+import globe from './assets/globe.mp4';
 import VideoCard from 'apps/web/src/components/base-org/root/VideoCardsSection/VideoCard';
 import Link from 'apps/web/src/components/Link/index';
 
