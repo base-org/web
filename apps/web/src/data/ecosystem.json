@@ -3582,5 +3582,13 @@
     "imageUrl": "/images/partners/gbm-domains.png",
     "category": "consumer",
     "subcategory": "nft"
+  },
+  {
+    "name": "UniversalX",
+    "category": "defi",
+    "subcategory": "dex",
+    "description": "The first chain-agnostic trading platform. Buy and sell any token on Base with balances from any EVM chain: never bridge again.",
+    "url": "https://universalx.app",
+    "imageUrl": "/images/partners/universalx.png"
   }
 ]
