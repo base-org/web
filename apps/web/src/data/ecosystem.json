@@ -1,5 +1,13 @@
 [
   {
+    "name": "Hanaswap",
+    "description": "Hanaswap.com is a DEX platform designed to offer a simple and secure way to move assets across multiple blockchains.",
+    "url": "https://hanaswap.com",
+    "imageUrl": "/images/partners/hanaswap.png",
+    "category": "defi",
+    "subcategory": "dex"
+  },
+  {
     "name": "Moxie Protocol",
     "description": "Moxie is a SocialFi protocol on the Base blockchain that allows users to create and interact with Fan Tokens.",
     "url": "https://moxie.xyz",
