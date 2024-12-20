@@ -48,6 +48,15 @@
     "subcategory": "centralized exchange"
   },
   {
+    "name": "Arcadia Games",
+    "url": "https://arcadiagames.io",
+    "description": "Arcadia Games provides PvP board games on the blockchain. Play chess, battleship and other classic games against other players for crypto.",
+    "tags": [
+      "gaming"
+    ],
+    "imageUrl": "/images/partners/arcadia-games.png"
+  },
+  {
     "name": "Connext",
     "description": "Connext is an intent-based modular interoperability protocol for securely passing funds and data between chains with the best possible speed, pricing, and security.",
     "url": "https://bridge.connext.network/",
