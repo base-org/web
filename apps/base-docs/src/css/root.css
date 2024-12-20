@@ -223,7 +223,7 @@ html {
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%;
   --search-font-size: 16px;
-  --search-font-weight: 16px;
+  --search-font-weight: 400;
 
   /* Base Docs Palette */
   --base-docs-color-fg: #000000;
