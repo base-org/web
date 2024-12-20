@@ -1,5 +1,13 @@
 [
   {
+    "name": "Hinkal",
+    "description": "Hinkal is a composable and self-custodial private wallet. It enables data privacy for on-chain assets for any transaction. You can store, send, receive, and interact with any dApp in complete privacy.",
+    "url": "https://hinkal.pro",
+    "imageUrl": "/images/partners/hinkal.png",
+    "category": "wallet",
+    "subcategory": "self-custody"
+  },
+  {
     "name": "MADNFT",
     "description": "MADNFT is a creator-first NFT platform empowering artists, collectors, and communities with tools to mint, list, and engage while earning XP points and rewards.",
     "url": "https://madnft.io",
