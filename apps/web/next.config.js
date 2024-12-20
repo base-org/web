@@ -37,7 +37,7 @@ const baseConfig = {
   // Enable strict mode in development
   reactStrictMode: !isProdEnv,
 
-  // Minifiy for production builds
+  // Minify for production builds
   swcMinify: false,
 };
 
@@ -192,6 +192,19 @@ module.exports = extendBaseConfig(
               name: '[name][hash].[ext]',
               outputPath: 'static/assets/webm/',
               publicPath: '/_next/static/assets/webm/',
+            },
+          },
+        ],
+      });
+      config.module.rules.push({
+        test: /\.mp4$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash].[ext]',
+              outputPath: 'static/assets/mp4/',
+              publicPath: '/_next/static/assets/mp4/',
             },
           },
         ],
