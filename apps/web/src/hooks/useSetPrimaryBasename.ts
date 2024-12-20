@@ -15,10 +15,10 @@ import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernamePr
 /*
   A hook to set an name as primary for resolution.
 
-  Responsabilities:
+  Responsibilities:
   - Get and validate the primary username against the new username
   - Write the new name to the contract & Wait for the transaction to be processed
-  - Refetch basename on successfull request
+  - Refetch basename on successful request
 */
 
 type UseSetPrimaryBasenameProps = {
