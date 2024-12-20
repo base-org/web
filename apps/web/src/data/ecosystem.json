@@ -1,5 +1,13 @@
 [
   {
+    "name": "Moxie Protocol",
+    "description": "Moxie is a SocialFi protocol on the Base blockchain that allows users to create and interact with Fan Tokens.",
+    "url": "https://moxie.xyz",
+    "imageUrl": "/images/partners/moxie.png",
+    "category": "consumer",
+    "subcategory": "social"
+  },
+  {
     "name": "MADNFT",
     "description": "MADNFT is a creator-first NFT platform empowering artists, collectors, and communities with tools to mint, list, and engage while earning XP points and rewards.",
     "url": "https://madnft.io",
@@ -102,6 +110,14 @@
     "imageUrl": "/images/partners/transfi.png",
     "category": "onramp",
     "subcategory": "fiat on-ramp"
+  },
+  {
+    "name": "MiniMatch",
+    "description": "MiniMatch offers a thrilling \"spot-the-ball\" game, where players challenge their skills to predict the ball's location and win the competition. The skill-based game is a fully on-chain experience.",
+    "url": "https://www.minimatch.gg/spot-the-ball",
+    "imageUrl": "/images/partners/minimatch.png",
+    "category": "consumer",
+    "subcategory": "gaming"
   },
   {
     "name": "Heroes of Mavia",
@@ -427,7 +443,7 @@
     "name": "Contango",
     "url": "https://contango.xyz/",
     "description": "Perps built through looping, the native way of trading on-chain",
-    "imageUrl": "/images/partners/contango.png",
+    "imageUrl": "/images/partners/contango.webp",
     "category": "defi",
     "subcategory": "dex"
   },
