@@ -26,11 +26,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     if (method === 'pm_getPaymasterStubData') {
-      // @ts-expect-error verified functional by @keshavSinghal
+      // @ts-expect-error verified to be functional by @keshavSinghal
       const result = await paymasterClient.getPaymasterStubData({ userOperation: userOp });
       return res.json({ result });
     } else if (method === 'pm_getPaymasterData') {
-      // @ts-expect-error verified functional by @keshavSinghal
+      // @ts-expect-error verified to be functional by @keshavSinghal
       const result = await paymasterClient.getPaymasterData({ userOperation: userOp });
       return res.json({ result });
     }
