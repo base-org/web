@@ -94,7 +94,7 @@ Obtain a rpc url from the [Node product] and store the url as an environment var
 
 ![cdp-node](../../assets/images/verify-with-basescan-api/cdp-node-full.png)
 
-Then store it as a environment variable in your terminal:
+Then store it as an environment variable in your terminal:
 
 ```bash
 export BASE_RPC_URL="your_base_rpc_url"
