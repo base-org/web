@@ -1,5 +1,13 @@
 [
   {
+    "name": "VeenoX",
+    "description": "VeenoX: First Hybrid Perp DEX, seamlessly connecting Real-World Assets with crypto trading through an interactive GameFi experience. Master trading across multiple markets in our innovative Trading Academy.",
+    "url": "https://veenox.xyz",
+    "imageUrl": "/images/partners/veenox.png",
+    "category": "defi",
+    "subcategory": "dex"
+  },
+  {
     "name": "Moxie Protocol",
     "description": "Moxie is a SocialFi protocol on the Base blockchain that allows users to create and interact with Fan Tokens.",
     "url": "https://moxie.xyz",
