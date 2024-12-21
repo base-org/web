@@ -3590,5 +3590,37 @@
     "imageUrl": "/images/partners/gbm-domains.png",
     "category": "consumer",
     "subcategory": "nft"
-  }
+  },
+  {
+    "name": "DOB Multisender",
+    "description": "Easily send tokens to multiple wallets in a single transaction on Base. Save time and gas fees with the seamless multisend feature.",
+    "url": "https://send.difi.market/",
+    "imageUrl": "/images/partners/dob-multisender.png",
+    "category": "infra",
+    "subcategory": "data"
+  },
+  {
+    "name": "DOB Volume Generator",
+    "description": "Generate trading volume for your token effortlessly on Base. Use strategic volume boosts to trend and attract new users.",
+    "url": "https://volume.difi.market/",
+    "imageUrl": "/images/partners/dob-volume-generator.png",
+    "category": "defi",
+    "subcategory": "liquidity management"
+  },
+  {
+    "name": "DOB Token",
+    "description": "The native token of the DOB ecosystem on Base, powering utilities such as the Volume Generator, Multisender, and beyond.",
+    "url": "https://difi.market/",
+    "imageUrl": "/images/partners/dob-token.png",
+    "category": "defi",
+    "subcategory": "stablecoin"
+  },
+{
+  "name": "DOB eCommerce",
+  "description": "Revolutionize online shopping by integrating crypto payments on Base. Seamless, fast, and secure for buyers and merchants.",
+  "url": "https://app.difi.market/",
+  "imageUrl": "/images/partners/dob-ecommerce.png",
+  "category": "consumer",
+  "subcategory": "real world"
+}
 ]
