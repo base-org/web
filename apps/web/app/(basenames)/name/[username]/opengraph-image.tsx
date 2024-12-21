@@ -71,7 +71,7 @@ export default async function OpenGraphImage(props: ImageRouteProps) {
   const chain = getChainForBasename(username as Basename);
   let imageSource = domainName + profilePicture.src;
 
-  // NOTE: Do we want to fail if the name doesn't exists?
+  // NOTE: Do we want to fail if the name doesn't exist?
   try {
     const client = getBasenamePublicClient(chain.id);
     const avatar = await client.getEnsText({
