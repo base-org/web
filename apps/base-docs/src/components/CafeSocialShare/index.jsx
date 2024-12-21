@@ -25,7 +25,7 @@ export function CafeSocialShare({ name }) {
         </Button>
       </a>
       <a
-        href={`https://twitter.com/intent/tweet?text=${shareText}`}
+        href={`https://x.com/intent/tweet?text=${shareText}`}
         className={styles.socialShareLink}
         target="_blank"
         rel="noreferrer"
