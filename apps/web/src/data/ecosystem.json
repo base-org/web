@@ -48,6 +48,14 @@
     "subcategory": "centralized exchange"
   },
   {
+    "name": "Anzen",
+    "url": "https://anzen.finance",
+    "description": "Anzen is the creator of USDz, a stablecoin backed by a diversified RWA portfolio, allowing holders to mitigate volatility and earn rewards through all market cycles",
+    "category": "defi",
+    "subcategory": "stablecoin",
+    "imageUrl": "/images/partners/anzen.png"
+  },
+  {
     "name": "Connext",
     "description": "Connext is an intent-based modular interoperability protocol for securely passing funds and data between chains with the best possible speed, pricing, and security.",
     "url": "https://bridge.connext.network/",
