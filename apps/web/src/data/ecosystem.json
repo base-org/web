@@ -2228,10 +2228,9 @@
     "name": "Onmeta",
     "url": "https://onmeta.in",
     "description": "Onmeta specializes in offering seamless On & Off-ramp solutions for the Indian 🇮🇳 and Philippine 🇵🇭 markets. Our platform integrates a wide range of local payment methods, including UPI, GCash, PayMaya, GrabPay, and more, addressing the needs of regions with limited card penetration. We are committed to making crypto accessible and easy to use for everyone, ensuring secure and efficient transactions.",
-    "tags": [
-      "onramp"
-    ],
-    "imageUrl": "/images/partners/onmeta.webp"
+    "category": "onramp",
+    "subcategory": "fiat on-ramp",
+    "imageUrl": "/images/partners/onmeta.png"
   },
   {
     "name": "Onramp Money",
