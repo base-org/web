@@ -73,7 +73,7 @@ export default async function handler(request: NextRequest) {
     logger.error('Error fetching basename Avatar:', error);
   }
 
-  // Using Satori for a SVG response
+  // Using Satori for an SVG response
   const svg = await satori(
     <div
       style={{

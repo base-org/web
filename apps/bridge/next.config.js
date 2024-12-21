@@ -36,7 +36,7 @@ const baseConfig = {
   // Enable strict mode in development
   reactStrictMode: !isProdEnv,
 
-  // Minifiy for production builds
+  // Minify for production builds
   swcMinify: true,
 };
 
