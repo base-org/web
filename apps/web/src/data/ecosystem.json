@@ -3590,5 +3590,13 @@
     "imageUrl": "/images/partners/gbm-domains.png",
     "category": "consumer",
     "subcategory": "nft"
-  }
+  },
+ {
+    "name": "dHEDGE",
+    "tags": ["defi"],
+    "description": "dHEDGE is architecture for creating tokenized vaults enabling tokens that perform any strategy",
+    "url": "https://dhedge.org/",
+    "imageUrl": "/images/partners/toros_logo.base.eco.png"
+  } 
 ]
+
