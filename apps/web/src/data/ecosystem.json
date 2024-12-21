@@ -3590,5 +3590,13 @@
     "imageUrl": "/images/partners/gbm-domains.png",
     "category": "consumer",
     "subcategory": "nft"
+  },
+  {
+    "name": "“Lombard”",
+    "description": "Lombard bridges Bitcoin to DeFi with LBTC, a 1:1 BTC-backed, yield-bearing token. LBTC enables BTC holders to earn Babylon yields, trade, borrow, lend, and yield farm across chains",
+    "url": "https://www.lombard.finance/app/stake",
+    "imageUrl": "/images/partners/lombard.png",
+    "category": "defi",
+    "subcategory": "stablecoin"
   }
 ]
