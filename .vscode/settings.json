@@ -1,7 +1,7 @@
 {
   // Prettier
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true, // use ⌘-K S to format without saving
+  "editor.formatOnSave": true, // use ⌘-K S (or Ctrl-K S) to format without saving
 
   // Disable built-in formatters
   "html.format.enable": false,
