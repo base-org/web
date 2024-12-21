@@ -153,7 +153,7 @@ Check out the following links to get started with Pyth.
 - [Pyth Price Feed API Reference](https://api-reference.pyth.network/price-feeds/evm/getPrice)
 - [Pyth Examples](https://github.com/pyth-network/pyth-examples)
 - [Website](https://pyth.network/)
-- [Twitter](https://x.com/PythNetwork)
+- [X](https://x.com/PythNetwork)
 
 ---
 
