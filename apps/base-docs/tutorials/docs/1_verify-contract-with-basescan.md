@@ -71,7 +71,7 @@ You should have a folder structure similar to this:
 └── test
 ```
 
-The `src` folder will contain a `Counter.sol` file which will serve as the country you want to deploy.
+The `src` folder will contain a `Counter.sol` file which will serve as the contract you want to deploy.
 
 :::note You will need ETH on Base to deploy
 You (the deployer wallet) will need some ETH in order to broadcast the transaction to the Base network. Fortunately, transactions are usually < 1 cent on Base mainnet.
@@ -94,7 +94,7 @@ Obtain a rpc url from the [Node product] and store the url as an environment var
 
 ![cdp-node](../../assets/images/verify-with-basescan-api/cdp-node-full.png)
 
-Then store it as a environment variable in your terminal:
+Then store it as an environment variable in your terminal:
 
 ```bash
 export BASE_RPC_URL="your_base_rpc_url"

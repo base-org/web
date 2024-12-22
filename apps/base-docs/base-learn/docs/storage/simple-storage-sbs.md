@@ -4,7 +4,7 @@ description: Learn how to Store data on the blockchain.
 hide_table_of_contents: false
 ---
 
-Ultimately, the power of the blockchain is that anyone can store their data on it via the `storage` in a smart contract. In this step by step guide, you'll learn how to access and use the `storage` data location.
+Ultimately, the power of the blockchain is that anyone can store their data on it via the `storage` in a smart contract. In this step-by-step guide, you'll learn how to access and use the `storage` data location.
 
 ---
 
