@@ -56,7 +56,7 @@ export default async function GET(request: Request) {
     logger.error('Error getting token metadata', error);
   }
 
-  // Premints are hardcoded, the list will reduce when/if they get claimed
+  // Premints are hardcoded; the list will reduce when/if they are claimed
   if (!basenameFormatted && premintMapping[tokenId]) {
     basenameFormatted = formatBaseEthDomain(premintMapping[tokenId], chainId);
   }
