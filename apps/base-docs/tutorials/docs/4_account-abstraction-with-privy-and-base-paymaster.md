@@ -73,7 +73,7 @@ Account Abstraction has the potential to be a massive game-changer for onchain u
 
 ### The Problem Account Abstraction Solves
 
-Onchain applications are difficult to use for many people, as they require a lengthy onboarding process for the average internet user who already onchain.
+Onchain applications are difficult to use for many people, as they require a lengthy onboarding process for the average internet user who are already on-chain.
 
 For example,the preliminary steps a user needs to go through before they can use an onchain app are:
 
