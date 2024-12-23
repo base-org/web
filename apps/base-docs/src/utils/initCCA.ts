@@ -43,7 +43,7 @@ const initCCA = () => {
   }
 };
 
-export default initCCA();
+export default initCCA;
 
 // Track Pageviews
 export function onRouteDidUpdate({ location, previousLocation }) {
