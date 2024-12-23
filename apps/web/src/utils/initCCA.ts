@@ -2,50 +2,68 @@
 // They recommended disabling linting and type-checking for now, since this version is not typed.
 /* eslint-disable */
 // @ts-nocheck
-import { NextRouter } from 'next/router';
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import { setCookie, getCookie, deserializeCookie } from './cookieManagement';
 import { TrackingPreference } from '@coinbase/cookie-manager';
-import { isDevelopment } from 'apps/web/src/constants';
-import { NextJSRouter } from 'apps/web/src/components/ClientAnalyticsScript/ClientAnalyticsScript';
-import { v4 } from 'uuid';
+import { isDevelopment, amplitudeApiKey } from '../constants';
 
-// CCA library loads in ClientAnalyticsScript component
-const initCCA = (
-  router: NextJSRouter,
-  trackingPreference: TrackingPreference | undefined,
-  deviceIdCookie: string | undefined,
-  setDeviceIdCookie,
-) => {
-  let deviceId: string | undefined = deviceIdCookie;
-  const trackingAllowed: boolean = trackingPreference?.consent.includes('performance');
-  const amplitudeApiKey: string = isDevelopment
-    ? 'ca92bbcb548f7ec4b8ebe9194b8eda81'
-    : '2b38c7ac93c0dccc83ebf9acc5107413';
 
-  if (!trackingAllowed) {
-    deviceId = 'base_web_device_id';
-  } else if (!deviceId) {
-    deviceId = v4();
-    setDeviceIdCookie(deviceId);
-  }
+// Initialize Client Analytics
+const initCCA = () => {
+  if (ExecutionEnvironment.canUseDOM) {
+    let deviceId: string | undefined = deserializeCookie(getCookie('base_device_id'));
 
-  if (window.ClientAnalytics) {
-    const { init, identify, PlatformName, initNextJsTrackPageview } = window.ClientAnalytics;
+    const trackingPreference: TrackingPreference | undefined = deserializeCookie(
+      getCookie('cm_default_preferences'),
+    );
+    const trackingAllowed = trackingPreference?.consent.includes('performance');
 
-    init({
-      isProd: !isDevelopment,
-      amplitudeApiKey,
-      platform: PlatformName.web,
-      projectName: 'base_web',
-      showDebugLogging: isDevelopment,
-      version: '1.0.0',
-      apiEndpoint: 'https://cca-lite.coinbase.com',
-    });
+    if (!trackingAllowed) {
+      deviceId = 'base_docs_device_id';
+    } else if (!deviceId) {
+      deviceId = crypto?.randomUUID();
+      setCookie('base_device_id', deviceId, 365);
+    }
 
-    identify({ deviceId: deviceId });
-    initNextJsTrackPageview({
-      nextJsRouter: router,
-    });
+    if (window.ClientAnalytics) {
+      const { init, identify, PlatformName } = window.ClientAnalytics;
+
+      init({
+        isProd: !isDevelopment,
+        amplitudeApiKey: amplitudeApiKey,
+        platform: PlatformName.web,
+        projectName: 'base_docs',
+        showDebugLogging: isDevelopment,
+        version: '1.0.0',
+        apiEndpoint: 'https://cca-lite.coinbase.com',
+      });
+
+      identify({ deviceId: deviceId });
+    }
   }
 };
 
 export default initCCA;
+
+// Track Pageviews
+export function onRouteDidUpdate({ location, previousLocation }) {
+  if (location.pathname !== previousLocation?.pathname && window.ClientAnalytics) {
+    const { logEvent } = window.ClientAnalytics;
+
+    let path: string = location.pathname;
+    let prevPath: string = previousLocation?.pathname;
+
+    // Remove trailing slashes
+    if (path !== '/' && path.endsWith('/')) {
+      path = path.slice(0, -1);
+    }
+    if (prevPath && prevPath !== '/' && prevPath.endsWith('/')) {
+      prevPath = prevPath.slice(0, -1);
+    }
+
+    logEvent('pageview', {
+      page_path: path,
+      prev_page_path: prevPath,
+    });
+  }
+}
