@@ -19,7 +19,10 @@
   },
   {
     "name": "Layerswap",
-    "tags": [
+    "category": [
+      "infra"
+    ],
+    "subcategory": [
       "bridge"
     ],
     "description": "Layerswap is a fast, reliable and cost-efficient solution for bridging crypto assets across 55+ EVM and non-EVM networks.",
