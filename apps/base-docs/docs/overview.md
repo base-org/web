@@ -1,14 +1,14 @@
 ---
 title: About Base
 slug: /
-description: An overview of Base, an Ethereum L2 platform incubated by Coinbase, focusing on its secure, low-cost, and builder-friendly features, along with its commitment to decentralization and accessibility for the global cryptoeconomy.
+description: An overview of Base, an Ethereum L2 platform incubated by Coinbase, focusing on its secure, low-cost, and builder-friendly features, along with its commitment to decentralization and accessibility for the global crypto economy.
 keywords:
   [
     Base,
     Ethereum L2,
     Coinbase,
     decentralization,
-    cryptoeconomy,
+    crypto economy,
     EVM,
     blockchain,
     OP Stack,
@@ -22,7 +22,7 @@ hide_table_of_contents: true
 
 Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain.
 
-Base is incubated within Coinbase and plans to progressively decentralize in the years ahead. We believe that decentralization is critical to creating an open, global cryptoeconomy that is accessible to everyone.
+Base is incubated within Coinbase and plans to progressively decentralize in the years ahead. We believe that decentralization is critical to creating an open, global crypto economy that is accessible to everyone.
 
 ---
 
