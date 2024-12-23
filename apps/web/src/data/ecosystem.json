@@ -3590,5 +3590,13 @@
     "imageUrl": "/images/partners/gbm-domains.png",
     "category": "consumer",
     "subcategory": "nft"
-  }
+  },
+ {
+  "name": "OpenOcean",
+  "description": "OpenOcean is a leading DEX aggregator on Base, offering the best rates with support for limit orders, DCA, and cross-chain tools to optimize DeFi trading.",
+  "url": "https://app.openocean.finance/swap/base",
+  "imageUrl": "/images/partners/openocean.png",
+  "category": "defi",
+  "subcategory": "dex aggregator"
+}
 ]
