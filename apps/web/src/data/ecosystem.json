@@ -17,7 +17,7 @@
   },
   {
     "name": "DIMO",
-    "description": "DIMO is connected car platform for developers, enabling user-authorized access to vehicle data to create new types of games, social apps, leaderboards, dashboards, and more. For vehicle owners, the DIMO Mobile app unlocks your car’s data providing valuable vehicle health insights, personalized service offers ,and weekly rewards. DIMO Mobile is your all-in-one app for maximizing your car’s potential and helping you drive smarter.",
+    "description": "DIMO is connected car platform for developers, enabling user-authorized access to vehicle data to create new types of games, social apps, leaderboards, dashboards, and more. For vehicle owners, the DIMO Mobile app unlocks your car’s data providing valuable vehicle health insights, personalized service offers, and weekly rewards. DIMO Mobile is your all-in-one app for maximizing your car’s potential and helping you drive smarter.",
     "url": "https://dimo.co",
     "imageUrl": "/images/partners/dimo.png",
     "category": "infra",
@@ -97,7 +97,7 @@
   },
   {
     "name": "Vrbs DAO",
-    "description": "Vrbs is a global, community-run organization that uses money raised by the community to fund open-source technology, art and public-works projects. ",
+    "description": "Vrbs is a global, community-run organization that uses money raised by the community to fund open-source technology, art and public-works projects.",
     "url": "https://vrbs.build",
     "imageUrl": "/images/partners/vrbsdao.png",
     "category": "consumer",
@@ -329,7 +329,7 @@
   },
   {
     "name": "OmniKingdoms",
-    "description": "OmniKingdoms is an on-chain MMORPG that focuses on state transitions. Players can join the community and earn rewards for questing, battling, crafting and much more. We aim to integrate the newest gaming mechanics and other projects.",
+    "description": "OmniKingdoms is an on-chain MMORPG that focuses on state transactions. Players can join the community and earn rewards for questing, battling, crafting and much more. We aim to integrate the newest gaming mechanics and other projects.",
     "url": "https://www.omnikingdoms.io/",
     "imageUrl": "/images/partners/omnikingdom.webp",
     "category": "consumer",
@@ -520,7 +520,7 @@
     "subcategory": "identity"
   },
   {
-    "name": "OpenFrind",
+    "name": "OpenFriend",
     "url": "https://openfriend.tech/",
     "description": "OpenFriend.Tech is an auxiliary tool providing multi-dimensional data analytics for Friend.Tech users, allowing every user to build their own on-chain reputation based on Friend.Tech.",
     "imageUrl": "/images/partners/openfriend.webp",
@@ -1058,7 +1058,7 @@
   {
     "name": "Transit Swap",
     "url": "https://swap.transit.finance/",
-    "description": "The brand new way to experience decentralized exchanges, better liquitidy and better returns, all chains in one single Transit Swap.",
+    "description": "The brand new way to experience decentralized exchanges, better liquidity and better returns, all chains in one single Transit Swap.",
     "imageUrl": "/images/partners/transitswap.webp",
     "category": "infra",
     "subcategory": "bridge"
@@ -1106,7 +1106,7 @@
   {
     "name": "Element Market",
     "url": "https://element.market",
-    "description": "Element Market, the first community-driven aggregated marketplace, provides users with high liquidity, lowest transition fee, powerful trading utilities, and intelligent & instant data services.",
+    "description": "Element Market, the first community-driven aggregated marketplace, provides users with high liquidity, lowest transaction fee, powerful trading utilities, and intelligent & instant data services.",
     "imageUrl": "/images/partners/elementmarket.webp",
     "category": "consumer",
     "subcategory": "nft"
@@ -1346,7 +1346,7 @@
   {
     "name": "Dackieswap",
     "url": "https://www.dackieswap.xyz",
-    "description": "DackieSwap is the native and community-owned DEX/Launchpad on Base. It offers great liquidity, simple features, friendly interface and unlimited benefits.",
+    "description": "The Premier Multichain DEX with AI Agent Technology.",
     "category": "defi",
     "subcategory": "dex",
     "imageUrl": "/images/partners/dackie.webp"
@@ -1978,7 +1978,7 @@
   {
     "name": "Transak",
     "url": "https://transak.com/",
-    "description": "Transak is a global web3 payment and onboarding infrastructure provider, facilitating seamless transitions between traditional finance and crypto assets.\n\nWeb3 platforms using Transak can embed the best way to onboard users by enabling them to buy or sell crypto assets from 150+ countries, as Transak abstracts away the complexity of user KYC, risk monitoring, compliance, payment methods and customer support.\n\nTransak’s product suite includes robust fiat-to-crypto services (On/Off-Ramps), a fiat-to-smart-contract solution (Transak One), and a fiat-to-NFT checkout solution.\n\nAs a regulated, non-custodial payments layer, Transak supports onboarding to 160+ crypto assets across 75+ blockchains. Trusted by over 350+ applications, including MetaMask and Coinbase Wallet, Transak is making web3 applications more accessible.\n\nFor more information, visit transak.com or follow us on twitter.com/transak",
+    "description": "Transak is a global web3 payment and onboarding infrastructure provider, facilitating seamless transactions between traditional finance and crypto assets.\n\nWeb3 platforms using Transak can embed the best way to onboard users by enabling them to buy or sell crypto assets from 150+ countries, as Transak abstracts away the complexity of user KYC, risk monitoring, compliance, payment methods and customer support.\n\nTransak’s product suite includes robust fiat-to-crypto services (On/Off-Ramps), a fiat-to-smart-contract solution (Transak One), and a fiat-to-NFT checkout solution.\n\nAs a regulated, non-custodial payments layer, Transak supports onboarding to 160+ crypto assets across 75+ blockchains. Trusted by over 350+ applications, including MetaMask and Coinbase Wallet, Transak is making web3 applications more accessible.\n\nFor more information, visit transak.com or follow us on twitter.com/transak",
     "imageUrl": "/images/partners/transak.webp",
     "category": "onramp",
     "subcategory": "fiat on-ramp"
