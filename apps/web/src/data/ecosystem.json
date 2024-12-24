@@ -3601,8 +3601,8 @@
   },
   {
     "name": "Token Generator",
-    "description": "Token Generator is the pioneering no-code tool that revolutionized the way of creating ERC20 tokens. Since 2018, Token Generator has been the go-to platform for thousands of projects and companies that have entered Web3. Try creating a token in less than a minute with the most trusted Smart Contract Generator for ERC20 tokens.",
-    "url": "https://www.smartcontracts.tools/token-generator/base/",
+    "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
+    "url": "https://www.smartcontracts.tools/token-generator/",
     "imageUrl": "/images/partners/tokengenerator.png",
     "category": "infra",
     "subcategory": "developer tool"
