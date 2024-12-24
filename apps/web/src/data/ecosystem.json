@@ -3590,5 +3590,13 @@
     "imageUrl": "/images/partners/gbm-domains.png",
     "category": "consumer",
     "subcategory": "nft"
-  }
+  }, 
+   {
+    "name": "eOracle",
+    "url": "https://eoracle.io/",
+    "description": "eOracle .",
+    "imageUrl": "/images/partners/eoracle.png",
+    "category": "infra",
+    "subcategory": "data"
+  },
 ]
