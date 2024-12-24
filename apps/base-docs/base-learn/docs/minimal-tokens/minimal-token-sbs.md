@@ -165,7 +165,7 @@ transact to MinimalToken.transfer errored: Error encoding arguments: Error: bad 
 
 A more guaranteed way to destroy, or _burn_ a token, is to transfer it to the default address `0x0000000000000000000000000000000000000000`. This address is unowned and unownable, making it mathematically impossible to retrieve any tokens that are sent to it. Redeploy and try it out by sending 1000 tokens to the zero address.
 
-The `totalSupply` remains unchanged, and the balance of the zero address are visible, but those tokens are stuck there forever.
+The `totalSupply` remains unchanged, and the balance of the zero address is visible, but those tokens are stuck there forever.
 
 :::info
 
