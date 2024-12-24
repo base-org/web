@@ -3595,7 +3595,7 @@
     "name": "eOracle",
     "url": "https://eoracle.io/",
     "description": "eOracle is the based data layer, connecting web2 and web3 with the trust and security of layer 1 | Backed by $13B staked ETH",
-    "imageUrl": "/images/partners/eoracle.png",
+    "imageUrl": "/images/partners/eOracle.png",
     "category": "infra",
     "subcategory": "data"
   },
