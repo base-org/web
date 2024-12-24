@@ -1,9 +1,9 @@
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
-import { NeynarFrame } from 'apps/web/src/utils/frames';
+import { NeymarFrame } from 'apps/web/src/utils/frames';
 
 // Frame displayed from Neymar API data
 // No buttons or interactions for now, just a link to the frame source
-export default function NeymarFrame({ frame }: { hash: string; frame: NeynarFrame }) {
+export default function NeymarFrame({ frame }: { hash: string; frame: NeymarFrame }) {
   return (
     <div className="overflow-hidden rounded-3xl border border-gray-40/20">
       {frame.frames_url && (
