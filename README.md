@@ -2,7 +2,7 @@
 
 # Base Web
 
-Base is a secure, low-cost, developer-friendly Ethereum L2 built to bring the next billion users onchain. It's built on Optimism’s open-source [OP Stack](https://stack.optimism.io/).
+Base is a secure, low-cost, developer-friendly Ethereum L2 built to bring the next billion users on-chain. It's built on Optimism’s open-source [OP Stack](https://stack.optimism.io/).
 
 <!-- Badge row 1 - status -->
 
@@ -32,16 +32,16 @@ Base is a secure, low-cost, developer-friendly Ethereum L2 built to bring the ne
 3. If `nvm` doesn't auto-load the Node.js environment when changing to the repo directory, run `nvm use`.
 4. Enable Yarn by running `corepack enable`.
 
-## Getting started
+## Getting Started
 
-After cloning the repository begin by installing dependencies at the root.
+After cloning the repository, begin by installing dependencies at the root.
 
 ```shell
 yarn
 yarn build
 ```
 
-## Local development
+## Local Development
 
 To start a development server on localhost, run `yarn workspace @app/<project> dev`.
 
@@ -114,7 +114,7 @@ By opening a PR to add your project, you authorize and license Coinbase on a non
 
 **Note:** Submissions do not guarantee inclusion and all submissions are subject to review. Your project must be live on Base to potentially be included. Ensure all information is accurate and up-to-date.
 
-#### Tips for a successful submission
+#### Tips for a Successful Submission
 
 - App has been live on Base for at least 30 days
 - App has a Terms of Service and Privacy Policy
