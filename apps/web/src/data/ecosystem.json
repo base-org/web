@@ -56,6 +56,14 @@
     "subcategory": "centralized exchange"
   },
   {
+    "name": "Anzen",
+    "url": "https://anzen.finance",
+    "description": "Anzen is the creator of USDz, a stablecoin backed by a diversified RWA portfolio, allowing holders to mitigate volatility and earn rewards through all market cycles",
+    "category": "defi",
+    "subcategory": "stablecoin",
+    "imageUrl": "/images/partners/anzen.png"
+  },
+  {
     "name": "Connext",
     "description": "Connext is an intent-based modular interoperability protocol for securely passing funds and data between chains with the best possible speed, pricing, and security.",
     "url": "https://bridge.connext.network/",
@@ -1266,7 +1274,7 @@
   {
     "name": "Openfort",
     "url": "https://www.openfort.xyz",
-    "description": "Openfort is a headless wallet service for developers that want to offer a seemless experience to their players. It allows you to create and manage smart wallets powered by account abstraction.",
+    "description": "Openfort is a headless wallet service for developers that want to offer a seamless experience to their players. It allows you to create and manage smart wallets powered by account abstraction.",
     "category": "wallet",
     "subcategory": "account abstraction",
     "imageUrl": "/images/partners/openfort.webp"
@@ -2082,7 +2090,7 @@
   {
     "name": "Manifold",
     "url": "https://studio.manifold.xyz/",
-    "description": "Manifold Studio allows you to build your own personalized web3 creative platform and sell digital goods(NFTs). The tools allow for the highest level of provenance and complete control of your work.",
+    "description": "Manifold Studio allows you to build your own personalized web3 creative platform and sell digital goods (NFTs). The tools allow for the highest level of provenance and complete control of your work.",
     "imageUrl": "/images/partners/manifold.webp",
     "category": "consumer",
     "subcategory": "creator"
@@ -2576,7 +2584,7 @@
     "subcategory": "security"
   },
   {
-    "name": "Everyworld ",
+    "name": "Everyworld",
     "description": "Everyworld is a rewarded ads protocol that rewards people for consuming and engaging with promoted content. ",
     "url": "https://www.everyworld.com/",
     "imageUrl": "/images/partners/everyworld.png",
