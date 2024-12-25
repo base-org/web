@@ -1,5 +1,13 @@
 [
   {
+    "name": "XStar",
+    "description": "XStar's Adaptive Humanity Scoring system integrates biometric verification, social network analysis, and an on-chain naming service to create unique digital identities. This comprehensive solution enhances security, trust, and identity management in the AI-driven era.",
+    "url": "https://xstar.id",
+    "imageUrl": "/images/partners/xstar.png",
+    "category": "infra",
+    "subcategory": "identity"
+  },
+  {
     "name": "Moxie Protocol",
     "description": "Moxie is a SocialFi protocol on the Base blockchain that allows users to create and interact with Fan Tokens.",
     "url": "https://moxie.xyz",
