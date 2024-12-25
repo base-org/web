@@ -6,11 +6,11 @@ keywords:
 hide_table_of_contents: false
 ---
 
-As the popularity and possibilities of building onchain have increased, so has the number, quality, and ease of setup for a variety of smart contract development environments. Most of the smart contract development content in Base Learn is done in [Remix], an online IDE that allows you to dive right into learning without worrying about setup.
+As the popularity and possibilities of building on-chain have increased, so has the number, quality, and ease of setup for a variety of smart contract development environments. Most of the smart contract development content in Base Learn is created using [Remix], an online IDE that allows you to dive right into learning without worrying about setup.
 
 However, the setup of professional tools for local development is far less burdensome than it used to be. [Foundry] and [Hardhat] are two popular choices, both with excellent communities.
 
-You may wish to select and install one of these now, but feel free to skip those sections and go to right [Smart Contract Development] if you're happy learning with an online editor!
+You may wish to select and install one of these now, but feel free to skip those sections and go to the [Smart Contract Development] section if you're happy learning with an online editor!
 
 [Remix]: https://remix.ethereum.org/
 [Foundry]: https://book.getfoundry.sh/
