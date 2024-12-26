@@ -89,10 +89,9 @@ export function FramesProvider({ children }: FramesProviderProps) {
   const { logEventWithContext } = useAnalytics();
   const { address } = useAccount();
   const { logError } = useErrors();
-  const { profileUsername, profileAddress, currentWalletIsProfileOwner } = useUsernameProfile();
+  const { profileUsername, currentWalletIsProfileOwner } = useUsernameProfile();
   const { existingTextRecords, existingTextRecordsIsLoading, refetchExistingTextRecords } =
     useReadBaseEnsTextRecords({
-      address: profileAddress,
       username: profileUsername,
       refetchInterval: currentWalletIsProfileOwner ? 1000 * 5 : Infinity,
     });
