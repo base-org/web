@@ -3598,5 +3598,13 @@
     "imageUrl": "/images/partners/gbm-domains.png",
     "category": "consumer",
     "subcategory": "nft"
+  },
+  {
+    "name": "Xocolatl Finance",
+    "description": "Xocolatl Finance is a decentralized stablecoin protocol that allows users to mint $XOC, a stablecoin pegged to the MXN peso. This erc-20 token is the foundation for a new Mexican financial ecosystem.",
+    "url": "https://xocolatl.finance/",
+    "imageUrl": "/images/partners/xoc-logo.png",
+    "category": "defi",
+    "subcategory": "stablecoin"
   }
 ]
