@@ -52,7 +52,7 @@ const { Web3 } = require('web3');
 
 ## Connecting to Base
 
-You can connect to Base by instantiating a new web3.js `Web3` object with a RPC URL of the Base network:
+You can connect to Base by instantiating a new web3.js `Web3` object with an RPC URL of the Base network:
 
 ```javascript
 const { Web3 } = require('web3');
