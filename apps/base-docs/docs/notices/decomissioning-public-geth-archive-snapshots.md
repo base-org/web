@@ -28,4 +28,4 @@ We recommend switching to Reth going forward. We will continue to maintain the R
 
 If you need continued Geth support, we would advise that you maintain your own snapshot that is specific to your infrastructure e.g. EBS on AWS.
 
-If you have any questions or would like assistance, please reach out to us on [Discord](https://base.org/discord) or [GitHub](https://github.com/base-org/base-node).
+If you have any questions or would like assistance, please reach out to us on [Discord](https://base.org/discord) or [GitHub](https://github.com/base-org/node).
