@@ -50,7 +50,7 @@ export default func;
 
 4. Modify the `tsconfig.json` file to look like:
 
-```json
+```JSON
 {
   "compilerOptions": {
     "target": "es2020",
