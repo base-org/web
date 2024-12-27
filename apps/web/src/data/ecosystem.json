@@ -1378,7 +1378,7 @@
   {
     "name": "Obvious",
     "url": "https://www.obvious.technology",
-    "description": "Obvious is a ERC-4337 compatible smart contract wallet focussed on simplifying transaction experience.",
+    "description": "Obvious is a ERC-4337 compatible smart contract wallet focused on simplifying transaction experience.",
     "category": "wallet",
     "subcategory": "account abstraction",
     "imageUrl": "/images/partners/obvious.webp"
@@ -3154,7 +3154,7 @@
   {
     "name": "Franklin Payroll",
     "description": "All-in-one onchain financial operations suite. Pay US W2 employees, vendors, global contractors, and invoice customers. Franklin supports USD and crypto payouts plus stablecoin to USD off-ramping.",
-    "url": "www.hellofranklin.co",
+    "url": "https://www.hellofranklin.co",
     "imageUrl": "/images/partners/franklin.png",
     "category": "consumer",
     "subcategory": "payments"
@@ -3426,7 +3426,7 @@
   {
     "name": "AuditOne & Insura",
     "description": "AuditOne is an all-in-one audit platform, that offers security services, tools & risk coverage to ensure the safety and reliability of smart contracts and AI-systems. We redefine blockchain auditing by perfectly balancing quality, speed, affordability, and reliability.\nOur unique approach is tailored to the dynamic nature of the blockchain industry, ensuring we deliver excellence without compromise.\n",
-    "url": "https://www.auditone.io/, \n\n\n",
+    "url": "https://www.auditone.io",
     "imageUrl": "/images/partners/audit.png",
     "category": "infra",
     "subcategory": "security"
@@ -3434,7 +3434,7 @@
   {
     "name": "Stack",
     "description": "Stack offers scalable infrastructure for loyalty and rewards programs. Our mission is to revolutionizing loyalty by reducing time spent away from core business.",
-    "url": "stack.so",
+    "url": "https://stack.so",
     "imageUrl": "/images/partners/stack.png",
     "category": "consumer",
     "subcategory": "social"
@@ -3514,7 +3514,7 @@
   {
     "name": "Hypersub",
     "description": "Discover creators. Subscribe for access, perks and benefits. Earn rewards.",
-    "url": "hypersub.xyz",
+    "url": "https://hypersub.xyz",
     "imageUrl": "/images/partners/hypersub.png",
     "category": "consumer",
     "subcategory": "creator"
