@@ -3606,5 +3606,21 @@
     "imageUrl": "/images/partners/tribally.png",
     "category": "consumer",
     "subcategory": "gaming"
+  },
+  {
+    "name": "BASEDART",
+    "description": "A social art marketplace and hub for creators and collectors, we create 1 of 1 virtual twins of physical artworks and put them onchain forever!",
+    "url": "https://BASEDART.io",
+    "imageUrl": "/images/partners/BASEDART.png",
+    "category": "consumer",
+    "subcategory": "nft"
+  },
+  {
+    "name": "BASEDSELFIES",
+    "description": "a fun way to create selfie NFTs for use on BASEDART and other BASED applications in the future.",
+    "url": "https://BASEDSELFIES.xyz",
+    "imageUrl": "/images/partners/BASEDSELFIES.png",
+    "category": "consumer",
+    "subcategory": "nft"
   }
 ]
