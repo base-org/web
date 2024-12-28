@@ -37,7 +37,7 @@ struct Favorites {
 After consulting with the designers, we need to store the following for each address's favorites:
 
 - Favorite number
-- Birth Day of Month
+- Birthday of Month
 - Favorite color
 - Lucky Lottery numbers
 
