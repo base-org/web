@@ -45,7 +45,7 @@ This tutorial uses Coinbase's OnchainKit. Familiarity with its basic concepts wi
 
 ### Access to the Coinbase Developer Platform
 
-You'll need to set up an account on with [Coinbase Developer Platform (CDP) Account](https://www.coinbase.com/cloud). The CDP provides various tools and services for blockchain development, including access to API endpoints and other resources that will be instrumental in your project. Once you've created your account, you'll be ready to move forward with integrating these services into your application.
+You'll need to set up an account with [Coinbase Developer Platform (CDP) Account](https://www.coinbase.com/cloud). The CDP provides various tools and services for blockchain development, including access to API endpoints and other resources that will be instrumental in your project. Once you've created your account, you'll be ready to move forward with integrating these services into your application.
 
 :::tip CDP Configurations
 
