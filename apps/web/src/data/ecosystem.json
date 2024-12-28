@@ -618,7 +618,7 @@
   {
     "name": "Equalizer",
     "url": "https://base.equalizer.exchange",
-    "description": "Equalizer provides a liquidity hub for Base chain through it's capital efficient system.",
+    "description": "Equalizer provides a liquidity hub for Base chain through its capital efficient system.",
     "category": "defi",
     "subcategory": "dex",
     "imageUrl": "/images/partners/equalizer.webp"
@@ -978,7 +978,7 @@
   {
     "name": "Orbiter Finance",
     "url": "https://www.orbiter.finance/",
-    "description": "Orbiter Finance is an ultimate solution that optimises the performance of Ethereum by supporting cross-rollup transactions and synchronising mainnet-rollups interoperabilities.",
+    "description": "Orbiter Finance is an ultimate solution that optimizes the performance of Ethereum by supporting cross-rollup transactions and synchronising mainnet-rollups interoperabilities.",
     "imageUrl": "/images/partners/orbiterfinance.webp",
     "category": "infra",
     "subcategory": "bridge"
