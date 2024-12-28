@@ -80,7 +80,7 @@ If you forget to renew your Name, it will enter a grace period of 90-days, durin
 
 ### 12. What happens if a Basename is not renewed during the grace period?
 
-If a Basename is not renewed after the 90 day grace period, it will be subject to a [temporary premium](https://support.ens.domains/en/articles/7900612-temporary-premium) in the form of a Dutch auction. This premium starts at 100ETH and will decay exponentially over the course of 21 days.
+If a Basename is not renewed after the 90-day grace period, it will be subject to a [temporary premium](https://support.ens.domains/en/articles/7900612-temporary-premium) in the form of a Dutch auction. This premium starts at 100ETH and will decay exponentially over the course of 21 days.
 
 ### 13. Can I link multiple addresses to my Basename?
 
