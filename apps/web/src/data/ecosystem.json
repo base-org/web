@@ -17,7 +17,7 @@
   },
   {
     "name": "DIMO",
-    "description": "DIMO is connected car platform for developers, enabling user-authorized access to vehicle data to create new types of games, social apps, leaderboards, dashboards, and more. For vehicle owners, the DIMO Mobile app unlocks your car’s data providing valuable vehicle health insights, personalized service offers, and weekly rewards. DIMO Mobile is your all-in-one app for maximizing your car’s potential and helping you drive smarter.",
+    "description": "DIMO is a connected car platform enabling user-authorized access to vehicle data to create new types of car apps. For vehicle owners, the DIMO Mobile app unlocks your car’s data providing valuable vehicle health insights, personalized service offers, and weekly rewards.",
     "url": "https://dimo.co",
     "imageUrl": "/images/partners/dimo.png",
     "category": "infra",
@@ -2393,7 +2393,7 @@
   },
   {
     "name": "Krav Trade ",
-    "description": "At Krav, we're all about creating a robust DeFi infrasturcture where you, whether as a trader or a liquidity provider (LP), can truly thrive. If you're a trader, you'll love how you can use altcoins such as PEPE as collateral to open long or short positions on Bitcoin (BTC). And if you're an LP, you'll appreciate the steady income from transaction fees every time a trade happens.",
+    "description": "At Krav, we're all about creating a robust DeFi infrastructure where you, whether as a trader or a liquidity provider (LP), can truly thrive. If you're a trader, you'll love how you can use altcoins such as PEPE as collateral to open long or short positions on Bitcoin (BTC). And if you're an LP, you'll appreciate the steady income from transaction fees every time a trade happens.",
     "url": "https://krav.trade/",
     "imageUrl": "/images/partners/krav.png",
     "category": "defi",
@@ -3598,6 +3598,14 @@
     "imageUrl": "/images/partners/gbm-domains.png",
     "category": "consumer",
     "subcategory": "nft"
+  },
+  {
+    "name": "Tribally",
+    "description": "Tribally is a growth and activation platform for gaming, and the world’s first provider of onchain growth mechanics for offchain games. Battle against other gamers, complete quests and earn rewards!",
+    "url": "https://tribally.games",
+    "imageUrl": "/images/partners/tribally.png",
+    "category": "consumer",
+    "subcategory": "gaming"
   },
   {
     "name": "Token Generator",
