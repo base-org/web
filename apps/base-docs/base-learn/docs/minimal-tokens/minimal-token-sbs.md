@@ -13,7 +13,7 @@ At their core, tokens are very simple. The technology powering famous NFT collec
 By the end of this lesson you should be able to:
 
 - Construct a minimal token and deploy to testnet
-- Identify the properties that make a token a token
+- Identify the properties that make a token
 
 ---
 
