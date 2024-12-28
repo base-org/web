@@ -1,7 +1,7 @@
 ---
 title: Adding tokens to Coinbase Wallet
 slug: /tokens/wallet
-description: 'A simple step by step guide to ensure ERC-20 tokens show immediately on Coinbase Wallet once deployed.'
+description: 'A simple step-by-step guide to ensure ERC-20 tokens show immediately on Coinbase Wallet once deployed.'
 keywords:
   [
     'ERC-20',
