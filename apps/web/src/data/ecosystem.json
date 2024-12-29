@@ -3592,6 +3592,14 @@
     "imageUrl": "/images/partners/zarp.png"
   },
   {
+    "name": "Talentir",
+    "category": "consumer",
+    "subcategory": "creator",
+    "description": "Talentir brings YouTube channels onchain and lets creators & co-owners receive their YouTube AdSense as USDC on Base.",
+    "url": "https://talentir.com/",
+    "imageUrl": "/images/partners/talentir.png"
+  },
+  {
     "name": "GBM Domains",
     "description": "Tokenize new or existing domain names and bring them onchain to Base. Get access to rapid, low-cost domain trading featuring our unique Bid-to-Earn auction model.",
     "url": "https://gbm.domains/",
