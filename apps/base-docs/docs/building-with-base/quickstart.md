@@ -79,8 +79,8 @@ Let's set up both of these:
 2. Add the Base network RPC URL to your `.env` file
 
 ```bash
-BASE_RPC_URL=https://mainnet.base.org
-BASE_SEPOLIA_RPC_URL=https://sepolia.base.org
+BASE_RPC_URL="https://mainnet.base.org"
+BASE_SEPOLIA_RPC_URL="https://sepolia.base.org"
 ```
 
 3. Load your environment variables
