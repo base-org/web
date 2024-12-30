@@ -13,7 +13,7 @@ In this article, you'll learn about Etherscan, a blockchain explorer to inspect 
 By the end of this lesson, you should be able to:
 
 - List some of the features of Etherscan
-- Read data from the Bored Apes Yacht Club contract on Etherscan
+- Read data from the Bored Ape Yacht Club contract on Etherscan
 - Write data to a contract using Etherscan.
 
 ---

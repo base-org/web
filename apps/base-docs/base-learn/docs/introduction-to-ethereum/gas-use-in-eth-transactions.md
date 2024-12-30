@@ -119,4 +119,4 @@ Gas is a vital component of Ethereum. It's what regulates the execution of all t
 
 [Ethereum Docs]: https://ethereum.org/en/developers/docs/
 [Mastering Ethereum]: https://github.com/ethereumbook/ethereumbook
-[Ethereum demonimations]: https://www.gemini.com/en-US/cryptopedia/satoshi-value-gwei-to-ether-to-wei-converter-eth-gwei
+[Ethereum denominations]: https://www.gemini.com/en-US/cryptopedia/satoshi-value-gwei-to-ether-to-wei-converter-eth-gwei

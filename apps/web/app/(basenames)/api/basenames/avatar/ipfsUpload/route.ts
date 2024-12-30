@@ -14,7 +14,7 @@ export const MAX_IMAGE_SIZE_IN_MB = 1; // max 1mb
 
 export async function POST(request: NextRequest) {
   try {
-    // Rerrer validation
+    // Referer validation
     const requestUrl = new URL(request.url);
 
     // Username must be provided

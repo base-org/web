@@ -50,7 +50,7 @@ To get started, head over to a Basename that you own. For example:
 
 Once you're on your profile, you’ll be greeted with a new banner inviting you to pin a frame to your profile. Look for the call-to-action button and click `Try it now`.
 
-![try-now-buton](../../assets/images/basenames-tutorial/try-now.png)
+![try-now-button](../../assets/images/basenames-tutorial/try-now.png)
 
 ## Explore the Frame Selection Panels
 

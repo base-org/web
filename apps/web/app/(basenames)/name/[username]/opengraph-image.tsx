@@ -71,7 +71,7 @@ export default async function OpenGraphImage(props: ImageRouteProps) {
   const chain = getChainForBasename(username as Basename);
   let imageSource = domainName + profilePicture.src;
 
-  // NOTE: Do we want to fail if the name doesn't exists?
+  // NOTE: Do we want to fail if the name doesn't exist?
   try {
     const client = getBasenamePublicClient(chain.id);
     const avatar = await client.getEnsText({
@@ -80,20 +80,20 @@ export default async function OpenGraphImage(props: ImageRouteProps) {
       universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[chain.id],
     });
 
-    if (!avatar) return;
-
-    // IPFS Resolution
-    if (IsValidIpfsUrl(avatar)) {
-      const ipfsUrl = getIpfsGatewayUrl(avatar as IpfsUrl);
-      if (ipfsUrl) {
-        imageSource = ipfsUrl;
+    if (avatar) {
+      // IPFS Resolution
+      if (IsValidIpfsUrl(avatar)) {
+        const ipfsUrl = getIpfsGatewayUrl(avatar as IpfsUrl);
+        if (ipfsUrl) {
+          imageSource = ipfsUrl;
+        }
+      } else {
+        imageSource = avatar;
       }
-    } else {
-      imageSource = avatar;
-    }
 
-    // Cloudinary resize / fetch
-    imageSource = getCloudinaryMediaUrl({ media: imageSource, format: 'png', width: 80 });
+      // Cloudinary resize / fetch
+      imageSource = getCloudinaryMediaUrl({ media: imageSource, format: 'png', width: 80 });
+    }
   } catch (error) {
     logger.error('Error fetching basename Avatar:', error);
   }
