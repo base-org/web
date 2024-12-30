@@ -252,7 +252,7 @@ In this guide, you've learned how to use the `watch` feature of `useBlockNumber`
 [wagmi]: https://wagmi.sh/
 [`useReadContract`]: https://wagmi.sh/react/hooks/useReadContract
 [`useReadContract` hook]: ./useReadContract
-[`useBlocNumber`]: https://wagmi.sh/react/api/hooks/useBlockNumber
+[`useBlockNumber`]: https://wagmi.sh/react/api/hooks/useBlockNumber
 [removed]: https://wagmi.sh/react/guides/migrate-from-v1-to-v2#removed-watch-property
 [`useReadContracts`]: https://wagmi.sh/react/hooks/useReadContracts
 [`pollingInterval`]: https://wagmi.sh/react/api/createConfig#pollinginterval
