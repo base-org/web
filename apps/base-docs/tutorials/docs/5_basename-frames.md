@@ -64,7 +64,7 @@ You can select any frame from the available options. For this tutorial, we’ll 
 
 Click on the dropdown menu to select the "Pay Me" Frame.
 
-![frame-payme-](../../assets/images/basenames-tutorial/show-preview.png)
+![frame-payme](../../assets/images/basenames-tutorial/show-preview.png)
 
 ## Preview the Frame
 
