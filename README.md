@@ -100,11 +100,11 @@ If you're a builder who wants to add or update your project on the [Base Ecosyst
    - imageUrl: Path to your project's logo image
    - category: Your project's category, _one_ of: `consumer`, `defi`, `infra`, `onramp`, `wallet`
    - subcategory: Your project's subcategory, with the following options associated with each category
-      - `consumer`: _One_ of `creator`, `crypto taxes`, `dao`, `gaming`, `messaging`, `music`, `nft`, `payments`, `real world`, `social`
-      - `defi`: _One_ of `dex`, `dex aggregator`, `insurance`, `lending/borrowing`, `liquidity management`, `portfolio`, `stablecoin`, `yield vault`
-      - `infra`: _One_ of `ai`, `bridge`, `data`, `depin`, `developer tool`, `identity`, `node provider`, `raas`, `security`
-      - `onramp`: _One_ of `centralized exchange`, `fiat on-ramp`
-      - `wallet`: _One_ of `account abstraction`, `multisig`, `self-custody`
+     - `consumer`: _One_ of `creator`, `crypto taxes`, `dao`, `gaming`, `messaging`, `music`, `nft`, `payments`, `real world`, `social`
+     - `defi`: _One_ of `dex`, `dex aggregator`, `insurance`, `lending/borrowing`, `liquidity management`, `portfolio`, `stablecoin`, `yield vault`
+     - `infra`: _One_ of `ai`, `bridge`, `data`, `depin`, `developer tool`, `identity`, `node provider`, `raas`, `security`
+     - `onramp`: _One_ of `centralized exchange`, `fiat on-ramp`
+     - `wallet`: _One_ of `account abstraction`, `multisig`, `self-custody`
 
 4. When adding and/or updating a logo, place a 192x192 pixel PNG file in the `web/apps/web/public/images/partners/`. The file should be named appropriately (e.g., your-project-name.png). The logo should be an App Store or Play Store iconographic version, not a full wordmark.
 
@@ -114,12 +114,14 @@ By opening a PR to add your project, you authorize and license Coinbase on a non
 
 **Note:** Submissions do not guarantee inclusion and all submissions are subject to review. Your project must be live on Base to potentially be included. Ensure all information is accurate and up-to-date.
 
-#### Tips for a successful submission
+#### Submission requirements
 
+- App content adheres to the [Base Editorial Style Guide](https://github.com/base-org/brand-kit/blob/main/guides/editorial-style-guide.md)
 - App has been live on Base for at least 30 days
 - App has a Terms of Service and Privacy Policy
 - App supports HTTPS and 301 redirects HTTP requests
 - App is not a TGE, ICO, airdrop, claim, or similar
+- Landing page is a Base-specific page for users who will becoming from base.org
 - Active development and community engagement can be observed without issue
 
 ---
