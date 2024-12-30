@@ -57,7 +57,7 @@ out/
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
-# prevent people from accidentally commiting a package-lock
+# prevent people from accidentally committing a package-lock
 package-lock.json
 
 # Env files

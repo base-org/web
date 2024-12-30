@@ -17,7 +17,7 @@
   },
   {
     "name": "DIMO",
-    "description": "DIMO is connected car platform for developers, enabling user-authorized access to vehicle data to create new types of games, social apps, leaderboards, dashboards, and more. For vehicle owners, the DIMO Mobile app unlocks your car’s data providing valuable vehicle health insights, personalized service offers, and weekly rewards. DIMO Mobile is your all-in-one app for maximizing your car’s potential and helping you drive smarter.",
+    "description": "DIMO is a connected car platform enabling user-authorized access to vehicle data to create new types of car apps. For vehicle owners, the DIMO Mobile app unlocks your car’s data providing valuable vehicle health insights, personalized service offers, and weekly rewards.",
     "url": "https://dimo.co",
     "imageUrl": "/images/partners/dimo.png",
     "category": "infra",
@@ -618,7 +618,7 @@
   {
     "name": "Equalizer",
     "url": "https://base.equalizer.exchange",
-    "description": "Equalizer provides a liquidity hub for Base chain through it's capital efficient system.",
+    "description": "Equalizer provides a liquidity hub for Base chain through its capital efficient system.",
     "category": "defi",
     "subcategory": "dex",
     "imageUrl": "/images/partners/equalizer.webp"
@@ -978,7 +978,7 @@
   {
     "name": "Orbiter Finance",
     "url": "https://www.orbiter.finance/",
-    "description": "Orbiter Finance is an ultimate solution that optimises the performance of Ethereum by supporting cross-rollup transactions and synchronising mainnet-rollups interoperabilities.",
+    "description": "Orbiter Finance is an ultimate solution that optimizes the performance of Ethereum by supporting cross-rollup transactions and synchronising mainnet-rollups interoperabilities.",
     "imageUrl": "/images/partners/orbiterfinance.webp",
     "category": "infra",
     "subcategory": "bridge"
@@ -1378,7 +1378,7 @@
   {
     "name": "Obvious",
     "url": "https://www.obvious.technology",
-    "description": "Obvious is a ERC-4337 compatible smart contract wallet focussed on simplifying transaction experience.",
+    "description": "Obvious is a ERC-4337 compatible smart contract wallet focused on simplifying transaction experience.",
     "category": "wallet",
     "subcategory": "account abstraction",
     "imageUrl": "/images/partners/obvious.webp"
@@ -2393,7 +2393,7 @@
   },
   {
     "name": "Krav Trade ",
-    "description": "At Krav, we're all about creating a robust DeFi infrasturcture where you, whether as a trader or a liquidity provider (LP), can truly thrive. If you're a trader, you'll love how you can use altcoins such as PEPE as collateral to open long or short positions on Bitcoin (BTC). And if you're an LP, you'll appreciate the steady income from transaction fees every time a trade happens.",
+    "description": "At Krav, we're all about creating a robust DeFi infrastructure where you, whether as a trader or a liquidity provider (LP), can truly thrive. If you're a trader, you'll love how you can use altcoins such as PEPE as collateral to open long or short positions on Bitcoin (BTC). And if you're an LP, you'll appreciate the steady income from transaction fees every time a trade happens.",
     "url": "https://krav.trade/",
     "imageUrl": "/images/partners/krav.png",
     "category": "defi",
@@ -3154,7 +3154,7 @@
   {
     "name": "Franklin Payroll",
     "description": "All-in-one onchain financial operations suite. Pay US W2 employees, vendors, global contractors, and invoice customers. Franklin supports USD and crypto payouts plus stablecoin to USD off-ramping.",
-    "url": "www.hellofranklin.co",
+    "url": "https://www.hellofranklin.co",
     "imageUrl": "/images/partners/franklin.png",
     "category": "consumer",
     "subcategory": "payments"
@@ -3426,7 +3426,7 @@
   {
     "name": "AuditOne & Insura",
     "description": "AuditOne is an all-in-one audit platform, that offers security services, tools & risk coverage to ensure the safety and reliability of smart contracts and AI-systems. We redefine blockchain auditing by perfectly balancing quality, speed, affordability, and reliability.\nOur unique approach is tailored to the dynamic nature of the blockchain industry, ensuring we deliver excellence without compromise.\n",
-    "url": "https://www.auditone.io/, \n\n\n",
+    "url": "https://www.auditone.io",
     "imageUrl": "/images/partners/audit.png",
     "category": "infra",
     "subcategory": "security"
@@ -3434,7 +3434,7 @@
   {
     "name": "Stack",
     "description": "Stack offers scalable infrastructure for loyalty and rewards programs. Our mission is to revolutionizing loyalty by reducing time spent away from core business.",
-    "url": "stack.so",
+    "url": "https://stack.so",
     "imageUrl": "/images/partners/stack.png",
     "category": "consumer",
     "subcategory": "social"
@@ -3514,7 +3514,7 @@
   {
     "name": "Hypersub",
     "description": "Discover creators. Subscribe for access, perks and benefits. Earn rewards.",
-    "url": "hypersub.xyz",
+    "url": "https://hypersub.xyz",
     "imageUrl": "/images/partners/hypersub.png",
     "category": "consumer",
     "subcategory": "creator"
@@ -3592,12 +3592,36 @@
     "imageUrl": "/images/partners/zarp.png"
   },
   {
+    "name": "Talentir",
+    "category": "consumer",
+    "subcategory": "creator",
+    "description": "Talentir brings YouTube channels onchain and lets creators & co-owners receive their YouTube AdSense as USDC on Base.",
+    "url": "https://talentir.com/",
+    "imageUrl": "/images/partners/talentir.png"
+  },
+  {
     "name": "GBM Domains",
     "description": "Tokenize new or existing domain names and bring them onchain to Base. Get access to rapid, low-cost domain trading featuring our unique Bid-to-Earn auction model.",
     "url": "https://gbm.domains/",
     "imageUrl": "/images/partners/gbm-domains.png",
     "category": "consumer",
     "subcategory": "nft"
+  },
+  {
+    "name": "Tribally",
+    "description": "Tribally is a growth and activation platform for gaming, and the world’s first provider of onchain growth mechanics for offchain games. Battle against other gamers, complete quests and earn rewards!",
+    "url": "https://tribally.games",
+    "imageUrl": "/images/partners/tribally.png",
+    "category": "consumer",
+    "subcategory": "gaming"
+  },
+  {
+    "name": "ETH Gas Tracker",
+    "description": "Monitor and track Ethereum and L2 gas prices to reduce transaction fees, save money and take control of your blockchain experience.",
+    "url": "https://www.ethgastracker.com/network/base",
+    "imageUrl": "/images/partners/ethgastracker.png",
+    "category": "infra",
+    "subcategory": "data"
   },
   {
     "name": "We.Rich",
