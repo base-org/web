@@ -3694,5 +3694,13 @@
     "imageUrl": "/images/partners/tokengenerator.png",
     "category": "infra",
     "subcategory": "developer tool"
+  },
+  {
+    "name": "Valora",
+    "description": "Valora is a mobile app that makes crypto simple and accessible for all.",
+    "url": "https://valora.xyz/",
+    "imageUrl": "/images/partners/valora.png",
+    "category": "wallet",
+    "subcategory": "self-custody"
   }
 ]
