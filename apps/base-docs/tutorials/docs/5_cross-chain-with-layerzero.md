@@ -354,7 +354,7 @@ contract ExampleContract is OApp {
 
 :::info
 
-Overriding the `_lzReceive` function allows you to provide any custom logic you wish when receiving messages, including making a call back to the source chain by invoking `_lzSend`. Visit the LayerZero [Message Design Patterns](https://docs.layerzero.network/contracts/message-design-patterns) for common messaging flows.
+Overriding the `_lzReceive` function allows you to provide any custom logic you wish when receiving messages, including making a call back to the source chain by invoking `_lzSend`. Visit the LayerZero [Message Design Patterns](https://docs.layerzero.network/v2/developers/evm/oapp/message-design-patterns) for common messaging flows.
 
 :::
 
