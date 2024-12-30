@@ -79,8 +79,8 @@ Let's set up both of these:
 2. Add the Base network RPC URL to your `.env` file
 
 ```bash
-BASE_RPC_URL="https://mainnet.base.org"
-BASE_SEPOLIA_RPC_URL="https://sepolia.base.org"
+BASE_RPC_URL=https://mainnet.base.org
+BASE_SEPOLIA_RPC_URL=https://sepolia.base.org
 ```
 
 3. Load your environment variables
@@ -112,6 +112,10 @@ Never share or commit your private key. Always keep it secure and handle with ca
 ## Deploy Your Contracts
 
 Now that your environment is set up, let's deploy your contracts to Base Sepolia.
+
+:::warning
+Before proceeding with deployment, make sure you have enough test ETH in your wallet on Base Sepolia. You can get test ETH from the faucets mentioned earlier in this guide.
+:::
 
 1. Use the following command to compile and deploy your contract
 
