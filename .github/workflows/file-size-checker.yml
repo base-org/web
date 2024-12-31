@@ -21,6 +21,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
       - name: Check file sizes
         id: check-sizes
         run: |
@@ -30,20 +35,20 @@ jobs:
 
           # Get all files in the PR
           echo "Files changed in PR:"
-          git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }}
+          files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
 
-          for file in $(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }}); do
+          for file in $files; do
             if [ -f "$file" ]; then
               size=$(stat -c%s "$file")
-              size_mb=$(echo "scale=2; $size/1048576" | bc)
+              size_mb=$(bc <<< "scale=2; $size/1048576")
               
               echo "Checking $file: ${size_mb}MB"
               
               # Check for files over 40MB
-              if (( $(echo "$size_mb > 40" | bc -l) )); then
+              if (( $(bc <<< "$size_mb > 40") )); then
                 huge_files="${huge_files}* ${file} (${size_mb}MB)\n"
               # Check for files over 10MB
-              elif (( $(echo "$size_mb > 10" | bc -l) )); then
+              elif (( $(bc <<< "$size_mb > 10") )); then
                 large_files="${large_files}* ${file} (${size_mb}MB)\n"
               fi
             fi
@@ -104,4 +109,3 @@ jobs:
             } catch (error) {
               console.error('Error:', error);
               core.setFailed(error.message);
-            }
