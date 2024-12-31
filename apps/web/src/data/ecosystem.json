@@ -3630,5 +3630,13 @@
     "imageUrl": "/images/partners/ethgastracker.png",
     "category": "infra",
     "subcategory": "data"
+  },
+  {
+    "name": "Sensay",
+    "description": "Sensay's cutting-edge technology creates lifelike digital replicas, offering limitless potential for everyone in the digital age.",
+    "url": "https://www.snsy.ai/",
+    "imageUrl": "/images/partners/sensay.png",
+    "category": "infra",
+    "subcategory": "ai"
   }
 ]
