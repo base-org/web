@@ -58,7 +58,7 @@ To interact with the Base blockchain, you will need to update the wagmi configur
 
 Update your wagmi.ts file as follows:
 
-```typescript tile="wagmi.ts"
+```typescript title="wagmi.ts"
 'use client';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';

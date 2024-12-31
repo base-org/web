@@ -36,7 +36,7 @@ module.exports = {
     // We utilize class properties
     'react/state-in-constructor': 'off',
 
-    // Dont use prop types since were using TypeScript
+    // Dont use prop types since we are using TypeScript
     'react/default-props-match-prop-types': 'off',
     'react/forbid-foreign-prop-types': 'off',
     'react/forbid-prop-types': 'off',
@@ -135,7 +135,7 @@ module.exports = {
     '@typescript-eslint/prefer-string-starts-ends-with': 'error',
 
     // Hard to migrate
-    // Errors for all try/catch blocks and any types from third-parties
+    // Errors for all try/catch blocks and any types from third parties
     '@typescript-eslint/no-unsafe-member-access': 'off',
   },
 };
