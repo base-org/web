@@ -168,9 +168,9 @@
     "subcategory": "gaming"
   },
   {
-    "name": "GhostLogs.xyz",
-    "description": "GhostLogs allows anyone to edit live smart contract code for tailored data emission.",
-    "url": "https://ghostlogs.xyz",
+    "name": "Ghost",
+    "description": "Next-gen indexing stack for next-gen blockchains. Built high-performance indexers (subgraphs) in Solidity.",
+    "url": "https://tryghost.xyz",
     "imageUrl": "/images/partners/ghostLogs.webp",
     "category": "infra",
     "subcategory": "data"
