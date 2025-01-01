@@ -27,7 +27,7 @@ Base is a secure, low-cost, developer-friendly Ethereum L2 built to bring the ne
 
 ## Setup
 
-1. Ensure `nvm` is [installed](https://github.com/nvm-sh/nvm#install--update-script).
+1. Ensure that `nvm` is [installed](https://github.com/nvm-sh/nvm#install--update-script).
 2. Clone the repository.
 3. If `nvm` doesn't auto-load the Node.js environment when changing to the repo directory, run `nvm use`.
 4. Enable Yarn by running `corepack enable`.
@@ -71,7 +71,7 @@ yarn workspace @app/bridge dev
 
 ## Contributing
 
-We welcome contributions to Base! To contribute, please see [CONTRIBUTING.md](CONTRIBUTING.md).
+We welcome contributions to Base! For guidelines on how to contribute please refer to [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Updating the Base Ecosystem Page
 
@@ -81,7 +81,7 @@ If you're a builder who wants to add or update your project on the [Base Ecosyst
 
 2. Create a new branch for your changes.
 
-3. Update the `web/apps/web/src/data/ecosystem.json` with your project information. All fields are required. Each entry should follow this format:
+3. Update the `web/apps/web/src/data/ecosystem.json` with your project information. All fields are required. Each entry should follow the format below:
 
    ```json
    {
@@ -119,7 +119,7 @@ By opening a PR to add your project, you authorize and license Coinbase on a non
 - App has been live on Base for at least 30 days
 - App has a Terms of Service and Privacy Policy
 - App supports HTTPS and 301 redirects HTTP requests
-- App is not a TGE, ICO, airdrop, claim, or similar
+- App is not a TGE (Token Generation Event), ICO (Initial Coin Offering), airdrop, claim, or similar
 - Active development and community engagement can be observed without issue
 
 ---
