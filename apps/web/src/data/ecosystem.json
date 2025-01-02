@@ -3630,5 +3630,13 @@
     "imageUrl": "/images/partners/ethgastracker.png",
     "category": "infra",
     "subcategory": "data"
-  }
+  },
+{
+  "name": "Starbase",
+  "description": "Starbase is a decentralised exchange (DEX) aggregator that optimizes trades through smart routing and trade splitting, ensuring users get the best prices and minimises slippage.",
+  "url": "https://starbase.ag",
+  "imageUrl": "https://starbase-hub.gitbook.io/guides/media-kit/starbase-media/starbase-logo",
+  "category": "DEFI",
+  "subcategory": "DEX AGGREGATOR"
+}
 ]
