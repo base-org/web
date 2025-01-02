@@ -2040,6 +2040,14 @@
     "subcategory": "portfolio"
   },
   {
+    "name": "Silk",
+    "url": "https://www.silk.sc/",
+    "description": "Silk is a secure, non-custodial wallet that makes web3 accessible to everyone. Built with 2PC-MPC & ZK protocols, it provides a seamless onboarding experience while maintaining high security standards.",
+    "imageUrl": "/images/partners/silk.webp",
+    "category": "wallet",
+    "subcategory": "self-custody"
+  },
+  {
     "name": "Zellic",
     "url": "https://zellic.io/",
     "description": "Zellic is a blockchain security firm solving the most critical software assurance problems. Our audits prevent business-ending hacks.",
