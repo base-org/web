@@ -1,5 +1,13 @@
 [
   {
+    "name": "Arcadia Games",
+    "description": "Arcadia Games provides PvP board games on the blockchain. Play Chess, Battleship and other classic games against other players for crypto.",
+    "url": "https:/arcadiagames.io",
+    "imageUrl": "/images/partners/arcadia-games.png",
+    "category": "consumer",
+    "subcategory": "gaming"
+  },
+  {
     "name": "Moxie Protocol",
     "description": "Moxie is a SocialFi protocol on the Base blockchain that allows users to create and interact with Fan Tokens.",
     "url": "https://moxie.xyz",
@@ -618,7 +626,7 @@
   {
     "name": "Equalizer",
     "url": "https://base.equalizer.exchange",
-    "description": "Equalizer provides a liquidity hub for Base chain through it's capital efficient system.",
+    "description": "Equalizer provides a liquidity hub for Base chain through its capital efficient system.",
     "category": "defi",
     "subcategory": "dex",
     "imageUrl": "/images/partners/equalizer.webp"
@@ -978,7 +986,7 @@
   {
     "name": "Orbiter Finance",
     "url": "https://www.orbiter.finance/",
-    "description": "Orbiter Finance is an ultimate solution that optimises the performance of Ethereum by supporting cross-rollup transactions and synchronising mainnet-rollups interoperabilities.",
+    "description": "Orbiter Finance is an ultimate solution that optimizes the performance of Ethereum by supporting cross-rollup transactions and synchronising mainnet-rollups interoperabilities.",
     "imageUrl": "/images/partners/orbiterfinance.webp",
     "category": "infra",
     "subcategory": "bridge"
@@ -3590,6 +3598,14 @@
     "description": "ZARP is a stablecoin pegged to the price of the South African Rand (ZAR).",
     "url": "https://zarp.io/",
     "imageUrl": "/images/partners/zarp.png"
+  },
+  {
+    "name": "Talentir",
+    "category": "consumer",
+    "subcategory": "creator",
+    "description": "Talentir brings YouTube channels onchain and lets creators & co-owners receive their YouTube AdSense as USDC on Base.",
+    "url": "https://talentir.com/",
+    "imageUrl": "/images/partners/talentir.png"
   },
   {
     "name": "GBM Domains",
