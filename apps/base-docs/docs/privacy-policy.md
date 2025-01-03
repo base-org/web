@@ -69,7 +69,7 @@ We share certain information about you with service providers, partners and oth
 
 **Professional advisors, industry partners, authorities and regulators.** We share your information described in **Section 1. What Information We Collect** with our advisors, regulators, tax authorities, law enforcement, government agencies, and industry partners when needed to:
 
-- respond pursuant to applicable law or regulations, court orders, legal process or government requests;
+- respond pursuant to applicable law or regulations, court orders, legal processes, or government requests;
 - detect, investigate, prevent, or address fraud and other illegal activity or security and technical issues; and
 - protect the rights, property, and safety of our Users, Developers, Affiliates, or others, including to prevent death or imminent bodily harm.
 
@@ -85,7 +85,7 @@ The Services are not directed to persons under the age of 18, and we do not know
 
 # 6. INTERNATIONAL TRANSFERS
 
-To facilitate our global operations, we and our  third-party partners and service providers may transfer and store throughout the world, including in the United States.
+To facilitate our global operations, we and our third-party partners and service providers may transfer and store throughout the world, including in the United States.
 
 If you reside in the EEA, Switzerland, or the United Kingdom, we rely upon a variety of legal mechanisms to facilitate these transfers of your personal information (collectively, “**European Personal Data”**). \*\*\*\*
 
@@ -102,4 +102,4 @@ We’re constantly trying to improve our Services, so we may need to change this
 
 # 9. OUR RELATIONSHIP WITH YOU
 
-Coinbase Technologies, Inc., 251 Little Falls Drive, City of Wilmington, County of New Castle, Delaware 19808, acts as controller of your personal data.
+Coinbase Technologies, Inc., 251 Little Falls Drive, City of Wilmington, County of New Castle, Delaware 19808, acts as a controller of your personal data.
