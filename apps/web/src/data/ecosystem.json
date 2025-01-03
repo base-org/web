@@ -3630,5 +3630,13 @@
     "imageUrl": "/images/partners/ethgastracker.png",
     "category": "infra",
     "subcategory": "data"
+  },
+  {
+    "name": "ivault",
+    "description": "The ivault Token powers the 'ivault - Share, earn, connect' mobile app for iOS and Android, giving you access to earning cash by renting and selling items, connecting with people, and earning rewards.",
+    "url": "https://ivault.io",
+    "imageUrl": "/images/partners/ivault.png",
+    "category": "consumer",
+    "subcategory": "social"
   }
 ]
