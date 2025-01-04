@@ -185,7 +185,7 @@ Use the script to regenerate this file.
 ### [Minimal Token](./minimal-tokens/minimal-token-sbs.md)
 
 - Construct a minimal token and deploy to testnet
-- Identify the properties that make a token a token
+- Identify the properties that make a token
 
 ### [The ERC-20 Token Standard](./erc-20-token/erc-20-standard.md)
 
