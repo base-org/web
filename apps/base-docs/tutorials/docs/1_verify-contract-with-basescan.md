@@ -71,7 +71,7 @@ You should have a folder structure similar to this:
 └── test
 ```
 
-The `src` folder will contain a `Counter.sol` file which will serve as the country you want to deploy.
+The `src` folder will contain a `Counter.sol` file which will serve as the contract you want to deploy.
 
 :::note You will need ETH on Base to deploy
 You (the deployer wallet) will need some ETH in order to broadcast the transaction to the Base network. Fortunately, transactions are usually < 1 cent on Base mainnet.
@@ -88,13 +88,13 @@ Once you have the private key to the wallet of your choice, open your terminal a
 export PRIVATE_KEY="<YOUR_PRIVATE_KEY>"
 ```
 
-To deploy our contract you will need a RPC URL to a Base node in order to broadcast our transactions to the network. [CDP] provides us with a free node for interacting with Base mainnet and testnet.
+To deploy our contract you will need an RPC URL to a Base node in order to broadcast our transactions to the network. [CDP] provides us with a free node for interacting with Base mainnet and testnet.
 
-Obtain a rpc url from the [Node product] and store the url as an environment variable similar to the private key in the previous step.
+Obtain an rpc url from the [Node product] and store the url as an environment variable similar to the private key in the previous step.
 
 ![cdp-node](../../assets/images/verify-with-basescan-api/cdp-node-full.png)
 
-Then store it as a environment variable in your terminal:
+Then store it as an environment variable in your terminal:
 
 ```bash
 export BASE_RPC_URL="your_base_rpc_url"
@@ -114,7 +114,7 @@ Deployed to: 0xEF5fe818Cb814E5c8277C5F12B57106B4EC3DdaA
 Transaction hash: 0xb191f9679a1fee253cf430ac09a6838f6806cfb2a250757fef407880f5546836
 ```
 
-Congrats! You've now deployed a contract to Base. The output of the deployment command contiains a contract address (e.g `Deployed to: 0xEF5fe818Cb814E5c8277C5F12B57106B4EC3DdaA`). Copy this address as you will need it in the next step.
+Congrats! You've now deployed a contract to Base. The output of the deployment command contains a contract address (e.g `Deployed to: 0xEF5fe818Cb814E5c8277C5F12B57106B4EC3DdaA`). Copy this address as you will need it in the next step.
 
 ### Verify the contract
 
@@ -263,7 +263,7 @@ If successful, your terminal will output JSON text with three properties `status
 
 Result is the GUID and is a unique identifier for checking the status of your contracts verification.
 
-To verify the contract, let's create a curl request with the following paramters
+To verify the contract, let's create a curl request with the following parameters
 
 ```bash
 curl "https://api.basescan.org/api?module=contract&action=checkverifystatus&guid=cqjzzvppgswqw5adq4v6iq4xkmf519pj1higvcxsdiwcvwxemd&apikey=DK8M329VYXDSKTF633ABTK3SAEZ2U9P8FK"

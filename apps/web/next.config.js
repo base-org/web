@@ -37,7 +37,7 @@ const baseConfig = {
   // Enable strict mode in development
   reactStrictMode: !isProdEnv,
 
-  // Minifiy for production builds
+  // Minify for production builds
   swcMinify: false,
 };
 
@@ -119,7 +119,7 @@ const contentSecurityPolicy = {
     'https://unpkg.com/@lottiefiles/dotlottie-web@0.31.1/dist/dotlottie-player.wasm', // lottie player
     `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
   ],
-  'frame-src': ["https://p.datadoghq.com"],
+  'frame-src': ['https://p.datadoghq.com'],
   'frame-ancestors': ["'self'", baseXYZDomains],
   'form-action': ["'self'", baseXYZDomains],
   'img-src': [
@@ -197,6 +197,19 @@ module.exports = extendBaseConfig(
         ],
       });
       config.module.rules.push({
+        test: /\.mp4$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name][hash].[ext]',
+              outputPath: 'static/assets/mp4/',
+              publicPath: '/_next/static/assets/mp4/',
+            },
+          },
+        ],
+      });
+      config.module.rules.push({
         test: /\.gltf/,
         use: [
           {
@@ -259,7 +272,12 @@ module.exports = extendBaseConfig(
         },
         {
           source: '/onchainsummer',
-          destination: '/getstarted',
+          destination: '/build',
+          permanent: true,
+        },
+        {
+          source: '/getstarted',
+          destination: '/build',
           permanent: true,
         },
         {

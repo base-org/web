@@ -39,7 +39,7 @@ export default async function Username({ params }: UsernameProfileProps) {
   await redirectIfNotNameOwner(username);
 
   const usernameProfilePageClasses = classNames(
-    'mx-auto mt-32 flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 px-4 px-4 pb-40 md:flex-row md:px-8',
+    'mx-auto mt-32 flex min-h-screen w-full max-w-[1440px] flex-col justify-between gap-10 px-4 px-4 pb-16 md:flex-row md:px-8',
   );
 
   return (
