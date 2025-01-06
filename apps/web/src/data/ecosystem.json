@@ -1,5 +1,13 @@
 [
   {
+    "name": "Infinity Wallet",
+    "description": "Infinity Wallet is a decentralized all-in-one non-custodial wallet ecosystem and first-of-its-kind Web3 browser, providing a one-stop DeFi solution.",
+    "url": "https://infinitywallet.io/",
+    "imageUrl": "/images/partners/infinity-wallet.png",
+    "category": "wallet",
+    "subcategory": "self-custody"
+  },
+  {
     "name": "Arcadia Games",
     "description": "Arcadia Games provides PvP board games on the blockchain. Play Chess, Battleship and other classic games against other players for crypto.",
     "url": "https:/arcadiagames.io",
