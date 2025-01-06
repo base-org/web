@@ -23,7 +23,7 @@ hide_table_of_contents: true
 
 This page is intended for token issuers who already have an ERC-20 contract deployed on Ethereum and would like to submit their token for bridging between Ethereum and Base. Base uses the [Superchain token list](https://github.com/ethereum-optimism/ethereum-optimism.github.io) as a reference for tokens that have been deployed on Base.
 
-**_Disclaimer: Base does not endorse any of the tokens that are listed in the Github repository and has conducted only preliminary checks, which include automated checks listed_** [**_here_**](https://github.com/ethereum-optimism/ethereum-optimism.github.io)**_._**
+**_Disclaimer: Base does not endorse any of the tokens that are listed in the GitHub repository and has conducted only preliminary checks, which include automated checks listed_** [**_here_**](https://github.com/ethereum-optimism/ethereum-optimism.github.io)**_._**
 
 ---
 
@@ -41,4 +41,4 @@ Follow the instructions in the [GitHub repository](https://github.com/ethereum-o
 
 ### Step 3: Await final approval
 
-Reviews are regularly conducted by the Base team and you should receive a reply within 24-72 hours (depending on if the PR is opened on a week day, weekend or holiday).
+Reviews are regularly conducted by the Base team and you should receive a reply within 24-72 hours (depending on if the PR is opened on a weekday, weekend or holiday).
