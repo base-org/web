@@ -3641,7 +3641,7 @@
   },
   {
     "name": "IPOR Derivatives",
-    "description": "Earn token-boosted yield on stables and ETH. Trade plain-vanilla onchain interest rate swaps with up to 1000x leverage and 90 day maturity.",
+    "description": "Earn token-boosted yield on stables and ETH. Trade plain-vanilla interest rate swaps onchain with up to 1000x leverage and 90-day maturity.",
     "url": "https://app.ipor.io/deposit",
     "imageUrl": "/images/partners/ipor-derivatives.svg",
     "category": "defi",
