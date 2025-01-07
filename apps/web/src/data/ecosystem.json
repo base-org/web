@@ -3630,5 +3630,21 @@
     "imageUrl": "/images/partners/ethgastracker.png",
     "category": "infra",
     "subcategory": "data"
+  },
+  {
+    "name": "IPOR Fusion",
+    "description": "Automated onchain liquidity management for fully-optimized blue-chip yield. Fusion does all the rebalancing work, so you don't have to. Deposit and overperform 90% of passive LPs.",
+    "url": "https://app.ipor.io/fusion",
+    "imageUrl": "/images/partners/ipor-fusion.png",
+    "category": "defi",
+    "subcategory": "liquidity management"
+  },
+  {
+    "name": "IPOR Derivatives",
+    "description": "Earn token-boosted yield on stables and ETH. Trade plain-vanilla onchain interest rate swaps with up to 1000x leverage and 90 day maturity.",
+    "url": "https://app.ipor.io/deposit",
+    "imageUrl": "/images/partners/ipor-derivatives.png",
+    "category": "defi",
+    "subcategory": "yield vault"
   }
 ]
