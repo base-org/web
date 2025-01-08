@@ -206,7 +206,7 @@ The full `src/app/mint/page.tsx` file should look something like this:
 
 :::tip Smart Wallet Only
 
-To enable [Base Wallet] functionality add the `smartWalletOnly` prefence to the [wagmi connector]
+To enable [Base Wallet] functionality add the `smartWalletOnly` preference to the [wagmi connector]
 
 ```jsx
 <button
