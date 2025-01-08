@@ -39,7 +39,7 @@ You'll need to set up an account (free) with the [Coinbase Developer Platform (C
 
 ### Smart Wallet
 
-Smart Wallets enables users to create an account in seconds with no app or extension required through the use of Passskey signing. This tutorial uses the [Base Wallet] (FKA Coinbase Smart Wallet) to sign and mint transactions.
+Smart Wallets enables users to create an account in seconds with no app or extension required through the use of Passkey signing. This tutorial uses the [Base Wallet] (FKA Coinbase Smart Wallet) to sign and mint transactions.
 
 ---
 
