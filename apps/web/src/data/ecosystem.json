@@ -1,5 +1,13 @@
 [
   {
+    "name": "Garden",
+    "description": "Garden is the fastest Bitcoin bridge, enabling cross-chain swaps in as little as 30 secs. It is built using an intents-based architecture with trustless settlements, ensuring zero custody risk.",
+    "url": "https://beta.garden.finance/",
+    "imageUrl": "/images/partners/garden.png",
+    "category": "infra",
+    "subcategory": "bridge"
+  },
+  {
     "name": "Arcadia Games",
     "description": "Arcadia Games provides PvP board games on the blockchain. Play Chess, Battleship and other classic games against other players for crypto.",
     "url": "https:/arcadiagames.io",
