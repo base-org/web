@@ -12,7 +12,7 @@ keywords:
     cdp faucet,
     Coinbase Developer Platform Faucet,
     Superchain Faucet,
-____Bware Labs Faucet,
+    Bware Labs Faucet,
     QuickNode Faucet,
     LearnWeb3 Faucet,
     Ethereum Mainnet,
