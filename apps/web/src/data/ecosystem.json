@@ -3638,5 +3638,13 @@
     "description": "BlockAI combines blockchain and AI to offer decentralized access to innovative tools like Text and image generation, video summarization, games, etc.",
     "url": "https://base.blockai.dev",
     "imageUrl": "/images/partners/blockai.png"
+  },
+  {
+    "name": "Valora",
+    "description": "Valora is a mobile app that makes crypto simple and accessible for all.",
+    "url": "https://valora.xyz/",
+    "imageUrl": "/images/partners/valora.png"
+    "category": "wallet",
+    "subcategory": "self-custody"
   }
 ]
