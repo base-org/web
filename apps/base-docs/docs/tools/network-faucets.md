@@ -12,7 +12,6 @@ keywords:
     cdp faucet,
     Coinbase Developer Platform Faucet,
     Superchain Faucet,
-    Bware Labs Faucet,
     QuickNode Faucet,
     LearnWeb3 Faucet,
     Ethereum Mainnet,
@@ -27,11 +26,11 @@ hide_table_of_contents: true
 
 ## Coinbase Developer Platform
 
-The [Coinbase Developer Platform Faucet](https://portal.cdp.coinbase.com/products/faucet) provides free testnet ETH on Base Sepolia - one claim per 24 hours.
+The [Coinbase Developer Platform Faucet](https://portal.cdp.coinbase.com/products/faucet) provides free testnet ETH on Base Sepolia - one claim every 7 days.
 
 :::info
 
-Requests to Coinbase Developer Platform's Faucet are limited to one claim per 24 hours.
+Requests to Coinbase Developer Platform's Faucet are limited to one every 7 days.
 
 :::
 
@@ -68,18 +67,6 @@ The [Alchemy Faucet](https://basefaucet.com/) is a fast and reliable network fau
 :::info
 
 Requests to Alchemy's Base Sepolia Faucet are limited to one claim per 24 hours.
-
-:::
-
----
-
-## Bware Labs Faucet
-
-[Bware Labs Faucet](https://bwarelabs.com/faucets) is an easy to use faucet with no registration required. You can use Bware Labs Faucet to claim Base Sepolia testnet ETH for free - one claim per 24 hours.
-
-:::info
-
-Requests to Bware Labs Faucet are limited to one claim per 24 hours.
 
 :::
 
