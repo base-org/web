@@ -12,6 +12,7 @@ keywords:
     cdp faucet,
     Coinbase Developer Platform Faucet,
     Superchain Faucet,
+____Bware Labs Faucet,
     QuickNode Faucet,
     LearnWeb3 Faucet,
     Ethereum Mainnet,
@@ -67,6 +68,17 @@ The [Alchemy Faucet](https://basefaucet.com/) is a fast and reliable network fau
 :::info
 
 Requests to Alchemy's Base Sepolia Faucet are limited to one claim per 24 hours.
+
+:::
+
+---
+
+## Bware Labs Faucet
+[Bware Labs Faucet](https://bwarelabs.com/faucets) is an easy to use faucet with no registration required. You can use Bware Labs Faucet to claim Base Sepolia testnet ETH for free - one claim per 24 hours.
+
+:::info
+
+Requests to Bware Labs Faucet are limited to one claim per 24 hours.
 
 :::
 
