@@ -35,6 +35,7 @@ export enum ConnectWalletButtonVariants {
 }
 
 type ConnectWalletButtonProps = {
+  cta?: string;
   connectWalletButtonVariant: ConnectWalletButtonVariants;
 };
 
@@ -50,6 +51,7 @@ export function DynamicWrappedConnectWalletButton({
 
 export function ConnectWalletButton({
   connectWalletButtonVariant = ConnectWalletButtonVariants.BaseOrg,
+  cta = 'Connect',
 }: ConnectWalletButtonProps) {
   // Rainbow kit
   const { openConnectModal } = useConnectModal();
@@ -119,7 +121,7 @@ export function ConnectWalletButton({
     const baseOrgButton = connectWalletButtonVariant === ConnectWalletButtonVariants.BaseOrg;
     return baseOrgButton ? (
       <BaseOrgButton onClick={clickConnect} roundedFull>
-        Connect
+        {cta}
       </BaseOrgButton>
     ) : (
       <Button
@@ -128,7 +130,7 @@ export function ConnectWalletButton({
         onClick={clickConnect}
         rounded
       >
-        Connect
+        {cta}
       </Button>
     );
   }
