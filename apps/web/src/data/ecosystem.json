@@ -3649,7 +3649,7 @@
   },
   {
     "name": "IPOR Fusion",
-    "description": "Automated onchain liquidity management for fully-optimized blue-chip yield. Fusion does all the rebalancing work, so you don't have to. Deposit and overperform 90% of passive LPs.",
+    "description": "A composable vault stack optimized for modularity, security, and automation of sophisticated DeFi strategies. Asset managers can automate strategies, protocols can source liquidity, and LPs can get automated smart yield.",
     "url": "https://app.ipor.io/fusion",
     "imageUrl": "/images/partners/ipor-fusion.svg",
     "category": "defi",
