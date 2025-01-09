@@ -88,9 +88,9 @@ Once you have the private key to the wallet of your choice, open your terminal a
 export PRIVATE_KEY="<YOUR_PRIVATE_KEY>"
 ```
 
-To deploy our contract you will need a RPC URL to a Base node in order to broadcast our transactions to the network. [CDP] provides us with a free node for interacting with Base mainnet and testnet.
+To deploy our contract you will need an RPC URL to a Base node in order to broadcast our transactions to the network. [CDP] provides us with a free node for interacting with Base mainnet and testnet.
 
-Obtain a rpc url from the [Node product] and store the url as an environment variable similar to the private key in the previous step.
+Obtain an rpc url from the [Node product] and store the url as an environment variable similar to the private key in the previous step.
 
 ![cdp-node](../../assets/images/verify-with-basescan-api/cdp-node-full.png)
 
