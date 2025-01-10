@@ -8,6 +8,14 @@
     "subcategory": "gaming"
   },
   {
+    "name": "Midas",
+    "description": "At Midas, we believe investing should be as open, accessible, and transparent as the Internet. Our mission is to pioneer internet-native investing, bringing investment-grade assets to the open web.",
+    "url": "https://midas.app/",
+    "imageUrl": "/images/partners/your-project-logo.png",
+    "category": "defi",
+    "subcategory": "yield vault"
+  },
+  {
     "name": "Moxie Protocol",
     "description": "Moxie is a SocialFi protocol on the Base blockchain that allows users to create and interact with Fan Tokens.",
     "url": "https://moxie.xyz",
