@@ -218,7 +218,7 @@ Use the script to regenerate this file.
 - Identify the role of a wallet aggregator in an onchain app
 - Debate the pros and cons of using a template
 - Scaffold a new onchain app with RainbowKit
-- Support users of EOAs and the Coinbase Smart Wallet with the same app
+- Support users of EOAs (Externally Owned Accounts) and the Coinbase Smart Wallet with the same app
 
 ### [Building an Onchain App](./frontend-setup/building-an-onchain-app.md)
 
