@@ -30,7 +30,7 @@ class CustomLogger {
     let traceId: string | undefined;
     let spanId: string | undefined;
 
-    //TODO: initialice ddTrace through dd-tracer
+    //TODO: initialize ddTrace through dd-tracer
     if (ddTrace) {
       // Access trace information server-side
       const currentSpan = ddTrace.scope().active();

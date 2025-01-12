@@ -114,7 +114,7 @@ Start by opening the `.env` file in the Healing Honey project and adding your pr
 SPENDER_PRIVATE_KEY=0xcd57753bb4e308ba0c6f574e8af04a7bae0ca0aff5750ddd6275460f49635527
 ```
 
-Next, navigate to the `src/app/lib/spender.ts` file. Here, you'll see the `privateKeyToAccount` function from Viem in use. This function creates an wallet from the private key, enabling it to sign transactions and messages. The generated `account` is then used to create a [Wallet Client], which allows signing and executing onchain transactions to interact with the Spend Permission contract.
+Next, navigate to the `src/app/lib/spender.ts` file. Here, you'll see the `privateKeyToAccount` function from Viem in use. This function creates a wallet from the private key, enabling it to sign transactions and messages. The generated `account` is then used to create a [Wallet Client], which allows signing and executing onchain transactions to interact with the Spend Permission contract.
 
 With your Spender Client set up, ensure all other required environment variables are configured for the app to work when running the dev server.
 
