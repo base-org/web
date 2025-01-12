@@ -1,7 +1,7 @@
 ---
-title: Report vulnerability
+title: Report a Vulnerability
 slug: /security/report
-description: The Base procedures for reporting vulnerabilities.
+description: How to report vulnerabilities to Base.
 keywords:
   [
     Base,
@@ -20,10 +20,11 @@ hide_table_of_contents: true
 
 # Reporting vulnerabilities
 
-All potential vulnerability reports can be submitted via the [HackerOne](https://hackerone.com/coinbase) platform.
+Report potential vulnerabilities via [HackerOne](https://hackerone.com/coinbase) our centralized platform for streamlined and secure reporting.
 
-The HackerOne platform allows us to have a centralized and single reporting source for us to deliver optimized SLAs and results. All reports submitted to the platform are triaged around the clock by our team of Coinbase engineers with domain knowledge, assuring the best quality of review.
+The HackerOne platform serves as a centralized reporting hub, enabling us to streamline processes and deliver optimized SLAs and results efficiently. 
+Submissions are triaged 24/7 by Coinbase engineers with domain expertise to ensure a thorough review and fast response.
 
-For more information on reporting vulnerabilities and our HackerOne bug bounty program, view our [security program policies](https://hackerone.com/coinbase?view_policy=true).
+For additional details on our Hackerone bug bounty program and security policies, view our [security program policies](https://hackerone.com/coinbase?view_policy=true).
 
 ---
