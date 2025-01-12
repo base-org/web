@@ -42,7 +42,7 @@ Your active network should now be switched to Base.
 
 ## Other wallets
 
-Base can be added as a custom network to any EVM-compatible wallet (i.e. [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)).
+Base network (mainnet or testnet) can be added as a custom network to any EVM-compatible wallet (i.e. [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)).
 
 ### MetaMask
 
@@ -65,7 +65,7 @@ To add Base as a custom network to MetaMask:
 
 6. Tap the Save button to save Base as a network.
 
-You should now be able to connect to the Base by selecting it from the network selection dropdown menu.
+You should now be able to connect to Base by selecting it from the network selection dropdown menu.
 
 ---
 
