@@ -4,6 +4,7 @@ import logEvent, {
   ActionType,
   AnalyticsEventImportance,
   CCAEventData,
+  AnalyticsContext,
 } from 'libs/base-ui/utils/logEvent';
 import { ReactNode, createContext, useCallback, useContext, useMemo } from 'react';
 
@@ -12,7 +13,7 @@ export type AnalyticsContextProps = {
   fullContext: string;
 };
 
-export const AnalyticsContext = createContext<AnalyticsContextProps>({
+export const AnalyticsReactContext = createContext<AnalyticsContextProps>({
   logEventWithContext: function () {
     return undefined;
   },
@@ -20,7 +21,7 @@ export const AnalyticsContext = createContext<AnalyticsContextProps>({
 });
 
 export function useAnalytics() {
-  const context = useContext(AnalyticsContext);
+  const context = useContext(AnalyticsReactContext);
   if (context === undefined) {
     throw new Error('useAnalytics must be used within a AnalyticsProvider');
   }
@@ -29,7 +30,7 @@ export function useAnalytics() {
 
 type AnalyticsProviderProps = {
   children?: ReactNode;
-  context: string; // TODO: This could be an enum in CCAEventData
+  context: AnalyticsContext;
 };
 
 export default function AnalyticsProvider({ children, context }: AnalyticsProviderProps) {
@@ -41,10 +42,10 @@ export default function AnalyticsProvider({ children, context }: AnalyticsProvid
       const sanitizedEventName = eventName.toLocaleLowerCase();
       if (typeof window === 'undefined') return;
       logEvent(
-        sanitizedEventName, // TODO: Do we want context here?
+        sanitizedEventName,
         {
           action: action,
-          context: fullContext,
+          context: fullContext as AnalyticsContext,
           page_path: window.location.pathname,
           ...eventData,
         },
@@ -58,5 +59,5 @@ export default function AnalyticsProvider({ children, context }: AnalyticsProvid
     return { logEventWithContext, context, fullContext };
   }, [context, fullContext, logEventWithContext]);
 
-  return <AnalyticsContext.Provider value={values}>{children}</AnalyticsContext.Provider>;
+  return <AnalyticsReactContext.Provider value={values}>{children}</AnalyticsReactContext.Provider>;
 }
