@@ -3632,6 +3632,14 @@
     "subcategory": "data"
   },
   {
+    "name": "BlockAI",
+    "category": "infra",
+    "subcategory": "ai",
+    "description": "BlockAI combines blockchain and AI to offer decentralized access to innovative tools like Text and image generation, video summarization, games, etc.",
+    "url": "https://base.blockai.dev",
+    "imageUrl": "/images/partners/blockai.png"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
