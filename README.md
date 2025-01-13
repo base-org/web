@@ -116,6 +116,7 @@ By opening a PR to add your project, you authorize and license Coinbase on a non
 
 #### Tips for a successful submission
 
+- App content adheres to the [Base Editorial Style Guide](https://github.com/base-org/brand-kit/blob/main/guides/editorial-style-guide.md)
 - App has been live on Base for at least 30 days
 - App has a Terms of Service and Privacy Policy
 - App supports HTTPS and 301 redirects HTTP requests
