@@ -32,7 +32,7 @@ function USDCClaimModal({ message, onClose }: USDCClaimModalProps) {
           className="mx-auto mt-4 block"
           onClick={handleButtonClick}
         >
-          See where you can use USDC
+          Learn more
         </Button>
       </div>
     </div>
