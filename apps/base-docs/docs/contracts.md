@@ -87,7 +87,7 @@ This page lists contract addresses for onchain apps that we have deployed.
 
 :::info
 
-Two community projects, [BaseX](https://basex-test.vercel.app/swap?currencyA=ETH&currencyB=0x036CbD53842c5426634e7929541eC2318f3dCF7e&focus=source) and [DapDap](https://testnet.base.dapdap.net/uniswap/swap), provide testnet interfaces for Uniswap contracts if you prefer to interact in the browser instead of with the contracts directly.
+If you prefer interacting through a browser instead of directly with the contracts, you can try this community project: [DapDap](https://testnet.base.dapdap.net/uniswap/swap), which provides testnet interfaces for Uniswap contracts.
 
 :::
 

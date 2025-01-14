@@ -61,7 +61,7 @@ See the [sample code repository](https://github.com/base-org/guides/tree/main/br
 
 :::caution
 
-**Double check the token address for ERC-20s** You can use any ERC-20 that is
+**Double-check the token address for ERC-20s** You can use any ERC-20 that is
 supported on the network. You can check what assets are on Base and the
 corresponding contract address via [this hub](https://github.com/ethereum-optimism/ethereum-optimism.github.io/tree/master/data).
 Ensure there is an address for `base`, [example](https://github.com/ethereum-optimism/ethereum-optimism.github.io/blob/master/data/WETH/data.json#L16-L18).
