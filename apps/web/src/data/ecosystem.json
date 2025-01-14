@@ -1,5 +1,13 @@
 [
   {
+    "name": "Arcadia Games",
+    "description": "Arcadia Games provides PvP board games on the blockchain. Play Chess, Battleship and other classic games against other players for crypto.",
+    "url": "https:/arcadiagames.io",
+    "imageUrl": "/images/partners/arcadia-games.png",
+    "category": "consumer",
+    "subcategory": "gaming"
+  },
+  {
     "name": "Moxie Protocol",
     "description": "Moxie is a SocialFi protocol on the Base blockchain that allows users to create and interact with Fan Tokens.",
     "url": "https://moxie.xyz",
@@ -3622,6 +3630,14 @@
     "imageUrl": "/images/partners/ethgastracker.png",
     "category": "infra",
     "subcategory": "data"
+  },
+  {
+    "name": "BlockAI",
+    "category": "infra",
+    "subcategory": "ai",
+    "description": "BlockAI combines blockchain and AI to offer decentralized access to innovative tools like Text and image generation, video summarization, games, etc.",
+    "url": "https://base.blockai.dev",
+    "imageUrl": "/images/partners/blockai.png"
   },
   {
     "name": "We.Rich",
