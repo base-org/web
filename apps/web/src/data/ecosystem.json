@@ -3638,5 +3638,13 @@
     "description": "BlockAI combines blockchain and AI to offer decentralized access to innovative tools like Text and image generation, video summarization, games, etc.",
     "url": "https://base.blockai.dev",
     "imageUrl": "/images/partners/blockai.png"
+  },
+  {
+    "name": "Turnkey",
+    "category": "infra",
+    "subcategory": "developer tool",
+    "description": "Turnkey is an enterprise-grade operating system for wallets: powerful, modular, and built to adapt to any use case from embedded wallets to programmatic backend crypto automation.",
+    "url": "https://www.turnkey.com/",
+    "imageUrl": "/images/partners/turnkey.png"
   }
 ]
