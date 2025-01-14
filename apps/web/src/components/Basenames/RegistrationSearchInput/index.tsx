@@ -336,14 +336,15 @@ export default function RegistrationSearchInput({
                   </div>
                 </Tooltip>
                 {suggestions.map((suggestion) => (
-                  <SuggestionEntry
-                    key={suggestion}
-                    suggestion={suggestion}
-                    buttonClasses={buttonClasses}
-                    handleSelectName={handleSelectName}
-                    basenameChain={basenameChain}
-                    iconSize={iconSize}
-                  />
+                  <>
+                    <p className={`${dropdownLabelClasses} hidden md:block`}>Suggestions</p>
+                    <button className={buttonClasses} type="button" onClick={selectName}>
+                      <span className="truncate">
+                        {formatBaseEthDomain(suggestion, basenameChain.id)}
+                      </span>
+                      <ChevronRightIcon width={iconSize} height={iconSize} />
+                    </button>
+                  </>
                 ))}
               </>
             ) : (
