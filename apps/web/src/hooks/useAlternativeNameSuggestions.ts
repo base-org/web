@@ -16,12 +16,11 @@ export function useAlternativeNameSuggestions(nameNeedingAlternatives: string, d
       }
       try {
         setIsLoading(true);
-        await fetch(`/api/name/${nameNeedingAlternatives}`);
-        // if (response.ok) {
-        // const suggestionData = (await response.json()) as NameSuggestionResponseData;
-        const mocksuggestions = ['test', 'test2', 'test3'];
-        setSuggestions(mocksuggestions);
-        // }
+        const response = await fetch(`/api/name/${nameNeedingAlternatives}`);
+        if (response.ok) {
+          const suggestionData = (await response.json()) as NameSuggestionResponseData;
+          setSuggestions(suggestionData.suggestion);
+        }
       } catch (e) {
         logError(e, 'Failed to fetch alternative names');
         setError('error fetching name suggestions');
