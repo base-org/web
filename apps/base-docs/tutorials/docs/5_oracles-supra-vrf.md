@@ -78,7 +78,7 @@ Supra dVRF V2 requires subscription to the service with a customer controlled wa
 
 Therefore you must register your wallet with the Supra team if you plan to consume Supra dVRF V2 within your smart contracts.
 
-Please refer to the [Supra documentation](https://supraoracles.com/docs/vrf/vrf-subscription-model-v2) for the latest steps on how to register your wallet for their service.
+Please refer to the [Supra documentation](https://docs.supra.com/oracles/dvrf/vrf-subscription-model) for the latest steps on how to register your wallet for their service.
 
 :::
 
@@ -128,7 +128,7 @@ This will create a Foundry project, which has the following basic layout:
 
 Once your Foundry project has been created, you can now start writing a smart contract.
 
-The Solidity code below defines a basic contract named `RNGContract`. The smart contract's constructor takes in a single `address` and assigns it to a member variable named `supraAddr`. This address corresponds to the [contract address](https://supraoracles.com/docs/vrf/networks/) of the Supra Router Contract that will be used to generate random numbers. The contract address of the Supra Router Contract on Base Sepolia testnet is `0x99a021029EBC90020B193e111Ae2726264a111A2`.
+The Solidity code below defines a basic contract named `RNGContract`. The smart contract's constructor takes in a single `address` and assigns it to a member variable named `supraAddr`. This address corresponds to the [contract address](https://docs.supra.com/oracles/data-feeds/pull-oracle/networks) of the Supra Router Contract that will be used to generate random numbers. The contract address of the Supra Router Contract on Base Sepolia testnet is `0x99a021029EBC90020B193e111Ae2726264a111A2`.
 
 The contract also assigns the contract deployer (`msg.sender`) to a member variable named `supraClientAddress`. This should be the client wallet address that is registered and whitelisted to use Supra VRF (see: [Prerequisites](#prerequisites)).
 
