@@ -39,7 +39,7 @@ You'll need to set up an account (free) with the [Coinbase Developer Platform (C
 
 ### Smart Wallet
 
-Smart Wallets enables users to create an account in seconds with no app or extension required through the use of Passskey signing. This tutorial uses the [Base Wallet] (FKA Coinbase Smart Wallet) to sign and mint transactions.
+Smart Wallets enables users to create an account in seconds with no app or extension required through the use of Passkey signing. This tutorial uses the [Base Wallet] (FKA Coinbase Smart Wallet) to sign and mint transactions.
 
 ---
 
@@ -136,7 +136,7 @@ In this step, we’ll create a new page in our project where users can mint an N
 
 In your project’s `src/app` folder, create a new file called `mint/page.tsx`. This file will contain the code to manage wallet connection, check for paymaster capabilities, and execute the minting action.
 
-:::info Experimenal Hooks and Capabilities
+:::info Experimental Hooks and Capabilities
 
 To ensure a smooth, gas-free NFT minting experience, it’s important to understand the purpose of two key hooks from Wagmi:
 
@@ -206,7 +206,7 @@ The full `src/app/mint/page.tsx` file should look something like this:
 
 :::tip Smart Wallet Only
 
-To enable [Base Wallet] functionality add the `smartWalletOnly` prefence to the [wagmi connector]
+To enable [Base Wallet] functionality add the `smartWalletOnly` preference to the [wagmi connector]
 
 ```jsx
 <button
