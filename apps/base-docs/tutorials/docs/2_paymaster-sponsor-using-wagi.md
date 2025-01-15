@@ -136,7 +136,7 @@ In this step, we’ll create a new page in our project where users can mint an N
 
 In your project’s `src/app` folder, create a new file called `mint/page.tsx`. This file will contain the code to manage wallet connection, check for paymaster capabilities, and execute the minting action.
 
-:::info Experimenal Hooks and Capabilities
+:::info Experimental Hooks and Capabilities
 
 To ensure a smooth, gas-free NFT minting experience, it’s important to understand the purpose of two key hooks from Wagmi:
 
