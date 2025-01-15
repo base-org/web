@@ -288,7 +288,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ firstNam
 );
 ```
 
-In `src/app/page.tsx` add the following section to display wether the user is a member or not:
+In `src/app/page.tsx` add the following section to display weather the user is a member or not:
 
 ```html
 <section
