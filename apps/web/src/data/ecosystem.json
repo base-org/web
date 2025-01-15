@@ -176,6 +176,14 @@
     "subcategory": "data"
   },
   {
+    "name": "based.gift",
+    "description": "Send beautiful onchain gift cards on Base. Simple and an easy customizable way to give the gift of crypto for any occasion.",
+    "url": "https://based.gift",
+    "imageUrl": "/images/partners/basedgift.png",
+    "category": "consumer",
+    "subcategory": "nft"
+  },
+  {
     "name": "Bulla Network",
     "description": "Bulla is a global onchain credit protocol that streamlines web3 business with one-step invoicing, payments, payroll, loans and multi-functional account management and tax reporting across 14 chains.",
     "url": "https://www.bulla.network/",
