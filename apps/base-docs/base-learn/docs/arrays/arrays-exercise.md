@@ -50,7 +50,7 @@ Write a function called `appendToNumbers` that takes a `uint[] calldata` array c
 
 At the contract level, add an `address` array called `senders` and a `uint` array called `timestamps`.
 
-Write a function called `saveTimestamp` that takes a `uint` called `_unixTimestamp` as an argument. When called, it should add the address of the caller to the end of `senders` and the `_unixTimeStamp` to `timestamps`.
+Write a function called `saveTimestamp` that takes a `uint` called `_unixTimestamp` as an argument. When called, it should add the address of the caller to the end of `senders` and the `_unixTimestamp` to `timestamps`.
 
 :::tip
 
