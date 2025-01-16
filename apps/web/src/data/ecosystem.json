@@ -3646,5 +3646,13 @@
     "description": "Turnkey is an enterprise-grade operating system for wallets: powerful, modular, and built to adapt to any use case from embedded wallets to programmatic backend crypto automation.",
     "url": "https://www.turnkey.com/",
     "imageUrl": "/images/partners/turnkey.png"
-  }
+ }, 
+  {
+    "name": "zkCodex Wallet Tracker",
+    "description": "zkCodex is a Comprehensive Wallet Analysis platform that provides detailed insights across 12 Ethereum Layer 2 blockchains (6 of which are OP Stack). It allows users to easily monitor their wallet performance and activities, tracking key metrics such as Chain Score, Transaction Volume, Smart Contract Interactions...",
+    "url": "https://zkcodex.com/base",
+    "imageUrl": "/images/partners/zkcodex.png",
+    "category": "infra",
+    "subcategory": "data"
+  },
 ]
