@@ -135,7 +135,7 @@ As mentioned above, developers can also query their data from within the OrbisDB
 
 In most cases, developers will need to query data from within their application logic. Using our Basepaint example above, this may look something like:
 
-```TypeScript
+```typescript
 import { OrbisDB } from "@useorbis/db-sdk";
 
 // bring in the identifier for our table (or import from a private env file)

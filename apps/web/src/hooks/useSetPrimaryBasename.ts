@@ -5,7 +5,7 @@ import {
 } from 'apps/web/src/addresses/usernames';
 import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
 import { useCallback, useEffect } from 'react';
-import { BaseName } from '@coinbase/onchainkit/identity';
+import { Basename } from '@coinbase/onchainkit/identity';
 import { useAccount } from 'wagmi';
 import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
 import { useErrors } from 'apps/web/contexts/Errors';
@@ -13,16 +13,16 @@ import useWriteContractWithReceipt from 'apps/web/src/hooks/useWriteContractWith
 import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 
 /*
-  A hook to set an name as primary for resolution.
+  A hook to set a name as primary for resolution.
 
-  Responsabilities:
+  Responsibilities:
   - Get and validate the primary username against the new username
   - Write the new name to the contract & Wait for the transaction to be processed
-  - Refetch basename on successfull request
+  - Refetch basename on successful request
 */
 
 type UseSetPrimaryBasenameProps = {
-  secondaryUsername: BaseName;
+  secondaryUsername: Basename;
 };
 
 export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrimaryBasenameProps) {
@@ -60,12 +60,12 @@ export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrima
     }
   }, [logError, refetchPrimaryUsername, transactionIsSuccess]);
 
-  const setPrimaryName = useCallback(async () => {
+  const setPrimaryName = useCallback(async (): Promise<boolean | undefined> => {
     // Already primary
-    if (secondaryUsername === primaryUsername) return;
+    if (secondaryUsername === primaryUsername) return undefined;
 
     // No user is connected
-    if (!address) return;
+    if (!address) return undefined;
 
     try {
       await initiateTransaction({
@@ -81,6 +81,7 @@ export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrima
       });
     } catch (error) {
       logError(error, 'Set primary name transaction canceled');
+      return undefined;
     }
 
     return true;
@@ -95,5 +96,5 @@ export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrima
 
   const isLoading = transactionIsLoading || primaryUsernameIsLoading || primaryUsernameIsFetching;
 
-  return { setPrimaryName, canSetUsernameAsPrimary, isLoading };
+  return { setPrimaryName, canSetUsernameAsPrimary, isLoading, transactionIsSuccess };
 }

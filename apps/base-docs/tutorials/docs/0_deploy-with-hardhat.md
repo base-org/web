@@ -291,7 +291,7 @@ etherscan: {
 
 :::info
 
-When verifying a contract with Basescan on testnet (Sepolia), an API key is not required. You can leave the value as `PLACEHOLDER_STRING`. On mainnet, you can get your Basescan API key from [here](https://basescan.org/myapikey) after you sign up for an account.
+You can get your Basescan API key from [basescan.org](https://basescan.org/myapikey) when you sign up for an account.
 
 :::
 

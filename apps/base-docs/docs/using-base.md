@@ -86,11 +86,11 @@ Your active network should now be switched to Base testnet.
 
 #### Other wallets
 
-Base Sepolia can be added as a custom network to any EVM-compatible wallet (i.e. [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)).
+Base Sepolia can be added as a custom network to any EVM-compatible wallet (e.g., [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)).
 
 #### MetaMask
 
-To add Base Sepolia as a custom network to MetaMask:
+To add Base Sepolia as a custom network in MetaMask:
 
 1. Open the MetaMask browser extension.
 2. Open the network selection dropdown menu by clicking the dropdown button at the top of the extension.

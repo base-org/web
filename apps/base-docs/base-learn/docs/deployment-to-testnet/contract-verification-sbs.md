@@ -4,7 +4,7 @@ description: Verify your contract and interact with it.
 hide_table_of_contents: false
 ---
 
-Once your contract is deployed, you can verify it using a number of popular services. Doing so will let you users have confidence that your contract does what you claim, and will allow you to interact with it using a similar interface to what you used in Remix.
+Once your contract is deployed, you can verify it using a number of popular services. Doing so will let your users have confidence that your contract does what you claim, and will allow you to interact with it using a similar interface to what you used in Remix.
 
 ---
 
@@ -46,7 +46,7 @@ Click the linked address to your contract to return to the contract page. You'll
 
 :::tip
 
-If you have imports, you'll need to right click on the name of the file and choose `Flatten`. Submit the newly generated `filename_flattened.sol` for verification.
+If you have imports, you'll need to right-click on the name of the file and choose `Flatten`. Submit the newly generated `filename_flattened.sol` for verification.
 
 :::
 
@@ -69,7 +69,7 @@ With your contracts verified, you can interact with them using online tools and 
 [`sepolia.basescan.org`]: https://sepolia.basescan.org/
 [coinbase]: https://www.coinbase.com/wallet
 [faucet]: https://docs.base.org/tools/network-faucets
-[set up]: https://www.youtube.com/watch?v=CZDgLG6jpgw
+[set up]: 
 [coinbase settings]: https://docs.cloud.coinbase.com/wallet-sdk/docs/developer-settings
 [BaseScan]: https://sepolia.basescan.org/
 [faucets on the web]: https://coinbase.com/faucets

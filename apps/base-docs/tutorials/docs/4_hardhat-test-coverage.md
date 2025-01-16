@@ -154,7 +154,7 @@ describe("Lock Tests", function () {
     await expect(newInstanceUsingAnotherSigner.withdraw()).to.be.revertedWith("You aren't the owner")
   })
 
- it('should allow to withdraw a owner', async()=> {
+ it('should allow to withdraw an owner', async()=> {
     const balanceBefore = await ethers.provider.getBalance(await lockInstance.getAddress());
 
     expect(balanceBefore).to.equal(VALUE_LOCKED)
@@ -180,7 +180,7 @@ If you run `npx hardhat coverage`, you should get:
     ✔ should have the right owner
     ✔ shouldn't allow to withdraw before unlock time
     ✔ shouldn't allow to withdraw a non owner
-    ✔ should allow to withdraw a owner
+    ✔ should allow to withdraw an owner
 
 
   6 passing (195ms)
@@ -232,7 +232,7 @@ Then, run `npx hardhat coverage` and you should get:
     ✔ should have the right owner
     ✔ shouldn't allow to withdraw before unlock time
     ✔ shouldn't allow to withdraw a non owner
-    ✔ should allow to withdraw a owner
+    ✔ should allow to withdraw an owner
 
 
   7 passing (198ms)
