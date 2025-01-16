@@ -1025,8 +1025,8 @@
   },
   {
     "name": "Alien Base",
-    "url": "https://app.alienbase.xyz/",
-    "description": "Alien Base is the Base-native decentralized exchange ecosystem. Use it to trade blue chip assets and derivatives, or check out Area 51 to play with experimental tokens, predictions and lotteries",
+    "url": "https://alienbase.xyz/",
+    "description": "Alien Base is building a Base trading hub for efficiently trading tokens and memecoins onchain. Offering aggregated liquidity, limit orders, yield farming and more, Alien technology helps you use Base.",
     "category": "defi",
     "subcategory": "dex",
     "imageUrl": "/images/partners/alienbase.webp"
@@ -3638,7 +3638,15 @@
     "description": "BlockAI combines blockchain and AI to offer decentralized access to innovative tools like Text and image generation, video summarization, games, etc.",
     "url": "https://base.blockai.dev",
     "imageUrl": "/images/partners/blockai.png"
-  }, 
+  },
+  {
+    "name": "Turnkey",
+    "category": "infra",
+    "subcategory": "developer tool",
+    "description": "Turnkey is an enterprise-grade operating system for wallets: powerful, modular, and built to adapt to any use case from embedded wallets to programmatic backend crypto automation.",
+    "url": "https://www.turnkey.com/",
+    "imageUrl": "/images/partners/turnkey.png"
+ }, 
   {
     "name": "zkCodex Wallet Tracker",
     "description": "zkCodex is a Comprehensive Wallet Analysis platform that provides detailed insights across 12 Ethereum Layer 2 blockchains (6 of which are OP Stack). It allows users to easily monitor their wallet performance and activities, tracking key metrics such as Chain Score, Transaction Volume, Smart Contract Interactions...",
