@@ -13,7 +13,7 @@ Last updated: July 12, 2023
 
 At Base (referred to here as “**we**”, “**us**” or “**our**”), we respect and protect the privacy of those users and developers (“**you**” and “**your**” or “**Users**” and “**Developers**”, as relevant) who explore and use Base (“**Base**”) through the Base protocol or any other applications, tools, and features we operate  (collectively, the “**Services**”).
 
-This Privacy Policy describes how we collect, use, and disclose personal information when you use our Services, which include the services offered on our website [https://base.org](https://base.org/) ( “**Site**”). This Privacy Policy does not apply to any processing which Base carries out as a processor on behalf of those Users and Developers who explore and use Base. Please note that we do not control websites, applications, or services operated by third parties, and we are not responsible for their actions. We encourage you to review the privacy policies of the other websites, decentralized applications, and services you use to access or interact with our Services.
+This Privacy Policy describes how we collect, use, and disclose personal information when you use our Services, which include the services offered on our website [https://base.org](https://base.org/) ( “**Site**”). This Privacy Policy does not apply to any data processing carried out by Base as a processor on behalf of those Users and Developers who explore and use Base. Please note that we do not control websites, applications, or services operated by third parties, and we are not responsible for their actions. We encourage you to review the privacy policies of the other websites, decentralized applications, and services you use to access or interact with our Services.
 
 # 1. WHAT INFORMATION WE COLLECT 
 
@@ -85,7 +85,7 @@ The Services are not directed to persons under the age of 18, and we do not know
 
 # 6. INTERNATIONAL TRANSFERS
 
-To facilitate our global operations, we and our  third-party partners and service providers may transfer and store throughout the world, including in the United States.
+To facilitate our global operations, we and our third-party partners and service providers may transfer and store throughout the world, including in the United States.
 
 If you reside in the EEA, Switzerland, or the United Kingdom, we rely upon a variety of legal mechanisms to facilitate these transfers of your personal information (collectively, “**European Personal Data”**). \*\*\*\*
 
