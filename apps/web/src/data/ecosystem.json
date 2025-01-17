@@ -7,6 +7,14 @@
     "category": "consumer",
     "subcategory": "gaming"
   },
+    {
+    "name": "OKX Wallet",
+    "description": "OKX Wallet is an universal crypto wallet available on multiple platforms, including app, web, and extension.",
+    "url": "https://www.okx.com/web3",
+    "imageUrl": "/images/partners/okxwallet192.png",
+    "category": "wallet",
+    "subcategory": "self-custody"
+  },
   {
     "name": "Moxie Protocol",
     "description": "Moxie is a SocialFi protocol on the Base blockchain that allows users to create and interact with Fan Tokens.",
