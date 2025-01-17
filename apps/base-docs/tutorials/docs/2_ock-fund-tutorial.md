@@ -1,7 +1,7 @@
 ---
 title: 'Build a Smart Wallet Funding app with OnchainKit'
 slug: /build-smart-wallet-funding-app
-description: Learn how to create a app that detects if a smart wallet has ETH and prompts users to add funds if needed.
+description: Learn how to create an app that detects if a smart wallet has ETH and prompts users to add funds if needed.
 author: hughescoin
 keywords: [
     Account Abstraction,
@@ -28,10 +28,10 @@ In this tutorial, you'll learn how to build an onchain app that checks a user's 
 
 By the end of this tutorial you should be able to:
 
-- Set up a project using the Onchain Kit App Template
-- Configure the app for to onboard users easily using [Smart Wallets]
+- Set up a project using the [OnchainKit App Template]
+- Configure the app to onboard users easily using [Smart Wallets]
 - Implement balance checking and conditional rendering
-- Use the Fund component to allow users to add funds to their wallet
+- Use the Fund component to allow users to buy tokens from their wallet without leaving your app
 
 ## Prerequisites
 
@@ -41,11 +41,11 @@ You should be familiar with React and TypeScript. If you're new to these technol
 
 ### OnchainKit
 
-This tutorial uses Coinbase's Onchain Kit. Familiarity with its basic concepts will be helpful.
+This tutorial uses Coinbase's OnchainKit. Familiarity with its basic concepts will be helpful.
 
 ### Access to the Coinbase Developer Platform
 
-You'll need to set up an account on with [Coinbase Developer Platform (CDP) Account](https://www.coinbase.com/cloud). The CDP provides various tools and services for blockchain development, including access to API endpoints and other resources that will be instrumental in your project. Once you've created your account, you'll be ready to move forward with integrating these services into your application.
+You'll need to set up an account with [Coinbase Developer Platform (CDP) Account](https://www.coinbase.com/cloud). The CDP provides various tools and services for blockchain development, including access to API endpoints and other resources that will be instrumental in your project. Once you've created your account, you'll be ready to move forward with integrating these services into your application.
 
 :::tip CDP Configurations
 
@@ -58,7 +58,7 @@ If you see a "something went wrong" error message when navigating to pay.coinbas
 
 ## Setting up the Project
 
-To get started, clone the Onchain Kit App Template by running
+To get started, clone the OnchainKit App Template by running:
 
 ```bash
 git clone git@github.com:coinbase/onchain-app-template.git
@@ -85,7 +85,7 @@ coinbaseWallet.preference = 'smartWalletOnly';
 
 ## Implementing Balance Checking
 
-Now well implement a check on the user's wallet to see if they have enough funds. Before we implement this check, let's create a helper function that grabs the user's Ethereum balance using [viem]. To do so, create a `utils.ts` file in the `src` directory that creates a client connected to Base and fetches the user's ETH balance:
+Now we'll implement a check on the user's wallet to see if they have enough funds. Before we implement this check, let's create a helper function that grabs the user's Ethereum balance using [viem]. To do so, create a `utils.ts` file in the `src` directory that creates a client connected to Base and fetches the user's ETH balance:
 
 ```typescript
 import { createPublicClient, http } from 'viem';
@@ -167,12 +167,13 @@ Sweet! Now our conditional rendering is in full force. If a user clicks on the `
 
 ## Conclusion
 
-Congratulations! You've built a app that checks a user's smart wallet balance and provides appropriate options based on their funds.
+Congratulations! You've built an app that checks a user's smart wallet balance and provides appropriate options based on their funds.
 This app can serve as a foundation for more complex onchain applications that require users to have funded smart wallets.
 
 ---
 
-[Onchain Kit]: https://github.com/coinbase/onchainkit
+[OnchainKit]: https://github.com/coinbase/onchainkit
+[OnchainKit App Template]: https://github.com/coinbase/onchain-app-template
 [Viem]: https://viem.sh/
 [Smart Wallets]: https://keys.coinbase.com/onboarding
 [viem]: https://viem.sh/docs/introduction

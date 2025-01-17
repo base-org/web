@@ -19,6 +19,7 @@ import Tooltip from 'apps/web/src/components/Tooltip';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import { usePremiumEndDurationRemaining } from 'apps/web/src/hooks/useActiveEthPremiumAmount';
 import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
+import useCapabilitiesSafe from 'apps/web/src/hooks/useCapabilitiesSafe';
 import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
 import {
   useDiscountedNameRegistrationPrice,
@@ -144,12 +145,18 @@ export default function RegistrationForm() {
     [setReverseRecord],
   );
 
+  const { auxiliaryFunds: auxiliaryFundsEnabled } = useCapabilitiesSafe({
+    chainId: connectedChain?.id,
+  });
   const { data: balance } = useBalance({ address, chainId: connectedChain?.id });
   const insufficientBalanceToRegister =
     balance?.value !== undefined && price !== undefined && balance?.value < price;
   const correctChain = connectedChain?.id === basenameChain.id;
+  const insufficientFundsAndNoAuxFunds = insufficientBalanceToRegister && !auxiliaryFundsEnabled;
   const insufficientBalanceToRegisterAndCorrectChain =
     insufficientBalanceToRegister && correctChain;
+  const insufficientFundsNoAuxFundsAndCorrectChain =
+    !auxiliaryFundsEnabled && insufficientBalanceToRegisterAndCorrectChain;
 
   const hasResolvedUSDPrice = price !== undefined && ethUsdPrice !== undefined;
   const usdPrice = hasResolvedUSDPrice ? formatUsdPrice(price, ethUsdPrice) : '--.--';
@@ -247,14 +254,14 @@ export default function RegistrationForm() {
                   <div className="flex flex-row items-baseline justify-around gap-2">
                     <p
                       className={classNames('whitespace-nowrap text-3xl text-black line-through', {
-                        'text-state-n-hovered': insufficientBalanceToRegister,
+                        'text-state-n-hovered': insufficientFundsAndNoAuxFunds,
                       })}
                     >
                       {formatEtherPrice(initialPrice)}
                     </p>
                     <p
                       className={classNames('whitespace-nowrap text-3xl font-bold text-green-50', {
-                        'text-state-n-hovered': insufficientBalanceToRegister,
+                        'text-state-n-hovered': insufficientFundsAndNoAuxFunds,
                       })}
                     >
                       {formatEtherPrice(discountedPrice)} ETH
@@ -263,7 +270,7 @@ export default function RegistrationForm() {
                 ) : (
                   <p
                     className={classNames('whitespace-nowrap text-3xl font-bold text-black', {
-                      'text-state-n-hovered': insufficientBalanceToRegister,
+                      'text-state-n-hovered': insufficientFundsAndNoAuxFunds,
                     })}
                   >
                     {formatEtherPrice(price)} ETH
@@ -273,7 +280,7 @@ export default function RegistrationForm() {
                   <span className="whitespace-nowrap text-xl text-gray-60">${usdPrice}</span>
                 )}
               </div>
-              {insufficientBalanceToRegister ? (
+              {insufficientFundsAndNoAuxFunds ? (
                 <p className="text-sm text-state-n-hovered">your ETH balance is insufficient</p>
               ) : Boolean(nameIsFree && IS_EARLY_ACCESS) ? (
                 <p className="text-sm text-green-50">Discounted during Early Access.</p>
@@ -316,9 +323,7 @@ export default function RegistrationForm() {
                       type="button"
                       variant={ButtonVariants.Black}
                       size={ButtonSizes.Medium}
-                      disabled={
-                        insufficientBalanceToRegisterAndCorrectChain || registerNameIsPending
-                      }
+                      disabled={insufficientFundsNoAuxFundsAndCorrectChain || registerNameIsPending}
                       isLoading={registerNameIsPending}
                       rounded
                       fullWidth
@@ -332,8 +337,7 @@ export default function RegistrationForm() {
           </div>
           {code && (
             <div className="relative z-10 -mt-8 rounded-2xl bg-gradient-to-r from-indigo-40 to-orange-30 px-4 py-4 pt-12 text-center text-lg text-white">
-              Claim your <strong>free creator basename</strong> &mdash; See you{' '}
-              <strong>Friday at Botanica</strong>
+              Claim your <strong>free basename</strong> &mdash; Thanks for joining us!
             </div>
           )}
 
@@ -371,7 +375,6 @@ export default function RegistrationForm() {
             baseSingleYearEthCost={singleYearBasePrice}
             isOpen={premiumExplainerModalOpen}
             toggleModal={togglePremiumExplainerModal}
-            nameLength={selectedName?.length}
           />
         )}
       </>

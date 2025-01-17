@@ -12,7 +12,7 @@ import useCapabilitiesSafe from 'apps/web/src/hooks/useCapabilitiesSafe';
 /*
   A hook to request and track a wallet write transaction
 
-  Responsabilities:
+  Responsibilities:
   - InitiateBatchCalls to start the flow (write multiple contracts)
   - Keep track of the batchCall status with useCallsStatus
   - Keep track of the batchCall transactionReceipt with useWaitForTransactionReceipt
@@ -55,7 +55,7 @@ export default function useWriteContractsWithLogs({
   // Errors & Analytics
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();
-  const { atomicBatchEnabled } = useCapabilitiesSafe({ chainId: chain.id });
+  const { atomicBatch: atomicBatchEnabled } = useCapabilitiesSafe({ chainId: chain.id });
   const { chain: connectedChain } = useAccount();
 
   const [batchCallsStatus, setBatchCallsStatus] = useState<BatchCallsStatus>(BatchCallsStatus.Idle);
@@ -150,7 +150,7 @@ export default function useWriteContractsWithLogs({
       return;
     }
 
-    // Onchain TransactionReceipt Successfull with logs
+    // Onchain TransactionReceipt Successful with logs
     if (transactionReceipt?.status === 'success' && sendCallsResult?.receipts?.length) {
       const logs = transactionReceipt.logs;
       const decodedUserOperationEventLog = logs
