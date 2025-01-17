@@ -3653,5 +3653,13 @@
     "description": "Turnkey is an enterprise-grade operating system for wallets: powerful, modular, and built to adapt to any use case from embedded wallets to programmatic backend crypto automation.",
     "url": "https://www.turnkey.com/",
     "imageUrl": "/images/partners/turnkey.png"
+  },
+  {
+    "name": "Virtuals Protocol",
+    "category": "infra",
+    "subcategory": "ai",
+    "description": "Virtuals Protocol is building a Society of AI Agents onchain",
+    "url": "https://app.virtuals.io/",
+    "imageUrl": "/images/partners/virtuals.png"
   }
 ]
