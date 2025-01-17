@@ -3646,5 +3646,13 @@
     "description": "Turnkey is an enterprise-grade operating system for wallets: powerful, modular, and built to adapt to any use case from embedded wallets to programmatic backend crypto automation.",
     "url": "https://www.turnkey.com/",
     "imageUrl": "/images/partners/turnkey.png"
+  },
+   {
+  "name": "PeakChain MoveUp",
+  "description": "Peakchain MoveUp: A Move-to-Earn app rewarding sustainable travel with tokens, points & NFTs, driving eco-friendly mobility & sustainability!",
+  "url": "https://peakchain.network/base",
+  "imageUrl": "/images/partners/peakchain-moveup.png",
+  "category": "consumer",
+  "subcategory": "real world"
   }
 ]
