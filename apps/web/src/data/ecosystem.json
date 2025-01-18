@@ -1025,8 +1025,8 @@
   },
   {
     "name": "Alien Base",
-    "url": "https://app.alienbase.xyz/",
-    "description": "Alien Base is the Base-native decentralized exchange ecosystem. Use it to trade blue chip assets and derivatives, or check out Area 51 to play with experimental tokens, predictions and lotteries",
+    "url": "https://alienbase.xyz/",
+    "description": "Alien Base is building a Base trading hub for efficiently trading tokens and memecoins onchain. Offering aggregated liquidity, limit orders, yield farming and more, Alien technology helps you use Base.",
     "category": "defi",
     "subcategory": "dex",
     "imageUrl": "/images/partners/alienbase.webp"
@@ -3630,5 +3630,29 @@
     "imageUrl": "/images/partners/ethgastracker.png",
     "category": "infra",
     "subcategory": "data"
+  },
+  {
+    "name": "BlockAI",
+    "category": "infra",
+    "subcategory": "ai",
+    "description": "BlockAI combines blockchain and AI to offer decentralized access to innovative tools like Text and image generation, video summarization, games, etc.",
+    "url": "https://base.blockai.dev",
+    "imageUrl": "/images/partners/blockai.png"
+  },
+  {
+    "name": "Turnkey",
+    "category": "infra",
+    "subcategory": "developer tool",
+    "description": "Turnkey is an enterprise-grade operating system for wallets: powerful, modular, and built to adapt to any use case from embedded wallets to programmatic backend crypto automation.",
+    "url": "https://www.turnkey.com/",
+    "imageUrl": "/images/partners/turnkey.png"
+  },
+  {
+    "name": "Virtuals Protocol",
+    "category": "infra",
+    "subcategory": "ai",
+    "description": "Virtuals Protocol is building a Society of AI Agents onchain",
+    "url": "https://app.virtuals.io/",
+    "imageUrl": "/images/partners/virtuals.png"
   }
 ]
