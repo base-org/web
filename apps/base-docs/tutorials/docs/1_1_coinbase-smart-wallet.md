@@ -433,7 +433,7 @@ In this tutorial, you've learned how to connect users to your onchain app with t
 [Testnet Opensea]: https://testnets.opensea.io/
 [deploy]: https://docs.base.org/tutorials?tag=smart%20contracts
 [Sepolia Basescan]: https://sepolia.basescan.org/
-[BOAT]: https://www.smartwallet.dev/guides/create-app/using-boat
+[BOAT]: https://www.smartwallet.dev/guides/create-app/using-onchain-app-template
 [wagmi template]: https://www.smartwallet.dev/guides/create-app/using-wagmi
 [Coinbase Developer Platform (CDP)]: https://portal.cdp.coinbase.com/
 [Base Gasless Campaign]: https://www.smartwallet.dev/base-gasless-campaign

@@ -23,11 +23,12 @@ export default function VideoCard({ title, description, src }: VideoCardProps) {
       logError(error, 'failed to play video');
     });
   }, [logError]);
+
   return (
     <div onMouseEnter={playVideo} className="w-full">
       <Card innerClassName="p-6 transition-all bg-[#0A0B0C] group-hover:bg-[#111111]">
         <video
-          src={src}
+          src={`${src}#t=0.001`}
           muted
           playsInline
           className="mx-auto mt-6 motion-reduce:hidden"
