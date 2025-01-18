@@ -150,7 +150,7 @@ export default function useWriteContractsWithLogs({
       return;
     }
 
-    // Onchain TransactionReceipt Successfull with logs
+    // Onchain TransactionReceipt Successful with logs
     if (transactionReceipt?.status === 'success' && sendCallsResult?.receipts?.length) {
       const logs = transactionReceipt.logs;
       const decodedUserOperationEventLog = logs
