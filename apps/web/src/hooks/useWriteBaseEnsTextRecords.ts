@@ -18,7 +18,7 @@ export type UseWriteBaseEnsTextRecordsProps = {
 /*
   A hook to set update TextRecords in a batch
 
-  Responsabilities:
+  Responsibilities:
   - Get existing TextRecords
   - Keep track of TextRecords updates
   - Wait for the transaction to be processed
