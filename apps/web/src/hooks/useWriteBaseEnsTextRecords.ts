@@ -22,7 +22,7 @@ export type UseWriteBaseEnsTextRecordsProps = {
   - Get existing TextRecords
   - Keep track of TextRecords updates
   - Wait for the transaction to be processed
-  - Refetch records on successfull request  
+  - Refetch records on successful request  
   - Log errors and analytics accordingly
 
 */
