@@ -22,7 +22,7 @@ You may wish to use another familiar contract to help with this challenge.
 
 ## AddressBook
 
-Create an `Ownable` contract called `AddressBook`. In it include:
+Create an `Ownable` contract called `AddressBook`. It includes:
 
 - A `struct` called `Contact` with properties for:
   - `id`
@@ -46,7 +46,7 @@ If the `_id` is not found, it should revert with an error called `ContactNotFoun
 
 ### Get Contact
 
-The `getContact` function returns the contact information of the supplied `_id` number. It reverts with `ContactNotFound` if the contact isn't present.
+The `getContact` function returns the contact information of the supplied `_id` number. It reverts to `ContactNotFound` if the contact isn't present.
 
 :::tip Question
 

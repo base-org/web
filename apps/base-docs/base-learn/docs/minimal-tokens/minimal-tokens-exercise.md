@@ -29,7 +29,7 @@ Add a `public` function called `claim`. When called, so long as a number of toke
 
 The `totalClaimed` should be incremented by the claim amount.
 
-Once all tokens have been claimed, this function should revert with an error `AllTokensClaimed`. (We won't be able to test this, but you'll know if it's there!)
+Once all tokens have been claimed, this function should revert with the error `AllTokensClaimed`. (We won't be able to test this, but you'll know if it's there!)
 
 ### Safe Transfer
 

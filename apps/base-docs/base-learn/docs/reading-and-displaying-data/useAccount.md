@@ -112,7 +112,7 @@ Test it out by connecting and disconnecting with your wallet. You should see you
 
 ### Connection Status Conditional Rendering
 
-It isn't very nice to display a value of `undefined` to the user, so let's use the connection status values for conditional rendering depending on if the user is disconnected, connected, or connecting.
+It isn't very nice to display a value of `undefined` to the user, so let's use the connection status values for conditional rendering depending on whether the user is disconnected, connected, or connecting.
 
 A common pattern is to use the conditional directly in the html return of a component or render function. For example, we could add a line to show that we're connecting as demonstrated:
 
@@ -128,7 +128,7 @@ A common pattern is to use the conditional directly in the html return of a comp
 
 Connect and disconnect your wallet a few times. The `isConnecting` state is true while the _Connect to website_ wallet UI is open.
 
-Autoconnect is enabled by default, so you'll need to clear the connection from your wallet settings to see this more than once. Otherwise, it will briefly flash as the autoconnect processes.
+Autoconnect is enabled by default, so you'll need to clear the connection from your wallet settings to see this more than once. Otherwise, it will briefly flash as the auto-connect processes.
 
 Use the `connected` property in the same way to only render the wallet address if there is a wallet connected. Similarly, use the `isDisconnected` property to show a message asking the user to connect.
 
