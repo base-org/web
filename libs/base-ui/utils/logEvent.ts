@@ -53,7 +53,7 @@ enum AnalyticsEventImportance {
   high = 'high',
 }
 
-enum AnalyticsContext {
+enum AnalyticsEventContext {
   // Navigation/UI contexts
   Navbar = 'navbar',
   Build = 'build',
