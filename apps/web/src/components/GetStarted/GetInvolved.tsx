@@ -15,7 +15,7 @@ export default async function GetInvolved() {
       <div className={gridClasses}>
         <ResourceCard
           title="Join the Discord"
-          description="Join our Discord of over 300K+ members and get involved in our Base community"
+          description="Join our Discord of over 400K+ members and get involved in our Base community"
           href="https://discord.com/invite/buildonbase"
           topLeft={<span className="font-mono">01</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}
