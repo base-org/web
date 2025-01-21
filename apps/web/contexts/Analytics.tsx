@@ -13,7 +13,7 @@ export type AnalyticsContextProps = {
   fullContext: string;
 };
 
-export const AnalyticsReactContext = createContext<AnalyticsContextProps>({
+export const AnalyticsContext = createContext<AnalyticsContextProps>({
   logEventWithContext: function () {
     return undefined;
   },
@@ -21,7 +21,7 @@ export const AnalyticsReactContext = createContext<AnalyticsContextProps>({
 });
 
 export function useAnalytics() {
-  const context = useContext(AnalyticsReactContext);
+  const context = useContext(AnalyticsContext);
   if (context === undefined) {
     throw new Error('useAnalytics must be used within a AnalyticsProvider');
   }
@@ -59,5 +59,5 @@ export default function AnalyticsProvider({ children, context }: AnalyticsProvid
     return { logEventWithContext, context, fullContext };
   }, [context, fullContext, logEventWithContext]);
 
-  return <AnalyticsReactContext.Provider value={values}>{children}</AnalyticsReactContext.Provider>;
+  return <AnalyticsContext.Provider value={values}>{children}</AnalyticsContext.Provider>;
 }
