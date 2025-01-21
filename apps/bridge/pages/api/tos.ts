@@ -13,7 +13,7 @@ const EU_COUNTRIES = [
   'ES', // Spain
   'FI', // Finland
   'FR', // France
-  'GB', // United Kingdom
+// 'GB', // United Kingdom (no longer an EU member)
   'GR', // Greece
   'HU', // Hungary
   'HR', // Croatia
