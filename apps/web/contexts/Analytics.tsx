@@ -45,7 +45,7 @@ export default function AnalyticsProvider({ children, context }: AnalyticsProvid
         sanitizedEventName,
         {
           action: action,
-          context: fullContext as AnalyticsContext,
+          context: fullContext,
           page_path: window.location.pathname,
           ...eventData,
         },
