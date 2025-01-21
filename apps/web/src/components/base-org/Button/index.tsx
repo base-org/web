@@ -57,7 +57,7 @@ export default function Button({
 }: ButtonProps) {
   const buttonClasses = classNames(
     // Shared - base
-    'text-md px-4 py-2 whitespace-nowrap',
+    'text-base px-4 py-2 whitespace-nowrap',
 
     // Shared - layout
     'flex items-center justify-center',
