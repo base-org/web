@@ -3654,5 +3654,13 @@
     "description": "Virtuals Protocol is building a Society of AI Agents onchain",
     "url": "https://app.virtuals.io/",
     "imageUrl": "/images/partners/virtuals.png"
+  },
+  {
+    "name": "TYMIO",
+    "description": "Ecosystem of crypto investor apps for yield and protection.",
+    "url": "https://tymio.com/",
+    "imageUrl": "/images/partners/TYMIO.png",
+    "category": "defi",
+    "subcategory": "liquidity management"
   }
 ]
