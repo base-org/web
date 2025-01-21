@@ -84,7 +84,7 @@ type CCAEventData = {
   message_id?: number;
   response_helpful?: boolean;
   address?: string;
-  context?: AnalyticsContext;
+  context?: AnalyticsEventContext;
   userId?: string;
   error?: string;
   wallet_type?: string;
@@ -143,5 +143,5 @@ export function identify(event: CCAEventData) {
   }
 }
 
-export { ActionType, AnalyticsEventImportance, ComponentType, AnalyticsContext };
+export { ActionType, AnalyticsEventImportance, ComponentType, AnalyticsEventContext };
 export type { AnalyticsEventData, LogEvent, CCAEventData };
