@@ -3655,4 +3655,15 @@
     "url": "https://app.virtuals.io/",
     "imageUrl": "/images/partners/virtuals.png"
   }
+  {
+    "name": "Request Network",
+    "category": "infra",
+    "subcategory": "developer tool",
+    "description": "Leverage Request Network's modular design to integrate reliable and efficient payment processes in your dApp. Use our smart contracts and SDK for effortless Web3 invoicing and payments.",
+    "url": "https://request.network/",
+    "imageUrl": "/images/partners/request_network.png"
+  }
+
+
+
 ]
