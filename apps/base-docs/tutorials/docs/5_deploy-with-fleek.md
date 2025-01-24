@@ -42,7 +42,7 @@ The tutorial assumes you're comfortable with the basics of deploying an app and 
 
 You can skip this section if you've already built an app based off the template, such as our tutorial for [How to Mint on Zora with an App].
 
-Open [Onchain App Template], click the green `Use  this template` button, and create a new repository from the template. Clone your repo and open it in an editor.
+Open [Onchain App Template], click the green `Use this template` button, and create a new repository from the template. Clone your repo and open it in an editor.
 
 Install _bun_ if you need to, and install dependencies.
 
@@ -113,7 +113,7 @@ Then, **in the root of your project** run:
 fleek login
 ```
 
-Click the link in your terminal, then click `Confirm` in the web page that opens up. Once your are connected, click the `Visit Dashboard` button. The site automatically creates a project called `First Project`. If you'd like, you can rename it, or add a new one.
+Click the link in your terminal, then click `Confirm` in the web page that opens up. Once you are connected, click the `Visit Dashboard` button. The site automatically creates a project called `First Project`. If you'd like, you can rename it, or add a new one.
 
 Each project can include more than one site.
 
