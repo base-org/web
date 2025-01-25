@@ -104,7 +104,7 @@ const contentSecurityPolicy = {
     'https://i.seadn.io/', // ens avatars
     'https://api.opensea.io', // enables getting ENS avatars
     'https://ipfs.io', // ipfs ens avatar resolution
-    'https://cloudflare-ipfs.com', // ipfs Cloudfare ens avatar resolution
+    'https://cloudflare-ipfs.com', // ipfs Cloudflare ens avatar resolution
     'wss://www.walletlink.org',
     'https://base.easscan.org/graphql',
     'https://api.guild.xyz/',
@@ -115,7 +115,7 @@ const contentSecurityPolicy = {
     'https://browser-intake-datadoghq.com', // datadog
     'https://*.datadoghq.com', //datadog
     'https://translate.googleapis.com', // Let user translate our website
-    'https://sdk-api.neynar.com/', // Neymar API
+    'https://sdk-api.neynar.com/', // Neynar API
     'https://unpkg.com/@lottiefiles/dotlottie-web@0.31.1/dist/dotlottie-player.wasm', // lottie player
     `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
     'https://usdc-claim-git-master-coinbase-vercel.vercel.app',
@@ -131,7 +131,7 @@ const contentSecurityPolicy = {
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars
     'https://ipfs.io', // ipfs ens avatar resolution
-    'https://cloudflare-ipfs.com', // ipfs Cloudfare ens avatar resolution
+    'https://cloudflare-ipfs.com', // ipfs Cloudflare ens avatar resolution
     'https://res.cloudinary.com',
     `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
   ],
