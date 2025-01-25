@@ -15,11 +15,19 @@ export default async function GetInvolved() {
       <div className={gridClasses}>
         <ResourceCard
           title="Join the Discord"
-          description="Join our Discord of over 300K+ members and get involved in our Base community"
+          description="Join our Discord of over 400K+ members and get involved in our Base community"
           href="https://discord.com/invite/buildonbase"
           topLeft={<span className="font-mono">01</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}
           classnames="bg-teal-80 border-teal-80"
+        />
+        <ResourceCard
+          title="Base Community Leaders"
+          description="Follow and connect with key community members in the Base ecosystem"
+          href="https://x.com/i/lists/1869425408573075694"
+          topLeft={<span className="font-mono">04</span>}
+          topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}
+          classnames="bg-teal-60 border-teal-60"
         />
         <ResourceCard
           title="Host a Meetup"
@@ -27,7 +35,7 @@ export default async function GetInvolved() {
           href="https://docs.google.com/forms/d/e/1FAIpQLSf5wnzD_czyYOyHFeOmFK_rjsJj7Utovo3jWwR40JizPqmDZg/viewform"
           topLeft={<span className="font-mono">02</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}
-          classnames="bg-teal-60 border-teal-60"
+          classnames="bg-teal-80 border-teal-80"
         />
         <ResourceCard
           title="Use Apps on Base"
@@ -35,7 +43,7 @@ export default async function GetInvolved() {
           href="https://www.base.org/ecosystem?utm_source=dotorg&utm_medium=builderkit"
           topLeft={<span className="font-mono">03</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}
-          classnames="bg-teal-80 border-teal-80"
+          classnames="bg-teal-60 border-teal-60"
         />
       </div>
     </div>

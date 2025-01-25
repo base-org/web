@@ -1,5 +1,13 @@
 [
   {
+    "name": "Arcadia Games",
+    "description": "Arcadia Games provides PvP board games on the blockchain. Play Chess, Battleship and other classic games against other players for crypto.",
+    "url": "https://arcadiagames.io",
+    "imageUrl": "/images/partners/arcadia-games.png",
+    "category": "consumer",
+    "subcategory": "gaming"
+  },
+  {
     "name": "Moxie Protocol",
     "description": "Moxie is a SocialFi protocol on the Base blockchain that allows users to create and interact with Fan Tokens.",
     "url": "https://moxie.xyz",
@@ -160,9 +168,9 @@
     "subcategory": "gaming"
   },
   {
-    "name": "GhostLogs.xyz",
-    "description": "GhostLogs allows anyone to edit live smart contract code for tailored data emission.",
-    "url": "https://ghostlogs.xyz",
+    "name": "Ghost",
+    "description": "Next-gen indexing stack for next-gen blockchains. Built high-performance indexers (subgraphs) in Solidity.",
+    "url": "https://tryghost.xyz",
     "imageUrl": "/images/partners/ghostLogs.webp",
     "category": "infra",
     "subcategory": "data"
@@ -346,7 +354,7 @@
   {
     "name": "Cyberscope ",
     "description": "An award-winning blockchain security firm specializing in smart contract audits. We work with some of the biggest networks out there such as Polygon, Chainlink, Klaytn, Oasis, and many more.",
-    "url": "cyberscope.io",
+    "url": "https://cyberscope.io",
     "imageUrl": "/images/partners/cyberscope.webp",
     "category": "infra",
     "subcategory": "security"
@@ -1017,8 +1025,8 @@
   },
   {
     "name": "Alien Base",
-    "url": "https://app.alienbase.xyz/",
-    "description": "Alien Base is the Base-native decentralized exchange ecosystem. Use it to trade blue chip assets and derivatives, or check out Area 51 to play with experimental tokens, predictions and lotteries",
+    "url": "https://alienbase.xyz/",
+    "description": "Alien Base is building a Base trading hub for efficiently trading tokens and memecoins onchain. Offering aggregated liquidity, limit orders, yield farming and more, Alien technology helps you use Base.",
     "category": "defi",
     "subcategory": "dex",
     "imageUrl": "/images/partners/alienbase.webp"
@@ -3521,7 +3529,7 @@
   },
   {
     "name": "Lyvely ",
-    "description": "Lyvely is a disruptive SocialFi platform built for the trillion dollar creator and freelancer economy. \n\nThe ecosystem is powered by our native Utility Token, LVLY,  built on the Base network. \n\nLyvely is backed by institutional giants including the Phoenix group, who is public listed and top 5 largest Bitcoin miners in the world. Other institutional investors include M2, the UAE's fully regulated Crypto exchange, and Cypher Capital, a global Web3 VC fund. \n",
+    "description": "Lyvely is a disruptive SocialFi platform built for the trillion dollar creator and freelancer economy. \n\nThe ecosystem is powered by our native Utility Token, LVLY,  built on the Base network. \n\nLyvely is backed by institutional giants including the Phoenix group, who is publicly listed and top 5 largest Bitcoin miners in the world. Other institutional investors include M2, the UAE's fully regulated Crypto exchange, and Cypher Capital, a global Web3 VC fund. \n",
     "url": "https://get.lyvely.com/",
     "imageUrl": "/images/partners/lyvely.png",
     "category": "consumer",
@@ -3622,5 +3630,29 @@
     "imageUrl": "/images/partners/ethgastracker.png",
     "category": "infra",
     "subcategory": "data"
+  },
+  {
+    "name": "BlockAI",
+    "category": "infra",
+    "subcategory": "ai",
+    "description": "BlockAI combines blockchain and AI to offer decentralized access to innovative tools like Text and image generation, video summarization, games, etc.",
+    "url": "https://base.blockai.dev",
+    "imageUrl": "/images/partners/blockai.png"
+  },
+  {
+    "name": "Turnkey",
+    "category": "infra",
+    "subcategory": "developer tool",
+    "description": "Turnkey is an enterprise-grade operating system for wallets: powerful, modular, and built to adapt to any use case from embedded wallets to programmatic backend crypto automation.",
+    "url": "https://www.turnkey.com/",
+    "imageUrl": "/images/partners/turnkey.png"
+  },
+  {
+    "name": "Virtuals Protocol",
+    "category": "infra",
+    "subcategory": "ai",
+    "description": "Virtuals Protocol is building a Society of AI Agents onchain",
+    "url": "https://app.virtuals.io/",
+    "imageUrl": "/images/partners/virtuals.png"
   }
 ]
