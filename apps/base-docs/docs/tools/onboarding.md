@@ -48,9 +48,9 @@ hide_table_of_contents: true
 
 ## Openfort
 
-[Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. Authenticated users can instantly access the embedded, non-custodial [smart account](https://www.openfort.xyz/docs/guides/accounts/smart) natively in the game and sign blockchain transactions with one button. The Openfort platform is compatible with most EVM chains, including Base.
+[Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. Authenticated users can instantly access the embedded, non-custodial [smart account](https://www.openfort.xyz/docs/guides/javascript/smart-wallet/connected-wallets) natively in the game and sign blockchain transactions with one button. The Openfort platform is compatible with most EVM chains, including Base.
 
-Use [Auth Guide](https://www.openfort.xyz/docs/guides/auth/overview) to allow several onboarding methods into your game regardless of the platform. 
+Use [Auth Guide](https://www.openfort.xyz/docs/guides/javascript/auth) to allow several onboarding methods into your game regardless of the platform. 
 
 ---
 
