@@ -22,7 +22,7 @@ A contract factory is a contract that creates other contracts. To start, let's c
 
 ### Adding the Template
 
-Imagine you want to create a contract that can store its owner's name and compliment them upon request. You can create this contract fairly easily.
+Imagine you want to create a contract that can store its owner's name and complement it upon request. You can create this contract fairly easily.
 
 <details>
 
