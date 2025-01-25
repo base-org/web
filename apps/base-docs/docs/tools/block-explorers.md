@@ -84,7 +84,7 @@ A testnet explorer for [Base Sepolia](https://sepolia.basescan.org/) is also ava
 
 ## Routescan
 
-[Routescan](https://superscan.network/) superchain explorer allows you to search for transactions, addresses, tokens, prices and other activities taking place across all Superchain blockchains, including Base.
+[Routescan](https://routescan.io) superchain explorer allows you to search for transactions, addresses, tokens, prices and other activities taking place across all Superchain blockchains, including Base.
 
 ---
 
