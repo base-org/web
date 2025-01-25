@@ -3654,5 +3654,13 @@
     "description": "Virtuals Protocol is building a Society of AI Agents onchain",
     "url": "https://app.virtuals.io/",
     "imageUrl": "/images/partners/virtuals.png"
+  },
+  {
+    "name": "WOWMAX",
+    "category": "defi",
+    "subcategory": "dex aggregator",
+    "description": "WOWMAX is a decentralized exchange platform powered by an innovative DEX arbitrage algorithm that rebalances the entire DEX market to a perfect equilibrium and delivers exceptional exchange rates.",
+    "url": "https://app.wowmax.exchange/swap/8453/",
+    "imageUrl": "/images/partners/wowmax.png"
   }
 ]
