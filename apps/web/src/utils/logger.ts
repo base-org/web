@@ -1,3 +1,5 @@
+/// <reference types="node" />
+
 // lib/logger.ts
 
 import type { Tracer } from 'dd-trace';
@@ -9,6 +11,19 @@ type LoggerOptions = {
 };
 
 let ddTrace: Tracer | undefined;
+
+// Initialize DataDog tracer if we're in a production environment
+if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    ddTrace = require('dd-trace').init({
+      logInjection: true,
+      service: 'base-org',
+    });
+  } catch (error) {
+    console.warn('Failed to initialize DataDog tracer:', error);
+  }
+}
 
 class CustomLogger {
   private static instance: CustomLogger;
@@ -30,9 +45,8 @@ class CustomLogger {
     let traceId: string | undefined;
     let spanId: string | undefined;
 
-    //TODO: initialice ddTrace through dd-tracer
+    // Get trace and span IDs from active DataDog tracer if available
     if (ddTrace) {
-      // Access trace information server-side
       const currentSpan = ddTrace.scope().active();
       traceId = currentSpan?.context().toTraceId() ?? undefined;
       spanId = currentSpan?.context().toSpanId() ?? undefined;
