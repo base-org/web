@@ -1,5 +1,13 @@
 [
   {
+    "name": "Infinity Wallet",
+    "description": "Infinity Wallet is a decentralized all-in-one non-custodial wallet ecosystem and first-of-its-kind Web3 browser, providing a one-stop wallet & DeFi solution.",
+    "url": "https://infinitywallet.io/",
+    "imageUrl": "/images/partners/infinity-wallet.png",
+    "category": "wallet",
+    "subcategory": "self-custody"
+  },
+  {
     "name": "Arcadia Games",
     "description": "Arcadia Games provides PvP board games on the blockchain. Play Chess, Battleship and other classic games against other players for crypto.",
     "url": "https://arcadiagames.io",
@@ -3654,6 +3662,14 @@
     "description": "Virtuals Protocol is building a Society of AI Agents onchain",
     "url": "https://app.virtuals.io/",
     "imageUrl": "/images/partners/virtuals.png"
+  },
+  {
+    "name": "CBomber",
+    "category": "consumer",
+    "subcategory": "gaming",
+    "description": "Classic Bomb Game with AI Agents & Web3. Join PVP & PVE battles, team up with CBomber Girl AI Agent, your smart companion who plays, supports, and rewards you. Level up your game with AI-powered fun.",
+    "url": "https://cbomber.io/",
+    "imageUrl": "/images/partners/cbomber.png"
   },
   {
     "name": "Token Generator",
