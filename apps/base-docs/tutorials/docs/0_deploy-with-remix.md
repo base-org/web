@@ -224,7 +224,6 @@ You now have the power to put smart contracts on the blockchain! You've only dep
 [`basescan.org`]: https://basescan.org/
 [Coinbase]: https://www.coinbase.com/wallet
 [MetaMask]: https://metamask.io/
-[set up]: 
 [Coinbase Settings]: https://docs.cloud.coinbase.com/wallet-sdk/docs/developer-settings
 [BaseScan]: https://sepolia.basescan.org/
 [faucets on the web]: https://coinbase.com/faucets
