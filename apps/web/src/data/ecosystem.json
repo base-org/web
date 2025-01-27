@@ -3670,5 +3670,13 @@
     "description": "Classic Bomb Game with AI Agents & Web3. Join PVP & PVE battles, team up with CBomber Girl AI Agent, your smart companion who plays, supports, and rewards you. Level up your game with AI-powered fun.",
     "url": "https://cbomber.io/",
     "imageUrl": "/images/partners/cbomber.png"
+  },
+  {
+    "name": "ShapeShift",
+    "description": "ShapeShift empowers users to self-custody and manage assets across top blockchains like Bitcoin, Ethereum, Base, and Cosmos. It's a hybrid app and wallet optimized for trading, earning, and more with digital assets.",
+    "url": "https://app.shapeshift.com/",
+    "imageUrl": "/images/partners/shapeshift.svg",
+    "category": "defi",
+    "subcategory": "dex aggregator"
   }
 ]
