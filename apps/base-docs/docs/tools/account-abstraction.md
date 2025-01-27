@@ -15,6 +15,9 @@ keywords:
     smart contract wallets,
     Alchemy,
     Biconomy,
+    Reown,
+    AppKit,
+    WalletConnect,
     Stackup,
     WalletKit,
     Zerodev,
@@ -54,6 +57,14 @@ The Coinbase Developer Platform [Account Abstraction Kit](https://www.coinbase.c
 ## Pimlico
 
 [Pimlico](https://pimlico.io/) provides an infrastructure platform that makes building smart accounts simpler. If you are developing, an ERC-4337 smart account, they provide bundlers, verifying paymasters, ERC-20 paymasters, and much more.
+
+---
+
+## Reown (prev. known as WalletConnect)
+
+**[Reown](https://reown.com/?utm_source=base&utm_medium=docs&utm_campaign=backlinks)** gives developers the tools to build user experiences that make digital ownership effortless, intuitive, and secure. One of Reown's offerings is the AppKit SDK. 
+
+**AppKit** is a powerful, free, and fully open-source SDK for developers looking to integrate wallet connections and other Web3 functionalities into their apps on any EVM and non-EVM chain. In just a few simple steps, you can provide your users with seamless wallet access, one-click authentication, social logins, and notifications—streamlining their experience while enabling advanced features like on-ramp functionality, in-app token swaps and smart accounts. Check out the [docs](https://docs.reown.com/appkit/overview?utm_source=base&utm_medium=docs&utm_campaign=backlinks) to get started.
 
 ---
 

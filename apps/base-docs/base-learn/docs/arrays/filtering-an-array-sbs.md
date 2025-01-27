@@ -47,7 +47,7 @@ The simple and obvious solution is to simply iterate through `numbers` and count
 Go ahead and write it on your own. It needs to:
 
 - Instantiate a `uint` to hold the results
-- Iterate through all of the values in `numbers` and increment that number if the value is even
+- Iterate through all values in `numbers` and increment that number if the value is even
 - Return the result
 
 You should end up with something like:

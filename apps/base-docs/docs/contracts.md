@@ -81,13 +81,13 @@ This page lists contract addresses for onchain apps that we have deployed.
 | `v3Migrator`                         | [0xCbf8b7f80800bd4888Fbc7bf1713B80FE4E23E10](https://sepolia.basescan.org/address/0xCbf8b7f80800bd4888Fbc7bf1713B80FE4E23E10) |
 | `v3Staker`                           | [0x62725F55f50bdE240aCa3e740D47298CAc8d57D5](https://sepolia.basescan.org/address/0x62725F55f50bdE240aCa3e740D47298CAc8d57D5) |
 | `quoterV2`                           | [0xC5290058841028F1614F3A6F0F5816cAd0df5E27](https://sepolia.basescan.org/address/0xC5290058841028F1614F3A6F0F5816cAd0df5E27) |
-| `swapRouter`                         | [0x94cC0AaC535CCDB3C01d6787D6413C739ae12bc4](https://sepolia.basescan.org/0x94cC0AaC535CCDB3C01d6787D6413C739ae12bc4)         |
+| `swapRouter`                         | [0x94cC0AaC535CCDB3C01d6787D6413C739ae12bc4](https://sepolia.basescan.org/address/0x94cC0AaC535CCDB3C01d6787D6413C739ae12bc4) |        |
 
 #### Testnet interfaces
 
 :::info
 
-Two community projects, [BaseX](https://basex-test.vercel.app/swap?currencyA=ETH&currencyB=0x036CbD53842c5426634e7929541eC2318f3dCF7e&focus=source) and [DapDap](https://testnet.base.dapdap.net/uniswap/swap), provide testnet interfaces for Uniswap contracts if you prefer to interact in the browser instead of with the contracts directly.
+If you prefer interacting through a browser instead of directly with the contracts, you can try this community project: [DapDap](https://testnet.base.dapdap.net/uniswap/swap), which provides testnet interfaces for Uniswap contracts.
 
 :::
 
