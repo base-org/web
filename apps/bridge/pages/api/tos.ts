@@ -30,6 +30,8 @@ const EU_COUNTRIES = [
   'SE', // Sweden
   'SI', // Slovenia
   'SK', // Slovakia
+  'UA', // Ukraine
+  'GE', // Georgia
 ];
 
 
