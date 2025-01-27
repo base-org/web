@@ -3670,5 +3670,13 @@
     "description": "Classic Bomb Game with AI Agents & Web3. Join PVP & PVE battles, team up with CBomber Girl AI Agent, your smart companion who plays, supports, and rewards you. Level up your game with AI-powered fun.",
     "url": "https://cbomber.io/",
     "imageUrl": "/images/partners/cbomber.png"
+  },
+  {
+    "name": "Reflect",
+    "category": "defi",
+    "subcategory": "liquidity management",
+    "description": "We build AI solutions to supercharge dApps, Reflecting your intentions onchain.",
+    "url": "https://reflect.now/",
+    "imageUrl": "/images/partners/reflect.png"
   }
 ]
