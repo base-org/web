@@ -3672,6 +3672,14 @@
     "imageUrl": "/images/partners/cbomber.png"
   },
   {
+    "name": "Songbirdz",
+    "description": "An onchain bird watching game. Identify new species of birds, earn points, and build your birding life list.",
+    "url": "https://songbirdz.cc/",
+    "imageUrl": "/images/partners/songbirdz.png",
+    "category": "consumer",
+    "subcategory": "gaming"
+  },
+  {
     "name": "ShapeShift",
     "description": "ShapeShift empowers users to self-custody and manage assets across top blockchains like Bitcoin, Ethereum, Base, and Cosmos. It's a hybrid app and wallet optimized for trading, earning, and more with digital assets.",
     "url": "https://app.shapeshift.com/",
