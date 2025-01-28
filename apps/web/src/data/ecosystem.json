@@ -3686,5 +3686,13 @@
     "name": "Venice",
     "subcategory": "ai",
     "url": "https://venice.ai/"
+  },
+  {
+    "category": "consumer",
+    "description": "LeverageX is a decentralized leverage trading platform that provides up to 150x leverage on cryptocurrencies, stocks, indices, commodities and forex,",
+    "imageUrl": "/images/partners/leveragex.png",
+    "name": "LeverageX",
+    "subcategory": "real world",
+    "url": "https://leveragex.trade/"
   }
 ]
