@@ -3678,5 +3678,13 @@
     "imageUrl": "/images/partners/songbirdz.png",
     "category": "consumer",
     "subcategory": "gaming"
+  },
+  {
+    "name": "Shadow Souls",
+    "description": "Shadow Souls is a turn based battle game that requires strategic thinking as you deploy your creature's unique abilities against opponents.",
+    "url": "https://shadowsouls.gg/",
+    "imageUrl": "/images/partners/shadowsouls.png",
+    "category": "consumer",
+    "subcategory": "gaming"
   }
 ]
