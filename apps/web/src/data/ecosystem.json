@@ -3680,6 +3680,14 @@
     "subcategory": "gaming"
   },
   {
+    "category": "infra",
+    "description": "Venice is a private, uncensored AI app with an API for agents and developers. Powered by decentralized inference and open-source models, Venice delivers unrestricted access to AI without storing your data.",
+    "imageUrl": "/images/partners/venice.svg",
+    "name": "Venice",
+    "subcategory": "ai",
+    "url": "https://venice.ai/"
+  },
+  {
     "name": "Shadow Souls",
     "description": "Shadow Souls is a turn based battle game that requires strategic thinking as you deploy your creature's unique abilities against opponents.",
     "url": "https://shadowsouls.gg/",
