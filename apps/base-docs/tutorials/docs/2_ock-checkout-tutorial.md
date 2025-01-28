@@ -21,7 +21,7 @@ hide_table_of_contents: false
 displayed_sidebar: null
 ---
 
-# Build a eCommerce App using Coinbase Commerce and OnchainKit
+# Build an eCommerce App using Coinbase Commerce and OnchainKit
 
 Looking to sell items and receive crypto on Base? Well, look no further!
 This tutorial will guide you through the process of integrating Coinbase Commerce products into your application using OnchainKit. By the end of the tutorial you will be able to spin up a demo store that allows you to sell products for crypto. If your customers do not have crypto wallets, they can easily sign up with a few clicks using [Passkeys].
