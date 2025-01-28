@@ -3689,10 +3689,9 @@
   },
   {
     "name": "Bario Entertainment System",
-    "tags": [
-      "gaming"
-    ],
-    "description": "Bario Entertainment System (Baes) is your gateway to onchain gaming—competitive, rewarding, and community-driven. Mint games, compete, and win rewards in tournaments. Built by those who love gaming, Baes is redefining what it means to play, win, and conquer on Base. No limits, just pure gaming excitement.",
+    "category": "consumer",
+    "subcategory": "gaming",
+    "description": "Bario Entertainment System (Baes) is your gateway to onchain gaming. Mint games, and play. Baes is redefining what it means to own, play, and win on Base. No limits, just pure gaming excitement.",
     "url": "https://baes.so/",
     "imageUrl": "/images/partners/bario.png"
   }
