@@ -3678,5 +3678,13 @@
     "imageUrl": "/images/partners/songbirdz.png",
     "category": "consumer",
     "subcategory": "gaming"
+  },
+  {
+    "category": "infra",
+    "description": "Venice is a private, uncensored AI app with an API for agents and developers. Powered by decentralized inference and open-source models, Venice delivers unrestricted access to AI without storing your data.",
+    "imageUrl": "/images/partners/venice.svg",
+    "name": "Venice",
+    "subcategory": "ai",
+    "url": "https://venice.ai/"
   }
 ]
