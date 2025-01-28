@@ -3694,5 +3694,13 @@
     "imageUrl": "/images/partners/tokengenerator.png",
     "category": "infra",
     "subcategory": "developer tool"
+  },
+  {
+    "name": "Ascii Cast",
+    "description": "Convert webcam feeds, or videos into ASCII art Animation and Mint to Base Network.",
+    "url": "https://www.asciicast.com",
+    "imageUrl": "/images/partners/asciicast.png",
+    "category": "consumer",
+    "subcategory": "creator"
   }
 ]
