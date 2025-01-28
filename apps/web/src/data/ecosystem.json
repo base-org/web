@@ -3678,5 +3678,12 @@
     "imageUrl": "/images/partners/songbirdz.png",
     "category": "consumer",
     "subcategory": "gaming"
-  }
+  },
+  {
+    "name": "Brewlabs",
+    "description": "Defi product hub with focus on a varitey of unique products to Base including token indexes and our peer-to-peer token marketplace",
+    "url": "https://brewlabs.info/",
+    "imageUrl": "/images/partners/brewlabs.png",
+    "category": "defi",
+    "subcategory": "indexes"
 ]
