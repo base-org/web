@@ -3678,5 +3678,13 @@
     "description": "Classic Bomb Game with AI Agents & Web3. Join PVP & PVE battles, team up with CBomber Girl AI Agent, your smart companion who plays, supports, and rewards you. Level up your game with AI-powered fun.",
     "url": "https://cbomber.io/",
     "imageUrl": "/images/partners/cbomber.png"
+  },
+  {
+    "name": "Songbirdz",
+    "description": "An onchain bird watching game. Identify new species of birds, earn points, and build your birding life list.",
+    "url": "https://songbirdz.cc/",
+    "imageUrl": "/images/partners/songbirdz.png",
+    "category": "consumer",
+    "subcategory": "gaming"
   }
 ]
