@@ -3710,5 +3710,13 @@
     "imageUrl": "/images/partners/tokengenerator.png",
     "category": "infra",
     "subcategory": "developer tool"
+  },
+  {
+    "name": "BSX",
+    "description": "BSX is developing the fastest, simplest, and most secure perpetuals DEX on the market. Backed by Coinbase Ventures, Blockchain Capital, and other prominent crypto VC investors.",
+    "url": "https://www.bsx.exchange",
+    "imageUrl": "/images/partners/bsx.png",
+    "category": "defi",
+    "subcategory": "dex"
   }
 ]
