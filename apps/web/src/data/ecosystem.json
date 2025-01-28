@@ -1,5 +1,13 @@
 [
   {
+    "name": "Tokiemon",
+    "description": "Mint and battle (de)generative AI",
+    "url": "https://tokiemon.io",
+    "imageUrl": "/images/partners/tokiemon.png",
+    "category": "consumer",
+    "subcategory": "gaming"
+  },
+  {
     "name": "Infinity Wallet",
     "description": "Infinity Wallet is a decentralized all-in-one non-custodial wallet ecosystem and first-of-its-kind Web3 browser, providing a one-stop wallet & DeFi solution.",
     "url": "https://infinitywallet.io/",
