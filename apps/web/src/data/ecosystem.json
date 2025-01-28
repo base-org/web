@@ -3686,5 +3686,13 @@
     "name": "Venice",
     "subcategory": "ai",
     "url": "https://venice.ai/"
+  },
+  {
+    "name": "Based Nebulas",
+    "description": "Procedurally generated NFTs utilize the minter's wallet address as a seed to deterministically produce perlin noise patterns resembling gaseous nebulae.",
+    "url": "https://nebula.foundnone.xyz",
+    "imageUrl": "/images/partners/based-nebulas.png",
+    "category": "consumer",
+    "subcategory": "nft"
   }
 ]
