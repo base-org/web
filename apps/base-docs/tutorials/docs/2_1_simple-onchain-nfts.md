@@ -1055,11 +1055,11 @@ contract RandomColorNFT is ERC721 {
 
 ---
 
-[Base Camp]: https://base.org.camp
-[ERC-721 Tokens]: https://docs.base.org/base-camp/docs/erc-721-token/erc-721-standard-video
+[Base Camp]: https://docs.base.org/base-learn/docs/welcome/
+[ERC-721 Tokens]: https://docs.base.org/base-learn/docs/erc-721-token/erc-721-standard-video/
 [IPFS]: https://ipfs.tech/
 [Base64]: https://en.wikipedia.org/wiki/Base64
-[Hardhat and Hardhat Deploy]: https://docs.base.org/base-camp/docs/hardhat-deploy/hardhat-deploy-sbs
+[Hardhat and Hardhat Deploy]: https://docs.base.org/base-learn/docs/hardhat-deploy/hardhat-deploy-sbs
 [testnet version of Opensea]: https://testnets.opensea.io/
 [sample project]: https://github.com/base-org/land-sea-and-sky
 [Sample Art]: https://github.com/base-org/land-sea-and-sky/tree/master/Final_SVGs

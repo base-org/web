@@ -8,6 +8,14 @@
     "subcategory": "nft"
   },
   {
+    "name": "Infinity Wallet",
+    "description": "Infinity Wallet is a decentralized all-in-one non-custodial wallet ecosystem and first-of-its-kind Web3 browser, providing a one-stop wallet & DeFi solution.",
+    "url": "https://infinitywallet.io/",
+    "imageUrl": "/images/partners/infinity-wallet.png",
+    "category": "wallet",
+    "subcategory": "self-custody"
+  },
+  {
     "name": "Arcadia Games",
     "description": "Arcadia Games provides PvP board games on the blockchain. Play Chess, Battleship and other classic games against other players for crypto.",
     "url": "https://arcadiagames.io",
@@ -176,9 +184,9 @@
     "subcategory": "gaming"
   },
   {
-    "name": "GhostLogs.xyz",
-    "description": "GhostLogs allows anyone to edit live smart contract code for tailored data emission.",
-    "url": "https://ghostlogs.xyz",
+    "name": "Ghost",
+    "description": "Next-gen indexing stack for next-gen blockchains. Built high-performance indexers (subgraphs) in Solidity.",
+    "url": "https://tryghost.xyz",
     "imageUrl": "/images/partners/ghostLogs.webp",
     "category": "infra",
     "subcategory": "data"
@@ -3662,5 +3670,37 @@
     "description": "Virtuals Protocol is building a Society of AI Agents onchain",
     "url": "https://app.virtuals.io/",
     "imageUrl": "/images/partners/virtuals.png"
+  },
+  {
+    "name": "CBomber",
+    "category": "consumer",
+    "subcategory": "gaming",
+    "description": "Classic Bomb Game with AI Agents & Web3. Join PVP & PVE battles, team up with CBomber Girl AI Agent, your smart companion who plays, supports, and rewards you. Level up your game with AI-powered fun.",
+    "url": "https://cbomber.io/",
+    "imageUrl": "/images/partners/cbomber.png"
+  },
+  {
+    "name": "Songbirdz",
+    "description": "An onchain bird watching game. Identify new species of birds, earn points, and build your birding life list.",
+    "url": "https://songbirdz.cc/",
+    "imageUrl": "/images/partners/songbirdz.png",
+    "category": "consumer",
+    "subcategory": "gaming"
+  },
+  {
+    "category": "infra",
+    "description": "Venice is a private, uncensored AI app with an API for agents and developers. Powered by decentralized inference and open-source models, Venice delivers unrestricted access to AI without storing your data.",
+    "imageUrl": "/images/partners/venice.svg",
+    "name": "Venice",
+    "subcategory": "ai",
+    "url": "https://venice.ai/"
+  },
+  {
+    "name": "Token Generator",
+    "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
+    "url": "https://www.smartcontracts.tools/token-generator/create/base/",
+    "imageUrl": "/images/partners/tokengenerator.png",
+    "category": "infra",
+    "subcategory": "developer tool"
   }
 ]
