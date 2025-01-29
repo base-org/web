@@ -1,16 +1,24 @@
 [
   {
-  "name": "Vaultleap.com",
-  "description": "Vaultleap: The all-in-one platform for SMBs to manage USDC payments. Designed for SMBs to securely pay teams, accept client funds, and automate W9, W8-BEN, and 1099 compliance",
-  "url": "https://vaultleap.com",
-  "imageUrl": "/images/partners/Vaultleap.png",
-  "category": "consumer",
-  "subcategory": "payments"
+    "name": "Vaultleap.com",
+    "description": "Vaultleap: The all-in-one platform for SMBs to manage USDC payments. Designed for SMBs to securely pay teams, accept client funds, and automate W9, W8-BEN, and 1099 compliance",
+    "url": "https://vaultleap.com",
+    "imageUrl": "/images/partners/Vaultleap.png",
+    "category": "consumer",
+    "subcategory": "payments"
+  },
+  {
+    "name": "Infinity Wallet",
+    "description": "Infinity Wallet is a decentralized all-in-one non-custodial wallet ecosystem and first-of-its-kind Web3 browser, providing a one-stop wallet & DeFi solution.",
+    "url": "https://infinitywallet.io/",
+    "imageUrl": "/images/partners/infinity-wallet.png",
+    "category": "wallet",
+    "subcategory": "self-custody"
   },
   {
     "name": "Arcadia Games",
     "description": "Arcadia Games provides PvP board games on the blockchain. Play Chess, Battleship and other classic games against other players for crypto.",
-    "url": "https:/arcadiagames.io",
+    "url": "https://arcadiagames.io",
     "imageUrl": "/images/partners/arcadia-games.png",
     "category": "consumer",
     "subcategory": "gaming"
@@ -176,9 +184,9 @@
     "subcategory": "gaming"
   },
   {
-    "name": "GhostLogs.xyz",
-    "description": "GhostLogs allows anyone to edit live smart contract code for tailored data emission.",
-    "url": "https://ghostlogs.xyz",
+    "name": "Ghost",
+    "description": "Next-gen indexing stack for next-gen blockchains. Built high-performance indexers (subgraphs) in Solidity.",
+    "url": "https://tryghost.xyz",
     "imageUrl": "/images/partners/ghostLogs.webp",
     "category": "infra",
     "subcategory": "data"
@@ -362,7 +370,7 @@
   {
     "name": "Cyberscope ",
     "description": "An award-winning blockchain security firm specializing in smart contract audits. We work with some of the biggest networks out there such as Polygon, Chainlink, Klaytn, Oasis, and many more.",
-    "url": "cyberscope.io",
+    "url": "https://cyberscope.io",
     "imageUrl": "/images/partners/cyberscope.webp",
     "category": "infra",
     "subcategory": "security"
@@ -3537,7 +3545,7 @@
   },
   {
     "name": "Lyvely ",
-    "description": "Lyvely is a disruptive SocialFi platform built for the trillion dollar creator and freelancer economy. \n\nThe ecosystem is powered by our native Utility Token, LVLY,  built on the Base network. \n\nLyvely is backed by institutional giants including the Phoenix group, who is public listed and top 5 largest Bitcoin miners in the world. Other institutional investors include M2, the UAE's fully regulated Crypto exchange, and Cypher Capital, a global Web3 VC fund. \n",
+    "description": "Lyvely is a disruptive SocialFi platform built for the trillion dollar creator and freelancer economy. \n\nThe ecosystem is powered by our native Utility Token, LVLY,  built on the Base network. \n\nLyvely is backed by institutional giants including the Phoenix group, who is publicly listed and top 5 largest Bitcoin miners in the world. Other institutional investors include M2, the UAE's fully regulated Crypto exchange, and Cypher Capital, a global Web3 VC fund. \n",
     "url": "https://get.lyvely.com/",
     "imageUrl": "/images/partners/lyvely.png",
     "category": "consumer",
@@ -3662,5 +3670,37 @@
     "description": "Virtuals Protocol is building a Society of AI Agents onchain",
     "url": "https://app.virtuals.io/",
     "imageUrl": "/images/partners/virtuals.png"
+  },
+  {
+    "name": "CBomber",
+    "category": "consumer",
+    "subcategory": "gaming",
+    "description": "Classic Bomb Game with AI Agents & Web3. Join PVP & PVE battles, team up with CBomber Girl AI Agent, your smart companion who plays, supports, and rewards you. Level up your game with AI-powered fun.",
+    "url": "https://cbomber.io/",
+    "imageUrl": "/images/partners/cbomber.png"
+  },
+  {
+    "name": "Songbirdz",
+    "description": "An onchain bird watching game. Identify new species of birds, earn points, and build your birding life list.",
+    "url": "https://songbirdz.cc/",
+    "imageUrl": "/images/partners/songbirdz.png",
+    "category": "consumer",
+    "subcategory": "gaming"
+  },
+  {
+    "category": "infra",
+    "description": "Venice is a private, uncensored AI app with an API for agents and developers. Powered by decentralized inference and open-source models, Venice delivers unrestricted access to AI without storing your data.",
+    "imageUrl": "/images/partners/venice.svg",
+    "name": "Venice",
+    "subcategory": "ai",
+    "url": "https://venice.ai/"
+  },
+  {
+    "name": "Token Generator",
+    "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
+    "url": "https://www.smartcontracts.tools/token-generator/create/base/",
+    "imageUrl": "/images/partners/tokengenerator.png",
+    "category": "infra",
+    "subcategory": "developer tool"
   }
 ]

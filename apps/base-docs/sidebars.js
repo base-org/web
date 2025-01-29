@@ -95,6 +95,11 @@ module.exports = {
     },
     {
       type: 'link',
+      label: 'Metrics',
+      href: 'https://base.org/stats',
+    },
+    {
+      type: 'link',
       label: 'Status',
       href: 'https://status.base.org',
     },
