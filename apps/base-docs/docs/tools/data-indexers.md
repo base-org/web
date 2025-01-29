@@ -98,7 +98,7 @@ To get started, visit the [documentation](https://docs.envio.dev/docs/overview) 
 
 ## GhostGraph
 
-[GhostGraph](https://GhostGraph.xyz/) makes it easy to build blazingly fast indexers (subgraphs) for smart contracts.
+[GhostGraph](https://ghostgraph.xyz/) makes it easy to build blazingly fast indexers (subgraphs) for smart contracts.
 
 GhostGraph is the first indexing solution that lets you write your index transformations in **Solidity**. Base dApps can query data with GraphQL using our hosted endpoints.
 
