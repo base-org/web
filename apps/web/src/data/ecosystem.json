@@ -1,5 +1,13 @@
 [
   {
+    "name": "Ride DEX",
+    "description": "A decentralized self custodial memecoin launch platform that allows to create new types of standard, denominational, tiered and dynamic NFTs with presale and graduated pools, staking and claim packs.",
+    "url": "https://ride.wtf",
+    "imageUrl": "/images/partners/ride-dex.svg",
+    "category": "defi",
+    "subcategory": "dex"
+  },
+  {
     "name": "Infinity Wallet",
     "description": "Infinity Wallet is a decentralized all-in-one non-custodial wallet ecosystem and first-of-its-kind Web3 browser, providing a one-stop wallet & DeFi solution.",
     "url": "https://infinitywallet.io/",
