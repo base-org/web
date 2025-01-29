@@ -3694,5 +3694,13 @@
     "imageUrl": "/images/partners/tokengenerator.png",
     "category": "infra",
     "subcategory": "developer tool"
+  },
+  {
+    "name": "Minds",
+    "description": "Minds is an open source, decentralized social networking platform where users earn tokens for contributing to the network. The tokens can be used on the network to advertise, tip other creators or join premium memberships.",
+    "url": "https://www.minds.com/",
+    "imageUrl": "/images/partners/minds.svg",
+    "category": "consumer",
+    "subcategory": "social"
   }
 ]
