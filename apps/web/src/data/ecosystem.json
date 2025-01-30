@@ -3670,5 +3670,29 @@
     "description": "Classic Bomb Game with AI Agents & Web3. Join PVP & PVE battles, team up with CBomber Girl AI Agent, your smart companion who plays, supports, and rewards you. Level up your game with AI-powered fun.",
     "url": "https://cbomber.io/",
     "imageUrl": "/images/partners/cbomber.png"
+  },
+  {
+    "name": "Songbirdz",
+    "description": "An onchain bird watching game. Identify new species of birds, earn points, and build your birding life list.",
+    "url": "https://songbirdz.cc/",
+    "imageUrl": "/images/partners/songbirdz.png",
+    "category": "consumer",
+    "subcategory": "gaming"
+  },
+  {
+    "category": "infra",
+    "description": "Venice is a private, uncensored AI app with an API for agents and developers. Powered by decentralized inference and open-source models, Venice delivers unrestricted access to AI without storing your data.",
+    "imageUrl": "/images/partners/venice.svg",
+    "name": "Venice",
+    "subcategory": "ai",
+    "url": "https://venice.ai/"
+  },
+  {
+    "name": "Token Generator",
+    "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
+    "url": "https://www.smartcontracts.tools/token-generator/create/base/",
+    "imageUrl": "/images/partners/tokengenerator.png",
+    "category": "infra",
+    "subcategory": "developer tool"
   }
 ]
