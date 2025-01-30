@@ -3694,5 +3694,13 @@
     "imageUrl": "/images/partners/tokengenerator.png",
     "category": "infra",
     "subcategory": "developer tool"
+  },
+  {
+    "name": "TapBase",
+    "description": "TapBase is your gateway to Web3 and NFTs. Explore, create, and connect seamlessly.",
+    "url": "https://tapbaseapp.com/",
+    "imageUrl": "/images/partners/Tapbase.png",
+    "category": "NFT",
+    "subcategory": "gaming , social, messaging, nft"
   }
 ]
