@@ -3689,7 +3689,7 @@
   },
   {
     "category": "infra",
-    "description": "Spheron network stands as the world's first DePIN super compute network, seamlessly connecting retail and data center-grade GPUs while enabling the orchestration of dynamic workloads with unmatched efficiency well suited for the AI agents, inferencing & fine-tuning.",
+    "description": "Spheron network stands as the world's first DePIN based programmable compute network, seamlessly connecting retail and data center-grade GPUs while enabling the orchestration of dynamic workloads with unmatched efficiency well suited for the AI agents, inferencing & fine-tuning.",
     "imageUrl": "/images/partners/spheron.png",
     "name": "Spheron",
     "subcategory": "compute",
