@@ -1,5 +1,13 @@
 [
   {
+    "name": "ZEROBASE",
+    "description": "Zerobase Staking allows users to earn yield by supporting ZKP generation. Stakers provide stablecoins as collateral, securing the network while earning returns from CeDeFi and proof generation revenue.",
+    "url": "https://app.zerobase.pro/",
+    "imageUrl": "/images/partners/zerobase.png",
+    "category": "defi",
+    "subcategory": "yield vault"
+  },
+  {
     "name": "Infinity Wallet",
     "description": "Infinity Wallet is a decentralized all-in-one non-custodial wallet ecosystem and first-of-its-kind Web3 browser, providing a one-stop wallet & DeFi solution.",
     "url": "https://infinitywallet.io/",
