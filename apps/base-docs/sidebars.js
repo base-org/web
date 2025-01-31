@@ -1,5 +1,6 @@
 module.exports = {
   developers: [
+    ['why-base'],
     ['overview'],
     ['using-base'],
     {
