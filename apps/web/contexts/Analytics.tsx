@@ -1,11 +1,12 @@
 'use client';
 
+import { ReactNode, createContext, useCallback, useContext, useMemo } from 'react';
 import logEvent, {
   ActionType,
   AnalyticsEventImportance,
   CCAEventData,
+  AnalyticsContextType,
 } from 'libs/base-ui/utils/logEvent';
-import { ReactNode, createContext, useCallback, useContext, useMemo } from 'react';
 
 export type AnalyticsContextProps = {
   logEventWithContext: (eventName: string, action: ActionType, eventData?: CCAEventData) => void;
@@ -29,19 +30,21 @@ export function useAnalytics() {
 
 type AnalyticsProviderProps = {
   children?: ReactNode;
-  context: string; // TODO: This could be an enum in CCAEventData
+  context: AnalyticsContextType;
+  parentContext?: string;
 };
 
-export default function AnalyticsProvider({ children, context }: AnalyticsProviderProps) {
-  const { fullContext: previousContext } = useAnalytics();
+export default function AnalyticsProvider({ children, context, parentContext = '' }: AnalyticsProviderProps) {
+  const fullContext = useMemo(() => {
+    return [parentContext, context].filter((c) => !!c).join('_');
+  }, [parentContext, context]);
 
-  const fullContext = [previousContext, context].filter((c) => !!c).join('_');
   const logEventWithContext = useCallback(
     (eventName: string, action: ActionType, eventData?: CCAEventData) => {
       const sanitizedEventName = eventName.toLocaleLowerCase();
       if (typeof window === 'undefined') return;
       logEvent(
-        sanitizedEventName, // TODO: Do we want context here?
+        sanitizedEventName,
         {
           action: action,
           context: fullContext,
