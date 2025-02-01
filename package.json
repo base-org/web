@@ -5,7 +5,7 @@
   "repository": "git@github.com::base-org/base-web.git",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "yarn workspaces foreach run build",
+    "build": "next build",
     "lint": "yarn workspaces foreach run lint",
     "test": "yarn workspaces foreach run test",
     "postinstall": "sh -c 'if [ command -v ./node_modules/.bin/husky ]; then ./node_modules/.bin/husky install; fi;'",
