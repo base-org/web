@@ -80,7 +80,7 @@ Luckily, you have options to control these calls a little better.
 
 ### Pausing On Blur
 
-Once quick improvement is to simply stop watching the blockchain if the website doesn't have focus. To see this in action, add a state variable to count how many times the function has settled, and one for if the page is focused. You'll also need to set up event listeners to set the state of the latter when the page is focused or blurred.
+One quick improvement is to simply stop watching the blockchain if the website doesn't have focus. To see this in action, add a state variable to count how many times the function has settled, and one for if the page is focused. You'll also need to set up event listeners to set the state of the latter when the page is focused or blurred.
 
 ```tsx
 const [timesCalled, setTimesCalled] = useState(0);
@@ -106,7 +106,7 @@ Then, update the `watch` for `useBlockNumber` so that it only does so if `pageIs
 const { data: blockNumber } = useBlockNumber({ watch: pageIsFocused });
 ```
 
-Add a line to the `useEffect` for `blockNumber` increment your counter as well.
+Add a line to the `useEffect` for `blockNumber` and increment your counter as well.
 
 ```tsx
 useEffect(() => {

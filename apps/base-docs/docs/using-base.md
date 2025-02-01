@@ -1,6 +1,6 @@
 ---
 title: Using Base
-sidebar_position: 1
+sidebar_position: 2
 slug: /using-base
 description: 'How to integrate Base with popular wallets like Coinbase Wallet and MetaMask, covering both mainnet and testnet configurations.'
 keywords:
