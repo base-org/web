@@ -1,3 +1,4 @@
+import JobsScript from 'apps/web/app/(base-org)/jobs/JobsScript';
 import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
@@ -34,6 +35,7 @@ export default async function Jobs() {
 
   return (
     <main className="flex w-full grow flex-col items-center pt-20">
+      <JobsScript />
       <Container>
         <section className="mb-[140px] flex w-full flex-col pb-10 pt-20 ">
           <Title level={TitleLevel.Display3}>Join our team</Title>
