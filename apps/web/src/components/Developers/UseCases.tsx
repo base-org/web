@@ -6,6 +6,8 @@ import { AnimatedOnboarding } from 'apps/web/src/components/Developers/UseCaseAn
 import { AnimatedPayment } from 'apps/web/src/components/Developers/UseCaseAnimations/Payments';
 import { AnimatedBaseAgent } from 'apps/web/src/components/Developers/UseCaseAnimations/BaseAgent';
 import { AnimatedSocial } from 'apps/web/src/components/Developers/UseCaseAnimations/Social';
+import { AnimatedDefi } from 'apps/web/src/components/Developers/UseCaseAnimations/Defi';
+import { AnimatedGasless } from 'apps/web/src/components/Developers/UseCaseAnimations/Gassless';
 
 export async function UseCases() {
   return (
@@ -55,14 +57,14 @@ export async function UseCases() {
             description="Integrate DeFi protocols and services directly into your applications."
             href="https://vocs-migration-mvp-one.vercel.app/dev-tools/kits/onchainkit/swap/swap"
           >
-            Card 5
+            <AnimatedDefi />
           </UseCaseBlock>
           <UseCaseBlock
             title="Gasless experience"
             description="Provide frictionless transactions with gasless and account abstraction solutions."
             href="https://vocs-migration-mvp-one.vercel.app/dev-tools/identity/smart-wallet/base-gasless-campaign"
           >
-            Card 6
+            <AnimatedGasless />
           </UseCaseBlock>
         </div>
       </Container>
