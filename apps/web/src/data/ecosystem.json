@@ -80,6 +80,14 @@
     "subcategory": "bridge"
   },
   {
+    "name": "Layerswap",
+    "description": "Layerswap is a fast, reliable and cost-efficient solution for bridging crypto assets across 55+ EVM and non-EVM networks.",
+    "url": "https://layerswap.io/app?to=base_mainnet",
+    "imageUrl": "/images/partners/Layerswap-logo.png",
+    "category": "infra",
+    "subcategory": "bridge"
+  },
+  {
     "name": "Infusion",
     "description": "Infusion is an AMM protocol that facilitates deep and stabilized liquidity. It's time-lock component that allows for liquidity to be utilized as an onchain primitive for DApps.",
     "url": "https://infusion.finance",
@@ -3686,5 +3694,21 @@
     "imageUrl": "/images/partners/shapeshift.svg",
     "category": "defi",
     "subcategory": "dex aggregator"
+  },
+  {
+    "category": "infra",
+    "description": "Venice is a private, uncensored AI app with an API for agents and developers. Powered by decentralized inference and open-source models, Venice delivers unrestricted access to AI without storing your data.",
+    "imageUrl": "/images/partners/venice.svg",
+    "name": "Venice",
+    "subcategory": "ai",
+    "url": "https://venice.ai/"
+  },
+  {
+    "name": "Token Generator",
+    "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
+    "url": "https://www.smartcontracts.tools/token-generator/create/base/",
+    "imageUrl": "/images/partners/tokengenerator.png",
+    "category": "infra",
+    "subcategory": "developer tool"
   }
 ]
