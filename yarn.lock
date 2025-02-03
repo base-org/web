@@ -435,6 +435,7 @@ __metadata:
     satori: ^0.10.14
     sharp: ^0.33.4
     tailwindcss: ^3.2.4
+    tailwindcss-animate: ^1.0.7
     three: ^0.168.0
     three-stdlib: ^2.33.0
     ts-jest: ^29.2.5
@@ -25503,6 +25504,15 @@ __metadata:
   version: 2.4.0
   resolution: "tailwind-merge@npm:2.4.0"
   checksum: 442ab18af754eb90a1c730289b10a5df89ec8f197b4783bd31651fffc06ac06dbe7a8f491c2e133c906d6ab466170a5fc1f45aa2d22874e47706acf9d8b0cfe5
+  languageName: node
+  linkType: hard
+
+"tailwindcss-animate@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "tailwindcss-animate@npm:1.0.7"
+  peerDependencies:
+    tailwindcss: "*"
+  checksum: c1760983eb3fec0c8421e95082bf308e6845df43e2f90862386366e82545c801b26b4d189c4cd23d6915252b76d18005c8e5f591f8b119944c7fb8650d0f8bce
   languageName: node
   linkType: hard
 
