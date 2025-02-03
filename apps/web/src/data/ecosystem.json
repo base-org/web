@@ -1,15 +1,24 @@
 [
   {
-  "name": "The Innovation Game",
-  "description": "TIG redefines the frontier of computational research by transforming proof-of-work into a global engine for open, autonomous innovation.",
-  "url": "https://www.tig.foundation/home",
-  "imageUrl": "/images/partners/the-innovation-game.png",
-  "category": "infra",
-  "subcategory": "ai"
-},
+    "name": "The Innovation Game",
+    "description": "TIG redefines the frontier of computational research by transforming proof-of-work into a global engine for open, autonomous innovation.",
+    "url": "https://www.tig.foundation/home",
+    "imageUrl": "/images/partners/the-innovation-game.png",
+    "category": "infra",
+    "subcategory": "ai"
+  },
+  {
+    "name": "Infinity Wallet",
+    "description": "Infinity Wallet is a decentralized all-in-one non-custodial wallet ecosystem and first-of-its-kind Web3 browser, providing a one-stop wallet & DeFi solution.",
+    "url": "https://infinitywallet.io/",
+    "imageUrl": "/images/partners/infinity-wallet.png",
+    "category": "wallet",
+    "subcategory": "self-custody"
+  },
+  {
     "name": "Arcadia Games",
     "description": "Arcadia Games provides PvP board games on the blockchain. Play Chess, Battleship and other classic games against other players for crypto.",
-    "url": "https:/arcadiagames.io",
+    "url": "https://arcadiagames.io",
     "imageUrl": "/images/partners/arcadia-games.png",
     "category": "consumer",
     "subcategory": "gaming"
