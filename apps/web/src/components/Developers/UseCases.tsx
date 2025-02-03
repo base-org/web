@@ -54,7 +54,7 @@ export async function UseCases() {
           </UseCaseBlock>
           <UseCaseBlock
             title="In-app defi"
-            description="Integrate DeFi protocols and services directly into your applications."
+            description="Add powerful DeFi protocols and services directly into your applications."
             href="https://vocs-migration-mvp-one.vercel.app/dev-tools/kits/onchainkit/swap/swap"
           >
             <AnimatedDefi />

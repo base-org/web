@@ -23,11 +23,9 @@ export function UseCaseBlock({
       </div>
       <div className="flex flex-col gap-2">
         <Title level={TitleLevel.Title3} as="h3" className="text-white">
-          {/* Onboard your users */}
           {title}
         </Title>
         <Title level={TitleLevel.Title4} className="text-palette-foregroundMuted">
-          {/* Create seamless onboarding experiences with smart wallerts and social authentication. */}
           {description}
         </Title>
       </div>

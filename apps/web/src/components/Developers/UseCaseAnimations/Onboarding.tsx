@@ -5,11 +5,7 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import logo from 'apps/web/src/components/base-org/shared/TopNavigation/assets/logo.svg';
 
-type AnimatedOnboardingProps = {
-  className?: string;
-};
-
-export function AnimatedOnboarding({ className }: AnimatedOnboardingProps) {
+export function AnimatedOnboarding() {
   const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
     x: 0,
     y: 0,
@@ -52,7 +48,7 @@ export function AnimatedOnboarding({ className }: AnimatedOnboardingProps) {
 
   return (
     <div
-      className={classNames('relative mx-auto w-full max-w-sm space-y-2', className)}
+      className={classNames('relative mx-auto w-full max-w-sm space-y-2')}
       onMouseMove={updateMousePosition}
     >
       <div
