@@ -36,7 +36,7 @@ export function AnimatedSocial() {
     [],
   );
   return (
-    <div className="w-full max-w-[292px] m-6">
+    <div className="m-6 w-full max-w-[292px]">
       <div className="mb-3 flex items-center gap-3">
         <LottieAnimation
           data={animation}
@@ -44,11 +44,7 @@ export function AnimatedSocial() {
         />
         <div className="h-4 w-32 rounded-xl bg-dark-state-s-hovered" />
       </div>
-
-      {/* Content */}
       <div className="mb-4 h-32 w-full rounded-xl bg-dark-state-s-hovered" />
-
-      {/* Interaction Buttons */}
       <div className="flex items-center gap-4">
         <motion.div className="border-red-500 flex h-12 w-16 items-center justify-center rounded-xl border">
           <motion.svg
