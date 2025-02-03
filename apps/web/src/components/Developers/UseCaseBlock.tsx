@@ -18,7 +18,7 @@ export function UseCaseBlock({
 }) {
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex h-[320px] w-[580px] flex-col items-center rounded-2xl bg-dark-palette-backgroundAlternate p-6">
+      <div className="flex h-[320px] w-[580px] flex-col items-center rounded-2xl bg-dark-palette-backgroundAlternate">
         {children}
       </div>
       <div className="flex flex-col gap-2">

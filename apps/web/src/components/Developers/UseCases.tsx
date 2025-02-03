@@ -4,6 +4,8 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import { UseCaseBlock } from 'apps/web/src/components/Developers/UseCaseBlock';
 import { AnimatedOnboarding } from 'apps/web/src/components/Developers/UseCaseAnimations/Onboarding';
 import { AnimatedPayment } from 'apps/web/src/components/Developers/UseCaseAnimations/Payments';
+import { AnimatedBaseAgent } from 'apps/web/src/components/Developers/UseCaseAnimations/BaseAgent';
+import { AnimatedSocial } from 'apps/web/src/components/Developers/UseCaseAnimations/Social';
 
 export async function UseCases() {
   return (
@@ -39,14 +41,14 @@ export async function UseCases() {
             description="Build and deploy AI agents that can interact with onchain data and smart contracts."
             href="https://docs.cdp.coinbase.com/agentkit/docs/welcome"
           >
-            Card 3
+            <AnimatedBaseAgent />
           </UseCaseBlock>
           <UseCaseBlock
             title="Onchain social"
             description="Create engaging social experiences with decentralized identity and content."
             href="https://vocs-migration-mvp-one.vercel.app/dev-tools/kits/onchainkit/mint/nft-mint-card"
           >
-            Card 4
+            <AnimatedSocial />
           </UseCaseBlock>
           <UseCaseBlock
             title="In-app defi"
