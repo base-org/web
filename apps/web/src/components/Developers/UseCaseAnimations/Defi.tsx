@@ -6,6 +6,7 @@ import NumberFlow from '@number-flow/react';
 import usdc from 'apps/web/public/images/partners/usdc.svg';
 
 const initialEarned = 4124.39;
+const apy = 6.97;
 
 export function AnimatedDefi() {
   const [currentEarned, setCurrentEarned] = useState(initialEarned);
@@ -49,7 +50,7 @@ export function AnimatedDefi() {
         </div>
         <div className="space-y-1">
           <div className="text-xs font-bold text-dark-palette-foregroundMuted">APY</div>
-          <div className="text-base font-bold text-white">6.97%</div>
+          <div className="text-base font-bold text-white">{apy}%</div>
         </div>
         <div className="space-y-1">
           <div className="text-xs font-bold uppercase text-dark-palette-foregroundMuted">
