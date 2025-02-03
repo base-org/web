@@ -1,3 +1,5 @@
+import AnalyticsProvider from 'apps/web/contexts/Analytics';
+import { UseCases } from 'apps/web/src/components/Developers/UseCases';
 import { Hero } from 'apps/web/src/components/Developers/Hero';
 import type { Metadata } from 'next';
 
@@ -12,8 +14,11 @@ export const metadata: Metadata = {
 
 export default async function Developers() {
   return (
-    <main className="flex h-screen w-full flex-col items-center bg-black">
-      <Hero />
-    </main>
+    <AnalyticsProvider context="developers">
+      <main className="flex min-h-screen w-full flex-col items-center bg-black">
+        <Hero />
+        <UseCases />
+      </main>
+    </AnalyticsProvider>
   );
 }
