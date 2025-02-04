@@ -1,4 +1,3 @@
-import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { UseCaseBlock } from 'apps/web/src/components/Developers/UseCases/UseCaseBlock';
@@ -16,7 +15,7 @@ export async function UseCases() {
         <Title level={TitleLevel.Title1} as="h2">
           Build, scale, and monetize.
         </Title>
-        <Title level={TitleLevel.Title1} as="h2" className="text-palette-foregroundMuted">
+        <Title level={TitleLevel.Title1} as="h2" className="text-gray-50">
           Everything you need to launch onchain products.
         </Title>
       </div>
