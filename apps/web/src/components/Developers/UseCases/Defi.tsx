@@ -70,7 +70,6 @@ export function AnimatedDefi() {
             </span>
           </div>
         </div>
-
         <button
           type="button"
           className="mb-1 h-12 w-full rounded-xl bg-white font-bold text-black transition-colors hover:bg-dark-gray-90"
