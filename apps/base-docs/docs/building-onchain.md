@@ -17,6 +17,9 @@ keywords:
     decentralized apps,
     AI,
     onchain,
+    kits,
+    Onchainkit,
+    how to build,
   ]
 hide_table_of_contents: true
 ---
