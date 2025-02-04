@@ -72,10 +72,10 @@ function Card({ title, description, icon, href }: CardProps) {
       href={href}
       className="flex cursor-pointer flex-col gap-4 rounded-xl bg-dark-palette-backgroundAlternate p-6 transition-all duration-200 hover:bg-dark-gray-10"
     >
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-8">
         <Image src={icon} alt={title} width={64} height={64} className="h-16 w-16" />
         <div>
-          <Title level={TitleLevel.Title3} as="h3" className="text-white">
+          <Title level={TitleLevel.Title3} as="h3" className="font-bold text-white">
             {title}
           </Title>
           <Title level={TitleLevel.Title4} as="p" className="text-dark-palette-foregroundMuted">

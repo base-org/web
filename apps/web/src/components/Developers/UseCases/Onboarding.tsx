@@ -70,7 +70,7 @@ export function AnimatedOnboarding() {
       >
         <div className="flex h-12 items-center justify-center gap-2 font-bold text-white">
           <Image src={logo as StaticImageData} alt="Base Logo" width={24} height={24} />
-          Sign in with Base
+          Coinbase Wallet
         </div>
       </div>
       <div className="h-12 w-full rounded-xl bg-dark-state-s-hovered" />

@@ -53,7 +53,7 @@ export function Testimonials() {
 
   return (
     <section className="mt-16 h-full w-full">
-      <div className="rounded-xl border border-palette-line/50 px-8 pb-8 pt-6">
+      <div className="rounded-xl border border-palette-line/50 p-8">
         <div className="mb-8 flex space-x-6">
           {(['build', 'scale', 'monetize'] as const).map((tab) => (
             <button
@@ -72,42 +72,40 @@ export function Testimonials() {
           ))}
         </div>
 
-        <div className="relative">
-          <AnimatePresence mode="wait">
-            {testimonials
-              .filter((testimonial) => testimonial.tab === activeTab)
-              .map((testimonial) => (
-                <motion.div
-                  key={testimonial.tab}
-                  initial={testimonialAnimation.initial}
-                  animate={testimonialAnimation.animate}
-                  exit={testimonialAnimation.exit}
-                  transition={testimonialAnimation.transition}
-                  className="space-y-8"
+        <AnimatePresence mode="wait">
+          {testimonials
+            .filter((testimonial) => testimonial.tab === activeTab)
+            .map((testimonial) => (
+              <motion.div
+                key={testimonial.tab}
+                initial={testimonialAnimation.initial}
+                animate={testimonialAnimation.animate}
+                exit={testimonialAnimation.exit}
+                transition={testimonialAnimation.transition}
+                className="space-y-9"
+              >
+                <blockquote className="space-y-6">
+                  <Title level={TitleLevel.Display3}>&ldquo;{testimonial.text}&rdquo;</Title>
+                  <div className="text-dark-palette-foregroundMuted">
+                    <Title level={TitleLevel.Title4}>{testimonial.author}</Title>
+                    <Title level={TitleLevel.Title4}>{testimonial.role}</Title>
+                  </div>
+                </blockquote>
+                <ButtonWithLinkAndEventLogging
+                  variant={ButtonVariants.SecondaryOutline}
+                  iconName="arrowRight"
+                  iconSize="20"
+                  linkClassNames="text-base font-bold text-white block"
+                  buttonClassNames="flex w-40 items-center justify-between px-4 py-3"
+                  href="/stories"
+                  target="_blank"
+                  eventName="testimonials"
                 >
-                  <blockquote className="space-y-4">
-                    <Title level={TitleLevel.Display3}>&ldquo;{testimonial.text}&rdquo;</Title>
-                    <div className="text-dark-palette-foregroundMuted">
-                      <Title level={TitleLevel.Title4}>{testimonial.author}</Title>
-                      <Title level={TitleLevel.Title4}>{testimonial.role}</Title>
-                    </div>
-                  </blockquote>
-                  <ButtonWithLinkAndEventLogging
-                    variant={ButtonVariants.SecondaryOutline}
-                    iconName="arrowRight"
-                    iconSize="24"
-                    linkClassNames="px-4 py-2 text-base font-bold text-white"
-                    buttonClassNames="flex w-40 items-center justify-between px-4 py-3"
-                    href="/stories"
-                    target="_blank"
-                    eventName="testimonials"
-                  >
-                    More stories
-                  </ButtonWithLinkAndEventLogging>
-                </motion.div>
-              ))}
-          </AnimatePresence>
-        </div>
+                  More stories
+                </ButtonWithLinkAndEventLogging>
+              </motion.div>
+            ))}
+        </AnimatePresence>
       </div>
     </section>
   );

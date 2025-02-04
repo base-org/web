@@ -22,7 +22,7 @@ export function UseCaseBlock({
         {children}
       </div>
       <div className="flex flex-col gap-2">
-        <Title level={TitleLevel.Title3} as="h3" className="text-white">
+        <Title level={TitleLevel.Title3} as="h3" className="font-bold text-white">
           {title}
         </Title>
         <Title level={TitleLevel.Title4} className="text-dark-palette-foregroundMuted">
@@ -32,7 +32,7 @@ export function UseCaseBlock({
       <ButtonWithLinkAndEventLogging
         variant={ButtonVariants.SecondaryOutline}
         iconName="arrowRight"
-        iconSize="24"
+        iconSize="20"
         buttonClassNames="flex w-40 items-center justify-between px-4 py-3"
         href={href}
         eventName={`developers_build-scale-monetize_${title.replace(/\s+/g, '-').toLowerCase()}`}

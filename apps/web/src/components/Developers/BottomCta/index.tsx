@@ -34,10 +34,10 @@ export function BottomCta() {
             npm create onchain
             {hasCopied ? (
               <div className="text-green-60">
-                <Icon name="checkmark" width="24" height="24" color="currentColor" />
+                <Icon name="checkmark" width="20" height="20" color="currentColor" />
               </div>
             ) : (
-              <Icon name="copy" width="24" height="24" color="currentColor" />
+              <Icon name="copy" width="20" height="20" color="currentColor" />
             )}
           </button>
           <ButtonWithLinkAndEventLogging
