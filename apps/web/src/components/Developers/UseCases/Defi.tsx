@@ -71,7 +71,10 @@ export function AnimatedDefi() {
           </div>
         </div>
 
-        <button className="mb-1 h-12 w-full rounded-xl bg-white font-bold text-black transition-colors hover:bg-dark-gray-90">
+        <button
+          type="button"
+          className="mb-1 h-12 w-full rounded-xl bg-white font-bold text-black transition-colors hover:bg-dark-gray-90"
+        >
           Deposit
         </button>
       </div>
