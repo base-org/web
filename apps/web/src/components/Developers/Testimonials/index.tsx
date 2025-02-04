@@ -10,14 +10,14 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 
 type Tab = 'build' | 'scale' | 'monetize';
 
-type Quote = {
+type Testimonial = {
   text: string;
   author: string;
   role: string;
   tab: Tab;
 };
 
-const quotes: Quote[] = [
+const testimonials: Testimonial[] = [
   {
     text: "Base's developer platform helped us launch our NFT marketplace in days instead of months.",
     author: 'Sarah Chen',
@@ -38,10 +38,10 @@ const quotes: Quote[] = [
   },
 ];
 
-export function Quotes() {
+export function Testimonials() {
   const [activeTab, setActiveTab] = useState<Tab>('build');
 
-  const quoteAnimation = useMemo(
+  const testimonialAnimation = useMemo(
     () => ({
       initial: { opacity: 0, y: 20 },
       animate: { opacity: 1, y: 0 },
@@ -74,22 +74,22 @@ export function Quotes() {
 
         <div className="relative">
           <AnimatePresence mode="wait">
-            {quotes
-              .filter((quote) => quote.tab === activeTab)
-              .map((quote) => (
+            {testimonials
+              .filter((testimonial) => testimonial.tab === activeTab)
+              .map((testimonial) => (
                 <motion.div
-                  key={quote.tab}
-                  initial={quoteAnimation.initial}
-                  animate={quoteAnimation.animate}
-                  exit={quoteAnimation.exit}
-                  transition={quoteAnimation.transition}
+                  key={testimonial.tab}
+                  initial={testimonialAnimation.initial}
+                  animate={testimonialAnimation.animate}
+                  exit={testimonialAnimation.exit}
+                  transition={testimonialAnimation.transition}
                   className="space-y-8"
                 >
                   <blockquote className="space-y-4">
-                    <Title level={TitleLevel.Display3}>&ldquo;{quote.text}&rdquo;</Title>
+                    <Title level={TitleLevel.Display3}>&ldquo;{testimonial.text}&rdquo;</Title>
                     <div className="text-dark-palette-foregroundMuted">
-                      <Title level={TitleLevel.Title4}>{quote.author}</Title>
-                      <Title level={TitleLevel.Title4}>{quote.role}</Title>
+                      <Title level={TitleLevel.Title4}>{testimonial.author}</Title>
+                      <Title level={TitleLevel.Title4}>{testimonial.role}</Title>
                     </div>
                   </blockquote>
                   <ButtonWithLinkAndEventLogging
@@ -100,7 +100,7 @@ export function Quotes() {
                     buttonClassNames="flex w-40 items-center justify-between px-4 py-3"
                     href="/stories"
                     target="_blank"
-                    eventName="developers_quotes"
+                    eventName="testimonials"
                   >
                     More stories
                   </ButtonWithLinkAndEventLogging>
