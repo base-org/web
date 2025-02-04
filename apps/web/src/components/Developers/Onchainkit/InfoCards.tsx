@@ -1,39 +1,73 @@
 import { Card } from 'apps/web/src/components/Developers/Shared/Card';
-import { Icon } from 'apps/web/src/components/Icon/Icon';
+import cryptoBasics from 'apps/web/src/components/Developers/Onchainkit/cryptoBasics.svg';
+import serverless from 'apps/web/src/components/Developers/Onchainkit/serverless.svg';
+import cloudProduct from 'apps/web/src/components/Developers/Onchainkit/cloudProduct.svg';
+import developerPlatformProduct from 'apps/web/src/components/Developers/Onchainkit/developerPlatformProduct.svg';
+import derivativesProductNew from 'apps/web/src/components/Developers/Onchainkit/derivativesProductNew.svg';
+import taxesReceiptInactive from 'apps/web/src/components/Developers/Onchainkit/taxesReceiptInactive.svg';
+import Image from 'next/image';
 
 const INFO_CARDS = [
   {
-    icon: <Icon name="eye" color="currentColor" />,
+    icon: (
+      <Image
+        src={developerPlatformProduct}
+        alt="developerPlatformProduct"
+        width={32}
+        height={32}
+        className="h-8 w-8"
+      />
+    ),
     title: 'Full-stack in one command',
     description:
       'Abstract away any complex configuration or setup. No blockchain knowledge required.',
   },
   {
-    icon: <Icon name="eye" color="currentColor" />,
+    icon: (
+      <Image src={cloudProduct} alt="cloudProduct" width={31} height={32} className="h-8 w-8" />
+    ),
     title: 'AI-compatible',
     description:
       'Leverage your favorite AI tools to get your app onchain faster with more features than possible otherwise.',
   },
   {
-    icon: <Icon name="eye" color="currentColor" />,
+    icon: <Image src={serverless} alt="serverless" width={30} height={32} className="h-8 w-8" />,
     title: 'Serverless',
     description:
       'To deploy full-stack onchain apps without managing backend infrastructure — just "npm create onchain" to get started.',
   },
   {
-    icon: <Icon name="eye" color="currentColor" />,
+    icon: (
+      <Image src={cryptoBasics} alt="cryptoBasics" width={30} height={32} className="h-8 w-8" />
+    ),
     title: 'Composable',
     description:
       'To build apps that can interact with and build upon other apps in the Base ecosystem.',
   },
   {
-    icon: <Icon name="eye" color="currentColor" />,
+    icon: (
+      <Image
+        src={derivativesProductNew}
+        alt="derivativesProductNew"
+        width={33}
+        height={32}
+        className="h-8 w-8"
+      />
+    ),
     title: 'Go to market faster',
     description:
       'We streamline all the table stake features, so you can focus on your differentiator and go to market faster.',
   },
   {
-    icon: <Icon name="eye" color="currentColor" />,
+    icon: (
+      <Image
+        src={taxesReceiptInactive}
+        alt="taxesReceiptInactive"
+        width={32}
+        height={32}
+        className="h-8 w-8"
+      />
+    ),
     title: 'Cost-effective',
     description:
       'To make it cost-effective to build and scale applications with transaction fees of less than 1 cent.',
