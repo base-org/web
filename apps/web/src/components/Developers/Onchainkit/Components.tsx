@@ -1,12 +1,26 @@
 'use client';
 
+import { WalletDefault } from '@coinbase/onchainkit/wallet';
+import { Checkout, CheckoutButton } from '@coinbase/onchainkit/checkout';
+import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import { useCallback, useState } from 'react';
+import { ReactNode, useCallback, useState } from 'react';
+import { TransactionDefault } from '@coinbase/onchainkit/transaction';
 
 const headers = ['Wallet', 'Earn', 'Fund', 'Pay', 'Buy', 'Checkout', 'Mint', 'Transact'];
 
+// const COMPONENT_MAP: Record<string, ReactNode> = {
+//   Wallet: <WalletDefault />,
+//   Earn: <WalletDefault />,
+//   Checkout: (
+//     <Checkout>
+//       <CheckoutButton />
+//     </Checkout>
+//   ),
+//   Transact: <TransactionDefault />
+// };
 export function Components() {
   const [selectedTab, setSelectedTab] = useState(headers[0]);
 
@@ -43,7 +57,11 @@ export function Components() {
           </Button>
         </div>
       </div>
-      <div className="p-6">components here</div>
+      <div className="p-6">
+        <DynamicCryptoProviders>
+          <WalletDefault />
+        </DynamicCryptoProviders>
+      </div>
     </section>
   );
 }
