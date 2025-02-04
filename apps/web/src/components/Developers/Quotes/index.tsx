@@ -53,7 +53,7 @@ export function Quotes() {
 
   return (
     <section className="mt-16 h-full w-full">
-      <div className="border-neutral-800 rounded-xl border px-8 pb-8 pt-6">
+      <div className="rounded-xl border border-palette-line/50 px-8 pb-8 pt-6">
         <div className="mb-8 flex space-x-6">
           {(['build', 'scale', 'monetize'] as const).map((tab) => (
             <button
