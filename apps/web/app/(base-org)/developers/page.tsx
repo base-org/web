@@ -6,6 +6,7 @@ import { UseCases } from 'apps/web/src/components/Developers/UseCases';
 import { Customers } from 'apps/web/src/components/Developers/Customers';
 import { Quotes } from 'apps/web/src/components/Developers/Quotes';
 import { Tools } from 'apps/web/src/components/Developers/Tools';
+import { WhyBase } from 'apps/web/src/components/Developers/WhyBase';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -26,6 +27,7 @@ export default async function Developers() {
           <Customers />
           <Quotes />
           <Tools />
+          <WhyBase />
         </main>
       </Container>
     </AnalyticsProvider>
