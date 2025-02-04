@@ -5,6 +5,7 @@ import { Hero } from 'apps/web/src/components/Developers/Hero';
 import { UseCases } from 'apps/web/src/components/Developers/UseCases';
 import { Customers } from 'apps/web/src/components/Developers/Customers';
 import { Quotes } from 'apps/web/src/components/Developers/Quotes';
+import { Tools } from 'apps/web/src/components/Developers/Tools';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -24,6 +25,7 @@ export default async function Developers() {
           <UseCases />
           <Customers />
           <Quotes />
+          <Tools />
         </main>
       </Container>
     </AnalyticsProvider>
