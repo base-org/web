@@ -1,5 +1,13 @@
 [
   {
+    "name": "Giza",
+    "description": "Xenocognitive Finance: Autonomous financial agents that transform DeFi complexity into optimized strategies, combining continuous market intelligence with non-custodial security.",
+    "url": "https://arma.xyz/",
+    "imageUrl": "/images/partners/giza.svg",
+    "category": "infra",
+    "subcategory": "ai"
+  },
+  {
     "name": "Infinity Wallet",
     "description": "Infinity Wallet is a decentralized all-in-one non-custodial wallet ecosystem and first-of-its-kind Web3 browser, providing a one-stop wallet & DeFi solution.",
     "url": "https://infinitywallet.io/",
