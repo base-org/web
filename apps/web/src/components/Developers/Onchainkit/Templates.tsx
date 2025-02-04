@@ -25,7 +25,10 @@ export function Templates() {
       <div className="grid w-full grid-cols-3 gap-6">
         {TEMPLATES.map((template) => {
           return (
-            <div className="flex h-[220px] flex-col justify-between rounded-lg bg-[purple] p-6">
+            <div
+              key={template.title}
+              className="flex h-[220px] flex-col justify-between rounded-lg bg-[purple] p-6"
+            >
               <Title level={TitleLevel.Title3}>{template.title}</Title>
               <Link href={template.href} className="flex gap-2 text-[#C9A4FA]">
                 <Title level={TitleLevel.Headline}>Fork the template</Title>
