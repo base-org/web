@@ -11,7 +11,7 @@ import baseWallet from 'apps/web/src/components/Developers/Tools/baseWallet.svg'
 import onchainKit from 'apps/web/src/components/Developers/Tools/onchainKit.svg';
 import verification from 'apps/web/src/components/Developers/Tools/verification.svg';
 
-type CardProps = {
+type ToolCardProps = {
   title: string;
   description: string;
   icon: StaticImageData;
@@ -25,37 +25,37 @@ export function Tools() {
         The easiest and most rewarding way to build world-class onchain products.
       </Title>
       <div className="grid grid-cols-2 gap-4">
-        <Card
+        <ToolCard
           title="AgentKit"
           description="Build and deploy AI agents that can interact with blockchain data and smart contracts."
           icon={agentKit as StaticImageData}
           href="https://docs.cdp.coinbase.com/agentkit/docs/welcome"
         />
-        <Card
+        <ToolCard
           title="Base Nets"
           description="Unlock fast and cheap transactions at scale with dedicated blockspace."
           icon={baseNet as StaticImageData}
           href="/coming-soon"
         />
-        <Card
+        <ToolCard
           title="MiniKit"
           description="Build once. Deploy anywhere. A tool to help you easily deploy your app on Warpcast and Base App."
           icon={miniKit as StaticImageData}
           href="/coming-soon"
         />
-        <Card
+        <ToolCard
           title="Smart Wallet"
           description="A passkey-based, self-custodial, global wallet for seamless experiences."
           icon={baseWallet as StaticImageData}
           href="https://www.smartwallet.dev/why"
         />
-        <Card
+        <ToolCard
           title="OnchainKit"
           description="An all-in-one toolkit to make building onchain faster, easier, and more profitable."
           icon={onchainKit as StaticImageData}
           href="https://onchainkit.xyz/"
         />
-        <Card
+        <ToolCard
           title="Verifications"
           description="Add identity verification and compliance features to your applications."
           icon={verification as StaticImageData}
@@ -66,7 +66,7 @@ export function Tools() {
   );
 }
 
-function Card({ title, description, icon, href }: CardProps) {
+function ToolCard({ title, description, icon, href }: ToolCardProps) {
   return (
     <Link
       href={href}
