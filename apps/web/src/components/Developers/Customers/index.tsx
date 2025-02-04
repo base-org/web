@@ -1,6 +1,8 @@
 'use client';
 
 import logo from 'apps/web/src/components/base-org/shared/TopNavigation/assets/logo.svg';
+import Title from 'apps/web/src/components/base-org/typography/Title';
+import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import Image, { type StaticImageData } from 'next/image';
 
 const LOGO_WIDTH = 200; // width of each logo in pixels
@@ -11,10 +13,10 @@ export function Customers() {
   const logos = Array(TOTAL_LOGOS).fill(null);
 
   return (
-    <div className="h-full w-full pt-32">
-      <h2 className="mb-16 max-w-6xl text-3xl font-bold tracking-tight text-white">
+    <section className="h-full w-full pt-32">
+      <Title level={TitleLevel.Title1} as="h2" className="mb-16">
         Powering the most consumer-friendly applications onchain.
-      </h2>
+      </Title>
 
       {/* Auto-scrolling Logos */}
       <figure
@@ -56,6 +58,6 @@ export function Customers() {
           ))}
         </div>
       </figure>
-    </div>
+    </section>
   );
 }

@@ -64,7 +64,7 @@ export function Quotes() {
                 'rounded px-2 py-0.5 transition-colors',
                 activeTab === tab
                   ? 'text-white'
-                  : 'text-gray-30 hover:bg-dark-gray-10 hover:text-white',
+                  : 'text-dark-palette-foregroundMuted hover:bg-dark-gray-10 hover:text-white',
               )}
             >
               <Title level={TitleLevel.Title3}>{tab.charAt(0).toUpperCase() + tab.slice(1)}</Title>
@@ -87,7 +87,7 @@ export function Quotes() {
                 >
                   <blockquote className="space-y-4">
                     <Title level={TitleLevel.Display3}>&ldquo;{quote.text}&rdquo;</Title>
-                    <div className="text-gray-30">
+                    <div className="text-dark-palette-foregroundMuted">
                       <Title level={TitleLevel.Title4}>{quote.author}</Title>
                       <Title level={TitleLevel.Title4}>{quote.role}</Title>
                     </div>
