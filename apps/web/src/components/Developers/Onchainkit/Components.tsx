@@ -30,6 +30,7 @@ export function Components() {
                 className={isSelected ? 'text-white' : 'text-dark-palette-foregroundMuted'}
                 key={header}
                 onClick={handleClick(header)}
+                type="button"
               >
                 {header}
               </button>
