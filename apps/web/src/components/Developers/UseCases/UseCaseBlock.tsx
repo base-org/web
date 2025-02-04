@@ -25,7 +25,7 @@ export function UseCaseBlock({
         <Title level={TitleLevel.Title3} as="h3" className="text-white">
           {title}
         </Title>
-        <Title level={TitleLevel.Title4} className="text-gray-30">
+        <Title level={TitleLevel.Title4} className="text-dark-palette-foregroundMuted">
           {description}
         </Title>
       </div>

@@ -10,7 +10,7 @@ import { AnimatedGasless } from 'apps/web/src/components/Developers/UseCases/Gas
 
 export async function UseCases() {
   return (
-    <div className="h-full w-full">
+    <section className="h-full w-full">
       <div className="flex flex-row gap-2">
         <Title level={TitleLevel.Title1} as="h2">
           Build, scale, and monetize.
@@ -65,6 +65,6 @@ export async function UseCases() {
           <AnimatedGasless />
         </UseCaseBlock>
       </div>
-    </div>
+    </section>
   );
 }
