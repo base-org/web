@@ -5,6 +5,7 @@ import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import agentkit from 'apps/web/src/components/Developers/AgentKit/agentkit.svg';
+import { Demo } from 'apps/web/src/components/Developers/AgentKit/Demo';
 import { Frameworks } from 'apps/web/src/components/Developers/AgentKit/Frameworks';
 import { InfoCards } from 'apps/web/src/components/Developers/AgentKit/InfoCards';
 import { Possibilities } from 'apps/web/src/components/Developers/AgentKit/Possibilities';
@@ -39,6 +40,7 @@ export default async function AgentKit() {
           </div>
         </div>
 
+        <Demo />
         <InfoCards />
         <Frameworks />
         <Possibilities />
