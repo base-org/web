@@ -3912,6 +3912,14 @@
     "subcategory": "data"
   },
   {
+    "name": "Masa",
+    "description": "Masa is a leading real-time data network for AI agents and applications. Get free, structured, high-quality, real-time data for your AI Agents today.",
+    "url": "https://masa.ai",
+    "imageUrl": "/images/partners/masa.png",
+    "category": "infra",
+    "subcategory": "ai"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
