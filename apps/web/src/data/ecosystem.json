@@ -3752,6 +3752,14 @@
     "subcategory": "self-custody"
   },
   {
+    "name": "The Innovation Game",
+    "description": "TIG redefines the frontier of computational research by transforming proof-of-work into a global engine for open, autonomous innovation.",
+    "url": "https://www.tig.foundation/",
+    "imageUrl": "/images/partners/the-innovation-game.png",
+    "category": "infra",
+    "subcategory": "ai"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
