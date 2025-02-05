@@ -1,19 +1,45 @@
 'use client';
 
+import { WalletAdvancedDefault } from '@coinbase/onchainkit/wallet';
+import { Buy } from '@coinbase/onchainkit/buy';
+import { Checkout, CheckoutButton } from '@coinbase/onchainkit/checkout';
+import { SwapDefault } from '@coinbase/onchainkit/swap';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createHighlighter } from 'shiki';
 import sun from './sun.svg';
 import moon from './moon.svg';
 import Image, { StaticImageData } from 'next/image';
-import Button from 'apps/web/src/components/base-org/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import classNames from 'classnames';
-import { WalletAdvancedDefault, WalletDefault } from '@coinbase/onchainkit/wallet';
 import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
+import type { Token } from '@coinbase/onchainkit/token';
 
-type Tab = 'onboard' | 'onramp' | 'pay';
+type Tab = 'onboard' | 'onramp' | 'pay' | 'swap' | 'earn';
+
+const degenToken: Token[] = [
+  {
+    name: 'DEGEN',
+    address: '0x4ed4e862860bed51a9570b96d89af5e1b0efefed',
+    symbol: 'DEGEN',
+    decimals: 18,
+    image:
+      'https://d3r81g40ycuhqg.cloudfront.net/wallet/wais/3b/bf/3bbf118b5e6dc2f9e7fc607a6e7526647b4ba8f0bea87125f971446d57b296d2-MDNmNjY0MmEtNGFiZi00N2I0LWIwMTItMDUyMzg2ZDZhMWNm',
+    chainId: 8453,
+  },
+];
+
+const ethToken: Token[] = [
+  {
+    name: 'ETH',
+    address: '',
+    symbol: 'ETH',
+    decimals: 18,
+    image: 'https://wallet-api-production.s3.amazonaws.com/uploads/tokens/eth_288.png',
+    chainId: 8453,
+  },
+];
 
 const styles = `
   .code-snippet::-webkit-scrollbar {
@@ -93,6 +119,43 @@ function CheckoutDemo() {
     </Checkout>
   )
 }`,
+  swap: `import { SwapDefault } from '@coinbase/onchainkit/swap';
+import type { Token } from '@coinbase/onchainkit/token';
+
+function SwapDemo() {
+  const { address } = useAccount();
+  const ETHToken: Token = {
+    address: "",
+    chainId: 8453,
+    decimals: 18,
+    name: "Ethereum",
+    symbol: "ETH",
+    image: "",
+  };
+
+  const degenToken: Token[] = [{
+    name: 'DEGEN',
+    address: '0x4ed4e862860bed51a9570b96d89af5e1b0efefed',
+    symbol: 'DEGEN',
+    decimals: 18,
+    image: 'https://d3r81g40ycuhqg.cloudfront.net/wallet/wais/3b/bf/3bbf118b5e6dc2f9e7fc607a6e7526647b4ba8f0bea87125f971446d57b296d2-MDNmNjY0MmEtNGFiZi00N2I0LWIwMTItMDUyMzg2ZDZhMWNm',
+    chainId: 8453,
+  }];
+
+  const swappableTokens: Token[] = [ETHToken, USDCToken];
+
+  return (
+    <SwapDefault
+      from={swappableTokens}
+      to={swappableTokens}
+    />
+  )
+}`,
+  earn: `import { Earn } from '@coinbase/onchainkit/earn';
+
+function EarnDemo() {
+  return <Earn />;
+}`,
 };
 
 export function LiveDemo() {
@@ -122,17 +185,17 @@ export function LiveDemo() {
       case 'onboard':
         return <WalletAdvancedDefault />;
       case 'onramp':
-        return (
-          <Button className="h-auto bg-[#0052FF] px-4 py-2 text-white hover:bg-[#0052FF]/70">
-            Buy Crypto
-          </Button>
-        );
+        return <Buy toToken={degenToken} />;
       case 'pay':
         return (
-          <Button className="h-auto bg-[#0052FF] px-4 py-2 text-white hover:bg-[#0052FF]/70">
-            Pay with Crypto
-          </Button>
+          <Checkout productId="my-product-id">
+            <CheckoutButton coinbaseBranded />
+          </Checkout>
         );
+      case 'swap':
+        return <SwapDefault to={degenToken} from={ethToken} />;
+      case 'earn':
+        return <div>Earn yield</div>;
       default:
         return null;
     }
@@ -172,18 +235,18 @@ export function LiveDemo() {
       setHighlightedCode(cleanedCode);
     }
 
-    highlightCode();
-  }, [isMounted, activeTab, codeSnippets]);
+    void highlightCode();
+  }, [isMounted, activeTab]);
 
   const handleCopy = useCallback(() => {
-    navigator.clipboard.writeText(codeSnippets[activeTab]);
+    void navigator.clipboard.writeText(codeSnippets[activeTab]);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }, [activeTab]);
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
+  }, []);
 
   if (!isMounted) {
     return (
@@ -210,7 +273,7 @@ export function LiveDemo() {
       </div>
       <div
         className={classNames(
-          'overflow-hidden rounded-xl border transition-colors',
+          'rounded-xl border transition-colors',
           theme === 'dark'
             ? 'border-dark-palette-line/50 bg-black'
             : 'border-dark-palette-line/50 bg-white',
@@ -224,6 +287,7 @@ export function LiveDemo() {
           <div className="no-scrollbar flex items-center space-x-8 overflow-x-auto">
             <div className="flex space-x-8 px-1">
               <button
+                type="button"
                 onClick={() => setActiveTab('onboard')}
                 className={classNames(
                   'whitespace-nowrap rounded-lg text-base font-medium transition-colors',
@@ -233,6 +297,7 @@ export function LiveDemo() {
                 Sign in
               </button>
               <button
+                type="button"
                 onClick={() => setActiveTab('onramp')}
                 className={classNames(
                   'whitespace-nowrap rounded-lg text-base font-medium transition-colors',
@@ -242,6 +307,7 @@ export function LiveDemo() {
                 Onramp
               </button>
               <button
+                type="button"
                 onClick={() => setActiveTab('pay')}
                 className={classNames(
                   'whitespace-nowrap rounded-lg text-base font-medium transition-colors',
@@ -250,11 +316,32 @@ export function LiveDemo() {
               >
                 Pay
               </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('swap')}
+                className={classNames(
+                  'whitespace-nowrap rounded-lg text-base font-medium transition-colors',
+                  activeTab === 'swap' ? buttonClasses.active : buttonClasses.inactive,
+                )}
+              >
+                Swap
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('earn')}
+                className={classNames(
+                  'whitespace-nowrap rounded-lg text-base font-medium transition-colors',
+                  activeTab === 'earn' ? buttonClasses.active : buttonClasses.inactive,
+                )}
+              >
+                Earn yield
+              </button>
             </div>
           </div>
 
           <div className="flex items-center space-x-2">
             <button
+              type="button"
               onClick={handleCopy}
               className={classNames(
                 'rounded-lg border p-2 transition-colors',
@@ -272,6 +359,7 @@ export function LiveDemo() {
               )}
             </button>
             <button
+              type="button"
               onClick={toggleTheme}
               className={classNames(
                 'rounded-lg border p-2 transition-colors',
@@ -291,15 +379,16 @@ export function LiveDemo() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div
-            className={`flex h-[300px] items-center justify-center border-b p-8 transition-colors lg:h-[500px] lg:border-b-0 lg:border-r lg:p-12 ${
-              theme === 'dark' ? 'border-dark-palette-line/50' : 'border-dark-palette-line/50'
-            }`}
+            className={classNames(
+              'h-[300px] p-8 lg:h-[500px] lg:p-12',
+              'border-b lg:border-b-0 lg:border-r',
+              'flex items-center justify-center transition-colors',
+              'overflow-visible',
+              theme === 'dark' ? 'border-dark-palette-line/50' : 'border-dark-palette-line/50',
+            )}
           >
-            <DynamicCryptoProviders>
-              <WalletDefault />
-            </DynamicCryptoProviders>
+            <DynamicCryptoProviders>{demoComponent}</DynamicCryptoProviders>
           </div>
-
           <div className="h-[300px] py-6 pl-6 pr-1 lg:h-[500px]">
             <div className={`${theme} relative h-full`}>
               {highlightedCode ? (
