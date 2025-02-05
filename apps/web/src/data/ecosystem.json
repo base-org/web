@@ -3886,7 +3886,23 @@
     "imageUrl": "/images/partners/streamm-tv.png",
     "category": "consumer",
     "subcategory": "social"
-  }
+  },
+  {
+    "name": "Vaultleap.com",
+    "description": "Vaultleap: The all-in-one platform for SMBs to manage USDC payments. Designed for SMBs to securely pay teams, accept client funds, and automate W9, W8-BEN, and 1099 compliance",
+    "url": "https://vaultleap.com",
+    "imageUrl": "/images/partners/Vaultleap.png",
+    "category": "consumer",
+    "subcategory": "payments"
+  },
+  {
+    "name": "Send",
+    "url": "https://send.it",
+    "description": "Send is a payments app where users maintain full control of their assets. Using USDC stablecoin, Send enables instant, global transfers and provides banking features for the digital age.",
+    "category": "consumer",
+    "subcategory": "social",
+    "imageUrl": "/images/partners/send.png"
+  },
   {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
