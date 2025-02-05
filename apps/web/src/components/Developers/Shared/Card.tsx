@@ -3,15 +3,22 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import { ReactNode } from 'react';
 
 type CardProps = {
-  icon: ReactNode;
+  icon?: ReactNode;
   title: string;
   description: string;
-  iconClassName: string;
+  iconClassName?: string;
+  className?: string;
 };
-export function Card({ icon, title, description, iconClassName = 'text-white' }: CardProps) {
+export function Card({
+  icon,
+  title,
+  description,
+  className,
+  iconClassName = 'text-white',
+}: CardProps) {
   return (
-    <div className="flex  flex-col gap-1">
-      <div className={iconClassName}>{icon}</div>
+    <div className={`flex  flex-col gap-1 ${className}`}>
+      {icon && <div className={iconClassName}>{icon}</div>}
       <Title level={TitleLevel.Title3} className="pt-1">
         {title}
       </Title>

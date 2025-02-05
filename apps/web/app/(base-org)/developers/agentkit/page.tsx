@@ -7,6 +7,7 @@ import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/Bu
 import agentkit from 'apps/web/src/components/Developers/AgentKit/agentkit.svg';
 import { Frameworks } from 'apps/web/src/components/Developers/AgentKit/Frameworks';
 import { InfoCards } from 'apps/web/src/components/Developers/AgentKit/InfoCards';
+import { Possibilities } from 'apps/web/src/components/Developers/AgentKit/Possibilities';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
 import Image from 'next/image';
 
@@ -40,6 +41,7 @@ export default async function AgentKit() {
 
         <InfoCards />
         <Frameworks />
+        <Possibilities />
         <CtaBanner
           title="Ready to launch an AI Agent?"
           description="Start building with a starter template or see documentation."
