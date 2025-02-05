@@ -8,6 +8,7 @@ import agentkit from 'apps/web/src/components/Developers/AgentKit/agentkit.svg';
 import { Demo } from 'apps/web/src/components/Developers/AgentKit/Demo';
 import { Frameworks } from 'apps/web/src/components/Developers/AgentKit/Frameworks';
 import { InfoCards } from 'apps/web/src/components/Developers/AgentKit/InfoCards';
+import { OnchainActions } from 'apps/web/src/components/Developers/AgentKit/OnchainActions';
 import { Possibilities } from 'apps/web/src/components/Developers/AgentKit/Possibilities';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
 import Image from 'next/image';
@@ -42,6 +43,7 @@ export default async function AgentKit() {
 
         <Demo />
         <InfoCards />
+        <OnchainActions />
         <Frameworks />
         <Possibilities />
         <CtaBanner
