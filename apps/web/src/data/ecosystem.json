@@ -3710,5 +3710,13 @@
     "imageUrl": "/images/partners/tokengenerator.png",
     "category": "infra",
     "subcategory": "developer tool"
+  },
+  {
+    "name": "KOLZ",
+    "description": "A cutting-edge Web3 influencer platform designed to bridge the gap between leading influencers in the cryptocurrency and blockchain space (known as KOLs - Key Opinion Leaders) and their followers.",
+    "url": "https://kolz.chat/",
+    "imageUrl": "/images/partners/kolz.png",
+    "category": "infra",
+    "subcategory": "ai"
   }
 ]
