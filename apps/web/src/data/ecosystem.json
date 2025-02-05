@@ -3816,6 +3816,14 @@
     "subcategory": "developer tool"
   },
   {
+    "name": "based.gift",
+    "description": "Send beautiful onchain gift cards on Base. Simple and an easy customizable way to give the gift of crypto for any occasion.",
+    "url": "https://based.gift",
+    "imageUrl": "/images/partners/basedgift.png",
+    "category": "consumer",
+    "subcategory": "nft"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
