@@ -3976,6 +3976,14 @@
     "subcategory": "ai"
   },
   {
+    "name": "ArtGridz",
+    "description": "Onboard anyone to crypto with ArtGridz. Own pixels forever with a groundbreaking onchain storage approach. Create, Curate, trade, and even sell custom art on our integrated marketplace. Fee's are on us!",
+    "url": "https://gridz.art",
+    "imageUrl": "/images/partners/artgridz.png",
+    "category": "consumer",
+    "subcategory": "nft"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
