@@ -332,8 +332,7 @@
     "description": "Brian offers a non custodial solution to perform transactions, research web3 info and deploy smart contracts via prompting.",
     "url": "https://www.brianknows.org/",
     "imageUrl": "/images/partners/brian.webp",
-    "category": "infra",
-    "subcategory": "ai"
+    "category": "ai"
   },
   {
     "name": "Cede.Store",
@@ -2436,8 +2435,7 @@
     "description": "Non-custodial trading bot powered by smart contract wallets. Offers advanced DEX trading tools: from limit and trailing orders to DCA, Grid, Gems Sniper bots and much more",
     "url": "https://goodcrypto.app/x",
     "imageUrl": "/images/partners/goodcryptox.png",
-    "category": "infra",
-    "subcategory": "ai"
+    "category": "ai"
   },
   {
     "name": "SwapBased",
@@ -3044,8 +3042,7 @@
     "description": "OpenCoin AI is a series of AI-powered applications fueled by real-time cross-chain data.",
     "url": "https://opencoin.ai",
     "imageUrl": "/images/partners/opencoin.png",
-    "category": "infra",
-    "subcategory": "ai"
+    "category": "ai"
   },
   {
     "name": "OpenVotes",
@@ -3228,8 +3225,7 @@
     "description": "AI-Optimized Yield and Liquidity Strategies",
     "url": "https://mozaic.finance/",
     "imageUrl": "/images/partners/mozaic.jpg",
-    "category": "infra",
-    "subcategory": "ai"
+    "category": "ai"
   },
   {
     "name": "stVol",
@@ -3657,8 +3653,7 @@
   },
   {
     "name": "BlockAI",
-    "category": "infra",
-    "subcategory": "ai",
+    "category": "ai",
     "description": "BlockAI combines blockchain and AI to offer decentralized access to innovative tools like Text and image generation, video summarization, games, etc.",
     "url": "https://base.blockai.dev",
     "imageUrl": "/images/partners/blockai.png"
@@ -3673,8 +3668,7 @@
   },
   {
     "name": "Virtuals Protocol",
-    "category": "infra",
-    "subcategory": "ai",
+    "category": "ai",
     "description": "Virtuals Protocol is building a Society of AI Agents onchain",
     "url": "https://app.virtuals.io/",
     "imageUrl": "/images/partners/virtuals.png"
@@ -3696,11 +3690,10 @@
     "subcategory": "gaming"
   },
   {
-    "category": "infra",
     "description": "Venice is a private, uncensored AI app with an API for agents and developers. Powered by decentralized inference and open-source models, Venice delivers unrestricted access to AI without storing your data.",
     "imageUrl": "/images/partners/venice.svg",
     "name": "Venice",
-    "subcategory": "ai",
+    "category": "ai",
     "url": "https://venice.ai/"
   },
   {
