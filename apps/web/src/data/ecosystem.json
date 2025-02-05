@@ -3840,6 +3840,14 @@
     "imageUrl": "/images/partners/metacade.png"
   },
   {
+    "name": "ShapeShift",
+    "description": "ShapeShift empowers users to self-custody and manage assets across top blockchains like Bitcoin, Ethereum, Base, and Cosmos. It's a hybrid app and wallet optimized for trading, earning, and more with digital assets.",
+    "url": "https://app.shapeshift.com/",
+    "imageUrl": "/images/partners/shapeshift.svg",
+    "category": "defi",
+    "subcategory": "dex aggregator"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
