@@ -3712,6 +3712,14 @@
     "url": "https://venice.ai/"
   },
   {
+    "name": "Million Bit Homepage",
+    "description": "Own a bit of onchain history! Add your pixels to the homepage and receive an NFT of your plot.",
+    "url": "https://millionbithomepage.com/",
+    "imageUrl": "/images/partners/millionbithomepage.png",
+    "category": "consumer",
+    "subcategory": "nft"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
