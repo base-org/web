@@ -5,7 +5,9 @@ import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import agentkit from 'apps/web/src/components/Developers/AgentKit/agentkit.svg';
+import { Frameworks } from 'apps/web/src/components/Developers/AgentKit/Frameworks';
 import { InfoCards } from 'apps/web/src/components/Developers/AgentKit/InfoCards';
+import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
 import Image from 'next/image';
 
 export default async function AgentKit() {
@@ -27,12 +29,38 @@ export default async function AgentKit() {
           </Title>
 
           <div className="flex gap-6 pt-6">
-            <Button variant={ButtonVariants.Secondary} iconName='copy'>npx create-agentkit-app</Button>
-            <Button variant={ButtonVariants.SecondaryOutline} iconName='arrowRight'>Documentation</Button>
+            <Button variant={ButtonVariants.Secondary} iconName="copy">
+              npx create-agentkit-app
+            </Button>
+            <Button variant={ButtonVariants.SecondaryOutline} iconName="arrowRight">
+              Documentation
+            </Button>
           </div>
         </div>
 
         <InfoCards />
+        <Frameworks />
+        <CtaBanner
+          title="Ready to launch an AI Agent?"
+          description="Start building with a starter template or see documentation."
+          cta={
+            <>
+              <ButtonWithLinkAndEventLogging
+                variant={ButtonVariants.Secondary}
+                iconName="fork"
+                buttonClassNames="flex w-40 items-center justify-between px-4 py-3"
+                href="https://login.coinbase.com/signin"
+                target="_blank"
+                eventName="verifications-get-started"
+              >
+                For a template
+              </ButtonWithLinkAndEventLogging>
+              <Button iconName="arrowRight" variant={ButtonVariants.Outlined}>
+                Documentation
+              </Button>
+            </>
+          }
+        />
       </main>
     </Container>
   );
