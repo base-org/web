@@ -3784,6 +3784,14 @@
     "subcategory": "data"
   },
   {
+    "name": "Garden",
+    "description": "Garden is the fastest Bitcoin bridge, enabling cross-chain swaps in as little as 30 secs. It is built using an intents-based architecture with trustless settlements, ensuring zero custody risk.",
+    "url": "https://garden.finance/",
+    "imageUrl": "/images/partners/garden.png",
+    "category": "infra",
+    "subcategory": "bridge"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
