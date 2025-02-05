@@ -4,6 +4,7 @@ import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
+import { Customers } from 'apps/web/src/components/Developers/Verifications/Customers';
 import { InfoCards } from 'apps/web/src/components/Developers/Verifications/InfoCards';
 import { ValueProps } from 'apps/web/src/components/Developers/Verifications/ValueProps';
 import verification from 'apps/web/src/components/Developers/Verifications/verification.svg';
@@ -48,6 +49,7 @@ export default async function Verifications() {
 
         <InfoCards />
         <ValueProps />
+        <Customers />
         <CtaBanner
           title="Know your users"
           description="Start building with Verifications today"
