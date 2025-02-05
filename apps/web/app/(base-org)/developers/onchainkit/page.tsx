@@ -6,6 +6,7 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import { Components } from 'apps/web/src/components/Developers/Onchainkit/Components';
 import { InfoCards } from 'apps/web/src/components/Developers/Onchainkit/InfoCards';
 import { Templates } from 'apps/web/src/components/Developers/Onchainkit/Templates';
+import { Testmonials } from 'apps/web/src/components/Developers/Onchainkit/Testimonials';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
 
 export default async function OnchainKit() {
@@ -28,6 +29,7 @@ export default async function OnchainKit() {
         <Components />
         <InfoCards />
         <Templates />
+        <Testmonials />
         <CtaBanner
           title="What do you want to build?"
           description="Start building with a starter template or see documentation."
