@@ -3928,6 +3928,14 @@
     "url": "https://spheron.network/"
   },
   {
+    "name": "Moralis",
+    "description": "Moralis is an onchain analytics platform, providing data and powerful insights to traders and investors across major blockchains.",
+    "url": "https://moralis.com",
+    "imageUrl": "/images/partners/moralis.webp",
+    "category": "infra",
+    "subcategory": "data"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
