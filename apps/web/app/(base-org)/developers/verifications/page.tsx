@@ -1,4 +1,3 @@
-import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
@@ -35,9 +34,15 @@ export default async function Verifications() {
           </Title>
 
           <div className="flex gap-6 pt-6">
-            <Button iconName="arrowRight" variant={ButtonVariants.Secondary}>
+            <ButtonWithLinkAndEventLogging
+              eventName="verifications-get-started"
+              iconName="arrowRight"
+              variant={ButtonVariants.Secondary}
+              href="https://login.coinbase.com/signin"
+              target="_blank"
+            >
               Get started
-            </Button>
+            </ButtonWithLinkAndEventLogging>
           </div>
         </div>
 
@@ -52,8 +57,9 @@ export default async function Verifications() {
               iconName="arrowRight"
               iconSize="12"
               buttonClassNames="flex w-40 items-center justify-between px-4 py-3"
-              href=""
-              eventName="bottom-cta"
+              href="https://login.coinbase.com/signin"
+              target="_blank"
+              eventName="verifications-get-started"
             >
               Get started
             </ButtonWithLinkAndEventLogging>
