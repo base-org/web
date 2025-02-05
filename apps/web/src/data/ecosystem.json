@@ -3832,6 +3832,14 @@
     "subcategory": "self-custody"
   },
   {
+    "name": "Metacade",
+    "category": "consumer",
+    "subcategory": "gaming",
+    "description": "Play, Build, Connect and Earn Onchain.",
+    "url": "https://tournaments.metacade.co/",
+    "imageUrl": "/images/partners/metacade.png"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
