@@ -3848,6 +3848,14 @@
     "subcategory": "dex aggregator"
   },
   {
+    "name": "Bario Entertainment System",
+    "category": "consumer",
+    "subcategory": "gaming",
+    "description": "Bario Entertainment System (Baes) is your gateway to onchain gaming. Mint games, and play. Baes is redefining what it means to own, play, and win on Base. No limits, just pure gaming excitement.",
+    "url": "https://baes.so/",
+    "imageUrl": "/images/partners/bario.png"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
