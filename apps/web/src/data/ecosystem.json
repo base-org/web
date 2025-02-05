@@ -3009,11 +3009,11 @@
   },
   {
     "name": "Moralis",
-    "description": "Moralis is a leading crypto data provider helping companies build great user experiences, drive engagement, growth, and revenue in their applications through Moralis’ suite of Web3 APIs and RPC nodes.",
-    "url": "https://moralis.io",
-    "imageUrl": "/images/partners/moralis.png",
+    "description": "Moralis is the leading on-chain analytics platform, providing data and powerful insights to traders and investors across all major blockchains.",
+    "url": "https://moralis.com",
+    "imageUrl": "/images/partners/moralis.webp",
     "category": "infra",
-    "subcategory": "developer tool"
+    "subcategory": "data"
   },
   {
     "name": "Moshicam",
