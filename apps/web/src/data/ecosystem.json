@@ -3728,6 +3728,14 @@
     "subcategory": "developer tools"
   },
   {
+    "name": "B3",
+    "description": "B3 is a layer 3 gaming ecosystem. We believe the future of gaming is open, connected, and shaped by the players themselves.",
+    "url": "https://www.b3.fun/",
+    "imageUrl": "/images/partners/b3.svg",
+    "category": "consumer",
+    "subcategory": "gaming"
+  }
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
