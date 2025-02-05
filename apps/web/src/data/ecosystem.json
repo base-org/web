@@ -3734,7 +3734,15 @@
     "imageUrl": "/images/partners/b3.svg",
     "category": "consumer",
     "subcategory": "gaming"
-  }
+  },
+  {
+    "name": "Toucan",
+    "description": "Toucan provides onchain infrastructure and liquid markets for carbon removal credits, making climate action directly accessible to Base's users and decentralized apps.",
+    "url": "https://toucan.earth/",
+    "imageUrl": "/images/partners/toucan.png"
+    "category": "consumer",
+    "subcategory": "real world"
+  },
   {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
