@@ -3824,6 +3824,14 @@
     "subcategory": "nft"
   },
   {
+    "name": "OKX Wallet",
+    "description": "OKX Wallet is a universal crypto wallet available on multiple platforms, including as an app, web, and extension.",
+    "url": "https://www.okx.com/download",
+    "imageUrl": "/images/partners/okxwallet192.png",
+    "category": "wallet",
+    "subcategory": "self-custody"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
