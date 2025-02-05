@@ -1,5 +1,13 @@
 [
   {
+    "name": "3DNS",
+    "description": "3DNS is a decentralized domain name service (DNS) that can power real web domains. Users can import an existing domain or register a new one and bring the domain onchain via 3DNS.",
+    "url": "https://3dns.box",
+    "imageUrl": "/images/partners/3dns.png",
+    "category": "consumer",
+    "subcategory": "nft"
+  },
+  {
     "name": "Infinity Wallet",
     "description": "Infinity Wallet is a decentralized all-in-one non-custodial wallet ecosystem and first-of-its-kind Web3 browser, providing a one-stop wallet & DeFi solution.",
     "url": "https://infinitywallet.io/",
@@ -76,6 +84,14 @@
     "description": "Connext is an intent-based modular interoperability protocol for securely passing funds and data between chains with the best possible speed, pricing, and security.",
     "url": "https://bridge.connext.network/",
     "imageUrl": "/images/partners/connext.webp",
+    "category": "infra",
+    "subcategory": "bridge"
+  },
+  {
+    "name": "Layerswap",
+    "description": "Layerswap is a fast, reliable and cost-efficient solution for bridging crypto assets across 55+ EVM and non-EVM networks.",
+    "url": "https://layerswap.io/app?to=base_mainnet",
+    "imageUrl": "/images/partners/Layerswap-logo.png",
     "category": "infra",
     "subcategory": "bridge"
   },
@@ -3694,5 +3710,13 @@
     "imageUrl": "/images/partners/tokengenerator.png",
     "category": "infra",
     "subcategory": "developer tool"
+  },
+  {
+    "name": "Unlock Protocol",
+    "description": "Unlock is an open-source, purpose-built protocol for creating onchain memberships and subscriptions as NFTs.",
+    "url": "https://unlock-protocol.com/",
+    "imageUrl": "/images/partners/unlockprotocol.png",
+    "category": "infra",
+    "subcategory": "consumer"
   }
 ]
