@@ -3710,5 +3710,13 @@
     "imageUrl": "/images/partners/tokengenerator.png",
     "category": "infra",
     "subcategory": "developer tool"
+  },
+  {
+    "name": "Pinto",
+    "description": "Pinto is low volatility, yield generating money: infinitely scalable, trust-minimized and non-custodial. Users can earn additional yield through active participation in protocol maintenance.",
+    "url": "https://pinto.money/",
+    "imageUrl": "/images/partners/pinto.png",
+    "category": "defi",
+    "subcategory": "stablecoin"
   }
 ]
