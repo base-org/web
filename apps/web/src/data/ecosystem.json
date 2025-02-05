@@ -3800,6 +3800,14 @@
     "subcategory": "yield vault"
   },
   {
+    "name": "Pulsar Finance",
+    "url": "https://pulsar.finance",
+    "description": "The web3 portfolio manager that covers all your tokens, DeFi protocols and NFTs across 100+ blockchains.",
+    "imageUrl": "/images/partners/pulsarfinance.png",
+    "category": "defi",
+    "subcategory": "portfolio"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
