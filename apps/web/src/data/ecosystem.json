@@ -3872,6 +3872,14 @@
     "subcategory": "gaming"
   },
   {
+    "name": "Based Nebula",
+    "description": "Procedurally generated NFTs utilize the minter's wallet address as a seed to deterministically produce nebulae from perlin noise.",
+    "url": "https://nebula.foundnone.xyz",
+    "imageUrl": "/images/partners/based-nebulas.png",
+    "category": "consumer",
+    "subcategory": "nft"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
