@@ -3968,6 +3968,14 @@
     "subcategory": "ai"
   },
   {
+    "name": "Bitte Protocol",
+    "description": "Bitte Protocol powers embeddable AI agents, enabling your community to seamlessly chat and transact with any smart contract.",
+    "url": "https://bitte.ai/",
+    "imageUrl": "/images/partners/bitte-protocol.png",
+    "category": "infra",
+    "subcategory": "ai"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
