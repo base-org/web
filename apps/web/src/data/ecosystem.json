@@ -3856,6 +3856,14 @@
     "imageUrl": "/images/partners/bario.png"
   },
   {
+    "name": "BSX",
+    "description": "BSX is developing the fastest, simplest, and most secure perpetuals DEX on the market. Backed by Coinbase Ventures, Blockchain Capital, and other prominent crypto VC investors.",
+    "url": "https://www.bsx.exchange",
+    "imageUrl": "/images/partners/bsx.png",
+    "category": "defi",
+    "subcategory": "dex"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
