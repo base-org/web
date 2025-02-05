@@ -3904,6 +3904,14 @@
     "imageUrl": "/images/partners/send.png"
   },
   {
+    "name": "SubQuery",
+    "url": "https://subquery.network/",
+    "description": "SubQuery is a fast, flexible, and reliable open-source data decentralised infrastructure network, providing both RPC and indexed data to consumers around the world. The SubQuery Data Indexer is a open-source data indexer that provides you with custom APIs for your web3 project across all of our supported chains. SubQuery AI Apps framework makes building decentralised AI Applications fast and easy.",
+    "imageUrl": "/images/partners/subquery.png",
+    "category": "infra",
+    "subcategory": "data"
+  },
+  {
     "name": "Token Generator",
     "description": "Token Generator is a no-code platform that simplifies the creation of ERC20 tokens. Since 2018, it has supported thousands of projects and companies entering the Web3 ecosystem. With Token Generator, you can create ERC20 tokens securely in less than a minute.",
     "url": "https://www.smartcontracts.tools/token-generator/create/base/",
