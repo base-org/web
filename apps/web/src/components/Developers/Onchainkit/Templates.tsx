@@ -4,19 +4,26 @@ import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Link from 'apps/web/src/components/Link';
+import background1 from './bg1.png';
+import background2 from './bg2.png';
+import background3 from './bg3.png';
+import Image from 'next/image';
 
 const TEMPLATES = [
   {
     title: 'Quickstart Template',
     href: '',
+    background: background1,
   },
   {
     title: 'Onchain Store Template',
     href: '',
+    background: background2,
   },
   {
     title: 'Onchain Social Template',
     href: '',
+    background: background3,
   },
 ];
 export function Templates() {
@@ -27,10 +34,18 @@ export function Templates() {
           return (
             <div
               key={template.title}
-              className="flex h-[220px] flex-col justify-between rounded-lg bg-[purple] p-6"
+              className="relative flex h-[220px] flex-col justify-between rounded-lg bg-[purple] p-6"
             >
-              <Title level={TitleLevel.Title3}>{template.title}</Title>
-              <Link href={template.href} className="flex gap-2 text-[#C9A4FA]">
+              <Image
+                src={template.background}
+                alt="Template background"
+                layout="fill"
+                objectFit="cover"
+              />
+              <Title level={TitleLevel.Title3} className="z-10">
+                {template.title}
+              </Title>
+              <Link href={template.href} className="z-10 flex gap-2 text-[#C9A4FA]">
                 <Title level={TitleLevel.Headline}>Fork the template</Title>
                 <Icon name="fork" color="currentColor" />
               </Link>
