@@ -48,8 +48,8 @@ const links: TopNavigationLink[] = [
     subItems: [],
   },
   {
-    name: 'Resources',
-    analyticContext: 'resources',
+    name: 'Community',
+    analyticContext: 'communnity',
     href: '/resources',
     subItems: [
       { name: 'Resources', description: 'Everything you need to get started', href: '/resources' },
