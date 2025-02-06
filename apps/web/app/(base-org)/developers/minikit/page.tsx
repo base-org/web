@@ -1,4 +1,3 @@
-import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
@@ -10,6 +9,8 @@ import { SupportedPlatforms } from 'apps/web/src/components/Developers/MiniKit/S
 import { Testimonials } from 'apps/web/src/components/Developers/MiniKit/Testimonials';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
 import Image, { StaticImageData } from 'next/image';
+
+const GET_STARTED_URL = 'https://replit.com/@tina-he/ock-frames-template?v=1#README.md';
 
 export default async function AgentKit() {
   return (
@@ -35,9 +36,16 @@ export default async function AgentKit() {
           </Title>
 
           <div className="flex gap-6 pt-6">
-            <Button variant={ButtonVariants.Secondary} iconName="arrowRight">
+            <ButtonWithLinkAndEventLogging
+              variant={ButtonVariants.Secondary}
+              iconName="arrowRight"
+              buttonClassNames="flex w-40 items-center px-4 py-3"
+              href={GET_STARTED_URL}
+              target="_blank"
+              eventName="minikit-get-started"
+            >
               Get started
-            </Button>
+            </ButtonWithLinkAndEventLogging>
           </div>
         </div>
 
@@ -52,7 +60,7 @@ export default async function AgentKit() {
               variant={ButtonVariants.Secondary}
               iconName="arrowRight"
               buttonClassNames="flex w-40 items-center px-4 py-3"
-              href="https://login.coinbase.com/signin"
+              href={GET_STARTED_URL}
               target="_blank"
               eventName="minikit-get-started"
             >
