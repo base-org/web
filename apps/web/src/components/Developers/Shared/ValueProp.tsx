@@ -2,7 +2,7 @@ import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import Image, { type StaticImageData } from 'next/image';
 
-type ValuePropProps = {
+export type ValuePropProps = {
   title: string;
   description: string;
   icon: StaticImageData;

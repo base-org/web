@@ -18,10 +18,10 @@ export function AnimatedListItem({ children }: { children: React.ReactNode }) {
   );
 }
 
-export interface AnimatedListProps extends ComponentPropsWithoutRef<'div'> {
+export type AnimatedListProps = ComponentPropsWithoutRef<'div'> & {
   children: React.ReactNode;
   delay?: number;
-}
+};
 
 export const AnimatedList = React.memo(
   ({ children, className, delay = 1000, ...props }: AnimatedListProps) => {

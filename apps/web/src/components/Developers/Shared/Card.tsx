@@ -2,7 +2,7 @@ import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { ReactNode } from 'react';
 
-type CardProps = {
+export type CardProps = {
   icon?: ReactNode;
   title: string;
   description: string;

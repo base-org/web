@@ -50,7 +50,7 @@ const MESSAGES: Item[] = [
 
 const MESSAGE_ARRAY = Array.from({ length: 10 }, () => MESSAGES).flat();
 
-const Message = ({ text, content, type }: Item) => {
+function Message({ text, content, type }: Item) {
   const isAgent = type === 'agent';
   return (
     <figure
@@ -75,7 +75,7 @@ const Message = ({ text, content, type }: Item) => {
       </div>
     </figure>
   );
-};
+}
 
 export function Demo() {
   return (
@@ -91,8 +91,8 @@ export function Demo() {
         className={cn('relative flex h-[500px] w-full flex-col overflow-hidden rounded-lg p-6 ')}
       >
         <AnimatedList>
-          {MESSAGE_ARRAY.map((item, idx) => (
-            <Message {...item} key={idx} />
+          {MESSAGE_ARRAY.map((item) => (
+            <Message {...item} key={item.text} />
           ))}
         </AnimatedList>
       </div>

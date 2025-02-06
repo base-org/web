@@ -1,7 +1,7 @@
 import { cn } from 'base-ui/utils/cn';
 import { ComponentPropsWithoutRef } from 'react';
 
-interface MarqueeProps extends ComponentPropsWithoutRef<'div'> {
+export type MarqueeProps = ComponentPropsWithoutRef<'div'> & {
   /**
    * Optional CSS class name to apply custom styles
    */
@@ -30,7 +30,7 @@ interface MarqueeProps extends ComponentPropsWithoutRef<'div'> {
    * @default 4
    */
   repeat?: number;
-}
+};
 
 export function Marquee({
   className,
@@ -55,9 +55,9 @@ export function Marquee({
     >
       {Array(repeat)
         .fill(0)
-        .map((_, i) => (
+        .map((item, i) => (
           <div
-            key={i}
+            key={item?.toString()}
             className={cn('flex shrink-0 justify-around [gap:var(--gap)]', {
               'animate-marquee flex-row': !vertical,
               'animate-marquee-vertical flex-col': vertical,

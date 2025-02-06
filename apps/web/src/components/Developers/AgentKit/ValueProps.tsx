@@ -1,9 +1,9 @@
-import { ValueProp } from 'apps/web/src/components/Developers/Shared/ValueProp';
+import { ValueProp, ValuePropProps } from 'apps/web/src/components/Developers/Shared/ValueProp';
 import coinbase from 'apps/web/src/components/Developers/Verifications/coinbase.svg';
 import globe from 'apps/web/src/components/Developers/Verifications/globe.svg';
 import coinbaseOne from 'apps/web/src/components/Developers/Verifications/coinbaseOne.svg';
 
-const VALUE_PROPS = [
+const VALUE_PROPS: ValuePropProps[] = [
   {
     title: 'Verified Account',
     description: 'A Coinbase user with a valid Coinbase trading account. ',

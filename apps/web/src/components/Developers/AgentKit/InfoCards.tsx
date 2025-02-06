@@ -1,10 +1,10 @@
-import { Card } from 'apps/web/src/components/Developers/Shared/Card';
+import { Card, CardProps } from 'apps/web/src/components/Developers/Shared/Card';
 import dropsActive from 'apps/web/src/components/Developers/AgentKit/dropsActive.svg';
 import blockchain from 'apps/web/src/components/Developers/AgentKit/blockchain.svg';
 import metaverse from 'apps/web/src/components/Developers/AgentKit/metaverse.svg';
 import Image from 'next/image';
 
-const INFO_CARDS = [
+const INFO_CARDS: CardProps[] = [
   {
     icon: <Image src={dropsActive} alt="dropsActive" width={32} height={32} className="h-8 w-8" />,
     title: 'No coding required',

@@ -5,11 +5,11 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import { AnimatedList } from 'apps/web/src/components/Developers/Shared/AnimatedList';
 import { cn } from 'base-ui/utils/cn';
 
-type Action = {
+type ActionItem = {
   title: string;
 };
 
-const ACTIONS: Action[] = [
+const ACTIONS: ActionItem[] = [
   {
     title: 'Deploy an NFT',
   },
@@ -24,7 +24,7 @@ const ACTIONS: Action[] = [
   },
 ];
 
-const Action = ({ title }: Action) => {
+function Action({ title }: ActionItem) {
   return (
     <figure
       className={cn(
@@ -41,13 +41,15 @@ const Action = ({ title }: Action) => {
       </div>
     </figure>
   );
-};
+}
 
 export function OnchainActions({ className }: { className?: string }) {
   return (
     <div className="flex  w-full flex-col">
       <div className="p-4">
-        <Title level={TitleLevel.Title1}>All onchain actions at your agent's fingertips.</Title>
+        <Title level={TitleLevel.Title1}>
+          All onchain actions at your agent&apos;s fingertips.
+        </Title>
       </div>
       <div
         className={cn('bg-background relative flex w-full flex-col overflow-hidden p-4', className)}

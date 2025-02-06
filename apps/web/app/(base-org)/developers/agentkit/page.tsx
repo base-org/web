@@ -12,7 +12,7 @@ import { OnchainActions } from 'apps/web/src/components/Developers/AgentKit/Onch
 import { Possibilities } from 'apps/web/src/components/Developers/AgentKit/Possibilities';
 import { Testmonials } from 'apps/web/src/components/Developers/AgentKit/Testimonials';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 export default async function AgentKit() {
   return (
@@ -21,7 +21,13 @@ export default async function AgentKit() {
         {/* Header  */}
         <div className="flex flex-col items-center gap-1 pt-20">
           <div className="flex items-center gap-2 pb-6">
-            <Image src={agentkit} alt="agentkit" width={32} height={32} className="h-5 w-5" />
+            <Image
+              src={agentkit as StaticImageData}
+              alt="agentkit"
+              width={32}
+              height={32}
+              className="h-5 w-5"
+            />
             <Title level={TitleLevel.Title3} className="text-[#E66020]">
               AgentKit
             </Title>

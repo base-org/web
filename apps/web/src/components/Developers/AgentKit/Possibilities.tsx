@@ -1,8 +1,8 @@
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
-import { Card } from 'apps/web/src/components/Developers/Shared/Card';
+import { Card, CardProps } from 'apps/web/src/components/Developers/Shared/Card';
 
-const POSSIBILITIES = [
+const POSSIBILITIES: CardProps[] = [
   {
     title: 'Onchain Assistants',
     description:
@@ -45,7 +45,12 @@ export function Possibilities() {
       <div className="grid grid-cols-3 gap-20">
         {POSSIBILITIES.map((pos) => {
           return (
-            <Card className="text-[#E66020]" title={pos.title} description={pos.description} />
+            <Card
+              key={pos.title}
+              className="text-[#E66020]"
+              title={pos.title}
+              description={pos.description}
+            />
           );
         })}
       </div>
