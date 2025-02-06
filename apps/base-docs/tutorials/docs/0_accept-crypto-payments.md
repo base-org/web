@@ -55,7 +55,7 @@ By following this guide, you will learn how to:
 
 ## Step-by-Step Setup
 
-### Step 1: Create a Product in Coinbase Commerce
+Overview
 
 1. **Log in** to your Coinbase Commerce account.
 2. Go to the [product creation page](https://beta.commerce.coinbase.com/products).
@@ -63,13 +63,21 @@ By following this guide, you will learn how to:
 4. Click **Create product**.
 5. Once created, select **View product** and copy the **UUID** from the URL.
 
+### Step 1: Create a Product in Coinbase Commerce
+
+To begin integrating Coinbase Commerce payments, you'll need to set up your account and create a product. Start by logging into your Coinbase Commerce account. Once you're in, navigate to the [product creation page](https://beta.commerce.coinbase.com/products) and add a detailed description of the product or service you're selling.
+
 ![Create product screenshot](../../assets/images/onchainkit-tutorials/pay-create-product-details.png)
 
-**Tip**: Store the product UUID as an environment variable in your `.env` file. This makes it easier to reference safely in your code.
+Once created, click **View product** in the popup to access the product page and copy the **UUID** from its URL.
+
+:::tip
+Store the product UUID as an environment variable in your `.env` file. This makes it easier to reference safely in your code.
+:::
 
 ### Step 2: Clone the OnchainKit App Template
 
-Use the official **OnchainKit app template** to bootstrap your project:
+Now that the product is created, we can start building the checkout flow. For this tutorial, we'll use the official **OnchainKit app template** to bootstrap your project:
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
