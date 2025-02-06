@@ -3718,5 +3718,13 @@
     "imageUrl": "/images/partners/kolz.png",
     "category": "infra",
     "subcategory": "ai"
+  },
+  {
+    "name": "Unlock Protocol",
+    "description": "Unlock is an open-source, purpose-built protocol for creating onchain memberships and subscriptions as NFTs.",
+    "url": "https://unlock-protocol.com/",
+    "imageUrl": "/images/partners/unlockprotocol.png",
+    "category": "infra",
+    "subcategory": "consumer"
   }
 ]
