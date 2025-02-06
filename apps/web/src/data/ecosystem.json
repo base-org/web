@@ -1,5 +1,13 @@
 [
   {
+    "name": "Seize",
+    "description": "Seize aims to revolutionize the crowdsourcing industry by connecting individuals and businesses in need of funds with those who have the means to invest. ",
+    "url": "https://www.seize.fund/",
+    "imageUrl": "/images/partners/seize.png",
+    "category": "consumer",
+    "subcategory": "real world"
+  },
+  {
     "name": "Infinity Wallet",
     "description": "Infinity Wallet is a decentralized all-in-one non-custodial wallet ecosystem and first-of-its-kind Web3 browser, providing a one-stop wallet & DeFi solution.",
     "url": "https://infinitywallet.io/",
