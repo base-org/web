@@ -3,6 +3,7 @@ import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
+import { HeaderAnimation } from 'apps/web/src/components/Developers/MiniKit/HeaderAnimation';
 import { InfoCards } from 'apps/web/src/components/Developers/MiniKit/InfoCards';
 import minikit from 'apps/web/src/components/Developers/MiniKit/minikit.svg';
 import { SupportedPlatforms } from 'apps/web/src/components/Developers/MiniKit/SupportedPlatforms';
@@ -17,36 +18,39 @@ export default async function AgentKit() {
     <Container>
       <main className="mb-32 flex min-h-screen w-full flex-col gap-40 bg-black px-2 pt-20 md:px-0">
         {/* Header  */}
-        <div className="flex max-w-xl flex-col gap-1 pt-20">
-          <div className="flex items-center gap-2 pb-6">
-            <Image
-              src={minikit as StaticImageData}
-              alt="minikit"
-              width={32}
-              height={32}
-              className="h-5 w-5"
-            />
-            <Title level={TitleLevel.Title3} className="text-[#D058C1]">
-              MiniKit
+        <div className="flex gap-1 pt-20">
+          <div className="flex max-w-xl flex-col gap-1 ">
+            <div className="flex items-center gap-2 pb-6">
+              <Image
+                src={minikit as StaticImageData}
+                alt="minikit"
+                width={32}
+                height={32}
+                className="h-5 w-5"
+              />
+              <Title level={TitleLevel.Title3} className="text-[#D058C1]">
+                MiniKit
+              </Title>
+            </div>
+            <Title level={TitleLevel.Display3}>All-you-need to build and grow your mini app.</Title>
+            <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted">
+              Feature your mini app on Warpcast and Coinbase Wallet with a few lines of code.
             </Title>
+            <div className="flex gap-6 pt-6">
+              <ButtonWithLinkAndEventLogging
+                variant={ButtonVariants.Secondary}
+                iconName="arrowRight"
+                buttonClassNames="flex w-40 items-center px-4 py-3"
+                href={GET_STARTED_URL}
+                target="_blank"
+                eventName="minikit-get-started"
+              >
+                Get started
+              </ButtonWithLinkAndEventLogging>
+            </div>
           </div>
-          <Title level={TitleLevel.Display3}>All-you-need to build and grow your mini app.</Title>
-          <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted">
-            Feature your mini app on Warpcast and Coinbase Wallet with a few lines of code.
-          </Title>
 
-          <div className="flex gap-6 pt-6">
-            <ButtonWithLinkAndEventLogging
-              variant={ButtonVariants.Secondary}
-              iconName="arrowRight"
-              buttonClassNames="flex w-40 items-center px-4 py-3"
-              href={GET_STARTED_URL}
-              target="_blank"
-              eventName="minikit-get-started"
-            >
-              Get started
-            </ButtonWithLinkAndEventLogging>
-          </div>
+          <HeaderAnimation />
         </div>
 
         <InfoCards />
