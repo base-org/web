@@ -3,15 +3,20 @@ import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
+import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
+import { InfoCards } from 'apps/web/src/components/Developers/MiniKit/InfoCards';
 import minikit from 'apps/web/src/components/Developers/MiniKit/minikit.svg';
+import { SupportedPlatforms } from 'apps/web/src/components/Developers/MiniKit/SupportedPlatforms';
+import { Testimonials } from 'apps/web/src/components/Developers/MiniKit/Testimonials';
+import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
 import Image, { StaticImageData } from 'next/image';
 
 export default async function AgentKit() {
   return (
     <Container>
-      <main className="mb-32 flex min-h-screen w-full flex-col items-center gap-40 bg-black px-2 pt-20 md:px-0">
+      <main className="mb-32 flex min-h-screen w-full flex-col gap-40 bg-black px-2 pt-20 md:px-0">
         {/* Header  */}
-        <div className="flex flex-col items-center gap-1 pt-20">
+        <div className="flex max-w-xl flex-col gap-1 pt-20">
           <div className="flex items-center gap-2 pb-6">
             <Image
               src={minikit as StaticImageData}
@@ -20,12 +25,12 @@ export default async function AgentKit() {
               height={32}
               className="h-5 w-5"
             />
-            <Title level={TitleLevel.Title3} className="text-[#E66020]">
+            <Title level={TitleLevel.Title3} className="text-[#D058C1]">
               MiniKit
             </Title>
           </div>
           <Title level={TitleLevel.Display3}>All-you-need to build and grow your mini app.</Title>
-          <Title level={TitleLevel.Title3} className="max-w-2xl text-center text-gray-muted">
+          <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted">
             Feature your mini app on Warpcast and Coinbase Wallet with a few lines of code.
           </Title>
 
@@ -35,6 +40,26 @@ export default async function AgentKit() {
             </Button>
           </div>
         </div>
+
+        <InfoCards />
+        <SupportedPlatforms />
+        <Testimonials />
+        <CtaBanner
+          title="Grow your app today."
+          description="Start building with a starter template or see documentation."
+          cta={
+            <ButtonWithLinkAndEventLogging
+              variant={ButtonVariants.Secondary}
+              iconName="arrowRight"
+              buttonClassNames="flex w-40 items-center px-4 py-3"
+              href="https://login.coinbase.com/signin"
+              target="_blank"
+              eventName="minikit-get-started"
+            >
+              Get started
+            </ButtonWithLinkAndEventLogging>
+          }
+        />
       </main>
     </Container>
   );
