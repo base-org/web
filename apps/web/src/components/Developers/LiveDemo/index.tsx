@@ -1,7 +1,7 @@
 'use client';
 
-import { WalletAdvancedDefault } from '@coinbase/onchainkit/wallet';
-import { Buy } from '@coinbase/onchainkit/buy';
+// import { WalletAdvancedDefault } from '@coinbase/onchainkit/wallet';
+// import { Buy } from '@coinbase/onchainkit/buy';
 import { Checkout, CheckoutButton } from '@coinbase/onchainkit/checkout';
 import { SwapDefault } from '@coinbase/onchainkit/swap';
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -183,9 +183,11 @@ export function LiveDemo() {
 
     switch (activeTab) {
       case 'onboard':
-        return <WalletAdvancedDefault />;
+        return <div>WalletAdvancedDefault</div>
+        // return <WalletAdvancedDefault />;
       case 'onramp':
-        return <Buy toToken={degenToken} />;
+        return <div>Buy</div>
+        // return <Buy toToken={degenToken} />;
       case 'pay':
         return (
           <Checkout productId="my-product-id">
