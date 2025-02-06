@@ -7,7 +7,7 @@ import { cn } from 'base-ui/utils/cn';
 
 type Action = {
   title: string;
-}
+};
 
 const ACTIONS: Action[] = [
   {
@@ -45,7 +45,7 @@ const Action = ({ title }: Action) => {
 
 export function OnchainActions({ className }: { className?: string }) {
   return (
-    <div className="flex min-h-[500px] w-full flex-col">
+    <div className="flex  w-full flex-col">
       <div className="p-4">
         <Title level={TitleLevel.Title1}>All onchain actions at your agent's fingertips.</Title>
       </div>

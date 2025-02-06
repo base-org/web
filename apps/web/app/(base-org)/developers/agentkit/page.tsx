@@ -10,6 +10,7 @@ import { Frameworks } from 'apps/web/src/components/Developers/AgentKit/Framewor
 import { InfoCards } from 'apps/web/src/components/Developers/AgentKit/InfoCards';
 import { OnchainActions } from 'apps/web/src/components/Developers/AgentKit/OnchainActions';
 import { Possibilities } from 'apps/web/src/components/Developers/AgentKit/Possibilities';
+import { Testmonials } from 'apps/web/src/components/Developers/AgentKit/Testimonials';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
 import Image from 'next/image';
 
@@ -45,6 +46,7 @@ export default async function AgentKit() {
         <InfoCards />
         <OnchainActions />
         <Frameworks />
+        <Testmonials />
         <Possibilities />
         <CtaBanner
           title="Ready to launch an AI Agent?"
