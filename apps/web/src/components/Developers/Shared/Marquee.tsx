@@ -55,9 +55,9 @@ export function Marquee({
     >
       {Array(repeat)
         .fill(0)
-        .map((item, i) => (
+        .map(() => (
           <div
-            key={item?.toString()}
+            key={crypto.randomUUID()}
             className={cn('flex shrink-0 justify-around [gap:var(--gap)]', {
               'animate-marquee flex-row': !vertical,
               'animate-marquee-vertical flex-col': vertical,

@@ -28,7 +28,7 @@ export function Frameworks() {
           <Image src={robot as StaticImageData} alt="robot" width={127} height={126} />
         </div>
         <div className="flex-0 flex aspect-square h-40 w-40 items-center justify-center rounded-xl bg-dark-palette-backgroundAlternate">
-          <Image src={cImage as StaticImageData} alt="cImage" width={70} height={70} />
+          <Image src={cImage} alt="cImage" width={70} height={70} />
         </div>
         <div className="flex-0 flex aspect-square h-40 w-40 items-center justify-center rounded-xl bg-dark-palette-backgroundAlternate">
           <Title level={TitleLevel.Title1} className="text-palette-foregroundMuted">

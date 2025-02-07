@@ -55,8 +55,8 @@ export function OnchainActions({ className }: { className?: string }) {
         className={cn('bg-background relative flex w-full flex-col overflow-hidden p-4', className)}
       >
         <AnimatedList className="gap-3">
-          {ACTIONS.map((item, idx) => (
-            <Action {...item} key={idx} />
+          {ACTIONS.map((item) => (
+            <Action {...item} key={item.title} />
           ))}
         </AnimatedList>
       </div>
