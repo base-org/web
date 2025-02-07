@@ -1,4 +1,3 @@
-import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
@@ -8,6 +7,8 @@ import background1 from './bg1.png';
 import background2 from './bg2.png';
 import background3 from './bg3.png';
 import Image from 'next/image';
+import { FEATURE_TEMPLATE_LINK } from 'apps/web/src/components/Developers/Onchainkit/links';
+import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 
 const TEMPLATES = [
   {
@@ -54,9 +55,15 @@ export function Templates() {
         })}
       </div>
       <div>
-        <Button variant={ButtonVariants.SecondaryOutline} iconName="github">
+        <ButtonWithLinkAndEventLogging
+          href={FEATURE_TEMPLATE_LINK}
+          variant={ButtonVariants.SecondaryOutline}
+          iconName="github"
+          target="_blank"
+          eventName="onchainkit-feature-template"
+        >
           Feature your template
-        </Button>
+        </ButtonWithLinkAndEventLogging>
       </div>
     </div>
   );
