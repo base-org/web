@@ -98,11 +98,12 @@ If you're a builder who wants to add or update your project on the [Base Ecosyst
    - description: A brief description of your project, must be less than 200 characters
    - url: Your project's website URL
    - imageUrl: Path to your project's logo image
-   - category: Your project's category, _one_ of: `consumer`, `defi`, `infra`, `onramp`, `wallet`
+   - category: Your project's category, _one_ of: `ai`, `consumer`, `defi`, `infra`, `onramp`, `wallet`
    - subcategory: Your project's subcategory, with the following options associated with each category
+     - `ai`: Simply add `ai` as the subcategory as well
      - `consumer`: _One_ of `creator`, `crypto taxes`, `dao`, `gaming`, `messaging`, `music`, `nft`, `payments`, `real world`, `social`
      - `defi`: _One_ of `dex`, `dex aggregator`, `insurance`, `lending/borrowing`, `liquidity management`, `portfolio`, `stablecoin`, `yield vault`
-     - `infra`: _One_ of `ai`, `bridge`, `data`, `depin`, `developer tool`, `identity`, `node provider`, `raas`, `security`
+     - `infra`: _One_ of `bridge`, `data`, `depin`, `developer tool`, `identity`, `node provider`, `raas`, `security`
      - `onramp`: _One_ of `centralized exchange`, `fiat on-ramp`
      - `wallet`: _One_ of `account abstraction`, `multisig`, `self-custody`
 
@@ -121,7 +122,7 @@ By opening a PR to add your project, you authorize and license Coinbase on a non
 - App has a Terms of Service and Privacy Policy
 - App supports HTTPS and 301 redirects HTTP requests
 - App is not a TGE (Token Generation Event), ICO (Initial Coin Offering), airdrop, claim, or similar
-- Landing page is a Base-specific page for users who will becoming from base.org
+- Landing page is a Base-specific page for users who will be coming from base.org
 - Active development and community engagement can be observed without issue
 
 ---
