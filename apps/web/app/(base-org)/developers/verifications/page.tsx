@@ -15,7 +15,7 @@ export default async function Verifications() {
     <Container>
       <main className="mb-32 flex min-h-screen w-full flex-col items-center gap-40 bg-black px-2 pt-20 md:px-0">
         {/* Header  */}
-        <div className="flex flex-col items-center gap-1 pt-20">
+        <div className="flex flex-col gap-2 pt-20 md:items-center">
           <div className="flex items-center gap-2 pb-6">
             <Image
               src={verification}
@@ -29,7 +29,7 @@ export default async function Verifications() {
             </Title>
           </div>
           <Title level={TitleLevel.Display3}>Identify your high-quality users</Title>
-          <Title level={TitleLevel.Title3} className="max-w-2xl text-center text-gray-muted">
+          <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted md:text-center">
             Verifications is the link that lets you verify over 500,000+ connected wallets and
             Coinbase accounts of specific attributes.
           </Title>
