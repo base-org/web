@@ -18,7 +18,7 @@ export default async function AgentKit() {
     <Container>
       <main className="mb-32 flex min-h-screen w-full flex-col gap-40 bg-black px-2 pt-20 md:px-0">
         {/* Header  */}
-        <div className="flex gap-1 pt-20">
+        <div className="flex gap-1 pt-20 max-sm:flex-col">
           <div className="flex max-w-xl flex-col gap-1 ">
             <div className="flex items-center gap-2 pb-6">
               <Image

@@ -38,7 +38,7 @@ export function SupportedPlatforms() {
           </Title>
         </Title>
       </div>
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <SupportedPlatformCard
           title="Coinbase Wallet"
           description="Daily Active Users"

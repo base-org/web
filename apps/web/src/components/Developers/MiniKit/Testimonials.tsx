@@ -18,6 +18,7 @@ const TESTIMONIALS = [
         href="https://login.coinbase.com/signin"
         target="_blank"
         eventName="minikit-get-started"
+        linkClassNames="w-full"
       >
         Go to Warpcast
       </ButtonWithLinkAndEventLogging>
@@ -37,6 +38,7 @@ const TESTIMONIALS = [
         href="https://login.coinbase.com/signin"
         target="_blank"
         eventName="minikit-get-started"
+        linkClassNames="w-full"
       >
         Go to Warpcast
       </ButtonWithLinkAndEventLogging>
@@ -56,6 +58,7 @@ const TESTIMONIALS = [
         href="https://login.coinbase.com/signin"
         target="_blank"
         eventName="minikit-get-started"
+        linkClassNames="w-full"
       >
         Go to Warpcast
       </ButtonWithLinkAndEventLogging>
@@ -74,7 +77,7 @@ export function Testimonials() {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {TESTIMONIALS.map((item) => {
           return (
-            <div className="flex flex-col gap-4" key={item.name}>
+            <div className="mx-auto flex max-w-sm flex-col gap-4 md:mx-0" key={item.name}>
               <TweetCard
                 name={item.name}
                 username={item.username}
