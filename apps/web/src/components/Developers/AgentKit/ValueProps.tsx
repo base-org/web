@@ -2,22 +2,23 @@ import { ValueProp, ValuePropProps } from 'apps/web/src/components/Developers/Sh
 import coinbase from 'apps/web/src/components/Developers/Verifications/coinbase.svg';
 import globe from 'apps/web/src/components/Developers/Verifications/globe.svg';
 import coinbaseOne from 'apps/web/src/components/Developers/Verifications/coinbaseOne.svg';
+import { StaticImageData } from 'next/image';
 
 const VALUE_PROPS: ValuePropProps[] = [
   {
     title: 'Verified Account',
     description: 'A Coinbase user with a valid Coinbase trading account. ',
-    icon: coinbase,
+    icon: coinbase as StaticImageData,
   },
   {
     title: 'Verified Country',
     description: 'The user’s verified country of residence on Coinbase.',
-    icon: globe,
+    icon: globe as StaticImageData,
   },
   {
     title: 'Verified Coinbase One',
     description: 'A Coinbase user with an active Coinbase One membership.',
-    icon: coinbaseOne,
+    icon: coinbaseOne as StaticImageData,
   },
 ];
 export function ValueProps() {
