@@ -8,7 +8,7 @@ import { Customers } from 'apps/web/src/components/Developers/Verifications/Cust
 import { InfoCards } from 'apps/web/src/components/Developers/Verifications/InfoCards';
 import { ValueProps } from 'apps/web/src/components/Developers/Verifications/ValueProps';
 import verification from 'apps/web/src/components/Developers/Verifications/verification.svg';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 export default async function Verifications() {
   return (
@@ -18,7 +18,7 @@ export default async function Verifications() {
         <div className="flex flex-col gap-2 pt-20 md:items-center">
           <div className="flex items-center gap-2 pb-6">
             <Image
-              src={verification}
+              src={verification as StaticImageData}
               alt="verification"
               width={32}
               height={32}

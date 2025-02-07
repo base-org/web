@@ -2,18 +2,26 @@ import { Card } from 'apps/web/src/components/Developers/Shared/Card';
 import key from 'apps/web/src/components/Developers/Verifications/key.svg';
 import identityCard from 'apps/web/src/components/Developers/Verifications/identityCard.svg';
 import complianceProduct from 'apps/web/src/components/Developers/Verifications/complianceProduct.svg';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 const INFO_CARDS = [
   {
-    icon: <Image src={key} alt="key" width={32} height={32} className="h-8 w-8" />,
+    icon: (
+      <Image src={key as StaticImageData} alt="key" width={32} height={32} className="h-8 w-8" />
+    ),
     title: 'Access control',
     description:
       'Implement granular access control using verified Coinbase attestations. Perfect for gating features, content, or entire applications.',
   },
   {
     icon: (
-      <Image src={identityCard} alt="identityCard" width={32} height={32} className="h-8 w-8" />
+      <Image
+        src={identityCard as StaticImageData}
+        alt="identityCard"
+        width={32}
+        height={32}
+        className="h-8 w-8"
+      />
     ),
     title: 'Identity verification',
     description:
@@ -22,7 +30,7 @@ const INFO_CARDS = [
   {
     icon: (
       <Image
-        src={complianceProduct}
+        src={complianceProduct as StaticImageData}
         alt="complianceProduct"
         width={32}
         height={32}

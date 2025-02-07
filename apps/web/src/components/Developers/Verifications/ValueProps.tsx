@@ -35,7 +35,7 @@ export function ValueProps() {
         </Title>
       </div>
       <div className="flex w-full flex-col gap-3">
-        {VALUE_PROPS.map((item) => {
+        {VALUE_PROPS.map((item: ValuePropProps) => {
           return (
             <ValueProp
               key={item.title}
