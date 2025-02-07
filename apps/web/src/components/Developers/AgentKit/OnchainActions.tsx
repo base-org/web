@@ -22,6 +22,9 @@ const ACTIONS: ActionItem[] = [
   {
     title: 'Deposit via Morpho',
   },
+  {
+    title: 'Anything you can imagine',
+  },
 ];
 
 function Action({ title }: ActionItem) {
