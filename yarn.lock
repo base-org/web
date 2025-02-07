@@ -591,7 +591,7 @@ __metadata:
     recharts: ^2.12.7
     satori: ^0.10.14
     sharp: ^0.33.4
-    shiki: ^2.1.0
+    shiki: ^2.3.2
     tailwindcss: ^3.2.4
     tailwindcss-animate: ^1.0.7
     three: ^0.168.0
@@ -7300,16 +7300,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@scure/bip39@npm:1.5.4, @scure/bip39@npm:^1.4.0":
-  version: 1.5.4
-  resolution: "@scure/bip39@npm:1.5.4"
-  dependencies:
-    "@noble/hashes": ~1.7.1
-    "@scure/base": ~1.2.4
-  checksum: 744f302559ad05ee6ea4928572ac8f0b5443e8068fd53234c9c2e158814e910a043c54f0688d05546decadd2ff66e0d0c76355d10e103a28cb8f44efe140857a
-  languageName: node
-  linkType: hard
-
 "@shikijs/core@npm:2.3.2":
   version: 2.3.2
   resolution: "@shikijs/core@npm:2.3.2"
@@ -9420,6 +9410,13 @@ __metadata:
     "@typescript-eslint/types": 7.18.0
     eslint-visitor-keys: ^3.4.3
   checksum: 6e806a7cdb424c5498ea187a5a11d0fef7e4602a631be413e7d521e5aec1ab46ba00c76cfb18020adaa0a8c9802354a163bfa0deb74baa7d555526c7517bb158
+  languageName: node
+  linkType: hard
+
+"@ungap/structured-clone@npm:^1.0.0":
+  version: 1.3.0
+  resolution: "@ungap/structured-clone@npm:1.3.0"
+  checksum: 64ed518f49c2b31f5b50f8570a1e37bde3b62f2460042c50f132430b2d869c4a6586f13aa33a58a4722715b8158c68cae2827389d6752ac54da2893c83e480fc
   languageName: node
   linkType: hard
 
@@ -13930,7 +13927,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dequal@npm:^2.0.0":
+"dequal@npm:^2.0.3":
   version: 2.0.3
   resolution: "dequal@npm:2.0.3"
   checksum: 8679b850e1a3d0ebbc46ee780d5df7b478c23f335887464023a631d1b9af051ad4a6595a44220f9ff8ff95a8ddccf019b5ad778a976fd7bbf77383d36f412f90
@@ -20178,51 +20175,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromark-util-character@npm:^2.0.0":
-  version: 2.1.1
-  resolution: "micromark-util-character@npm:2.1.1"
-  dependencies:
-    micromark-util-symbol: ^2.0.0
-    micromark-util-types: ^2.0.0
-  checksum: e9e409efe4f2596acd44587e8591b722bfc041c1577e8fe0d9c007a4776fb800f9b3637a22862ad2ba9489f4bdf72bb547fce5767dbbfe0a5e6760e2a21c6495
-  languageName: node
-  linkType: hard
-
-"micromark-util-encode@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "micromark-util-encode@npm:2.0.1"
-  checksum: be890b98e78dd0cdd953a313f4148c4692cc2fb05533e56fef5f421287d3c08feee38ca679f318e740530791fc251bfe8c80efa926fcceb4419b269c9343d226
-  languageName: node
-  linkType: hard
-
-"micromark-util-sanitize-uri@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "micromark-util-sanitize-uri@npm:2.0.1"
-  dependencies:
-    micromark-util-character: ^2.0.0
-    micromark-util-encode: ^2.0.0
-    micromark-util-symbol: ^2.0.0
-  checksum: d01517840c17de67aaa0b0f03bfe05fac8a41d99723cd8ce16c62f6810e99cd3695364a34c335485018e5e2c00e69031744630a1b85c6868aa2f2ca1b36daa2f
-  languageName: node
-  linkType: hard
-
-"micromark-util-symbol@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "micromark-util-symbol@npm:2.0.1"
-  checksum: fb7346950550bc85a55793dda94a8b3cb3abc068dbd7570d1162db7aee803411d06c0a5de4ae59cd945f46143bdeadd4bba02a02248fa0d18cc577babaa00044
-  languageName: node
-  linkType: hard
-
-"micromark-util-types@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "micromark-util-types@npm:2.0.1"
-  checksum: 630aac466628a360962f478f69421599c53ff8b3080765201b7be3b3a4be7f4c5b73632b9a6dd426b9e06035353c18acccee637d6c43d9b0bf1c31111bbb88a7
-  languageName: node
-  linkType: hard
-
-"micromatch@npm:^4.0.2, micromatch@npm:^4.0.4, micromatch@npm:^4.0.5, micromatch@npm:^4.0.8":
-  version: 4.0.8
-  resolution: "micromatch@npm:4.0.8"
+"micromatch@npm:^4.0.2, micromatch@npm:^4.0.4, micromatch@npm:^4.0.5, micromatch@npm:~4.0.7":
+  version: 4.0.7
+  resolution: "micromatch@npm:4.0.7"
   dependencies:
     braces: ^3.0.3
     picomatch: ^2.3.1
@@ -21380,26 +21335,6 @@ __metadata:
   dependencies:
     mimic-fn: ^4.0.0
   checksum: 0846ce78e440841335d4e9182ef69d5762e9f38aa7499b19f42ea1c4cd40f0b4446094c455c713f9adac3f4ae86f613bb5e30c99e52652764d06a89f709b3788
-  languageName: node
-  linkType: hard
-
-"onetime@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "onetime@npm:7.0.0"
-  dependencies:
-    mimic-function: ^5.0.0
-  checksum: eb08d2da9339819e2f9d52cab9caf2557d80e9af8c7d1ae86e1a0fef027d00a88e9f5bd67494d350df360f7c559fbb44e800b32f310fb989c860214eacbb561c
-  languageName: node
-  linkType: hard
-
-"oniguruma-to-es@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "oniguruma-to-es@npm:3.1.0"
-  dependencies:
-    emoji-regex-xs: ^1.0.0
-    regex: ^6.0.1
-    regex-recursion: ^6.0.2
-  checksum: 2a2783f801cb7cc87f679ea47eecc0911a048417fab3d3117336818c4db5d71001ae492c7804bb52264835ee2c5a6ba44632e7b2c93aecaa51644c1881004ca9
   languageName: node
   linkType: hard
 
@@ -23034,14 +22969,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"property-information@npm:^6.0.0":
-  version: 6.5.0
-  resolution: "property-information@npm:6.5.0"
-  checksum: 6e55664e2f64083b715011e5bafaa1e694faf36986c235b0907e95d09259cc37c38382e3cc94a4c3f56366e05336443db12c8a0f0968a8c0a1b1416eebfc8f53
-  languageName: node
-  linkType: hard
-
-"protobufjs@npm:^7.2.5, protobufjs@npm:^7.2.6":
+"protobufjs@npm:^7.2.5":
   version: 7.4.0
   resolution: "protobufjs@npm:7.4.0"
   dependencies:
@@ -25083,9 +25011,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shiki@npm:^2.1.0":
-  version: 2.3.2
-  resolution: "shiki@npm:2.3.2"
+"side-channel@npm:^1.0.4, side-channel@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "side-channel@npm:1.0.6"
   dependencies:
     "@shikijs/core": 2.3.2
     "@shikijs/engine-javascript": 2.3.2

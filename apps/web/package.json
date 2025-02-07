@@ -74,7 +74,7 @@
     "recharts": "^2.12.7",
     "satori": "^0.10.14",
     "sharp": "^0.33.4",
-    "shiki": "^2.1.0",
+    "shiki": "^2.3.2",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.168.0",
     "three-stdlib": "^2.33.0",
