@@ -42,7 +42,7 @@ export default async function Verifications() {
               href="https://login.coinbase.com/signin"
               target="_blank"
             >
-              Get started
+              Start building
             </ButtonWithLinkAndEventLogging>
           </div>
         </div>
