@@ -3,6 +3,10 @@ import dropsActive from 'apps/web/src/components/Developers/AgentKit/dropsActive
 import blockchain from 'apps/web/src/components/Developers/AgentKit/blockchain.svg';
 import metaverse from 'apps/web/src/components/Developers/AgentKit/metaverse.svg';
 import Image, { StaticImageData } from 'next/image';
+import Title from 'apps/web/src/components/base-org/typography/Title';
+import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
+import Link from 'next/link';
+import { AGENTKIT_DOCS_LINK } from 'apps/web/src/components/Developers/AgentKit/links';
 
 const INFO_CARDS: CardProps[] = [
   {
@@ -16,8 +20,15 @@ const INFO_CARDS: CardProps[] = [
       />
     ),
     title: 'No coding required',
-    description:
-      'Use our videos and templates to create an AgentKit agent in less than five minutes. No development experience required.',
+    description: (
+      <Title className="text-dark-palette-foregroundMuted" level={TitleLevel.Title4}>
+        Use our{' '}
+        <Link target="_blank" href={AGENTKIT_DOCS_LINK} className="text-dark-palette-foreground">
+          videos and templates
+        </Link>{' '}
+        to create an AgentKit agent in less than five minutes. No development experience required.
+      </Title>
+    ),
   },
   {
     icon: (

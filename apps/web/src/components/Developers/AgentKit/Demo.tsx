@@ -1,8 +1,10 @@
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
+import { FORK_TEMPLATE_LINK } from 'apps/web/src/components/Developers/AgentKit/links';
 import { AnimatedList } from 'apps/web/src/components/Developers/Shared/AnimatedList';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { cn } from 'base-ui/utils/cn';
+import Link from 'next/link';
 import { ReactNode } from 'react';
 
 type Item = {
@@ -82,10 +84,10 @@ export function Demo() {
     <div className="flex w-full max-w-4xl flex-col items-center overflow-hidden rounded-lg border border-palette-line border-opacity-40">
       <div className="flex w-full justify-between border-b border-palette-line border-opacity-40 bg-dark-palette-backgroundAlternate px-6 py-4">
         <Title level={TitleLevel.Headline}>Based Agent</Title>
-        <div className="flex gap-2 text-[#E66020]">
+        <Link href={FORK_TEMPLATE_LINK} target="_blank" className="flex gap-2 text-[#E66020]">
           <Title level={TitleLevel.Headline}>Fork the template</Title>
           <Icon name="fork" color="currentColor" />
-        </div>
+        </Link>
       </div>
       <div
         className={cn('relative flex h-[500px] w-full flex-col overflow-hidden rounded-lg p-6 ')}

@@ -8,6 +8,10 @@ import agentkit from 'apps/web/src/components/Developers/AgentKit/agentkit.svg';
 import { Demo } from 'apps/web/src/components/Developers/AgentKit/Demo';
 import { Frameworks } from 'apps/web/src/components/Developers/AgentKit/Frameworks';
 import { InfoCards } from 'apps/web/src/components/Developers/AgentKit/InfoCards';
+import {
+  AGENTKIT_DOCS_LINK,
+  FORK_TEMPLATE_LINK,
+} from 'apps/web/src/components/Developers/AgentKit/links';
 import { OnchainActions } from 'apps/web/src/components/Developers/AgentKit/OnchainActions';
 import { Possibilities } from 'apps/web/src/components/Developers/AgentKit/Possibilities';
 import { Testmonials } from 'apps/web/src/components/Developers/AgentKit/Testimonials';
@@ -42,9 +46,15 @@ export default async function AgentKit() {
             <Button variant={ButtonVariants.Secondary} iconName="copy">
               npx create-agentkit-app
             </Button>
-            <Button variant={ButtonVariants.SecondaryOutline} iconName="arrowRight">
+            <ButtonWithLinkAndEventLogging
+              href={AGENTKIT_DOCS_LINK}
+              iconName="arrowRight"
+              target="_blank"
+              variant={ButtonVariants.Outlined}
+              eventName="agentkit-docs"
+            >
               Documentation
-            </Button>
+            </ButtonWithLinkAndEventLogging>
           </div>
         </div>
 
@@ -62,16 +72,21 @@ export default async function AgentKit() {
               <ButtonWithLinkAndEventLogging
                 variant={ButtonVariants.Secondary}
                 iconName="fork"
-                buttonClassNames="flex w-40 items-center justify-between px-4 py-3"
-                href="https://login.coinbase.com/signin"
+                href={FORK_TEMPLATE_LINK}
                 target="_blank"
-                eventName="verifications-get-started"
+                eventName="agentkit-fork-template"
               >
                 For a template
               </ButtonWithLinkAndEventLogging>
-              <Button iconName="arrowRight" variant={ButtonVariants.Outlined}>
+              <ButtonWithLinkAndEventLogging
+                href={AGENTKIT_DOCS_LINK}
+                iconName="arrowRight"
+                target="_blank"
+                variant={ButtonVariants.Outlined}
+                eventName="agentkit-docs"
+              >
                 Documentation
-              </Button>
+              </ButtonWithLinkAndEventLogging>
             </>
           }
         />
