@@ -8,7 +8,7 @@ import { InfoCards } from 'apps/web/src/components/Developers/Onchainkit/InfoCar
 import { Templates } from 'apps/web/src/components/Developers/Onchainkit/Templates';
 import { Testmonials } from 'apps/web/src/components/Developers/Onchainkit/Testimonials';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import onchainkit from 'apps/web/src/components/Developers/Onchainkit/onchainkit.svg';
 
 export default async function OnchainKit() {
@@ -18,7 +18,13 @@ export default async function OnchainKit() {
         {/* Header  */}
         <div className="flex flex-col items-center gap-1 pt-20">
           <div className="flex items-center gap-2 pb-6 text-[#C9A4FA]">
-            <Image src={onchainkit} alt="onchainkit" width={32} height={32} className="h-5 w-5" />
+            <Image
+              src={onchainkit as StaticImageData}
+              alt="onchainkit"
+              width={32}
+              height={32}
+              className="h-5 w-5"
+            />
             <Title level={TitleLevel.Title3}>OnchainKit</Title>
           </div>
           <Title level={TitleLevel.Display3}>Full-stack onchain components</Title>
