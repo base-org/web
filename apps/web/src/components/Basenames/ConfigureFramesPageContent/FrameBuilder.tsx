@@ -24,7 +24,6 @@ import mintMe from './ui/mint-me.svg';
 import nftProduct from './ui/nftProduct.svg';
 import previewBackground from './ui/preview-background.svg';
 import emptyPreviewFrame from './ui/preview-frame.svg';
-import starActive from './ui/starActive.svg';
 
 export default function FrameBuilder() {
   const params = useParams();
@@ -128,18 +127,6 @@ export default function FrameBuilder() {
       setNewFrameUrl('');
     }
   }, [basename, handleNextStep, logEventWithContext]);
-
-  const handleBuildTopClick = useCallback(() => {
-    if (profileAddress) {
-      logEventWithContext('basename_profile_frame_preview', ActionType.click, {
-        context: 'social-dex',
-      });
-      setNewFrameUrl(`https://build.top/nominate/${profileAddress}`);
-      handleNextStep();
-    } else {
-      setNewFrameUrl('');
-    }
-  }, [handleNextStep, logEventWithContext, profileAddress]);
 
   const handleAddFrameClick = useCallback(() => {
     if (!newFrameUrl) return;
