@@ -16,12 +16,10 @@ export const metadata: Metadata = {
   },
 };
 
-// Revalidate every 30 minutes
-export const revalidate = 60 * 30;
-
 async function getJobs() {
+  // Revalidate every 30 minutes
   const res = await fetch(`${greenhouseApiUrl}/boards/basejobs/jobs?content=true`, {
-    next: { revalidate },
+    next: { revalidate: 60 * 30 },
   });
   try {
     const { jobs } = (await res.json()) as { jobs: JobType[] };
