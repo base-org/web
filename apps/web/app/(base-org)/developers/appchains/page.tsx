@@ -6,6 +6,7 @@ import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/Bu
 import basenet from 'apps/web/src/components/Developers/Appchains/basenet.svg';
 import { InfoCards } from 'apps/web/src/components/Developers/Appchains/InfoCards';
 import { L2InfoCards } from 'apps/web/src/components/Developers/Appchains/L2InfoCards';
+import { OnchainApps } from 'apps/web/src/components/Developers/Appchains/OnchainApps';
 import { Pricing } from 'apps/web/src/components/Developers/Appchains/Pricing';
 import { Testimonials } from 'apps/web/src/components/Developers/Appchains/Testimonials';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
@@ -60,6 +61,7 @@ export default async function Appchains() {
         </div>
 
         <InfoCards />
+        <OnchainApps />
         <L2InfoCards />
         <Pricing />
         <Testimonials />
