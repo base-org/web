@@ -190,28 +190,6 @@ export default function FrameBuilder() {
       </SuggestionCard>
       <SuggestionCard
         handleTriggerClick={() =>
-          logEventWithContext('basename_profile_frame_nominate_opened', ActionType.click)
-        }
-        imgData={starActive as StaticImageData}
-        title="Nominate me"
-        description="Get nominated with build.top"
-      >
-        <div className="flex flex-row items-center justify-between gap-4">
-          <p className="text-sm text-palette-foreground">
-            Let others nominate you as a builder using your Basename address.
-          </p>
-          <Button
-            rounded
-            variant={ButtonVariants.Black}
-            size={ButtonSizes.Tiny}
-            onClick={handleBuildTopClick}
-          >
-            Show preview
-          </Button>
-        </div>
-      </SuggestionCard>
-      <SuggestionCard
-        handleTriggerClick={() =>
           logEventWithContext('basename_profile_frame_buy_opened', ActionType.click)
         }
         imgData={buyFromMe as StaticImageData}
