@@ -16,7 +16,7 @@ export default async function Verifications() {
       <main className="mb-32 flex min-h-screen w-full flex-col items-center gap-40 bg-black px-2 pt-20 md:px-0">
         {/* Header  */}
         <div className="flex flex-col gap-2 pt-20 md:items-center">
-          <div className="flex items-center gap-2 pb-6">
+          <div className="flex items-center gap-2 pb-6 text-[#44C28D]">
             <Image
               src={verification as StaticImageData}
               alt="verification"
@@ -24,9 +24,7 @@ export default async function Verifications() {
               height={32}
               className="h-5 w-5"
             />
-            <Title level={TitleLevel.Title3} className="text-[#44C28D]">
-              Verifications
-            </Title>
+            <Title level={TitleLevel.Title3}>Verifications</Title>
           </div>
           <Title level={TitleLevel.Display3}>Identify your high-quality users</Title>
           <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted md:text-center">
