@@ -29,8 +29,8 @@ function SupportedPlatformCard({ title, value, description, image }: SupportedPl
 
 export function SupportedPlatforms() {
   return (
-    <div className="flex w-full flex-col gap-4">
-      <div className="p-4">
+    <div className="flex w-full flex-col gap-8">
+      <div>
         <Title level={TitleLevel.Title1}>
           Supported platforms.{' '}
           <Title level={TitleLevel.Title1} as="span" className="text-dark-palette-foregroundMuted">

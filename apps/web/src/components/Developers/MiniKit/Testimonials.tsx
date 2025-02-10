@@ -13,8 +13,8 @@ const TESTIMONIALS = [
     cta: (
       <ButtonWithLinkAndEventLogging
         variant={ButtonVariants.Secondary}
-        iconName="arrowRight"
-        buttonClassNames="flex w-full items-center px-4 py-3"
+        iconName="diagonalUpArrow"
+        buttonClassNames="flex w-full rounded-xl"
         href="https://login.coinbase.com/signin"
         target="_blank"
         eventName="minikit-get-started"
@@ -33,8 +33,8 @@ const TESTIMONIALS = [
     cta: (
       <ButtonWithLinkAndEventLogging
         variant={ButtonVariants.Secondary}
-        iconName="arrowRight"
-        buttonClassNames="flex w-full items-center px-4 py-3"
+        iconName="diagonalUpArrow"
+        buttonClassNames="flex w-full rounded-xl"
         href="https://login.coinbase.com/signin"
         target="_blank"
         eventName="minikit-get-started"
@@ -53,8 +53,8 @@ const TESTIMONIALS = [
     cta: (
       <ButtonWithLinkAndEventLogging
         variant={ButtonVariants.Secondary}
-        iconName="arrowRight"
-        buttonClassNames="flex w-full items-center px-4 py-3"
+        iconName="diagonalUpArrow"
+        buttonClassNames="flex w-full rounded-xl"
         href="https://login.coinbase.com/signin"
         target="_blank"
         eventName="minikit-get-started"
@@ -70,8 +70,8 @@ const TESTIMONIALS = [
 
 export function Testimonials() {
   return (
-    <div className="flex w-full flex-col gap-4">
-      <div className="p-4">
+    <div className="flex w-full flex-col gap-8">
+      <div>
         <Title level={TitleLevel.Title1}>Mini apps built with MiniKit.</Title>
       </div>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">

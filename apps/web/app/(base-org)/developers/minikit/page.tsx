@@ -18,9 +18,9 @@ export default async function AgentKit() {
     <Container>
       <main className="mb-32 flex min-h-screen w-full flex-col gap-40 bg-black px-2 pt-20 md:px-0">
         {/* Header  */}
-        <div className="flex gap-1 pt-20 max-sm:flex-col">
+        <div className="flex items-center justify-between gap-10 pt-20 max-sm:flex-col">
           <div className="flex max-w-xl flex-col gap-1 ">
-            <div className="flex items-center gap-2 pb-6">
+            <div className="flex items-center gap-2 pb-6 text-[#D058C1]">
               <Image
                 src={minikit as StaticImageData}
                 alt="minikit"
@@ -28,11 +28,13 @@ export default async function AgentKit() {
                 height={32}
                 className="h-5 w-5"
               />
-              <Title level={TitleLevel.Title3} className="text-[#D058C1]">
+              <Title level={TitleLevel.Title3} className="font-bold">
                 MiniKit
               </Title>
             </div>
-            <Title level={TitleLevel.Display3}>All-you-need to build and grow your mini app.</Title>
+            <Title level={TitleLevel.Display3} className="font-bold">
+              All-you-need to build and grow your mini app.
+            </Title>
             <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted">
               Feature your mini app on Warpcast and Coinbase Wallet with a few lines of code.
             </Title>
@@ -40,7 +42,7 @@ export default async function AgentKit() {
               <ButtonWithLinkAndEventLogging
                 variant={ButtonVariants.Secondary}
                 iconName="arrowRight"
-                buttonClassNames="flex w-40 items-center px-4 py-3"
+                buttonClassNames="rounded-xl"
                 href={GET_STARTED_URL}
                 target="_blank"
                 eventName="minikit-get-started"
@@ -63,7 +65,7 @@ export default async function AgentKit() {
             <ButtonWithLinkAndEventLogging
               variant={ButtonVariants.Secondary}
               iconName="arrowRight"
-              buttonClassNames="flex w-40 items-center px-4 py-3"
+              buttonClassNames="rounded-xl"
               href={GET_STARTED_URL}
               target="_blank"
               eventName="minikit-get-started"
