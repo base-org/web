@@ -3,7 +3,6 @@
 import { PlusIcon } from '@heroicons/react/24/solid';
 import * as Accordion from '@radix-ui/react-accordion';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
 import { useFrameContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Context';
 import Frame from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/Frame';
 import { SuggestionCard } from 'apps/web/src/components/Basenames/UsernameProfileSectionFrames/SuggestionCard';
@@ -41,8 +40,6 @@ export default function FrameBuilder() {
     setStep('select');
     scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
-
-  const { profileAddress } = useUsernameProfile();
 
   const emptyFrameUrl = !debouncedNewFrameUrl;
   const isValidFrameUrl = isValidUrl(debouncedNewFrameUrl);
