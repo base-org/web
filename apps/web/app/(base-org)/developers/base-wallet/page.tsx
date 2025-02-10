@@ -46,11 +46,16 @@ export default async function BaseWallet() {
             </div>
           </div>
 
-          <Image src={headerImage} alt="header-image" width={400} />
+          <Image src={headerImage} alt="header-image" width={400} className="max-sm:hidden" />
         </div>
 
         <InfoCards />
-        <Title level={TitleLevel.Display3}>Onchain transactions without distractions</Title>
+        <Title level={TitleLevel.Display3} className="max-sm:hidden">
+          Onchain transactions without distractions
+        </Title>
+        <Title level={TitleLevel.Title3} className="sm:hidden">
+          Onchain transactions without distractions
+        </Title>
         <Transactions />
         <Customers />
 

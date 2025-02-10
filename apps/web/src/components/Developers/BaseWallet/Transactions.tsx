@@ -5,6 +5,8 @@ import faceID from './faceID.png';
 import onboarding from './onboarding.png';
 import Image from 'next/image';
 import { cn } from 'libs/base-ui/utils/cn';
+import Text from 'apps/web/src/components/base-org/typography/Text';
+import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
 
 const TRANSACTIONS = [
   {
@@ -41,15 +43,23 @@ export function Transactions() {
             )}
           >
             <div className="flex max-w-xl flex-col">
-              <div className="text-[#578BFA]">
+              <div className="hidden text-[#578BFA] sm:flex">
                 <Title level={TitleLevel.Title3} className="pb-3">
                   {transaction.label}
                 </Title>
               </div>
-              <Title level={TitleLevel.Title1}>{transaction.title}</Title>
-              <Title level={TitleLevel.Title2} className="pt-1 text-dark-palette-foregroundMuted">
-                {transaction.description}
-              </Title>
+              <div className="hidden flex-col gap-2 sm:flex">
+                <Title level={TitleLevel.Title1}>{transaction.title}</Title>
+                <Title level={TitleLevel.Title2} className="pt-1 text-dark-palette-foregroundMuted">
+                  {transaction.description}
+                </Title>
+              </div>
+              <div className="flex flex-col gap-2 sm:hidden">
+                <Title level={TitleLevel.Headline}>{transaction.title}</Title>
+                <Text variant={TextVariant.Body} className="pt-1 text-dark-palette-foregroundMuted">
+                  {transaction.description}
+                </Text>
+              </div>
             </div>
             <div className="flex max-w-lg grow flex-col items-center justify-center rounded-lg bg-dark-palette-backgroundAlternate p-12">
               {transaction.content}

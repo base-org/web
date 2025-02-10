@@ -79,7 +79,7 @@ const INFO_CARDS = [
 
 export function InfoCards() {
   return (
-    <div className="grid w-full grid-cols-3 gap-20">
+    <div className="grid w-full grid-cols-1 gap-20 sm:grid-cols-3">
       {INFO_CARDS.map((card) => {
         return (
           <Card
