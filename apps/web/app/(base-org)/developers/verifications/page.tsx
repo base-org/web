@@ -36,7 +36,7 @@ export default async function Verifications() {
             Coinbase accounts of specific attributes.
           </Title>
 
-          <div className="flex gap-6 pt-6">
+          <div className="flex gap-6 pt-5">
             <ButtonWithLinkAndEventLogging
               eventName="verifications-get-started"
               iconName="arrowRight"
