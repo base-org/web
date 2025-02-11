@@ -12,7 +12,7 @@ export function Card({ icon, title, description, iconClassName = 'text-white' }:
   return (
     <div className="flex  flex-col gap-1">
       <div className={iconClassName}>{icon}</div>
-      <Title level={TitleLevel.Title3} className="pt-1">
+      <Title level={TitleLevel.Title3} className="pt-1 font-bold">
         {title}
       </Title>
       <Title className="text-dark-palette-foregroundMuted" level={TitleLevel.Title4}>

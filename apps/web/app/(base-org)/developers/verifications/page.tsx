@@ -24,9 +24,13 @@ export default async function Verifications() {
               height={32}
               className="h-5 w-5"
             />
-            <Title level={TitleLevel.Title3}>Verifications</Title>
+            <Title level={TitleLevel.Title3} className="font-bold">
+              Verifications
+            </Title>
           </div>
-          <Title level={TitleLevel.Display3}>Identify your high-quality users</Title>
+          <Title level={TitleLevel.Display3} className="font-bold">
+            Identify your high-quality users
+          </Title>
           <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted md:text-center">
             Verifications is the link that lets you verify over 500,000+ connected wallets and
             Coinbase accounts of specific attributes.
@@ -39,6 +43,7 @@ export default async function Verifications() {
               variant={ButtonVariants.Secondary}
               href="https://login.coinbase.com/signin"
               target="_blank"
+              buttonClassNames="rounded-xl"
             >
               Start building
             </ButtonWithLinkAndEventLogging>
@@ -56,7 +61,7 @@ export default async function Verifications() {
               variant={ButtonVariants.Secondary}
               iconName="arrowRight"
               iconSize="12"
-              buttonClassNames="flex w-40 items-center justify-between px-4 py-3"
+              buttonClassNames="rounded-xl"
               href="https://login.coinbase.com/signin"
               target="_blank"
               eventName="verifications-get-started"
