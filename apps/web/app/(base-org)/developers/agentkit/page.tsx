@@ -30,7 +30,7 @@ export default function AgentKit() {
     <Container>
       <main className="mb-32 flex min-h-screen w-full flex-col items-center gap-40 bg-black px-2 pt-20 md:px-0">
         {/* Header  */}
-        <div className="flex flex-col gap-1 pt-20 sm:items-center">
+        <div className="flex flex-col gap-2 pt-20 sm:items-center">
           <div className="flex items-center gap-2 pb-6 text-[#E66020]">
             <Image
               src={agentkit as StaticImageData}
@@ -51,7 +51,7 @@ export default function AgentKit() {
             and a set of comprehensive onchain interactions.
           </Title>
 
-          <div className="flex gap-6 pt-6 max-sm:max-w-[240px]  max-sm:flex-col">
+          <div className="flex gap-6 pt-5 max-sm:max-w-[240px]  max-sm:flex-col">
             <Button
               variant={ButtonVariants.Secondary}
               iconName="copy"
