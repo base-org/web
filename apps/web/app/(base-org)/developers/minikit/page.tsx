@@ -19,7 +19,7 @@ export default async function AgentKit() {
       <main className="mb-32 flex min-h-screen w-full flex-col gap-40 bg-black px-2 pt-20 md:px-0">
         {/* Header  */}
         <div className="flex items-center justify-between gap-10 pt-20 max-sm:flex-col">
-          <div className="flex max-w-xl flex-col gap-1 ">
+          <div className="flex max-w-xl flex-col gap-2">
             <div className="flex items-center gap-2 pb-6 text-[#D058C1]">
               <Image
                 src={minikit as StaticImageData}
@@ -38,7 +38,7 @@ export default async function AgentKit() {
             <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted">
               Feature your mini app on Warpcast and Coinbase Wallet with a few lines of code.
             </Title>
-            <div className="flex gap-6 pt-6">
+            <div className="flex gap-6 pt-5">
               <ButtonWithLinkAndEventLogging
                 variant={ButtonVariants.Secondary}
                 iconName="arrowRight"
