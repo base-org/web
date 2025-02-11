@@ -6,7 +6,7 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 export function Pricing() {
   return (
     <div className="flex w-full justify-between gap-10 max-sm:flex-col sm:items-center">
-      <div className="flex max-w-2xl shrink flex-col gap-4">
+      <div className="flex max-w-2xl shrink flex-col gap-6">
         <Title level={TitleLevel.Title1}>
           Best-in-class pricing,{' '}
           <Title level={TitleLevel.Title1} as="span" className="text-dark-palette-foregroundMuted">
@@ -18,7 +18,7 @@ export function Pricing() {
         </Title>
       </div>
 
-      <div className="flex w-[355px] flex-col gap-4 rounded-lg border border-palette-line border-opacity-40 bg-dark-palette-backgroundAlternate p-6">
+      <div className="flex w-[355px] flex-col gap-4 rounded-lg border border-[#8A919E]/20 bg-dark-palette-backgroundAlternate p-6">
         <Title level={TitleLevel.Title3}>Appchain plan</Title>
         <div className="flex  w-full items-center justify-between gap-4 pt-2">
           <Title level={TitleLevel.Headline}>Testnet</Title>

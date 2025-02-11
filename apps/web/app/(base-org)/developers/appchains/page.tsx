@@ -19,7 +19,7 @@ export default async function Appchains() {
     <Container>
       <main className="mb-32 flex min-h-screen w-full flex-col gap-40 bg-black px-2 pt-20 sm:items-center md:px-0">
         {/* Header  */}
-        <div className="flex flex-col gap-1 pt-20 sm:items-center">
+        <div className="flex flex-col gap-2 pt-20 sm:items-center">
           <div className="flex items-center gap-2 pb-6 text-[#FFDF44]">
             <Image
               src={basenet as StaticImageData}
@@ -39,7 +39,7 @@ export default async function Appchains() {
             Fast, cheaper transactions at scale—built on Base, in minutes.
           </Title>
 
-          <div className="flex gap-6 pt-6 max-sm:flex-col">
+          <div className="flex gap-6 pt-5 max-sm:flex-col">
             <ButtonWithLinkAndEventLogging
               href={CDP_APPCHAIN_URL}
               iconName="arrowRight"
