@@ -17,7 +17,7 @@ export default async function BaseWallet() {
       <main className="mb-32 flex min-h-screen w-full flex-col items-center gap-40 bg-black px-2 pt-20 md:px-0">
         {/* Header  */}
         <div className="flex w-full items-center justify-between gap-1 pt-20 max-sm:flex-col">
-          <div className="flex max-w-xl flex-col gap-1 ">
+          <div className="flex max-w-xl flex-col gap-2">
             <div className="flex items-center gap-2 pb-6 text-[#578BFA]">
               <Image
                 src={wallet as StaticImageData}
@@ -26,17 +26,21 @@ export default async function BaseWallet() {
                 height={32}
                 className="h-5 w-5"
               />
-              <Title level={TitleLevel.Title3}>Smart Wallet</Title>
+              <Title level={TitleLevel.Title3} className="font-bold">
+                Smart Wallet
+              </Title>
             </div>
-            <Title level={TitleLevel.Display3}>Connect to onchain users</Title>
+            <Title level={TitleLevel.Display3} className="font-bold">
+              Connect to onchain users
+            </Title>
             <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted">
               Build faster with Smart Wallet – a universal account for the onchain world.
             </Title>
-            <div className="flex gap-6 pt-6">
+            <div className="flex gap-6 pt-5">
               <ButtonWithLinkAndEventLogging
                 variant={ButtonVariants.Secondary}
                 iconName="arrowRight"
-                buttonClassNames="flex w-40 items-center px-4 py-3"
+                buttonClassNames="rounded-xl"
                 href=""
                 target="_blank"
                 eventName="minikit-get-started"
@@ -62,13 +66,14 @@ export default async function BaseWallet() {
         <CtaBanner
           title="Update your wallet provider of choice to bring Smart Wallets to your app today. "
           cta={
-            <>
+            <div className="flex gap-2 max-sm:flex-col">
               <ButtonWithLinkAndEventLogging
                 variant={ButtonVariants.Secondary}
                 iconName="fork"
                 href=""
                 target="_blank"
                 eventName="wallet-fork-template"
+                buttonClassNames="rounded-xl"
               >
                 Fork a template
               </ButtonWithLinkAndEventLogging>
@@ -78,10 +83,11 @@ export default async function BaseWallet() {
                 target="_blank"
                 variant={ButtonVariants.Outlined}
                 eventName="wallet-docs"
+                buttonClassNames="rounded-xl"
               >
                 Documentation
               </ButtonWithLinkAndEventLogging>
-            </>
+            </div>
           }
         />
       </main>

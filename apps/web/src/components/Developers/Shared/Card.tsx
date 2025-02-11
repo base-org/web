@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 export type CardProps = {
   icon?: ReactNode;
   title: string;
-  description: string;
+  description: string | ReactNode;
   iconClassName?: string;
   className?: string;
 };
@@ -17,14 +17,18 @@ export function Card({
   iconClassName = 'text-white',
 }: CardProps) {
   return (
-    <div className={`flex  flex-col gap-1 ${className}`}>
+    <div className={`flex flex-col ${className}`}>
       {icon && <div className={iconClassName}>{icon}</div>}
-      <Title level={TitleLevel.Title3} className="pt-1">
+      <Title level={TitleLevel.Title3} className="pt-3 font-bold">
         {title}
       </Title>
-      <Title className="text-dark-palette-foregroundMuted" level={TitleLevel.Title4}>
-        {description}
-      </Title>
+      {typeof description === 'string' ? (
+        <Title className="pt-1 text-dark-palette-foregroundMuted" level={TitleLevel.Title4}>
+          {description}
+        </Title>
+      ) : (
+        description
+      )}
     </div>
   );
 }
