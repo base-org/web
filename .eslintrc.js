@@ -36,7 +36,7 @@ module.exports = {
     // We utilize class properties
     'react/state-in-constructor': 'off',
 
-    // Dont use prop types since were using TypeScript
+    // Don't use prop types since we are using TypeScript
     'react/default-props-match-prop-types': 'off',
     'react/forbid-foreign-prop-types': 'off',
     'react/forbid-prop-types': 'off',
@@ -66,7 +66,7 @@ module.exports = {
 
     'react/jsx-one-expression-per-line': 'off',
 
-    // We dont use flow
+    // We don't use flow
     'relay/generated-flow-types': 'off',
 
     // Shorthand types
@@ -135,7 +135,7 @@ module.exports = {
     '@typescript-eslint/prefer-string-starts-ends-with': 'error',
 
     // Hard to migrate
-    // Errors for all try/catch blocks and any types from third-parties
+    // Errors for all try/catch blocks and any types from third parties
     '@typescript-eslint/no-unsafe-member-access': 'off',
   },
 };

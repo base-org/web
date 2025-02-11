@@ -98,7 +98,7 @@ To get started, visit the [documentation](https://docs.envio.dev/docs/overview) 
 
 ## GhostGraph
 
-[GhostGraph](https://GhostGraph.xyz/) makes it easy to build blazingly fast indexers (subgraphs) for smart contracts.
+[GhostGraph](https://ghostgraph.xyz/) makes it easy to build blazingly fast indexers (subgraphs) for smart contracts.
 
 GhostGraph is the first indexing solution that lets you write your index transformations in **Solidity**. Base dApps can query data with GraphQL using our hosted endpoints.
 
@@ -201,15 +201,22 @@ To get started, visit the [developer documentation](https://academy.subquery.net
 
 ## The Graph
 
-[The Graph](https://thegraph.com/) is an indexing protocol for organizing blockchain data and making it easily accessible with GraphQL.
+[The Graph](https://thegraph.com/) is an indexing protocol that provides an easy way to query blockchain data through APIs known as subgraphs. 
 
-Base applications can use GraphQL to query open APIs called subgraphs, to retrieve data that is indexed on the network. With The Graph, you can build serverless applications that run entirely on public infrastructure.
+With The Graph, you can benefit from:
+ - **Decentralized Indexing**: Enables indexing blockchain data through multiple indexers, thus eliminating any single point of failure
+ - **GraphQL Queries**: Provides a powerful GraphQL interface for querying indexed data, making data retrieval super simple.
+ - **Customization**: Define your own logic for transforming & storing blockchain data. Reuse subgraphs published by other developers on The Graph Network.
 
-To get started, visit the [documentation](https://thegraph.com/docs/en/) or see [this quickstart](https://thegraph.com/docs/en/cookbook/quick-start/) on how to create, deploy, and query a subgraph.
+Follow this [quick-start](https://thegraph.com/docs/en/quick-start/) guide to create, deploy, and query a subgraph within 5 minutes.
 
 #### Supported Networks
 
-- [Base Mainnet](https://thegraph.com/docs/en/#supported-networks)
+- Base Mainnet
+- Base Sepolia (Testnet)
+
+See [all supported networks](https://thegraph.com/docs/en/#supported-networks)
+
 
 ---
 

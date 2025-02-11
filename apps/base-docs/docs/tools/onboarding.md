@@ -13,6 +13,10 @@ keywords:
     onboard,
     onboarding,
     Privy,
+    Reown,
+    AppKit,
+    WalletConnect,
+    WalletKit,
     Crossmint,
     Dynamic,
     Particle Network,
@@ -44,9 +48,9 @@ hide_table_of_contents: true
 
 ## Openfort
 
-[Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. Authenticated users can instantly access the embedded, non-custodial [smart account](https://www.openfort.xyz/docs/guides/accounts/smart) natively in the game and sign blockchain transactions with one button. The Openfort platform is compatible with most EVM chains, including Base.
+[Openfort](https://openfort.xyz) is an infrastructure provider designed to simplify the development of games and gamified experiences across their suite of API endpoints. Authenticated users can instantly access the embedded, non-custodial [smart account](https://www.openfort.xyz/docs/guides/javascript/smart-wallet/connected-wallets) natively in the game and sign blockchain transactions with one button. The Openfort platform is compatible with most EVM chains, including Base.
 
-Use [Auth Guide](https://www.openfort.xyz/docs/guides/auth/overview) to allow several onboarding methods into your game regardless of the platform. 
+Use [Auth Guide](https://www.openfort.xyz/docs/guides/javascript/auth) to allow several onboarding methods into your game regardless of the platform. 
 
 ---
 
@@ -61,6 +65,30 @@ You can [get started with Privy here](https://docs.privy.io/guide/quickstart), a
 ## Particle Network
 
 [Particle Network](https://particle.network/) is the intent-centric, modular access layer of Web3. With Particle's Smart Wallet-as-a-Service, developers can curate a seamless user experience through modular and customizable EOA/AA embedded wallet components. Using MPC-TSS for key management, Particle can streamline user onboarding via familiar web2 accounts - such as Google accounts, email addresses, and phone numbers. Particle Network's Smart Wallet-as-a-Service is compatible with most EVM chains, including Base.
+
+---
+
+## Reown (prev. known as WalletConnect)
+
+**[Reown](https://reown.com/?utm_source=base&utm_medium=docs&utm_campaign=backlinks)** gives developers the tools to build user experiences that make digital ownership effortless, intuitive, and secure.
+
+Reown has two major product offerings, they are, **AppKit** and **WalletKit**.
+
+### AppKit
+
+AppKit is a powerful, free, and fully open-source SDK for developers looking to integrate wallet connections and other Web3 functionalities into their apps on any EVM and non-EVM chain. In just a few simple steps, you can provide your users with seamless wallet access, one-click authentication, social logins, and notifications—streamlining their experience while enabling advanced features like on-ramp functionality, in-app token swaps and smart accounts.
+
+### WalletKit
+WalletKit is a robust, open-source SDK designed to empower seamless wallet connections and interactions across any blockchain. With WalletKit, you can offer your users a simple and secure way to connect with thousands of apps, enabling features like one-click authentication, secure transaction signing, and streamlined wallet address verification. Its chain-agnostic design ensures effortless multi-chain support, eliminating the need for complex integrations while delivering unmatched connectivity and security.
+
+To summarize, **AppKit** is for **Web3 applications** and **WalletKit** is for **Web3 wallets**.
+
+You will be able to use Reown AppKit to power end-to-end wallet interactions on your Web3 app deployed on Base.
+
+Some links to learn more about Reown:
+- [Website](https://reown.com/?utm_source=base&utm_medium=docs&utm_campaign=backlinks)
+- [Blog](https://reown.com/blog?utm_source=base&utm_medium=docs&utm_campaign=backlinks)
+- [Docs](https://docs.reown.com/?utm_source=base&utm_medium=docs&utm_campaign=backlinks)
 
 ---
 

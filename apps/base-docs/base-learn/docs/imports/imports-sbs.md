@@ -27,11 +27,11 @@ The [docs] start with installation instructions, which we'll return to when we s
 
 Find the documentation for the `EnumerableSet` under _Utils_. This library will allow you to create [sets] of `bytes32`, `address`, and `uint256`. Since they're enumerated, you can iterate through them. Neat!
 
-### Implementing the OpenZeppelin EnumeratedSet
+### Implementing the OpenZeppelin EnumerableSet
 
 Create a new file to work in and add the `pragma` and license identifier.
 
-In Remix, you can import libraries directly from Github!
+In Remix, you can import libraries directly from GitHub!
 
 ```solidity
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/structs/EnumerableSet.sol";

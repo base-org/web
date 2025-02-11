@@ -35,7 +35,7 @@ Use the script to regenerate this file.
 ### [Etherscan](./etherscan/etherscan-sbs.md)
 
 - List some of the features of Etherscan
-- Read data from the Bored Apes Yacht Club contract on Etherscan
+- Read data from the Bored Ape Yacht Club contract on Etherscan
 - Write data to a contract using Etherscan.
 
 ### [Deploying Smart Contracts](./hardhat-deploy/hardhat-deploy-sbs.md)
@@ -228,7 +228,7 @@ Use the script to regenerate this file.
 
 ### [The `useAccount` Hook](./reading-and-displaying-data/useAccount.md)
 
-- Implement the `useAccount`` hook to show the user's address, connection state, network, and balance
+- Implement the `useAccount` hook to show the user's address, connection state, network, and balance
 - Implement an `isMounted` hook to prevent hydration errors
 
 ### [The `useReadContract` Hook](./reading-and-displaying-data/useReadContract.md)
