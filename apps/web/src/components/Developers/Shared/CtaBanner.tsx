@@ -13,11 +13,11 @@ type CtaBannerProps = {
 export function CtaBanner({ title, description, cta }: CtaBannerProps) {
   return (
     <section className="w-full bg-black">
-      <div className="flex flex-col items-center rounded-2xl bg-dark-palette-backgroundAlternate py-16">
+      <div className="flex flex-col rounded-2xl bg-dark-palette-backgroundAlternate py-16 sm:items-center">
         <Title level={TitleLevel.Title1} as="h2">
           {title}
         </Title>
-        <Title level={TitleLevel.Title4} as="p" className="mt-2">
+        <Title level={TitleLevel.Title4} as="p" className="mt-2 sm:text-center">
           {description}
         </Title>
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">{cta}</div>

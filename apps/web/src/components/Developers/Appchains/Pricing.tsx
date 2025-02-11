@@ -5,15 +5,15 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 
 export function Pricing() {
   return (
-    <div className="flex w-full items-center justify-between gap-10">
-      <div className="flex max-w-[580px] shrink flex-col gap-4">
+    <div className="flex w-full justify-between gap-10 max-sm:flex-col sm:items-center">
+      <div className="flex max-w-2xl shrink flex-col gap-4">
         <Title level={TitleLevel.Title1}>
           Best-in-class pricing,{' '}
           <Title level={TitleLevel.Title1} as="span" className="text-dark-palette-foregroundMuted">
             built for developers.
           </Title>
         </Title>
-        <Title level={TitleLevel.Display2}>
+        <Title level={TitleLevel.Display3}>
           You keep 100% of your sequencer fees 100% of the time.
         </Title>
       </div>

@@ -19,7 +19,7 @@ export function Card({
   return (
     <div className={`flex  flex-col gap-1 ${className}`}>
       {icon && <div className={iconClassName}>{icon}</div>}
-      <Title level={TitleLevel.Title3} className="pt-1">
+      <Title level={TitleLevel.Title3} className="pt-1 font-bold">
         {title}
       </Title>
       {typeof description === 'string' ? (

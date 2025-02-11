@@ -17,10 +17,10 @@ const CDP_APPCHAIN_URL = 'https://portal.cdp.coinbase.com/products/base-l3';
 export default async function Appchains() {
   return (
     <Container>
-      <main className="mb-32 flex min-h-screen w-full flex-col items-center gap-40 bg-black px-2 pt-20 md:px-0">
+      <main className="mb-32 flex min-h-screen w-full flex-col gap-40 bg-black px-2 pt-20 sm:items-center md:px-0">
         {/* Header  */}
-        <div className="flex flex-col items-center gap-1 pt-20">
-          <div className="flex items-center gap-2 pb-6">
+        <div className="flex flex-col gap-1 pt-20 sm:items-center">
+          <div className="flex items-center gap-2 pb-6 text-[#FFDF44]">
             <Image
               src={basenet as StaticImageData}
               alt="basenet"
@@ -28,21 +28,24 @@ export default async function Appchains() {
               height={32}
               className="h-5 w-5"
             />
-            <Title level={TitleLevel.Title3} className="text-[#FFDF44]">
+            <Title level={TitleLevel.Title3} className="font-bold">
               Base Appchains
             </Title>
           </div>
-          <Title level={TitleLevel.Display3}>Deploy your chain on Base with zero code.</Title>
-          <Title level={TitleLevel.Title3} className="max-w-2xl text-center text-gray-muted">
+          <Title level={TitleLevel.Display3} className="font-bold">
+            Deploy your chain on Base with zero code.
+          </Title>
+          <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted sm:text-center">
             Fast, cheaper transactions at scale—built on Base, in minutes.
           </Title>
 
-          <div className="flex gap-6 pt-6">
+          <div className="flex gap-6 pt-6 max-sm:flex-col">
             <ButtonWithLinkAndEventLogging
               href={CDP_APPCHAIN_URL}
               iconName="arrowRight"
               target="_blank"
               variant={ButtonVariants.Secondary}
+              buttonClassNames="rounded-xl"
               eventName="appchains-get-started"
             >
               Start Building
@@ -53,6 +56,7 @@ export default async function Appchains() {
               iconName="arrowRight"
               target="_blank"
               variant={ButtonVariants.Outlined}
+              buttonClassNames="rounded-xl"
               eventName="appchains-docs"
             >
               Documentation
@@ -72,7 +76,7 @@ export default async function Appchains() {
             <ButtonWithLinkAndEventLogging
               variant={ButtonVariants.Secondary}
               iconName="arrowRight"
-              buttonClassNames="flex w-40 items-center px-4 py-3"
+              buttonClassNames="rounded-xl"
               href={CDP_APPCHAIN_URL}
               target="_blank"
               eventName="minikit-get-started"
