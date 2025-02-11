@@ -17,7 +17,7 @@ export function Frameworks() {
           </Title>
         </Title>
       </div>
-      <div className="flex w-full gap-6">
+      <div className="flex w-full items-center gap-6 max-sm:flex-col">
         <div className="flex-0 flex aspect-square h-40 w-40 items-center justify-center rounded-xl bg-dark-palette-backgroundAlternate">
           <Image src={framework as StaticImageData} alt="framework" width={106} height={54} />
         </div>

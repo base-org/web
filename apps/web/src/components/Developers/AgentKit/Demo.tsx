@@ -94,7 +94,7 @@ export function Demo() {
       >
         <AnimatedList>
           {MESSAGE_ARRAY.map((item) => (
-            <Message {...item} key={item.text} />
+            <Message {...item} key={crypto.randomUUID()} />
           ))}
         </AnimatedList>
       </div>

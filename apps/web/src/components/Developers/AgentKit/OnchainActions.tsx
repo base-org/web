@@ -38,7 +38,7 @@ function Action({ title }: ActionItem) {
       <div className="flex flex-row items-center gap-3">
         <div className="flex flex-col overflow-hidden">
           <figcaption className="flex flex-row items-center whitespace-pre text-lg font-medium dark:text-white ">
-            <span className="text-sm sm:text-lg">{title}</span>
+            <span className="text-lg">{title}</span>
           </figcaption>
         </div>
       </div>

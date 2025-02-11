@@ -42,7 +42,7 @@ export function Possibilities() {
           Launch your agent ideas in minutes.
         </Title>
       </Title>
-      <div className="grid grid-cols-3 gap-20">
+      <div className="grid grid-cols-1 gap-20 sm:grid-cols-3">
         {POSSIBILITIES.map((pos) => {
           return (
             <Card
