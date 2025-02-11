@@ -1,7 +1,7 @@
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import fund from './fund.png';
-import faceID from './faceID.png';
+import faceID from './face.png';
 import onboarding from './onboarding.png';
 import Image from 'next/image';
 import { cn } from 'libs/base-ui/utils/cn';
