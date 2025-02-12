@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import sun from 'apps/web/src/components/Developers/BaseWallet/svg/sun.svg';
 import moon from 'apps/web/src/components/Developers/BaseWallet/svg/moon.svg';
 import Image, { StaticImageData } from 'next/image';
@@ -77,6 +77,13 @@ export function Demo() {
   const toggleTheme = useCallback(() => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   }, []);
+
+  const component = useMemo(() => {
+    if (isMounted) {
+      return <WalletDefault />;
+    }
+    return null;
+  }, [isMounted]);
 
   if (!isMounted) {
     return (
@@ -160,7 +167,7 @@ export function Demo() {
           </div>
         </div>
 
-        {/* <div className="grid grid-cols-1 lg:grid-cols-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
           <div
             className={classNames(
               'h-[300px] p-8 lg:h-[500px] lg:p-12',
@@ -170,16 +177,14 @@ export function Demo() {
               theme === 'dark' ? 'border-dark-palette-line/50' : 'border-dark-palette-line/50',
             )}
           >
-            <DynamicCryptoProviders>
-              <WalletDefault />
-            </DynamicCryptoProviders>
+            <DynamicCryptoProviders>{component}</DynamicCryptoProviders>
           </div>
           <div className="h-[300px] py-6 pl-6 pr-1 lg:h-[500px]">
             <div className={`${theme} relative h-full`}>
               <CodeSnippet code={CODE_SNIPPET} />
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </section>
   );
