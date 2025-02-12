@@ -6,7 +6,7 @@ import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/Bu
 import { InfoCards } from 'apps/web/src/components/Developers/BaseWallet/InfoCards';
 import { Transactions } from 'apps/web/src/components/Developers/BaseWallet/Transactions';
 import { Customers } from 'apps/web/src/components/Developers/BaseWallet/Customers';
-import wallet from 'apps/web/src/components/Developers/BaseWallet/wallet.svg';
+import wallet from 'apps/web/src/components/Developers/BaseWallet/svg/wallet.svg';
 import headerImage from 'apps/web/src/components/Developers/BaseWallet/header.png';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
 import Image, { StaticImageData } from 'next/image';

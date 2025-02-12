@@ -1,8 +1,8 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import sun from './sun.svg';
-import moon from './moon.svg';
+import sun from 'apps/web/src/components/Developers/BaseWallet/svg/sun.svg';
+import moon from 'apps/web/src/components/Developers/BaseWallet/svg/moon.svg';
 import Image, { StaticImageData } from 'next/image';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Title from 'apps/web/src/components/base-org/typography/Title';

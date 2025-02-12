@@ -1,10 +1,10 @@
 import { Card } from 'apps/web/src/components/Developers/Shared/Card';
-import shieldOutline from 'apps/web/src/components/Developers/BaseWallet/shieldOutline.svg';
-import globe from 'apps/web/src/components/Developers/BaseWallet/globe.svg';
-import cash from 'apps/web/src/components/Developers/BaseWallet/cash.svg';
-import defi from 'apps/web/src/components/Developers/BaseWallet/defi.svg';
-import faces from 'apps/web/src/components/Developers/BaseWallet/faces.svg';
-import support from 'apps/web/src/components/Developers/BaseWallet/support.svg';
+import shieldOutline from 'apps/web/src/components/Developers/BaseWallet/svg/shieldOutline.svg';
+import globe from 'apps/web/src/components/Developers/BaseWallet/svg/globe.svg';
+import cash from 'apps/web/src/components/Developers/BaseWallet/svg/cash.svg';
+import defi from 'apps/web/src/components/Developers/BaseWallet/svg//defi.svg';
+import faces from 'apps/web/src/components/Developers/BaseWallet/svg/faces.svg';
+import support from 'apps/web/src/components/Developers/BaseWallet/svg/support.svg';
 import Image from 'next/image';
 import { StaticImageData } from 'next/image';
 const INFO_CARDS = [
