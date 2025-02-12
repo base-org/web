@@ -135,7 +135,6 @@ export default function Frame({ url, className }: FrameProps) {
 
   useEffect(() => {
     const currentFrameStackItem = openFrameState.currentFrameStackItem;
-    console.log('currentFrameStackItem', currentFrameStackItem);
     if (!openFrameWorksPersisted && currentFrameStackItem) {
       const status = currentFrameStackItem.status;
       // @ts-expect-error frames.js type incompatibility between v1 and v2
