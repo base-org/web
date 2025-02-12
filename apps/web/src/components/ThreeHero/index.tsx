@@ -11,7 +11,7 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'apps/web/src/components/Link';
 
 // 3D libraries - types
-import { type Vector3 } from '@react-three/fiber';
+import type { Vector3 } from '@react-three/fiber';
 import type { Vector3Tuple } from '@react-three/rapier';
 import type {
   ColorRepresentation,
