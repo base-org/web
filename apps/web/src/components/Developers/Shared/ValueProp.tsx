@@ -14,7 +14,7 @@ export function ValueProp({ title, description, icon }: ValuePropProps) {
       <div className="hidden w-full grid-cols-[auto_1fr] items-center md:grid">
         <Image src={icon} alt={title} width={32} height={32} className="h-5 w-5" />
         <div className="ml-14 flex items-center">
-          <Title level={TitleLevel.Title3} className="w-1/2">
+          <Title level={TitleLevel.Title3} className="w-1/2 font-bold">
             {title}
           </Title>
           <Title level={TitleLevel.Title4} className="w-1/2 text-dark-palette-foreground">
