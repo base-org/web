@@ -160,7 +160,7 @@ export function Demo() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2">
+        {/* <div className="grid grid-cols-1 lg:grid-cols-2">
           <div
             className={classNames(
               'h-[300px] p-8 lg:h-[500px] lg:p-12',
@@ -179,7 +179,7 @@ export function Demo() {
               <CodeSnippet code={CODE_SNIPPET} />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
