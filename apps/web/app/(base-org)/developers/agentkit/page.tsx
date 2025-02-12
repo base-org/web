@@ -51,7 +51,7 @@ export default function AgentKit() {
             and a set of comprehensive onchain interactions.
           </Title>
 
-          <div className="flex gap-6 pt-5 max-sm:max-w-[240px]  max-sm:flex-col">
+          <div className="flex gap-4 pt-5 max-sm:max-w-[240px]  max-sm:flex-col">
             <Button
               variant={ButtonVariants.Secondary}
               iconName="copy"
