@@ -1,4 +1,4 @@
-import { OnSignatureFunc, OnTransactionFunc } from '@frames.js/render';
+import { OnSignatureFunc, OnTransactionFunc, GetFrameResult } from '@frames.js/render';
 import { FrameUI } from '@frames.js/render/ui';
 import { useFrame } from '@frames.js/render/use-frame';
 import { Transition } from '@headlessui/react';
@@ -135,10 +135,15 @@ export default function Frame({ url, className }: FrameProps) {
 
   useEffect(() => {
     const currentFrameStackItem = openFrameState.currentFrameStackItem;
+    console.log('currentFrameStackItem', currentFrameStackItem);
     if (!openFrameWorksPersisted && currentFrameStackItem) {
       const status = currentFrameStackItem.status;
+      // @ts-expect-error frames.js type incompatibility between v1 and v2
       if (status === 'done' && currentFrameStackItem.frameResult.frame.accepts) {
+        // @ts-expect-error frames.js type incompatibility between v1 and v2
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
         const acceptsAnonymous = currentFrameStackItem.frameResult.frame.accepts.some(
+          // @ts-expect-error frames.js type incompatibility between v1 and v2
           (element) => element.id === 'anonymous',
         );
         if (acceptsAnonymous) {
