@@ -19,11 +19,11 @@ export function Card({
   return (
     <div className={`flex flex-col ${className}`}>
       {icon && <div className={iconClassName}>{icon}</div>}
-      <Title level={TitleLevel.Title3} className="pt-3 font-bold">
+      <Title level={TitleLevel.Title3} className="pt-4 font-bold">
         {title}
       </Title>
       {typeof description === 'string' ? (
-        <Title className="pt-1 text-dark-palette-foregroundMuted" level={TitleLevel.Title4}>
+        <Title className="pt-2 text-dark-palette-foregroundMuted" level={TitleLevel.Title4}>
           {description}
         </Title>
       ) : (
