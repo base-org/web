@@ -4,6 +4,7 @@ import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { AnimatedList } from 'apps/web/src/components/Developers/Shared/AnimatedList';
 import { cn } from 'base-ui/utils/cn';
+import { useRef, useState, useEffect } from 'react';
 
 type ActionItem = {
   title: string;
@@ -23,6 +24,12 @@ const ACTIONS: ActionItem[] = [
     title: 'Deposit via Morpho',
   },
   {
+    title: 'Get wallet details',
+  },
+  {
+    title: 'Get balances',
+  },
+  {
     title: 'Anything you can imagine',
   },
 ];
@@ -32,7 +39,6 @@ function Action({ title }: ActionItem) {
     <figure
       className={cn(
         'relative mx-auto min-h-fit w-full cursor-pointer overflow-hidden rounded-xl bg-dark-palette-backgroundAlternate px-6 py-5',
-        'transition-all duration-200 ease-in-out hover:scale-[103%]',
       )}
     >
       <div className="flex flex-row items-center gap-3">
@@ -47,17 +53,28 @@ function Action({ title }: ActionItem) {
 }
 
 export function OnchainActions({ className }: { className?: string }) {
+  const ref: React.RefObject<HTMLDivElement> = useRef(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.2 },
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="flex  w-full flex-col">
-      <div className="p-4">
+    <div className="flex  w-full flex-col gap-8" ref={ref}>
+      <div>
         <Title level={TitleLevel.Title1}>
           All onchain actions at your agent&apos;s fingertips.
         </Title>
       </div>
-      <div
-        className={cn('bg-background relative flex w-full flex-col overflow-hidden p-4', className)}
-      >
-        <AnimatedList className="gap-3">
+      <div className={cn('bg-background relative flex w-full flex-col overflow-hidden', className)}>
+        <AnimatedList className="gap-3" isInView={isInView}>
           {ACTIONS.map((item) => (
             <Action {...item} key={item.title} />
           ))}

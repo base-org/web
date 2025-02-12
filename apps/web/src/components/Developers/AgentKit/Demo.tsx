@@ -58,7 +58,7 @@ function Message({ text, content, type }: Item) {
     <figure
       className={cn(
         'relative  flex min-h-fit w-full max-w-[500px] cursor-pointer overflow-hidden rounded-2xl',
-        'transition-all duration-200 ease-in-out hover:scale-[103%]',
+        'transition-all duration-200 ease-in-out',
         'bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]',
         'transform-gpu dark:bg-transparent dark:backdrop-blur-md',
         isAgent ? 'mr-auto items-start' : 'ml-auto items-end',
@@ -84,7 +84,11 @@ export function Demo() {
     <div className="flex w-full max-w-4xl flex-col items-center overflow-hidden rounded-lg border border-palette-line border-opacity-40">
       <div className="flex w-full justify-between border-b border-palette-line border-opacity-40 bg-dark-palette-backgroundAlternate px-6 py-4">
         <Title level={TitleLevel.Headline}>Based Agent</Title>
-        <Link href={FORK_TEMPLATE_LINK} target="_blank" className="flex gap-2 text-[#E66020]">
+        <Link
+          href={FORK_TEMPLATE_LINK}
+          target="_blank"
+          className="flex gap-2 text-[#E66020] transition-all duration-200 ease-in-out hover:scale-[103%]"
+        >
           <Title level={TitleLevel.Headline}>Fork the template</Title>
           <Icon name="fork" color="currentColor" />
         </Link>

@@ -28,7 +28,7 @@ export default function AgentKit() {
 
   return (
     <Container>
-      <main className="mb-32 flex min-h-screen w-full flex-col items-center gap-40 bg-black px-2 pt-20 md:px-0">
+      <main className="mb-24 flex min-h-screen w-full flex-col items-center gap-40 bg-black px-2 pt-20 md:px-0">
         {/* Header  */}
         <div className="flex flex-col gap-2 pt-20 sm:items-center">
           <div className="flex items-center gap-2 pb-6 text-[#E66020]">
@@ -90,7 +90,7 @@ export default function AgentKit() {
                 href={FORK_TEMPLATE_LINK}
                 target="_blank"
                 eventName="agentkit-fork-template"
-                buttonClassNames="rounded-xl"
+                buttonClassNames="rounded-xl max-sm:w-full"
               >
                 Fork a template
               </ButtonWithLinkAndEventLogging>
@@ -100,7 +100,7 @@ export default function AgentKit() {
                 target="_blank"
                 variant={ButtonVariants.Outlined}
                 eventName="agentkit-docs"
-                buttonClassNames="rounded-xl"
+                buttonClassNames="rounded-xl max-sm:w-full"
               >
                 Documentation
               </ButtonWithLinkAndEventLogging>

@@ -62,7 +62,7 @@ const INFO_CARDS: CardProps[] = [
 
 export function InfoCards() {
   return (
-    <div className="grid w-full grid-cols-1 gap-20 md:grid-cols-3">
+    <div className="grid w-full grid-cols-1 gap-20 max-sm:gap-12 md:grid-cols-3">
       {INFO_CARDS.map((card) => {
         return (
           <Card
