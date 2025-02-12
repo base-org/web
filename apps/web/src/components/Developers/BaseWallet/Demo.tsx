@@ -179,11 +179,11 @@ export function Demo() {
           >
             <DynamicCryptoProviders>{component}</DynamicCryptoProviders>
           </div>
-          <div className="h-[300px] py-6 pl-6 pr-1 lg:h-[500px]">
+          {/* <div className="h-[300px] py-6 pl-6 pr-1 lg:h-[500px]">
             <div className={`${theme} relative h-full`}>
               <CodeSnippet code={CODE_SNIPPET} />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
