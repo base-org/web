@@ -30,7 +30,7 @@ const TEMPLATES = [
 export function Templates() {
   return (
     <div className="flex w-full flex-col gap-10">
-      <div className="grid w-full grid-cols-3 gap-6">
+      <div className="grid w-full grid-cols-3 gap-6 max-sm:grid-cols-1">
         {TEMPLATES.map((template) => {
           return (
             <div
