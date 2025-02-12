@@ -5,7 +5,6 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import basenet from 'apps/web/src/components/Developers/Appchains/basenet.svg';
 import { InfoCards } from 'apps/web/src/components/Developers/Appchains/InfoCards';
-import { L2InfoCards } from 'apps/web/src/components/Developers/Appchains/L2InfoCards';
 import { OnchainApps } from 'apps/web/src/components/Developers/Appchains/OnchainApps';
 import { Pricing } from 'apps/web/src/components/Developers/Appchains/Pricing';
 import { Testimonials } from 'apps/web/src/components/Developers/Appchains/Testimonials';
@@ -66,7 +65,6 @@ export default async function Appchains() {
 
         <InfoCards />
         <OnchainApps />
-        <L2InfoCards />
         <Pricing />
         <Testimonials />
         <CtaBanner
