@@ -1,3 +1,5 @@
+'use client';
+
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Container from 'apps/web/src/components/base-org/Container';
@@ -10,8 +12,16 @@ import { Testmonials } from 'apps/web/src/components/Developers/Onchainkit/Testi
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
 import Image, { StaticImageData } from 'next/image';
 import onchainkit from 'apps/web/src/components/Developers/Onchainkit/onchainkit.svg';
+import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
+import { useCallback } from 'react';
 
-export default async function OnchainKit() {
+const ONCHAINKIT_DOCS_LINK = 'https://onchainkit.xyz/';
+
+export default function OnchainKit() {
+  const handleCopy = useCallback(() => {
+    void navigator.clipboard.writeText('npm create onchain');
+  }, []);
+
   return (
     <Container>
       <main className="mb-32 flex min-h-screen w-full flex-col items-center gap-40 bg-black pt-20">
@@ -25,16 +35,36 @@ export default async function OnchainKit() {
               height={32}
               className="h-5 w-5"
             />
-            <Title level={TitleLevel.Title3}>OnchainKit</Title>
+            <Title level={TitleLevel.Title3} className="font-bold">
+              OnchainKit
+            </Title>
           </div>
-          <Title level={TitleLevel.Display3}>Full-stack onchain components</Title>
+          <Title level={TitleLevel.Display3} className="font-bold">
+            Full-stack onchain components
+          </Title>
           <Title level={TitleLevel.Title3} className="text-gray-muted">
             All-you-need to build an onchain app in 10 minutes.
           </Title>
 
           <div className="flex gap-6 pt-6">
-            <Button variant={ButtonVariants.Secondary}>npm create onchain</Button>
-            <Button variant={ButtonVariants.SecondaryOutline}>Documentation</Button>
+            <Button
+              variant={ButtonVariants.Secondary}
+              iconName="copy"
+              onClick={handleCopy}
+              className="rounded-xl"
+            >
+              npm create onchain
+            </Button>
+            <ButtonWithLinkAndEventLogging
+              href={ONCHAINKIT_DOCS_LINK}
+              iconName="arrowRight"
+              target="_blank"
+              variant={ButtonVariants.Outlined}
+              eventName="onchainkit-docs"
+              buttonClassNames="rounded-xl max-sm:w-full"
+            >
+              Documentation
+            </ButtonWithLinkAndEventLogging>
           </div>
         </div>
 
@@ -45,6 +75,28 @@ export default async function OnchainKit() {
         <CtaBanner
           title="What do you want to build?"
           description="Start building with a starter template or see documentation."
+          cta={
+            <>
+              <Button
+                variant={ButtonVariants.Secondary}
+                iconName="copy"
+                onClick={handleCopy}
+                className="rounded-xl"
+              >
+                npm create onchain
+              </Button>
+              <ButtonWithLinkAndEventLogging
+                href={ONCHAINKIT_DOCS_LINK}
+                iconName="arrowRight"
+                target="_blank"
+                variant={ButtonVariants.Outlined}
+                eventName="onchainkit-docs"
+                buttonClassNames="rounded-xl max-sm:w-full"
+              >
+                Documentation
+              </ButtonWithLinkAndEventLogging>
+            </>
+          }
         />
       </main>
     </Container>
