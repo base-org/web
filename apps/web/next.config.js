@@ -119,6 +119,7 @@ const contentSecurityPolicy = {
     'https://unpkg.com/@lottiefiles/dotlottie-web@0.31.1/dist/dotlottie-player.wasm', // lottie player
     `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
     'https://usdc-claim-git-master-coinbase-vercel.vercel.app',
+    'https://eth.merkle.io', // testing
   ],
   'frame-src': ['https://p.datadoghq.com'],
   'frame-ancestors': ["'self'", baseXYZDomains],
