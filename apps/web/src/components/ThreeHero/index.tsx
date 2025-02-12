@@ -11,7 +11,7 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'apps/web/src/components/Link';
 
 // 3D libraries - types
-import { useThree, type Vector3 } from '@react-three/fiber';
+import { type Vector3 } from '@react-three/fiber';
 import type { Vector3Tuple } from '@react-three/rapier';
 import type {
   ColorRepresentation,
@@ -21,7 +21,7 @@ import type {
   Material,
 } from 'three';
 
-// import { Bloom, SMAA, EffectComposer } from '@react-three/postprocessing';
+import { Bloom, SMAA, EffectComposer } from '@react-three/postprocessing';
 
 // Assets
 import {
@@ -73,21 +73,6 @@ const Environment = dynamic(
 // Dynamic - react-three/rapier
 const Physics = dynamic(async () => import('@react-three/rapier').then((mod) => mod.Physics), {
   ssr: false,
-});
-
-const EffectComposer = dynamic(
-  async () => import('@react-three/postprocessing').then((mod) => mod.EffectComposer),
-  { ssr: false, loading: () => null },
-);
-
-const Bloom = dynamic(async () => import('@react-three/postprocessing').then((mod) => mod.Bloom), {
-  ssr: false,
-  loading: () => null,
-});
-
-const SMAA = dynamic(async () => import('@react-three/postprocessing').then((mod) => mod.SMAA), {
-  ssr: false,
-  loading: () => null,
 });
 
 /*

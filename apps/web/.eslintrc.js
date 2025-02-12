@@ -5,10 +5,10 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'eslint-config-prettier',
   ],
-  parserOptions: {
-    project: ['./tsconfig.json'],
-    tsconfigRootDir: __dirname,
-  },
+  // parserOptions: {
+  //   project: ['./tsconfig.json'],
+  //   tsconfigRootDir: __dirname,
+  // },
   settings: {
     next: {
       rootDir: __dirname,
