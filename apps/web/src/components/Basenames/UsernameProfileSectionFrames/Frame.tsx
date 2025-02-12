@@ -36,6 +36,16 @@ type TransactionData = {
   };
 };
 
+type ClientProtocolId = {
+  id: string;
+  version: string;
+};
+
+type FixedFrame = {
+  accepts?: ClientProtocolId[];
+  title?: string;
+};
+
 export default function Frame({ url, className }: FrameProps) {
   const { frameConfig: sharedConfig, farcasterSignerState, anonSignerState } = useFrameContext();
   const queryClient = useQueryClient();
@@ -135,14 +145,17 @@ export default function Frame({ url, className }: FrameProps) {
 
   useEffect(() => {
     const currentFrameStackItem = openFrameState.currentFrameStackItem;
+
     if (!openFrameWorksPersisted && currentFrameStackItem) {
       const status = currentFrameStackItem.status;
-      if (status === 'done' && currentFrameStackItem.frameResult.frame.accepts) {
-        const acceptsAnonymous = currentFrameStackItem.frameResult.frame.accepts.some(
-          (element) => element.id === 'anonymous',
-        );
-        if (acceptsAnonymous) {
-          setOpenFrameWorksPersisted(true);
+
+      if (status === 'done' && 'frameResult' in currentFrameStackItem) {
+        const accepts = (currentFrameStackItem.frameResult.frame as unknown as FixedFrame).accepts;
+        if (accepts) {
+          const acceptsAnonymous = accepts.some((element) => element.id === 'anonymous');
+          if (acceptsAnonymous) {
+            setOpenFrameWorksPersisted(true);
+          }
         }
       }
     }
