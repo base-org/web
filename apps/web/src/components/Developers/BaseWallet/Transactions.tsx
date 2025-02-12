@@ -4,7 +4,6 @@ import fund from './fund.png';
 import faceID from './face.png';
 import onboarding from './onboarding.png';
 import Image from 'next/image';
-import { cn } from 'libs/base-ui/utils/cn';
 import Text from 'apps/web/src/components/base-org/typography/Text';
 import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
 
@@ -37,19 +36,22 @@ export function Transactions() {
         return (
           <div
             key={transaction.label}
-            className={cn(
-              'flex w-full items-center justify-between gap-10',
-              i === 1 ? 'flex-row-reverse' : 'flex',
-            )}
+            className={
+              i === 1
+                ? 'flex w-full flex-col-reverse justify-between gap-10 sm:flex-row-reverse sm:items-center'
+                : 'flex w-full flex-col-reverse justify-between gap-10 sm:flex-row sm:items-center'
+            }
           >
             <div className="flex max-w-xl flex-col">
               <div className="hidden text-[#578BFA] sm:flex">
-                <Title level={TitleLevel.Title3} className="pb-3">
+                <Title level={TitleLevel.Title3} className="font-bold">
                   {transaction.label}
                 </Title>
               </div>
               <div className="hidden flex-col gap-2 sm:flex">
-                <Title level={TitleLevel.Title1}>{transaction.title}</Title>
+                <Title level={TitleLevel.Title1} className="pt-3 font-bold">
+                  {transaction.title}
+                </Title>
                 <Title level={TitleLevel.Title2} className="pt-1 text-dark-palette-foregroundMuted">
                   {transaction.description}
                 </Title>

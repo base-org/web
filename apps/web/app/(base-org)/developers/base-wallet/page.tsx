@@ -10,6 +10,7 @@ import wallet from 'apps/web/src/components/Developers/BaseWallet/wallet.svg';
 import headerImage from 'apps/web/src/components/Developers/BaseWallet/header.png';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
 import Image, { StaticImageData } from 'next/image';
+import { Demo } from 'apps/web/src/components/Developers/BaseWallet/Demo';
 
 export default async function BaseWallet() {
   return (
@@ -54,14 +55,15 @@ export default async function BaseWallet() {
         </div>
 
         <InfoCards />
-        <Title level={TitleLevel.Display3} className="max-sm:hidden">
+        <Title level={TitleLevel.Display3} className="semibold max-sm:hidden">
           Onchain transactions without distractions
         </Title>
-        <Title level={TitleLevel.Title3} className="sm:hidden">
+        <Title level={TitleLevel.Title3} className="semibold sm:hidden">
           Onchain transactions without distractions
         </Title>
         <Transactions />
         <Customers />
+        <Demo />
 
         <CtaBanner
           title="Update your wallet provider of choice to bring Smart Wallets to your app today. "
