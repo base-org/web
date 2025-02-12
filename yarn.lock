@@ -543,6 +543,11 @@ __metadata:
     "@types/react-copy-to-clipboard": ^5.0.7
     "@types/react-dom": ^18
     "@types/three": 0.153.0
+    "@typescript-eslint/eslint-plugin": ^7.8.0
+    "@typescript-eslint/parser": ^7.8.0
+    "@typescript-eslint/type-utils": ^7.8.0
+    "@typescript-eslint/types": ^7.8.0
+    "@typescript-eslint/utils": ^7.8.0
     "@vercel/blob": ^0.23.4
     "@vercel/kv": ^1.0.1
     "@vercel/og": ^0.6.2
