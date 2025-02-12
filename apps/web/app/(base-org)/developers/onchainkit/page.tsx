@@ -26,7 +26,7 @@ export default function OnchainKit() {
     <Container>
       <main className="mb-32 flex min-h-screen w-full flex-col items-center gap-40 bg-black pt-20">
         {/* Header  */}
-        <div className="flex flex-col items-center gap-1 pt-20">
+        <div className="flex flex-col gap-2 pt-20 sm:items-center">
           <div className="flex items-center gap-2 pb-6 text-[#C9A4FA]">
             <Image
               src={onchainkit as StaticImageData}
@@ -46,7 +46,7 @@ export default function OnchainKit() {
             All-you-need to build an onchain app in 10 minutes.
           </Title>
 
-          <div className="flex gap-6 pt-6">
+          <div className="flex gap-4 pt-5 max-sm:max-w-[240px] max-sm:flex-col">
             <Button
               variant={ButtonVariants.Secondary}
               iconName="copy"
@@ -81,7 +81,7 @@ export default function OnchainKit() {
                 variant={ButtonVariants.Secondary}
                 iconName="copy"
                 onClick={handleCopy}
-                className="rounded-xl"
+                className="rounded-xl max-sm:w-full"
               >
                 npm create onchain
               </Button>
