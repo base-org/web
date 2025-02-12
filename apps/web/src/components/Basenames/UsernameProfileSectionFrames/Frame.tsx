@@ -1,4 +1,4 @@
-import { OnSignatureFunc, OnTransactionFunc, GetFrameResult } from '@frames.js/render';
+import { OnSignatureFunc, OnTransactionFunc } from '@frames.js/render';
 import { FrameUI } from '@frames.js/render/ui';
 import { useFrame } from '@frames.js/render/use-frame';
 import { Transition } from '@headlessui/react';
