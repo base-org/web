@@ -63,7 +63,7 @@ export default async function BaseWallet() {
         </Title>
         <Transactions />
         <Customers />
-        <Demo />
+        {/* <Demo /> */}
 
         <CtaBanner
           title="Update your wallet provider of choice to bring Smart Wallets to your app today. "
