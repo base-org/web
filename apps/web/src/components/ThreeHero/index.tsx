@@ -11,7 +11,7 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'apps/web/src/components/Link';
 
 // 3D libraries - types
-import type { Vector3 } from '@react-three/fiber';
+import { useThree, type Vector3 } from '@react-three/fiber';
 import type { Vector3Tuple } from '@react-three/rapier';
 import type {
   ColorRepresentation,
@@ -21,7 +21,7 @@ import type {
   Material,
 } from 'three';
 
-import { Bloom, SMAA, EffectComposer } from '@react-three/postprocessing';
+// import { Bloom, SMAA, EffectComposer } from '@react-three/postprocessing';
 
 // Assets
 import {
@@ -75,7 +75,22 @@ const Physics = dynamic(async () => import('@react-three/rapier').then((mod) => 
   ssr: false,
 });
 
-/* 
+const EffectComposer = dynamic(
+  async () => import('@react-three/postprocessing').then((mod) => mod.EffectComposer),
+  { ssr: false, loading: () => null },
+);
+
+const Bloom = dynamic(async () => import('@react-three/postprocessing').then((mod) => mod.Bloom), {
+  ssr: false,
+  loading: () => null,
+});
+
+const SMAA = dynamic(async () => import('@react-three/postprocessing').then((mod) => mod.SMAA), {
+  ssr: false,
+  loading: () => null,
+});
+
+/*
   The Main Scene
   - Keeps track of window focus, intersection observer
   - Listen to pointer event for rotation context
@@ -223,7 +238,7 @@ function Loader() {
   );
 }
 
-/* 
+/*
   The Environment
   - Loads the JPEG / HDR gainmap file
   - Set as global texture
@@ -274,7 +289,7 @@ function EnvironmentSetup() {
   );
 }
 
-/* 
+/*
   The GLTF Scene
   - Loads the GLTF file / 3D scene
 */
