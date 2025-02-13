@@ -5,13 +5,13 @@ import cloudProduct from 'apps/web/src/components/Developers/Onchainkit/cloudPro
 import developerPlatformProduct from 'apps/web/src/components/Developers/Onchainkit/developerPlatformProduct.svg';
 import derivativesProductNew from 'apps/web/src/components/Developers/Onchainkit/derivativesProductNew.svg';
 import taxesReceiptInactive from 'apps/web/src/components/Developers/Onchainkit/taxesReceiptInactive.svg';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 const INFO_CARDS = [
   {
     icon: (
       <Image
-        src={developerPlatformProduct}
+        src={developerPlatformProduct as StaticImageData}
         alt="developerPlatformProduct"
         width={32}
         height={32}
@@ -24,21 +24,41 @@ const INFO_CARDS = [
   },
   {
     icon: (
-      <Image src={cloudProduct} alt="cloudProduct" width={31} height={32} className="h-8 w-8" />
+      <Image
+        src={cloudProduct as StaticImageData}
+        alt="cloudProduct"
+        width={31}
+        height={32}
+        className="h-8 w-8"
+      />
     ),
     title: 'AI-compatible',
     description:
       'Leverage your favorite AI tools to get your app onchain faster with more features than possible otherwise.',
   },
   {
-    icon: <Image src={serverless} alt="serverless" width={30} height={32} className="h-8 w-8" />,
+    icon: (
+      <Image
+        src={serverless as StaticImageData}
+        alt="serverless"
+        width={30}
+        height={32}
+        className="h-8 w-8"
+      />
+    ),
     title: 'Serverless',
     description:
       'To deploy full-stack onchain apps without managing backend infrastructure — just "npm create onchain" to get started.',
   },
   {
     icon: (
-      <Image src={cryptoBasics} alt="cryptoBasics" width={30} height={32} className="h-8 w-8" />
+      <Image
+        src={cryptoBasics as StaticImageData}
+        alt="cryptoBasics"
+        width={30}
+        height={32}
+        className="h-8 w-8"
+      />
     ),
     title: 'Composable',
     description:
@@ -47,7 +67,7 @@ const INFO_CARDS = [
   {
     icon: (
       <Image
-        src={derivativesProductNew}
+        src={derivativesProductNew as StaticImageData}
         alt="derivativesProductNew"
         width={33}
         height={32}
@@ -61,7 +81,7 @@ const INFO_CARDS = [
   {
     icon: (
       <Image
-        src={taxesReceiptInactive}
+        src={taxesReceiptInactive as StaticImageData}
         alt="taxesReceiptInactive"
         width={32}
         height={32}
