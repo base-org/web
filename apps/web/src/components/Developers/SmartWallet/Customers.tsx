@@ -16,7 +16,7 @@ import Image, { StaticImageData } from 'next/image';
 
 export function Customers() {
   return (
-    <div className="flex w-full flex-col gap-2 tracking-tight">
+    <div className="flex w-full flex-col gap-8 tracking-tight">
       <Title level={TitleLevel.Title1} className="font-bold max-sm:hidden">
         Powering the best onchain experiences.
       </Title>
