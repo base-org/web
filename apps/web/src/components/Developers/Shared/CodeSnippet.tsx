@@ -1,43 +1,41 @@
-'use client';
-
-import { useEffect, useMemo, useState } from 'react';
-import { createHighlighter } from 'shiki';
+import { useEffect, useState } from 'react';
 
 export default function CodeSnippet({ code }: { code: string }) {
   const [highlightedCode, setHighlightedCode] = useState('');
 
   useEffect(() => {
-    async function highlightCode() {
-      const highlighter = await createHighlighter({
-        themes: ['github-light', 'github-dark'],
-        langs: ['typescript'],
-      });
+    // Only run on the client side
+    if (typeof window !== 'undefined') {
+      async function highlightCode() {
+        const { createHighlighter } = await import('shiki');
 
-      const formattedCode = highlighter.codeToHtml(code, {
-        lang: 'typescript',
-        themes: {
-          light: 'github-light',
-          dark: 'github-dark',
-        },
-        defaultColor: false,
-      });
+        const highlighter = await createHighlighter({
+          themes: ['github-light', 'github-dark'],
+          langs: ['typescript'],
+        });
 
-      // Remove Shiki formatting
-      const cleanedCode = formattedCode.replace(
-        /<pre[^>]*class="([^"]*)"[^>]*>/,
-        (_match: string, className: string) =>
-          `<pre class="${className}" style="margin: 0; padding: 0; background: transparent">`,
-      );
+        const formattedCode = highlighter.codeToHtml(code, {
+          lang: 'typescript',
+          themes: {
+            light: 'github-light',
+            dark: 'github-dark',
+          },
+          defaultColor: false,
+        });
 
-      setHighlightedCode(cleanedCode);
+        // Remove Shiki formatting
+        const cleanedCode = formattedCode.replace(
+          /<pre[^>]*class="([^"]*)"[^>]*>/,
+          (_match: string, className: string) =>
+            `<pre class="${className}" style="margin: 0; padding: 0; background: transparent">`,
+        );
+
+        setHighlightedCode(cleanedCode);
+      }
+
+      void highlightCode();
     }
-
-    void highlightCode();
   }, [code]);
-
-  const dangerouslySetInnerHTML = useMemo(() => {
-    return { __html: highlightedCode };
-  }, [highlightedCode]);
 
   if (!highlightedCode) {
     return (
@@ -50,8 +48,7 @@ export default function CodeSnippet({ code }: { code: string }) {
   return (
     <div
       className="code-snippet h-full overflow-auto rounded-lg transition-colors"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={dangerouslySetInnerHTML}
+      dangerouslySetInnerHTML={{ __html: highlightedCode }}
     />
   );
 }
