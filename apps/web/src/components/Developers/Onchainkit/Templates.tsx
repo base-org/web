@@ -30,12 +30,18 @@ const TEMPLATES = [
 export function Templates() {
   return (
     <div className="flex w-full flex-col gap-10">
+      <Title level={TitleLevel.Title1}>
+        Start with a template.{' '}
+        <Title level={TitleLevel.Title1} as="span" className="text-dark-palette-foregroundMuted">
+          Fork, customize, and deploy in minutes.
+        </Title>
+      </Title>
       <div className="grid w-full grid-cols-3 gap-6 max-sm:grid-cols-1">
         {TEMPLATES.map((template) => {
           return (
             <div
               key={template.title}
-              className="relative flex h-[220px] flex-col justify-between rounded-lg bg-[purple] p-6"
+              className="relative flex h-[220px] flex-col justify-between overflow-hidden rounded-xl bg-[purple] p-6"
             >
               <Image
                 src={template.background}
@@ -43,7 +49,7 @@ export function Templates() {
                 layout="fill"
                 objectFit="cover"
               />
-              <Title level={TitleLevel.Title3} className="z-10">
+              <Title level={TitleLevel.Title3} className="z-10 font-bold">
                 {template.title}
               </Title>
               <Link href={template.href} className="z-10 flex gap-2 text-[#C9A4FA]">
@@ -61,6 +67,7 @@ export function Templates() {
           iconName="github"
           target="_blank"
           eventName="onchainkit-feature-template"
+          buttonClassNames="rounded-xl"
         >
           Feature your template
         </ButtonWithLinkAndEventLogging>
