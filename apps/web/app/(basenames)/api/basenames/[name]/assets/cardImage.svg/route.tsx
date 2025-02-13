@@ -1,4 +1,5 @@
 import satori from 'satori';
+import { NextRequest } from 'next/server';
 import {
   getBasenameImage,
   getChainForBasename,
@@ -14,7 +15,7 @@ import { logger } from 'apps/web/src/utils/logger';
 import { Basename } from '@coinbase/onchainkit/identity';
 import { getCloudinaryMediaUrl } from 'apps/web/src/utils/images';
 import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { join } from 'path';
 
 const emojiCache: Record<string, Promise<string>> = {};
 
@@ -25,17 +26,24 @@ async function loadEmoji(emojiString: string) {
     return emojiCache[code];
   }
 
+  // TODO: Is this okay? Vercel's OG image already does these calls
   const url = `https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/${code.toLowerCase()}.svg`;
+
   return (emojiCache[code] = fetch(url).then(async (r) => r.text()));
 }
 
-export async function GET(request: Request, { params }: { params: { name: string } }) {
-  const url = new URL(request.url);
+export const config = {
+  runtime: 'edge',
+};
+
+export async function GET(request: Request, { params }: { params: Promise<{ name: string }> }) {
   const fontData = await readFile(join(process.cwd(), 'src/fonts/CoinbaseDisplay-Regular.ttf'));
 
-  const username = params.name;
+  const url = new URL(request.url);
+
+  const username = (await params).name ?? 'yourname';
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
-  const profilePicture = getBasenameImage(username);
+  const profilePicture = getBasenameImage(username as Basename);
   const chain = getChainForBasename(username as Basename);
   let imageSource = domainName + profilePicture.src;
 
@@ -48,8 +56,10 @@ export async function GET(request: Request, { params }: { params: { name: string
     });
 
     if (avatar) {
+      // IPFS Resolution
       if (IsValidIpfsUrl(avatar)) {
         const ipfsUrl = getIpfsGatewayUrl(avatar as IpfsUrl);
+
         if (ipfsUrl) {
           imageSource = ipfsUrl;
         }
@@ -57,12 +67,14 @@ export async function GET(request: Request, { params }: { params: { name: string
         imageSource = avatar;
       }
 
+      // Cloudinary resize / fetch
       imageSource = getCloudinaryMediaUrl({ media: imageSource, format: 'png', width: 120 });
     }
   } catch (error) {
     logger.error('Error fetching basename Avatar:', error);
   }
 
+  // Using Satori for an SVG response
   const svg = await satori(
     <div
       style={{
@@ -125,6 +137,7 @@ export async function GET(request: Request, { params }: { params: { name: string
         if (code === 'emoji') {
           return `data:image/svg+xml;base64,${btoa(await loadEmoji(segment))}`;
         }
+
         return code;
       },
     },
