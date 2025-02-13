@@ -1,6 +1,8 @@
 import { Marquee } from 'apps/web/src/components/Developers/Shared/Marquee';
 import { TweetCard } from 'apps/web/src/components/Developers/Shared/TweetCard';
 import { TWEETS } from 'apps/web/src/components/Developers/Onchainkit/tweets';
+import Title from 'apps/web/src/components/base-org/typography/Title';
+import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 
 export function Testmonials() {
   const mid = Math.ceil(TWEETS.length / 2);
@@ -8,20 +10,24 @@ export function Testmonials() {
   const secondHalf = TWEETS.slice(mid);
 
   return (
-    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-      <Marquee className="[--duration:20s]" pauseOnHover>
-        {firstHalf?.map((tweet) => (
-          <TweetCard key={tweet.username} {...tweet} />
-        ))}
-      </Marquee>
-      <Marquee className="[--duration:20s]" reverse pauseOnHover>
-        {secondHalf?.map((tweet) => (
-          <TweetCard key={tweet.username} {...tweet} />
-        ))}
-      </Marquee>
-      <div className="pointer-events-none absolute left-0 top-0 h-full w-4 bg-gradient-to-r from-black to-transparent" />
+    <div className="flex w-full flex-col gap-10">
+      <Title level={TitleLevel.Title1}>Builders ship fast with OnchainKit</Title>
 
-      <div className="pointer-events-none absolute right-0 top-0 h-full w-4 bg-gradient-to-l from-black to-transparent" />
+      <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+        <Marquee className="[--duration:20s]" pauseOnHover>
+          {firstHalf?.map((tweet) => (
+            <TweetCard key={tweet.username} {...tweet} />
+          ))}
+        </Marquee>
+        <Marquee className="[--duration:20s]" reverse pauseOnHover>
+          {secondHalf?.map((tweet) => (
+            <TweetCard key={tweet.username} {...tweet} />
+          ))}
+        </Marquee>
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-4 bg-gradient-to-r from-black to-transparent" />
+
+        <div className="pointer-events-none absolute right-0 top-0 h-full w-4 bg-gradient-to-l from-black to-transparent" />
+      </div>
     </div>
   );
 }
