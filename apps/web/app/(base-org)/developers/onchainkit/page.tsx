@@ -5,7 +5,6 @@ import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
-import { Components } from 'apps/web/src/components/Developers/Onchainkit/Components';
 import { InfoCards } from 'apps/web/src/components/Developers/Onchainkit/InfoCards';
 import { Templates } from 'apps/web/src/components/Developers/Onchainkit/Templates';
 import { Testmonials } from 'apps/web/src/components/Developers/Onchainkit/Testimonials';
@@ -14,6 +13,7 @@ import Image, { StaticImageData } from 'next/image';
 import onchainkit from 'apps/web/src/components/Developers/Onchainkit/onchainkit.svg';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { useCallback } from 'react';
+import { Demo } from 'apps/web/src/components/Developers/Onchainkit/Demo';
 
 const ONCHAINKIT_DOCS_LINK = 'https://onchainkit.xyz/';
 
@@ -68,7 +68,7 @@ export default function OnchainKit() {
           </div>
         </div>
 
-        <Components />
+        <Demo />
         <InfoCards />
         <Templates />
         <Testmonials />
