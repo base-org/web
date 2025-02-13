@@ -17,7 +17,7 @@ export function CtaBanner({ title, description, cta }: CtaBannerProps) {
         <Title level={TitleLevel.Title1} as="h2">
           {title}
         </Title>
-        <Title level={TitleLevel.Title4} as="p" className="mt-2">
+        <Title level={TitleLevel.Title4} as="p" className="mt-2 text-center max-sm:max-w-[220px]">
           {description}
         </Title>
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">{cta}</div>

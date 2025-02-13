@@ -25,7 +25,7 @@ const VALUE_PROPS: ValuePropProps[] = [
 ];
 export function ValueProps() {
   return (
-    <div className="flex w-full flex-col gap-8">
+    <div className="flex w-full flex-col gap-10">
       <div>
         <Title level={TitleLevel.Title1}>
           Supported attestations.{' '}

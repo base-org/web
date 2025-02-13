@@ -26,7 +26,9 @@ export function ValueProp({ title, description, icon }: ValuePropProps) {
       <div className="flex flex-col md:hidden">
         <Image src={icon} alt={title} width={32} height={32} className="h-5 w-5" />
         <div className="flex flex-col gap-2 pt-20">
-          <Title level={TitleLevel.Title3}>{title}</Title>
+          <Title level={TitleLevel.Title3} className="font-bold">
+            {title}
+          </Title>
           <Title level={TitleLevel.Title4} className="text-dark-palette-foreground">
             {description}
           </Title>

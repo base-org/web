@@ -28,7 +28,10 @@ export default async function Verifications() {
               Verifications
             </Title>
           </div>
-          <Title level={TitleLevel.Display3} className="font-bold">
+          <Title level={TitleLevel.Display3} className="font-bold max-sm:hidden">
+            Identify your high-quality users
+          </Title>
+          <Title level={TitleLevel.Title1} className="font-bold sm:hidden">
             Identify your high-quality users
           </Title>
           <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted md:text-center">
