@@ -8,7 +8,7 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 
 export function Frameworks() {
   return (
-    <div className="flex w-full flex-col gap-8">
+    <div className="flex w-full flex-col gap-10">
       <div>
         <Title level={TitleLevel.Title1}>
           Works with any framework.{' '}

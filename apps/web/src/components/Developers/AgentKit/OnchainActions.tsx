@@ -57,17 +57,16 @@ export function OnchainActions({ className }: { className?: string }) {
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.2 },
-    );
+    const observer = new IntersectionObserver(([entry]) => setIsInView(entry.isIntersecting), {
+      threshold: 0.2,
+    });
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="flex  w-full flex-col gap-8" ref={ref}>
+    <div className="flex  min-h-[650px] w-full flex-col gap-10" ref={ref}>
       <div>
         <Title level={TitleLevel.Title1}>
           All onchain actions at your agent&apos;s fingertips.

@@ -25,7 +25,7 @@ export type AnimatedListProps = ComponentPropsWithoutRef<'div'> & {
 };
 
 export const AnimatedList = React.memo(
-  ({ children, className, isInView = true, delay = 800, ...props }: AnimatedListProps) => {
+  ({ children, className, isInView = true, delay = 500, ...props }: AnimatedListProps) => {
     const [index, setIndex] = useState(0);
     const childrenArray = useMemo(() => React.Children.toArray(children), [children]);
 

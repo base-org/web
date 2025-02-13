@@ -43,7 +43,10 @@ export default function AgentKit() {
               AgentKit
             </Title>
           </div>
-          <Title level={TitleLevel.Display3} className="font-bold">
+          <Title level={TitleLevel.Display3} className="font-bold max-sm:hidden">
+            Your AI agent deserves a crypto wallet
+          </Title>
+          <Title level={TitleLevel.Title1} className="font-bold sm:hidden">
             Your AI agent deserves a crypto wallet
           </Title>
           <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted sm:text-center">
@@ -51,7 +54,7 @@ export default function AgentKit() {
             and a set of comprehensive onchain interactions.
           </Title>
 
-          <div className="flex gap-4 pt-5 max-sm:max-w-[240px]  max-sm:flex-col">
+          <div className="flex gap-4 pb-24 pt-5  max-sm:max-w-[240px] max-sm:flex-col">
             <Button
               variant={ButtonVariants.Secondary}
               iconName="copy"
@@ -71,9 +74,9 @@ export default function AgentKit() {
               Documentation
             </ButtonWithLinkAndEventLogging>
           </div>
+          <Demo />
         </div>
 
-        <Demo />
         <InfoCards />
         <OnchainActions />
         <Frameworks />

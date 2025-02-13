@@ -21,7 +21,7 @@ const INFO_CARDS: CardProps[] = [
     ),
     title: 'No coding required',
     description: (
-      <Title className="text-dark-palette-foregroundMuted" level={TitleLevel.Title4}>
+      <Title className="pt-2 text-dark-palette-foregroundMuted" level={TitleLevel.Title4}>
         Use our{' '}
         <Link target="_blank" href={AGENTKIT_DOCS_LINK} className="text-dark-palette-foreground">
           videos and templates
