@@ -31,14 +31,20 @@ export default async function Appchains() {
               Base Appchains
             </Title>
           </div>
-          <Title level={TitleLevel.Display3} className="font-bold">
+          <Title
+            level={TitleLevel.Display3}
+            className="max-w-lg font-bold max-sm:hidden sm:text-center"
+          >
+            Deploy your chain on Base with zero code
+          </Title>
+          <Title level={TitleLevel.Title1} className="font-bold sm:hidden">
             Deploy your chain on Base with zero code.
           </Title>
           <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted sm:text-center">
             Fast, cheaper transactions at scale—built on Base, in minutes.
           </Title>
 
-          <div className="flex gap-6 pt-5 max-sm:flex-col">
+          <div className="flex gap-4 pt-5 max-sm:flex-col">
             <ButtonWithLinkAndEventLogging
               href={CDP_APPCHAIN_URL}
               iconName="arrowRight"
