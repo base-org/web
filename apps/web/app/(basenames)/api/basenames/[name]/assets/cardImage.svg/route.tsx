@@ -1,5 +1,4 @@
 import satori from 'satori';
-import { NextRequest } from 'next/server';
 import {
   getBasenameImage,
   getChainForBasename,
@@ -14,34 +13,27 @@ import { getIpfsGatewayUrl, IpfsUrl, IsValidIpfsUrl } from 'apps/web/src/utils/u
 import { logger } from 'apps/web/src/utils/logger';
 import { Basename } from '@coinbase/onchainkit/identity';
 import { getCloudinaryMediaUrl } from 'apps/web/src/utils/images';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 
 const emojiCache: Record<string, Promise<string>> = {};
 
-export async function loadEmoji(emojiString: string) {
+async function loadEmoji(emojiString: string) {
   const code = twemoji.convert.toCodePoint(emojiString);
 
   if (code in emojiCache) {
     return emojiCache[code];
   }
 
-  // TODO: Is this okay? Vercel's OG image already does these calls
   const url = `https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/${code.toLowerCase()}.svg`;
-
   return (emojiCache[code] = fetch(url).then(async (r) => r.text()));
 }
 
-export const config = {
-  runtime: 'edge',
-};
-
-export default async function handler(request: NextRequest) {
-  const fontData = await fetch(
-    new URL('../../../../../src/fonts/CoinbaseDisplay-Regular.ttf', import.meta.url),
-  ).then(async (res) => res.arrayBuffer());
-
+export async function GET(request: Request, { params }: { params: { name: string } }) {
   const url = new URL(request.url);
+  const fontData = await readFile(join(process.cwd(), 'src/fonts/CoinbaseDisplay-Regular.ttf'));
 
-  const username = url.searchParams.get('name') ?? 'yourname';
+  const username = params.name;
   const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
   const profilePicture = getBasenameImage(username);
   const chain = getChainForBasename(username as Basename);
@@ -56,24 +48,21 @@ export default async function handler(request: NextRequest) {
     });
 
     if (avatar) {
-      // IPFS Resolution
-      if (avatar && IsValidIpfsUrl(avatar)) {
+      if (IsValidIpfsUrl(avatar)) {
         const ipfsUrl = getIpfsGatewayUrl(avatar as IpfsUrl);
         if (ipfsUrl) {
           imageSource = ipfsUrl;
         }
-      } else if (avatar) {
+      } else {
         imageSource = avatar;
       }
 
-      // Cloudinary resize / fetch
       imageSource = getCloudinaryMediaUrl({ media: imageSource, format: 'png', width: 120 });
     }
   } catch (error) {
     logger.error('Error fetching basename Avatar:', error);
   }
 
-  // Using Satori for an SVG response
   const svg = await satori(
     <div
       style={{
@@ -136,7 +125,6 @@ export default async function handler(request: NextRequest) {
         if (code === 'emoji') {
           return `data:image/svg+xml;base64,${btoa(await loadEmoji(segment))}`;
         }
-
         return code;
       },
     },
