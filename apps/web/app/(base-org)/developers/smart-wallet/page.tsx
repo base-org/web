@@ -3,14 +3,14 @@ import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
-import { InfoCards } from 'apps/web/src/components/Developers/BaseWallet/InfoCards';
-import { Transactions } from 'apps/web/src/components/Developers/BaseWallet/Transactions';
-import { Customers } from 'apps/web/src/components/Developers/BaseWallet/Customers';
-import wallet from 'apps/web/src/components/Developers/BaseWallet/svg/wallet.svg';
-import headerImage from 'apps/web/src/components/Developers/BaseWallet/header.png';
+import { InfoCards } from 'apps/web/src/components/Developers/SmartWallet/InfoCards';
+import { Transactions } from 'apps/web/src/components/Developers/SmartWallet/Transactions';
+import { Customers } from 'apps/web/src/components/Developers/SmartWallet/Customers';
+import wallet from 'apps/web/src/components/Developers/SmartWallet/svg/wallet.svg';
+import headerImage from 'apps/web/src/components/Developers/SmartWallet/header.png';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
 import Image, { StaticImageData } from 'next/image';
-import { Demo } from 'apps/web/src/components/Developers/BaseWallet/Demo';
+import { Demo } from 'apps/web/src/components/Developers/SmartWallet/Demo';
 
 export default async function BaseWallet() {
   return (
@@ -55,12 +55,7 @@ export default async function BaseWallet() {
         </div>
 
         <InfoCards />
-        <Title level={TitleLevel.Display3} className="semibold max-sm:hidden">
-          Onchain transactions without distractions
-        </Title>
-        <Title level={TitleLevel.Title3} className="semibold sm:hidden">
-          Onchain transactions without distractions
-        </Title>
+
         <Transactions />
         <Customers />
         <Demo />
@@ -68,7 +63,7 @@ export default async function BaseWallet() {
         <CtaBanner
           title="Update your wallet provider of choice to bring Smart Wallets to your app today. "
           cta={
-            <div className="flex gap-2 max-sm:flex-col">
+            <div className="flex gap-4 max-sm:flex-col">
               <ButtonWithLinkAndEventLogging
                 variant={ButtonVariants.Secondary}
                 iconName="fork"

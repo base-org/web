@@ -1,8 +1,8 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import sun from 'apps/web/src/components/Developers/BaseWallet/svg/sun.svg';
-import moon from 'apps/web/src/components/Developers/BaseWallet/svg/moon.svg';
+import sun from 'apps/web/src/components/Developers/SmartWallet/svg/sun.svg';
+import moon from 'apps/web/src/components/Developers/SmartWallet/svg/moon.svg';
 import Image, { StaticImageData } from 'next/image';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Title from 'apps/web/src/components/base-org/typography/Title';
@@ -103,10 +103,10 @@ export function Demo() {
     <section className="w-full">
       <style>{styles}</style>
       <div className="mb-9 flex flex-row gap-2">
-        <Title level={TitleLevel.Title1} className="max-sm:hidden">
+        <Title level={TitleLevel.Title1} className="font-bold max-sm:hidden">
           Onboard millions of users with one simple SDK.
         </Title>
-        <Title level={TitleLevel.Title3} className="sm:hidden">
+        <Title level={TitleLevel.Title3} className="font-bold sm:hidden">
           Onboard millions of users with one simple SDK.
         </Title>
       </div>
