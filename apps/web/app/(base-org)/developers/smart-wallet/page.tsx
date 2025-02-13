@@ -61,16 +61,16 @@ export default async function BaseWallet() {
         <Demo />
 
         <CtaBanner
-          title="Update your wallet provider of choice to bring Smart Wallets to your app today. "
+          title="Update your wallet provider of choice to bring Smart Wallets to your app today "
           cta={
-            <div className="flex gap-4 max-sm:flex-col">
+            <div className="flex w-full gap-4 max-sm:flex-col max-sm:items-center">
               <ButtonWithLinkAndEventLogging
                 variant={ButtonVariants.Secondary}
                 iconName="fork"
                 href=""
                 target="_blank"
                 eventName="wallet-fork-template"
-                buttonClassNames="rounded-xl"
+                buttonClassNames="rounded-xl "
               >
                 Fork a template
               </ButtonWithLinkAndEventLogging>
@@ -80,7 +80,7 @@ export default async function BaseWallet() {
                 target="_blank"
                 variant={ButtonVariants.Outlined}
                 eventName="wallet-docs"
-                buttonClassNames="rounded-xl"
+                buttonClassNames="rounded-xl max-sm:w-full"
               >
                 Documentation
               </ButtonWithLinkAndEventLogging>

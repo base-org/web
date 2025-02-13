@@ -17,11 +17,8 @@ import Image, { StaticImageData } from 'next/image';
 export function Customers() {
   return (
     <div className="flex w-full flex-col gap-8 tracking-tight">
-      <Title level={TitleLevel.Title1} className="font-bold max-sm:hidden">
-        Powering the best onchain experiences.
-      </Title>
-      <Title level={TitleLevel.Title3} className="font-bold sm:hidden">
-        Powering the best onchain experiences.
+      <Title level={TitleLevel.Title1} className="font-bold">
+        Powering the best onchain experiences
       </Title>
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
         <Marquee className="gap-8 [--duration:20s]" pauseOnHover>

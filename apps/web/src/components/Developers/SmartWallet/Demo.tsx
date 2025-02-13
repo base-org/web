@@ -103,11 +103,8 @@ export function Demo() {
     <section className="w-full">
       <style>{styles}</style>
       <div className="mb-9 flex flex-row gap-2">
-        <Title level={TitleLevel.Title1} className="font-bold max-sm:hidden">
-          Onboard millions of users with one simple SDK.
-        </Title>
-        <Title level={TitleLevel.Title3} className="font-bold sm:hidden">
-          Onboard millions of users with one simple SDK.
+        <Title level={TitleLevel.Title1} className="font-bold">
+          Onboard millions of users with one simple SDK
         </Title>
       </div>
       <div
