@@ -30,3 +30,14 @@ function TransactDefaultDemo() {
 }
   `,
 };
+
+export const ONCHAINKIT_DEMO_TABS = [
+  'Wallet',
+  'Earn',
+  'Fund',
+  'Pay',
+  'Buy',
+  'Checkout',
+  'Mint',
+  'Transact',
+];
