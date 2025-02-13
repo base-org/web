@@ -113,7 +113,7 @@ const contentSecurityPolicy = {
     'https://*.datadoghq.com', //datadog
     'https://translate.googleapis.com', // Let user translate our website
     'https://sdk-api.neynar.com/', // Neynar API
-    'https://unpkg.com/@lottiefiles/dotlottie-web@0.31.1/dist/dotlottie-player.wasm', // lottie player
+    'https://unpkg.com/@lottiefiles/dotlottie-web', // lottie player
     `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
     'https://usdc-claim-git-master-coinbase-vercel.vercel.app',
     'https://eth.merkle.io', // new default viem rpc
