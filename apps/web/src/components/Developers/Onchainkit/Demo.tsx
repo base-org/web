@@ -14,9 +14,11 @@ import CodeSnippet from 'apps/web/src/components/Developers/Shared/CodeSnippet';
 import { CheckoutButton } from '@coinbase/onchainkit/checkout';
 import { Checkout } from '@coinbase/onchainkit/checkout';
 import { TransactionDefault } from '@coinbase/onchainkit/transaction';
-import { COMPONENT_CODE_SNIPPETS } from 'apps/web/src/components/Developers/Onchainkit/constants';
-
-const TABS = ['Wallet', 'Earn', 'Fund', 'Pay', 'Buy', 'Checkout', 'Mint', 'Transact'];
+import {
+  COMPONENT_CODE_SNIPPETS,
+  ONCHAINKIT_DEMO_TABS,
+} from 'apps/web/src/components/Developers/Onchainkit/constants';
+import { ComponentDropdown } from 'apps/web/src/components/Developers/Onchainkit/ComponentDropdown';
 
 const styles = `
   .code-snippet::-webkit-scrollbar {
@@ -61,7 +63,7 @@ export function Demo() {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [isMounted, setIsMounted] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [selectedTab, setSelectedTab] = useState(TABS[0]);
+  const [selectedTab, setSelectedTab] = useState(ONCHAINKIT_DEMO_TABS[0]);
 
   const handleClick = useCallback((header: string) => {
     return () => setSelectedTab(header);
@@ -126,7 +128,7 @@ export function Demo() {
       </div>
       <div
         className={classNames(
-          'rounded-xl border transition-colors',
+          'relative rounded-xl border transition-colors',
           theme === 'dark'
             ? 'border-dark-palette-line/50 bg-black'
             : 'border-dark-palette-line/50 bg-white',
@@ -137,8 +139,8 @@ export function Demo() {
             theme === 'dark' ? 'border-dark-palette-line/50' : 'border-dark-palette-line/50'
           }`}
         >
-          <div className="flex gap-12">
-            {TABS.map((header) => {
+          <div className="hidden gap-12 sm:flex">
+            {ONCHAINKIT_DEMO_TABS.map((header) => {
               const isSelected = selectedTab === header;
               return (
                 <button
@@ -152,6 +154,7 @@ export function Demo() {
               );
             })}
           </div>
+          <ComponentDropdown activeTab={selectedTab} setActiveTab={setSelectedTab} theme={theme} />
           <div className="flex items-center space-x-2">
             <button
               type="button"
