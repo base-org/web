@@ -19,6 +19,9 @@ export function Testmonials() {
           <TweetCard key={tweet.username} {...tweet} />
         ))}
       </Marquee>
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-4 bg-gradient-to-r from-black to-transparent"></div>
+
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-4 bg-gradient-to-l from-black to-transparent"></div>
     </div>
   );
 }
