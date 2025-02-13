@@ -5,8 +5,6 @@ import sun from 'apps/web/src/components/Developers/Shared/sun.svg';
 import moon from 'apps/web/src/components/Developers/Shared/moon.svg';
 import Image, { StaticImageData } from 'next/image';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import Title from 'apps/web/src/components/base-org/typography/Title';
-import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import classNames from 'classnames';
 import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
 import { WalletDefault } from '@coinbase/onchainkit/wallet';
@@ -118,14 +116,6 @@ export function Demo() {
   return (
     <section className="w-full">
       <style>{styles}</style>
-      <div className="mb-9 flex flex-row gap-2">
-        <Title level={TitleLevel.Title1} className="max-sm:hidden">
-          Onboard millions of users with one simple SDK.
-        </Title>
-        <Title level={TitleLevel.Title3} className="sm:hidden">
-          Onboard millions of users with one simple SDK.
-        </Title>
-      </div>
       <div
         className={classNames(
           'relative rounded-xl border transition-colors',
@@ -142,9 +132,17 @@ export function Demo() {
           <div className="hidden gap-12 sm:flex">
             {ONCHAINKIT_DEMO_TABS.map((header) => {
               const isSelected = selectedTab === header;
+              let buttonClass;
+              if (isSelected && theme === 'dark') {
+                buttonClass = 'text-white';
+              } else if (isSelected) {
+                buttonClass = 'text-black';
+              } else {
+                buttonClass = 'text-dark-palette-foregroundMuted';
+              }
               return (
                 <button
-                  className={isSelected ? 'text-white' : 'text-dark-palette-foregroundMuted'}
+                  className={buttonClass}
                   key={header}
                   onClick={handleClick(header)}
                   type="button"
