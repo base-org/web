@@ -1,5 +1,4 @@
 import satori from 'satori';
-import { NextRequest } from 'next/server';
 import {
   getBasenameImage,
   getChainForBasename,
