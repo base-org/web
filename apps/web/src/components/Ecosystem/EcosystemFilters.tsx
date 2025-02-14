@@ -70,6 +70,21 @@ export function EcosystemFilters({
             >
               {category}
             </button>
+          ) : category === 'ai' ? (
+            <button
+              type="button"
+              key={category}
+              onClick={() => handleCategorySelect('ai')}
+              className={classNames(
+                'h-10 whitespace-nowrap rounded-full border border-white/20 px-4 uppercase tracking-wider transition-colors',
+                {
+                  'bg-white text-black': categoryIsSelected,
+                  'text-white/50 hover:bg-white/20 hover:text-white': !categoryIsSelected,
+                },
+              )}
+            >
+              {category}
+            </button>
           ) : (
             <Popover.Root key={category}>
               <div className="flex h-10 items-stretch">
