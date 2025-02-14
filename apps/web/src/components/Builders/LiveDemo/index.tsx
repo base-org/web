@@ -1,5 +1,8 @@
 'use client';
 
+import { Earn } from '@coinbase/onchainkit/earn';
+import { WalletAdvancedDefault } from '@coinbase/onchainkit/wallet';
+import { Buy } from '@coinbase/onchainkit/buy';
 import { Checkout, CheckoutButton } from '@coinbase/onchainkit/checkout';
 import { SwapDefault } from '@coinbase/onchainkit/swap';
 import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useState } from 'react';
@@ -21,28 +24,28 @@ const DynamicCodeSnippet = dynamic<{ code: string }>(async () => import('./CodeS
 
 type Tab = 'onboard' | 'onramp' | 'pay' | 'swap' | 'earn';
 
-const degenToken: Token[] = [
-  {
-    name: 'DEGEN',
-    address: '0x4ed4e862860bed51a9570b96d89af5e1b0efefed',
-    symbol: 'DEGEN',
-    decimals: 18,
-    image:
-      'https://d3r81g40ycuhqg.cloudfront.net/wallet/wais/3b/bf/3bbf118b5e6dc2f9e7fc607a6e7526647b4ba8f0bea87125f971446d57b296d2-MDNmNjY0MmEtNGFiZi00N2I0LWIwMTItMDUyMzg2ZDZhMWNm',
-    chainId: 8453,
-  },
-];
+const degenToken: Token = {
+  name: 'DEGEN',
+  address: '0x4ed4e862860bed51a9570b96d89af5e1b0efefed',
+  symbol: 'DEGEN',
+  decimals: 18,
+  image:
+    'https://d3r81g40ycuhqg.cloudfront.net/wallet/wais/3b/bf/3bbf118b5e6dc2f9e7fc607a6e7526647b4ba8f0bea87125f971446d57b296d2-MDNmNjY0MmEtNGFiZi00N2I0LWIwMTItMDUyMzg2ZDZhMWNm',
+  chainId: 8453,
+};
 
-const ethToken: Token[] = [
-  {
-    name: 'ETH',
-    address: '',
-    symbol: 'ETH',
-    decimals: 18,
-    image: 'https://wallet-api-production.s3.amazonaws.com/uploads/tokens/eth_288.png',
-    chainId: 8453,
-  },
-];
+const ethToken: Token = {
+  name: 'ETH',
+  address: '',
+  symbol: 'ETH',
+  decimals: 18,
+  image: 'https://wallet-api-production.s3.amazonaws.com/uploads/tokens/eth_288.png',
+  chainId: 8453,
+};
+
+const swappableTokens: Token[] = [degenToken, ethToken];
+
+const earnVaultAddress = '0x7BfA7C4f149E7415b73bdeDfe609237e29CBF34A';
 
 const styles = `
   .code-snippet::-webkit-scrollbar {
@@ -157,7 +160,9 @@ function SwapDemo() {
   earn: `import { Earn } from '@coinbase/onchainkit/earn';
 
 function EarnDemo() {
-  return <Earn />;
+  return (
+    <Earn vaultAddress="0x7BfA7C4f149E7415b73bdeDfe609237e29CBF34A" />
+  );
 }`,
 };
 
@@ -187,9 +192,9 @@ export function LiveDemo() {
 
     switch (activeTab) {
       case 'onboard':
-        return <div>Wallet Advanced Default</div>;
+        return <WalletAdvancedDefault />;
       case 'onramp':
-        return <div>Buy</div>;
+        return <Buy toToken={degenToken} />;
       case 'pay':
         return (
           <Checkout productId="my-product-id">
@@ -197,9 +202,9 @@ export function LiveDemo() {
           </Checkout>
         );
       case 'swap':
-        return <SwapDefault to={degenToken} from={ethToken} className="w-full" />;
+        return <SwapDefault to={swappableTokens} from={swappableTokens} className="w-full" />;
       case 'earn':
-        return <div>Earn yield</div>;
+        return <Earn vaultAddress={earnVaultAddress} />;
       default:
         return null;
     }
