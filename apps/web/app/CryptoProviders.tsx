@@ -53,15 +53,15 @@ const queryClient = new QueryClient();
 
 type CryptoProvidersProps = {
   children: React.ReactNode;
+  theme?: 'light' | 'dark';
 };
 
-const onchainKitConfig: AppConfig = {
-  appearance: {
-    mode: 'light',
-  },
-};
-
-export default function CryptoProviders({ children }: CryptoProvidersProps) {
+export default function CryptoProviders({ children, theme = 'light' }: CryptoProvidersProps) {
+  const onchainKitConfig: AppConfig = {
+    appearance: {
+      mode: theme,
+    },
+  };
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
