@@ -121,10 +121,15 @@ export function Demo() {
       );
     }
     if (selectedTab === 'Earn') {
-      return <Earn vaultAddress="0x7BfA7C4f149E7415b73bdeDfe609237e29CBF34A" />;
+      return (
+        <Earn
+          vaultAddress="0x7BfA7C4f149E7415b73bdeDfe609237e29CBF34A"
+          className="color-[#f9fafb]"
+        />
+      );
     }
     if (selectedTab === 'Buy') {
-      return <Buy toToken={usdcToken} disabled={true} />;
+      return <Buy toToken={usdcToken} disabled />;
     }
     if (selectedTab === 'Mint') {
       return (
