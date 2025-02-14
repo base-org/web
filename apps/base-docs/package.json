@@ -11,7 +11,7 @@
     "clean-frontmatter": "node --loader ts-node/esm scripts/clean-frontmatter.ts"
   },
   "dependencies": {
-    "@coinbase/onchainkit": "^0.35.8",
+    "@coinbase/onchainkit": "^0.37.0",
     "@googleapis/sheets": "^5.0.5",
     "@types/react": "latest",
     "@vercel/node": "^3.0.17",

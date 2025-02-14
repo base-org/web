@@ -33,7 +33,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@app/base-docs@workspace:."
   dependencies:
-    "@coinbase/onchainkit": ^0.35.8
+    "@coinbase/onchainkit": ^0.37.0
     "@googleapis/sheets": ^5.0.5
     "@types/react": latest
     "@vercel/node": ^3.0.17
@@ -299,23 +299,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@coinbase/onchainkit@npm:^0.35.8":
-  version: 0.35.8
-  resolution: "@coinbase/onchainkit@npm:0.35.8"
+"@coinbase/onchainkit@npm:^0.37.0":
+  version: 0.37.0
+  resolution: "@coinbase/onchainkit@npm:0.37.0"
   dependencies:
     "@tanstack/react-query": ^5
     clsx: ^2.1.1
     graphql: ^14 || ^15 || ^16
     graphql-request: ^6.1.0
+    qrcode: ^1.5.4
     tailwind-merge: ^2.3.0
-    viem: ^2.21.33
-    wagmi: ^2.12.24
+    tailwindcss-animate: ^1.0.7
+    viem: ^2.23.0
+    wagmi: ^2.14.11
   peerDependencies:
-    "@types/react": ^18
-    "@xmtp/frames-validator": ^0.6.0
-    react: ^18
-    react-dom: ^18
-  checksum: 56c5d4b5461abf78132878e7ea4b21c7d6d1c7cecfe96e881b28a273b247e75a1d4adb7070a9696cda0b26b0947a88bafa4a4fa70a7bfa6f57220ada04c473fb
+    "@types/react": ^18 || ^19
+    react: ^18 || ^19
+    react-dom: ^18 || ^19
+  checksum: 140f0abae55e937eb84658f43aae55c08f5f2ac93e429b6835a826a21fed92483adc83dd629b8c031ef8a36b12a0fbaa1bc1575b50df5d3c317f19e4b8226bf1
   languageName: node
   linkType: hard
 
@@ -9262,6 +9263,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"qrcode@npm:^1.5.4":
+  version: 1.5.4
+  resolution: "qrcode@npm:1.5.4"
+  dependencies:
+    dijkstrajs: ^1.0.1
+    pngjs: ^5.0.0
+    yargs: ^15.3.1
+  bin:
+    qrcode: bin/qrcode
+  checksum: 0a162822e12c02b0333315462fd4ccad22255002130f86806773be7592aec5ef295efaffa3eb148cbf00e290839c7b610f63b0d62a0c5efc5bc52a68f4189684
+  languageName: node
+  linkType: hard
+
 "qs@npm:^6.7.0":
   version: 6.14.0
   resolution: "qs@npm:6.14.0"
@@ -10561,6 +10575,15 @@ react@latest:
   languageName: node
   linkType: hard
 
+"tailwindcss-animate@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "tailwindcss-animate@npm:1.0.7"
+  peerDependencies:
+    tailwindcss: "*"
+  checksum: c1760983eb3fec0c8421e95082bf308e6845df43e2f90862386366e82545c801b26b4d189c4cd23d6915252b76d18005c8e5f591f8b119944c7fb8650d0f8bce
+  languageName: node
+  linkType: hard
+
 "tailwindcss@npm:^3.4.13, tailwindcss@npm:^3.4.14":
   version: 3.4.17
   resolution: "tailwindcss@npm:3.4.17"
@@ -11369,7 +11392,7 @@ typescript@latest:
   languageName: node
   linkType: hard
 
-"viem@npm:^2.1.1, viem@npm:^2.21.33":
+"viem@npm:^2.1.1, viem@npm:^2.23.0":
   version: 2.23.2
   resolution: "viem@npm:2.23.2"
   dependencies:
@@ -11535,7 +11558,7 @@ vocs@latest:
   languageName: node
   linkType: hard
 
-"wagmi@npm:^2.12.24":
+"wagmi@npm:^2.14.11":
   version: 2.14.11
   resolution: "wagmi@npm:2.14.11"
   dependencies:
