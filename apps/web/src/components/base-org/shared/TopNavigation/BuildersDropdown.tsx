@@ -3,7 +3,6 @@ import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import agentKit from 'apps/web/src/components/Builders/Tools/assets/agentKit.svg';
-import baseNet from 'apps/web/src/components/Builders/Tools/assets/appchains.svg';
 import miniKit from 'apps/web/src/components/Builders/Tools/assets/miniKit.svg';
 import baseWallet from 'apps/web/src/components/Builders/Tools/assets/smartWallet.svg';
 import onchainKit from 'apps/web/src/components/Builders/Tools/assets/onchainKit.svg';
@@ -66,12 +65,6 @@ export function BuildersDropdown() {
                 description="Launch your AI Agent"
                 icon={agentKit as StaticImageData}
                 href="https://docs.cdp.coinbase.com/agentkit/docs/welcome"
-              />
-              <ToolMiniCard
-                title="Base Nets"
-                description="Cheap transactions at scale"
-                icon={baseNet as StaticImageData}
-                href="/coming-soon"
               />
               <ToolMiniCard
                 title="MiniKit"

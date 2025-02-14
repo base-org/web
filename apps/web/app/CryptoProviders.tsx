@@ -73,6 +73,8 @@ export default function CryptoProviders({
     [mode, theme],
   );
 
+  console.log({ config, onchainKitConfig });
+
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>

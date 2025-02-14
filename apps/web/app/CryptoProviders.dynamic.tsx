@@ -9,22 +9,28 @@ export function DynamicCryptoProviders({
   mode = 'light',
   theme = 'default',
 }: CryptoProvidersProps) {
-  const [CryptoProvidersDynamic, setCryptoProvidersDynamic] = useState<
-    React.ComponentType<{
-      children: React.ReactNode;
-      mode?: 'light' | 'dark';
-      theme?: 'default' | 'base' | 'cyberpunk' | 'hacker';
-    }>
-  >();
+  const [CryptoProvidersDynamic, setCryptoProvidersDynamic] =
+    useState<React.ComponentType<CryptoProvidersProps>>();
   const { logError } = useErrors();
 
+  console.log('getting error logger', {logError})
+
+  console.log('loading CryptoProvidersDynamic');
+
   useEffect(() => {
+    console.log('loading CryptoProviders');
     import('apps/web/app/CryptoProviders')
       .then((mod) => {
+        console.log('were here')
         setCryptoProvidersDynamic(() => mod.default);
       })
-      .catch((error) => logError(error, 'Failed to load CryptoProviders'));
+      .catch((error) => {
+        console.error('Failed to load CryptoProviders', error);
+        logError(error, 'Failed to load CryptoProviders')
+      });
   }, [logError]);
+
+  console.log({ CryptoProvidersDynamic });
 
   if (!CryptoProvidersDynamic) return null;
 

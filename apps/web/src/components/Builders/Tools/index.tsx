@@ -3,7 +3,6 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import Image, { type StaticImageData } from 'next/image';
 import Link from 'next/link';
 import agentKit from 'apps/web/src/components/Builders/Tools/assets/agentKit.svg';
-import appchains from 'apps/web/src/components/Builders/Tools/assets/appchains.svg';
 import miniKit from 'apps/web/src/components/Builders/Tools/assets/miniKit.svg';
 import smartWallet from 'apps/web/src/components/Builders/Tools/assets/smartWallet.svg';
 import onchainKit from 'apps/web/src/components/Builders/Tools/assets/onchainKit.svg';
@@ -31,12 +30,6 @@ export function Tools() {
           description="Build and deploy AI agents that can interact with blockchain data and smart contracts."
           icon={agentKit as StaticImageData}
           href="https://docs.cdp.coinbase.com/agentkit/docs/welcome"
-        />
-        <ToolCard
-          title="Base Nets"
-          description="Unlock fast and cheap transactions at scale with dedicated blockspace."
-          icon={appchains as StaticImageData}
-          href="/coming-soon"
         />
         <ToolCard
           title="MiniKit"
