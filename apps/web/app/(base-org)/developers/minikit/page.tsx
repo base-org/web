@@ -7,7 +7,6 @@ import { HeaderAnimation } from 'apps/web/src/components/Developers/MiniKit/Head
 import { InfoCards } from 'apps/web/src/components/Developers/MiniKit/InfoCards';
 import minikit from 'apps/web/src/components/Developers/MiniKit/minikit.svg';
 import { SupportedPlatforms } from 'apps/web/src/components/Developers/MiniKit/SupportedPlatforms';
-import { Testimonials } from 'apps/web/src/components/Developers/MiniKit/Testimonials';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
 import Image, { StaticImageData } from 'next/image';
 
@@ -32,7 +31,10 @@ export default async function AgentKit() {
                 MiniKit
               </Title>
             </div>
-            <Title level={TitleLevel.Display3} className="font-bold">
+            <Title level={TitleLevel.Display3} className="font-bold max-sm:hidden">
+              All-you-need to build and grow your mini app.
+            </Title>
+            <Title level={TitleLevel.Title1} className="font-bold sm:hidden">
               All-you-need to build and grow your mini app.
             </Title>
             <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted">
@@ -57,7 +59,6 @@ export default async function AgentKit() {
 
         <InfoCards />
         <SupportedPlatforms />
-        <Testimonials />
         <CtaBanner
           title="Grow your app today."
           description="Start building with a starter template or see documentation."

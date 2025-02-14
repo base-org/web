@@ -70,7 +70,7 @@ const TESTIMONIALS = [
 
 export function Testimonials() {
   return (
-    <div className="flex w-full flex-col gap-8">
+    <div className="flex w-full flex-col gap-10">
       <div>
         <Title level={TitleLevel.Title1}>Mini apps built with MiniKit.</Title>
       </div>

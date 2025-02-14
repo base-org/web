@@ -29,7 +29,9 @@ function SupportedPlatformCard({
       <Image src={image} alt="Template background" layout="fill" objectFit="cover" />
       <div className="z-10 flex items-center gap-2 text-white">
         {logo}
-        <Title level={TitleLevel.Title4}>{title}</Title>
+        <Title level={TitleLevel.Title4} className="font-bold">
+          {title}
+        </Title>
       </div>
 
       <div className="z-10 flex flex-col">
@@ -42,7 +44,7 @@ function SupportedPlatformCard({
 
 export function SupportedPlatforms() {
   return (
-    <div className="flex w-full flex-col gap-8">
+    <div className="flex w-full flex-col gap-10">
       <div>
         <Title level={TitleLevel.Title1}>
           Supported platforms.{' '}
