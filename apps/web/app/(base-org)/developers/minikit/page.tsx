@@ -8,6 +8,7 @@ import { InfoCards } from 'apps/web/src/components/Developers/MiniKit/InfoCards'
 import minikit from 'apps/web/src/components/Developers/MiniKit/minikit.svg';
 import { SupportedPlatforms } from 'apps/web/src/components/Developers/MiniKit/SupportedPlatforms';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image, { StaticImageData } from 'next/image';
 
 const GET_STARTED_URL = 'https://replit.com/@tina-he/ock-frames-template?v=1#README.md';
@@ -43,13 +44,17 @@ export default async function AgentKit() {
             <div className="flex gap-6 pt-5">
               <ButtonWithLinkAndEventLogging
                 variant={ButtonVariants.Secondary}
-                iconName="arrowRight"
-                buttonClassNames="rounded-xl"
+                buttonClassNames="flex items-center justify-between px-4 py-3 group"
                 href={GET_STARTED_URL}
                 target="_blank"
                 eventName="minikit-get-started"
               >
-                Get started
+                <div className="flex items-center gap-4">
+                  <span>Get started</span>
+                  <div className="transition-transform duration-200 group-hover:translate-x-1">
+                    <Icon name="arrowRight" width={16} height={16} color="black" />
+                  </div>
+                </div>
               </ButtonWithLinkAndEventLogging>
             </div>
           </div>
@@ -65,13 +70,17 @@ export default async function AgentKit() {
           cta={
             <ButtonWithLinkAndEventLogging
               variant={ButtonVariants.Secondary}
-              iconName="arrowRight"
-              buttonClassNames="rounded-xl"
+              buttonClassNames="flex items-center justify-between px-4 py-3 group"
               href={GET_STARTED_URL}
               target="_blank"
               eventName="minikit-get-started"
             >
-              Get started
+              <div className="flex items-center gap-4">
+                <span>Get started</span>
+                <div className="transition-transform duration-200 group-hover:translate-x-1">
+                  <Icon name="arrowRight" width={16} height={16} color="black" />
+                </div>
+              </div>
             </ButtonWithLinkAndEventLogging>
           }
         />
