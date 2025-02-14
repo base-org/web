@@ -1,12 +1,12 @@
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { UseCaseBlock } from 'apps/web/src/components/Builders/Landing/UseCases/UseCaseBlock';
-import { AnimatedOnboarding } from 'apps/web/src/components/Builders/Landing/UseCases/assets/Onboarding';
-import { AnimatedPayment } from 'apps/web/src/components/Builders/Landing/UseCases/assets/Payments';
-import { AnimatedBaseAgent } from 'apps/web/src/components/Builders/Landing/UseCases/assets/BaseAgent';
-import { AnimatedSocial } from 'apps/web/src/components/Builders/Landing/UseCases/assets/Social';
-import { AnimatedDefi } from 'apps/web/src/components/Builders/Landing/UseCases/assets/Defi';
-import { AnimatedGasless } from 'apps/web/src/components/Builders/Landing/UseCases/assets/Gasless';
+import { AnimatedOnboarding } from 'apps/web/src/components/Builders/Shared/assets/UseCases/Onboarding';
+import { AnimatedPayment } from 'apps/web/src/components/Builders/Shared/assets/UseCases/Payments';
+import { AnimatedBaseAgent } from 'apps/web/src/components/Builders/Shared/assets/UseCases/BaseAgent';
+import { AnimatedSocial } from 'apps/web/src/components/Builders/Shared/assets/UseCases/Social';
+import { AnimatedDefi } from 'apps/web/src/components/Builders/Shared/assets/UseCases/Defi';
+import { AnimatedGasless } from 'apps/web/src/components/Builders/Shared/assets/UseCases/Gasless';
 
 export function UseCases() {
   return (

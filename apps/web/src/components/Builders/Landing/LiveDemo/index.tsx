@@ -6,8 +6,8 @@ import { Buy } from '@coinbase/onchainkit/buy';
 import { Checkout, CheckoutButton } from '@coinbase/onchainkit/checkout';
 import { SwapDefault } from '@coinbase/onchainkit/swap';
 import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useState } from 'react';
-import sun from 'apps/web/src/components/Builders/Landing/LiveDemo/assets/sun.svg';
-import moon from 'apps/web/src/components/Builders/Landing/LiveDemo/assets/moon.svg';
+import sun from 'apps/web/src/components/Builders/Shared/assets/sun.svg';
+import moon from 'apps/web/src/components/Builders/Shared/assets/moon.svg';
 import Image, { StaticImageData } from 'next/image';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Title from 'apps/web/src/components/base-org/typography/Title';
@@ -16,13 +16,6 @@ import classNames from 'classnames';
 import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
 import type { Token } from '@coinbase/onchainkit/token';
 import { CodeSnippet } from 'apps/web/src/components/Builders/Shared/CodeSnippet';
-
-// import dynamic from 'next/dynamic';
-
-// const DynamicCodeSnippet = dynamic<{ code: string }>(async () => import('./CodeSnippet'), {
-//   ssr: false,
-//   loading: () => <div>Loading...</div>,
-// });
 
 type Tab = 'onboard' | 'onramp' | 'pay' | 'swap' | 'earn';
 
