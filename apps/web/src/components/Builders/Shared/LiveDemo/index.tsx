@@ -101,7 +101,7 @@ export function LiveDemo({ components }: LiveDemoProps) {
             country="US"
             currency="USD"
             presetAmountInputs={fundPresetAmountInputs}
-            className="w-[300px] md:w-[400px] max-w-full"
+            className="w-[300px] max-w-full md:w-[400px]"
           />
         );
       case 'Transact':

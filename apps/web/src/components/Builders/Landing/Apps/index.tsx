@@ -55,7 +55,7 @@ const customers: Customer[] = [
     logo: metacade,
   },
   {
-    href: 'https://proof-8.com/news/introducing-proof-8-new-name-same-spirit', // TO CONFIRM
+    href: 'https://proof-8.com/news/introducing-proof-8-new-name-same-spirit',
     logo: proofworks as StaticImageData,
   },
   {
@@ -75,7 +75,7 @@ const customers: Customer[] = [
     logo: cooprecords as StaticImageData,
   },
   {
-    href: '', // TO CONFIRM
+    href: 'https://x.com/frenpetonbase',
     logo: frenpet as StaticImageData,
   },
   {
