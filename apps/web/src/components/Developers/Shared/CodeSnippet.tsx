@@ -11,11 +11,11 @@ export default function CodeSnippet({ code }: { code: string }) {
 
         const highlighter = await createHighlighter({
           themes: ['github-light', 'github-dark'],
-          langs: ['typescript'],
+          langs: ['tsx'],
         });
 
         const formattedCode = highlighter.codeToHtml(code, {
-          lang: 'typescript',
+          lang: 'tsx',
           themes: {
             light: 'github-light',
             dark: 'github-dark',
