@@ -3,7 +3,6 @@
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import Image, { StaticImageData } from 'next/image';
-import 'apps/web/src/components/Builders/Landing/Customers/styles.css';
 
 import b3 from 'apps/web/src/components/Builders/Landing/Customers/assets/appchains/b3.svg';
 import blocklords from 'apps/web/src/components/Builders/Landing/Customers/assets/appchains/blocklords.svg';
@@ -30,6 +29,8 @@ import uniswap from 'apps/web/src/components/Builders/Landing/Customers/assets/s
 import virtual from 'apps/web/src/components/Builders/Landing/Customers/assets/smart-wallet/virtual.svg';
 import zora from 'apps/web/src/components/Builders/Landing/Customers/assets/smart-wallet/zora.svg';
 import Link from 'apps/web/src/components/Link';
+
+import { Marquee } from 'apps/web/src/components/Builders/Shared/Marquee';
 
 type Customer = {
   href: string;
@@ -136,8 +137,6 @@ const customers: Customer[] = [
 ];
 const LOGO_WIDTH = 200; // pixels
 const LOGO_GAP = 96; // pixels
-const TOTAL_LOGOS = customers.length * 2;
-const LOGO_CONTAINER_WIDTH = (LOGO_WIDTH + LOGO_GAP) * TOTAL_LOGOS;
 
 const logoStyle = {
   width: 'auto',
@@ -156,55 +155,23 @@ export function Customers() {
       <Title level={TitleLevel.Title3} className="mb-8 font-medium md:hidden">
         Powering the most consumer-friendly applications onchain.
       </Title>
-      <figure
-        className="relative flex h-16 items-center overflow-hidden"
-        style={{
-          maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-          WebkitMaskImage:
-            'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-        }}
-      >
-        <div
-          className="animate-scroll absolute left-0 flex h-full items-center"
-          style={{
-            gap: `${LOGO_GAP}px`,
-            width: `${LOGO_CONTAINER_WIDTH}px`,
-          }}
-        >
-          {/* First set of logos */}
-          {customers.map((customer) => (
-            <div
-              className={`max-w-[${LOGO_WIDTH}px] flex items-center`}
-              key={`first-${customer.href}`}
-            >
-              <Link href={customer.href} target="_blank">
-                <Image
-                  src={customer.logo}
-                  alt={String(customer.logo.src)}
-                  style={logoStyle}
-                  className="flex-none object-contain opacity-50 transition-opacity hover:opacity-100"
-                />
-              </Link>
-            </div>
-          ))}
-          {/* Duplicate set of logos for seamless loop */}
-          {customers.map((customer) => (
-            <div
-              className={`max-w-[${LOGO_WIDTH}px] flex items-center`}
-              key={`second-${customer.href}`}
-            >
-              <Link href={customer.href} target="_blank">
-                <Image
-                  src={customer.logo}
-                  alt={String(customer.logo.src)}
-                  style={logoStyle}
-                  className="flex-none object-contain opacity-50 transition-opacity hover:opacity-100"
-                />
-              </Link>
-            </div>
-          ))}
-        </div>
-      </figure>
+      <Marquee className="[--duration:60s]" childrenClassName={`!gap-[${LOGO_GAP}px]`}>
+        {customers.map((customer) => (
+          <div
+            className={`max-w-[${LOGO_WIDTH}px] flex items-center`}
+            key={`first-${customer.href}`}
+          >
+            <Link href={customer.href} target="_blank">
+              <Image
+                src={customer.logo}
+                alt={String(customer.logo.src)}
+                style={logoStyle}
+                className="flex-none object-contain opacity-50 transition-opacity hover:opacity-100"
+              />
+            </Link>
+          </div>
+        ))}
+      </Marquee>
     </section>
   );
 }
