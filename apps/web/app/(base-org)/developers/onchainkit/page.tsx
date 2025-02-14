@@ -14,6 +14,7 @@ import onchainkit from 'apps/web/src/components/Developers/Onchainkit/onchainkit
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { useCallback } from 'react';
 import { Demo } from 'apps/web/src/components/Developers/Onchainkit/Demo';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 const ONCHAINKIT_DOCS_LINK = 'https://onchainkit.xyz/';
 
@@ -54,19 +55,23 @@ export default function OnchainKit() {
               variant={ButtonVariants.Secondary}
               iconName="copy"
               onClick={handleCopy}
-              className="rounded-xl"
+              className="flex items-center justify-between px-4 py-3"
+              iconSize="16"
             >
               npm create onchain
             </Button>
             <ButtonWithLinkAndEventLogging
-              href={ONCHAINKIT_DOCS_LINK}
-              iconName="arrowRight"
-              target="_blank"
-              variant={ButtonVariants.Outlined}
-              eventName="onchainkit-docs"
-              buttonClassNames="rounded-xl max-sm:w-full"
+              variant={ButtonVariants.SecondaryOutline}
+              buttonClassNames="flex items-center justify-between px-4 py-3 group"
+              href=""
+              eventName="onchainkit-documentation-click"
             >
-              Documentation
+              <div className="flex items-center gap-4">
+                <span>Documentation</span>
+                <div className="transition-transform duration-200 group-hover:translate-x-1">
+                  <Icon name="arrowRight" width={16} height={16} color="white" />
+                </div>
+              </div>
             </ButtonWithLinkAndEventLogging>
           </div>
         </div>

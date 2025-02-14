@@ -246,7 +246,7 @@ export function Demo() {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div
               className={classNames(
-                'h-[300px] p-8 lg:h-[500px] lg:p-12',
+                'h-[300px] p-8 lg:h-[600px] lg:p-12',
                 'border-b lg:border-b-0 lg:border-r',
                 'flex items-center justify-center transition-colors',
                 'overflow-scroll',
