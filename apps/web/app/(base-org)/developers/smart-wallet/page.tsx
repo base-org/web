@@ -31,7 +31,10 @@ export default async function BaseWallet() {
                 Smart Wallet
               </Title>
             </div>
-            <Title level={TitleLevel.Display3} className="font-bold">
+            <Title level={TitleLevel.Display3} className="font-bold max-sm:hidden">
+              Connect to onchain users
+            </Title>
+            <Title level={TitleLevel.Title1} className="font-bold sm:hidden">
               Connect to onchain users
             </Title>
             <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted">
