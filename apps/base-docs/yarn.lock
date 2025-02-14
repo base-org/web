@@ -29,6 +29,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@app/base-docs@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@app/base-docs@workspace:."
+  dependencies:
+    "@coinbase/onchainkit": ^0.35.8
+    "@googleapis/sheets": ^5.0.5
+    "@types/react": latest
+    "@vercel/node": ^3.0.17
+    autoprefixer: ^10.4.20
+    chokidar: ^3.6.0
+    classnames: ^2.5.1
+    concurrently: ^8.2.2
+    framer-motion: ^11.11.11
+    glob: ^11.0.0
+    lucide-react: ^0.468.0
+    permissionless: ^0.1.29
+    postcss: ^8.4.47
+    react: latest
+    react-dom: latest
+    siwe: ^2.3.2
+    tailwindcss: ^3.4.14
+    ts-node: ^10.9.2
+    tsx: ^4.19.2
+    typescript: latest
+    usehooks-ts: ^3.1.0
+    vite-plugin-svgr: ^4.3.0
+    vocs: latest
+  languageName: unknown
+  linkType: soft
+
 "@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.26.2":
   version: 7.26.2
   resolution: "@babel/code-frame@npm:7.26.2"
@@ -11430,36 +11460,6 @@ typescript@latest:
   checksum: 7360661da0415809454ff8809b6666e868ffc3e5ccfbd5fc17425341546cdc3dd3d37c68fcd6ed7305252aaecd0d251ede3745b57aaebd00b8aececc30b6697b
   languageName: node
   linkType: hard
-
-"vocs-mvp@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "vocs-mvp@workspace:."
-  dependencies:
-    "@coinbase/onchainkit": ^0.35.8
-    "@googleapis/sheets": ^5.0.5
-    "@types/react": latest
-    "@vercel/node": ^3.0.17
-    autoprefixer: ^10.4.20
-    chokidar: ^3.6.0
-    classnames: ^2.5.1
-    concurrently: ^8.2.2
-    framer-motion: ^11.11.11
-    glob: ^11.0.0
-    lucide-react: ^0.468.0
-    permissionless: ^0.1.29
-    postcss: ^8.4.47
-    react: latest
-    react-dom: latest
-    siwe: ^2.3.2
-    tailwindcss: ^3.4.14
-    ts-node: ^10.9.2
-    tsx: ^4.19.2
-    typescript: latest
-    usehooks-ts: ^3.1.0
-    vite-plugin-svgr: ^4.3.0
-    vocs: latest
-  languageName: unknown
-  linkType: soft
 
 vocs@latest:
   version: 1.0.0-alpha.62

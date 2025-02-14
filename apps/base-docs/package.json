@@ -1,5 +1,5 @@
 {
-  "name": "vocs-mvp",
+  "name": "@app/base-docs",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
