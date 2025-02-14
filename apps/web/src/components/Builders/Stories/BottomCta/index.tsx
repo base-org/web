@@ -1,36 +1,21 @@
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
+import { CtaBanner } from 'apps/web/src/components/Builders/Shared/BottomCta/CtaBanner';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import Title from 'apps/web/src/components/base-org/typography/Title';
-import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 
 export function BottomCta() {
   return (
-    <section className="my-24 w-full bg-black">
-      <div className="flex flex-col items-center rounded-2xl bg-dark-palette-backgroundAlternate py-16">
-        <div className="px-9 text-center md:hidden">
-          <Title level={TitleLevel.Title3} as="h2">
-            Feeling inspired? Start building today.
-          </Title>
-          <Title level={TitleLevel.Headline} as="p" className="mt-2 font-normal">
-            Start building with a starter template or see documentation.
-          </Title>
-        </div>
-        <div className="hidden md:block">
-          <Title level={TitleLevel.Title1} as="h2">
-            Feeling inspired? Start building today.
-          </Title>
-          <Title level={TitleLevel.Title4} as="p" className="mt-2">
-            Start building with a starter template or see documentation.
-          </Title>
-        </div>
+    <CtaBanner
+      title="Feeling inspired? Start building today."
+      description="Start building with a starter template or see documentation."
+      cta={
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
           <ButtonWithLinkAndEventLogging
             variant={ButtonVariants.Secondary}
             linkClassNames="text-base font-medium text-white block"
             buttonClassNames="flex w-full items-center justify-between px-4 py-3 group !rounded-xl"
             target="_blank"
-            href="/builders/stories"
+            href="/builders/stories" // TODO: Add link
             eventName="bottom-cta-get-started"
           >
             <div className="flex w-40 items-center justify-between">
@@ -56,7 +41,7 @@ export function BottomCta() {
             </div>
           </ButtonWithLinkAndEventLogging>
         </div>
-      </div>
-    </section>
+      }
+    />
   );
 }

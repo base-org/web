@@ -4,7 +4,7 @@ import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { useCallback, useState } from 'react';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import { CtaBanner } from 'apps/web/src/components/Builders/Shared/CtaBanner';
+import { CtaBanner } from 'apps/web/src/components/Builders/Shared/BottomCta/CtaBanner';
 
 export function BottomCta() {
   const [hasCopied, setHasCopied] = useState(false);

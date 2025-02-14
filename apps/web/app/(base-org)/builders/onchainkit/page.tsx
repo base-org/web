@@ -8,12 +8,12 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import { InfoCards } from 'apps/web/src/components/Builders/Onchainkit/InfoCards';
 import { Templates } from 'apps/web/src/components/Builders/Onchainkit/Templates';
 import { Testmonials } from 'apps/web/src/components/Builders/Onchainkit/Testimonials';
-import { CtaBanner } from 'apps/web/src/components/Builders/Shared/CtaBanner';
 import Image, { StaticImageData } from 'next/image';
 import onchainkit from 'apps/web/src/components/Builders/Onchainkit/onchainkit.svg';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { useCallback } from 'react';
 import { LiveDemo } from 'apps/web/src/components/Builders/Shared/LiveDemo';
+import { BottomCta } from 'apps/web/src/components/Builders/Shared/BottomCta';
 
 const ONCHAINKIT_DOCS_LINK = 'https://onchainkit.xyz/';
 const demoComponents = ['Transact', 'Pay', 'Earn', 'Buy', 'Mint', 'Fund', 'Wallet'];
@@ -76,32 +76,7 @@ export default function OnchainKit() {
         <InfoCards />
         <Templates />
         <Testmonials />
-        <CtaBanner
-          title="What do you want to build?"
-          description="Start building with a starter template or see documentation."
-          cta={
-            <>
-              <Button
-                variant={ButtonVariants.Secondary}
-                iconName="copy"
-                onClick={handleCopy}
-                className="rounded-xl max-sm:w-full"
-              >
-                npm create onchain
-              </Button>
-              <ButtonWithLinkAndEventLogging
-                href={ONCHAINKIT_DOCS_LINK}
-                iconName="arrowRight"
-                target="_blank"
-                variant={ButtonVariants.Outlined}
-                eventName="onchainkit-docs"
-                buttonClassNames="rounded-xl max-sm:w-full"
-              >
-                Documentation
-              </ButtonWithLinkAndEventLogging>
-            </>
-          }
-        />
+        <BottomCta />
       </main>
     </Container>
   );
