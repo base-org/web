@@ -39,7 +39,10 @@ export default function OnchainKit() {
               OnchainKit
             </Title>
           </div>
-          <Title level={TitleLevel.Display3} className="font-bold">
+          <Title level={TitleLevel.Display3} className="font-bold max-sm:hidden">
+            Full-stack onchain components
+          </Title>
+          <Title level={TitleLevel.Title1} className="font-bold sm:hidden">
             Full-stack onchain components
           </Title>
           <Title level={TitleLevel.Title3} className="text-gray-muted">
