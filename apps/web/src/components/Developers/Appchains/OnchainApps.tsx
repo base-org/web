@@ -5,6 +5,7 @@ import superchamps from 'apps/web/src/components/Developers/Appchains/superchamp
 import blocklords from 'apps/web/src/components/Developers/Appchains/blocklords.svg';
 import illuvium from 'apps/web/src/components/Developers/Appchains/illuvium.svg';
 import Image, { StaticImageData } from 'next/image';
+import { Marquee } from 'apps/web/src/components/Developers/Shared/Marquee';
 
 export function OnchainApps() {
   return (
@@ -12,11 +13,21 @@ export function OnchainApps() {
       <Title level={TitleLevel.Title1}>
         Ideal for high-performance onchain apps, like games and AI applications.
       </Title>
-      <div className="flex w-full justify-between gap-10 max-sm:flex-col">
-        <Image src={proof as StaticImageData} alt="proof" />
-        <Image src={superchamps as StaticImageData} alt="superchamps" />
-        <Image src={blocklords as StaticImageData} alt="blocklords" />
-        <Image src={illuvium as StaticImageData} alt="illuvium" />
+      <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+        <Marquee className="[--duration:20s]" pauseOnHover>
+          <div className="flex p-4 px-8">
+            <Image src={proof as StaticImageData} alt="proof" />
+          </div>
+          <div className="flex p-4 px-8">
+            <Image src={superchamps as StaticImageData} alt="superchamps" />
+          </div>
+          <div className="flex p-4 px-8">
+            <Image src={blocklords as StaticImageData} alt="blocklords" />
+          </div>
+          <div className="flex p-4 px-8">
+            <Image src={illuvium as StaticImageData} alt="illuvium" />
+          </div>
+        </Marquee>
       </div>
     </div>
   );
