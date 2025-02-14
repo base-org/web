@@ -14,9 +14,9 @@ type TweetCardProps = {
 
 export function TweetCard({ image, name, username, content }: TweetCardProps) {
   return (
-    <div className="flex max-w-sm flex-col gap-2 rounded-lg border border-[#8A919E]/20 bg-dark-palette-backgroundAlternate p-6">
+    <div className="flex h-[250px] max-w-sm flex-col gap-2 overflow-auto rounded-lg border border-[#8A919E]/20 bg-dark-palette-backgroundAlternate p-6">
       <div className="flex gap-2">
-        {image && <Image src={image} alt={name} height={48} width={48} />}
+        {image && <Image src={image} alt={name} height={48} width={48} className="rounded-full" />}
         <div className="flex flex-col gap-1">
           <Title level={TitleLevel.Title3}>{name}</Title>
           <Text variant={TextVariant.Label1} className="text-dark-palette-foregroundMuted">
@@ -24,7 +24,9 @@ export function TweetCard({ image, name, username, content }: TweetCardProps) {
           </Text>
         </div>
       </div>
-      <Text variant={TextVariant.Body}>{content}</Text>
+      <Text variant={TextVariant.Body} className="whitespace-pre-line">
+        {content}
+      </Text>
     </div>
   );
 }
