@@ -72,8 +72,8 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
               href={link.href + '?utm_source=dotorg&utm_medium=nav'}
               target={link.href.startsWith('https://') ? '_blank' : undefined}
               onMouseEnter={onMouseEnterNavLink}
-              className={`rounded-md bg-opacity-0 px-6 py-1 text-sm opacity-50 transition-all duration-300 hover:bg-opacity-10 hover:opacity-100 ${
-                hoverIndex === index ? 'bg-opacity-10 opacity-100' : ''
+              className={`rounded-md bg-opacity-0 px-6 py-1 text-sm transition-all duration-300 hover:bg-opacity-10 hover:opacity-100 ${
+                hoverIndex === index ? 'bg-opacity-10' : ''
               }`}
             >
               {link.name}
