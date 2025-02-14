@@ -40,7 +40,7 @@ export function GasPriceDropdown() {
           <Icon name="blueCircle" color="currentColor" height="0.75rem" width="0.75rem" />
         </span>
         <strong>{baseGasPriceInWei ? convertWeiToMwei(baseGasPriceInWei) : <>&mdash;</>}</strong>
-        <small>Mgwei</small>
+        <small>Mwei</small>
       </div>
       <div className="absolute left-0 top-full hidden pt-2 group-hover:inline-block">
         <Card innerClassName="p-4 bg-[#191919]">
@@ -49,14 +49,14 @@ export function GasPriceDropdown() {
               <strong className="font-normal">{base.name}</strong>
               <span className="opacity-50">
                 {baseGasPriceInWei ? convertWeiToMwei(baseGasPriceInWei) : <>&mdash;</>}{' '}
-                <span>Mgwei</span>
+                <span>Mwei</span>
               </span>
             </li>
             <li className="flex gap-2">
               <strong className="font-normal">{mainnet.name}</strong>
               <span className="opacity-50">
                 {mainnetGasPriceInWei ? convertWeiToMwei(mainnetGasPriceInWei) : <>&mdash;</>}{' '}
-                <span>Mgwei</span>
+                <span>Mwei</span>
               </span>
             </li>
           </ul>
