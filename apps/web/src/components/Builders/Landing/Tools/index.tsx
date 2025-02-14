@@ -3,11 +3,9 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import Image, { type StaticImageData } from 'next/image';
 import Link from 'next/link';
 import agentKit from 'apps/web/src/components/Builders/Shared/assets/Tools/agentKit.svg';
-import appchains from 'apps/web/src/components/Builders/Shared/assets/Tools/appchains.svg';
 import miniKit from 'apps/web/src/components/Builders/Shared/assets/Tools/miniKit.svg';
 import smartWallet from 'apps/web/src/components/Builders/Shared/assets/Tools/smartWallet.svg';
 import onchainKit from 'apps/web/src/components/Builders/Shared/assets/Tools/onchainKit.svg';
-import verification from 'apps/web/src/components/Builders/Shared/assets/Tools/verification.svg';
 
 type ToolCardProps = {
   title: string;
@@ -27,16 +25,16 @@ export function Tools() {
       </Title>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
         <ToolCard
+          title="OnchainKit"
+          description="An all-in-one toolkit to make building onchain faster, easier, and more profitable."
+          icon={onchainKit as StaticImageData}
+          href="https://onchainkit.xyz/"
+        />
+        <ToolCard
           title="AgentKit"
           description="Build and deploy AI agents that can interact with blockchain data and smart contracts."
           icon={agentKit as StaticImageData}
           href="https://docs.cdp.coinbase.com/agentkit/docs/welcome"
-        />
-        <ToolCard
-          title="Base Nets"
-          description="Unlock fast and cheap transactions at scale with dedicated blockspace."
-          icon={appchains as StaticImageData}
-          href="/coming-soon"
         />
         <ToolCard
           title="MiniKit"
@@ -49,18 +47,6 @@ export function Tools() {
           description="A passkey-based, self-custodial, global wallet for seamless experiences."
           icon={smartWallet as StaticImageData}
           href="https://www.smartwallet.dev/why"
-        />
-        <ToolCard
-          title="OnchainKit"
-          description="An all-in-one toolkit to make building onchain faster, easier, and more profitable."
-          icon={onchainKit as StaticImageData}
-          href="https://onchainkit.xyz/"
-        />
-        <ToolCard
-          title="Verifications"
-          description="Add identity verification and compliance features to your applications."
-          icon={verification as StaticImageData}
-          href="https://vocs-migration-mvp-one.vercel.app/dev-tools/identity/verifications/quickstart"
         />
       </div>
     </section>

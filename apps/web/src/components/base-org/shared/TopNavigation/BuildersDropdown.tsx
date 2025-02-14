@@ -3,11 +3,9 @@ import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import agentKit from 'apps/web/src/components/Builders/Shared/assets/Tools/agentKit.svg';
-import baseNet from 'apps/web/src/components/Builders/Shared/assets/Tools/appchains.svg';
 import miniKit from 'apps/web/src/components/Builders/Shared/assets/Tools/miniKit.svg';
 import baseWallet from 'apps/web/src/components/Builders/Shared/assets/Tools/smartWallet.svg';
 import onchainKit from 'apps/web/src/components/Builders/Shared/assets/Tools/onchainKit.svg';
-import verification from 'apps/web/src/components/Builders/Shared/assets/Tools/verification.svg';
 import Image, { StaticImageData } from 'next/image';
 import options from 'apps/web/src/components/base-org/shared/TopNavigation/assets/developers/options.svg';
 import bug from 'apps/web/src/components/base-org/shared/TopNavigation/assets/developers/bug.svg';
@@ -62,16 +60,16 @@ export function BuildersDropdown() {
           <div className="flex items-center justify-between rounded-lg">
             <div className="grid w-full grid-cols-2 gap-1">
               <ToolMiniCard
+                title="OnchainKit"
+                description="All-in-one onchain toolkit"
+                icon={onchainKit as StaticImageData}
+                href="https://onchainkit.xyz/"
+              />
+              <ToolMiniCard
                 title="AgentKit"
                 description="Launch your AI Agent"
                 icon={agentKit as StaticImageData}
                 href="https://docs.cdp.coinbase.com/agentkit/docs/welcome"
-              />
-              <ToolMiniCard
-                title="Base Nets"
-                description="Cheap transactions at scale"
-                icon={baseNet as StaticImageData}
-                href="/coming-soon"
               />
               <ToolMiniCard
                 title="MiniKit"
@@ -84,18 +82,6 @@ export function BuildersDropdown() {
                 description="Seamless self-custody"
                 icon={baseWallet as StaticImageData}
                 href="https://www.smartwallet.dev/why"
-              />
-              <ToolMiniCard
-                title="OnchainKit"
-                description="All-in-one onchain toolkit"
-                icon={onchainKit as StaticImageData}
-                href="https://onchainkit.xyz/"
-              />
-              <ToolMiniCard
-                title="Verifications"
-                description="In-app identity and compliance"
-                icon={verification as StaticImageData}
-                href="https://vocs-migration-mvp-one.vercel.app/dev-tools/identity/verifications/quickstart"
               />
             </div>
           </div>
