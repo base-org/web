@@ -3,7 +3,7 @@
 import classNames from 'classnames';
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import 'apps/web/src/components/Builders/Landing/UseCases/styles.css';
+import './styles.css';
 
 export function AnimatedOnboarding() {
   const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
