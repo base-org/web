@@ -13,9 +13,10 @@ import Image, { StaticImageData } from 'next/image';
 import onchainkit from 'apps/web/src/components/Builders/Onchainkit/onchainkit.svg';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { useCallback } from 'react';
-import { Demo } from 'apps/web/src/components/Builders/Onchainkit/Demo';
+import { LiveDemo } from 'apps/web/src/components/Builders/Shared/LiveDemo';
 
 const ONCHAINKIT_DOCS_LINK = 'https://onchainkit.xyz/';
+const demoComponents = ['Transact', 'Pay', 'Earn', 'Buy', 'Mint', 'Fund', 'Wallet'];
 
 export default function OnchainKit() {
   const handleCopy = useCallback(() => {
@@ -71,7 +72,7 @@ export default function OnchainKit() {
           </div>
         </div>
 
-        <Demo />
+        <LiveDemo components={demoComponents} />
         <InfoCards />
         <Templates />
         <Testmonials />
