@@ -4,8 +4,7 @@ import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { useCallback, useState } from 'react';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import Title from 'apps/web/src/components/base-org/typography/Title';
-import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
+import { CtaBanner } from 'apps/web/src/components/Builders/Shared/CtaBanner';
 
 export function BottomCta() {
   const [hasCopied, setHasCopied] = useState(false);
@@ -17,25 +16,12 @@ export function BottomCta() {
   }, []);
 
   return (
-    <section className="my-24 w-full bg-black">
-      <div className="flex flex-col items-center rounded-2xl bg-dark-palette-backgroundAlternate py-16">
-        <div className="px-9 text-center md:hidden">
-          <Title level={TitleLevel.Title3} as="h2">
-            Together, we&apos;re updating the Internet with a new dev platform.
-          </Title>
-          <Title level={TitleLevel.Headline} as="p" className="mt-2 font-normal">
-            Start building with a starter template or see documentation.
-          </Title>
-        </div>
-        <div className="hidden md:block">
-          <Title level={TitleLevel.Title1} as="h2">
-            Together, we&apos;re updating the Internet with a new dev platform.
-          </Title>
-          <Title level={TitleLevel.Title4} as="p" className="mt-2">
-            Start building with a starter template or see documentation.
-          </Title>
-        </div>
-        <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+    <CtaBanner
+      title="Together, we're updating the Internet with a new dev platform."
+      description="Start building with a starter template or see documentation."
+      sectionClassName="my-24"
+      cta={
+        <>
           <button
             type="button"
             className="inline-flex items-center gap-2.5 rounded-xl bg-white px-4 py-3 font-medium text-dark-palette-primaryForeground transition-colors hover:bg-white/90"
@@ -55,7 +41,7 @@ export function BottomCta() {
             linkClassNames="text-base font-medium text-white block"
             buttonClassNames="flex w-full items-center justify-between px-4 py-3 group !rounded-xl"
             target="_blank"
-            href="/stories"
+            href="https://docs.base.org"
             eventName="bottom-cta-documentation"
           >
             <div className="flex w-40 items-center justify-between">
@@ -65,8 +51,8 @@ export function BottomCta() {
               </div>
             </div>
           </ButtonWithLinkAndEventLogging>
-        </div>
-      </div>
-    </section>
+        </>
+      }
+    />
   );
 }
