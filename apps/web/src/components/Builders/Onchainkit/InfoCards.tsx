@@ -1,10 +1,10 @@
-import { Card } from 'apps/web/src/components/Developers/Shared/Card';
-import cryptoBasics from 'apps/web/src/components/Developers/Onchainkit/cryptoBasics.svg';
-import serverless from 'apps/web/src/components/Developers/Onchainkit/serverless.svg';
-import cloudProduct from 'apps/web/src/components/Developers/Onchainkit/cloudProduct.svg';
-import developerPlatformProduct from 'apps/web/src/components/Developers/Onchainkit/developerPlatformProduct.svg';
-import derivativesProductNew from 'apps/web/src/components/Developers/Onchainkit/derivativesProductNew.svg';
-import taxesReceiptInactive from 'apps/web/src/components/Developers/Onchainkit/taxesReceiptInactive.svg';
+import { Card } from 'apps/web/src/components/Builders/Shared/Card';
+import cryptoBasics from 'apps/web/src/components/Builders/Onchainkit/cryptoBasics.svg';
+import serverless from 'apps/web/src/components/Builders/Onchainkit/serverless.svg';
+import cloudProduct from 'apps/web/src/components/Builders/Onchainkit/cloudProduct.svg';
+import developerPlatformProduct from 'apps/web/src/components/Builders/Onchainkit/developerPlatformProduct.svg';
+import derivativesProductNew from 'apps/web/src/components/Builders/Onchainkit/derivativesProductNew.svg';
+import taxesReceiptInactive from 'apps/web/src/components/Builders/Onchainkit/taxesReceiptInactive.svg';
 import Image, { StaticImageData } from 'next/image';
 
 const INFO_CARDS = [
