@@ -3,7 +3,7 @@ import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import Container from 'apps/web/src/components/base-org/Container';
 import { Hero } from 'apps/web/src/components/Builders/Landing/Hero';
 import { UseCases } from 'apps/web/src/components/Builders/Landing/UseCases';
-import { Customers } from 'apps/web/src/components/Builders/Landing/Customers';
+import { Apps } from 'apps/web/src/components/Builders/Landing/Apps';
 import { Testimonials } from 'apps/web/src/components/Builders/Landing/Testimonials';
 import { Tools } from 'apps/web/src/components/Builders/Landing/Tools';
 import { WhyBase } from 'apps/web/src/components/Builders/Landing/WhyBase';
@@ -26,7 +26,7 @@ export default function Developers() {
         <main className="mb-32 flex min-h-screen w-full flex-col items-center bg-black pt-20">
           <Hero />
           <UseCases />
-          <Customers />
+          <Apps />
           <Testimonials />
           <Tools />
           <WhyBase />

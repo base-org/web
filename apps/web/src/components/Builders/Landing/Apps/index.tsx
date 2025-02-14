@@ -136,7 +136,6 @@ const customers: Customer[] = [
   },
 ];
 const LOGO_WIDTH = 200; // pixels
-const LOGO_GAP = 96; // pixels
 
 const logoStyle = {
   width: 'auto',
@@ -146,7 +145,7 @@ const logoStyle = {
   maxHeight: '64px',
 };
 
-export function Customers() {
+export function Apps() {
   return (
     <section className="h-full w-full pt-32">
       <Title level={TitleLevel.Title1} as="h2" className="mb-16 hidden md:block">
@@ -155,7 +154,7 @@ export function Customers() {
       <Title level={TitleLevel.Title3} className="mb-8 font-medium md:hidden">
         Powering the most consumer-friendly applications onchain.
       </Title>
-      <Marquee className="[--duration:60s]" childrenClassName={`!gap-[${LOGO_GAP}px]`}>
+      <Marquee className="[--duration:60s]" childrenClassName="!gap-[96px]">
         {customers.map((customer) => (
           <div
             className={`max-w-[${LOGO_WIDTH}px] flex items-center`}
