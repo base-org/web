@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import Container from 'apps/web/src/components/base-org/Container';
-import { Hero } from 'apps/web/src/components/Builders/Hero';
-import { UseCases } from 'apps/web/src/components/Builders/UseCases';
-import { Customers } from 'apps/web/src/components/Builders/Customers';
-import { Testimonials } from 'apps/web/src/components/Builders/Testimonials';
-import { Tools } from 'apps/web/src/components/Builders/Tools';
-import { WhyBase } from 'apps/web/src/components/Builders/WhyBase';
-import { LiveDemo } from 'apps/web/src/components/Builders/LiveDemo';
-import { BottomCta } from 'apps/web/src/components/Builders/BottomCta';
+import { Hero } from 'apps/web/src/components/Builders/Landing/Hero';
+import { UseCases } from 'apps/web/src/components/Builders/Landing/UseCases';
+import { Customers } from 'apps/web/src/components/Builders/Landing/Customers';
+import { Testimonials } from 'apps/web/src/components/Builders/Landing/Testimonials';
+import { Tools } from 'apps/web/src/components/Builders/Landing/Tools';
+import { WhyBase } from 'apps/web/src/components/Builders/Landing/WhyBase';
+import { LiveDemo } from 'apps/web/src/components/Builders/Landing/LiveDemo';
+import { BottomCta } from 'apps/web/src/components/Builders/Landing/BottomCta';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
