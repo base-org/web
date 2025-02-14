@@ -11,6 +11,7 @@ import headerImage from 'apps/web/src/components/Developers/SmartWallet/header.p
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
 import Image, { StaticImageData } from 'next/image';
 import { Demo } from 'apps/web/src/components/Developers/SmartWallet/Demo';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 export default async function BaseWallet() {
   return (
@@ -42,14 +43,18 @@ export default async function BaseWallet() {
             </Title>
             <div className="flex gap-6 pt-5">
               <ButtonWithLinkAndEventLogging
-                variant={ButtonVariants.Secondary}
-                iconName="arrowRight"
-                buttonClassNames="rounded-xl"
                 href=""
                 target="_blank"
-                eventName="minikit-get-started"
+                variant={ButtonVariants.Secondary}
+                buttonClassNames="flex items-center justify-between px-4 py-3 group"
+                eventName="wallet-start-building"
               >
-                Start building
+                <div className="flex items-center gap-4">
+                  <span>Start building</span>
+                  <div className="transition-transform duration-200 group-hover:translate-x-1">
+                    <Icon name="arrowRight" width={16} height={16} color="black" />
+                  </div>
+                </div>
               </ButtonWithLinkAndEventLogging>
             </div>
           </div>
@@ -73,19 +78,23 @@ export default async function BaseWallet() {
                 href=""
                 target="_blank"
                 eventName="wallet-fork-template"
-                buttonClassNames="rounded-xl "
+                buttonClassNames="flex items-center justify-between px-4 py-3"
               >
                 Fork a template
               </ButtonWithLinkAndEventLogging>
               <ButtonWithLinkAndEventLogging
                 href=""
-                iconName="arrowRight"
                 target="_blank"
-                variant={ButtonVariants.Outlined}
+                variant={ButtonVariants.SecondaryOutline}
+                buttonClassNames="flex items-center justify-between px-4 py-3 group"
                 eventName="wallet-docs"
-                buttonClassNames="rounded-xl max-sm:w-full"
               >
-                Documentation
+                <div className="flex items-center gap-4">
+                  <span>Documentation</span>
+                  <div className="transition-transform duration-200 group-hover:translate-x-1">
+                    <Icon name="arrowRight" width={16} height={16} color="white" />
+                  </div>
+                </div>
               </ButtonWithLinkAndEventLogging>
             </div>
           }
