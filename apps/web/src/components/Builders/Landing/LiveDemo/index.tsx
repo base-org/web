@@ -15,12 +15,14 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import classNames from 'classnames';
 import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
 import type { Token } from '@coinbase/onchainkit/token';
-import dynamic from 'next/dynamic';
+import { CodeSnippet } from 'apps/web/src/components/Builders/Shared/CodeSnippet';
 
-const DynamicCodeSnippet = dynamic<{ code: string }>(async () => import('./CodeSnippet'), {
-  ssr: false,
-  loading: () => <div>Loading...</div>,
-});
+// import dynamic from 'next/dynamic';
+
+// const DynamicCodeSnippet = dynamic<{ code: string }>(async () => import('./CodeSnippet'), {
+//   ssr: false,
+//   loading: () => <div>Loading...</div>,
+// });
 
 type Tab = 'onboard' | 'onramp' | 'pay' | 'swap' | 'earn';
 
@@ -406,7 +408,7 @@ function DesktopDemo({
           <ComponentDemo theme={theme} demoComponent={demoComponent} />
           <div className="h-[300px] py-6 pl-6 pr-1 lg:h-[500px]">
             <div className={`${theme} relative h-full`}>
-              <DynamicCodeSnippet code={codeSnippets[activeTab]} />
+              <CodeSnippet code={codeSnippets[activeTab]} />
             </div>
           </div>
         </div>
@@ -625,7 +627,7 @@ function MobileDemo({
           ) : (
             <div className="h-[300px] p-6">
               <div className={`${theme} relative h-full`}>
-                <DynamicCodeSnippet code={codeSnippets[activeTab]} />
+                <CodeSnippet code={codeSnippets[activeTab]} />
               </div>
             </div>
           )}
