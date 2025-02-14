@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Image from 'apps/web/node_modules/next/image';
-import Link from 'apps/web/node_modules/next/link';
+import Image from 'next/image';
+import Link from 'next/link';
 import initialFrameImage from 'apps/web/pages/api/basenames/frame/assets/initial-image.png';
 import { initialFrame } from 'apps/web/pages/api/basenames/frame/frameResponses';
 
