@@ -1,14 +1,36 @@
 'use client';
 
+import { useCallback, useEffect, useState } from 'react';
+// import scramble from 'scramble';
+import { GridHero } from 'apps/web/src/components/Builders/Landing/Hero/GridHero';
 import classNames from 'classnames';
 import Title from 'apps/web/src/components/base-org/typography/Title';
-import { useCallback, useEffect, useState } from 'react';
 import { SearchModal } from 'apps/web/src/components/Builders/Landing/Hero/SearchModal';
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 
+// const originalText = 'What do you want to build?';
+
 export function Hero() {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  // const [headingText, setHeadingText] = useState(originalText);
+
+  // useEffect(() => {
+  //   let iterations = 0;
+  //   const maxIterations = 15;
+  //   const interval = setInterval(() => {
+  //     if (iterations >= maxIterations) {
+  //       clearInterval(interval);
+  //       setHeadingText(originalText);
+  //       return;
+  //     }
+  //     const scrambledText = scramble(originalText);
+  //     setHeadingText(scrambledText);
+  //     iterations++;
+  //   }, 50);
+
+  //   return () => clearInterval(interval);
+  // }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -44,8 +66,14 @@ export function Hero() {
 
   return (
     <div className="mb-6 flex w-full flex-col items-center justify-center bg-black">
-      <div className="flex h-[660px] w-full flex-col items-center justify-center">
-        <Title className="font-display text-[1.25rem] leading-[1.2em] tracking-tight md:text-[2rem] lg:text-[3rem]">
+      <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden md:h-[660px]">
+        <div className="absolute inset-0 hidden bg-black md:block">
+          <GridHero columns={30} hasBlue />
+        </div>
+        <div className="absolute inset-0 bg-black md:hidden">
+          <GridHero columns={50} hasBlue />
+        </div>
+        <Title className="z-10 font-display text-[1.25rem] leading-[1.2em] tracking-tight md:text-[2rem] lg:text-[3rem]">
           What do you want to build?
         </Title>
 
@@ -57,9 +85,9 @@ export function Hero() {
               className={classNames(
                 'whitespace-nowrap text-base', // Button shared base
                 'transition-all', // Button shared transition
-                'border border-gray-muted/65 bg-transparent hover:bg-white/10', // ButtonVariant.SecondaryOutline
+                'border border-gray-muted/65', // ButtonVariant.SecondaryOutline
                 'w-full px-4 py-3 md:px-6',
-                'bg-illoblack',
+                'bg-illoblack hover:bg-illoblack', // TODO: what hover state?
                 'font-medium text-white',
                 'rounded-xl border !border-dark-palette-foregroundMuted/20',
               )}
@@ -81,7 +109,7 @@ export function Hero() {
             </button>
             <SearchModal isOpen={isSearchModalOpen} setIsOpen={setIsSearchModalOpen} />
           </div>
-          <div className="mt-3 flex w-full flex-col items-start justify-between gap-3 md:mt-4 md:flex md:flex-row">
+          <div className="z-10 mt-3 flex w-full flex-col items-start justify-between gap-3 md:mt-4 md:flex md:flex-row">
             <Button
               variant={ButtonVariants.SecondaryOutline}
               iconName="baseOrgDiagonalUpArrow"
