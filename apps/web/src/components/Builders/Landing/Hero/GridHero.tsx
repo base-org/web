@@ -17,6 +17,7 @@ export function GridHero({ columns = 20, hasBlue = false }: GridHeroExportProps)
         }}
       >
         {gridItems.map((_, i) => (
+          // eslint-disable-next-line react/no-array-index-key
           <GridItem hasBlue={hasBlue} key={i} />
         ))}
       </div>
