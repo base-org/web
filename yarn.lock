@@ -88,6 +88,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@app/base-docs@workspace:apps/base-docs":
+  version: 0.0.0-use.local
+  resolution: "@app/base-docs@workspace:apps/base-docs"
+  dependencies:
+    "@coinbase/onchainkit": ^0.37.0
+    "@googleapis/sheets": ^5.0.5
+    "@types/react": latest
+    "@vercel/node": ^3.0.17
+    autoprefixer: ^10.4.20
+    chokidar: ^3.6.0
+    classnames: ^2.5.1
+    concurrently: ^8.2.2
+    framer-motion: ^11.11.11
+    glob: ^11.0.0
+    lucide-react: ^0.468.0
+    permissionless: ^0.1.29
+    postcss: ^8.4.47
+    react: latest
+    react-dom: latest
+    siwe: ^2.3.2
+    tailwindcss: ^3.4.14
+    ts-node: ^10.9.2
+    tsx: ^4.19.2
+    typescript: latest
+    usehooks-ts: ^3.1.0
+    vite-plugin-svgr: ^4.3.0
+    vocs: latest
+  languageName: unknown
+  linkType: soft
+
 "@app/bridge@workspace:apps/bridge":
   version: 0.0.0-use.local
   resolution: "@app/bridge@workspace:apps/bridge"
@@ -24183,7 +24213,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.2.4":
+"tailwindcss@npm:^3.2.4, tailwindcss@npm:^3.4.13, tailwindcss@npm:^3.4.14":
   version: 3.4.17
   resolution: "tailwindcss@npm:3.4.17"
   dependencies:
@@ -25909,36 +25939,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vocs-mvp@workspace:apps/base-docs":
-  version: 0.0.0-use.local
-  resolution: "vocs-mvp@workspace:apps/base-docs"
-  dependencies:
-    "@coinbase/onchainkit": ^0.35.8
-    "@googleapis/sheets": ^5.0.5
-    "@types/react": latest
-    "@vercel/node": ^3.0.17
-    autoprefixer: ^10.4.20
-    chokidar: ^3.6.0
-    classnames: ^2.5.1
-    concurrently: ^8.2.2
-    framer-motion: ^11.11.11
-    glob: ^11.0.0
-    lucide-react: ^0.468.0
-    permissionless: ^0.1.29
-    postcss: ^8.4.47
-    react: latest
-    react-dom: latest
-    siwe: ^2.3.2
-    tailwindcss: ^3.4.14
-    ts-node: ^10.9.2
-    tsx: ^4.19.2
-    typescript: latest
-    usehooks-ts: ^3.1.0
-    vite-plugin-svgr: ^4.3.0
-    vocs: latest
-  languageName: unknown
-  linkType: soft
-
 "vocs@npm:latest":
   version: 1.0.0-alpha.62
   resolution: "vocs@npm:1.0.0-alpha.62"
@@ -26052,7 +26052,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wagmi@npm:^2.11.3, wagmi@npm:^2.14.11, wagmi@npm:^2.5.19":
+"wagmi@npm:^2.11.3, wagmi@npm:^2.14.11":
   version: 2.14.11
   resolution: "wagmi@npm:2.14.11"
   dependencies:
