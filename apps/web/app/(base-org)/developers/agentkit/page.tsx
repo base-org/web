@@ -18,6 +18,7 @@ import { OnchainActions } from 'apps/web/src/components/Developers/AgentKit/Onch
 import { Possibilities } from 'apps/web/src/components/Developers/AgentKit/Possibilities';
 import { Testmonials } from 'apps/web/src/components/Developers/AgentKit/Testimonials';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image, { StaticImageData } from 'next/image';
 import { useCallback } from 'react';
 
@@ -54,24 +55,28 @@ export default function AgentKit() {
             and a set of comprehensive onchain interactions.
           </Title>
 
-          <div className="flex gap-4 pb-24 pt-5  max-sm:max-w-[240px] max-sm:flex-col">
+          <div className="flex gap-4 bg-black pb-24  pt-5 max-sm:max-w-[240px] max-sm:flex-col">
             <Button
               variant={ButtonVariants.Secondary}
               iconName="copy"
               onClick={handleCopy}
-              className="rounded-xl"
+              className="flex items-center justify-between px-4 py-3"
             >
               npx create-agentkit-app
             </Button>
             <ButtonWithLinkAndEventLogging
               href={AGENTKIT_DOCS_LINK}
-              iconName="arrowRight"
               target="_blank"
-              variant={ButtonVariants.Outlined}
+              variant={ButtonVariants.SecondaryOutline}
+              buttonClassNames="flex items-center justify-between px-4 py-3 group"
               eventName="agentkit-docs"
-              buttonClassNames="rounded-xl max-sm:w-full"
             >
-              Documentation
+              <div className="flex items-center gap-4">
+                <span>Documentation</span>
+                <div className="transition-transform duration-200 group-hover:translate-x-1">
+                  <Icon name="arrowRight" width={16} height={16} color="white" />
+                </div>
+              </div>
             </ButtonWithLinkAndEventLogging>
           </div>
           <Demo />
@@ -93,19 +98,23 @@ export default function AgentKit() {
                 href={FORK_TEMPLATE_LINK}
                 target="_blank"
                 eventName="agentkit-fork-template"
-                buttonClassNames="rounded-xl max-sm:w-full"
+                buttonClassNames="flex items-center justify-between px-4 py-3"
               >
                 Fork a template
               </ButtonWithLinkAndEventLogging>
               <ButtonWithLinkAndEventLogging
                 href={AGENTKIT_DOCS_LINK}
-                iconName="arrowRight"
                 target="_blank"
-                variant={ButtonVariants.Outlined}
+                variant={ButtonVariants.SecondaryOutline}
                 eventName="agentkit-docs"
-                buttonClassNames="rounded-xl max-sm:w-full"
+                buttonClassNames="flex items-center justify-between px-4 py-3 group"
               >
-                Documentation
+                <div className="flex items-center gap-4">
+                  <span>Documentation</span>
+                  <div className="transition-transform duration-200 group-hover:translate-x-1">
+                    <Icon name="arrowRight" width={16} height={16} color="white" />
+                  </div>
+                </div>
               </ButtonWithLinkAndEventLogging>
             </>
           }
