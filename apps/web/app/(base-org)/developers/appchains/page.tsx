@@ -9,6 +9,7 @@ import { OnchainApps } from 'apps/web/src/components/Developers/Appchains/Onchai
 import { Pricing } from 'apps/web/src/components/Developers/Appchains/Pricing';
 import { Testimonials } from 'apps/web/src/components/Developers/Appchains/Testimonials';
 import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
+import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image, { StaticImageData } from 'next/image';
 
 const CDP_APPCHAIN_URL = 'https://portal.cdp.coinbase.com/products/base-l3';
@@ -47,24 +48,32 @@ export default async function Appchains() {
           <div className="flex gap-4 pt-5 max-sm:flex-col">
             <ButtonWithLinkAndEventLogging
               href={CDP_APPCHAIN_URL}
-              iconName="arrowRight"
               target="_blank"
               variant={ButtonVariants.Secondary}
-              buttonClassNames="rounded-xl"
-              eventName="appchains-get-started"
+              buttonClassNames="flex items-center justify-between px-4 py-3 group"
+              eventName="appchains-start-building"
             >
-              Start Building
+              <div className="flex items-center gap-4">
+                <span>Start Building</span>
+                <div className="transition-transform duration-200 group-hover:translate-x-1">
+                  <Icon name="arrowRight" width={16} height={16} color="black" />
+                </div>
+              </div>
             </ButtonWithLinkAndEventLogging>
 
             <ButtonWithLinkAndEventLogging
               href=""
-              iconName="arrowRight"
               target="_blank"
-              variant={ButtonVariants.Outlined}
-              buttonClassNames="rounded-xl"
+              variant={ButtonVariants.SecondaryOutline}
+              buttonClassNames="flex items-center justify-between px-4 py-3 group"
               eventName="appchains-docs"
             >
-              Documentation
+              <div className="flex items-center gap-4">
+                <span>Documentation</span>
+                <div className="transition-transform duration-200 group-hover:translate-x-1">
+                  <Icon name="arrowRight" width={16} height={16} color="white" />
+                </div>
+              </div>
             </ButtonWithLinkAndEventLogging>
           </div>
         </div>
@@ -78,14 +87,18 @@ export default async function Appchains() {
           description="Unlock fast and cheap transactions at scale, with dedicated blockspace and seamless integration with Base tools."
           cta={
             <ButtonWithLinkAndEventLogging
-              variant={ButtonVariants.Secondary}
-              iconName="arrowRight"
-              buttonClassNames="rounded-xl"
               href={CDP_APPCHAIN_URL}
               target="_blank"
-              eventName="minikit-get-started"
+              variant={ButtonVariants.Secondary}
+              buttonClassNames="flex items-center justify-between px-4 py-3 group"
+              eventName="appchains-get-started"
             >
-              Get started
+              <div className="flex items-center gap-4">
+                <span>Get started</span>
+                <div className="transition-transform duration-200 group-hover:translate-x-1">
+                  <Icon name="arrowRight" width={16} height={16} color="black" />
+                </div>
+              </div>
             </ButtonWithLinkAndEventLogging>
           }
         />
