@@ -3,14 +3,14 @@ import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
-import { InfoCards } from 'apps/web/src/components/Developers/SmartWallet/InfoCards';
-import { Transactions } from 'apps/web/src/components/Developers/SmartWallet/Transactions';
-import { Customers } from 'apps/web/src/components/Developers/SmartWallet/Customers';
-import wallet from 'apps/web/src/components/Developers/SmartWallet/svg/wallet.svg';
-import headerImage from 'apps/web/src/components/Developers/SmartWallet/header.png';
-import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
+import { InfoCards } from 'apps/web/src/components/Builders/SmartWallet/InfoCards';
+import { Transactions } from 'apps/web/src/components/Builders/SmartWallet/Transactions';
+import { Customers } from 'apps/web/src/components/Builders/SmartWallet/Customers';
+import wallet from 'apps/web/src/components/Builders/SmartWallet/svg/wallet.svg';
+import headerImage from 'apps/web/src/components/Builders/SmartWallet/header.png';
+import { CtaBanner } from 'apps/web/src/components/Builders/Shared/CtaBanner';
 import Image, { StaticImageData } from 'next/image';
-import { Demo } from 'apps/web/src/components/Developers/SmartWallet/Demo';
+import { Demo } from 'apps/web/src/components/Builders/SmartWallet/Demo';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 export default async function BaseWallet() {

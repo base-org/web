@@ -1,17 +1,17 @@
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
-import { Marquee } from 'apps/web/src/components/Developers/Shared/Marquee';
-import cattown from 'apps/web/src/components/Developers/SmartWallet/svg/cattown.svg';
-import aerodrome from 'apps/web/src/components/Developers/SmartWallet/svg/aerodrome.svg';
-import cooprecrods from 'apps/web/src/components/Developers/SmartWallet/svg/cooprecrods.svg';
-import frenpet from 'apps/web/src/components/Developers/SmartWallet/svg/frenpet.svg';
-import guild from 'apps/web/src/components/Developers/SmartWallet/svg/guild.svg';
-import heyelsa from 'apps/web/src/components/Developers/SmartWallet/svg/heyelsa.svg';
-import kyberswap from 'apps/web/src/components/Developers/SmartWallet/svg/kyberswap.svg';
-import layer3 from 'apps/web/src/components/Developers/SmartWallet/svg/layer3.svg';
-import mochicam from 'apps/web/src/components/Developers/SmartWallet/svg/mochicam.svg';
-import moonwell from 'apps/web/src/components/Developers/SmartWallet/svg/moonwell.svg';
-import opensea from 'apps/web/src/components/Developers/SmartWallet/svg/opensea.svg';
+import { Marquee } from 'apps/web/src/components/Builders/Shared/Marquee';
+import cattown from 'apps/web/src/components/Builders/SmartWallet/svg/cattown.svg';
+import aerodrome from 'apps/web/src/components/Builders/SmartWallet/svg/aerodrome.svg';
+import cooprecrods from 'apps/web/src/components/Builders/SmartWallet/svg/cooprecrods.svg';
+import frenpet from 'apps/web/src/components/Builders/SmartWallet/svg/frenpet.svg';
+import guild from 'apps/web/src/components/Builders/SmartWallet/svg/guild.svg';
+import heyelsa from 'apps/web/src/components/Builders/SmartWallet/svg/heyelsa.svg';
+import kyberswap from 'apps/web/src/components/Builders/SmartWallet/svg/kyberswap.svg';
+import layer3 from 'apps/web/src/components/Builders/SmartWallet/svg/layer3.svg';
+import mochicam from 'apps/web/src/components/Builders/SmartWallet/svg/mochicam.svg';
+import moonwell from 'apps/web/src/components/Builders/SmartWallet/svg/moonwell.svg';
+import opensea from 'apps/web/src/components/Builders/SmartWallet/svg/opensea.svg';
 import Image, { StaticImageData } from 'next/image';
 
 export function Customers() {

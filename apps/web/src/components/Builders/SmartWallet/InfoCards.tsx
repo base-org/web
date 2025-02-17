@@ -1,10 +1,10 @@
-import { Card } from 'apps/web/src/components/Developers/Shared/Card';
-import shieldOutline from 'apps/web/src/components/Developers/SmartWallet/svg/shieldOutline.svg';
-import globe from 'apps/web/src/components/Developers/SmartWallet/svg/globe.svg';
-import cash from 'apps/web/src/components/Developers/SmartWallet/svg/cash.svg';
-import defi from 'apps/web/src/components/Developers/SmartWallet/svg//defi.svg';
-import faces from 'apps/web/src/components/Developers/SmartWallet/svg/faces.svg';
-import support from 'apps/web/src/components/Developers/SmartWallet/svg/support.svg';
+import { Card } from 'apps/web/src/components/Builders/Shared/Card';
+import shieldOutline from 'apps/web/src/components/Builders/SmartWallet/svg/shieldOutline.svg';
+import globe from 'apps/web/src/components/Builders/SmartWallet/svg/globe.svg';
+import cash from 'apps/web/src/components/Builders/SmartWallet/svg/cash.svg';
+import defi from 'apps/web/src/components/Builders/SmartWallet/svg//defi.svg';
+import faces from 'apps/web/src/components/Builders/SmartWallet/svg/faces.svg';
+import support from 'apps/web/src/components/Builders/SmartWallet/svg/support.svg';
 import Image from 'next/image';
 import { StaticImageData } from 'next/image';
 const INFO_CARDS = [

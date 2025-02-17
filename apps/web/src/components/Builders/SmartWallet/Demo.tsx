@@ -1,8 +1,8 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import sun from 'apps/web/src/components/Developers/SmartWallet/svg/sun.svg';
-import moon from 'apps/web/src/components/Developers/SmartWallet/svg/moon.svg';
+import sun from 'apps/web/src/components/Builders/SmartWallet/svg/sun.svg';
+import moon from 'apps/web/src/components/Builders/SmartWallet/svg/moon.svg';
 import Image, { StaticImageData } from 'next/image';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Title from 'apps/web/src/components/base-org/typography/Title';
@@ -10,7 +10,7 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import classNames from 'classnames';
 import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
 import { WalletDefault } from '@coinbase/onchainkit/wallet';
-import CodeSnippet from 'apps/web/src/components/Developers/Shared/CodeSnippet';
+import CodeSnippet from 'apps/web/src/components/Builders/Shared/CodeSnippet';
 
 const styles = `
   .code-snippet::-webkit-scrollbar {
