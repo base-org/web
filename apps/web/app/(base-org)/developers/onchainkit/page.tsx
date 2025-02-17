@@ -89,19 +89,24 @@ export default function OnchainKit() {
                 variant={ButtonVariants.Secondary}
                 iconName="copy"
                 onClick={handleCopy}
-                className="rounded-xl max-sm:w-full"
+                className="flex items-center justify-between px-4 py-3"
+                iconSize="16"
               >
                 npm create onchain
               </Button>
               <ButtonWithLinkAndEventLogging
                 href={ONCHAINKIT_DOCS_LINK}
-                iconName="arrowRight"
                 target="_blank"
-                variant={ButtonVariants.Outlined}
+                variant={ButtonVariants.SecondaryOutline}
+                buttonClassNames="flex items-center justify-between px-4 py-3 group"
                 eventName="onchainkit-docs"
-                buttonClassNames="rounded-xl max-sm:w-full"
               >
-                Documentation
+                <div className="flex items-center gap-4">
+                  <span>Documentation</span>
+                  <div className="transition-transform duration-200 group-hover:translate-x-1">
+                    <Icon name="arrowRight" width={16} height={16} color="white" />
+                  </div>
+                </div>
               </ButtonWithLinkAndEventLogging>
             </>
           }
