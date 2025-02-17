@@ -6,18 +6,18 @@ import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
-import agentkit from 'apps/web/src/components/Developers/AgentKit/agentkit.svg';
-import { Demo } from 'apps/web/src/components/Developers/AgentKit/Demo';
-import { Frameworks } from 'apps/web/src/components/Developers/AgentKit/Frameworks';
-import { InfoCards } from 'apps/web/src/components/Developers/AgentKit/InfoCards';
+import agentkit from 'apps/web/src/components/Builders/AgentKit/agentkit.svg';
+import { Demo } from 'apps/web/src/components/Builders/AgentKit/Demo';
+import { Frameworks } from 'apps/web/src/components/Builders/AgentKit/Frameworks';
+import { InfoCards } from 'apps/web/src/components/Builders/AgentKit/InfoCards';
 import {
   AGENTKIT_DOCS_LINK,
   FORK_TEMPLATE_LINK,
-} from 'apps/web/src/components/Developers/AgentKit/links';
-import { OnchainActions } from 'apps/web/src/components/Developers/AgentKit/OnchainActions';
-import { Possibilities } from 'apps/web/src/components/Developers/AgentKit/Possibilities';
-import { Testmonials } from 'apps/web/src/components/Developers/AgentKit/Testimonials';
-import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
+} from 'apps/web/src/components/Builders/AgentKit/links';
+import { OnchainActions } from 'apps/web/src/components/Builders/AgentKit/OnchainActions';
+import { Possibilities } from 'apps/web/src/components/Builders/AgentKit/Possibilities';
+import { Testmonials } from 'apps/web/src/components/Builders/AgentKit/Testimonials';
+import { CtaBanner } from 'apps/web/src/components/Builders/Shared/CtaBanner';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image, { StaticImageData } from 'next/image';
 import { useCallback } from 'react';

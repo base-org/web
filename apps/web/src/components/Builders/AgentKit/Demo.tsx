@@ -1,7 +1,7 @@
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
-import { FORK_TEMPLATE_LINK } from 'apps/web/src/components/Developers/AgentKit/links';
-import { AnimatedList } from 'apps/web/src/components/Developers/Shared/AnimatedList';
+import { FORK_TEMPLATE_LINK } from 'apps/web/src/components/Builders/AgentKit/links';
+import { AnimatedList } from 'apps/web/src/components/Builders/Shared/AnimatedList';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { cn } from 'base-ui/utils/cn';
 import Link from 'next/link';

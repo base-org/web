@@ -2,7 +2,7 @@
 
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
-import { AnimatedList } from 'apps/web/src/components/Developers/Shared/AnimatedList';
+import { AnimatedList } from 'apps/web/src/components/Builders/Shared/AnimatedList';
 import { cn } from 'base-ui/utils/cn';
 import { useRef, useState, useEffect } from 'react';
 

@@ -1,7 +1,7 @@
-import framework from 'apps/web/src/components/Developers/AgentKit/framework.svg';
-import eliza from 'apps/web/src/components/Developers/AgentKit/eliza.svg';
-import robot from 'apps/web/src/components/Developers/AgentKit/robot.svg';
-import cImage from 'apps/web/src/components/Developers/AgentKit/c.png';
+import framework from 'apps/web/src/components/Builders/AgentKit/framework.svg';
+import eliza from 'apps/web/src/components/Builders/AgentKit/eliza.svg';
+import robot from 'apps/web/src/components/Builders/AgentKit/robot.svg';
+import cImage from 'apps/web/src/components/Builders/AgentKit/c.png';
 import Image, { StaticImageData } from 'next/image';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';

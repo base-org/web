@@ -1,12 +1,12 @@
-import { Card, CardProps } from 'apps/web/src/components/Developers/Shared/Card';
-import dropsActive from 'apps/web/src/components/Developers/AgentKit/dropsActive.svg';
-import blockchain from 'apps/web/src/components/Developers/AgentKit/blockchain.svg';
-import metaverse from 'apps/web/src/components/Developers/AgentKit/metaverse.svg';
+import { Card, CardProps } from 'apps/web/src/components/Builders/Shared/Card';
+import dropsActive from 'apps/web/src/components/Builders/AgentKit/dropsActive.svg';
+import blockchain from 'apps/web/src/components/Builders/AgentKit/blockchain.svg';
+import metaverse from 'apps/web/src/components/Builders/AgentKit/metaverse.svg';
 import Image, { StaticImageData } from 'next/image';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import Link from 'next/link';
-import { AGENTKIT_DOCS_LINK } from 'apps/web/src/components/Developers/AgentKit/links';
+import { AGENTKIT_DOCS_LINK } from 'apps/web/src/components/Builders/AgentKit/links';
 
 const INFO_CARDS: CardProps[] = [
   {

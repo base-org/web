@@ -1,7 +1,7 @@
-import { ValueProp, ValuePropProps } from 'apps/web/src/components/Developers/Shared/ValueProp';
-import coinbase from 'apps/web/src/components/Developers/Verifications/coinbase.svg';
-import globe from 'apps/web/src/components/Developers/Verifications/globe.svg';
-import coinbaseOne from 'apps/web/src/components/Developers/Verifications/coinbaseOne.svg';
+import { ValueProp, ValuePropProps } from 'apps/web/src/components/Builders/Shared/ValueProp';
+import coinbase from 'apps/web/src/components/Builders/Verifications/coinbase.svg';
+import globe from 'apps/web/src/components/Builders/Verifications/globe.svg';
+import coinbaseOne from 'apps/web/src/components/Builders/Verifications/coinbaseOne.svg';
 import { StaticImageData } from 'next/image';
 
 const VALUE_PROPS: ValuePropProps[] = [

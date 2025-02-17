@@ -1,6 +1,6 @@
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
-import { Card, CardProps } from 'apps/web/src/components/Developers/Shared/Card';
+import { Card, CardProps } from 'apps/web/src/components/Builders/Shared/Card';
 
 const POSSIBILITIES: CardProps[] = [
   {
