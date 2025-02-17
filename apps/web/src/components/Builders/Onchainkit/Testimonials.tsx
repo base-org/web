@@ -1,6 +1,6 @@
-import { Marquee } from 'apps/web/src/components/Developers/Shared/Marquee';
-import { TweetCard } from 'apps/web/src/components/Developers/Shared/TweetCard';
-import { TWEETS } from 'apps/web/src/components/Developers/Onchainkit/tweets';
+import { Marquee } from 'apps/web/src/components/Builders/Shared/Marquee';
+import { TweetCard } from 'apps/web/src/components/Builders/Shared/TweetCard';
+import { TWEETS } from 'apps/web/src/components/Builders/Onchainkit/tweets';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 

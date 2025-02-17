@@ -1,6 +1,6 @@
 'use client';
 
-import { ONCHAINKIT_DEMO_TABS } from 'apps/web/src/components/Developers/Onchainkit/constants';
+import { ONCHAINKIT_DEMO_TABS } from 'apps/web/src/components/Builders/Onchainkit/constants';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
 import { useCallback, useMemo, useState } from 'react';

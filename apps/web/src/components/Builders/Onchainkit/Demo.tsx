@@ -1,15 +1,15 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import sun from 'apps/web/src/components/Developers/Shared/sun.svg';
-import moon from 'apps/web/src/components/Developers/Shared/moon.svg';
-import usdc from 'apps/web/src/components/Developers/Onchainkit/usdc.png';
+import sun from 'apps/web/src/components/Builders/Shared/sun.svg';
+import moon from 'apps/web/src/components/Builders/Shared/moon.svg';
+import usdc from 'apps/web/src/components/Builders/Onchainkit/usdc.png';
 import Image, { StaticImageData } from 'next/image';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
 import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
 import { WalletDefault } from '@coinbase/onchainkit/wallet';
-import CodeSnippet from 'apps/web/src/components/Developers/Shared/CodeSnippet';
+import CodeSnippet from 'apps/web/src/components/Builders/Shared/CodeSnippet';
 import { Checkout, CheckoutButton } from '@coinbase/onchainkit/checkout';
 import { TransactionDefault } from '@coinbase/onchainkit/transaction';
 import { Earn } from '@coinbase/onchainkit/earn';
@@ -29,8 +29,8 @@ import {
   CLICK_CALLS,
   COMPONENT_CODE_SNIPPETS,
   ONCHAINKIT_DEMO_TABS,
-} from 'apps/web/src/components/Developers/Onchainkit/constants';
-import { ComponentDropdown } from 'apps/web/src/components/Developers/Onchainkit/ComponentDropdown';
+} from 'apps/web/src/components/Builders/Onchainkit/constants';
+import { ComponentDropdown } from 'apps/web/src/components/Builders/Onchainkit/ComponentDropdown';
 import { Token } from '@coinbase/onchainkit/token';
 
 const styles = `

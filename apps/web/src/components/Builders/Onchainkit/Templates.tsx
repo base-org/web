@@ -7,7 +7,7 @@ import background1 from './bg1.png';
 import background2 from './bg2.png';
 import background3 from './bg3.png';
 import Image from 'next/image';
-import { FEATURE_TEMPLATE_LINK } from 'apps/web/src/components/Developers/Onchainkit/links';
+import { FEATURE_TEMPLATE_LINK } from 'apps/web/src/components/Builders/Onchainkit/links';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 
 const TEMPLATES = [
@@ -67,7 +67,7 @@ export function Templates() {
           iconName="github"
           target="_blank"
           eventName="onchainkit-feature-template"
-          buttonClassNames="rounded-xl"
+          buttonClassNames="flex items-center justify-between px-4 py-3 group"
         >
           Feature your template
         </ButtonWithLinkAndEventLogging>

@@ -1,12 +1,12 @@
-import tweet3 from 'apps/web/src/components/Developers/Onchainkit/assets/tweet3.jpg';
-import tweet1 from 'apps/web/src/components/Developers/Onchainkit/assets/tweet1.jpg';
-import tweet2 from 'apps/web/src/components/Developers/Onchainkit/assets/tweet2.jpg';
-import tweet4 from 'apps/web/src/components/Developers/Onchainkit/assets/tweet4.jpg';
-import tweet5 from 'apps/web/src/components/Developers/Onchainkit/assets/tweet5.jpg';
-import tweet6 from 'apps/web/src/components/Developers/Onchainkit/assets/tweet6.jpg';
-import tweet7 from 'apps/web/src/components/Developers/Onchainkit/assets/tweet7.jpg';
-import tweet8 from 'apps/web/src/components/Developers/Onchainkit/assets/tweet8.jpg';
-import jesse from 'apps/web/src/components/Developers/Onchainkit/assets/jesse.jpg';
+import tweet3 from 'apps/web/src/components/Builders/Onchainkit/assets/tweet3.jpg';
+import tweet1 from 'apps/web/src/components/Builders/Onchainkit/assets/tweet1.jpg';
+import tweet2 from 'apps/web/src/components/Builders/Onchainkit/assets/tweet2.jpg';
+import tweet4 from 'apps/web/src/components/Builders/Onchainkit/assets/tweet4.jpg';
+import tweet5 from 'apps/web/src/components/Builders/Onchainkit/assets/tweet5.jpg';
+import tweet6 from 'apps/web/src/components/Builders/Onchainkit/assets/tweet6.jpg';
+import tweet7 from 'apps/web/src/components/Builders/Onchainkit/assets/tweet7.jpg';
+import tweet8 from 'apps/web/src/components/Builders/Onchainkit/assets/tweet8.jpg';
+import jesse from 'apps/web/src/components/Builders/Onchainkit/assets/jesse.jpg';
 import { StaticImageData } from 'next/image';
 
 type Tweet = {
