@@ -1,7 +1,7 @@
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
-import { TweetCard } from 'apps/web/src/components/Developers/Shared/TweetCard';
-import bracky from 'apps/web/src/components/Developers/MiniKit/bracky.png';
+import { TweetCard } from 'apps/web/src/components/Builders/Shared/TweetCard';
+import bracky from 'apps/web/src/components/Builders/MiniKit/bracky.png';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 

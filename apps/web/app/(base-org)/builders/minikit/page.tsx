@@ -3,11 +3,11 @@ import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
-import { HeaderAnimation } from 'apps/web/src/components/Developers/MiniKit/HeaderAnimation';
-import { InfoCards } from 'apps/web/src/components/Developers/MiniKit/InfoCards';
-import minikit from 'apps/web/src/components/Developers/MiniKit/minikit.svg';
-import { SupportedPlatforms } from 'apps/web/src/components/Developers/MiniKit/SupportedPlatforms';
-import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
+import { HeaderAnimation } from 'apps/web/src/components/Builders/MiniKit/HeaderAnimation';
+import { InfoCards } from 'apps/web/src/components/Builders/MiniKit/InfoCards';
+import minikit from 'apps/web/src/components/Builders/MiniKit/minikit.svg';
+import { SupportedPlatforms } from 'apps/web/src/components/Builders/MiniKit/SupportedPlatforms';
+import { CtaBanner } from 'apps/web/src/components/Builders/Shared/CtaBanner';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image, { StaticImageData } from 'next/image';
 

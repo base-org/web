@@ -1,8 +1,8 @@
-import { Card, CardProps } from 'apps/web/src/components/Developers/Shared/Card';
-import megaphone from 'apps/web/src/components/Developers/MiniKit/megaphone.svg';
-import trading from 'apps/web/src/components/Developers/MiniKit/trading.svg';
-import participate from 'apps/web/src/components/Developers/MiniKit/participate.svg';
-import perpetualSwap from 'apps/web/src/components/Developers/MiniKit/perpetualSwap.svg';
+import { Card, CardProps } from 'apps/web/src/components/Builders/Shared/Card';
+import megaphone from 'apps/web/src/components/Builders/MiniKit/megaphone.svg';
+import trading from 'apps/web/src/components/Builders/MiniKit/trading.svg';
+import participate from 'apps/web/src/components/Builders/MiniKit/participate.svg';
+import perpetualSwap from 'apps/web/src/components/Builders/MiniKit/perpetualSwap.svg';
 import Image, { StaticImageData } from 'next/image';
 
 const INFO_CARDS: CardProps[] = [

@@ -1,7 +1,7 @@
-import bg1 from 'apps/web/src/components/Developers/MiniKit/bg1.png';
-import bg2 from 'apps/web/src/components/Developers/MiniKit/bg2.png';
-import walletLogo from 'apps/web/src/components/Developers/MiniKit/walletLogo.svg';
-import warpcastLogo from 'apps/web/src/components/Developers/MiniKit/warpcastLogo.svg';
+import bg1 from 'apps/web/src/components/Builders/MiniKit/bg1.png';
+import bg2 from 'apps/web/src/components/Builders/MiniKit/bg2.png';
+import walletLogo from 'apps/web/src/components/Builders/MiniKit/walletLogo.svg';
+import warpcastLogo from 'apps/web/src/components/Builders/MiniKit/warpcastLogo.svg';
 import Image, { StaticImageData } from 'next/image';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import Text from 'apps/web/src/components/base-org/typography/Text';

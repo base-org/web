@@ -1,11 +1,11 @@
 'use client';
 
 import React, { forwardRef, useRef } from 'react';
-import minikit2 from 'apps/web/src/components/Developers/MiniKit/minikit2.svg';
-import walletLogo from 'apps/web/src/components/Developers/MiniKit/walletLogo.svg';
-import farcaster from 'apps/web/src/components/Developers/MiniKit/farcaster.svg';
-import plus from 'apps/web/src/components/Developers/MiniKit/plus.svg';
-import { AnimatedBeam } from 'apps/web/src/components/Developers/Shared/AnimatedBeam';
+import minikit2 from 'apps/web/src/components/Builders/MiniKit/minikit2.svg';
+import walletLogo from 'apps/web/src/components/Builders/MiniKit/walletLogo.svg';
+import farcaster from 'apps/web/src/components/Builders/MiniKit/farcaster.svg';
+import plus from 'apps/web/src/components/Builders/MiniKit/plus.svg';
+import { AnimatedBeam } from 'apps/web/src/components/Builders/Shared/AnimatedBeam';
 import Image, { StaticImageData } from 'next/image';
 
 const Circle = forwardRef<HTMLDivElement, { className?: string; children?: React.ReactNode }>(
