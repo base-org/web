@@ -10,7 +10,7 @@ import { ReactNode } from 'react';
 import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
 
 type SupportedPlatformCardProps = {
-  title: string;
+  title?: string;
   value: string;
   description: string;
   image: StaticImageData;
@@ -25,17 +25,19 @@ function SupportedPlatformCard({
   logo,
 }: SupportedPlatformCardProps) {
   return (
-    <div className="relative flex min-h-[316px] flex-col justify-between gap-10 overflow-hidden rounded-lg p-6">
+    <div className="relative flex min-h-[212px] flex-col justify-between gap-10 overflow-hidden rounded-lg p-6">
       <Image src={image} alt="Template background" layout="fill" objectFit="cover" />
       <div className="z-10 flex items-center gap-2 text-white">
         {logo}
-        <Title level={TitleLevel.Title4} className="font-bold">
-          {title}
-        </Title>
+        {title && (
+          <Title level={TitleLevel.Title4} className="font-bold">
+            {title}
+          </Title>
+        )}
       </div>
 
       <div className="z-10 flex flex-col">
-        <Title level={TitleLevel.Display1}>{value}</Title>
+        <Title level={TitleLevel.Title1}>{value}</Title>
         <Text variant={TextVariant.Body}>{description}</Text>
       </div>
     </div>
@@ -55,18 +57,8 @@ export function SupportedPlatforms() {
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <SupportedPlatformCard
-          title="Coinbase Wallet"
-          description="Daily Active Users"
-          value="10M"
-          image={bg1}
-          logo={
-            <Image src={walletLogo as StaticImageData} alt="Wallet logo" width={20} height={20} />
-          }
-        />
-        <SupportedPlatformCard
-          title="Warpcast"
-          description="Daily Active Users"
-          value="12K"
+          description="A sufficiently decentralized social network"
+          value="Warpcast"
           image={bg2}
           logo={
             <Image
@@ -75,6 +67,14 @@ export function SupportedPlatforms() {
               width={18}
               height={16}
             />
+          }
+        />
+        <SupportedPlatformCard
+          description="Coming soon"
+          value="Coinbase Wallet"
+          image={bg1}
+          logo={
+            <Image src={walletLogo as StaticImageData} alt="Wallet logo" width={20} height={20} />
           }
         />
       </div>
