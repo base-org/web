@@ -128,7 +128,7 @@ const logoStyle = {
 export function Apps() {
   return (
     <section className="h-full w-full pt-32">
-      <Title level={TitleLevel.Title1} as="h2" className="mb-16 hidden md:block">
+      <Title level={TitleLevel.Title1} as="h2" className="mb-10 hidden md:block">
         Powering the most consumer-friendly applications onchain.
       </Title>
       <Title level={TitleLevel.Title3} className="mb-8 font-medium md:hidden">

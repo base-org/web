@@ -94,12 +94,12 @@ export function Testimonials() {
                 </blockquote>
                 <ButtonWithLinkAndEventLogging
                   variant={ButtonVariants.SecondaryOutline}
-                  linkClassNames="text-base font-medium text-white block"
-                  buttonClassNames="flex w-40 items-center justify-between px-4 py-3 group"
+                  linkClassNames="block"
+                  buttonClassNames="text-base font-medium text-white flex items-center justify-between px-4 py-3 group"
                   href="/builders/stories"
                   eventName="testimonials"
                 >
-                  <div className="flex w-40 items-center justify-between">
+                  <div className="flex items-center gap-4">
                     <span> More stories</span>
                     <div className="transition-transform duration-200 group-hover:translate-x-1">
                       <Icon name="arrowRight" width={20} height={20} color="white" />
