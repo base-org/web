@@ -572,6 +572,7 @@ __metadata:
     jsonwebtoken: ^9.0.2
     kysely: ^0.27.3
     next: ^15.1.6
+    motion: ^12.3.1
     node-fetch: ^3.3.0
     permissionless: ^0.1.41
     pg: ^8.12.0
@@ -16261,6 +16262,28 @@ __metadata:
     react-dom:
       optional: true
   checksum: 99ce30d07398b97f4c98829b0679f7603c820f796113045683cfdd44323ff744a7be530d65077db42e044d3323c8503a18c876a8a88f3ded2b40889ce2acb6ac
+  languageName: node
+  linkType: hard
+
+"framer-motion@npm:^12.4.0":
+  version: 12.4.0
+  resolution: "framer-motion@npm:12.4.0"
+  dependencies:
+    motion-dom: ^12.0.0
+    motion-utils: ^12.0.0
+    tslib: ^2.4.0
+  peerDependencies:
+    "@emotion/is-prop-valid": "*"
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    "@emotion/is-prop-valid":
+      optional: true
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 8b616624bd2bea295b36ae32aa03c9906b3a8c8f6f91a3c76fd2e4e6eda208c0044cbe981ada282a60ea8c754477dde6494b2a5486451352914cae75a1d2e47d
   languageName: node
   linkType: hard
 
