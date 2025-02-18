@@ -42,10 +42,10 @@ export default function OnchainKit() {
             </Title>
           </div>
           <Title level={TitleLevel.Display3} className="font-bold max-sm:hidden">
-            Build and deploy onchain in minutes
+            Build onchain apps in minutes
           </Title>
           <Title level={TitleLevel.Title1} className="font-bold sm:hidden">
-            Build and deploy onchain in minutes
+            Build onchain apps in minutes
           </Title>
           <Title level={TitleLevel.Title3} className="text-gray-muted">
             Ready-to-use, full-stack components to make building onchain faster and easier.
