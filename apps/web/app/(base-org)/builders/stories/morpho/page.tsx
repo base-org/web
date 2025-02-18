@@ -1,24 +1,24 @@
+import { StaticImageData } from 'next/image';
 import Container from 'apps/web/src/components/base-org/Container';
-import mtsumi from 'apps/web/src/components/Builders/Stories/StoryCards/assets/mtsumi.webp';
 import { Hero } from 'apps/web/src/components/Builders/Stories/StoryPages/Hero';
 import { QABlock } from 'apps/web/src/components/Builders/Stories/StoryPages/QABlock';
 import { Blockquote } from 'apps/web/src/components/Builders/Stories/StoryPages/Blockquote';
 import { ReadMore } from 'apps/web/src/components/Builders/Stories/StoryPages/ReadMore';
 import { BottomCta } from 'apps/web/src/components/Builders/Stories/BottomCta';
+import morpho from 'apps/web/src/components/Builders/Stories/StoryCards/assets/Morpho.svg';
 
 export default function Morpho() {
   return (
     <Container className="!px-[1.5rem] lg:!px-[2rem]">
       <main className="mb-32 flex min-h-screen w-full flex-col items-center bg-black pt-20">
         <Hero
-          date="January 19, 2025"
           title="Merlin Egalite of Morpho"
           description="Building the largest and most secure lending protocol on Base, leveraging the power of the Superchain ecosystem."
           href="https://www.morpho.xyz/"
           region="Paris, France"
           project="Morpho"
           onBaseSince="February 2024"
-          image={mtsumi}
+          image={morpho as StaticImageData}
         />
         <QABlock
           question="Tell us a little about the app you are building on Base?"

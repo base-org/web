@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
 
 export function Hero({
-  date,
   title,
   description,
   href,
@@ -14,7 +13,6 @@ export function Hero({
   onBaseSince,
   image,
 }: {
-  date: string;
   title: string;
   description: string;
   href: string;
@@ -26,9 +24,6 @@ export function Hero({
   return (
     <div className="mb-24 mt-32 flex w-full flex-col items-start gap-12">
       <div className="flex flex-col gap-6">
-        <Title level={TitleLevel.Title4} className="text-dark-palette-foregroundMuted">
-          {date}
-        </Title>
         <div className="flex flex-col gap-3">
           <Title level={TitleLevel.Display3} className="font-medium">
             {title}

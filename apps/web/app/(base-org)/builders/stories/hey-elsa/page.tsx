@@ -1,24 +1,24 @@
+import { StaticImageData } from 'next/image';
 import Container from 'apps/web/src/components/base-org/Container';
-import mtsumi from 'apps/web/src/components/Builders/Stories/StoryCards/assets/mtsumi.webp';
 import { Hero } from 'apps/web/src/components/Builders/Stories/StoryPages/Hero';
 import { QABlock } from 'apps/web/src/components/Builders/Stories/StoryPages/QABlock';
 import { Blockquote } from 'apps/web/src/components/Builders/Stories/StoryPages/Blockquote';
 import { ReadMore } from 'apps/web/src/components/Builders/Stories/StoryPages/ReadMore';
 import { BottomCta } from 'apps/web/src/components/Builders/Stories/BottomCta';
+import heyElsa from 'apps/web/src/components/Builders/Stories/StoryCards/assets/Elsa.svg';
 
 export default function HeyElsa() {
   return (
     <Container className="!px-[1.5rem] lg:!px-[2rem]">
       <main className="mb-32 flex min-h-screen w-full flex-col items-center bg-black pt-20">
         <Hero
-          date="January 19, 2025"
           title="Dhawal Shah of HeyElsa AI"
           description="Revolutionizing crypto trading with AI-driven intelligence, pushing boundaries in portfolio management."
           href="https://www.heyelsa.ai/"
           region="India"
           project="HeyElsa AI"
           onBaseSince="August 2024"
-          image={mtsumi}
+          image={heyElsa as StaticImageData}
         />
         <QABlock
           question="Tell us a little about the app you are building on Base?"

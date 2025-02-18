@@ -1,24 +1,24 @@
+import { StaticImageData } from 'next/image';
 import Container from 'apps/web/src/components/base-org/Container';
-import mtsumi from 'apps/web/src/components/Builders/Stories/StoryCards/assets/mtsumi.webp';
 import { Hero } from 'apps/web/src/components/Builders/Stories/StoryPages/Hero';
 import { QABlock } from 'apps/web/src/components/Builders/Stories/StoryPages/QABlock';
 import { Blockquote } from 'apps/web/src/components/Builders/Stories/StoryPages/Blockquote';
 import { ReadMore } from 'apps/web/src/components/Builders/Stories/StoryPages/ReadMore';
 import { BottomCta } from 'apps/web/src/components/Builders/Stories/BottomCta';
+import byte from 'apps/web/src/components/Builders/Stories/StoryCards/assets/ByteAI.svg';
 
 export default function Byte() {
   return (
     <Container className="!px-[1.5rem] lg:!px-[2rem]">
       <main className="mb-32 flex min-h-screen w-full flex-col items-center bg-black pt-20">
         <Hero
-          date="January 19, 2025"
           title="AchillesHodl of Byte"
           description="Pioneering the future of food ordering with AI and crypto, transforming human language into the ultimate user interface."
           href="https://www.tryabyte.xyz/"
           region="United States of America"
           project="Byte"
           onBaseSince="November 2024"
-          image={mtsumi}
+          image={byte as StaticImageData}
         />
         <QABlock
           question="Tell us a little about the app you are building on Base?"

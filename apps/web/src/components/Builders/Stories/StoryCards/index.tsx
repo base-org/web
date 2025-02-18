@@ -4,9 +4,15 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
-import classNames from 'classnames';
 
-import mtsumi from 'apps/web/src/components/Builders/Stories/StoryCards/assets/mtsumi.webp';
+import baseLogo from 'apps/web/src/components/Builders/Stories/StoryCards/assets/BaseLogo.svg';
+import blocklords from 'apps/web/src/components/Builders/Stories/StoryCards/assets/Blocklords.svg';
+import cattown from 'apps/web/src/components/Builders/Stories/StoryCards/assets/CatTown.svg';
+import byte from 'apps/web/src/components/Builders/Stories/StoryCards/assets/ByteAI.svg';
+import morpho from 'apps/web/src/components/Builders/Stories/StoryCards/assets/Morpho.svg';
+import heyelsa from 'apps/web/src/components/Builders/Stories/StoryCards/assets/Elsa.svg';
+import aerodrome from 'apps/web/src/components/Builders/Stories/StoryCards/assets/Aerodrome.svg';
+import Link from 'apps/web/src/components/Link';
 
 export function StoryCards() {
   return (
@@ -15,55 +21,49 @@ export function StoryCards() {
         title="David Johansson of BLOCKLORDS"
         description="Building a medieval grand strategy game with a player-driven onchain economy."
         location="Stockholm, Sweden"
-        date="January 19, 2025"
+        onBaseSince="January, 2024"
         href="/builders/stories/blocklords"
-        color="text-dark-green-60"
-        image={mtsumi}
+        image={blocklords as StaticImageData}
       />
       <StoryCard
         title="Tara of Cat Town"
         description="Building a cozy onchain life sim game, combining gaming with DeFi to create a thriving community."
         location="United Kingdom"
-        date="January 19, 2025"
+        onBaseSince="April, 2024"
         href="/builders/stories/cat-town"
-        color="text-dark-pink-60"
-        image={mtsumi}
+        image={cattown as StaticImageData}
       />
       <StoryCard
         title="AchillesHodl of Byte"
         description="Pioneering the future of food ordering with AI and crypto, transforming human language into the ultimate user interface."
         location="United States of America"
-        date="January 19, 2025"
+        onBaseSince="November, 2024"
         href="/builders/stories/byte"
-        color="text-dark-pink-60"
-        image={mtsumi}
+        image={byte as StaticImageData}
       />
       <StoryCard
         title="Merlin Egalite of Morpho"
         description="Building the largest and most secure lending protocol on Base, leveraging the power of the Superchain ecosystem."
         location="Paris, France"
-        date="January 19, 2025"
+        onBaseSince="February, 2024"
         href="/builders/stories/morpho"
-        color="text-dark-pink-60"
-        image={mtsumi}
+        image={morpho as StaticImageData}
       />
       <StoryCard
         title="Dhawal Shah of HeyElsa AI"
         description="Revolutionizing crypto trading with AI-driven intelligence, pushing boundaries in portfolio management."
         location="India"
-        date="January 19, 2025"
+        onBaseSince="August, 2024"
         href="/builders/stories/hey-elsa"
-        color="text-dark-pink-60"
-        image={mtsumi}
+        image={heyelsa as StaticImageData}
       />
       <StoryCard
         title="Alexander of Aerodrome Finance"
         description="Serving as the essential trading and liquidity marketplace on Base, driving the future of decentralized exchanges."
         location="United States of America"
-        date="January 19, 2025"
+        onBaseSince="August, 2023"
         href="/builders/stories/aerodrome"
-        color="text-dark-pink-60"
-        image={mtsumi}
+        image={aerodrome as StaticImageData}
       />
     </div>
   );
@@ -73,22 +73,22 @@ function StoryCard({
   title,
   description,
   location,
-  date,
+  onBaseSince,
   href,
-  color,
   image,
 }: {
   title: string;
   description: string;
   location: string;
-  date: string;
+  onBaseSince: string;
   href: string;
-  color: string;
   image: StaticImageData;
 }) {
   return (
     <div className="z-1 flex w-full flex-col gap-8">
-      <Image src={image} alt={title} />
+      <Link href={href}>
+        <Image src={image} alt={title} />
+      </Link>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-4">
           <div className="hidden flex-col gap-2 md:flex">
@@ -105,24 +105,29 @@ function StoryCard({
               {description}
             </Title>
           </div>
-          <div className="flex flex-col gap-2 md:flex-row">
-            <div className="flex gap-1">
-              <div className={classNames(color, 'hidden md:block')}>
+          <div className="flex flex-col gap-4 md:flex-row">
+            <div className="flex items-center gap-1">
+              <div className="hidden h-5 w-5 items-center justify-center md:flex">
+                <Image src={baseLogo as StaticImageData} alt="Base Logo" />
+              </div>
+              <div className="md:hidden">
+                <Image src={baseLogo as StaticImageData} alt="Base Logo" />
+              </div>
+              <Title level={TitleLevel.Headline} className="font-normal">
+                {onBaseSince}
+              </Title>
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="hidden md:block">
                 <Icon name="locationPin" color="currentColor" />
               </div>
-              <div className={classNames(color, 'md:hidden')}>
+              <div className="md:hidden">
                 <Icon name="locationPin" color="currentColor" width={20} height={20} />
               </div>
-              <Title level={TitleLevel.Headline} className={classNames(color, 'font-normal')}>
+              <Title level={TitleLevel.Headline} className="font-normal">
                 {location}
               </Title>
             </div>
-            <Title
-              level={TitleLevel.Headline}
-              className="font-normal text-dark-palette-foregroundMuted"
-            >
-              {date}
-            </Title>
           </div>
         </div>
         <ButtonWithLinkAndEventLogging
