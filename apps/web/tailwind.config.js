@@ -574,6 +574,14 @@ module.exports = {
           '70%': { transform: 'scale(100%)' },
           '100%': { transform: 'scale(95%)' },
         },
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-100% - var(--gap)))' },
+        },
+        'marquee-vertical': {
+          from: { transform: 'translateY(0)' },
+          to: { transform: 'translateY(calc(-100% - var(--gap)))' },
+        },
       },
       animation: {
         'slide-left': 'slide-left var(--animation-duration, 20s) linear infinite',
