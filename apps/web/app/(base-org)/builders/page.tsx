@@ -22,9 +22,9 @@ export const metadata: Metadata = {
 export default function Developers() {
   return (
     <AnalyticsProvider context="developers">
-      <Container className="!px-[1.5rem] lg:!px-[2rem]">
-        <main className="mb-32 flex min-h-screen w-full flex-col items-center bg-black pt-20">
-          <Hero />
+      <main className="mb-32 flex min-h-screen w-full flex-col items-center bg-black pt-20">
+        <Hero />
+        <Container className="!px-[1.5rem] lg:!px-[2rem]">
           <UseCases />
           <Apps />
           <Testimonials />
@@ -32,8 +32,8 @@ export default function Developers() {
           <WhyBase />
           <LiveDemo />
           <BottomCta />
-        </main>
-      </Container>
+        </Container>
+      </main>
     </AnalyticsProvider>
   );
 }

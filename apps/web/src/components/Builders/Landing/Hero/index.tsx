@@ -1,7 +1,6 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-// import scramble from 'scramble';
 import { GridHero } from 'apps/web/src/components/Builders/Landing/Hero/GridHero';
 import classNames from 'classnames';
 import Title from 'apps/web/src/components/base-org/typography/Title';
@@ -9,28 +8,8 @@ import { SearchModal } from 'apps/web/src/components/Builders/Landing/Hero/Searc
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 
-// const originalText = 'What do you want to build?';
-
 export function Hero() {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
-  // const [headingText, setHeadingText] = useState(originalText);
-
-  // useEffect(() => {
-  //   let iterations = 0;
-  //   const maxIterations = 15;
-  //   const interval = setInterval(() => {
-  //     if (iterations >= maxIterations) {
-  //       clearInterval(interval);
-  //       setHeadingText(originalText);
-  //       return;
-  //     }
-  //     const scrambledText = scramble(originalText);
-  //     setHeadingText(scrambledText);
-  //     iterations++;
-  //   }, 50);
-
-  //   return () => clearInterval(interval);
-  // }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -67,11 +46,15 @@ export function Hero() {
   return (
     <div className="mb-6 flex w-full flex-col items-center justify-center bg-black">
       <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden md:h-[660px]">
-        <div className="absolute inset-0 hidden bg-black md:block">
-          <GridHero columns={30} hasBlue />
-        </div>
-        <div className="absolute inset-0 bg-black md:hidden">
-          <GridHero columns={50} hasBlue />
+        <div
+          className={classNames(
+            'absolute inset-0',
+            'before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-20 before:bg-gradient-to-b before:from-black before:via-black/50 before:to-transparent',
+            'after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-20 after:bg-gradient-to-t after:from-black after:via-black/50 after:to-transparent',
+          )}
+        >
+          <GridHero columns={30} hasBlue className="hidden md:block" />
+          <GridHero columns={50} hasBlue className="md:hidden" />
         </div>
         <Title className="z-10 font-display text-[1.25rem] leading-[1.2em] tracking-tight md:text-[2rem] lg:text-[3rem]">
           What do you want to build?
