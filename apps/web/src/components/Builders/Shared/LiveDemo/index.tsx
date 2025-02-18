@@ -41,9 +41,10 @@ import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
 
 type LiveDemoProps = {
   components: (typeof ONCHAINKIT_DEMO_TABS)[number][];
+  title?: string;
 };
 
-export function LiveDemo({ components }: LiveDemoProps) {
+export function LiveDemo({ components, title }: LiveDemoProps) {
   const [mode, setMode] = useState<'light' | 'dark'>('dark');
   const [isMounted, setIsMounted] = useState(false);
   const [content, setContent] = useState<'code' | 'preview'>('code');
@@ -141,6 +142,7 @@ export function LiveDemo({ components }: LiveDemoProps) {
         demoComponent={demoComponent}
         toggleMode={toggleMode}
         copied={copied}
+        title={title}
       />
       <MobileDemo
         components={components}
@@ -154,6 +156,7 @@ export function LiveDemo({ components }: LiveDemoProps) {
         demoComponent={demoComponent}
         toggleMode={toggleMode}
         setContent={setContent}
+        title={title}
       />
     </>
   );
@@ -213,25 +216,27 @@ function DesktopDemo({
             mode === 'dark' ? 'border-dark-palette-line/20' : 'border-dark-palette-line/20',
           )}
         >
-          <div className="no-scrollbar items-center space-x-8 overflow-x-auto">
-            <div className="flex space-x-8 px-1">
-              {components.map((component) => (
-                <button
-                  key={component}
-                  type="button"
-                  onClick={createTabSelectionHandler(component as Tab)}
-                  className={classNames(
-                    'whitespace-nowrap rounded-lg text-base font-medium transition-colors',
-                    activeTab === component ? buttonClasses.active : buttonClasses.inactive,
-                  )}
-                >
-                  {component}
-                </button>
-              ))}
+          {components?.length > 1 && (
+            <div className="no-scrollbar items-center space-x-8 overflow-x-auto">
+              <div className="flex space-x-8 px-1">
+                {components.map((component) => (
+                  <button
+                    key={component}
+                    type="button"
+                    onClick={createTabSelectionHandler(component as Tab)}
+                    className={classNames(
+                      'whitespace-nowrap rounded-lg text-base font-medium transition-colors',
+                      activeTab === component ? buttonClasses.active : buttonClasses.inactive,
+                    )}
+                  >
+                    {component}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 ml-auto">
             <button
               type="button"
               onClick={handleCopy}

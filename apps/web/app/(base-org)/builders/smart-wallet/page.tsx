@@ -10,8 +10,8 @@ import wallet from 'apps/web/src/components/Builders/SmartWallet/svg/wallet.svg'
 import headerImage from 'apps/web/src/components/Builders/SmartWallet/header.png';
 import { CtaBanner } from 'apps/web/src/components/Builders/Shared/CtaBanner';
 import Image, { StaticImageData } from 'next/image';
-import { Demo } from 'apps/web/src/components/Builders/SmartWallet/Demo';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import { LiveDemo } from 'apps/web/src/components/Builders/Shared/LiveDemo';
 
 export default async function BaseWallet() {
   return (
@@ -66,7 +66,10 @@ export default async function BaseWallet() {
         <Customers />
         <InfoCards />
         <Transactions />
-        <Demo />
+        <LiveDemo
+          components={['Wallet']}
+          title="Unlock onboarding superpowers with a few lines of code"
+        />
 
         <CtaBanner
           title="Integrate Smart Wallet in minutes"
