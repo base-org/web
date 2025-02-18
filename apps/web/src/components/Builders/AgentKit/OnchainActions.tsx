@@ -68,9 +68,7 @@ export function OnchainActions({ className }: { className?: string }) {
   return (
     <div className="flex  min-h-[650px] w-full flex-col gap-10" ref={ref}>
       <div>
-        <Title level={TitleLevel.Title1}>
-          All onchain actions at your agent&apos;s fingertips.
-        </Title>
+        <Title level={TitleLevel.Title1}>All onchain actions at your agent&apos;s fingertips</Title>
       </div>
       <div className={cn('bg-background relative flex w-full flex-col overflow-hidden', className)}>
         <AnimatedList className="gap-3" isInView={isInView}>

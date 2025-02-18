@@ -8,7 +8,7 @@ import { TWEETS } from 'apps/web/src/components/Builders/AgentKit/tweets';
 export function Testmonials() {
   return (
     <div className="flex w-full flex-col gap-10">
-      <Title level={TitleLevel.Title1}>Powering the most creative onchain agents.</Title>
+      <Title level={TitleLevel.Title1}>Powering the most creative onchain agents</Title>
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
         <Marquee className="[--duration:20s]" pauseOnHover>
           {TWEETS?.map((tweet) => {

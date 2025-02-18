@@ -45,14 +45,14 @@ export default function AgentKit() {
             </Title>
           </div>
           <Title level={TitleLevel.Display3} className="font-bold max-sm:hidden">
-            Your AI agent deserves a crypto wallet
+            Every AI agent deserves a crypto wallet
           </Title>
           <Title level={TitleLevel.Title1} className="font-bold sm:hidden">
-            Your AI agent deserves a crypto wallet
+            Every AI agent deserves a crypto wallet
           </Title>
           <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted sm:text-center">
-            A production-ready, framework-agnostic toolkit for giving every AI agent a crypto wallet
-            and a set of comprehensive onchain interactions.
+            A production-ready, framework-agnostic toolkit to give AI agents access to crypto
+            wallets and allow them to transact onchain.
           </Title>
 
           <div className="flex gap-4 bg-black pb-24  pt-5 max-sm:max-w-[240px] max-sm:flex-col">
