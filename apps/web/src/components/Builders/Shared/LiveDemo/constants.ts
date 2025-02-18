@@ -138,7 +138,7 @@ export const codeSnippets = {
 function CheckoutDemo() {
   return (
     <Checkout productId='my-product-id'>
-      <CheckoutButton coinbaseBranded={true}/>
+      <CheckoutButton />
     </Checkout>
   )
 }`,
