@@ -513,9 +513,7 @@ function ComponentDemo({
         mode === 'dark' ? 'border-dark-palette-line/20' : 'border-dark-palette-line/20',
       )}
     >
-      <DynamicCryptoProviders mode={mode} theme="base">
-        {demoComponent}
-      </DynamicCryptoProviders>
+      <DynamicCryptoProviders mode={mode}>{demoComponent}</DynamicCryptoProviders>
     </div>
   );
 }
