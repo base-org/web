@@ -10,7 +10,7 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import classNames from 'classnames';
 import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
 import { WalletDefault } from '@coinbase/onchainkit/wallet';
-import CodeSnippet from 'apps/web/src/components/Builders/Shared/CodeSnippet';
+import { CodeSnippet } from 'apps/web/src/components/Builders/Shared/CodeSnippet';
 
 const styles = `
   .code-snippet::-webkit-scrollbar {
