@@ -57,7 +57,7 @@ export function Hero() {
           <GridHero columns={50} hasBlue className="md:hidden" />
         </div>
         <Title className="z-10 font-display text-[1.25rem] leading-[1.2em] tracking-tight md:text-[2rem] lg:text-[3rem]">
-          What do you want to build?
+          Build anything onchain
         </Title>
 
         <div className="mt-7 flex w-[345px] flex-col items-center md:w-[645px]">

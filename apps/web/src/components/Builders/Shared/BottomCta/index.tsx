@@ -17,8 +17,8 @@ export function BottomCta() {
 
   return (
     <CtaBanner
-      title="Together, we're updating the Internet with a new dev platform."
-      description="Start building with a starter template or see documentation."
+      title="What will you build?"
+      description="Use a starter template or read documentation to get started."
       sectionClassName="my-24"
       cta={
         <>

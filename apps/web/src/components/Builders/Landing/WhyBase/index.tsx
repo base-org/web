@@ -18,24 +18,24 @@ export function WhyBase() {
       <div className="flex flex-col gap-6 md:gap-9">
         <div className="flex flex-col gap-1 pr-4">
           <Title level={TitleLevel.Title1} as="h2" className="hidden md:block">
-            Build on the fastest growing L2.{' '}
+            Base is for builders.{' '}
             <span className="text-dark-palette-foregroundMuted">
-              Grow faster with distribution through Base&apos;s social graph and integrations with
-              Coinbase products.
+              We&apos;re committed to help builders shape the global onchain economy — from start to
+              finish.
             </span>
           </Title>
           <Title level={TitleLevel.Title3} className="md:hidden">
-            Build on the fastest growing L2.{' '}
+            Base is for builders.{' '}
             <span className="text-dark-palette-foregroundMuted">
-              Grow faster with distribution through Base&apos;s social graph and integrations with
-              Coinbase products.
+              We&apos;re committed to help builders shape the global onchain economy — from start to
+              finish.
             </span>
           </Title>
         </div>
         <div className="hidden flex-col gap-3 md:flex">
           <ValueProp
             title="Distribution & Growth"
-            description="Reach millions of users across the Coinbase product ecosystem and social graph, plus opportunities for builder grants."
+            description="Reach millions of people across the Coinbase product ecosystem and social graph, plus opportunities for builder grants."
             icon={megaphone as StaticImageData}
           />
           <ValueProp
@@ -45,7 +45,7 @@ export function WhyBase() {
           />
           <ValueProp
             title="Powerful Integrations"
-            description="Integrations with Coinbase’s retail platform allows seamless transfers of assets across the onchain ecosystem."
+            description="Integrations with Coinbase Exchange allows seamless transfers of assets across the onchain ecosystem."
             icon={integration as StaticImageData}
           />
           <ValueProp

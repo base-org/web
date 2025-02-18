@@ -129,10 +129,10 @@ export function Apps() {
   return (
     <section className="h-full w-full pt-32">
       <Title level={TitleLevel.Title1} as="h2" className="mb-10 hidden md:block">
-        Powering the most consumer-friendly applications onchain.
+        Powering your favorite onchain apps.
       </Title>
       <Title level={TitleLevel.Title3} className="mb-8 font-medium md:hidden">
-        Powering the most consumer-friendly applications onchain.
+        Powering your favorite onchain apps.
       </Title>
       <Marquee className="[--duration:60s]" childrenClassName="!gap-[96px]">
         {customers.map((customer) => (

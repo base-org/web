@@ -202,9 +202,6 @@ function DesktopDemo({
       <style>{codeStyles}</style>
       <div className="mb-9 flex-row gap-2">
         <Title level={TitleLevel.Title1} as="h2">
-          Try it out!
-        </Title>
-        <Title level={TitleLevel.Title1} as="h2" className="text-dark-palette-foregroundMuted">
           Experience how easy it is to build on Base.
         </Title>
       </div>
@@ -342,12 +339,7 @@ function MobileDemo({
     <section className="w-full md:hidden">
       <style>{codeStyles}</style>
       <div className="mb-9 flex flex-col gap-2">
-        <Title level={TitleLevel.Title3}>
-          Try it out!{' '}
-          <span className="text-dark-palette-foregroundMuted">
-            Experience how easy it is to build on Base.
-          </span>
-        </Title>
+        <Title level={TitleLevel.Title3}>Experience how easy it is to build on Base.</Title>
       </div>
       <div
         className={classNames(

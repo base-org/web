@@ -26,27 +26,27 @@ export function Tools() {
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
         <ToolCard
           title="OnchainKit"
-          description="An all-in-one toolkit to make building onchain faster, easier, and more profitable."
+          description="Build an app in 10 minutes with an all-in-one toolkit and full-stack components."
           icon={onchainKit as StaticImageData}
           href="https://onchainkit.xyz/"
         />
         <ToolCard
+          title="Smart Wallet"
+          description="A passkey-based universal account to connect with the onchain world."
+          icon={smartWallet as StaticImageData}
+          href="https://www.smartwallet.dev/why"
+        />
+        <ToolCard
           title="AgentKit"
-          description="Build and deploy AI agents that can interact with blockchain data and smart contracts."
+          description="Give every AI agent a crypto wallet and the ability to transact and interact onchain."
           icon={agentKit as StaticImageData}
           href="https://docs.cdp.coinbase.com/agentkit/docs/welcome"
         />
         <ToolCard
           title="MiniKit"
-          description="Build once. Deploy anywhere. A tool to help you easily deploy your app on Warpcast and Base App."
+          description="Feature your mini app on decentralized social platforms with a few lines of code."
           icon={miniKit as StaticImageData}
           href="/coming-soon"
-        />
-        <ToolCard
-          title="Smart Wallet"
-          description="A passkey-based, self-custodial, global wallet for seamless experiences."
-          icon={smartWallet as StaticImageData}
-          href="https://www.smartwallet.dev/why"
         />
       </div>
     </section>

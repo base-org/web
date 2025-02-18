@@ -11,22 +11,16 @@ import { AnimatedGasless } from 'apps/web/src/components/Builders/Shared/assets/
 export function UseCases() {
   return (
     <section className="h-full w-full">
-      <div className="hidden flex-col gap-2 md:flex ">
-        <Title level={TitleLevel.Title1} as="h2">
-          Build. Scale. Monetize.{' '}
-          <span className="text-gray-50">Everything you need to launch onchain products.</span>
-        </Title>
-      </div>
-      <div className="flex flex-col gap-2 font-medium md:hidden">
-        <Title level={TitleLevel.Title3}>
-          Build. Scale. Monetize.{' '}
-          <span className="text-gray-50">Everything you need to launch onchain products.</span>
-        </Title>
-      </div>
+      <Title level={TitleLevel.Title1} as="h2" className="hidden md:flex">
+        Everything you need to build, scale, and monetize your onchain app
+      </Title>
+      <Title level={TitleLevel.Title3} className="md:hidden">
+        Everything you need to build, scale, and monetize your onchain app
+      </Title>
       <div className="mt-6 grid grid-cols-1 gap-9 md:mt-9 md:grid-cols-2">
         <UseCaseBlock
-          title="Onboard your users"
-          description="Create seamless onboarding experiences with smart wallerts and social authentication."
+          title="Onboard everyone"
+          description="Let users sign up and sign in with Smart Wallet — the universal account for the onchain world."
           href="https://vocs-migration-mvp-one.vercel.app/dev-tools/identity/smart-wallet/quick-start"
         >
           <div className="flex h-[320px] w-[285px] flex-col items-center justify-center md:w-1/2">
@@ -35,7 +29,7 @@ export function UseCases() {
         </UseCaseBlock>
         <UseCaseBlock
           title="Accept crypto payments"
-          description="Integrate secure and efficient crypto payment solutions for your applications."
+          description="Integrate secure and efficient crypto payment solutions for your apps."
           href="https://vocs-migration-mvp-one.vercel.app/dev-tools/kits/onchainkit/checkout/checkout"
         >
           <AnimatedPayment />
@@ -48,22 +42,22 @@ export function UseCases() {
           <AnimatedBaseAgent />
         </UseCaseBlock>
         <UseCaseBlock
-          title="Onchain social"
-          description="Create engaging social experiences with decentralized identity and content."
+          title="Kickstart your app's growth"
+          description="Use decentralized social graphs to grow your app and find users — wherever they are."
           href="https://vocs-migration-mvp-one.vercel.app/dev-tools/kits/onchainkit/mint/nft-mint-card"
         >
           <AnimatedSocial />
         </UseCaseBlock>
         <UseCaseBlock
-          title="In-app defi"
-          description="Add powerful DeFi protocols and services directly into your applications."
+          title="Unlock the power of DeFi"
+          description="Integrate DeFi protocols and services directly into your app. "
           href="https://vocs-migration-mvp-one.vercel.app/dev-tools/kits/onchainkit/swap/swap"
         >
           <AnimatedDefi />
         </UseCaseBlock>
         <UseCaseBlock
-          title="Gasless experience"
-          description="Provide frictionless transactions with gasless and account abstraction solutions."
+          title="Remove first-timer friction"
+          description="Enable gasless transactions and simplify user onboarding."
           href="https://vocs-migration-mvp-one.vercel.app/dev-tools/identity/smart-wallet/base-gasless-campaign"
         >
           <AnimatedGasless />
