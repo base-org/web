@@ -87,7 +87,7 @@ const customers: Customer[] = [
     logo: heyelsa as StaticImageData,
   },
   {
-    href: 'https://byteaitoken.com//',
+    href: 'https://www.tryabyte.xyz/',
     logo: byteai as StaticImageData,
   },
   {
