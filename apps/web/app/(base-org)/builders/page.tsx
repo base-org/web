@@ -26,9 +26,9 @@ export default function Developers() {
         <Hero />
         <Container className="!px-[1.5rem] lg:!px-[2rem]">
           <UseCases />
+          <Tools />
           <Apps />
           <Testimonials />
-          <Tools />
           <WhyBase />
           <LiveDemo />
           <BottomCta />
