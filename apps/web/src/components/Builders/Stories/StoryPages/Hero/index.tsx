@@ -8,6 +8,7 @@ export function Hero({
   date,
   title,
   description,
+  href,
   region,
   project,
   onBaseSince,
@@ -16,6 +17,7 @@ export function Hero({
   date: string;
   title: string;
   description: string;
+  href: string;
   region: string;
   project: string;
   onBaseSince: string;
@@ -47,7 +49,7 @@ export function Hero({
           <span className="text-sm font-medium uppercase text-dark-palette-foregroundMuted">
             Project
           </span>
-          <Link href="/">
+          <Link href={href}>
             <div className="flex flex-row items-center gap-2">
               <Title level={TitleLevel.Title3}>{project}</Title>
               <div className="text-dark-palette-foregroundMuted">

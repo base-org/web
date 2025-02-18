@@ -7,7 +7,7 @@ export function QABlock({ question, answer }: { question: string; answer: string
       <Title level={TitleLevel.Title3} className="text-dark-palette-foregroundMuted font-medium">
         {question}
       </Title>
-      <Title level={TitleLevel.Title3}>{answer}</Title>
+      <Title level={TitleLevel.Title3}>&quot;{answer}&quot;</Title>
     </div>
   );
 }

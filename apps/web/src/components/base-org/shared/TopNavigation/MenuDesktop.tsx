@@ -11,8 +11,8 @@ type MenuDesktopProps = {
 };
 
 export default function MenuDesktop({ links }: MenuDesktopProps) {
-  const [hoverIndex, setHoverIndex] = useState<number>(-1);
-  const [subActive, setSubActive] = useState<boolean>(false);
+  const [hoverIndex, setHoverIndex] = useState<number>(1);
+  const [subActive, setSubActive] = useState<boolean>(true);
   const [glowStyle, setGlowStyle] = useState({
     width: 0,
     height: 0,

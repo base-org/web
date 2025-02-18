@@ -50,7 +50,7 @@ export function Hero() {
           className={classNames(
             'absolute inset-0',
             'before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-20 before:bg-gradient-to-b before:from-black before:via-black/50 before:to-transparent',
-            'after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-20 after:bg-gradient-to-t after:from-black after:via-black/50 after:to-transparent',
+            'after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-24 after:bg-gradient-to-t after:from-black after:via-black/50 after:to-transparent',
           )}
         >
           <GridHero columns={30} hasBlue className="hidden md:block" />

@@ -38,24 +38,28 @@ export function BuildersDropdown() {
             className="flex items-center justify-between rounded-lg bg-dark-palette-secondary px-4 py-3 hover:bg-white/10"
           >
             <div>
-              <Title level={TitleLevel.Headline}>Builders</Title>
+              <Title level={TitleLevel.Headline} className="text-sm leading-none">
+                Builders
+              </Title>
               <span className="text-sm text-dark-palette-foregroundMuted ">
                 Start building with Base tools
               </span>
             </div>
-            <Icon name="arrowRight" height={20} width={20} />
+            <Icon name="arrowRight" height={16} width={16} />
           </Link>
           <Link
             href="https://docs.base.org"
             className="flex items-center justify-between rounded-lg bg-dark-palette-secondary px-4 py-3 hover:bg-white/10"
           >
             <div>
-              <Title level={TitleLevel.Headline}>Documentation</Title>
+              <Title level={TitleLevel.Headline} className="text-sm leading-none">
+                Documentation
+              </Title>
               <span className="text-sm text-dark-palette-foregroundMuted ">
                 Dive into the developer docs
               </span>
             </div>
-            <Icon name="arrowRight" height={20} width={20} />
+            <Icon name="arrowRight" height={16} width={16} />
           </Link>
           <div className="flex items-center justify-between rounded-lg">
             <div className="grid w-full grid-cols-2 gap-1">
@@ -133,16 +137,16 @@ function ToolMiniCard({ title, description, icon, href }: ToolMiniCardProps) {
     >
       <div className="flex items-center gap-4">
         <div className="rounded-lg">
-          <Image src={icon} alt={title} width={32} height={32} className="h-8 w-8" />
+          <Image src={icon} alt={title} width={24} height={24} className="h-8 w-8" />
         </div>
-        <div>
-          <Title level={TitleLevel.Headline} className="font-bold text-white">
+        <div className="flex flex-col gap-1">
+          <Title level={TitleLevel.Headline} className="text-sm font-bold leading-none text-white">
             {title}
           </Title>
           <Title
             level={TitleLevel.Headline}
             as="p"
-            className="font-normal text-dark-palette-foregroundMuted"
+            className="text-sm font-normal leading-none text-dark-palette-foregroundMuted"
           >
             {description}
           </Title>
@@ -156,7 +160,7 @@ function FooterCard({ label, icon, href }: FooterCardProps) {
   return (
     <Link href={href} className="flex items-center gap-2 px-4">
       <Image src={icon} alt={label} width={16} height={16} />
-      <Title level={TitleLevel.Headline} className="font-normal">
+      <Title level={TitleLevel.Headline} className="text-sm font-normal leading-none">
         {label}
       </Title>
     </Link>

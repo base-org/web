@@ -1,8 +1,4 @@
 import Image, { StaticImageData } from 'next/image';
-import mtsumi from 'apps/web/src/components/Builders/Stories/StoryCards/assets/mtsumi.webp';
-import nguyen from 'apps/web/src/components/Builders/Stories/StoryCards/assets/nguyen.webp';
-import kinya from 'apps/web/src/components/Builders/Stories/StoryCards/assets/kinya.webp';
-import ivog from 'apps/web/src/components/Builders/Stories/StoryCards/assets/ivog.webp';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
@@ -10,14 +6,16 @@ import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/Bu
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import classNames from 'classnames';
 
+import mtsumi from 'apps/web/src/components/Builders/Stories/StoryCards/assets/mtsumi.webp';
+
 export function StoryCards() {
   return (
     <div className="z-1 flex flex-col gap-9 md:gap-[72px]">
       <StoryCard
-        title="Aly Mtsumi of Element Pay"
-        description="Enabling users to buy stablecoins through m-pesa and spend them."
-        location="Nairobi, Kenya"
-        date="January 11, 2025"
+        title="David Johansson of BLOCKLORDS"
+        description="Building a medieval grand strategy game with a player-driven onchain economy."
+        location="Stockholm, Sweden"
+        date="January 19, 2025"
         href="/builders/stories/aly"
         color="text-dark-green-60"
         image={mtsumi}
@@ -29,7 +27,7 @@ export function StoryCards() {
         date="January 11, 2025"
         href=""
         color="text-dark-pink-60"
-        image={nguyen}
+        image={mtsumi}
       />
       <StoryCard
         title="Christine Kinya of PayFlip"
@@ -38,7 +36,7 @@ export function StoryCards() {
         date="January 11, 2025"
         href=""
         color="text-dark-orange-70"
-        image={kinya}
+        image={mtsumi}
       />
       <StoryCard
         title="Ivo G of Allora Finance"
@@ -47,7 +45,7 @@ export function StoryCards() {
         date="January 11, 2025"
         href=""
         color="text-dark-yellow-80"
-        image={ivog}
+        image={mtsumi}
       />
     </div>
   );
