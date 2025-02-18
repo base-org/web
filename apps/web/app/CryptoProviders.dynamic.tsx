@@ -2,16 +2,20 @@
 
 import { useEffect, useState } from 'react';
 import { useErrors } from 'apps/web/contexts/Errors';
+import type { CryptoProvidersProps } from './CryptoProviders';
 
 export function DynamicCryptoProviders({
   children,
-  theme,
-}: {
-  children: React.ReactNode;
-  theme: 'light' | 'dark';
-}) {
-  const [CryptoProvidersDynamic, setCryptoProvidersDynamic] =
-    useState<React.ComponentType<{ children: React.ReactNode; theme: 'light' | 'dark' }>>();
+  mode = 'light',
+  theme = 'default',
+}: CryptoProvidersProps) {
+  const [CryptoProvidersDynamic, setCryptoProvidersDynamic] = useState<
+    React.ComponentType<{
+      children: React.ReactNode;
+      mode?: 'light' | 'dark';
+      theme?: 'default' | 'base' | 'cyberpunk' | 'hacker';
+    }>
+  >();
   const { logError } = useErrors();
 
   useEffect(() => {
@@ -24,5 +28,9 @@ export function DynamicCryptoProviders({
 
   if (!CryptoProvidersDynamic) return null;
 
-  return <CryptoProvidersDynamic theme={theme}>{children}</CryptoProvidersDynamic>;
+  return (
+    <CryptoProvidersDynamic mode={mode} theme={theme}>
+      {children}
+    </CryptoProvidersDynamic>
+  );
 }

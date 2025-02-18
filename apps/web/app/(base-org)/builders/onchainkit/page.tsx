@@ -13,10 +13,11 @@ import Image, { StaticImageData } from 'next/image';
 import onchainkit from 'apps/web/src/components/Builders/Onchainkit/onchainkit.svg';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { useCallback } from 'react';
-import { Demo } from 'apps/web/src/components/Builders/Onchainkit/Demo';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import { LiveDemo } from 'apps/web/src/components/Builders/Shared/LiveDemo';
 
 const ONCHAINKIT_DOCS_LINK = 'https://onchainkit.xyz/';
+const demoComponents = ['Transact', 'Pay', 'Earn', 'Buy', 'Mint', 'Fund', 'Wallet'];
 
 export default function OnchainKit() {
   const handleCopy = useCallback(() => {
@@ -41,13 +42,13 @@ export default function OnchainKit() {
             </Title>
           </div>
           <Title level={TitleLevel.Display3} className="font-bold max-sm:hidden">
-            Full-stack onchain components
+            Build and deploy onchain in minutes
           </Title>
           <Title level={TitleLevel.Title1} className="font-bold sm:hidden">
-            Full-stack onchain components
+            Build and deploy onchain in minutes
           </Title>
           <Title level={TitleLevel.Title3} className="text-gray-muted">
-            All-you-need to build an onchain app in 10 minutes.
+            Ready-to-use, full-stack components to make building onchain faster and easier.
           </Title>
 
           <div className="flex gap-4 pt-5 max-sm:max-w-[240px] max-sm:flex-col">
@@ -76,13 +77,13 @@ export default function OnchainKit() {
           </div>
         </div>
 
-        <Demo />
+        <LiveDemo components={demoComponents} />
         <InfoCards />
         <Templates />
         <Testmonials />
         <CtaBanner
-          title="What do you want to build?"
-          description="Start building with a starter template or see documentation."
+          title="What will you build?"
+          description="Use a template or read the documentation to get started."
           cta={
             <>
               <Button

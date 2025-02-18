@@ -18,9 +18,8 @@ const INFO_CARDS = [
         className="h-8 w-8"
       />
     ),
-    title: 'Full-stack in one command',
-    description:
-      'Abstract away any complex configuration or setup. No blockchain knowledge required.',
+    title: 'Full-stack',
+    description: 'Abstract away complex configuration or setup. No blockchain knowledge required.',
   },
   {
     icon: (
@@ -32,9 +31,9 @@ const INFO_CARDS = [
         className="h-8 w-8"
       />
     ),
-    title: 'AI-compatible',
+    title: 'AI-friendly',
     description:
-      'Leverage your favorite AI tools to get your app onchain faster with more features than possible otherwise.',
+      'Leverage your favorite tools to deploy your app with components that work automatically on Base.',
   },
   {
     icon: (
@@ -47,8 +46,7 @@ const INFO_CARDS = [
       />
     ),
     title: 'Serverless',
-    description:
-      'To deploy full-stack onchain apps without managing backend infrastructure — just "npm create onchain" to get started.',
+    description: 'Just "npm create onchain" to start building, no backend infrastructure required.',
   },
   {
     icon: (
@@ -61,8 +59,7 @@ const INFO_CARDS = [
       />
     ),
     title: 'Composable',
-    description:
-      'To build apps that can interact with and build upon other apps in the Base ecosystem.',
+    description: 'Build apps that interact with and build upon other apps in the Base ecosystem.',
   },
   {
     icon: (
@@ -74,9 +71,9 @@ const INFO_CARDS = [
         className="h-8 w-8"
       />
     ),
-    title: 'Go to market faster',
+    title: 'Ship faster',
     description:
-      'We streamline all the table stake features, so you can focus on your differentiator and go to market faster.',
+      'Remove complexity with standard components, so you can focus on making your app stand out.',
   },
   {
     icon: (
@@ -89,8 +86,7 @@ const INFO_CARDS = [
       />
     ),
     title: 'Cost-effective',
-    description:
-      'To make it cost-effective to build and scale applications with transaction fees of less than 1 cent.',
+    description: 'Base offers fast and affordable transactions, where fees are less than one cent.',
   },
 ];
 

@@ -1,6 +1,8 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
-export default function CodeSnippet({ code }: { code: string }) {
+export function CodeSnippet({ code }: { code: string }) {
   const [highlightedCode, setHighlightedCode] = useState('');
 
   useEffect(() => {
@@ -40,7 +42,7 @@ export default function CodeSnippet({ code }: { code: string }) {
   if (!highlightedCode) {
     return (
       <div className="h-full overflow-auto rounded-lg transition-colors">
-        <div className="text-neutral-400">Loading...</div>
+        <div className="text-dark-palette-foregroundMuted">Loading...</div>
       </div>
     );
   }

@@ -18,12 +18,12 @@ const TEMPLATES = [
   },
   {
     title: 'Onchain Store Template',
-    href: '',
+    href: 'https://onchain-commerce-template.vercel.app/',
     background: background2,
   },
   {
     title: 'Onchain Social Template',
-    href: '',
+    href: 'https://github.com/fakepixels/ock-identity',
     background: background3,
   },
 ];
@@ -31,10 +31,7 @@ export function Templates() {
   return (
     <div className="flex w-full flex-col gap-10">
       <Title level={TitleLevel.Title1}>
-        Start with a template.{' '}
-        <Title level={TitleLevel.Title1} as="span" className="text-dark-palette-foregroundMuted">
-          Fork, customize, and deploy in minutes.
-        </Title>
+        Start with a template — fork, customize, and deploy in minutes
       </Title>
       <div className="grid w-full grid-cols-3 gap-6 max-sm:grid-cols-1">
         {TEMPLATES.map((template) => {
