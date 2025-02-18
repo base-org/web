@@ -3,32 +3,28 @@
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import Image, { StaticImageData } from 'next/image';
-
-import b3 from 'apps/web/src/components/Builders/Shared/assets/appchains/b3.svg';
-import blocklords from 'apps/web/src/components/Builders/Shared/assets/appchains/blocklords.svg';
-import illuvium from 'apps/web/src/components/Builders/Shared/assets/appchains/illuvium.svg';
-import metacade from 'apps/web/src/components/Builders/Shared/assets/appchains/metacade.png';
-import proofworks from 'apps/web/src/components/Builders/Shared/assets/appchains/proofworks.svg';
-import superchamps from 'apps/web/src/components/Builders/Shared/assets/appchains/superchamps.svg';
-import aerodrome from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/aerodrome.svg';
-import cattown from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/cattown.svg';
-import cooprecords from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/cooprecords.svg';
-import frenpet from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/frenpet.svg';
-import guild from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/guild.svg';
-import heyelsa from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/heyelsa.svg';
-import kyberswap from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/kyberswap.svg';
-import layer3 from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/layer3.svg';
-import magiceden from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/magiceden.svg';
-import moshicam from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/moshicam.svg';
-import moonwell from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/moonwell.svg';
-import opensea from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/opensea.svg';
-import pancakeswap from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/pancakeswap.svg';
-import seamless from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/seamless.svg';
-import tokeimon from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/tokeimon.svg';
-import uniswap from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/uniswap.svg';
-import virtual from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/virtual.svg';
-import zora from 'apps/web/src/components/Builders/Shared/assets/smart-wallet/zora.svg';
 import Link from 'apps/web/src/components/Link';
+
+import onboard from 'apps/web/src/components/Builders/Shared/assets/Logos/onboard.svg';
+import moshicam from 'apps/web/src/components/Builders/Shared/assets/Logos/moshicam.svg';
+import cooprecords from 'apps/web/src/components/Builders/Shared/assets/Logos/cooprecords.svg';
+import metacade from 'apps/web/src/components/Builders/Shared/assets/Logos/metacade.svg';
+import opensea from 'apps/web/src/components/Builders/Shared/assets/Logos/opensea.svg';
+import moonwell from 'apps/web/src/components/Builders/Shared/assets/Logos/moonwell.svg';
+import blocklords from 'apps/web/src/components/Builders/Shared/assets/Logos/blocklords.svg';
+import blackbird from 'apps/web/src/components/Builders/Shared/assets/Logos/blackbird.svg';
+import morpho from 'apps/web/src/components/Builders/Shared/assets/Logos/morpho.svg';
+import zora from 'apps/web/src/components/Builders/Shared/assets/Logos/zora.svg';
+import aerodrome from 'apps/web/src/components/Builders/Shared/assets/Logos/aerodrome.svg';
+import superchamps from 'apps/web/src/components/Builders/Shared/assets/Logos/superchamps.svg';
+import heyelsa from 'apps/web/src/components/Builders/Shared/assets/Logos/heyelsa.svg';
+import byteai from 'apps/web/src/components/Builders/Shared/assets/Logos/byteai.svg';
+import guild from 'apps/web/src/components/Builders/Shared/assets/Logos/guild.svg';
+import moxie from 'apps/web/src/components/Builders/Shared/assets/Logos/moxie.svg';
+import frenpet from 'apps/web/src/components/Builders/Shared/assets/Logos/frenpet.svg';
+import megaphone from 'apps/web/src/components/Builders/Shared/assets/Logos/megaphone.svg';
+import seamless from 'apps/web/src/components/Builders/Shared/assets/Logos/seamless.svg';
+import uniswap from 'apps/web/src/components/Builders/Shared/assets/Logos/uniswap.svg';
 
 import { Marquee } from 'apps/web/src/components/Builders/Shared/Marquee';
 
@@ -39,100 +35,84 @@ type Customer = {
 
 const customers: Customer[] = [
   {
-    href: 'https://www.b3.fun/',
-    logo: b3 as StaticImageData,
-  },
-  {
-    href: 'https://blocklords.com/',
-    logo: blocklords as StaticImageData,
-  },
-  {
-    href: 'https://illuvium.io/',
-    logo: illuvium as StaticImageData,
-  },
-  {
-    href: 'https://tournaments.metacade.co/',
-    logo: metacade,
-  },
-  {
-    href: 'https://proof-8.com/news/introducing-proof-8-new-name-same-spirit',
-    logo: proofworks as StaticImageData,
-  },
-  {
-    href: 'https://www.superchamps.com/',
-    logo: superchamps as StaticImageData,
-  },
-  {
-    href: 'https://aerodrome.finance/',
-    logo: aerodrome as StaticImageData,
-  },
-  {
-    href: 'https://cat.town/',
-    logo: cattown as StaticImageData,
-  },
-  {
-    href: 'https://www.cooprecords.xyz/',
-    logo: cooprecords as StaticImageData,
-  },
-  {
-    href: 'https://x.com/frenpetonbase',
-    logo: frenpet as StaticImageData,
-  },
-  {
-    href: 'https://guild.xyz/',
-    logo: guild as StaticImageData,
-  },
-  {
-    href: 'https://www.heyelsa.ai/',
-    logo: heyelsa as StaticImageData,
-  },
-  {
-    href: 'https://kyberswap.com/swap/base',
-    logo: kyberswap as StaticImageData,
-  },
-  {
-    href: 'https://app.layer3.xyz/quests',
-    logo: layer3 as StaticImageData,
-  },
-  {
-    href: 'https://magiceden.us',
-    logo: magiceden as StaticImageData,
+    href: 'https://onboard.xyz/',
+    logo: onboard as StaticImageData,
   },
   {
     href: 'https://moshi.cam/',
     logo: moshicam as StaticImageData,
   },
   {
-    href: 'https://moonwell.fi/',
-    logo: moonwell as StaticImageData,
+    href: 'https://www.cooprecords.xyz/',
+    logo: cooprecords as StaticImageData,
+  },
+  {
+    href: 'https://tournaments.metacade.co/',
+    logo: metacade as StaticImageData,
   },
   {
     href: 'https://opensea.io/',
     logo: opensea as StaticImageData,
   },
   {
-    href: 'https://pancakeswap.finance/',
-    logo: pancakeswap as StaticImageData,
+    href: 'https://moonwell.fi/',
+    logo: moonwell as StaticImageData,
+  },
+  {
+    href: 'https://blocklords.com/',
+    logo: blocklords as StaticImageData,
+  },
+  {
+    href: 'https://blackbird.xyz/',
+    logo: blackbird as StaticImageData,
+  },
+  {
+    href: 'https://morpho.org/',
+    logo: morpho as StaticImageData,
+  },
+  {
+    href: 'https://zora.co/',
+    logo: zora as StaticImageData,
+  },
+  {
+    href: 'https://aerodrome.finance/',
+    logo: aerodrome as StaticImageData,
+  },
+  {
+    href: 'https://www.superchamps.com/',
+    logo: superchamps as StaticImageData,
+  },
+  {
+    href: 'https://www.heyelsa.ai/',
+    logo: heyelsa as StaticImageData,
+  },
+  {
+    href: 'https://byteaitoken.com//',
+    logo: byteai as StaticImageData,
+  },
+  {
+    href: 'https://guild.xyz/',
+    logo: guild as StaticImageData,
+  },
+  {
+    href: 'https://moxie.xyz/',
+    logo: moxie as StaticImageData,
+  },
+  {
+    href: 'https://x.com/frenpetonbase',
+    logo: frenpet as StaticImageData,
+  },
+  {
+    href: 'https://www.megaphone.xyz//',
+    logo: megaphone as StaticImageData,
   },
   {
     href: 'https://www.seamlessprotocol.com/',
     logo: seamless as StaticImageData,
   },
   {
-    href: 'https://app.tokiemon.io/mint',
-    logo: tokeimon as StaticImageData,
-  },
-  {
     href: 'https://uniswap.org/',
     logo: uniswap as StaticImageData,
-  },
-  {
-    href: 'https://virtuals.io/',
-    logo: virtual as StaticImageData,
-  },
-  {
-    href: 'https://zora.co/',
-    logo: zora as StaticImageData,
   },
 ];
 const LOGO_WIDTH = 200; // pixels
