@@ -32,16 +32,17 @@ export function Hero() {
   }, []);
 
   const handleLaunchAgent = useCallback(() => {
-    window.open('https://docs.cdp.coinbase.com/agentkit/docs/welcome', '_blank');
-  }, []);
-
-  const handleBuildOnchainStore = useCallback(() => {
-    window.open('https://onchain-commerce-template.vercel.app/', '_blank');
+    window.open('https://vocs-migration-mvp-one.vercel.app/use-cases/launch-ai-agents', '_blank');
   }, []);
 
   const handleIntegrateCryptoPayments = useCallback(() => {
-    window.open('https://onchainkit.xyz/checkout/checkout', '_blank');
+    window.open('https://vocs-migration-mvp-one.vercel.app/use-cases/accept-crypto-payments', '_blank');
   }, []);
+
+  const handleBuildOnchainApp = useCallback(() => {
+    window.open('https://onchain-app-template.vercel.app/', '_blank');
+  }, []);
+
 
   return (
     <div className="mb-6 flex w-full flex-col items-center justify-center bg-black">
@@ -105,17 +106,17 @@ export function Hero() {
               variant={ButtonVariants.SecondaryOutline}
               iconName="baseOrgDiagonalUpArrow"
               className="rounded-xl text-sm"
-              onClick={handleBuildOnchainStore}
+              onClick={handleIntegrateCryptoPayments}
             >
-              Build an onchain store
+              Integrate crypto payments
             </Button>
             <Button
               variant={ButtonVariants.SecondaryOutline}
               iconName="baseOrgDiagonalUpArrow"
               className="rounded-xl text-sm"
-              onClick={handleIntegrateCryptoPayments}
+              onClick={handleBuildOnchainApp}
             >
-              Integrate crypto payments
+              Build an onchain app
             </Button>
           </div>
         </div>

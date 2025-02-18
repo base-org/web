@@ -132,8 +132,11 @@ export const codeStyles = `
 }
 `;
 
+const depsInstallInstructions = '// Follow docs.base.org/builderkits/onchainkit/getting-started to install dependencies';
+
 export const codeSnippets = {
-  Pay: `import {
+  Pay: `${depsInstallInstructions}
+import {
   Checkout,
   CheckoutButton,
 } from '@coinbase/onchainkit/checkout';
@@ -145,7 +148,8 @@ function CheckoutDemo() {
     </Checkout>
   )
 }`,
-  Swap: `import { SwapDefault } from '@coinbase/onchainkit/swap';
+  Swap: `${depsInstallInstructions}
+import { SwapDefault } from '@coinbase/onchainkit/swap';
 import type { Token } from '@coinbase/onchainkit/token';
 
 function SwapDemo() {
@@ -177,7 +181,8 @@ function SwapDemo() {
     />
   )
 }`,
-  Wallet: `import {
+  Wallet: `${depsInstallInstructions}
+import {
   WalletDefault
 } from '@coinbase/onchainkit/wallet';
 
@@ -185,7 +190,8 @@ function WalletDefaultDemo() {
   return <WalletDefault />
 }
 `,
-  Earn: `import { Earn } from '@coinbase/onchainkit/earn';
+  Earn: `${depsInstallInstructions}
+import { Earn } from '@coinbase/onchainkit/earn';
 
 function EarnDemo() {
   const vaultAddress = '0x7BfA7C4f149E7415b73bdeDfe609237e29CBF34A';
@@ -193,7 +199,8 @@ function EarnDemo() {
   return <Earn vaultAddress={vaultAddress} />;
 }
   `,
-  Fund: `import { FundCard } from "@coinbase/onchainkit/fund"
+  Fund: `${depsInstallInstructions}
+import { FundCard } from "@coinbase/onchainkit/fund"
 
 function FundDemo() {
 
@@ -207,7 +214,8 @@ function FundDemo() {
   )
 }
   `,
-  Buy: `import { Buy } from "@coinbase/onchainkit/buy"
+  Buy: `${depsInstallInstructions}
+import { Buy } from "@coinbase/onchainkit/buy"
 import { Token } from "@coinbase/onchainkit/token";
 
 function BuyDemo() {
@@ -223,7 +231,8 @@ function BuyDemo() {
   return <Buy toToken={usdcToken} />
 }
   `,
-  Mint: `import { NFTMintCard } from "@coinbase/onchainkit/nft";
+  Mint: `${depsInstallInstructions}
+import { NFTMintCard } from "@coinbase/onchainkit/nft";
 import { NFTMedia } from "@coinbase/onchainkit/nft/view";
 import {
   NFTCreator,
@@ -249,7 +258,8 @@ function NFTMintDemo() {
   )
 }
   `,
-  Transact: `import {
+  Transact: `${depsInstallInstructions}
+import {
   TransactionDefault
 } from "@coinbase/onchainkit/transaction"
 
