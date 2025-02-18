@@ -16,35 +16,53 @@ export function StoryCards() {
         description="Building a medieval grand strategy game with a player-driven onchain economy."
         location="Stockholm, Sweden"
         date="January 19, 2025"
-        href="/builders/stories/aly"
+        href="/builders/stories/blocklords"
         color="text-dark-green-60"
         image={mtsumi}
       />
       <StoryCard
-        title="Ngan Nguyen of Onchain Buster"
-        description="A persona builder that analyzes user preferences from their past onchain activities."
-        location="Ho Chi Minh City, Vietnam"
-        date="January 11, 2025"
-        href=""
+        title="Tara of Cat Town"
+        description="Building a cozy onchain life sim game, combining gaming with DeFi to create a thriving community."
+        location="United Kingdom"
+        date="January 19, 2025"
+        href="/builders/stories/cat-town"
         color="text-dark-pink-60"
         image={mtsumi}
       />
       <StoryCard
-        title="Christine Kinya of PayFlip"
-        description="Unlocking new markets for merchants in Kenya with stablecoin payments."
-        location="Nairobi, Kenya"
-        date="January 11, 2025"
-        href=""
-        color="text-dark-orange-70"
+        title="AchillesHodl of Byte"
+        description="Pioneering the future of food ordering with AI and crypto, transforming human language into the ultimate user interface."
+        location="United States of America"
+        date="January 19, 2025"
+        href="/builders/stories/byte"
+        color="text-dark-pink-60"
         image={mtsumi}
       />
       <StoryCard
-        title="Ivo G of Allora Finance"
-        description="Something about Allora Finance"
-        location="Lier, Norway"
-        date="January 11, 2025"
-        href=""
-        color="text-dark-yellow-80"
+        title="Merlin Egalite of Morpho"
+        description="Building the largest and most secure lending protocol on Base, leveraging the power of the Superchain ecosystem."
+        location="Paris, France"
+        date="January 19, 2025"
+        href="/builders/stories/morpho"
+        color="text-dark-pink-60"
+        image={mtsumi}
+      />
+      <StoryCard
+        title="Dhawal Shah of HeyElsa AI"
+        description="Revolutionizing crypto trading with AI-driven intelligence, pushing boundaries in portfolio management."
+        location="India"
+        date="January 19, 2025"
+        href="/builders/stories/hey-elsa"
+        color="text-dark-pink-60"
+        image={mtsumi}
+      />
+      <StoryCard
+        title="Alexander of Aerodrome Finance"
+        description="Serving as the essential trading and liquidity marketplace on Base, driving the future of decentralized exchanges."
+        location="United States of America"
+        date="January 19, 2025"
+        href="/builders/stories/aerodrome"
+        color="text-dark-pink-60"
         image={mtsumi}
       />
     </div>

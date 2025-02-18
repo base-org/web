@@ -6,7 +6,7 @@ import { Blockquote } from 'apps/web/src/components/Builders/Stories/StoryPages/
 import { ReadMore } from 'apps/web/src/components/Builders/Stories/StoryPages/ReadMore';
 import { BottomCta } from 'apps/web/src/components/Builders/Stories/BottomCta';
 
-export default function Johansson() {
+export default function Blocklords() {
   return (
     <Container className="!px-[1.5rem] lg:!px-[2rem]">
       <main className="mb-32 flex min-h-screen w-full flex-col items-center bg-black pt-20">
