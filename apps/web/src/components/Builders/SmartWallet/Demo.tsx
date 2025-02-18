@@ -104,7 +104,7 @@ export function Demo() {
       <style>{styles}</style>
       <div className="mb-9 flex flex-row gap-2">
         <Title level={TitleLevel.Title1} className="font-bold">
-          Onboard millions of users with one simple SDK
+          Unlock onboarding superpowers with a few lines of code
         </Title>
       </div>
       <div

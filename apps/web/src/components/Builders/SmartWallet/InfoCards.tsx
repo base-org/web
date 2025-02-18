@@ -13,14 +13,14 @@ const INFO_CARDS = [
       <Image src={defi as StaticImageData} alt="defi" width={32} height={32} className="h-8 w-8" />
     ),
     title: 'Universal account',
-    description: 'One account across hundreds of apps and eight different chains.',
+    description: 'An account that just works anywhere your users go.',
   },
   {
     icon: (
       <Image src={cash as StaticImageData} alt="cash" width={31} height={32} className="h-8 w-8" />
     ),
-    title: 'Easy onboarding',
-    description: 'Secured by Passkeys, takes seconds to set up.',
+    title: 'Instant onboarding',
+    description: 'Bring users onchain in seconds with secure passkey sign-in. No app or extension required.',
   },
   {
     icon: (
@@ -32,9 +32,9 @@ const INFO_CARDS = [
         className="h-8 w-8"
       />
     ),
-    title: 'Super powered',
+    title: 'Onchain made simple',
     description:
-      'Build delightful experiences with Sponsored transactions, Spend Permissions, Batch Operations, and more.',
+      'Build delightful user experiences with sponsored transactions, spend permissions, and batch operations.',
   },
   {
     icon: (
@@ -46,8 +46,8 @@ const INFO_CARDS = [
         className="h-8 w-8"
       />
     ),
-    title: 'Trust & security',
-    description: 'The most trusted brand in crypto.',
+    title: 'Built-in onramps',
+    description: 'Simple account funding for users — with Apple Pay, debit card, or Coinbase Exchange balances.',
   },
   {
     icon: (
@@ -60,7 +60,7 @@ const INFO_CARDS = [
       />
     ),
     title: 'Free to use',
-    description: 'Free to integrate, free to operate, forever. No fees whatsoever.',
+    description: 'Smart Wallet is 100% free for users and developers. No fees whatsoever.',
   },
   {
     icon: (
@@ -72,8 +72,8 @@ const INFO_CARDS = [
         className="h-8 w-8"
       />
     ),
-    title: 'Support',
-    description: 'No questions too big or small.',
+    title: 'Safe and secure',
+    description: 'Built by Coinbase, the most trusted brand in crypto.',
   },
 ];
 

@@ -18,7 +18,7 @@ export default async function BaseWallet() {
     <Container>
       <main className="mb-32 flex min-h-screen w-full flex-col items-center gap-40 bg-black px-2 pt-20 md:px-0">
         {/* Header  */}
-        <div className="flex w-full items-center justify-between gap-1 pt-20 max-sm:flex-col">
+        <div className="flex w-full items-center justify-between gap-1 pt-20 max-sm:flex-col sm:pb-20">
           <div className="flex max-w-xl flex-col gap-2">
             <div className="flex items-center gap-2 pb-6 text-[#578BFA]">
               <Image
@@ -33,13 +33,14 @@ export default async function BaseWallet() {
               </Title>
             </div>
             <Title level={TitleLevel.Display3} className="font-bold max-sm:hidden">
-              Connect to onchain users
+              The universal account for the onchain future
             </Title>
             <Title level={TitleLevel.Title1} className="font-bold sm:hidden">
-              Connect to onchain users
+              The universal account for the onchain future
             </Title>
             <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted">
-              Build faster with Smart Wallet – a universal account for the onchain world.
+              A single sign-on for the open internet. Simple, secure, powerful — no app or extension
+              required.
             </Title>
             <div className="flex gap-6 pt-5">
               <ButtonWithLinkAndEventLogging
@@ -62,14 +63,14 @@ export default async function BaseWallet() {
           <Image src={headerImage} alt="header-image" width={400} className="max-sm:hidden" />
         </div>
 
-        <InfoCards />
-
-        <Transactions />
         <Customers />
+        <InfoCards />
+        <Transactions />
         <Demo />
 
         <CtaBanner
-          title="Update your wallet provider of choice to bring Smart Wallets to your app today "
+          title="Integrate Smart Wallet in minutes"
+          description="Start building with a starter template or see documentation."
           cta={
             <div className="flex w-full gap-4 max-sm:flex-col max-sm:items-center">
               <ButtonWithLinkAndEventLogging

@@ -9,20 +9,20 @@ const TRANSACTIONS = [
   {
     label: 'Onboard',
     title: 'Connect with Coinbase Wallet',
-    description: 'The easiest way to sign in to new and existing onchain apps',
+    description: 'The fastest way to sign in to apps across the open internet.',
     content: <Image src={onboarding} alt="Onboarding" width={276} />,
   },
   {
     label: 'Fund',
-    title: 'Coinbase onramp and balances',
-    description: 'Users can use their Coinbase balances onchain or fund with debit card.',
+    title: 'Get users onchain in seconds',
+    description: 'Built-in user onramps including Apple Pay, debit card, and Coinbase balances.',
     content: <Image src={fund} alt="Fund" width={436} />,
   },
   {
     label: 'Transact',
-    title: 'Sponsored transactions and Spend Permissions passkey',
+    title: 'Create seamless onchain experiences',
     description:
-      'Make transactions painless with sponsored gas. Use Spend Permissions to transact with no user interaction required. ',
+      'Make it easy for anyone to come onchain. Less wallet pop-ups, less signatures, less friction. ',
     content: <Image src={faceID} alt="Face ID" width={276} />,
   },
 ];
@@ -31,10 +31,10 @@ export function Transactions() {
   return (
     <div className="flex w-full flex-col gap-12 sm:items-center sm:gap-40">
       <Title level={TitleLevel.Display3} className="font-bold max-sm:hidden">
-        Onchain transactions without distractions
+        Universal SSO, with payments and identity built-in
       </Title>
       <Title level={TitleLevel.Title1} className="font-bold sm:hidden">
-        Onchain transactions without distractions
+        Universal SSO, with payments and identity built-in
       </Title>
 
       <div className="flex w-full flex-col gap-10">
