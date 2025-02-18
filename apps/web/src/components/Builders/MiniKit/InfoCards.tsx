@@ -16,9 +16,9 @@ const INFO_CARDS: CardProps[] = [
         className="h-8 w-8"
       />
     ),
-    title: 'Supercharge your distribution',
+    title: 'Grow your audience',
     description:
-      'Leverage referral boosts and exclusive TBA incentive programs to expand your reach and drive user engagement effortlessly.',
+      'Expand your reach and drive user engagement across decentralized platforms with one unified SDK.',
   },
   {
     icon: (
@@ -30,9 +30,9 @@ const INFO_CARDS: CardProps[] = [
         className="h-8 w-8"
       />
     ),
-    title: 'No more cold start problem',
+    title: 'Simplify user onboarding',
     description:
-      'Automatically surface wallet assets, account metadata, and transaction history through WalletContext, ensuring a warm and engaging user experience from day one.',
+      'Avoid the cold start problem by automatically surfacing wallet assets, account metadata, and transaction history. Deliver a warm, engaging user experience from day one.',
   },
   {
     icon: (
@@ -46,7 +46,7 @@ const INFO_CARDS: CardProps[] = [
     ),
     title: 'Minimum configuration',
     description:
-      'With pre-configured TBA connectors and built-in utility features (like transaction batching and confirmation dialogs), get your mini app up and running with just one prop.',
+      'Kickstart your mini app in minutes — with pre-configured connectors and built-in utility features like transaction batching and confirmation dialogues.',
   },
   {
     icon: (
@@ -60,7 +60,7 @@ const INFO_CARDS: CardProps[] = [
     ),
     title: 'Diversify your revenue',
     description:
-      'Unlock multiple revenue streams with built-in monetization features, including subscription models and referral incentives, so your mini app can generate income in variousways.',
+      'Unlock new revenue streams with built-in monetization features — including subscription models and referral incentives — so your mini app can generate income in various ways.',
   },
 ];
 

@@ -49,10 +49,7 @@ export function SupportedPlatforms() {
     <div className="flex w-full flex-col gap-10">
       <div>
         <Title level={TitleLevel.Title1}>
-          Supported platforms.{' '}
-          <Title level={TitleLevel.Title1} as="span" className="text-dark-palette-foregroundMuted">
-            Reach millions instantly with a new lines of code.
-          </Title>
+          Reach users wherever they are, with a few lines of code
         </Title>
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">

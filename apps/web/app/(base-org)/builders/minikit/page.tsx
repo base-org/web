@@ -33,13 +33,14 @@ export default async function AgentKit() {
               </Title>
             </div>
             <Title level={TitleLevel.Display3} className="font-bold max-sm:hidden">
-              All-you-need to build and grow your mini app.
+              All-you-need to build and grow your mini apps
             </Title>
             <Title level={TitleLevel.Title1} className="font-bold sm:hidden">
-              All-you-need to build and grow your mini app.
+              All-you-need to build and grow your mini apps
             </Title>
             <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted">
-              Feature your mini app on Warpcast and Coinbase Wallet with a few lines of code.
+              MiniKit makes it simple to build and supercharge distribution across decentralized
+              platforms.
             </Title>
             <div className="flex gap-6 pt-5">
               <ButtonWithLinkAndEventLogging
@@ -65,7 +66,7 @@ export default async function AgentKit() {
         <InfoCards />
         <SupportedPlatforms />
         <CtaBanner
-          title="Grow your app today."
+          title="Grow your app's audience"
           description="Start building with a starter template or see documentation."
           cta={
             <ButtonWithLinkAndEventLogging
