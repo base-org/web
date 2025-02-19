@@ -92,7 +92,7 @@ export default async function BaseWallet() {
               <ButtonWithLinkAndEventLogging
                 variant={ButtonVariants.Secondary}
                 iconName="fork"
-                href=""
+                href="https://github.com/brendan-defi/onchainkit-wallet-island-demo"
                 target="_blank"
                 eventName="wallet-fork-template"
                 buttonClassNames="flex items-center justify-between px-4 py-3"

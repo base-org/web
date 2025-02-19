@@ -3,7 +3,7 @@
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { AnimatedList } from 'apps/web/src/components/Builders/Shared/AnimatedList';
-import { cn } from 'base-ui/utils/cn';
+import classNames from 'classnames';
 import { useRef, useState, useEffect } from 'react';
 
 type ActionItem = {
@@ -37,7 +37,7 @@ const ACTIONS: ActionItem[] = [
 function Action({ title }: ActionItem) {
   return (
     <figure
-      className={cn(
+      className={classNames(
         'relative mx-auto min-h-fit w-full cursor-pointer overflow-hidden rounded-xl bg-dark-palette-backgroundAlternate px-6 py-5',
       )}
     >
@@ -70,7 +70,7 @@ export function OnchainActions({ className }: { className?: string }) {
       <div>
         <Title level={TitleLevel.Title1}>All onchain actions at your agent&apos;s fingertips</Title>
       </div>
-      <div className={cn('bg-background relative flex w-full flex-col overflow-hidden', className)}>
+      <div className={classNames('bg-background relative flex w-full flex-col overflow-hidden', className)}>
         <AnimatedList className="gap-3" isInView={isInView} delay={300}>
           {ACTIONS.map((item) => (
             <Action {...item} key={item.title} />

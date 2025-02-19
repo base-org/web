@@ -77,28 +77,28 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
                 title="OnchainKit"
                 description="All-in-one onchain toolkit"
                 icon={onchainKit as StaticImageData}
-                href="https://onchainkit.xyz/"
+                href="/builders/onchainkit"
                 onLinkClick={onLinkClick}
               />
               <ToolMiniCard
                 title="AgentKit"
                 description="Launch your AI Agent"
                 icon={agentKit as StaticImageData}
-                href="https://docs.cdp.coinbase.com/agentkit/docs/welcome"
+                href="/builders/agentkit"
                 onLinkClick={onLinkClick}
               />
               <ToolMiniCard
                 title="MiniKit"
                 description="Build once. Deploy anywhere"
                 icon={miniKit as StaticImageData}
-                href="/coming-soon"
+                href="/builders/minikit"
                 onLinkClick={onLinkClick}
               />
               <ToolMiniCard
                 title="Smart Wallet"
                 description="Seamless self-custody"
                 icon={baseWallet as StaticImageData}
-                href="https://www.smartwallet.dev/why"
+                href="/builders/smart-wallet"
                 onLinkClick={onLinkClick}
               />
             </div>

@@ -1,5 +1,6 @@
 'use client';
 
+// import type { Metadata } from 'next';
 import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Container from 'apps/web/src/components/base-org/Container';
@@ -21,6 +22,15 @@ import { CtaBanner } from 'apps/web/src/components/Builders/Shared/CtaBanner';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image, { StaticImageData } from 'next/image';
 import { useCallback } from 'react';
+
+// export const metadata: Metadata = {
+//   metadataBase: new URL('https://base.org'),
+//   title: `Base | AgentKit`,
+//   openGraph: {
+//     title: `Base | AgentKit`,
+//     url: `/builders/agentkit`,
+//   },
+// };
 
 export default function AgentKit() {
   const handleCopy = useCallback(() => {

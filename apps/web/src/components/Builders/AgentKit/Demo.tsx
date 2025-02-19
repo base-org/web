@@ -3,7 +3,7 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import { FORK_TEMPLATE_LINK } from 'apps/web/src/components/Builders/AgentKit/links';
 import { AnimatedList } from 'apps/web/src/components/Builders/Shared/AnimatedList';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import { cn } from 'base-ui/utils/cn';
+import classNames from 'classnames';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
@@ -56,16 +56,16 @@ function Message({ text, content, type }: Item) {
   const isAgent = type === 'agent';
   return (
     <figure
-      className={cn(
+      className={classNames(
         'relative  flex min-h-fit w-full max-w-[500px] cursor-pointer overflow-hidden',
         'transition-all duration-200 ease-in-out',
-        'bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]',
+        '[box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]',
         'transform-gpu dark:bg-transparent dark:backdrop-blur-md',
         isAgent ? 'mr-auto items-start' : 'ml-auto items-end',
       )}
     >
       <div
-        className={cn(
+        className={classNames(
           'flex shrink flex-col overflow-hidden rounded-lg p-4',
           isAgent ? 'mr-auto bg-[#330D00]' : 'ml-auto bg-dark-palette-backgroundAlternate',
         )}
@@ -94,7 +94,7 @@ export function Demo() {
         </Link>
       </div>
       <div
-        className={cn('relative flex h-[500px] w-full flex-col overflow-hidden rounded-lg p-6 ')}
+        className={classNames('relative flex h-[500px] w-full flex-col overflow-hidden rounded-lg p-6 ')}
       >
         <AnimatedList>
           {MESSAGE_ARRAY.map((item) => (
