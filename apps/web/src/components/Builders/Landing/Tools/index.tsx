@@ -28,25 +28,25 @@ export function Tools() {
           title="OnchainKit"
           description="Build an app in 10 minutes with an all-in-one toolkit and full-stack components."
           icon={onchainKit as StaticImageData}
-          href="https://onchainkit.xyz/"
+          href="https://www.base.org/builders/onchainkit"
         />
         <ToolCard
           title="Smart Wallet"
           description="A passkey-based universal account to connect with the onchain world."
           icon={smartWallet as StaticImageData}
-          href="https://www.smartwallet.dev/why"
+          href="https://www.base.org/builders/smart-wallet"
         />
         <ToolCard
           title="AgentKit"
           description="Give every AI agent a crypto wallet and the ability to transact and interact onchain."
           icon={agentKit as StaticImageData}
-          href="https://docs.cdp.coinbase.com/agentkit/docs/welcome"
+          href="https://www.base.org/builders/agentkit"
         />
         <ToolCard
           title="MiniKit"
           description="Feature your mini app on decentralized social platforms with a few lines of code."
           icon={miniKit as StaticImageData}
-          href="/coming-soon"
+          href="https://www.base.org/builders/minikit"
         />
       </div>
     </section>

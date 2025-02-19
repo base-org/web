@@ -39,7 +39,7 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
   return (
     <AnalyticsProvider context="developers">
       <Card radius={8} innerClassName="bg-dark-palette-backgroundAlternate">
-      {/* <div className="card relative m-0 w-full rounded-lg bg-white/20 p-[1px]"> */}
+        {/* <div className="card relative m-0 w-full rounded-lg bg-white/20 p-[1px]"> */}
         <div className="flex flex-col gap-2.5 rounded-lg bg-dark-palette-backgroundAlternate p-2">
           <Link
             href="/builders"
@@ -77,28 +77,28 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
                 title="OnchainKit"
                 description="All-in-one onchain toolkit"
                 icon={onchainKit as StaticImageData}
-                href="https://onchainkit.xyz/"
+                href="https://www.base.org/builders/onchainkit"
                 onLinkClick={onLinkClick}
               />
               <ToolMiniCard
                 title="AgentKit"
                 description="Launch your AI Agent"
                 icon={agentKit as StaticImageData}
-                href="https://docs.cdp.coinbase.com/agentkit/docs/welcome"
+                href="https://www.base.org/builders/agentkit"
                 onLinkClick={onLinkClick}
               />
               <ToolMiniCard
                 title="MiniKit"
                 description="Build once. Deploy anywhere"
                 icon={miniKit as StaticImageData}
-                href="/coming-soon"
+                href="https://www.base.org/builders/minikit"
                 onLinkClick={onLinkClick}
               />
               <ToolMiniCard
                 title="Smart Wallet"
                 description="Seamless self-custody"
                 icon={baseWallet as StaticImageData}
-                href="https://www.smartwallet.dev/why"
+                href="https://www.base.org/builders/smart-wallet"
                 onLinkClick={onLinkClick}
               />
             </div>
@@ -144,7 +144,6 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
             </div>
           </div>
         </div>
-      {/* </div> */}
       </Card>
     </AnalyticsProvider>
   );
