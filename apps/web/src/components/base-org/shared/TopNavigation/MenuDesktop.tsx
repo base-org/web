@@ -110,7 +110,7 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
         }}
       >
         {links[hoverIndex]?.name === 'Builders' ? (
-          <BuildersDropdown />
+          <BuildersDropdown onLinkClick={onLinkClick} />
         ) : (
           <Card radius={8} innerClassName="bg-dark-palette-backgroundAlternate">
             <div className="flex w-full items-stretch gap-2 rounded-lg bg-dark-palette-backgroundAlternate p-2">
@@ -120,6 +120,7 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
                     {links[hoverIndex].subItems.map((subItem) => (
                       <Link
                         key={`link-${links[hoverIndex].name}-subitem-${subItem.name}`.toLocaleLowerCase()}
+                        onClick={onLinkClick}
                         href={
                           subItem.href.includes('#')
                             ? `${subItem.href.split('#')[0]}?utm_source=dotorg&utm_medium=nav#${

@@ -15,26 +15,33 @@ import blog from 'apps/web/src/components/base-org/shared/TopNavigation/assets/d
 import bridging from 'apps/web/src/components/base-org/shared/TopNavigation/assets/developers/bridging.svg';
 import Link from 'apps/web/src/components/Link';
 
+type BuildersDropdownProps = {
+  onLinkClick: () => void;
+};
+
 type ToolMiniCardProps = {
   title: string;
   description: string;
   icon: StaticImageData;
   href: string;
+  onLinkClick: () => void;
 };
 
 type FooterCardProps = {
   label: string;
   icon: StaticImageData;
   href: string;
+  onLinkClick: () => void;
 };
 
-export function BuildersDropdown() {
+export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
   return (
     <AnalyticsProvider context="developers">
       <div className="relative m-0 w-full rounded-xl bg-white/20 p-[1px]">
         <div className="flex flex-col gap-2.5 rounded-xl bg-dark-palette-backgroundAlternate p-2">
           <Link
             href="/builders"
+            onClick={onLinkClick}
             className="flex items-center justify-between rounded-lg bg-dark-palette-secondary px-4 py-3 hover:bg-white/10"
           >
             <div>
@@ -49,6 +56,7 @@ export function BuildersDropdown() {
           </Link>
           <Link
             href="https://docs.base.org"
+            onClick={onLinkClick}
             className="flex items-center justify-between rounded-lg bg-dark-palette-secondary px-4 py-3 hover:bg-white/10"
           >
             <div>
@@ -68,24 +76,28 @@ export function BuildersDropdown() {
                 description="All-in-one onchain toolkit"
                 icon={onchainKit as StaticImageData}
                 href="https://onchainkit.xyz/"
+                onLinkClick={onLinkClick}
               />
               <ToolMiniCard
                 title="AgentKit"
                 description="Launch your AI Agent"
                 icon={agentKit as StaticImageData}
                 href="https://docs.cdp.coinbase.com/agentkit/docs/welcome"
+                onLinkClick={onLinkClick}
               />
               <ToolMiniCard
                 title="MiniKit"
                 description="Build once. Deploy anywhere"
                 icon={miniKit as StaticImageData}
                 href="/coming-soon"
+                onLinkClick={onLinkClick}
               />
               <ToolMiniCard
                 title="Smart Wallet"
                 description="Seamless self-custody"
                 icon={baseWallet as StaticImageData}
                 href="https://www.smartwallet.dev/why"
+                onLinkClick={onLinkClick}
               />
             </div>
           </div>
@@ -95,31 +107,37 @@ export function BuildersDropdown() {
                 label="Status"
                 icon={options as StaticImageData}
                 href="https://status.base.org/"
+                onLinkClick={onLinkClick}
               />
               <FooterCard
                 label="Bug Bounty"
                 icon={bug as StaticImageData}
                 href="https://hackerone.com/base"
+                onLinkClick={onLinkClick}
               />
               <FooterCard
                 label="Block Explorer"
                 icon={blockchain as StaticImageData}
                 href="https://basescan.org/"
+                onLinkClick={onLinkClick}
               />
               <FooterCard
                 label="GitHub"
                 icon={gitHubLogo as StaticImageData}
                 href="https://github.com/base-org"
+                onLinkClick={onLinkClick}
               />
               <FooterCard
                 label="Blog"
                 icon={blog as StaticImageData}
                 href="https://blog.base.org/"
+                onLinkClick={onLinkClick}
               />
               <FooterCard
                 label="Builder Stories"
                 icon={bridging as StaticImageData}
                 href="/stories"
+                onLinkClick={onLinkClick}
               />
             </div>
           </div>
@@ -129,10 +147,11 @@ export function BuildersDropdown() {
   );
 }
 
-function ToolMiniCard({ title, description, icon, href }: ToolMiniCardProps) {
+function ToolMiniCard({ title, description, icon, href, onLinkClick }: ToolMiniCardProps) {
   return (
     <Link
       href={href}
+      onClick={onLinkClick}
       className="flex cursor-pointer flex-col gap-4 rounded-xl px-4 py-2 transition-all duration-200 hover:bg-white/10"
     >
       <div className="flex items-center gap-4">
@@ -156,9 +175,9 @@ function ToolMiniCard({ title, description, icon, href }: ToolMiniCardProps) {
   );
 }
 
-function FooterCard({ label, icon, href }: FooterCardProps) {
+function FooterCard({ label, icon, href, onLinkClick }: FooterCardProps) {
   return (
-    <Link href={href} className="flex items-center gap-2 px-4">
+    <Link href={href} onClick={onLinkClick} className="flex items-center gap-2 px-4">
       <Image src={icon} alt={label} width={16} height={16} />
       <Title level={TitleLevel.Headline} className="text-sm font-normal leading-none">
         {label}
