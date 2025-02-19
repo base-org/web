@@ -1,6 +1,5 @@
 import { Marquee } from 'apps/web/src/components/Builders/Shared/Marquee';
 import { TweetCard } from 'apps/web/src/components/Builders/Shared/TweetCard';
-import tweetImage from 'apps/web/src/components/Builders/AgentKit/tweet.png';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TWEETS } from 'apps/web/src/components/Builders/AgentKit/tweets';
