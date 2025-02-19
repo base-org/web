@@ -52,7 +52,7 @@ You should see the following screen.
   height="364"
 />
 
-Once we've deployed our contracts, we'll add a button that lets us interact with our contracts. 
+Once we've deployed our contracts, we'll add a button that lets us interact with our contracts.
 
 ### Install and initialize Foundry
 The total tally will be stored onchain in a smart contract. We'll use the Foundry framework to deploy our contract to the Base Sepolia testnet.
@@ -65,11 +65,11 @@ mkdir contracts && cd contracts
 2. Install and initialize Foundry
 
 ```bash [Terminal]
-curl -L https://foundry.paradigm.xyz | bash 
+curl -L https://foundry.paradigm.xyz | bash
 foundryup
 forge init --no-git
 ```
-Open the project and find the `Counter.sol` contract file in the `/contracts/src` folder. You'll find the simple logic for our tally app. 
+Open the project and find the `Counter.sol` contract file in the `/contracts/src` folder. You'll find the simple logic for our tally app.
 
 :::tip[--no-git]
 Because `contracts` is a folder in our project, we don't want to initialize a separate git repository for it, so we add the `--no-git` flag.
@@ -171,17 +171,16 @@ Now lets connect the frontend to interact with your recently deployed contract.
 To interact with the smart contract logic, we need to submit an onchain transaction. We can do this easily with the `TransactionDefault` component. This is a simplified version of the `Transaction` component, designed to streamline the integration process. Instead of manually defining each subcomponent and prop, we can use this shorthand version which renders our suggested implementation of the component and includes the `TransactionButton` and `TransactionToast` components.
 
 
-::::steps 
+::::steps
 ### Add the `TransactionDefault` component
 
-Lets add the `TransactionDefault` component to our `page.tsx` file. Delete the existing content in the `main` tag and replace it with the snippet below. 
+Lets add the `TransactionDefault` component to our `page.tsx` file. Delete the existing content in the `main` tag and replace it with the snippet below.
 
 
 ```tsx twoslash [page.tsx]
-// @noErrors: 1109 - Cannot find name 'contracts'
-// @noErrors: 2307 - Cannot find module './calls'
+// @noErrors: 2307 - Cannot find module '@/calls'
 import { TransactionDefault } from "@coinbase/onchainkit/transaction"
-import { calls } from "./calls.ts"
+import { calls } from "@/calls"
 
 
 <main className="flex-grow flex items-center justify-center">
@@ -193,7 +192,7 @@ import { calls } from "./calls.ts"
 </main>
 ```
 
-### Defining the contract calls 
+### Defining the contract calls
 In the previous code snippet, you'll see we imported `calls` from the `calls.ts` file. This file provides the details needed to interact with our contract and call the `increment` function. Create a new `calls.ts` file in the same folder as your `page.tsx` file and add the following code.
 
 ```ts twoslash [calls.ts]
@@ -219,11 +218,11 @@ export const calls = [
 ```
 
 :::tip[Contract Address]
-The `calls.ts` file contains the details of the contract interaction, including the contract address, which we saved in the previous step. 
+The `calls.ts` file contains the details of the contract interaction, including the contract address, which we saved in the previous step.
 :::
 
 ### Testing the component
-Now, when you connect a wallet and click on the `Transact` button and approve the transaction, it will increment the tally onchain by one. 
+Now, when you connect a wallet and click on the `Transact` button and approve the transaction, it will increment the tally onchain by one.
 
 We can verify that the onchain count took place onchain by once again using `cast` to call the `number` function on our contract.
 
@@ -231,26 +230,16 @@ We can verify that the onchain count took place onchain by once again using `cas
 cast call $COUNTER_CONTRACT_ADDRESS "number()(uint256)" --rpc-url $BASE_SEPOLIA_RPC_URL
 ```
 
-If the transaction was successful, the tally should have incremented by one! 
+If the transaction was successful, the tally should have incremented by one!
 ::::
 
-We now have a working onchain tally app! While the example is simple, it illustrates the end to end process of building on onchain app. We: 
+We now have a working onchain tally app! While the example is simple, it illustrates the end to end process of building on onchain app. We:
 - Configured a project with frontend and onchain infrastructure
 - Deployed a smart contract to Base Sepolia
 - Interacted with the contract from the frontend
 
 ## Further Improvements
-This is just the beginning. There are many ways we can improve upon this app. For example, we could: 
+This is just the beginning. There are many ways we can improve upon this app. For example, we could:
 - Make the `increment` transaction gasless by integrating with [Paymaster](/builderkits/onchainkit/transaction/transaction#sponsor-with-paymaster-capabilities)
 - Improve the wallet connection and sign up flow with the [WalletModal](/builderkits/onchainkit/wallet/wallet-modal) component
 - Add onchain [Identity](/builderkits/onchainkit/identity/identity) so we know who added the most recent tally
-
-
-
-
-
-
-
-
-
-

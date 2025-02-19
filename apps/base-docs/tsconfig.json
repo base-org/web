@@ -19,7 +19,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    
+
     "outDir": "./dist",
     "esModuleInterop": true,
 
@@ -36,7 +36,14 @@
       "@onchainkit/*": ["docs/pages/builderkits/onchainkit/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "src", "types", "scripts", "utils/use-check-image-refs.js", "docs/components/VideoPlayer.jsx", "docs/components/ai-instructions/ElizaInstructions.mdx", "docs/pages/use-cases/ai-instructions/lang-chain-local.mdx"],
+  "include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.md",
+    "**/*.mdx",
+  ],
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node"

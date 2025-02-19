@@ -1,10 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import svgr from 'vite-plugin-svgr'
-import { fileURLToPath } from 'url'
-import { dirname, resolve } from 'path'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import svgr from 'vite-plugin-svgr';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [react(), svgr()],
@@ -13,10 +13,10 @@ export default defineConfig({
       strict: false,
       allow: [
         // Allow serving files from root directory
-        resolve(__dirname, '.'),
+        resolve(DIRNAME, '.'),
         // Allow node_modules
-        resolve(__dirname, 'node_modules'),
-      ]
+        resolve(DIRNAME, 'node_modules'),
+      ],
     },
     headers: {
       'Cache-Control': 'no-store',
@@ -26,41 +26,41 @@ export default defineConfig({
     alias: [
       {
         find: '@',
-        replacement: resolve(__dirname, './docs')
+        replacement: resolve(DIRNAME, './docs'),
       },
       {
         find: '@/components',
-        replacement: resolve(__dirname, './docs/components')
+        replacement: resolve(DIRNAME, './docs/components'),
       },
       {
         find: '@/pages',
-        replacement: resolve(__dirname, './docs/pages')
+        replacement: resolve(DIRNAME, './docs/pages'),
       },
       {
         find: '@/styles',
-        replacement: resolve(__dirname, './docs/styles')
+        replacement: resolve(DIRNAME, './docs/styles'),
       },
       {
         find: '@/lib',
-        replacement: resolve(__dirname, './docs/lib')
+        replacement: resolve(DIRNAME, './docs/lib'),
       },
       {
         find: '@/utils',
-        replacement: resolve(__dirname, './docs/utils')
+        replacement: resolve(DIRNAME, './docs/utils'),
       },
       {
         find: '@/types',
-        replacement: resolve(__dirname, './docs/types')
+        replacement: resolve(DIRNAME, './docs/types'),
       },
       {
         find: '@onchainkit',
-        replacement: resolve(__dirname, './docs/pages/builderkits/onchainkit')
+        replacement: resolve(DIRNAME, './docs/pages/builderkits/onchainkit'),
       },
       {
         find: '@/images',
-        replacement: resolve(__dirname, './docs/public/images')
-      }
-    ]
+        replacement: resolve(DIRNAME, './docs/public/images'),
+      },
+    ],
   },
   optimizeDeps: {
     include: ['react', 'react-dom'],
@@ -72,10 +72,10 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       output: {
-        entryFileNames: `[name].[hash].js`,
-        chunkFileNames: `[name].[hash].js`,
-        assetFileNames: `[name].[hash].[ext]`
-      }
-    }
-  }
-})
+        entryFileNames: '[name].[hash].js',
+        chunkFileNames: '[name].[hash].js',
+        assetFileNames: '[name].[hash].[ext]',
+      },
+    },
+  },
+});
