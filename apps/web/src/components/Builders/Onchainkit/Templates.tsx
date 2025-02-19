@@ -13,17 +13,17 @@ import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/Bu
 const TEMPLATES = [
   {
     title: 'Quickstart Template',
-    href: '',
+    href: 'https://github.com/coinbase/onchainkit',
     background: background1,
   },
   {
     title: 'Onchain Store Template',
-    href: '',
+    href: 'https://github.com/coinbase/onchain-commerce-template',
     background: background2,
   },
   {
     title: 'Onchain Social Template',
-    href: '',
+    href: 'https://github.com/fakepixels/ock-identity',
     background: background3,
   },
 ];
@@ -31,17 +31,16 @@ export function Templates() {
   return (
     <div className="flex w-full flex-col gap-10">
       <Title level={TitleLevel.Title1}>
-        Start with a template.{' '}
-        <Title level={TitleLevel.Title1} as="span" className="text-dark-palette-foregroundMuted">
-          Fork, customize, and deploy in minutes.
-        </Title>
+        Start with a template — fork, customize, and deploy in minutes
       </Title>
       <div className="grid w-full grid-cols-3 gap-6 max-sm:grid-cols-1">
         {TEMPLATES.map((template) => {
           return (
-            <div
+            <Link
+              href={template.href}
               key={template.title}
               className="relative flex h-[220px] flex-col justify-between overflow-hidden rounded-xl bg-[purple] p-6"
+              target="_blank"
             >
               <Image
                 src={template.background}
@@ -52,11 +51,11 @@ export function Templates() {
               <Title level={TitleLevel.Title3} className="z-10 font-bold">
                 {template.title}
               </Title>
-              <Link href={template.href} className="z-10 flex gap-2 text-[#C9A4FA]">
+              <div className="z-10 flex gap-2 text-[#C9A4FA]">
                 <Title level={TitleLevel.Headline}>Fork the template</Title>
                 <Icon name="fork" color="currentColor" />
-              </Link>
-            </div>
+              </div>
+            </Link>
           );
         })}
       </div>
@@ -67,7 +66,7 @@ export function Templates() {
           iconName="github"
           target="_blank"
           eventName="onchainkit-feature-template"
-          buttonClassNames="rounded-xl"
+          buttonClassNames="flex items-center justify-between px-4 py-3 group"
         >
           Feature your template
         </ButtonWithLinkAndEventLogging>

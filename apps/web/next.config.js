@@ -138,6 +138,7 @@ const contentSecurityPolicy = {
     'https://res.cloudinary.com',
     `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
     'https://img.reservoir.tools', // reservoir
+    'https://d3r81g40ycuhqg.cloudfront.net/', // OCK Earn component
   ],
 };
 
@@ -253,6 +254,7 @@ module.exports = extendBaseConfig(
           hostname,
         };
       }),
+      domains: ['pbs.twimg.com'],
     },
     async headers() {
       return [

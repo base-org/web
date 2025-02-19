@@ -2,7 +2,16 @@ import type { Token } from '@coinbase/onchainkit/token';
 import { Address, encodeFunctionData } from 'viem';
 import usdc from 'apps/web/src/components/Builders/Shared/assets/usdc.png';
 
-export type Tab = 'Wallet' | 'Buy' | 'Pay' | 'Swap' | 'Earn' | 'Mint' | 'Transact' | 'Fund';
+export type Tab =
+  | 'Wallet'
+  | 'Buy'
+  | 'Pay'
+  | 'Swap'
+  | 'Earn'
+  | 'Mint'
+  | 'Transact'
+  | 'Fund'
+  | 'Checkout';
 
 export const ONCHAINKIT_DEMO_TABS = [
   'Wallet',
@@ -13,6 +22,18 @@ export const ONCHAINKIT_DEMO_TABS = [
   'Mint',
   'Transact',
 ];
+
+export const COMPONENT_DESCRIPTIONS: Record<string, string> = {
+  Wallet: 'Enable users to onboard and log into your app with a wallet.',
+  Swap: 'Enable swaps between different cryptocurrencies.',
+  Buy: 'Enable token purchases.',
+  Mint: 'Enable NFT mints (ERC721 and ERC1155).',
+  Checkout: 'Accept USDC payments with instant user onboarding and onramps.',
+  Transact: 'Trigger onchain transactions and sponsor them with Paymaster',
+  Fund: 'Fund wallets with a debit card or a coinbase account.',
+  Earn: 'Earn yield on USDC and other tokens',
+  Pay: 'Accept USDC payments with instant user onboarding and onramps.',
+};
 
 export const ethToken: Token = {
   name: 'ETH',
@@ -110,7 +131,6 @@ export const codeStyles = `
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
-
 /* Default theme (light) */
 .shiki,
 .shiki span {
@@ -120,7 +140,6 @@ export const codeStyles = `
   font-weight: var(--shiki-light-font-weight) !important;
   text-decoration: var(--shiki-light-text-decoration) !important;
 }
-
 /* Dark theme overrides */
 .dark .shiki,
 .dark .shiki span {
@@ -162,7 +181,6 @@ function SwapDemo() {
     symbol: "ETH",
     image: "",
   };
-
   const degenToken: Token[] = [{
     name: 'DEGEN',
     address: '0x4ed4e862860bed51a9570b96d89af5e1b0efefed',
@@ -265,7 +283,6 @@ import {
 
 function TransactDefaultDemo() {
   const calls = [...];
-
   return <TransactionDefault calls={calls} />
 }
   `,

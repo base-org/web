@@ -27,7 +27,6 @@ const variantStyles: Record<ButtonVariants, string> = {
   // White outlined
   [ButtonVariants.Outlined]:
     'bg-transparent text-white border border-white hover:bg-white hover:text-black active:bg-[#E3E7E9]',
-
   // Secondary Outlined
   [ButtonVariants.SecondaryOutline]: 'bg-transparent border border-gray-muted/65 hover:bg-white/10',
 };

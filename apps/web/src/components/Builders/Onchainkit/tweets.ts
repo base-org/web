@@ -66,11 +66,11 @@ export const TWEETS: Tweet[] = [
     username: '@tinydinomfers',
     content: `sneak peek 👀
 
-our minting page is proudly built using the
+our minting page is proudly built using the 
 @OnchainKit
- by
+ by 
 @base
-
+ 
 
 stay tuned, and we’ll show you how it all works! 🚀`,
   },
@@ -90,13 +90,13 @@ Why wait? More $SACA, fewer clicks. Get on it: https://sacaonbase.com`,
     username: '@Crypto_Story_',
     content: `SPHERE, your gateway to the Base ecosystem! Soon...
 
-🚀 Swap, buy, mint NFTs, and connect with the Base community—all in one place.
+🚀 Swap, buy, mint NFTs, and connect with the Base community—all in one place. 
 
 Track your stats, join base.eth Chat, and stay updated with the latest network status. 🌐
 
-Built on
+Built on 
 @base
- with
+ with 
 @OnchainKit`,
   },
   // {

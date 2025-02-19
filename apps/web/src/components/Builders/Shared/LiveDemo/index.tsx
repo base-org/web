@@ -26,6 +26,7 @@ import {
   CLICK_CALLS,
   codeSnippets,
   codeStyles,
+  COMPONENT_DESCRIPTIONS,
   earnVaultAddress,
   fundPresetAmountInputs,
   ONCHAINKIT_DEMO_TABS,
@@ -38,12 +39,15 @@ import classNames from 'classnames';
 import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useState } from 'react';
 import { CodeSnippet } from 'apps/web/src/components/Builders/Shared/CodeSnippet';
 import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
+import Text from 'apps/web/src/components/base-org/typography/Text';
+import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
 
 type LiveDemoProps = {
   components: (typeof ONCHAINKIT_DEMO_TABS)[number][];
+  title?: string;
 };
 
-export function LiveDemo({ components }: LiveDemoProps) {
+export function LiveDemo({ components, title }: LiveDemoProps) {
   const [mode, setMode] = useState<'light' | 'dark'>('dark');
   const [isMounted, setIsMounted] = useState(false);
   const [content, setContent] = useState<'code' | 'preview'>('code');
@@ -71,11 +75,11 @@ export function LiveDemo({ components }: LiveDemoProps) {
       case 'Wallet':
         return <WalletAdvancedDefault />;
       case 'Buy':
-        return <Buy toToken={usdcToken} />;
+        return <Buy toToken={usdcToken} disabled />;
       case 'Pay':
         return (
           <Checkout productId="my-product-id">
-            <CheckoutButton coinbaseBranded />
+            <CheckoutButton className="text-white" />
           </Checkout>
         );
       case 'Swap':
@@ -126,17 +130,7 @@ export function LiveDemo({ components }: LiveDemoProps) {
   }, []);
 
   if (!isMounted) {
-    return (
-      <div id="demo" className="bg-black pb-32 pt-24">
-        <div className="mx-auto max-w-4xl">
-          <div className="mx-auto overflow-hidden rounded-xl border border-white/10 bg-dark-palette-backgroundAlternate/50">
-            <div className="flex h-[500px] items-center justify-center">
-              <div className="text-white/50">Loading...</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return <div className="flex h-[300px] items-center justify-center p-8 lg:h-[500px]" />;
   }
 
   return (
@@ -151,6 +145,7 @@ export function LiveDemo({ components }: LiveDemoProps) {
         demoComponent={demoComponent}
         toggleMode={toggleMode}
         copied={copied}
+        title={title}
       />
       <MobileDemo
         components={components}
@@ -164,6 +159,7 @@ export function LiveDemo({ components }: LiveDemoProps) {
         demoComponent={demoComponent}
         toggleMode={toggleMode}
         setContent={setContent}
+        title={title}
       />
     </>
   );
@@ -179,6 +175,7 @@ function DesktopDemo({
   demoComponent,
   toggleMode,
   copied,
+  title,
 }: {
   components: (typeof ONCHAINKIT_DEMO_TABS)[number][];
   mode: 'dark' | 'light';
@@ -189,6 +186,7 @@ function DesktopDemo({
   demoComponent: React.ReactNode;
   toggleMode: () => void;
   copied: boolean;
+  title?: string;
 }) {
   const createTabSelectionHandler = useCallback(
     (tab: Tab) => () => {
@@ -200,11 +198,13 @@ function DesktopDemo({
   return (
     <section className="hidden w-full md:block">
       <style>{codeStyles}</style>
-      <div className="mb-9 flex-row gap-2">
-        <Title level={TitleLevel.Title1} as="h2">
-          Experience how easy it is to build on Base.
-        </Title>
-      </div>
+      {title && (
+        <div className="mb-9 flex-row gap-2">
+          <Title level={TitleLevel.Title1} as="h2">
+            {title}
+          </Title>
+        </div>
+      )}
       <div
         className={classNames(
           'relative rounded-xl border transition-colors',
@@ -219,25 +219,27 @@ function DesktopDemo({
             mode === 'dark' ? 'border-dark-palette-line/20' : 'border-dark-palette-line/20',
           )}
         >
-          <div className="no-scrollbar items-center space-x-8 overflow-x-auto">
-            <div className="flex space-x-8 px-1">
-              {components.map((component) => (
-                <button
-                  key={component}
-                  type="button"
-                  onClick={createTabSelectionHandler(component as Tab)}
-                  className={classNames(
-                    'whitespace-nowrap rounded-lg text-base font-medium transition-colors',
-                    activeTab === component ? buttonClasses.active : buttonClasses.inactive,
-                  )}
-                >
-                  {component}
-                </button>
-              ))}
+          {components?.length > 1 && (
+            <div className="no-scrollbar items-center space-x-8 overflow-x-auto">
+              <div className="flex space-x-8 px-1">
+                {components.map((component) => (
+                  <button
+                    key={component}
+                    type="button"
+                    onClick={createTabSelectionHandler(component as Tab)}
+                    className={classNames(
+                      'whitespace-nowrap rounded-lg text-base font-medium transition-colors',
+                      activeTab === component ? buttonClasses.active : buttonClasses.inactive,
+                    )}
+                  >
+                    {component}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className="flex items-center space-x-2">
+          <div className="ml-auto flex items-center space-x-2">
             <button
               type="button"
               onClick={handleCopy}
@@ -274,7 +276,21 @@ function DesktopDemo({
             </button>
           </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2">
+
+        <div
+          className={classNames(
+            'flex items-center justify-between border-b py-2 pl-6 pr-2 transition-colors',
+            mode === 'dark'
+              ? 'border-dark-palette-line/20 text-white'
+              : 'border-dark-palette-line/20 text-dark-palette-backgroundAlternate',
+          )}
+        >
+          <Text variant={TextVariant.Body} className="font-normal">
+            {COMPONENT_DESCRIPTIONS[activeTab]}
+          </Text>
+        </div>
+
+        <div className="grid h-[600px] grid-cols-1 lg:grid-cols-2">
           <ComponentDemo mode={mode} demoComponent={demoComponent} />
           <div className="h-[300px] py-6 pl-6 pr-1 lg:h-[500px]">
             <div className={`${mode} relative h-full`}>
@@ -299,6 +315,7 @@ function MobileDemo({
   demoComponent,
   toggleMode,
   setContent,
+  title,
 }: {
   components: (typeof ONCHAINKIT_DEMO_TABS)[number][];
   mode: 'dark' | 'light';
@@ -311,6 +328,7 @@ function MobileDemo({
   demoComponent: React.ReactNode;
   toggleMode: () => void;
   setContent: (content: 'code' | 'preview') => void;
+  title?: string;
 }) {
   const createTabSelectionHandler = useCallback(
     (tab: Tab) => () => {
@@ -338,9 +356,11 @@ function MobileDemo({
   return (
     <section className="w-full md:hidden">
       <style>{codeStyles}</style>
-      <div className="mb-9 flex flex-col gap-2">
-        <Title level={TitleLevel.Title3}>Experience how easy it is to build on Base.</Title>
-      </div>
+      {title && (
+        <div className="mb-9 flex flex-col gap-2">
+          <Title level={TitleLevel.Title3}>{title}</Title>
+        </div>
+      )}
       <div
         className={classNames(
           'relative rounded-xl border transition-colors',
@@ -505,7 +525,9 @@ function ComponentDemo({
         mode === 'dark' ? 'border-dark-palette-line/20' : 'border-dark-palette-line/20',
       )}
     >
-      <DynamicCryptoProviders mode={mode}>{demoComponent}</DynamicCryptoProviders>
+      <DynamicCryptoProviders mode={mode} theme="default">
+        {demoComponent}
+      </DynamicCryptoProviders>
     </div>
   );
 }
