@@ -30,6 +30,8 @@ export function useTheme() {
 export default function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('dark');
 
+  console.log({ theme });
+
   const toggleTheme = useCallback(() => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   }, []);
@@ -58,7 +60,5 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
 
   const values = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
 
-  return (
-    <ThemeContext.Provider value={values}>{children}</ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={values}>{children}</ThemeContext.Provider>;
 }

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import CardsProvider from './components/base-org/Card/context.tsx';
 import ThemeProvider from './contexts/Theme.tsx';
+import { AppProviders } from './contexts/AppProviders.tsx';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -10,9 +11,11 @@ export default function Layout({ children }: { children: ReactNode }) {
         fontFamily: 'CoinbaseSans !important',
       }}
     >
-      <ThemeProvider>
-        <CardsProvider>{children}</CardsProvider>
-      </ThemeProvider>
+      <AppProviders>
+        <ThemeProvider>
+          <CardsProvider>{children}</CardsProvider>
+        </ThemeProvider>
+      </AppProviders>
     </div>
   );
 }
