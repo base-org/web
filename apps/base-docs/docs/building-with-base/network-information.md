@@ -53,7 +53,7 @@ hide_table_of_contents: true
 ---
 
 :::info
-L1 & L2 protocol and network-related smart contract deployments can be found on the [Base Contracts](/docs/base-contracts) page.
+L1 & L2 protocol and network-related smart contract deployments can be found on the [Base Contracts](https://github.com/base/web/blob/master/apps/base-docs/docs/contracts.md) page.
 :::
 
 :::info
@@ -62,5 +62,5 @@ For production systems, we recommend using a node from one of our [node partners
 
 ---
 
-[running your own Base node]: /tutorials/run-a-base-node
-[node partners]: /docs/tools/node-providers
+[running your own Base node]: https://github.com/base/web/blob/master/apps/base-docs/tutorials/docs/0_run-a-base-node.md
+[node partners]: https://github.com/base/web/blob/master/apps/base-docs/docs/tools/node-providers.md
