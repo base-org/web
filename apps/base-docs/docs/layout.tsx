@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import CardsProvider from './components/base-org/Card/context.tsx';
 import ThemeProvider from './contexts/Theme.tsx';
 import { AppProviders } from './contexts/AppProviders.tsx';
 import { Buffer } from 'buffer';
@@ -16,9 +15,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       }}
     >
       <ThemeProvider>
-        <CardsProvider>
-          <AppProviders>{children}</AppProviders>
-        </CardsProvider>
+        <AppProviders>{children}</AppProviders>
       </ThemeProvider>
     </div>
   );
