@@ -77,9 +77,9 @@ export function Hero() {
               )}
             >
               <div className="flex h-9 w-full items-center justify-between">
-                <div className="tracking-normal md:hidden">Search tools or templates...</div>
+                <div className="tracking-normal md:hidden">Quickstart...</div>
                 <div className="hidden tracking-normal md:inline">
-                  Search tools or templates to get started
+                  Quickstart to use tools, templates, and guides
                 </div>
                 <div className="flex gap-1">
                   <div className="flex h-8 w-8 flex-col items-center justify-center rounded-sm bg-gray-80">

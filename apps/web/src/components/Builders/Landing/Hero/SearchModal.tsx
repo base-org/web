@@ -240,7 +240,7 @@ export function SearchModal({
             'bg-illoblack',
             'border-b border-gray-muted/20 hover:border-gray-muted/20 focus:outline-none',
           )}
-          placeholder="Search tools or templates to get started"
+          placeholder="Quickstart to use tools, templates, and guides"
         />
         {activeSearchConfig.length > 0 && (
           <div className="flex w-full flex-col gap-4 pt-4">
