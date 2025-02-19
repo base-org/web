@@ -26,7 +26,6 @@ export default function Morpho() {
         />
         <Blockquote
           quote="Base is at the crossroad of DeFi, memecoins, NFT, and Coinbase's large distribution network."
-          color="text-dark-green-60"
         />
         <QABlock
           question="What's the best part of building on Base?"
@@ -46,10 +45,10 @@ export default function Morpho() {
         />
         <QABlock question="What's one word you think of when you think of Base?" answer="Based." />
         <ReadMore
-          previousLabel="Back to Stories"
-          previousHref="/builders/stories"
-          nextLabel="Ngan Nguyen of Onchain Buster"
-          nextHref="/builders/stories/ngan"
+          previousLabel="AchillesHodl of Byte"
+          previousHref="/builders/stories/byte"
+          nextLabel="Dhawal of HeyElsa AI"
+          nextHref="/builders/stories/hey-elsa"
         />
         <BottomCta />
       </main>

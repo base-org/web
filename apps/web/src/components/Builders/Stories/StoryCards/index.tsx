@@ -118,8 +118,8 @@ function StoryCard({
               </Title>
             </div>
             <div className="flex items-center gap-1">
-              <div className="hidden md:block">
-                <Icon name="locationPin" color="currentColor" />
+              <div className="hidden items-center justify-center md:flex">
+                <Icon name="locationPin" color="currentColor" width={20} height={20} />
               </div>
               <div className="md:hidden">
                 <Icon name="locationPin" color="currentColor" width={20} height={20} />
@@ -132,6 +132,7 @@ function StoryCard({
         </div>
         <ButtonWithLinkAndEventLogging
           variant={ButtonVariants.SecondaryOutline}
+          linkClassNames='w-fit'
           buttonClassNames="flex items-center justify-between px-4 py-3 group"
           href={href}
           eventName={`developers_stories_${title.replace(/\s+/g, '-').toLowerCase()}`}

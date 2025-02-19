@@ -29,7 +29,6 @@ export default function Blocklords() {
         />
         <Blockquote
           quote="Take risks. Push the limits when designing smart contracts—don't just follow what's been done before. The best innovations come from experimenting."
-          color="text-dark-green-60"
         />
         <QABlock
           question="What's the best part of building on Base?"
@@ -59,8 +58,8 @@ export default function Blocklords() {
         <ReadMore
           previousLabel="Back to Stories"
           previousHref="/builders/stories"
-          nextLabel="Ngan Nguyen of Onchain Buster"
-          nextHref="/builders/stories/ngan"
+          nextLabel="Tara of Cat Town"
+          nextHref="/builders/stories/cat-town"
         />
         <BottomCta />
       </main>

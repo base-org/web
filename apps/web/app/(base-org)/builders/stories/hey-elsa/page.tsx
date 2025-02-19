@@ -26,7 +26,6 @@ export default function HeyElsa() {
         />
         <Blockquote
           quote="Base provides unmatched developer support and fosters a highly constructive community that inspires innovation and encourages you to push boundaries."
-          color="text-dark-green-60"
         />
         <QABlock
           question="What's the best part of building on Base?"
@@ -49,10 +48,10 @@ export default function HeyElsa() {
           answer="Relentless."
         />
         <ReadMore
-          previousLabel="Back to Stories"
-          previousHref="/builders/stories"
-          nextLabel="Ngan Nguyen of Onchain Buster"
-          nextHref="/builders/stories/ngan"
+          previousLabel="Merlin of Morpho"
+          previousHref="/builders/stories/morpho"
+          nextLabel="Alexander of Aerodrome"
+          nextHref="/builders/stories/aerodrome"
         />
         <BottomCta />
       </main>

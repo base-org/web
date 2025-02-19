@@ -26,7 +26,6 @@ export default function Byte() {
         />
         <Blockquote
           quote="Be active, engage in the community, and build something. You never know where the opportunities will come from."
-          color="text-dark-green-60"
         />
         <QABlock
           question="What's the best part of building on Base?"
@@ -41,10 +40,10 @@ export default function Byte() {
           answer="Finding wallet solutions for the consumer AI space has been a challenge for me. There are many solutions I see out there but it is hard to find the right one that can be scaled to user applications. I've now found some great ones that I'm starting to build with, thanks to some helpful advice from other builders on base. I think that the AI agent wallet space is so early that it can be hard to find the right solutions that meet this use case. I see so much being built on base though that I don't think this will be a challenge for builders in a few months from now."
         />
         <ReadMore
-          previousLabel="Back to Stories"
-          previousHref="/builders/stories"
-          nextLabel="Ngan Nguyen of Onchain Buster"
-          nextHref="/builders/stories/ngan"
+          previousLabel="Tara of Cat Town"
+          previousHref="/builders/stories/cat-town"
+          nextLabel="Merlin of Morpho"
+          nextHref="/builders/stories/morpho"
         />
         <BottomCta />
       </main>

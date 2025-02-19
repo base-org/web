@@ -29,7 +29,6 @@ export default function CatTown() {
         />
         <Blockquote
           quote="Creating Cat Town has opened doors I never could have imagined. It's incredible to see how our little game has made a real difference."
-          color="text-dark-green-60"
         />
         <QABlock
           question="What's the best part of building on Base?"
@@ -54,10 +53,10 @@ export default function CatTown() {
         />
         <QABlock question="What's one word you think of when you think of Base?" answer="BASED." />
         <ReadMore
-          previousLabel="Back to Stories"
-          previousHref="/builders/stories"
-          nextLabel="Ngan Nguyen of Onchain Buster"
-          nextHref="/builders/stories/ngan"
+          previousLabel="David of Blocklords"
+          previousHref="/builders/stories/blocklords"
+          nextLabel="AchillesHodl of Byte"
+          nextHref="/builders/stories/byte"
         />
         <BottomCta />
       </main>

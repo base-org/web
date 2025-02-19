@@ -26,7 +26,6 @@ export default function Aerodrome() {
         />
         <Blockquote
           quote="Base has proven itself as a dominant L2, truly capable of bringing the world onchain. Still day one."
-          color="text-dark-green-60"
         />
         <QABlock
           question="What's the best part of building on Base?"
@@ -46,10 +45,10 @@ export default function Aerodrome() {
         />
         <QABlock question="What's one word you think of when you think of Base?" answer="LFB!" />
         <ReadMore
-          previousLabel="Back to Stories"
-          previousHref="/builders/stories"
-          nextLabel="Ngan Nguyen of Onchain Buster"
-          nextHref="/builders/stories/ngan"
+          previousLabel="Dhawal of HeyElsa AI"
+          previousHref="/builders/stories/hey-elsa"
+          nextLabel="Back to Stories"
+          nextHref="/builders/stories"
         />
         <BottomCta />
       </main>
