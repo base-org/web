@@ -83,7 +83,7 @@ export default function OnchainKit() {
         <Testmonials />
         <CtaBanner
           title="What will you build?"
-          description="Use a template or read the documentation to get started."
+          description="To start building, run the command in your terminal or explore documentation."
           cta={
             <>
               <Button

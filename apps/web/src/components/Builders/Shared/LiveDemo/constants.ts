@@ -31,8 +31,8 @@ export const COMPONENT_DESCRIPTIONS: Record<string, string> = {
   Checkout: 'Accept USDC payments with instant user onboarding and onramps.',
   Transact: 'Trigger onchain transactions and sponsor them with Paymaster',
   Fund: 'Fund wallets with a debit card or a coinbase account.',
-  Earn: '',
-  Pay: '',
+  Earn: 'Earn yield on USDC and other tokens',
+  Pay: 'Accept USDC payments with instant user onboarding and onramps.',
 };
 
 export const ethToken: Token = {

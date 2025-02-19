@@ -239,7 +239,7 @@ function DesktopDemo({
             </div>
           )}
 
-          <div className="flex items-center space-x-2">
+          <div className="ml-auto flex items-center space-x-2">
             <button
               type="button"
               onClick={handleCopy}

@@ -13,12 +13,12 @@ import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/Bu
 const TEMPLATES = [
   {
     title: 'Quickstart Template',
-    href: '',
+    href: 'https://github.com/coinbase/onchainkit',
     background: background1,
   },
   {
     title: 'Onchain Store Template',
-    href: 'https://onchain-commerce-template.vercel.app/',
+    href: 'https://github.com/coinbase/onchain-commerce-template',
     background: background2,
   },
   {
