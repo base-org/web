@@ -6,7 +6,7 @@ import Image, { StaticImageData } from 'next/image';
 import { ReactNode } from 'react';
 
 type TweetCardProps = {
-  image?: StaticImageData;
+  image?: string | StaticImageData;
   name: string;
   username?: string;
   content?: string | ReactNode;

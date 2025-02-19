@@ -15,7 +15,7 @@ export function Testmonials() {
             return (
               <TweetCard
                 key={tweet.username}
-                image={tweetImage}
+                image={tweet.image}
                 name={tweet.name}
                 username={tweet.username}
                 content={tweet.content}

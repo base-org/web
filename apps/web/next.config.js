@@ -254,6 +254,7 @@ module.exports = extendBaseConfig(
           hostname,
         };
       }),
+      domains: ['pbs.twimg.com'],
     },
     async headers() {
       return [
