@@ -1,7 +1,7 @@
 'use client';
 
+import { CSSProperties, useEffect, useId, useRef } from 'react';
 import { useCards } from './context.tsx';
-import React, { CSSProperties, useEffect, useId, useRef } from 'react';
 
 type HoverShimmerProps = {
   children: React.ReactNode;
@@ -28,7 +28,7 @@ export default function Card({
     return () => unregisterCard(id);
   }, [registerCard, unregisterCard, id]);
 
-  /* 
+  /*
     Shimmer / Tailwind integration notes:
     - Converted from https://codepen.io/yxshv/pen/JjaRZmb
     - The card "border" is controlled via the padding, p-[1px]
