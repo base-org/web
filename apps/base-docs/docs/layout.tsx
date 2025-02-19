@@ -11,11 +11,11 @@ export default function Layout({ children }: { children: ReactNode }) {
         fontFamily: 'CoinbaseSans !important',
       }}
     >
-      <AppProviders>
-        <ThemeProvider>
-          <CardsProvider>{children}</CardsProvider>
-        </ThemeProvider>
-      </AppProviders>
+      <ThemeProvider>
+        <CardsProvider>
+          <AppProviders>{children}</AppProviders>
+        </CardsProvider>
+      </ThemeProvider>
     </div>
   );
 }

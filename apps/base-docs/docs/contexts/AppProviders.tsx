@@ -1,5 +1,5 @@
-import cookieBanner from '@coinbase/cookie-banner';
-const { CookieBanner } = cookieBanner;
+// import cookieBanner from '@coinbase/cookie-banner';
+// const { CookieBanner } = cookieBanner;
 import { CookieManagerProvider } from '@/components/CookieManager/CookieManagerProvider.tsx';
 
 const cookieBannerTheme = {
@@ -52,9 +52,9 @@ const cookieBannerTheme = {
 
 export function AppProviders({ children }: { children: React.ReactNode }) {
   return (
-    // <CookieManagerProvider>
-    children
-    // <CookieBanner companyName="Base" link="/cookie-policy" theme={cookieBannerTheme} />
-    // </CookieManagerProvider>
+    <CookieManagerProvider>
+      {children}
+      {/* <CookieBanner companyName="Base" link="/cookie-policy" theme={cookieBannerTheme} /> */}
+    </CookieManagerProvider>
   );
 }
