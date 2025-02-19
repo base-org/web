@@ -43,6 +43,11 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
     }, 100);
   }, []);
 
+  const onLinkClick = useCallback(() => {
+    setSubActive(false);
+    setHoverIndex(-1);
+  }, [setSubActive, setHoverIndex]);
+
   const onMouseEnterNavLink = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
     const target = event.currentTarget as HTMLAnchorElement;
     const index = parseInt(target.getAttribute('data-index') ?? '0');
@@ -72,6 +77,7 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
               href={link.href + '?utm_source=dotorg&utm_medium=nav'}
               target={link.href.startsWith('https://') ? '_blank' : undefined}
               onMouseEnter={onMouseEnterNavLink}
+              onClick={onLinkClick}
               className={`rounded-md bg-opacity-0 px-6 py-1 text-sm transition-all duration-300 hover:bg-opacity-10 hover:opacity-100 ${
                 hoverIndex === index ? 'bg-opacity-10' : ''
               }`}
