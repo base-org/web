@@ -1,9 +1,9 @@
 import { StaticImageData } from 'next/image';
-import tweet1 from 'apps/web/src/components/Builders/Agentkit/assets/tweet1.jpg';
-import tweet2 from 'apps/web/src/components/Builders/Agentkit/assets/tweet2.jpg';
-import tweet3 from 'apps/web/src/components/Builders/Agentkit/assets/tweet3.jpg';
-import tweet4 from 'apps/web/src/components/Builders/Agentkit/assets/tweet4.jpg';
-import tweet5 from 'apps/web/src/components/Builders/Agentkit/assets/tweet5.png';
+import tweet1 from 'apps/web/src/components/Builders/AgentKit/assets/tweet1.jpg';
+import tweet2 from 'apps/web/src/components/Builders/AgentKit/assets/tweet2.jpg';
+import tweet3 from 'apps/web/src/components/Builders/AgentKit/assets/tweet3.jpg';
+import tweet4 from 'apps/web/src/components/Builders/AgentKit/assets/tweet4.jpg';
+import tweet5 from 'apps/web/src/components/Builders/AgentKit/assets/tweet5.png';
 
 type Tweet = {
   image?: StaticImageData | string;
