@@ -92,6 +92,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@app/base-docs@workspace:apps/base-docs"
   dependencies:
+    "@coinbase/cookie-banner": ^1.0.3
+    "@coinbase/cookie-manager": ^1.1.1
     "@coinbase/onchainkit": ^0.37.0
     "@googleapis/sheets": ^5.0.5
     "@types/next": ^9.0.0
