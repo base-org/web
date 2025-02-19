@@ -11,7 +11,7 @@ type SvgProps = {
   height?: string | number;
 };
 
-const ICONS: Record<string, (props: SvgProps) => JSX.Element> = {
+const ICONS: Record<string, (props: SvgProps) => React.ReactNode> = {
   discord: ({ color, width, height }: SvgProps) => (
     <svg
       width={width}

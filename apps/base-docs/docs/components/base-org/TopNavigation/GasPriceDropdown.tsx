@@ -27,7 +27,7 @@ export default function GasPriceDropdown() {
   return (
     <div className="group relative hidden md:block">
       <div className="flex flex cursor-pointer items-center gap-2 rounded-xl bg-black px-4 py-3 transition-all group-hover:bg-[#333]">
-        <span className="animate-pulse text-palette-positive">
+        <span className="text-palette-positive animate-pulse">
           <Icon name="blueCircle" color="currentColor" height="0.75rem" width="0.75rem" />
         </span>
         <strong>{baseGasPriceInWei ? convertWeiToMwei(baseGasPriceInWei) : <>&mdash;</>}</strong>
