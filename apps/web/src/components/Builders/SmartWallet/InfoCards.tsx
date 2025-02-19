@@ -2,7 +2,7 @@ import { Card } from 'apps/web/src/components/Builders/Shared/Card';
 import shieldOutline from 'apps/web/src/components/Builders/SmartWallet/svg/shieldOutline.svg';
 import globe from 'apps/web/src/components/Builders/SmartWallet/svg/globe.svg';
 import cash from 'apps/web/src/components/Builders/SmartWallet/svg/cash.svg';
-import defi from 'apps/web/src/components/Builders/SmartWallet/svg//defi.svg';
+import defi from 'apps/web/src/components/Builders/SmartWallet/svg/defi.svg';
 import faces from 'apps/web/src/components/Builders/SmartWallet/svg/faces.svg';
 import support from 'apps/web/src/components/Builders/SmartWallet/svg/support.svg';
 import Image from 'next/image';
@@ -20,7 +20,8 @@ const INFO_CARDS = [
       <Image src={cash as StaticImageData} alt="cash" width={31} height={32} className="h-8 w-8" />
     ),
     title: 'Instant onboarding',
-    description: 'Bring users onchain in seconds with secure passkey sign-in. No app or extension required.',
+    description:
+      'Bring users onchain in seconds with secure passkey sign-in. No app or extension required.',
   },
   {
     icon: (
@@ -47,7 +48,8 @@ const INFO_CARDS = [
       />
     ),
     title: 'Built-in onramps',
-    description: 'Simple account funding for users — with Apple Pay, debit card, or Coinbase Exchange balances.',
+    description:
+      'Simple account funding for users — with Apple Pay, debit card, or Coinbase Exchange balances.',
   },
   {
     icon: (
