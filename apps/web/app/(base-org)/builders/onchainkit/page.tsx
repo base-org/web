@@ -16,7 +16,7 @@ import { useCallback } from 'react';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { LiveDemo } from 'apps/web/src/components/Builders/Shared/LiveDemo';
 
-const ONCHAINKIT_DOCS_LINK = 'https://onchainkit.xyz/';
+const ONCHAINKIT_DOCS_LINK = 'https://docs.cdp.coinbase.com/onchainkit';
 const demoComponents = ['Wallet', 'Buy', 'Fund', 'Earn', 'Mint', 'Transact'];
 
 export default function OnchainKit() {
