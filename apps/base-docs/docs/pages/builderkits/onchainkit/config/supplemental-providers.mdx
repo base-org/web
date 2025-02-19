@@ -16,6 +16,7 @@ For example, the following code creates custom Wagmi and QueryClient providers:
 :::code-group
 
 ```tsx twoslash [wagmi.ts]
+// @noErrors: 2554
 import { http, cookieStorage, createConfig, createStorage } from 'wagmi';
 import { base } from 'wagmi/chains'; // add baseSepolia for testing // [!code ++]
 import { coinbaseWallet } from 'wagmi/connectors';
@@ -48,7 +49,7 @@ declare module 'wagmi' {
 ```
 
 ```tsx twoslash [providers.tsx]
-// @noErrors: 2307 2580 2339 - cannot find 'process', cannot find './wagmi', cannot find 'import.meta'
+// @noErrors: 2307 2580 2339 2554 - cannot find 'process', cannot find './wagmi', cannot find 'import.meta'
 import { OnchainKitProvider } from '@coinbase/onchainkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { base } from 'wagmi/chains'; // add baseSepolia for testing// [!code ++]
@@ -86,4 +87,3 @@ export function Providers(props: {
 :::
 
 <StartBuilding />
-

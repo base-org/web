@@ -4,8 +4,8 @@ description: The `<Transaction />` components provide a high-level wrap around t
 ---
 
 import { Avatar, Name } from '@coinbase/onchainkit/identity';
-import { 
-  Transaction, 
+import {
+  Transaction,
   TransactionButton,
   TransactionDefault,
   TransactionSponsor,
@@ -18,15 +18,15 @@ import {
   TransactionToastLabel,
 } from '@coinbase/onchainkit/transaction';
 import { Wallet, ConnectWallet } from '@coinbase/onchainkit/wallet';
-import App from '@/components/App.tsx';
-import TransactionWrapper from '@/components/TransactionWrapper.tsx';
+import App from '@/components/App';
+import TransactionWrapper from '@/components/TransactionWrapper';
 
 export const BASE_SEPOLIA_CHAIN_ID = 84532;
 export const PAYMASTER_AND_BUNDLER_ENDPOINT = import.meta.env.VITE_CDP_PAYMASTER_AND_BUNDLER_ENDPOINT;
 
 # `<Transaction />`
 
-The `<Transaction />` components provide a high-level wrap around the entire transaction flow. 
+The `<Transaction />` components provide a high-level wrap around the entire transaction flow.
 It handles the transaction lifecycle, including gas estimation, fee sponsorship, and status updates.
 
 Before using them, ensure you've completed all [Getting Started steps](/builderkits/onchainkit/getting-started).
@@ -60,7 +60,7 @@ const calls = [...];
             capabilities={capabilities}
             chainId={BASE_SEPOLIA_CHAIN_ID}
             calls={contracts}
-            onStatus={onStatus} 
+            onStatus={onStatus}
           />
         )
       } else {
@@ -100,7 +100,7 @@ Execute one or multiple transactions using the Transaction component. You can pa
 :::code-group
 
 ```tsx twoslash [TransactionComponents.tsx]
-// @noErrors: 2307 - cannot find module './contracts' or its corresponding type declarations
+// @noErrors: 2307
 import { useCallback } from 'react';
 import { Avatar, Name } from '@coinbase/onchainkit/identity';
 import { // [!code focus]
@@ -114,7 +114,7 @@ import { // [!code focus]
 import type { LifecycleStatus } from '@coinbase/onchainkit/transaction';
 import { Wallet, ConnectWallet } from '@coinbase/onchainkit/wallet';
 import { useAccount } from 'wagmi';
-import { calls } from './calls.ts'; // [!code focus]
+import { calls } from '@/calls'; // [!code focus]
 
 // ---cut-start---
 
@@ -123,7 +123,7 @@ const BASE_SEPOLIA_CHAIN_ID = 84532;
 
 export default function TransactionComponents() {
   const { address } = useAccount();
-  
+
   const handleOnStatus = useCallback((status: LifecycleStatus) => {
     console.log('LifecycleStatus', status);
   }, []);
@@ -190,7 +190,7 @@ export const calls = [
             capabilities={capabilities}
             chainId={BASE_SEPOLIA_CHAIN_ID}
             contracts={contracts}
-            onStatus={onStatus} 
+            onStatus={onStatus}
           >
             <TransactionButton />
             <TransactionSponsor />
@@ -216,11 +216,11 @@ export const calls = [
 
 ### Listen to `LifecycleStatus`
 
-Take full control of your transactions data with the `LifecycleStatus` object via the `onStatus` prop. 
+Take full control of your transactions data with the `LifecycleStatus` object via the `onStatus` prop.
 This TypeScript object provides `statusName` and `statusData` to keep you informed.
 
 ```tsx twoslash
-// @noErrors: 2307 - cannot find module './contracts' or its corresponding type declarations
+// @noErrors: 2307
 import { useCallback } from 'react';
 import {
   Transaction,
@@ -232,7 +232,7 @@ import {
   TransactionToastLabel,
   TransactionToastAction,
 } from '@coinbase/onchainkit/transaction';
-import {contracts} from './contracts.ts';
+import {contracts} from '@/contracts';
 // ---cut-before---
 
 import type { LifecycleStatus } from '@coinbase/onchainkit/transaction'; // [!code focus]
@@ -280,7 +280,7 @@ type LifecycleStatus =
       statusData: null;
     }
   | {
-      statusName: 'buildingTransaction'; // resolving calls or contracts promise 
+      statusName: 'buildingTransaction'; // resolving calls or contracts promise
       statusData: null;
     }
   | {
@@ -357,7 +357,7 @@ const callsCallback = async () => { // [!code focus]
 } // [!code focus]
 
 export default function TransactionWithCalls() {
-  
+
   return (
     <Transaction
       chainId={baseSepolia.id}
@@ -373,8 +373,8 @@ export default function TransactionWithCalls() {
 ## Components
 
 <div className="flex flex-col max-w-[648px] gap-6">
-  <img 
-    src="/images/onchainkit/onchainkit-components-transaction-anatomy.png" 
+  <img
+    src="/images/onchainkit/onchainkit-components-transaction-anatomy.png"
     alt="OnchainKit transaction anatomy component diagram"
     title="Visual breakdown of OnchainKit transaction components"
     width="648"
@@ -408,4 +408,3 @@ The components are designed to work together hierarchically. For each component,
 - [`TransactionToastActionReact`](types#transactiontoastactionreact)
 - [`TransactionToastIconReact`](types#transactiontoasticonreact)
 - [`TransactionToastLabelReact`](types#transactiontoastlabelreact)
-

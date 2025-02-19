@@ -1,5 +1,5 @@
 {
-  "name": "vocs-mvp",
+  "name": "@app/base-docs",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -28,7 +28,7 @@
     "siwe": "^2.3.2",
     "typescript": "latest",
     "usehooks-ts": "^3.1.0",
-    "vocs": "^1.0.0-alpha.62"
+    "vocs": "1.0.0-alpha.62"
   },
   "devDependencies": {
     "@types/next": "^9.0.0",
@@ -44,5 +44,5 @@
     "tsx": "^4.19.2",
     "vite-plugin-svgr": "^4.3.0"
   },
-  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+  "packageManager": "yarn@3.5.0"
 }

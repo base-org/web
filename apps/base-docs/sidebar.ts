@@ -1,6 +1,6 @@
-import type { Sidebar } from 'vocs'
+import type { Sidebar } from 'vocs';
 
-// Note: careful of name clashing between sidebar items and docs pages. 
+// Note: careful of name clashing between sidebar items and docs pages.
 // For example, 'Quickstart' is used for both sidebar and page names.
 // If docs are part of a sidebar collection, they should be in a subfolder
 export const sidebar: Sidebar = [
@@ -82,7 +82,7 @@ export const sidebar: Sidebar = [
               {
                 text: 'Use AI-powered IDEs',
                 link: '/builderkits/onchainkit/guides/using-ai-powered-ides',
-              }
+              },
             ],
           },
           {
@@ -146,7 +146,7 @@ export const sidebar: Sidebar = [
                   {
                     text: 'FundCard',
                     link: '/builderkits/onchainkit/fund/fund-card',
-                  }
+                  },
                 ],
               },
               {
@@ -528,7 +528,7 @@ export const sidebar: Sidebar = [
         text: 'AgentKit ↗',
         link: 'https://docs.cdp.coinbase.com/agentkit/docs/welcome',
       },
-    ]
+    ],
   },
   {
     text: 'Blockspace Tools',
@@ -541,7 +541,7 @@ export const sidebar: Sidebar = [
       //   text: 'Appchains ↗',
       //   link: 'https://docs.cdp.coinbase.com/paymaster/docs/welcome',
       // },
-    ]
+    ],
   },
   {
     text: 'Identity',
@@ -551,72 +551,111 @@ export const sidebar: Sidebar = [
         collapsed: true,
         items: [
           {
-            text: "Introduction",
+            text: 'Introduction',
             items: [
-              { text: "Install for Web", link: "/identity/smart-wallet/introduction/install-web" },
-              { text: "Install for React Native", link: "/identity/smart-wallet/introduction/install-react-native" },
-              { text: "Recommend Libraries", link: "/identity/smart-wallet/introduction/recommended-libraries" },
-              { text: "Starter Templates", link: "/identity/smart-wallet/introduction/templates" },
-              { text: "Base Gasless Campaign", link: "/identity/smart-wallet/introduction/base-gasless-campaign" },
+              { text: 'Install for Web', link: '/identity/smart-wallet/introduction/install-web' },
+              {
+                text: 'Install for React Native',
+                link: '/identity/smart-wallet/introduction/install-react-native',
+              },
+              {
+                text: 'Recommend Libraries',
+                link: '/identity/smart-wallet/introduction/recommended-libraries',
+              },
+              { text: 'Starter Templates', link: '/identity/smart-wallet/introduction/templates' },
+              {
+                text: 'Base Gasless Campaign',
+                link: '/identity/smart-wallet/introduction/base-gasless-campaign',
+              },
             ],
           },
-      
+
           {
-            text: "Features",
+            text: 'Features',
             items: [
               {
-                text: "Built-in Features",
+                text: 'Built-in Features',
                 collapsed: true,
                 items: [
-                  { text: "Single Sign On", link: "/identity/smart-wallet/features/single-sign-on" },
-                  { text: "Networks", link: "/identity/smart-wallet/features/networks" },
-                  { text: "Passkeys", link: "/identity/smart-wallet/features/passkeys" },
-                  { text: "Recovery", link: "/identity/smart-wallet/features/recovery-keys" },
-                  { text: "MagicSpend", link: "/identity/smart-wallet/features/MagicSpend" },
+                  {
+                    text: 'Single Sign On',
+                    link: '/identity/smart-wallet/features/single-sign-on',
+                  },
+                  { text: 'Networks', link: '/identity/smart-wallet/features/networks' },
+                  { text: 'Passkeys', link: '/identity/smart-wallet/features/passkeys' },
+                  { text: 'Recovery', link: '/identity/smart-wallet/features/recovery-keys' },
+                  { text: 'MagicSpend', link: '/identity/smart-wallet/features/MagicSpend' },
                 ],
               },
               {
-                text: "Optional Features",
+                text: 'Optional Features',
                 collapsed: true,
                 items: [
-                  { text: "Gas-free Transactions", link: "/identity/smart-wallet/features/gas-free-transactions" },
-                  { text: "Spend Permissions", link: "/identity/smart-wallet/features/spend-permissions" },
-                  { text: "Batch Transactions", link: "/identity/smart-wallet/features/batch-operations" },
-                  { text: "Custom Gas Tokens", link: "/identity/smart-wallet/features/custom-gas-tokens" },
+                  {
+                    text: 'Gas-free Transactions',
+                    link: '/identity/smart-wallet/features/gas-free-transactions',
+                  },
+                  {
+                    text: 'Spend Permissions',
+                    link: '/identity/smart-wallet/features/spend-permissions',
+                  },
+                  {
+                    text: 'Batch Transactions',
+                    link: '/identity/smart-wallet/features/batch-operations',
+                  },
+                  {
+                    text: 'Custom Gas Tokens',
+                    link: '/identity/smart-wallet/features/custom-gas-tokens',
+                  },
                 ],
               },
             ],
           },
           {
-            text: "Usage Details",
+            text: 'Usage Details',
             items: [
-              { text: "Signature Verification", link: "/identity/smart-wallet/usage-details/signature-verification" },
-              { text: "Popups", link: "/identity/smart-wallet/usage-details/popups" },
-              { text: "Simulations", link: "/identity/smart-wallet/usage-details/Simulations" },
-              { text: "Gas Usage", link: "/identity/smart-wallet/usage-details/gas-usage" },
-              { text: "Self Calls", link: "/identity/smart-wallet/usage-details/self-calls" },
+              {
+                text: 'Signature Verification',
+                link: '/identity/smart-wallet/usage-details/signature-verification',
+              },
+              { text: 'Popups', link: '/identity/smart-wallet/usage-details/popups' },
+              { text: 'Simulations', link: '/identity/smart-wallet/usage-details/Simulations' },
+              { text: 'Gas Usage', link: '/identity/smart-wallet/usage-details/gas-usage' },
+              { text: 'Self Calls', link: '/identity/smart-wallet/usage-details/self-calls' },
             ],
           },
           {
-            text: "SDK",
+            text: 'SDK',
             items: [
               {
-                text: "createCoinbaseWalletSDK",
-                link: "/identity/smart-wallet/sdk/create-coinbase-wallet-sdk",
+                text: 'createCoinbaseWalletSDK',
+                link: '/identity/smart-wallet/sdk/create-coinbase-wallet-sdk',
               },
             ],
           },
           {
-            text: "Tutorials",
+            text: 'Tutorials',
             collapsed: true,
             items: [
-              { text: "Update Existing App", link: "/identity/smart-wallet/guides/update-existing-app" },
-              { text: "React Native Integration", link: "/identity/smart-wallet/guides/react-native-integration" },
-              { text: "Signature Verification", link: "/identity/smart-wallet/guides/signature-verification" },
-              { text: "Sign In With Ethereum", link: "/identity/smart-wallet/guides/siwe" },
-              { text: "MagicSpend", link: "/identity/smart-wallet/guides/magic-spend" },
-              { text: "Batch Transactions", link: "/identity/smart-wallet/guides/batch-transactions" },
-              { text: "ERC20 Paymasters", link: "/identity/smart-wallet/guides/erc20-paymasters" },
+              {
+                text: 'Update Existing App',
+                link: '/identity/smart-wallet/guides/update-existing-app',
+              },
+              {
+                text: 'React Native Integration',
+                link: '/identity/smart-wallet/guides/react-native-integration',
+              },
+              {
+                text: 'Signature Verification',
+                link: '/identity/smart-wallet/guides/signature-verification',
+              },
+              { text: 'Sign In With Ethereum', link: '/identity/smart-wallet/guides/siwe' },
+              { text: 'MagicSpend', link: '/identity/smart-wallet/guides/magic-spend' },
+              {
+                text: 'Batch Transactions',
+                link: '/identity/smart-wallet/guides/batch-transactions',
+              },
+              { text: 'ERC20 Paymasters', link: '/identity/smart-wallet/guides/erc20-paymasters' },
             ],
           },
         ],
@@ -628,15 +667,19 @@ export const sidebar: Sidebar = [
           {
             text: 'Tutorials',
             items: [
-              { text: 'Basenames Wagmi Tutorial', link: '/identity/basenames/basenames-wagmi-tutorial' },
-              { text: 'Basenames OnchainKit Tutorial', link: '/identity/basenames/basenames-onchainkit-tutorial' },
+              {
+                text: 'Basenames Wagmi Tutorial',
+                link: '/identity/basenames/basenames-wagmi-tutorial',
+              },
+              {
+                text: 'Basenames OnchainKit Tutorial',
+                link: '/identity/basenames/basenames-onchainkit-tutorial',
+              },
             ],
           },
           {
             text: 'FAQ & Troubleshooting',
-            items: [
-              { text: 'Basenames FAQ', link: '/identity/basenames/basenames-faq' },
-            ],
+            items: [{ text: 'Basenames FAQ', link: '/identity/basenames/basenames-faq' }],
           },
         ],
       },
@@ -658,11 +701,17 @@ export const sidebar: Sidebar = [
           { text: 'Deploy on Base', link: '/chain/deploy-on-base-quickstart' },
           { text: 'Network Information', link: '/chain/network-information' },
           { text: 'Fees', link: '/chain/fees' },
-          { text: 'Differences Between Ethereum and Base', link: '/chain/differences-between-ethereum-and-base' },
+          {
+            text: 'Differences Between Ethereum and Base',
+            link: '/chain/differences-between-ethereum-and-base',
+          },
           { text: 'Run a Base Node', link: '/chain/run-a-base-node' },
           { text: 'Bridge an L1 Token to Base', link: '/chain/bridge-an-l1-token-to-base' },
           { text: 'Adding tokens to Coinbase Wallet', link: '/chain/wallet' },
-          {text: 'Decentralizing Base with Optimism↗', link: 'https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I'},
+          {
+            text: 'Decentralizing Base with Optimism↗',
+            link: 'https://base.mirror.xyz/H_KPwV31M7OJT-THUnU7wYjOF16Sy7aWvaEr5cgHi8I',
+          },
         ],
       },
       {
@@ -682,12 +731,15 @@ export const sidebar: Sidebar = [
       },
       {
         text: 'Security',
-        collapsed:true,
+        collapsed: true,
         items: [
-          { text: 'Bug Bounty', link:'/chain/security/bounty' },
-          { text: 'Report a Vulnerability', link: '/chain/security/report'},
-          { text: 'How to avoid getting your app flagged as malicious', link: '/chain/security/app-blocklist'}
-        ]
+          { text: 'Bug Bounty', link: '/chain/security/bounty' },
+          { text: 'Report a Vulnerability', link: '/chain/security/report' },
+          {
+            text: 'How to avoid getting your app flagged as malicious',
+            link: '/chain/security/app-blocklist',
+          },
+        ],
       },
       {
         text: 'Base Contracts',
@@ -721,22 +773,28 @@ export const sidebar: Sidebar = [
       {
         text: 'Go gasless',
         link: '/use-cases/go-gasless',
-      }
-    ]
+      },
+    ],
   },
   {
     text: 'Cookbook',
     items: [
       {
         text: 'By use case',
-        collapsed: true, 
+        collapsed: true,
         items: [
           {
             text: 'Payments & Commerce',
             collapsed: true,
             items: [
-              { text: 'Build an E-commerce App', link: '/cookbook/use-case-guides/commerce/build-an-ecommerce-app' },
-              { text: 'Deploy a Shopify Storefront', link: '/cookbook/use-case-guides/commerce/deploy-a-shopify-storefront' },
+              {
+                text: 'Build an E-commerce App',
+                link: '/cookbook/use-case-guides/commerce/build-an-ecommerce-app',
+              },
+              {
+                text: 'Deploy a Shopify Storefront',
+                link: '/cookbook/use-case-guides/commerce/deploy-a-shopify-storefront',
+              },
               { text: 'Transaction Guide', link: '/cookbook/use-case-guides/transactions' },
             ],
           },
@@ -744,30 +802,54 @@ export const sidebar: Sidebar = [
             text: 'NFTs & Digital Assets',
             collapsed: true,
             items: [
-              { text: 'NFT Minting with Zora', link: '/cookbook/use-case-guides/creator/nft-minting-with-zora' },
+              {
+                text: 'NFT Minting with Zora',
+                link: '/cookbook/use-case-guides/creator/nft-minting-with-zora',
+              },
               { text: 'Simple Onchain NFTs', link: '/cookbook/nfts/simple-onchain-nfts' },
               { text: 'Dynamic NFTs', link: '/cookbook/nfts/dynamic-nfts' },
               { text: 'Complex Onchain NFTs', link: '/cookbook/nfts/complex-onchain-nfts' },
               { text: 'Signature Mint', link: '/cookbook/nfts/signature-mint' },
-              { text: 'ThirdWeb Unreal NFT Items', link: '/cookbook/nfts/thirdweb-unreal-nft-items' },
+              {
+                text: 'ThirdWeb Unreal NFT Items',
+                link: '/cookbook/nfts/thirdweb-unreal-nft-items',
+              },
             ],
           },
           {
-            text: 'Social', 
+            text: 'Social',
             collapsed: true,
             items: [
-              { text: 'Farcaster No-Code NFT Minting', link: '/cookbook/use-case-guides/no-code-minting' },
-              { text: 'Farcaster NFT Minting Guide', link: '/cookbook/use-case-guides/nft-minting' },
-              { text: 'Convert Farcaster Frame to Open Frame', link: '/cookbook/use-case-guides/creator/convert-farcaster-frame-to-open-frame' },
+              {
+                text: 'Farcaster No-Code NFT Minting',
+                link: '/cookbook/use-case-guides/no-code-minting',
+              },
+              {
+                text: 'Farcaster NFT Minting Guide',
+                link: '/cookbook/use-case-guides/nft-minting',
+              },
+              {
+                text: 'Convert Farcaster Frame to Open Frame',
+                link: '/cookbook/use-case-guides/creator/convert-farcaster-frame-to-open-frame',
+              },
             ],
           },
           {
             text: 'DeFi & Financial Tools',
             collapsed: true,
             items: [
-              { text: 'Add In-App Funding (Onramp)', link: '/cookbook/use-case-guides/finance/build-a-smart-wallet-funding-app' },
-              { text: 'Access Real-World Data (Chainlink)', link: '/cookbook/use-case-guides/finance/access-real-world-data-chainlink' },
-              { text: 'Access Real-Time Asset Data (Pyth)', link: '/cookbook/use-case-guides/finance/access-real-time-asset-data-pyth-price-feeds' },
+              {
+                text: 'Add In-App Funding (Onramp)',
+                link: '/cookbook/use-case-guides/finance/build-a-smart-wallet-funding-app',
+              },
+              {
+                text: 'Access Real-World Data (Chainlink)',
+                link: '/cookbook/use-case-guides/finance/access-real-world-data-chainlink',
+              },
+              {
+                text: 'Access Real-Time Asset Data (Pyth)',
+                link: '/cookbook/use-case-guides/finance/access-real-time-asset-data-pyth-price-feeds',
+              },
             ],
           },
           {
@@ -777,7 +859,10 @@ export const sidebar: Sidebar = [
               { text: 'Cast Actions', link: '/cookbook/use-case-guides/cast-actions' },
               { text: 'Hyperframes', link: '/cookbook/use-case-guides/hyperframes' },
               { text: 'Deploy to Vercel', link: '/cookbook/use-case-guides/deploy-to-vercel' },
-              { text: 'Gating and Redirects', link: '/cookbook/use-case-guides/gating-and-redirects' },
+              {
+                text: 'Gating and Redirects',
+                link: '/cookbook/use-case-guides/gating-and-redirects',
+              },
               { text: 'Email Campaigns', link: '/cookbook/use-case-guides/create-email-campaigns' },
               { text: 'Retaining Users', link: '/cookbook/use-case-guides/retaining-users' },
             ],
@@ -795,86 +880,156 @@ export const sidebar: Sidebar = [
               {
                 text: 'Hardhat',
                 items: [
-                  { text: 'Deploy with Hardhat', link: '/cookbook/smart-contract-development/hardhat/deploy-with-hardhat' },
-                  { text: 'Debugging Smart Contracts', link: '/cookbook/smart-contract-development/hardhat/debugging-smart-contracts' },
-                  { text: 'Optimizing Gas Usage', link: '/cookbook/smart-contract-development/hardhat/optimizing-gas-usage' },
-                  { text: 'Reducing Contract Size', link: '/cookbook/smart-contract-development/hardhat/reducing-contract-size' },
-                  { text: 'Analyzing Test Coverage', link: '/cookbook/smart-contract-development/hardhat/analyzing-test-coverage' },
+                  {
+                    text: 'Deploy with Hardhat',
+                    link: '/cookbook/smart-contract-development/hardhat/deploy-with-hardhat',
+                  },
+                  {
+                    text: 'Debugging Smart Contracts',
+                    link: '/cookbook/smart-contract-development/hardhat/debugging-smart-contracts',
+                  },
+                  {
+                    text: 'Optimizing Gas Usage',
+                    link: '/cookbook/smart-contract-development/hardhat/optimizing-gas-usage',
+                  },
+                  {
+                    text: 'Reducing Contract Size',
+                    link: '/cookbook/smart-contract-development/hardhat/reducing-contract-size',
+                  },
+                  {
+                    text: 'Analyzing Test Coverage',
+                    link: '/cookbook/smart-contract-development/hardhat/analyzing-test-coverage',
+                  },
                 ],
               },
               {
                 text: 'Foundry',
                 items: [
-                  { text: 'Deploy with Foundry', link: '/cookbook/smart-contract-development/foundry/deploy-with-foundry' },
-                  { text: 'Setup with Base', link: '/cookbook/smart-contract-development/foundry/setup-with-base' },
-                  { text: 'Testing Smart Contracts', link: '/cookbook/smart-contract-development/foundry/testing-smart-contracts' },
-                  { text: 'Verify Contract with Basescan', link: '/cookbook/smart-contract-development/foundry/verify-contract-with-basescan' },
-                  { text: 'Generate Random Numbers', link: '/cookbook/smart-contract-development/foundry/generate-random-numbers-contracts' },
+                  {
+                    text: 'Deploy with Foundry',
+                    link: '/cookbook/smart-contract-development/foundry/deploy-with-foundry',
+                  },
+                  {
+                    text: 'Setup with Base',
+                    link: '/cookbook/smart-contract-development/foundry/setup-with-base',
+                  },
+                  {
+                    text: 'Testing Smart Contracts',
+                    link: '/cookbook/smart-contract-development/foundry/testing-smart-contracts',
+                  },
+                  {
+                    text: 'Verify Contract with Basescan',
+                    link: '/cookbook/smart-contract-development/foundry/verify-contract-with-basescan',
+                  },
+                  {
+                    text: 'Generate Random Numbers',
+                    link: '/cookbook/smart-contract-development/foundry/generate-random-numbers-contracts',
+                  },
                 ],
               },
               {
                 text: 'Remix',
                 items: [
-                  { text: 'Deploy with Remix', link: '/cookbook/smart-contract-development/remix/deploy-with-remix' },
+                  {
+                    text: 'Deploy with Remix',
+                    link: '/cookbook/smart-contract-development/remix/deploy-with-remix',
+                  },
                 ],
               },
               {
                 text: 'Tenderly',
                 items: [
-                  { text: 'Deploy with Tenderly', link: '/cookbook/smart-contract-development/tenderly/deploy-with-tenderly' },
+                  {
+                    text: 'Deploy with Tenderly',
+                    link: '/cookbook/smart-contract-development/tenderly/deploy-with-tenderly',
+                  },
                 ],
               },
               {
                 text: 'ThirdWeb',
                 items: [
-                  { text: 'Deploy with ThirdWeb', link: '/cookbook/smart-contract-development/thirdweb/deploy-with-thirdweb' },
-                  { text: 'Build with ThirdWeb', link: '/cookbook/smart-contract-development/thirdweb/build-with-thirdweb' },
-                  { text: 'ThirdWeb SDK', link: '/cookbook/smart-contract-development/thirdweb/thirdweb-sdk' },
-                  { text: 'ThirdWeb CLI', link: '/cookbook/smart-contract-development/thirdweb/thirdweb-cli' },
+                  {
+                    text: 'Deploy with ThirdWeb',
+                    link: '/cookbook/smart-contract-development/thirdweb/deploy-with-thirdweb',
+                  },
+                  {
+                    text: 'Build with ThirdWeb',
+                    link: '/cookbook/smart-contract-development/thirdweb/build-with-thirdweb',
+                  },
+                  {
+                    text: 'ThirdWeb SDK',
+                    link: '/cookbook/smart-contract-development/thirdweb/thirdweb-sdk',
+                  },
+                  {
+                    text: 'ThirdWeb CLI',
+                    link: '/cookbook/smart-contract-development/thirdweb/thirdweb-cli',
+                  },
                 ],
               },
             ],
           },
           {
             text: 'IPFS',
-            items: [
-              { text: 'Deploy with Fleek', link: '/cookbook/ipfs/deploy-with-fleek' },
-            ],
+            items: [{ text: 'Deploy with Fleek', link: '/cookbook/ipfs/deploy-with-fleek' }],
           },
           {
             text: 'Token Gating',
             items: [
-              { text: 'Gate IRL Events with Nouns', link: '/cookbook/token-gating/gate-irl-events-with-nouns' },
+              {
+                text: 'Gate IRL Events with Nouns',
+                link: '/cookbook/token-gating/gate-irl-events-with-nouns',
+              },
             ],
           },
           {
             text: 'Client-Side Development',
             items: [
-              { text: 'Introduction to Providers', link: '/cookbook/client-side-development/introduction-to-providers' },
+              {
+                text: 'Introduction to Providers',
+                link: '/cookbook/client-side-development/introduction-to-providers',
+              },
             ],
           },
           {
             text: 'Account Abstraction',
             items: [
-              { text: 'Using Biconomy', link: '/cookbook/account-abstraction/account-abstraction-on-base-using-biconomy' },
-              { text: 'Using Particle Network', link: '/cookbook/account-abstraction/account-abstraction-on-base-using-particle-network' },
-              { text: 'Using Privy and Base Paymaster', link: '/cookbook/account-abstraction/account-abstraction-on-base-using-privy-and-the-base-paymaster' },
-              { text: 'Gasless Transactions with Paymaster', link: '/cookbook/account-abstraction/gasless-transactions-with-paymaster' },
+              {
+                text: 'Using Biconomy',
+                link: '/cookbook/account-abstraction/account-abstraction-on-base-using-biconomy',
+              },
+              {
+                text: 'Using Particle Network',
+                link: '/cookbook/account-abstraction/account-abstraction-on-base-using-particle-network',
+              },
+              {
+                text: 'Using Privy and Base Paymaster',
+                link: '/cookbook/account-abstraction/account-abstraction-on-base-using-privy-and-the-base-paymaster',
+              },
+              {
+                text: 'Gasless Transactions with Paymaster',
+                link: '/cookbook/account-abstraction/gasless-transactions-with-paymaster',
+              },
             ],
           },
           {
             text: 'Cross-Chain',
             items: [
-              { text: 'Bridge Tokens with LayerZero', link: '/cookbook/cross-chain/bridge-tokens-with-layerzero' },
-              { text: 'Send Messages and Tokens from Base (Chainlink)', link: '/cookbook/cross-chain/send-messages-and-tokens-from-base-chainlink' },
+              {
+                text: 'Bridge Tokens with LayerZero',
+                link: '/cookbook/cross-chain/bridge-tokens-with-layerzero',
+              },
+              {
+                text: 'Send Messages and Tokens from Base (Chainlink)',
+                link: '/cookbook/cross-chain/send-messages-and-tokens-from-base-chainlink',
+              },
             ],
           },
         ],
       },
-    ]
+    ],
   },
   {
-    text: 'Learn', 
+    text: 'Learn',
     collapsed: true,
     items: [
       {
@@ -885,20 +1040,33 @@ export const sidebar: Sidebar = [
         text: 'Introduction to Ethereum',
         collapsed: true,
         items: [
-          { text: 'Intro to Ethereum', link: '/learn/introduction-to-ethereum/intro-to-ethereum-vid' },
-          { text: 'Ethereum Dev Overview', link: '/learn/introduction-to-ethereum/ethereum-dev-overview-vid' },
-          { text: 'Ethereum Applications', link: '/learn/introduction-to-ethereum/ethereum-applications' },
-          { text: 'Gas Use in ETH Transactions', link: '/learn/introduction-to-ethereum/gas-use-in-eth-transactions' },
+          {
+            text: 'Intro to Ethereum',
+            link: '/learn/introduction-to-ethereum/intro-to-ethereum-vid',
+          },
+          {
+            text: 'Ethereum Dev Overview',
+            link: '/learn/introduction-to-ethereum/ethereum-dev-overview-vid',
+          },
+          {
+            text: 'Ethereum Applications',
+            link: '/learn/introduction-to-ethereum/ethereum-applications',
+          },
+          {
+            text: 'Gas Use in ETH Transactions',
+            link: '/learn/introduction-to-ethereum/gas-use-in-eth-transactions',
+          },
           { text: 'EVM Diagram', link: '/learn/introduction-to-ethereum/evm-diagram' },
-          { text: 'Guide to Base ↗', link: 'https://www.coinbase.com/cloud/discover/protocol-guides/guide-to-base' },
+          {
+            text: 'Guide to Base ↗',
+            link: 'https://www.coinbase.com/cloud/discover/protocol-guides/guide-to-base',
+          },
         ],
       },
       {
         text: 'Development Tools',
         collapsed: true,
-        items: [
-          { text: 'Overview', link: '/learn/development-tools/overview' },
-        ],
+        items: [{ text: 'Overview', link: '/learn/development-tools/overview' }],
       },
       {
         text: 'Development with Hardhat',
@@ -907,9 +1075,18 @@ export const sidebar: Sidebar = [
           {
             text: 'Hardhat Setup and Overview',
             items: [
-              { text: 'Hardhat Overview', link: '/learn/hardhat-setup-overview/hardhat-overview-vid' },
-              { text: 'Creating a Project', link: '/learn/hardhat-setup-overview/creating-a-project-vid' },
-              { text: 'Setup Overview', link: '/learn/hardhat-setup-overview/hardhat-setup-overview-sbs' },
+              {
+                text: 'Hardhat Overview',
+                link: '/learn/hardhat-setup-overview/hardhat-overview-vid',
+              },
+              {
+                text: 'Creating a Project',
+                link: '/learn/hardhat-setup-overview/creating-a-project-vid',
+              },
+              {
+                text: 'Setup Overview',
+                link: '/learn/hardhat-setup-overview/hardhat-setup-overview-sbs',
+              },
             ],
           },
           {
@@ -917,7 +1094,10 @@ export const sidebar: Sidebar = [
             items: [
               { text: 'Testing Overview', link: '/learn/hardhat-testing/testing-overview-vid' },
               { text: 'Writing Tests', link: '/learn/hardhat-testing/writing-tests-vid' },
-              { text: 'Contract ABI and Testing', link: '/learn/hardhat-testing/contract-abi-and-testing-vid' },
+              {
+                text: 'Contract ABI and Testing',
+                link: '/learn/hardhat-testing/contract-abi-and-testing-vid',
+              },
               { text: 'Testing Step by Step', link: '/learn/hardhat-testing/hardhat-testing-sbs' },
             ],
           },
@@ -931,10 +1111,22 @@ export const sidebar: Sidebar = [
           {
             text: 'Deploying Smart Contracts',
             items: [
-              { text: 'Installing Hardhat Deploy', link: '/learn/hardhat-deploy/installing-hardhat-deploy-vid' },
-              { text: 'Setup Deploy Script', link: '/learn/hardhat-deploy/setup-deploy-script-vid' },
-              { text: 'Testing Deployment', link: '/learn/hardhat-deploy/testing-our-deployment-vid' },
-              { text: 'Network Configuration', link: '/learn/hardhat-deploy/test-network-configuration-vid' },
+              {
+                text: 'Installing Hardhat Deploy',
+                link: '/learn/hardhat-deploy/installing-hardhat-deploy-vid',
+              },
+              {
+                text: 'Setup Deploy Script',
+                link: '/learn/hardhat-deploy/setup-deploy-script-vid',
+              },
+              {
+                text: 'Testing Deployment',
+                link: '/learn/hardhat-deploy/testing-our-deployment-vid',
+              },
+              {
+                text: 'Network Configuration',
+                link: '/learn/hardhat-deploy/test-network-configuration-vid',
+              },
               { text: 'Deployment', link: '/learn/hardhat-deploy/deployment-vid' },
               { text: 'Step by Step Guide', link: '/learn/hardhat-deploy/hardhat-deploy-sbs' },
             ],
@@ -959,52 +1151,106 @@ export const sidebar: Sidebar = [
         text: 'Development With Foundry',
         collapsed: true,
         items: [
-          { text: 'Introduction to Foundry ↗', link: 'https://docs.base.org/tutorials/intro-to-foundry-setup' },
-          { text: 'Testing Smart Contracts ↗', link: 'https://docs.base.org/tutorials/intro-to-foundry-testing' },
+          {
+            text: 'Introduction to Foundry ↗',
+            link: 'https://docs.base.org/tutorials/intro-to-foundry-setup',
+          },
+          {
+            text: 'Testing Smart Contracts ↗',
+            link: 'https://docs.base.org/tutorials/intro-to-foundry-testing',
+          },
         ],
       },
       {
         text: 'Smart Contract Development',
         collapsed: true,
         items: [
-          { text: 'Introduction to Solidity', link: '/learn/introduction-to-solidity/introduction-to-solidity-overview' },
-          { text: 'Anatomy of a Smart Contract', link: '/learn/introduction-to-solidity/anatomy-of-a-smart-contract-vid' },
+          {
+            text: 'Introduction to Solidity',
+            link: '/learn/introduction-to-solidity/introduction-to-solidity-overview',
+          },
+          {
+            text: 'Anatomy of a Smart Contract',
+            link: '/learn/introduction-to-solidity/anatomy-of-a-smart-contract-vid',
+          },
           {
             text: 'Introduction to Solidity',
             items: [
-              { text: 'Video Tutorial', link: '/learn/introduction-to-solidity/introduction-to-solidity-vid' },
+              {
+                text: 'Video Tutorial',
+                link: '/learn/introduction-to-solidity/introduction-to-solidity-vid',
+              },
               { text: 'Overview', link: '/learn/introduction-to-solidity/solidity-overview' },
-              { text: 'Introduction to Remix', link: '/learn/introduction-to-solidity/introduction-to-remix-vid' },
-              { text: 'Remix Guide', link: '/learn/introduction-to-solidity/introduction-to-remix' },
-              { text: 'Deployment in Remix', link: '/learn/introduction-to-solidity/deployment-in-remix-vid' },
-              { text: 'Step by Step Guide', link: '/learn/introduction-to-solidity/deployment-in-remix' },
+              {
+                text: 'Introduction to Remix',
+                link: '/learn/introduction-to-solidity/introduction-to-remix-vid',
+              },
+              {
+                text: 'Remix Guide',
+                link: '/learn/introduction-to-solidity/introduction-to-remix',
+              },
+              {
+                text: 'Deployment in Remix',
+                link: '/learn/introduction-to-solidity/deployment-in-remix-vid',
+              },
+              {
+                text: 'Step by Step Guide',
+                link: '/learn/introduction-to-solidity/deployment-in-remix',
+              },
             ],
           },
           {
             text: 'Contracts and Basic Functions',
             items: [
-              { text: 'Introduction to Contracts', link: '/learn/contracts-and-basic-functions/intro-to-contracts-vid' },
-              { text: 'Hello World Guide', link: '/learn/contracts-and-basic-functions/hello-world-step-by-step' },
+              {
+                text: 'Introduction to Contracts',
+                link: '/learn/contracts-and-basic-functions/intro-to-contracts-vid',
+              },
+              {
+                text: 'Hello World Guide',
+                link: '/learn/contracts-and-basic-functions/hello-world-step-by-step',
+              },
               { text: 'Basic Types', link: '/learn/contracts-and-basic-functions/basic-types' },
-              { text: 'Exercise', link: '/learn/contracts-and-basic-functions/basic-functions-exercise' },
+              {
+                text: 'Exercise',
+                link: '/learn/contracts-and-basic-functions/basic-functions-exercise',
+              },
             ],
           },
           {
             text: 'Deploying to a Testnet',
             items: [
-              { text: 'Overview of Test Networks', link: '/learn/deployment-to-testnet/overview-of-test-networks-vid' },
+              {
+                text: 'Overview of Test Networks',
+                link: '/learn/deployment-to-testnet/overview-of-test-networks-vid',
+              },
               { text: 'Test Networks', link: '/learn/deployment-to-testnet/test-networks' },
-              { text: 'Deploy to Base Sepolia', link: '/learn/deployment-to-testnet/deployment-to-base-sepolia-sbs' },
-              { text: 'Contract Verification', link: '/learn/deployment-to-testnet/contract-verification-sbs' },
-              { text: 'Exercise', link: '/learn/deployment-to-testnet/deployment-to-testnet-exercise' },
+              {
+                text: 'Deploy to Base Sepolia',
+                link: '/learn/deployment-to-testnet/deployment-to-base-sepolia-sbs',
+              },
+              {
+                text: 'Contract Verification',
+                link: '/learn/deployment-to-testnet/contract-verification-sbs',
+              },
+              {
+                text: 'Exercise',
+                link: '/learn/deployment-to-testnet/deployment-to-testnet-exercise',
+              },
             ],
           },
           {
             text: 'Control Structures',
             items: [
-              { text: 'Standard Control Structures', link: '/learn/control-structures/standard-control-structures-vid' },
+              {
+                text: 'Standard Control Structures',
+                link: '/learn/control-structures/standard-control-structures-vid',
+              },
               { text: 'Loops', link: '/learn/control-structures/loops-vid' },
-              { text: 'Require, Revert, Error', link: '/learn/control-structures/require-revert-error-vid' },
+              {
+                text: 'Require, Revert, Error',
+                link: '/learn/control-structures/require-revert-error-vid',
+              },
               { text: 'Overview', link: '/learn/control-structures/control-structures' },
               { text: 'Exercise', link: '/learn/control-structures/control-structures-exercise' },
             ],
@@ -1037,16 +1283,28 @@ export const sidebar: Sidebar = [
               { text: 'Mappings Overview', link: '/learn/mappings/mappings-vid' },
               { text: 'Using msg.sender', link: '/learn/mappings/using-msg-sender-vid' },
               { text: 'Step by Step Guide', link: '/learn/mappings/mappings-sbs' },
-              { text: 'How Mappings are Stored', link: '/learn/mappings/how-mappings-are-stored-vid' },
+              {
+                text: 'How Mappings are Stored',
+                link: '/learn/mappings/how-mappings-are-stored-vid',
+              },
               { text: 'Exercise', link: '/learn/mappings/mappings-exercise' },
             ],
           },
           {
             text: 'Advanced Functions',
             items: [
-              { text: 'Function Visibility', link: '/learn/advanced-functions/function-visibility-vid' },
-              { text: 'Visibility Overview', link: '/learn/advanced-functions/function-visibility' },
-              { text: 'Function Modifiers', link: '/learn/advanced-functions/function-modifiers-vid' },
+              {
+                text: 'Function Visibility',
+                link: '/learn/advanced-functions/function-visibility-vid',
+              },
+              {
+                text: 'Visibility Overview',
+                link: '/learn/advanced-functions/function-visibility',
+              },
+              {
+                text: 'Function Modifiers',
+                link: '/learn/advanced-functions/function-modifiers-vid',
+              },
               { text: 'Modifiers Guide', link: '/learn/advanced-functions/function-modifiers' },
             ],
           },
@@ -1064,9 +1322,15 @@ export const sidebar: Sidebar = [
               { text: 'Inheritance Overview', link: '/learn/inheritance/inheritance-vid' },
               { text: 'Step by Step Guide', link: '/learn/inheritance/inheritance-sbs' },
               { text: 'Multiple Inheritance', link: '/learn/inheritance/multiple-inheritance-vid' },
-              { text: 'Multiple Inheritance Guide', link: '/learn/inheritance/multiple-inheritance' },
+              {
+                text: 'Multiple Inheritance Guide',
+                link: '/learn/inheritance/multiple-inheritance',
+              },
               { text: 'Abstract Contracts', link: '/learn/inheritance/abstract-contracts-vid' },
-              { text: 'Abstract Contracts Guide', link: '/learn/inheritance/abstract-contracts-sbs' },
+              {
+                text: 'Abstract Contracts Guide',
+                link: '/learn/inheritance/abstract-contracts-sbs',
+              },
               { text: 'Exercise', link: '/learn/inheritance/inheritance-exercise' },
             ],
           },
@@ -1089,7 +1353,10 @@ export const sidebar: Sidebar = [
           {
             text: 'The new Keyword',
             items: [
-              { text: 'Creating New Contracts', link: '/learn/new-keyword/creating-a-new-contract-vid' },
+              {
+                text: 'Creating New Contracts',
+                link: '/learn/new-keyword/creating-a-new-contract-vid',
+              },
               { text: 'Step by Step Guide', link: '/learn/new-keyword/new-keyword-sbs' },
               { text: 'Exercise', link: '/learn/new-keyword/new-keyword-exercise' },
             ],
@@ -1098,22 +1365,27 @@ export const sidebar: Sidebar = [
             text: 'Contract to Contract Interactions',
             items: [
               { text: 'Intro to Interfaces', link: '/learn/interfaces/intro-to-interfaces-vid' },
-              { text: 'Calling Another Contract', link: '/learn/interfaces/calling-another-contract-vid' },
-              { text: 'Testing the Interface', link: '/learn/interfaces/testing-the-interface-vid' },
-              { text: 'Step by Step Guide', link: '/learn/interfaces/contract-to-contract-interaction' },
+              {
+                text: 'Calling Another Contract',
+                link: '/learn/interfaces/calling-another-contract-vid',
+              },
+              {
+                text: 'Testing the Interface',
+                link: '/learn/interfaces/testing-the-interface-vid',
+              },
+              {
+                text: 'Step by Step Guide',
+                link: '/learn/interfaces/contract-to-contract-interaction',
+              },
             ],
           },
           {
             text: 'Events',
-            items: [
-              { text: 'Step by Step Guide', link: '/learn/events/hardhat-events-sbs' },
-            ],
+            items: [{ text: 'Step by Step Guide', link: '/learn/events/hardhat-events-sbs' }],
           },
           {
             text: 'Address and Payable',
-            items: [
-              { text: 'Guide', link: '/learn/address-and-payable/address-and-payable' },
-            ],
+            items: [{ text: 'Guide', link: '/learn/address-and-payable/address-and-payable' }],
           },
         ],
       },
@@ -1125,15 +1397,24 @@ export const sidebar: Sidebar = [
             text: 'Introduction to Tokens',
             items: [
               { text: 'Tokens Overview', link: '/learn/intro-to-tokens/intro-to-tokens-vid' },
-              { text: 'Common Misconceptions', link: '/learn/intro-to-tokens/misconceptions-about-tokens-vid' },
+              {
+                text: 'Common Misconceptions',
+                link: '/learn/intro-to-tokens/misconceptions-about-tokens-vid',
+              },
               { text: 'Overview Guide', link: '/learn/intro-to-tokens/tokens-overview' },
             ],
           },
           {
             text: 'Minimal Tokens',
             items: [
-              { text: 'Creating a Minimal Token', link: '/learn/minimal-tokens/creating-a-minimal-token-vid' },
-              { text: 'Transferring Tokens', link: '/learn/minimal-tokens/transferring-a-minimal-token-vid' },
+              {
+                text: 'Creating a Minimal Token',
+                link: '/learn/minimal-tokens/creating-a-minimal-token-vid',
+              },
+              {
+                text: 'Transferring Tokens',
+                link: '/learn/minimal-tokens/transferring-a-minimal-token-vid',
+              },
               { text: 'Step by Step Guide', link: '/learn/minimal-tokens/minimal-token-sbs' },
               { text: 'Exercise', link: '/learn/minimal-tokens/minimal-tokens-exercise' },
             ],
@@ -1155,8 +1436,14 @@ export const sidebar: Sidebar = [
               { text: 'ERC-721 Standard', link: '/learn/erc-721-token/erc-721-standard-video' },
               { text: 'Standard Overview', link: '/learn/erc-721-token/erc-721-standard' },
               { text: 'OpenSea Integration', link: '/learn/erc-721-token/erc-721-on-opensea-vid' },
-              { text: 'OpenZeppelin ERC-721', link: '/learn/erc-721-token/openzeppelin-erc-721-vid' },
-              { text: 'Implementation Guide', link: '/learn/erc-721-token/implementing-an-erc-721-vid' },
+              {
+                text: 'OpenZeppelin ERC-721',
+                link: '/learn/erc-721-token/openzeppelin-erc-721-vid',
+              },
+              {
+                text: 'Implementation Guide',
+                link: '/learn/erc-721-token/implementing-an-erc-721-vid',
+              },
               { text: 'Step by Step Guide', link: '/learn/erc-721-token/erc-721-sbs' },
               { text: 'Exercise', link: '/learn/erc-721-token/erc-721-exercise' },
             ],
@@ -1168,10 +1455,19 @@ export const sidebar: Sidebar = [
         collapsed: true,
         items: [
           { text: 'Overview', link: '/learn/hardhat-tools-and-testing/overview' },
-          { text: 'Profiling Gas ↗', link: 'https://docs.base.org/tutorials/hardhat-profiling-gas' },
-          { text: 'Profiling Size ↗', link: 'https://docs.base.org/tutorials/hardhat-profiling-size' },
+          {
+            text: 'Profiling Gas ↗',
+            link: 'https://docs.base.org/tutorials/hardhat-profiling-gas',
+          },
+          {
+            text: 'Profiling Size ↗',
+            link: 'https://docs.base.org/tutorials/hardhat-profiling-size',
+          },
           { text: 'Debugging ↗', link: 'https://docs.base.org/tutorials/hardhat-debugging' },
-          { text: 'Test Coverage ↗', link: 'https://docs.base.org/tutorials/hardhat-test-coverage' },
+          {
+            text: 'Test Coverage ↗',
+            link: 'https://docs.base.org/tutorials/hardhat-test-coverage',
+          },
         ],
       },
       {
@@ -1183,23 +1479,38 @@ export const sidebar: Sidebar = [
             text: 'Frontend Setup',
             items: [
               { text: 'Wallet Connectors', link: '/learn/frontend-setup/wallet-connectors' },
-              { text: 'Building an Onchain App', link: '/learn/frontend-setup/building-an-onchain-app' },
+              {
+                text: 'Building an Onchain App',
+                link: '/learn/frontend-setup/building-an-onchain-app',
+              },
             ],
           },
-          { text: 'Connecting to the Blockchain ↗', link: 'https://docs.base.org/tutorials/intro-to-providers' },
+          {
+            text: 'Connecting to the Blockchain ↗',
+            link: 'https://docs.base.org/tutorials/intro-to-providers',
+          },
           {
             text: 'Reading and Displaying Data',
             items: [
               { text: 'useAccount', link: '/learn/reading-and-displaying-data/useAccount' },
-              { text: 'useReadContract', link: '/learn/reading-and-displaying-data/useReadContract' },
-              { text: 'Configuring useReadContract', link: '/learn/reading-and-displaying-data/configuring-useReadContract' },
+              {
+                text: 'useReadContract',
+                link: '/learn/reading-and-displaying-data/useReadContract',
+              },
+              {
+                text: 'Configuring useReadContract',
+                link: '/learn/reading-and-displaying-data/configuring-useReadContract',
+              },
             ],
           },
           {
             text: 'Writing to Contracts',
             items: [
               { text: 'useWriteContract', link: '/learn/writing-to-contracts/useWriteContract' },
-              { text: 'useSimulateContract', link: '/learn/writing-to-contracts/useSimulateContract' },
+              {
+                text: 'useSimulateContract',
+                link: '/learn/writing-to-contracts/useSimulateContract',
+              },
             ],
           },
         ],
@@ -1210,10 +1521,9 @@ export const sidebar: Sidebar = [
       },
       {
         text: 'Get help↗',
-        link: 'https://docs.base.org/base-learn/docs/help-on-discord'
-      }
-
-    ]
+        link: 'https://docs.base.org/base-learn/docs/help-on-discord',
+      },
+    ],
   },
   {
     text: 'Feedback',
@@ -1224,8 +1534,8 @@ export const sidebar: Sidebar = [
       },
       {
         text: 'Bug bounty ↗',
-        link: 'https://hackerone.com/coinbase'
-      }
-    ]
-  }
-]
+        link: 'https://hackerone.com/coinbase',
+      },
+    ],
+  },
+];

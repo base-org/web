@@ -152,6 +152,7 @@ For Smart Wallet, [ERC-1271](https://eips.ethereum.org/EIPS/eip-1271) should be 
 </Callout>
 
 ```tsx twoslash [src/SignInWithEthereum.tsx]
+// @noErrors: 2339
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import type { Hex } from 'viem';
 import { useAccount, usePublicClient, useSignMessage } from 'wagmi';
