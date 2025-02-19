@@ -71,7 +71,7 @@ export function OnchainActions({ className }: { className?: string }) {
         <Title level={TitleLevel.Title1}>All onchain actions at your agent&apos;s fingertips</Title>
       </div>
       <div className={cn('bg-background relative flex w-full flex-col overflow-hidden', className)}>
-        <AnimatedList className="gap-3" isInView={isInView}>
+        <AnimatedList className="gap-3" isInView={isInView} delay={300}>
           {ACTIONS.map((item) => (
             <Action {...item} key={item.title} />
           ))}

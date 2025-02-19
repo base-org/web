@@ -26,6 +26,7 @@ import {
   CLICK_CALLS,
   codeSnippets,
   codeStyles,
+  COMPONENT_DESCRIPTIONS,
   earnVaultAddress,
   fundPresetAmountInputs,
   ONCHAINKIT_DEMO_TABS,
@@ -38,6 +39,8 @@ import classNames from 'classnames';
 import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useState } from 'react';
 import { CodeSnippet } from 'apps/web/src/components/Builders/Shared/CodeSnippet';
 import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
+import Text from 'apps/web/src/components/base-org/typography/Text';
+import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
 
 type LiveDemoProps = {
   components: (typeof ONCHAINKIT_DEMO_TABS)[number][];
@@ -236,7 +239,7 @@ function DesktopDemo({
             </div>
           )}
 
-          <div className="flex items-center space-x-2 ml-auto">
+          <div className="flex items-center space-x-2">
             <button
               type="button"
               onClick={handleCopy}
@@ -273,6 +276,20 @@ function DesktopDemo({
             </button>
           </div>
         </div>
+
+        <div
+          className={classNames(
+            'flex items-center justify-between border-b py-2 pl-6 pr-2 transition-colors',
+            mode === 'dark'
+              ? 'border-dark-palette-line/20 text-white'
+              : 'border-dark-palette-line/20 text-dark-palette-backgroundAlternate',
+          )}
+        >
+          <Text variant={TextVariant.Body} className="font-normal">
+            {COMPONENT_DESCRIPTIONS[activeTab]}
+          </Text>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <ComponentDemo mode={mode} demoComponent={demoComponent} />
           <div className="h-[300px] py-6 pl-6 pr-1 lg:h-[500px]">

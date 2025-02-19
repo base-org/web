@@ -1,3 +1,5 @@
+'use client';
+
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
@@ -10,10 +12,15 @@ import { SupportedPlatforms } from 'apps/web/src/components/Builders/MiniKit/Sup
 import { CtaBanner } from 'apps/web/src/components/Builders/Shared/CtaBanner';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image, { StaticImageData } from 'next/image';
-
+import Button from 'apps/web/src/components/base-org/Button';
+import { useCallback } from 'react';
 const GET_STARTED_URL = 'https://replit.com/@tina-he/ock-frames-template?v=1#README.md';
 
-export default async function AgentKit() {
+export default function AgentKit() {
+  const handleCopy = useCallback(() => {
+    void navigator.clipboard.writeText('npm create-onchain --mini');
+  }, []);
+
   return (
     <Container>
       <main className="mb-32 flex min-h-screen w-full flex-col gap-40 bg-black px-2 pt-20 md:px-0">
@@ -42,18 +49,27 @@ export default async function AgentKit() {
               MiniKit makes it simple to build and supercharge distribution across decentralized
               platforms.
             </Title>
-            <div className="flex gap-6 pt-5">
-              <ButtonWithLinkAndEventLogging
+
+            <div className="flex gap-4 pt-5 max-sm:max-w-[240px] max-sm:flex-col">
+              <Button
                 variant={ButtonVariants.Secondary}
+                iconName="copy"
+                onClick={handleCopy}
+                className="flex items-center justify-between px-4 py-3"
+                iconSize="16"
+              >
+                npm create-onchain --mini
+              </Button>
+              <ButtonWithLinkAndEventLogging
+                variant={ButtonVariants.SecondaryOutline}
                 buttonClassNames="flex items-center justify-between px-4 py-3 group"
                 href={GET_STARTED_URL}
-                target="_blank"
                 eventName="minikit-get-started"
               >
                 <div className="flex items-center gap-4">
                   <span>Get started</span>
                   <div className="transition-transform duration-200 group-hover:translate-x-1">
-                    <Icon name="arrowRight" width={16} height={16} color="black" />
+                    <Icon name="arrowRight" width={16} height={16} color="white" />
                   </div>
                 </div>
               </ButtonWithLinkAndEventLogging>

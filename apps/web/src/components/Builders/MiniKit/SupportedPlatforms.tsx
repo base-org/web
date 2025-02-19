@@ -8,6 +8,7 @@ import Text from 'apps/web/src/components/base-org/typography/Text';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { ReactNode } from 'react';
 import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
+import Link from 'apps/web/src/components/Link';
 
 type SupportedPlatformCardProps = {
   title?: string;
@@ -15,6 +16,7 @@ type SupportedPlatformCardProps = {
   description: string;
   image: StaticImageData;
   logo: ReactNode;
+  href: string;
 };
 
 function SupportedPlatformCard({
@@ -23,9 +25,14 @@ function SupportedPlatformCard({
   description,
   image,
   logo,
+  href,
 }: SupportedPlatformCardProps) {
   return (
-    <div className="relative flex min-h-[212px] flex-col justify-between gap-10 overflow-hidden rounded-lg p-6">
+    <Link
+      href={href}
+      target="_blank"
+      className="relative flex min-h-[212px] flex-col justify-between gap-10 overflow-hidden rounded-lg p-6"
+    >
       <Image src={image} alt="Template background" layout="fill" objectFit="cover" />
       <div className="z-10 flex items-center gap-2 text-white">
         {logo}
@@ -40,7 +47,7 @@ function SupportedPlatformCard({
         <Title level={TitleLevel.Title1}>{value}</Title>
         <Text variant={TextVariant.Body}>{description}</Text>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -65,6 +72,7 @@ export function SupportedPlatforms() {
               height={16}
             />
           }
+          href="https://warpcast.com/"
         />
         <SupportedPlatformCard
           description="Coming soon"
@@ -73,6 +81,7 @@ export function SupportedPlatforms() {
           logo={
             <Image src={walletLogo as StaticImageData} alt="Wallet logo" width={20} height={20} />
           }
+          href="https://wallet.coinbase.com/"
         />
       </div>
     </div>

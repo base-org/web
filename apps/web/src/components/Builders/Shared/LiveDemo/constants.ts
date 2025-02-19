@@ -2,7 +2,16 @@ import type { Token } from '@coinbase/onchainkit/token';
 import { Address, encodeFunctionData } from 'viem';
 import usdc from 'apps/web/src/components/Builders/Shared/assets/usdc.png';
 
-export type Tab = 'Wallet' | 'Buy' | 'Pay' | 'Swap' | 'Earn' | 'Mint' | 'Transact' | 'Fund';
+export type Tab =
+  | 'Wallet'
+  | 'Buy'
+  | 'Pay'
+  | 'Swap'
+  | 'Earn'
+  | 'Mint'
+  | 'Transact'
+  | 'Fund'
+  | 'Checkout';
 
 export const ONCHAINKIT_DEMO_TABS = [
   'Wallet',
@@ -13,6 +22,18 @@ export const ONCHAINKIT_DEMO_TABS = [
   'Mint',
   'Transact',
 ];
+
+export const COMPONENT_DESCRIPTIONS: Record<string, string> = {
+  Wallet: 'Enable users to onboard and log into your app with a wallet.',
+  Swap: 'Enable swaps between different cryptocurrencies.',
+  Buy: 'Enable token purchases.',
+  Mint: 'Enable NFT mints (ERC721 and ERC1155).',
+  Checkout: 'Accept USDC payments with instant user onboarding and onramps.',
+  Transact: 'Trigger onchain transactions and sponsor them with Paymaster',
+  Fund: 'Fund wallets with a debit card or a coinbase account.',
+  Earn: '',
+  Pay: '',
+};
 
 export const ethToken: Token = {
   name: 'ETH',
@@ -130,11 +151,16 @@ export const codeStyles = `
 }
 `;
 
-export const codeSnippets = {
-  Pay: `import {
+export const codeSnippets: Record<string, string> = {
+  Pay: `
+// Follow docs.base.org/builderkits/onchainkit/getting-started 
+// to install dependencies
+
+import {
   Checkout,
   CheckoutButton,
 } from '@coinbase/onchainkit/checkout';
+
 function CheckoutDemo() {
   return (
     <Checkout productId='my-product-id'>
@@ -142,8 +168,13 @@ function CheckoutDemo() {
     </Checkout>
   )
 }`,
-  Swap: `import { SwapDefault } from '@coinbase/onchainkit/swap';
+  Swap: `
+// Follow docs.base.org/builderkits/onchainkit/getting-started 
+// to install dependencies
+
+import { SwapDefault } from '@coinbase/onchainkit/swap';
 import type { Token } from '@coinbase/onchainkit/token';
+
 function SwapDemo() {
   const { address } = useAccount();
   const ETHToken: Token = {
@@ -170,20 +201,35 @@ function SwapDemo() {
     />
   )
 }`,
-  Wallet: `import {
+  Wallet: `
+// Follow docs.base.org/builderkits/onchainkit/getting-started 
+// to install dependencies
+
+import {
   WalletDefault
 } from '@coinbase/onchainkit/wallet';
+
 function WalletDefaultDemo() {
   return <WalletDefault />
 }
 `,
-  Earn: `import { Earn } from '@coinbase/onchainkit/earn';
+  Earn: `
+// Follow docs.base.org/builderkits/onchainkit/getting-started 
+// to install dependencies
+
+import { Earn } from '@coinbase/onchainkit/earn';
+
 function EarnDemo() {
   const vaultAddress = '0x7BfA7C4f149E7415b73bdeDfe609237e29CBF34A';
   return <Earn vaultAddress={vaultAddress} />;
 }
   `,
-  Fund: `import { FundCard } from "@coinbase/onchainkit/fund"
+  Fund: `
+// Follow docs.base.org/builderkits/onchainkit/getting-started 
+// to install dependencies
+
+import { FundCard } from "@coinbase/onchainkit/fund"
+
 function FundDemo() {
   return (
     <FundCard
@@ -195,8 +241,13 @@ function FundDemo() {
   )
 }
   `,
-  Buy: `import { Buy } from "@coinbase/onchainkit/buy"
+  Buy: `
+// Follow docs.base.org/builderkits/onchainkit/getting-started 
+// to install dependencies
+
+import { Buy } from "@coinbase/onchainkit/buy"
 import { Token } from "@coinbase/onchainkit/token";
+
 function BuyDemo() {
   const usdcToken: Token = {
     name: 'USDC',
@@ -209,7 +260,11 @@ function BuyDemo() {
   return <Buy toToken={usdcToken} />
 }
   `,
-  Mint: `import { NFTMintCard } from "@coinbase/onchainkit/nft";
+  Mint: `
+// Follow docs.base.org/builderkits/onchainkit/getting-started 
+// to install dependencies
+
+import { NFTMintCard } from "@coinbase/onchainkit/nft";
 import { NFTMedia } from "@coinbase/onchainkit/nft/view";
 import {
   NFTCreator,
@@ -235,9 +290,14 @@ function NFTMintDemo() {
   )
 }
     `,
-  Transact: `import {
+  Transact: `
+// Follow docs.base.org/builderkits/onchainkit/getting-started 
+// to install dependencies
+
+import {
   TransactionDefault
 } from "@coinbase/onchainkit/transaction"
+
 function TransactDefaultDemo() {
   const calls = [...];
   return <TransactionDefault calls={calls} />

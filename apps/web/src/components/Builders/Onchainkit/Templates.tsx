@@ -36,9 +36,11 @@ export function Templates() {
       <div className="grid w-full grid-cols-3 gap-6 max-sm:grid-cols-1">
         {TEMPLATES.map((template) => {
           return (
-            <div
+            <Link
+              href={template.href}
               key={template.title}
               className="relative flex h-[220px] flex-col justify-between overflow-hidden rounded-xl bg-[purple] p-6"
+              target="_blank"
             >
               <Image
                 src={template.background}
@@ -49,11 +51,11 @@ export function Templates() {
               <Title level={TitleLevel.Title3} className="z-10 font-bold">
                 {template.title}
               </Title>
-              <Link href={template.href} className="z-10 flex gap-2 text-[#C9A4FA]">
+              <div className="z-10 flex gap-2 text-[#C9A4FA]">
                 <Title level={TitleLevel.Headline}>Fork the template</Title>
                 <Icon name="fork" color="currentColor" />
-              </Link>
-            </div>
+              </div>
+            </Link>
           );
         })}
       </div>

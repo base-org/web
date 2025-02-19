@@ -1,6 +1,7 @@
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
+import Text from 'apps/web/src/components/base-org/typography/Text';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { InfoCards } from 'apps/web/src/components/Builders/SmartWallet/InfoCards';
@@ -12,6 +13,8 @@ import { CtaBanner } from 'apps/web/src/components/Builders/Shared/CtaBanner';
 import Image, { StaticImageData } from 'next/image';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { LiveDemo } from 'apps/web/src/components/Builders/Shared/LiveDemo';
+import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
+import Link from 'apps/web/src/components/Link';
 
 export default async function BaseWallet() {
   return (
@@ -20,17 +23,27 @@ export default async function BaseWallet() {
         {/* Header  */}
         <div className="flex w-full items-center justify-between gap-1 pt-20 max-sm:flex-col sm:pb-20">
           <div className="flex max-w-xl flex-col gap-2">
-            <div className="flex items-center gap-2 pb-6 text-[#578BFA]">
-              <Image
-                src={wallet as StaticImageData}
-                alt="wallet"
-                width={32}
-                height={32}
-                className="h-5 w-5"
-              />
-              <Title level={TitleLevel.Title3} className="font-bold">
-                Smart Wallet
-              </Title>
+            <div className="flex gap-4 pb-6 text-[#578BFA] max-md:flex-col md:items-center md:gap-5">
+              <div className="flex items-center gap-2">
+                <Image
+                  src={wallet as StaticImageData}
+                  alt="wallet"
+                  width={32}
+                  height={32}
+                  className="h-5 w-5"
+                />
+                <Title level={TitleLevel.Title3} className="font-bold">
+                  Smart Wallet
+                </Title>
+              </div>
+              <Link
+                href="https://vocs-migration-mvp-one.vercel.app/identity/smart-wallet/introduction/base-gasless-campaign"
+                target="_blank"
+                className="flex items-center justify-center gap-2 rounded-full border px-2 py-1 max-md:mr-auto"
+              >
+                <Text variant={TextVariant.Body}>$15K gas credits available</Text>
+                <Icon name="arrowRight" width={12} height={12} color="currentColor" />
+              </Link>
             </div>
             <Title level={TitleLevel.Display3} className="font-bold max-sm:hidden">
               The universal account for the onchain future
