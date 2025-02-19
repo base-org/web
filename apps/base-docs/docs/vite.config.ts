@@ -6,6 +6,10 @@ export default defineConfig({
   optimizeDeps: {
     include: ['@coinbase/cookie-banner'],
   },
+  define: {
+    'process.env': {},
+    Buffer: ['buffer', 'Buffer'],
+  },
   server: {
     fs: {
       // Adjust these paths based on where your docs folder actually lives
