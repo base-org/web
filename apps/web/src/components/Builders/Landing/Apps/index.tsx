@@ -115,7 +115,6 @@ const customers: Customer[] = [
     logo: uniswap as StaticImageData,
   },
 ];
-const LOGO_WIDTH = 200; // pixels
 
 const logoStyle = {
   width: 'auto',
@@ -136,10 +135,7 @@ export function Apps() {
       </Title>
       <Marquee className="[--duration:60s]" childrenClassName="mr-24 !gap-24">
         {customers.map((customer) => (
-          <div
-            className={`max-w-[${LOGO_WIDTH}px] flex items-center`}
-            key={`first-${customer.href}`}
-          >
+          <div className="flex w-[200px] items-center" key={`first-${customer.href}`}>
             <Link href={customer.href} target="_blank">
               <Image
                 src={customer.logo}
