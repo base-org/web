@@ -151,9 +151,10 @@ export const codeStyles = `
 }
 `;
 
-const depsInstallInstructions = '// Follow docs.base.org/builderkits/onchainkit/getting-started to install dependencies';
+const depsInstallInstructions =
+  '// Follow docs.base.org/builderkits/onchainkit/getting-started to install dependencies';
 
-export const codeSnippets = {
+export const codeSnippets: Record<string, string> = {
   Pay: `${depsInstallInstructions}
 import {
   Checkout,
