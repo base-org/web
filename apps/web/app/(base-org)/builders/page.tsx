@@ -12,10 +12,10 @@ import { BottomCta } from 'apps/web/src/components/Builders/Shared/BottomCta';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
-  title: `Base | Developers`,
+  title: `Base | Builders`,
   openGraph: {
-    title: `Base | Developers`,
-    url: `/developers`,
+    title: `Base | Builders`,
+    url: `/builders`,
   },
 };
 
