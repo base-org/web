@@ -48,11 +48,6 @@ export function WhyBase() {
             description="Integrations with Coinbase Exchange allows seamless transfers of assets across the onchain ecosystem."
             icon={integration as StaticImageData}
           />
-          <ValueProp
-            title="Enterprise Support"
-            description="Fully-managed infrastructure, white glove service, support, and in-depth developer documentation."
-            icon={support as StaticImageData}
-          />
         </div>
         <div className="flex flex-col gap-3 md:hidden">
           <ValueProp
@@ -69,11 +64,6 @@ export function WhyBase() {
             title="Powerful Integrations"
             description="Seamless integration with Coinbase products and ecosystem"
             icon={integration as StaticImageData}
-          />
-          <ValueProp
-            title="Enterprise Support"
-            description="Developer documentation"
-            icon={support as StaticImageData}
           />
         </div>
       </div>

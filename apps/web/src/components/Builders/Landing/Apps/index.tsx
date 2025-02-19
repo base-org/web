@@ -134,7 +134,7 @@ export function Apps() {
       <Title level={TitleLevel.Title3} className="mb-8 font-medium md:hidden">
         Powering your favorite onchain apps.
       </Title>
-      <Marquee className="[--duration:60s]" childrenClassName="!gap-[96px]">
+      <Marquee className="[--duration:60s]" childrenClassName="mr-24 !gap-24">
         {customers.map((customer) => (
           <div
             className={`max-w-[${LOGO_WIDTH}px] flex items-center`}
