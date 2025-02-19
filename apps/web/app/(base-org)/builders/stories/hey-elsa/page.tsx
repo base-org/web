@@ -5,7 +5,7 @@ import { QABlock } from 'apps/web/src/components/Builders/Stories/StoryPages/QAB
 import { Blockquote } from 'apps/web/src/components/Builders/Stories/StoryPages/Blockquote';
 import { ReadMore } from 'apps/web/src/components/Builders/Stories/StoryPages/ReadMore';
 import { BottomCta } from 'apps/web/src/components/Builders/Stories/BottomCta';
-import heyElsa from 'apps/web/src/components/Builders/Stories/StoryCards/assets/Elsa.svg';
+import heyElsa from 'apps/web/src/components/Builders/Stories/StoryCards/assets/elsa.svg';
 
 export default function HeyElsa() {
   return (

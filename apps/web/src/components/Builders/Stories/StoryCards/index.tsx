@@ -5,13 +5,13 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 
-import baseLogo from 'apps/web/src/components/Builders/Stories/StoryCards/assets/BaseLogo.svg';
-import blocklords from 'apps/web/src/components/Builders/Stories/StoryCards/assets/Blocklords.svg';
-import cattown from 'apps/web/src/components/Builders/Stories/StoryCards/assets/CatTown.svg';
-import byte from 'apps/web/src/components/Builders/Stories/StoryCards/assets/ByteAI.svg';
-import morpho from 'apps/web/src/components/Builders/Stories/StoryCards/assets/Morpho.svg';
-import heyelsa from 'apps/web/src/components/Builders/Stories/StoryCards/assets/Elsa.svg';
-import aerodrome from 'apps/web/src/components/Builders/Stories/StoryCards/assets/Aerodrome.svg';
+import baseLogo from 'apps/web/src/components/Builders/Stories/StoryCards/assets/baseLogo.svg';
+import blocklords from 'apps/web/src/components/Builders/Stories/StoryCards/assets/blocklords.svg';
+import cattown from 'apps/web/src/components/Builders/Stories/StoryCards/assets/catTown.svg';
+import byte from 'apps/web/src/components/Builders/Stories/StoryCards/assets/byteAi.svg';
+import morpho from 'apps/web/src/components/Builders/Stories/StoryCards/assets/morpho.svg';
+import heyelsa from 'apps/web/src/components/Builders/Stories/StoryCards/assets/elsa.svg';
+import aerodrome from 'apps/web/src/components/Builders/Stories/StoryCards/assets/aerodrome.svg';
 import Link from 'apps/web/src/components/Link';
 
 export function StoryCards() {

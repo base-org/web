@@ -5,7 +5,7 @@ import { QABlock } from 'apps/web/src/components/Builders/Stories/StoryPages/QAB
 import { Blockquote } from 'apps/web/src/components/Builders/Stories/StoryPages/Blockquote';
 import { ReadMore } from 'apps/web/src/components/Builders/Stories/StoryPages/ReadMore';
 import { BottomCta } from 'apps/web/src/components/Builders/Stories/BottomCta';
-import byte from 'apps/web/src/components/Builders/Stories/StoryCards/assets/ByteAI.svg';
+import byte from 'apps/web/src/components/Builders/Stories/StoryCards/assets/byteAi.svg';
 
 export default function Byte() {
   return (
