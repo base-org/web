@@ -94,7 +94,7 @@ export function Testimonials() {
                 </blockquote>
                 <ButtonWithLinkAndEventLogging
                   variant={ButtonVariants.SecondaryOutline}
-                  linkClassNames="block"
+                  linkClassNames="w-fit block"
                   buttonClassNames="text-base font-medium text-white flex items-center justify-between px-4 py-3 group"
                   href="/builders/stories"
                   eventName="testimonials"

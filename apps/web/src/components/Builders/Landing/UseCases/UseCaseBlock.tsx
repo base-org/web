@@ -2,6 +2,7 @@
 
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
+import Link from 'apps/web/src/components/Link';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
@@ -19,9 +20,11 @@ export function UseCaseBlock({
 }) {
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex h-[320px] w-full flex-col items-center rounded-2xl bg-dark-palette-backgroundAlternate">
-        {children}
-      </div>
+      <Link href={href}>
+        <div className="flex h-[320px] w-full flex-col items-center rounded-2xl bg-dark-palette-backgroundAlternate">
+          {children}
+        </div>
+      </Link>
       <div className="flex flex-col gap-2">
         <Title level={TitleLevel.Title3} as="h3" className="font-medium text-white">
           {title}
@@ -32,6 +35,7 @@ export function UseCaseBlock({
       </div>
       <ButtonWithLinkAndEventLogging
         variant={ButtonVariants.SecondaryOutline}
+        linkClassNames='w-fit'
         buttonClassNames="flex items-center justify-between px-4 py-3 group"
         href={href}
         eventName={`developers_build-scale-monetize_${title.replace(/\s+/g, '-').toLowerCase()}`}
