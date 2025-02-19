@@ -21,7 +21,7 @@ export function UseCases() {
         <UseCaseBlock
           title="Onboard everyone"
           description="Let users sign up and sign in with Smart Wallet — the universal account for the onchain world."
-          href="https://vocs-migration-mvp-one.vercel.app/dev-tools/identity/smart-wallet/quick-start"
+          href="https://vocs-migration-mvp-one.vercel.app/use-cases/onboard-any-user"
         >
           <div className="flex h-[320px] w-[285px] flex-col items-center justify-center md:w-1/2">
             <AnimatedOnboarding />
@@ -30,35 +30,35 @@ export function UseCases() {
         <UseCaseBlock
           title="Accept crypto payments"
           description="Integrate secure and efficient crypto payment solutions for your apps."
-          href="https://vocs-migration-mvp-one.vercel.app/dev-tools/kits/onchainkit/checkout/checkout"
+          href="https://vocs-migration-mvp-one.vercel.app/use-cases/accept-crypto-payments"
         >
           <AnimatedPayment />
         </UseCaseBlock>
         <UseCaseBlock
           title="Launch AI agents"
           description="Build and deploy AI agents that can interact with onchain data and smart contracts."
-          href="https://docs.cdp.coinbase.com/agentkit/docs/welcome"
+          href="https://vocs-migration-mvp-one.vercel.app/use-cases/launch-ai-agents"
         >
           <AnimatedBaseAgent />
         </UseCaseBlock>
         <UseCaseBlock
           title="Kickstart your app's growth"
           description="Use decentralized social graphs to grow your app and find users — wherever they are."
-          href="https://vocs-migration-mvp-one.vercel.app/dev-tools/kits/onchainkit/mint/nft-mint-card"
+          href="https://vocs-migration-mvp-one.vercel.app/use-cases/decentralize-social-app"
         >
           <AnimatedSocial />
         </UseCaseBlock>
         <UseCaseBlock
           title="Unlock the power of DeFi"
           description="Integrate DeFi protocols and services directly into your app. "
-          href="https://vocs-migration-mvp-one.vercel.app/dev-tools/kits/onchainkit/swap/swap"
+          href="https://vocs-migration-mvp-one.vercel.app/use-cases/defi-your-app"
         >
           <AnimatedDefi />
         </UseCaseBlock>
         <UseCaseBlock
           title="Remove first-timer friction"
           description="Enable gasless transactions and simplify user onboarding."
-          href="https://vocs-migration-mvp-one.vercel.app/dev-tools/identity/smart-wallet/base-gasless-campaign"
+          href="https://vocs-migration-mvp-one.vercel.app/use-cases/go-gasless"
         >
           <AnimatedGasless />
         </UseCaseBlock>
