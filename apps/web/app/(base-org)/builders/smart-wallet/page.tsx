@@ -37,7 +37,7 @@ export default async function BaseWallet() {
                 </Title>
               </div>
               <Link
-                href="https://vocs-migration-mvp-one.vercel.app/identity/smart-wallet/introduction/base-gasless-campaign"
+                href="https://www.docs.base.org/identity/smart-wallet/introduction/base-gasless-campaign"
                 target="_blank"
                 className="flex items-center justify-center gap-2 rounded-full border px-2 py-1 max-md:mr-auto"
               >
@@ -57,11 +57,11 @@ export default async function BaseWallet() {
             </Title>
             <div className="flex gap-6 pt-5">
               <ButtonWithLinkAndEventLogging
-                href=""
                 target="_blank"
                 variant={ButtonVariants.Secondary}
                 buttonClassNames="flex items-center justify-between px-4 py-3 group"
                 eventName="wallet-start-building"
+                href="https://www.docs.base.org/identity/smart-wallet/introduction/install-web."
               >
                 <div className="flex items-center gap-4">
                   <span>Start building</span>
@@ -100,7 +100,7 @@ export default async function BaseWallet() {
                 Fork a template
               </ButtonWithLinkAndEventLogging>
               <ButtonWithLinkAndEventLogging
-                href=""
+                href="https://www.docs.base.org/identity/smart-wallet/introduction/install-web."
                 target="_blank"
                 variant={ButtonVariants.SecondaryOutline}
                 buttonClassNames="flex items-center justify-between px-4 py-3 group"

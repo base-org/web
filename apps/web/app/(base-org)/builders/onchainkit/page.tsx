@@ -17,7 +17,7 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { LiveDemo } from 'apps/web/src/components/Builders/Shared/LiveDemo';
 
 const ONCHAINKIT_DOCS_LINK = 'https://onchainkit.xyz/';
-const demoComponents = ['Transact', 'Pay', 'Earn', 'Buy', 'Mint', 'Fund', 'Wallet'];
+const demoComponents = ['Wallet', 'Buy', 'Fund', 'Earn', 'Mint', 'Transact'];
 
 export default function OnchainKit() {
   const handleCopy = useCallback(() => {
