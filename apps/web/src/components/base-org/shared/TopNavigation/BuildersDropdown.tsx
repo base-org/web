@@ -14,6 +14,7 @@ import gitHubLogo from 'apps/web/src/components/base-org/shared/TopNavigation/as
 import blog from 'apps/web/src/components/base-org/shared/TopNavigation/assets/developers/blog.svg';
 import bridging from 'apps/web/src/components/base-org/shared/TopNavigation/assets/developers/bridging.svg';
 import Link from 'apps/web/src/components/Link';
+import Card from 'apps/web/src/components/base-org/Card';
 
 type BuildersDropdownProps = {
   onLinkClick: () => void;
@@ -37,8 +38,9 @@ type FooterCardProps = {
 export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
   return (
     <AnalyticsProvider context="developers">
-      <div className="relative m-0 w-full rounded-xl bg-white/20 p-[1px]">
-        <div className="flex flex-col gap-2.5 rounded-xl bg-dark-palette-backgroundAlternate p-2">
+      <Card radius={8} innerClassName="bg-dark-palette-backgroundAlternate">
+      {/* <div className="card relative m-0 w-full rounded-lg bg-white/20 p-[1px]"> */}
+        <div className="flex flex-col gap-2.5 rounded-lg bg-dark-palette-backgroundAlternate p-2">
           <Link
             href="/builders"
             onClick={onLinkClick}
@@ -142,7 +144,8 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
             </div>
           </div>
         </div>
-      </div>
+      {/* </div> */}
+      </Card>
     </AnalyticsProvider>
   );
 }
@@ -152,7 +155,7 @@ function ToolMiniCard({ title, description, icon, href, onLinkClick }: ToolMiniC
     <Link
       href={href}
       onClick={onLinkClick}
-      className="flex cursor-pointer flex-col gap-4 rounded-xl px-4 py-2 transition-all duration-200 hover:bg-white/10"
+      className="flex cursor-pointer flex-col gap-4 rounded-lg px-4 py-2 transition-all duration-200 hover:bg-white/10"
     >
       <div className="flex items-center gap-4">
         <div className="rounded-lg">
