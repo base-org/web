@@ -54,7 +54,7 @@ export function Hero() {
             <ButtonWithLinkAndEventLogging
               variant={ButtonVariants.SecondaryOutline}
               iconName="baseOrgDiagonalUpArrow"
-              buttonClassNames="rounded-xl text-sm"
+              buttonClassNames="rounded-xl text-sm font-medium"
               href="https://docs.base.org/builderkits/onchainkit/getting-started"
               eventName="build-app-in-10-minutes"
               target="_blank"
@@ -64,7 +64,7 @@ export function Hero() {
             <ButtonWithLinkAndEventLogging
               variant={ButtonVariants.SecondaryOutline}
               iconName="baseOrgDiagonalUpArrow"
-              buttonClassNames="rounded-xl text-sm"
+              buttonClassNames="rounded-xl text-sm font-medium"
               eventName="launch-ai-agent"
               href="https://replit.com/t/coinbase-developer-platform/repls/AgentKitjs-Quickstart-020-EVM-CDP-Wallet/view#README.md"
               target="_blank"
@@ -74,7 +74,7 @@ export function Hero() {
             <ButtonWithLinkAndEventLogging
               variant={ButtonVariants.SecondaryOutline}
               iconName="baseOrgDiagonalUpArrow"
-              buttonClassNames="rounded-xl text-sm"
+              buttonClassNames="rounded-xl text-sm font-medium"
               href="https://docs.base.org/builderkits/onchainkit/checkout/checkout"
               eventName="accept-crypto-payments"
               target="_blank"
@@ -98,7 +98,7 @@ export function Hero() {
                 <div className="tracking-normal md:hidden">Quickstart...</div>
                 <TextShimmer
                   className="hidden text-sm tracking-normal hover:text-white md:inline"
-                  duration={1}
+                  duration={2}
                 >
                   Go to tools, templates, or guides with
                 </TextShimmer>

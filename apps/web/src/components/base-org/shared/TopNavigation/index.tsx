@@ -116,7 +116,7 @@ const links: TopNavigationLink[] = [
       {
         name: 'Builder stories',
         description: '',
-        href: '/stories',
+        href: '/builders/stories',
       },
     ],
   },

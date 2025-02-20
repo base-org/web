@@ -32,7 +32,7 @@ const MESSAGES: Item[] = [
     type: 'user',
   },
   {
-    text: '1000 USDC on Morpho',
+    text: 'Deposited 1000 USDC on Morpho',
     type: 'agent',
     content: (
       <div className="mt-2 flex justify-center rounded-lg border border-[#FCB983] p-2 text-[#FCB983]">
@@ -94,7 +94,9 @@ export function Demo() {
         </Link>
       </div>
       <div
-        className={classNames('relative flex h-[500px] w-full flex-col overflow-hidden rounded-lg p-6 ')}
+        className={classNames(
+          'relative flex h-[500px] w-full flex-col overflow-hidden rounded-lg p-6 ',
+        )}
       >
         <AnimatedList>
           {MESSAGE_ARRAY.map((item) => (

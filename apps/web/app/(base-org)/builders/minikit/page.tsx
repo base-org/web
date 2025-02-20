@@ -31,7 +31,7 @@ export default function AgentKit() {
           cta={
             <ButtonWithLinkAndEventLogging
               variant={ButtonVariants.Secondary}
-              buttonClassNames="flex items-center justify-between px-4 py-3 group font-medium"
+              buttonClassNames="flex items-center justify-between px-4 pb-2.5 pt-3 group font-medium"
               href={GET_STARTED_URL}
               target="_blank"
               eventName="minikit-get-started"

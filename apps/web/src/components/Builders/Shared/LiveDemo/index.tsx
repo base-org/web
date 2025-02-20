@@ -377,7 +377,7 @@ function MobileDemo({
       <style>{codeStyles}</style>
       {title && (
         <div className="mb-9 flex flex-col gap-2 font-bold">
-          <Title level={TitleLevel.Title3}>{title}</Title>
+          <Title level={TitleLevel.Title1}>{title}</Title>
         </div>
       )}
       <div

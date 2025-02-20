@@ -127,10 +127,7 @@ const logoStyle = {
 export function Apps() {
   return (
     <section className="h-full w-full pt-32">
-      <Title level={TitleLevel.Title1} as="h2" className="mb-10 hidden md:block">
-        Powering your favorite onchain apps
-      </Title>
-      <Title level={TitleLevel.Title3} className="mb-8 font-medium md:hidden">
+      <Title level={TitleLevel.Title1} as="h2" className="mb-10">
         Powering your favorite onchain apps
       </Title>
       <Marquee className="[--duration:60s]" childrenClassName="mr-24 !gap-24">

@@ -20,7 +20,7 @@ type Testimonial = {
 
 const testimonials: Testimonial[] = [
   {
-    text: "Base provides unmatched developer support and fosters a highly constructive community that inspires innovation and encourages you to push boundaries. If you want to build and win, Base is the place to be.",
+    text: 'Base provides unmatched developer support and fosters a highly constructive community that inspires innovation and encourages you to push boundaries. If you want to build and win, Base is the place to be.',
     author: 'Dhawal Shah',
     role: 'HeyElsa AI',
     tab: 'build',
@@ -53,7 +53,7 @@ export function Testimonials() {
   );
 
   return (
-    <section className="mt-16 h-[448px] w-full md:h-full">
+    <section className="mt-16 h-[448px] w-full max-sm:mb-32 md:h-full">
       <div className="rounded-xl border border-palette-line/20 p-6 md:p-8">
         <div className="mb-9 flex space-x-6">
           {(['build', 'scale', 'monetize'] as const).map((tab) => (
@@ -95,7 +95,7 @@ export function Testimonials() {
                 <ButtonWithLinkAndEventLogging
                   variant={ButtonVariants.SecondaryOutline}
                   linkClassNames="w-fit block"
-                  buttonClassNames="text-base font-medium text-white flex items-center justify-between px-4 py-3 group"
+                  buttonClassNames="text-base font-medium text-white flex items-center justify-between px-4 pb-2.5 pt-3 group"
                   href="/builders/stories"
                   eventName="testimonials"
                 >

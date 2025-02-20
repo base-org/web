@@ -35,15 +35,16 @@ export function UseCaseBlock({
       </div>
       <ButtonWithLinkAndEventLogging
         variant={ButtonVariants.SecondaryOutline}
-        linkClassNames='w-fit'
-        buttonClassNames="flex items-center justify-between px-4 py-3 group"
+        linkClassNames="w-fit"
+        buttonClassNames="flex items-center justify-between px-4 pb-2.5 pt-3 group font-medium"
         href={href}
+        target="_blank"
         eventName={`developers_build-scale-monetize_${title.replace(/\s+/g, '-').toLowerCase()}`}
       >
         <div className="flex items-center gap-4">
           <span>Get started</span>
           <div className="transition-transform duration-200 group-hover:translate-x-1">
-            <Icon name="arrowRight" width={20} height={20} color="white" />
+            <Icon name="arrowRight" width={16} height={16} color="white" />
           </div>
         </div>
       </ButtonWithLinkAndEventLogging>

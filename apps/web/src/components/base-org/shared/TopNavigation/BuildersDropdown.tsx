@@ -38,15 +38,14 @@ type FooterCardProps = {
 export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
   return (
     <AnalyticsProvider context="developers">
-      <Card radius={8} innerClassName="bg-dark-palette-backgroundAlternate">
-        {/* <div className="card relative m-0 w-full rounded-lg bg-white/20 p-[1px]"> */}
-        <div className="flex flex-col gap-2.5 rounded-lg bg-dark-palette-backgroundAlternate p-2">
+      <Card radius={13} innerClassName="bg-dark-palette-backgroundAlternate">
+        <div className="flex flex-col gap-2.5 rounded-xl bg-dark-palette-backgroundAlternate p-2">
           <Link
             href="/builders"
             onClick={onLinkClick}
-            className="flex items-center justify-between rounded-lg bg-dark-palette-secondary px-4 py-3 hover:bg-white/10"
+            className="flex items-center justify-between rounded-lg bg-dark-palette-secondary px-4 pb-2.5 pt-3 hover:bg-white/10"
           >
-            <div>
+            <div className="flex flex-col justify-center">
               <Title level={TitleLevel.Headline} className="text-sm leading-none">
                 Builders
               </Title>
@@ -59,9 +58,9 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
           <Link
             href="https://docs.base.org"
             onClick={onLinkClick}
-            className="flex items-center justify-between rounded-lg bg-dark-palette-secondary px-4 py-3 hover:bg-white/10"
+            className="flex items-center justify-between rounded-lg bg-dark-palette-secondary px-4 pb-2.5 pt-3 hover:bg-white/10"
           >
-            <div>
+            <div className="flex flex-col justify-center">
               <Title level={TitleLevel.Headline} className="text-sm leading-none">
                 Documentation
               </Title>
@@ -138,7 +137,7 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
               <FooterCard
                 label="Builder stories"
                 icon={bridging as StaticImageData}
-                href="/stories"
+                href="/builders/stories"
                 onLinkClick={onLinkClick}
               />
             </div>

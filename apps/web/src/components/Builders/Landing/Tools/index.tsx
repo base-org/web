@@ -17,10 +17,7 @@ type ToolCardProps = {
 export function Tools() {
   return (
     <section className="h-full w-full">
-      <Title level={TitleLevel.Title1} as="h2" className="mb-9 mt-32 hidden md:block">
-        A suite of tools to build world-class onchain apps — purpose-built for Base
-      </Title>
-      <Title level={TitleLevel.Title3} className="mb-6 mt-32 font-medium md:hidden">
+      <Title level={TitleLevel.Title1} as="h2" className="mb-9 mt-32">
         A suite of tools to build world-class onchain apps — purpose-built for Base
       </Title>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">

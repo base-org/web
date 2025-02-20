@@ -39,6 +39,7 @@ export function TextShimmer({
         repeat: Infinity,
         duration,
         ease: 'linear',
+        repeatDelay: 1,
       }}
       style={
         {

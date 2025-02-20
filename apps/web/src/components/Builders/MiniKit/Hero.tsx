@@ -46,24 +46,24 @@ export function Hero() {
           platforms.
         </Title>
 
-        <div className="flex gap-4 pt-5 max-sm:max-w-[240px] max-sm:flex-col">
+        <div className="flex gap-4 pt-5  max-sm:flex-col">
           <button
             type="button"
-            className="inline-flex items-center gap-2.5 rounded-lg bg-white px-4 py-3 font-medium text-dark-palette-primaryForeground transition-colors hover:bg-white/90"
+            className="inline-flex items-center gap-2.5 rounded-lg bg-white px-4 pb-2.5 pt-3 font-medium text-dark-palette-primaryForeground transition-colors hover:bg-white/90 max-sm:mr-auto"
             onClick={handleCopy}
           >
             npm create-onchain --mini
             {hasCopied ? (
               <div className="text-green-60">
-                <Icon name="checkmark" width="20" height="20" color="currentColor" />
+                <Icon name="checkmark" width="16" height="16" color="currentColor" />
               </div>
             ) : (
-              <Icon name="copy" width="20" height="20" color="currentColor" />
+              <Icon name="copy" width="16" height="16" color="currentColor" />
             )}
           </button>
           <ButtonWithLinkAndEventLogging
             variant={ButtonVariants.SecondaryOutline}
-            buttonClassNames="flex items-center justify-between px-4 py-3 group font-medium"
+            buttonClassNames="flex items-center justify-between px-4 pb-2.5 pt-3 group font-medium"
             href={GET_STARTED_URL}
             eventName="minikit-get-started"
             target="_blank"

@@ -69,7 +69,7 @@ export default async function BaseWallet() {
               <ButtonWithLinkAndEventLogging
                 target="_blank"
                 variant={ButtonVariants.Secondary}
-                buttonClassNames="flex items-center justify-between px-4 py-3 group font-medium"
+                buttonClassNames="flex items-center justify-between px-4 pb-2.5 pt-3 group font-medium"
                 eventName="wallet-start-building"
                 href="https://www.docs.base.org/identity/smart-wallet/introduction/install-web."
               >
@@ -106,7 +106,8 @@ export default async function BaseWallet() {
                 href="https://github.com/brendan-defi/onchainkit-wallet-island-demo"
                 target="_blank"
                 eventName="wallet-fork-template"
-                buttonClassNames="flex items-center justify-between px-4 py-3 font-medium"
+                iconSize={16}
+                buttonClassNames="flex items-center justify-between px-4 pb-2.5 pt-3 font-medium"
               >
                 Fork a template
               </ButtonWithLinkAndEventLogging>
@@ -114,11 +115,11 @@ export default async function BaseWallet() {
                 href="https://www.docs.base.org/identity/smart-wallet/introduction/install-web."
                 target="_blank"
                 variant={ButtonVariants.SecondaryOutline}
-                buttonClassNames="flex items-center justify-between px-4 py-3 group font-medium"
+                buttonClassNames="flex items-center justify-between px-4 pb-2.5 pt-3 group font-medium"
                 eventName="wallet-docs"
               >
-                <div className="flex items-center gap-4">
-                  <span>Documentation</span>
+                <div className="flex items-center justify-between gap-6">
+                  <span>Docs</span>
                   <div className="transition-transform duration-200 group-hover:translate-x-1">
                     <Icon name="arrowRight" width={16} height={16} color="white" />
                   </div>

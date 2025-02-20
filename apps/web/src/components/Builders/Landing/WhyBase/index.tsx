@@ -16,16 +16,9 @@ export function WhyBase() {
     <section className="h-full w-full py-20">
       <div className="flex flex-col gap-6 md:gap-9">
         <div className="flex flex-col gap-1 pr-4">
-          <Title level={TitleLevel.Title1} as="h2" className="hidden md:block">
+          <Title level={TitleLevel.Title1} as="h2" >
             Base is for builders.{' '}
             <Title level={TitleLevel.Title1} className="text-dark-palette-foregroundMuted" as="span">
-              We&apos;re committed to help builders shape the global onchain economy — from start to
-              finish.
-            </Title>
-          </Title>
-          <Title level={TitleLevel.Title3} className="md:hidden font-bold">
-            Base is for builders.{' '}
-            <Title level={TitleLevel.Title3} className="text-dark-palette-foregroundMuted" as="span">
               We&apos;re committed to help builders shape the global onchain economy — from start to
               finish.
             </Title>

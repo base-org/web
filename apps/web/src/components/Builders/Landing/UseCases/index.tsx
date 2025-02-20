@@ -11,10 +11,7 @@ import { AnimatedGasless } from 'apps/web/src/components/Builders/Shared/assets/
 export function UseCases() {
   return (
     <section className="h-full w-full">
-      <Title level={TitleLevel.Title1} as="h2" className="hidden md:flex">
-        Everything you need to build, scale, and monetize your onchain app
-      </Title>
-      <Title level={TitleLevel.Title3} className="font-bold md:hidden">
+      <Title level={TitleLevel.Title1} as="h2">
         Everything you need to build, scale, and monetize your onchain app
       </Title>
       <div className="mt-6 grid grid-cols-1 gap-9 md:mt-9 md:grid-cols-2">
