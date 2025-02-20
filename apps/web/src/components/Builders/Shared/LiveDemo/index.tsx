@@ -16,7 +16,7 @@ import { FundCard } from '@coinbase/onchainkit/fund';
 //   NFTMinters,
 //   NFTQuantitySelector,
 // } from '@coinbase/onchainkit/nft/mint';
-import { NFTMedia } from '@coinbase/onchainkit/nft/view';
+// import { NFTMedia } from '@coinbase/onchainkit/nft/view';
 import { SwapDefault } from '@coinbase/onchainkit/swap';
 import { TransactionDefault } from '@coinbase/onchainkit/transaction';
 import { WalletAdvancedDefault } from '@coinbase/onchainkit/wallet';
