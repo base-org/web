@@ -63,6 +63,7 @@ const ccaLiteDomains = 'https://cca-lite.coinbase.com';
 const sprigDomains = 'https://api.sprig.com https://cdn.sprig.com';
 const walletconnectDomains =
   'https://*.walletconnect.org wss://*.walletconnect.org wss://*.walletconnect.com https://*.walletconnect.com https://explorer-api.walletconnect.com';
+const googleAnalyticsDomain = 'https://www.googletagmanager.com/gtag/js';
 
 const contentSecurityPolicy = {
   'default-src': [
@@ -76,6 +77,7 @@ const contentSecurityPolicy = {
     walletconnectDomains,
     'https://fonts.googleapis.com', // OCK styles loads google fonts via CSS
     'https://fonts.gstatic.com/', // OCK styles loads google fonts via CSS
+    googleAnalyticsDomain,
   ],
   'worker-src': ["'self'", 'blob:'],
   'connect-src': [
@@ -123,6 +125,7 @@ const contentSecurityPolicy = {
     'https://blue-api.morpho.org/graphql', // morpho
     'https://base-sepolia.easscan.org/graphql', // nft
     'https://www.googletagmanager.com/gtag/js?id=G-D1QGEV3B07',
+     googleAnalyticsDomain,
   ],
   'frame-src': ['https://p.datadoghq.com'],
   'frame-ancestors': ["'self'", baseXYZDomains],
