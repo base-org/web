@@ -121,6 +121,7 @@ const contentSecurityPolicy = {
     `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
     'https://usdc-claim-git-master-coinbase-vercel.vercel.app',
     'https://eth.merkle.io', // new default viem rpc
+    'https://*.google-analytics.com',
   ],
   'frame-src': ['https://p.datadoghq.com'],
   'frame-ancestors': ["'self'", baseXYZDomains],
