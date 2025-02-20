@@ -2,8 +2,9 @@
 
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useSavedTrackingPreference, useCookie } from '@coinbase/cookie-manager';
-import initCCA from './initCCA.ts';
-import { isDevelopment } from '@/constants';
+import { initCCA } from './initCCA.ts';
+import { isDevelopment } from '@/constants.ts';
+import { useLocation } from 'react-router-dom';
 
 export type NextJsRouterEventTypes =
   | 'routeChangeStart'
@@ -33,7 +34,7 @@ export default function ClientAnalyticsScript() {
   // CCA expects to call a handler on path change, so we need to
 
   // 1. Keep track of the path
-  const pathname = usePathname();
+  const pathname = useLocation();
 
   // 2. Keep track of the handler
   const onRouteChangeHandler = useRef<AnalyticsEventHandler | null>(null);
@@ -58,17 +59,26 @@ export default function ClientAnalyticsScript() {
     }
   }, [onRouteChangeHandler, pathname]);
 
-  const onLoadHandler = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    () => initCCA(oldRouterEvent, trackingPreference, deviceIdCookie, setDeviceIdCookie),
-    [oldRouterEvent, trackingPreference, deviceIdCookie, setDeviceIdCookie],
-  );
+  const onLoadHandler = useCallback(() => {
+    initCCA(oldRouterEvent, trackingPreference, deviceIdCookie, setDeviceIdCookie);
+  }, [oldRouterEvent, trackingPreference, deviceIdCookie, setDeviceIdCookie]);
 
   if (isDevelopment) {
     return null;
   }
 
   return (
-    <script src="https://static-assets.coinbase.com/js/cca/v0.0.1.js" onLoad={onLoadHandler} />
+    <>
+      <script src="https://static-assets.coinbase.com/js/cca/v0.0.1.js" onLoad={onLoadHandler} />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKCM02YFWN" />
+      <script>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-TKCM02YFWN');
+        `}
+      </script>
+    </>
   );
 }

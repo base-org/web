@@ -7,9 +7,9 @@ interface BrowseUseCaseCardProps {
 
 export function BrowseUseCaseCard({ title, description, icon, href }: BrowseUseCaseCardProps) {
   const CardWrapper = href ? 'a' : 'div';
-  
+
   return (
-    <CardWrapper 
+    <CardWrapper
       href={href}
       className="block h-[420px]"
     >
@@ -19,7 +19,7 @@ export function BrowseUseCaseCard({ title, description, icon, href }: BrowseUseC
             {icon}
           </div>
         </div>
-        
+
         <div className="flex flex-col flex-1">
           <h3 className="text-lg font-bold text-white mb-1">{title}</h3>
           <p className="text-zinc-400">{description}</p>
@@ -27,4 +27,4 @@ export function BrowseUseCaseCard({ title, description, icon, href }: BrowseUseC
       </div>
     </CardWrapper>
   );
-} 
+}

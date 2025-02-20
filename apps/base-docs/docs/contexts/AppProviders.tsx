@@ -1,3 +1,4 @@
+// import ClientAnalyticsScript from '@/components/ClientAnalyticsScript/ClientAnalyticsScript.tsx';
 import { lazy, Suspense } from 'react';
 
 const CookieBannerWrapper = lazy(async () => import('./CookieBannerWrapper'));
