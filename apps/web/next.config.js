@@ -63,8 +63,6 @@ const ccaLiteDomains = 'https://cca-lite.coinbase.com';
 const sprigDomains = 'https://api.sprig.com https://cdn.sprig.com';
 const walletconnectDomains =
   'https://*.walletconnect.org wss://*.walletconnect.org wss://*.walletconnect.com https://*.walletconnect.com https://explorer-api.walletconnect.com';
-const googleAnalyticsDomains =
-  'https://www.googletagmanager.com/gtag/js https://www.google-analytics.com/g/collect';
 
 const contentSecurityPolicy = {
   'default-src': [
@@ -78,7 +76,6 @@ const contentSecurityPolicy = {
     walletconnectDomains,
     'https://fonts.googleapis.com', // OCK styles loads google fonts via CSS
     'https://fonts.gstatic.com/', // OCK styles loads google fonts via CSS
-    googleAnalyticsDomains,
   ],
   'worker-src': ["'self'", 'blob:'],
   'connect-src': [
@@ -123,7 +120,7 @@ const contentSecurityPolicy = {
     `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
     'https://usdc-claim-git-master-coinbase-vercel.vercel.app',
     'https://eth.merkle.io', // new default viem rpc
-    googleAnalyticsDomains,
+    'https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com',
   ],
   'frame-src': ['https://p.datadoghq.com'],
   'frame-ancestors': ["'self'", baseXYZDomains],
@@ -139,7 +136,9 @@ const contentSecurityPolicy = {
     'https://cloudflare-ipfs.com', // ipfs Cloudflare ens avatar resolution
     'https://res.cloudinary.com',
     `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
+    'https://*.google-analytics.com https://*.googletagmanager.com',
   ],
+  'script-src': ['https://*.googletagmanager.com'],
 };
 
 const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [key, value]) => {
