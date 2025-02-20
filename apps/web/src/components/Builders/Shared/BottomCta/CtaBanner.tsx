@@ -16,19 +16,11 @@ export function CtaBanner({ title, description, cta, sectionClassName }: CtaBann
   return (
     <section className={classNames('w-full bg-black', sectionClassName)}>
       <div className="flex flex-col items-center rounded-2xl bg-dark-palette-backgroundAlternate py-16 text-center">
-        <div className="px-9 md:hidden">
-          <Title level={TitleLevel.Title3} as="h2">
+        <div className="px-9">
+          <Title level={TitleLevel.Title1} as="h2" className="max-w-2xl">
             {title}
           </Title>
-          <Title level={TitleLevel.Headline} as="p" className="mt-2 font-normal">
-            {description}
-          </Title>
-        </div>
-        <div className="hidden md:block">
-          <Title level={TitleLevel.Title1} as="h2">
-            {title}
-          </Title>
-          <Title level={TitleLevel.Title4} as="p" className="mt-2">
+          <Title level={TitleLevel.Title4} as="p" className="mt-2 sm:text-center ">
             {description}
           </Title>
         </div>

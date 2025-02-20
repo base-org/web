@@ -18,17 +18,17 @@ export function WhyBase() {
         <div className="flex flex-col gap-1 pr-4">
           <Title level={TitleLevel.Title1} as="h2" className="hidden md:block">
             Base is for builders.{' '}
-            <span className="text-dark-palette-foregroundMuted">
+            <Title level={TitleLevel.Title1} className="text-dark-palette-foregroundMuted" as="span">
               We&apos;re committed to help builders shape the global onchain economy — from start to
               finish.
-            </span>
+            </Title>
           </Title>
-          <Title level={TitleLevel.Title3} className="md:hidden">
+          <Title level={TitleLevel.Title3} className="md:hidden font-bold">
             Base is for builders.{' '}
-            <span className="text-dark-palette-foregroundMuted">
+            <Title level={TitleLevel.Title3} className="text-dark-palette-foregroundMuted" as="span">
               We&apos;re committed to help builders shape the global onchain economy — from start to
               finish.
-            </span>
+            </Title>
           </Title>
         </div>
         <div className="hidden flex-col gap-3 md:flex">

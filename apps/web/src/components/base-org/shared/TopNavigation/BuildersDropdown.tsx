@@ -39,7 +39,7 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
   return (
     <AnalyticsProvider context="developers">
       <Card radius={8} innerClassName="bg-dark-palette-backgroundAlternate">
-      {/* <div className="card relative m-0 w-full rounded-lg bg-white/20 p-[1px]"> */}
+        {/* <div className="card relative m-0 w-full rounded-lg bg-white/20 p-[1px]"> */}
         <div className="flex flex-col gap-2.5 rounded-lg bg-dark-palette-backgroundAlternate p-2">
           <Link
             href="/builders"
@@ -112,13 +112,13 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
                 onLinkClick={onLinkClick}
               />
               <FooterCard
-                label="Bug Bounty"
+                label="Bug bounty"
                 icon={bug as StaticImageData}
                 href="https://hackerone.com/base"
                 onLinkClick={onLinkClick}
               />
               <FooterCard
-                label="Block Explorer"
+                label="BaseScan"
                 icon={blockchain as StaticImageData}
                 href="https://basescan.org/"
                 onLinkClick={onLinkClick}
@@ -130,13 +130,13 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
                 onLinkClick={onLinkClick}
               />
               <FooterCard
-                label="Blog"
+                label="Engineering blog"
                 icon={blog as StaticImageData}
                 href="https://blog.base.org/"
                 onLinkClick={onLinkClick}
               />
               <FooterCard
-                label="Builder Stories"
+                label="Builder stories"
                 icon={bridging as StaticImageData}
                 href="/stories"
                 onLinkClick={onLinkClick}
@@ -144,7 +144,7 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
             </div>
           </div>
         </div>
-      {/* </div> */}
+        {/* </div> */}
       </Card>
     </AnalyticsProvider>
   );

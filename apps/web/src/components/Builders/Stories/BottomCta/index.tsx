@@ -13,7 +13,7 @@ export function BottomCta() {
           <ButtonWithLinkAndEventLogging
             variant={ButtonVariants.Secondary}
             linkClassNames="text-base font-medium text-white block"
-            buttonClassNames="flex w-full items-center justify-between px-4 py-3 group !rounded-xl"
+            buttonClassNames="flex items-center justify-between px-4 py-3 group"
             target="_blank"
             href="/builders/stories" // TODO: Add link
             eventName="bottom-cta-get-started"
@@ -28,7 +28,7 @@ export function BottomCta() {
           <ButtonWithLinkAndEventLogging
             variant={ButtonVariants.SecondaryOutline}
             linkClassNames="text-base font-medium text-white block"
-            buttonClassNames="flex w-full items-center justify-between px-4 py-3 group !rounded-xl"
+            buttonClassNames="flex items-center justify-between px-4 py-3 group"
             target="_blank"
             href="https://docs.base.org"
             eventName="bottom-cta-documentation"

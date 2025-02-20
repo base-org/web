@@ -47,52 +47,59 @@ const links: TopNavigationLink[] = [
     href: '/builders',
     subItems: [
       {
+        name: 'Builders',
+        description: '',
+        href: '/builders',
+      },
+      {
         name: 'Documentation',
         description: '',
         href: 'https://docs.base.org',
       },
+      // TODO: Add back after launch
+      // {
+      //   name: 'Base Appchains',
+      //   description: '',
+      //   href: '/appchains',
+      // },
+      {
+        name: 'OnchainKit',
+        description: '',
+        href: '/builders/onchainkit',
+      },
       {
         name: 'AgentKit',
         description: '',
-        href: '/agentkit',
-      },
-      {
-        name: 'Base Appchains',
-        description: '',
-        href: '/appchains',
+        href: '/builders/agentkit',
       },
       {
         name: 'Smart Wallet',
         description: '',
-        href: '/smartwallet',
+        href: '/builders/smart-wallet',
       },
       {
         name: 'MiniKit',
         description: '',
-        href: '/minikit',
+        href: '/builders/minikit',
       },
+      // TODO: Add back after launch
+      // {
+      //   name: 'Verifications',
+      //   description: '',
+      //   href: '/verify',
+      // },
       {
-        name: 'OnchainKit',
-        description: '',
-        href: '/onchainkit',
-      },
-      {
-        name: 'Verifications',
-        description: '',
-        href: '/verify',
-      },
-      {
-        name: 'Status Page',
+        name: 'Status',
         description: '',
         href: 'https://status.base.org',
       },
       {
-        name: 'Bug Bounty',
+        name: 'Bug bounty',
         description: '',
         href: 'https://hackerone.com/base',
       },
       {
-        name: 'Block Explorer',
+        name: 'BaseScan',
         description: '',
         href: 'https://basescan.org',
       },
@@ -107,7 +114,7 @@ const links: TopNavigationLink[] = [
         href: 'https://blog.base.org/',
       },
       {
-        name: 'Builder Stories',
+        name: 'Builder stories',
         description: '',
         href: '/stories',
       },
@@ -137,7 +144,11 @@ const links: TopNavigationLink[] = [
     analyticContext: 'about',
     href: '/about',
     subItems: [
-      { name: 'Vision', description: "Base's mission, vision, and strategy", href: '/about' },
+      {
+        name: 'Vision',
+        description: "Base's mission, vision, and strategy",
+        href: 'https://base.mirror.xyz/gFOLgyrs8jtX4Eqt4Kh6ikWhB3tqrhQoKfddeqZIECs',
+      },
       {
         name: 'Blog',
         description: 'Latest updates from the Base core team',
@@ -152,7 +163,7 @@ const links: TopNavigationLink[] = [
     href: '#socials',
     subItems: [
       { name: 'X', href: 'https://x.com/base' },
-      { name: 'Farcaster', href: 'https://warpcast.com/base' },
+      { name: 'Warpcast', href: 'https://warpcast.com/base' },
       { name: 'Github', href: 'https://github.com/base' },
       { name: 'Discord', href: 'https://discord.com/invite/buildonbase' },
     ],
