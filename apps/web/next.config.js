@@ -122,7 +122,6 @@ const contentSecurityPolicy = {
     'https://eth.merkle.io', // new default viem rpc
     'https://blue-api.morpho.org/graphql', // morpho
     'https://base-sepolia.easscan.org/graphql', // nft
-    'https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com',
   ],
   'frame-src': ['https://p.datadoghq.com'],
   'frame-ancestors': ["'self'", baseXYZDomains],
@@ -140,9 +139,7 @@ const contentSecurityPolicy = {
     `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL}`,
     'https://img.reservoir.tools', // reservoir
     'https://d3r81g40ycuhqg.cloudfront.net/', // OCK Earn component
-    'https://*.google-analytics.com https://*.googletagmanager.com',
   ],
-  'script-src': ['https://*.googletagmanager.com'],
 };
 
 const cspObjectToString = Object.entries(contentSecurityPolicy).reduce((acc, [key, value]) => {
