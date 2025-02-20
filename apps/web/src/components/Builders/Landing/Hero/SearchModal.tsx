@@ -227,7 +227,7 @@ export function SearchModal({
         className={classNames(
           'bg-illoblack',
           'fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
-          'max-h-[460px] w-[555px] overflow-y-auto',
+          'max-h-[460px] w-full overflow-y-auto md:w-[555px]',
           'rounded-xl border border-gray-muted/20  hover:border-gray-muted/20',
         )}
       >

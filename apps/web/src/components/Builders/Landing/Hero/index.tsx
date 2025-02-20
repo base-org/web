@@ -5,8 +5,9 @@ import { GridHero } from 'apps/web/src/components/Builders/Landing/Hero/GridHero
 import classNames from 'classnames';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { SearchModal } from 'apps/web/src/components/Builders/Landing/Hero/SearchModal';
-import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
+import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
+import { TextShimmer } from 'apps/web/src/components/Builders/Shared/TextShimmer';
 
 export function Hero() {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
@@ -31,21 +32,8 @@ export function Hero() {
     setIsSearchModalOpen(true);
   }, []);
 
-  const handleLaunchAgent = useCallback(() => {
-    window.open('https://vocs-migration-mvp-one.vercel.app/use-cases/launch-ai-agents', '_blank');
-  }, []);
-
-  const handleIntegrateCryptoPayments = useCallback(() => {
-    window.open('https://vocs-migration-mvp-one.vercel.app/use-cases/accept-crypto-payments', '_blank');
-  }, []);
-
-  const handleBuildOnchainApp = useCallback(() => {
-    window.open('https://onchain-app-template.vercel.app/', '_blank');
-  }, []);
-
-
   return (
-    <div className="mb-6 flex w-full flex-col items-center justify-center bg-black">
+    <div className="mb-6 flex w-full flex-col items-center justify-center bg-black px-6">
       <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden md:h-[660px]">
         <div
           className={classNames(
@@ -58,10 +46,40 @@ export function Hero() {
           <GridHero columns={50} hasBlue className="md:hidden" />
         </div>
         <Title className="z-10 font-display text-[1.25rem] leading-[1.2em] tracking-tight md:text-[2rem] lg:text-[3rem]">
-          Build anything onchain
+          What do you want to build today?
         </Title>
 
-        <div className="mt-7 flex w-[345px] flex-col items-center md:w-[645px]">
+        <div className="mt-7 flex w-full flex-col items-center gap-4 md:w-[645px]">
+          <div className="z-10 flex w-full flex-col items-start justify-center gap-4 md:flex md:flex-row md:items-center">
+            <ButtonWithLinkAndEventLogging
+              variant={ButtonVariants.SecondaryOutline}
+              iconName="baseOrgDiagonalUpArrow"
+              buttonClassNames="rounded-xl text-sm"
+              href="https://docs.base.org/builderkits/onchainkit/getting-started"
+              eventName="build-app-in-10-minutes"
+            >
+              Build an app in 10 minutes
+            </ButtonWithLinkAndEventLogging>
+            <ButtonWithLinkAndEventLogging
+              variant={ButtonVariants.SecondaryOutline}
+              iconName="baseOrgDiagonalUpArrow"
+              buttonClassNames="rounded-xl text-sm"
+              eventName="launch-ai-agent"
+              href="https://replit.com/t/coinbase-developer-platform/repls/AgentKitjs-Quickstart-020-EVM-CDP-Wallet/view#README.md"
+            >
+              Launch an AI agent
+            </ButtonWithLinkAndEventLogging>
+            <ButtonWithLinkAndEventLogging
+              variant={ButtonVariants.SecondaryOutline}
+              iconName="baseOrgDiagonalUpArrow"
+              buttonClassNames="rounded-xl text-sm"
+              href="https://docs.base.org/builderkits/onchainkit/checkout/checkout"
+              eventName="accept-crypto-payments"
+            >
+              Accept crypto payments
+            </ButtonWithLinkAndEventLogging>
+          </div>
+
           <div className="relative w-full">
             <button
               type="button"
@@ -69,19 +87,19 @@ export function Hero() {
               className={classNames(
                 'whitespace-nowrap text-base', // Button shared base
                 'transition-all', // Button shared transition
-                'border border-gray-muted/65', // ButtonVariant.SecondaryOutline
                 'w-full px-4 py-3 md:px-6',
-                'bg-illoblack hover:bg-illoblack', // TODO: what hover state?
                 'font-medium text-white',
-                'rounded-xl border !border-dark-palette-foregroundMuted/20',
               )}
             >
-              <div className="flex h-9 w-full items-center justify-between">
+              <div className="flex h-9 w-full items-start gap-4 md:items-center md:justify-center">
                 <div className="tracking-normal md:hidden">Quickstart...</div>
-                <div className="hidden tracking-normal md:inline">
-                  Quickstart to use tools, templates, and guides
-                </div>
-                <div className="flex gap-1">
+                <TextShimmer
+                  className="hidden text-sm tracking-normal hover:text-white md:inline"
+                  duration={1}
+                >
+                  Go to tools, templates, or guides with
+                </TextShimmer>
+                <div className="flex gap-1 text-xs">
                   <div className="flex h-8 w-8 flex-col items-center justify-center rounded-sm bg-gray-80">
                     ⌘
                   </div>
@@ -92,32 +110,6 @@ export function Hero() {
               </div>
             </button>
             <SearchModal isOpen={isSearchModalOpen} setIsOpen={setIsSearchModalOpen} />
-          </div>
-          <div className="z-10 mt-3 flex w-full flex-col items-start justify-between gap-3 md:mt-4 md:flex md:flex-row">
-            <Button
-              variant={ButtonVariants.SecondaryOutline}
-              iconName="baseOrgDiagonalUpArrow"
-              className="rounded-xl text-sm"
-              onClick={handleLaunchAgent}
-            >
-              Launch an AI agent
-            </Button>
-            <Button
-              variant={ButtonVariants.SecondaryOutline}
-              iconName="baseOrgDiagonalUpArrow"
-              className="rounded-xl text-sm"
-              onClick={handleIntegrateCryptoPayments}
-            >
-              Integrate crypto payments
-            </Button>
-            <Button
-              variant={ButtonVariants.SecondaryOutline}
-              iconName="baseOrgDiagonalUpArrow"
-              className="rounded-xl text-sm"
-              onClick={handleBuildOnchainApp}
-            >
-              Build an onchain app
-            </Button>
           </div>
         </div>
       </div>
