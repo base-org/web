@@ -48,14 +48,14 @@ export function Hero() {
             variant={ButtonVariants.Secondary}
             iconName="copy"
             onClick={handleCopy}
-            className="flex items-center justify-between px-4 py-3"
+            className="flex items-center justify-between px-4 py-3 font-medium"
             iconSize="16"
           >
             npm create-onchain --mini
           </Button>
           <ButtonWithLinkAndEventLogging
             variant={ButtonVariants.SecondaryOutline}
-            buttonClassNames="flex items-center justify-between px-4 py-3 group"
+            buttonClassNames="flex items-center justify-between px-4 py-3 group font-medium"
             href={GET_STARTED_URL}
             eventName="minikit-get-started"
             target="_blank"

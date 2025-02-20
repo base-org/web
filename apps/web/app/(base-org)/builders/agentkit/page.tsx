@@ -45,7 +45,7 @@ export default function AgentKit() {
                 href={FORK_TEMPLATE_LINK}
                 target="_blank"
                 eventName="agentkit-fork-template"
-                buttonClassNames="flex items-center justify-between px-4 py-3"
+                buttonClassNames="flex items-center justify-between px-4 py-3 font-medium"
               >
                 Fork a template
               </ButtonWithLinkAndEventLogging>
@@ -54,7 +54,7 @@ export default function AgentKit() {
                 target="_blank"
                 variant={ButtonVariants.SecondaryOutline}
                 eventName="agentkit-docs"
-                buttonClassNames="flex items-center justify-between px-4 py-3 group"
+                buttonClassNames="flex items-center justify-between px-4 py-3 group font-medium"
               >
                 <div className="flex items-center gap-4">
                   <span>Documentation</span>

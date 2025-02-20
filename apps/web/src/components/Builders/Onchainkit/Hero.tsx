@@ -46,14 +46,14 @@ export function Hero() {
           variant={ButtonVariants.Secondary}
           iconName="copy"
           onClick={handleCopy}
-          className="flex items-center justify-between px-4 py-3"
+          className="flex items-center justify-between px-4 py-3 font-medium"
           iconSize="16"
         >
           npm create onchain
         </Button>
         <ButtonWithLinkAndEventLogging
           variant={ButtonVariants.SecondaryOutline}
-          buttonClassNames="flex items-center justify-between px-4 py-3 group"
+          buttonClassNames="flex items-center justify-between px-4 py-3 group font-medium"
           href={ONCHAINKIT_DOCS_LINK}
           eventName="onchainkit-documentation-click"
         >

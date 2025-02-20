@@ -24,7 +24,7 @@ export function CtaBanner() {
             variant={ButtonVariants.Secondary}
             iconName="copy"
             onClick={handleCopy}
-            className="flex items-center justify-between px-4 py-3"
+            className="flex items-center justify-between px-4 py-3 font-medium"
             iconSize="16"
           >
             npm create onchain
@@ -33,7 +33,7 @@ export function CtaBanner() {
             href={ONCHAINKIT_DOCS_LINK}
             target="_blank"
             variant={ButtonVariants.SecondaryOutline}
-            buttonClassNames="flex items-center justify-between px-4 py-3 group"
+            buttonClassNames="flex items-center justify-between px-4 py-3 group font-medium"
             eventName="onchainkit-docs"
           >
             <div className="flex items-center gap-4">

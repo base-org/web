@@ -46,7 +46,7 @@ export function Hero() {
           variant={ButtonVariants.Secondary}
           iconName="copy"
           onClick={handleCopy}
-          className="flex items-center justify-between px-4 py-3"
+          className="flex items-center justify-between px-4 py-3 font-medium"
         >
           npx create-agentkit-app
         </Button>
@@ -54,7 +54,7 @@ export function Hero() {
           href={AGENTKIT_DOCS_LINK}
           target="_blank"
           variant={ButtonVariants.SecondaryOutline}
-          buttonClassNames="flex items-center justify-between px-4 py-3 group"
+          buttonClassNames="flex items-center justify-between px-4 py-3 group font-medium"
           eventName="agentkit-docs"
         >
           <div className="flex items-center gap-4">
