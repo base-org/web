@@ -5,6 +5,7 @@ import AppProviders from 'apps/web/app/AppProviders';
 import localFont from 'next/font/local';
 import { Footer } from 'apps/web/src/components/Layout/Footer/Footer';
 import DatadogInit from 'apps/web/app/datadog';
+import Script from 'next/script';
 
 const coinbaseDisplay = localFont({
   src: [
@@ -88,6 +89,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           name="google-site-verification"
           content="lqwNRCxYlFLIcX9EiKAvE4k4ZT8JGpdWgehEIPA7y1Y"
         />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-D1QGEV3B07');
+        `}
+        </Script>
       </head>
       <body className="flex min-h-screen flex-col">
         <AppProviders>
