@@ -5,8 +5,6 @@ import classNames from 'classnames';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Input from 'apps/web/src/components/Input';
 import { createPortal } from 'react-dom';
-import Text from 'apps/web/src/components/base-org/typography/Text';
-import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
 import Link from 'apps/web/src/components/Link';
 
 type SearchCategory = {
@@ -35,7 +33,7 @@ const searchConfig: SearchCategory[] = [
             <Link
               href="https://docs.base.org/builderkits/onchainkit/getting-started"
               color="white"
-              className="text-xs text-white pl-1"
+              className="pl-1 text-xs text-white"
               target="_blank"
             >
               OnchainKit quickstart template.
