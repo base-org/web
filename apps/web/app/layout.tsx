@@ -1,5 +1,7 @@
 import './global.css';
 
+export const dynamic = 'force-dynamic';
+
 import AppProviders from 'apps/web/app/AppProviders';
 
 import localFont from 'next/font/local';
