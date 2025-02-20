@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import Content from 'apps/web/src/components/Ecosystem/Content';
 import Container from 'apps/web/src/components/base-org/Container';
 import Button from 'apps/web/src/components/base-org/Button';
@@ -30,20 +31,20 @@ async function EcosystemHero() {
   return (
     <div className="flex w-full flex-col items-center overflow-hidden bg-black pb-20 pt-20">
       <Container>
-        <div className="flex w-full  flex-col items-center justify-between gap-12 py-20 md:flex-row">
-          <div className="flex w-full w-full flex-col gap-8 md:max-w-lg">
-            <Title level={TitleLevel.Display3}>
-              Base ecosystem apps and integrations overview.
-            </Title>
+        <div className="flex w-full flex-col items-center justify-between gap-12 py-20 md:flex-row">
+          <div className="flex w-full flex-col gap-8 md:max-w-lg">
+            <Title level={TitleLevel.Display3}>Built on Base to bring the world onchain.</Title>
             <a
-              href="https://github.com/base-org/web?tab=readme-ov-file#updating-the-base-ecosystem-page"
+              href="https://github.com/base/web?tab=readme-ov-file#updating-the-base-ecosystem-page"
               target="_blank"
               rel="noreferrer noopener"
+              className="max-w-fit"
+              tabIndex={-1} // Prevents focus on anchor (want to focus on button)
             >
               <Button variant={ButtonVariants.Secondary}>Submit your app</Button>
             </a>
           </div>
-          <div className="flex flex-col ">
+          <div className="flex flex-col">
             <div className="flex flex-shrink-0 justify-center gap-4">
               {topKeys.map((key, i) => (
                 <div key={key} className="w-[80px] md:w-[100px]">
@@ -78,7 +79,9 @@ export default async function Ecosystem() {
       <EcosystemHero />
 
       <Container>
-        <Content />
+        <Suspense fallback={<div />}>
+          <Content />
+        </Suspense>
       </Container>
     </main>
   );

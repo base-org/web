@@ -299,11 +299,11 @@ function _update(address to, uint256 tokenId, address auth) internal override(ER
 Now that you have a list of NFTs owned by an address, you can add a function to retrieve all of them. While you're at it, add the json metadata for each token. Doing so lets you get the complete list of NFTs **and** their metadata for just one RPC call!
 
 ```solidity
-function getNFftsOwned(address owner) public view returns (TokenAndMetatdata[] memory) {
-  TokenAndMetatdata[] memory tokens = new TokenAndMetatdata[](tokensOwned[owner].length());
+function getNftsOwned(address owner) public view returns (TokenAndMetadata[] memory) {
+  TokenAndMetadata[] memory tokens = new TokenAndMetadata[](tokensOwned[owner].length());
   for (uint i = 0; i < tokensOwned[owner].length(); i++) {
     uint tokenId = tokensOwned[owner].at(i);
-    tokens[i] = TokenAndMetatdata(tokenId, tokenURI(tokenId));
+    tokens[i] = TokenAndMetadata(tokenId, tokenURI(tokenId));
   }
   return tokens;
 }
@@ -354,16 +354,16 @@ contract RandomColorNFT is ERC721 {
     tokenIdToColor[counter] = generateRandomColor();
   }
 
-  struct TokenAndMetatdata {
+  struct TokenAndMetadata {
     uint tokenId;
     string metadata;
   }
 
-  function getNftsOwned(address owner) public view returns (TokenAndMetatdata[] memory) {
-    TokenAndMetatdata[] memory tokens = new TokenAndMetatdata[](tokensOwned[owner].length());
+  function getNftsOwned(address owner) public view returns (TokenAndMetadata[] memory) {
+    TokenAndMetadata[] memory tokens = new TokenAndMetadata[](tokensOwned[owner].length());
     for (uint i = 0; i < tokensOwned[owner].length(); i++) {
       uint tokenId = tokensOwned[owner].at(i);
-      tokens[i] = TokenAndMetatdata(tokenId, tokenURI(tokenId));
+      tokens[i] = TokenAndMetadata(tokenId, tokenURI(tokenId));
     }
     return tokens;
   }
@@ -763,7 +763,7 @@ contract RandomColorNFT is ERC721 {
           "type": "address"
         }
       ],
-      "name": "getNFftsOwned",
+      "name": "getNftsOwned",
       "outputs": [
         {
           "components": [
@@ -778,7 +778,7 @@ contract RandomColorNFT is ERC721 {
               "type": "string"
             }
           ],
-          "internalType": "struct RandomColorNFT.TokenAndMetatdata[]",
+          "internalType": "struct RandomColorNFT.TokenAndMetadata[]",
           "name": "",
           "type": "tuple[]"
         }
@@ -1055,11 +1055,11 @@ contract RandomColorNFT is ERC721 {
 
 ---
 
-[Base Camp]: https://base.org.camp
-[ERC-721 Tokens]: https://docs.base.org/base-camp/docs/erc-721-token/erc-721-standard-video
+[Base Camp]: https://docs.base.org/base-learn/docs/welcome/
+[ERC-721 Tokens]: https://docs.base.org/base-learn/docs/erc-721-token/erc-721-standard-video/
 [IPFS]: https://ipfs.tech/
 [Base64]: https://en.wikipedia.org/wiki/Base64
-[Hardhat and Hardhat Deploy]: https://docs.base.org/base-camp/docs/hardhat-deploy/hardhat-deploy-sbs
+[Hardhat and Hardhat Deploy]: https://docs.base.org/base-learn/docs/hardhat-deploy/hardhat-deploy-sbs
 [testnet version of Opensea]: https://testnets.opensea.io/
 [sample project]: https://github.com/base-org/land-sea-and-sky
 [Sample Art]: https://github.com/base-org/land-sea-and-sky/tree/master/Final_SVGs
