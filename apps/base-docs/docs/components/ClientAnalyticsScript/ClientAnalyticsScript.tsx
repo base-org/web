@@ -68,17 +68,6 @@ export default function ClientAnalyticsScript() {
   }
 
   return (
-    <>
-      <script src="https://static-assets.coinbase.com/js/cca/v0.0.1.js" onLoad={onLoadHandler} />
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKCM02YFWN" />
-      <script>
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-TKCM02YFWN');
-        `}
-      </script>
-    </>
+    <script src="https://static-assets.coinbase.com/js/cca/v0.0.1.js" onLoad={onLoadHandler} />
   );
 }

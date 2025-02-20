@@ -137,6 +137,25 @@ export default defineConfig({
   ...searchConfig,
   ...twoslashConfig,
   ...socialConfig,
+  async head({ path }) {
+    const analytics = (
+      <>
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-TKCM02YFWN" async defer />
+        <script
+          id="gtag-init"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-TKCM02YFWN');
+            `,
+          }}
+        />
+      </>
+    );
+    return <>{analytics}</>;
+  },
   vite: {
     resolve: {
       extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.mdx'],
