@@ -309,7 +309,7 @@ function DesktopDemo({
           </div>
         )}
 
-        <div className="grid h-[600px] grid-cols-1 lg:grid-cols-2">
+        <div className="grid h-auto min-h-[600px] grid-cols-1 lg:grid-cols-2">
           <ComponentDemo mode={mode} demoComponent={demoComponent} />
           <div className="h-[300px] py-6 pl-6 pr-1 lg:h-[500px]">
             <div className={`${mode} relative h-full`}>
