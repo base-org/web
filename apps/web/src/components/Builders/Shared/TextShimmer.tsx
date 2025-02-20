@@ -3,13 +3,13 @@ import React, { useMemo, type JSX } from 'react';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
 
-interface TextShimmerProps {
+type TextShimmerProps = {
   children: string;
   as?: React.ElementType;
   className?: string;
   duration?: number;
   spread?: number;
-}
+};
 
 export function TextShimmer({
   children,
