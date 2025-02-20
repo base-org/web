@@ -1,9 +1,20 @@
 ---
 content:
+  layout: landing
+  sidebar: true
   width: 100%
   horizontalPadding: 40px
   verticalPadding: 0px
 ---
+
+<style>
+  {`
+  .vocs_DocsLayout_gutterRight,
+  .vocs_DocsLayout_gutterRight_withSidebar {
+    display: none !important;
+  }
+`}
+</style>
 
 import { BrowseCard } from '@/components/BrowseCard';
 import { onchainKitSvg } from '@/components/svg/onchainKitSvg';
@@ -94,7 +105,7 @@ import { paymasterSvg } from '@/components/svg/paymasterSvg';
             title="Smart Wallet"
             description="A passkey-based universal account to connect with the onchain world."
             icon={smartWalletSvg}
-            href="/identity/smart-wallet/installation/install-web"
+            href="/identity/smart-wallet/introduction/install-web"
           />
           <BrowseCard
             title="AgentKit"
@@ -104,7 +115,7 @@ import { paymasterSvg } from '@/components/svg/paymasterSvg';
           />
           <BrowseCard
             title="Paymaster"
-            description="A passkey-based universal account to connect with the onchain world."
+            description="Build gasless apps with bundled infrastructure. Start with free credits."
             icon={paymasterSvg}
             href="https://docs.cdp.coinbase.com/paymaster/docs/welcome"
           />
