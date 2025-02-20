@@ -38,7 +38,7 @@ function Action({ title }: ActionItem) {
   return (
     <figure
       className={classNames(
-        'relative mx-auto min-h-fit w-full cursor-pointer overflow-hidden rounded-xl bg-dark-palette-backgroundAlternate px-6 py-5',
+        'relative mx-auto min-h-fit w-full overflow-hidden rounded-xl bg-dark-palette-backgroundAlternate px-6 py-5',
       )}
     >
       <div className="flex flex-row items-center gap-3">
@@ -70,7 +70,12 @@ export function OnchainActions({ className }: { className?: string }) {
       <div>
         <Title level={TitleLevel.Title1}>All onchain actions at your agent&apos;s fingertips</Title>
       </div>
-      <div className={classNames('bg-background relative flex w-full flex-col overflow-hidden', className)}>
+      <div
+        className={classNames(
+          'bg-background relative flex w-full flex-col overflow-hidden',
+          className,
+        )}
+      >
         <AnimatedList className="gap-3" isInView={isInView} delay={300}>
           {ACTIONS.map((item) => (
             <Action {...item} key={item.title} />
