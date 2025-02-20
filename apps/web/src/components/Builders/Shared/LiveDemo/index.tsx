@@ -41,6 +41,7 @@ import { CodeSnippet } from 'apps/web/src/components/Builders/Shared/CodeSnippet
 import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
 import Text from 'apps/web/src/components/base-org/typography/Text';
 import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
+import Link from 'apps/web/src/components/Link';
 
 type LiveDemoProps = {
   components: (typeof ONCHAINKIT_DEMO_TABS)[number][];
@@ -244,6 +245,18 @@ function DesktopDemo({
           )}
 
           <div className="ml-auto flex items-center space-x-2">
+            <Link
+              href="https://docs.base.org/builderkits/onchainkit/getting-started"
+              target="_blank"
+              className={classNames(
+                'rounded-lg border px-2 py-1 transition-colors',
+                mode === 'dark'
+                  ? 'border-dark-palette-line/20 hover:bg-white/10'
+                  : 'border-dark-palette-line/20 hover:bg-white/10',
+              )}
+            >
+              Docs
+            </Link>
             <button
               type="button"
               onClick={handleCopy}
@@ -460,6 +473,18 @@ function MobileDemo({
             </div>
           </div>
           <div className="flex items-center space-x-2">
+            <Link
+              href="https://docs.base.org/builderkits/onchainkit/getting-started"
+              target="_blank"
+              className={classNames(
+                'rounded-lg border px-2 py-1 transition-colors',
+                mode === 'dark'
+                  ? 'border-dark-palette-line/20 hover:bg-white/10'
+                  : 'border-dark-palette-line/20 hover:bg-white/10',
+              )}
+            >
+              Docs
+            </Link>
             <button
               type="button"
               aria-label="Toggle component menu"
