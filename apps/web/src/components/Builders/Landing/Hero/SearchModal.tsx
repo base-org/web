@@ -17,6 +17,7 @@ type SubCategory = {
   icon: string;
   iconRotation?: string;
   onClick?: () => void;
+  description?: string;
 };
 
 const searchConfig: SearchCategory[] = [
@@ -25,6 +26,8 @@ const searchConfig: SearchCategory[] = [
     subCategories: [
       {
         label: 'npm create onchain',
+        description:
+          'Run this command in your terminal to start building with OnchainKit quickstart template.',
         href: '',
         icon: 'copy',
         onClick: () => {
@@ -59,20 +62,38 @@ const searchConfig: SearchCategory[] = [
         href: 'https://replit.com/@KevinLeffew1/buy-me-a-coffee?v=1#README.md',
         icon: 'diagonalUpArrow',
       },
+      {
+        label: 'Build a social app',
+        href: 'https://github.com/fakepixels/ock-identity',
+        icon: 'diagonalUpArrow',
+      },
     ],
   },
   {
     category: 'Tools',
     subCategories: [
       {
+        label: 'OnchainKit',
+        href: '/developers/onchainkit',
+        icon: 'backArrow',
+        iconRotation: 'rotate-180',
+      },
+      {
         label: 'AgentKit',
         href: '/developers/agentkit',
         icon: 'backArrow',
         iconRotation: 'rotate-180',
       },
+      // TODO: Add back after launch
+      // {
+      //   label: 'Base Appchains',
+      //   href: '/developers/appchains',
+      //   icon: 'backArrow',
+      //   iconRotation: 'rotate-180',
+      // },
       {
-        label: 'Base Appchains',
-        href: '/developers/appchains',
+        label: 'Smart Wallet',
+        href: '/developers/smartwallet',
         icon: 'backArrow',
         iconRotation: 'rotate-180',
       },
@@ -82,31 +103,21 @@ const searchConfig: SearchCategory[] = [
         icon: 'backArrow',
         iconRotation: 'rotate-180',
       },
-      {
-        label: 'OnchainKit',
-        href: '/developers/onchainkit',
-        icon: 'backArrow',
-        iconRotation: 'rotate-180',
-      },
-      {
-        label: 'Smart Wallet',
-        href: '/developers/smartwallet',
-        icon: 'backArrow',
-        iconRotation: 'rotate-180',
-      },
-      {
-        label: 'Verifications',
-        href: '/developers/verifications',
-        icon: 'backArrow',
-        iconRotation: 'rotate-180',
-      },
+
+      // TODO: Add back after launch
+      // {
+      //   label: 'Verifications',
+      //   href: '/developers/verifications',
+      //   icon: 'backArrow',
+      //   iconRotation: 'rotate-180',
+      // },
     ],
   },
   {
     category: 'Guides',
     subCategories: [
       {
-        label: 'Onboard any users',
+        label: 'Onboard everyone',
         href: '/developers/guides/onboarding',
         icon: 'diagonalUpArrow',
       },
@@ -121,12 +132,12 @@ const searchConfig: SearchCategory[] = [
         icon: 'diagonalUpArrow',
       },
       {
-        label: 'Decentralized social features',
+        label: "Kickstart your app's growth",
         href: '/developers/guides/social',
         icon: 'diagonalUpArrow',
       },
       {
-        label: 'Defi your app',
+        label: 'Unlock the power of DeFi',
         href: '/developers/guides/defi',
         icon: 'diagonalUpArrow',
       },
@@ -251,35 +262,41 @@ export function SearchModal({
                     {searchCategory.category}
                   </div>
                   {searchCategory.subCategories.map((subCategory) => (
-                    <button
-                      key={subCategory.label}
-                      type="button"
-                      className={classNames(
-                        'group',
-                        'w-full rounded-xl px-4 py-2',
-                        {
-                          'font-mono': searchCategory.category === 'Quickstart',
-                        },
-                        'text-white',
-                        'flex items-center justify-between',
-                        'hover:bg-dark-palette-backgroundAlternate active:bg-dark-palette-secondary',
-                      )}
-                      onClick={
-                        subCategory.href
-                          ? () => window.open(subCategory.href)
-                          : subCategory?.onClick
-                      }
-                    >
-                      <span className="tracking-normal">{subCategory.label}</span>
-                      <div
+                    <div key={subCategory.label} className="flex flex-col">
+                      <button
+                        type="button"
                         className={classNames(
-                          'opacity-0 transition-opacity group-hover:opacity-100',
-                          subCategory?.iconRotation,
+                          'group',
+                          'w-full rounded-xl px-4 py-2',
+                          {
+                            'font-mono': searchCategory.category === 'Quickstart',
+                          },
+                          'text-white',
+                          'flex items-center justify-between',
+                          'hover:bg-dark-palette-backgroundAlternate active:bg-dark-palette-secondary',
                         )}
+                        onClick={
+                          subCategory.href
+                            ? () => window.open(subCategory.href)
+                            : subCategory?.onClick
+                        }
                       >
-                        <Icon name={subCategory.icon} width="16" height="16" />
-                      </div>
-                    </button>
+                        <span className="tracking-normal">{subCategory.label}</span>
+                        <div
+                          className={classNames(
+                            'opacity-0 transition-opacity group-hover:opacity-100',
+                            subCategory?.iconRotation,
+                          )}
+                        >
+                          <Icon name={subCategory.icon} width="16" height="16" />
+                        </div>
+                      </button>
+                      {subCategory.description && (
+                        <div className="px-4 pb-2 text-xs text-dark-palette-foregroundMuted">
+                          {subCategory.description}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
               ))}
