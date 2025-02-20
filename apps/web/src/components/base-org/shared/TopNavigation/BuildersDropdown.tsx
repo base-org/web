@@ -179,7 +179,12 @@ function ToolMiniCard({ title, description, icon, href, onLinkClick }: ToolMiniC
 
 function FooterCard({ label, icon, href, onLinkClick }: FooterCardProps) {
   return (
-    <Link href={href} onClick={onLinkClick} className="flex items-center gap-2 px-4">
+    <Link
+      href={href}
+      target={href.startsWith('https://') ? '_blank' : undefined}
+      onClick={onLinkClick}
+      className="flex items-center gap-2 px-4"
+    >
       <Image src={icon} alt={label} width={16} height={16} />
       <Title level={TitleLevel.Headline} className="text-sm font-normal leading-none">
         {label}
