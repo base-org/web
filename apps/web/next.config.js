@@ -76,6 +76,7 @@ const contentSecurityPolicy = {
     walletconnectDomains,
     'https://fonts.googleapis.com', // OCK styles loads google fonts via CSS
     'https://fonts.gstatic.com/', // OCK styles loads google fonts via CSS
+    'https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com',
   ],
   'worker-src': ["'self'", 'blob:'],
   'connect-src': [
@@ -122,6 +123,7 @@ const contentSecurityPolicy = {
     'https://eth.merkle.io', // new default viem rpc
     'https://blue-api.morpho.org/graphql', // morpho
     'https://base-sepolia.easscan.org/graphql', // nft
+    'https://*.google-analytics.com',
   ],
   'frame-src': ['https://p.datadoghq.com'],
   'frame-ancestors': ["'self'", baseXYZDomains],
