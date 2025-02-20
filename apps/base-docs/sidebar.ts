@@ -47,20 +47,6 @@ export const sidebar: Sidebar = [
             ],
           },
           {
-            text: 'Contribution',
-            collapsed: true,
-            items: [
-              {
-                text: 'How to Contribute',
-                link: '/builderkits/onchainkit/guides/contribution',
-              },
-              {
-                text: 'Report a Bug',
-                link: '/builderkits/onchainkit/guides/reporting-bug',
-              },
-            ],
-          },
-          {
             text: 'Guides',
             items: [
               {
@@ -519,6 +505,20 @@ export const sidebar: Sidebar = [
               {
                 text: 'Wallet',
                 link: '/builderkits/onchainkit/wallet/types',
+              },
+            ],
+          },
+          {
+            text: 'Contribution',
+            collapsed: true,
+            items: [
+              {
+                text: 'How to Contribute',
+                link: '/builderkits/onchainkit/guides/contribution',
+              },
+              {
+                text: 'Report a Bug',
+                link: '/builderkits/onchainkit/guides/reporting-bug',
               },
             ],
           },
@@ -1521,7 +1521,7 @@ export const sidebar: Sidebar = [
       },
       {
         text: 'Get help↗',
-        link: 'https://docs.base.org/base-learn/docs/help-on-discord',
+        link: 'https://discord.com/invite/buildonbase',
       },
     ],
   },
