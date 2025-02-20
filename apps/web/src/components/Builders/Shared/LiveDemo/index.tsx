@@ -45,9 +45,10 @@ import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/ty
 type LiveDemoProps = {
   components: (typeof ONCHAINKIT_DEMO_TABS)[number][];
   title?: string;
+  hideDescription?: boolean;
 };
 
-export function LiveDemo({ components, title }: LiveDemoProps) {
+export function LiveDemo({ components, title, hideDescription = false }: LiveDemoProps) {
   const [mode, setMode] = useState<'light' | 'dark'>('dark');
   const [isMounted, setIsMounted] = useState(false);
   const [content, setContent] = useState<'code' | 'preview'>('code');
@@ -146,6 +147,7 @@ export function LiveDemo({ components, title }: LiveDemoProps) {
         toggleMode={toggleMode}
         copied={copied}
         title={title}
+        hideDescription={hideDescription}
       />
       <MobileDemo
         components={components}
@@ -176,6 +178,7 @@ function DesktopDemo({
   toggleMode,
   copied,
   title,
+  hideDescription,
 }: {
   components: (typeof ONCHAINKIT_DEMO_TABS)[number][];
   mode: 'dark' | 'light';
@@ -187,6 +190,7 @@ function DesktopDemo({
   toggleMode: () => void;
   copied: boolean;
   title?: string;
+  hideDescription?: boolean;
 }) {
   const createTabSelectionHandler = useCallback(
     (tab: Tab) => () => {
@@ -277,18 +281,20 @@ function DesktopDemo({
           </div>
         </div>
 
-        <div
-          className={classNames(
-            'flex items-center justify-between border-b py-2 pl-6 pr-2 transition-colors',
-            mode === 'dark'
-              ? 'border-dark-palette-line/20 text-white'
-              : 'border-dark-palette-line/20 text-dark-palette-backgroundAlternate',
-          )}
-        >
-          <Text variant={TextVariant.Body} className="font-normal">
-            {COMPONENT_DESCRIPTIONS[activeTab]}
-          </Text>
-        </div>
+        {!hideDescription && (
+          <div
+            className={classNames(
+              'flex items-center justify-between border-b py-2 pl-6 pr-2 transition-colors',
+              mode === 'dark'
+                ? 'border-dark-palette-line/20 text-white'
+                : 'border-dark-palette-line/20 text-dark-palette-backgroundAlternate',
+            )}
+          >
+            <Text variant={TextVariant.Body} className="font-normal">
+              {COMPONENT_DESCRIPTIONS[activeTab]}
+            </Text>
+          </div>
+        )}
 
         <div className="grid h-[600px] grid-cols-1 lg:grid-cols-2">
           <ComponentDemo mode={mode} demoComponent={demoComponent} />

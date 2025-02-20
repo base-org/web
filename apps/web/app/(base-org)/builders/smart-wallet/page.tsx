@@ -92,6 +92,7 @@ export default async function BaseWallet() {
         <LiveDemo
           components={['Wallet']}
           title="Unlock onboarding superpowers with a few lines of code"
+          hideDescription
         />
 
         <CtaBanner
