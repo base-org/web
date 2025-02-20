@@ -9,7 +9,7 @@ import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/Bu
 import { useCallback, useState } from 'react';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 
-const ONCHAINKIT_DOCS_LINK = 'docs.base.org/builderkits/onchainkit/getting-started';
+const ONCHAINKIT_DOCS_LINK = 'https://docs.base.org/builderkits/onchainkit/getting-started';
 
 export function Hero() {
   const [hasCopied, setHasCopied] = useState(false);
