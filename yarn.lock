@@ -521,6 +521,7 @@ __metadata:
     "@heroicons/react": ^2.1.3
     "@lottiefiles/dotlottie-react": ^0.8.10
     "@monogrid/gainmap-js": ^3.0.6
+    "@next/third-parties": ^15.1.7
     "@radix-ui/react-accordion": ^1.2.0
     "@radix-ui/react-collapsible": ^1.1.0
     "@radix-ui/react-popover": ^1.1.1
@@ -5682,6 +5683,18 @@ __metadata:
   version: 15.1.7
   resolution: "@next/swc-win32-x64-msvc@npm:15.1.7"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@next/third-parties@npm:^15.1.7":
+  version: 15.1.7
+  resolution: "@next/third-parties@npm:15.1.7"
+  dependencies:
+    third-party-capital: 1.0.20
+  peerDependencies:
+    next: ^13.0.0 || ^14.0.0 || ^15.0.0
+    react: ^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0
+  checksum: de7f6d3ad0665e19aa218a2b11dd1c4c94c7fc5901f21801cbd50e15fe9d5573097cc585ea2a084fbef9afd9e5c2af9bdc9db801469c4e6e8b2565d77294a572
   languageName: node
   linkType: hard
 
@@ -25862,6 +25875,13 @@ __metadata:
   dependencies:
     any-promise: ^1.0.0
   checksum: 84e1b804bfec49f3531215f17b4a6e50fd4397b5f7c1bccc427b9c656e1ecfb13ea79d899930184f78bc2f57285c54d9a50a590c8868f4f0cef5c1d9f898b05e
+  languageName: node
+  linkType: hard
+
+"third-party-capital@npm:1.0.20":
+  version: 1.0.20
+  resolution: "third-party-capital@npm:1.0.20"
+  checksum: ef5eae00bdb82b538b9f628a011fc294cd6f4bafdbb46d88f3d1a72e8c3b9e2cc2a547fdb62bc16bdd847e9da3dac2df676b154c64914f6c90ea15aac6ce0a6a
   languageName: node
   linkType: hard
 

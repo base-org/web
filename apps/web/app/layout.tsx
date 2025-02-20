@@ -5,6 +5,7 @@ import AppProviders from 'apps/web/app/AppProviders';
 import localFont from 'next/font/local';
 import { Footer } from 'apps/web/src/components/Layout/Footer/Footer';
 import DatadogInit from 'apps/web/app/datadog';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const coinbaseDisplay = localFont({
   src: [
@@ -96,6 +97,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Footer />
         </AppProviders>
       </body>
+      <GoogleAnalytics gaId="G-D1QGEV3B07" />
     </html>
   );
 }
