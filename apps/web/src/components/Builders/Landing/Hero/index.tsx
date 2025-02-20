@@ -57,6 +57,7 @@ export function Hero() {
               buttonClassNames="rounded-xl text-sm"
               href="https://docs.base.org/builderkits/onchainkit/getting-started"
               eventName="build-app-in-10-minutes"
+              target="_blank"
             >
               Build an app in 10 minutes
             </ButtonWithLinkAndEventLogging>
@@ -66,6 +67,7 @@ export function Hero() {
               buttonClassNames="rounded-xl text-sm"
               eventName="launch-ai-agent"
               href="https://replit.com/t/coinbase-developer-platform/repls/AgentKitjs-Quickstart-020-EVM-CDP-Wallet/view#README.md"
+              target="_blank"
             >
               Launch an AI agent
             </ButtonWithLinkAndEventLogging>
@@ -75,6 +77,7 @@ export function Hero() {
               buttonClassNames="rounded-xl text-sm"
               href="https://docs.base.org/builderkits/onchainkit/checkout/checkout"
               eventName="accept-crypto-payments"
+              target="_blank"
             >
               Accept crypto payments
             </ButtonWithLinkAndEventLogging>
