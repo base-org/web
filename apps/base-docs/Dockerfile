@@ -13,6 +13,5 @@ ENV NODE_ENV=production
 RUN yarn workspace @app/base-docs build
 RUN yarn workspaces focus --all --production
 
-RUN yarn global add serve
 EXPOSE 3000
-CMD ["serve", "-s", "apps/base-docs/docs/dist", "-p", "3000"]
+CMD ["yarn", "dlx", "serve", "-s", "apps/base-docs/docs/dist", "-p", "3000"]
