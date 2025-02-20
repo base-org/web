@@ -83,7 +83,7 @@ export function Hero() {
             </ButtonWithLinkAndEventLogging>
           </div>
 
-          <div className="relative w-full">
+          <div className="relative w-full max-sm:hidden">
             <button
               type="button"
               onClick={handleSearchClick}

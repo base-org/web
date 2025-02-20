@@ -70,7 +70,7 @@ export function InfoCards() {
             icon={card.icon}
             title={card.title}
             description={card.description}
-            iconClassName="text-[#C9A4FA]"
+            iconClassName="text-[#818CF8]"
           />
         );
       })}

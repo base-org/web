@@ -22,7 +22,7 @@ export function Hero() {
 
   return (
     <div className="flex flex-col gap-2 pt-20 sm:items-center">
-      <div className="flex items-center gap-2 pb-6 text-[#C9A4FA]">
+      <div className="flex items-center gap-2 pb-6 text-[#818CF8]">
         <Image
           src={onchainkit as StaticImageData}
           alt="onchainkit"
@@ -47,7 +47,7 @@ export function Hero() {
       <div className="flex gap-4 pt-5 max-sm:max-w-[240px] max-sm:flex-col">
         <button
           type="button"
-          className="inline-flex items-center gap-2.5 rounded-lg bg-white px-4 py-3 font-medium text-dark-palette-primaryForeground transition-colors hover:bg-white/90"
+          className="inline-flex items-center gap-2.5 rounded-lg bg-white px-4 py-3 font-medium text-dark-palette-primaryForeground transition-colors hover:bg-white/90 max-sm:mr-auto"
           onClick={handleCopy}
         >
           npm create onchain

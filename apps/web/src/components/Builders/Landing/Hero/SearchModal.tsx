@@ -5,6 +5,9 @@ import classNames from 'classnames';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Input from 'apps/web/src/components/Input';
 import { createPortal } from 'react-dom';
+import Text from 'apps/web/src/components/base-org/typography/Text';
+import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
+import Link from 'apps/web/src/components/Link';
 
 type SearchCategory = {
   category: string;
@@ -17,7 +20,7 @@ type SubCategory = {
   icon: string;
   iconRotation?: string;
   onClick?: () => void;
-  description?: string;
+  description?: string | React.ReactNode;
 };
 
 const searchConfig: SearchCategory[] = [
@@ -26,8 +29,19 @@ const searchConfig: SearchCategory[] = [
     subCategories: [
       {
         label: 'npm create onchain',
-        description:
-          'Run this command in your terminal to start building with OnchainKit quickstart template.',
+        description: (
+          <div className="px-4 pb-2 text-xs text-dark-palette-foregroundMuted ">
+            Run this command in your terminal to start building with
+            <Link
+              href="https://docs.base.org/builderkits/onchainkit/getting-started"
+              color="white"
+              className="text-xs text-white pl-1"
+              target="_blank"
+            >
+              OnchainKit quickstart template.
+            </Link>
+          </div>
+        ),
         href: '',
         icon: 'copy',
         onClick: () => {
@@ -251,7 +265,7 @@ export function SearchModal({
             'bg-illoblack',
             'border-b border-gray-muted/20 hover:border-gray-muted/20 focus:outline-none',
           )}
-          placeholder="Quickstart to use tools, templates, and guides"
+          placeholder="Find tools, templates, or guides"
         />
         {activeSearchConfig.length > 0 && (
           <div className="flex w-full flex-col gap-4 pt-4">
@@ -291,11 +305,7 @@ export function SearchModal({
                           <Icon name={subCategory.icon} width="16" height="16" />
                         </div>
                       </button>
-                      {subCategory.description && (
-                        <div className="px-4 pb-2 text-xs text-dark-palette-foregroundMuted">
-                          {subCategory.description}
-                        </div>
-                      )}
+                      {subCategory.description}
                     </div>
                   ))}
                 </div>

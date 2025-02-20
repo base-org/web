@@ -51,7 +51,7 @@ export function Templates() {
               <Title level={TitleLevel.Title3} className="z-10 font-bold">
                 {template.title}
               </Title>
-              <div className="z-10 flex gap-2 text-[#C9A4FA]">
+              <div className="z-10 flex gap-2 text-[#818CF8]">
                 <Title level={TitleLevel.Headline}>Fork the template</Title>
                 <Icon name="fork" color="currentColor" />
               </div>

@@ -1,6 +1,6 @@
 import { LiveDemo as LiveDemoComponent } from 'apps/web/src/components/Builders/Shared/LiveDemo';
 
-const components = ['Wallet', 'Buy', 'Pay', 'Swap', 'Earn'];
+const components = ['Wallet', 'Buy', 'Fund', 'Earn', 'Mint', 'Transact'];
 
 export function LiveDemo() {
   return (
