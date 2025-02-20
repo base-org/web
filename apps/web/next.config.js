@@ -122,6 +122,7 @@ const contentSecurityPolicy = {
     'https://eth.merkle.io', // new default viem rpc
     'https://blue-api.morpho.org/graphql', // morpho
     'https://base-sepolia.easscan.org/graphql', // nft
+    'https://www.googletagmanager.com/gtag/js?id=G-D1QGEV3B07',
   ],
   'frame-src': ['https://p.datadoghq.com'],
   'frame-ancestors': ["'self'", baseXYZDomains],
