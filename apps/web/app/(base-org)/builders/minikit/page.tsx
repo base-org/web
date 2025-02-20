@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Container from 'apps/web/src/components/base-org/Container';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
@@ -7,6 +8,15 @@ import { CtaBanner } from 'apps/web/src/components/Builders/Shared/CtaBanner';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { Hero } from 'apps/web/src/components/Builders/MiniKit/Hero';
 const GET_STARTED_URL = 'https://replit.com/@tina-he/ock-frames-template?v=1#README.md';
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://base.org'),
+  title: `Base | MiniKit`,
+  openGraph: {
+    title: `Base | MiniKit`,
+    url: `/builders/minikit`,
+  },
+};
 
 export default function AgentKit() {
   return (

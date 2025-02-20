@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
@@ -15,6 +16,15 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { LiveDemo } from 'apps/web/src/components/Builders/Shared/LiveDemo';
 import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
 import Link from 'apps/web/src/components/Link';
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://base.org'),
+  title: `Base | Smart Wallet`,
+  openGraph: {
+    title: `Base | Smart Wallet`,
+    url: `/builders/smart-wallet`,
+  },
+};
 
 export default async function BaseWallet() {
   return (

@@ -1,4 +1,4 @@
-// import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Container from 'apps/web/src/components/base-org/Container';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
@@ -15,14 +15,14 @@ import { CtaBanner } from 'apps/web/src/components/Builders/Shared/CtaBanner';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { Hero } from 'apps/web/src/components/Builders/AgentKit/Hero';
 
-// export const metadata: Metadata = {
-//   metadataBase: new URL('https://base.org'),
-//   title: `Base | AgentKit`,
-//   openGraph: {
-//     title: `Base | AgentKit`,
-//     url: `/builders/agentkit`,
-//   },
-// };
+export const metadata: Metadata = {
+  metadataBase: new URL('https://base.org'),
+  title: `Base | AgentKit`,
+  openGraph: {
+    title: `Base | AgentKit`,
+    url: `/builders/agentkit`,
+  },
+};
 
 export default function AgentKit() {
   return (
