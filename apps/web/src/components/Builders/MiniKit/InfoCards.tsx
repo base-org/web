@@ -4,6 +4,8 @@ import trading from 'apps/web/src/components/Builders/MiniKit/trading.svg';
 import participate from 'apps/web/src/components/Builders/MiniKit/participate.svg';
 import perpetualSwap from 'apps/web/src/components/Builders/MiniKit/perpetualSwap.svg';
 import Image, { StaticImageData } from 'next/image';
+import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
+import Text from 'apps/web/src/components/base-org/typography/Text';
 
 const INFO_CARDS: CardProps[] = [
   {
@@ -59,6 +61,14 @@ const INFO_CARDS: CardProps[] = [
       />
     ),
     title: 'Diversify your revenue',
+    tag: (
+      <Text
+        variant={TextVariant.Label2}
+        className="rounded-md bg-dark-palette-backgroundAlternate px-2 py-1 text-dark-palette-foregroundMuted"
+      >
+        COMING SOON
+      </Text>
+    ),
     description:
       'Unlock new revenue streams with built-in monetization features — including subscription models and referral incentives — so your mini app can generate income in various ways.',
   },
@@ -75,6 +85,7 @@ export function InfoCards() {
             title={card.title}
             description={card.description}
             iconClassName="text-[#D058C1]"
+            tag={card.tag}
           />
         );
       })}

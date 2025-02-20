@@ -8,6 +8,7 @@ export type CardProps = {
   description: string | ReactNode;
   iconClassName?: string;
   className?: string;
+  tag?: ReactNode;
 };
 export function Card({
   icon,
@@ -15,13 +16,17 @@ export function Card({
   description,
   className,
   iconClassName = 'text-white',
+  tag,
 }: CardProps) {
   return (
     <div className={`flex flex-col ${className}`}>
       {icon && <div className={iconClassName}>{icon}</div>}
-      <Title level={TitleLevel.Title3} className="pt-4 font-bold">
-        {title}
-      </Title>
+      <div className="flex items-center gap-4 pt-4">
+        <Title level={TitleLevel.Title3} className="font-bold">
+          {title}
+        </Title>
+        {tag}
+      </div>
       {typeof description === 'string' ? (
         <Title className="pt-2 text-dark-palette-foregroundMuted" level={TitleLevel.Title4}>
           {description}
