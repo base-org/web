@@ -1,6 +1,5 @@
 'use client';
 
-import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
@@ -10,11 +9,15 @@ import { Demo } from 'apps/web/src/components/Builders/AgentKit/Demo';
 import { AGENTKIT_DOCS_LINK } from 'apps/web/src/components/Builders/AgentKit/links';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image, { StaticImageData } from 'next/image';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 export function Hero() {
+  const [hasCopied, setHasCopied] = useState(false);
+
   const handleCopy = useCallback(() => {
     void navigator.clipboard.writeText('npx create-agentkit-app');
+    setHasCopied(true);
+    setTimeout(() => setHasCopied(false), 2000); // Reset after 2 seconds
   }, []);
   return (
     <div className="flex flex-col gap-2 pt-20 sm:items-center">
@@ -42,14 +45,20 @@ export function Hero() {
       </Title>
 
       <div className="flex gap-4 bg-black pb-24  pt-5 max-sm:max-w-[240px] max-sm:flex-col">
-        <Button
-          variant={ButtonVariants.Secondary}
-          iconName="copy"
+        <button
+          type="button"
+          className="inline-flex items-center gap-2.5 rounded-lg bg-white px-4 py-3 font-medium text-dark-palette-primaryForeground transition-colors hover:bg-white/90"
           onClick={handleCopy}
-          className="flex items-center justify-between px-4 py-3 font-medium"
         >
           npx create-agentkit-app
-        </Button>
+          {hasCopied ? (
+            <div className="text-green-60">
+              <Icon name="checkmark" width="20" height="20" color="currentColor" />
+            </div>
+          ) : (
+            <Icon name="copy" width="20" height="20" color="currentColor" />
+          )}
+        </button>
         <ButtonWithLinkAndEventLogging
           href={AGENTKIT_DOCS_LINK}
           target="_blank"

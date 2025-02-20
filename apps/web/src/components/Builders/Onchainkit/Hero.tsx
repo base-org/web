@@ -1,20 +1,23 @@
 'use client';
 
-import Button from 'apps/web/src/components/base-org/Button';
 import { ButtonVariants } from 'apps/web/src/components/base-org/Button/types';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import Image, { StaticImageData } from 'next/image';
 import onchainkit from 'apps/web/src/components/Builders/Onchainkit/onchainkit.svg';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 const ONCHAINKIT_DOCS_LINK = 'docs.base.org/builderkits/onchainkit/getting-started';
 
 export function Hero() {
+  const [hasCopied, setHasCopied] = useState(false);
+
   const handleCopy = useCallback(() => {
     void navigator.clipboard.writeText('npm create onchain');
+    setHasCopied(true);
+    setTimeout(() => setHasCopied(false), 2000); // Reset after 2 seconds
   }, []);
 
   return (
@@ -42,15 +45,20 @@ export function Hero() {
       </Title>
 
       <div className="flex gap-4 pt-5 max-sm:max-w-[240px] max-sm:flex-col">
-        <Button
-          variant={ButtonVariants.Secondary}
-          iconName="copy"
+        <button
+          type="button"
+          className="inline-flex items-center gap-2.5 rounded-lg bg-white px-4 py-3 font-medium text-dark-palette-primaryForeground transition-colors hover:bg-white/90"
           onClick={handleCopy}
-          className="flex items-center justify-between px-4 py-3 font-medium"
-          iconSize="16"
         >
           npm create onchain
-        </Button>
+          {hasCopied ? (
+            <div className="text-green-60">
+              <Icon name="checkmark" width="20" height="20" color="currentColor" />
+            </div>
+          ) : (
+            <Icon name="copy" width="20" height="20" color="currentColor" />
+          )}
+        </button>
         <ButtonWithLinkAndEventLogging
           variant={ButtonVariants.SecondaryOutline}
           buttonClassNames="flex items-center justify-between px-4 py-3 group font-medium"

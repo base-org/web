@@ -8,13 +8,16 @@ import { HeaderAnimation } from 'apps/web/src/components/Builders/MiniKit/Header
 import minikit from 'apps/web/src/components/Builders/MiniKit/minikit.svg';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image, { StaticImageData } from 'next/image';
-import Button from 'apps/web/src/components/base-org/Button';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 const GET_STARTED_URL = 'https://replit.com/@tina-he/ock-frames-template?v=1#README.md';
 
 export function Hero() {
+  const [hasCopied, setHasCopied] = useState(false);
+
   const handleCopy = useCallback(() => {
     void navigator.clipboard.writeText('npm create-onchain --mini');
+    setHasCopied(true);
+    setTimeout(() => setHasCopied(false), 2000); // Reset after 2 seconds
   }, []);
 
   return (
@@ -44,15 +47,20 @@ export function Hero() {
         </Title>
 
         <div className="flex gap-4 pt-5 max-sm:max-w-[240px] max-sm:flex-col">
-          <Button
-            variant={ButtonVariants.Secondary}
-            iconName="copy"
+          <button
+            type="button"
+            className="inline-flex items-center gap-2.5 rounded-lg bg-white px-4 py-3 font-medium text-dark-palette-primaryForeground transition-colors hover:bg-white/90"
             onClick={handleCopy}
-            className="flex items-center justify-between px-4 py-3 font-medium"
-            iconSize="16"
           >
             npm create-onchain --mini
-          </Button>
+            {hasCopied ? (
+              <div className="text-green-60">
+                <Icon name="checkmark" width="20" height="20" color="currentColor" />
+              </div>
+            ) : (
+              <Icon name="copy" width="20" height="20" color="currentColor" />
+            )}
+          </button>
           <ButtonWithLinkAndEventLogging
             variant={ButtonVariants.SecondaryOutline}
             buttonClassNames="flex items-center justify-between px-4 py-3 group font-medium"
