@@ -118,32 +118,32 @@ const searchConfig: SearchCategory[] = [
     subCategories: [
       {
         label: 'Onboard everyone',
-        href: '/developers/guides/onboarding',
+        href: 'https://docs.base.org/use-cases/onboard-any-user',
         icon: 'diagonalUpArrow',
       },
       {
         label: 'Accept crypto payments',
-        href: '/developers/guides/payments',
+        href: 'https://docs.base.org/use-cases/accept-crypto-payments',
         icon: 'diagonalUpArrow',
       },
       {
         label: 'Launch AI Agents',
-        href: '/developers/guides/agents',
+        href: 'https://docs.base.org/use-cases/launch-ai-agents',
         icon: 'diagonalUpArrow',
       },
       {
         label: "Kickstart your app's growth",
-        href: '/developers/guides/social',
+        href: 'https://docs.base.org/use-cases/decentralize-social-app',
         icon: 'diagonalUpArrow',
       },
       {
         label: 'Unlock the power of DeFi',
-        href: '/developers/guides/defi',
+        href: 'https://docs.base.org/use-cases/defi-your-app',
         icon: 'diagonalUpArrow',
       },
       {
         label: 'Remove first-timer friction',
-        href: '/developers/guides/gasless',
+        href: 'https://docs.base.org/use-cases/go-gasless',
         icon: 'diagonalUpArrow',
       },
     ],

@@ -64,6 +64,7 @@ export function Hero() {
           buttonClassNames="flex items-center justify-between px-4 py-3 group font-medium"
           href={ONCHAINKIT_DOCS_LINK}
           eventName="onchainkit-documentation-click"
+          target="_blank"
         >
           <div className="flex items-center gap-4">
             <span>Documentation</span>
