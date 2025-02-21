@@ -43,7 +43,7 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
           <Link
             href="/builders"
             onClick={onLinkClick}
-            className="flex items-center justify-between rounded-lg bg-dark-palette-secondary px-4 pb-2.5 pt-3 hover:bg-[#3A3D45]"
+            className="flex items-center justify-between rounded-lg bg-dark-palette-secondary px-4 pb-3 pt-3 hover:bg-[#3A3D45]"
           >
             <div className="flex flex-col justify-center">
               <Title level={TitleLevel.Headline} className="text-sm tracking-normal">
