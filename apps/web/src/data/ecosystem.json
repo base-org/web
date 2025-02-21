@@ -3998,5 +3998,13 @@
     "imageUrl": "/images/partners/unlockprotocol.png",
     "category": "infra",
     "subcategory": "consumer"
+  },
+  {
+    "name": "Deri Protocol",
+    "description": "Deri is the one-stop derivates shop to hedge, speculate, and arbitrage on-chain.",
+    "url": "https://deri.io/",
+    "imageUrl": "/images/partners/deriprotocol.png",
+    "category": "defi",
+    "subcategory": "dex"
   }
 ]
