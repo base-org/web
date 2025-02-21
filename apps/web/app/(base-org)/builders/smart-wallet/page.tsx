@@ -16,6 +16,7 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { LiveDemo } from 'apps/web/src/components/Builders/Shared/LiveDemo';
 import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
 import Link from 'apps/web/src/components/Link';
+import smartWalletCover from './smart-wallet.png';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://base.org'),
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Base | Smart Wallet`,
     url: `/builders/smart-wallet`,
+    images: [smartWalletCover.src],
   },
 };
 
@@ -47,7 +49,7 @@ export default async function BaseWallet() {
                 </Title>
               </div>
               <Link
-                href="https://www.docs.base.org/identity/smart-wallet/introduction/base-gasless-campaign"
+                href="https://docs.base.org/identity/smart-wallet/introduction/base-gasless-campaign"
                 target="_blank"
                 className="flex items-center justify-center gap-2 rounded-full border px-2 py-1 max-md:mr-auto"
               >
@@ -71,7 +73,7 @@ export default async function BaseWallet() {
                 variant={ButtonVariants.Secondary}
                 buttonClassNames="flex items-center justify-between px-4 pb-2.5 pt-3 group font-medium"
                 eventName="wallet-start-building"
-                href="https://www.docs.base.org/identity/smart-wallet/introduction/install-web."
+                href="https://docs.base.org/identity/smart-wallet/introduction/install-web"
               >
                 <div className="flex items-center gap-4">
                   <span>Start building</span>
@@ -112,7 +114,7 @@ export default async function BaseWallet() {
                 Fork a template
               </ButtonWithLinkAndEventLogging>
               <ButtonWithLinkAndEventLogging
-                href="https://www.docs.base.org/identity/smart-wallet/introduction/install-web."
+                href="https://docs.base.org/identity/smart-wallet/introduction/install-web"
                 target="_blank"
                 variant={ButtonVariants.SecondaryOutline}
                 buttonClassNames="flex items-center justify-between px-4 pb-2.5 pt-3 group font-medium"
