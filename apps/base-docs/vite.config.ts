@@ -54,9 +54,14 @@ export default defineConfig({
         resolve(DIRNAME, 'node_modules'),
       ],
     },
+    proxy: {
+      '/api/_health': '/index.html',
+    },
     headers: {
       'Cache-Control': 'no-store',
-      'Content-Security-Policy': Object.entries(contentSecurityPolicy).map(([key, value]) => `${key} ${value.join('  ')}`).join('; '),
+      'Content-Security-Policy': Object.entries(contentSecurityPolicy)
+        .map(([key, value]) => `${key} ${value.join('  ')}`)
+        .join('; '),
     },
   },
   resolve: {
