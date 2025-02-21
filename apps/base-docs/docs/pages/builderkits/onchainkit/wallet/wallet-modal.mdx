@@ -3,21 +3,27 @@ title: Wallet Modal · OnchainKit
 description: The Wallet Modal provides users with multiple wallet connection options in a polished interface.
 ---
 
-import {
+import { 
   ConnectWallet,
   Wallet,
   WalletDropdown,
   WalletDropdownDisconnect,
 } from '@coinbase/onchainkit/wallet';
-import { Address, Avatar, Name, Identity, EthBalance } from '@coinbase/onchainkit/identity';
+import {
+  Address,
+  Avatar,
+  Name,
+  Identity,
+  EthBalance,
+} from '@coinbase/onchainkit/identity';
 import { color } from '@coinbase/onchainkit/theme';
 import AppWithWalletModal from '@/components/AppWithWalletModal';
 
 # Wallet Modal
 
-<img
+<img 
   alt="Wallet Modal"
-  src="/images/onchainkit/wallet-modal.png"
+  src="https://onchainkit.xyz/assets/wallet-modal.png"
   height="364"
   width="364"
   className="mx-auto"
@@ -41,15 +47,14 @@ import AppWithWalletModal from '@/components/AppWithWalletModal';
   chain={base}
   config={{
     appearance: {
-      name: 'Your App Name', // Displayed in modal header
-      logo: 'https://your-logo.com', // Displayed in modal header
-      mode: 'auto', // 'light' | 'dark' | 'auto'
-      theme: 'default', // 'default' or custom theme
+      name: 'Your App Name',        // Displayed in modal header
+      logo: 'https://your-logo.com',// Displayed in modal header
+      mode: 'auto',                 // 'light' | 'dark' | 'auto'
+      theme: 'default',             // 'default' or custom theme
     },
-    wallet: {
-      // [!code focus]
+    wallet: { // [!code focus]
       display: 'modal', // [!code focus]
-      termsUrl: 'https://...', // [!code focus]
+      termsUrl: 'https://...', // [!code focus] 
       privacyUrl: 'https://...', // [!code focus]
     },
   }}
@@ -67,7 +72,7 @@ import AppWithWalletModal from '@/components/AppWithWalletModal';
     <Name />
   </ConnectWallet>
   <WalletDropdown>
-    <Identity className="px-4 pb-2 pt-3" hasCopyAddressOnClick>
+    <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
       <Avatar />
       <Name />
       <Address />
@@ -86,7 +91,7 @@ import AppWithWalletModal from '@/components/AppWithWalletModal';
         <Name />
       </ConnectWallet>
       <WalletDropdown>
-        <Identity className="px-4 pb-2 pt-3" hasCopyAddressOnClick>
+        <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
           <Avatar />
           <Name />
           <Address className={color.foregroundMuted} />
@@ -114,7 +119,6 @@ The Wallet Modal components are designed to work together hierarchically:
   - Terms and privacy policy links
 
 The modal automatically handles:
-
 - Wallet connection states
 - Error handling
 - Mobile/desktop responsive behavior

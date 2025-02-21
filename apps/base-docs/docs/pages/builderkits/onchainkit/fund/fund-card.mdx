@@ -11,7 +11,9 @@ import FundWrapper from '@/components/FundWrapper';
 
 # `<FundCard />`
 
-<img alt="FundCard" src="/images/onchainkit/fund-card.gif" height="364" />
+<img alt="FundCard"
+  src="https://onchainkit.xyz/assets/fund-card.gif"
+  height="364"/>
 
 The `<FundCard />` component provides a complete fiat onramp experience within your app. It includes:
 
@@ -39,7 +41,11 @@ To use the `FundCard` component, you'll need to provide a Client API Key in `Onc
 ```tsx
 import { FundCard } from '@coinbase/onchainkit/fund';
 
-<FundCard assetSymbol="ETH" country="US" currency="USD" />;
+<FundCard
+  assetSymbol="ETH"
+  country="US"
+  currency="USD"
+/>;
 ```
 
 <App>
@@ -111,7 +117,11 @@ You can customize the header and button text:
 You can specify which fiat currency to use:
 
 ```tsx
-<FundCard assetSymbol="ETH" country="GB" currency="GBP" />
+<FundCard
+  assetSymbol="ETH"
+  country="GB"
+  currency="GBP"
+/>
 ```
 
 ### Preset Amount Inputs
@@ -121,7 +131,12 @@ You can specify preset amount buttons:
 ```tsx
 const presetAmountInputs = ['10', '20', '50'] as const;
 
-<FundCard assetSymbol="ETH" country="US" currency="USD" presetAmountInputs={presetAmountInputs} />;
+<FundCard
+  assetSymbol="ETH"
+  country="US"
+  currency="USD"
+  presetAmountInputs={presetAmountInputs}
+/>;
 ```
 
 :::info
@@ -133,7 +148,11 @@ const presetAmountInputs = ['10', '20', '50'] as const;
 You can provide custom children to completely customize the card content while keeping the fund button functionality:
 
 ```tsx
-<FundCard assetSymbol="ETH" country="US" currency="USD">
+<FundCard
+  assetSymbol="ETH"
+  country="US"
+  currency="USD"
+>
   <div className="space-y-4">
     <h2>Custom Header</h2>
     <input type="number" placeholder="Enter amount" />
@@ -155,9 +174,14 @@ import {
   FundCardPresetAmountInputList,
   FundCardPaymentMethodDropdown,
   FundCardSubmitButton,
-} from '@coinbase/onchainkit/fund';
+ } from '@coinbase/onchainkit/fund';
 
-<FundCard assetSymbol="ETH" country="US" currency="USD">
+<FundCard
+  assetSymbol="ETH"
+  country="US"
+  currency="USD"
+>
+
   <h2>Custom Header instead of the default "FundCardHeader" </h2>
   <FundCardAmountInput />
   <FundCardAmountInputTypeSwitch />
@@ -166,7 +190,7 @@ import {
   <FundCardPaymentMethodDropdown />
   <FundCardSubmitButton />
   <div>Any custom content</div>
-</FundCard>;
+</FundCard>
 ```
 
 :::info
@@ -175,34 +199,34 @@ import {
 
 ```tsx
 const {
-  asset,
-  currency,
-  selectedPaymentMethod,
-  setSelectedPaymentMethod,
-  fundAmountFiat,
-  setFundAmountFiat,
-  fundAmountCrypto,
-  setFundAmountCrypto,
-  selectedInputType,
-  setSelectedInputType,
-  exchangeRate,
-  setExchangeRate,
-  exchangeRateLoading,
-  setExchangeRateLoading,
-  submitButtonState,
-  setSubmitButtonState,
-  paymentMethods,
-  setPaymentMethods,
-  paymentMethodsLoading,
-  setPaymentMethodsLoading,
-  headerText,
-  buttonText,
-  country,
-  subdivision,
-  lifecycleStatus,
-  updateLifecycleStatus,
-  presetAmountInputs,
-} = useFundContext();
+    asset,
+    currency,
+    selectedPaymentMethod,
+    setSelectedPaymentMethod,
+    fundAmountFiat,
+    setFundAmountFiat,
+    fundAmountCrypto,
+    setFundAmountCrypto,
+    selectedInputType,
+    setSelectedInputType,
+    exchangeRate,
+    setExchangeRate,
+    exchangeRateLoading,
+    setExchangeRateLoading,
+    submitButtonState,
+    setSubmitButtonState,
+    paymentMethods,
+    setPaymentMethods,
+    paymentMethodsLoading,
+    setPaymentMethodsLoading,
+    headerText,
+    buttonText,
+    country,
+    subdivision,
+    lifecycleStatus,
+    updateLifecycleStatus,
+    presetAmountInputs,
+ } = useFundContext();
 ```
 
 ## Props
