@@ -111,9 +111,10 @@ export default function MenuDesktop({ links }: MenuDesktopProps) {
                         <div className="flex flex-col">
                           <span className="font-medium tracking-normal">{subItem.name}</span>
                           {subItem.description && (
-                            <span className="tracking-normal text-dark-palette-foregroundMuted">
+                            // use tracking-wide to temporary offset the odd tight letter-spacing
+                            <p className="text-dark-palette-foregroundMuted font-normal text-sm tracking-wide"> 
                             {subItem.description}
-                            </span>
+                            </p>
                           )}
                         </div>
                         <span className="rotate-0 transform opacity-0 transition-all delay-75 duration-300 group-hover/sublink:opacity-60">

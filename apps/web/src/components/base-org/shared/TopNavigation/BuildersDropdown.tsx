@@ -49,9 +49,10 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
               <Title level={TitleLevel.Headline} className="text-sm tracking-normal">
                 Builders
               </Title>
-              <span className="text-sm text-dark-palette-foregroundMuted ">
+              {/* use tracking-wide to temporary offset the odd tight letter-spacing */}
+              <p className="text-sm text-dark-palette-foregroundMuted tracking-wide">
                 Start building with Base tools
-              </span>
+              </p>
             </div>
             <Icon name="arrowRight" height={16} width={16} />
           </Link>
@@ -64,9 +65,10 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
               <Title level={TitleLevel.Headline} className="text-sm tracking-normal">
                 Docs
               </Title>
-              <span className="text-sm text-dark-palette-foregroundMuted ">
+              {/* use tracking-wide to temporary offset the odd tight letter-spacing */}
+              <p className="text-sm text-dark-palette-foregroundMuted tracking-wide">
                 Dive into the developer docs
-              </span>
+              </p>
             </div>
             <Icon name="arrowRight" height={16} width={16} />
           </Link>
