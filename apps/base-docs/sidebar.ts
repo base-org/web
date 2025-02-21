@@ -525,7 +525,7 @@ export const sidebar: Sidebar = [
         ],
       },
       {
-        text: 'AgentKit ↗',
+        text: 'AgentKit (CDP) ↗',
         link: 'https://docs.cdp.coinbase.com/agentkit/docs/welcome',
       },
     ],
@@ -534,7 +534,7 @@ export const sidebar: Sidebar = [
     text: 'Blockspace Tools',
     items: [
       {
-        text: 'Paymaster ↗',
+        text: 'Paymaster (CDP) ↗',
         link: 'https://docs.cdp.coinbase.com/paymaster/docs/welcome',
       },
       // { PENDING APPCHAIN RELEASE 2/25
@@ -716,7 +716,7 @@ export const sidebar: Sidebar = [
         ],
       },
       {
-        text: 'Verifications ↗',
+        text: 'Verifications (CDP)↗',
         link: 'https://docs.cdp.coinbase.com/verifications/docs/welcome',
       },
     ],

@@ -52,7 +52,7 @@ Get your [Client API Key](https://portal.cdp.coinbase.com/projects/api-keys/clie
 
 <img
   alt="OnchainKit copy Client API Key"
-  src="https://onchainkit.xyz/assets/copy-api-key-guide.png"
+  src="/images/onchainkit/copy-api-key-guide.png"
   height="364"
 />
 
@@ -60,7 +60,7 @@ Create a `.env` file in your project's root directory.
 
 <img
   alt="OnchainKit define Client API Key"
-  src="https://onchainkit.xyz/assets/getting-started-create-env-file.png"
+  src="/images/onchainkit/getting-started-create-env-file.png"
   width="250"
   loading="lazy"
 />
@@ -114,7 +114,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             // [!code ++]
             __html: `window.ENV = ${JSON.stringify(
               // [!code ++]
-              data.ENV // [!code ++]
+              data.ENV, // [!code ++]
             )}`, // [!code ++]
           }} // [!code ++]
         />{' '}
@@ -143,10 +143,7 @@ import { OnchainKitProvider } from '@coinbase/onchainkit';
 import { base } from 'wagmi/chains'; // add baseSepolia for testing // [!code ++]
 
 export function Providers(props: { children: ReactNode }) {
-  const apiKey =
-    typeof window !== 'undefined'
-      ? window.ENV?.PUBLIC_ONCHAINKIT_API_KEY
-      : undefined;
+  const apiKey = typeof window !== 'undefined' ? window.ENV?.PUBLIC_ONCHAINKIT_API_KEY : undefined;
   return (
     <OnchainKitProvider
       apiKey={apiKey} // [!code ++]
@@ -204,4 +201,3 @@ This ensures that the OnchainKit styles are loaded and applied to your entire ap
 ::::
 
 <StartBuilding />
-
