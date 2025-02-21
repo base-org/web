@@ -656,6 +656,38 @@ export const sidebar: Sidebar = [
                 link: '/identity/smart-wallet/guides/batch-transactions',
               },
               { text: 'ERC20 Paymasters', link: '/identity/smart-wallet/guides/erc20-paymasters' },
+              {
+                text: 'Spend Permissions',
+                collapsed: true,
+                items: [
+                  {
+                    text: 'Overview',
+                    link: '/identity/smart-wallet/guides/spend-permissions/overview',
+                  },
+                  {
+                    text: 'Quickstart',
+                    link: '/identity/smart-wallet/guides/spend-permissions/quick-start',
+                  },
+                  {
+                    text: 'API Reference',
+                    collapsed: true,
+                    items: [
+                      {
+                        text: 'Client Resources',
+                        link: '/identity/smart-wallet/guides/spend-permissions/api-reference/client-resources',
+                      },
+                      {
+                        text: 'Coinbase Fetch Permissions',
+                        link: '/identity/smart-wallet/guides/spend-permissions/api-reference/coinbase-fetchpermissions',
+                      },
+                      {
+                        text: 'Spend Permissions Manager',
+                        link: '/identity/smart-wallet/guides/spend-permissions/api-reference/spendpermissionmanager',
+                      },
+                    ],
+                  },
+                ],
+              },
             ],
           },
         ],
