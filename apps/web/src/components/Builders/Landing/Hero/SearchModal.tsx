@@ -38,7 +38,6 @@ const searchConfig: SearchCategory[] = [
             >
               OnchainKit quickstart template
             </Link>
-            .
           </div>
         ),
         href: '',
