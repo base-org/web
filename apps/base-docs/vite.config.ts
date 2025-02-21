@@ -6,6 +6,42 @@ import { dirname, resolve } from 'path';
 
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
+const contentSecurityPolicy = {
+  'default-src': ["'self'"],
+  'frame-ancestors': ["'self'"],
+  'form-action': ["'self'"],
+  'script-src': [
+    "'self'",
+    "'unsafe-inline'",
+    'https://static-assets.coinbase.com/js/cca/v0.0.1.js', // CCA Lite
+    'https://cca-lite.coinbase.com', // CCA Lite
+  ],
+  'style-src': ["'self'", "'unsafe-inline'"],
+  'img-src': ["'self'", 'data:'],
+  'connect-src': [
+    "'self'",
+    'wss://www.walletlink.org/rpc', // Coinbase Wallet SDK
+    'wss://relay.walletconnect.com', // WalletConnect
+    'wss://relay.walletconnect.org',
+    'https://goerli.base.org', // Base Goerli RPC
+    'https://sepolia.base.org', // Base Sepolia RPC
+    'https://cca-lite.coinbase.com', // CCA Lite
+    'https://*.algolia.net', // Algolia Search
+    'https://*.algolianet.com', // Algolia Search
+    'https://api.mendable.ai/v1/newConversation', // Mendable API
+    'https://api.mendable.ai/v1/mendableChat', // Mendable API
+    'https://api.mendable.ai/v1/rateMessage', // Mendable API
+    'https://api.sprig.com', // Sprig API
+    'https://cdn.sprig.com', // Sprig API
+    'https://flag.lab.amplitude.com/sdk/v2/flags',
+    'https://api.lab.amplitude.com/sdk/v2/vardata',
+    'https://browser-intake-datadoghq.com', // datadog
+    'https://*.datadoghq.com',
+    'https://*.google-analytics.com  https://*.analytics.google.com  https://*.googletagmanager.com', // Google Analytics
+  ],
+  'frame-src': ["'self'", 'https://player.vimeo.com', 'https://verify.walletconnect.org'],
+};
+
 export default defineConfig({
   plugins: [react(), svgr()],
   server: {
@@ -20,6 +56,9 @@ export default defineConfig({
     },
     headers: {
       'Cache-Control': 'no-store',
+      'Content-Security-Policy': Object.entries(contentSecurityPolicy)
+        .map(([key, value]) => `${key} ${value.join('  ')}`)
+        .join('; '),
     },
   },
   resolve: {

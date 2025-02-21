@@ -8,12 +8,12 @@ import { NextJSRouter } from 'apps/web/src/components/ClientAnalyticsScript/Clie
 import { v4 } from 'uuid';
 
 // CCA library loads in ClientAnalyticsScript component
-const initCCA = (
+export function initCCA(
   router: NextJSRouter,
   trackingPreference: TrackingPreference | undefined,
   deviceIdCookie: string | undefined,
   setDeviceIdCookie,
-) => {
+) {
   let deviceId: string | undefined = deviceIdCookie;
   const trackingAllowed: boolean = trackingPreference?.consent.includes('performance');
   const amplitudeApiKey: string = isDevelopment
@@ -42,6 +42,4 @@ const initCCA = (
 
     identify({ deviceId: deviceId });
   }
-};
-
-export default initCCA;
+}

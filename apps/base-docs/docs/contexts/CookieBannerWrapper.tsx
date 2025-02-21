@@ -1,5 +1,6 @@
 import { CookieBanner } from '@coinbase/cookie-banner';
 import { CookieManagerProvider } from '@/components/CookieManager/CookieManagerProvider.tsx';
+import ClientAnalyticsScript from '@/components/ClientAnalyticsScript/ClientAnalyticsScript.tsx';
 
 export const cookieBannerTheme = {
   colors: {
@@ -53,6 +54,10 @@ export default function CookieBannerWrapper() {
   if (typeof window === 'undefined') return null;
   return (
     <CookieManagerProvider>
+<<<<<<< HEAD
+=======
+      <ClientAnalyticsScript />
+>>>>>>> master
       <CookieBanner companyName="Base" link="/cookie-policy" theme={cookieBannerTheme} />
     </CookieManagerProvider>
   );
