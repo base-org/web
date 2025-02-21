@@ -55,7 +55,7 @@ Get your [Client API Key](https://portal.cdp.coinbase.com/projects/api-keys/clie
 
 <img
   alt="OnchainKit copy Client API Key"
-  src="https://onchainkit.xyz/assets/copy-api-key-guide.png"
+  src="/images/onchainkit/copy-api-key-guide.png"
   height="364"
 />
 
@@ -63,7 +63,7 @@ Create a `.env` file in your project's root directory.
 
 <img
   alt="OnchainKit define Client API Key"
-  src="https://onchainkit.xyz/assets/getting-started-create-env-file.png"
+  src="/images/onchainkit/getting-started-create-env-file.png"
   width="250"
   loading="lazy"
 />
@@ -71,7 +71,7 @@ Create a `.env` file in your project's root directory.
 Add your Client API Key to the `.env` file:
 
 ```tsx [.env]
-NEXT_PUBLIC_ONCHAINKIT_API_KEY=YOUR_CLIENT_API_KEY;
+NEXT_PUBLIC_ONCHAINKIT_API_KEY = YOUR_CLIENT_API_KEY;
 ```
 
 ## Add Providers
@@ -129,7 +129,7 @@ export default function RootLayout({
 
 OnchainKit components come with pre-configured styles. To include these styles in your project, add the following import statement at the top of this file:
 
-```javascript 
+```javascript
 import '@coinbase/onchainkit/styles.css';
 ```
 
@@ -155,10 +155,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout(props: { children: ReactNode }) {
-  const initialState = cookieToInitialState(
-    getConfig(),
-    headers().get('cookie')
-  );
+  const initialState = cookieToInitialState(getConfig(), headers().get('cookie'));
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -179,4 +176,3 @@ This ensures that the OnchainKit styles are loaded and applied to your entire ap
 ::::
 
 <StartBuilding />
-

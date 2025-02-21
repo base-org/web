@@ -15,22 +15,14 @@ import {
   WalletAdvancedWalletActions,
   WalletIsland,
 } from '@coinbase/onchainkit/wallet';
-import {
-  Address,
-  Avatar,
-  Name,
-  Identity,
-  EthBalance,
-} from '@coinbase/onchainkit/identity';
+import { Address, Avatar, Name, Identity, EthBalance } from '@coinbase/onchainkit/identity';
 import { color } from '@coinbase/onchainkit/theme';
 import WalletComponents from '@/components/WalletComponents';
 import AppWithWalletModal from '@/components/AppWithWalletModal';
 
 # `<WalletIsland />`
 
-<img alt="WalletIsland"
-  src="https://onchainkit.xyz/assets/wallet-island.gif"
-  height="364"/>
+<img alt="WalletIsland" src="/images/onchainkit/wallet-island.gif" height="364" />
 
 `WalletIsland` is our flagship implementation of the new `<WalletAdvanced />`
 component, providing an advanced Wallet interface for users, including:
@@ -76,7 +68,7 @@ import { WalletIsland } from '@coinbase/onchainkit/wallet';
 <>
   <WalletAdvancedDefault />
   <WalletIsland />
-</>
+</>;
 ```
 
 You will see two Wallet buttons below. Right below is `WalletAdvancedDefault`.
@@ -104,8 +96,7 @@ If you are attempting to use this component and the Buy button is not working,
 make sure you have a `projectId` configured correctly in your providers.
 
 <br />
-If transaction history is not loading, make sure you have an `apiKey` configured
-correctly in your providers.
+If transaction history is not loading, make sure you have an `apiKey` configured correctly in your providers.
 :::
 
 ## Configuring `WalletIsland` and `WalletAdvanced`
@@ -144,7 +135,9 @@ export function YourWalletAdvanced() {
           <Avatar className="h-6 w-6" />
           <Name />
         </ConnectWallet>
-        <WalletAdvanced> // [!code focus]
+        <WalletAdvanced>
+          {' '}
+          // [!code focus]
           <WalletAdvancedWalletActions /> // [!code focus]
           <WalletAdvancedAddressDetails /> // [!code focus]
           <WalletAdvancedTransactionActions /> // [!code focus]
@@ -195,7 +188,8 @@ export function DraggableWalletAdvanced() {
     <div className="flex justify-end">
       <Wallet
         draggable={true} // [!code focus]
-        draggableStartingPosition={{ // [!code focus]
+        draggableStartingPosition={{
+          // [!code focus]
           x: window.innerWidth - 300, // [!code focus]
           y: window.innerHeight - 100, // [!code focus]
         }}
@@ -227,7 +221,7 @@ Explore the options for customizing the Connect button text and style [here](/bu
 
 <img
   alt="Wallet Modal"
-  src="https://onchainkit.xyz/assets/wallet-modal.png"
+  src="/images/onchainkit/wallet-modal.png"
   height="364"
   width="364"
   className="mx-auto"
