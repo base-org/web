@@ -119,6 +119,7 @@ export default function Home() {
     subAccount,
     createSubAccount,
     subAccountWalletClient,
+    provider,
   } = useCoinbaseWallet();
 
   const [signature, setSignature] = useState<string | null>(null);
