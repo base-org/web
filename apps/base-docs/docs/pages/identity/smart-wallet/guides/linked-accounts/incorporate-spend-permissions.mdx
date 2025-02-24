@@ -17,6 +17,12 @@ that step.
 ```tsx
 // app/context/CoinbaseWalletContext.tsx
 
+// import toHex from viem
+import {
+  // ...other imports
+  toHex,
+} from 'viem';
+
 // Add a new type to make working with spend permissions easier
 
 export type SpendPermission = {
@@ -37,7 +43,7 @@ const [spendPermissionSignature, setSpendPermissionSignature] = useState<`0x${st
   null,
 );
 
-// This will create a spend permission of 0.0001 ETHfor the sub account during sub account creation and store it in the context.
+// This will create a spend permission of 0.0001 ETH for the sub account during sub account creation and store it in the context.
 const createSubAccount = useCallback(async () => {
   if (!provider || !address) {
     throw new Error('Address or provider not found');
@@ -103,7 +109,7 @@ Now that we're creating and storing spend permissions, lets use them within our 
 // Create a file to store the Spend Permission Manager ABI
 
 ```tsx
-// app/abis/SpendPermissionManager.ts
+// app/abi.ts
 
 export const spendPermissionManagerAbi = [
   {
