@@ -21,6 +21,19 @@ import {
 } from '@coinbase/wallet-sdk';
 import { WalletClient, createPublicClient, http } from 'viem';
 
+// update the Context interface type to include subAccountWalletClient
+interface CoinbaseWalletContextType {
+  // ... existing properties
+  subAccountWalletClient: WalletClient | null;
+}
+
+// update the CoinbaseWalletContext defaults
+const CoinbaseWalletContext = createContext<CoinbaseWalletContextType>({
+  // ... existing defaults
+  subAccountWalletClient: null,
+});
+
+// update the provider component
 export function CoinbaseWalletProvider({ children }: { children: ReactNode }) {
   // ... existing state
   const [subAccountWalletClient, setSubAccountWalletClient] = useState<WalletClient | null>(null);
