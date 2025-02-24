@@ -13,13 +13,10 @@ First, we need to update our context to include a wallet client specifically for
 
 ```tsx
 // app/context/CoinbaseWalletContext.tsx
-import {
-  createCoinbaseWalletSDK,
-  getCryptoKeyAccount,
-  WebAuthnAccount,
-  toCoinbaseSmartAccount,
-} from '@coinbase/wallet-sdk';
+import { createCoinbaseWalletSDK, getCryptoKeyAccount } from '@coinbase/wallet-sdk';
 import { WalletClient, createPublicClient, http } from 'viem';
+import { WebAuthnAccount, toCoinbaseSmartAccount } from 'viem/account-abstraction';
+import { baseSepolia } from 'viem/chains';
 
 // update the Context interface type to include subAccountWalletClient
 interface CoinbaseWalletContextType {
