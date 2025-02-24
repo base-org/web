@@ -144,7 +144,7 @@ import { Checkout, CheckoutButton } from '@coinbase/onchainkit/checkout';
 export default function PayComponents() {
   return (
 // ---cut-before---
-<Checkout productId='my-product-id'> // [!code focus]
+<Checkout productId='my-product-id'>
   <CheckoutButton />
 </Checkout>
 // ---cut-after---
@@ -254,7 +254,7 @@ const statusHandler = async (status: LifecycleStatus) => { // [!code focus]
   } // [!code focus]
 } // [!code focus]
 
-<Checkout onStatus={statusHandler}> // [!code focus]
+<Checkout onStatus={statusHandler}>
   <CheckoutButton />
 </Checkout>
 // ---cut-after---
@@ -273,7 +273,7 @@ You should protect your Coinbase Commerce API Key by verifying charges server-si
 You can view successful checkouts on the [Coinbase Commerce Merchant Dashboard](https://beta.commerce.coinbase.com/payments).
 
 <img alt="Viewing successful checkouts"
-src="/images/onchainkit/commerce-3.png" 
+src="/images/onchainkit/commerce-3.png"
 height="364"/>
 
 ## Customization
@@ -303,7 +303,7 @@ import { OnchainKitProvider } from '@coinbase/onchainkit';
 ```
 
 <div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img 
+  <img
     alt="Add name and logo"
     src="/images/onchainkit/commerce-4.png"
   />
@@ -320,7 +320,7 @@ export default function PayComponents() {
   return (
 // ---cut-before---
 <Checkout >
-  <CheckoutButton coinbaseBranded/> // [!code focus]
+  <CheckoutButton coinbaseBranded/>
 </Checkout>
 // ---cut-after---
 );
@@ -345,7 +345,7 @@ export default function PayComponents() {
   return (
 // ---cut-before---
 <Checkout >
-  <CheckoutButton disabled/> // [!code focus]
+  <CheckoutButton disabled/>
 </Checkout>
 // ---cut-after---
 );
@@ -370,7 +370,7 @@ export default function PayComponents() {
   return (
 // ---cut-before---
 <Checkout >
-  <CheckoutButton text='Checkout with USDC'/> // [!code focus]
+  <CheckoutButton text='Checkout with USDC'/>
 </Checkout>
 // ---cut-after---
 );
@@ -395,7 +395,7 @@ export default function PayComponents() {
   return (
 // ---cut-before---
 <Checkout >
-  <CheckoutButton className='bg-[#EA580C]'/> // [!code focus]
+  <CheckoutButton className='bg-[#EA580C]' />
 </Checkout>
 // ---cut-after---
 );
@@ -422,12 +422,9 @@ import type { LifecycleStatus } from '@coinbase/onchainkit/checkout'; // [!code 
 const statusHandler = (status: LifecycleStatus) => { // [!code focus]
   const { statusName, statusData } = status; // [!code focus]
   switch (statusName) { // [!code focus]
-    case 'success': // [!code focus]
-      // handle success
-    case 'pending': // [!code focus]
-      // handle payment pending
-    case 'error': // [!code focus]
-      // handle error
+    case 'success': // handle success // [!code focus]
+    case 'pending': // handle payment pending // [!code focus]
+    case 'error': // handle error // [!code focus]
     default: // [!code focus]
       // handle 'init' state
   } // [!code focus]
