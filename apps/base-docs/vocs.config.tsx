@@ -167,7 +167,7 @@ export default defineConfig({
       },
     },
     optimizeDeps: {
-      include: ['@coinbase/cookie-banner'],
+      include: ['react', 'react-dom', '@coinbase/cookie-banner'],
     },
     define: {
       Buffer: ['buffer', 'Buffer'],
