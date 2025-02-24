@@ -3,11 +3,11 @@ title: <NFTCard /> · OnchainKit
 description: View NFTs with OnchainKit
 ---
 
-import { 
-  ViewCardMain, 
-  ViewCardTitleAbove, 
-  ViewCardScaled, 
-  ViewCardOverrideStyles 
+import {
+  ViewCardMain,
+  ViewCardTitleAbove,
+  ViewCardScaled,
+  ViewCardOverrideStyles
 } from '@/components/NFTComponents';
 
 # `<NFTCard />`
@@ -27,7 +27,7 @@ To use the `NFTCard` component, you'll need to provide an API Key in `OnchainKit
 
 ### Starting a new project
 
-If you're starting a new project, we recommend using `create onchain` to scaffold your project. 
+If you're starting a new project, we recommend using `create onchain` to scaffold your project.
 
 ```bash
 npm create onchain@latest
@@ -85,7 +85,7 @@ import { NFTCard } from '@coinbase/onchainkit/nft'; // [!code focus]
 <NFTCard // [!code focus]
   contractAddress='0xb4703a3a73aec16e764cbd210b0fde9efdab8941'  // [!code focus]
   tokenId='1' // [!code focus]
-> 
+>
 </NFTCard>
 ```
 
@@ -101,11 +101,11 @@ import {
   NFTTitle, // [!code ++]
 } from '@coinbase/onchainkit/nft/view'; // [!code ++]
 
-<NFTCard 
-  contractAddress='0xb4703a3a73aec16e764cbd210b0fde9efdab8941' 
+<NFTCard
+  contractAddress='0xb4703a3a73aec16e764cbd210b0fde9efdab8941'
   tokenId='1'
-> 
-  <NFTMedia /> // [!code ++] 
+>
+  <NFTMedia /> // [!code ++]
   <NFTTitle /> // [!code ++]
   <NFTOwner /> // [!code ++]
   <NFTLastSoldPrice /> // [!code ++]
@@ -132,10 +132,10 @@ import {
   NFTTitle,
 } from '@coinbase/onchainkit/nft/view';
 // ---cut-before---
-<NFTCard 
-  contractAddress='0xb4703a3a73aec16e764cbd210b0fde9efdab8941' 
+<NFTCard
+  contractAddress='0xb4703a3a73aec16e764cbd210b0fde9efdab8941'
   tokenId='1'
-> 
+>
   <NFTTitle /> // [!code ++]
   <NFTMedia />
   <NFTTitle /> // [!code --]
@@ -155,10 +155,10 @@ import {
   NFTMedia,
 } from '@coinbase/onchainkit/nft/view';
 // ---cut-before---
-<NFTCard 
-  contractAddress='0xb4703a3a73aec16e764cbd210b0fde9efdab8941' 
+<NFTCard
+  contractAddress='0xb4703a3a73aec16e764cbd210b0fde9efdab8941'
   tokenId='1'
-> 
+>
   <NFTMedia square={false} /> // [!code focus]
 </NFTCard>
 // ---cut-after---
@@ -181,8 +181,8 @@ import {
 export default function NFTComponent() {
   return (
 // ---cut-before---
-<NFTCard 
-  contractAddress='0xb4703a3a73aec16e764cbd210b0fde9efdab8941' 
+<NFTCard
+  contractAddress='0xb4703a3a73aec16e764cbd210b0fde9efdab8941'
   tokenId='1'
 >
   <NFTMedia/>
@@ -218,8 +218,8 @@ function useNFTData() {  // [!code focus]
 
 export default function NFTComponent() {
   return (
-    <NFTCard 
-      contractAddress='0xb4703a3a73aec16e764cbd210b0fde9efdab8941' 
+    <NFTCard
+      contractAddress='0xb4703a3a73aec16e764cbd210b0fde9efdab8941'
       tokenId='1'
       useNFTData={useNFTData}  // [!code focus]
     >
@@ -250,7 +250,7 @@ const statusHandler = (status: LifecycleStatus) => { // [!code focus]
   const { statusName, statusData } = status; // [!code focus]
   switch (statusName) { // [!code focus]
     case 'success': // [!code focus]
-      // handle success 
+      // handle success
     case 'error': // [!code focus]
       // handle error
     default: // [!code focus]
@@ -260,7 +260,7 @@ const statusHandler = (status: LifecycleStatus) => { // [!code focus]
 
 <NFTCard  // [!code focus]
   onStatus={statusHandler}  // [!code focus]
-  contractAddress='0xb4703a3a73aec16e764cbd210b0fde9efdab8941' 
+  contractAddress='0xb4703a3a73aec16e764cbd210b0fde9efdab8941'
   tokenId='1'
 >
   <NFTMedia />
@@ -284,7 +284,6 @@ The `NFTCard` component can be customized with the following components:
 
 ## Props
 
-- [`LifecycleStatus`](types#lifecyclestatus)
-- [`NFTCardReact`](types#nftcardreact)
-- [`NFTData`](types#nftdata)
-
+- [`LifecycleStatus`](/builderkits/onchainkit/mint/types#lifecyclestatus)
+- [`NFTCardReact`](/builderkits/onchainkit/mint/types#nftcardreact)
+- [`NFTData`](/builderkits/onchainkit/mint/types#nftdata)
