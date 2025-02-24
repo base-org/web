@@ -56,7 +56,7 @@ const createSubAccount = useCallback(async () => {
             },
             address,
           },
-          spendPermission: {
+          spendPermissions: {
             token: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
             allowance: toHex(parseEther('0.0001')),
             period: 86400,
@@ -69,7 +69,7 @@ const createSubAccount = useCallback(async () => {
   });
 
   const subAccount = walletConnectResponse?.accounts[0].capabilities?.addAddress?.address;
-  const spendPermissionData = walletConnectResponse?.accounts[0].capabilities?.spendPermission;
+  const spendPermissionData = walletConnectResponse?.accounts[0].capabilities?.spendPermissions;
   setSpendPermission(spendPermissionData.permission);
   setSpendPermissionSignature(spendPermissionData.signature);
   setSubAccount(subAccount);
@@ -130,26 +130,26 @@ const sendTransaction = useCallback(async () => {
     method: 'wallet_sendCalls',
     params: [
       {
-        to: '0xf85210B21cC50302F477BA56686d2019dC9b67Ad',
-        abi: spendPermissionManagerAbi,
-        functionName: 'approveWithSignature',
-        args: [spendPermission, spendPermissionSignature],
-        data: '0x',
-      },
-      {
-        to: '0xf85210B21cC50302F477BA56686d2019dC9b67Ad',
-        abi: spendPermissionManagerAbi,
-        functionName: 'spend',
-        args: [spendPermission, parseEther('0.0001')],
-        data: '0x',
-      },
-      {
         chainId: baseSepolia.id,
         calls: [
           {
+            to: '0xf85210B21cC50302F477BA56686d2019dC9b67Ad',
+            abi: spendPermissionManagerAbi,
+            functionName: 'approveWithSignature',
+            args: [spendPermission, spendPermissionSignature],
+            data: '0x',
+          },
+          {
+            to: '0xf85210B21cC50302F477BA56686d2019dC9b67Ad',
+            abi: spendPermissionManagerAbi,
+            functionName: 'spend',
+            args: [spendPermission, parseEther('0.0001').toString()],
+            data: '0x',
+          },
+          {
             to: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045',
             data: '0x',
-            value: parseEther('0.0001'),
+            value: parseEther('0.0001').toString(),
           },
         ],
         from: subAccount,
