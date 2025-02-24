@@ -64,8 +64,8 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: '@',
-        replacement: resolve(DIRNAME, './docs'),
+        find: '@/',
+        replacement: resolve(DIRNAME, './docs/'),
       },
       {
         find: '@/components',
