@@ -221,14 +221,9 @@ export default function Home() {
 }
 ```
 
-## Understanding Sub Account Operations
+So what did we just do? We added a function to send a sponsored transaction of the sub account sending 0 ETH to itself. It’s a simple way to test that a transaction works properly for a given account. Boot up the app and give it a shot! You should be able to
 
-When using a sub account:
-
-- **Message Signing**: The sub account can sign messages without requiring a passkey prompt from the user's main wallet
-- **Transactions**: Transactions can be sent using the sub account, without requiring a passkey prompt, and can take advantage of gas sponsorship
-
-This setup allows for a smoother user experience while maintaining the security of the user's main wallet. However, the sub account's capabilities are limited to what the application defines and what the user has approved.
+However, this isn’t really useful since many transactions require sending actual value. So let’s look at how to incorporate Spend Permissions to our Subaccounts to allow you to seamlessly spend funds from the user’s Coinbase Smart Wallet from their Subaccount.
 
 ## Next Steps
 
