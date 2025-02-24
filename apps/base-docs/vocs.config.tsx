@@ -3,6 +3,10 @@ import path from 'path';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 import { sidebar } from './sidebar.ts';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
+
+const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
 const contentSecurityPolicy = {
   'default-src': ["'self'"],
@@ -178,6 +182,15 @@ export default defineConfig({
           .map(([key, value]) => `${key} ${value.join('  ')}`)
           .join('; '),
       },
+      fs: {
+        strict: false,
+        allow: [
+          // Allow serving files from root directory
+          resolve(DIRNAME, '.'),
+          // Allow node_modules
+          resolve(DIRNAME, 'node_modules'),
+        ],
+      },      
     },
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
