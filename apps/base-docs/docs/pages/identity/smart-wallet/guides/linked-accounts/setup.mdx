@@ -1,6 +1,6 @@
 ---
-title: "Project Setup"
-description: "Set up a NextJS project with Coinbase Smart Wallet integration"
+title: 'Project Setup'
+description: 'Set up a NextJS project with Coinbase Smart Wallet integration'
 ---
 
 # Project Setup
@@ -41,7 +41,6 @@ npm install viem
 
 After running these commands, your project should have the following basic structure:
 
-
 ```
 app/
    layout.tsx
@@ -56,102 +55,107 @@ Create a new directory called `context` under the `app` directory and add a Reac
 // app/context/CoinbaseWalletContext.tsx
 'use client';
 import { createCoinbaseWalletSDK, ProviderInterface } from '@coinbase/wallet-sdk';
-import { createContext, useContext, useEffect, useState, ReactNode, useMemo, useCallback } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+  useMemo,
+  useCallback,
+} from 'react';
 import { Address, createWalletClient, custom } from 'viem';
 import { baseSepolia } from 'viem/chains';
 
 interface CoinbaseWalletContextType {
-    provider: ProviderInterface | null;
-    connect: () => Promise<void>;
-    disconnect: () => void;
-    isConnected: boolean;
-    address: Address | null;
+  provider: ProviderInterface | null;
+  connect: () => Promise<void>;
+  disconnect: () => void;
+  isConnected: boolean;
+  address: Address | null;
 }
 
 const CoinbaseWalletContext = createContext<CoinbaseWalletContextType>({
-    provider: null,
-    connect: async () => {},
-    disconnect: () => {},
-    isConnected: false,
-    address: null,
+  provider: null,
+  connect: async () => {},
+  disconnect: () => {},
+  isConnected: false,
+  address: null,
 });
 
 export function CoinbaseWalletProvider({ children }: { children: ReactNode }) {
-    const [provider, setProvider] = useState<ProviderInterface | null>(null);
-    const [isConnected, setIsConnected] = useState(false);
-    const [address, setAddress] = useState<Address | null>(null);
-    useEffect(() => {
-        // Initialize Coinbase Wallet SDK
-        const coinbaseWalletSDK = createCoinbaseWalletSDK({
-            appName: 'Coinbase Wallet demo',
-            appChainIds: [baseSepolia.id],
-            preference: {
-            options: "smartWalletOnly",
-            keysUrl: 'https://keys-dev.coinbase.com/connect',
-            },
-        });
-        setProvider(coinbaseWalletSDK.getProvider());
-    }, []);
-    const walletClient = useMemo(() => {
+  const [provider, setProvider] = useState<ProviderInterface | null>(null);
+  const [isConnected, setIsConnected] = useState(false);
+  const [address, setAddress] = useState<Address | null>(null);
+  useEffect(() => {
+    // Initialize Coinbase Wallet SDK
+    const coinbaseWalletSDK = createCoinbaseWalletSDK({
+      appName: 'Coinbase Wallet demo',
+      appChainIds: [baseSepolia.id],
+      preference: {
+        options: 'smartWalletOnly',
+        keysUrl: 'https://keys-dev.coinbase.com/connect',
+      },
+    });
+    setProvider(coinbaseWalletSDK.getProvider());
+  }, []);
+  const walletClient = useMemo(() => {
     if (!provider) return null;
     return createWalletClient({
-        chain: baseSepolia,
-        transport: custom({
+      chain: baseSepolia,
+      transport: custom({
         async request({ method, params }) {
-            const response = await provider.request({ method, params });
-            return response;
-            }
-        }),
+          const response = await provider.request({ method, params });
+          return response;
+        },
+      }),
     });
-    }, [provider]);
+  }, [provider]);
 
-    const connect = useCallback(async () => {
-        if (!walletClient || !provider) return;
-        walletClient
-            .requestAddresses()
-            .then(async (addresses) => {
-            if (addresses.length > 0) {
-                setAddress(addresses[0])
-                setIsConnected(true);
-            }
-        });
-    }, [walletClient, provider]);
+  const connect = useCallback(async () => {
+    if (!walletClient || !provider) return;
+    walletClient.requestAddresses().then(async (addresses) => {
+      if (addresses.length > 0) {
+        setAddress(addresses[0]);
+        setIsConnected(true);
+      }
+    });
+  }, [walletClient, provider]);
 
-    const disconnect = () => {
-        if (!provider) return;
-        try {
-            provider.disconnect();
-            setIsConnected(false);
-            setAddress(null);
-        } catch (error) {
-            console.error('Failed to disconnect from Coinbase Wallet:', error);
-        }
-    };
+  const disconnect = () => {
+    if (!provider) return;
+    try {
+      provider.disconnect();
+      setIsConnected(false);
+      setAddress(null);
+    } catch (error) {
+      console.error('Failed to disconnect from Coinbase Wallet:', error);
+    }
+  };
 
-    return (
-        <CoinbaseWalletContext.Provider
-            value={{
-            provider,
-            connect,
-            disconnect,
-            isConnected,
-            address,
-            }}
-        >
-         {children}
-        </CoinbaseWalletContext.Provider>
-    );
+  return (
+    <CoinbaseWalletContext.Provider
+      value={{
+        provider,
+        connect,
+        disconnect,
+        isConnected,
+        address,
+      }}
+    >
+      {children}
+    </CoinbaseWalletContext.Provider>
+  );
 }
 
 export function useCoinbaseWallet() {
-    const context = useContext(CoinbaseWalletContext);
-    if (context === undefined) {
-        throw new Error('useCoinbaseWallet must be used within a CoinbaseWalletProvider');
-    }
-    return context;
+  const context = useContext(CoinbaseWalletContext);
+  if (context === undefined) {
+    throw new Error('useCoinbaseWallet must be used within a CoinbaseWalletProvider');
+  }
+  return context;
 }
 ```
-
 
 ## Creating the Provider Wrapper
 
@@ -160,13 +164,13 @@ Create a providers file to wrap your application:
 ```tsx
 // app/providers.tsx
 
-
+'use client';
 import { CoinbaseWalletProvider } from '@/context/CoinbaseWalletContext';
 
 export default function Providers({ children }: { children: ReactNode }) {
-return <CoinbaseWalletProvider>{children}</CoinbaseWalletProvider>;
+  return <CoinbaseWalletProvider>{children}</CoinbaseWalletProvider>;
 }
-
+```
 
 ## Updating the Root Layout
 
@@ -178,15 +182,15 @@ Update your root layout to include the providers:
 import Providers from '@/app/providers';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-    return (
-        <html>
-            <body>
-                <Providers>{children}</Providers>
-            </body>
-        </html>
-    );
+  return (
+    <html>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  );
 }
-
+```
 
 ## Creating the Home Page
 
@@ -198,23 +202,21 @@ Update your main page to include wallet connection functionality:
 'use client';
 import { useCoinbaseWallet } from './context/CoinbaseWalletContext';
 export default function Home() {
-    const { isConnected, connect, disconnect, address } = useCoinbaseWallet();
-    return (
+  const { isConnected, connect, disconnect, address } = useCoinbaseWallet();
+  return (
+    <div>
+      {isConnected ? (
         <div>
-            {isConnected ? (
-                <div>
-                    <p>Connected address: {address}</p>
-                    <button onClick={disconnect}>Disconnect Wallet</button>
-                </div>
-            ) : (
-             <button onClick={connect}>Connect Wallet</button>
-            )}
+          <p>Connected address: {address}</p>
+          <button onClick={disconnect}>Disconnect Wallet</button>
         </div>
-    );
+      ) : (
+        <button onClick={connect}>Connect Wallet</button>
+      )}
+    </div>
+  );
 }
 ```
-
-
 
 ## Testing the Setup
 
