@@ -1,5 +1,6 @@
 import { defineConfig } from 'vocs';
 import path from 'path';
+import crypto from 'crypto';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 import { sidebar } from './sidebar.ts';
@@ -13,6 +14,10 @@ const googleAnalyticsScript = {
     `,
 };
 
+const generateNonce = () => {
+  return crypto.randomBytes(16).toString('base64');
+};
+
 const contentSecurityPolicy = {
   'default-src': ["'self'"],
   'frame-ancestors': ["'self'"],
@@ -20,6 +25,7 @@ const contentSecurityPolicy = {
   'script-src': [
     "'self'",
     "'unsafe-inline'",
+    `'nonce-${generateNonce()}'`,
     'https://static-assets.coinbase.com/js/cca/v0.0.1.js', // CCA Lite
     'https://cca-lite.coinbase.com', // CCA Lite
   ],
@@ -44,12 +50,32 @@ const contentSecurityPolicy = {
     'https://api.lab.amplitude.com/sdk/v2/vardata',
     'https://browser-intake-datadoghq.com', // datadog
     'https://*.datadoghq.com',
-    'https://*.google-analytics.com  https://*.analytics.google.com  https://*.googletagmanager.com', // Google Analytics
+    'https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com', // Google Analytics
   ],
   'frame-src': ["'self'", 'https://player.vimeo.com', 'https://verify.walletconnect.org'],
 };
 
 export default defineConfig({
+  async head() {
+    const analytics = (
+      <>
+        <meta property="twitter:title" content="Base | Docs" />
+        <meta property="twitter:image" content="https://docs.base.org/img/base-open-graph.png" />
+        <meta
+          property="twitter:description"
+          content="Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2"
+        />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="base.org" />
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-TKCM02YFWN" async defer />
+        <script
+          id="gtag-init"
+          dangerouslySetInnerHTML={googleAnalyticsScript}
+        />
+      </>
+    );
+    return <>{analytics}</>;
+  },
   baseUrl: 'https://docs.base.org',
   title: 'Base Docs',
   iconUrl: '/favicon.ico',
@@ -64,9 +90,19 @@ export default defineConfig({
     variables: {
       color: {
         textAccent: '#578BFA',
-      },
-    },
+      }
+    }
   },
+  topNav: [
+    {
+      text: 'Get help',
+      link: 'https://discord.com/invite/buildonbase?utm_source=dotorg&utm_medium=nav',
+    },
+    {
+      text: 'base.org',
+      link: 'https://base.org',
+    },
+  ],
   socials: [
     {
       icon: 'github',
@@ -89,29 +125,19 @@ export default defineConfig({
     compilerOptions: {
       allowUmdGlobalAccess: true,
       esModuleInterop: true,
-      module: 199, // NodeNext,
-      moduleResolution: 99, // NodeNext,
+      module: 199, // ModuleKind.NodeNext
+      moduleResolution: 99, // ModuleResolutionKind.NodeNext
     },
   },
   markdown: {
     code: {
       themes: {
         light: 'github-light',
-        dark: 'github-dark',
-      },
-    },
+        dark: 'github-dark'
+      }
+    }
   },
-  sidebar,
-  topNav: [
-    {
-      text: 'Get help',
-      link: 'https://discord.com/invite/buildonbase?utm_source=dotorg&utm_medium=nav',
-    },
-    {
-      text: 'base.org',
-      link: 'https://base.org',
-    },
-  ],
+  // layout: 'right',
   search: {
     fields: ['title', 'content', 'productLine', 'docType', 'userType'], // Fields to index
     fuzzy: 0.2, // Typo tolerance
@@ -122,27 +148,7 @@ export default defineConfig({
     },
     prefix: true, // Autocomplete
   },
-  async head() {
-    const analytics = (
-      <>
-        <meta property="twitter:title" content="Base | Docs" />
-        <meta property="twitter:image" content="https://docs.base.org/img/base-open-graph.png" />
-        <meta
-          property="twitter:description"
-          content="Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2"
-        />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="base.org" />
-        <script src="https://www.googletagmanager.com/gtag/js?id=G-TKCM02YFWN" async defer />
-        <script
-          id="gtag-init"
-          // eslint-disable-next-line react/no-danger -- need to set innerHTML for Google Analytics
-          dangerouslySetInnerHTML={googleAnalyticsScript}
-        />
-      </>
-    );
-    return analytics;
-  },
+  sidebar: sidebar,
   vite: {
     plugins: [react(), svgr()],
     build: {
