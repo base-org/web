@@ -43,7 +43,7 @@ export const TWEETS: Tweet[] = [
     image: metacade,
     name: 'Metacade',
     username: '@Metacade_',
-    content: `Having our own Apphain on Base gives us endless possibilities to expand our service offerings with greater customization and scalability for us and our gaming partners.`,
+    content: `Having our own Appchain on Base gives us endless possibilities to expand our service offerings with greater customization and scalability for us and our gaming partners.`,
   },
   {
     image: dcp,
