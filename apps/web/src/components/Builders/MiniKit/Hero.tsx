@@ -15,7 +15,7 @@ export function Hero() {
   const [hasCopied, setHasCopied] = useState(false);
 
   const handleCopy = useCallback(() => {
-    void navigator.clipboard.writeText('npm create-onchain --mini');
+    void navigator.clipboard.writeText('npm create onchain --mini');
     setHasCopied(true);
     setTimeout(() => setHasCopied(false), 2000); // Reset after 2 seconds
   }, []);
