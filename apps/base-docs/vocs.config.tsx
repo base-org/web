@@ -1,8 +1,13 @@
 import { defineConfig } from 'vocs';
 import path from 'path';
+import crypto from 'crypto';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 import { sidebar } from './sidebar.ts';
+
+const generateNonce = () => {
+  return crypto.randomBytes(16).toString('base64');
+};
 
 const contentSecurityPolicy = {
   'default-src': ["'self'"],
@@ -11,6 +16,7 @@ const contentSecurityPolicy = {
   'script-src': [
     "'self'",
     "'unsafe-inline'",
+    `'nonce-${generateNonce()}'`,
     'https://static-assets.coinbase.com/js/cca/v0.0.1.js', // CCA Lite
     'https://cca-lite.coinbase.com', // CCA Lite
   ],
@@ -35,7 +41,7 @@ const contentSecurityPolicy = {
     'https://api.lab.amplitude.com/sdk/v2/vardata',
     'https://browser-intake-datadoghq.com', // datadog
     'https://*.datadoghq.com',
-    'https://*.google-analytics.com  https://*.analytics.google.com  https://*.googletagmanager.com', // Google Analytics
+    'https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com', // Google Analytics
   ],
   'frame-src': ["'self'", 'https://player.vimeo.com', 'https://verify.walletconnect.org'],
 };
@@ -44,13 +50,6 @@ export default defineConfig({
   async head() {
     const analytics = (
       <>
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Base | Docs" />
-        <meta property="og:image" content="https://docs.base.org/img/base-open-graph.png" />
-        <meta
-          property="og:description"
-          content="Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2"
-        />
         <meta property="twitter:title" content="Base | Docs" />
         <meta property="twitter:image" content="https://docs.base.org/img/base-open-graph.png" />
         <meta
@@ -75,20 +74,17 @@ export default defineConfig({
     );
     return <>{analytics}</>;
   },
-  baseUrl: '/',
+  baseUrl: 'https://docs.base.org',
   title: 'Base Docs',
-  description:
-    'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2',
-  iconUrl: {
-    light: 'img/favicon.ico',
-    dark: 'img/favicon.ico',
-  },
+  description: 'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2',
+  iconUrl: 'favicon.ico',
+  ogImageUrl: '/img/base-open-graph.png',
   theme: {
     colorScheme: 'dark',
     accentColor: '#578BFA',
     variables: {
       color: {
-        textAccent: '578BFA',
+        textAccent: '#578BFA',
       }
     }
   },
@@ -175,7 +171,7 @@ export default defineConfig({
     server: {
       headers: {
         'Content-Security-Policy': Object.entries(contentSecurityPolicy)
-          .map(([key, value]) => `${key} ${value.join('  ')}`)
+          .map(([key, value]) => `${key} ${value.join(' ')}`)
           .join('; '),
       },
     },
