@@ -1,4 +1,4 @@
-import { defineConfig, type SocialType, type ColorScheme, type Sidebar } from 'vocs';
+import { defineConfig } from 'vocs';
 import path from 'path';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
@@ -50,37 +50,38 @@ const contentSecurityPolicy = {
 };
 
 export default defineConfig({
-  baseUrl: '/',
+  baseUrl: 'https://docs.base.org',
   title: 'Base Docs',
   iconUrl: '/favicon.ico',
   logoUrl: '/logo.svg',
+  ogImageUrl: 'base-open-graph.png',
   blogDir: './blog',
   description:
     'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2',
   theme: {
-    colorScheme: 'dark' as ColorScheme,
+    colorScheme: 'dark',
     accentColor: '#578BFA',
     variables: {
       color: {
-        textAccent: '578BFA',
+        textAccent: '#578BFA',
       },
     },
   },
   socials: [
     {
-      icon: 'github' as SocialType,
+      icon: 'github',
       link: 'https://github.com/base',
     },
     {
-      icon: 'x' as SocialType,
+      icon: 'x',
       link: 'http://x.com/buildonbase',
     },
     {
-      icon: 'warpcast' as SocialType,
+      icon: 'warpcast',
       link: 'https://warpcast.com/buildonbase',
     },
     {
-      icon: 'discord' as SocialType,
+      icon: 'discord',
       link: 'https://discord.com/invite/buildonbase',
     },
   ],
@@ -100,7 +101,7 @@ export default defineConfig({
       },
     },
   },
-  sidebar: sidebar as Sidebar,
+  sidebar,
   topNav: [
     {
       text: 'Get help',
@@ -124,13 +125,6 @@ export default defineConfig({
   async head() {
     const analytics = (
       <>
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Base | Docs" />
-        <meta property="og:image" content="https://docs.base.org/img/base-open-graph.png" />
-        <meta
-          property="og:description"
-          content="Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2"
-        />
         <meta property="twitter:title" content="Base | Docs" />
         <meta property="twitter:image" content="https://docs.base.org/img/base-open-graph.png" />
         <meta
@@ -165,7 +159,7 @@ export default defineConfig({
     server: {
       headers: {
         'Content-Security-Policy': Object.entries(contentSecurityPolicy)
-          .map(([key, value]) => `${key} ${value.join('  ')}`)
+          .map(([key, value]) => `${key} ${value.join(' ')}`)
           .join('; '),
       },
     },
