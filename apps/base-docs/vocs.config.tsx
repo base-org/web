@@ -60,7 +60,7 @@ export default defineConfig({
     const analytics = (
       <>
         <meta property="twitter:title" content="Base | Docs" />
-        <meta property="twitter:image" content="https://docs.base.org/img/base-open-graph.png" />
+        <meta property="twitter:image" content="https://docs.base.org/images/base-docs-og.png" />
         <meta
           property="twitter:description"
           content="Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2"
@@ -81,7 +81,7 @@ export default defineConfig({
   title: 'Base Docs',
   iconUrl: '/favicon.ico',
   logoUrl: '/logo.svg',
-  ogImageUrl: '/images/base-open-graph.png',
+  ogImageUrl: '/images/base-docs-og.png',
   blogDir: './blog',
   description:
     'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2',
