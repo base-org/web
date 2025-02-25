@@ -70,17 +70,18 @@ export default defineConfig({
         <script src="https://www.googletagmanager.com/gtag/js?id=G-TKCM02YFWN" async defer />
         <script
           id="gtag-init"
+          // eslint-disable-next-line react/no-danger -- need to set innerHTML for Google Analytics
           dangerouslySetInnerHTML={googleAnalyticsScript}
         />
       </>
     );
-    return <>{analytics}</>;
+    return analytics;
   },
   baseUrl: 'https://docs.base.org',
   title: 'Base Docs',
   iconUrl: '/favicon.ico',
   logoUrl: '/logo.svg',
-  ogImageUrl: 'base-open-graph.png',
+  ogImageUrl: '/images/base-open-graph.png',
   blogDir: './blog',
   description:
     'Explore the documentation for Base, a secure, low-cost, builder-friendly Ethereum L2',
@@ -90,8 +91,8 @@ export default defineConfig({
     variables: {
       color: {
         textAccent: '#578BFA',
-      }
-    }
+      },
+    },
   },
   topNav: [
     {
@@ -133,11 +134,10 @@ export default defineConfig({
     code: {
       themes: {
         light: 'github-light',
-        dark: 'github-dark'
-      }
-    }
+        dark: 'github-dark',
+      },
+    },
   },
-  // layout: 'right',
   search: {
     fields: ['title', 'content', 'productLine', 'docType', 'userType'], // Fields to index
     fuzzy: 0.2, // Typo tolerance
@@ -148,7 +148,7 @@ export default defineConfig({
     },
     prefix: true, // Autocomplete
   },
-  sidebar: sidebar,
+  sidebar,
   vite: {
     plugins: [react(), svgr()],
     build: {
