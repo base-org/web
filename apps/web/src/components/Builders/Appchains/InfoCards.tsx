@@ -34,8 +34,7 @@ const INFO_CARDS: CardProps[] = [
       />
     ),
     title: 'Sustainable growth',
-    description:
-      "Deliver delightful, performant user experiences with dedicated blockspace.",
+    description: 'Deliver delightful, performant user experiences with dedicated blockspace.',
   },
   {
     icon: (
@@ -63,7 +62,7 @@ const INFO_CARDS: CardProps[] = [
     ),
     title: 'Enterprise-grade infra',
     description:
-      'Fully-managed sequencers and nodes, maintenance and upgrades, and block explorer. Plus real-time monitoring and alerts for any disruptions in chain performance.',
+      'Fully-managed sequencer and nodes, maintenance and upgrades, and block explorer. Plus real-time monitoring and alerts for any disruptions in chain performance.',
   },
 
   {

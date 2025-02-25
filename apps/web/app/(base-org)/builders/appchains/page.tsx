@@ -49,7 +49,7 @@ export default async function Appchains() {
               href={CDP_APPCHAIN_URL}
               target="_blank"
               variant={ButtonVariants.Secondary}
-              buttonClassNames="flex items-center justify-between px-4 pb-2.5 pt-3 group font-medium"
+              buttonClassNames="flex items-center justify-between px-4 pb-3 pt-3 group font-medium"
               eventName="appchains-start-building"
             >
               <div className="flex items-center gap-4">
@@ -64,7 +64,7 @@ export default async function Appchains() {
               href=""
               target="_blank"
               variant={ButtonVariants.SecondaryOutline}
-              buttonClassNames="flex items-center justify-between px-4 pb-2.5 pt-3 group font-medium"
+              buttonClassNames="flex items-center justify-between px-4 pb-3 pt-3 group font-medium"
               eventName="appchains-docs"
             >
               <div className="flex items-center gap-4">
@@ -89,7 +89,7 @@ export default async function Appchains() {
               href={CDP_APPCHAIN_URL}
               target="_blank"
               variant={ButtonVariants.Secondary}
-              buttonClassNames="flex items-center justify-between px-4 pb-2.5 pt-3 group font-medium"
+              buttonClassNames="flex items-center justify-between px-4 pb-3 pt-3 group font-medium"
               eventName="appchains-get-started"
             >
               <div className="flex items-center gap-4">
