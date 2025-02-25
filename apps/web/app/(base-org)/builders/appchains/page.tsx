@@ -13,6 +13,7 @@ import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image, { StaticImageData } from 'next/image';
 
 const CDP_APPCHAIN_URL = 'https://portal.cdp.coinbase.com/products/base-l3';
+const DOCS_URL = 'https://docs.cdp.coinbase.com/appchains/docs/welcome';
 
 export default async function Appchains() {
   return (
@@ -61,7 +62,7 @@ export default async function Appchains() {
             </ButtonWithLinkAndEventLogging>
 
             <ButtonWithLinkAndEventLogging
-              href=""
+              href={DOCS_URL}
               target="_blank"
               variant={ButtonVariants.SecondaryOutline}
               buttonClassNames="flex items-center justify-between px-4 pb-3 pt-3 group font-medium"

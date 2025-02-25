@@ -97,12 +97,12 @@ const searchConfig: SearchCategory[] = [
         iconRotation: 'rotate-180',
       },
       // TODO: Add back after launch
-      // {
-      //   label: 'Base Appchains',
-      //   href: '/builders/appchains',
-      //   icon: 'backArrow',
-      //   iconRotation: 'rotate-180',
-      // },
+      {
+        label: 'Base Appchains',
+        href: '/builders/appchains',
+        icon: 'backArrow',
+        iconRotation: 'rotate-180',
+      },
       {
         label: 'Smart Wallet',
         href: '/builders/smart-wallet',
