@@ -3,12 +3,12 @@ import Container from 'apps/web/src/components/base-org/Container';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import { ButtonWithLinkAndEventLogging } from 'apps/web/src/components/Button/ButtonWithLinkAndEventLogging';
-import basenet from 'apps/web/src/components/Developers/Appchains/basenet.svg';
-import { InfoCards } from 'apps/web/src/components/Developers/Appchains/InfoCards';
-import { OnchainApps } from 'apps/web/src/components/Developers/Appchains/OnchainApps';
-import { Pricing } from 'apps/web/src/components/Developers/Appchains/Pricing';
-import { Testimonials } from 'apps/web/src/components/Developers/Appchains/Testimonials';
-import { CtaBanner } from 'apps/web/src/components/Developers/Shared/CtaBanner';
+import basenet from 'apps/web/src/components/Builders/Appchains/basenet.svg';
+import { InfoCards } from 'apps/web/src/components/Builders/Appchains/InfoCards';
+import { OnchainApps } from 'apps/web/src/components/Builders/Appchains/OnchainApps';
+import { Pricing } from 'apps/web/src/components/Builders/Appchains/Pricing';
+import { Testimonials } from 'apps/web/src/components/Builders/Appchains/Testimonials';
+import { CtaBanner } from 'apps/web/src/components/Builders/Shared/CtaBanner';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image, { StaticImageData } from 'next/image';
 
@@ -18,7 +18,6 @@ export default async function Appchains() {
   return (
     <Container>
       <main className="mb-32 flex min-h-screen w-full flex-col gap-40 bg-black px-2 pt-20 sm:items-center md:px-0">
-        {/* Header  */}
         <div className="flex flex-col gap-2 pt-20 sm:items-center">
           <div className="flex items-center gap-2 pb-6 text-[#FFDF44]">
             <Image
@@ -36,13 +35,13 @@ export default async function Appchains() {
             level={TitleLevel.Display3}
             className="max-w-lg font-bold max-sm:hidden sm:text-center"
           >
-            Deploy your chain on Base with zero code
+            Scale your app with a dedicated chain on Base
           </Title>
           <Title level={TitleLevel.Title1} className="font-bold sm:hidden">
-            Deploy your chain on Base with zero code.
+            Scale your app with a dedicated chain on Base
           </Title>
           <Title level={TitleLevel.Title3} className="max-w-2xl text-gray-muted sm:text-center">
-            Fast, cheaper transactions at scale—built on Base, in minutes.
+            Grow your audience and maintain experiences users love.
           </Title>
 
           <div className="flex gap-4 pt-5 max-sm:flex-col">
@@ -50,11 +49,11 @@ export default async function Appchains() {
               href={CDP_APPCHAIN_URL}
               target="_blank"
               variant={ButtonVariants.Secondary}
-              buttonClassNames="flex items-center justify-between px-4 py-3 group"
+              buttonClassNames="flex items-center justify-between px-4 pb-2.5 pt-3 group font-medium"
               eventName="appchains-start-building"
             >
               <div className="flex items-center gap-4">
-                <span>Start Building</span>
+                <span>Start building</span>
                 <div className="transition-transform duration-200 group-hover:translate-x-1">
                   <Icon name="arrowRight" width={16} height={16} color="black" />
                 </div>
@@ -65,11 +64,11 @@ export default async function Appchains() {
               href=""
               target="_blank"
               variant={ButtonVariants.SecondaryOutline}
-              buttonClassNames="flex items-center justify-between px-4 py-3 group"
+              buttonClassNames="flex items-center justify-between px-4 pb-2.5 pt-3 group font-medium"
               eventName="appchains-docs"
             >
               <div className="flex items-center gap-4">
-                <span>Documentation</span>
+                <span>Docs</span>
                 <div className="transition-transform duration-200 group-hover:translate-x-1">
                   <Icon name="arrowRight" width={16} height={16} color="white" />
                 </div>
@@ -83,14 +82,14 @@ export default async function Appchains() {
         <Pricing />
         <Testimonials />
         <CtaBanner
-          title="Your own blockspace starting at $1/month"
-          description="Unlock fast and cheap transactions at scale, with dedicated blockspace and seamless integration with Base tools."
+          title="Your own blockspace, built for scale"
+          description="Unlock high-speed and low-cost transactions at scale, with dedicated blockspace and seamless integration with Base tools."
           cta={
             <ButtonWithLinkAndEventLogging
               href={CDP_APPCHAIN_URL}
               target="_blank"
               variant={ButtonVariants.Secondary}
-              buttonClassNames="flex items-center justify-between px-4 py-3 group"
+              buttonClassNames="flex items-center justify-between px-4 pb-2.5 pt-3 group font-medium"
               eventName="appchains-get-started"
             >
               <div className="flex items-center gap-4">

@@ -1,13 +1,13 @@
-import { Marquee } from 'apps/web/src/components/Developers/Shared/Marquee';
-import { TweetCard } from 'apps/web/src/components/Developers/Shared/TweetCard';
-import tweet from 'apps/web/src/components/Developers/Appchains/tweet.png';
+import { Marquee } from 'apps/web/src/components/Builders/Shared/Marquee';
+import { TweetCard } from 'apps/web/src/components/Builders/Shared/TweetCard';
+import tweet from 'apps/web/src/components/Builders/Appchains/tweet.png';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import Title from 'apps/web/src/components/base-org/typography/Title';
 
 export function Testimonials() {
   return (
     <div className="flex w-full flex-col gap-10">
-      <Title level={TitleLevel.Title1}>Some thoughts from our customers.</Title>
+      <Title level={TitleLevel.Title1}>What our early customers are saying</Title>
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
         <Marquee className="[--duration:20s]" pauseOnHover>
           <TweetCard

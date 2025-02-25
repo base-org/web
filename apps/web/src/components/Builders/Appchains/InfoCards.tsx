@@ -1,10 +1,10 @@
-import { Card, CardProps } from 'apps/web/src/components/Developers/Shared/Card';
-import lightningBolt from 'apps/web/src/components/Developers/Appchains/lighteningBolt.svg';
-import taxesReceipt from 'apps/web/src/components/Developers/Appchains/taxesReceipt.svg';
-import perpetualSwap from 'apps/web/src/components/Developers/Appchains/perpetualSwap.svg';
-import faces from 'apps/web/src/components/Developers/Appchains/faces.svg';
-import complianceProduct from 'apps/web/src/components/Developers/Appchains/complianceProduct.svg';
-import globe from 'apps/web/src/components/Developers/Appchains/globe.svg';
+import { Card, CardProps } from 'apps/web/src/components/Builders/Shared/Card';
+import lightningBolt from 'apps/web/src/components/Builders/Appchains/lighteningBolt.svg';
+import taxesReceipt from 'apps/web/src/components/Builders/Appchains/taxesReceipt.svg';
+import perpetualSwap from 'apps/web/src/components/Builders/Appchains/perpetualSwap.svg';
+import faces from 'apps/web/src/components/Builders/Appchains/faces.svg';
+import complianceProduct from 'apps/web/src/components/Builders/Appchains/complianceProduct.svg';
+import globe from 'apps/web/src/components/Builders/Appchains/globe.svg';
 import Image, { StaticImageData } from 'next/image';
 
 const INFO_CARDS: CardProps[] = [
@@ -18,9 +18,9 @@ const INFO_CARDS: CardProps[] = [
         className="h-8 w-8"
       />
     ),
-    title: 'High-speed, low-cost throughput ',
+    title: 'High throughput, low costs',
     description:
-      'Faster transactions with one-second block times, roundtrips in less than 10 seconds, all for a fraction of a cent.',
+      'Faster transactions with 1-second block times and under 10-second roundtrips — for fractions of cents.',
   },
 
   {
@@ -33,9 +33,9 @@ const INFO_CARDS: CardProps[] = [
         className="h-8 w-8"
       />
     ),
-    title: 'Worldwide reach',
+    title: 'Sustainable growth',
     description:
-      "Access to the Base ecosystem and Coinbase retail users through direct send and receive with Coinbase's custodial platform.",
+      "Deliver delightful, performant user experiences with dedicated blockspace.",
   },
   {
     icon: (
@@ -49,7 +49,7 @@ const INFO_CARDS: CardProps[] = [
     ),
     title: 'Builder-friendly fees',
     description:
-      'Base charges a competitive, fixed monthly service fee. No complicated vendor commitments, no negotiating for best price (already is), and no sequencer fees.',
+      'Competitive, fixed monthly price. No complicated vendor commitments, no price negotiations.',
   },
   {
     icon: (
@@ -76,9 +76,9 @@ const INFO_CARDS: CardProps[] = [
         className="h-8 w-8"
       />
     ),
-    title: 'Base developer tools',
+    title: 'Base builder tools',
     description:
-      'Seamless integration with Smart Wallet, Paymaster, Bundler, OnchainKit, and AgentKit — right out of the box — to help you build and grow your app.',
+      'Seamless integration with Smart Wallet, Paymaster, OnchainKit, AgentKit, and other tools from Base and Coinbase Developer Platform.',
   },
   {
     icon: (
@@ -92,7 +92,7 @@ const INFO_CARDS: CardProps[] = [
     ),
     title: 'Open-source',
     description:
-      'Built on the OP Enclave framework for fast withdrawals and a seamless integration between your appchain and Base.',
+      'Built on the OP Enclave framework for fast withdrawals and a seamless integration between your Appchain and Base. ',
   },
 ];
 
