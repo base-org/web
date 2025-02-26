@@ -12,7 +12,7 @@ import { CtaBanner } from 'apps/web/src/components/Builders/Shared/CtaBanner';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image, { StaticImageData } from 'next/image';
 
-const CDP_APPCHAIN_URL = 'https://portal.cdp.coinbase.com/products/base-l3';
+const CDP_APPCHAIN_URL = 'https://portal.cdp.coinbase.com/products/base-appchains';
 const DOCS_URL = 'https://docs.cdp.coinbase.com/appchains/docs/welcome';
 
 export default async function Appchains() {

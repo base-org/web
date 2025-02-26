@@ -31,7 +31,7 @@ export const TWEETS: Tweet[] = [
     image: mvl,
     name: 'MVL',
     username: '@mvlchain',
-    content: `The cost-efficient data posting capabilities of Base Appchains, along with access to Coinbase tools, will provide a groundbreaking advantage for processing our on-chain data`,
+    content: `The cost-efficient data posting capabilities of Base Appchains, along with access to Coinbase tools, will provide a breakthrough advantage for processing onchain data for TADA/MVL.`,
   },
   {
     image: horizen,
@@ -49,12 +49,12 @@ export const TWEETS: Tweet[] = [
     image: dcp,
     name: 'Decentralized Pictures',
     username: '@DCP_Foundation',
-    content: `Appchains have been a game-changer in helping us build faster, simpler, and more powerful products. With dedicated scalability and consistent throughput, appchains will allow us to avoid network congestion and maintain smooth operations.`,
+    content: `Appchains have been a game-changer in helping us build faster, simpler, and more powerful products. With dedicated scalability and support, appchains will allow us to focus on our mission and onchain products.`,
   },
   {
     image: proof8,
     name: 'Proof 8',
-    username: '',
+    username: '@weareproof8',
     content: `We utilise blockchain tech to provide verifiable ownership of inventory managed by warehouses and distilleries, along with provenance and auditability. These enterprise customers prioritise performance, security and privacy.`,
   },
 ];

@@ -3,7 +3,9 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import proof from 'apps/web/src/components/Builders/Appchains/proofworks.svg';
 import superchamps from 'apps/web/src/components/Builders/Appchains/superchamps.svg';
 import blocklords from 'apps/web/src/components/Builders/Appchains/blocklords.svg';
-import illuvium from 'apps/web/src/components/Builders/Appchains/illuvium.svg';
+import mvl from 'apps/web/src/components/Builders/Appchains/mvl.svg';
+import dcp from 'apps/web/src/components/Builders/Appchains/dcp.svg';
+import horizon from 'apps/web/src/components/Builders/Appchains/horizon.svg';
 import Image, { StaticImageData } from 'next/image';
 import { Marquee } from 'apps/web/src/components/Builders/Shared/Marquee';
 
@@ -25,7 +27,13 @@ export function OnchainApps() {
             <Image src={blocklords as StaticImageData} alt="blocklords" />
           </div>
           <div className="flex p-4 px-8">
-            <Image src={illuvium as StaticImageData} alt="illuvium" />
+            <Image src={dcp as StaticImageData} alt="decentralized pictures" />
+          </div>
+          <div className="flex p-4 px-8">
+            <Image src={horizon as StaticImageData} alt="horizen" />
+          </div>
+          <div className="flex p-4 px-8">
+            <Image src={mvl as StaticImageData} alt="mvl" />
           </div>
         </Marquee>
       </div>
