@@ -19,7 +19,7 @@ export const TWEETS: Tweet[] = [
     image: blocklords,
     name: 'Blocklords',
     username: '@BLOCKLORDS',
-    content: `With Dynasty’s scale—1.8 million wallets and over 80 million transactions—we needed something faster, cheaper, and built for scale`,
+    content: `With Dynasty’s scale—1.8 million wallets and over 80 million transactions—we needed something faster, cheaper, and built for scale.`,
   },
   {
     image: superchamps,
